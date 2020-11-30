@@ -3,12 +3,12 @@ title: Transport Layer Security a Azure Backup
 description: Megtudhatja, hogyan engedélyezheti a Azure Backup számára a titkosítási protokoll Transport Layer Security (TLS) használatát, ha a hálózaton keresztüli adatátvitel közben szeretné megőrizni az adatvédelmet.
 ms.topic: conceptual
 ms.date: 11/01/2020
-ms.openlocfilehash: 9881fd3532cbc7d67c7d5adbce75e02fc62e0bcf
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: ba9c9d91f562f54695a0739908c8a409d14d5852
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280680"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327117"
 ---
 # <a name="transport-layer-security-in-azure-backup"></a>Transport Layer Security a Azure Backup
 
@@ -45,7 +45,7 @@ A következő beállításkulcsok biztosítják, hogy a TLS 1,2 protokoll enged�
 
 ### <a name="configuring-net-framework"></a>A .NET-keretrendszer konfigurálása
 
-A következő beállításkulcsokat konfigurálja a .NET-keretrendszert az erős titkosítás támogatásához. A [.NET-keretrendszer konfigurálásával kapcsolatban itt](https://docs.microsoft.com/dotnet/framework/network-programming/tls#configuring-schannel-protocols-in-the-windows-registry)talál további információt.
+A következő beállításkulcsokat konfigurálja a .NET-keretrendszert az erős titkosítás támogatásához. A [.NET-keretrendszer konfigurálásával kapcsolatban itt](/dotnet/framework/network-programming/tls#configuring-schannel-protocols-in-the-windows-registry)talál további információt.
 
 ```reg
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
@@ -65,7 +65,7 @@ A TLS 1,2 biztonságosabb, mint a korábbi titkosítási protokollok, például 
 
 ### <a name="what-determines-the-encryption-protocol-used"></a>Mi határozza meg a használt titkosítási protokollt?
 
-Az ügyfél és a kiszolgáló által támogatott legmagasabb protokoll verziója egyeztetve van a titkosított beszélgetés létrehozásához. A TLS-kézfogási protokollról további információt a [biztonságos munkamenetek TLS használatával történő létrehozásával](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol#establishing-a-secure-session-by-using-tls)foglalkozó témakörben talál.
+Az ügyfél és a kiszolgáló által támogatott legmagasabb protokoll verziója egyeztetve van a titkosított beszélgetés létrehozásához. A TLS-kézfogási protokollról további információt a [biztonságos munkamenetek TLS használatával történő létrehozásával](/windows/win32/secauthn/tls-handshake-protocol#establishing-a-secure-session-by-using-tls)foglalkozó témakörben talál.
 
 ### <a name="what-is-the-impact-of-not-enabling-tls-12"></a>Mi a hatása, ha nem engedélyezi a TLS 1,2-et?
 
@@ -77,6 +77,6 @@ A protokoll-visszalépési támadások jobb biztonsága érdekében a Azure Back
 
 ## <a name="additional-resources"></a>További források
 
-- [Transport Layer Biztonsági Protokoll](https://docs.microsoft.com/windows/win32/secauthn/transport-layer-security-protocol)
-- [A TLS 1,2 támogatásának biztosítása az üzembe helyezett operációs rendszerek között](https://docs.microsoft.com/security/engineering/solving-tls1-problem#ensuring-support-for-tls-12-across-deployed-operating-systems)
-- [A Transport Layer Security (TLS) ajánlott eljárásai a .NET-keretrendszerrel](https://docs.microsoft.com/dotnet/framework/network-programming/tls)
+- [Transport Layer Biztonsági Protokoll](/windows/win32/secauthn/transport-layer-security-protocol)
+- [A TLS 1,2 támogatásának biztosítása az üzembe helyezett operációs rendszerek között](/security/engineering/solving-tls1-problem#ensuring-support-for-tls-12-across-deployed-operating-systems)
+- [A Transport Layer Security (TLS) ajánlott eljárásai a .NET-keretrendszerrel](/dotnet/framework/network-programming/tls)

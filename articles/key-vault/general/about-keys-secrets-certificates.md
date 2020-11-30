@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 78f228a5e188bc930a9e7484f4c982ba746331dd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357776"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327083"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault kulcsok, titkok és tanúsítványok áttekintése
 
@@ -42,14 +42,14 @@ Objektumtípus|URL-utótag|Kulcstartók|Felügyelt HSM-készletek
 HSM-védett kulcsok|/keys|Támogatott|Támogatott
 Szoftveres védelemmel ellátott kulcsok|/keys|Támogatott|Nem támogatott
 **Egyéb objektumtípusok**||
-Titkos kulcsok|/secrets|Támogatott|Nem támogatott
+Titkos kódok|/secrets|Támogatott|Nem támogatott
 Tanúsítványok|/certificates|Támogatott|Nem támogatott
 Tárfiókkulcsok|/storageaccount|Támogatott|Nem támogatott
 |||
-- **Titkosítási kulcsok** : több kulcs típust és algoritmust is támogat, valamint lehetővé teszi a szoftveres védelemmel ellátott és HSM által védett kulcsok használatát. További információ: [a kulcsok ismertetése](../keys/about-keys.md).
-- **Titkok** : biztonságos tárhelyet biztosít a titkos kulcsokhoz, például jelszavakhoz és adatbázis-kapcsolatok karakterláncokhoz. További információ: [About Secrets](../secrets/about-secrets.md).
-- **Tanúsítványok** : a kulcsokra és titkokra épülő tanúsítványokat támogatja, és egy automatikus megújítási funkciót ad hozzá. További információ: [Tudnivalók a tanúsítványokról](../certificates/about-certificates.md).
-- **Azure Storage-fiókok kulcsai** : felügyelheti az Azure Storage-fiók kulcsait. Belsőleg Key Vault a kulcsokat egy Azure Storage-fiókkal listázhatja (szinkronizálhatja), és rendszeresen újragenerálhatja (elforgathatja) a kulcsokat. További információ: [a Storage-fiók kulcsainak kezelése a Key Vault](../secrets/overview-storage-keys.md).
+- **Titkosítási kulcsok**: több kulcs típust és algoritmust is támogat, valamint lehetővé teszi a szoftveres védelemmel ellátott és HSM által védett kulcsok használatát. További információ: [a kulcsok ismertetése](../keys/about-keys.md).
+- **Titkok**: biztonságos tárhelyet biztosít a titkos kulcsokhoz, például jelszavakhoz és adatbázis-kapcsolatok karakterláncokhoz. További információ: [About Secrets](../secrets/about-secrets.md).
+- **Tanúsítványok**: a kulcsokra és titkokra épülő tanúsítványokat támogatja, és egy automatikus megújítási funkciót ad hozzá. További információ: [Tudnivalók a tanúsítványokról](../certificates/about-certificates.md).
+- **Azure Storage-fiókok kulcsai**: felügyelheti az Azure Storage-fiók kulcsait. Belsőleg Key Vault a kulcsokat egy Azure Storage-fiókkal listázhatja (szinkronizálhatja), és rendszeresen újragenerálhatja (elforgathatja) a kulcsokat. További információ: [a Storage-fiók kulcsainak kezelése a Key Vault](../secrets/overview-storage-keys.md).
 
 További általános információk a Key Vaultről: [about Azure Key Vault](overview.md). További információ a felügyelt HSM-készletekről: mi a [Azure Key Vault Managed HSM?](../managed-hsm/overview.md)
 
@@ -75,20 +75,21 @@ A Key Vaultban tárolt objektumok verziószámozást kapnak, amikor egy objektum
 
 A Key Vaultban lévő objektumok egy verzió megadásával vagy a verzió az objektum aktuális verziójában való kihagyásával kezelhetők. Például, ha egy kulcs a névvel van megadva `MasterKey` , és egy verzió megadása nélkül végez műveleteket, a rendszer a legújabb elérhető verziót használja. A verzió-specifikus azonosítóval végzett műveletek végrehajtása azt eredményezi, hogy a rendszer az objektum adott verzióját használja.  
 
+### <a name="vault-name-and-object-name"></a>Tár – név és objektum neve
 Az objektumok egyedileg azonosíthatók a Key Vaulton belül egy URL-cím használatával. A rendszeren nincs két objektum ugyanazzal az URL-címmel, a földrajzi helytől függetlenül. Az objektum teljes URL-címét objektumazonosítónak nevezzük. Az URL-cím egy előtagból áll, amely a Key Vault, az Objektumtípus, a felhasználó által megadott objektumnév és az objektum verziószámát azonosítja. Az Objektumnév megkülönbözteti a kis-és nagybetűket, és nem változtathatók meg. Az objektum verziószámát nem tartalmazó azonosítókat alapazonosítóknak nevezzük.  
 
 További információ: [hitelesítés, kérések és válaszok](authentication-requests-and-responses.md)
 
 Az objektumazonosító a következő általános formátumú (a tároló típusától függően):  
 
-- Tárolók **esetén** :`https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
+- Tárolók **esetén**:`https://{vault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-- **Felügyelt HSM-készletek esetén** : `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
+- **Felügyelt HSM-készletek esetén**: `https://{hsm-name}.managedhsm.azure.net/{object-type}/{object-name}/{object-version}`  
 
 > [!NOTE]
 > Lásd: [objektumtípus támogatása](#object-types) az egyes típusú objektumok által támogatott objektumtípusok számára.
 
-Ebben a példában:  
+Kimenet:  
 
 | Elem | Leírás |  
 |-|-|  

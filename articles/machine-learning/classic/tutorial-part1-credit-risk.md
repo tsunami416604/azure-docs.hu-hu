@@ -9,17 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 946435175ea5cd366103bc1254bae0d9afe0926e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 62cecc011980c2d11e6f99895c90b0ced744039a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325802"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325349"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>1. Oktatóanyag: hitelkockázat előrejelzése – Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
-
+**a következőkre vonatkozik:** ![ Ez egy pipa, ami azt jelenti, hogy ez a cikk a Machine Learning Studio (klasszikus) elemre vonatkozik.  ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus)   ![ Ez egy X, ami azt jelenti, hogy ez a cikk Azure Machine learningre vonatkozik.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -75,7 +74,7 @@ A hitelkockázat-előrejelző modell kifejlesztéséhez olyan adatforrásokra va
 
 A **német.** az adatfájlt fogja használni. Töltse le ezt a fájlt a helyi merevlemez-meghajtóra.  
 
-A **német.** adatadatkészlet 20 változóból álló sorokat tartalmaz a 1000-es múltbeli pályázók számára. Ez a 20 változó az adatkészlet azon funkcióinak készletét jelöli (a *szolgáltatás vektora* ), amely az egyes kreditek azonosítására szolgáló jellemzőket biztosít. Az egyes sorokban egy további oszlop jelenti a kérelmező számított hitelkockázat-kockázatát, amelynek 700 kérelmezője alacsony hitelkockázat és 300 magas kockázatnak minősül.
+A **német.** adatadatkészlet 20 változóból álló sorokat tartalmaz a 1000-es múltbeli pályázók számára. Ez a 20 változó az adatkészlet azon funkcióinak készletét jelöli (a *szolgáltatás vektora*), amely az egyes kreditek azonosítására szolgáló jellemzőket biztosít. Az egyes sorokban egy további oszlop jelenti a kérelmező számított hitelkockázat-kockázatát, amelynek 700 kérelmezője alacsony hitelkockázat és 300 magas kockázatnak minősül.
 
 Az UCI webhely ismerteti az ehhez az adatszolgáltatási vektorhoz tartozó attribútumok leírását. Ezek az adatok a pénzügyi adatokat, a kreditek előzményeit, a foglalkoztatás állapotát és a személyes adatokat tartalmazzák. Minden egyes kérelmező esetében egy bináris minősítés lett megadva, amely azt jelzi, hogy alacsony vagy magas a hitelkockázat. 
 
@@ -119,7 +118,7 @@ Miután az adatok CSV formátumra lettek konvertálva, fel kell töltenie Machin
 
 1. Nyissa meg a Machine Learning Studio (klasszikus) kezdőlapját ( [https://studio.azureml.net](https://studio.azureml.net) ). 
 
-2. Kattintson az ablak bal felső sarkában található menü menüre, majd a ![ ](./media/tutorial-part1-credit-risk/menu.png) **Azure Machine learning** elemre, válassza a **Studio** lehetőséget, és jelentkezzen be.
+2. Kattintson a menüre ![ – Ez a menü ikon – három halmozott vonal.](./media/tutorial-part1-credit-risk/menu.png) az ablak bal felső sarkában kattintson a **Azure Machine learning** elemre, válassza a **Studio** lehetőséget, és jelentkezzen be.
 
 3. Az ablak alján kattintson az **+ új** elemre.
 
@@ -154,7 +153,7 @@ A más típusú adatok kísérletbe való importálásával kapcsolatos további
 Az oktatóanyag következő lépése egy olyan Machine Learning Studio (klasszikus) kísérlet létrehozása, amely a feltöltött adatkészletet használja.  
 
 1. A Studio (klasszikus) területen kattintson az **+ új** elemre az ablak alján.
-1. Válassza a **kísérlet** , majd az "üres kísérlet" lehetőséget. 
+1. Válassza a **kísérlet**, majd az "üres kísérlet" lehetőséget. 
 
     ![Új kísérlet létrehozása](./media/tutorial-part1-credit-risk/create-new-experiment.png)
 
@@ -179,7 +178,7 @@ Az oktatóanyag következő lépése egy olyan Machine Learning Studio (klasszik
 
 Megtekintheti az adatok első 100 sorát és a teljes adathalmazra vonatkozó statisztikai adatokat: kattintson az adatkészlet kimeneti portjára (alul lévő kis kör), majd válassza a **Megjelenítés** lehetőséget.  
 
-Mivel az adatfájl nem tartalmaz oszlopfejléceket, a Studio (klasszikus) általános fejléceket (Col1, Col2 *stb.* ) adott meg. A megfelelő fejlécek nem elengedhetetlenek a modell létrehozásához, de megkönnyítik a kísérlet során felhasználható adatfeldolgozást. Emellett, amikor végül közzéteszi ezt a modellt egy webszolgáltatásban, a fejlécek segítenek azonosítani az oszlopokat a szolgáltatás felhasználójának.  
+Mivel az adatfájl nem tartalmaz oszlopfejléceket, a Studio (klasszikus) általános fejléceket (Col1, Col2 *stb.*) adott meg. A megfelelő fejlécek nem elengedhetetlenek a modell létrehozásához, de megkönnyítik a kísérlet során felhasználható adatfeldolgozást. Emellett, amikor végül közzéteszi ezt a modellt egy webszolgáltatásban, a fejlécek segítenek azonosítani az oszlopokat a szolgáltatás felhasználójának.  
 
 Oszlopfejlécek hozzáadásához használhatja a [metaadatok szerkesztése][edit-metadata] modult.
 
@@ -298,7 +297,7 @@ További információ az R-szkriptek kísérletekben való használatáról: [a 
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következő lépéseket végezte el: 
  

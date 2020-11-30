@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 6be69a1ec20ed859769c944a2f66de1310c09507
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: e7968f4ab01706aa5f8d7d016d93a1b9de2e74b6
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94915352"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325296"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -134,8 +134,7 @@ List<String> scopes = new ArrayList<>(Arrays.asList("voip"));
 CommunicationUserToken response = communicationIdentityClient.issueToken(identity, scopes);
 OffsetDateTime expiresOn = response.getExpiresOn();
 String token = response.getToken();
-String identityId = response.getUser().getId();
-System.out.println("\nIssued a access token with 'voip' scope for identity with ID: " + identityId + ": " + token);
+System.out.println("\nIssued an access token with 'voip' scope that expires at: " + expiresOn + ": " + token);
 ```
 
 A hozzáférési jogkivonatok olyan rövid élettartamú hitelesítő adatok, amelyeket újra kell adni. Ha ezt nem teszi meg, az alkalmazás felhasználói élményének megszakadását okozhatja. A `expiresAt` Response tulajdonság a hozzáférési jogkivonat élettartamát jelzi.
@@ -156,7 +155,7 @@ Bizonyos esetekben explicit módon visszavonhatja a hozzáférési jogkivonatoka
 
 ```java  
 communicationIdentityClient.revokeTokens(identity, OffsetDateTime.now());
-System.out.println("\nRevoked access tokens for the user with ID: " + identity.getId());
+System.out.println("\nSuccessfully revoked all access tokens for identity with ID: " + identity.getId());
 ```
 
 ## <a name="delete-an-identity"></a>Identitás törlése
@@ -165,7 +164,7 @@ Az identitás törlése visszavonja az összes aktív hozzáférési jogkivonato
 
 ```java
 communicationIdentityClient.deleteUser(identity);
-System.out.println("\nSuccessfully deleted the identity with ID: " + identity.getId());
+System.out.println("\nDeleted the identity with ID: " + identity.getId());
 ```
 
 ## <a name="run-the-code"></a>A kód futtatása

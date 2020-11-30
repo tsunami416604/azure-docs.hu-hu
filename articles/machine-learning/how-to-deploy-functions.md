@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: d17967c24fbbb127c1d3eaee5acd5b78c3e3b902
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 901e4d458cc2d77d4e7f13c1782b86c8532ca499
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630345"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327168"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Gépi tanulási modell üzembe helyezése Azure Functions (előzetes verzió)
 
@@ -58,7 +58,7 @@ A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webs
 
 További információ a beléptetési parancsfájlról: [pontozási kód definiálása](./how-to-deploy-and-where.md#define-an-entry-script)
 
-* **Függőségek** , például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
+* **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
 
 Ezek az entitások egy __következtetési konfigurációba__ vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
 
@@ -277,7 +277,7 @@ Miután betöltötte a rendszerképet, és az alkalmazás elérhetővé válik, 
     }
     ```
 
-3. A függvény által létrehozott kimenet megtekintéséhez használja az alábbi parancsot a létrehozott kimeneti fájlok listázásához. Cserélje le `<triggerConnectionString>` a értéket a korábban visszaadott összekapcsolási sztringre. Ebben a példában `output` a a korábban létrehozott kimeneti tároló neve. Ha más nevet használt, cserélje le a következő értéket:
+3. A függvény által létrehozott kimenet megtekintéséhez használja az alábbi parancsot a létrehozott kimeneti fájlok listázásához. Cserélje le `<triggerConnectionString>` a értéket a korábban visszaadott összekapcsolási sztringre. Ebben a példában `output` a a korábban létrehozott kimeneti tároló neve. Ha más nevet használt, cserélje le ezt az értéket:
 
     ```azurecli-interactive
     az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: cafb32e5bd91c6b7f3cfef4641828963e0731797
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 46216fe06e3d3425d5b237cdbb7326eed596945a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496965"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326930"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Áttelepítési Áttekintés: SQL Server SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -61,18 +61,18 @@ Különböző eszközök érhetők el különböző számítási feladatokhoz é
 Tekintse át az általános irányelveket, amelyekkel kiválaszthatja a Azure SQL Database megfelelő telepítési modelljét és szolgáltatási szintjét. Az üzembe helyezés során kiválaszthatja a számítási és tárolási erőforrásokat, majd később is megváltoztathatja őket a  [Azure Portal](../../database/scale-resources.md)  használatával anélkül, hogy állásidőt kellene kihasználnia az alkalmazáshoz.
 
 
-**Üzembe helyezési modellek** : megismerheti az alkalmazás számítási feladatait és a használati mintát, hogy az egyetlen adatbázis vagy egy rugalmas készlet között döntsön. 
+**Üzembe helyezési modellek**: megismerheti az alkalmazás számítási feladatait és a használati mintát, hogy az egyetlen adatbázis vagy egy rugalmas készlet között döntsön. 
 
 - [Egyetlen adatbázis](../../database/single-database-overview.md) egy teljes körűen felügyelt adatbázis, amely a legtöbb modern Felhőbeli alkalmazáshoz és szolgáltatáshoz alkalmas.
 - A [rugalmas készlet](../../database/elastic-pool-overview.md) olyan önálló adatbázisok gyűjteménye, amelyek az erőforrások, például a processzor vagy a memória közös készletével rendelkeznek, és alkalmasak arra, hogy a készletben lévő adatbázisokat kiszámítható használati mintákkal kombinálják, amelyek hatékonyan megoszthatják ugyanazt az erőforrás-készletet.
 
-**Vásárlási modellek** : válasszon a virtuális mag, a DTU vagy a kiszolgáló nélküli vásárlási modell közül. 
+**Vásárlási modellek**: válasszon a virtuális mag, a DTU vagy a kiszolgáló nélküli vásárlási modell közül. 
 
 - A [virtuális mag modell](../../database/service-tiers-vcore.md) segítségével kiválaszthatja a Azure SQL Database virtuális mag számát, így a legegyszerűbb választás a helyszíni SQL Serverból való fordítás során. Ez az egyetlen lehetőség, amely támogatja a licencek megtakarítását a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). 
 - A [DTU modell](../../database/service-tiers-dtu.md) elvonta a mögöttes számítási, memória-és IO-erőforrásokat, hogy a rendszer kevert DTU biztosítson. 
 - A [kiszolgáló nélküli modell](../../database/serverless-tier-overview.md) olyan számítási feladatokhoz készült, amelyeknek automatikus igény szerinti skálázásra van szükségük a használati díjak alapján. A kiszolgáló nélküli számítási rétegek automatikusan szüneteltetik az adatbázisokat az inaktív időszakokban (ahol csak a tárterületet számlázzák), és automatikusan folytatja az adatbázisokat, amikor a tevékenység visszaadja. 
 
-**Szolgáltatási szintek** : választhat három szolgáltatási szintet, amelyek különböző típusú alkalmazásokhoz lettek kialakítva.
+**Szolgáltatási szintek**: választhat három szolgáltatási szintet, amelyek különböző típusú alkalmazásokhoz lettek kialakítva.
 
 - A [általános célú/standard szintű szolgáltatási szint](../../database/service-tier-general-purpose.md) kiegyensúlyozott, költségvetésre épülő megoldást kínál, amely a közepes szintű alkalmazások kiszolgálására alkalmas számítási és tárolási kapacitással rendelkezik, és a tárolási rétegben beépített redundanciával helyreállítható a hibákból. A legtöbb adatbázis-számítási feladathoz lett tervezve. 
 - A [üzletileg kritikus/prémium szolgáltatási szint](../../database/service-tier-business-critical.md) olyan magas szintű alkalmazások számára készült, amelyek nagy tranzakciós sebességet igényelnek, alacsony késésű IO-t és magas fokú rugalmasságot biztosítanak a feladatátvételhez és az olvasási munkaterhelések kiszervezéséhez egyaránt elérhető másodlagos replikákkal.
@@ -183,7 +183,7 @@ Azure SQL Database esetében az egyetlen alkalmazható rendszeradatbázis a [fő
 
 Ügyeljen arra, hogy kihasználhassa a SQL Database által kínált fejlett felhőalapú szolgáltatásokat. Például többé nem kell aggódnia a biztonsági másolatok kezelésével kapcsolatban, mert a szolgáltatás elvégzi Önt. [A megőrzési időtartamon belül bármely időpontra](../../database/recovery-using-backups.md#point-in-time-restore)visszaállíthatja a szolgáltatást. 
 
-A biztonság megerősítése érdekében érdemes lehet [Azure Active Directory hitelesítést](../../database/authentication-aad-overview.md), [naplózást](../../database/auditing-overview.md), [veszélyforrások észlelését](../../database/advanced-data-security.md), [sor szintű biztonságot](/sql/relational-databases/security/row-level-security)és [dinamikus adatmaszkolást](/sql/relational-databases/security/dynamic-data-masking)használni.
+A biztonság megerősítése érdekében érdemes lehet [Azure Active Directory hitelesítést](../../database/authentication-aad-overview.md), [naplózást](../../database/auditing-overview.md), [veszélyforrások észlelését](../../database/azure-defender-for-sql.md), [sor szintű biztonságot](/sql/relational-databases/security/row-level-security)és [dinamikus adatmaszkolást](/sql/relational-databases/security/dynamic-data-masking)használni.
 
 A speciális felügyeleti és biztonsági funkciók mellett a SQL Database olyan speciális eszközöket biztosít, amelyek segítségével [figyelheti és beállíthatja a számítási feladatokat](../../database/monitor-tune-overview.md). A [Azure SQL Analytics (előzetes verzió)](../../../azure-monitor/insights/azure-sql.md) egy fejlett felhőalapú figyelési megoldás, amely az összes adatbázis teljesítményének figyelésére használható Azure SQL Database és több előfizetés között egyetlen nézetben. A Azure SQL Analytics a teljesítménnyel kapcsolatos hibaelhárításhoz beépített intelligenciával rendelkező fő teljesítménymutatókat gyűjti és jeleníti meg.
 
@@ -194,7 +194,7 @@ A speciális felügyeleti és biztonsági funkciók mellett a SQL Database olyan
 
 További segítségért tekintse meg az alábbi, a valós migrációs projektekhez fejlesztett forrásokat.
 
-|Objektum  |Description  |
+|Objektum  |Leírás  |
 |---------|---------|
 |[Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely lehetővé teszi a nagyméretű ingatlan-értékelések felgyorsítását azáltal, hogy automatizált és egységes célzott platformra vonatkozó döntési folyamatot biztosít.|
 |[DBLoader segédprogram](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|A DBLoader felhasználható a tagolt szövegfájlokból származó adatok SQL Serverba való betöltésére. Ez a Windows-konzol segédprogram a SQL Server natív ügyféloldali bulkload felületet használja, amely a SQL Server összes verzióján működik, beleértve a Azure SQL Databaset is.|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0a6b6196888aedfd6aa60c9395ff27611907661a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ef481b73b6dc42bc35252c08ae8d63b9de95b2ba
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413159"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325094"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen típusú lemezek érhetőek el az Azure-ban?
 
@@ -23,7 +23,7 @@ Az Azure Managed Disks jelenleg négy lemez típust kínál, amelyek mindegyike 
 
 Az alábbi táblázat az ultra Disks, a prémium szintű SSD-meghajtók (SSD), a standard SSD és a standard merevlemez-meghajtók (HDD) összehasonlítását ismerteti a felügyelt lemezekhez, amelyek segítségével eldöntheti, hogy mi a használat.
 
-| Részletek | Ultralemez | Prémium SSD | Standard SSD | Standard HDD |
+| Részlet | Ultralemez | Prémium SSD | Standard SSD | Standard HDD |
 | ------ | ---------- | ----------- | ------------ | ------------ |
 |Lemeztípus   |SSD   |SSD   |SSD   |HDD   |
 |Forgatókönyv   |I/o-igényes számítási feladatok, mint például a [SAP HANA](workloads/sap/hana-vm-operations-storage.md), a legfelső szintű adatbázisok (például SQL, Oracle) és az egyéb tranzakció-nagy számítási feladatok.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, kisebb terhelésű vállalati alkalmazások és fejlesztés/tesztelés   |Biztonsági mentés, nem kritikus, ritka hozzáférés   |
@@ -82,7 +82,7 @@ Ha Premium Storage-lemezt épít ki, a standard szintű tárterülettől eltér�
 
 ## <a name="bursting"></a>Tele
 
-A P30-nál kisebb méretű prémium SSD a lemezes adatmennyiséget, a IOPS-t pedig 3 500-ig, a sávszélességük pedig 170 Mbps-ig képes feltörten. A bursás automatizált, és kreditrendszer alapján működik. A kreditek automatikusan halmozódnak, amikor a lemezes forgalom a kiosztott teljesítményű célpont alá esik, és a rendszer automatikusan felhasználja a krediteket, amikor a forgalom a célon kívül esik, a maximális burst korlátig. A maximális burst korlát határozza meg a lemez IOPS & sávszélességét akkor is, ha a rendszer felhasználja a feltört krediteket. A lemezek felskálázása nagyobb toleranciát biztosít az i/o-minták előre nem látható változásaihoz. A legjobb megoldás az operációs rendszer lemezes rendszerindításához és a tüskés forgalommal rendelkező alkalmazásokhoz.    
+A P30-nál kisebb méretű prémium SSD a lemezes adatmennyiséget, a IOPS pedig akár 3 500-ig, akár 170 MB/s-ra növelve. A bursás automatizált, és kreditrendszer alapján működik. A kreditek automatikusan halmozódnak, amikor a lemezes forgalom a kiosztott teljesítményű célpont alá esik, és a rendszer automatikusan felhasználja a krediteket, amikor a forgalom a célon kívül esik, a maximális burst korlátig. A maximális burst korlát határozza meg a lemez IOPS & sávszélességét akkor is, ha a rendszer felhasználja a feltört krediteket. A lemezek felskálázása nagyobb toleranciát biztosít az i/o-minták előre nem látható változásaihoz. A legjobb megoldás az operációs rendszer lemezes rendszerindításához és a tüskés forgalommal rendelkező alkalmazásokhoz.    
 
 A lemezek kitörésének támogatását a rendszer alapértelmezés szerint engedélyezi a megfelelő méretű lemezekre vonatkozó új központi telepítések esetén, és nincs szükség felhasználói beavatkozásra. A megfelelő méretű lemezek meglévő lemezei esetében engedélyezheti a kitörést a két lehetőség közül: válassza le és csatlakoztassa újra a lemezt, vagy állítsa le, majd indítsa újra a csatlakoztatott virtuális gépet. Az összes érintett lemez mérete a teljes burst kredit gyűjtővel kezdődik, ha a lemez egy olyan virtuális géphez van csatlakoztatva, amely legfeljebb 30 percnél hosszabb időt támogat a maximálisan megengedettnél. Ha többet szeretne megtudni az Azure-lemezek kitörésével kapcsolatban, tekintse meg a [prémium SSD burst](linux/disk-bursting.md)című témakört. 
 
@@ -124,15 +124,15 @@ A felügyelt lemezek használatakor az alábbi számlázási szempontokat kell f
 - Kimenő adatforgalom
 - Tranzakciók száma
 
-**Felügyelt lemez mérete** : a felügyelt lemezek számlázása a kiosztott méret alapján történik. Az Azure leképezi a kiosztott méretet (felfelé kerekítve) a legközelebbi felajánlott lemez méretére. A felkínált lemezterület részleteiért tekintse meg az előző táblázatokat. Minden lemez egy támogatott kiosztott lemezre mutat, és ennek megfelelően történik a számlázás. Ha például egy 200 GiB-standard SSD kiépített, az a E15 (256 GiB) lemez méretére vonatkozó ajánlatot képezi le. A kiosztott lemezek számlázása óránként, a tárolási ajánlat havi díja alapján történik. Ha például kiépített egy E10 lemezt, és 20 óra elteltével törölte azt, akkor a E10-ajánlat díja 20 óra. Ez a lemezre írt tényleges adatok mennyiségétől függetlenül.
+**Felügyelt lemez mérete**: a felügyelt lemezek számlázása a kiosztott méret alapján történik. Az Azure leképezi a kiosztott méretet (felfelé kerekítve) a legközelebbi felajánlott lemez méretére. A felkínált lemezterület részleteiért tekintse meg az előző táblázatokat. Minden lemez egy támogatott kiosztott lemezre mutat, és ennek megfelelően történik a számlázás. Ha például egy 200 GiB-standard SSD kiépített, az a E15 (256 GiB) lemez méretére vonatkozó ajánlatot képezi le. A kiosztott lemezek számlázása óránként, a tárolási ajánlat havi díja alapján történik. Ha például kiépített egy E10 lemezt, és 20 óra elteltével törölte azt, akkor a E10-ajánlat díja 20 óra. Ez a lemezre írt tényleges adatok mennyiségétől függetlenül.
 
-**Pillanatképek** : a pillanatképek számlázása a felhasznált méret alapján történik. Ha például létrehoz egy pillanatképet egy felügyelt lemezről, amely 64 GiB kiosztott kapacitással rendelkezik, és a tényleges felhasznált adatok mérete 10 GiB, a pillanatkép számlázása csak a 10 GiB felhasznált adatméretre történik.
+**Pillanatképek**: a pillanatképek számlázása a felhasznált méret alapján történik. Ha például létrehoz egy pillanatképet egy felügyelt lemezről, amely 64 GiB kiosztott kapacitással rendelkezik, és a tényleges felhasznált adatok mérete 10 GiB, a pillanatkép számlázása csak a 10 GiB felhasznált adatméretre történik.
 
 A pillanatképekkel kapcsolatos további információkért tekintse meg a [felügyelt lemez – áttekintés](managed-disks-overview.md)című témakör a pillanatképek című szakaszát.
 
 **Kimenő** adatforgalom: a [kimenő](https://azure.microsoft.com/pricing/details/bandwidth/) adatforgalom (az Azure-adatközpontok által kiváltott adatok) a sávszélesség-használatért kell fizetnie.
 
-**Tranzakciók** : a standard szintű felügyelt lemezeken végrehajtott tranzakciók száma. A standard SSD-k esetében minden I/O-művelet a 256 KiB-nál kisebb vagy azzal egyenlő, egyetlen I/O-műveletnek számít. A 256 KiB-nál nagyobb teljesítményű i/O-műveletek a 256 KiB-os méretnél több I/O-műveletnek számítanak. A standard HDD-k esetében minden egyes IO-művelet egyetlen tranzakciónak tekintendő, az I/O-mérettől függetlenül.
+**Tranzakciók**: a standard szintű felügyelt lemezeken végrehajtott tranzakciók száma. A standard SSD-k esetében minden I/O-művelet a 256 KiB-nál kisebb vagy azzal egyenlő, egyetlen I/O-műveletnek számít. A 256 KiB-nál nagyobb teljesítményű i/O-műveletek a 256 KiB-os méretnél több I/O-műveletnek számítanak. A standard HDD-k esetében minden egyes IO-művelet egyetlen tranzakciónak tekintendő, az I/O-mérettől függetlenül.
 
 A Managed Disks díjszabásáról, beleértve a tranzakciós költségeket is, tekintse meg a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks).
 

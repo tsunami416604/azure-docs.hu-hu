@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: be063105db2384f566e7c94d9f2e7a2bd808b15f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c394fe2aa7639d32e5d79bcb22a01151f7666f5b
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790134"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324618"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -67,7 +67,7 @@ SQL Server on Linux konfigurálásakor az adatbázismotor-csomagot, majd a köve
 
 * [Az Azure Virtual Machines áttekintése](../../../virtual-machines/linux/overview.md)
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
 * [A Microsoft Azure Storage bemutatása](../../../storage/common/storage-introduction.md)
 
@@ -75,14 +75,14 @@ SQL Server on Linux konfigurálásakor az adatbázismotor-csomagot, majd a köve
 
 * [Virtual Network áttekintése](../../../virtual-network/virtual-networks-overview.md)
 * [IP-címek az Azure-ban](../../../virtual-network/public-ip-addresses.md)
-* [Teljes tartománynév létrehozása az Azure Portalon](../../../virtual-machines/windows/portal-create-fqdn.md)
+* [Teljes tartománynév létrehozása az Azure Portalon](../../../virtual-machines/create-fqdn.md)
 
 ### <a name="sql"></a>SQL
 
 * [SQL Server on Linux dokumentáció](/sql/linux)
 * [Az Azure SQL Database összehasonlítása](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedés a SQL Server on Linux Virtual Machines szolgáltatással:
 

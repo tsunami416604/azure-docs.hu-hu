@@ -11,12 +11,12 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/15/2020
-ms.openlocfilehash: 262e15754ba481ee37b6af9783e5a3bc82d9450c
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ff4e6e0451b57046fb8f07f5a1051235e1f6d0f5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556352"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325723"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server dokumentációjának változásai Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -96,7 +96,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 | **Megnevezett példányok támogatása** | Mostantól a [SQL Server IaaS bővítményt](sql-server-iaas-agent-extension-automate-management.md#installation) megnevezett példánnyal is használhatja, ha az alapértelmezett példány eltávolítása megfelelő volt. | 
 | **Portál továbbfejlesztése** | A SQL Server VM üzembe helyezésének Azure Portali élményét a használhatóság javítása érdekében kialakítjuk. További információkért tekintse meg [a rövid útmutatót, valamint](sql-vm-create-portal-quickstart.md) a SQL Server VM üzembe helyezésének részletes [leírását](create-sql-vm-portal.md) .|
 | **Portál fejlesztése** | Mostantól lehetőség van egy SQL Server VM licencelési modelljének módosítására, ha a saját licencét a [Azure Portal](licensing-model-azure-hybrid-benefit-ahb-change.md#change-license-model)használatával szeretné felvenni.|
-| **A rendelkezésre állási csoport központi telepítésének egyszerűsítése az Azure CLI-n keresztüli SQL Server VM** | Mostantól minden eddiginél könnyebben üzembe helyezhet egy rendelkezésre állási csoportot az Azure-SQL Server VM. Az [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) használatával létrehozhatja a Windows feladatátvevő fürtöt, a belső terheléselosztó és a rendelkezésre állási csoport figyelőit a parancssorból. További információ: az Azure [CLI használata az Always On rendelkezésre állási csoport konfigurálásához SQL Server Azure-beli virtuális gépen](availability-group-az-cli-configure.md). | 
+| **A rendelkezésre állási csoport központi telepítésének egyszerűsítése az Azure CLI-n keresztüli SQL Server VM** | Mostantól minden eddiginél könnyebben üzembe helyezhet egy rendelkezésre állási csoportot az Azure-SQL Server VM. Az [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) használatával létrehozhatja a Windows feladatátvevő fürtöt, a belső terheléselosztó és a rendelkezésre állási csoport figyelőit a parancssorból. További információ: az Azure [CLI használata az Always On rendelkezésre állási csoport konfigurálásához SQL Server Azure-beli virtuális gépen](./availability-group-az-commandline-configure.md). | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2018"></a>2018 
@@ -112,7 +112,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 ## <a name="additional-resources"></a>További források
 
-**Windows rendszerű virtuális gépek** :
+**Windows rendszerű virtuális gépek**:
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [SQL Server kiépítése Windows rendszerű virtuális gépen](create-sql-vm-portal.md)
@@ -121,7 +121,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 * [Az Azure-beli SQL Server teljesítményének bevált eljárásai Virtual Machines](performance-guidelines-best-practices.md)
 * [Alkalmazási minták és fejlesztési stratégiák az Azure-beli SQL Serverhoz Virtual Machines](application-patterns-development-strategies.md)
 
-**Linux rendszerű virtuális gépek** :
+**Linux rendszerű virtuális gépek**:
 
 * [Linux rendszerű virtuális gépen lévő SQL Server áttekintése](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [SQL Server kiépítése Linux rendszerű virtuális gépen](../linux/sql-vm-create-portal-quickstart.md)

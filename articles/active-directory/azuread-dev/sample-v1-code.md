@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 484a44a7a9840409e3f5770c743e5cd62e0cef66
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 824ae8d39d934ebc58fc75185e36f5faa11109a9
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910304"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325366"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kód mintái (v 1.0 végpont)
 
@@ -69,7 +69,7 @@ Platform | Sample |
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Microsoft Graph vagy webes API-t hívó asztali és mobil nyilvános ügyfélalkalmazások
 
-A következő minták olyan nyilvános ügyfélalkalmazások (iskolapad/pmobile-alkalmazások) szemléltetését mutatják be, amelyek a felhasználó nevében férnek hozzá a Microsoft Graphhoz vagy egy webes API-hoz. Az eszközöktől és a platformoktól függően az alkalmazások különböző módokon jelentkezhetnek be a felhasználókba (folyamatok/támogatások):
+A következő minták olyan nyilvános ügyfélalkalmazások (asztali/mobil alkalmazások) szemléltetését mutatják be, amelyek a felhasználó nevében férnek hozzá a Microsoft Graphhoz vagy egy webes API-hoz. Az eszközöktől és a platformoktól függően az alkalmazások különböző módokon jelentkezhetnek be a felhasználókba (folyamatok/támogatások):
 
 - Interaktív módon
 - Csendes (integrált Windows-hitelesítéssel Windows rendszeren vagy felhasználónév/jelszó)
@@ -102,7 +102,7 @@ ASP.NET-webalkalmazás  | ![Ez a rendszerkép a .NET-keretrendszer emblémáját
 
 Az alábbi példa bemutatja, hogyan lehet védelemmel ellátni egy node.js webes API-t az Azure AD-vel.
 
-A cikk előző részeiben más mintákat is megtalálhat, amelyek egy ASP.NET vagy ASP.NET Core **webes API** -t **hívó** ügyfélalkalmazás bemutatnak. Ezek a minták még nem szerepelnek ebben a szakaszban, de a fenti táblázatok utolsó oszlopában is megtalálhatók.
+A cikk előző részeiben más mintákat is megtalálhat, amelyek egy ASP.NET vagy ASP.NET Core **webes API**-t **hívó** ügyfélalkalmazás bemutatnak. Ezek a minták még nem szerepelnek ebben a szakaszban, de a fenti táblázatok utolsó oszlopában is megtalálhatók.
 
 | Platform | Sample |
 |--------|-------------------|

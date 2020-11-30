@@ -3,12 +3,12 @@ title: A GitHub Enterprise Server beállítása az Azure VMware-megoldás privá
 description: Ismerje meg, hogyan állíthatja be a GitHub Enterprise Servert az Azure VMware-megoldás privát felhőben.
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: afce212416c7c12631a7f8d388dc991ed957736f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 00b3acf721dd7f7a1a15bcd0d24eccf3ca27ff58
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949309"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326913"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>A GitHub Enterprise Server beállítása az Azure VMware-megoldás privát felhőben
 
@@ -24,7 +24,13 @@ Töltse le [a GitHub Enterprise Server jelenlegi kiadását](https://enterprise.
 
 :::image type="content" source="media/github-enterprise-server/github-options.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::  
 
-:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását." (műveletek) |
+:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="Telepítse a petesejtek sablont.":::  
+
+Adja meg az új virtuális gép felismerhető nevét, például GitHubEnterpriseServer. Nem kell megadnia a kiadás részleteit a virtuális gép nevében, mivel ezek az adatok elavultak lesznek a példány frissítésekor. Válassza ki az összes alapértelmezett értéket (ezeket a részleteket röviden szerkesztjük), és várjon, amíg a rendszer importálja a PETESEJTeket.
+
+Az importálás után [állítsa be a hardver konfigurációját](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#creating-the-github-enterprise-server-instance) az igényeinek megfelelően. A példánkban a következő konfigurációra van szükségünk.
+
+| Erőforrás | Normál beállítás | Standard Setup + "bétaverziós funkciók" (műveletek) |
 | --- | --- | --- |
 | vCPU-k | 4 | 8 |
 | Memória | 32 GB | 61 GB |
@@ -35,11 +41,11 @@ Azonban az igényei eltérőek lehetnek. Tekintse át a hardverrel kapcsolatos s
 
 ## <a name="configuring-the-github-enterprise-server-instance"></a>A GitHub Enterprise Server-példány konfigurálása
 
-:::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::  
+:::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="Telepítse a GitHub Enterprise-t.":::  
 
 Miután az újonnan kiépített virtuális gép (VM) be van kapcsolva, [konfigurálja a böngészőn keresztül](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#configuring-the-github-enterprise-server-instance). A licencfájl feltöltése és a felügyeleti konzol jelszavának beállítása szükséges. Ügyeljen rá, hogy biztonságos helyen jegyezze fel ezt a jelszót.
 
-:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::    
+:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="A rendszergazdai rendszerhéj elérése SSH-n keresztül.":::    
 
 Javasoljuk, hogy legalább a következő lépéseket tegye:
 
@@ -47,11 +53,11 @@ Javasoljuk, hogy legalább a következő lépéseket tegye:
 
 2. Konfigurálja a TLS-t a [példányon](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) , hogy egy megbízható hitelesítésszolgáltató által aláírt tanúsítványt használjon.
 
-:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="A példány konfigurálása.":::
 
 Alkalmazza a beállításokat.  A példány újraindítása közben folytathatja a következő lépéssel a **GitHub-műveletek blob Storage konfigurálását**.
 
-:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="Hozzon létre egy rendszergazdai fiókot.":::
 
 A példány újraindítása után hozzon létre egy új rendszergazdai fiókot a példányon. Ügyeljen arra, hogy jegyezze fel a felhasználó jelszavát is.
 
@@ -74,9 +80,9 @@ Ha a példányát éles használatra szeretné megerősíteni, a következő opc
 > [!NOTE]
 > A GitHub-műveletek [jelenleg korlátozott bétaverzióként érhetők el a GitHub Enterprise Server 2,22 kiadásában](https://docs.github.com/en/enterprise/admin/github-actions).
 
-A GitHub-műveleteknek a GitHub Enterprise Serveren való engedélyezéséhez külső blob Storage szükséges (jelenleg "bétaverzió" szolgáltatásként érhető el). Ezt a külső BLOB-tárolót az összetevők és naplók tárolására szolgáló műveletek használják. A GitHub Enterprise Server műveletei az [Azure Blob Storage tárolási szolgáltatóként](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (és másokkal) is támogatják. Ezért egy új Azure Storage-fiókot fogunk kiépíteni a [Storage-fiók](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts) BlobStorage:
+A GitHub-műveleteknek a GitHub Enterprise Serveren való engedélyezéséhez külső blob Storage szükséges (jelenleg "bétaverzió" szolgáltatásként érhető el). Ezt a külső BLOB-tárolót az összetevők és naplók tárolására szolgáló műveletek használják. A GitHub Enterprise Server műveletei az [Azure Blob Storage tárolási szolgáltatóként](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (és másokkal) is támogatják. Ezért egy új Azure Storage-fiókot fogunk kiépíteni a [Storage-fiók](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts) BlobStorage:
 
-:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="Azure Blob Storage-fiók kiépítése.":::
 
 Miután az új BlobStorage-erőforrás üzembe helyezése befejeződött, másolja és jegyezze fel a kapcsolati karakterláncot (az elérési kulcsok alatt érhető el). Rövidesen szükség lesz erre a karakterláncra.
 
@@ -91,9 +97,9 @@ Most hozzon létre valahol a GitHub-műveletek futtatásához. ismét az Azure V
 
 Először is hozzon létre egy új virtuális gépet a fürtön. A virtuális gépet az [Ubuntu Server legújabb kiadására](http://releases.ubuntu.com/20.04.1/)alapozjuk.
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="Hozzon létre egy új virtuális gépet.":::
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="Hozzon létre egy új virtuális gépet 2. lépéssel.":::
 
 Miután létrehozta a virtuális gépet, kapcsolja be és csatlakozzon SSH-n keresztül.
 
@@ -152,7 +158,7 @@ Következő Futtatás:
 
 A következő kimenetnek kell megjelennie: "Blob Storage állapota Kifogástalan".
 
-Most, hogy a GitHub-műveletek konfigurálva vannak, engedélyezze azt a felhasználók számára. Jelentkezzen be a GitHub Enterprise Server-példányba rendszergazdaként, és válassza a ![ rakéta ikont.](media/github-enterprise-server/rocket-icon.png) a lap jobb felső sarkában. A bal oldali oldalsávon válassza a **vállalati áttekintés**, majd a **házirendek**, **műveletek**és a **műveletek engedélyezése az összes szervezet számára**lehetőséget.
+Most, hogy a GitHub-műveletek konfigurálva vannak, engedélyezze azt a felhasználók számára. Jelentkezzen be a GitHub Enterprise Server-példányba rendszergazdaként, és válassza a ![ rakéta ikont.](media/github-enterprise-server/rocket-icon.png) a lap jobb felső sarkában. A bal oldali oldalsávon válassza a **vállalati áttekintés**, majd a **házirendek**, **műveletek** és a **műveletek engedélyezése az összes szervezet számára** lehetőséget.
 
 Ezután konfigurálja a futót a saját üzemeltetésű **futók** lapról. Válassza a **Hozzáadás új** , majd az **új Runner** lehetőséget a legördülő menüből.
 
@@ -162,15 +168,15 @@ A következő oldalon megtekintheti a futtatandó parancsok készletét, ezért 
 
 Másolja a `config.sh` parancsot, és illessze be egy munkamenetbe a műveletek futóján (korábban létrehozva).
 
-:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="Futó műveletek.":::
 
 Futtassa a run.sh parancsot a Runner *futtatásához* :
 
-:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="Futtassa a futót.":::
 
 Annak érdekében, hogy ez a Runner elérhető legyen a vállalata szervezetei számára, szerkessze a szervezeti hozzáférését:
 
-:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="A Runner-hozzáférés szerkesztése.":::
 
 Itt minden szervezet számára elérhetővé tesszük, de a hozzáférést a szervezetek egy részhalmazához, vagy akár adott adattárakhoz is korlátozhatja.
 
@@ -182,7 +188,7 @@ A GitHub-kapcsolódás engedélyezéséhez kövesse az [automatikus hozzáféré
 
 Ha engedélyezve van a GitHub-kapcsolat, válassza ki azt a **kiszolgálót, amely a GitHub.com műveleteit használja a munkafolyamat-futtatások** beállításban.
 
-:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="A GitHub.com műveleteinek használatának engedélyezése a munkafolyamat-futtatásokban.":::
 
 ## <a name="setting-up-and-running-your-first-workflow"></a>Az első munkafolyamat beállítása és futtatása
 
@@ -190,28 +196,30 @@ Most, hogy a műveletek és a GitHub-kapcsolat be van állítva, a jó használa
 
 Ebben az alapszintű munkafolyamatban `octokit/request-action` az API-val csak a githubon keresztül nyitunk meg egy problémát.
 
-:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="Példa munkafolyamat.":::
 
 >[!NOTE]
 >A GitHub.com futtatja a műveletet, de amikor a GitHub Enterprise Serveren fut, *automatikusan* a GitHub Enterprise Server API-t használja.
 
 Ha úgy döntött, hogy nem engedélyezi a GitHub-kapcsolatot, a következő alternatív munkafolyamatot használhatja.
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="Alternatív példa a munkafolyamatra.":::
 
 Nyisson meg egy tárházat a példányon, és adja hozzá a fenti munkafolyamatot a következőként: `.github/workflows/hello-world.yml`
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="Egy másik példa a munkafolyamatra.":::
 
 A tárház **műveletek** lapján várjon, amíg végre nem hajtja a munkafolyamatot.
 
-:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="Példa a munkafolyamat végrehajtására.":::
 
 Azt is megnézheti, hogy a futó a feldolgozás alatt áll.
 
-:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását." címet kapja.
+:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="A futó által feldolgozott munkafolyamat.":::
 
-:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="Válassza a GitHub helyszíni vagy Felhőbeli futtatását.":::
+Ha minden sikeresen lefutott, megjelenik egy új probléma a tárházban, amely a "Helló világ" címet kapja.
+
+:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="Példa a tárházban.":::
 
 Gratulálunk! Most fejezte be az első műveletek munkafolyamatát a GitHub Enterprise Serveren, amely az Azure VMware-megoldás privát felhőben fut.
 

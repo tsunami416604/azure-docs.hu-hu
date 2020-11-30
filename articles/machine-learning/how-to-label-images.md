@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1f4d0d5c2d5442d14d68922c4d0c27b45b2b841e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984447"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324720"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben 
 
@@ -119,7 +119,7 @@ Meglévő határolókeret címkéje nem módosítható. Ha címke-hozzárendelé
 
 Alapértelmezés szerint szerkesztheti a meglévő határoló mezőket. A **zárolás/zárolás feloldása** eszköz ![ zárolási/feloldási régiói eszköz ](./media/how-to-label-images/lock-bounding-boxes-tool.png) vagy az "L" a viselkedést is bekapcsolja. Ha a régiók zárolva vannak, akkor csak egy új határolókeret alakzatát vagy helyét módosíthatja.
 
-A meglévő határolókeret módosításához használja a **régiók manipulációs** eszköz ![ régiók manipuláció eszközét ](./media/how-to-label-images/regions-tool.png) vagy az "M" lehetőséget. Húzza az éleket vagy a sarkokat az alakzat módosításához. A teljes határolókeret húzásához kattintson a belsejére. Ha nem tudja szerkeszteni a régiót, valószínűleg a **zárolási/zárolási régiók** eszközt is kikapcsolta.
+A **régiók manipulációs** eszközének használata: a ![ régiók manipulációs eszköz ikonja – négy nyíl a középpontból, felfelé, jobbra, lefelé és balra haladva.](./media/how-to-label-images/regions-tool.png) (vagy "M") egy meglévő határolókeret módosításához. Húzza az éleket vagy a sarkokat az alakzat módosításához. A teljes határolókeret húzásához kattintson a belsejére. Ha nem tudja szerkeszteni a régiót, valószínűleg a **zárolási/zárolási régiók** eszközt is kikapcsolta.
 
 A **sablon alapú Box** Tool template Box ![ eszköz ](./media/how-to-label-images/template-box-tool.png) vagy a "T" használatával több, azonos méretű határolókeret hozható létre. Ha a rendszerkép nem rendelkezik határoló mezőkkel, és aktiválja a sablon alapú mezőket, az eszköz 50-by-50-pixeles mezőket hoz létre. Ha létrehoz egy határoló mezőt, és aktiválja a sablon alapú mezőket, minden új határoló mező a létrehozott utolsó mező mérete lesz. A sablon alapú mezők az elhelyezés után átméretezhetők. A sablon alapú mezők átméretezése csak az adott mezőt méretezi át.
 
@@ -143,7 +143,7 @@ Ha módosítani szeretné egy sokszög címkéjét, válassza a **régió áthel
 
 Szerkesztheti a meglévő sokszögeket is. A **régiók zárolása/zárolásának feloldása** eszköz ![ a zárolási/feloldási régiók eszközzel ](./media/how-to-label-images/lock-bounding-boxes-tool.png) vagy az "L" kapcsolóval kapcsolja be ezt a viselkedést. Ha a régiók zárolva vannak, csak egy új sokszög alakját vagy helyét lehet megváltoztatni.
 
-A sokszög **hozzáadása vagy eltávolítása** eszközzel sokszög- ![ pontok hozzáadása vagy eltávolítása eszköz ](./media/how-to-label-images/add-remove-points-tool.png) vagy "U" használatával módosíthatja a meglévő sokszögeket. Kattintson a sokszögre egy pont hozzáadásához vagy eltávolításához. Ha nem tudja szerkeszteni a régiót, valószínűleg a **zárolási/zárolási régiók** eszközt is kikapcsolta.
+A **sokszög hozzáadása vagy eltávolítása** eszköz használatával ![ Ez a sokszög-pontok hozzáadása vagy eltávolítása eszköz ikonja.](./media/how-to-label-images/add-remove-points-tool.png) vagy "U" egy meglévő sokszög módosítására. Kattintson a sokszögre egy pont hozzáadásához vagy eltávolításához. Ha nem tudja szerkeszteni a régiót, valószínűleg a **zárolási/zárolási régiók** eszközt is kikapcsolta.
 
 Az aktuális rendszerkép *összes* sokszögének törléséhez válassza a **minden régió törlése** eszköz ![ összes régió törlése eszközét ](./media/how-to-label-images/delete-regions-tool.png) .
 
@@ -155,7 +155,7 @@ Ha címkézett adatok oldalát küldi el, az Azure új címkézetlen adatok hozz
 
 Ha végzett a címkézéssel, válassza ki a nevét a címkézési portál jobb felső sarkában, majd válassza a **kijelentkezés lehetőséget.** Ha nem jelentkezik ki, az Azure-ban az idő kimarad, és az adatait egy másik Labeler rendeli hozzá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg a [képbesorolási modellek betanítását az Azure-ban](./tutorial-train-models-with-aml.md)
 

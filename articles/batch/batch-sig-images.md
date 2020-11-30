@@ -4,12 +4,12 @@ description: Az egyéni képkészletek hatékony módszer a számítási csomóp
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: c24da435540f62a793620fe6005d176ce10c7b05
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: eb21a9e0d355274142e34fbb5c90a4d293c88ef1
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917783"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327304"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Egyéni rendszerkép-készlet létrehozása a megosztott rendszerkép-katalógus használatával
 
@@ -58,7 +58,7 @@ Az Azure-ban létrehozhat egy megosztott rendszerképet egy felügyelt rendszerk
 - A felhőbe feltöltött, általánosított helyszíni VHD
 
 > [!NOTE]
-> A Batch jelenleg csak az általánosított megosztott rendszerképeket támogatja. Jelenleg nem hozhat létre egyéni rendszerkép-készletet egy speciális megosztott rendszerképből.
+> A Batch csak általánosított megosztott rendszerképeket támogat; egy speciális megosztott rendszerkép nem használható készlet létrehozásához.
 
 A következő lépések bemutatják, hogyan készíthet elő egy virtuális gépet, pillanatfelvételt készíthet, és létrehozhat egy rendszerképet a pillanatképből.
 
@@ -223,7 +223,7 @@ Ha egy megosztott rendszerkép használatával több száz vagy több ezer virtu
 
 - **Átméretezési időtúllépés.** Ha a készlet rögzített számú csomópontot tartalmaz (ha nem rendelkezik az autoskálázással), növelje a `resizeTimeout` készlet tulajdonságát a készlet méretétől függően. Minden 1000 virtuális gép esetében az ajánlott átméretezési időkorlát legalább 15 percet vesz igénybe. Például egy 2000 virtuális géppel rendelkező készlet ajánlott átméretezési időtúllépése legalább 30 percet vesz igénybe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Batch részletes áttekintését lásd: [Batch szolgáltatás munkafolyamata és erőforrásai](batch-service-workflow-features.md).
 - Ismerje meg a [megosztott képtárat](../virtual-machines/windows/shared-image-galleries.md).

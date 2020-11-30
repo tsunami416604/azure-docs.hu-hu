@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 59eae5303d9eca48fa4cec30fe622faf19ffba1f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8572a73586b01967c8aef7f6c4947b5ce96146b4
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961889"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324856"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Oktatóanyag: rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli SQL Serveron Virtual Machines
 
@@ -124,7 +124,7 @@ Az új virtuális hálózat egy **rendszergazda** nevű alhálózattal rendelkez
 
 5. Második alhálózat létrehozásához válassza a **+ alhálózat** lehetőséget.
 6. Az **alhálózat hozzáadása** területen konfigurálja az alhálózatot úgy, hogy beírja a **sqlsubnet** **nevet**. Az Azure automatikusan megadja a **címtartomány érvényes tartományát**. Győződjön meg arról, hogy ez a címtartomány legalább 10 címmel rendelkezik. Éles környezetben több címet is igényelhet.
-7. Válassza az **OK** lehetőséget.
+7. Kattintson az **OK** gombra.
 
     ![Alhálózat konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
 
@@ -144,7 +144,7 @@ A következő táblázat összefoglalja a hálózati konfiguráció beállítás
 
 ## <a name="create-availability-sets"></a>Rendelkezésre állási csoportok létrehozása
 
-A virtuális gépek létrehozása előtt létre kell hoznia a rendelkezésre állási csoportokat. A rendelkezésre állási csoportok csökkentik a tervezett vagy nem tervezett karbantartási események leállását. Az Azure-beli rendelkezésre állási csoport az erőforrások olyan logikai csoportja, amelyet az Azure fizikai tartalék tartományokon és frissítési tartományokon helyez el. A tartalék tartomány biztosítja, hogy a rendelkezésre állási csoport tagjai külön energiaellátási és hálózati erőforrásokkal rendelkezzenek. A frissítési tartomány biztosítja, hogy a rendelkezésre állási csoport tagjai ne álljanak le egyszerre karbantartásra. További információk: [Virtuális gépek rendelkezésre állásának kezelése](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
+A virtuális gépek létrehozása előtt létre kell hoznia a rendelkezésre állási csoportokat. A rendelkezésre állási csoportok csökkentik a tervezett vagy nem tervezett karbantartási események leállását. Az Azure-beli rendelkezésre állási csoport az erőforrások olyan logikai csoportja, amelyet az Azure fizikai tartalék tartományokon és frissítési tartományokon helyez el. A tartalék tartomány biztosítja, hogy a rendelkezésre állási csoport tagjai külön energiaellátási és hálózati erőforrásokkal rendelkezzenek. A frissítési tartomány biztosítja, hogy a rendelkezésre állási csoport tagjai ne álljanak le egyszerre karbantartásra. További információk: [Virtuális gépek rendelkezésre állásának kezelése](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Két rendelkezésre állási csoportra van szüksége. Az egyik a tartományvezérlők számára. A második a SQL Server virtuális gépek esetében.
 
@@ -421,7 +421,7 @@ Most már csatlakoztathatja a virtuális gépeket a **Corp.contoso.com**-hez. Ha
 2. A **Kiszolgálókezelőben** válassza a **helyi kiszolgáló** lehetőséget.
 3. Válassza ki a **munkacsoport** hivatkozást.
 4. A **számítógép neve** szakaszban válassza a **módosítás** lehetőséget.
-5. Jelölje be a **tartomány** jelölőnégyzetet, és írja be a **Corp.contoso.com** szöveget a szövegmezőbe. Válassza az **OK** lehetőséget.
+5. Jelölje be a **tartomány** jelölőnégyzetet, és írja be a **Corp.contoso.com** szöveget a szövegmezőbe. Kattintson az **OK** gombra.
 6. A **Windows biztonsági** előugró ablakban határozza meg az alapértelmezett tartományi rendszergazdai fiók (**CORP\DomainAdmin**) és a jelszó (**contoso! 0000**) hitelesítő adatait.
 7. Amikor megjelenik az "üdvözli a corp.contoso.com tartomány" üzenet, kattintson az **OK gombra**.
 8. Válassza a **Bezárás** lehetőséget, majd az előugró ablakban válassza az **Újraindítás most** lehetőséget.
@@ -471,7 +471,7 @@ A rendelkezésre állási csoport konfigurálásához használja a telepítési 
 
 1. A bejelentkezést úgy állítsa be, hogy a sysadmin ( **rendszergazda** ) rögzített kiszolgálói szerepkör tagja legyen.
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 Ismételje meg a fenti lépéseket a másik SQL Server VM.
 
@@ -570,6 +570,6 @@ A portok megnyitásának módszere a használt tűzfal megoldástól függ. A k�
 Ismételje meg ezeket a lépéseket a második SQL Server VM.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [SQL Server always on rendelkezésre állási csoport létrehozása az Azure-ban Virtual Machines](availability-group-manually-configure-tutorial.md)

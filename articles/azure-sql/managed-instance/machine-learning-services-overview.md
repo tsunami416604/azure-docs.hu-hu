@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: c5392c822c42c2e0ee3f6ce9edffc6229d572165
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c805bacbd4a2219fb79168ad6426efd8b0a390df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782416"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324516"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services az Azure SQL felügyelt példányában (előzetes verzió)
 
@@ -58,7 +58,7 @@ Ha szeretne csatlakozni az előzetes verzióhoz, és elfogadja ezeket a feltéte
 
 1. Új jegy létrehozásához a **Súgó + támogatás** lapon kattintson az **új támogatási kérelem** elemre.
 
-1. Válassza ki a következő beállításokat:
+1. Válassza az alábbi lehetőségeket:
    - Probléma típusa – **technikai**
    - Előfizetés – *válassza ki az előfizetését*
    - Szolgáltatás – **SQL felügyelt példány**
@@ -67,9 +67,9 @@ Ha szeretne csatlakozni az előzetes verzióhoz, és elfogadja ezeket a feltéte
    - Probléma típusa – **Machine learning Services a felügyelt SQL-példányhoz (előzetes verzió)**
    - Probléma altípusa – **egyéb probléma vagy "How to" kérdések**
 
-1. Kattintson a **Tovább gombra: megoldások** .
+1. Kattintson a **Tovább gombra: megoldások**.
 
-1. Olvassa el az előzetes verzióra vonatkozó információkat, majd kattintson a **Tovább gombra: részletek** .
+1. Olvassa el az előzetes verzióra vonatkozó információkat, majd kattintson a **Tovább gombra: részletek**.
 
 1. Ezen az oldalon:
    - Ha **szeretne regisztrálni az előzetes** verzióra, válassza az **Igen** lehetőséget. 
@@ -82,9 +82,9 @@ Miután regisztrált a programban, a Microsoft belépteti Önt a nyilvános elő
 
 A felügyelt SQL-példányokban a Machine Learning Services használata nem javasolt éles számítási feladatokhoz a nyilvános előzetes verzióban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg [SQL Server Machine learning Services főbb különbségeit](machine-learning-services-differences.md).
-- Ha szeretné megtudni, hogyan használható a Python a Machine Learning Servicesban, tekintse meg a [Python-parancsfájlok futtatása](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)című témakört.
-- Az R-Machine Learning Services használatának megismeréséhez tekintse meg az [r-parancsfájlok futtatása](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)című témakört.
+- Ha szeretné megtudni, hogyan használható a Python a Machine Learning Servicesban, tekintse meg a [Python-parancsfájlok futtatása](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15)című témakört.
+- Az R-Machine Learning Services használatának megismeréséhez tekintse meg az [r-parancsfájlok futtatása](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15)című témakört.
 - A más SQL-platformokon futó gépi tanulásról további információt az [SQL Machine learning dokumentációjában](/sql/machine-learning/)talál.

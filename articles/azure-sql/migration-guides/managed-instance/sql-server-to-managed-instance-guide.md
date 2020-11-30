@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5c20fbbe25b51160f42f233d30c39ccaec0f5cac
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5d5404537ad107a54bd32110727e5a7d0f74ebea
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026058"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326896"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Áttelepítési útmutató: SQL Server a felügyelt SQL-példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ Azt is megteheti, hogy a [Microsoft Assessment and Planning Toolkit (a "Map To
 
 További információ a felderítési fázishoz használható eszközökről: az [adatáttelepítési forgatókönyvekhez elérhető szolgáltatások és eszközök](../../../dms/dms-tools-matrix.md). 
 
-### <a name="assess"></a>Kiértékelés 
+### <a name="assess"></a>Értékelés 
 
 Az adatforrások felderítése után mérje fel azokat a helyszíni SQL Server-példányokat, amelyek áttelepíthetők az Azure SQL felügyelt példányaira az áttelepítési blokkolók vagy kompatibilitási problémák azonosításához. 
 
@@ -99,10 +99,10 @@ Ha össze kell hasonlítani a számítási feladatok teljesítményét egy SQL f
 
 ### <a name="create-sql-managed-instance"></a>Felügyelt SQL-példány létrehozása 
 
-A felderítési és felmérési fázisban található információk alapján hozzon létre egy megfelelő méretű SQL felügyelt példányt. Ezt a [Azure Portal](../../managed-instance/instance-create-quickstart.md), a [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)vagy egy [Azure Resource Manager (ARM) sablon](/azure/azure-sql/managed-instance/create-template-quickstart)használatával teheti meg. 
+A felderítési és felmérési fázisban található információk alapján hozzon létre egy megfelelő méretű SQL felügyelt példányt. Ezt a [Azure Portal](../../managed-instance/instance-create-quickstart.md), a [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)vagy egy [Azure Resource Manager (ARM) sablon](../../managed-instance/create-template-quickstart.md)használatával teheti meg. 
 
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrálás
 
 Az áttelepítés előtti fázishoz kapcsolódó feladatok elvégzése után készen áll a séma és az adatok áttelepítésére. 
 
@@ -124,7 +124,7 @@ Az áttelepítés a DMS használatával történő végrehajtásához kövesse a
 1. Az adatbázis visszaállítása után válassza a **Start átváltás** elemet. Az áttelepítési folyamat átmásolja a farok-napló biztonsági mentését, miután elérhetővé tette az SMB hálózati megosztásban, és visszaállítja azt a célhelyen. 
 1. Állítsa le az összes bejövő forgalmat a forrás-adatbázisba, és frissítse a kapcsolódási karakterláncot az új Azure SQL felügyelt példány-adatbázisra. 
 
-Az áttelepítési lehetőség részletes ismertetését lásd: [SQL Server áttelepítése egy Azure SQL felügyelt példányra online a DMS használatával](/azure/dms/tutorial-sql-server-managed-instance-online). 
+Az áttelepítési lehetőség részletes ismertetését lásd: [SQL Server áttelepítése egy Azure SQL felügyelt példányra online a DMS használatával](../../../dms/tutorial-sql-server-managed-instance-online.md). 
    
 
 
@@ -160,7 +160,7 @@ A biztonsági mentés és a visszaállítás használatával történő Migrál�
 
 1. Ha a visszaállítás befejeződött, tekintse meg az adatbázist a **Object Explorer** SQL Server Management Studioon belül. 
 
-További információ az áttelepítési lehetőségről: [adatbázis visszaállítása az Azure SQL felügyelt példányára SSMS használatával](https://docs.microsoft.com/azure/azure-sql/managed-instance/restore-sample-database-quickstart).
+További információ az áttelepítési lehetőségről: [adatbázis visszaállítása az Azure SQL felügyelt példányára SSMS használatával](../../managed-instance/restore-sample-database-quickstart.md).
 
 > [!NOTE]
 > Az adatbázis-visszaállítási művelet aszinkron és újrapróbálható. Előfordulhat, hogy a rendszer hibát jelez SQL Server Management Studio, ha a kapcsolatok megszakadnak, vagy lejár az időtúllépés. Azure SQL Database továbbra is megkísérli visszaállítani az adatbázist a háttérben, és a [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézetek használatával nyomon követheti a visszaállítás előrehaladását.
@@ -203,14 +203,14 @@ Az adatbázis-áttelepítés tesztelési módszere a következő tevékenységek
 
 ## <a name="leverage-advanced-features"></a>Speciális funkciók kihasználása 
 
-Ügyeljen arra, hogy kihasználja a felügyelt SQL-példányok által kínált fejlett felhőalapú funkciókat, például a [beépített magas rendelkezésre állást](../../database/high-availability-sla.md), a [fenyegetések észlelését](../../database/advanced-data-security.md), valamint [a számítási feladatok monitorozását és finomhangolását](../../database/monitor-tune-overview.md). 
+Ügyeljen arra, hogy kihasználja a felügyelt SQL-példányok által kínált fejlett felhőalapú funkciókat, például a [beépített magas rendelkezésre állást](../../database/high-availability-sla.md), a [fenyegetések észlelését](../../database/azure-defender-for-sql.md), valamint [a számítási feladatok monitorozását és finomhangolását](../../database/monitor-tune-overview.md). 
 
 [Azure SQL Analytics](../../../azure-monitor/insights/azure-sql.md) lehetővé teszi, hogy központosított módon figyelje a felügyelt példányok nagy készletét.
 
 Néhány SQL Server funkció csak akkor érhető el, ha az [adatbázis kompatibilitási szintje](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) a legújabb kompatibilitási szintre módosul (150). 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egyik mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, lásd: [szolgáltatás és eszközök az adatok áttelepítéséhez](../../../dms/dms-tools-matrix.md).
 

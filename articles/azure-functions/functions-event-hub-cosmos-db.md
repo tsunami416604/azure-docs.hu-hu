@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c5510a66f48007d629d23a96d17205b489ab6a5c
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: aa9e7612a5b3b9655b0c1981fbba87645526b3a2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999127"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327202"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Oktatóanyag: függvény létrehozása javában Event hub-eseményindítóval és Azure Cosmos DB kimeneti kötéssel
 
@@ -61,7 +61,9 @@ Ha nem Cloud Shell használ, az Azure CLI-t helyileg kell használnia a fiók el
 
 Ezután hozzon létre néhány környezeti változót a létrehozni kívánt erőforrások neveihez és helyéhez. Használja az alábbi parancsokat, és cserélje `<value>` le a helyőrzőket a választott értékekre. Az értékeknek meg kell felelniük az [Azure-erőforrások elnevezési szabályainak és korlátozásainak](/azure/architecture/best-practices/resource-naming). A `LOCATION` változóhoz használja a parancs által létrehozott értékek egyikét `az functionapp list-consumption-locations` .
 
-```azurecli-interactive
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```bash
 RESOURCE_GROUP=<value>
 EVENT_HUB_NAMESPACE=<value>
 EVENT_HUB_NAME=<value>
@@ -72,6 +74,21 @@ FUNCTION_APP=<value>
 LOCATION=<value>
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+set RESOURCE_GROUP=<value>
+set EVENT_HUB_NAMESPACE=<value>
+set EVENT_HUB_NAME=<value>
+set EVENT_HUB_AUTHORIZATION_RULE=<value>
+set COSMOS_DB_ACCOUNT=<value>
+set STORAGE_ACCOUNT=<value>
+set FUNCTION_APP=<value>
+set LOCATION=<value>
+```
+
+---
+
 Az oktatóanyag többi része ezeket a változókat használja. Vegye figyelembe, hogy ezek a változók csak az aktuális Azure CLI-vagy Cloud Shell-munkamenet időtartama alatt maradnak meg. Ezeket a parancsokat újra futtatnia kell, ha más helyi terminált használ, vagy ha a Cloud Shell munkamenet időtúllépést tapasztal.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
@@ -80,15 +97,29 @@ Az Azure erőforráscsoportok használatával gyűjti össze a fiókban lévő �
 
 Erőforráscsoport létrehozásához használja a következő parancsot:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az group create \
     --name $RESOURCE_GROUP \
     --location $LOCATION
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az group create ^
+    --name %RESOURCE_GROUP% ^
+    --location %LOCATION%
+```
+
+---
+
 ### <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
 Ezután hozzon létre egy Azure Event Hubs névteret, az Event hub és az engedélyezési szabályt az alábbi parancsokkal:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az eventhubs namespace create \
@@ -107,33 +138,78 @@ az eventhubs eventhub authorization-rule create \
     --rights Listen Send
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az eventhubs namespace create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %EVENT_HUB_NAMESPACE%
+az eventhubs eventhub create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %EVENT_HUB_NAME% ^
+    --namespace-name %EVENT_HUB_NAMESPACE% ^
+    --message-retention 1
+az eventhubs eventhub authorization-rule create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %EVENT_HUB_AUTHORIZATION_RULE% ^
+    --eventhub-name %EVENT_HUB_NAME% ^
+    --namespace-name %EVENT_HUB_NAMESPACE% ^
+    --rights Listen Send
+```
+
+---
+
 A Event Hubs névtér tartalmazza a tényleges Event hub-t és annak engedélyezési szabályát. Az engedélyezési szabály lehetővé teszi, hogy a függvények üzeneteket küldjenek a hubhoz, és figyeljenek a megfelelő eseményeket. Az egyik függvény telemetria-adatokat jelképező üzeneteket küld. Egy másik függvény figyeli az eseményeket, elemzi az eseményre vonatkozó adatmennyiséget, és az eredményeket Azure Cosmos DB tárolja.
 
 ### <a name="create-an-azure-cosmos-db"></a>Azure Cosmos DB létrehozása
 
 Ezután hozzon létre egy Azure Cosmos DB fiókot, adatbázist és gyűjteményt a következő parancsokkal:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az cosmosdb create \
     --resource-group $RESOURCE_GROUP \
     --name $COSMOS_DB_ACCOUNT
-az cosmosdb database create \
-    --resource-group-name $RESOURCE_GROUP \
-    --name $COSMOS_DB_ACCOUNT \
-    --db-name TelemetryDb
-az cosmosdb collection create \
-    --resource-group-name $RESOURCE_GROUP \
-    --name $COSMOS_DB_ACCOUNT \
-    --collection-name TelemetryInfo \
-    --db-name TelemetryDb \
+az cosmosdb sql database create \
+    --resource-group $RESOURCE_GROUP \
+    --account-name $COSMOS_DB_ACCOUNT \
+    --name TelemetryDb
+az cosmosdb sql container create \
+    --resource-group $RESOURCE_GROUP \
+    --account-name $COSMOS_DB_ACCOUNT \
+    --database-name TelemetryDb \
+    --name TelemetryInfo \
     --partition-key-path '/temperatureStatus'
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az cosmosdb create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %COSMOS_DB_ACCOUNT%
+az cosmosdb sql database create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --account-name %COSMOS_DB_ACCOUNT% ^
+    --name TelemetryDb
+az cosmosdb sql container create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --account-name %COSMOS_DB_ACCOUNT% ^
+    --database-name TelemetryDb ^
+    --name TelemetryInfo ^
+    --partition-key-path "/temperatureStatus"
+```
+
+---
 
 Az `partition-key-path` érték az egyes elemek értéke alapján particionálja az adatait `temperatureStatus` . A partíciós kulcs lehetővé teszi Cosmos DB számára a teljesítmény növelését azáltal, hogy az adatait külön részhalmazokra osztja, amelyeket egymástól függetlenül érhet el.
 
 ### <a name="create-a-storage-account-and-function-app"></a>Storage-fiók és-Function-alkalmazás létrehozása
 
 Ezután hozzon létre egy Azure Storage-fiókot, amelyet Azure Functions igényel, majd hozza létre a Function alkalmazást. Az alábbi parancsokat használja:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az storage account create \
@@ -145,8 +221,27 @@ az functionapp create \
     --name $FUNCTION_APP \
     --storage-account $STORAGE_ACCOUNT \
     --consumption-plan-location $LOCATION \
-    --runtime java
+    --runtime java \
+    --functions-version 2
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az storage account create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %STORAGE_ACCOUNT% ^
+    --sku Standard_LRS
+az functionapp create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %FUNCTION_APP% ^
+    --storage-account %STORAGE_ACCOUNT% ^
+    --consumption-plan-location %LOCATION% ^
+    --runtime java ^
+    --functions-version 2
+```
+
+---
 
 Amikor a `az functionapp create` parancs létrehozza a Function alkalmazást, egy Application Insights-erőforrást is létrehoz, ugyanazzal a névvel. A Function alkalmazás automatikusan konfigurálva van egy nevű beállítással, `APPINSIGHTS_INSTRUMENTATIONKEY` amely összekapcsolja Application Insights. A függvények Azure-ba történő üzembe helyezését követően megtekintheti az alkalmazás telemetria, az oktatóanyag későbbi részében leírtak szerint.
 
@@ -157,6 +252,8 @@ A Function alkalmazásnak hozzá kell férnie a többi erőforráshoz, hogy megf
 ### <a name="retrieve-resource-connection-strings"></a>Erőforrás-kapcsolatok karakterláncának beolvasása
 
 A következő parancsokkal kérheti le a Storage, az Event hub és a Cosmos DB kapcsolati karakterláncokat, és mentheti azokat környezeti változókba:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 AZURE_WEB_JOBS_STORAGE=$( \
@@ -184,11 +281,40 @@ COSMOS_DB_CONNECTION_STRING=$( \
 echo $COSMOS_DB_CONNECTION_STRING
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+FOR /F "delims=" %X IN (' ^
+    az storage account show-connection-string ^
+        --name %STORAGE_ACCOUNT% ^
+        --query connectionString ^
+        --output tsv') DO SET AZURE_WEB_JOBS_STORAGE=%X
+FOR /F "delims=" %X IN (' ^
+    az eventhubs eventhub authorization-rule keys list ^
+        --resource-group %RESOURCE_GROUP% ^
+        --name %EVENT_HUB_AUTHORIZATION_RULE% ^
+        --eventhub-name %EVENT_HUB_NAME% ^
+        --namespace-name %EVENT_HUB_NAMESPACE% ^
+        --query primaryConnectionString ^
+        --output tsv') DO SET EVENT_HUB_CONNECTION_STRING=%X
+FOR /F "delims=" %X IN (' ^
+    az cosmosdb keys list ^
+        --resource-group %RESOURCE_GROUP% ^
+        --name %COSMOS_DB_ACCOUNT% ^
+        --type connection-strings ^
+        --query connectionStrings[0].connectionString ^
+        --output tsv') DO SET COSMOS_DB_CONNECTION_STRING=%X
+```
+
+---
+
 Ezek a változók az Azure CLI-parancsokból beolvasott értékekre vannak beállítva. Mindegyik parancs egy JMESPath lekérdezést használ a visszaadott JSON-adattartalomból való kinyeréséhez. A kapcsolatok karakterláncai is megjelennek a használatával `echo` , így ellenőrizheti, hogy sikeresen beolvasták-e azokat.
 
 ### <a name="update-your-function-app-settings"></a>A függvény alkalmazás beállításainak frissítése
 
 Ezután a következő parancs használatával vigye át a kapcsolódási karakterlánc értékeit az Azure Functions-fiókban található alkalmazásbeállításokba:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az functionapp config appsettings set \
@@ -200,6 +326,20 @@ az functionapp config appsettings set \
         CosmosDBConnectionString=$COSMOS_DB_CONNECTION_STRING
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az functionapp config appsettings set ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %FUNCTION_APP% ^
+    --settings ^
+        AzureWebJobsStorage=%AZURE_WEB_JOBS_STORAGE% ^
+        EventHubConnectionString=%EVENT_HUB_CONNECTION_STRING% ^
+        CosmosDBConnectionString=%COSMOS_DB_CONNECTION_STRING%
+```
+
+---
+
 Az Azure-erőforrások létrehozása és konfigurálása sikeresen megtörtént a megfelelő együttműködés érdekében.
 
 ## <a name="create-and-test-your-functions"></a>Függvények létrehozása és tesztelése
@@ -208,14 +348,27 @@ Ezután hozzon létre egy projektet a helyi gépen, adja hozzá a Java-kódot, �
 
 Ha az erőforrások létrehozásához Cloud Shell használt, akkor nem fog helyileg csatlakozni az Azure-hoz. Ebben az esetben használja a `az login` parancsot a böngészőalapú bejelentkezési folyamat elindításához. Ha szükséges, állítsa be az alapértelmezett előfizetést, `az account set --subscription` amelyet az előfizetés-azonosító követ. Végül futtassa a következő parancsokat a környezeti változók újbóli létrehozásához a helyi gépen. Cserélje le a `<value>` helyőrzőket a korábban használt értékekre.
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 RESOURCE_GROUP=<value>
 FUNCTION_APP=<value>
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+set RESOURCE_GROUP=<value>
+set FUNCTION_APP=<value>
+```
+
+---
+
 ### <a name="create-a-local-functions-project"></a>Helyi functions-projekt létrehozása
 
 A következő Maven-paranccsal hozhat létre functions-projektet, és hozzáadhatja a szükséges függőségeket.
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 mvn archetype:generate --batch-mode \
@@ -227,6 +380,20 @@ mvn archetype:generate --batch-mode \
     -DartifactId=telemetry-functions
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn archetype:generate --batch-mode ^
+    -DarchetypeGroupId=com.microsoft.azure ^
+    -DarchetypeArtifactId=azure-functions-archetype ^
+    -DappName=%FUNCTION_APP% ^
+    -DresourceGroup=%RESOURCE_GROUP% ^
+    -DgroupId=com.example ^
+    -DartifactId=telemetry-functions
+```
+
+---
+
 Ezzel a paranccsal több fájl is létrehozható egy `telemetry-functions` mappán belül:
 
 * A `pom.xml` Maven használatával használható fájl
@@ -237,18 +404,39 @@ Ezzel a paranccsal több fájl is létrehozható egy `telemetry-functions` mapp�
 
 A fordítási hibák elkerülése érdekében törölnie kell a teszt fájlokat. A következő parancsok futtatásával navigáljon az új projekt mappájába, és törölje a teszt mappát:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 cd telemetry-functions
 rm -r src/test
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+cd telemetry-functions
+rmdir /s /q src\test
+```
+
+---
+
 ### <a name="retrieve-your-function-app-settings-for-local-use"></a>A Function alkalmazás beállításainak beolvasása helyi használatra
 
 Helyi teszteléshez a Function projektnek szüksége lesz az Azure-beli Function alkalmazáshoz az oktatóanyag korábbi részében hozzáadott kapcsolódási karakterláncokra. Használja a következő Azure Functions Core Tools parancsot, amely lekéri a felhőben tárolt összes Function app-beállítást, és hozzáadja azokat a `local.settings.json` fájlhoz:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+func azure functionapp fetch-app-settings %FUNCTION_APP%
+```
+
+---
 
 ### <a name="add-java-code"></a>Java-kód hozzáadása
 
@@ -394,10 +582,21 @@ Most már helyileg is létrehozhatja és futtathatja a függvényeket, és láth
 
 A függvények létrehozásához és futtatásához használja a következő Maven-parancsokat:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 mvn clean package
 mvn azure-functions:run
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn clean package
+mvn azure-functions:run
+```
+
+---
 
 Néhány felépítési és indítási üzenet után az alábbi példához hasonló kimenet jelenik meg a függvények futtatásakor:
 
@@ -422,9 +621,19 @@ Végül üzembe helyezheti az alkalmazást az Azure-ban, és ellenőrizheti, hog
 
 Telepítse a projektet az Azure-ba a következő paranccsal:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 mvn azure-functions:deploy
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn azure-functions:deploy
+```
+
+---
 
 A függvények mostantól az Azure-ban futnak, és továbbra is felhalmoznak egy adatmennyiséget a Azure Cosmos DB. Megtekintheti a telepített Function alkalmazást a Azure Portalban, és megtekintheti az alkalmazás telemetria a csatlakoztatott Application Insights erőforráson keresztül, ahogy az alábbi képernyőképeken is látható:
 
@@ -440,9 +649,19 @@ A függvények mostantól az Azure-ban futnak, és továbbra is felhalmoznak egy
 
 Ha végzett az oktatóanyagban létrehozott Azure-erőforrásokkal, az alábbi parancs használatával törölheti őket:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az group delete --name %RESOURCE_GROUP%
+```
+
+---
 
 ## <a name="next-steps"></a>További lépések
 

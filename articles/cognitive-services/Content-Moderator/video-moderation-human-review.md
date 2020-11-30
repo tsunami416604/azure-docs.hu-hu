@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 392cc06c6e0bce7ec2304da61033fc508d940bbb
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 079d5ea0259a436100b81489043b71a81ec1a330
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143771"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327219"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>Videó moderálása a felülvizsgálati eszközzel
 
@@ -26,7 +26,7 @@ A legjobb eredmények elérése érdekében használja a Content Moderator gépi
 Az irányítópulton válassza ki bármelyik felülvizsgálati várólistát a videotartalom típusától függően. Ez elindít egy felülvizsgálatot, és megnyitja a videotartalom moderálása lapot.
 
 > [!div class="mx-imgBorder"]
-> ![Videó moderálásának részletes nézete a felülvizsgálati eszközben](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
+> ![Content Moderator (előzetes verzió) esetén a csúszka ki van emelve, és 4 felülvizsgálatra van állítva. Az összes életlenítés és a fekete-fehér kapcsolók ki vannak emelve, és mindkettő be van állítva.](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
 
 ### <a name="review-count"></a>Vélemények száma
 
@@ -55,7 +55,7 @@ A **részletek** nézetben a jobb oldali ablaktábla több olyan lapot is megjel
 * Az **Előzmények** lapon megtekintheti a felülvizsgálat előzményeit, például a létrehozásuk és módosításuk módját.
 
 > [!div class="mx-imgBorder"]
-> ![Videó moderálása – tömeges címkék gomb](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
+> ![A jobb oldali ablaktábla ki van jelölve, és a jegyzetek lap van kiválasztva. Létezik egy Megjegyzés hozzáadására szolgáló tesztelési felület.](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
 
 ## <a name="apply-moderation-tags"></a>Moderálási címkék alkalmazása
 
@@ -63,10 +63,10 @@ A videós felülvizsgálat fő feladata, hogy a moderálási címkéket a videó
 
 ### <a name="bulk-tagging"></a>Csoportos címkézés
 
-A **tömeges címkék** eszköztár lehetővé teszi címkék hozzáadását egyszerre több kiválasztott videóhoz. Válasszon ki egy vagy több videót, majd válassza ki az alkalmazni kívánt címkéket, és kattintson a **Submit (Küldés** ) gombra. 
+A **tömeges címkék** eszköztár lehetővé teszi címkék hozzáadását egyszerre több kiválasztott videóhoz. Válasszon ki egy vagy több videót, majd válassza ki az alkalmazni kívánt címkéket, és kattintson a **Submit (Küldés**) gombra. 
 
 > [!div class="mx-imgBorder"]
-> ![Videó moderálása – tömeges címkék gomb](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
+> ![A + gomb ki van emelve a tömeges címkék ablaktáblán.](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
 
 
 ### <a name="key-frame-tagging"></a>Kulcs keretének címkézése
@@ -77,7 +77,7 @@ A moderálási címkéket adott kulcstárolóhoz is hozzáadhatja. Válassza ki 
 > Ha a szolgáltatás nem tudta kinyerni a kulcstárolókat, a kulcstároló csempéje panel nem jeleníti meg a **rendelkezésre álló kereteket** , és a kulcstárolók kiválasztásának lehetősége szürkén jelenik meg. Ebben az esetben csak a teljes videóra vonatkozó címkéket lehet alkalmazni (a **videó címkék +** gomb használatával).
 
 > [!div class="mx-imgBorder"]
-> ![Videó moderálásának részletes nézete a felülvizsgálati eszközben](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
+> ![Megjelenik a csempe ablaktábla, a videolejátszó, a kulcsképek Címkék panel és a videó címkék ablaktáblája. Ki van emelve a kulcsképek címkék + és a videó címkék + gomb.](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
 
 ## <a name="put-a-review-on-hold"></a>Ellenőrzés betartása
 
@@ -86,7 +86,7 @@ A videó ablaktábla alján található **tartás** gomb lehetővé teszi, hogy 
 A megtartott videókat megtekintheti a képernyő felső részén látható **tartás** gombra kattintva. A Hold panel a jobb oldalon jelenik meg. Itt kiválaszthatja a megtartott több felülvizsgálatot, vagy visszaállíthatja őket a várólistába, vagy megadhatja a lejárat idejét. Az előre konfigurált időtartam után a rendszer visszaküldi a visszatartási felülvizsgálatokat a várólistára. Válassza a **Mentés** lehetőséget, hogy az aktuálisan kijelölt lejárati idő alapján kezdődjön a számbavétel.
 
 > [!div class="mx-imgBorder"]
-> ![Videó moderálásának részletes nézete a felülvizsgálati eszközben](./Review-Tool-User-Guide/images/video-moderation-hold.png)
+> ![A videó ablaktáblán a megtartás gomb ki van emelve. A panel alján egy megtartási idő kombinált lista jelenik meg a kiadás és a Mentés gombokkal együtt.](./Review-Tool-User-Guide/images/video-moderation-hold.png)
 
 ## <a name="submit-a-review"></a>Felülvizsgálat elküldése
 
@@ -98,7 +98,7 @@ Miután elküldte a felülvizsgálatot, a rendszer áthelyezi a videót a **bör
 
 Miután a videók lejárnak a börtönből, a felülvizsgálatok készként vannak megjelölve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg a [videó moderálási](video-moderation-api.md)útmutatójának használatába.
 - Ebből a témakörből megtudhatja, hogyan hozhatja ki az emberi [felülvizsgálók videós felülvizsgálatait](video-reviews-quickstart-dotnet.md) a moderált kimenetből.

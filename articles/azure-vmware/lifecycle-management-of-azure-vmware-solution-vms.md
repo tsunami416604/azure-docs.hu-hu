@@ -3,12 +3,12 @@ title: Azure VMware-megoldás virtuális gépek életciklus-kezelése
 description: Ismerje meg, hogyan kezelheti az Azure VMware megoldás virtuális gépei életciklusának minden aspektusát Microsoft Azure natív eszközökkel.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 5280d362c1e7b1bf33579d051c4cc11adb1b7e59
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545759"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326811"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware-megoldás virtuális gépek életciklus-kezelése
 
@@ -61,7 +61,7 @@ A Azure Automation Azure Update Management egy hibrid környezetben kezeli a Win
 
 2. **Log Analytics munkaterület** lehetővé teszi a naplók gyűjtését és a teljesítményszámláló gyűjtését az log Analytics ügynök vagy bővítmények használatával. Log Analytics munkaterület létrehozásához tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/learn/quick-create-workspace.md)című témakört. Ha szeretné, létrehozhat egy munkaterületet a [parancssori](../azure-monitor/learn/quick-create-workspace-cli.md)felület, a [PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md)vagy a [Azure Resource Manager sablon](../azure-monitor/samples/resource-manager-workspace.md)használatával is.
 
-3. Az Azure-Update Management a virtuális gépek számára történő engedélyezéséről az [Automation-fiókból történő Update Management engedélyezése](../automation/update-management/update-mgmt-enable-automation-account.md)című témakörben olvashat. A folyamat során összekapcsolja Log Analytics munkaterületét az Automation-fiókkal. 
+3. Az Azure-Update Management a virtuális gépek számára történő engedélyezéséről az [Automation-fiókból történő Update Management engedélyezése](../automation/update-management/enable-from-automation-account.md)című témakörben olvashat. A folyamat során összekapcsolja Log Analytics munkaterületét az Automation-fiókkal. 
  
 4. Miután hozzáadta a virtuális gépeket az Azure Update Managementhoz, [telepíthet frissítéseket a virtuális gépeken, és áttekintheti az eredményeket](../automation/update-management/deploy-updates.md). 
 

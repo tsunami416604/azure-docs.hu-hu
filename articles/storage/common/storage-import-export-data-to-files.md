@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 859325bffe1db9cd6a7afc7e5013681c88209eff
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 9d1d0f4b615bbf4cc7faf82d70a4de0b0157ed82
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491783"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326352"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Az Azure Import/Export szolgáltatás használata az adatok Azure Filesba történő importálásához
 
@@ -51,14 +51,14 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
 2. Hozzon létre egyetlen NTFS-kötetet az egyes meghajtókon. Rendeljen meghajtóbetűjelet a kötethez. Ne használja a csatolási.
 3. Módosítsa a *dataset.csv* fájlt abban a gyökérkönyvtárban, ahol az eszköz található. Attól függően, hogy egy fájlt vagy mappát vagy mindkettőt szeretne importálni, vegyen fel bejegyzéseket az alábbi példához hasonló *dataset.csv* fájlban.
 
-   - **Fájl importálása** : a következő példában a másolandó adat az F: meghajtón található. A fájl *MyFile1.txt*  a rendszer a *MyAzureFileshare1* gyökerébe másolja. Ha a *MyAzureFileshare1* nem létezik, az Azure Storage-fiókban jön létre. A mappa szerkezete megmarad.
+   - **Fájl importálása**: a következő példában a másolandó adat az F: meghajtón található. A fájl *MyFile1.txt*  a rendszer a *MyAzureFileshare1* gyökerébe másolja. Ha a *MyAzureFileshare1* nem létezik, az Azure Storage-fiókban jön létre. A mappa szerkezete megmarad.
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
 
        ```
-   - **Mappa importálása** : a *MyFolder2* alatt lévő összes fájl és mappa rekurzív módon másolódik a fájlmegosztás. A mappa szerkezete megmarad.
+   - **Mappa importálása**: a *MyFolder2* alatt lévő összes fájl és mappa rekurzív módon másolódik a fájlmegosztás. A mappa szerkezete megmarad.
 
        ```
            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
@@ -78,14 +78,14 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
 
     Ez a példa azt feltételezi, hogy két lemez van csatlakoztatva, és alapszintű NTFS-kötetek G:\ és H:\ létrehozva. A H:\is nem titkosított, amíg a G: már titkosítva van. Az eszköz formázza és titkosítja a H:\ tároló lemezt. csak (és nem G: \) ).
 
-   - **Nem titkosított lemez esetén** : a *titkosítás* megadásával engedélyezheti a BitLocker titkosítást a lemezen.
+   - **Nem titkosított lemez esetén**: a *titkosítás* megadásával engedélyezheti a BitLocker titkosítást a lemezen.
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        H,Format,SilentMode,Encrypt,
        ```
 
-   - **Egy már titkosított lemez esetén** : adja meg a *AlreadyEncrypted* , és adja meg a BitLocker-kulcsot.
+   - **Egy már titkosított lemez esetén**: adja meg a *AlreadyEncrypted* , és adja meg a BitLocker-kulcsot.
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -127,7 +127,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
 
     ![Kattintson az Importálás/exportálás feladata elemre.](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. Az **alapjaiban** :
+4. Az **alapjaiban**:
 
     - Válassza **az Importálás az Azure-ba** lehetőséget.
     - Adjon meg egy leíró nevet az importálási feladatokhoz. Ezzel a névvel követheti nyomon a feladatokat, miközben azok folyamatban vannak, és ha azok befejeződtek.
@@ -138,7 +138,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
 
         ![Importálási feladatok létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-3. A **feladatok részletei** :
+3. A **feladatok részletei**:
 
     - Töltse fel az előző 1. lépésben létrehozott naplófájlokat [: Készítse elő a meghajtókat](#step-1-prepare-the-drives).
     - Válassza ki azt a Storage-fiókot, amelybe be kívánja importálni az adatimportálást.
@@ -146,7 +146,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
 
        ![Importálási feladatok létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-4. **Visszaszállítási adatok** :
+4. **Visszaszállítási adatok**:
 
     - Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com`  használni kívánt szolgáltatóra vonatkozó információkkal.
     - Adjon meg egy érvényes, a szállítóval létrehozott számlaszámot. A Microsoft ezt a fiókot használja a meghajtók visszaszállításához az importálási feladatok befejezését követően.
@@ -158,7 +158,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
        ![Importálási feladatok létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
 
-5. Az **összegzésben** :
+5. Az **összegzésben**:
 
     - Adja meg az Azure-adatközpont szállítási címet a lemezek szállításához az Azure-ba. Győződjön meg arról, hogy a feladatok neve és a teljes cím szerepel a szállítási címkén.
     - Az importálási feladatok létrehozásának befejezéséhez kattintson **az OK** gombra.
@@ -179,7 +179,7 @@ Az alábbi lépések végrehajtásával hozhat létre importálási feladatot az
     az extension add --name import-export
     ```
 
-1. Használhat meglévő erőforráscsoportot, vagy létrehozhat egyet. Erőforráscsoport létrehozásához futtassa az az [Group Create](/cli/azure/group#az_group_create) parancsot:
+1. Használhat meglévő erőforráscsoportot, vagy létrehozhat egyet. Erőforráscsoport létrehozásához futtassa az [az group create](/cli/azure/group#az_group_create) parancsot:
 
     ```azurecli
     az group create --name myierg --location "West US"

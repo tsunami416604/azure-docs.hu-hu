@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: ae2f2b8b9b6f3bc934321b13dcefeff46e43b089
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 936e4f8f54e92ba90372fff1c9d8dfc1982bbd62
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788162"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325116"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának első lépései
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -72,11 +72,11 @@ A korábban említett rövid útmutatók lehetővé teszik egy SQL felügyelt p�
 Ahhoz azonban, hogy a termelési adatbázist vagy akár fejlesztési, illetve tesztelési adatbázisokat is át szeretne telepíteni az egyes teljesítménytesztekhez, érdemes megfontolnia néhány további módszer használatát, például a következőket:
 
 - Teljesítményteszt – mérje fel a forrás SQL Server példányának alapteljesítmény-mérőszámait, és hasonlítsa össze azokat a célként megadott SQL felügyelt példány teljesítmény-metrikákkal, ahol az adatbázist áttelepítette. További információ a [teljesítmény-összehasonlítással kapcsolatos ajánlott eljárásokról](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210).
-- Online áttelepítés – a `RESTORE` jelen cikkben ismertetett natív módon meg kell várnia az adatbázisok visszaállítását (és az Azure Blob Storage-ba való másolását, ha ott még nem tárolja őket). Ez az alkalmazás bizonyos állásidőt okoz, különösen nagyobb adatbázisok esetén. Az éles adatbázis áthelyezéséhez használja az [adatáttelepítési szolgáltatást (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%252fazure%252fsql-database%252ftoc.json) az adatbázis minimális állásidővel való áttelepítéséhez. A DMS ezt úgy hajtja végre, hogy a forrásadatbázis módosításait a visszaállított SQL felügyelt példány-adatbázisra fokozatosan kikényszeríti. Így gyorsan átválthatja az alkalmazást a forrásról a cél adatbázisra minimális állásidővel.
+- Online áttelepítés – a `RESTORE` jelen cikkben ismertetett natív módon meg kell várnia az adatbázisok visszaállítását (és az Azure Blob Storage-ba való másolását, ha ott még nem tárolja őket). Ez az alkalmazás bizonyos állásidőt okoz, különösen nagyobb adatbázisok esetén. Az éles adatbázis áthelyezéséhez használja az [adatáttelepítési szolgáltatást (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%2fazure%2fsql-database%2ftoc.json) az adatbázis minimális állásidővel való áttelepítéséhez. A DMS ezt úgy hajtja végre, hogy a forrásadatbázis módosításait a visszaállított SQL felügyelt példány-adatbázisra fokozatosan kikényszeríti. Így gyorsan átválthatja az alkalmazást a forrásról a cél adatbázisra minimális állásidővel.
 
 További információ az [ajánlott áttelepítési folyamatról](migrate-to-instance-from-sql-server.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az [SQL felügyelt példányának támogatott funkcióinak magas szintű listáját itt](../database/features-comparison.md) , valamint az [itt olvasható részleteket és ismert problémákat](transact-sql-tsql-differences-sql-server.md).
 - Ismerje meg [az SQL felügyelt példányának technikai jellemzőit](resource-limits.md#service-tier-characteristics).

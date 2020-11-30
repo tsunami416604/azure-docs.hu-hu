@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 11893488c59781bb78cf913a30069e920c66bc71
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2565fa1183635c10e45b247f723788b6fe371c14
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172466"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325247"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -18,7 +18,7 @@ A biztonsági mentési rendszergazdákra vonatkozó gyakori követelmény, hogy 
 - Biztonsági mentések és visszaállítások naplózása.
 - A legfontosabb trendek azonosítása különböző részletességi szinteken.
 
-A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely [Azure monitor naplókat](../azure-monitor/log-query/get-started-portal.md) és [Azure-munkafüzeteket](../azure-monitor/platform/workbooks-overview.md)használ. Ezekkel az erőforrásokkal részletes információkhoz juthat a biztonsági másolatokról a teljes Backup-hagyatékon keresztül. Ez a cikk azt ismerteti, hogyan lehet konfigurálni és megtekinteni Azure Backup jelentéseket.
+A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely [Azure monitor naplókat](../azure-monitor/log-query/log-analytics-tutorial.md) és [Azure-munkafüzeteket](../azure-monitor/platform/workbooks-overview.md)használ. Ezekkel az erőforrásokkal részletes információkhoz juthat a biztonsági másolatokról a teljes Backup-hagyatékon keresztül. Ez a cikk azt ismerteti, hogyan lehet konfigurálni és megtekinteni Azure Backup jelentéseket.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
@@ -60,7 +60,7 @@ A Azure Backup beépített Azure Policy-definíciót is biztosít, amely automat
 
 #### <a name="3-view-reports-in-the-azure-portal"></a>3. jelentések megtekintése a Azure Portal
 
-Miután konfigurálta a tárolókat, hogy az adatküldés Log Analytics, tekintse meg a biztonsági mentési jelentéseket a tár ablaktábláján, majd válassza a **biztonsági mentési jelentések**elemet.
+Miután konfigurálta a tárolókat, hogy az adatküldés Log Analytics, tekintse meg a biztonsági mentési jelentéseket a tár ablaktábláján, majd válassza a **biztonsági mentési jelentések** elemet.
 
 ![Tár irányítópultja](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 
@@ -73,7 +73,7 @@ Válassza ezt a hivatkozást a biztonsági mentési jelentés munkafüzetének m
 
 A jelentés különböző lapokat tartalmaz:
 
-##### <a name="summary"></a>Összegzés
+##### <a name="summary"></a>Összefoglalás
 
 Ezen a lapon magas szintű áttekintést kaphat a Backup-hagyatékról. Gyorsan áttekintheti a biztonsági másolati elemek teljes számát, a felhasznált Felhőbeli tárterületet, a védett példányok számát, valamint a feladat sikerességi arányát a munkaterhelés típusától függően. Az adott biztonsági mentési összetevő típusával kapcsolatos részletesebb információkért nyissa meg a megfelelő lapokat.
 
@@ -180,6 +180,6 @@ A biztonsági mentési jelentésben szereplő widgeteket Kusto-lekérdezések m�
 
 - Emellett a diagnosztikai adatok egy Storage-fiókba vagy egy LA-munkaterületre való küldésének [v1-sémája](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema) is egy elavult útvonalon található. Ez azt jelenti, hogy ha egyéni lekérdezéseket vagy automatizálásokat írt a v1 séma alapján, javasoljuk, hogy frissítse ezeket a lekérdezéseket a jelenleg támogatott v2 séma használatára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ a Azure Backup figyeléséről és jelentéskészítéséről](./backup-azure-monitor-alert-faq.md)

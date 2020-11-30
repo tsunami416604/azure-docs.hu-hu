@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 06442e861a247f545ca6f22ecc82e5f5dc910553
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ef3f9f8d75049051ad568abf1163014a78b0cda3
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790236"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324737"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépek RHEL SQL Server 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 Ha a parancssori felület helyi telepítését és használatát választja, az oktatóanyaghoz az Azure CLI 2.0.30 vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Ha egynél több előfizetéssel rendelkezik, [állítsa be azt az előfizetést](/cli/azure/manage-azure-subscriptions-azure-cli) , amelyre telepíteni kívánja ezeket az erőforrásokat.
 
@@ -263,7 +263,7 @@ A következőhöz hasonló eredményt kell kapnia, ha a parancs minden virtuáli
 > [!IMPORTANT]
 > A fenti paranccsal létrehozott alapértelmezett lemezkép alapértelmezés szerint egy 32GB operációsrendszer-lemezt hoz létre. Előfordulhat, hogy az alapértelmezett telepítéssel kifogyott a terület. A fenti parancshoz hozzáadva a következő paramétert használhatja `az vm create` egy operációsrendszer-lemez létrehozásához a 128GB példaként: `--os-disk-size-gb 128` .
 >
-> Ezután [konfigurálhatja a logikai kötet-kezelőt (LVM)](../../../virtual-machines/linux/configure-lvm.md) , ha ki kell bontania a megfelelő mappák köteteit a telepítéshez.
+> Ezután [konfigurálhatja a logikai kötet-kezelőt (LVM)](/previous-versions/azure/virtual-machines/linux/configure-lvm) , ha ki kell bontania a megfelelő mappák köteteit a telepítéshez.
 
 ### <a name="test-connection-to-the-created-vms"></a>A létrehozott virtuális gépekhez való kapcsolódás tesztelése
 
@@ -304,7 +304,7 @@ Kapcsolódjon az egyes virtuálisgép-csomópontokhoz, és az alábbi útmutatá
 1. A következő parancsokkal frissítheti és telepítheti a pacemaker-csomagokat az összes csomóponton:
 
     > [!NOTE]
-    > az **nmap** ennek a parancsnak a részeként a hálózatban elérhető IP-címek keresésére szolgáló eszközként van telepítve. Nem kell telepítenie az **nmap** -t, de ez az oktatóanyag későbbi részében is hasznos lehet.
+    > az **nmap** ennek a parancsnak a részeként a hálózatban elérhető IP-címek keresésére szolgáló eszközként van telepítve. Nem kell telepítenie az **nmap**-t, de ez az oktatóanyag későbbi részében is hasznos lehet.
 
     ```bash
     sudo yum update -y
@@ -571,7 +571,7 @@ Rendelje hozzá az `Linux Fence Agent Role-<username>` utolsó lépésben létre
 5. Kattintson **a szerepkör-hozzárendelés hozzáadása** elemre.
 6. Szerepkör kiválasztása `Linux Fence Agent Role-<username>` a **szerepkör** listából
 7. A **Select (kiválasztás** ) listán adja meg a fent létrehozott alkalmazás nevét. `<resourceGroupName>-app`
-8. Kattintson a **Mentés** gombra
+8. Kattintson a **Mentés** gombra.
 9. Ismételje meg a fenti lépéseket a fürt összes csomópontján.
 
 ### <a name="create-the-stonith-devices"></a>A STONITH-eszközök létrehozása
@@ -1216,7 +1216,7 @@ Node: <VM3> fenced
 ```
 A kerítések eszközének tesztelésével kapcsolatos további információkért tekintse meg a következő [Red Hat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar) cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a rendelkezésre állási csoport figyelőjét szeretné használni a SQL Server példányaihoz, létre kell hoznia és konfigurálnia kell egy Load balancert.
 

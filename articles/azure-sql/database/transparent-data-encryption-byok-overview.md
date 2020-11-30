@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 76ecd811ab0bffe20b4bddcc4dc2eacaffaed588
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2a7d77579eaebd3ee951d0184e25937783420806
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308340"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325196"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által kezelt kulccsal
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -78,7 +78,7 @@ A rendszernaplók a Azure Monitor használatával ellenőrizhetik a Key Vault Au
 
 - A Key vaultnak és a SQL Database/felügyelt példánynak ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia. A több-bérlős kulcstartó és a kiszolgáló közötti interakciók nem támogatottak. Ha ezt követően szeretné áthelyezni az erőforrásokat, újra kell konfigurálni a TDE a AKV. További információ az [erőforrások áthelyezéséről](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-- A Key vaulton engedélyezni kell a [Soft delete](../../key-vault/general/soft-delete-overview.md) funkciót, hogy az adatvesztést okozó véletlen kulcs (vagy Key Vault) törlésével védve legyen. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, kivéve, ha az ügyfél nem állítja helyre vagy nem törli őket addig. A *helyreállítás* és *Törlés* műveletekhez saját engedélyek tartoznak a Key Vault hozzáférési házirendjében. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, és a [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) vagy [a CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)használatával engedélyezhető. Nem engedélyezhető a Azure Portalon keresztül.  
+- A Key vaulton engedélyezni kell a [Soft delete](../../key-vault/general/soft-delete-overview.md) funkciót, hogy az adatvesztést okozó véletlen kulcs (vagy Key Vault) törlésével védve legyen. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, kivéve, ha az ügyfél nem állítja helyre vagy nem törli őket addig. A *helyreállítás* és *Törlés* műveletekhez saját engedélyek tartoznak a Key Vault hozzáférési házirendjében. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, és a [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) vagy [a CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli)használatával engedélyezhető. Nem engedélyezhető a Azure Portalon keresztül.  
 
 - Adja meg a kiszolgáló vagy a felügyelt példány hozzáférését a Key vaulthoz (get, wrapKey, unwrapKey) a saját Azure Active Directory identitásának használatával. A Azure Portal használatakor az Azure AD-identitás automatikusan létrejön. A PowerShell vagy a parancssori felület használatakor az Azure AD-identitást explicit módon létre kell hozni, és ellenőrizni kell a befejezést. Lásd: a TDE és a [BYOK](transparent-data-encryption-byok-configure.md) konfigurálása, valamint a TDE és a [BYOK konfigurálása az SQL felügyelt példányához](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) , részletes útmutatást nyújt a PowerShell használatakor.
 
@@ -146,7 +146,7 @@ Az alábbiakban megtekintheti a portálon megjelenő további lépéseket, amely
 
 Előfordulhat, hogy a Key vaulthoz megfelelő hozzáférési jogokkal rendelkező személy véletlenül letiltja a kiszolgáló hozzáférését a kulcshoz:
 
-- a Key Vault *Get* , *wrapKey* , *unwrapKey* engedélyeinek visszavonása a kiszolgálóról
+- a Key Vault *Get*, *wrapKey*, *unwrapKey* engedélyeinek visszavonása a kiszolgálóról
 
 - a kulcs törlése
 
@@ -209,7 +209,7 @@ Ha el szeretné kerülni, hogy a kulcsfontosságú anyagok hiányában a Geo-rep
 
 A feladatátvétel teszteléséhez kövesse az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md)című témakör lépéseit. A feladatátvételi tesztet rendszeresen kell elvégezni annak ellenőrzéséhez, hogy a SQL Database megőrizte-e a Key vaultok hozzáférési engedélyét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő PowerShell-parancsfájlokat is érdemes megtekinteni az ügyfél által felügyelt TDE tartozó általános műveletekhez:
 

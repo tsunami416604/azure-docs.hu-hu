@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 97cdc4ad0b1d5e7dfb6642fa0163f810be5d7171
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ad990f10c611c5ca5bb8a8d053ee4d59b6f05c83
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966921"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326998"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Naplók beolvasása IoT Edge központi telepítésből
 
@@ -50,10 +50,10 @@ Ez a metódus egy JSON-adattartalmat fogad el a következő sémával:
           {
              "id": "regex string",
              "filter": {
-                "tail": int,
-                "since": int,
-                "until": int,
-                "loglevel": int,
+                "tail": "int",
+                "since": "int",
+                "until": "int",
+                "loglevel": "int",
                 "regex": "regex string"
              }
           }
@@ -159,10 +159,10 @@ Ez a metódus a **GetModuleLogs** hasonló JSON-adattartalmat fogad el, a "sas U
           {
              "id": "regex string",
              "filter": {
-                "tail": int,
-                "since": int,
-                "until": int,
-                "loglevel": int,
+                "tail": "int",
+                "since": "int",
+                "until": "int",
+                "loglevel": "int",
                 "regex": "regex string"
              }
           }
@@ -397,6 +397,6 @@ A Azure Portalban hívja meg a metódust a metódus nevével `GetTaskStatus` és
 
 ![Közvetlen "GetTaskStatus" metódus hívása Azure Portal](./media/how-to-retrieve-iot-edge-logs/invoke-get-task-status.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A IoT Edge-ügynök és az IoT Edge hub-modulok ikrek tulajdonságai](module-edgeagent-edgehub.md)

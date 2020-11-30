@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: d98f2390be3b3f4b3770125185cb33daa5ff6371
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e2d87d4322ac6b91a19a4775c23ceec75d528030
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143639"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325332"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Tartalom-moderálási felülvizsgálatok, munkafolyamatok és feladatok
 
@@ -26,7 +26,7 @@ Content Moderator kombinálja a gépi támogatással rendelkező moderálást em
 A felülvizsgálat során a rendszer feltölti a tartalmat a felülvizsgálati eszközre. Megtekintheti a tartalom típusára kattintva az irányítópult **Áttekintés** lapján. A felülvizsgálati képernyőn módosíthatja az alkalmazott címkéket, és szükség szerint alkalmazhatja a saját egyéni címkéit. A felülvizsgálat elküldésekor a rendszer elküldi az eredményeket egy megadott visszahívási végpontnak, és eltávolítja a tartalmat a helyről.
 
 > [!div class="mx-imgBorder"]
-> ![Áttekintő eszköz helyének áttekintése lap kijelölve](./Review-Tool-user-Guide/images/review-tab.png)
+> ![A felülvizsgálat legördülő menü kiemelve. A következő tartalomtípusokat jeleníti meg: képek, szövegek és videók.](./Review-Tool-user-Guide/images/review-tab.png)
 
 ### <a name="manage-reviews"></a>Értékelések kezelése
 
@@ -40,7 +40,7 @@ Az egyes felülvizsgálatokban a három ponttal elvégezhető **műveletek** gom
 A **keresési** eszköztár segítségével számos különböző kategóriába rendezheti az értékeléseket, például a felülvizsgálati állapotot, a címkéket, a tartalomtípust, az alcsapatot, a hozzárendelt felhasználókat és a létrehozott/módosított dátumot.
 
 > [!div class="mx-imgBorder"]
-> ![Áttekintő eszköz helyének áttekintése lap kijelölve](./Review-Tool-user-Guide/images/review-search.png)
+> ![Megjelenik a keresési eszköztár. Különböző kombinált listákat tartalmaz a keresési feltételek megadásához, például a felülvizsgálati állapotot és a címkéket.](./Review-Tool-user-Guide/images/review-search.png)
 
 Az áttekintések létrehozásával kapcsolatos lépésekért tekintse meg a [felülvizsgálati eszköz útmutatót](./review-tool-user-guide/review-moderated-images.md) , vagy tekintse meg a [REST API útmutatót](./try-review-api-review.md) , amelyből megtudhatja, hogyan teheti meg a programozott módon.
 
@@ -88,7 +88,7 @@ A moderálási feladatok egyfajta burkolóként szolgálnak a tartalom moderál�
 
 A feladatok használatának megkezdéséhez tekintse meg a [REST API útmutatót](./try-review-api-job.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tesztelje a [feladatok API-konzolját](try-review-api-job.md), és használja a REST API-kód mintáit. Ha már ismeri a Visual studiót és a C#-ot, tekintse meg a [Jobs .net](moderation-jobs-quickstart-dotnet.md)gyors útmutatóját is. 
 * Felülvizsgálatok esetén Ismerkedjen meg a [felülvizsgálati API-konzollal](try-review-api-review.md), és használja a REST API-kód mintáit. Ezután tekintse meg a [.net](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)gyors útmutatójának értékelések szakaszát.

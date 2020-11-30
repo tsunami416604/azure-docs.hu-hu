@@ -3,12 +3,12 @@ title: A biztonsági funkciók áttekintése
 description: Ismerkedjen meg Azure Backup biztonsági képességekkel, amelyek segítenek a biztonsági másolatok adatainak védelmében és a vállalat biztonsági igényeinek kielégítésében.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 8c4d3af9205df43c3596da64d7fcad2a9eb82500
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9aa1909f1590b477d9a7f7a09ad0c2b1936e3e29
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093344"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325655"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>A Azure Backup biztonsági funkcióinak áttekintése
 
@@ -26,7 +26,7 @@ A Azure Backup három [beépített szerepkört](../role-based-access-control/bui
 
 További információ az [Azure szerepköralapú hozzáférés-vezérléséről Azure Backup kezeléséhez](./backup-rbac-rs-vault.md).
 
-A Azure Backup számos, a szolgáltatásba beépített biztonsági vezérlőt tartalmaz a biztonsági rések megelőzésére, észlelésére és reagálására. További információ a [Azure Backup biztonsági vezérlőinek](./backup-security-controls.md).
+A Azure Backup számos, a szolgáltatásba beépített biztonsági vezérlőt tartalmaz a biztonsági rések megelőzésére, észlelésére és reagálására. További információ a [Azure Backup biztonsági vezérlőinek](./security-baseline.md).
 
 ## <a name="separation-between-guest-and-azure-storage"></a>A vendég és az Azure Storage közötti elkülönítés
 
@@ -64,7 +64,7 @@ A Azure Backup [beépített figyelési és riasztási képességeket](./backup-a
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Biztonsági funkciók a hibrid biztonsági másolatok védelme érdekében
 
-A Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynököt használja a fájlok, mappák, valamint a kötet vagy a rendszerállapot biztonsági mentésére és visszaállítására egy helyszíni számítógépről az Azure-ba. A MARS mostantól biztonsági funkciókat biztosít a hibrid biztonsági másolatok védelméhez. Ezek a lehetőségek a következők:
+A Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynököt használja a fájlok, mappák, valamint a kötet vagy a rendszerállapot biztonsági mentésére és visszaállítására egy helyszíni számítógépről az Azure-ba. A MARS mostantól biztonsági funkciókat biztosít a hibrid biztonsági másolatok védelméhez. Ezek a funkciók a következők:
 
 * A rendszer egy további hitelesítési réteget ad hozzá, amikor egy kritikus művelet, például a jelszó módosítása történik. Ez az ellenőrzés biztosítja, hogy ezeket a műveleteket csak azok a felhasználók tudják végrehajtani, akik rendelkeznek érvényes Azure-beli hitelesítő adatokkal. [További információ a támadásokat megakadályozó funkciókról](./backup-azure-security-feature.md#prevent-attacks).
 
@@ -76,7 +76,7 @@ A Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynö
 
 Annak érdekében, hogy a szervezetek megfeleljenek az egyéni adatgyűjtésre és-felhasználásra vonatkozó nemzeti, regionális és iparági követelményeknek, Microsoft Azure & Azure Backup a minősítések és igazolások átfogó készletét kínálja. [Tekintse meg a megfelelőségi tanúsítványok listáját](compliance-offerings.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Biztonsági funkciók a Azure Backupt használó Felhőbeli munkaterhelések védelmének biztosításához](backup-azure-security-feature-cloud.md)
 * [Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez](backup-azure-security-feature.md)

@@ -4,12 +4,12 @@ description: Útmutatás az Recovery Services-tárolók Azure-előfizetések és
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5a73963970b5fad7b3992d501d9aac5cc7229622
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 12c276b861e7db8e93e60eea7e9cd7f3aba04860
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926682"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325774"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
 
@@ -30,7 +30,7 @@ Az összes nyilvános régió és szuverén régió támogatott, kivéve a köz�
 - Ha egy virtuális gép nem a Recovery Services-tárolóval, vagy egy új erőforráscsoporthoz kerül át, akkor az aktuális virtuálisgép-helyreállítási pontok sértetlenek maradnak a tárolóban mindaddig, amíg lejárnak.
 - Azt jelzi, hogy a virtuális gép a tárolóval van-e áthelyezve, vagy sem, bármikor visszaállíthatja a virtuális gépet a tár megőrzött biztonsági mentési előzményeiből.
 - A Azure Disk Encryption megköveteli, hogy a Key Vault és a virtuális gépek ugyanabban az Azure-régióban és-előfizetésben legyenek tárolva.
-- Ha felügyelt lemezekkel rendelkező virtuális gépet szeretne áthelyezni, tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription).
+- Ha felügyelt lemezekkel rendelkező virtuális gépet szeretne áthelyezni, tekintse meg ezt a [cikket](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - A klasszikus modellben üzembe helyezett erőforrások áthelyezésének lehetőségei eltérnek attól függően, hogy az adott előfizetésen belül vagy egy új előfizetésre helyezi át az erőforrásokat. További információkért tekintse meg [ezt a cikket](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - A tárolóhoz definiált biztonsági mentési szabályzatok megmaradnak, miután a tár előfizetések vagy egy új erőforráscsoport között mozog.
 - Csak olyan tárolót helyezhet át, amely a következő típusú biztonsági másolati elemeket tartalmazza. Az alább nem felsorolt típusú biztonsági másolati elemeket le kell állítani, és az adatokat véglegesen törölni kell a tár áthelyezése előtt.
@@ -42,7 +42,7 @@ Az összes nyilvános régió és szuverén régió támogatott, kivéve a köz�
 
 > [!NOTE]
 > Az Azure-régiók Azure Backup Recovery Services-tárolóinak áthelyezése nem támogatott.<br><br>
-> Ha olyan virtuális gépeket (Azure IaaS-t, Hyper-V-t, VMware-et) vagy fizikai gépeket állított be, amelyeken a **Azure site Recovery** -t használja, az áthelyezési művelet le lesz tiltva. Ha Azure Site Recovery tárolóit szeretné áthelyezni, tekintse át [ezt a cikket](../site-recovery/move-vaults-across-regions.md) , és ismerkedjen meg a tárolók manuális mozgatásával.
+> Ha olyan virtuális gépeket (Azure IaaS-t, Hyper-V-t, VMware-et) vagy fizikai gépeket állított be, amelyeken a **Azure site Recovery**-t használja, az áthelyezési művelet le lesz tiltva. Ha Azure Site Recovery tárolóit szeretné áthelyezni, tekintse át [ezt a cikket](../site-recovery/move-vaults-across-regions.md) , és ismerkedjen meg a tárolók manuális mozgatásával.
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Recovery Services-tár másik erőforráscsoporthoz való áthelyezéséhez használja a Azure Portal
 
@@ -157,7 +157,7 @@ Egy új tárolóban a munkaterhelések védelme érdekében a jelenlegi védelme
 
 1. A tároló tulajdonságaiban tiltsa le a nem kötelező törlést. A Soft delete letiltásához kövesse az [alábbi lépéseket](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) .
 
-2. Állítsa le a védelmet, és törölje a biztonsági mentéseket az aktuális tárból. A tároló irányítópultjának menüjében válassza a **biztonsági másolati elemek elemet** . Az itt felsorolt elemeket, amelyeket át kell helyezni az új tárolóba, el kell távolítani a biztonsági másolati adatokkal együtt. Lásd: [védett elemek törlése a felhőben](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) és a [védett elemek törlése a helyszínen](backup-azure-delete-vault.md#delete-protected-items-on-premises).
+2. Állítsa le a védelmet, és törölje a biztonsági mentéseket az aktuális tárból. A tároló irányítópultjának menüjében válassza a **biztonsági másolati elemek elemet**. Az itt felsorolt elemeket, amelyeket át kell helyezni az új tárolóba, el kell távolítani a biztonsági másolati adatokkal együtt. Lásd: [védett elemek törlése a felhőben](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) és a [védett elemek törlése a helyszínen](backup-azure-delete-vault.md#delete-protected-items-on-premises).
 
 3. Ha az AFS (Azure-fájlmegosztás), az SQL-kiszolgálók vagy a SAP HANA-kiszolgálók áthelyezését tervezi, akkor regisztrálnia kell a regisztrációt is. A tároló irányítópultjának menüjében válassza a **biztonsági mentési infrastruktúra** elemet. Tekintse meg [az SQL Server regisztrációjának](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)megszüntetését, az [Azure-fájlmegosztáshoz társított Storage-fiók regisztrációjának](manage-afs-backup.md#unregister-a-storage-account)megszüntetését és a [SAP HANA példány regisztrációjának](sap-hana-db-manage.md#unregister-an-sap-hana-instance)megszüntetését ismertető témakört.
 
@@ -183,7 +183,7 @@ Ha meg kell őriznie a jelenlegi védett adatok védelmét a régi tárolóban, 
   - Szükség esetén visszaállíthatja a virtuális gépet a régi tárból.
   - Az új erőforrásban található virtuális gép új tárolójának első biztonsági mentése kezdeti replika lesz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Több különböző típusú erőforrást is áthelyezhet az erőforráscsoportok és az előfizetések között.
 

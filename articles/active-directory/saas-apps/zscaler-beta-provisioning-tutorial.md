@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: de42230639351c0dc1e7986156a33b178386d1a4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 59784b6e618e875a6eedc947ce75afdf3bd1df74
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357742"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327389"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler Beta konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -93,69 +93,69 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 3. Válassza a **Kiépítés** lapot.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
+    ![A kategóriákba rendezett lapok listája, valamint a ZScaler Beta-kiépítés/vállalati alkalmazás címe. A kezelés kategória létesítés lapján van kiválasztva.](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
 
 4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
+    ![Az automatikus mód ki lett választva a kiépítési mód legördülő listából. A rendszergazdai hitelesítő adatok a Zscaler Beta API-hoz való kapcsolódáshoz használatosak, és létezik egy tesztelési kapcsolat gomb.](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Zscaler Beta-fiókjának **bérlői URL-címét** és **titkos jogkivonatát** a 6. lépésben leírtak szerint.
 
 6. A **bérlői URL-cím** és a **titkos jogkivonat** beszerzéséhez navigáljon az **Adminisztráció > hitelesítési beállítások** elemre a Zscaler Beta Portal felhasználói felületén, és kattintson az **SAML** elemre a **Hitelesítés típusa** alatt.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
+    ![A hitelesítési beállításokban a hitelesítési profilban a kiválasztott könyvtár típusa üzemeltetett adatbázis, és a kiválasztott hitelesítési típus SAML.](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
 
     Az SAML **konfigurálása** elemre kattintva nyissa meg a **konfigurációs SAML** -beállításokat.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
+    ![Az SAML konfigurálása beállításnál az SAML automatikus kiépítés engedélyezése és az SCIM-Based üzembe helyezési lehetőségek engedélyezése lehetőség van kiválasztva. Az alap URL-cím és a tulajdonosi jogkivonat szövegmezői ki vannak emelve.](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
-    Válassza az **SCIM-Based kiépítés engedélyezése** lehetőséget az **alap URL-cím** és a **tulajdonosi jogkivonat** lekéréséhez, majd mentse a beállításokat. Másolja az **alap URL-címet** a **bérlői URL** -címre, és a **tulajdonosi jogkivonatot**  a Azure Portal **titkos jogkivonatára** .
+    Válassza az **SCIM-Based kiépítés engedélyezése** lehetőséget az **alap URL-cím** és a **tulajdonosi jogkivonat** lekéréséhez, majd mentse a beállításokat. Másolja az **alap URL-címet** a **bérlői URL**-címre, és a **tulajdonosi jogkivonatot**  a Azure Portal **titkos jogkivonatára** .
 
 7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a Zscaler Beta szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Zscaler Beta-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
+    ![Rendszergazdai hitelesítő adatok esetén a bérlői URL-cím és a titkos jogkivonat mezői értékekkel rendelkeznek, és a kapcsolat tesztelése gomb ki van emelve.](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
 
 8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/notification.png)
+    ![Az értesítő e-mail-szövegmező üres, és az e-mailes értesítés küldése a hiba bekövetkezésekor jelölőnégyzet be van jelölve.](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
 9. Kattintson a **Mentés** gombra.
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Zscaler Beta-** ra lehetőséget.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
+    ![A Azure Active Directory felhasználók szinkronizálása a ZScalerBeta beállítás be van jelölve, és engedélyezve van.](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
 
 11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelési** szakaszban található Zscaler Beta elemre. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler Beta felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
+    ![A felhasználói attribútumok attribútum-hozzárendelések szakaszában a Active Directory attribútumok a Zscalar béta attribútumai mellett jelennek meg, amelyekkel szinkronizálva vannak. Az attribútumok közül egy pár egyezőként jelenik meg.](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
 
 12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a Zscaler bétaverzióhoz** lehetőséget.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
+    ![A Azure Active Directory csoportok szinkronizálása a ZScalerBeta beállítás be van jelölve, és engedélyezve van.](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
 
 13. Tekintse át az Azure AD-ből szinkronizált Zscaler az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Zscaler Beta-ban lévő csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
+    ![A csoport attribútumaihoz tartozó attribútum-hozzárendelések szakaszban a Active Directory attribútumok a Zscalar béta attribútumai mellett jelennek meg, amelyekkel szinkronizálva vannak. Az attribútumok közül egy pár egyezőként jelenik meg.](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
 
 14. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
 15. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Zscaler Beta számára, módosítsa a **kiépítési állapotot** **a következőre** a **Settings (beállítások** ) szakaszban.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
+    ![A kiépítési állapot megjelenik, és be értékre van állítva.](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
 
 16. Adja meg azokat a felhasználókat és/vagy csoportokat, akik számára a Zscaler Beta-t szeretné kiépíteni. Ehhez válassza ki a kívánt értékeket a **hatókörben** a **Beállítások** szakaszban.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/scoping.png)
+    ![Megjelenik a hatókör legördülő lista, és csak a hozzárendelt felhasználók és csoportok szinkronizálása van kiválasztva. A másik elérhető érték az összes felhasználó és csoport szinkronizálása.](./media/zscaler-beta-provisioning-tutorial/scoping.png)
 
 17. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
 
-    ![Zscaler Beta-kiépítés](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
+    ![A Zscaler Beta-kiépítés tetején található mentés gomb ki van emelve. Az Elvetés gomb is megjelenik.](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
 
 Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Zscaler Beta-on végrehajtott összes műveletet ismertetik.
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

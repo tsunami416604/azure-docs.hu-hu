@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 10/26/2020
-ms.openlocfilehash: adf454ac697f8cabf4256ebfc5baa5d0d1c76264
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c806c0a13f9f5f13588b780054d1f285beb44802
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782467"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324533"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>A felügyelt Azure SQL-példányon és az SQL Serveren elérhető Machine Learning Services közötti fő eltérések
 
@@ -55,7 +55,7 @@ Machine Learning Services a felügyelt SQL-példányon, és SQL Server támogatj
 A Python és az R csomagkezelő a felügyelt SQL-példány és a SQL Server között eltérően működik. Ezek a különbségek a következők:
 
 - A külső futtatókörnyezettől (például Java) függő csomagok nem támogatottak, vagy az operációs rendszer API-jait kell telepíteni a telepítéshez vagy a használathoz.
-- A csomagok elvégezhetik a kimenő hálózati hívásokat (az előzetes verzióról korábban is változhatnak). A kimenő hálózati hívások engedélyezéséhez beállíthatja a megfelelő kimenő biztonsági szabályokat a [hálózati biztonsági csoport](/azure/virtual-network/network-security-groups-overview) szintjén.
+- A csomagok elvégezhetik a kimenő hálózati hívásokat (az előzetes verzióról korábban is változhatnak). A kimenő hálózati hívások engedélyezéséhez beállíthatja a megfelelő kimenő biztonsági szabályokat a [hálózati biztonsági csoport](../../virtual-network/network-security-groups-overview.md) szintjén.
 
 A Python és az R csomagok kezelésével kapcsolatos további információkért lásd:
 
@@ -78,7 +78,7 @@ Ha nincs elegendő memória az R számára, hibaüzenet jelenik meg. Gyakori hib
 
 A memóriahasználat az R-szkriptekben használt memória mennyiségétől és a párhuzamosan végrehajtott lekérdezések számától függ. Ha a fenti hibaüzeneteket kapja, skálázza az adatbázist magasabb szolgáltatási szintre a probléma elhárításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az [Azure SQL felügyelt példányának](machine-learning-services-overview.md)áttekintését Machine learning Services.
 - Ha szeretné megtudni, hogyan használható a Python a Machine Learning Servicesban, tekintse meg a [Python-parancsfájlok futtatása](/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)című témakört.

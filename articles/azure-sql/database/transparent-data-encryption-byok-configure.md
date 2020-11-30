@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 8881dc3f67ac1c9f699bd2bf7bcf1dbbcd5e9c0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 40572d50f7653539758ff892019e7e65b0ffa6dd
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905327"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324890"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és az Azure CLI: transzparens adattitkosítás engedélyezése az ügyfél által felügyelt kulccsal Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -46,7 +46,7 @@ Ez a cikk bemutatja, hogyan használhatja a Azure Key Vault for transzparens ada
 
 Az Az modul telepítési útmutatását [az Azure PowerShell telepítését](/powershell/azure/install-az-ps) ismertető cikkben találja. Adott parancsmagok esetén lásd: [AzureRM. SQL](/powershell/module/AzureRM.Sql/).
 
-A Key Vault kapcsolatos részletekért tekintse meg a [Key Vault PowerShell-utasításokat](../../key-vault/secrets/quick-create-powershell.md) , valamint a [Key Vault a PowerShell használatával történő törlését](../../key-vault/general/soft-delete-powershell.md).
+A Key Vault kapcsolatos részletekért tekintse meg a [Key Vault PowerShell-utasításokat](../../key-vault/secrets/quick-create-powershell.md) , valamint a [Key Vault a PowerShell használatával történő törlését](../../key-vault/general/key-vault-recovery.md).
 
 > [!IMPORTANT]
 > A PowerShell Azure Resource Manager (RM) modul továbbra is támogatott, de a jövőbeli fejlesztés az az. SQL modulhoz készült. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
@@ -136,7 +136,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 Az Azure CLI (2,0-es vagy újabb verzió) szükséges verziójának telepítéséhez és az Azure-előfizetéshez való kapcsolódáshoz tekintse meg [Az Azure platformfüggetlen Command-Line Interface 2,0 telepítése és konfigurálása](/cli/azure/install-azure-cli)című témakört.
 
-A Key Vault kapcsolatos részletekért tekintse meg a [Key Vault kezelése a cli 2,0 használatával](../../key-vault/general/manage-with-cli2.md) és a parancssori felülettel [történő Key Vault-törlés használata](../../key-vault/general/soft-delete-cli.md)című témakört.
+A Key Vault kapcsolatos részletekért tekintse meg a [Key Vault kezelése a cli 2,0 használatával](../../key-vault/general/manage-with-cli2.md) és a parancssori felülettel [történő Key Vault-törlés használata](../../key-vault/general/key-vault-recovery.md)című témakört.
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>Azure AD-identitás kiosztása a kiszolgálóhoz
 

@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 343ad80a6b68de352424fa8f16686fcece921954
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: cb25d9263648fbd92bc075751c1a8e627d03bd44
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840916"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325213"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -246,7 +246,7 @@ Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljen
 
 **2. lépés**: próbálja meg módosítani a biztonsági mentési ütemtervet olyan időpontra, amikor a virtuális gép kevesebb terhelés alatt van (például kevesebb CPU vagy IOPS)
 
-**3. lépés**: próbálja meg [növelni a virtuális gép méretét](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm) , és ismételje meg a műveletet.
+**3. lépés**: próbálja meg [növelni a virtuális gép méretét](../virtual-machines/windows/resize-vm.md) , és ismételje meg a műveletet.
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound – a művelet nem hajtható végre, mert a virtuális gép már nem létezik/400094, BCMV2VMNotFound – a virtuális gép nem létezik, vagy nem található Azure-beli virtuális gép
 
@@ -405,7 +405,7 @@ A virtuális gép biztonsági mentése a pillanatkép-parancsok alapjául szolg�
 * **Ha négynél több virtuális gép osztozik ugyanazzal a felhőalapú szolgáltatással, a virtuális gépeket több biztonsági mentési házirendben is elosztja**. A biztonsági mentés időpontjának felosztása, így a több mint négy virtuális gép biztonsági mentése egyidőben megkezdődik. Próbálja meg elkülöníteni a házirendek indítási időpontját legalább egy órával.
 * **A virtuális gép magas processzoron vagy memórián fut**. Ha a virtuális gép nagy memórián vagy CPU-használaton fut, több mint 90 százalékkal, a pillanatkép-feladat várólistára kerül és késleltetve lesz. Végül túllépi az időkorlátot. Ha ez a probléma történik, próbálkozzon egy igény szerinti biztonsági mentéssel.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 A DHCP-t engedélyezni kell a vendégen a IaaS virtuális gép biztonsági mentésének működéséhez. Ha statikus magánhálózati IP-címmel kell rendelkeznie, konfigurálja a Azure Portal vagy a PowerShell használatával. Győződjön meg arról, hogy a virtuális gépen belül a DHCP-beállítás engedélyezve van.
 További információ arról, hogyan állítható be statikus IP-cím a PowerShell használatával:

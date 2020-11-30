@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 347948734da439691bced01cf3693d0990567748
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: ca632a643215b689a9bbb825959e5c5c052d73cb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146228"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326063"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Windows rendszerű virtuális gép kiépítése a Azure Portal használatával SQL Server
 
@@ -32,7 +32,7 @@ Az útmutató segítségével saját SQL Server VM hozhat létre. Vagy használj
 > [!TIP]
 > Ha kérdése van az SQL Servert futtató virtuális gépek használatával kapcsolatban, tekintse meg a [gyakori kérdéseket](frequently-asked-questions-faq.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a> SQL Server virtuálisgép-katalógus rendszerképei
 
@@ -56,7 +56,7 @@ SQL Server virtuális gép létrehozásakor kiválaszthatja a virtuális gépek 
    > A lehetőségekkel kapcsolatos további információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](pricing-guidance.md).
 
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 
 ## <a name="1-configure-basic-settings"></a>1. az alapszintű beállítások konfigurálása
@@ -74,16 +74,16 @@ Az **alapvető beállítások** lapon adja meg a következő információkat:
 
 * A **példány részletei** területen:
 
-    1. Adja meg a **virtuális gép egyedi nevét** .  
+    1. Adja meg a **virtuális gép egyedi nevét**.  
     1. Válasszon egy helyet a **régió** számára. 
     1. Ebben az útmutatóban hagyja, hogy a **rendelkezésre állási beállítások** ne legyenek _infrastruktúra-redundancia_ megadása. További információ a rendelkezésre állási lehetőségekről: [rendelkezésre állás](../../../virtual-machines/availability.md). 
-    1. A **rendszerkép** listában válassza az _ingyenes SQL Server licenc: SQL Server 2017 Developer elemet a Windows Server 2016-on_ .  
+    1. A **rendszerkép** listában válassza az _ingyenes SQL Server licenc: SQL Server 2017 Developer elemet a Windows Server 2016-on_.  
     1. A virtuális gép **méretének** **módosításához** válassza az **a2 alapszintű** ajánlat lehetőséget. Ne felejtse el megtisztítani az erőforrásokat, ha elkészült velük, hogy elkerülje a váratlan költségeket. Az éles számítási feladatok esetében ajánlott gépméretekért és -konfigurációkért tekintse meg [az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növelésével kapcsolatos ajánlott eljárásokat](performance-guidelines-best-practices.md).
 
     ![Példány adatai](./media/create-sql-vm-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
-> A **Méret kiválasztása** ablakban megjelenő, becsült havi költségek nem tartalmazzák az SQL Server licencelési költségeit. Ez a becslés a virtuális gép költsége. A SQL Server expressz és fejlesztői kiadásai esetében ez a becsült összeg a teljes becsült díj. Más kiadások esetében tekintse meg a [Windows rendszerű virtuális gépek árképzését ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machines/windows/), és válassza ki az SQL Server megfelelő kiadását. Tekintse meg a SQL Server Azure-beli [virtuális gépekkel és-méretekkel kapcsolatos](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) [díjszabási útmutatót](pricing-guidance.md) is.
+> A **Méret kiválasztása** ablakban megjelenő, becsült havi költségek nem tartalmazzák az SQL Server licencelési költségeit. Ez a becslés a virtuális gép költsége. A SQL Server expressz és fejlesztői kiadásai esetében ez a becsült összeg a teljes becsült díj. Más kiadások esetében tekintse meg a [Windows rendszerű virtuális gépek árképzését ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machines/windows/), és válassza ki az SQL Server megfelelő kiadását. Tekintse meg a SQL Server Azure-beli [virtuális gépekkel és-méretekkel kapcsolatos](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) [díjszabási útmutatót](pricing-guidance.md) is.
 
 * A **rendszergazdai fiók** területen adja meg a felhasználónevet és a jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
@@ -109,7 +109,7 @@ A **lemezek** lapon adja meg a lemez beállításait.
 ![Az SQL virtuális gép lemezének beállításai](./media/create-sql-vm-portal/azure-sqlvm-disks.png)
   
   
-### <a name="networking"></a>Hálózatkezelés
+### <a name="networking"></a>Hálózat
 
 A **hálózatkezelés** lapon konfigurálja a hálózati beállításokat. 
 
@@ -137,7 +137,7 @@ A **SQL Server beállítások** lapon adja meg a SQL Server adott beállításai
 
 - [Kapcsolódás](#connectivity)
 - [Hitelesítés](#authentication)
-- [Azure Key Vault-integráció](#azure-key-vault-integration)
+- [Azure Key Vault integráció](#azure-key-vault-integration)
 - [Tároló konfigurálása](#storage-configuration)
 - [Automatikus javítás](#automated-patching)
 - [Automatikus biztonsági mentés](#automated-backup)
@@ -171,13 +171,13 @@ Ha SQL Server hitelesítésre van szüksége, az **SQL Server beállítások** l
 > [!NOTE]
 > Ha az interneten keresztül szeretné elérni SQL Server (a nyilvános kapcsolódási lehetőséggel), akkor itt kell engedélyeznie az SQL-hitelesítést. Az SQL Serverhoz való nyilvános hozzáféréshez SQL-hitelesítés szükséges.
 
-Ha engedélyezi az SQL Server-hitelesítést, adjon meg egy **bejelentkezési nevet** és egy **jelszót** . Ez a bejelentkezési név SQL Server hitelesítési Bejelentkezési azonosítóként van konfigurálva, és tagja a **sysadmin** rögzített kiszolgálói szerepkörnek. További információkat a hitelesítési módokról [a hitelesítési mód kiválasztását leíró](/sql/relational-databases/security/choose-an-authentication-mode) cikkben talál.
+Ha engedélyezi az SQL Server-hitelesítést, adjon meg egy **bejelentkezési nevet** és egy **jelszót**. Ez a bejelentkezési név SQL Server hitelesítési Bejelentkezési azonosítóként van konfigurálva, és tagja a **sysadmin** rögzített kiszolgálói szerepkörnek. További információkat a hitelesítési módokról [a hitelesítési mód kiválasztását leíró](/sql/relational-databases/security/choose-an-authentication-mode) cikkben talál.
 
 Ha nem szeretné engedélyezni SQL Server hitelesítés használatát, a virtuális gépen a helyi rendszergazdai fiókkal csatlakozhat a SQL Server-példányhoz.
 
 ### <a name="azure-key-vault-integration"></a>Azure Key Vault-integráció
 
-Ha biztonsági titkot szeretne tárolni az Azure-ban a titkosításhoz, válassza a **SQL Server beállításokat** , majd görgessen le az  **Azure Key Vault-integráció** elemre. Válassza az **Engedélyezés** lehetőséget, majd adja meg a kért információkat. 
+Ha biztonsági titkot szeretne tárolni az Azure-ban a titkosításhoz, válassza a **SQL Server beállításokat**, majd görgessen le az  **Azure Key Vault-integráció** elemre. Válassza az **Engedélyezés** lehetőséget, majd adja meg a kért információkat. 
 
 ![Azure Key Vault-integráció](./media/create-sql-vm-portal/azure-sqlvm-akv.png)
 
@@ -188,7 +188,7 @@ A következő táblázat felsorolja a Azure Key Vault (AKV) integrációjának k
 | **Key Vault URL** |A Key Vault helye. |`https://contosokeyvault.vault.azure.net/` |
 | **Egyszerű név** |Az Azure Active Directory szolgáltatás egyszerű neve. Ezt a nevet ügyfél-azonosítónak is hívják. |`fde2b411-33d5-4e11-af04eb07b669ccf2` |
 | **Egyszerű titok** |Az Azure Active Directory szolgáltatás egyszerű titka. Ezt a titkot ügyféltitoknak is hívják. |`9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=` |
-| **Hitelesítő adat neve** |**Hitelesítő adat neve** : a AKV-integráció egy hitelesítő adatot hoz létre SQL Serveron belül, és lehetővé teszi a virtuális gép számára a kulcstartó elérését. Válasszon egy nevet ennek a hitelesítő adatnak. |`mycred1` |
+| **Hitelesítő adat neve** |**Hitelesítő adat neve**: a AKV-integráció egy hitelesítő adatot hoz létre SQL Serveron belül, és lehetővé teszi a virtuális gép számára a kulcstartó elérését. Válasszon egy nevet ennek a hitelesítő adatnak. |`mycred1` |
 
 További információkért lásd: [Configure Azure Key Vault Integration for SQL Server on Azure VMs](azure-key-vault-integration-configure.md) Az Azure Key Vault-integráció konfigurálása az SQL Serverhez Azure virtuális gépeken.
 
@@ -234,7 +234,7 @@ Az SQL automatikus biztonsági mentésének engedélyezésekor konfigurálhatja 
 * Rendszeradatbázisok biztonsági mentése
 * Biztonsági mentések ütemezésének konfigurálása
 
-A biztonsági másolat titkosításához válassza az **Engedélyezés** lehetőséget. Ezután adja meg a **Jelszót** . Az Azure a biztonsági mentések titkosításához létrehoz egy tanúsítványt, amelyet a megadott jelszóval véd. Alapértelmezés szerint az ütemterv automatikusan be van állítva, de manuális ütemtervet is **létrehozhat.** 
+A biztonsági másolat titkosításához válassza az **Engedélyezés** lehetőséget. Ezután adja meg a **Jelszót**. Az Azure a biztonsági mentések titkosításához létrehoz egy tanúsítványt, amelyet a megadott jelszóval véd. Alapértelmezés szerint az ütemterv automatikusan be van állítva, de manuális ütemtervet is **létrehozhat.** 
 
 ![SQL virtuális gép automatikus biztonsági mentései](./media/create-sql-vm-portal/automated-backup.png)
 
@@ -269,7 +269,7 @@ A géphez való hozzáférés lehetővé teszi, hogy igény szerint közvetlenü
 
 ## <a name="connect-to-sql-server-remotely"></a><a id="connect"></a> Kapcsolódás SQL Server távolról
 
-Ebben az útmutatóban a virtuális gép **nyilvános** hozzáférését választotta, és **SQL Server a hitelesítést** . Ezek a beállítások automatikusan úgy konfigurálták a virtuális gépet, hogy az az internetről bármely ügyfél számára engedélyezi az SQL Serverhez való csatlakozást (feltéve, hogy helyes SQL-bejelentkezési névvel rendelkeznek).
+Ebben az útmutatóban a virtuális gép **nyilvános** hozzáférését választotta, és **SQL Server a hitelesítést**. Ezek a beállítások automatikusan úgy konfigurálták a virtuális gépet, hogy az az internetről bármely ügyfél számára engedélyezi az SQL Serverhez való csatlakozást (feltéve, hogy helyes SQL-bejelentkezési névvel rendelkeznek).
 
 > [!NOTE]
 > Ha az üzembe helyezés során nem a nyilvános hozzáférést választotta, akkor az üzembe helyezés után a portálon keresztül módosíthatja az SQL csatlakozási beállításait. További információ: [Az SQL csatlakozási beállításainak módosítása](ways-to-connect-to-sql.md#change).
@@ -282,6 +282,6 @@ Az alábbi fejezetek bemutatják, hogyan csatlakozhat az interneten keresztül a
   > Ez a példa a Common 1433-as portot használja. Ezt az értéket azonban módosítani kell, ha egy másik portot (például 1401) adott meg a SQL Server VM telepítése során. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az SQL Server használatáról az Azure-ban: [SQL Server on Azure Virtual Machines](sql-server-on-azure-vm-iaas-what-is-overview.md) (SQL Server az Azure virtuális gépeken) és [Frequently Asked Questions](frequently-asked-questions-faq.md) (Gyakran ismételt kérdések).

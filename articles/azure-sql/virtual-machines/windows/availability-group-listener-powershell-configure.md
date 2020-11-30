@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cb55274800b239cf0e1e942647ae0c65b321b862
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 147c507cde9abf2ef97098c6b41fbbd4d67f02d2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790049"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324805"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Egy vagy több always on rendelkezésre állási csoport figyelők konfigurálása – Resource Manager
 
@@ -64,7 +64,7 @@ Az [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) két 
 Egy rendelkezésre állási csoport aktuális [Microsoft-sablonja](./availability-group-quickstart-template-configure.md) egy alapszintű Load balancert használ alapszintű IP-címekkel.
 
    > [!NOTE]
-   > Ha standard Load balancert és Azure Storage-t használ a Felhőbeli tanúsító számára, konfigurálnia kell egy [szolgáltatási végpontot](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network) . 
+   > Ha standard Load balancert és Azure Storage-t használ a Felhőbeli tanúsító számára, konfigurálnia kell egy [szolgáltatási végpontot](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) . 
    > 
 
 A cikkben szereplő példák a standard Load balancert határozzák meg. A példákban a parancsfájl tartalmaz `-sku Standard` .
@@ -199,7 +199,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. Ekkor megjelenik a Feladatátvevőfürt-kezelőban létrehozott figyelő neve. Kattintson a jobb gombbal a figyelő nevére, és válassza a **Tulajdonságok** lehetőséget.
 
-1. A **port** mezőben adja meg a rendelkezésre állási csoport figyelő portszámát a korábban használt $EndpointPort használatával (1433 volt az alapértelmezett), majd kattintson az **OK gombra** .
+1. A **port** mezőben adja meg a rendelkezésre állási csoport figyelő portszámát a korábban használt $EndpointPort használatával (1433 volt az alapértelmezett), majd kattintson az **OK gombra**.
 
 ## <a name="test-the-connection-to-the-listener"></a>A figyelővel létesített kapcsolatok tesztelése
 
@@ -236,7 +236,7 @@ Vegye figyelembe a következő irányelveket a rendelkezésre állási csoport f
   - A Load Balancer az AG-figyelőhöz tartozó lebegőpontos IP-címei
   - A fürt alapvető IP-címe, ha van ilyen.
 
-* Hozzon létre egy szolgáltatási végpontot, ha standard Load balancert használ a Felhőbeli tanúsító Azure Storage szolgáltatással. További információ: [hozzáférés engedélyezése virtuális hálózatról](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network).
+* Hozzon létre egy szolgáltatási végpontot, ha standard Load balancert használ a Felhőbeli tanúsító Azure Storage szolgáltatással. További információ: [hozzáférés engedélyezése virtuális hálózatról](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
 
 ## <a name="for-more-information"></a>További tudnivalók
 

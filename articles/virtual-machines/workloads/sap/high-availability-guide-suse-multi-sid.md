@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 3827fa7a98cef9358db0ee102925586bce97fae6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cf0703406b71cb56bdd75a04746dfce7db6af471
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188683"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327134"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken SUSE Linux Enterprise Server for SAP Applications multi-SID Guide
 
@@ -94,7 +94,7 @@ A fürtben részt vevő virtuális gépeket úgy kell méretezni, hogy az össze
 
 A magas rendelkezésre állás eléréséhez az SAP NetWeaver magas rendelkezésre állású NFS-megosztásokat igényel. Ebben a példában feltételezzük, hogy az SAP NFS-megosztások vagy egy olyan, magasan elérhető [NFS-fájlkiszolgálón](./high-availability-guide-suse-nfs.md)futnak, amelyet több SAP-rendszer is használhat. Vagy a megosztások [Azure NETAPP Files NFS-köteteken](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)vannak telepítve.  
 
-![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
+![A pacemaker-fürt részletes információkat jelenít meg két több SID-fürtről, a msidcl1 és a msidcl2.](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
 > [!IMPORTANT]
 > Az Azure-beli virtuális gépeken futó SUSE Linux rendszerű, az SAP ASCS és a több SID-fürtözés támogatásának támogatása ugyanazon a fürtön **öt** SAP-SID-re korlátozódik. Minden új SID növeli a bonyolultságot. Az SAP sorba helyezni Replication Server 1 és a sorba helyezni Replication Server 2 együttes használata **nem támogatott** ugyanazon a fürtön. A többszörös SID-fürtszolgáltatás több SAP ASCS/ERS példány telepítését ismerteti különböző SID-kiszolgálókkal egy pacemaker-fürtben. Jelenleg a többszörös SID-fürtszolgáltatás csak ASCS/ERS esetén támogatott.  
@@ -971,7 +971,7 @@ A bemutatott tesztek egy két csomóponton, több SID-fürtön, három SAP-rends
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl2
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 30481fee949df16c70718d0a9cbc6df9ca54d11e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: af63eb68ec82a0725befed723298c079e82bdfdb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182546"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327100"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszerben egyéni tárolóval
 
@@ -20,7 +20,7 @@ A függvény kódjának egyéni Linux-tárolóban való üzembe helyezéséhez [
 
 Az alapértelmezett Azure App Service tárolót a [Linuxon üzemeltetett első függvény létrehozása](./create-first-function-cli-csharp.md?pivots=programming-language-python)című témakörben leírtak szerint is használhatja. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Function alkalmazást és egy Docker a Azure Functions Core Tools használatával.
@@ -54,34 +54,34 @@ Ezt az oktatóanyagot követheti Windows, macOS vagy Linux rendszerű számító
 Egy terminálon vagy parancssorban futtassa a következő parancsot a választott nyelvhez, és hozzon létre egy Function app-projektet egy nevű mappában `LocalFunctionsProject` .  
 ::: zone-end  
 ::: zone pivot="programming-language-csharp"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime dotnet --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-javascript"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime node --language javascript --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime powershell --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime python --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime node --language typescript --docker
 ```
 ::: zone-end
 ::: zone pivot="programming-language-java"  
 Egy üres mappában futtassa a következő parancsot a Functions-projekt [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)-ból való létrehozásához.
 
-# <a name="bash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8 -Ddocker
 ```
@@ -118,41 +118,41 @@ A `--docker` beállítás létrehoz egy `Dockerfile` projektet a projekthez, ame
 
 Navigáljon a projekt mappájába:
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-```
+```console
 cd LocalFunctionsProject
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
-```
+```console
 cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
 Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol az `--name` argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new` hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének, valamint egy *function.js* nevű konfigurációs fájlnak.
 
-```
+```console
 func new --name HttpExample --template "HTTP trigger"
 ```
 ::: zone-end  
 A függvény helyi teszteléséhez indítsa el a helyi Azure Functions futásidejű gazdagépet a projekt mappájának gyökerében: 
 ::: zone pivot="programming-language-csharp"  
-```
+```console
 func start --build  
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-powershell,programming-language-python"   
-```
+```console
 func start  
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-```
+```console
 npm install
 npm start
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
-```
+```console
 mvn clean package  
 mvn azure-functions:run
 ```
@@ -167,7 +167,7 @@ Választható Vizsgálja meg a *Docker* gyökerében. A Docker leírja a szüks�
     
 A legfelső szintű projekt mappában futtassa a [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, és adjon meg egy nevet, `azurefunctionsimage` és egy címkét `v1.0.0` . A `<DOCKER_ID>` helyére a Docker Hub-fiók azonosítóját írja. Ez a parancs létrehozza a tároló Docker-rendszerképét.
 
-```
+```console
 docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
 ```
 
@@ -175,7 +175,7 @@ Ha a parancs befejeződik, az új tárolót helyileg is futtathatja.
     
 A Build teszteléséhez futtassa a rendszerképet egy helyi tárolóban a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) paranccsal, és cserélje le újra a `<DOCKER_ID` DOCKer-azonosítóval, és adja hozzá a portok argumentumot `-p 8080:80` :
 
-```
+```console
 docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
@@ -197,13 +197,13 @@ A Docker hub egy tároló-beállításjegyzék, amely képeket és lemezképeket
 
 1. Ha még nem jelentkezett be a Docker-be, ezt a [Docker-bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) paranccsal teheti meg, és cserélje `<docker_id>` le a DOCKer-azonosítóra. Ez a parancs megkéri a felhasználónevet és a jelszót. A "sikeres bejelentkezés" üzenet megerősíti, hogy bejelentkezett.
 
-    ```
+    ```console
     docker login
     ```
     
 1. Miután bejelentkezett, küldje le a rendszerképet Docker hub-ra a Docker [push](https://docs.docker.com/engine/reference/commandline/push/) paranccsal, majd ismét cserélje `<docker_id>` le a DOCKer-azonosítóra.
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
 
@@ -419,13 +419,13 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
     
 1. Hozza létre újra a rendszerképet a `docker build` paranccsal, és cserélje `<docker_id>` le a Docker-azonosítóra:
 
-    ```
+    ```console
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
     ```
     
 1. Küldje le a frissített rendszerképet a Docker hub szolgáltatásba, amely jóval kevesebb időt vesz igénybe, mint az első leküldéses példány, amelyet a rendszerképnek csak a frissített szegmenseit kell feltölteni.
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
@@ -492,13 +492,13 @@ Ha a várólista-kötés definiálva van, most frissítheti a függvényt, hogy 
 
 1. A gyökérkönyvtárban futtassa újra a parancsot, `docker build` és ezúttal frissítse a címkében szereplő verziót `v1.0.1` . Ahogy korábban is, cserélje le a `<docker_id>` Docker hub-fiók azonosítóját:
 
-    ```
+    ```console
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.1 .
     ```
     
 1. Küldje vissza a frissített képet a tárházba a következővel `docker push` :
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.1
     ```
 
@@ -520,7 +520,7 @@ A folyamatos költségek elkerülése érdekében törölje az `AzureFunctionsCo
 az group delete --name AzureFunctionsContainer-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Figyelési függvények](functions-monitoring.md)
 + [Méretezési és üzemeltetési lehetőségek](functions-scale.md)

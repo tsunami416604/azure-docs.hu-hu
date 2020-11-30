@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e6f6d1960c07dc23c584dec5bb424f91630fc1bb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 92cd20f9e636c50416a72ec974a33c87da1ae2cb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785068"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327270"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli virtuális gépeken futó SQL Server biztonsági szempontjai
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ A következő szakaszokban javaslatokat talál a fenti pontokon való gondolkod�
 
 ## <a name="secure-connections"></a>Biztonságos kapcsolatok
 
-Ha katalógus-rendszerképpel rendelkező SQL Server virtuális gépet hoz létre, a **SQL Server kapcsolódási** lehetőséggel **helyi (virtuális gépen belüli)** , **magánjellegű (Virtual Networkon belüli** ) vagy **nyilvános (Internet)** kapcsolaton keresztül választhat.
+Ha katalógus-rendszerképpel rendelkező SQL Server virtuális gépet hoz létre, a **SQL Server kapcsolódási** lehetőséggel **helyi (virtuális gépen belüli)**, **magánjellegű (Virtual Networkon belüli**) vagy **nyilvános (Internet)** kapcsolaton keresztül választhat.
 
 ![SQL Server kapcsolat](./media/security-considerations-best-practices/sql-vm-connectivity-option.png)
 
@@ -59,7 +59,7 @@ Végezetül vegye fontolóra a titkosított kapcsolatok engedélyezését az Azu
 
 ## <a name="encryption"></a>Titkosítás
 
-A felügyelt lemezek Server-Side titkosítást kínálnak, és Azure Disk Encryption. A [kiszolgálóoldali titkosítás](../../../virtual-machines/windows/disk-encryption.md) titkosítást biztosít, és biztosítja az adatok védelmét a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítése érdekében. A [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) BitLocker-vagy DM-Crypt-technológiát használ, és integrálja a Azure Key Vault az operációs rendszer és az adatlemezek titkosítására. 
+A felügyelt lemezek Server-Side titkosítást kínálnak, és Azure Disk Encryption. A [kiszolgálóoldali titkosítás](../../../virtual-machines/disk-encryption.md) titkosítást biztosít, és biztosítja az adatok védelmét a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítése érdekében. A [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) BitLocker-vagy DM-Crypt-technológiát használ, és integrálja a Azure Key Vault az operációs rendszer és az adatlemezek titkosítására. 
 
 ## <a name="use-a-non-default-port"></a>Nem alapértelmezett port használata
 
@@ -84,7 +84,7 @@ Ha SQL Server egy nem alapértelmezett portot figyel, a csatlakozáskor meg kell
 
 Nem szeretné, hogy a támadók egyszerűen kitalálják a fiókok nevét vagy jelszavát. A következő tippek segíthetnek a használatához:
 
-- Hozzon létre egy olyan egyedi helyi rendszergazdai fiókot, amelynek neve nem **rendszergazda** .
+- Hozzon létre egy olyan egyedi helyi rendszergazdai fiókot, amelynek neve nem **rendszergazda**.
 
 - Komplex erős jelszavakat használhat az összes fiókhoz. Az erős jelszavak létrehozásával kapcsolatos további információkért tekintse meg az [erős jelszó létrehozásával](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password) foglalkozó cikket.
 
@@ -93,7 +93,7 @@ Nem szeretné, hogy a támadók egyszerűen kitalálják a fiókok nevét vagy j
   - Hozzon létre egy olyan SQL-fiókot, amely a **sysadmin** tagsággal rendelkező egyedi névvel rendelkezik. Ezt a portálon végezheti el az **SQL-hitelesítés** engedélyezésével a kiépítés során.
 
     > [!TIP] 
-    > Ha nem engedélyezi az SQL-hitelesítést a kiépítés során, manuálisan kell módosítania a hitelesítési módot **SQL Server és Windows hitelesítési módra** . További információ: a [kiszolgáló hitelesítési módjának módosítása](/sql/database-engine/configure-windows/change-server-authentication-mode).
+    > Ha nem engedélyezi az SQL-hitelesítést a kiépítés során, manuálisan kell módosítania a hitelesítési módot **SQL Server és Windows hitelesítési módra**. További információ: a [kiszolgáló hitelesítési módjának módosítása](/sql/database-engine/configure-windows/change-server-authentication-mode).
 
   - Ha az **sa** bejelentkezést kell használnia, engedélyezze a bejelentkezést a kiépítés után, és rendeljen hozzá egy új erős jelszót.
 
@@ -106,7 +106,7 @@ A helyszíni biztonsági gyakorlatokkal kapcsolatos további információkért t
 A virtuális gépek biztonságával kapcsolatos további információkért lásd a [Virtual Machines biztonsági áttekintése](../../../security/fundamentals/virtual-machines-overview.md)című témakört.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a teljesítményre vonatkozó ajánlott eljárások is érdeklik, tekintse [meg az Azure Virtual Machines SQL Server teljesítményével kapcsolatos ajánlott eljárásokat](performance-guidelines-best-practices.md)ismertető témakört.
 

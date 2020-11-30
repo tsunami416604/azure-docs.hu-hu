@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d23560e8ee387ca8bc9cb4bba4211f6c8272addd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 07f1a6ff5d15ee552680c59c86a194aeabe5b866
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490882"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326386"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure import/export szolgáltatás használata az Azure-ba való adatimportálásra Blob Storage
 
@@ -52,7 +52,7 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
 1. Csatlakoztathatja a lemezmeghajtókat a Windows rendszerhez a SATA-összekötők használatával.
 2. Hozzon létre egyetlen NTFS-kötetet az egyes meghajtókon. Rendeljen meghajtóbetűjelet a kötethez. Ne használja a csatolási.
 3. Engedélyezze a BitLocker-titkosítást az NTFS-köteten. Ha Windows Server rendszert használ, használja a [Windows server 2012 R2 rendszeren a BitLocker engedélyezésének](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)útmutatását.
-4. Az Adatmásolás titkosított kötetre. A drag and drop vagy a Robocopy vagy bármely ilyen másolási eszköz használatával. A Journal-( *. jrn* ) fájl ugyanabban a mappában jön létre, ahol az eszközt futtatja.
+4. Az Adatmásolás titkosított kötetre. A drag and drop vagy a Robocopy vagy bármely ilyen másolási eszköz használatával. A Journal-(*. jrn*) fájl ugyanabban a mappában jön létre, ahol az eszközt futtatja.
 
    Ha a meghajtó zárolva van, és fel kell oldania a meghajtó zárolását, a zárolás lépései a használati esettől függően eltérőek lehetnek.
 
@@ -109,7 +109,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
 
     ![Kattintson az importálási/exportálási feladatok létrehozása lehetőségre.](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. Az **alapjaiban** :
+4. Az **alapjaiban**:
 
    * Válassza **az Importálás az Azure-ba** lehetőséget.
    * Adjon meg egy leíró nevet az importálási feladatokhoz. A név használatával követheti nyomon a feladatok állapotát.
@@ -120,7 +120,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
 
      ![Importálási feladatok létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-5. A **feladatok részletei** :
+5. A **feladatok részletei**:
 
    * Töltse fel a meghajtó-előkészítési lépés során beszerzett meghajtó-napló fájljait. Ha `waimportexport.exe version1` használta, töltsön fel egy fájlt minden előkészített meghajtóra. Ha a naplófájl mérete meghaladja a 2 MB-ot, akkor használhatja a `<Journal file name>_DriveInfo_<Drive serial ID>.xml` fájlt is a Journal-fájllal.
    * Válassza ki a cél Storage-fiókot, ahol az adat található.
@@ -128,7 +128,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
 
    ![Importálási feladatok létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-6. **Visszaszállítási adatok** :
+6. **Visszaszállítási adatok**:
 
    * Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com`  használni kívánt szolgáltatóra vonatkozó információkkal.
    * Adjon meg egy érvényes, a szállítóval létrehozott számlaszámot. A Microsoft ezt a fiókot használja a meghajtók visszaszállításához az importálási feladatok befejezését követően. Ha nem rendelkezik fiókkal, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](https://www.dhl.com/) Carrier-fiókot.
@@ -139,7 +139,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
 
      ![Importálási feladatok létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
-7. Az **összegzésben** :
+7. Az **összegzésben**:
 
    * Tekintse át az összegzésben megadott feladattal kapcsolatos információkat. Jegyezze fel a feladatok nevét és az Azure-adatközpontok szállítási címeit, hogy a lemezeket vissza lehessen szállítani az Azure-ba. Ezeket az információkat később a szállítási címkén lehet használni.
    * Az importálási feladatok létrehozásához kattintson **az OK** gombra.
@@ -160,7 +160,7 @@ Az alábbi lépések végrehajtásával hozhat létre importálási feladatot az
     az extension add --name import-export
     ```
 
-1. Használhat meglévő erőforráscsoportot, vagy létrehozhat egyet. Erőforráscsoport létrehozásához futtassa az az [Group Create](/cli/azure/group#az_group_create) parancsot:
+1. Használhat meglévő erőforráscsoportot, vagy létrehozhat egyet. Erőforráscsoport létrehozásához futtassa az [az group create](/cli/azure/group#az_group_create) parancsot:
 
     ```azurecli
     az group create --name myierg --location "West US"

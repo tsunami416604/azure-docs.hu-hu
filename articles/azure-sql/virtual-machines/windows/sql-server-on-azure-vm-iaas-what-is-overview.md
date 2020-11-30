@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 60f781ddfa5717bbe5bcbb05ec8c236c8594c587
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c6d03c896242d02e147e880a99eb9f1e7bb15da8
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793092"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326866"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az Azure Virtual Machines SQL Server (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -80,7 +80,7 @@ Az elérhető SQL Server on Linux virtuálisgép-lemezképek megjelenítéséhez
 ### <a name="bring-your-own-license"></a><a id="BYOL"></a> Saját licenc használata
 Saját licencet is használhat (BYOL). Ebben az esetben csak a virtuális gépért kell fizetnie, az SQL Server licencelésével kapcsolatos egyéb költségek nélkül.  Saját licence használatával hosszú távon pénzt takaríthat meg a folyamatos éles számítási feladatok esetében. A lehetőség követelményeivel kapcsolatos információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](pricing-guidance.md#byol).
 
-Ha saját licencet szeretne létrehozni, lehetősége van a használatban lévő használati SQL Server VM átalakítására, vagy egy rendszerképet is üzembe helyezhet a következővel: **{BYOL}** . A licencelési modellnek a használati és BYOL közötti váltásával kapcsolatos további információkért lásd: [SQL Server VM licencelési modelljének módosítása](licensing-model-azure-hybrid-benefit-ahb-change.md). 
+Ha saját licencet szeretne létrehozni, lehetősége van a használatban lévő használati SQL Server VM átalakítására, vagy egy rendszerképet is üzembe helyezhet a következővel: **{BYOL}**. A licencelési modellnek a használati és BYOL közötti váltásával kapcsolatos további információkért lásd: [SQL Server VM licencelési modelljének módosítása](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
 | Verzió | Operációs rendszer | Kiadás |
 | --- | --- | --- |
@@ -141,19 +141,19 @@ A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint enge
 ### <a name="windows-virtual-machines"></a>Windows rendszerű virtuális gépek
 * [Az Azure Virtual Machines áttekintése](../../../virtual-machines/windows/overview.md)
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 * [A Microsoft Azure Storage bemutatása](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>Hálózat
 * [Virtual Network áttekintése](../../../virtual-network/virtual-networks-overview.md)
 * [IP-címek az Azure-ban](../../../virtual-network/public-ip-addresses.md)
-* [Teljes tartománynév létrehozása az Azure Portalon](../../../virtual-machines/linux/portal-create-fqdn.md)
+* [Teljes tartománynév létrehozása az Azure Portalon](../../../virtual-machines/create-fqdn.md)
 
 ### <a name="sql"></a>SQL
 * [SQL Server dokumentáció](/sql/index)
 * [Az Azure SQL Database összehasonlítása](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg az Azure Virtual Machines SQL Serverával:
 

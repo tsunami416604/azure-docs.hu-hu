@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: f691ec2d6ba873ba8052c5fab35162932668f185
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c31187e87f18f0ec84cd5b80ccab997d0ba381c3
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496750"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324754"
 ---
 # <a name="migration-guide-db2-to-sql-managed-instance"></a>Áttelepítési útmutató: DB2 – SQL felügyelt példány
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -102,7 +102,7 @@ A séma konvertálásához kövesse az alábbi lépéseket:
 1. Mentse a projektet helyileg a kapcsolat nélküli séma szervizelési gyakorlatához. Válassza a **projekt mentése** lehetőséget a **fájl** menüből. 
 
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrálás
 
 Miután elvégezte az adatbázisok értékelését és az eltérések kezelését, a következő lépés az áttelepítési folyamat végrehajtása.
 
@@ -138,10 +138,10 @@ Miután áttelepítette az adatátvitelt a cél környezetbe, az összes olyan a
 
 Az adatbázis-áttelepítés tesztelési módszere a következő tevékenységekből áll:
 
-1. **Ellenőrzési tesztek fejlesztése** : az adatbázisok áttelepítésének TESZTELÉSéhez SQL-lekérdezéseket kell használnia. Létre kell hoznia az érvényesítési lekérdezéseket a forrás-és a célként megadott adatbázisokon való futtatáshoz. Az érvényesítési lekérdezéseknek le kell fedniük a definiált hatókört.
-1. **Tesztkörnyezet beállítása** : a tesztkörnyezet a forrás-adatbázis és a céladatbázis másolatát is tartalmazza. Ügyeljen arra, hogy elkülönítse a tesztkörnyezet.
-1. **Ellenőrzési tesztek futtatása** : futtassa az ellenőrző teszteket a forráson és a célhelyen, majd elemezze az eredményeket.
-1. **Teljesítménytesztek futtatása** : futtasson teljesítménytesztet a forráson és a célhelyen, majd elemezze és hasonlítsa össze az eredményeket.
+1. **Ellenőrzési tesztek fejlesztése**: az adatbázisok áttelepítésének TESZTELÉSéhez SQL-lekérdezéseket kell használnia. Létre kell hoznia az érvényesítési lekérdezéseket a forrás-és a célként megadott adatbázisokon való futtatáshoz. Az érvényesítési lekérdezéseknek le kell fedniük a definiált hatókört.
+1. **Tesztkörnyezet beállítása**: a tesztkörnyezet a forrás-adatbázis és a céladatbázis másolatát is tartalmazza. Ügyeljen arra, hogy elkülönítse a tesztkörnyezet.
+1. **Ellenőrzési tesztek futtatása**: futtassa az ellenőrző teszteket a forráson és a célhelyen, majd elemezze az eredményeket.
+1. **Teljesítménytesztek futtatása**: futtasson teljesítménytesztet a forráson és a célhelyen, majd elemezze és hasonlítsa össze az eredményeket.
 
    > [!NOTE]
    > A Migrálás utáni ellenőrzési tesztek fejlesztésére és futtatására vonatkozó segítségért vegye figyelembe a partner [QuerySurge](https://www.querysurge.com/company/partners/microsoft)elérhető adatminőségi megoldást. 
@@ -149,7 +149,7 @@ Az adatbázis-áttelepítés tesztelési módszere a következő tevékenységek
 
 ## <a name="leverage-advanced-features"></a>Speciális funkciók kihasználása 
 
-Ügyeljen arra, hogy kihasználja az Azure SQL felügyelt példányai által kínált fejlett felhőalapú funkciókat, például a [beépített magas rendelkezésre állást](../../database/high-availability-sla.md), a [fenyegetések észlelését](../../database/advanced-data-security.md), valamint [a számítási feladatok monitorozását és finomhangolását](../../database/monitor-tune-overview.md). 
+Ügyeljen arra, hogy kihasználja az Azure SQL felügyelt példányai által kínált fejlett felhőalapú funkciókat, például a [beépített magas rendelkezésre állást](../../database/high-availability-sla.md), a [fenyegetések észlelését](../../database/azure-defender-for-sql.md), valamint [a számítási feladatok monitorozását és finomhangolását](../../database/monitor-tune-overview.md). 
 
 
 Néhány SQL Server funkció csak akkor érhető el, ha az [adatbázis kompatibilitási szintje](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) a legújabb kompatibilitási szintre módosul (150). 
@@ -158,7 +158,7 @@ Néhány SQL Server funkció csak akkor érhető el, ha az [adatbázis kompatibi
 
 További segítségért tekintse meg a következő erőforrásokat, amelyeket a valós idejű migrációs projektek támogatásához fejlesztettek ki:
 
-|Objektum  |Description  |
+|Objektum  |Leírás  |
 |---------|---------|
 |[Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely segít felgyorsítani a nagyméretű ingatlanok értékelését azáltal, hogy lehetővé teszi a és automatizált és egységes célként megadott platform döntési folyamatát.|
 |[DB2 zOS adategységek felderítési és értékelési csomagja](https://github.com/Microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|Ha az SQL-szkriptet egy adatbázison futtatja, az eredményeket a fájlrendszer egyik fájljába exportálhatja. Számos fájlformátum támogatott, beleértve a *. csv fájlt is, így az eredményeket külső eszközökön, például táblázatokban rögzítheti. Ez a módszer akkor lehet hasznos, ha egyszerűen meg szeretné osztani az eredményeket olyan csapatokkal, amelyeken nincs telepítve a Workbench.|

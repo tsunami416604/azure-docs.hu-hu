@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 708ffce014f417f3794e59e1f79a3fcf9cba3f23
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: c9ef72241ac62efd8555de59bb52949321364035
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94639201"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325179"
 ---
 # <a name="remote-desktop-protocol-rdp-bandwidth-requirements"></a>RDP protokoll (RDP) sávszélességre vonatkozó követelmények
 
@@ -73,7 +73,7 @@ Ne feledje, hogy a hálózatra helyezett terhelés az alkalmazás számítási f
 
 Az alábbi táblázat a különböző grafikai forgatókönyvekben használt adatok becslését ismerteti. Ezek a számok egyetlen figyelő konfigurációra vonatkoznak, amely 1920 × 1080-feloldással, valamint alapértelmezett grafikus móddal és H. 264/AVC 444 grafikus móddal is rendelkezik.
 
-| Használati eset | Alapértelmezett mód | H. 264/AVC 444 üzemmód | Miniatűr | A forgatókönyv leírása |
+| Használati példa | Alapértelmezett mód | H. 264/AVC 444 üzemmód | Miniatűr | A forgatókönyv leírása |
 |:---|---:|---:|---|---|
 | Tétlen | 0,3 kbps | 0,3 kbps |:::image type="content" source="media/idle.png" alt-text="Képernyőkép az üresjárati kapcsolatban":::| A felhasználó szünetelteti a munkáját, és nincs aktív képernyős frissítés |
 | Microsoft Word | 100-150 kbps | 200-300 Kbps |:::image type="content" source="media/word.gif" alt-text="A Microsoft Word animációja":::| A felhasználó aktívan dolgozik a Microsoft Wordben, begépeli, beilleszti a grafikát és váltani a dokumentumok között |
@@ -114,7 +114,7 @@ Ha QoS-házirendet szeretne létrehozni a tartományhoz csatlakoztatott munkamen
 
 4. Kattintson a jobb gombbal az újonnan létrehozott házirendre, majd válassza a **Szerkesztés** lehetőséget.
 
-5. A Csoportházirend-felügyeleti szerkesztő bontsa ki a **Számítógép konfigurációja** , majd a **Windows beállításai** csomópontot, kattintson a jobb gombbal a **házirend alapú QoS** elemre, majd válassza az **új házirend létrehozása** parancsot.
+5. A Csoportházirend-felügyeleti szerkesztő bontsa ki a **Számítógép konfigurációja**, majd a **Windows beállításai** csomópontot, kattintson a jobb gombbal a **házirend alapú QoS** elemre, majd válassza az **új házirend létrehozása** parancsot.
 
 6. A **házirend alapú QoS** párbeszédpanel Megnyitás lapján adja meg az új szabályzat nevét a **név** mezőben. Válassza a **kimenő sávszélesség megadása** lehetőséget, és állítsa be a szükséges értéket, majd kattintson a **tovább** gombra.
 
@@ -124,11 +124,11 @@ Ha QoS-házirendet szeretne létrehozni a tartományhoz csatlakoztatott munkamen
 
 9. A négy oldalon válassza az **UDP** lehetőséget a **válassza ki** azt a protokollt, amelyre a QoS-házirend vonatkozik a legördülő listára.
 
-10. A címsor alatt **adja meg a forrásport számát** , válasszon **a forrás port vagy tartomány közül**. A kísérő szövegmezőbe írja be a **3390** karakterláncot. Válassza a **Befejezés** lehetőséget.
+10. A címsor alatt **adja meg a forrásport számát**, válasszon **a forrás port vagy tartomány közül**. A kísérő szövegmezőbe írja be a **3390** karakterláncot. Válassza a **Befejezés** gombot.
 
 Az új létrehozott házirendek nem lépnek érvénybe, amíg a Csoportházirend frissült a munkamenet-gazdagép számítógépein. Bár a Csoportházirend rendszeresen frissíti a saját példányát, a következő lépésekkel kényszerítheti az azonnali frissítést:
 
-1. Minden olyan munkamenet-gazdagépen, amelyre frissíteni kívánja Csoportházirend, nyisson meg egy parancssort rendszergazdaként ( *Futtatás rendszergazdaként* ).
+1. Minden olyan munkamenet-gazdagépen, amelyre frissíteni kívánja Csoportházirend, nyisson meg egy parancssort rendszergazdaként (*Futtatás rendszergazdaként*).
 
 2. A parancssorba írja be a következőt:
 
@@ -144,7 +144,7 @@ Az RDP-Shortpath vonatkozó szabályozási sebességet az alábbi PowerShell-par
 New-NetQosPolicy -Name "RDP Shortpath" -AppPathNameMatchCondition "svchost.exe" -IPProtocolMatchCondition UDP -IPSrcPortStartMatchCondition 3390 -IPSrcPortEndMatchCondition 3390 -DSCPAction 46 -NetworkProfile All
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Windows rendszerű virtuális asztali sávszélességre vonatkozó követelmények megismeréséhez tekintse meg [a Windows rendszerű virtuális asztalok RDP protokoll (RDP) sávszélesség-követelményeit](rdp-bandwidth.md)ismertető témakört.
 * A Windows rendszerű virtuális asztali hálózati kapcsolat megismeréséhez tekintse meg a [Windows rendszerű virtuális asztali hálózati kapcsolat ismertetése](network-connectivity.md)című témakört.

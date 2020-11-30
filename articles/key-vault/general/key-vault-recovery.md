@@ -8,12 +8,12 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: fbeb6f5f223642c09183c149188c6717c1f33a8e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 86190fa307133360c411aafc070412e7d527039e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748494"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324958"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>A Soft delete és a Purge Protection engedélyezése
 
@@ -27,7 +27,7 @@ A Soft delete és a Purge Protection két különböző Key Vault helyreállít�
 
 A **Soft delete** a Key vaultban tárolt kulcstartó és kulcsok, titkos kódok és tanúsítványok véletlen törlésének megelőzésére szolgál. Gondolja át, hogy a Soft-DELETE, például egy Lomtár. Ha töröl egy kulcstartót vagy egy Key Vault-objektumot, az a felhasználó által konfigurálható megőrzési időtartam vagy az alapértelmezett 90 nap után helyreállítható marad. A Soft Deleted állapotú kulcstartók **is törölhetők, ami azt** jelenti, hogy véglegesen törlődnek. Ez lehetővé teszi, hogy újra létrehozza a kulcstartókat és a Key Vault-objektumokat ugyanazzal a névvel. A kulcstartók és objektumok helyreállításához és törléséhez emelt szintű hozzáférési házirendre van szükség. **Ha a helyreállított törlés engedélyezve van, nem lehet letiltani.**
 
-Fontos megjegyezni, hogy a **Key Vault-nevek globálisan egyediek** , ezért nem hozhat létre olyan kulcstartót, amelynek a neve nem azonos a helyreállítható törölt állapotú kulcstartóval. Hasonlóképpen a kulcsok, titkos kódok és tanúsítványok nevei is egyediek a kulcstartón belül. Nem hozhat létre olyan titkos kulcsot, kulcsot vagy tanúsítványt, amelynek a neve megegyezik egy másikkal a helyreállítható törölt állapotban.
+Fontos megjegyezni, hogy a **Key Vault-nevek globálisan egyediek**, ezért nem hozhat létre olyan kulcstartót, amelynek a neve nem azonos a helyreállítható törölt állapotú kulcstartóval. Hasonlóképpen a kulcsok, titkos kódok és tanúsítványok nevei is egyediek a kulcstartón belül. Nem hozhat létre olyan titkos kulcsot, kulcsot vagy tanúsítványt, amelynek a neve megegyezik egy másikkal a helyreállítható törölt állapotban.
 
 A **védelem kiürítése** arra szolgál, hogy megakadályozza a kulcstároló, a kulcsok, a titkos kódok és a tanúsítványok rosszindulatú bennfentesek általi törlését. Gondoljon erre a Lomtárra egy időalapú zárolással. Az elemeket bármikor helyreállíthatja a konfigurálható megőrzési időtartam alatt. **A Key vaultot nem lehet véglegesen törölni vagy kiüríteni, amíg a megőrzési idő el nem telik.** Ha a megőrzési idő eltelt, a Key Vault vagy a Key Vault objektum automatikusan törlődik.
 
@@ -44,7 +44,7 @@ A **védelem kiürítése** arra szolgál, hogy megakadályozza a kulcstároló,
 1. Ellenőrizze, hogy a Soft-delete melletti választógomb a "helyreállítás engedélyezése" értékre van-e állítva.
 1. Ha a Soft-delete nincs engedélyezve a kulcstartóban, kattintson a választógombra a Soft delete engedélyezéséhez, majd kattintson a Save (Mentés) gombra.
 
-:::image type="content" source="../media/key-vault-recovery-1.png" alt-text="<egy képernyőképet a Azure Portalról>":::
+:::image type="content" source="../media/key-vault-recovery-1.png" alt-text="A tulajdonságok területen a Soft-delete kiemelve értékű, ahogy az az érték, amely lehetővé teszi a törlést.":::
 
 ## <a name="grant-access-to-a-service-principal-to-purge-and-recover-deleted-secrets"></a>Hozzáférés biztosítása egy egyszerű szolgáltatáshoz a törölt titkok kiürítéséhez és helyreállításához
 
@@ -56,7 +56,7 @@ A **védelem kiürítése** arra szolgál, hogy megakadályozza a kulcstároló,
 1. Görgessen a legördülő menü aljára, és kattintson a "helyreállítás" és a "kiürítés" elemre.
 1. A rendszerbiztonsági tag a legtöbb művelet végrehajtásához is szükség van a Get és a List funkciókra.
 
-:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="<egy képernyőképet a Azure Portalról>":::
+:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="A bal oldali navigációs panelen a hozzáférési házirendek ki vannak emelve. A hozzáférési házirendekben megjelenik a titkos pozíciók legördülő lista, és négy elem van kiválasztva: Get, List, Recover és purge.":::
 
 ## <a name="list-recover-or-purge-a-soft-deleted-key-vault"></a>Helyreállítható kulcstartók listázása, helyreállítása vagy törlése
 
@@ -72,9 +72,9 @@ A **védelem kiürítése** arra szolgál, hogy megakadályozza a kulcstároló,
 1. Ha vissza szeretné állítani a kulcstárolót, válassza a helyi ablaktábla alján található helyreállítás lehetőséget.
 1. Ha véglegesen törölni szeretné a kulcstárolót, válassza a kiürítés lehetőséget.
 
-:::image type="content" source="../media/key-vault-recovery-3.png" alt-text="<egy képernyőképet a Azure Portalról>":::
+:::image type="content" source="../media/key-vault-recovery-3.png" alt-text="A Key Vaults szolgáltatásban a törölt tárolók kezelése beállítás ki van emelve.":::
 
-:::image type="content" source="../media/key-vault-recovery-4.png" alt-text="<egy képernyőképet a Azure Portalról>":::
+:::image type="content" source="../media/key-vault-recovery-4.png" alt-text="A törölt kulcstartók kezelése oldalon az egyetlen megjelenített kulcstartó ki van jelölve és ki van választva, és a helyreállítás gomb ki van emelve.":::
 
 ## <a name="list-recover-or-purge-soft-deleted-secrets-keys-and-certificates"></a>A törölt titkos kódok, kulcsok és tanúsítványok listázása, helyreállítása vagy törlése
 
@@ -87,7 +87,7 @@ A **védelem kiürítése** arra szolgál, hogy megakadályozza a kulcstároló,
 1. Válassza ki a kezelni kívánt titkot, kulcsot vagy tanúsítványt.
 1. Válassza a helyreállítás vagy a Törlés lehetőséget a helyi ablaktábla alján.
 
-:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="<egy képernyőképet a Azure Portalról>":::
+:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="A kulcsok területen a törölt kulcsok kezelése beállítás ki van emelve.":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

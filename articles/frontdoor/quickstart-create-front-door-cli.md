@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: a24c0fdb244f87dbf281bcf59b5e1986a215142a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e01b56f88270348167ef1eef9d913e65074d9247
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275629"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327253"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Rövid útmutató: a globális webalkalmazások Azure CLI-vel való létrehozásának első lépései
 
@@ -44,7 +44,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat.
 
-Ebben a rövid útmutatóban két erőforráscsoport szükséges. Egy az *USA középső* régiójában, a második pedig az *USA déli középső*régiójában.
+Ebben a rövid útmutatóban két erőforráscsoport szükséges. Egy az *USA középső* régiójában, a második pedig az *USA déli középső* régiójában.
 
 Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true)paranccsal:
 
@@ -66,7 +66,7 @@ Ha még nem rendelkezik webalkalmazással, a következő parancsfájl használat
 
 ### <a name="create-app-service-plans"></a>App Service-csomagok létrehozása
 
-A webalkalmazások létrehozása előtt két app Service-csomagra lesz szüksége, egyet az *USA középső* régiójában, a második pedig az *USA déli középső*régiójában.
+A webalkalmazások létrehozása előtt két app Service-csomagra lesz szüksége, egyet az *USA középső* régiójában, a második pedig az *USA déli középső* régiójában.
 
 App Service-csomagok létrehozása az [az appservice Plan Create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true)paranccsal:
 
@@ -77,7 +77,7 @@ az appservice plan create \
 
 az appservice plan create \
 --name myAppServicePlanSouthCentralUS \
--resource-groupg myRGFDSouthCentral
+--resource-group myRGFDSouthCentral
 ```
 
 ### <a name="create-web-apps"></a>Webalkalmazások létrehozása
@@ -144,7 +144,7 @@ az group delete \
 --name myRGFDSouthCentral
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
 * Front Door

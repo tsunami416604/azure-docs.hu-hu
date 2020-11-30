@@ -9,17 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 59567cf2dc03952a78852f3288e78ba06aa769ee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 557c624b6ed683f701b6a8d38854cd8604e05b31
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325682"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325264"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>2. Oktatóanyag: a kredit kockázati modelljeinek betanítása – Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
-
+**a következőkre vonatkozik:** ![ Ez egy pipa, ami azt jelenti, hogy ez a cikk a Machine Learning Studio (klasszikus) elemre vonatkozik.  ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus)   ![ Ez egy X, ami azt jelenti, hogy ez a cikk Azure Machine learningre vonatkozik.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 Ez az oktatóanyag részletesen bemutatja a prediktív elemzési megoldások fejlesztésének folyamatát. Egy egyszerű modellt fejleszt Machine Learning Studio (klasszikus).  Ezután Azure Machine Learning webszolgáltatásként helyezheti üzembe a modellt.  Ez a központilag telepített modell új adatelemzést végezhet az előrejelzésekhez. Ez az oktatóanyag **egy háromrészes oktatóanyag-sorozat második része**.
 
@@ -118,7 +117,7 @@ Most konfigurálja a [normalizálás][normalize-data] adatmodult:
 
 1. Kattintson ide az [Adatnormalizálás][normalize-data] modul kiválasztásához. A **Tulajdonságok** panelen válassza a **TANH** lehetőséget az **átalakítási módszer** paraméterhez.
 
-1. Kattintson **az oszlop kiválasztásának indítása** lehetőségre, válassza a "nincs oszlop" lehetőséget a **kezdéshez** , **jelölje be az** első legördülő menüben válassza az **oszlop típusa** lehetőséget a második legördülő menüben, majd válassza a **numerikus** lehetőséget a harmadik legördülő menüben. Ez azt jelenti, hogy az összes numerikus oszlop (és csak numerikus) át lett alakítva.
+1. Kattintson **az oszlop kiválasztásának indítása** lehetőségre, válassza a "nincs oszlop" lehetőséget a **kezdéshez**, **jelölje be az** első legördülő menüben válassza az **oszlop típusa** lehetőséget a második legördülő menüben, majd válassza a **numerikus** lehetőséget a harmadik legördülő menüben. Ez azt jelenti, hogy az összes numerikus oszlop (és csak numerikus) át lett alakítva.
 
 1. Kattintson a sor jobb oldalán a pluszjelre (+), ez egy sort hoz létre a legördülő listáról. Válassza a **kizárás** lehetőséget az első legördülő menüben, majd a második legördülő listában válassza az **oszlopnevek** lehetőséget, majd a szövegmezőbe írja be a "hitelkockázat" értéket. Ez azt jelenti, hogy a hitelkockázat oszlopot figyelmen kívül kell hagyni (ezt azért kell megtennie, mert ez az oszlop numerikus, ezért a rendszer átalakítja, ha nem zárja ki).
 
@@ -208,7 +207,7 @@ Az eredmények értelmezése és a modell teljesítményének finomhangolása az
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következő lépéseket végezte el: 
  

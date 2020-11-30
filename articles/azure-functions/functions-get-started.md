@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: d988bb7ef31df518d50ab9e2e8ffc1dcad4454da
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 78fd13825becfa186960a0dfd3dee83c312c9bcf
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168049"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326947"
 ---
 # <a name="getting-started-with-azure-functions"></a>Bevezetés az Azure Functions használatába
 
@@ -25,7 +25,7 @@ Az első lépésekhez használja az alábbi forrásokat.
 
 | Művelet | További források |
 | --- | --- |
-| **Az első függvény létrehozása** | A következő eszközök egyikének használata:<br><br><li>[Visual Studio Code](./functions-create-your-first-function-visual-studio.md)<li>[Visual Studio](./create-first-function-vs-code-csharp.md)<li>[Parancssor](./create-first-function-cli-csharp.md) |
+| **Az első függvény létrehozása** | A következő eszközök egyikének használata:<br><br><li>[Visual Studio](./functions-create-your-first-function-visual-studio.md)<li>[Visual Studio Code](./create-first-function-vs-code-csharp.md)<li>[Parancssor](./create-first-function-cli-csharp.md) |
 | **Futó függvény megjelenítése** | <li>[Azure-minták böngésző](/samples/browse/?expanded=azure&languages=csharp&products=azure-functions)<li>[Azure közösségi könyvtár](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=C%23) |
 | **Ismerkedés egy interaktív oktatóanyaggal**| <li>[Az üzleti felhasználási helyzethez legmegfelelőbb kiszolgáló nélküli Azure-technológia kiválasztása](/learn/modules/serverless-fundamentals/)<li>[Jól összeállítható keretrendszer – teljesítmény-hatékonyság](/learn/modules/azure-well-architected-performance-efficiency/)<li>[Azure-függvény végrehajtása triggerekkel](/learn/modules/execute-azure-function-with-triggers/) <br><br>Az [interaktív oktatóanyagok teljes listáját](/learn/browse/?expanded=azure&products=azure-functions)Microsoft Learn tekintheti meg.|
 | **Részletes információ** | <li>Megtudhatja, hogyan [növelheti vagy csökkentheti](./functions-scale.md) a függvények az igény szerinti egyezést<li>Ismerje meg az elérhető különböző [üzembe helyezési módszereket](./functions-deployment-technologies.md)<li>A függvények elemzését a beépített [monitorozási eszközök](./functions-monitoring.md) használatával teheti meg<li>A [C# nyelvi referenciájának](./functions-dotnet-class-library.md) beolvasása|
@@ -68,7 +68,7 @@ Az első lépésekhez használja az alábbi forrásokat.
 | **Részletes információ** | <li>Megtudhatja, hogyan [növelheti vagy csökkentheti](./functions-scale.md) a függvények az igény szerinti egyezést<li>Ismerje meg az elérhető különböző [üzembe helyezési módszereket](./functions-deployment-technologies.md)<li>A függvények elemzését a beépített [monitorozási eszközök](./functions-monitoring.md) használatával teheti meg<li>A [Python nyelvi referenciájának](./functions-reference-python.md) beolvasása|
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure Functions-alkalmazások anatómiájának megismerése](./functions-reference.md)

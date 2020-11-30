@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1826b66b0548b7567af59de64549c7eb700025c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7e2826221bd9d15472467c4dd8676d3d0538e0d6
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130901"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326573"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics feladatokhoz tartozó SQL Database hivatkozási adatainak használata
 
@@ -34,11 +34,11 @@ A következő lépésekkel adhat hozzá Azure SQL Database hivatkozásként mega
 
 1. A Stream Analyticsi feladatban válassza a **feladatok topológia** alatt található **bemenetek** lehetőséget. Kattintson a **hivatkozás hozzáadása** elemre, és válassza a **SQL Database** lehetőséget.
 
-   ![Stream Analytics feladatok bemenete](./media/sql-reference-data/stream-analytics-inputs.png)
+   ![A bal oldali navigációs ablaktáblán a bemenetek elem van kiválasztva. A bemeneteken a + hivatkozás hozzáadása elem be van jelölve, és megjelenít egy legördülő listát, amely megjeleníti a blob Storage és a SQL Database értékeket.](./media/sql-reference-data/stream-analytics-inputs.png)
 
 2. Töltse ki a Stream Analytics bemeneti konfigurációját. Válassza ki az adatbázis nevét, a kiszolgáló nevét, a felhasználónevet és a jelszót. Ha azt szeretné, hogy a rendszer rendszeres időközönként frissítse a hivatkozási adatokat, válassza a "bekapcsolva" lehetőséget a frissítési sebesség megadásához a DD: HH: PP lapon. Ha a nagyméretű adatkészletek rövid frissítési gyakorisággal rendelkeznek, használhat [különbözeti lekérdezést](sql-reference-data.md#delta-query)is.
 
-   ![SQL Database hivatkozás konfigurálása](./media/sql-reference-data/sql-input-config.png)
+   ![Ha SQL Database van kiválasztva, megjelenik a SQL Database új bemenet lap. A bal oldali ablaktáblán egy konfigurációs űrlap található, a jobb oldali ablaktáblán pedig egy pillanatkép-lekérdezés található.](./media/sql-reference-data/sql-input-config.png)
 
 3. Tesztelje a pillanatkép-lekérdezést az SQL-lekérdezés szerkesztőjében. További információ: [a Azure Portal SQL-lekérdezési szerkesztőjének használata a kapcsolódáshoz és az adatok lekérdezéséhez](../azure-sql/database/connect-query-portal.md)
 
@@ -46,7 +46,7 @@ A következő lépésekkel adhat hozzá Azure SQL Database hivatkozásként mega
 
 Navigáljon a **Storage-fiók beállításaihoz** a **Konfigurálás** területen, majd válassza a **Storage-fiók hozzáadása** lehetőséget.
 
-   ![Stream Analytics Storage-fiók beállításai](./media/sql-reference-data/storage-account-settings.png)
+   ![A Storage-fiók beállításai a bal oldali ablaktáblán vannak kiválasztva. A jobb oldali ablaktáblán található egy Storage-fiók hozzáadása gomb.](./media/sql-reference-data/storage-account-settings.png)
 
 ### <a name="start-the-job"></a>A feladat indítása
 
@@ -81,37 +81,37 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 1. A Visual Studio **View** (Nézet) menüjében válassza a **Server Explorer** (Kiszolgálókezelő) lehetőséget.
 
-2. Kattintson a jobb gombbal az **Azure** -ra, válassza a **Kapcsolódás Microsoft Azure előfizetéshez** lehetőséget, majd jelentkezzen be az Azure-fiókjával.
+2. Kattintson a jobb gombbal az **Azure**-ra, válassza a **Kapcsolódás Microsoft Azure előfizetéshez** lehetőséget, majd jelentkezzen be az Azure-fiókjával.
 
 ### <a name="create-a-stream-analytics-project"></a>Stream Analytics-projekt létrehozása
 
 1. Válassza a **File > New Project** (Fájl > Új projekt) lehetőséget. 
 
-2. A bal oldali sablonlistában válassza ki a **Stream Analytics** , majd az **Azure Stream Analytics Application** (Azure Stream Analytics-alkalmazás) elemet. 
+2. A bal oldali sablonlistában válassza ki a **Stream Analytics**, majd az **Azure Stream Analytics Application** (Azure Stream Analytics-alkalmazás) elemet. 
 
-3. Adja meg a projekt **nevét** , **helyét** és a **megoldás nevét** , majd kattintson **az OK gombra** .
+3. Adja meg a projekt **nevét**, **helyét** és a **megoldás nevét**, majd kattintson **az OK gombra**.
 
-   ![Új Stream Analytics projekt a Visual Studióban](./media/sql-reference-data/stream-analytics-vs-new-project.png)
+   ![A Stream Analytics sablon ki van választva, Azure Stream Analytics alkalmazás van kiválasztva, és a név, a hely és a megoldás neve mezők ki vannak emelve.](./media/sql-reference-data/stream-analytics-vs-new-project.png)
 
 ### <a name="define-sql-database-reference-data-input"></a>Adja meg SQL Database a hivatkozási adatok bemenetét
 
 1. Hozzon létre egy új bemenetet.
 
-   ![Új Stream Analytics bevitel a Visual Studióban](./media/sql-reference-data/stream-analytics-vs-input.png)
+   ![Az új elem hozzáadása párbeszédpanelen a bemenet lehetőség van kiválasztva.](./media/sql-reference-data/stream-analytics-vs-input.png)
 
-2. Kattintson duplán a **Input.js** elemre a **megoldáskezelő** .
+2. Kattintson duplán a **Input.js** elemre a **megoldáskezelő**.
 
-3. Töltse ki a **stream Analytics bemeneti konfigurációját** . Válassza ki az adatbázis nevét, a kiszolgáló nevét, a frissítés típusát és a frissítési gyakoriságot. A frissítési gyakoriságot a formátumban kell megadni `DD:HH:MM` .
+3. Töltse ki a **stream Analytics bemeneti konfigurációját**. Válassza ki az adatbázis nevét, a kiszolgáló nevét, a frissítés típusát és a frissítési gyakoriságot. A frissítési gyakoriságot a formátumban kell megadni `DD:HH:MM` .
 
-   ![Stream Analytics bemeneti konfiguráció a Visual Studióban](./media/sql-reference-data/stream-analytics-vs-input-config.png)
+   ![Stream Analytics bemeneti konfigurációban az értékek a legördülő listából lesznek megadva vagy kiválasztva.](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
    Ha a "végrehajtás csak egyszer" vagy a "végrehajtás rendszeresen" lehetőséget választja, a rendszer egy **[bemeneti alias]** nevű SQL Codebehind fájlt hoz létre a projektben a **Input.js** fájl csomóponton.
 
-   ![A Visual Studio mögötti bemeneti kód](./media/sql-reference-data/once-or-periodically-codebehind.png)
+   ![Az SQL CodeBehind fájl Chemicals. Snapshot. SQL kiemelve.](./media/sql-reference-data/once-or-periodically-codebehind.png)
 
-   Ha a "rendszeres időközönként frissül a Delta szolgáltatással" lehetőséget választja, két SQL-CodeBehind-fájl jön létre: **[bemeneti alias]. Snapshot. SQL** és **[input alias]. Delta. SQL** .
+   Ha a "rendszeres időközönként frissül a Delta szolgáltatással" lehetőséget választja, két SQL-CodeBehind-fájl jön létre: **[bemeneti alias]. Snapshot. SQL** és **[input alias]. Delta. SQL**.
 
-   ![Kód a megoldás Explorerben](./media/sql-reference-data/periodically-delta-codebehind.png)
+   ![Az SQL CodeBehind Files Chemicals. Delta. SQL és Chemicals. Snapshot. SQL van kiemelve.](./media/sql-reference-data/periodically-delta-codebehind.png)
 
 4. Nyissa meg az SQL-fájlt a szerkesztőben, és írja be az SQL-lekérdezést.
 
@@ -121,11 +121,11 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 Nyissa meg **JobConfig.jsa** (z) lehetőséget, hogy megadja a Storage-FIÓKOT az SQL-hivatkozási Pillanatképek tárolására.
 
-   ![Stream Analytics feladatok konfigurálása a Visual Studióban](./media/sql-reference-data/stream-analytics-job-config.png)
+   ![Stream Analytics a konfiguráció konfigurálása beállítás alapértelmezett értékekkel jelenik meg. A globális tárolási beállítások ki vannak emelve.](./media/sql-reference-data/stream-analytics-job-config.png)
 
 ### <a name="test-locally-and-deploy-to-azure"></a>Helyi tesztelés és üzembe helyezés az Azure-ban
 
-Mielőtt üzembe helyezné a feladatot az Azure-ban, a lekérdezési logikát helyileg is tesztelheti az élő bemeneti adatokkal. A szolgáltatással kapcsolatos további információkért tekintse meg az [élő adatok helyi tesztelése a Visual studióhoz készült Azure stream Analytics Tools (előzetes verzió)](stream-analytics-live-data-local-testing.md)című témakört. Ha végzett a teszteléssel, kattintson **a Küldés az Azure** -ba lehetőségre. A feladatok elindításával kapcsolatos további információkért tekintse meg az [stream Analytics létrehozása a Visual studiohoz készült Azure stream Analytics Tools használatával](stream-analytics-quick-create-vs.md) című útmutatót.
+Mielőtt üzembe helyezné a feladatot az Azure-ban, a lekérdezési logikát helyileg is tesztelheti az élő bemeneti adatokkal. A szolgáltatással kapcsolatos további információkért tekintse meg az [élő adatok helyi tesztelése a Visual studióhoz készült Azure stream Analytics Tools (előzetes verzió)](stream-analytics-live-data-local-testing.md)című témakört. Ha végzett a teszteléssel, kattintson **a Küldés az Azure**-ba lehetőségre. A feladatok elindításával kapcsolatos további információkért tekintse meg az [stream Analytics létrehozása a Visual studiohoz készült Azure stream Analytics Tools használatával](stream-analytics-quick-create-vs.md) című útmutatót.
 
 ## <a name="delta-query"></a>Különbözeti lekérdezés
 
@@ -181,27 +181,27 @@ A különbözeti lekérdezés használatakor a rendszer [Azure SQL Database idei
 
 1. Adja meg az SQL-hivatkozási adatok bemenetét.
    
-   ![SQL-hivatkozási adatok bevitelének konfigurálása](./media/sql-reference-data/configure-sql-reference-data-input.png)
+   ![A Visual Studio Code Editor (TAB) megjeleníti a ReferenceSQLDatabase.js.](./media/sql-reference-data/configure-sql-reference-data-input.png)
 
 2. Válassza a SQL Server ikont, majd kattintson a **kapcsolatok hozzáadása** lehetőségre.
    
-   ![Kattintson SQL Server ikonra, és kattintson a kapcsolatok hozzáadása lehetőségre.](./media/sql-reference-data/add-sql-connection.png)
+   ![+ A kapcsolatok hozzáadása elem megjelenik a bal oldali ablaktáblán, és ki van emelve.](./media/sql-reference-data/add-sql-connection.png)
 
 3. Adja meg a kapcsolatok adatait.
    
-   ![Stream Analytics bemeneti konfiguráció a Visual Studióban](./media/sql-reference-data/fill-connection-information.png)
+   ![Az adatbázis és a kiszolgáló adatainak két mezője van kiemelve.](./media/sql-reference-data/fill-connection-information.png)
 
 4. Kattintson a jobb gombbal a Reference SQL elemre, és válassza a **lekérdezés végrehajtása** lehetőséget.
    
-   ![Stream Analytics bemeneti konfiguráció a Visual Studióban](./media/sql-reference-data/execute-query.png)
+   ![A végrehajtási lekérdezés ki van emelve a helyi menüben.](./media/sql-reference-data/execute-query.png)
 
 5. Válassza ki a kívánt kapcsolatokat.
    
-   ![Stream Analytics bemeneti konfiguráció a Visual Studióban](./media/sql-reference-data/choose-connection.png)
+   ![A következő párbeszédpanel azt mutatja be, hogy "hozzon létre egy kapcsolatprofil-profilt az alábbi listából", és a lista egy bejegyzést tartalmaz, amely hightlighted.](./media/sql-reference-data/choose-connection.png)
 
 6. Tekintse át és ellenőrizze a lekérdezés eredményét.
    
-   ![Stream Analytics bemeneti konfiguráció a Visual Studióban](./media/sql-reference-data/verify-result.png)
+   ![A lekérdezés keresési eredményei a VS Code Editor lapon találhatók.](./media/sql-reference-data/verify-result.png)
 
 
 ## <a name="faqs"></a>Gyakori kérdések
@@ -227,7 +227,7 @@ Azure Stream Analytics bármilyen típusú Azure SQL Databasevel működni fog. 
 
 A Stream Analytics garantáltan pontosan egyszer dolgozza fel az eseményeket, és legalább egyszer kézbesíti az eseményeket. Azokban az esetekben, amikor az átmeneti problémák hatással vannak a feladatra, az állapot visszaállításához kis mennyiségű visszajátszás szükséges. A visszajátszás engedélyezéséhez az szükséges, hogy a pillanatképek egy Azure Storage-fiókban legyenek tárolva. Az ellenőrzőpontok újrajátszása szolgáltatással kapcsolatos további információkért lásd: [ellenőrzőpontok és Replay fogalmak Azure stream Analytics feladatokban](stream-analytics-concepts-checkpoint-replay.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Stream Analytics-keresések hivatkozási adatainak használata](stream-analytics-use-reference-data.md)
 * [Gyors útmutató: Stream Analytics-feladat létrehozása a Visual Studio Azure Stream Analytics eszközeinek használatával](stream-analytics-quick-create-vs.md)

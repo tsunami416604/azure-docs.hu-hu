@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Javával.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 9679f6030ac889ac442a40cd852f5cc17f505756
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 1ffbd760ae75605d75652b29d379420d6946aa8f
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422518"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326454"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
 
@@ -45,15 +45,27 @@ A fenti hivatkozások azt mutatják be, hogyan hozhatja létre az első függvé
 
 ### <a name="project-scaffolding"></a>Projekt – Állványzat
 
-Ha a terminálról szeretne parancssori fejlesztést használni, a Java-alapú függvények projektjeinek legegyszerűbb módja az `Apache Maven` archetípusok használata. A Azure Functions Java Maven archetípusa a következő _GroupID_ van közzétéve: _artifactId_ : [com. microsoft. Azure: Azure-functions-archetípus](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
+Ha a terminálról szeretne parancssori fejlesztést használni, a Java-alapú függvények projektjeinek legegyszerűbb módja az `Apache Maven` archetípusok használata. A Azure Functions Java Maven archetípusa a következő _GroupID_ van közzétéve:_artifactId_: [com. microsoft. Azure: Azure-functions-archetípus](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
 Az alábbi parancs egy új Java-függvény projektet hoz létre a következő archetípus használatával:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+    -DarchetypeArtifactId=azure-functions-archetype
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn archetype:generate ^
+    -DarchetypeGroupId=com.microsoft.azure ^
+    -DarchetypeArtifactId=azure-functions-archetype
+```
+
+---
 
 A jelen archetípus használatának megkezdéséhez tekintse meg a [Java](./create-first-function-cli-java.md)rövid útmutatóját.
 
@@ -210,19 +222,40 @@ A [Azure Portal](https://portal.azure.com)a beállítás hozzáadásához haszn�
 
 Az az [functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) paranccsal állíthatja be a `JAVA_OPTS` következő példát, ahogy az az alábbi példában is látható:
 
-#### <a name="consumption-plan"></a>[Használatalapú csomag](#tab/consumption)
+# <a name="consumption-plan"></a>[Használatalapú csomag](#tab/consumption/bash)
+
 ```azurecli-interactive
 az functionapp config appsettings set \
---settings "JAVA_OPTS=-Djava.awt.headless=true" \
-"WEBSITE_USE_PLACEHOLDER=0" \
---name <APP_NAME> --resource-group <RESOURCE_GROUP>
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" \
+    "WEBSITE_USE_PLACEHOLDER=0" \
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
-#### <a name="dedicated-plan--premium-plan"></a>[Dedikált csomag/Prémium csomag](#tab/dedicated+premium)
+
+# <a name="consumption-plan"></a>[Használatalapú csomag](#tab/consumption/cmd)
+
+```azurecli-interactive
+az functionapp config appsettings set ^
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" ^
+    "WEBSITE_USE_PLACEHOLDER=0" ^
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+
+# <a name="dedicated-plan--premium-plan"></a>[Dedikált csomag/Prémium csomag](#tab/dedicated+premium/bash)
+
 ```azurecli-interactive
 az functionapp config appsettings set \
---settings "JAVA_OPTS=-Djava.awt.headless=true" \
---name <APP_NAME> --resource-group <RESOURCE_GROUP>
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" \
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
+
+# <a name="dedicated-plan--premium-plan"></a>[Dedikált csomag/Prémium csomag](#tab/dedicated+premium/cmd)
+
+```azurecli-interactive
+az functionapp config appsettings set ^
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" ^
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+
 ---
 
 Ez a példa a fej nélküli üzemmódot teszi lehetővé. Cserélje le a `<APP_NAME>` nevet a Function alkalmazás nevére, és `<RESOURCE_GROUP>` az erőforráscsoport elemre. 
@@ -429,7 +462,7 @@ Az előző példában a a `queryValue` `name` http-kérelem URL-címében a lek�
 > [!NOTE]
 > A jegyzetben megadott névnek egyeznie kell a metadata tulajdonsággal.
 
-## <a name="execution-context"></a>Végrehajtási környezet
+## <a name="execution-context"></a>Végrehajtás környezete
 
 `ExecutionContext`a ben definiált `azure-functions-java-library` , segítő metódusokat tartalmaz a functions futtatókörnyezettel folytatott kommunikációhoz. További információkért tekintse meg a [ExecutionContext-referenciát ismertető cikket](/java/api/com.microsoft.azure.functions.executioncontext).
 
@@ -460,15 +493,36 @@ Az Azure CLI-vel a Java stdout és a stderr naplózását, valamint más alkalma
 
 Az alábbi módon konfigurálhatja a Function alkalmazást az alkalmazások naplózásának az Azure CLI használatával történő írásához:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli-interactive
+az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
+```
+
+---
+
 Ha az Azure CLI használatával szeretné továbbítani a függvény alkalmazásának naplózási kimenetét, nyisson meg egy új parancssort, bash-t vagy terminál-munkamenetet, és írja be a következő parancsot:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli-interactive
+az webapp log tail --name webappname --resource-group myResourceGroup
+```
+
+---
+
 Az az [WebApp log farok](/cli/azure/webapp/log) paranccsal a lehetőség használatával szűrheti a kimenetet `--provider` . 
 
 Ha az Azure CLI használatával egyetlen ZIP-fájlként szeretné letölteni a naplófájlokat, nyisson meg egy új parancssort, bash-t vagy terminál-munkamenetet, és írja be a következő parancsot:

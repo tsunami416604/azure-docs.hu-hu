@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 1558c396566b2fcfc098a749407d5e7a28316b6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019449"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325917"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Áttelepítési útmutató: az Azure-beli virtuális gépeken SQL Server SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -38,8 +38,8 @@ További információ a további áttelepítési stratégiákkal kapcsolatban: [
 Az Azure-beli virtuális gépeken SQL Server áttelepítéshez a következők szükségesek: 
 
 - [Adatbázis Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
-- Egy [Azure Migrate projekt](/azure/migrate/create-manage-projects).
-- Egy előkészített cél [SQL Server az Azure-beli virtuális gépen](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal) , amely a forrás-SQL Server megegyező vagy újabb verziójú.
+- Egy [Azure Migrate projekt](../../../migrate/create-manage-projects.md).
+- Egy előkészített cél [SQL Server az Azure-beli virtuális gépen](../../virtual-machines/windows/create-sql-vm-portal.md) , amely a forrás-SQL Server megegyező vagy újabb verziójú.
 - [Kapcsolódás az Azure és a](/azure/architecture/reference-architectures/hybrid-networking)helyszíni környezet között.
 - [Megfelelő áttelepítési stratégia kiválasztása](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate).
 
@@ -57,7 +57,7 @@ Azure Migrate a helyszíni számítógépek áttelepítésének megfelelőségé
 További felderítési eszközök: az adatáttelepítési forgatókönyvekhez elérhető [szolgáltatások és eszközök](../../../dms/dms-tools-matrix.md#business-justification-phase) .
 
 
-### <a name="assess"></a>Kiértékelés
+### <a name="assess"></a>Értékelés
 
 Miután felderítette az összes adatforrást, a [Data Migration Assistant (DMA)](/sql/dma/dma-overview) segítségével mérje fel a helyszíni SQL Server példányokat, amelyek áttelepíthetők az Azure-beli virtuális gépen SQL Server példányára, hogy megértse a forrás-és a cél példányok közötti hézagokat. 
 
@@ -109,7 +109,7 @@ Erősen ajánlott, hogy az [áttelepítés után](#post-migration)a rendszer az 
 > Nem minden SQL Server verziója támogatja az összes kompatibilitási módot. Győződjön meg arról, hogy a [cél SQL Server verziója](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level) támogatja a kiválasztott adatbázis-kompatibilitást. Például a SQL Server 2019 nem támogatja a 90-os szintű kompatibilitást (amely SQL Server 2005). Ezeknek az adatbázisoknak legalább a 100-es kompatibilitási szintre kell frissíteniük.
 >
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrálás
 
 Az áttelepítés előtti lépések elvégzése után készen áll a felhasználói adatbázisok és összetevők áttelepítésére. Telepítse át az adatbázisait az előnyben részesített [áttelepítési módszer](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)használatával.  
 
@@ -150,15 +150,15 @@ Előfordulhat, hogy további SQL Server objektumokat kell megadnia a felhasznál
 A következő táblázat egy lista-összetevőket és ajánlott áttelepítési módszereket tartalmaz, amelyeket a felhasználói adatbázisok áttelepítése előtt vagy után is el lehet végezni: 
 
 
-| **Funkció** | **Összetevő** | **Áttelepítési módszer (ek)** |
+| **Jellemző** | **Összetevő** | **Áttelepítési módszer (ek)** |
 | --- | --- | --- |
-| **Adatbázisok** | Modellezés  | Parancsfájl SQL Server Management Studio |
+| **Adatbázisok** | Modell  | Parancsfájl SQL Server Management Studio |
 || TempDB | Tervezze meg a TempDB áthelyezését az [Azure VM ideiglenes lemezére (SSD](../../virtual-machines/windows/performance-guidelines-best-practices.md#temporary-disk)) a legjobb teljesítmény érdekében. Ügyeljen arra, hogy olyan virtuálisgép-méretet válasszon, amely elegendő helyi SSD-vel rendelkezik a TempDB való alkalmazkodáshoz. |
 || FileStream rendelkező felhasználói adatbázisok |  Az áttelepítéshez használja a [biztonsági mentési és visszaállítási](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#back-up-and-restore) metódusokat. A DMA nem támogatja az FileStream-t használó adatbázisokat. |
 | **Biztonság** | SQL Server és Windows-bejelentkezések | A [felhasználói bejelentkezések áttelepíthetők](/sql/dma/dma-migrateserverlogins)a DMA használatával. |
 || Szerepkörök SQL Server | Parancsfájl SQL Server Management Studio |
-|| Kriptográfiai szolgáltatók | Ajánlott [Azure Key Vault szolgáltatás használatára konvertálni](../../virtual-machines/windows/azure-key-vault-integration-configure.md). Ez az eljárás az [SQL VM erőforrás-szolgáltatót](../../virtual-machines/windows/sql-vm-resource-provider-register.md)használja. |
-| **Kiszolgálói objektumok** | Biztonságimásolat-eszközök | Cserélje le az adatbázis biztonsági mentését [Azure Backup szolgáltatás](../../../backup/backup-sql-server-database-azure-vms.md) használatával, vagy írjon biztonsági mentést az [Azure Storage](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) -ba (SQL Server 2012 SP1 CU2 +). Ez az eljárás az [SQL VM erőforrás-szolgáltatót](../../virtual-machines/windows/sql-vm-resource-provider-register.md)használja.|
+|| Kriptográfiai szolgáltatók | Ajánlott [Azure Key Vault szolgáltatás használatára konvertálni](../../virtual-machines/windows/azure-key-vault-integration-configure.md). Ez az eljárás az [SQL VM erőforrás-szolgáltatót](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)használja. |
+| **Kiszolgálói objektumok** | Biztonságimásolat-eszközök | Cserélje le az adatbázis biztonsági mentését [Azure Backup szolgáltatás](../../../backup/backup-sql-server-database-azure-vms.md) használatával, vagy írjon biztonsági mentést az [Azure Storage](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) -ba (SQL Server 2012 SP1 CU2 +). Ez az eljárás az [SQL VM erőforrás-szolgáltatót](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)használja.|
 || Társított kiszolgálók | Parancsfájl SQL Server Management Studiosal. |
 || Kiszolgáló-eseményindítók | Parancsfájl SQL Server Management Studiosal. |
 | **Replikáció** | Helyi kiadványok | Parancsfájl SQL Server Management Studiosal. |
@@ -205,14 +205,14 @@ További információt ezekről a problémákról és az azok enyhítésére szo
 - [A teljesítmény finomhangolása az Azure SQL Virtual Machinesban](../../virtual-machines/windows/performance-guidelines-best-practices.md).
 - [Azure Cost-optimalizálási központ](https://azure.microsoft.com/overview/cost-optimization/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A SQL Server alkalmazandó szolgáltatások rendelkezésre állásának vizsgálatához tekintse meg az [Azure globális infrastruktúra-központot](https://azure.microsoft.com/global-infrastructure/services/?regions=all&amp;products=synapse-analytics,virtual-machines,sql-database)
 
 - A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egy olyan mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, tekintse meg a cikk [szolgáltatás és eszközök az adatok áttelepítéséhez](../../../dms/dms-tools-matrix.md) című témakört.
 
 - További információ az Azure SQL-ről:
-   - [Üzembe helyezési lehetőségek](../../azure-sql-iaas-vs-paas-what-is-overview.md)
+   - [Üzembe helyezési beállítások](../../azure-sql-iaas-vs-paas-what-is-overview.md)
    - [Azure-beli virtuális gépeken futó SQL Server](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
    - [Az Azure teljes tulajdonlási költsége kalkulátor](https://azure.microsoft.com/pricing/tco/calculator/) 
 

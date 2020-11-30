@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: e9fb004df5fdf8a955312ebcf16b8b60fd7c9b6a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: c47e4c1278f222feac35a2c6ab0b067c916c0217
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592192"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326845"
 ---
 # <a name="migration-performance-sql-server-to-sql-managed-instance-performance-analysis"></a>Áttelepítési teljesítmény: SQL Server a felügyelt SQL-példányok teljesítmény-elemzéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -79,11 +79,11 @@ A teljesítmény összehasonlításakor vegye figyelembe a következőket:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az új Azure SQL felügyelt példány környezetének optimalizálásával kapcsolatos további információkért tekintse meg a következő forrásokat: 
 
 - [Hogyan állapítható meg, hogy az Azure SQL felügyelt példányain miért különbözik a számítási feladatok teljesítményének SQL Server?](https://medium.com/azure-sqldb-managed-instance/what-to-do-when-azure-sql-managed-instance-is-slower-than-sql-server-dd39942aaadd)
 - [Az SQL felügyelt példány és a SQL Server közötti teljesítménybeli különbségek fő okai](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)
 - [Tárolási teljesítmény – ajánlott eljárások és szempontok az Azure SQL felügyelt példányaihoz (általános célú)](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)
-- [Valós idejű Teljesítményfigyelés a felügyelt Azure SQL-példányhoz (ez archivált, ez a cél?)](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)
+- [Valós idejű Teljesítményfigyelés a felügyelt Azure SQL-példányhoz (ez archivált, ez a cél?)](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)

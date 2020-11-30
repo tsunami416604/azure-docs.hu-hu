@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 72a4f805b34ba8a536cd398efd5e6809bd66f0d4
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: d85866e490b2c56abb7de1e94cd0ffaa8f714615
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096623"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327151"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -60,7 +60,7 @@ Ha már konfigurálta a biztonsági mentést, és a GRS-ről LRS-re kell váltan
 
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Hogyan helyezhetők át adatok a Recovery Services-tárolóból a helyszíni rendszerbe?
 
-Az adatok közvetlenül a Recovery Services-tárolóból a helyszíni rendszerbe való exportálása a Data Box használatával nem támogatott. Az adatkészletet vissza kell állítani egy Storage-fiókba, majd [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) vagy [Importálás/exportálás](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)használatával áthelyezhető a helyszíni környezetbe.
+Az adatok közvetlenül a Recovery Services-tárolóból a helyszíni rendszerbe való exportálása a Data Box használatával nem támogatott. Az adatkészletet vissza kell állítani egy Storage-fiókba, majd [Data Box](../databox/data-box-overview.md) vagy [Importálás/exportálás](../storage/common/storage-import-export-service.md)használatával áthelyezhető a helyszíni környezetbe.
 
 ## <a name="azure-backup-agent"></a>Az Azure Backup ügynöke
 

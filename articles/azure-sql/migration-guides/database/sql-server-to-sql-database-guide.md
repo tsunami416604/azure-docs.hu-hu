@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 55ce3747aaf105c7e2cbb830b1175769a658fd72
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ee4abaf3c9f6aa70ba14920711c8917994254649
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496765"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326981"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Áttelepítési útmutató: SQL Server SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -57,7 +57,7 @@ Azt is megteheti, hogy a [Microsoft Assessment and Planning Toolkit (a "Map To
 
 További információ a felderítési fázishoz használható eszközökről: az [adatáttelepítési forgatókönyvekhez elérhető szolgáltatások és eszközök](../../../dms/dms-tools-matrix.md). 
 
-### <a name="assess"></a>Kiértékelés 
+### <a name="assess"></a>Értékelés 
 
 Miután felderített egy adatforrást, mérje fel azokat a helyszíni SQL Server-adatbázisokat, amelyek áttelepíthetők Azure SQL Database az áttelepítési blokkolók vagy kompatibilitási problémák azonosításához. 
 
@@ -100,7 +100,7 @@ Ha több olyan kiszolgálóval és adatbázissal rendelkezik, amelyeket méretez
 > [!IMPORTANT]
 > Ha több adatbázisra, különösen nagyra értékeli az értékeléseket, akkor a [DMA parancssori segédprogrammal](/sql/dma/dma-commandline) is automatizálható, és a további elemzéshez és a cél készültséghez [Azure Migrate](/sql/dma/dma-assess-sql-data-estate-to-sqldb#view-target-readiness-assessment-results) feltölthető.
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrálás
 
 Az áttelepítés előtti fázishoz kapcsolódó feladatok elvégzése után készen áll a séma és az adatok áttelepítésére. 
 
@@ -114,7 +114,7 @@ Ha a DMA használatával szeretne áttelepíteni egy adatbázist SQL Serverról 
 
 1. Töltse le és telepítse a [Migration Assistant adatbázist](https://www.microsoft.com/download/details.aspx?id=53595).
 1. Hozzon létre egy új projektet, és válassza az **áttelepítés** lehetőséget a projekt típusaként.
-1. Állítsa a forráskiszolgáló típusát **SQL Serverre** , a célkiszolgáló típusát pedig **Azure SQL Databasera** , válassza ki az áttelepítési hatókört **sémaként és adatként** , majd válassza a **Létrehozás** lehetőséget.
+1. Állítsa a forráskiszolgáló típusát **SQL Serverre** , a célkiszolgáló típusát pedig **Azure SQL Databasera**, válassza ki az áttelepítési hatókört **sémaként és adatként** , majd válassza a **Létrehozás** lehetőséget.
 1. Az áttelepítési projektben adja meg a forráskiszolgáló adatait, például a kiszolgáló nevét, a kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítő adatokat, valamint az áttelepítendő forrás-adatbázist.
 1. A célkiszolgálón adja meg az Azure SQL Database kiszolgáló nevét, a kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítő adatokat, valamint a cél-adatbázist, amelyre át kíván térni.
 1. Válassza ki a séma objektumait, és telepítse azokat a cél Azure SQL Database.
@@ -165,10 +165,10 @@ Miután áttelepítette az adatátvitelt a cél környezetbe, az összes olyan a
 
 Az adatbázis-áttelepítés tesztelési módszere a következő tevékenységekből áll:
 
-1. **Ellenőrzési tesztek fejlesztése** : az adatbázisok áttelepítésének TESZTELÉSéhez SQL-lekérdezéseket kell használnia. Létre kell hoznia az érvényesítési lekérdezéseket a forrás-és a célként megadott adatbázisokon való futtatáshoz. Az érvényesítési lekérdezéseknek le kell fedniük a definiált hatókört.
-1. **Tesztkörnyezet beállítása** : a tesztkörnyezet a forrás-adatbázis és a céladatbázis másolatát is tartalmazza. Ügyeljen arra, hogy elkülönítse a tesztkörnyezet.
-1. **Ellenőrzési tesztek futtatása** : futtassa az ellenőrző teszteket a forráson és a célhelyen, majd elemezze az eredményeket.
-1. **Teljesítménytesztek futtatása** : futtasson teljesítménytesztet a forráson és a célhelyen, majd elemezze és hasonlítsa össze az eredményeket.
+1. **Ellenőrzési tesztek fejlesztése**: az adatbázisok áttelepítésének TESZTELÉSéhez SQL-lekérdezéseket kell használnia. Létre kell hoznia az érvényesítési lekérdezéseket a forrás-és a célként megadott adatbázisokon való futtatáshoz. Az érvényesítési lekérdezéseknek le kell fedniük a definiált hatókört.
+1. **Tesztkörnyezet beállítása**: a tesztkörnyezet a forrás-adatbázis és a céladatbázis másolatát is tartalmazza. Ügyeljen arra, hogy elkülönítse a tesztkörnyezet.
+1. **Ellenőrzési tesztek futtatása**: futtassa az ellenőrző teszteket a forráson és a célhelyen, majd elemezze az eredményeket.
+1. **Teljesítménytesztek futtatása**: futtasson teljesítménytesztet a forráson és a célhelyen, majd elemezze és hasonlítsa össze az eredményeket.
 
    > [!NOTE]
    > A Migrálás utáni ellenőrzési tesztek fejlesztésére és futtatására vonatkozó segítségért vegye figyelembe a partner [QuerySurge](https://www.querysurge.com/company/partners/microsoft)elérhető adatminőségi megoldást. 
@@ -176,7 +176,7 @@ Az adatbázis-áttelepítés tesztelési módszere a következő tevékenységek
 
 ## <a name="leverage-advanced-features"></a>Speciális funkciók kihasználása 
 
-Ügyeljen arra, hogy kihasználja az SQL Database által kínált fejlett felhőalapú szolgáltatásokat, például a [beépített magas rendelkezésre állást](../../database/high-availability-sla.md), a [fenyegetések észlelését](../../database/advanced-data-security.md), valamint [a számítási feladatok monitorozását és finomhangolását](../../database/monitor-tune-overview.md). 
+Ügyeljen arra, hogy kihasználja az SQL Database által kínált fejlett felhőalapú szolgáltatásokat, például a [beépített magas rendelkezésre állást](../../database/high-availability-sla.md), a [fenyegetések észlelését](../../database/azure-defender-for-sql.md), valamint [a számítási feladatok monitorozását és finomhangolását](../../database/monitor-tune-overview.md). 
 
 Néhány SQL Server funkció csak akkor érhető el, ha az [adatbázis kompatibilitási szintje](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) a legújabb kompatibilitási szintre módosul (150). 
 

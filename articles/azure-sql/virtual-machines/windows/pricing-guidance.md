@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c64ab815572af0f6c76a5076c9d4cf03586f242d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 57e9c82e5685171cff994aca7985f6a4211f00e7
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785000"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327287"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Az Azure-beli virtuális gépek SQL Server díjszabási útmutatója
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,9 +36,9 @@ Ez a cikk az [Azure Virtual Machines SQL Server](sql-server-on-azure-vm-iaas-wha
 
 ## <a name="free-licensed-sql-server-editions"></a>Ingyenes licenccel rendelkező SQL Server kiadások
 
-Ha szeretné fejleszteni, tesztelni vagy felépíteni a koncepciót, használja a szabadon licencelt **SQL Server Developer kiadást** . Ez a kiadás a SQL Server Enterprise Edition összes funkcióját tartalmazza, így bármilyen típusú alkalmazást felépítheti és tesztelheti. A fejlesztői kiadás azonban nem futtatható éles környezetben. A SQL Server Developer Edition rendszerű virtuális gépek csak a virtuális gép költségeiért számítanak fel díjat, mivel nincsenek hozzárendelve SQL Server licencelési költségek.
+Ha szeretné fejleszteni, tesztelni vagy felépíteni a koncepciót, használja a szabadon licencelt **SQL Server Developer kiadást**. Ez a kiadás a SQL Server Enterprise Edition összes funkcióját tartalmazza, így bármilyen típusú alkalmazást felépítheti és tesztelheti. A fejlesztői kiadás azonban nem futtatható éles környezetben. A SQL Server Developer Edition rendszerű virtuális gépek csak a virtuális gép költségeiért számítanak fel díjat, mivel nincsenek hozzárendelve SQL Server licencelési költségek.
 
-Ha éles számítási feladatot szeretne futtatni (<4 mag, <1 GB memória, <10 GB/adatbázis), használja a szabadon licencelt **SQL Server Express kiadást** . A SQL Server Express Edition rendszerű virtuális gépek esetében a virtuális gép költségei is csak a költségekkel járnak.
+Ha éles számítási feladatot szeretne futtatni (<4 mag, <1 GB memória, <10 GB/adatbázis), használja a szabadon licencelt **SQL Server Express kiadást**. A SQL Server Express Edition rendszerű virtuális gépek esetében a virtuális gép költségei is csak a költségekkel járnak.
 
 A fejlesztéssel/teszteléssel és a könnyű üzemi számítási feladatokkal pénzt takaríthat meg, ha egy kisebb méretű virtuálisgép-méretet választ, amely megfelel ezeknek a számítási feladatoknak. A DS1v2 bizonyos helyzetekben jó választás lehet.
 
@@ -57,11 +57,11 @@ Ha nem könnyű üzemi számítási feladattal rendelkezik, használja a követk
 
 | SQL Server-kiadás | Számítási feladat |
 |-----|-----|
-| Web | Kisméretű webhelyek |
+| Webes | Kisméretű webhelyek |
 | Standard | Kis-és közepes számítási feladatok |
 | Enterprise | Nagy vagy kritikus fontosságú számítási feladatok|
 
-A következő kiadásokra vonatkozóan két lehetőség SQL Server közül választhat: *fizetés/használat* vagy *saját licenc (BYOL)* .
+A következő kiadásokra vonatkozóan két lehetőség SQL Server közül választhat: *fizetés/használat* vagy *saját licenc (BYOL)*.
 
 ## <a name="pay-per-usage"></a>Fizetés/használat
 
@@ -71,9 +71,9 @@ A Cost a SQL Server összes verziójának (2012 SP3 – 2019). A másodpercenké
 
 A SQL Server licencelési licencek használata a következő esetén ajánlott:
 
-- **Ideiglenes vagy időszakos számítási feladatok** . Például egy olyan alkalmazásnak, amely évente több hónapra, vagy hétfőnként üzleti elemzésre van szüksége, egy eseményt kell támogatnia.
+- **Ideiglenes vagy időszakos számítási feladatok**. Például egy olyan alkalmazásnak, amely évente több hónapra, vagy hétfőnként üzleti elemzésre van szüksége, egy eseményt kell támogatnia.
 
-- **Ismeretlen élettartammal vagy méretezéssel rendelkező munkaterhelések** . Előfordulhat például, hogy egy olyan alkalmazást, amely néhány hónapon belül nem igényel, vagy amely több vagy kevesebb számítási teljesítményt igényelhet igénytől függően.
+- **Ismeretlen élettartammal vagy méretezéssel rendelkező munkaterhelések**. Előfordulhat például, hogy egy olyan alkalmazást, amely néhány hónapon belül nem igényel, vagy amely több vagy kevesebb számítási teljesítményt igényelhet igénytől függően.
 
 Ha SQL Server 2017 rendszerű Azure-beli virtuális gépet szeretne létrehozni ezen utólagos elszámolású lemezképek egyikével, tekintse meg az alábbi hivatkozásokat:
 
@@ -96,7 +96,7 @@ Ha SQL Server 2017 rendszerű Azure-beli virtuális gépet szeretne létrehozni 
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> Saját licenc használata (BYOL)
 
-Ha **a saját SQL Server licencét licenchordozhatóság** (más néven **BYOL** ) használja, akkor egy Azure-beli virtuális gépen meglévő, frissítési garanciával rendelkező SQL Server mennyiségi licencet használ. A BYOL-t használó SQL Server VM csak a virtuális gép SQL Server licencelési költségeiért számítanak fel díjat, mivel a mennyiségi licencelési program keretében már beszerezte a licenceket és a frissítési garanciát.
+Ha **a saját SQL Server licencét licenchordozhatóság**(más néven **BYOL**) használja, akkor egy Azure-beli virtuális gépen meglévő, frissítési garanciával rendelkező SQL Server mennyiségi licencet használ. A BYOL-t használó SQL Server VM csak a virtuális gép SQL Server licencelési költségeiért számítanak fel díjat, mivel a mennyiségi licencelési program keretében már beszerezte a licenceket és a frissítési garanciát.
 
 > [!IMPORTANT]
 > A BYOL rendszerképekhez frissítési garanciával rendelkező Nagyvállalati Szerződés szükséges. Jelenleg nem érhetők el az Azure Cloud Solution partner (CSP) részeként. A CSP-ügyfelek az utólagos elszámolású lemezképek üzembe helyezésével, majd a [Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md)engedélyezésével saját licencet hozhatnak.
@@ -106,9 +106,9 @@ Ha **a saját SQL Server licencét licenchordozhatóság** (más néven **BYOL**
 
 A saját SQL Server licencelésének engedélyezése licenchordozhatóság használata esetén ajánlott:
 
-- **Folyamatos munkaterhelések** . Például egy olyan alkalmazás, amelynek támogatnia kell az üzleti műveletek nonstop.
+- **Folyamatos munkaterhelések**. Például egy olyan alkalmazás, amelynek támogatnia kell az üzleti műveletek nonstop.
 
-- **Ismert élettartammal és méretezéssel rendelkező munkaterhelések** . Például egy olyan alkalmazás, amely az egész évre szükséges, és a keresletet előre jelezték.
+- **Ismert élettartammal és méretezéssel rendelkező munkaterhelések**. Például egy olyan alkalmazás, amely az egész évre szükséges, és a keresletet előre jelezték.
 
 Ahhoz, hogy a BYOL-t a SQL Server VM használatával használhassa, rendelkeznie kell egy, a mennyiségi licencelési programok keretében szükséges licenccel, valamint a többi szolgáltatással való opcionális vásárlással SQL Server Standard-vagy nagyvállalati és [frissítési garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1). A mennyiségi licencelési programok által biztosított díjszabás a szerződés típusától és a SQL Serverre vonatkozó mennyiségi és elkötelezettségi szinttől függően változhat. A folyamatos üzemi munkaterhelések esetében azonban a saját licence a következő előnyökkel jár:
 
@@ -136,7 +136,7 @@ A szükségtelen költségek elkerülése érdekében válasszon ki egy optimál
 
 ### <a name="correctly-size-your-vm"></a><a id="machinesize"></a> A virtuális gép megfelelő méretezése
 
-A SQL Server licencelési díja közvetlenül kapcsolódik a vCPU számához. Válasszon olyan virtuálisgép-méretet, amely megfelel a CPU-, memória-, tárterület-és I/O-sávszélesség várható igényeinek. A gép méretére vonatkozó beállítások teljes listáját a [Windows rendszerű virtuális gépek méretei](../../../virtual-machines/sizes.md) és a linuxos virtuálisgép- [méretek](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)című részben tekintheti meg.
+A SQL Server licencelési díja közvetlenül kapcsolódik a vCPU számához. Válasszon olyan virtuálisgép-méretet, amely megfelel a CPU-, memória-, tárterület-és I/O-sávszélesség várható igényeinek. A gép méretére vonatkozó beállítások teljes listáját a [Windows rendszerű virtuális gépek méretei](../../../virtual-machines/sizes.md) és a linuxos virtuálisgép- [méretek](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)című részben tekintheti meg.
 
 Az új gépi méretek bizonyos típusú SQL Server számítási feladatokhoz is jól működnek. Ezek a gépek méretei nagy mennyiségű memóriát, tárterületet és I/O-sávszélességet foglalnak magukban, de alacsonyabb virtualizált alapszámmal rendelkeznek. Vegyük például a következő példát:
 
@@ -165,7 +165,7 @@ Más munkafolyamatok esetében érdemes lehet az Azure-beli virtuális gépek au
 > [!IMPORTANT]
 > A költségek elkerülése érdekében a virtuális gép leállítása és felszabadítása az egyetlen módszer. A virtuális gép leállításához szükséges energiaellátási beállítások egyszerűen leállíthatók, és a használati díjak is megmaradnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure díjszabásával kapcsolatos általános útmutatóért lásd: a [váratlan költségek megelőzése az Azure-számlázással és a költségek kezelésével](../../../cost-management-billing/cost-management-billing-overview.md). A legújabb Azure Virtual Machines díjszabását, beleértve a SQL Servert is, tekintse meg a [Windows rendszerű virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) és a [Linux virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)Azure Virtual Machines díjszabási oldalát.
 

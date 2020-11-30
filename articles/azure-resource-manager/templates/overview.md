@@ -3,12 +3,12 @@ title: Sablonok – Áttekintés
 description: A Azure Resource Manager-sablonok használatának előnyeit ismerteti az erőforrások üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 1873c737d17fc8774ddd1276d1375799ca2da35e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 188fd5782795a4fb5456978a2a596cabc6dfd874
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280040"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325060"
 ---
 # <a name="what-are-arm-templates"></a>Mik azok az ARM-sablonok?
 
@@ -26,7 +26,7 @@ Ha az ARM-sablonok és a Code Services egyik másik infrastruktúrája között 
 
 * **Ismételhető eredmények**: az infrastruktúra ismételt üzembe helyezése a fejlesztési életciklus során, és az erőforrások megbízhatóságának egységes módon történő üzembe helyezése. A sablonok idempotens, ami azt jelenti, hogy több alkalommal is telepítheti ugyanazt a sablont, és ugyanazokat az erőforrásokat ugyanaz az állapot teszi elérhetővé. Létrehozhat egy olyan sablont, amely a kívánt állapotot jelöli, nem pedig sok különálló sablon kidolgozását a frissítések megjelenítéséhez.
 
-* Előkészítés **: nem**kell aggódnia a megrendelési műveletek bonyolultságával kapcsolatban. A Resource Manager összehangolja az egymástól függő erőforrások telepítését, hogy azok a megfelelő sorrendben jöjjenek létre. Ha lehetséges, a Resource Manager párhuzamosan helyezi üzembe az erőforrásokat, így az üzemelő példányok gyorsabban futnak, mint a soros központi telepítések. A sablont egyetlen parancs használatával helyezheti üzembe, nem pedig több, felszólító parancs használatával.
+* Előkészítés **: nem** kell aggódnia a megrendelési műveletek bonyolultságával kapcsolatban. A Resource Manager összehangolja az egymástól függő erőforrások telepítését, hogy azok a megfelelő sorrendben jöjjenek létre. Ha lehetséges, a Resource Manager párhuzamosan helyezi üzembe az erőforrásokat, így az üzemelő példányok gyorsabban futnak, mint a soros központi telepítések. A sablont egyetlen parancs használatával helyezheti üzembe, nem pedig több, felszólító parancs használatával.
 
    ![Template deployment összehasonlítása](./media/overview/template-processing.png)
 
@@ -38,7 +38,7 @@ Ha az ARM-sablonok és a Code Services egyik másik infrastruktúrája között 
 
 * **Tesztelés**: gondoskodjon arról, hogy a sablon az ajánlott irányelveket követi az ARM-sablon eszközzel (ARM-TTK) való teszteléssel. Ez a teszt-készlet egy PowerShell-szkript, amelyet letöltheti a [githubról](https://github.com/Azure/arm-ttk). Az eszközkészlet megkönnyíti a szaktudás fejlesztését a sablon nyelvének használatával.
 
-* **Előnézeti változások**: a [mi-if művelettel](template-deploy-what-if.md) beolvashatja a módosításokat a sablon telepítése előtt. Mi a teendő, hogy milyen erőforrásokat fog létrehozni, frissíteni vagy törölni, valamint minden olyan erőforrás-tulajdonságot, amely meg fog változni. A mi-if művelet ellenőrzi a környezet aktuális állapotát, és kiküszöböli az állapot felügyeletének szükségességét.
+* **Előnézeti változások**: a [mi-if művelettel](template-deploy-what-if.md) beolvashatja a módosításokat a sablon telepítése előtt. Mi a teendő, hogy milyen erőforrásokat fog létrehozni, frissíteni vagy törölni, valamint minden olyan erőforrás-tulajdonságot, amely módosítva lesz. A mi-if művelet ellenőrzi a környezet aktuális állapotát, és kiküszöböli az állapot felügyeletének szükségességét.
 
 * **Beépített ellenőrzés**: a rendszer csak az érvényesítést követően telepíti a sablont. A Resource Manager a telepítés megkezdése előtt ellenőrzi a sablont, hogy a telepítés sikeres legyen-e. Az üzembe helyezés kevésbé valószínű, hogy egy félig kész állapotban leáll.
 
@@ -124,7 +124,7 @@ Ha elképzeli, hogy a rétegek külön életciklusokkal rendelkeznek, akkor a h�
 
 A beágyazott sablonokkal kapcsolatos további információkért lásd: [Kapcsolt sablonok használata az Azure Resource Manager eszközben](linked-templates.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd [: oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md).
 * A sablonfájlok tulajdonságairól további információt az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakörben talál.
