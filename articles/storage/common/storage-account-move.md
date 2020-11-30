@@ -10,10 +10,10 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 11/29/2020
 ms.locfileid: "92792990"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure Storage-fiók áthelyezése másik régióba
@@ -51,7 +51,7 @@ Ez a sablon a tárfiókot leíró beállításokat tartalmazza.
 
 Sablon exportálása az Azure Portallal:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Válassza a **minden erőforrás** lehetőséget, majd válassza ki a Storage-fiókját.
 
@@ -109,9 +109,9 @@ A sablon üzembe helyezése Azure Portal használatával:
 
     ![Azure Resource Manager-sablonkönyvtár](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
-5. Válassza **a saját sablon létrehozása lehetőséget a szerkesztőben** .
+5. Válassza **a saját sablon létrehozása lehetőséget a szerkesztőben**.
 
 6. Válassza a **fájl betöltése** lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött fájl **template.js** betöltéséhez.
 
@@ -137,7 +137,7 @@ A sablon üzembe helyezése Azure Portal használatával:
          "location": "centralus"
          }]          
     ```
-    A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA**  =  **CentralUS** .
+    A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA**  =  **CentralUS**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -186,11 +186,11 @@ A sablon üzembe helyezésével új tárfiókot hozhat létre a célrégióban.
 
 2. Adja meg vagy válassza ki a tulajdonságértékek értékét:
 
-- **Előfizetés** : válasszon ki egy Azure-előfizetést.
+- **Előfizetés**: válasszon ki egy Azure-előfizetést.
 
-- **Erőforráscsoport** : Válassza az **Új létrehozása** lehetőséget, majd adjon nevet az erőforráscsoportnak.
+- **Erőforráscsoport**: Válassza az **Új létrehozása** lehetőséget, majd adjon nevet az erőforráscsoportnak.
 
-- **Hely** : válasszon ki egy Azure-helyet.
+- **Hely**: válasszon ki egy Azure-helyet.
 
 3. Jelölje **be az Elfogadom a fenti feltételeket és kikötéseket** jelölőnégyzetet, majd kattintson a **Vásárlás kiválasztása** gombra.
 
@@ -219,7 +219,7 @@ Néhány funkció nem exportálható sablonként, ezért hozzá kell adnia őket
 
 Az alábbi táblázat ezeket a funkciókat sorolja fel, és útmutatást nyújt az új tárfiókhoz való hozzáadásukhoz.
 
-| Szolgáltatás    | Útmutató    |
+| Funkció    | Útmutató    |
 |--------|-----------|
 | **Életciklus-kezelési szabályzatok** | [Az Azure Blob Storage-életciklus felügyelete](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statikus webhelyek** | [Statikus webhely üzemeltetése az Azure Storage-ban](../blobs/storage-blob-static-website-how-to.md) |
@@ -255,7 +255,7 @@ Tárfiók eltávolítása az Azure Portal használatával:
 
 1. A Azure Portalban bontsa ki a bal oldalon található menüt a szolgáltatások menüjének megnyitásához, majd válassza a **Storage-fiókok** lehetőséget a Storage-fiókok listájának megjelenítéséhez.
 
-2. Keresse meg a törölni kívánt cél Storage-fiókot, és kattintson a jobb gombbal a lista jobb oldalán található **további** gombra ( **...** ).
+2. Keresse meg a törölni kívánt cél Storage-fiókot, és kattintson a jobb gombbal a lista jobb oldalán található **további** gombra (**...**).
 
 3. Válassza a **Törlés** lehetőséget, és erősítse meg.
 
@@ -268,7 +268,7 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 ```
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy Azure Storage-fiókot helyezett át egyik régióból a másikba, és megtisztította a forrás erőforrásait.  Ha többet szeretne megtudni a régiók és a vész-helyreállítás között az Azure-ban, tekintse meg a következőt:
 
