@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 10/01/2020
+ms.date: 11/18/2020
 ms.author: banders
-ms.openlocfilehash: 5aeb9046b8901580e4de37b1735a2d2dddd42fce
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: eef19a6c421a64c3951d35eea78ea84f7e7d97b2
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147464"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887212"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -90,7 +90,7 @@ További információkért lásd: [Az Azure Reservations önkiszolgáló csere- 
 - **Fenntartott virtuálisgép-példány** – A foglalás csak a virtuális gép és a felhőszolgáltatások számítási költségeit fedezi. Nem fedezi azonban a további szoftverek, a Windows, a hálózatkezelés és a tárolás költségeit.
 - **Fenntartott kapacitás az Azure Storage-ban** – A foglalás a standard Blob Storage- vagy Azure Data Lake Gen2-tárfiókok tárolási kapacitását fedezi. A foglalás nem fedezi a sávszélességgel és a tranzakciókkal járó díjakat.
 - **Fenntartott Azure Cosmos DB-kapacitás** – A foglalás az erőforrások számára kiosztott átviteli sebességet fedezi. Nem fedezi azonban a tárolás és a hálózatkezelés költségeit.
-- **Fenntartott SQL Database virtuális mag** – A foglalás csak a számítási költségeket foglalja magában. Az SQL-licenc számlázása külön történik.
+- **Fenntartott SQL Database virtuális mag** – A felügyelt SQL-példányt és az SQL Database rugalmas készletet/önálló adatbázist is lefedi. A foglalás csak a számítási költségeket foglalja magában. Az SQL-licenc számlázása külön történik. 
 - **Azure Synapse Analytics** – A foglalás a cDWU-használatot fedezi. Nem fedezi az Azure Synapse Analytics használatával kapcsolatos tárolási és hálózatkezelési költségeket.
 - **Azure Databricks** – A foglalás csak a DBU-használatot fedezi. Az egyéb – például számítási, tárolási és hálózati – díjakat külön számítjuk fel.
 - **App Service-bélyeg díja** – A foglalás a bélyeghasználatot fedezi. Nem érvényes azonban a feldolgozókra, így a bélyeghez társított egyéb erőforrásokért külön kell fizetnie.

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 11/19/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 72575725c0924b8ec5f9466f4ffbba86bf071db4
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 28637f35294e9c70cbf0e96fb2cdcb1853d2ba39
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631535"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992726"
 ---
 ::: zone target="docs"
 
@@ -106,12 +106,6 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="australia"></a>[Ausztrália](#tab/in-australia)
 
 Az Ausztráliában található Azure-adatközpontok egy további biztonsági értesítéssel rendelkeznek. Az összes bejövő csomagnak előzetes értesítéssel kell rendelkeznie. Az Ausztráliában történő szállításhoz az alábbi lépéseket végezze el.
@@ -131,12 +125,6 @@ Az Ausztráliában található Azure-adatközpontok egy további biztonsági ér
 ## <a name="erasure-of-data-from-data-box"></a>Adatok törlése a Data Boxról
 
 Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box törli a lemezeken található adatokat a [NIST SP 800-88 Revision 1 útmutatásainak](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) megfelelően.
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -182,12 +170,6 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="singapore"></a>[Szingapúr](#tab/in-singapore)
 
 1. Őrizze meg az eszköz szállításához használt eredeti dobozt a visszaküldéshez.
@@ -223,33 +205,33 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="south-africa"></a>[Dél-afrikai Köztársaság](#tab/in-sa)
 
 1. Az eszközt az eredeti dobozban küldje vissza.
 2. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
-3. Csomagfelvétel foglalása a DHL-lel:
+3. Jegyezze fel a nyomkövetési számot (ez a Data Box helyi webes felhasználói felületének **Prepare to Ship** (Szállítás előkészítése) lapján hivatkozási számként (reference number) jelenik meg). Ez akkor érhető el, amikor a szállítás-előkészítési (Prepare to ship) lépés sikeresen befejeződik. Töltse le a fuvarlevélcímkét erről az oldalról, és rögzítse a dobozra.
+4. Kérjen egy visszatérési kódot az Azure Data Box üzemeltetési csapatától. A visszatérési kódra azért van szükség, hogy vissza lehessen küldeni a csomagot az adatközpontnak. Küldjön egy e-mailt a következő címre: [adbops@microsoft.com](mailto:adbops@microsoft.com). Jegyezze fel ezt a kódot a fuvarlevélcímkére a visszaküldési cím mellé, ügyelve rá, hogy jól látható legyen.
+5. Foglaljon csomagfelvételt a DHL-lel a következő módszerek egyikével:
+ 
+   * A [DHL Express South Africa webhelyén, a **Schedule a Pickup**](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference) (Csomagfelvétel ütemezése) területen foglalhat online csomagfelvételt.
+   * Küldjön egy e-mailt a [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) címre az alábbi sablonnal:
 
-    * Hívja fel az ügyfélszolgálat kapcsolattartási központját a + 27(0) 11 9213600 számon, válassza az 1. lehetőséget, majd adja meg a fuvarlevél számát.
-    * A csomagfelvétel ütemezéséhez 14 óra előtt telefonáljon.
-    * Küldjön egy e-mailt a [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) címre az alábbi sablonnal:
-
-    ```output
-    To: Priority.Support@dhl.com
-    Subject: Pickup request for Microsoft Azure
-    Body: Need pick up for the below shipment
-      *  DHL tracking number (reference number/waybill number)
-      *  Requested pickup date: yyyy/mm/dd;time:HH MM
-    ```
+     ```output
+     To: Priority.Support@dhl.com
+     Subject: Pickup request for Microsoft Azure
+     Body: Need pick up for the below shipment
+       *  DHL tracking number: (reference number/waybill number)
+       *  Requested pickup date: yyyy/mm/dd;time:HH MM
+       *  Shipper contact: (company name)
+       *  Contact person: 
+       *  Phone number: 
+       *  Full physical address: 
+       *  Item to be collected: Azure Dt
+     ```
 
     * Másik lehetőségként leadhatja a csomagot a legközelebbi DHL feladási ponton.
 
-4. Ha problémába ütközik, küldjön e-mailt a következő címre: [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Az e-mailben írja meg a tapasztalt probléma/problémák részleteit, a tárgysorban pedig adja meg a fuvarlevél számát. Felhívhatja a +27(0)119213902 telefonszámot is.
+6. Ha problémába ütközik, küldjön e-mailt a következő címre: [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Az e-mailben írja meg a tapasztalt probléma/problémák részleteit, a tárgysorban pedig adja meg a fuvarlevél számát. Felhívhatja a +27(0)119213902 telefonszámot is.
 
 ::: zone target="chromeless"
 
@@ -260,12 +242,6 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 ## <a name="erasure-of-data-from-data-box"></a>Adatok törlése a Data Boxról
 
 Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box törli a lemezeken található adatokat a [NIST SP 800-88 Revision 1 útmutatásainak](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) megfelelően.
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -301,12 +277,6 @@ Ha bármilyen probléma merülne fel, küldjön e-mailt a Data Box Operations As
 ## <a name="erasure-of-data-from-data-box"></a>Adatok törlése a Data Boxról
  
 Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box törli a lemezeken található adatokat a [NIST SP 800-88 Revision 1 útmutatásainak](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) megfelelően.
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -369,8 +339,6 @@ Ha a Data Boxot az Egyesült Államok államigazgatási szerveinél, Japánban, 
 
 ::: zone target="chromeless"
 
----
-
 ## <a name="verify-data-upload-to-azure"></a>Az Azure-ba történő adatfeltöltés ellenőrzése
 
 [!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
@@ -381,7 +349,11 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 
 ::: zone-end
 
+---
+
 ::: zone target="docs"
+
+## <a name="verify-data-upload-to-azure"></a>Az Azure-ba történő adatfeltöltés ellenőrzése
 
 [!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 

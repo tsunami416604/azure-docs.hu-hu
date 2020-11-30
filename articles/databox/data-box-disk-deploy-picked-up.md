@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 11/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 0aace1041eba771a26bed4c85361ea2551c71ba6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f1d667f55a8be1b701fda6240895dd8f96315cff
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659420"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986317"
 ---
 ::: zone target="docs"
 
@@ -164,23 +164,28 @@ Végezze el a következő lépéseket, ha a Dél-afrikai Köztársaságba küldi
 
 2. Zárja le a szállítási dobozt, és győződjön meg arról, hogy a visszaküldési fuvarlevélcímke jól látható.
 
-3. Csomagfelvétel foglalása a DHL-lel:
+3. Kérjen egy visszatérési kódot az Azure Data Box üzemeltetési csapatától. A visszatérési kódra azért van szükség, hogy vissza lehessen küldeni a csomagot az adatközpontnak. Küldjön egy e-mailt a következő címre: [adbops@microsoft.com](mailto:adbops@microsoft.com). Jegyezze fel ezt a kódot a fuvarlevélcímkére a visszaküldési cím mellé, ügyelve rá, hogy jól látható legyen.
 
-    * Hívja fel az ügyfélszolgálat kapcsolattartási központját a + 27(0) 11 9213600 számon, válassza az 1. lehetőséget, és adja meg a fuvarlevél számát.
-    * Csomagfelvétel ütemezéséhez dél-afrikai téli idő (ZA) szerint 14 óra előtt telefonáljon.  
-    * A csomagfelvétel megszervezéséhez küldjön e-mailt a [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) címre az alábbi e-mail-sablonnal:
+4. Foglaljon csomagfelvételt a DHL-lel a következő módszerek egyikével:
+   * A [DHL Express South Africa webhelyén, a **Schedule a Pickup**](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference) (Csomagfelvétel ütemezése) területen foglalhat online csomagfelvételt.
+   * Küldjön egy e-mailt a [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) címre az alábbi sablonnal:
 
-    ```output
-    To: Priority.Support@dhl.com
-    Subject:Pickup request for Microsoft Azure
-    Body:  Need pick up for the below shipment
-    *  DHL tracking number (reference number/waybill number)
-    *  Requested pickup date：yyyy/mm/dd; time: HH MM
-    ```
+     ```output
+     To: Priority.Support@dhl.com
+     Subject: Pickup request for Microsoft Azure
+     Body: Need pick up for the below shipment
+       *  DHL tracking number: (reference number/waybill number)
+       *  Requested pickup date: yyyy/mm/dd;time:HH MM
+       *  Shipper contact: (company name)
+       *  Contact person: 
+       *  Phone number: 
+       *  Full physical address: 
+       *  Item to be collected: Azure Dt
+     ```
 
     * Másik lehetőségként leadhatja a csomagot a legközelebbi DHL feladási ponton.
 
-4. Ha problémába ütközik, küldjön e-mailt a következő címre: [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Az e-mailben írja meg a tapasztalt probléma/problémák részleteit, a tárgysorban pedig adja meg a fuvarlevél számát. Felhívhatja a +27(0)119213902 telefonszámot is.
+5. Ha problémába ütközik, küldjön e-mailt a következő címre: [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Az e-mailben írja meg a tapasztalt probléma/problémák részleteit, a tárgysorban pedig adja meg a fuvarlevél számát. Felhívhatja a +27(0)119213902 telefonszámot is.
 
 ### <a name="china"></a>[Kína](#tab/in-china)
 

@@ -3,17 +3,17 @@ title: Azure-költségek kezelése automatizálással
 description: Ez a cikk az Azure-költségek automatizálással való kezelését ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: matrive
-ms.openlocfilehash: 939e621da414fc2d4d55d85e8b66a409b1338941
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.reviewer: adwise
+ms.openlocfilehash: 47d9c2838c5c806214e3be2f9ba7ce335bc0af67
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131972"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956092"
 ---
 # <a name="manage-costs-with-automation"></a>Költségek kezelése automatizálással
 
@@ -63,11 +63,18 @@ A következő példakérelmeket a Microsoft ügyfelei használják a gyakori for
 
 ### <a name="get-usage-details-for-a-scope-during-specific-date-range"></a>A Usage Details lekérése egy hatókör adott dátumtartományához
 
-A kérelem által visszaadott adatok megfelelnek annak a dátumnak, amikor a számlázási rendszer megkapta a használati adatokat. Több számla költségeit is tartalmazhatja.
+A kérelem által visszaadott adatok megfelelnek annak a dátumnak, amikor a számlázási rendszer megkapta a használati adatokat. Több számla költségeit is tartalmazhatja. A használandó hívás az előfizetés típusától függően változó.
+
+Nagyvállalati Szerződéssel (EA) rendelkező régebbi ügyfelek vagy használatalapú fizetéses előfizetés esetén a következő hívást használja:
 
 ```http
 GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?$filter=properties%2FusageStart%20ge%20'2020-02-01'%20and%20properties%2FusageEnd%20le%20'2020-02-29'&$top=1000&api-version=2019-10-01
+```
 
+Microsoft Ügyfélszerződéssel rendelkező modern ügyfelek esetén a következő hívást használja:
+
+```http
+GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?startDate=2020-08-01&endDate=&2020-08-05$top=1000&api-version=2019-10-01
 ```
 
 ### <a name="get-amortized-cost-details"></a>Amortizált költségadatok lekérése

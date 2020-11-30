@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d22ab9f028f0491db33d62d0a6dff8d06282f925
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f22a8f085938f5a3cc3e7a748391a9048129296c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368719"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888368"
 ---
 # <a name="buy-a-reservation"></a>Foglalás vásárlása
 
@@ -21,9 +21,9 @@ Az Azure Reservationsszel csökkentheti költségeit, ha több Azure-erőforrás
 
 ## <a name="who-can-buy-a-reservation"></a>Ki vásárolhat foglalást?
 
-Egy csomag megvásárlásához rendelkeznie kell egy előfizetés-tulajdonosi szerepkörrel egy nagyvállalatban (MS-AZR-0017P vagy MS-AZR-0148P) vagy használatalapú fizetéses előfizetéssel (MS-AZR-0003P vagy MS-AZR-0023P) vagy Microsoft-ügyfélszerződéses előfizetéssel. A felhőszolgáltatók az Azure Portalt vagy a  [Partnerközpontot](/partner-center/azure-reservations)  használhatják az Azure Reservations megvásárlásához.
+Egy foglalás megvásárlásához tulajdonosi vagy foglalásvásárlói szerepkörrel kell rendelkeznie egy nagyvállalati (MS-AZR-0017P vagy MS-AZR-0148P) vagy használatalapú fizetéses (MS-AZR-0003P vagy MS-AZR-0023P) vagy Microsoft-ügyfélszerződéses Azure-előfizetésben. A felhőszolgáltatók az Azure Portalt vagy a  [Partnerközpontot](/partner-center/azure-reservations)  használhatják az Azure Reservations megvásárlásához.
 
-A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek az EA-rendszergazdákra korlátozhatják a vásárlásokat a **Fenntartott példányok hozzáadása** beállítás EA Portalon történő letiltásával. Foglalás vásárlásához az EA-rendszergazdáknak legalább egy EA-előfizetésben előfizetés-tulajdonosnak kell lenniük. Ez a beállítás olyan vállalatok számára hasznos, amelyek azt szeretnék, hogy egy központi csapat vásárolja meg a foglalásokat különböző költséghelyek számára. A vásárlás után a központi csapatok hozzáadhatják a költséghely-tulajdonosokat a foglalásokhoz. A tulajdonosok ezután beállíthatják a foglalás hatókörét az előfizetéseikre. A központi csapatnak nem kell előfizetés-tulajdonosi hozzáféréssel rendelkeznie a foglalás vásárlási helyén.
+A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek az EA-rendszergazdákra korlátozhatják a vásárlásokat a **Fenntartott példányok hozzáadása** beállítás EA Portalon történő letiltásával. Foglalás vásárlásához az EA-rendszergazdáknak tulajdonosi vagy foglalásvásárlói hozzáféréssel kell rendelkezniük legalább egy EA-előfizetésben. Ez a beállítás olyan vállalatok számára hasznos, amelyek azt szeretnék, hogy egy központi csapat vásárolja meg a foglalásokat.
 
 A foglalási kedvezmény csak olyan erőforrásokra érvényes, amelyek nagyvállalati, felhőszolgáltatói (CSP), Microsoft-ügyfélszerződéses vagy egyéni, használatalapú díjas csomagokkal lettek megvásárolva.
 

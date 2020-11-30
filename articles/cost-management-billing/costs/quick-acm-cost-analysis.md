@@ -3,18 +3,18 @@ title: Rövid útmutató – Az Azure-költségek feltérképezése költségele
 description: Ez a rövid útmutató bemutatja, hogyan vizsgálhatja meg és elemezheti vállalata Azure-költségeit a Költségelemzés szolgáltatás használatával.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contentperfq2
-ms.openlocfilehash: 31a95d8c02ee540fe6b52088159f04535c39ea93
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a7f3c0ea9517f0ce99912f004ac4de07cc981551
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676844"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122666"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyorsútmutató: Költségek feltérképezése és elemzése költségelemzés használatával
 
@@ -52,15 +52,15 @@ Ha többet szeretne megtudni a költségelemzésről, tekintse meg [a Cost Manag
 
 A kezdő költségelemzési nézet a következő területeket foglalja magába.
 
-**Halmozott költség nézet** : A költségelemzés előre definiált nézete. Minden nézet tartalmaz dátumtartományra, részletességre, csoportosítási szempontra és szűrésre vonatkozó beállításokat. Az alapértelmezett nézet az aktuális számlázási időszakra vonatkozó halmozott költségeket mutatja, de átválthat a többi beépített nézetre.
+**Halmozott költség nézet**: A költségelemzés előre definiált nézete. Minden nézet tartalmaz dátumtartományra, részletességre, csoportosítási szempontra és szűrésre vonatkozó beállításokat. Az alapértelmezett nézet az aktuális számlázási időszakra vonatkozó halmozott költségeket mutatja, de átválthat a többi beépített nézetre.
 
-**Tényleges költség** : Az aktuális hónap összes keletkező és a számlán megjelenő használati és vásárlási költségét mutatja.
+**Tényleges költség**: Az aktuális hónap összes keletkező és a számlán megjelenő használati és vásárlási költségét mutatja.
 
-**Előrejelzés** : A választott időszak összes előrevetített költségét jeleníti meg.
+**Előrejelzés**: A választott időszak összes előrevetített költségét jeleníti meg.
 
-**Költségkeret** : A kijelölt hatókör tervezett költségkeretét jeleníti meg, amennyiben az elérhető.
+**Költségkeret**: A kijelölt hatókör tervezett költségkeretét jeleníti meg, amennyiben az elérhető.
 
-**Halmozott részletesség** : Megjeleníti az összes összesített napi kiadást a számlázási időszak kezdetétől számítva. Miután számlázási fiókjához vagy előfizetéséhez létrehozta költségvetését, itt gyorsan, költségkeretéhez viszonyítottan áttekintheti kiadási trendjeit. A kurzort egy adott dátum felé helyezve megtekintheti az adott nap halmozott költségeit.
+**Halmozott részletesség**: Megjeleníti az összes összesített napi kiadást a számlázási időszak kezdetétől számítva. Miután számlázási fiókjához vagy előfizetéséhez létrehozta költségvetését, itt gyorsan, költségkeretéhez viszonyítottan áttekintheti kiadási trendjeit. A kurzort egy adott dátum felé helyezve megtekintheti az adott nap halmozott költségeit.
 
 **Kimutatásdiagramok (fánkdiagramok)** : Dinamikus kimutatásokat tesznek lehetővé azzal, hogy a teljes költséget alapvető jellemzők alapján bontják le. Az aktuális hónap költségeit jelenítik meg a legnagyobbaktól a legkisebbekig. A kimutatásdiagramokat bármikor módosíthatja másik kimutatás kiválasztásával. A költségek alapértelmezetten a következő kategóriákba vannak sorolva: szolgáltatás (fogyasztásmérő kategóriája), hely (régió), valamint gyermekhatókör. Például a regisztrációs fiókok a számlázási fiókok alatt, az erőforráscsoportok az előfizetések alatt, az erőforrások pedig az erőforráscsoportok alatt jelennek meg.
 
@@ -82,12 +82,13 @@ Halmozott költség | Mennyit költöttem eddig ebben a hónapban? Belül marado
 Napi költség | Növekedett a napi költségszint az elmúlt 30 napban?
 Díj szolgáltatás szerint | Hogyan változott a havi használat a legutóbbi három számla szerint?
 Költségek erőforrások szerint | Eddig a folyó hónapban melyik erőforrások kerültek a legtöbbe?
+Számla részletei | Milyen díjak szerepeltek az utolsó számlán?
 
 ![Nézetválasztó az erre a hónapra vonatkozó kiválasztást bemutató példával](./media/quick-acm-cost-analysis/view-selector.png)
 
 Azonban sok esetben ennél mélyebb elemzésre is szükség lehet. A testreszabást az oldal tetején a dátum kiválasztásánál kezdhetjük.
 
-Alapértelmezetten a költségelemzés az aktuális hónap adatait jeleníti meg. A dátumválasztóval gyorsan válthat néhány általános dátumtartomány között. Ilyen például az elmúlt hét nap, a múlt hónap, az aktuális év vagy egy egyéni dátumtartomány. A használatalapú előfizetéseknél a számlázási időszakon alapuló, a naptári hónaptól független dátumtartományok is elérhetők, például az aktuális számlázási időszak vagy az utolsó számla. A menü tetején az **<ELŐZŐ** és a **KÖVETKEZŐ>** hivatkozásokkal léphet az előző vagy a következő időszakra. Például az **<ELŐZŐ** hivatkozásra kattintva az **előző 7 nap** helyett a **8–14 nappal ezelőtti** , majd a **15–21 nappal ezelőtti** tartomány jelenik meg.
+Alapértelmezetten a költségelemzés az aktuális hónap adatait jeleníti meg. A dátumválasztóval gyorsan válthat néhány általános dátumtartomány között. Ilyen például az elmúlt hét nap, a múlt hónap, az aktuális év vagy egy egyéni dátumtartomány. A használatalapú előfizetéseknél a számlázási időszakon alapuló, a naptári hónaptól független dátumtartományok is elérhetők, például az aktuális számlázási időszak vagy az utolsó számla. A menü tetején az **<ELŐZŐ** és a **KÖVETKEZŐ>** hivatkozásokkal léphet az előző vagy a következő időszakra. Például az **<ELŐZŐ** hivatkozásra kattintva az **előző 7 nap** helyett a **8–14 nappal ezelőtti**, majd a **15–21 nappal ezelőtti** tartomány jelenik meg. Ne feledje, hogy egyéni dátumtartomány kiválasztásakor akár egy egész évet is kiválaszthat (pl. január 1-től december 31-ig).
 
 ![Dátumválasztó az erre a hónapra vonatkozó kiválasztást bemutató példával](./media/quick-acm-cost-analysis/date-selector.png)
 
@@ -118,7 +119,7 @@ További információért a költségadatok láthatóságának Azure-címkeszab�
 
 ![Csoportosított napi halmozott nézet az Azure-szolgáltatások múlt hónapi költségeivel](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Alapértelmezés szerint a költségelemzés az összes keletkező és számlán megjelenő használati és vásárlási költséget, más néven a **Tényleges költséget** mutatja. A tényleges költség ideális arra, hogy egyeztetni tudja a számlát. A költségekben jelentkező kiugró vásárlások mindazonáltal aggodalmakra adhatnak okot, ha nem szeretne rendellenes kiadásokat vagy a költségekben jelentkező egyéb változásokat látni. A foglalásvásárlási költségek által okozott kiugró csúcsok kisimításához váltson **amortizált költségekre** .
+Alapértelmezés szerint a költségelemzés az összes keletkező és számlán megjelenő használati és vásárlási költséget, más néven a **Tényleges költséget** mutatja. A tényleges költség ideális arra, hogy egyeztetni tudja a számlát. A költségekben jelentkező kiugró vásárlások mindazonáltal aggodalmakra adhatnak okot, ha nem szeretne rendellenes kiadásokat vagy a költségekben jelentkező egyéb változásokat látni. A foglalásvásárlási költségek által okozott kiugró csúcsok kisimításához váltson **amortizált költségekre**.
 
 ![Váltson a tényleges és az amortizált költség között, hogy megtekinthesse a teljes időszakra leosztott, illetve a foglalást használó erőforrásokhoz rendelt foglalásvásárlásokat](./media/quick-acm-cost-analysis/metric-picker.png)
 
@@ -156,9 +157,58 @@ A költségelemzésre mutató hivatkozás megosztásához válassza a panel tete
 
 ## <a name="download-usage-data"></a>Használati adatok letöltése
 
-Előfordulhat, hogy további elemzés céljából le kell töltenie az adatait, egyesíteni kell őket a saját adataival, vagy integrálnia kell őket a saját rendszereibe. A Cost Management több különböző lehetőséget kínál. Ha egy olyan alkalmi jellegű, részletes összegzésre van szüksége, mint amilyen a költségelemzésben is elérhető, hozza létre a szükséges nézetet. Ezt követően töltse le az **Exportálás** , majd az **Adatok letöltése CSV-fájlba** vagy az  **Adatok letöltése Excel-fájlba** lehetőség kiválasztásával. Az Excel-fájlba történő letöltés további információt nyújt a letöltés létrehozására használt nézetről, például a hatókörről, a lekérdezéskonfigurációról, a teljes összegről és a létrehozás dátumáról.
+### <a name="portal"></a>[Portál](#tab/azure-portal)
+
+Előfordulhat, hogy további elemzés céljából le kell töltenie az adatait, egyesíteni kell őket a saját adataival, vagy integrálnia kell őket a saját rendszereibe. A Cost Management több különböző lehetőséget kínál. Ha egy olyan alkalmi jellegű, részletes összegzésre van szüksége, mint amilyen a költségelemzésben is elérhető, hozza létre a szükséges nézetet. Ezt követően töltse le az **Exportálás**, majd az **Adatok letöltése CSV-fájlba** vagy az  **Adatok letöltése Excel-fájlba** lehetőség kiválasztásával. Az Excel-fájlba történő letöltés további információt nyújt a letöltés létrehozására használt nézetről, például a hatókörről, a lekérdezéskonfigurációról, a teljes összegről és a létrehozás dátumáról.
 
 Ha a teljes, nem összesített adatkészletre van szüksége, töltse le a számlázási fiókból. Ezután a portál bal oldali navigációs paneljén található szolgáltatáslistából válassza ki a **Költségkezelés + Számlázás** lehetőséget. Válassza ki a számlázási fiókját, ha van. Lépjen a **Felhasználás + díjak** oldalra, majd kattintson a kívánt számlázási időszak **Letöltés** ikonjára.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Először készítse elő a környezetet az Azure CLI-hez:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+A bejelentkezés után az [az costmanagement query](/cli/azure/ext/costmanagement/costmanagement#ext_costmanagement_az_costmanagement_query) paranccsal kérdezheti le az előfizetése az aktuális hónapra vonatkozó használati adatait:
+
+```azurecli
+az costmanagement query --timeframe MonthToDate --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000"
+```
+
+A **--dataset-filter** paraméterrel és egyéb paraméterekkel szűkítheti a lekérdezést:
+
+```azurecli
+az costmanagement query --timeframe MonthToDate --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" \
+   --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
+```
+
+A **--dataset-filter** paraméter JSON-sztringet vagy `@json-file` elemet vesz fel.
+
+Az [az costmanagement export](/cli/azure/ext/costmanagement/costmanagement/export) parancsokat is használhatja, hogy használati adatokat exportáljon egy Azure Storage-fiókba. Onnan töltheti le az adatokat.
+
+1. Hozzon létre egy erőforráscsoportot, vagy használjon egy meglévőt. Erőforráscsoport létrehozásához futtassa az [az group create](/cli/azure/group#az_group_create) parancsot:
+
+   ```azurecli
+   az group create --name TreyNetwork --location "East US"
+   ```
+
+1. Hozzon létre egy tárfiókot az exportálások fogadásához, vagy használjon egy meglévő tárfiókot. Fiók létrehozásához használja az [az storage account create](/cli/azure/storage/account#az_storage_account_create) parancsot:
+
+   ```azurecli
+   az storage account create --resource-group TreyNetwork --name cmdemo
+   ```
+
+1. Futtassa az [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) parancsot az exportálás létrehozásához:
+
+   ```azurecli
+   az costmanagement export create --name DemoExport --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-account-id cmdemo \
+   --storage-container democontainer --timeframe MonthToDate --storage-directory demodirectory
+   ```
+
+---
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: edcc94050880544a6c2de54ff27f833f1c60f99f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683645"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95893358"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 
@@ -146,7 +146,7 @@ A tulajdonjog-átadás elindítása előtt ismerje meg az Azure-beli szerepköra
 - Ha ugyanazon bérlő két szervezeti azonosítója közötti Azure-előfizetés- vagy fióktulajdonjog-átadást hajt végre, az Azure RBAC-szabályzatok és a meglévő szolgáltatásadminisztrátori és társadminisztrátori szerepkörök megmaradnak.
 - Több bérlős előfizetés- vagy fióktulajdonjog-átadások az Azure RBAC-szabályzatok és a szerepkör-hozzárendelések elvesztését eredményezhetik.
 - A szabályzatok és a rendszergazdai szerepkörök nem vihetők át különböző címtárakba. A szolgáltatásadminisztrátorokból a célfiók tulajdonosa lesz.
-- Ha el szeretné kerülni az RBAC szabályzatok és a szerepkör-hozzárendelések elvesztését a bérlők közötti előfizetés-átadáskor, győződjön meg arról, hogy **Az előfizetés áthelyezése a címzett Azure AD-bérlőjébe** jelölőnégyzet **nincs bejelölve**. Ez megőrzi a szolgáltatásokat, az RBAC-szerepköröket és a szabályzatokat az aktuális Azure AD-bérlőn, és csak a fiók számlázási tulajdonjogát adja át.  
+- Ha el szeretné kerülni az Azure RBAC szabályzatok és a szerepkör-hozzárendelések elvesztését a bérlők közötti előfizetés-átadáskor, győződjön meg arról, hogy **Az előfizetés áthelyezése a címzett Azure AD-bérlőjébe** jelölőnégyzet **nincs bejelölve**. Ez megőrzi a szolgáltatásokat, az Azure-szerepköröket és a szabályzatokat az aktuális Azure AD-bérlőn, és csak a fiók számlázási tulajdonjogát adja át.  
     :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="A kép azt mutatja, hogy az előfizetés Azure AD-bérlőnek történő áthelyezésére vonatkozó jelölőnégyzet nincs bejelölve" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 
 
@@ -282,7 +282,7 @@ Az Azure EA Portal segítséget nyújt az Azure EA-költségek és -használat f
 
 Minden szerepkör különböző szintű hozzáféréssel és jogosultsággal rendelkezik.
 
-A felhasználói szerepkörökkel kapcsolatos további információkért lásd: [Vállalati felhasználók szerepkörei](https://docs.microsoft.com/azure/manage/understand-ea-roles#enterprise-user-roles).
+A felhasználói szerepkörökkel kapcsolatos további információkért lásd: [Vállalati felhasználók szerepkörei](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles).
 
 ## <a name="add-an-azure-ea-account"></a>Azure EA-fiók hozzáadása
 
