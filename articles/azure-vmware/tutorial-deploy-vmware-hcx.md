@@ -2,13 +2,13 @@
 title: Oktatóanyag – VMware HCX üzembe helyezése és konfigurálása
 description: Ismerje meg, hogyan helyezhet üzembe és konfigurálhat VMware HCX-megoldást az Azure VMware-megoldás privát felhője számára.
 ms.topic: tutorial
-ms.date: 11/18/2020
-ms.openlocfilehash: afb5c653ce7c4b4a453a4031c5664042357de6c0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 11/25/2020
+ms.openlocfilehash: e50454c2299ed0f7e249563eecac1935a29a9c47
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999627"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352463"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
 
@@ -16,8 +16,8 @@ Ez a cikk bemutatja, hogyan helyezheti üzembe és konfigurálhatja a helyszíni
 
 A VMware HCX Advanced Connector előre telepítve van az Azure VMware megoldásban. Legfeljebb három helyszíni kapcsolatot támogat (a helyszínen a felhőben vagy a felhőben). Ha három helynél több kapcsolatra van szüksége, küldjön egy [támogatási kérést](https://portal.azure.com/#create/Microsoft.Support) a [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) bővítmény engedélyezéséhez. A bővítmény jelenleg előzetes verzióban érhető el. 
 
->[!Note]
->Bár a VMware-konfiguráció maximális eszköze azt írja le, hogy a helyszíni párok legfeljebb 25-re vannak lefoglalva a helyszíni és a Cloud Manager között, a licencelés ismét 3-ra korlátozza a speciális és a 10 for Enterprise kiadást.
+>[!TIP]
+>Bár a VMware-konfiguráció maximális eszköze a helyszíni összekötő és a Cloud Manager között legfeljebb 25 hely párokat mutatja, a licencelés ezt háromra korlátozza a speciális és a 10 for Enterprise kiadás esetében.
 
 >[!NOTE]
 >A VMware HCX Enterprise előzetes verziójú szolgáltatásként érhető el az Azure VMware megoldásban. Ingyenes, és az előzetes verziójú szolgáltatás használati feltételeinek hatálya alá tartozik. A VMware HCX Enterprise szolgáltatás általánosan elérhetővé tétele után 30 napos értesítést kap, hogy a számlázás át fog térni. Lehetősége van a szolgáltatás kikapcsolására vagy letiltására is. A VMware HCX Enterprise és a VMware HCX Advanced közötti egyszerű visszalépési útvonal nem érhető el. Ha úgy dönt, hogy visszalépést végez, újra kell telepítenie az állásidőt.
@@ -79,7 +79,7 @@ Mielőtt telepítené a virtuális berendezést a helyszíni vCenter, le kell t�
 1. Válassza **Manage**  >  az **identitás** kezelése lehetőséget, és a jelszó azonosításához válassza a **vCenter rendszergazdai jelszó** lehetőséget.
 
    > [!TIP]
-   > A vCenter jelszava a saját felhő beállításakor lett meghatározva, és ez ugyanaz a jelszó, amelyet az Azure VMware Solution HCX Managerbe való bejelentkezéshez fog használni.
+   > A vCenter jelszava a saját felhő beállításakor lett meghatározva. Ez ugyanaz a jelszó, amelyet az Azure VMware Solution HCX Managerbe való bejelentkezéshez fog használni.
 
    :::image type="content" source="media/tutorial-vmware-hcx/hcx-admin-password.png" alt-text="hcx jelszavának keresése." lightbox="media/tutorial-vmware-hcx/hcx-admin-password.png":::
 
@@ -91,7 +91,7 @@ Mielőtt telepítené a virtuális berendezést a helyszíni vCenter, le kell t�
 
 ## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>A VMware HCX-összekötő PETESEJTJEInek üzembe helyezése a helyszínen
 
-1. A helyszíni vCenter válassza ki azt a OVF- [sablont](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html) , amellyel a HCX-összekötőt üzembe helyezheti a helyszíni vCenter. 
+1. A helyszíni vCenter válassza ki azt a OVF- [sablont](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html) , amelybe telepíteni szeretné a VMware HCX-összekötőt a helyszíni vCenter. 
 
    > [!TIP]
    > Válassza ki az előző szakaszban letöltött PETESEJT-fájlt.  
@@ -111,12 +111,12 @@ Mielőtt telepítené a virtuális berendezést a helyszíni vCenter, le kell t�
 
    :::image type="content" source="media/tutorial-vmware-hcx/customize-template.png" alt-text="Képernyőkép a sablon testreszabásához szükséges mezőkről." lightbox="media/tutorial-vmware-hcx/customize-template.png":::
 
-1. Ellenőrizze a konfigurációt, majd kattintson a **Befejezés** gombra az HCX-összekötő petesejtjeinek telepítéséhez.
+1. Ellenőrizze a konfigurációt, majd válassza a **Befejezés** lehetőséget a VMware HCX-összekötő petesejtjeinek telepítéséhez.
    
    > [!IMPORTANT]
    > A virtuális berendezést manuálisan kell bekapcsolni.  A bekapcsolás után várjon 10-15 percet, mielőtt továbblép a következő lépésre.
 
-Az eljárás teljes körű áttekintéséhez tekintse meg az [Azure VMware-megoldást: HCX Appliance üzembe helyezési](https://www.youtube.com/embed/BwSnQeefnso) videó. 
+Az eljárás teljes körű áttekintéséhez tekintse meg az [Azure VMware-megoldást: HCX Appliance üzembe helyezési](https://www.youtube.com/embed/UKmSTYrL6AY) videó. 
 
 
 ## <a name="activate-vmware-hcx"></a>VMware-HCX aktiválása
@@ -152,7 +152,7 @@ Miután telepítette a VMware HCX Connector-összekötőt a helyszínen, és eli
 1. Az **SSO/PSC konfigurálása** lapon adja meg a platform Services-vezérlő teljes tartománynevét vagy IP-címét, majd válassza a **Folytatás** lehetőséget.
    
    > [!NOTE]
-   > Ez a bejegyzés általában megegyezik a vCenter teljes tartománynevével vagy IP-címével.
+   > Általában ugyanaz, mint az vCenter teljes tartományneve vagy IP-címe.
 
 1. Győződjön meg arról, hogy a megadott adatok helyesek, majd válassza az **Újraindítás** lehetőséget.
     
@@ -163,7 +163,7 @@ A szolgáltatások újraindítása után a megjelenő képernyőn zöld színnel
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="Képernyőfelvétel az irányítópultról zöld vCenter állapottal." lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
-Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMware-megoldást: aktiválja a HCX](https://www.youtube.com/embed/BkAV_TNYxdE) videót.
+Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMware-megoldást: aktiválja a HCX](https://www.youtube.com/embed/jzQZawslF8w) videót.
 
    > [!IMPORTANT]
    > Akár VMware HCX Advanced, akár VMware HCX Enterprise-t használ, előfordulhat, hogy telepítenie kell a javítást a VMware [tudásbáziscikk 81558](https://kb.vmware.com/s/article/81558)-es cikkében. 
@@ -174,7 +174,7 @@ Most már készen áll egy hely párosításának hozzáadására, egy hálózat
 
 ### <a name="add-a-site-pairing"></a>Hely párosításának hozzáadása
 
-A VMware HCX Cloud Managert az adatközpont VMware HCX-összekötője segítségével csatlakoztathatja az Azure VMware megoldásban. 
+A VMware HCX Cloud Managert az adatközpont VMware HCX-összekötője segítségével csatlakoztathatja vagy párosíthatja az Azure VMware megoldásban. 
 
 1. Jelentkezzen be a helyszíni vCenter, és a Home ( **Kezdőlap**) területen válassza a **HCX** lehetőséget.
 
@@ -183,15 +183,16 @@ A VMware HCX Cloud Managert az adatközpont VMware HCX-összekötője segítség
 1. Adja meg a korábban feljegyzett Cloud Manager URL-címet vagy IP-címet az Azure VMware-megoldás HCX `https://x.x.x.9` , az Azure VMware-megoldás cloudadmin@vsphere.local felhasználónevét és a jelszavát. Ezután válassza a **Csatlakozás** lehetőséget.
 
    > [!NOTE]
-   > A hely párosításának sikeres létrehozásához a HCX-összekötőnek képesnek kell lennie arra, hogy a 443-as porton keresztül irányítsa a HCX Cloud Manager IP-címét.
+   > Hely párosításának sikeres létrehozása:
+   > * A VMware HCX-összekötőnek képesnek kell lennie arra, hogy a 443-as porton keresztül irányítsa a HCX Cloud Manager IP-címét
    >
-   > A jelszó ugyanaz a jelszó, amelyet a vCenter való bejelentkezéshez használt. Ezt a jelszót a kezdeti üzembe helyezési képernyőn határozta meg.
+   > * Ugyanazt a jelszót használja, amelyet a vCenter való bejelentkezéshez használt. Ezt a jelszót a kezdeti üzembe helyezési képernyőn határozta meg.
 
-   Megjelenik egy képernyő, amelyen látható, hogy a HCX Cloud Manager az Azure VMware megoldásban és a helyszíni HCX-összekötő csatlakoztatva van (párosítva).
+   Megjelenik egy képernyő, amelyen látható, hogy a VMware HCX Cloud Manager az Azure VMware megoldásban és a helyszíni VMware HCX-összekötő csatlakoztatva van (párosítva).
 
-   :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Képernyőkép, amely a HCX-kezelő párosítását mutatja be az Azure VMware megoldásban és a HCX-összekötőn.":::
+   :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Képernyőkép, amely a HCX-kezelő párosítását mutatja be az Azure VMware megoldásban és a VMware HCX-összekötőben.":::
 
-Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMware-megoldást: HCX-hely párosítási](https://www.youtube.com/embed/sKizDCRHOko) videó.
+Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMware-megoldást: HCX-hely párosítási](https://www.youtube.com/embed/iTJtjbiwvsw) videó.
 
 ### <a name="create-network-profiles"></a>Hálózati profilok létrehozása
 
@@ -212,7 +213,7 @@ Négy hálózati profilt fog létrehozni:
 
    :::image type="content" source="media/tutorial-vmware-hcx/example-configurations-network-profile.png" alt-text="Képernyőkép az új hálózati profil részleteiről.":::
 
-Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMware-megoldást: HCX Network Profile](https://www.youtube.com/embed/NhyEcLco4JY) videó.
+Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMware-megoldást: HCX Network Profile](https://www.youtube.com/embed/O0rU4jtXUxc) videó.
 
 
 ### <a name="create-a-compute-profile"></a>Számítási profil létrehozása
@@ -274,18 +275,20 @@ Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMwar
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-done.png" alt-text="A számítási profil adatait megjelenítő képernyőkép." lightbox="media/tutorial-vmware-hcx/compute-profile-done.png":::
 
-Az eljárás teljes körű áttekintéséhez tekintse meg az [Azure VMware-megoldást: számítási profil](https://www.youtube.com/embed/qASXi5xrFzM) videó.
+Az eljárás teljes körű áttekintéséhez tekintse meg az [Azure VMware-megoldást: számítási profil](https://www.youtube.com/embed/e02hsChI3b8) videó.
 
 ### <a name="create-a-service-mesh"></a>Szolgáltatás hálójának létrehozása
 
 Itt az ideje, hogy konfiguráljon egy Service meshot a helyszíni és az Azure VMware megoldás SDDC között.
 
-   > [!NOTE]
-   > A Service Mesh Azure VMware-megoldással való sikeres létrehozásához:
-   >
-   > Az 500/4500-as UDP-portok nyitva vannak a helyszíni HCX-összekötő által meghatározott "kimenő" hálózati profil címei és az Azure VMware-megoldás HCX Cloud "kimenő" hálózati profiljának címei között.
-   >
-   > Ügyeljen arra, hogy ellenőrizze a [HCX szükséges portokat](https://ports.vmware.com/home/VMware-HCX).
+
+
+> [!NOTE]
+> A Service Mesh Azure VMware-megoldással való sikeres létrehozásához:
+>
+> * Az 500/4500-as UDP-portok nyitva vannak a helyszíni VMware HCX-összekötő "kimenő" hálózati profiljának címei és az Azure VMware-megoldás HCX Cloud "kimenő" hálózati profiljának címei között.
+>
+> * Ügyeljen arra, hogy ellenőrizze a [VMware HCX szükséges portokat](https://ports.vmware.com/home/VMware-HCX).
 
 1. Az **infrastruktúra** területen válassza az **összekötő**  >  **szolgáltatás háló**  >  **Létrehozás szolgáltatás háló létrehozása** lehetőséget.    
 
@@ -312,6 +315,10 @@ Itt az ideje, hogy konfiguráljon egy Service meshot a helyszíni és az Azure V
   
 1. A **Speciális konfiguráció-hálózati bővítmények Felskálázása** lapon tekintse át, majd válassza a **Folytatás** lehetőséget. 
 
+   A készülékeken akár nyolc VLAN-ot is megadhat, de egy másik készüléket is telepíthet további nyolc VLAN-ok hozzáadásához. Emellett a további berendezések számára is rendelkeznie kell IP-címmel, és a készüléken egyetlen IP-cím adható meg.  További információ: [VMware HCX-konfigurációs korlátok](https://configmax.vmware.com/guest?vmwareproduct=VMware%20HCX&release=VMware%20HCX&categories=41-0,42-0,43-0,44-0,45-0).
+   
+   :::image type="content" source="media/tutorial-vmware-hcx/extend-networks-increase-vlan.png" alt-text="Képernyőkép, amely a VLAN-szám növelésének helyét mutatja." lightbox="media/tutorial-vmware-hcx/extend-networks-increase-vlan.png":::
+
 1. A **Speciális konfiguráció-Traffic Engineering** szolgáltatásban tekintse át és végezze el a szükséges módosításokat, majd kattintson a **Continue (folytatás**) gombra.
 
 1. Tekintse át a topológia előzetes verzióját, és válassza a **Folytatás** lehetőséget.
@@ -332,7 +339,7 @@ Itt az ideje, hogy konfiguráljon egy Service meshot a helyszíni és az Azure V
 
    :::image type="content" source="media/tutorial-vmware-hcx/interconnect-appliance-state.png" alt-text="A berendezés állapotának ellenőrzéséhez szükséges beállításokat bemutató képernyőkép." lightbox="media/tutorial-vmware-hcx/interconnect-appliance-state.png":::
 
-Az eljárás teljes körű áttekintéséhez tekintse meg az [Azure VMware-megoldást: Service Mesh](https://www.youtube.com/embed/FyZ0d3P_T24) videó.
+Az eljárás teljes körű áttekintéséhez tekintse meg az [Azure VMware-megoldást: Service Mesh](https://www.youtube.com/embed/COY3oIws108) videó.
 
 ### <a name="optional-create-a-network-extension"></a>Választható Hálózati bővítmény létrehozása
 
@@ -354,7 +361,7 @@ Ha a helyszíni környezetből származó hálózatokat az Azure VMware megoldá
 
    :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="A bővítmény állapotát bemutató képernyőkép." lightbox="media/tutorial-vmware-hcx/extension-complete.png":::
 
-Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMware-megoldás: hálózati bővítmény](https://www.youtube.com/embed/cNlp0f_tTr0) videóját.
+Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMware-megoldás: hálózati bővítmény](https://www.youtube.com/embed/gYR0nftKui0) videóját.
 
 
 ## <a name="next-steps"></a>További lépések
@@ -364,5 +371,5 @@ Ha a készülék összekötő-alagútjának állapota felfelé és zöldre van *
 A HCX használatával kapcsolatos további információkért látogasson el a VMware technikai dokumentációra:
 
 * [A VMware HCX dokumentációja](https://docs.vmware.com/en/VMware-HCX/index.html)
-* [Virtual Machines migrálása VMware-HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g).
+* [Virtual Machines áttelepítése VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
 * [HCX szükséges portok](https://ports.vmware.com/home/VMware-HCX)

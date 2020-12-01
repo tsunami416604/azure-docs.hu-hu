@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: stevelas
 ms.date: 10/29/2020
 ms.custom: ''
-ms.openlocfilehash: 261604b66d393723b35b472415b8840b047bc36e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4fba6290b4973e797c13943fc9be4fadb19f3274
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133701"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349282"
 ---
 # <a name="how-to-consume-and-maintain-public-content-with-azure-container-registry-tasks"></a>Nyilvános tartalmak felhasználása és karbantartása Azure Container Registry feladatokkal
 
@@ -39,7 +39,7 @@ Az útmutató végrehajtásához használhatja az Azure CLI Azure Cloud Shell va
 
 Ez az útmutató a következőket állítja be:
 
-1. Három **tároló-nyilvántartó** , amely a következőket jelöli:
+1. Három **tároló-nyilvántartó**, amely a következőket jelöli:
    * Szimulált [Docker hub][docker-hub] ( `publicregistry` ) az alaprendszerkép módosításának támogatásához
    * A csapat beállításjegyzéke ( `contoso` ) a privát képek megosztásához
    * Vállalati vagy csoportos megosztott beállításjegyzék ( `baseartifacts` ) az importált nyilvános tartalomhoz
@@ -47,12 +47,12 @@ Ez az útmutató a következőket állítja be:
    1. Szimulált nyilvános rendszerkép létrehozása `node`
    1. A rendszerkép importálása és érvényesítése `node` a vállalat/csapat megosztott beállításjegyzékbe
    1. A rendszerkép létrehozása és üzembe helyezése `hello-world`
-1. **ACR-feladatok definíciói** , beleértve a következő konfigurációkat:
+1. **ACR-feladatok definíciói**, beleértve a következő konfigurációkat:
 1. **Beállításjegyzékbeli hitelesítő adatok** gyűjteménye, amelyek egy kulcstartóra mutató mutatók.
 1. **Titkos** kulcsok gyűjteménye, `acr-task.yaml` amely egy kulcstartón található
 1. Egy adott **értéken belül használt konfigurált értékek** gyűjteménye `acr-task.yaml`
 1. **Azure Key Vault** az összes titok védelméhez
-1. Egy **Azure Container-példány** , amely a `hello-world` Build alkalmazást üzemelteti
+1. Egy **Azure Container-példány**, amely a `hello-world` Build alkalmazást üzemelteti
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -741,7 +741,7 @@ az group delete -n $AKV_RG --no-wait -y
 az group delete -n $ACI_RG --no-wait -y
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben. az ACR-feladatok használatával automatizált kapuzás-munkafolyamatot hozott létre, amely frissített alaplemezképeket vezet be a környezetbe. Tekintse meg a kapcsolódó információkat a rendszerképek Azure Container Registryban való kezeléséhez.
 
@@ -751,11 +751,11 @@ Ebben a cikkben. az ACR-feladatok használatával automatizált kapuzás-munkafo
 
 [install-cli]:                  /cli/azure/install-azure-cli
 [acr]:                          https://aka.ms/acr
-[acr-repo-permissions]:         https://aka.ms/acr/repo-permissions
-[acr-task]:                     https://aka.ms/acr/tasks
+[acr-repo-permissions]:         ./container-registry-repository-scoped-permissions.md
+[acr-task]:                     ./container-registry-tasks-overview.md
 [acr-task-triggers]:            container-registry-tasks-overview.md#task-scenarios
 [acr-task-credentials]:       container-registry-tasks-authentication-managed-identity.md#4-optional-add-credentials-to-the-task
-[acr-tokens]:                   https://aka.ms/acr/tokens
+[acr-tokens]:                   ./container-registry-repository-scoped-permissions.md
 [aci]:                          https://aka.ms/aci
 [alpine-public-image]:          https://hub.docker.com/_/alpine
 [docker-hub]:                   https://hub.docker.com
@@ -766,11 +766,7 @@ Ebben a cikkben. az ACR-feladatok használatával automatizált kapuzás-munkafo
 [helm-charts]:                  https://helm.sh
 [mcr]:                          https://aka.ms/mcr
 [nginx-public-image]:           https://hub.docker.com/_/nginx
-[oci-artifacts]:                https://aka.ms/acr/artifacts
+[oci-artifacts]:                ./container-registry-oci-artifacts.md
 [oci-consuming-public-content]: https://opencontainers.org/posts/blog/2020-10-30-consuming-public-content/
 [opa]:                          https://www.openpolicyagent.org/
 [quay]:                         https://quay.io
-
-
-
-

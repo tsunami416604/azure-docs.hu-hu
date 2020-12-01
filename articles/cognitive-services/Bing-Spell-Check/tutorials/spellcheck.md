@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 7abd67ef072303b7f8156a18c2e3ac34758c03dd
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: bd01eaefa457c5ade10a5f1f4b8389d90ed60adf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364734"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351946"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Oktatóanyag: Spell Check-ügyfél weboldalának létrehozása
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Ebben az oktatóanyagban létrehozunk egy weboldalt, amely lehetővé teszi a felhasználók számára a Bing Spell Check API lekérdezését. Az alkalmazás forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
 
@@ -128,7 +128,7 @@ A getSubscriptionKeyLocalStorage segítő függvény először megpróbálja lek
     }
 ```
 
-A getSubscriptionKey segítő függvényhez egy paraméter, az **invalidate** szükséges. Ha az **invalidate** értéke **true** , a getSubscriptionKey törli a Bing Spell Check API kulcsát tartalmazó cookie-t. Ha az **invalidate** értéke **false** , a getSubscriptionKey visszaadja a Bing Spell Check API kulcsának értékét.
+A getSubscriptionKey segítő függvényhez egy paraméter, az **invalidate** szükséges. Ha az **invalidate** értéke **true**, a getSubscriptionKey törli a Bing Spell Check API kulcsát tartalmazó cookie-t. Ha az **invalidate** értéke **false**, a getSubscriptionKey visszaadja a Bing Spell Check API kulcsának értékét.
 
 ```html
     function getSubscriptionKey(invalidate) {

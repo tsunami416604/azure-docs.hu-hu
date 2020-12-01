@@ -6,18 +6,18 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/22/2020
-ms.openlocfilehash: 1a68cea423678dd8582d65b839d57076e84de940
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 288b7463098b1c63b816f5544581e6222c7548c9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029540"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351554"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rövid útmutató: a Application Insights használatának első lépései Java webes projektekben
 
 
 > [!CAUTION]
-> A Java-alkalmazások figyelésére november 2020-én a Azure Monitor Application Insights 3,0-ügynököt használó automatikus rendszerállapotot javasoljuk. További információ az első lépésekről: [Application Insights Java 3,0-ügynök](./java-in-process-agent.md).
+> A Java-alkalmazások figyelésére november 2020-én a Azure Monitor Application Insights Java 3,0-ügynököt használó automatikus rendszerállapotot javasoljuk. További információ az első lépésekről: [Application Insights Java 3,0-ügynök](./java-in-process-agent.md).
 
 Ebben a rövid útmutatóban az Application Insights SDK-t használja a rendszer, a függőségek nyomon követéséhez és a teljesítményszámlálók összegyűjtéséhez, a teljesítménnyel kapcsolatos problémák és kivételek diagnosztizálásához, valamint kód írásához a felhasználók által az alkalmazással való használat nyomon követéséhez.
 

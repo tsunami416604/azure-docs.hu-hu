@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: cb828eeb408a170b93ffc73b58f14b3f7a883cc4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95247234"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349350"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Jogcímek konfigurálása az alkalmazásokhoz Azure Active Directory
 
@@ -58,7 +58,7 @@ Ha azonban egy meglévő alkalmazás jogcímek alapján kívánja felhasználni 
 
 - Ha csoporttagság használata az alkalmazáson belüli hitelesítéshez, a csoport ObjectID használata ajánlott. A ObjectID csoport nem módosítható, és a Azure Active Directoryban egyedi, és minden csoport számára elérhető.
 - Ha a helyszíni csoport sAMAccountName használja az engedélyezéshez, használjon tartományneveket a tartomány minősített neveivel.  kevesebb esélye van a nevek összeütközésére. a sAMAccountName egyedi lehet egy Active Directory tartományon belül, de ha több Active Directory tartomány van szinkronizálva egy Azure Active Directory-Bérlővel, több csoport is rendelkezhet ugyanazzal a névvel.
-- Vegye fontolóra az [alkalmazási szerepkörök](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) használatát, hogy a csoporttagság és az alkalmazás közötti átirányítási réteget biztosítson.   Az alkalmazás ezután belső engedélyezési döntéseket tesz a tokenben lévő szerepkör-kagylók alapján.
+- Vegye fontolóra az [alkalmazási szerepkörök](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) használatát, hogy a csoporttagság és az alkalmazás közötti átirányítási réteget biztosítson.   Az alkalmazás ezután belső engedélyezési döntéseket tesz a jogkivonatban lévő szerepkör-jogcímek alapján.
 - Ha az alkalmazás úgy van konfigurálva, hogy az Active Directoryról szinkronizált csoport-attribútumokat kapjon, és a csoport nem tartalmazza ezeket az attribútumokat, akkor nem fog szerepelni a jogcímek között.
 - A jogkivonatok csoportba foglalása beágyazott csoportokat tartalmaz, kivéve ha az alkalmazáshoz hozzárendelt csoportokra vonatkozó jogcímek korlátozására van szükség.  Ha a felhasználó a GroupB tagja, és a GroupB a Groupa tagja, akkor a felhasználóhoz tartozó jogcímek a Groupe és a GroupB is tartalmazzák. Ha egy szervezet felhasználóinak nagy számú csoporttagság van, a tokenben felsorolt csoportok száma növelheti a token méretét.  Azure Active Directory korlátozza azoknak a csoportoknak a számát, amelyeket a rendszer 150 tokenben bocsát ki az SAML-kijelentésekhez, és 200 a JWT.  Ha a felhasználó nagyobb számú csoport tagja, akkor a csoportok kimaradnak, és a diagram végpontra mutató hivatkozás is szerepel a csoport adatainak beszerzéséhez.
 
@@ -221,7 +221,7 @@ Az SAML-és OIDC-azonosító jogkivonatokban a netbiosDomain\samAccountName form
  }
  ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Engedélyezés hozzáadása csoportok & csoportok jogcímek használata ASP.NET Core webalkalmazáshoz (kód minta)](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/5-WebApp-AuthZ/5-2-Groups/README.md)
 - [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)

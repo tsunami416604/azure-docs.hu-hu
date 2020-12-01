@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 877aa96b189de47d158721df6585cb94ace4a855
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94932900"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349180"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Adatok migrálása a Cassandra-ből Azure Cosmos DB Cassandra API-fiókba a Azure Databricks használatával
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -114,9 +114,9 @@ DFfromNativeCassandra
 ```
 
 > [!NOTE]
-> A `spark.cassandra.output.concurrent.writes` és a `connections_per_executor_max` konfigurációk fontosak a [ráta korlátozásának](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)elkerüléséhez, ami akkor fordul elő, amikor a kérések Cosmos db meghaladják a kiosztott átviteli sebességet ([kérelmek egységei](https://docs.microsoft.com/azure/cosmos-db/request-units)). Előfordulhat, hogy módosítania kell ezeket a beállításokat a Spark-fürtben lévő végrehajtók számától függően, és az egyes rekordok méretének (és így RU-nek) a megcélzott táblákba való beírása is lehetséges.
+> A `spark.cassandra.output.concurrent.writes` és a `connections_per_executor_max` konfigurációk fontosak a [ráta korlátozásának](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)elkerüléséhez, ami akkor fordul elő, amikor a kérések Cosmos db meghaladják a kiosztott átviteli sebességet ([kérelmek egységei](./request-units.md)). Előfordulhat, hogy módosítania kell ezeket a beállításokat a Spark-fürtben lévő végrehajtók számától függően, és az egyes rekordok méretének (és így RU-nek) a megcélzott táblákba való beírása is lehetséges.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md) 
 * [A partíciós kulcs ajánlott eljárásai](partitioning-overview.md#choose-partitionkey)

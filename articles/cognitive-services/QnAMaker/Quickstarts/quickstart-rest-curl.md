@@ -7,16 +7,16 @@ ms.date: 11/09/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 021628b92f1068743b097a455306df742f308f86
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 7592b9fb509f39504ad2399d0e939ceca1156221
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427683"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351095"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Rövid útmutató: a Tudásbázis és a REST használata a Tudásbázis kezeléséhez
 
-Ez a rövid útmutató végigvezeti a Tudásbázis létrehozásának, közzétételének és lekérdezésének lépésein. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/knowledge-base.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja.
+Ez a rövid útmutató végigvezeti a Tudásbázis létrehozásának, közzétételének és lekérdezésének lépésein. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../index.yml). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja.
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -50,11 +50,11 @@ Ez a rövid útmutató végigvezeti a Tudásbázis létrehozásának, közzété
 
 Ha a REST API-kkal és a cURLtel szeretne tudásbázist létrehozni, a következő információkra lesz szüksége:
 
-|Információ|cURL-konfiguráció|Rendeltetés|
+|Információ|cURL-konfiguráció|Cél|
 |--|--|--|
 |QnA Maker erőforrás neve|URL-cím|URL-cím létrehozásához használatos|
 |QnA Maker erőforrás kulcsa|`-h`fejléc paraméterei `Ocp-Apim-Subscription-Key`|Hitelesítés QnA Maker szolgáltatásban|
-|Az tudásbázist leíró JSON|`-d` param|[Példák](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples) a JSON-ra|
+|Az tudásbázist leíró JSON|`-d` param|[Példák](/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples) a JSON-ra|
 |A JSON mérete bájtban|`-h`fejléc paraméterei `Content-Size`||
 
 A cURL parancsot egy BASH-rendszerhéjból hajtja végre a rendszer. Szerkessze ezt a parancsot a saját erőforrás-nevével, az erőforrás kulcsával és a JSON-értékekkel és a JSON-mérettel.
@@ -85,11 +85,11 @@ A QnA Makerból származó cURL-válasz tartalmazza a `operationId` , amely a [m
 
 Ha a REST API-kkal és a cURLtel szeretne tudásbázist létrehozni, a következő információkra lesz szüksége:
 
-|Információ|cURL-konfiguráció|Rendeltetés|
+|Információ|cURL-konfiguráció|Cél|
 |--|--|--|
 |QnA Maker erőforrás neve|URL-cím|URL-cím létrehozásához használatos|
 |QnA Maker erőforrás kulcsa|`-h`fejléc paraméterei `Ocp-Apim-Subscription-Key`|Hitelesítés QnA Maker szolgáltatásban|
-|Az tudásbázist leíró JSON|`-d` param|[Példák](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples) a JSON-ra|
+|Az tudásbázist leíró JSON|`-d` param|[Példák](/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples) a JSON-ra|
 |A JSON mérete bájtban|`-h`fejléc paraméterei `Content-Size`||
 
 A cURL parancsot egy BASH-rendszerhéjból hajtja végre a rendszer. Szerkessze ezt a parancsot a saját erőforrás-nevével, az erőforrás kulcsával és a JSON-értékekkel és a JSON-mérettel.
@@ -122,7 +122,7 @@ A QnA Makerból származó cURL-válasz tartalmazza a `operationId` , amely a [m
 
 Amikor létrehoz egy tudásbázist, mert a művelet aszinkron, a válasz az állapot meghatározására vonatkozó információkat tartalmaz.
 
-|Információ|cURL-konfiguráció|Rendeltetés|
+|Információ|cURL-konfiguráció|Cél|
 |--|--|--|
 |QnA Maker erőforrás neve|URL-cím|URL-cím létrehozásához használatos|
 |Művelet azonosítója|URL-útvonal|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
@@ -153,7 +153,7 @@ A cURL válasza tartalmazza az állapotot. Ha a művelet állapota sikeres, akko
 
 Amikor létrehoz egy tudásbázist, mert a művelet aszinkron, a válasz az állapot meghatározására vonatkozó információkat tartalmaz.
 
-|Információ|cURL-konfiguráció|Rendeltetés|
+|Információ|cURL-konfiguráció|Cél|
 |--|--|--|
 |QnA Maker erőforrás neve|URL-cím|URL-cím létrehozásához használatos|
 |Művelet azonosítója|URL-útvonal|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
@@ -192,7 +192,7 @@ A Tudásbázis lekérdezése előtt a következőket kell tennie:
 
 Ez a feladat közzéteszi a tudásbázist. A futásidejű végpont kulcsának beolvasása [különálló feladat](#get-published-knowledge-bases-runtime-endpoint-key).
 
-|Információ|cURL-konfiguráció|Rendeltetés|
+|Információ|cURL-konfiguráció|Cél|
 |--|--|--|
 |QnA Maker erőforrás neve|URL-cím|URL-cím létrehozásához használatos|
 |QnA Maker erőforrás kulcsa|`-h`fejléc paraméterei `Ocp-Apim-Subscription-Key`|Hitelesítés QnA Maker szolgáltatásban|
@@ -218,7 +218,7 @@ A Tudásbázis lekérdezése előtt a következőket kell tennie:
 
 Ez a feladat közzéteszi a tudásbázist. A futásidejű végpont kulcsának beolvasása [különálló feladat](#get-published-knowledge-bases-runtime-endpoint-key).
 
-|Információ|cURL-konfiguráció|Rendeltetés|
+|Információ|cURL-konfiguráció|Cél|
 |--|--|--|
 |QnA Maker erőforrás neve|URL-cím|URL-cím létrehozásához használatos|
 |QnA Maker erőforrás kulcsa|`-h`fejléc paraméterei `Ocp-Apim-Subscription-Key`|Hitelesítés QnA Maker szolgáltatásban|
@@ -250,7 +250,7 @@ Ez a feladat lekéri a futásidejű végpont kulcsát. A Tudásbázis közzété
 
 A futásidejű végpont kulcsa a QnA Maker erőforrást használó összes tudásbázishoz tartozó kulcs.
 
-|Információ|cURL-konfiguráció|Rendeltetés|
+|Információ|cURL-konfiguráció|Cél|
 |--|--|--|
 |QnA Maker erőforrás neve|URL-cím|URL-cím létrehozásához használatos|
 |QnA Maker erőforrás kulcsa|`-h`fejléc paraméterei `Ocp-Apim-Subscription-Key`|Hitelesítés QnA Maker szolgáltatásban|
@@ -284,7 +284,7 @@ Ez a feladat lekéri a futásidejű végpont kulcsát. A Tudásbázis közzété
 
 A futásidejű végpont kulcsa a QnA Maker erőforrást használó összes tudásbázishoz tartozó kulcs.
 
-|Információ|cURL-konfiguráció|Rendeltetés|
+|Információ|cURL-konfiguráció|Cél|
 |--|--|--|
 |QnA Maker erőforrás neve|URL-cím|URL-cím létrehozásához használatos|
 |QnA Maker erőforrás kulcsa|`-h`fejléc paraméterei `Ocp-Apim-Subscription-Key`|Hitelesítés QnA Maker szolgáltatásban|
@@ -317,12 +317,12 @@ A cURL válasza tartalmazza a futásidejű végpont kulcsait. Csak az egyik kulc
 
 Az ismeretekből való válaszadás egy külön futtatókörnyezetből történik, mint a Tudásbázis kezelésekor. Mivel ez egy különálló futtatókörnyezet, egy futásidejű kulccsal kell hitelesítenie.
 
-|Információ|cURL-konfiguráció|Rendeltetés|
+|Információ|cURL-konfiguráció|Cél|
 |--|--|--|
 |QnA Maker erőforrás neve|URL-cím|URL-cím létrehozásához használatos|
 |QnA Maker futtatókörnyezet kulcsa|`-h`fejléc paraméterei `Authorization`|A kulcs egy olyan karakterlánc része, amely tartalmazza a szót `Endpointkey ` . Hitelesítés QnA Maker szolgáltatásban|
 |Tudásbázis-azonosító|URL-útvonal|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|Lekérdezési JSON leírása|`-d` param|A [kérelem törzsének paraméterei](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) és a JSON- [példák](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
+|Lekérdezési JSON leírása|`-d` param|A [kérelem törzsének paraméterei](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) és a JSON- [példák](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
 |A JSON mérete bájtban|`-h`fejléc paraméterei `Content-Size`||
 
 A cURL parancsot egy BASH-rendszerhéjból hajtja végre a rendszer. Szerkessze ezt a parancsot a saját erőforrás neve, az erőforrás kulcsa és a Tudásbázis-azonosító alapján.
@@ -342,12 +342,12 @@ A sikeres válasz magába foglalja a legjobb választ, valamint az ügyfélalkal
 
 Az ismeretekből való válaszadás egy külön futtatókörnyezetből történik, mint a Tudásbázis kezelésekor. Mivel ez egy különálló futtatókörnyezet, egy futásidejű kulccsal kell hitelesítenie.
 
-|Információ|cURL-konfiguráció|Rendeltetés|
+|Információ|cURL-konfiguráció|Cél|
 |--|--|--|
 |QnA Maker erőforrás neve|URL-cím|URL-cím létrehozásához használatos|
 |QnA Maker erőforrás kulcsa|`-h`fejléc paraméterei `Ocp-Apim-Subscription-Key`|Hitelesítés QnA Maker szolgáltatásban|
 |Tudásbázis-azonosító|URL-útvonal|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|Lekérdezési JSON leírása|`-d` param|A [kérelem törzsének paraméterei](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) és a JSON- [példák](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
+|Lekérdezési JSON leírása|`-d` param|A [kérelem törzsének paraméterei](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) és a JSON- [példák](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
 |A JSON mérete bájtban|`-h`fejléc paraméterei `Content-Size`||
 
 A cURL parancsot egy BASH-rendszerhéjból hajtja végre a rendszer. Szerkessze ezt a parancsot a saját erőforrás neve, az erőforrás kulcsa és a Tudásbázis-azonosító alapján.
@@ -372,7 +372,7 @@ A sikeres válasz magába foglalja a legjobb választ, valamint az ügyfélalkal
 
 Ha elkészült a tudásbázissal, törölje azt.
 
-|Információ|cURL-konfiguráció|Rendeltetés|
+|Információ|cURL-konfiguráció|Cél|
 |--|--|--|
 |QnA Maker erőforrás neve|URL-cím|URL-cím létrehozásához használatos|
 |QnA Maker erőforrás kulcsa|`-h`fejléc paraméterei `Ocp-Apim-Subscription-Key`|Hitelesítés QnA Maker szolgáltatásban|
@@ -393,7 +393,7 @@ A válasz állapota 204, és nincs találat. A `-v` parancssori paraméter haszn
 
 Ha elkészült a tudásbázissal, törölje azt.
 
-|Információ|cURL-konfiguráció|Rendeltetés|
+|Információ|cURL-konfiguráció|Cél|
 |--|--|--|
 |QnA Maker erőforrás neve|URL-cím|URL-cím létrehozásához használatos|
 |QnA Maker erőforrás kulcsa|`-h`fejléc paraméterei `Ocp-Apim-Subscription-Key`|Hitelesítés QnA Maker szolgáltatásban|
@@ -412,13 +412,13 @@ A válasz állapota 204, és nincs találat. A `-v` parancssori paraméter haszn
 
 ---
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
-* [Szerzői műveletek](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) Dokumentáció
-* [Futtatókörnyezet](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime) Dokumentáció
+* [Szerzői műveletek](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) Dokumentáció
+* [Futtatókörnyezet](/rest/api/cognitiveservices/qnamaker4.0/runtime) Dokumentáció
 * [BASH-parancsfájlok minta a cURL használatával](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [QnA Maker (V4) REST API-referencia](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 11/09/2020
-ms.openlocfilehash: 322db4e1535e763f4c3e7c87afaa370471ba0b66
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 3801bb44fed6bf24788957c41de77c89b3025ae8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376298"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351112"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Oktatóanyag: a Tudásbázis hozzáadása a virtuális ügynökökhöz
 Hozzon létre és terjesszen ki egy [Power Virtual Agents](https://powervirtualagents.microsoft.com/) -robotot, hogy válaszokat nyújtson a Tudásbázisból.
@@ -53,7 +53,7 @@ Az alábbiakban áttekintheti, hogyan csatlakoztathatók az ügynökök a Power 
     * Művelet meghívása (a folyamat automatizálása).
 * A [Power automatizáló](https://us.flow.microsoft.com/) portálon:
     * _Válasz készítése QnA Maker sablon használatával_
-    * A sablon segítségével konfigurálja a folyamatot [QnA Maker GenerateAnswer](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)használatára.
+    * A sablon segítségével konfigurálja a folyamatot [QnA Maker GenerateAnswer](/connectors/cognitiveservicesqnamaker/)használatára.
         * QnA Maker közzétett Tudásbázis-információk:
             * Tudásbázis-azonosító
             * Erőforrás-végponti gazdagép QnA Maker
@@ -195,7 +195,7 @@ Ahhoz, hogy az ügynök megtalálja és csatlakozhasson a folyamathoz, a folyama
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="Részleges képernyőkép az áramellátási virtuális ügynökről témakör beszélgetési vászon QnA Maker folyamat hozzáadása után.":::
 
-1. A bemeneti változónak a QnA Maker művelethez való helyes beállításához válassza **a válasszon változót** , majd kattintson a bot elemre **. UnrecognizedTriggerPhrase**.
+1. A bemeneti változónak a QnA Maker művelethez való helyes beállításához válassza **a válasszon változót**, majd kattintson a bot elemre **. UnrecognizedTriggerPhrase**.
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="Részleges képernyőkép az energiagazdálkodási virtuális ügynökről témakör beszélgetési vászon a bemeneti változó kiválasztása.":::
 
@@ -215,13 +215,13 @@ Ahhoz, hogy az ügynök megtalálja és csatlakozhasson a folyamathoz, a folyama
 
 1. Tesztelje az ügynököt úgy, hogy a következő sorrendben írja be a felhasználói szöveget. A szerzői vászon a sikeres lépéseket zöld pipa jelzi.
 
-    |Kérdés sorrendje|Kérdések tesztelése|Rendeltetés|
+    |Kérdés sorrendje|Kérdések tesztelése|Cél|
     |--|--|--|
     |1|helló|Beszélgetés indítása|
     |2|Tárolási idő|Példa témakörre. Ez úgy van konfigurálva, hogy az Ön részéről további munka nélkül működjön.|
-    |3|Yes|Válasz címzettje `Did that answer your question?`|
+    |3|Igen|Válasz címzettje `Did that answer your question?`|
     |4|Kiváló|Válasz címzettje `Please rate your experience.`|
-    |5|Yes|Válasz címzettje `Can I help with anything else?`|
+    |5|Igen|Válasz címzettje `Can I help with anything else?`|
     |6|Hogyan javíthatom a lekérdezési előrejelzések teljesítményének teljesítményét?|Ez a kérdés elindítja a visszalépési műveletet, amely választ küld a szövegnek a tudásbázisba. Ezután megjelenik a válasz. az egyes műveletekhez tartozó zöld pipa jelzi az egyes műveletek sikerességét.|
 
     :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Képernyőkép a csevegési robotról, amely zöld pipa jelzi a sikeres műveletekhez.":::
@@ -249,7 +249,7 @@ A bemutató webhely megosztásához konfigurálja a csatornát csatornaként.
 
 1. Másolja a hivatkozást, és válassza a **Mentés** lehetőséget. Illessze be a bemutató webhelyére mutató hivatkozást egy e-mailbe az iskolájában vagy a szervezet tagjainak.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a tudásbázissal, távolítsa el a Azure Portal QnA Maker erőforrásait.
 
@@ -258,6 +258,6 @@ Ha elkészült a tudásbázissal, távolítsa el a Azure Portal QnA Maker erőfo
 [Tudásbázis elemzésének lekérése](../How-To/get-analytics-knowledge-base.md)
 
 További információk:
-* [Power Virtual Agents](https://docs.microsoft.com/power-virtual-agents/)
-* [Power Automate](https://docs.microsoft.com/power-automate/)
-* [QnA Maker-összekötő](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/) és az [összekötő beállításai](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)
+* [Power Virtual Agents](/power-virtual-agents/)
+* [Power Automate](/power-automate/)
+* [QnA Maker-összekötő](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/) és az [összekötő beállításai](/connectors/cognitiveservicesqnamaker/)

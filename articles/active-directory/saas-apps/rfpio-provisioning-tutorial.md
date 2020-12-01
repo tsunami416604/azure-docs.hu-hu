@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 2792d5cc65e08a23a333deebdb24c0fd869446c3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ff859e7d77fd19cd006cf45a6faa737297fdb9a1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352897"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349639"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés RFPIO konfigurálása
 
@@ -159,7 +159,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * A RFPIO jelenleg nem támogatja a csoportok üzembe helyezését.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

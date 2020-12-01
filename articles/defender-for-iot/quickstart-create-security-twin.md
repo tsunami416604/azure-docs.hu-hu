@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 822e9dc237dd6f4d73e1860c6a0b240fb94c3105
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74e0e8daa662f4dd49f1886972236b5b0a3b100a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947182"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348857"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Gyors útmutató: azureiotsecurity-modul létrehozása – Twin
 
@@ -31,7 +31,7 @@ Az Azure-ban beépített IoT-megoldások esetében az eszközök az ikrek kulcss
 A IoT Defender teljes körű integrációt biztosít a meglévő IoT-eszközkezelés platformmal, lehetővé téve az eszköz biztonsági állapotának kezelését, valamint a meglévő eszközök vezérlési képességeinek kihasználását.
 A IoT-integrációs Defender a IoT Hub Twin mechanizmus használatával érhető el.
 
-További információ az IoT Hub Azure-beli modulbeli ikrek általános fogalmáról: [IoT hub modul ikrek](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) .
+További információ az IoT Hub Azure-beli modulbeli ikrek általános fogalmáról: [IoT hub modul ikrek](../iot-hub/iot-hub-devguide-module-twins.md) .
 
 A IoT Defender a modul Twin mechanizmusát használja, és minden eszközhöz fenntart egy _azureiotsecurity_ nevű biztonsági modult.
 
@@ -54,8 +54,8 @@ Tekintse meg az [ügynök konfigurációja](how-to-agent-configuration.md) cím�
 Ha manuálisan szeretne létrehozni egy új _azureiotsecurity_ -modult egy eszközhöz, kövesse az alábbi utasításokat:
 
 1. A IoT Hubban keresse meg és válassza ki azt az eszközt, amelyhez külön biztonsági modult szeretne létrehozni.
-1. Kattintson az eszközre, majd a **modul identitásának hozzáadása**elemre.
-1. A **modul identitásának neve** mezőbe írja be a **azureiotsecurity**nevet.
+1. Kattintson az eszközre, majd a **modul identitásának hozzáadása** elemre.
+1. A **modul identitásának neve** mezőbe írja be a **azureiotsecurity** nevet.
 
 1. Kattintson a **Mentés** gombra.
 
@@ -64,7 +64,7 @@ Ha manuálisan szeretne létrehozni egy új _azureiotsecurity_ -modult egy eszk�
 Annak ellenőrzése, hogy van-e különálló biztonsági modul egy adott eszközhöz:
 
 1. Az Azure-IoT Hub válassza a **IoT eszközök** lehetőséget a **felfedezők** menüből.
-1. Adja meg az eszköz AZONOSÍTÓját, vagy válasszon ki egy beállítást a **lekérdezési eszköz mezőben** , majd kattintson az **eszközök lekérdezése**elemre.
+1. Adja meg az eszköz AZONOSÍTÓját, vagy válasszon ki egy beállítást a **lekérdezési eszköz mezőben** , majd kattintson az **eszközök lekérdezése** elemre.
     ![Eszközök lekérdezése](./media/quickstart/verify-security-module-twin.png)
 1. Válassza ki az eszközt, vagy kattintson rá duplán az eszköz részletei lap megnyitásához.
 1. Válassza a **modul identitások** menüt, és erősítse meg a **azureiotsecurity** modul létezését az eszközhöz társított modul-identitások listájában.

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 19137f3384a1b97ae1ae7e3faeb4dc2e0e4fd3bd
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 550418761e91a8292761d7595ff32d939c0d542e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017797"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350398"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Az Azure Cosmos DB monitorozása
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -90,10 +90,10 @@ Az Azure Cosmos DB összes mérőszáma a névtérben **Cosmos dB standard mér�
 * CollectionName
 * DatabaseName
 * OperationType
-* Region
+* Régió
 * StatusCode
 
-A hivatkozásokat a [Azure monitor által támogatott összes erőforrás-metrika](/azure/azure-monitor/platform/metrics-supported)listáját láthatja.
+A hivatkozásokat a [Azure monitor által támogatott összes erőforrás-metrika](../azure-monitor/platform/metrics-supported.md)listáját láthatja.
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Azure Cosmos DBhoz tartozó műveleti szint metrikáinak megtekintése
 
@@ -127,7 +127,7 @@ A metrikákat a **felosztás alkalmazása** lehetőség használatával csoporto
 
 Azure Monitor naplókban található adatkészletek olyan táblákban tárolódnak, amelyekben az egyes táblák egyedi tulajdonságokkal rendelkeznek.
 
-Azure Monitor összes erőforrás-naplója ugyanazokkal a mezőkkel rendelkezik, amelyeket a szolgáltatás-specifikus mezők követnek. Az általános séma [Azure monitor erőforrás-naplózási sémában](../azure-monitor/platform/diagnostic-logs-schema.md#top-level-resource-logs-schema)szerepel. A Azure Cosmos DBhoz gyűjtött erőforrás-naplók típusai listáját lásd: [Azure Cosmos DB adathivatkozás figyelése] ((monitor-Cosmos-db-Reference. MD # erőforrás-naplók)  
+Azure Monitor összes erőforrás-naplója ugyanazokkal a mezőkkel rendelkezik, amelyeket a szolgáltatás-specifikus mezők követnek. Az általános séma [Azure monitor erőforrás-naplózási sémában](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)szerepel. A Azure Cosmos DBhoz gyűjtött erőforrás-naplók típusai listáját az [adatAzure Cosmos DB monitorozása](monitor-cosmos-db-reference.md#resource-logs)című témakörben találhatja meg.
 
 A [műveletnapló](/azure/azure-monitor/platform/activity-log) olyan platform-bejelentkezési Azure, amely betekintést nyújt az előfizetési szintű eseményekre. Megtekintheti egymástól függetlenül, vagy átirányíthatja Azure Monitor naplókba, ahol a Log Analytics használatával jóval összetettebb lekérdezéseket végezhet.  
 
@@ -172,11 +172,11 @@ A Azure Cosmos DB az alábbi táblázatokban tárolja az adattárakat.
 
 ## <a name="alerts"></a>Riasztások
 
-Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a rendszeren észlelt problémák azonosítását és megoldását, mielőtt az ügyfelek bejelentkeznek. Riasztásokat állíthat be a [metrikák](/azure/azure-monitor/platform/alerts-metric-overview), [naplók](/azure/azure-monitor/platform/alerts-unified-log)és a [tevékenység naplójában](/azure/azure-monitor/platform/activity-log-alerts). A különböző típusú riasztások előnyei és hátrányai
+Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a rendszeren észlelt problémák azonosítását és megoldását, mielőtt az ügyfelek bejelentkeznek. Riasztásokat állíthat be a [metrikák](../azure-monitor/platform/alerts-metric-overview.md), [naplók](../azure-monitor/platform/alerts-unified-log.md)és a [tevékenység naplójában](../azure-monitor/platform/activity-log-alerts.md). A különböző típusú riasztások előnyei és hátrányai
 
 Az alábbi táblázat például az erőforrásokra vonatkozó riasztási szabályokat sorolja fel. A riasztási szabályok részletes listáját a Azure Portalban találja. További információt a [riasztások konfigurálása](create-alerts.md) című cikkben talál.  
 
-| Riasztástípus | Condition (Állapot) | Leírás  |
+| Riasztástípus | Feltétel | Leírás  |
 |:---|:---|:---|
 |Kérelmek egységeinek korlátozása (metrikus riasztás) |Dimenzió neve: StatusCode, operátor: egyenlő, dimenzió értékei: 429  | Riasztás, ha a tároló vagy az adatbázis túllépte a kiosztott átviteli sebességet. |
 |A régió feladatátvétele megtörtént |Operátor: nagyobb, mint, összesítés típusa: darabszám, küszöbérték: 1 | Egyetlen régió feladatátvétele esetén. Ez a riasztás akkor hasznos, ha nem engedélyezte az automatikus feladatátvételt. |

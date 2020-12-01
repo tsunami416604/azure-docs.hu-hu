@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 66c9a3afb91aaff448d6eadc86175d8515be766c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: fac26c616c977eedc466f004a9455297ec995fb8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94889082"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352541"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight-fürtök biztonságossá tétele és elkülönítése privát kapcsolattal (előzetes verzió)
 
@@ -102,12 +102,12 @@ A HDInsight nagyvállalati biztonsági funkcióival, beleértve a privát hivatk
 
 ### <a name="use-azure-powershell"></a>Az Azure PowerShell használata
 
-A PowerShell használatához tekintse meg [a példát.](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)
+A PowerShell használatához tekintse meg [a példát.](/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)
 
 ### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
-Az Azure CLI használatához tekintse meg a [következő példát:](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples).
+Az Azure CLI használatához tekintse meg a [következő példát:](/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Enterprise Security Package az Azure HDInsight](enterprise-security-package.md)
 * [A vállalati biztonsági általános információk és irányelvek az Azure HDInsight](./domain-joined/general-guidelines.md)

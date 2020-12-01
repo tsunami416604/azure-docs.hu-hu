@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: a80082ac524a4777b3b5ee32d946e9db8ec6e7f5
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 85f0a42cdfcbea2223d202a9dc35f58746580e85
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681618"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350126"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>A Kubernetes web Dashboard elérése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -41,6 +41,10 @@ az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
 
 ## <a name="start-the-kubernetes-dashboard"></a>A Kubernetes irányítópult elindítása
+
+> [!WARNING]
+> Az AK-irányítópult bővítmény elavult a 1.19 + verzióban. Ehelyett használja a [Azure Portal (előzetes verzió) Kubernetes erőforrás nézetét][kubernetes-portal] . 
+> * A következő parancs most megnyitja az Azure Portal erőforrás nézetét a 1,19-es és újabb verziók kubernetes irányítópultja helyett.
 
 A Kubernetes-irányítópult fürtön való elindításához használja az az [AK Browse][az-aks-browse] parancsot. Ehhez a parancshoz a Kube-Dashboard addon telepítése szükséges a fürtön, amely alapértelmezés szerint a Kubernetes 1,18-nál régebbi verziót futtató fürtökön található.
 
@@ -190,7 +194,7 @@ Néhány percet vesz igénybe, hogy az új hüvelyek létre legyenek hozva egy r
 
 ![A replikakészlet információinak megtekintése](./media/kubernetes-dashboard/view-replica-set.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Kubernetes-irányítópulttal kapcsolatos további információkért tekintse meg a [Kubernetes webes felhasználói felületének irányítópultját][kubernetes-dashboard].
 

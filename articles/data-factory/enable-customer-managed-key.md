@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: c7d3dae2b7da2fcc14e86eb4965ebd99fd7bf681
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f1a7bffc05d83b30fe9e5bcd6e17bf6bc0192e1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88650577"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348942"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Azure Data Factory titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -47,8 +47,8 @@ Az alábbi lista a diagram számozott lépéseit ismerteti:
 
 Az ügyfél által felügyelt kulcsok Data Factory használatakor két tulajdonságot kell beállítani a Key Vault, a __Soft delete__ és a __repurge__(Törlés) lehetőséget. Ezek a tulajdonságok a PowerShell vagy az Azure CLI használatával engedélyezhetők egy új vagy meglévő kulcstartón. Ha meg szeretné tudni, hogyan engedélyezheti ezeket a tulajdonságokat egy meglévő kulcstartón, tekintse meg a következő cikkek egyikében, a _Soft-delete engedélyezése_ és a _kiürítési védelem engedélyezése_ című szakaszt:
 
-- [A Soft delete használata a PowerShell-lel](../key-vault/general/soft-delete-powershell.md)
-- [A Soft delete használata a parancssori felülettel](../key-vault/general/soft-delete-cli.md)
+- [A Soft delete használata a PowerShell-lel](../key-vault/general/key-vault-recovery.md)
+- [A Soft delete használata a parancssori felülettel](../key-vault/general/key-vault-recovery.md)
 
 Ha Azure Portal használatával hoz létre új Azure Key Vault, a következő módon engedélyezheti a __törlést__ , és nem törölheti a __kiürítést__ :
 
@@ -56,7 +56,7 @@ Ha Azure Portal használatával hoz létre új Azure Key Vault, a következő m�
 
 ### <a name="grant-data-factory-access-to-azure-key-vault"></a>Data Factory hozzáférés engedélyezése Azure Key Vault
 
-Győződjön meg arról, hogy a Azure Key Vault és a Azure Data Factory ugyanahhoz a Azure Active Directory (Azure AD) bérlőhöz és _ugyanahhoz a régióhoz_tartoznak. A Azure Key Vault hozzáférés-vezérlés területen adja meg az adat-előállító Managed Service Identity (MSI) a következő engedélyeket: _Get_, _dewrap Key_és _wrap Key_. Ezek az engedélyek szükségesek az ügyfél által felügyelt kulcsok Data Factory való engedélyezéséhez.
+Győződjön meg arról, hogy a Azure Key Vault és a Azure Data Factory ugyanahhoz a Azure Active Directory (Azure AD) bérlőhöz és _ugyanahhoz a régióhoz_ tartoznak. A Azure Key Vault hozzáférés-vezérlés területen adja meg az adat-előállító Managed Service Identity (MSI) a következő engedélyeket: _Get_, _dewrap Key_ és _wrap Key_. Ezek az engedélyek szükségesek az ügyfél által felügyelt kulcsok Data Factory való engedélyezéséhez.
 
   ![Képernyőfelvétel Data Factory hozzáférésének engedélyezése Key Vault](media/enable-customer-managed-key/02-access-policy-factory-managed-identities.png)
 
@@ -88,7 +88,7 @@ Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy h
 
 ## <a name="update-key-version"></a>Kulcs verziójának frissítése
 
-A kulcs új verziójának létrehozásakor frissítse az adatgyárat az új verzió használatára. Kövesse a hasonló lépéseket az _ügyfél által felügyelt kulcsok engedélyezése_című szakaszban leírtak szerint, beleértve a következőket:
+A kulcs új verziójának létrehozásakor frissítse az adatgyárat az új verzió használatára. Kövesse a következő témakörben ismertetett lépéseket: _Customer-Managed kulcsok engedélyezése_, beleértve a következőket:
 
 1. Keresse meg az új kulcshoz tartozó URI-t a Azure Key Vault-portálon keresztül
 
@@ -100,7 +100,7 @@ A kulcs új verziójának létrehozásakor frissítse az adatgyárat az új verz
 
 ## <a name="use-a-different-key"></a>Másik kulcs használata
 
-Data Factory titkosításhoz használt kulcs módosításához manuálisan kell frissítenie a beállításokat a Data Factoryban. Kövesse a hasonló lépéseket az _ügyfél által felügyelt kulcsok engedélyezése_című szakaszban leírtak szerint, beleértve a következőket:
+Data Factory titkosításhoz használt kulcs módosításához manuálisan kell frissítenie a beállításokat a Data Factoryban. Kövesse a következő témakörben ismertetett lépéseket: _Customer-Managed kulcsok engedélyezése_, beleértve a következőket:
 
 1. Keresse meg az új kulcs URI-JÁT Azure Key Vault-portálon keresztül
 
@@ -110,7 +110,7 @@ Data Factory titkosításhoz használt kulcs módosításához manuálisan kell 
 
 1. Kattintson a __Save (Mentés__ ) gombra, és a Data Factory mostantól titkosítva lesz az új kulccsal
 
-## <a name="disable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok letiltása
+## <a name="disable-customer-managed-keys"></a>Customer-Managed kulcsok letiltása
 
 A tervezés után az ügyfél által felügyelt kulcs funkció engedélyezése után nem távolíthatja el az extra biztonsági lépést. A gyár és az adatok titkosítása mindig egy ügyfél által megadott kulccsal történik.
 

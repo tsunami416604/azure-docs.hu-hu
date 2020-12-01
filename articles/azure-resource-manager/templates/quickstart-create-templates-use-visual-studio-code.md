@@ -1,20 +1,20 @@
 ---
 title: Sablon létrehozása – Visual Studio Code
-description: A Resource Manager-sablonokon a Visual Studio Code-dal és az Azure Resource Manager-eszközök bővítményeivel dolgozhat.
+description: A Visual Studio Code és a Azure Resource Manager Tools bővítmény használatával dolgozhat Azure Resource Manager-sablonokban (ARM-sablonok).
 author: neilpeterson
 ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d8fd44a1e4c1ddfd78b2afa3280bb05c8fde91e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88034981"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350143"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Rövid útmutató: Azure Resource Manager sablonok létrehozása a Visual Studio Code-ban
+# <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>Rövid útmutató: ARM-sablonok létrehozása a Visual Studio Code-ban
 
-A Visual Studio Code-hoz készült Azure Resource Manager Tools biztosítja a nyelvi támogatást, az erőforrás-kódrészleteket és az erőforrás-kiegészítést. Ezek az eszközök segítenek Azure Resource Manager sablonok létrehozásában és ellenőrzésében. Ebben a rövid útmutatóban a bővítmény használatával hozzon létre egy Azure Resource Manager sablont a semmiből. Ennek során a bővítmények funkcióit, például az ARM-sablonok részleteit, az érvényesítést, a befejezést és a paraméteres fájlok támogatását tapasztalhatja.
+A Visual Studio Code-hoz készült Azure Resource Manager Tools biztosítja a nyelvi támogatást, az erőforrás-kódrészleteket és az erőforrás-kiegészítést. Ezek az eszközök segítenek Azure Resource Manager-sablonok (ARM-sablonok) létrehozásában és ellenőrzésében. Ebben a rövid útmutatóban a bővítmény használatával hozzon létre egy ARM-sablont a semmiből. Ennek során a bővítmények funkcióit, például az ARM-sablonok részleteit, az érvényesítést, a befejezést és a paraméteres fájlok támogatását tapasztalhatja.
 
 A rövid útmutató elvégzéséhez szüksége lesz a [Visual Studio Code](https://code.visualstudio.com/)-ra, amelyen telepítve van a [Azure Resource Manager Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) . Az [Azure CLI](/cli/azure/?view=azure-cli-latest) -t vagy az Azure PowerShell- [modult](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) is telepítenie és hitelesítenie kell.
 
@@ -22,7 +22,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="create-an-arm-template"></a>ARM-sablon létrehozása
 
-Hozzon létre és nyisson meg egy új, *azuredeploy.js*nevű fájlt a Visual Studio Code-ban. Adja meg `arm` a Kódszerkesztő alkalmazást, amely az ARM-sablonokhoz Azure Resource Manager kódrészleteket indít el.
+Hozzon létre és nyisson meg egy új, *azuredeploy.js* nevű fájlt a Visual Studio Code-ban. Adja meg `arm` a Kódszerkesztő alkalmazást, amely az ARM-sablonokhoz Azure Resource Manager kódrészleteket indít el.
 
 Válassza ki `arm!` Az Azure-erőforráscsoport üzembe helyezéséhez hatókörrel rendelkező sablon létrehozásához.
 
@@ -32,7 +32,7 @@ Ez a kódrészlet létrehoz egy ARM-sablon alapszintű építőelemeit.
 
 ![Egy teljesen összeszerelő ARM-sablont ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/2.png)
 
-Figyelje meg, hogy a Visual Studio Code nyelvi módja *JSON* -ról *Azure Resource Manager sablonra*módosult. A bővítmény az ARM-sablonokra jellemző nyelvi kiszolgálót tartalmaz, amely ARM sablon-specifikus érvényesítési, befejezési és egyéb nyelvi szolgáltatásokat biztosít.
+Figyelje meg, hogy a Visual Studio Code nyelvi módja *JSON* -ról *Azure Resource Manager sablonra* módosult. A bővítmény az ARM-sablonokra jellemző nyelvi kiszolgálót tartalmaz, amely ARM sablon-specifikus érvényesítési, befejezési és egyéb nyelvi szolgáltatásokat biztosít.
 
 ![Kép, amely a Visual Studio Code nyelvi módjában Azure Resource Manager](./media/quickstart-create-templates-use-visual-studio-code/3.png)
 
@@ -54,7 +54,7 @@ A **Tab** billentyűt a Storage-fiók konfigurálható tulajdonságai lapon lehe
 
 ## <a name="completion-and-validation"></a>Befejezés és érvényesítés
 
-A bővítmény egyik legerősebb funkciója az Azure-sémákkal való integráció. Az Azure-sémák az ellenőrzési és erőforrás-kompatibilis befejezési képességekkel biztosítják a bővítményt. Módosítsa a Storage-fiókot az érvényesítés és a Befejezés működés közbeni megtekintéséhez. 
+A bővítmény egyik legerősebb funkciója az Azure-sémákkal való integráció. Az Azure-sémák az ellenőrzési és erőforrás-kompatibilis befejezési képességekkel biztosítják a bővítményt. Módosítsa a Storage-fiókot az érvényesítés és a Befejezés működés közbeni megtekintéséhez.
 
 Először frissítse a Storage-fiók típusát egy érvénytelen értékre, például: `megaStorage` . Figyelje meg, hogy ez a művelet egy figyelmeztetést állít elő, amely `megaStorage` nem érvényes érték.
 
@@ -80,7 +80,7 @@ Az Azure Storage-fiókok neveinek legalább 3 karakterből kell lenniük, és le
 
 ![A minLength és a maxLength egy ARM-sablon paraméterbe való felvételét bemutató kép](./media/quickstart-create-templates-use-visual-studio-code/11.png)
 
-Most a Storage erőforrásban frissítse a Name (név) tulajdonságot a paraméter használatára. Ehhez távolítsa el az aktuális nevet. Írjon be egy dupla idézőjelet és egy nyitó szögletes zárójelet `[` , amely az ARM-sablon funkcióinak listáját állítja elő. Válassza ki a *paramétereket* a listából. 
+Most a Storage erőforrásban frissítse a Name (név) tulajdonságot a paraméter használatára. Ehhez távolítsa el az aktuális nevet. Írjon be egy dupla idézőjelet és egy nyitó szögletes zárójelet `[` , amely az ARM-sablon funkcióinak listáját állítja elő. Válassza ki a *paramétereket* a listából.
 
 ![Az ARM-sablon erőforrásaiban paraméterek használatakor automatikus kiegészítést ábrázoló kép](./media/quickstart-create-templates-use-visual-studio-code/12.png)
 

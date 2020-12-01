@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: c47a4fbf51b14d9a13237f77c75dbf2839fb5f80
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: ff54d605fd81fa640314d99359f1aabacf7a469e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381286"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350381"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Web Search API használatával
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Ez az egyoldalas alkalmazás bemutatja, hogyan kérhetők le, dolgozhatók fel és jeleníthetők meg a Bing Web Search API-ból származó keresési eredmények. Az oktatóanyag HTML- és CSS-sablonokra épül, fő témája pedig a JavaScript-kód. A [Githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) az indulásban segítő útmutatókkal együtt érhetők el HTML-, CSS- és JS-fájlok.
 
@@ -138,7 +138,7 @@ A `SafeSearch` beállítása `strict`, `moderate` vagy `off` lehet. A Bing Web S
 
 Ha az **Előléptetés** jelölőnégyzetek bármelyike be van jelölve, akkor a lekérdezéshez az `answerCount` paraméter is hozzá lesz fűzve. A `promote` paraméter használata mellett az `answerCount` is kötelező. Ebben a kódrészletben `9` értékre van beállítva, hogy minden elérhető eredménytípus vissza legyen adva.
 > [!NOTE]
-> Egy eredménytípus előléptetése nem *garantálja* , hogy az szerepelni fog a keresési eredmények között. Az előléptetés csak az ilyen típusú eredmények rangját növeli a szokásos rangjukhoz képest. A keresések egy adott eredménytípusra korlátozásához a `responseFilter` lekérdezési paraméter használható, vagy meghívható egy olyan meghatározott végpont, mint a Bing Image Search vagy a Bing News Search.
+> Egy eredménytípus előléptetése nem *garantálja*, hogy az szerepelni fog a keresési eredmények között. Az előléptetés csak az ilyen típusú eredmények rangját növeli a szokásos rangjukhoz képest. A keresések egy adott eredménytípusra korlátozásához a `responseFilter` lekérdezési paraméter használható, vagy meghívható egy olyan meghatározott végpont, mint a Bing Image Search vagy a Bing News Search.
 
 A `textDecoration` és a `textFormat` paraméter a szkript kötött része. Ezek emelik ki félkövéren a keresőkifejezést a keresési eredményekben. Ezek nem kötelező paraméterek.
 
@@ -470,7 +470,7 @@ cors-proxy-server
 
 Ne zárja be a parancsablakot, amíg használja az mintaalkalmazást; az ablak bezárása leállítja a proxyt. A keresési eredmények alatti, kibontható HTTP-fejlécek szakaszban meg kell jelennie az `X-MSEdge-ClientID` fejlécnek. Fontos, hogy ez minden kéréshez ugyanaz legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Bing Web Search API 7-es verzió – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)

@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 39848bcaded1669c6a6efd5b649ecf8e8343a596
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: d930543671a5328d76a38aa7e1b421c111e89e39
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381116"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349520"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Frissítés Bing Web Search API V5-ről a v7-re
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Ez a frissítési útmutató a Bing Web Search API 5. és 7. verziójának változásait azonosítja. Ez az útmutató segítséget nyújt az alkalmazás azon részeinek azonosításához, amelyeket frissítenie kell a 7-es verzió használatához.
 
@@ -31,7 +31,7 @@ Ez a frissítési útmutató a Bing Web Search API 5. és 7. verziójának vált
 
 ### <a name="endpoints"></a>Végpontok
 
-- A végpont verziószáma a V5 verzióról a v7-re változott. Például: https: \/ \/ API.Cognitive.microsoft.com/Bing/ **v 7.0** /Search.
+- A végpont verziószáma a V5 verzióról a v7-re változott. Például: https: \/ \/ API.Cognitive.microsoft.com/Bing/**v 7.0**/Search.
 
 ### <a name="error-response-objects-and-error-codes"></a>Hibás objektumok és hibakódok
 
@@ -44,7 +44,7 @@ Ez a frissítési útmutató a Bing Web Search API 5. és 7. verziójának vált
 
 - Az V5-hibakódokat a következő lehetséges `code` és értékekkel cserélte le `subCode` .
 
-|Code|Alkód|Leírás
+|Kód|Alkód|Leírás
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|A Bing visszaadja a ServerError, ha az alkódok bármely feltétele teljesül. A válasz ezeket a hibákat fogja tartalmazni, ha a HTTP-állapotkód 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokkolva|A Bing visszaadja a InvalidRequest, ha a kérelem bármely része érvénytelen. Például hiányzik egy kötelező paraméter, vagy a paraméter értéke érvénytelen.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a HTTP-állapotkód 400.<br/><br/>Ha a hiba HttpNotAllowed, a 410-es HTTP-állapotkód.

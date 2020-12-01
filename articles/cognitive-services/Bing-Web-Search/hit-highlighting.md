@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5c0bed04fccfba1ac06a54d5ddba9033ef05761b
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 32c3279cacddf10e77e8d245ba525ab766efd6fd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380708"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351878"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>A dekorációs jelölők használata a szöveg kiemeléséhez
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 A Bing támogatja a találatok kiemelését, amelyek bizonyos válaszok megjelenítési karakterláncában a lekérdezési kifejezéseket (vagy a Bing által megtalált egyéb kifejezéseket) jelölik. Előfordulhat például, hogy egy weblap eredményének `name` , `displayUrl` és `snippet` mezőinek megjelölése megjelölt lekérdezési feltételeket tartalmaz. 
 
@@ -81,7 +81,7 @@ Ha `textDecorations` a a `true` , a Bing az alábbi jelölőket is tartalmazhatj
 |U + E018|\<sup>|A felső indexű tartalom elejét jelöli
 |U + E019|\</sup>|A felső szintű tartalom végét jelöli
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi a Bing Web Search API?](overview.md) 
 * [Miniatűrök átméretezése és körülvágása](resize-and-crop-thumbnails.md)

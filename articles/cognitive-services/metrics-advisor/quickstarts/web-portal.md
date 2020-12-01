@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0afd8fab6072e1563d2b2f277e8a53b56a8161c2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5dbf98d363429e6d22a0b7719cdc669deebd21a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048236"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348636"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Rövid útmutató: az első metrika monitorozása a webes portál használatával
 
@@ -52,7 +52,7 @@ A metrikák tanácsadója különböző adatforrások, például a SQL Database,
 
 Ez a rövid útmutató egy SQL Database példát használ. Saját adatait is betöltheti, ugyanezeket a lépéseket követve.
 
-Első lépésként jelentkezzen be a metrikák tanácsadó munkaterületére a Active Directory-fiókjával. A kezdőlapon válassza ki az imént létrehozott **címtárat**, **előfizetést** és **munkaterületet** , majd kattintson az első **lépések**elemre. A munkaterhelés betöltésének főoldalát követően válassza az **adatcsatorna hozzáadása** lehetőséget a bal oldali menüben.
+Első lépésként jelentkezzen be a metrikák tanácsadó munkaterületére a Active Directory-fiókjával. A kezdőlapon válassza ki az imént létrehozott **címtárat**, **előfizetést** és **munkaterületet** , majd kattintson az első **lépések** elemre. A munkaterhelés betöltésének főoldalát követően válassza az **adatcsatorna hozzáadása** lehetőséget a bal oldali menüben.
 
 ### <a name="data-schema-requirements-and-configuration"></a>Az Adatséma követelményei és konfigurációja
 
@@ -92,12 +92,12 @@ Ha az Adatséma betöltődik, és az alábbi módon jelenik meg, válassza ki a 
 |Kiválasztás  |Leírás  |Jegyzetek  |
 |---------|---------|---------|
 |**Timestamp**     | Egy adatpont időbélyege Ha nincs megadva, a metrikák tanácsadója az adatpont betöltésének időbélyegét fogja használni. Minden adatcsatorna esetében legfeljebb egy oszlopot adhat meg timestamp típusúként.        | Választható. Legfeljebb egy oszlopnak kell megadnia.       |
-|**Measure**     |  Az adatcsatorna numerikus értékei. Minden adatcsatorna esetében több mértéket is megadhat, de legalább egy oszlopot ki kell jelölni mértékként.        | Legalább egy oszloppal kell megadni.        |
-|**Méret**     | Kategorikus értékek. A különböző értékek kombinációja egy adott egydimenziós idősorozatot azonosít, például: ország, nyelv, bérlő. A none vagy tetszőleges számú oszlopot kiválaszthatja dimenzióként. Megjegyzés: Ha nem karakterlánc típusú oszlopot választ dimenzióként, a dimenzió alábontása legyen óvatos. | Választható.        |
-|**Kihagyás**     | A kijelölt oszlop figyelmen kívül hagyása.        |         |
+|**mérték**     |  Az adatcsatorna numerikus értékei. Minden adatcsatorna esetében több mértéket is megadhat, de legalább egy oszlopot ki kell jelölni mértékként.        | Legalább egy oszloppal kell megadni.        |
+|**dimenzió**     | Kategorikus értékek. A különböző értékek kombinációja egy adott egydimenziós idősorozatot azonosít, például: ország, nyelv, bérlő. A none vagy tetszőleges számú oszlopot kiválaszthatja dimenzióként. Megjegyzés: Ha nem karakterlánc típusú oszlopot választ dimenzióként, a dimenzió alábontása legyen óvatos. | Választható.        |
+|**Figyelmen kívül**     | A kijelölt oszlop figyelmen kívül hagyása.        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="Kapcsolati beállítások" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="Séma konfigurációja" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>Automatikus összesítő beállítások
 
@@ -117,7 +117,7 @@ Az észlelés alkalmazása esetén kattintson az adatcsatorna listájában felso
 - A konfiguráció észlelésének frissítése a várt eredmények kielégítése érdekében
 - Értesítés beállítása az észlelt rendellenességekről
 
-:::image type="content" source="../media/metric-details.png" alt-text="Kapcsolati beállítások" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="Metrika részletei" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>A diagnosztikai ismeretek megtekintése
 
@@ -125,13 +125,13 @@ Az észlelési konfiguráció finomhangolása után az észlelt rendellenessége
 
 A diagnosztikai megállapítások megtekintéséhez kattintson az idősorozat-vizualizációk piros pontokra, amelyek az észlelt rendellenességeket jelölik. Ekkor megjelenik egy ablak az incidensek elemzése oldalra mutató hivatkozással. 
 
-:::image type="content" source="../media/incident-link.png" alt-text="Kapcsolati beállítások" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Incidens hivatkozása" lightbox="../media/incident-link.png":::
 
-Miután rákattintott a hivatkozásra, a rendszer az incidensek elemzése oldalra mutat, amely a megfelelő anomálián alapul, és a diagnosztikai elemzések egy rakásával foglalkozik. A fentiekben az incidensre vonatkozó statisztikai adatok, például a **Súlyosság**, a rendellenességek és az **érintett** **kezdési** és **befejezési idő**szerepel. 
+Miután rákattintott a hivatkozásra, a rendszer az incidensek elemzése oldalra mutat, amely a megfelelő anomálián alapul, és a diagnosztikai elemzések egy rakásával foglalkozik. A fentiekben az incidensre vonatkozó statisztikai adatok, például a **Súlyosság**, a rendellenességek és az **érintett** **kezdési** és **befejezési idő** szerepel. 
 
 Ezután látni fogja az incidens őse anomáliát, és automatizálja a kiváltó okokat. Ez az automatizált kiváltó okok az összes kapcsolódó rendellenesség esetében az incidensek fájának elemzésével jönnek létre, többek között a következőkkel: szórás, eloszlás és a szülő anomáliák való hozzájárulás. 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Kapcsolati beállítások" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Incidens-diagnosztika" lightbox="../media/incident-diagnostic.png":::
 
 Ezek alapján már könnyedén megtekintheti, hogy mi történik, és milyen hatással van az incidensre, valamint a legvalószínűbb kiváltó ok. Annak érdekében, hogy a lehető legrövidebb időn belül azonnali művelettel lehessen megoldani az incidenst. 
 
@@ -150,10 +150,10 @@ A web Hook az a belépési pont, amellyel a rendszer a metrikai tanácsadó szol
 A Hook létrehozása után a riasztási beállítások határozzák meg, hogy a rendszer milyen riasztási értesítéseket küldjön. Az egyes mérőszámokhoz több riasztási beállítást is beállíthat. két fontos beállítás a **riasztás** , amely meghatározza a befoglalni kívánt rendellenességeket, és **szűri az anomáliák beállításait** , amelyek meghatározzák, hogy mely rendellenességek szerepeljenek a riasztásban. További részletekért tekintse meg a **riasztási beállítások hozzáadása vagy szerkesztése** című szakaszt a következő témakörben [: útmutató: riasztások konfigurálása és értesítések beszerzése Hook használatával](../how-tos/alerts.md#add-or-edit-alert-settings) .
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Adatcsatornák előkészítése](../how-tos/onboard-your-data.md)
     - [Adatcsatornák kezelése](../how-tos/manage-data-feeds.md)
     - [Különböző adatforrások beállításai](../data-feeds-from-different-sources.md)
-- [A REST API vagy az ügyféloldali kódtárak használata](rest-api.md)
+- [A REST API vagy az ügyféloldali kódtárak használata](./rest-api-and-client-library.md)
 - [Metrikák konfigurálása és a konfiguráció észlelésének finomhangolása](../how-tos/configure-metrics.md)

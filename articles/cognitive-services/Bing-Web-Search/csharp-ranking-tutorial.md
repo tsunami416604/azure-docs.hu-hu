@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b6aea6a3b0856b3db345e20b87d2a12ad055e1
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 077c715616e377d8b296e53fdd5a861f944ab940
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380330"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349503"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>A konzol alkalmazás keresési ügyfelének létrehozása C-ben #
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre egy egyszerű .NET Core Console-alkalmazást, amely lehetővé teszi a felhasználóknak a Bing Web Search API lekérdezését és a rangsorolt eredmények megjelenítését.
 
@@ -47,7 +47,7 @@ Hozzon létre egy projektet a Visual Studióban a `Ctrl`+`Shift`+`N` billentyűp
 
 Az **új projekt** párbeszédpanelen kattintson a **Visual C# > Windows klasszikus asztali > Console app (.NET-keretrendszer)** elemre.
 
-Nevezze el az alkalmazás **MyConsoleSearchApp** , majd kattintson **az OK** gombra.
+Nevezze el az alkalmazás **MyConsoleSearchApp**, majd kattintson **az OK** gombra.
 
 ## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>A JSON.net NuGet-csomag hozzáadása a projekthez
 
@@ -236,7 +236,7 @@ A `rankingResponse` JSON-objektum ([dokumentáció](/rest/api/cognitiveservices-
 
 A besorolási válasz JSON-je tartalmazhat egy vagy több csoportot is.
 
-A **program.cs** -ben adja hozzá a következő metódust az eredmények megfelelően rangsorolt sorrendben való megjelenítéséhez:
+A **program.cs**-ben adja hozzá a következő metódust az eredmények megfelelően rangsorolt sorrendben való megjelenítéséhez:
 
 ```csharp
 static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects)
@@ -283,7 +283,7 @@ Ez a metódus:
 - Hurkok a `rankingResponse` Válasz által tartalmazott csoportok felett
 - Megjeleníti az egyes csoportok elemeit a hívással `DisplaySpecificResults(...)`
 
-A **program.cs** -ben adja hozzá a következő két módszert:
+A **program.cs**-ben adja hozzá a következő két módszert:
 
 ```csharp
 static void DisplaySpecificResults(Newtonsoft.Json.Linq.JToken resultIndex, Newtonsoft.Json.Linq.JToken items, string title, params string[] fields)
@@ -314,7 +314,7 @@ static void DisplayItem(Newtonsoft.Json.Linq.JToken item, string title, string[]
 
 Ezek a módszerek együttműködve a keresési eredményeket a konzolra exportálják.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást. A kimenetnek a következőképpen kell kinéznie:
 
@@ -336,6 +336,6 @@ WebPage:
 ...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [rangsor használatáról az eredmények megjelenítéséhez](rank-results.md).

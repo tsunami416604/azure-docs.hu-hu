@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 11/25/2020
 ms.author: chrande
-ms.openlocfilehash: 56ed1e653547b3c0e3469f820eb33155aedb1bcb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c2165ea6273ad90cfb95242dfe72538c0a5ef64c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187204"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350058"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>A Gremlin API bemutatása Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -56,7 +56,7 @@ A Azure Cosmos DB Gremlin API által kínált differenciált funkciók a követk
 
 * **Automatikus indexelés**
 
-  Alapértelmezés szerint a Azure Cosmos DB automatikusan indexeli a csomópontokon belüli összes tulajdonságot (más néven csúcspontokat) és a diagramon lévő éleket, és nem vár vagy igényel semmilyen sémát, és nem kell másodlagos indexeket létrehoznia. További információ a [Azure Cosmos db indexeléséről](/azure/cosmos-db/index-overview).
+  Alapértelmezés szerint a Azure Cosmos DB automatikusan indexeli a csomópontokon belüli összes tulajdonságot (más néven csúcspontokat) és a diagramon lévő éleket, és nem vár vagy igényel semmilyen sémát, és nem kell másodlagos indexeket létrehoznia. További információ a [Azure Cosmos db indexeléséről](./index-overview.md).
 
 * **Kompatibilitás az Apache TinkerPoppal**
 
@@ -154,7 +154,7 @@ A gráfok különösen akkor hasznosak, ha olyan kérdéseket kell megválaszoln
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A gráfok Azure Cosmos DB általi támogatásával kapcsolatos további információkért lásd:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 111b2b5b660133c20afdb3c56e1c3e3ed607398c
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96297059"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350738"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Verziókövetés az Azure szinapszis Studióban
 
@@ -192,7 +192,7 @@ Miután eltávolította az aktuális tárházhoz való társítást, beállítha
 
 ## <a name="best-practices-for-git-integration"></a>Ajánlott eljárások a git-integrációhoz
 
--   **Engedélyek**. Miután egy git-tárház csatlakozott a munkaterülethez, bárki, aki hozzáférhet a git-adattárhoz a munkaterület bármely szerepkörével, frissítheti az összetevőket, például az SQL-parancsfájlt, a jegyzetfüzetet, a Spark-feladat definícióját, az adatkészletet, a adatfolyam és a folyamatot a git módban. Általában nem szeretné, hogy minden csapattag rendelkezzen a munkaterület frissítéséhez szükséges engedélyekkel. Csak a git-tárház engedélyezése a munkaterület-összetevőhöz tartozó szerzők számára. 
+-   **Engedélyek**. Miután egy git-tárház csatlakozott a munkaterülethez, bárki, aki hozzáfér a git-adattárhoz a munkaterület bármely szerepkörével, frissítheti az összetevőket, például az SQL-parancsfájlt, a jegyzetfüzetet, a Spark-feladat definícióját, az adatkészletet, a adatfolyam és a folyamatot a git módban. Általában nem szeretné, hogy minden csapattag rendelkezzen a munkaterület frissítéséhez szükséges engedélyekkel. Csak a git-tárház engedélyezése a munkaterület-összetevőhöz tartozó szerzők számára. 
 -   **Együttműködés**. Javasoljuk, hogy ne engedélyezze a közvetlen bejelentkezéseket az együttműködési ágban. Ez a korlátozás segít megakadályozni a hibákat, mivel minden bejelentkezés a [szolgáltatási ágak létrehozása](source-control.md#creating-feature-branches)című témakörben leírt lekéréses kérelem-felülvizsgálati folyamaton halad át.
 -   **Szinapszis élő üzemmód**. A git módban való közzététel után az összes változás a szinapszis élő módban jelenik meg. A szinapszis élő módban a közzététel le van tiltva. És megtekintheti az összetevők élő módban való futtatását, ha a megfelelő engedélyt kapta. 
 -   Összetevők **szerkesztése a Studióban**. A szinapszis Studio az egyetlen hely, amellyel engedélyezheti a munkaterület forrás-és szinkronizálási módosításait a git szolgáltatásban. Az SDK-val, a PowerShell-lel végzett módosítások nem lesznek szinkronizálva a git használatával. Javasoljuk, hogy mindig szerkessze az összetevőt a Studióban, ha a git engedélyezve van.
@@ -215,7 +215,7 @@ Ha a közzétételi ág nincs szinkronban az együttműködési ágban, és a le
 
 1. Konfigurálja újra a git-t ugyanazzal a beállításokkal, de győződjön meg arról, hogy a **meglévő erőforrások importálása a tárházba** jelölőnégyzet be van jelölve, és válassza ki ugyanazt az ágat.  
 
-1. Lekéréses kérelem létrehozása az együttműködési ág változásainak egyesítéséhez 
+1. Lekéréses kérelem létrehozása a változások együttműködési ágba való egyesítéséhez 
 
 ## <a name="unsupported-features"></a>Nem támogatott funkciók
 
@@ -223,6 +223,6 @@ Ha a közzétételi ág nincs szinkronban az együttműködési ágban, és a le
 - A szinapszis Studio nem támogatja a véglegesítő üzenet testreszabását.
 - A Studio alkalmazásban a DELETE művelet megtervezésével közvetlenül a git-ben lesz végrehajtva
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A folyamatos integráció és üzembe helyezés megvalósításához tekintse meg a [folyamatos integrációt és teljesítést (CI/CD)](continuous-integration-deployment.md).

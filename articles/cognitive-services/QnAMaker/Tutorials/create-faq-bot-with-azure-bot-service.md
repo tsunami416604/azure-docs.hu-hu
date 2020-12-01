@@ -5,17 +5,17 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: aa2530f817bf20af40ab2913df9f16e7d1974ef3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 356b954c65086ff65264ce7a62b038cd7a8eac3d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187136"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350959"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Oktatóanyag: GYIK-bot létrehozása Azure Bot Service
 Hozzon létre egy GYIK-robotot a QnA Maker és az Azure [bot Service](https://azure.microsoft.com/services/bot-service/) kód nélkül.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -80,4 +80,4 @@ Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műv
     A csevegési robot a Tudásbázisban válaszol.
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Adjon meg egy felhasználói lekérdezést a teszt webes csevegésben.":::
-1. A robotot a további [támogatott csatornákon](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0&preserve-view=true)is megvilágíthatja.
+1. A robotot a további [támogatott csatornákon](/azure/bot-service/bot-service-manage-channels?preserve-view=true&view=azure-bot-service-4.0)is megvilágíthatja.

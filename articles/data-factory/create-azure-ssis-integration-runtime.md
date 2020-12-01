@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: effa0d3ba9f7098b691605bfbd76bff9ea3d5e66
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7936699832a09f535729c42b12fec2d5c49a11a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023431"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350942"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure SSIS integrációs modul létrehozása Azure Data Factory
 
@@ -79,7 +79,7 @@ Azon Azure-régiók listájáért, amelyekben Data Factory és Azure-SSIS IR el�
 
 Az alábbi táblázat összehasonlítja egy Azure SQL Database-kiszolgáló és az SQL felügyelt példány bizonyos funkcióit, amelyek az Azure-SSIR IR-hez kapcsolódnak:
 
-| Funkció | SQL Database| SQL felügyelt példány |
+| Jellemző | SQL Database| SQL felügyelt példány |
 |---------|--------------|------------------|
 | **Ütemezés** | A SQL Server Agent nem érhető el.<br/><br/>Lásd: [csomagok végrehajtásának ütemezett Data Factory folyamata](/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| A felügyelt példány ügynöke elérhető. |
 | **Hitelesítés** | Létrehozhat egy SSISDB-példányt egy olyan tárolt adatbázis-felhasználóval, aki az adat-előállító felügyelt identitásával rendelkező Azure AD-csoportot az **db_owner** szerepkör tagjaként.<br/><br/>Lásd: az [Azure ad-hitelesítés engedélyezése SSISDB létrehozásához Azure SQL Database kiszolgálón](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Létrehozhat egy SSISDB-példányt egy olyan tárolt adatbázis-felhasználóval, aki az adatelőállító felügyelt identitását képviseli. <br/><br/>Lásd: az [Azure ad-hitelesítés engedélyezése SSISDB létrehozásához az Azure SQL felügyelt példányában](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-sql-managed-instance). |
@@ -167,7 +167,7 @@ Ha bejelöli a jelölőnégyzetet, a következő lépésekkel hozhatja létre a 
 Jelölje be a **Kapcsolódás tesztelése** , ha alkalmazható, és ha sikeres, kattintson a **Tovább gombra**.
 
 > [!NOTE]
-   > Ha Azure SQL Database-kiszolgálót használ a SSISDB üzemeltetéséhez, a rendszer alapértelmezés szerint az adatokat a Geo-redundáns tárolóban tárolja a biztonsági mentésekhez. Ha nem szeretné, hogy az adatai más régiókban legyenek replikálva, kövesse az utasításokat a [biztonsági mentési tár redundancia konfigurálásához a PowerShell használatával](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell).
+   > Ha Azure SQL Database-kiszolgálót használ a SSISDB üzemeltetéséhez, a rendszer alapértelmezés szerint az adatokat a Geo-redundáns tárolóban tárolja a biztonsági mentésekhez. Ha nem szeretné, hogy az adatai más régiókban legyenek replikálva, kövesse az utasításokat a [biztonsági mentési tár redundancia konfigurálásához a PowerShell használatával](../azure-sql/database/automated-backups-overview.md?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell).
    
 ##### <a name="creating-azure-ssis-ir-package-stores"></a>Azure-SSIS IR Package Stores létrehozása
 

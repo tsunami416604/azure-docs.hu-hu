@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 96cca89b1206aaa7890648def694074a18b2aa17
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4ab32cd37d732cd9f177363da547edd22bd5af77
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368865"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349265"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services és gépi tanulás
 
@@ -20,7 +20,7 @@ A Cognitive Services gépi tanulási képességeket biztosít olyan általános 
 
 [Cognitive Services](./what-are-cognitive-services.md) a szolgáltatások egy csoportja, amelyek mindegyike különböző, általánosított előrejelző képességeket támogat. A szolgáltatások különböző kategóriákba vannak osztva, így könnyebben megtalálhatja a megfelelő szolgáltatást. 
 
-|Szolgáltatáskategória|Rendeltetés|
+|Szolgáltatáskategória|Cél|
 |--|--|
 |[Döntés](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Olyan alkalmazásokat hozhat létre, amelyek javaslatokat jelenítenek meg a megalapozott és hatékony döntéshozatalhoz.|
 |[Nyelv](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Engedélyezheti alkalmazásai számára a természetes nyelv előre beépített szkriptekkel történő feldolgozását, kiértékelheti a hangulatot, valamint megtudhatja, hogyan ismerheti fel, hogy mit szeretnének a felhasználók.|
@@ -44,7 +44,7 @@ A Machine learning egy olyan fogalom, amelyben összegyűjtheti az adatgyűjtés
 
 A gépi tanulási rendszer kialakításának folyamata a gépi tanulással vagy az adatelemzéssel kapcsolatos ismereteket igényel.
 
-A gépi tanulás [Azure Machine learning (pénzmosás) termékekkel és szolgáltatásokkal](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%252fmachine-learning%252fstudio%252fcontext%252fml-context)van elbiztosítva.
+A gépi tanulás [Azure Machine learning (pénzmosás) termékekkel és szolgáltatásokkal](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%2fmachine-learning%2fstudio%2fcontext%2fml-context)van elbiztosítva.
 
 ## <a name="what-is-a-cognitive-service"></a>Mi az a kognitív szolgáltatás?
 
@@ -104,9 +104,9 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
 |[Beszélő felismerő](./speech-service/speaker-recognition-overview.md)||x||
 |[Beszédfelismerési szöveg – beszéd (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Beszéd-beszéd – szöveg (STT)](speech-service/speech-to-text.md)|x|x||
-|[Beszéd fordítása](speech-service/speech-translation.md)|x|||
+|[Speech Translation](speech-service/speech-translation.md)|x|||
 |[Text Analytics](./text-analytics/overview.md)|x|||
-|[Fordító](./translator/translator-info-overview.md)|x|||
+|[Translator](./translator/translator-info-overview.md)|x|||
 |[Translator-Custom Translator](./translator/custom-translator/overview.md)||x||
 
 * A megszemélyesítő csak a szolgáltatás által gyűjtött betanítási adatokat igényli (valós időben működik) a szabályzat és az adatok kiértékeléséhez. A személyre szabott beállításhoz nincs szükség nagyméretű korábbi adatkészletekre a kezdeti vagy a kötegelt képzéshez. 
@@ -129,7 +129,7 @@ Más gépi tanulási eszközökhöz exportált modelleket biztosító Cognitive 
 |--|--|
 |[Custom Vision](./custom-vision-service/overview.md)|[Exportálás](./Custom-Vision-Service/export-model-python.md) az Androidhoz készült Tensorflow, CoreML for IOS11, ONNX for Windows ml|
 
-## <a name="learn-more"></a>További információk
+## <a name="learn-more"></a>További információ
 
 * [Architektúra-útmutató – Mik a gépi tanulási termékek a Microsoftnál?](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [Gépi tanulás – a Deep learning és a Machine learning bemutatása](../machine-learning/concept-deep-learning-vs-machine-learning.md)

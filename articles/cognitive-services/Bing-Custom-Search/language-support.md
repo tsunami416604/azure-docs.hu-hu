@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 2579d24e1a1754e873c6591b6d86ec12dd0dfa60
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 73b25ce1093ce697aa0937161d2af49526c231b7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367318"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352354"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>A Bing Custom Search API nyelvi és területi támogatása
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Az Bing Custom Search API több mint három tucat országot/régiót támogat, több mint egy nyelvet.
 
@@ -34,7 +34,7 @@ A `Accept-Language` fejléc és a `setLang` lekérdezési paraméter kölcsönö
 
 ## <a name="countriesregions"></a>Országok/régiók
 
-|Ország/régió|Code|
+|Ország/régió|Kód|
 |-------|----|
 |Argentína|AR|
 |Ausztrália|AU|

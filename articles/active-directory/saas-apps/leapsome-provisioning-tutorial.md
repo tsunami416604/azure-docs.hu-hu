@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: jeedes
-ms.openlocfilehash: a0165e5191a8cd499b42c14704fdf4f0d79b3f6b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b7c1c995ead9a8d66cd11fb4579cc49e12b487df
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358541"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351588"
 ---
 # <a name="tutorial-configure-leapsome-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Leapsome konfigurálása
 
@@ -160,7 +160,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * A Leapsome egyedi **felhasználónévre** van szükség.
 * A Leapsome csak a munkahelyi e-mail-címek mentését engedélyezi.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

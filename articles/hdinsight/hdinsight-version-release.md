@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 2716f037de533e14ae8e57706134c8a2b135b440
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2fd7a3e512b79651fdcf6a6ac0c14822361fc263
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322373"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350194"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 – áttekintés
 
@@ -100,11 +100,11 @@ Nincs támogatott frissítési útvonal a HDInsight korábbi verzióiról a HDIn
 * A Spark SQL Ranger integrációja a sor-és az oszlop biztonsága elavult
 * A Spark 2,4 és a Kafka 2,1 a HDInsight 4,0-ban érhető el, így a Spark 2,3 és a Kafka 1,1 már nem támogatott. Javasoljuk, hogy a Spark 2,4 & Kafka 2,1-es vagy újabb verzióját használja a HDInsight 4,0-ban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [HBase áttelepítési útmutató](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-migrate-new-version)
-* [Struktúra áttelepítési útmutatója](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-migrate-workloads)
-* [A Kafka áttelepítési útmutatója](https://docs.microsoft.com/azure/hdinsight/kafka/migrate-versions)
-* [A Spark áttelepítési útmutatója](https://docs.microsoft.com/azure/hdinsight/spark/migrate-versions)
+* [HBase áttelepítési útmutató](./hbase/apache-hbase-migrate-new-version.md)
+* [Struktúra áttelepítési útmutatója](./interactive-query/apache-hive-migrate-workloads.md)
+* [A Kafka áttelepítési útmutatója](./kafka/migrate-versions.md)
+* [A Spark áttelepítési útmutatója](./spark/migrate-versions.md)
 * [Az Azure HDInsight dokumentációja](index.yml)
 * [Kibocsátási megjegyzések](hdinsight-release-notes.md)

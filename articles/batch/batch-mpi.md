@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hajthat végre Message Passing Interface (MPI) 
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 3dc52d13cf41347e7382872e887d87fc9b25a95b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6aa6a910dd57a255d9ec9292119bc692edf4946f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108082"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351520"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Message Passing Interface-(MPI-) alkalmazások futtatása többpéldányos feladatokkal a Batch szolgáltatásban
 
@@ -21,7 +21,7 @@ A többpéldányos feladatok lehetővé teszik, hogy egy Azure Batch feladatot e
 >
 
 ## <a name="multi-instance-task-overview"></a>A többpéldányos feladatok áttekintése
-A Batch-ben minden feladat általában egyetlen számítási csomóponton fut – több feladatot küld egy feladatba, és a Batch szolgáltatás ütemezi az egyes feladatokat egy csomóponton végzett végrehajtásra. A feladatok **többpéldányos beállításainak**konfigurálásával azonban megadhatja, hogy a Batch ne hozzon létre egy elsődleges feladatot és több alfeladatot, amelyek ezután több csomóponton lesznek végrehajtva.
+A Batch-ben minden feladat általában egyetlen számítási csomóponton fut – több feladatot küld egy feladatba, és a Batch szolgáltatás ütemezi az egyes feladatokat egy csomóponton végzett végrehajtásra. A feladatok **többpéldányos beállításainak** konfigurálásával azonban megadhatja, hogy a Batch ne hozzon létre egy elsődleges feladatot és több alfeladatot, amelyek ezután több csomóponton lesznek végrehajtva.
 
 ![A többpéldányos feladatok áttekintése][1]
 
@@ -34,7 +34,7 @@ Ha többpéldányos beállításokkal rendelkező feladatot küld egy feladathoz
 5. Az elsődleges feladat végrehajtja az **alkalmazás parancsát** a főcsomóponton, *miután* az elsődleges és az összes Alfeladat sikeresen végrehajtotta a koordinációs parancsot. Az Application parancs maga a több példányból álló feladat parancssora, amelyet csak az elsődleges feladat hajt végre. Egy [MS-MPI][msmpi_msdn]-alapú megoldásban itt hajthatja végre az MPI-kompatibilis alkalmazást a használatával `mpiexec.exe` .
 
 > [!NOTE]
-> Bár ez a függvény eltérő, a "többpéldányos feladat" nem egyedi feladattípus, például a [StartTask][net_starttask] vagy a [JobPreparationTask][net_jobprep]. A többpéldányos feladat egyszerűen egy standard batch-feladat ([CloudTask][net_task] a Batch .net-ben), amelynek a többpéldányos beállításai konfigurálva vannak. Ebben a cikkben erre a **többpéldányos feladatra**hivatkozunk.
+> Bár ez a függvény eltérő, a "többpéldányos feladat" nem egyedi feladattípus, például a [StartTask][net_starttask] vagy a [JobPreparationTask][net_jobprep]. A többpéldányos feladat egyszerűen egy standard batch-feladat ([CloudTask][net_task] a Batch .net-ben), amelynek a többpéldányos beállításai konfigurálva vannak. Ebben a cikkben erre a **többpéldányos feladatra** hivatkozunk.
 >
 >
 
@@ -95,8 +95,8 @@ Keresse meg a "RDMA-kompatibilis" értékkel megadott méreteket a következő c
   * [Cloud Services mérete](../cloud-services/cloud-services-sizes-specs.md) (csak Windows esetén)
 * **VirtualMachineConfiguration** -készletek
 
-  * [Virtuális gépek méretei az Azure-ban](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) (Linux)
-  * [Virtuális gépek méretei az Azure-ban](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) (Windows)
+  * [Virtuális gépek méretei az Azure-ban](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
+  * [Virtuális gépek méretei az Azure-ban](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
 > A Linux-alapú [számítási csomópontok](batch-linux-nodes.md)RDMA kihasználásához az **Intel MPI** -t kell használnia a csomópontokon.
@@ -153,7 +153,7 @@ cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 Jegyezze fel a használatát ebben a `start` koordinációs parancsban. Erre azért van szükség, mert az `smpd.exe` alkalmazás nem ad vissza azonnal a végrehajtás után. A [Start][cmd_start] parancs használata nélkül ez a koordinációs parancs nem tér vissza, ezért az alkalmazás futtatását letiltja.
 
 ## <a name="application-command"></a>Alkalmazás parancs
-Miután az elsődleges feladat és az összes Alfeladat befejezte a koordinációs parancs végrehajtását, a több példányból álló tevékenység parancssorát *csak*az elsődleges feladat hajtja végre. Ezt az alkalmazás- **parancsot** hívjuk a koordinációs parancsból való megkülönböztetéshez.
+Miután az elsődleges feladat és az összes Alfeladat befejezte a koordinációs parancs végrehajtását, a több példányból álló tevékenység parancssorát *csak* az elsődleges feladat hajtja végre. Ezt az alkalmazás- **parancsot** hívjuk a koordinációs parancsból való megkülönböztetéshez.
 
 MS-MPI-alkalmazások esetén az Application paranccsal futtassa az MPI-kompatibilis alkalmazást a következővel: `mpiexec.exe` . Íme például egy, az MS-MPI 7-es verziót használó megoldáshoz tartozó alkalmazási parancs:
 

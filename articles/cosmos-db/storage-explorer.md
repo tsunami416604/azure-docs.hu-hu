@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 61ae446d180a86b42bc52ac3244b96b7b347b68f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5b09ce48226b3c31efce4966ec776c10931cc391
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010571"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348653"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Cosmos DB erőforrások kezelése Azure Storage Explorer használatával
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,7 +22,7 @@ Az Azure Storage Explorer használatával csatlakozhat Azure Cosmos DBhoz. Lehet
 Ugyanazzal az eszközzel kezelheti a különböző Azure-entitásokat egy helyen. Felügyelheti Azure Cosmos DB entitásokat, kezelheti az adatkezelést, frissítheti a tárolt eljárásokat és triggereket más Azure-entitásokkal, például a tárolási Blobokkal és a várólistákkal együtt. Azure Storage Explorer támogatja az SQL, a MongoDB, a Graph és a Table API-khoz konfigurált Cosmos-fiókokat.
 
 > [!NOTE]
-> A Storage Explorer Azure Cosmos DB-integrációja elavult. A meglévő funkciók nem lesznek eltávolítva az ettől a kiadástól számított legalább egy évig. Ehelyett használja az [Azure Portalt](https://portal.azure.com/), az [Azure Portal asztali alkalmazását](https://portal.azure.com/App/Download) vagy a különálló [Azure Cosmos Explorert](data-explorer.md). Az alternatív lehetőségek számos olyan új funkciót tartalmaznak, amelyeket a Storage Explorer jelenleg nem támogat.
+> A Storage Explorer Azure Cosmos DB-integrációja elavult. A meglévő funkciók nem lesznek eltávolítva az ettől a kiadástól számított legalább egy évig. Ehelyett használja az [Azure Portalt](https://portal.azure.com/), az [Azure Portal Desktop alkalmazást](https://portal.azure.com/App/Download) vagy az önálló [Azure Cosmos db Explorert](data-explorer.md) . Az alternatív lehetőségek számos olyan új funkciót tartalmaznak, amelyeket a Storage Explorer jelenleg nem támogat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

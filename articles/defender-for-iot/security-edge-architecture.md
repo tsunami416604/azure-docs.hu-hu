@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 1933e60892430b907e070ea04f39d8acc86ddac2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f6d9f670a1b85e55ccc8f6cb18645b92927221a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935327"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351639"
 ---
 # <a name="azure-defender-for-iot-edge-security-module"></a>Azure Defender IoT Edge biztonsági modulhoz
 
-A [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) hatékony képességeket biztosít az üzleti munkafolyamatok kezeléséhez és az Edge-ben való végrehajtásához.
+A [Azure IoT Edge](../iot-edge/index.yml) hatékony képességeket biztosít az üzleti munkafolyamatok kezeléséhez és az Edge-ben való végrehajtásához.
 A IoT-környezetekben IoT Edge játszik, különösen vonzó a kártékony szereplők számára.
 
 A Defender for IoT biztonsági modul átfogó biztonsági megoldást nyújt a IoT Edge-eszközökhöz.
@@ -39,7 +39,7 @@ A IoT Edge IoT biztonsági moduljának védelmezője a következő funkciókat k
 
 - IoT Edge üzembe helyezési jegyzékek elemzése.
 
-- Az [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)-on keresztül küldött üzenetekben összesíti a nyers biztonsági eseményeket.
+- Az [IoT Edge hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub)-on keresztül küldött üzenetekben összesíti a nyers biztonsági eseményeket.
 
 - Távolítsa el a konfigurációt a Twin biztonsági modul használatával.
 
@@ -52,7 +52,7 @@ A Kiemelt üzemmód szükséges ahhoz, hogy a modul figyelje az operációs rend
 
 A IoT biztonsági moduljának IoT Edge jelenleg csak Linux rendszeren érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta a Defender architektúráját és képességeit a IoT Edge IoT biztonsági moduljában.
 

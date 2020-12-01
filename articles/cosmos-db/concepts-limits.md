@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: de74d7e3cf854f36d122be6a32c7fb4d449c5fe5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f591a9781cb81ec735d22f4f687f8d413923dc93
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175916"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349129"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -78,8 +78,8 @@ Példa: tegyük fel, hogy rendelkezik egy, a 400 RU/s, 15 GB tárterülettel és
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Minimális RUs/tároló ([dedikált teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimális RUs/adatbázis ([megosztott teljesítményű kiépített mód](databases-containers-items.md#azure-cosmos-containers)) | 400 RU/s az első 25 tárolóhoz. További 100 RU/s az egyes tárolók esetében. |
+| Minimális RUs/tároló ([dedikált teljesítményű kiépített mód](./account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimális RUs/adatbázis ([megosztott teljesítményű kiépített mód](./account-databases-containers-items.md#azure-cosmos-containers)) | 400 RU/s az első 25 tárolóhoz. További 100 RU/s az egyes tárolók esetében. |
 
 A Cosmos DB az SDK-k vagy a portál használatával támogatja az átviteli sebesség (RU/s) programozott méretezését tároló vagy adatbázis alapján.    
 
@@ -270,7 +270,7 @@ A következő táblázat felsorolja az [ingyenes szintű fiókok Azure Cosmos db
 
   A fentiek mellett a [fiókra vonatkozó korlátok](#per-account-limits) az ingyenes szintű fiókok esetében is érvényesek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Cosmos DB alapvető fogalmak [globális eloszlásáról](distribute-data-globally.md) , [particionálásáról](partitioning-overview.md) és kiosztott [átviteli sebességéről](request-units.md).
 

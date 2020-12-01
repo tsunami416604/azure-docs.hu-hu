@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: bc11dd6113bbf5b07e19b83735c83e4895e4a796
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 919688a05081c6f0b717fa4a524da769f2a281fd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323596"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351622"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>Kiszolgáló által megjelenített Nuxt.js webhelyek üzembe helyezése az Azure statikus Web Apps előzetes verziójában
 
@@ -30,7 +30,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy [Nuxt.js](h
 Beállíthat egy új Nuxt.js projektet a használatával `create-nuxt-app` . Új projekt helyett ebben az oktatóanyagban egy meglévő tárház klónozásával kezdődik. Ez a tárház úgy van beállítva, hogy bemutassa, hogyan helyezhet üzembe egy dinamikus Nuxt.js alkalmazást statikus helyként.
 
 1. Hozzon létre egy új tárházat a GitHub-fiókjában egy sablon adattárból.
-1. Navigáljon ide: <http://github.com/staticwebdev/nuxtjs-starter/generate>
+1. Navigáljon a [http://github.com/staticwebdev/nuxtjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nuxtjs-starter/generate)
 1. A tárház **nuxtjs neve – kezdő**
 1. Ezután klónozott az új tárházat a gépre. Ügyeljen rá, hogy a fiók nevével <YOUR_GITHUB_ACCOUNT_NAME> cserélje le.
 
@@ -62,13 +62,13 @@ Beállíthat egy új Nuxt.js projektet a használatával `create-nuxt-app` . Új
 
 Ha a keretrendszerre vagy a könyvtárra kattint, megjelenik a kijelölt elem részleteit tartalmazó oldal:
 
-:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="Nuxt.js alkalmazás elindítása":::
+:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="Részletek lap":::
 
 ## <a name="generate-a-static-website-from-nuxtjs-build"></a>Statikus webhely létrehozása Nuxt.js buildből
 
 Nuxt.js-hely a használatával történő létrehozásakor `npm run build` az alkalmazás hagyományos webalkalmazásként, nem pedig statikus helyként van felépítve. Statikus hely létrehozásához használja a következő alkalmazás-konfigurációt.
 
-1. Frissítse a _package.jsa_Build parancsfájlban, hogy csak statikus helyet hozzon létre a `nuxt generate` parancs használatával:
+1. Frissítse a _package.jsa_ Build parancsfájlban, hogy csak statikus helyet hozzon létre a `nuxt generate` parancs használatával:
 
     ```json
     "scripts": {
@@ -125,12 +125,12 @@ Az alábbi lépések bemutatják, hogyan lehet összekapcsolni a GitHubra lekül
 1. Kattintson a **Létrehozás** gombra
 
 1. Válasszon egy előfizetést az *előfizetés* legördülő listából, vagy használja az alapértelmezett értéket.
-1. Kattintson az *erőforráscsoport* legördülő lista alatti **új** hivatkozásra. Az *Új erőforráscsoport neve*mezőbe írja be a **mystaticsite** nevet, majd kattintson **az OK** gombra.
+1. Kattintson az *erőforráscsoport* legördülő lista alatti **új** hivatkozásra. Az *Új erőforráscsoport neve* mezőbe írja be a **mystaticsite** nevet, majd kattintson **az OK** gombra.
 1. A **név** szövegmezőben adjon meg egy globálisan egyedi nevet az alkalmazásnak. Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `-` . Ezt az értéket használja a statikus alkalmazás URL-előtagja a következő formátumban: `https://<APP_NAME>.azurestaticapps.net` .
 1. A *régió* legördülő menüben válassza ki az Önhöz legközelebb eső régiót.
 1. Válassza az **ingyenes** lehetőséget az SKU legördülő menüből.
 
-   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="Nuxt.js alkalmazás elindítása":::
+   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="Statikus webalkalmazás létrehozása":::
 
 ### <a name="add-a-github-repository"></a>GitHub-adattár hozzáadása
 
@@ -141,7 +141,7 @@ Az új statikus Web Apps fióknak hozzá kell férnie a tárházhoz a Nuxt.js al
 1. Keresse meg és válassza ki a korábban létrehozott adattár nevét.
 1. Válassza a **főkiszolgáló** elemet a *ág* legördülő menüből.
 
-   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="Nuxt.js alkalmazás elindítása":::
+   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="A GitHub csatlakoztatása":::
 
 ### <a name="configure-the-build-process"></a>A létrehozási folyamat konfigurálása
 
@@ -149,7 +149,7 @@ Az Azure statikus Web Apps úgy lett felépítve, hogy automatikusan végezze el
 
 1. A statikus kimeneti mappa konfigurálásához kattintson a **build (létrehozás** ) lapra.
 
-      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="Nuxt.js alkalmazás elindítása":::
+      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="Build lap":::
 
 1. Írja be a **dist** értéket az alkalmazás-összetevők *helye* szövegmezőbe.
 
@@ -178,7 +178,7 @@ Térjen vissza a terminálhoz, és futtassa a következő parancsot `git pull or
 
 Navigáljon az újonnan telepített webhelyre, és kattintson az egyik keretrendszer vagy könyvtár emblémára. A Részletek lap beszerzése helyett egy 404-es hibaüzenet jelenik meg.
 
-:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="Nuxt.js alkalmazás elindítása":::
+:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="404 dinamikus útvonalakon":::
 
 Ennek az az oka, Nuxt.js a statikus helyet generálta, csak a kezdőlapon. A Nuxt.js minden lapozófájlhoz egyenértékű statikus fájlokat tud előállítani `.html` `.vue` , de kivétel történt. 
 
@@ -215,7 +215,7 @@ Ha az oldal egy dinamikus lap, például `_id.vue` nem rendelkezik elegendő inf
 
 2. Küldje le az új módosításokat a GitHub-tárházba, és várjon néhány percet, amíg a GitHub-műveletek újra felépítik a helyet. A Build befejezése után a 404-es hiba eltűnik.
 
-   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="Nuxt.js alkalmazás elindítása":::
+   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="404 a dinamikus útvonalakon kijavítva":::
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány beállítása](custom-domain.md)

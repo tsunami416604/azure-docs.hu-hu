@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 11/25/2020
-ms.openlocfilehash: 22155083a71a9cbf615293a4f86a179aaefce2a9
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 4a58f25e6183c674990d1d7722ce3196cce0f47c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96023353"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350466"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Helyi integrációs modul létrehozása és konfigurálása
 
@@ -109,22 +109,22 @@ Az alábbiakban az alkalmazás paramétereinek és tulajdonságainak részleteit
 
 | Tulajdonság                                                    | Leírás                                                  | Kötelező |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal. | No       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal és csomópont nevével. | No       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | A magas rendelkezésre állású fürt beállításához engedélyezze a távelérést az aktuális csomóponton. Vagy engedélyezze a hitelesítő adatok közvetlen beállítását a saját üzemeltetésű IR-n keresztül anélkül, hogy Azure Data Factory. Ezt az utóbbit a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag használatával végezheti el ugyanazon a hálózaton lévő távoli gépről. | No       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Engedélyezze a távoli hozzáférést az aktuális csomóponthoz, amikor a csomópont egy tárolóban fut. | No       |
-| **DisableRemoteAccess**                                         | Távoli hozzáférés letiltása az aktuális csomóponthoz. A többcsomópontos telepítéshez távoli hozzáférés szükséges. A **New-AzDataFactoryV2LinkedServiceEncryptedCredential PowerShell-** parancsmag még akkor is működik, ha a távoli hozzáférés le van tiltva. Ez a viselkedés akkor igaz, ha a parancsmagot a saját üzemeltetésű IR-csomóponttal megegyező gépen hajtja végre. | No       |
-| **Kulcs** "`<AuthenticationKey>`"                                 | Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul. | No       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait. | No       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.                          | No       |
-| **Újraindítás**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | No       |
-| **Kezdés**                                                       | Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.     | No       |
-| **Leállítás**                                                        | Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.        | No       |
-| **StartUpgradeService**                                         | Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.       | No       |
-| **StopUpgradeService**                                          | Állítsa le a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.        | No       |
-| **TurnOnAutoUpdate**                                            | Kapcsolja be a saját üzemeltetésű Integration Runtime automatikus frissítését.        | No       |
-| **TurnOffAutoUpdate**                                           | Kapcsolja ki a saját üzemeltetésű Integration Runtime automatikus frissítését.       | No       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Állítsa be úgy a DIAHostService, hogy az új fiókként fusson. A rendszerfiókok és a virtuális fiókok esetében használja az üres jelszót. | No       |
+| **RegisterNewNode** "`<AuthenticationKey>`"                     | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal. | Nem       |
+| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal és csomópont nevével. | Nem       |
+| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | A magas rendelkezésre állású fürt beállításához engedélyezze a távelérést az aktuális csomóponton. Vagy engedélyezze a hitelesítő adatok közvetlen beállítását a saját üzemeltetésű IR-n keresztül anélkül, hogy Azure Data Factory. Ezt az utóbbit a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag használatával végezheti el ugyanazon a hálózaton lévő távoli gépről. | Nem       |
+| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Engedélyezze a távoli hozzáférést az aktuális csomóponthoz, amikor a csomópont egy tárolóban fut. | Nem       |
+| **DisableRemoteAccess**                                         | Távoli hozzáférés letiltása az aktuális csomóponthoz. A többcsomópontos telepítéshez távoli hozzáférés szükséges. A **New-AzDataFactoryV2LinkedServiceEncryptedCredential PowerShell-** parancsmag még akkor is működik, ha a távoli hozzáférés le van tiltva. Ez a viselkedés akkor igaz, ha a parancsmagot a saját üzemeltetésű IR-csomóponttal megegyező gépen hajtja végre. | Nem       |
+| **Kulcs** "`<AuthenticationKey>`"                                 | Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul. | Nem       |
+| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait. | Nem       |
+| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.                          | Nem       |
+| **Indítsa újra**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | Nem       |
+| **Kezdés**                                                       | Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.     | Nem       |
+| **Leállítás**                                                        | Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.        | Nem       |
+| **StartUpgradeService**                                         | Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.       | Nem       |
+| **StopUpgradeService**                                          | Állítsa le a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.        | Nem       |
+| **TurnOnAutoUpdate**                                            | Kapcsolja be a saját üzemeltetésű Integration Runtime automatikus frissítését.        | Nem       |
+| **TurnOffAutoUpdate**                                           | Kapcsolja ki a saját üzemeltetésű Integration Runtime automatikus frissítését.       | Nem       |
+| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Állítsa be úgy a DIAHostService, hogy az új fiókként fusson. A rendszerfiókok és a virtuális fiókok esetében használja az üres jelszót. | Nem       |
 
 
 ## <a name="command-flow-and-data-flow"></a>A parancs folyamata és adatfolyama
@@ -150,7 +150,7 @@ Az alábbiakban a saját üzemeltetésű integrációs modulról történő más
 - Saját üzemeltetésű integrációs modul használata az Azure-beli virtuális hálózaton belüli Adatintegráció támogatásához.
 - Az adatforrást olyan helyszíni adatforrásként kezelheti, amely tűzfal mögött található, még akkor is, ha az Azure ExpressRoute-t használja. A saját üzemeltetésű integrációs modul használatával kapcsolódhat a szolgáltatáshoz az adatforráshoz.
 - Használja a saját üzemeltetésű integrációs modult, még akkor is, ha az adattár a felhőben van egy Azure-beli infrastruktúra-szolgáltatás (IaaS) virtuális gép.
-- Előfordulhat, hogy a feladatok sikertelenek lehetnek a saját üzemeltetésű integrációs modulban, amelyet egy olyan Windows-kiszolgálóra telepített, amelyen engedélyezve van az FIPS-kompatibilis titkosítás. A probléma megkerüléséhez két lehetősége van: tárolja a hitelesítő adatokat/titkos értékeket egy Azure Key Vault, vagy tiltsa le a FIPS-kompatibilis titkosítást a kiszolgálón. A FIPS-kompatibilis titkosítás letiltásához módosítsa a beállításjegyzék következő alkulcsának értékét 1 (engedélyezve) értékről 0 (letiltva) értékre: `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` . Ha a saját üzemeltetésű [integrációs modult proxyként használja a SSIS Integration Runtime számára](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis), akkor a FIPS-kompatibilis titkosítás engedélyezhető, és a rendszer az adatok a helyszínről az Azure-ba blob Storage átmeneti területként való áthelyezésekor használható.
+- Előfordulhat, hogy a feladatok sikertelenek lehetnek a saját üzemeltetésű integrációs modulban, amelyet egy olyan Windows-kiszolgálóra telepített, amelyen engedélyezve van az FIPS-kompatibilis titkosítás. A probléma megkerüléséhez két lehetősége van: tárolja a hitelesítő adatokat/titkos értékeket egy Azure Key Vault, vagy tiltsa le a FIPS-kompatibilis titkosítást a kiszolgálón. A FIPS-kompatibilis titkosítás letiltásához módosítsa a beállításjegyzék következő alkulcsának értékét 1 (engedélyezve) értékről 0 (letiltva) értékre: `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` . Ha a saját üzemeltetésű [integrációs modult proxyként használja a SSIS Integration Runtime számára](./self-hosted-integration-runtime-proxy-ssis.md), akkor a FIPS-kompatibilis titkosítás engedélyezhető, és a rendszer az adatok a helyszínről az Azure-ba blob Storage átmeneti területként való áthelyezésekor használható.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

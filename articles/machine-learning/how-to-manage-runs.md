@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0da4127960450a13b64ec23908b4a4fd4c69bd7e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 921c88f4771fedb910dc41983d559987a8cdfb0c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542014"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349333"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>A betanítási futtatások elindítása, figyelése és megszakítása a Pythonban
 
@@ -38,7 +38,7 @@ Ez a cikk a következő feladatokra mutat be példákat:
 
 A következő elemekre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
 
@@ -278,7 +278,7 @@ Sok gyermek hatékony futtatásához használja a [`create_children()`](/python/
 
 ### <a name="submit-child-runs"></a>Alárendelt futtatások küldése
 
-Alárendelt futtatásokat is el lehet küldeni egy szülő futtatásból. Ez lehetővé teszi a szülő-és gyermek-futtatási hierarchiák létrehozását. 
+Alárendelt futtatásokat is el lehet küldeni egy szülő futtatásból. Ez lehetővé teszi a szülő-és gyermek-futtatási hierarchiák létrehozását. Nem hozható létre szülő nélküli gyermekobjektum: még akkor is, ha a szülő futtatása nem sikerül, de a gyermek-futtatások indítása nem lehetséges, a hierarchia létrehozásához továbbra is szükség van. Az összes Futtatás állapota független: a szülő lehet `"Completed"` sikeres állapotban, még akkor is, ha egy vagy több gyermek-Futtatás megszakadt vagy sikertelen volt.  
 
 Előfordulhat, hogy a gyermeke más futtatási konfigurációt használ, mint a szülő Futtatás. Előfordulhat például, hogy egy kevésbé hatékony, CPU-alapú konfigurációt használ a szülő számára, miközben GPU-alapú konfigurációkat használ a gyermekei számára. Egy másik gyakori vágy, hogy minden gyermek különböző argumentumokat és adatátvitelt adjon át. Gyermek futtatásának testreszabásához hozzon létre egy `ScriptRunConfig` objektumot a gyermek futtatásához. Az alábbi kód a következő műveleteket végzi el:
 
@@ -327,6 +327,24 @@ Egy adott szülő alárendelt futtatásának lekérdezéséhez használja a [`ge
 ```python
 print(parent_run.get_children())
 ```
+
+### <a name="log-to-parent-or-root-run"></a>Napló a szülő vagy a gyökér futtatásához
+
+A `Run.parent` mezővel elérheti az aktuális gyermek futtatását elindító futtatást. Általános használati eset, ha egyetlen helyen szeretné összevonni a napló eredményeit. Vegye figyelembe, hogy a gyermekeket a rendszer aszinkron módon futtatja, és nincs garancia arra, hogy a szülő nem tudja megvárni a gyermek futásának befejeződését.
+
+```python
+# in child (or even grandchild) run
+
+def root_run(self : Run) -> Run :
+    if self.parent is None : 
+        return self
+    return root_run(self.parent)
+
+current_child_run = Run.get_context()
+root_run(current_child_run).log("MyMetric", f"Data from child run {current_child_run.id}")
+
+```
+
 
 ## <a name="tag-and-find-runs"></a>Címke és keresés futtatása
 
@@ -430,7 +448,7 @@ A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
 
 * A Azure Machine Learning SDK-val való futtatásával kapcsolatos további információkért tekintse meg a [futtatási jegyzetfüzet kezelése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha szeretné megtudni, hogyan naplózhatja a kísérletek mérőszámait, tekintse meg a következő témakört: a [betanítási mérőszámok](how-to-track-experiments.md).
 * Ha szeretné megismerni, hogyan figyelheti Azure Machine Learning erőforrásait és naplóit, tekintse meg a [figyelés Azure Machine learning](monitor-azure-machine-learning.md).

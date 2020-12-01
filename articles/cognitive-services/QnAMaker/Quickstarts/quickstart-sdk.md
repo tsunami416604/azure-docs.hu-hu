@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: programming-languages-set-sixteen
-ms.openlocfilehash: 36a38c69c68613e912e7c598495b9370044f13a6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: d9e984d4384b59fa13bc59e09e29939457dad37c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777444"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351021"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>Gyors útmutató: QnA Maker ügyféloldali kódtár
 
@@ -49,12 +49,11 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
->[Oktatóanyag: a Tudásbázis tesztelése batch-fájllal](./batch-testing.md)
+>[Oktatóanyag: a Tudásbázis tesztelése batch-fájllal](../index.yml)
 
 * [Mi a QnA Maker API?](../Overview/overview.md)
 * [Tudásbázis szerkesztése](../how-to/edit-knowledge-base.md)
 * [Használati elemzések beolvasása](../how-to/get-analytics-knowledge-base.md)
-

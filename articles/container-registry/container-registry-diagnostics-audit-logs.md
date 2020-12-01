@@ -3,12 +3,12 @@ title: Erőforrás-naplók & gyűjtése
 description: Az Azure Container Registry, például a hitelesítés, a képküldés és a képek lekéréséhez szükséges erőforrás-naplózási események rögzítése és elemzése.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b05d34e6c50fea3760e30d28f59e55d8c5f211a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87553376"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348585"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry naplók a diagnosztika kiértékeléséhez és a naplózáshoz
 
@@ -54,10 +54,10 @@ A tároló-beállításjegyzék erőforrás-naplófájljainak gyűjteménye alap
 Ha például egy tároló-beállításjegyzék naplóit és metrikáit szeretné megtekinteni a Azure Monitor közel valós időben, Gyűjtse össze az erőforrás-naplókat egy Log Analytics munkaterületen. A diagnosztikai beállítás engedélyezése a Azure Portal használatával:
 
 1. Ha még nem rendelkezik munkaterülettel, hozzon létre egy munkaterületet a [Azure Portal](../azure-monitor/learn/quick-create-workspace.md)használatával. Az adatgyűjtés késleltetésének csökkentése érdekében ügyeljen arra, hogy a munkaterület ugyanabban a **régióban** legyen, mint a tároló-beállításjegyzék.
-1. A portálon válassza ki a beállításjegyzéket, és válassza a **figyelés > diagnosztikai beállítások > diagnosztikai beállítás hozzáadása**elemet.
-1. Adja meg a beállítás nevét, majd kattintson a **küldés log Analytics**lehetőségre.
+1. A portálon válassza ki a beállításjegyzéket, és válassza a **figyelés > diagnosztikai beállítások > diagnosztikai beállítás hozzáadása** elemet.
+1. Adja meg a beállítás nevét, majd kattintson a **küldés log Analytics** lehetőségre.
 1. Válassza ki a beállításjegyzék diagnosztikai naplóihoz tartozó munkaterületet.
-1. Válassza ki a gyűjteni kívánt naplózási adatokat, majd kattintson a **Mentés**gombra.
+1. Válassza ki a gyűjteni kívánt naplózási adatokat, majd kattintson a **Mentés** gombra.
 
 Az alábbi ábrán egy beállításjegyzék diagnosztikai beállításainak létrehozása látható a portál használatával.
 
@@ -68,7 +68,7 @@ Az alábbi ábrán egy beállításjegyzék diagnosztikai beállításainak lét
 
 ## <a name="view-data-in-azure-monitor"></a>Azure Monitorban lévő adatmegjelenítés
 
-Miután engedélyezte a diagnosztikai naplók gyűjtését Log Analyticsban, eltarthat néhány percig, amíg az adat megjelenik a Azure Monitorban. Ha meg szeretné tekinteni az adatait a portálon, válassza ki a beállításjegyzéket, és válassza a **figyelés > naplók**lehetőséget. Válassza ki az egyik táblázatot, amely a beállításjegyzék adatait tartalmazza. 
+Miután engedélyezte a diagnosztikai naplók gyűjtését Log Analyticsban, eltarthat néhány percig, amíg az adat megjelenik a Azure Monitorban. Ha meg szeretné tekinteni az adatait a portálon, válassza ki a beállításjegyzéket, és válassza a **figyelés > naplók** lehetőséget. Válassza ki az egyik táblázatot, amely a beállításjegyzék adatait tartalmazza. 
 
 Lekérdezések futtatása az adatmegjelenítéshez. Több minta lekérdezés van megadva, vagy saját maga futtathatja. A következő lekérdezés például lekéri a legutóbbi 24 órás adatmennyiséget a **ContainerRegistryRepositoryEvents** táblából:
 
@@ -81,7 +81,7 @@ Az alábbi képen a minta kimenet látható:
 
 ![Naplóadatok lekérdezése](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-A Azure Portal Log Analytics használatáról szóló oktatóanyagért lásd: [Bevezetés a Azure Monitor log Analytics használatába](../azure-monitor/log-query/get-started-portal.md), vagy próbálja ki a log Analytics [bemutató környezetét](https://portal.loganalytics.io/demo). 
+A Azure Portal Log Analytics használatáról szóló oktatóanyagért lásd: [Bevezetés a Azure Monitor log Analytics használatába](../azure-monitor/log-query/log-analytics-tutorial.md), vagy próbálja ki a log Analytics [bemutató környezetét](https://portal.loganalytics.io/demo). 
 
 A naplók lekérdezésével kapcsolatos további információkért lásd: [a Azure monitorban található naplók áttekintése](../azure-monitor/log-query/log-query-overview.md).
 
@@ -144,7 +144,7 @@ Amellett, hogy a naplókat Log Analyticsre küldi, vagy egy másik megoldáskén
 
 A diagnosztikai napló eseményeit egy [Azure Event hub](../event-hubs/event-hubs-about.md)-ba is továbbíthatja. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ a [log Analytics](../azure-monitor/log-query/get-started-portal.md) használatáról és a [naplók](../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
+* További információ a [log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) használatáról és a [naplók](../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
 * A különböző Azure-rétegekben elérhető platform-naplók megismeréséhez tekintse meg [Az Azure platform-naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md) című témakört.

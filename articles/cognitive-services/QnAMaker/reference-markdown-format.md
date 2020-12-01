@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
-ms.openlocfilehash: f5f640f8895cd6defe31a68b790ce841c4679a6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f49e05578f55a38845acbd4010f928fb17c51606
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777363"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352269"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>QnA Maker válasz szövegében támogatott Markdown formátum
 
@@ -22,7 +22,7 @@ A Markdown ellenőrzéséhez használja a **[CommonMark](https://commonmark.org/
 
 A válaszok [gazdag szövegű szerkesztése](How-To/edit-knowledge-base.md#add-an-editorial-qna-set) lehetővé teszi, hogy a szerzőként egy formázási eszköztár használatával gyorsan kiválassza és formázza a szöveget.
 
-A Markdown jobb eszköz, ha automatikusan létre kell hoznia egy tartalmat a CI/CD-folyamat vagy a [Batch-tesztelés](Quickstarts/batch-testing.md)részeként importálandó tudásbázisok létrehozásához.
+A Markdown jobb eszköz, ha automatikusan létre kell hoznia egy tartalmat a CI/CD-folyamat vagy a [Batch-tesztelés](./index.yml)részeként importálandó tudásbázisok létrehozásához.
 
 ## <a name="supported-markdown-format"></a>Támogatott Markdown-formátum
 
@@ -37,8 +37,8 @@ Egy új sor két mondat között.|`\n\n`|`How can I create a bot with \n\n QnA M
 |Hivatkozás URL-címe|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL-cím (hiperhivatkozás) formátuma](./media/qnamaker-concepts-datasources/format-url.png)|
 |* Nyilvános rendszerkép URL-címe|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![nyilvános rendszerkép URL-címének formátuma ](./media/qnamaker-concepts-datasources/format-image-url.png)|
 |Áthúzott|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![áthúzás formátuma](./media/qnamaker-concepts-datasources/format-strikethrough.png)|
-|Félkövér és dőlt|`***text***`|`How can I create a ***QnA Maker*** bot?`|![félkövér és dőlt formázás](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
-|Hivatkozás félkövér URL-címe|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![félkövér URL-cím formázása](./media/qnamaker-concepts-datasources/format-bold-url.png)|
+|Félkövér és dőlt|`***text**_`|`How can I create a _*_QnA Maker_*_ bot?`|![félkövér és dőlt formázás](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|Hivatkozás félkövér URL-címe|`[_*text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![félkövér URL-cím formázása](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |Dőlt betűs URL a hivatkozáshoz|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![dőlt betűs URL formátuma](./media/qnamaker-concepts-datasources/format-url-italics.png)|
 |Escape Markdown szimbólumok|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![Escape Markdown-szimbólumok formátuma](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Rendezett lista|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Az előző példában a Markdown beépített automatikus számozást használ.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Az előző példa explicit számozást használ.|![rendezett lista formátuma](./media/qnamaker-concepts-datasources/format-ordered-list.png)|
@@ -56,6 +56,6 @@ Ha a Tudásbázis API-jai segítségével szeretne tartalmat felvenni, és a tar
 
 Emellett a CR LF (\r\n) a KB-ban a \n értékre lett konvertálva. Az LF (\n) a következőképpen van megtartva:. Ha a \t vagy a \n escape-sorozatot is el szeretné kerülni, használhat fordított perjelet, például: " \\ \\ r \\ \\ n" és " \\ \\ t"
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [Batch tesztelési fájlformátumainak](reference-tsv-format-batch-testing.md)áttekintése.

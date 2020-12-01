@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: e5d84616e70d2a28abf3937b485f4fcf5258c43e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fdb609a243656e2c75159cd2d4e70e2f965ae896
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779407"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352116"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnosztikai naplók – Azure Content Delivery Network
 
@@ -42,7 +42,7 @@ A következő lépésekhez Azure CDN profil szükséges. A folytatás előtt tek
 
 Kövesse az alábbi lépéseket a Azure CDN végpont naplózásának engedélyezéséhez:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 2. A Azure Portal navigáljon a **All resources**  ->  **-CDN-profil** összes erőforrásához
 
@@ -52,14 +52,14 @@ Kövesse az alábbi lépéseket a Azure CDN végpont naplózásának engedélyez
 
 3. Válassza ki a **diagnosztikai naplókat** a **figyelés** szakaszban:
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Válassza ki a CDN-végpontot." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="Válassza ki a diagnosztikai naplókat." border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>Naplózás engedélyezése az Azure Storage-ban
 
 Ha Storage-fiókot szeretne használni a naplók tárolásához, kövesse az alábbi lépéseket:
 
  >[!NOTE] 
- >A lépések elvégzéséhez szükség van egy Storage-fiókra. További információkért lásd: **[Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%252fazure%252fstorage%252fblobs%252ftoc.json)** .
+ >A lépések elvégzéséhez szükség van egy Storage-fiókra. További információkért lásd: **[Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)** .
     
 1. A **diagnosztikai beállítások neve** mezőben adja meg a diagnosztikai napló beállításainak nevét.
  
@@ -69,9 +69,9 @@ Ha Storage-fiókot szeretne használni a naplók tárolásához, kövesse az al�
 
 4. Válassza ki az előfizetést és a Storage-fiókot a naplókhoz.
 
-    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Válassza ki a CDN-végpontot." border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="Diagnosztikai naplók – tárterület." border="true":::
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 ### <a name="send-to-log-analytics"></a>Küldés a Log Analyticsnek
 
@@ -82,13 +82,13 @@ A naplók Log Analytics használatához kövesse az alábbi lépéseket:
     
 1. A **diagnosztikai beállítások neve** mezőben adja meg a diagnosztikai napló beállításainak nevét.
 
-2. Válassza **a küldés log Analytics** , majd a **CoreAnalytics** lehetőséget. 
+2. Válassza **a küldés log Analytics**, majd a **CoreAnalytics** lehetőséget. 
 
 3. Válassza ki az előfizetést és Log Analytics munkaterületet a naplókhoz.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Válassza ki a CDN-végpontot." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="Diagnosztikai naplók – Log Analytics." border="true":::
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 ### <a name="stream-to-an-event-hub"></a>Streamelés eseményközpontba
 
@@ -99,13 +99,13 @@ Ha egy Event hub-t szeretne használni a naplókhoz, kövesse az alábbi lépés
     
 1. A **diagnosztikai beállítások neve** mezőben adja meg a diagnosztikai napló beállításainak nevét.
 
-2. Válassza **az adatfolyam lehetőséget az Event hub számára** , majd válassza a **CoreAnalytics** lehetőséget. 
+2. Válassza **az adatfolyam lehetőséget az Event hub számára**, majd válassza a **CoreAnalytics** lehetőséget. 
 
 3. Válassza ki az előfizetést és az Event hub-névteret a naplókhoz.
 
-   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Válassza ki a CDN-végpontot." border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="Diagnosztikai naplók – Event hub." border="true":::
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 
 ## <a name="enable-logging-with-powershell"></a>Naplózás engedélyezése a PowerShell-lel
@@ -191,7 +191,7 @@ Az eszköz letöltéséhez lásd: [Azure Storage Explorer](https://storageexplor
 2.  A Storage-fiók megkeresése
 3.  Bontsa ki a **blob-tárolók** csomópontot ebben a Storage-fiókban.
 4.  Válassza ki az elemzések *-naplók-coreanalytics* nevű tárolót.
-5.  Az eredmények a jobb oldali ablaktáblán jelennek meg, az első szinttől kezdve, ahogy a *resourceId =* . Folytassa az egyes szintek kiválasztását, amíg meg nem találja a *PT1H.js* fájlt. Az elérési út magyarázatát lásd: [blob Path Format](cdn-azure-diagnostic-logs.md#blob-path-format).
+5.  Az eredmények a jobb oldali ablaktáblán jelennek meg, az első szinttől kezdve, ahogy a *resourceId =*. Folytassa az egyes szintek kiválasztását, amíg meg nem találja a *PT1H.js* fájlt. Az elérési út magyarázatát lásd: [blob Path Format](cdn-azure-diagnostic-logs.md#blob-path-format).
 6.  A fájlokban lévő összes blob- *PT1H.js* egy órányi elemzési naplókat jelöl egy adott CDN-végpont vagy az egyéni tartomány számára.
 7.  A JSON-fájl tartalmának sémáját az alapvető elemzési naplók sémája ismerteti.
 
@@ -249,7 +249,7 @@ A következő táblázat az alapvető elemzési naplókban elérhető metrikák 
 Nem minden metrika érhető el az összes szolgáltatótól, bár az ilyen eltérések minimálisak. A tábla azt is megjeleníti, hogy egy adott metrika elérhető-e a szolgáltatótól. A metrikák csak azokra a CDN-végpontokra érhetők el, amelyeken forgalom van rajtuk.
 
 
-|Metrika                     | Leírás | Microsoft | Verizon | Akamai |
+|Metric                     | Leírás | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | A kérelem összes találatának száma ebben az időszakban. | Igen | Igen |Igen |
 | RequestCountHttpStatus2xx | Az 2xx HTTP-kódot eredményező kérések száma (például 200, 202). | Igen | Igen |Igen |

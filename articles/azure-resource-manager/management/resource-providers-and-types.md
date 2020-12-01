@@ -2,14 +2,14 @@
 title: Erőforrás-szolgáltatók és-erőforrástípusok
 description: A Azure Resource Managert támogató erőforrás-szolgáltatókat ismerteti. Ismerteti a sémákat, az elérhető API-verziókat, valamint azokat a régiókat, amelyek tárolhatják az erőforrásokat.
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8adbce80d5e8f9ee9df2050d8f43363cbf57dc3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972538"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352099"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-beli erőforrás-szolgáltatók és -típusok
 
@@ -36,6 +36,9 @@ Az erőforrás-szolgáltató használata előtt az Azure-előfizetést regisztr�
 
 Ez a cikk bemutatja, hogyan ellenőrizhető az erőforrás-szolgáltató regisztrációs állapota, és szükség szerint regisztrálható. Engedéllyel kell rendelkeznie a művelet végrehajtásához `/register/action` az erőforrás-szolgáltatón. Az engedélyt a közreműködő és a tulajdonosi szerepkör tartalmazza.
 
+> [!IMPORTANT]
+> Csak akkor regisztrálja az erőforrás-szolgáltatót, amikor készen áll a használatra. A regisztrációs lépés lehetővé teszi a legalacsonyabb jogosultságok fenntartását az előfizetésen belül. Egy rosszindulatú felhasználó nem használhat olyan erőforrás-szolgáltatót, amely nincs regisztrálva.
+
 Az alkalmazás kódjának nem szabad letiltani a **regisztrálási** állapotban lévő erőforrás-szolgáltató erőforrásainak létrehozását. Ha regisztrálja az erőforrás-szolgáltatót, a művelet minden egyes támogatott régió esetében külön történik. Ahhoz, hogy erőforrásokat hozzon létre egy régióban, a regisztrációt csak az adott régióban kell végrehajtani. Ha nem blokkolja az erőforrás-szolgáltatót a regisztrálási állapotban, az alkalmazása sokkal hamarabb folytatható, mint az összes régió befejezésére való várakozás.
 
 Nem törölheti az erőforrás-szolgáltató regisztrációját, ha továbbra is az adott erőforrás-szolgáltatótól származó erőforrástípusok vannak az előfizetésben.
@@ -55,7 +58,7 @@ Az összes erőforrás-szolgáltató megjelenítéséhez és az előfizetés reg
 
     ![erőforrás-szolgáltatók megjelenítése](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. Erőforrás-szolgáltató regisztrálásához válassza a **regisztráció** lehetőséget. Az előző képernyőképen a **regisztráció** hivatkozás ki van emelve a **Microsoft. Blueprint** számára.
+6. Erőforrás-szolgáltató regisztrálásához válassza a **regisztráció** lehetőséget. Az előző képernyőképen a **regisztráció** hivatkozás ki van emelve a **Microsoft. Blueprint** számára. Az előfizetéshez tartozó legalacsonyabb jogosultságok fenntartásához csak azokat az erőforrás-szolgáltatókat regisztrálja, amelyeket készen áll a használatra.
 
 Egy adott erőforrás-szolgáltató információinak megtekintéséhez:
 
@@ -107,7 +110,7 @@ Az előfizetéshez tartozó összes regisztrált erőforrás megtekintéséhez h
  Get-AzResourceProvider -ListAvailable | Where-Object RegistrationState -eq "Registered" | Select-Object ProviderNamespace, RegistrationState | Sort-Object ProviderNamespace
 ```
 
-Erőforrás-szolgáltató regisztrálásához használja a következőt:
+Az előfizetéshez tartozó legalacsonyabb jogosultságok fenntartásához csak azokat az erőforrás-szolgáltatókat regisztrálja, amelyeket készen áll a használatra. Erőforrás-szolgáltató regisztrálásához használja a következőt:
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -216,7 +219,7 @@ Az előfizetéshez tartozó összes regisztrált erőforrás megtekintéséhez h
 az provider list --query "sort_by([?registrationState=='Registered'].{Provider:namespace, Status:registrationState}, &Provider)" --out table
 ```
 
-Erőforrás-szolgáltató regisztrálásához használja a következőt:
+Az előfizetéshez tartozó legalacsonyabb jogosultságok fenntartásához csak azokat az erőforrás-szolgáltatókat regisztrálja, amelyeket készen áll a használatra. Erőforrás-szolgáltató regisztrálásához használja a következőt:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Batch

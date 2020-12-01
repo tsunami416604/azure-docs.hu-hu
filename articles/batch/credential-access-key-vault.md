@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan férhet hozzá programozott módon a hitelesít
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 25cb05374fc0667306e2b1004b3cd237413b4409
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337491"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350687"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>A Key Vault biztonságos elérése a Batch használatával
 
@@ -67,7 +67,7 @@ Az alkalmazás URL-címei nem fontosak, mivel csak Key Vault-hozzáféréshez ha
 
 ## <a name="grant-rights-to-key-vault"></a>Jogosultságok megadása Key Vault
 
-Az előző lépésben létrehozott egyszerű szolgáltatásnév jogosult a titkok beolvasására Key Vaultból. Az engedélyek a [Azure Portalon](/azure/key-vault/general/assign-access-policy-portal) vagy az alábbi PowerShell-parancson keresztül adhatók meg.
+Az előző lépésben létrehozott egyszerű szolgáltatásnév jogosult a titkok beolvasására Key Vaultból. Az engedélyek a [Azure Portalon](../key-vault/general/assign-access-policy-portal.md) vagy az alábbi PowerShell-parancson keresztül adhatók meg.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -77,7 +77,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 Hozzon létre egy batch-készletet, majd nyissa meg a készlet tanúsítvány lapját, és rendelje hozzá a létrehozott tanúsítványt. A tanúsítvány most már az összes batch-csomóponton található.
 
-Ezután rendelje hozzá a tanúsítványt a Batch-fiókhoz. A tanúsítványnak a fiókhoz való hozzárendelésével a Batch hozzárendelheti a készletekhez, majd a csomópontokhoz. Ennek a legegyszerűbb módja, ha a Batch-fiókját megnyitja a portálon, navigáljon a **tanúsítványokhoz** , és válassza a **Hozzáadás** lehetőséget. Töltse fel a `.pfx` korábban létrehozott fájlt, és adja meg a jelszót. Ha elkészült, a rendszer hozzáadja a tanúsítványt a listához, és ellenőrizheti az ujjlenyomatot.
+Ezután rendelje hozzá a tanúsítványt a Batch-fiókhoz. A tanúsítványnak a fiókhoz való hozzárendelésével a Batch hozzárendelheti a készletekhez, majd a csomópontokhoz. Ennek a legegyszerűbb módja, ha a Batch-fiókját megnyitja a portálon, navigáljon a **tanúsítványokhoz**, és válassza a **Hozzáadás** lehetőséget. Töltse fel a `.pfx` korábban létrehozott fájlt, és adja meg a jelszót. Ha elkészült, a rendszer hozzáadja a tanúsítványt a listához, és ellenőrizheti az ujjlenyomatot.
 
 Miután létrehoz egy batch-készletet, megnyithatja a készletben lévő **tanúsítványokat** , és hozzárendelheti a készlethez létrehozott tanúsítványt. Ha így tesz, győződjön meg róla, hogy az áruház helyének **LocalMachine** választja. A tanúsítvány a készlet összes köteg csomópontjára betöltődik.
 

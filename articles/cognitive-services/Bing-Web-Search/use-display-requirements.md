@@ -10,19 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 93be72f2afcda90dde1b74c5ee317a7ad3350be1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4300860039b76bd076f19acfc252f59ef10d462b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075687"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351844"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API – követelmények használata és megjelenítése
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Ezek a használati és megjelenítési követelmények érvényesek a tartalom és a kapcsolódó információk a következő Bing Search API-kból történő megvalósítására, beleértve a kapcsolatokat, a metaadatokat és az egyéb jeleket.
 
@@ -32,7 +32,7 @@ Ezek a használati és megjelenítési követelmények érvényesek a tartalom �
 - Bing – Hírkeresés
 - Bing – Videokeresés
 - Bing vizuális keresés
-- Bing – Internetes keresés
+- Bing Web Search
 - Bing – Helyesírás-ellenőrzés
 - Bing – Automatikus kiegészítés
 
@@ -43,7 +43,7 @@ Ezek a használati és megjelenítési követelmények érvényesek a tartalom �
 |---------|---------|
 |Válasz     | A válaszban visszaadott eredmények kategóriája. A Bing Web Search API válasza például tartalmazhat válaszokat a weblapok eredményei, a képek, a videók, a vizualizáció és a hírek kategóriába. |
 |Reagálás     | Minden, a keresési API-ra irányuló hívásra válaszként kapott válasz és kapcsolódó érték. |
-|Eredmény    | Egy adott válaszban található információ. Az egyetlen újságcikkhez kapcsolódó adathalmaz például a hírek válaszának eredménye. |
+|Result    | Egy adott válaszban található információ. Az egyetlen újságcikkhez kapcsolódó adathalmaz például a hírek válaszának eredménye. |
 |Keresési API-k    | együttesen a Bing Custom Search, Entity Search, Image Search, News Search, Video Search, Visual Search, helyi üzleti keresés és Web Search API-k. |
 
 ## <a name="bing-spell-check-and-bing-autosuggest-api-restrictions"></a>Bing Spell Check és Bing Autosuggest API korlátozások
@@ -104,7 +104,7 @@ nem:
 ### <a name="notices-and-branding"></a>Megjegyzések és védjegyezés 
 Nem
 
-- Kiemelten szerepel a [Microsoft adatvédelmi nyilatkozatához](https://go.microsoft.com/fwlink/?LinkId=521839)tartozó funkcionális hivatkozás is, amely a felhasználói élmény (UX) minden olyan pontján elérhető, amely lehetővé teszi a felhasználó számára a keresési lekérdezés bevitelét. Címkézze fel a **Microsoft adatvédelmi nyilatkozatát** .
+- Kiemelten szerepel a [Microsoft adatvédelmi nyilatkozatához](https://go.microsoft.com/fwlink/?LinkId=521839)tartozó funkcionális hivatkozás is, amely a felhasználói élmény (UX) minden olyan pontján elérhető, amely lehetővé teszi a felhasználó számára a keresési lekérdezés bevitelét. Címkézze fel a **Microsoft adatvédelmi nyilatkozatát**.
 
 - Kiemelten jeleníti meg a Bing branding- [használati irányelvekkel](https://go.microsoft.com/fwlink/?linkid=833278)összhangban lévő Bing branding útmutatót, amely a felhasználó számára lehetővé teszi a keresési lekérdezés bevitelét. Az ilyen védjegyezésnek egyértelműen meg kell felelnie a felhasználónak, hogy a Microsoft az internetes keresési élményt kikapcsolja.
 
@@ -172,5 +172,4 @@ A keresési API-k és a megjelenítési követelmények korábbi fejezetei nem v
 
 ## <a name="gdpr-compliance"></a>GDPR-megfelelőség  
 
-Az Európai Unió Általános adatvédelmi rendelet (GDPR) és a keresési API-k, Bing Spell Check API vagy Bing Autosuggest API meghívásával kapcsolatban feldolgozott személyes adat tekintetében tudomásul kell vennie, hogy Ön és a Microsoft független adatkezelők a GDPR. Ön függetlenül felelős a GDPR való megfelelőségért.  
-
+Az Európai Unió Általános adatvédelmi rendelet (GDPR) és a keresési API-k, Bing Spell Check API vagy Bing Autosuggest API meghívásával kapcsolatban feldolgozott személyes adat tekintetében tudomásul kell vennie, hogy Ön és a Microsoft független adatkezelők a GDPR. Ön függetlenül felelős a GDPR való megfelelőségért.

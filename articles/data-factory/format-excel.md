@@ -9,21 +9,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 74cfabff22074ee405d7b417e306da62ef69ae19
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: b1f95cf0a62aa68fe86f37cea137251553458a1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927113"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348874"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-formátum Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ha szeretné **elemezni az Excel-fájlokat** , kövesse ezt a cikket. A Azure Data Factory támogatja a ". xls" és az ". xlsx" is.
+Ha szeretné **elemezni az Excel-fájlokat**, kövesse ezt a cikket. A Azure Data Factory támogatja a ". xls" és az ". xlsx" is.
 
 Az Excel formátum a következő összekötők esetében támogatott: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [fájlrendszer](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md). Forrásként, de nem fogadóként támogatott. 
 
-**Megjegyzés** : a ". xls" formátum nem támogatott a [http](connector-http.md)használata közben. 
+**Megjegyzés**: a ". xls" formátum nem támogatott a [http](connector-http.md)használata közben. 
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
@@ -36,10 +36,10 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 | SheetName tulajdonságbeállító        | Az Excel-munkalap neve az adatolvasáshoz.                       | Igen      |
 | tartomány            | Az adott munkalapon lévő cellatartomány a szelektív adat megtalálásához, például:<br>-Nincs megadva: beolvassa a teljes munkalapot táblaként az első nem üres sorból és oszlopból.<br>- `A3`: az adott cellától kezdődő táblázat beolvasása, amely dinamikusan észleli az alábbi sorokat és az összes oszlopot a jobb oldalon.<br>- `A3:H5`: a rögzített tartomány beolvasása táblázatként<br>- `A3:A3`: az egyetlen cella beolvasása | Nem       |
 | firstRowAsHeader | Meghatározza, hogy az adott munkalap vagy tartomány első sorát fejlécként kell-e kezelni az oszlopok neveivel.<br>Az engedélyezett értékek: **true** és **false** (alapértelmezett). | Nem       |
-| nullValue        | Megadja a null értékű karakterlánc-ábrázolást. <br>Az alapértelmezett érték **üres karakterlánc** . | Nem       |
+| nullValue        | Megadja a null értékű karakterlánc-ábrázolást. <br>Az alapértelmezett érték **üres karakterlánc**. | Nem       |
 | tömörítés | A fájltömörítés konfigurálására szolgáló tulajdonságok csoportja. Akkor konfigurálja ezt a szakaszt, ha a tevékenység végrehajtása során tömörítést vagy kibontást szeretne végezni. | Nem |
-| típus<br/>( *alatt `compression`* ) | A JSON-fájlok olvasásához/írásához használt tömörítési kodek. <br>Az engedélyezett értékek a **bzip2** , a **gzip** , a **deflate** , a **ZipDeflate** , a **TarGzip** , a **tar** , a **Snappy** vagy a **lz4** . Az alapértelmezett érték nincs tömörítve.<br>**Megjegyzés:** jelenleg a másolási tevékenység nem támogatja a "snappy" & "lz4", és a leképezési folyamat nem támogatja a "ZipDeflate", a "TarGzip" és a "tar" típust.<br>**Vegye figyelembe** , hogy ha másolási tevékenységet használ a **ZipDeflate** -fájl (ok) kibontásához és a fájl alapú fogadó adattárba való íráshoz, a fájlok kikerülnek a mappába: `<path specified in dataset>/<folder named as source zip file>/` . | Nem.  |
-| szint<br/>( *alatt `compression`* ) | A tömörítési arány. <br>Az engedélyezett értékek az **optimálisak** vagy a **leggyorsabbek** .<br>- **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban kell elvégeznie, még akkor is, ha az eredményül kapott fájl nem tömöríthető optimálisan.<br>- **Optimális** : a tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet végrehajtása hosszú időt vesz igénybe. További információ: [tömörítési szint](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) témakör. | Nem       |
+| típus<br/>(*alatt `compression`*) | A JSON-fájlok olvasásához/írásához használt tömörítési kodek. <br>Az engedélyezett értékek a **bzip2**, a **gzip**, a **deflate**, a **ZipDeflate**, a **TarGzip**, a **tar**, a **Snappy** vagy a **lz4**. Az alapértelmezett érték nincs tömörítve.<br>**Megjegyzés:** jelenleg a másolási tevékenység nem támogatja a "snappy" & "lz4", és a leképezési folyamat nem támogatja a "ZipDeflate", a "TarGzip" és a "tar" típust.<br>**Vegye figyelembe** , hogy ha másolási tevékenységet használ a **ZipDeflate** -fájl (ok) kibontásához és a fájl alapú fogadó adattárba való íráshoz, a fájlok kikerülnek a mappába: `<path specified in dataset>/<folder named as source zip file>/` . | Nem.  |
+| szint<br/>(*alatt `compression`*) | A tömörítési arány. <br>Az engedélyezett értékek az **optimálisak** vagy a **leggyorsabbek**.<br>- **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban kell elvégeznie, még akkor is, ha az eredményül kapott fájl nem tömöríthető optimálisan.<br>- **Optimális**: a tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet végrehajtása hosszú időt vesz igénybe. További információ: [tömörítési szint](/dotnet/api/system.io.compression.compressionlevel) témakör. | Nem       |
 
 Az alábbi példa az Azure Blob Storage Excel-adatkészletet mutatja be:
 
@@ -73,7 +73,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="excel-as-source"></a>Excel forrásként 
 
-A másolási tevékenység **_ \_ forrás \*** * szakaszában a következő tulajdonságok támogatottak.
+A másolási tevékenység **_ \_ forrás \**** szakaszában a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -149,7 +149,7 @@ source(allowSchemaDrift: true,
     firstRowAsHeader: true) ~> ExcelSourceInlineDataset
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)

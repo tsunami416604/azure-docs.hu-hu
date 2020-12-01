@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4baa92fe4aa2ed402c394198684c4deec2bf9f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008582"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348602"
 ---
-# <a name="work-with-data-using-azure-cosmos-explorer"></a>Adatok kezelése az Azure Cosmos Explorerrel 
+# <a name="work-with-data-using-azure-cosmos-db-explorer"></a>Adatkezelés az Azure Cosmos DB Explorer használatával 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A Azure Cosmos DB Explorer egy önálló, webalapú felület, amellyel megtekintheti és kezelheti a Azure Cosmos DB tárolt adatforrásokat. Azure Cosmos DB-fiók létrehozásakor a Azure Cosmos DB Explorer az Azure Portal meglévő **adatkezelő** lapjának felel meg. A Azure Cosmos DB Explorer fő előnyei a meglévő adatkezelőben:
@@ -42,7 +42,7 @@ A Azure Cosmos DB Explorer egy önálló, webalapú felület, amellyel megtekint
 
    Válassza ki azt a hozzáférési típust, amelyhez meg szeretné nyitni a fiókot, és kattintson a **Megnyitás** gombra. Az Explorer megnyitása után a felhasználói élmény ugyanaz, mint a Azure Portal Adatkezelő lapján.
 
-   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB Explorer megnyitása":::
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Az Azure Cosmos DB-kezelő megnyitása":::
 
 ## <a name="known-issues"></a>Ismert problémák
 

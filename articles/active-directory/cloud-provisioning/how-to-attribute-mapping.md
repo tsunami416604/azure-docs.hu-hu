@@ -11,14 +11,14 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b7aa0bf8c82990a00b4e41041145a67ee2f02b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e272c402cac803d10d9998298ce6d3370d0e000
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91637219"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348803"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-attibute-mapping"></a>Felhőalapú kiépítési attribútum tartozik leképezése Azure AD Connect
+# <a name="azure-ad-connect-cloud-provisioning-attribute-mapping"></a>Azure AD Connect a felhő kiépítési attribútumának leképezése
 
 Azure AD Connect a Cloud kiépítés új funkciót vezetett be, amely lehetővé teszi az attribútumok egyszerű leképezését a helyszíni felhasználói/csoport objektumai és az Azure AD objektumai között.  Ez a szolgáltatás hozzá lett adva a felhő üzembe helyezési konfigurációjához.
 
@@ -54,17 +54,17 @@ A tulajdonsággal együtt az attribútum-hozzárendelések a következő attrib�
 ## <a name="using-attribute-mapping"></a>Attribútumok leképezésének használata
 Az új funkció használatához kövesse az alábbi lépéseket.
 
- 1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
- 2.  Válassza a **Azure ad Connect**lehetőséget.
- 3.  Válassza a **kiépítés kezelése**lehetőséget.
+ 1.  Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
+ 2.  Válassza a **Azure ad Connect** lehetőséget.
+ 3.  Válassza a **kiépítés kezelése** lehetőséget.
 
    ![Kiépítés kezelése](media/how-to-configure/manage1.png)
  
- 4. A **konfiguráció**területen válassza ki a konfigurációt.
+ 4. A **konfiguráció** területen válassza ki a konfigurációt.
  5. Válassza **a kattintson ide a leképezések szerkesztéséhez**.  Ekkor megnyílik az attribútum-leképezési képernyő.
 
  ![Attribútumok hozzáadása](media/how-to-attribute-mapping/mapping6.png)
- 6.  Kattintson az **attribútum hozzáadása**lehetőségre.
+ 6.  Kattintson az **attribútum hozzáadása** lehetőségre.
 
  ![Leképezés típusa](media/how-to-attribute-mapping/mapping1.png)
  
@@ -75,22 +75,22 @@ Az új funkció használatához kövesse az alábbi lépéseket.
    
    ![Leképezések szerkesztése](media/how-to-attribute-mapping/mapping2a.png)
  11. Az attribútum-leképezési képernyőn vissza kell látnia az új attribútum-hozzárendelést.  
- 12. Kattintson a **séma mentése**gombra.
+ 12. Kattintson a **séma mentése** gombra.
 
  ![Séma mentése](media/how-to-attribute-mapping/mapping3.png)
 
 ## <a name="test-your-attribute-mapping"></a>Az attribútumok leképezésének tesztelése
 Az attribútumok leképezésének teszteléséhez igény [szerinti üzembe](how-to-on-demand-provision.md)helyezést is használhat.  A 
 
-1.  A Azure Portal válassza a **Azure Active Directory**lehetőséget.
-2.  Válassza a **Azure ad Connect**lehetőséget.
-3.  Válassza a **kiépítés kezelése**lehetőséget.
-4. A **konfiguráció**területen válassza ki a konfigurációt.
+1.  Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
+2.  Válassza a **Azure ad Connect** lehetőséget.
+3.  Válassza a **kiépítés kezelése** lehetőséget.
+4. A **konfiguráció** területen válassza ki a konfigurációt.
 5. Az **ellenőrzés** alatt kattintson a **felhasználó kiépítése** gombra. 
 6. Az igény szerinti üzembe helyezési képernyőn.  Adja meg a felhasználó vagy csoport **megkülönböztető nevét** , majd kattintson a **kiépítés** gombra.  
 7. Ha befejeződik, megjelenik egy sikeres képernyő és 4 zöld jelölőnégyzet, amely azt jelzi, hogy a rendszer sikeresen kiépített.  
   ![Sikeres kiépítés](media/how-to-attribute-mapping/mapping4.png)
-1. A **művelet végrehajtása** alatt kattintson a **részletek megtekintése**elemre.  A jobb oldalon az új attribútum syncrhonized és az alkalmazott kifejezés látható.
+1. A **művelet végrehajtása** alatt kattintson a **részletek megtekintése** elemre.  A jobb oldalon az új attribútum syncrhonized és az alkalmazott kifejezés látható.
 
   ![Művelet végrehajtása](media/how-to-attribute-mapping/mapping5.png)
 

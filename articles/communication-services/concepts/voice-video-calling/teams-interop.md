@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 028e7f9764cbf75263736471f434e04bc6daca0f
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 914581e6610e027d9440495f56f4facfb1fb9a9a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886821"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349435"
 ---
 # <a name="teams-interoperability"></a>Teams-együttműködés
 
@@ -39,9 +39,10 @@ Amikor a kommunikációs szolgáltatások felhasználója összekapcsolja a csap
 
 A kommunikációs szolgáltatások felhasználói csatlakozhatnak az ütemezett csapatok üléseihez, amíg a névtelen illesztések engedélyezve vannak az [értekezlet beállításaiban](/microsoftteams/meeting-settings-in-teams).
 
+## <a name="teams-in-government-clouds-gcc"></a>Csapatok a kormányzati felhőkben (GCC)
+Az Azure kommunikációs szolgáltatásokkal való együttműködés jelenleg nem engedélyezett [Microsoft 365 kormányzati felhők (GCC)](https://docs.microsoft.com/MicrosoftTeams/plan-for-government-gcc) használatával történő központi telepítésre. 
 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Hívási alkalmazás csatlakoztatása Teams-értekezlethez](../../quickstarts/voice-video-calling/get-started-teams-interop.md)

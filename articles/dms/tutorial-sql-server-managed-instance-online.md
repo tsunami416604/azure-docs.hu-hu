@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 3674c6a0579eb901cc490d08bb8a4893296884c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0041779abcd97901fb9315125a287a1d45cff133
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020653"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350109"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL felügyelt példányra online a DMS használatával
 
@@ -25,7 +25,7 @@ A Azure Database Migration Service segítségével telepítheti át az adatbázi
 
 Ebben az oktatóanyagban áttelepíti a **Adventureworks2012** -adatbázist a SQL Server helyszíni példányáról egy SQL felügyelt példányra, minimális állásidővel Azure Database Migration Service használatával.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 >
 > * Hozzon létre egy Azure Database Migration Service-példányt.
@@ -220,7 +220,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
     ![Migrálási beállítások konfigurálása](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
     > [!NOTE]
-    > Ha Azure Database Migration Service a "rendszerhiba 53" vagy a "rendszerhiba 57" hibaüzenetet jeleníti meg, az ok miatt előfordulhat, hogy az Azure Database Migration Service nem tud hozzáférni az Azure-fájlmegosztás eléréséhez. Ha ezen hibák valamelyikével találkozik, adjon hozzáférést a virtuális hálózat Storage-fiókjához az [itt](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network)leírt utasítások alapján.
+    > Ha Azure Database Migration Service a "rendszerhiba 53" vagy a "rendszerhiba 57" hibaüzenetet jeleníti meg, az ok miatt előfordulhat, hogy az Azure Database Migration Service nem tud hozzáférni az Azure-fájlmegosztás eléréséhez. Ha ezen hibák valamelyikével találkozik, adjon hozzáférést a virtuális hálózat Storage-fiókjához az [itt](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)leírt utasítások alapján.
 
     > [!IMPORTANT]
     > Ha a visszacsatolási ellenőrzési funkció engedélyezve van, és a forrás SQL Server és a fájlmegosztás ugyanazon a számítógépen található, akkor a forrás nem fogja tudni elérni a fájlokat a teljes tartománynév használatával. A probléma megoldásához tiltsa le a visszacsatolási ellenőrzés funkcióit az [itt](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd)leírt utasítások alapján.

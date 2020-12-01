@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 11/09/2020
-ms.openlocfilehash: 4378a648b8b7a545c9e4b638d08592aa32fff3aa
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c89ab375cb02824a08ff57e6b5278dd9299126ff
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427666"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350925"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Tudásbázis migrálása export-import használatával
 
@@ -34,7 +34,7 @@ A Tudásbázis áttelepítéséhez egy meglévő Tudásbázisból kell exportál
 1. Jelentkezzen be [QnA Maker portálra](https://qnamaker.ai).
 1. Válassza ki az áttelepíteni kívánt forrás-tudásbázist.
 
-1. A **Beállítások** lapon válassza a **Tudásbázis exportálása** lehetőséget egy. TSV fájl letöltéséhez, amely a forrásként szolgáló Tudásbázis – kérdések, válaszok, metaadatok, követő kérések és a kinyert adatforrások nevét tartalmazza. A kérdésekkel és válaszokkal exportált QnA-azonosítók egy adott QnA-pár frissítésére használhatók a [frissítési API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)használatával. Egy adott QnA pár QnA-azonosítója változatlan marad a több exportálási művelet során.
+1. A **Beállítások** lapon válassza a **Tudásbázis exportálása** lehetőséget egy. TSV fájl letöltéséhez, amely a forrásként szolgáló Tudásbázis – kérdések, válaszok, metaadatok, követő kérések és a kinyert adatforrások nevét tartalmazza. A kérdésekkel és válaszokkal exportált QnA-azonosítók egy adott QnA-pár frissítésére használhatók a [frissítési API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update)használatával. Egy adott QnA pár QnA-azonosítója változatlan marad a több exportálási művelet során.
 
 1. Válassza a **Tudásbázis létrehozása** lehetőséget a felső menüben, majd hozzon létre egy _üres_ tudásbázist. Üres, mert a létrehozásakor nem lesz URL-cím vagy fájl hozzáadása. Ezeket a rendszer az importálási lépés során adja hozzá a létrehozás után.
 
@@ -59,20 +59,20 @@ Az áttelepítési folyamat programozott módon elérhető a következő REST AP
 
 **Exportálás**
 
-* [Tudásbázis API letöltése](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/download)
+* [Tudásbázis API letöltése](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/download)
 
 **Importálás**
 
-* [Az API cseréje (a reload ugyanazzal a Tudásbázis-AZONOSÍTÓval)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/replace)
-* [API létrehozása (Betöltés új Tudásbázis-AZONOSÍTÓval)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/create)
+* [Az API cseréje (a reload ugyanazzal a Tudásbázis-AZONOSÍTÓval)](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/replace)
+* [API létrehozása (Betöltés új Tudásbázis-AZONOSÍTÓval)](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/create)
 
 
 ## <a name="chat-logs-and-alterations"></a>Csevegési naplók és változtatások
-Kis-és nagybetűket nem megkülönböztető változtatások (szinonimák) nem lesznek automatikusan importálva. A [v4 API](https://go.microsoft.com/fwlink/?linkid=2092179) -k használatával áthelyezheti az új tudásbázisban található módosításokat.
+Kis-és nagybetűket nem megkülönböztető változtatások (szinonimák) nem lesznek automatikusan importálva. A [v4 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) -k használatával áthelyezheti az új tudásbázisban található módosításokat.
 
 A csevegési naplók nem telepíthetők át, mivel az új Tudásbázis Application Insightst használ a csevegési naplók tárolásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis szerkesztése](../How-To/edit-knowledge-base.md)

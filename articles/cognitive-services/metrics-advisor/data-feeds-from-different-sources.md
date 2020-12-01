@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
-ms.openlocfilehash: b304986bd75a6d48401e2cf466320c893ec865d7
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909585"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348619"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Adatcsatornák hozzáadása különböző adatforrásokból a metrikai TANÁCSADÓBA
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 
 ## <a name="supported-authentication-types"></a>Támogatott hitelesítési típusok
 
-| Hitelesítési típusok | Description |
+| Hitelesítési típusok | Leírás |
 | ---------------------|-------------|
 |**Basic** | Az adatforrásokhoz való hozzáféréshez alapszintű paramétereket kell biztosítania. Például egy kapcsolatok sztringjét vagy kulcsát. Az adatcsatorna-rendszergazdák megtekinthetik ezeket a hitelesítő adatokat. |
 | **AzureManagedIdentity** | Az Azure-erőforrások [felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md) a Azure Active Directory egyik funkciója. Azure-szolgáltatásokat biztosít automatikusan felügyelt identitással az Azure AD-ben. Az identitás használatával bármely olyan szolgáltatás hitelesíthető, amely támogatja az Azure AD-hitelesítést.|
@@ -37,13 +37,13 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 
 | Adatforrások | Hitelesítési típusok |
 |-------------| ---------------------|
-|[**Azure-Application Insights**](#appinsights)|  Alapszintű |
-|[**Azure Blob Storage (JSON)**](#blob) | Alapszintű<br>ManagedIdentity|
+|[**Azure Application Insights**](#appinsights)|  Alapszintű |
+|[**Azure Blob Storage (JSON)**](#blob) | Alapszintű<br>Felügyelt identitás|
 |[**Azure Cosmos DB (SQL)**](#cosmosdb) | Alapszintű |
-|[**Azure Data Explorer (Kusto)**](#kusto) | Alapszintű<br>ManagedIdentity|
-|[**2. generációs Azure Data Lake Storage**](#adl) | Alapszintű<br>DataLakeGen2SharedKey<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br> |
-|[**Azure SQL Database/SQL Server**](#sql) | Alapszintű<br>ManagedIdentity<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br>AzureSQLConnectionString
-|[**Azure Table Storage**](#table) | Alapszintű | 
+|[**Azure Data Explorer (Kusto)**](#kusto) | Alapszintű<br>Felügyelt identitás|
+|[**Azure Data Lake Storage Gen2**](#adl) | Alapszintű<br>DataLakeGen2SharedKey<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br> |
+|[**Azure SQL Database/SQL Server**](#sql) | Alapszintű<br>Felügyelt identitás<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br>AzureSQLConnectionString
+|[**Azure-Table Storage**](#table) | Alapszintű | 
 |[**ElasticSearch**](#es) | Alapszintű |
 |[**Http-kérelem**](#http) | Alapszintű | 
 |[**InfluxDB (InfluxQL)**](#influxdb) | Alapszintű |
@@ -53,9 +53,9 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 
 Hozzon létre egy **hitelesítőadat-entitást** , és használja azt az adatforrásokhoz való hitelesítéshez. A következő részekben az *alapszintű* hitelesítéshez szükséges paramétereket kell megadni. 
 
-## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure-Application Insights</span>
+## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 
-* **Alkalmazás azonosítója** : ezt az alkalmazást a Application Insights API használatakor lehet azonosítani. Az alkalmazás AZONOSÍTÓjának lekéréséhez tegye a következőket:
+* **Alkalmazás azonosítója**: ezt az alkalmazást a Application Insights API használatakor lehet azonosítani. Az alkalmazás AZONOSÍTÓjának lekéréséhez tegye a következőket:
 
     1. A Application Insights erőforrásban kattintson az API-hozzáférés lehetőségre.
 
@@ -63,7 +63,7 @@ Hozzon létre egy **hitelesítőadat-entitást** , és használja azt az adatfor
     
     További információért tekintse meg a [Azure bot Service dokumentációját](/azure/bot-service/bot-service-resources-app-insights-keys#application-id) .
 
-* **API-kulcs** : az API-kulcsokat a böngészőn kívüli alkalmazások használják az erőforrás eléréséhez. Az API-kulcs beszerzéséhez tegye a következőket:
+* **API-kulcs**: az API-kulcsokat a böngészőn kívüli alkalmazások használják az erőforrás eléréséhez. Az API-kulcs beszerzéséhez tegye a következőket:
 
     1. Az Application Insights erőforrásban kattintson az API-hozzáférés lehetőségre.
 
@@ -73,27 +73,27 @@ Hozzon létre egy **hitelesítőadat-entitást** , és használja azt az adatfor
 
     4. Másolja az API-kulcsot a metrikák Advisor **API-kulcs** mezőjébe.
 
-* **Lekérdezés** : az Azure Application Insights-naplók az Azure adatkezelő-ra épülnek, és a Azure monitor-lekérdezések ugyanazt a Kusto-lekérdezési nyelvet használják. A [Kusto lekérdezési nyelv dokumentációja](/azure/data-explorer/kusto/query/) tartalmazza a nyelv összes részletét, és az elsődleges erőforrásnak kell lennie ahhoz, hogy lekérdezést írjon a Application Insights. 
+* **Lekérdezés**: az Azure Application Insights-naplók az Azure adatkezelő-ra épülnek, és a Azure monitor-lekérdezések ugyanazt a Kusto-lekérdezési nyelvet használják. A [Kusto lekérdezési nyelv dokumentációja](/azure/data-explorer/kusto/query/) tartalmazza a nyelv összes részletét, és az elsődleges erőforrásnak kell lennie ahhoz, hogy lekérdezést írjon a Application Insights. 
 
 
 ## <a name="span-idblobazure-blob-storage-jsonspan"></a><span id="blob">Azure Blob Storage (JSON)</span>
 
-* **Kapcsolatok karakterlánca** : Tekintse meg az Azure Blob Storage a [kapcsolatok karakterláncát](../../storage/common/storage-configure-connection-string.md#configure-a-connection-string-for-an-azure-storage-account) ismertető cikket a karakterlánc beolvasásával kapcsolatos információkért.
+* **Kapcsolatok karakterlánca**: Tekintse meg az Azure Blob Storage a [kapcsolatok karakterláncát](../../storage/common/storage-configure-connection-string.md#configure-a-connection-string-for-an-azure-storage-account) ismertető cikket a karakterlánc beolvasásával kapcsolatos információkért.
 
-* **Tároló** : a metrikai tanácsadó a blob-fájlként (egy blob/timestamp) tárolt idősoros adatokat vár egyetlen tárolóban. Ez a tároló neve mező.
+* **Tároló**: a metrikai tanácsadó a blob-fájlként (egy blob/timestamp) tárolt idősoros adatokat vár egyetlen tárolóban. Ez a tároló neve mező.
 
-* **Blob-sablon** : Ez a blob-fájlnevek sablonja. Például: `/%Y/%m/X_%Y-%m-%d-%h-%M.json`. A következő paraméterek támogatottak:
+* **Blob-sablon**: Ez a blob-fájlnevek sablonja. Például: `/%Y/%m/X_%Y-%m-%d-%h-%M.json`. A következő paraméterek támogatottak:
   * `%Y` az év a következőképpen van formázva `yyyy`
   * `%m` a hónap a következőképpen van formázva `MM`
   * `%d` a nap a következőképpen van formázva `dd`
   * `%h` az óra a következőképpen van formázva `HH`
   * `%M` a perc a következőképpen van formázva `mm`
 
-* **JSON-formátum verziója** : az adatsémát definiálja a JSON-fájlokban. Az aktuális metrikai tanácsadó két verziót támogat:
+* **JSON-formátum verziója**: az adatsémát definiálja a JSON-fájlokban. Az aktuális metrikai tanácsadó két verziót támogat:
   
   * v1 (alapértelmezett érték)
 
-      A rendszer csak a metrikák *nevét* és *értékét* fogadja el. Példa:
+      A rendszer csak a metrikák *nevét* és *értékét* fogadja el. Például:
     
       ``` JSON
       {"count":11, "revenue":1.23}
@@ -101,7 +101,7 @@ Hozzon létre egy **hitelesítőadat-entitást** , és használja azt az adatfor
 
   * v2
 
-      A metrikák *dimenzióit* és az *időbélyeget* is elfogadjuk. Példa:
+      A metrikák *dimenzióit* és az *időbélyeget* is elfogadjuk. Például:
       
       ``` JSON
       [
@@ -114,10 +114,10 @@ JSON-fájlokban csak egy időbélyeg engedélyezett.
 
 ## <a name="span-idcosmosdbazure-cosmos-db-sqlspan"></a><span id="cosmosdb">Azure Cosmos DB (SQL)</span>
 
-* **Kapcsolati karakterlánc** : a Azure Cosmos db eléréséhez használt kapcsolati karakterlánc. Ez a Cosmos DB erőforrásban található a **kulcsokban** . 
-* **Adatbázis** : a lekérdezéshez használandó adatbázis. Ez a **Tallózás** lap **tárolók** területén található.
-* **Gyűjtemény azonosítója** : a lekérdezéshez használandó Gyűjtemény azonosítója. Ez a **Tallózás** lap **tárolók** területén található.
-* **SQL-lekérdezés** : SQL-lekérdezés, amely a többdimenziós idősorozatok adatsoraiba beolvassa és megfogalmazza az adatgyűjtést. Használhatja a és a `@StartTime` `@EndTime` változókat a lekérdezésben. A következőket kell formázni: `yyyy-MM-dd HH:mm:ss` .
+* **Kapcsolati karakterlánc**: a Azure Cosmos db eléréséhez használt kapcsolati karakterlánc. Ez a Cosmos DB erőforrásban található a **kulcsokban**. 
+* **Adatbázis**: a lekérdezéshez használandó adatbázis. Ez a **Tallózás** lap **tárolók** területén található.
+* **Gyűjtemény azonosítója**: a lekérdezéshez használandó Gyűjtemény azonosítója. Ez a **Tallózás** lap **tárolók** területén található.
+* **SQL-lekérdezés**: SQL-lekérdezés, amely a többdimenziós idősorozatok adatsoraiba beolvassa és megfogalmazza az adatgyűjtést. Használhatja a és a `@StartTime` `@EndTime` változókat a lekérdezésben. A következőket kell formázni: `yyyy-MM-dd HH:mm:ss` .
 
     Példa lekérdezésre:
     
@@ -133,33 +133,33 @@ JSON-fájlokban csak egy időbélyeg engedélyezett.
 
 ## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Data Explorer (Kusto)</span>
 
-* **Kapcsolatok karakterlánca** : a metrikák tanácsadója támogatja az Azure adatkezelő (Kusto) Azure ad-alkalmazás-hitelesítéssel való elérését. Létre kell hoznia és regisztrálnia kell egy Azure AD-alkalmazást, majd engedélyeznie kell egy Azure Adatkezelő-adatbázis elérését. A kapcsolódási karakterlánc beszerzéséhez tekintse meg az [Azure adatkezelő](/azure/data-explorer/provision-azure-ad-app) dokumentációját.
+* **Kapcsolatok karakterlánca**: a metrikák tanácsadója támogatja az Azure adatkezelő (Kusto) Azure ad-alkalmazás-hitelesítéssel való elérését. Létre kell hoznia és regisztrálnia kell egy Azure AD-alkalmazást, majd engedélyeznie kell egy Azure Adatkezelő-adatbázis elérését. A kapcsolódási karakterlánc beszerzéséhez tekintse meg az [Azure adatkezelő](/azure/data-explorer/provision-azure-ad-app) dokumentációját.
 
-* **Lekérdezés** : a [Kusto lekérdezési nyelve](/azure/data-explorer/kusto/query) a többdimenziós idősorozatok adatsoraiba való adatgyűjtéshez és-összeállításhoz. Használhatja a és a `@StartTime` `@EndTime` változókat a lekérdezésben. A következőket kell formázni: `yyyy-MM-dd HH:mm:ss` .
+* **Lekérdezés**: a [Kusto lekérdezési nyelve](/azure/data-explorer/kusto/query) a többdimenziós idősorozatok adatsoraiba való adatgyűjtéshez és-összeállításhoz. Használhatja a és a `@StartTime` `@EndTime` változókat a lekérdezésben. A következőket kell formázni: `yyyy-MM-dd HH:mm:ss` .
 
 ## <a name="span-idadlazure-data-lake-storage-gen2span"></a><span id="adl">Azure Data Lake Storage Gen2</span>
 
-* **Fióknév** : a Azure Data Lake Storage Gen2 fiókjának neve. Ez az Azure Storage-fiók (Azure Data Lake Storage Gen2) erőforrásában található a **hozzáférési kulcsokban** .
+* **Fióknév**: a Azure Data Lake Storage Gen2 fiókjának neve. Ez az Azure Storage-fiók (Azure Data Lake Storage Gen2) erőforrásában található a **hozzáférési kulcsokban**.
 
-* **Fiók kulcsa** : adja meg a fiók nevét a Azure Data Lake Storage Gen2 eléréséhez. Ez az Azure Storage-fiók (Azure Data Lake Storage Gen2) erőforrásában található a **hozzáférési kulcsok** beállításban.
+* **Fiók kulcsa**: adja meg a fiók nevét a Azure Data Lake Storage Gen2 eléréséhez. Ez az Azure Storage-fiók (Azure Data Lake Storage Gen2) erőforrásában található a **hozzáférési kulcsok** beállításban.
 
-* **Fájlrendszer neve (Container)** : a metrikai tanácsadó az idősorozat-adatokat blob-fájlként (egy blob/timestamp) tárolja, egyetlen tárolóban. Ez a tároló neve mező. Ez az Azure Storage-fiók (Azure Data Lake Storage Gen2) példányában található, és kattintson a "containers" elemre a "blob Service" szakaszban.
+* **Fájlrendszer neve (Container)**: a metrikai tanácsadó az idősorozat-adatokat blob-fájlként (egy blob/timestamp) tárolja, egyetlen tárolóban. Ez a tároló neve mező. Ez az Azure Storage-fiók (Azure Data Lake Storage Gen2) példányában található, és kattintson a "containers" elemre a "blob Service" szakaszban.
 
-* **Directory-sablon** : Ez a blob-fájl címtár-sablonja. Például: */%Y/%m/%d* . A következő paraméterek támogatottak:
+* **Directory-sablon**: Ez a blob-fájl címtár-sablonja. Például: */%Y/%m/%d*. A következő paraméterek támogatottak:
   * `%Y` az év a következőképpen van formázva `yyyy`
   * `%m` a hónap a következőképpen van formázva `MM`
   * `%d` a nap a következőképpen van formázva `dd`
   * `%h` az óra a következőképpen van formázva `HH`
   * `%M` a perc a következőképpen van formázva `mm`
 
-* **Sablonfájl** : Ez a blob fájljának sablonja. Például: *X_% Y-% m-% d-% h-% M.json* . A következő paraméterek támogatottak:
+* **Sablonfájl**: Ez a blob fájljának sablonja. Például: *X_% Y-% m-% d-% h-% M.json*. A következő paraméterek támogatottak:
   * `%Y` az év a következőképpen van formázva `yyyy`
   * `%m` a hónap a következőképpen van formázva `MM`
   * `%d` a nap a következőképpen van formázva `dd`
   * `%h` az óra a következőképpen van formázva `HH`
   * `%M` a perc a következőképpen van formázva `mm`
 
-A jelenleg mérőszámok tanácsadója a következő módon támogatja a JSON-fájlokban lévő adatsémát. Példa:
+A jelenleg mérőszámok tanácsadója a következő módon támogatja a JSON-fájlokban lévő adatsémát. Például:
 
 ``` JSON
 [
@@ -186,7 +186,7 @@ The timestamp field must match one of these two formats:
 -->
 ## <a name="span-idsqlazure-sql-database--sql-serverspan"></a><span id="sql">Azure SQL Database | SQL Server</span>
 
-* **Kapcsolatok karakterlánca** : a metrikai tanácsadó elfogadja az SQL Server-adatforráshoz tartozó [ADO.net-stílusbeli kapcsolatok karakterláncát](/dotnet/framework/data/adonet/connection-string-syntax) .
+* **Kapcsolatok karakterlánca**: a metrikai tanácsadó elfogadja az SQL Server-adatforráshoz tartozó [ADO.net-stílusbeli kapcsolatok karakterláncát](/dotnet/framework/data/adonet/connection-string-syntax) .
 
     Példa a kapcsolatok karakterláncára:
 
@@ -194,7 +194,7 @@ The timestamp field must match one of these two formats:
     Data Source=db-server.database.windows.net:[port];initial catalog=[database];User ID=[username];Password=[password];Connection Timeout=10ms;
     ```
 
-* **Lekérdezés** : SQL-lekérdezés, amely a többdimenziós idősorozatok adatsoraiba beolvassa és megfogalmazza az adatgyűjtést. A `@StartTime` lekérdezésben változót használhat a várt mérőszámok értékének beolvasásához.
+* **Lekérdezés**: SQL-lekérdezés, amely a többdimenziós idősorozatok adatsoraiba beolvassa és megfogalmazza az adatgyűjtést. A `@StartTime` lekérdezésben változót használhat a várt mérőszámok értékének beolvasásához.
 
   * `@StartTime`: a dátum és idő formátuma `yyyy-MM-dd HH:mm:ss`
 
@@ -210,11 +210,11 @@ The timestamp field must match one of these two formats:
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
+## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure-Table Storage</span>
 
-* **Kapcsolódási karakterlánc** : a kapcsolódási sztringnek az Azure Table Storageból való beolvasásával kapcsolatos információkért tekintse meg a [kapcsolódási karakterlánc megtekintése és másolása](../../storage/common/storage-account-keys-manage.md?tabs=azure-portal&toc=%252fazure%252fstorage%252ftables%252ftoc.json#view-account-access-keys) című témakört.
+* **Kapcsolódási karakterlánc**: a kapcsolódási sztringnek az Azure Table Storageból való beolvasásával kapcsolatos információkért tekintse meg a [kapcsolódási karakterlánc megtekintése és másolása](../../storage/common/storage-account-keys-manage.md?tabs=azure-portal&toc=%2fazure%2fstorage%2ftables%2ftoc.json#view-account-access-keys) című témakört.
 
-* **Táblanév** : adjon meg egy táblát a lekérdezéshez. Ez az Azure Storage-fiók példányában található. A Table **szolgáltatás** szakaszban kattintson a **táblák** elemre.
+* **Táblanév**: adjon meg egy táblát a lekérdezéshez. Ez az Azure Storage-fiók példányában található. A Table **szolgáltatás** szakaszban kattintson a **táblák** elemre.
 
 * **Lekérdezés** Használhatja a t a `@StartTime` lekérdezésben. `@StartTime` lecserélve egy éééé-hh-NNTóó: PP: mm formátumú karakterláncot a szkriptben.
 
@@ -225,43 +225,43 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-ideselasticsearchspan"></a><span id="es">Elasticsearch</span>
 
-* **Gazdagép** : határozza meg a Elasticsearch-fürt fő gazdagépét.
-* **Port** : határozza meg a Elasticsearch-fürt fő portját.
-* **Engedélyezési fejléc** : határozza meg a Elasticsearch-fürt engedélyezési fejlécének értékét.
-* **Lekérdezés** : a lekérdezés megadásával kérheti le az adatgyűjtést. @StartTimeA helyőrző támogatott. ( például a 2020-06-21T00:00:00Z betöltését, @StartTime = 2020-06-21T00:00:00)
+* **Gazdagép**: határozza meg a Elasticsearch-fürt fő gazdagépét.
+* **Port**: határozza meg a Elasticsearch-fürt fő portját.
+* **Engedélyezési fejléc**: határozza meg a Elasticsearch-fürt engedélyezési fejlécének értékét.
+* **Lekérdezés**: a lekérdezés megadásával kérheti le az adatgyűjtést. @StartTimeA helyőrző támogatott. ( például a 2020-06-21T00:00:00Z betöltését, @StartTime = 2020-06-21T00:00:00)
 
 ## <a name="span-idhttphttp-requestspan"></a><span id="http">HTTP-kérelem</span>
 
 * **Kérelem URL-** címe: egy HTTP URL-cím, amely egy JSON-t adhat vissza. A (z)% Y,% m,% d,% h,% M helyőrzők támogatottak:% Y = év a (z) éééé,% m = hónap formátumban,% d = nap a (z) HH formátumban,% h = óra a (z) óó,% M = perc formátumban, mm-ben. Például: `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`.
-* **Http-metódus kérése** : a Get vagy a post használata.
-* **Kérelem fejléce** : hozzáadhat egyszerű hitelesítést. 
-* **Kérelem tartalma** : csak a JSON-adattartalom támogatott. A hasznos adatok helyőrzője @StartTime támogatott. A válasznak a következő JSON formátumúnak kell lennie: [{"Timestamp": "2018-01-01T00:00:00Z", "piac": "en-us", "Count": 11, "bevétel": 1.23}, {"Timestamp": "2018-01-01T00:00:00Z", "piac": "zh-CN", "Count": 22, "bevétel": 4,56}]. (például a 2020-06-21T00:00:00Z betöltését, @StartTime = 2020-06-21T00:00:00.0000000 + 00:00)
+* **Http-metódus kérése**: a Get vagy a post használata.
+* **Kérelem fejléce**: hozzáadhat egyszerű hitelesítést. 
+* **Kérelem tartalma**: csak a JSON-adattartalom támogatott. A hasznos adatok helyőrzője @StartTime támogatott. A válasznak a következő JSON formátumúnak kell lennie: [{"Timestamp": "2018-01-01T00:00:00Z", "piac": "en-us", "Count": 11, "bevétel": 1.23}, {"Timestamp": "2018-01-01T00:00:00Z", "piac": "zh-CN", "Count": 22, "bevétel": 4,56}]. (például a 2020-06-21T00:00:00Z betöltését, @StartTime = 2020-06-21T00:00:00.0000000 + 00:00)
 
 ## <a name="span-idinfluxdbinfluxdb-influxqlspan"></a><span id="influxdb">InfluxDB (InfluxQL)</span>
 
-* **Kapcsolati karakterlánc** : a InfluxDB eléréséhez használt kapcsolati sztring.
-* **Adatbázis** : a lekérdezéshez használandó adatbázis.
-* **Lekérdezés** : egy lekérdezés, amely a többdimenziós idősoros adatsorokba gyűjti az adatgyűjtési és-kialakítási adatot.
-* **Felhasználónév** : ez nem kötelező a hitelesítéshez. 
-* **Password (jelszó** ): ez nem kötelező a hitelesítéshez. 
+* **Kapcsolati karakterlánc**: a InfluxDB eléréséhez használt kapcsolati sztring.
+* **Adatbázis**: a lekérdezéshez használandó adatbázis.
+* **Lekérdezés**: egy lekérdezés, amely a többdimenziós idősoros adatsorokba gyűjti az adatgyűjtési és-kialakítási adatot.
+* **Felhasználónév**: ez nem kötelező a hitelesítéshez. 
+* **Password (jelszó**): ez nem kötelező a hitelesítéshez. 
 
 ## <a name="span-idmongodbmongodbspan"></a><span id="mongodb">MongoDB</span>
 
-* **Kapcsolati karakterlánc** : a MongoDB eléréséhez használt kapcsolati sztring.
-* **Adatbázis** : a lekérdezéshez használandó adatbázis.
-* **Parancs** : egy parancs, amellyel beolvashatja és kialakíthatja az adatfeldolgozásra szolgáló többdimenziós idősorozat-adatsorokba.
+* **Kapcsolati karakterlánc**: a MongoDB eléréséhez használt kapcsolati sztring.
+* **Adatbázis**: a lekérdezéshez használandó adatbázis.
+* **Parancs**: egy parancs, amellyel beolvashatja és kialakíthatja az adatfeldolgozásra szolgáló többdimenziós idősorozat-adatsorokba.
 
 ## <a name="span-idmysqlmysqlspan"></a><span id="mysql">MySQL</span>
 
-* **Kapcsolati karakterlánc** : a MySQL-adatbázis eléréséhez használt kapcsolati sztring.
-* **Lekérdezés** : egy lekérdezés, amely a többdimenziós idősoros adatsorokba gyűjti az adatgyűjtési és-kialakítási adatot.
+* **Kapcsolati karakterlánc**: a MySQL-adatbázis eléréséhez használt kapcsolati sztring.
+* **Lekérdezés**: egy lekérdezés, amely a többdimenziós idősoros adatsorokba gyűjti az adatgyűjtési és-kialakítási adatot.
 
 ## <a name="span-idpgsqlpostgresqlspan"></a><span id="pgsql">PostgreSQL</span>
 
-* **Kapcsolati sztring** : a POSTGRESQL-adatbázis eléréséhez használt kapcsolati sztring.
-* **Lekérdezés** : egy lekérdezés, amely a többdimenziós idősoros adatsorokba gyűjti az adatgyűjtési és-kialakítási adatot.
+* **Kapcsolati sztring**: a POSTGRESQL-adatbázis eléréséhez használt kapcsolati sztring.
+* **Lekérdezés**: egy lekérdezés, amely a többdimenziós idősoros adatsorokba gyűjti az adatgyűjtési és-kialakítási adatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A metrikus adatok rendszerbe való betöltésére való várakozás során olvassa el az [adatcsatorna-konfigurációk kezelésével](how-tos/manage-data-feeds.md)kapcsolatos témakört.
 * A metrikai adatok betöltését követően beállíthatja a [metrikákat és a konfiguráció finomhangolását](how-tos/configure-metrics.md).

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: bd2032d565f5bd1fb430449be8b8c08e222f531d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 085dd18214f795566669fb862bba63b67eb9115d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025784"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350364"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>Beléptetési alkalmazás készítése az Androidhoz a reakcióval
 
@@ -74,7 +74,7 @@ Ha ki szeretné terjeszteni az alkalmazás funkcióit a teljes regisztrációs �
 
 ### <a name="android"></a>Android
 
-Először győződjön meg arról, hogy az alkalmazás készen áll az éles környezetben való üzembe helyezésre: távolítsa el az összes kulcsot vagy titkot az alkalmazás kódjából, és győződjön meg arról, hogy követte az [ajánlott biztonsági eljárásokat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp).
+Először győződjön meg arról, hogy az alkalmazás készen áll az éles környezetben való üzembe helyezésre: távolítsa el az összes kulcsot vagy titkot az alkalmazás kódjából, és győződjön meg arról, hogy követte az [ajánlott biztonsági eljárásokat](../cognitive-services-security.md?tabs=command-line%2ccsharp).
 
 Ha készen áll az alkalmazás éles környezetben való kiadására, létrehoz egy kiadásra kész APK-fájlt, amely az Android-alkalmazások csomag fájlformátuma. Ezt az APK-fájlt titkos kulccsal kell aláírni. Ezzel a kiadással megkezdheti az alkalmazás közvetlen terjesztését az eszközökön. 
 
@@ -82,6 +82,6 @@ A kiadási <a href="https://developer.android.com/studio/publish/preparing#publi
 
 Miután létrehozott egy aláírt APK-t, tekintse meg az alkalmazás közzététele az alkalmazás közzététele című <a href="https://developer.android.com/studio/publish"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> dokumentációt, amelyből többet tudhat meg az alkalmazás kiadásáról.
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 Ebből az útmutatóból megtudhatta, hogyan állíthatja be a fejlesztési környezetet, és megkezdheti a minta-beléptetési alkalmazás megkezdését. Ha most ismerkedik a natív reagálással, olvassa el az [első lépéseket ismertető dokumentációt](https://reactnative.dev/docs/getting-started) , ahol további háttér-információkat tudhat meg. Hasznos lehet a [Face API](Overview.md)megismerése is. A fejlesztés megkezdése előtt olvassa el a beléptetési alkalmazás dokumentációjának egyéb fejezeteit.

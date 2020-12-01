@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9781196690c689036bfb69e1fa769112b5f69b2b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: af41f03a1ac0ea65d72d9af47b175bb78f9e1bc2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964978"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348779"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Hogyan működik az önkiszolgáló jelszó-visszaállítási visszaírási az Azure Active Directory?
 
@@ -39,7 +39,7 @@ A jelszó visszaírási a következő funkciókat biztosítja:
 * **Nulla késleltetésű visszajelzés**: a jelszó visszaírási egy szinkron művelet. A rendszer azonnal értesíti a felhasználókat, ha a jelszavuk nem felel meg a szabályzatnak, vagy bármilyen okból nem lehet alaphelyzetbe állítani vagy módosítani.
 * **Támogatja a hozzáférési panel jelszavas módosításait, és Microsoft 365**: Ha az összevont vagy jelszó-kivonatolással szinkronizált felhasználók a lejárt vagy nem lejárt jelszavakat módosítják, a jelszavakat a rendszer visszaírja a ad DSba.
 * **Támogatja a jelszó visszaírási, amikor egy rendszergazda visszaállítja azokat a Azure Portal**: Ha a rendszergazda visszaállítja a felhasználó jelszavát a [Azure Portalban](https://portal.azure.com), ha a felhasználó összevont vagy jelszó-kivonattal szinkronizálva van, a rendszer visszaírja a jelszót a helyszíni környezetbe. Ez a funkció jelenleg nem támogatott az Office felügyeleti portálon.
-* **Nincs szükség bejövő tűzfalszabályok**használatára: a Password visszaírási egy Azure Service Bus továbbítót használ mögöttes kommunikációs csatornaként. Minden kommunikáció a 443-es porton keresztül kimenő.
+* **Nincs szükség bejövő tűzfalszabályok** használatára: a Password visszaírási egy Azure Service Bus továbbítót használ mögöttes kommunikációs csatornaként. Minden kommunikáció a 443-es porton keresztül kimenő.
 
 > [!NOTE]
 > A helyszíni AD-ben található védett csoportokba tartozó rendszergazdai fiókok jelszavas visszaírási is használhatók. A rendszergazdák megváltoztathatják a jelszavukat a felhőben, de nem használhatják a jelszó-visszaállítást az elfelejtett jelszavak alaphelyzetbe állításához. A védett csoportokkal kapcsolatos további információkért lásd: [védett fiókok és csoportok a AD DS](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
@@ -90,7 +90,7 @@ A jelszó visszaírási egy nagyon biztonságos szolgáltatás. Az adatok védel
 * **Bérlő-specifikus Service-Bus Relay**
    * A szolgáltatás beállításakor a bérlőre jellemző Service Bus Relay olyan véletlenszerűen generált erős jelszóval védett, amelyet a Microsoft soha nem fér hozzá.
 * **Zárolt, titkosítási szempontból erős, jelszó-titkosítási kulcs**
-   * A Service Bus-továbbító létrehozása után egy erős szimmetrikus kulcs jön létre, amely a jelszó titkosítására szolgál a that'is. Ez a kulcs csak a vállalat titkos tárolójában él a felhőben, amely szigorúan le van zárva és naplózva van, ugyanúgy, mint a címtárban lévő többi jelszó.
+   * A Service Bus-továbbító létrehozása után egy erős szimmetrikus kulcs jön létre, amely a jelszó titkosítására szolgál a huzalon keresztül. Ez a kulcs csak a vállalat titkos tárolójában él a felhőben, amely szigorúan le van zárva és naplózva van, ugyanúgy, mint a címtárban lévő többi jelszó.
 * **Iparági szabvány Transport Layer Security (TLS)**
    1. Ha a felhőben új jelszó-visszaállítási vagy módosítási művelet történik, a rendszer a nyilvános kulccsal titkosítja az egyszerű szöveges jelszót.
    1. A titkosított jelszó egy titkosított csatornán küldött HTTPS-üzenetbe kerül, amelyet a Service Bus Relay-hez a Microsoft TLS/SSL-tanúsítványok használatával küld.
@@ -106,8 +106,8 @@ Miután egy felhasználó elküldte a jelszó alaphelyzetbe állítását, az al
 
 1. **Jelszó-titkosítás 2048 bites RSA-kulccsal**: miután egy felhasználó elküldte a jelszót a helyszíni rendszerbe való visszaíráshoz, a beküldött jelszót egy 2048 bites RSA-kulccsal titkosítja a rendszer.
 1. **Csomag szintű TITKOSÍTÁS AES-GCM**: a teljes csomag, a jelszó és a szükséges metaadatok az AES-GCM használatával titkosítva vannak. Ez a titkosítás megakadályozza, hogy bárki közvetlenül hozzáférhessen a mögöttes Service Bus-csatornához a tartalom megtekintésével vagy módosításával.
-1. **Minden kommunikáció a TLS/SSL protokollon keresztül**történik: az Service Bus összes kommunikációja egy SSL/TLS-csatornán történik. Ez a titkosítás védi a jogosulatlan harmadik féltől származó tartalmat.
-1. **Automatikus Key rollover**hathavonta: minden, hat havonta átadott kulcs, vagy a jelszó visszaírási le van tiltva, majd újból engedélyezve Azure ad Connecton, a maximális biztonság és biztonság érdekében.
+1. **Minden kommunikáció a TLS/SSL protokollon keresztül** történik: az Service Bus összes kommunikációja egy SSL/TLS-csatornán történik. Ez a titkosítás védi a jogosulatlan harmadik féltől származó tartalmat.
+1. **Automatikus Key rollover** hathavonta: minden, hat havonta átadott kulcs, vagy a jelszó visszaírási le van tiltva, majd újból engedélyezve Azure ad Connecton, a maximális biztonság és biztonság érdekében.
 
 ### <a name="password-writeback-bandwidth-usage"></a>Jelszó-visszaírási sávszélesség-használat
 
@@ -156,7 +156,7 @@ A jelszavakat a következő helyzetekben nem írja vissza a rendszer:
 > [!WARNING]
 > A (z) "a következő bejelentkezéskor a felhasználónak meg kell változtatnia a jelszót" jelölőnégyzet használata a helyszíni AD DS felügyeleti eszközök, például a Active Directory felhasználók és számítógépek, vagy a Active Directory felügyeleti központ előzetes funkciójaként támogatott Azure AD Connect. További információ: jelszó- [kivonatolási szinkronizálás implementálása Azure ad Connect szinkronizálással](../hybrid/how-to-connect-password-hash-synchronization.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A SSPR-visszaírási első lépéseihez hajtsa végre a következő oktatóanyagot:
 

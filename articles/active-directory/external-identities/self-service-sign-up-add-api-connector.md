@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de255836cb269f5077a417a203e136f9e903f05d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d121e6280b83265a742736f9b8dd3aee96a8b32e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441674"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351759"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API-összekötő hozzáadása felhasználói folyamathoz
 
@@ -25,9 +25,9 @@ Az API- [Összekötők](api-connectors-overview.md)használatához először lé
 ## <a name="create-an-api-connector"></a>API-összekötő létrehozása
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad-rendszergazdaként.
-2. Az **Azure-szolgáltatások**területen válassza a **Azure Active Directory**lehetőséget.
-3. A bal oldali menüben válassza a **külső identitások**lehetőséget.
-4. Válassza **az összes API-összekötő (előzetes verzió)** lehetőséget, majd válassza az **új API-összekötő**lehetőséget.
+2. Az **Azure-szolgáltatások** területen válassza a **Azure Active Directory** lehetőséget.
+3. A bal oldali menüben válassza a **külső identitások** lehetőséget.
+4. Válassza **az összes API-összekötő (előzetes verzió)** lehetőséget, majd válassza az **új API-összekötő** lehetőséget.
 
    ![Új API-összekötő hozzáadása](./media/self-service-sign-up-add-api-connector/api-connector-new.png)
 
@@ -35,10 +35,10 @@ Az API- [Összekötők](api-connectors-overview.md)használatához először lé
 6. Adja meg az API **-hívás végpontjának URL-címét** .
 7. Adja meg az API hitelesítési adatait.
 
-   - Jelenleg csak az alapszintű hitelesítés támogatott. Ha alapszintű hitelesítés nélküli API-t szeretne használni fejlesztési célokra, egyszerűen adja meg az API által figyelmen kívül hagyható dummy- **felhasználónevet** és- **jelszót** . Ha egy API-kulccsal rendelkező Azure-függvényt használ, a kódot lekérdezési paraméterként is megadhatja a **végpont URL-címében** (például https []() ://contoso.azurewebsites.NET/API/Endpoint<b>? Code = 0123456789</b>).
+   - Jelenleg csak az alapszintű hitelesítés támogatott. Ha alapszintű hitelesítés nélküli API-t szeretne használni fejlesztési célokra, egyszerűen adja meg az API által figyelmen kívül hagyható dummy- **felhasználónevet** és- **jelszót** . Ha egy API-kulccsal rendelkező Azure-függvényt használ, a kódot lekérdezési paraméterként is megadhatja a **végpont URL-címében** (például https []() ://contoso.azurewebsites.NET/API/Endpoint <b>? Code = 0123456789</b>).
 
    ![Új API-összekötő konfigurálása](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
 > [!IMPORTANT]
 > Korábban be kellett állítania, hogy mely felhasználói attribútumok legyenek elküldve az API-nak ("küldési jogcímek"), és hogy mely felhasználói attribútumok fogadják el az API-t ("fogadott jogcímek"). Mostantól alapértelmezés szerint minden felhasználói attribútumot elküld a rendszer, ha értékkel rendelkezik, és az API egy "Folytatás" válaszban visszaadja a felhasználói attribútumot.
@@ -92,17 +92,17 @@ Emellett a **felhasználói felület területi beállítása ("ui_locales")** jo
 Az alábbi lépéseket követve hozzáadhat egy API-összekötőt egy önkiszolgáló bejelentkezési felhasználói folyamathoz.
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad-rendszergazdaként.
-2. Az **Azure-szolgáltatások**területen válassza a **Azure Active Directory**lehetőséget.
-3. A bal oldali menüben válassza a **külső identitások**lehetőséget.
+2. Az **Azure-szolgáltatások** területen válassza a **Azure Active Directory** lehetőséget.
+3. A bal oldali menüben válassza a **külső identitások** lehetőséget.
 4. Válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget, majd válassza ki azt a felhasználói folyamatot, amelyhez hozzá kívánja adni az API-összekötőt.
-5. Válassza az **API-összekötők**lehetőséget, majd válassza ki azokat az API-végpontokat, amelyeket a felhasználói folyamat következő lépéseiben szeretne meghívni:
+5. Válassza az **API-összekötők** lehetőséget, majd válassza ki azokat az API-végpontokat, amelyeket a felhasználói folyamat következő lépéseiben szeretne meghívni:
 
    - **Az identitás-szolgáltatóval való bejelentkezés után**
    - **A felhasználó létrehozása előtt**
 
    ![API-k hozzáadása a felhasználói folyamathoz](./media/self-service-sign-up-add-api-connector/api-connectors-user-flow-select.png)
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>Az identitás-szolgáltatóval való bejelentkezés után
 
@@ -248,7 +248,7 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | Sztring            | Igen      | Az API verziója.                                                                                                                                                                                                                                                                |
 | művelet                                             | Sztring            | Igen      | Az értéknek a számnak kell lennie `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Nem       | Az értékeket a címtárban tárolhatja, ha a rendszer az API-összekötő konfigurációjában és a felhasználói folyamatok **felhasználói attribútumaiban** a * érték*fogadására vonatkozó jogcímet*választotta. Az értékek a tokenben adhatók vissza, ha **alkalmazási jogcímként**van kiválasztva.                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | Nem       | Az értékeket a címtárban tárolhatja, ha a rendszer az API-összekötő konfigurációjában és a felhasználói folyamatok **felhasználói attribútumaiban** a * érték *fogadására vonatkozó jogcímet* választotta. Az értékek a tokenben adhatók vissza, ha **alkalmazási jogcímként** van kiválasztva.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nem       | A visszaadott jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . Az értékeket a címtárban kell tárolni, ha a felhasználói folyamat API-összekötő konfigurációjában és **felhasználói attribútumában** való **fogadásra vonatkozó jogcímként** vannak megadva. Egyéni attribútumok nem küldhetők vissza a jogkivonatban. |
 
 ### <a name="example-of-a-blocking-response"></a>Blokkoló válasz – példa
@@ -310,7 +310,7 @@ Content-type: application/json
 ### <a name="using-serverless-cloud-functions"></a>Kiszolgáló nélküli Felhőbeli függvények használata
 A kiszolgáló nélküli függvények, például a Azure Functions HTTP-eseményindítók egyszerű módszert biztosítanak az API-összekötővel használható API-végpontok létrehozásához. Használhatja a kiszolgáló nélküli felhő függvényt, [például](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)az érvényesítési logikát, és korlátozhatja a bejelentkezéseket adott tartományokra. A kiszolgáló nélküli felhő funkció összetettebb forgatókönyvekhez is meghívhat és meghívhat más webes API-kat, felhasználói áruházakat és egyéb felhőalapú szolgáltatásokat.
 
-### <a name="best-practices"></a>Bevált gyakorlatok
+### <a name="best-practices"></a>Ajánlott eljárások
 Győződjön meg a következőket:
 * Az API-t az API-kérelem és a válasz-szerződések követik, a fentiekben ismertetett módon. 
 * Az API **-összekötő végponti URL-** címe a megfelelő API-végpontra mutat.

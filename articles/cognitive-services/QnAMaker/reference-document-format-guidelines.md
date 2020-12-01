@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: d35ea57a68e500deffa99033b83114ec518dd5e3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bf6eebcfc43452dd9a62e4a49f9aacbcd517ffc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993805"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352235"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Az importált dokumentumokra és URL-címekre vonatkozó irányelvek formázása
 
@@ -22,7 +22,7 @@ Fájl vagy URL importálása után QnA Maker átalakítja és tárolja a tartalm
 
 Ha közvetlenül a Tudásbázisban adja hozzá vagy szerkeszti a tartalmat, a **Markdown formázás** használatával Rich Text tartalmat hozhat létre, vagy módosíthatja a Markdown formátum tartalmát, amely már szerepel a válaszban. QnA Maker támogatja a Markdown-formátum nagy részét, hogy Rich Text képességeket biztosítson a tartalomhoz. Előfordulhat azonban, hogy az ügyfélalkalmazás, például a csevegési robot nem támogatja ugyanazt a Markdown-formátumot. Fontos, hogy tesztelje az ügyfélalkalmazás válaszait.
 
-Tekintse meg a [tartalomtípusok és példák](./Concepts/content-types.md#file-and-url-data-types)teljes listáját.
+Tekintse meg a [tartalomtípusok és példák](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)teljes listáját.
 
 ## <a name="basic-document-formatting"></a>Alapszintű dokumentum formázása
 
@@ -118,4 +118,4 @@ A Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Az 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [tartalomtípusok és példák](./Concepts/content-types.md#file-and-url-data-types) teljes listáját
+Tekintse meg a [tartalomtípusok és példák](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base) teljes listáját

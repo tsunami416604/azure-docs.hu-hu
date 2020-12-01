@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
-ms.openlocfilehash: ac1b636f644784092b5f68f59d787c328478df69
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a85c5b2333418367742678a529b69c95164eda53
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096920"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350483"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>Miniatűr képek átméretezése és körülvágása
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Néhány válasz a Bing Search API-k tartalmaz a Bing által szolgáltatott miniatűr rendszerképekre mutató URL-címeket, amelyek átméretezhetők és elhelyezhetők, és lekérdezési paramétereket is tartalmazhatnak. Például:
 
@@ -129,7 +129,7 @@ Az alábbi ábrán látható, hogy a 100x200 a vak arányok levágásával csök
   
 ![A napraforgó-kép bevágása a 100x200](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi a Bing Search API-k?](bing-api-comparison.md)
 * [Bing Search API – követelmények használata és megjelenítése](use-display-requirements.md)

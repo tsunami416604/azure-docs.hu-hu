@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: fa048473f0f285b793dad88c7defdb6189ca1ccd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 63be912986542741359cd5e88227f06905d42647
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023006"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350874"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Fogadó átalakítás a leképezési adatfolyamban
 
@@ -100,7 +100,7 @@ Alapértelmezés szerint az determinált sorrendben több mosogatóba történik
 ![Képernyőkép, amely az egyéni fogadó sorrendet mutatja.](media/data-flow/custom-sink-ordering.png "Képernyőkép, amely az egyéni fogadó sorrendet mutatja.")
 
 > [!NOTE]
-> A [gyorsítótárazott keresések](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder#cached-lookup)használatakor győződjön meg arról, hogy a fogadó megrendelése a gyorsítótárazott tárolók értéke 1, a legalacsonyabb (vagy az első) a sorrend.
+> A [gyorsítótárazott keresések](./concepts-data-flow-expression-builder.md#cached-lookup)használatakor győződjön meg arról, hogy a fogadó megrendelése a gyorsítótárazott tárolók értéke 1, a legalacsonyabb (vagy az első) a sorrend.
 
 ![Egyéni fogadó rendelés](media/data-flow/cache-2.png "Egyéni fogadó rendelés")
 

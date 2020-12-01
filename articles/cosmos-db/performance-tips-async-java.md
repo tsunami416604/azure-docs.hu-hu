@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: 4285571ead30f74f9136ad81687e52d92fdd1c47
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1f57e14893e6f43b98b0e45cc2bd2d49e31271d0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341756"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350347"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB aszinkron Java SDK v2-hez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -115,7 +115,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
     | sendHangDetectionTime      | "PT10S"    |
     | shutdownTimeout            | "PT15S"    |
 
-* ***Programozási tippek a Direct Mode** -hoz _
+* ***Programozási tippek a Direct Mode**-hoz _
 
   Az SDK-problémák megoldásához tekintse át az Azure Cosmos DB aszinkron Java SDK v2 [hibaelhárítási](troubleshoot-java-async-sdk.md) cikkét.
   
@@ -139,7 +139,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     Fontos megjegyezni, hogy a párhuzamos lekérdezések a legjobb előnyöket nyújtják, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény úgy van particionálva, hogy a lekérdezés által visszaadott összes adat többsége néhány partíción (egy partíció a legrosszabb esetben) van, akkor a lekérdezés teljesítményét a partíciók szűk keresztmetszete okozhatja.
 
-  _ * **Hangolás setMaxBufferedItemCount \:** _
+  _ ***Hangolás setMaxBufferedItemCount \:** _
     
     A párhuzamos lekérdezés úgy lett kialakítva, hogy előzetesen beolvassa az eredményeket, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javulását segíti elő. a setMaxBufferedItemCount korlátozza az előre beolvasott eredmények számát. A setMaxBufferedItemCount beállítása a visszaadott eredmények várt számához (vagy egy magasabb szám) lehetővé teszi a lekérdezés számára, hogy a lehető legtöbbet fogadja az előzetes lekéréstől.
 
@@ -260,9 +260,9 @@ _ **A leállítási megvalósítása getRetryAfterInMilliseconds időközönkén
     collectionDefinition.setIndexingPolicy(indexingPolicy);
     ```
 
-    További információ: [Azure Cosmos db indexelési házirendek](/azure/cosmos-db/index-policy).
+    További információ: [Azure Cosmos db indexelési házirendek](./index-policy.md).
 
-## <a name="throughput"></a><a id="measure-rus"></a>Átviteli sebesség
+## <a name="throughput"></a><a id="measure-rus"></a>Teljesítmény
 
 * **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**
 

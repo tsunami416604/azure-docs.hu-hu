@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d085d59dc1dbe09c014dcaf5aa239805824354f0
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 6559de2b94879ac8643f4945fd5adcf4fc7e1045
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279960"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350823"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Események irányítása az Azure digitális Twins-n belül és kívül
 
@@ -20,7 +20,7 @@ Az Azure Digital Twins **esemény-útvonalakat** használ az adatküldés célj�
 
 Az Azure Digital Twins-adatok küldésének két fő esete van:
 * Adatok küldése az Azure digitális Twins gráfból egy másikba. Ha például egy adott digitális kettős változásra vonatkozó tulajdonságot módosít, érdemes lehet értesíteni és frissíteni egy másik digitális dupla, ennek megfelelően.
-* Adatok küldése a downstream adatszolgáltatásoknak további tárhely vagy feldolgozás céljából (más néven *adatforgalom* ). Például:
+* Adatok küldése a downstream adatszolgáltatásoknak további tárhely vagy feldolgozás céljából (más néven *adatforgalom*). Például:
   - A kórház az Azure Digital Twins-események [Time Series Insights (ÁME)](../time-series-insights/overview-what-is-tsi.md)szolgáltatásba való küldéséhez érdemes lehet a tömeges elemzéshez kapcsolódó, kézmosással kapcsolatos események idősoros adatainak rögzítése.
   - Egy olyan vállalat, amely már használ [Azure Maps](../azure-maps/about-azure-maps.md) , érdemes lehet az Azure digitális Twins használatával javítani a megoldást. Az Azure digitális Twins beállítása után gyorsan engedélyezhetik az Azure Map-t, hogy az Azure Map-entitásokat [digitális ikrekként](concepts-twins-graph.md) használják a Twin Graphban, vagy futtasson hatékony lekérdezéseket a Azure Maps és az Azure digitális Twins-adatszolgáltatások használatával.
 
@@ -103,7 +103,7 @@ Ha a feltételek bármelyike teljesül, az esemény eldobása vagy elutasítása
 
 A kézbesítetlen levelek helyének beállítása előtt egy tárolóval rendelkező Storage-fiókkal kell rendelkeznie. Adja meg a tároló URL-címét a végpont létrehozásakor. A kézbesítetlen levél egy SAS-tokent tároló URL-ként van megadva. A jogkivonat csak a `write` Storage-fiókban lévő cél tárolóra vonatkozó engedélyre van szüksége. A teljesen formázott URL-cím a (z) formátumban jelenik meg: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-További információ az SAS-tokenekről: [ *korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+További információ az SAS-tokenekről: [ *korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával*](../storage/common/storage-sas-overview.md)
 
 A következő témakörben megtudhatja, hogyan állíthatja be a végpontokat a kézbesítetlen üzenetek használatával [*: hogyan kezelheti a végpontokat és az útvonalakat az Azure digitális ikrekben (API-k és parancssori felület)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
 
@@ -113,7 +113,7 @@ A IoT Hub és az Azure Digital Twins különböző típusú eseményei különb�
 
 [!INCLUDE [digital-twins-notifications.md](../../includes/digital-twins-notifications.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: események útvonalának beállítása és kezelése:
 * [*Útmutató: végpontok és útvonalak kezelése*](how-to-manage-routes-apis-cli.md)

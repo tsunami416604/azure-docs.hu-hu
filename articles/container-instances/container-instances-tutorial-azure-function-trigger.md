@@ -4,12 +4,12 @@ description: HTTP-alapú, kiszolgáló nélküli PowerShell-függvény létrehoz
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ec4b2273f6be6ea4aabed2b660e0b7553f861d0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b94d583ca26b88d093810528d3193f20d765f1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072043"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349248"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Oktatóanyag: egy HTTP-triggert használó Azure-függvény használata tároló csoport létrehozásához
 
@@ -27,15 +27,15 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Lásd: [az első függvény létrehozása az Azure-ban a Visual Studio Code használatával](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell#configure-your-environment) a Visual Studio Code telepítéséhez és használatához az operációs rendszer Azure functions bővítménnyel.
+Lásd: [az első függvény létrehozása az Azure-ban a Visual Studio Code használatával](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell#configure-your-environment) a Visual Studio Code telepítéséhez és használatához az operációs rendszer Azure functions bővítménnyel.
 
 A cikkben szereplő további lépések a Azure PowerShell használatát ismertetik. Ha telepíteni vagy frissíteni szeretne, olvassa el a [Azure PowerShell telepítése][azure-powershell-install] és [Az Azure-ba való bejelentkezés](/powershell/azure/get-started-azureps#sign-in-to-azure)című témakört.
 
 ## <a name="create-a-basic-powershell-function"></a>Alapszintű PowerShell-függvény létrehozása
 
-Kövesse az [első PowerShell-függvény létrehozása az Azure-ban](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell) című témakör lépéseit, és hozzon létre egy PowerShell-függvényt a http-trigger sablon használatával. Használja az alapértelmezett Azure-függvény nevét **HttpTrigger**. Ahogy a gyors útmutatóban is látható, a függvényt helyileg tesztelheti, és közzéteheti a projektet egy Azure-beli Function alkalmazásban. Ez a példa egy alapszintű HTTP-triggert használó függvény, amely szöveges karakterláncot ad vissza. A cikk későbbi lépéseiben módosítja a függvényt egy tároló csoport létrehozásához.
+Kövesse az [első PowerShell-függvény létrehozása az Azure-ban](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell) című témakör lépéseit, és hozzon létre egy PowerShell-függvényt a http-trigger sablon használatával. Használja az alapértelmezett Azure-függvény nevét **HttpTrigger**. Ahogy a gyors útmutatóban is látható, a függvényt helyileg tesztelheti, és közzéteheti a projektet egy Azure-beli Function alkalmazásban. Ez a példa egy alapszintű HTTP-triggert használó függvény, amely szöveges karakterláncot ad vissza. A cikk későbbi lépéseiben módosítja a függvényt egy tároló csoport létrehozásához.
 
-Ez a cikk azt feltételezi, hogy közzéteszi a projektet a *myfunctionapp*név használatával, amely az Azure-erőforráscsoportban automatikusan elnevezett, a Function app neve ( *myfunctionapp*) alapján. Helyettesítse be az egyedi Function-alkalmazás nevét és az erőforráscsoport nevét a későbbi lépésekben.
+Ez a cikk azt feltételezi, hogy közzéteszi a projektet a *myfunctionapp* név használatával, amely az Azure-erőforráscsoportban automatikusan elnevezett, a Function app neve ( *myfunctionapp*) alapján. Helyettesítse be az egyedi Function-alkalmazás nevét és az erőforráscsoport nevét a későbbi lépésekben.
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>Azure által felügyelt identitás engedélyezése a Function alkalmazásban
 
@@ -97,7 +97,7 @@ Győződjön meg arról, hogy a függvény helyileg fut, mielőtt újból közz�
 
 Miután meggyőződött róla, hogy a függvény helyileg fut, tegye közzé újra a projektet az Azure-beli meglévő Function alkalmazásban.
 
-1. A Visual Studio Code-ban nyissa meg a parancs palettáját. Keresse meg és válassza ki a következőt: `Azure Functions: Deploy to Function App...` .
+1. Nyissa meg a Parancskatalógust a Visual Studio Code-ban. Keresse meg és válassza ki a következőt: `Azure Functions: Deploy to Function App...` .
 1. Válassza ki az aktuális munkamappát a zip-ben és az üzembe helyezéshez.
 1. Válassza ki az előfizetést, majd a meglévő Function app (*myfunctionapp*) nevét. Erősítse meg, hogy felül szeretné írni az előző telepítést.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: e56cf54e1bf1483309cb7aac8519bb281ca2bc06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 677ab3327f2357ce7b242c314b44702370779def
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935806"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351673"
 ---
 # <a name="access-your-security-data"></a>Hozzáférés a biztonsági adataihoz
 
@@ -30,14 +30,14 @@ Annak konfigurálása, hogy mely Log Analytics munkaterület legyen használatba
 
 1. Nyissa meg az IoT hubot.
 1. Kattintson a **Beállítások** panelre a **Biztonság** szakaszban.
-1. Kattintson **az adatgyűjtés**lehetőségre, és módosítsa a log Analytics munkaterület konfigurációját.
+1. Kattintson **az adatgyűjtés** lehetőségre, és módosítsa a log Analytics munkaterület konfigurációját.
 
 A riasztások és javaslatok elérése a Log Analytics munkaterületen a konfiguráció után:
 
 1. Válasszon ki egy riasztást vagy javaslatot a Defender for IoT.
-1. Kattintson a **további vizsgálat**elemre, majd kattintson **ide a riasztást tartalmazó eszközök megtekintéséhez kattintson ide, és tekintse meg a DeviceID oszlopot**.
+1. Kattintson a **további vizsgálat** elemre, majd kattintson **ide a riasztást tartalmazó eszközök megtekintéséhez kattintson ide, és tekintse meg a DeviceID oszlopot**.
 
-A Log Analytics adatainak lekérdezésével kapcsolatos részletekért lásd: Ismerkedés [a lekérdezésekkel a log Analyticsban](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries).
+A Log Analytics adatainak lekérdezésével kapcsolatos részletekért lásd: Ismerkedés [a lekérdezésekkel a log Analyticsban](//azure/log-analytics/query-language/get-started-queries).
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
@@ -171,7 +171,7 @@ SecurityRecommendation
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | 1  |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes        | 4   |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Olvassa el a Defender for IoT [áttekintését](overview.md)
 - Tudnivalók a IoT-architektúra Defender- [architektúráról](architecture.md)

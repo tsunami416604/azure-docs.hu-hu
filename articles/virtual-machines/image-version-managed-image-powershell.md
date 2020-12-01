@@ -1,6 +1,6 @@
 ---
-title: Felügyelt rendszerkép átirányítása megosztott képtárba
-description: Ismerje meg, hogyan telepítheti át a felügyelt rendszerképeket a Azure PowerShell használatával egy megosztott képtárban lévő rendszerkép-verzióra.
+title: Felügyelt rendszerkép klónozása megosztott rendszerkép-gyűjteménybe
+description: Megtudhatja, hogyan használhatja a Azure PowerShell-t egy felügyelt rendszerkép klónozására egy megosztott képtárban lévő rendszerkép-verzióra.
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1c57d9d283714da6905335fd3167c4f8a69292f8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 92cae59978b172993c779e9a486ff67d82309800
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964881"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349922"
 ---
-# <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Migrálás felügyelt rendszerképből megosztott képgyűjteményi rendszerképre
+# <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>Felügyelt rendszerkép klónozása megosztott képgyűjteményi rendszerképbe
 
-Ha van egy meglévő felügyelt rendszerképe, amelyet át szeretne telepíteni egy megosztott képkatalógusba, akkor közvetlenül a felügyelt rendszerképből is létrehozhat egy közös rendszerkép-katalógust. Miután tesztelte az új rendszerképet, törölheti a forrás által felügyelt képet. Az [Azure CLI](image-version-managed-image-cli.md)használatával felügyelt rendszerképekről is áttelepítheti a megosztott képgyűjteményt.
+Ha rendelkezik egy meglévő felügyelt képpel, amelyet szeretne klónozott, és egy megosztott képkatalógusba szeretne áthelyezni, akkor közvetlenül a felügyelt rendszerképből is létrehozhatja a közös rendszerkép-katalógus rendszerképét. Miután tesztelte az új rendszerképet, törölheti a forrás által felügyelt képet. Az [Azure CLI](image-version-managed-image-cli.md)használatával felügyelt rendszerképekről is áttelepítheti a megosztott képgyűjteményt.
 
 A képkatalógusban található lemezképek két összetevővel rendelkeznek, amelyeket a következő példában hozunk létre:
 - A **rendszerkép definíciója** információt nyújt a rendszerképekről és az azok használatára vonatkozó követelményekről. Ez magában foglalja azt is, hogy a rendszerkép Windows vagy Linux, specializált vagy általánosított, kibocsátási megjegyzések, valamint minimális és maximális memória-követelmény. Ez egy adott típusú rendszerkép definíciója. 
@@ -130,7 +130,7 @@ Remove-AzImage `
    -ResourceGroupName $managedImage.ResourceGroupName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután meggyőződött arról, hogy a replikáció elkészült, létrehozhat egy virtuális gépet az [általánosított rendszerképből](vm-generalized-image-version-powershell.md).
 

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 728dda7c702d7fc52c9285c7cb15fc4b6dc3003c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: aef85b263a142c001d47bac4aed7a71066e26dae
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182059"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350449"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -314,7 +314,7 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
 
 * Az elérési út alatti összes tulajdonság a `typeProperties` megfelelő alapértelmezett értékekkel van ellátva. Például két tulajdonság van a `IntegrationRuntimes` típus tulajdonságainál: `computeProperties` és `ssisProperties` . Mindkét tulajdonság típusa a megfelelő alapértelmezett értékekkel és típusokkal (objektummal) jön létre.
 
-#### <a name="triggers"></a>Triggerek
+#### <a name="triggers"></a>Eseményindítók
 
 * A `typeProperties` rendszerben a két tulajdonság paraméteres. Az első a `maxConcurrency` , amely az alapértelmezett értékkel van megadva, és típusa `string` . Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency` .
 * A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képez a `interval` tulajdonság, amely típusként van paraméterként `number` . A paraméter neve utótaggal van ellátva `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterként. A tulajdonság azonban `freq` alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
@@ -639,7 +639,7 @@ Tekintse meg az alábbi videót, amely részletesen ismerteti a környezetek gyo
 
 ## <a name="exposure-control-and-feature-flags"></a>A kitettség szabályozása és a funkció jelzői
 
-Ha egy csapaton dolgozik, vannak olyan példányok, amelyekben a módosításokat egyesítheti, de nem szeretné, hogy azok emelt szintű környezetekben fussanak, mint például a PROD és a QA. Ennek a forgatókönyvnek a kezeléséhez az ADF csapata [a DevOps koncepcióját javasolja a funkciók jelzői](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)alapján. Az ADF-ben egyesítheti a [globális paramétereket](author-global-parameters.md) és az [IF Condition tevékenységgel](control-flow-if-condition-activity.md) a logikai készletek elrejtését ezen környezeti jelzők alapján.
+Ha egy csapaton dolgozik, vannak olyan példányok, amelyekben a módosításokat egyesítheti, de nem szeretné, hogy azok emelt szintű környezetekben fussanak, mint például a PROD és a QA. Ennek a forgatókönyvnek a kezeléséhez az ADF csapata [a DevOps koncepcióját javasolja a funkciók jelzői](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)alapján. Az ADF-ben egyesítheti a [globális paramétereket](author-global-parameters.md) és az [IF Condition tevékenységgel](control-flow-if-condition-activity.md) a logikai készletek elrejtését ezen környezeti jelzők alapján.
 
 A szolgáltatás jelző beállításának megismeréséhez tekintse meg az alábbi videós oktatóanyagot:
 

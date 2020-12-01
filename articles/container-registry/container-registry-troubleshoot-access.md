@@ -3,12 +3,12 @@ title: A beállításjegyzék hálózati problémáinak elhárítása
 description: Az Azure Container Registry virtuális hálózatban való elérésekor vagy tűzfal mögötti gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 5f2cf2d72e6641d4871b7acccdbd7cc37c653f74
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 95b32b839d1b3b804a2035b797e1146a09d5236a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148456"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351793"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>A beállításjegyzék hálózati problémáinak elhárítása
 
@@ -103,7 +103,7 @@ Kapcsolódó hivatkozások:
 
 ### <a name="configure-service-access"></a>Szolgáltatás-hozzáférés konfigurálása
 
-Jelenleg Azure Security Center nem tudja végrehajtani a [képbiztonsági rések vizsgálatát](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json) egy olyan beállításjegyzékben, amely korlátozza a privát végpontokhoz, a kiválasztott alhálózatokhoz vagy IP-címekhez való hozzáférést. Emellett a következő szolgáltatások erőforrásai nem férnek hozzá a tároló-beállításjegyzékhez hálózati korlátozásokkal:
+Jelenleg Azure Security Center nem tudja végrehajtani a [képbiztonsági rések vizsgálatát](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) egy olyan beállításjegyzékben, amely korlátozza a privát végpontokhoz, a kiválasztott alhálózatokhoz vagy IP-címekhez való hozzáférést. Emellett a következő szolgáltatások erőforrásai nem férnek hozzá a tároló-beállításjegyzékhez hálózati korlátozásokkal:
 
 * Azure DevOps Services 
 * Azure Container Instances
@@ -130,7 +130,7 @@ Kapcsolódó hivatkozások:
 * [Azure Container Registry Azure biztonsági alapterve](security-baseline.md)
 * [Az Azure Container Registry ajánlott eljárásai](container-registry-best-practices.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha itt nem oldja meg a problémát, tekintse meg a következő beállításokat.
 

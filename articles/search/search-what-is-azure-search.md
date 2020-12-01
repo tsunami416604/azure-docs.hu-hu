@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/24/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 19be1155476ca7c295e2d0311e8285bc2128dd1d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 1e0294e3d0ec727b8e6a11c5443d413aadca9184
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030764"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352524"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Mi az az Azure Cognitive Search?
 
@@ -70,7 +70,7 @@ Az alapvető keresési funkciók teljes körű feltárása négy lépésben érh
 1. [**Egy index lekérdezése**](search-query-overview.md) a portálon, a [REST API](search-get-started-rest.md), a [.net SDK](/dotnet/api/azure.search.documents.searchclient.search)-ban vagy más SDK-ban található [keresési tallózó](search-explorer.md) használatával.
 
 > [!TIP]
-> A lépéseket az [**adatimportálás varázsló**](search-get-started-portal.md) és egy Azure-adatforrás létrehozásával, betöltésével és lekérdezésével percek alatt egyesítheti.
+> Minimálisra csökkentheti a lépéseket az [**adatimportálás varázsló**](search-get-started-portal.md) és egy Azure-adatforrás használatával, amely percek alatt létrehozhatja, betöltheti és lekérdezheti az indexeket.
 
 ## <a name="how-it-compares"></a>Összehasonlítás más keresési megoldásokkal
 

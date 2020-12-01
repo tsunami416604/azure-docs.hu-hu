@@ -3,12 +3,12 @@ title: Azure DevTest Labs Azure biztonsági alapterve
 description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ae3886e1c47b1d6835dc348b474e3d9e82a8f41
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993652"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348823"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -172,7 +172,7 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Multi-Factor Authentication használata az összes Azure Active Directory-alapú hozzáféréshez
 **Útmutató:** Engedélyezze Azure Active Directory (AD) Multi-Factor Authentication (MFA), és kövesse Azure Security Center identitás-és hozzáférés-kezelési javaslatait.
 
-- [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)  
+- [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
 
 **Azure Security Center figyelés:** _ igen
@@ -184,7 +184,7 @@ _ *Felelősség:** ügyfél
 **Útmutató:** Az Azure-erőforrások bejelentkezéséhez és konfigurálásához használja az MFA-t a privilegizált hozzáférésű munkaállomások (PAWs) használatára.
 
 - [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)  
-- [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)  
+- [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)  
 
 **Azure Security Center figyelés:** N/A
 
@@ -193,8 +193,8 @@ _ *Felelősség:** ügyfél
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
 **Útmutató:** A naplók és a riasztások generálásához használjon Azure Active Directory (Azure AD) biztonsági jelentéseket, ha a környezetben gyanús vagy nem biztonságos tevékenység történik. A Azure Security Center használatával figyelheti az identitás-és hozzáférési tevékenységeket.
 
-- [A kockázatos tevékenységre megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md)  
-- [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](../security-center/security-center-identity-access.md)  
+- [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md)  
+- [A felhasználók identitási és hozzáférési tevékenységeinek monitorozása az Azure Security Centerben](../security-center/security-center-identity-access.md)  
 
 **Azure Security Center figyelés:** Jelenleg nem érhető el
 
@@ -233,7 +233,7 @@ _ *Felelősség:** ügyfél
 
 Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiókok diagnosztikai beállításainak létrehozásával, valamint a naplók és a bejelentkezési naplók Log Analytics munkaterületre való elküldésével. A riasztásokat Log Analytics munkaterületen belül is konfigurálhatja.
 
-- [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)  
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)  
 
 **Azure Security Center figyelés:** Jelenleg nem érhető el
 
@@ -242,7 +242,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
 **Útmutató:** A Azure Active Directory (Azure AD) kockázati és Identity Protection-funkciókkal konfigurálhatja az automatizált válaszokat a felhasználói identitásokkal kapcsolatos gyanús műveletekhez.
 
-- [Az Azure AD kockázatos bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md)  
+- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../active-directory/identity-protection/overview-identity-protection.md)  
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)  
 
 **Azure Security Center figyelés:** Jelenleg nem érhető el
@@ -288,7 +288,7 @@ Ezt a folyamatot leegyszerűsítheti Azure Active Directory felhasználói fiók
 
 A Microsoft kezeli a Azure DevTest Labs alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
+- [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés:** Jelenleg nem érhető el
 
@@ -308,7 +308,7 @@ A Microsoft kezeli a Azure DevTest Labs alapjául szolgáló infrastruktúrát, 
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
+- [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés:** Jelenleg nem érhető el
 
@@ -329,7 +329,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és az ügyfelek adatvesztésével és a kitettséggel szembeni védelem érdekében nagy hosszúságú. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft végrehajtotta és karbantartja a robusztus adatvédelmi szabályozást és képességeket.
 
-- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
+- [Az ügyféladatok Azure-beli védelmének ismertetése](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
 
@@ -379,7 +379,7 @@ A Microsoft a Azure DevTest Labst támogató mögöttes erőforrásokon hajtja v
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: az operációs rendszer automatikus javításának felügyeleti megoldásának telepítése
 **Útmutató:** Az Azure Update Management használatával biztosíthatja, hogy a legújabb biztonsági frissítések telepítve legyenek a DevTest Labs szolgáltatásban üzemeltetett Windows-és Linux-alapú virtuális gépekre. Windows rendszerű virtuális gépek esetén győződjön meg arról, hogy Windows Update engedélyezve van, és automatikus frissítésre van beállítva. Ez a beállítás jelenleg nem érhető el a DevTest Labs szolgáltatáson keresztül történő konfiguráláshoz, azonban a laboratóriumi rendszergazda/előfizetés-rendszergazda konfigurálhatja ezt a beállítást az előfizetése mögöttes számítási virtuális gépeken. 
 
-- [Virtuális gépek Update Management konfigurálása az Azure-ban](../automation/update-management/update-mgmt-overview.md)
+- [Virtuális gépek Update Management konfigurálása az Azure-ban](../automation/update-management/overview.md)
 - [A Security Center által figyelt Azure biztonsági házirendek ismertetése](../security-center/policy-reference.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
@@ -393,8 +393,8 @@ További információ a [DevTest Labs Image factoryről](image-factory-create.md
 
 Előfizetés-rendszergazdaként használhatja az Azure Update Management megoldást is a DevTest Labs-beli virtuális gépek frissítéseinek és javításának kezelésére. A Update Management a helyileg konfigurált frissítési tárházra támaszkodik a támogatott Windows-rendszerek javításához. Az olyan eszközök, mint a System Center Updates Publisher (a frissítések közzétevője) lehetővé teszik egyéni frissítések közzétételét Windows Server Update Services (WSUS) szolgáltatásban. Ez a forgatókönyv lehetővé teszi, hogy Update Management a harmadik féltől származó szoftverrel rendelkező frissítési adattárként Configuration Manager használó gépeket.
 
-- [Update Management megoldás az Azure-ban](../automation/update-management/update-mgmt-overview.md)
-- [A virtuális gépek frissítéseinek és javításának kezelése](../automation/update-management/update-mgmt-overview.md)
+- [Update Management megoldás az Azure-ban](../automation/update-management/overview.md)
+- [A virtuális gépek frissítéseinek és javításának kezelése](../automation/update-management/overview.md)
 
 _ *Azure Security Center figyelés:** nem alkalmazható
 
@@ -468,7 +468,7 @@ _ *Azure Security Center figyelés:** nem alkalmazható
 
 Emellett az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az előfizetésen belüli erőforrásokat. Ez segíthet a magas biztonságon alapuló környezetekben, például a Storage-fiókokkal.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 - [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
@@ -516,7 +516,7 @@ Amellett, hogy Change Trackingt használ a szoftveralkalmazások figyelésére, 
 - Engedélyezett erőforrástípusok
 
 Lásd az alábbi cikkeket: 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 - [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center figyelés:** igen
@@ -652,7 +652,7 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 ### <a name="77-deploy-system-configuration-management-tools"></a>7,7: rendszerkonfiguráció-felügyeleti eszközök telepítése
 **Útmutató:** Az Azure-erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Azure Policy-Aliasok használatával egyéni szabályzatokat hozhat létre a DevTest Labs szolgáltatásban létrehozott Azure-erőforrások hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Az adott erőforrásokhoz kapcsolódó beépített szabályzat-definíciókat is igénybe vehet. Emellett Azure Automation használatával is telepítheti a konfigurációs módosításokat.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 - [Aliasok használata](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Azure Security Center figyelés:** Nem alkalmazható
@@ -711,7 +711,7 @@ Emellett a Microsoft által közzétett Azure Marketplace virtuálisgép-rendsze
 **Felelősség:** Ügyfél
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
-**Útmutató:** Hitelesítő adatok beolvasása a kódban a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
+**Útmutató:** Hitelesítő adatok beolvasása a kódban a hitelesítő adatok azonosításához. A Credential Scanner a felfedezett hitelesítő adatok biztonságosabb helyre, például az Azure Key Vaultba való áthelyezésére is javaslatot tesz.
 
 - A hitelesítő adatok beolvasójának beállítása
 
@@ -825,7 +825,7 @@ Ha az Azure Disk Encryption szolgáltatást használja, visszaállíthatja az Az
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: incidensek pontozásának és rangsorolási eljárásának létrehozása
 **Útmutató:** A Azure Security Center az egyes riasztásokhoz súlyosságot rendel, így rangsorolhatja, hogy a rendszer mely riasztásokat vizsgálja meg először. A súlyosság azon alapul, hogy az Security Center milyen mértékben szerepel a riasztás kibocsátásához használt elemzésben vagy elemzésben, valamint a riasztást eredményező tevékenység mögötti rosszindulatú szándékkal.
 
-Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
+Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások megoldását azon Azure-erőforrások és -környezetek kritikussága alapján, ahol az incidens történt.
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 - [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
@@ -835,7 +835,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 **Felelősség:** Ügyfél
 
 ### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
-**Útmutató:** Az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
+**Útmutató:** Az Azure-erőforrások védelmének biztosítása érdekében a rendszer az incidensek reagálási képességeinek rendszeres tesztelésére szolgáló gyakorlatokat hajt végre. Azonosítsa a gyenge pontokat és réseket, és szükség esetén dolgozza át a tervet.
 
 - [A NIST kiadványa – útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és alkalmazásához](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
@@ -856,7 +856,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 **Útmutató:** Az Azure Security Center-riasztások és-javaslatok exportálásával a folyamatos exportálás funkcióval azonosíthatja az Azure-erőforrásokkal kapcsolatos kockázatokat. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Az Azure Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba.
 
 - [Folyamatos exportálás konfigurálása](../security-center/continuous-export.md)
-- [Riasztások továbbítása az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
+- [Riasztások streamelése az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center figyelés:** Nem alkalmazható
 
@@ -877,7 +877,7 @@ Azure Security Center figyelés: * * * * nem alkalmazható
 
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: rendszeres penetrációs tesztelést végez az Azure-erőforrásokon, és gondoskodik az összes kritikus biztonsági vizsgálat 60 napon belüli szervizeléséről
-**Útmutató:** Kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket. A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatban a Microsoft stratégiáját és a Red Teaming és a Live site penetráció tesztelését is használhatja.
+**Útmutató:** Kövesse a Microsoft részvételi szabályait, hogy a behatolási tesztek ne sértsék a Microsoft-házirendeket. A Microsoft által felügyelt felhőalapú infrastruktúrán, szolgáltatásokon és alkalmazásokon végzett riasztási és élő behatolási tesztek végrehajtásához használja a Microsoft stratégiáját és végrehajtási tervét.
 
 - [Behatolás-tesztelési szabályok engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 - [Microsoft Cloud Red-összevonás](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)

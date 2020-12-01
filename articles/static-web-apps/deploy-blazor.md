@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 80a48a948c70db7344ac9cbc20474177309bd909
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0086f7f68fd05d6925d19c7ab457fbc125e36be4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024228"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350228"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Oktatóanyag: statikus Webalkalmazás létrehozása az Azure statikus Web Apps villámgyors szolgáltatásával
 
@@ -64,7 +64,7 @@ A fenti konfiguráció biztosítja, hogy az alkalmazás bármely útvonalára ir
 Ez a cikk egy GitHub-sablon tárházát használja, amely megkönnyíti az első lépéseket. A sablon egy Azure statikus Web Apps üzembe helyezett alapszintű alkalmazást tartalmaz.
 
 1. Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat:
-    - https://github.com/staticwebdev/blazor-starter/generate
+    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
 1. Nevezze el a tárházat **az első-static-Blazer-App**
 
 ## <a name="create-a-static-web-app"></a>Statikus webalkalmazás létrehozása
@@ -129,7 +129,7 @@ A statikus Web Apps áttekintése ablak a webalkalmazással való interakciót s
 
 2. Miután befejeződött a GitHub-műveletek munkafolyamata, kiválaszthatja az _URL-_ hivatkozást a webhely új lapon való megnyitásához.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölheti az Azure statikus Web Apps példányát:
 
@@ -139,7 +139,7 @@ Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölhe
 1. Válassza a **Törlés** gombot
 1. Válassza az **Igen** lehetőséget a törlési művelet megerősítéséhez
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Hitelesítés és engedélyezés](./authentication-authorization.md)

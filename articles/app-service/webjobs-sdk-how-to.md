@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: b97ae5d4ba4295ebbb51c960e4cbb76c53dc88a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f941c394c3dab0e5e6997898a48a248f6a0cfe42
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009678"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352439"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményalapú háttérfeldolgozáshoz
 
@@ -66,7 +66,8 @@ static void Main(string[] args)
 }
 ```
 
-Mivel a 3. verzió. az *x* az alapértelmezett .net Core konfigurációs API-kat használja, nincs API a kapcsolódási karakterlánc nevének módosításához.
+> [!NOTE]
+> Mivel a 3. verzió. az *x* az alapértelmezett .net Core konfigurációs API-kat használja, nincs API a kapcsolódási karakterlánc nevének módosításához. Lásd: [webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studióval](webjobs-dotnet-deploy-vs.md)
 
 ### <a name="host-development-settings"></a>Gazdagép-fejlesztési beállítások
 
@@ -145,7 +146,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="triggers"></a>Triggerek
+## <a name="triggers"></a>Eseményindítók
 
 A függvényeknek nyilvános metódusoknak kell lenniük, és rendelkezniük kell egy trigger attribútummal vagy az [`NoAutomaticTrigger`](#manual-triggers) attribútummal.
 
@@ -825,7 +826,7 @@ Javasoljuk a ASP.NET fejlesztett naplózási keretrendszert. Az [első lépések
 
 A példányok által létrehozott összes naplóhoz `ILogger` társítva `Category` és `Level` . [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) egy enumerálás, és az egész szám kód relatív fontosságot jelez:
 
-|Naplózási szint    |Code|
+|Naplózási szint    |Kód|
 |------------|---|
 |Nyomkövetés       | 0 |
 |Hibakeresés       | 1 |

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 3f84f3121d9982205ecf51ec64cfe332b6a5ad42
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 786fcd1a0c6d7df2c38a086a830a63f7179d7d40
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947261"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352507"
 ---
 # <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>Gyors útmutató: az Azure Defender beléptetése a IoT szolgáltatásba IoT Hub
 
-Ez a cikk azt ismerteti, hogyan engedélyezheti a Defender for IoT szolgáltatást a meglévő IoT Hub. Ha jelenleg nem rendelkezik IoT Hubval, a kezdéshez tekintse meg [a IoT hub létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) című témakört.
+Ez a cikk azt ismerteti, hogyan engedélyezheti a Defender for IoT szolgáltatást a meglévő IoT Hub. Ha jelenleg nem rendelkezik IoT Hubval, a kezdéshez tekintse meg [a IoT hub létrehozása a Azure Portal használatával](../iot-hub/iot-hub-create-through-portal.md) című témakört.
 
 > [!NOTE]
 > A IoT Defender jelenleg csak a standard szintű IoT hubokat támogatja.
@@ -40,7 +40,7 @@ Ez a cikk azt ismerteti, hogyan engedélyezheti a Defender for IoT szolgáltatá
 A IoT Hub biztonságának engedélyezése:
 
 1. Nyissa meg a **IoT Hubt** Azure Portal.
-1. A **Biztonság** menüben kattintson a **IoT-megoldás biztonságossá tétele**lehetőségre.
+1. A **Biztonság** menüben kattintson a **IoT-megoldás biztonságossá tétele** lehetőségre.
 
 Gratulálunk! Végrehajtotta a Defender IoT való engedélyezését a IoT Hub.
 

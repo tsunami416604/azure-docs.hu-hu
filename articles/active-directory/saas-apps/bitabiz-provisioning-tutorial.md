@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 3d17d4dd88e29440304989b8c37eaa81125d1812
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 8eccc3be7da201ee1e2af046c6b515871ef05adc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357555"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350772"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés BitaBIZ konfigurálása
 
@@ -151,10 +151,10 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 ## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-* A BitaBIZ a **Felhasználónév** , az **E-mail** , a **firstName** és a **lastName** kötelező attribútumként való használatát igényli. 
+* A BitaBIZ a **Felhasználónév**, az **E-mail**, a **firstName** és a **lastName** kötelező attribútumként való használatát igényli. 
 * A BitaBIZ jelenleg nem támogatja a rögzített törléseket.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

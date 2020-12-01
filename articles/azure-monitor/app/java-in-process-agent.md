@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights Java
 description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz programkód módosítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 8423443abac90b87349a4a80fce0ec33a8b686da
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 36e2b419da2bccdf2f5f13227457172cf644994c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444741"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351537"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>A Java Code unapplication monitoring Azure monitor Application Insights
 
@@ -122,7 +122,7 @@ További részletek: [konfigurációs beállítások](./java-standalone-config.m
 * Log4j (beleértve a MDC tulajdonságokat)
 * SLF4J/Logback (beleértve a MDC-tulajdonságokat)
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 * Mikrométer (beleértve a Spring boot indítószerkezet metrikáit)
 * JMX metrikák
@@ -139,13 +139,13 @@ Az alábbi táblázat a jelenleg támogatott egyéni telemetria-típusokat jelen
 
 |                     | Mikrométer | Log4j, logback, JUL | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Egyéni események**   |            |                     |  Yes    |
-| **Egyéni metrikák**  |  Igen       |                     |  Yes    |
-| **Függőségek**    |            |                     |  Yes    |
-| **Kivételek**      |            |  Igen                |  Yes    |
-| **Lapok nézetei**      |            |                     |  Yes    |
-| **Kérelmek**        |            |                     |  Yes    |
-| **Hívásláncok**          |            |  Igen                |  Yes    |
+| **Egyéni események**   |            |                     |  Igen    |
+| **Egyéni metrikák**  |  Igen       |                     |  Igen    |
+| **Függőségek**    |            |                     |  Igen    |
+| **Kivételek**      |            |  Igen                |  Igen    |
+| **Lapok nézetei**      |            |                     |  Igen    |
+| **Kérelmek**        |            |                     |  Igen    |
+| **Hívásláncok**          |            |  Igen                |  Igen    |
 
 Jelenleg nem tervezzük Application Insights 3,0-es SDK kiadását.
 
@@ -176,7 +176,7 @@ private static final TelemetryClient telemetryClient = new TelemetryClient();
   ```java
 telemetryClient.trackEvent("WinGame");
 ```
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 Metrikus telemetria a [mikrométer](https://micrometer.io)használatával küldhet:
 
@@ -228,17 +228,3 @@ Emellett a Application Insights Java SDK 2. x verzióját is használhatja:
       telemetryClient.trackException(e);
   }
 ```
-
-## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Frissítés Application Insights Java SDK 2. x verzióról
-
-Ha már használja a Application Insights Java SDK 2. x verzióját az alkalmazásban, nem kell eltávolítania.
-A Java 3,0-ügynök észlelni fogja, és rögzíti és korrelálja a Java SDK 2. x által küldött összes egyéni telemetria, miközben letiltja a Java SDK 2. x által végrehajtott automatikus gyűjtést a duplikált telemetria elkerülése érdekében.
-
-Ha Application Insights 2. x ügynököt használta, el kell távolítania a JVM ARG-t, `-javaagent:` amely a 2. x ügynökre mutat.
-
-> [!NOTE]
-> A Java SDK 2. x TelemetryInitializers és TelemetryProcessors nem fog futni az 3,0-ügynök használata esetén.
-> A korábban megkövetelt használati esetek többsége 3,0-ban oldható meg az [Egyéni dimenziók](./java-standalone-config.md#custom-dimensions) konfigurálásával vagy a [telemetria processzorok](./java-standalone-telemetry-processors.md)konfigurálásával.
-
-> [!NOTE]
-> a 3,0 egyetlen JVM még nem támogatja több rendszerállapotú kulcs használatát.

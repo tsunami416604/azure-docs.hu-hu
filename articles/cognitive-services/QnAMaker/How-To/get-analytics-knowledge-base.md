@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f58fe342d66c328bdadf41fc965c2952605aea8e
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5f149dd6db82b66b45a4c995e2004936481af786
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376575"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352422"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Tudásbázis elemzésének lekérése
 
@@ -52,7 +52,7 @@ QnA Maker az összes csevegési naplót és más telemetria tárolja, ha a [QnA 
 
 QnA Maker felügyelt (előzetes verzió) az Azure diagnosztikai naplózási szolgáltatásával tárolja a telemetria-és csevegési naplókat. Az alábbi lépések végrehajtásával lekérdezéseket futtathat a QnA Maker tudásbázisának használatáról az elemzéshez.
 
-1. [Engedélyezze a diagnosztikai naplózást](https://docs.microsoft.com/azure/cognitive-services/diagnostic-logging) a QnA Maker felügyelt (előzetes verzió) szolgáltatáshoz.
+1. [Engedélyezze a diagnosztikai naplózást](../../diagnostic-logging.md) a QnA Maker felügyelt (előzetes verzió) szolgáltatáshoz.
 
 2. Az előző lépésben válassza a **nyomkövetés** lehetőséget a naplózás **, a RequestResponse és a AllMetrics** beállítás mellett.
 
@@ -202,7 +202,7 @@ AzureDiagnostics
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Capactiy kiválasztása](./improve-knowledge-base.md)

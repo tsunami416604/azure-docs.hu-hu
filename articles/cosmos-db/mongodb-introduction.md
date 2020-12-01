@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/25/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8ae8108c52e150625540c8b13fa66a03f985ba5a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8205ecab3abfc7a944c12db1aca2bf594f6cd98f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184620"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349452"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -50,13 +50,13 @@ Kövesse a gyors útmutatókat, és hozzon létre egy Azure Cosmos-fiókot, és 
 * [Webalkalmazás létrehozása a MongoDB és a .NET SDK-hoz készült Azure Cosmos DB API-val](create-mongodb-dotnet.md)
 * [A MongoDB és a Java SDK Azure Cosmos DB API-ját használó konzolos alkalmazás létrehozása](create-mongodb-java.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Íme, pár hivatkozás az első lépések megtételéhez:
 
 * Kövesse a [MongoDB-alkalmazás csatlakoztatása Azure Cosmos db](connect-mongodb-account.md) oktatóanyagot, amelyből megtudhatja, hogyan kérheti le a fiók kapcsolati karakterláncának adatait.
 * Kövesse a [Studio 3T használata Azure Cosmos db](mongodb-mongochef.md) oktatóanyagot, amelyből megtudhatja, hogyan hozhat létre kapcsolatot a Cosmos-adatbázis és a MongoDB-alkalmazás között a Studio 3T.
-* Kövesse az [MongoDB-adatimportálás Azure Cosmos db](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) oktatóanyagba című témakört, amely az adatait egy Cosmos-adatbázisba importálja.
+* Kövesse az [MongoDB-adatimportálás Azure Cosmos db](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) oktatóanyagba című témakört, amely az adatait egy Cosmos-adatbázisba importálja.
 * Kapcsolódjon egy Cosmos-fiókhoz a [Robo 3T](mongodb-robomongo.md)használatával.
 * Ismerje meg, hogyan [konfigurálhatja a globálisan elosztott alkalmazások olvasási beállításait](../cosmos-db/tutorial-global-distribution-mongodb.md).
 * Keresse meg a [hibaelhárítási útmutatóban](mongodb-troubleshoot.md) gyakran előforduló hibákat a megoldásokat

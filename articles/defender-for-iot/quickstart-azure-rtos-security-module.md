@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2020
 ms.author: rkarlin
-ms.openlocfilehash: 38e78b80fd14aec7557b563b2b33faf7d51bd114
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 321c8d2b9e58aba943c5bf19adf54d6359c5be96
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759732"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351776"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Gyors útmutató: biztonsági modul az Azure RTOS (előzetes verzió)
 
-Ez a cikk az első lépések előtt ismerteti az előfeltételeket, és bemutatja, hogyan engedélyezheti az Azure RTOS Service biztonsági modulját egy IoT Hub. Ha jelenleg nem rendelkezik IoT Hubval, a kezdéshez tekintse meg [a IoT hub létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) című témakört.
+Ez a cikk az első lépések előtt ismerteti az előfeltételeket, és bemutatja, hogyan engedélyezheti az Azure RTOS Service biztonsági modulját egy IoT Hub. Ha jelenleg nem rendelkezik IoT Hubval, a kezdéshez tekintse meg [a IoT hub létrehozása a Azure Portal használatával](../iot-hub/iot-hub-create-through-portal.md) című témakört.
 
 > [!NOTE]
 > Az Azure RTOS biztonsági modulja csak a standard szintű IoT hubok esetében támogatott.
@@ -49,7 +49,7 @@ A kezdéshez IoT Hub-kapcsolatok szükségesek.
 1. Másolja a IoT-kapcsolódási karakterláncot a [konfigurációs fájlba](how-to-azure-rtos-security-module.md).
 
 
-A kapcsolatok hitelesítő adatai a felhasználói alkalmazás konfigurációjának **HOST_NAME**, **DEVICE_ID**és **DEVICE_SYMMETRIC_KEY**.
+A kapcsolatok hitelesítő adatai a felhasználói alkalmazás konfigurációjának **HOST_NAME**, **DEVICE_ID** és **DEVICE_SYMMETRIC_KEY**.
 
 Az Azure RTOS biztonsági modulja az Azure IoT middleware-kapcsolatokat használja a **MQTT** protokoll alapján.
 
@@ -60,15 +60,15 @@ A IoT Hub Log Analytics betöltését a IoT-megoldás alapértelmezett védelmez
 1. A Azure Portal lépjen a IoT Hub.
 1. A **Biztonság** menüben válassza a **Beállítások** lehetőséget.
    :::image type="content" source="media/quickstart/azure-rtos-hub-settings.png" alt-text="Az Azure RTOS Access adatgyűjtési beállítása"::: 
-1. Válassza **az adatgyűjtés**lehetőséget. 
+1. Válassza **az adatgyűjtés** lehetőséget. 
 1. A **munkaterület-konfiguráció** lehetőségnél kapcsolja be a váltás **a következőre: be.** 
 1. Hozzon létre egy új Log Analytics munkaterületet, vagy csatoljon egy meglévőt. Győződjön meg arról, hogy be van jelölve a **nyers biztonsági adathozzáférés** beállítása beállítás. 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Az Azure RTOS Access adatgyűjtési beállítása":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Az Azure RTOS konfigurálása, amely az adatgyűjtési lehetőséget és a nyers biztonsági adatbeállításokat mutatja mind a kiválasztott":::
 1. Válassza a **Mentés** lehetőséget
 1. Térjen vissza az Azure-erőforrások listájához, és ellenőrizze, hogy a létrehozott vagy csatolt Log Analytics munkaterület engedélyezve van-e a IoT Hub.
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Az Azure RTOS Access adatgyűjtési beállítása"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Ellenőrizze az Azure-erőforrások listáját, és erősítse meg a megfelelő Log Analytics munkaterület hozzáadását IoT Hub"::: 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a következő cikkel a megoldás konfigurálásának és testreszabásának befejezéséhez.
 

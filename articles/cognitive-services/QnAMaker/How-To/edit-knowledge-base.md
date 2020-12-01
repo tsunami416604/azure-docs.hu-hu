@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 3940f060209ea5ba55957a3673020656d45de9e4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9541320f65060a0b1f2b5c84a131c08e92554e9e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000096"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351707"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-párok szerkesztése a Tudásbázisban
 
@@ -128,11 +128,11 @@ A módosítások elvesztésének elkerülése érdekében időnként válassza a
 
 A válaszok [gazdag szövegű szerkesztése](#add-an-editorial-qna-set) lehetővé teszi, hogy a szerzőként egy formázási eszköztár használatával gyorsan kiválassza és formázza a szöveget.
 
-A [Markdown](../reference-markdown-format.md) jobb eszköz, ha automatikusan létre kell hoznia egy tartalmat a CI/CD-folyamat vagy a [Batch-tesztelés](../Quickstarts/batch-testing.md)részeként importálandó tudásbázisok létrehozásához.
+A [Markdown](../reference-markdown-format.md) jobb eszköz, ha automatikusan létre kell hoznia egy tartalmat a CI/CD-folyamat vagy a [Batch-tesztelés](../index.yml)részeként importálandó tudásbázisok létrehozásához.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Együttműködés a tudásbázison](./collaborate-knowledge-base.md)
+> [Együttműködés a tudásbázison](../index.yml)
 
 * [Az QnA Maker által használt Azure-erőforrások kezelése](set-up-qnamaker-service-azure.md)

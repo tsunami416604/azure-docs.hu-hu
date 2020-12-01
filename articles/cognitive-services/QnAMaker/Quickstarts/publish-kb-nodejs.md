@@ -7,12 +7,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-js
 ms.topic: how-to
-ms.openlocfilehash: ef17f08677d715292a8ee49621156d130e2f5a6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 645f9ffb1d907eb576f5414b593ef57679d26daa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777503"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351146"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Gyors útmutató: QnA Maker REST API-k Node.js
 
@@ -27,7 +27,7 @@ Használja a QnA Maker REST API-kat a Node.jshoz:
 * Tudásbázis letöltése
 * Művelet állapotának beolvasása
 
-[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Node.js minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[Dokumentáció](/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Node.js minták](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -41,9 +41,9 @@ Használja a QnA Maker REST API-kat a Node.jshoz:
 
 ### <a name="create-a-qna-maker-azure-resource"></a>QnA Maker Azure-erőforrás létrehozása
 
-Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást QnA Maker a helyi gépen található [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával.
+Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást QnA Maker a helyi gépen található [Azure Portal](../../cognitive-services-apis-create-account.md) vagy az [Azure CLI](../../cognitive-services-apis-create-account-cli.md) használatával.
 
-Miután beolvasott egy kulcsot az erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) és nevű erőforráshoz `QNAMAKER_RESOURCE_KEY` `QNAMAKER_AUTHORING_ENDPOINT` . Használja az erőforrás rövid **útmutató lapján található** kulcs-és végpont-értékeket a Azure Portal.
+Miután beolvasott egy kulcsot az erőforrásból, [hozzon létre környezeti változókat](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a (z) és nevű erőforráshoz `QNAMAKER_RESOURCE_KEY` `QNAMAKER_AUTHORING_ENDPOINT` . Használja az erőforrás rövid **útmutató lapján található** kulcs-és végpont-értékeket a Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
@@ -107,13 +107,13 @@ A Tudásbázis a következő JSON-objektumból létrehozott kérdés-válasz pá
 * **Fájlok** – nem szükséges engedélyekkel rendelkező helyi fájlok.
 * **URL-címek** – nyilvánosan elérhető URL-címek.
 
-[Hozzon létre egy tudásbázist a REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)használatával.
+[Hozzon létre egy tudásbázist a REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)használatával.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="createKb":::
 
 ## <a name="replace-a-knowledge-base"></a>Tudásbázis cseréje
 
-A [Tudásbázis cseréjéhez](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)használja a REST API.
+A [Tudásbázis cseréjéhez](/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)használja a REST API.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="replaceKb":::
 
@@ -121,13 +121,13 @@ A [Tudásbázis cseréjéhez](https://docs.microsoft.com/rest/api/cognitiveservi
 
 Tegye közzé a tudásbázist. Ez a folyamat teszi elérhetővé a tudásbázist egy HTTP-lekérdezés előrejelzési végpontja alapján.
 
-A [Tudásbázis közzétételéhez](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)használja a REST API.
+A [Tudásbázis közzétételéhez](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)használja a REST API.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="publishKb":::
 
 ## <a name="download-the-knowledge-base"></a>A Tudásbázis letöltése
 
-A [Tudásbázis letöltéséhez](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)használja a REST API.
+A [Tudásbázis letöltéséhez](/rest/api/cognitiveservices/qnamaker/knowledgebase/download)használja a REST API.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="downloadKb":::
 
@@ -135,7 +135,7 @@ A [Tudásbázis letöltéséhez](https://docs.microsoft.com/rest/api/cognitivese
 
 Ha elkészült a Tudásbázis használatával, törölje azt.
 
-A [Tudásbázis törléséhez](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)használja a REST API.
+A [Tudásbázis törléséhez](/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)használja a REST API.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="deleteKb":::
 
@@ -143,7 +143,7 @@ A [Tudásbázis törléséhez](https://docs.microsoft.com/rest/api/cognitiveserv
 
 A hosszú ideig futó folyamatok, például a létrehozási folyamat visszaad egy műveleti azonosítót, amelyet külön REST API hívással kell ellenőrizni. Ez a függvény a létrehozási válasz törzsét veszi át. A fontos kulcs a `operationState` , amely meghatározza, hogy folytatni kell-e a lekérdezést.
 
-A [REST API használatával figyelheti a műveleteket a Tudásbázisban](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails).
+A [REST API használatával figyelheti a műveleteket a Tudásbázisban](/rest/api/cognitiveservices/qnamaker/operations/getdetails).
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="operationDetails":::
 
@@ -153,7 +153,7 @@ Adja hozzá a következő `main` metódust.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="main":::
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást a `node rest-apis.js` paranccsal az alkalmazás könyvtárából.
 
@@ -168,10 +168,10 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
->[Oktatóanyag: KB létrehozása és megválaszolása](../tutorials/create-publish-query-in-portal.md)
+>[Oktatóanyag: KB létrehozása és megválaszolása](./create-publish-knowledge-base.md)
 
 * [Mi a QnA Maker API?](../Overview/overview.md)
 * [Tudásbázis szerkesztése](../how-to/edit-knowledge-base.md)

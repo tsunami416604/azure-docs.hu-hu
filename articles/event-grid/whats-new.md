@@ -3,12 +3,12 @@ title: Újdonságok Kibocsátási megjegyzések – Azure Event Grid
 description: Ismerje meg a Azure Event Grid újdonságait, például a legújabb kibocsátási megjegyzéseket, ismert problémákat, hibajavításokat, elavult funkciókat és a közelgő változásokat.
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: 1edfa3e2bc4c8adae113b2215b7fb0483fba4c02
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7528cef7007704bbf434f16622707da8920eec2b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87172780"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350007"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>A Azure Event Grid újdonságai
 
@@ -40,7 +40,7 @@ Azure Event Grid folyamatosan fejleszti a fejlesztéseket. A legújabb fejlemén
 - Ez a kiadás a minőség javítása érdekében további hibajavításokat tartalmaz.
 - Az 5.3.1-as verzióban ez a kiadás a 2020-04-01 – előzetes verziójú API-verziónak felel meg, amely a következő új funkciókat tartalmazza: 
     - [IP-szűrés támogatása az események tartományokra és témakörökre való közzétételekor](configure-firewall.md)
-    - [Partnertémakörök](partner-topics-overview.md)
+    - [Partnertémakörök](./partner-events-overview.md)
     - [Rendszertémakörök nyomon követett erőforrásokként Azure Portal](system-topics.md)
     - [Esemény kézbesítése felügyelt szolgáltatás identitásával](managed-service-identity.md) 
     - [Private link Service-támogatás](configure-private-endpoints.md)
@@ -49,7 +49,7 @@ Azure Event Grid folyamatosan fejleszti a fejlesztéseket. A legújabb fejlemén
 - Ez a kiadás különféle hibajavításokat tartalmaz a minőség javítása érdekében.
 - A 5.3.0 előzetes verziójának részeként ez a kiadás a 2020-04-01-Preview API-verziónak felel meg, amely a következő új funkciókat tartalmazza: 
     - [IP-szűrés támogatása az események tartományokra és témakörökre való közzétételekor](configure-firewall.md)
-    - [Partnertémakörök](partner-topics-overview.md)
+    - [Partnertémakörök](./partner-events-overview.md)
     - [Rendszertémakörök nyomon követett erőforrásokként Azure Portal](system-topics.md)
     - [Esemény kézbesítése felügyelt szolgáltatás identitásával](managed-service-identity.md) 
     - [Private link Service-támogatás](configure-private-endpoints.md)
@@ -59,7 +59,7 @@ Azure Event Grid folyamatosan fejleszti a fejlesztéseket. A legújabb fejlemén
 - A 5.2.0 előzetes verziójának részeként ez a kiadás a 2020-04-01-Preview API-verziónak felel meg.
 - Támogatja a következő új funkciókat: 
     - [IP-szűrés támogatása az események tartományokra és témakörökre való közzétételekor](configure-firewall.md)
-    - [Partnertémakörök](partner-topics-overview.md)
+    - [Partnertémakörök](./partner-events-overview.md)
     - [Rendszertémakörök nyomon követett erőforrásokként Azure Portal](system-topics.md)
     - [Esemény kézbesítése felügyelt szolgáltatás identitásával](managed-service-identity.md) 
     - [Private link Service-támogatás](configure-private-endpoints.md)

@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 3d21aadd8174bf933e55320c8596c57274140582
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3c78ad6605e927015d35df12cadf0347dd0337cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096393"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349044"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Olvasási műveletek globális elosztása a Azure Cosmos DB API-MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -44,7 +44,7 @@ Az alábbi parancsok futtatásával klónozza a mintatárházat. A saját platfo
 git clone <sample repo url>
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 A használt platformtól függően telepítse a szükséges csomagokat, és indítsa el az alkalmazást. A függőségek telepítéséhez kövesse a minta alkalmazás-tárházban található README fájlt. A NodeJS minta alkalmazásban például a következő parancsokkal telepítheti a szükséges csomagokat, és elindíthatja az alkalmazást.
 
@@ -163,15 +163,15 @@ Tekintse át a megfelelő példákat a más platformokra, például a [.net](htt
 
 Ebből a cikkből megtudhatta, hogyan oszthat meg globálisan olvasási műveleteket az olvasási beállításokkal az Azure Cosmos DB API-MongoDB való használatával.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje a jelen cikk által létrehozott összes erőforrást a Azure Portal a következő lépésekkel:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére. 
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [MongoDB adatok importálása az Azure Cosmos DB-be](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
+* [MongoDB adatok importálása az Azure Cosmos DB-be](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)
 * [Globálisan elosztott adatbázis beállítása Azure Cosmos DB API-MongoDB](tutorial-global-distribution-mongodb.md)
 * [Helyi fejlesztés a Azure Cosmos DB emulátorral](local-emulator.md)
