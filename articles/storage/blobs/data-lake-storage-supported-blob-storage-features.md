@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 900021e258bb96c0d0c83ef182262515449ad5df
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 982f4a9cdf3984bae79cd11dad2bd637a1772f05
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912586"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348500"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el
 
@@ -44,9 +44,11 @@ A következő táblázat azt mutatja be, hogy az egyes Blobok tárolási funkci�
 |Statikus webhelyek|Előnézet|Előnézet|[Statikus webhely üzemeltetés az Azure Storage-ban](storage-blob-static-website.md)|
 |Megváltoztathatatlan tároló|Előnézet|Előnézet|[Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](storage-blob-immutable-storage.md)|
 |Tároló – Soft delete|Előnézet|Előnézet|[Tárolók törlése (előzetes verzió)](soft-delete-container-overview.md)|
+|Azure Storage-leltár|Előnézet|Előnézet|[Az Azure Storage-leltár használata a blob-adatkezeléshez (előzetes verzió)](blob-inventory.md)|
+|Blobos törlés|Még nem támogatott|Még nem támogatott|[Blobok helyreállítható törlése](storage-blob-soft-delete.md)|
 |Blobos törlés|Még nem támogatott|Még nem támogatott|[Blobok helyreállítható törlése](./soft-delete-blob-overview.md)|
 |Blobfuse|Általánosan elérhető|Általánosan elérhető|[BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel](storage-how-to-mount-container-linux.md)|
-|Fiók feladatátvétele|Még nem támogatott|Még nem támogatott|[Vész-helyreállítási és-fiók feladatátvétele](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Ügyfél által felügyelt fiók feladatátvétele|Még nem támogatott|Még nem támogatott|[Vész-helyreállítási és-fiók feladatátvétele](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB Container ACL|Nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|Nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Tekintse meg a táblázat alatti kapcsolódó megjegyzést.|
 |Ügyfél által biztosított kulcsok|Még nem támogatott|Még nem támogatott|[Titkosítási kulcs megadása a blob Storage-kérelemben](encryption-customer-provided-keys.md)|
 |Egyéni tartományok|Még nem támogatott|Még nem támogatott|[Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)|

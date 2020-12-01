@@ -9,18 +9,18 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 85abefc8437936ffaedc4811bdd9bed0be32786f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c250868c9d470ee85f765f693aff3e21320fc45e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020687"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346188"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz kérése a GenerateAnswer API-val és a metaadatokkal
 
 Ha az előre jelzett választ egy felhasználó kérdéséhez szeretné lekérni, használja a GenerateAnswer API-t. Ha közzétesz egy tudásbázist, láthatja, hogyan használhatja ezt az API-t a **közzétételi** oldalon. Az API-t úgy is beállíthatja, hogy metaadatok alapján szűrje a válaszokat, és a végponton tesztelje a tudásbázist a test Query string paraméterrel.
 
-QnA Maker lehetővé teszi metaadatok hozzáadását kulcs-érték párok formájában a kérdésekre és a válaszokra. Ezt az információt használhatja az eredmények felhasználói lekérdezésekre való szűrésére, valamint a követési beszélgetések során használható további információk tárolására. További információ: [Tudásbázis](../Concepts/knowledge-base.md).
+QnA Maker lehetővé teszi metaadatok hozzáadását kulcs-érték párok formájában a kérdésekre és a válaszokra. Ezt az információt használhatja az eredmények felhasználói lekérdezésekre való szűrésére, valamint a követési beszélgetések során használható további információk tárolására. További információ: [Tudásbázis](../index.yml).
 
 <a name="qna-entity"></a>
 
@@ -36,13 +36,13 @@ Minden QnA entitás egyedi és állandó AZONOSÍTÓval rendelkezik. Az AZONOSÍ
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>Válaszok előrejelzése a GenerateAnswer API-val
 
-A [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) -t a robotjában vagy alkalmazásában használhatja a Tudásbázis felhasználói kérdésekkel való lekérdezéséhez, hogy a legjobb egyezést kapja a kérdés és válasz párokban.
+A [GENERATEANSWER API](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) -t a robotjában vagy alkalmazásában használhatja a Tudásbázis felhasználói kérdésekkel való lekérdezéséhez, hogy a legjobb egyezést kapja a kérdés és válasz párokban.
 
 <a name="generateanswer-endpoint"></a>
 
 ## <a name="publish-to-get-generateanswer-endpoint"></a>Közzététel a GenerateAnswer-végpont beszerzéséhez
 
-Miután közzétette a tudásbázist, vagy a [QnA Maker portálról](https://www.qnamaker.ai)vagy az [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)használatával, megtekintheti az GenerateAnswer-végpont részleteit.
+Miután közzétette a tudásbázist, vagy a [QnA Maker portálról](https://www.qnamaker.ai)vagy az [API](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)használatával, megtekintheti az GenerateAnswer-végpont részleteit.
 
 A végpont részleteinek beszerzése:
 1. Jelentkezzen be itt: [https://www.qnamaker.ai](https://www.qnamaker.ai).
@@ -70,9 +70,9 @@ A GenerateAnswer HTTP POST-kéréssel hívható meg. A GenerateAnswer meghívás
 
 A POST kérelem a következőket használja:
 
-* Szükséges [URI-paraméterek](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
+* Szükséges [URI-paraméterek](/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
 * Szükséges fejléc-tulajdonság, `Authorization` biztonsági
-* A [törzs szükséges tulajdonságai](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
+* A [törzs szükséges tulajdonságai](/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
 A GenerateAnswer URL-címének formátuma a következő:
 
@@ -108,7 +108,7 @@ Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszoka
 
 ## <a name="generateanswer-response-properties"></a>GenerateAnswer válasz tulajdonságai
 
-A [Válasz](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query) egy JSON-objektum, amely tartalmazza a válasz megjelenítéséhez szükséges összes információt, valamint a beszélgetés következő bekapcsolását, ha van ilyen.
+A [Válasz](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query) egy JSON-objektum, amely tartalmazza a válasz megjelenítéséhez szükséges összes információt, valamint a beszélgetés következő bekapcsolását, ha van ilyen.
 
 ```json
 {
@@ -136,7 +136,7 @@ Az előző JSON egy, a 38,5%-os pontszámmal válaszol.
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>QnA Maker használata a C robottal #
 
-A bot Framework hozzáférést biztosít a QnA Maker tulajdonságaihoz a [GETANSWER API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__&preserve-view=true)-val:
+A bot Framework hozzáférést biztosít a QnA Maker tulajdonságaihoz a [GETANSWER API](/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?preserve-view=true&view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__)-val:
 
 ```csharp
 using Microsoft.Bot.Builder.AI.QnA;
@@ -155,7 +155,7 @@ Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszoka
 
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>QnA Maker használata robottal Node.js
 
-A bot Framework hozzáférést biztosít a QnA Maker tulajdonságaihoz a [GETANSWER API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-&preserve-view=true)-val:
+A bot Framework hozzáférést biztosít a QnA Maker tulajdonságaihoz a [GETANSWER API](/javascript/api/botbuilder-ai/qnamaker?preserve-view=true&view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)-val:
 
 ```javascript
 const { QnAMaker } = require('botbuilder-ai');
@@ -275,7 +275,7 @@ A alkalmazásban a közzétett kb, a `isTest=false` vagy a teszt Tudásbázis ha
 
 ## <a name="common-http-errors"></a>Gyakori HTTP-hibák
 
-|Code|Magyarázat|
+|Kód|Magyarázat|
 |:--|--|
 |2xx|Success|
 |400|A kérelem paraméterei helytelenek, mert a szükséges paraméterek hiányoznak, helytelenül formázottak vagy túl nagyok.|

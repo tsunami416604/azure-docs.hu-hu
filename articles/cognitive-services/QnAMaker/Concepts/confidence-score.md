@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: abae83cee106feb553e8ced404d23ba5619ba416
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 489592fcbc779685728b120f18e5e923ee34d655
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327153"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346375"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>A válasz megbízhatósági pontszáma
 Ha egy Tudásbázisban egy felhasználói lekérdezés egyezik, a QnA Maker a megfelelő válaszokat adja vissza, és egy megbízhatósági pontszámmal együtt. Ez a pontszám azt jelzi, hogy a válasz a megfelelő egyezés az adott felhasználói lekérdezés esetében.
@@ -62,7 +62,7 @@ A küszöbérték pontszámát állítsa be a [GENERATEANSWER API JSON-törzsén
 A bot Framework-ben állítsa be a pontszám értékét a [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) vagy [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)értékkel rendelkező Options objektum részeként.
 
 ## <a name="improve-confidence-scores"></a>A megbízhatósági pontszámok javítása
-A felhasználói lekérdezésekre adott válasz megbízhatósági pontszámának javítása érdekében a felhasználó lekérdezését hozzáadhatja a tudásbázishoz az adott válaszra vonatkozó alternatív kérdésként. A kis-és nagybetűk megkülönböztetésére is használható [, ha](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) szinonimákat ad hozzá a tudásbázisban található kulcsszavakhoz.
+A felhasználói lekérdezésekre adott válasz megbízhatósági pontszámának javítása érdekében a felhasználó lekérdezését hozzáadhatja a tudásbázishoz az adott válaszra vonatkozó alternatív kérdésként. A kis-és nagybetűk megkülönböztetésére is használható [, ha](/rest/api/cognitiveservices/qnamaker/alterations/replace) szinonimákat ad hozzá a tudásbázisban található kulcsszavakhoz.
 
 
 ## <a name="similar-confidence-scores"></a>Hasonló megbízhatósági pontszámok
@@ -86,7 +86,6 @@ Ha a Tudásbázis különböző régiókban található, az egyes régiók sajá
 ## <a name="no-match-found"></a>Nem található egyezés
 Ha a rangsor nem találja a megfelelő egyezést, a rendszer visszaadja a 0,0-as vagy a "None" megbízhatósági pontszámot, és az alapértelmezett Válasz: "nem található megfelelő találat a KB-ban". Ezt az [alapértelmezett választ](../How-To/metadata-generateanswer-usage.md) felül lehet bírálni a végpontot meghívó robot vagy alkalmazás kódjában. Másik lehetőségként beállíthatja a felülbírálási választ is az Azure-ban, és ez megváltoztatja az alapértelmezett értéket az adott QnA Maker szolgáltatásban telepített összes Tudásbázis esetében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Ajánlott eljárások](./best-practices.md)
-

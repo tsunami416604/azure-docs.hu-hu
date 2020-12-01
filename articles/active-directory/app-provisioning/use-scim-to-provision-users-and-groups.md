@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 19942e5400be63dfde48b9653282fb93bcb1ec42
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f524eae791ab3944fb326b867e5f6823a35b432c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174815"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348194"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Oktatóanyag – SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
@@ -199,29 +199,21 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
   - [Felhasználó létrehozása](#create-user) ([kérelemre](#request)  /  [adott válasz](#response))
   - [Felhasználó beolvasása](#get-user) ([kérelem](#request-1)  /  [válasza](#response-1))
   - [Felhasználó lekérdezésének beolvasása](#get-user-by-query) (válasz[kérése](#request-2)  /  [Response](#response-2))
-  - [Felhasználó lekérése lekérdezéssel – nulla eredmények](#get-user-by-query---zero-results) ([kérelem](#request-3) 
-/  [válasza](#response-3))
-  - [Felhasználó frissítése [többértékű tulajdonságok]](#update-user-multi-valued-properties) ([kérelem](#request-4)  /   [válasza](#response-4))
-  - [Felhasználó frissítése [egyértékű tulajdonságok]](#update-user-single-valued-properties) ([kérelem](#request-5) 
-/  [válasza](#response-5)) 
-  - [Felhasználó letiltása](#disable-user) ([Válasz kérése](#request-14)  / 
- [Response](#response-14))
-  - [Felhasználó törlése](#delete-user) ([kérelem](#request-6)  / 
- [válasza](#response-6))
+  - [Felhasználó lekérése lekérdezéssel – nulla eredmények](#get-user-by-query---zero-results) ([kérelem](#request-3)  /  [válasza](#response-3))
+  - [Felhasználó frissítése [többértékű tulajdonságok]](#update-user-multi-valued-properties) ([kérelem](#request-4)  /  [válasza](#response-4))
+  - [Felhasználó frissítése [egyértékű tulajdonságok]](#update-user-single-valued-properties) ([kérelem](#request-5)  /  [válasza](#response-5)) 
+  - [Felhasználó letiltása](#disable-user) ([Válasz kérése](#request-14)  /  [Response](#response-14))
+  - [Felhasználó törlése](#delete-user) ([kérelem](#request-6)  /  [válasza](#response-6))
 
 
 [Csoportosítási műveletek](#group-operations)
-  - [Csoport létrehozása](#create-group) ( [Válasz kérése](#request-7)  /  [Response](#response-7))
-  - [Csoport beolvasása](#get-group) (válasz [kérése](#request-8)  /  [Response](#response-8))
+  - [Csoport létrehozása](#create-group) ([Válasz kérése](#request-7)  /  [Response](#response-7))
+  - [Csoport beolvasása](#get-group) (válasz[kérése](#request-8)  /  [Response](#response-8))
   - [Csoport beolvasása DisplayName alapján](#get-group-by-displayname) ([kérelem](#request-9)  /  [válasza](#response-9))
-  - [Csoport frissítése [nem tag attribútumok]](#update-group-non-member-attributes) (válasz[kérése](#request-10) /
-  [Response](#response-10))
-  - [Frissítési csoport [Tagok hozzáadása]](#update-group-add-members) ( [kérelem](#request-11)  /
- [válasza](#response-11))
-  - [Csoport frissítése [tagok eltávolítása]](#update-group-remove-members) ( [kérelem](#request-12)  /
- [válasza](#response-12))
-  - [Csoport törlése](#delete-group) ([Válasz kérése](#request-13)  /
- [Response](#response-13))
+  - [Csoport frissítése [nem tag attribútumok]](#update-group-non-member-attributes) (válasz[kérése](#request-10)  /  [Response](#response-10))
+  - [Frissítési csoport [Tagok hozzáadása]](#update-group-add-members) ([kérelem](#request-11)  /  [válasza](#response-11))
+  - [Csoport frissítése [tagok eltávolítása]](#update-group-remove-members) ([kérelem](#request-12)  /  [válasza](#response-12))
+  - [Csoport törlése](#delete-group) ([Válasz kérése](#request-13)  /  [Response](#response-13))
 
 ### <a name="user-operations"></a>Felhasználói műveletek
 
@@ -750,7 +742,7 @@ TLS 1,2 titkosítási csomagok minimális sávja:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP-címtartományok
-Az Azure AD kiépítési szolgáltatás jelenleg az [itt](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)felsorolt AzureActiveDirectory IP-címtartományok alatt működik. A AzureActiveDirectory címke alatt felsorolt IP-címtartományok hozzáadásával engedélyezheti az Azure AD kiépítési szolgáltatásból érkező adatforgalmat az alkalmazásba. Vegye figyelembe, hogy a számított címek esetében alaposan át kell tekintenie az IP-címtartomány listáját. A "40.126.25.32" címet az IP-címtartomány listában "40.126.0.0/18"-ként lehet megjeleníteni. Az IP-programozott módon az alábbi [API](/rest/api/virtualnetwork/servicetags/list)használatával is lekérheti.
+Az Azure AD kiépítési szolgáltatás jelenleg az [itt](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)felsorolt AzureActiveDirectory IP-címtartományok alatt működik. A AzureActiveDirectory címke alatt felsorolt IP-címtartományok hozzáadásával engedélyezheti az Azure AD kiépítési szolgáltatásból érkező adatforgalmat az alkalmazásba. Vegye figyelembe, hogy a számított címek esetében alaposan át kell tekintenie az IP-címtartomány listáját. A "40.126.25.32" címet az IP-címtartomány listában "40.126.0.0/18"-ként lehet megjeleníteni. Az IP-címtartomány listáját programozott módon is lekérheti az alábbi [API](/rest/api/virtualnetwork/servicetags/list)használatával.
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3. lépés: SCIM-végpont létrehozása
 
@@ -1176,7 +1168,7 @@ A kezdeti ciklus elindítása után a bal oldali panelen kiválaszthatja a **ki�
 Ha egynél több bérlő által használt alkalmazást készít, azt az Azure AD Application Galleryben teheti elérhetővé. Ez megkönnyíti a szervezetek számára az alkalmazás felderítését és a kiépítés konfigurálását. Az alkalmazás közzététele az Azure AD-katalógusban és a mások számára elérhető kiépítés egyszerűvé tétele. Tekintse meg a lépéseket [itt](../develop/v2-howto-app-gallery-listing.md). A Microsoft együttműködik Önnel, hogy integrálja az alkalmazást a katalógusba, tesztelje a végpontot, és bocsásson ki a használati [dokumentációt](../saas-apps/tutorial-list.md) az ügyfelek számára.
 
 ### <a name="gallery-onboarding-checklist"></a>Katalógus-előkészítési ellenőrzőlista
-Kövesse az alábbi feladatlistát, és győződjön meg arról, hogy az alkalmazás készen áll, és az ügyfelek zökkenőmentes üzembe helyezési tapasztalattal rendelkeznek. A katalógusba való bevezetéskor a rendszer összegyűjti az adatokat. 
+Kövesse az alábbi feladatlistát, és győződjön meg arról, hogy az alkalmazás gyors előkészítés alatt áll, és az ügyfelek zökkenőmentes üzembe helyezési tapasztalattal rendelkeznek. A katalógusba való bevezetéskor a rendszer összegyűjti az adatokat. 
 > [!div class="checklist"]
 > * [SCIM 2,0](#step-2-understand-the-azure-ad-scim-implementation) felhasználói és csoportos végpont támogatása (csak egy szükséges, de mindkettő ajánlott)
 > * A bérlők által másodpercenként legalább 25 kérelem támogatása, hogy a felhasználók és csoportok kiosztása és megszüntetése késedelem nélkül történjen (kötelező)

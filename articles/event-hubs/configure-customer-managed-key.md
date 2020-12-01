@@ -3,12 +3,12 @@ title: Saját kulcs konfigurálása az Azure-Event Hubs inaktív adatok titkosí
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja saját kulcsát az Azure Event Hubs-adatok titkosításához.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 9f073c42373e75fc1cb34d1c752350f9d2c61872
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1b0469a2f25b7f2bec2668b6ab33ff99eb1df809
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006132"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348211"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával
 Az Azure Event Hubs az Azure Storage Service Encryption (Azure SSE) segítségével titkosítja az inaktív adatok titkosítását. Event Hubs az Azure Storage-ra támaszkodik az adattárolásra, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal titkosították a Microsoft által felügyelt kulcsokkal. 
@@ -39,7 +39,7 @@ Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kö
     ![Felhasználó által kezelt kulcs engedélyezése](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Key Vault beállítása kulcsokkal
-Az ügyfél által felügyelt kulcsok engedélyezése után hozzá kell rendelnie az ügyfél által felügyelt kulcsot az Azure Event Hubs-névtérhez. A Event Hubs csak Azure Key Vault használatát támogatja. Ha az előző szakaszban az **ügyfél által felügyelt kulcs** beállítással engedélyezi a titkosítást, a kulcsot Azure Key Vaultba kell importálnia. Emellett a kulcsoknak is rendelkeznie kell a **Soft delete** szolgáltatással, és **nem szabad kiüríteni** a kulcsot. Ezeket a beállításokat a [PowerShell](../key-vault/general/soft-delete-powershell.md) vagy a [parancssori](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)felület használatával lehet konfigurálni.
+Az ügyfél által felügyelt kulcsok engedélyezése után hozzá kell rendelnie az ügyfél által felügyelt kulcsot az Azure Event Hubs-névtérhez. A Event Hubs csak Azure Key Vault használatát támogatja. Ha az előző szakaszban az **ügyfél által felügyelt kulcs** beállítással engedélyezi a titkosítást, a kulcsot Azure Key Vaultba kell importálnia. Emellett a kulcsoknak is rendelkeznie kell a **Soft delete** szolgáltatással, és **nem szabad kiüríteni** a kulcsot. Ezeket a beállításokat a [PowerShell](../key-vault/general/key-vault-recovery.md) vagy a [parancssori](../key-vault/general/key-vault-recovery.md)felület használatával lehet konfigurálni.
 
 1. Új kulcstartó létrehozásához kövesse [az Azure Key Vault rövid](../key-vault/general/overview.md)útmutatót. A meglévő kulcsok importálásával kapcsolatos további információkért lásd: [a kulcsok, a titkok és a tanúsítványok ismertetése](../key-vault/general/about-keys-secrets-certificates.md).
 1. Ha be szeretné kapcsolni a törlés és a kiürítés védelmét a tároló létrehozásakor, használja az az kulcstartó [create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) parancsot.

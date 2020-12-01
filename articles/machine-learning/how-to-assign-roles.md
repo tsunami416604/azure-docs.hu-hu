@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 90abd46e73ecb50b5e6de40218571d0ec899752e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8af3da5d04f9aaafc18299f4837660694ee34b51
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012965"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345269"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterülethez való hozzáférés kezelése
 
@@ -36,7 +36,7 @@ Ebből a cikkből megtudhatja, hogyan kezelheti a hozzáférés (Engedélyezés)
 
 Az Azure Machine Learning-munkaterület egy Azure-erőforrás. A többi Azure-erőforráshoz hasonlóan az új Azure Machine Learning-munkaterületek is három alapértelmezett szerepkörrel rendelkeznek a létrehozásukkor. Felhasználókat adhat hozzá a munkaterülethez, és hozzárendelheti őket a beépített szerepkörök valamelyikéhez.
 
-| Szerepkör | Hozzáférési szint |
+| Role | Hozzáférési szint |
 | --- | --- |
 | **Olvasó** | Csak olvasási műveletek a munkaterületen. Az olvasók listázhatja és megtekintheti az eszközöket, beleértve az [adattár](how-to-access-data.md) hitelesítő adatait is egy munkaterületen. Az olvasók nem tudják létrehozni vagy frissíteni ezeket az eszközöket. |
 | **Közreműködő** | Munkaterületen lévő eszközök megtekintése, létrehozása, szerkesztése vagy törlése (ha van ilyen). A közreműködők például létrehozhatnak egy kísérletet, létrehozhatnak vagy csatolhatnak egy számítási fürtöt, futtatást végezhetnek és webszolgáltatásokat helyezhetnek üzembe. |
@@ -175,7 +175,7 @@ A következő táblázat a Azure Machine Learning tevékenységek összegzését
 | Új számítási fürt létrehozása | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `/workspaces/computes/write` |
 | Új számítási példány létrehozása | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `/workspaces/computes/write` |
 | Bármilyen típusú Futtatás elküldése | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
-| Folyamat végpontjának közzététele | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
+| Folyamatok és végpontok közzététele | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `"/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | Regisztrált modell üzembe helyezése AK/ACI-erőforráson | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | Egy üzembe helyezett AK-végponton keresztüli pontozás | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` a következőket: (ha nem használja Azure Active Directory auth) vagy `"/workspaces/read"` (jogkivonat-hitelesítés használatakor) |
 | A tárterület elérése interaktív jegyzetfüzetekkel | Nem szükséges | Nem szükséges | Tulajdonos, közreműködő vagy egyéni szerepkör, amely lehetővé teszi a következőket: `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` |
@@ -467,7 +467,7 @@ Lehetővé teszi, hogy csak az adat címkézésére szolgáló szerepkört defin
 
 - Időnként akár 1 órát is igénybe vehet, amíg az új szerepkör-hozzárendelések érvénybe lépnek a gyorsítótárban tárolt engedélyekkel szemben a veremben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Vállalati biztonság áttekintése](concept-enterprise-security.md)
 - [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md)

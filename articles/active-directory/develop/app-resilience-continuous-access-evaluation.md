@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: 975c92256ea0993badde0faf840a939f42901059
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: cf5a7a5902484536d0cf2a1844be469f29e15f4b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95753697"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348466"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>A folyamatos hozzáférés kiértékelését engedélyező API-k használata az alkalmazásokban
 
@@ -57,7 +57,7 @@ Ha ezek a feltételek teljesülnek, az alkalmazás képes kinyerni és dekódoln
 ```csharp
 if (APIresponse.IsSuccessStatusCode)
 {
-    // . . .
+    // ...
 }
 else
 {
@@ -99,7 +99,7 @@ catch (MsalUiRequiredException)
             .ExecuteAsync()
             .ConfigureAwait(false);
     }
-    // . . .
+    // ...
 ```
 
 Ha az alkalmazás készen áll a CAE-t használó erőforrás által visszaadott jogcímek kezelésére, megtudhatja, hogy a Microsoft Identity készen áll-e az alkalmazásra. Ehhez a MSAL-alkalmazásban hozza létre a nyilvános ügyfelet a "CP1" ügyfél-képességeinek használatával.
@@ -114,6 +114,6 @@ _clientApp = PublicClientApplicationBuilder.Create(App.ClientId)
 
 Az alkalmazás teszteléséhez jelentkezzen be egy felhasználót az alkalmazásba, majd használja a Azure Portal a felhasználó munkameneteinek visszavonásához. Amikor az alkalmazás legközelebb meghívja a CAE-kompatibilis API-t, a rendszer megkéri a felhasználót, hogy végezze el a hitelesítést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [folyamatos hozzáférés kiértékelése](/conditional-access/concept-continuous-access-evaluation.md).

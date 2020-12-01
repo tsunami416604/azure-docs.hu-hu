@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 03e89b0da25a915a00c70a9a87bd0f675b8e12d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bfa9367e06c099e21a54ad8c03f8d5ab853aaafb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997528"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348075"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Távoli asztal közzététele Azure AD-alkalmazásproxy használatával
 
@@ -130,7 +130,7 @@ Az ebben a cikkben ismertetett konfiguráció az RDS-webhelyeken vagy a távoli 
 
 | Hitelesítési módszer | Támogatott ügyfél-konfiguráció |
 | --------------------- | ------------------------------ |
-| Előhitelesítés    | RD Web-Windows 7/10 Internet Explorer vagy [Edge króm IE Mode](/deployedge/edge-ie-mode) + RDS ActiveX bővítmény használatával |
+| Előhitelesítés    | RD Web-Windows 7/10 Internet Explorer vagy [Edge króm IE Mode](/deployedge/edge-ie-mode) + RDS ActiveX bővítmény használatával <br /> *Megjegyzés: a saját alkalmazások portál csak az Edge-t támogatja.* |
 | Előhitelesítés    | Távoli asztali webes ügyfél – HTML5-kompatibilis webböngésző, például a Microsoft Edge, az Internet Explorer 11, a Google Chrome, a Safari vagy a Mozilla Firefox (v 55.0 és újabb verziók) |
 | Csatlakoztatott | Minden más operációs rendszer, amely támogatja a Microsoft Távoli asztal alkalmazást |
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 93678735237c25b19d04b7d901583ba785d7f594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9c6247f021b7af4cfdd899ffd4b6bd178f2256c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613543"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345593"
 ---
 # <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>Azure Stack Edge Pro FPGA-eszköz kezelése a Windows PowerShell használatával
 
@@ -56,7 +56,7 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 ```
 A parancsmag futtatásakor a rendszer kérni fogja a hálózati megosztás jelszavának megadását.
 
-A tanúsítványokkal kapcsolatos további információkért nyissa meg a [Azure IoT Edge tanúsítványokat](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) , vagy [telepítse a tanúsítványokat egy átjáróra](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).
+A tanúsítványokkal kapcsolatos további információkért nyissa meg a [Azure IoT Edge tanúsítványokat](../iot-edge/iot-edge-certs.md) , vagy [telepítse a tanúsítványokat egy átjáróra](../iot-edge/how-to-create-transparent-gateway.md).
 
 ## <a name="view-device-information"></a>Eszköz adatainak megtekintése
  
@@ -92,6 +92,6 @@ Ha a számítási szerepkör konfigurálva van az eszközön, a számítási nap
 
 A távoli PowerShell-munkamenetből való kilépéshez zárja be a PowerShell ablakát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure stack Edge Pro](azure-stack-edge-deploy-prep.md) üzembe helyezése Azure Portalban.

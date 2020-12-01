@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: c3d6e21b45bccbdaeeee350bac79be680783eb24
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ecf81152605d77e1036c9fbf5d3308af2b1fb988
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147527"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346155"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Együttműködés más szerzőkkel és szerkesztőkkel
 
@@ -42,11 +42,11 @@ A következő ábrán látható a folyamat, a szerző szemszögéből, a QnA Mak
 |3|QnA Maker API érvényesíti a jogkivonatot.|
 |4 |QnA Maker API meghívja a QnAMaker szolgáltatást.|
 
-Ha meg szeretné hívni a [szerzői API-kat](../How-To/collaborate-knowledge-base.md), ismerkedjen meg a hitelesítés beállításával.
+Ha meg szeretné hívni a [szerzői API-kat](../index.yml), ismerkedjen meg a hitelesítés beállításával.
 
 ## <a name="authenticate-by-qna-maker-portal"></a>Hitelesítés QnA Maker portálon
 
-Ha a QnA Maker-portál használatával hoz létre és együttműködik, miután [hozzáadta az erőforráshoz a megfelelő szerepkört egy közreműködőhöz](../How-To/collaborate-knowledge-base.md), a QnA Maker-portál kezeli az összes hozzáférési engedélyt.
+Ha a QnA Maker-portál használatával hoz létre és együttműködik, miután [hozzáadta az erőforráshoz a megfelelő szerepkört egy közreműködőhöz](../index.yml), a QnA Maker-portál kezeli az összes hozzáférési engedélyt.
 
 ## <a name="authenticate-by-qna-maker-apis-and-sdks"></a>Hitelesítés QnA Maker API-k és SDK-k használatával
 
@@ -54,4 +54,4 @@ Ha az API-k használatával hoz létre és együttműködik a REST vagy az SDK-k
 
 ## <a name="next-step"></a>Következő lépés
 
-* Tudásbázis kialakítása [nyelvekhez](design-language-culture.md) és [ügyfélalkalmazások](integration-with-other-applications.md) számára
+* Tudásbázis kialakítása [nyelvekhez](../index.yml) és [ügyfélalkalmazások](../index.yml) számára

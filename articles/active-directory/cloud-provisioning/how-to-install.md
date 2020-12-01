@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3960b8afeb9d7ecc80aa49fc13eee4977fa5494
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4c4ba11dabc8e805f3604afc2fc4388840ac67cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173970"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348534"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök telepítése
 Ez a dokumentum végigvezeti a Azure Active Directory-(Azure AD-) kapcsolat létesítési ügynökének telepítési folyamatán, és azt, hogy miként konfigurálható először a Azure Portal.
@@ -58,11 +58,11 @@ Az ügynök telepítéséhez kövesse az alábbi lépéseket.
    ![GMSA létrehozása](media/how-to-install/install-12.png)</br>
  11. A **Active Directory összekapcsolása** képernyőn válassza a **könyvtár hozzáadása** lehetőséget. Ezután jelentkezzen be Active Directory rendszergazdai fiókjával. Ez a művelet hozzáadja a helyszíni címtárat. 
  12. Ha szeretné, felügyelheti az ügynök által használt tartományvezérlők beállításait, ha kiválasztja a **tartományvezérlő prioritásának kiválasztása** és a tartományvezérlők listájának rendezése lehetőséget.   Kattintson az **OK** gombra.
-  ![Order domain controlllers](media/how-to-install/install-2a.png)</br>
+  ![Tartományvezérlők sorrendje](media/how-to-install/install-2a.png)</br>
  13. Kattintson a **Tovább** gombra.
   ![Active Directory képernyő összekötése](media/how-to-install/install-3a.png)</br>
  14.  Az **ügynök telepítése** képernyőn erősítse meg a beállításokat és a létrehozandó fiókot, majd kattintson a **Confirm (megerősítés**) gombra.
-  ![Settngs megerősítése](media/how-to-install/install-11.png)</br>
+  ![Beállítások megerősítése](media/how-to-install/install-11.png)</br>
  15. A művelet befejezése után látnia kell **az ügynök telepítését.** Válassza a **Kilépés** lehetőséget.
   ![Konfiguráció kész képernyő](media/how-to-install/install-4a.png)</br>
 1. Ha továbbra is megjelenik a kezdeti Microsoft Azure AD a létesítési **ügynök csomagjának** kiosztása képernyő, válassza a **Bezárás** lehetőséget.
@@ -103,7 +103,7 @@ Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket.
 
 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

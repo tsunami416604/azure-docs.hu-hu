@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.author: egeaney
-ms.openlocfilehash: 1ee3c3942ee7d01fa174947f5d9c278cddaf0424
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 19dc0f3a676d5373b28e4b7055050477c426f847
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376915"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345780"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker inaktív adatok titkosítása
 
@@ -26,11 +26,11 @@ Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosít
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
 
-QnA Maker az Azure Search CMK-támogatását használja. [A CMK konfigurálása a Azure Search Azure Key Vault használatával](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys). Ezt az Azure-példányt hozzá kell rendelni QnA Maker szolgáltatáshoz, hogy a CMK engedélyezve legyen.
+QnA Maker az Azure Search CMK-támogatását használja. [A CMK konfigurálása a Azure Search Azure Key Vault használatával](../../search/search-security-manage-encryption-keys.md). Ezt az Azure-példányt hozzá kell rendelni QnA Maker szolgáltatáshoz, hogy a CMK engedélyezve legyen.
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
 
-QnA Maker az [Azure Search CMK-támogatását](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)használja, és automatikusan társítja a megadott CMK az Azure Search-indexben tárolt adatok titkosításához.
+QnA Maker az [Azure Search CMK-támogatását](../../search/search-security-manage-encryption-keys.md)használja, és automatikusan társítja a megadott CMK az Azure Search-indexben tárolt adatok titkosításához.
 
 ---
 
@@ -43,7 +43,7 @@ A QnA Maker szolgáltatás a CMK használja a Azure Search szolgáltatásból. A
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
 
-1. Hozzon létre egy új Azure Search példányt, és engedélyezze az [Azure Cognitive Search ügyfél által felügyelt legfontosabb előfeltételeiben](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#prerequisites)említett előfeltételeket.
+1. Hozzon létre egy új Azure Search példányt, és engedélyezze az [Azure Cognitive Search ügyfél által felügyelt legfontosabb előfeltételeiben](../../search/search-security-manage-encryption-keys.md#prerequisites)említett előfeltételeket.
 
    ![1. titkosítási beállítások megtekintése](../media/cognitive-services-encryption/qna-encryption-1.png)
 
@@ -52,8 +52,8 @@ A QnA Maker szolgáltatás a CMK használja a Azure Search szolgáltatásból. A
    ![2. titkosítási beállítások megtekintése](../media/cognitive-services-encryption/qna-encryption-2.png)
 
 3. Ezután hozzon létre egy új Alkalmazásbeállítás-beállítást:
-   * **Név** : beállítás `CustomerManagedEncryptionKeyUrl`
-   * **Érték** : használja az 1. lépésben az Azure Search-példány létrehozásakor kapott értéket.
+   * **Név**: beállítás `CustomerManagedEncryptionKeyUrl`
+   * **Érték**: használja az 1. lépésben az Azure Search-példány létrehozásakor kapott értéket.
 
    ![3. titkosítási beállítások megtekintése](../media/cognitive-services-encryption/qna-encryption-3.png)
 
@@ -62,14 +62,14 @@ A QnA Maker szolgáltatás a CMK használja a Azure Search szolgáltatásból. A
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
 
 1.  Nyissa meg a QnA Maker felügyelt (előzetes verzió) szolgáltatás **titkosítás** lapját.
-2.  Válassza ki az **ügyfél által felügyelt kulcsok** lehetőséget. Adja meg az [ügyfél által felügyelt kulcsok](https://docs.microsoft.com/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal) részleteit, és kattintson a **Save (Mentés** ) gombra.
+2.  Válassza ki az **ügyfél által felügyelt kulcsok** lehetőséget. Adja meg az [ügyfél által felügyelt kulcsok](../../storage/common/customer-managed-keys-configure-key-vault.md?tabs=portal) részleteit, és kattintson a **Save (Mentés**) gombra.
 
      :::image type="content" source="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png" alt-text="QnA Maker felügyelt (előzetes verzió) CMK-beállítás" lightbox="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png":::
 
 3.  A sikeres mentéskor a rendszer a CMK fogja használni a Azure Search indexben tárolt adatfájlok titkosítására.
 
 > [!IMPORTANT]
-> Javasoljuk, hogy a tudásbázisok létrehozása előtt állítsa be a CMK egy friss Azure Cognitive Search szolgáltatásban. Ha a CMK-t egy olyan QnA Maker-szolgáltatásban állítja be, amely már rendelkezik tudásbázissal, akkor a hozzáférés megszakadhat. További információ a [titkosított tartalmak](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#work-with-encrypted-content) használatáról az Azure-beli kognitív keresésekben.
+> Javasoljuk, hogy a tudásbázisok létrehozása előtt állítsa be a CMK egy friss Azure Cognitive Search szolgáltatásban. Ha a CMK-t egy olyan QnA Maker-szolgáltatásban állítja be, amely már rendelkezik tudásbázissal, akkor a hozzáférés megszakadhat. További információ a [titkosított tartalmak](../../search/search-security-manage-encryption-keys.md#work-with-encrypted-content) használatáról az Azure-beli kognitív keresésekben.
 
 > [!NOTE]
 > Az ügyfél által felügyelt kulcsok használatának kérelmezéséhez töltse ki és küldje el a [Cognitive Services Customer-Managed Key Request (kérelem) űrlapot](https://aka.ms/cogsvc-cmk).
@@ -85,8 +85,8 @@ Az ügyfél által felügyelt kulcsok minden Azure Search régióban elérhetők
 QnA Maker portál a felhasználó böngészőjében fut. Minden művelet egy közvetlen hívást indít a megfelelő kognitív szolgáltatás API-hoz. Ezért a QnA Maker megfelel az átvitt adatforgalomnak.
 Mivel azonban a QnA Maker portál szolgáltatás az USA nyugati régiójában található, még mindig nem ideális a nem USA-beli ügyfelek számára. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Titkosítás Azure Search a CMKs használatával Azure Key Vault](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
-* [Adat-titkosítás inaktív állapotban](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
-* [További információ a Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Titkosítás Azure Search a CMKs használatával Azure Key Vault](../../search/search-security-manage-encryption-keys.md)
+* [Adat-titkosítás inaktív állapotban](../../security/fundamentals/encryption-atrest.md)
+* [További információ a Azure Key Vault](../../key-vault/general/overview.md)

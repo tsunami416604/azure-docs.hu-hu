@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 2016d6dfedef68c334758660e9affa0ad9b9d4a3
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 2c159e25195c5f144187268b4355c1078695e809
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505240"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345525"
 ---
 # <a name="whats-new-in-qna-maker"></a>A QnA Maker újdonságai
 
@@ -56,17 +56,17 @@ Ismerje meg a QnA Maker újdonságait.
 
 ### <a name="november-2019"></a>2019. november
 
-* Az [USA kormányzati Felhőbeli támogatása](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker) QnA Maker
-* [Multi-turn](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation) funkció a ga-ban
-* Az 1. réteg nyelvein elérhető [Chit-Chat-támogatás](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support)
+* Az [USA kormányzati Felhőbeli támogatása](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers) QnA Maker
+* [Multi-turn](./how-to/multiturn-conversation.md) funkció a ga-ban
+* Az 1. réteg nyelvein elérhető [Chit-Chat-támogatás](./how-to/chit-chat-knowledge-base.md#language-support)
 
 ### <a name="october-2019"></a>2019. október
 
-* [Explicit módon állítja be az összes Tudásbázis nyelvét](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) a QnA Maker szolgáltatásban.
+* [Explicit módon állítja be az összes Tudásbázis nyelvét](./index.yml) a QnA Maker szolgáltatásban.
 
 ### <a name="september-2019"></a>2019. szeptember
 
-* Importálás és exportálás [xls fájlformátummal](concepts/content-types.md)
+* Importálás és exportálás [xls fájlformátummal](./index.yml)
 
 ### <a name="june-2019"></a>2019. június
 

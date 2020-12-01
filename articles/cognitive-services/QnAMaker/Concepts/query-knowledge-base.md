@@ -3,12 +3,12 @@ title: A Tudásbázis lekérdezése – QnA Maker
 description: A tudásbázist közzé kell tenni. A közzététel után a tudásbázist a generateAnswer API használatával kérdezi le a futásidejű előrejelzési végponton.
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e8dd056a7b6357b8342d3059e17baa88db92b404
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: d8f986299edee46bf5cace7a9f4c805c29b3ce0c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376712"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346205"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>A válaszok tudásbázisának lekérdezése
 
@@ -18,7 +18,7 @@ A tudásbázist közzé kell tenni. A közzététel után a tudásbázist a gene
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
 
-A betanított és [közzétett](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker Tudásbázis felhasználói lekérdezést kap egy robottól vagy más ügyfélalkalmazástól a [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)-ban. A következő ábra a felhasználói lekérdezés fogadásának folyamatát szemlélteti.
+A betanított és [közzétett](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker Tudásbázis felhasználói lekérdezést kap egy robottól vagy más ügyfélalkalmazástól a [GenerateAnswer API](../how-to/metadata-generateanswer-usage.md)-ban. A következő ábra a felhasználói lekérdezés fogadásának folyamatát szemlélteti.
 
 ![A felhasználói lekérdezés rangsorolási modelljének folyamata](../media/qnamaker-concepts-knowledgebase/ranker-v1.png)
 
@@ -26,9 +26,9 @@ A betanított és [közzétett](/azure/cognitive-services/qnamaker/quickstarts/c
 
 A folyamatot az alábbi táblázat ismerteti.
 
-|Lépés|Rendeltetés|
+|Lépés|Cél|
 |--|--|
-|1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezést a [GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)-nak.|
+|1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezést a [GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md)-nak.|
 |2|QnA Maker elődolgozza a felhasználói lekérdezést a nyelvfelismerés, a helyesírás-ellenőrző és a Word-megszakítók használatával.|
 |3|Ez az előfeldolgozás a legjobb keresési eredmények felhasználói lekérdezésének megváltoztatásához szükséges.|
 |4|Ezt a módosított lekérdezést egy Azure Cognitive Search indexbe küldik, amely megkapja az `top` eredmények számát. Ha a helyes válasz nem szerepel ezekben az eredményekben, növelje a kis-és nagymértékű értéket `top` . Általában a 10-es érték a `top` lekérdezések 90%-ában működik.|
@@ -41,7 +41,7 @@ A használatban lévő funkciók közé tartozik például a Word-szintű szeman
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
 
-A betanított és [közzétett](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker Tudásbázis felhasználói lekérdezést kap egy robottól vagy más ügyfélalkalmazástól a [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)-ban. A következő ábra a felhasználói lekérdezés fogadásának folyamatát szemlélteti.
+A betanított és [közzétett](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker Tudásbázis felhasználói lekérdezést kap egy robottól vagy más ügyfélalkalmazástól a [GenerateAnswer API](../how-to/metadata-generateanswer-usage.md)-ban. A következő ábra a felhasználói lekérdezés fogadásának folyamatát szemlélteti.
 
 ![A felhasználói lekérdezés előzetes verziójához tartozó rangsorolási modell folyamata](../media/qnamaker-concepts-knowledgebase/ranker-v2.png)
 
@@ -49,9 +49,9 @@ A betanított és [közzétett](/azure/cognitive-services/qnamaker/quickstarts/c
 
 A folyamatot az alábbi táblázat ismerteti.
 
-|Lépés|Rendeltetés|
+|Lépés|Cél|
 |--|--|
-|1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezést a [GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)-nak.|
+|1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezést a [GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md)-nak.|
 |2|QnA Maker elődolgozza a felhasználói lekérdezést a nyelvfelismerés, a helyesírás-ellenőrző és a Word-megszakítók használatával.|
 |3|Ez az előfeldolgozás a legjobb keresési eredmények felhasználói lekérdezésének megváltoztatásához szükséges.|
 |4|Ezt a módosított lekérdezést egy Azure Cognitive Search indexbe küldik, amely megkapja az `top` eredmények számát. Ha a helyes válasz nem szerepel ezekben az eredményekben, növelje a kis-és nagymértékű értéket `top` . Általában a 10-es érték a `top` lekérdezések 90%-ában működik.|
@@ -122,7 +122,7 @@ A HTTP-válasz a Tudásbázisból beolvasott válasz, amely egy adott felhaszná
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Megbízhatósági pontszám](./confidence-score.md)

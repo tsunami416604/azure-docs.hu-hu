@@ -7,22 +7,22 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 09123b46b259ec4ad512c6a57d926bbc70102fe7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8075371bddfc92d7477b3b036575836aa65f1cd0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023684"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346031"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Gyors útmutató: válaszok egy tudásbázisbeli kérdésre Java használatával
 
-Ez a rövid útmutató végigvezeti a közzétett QnA Maker Tudásbázisból származó válasz programozott módon történő beszerzésének lépésein. A Tudásbázis az [adatforrásokból](../Concepts/knowledge-base.md) , például a GYIK-ből származó kérdéseket és válaszokat tartalmaz. A rendszer elküldi a [kérdést](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a QnA Maker szolgáltatásnak. A [Válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a legfontosabb előre jelzett választ.
+Ez a rövid útmutató végigvezeti a közzétett QnA Maker Tudásbázisból származó válasz programozott módon történő beszerzésének lépésein. A Tudásbázis az [adatforrásokból](../index.yml) , például a GYIK-ből származó kérdéseket és válaszokat tartalmaz. A rendszer elküldi a [kérdést](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) a QnA Maker szolgáltatásnak. A [Válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) tartalmazza a legfontosabb előre jelzett választ.
 
-[Dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/Runtime)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/get-answer/GetAnswer.java)
+[Dokumentáció](/rest/api/cognitiveservices/qnamaker4.0/Runtime)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/get-answer/GetAnswer.java)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [JDK SE](https://aka.ms/azure-jdks) (Java fejlesztői készlet, Standard Edition)
+* [JDK SE](/azure/developer/java/fundamentals/java-jdk-long-term-support) (Java fejlesztői készlet, Standard Edition)
 * Ez a példa az Apache [http-ügyfelet](https://hc.apache.org/httpcomponents-client-ga/) használja a http-összetevőkből. Hozzá kell adnia a következő Apache HTTP-ügyféloldali kódtárakat a projekthez:
     * httpclient-4.5.3. jar
     * httpcore-4.4.6. jar
@@ -95,4 +95,4 @@ Hozza létre és futtassa a programot a parancssorból. A szolgáltatás automat
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [QnA Maker (V4) REST API-referencia](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

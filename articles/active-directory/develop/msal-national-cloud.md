@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 4d899fe7f84a8708bb8ee32cc008567b272a885c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 566c429fc70ae3f0fc18f024b745d8142535932c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169375"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348407"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>A MSAL használata nemzeti Felhőbeli környezetben
 
@@ -55,7 +55,7 @@ Ha nem rendelkezik Azure Government-előfizetéssel, hozzon létre egy [ingyenes
 
 A nemzeti felhő adott programozási nyelvvel való használatával kapcsolatos részletekért válassza a nyelvének megfelelő fület:
 
-## <a name="net"></a>[.NET](#tab/donet)
+## <a name="net"></a>[.NET](#tab/dotnet)
 
 A MSAL.NET segítségével bejelentkezhet a felhasználókba, megvásárolhatja a jogkivonatokat, és meghívhatja a Microsoft Graph API-t az országos felhőkben.
 
@@ -220,7 +220,7 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információk:
 

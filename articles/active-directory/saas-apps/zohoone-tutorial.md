@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: fa63cc2c76d8bd47ca80050a369bda7211f5db24
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 98c9012969051e4370239a0f4098e0ea1d7a55a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896718"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348313"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Oktatóanyag: Azure Active Directory integráció a Zoho One-nal
 
@@ -147,7 +147,7 @@ Ha az Azure AD egyszeri bejelentkezést a Zoho használatával szeretné konfigu
 
     ![Zoho One SIG](./media/zohoone-tutorial/tutorial_zohoone_save.png)
 
-    a. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
+    a. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
     b. A kijelentkezési **URL** szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-cím** értékét, amelyet a Azure Portalból másolt.
 
@@ -178,7 +178,7 @@ Ha az Azure AD egyszeri bejelentkezést a Zoho használatával szeretné konfigu
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 

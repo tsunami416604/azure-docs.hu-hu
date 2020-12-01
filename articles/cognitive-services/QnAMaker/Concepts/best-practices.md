@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: ee8d838ba315c2e261a61699948b71a710341165
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376757"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346358"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker Tudásbázis ajánlott eljárásai
 
@@ -18,7 +18,7 @@ A [Tudásbázis fejlesztési életciklusa](../Concepts/development-lifecycle-kno
 
 ## <a name="extraction"></a>Kigyűjtés
 
-A QnA Maker szolgáltatás folyamatosan fejleszti azokat az algoritmusokat, amelyek kinyerik a QnAs a tartalomból, és kibővítik a támogatott fájl-és HTML-formátumok listáját. Kövesse az adatbontásra vonatkozó [irányelveket](../Concepts/content-types.md) a dokumentum típusa alapján.
+A QnA Maker szolgáltatás folyamatosan fejleszti azokat az algoritmusokat, amelyek kinyerik a QnAs a tartalomból, és kibővítik a támogatott fájl-és HTML-formátumok listáját. Kövesse az adatbontásra vonatkozó [irányelveket](../index.yml) a dokumentum típusa alapján.
 
 Általánosságban elmondható, hogy a GYIK-lapoknak önállónak kell lenniük, és nem kombinálhatók más adatokkal. A termék-kézikönyvek egyértelmű fejléceket és lehetőleg index oldalt tartalmazhatnak.
 
@@ -71,7 +71,7 @@ Van néhány, a Chit-Chat-adathalmaz részét képező bot-specifikus kérdés, 
 
 Javasoljuk, hogy a következő Chit-Chat-QnAs konkrétabb legyen:
 
-* hogy vagy?
+* Melyik szerepbe tartozik?
 * Mit tehet?
 * mennyi idős vagy?
 * Ki hozta létre?
@@ -117,10 +117,10 @@ A [metaadatok](../How-To/edit-knowledge-base.md) lehetővé teszik, hogy az ügy
 
 ### <a name="use-synonyms"></a>Szinonimák használata
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
-Míg az angol nyelv szinonimái is vannak, a kis-és nagybetűk megkülönböztetése az [Alters API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) használatával a különböző űrlapokat használó kulcsszavak szinonimáinak hozzáadását is lehetővé teheti. A szinonimákat a szolgáltatás szintjén adja hozzá a rendszer, és a **szolgáltatás minden tudásbázisa megosztja** a QnA Maker.
+Míg az angol nyelv szinonimái is vannak, a kis-és nagybetűk megkülönböztetése az [Alters API](/rest/api/cognitiveservices/qnamaker/alterations/replace) használatával a különböző űrlapokat használó kulcsszavak szinonimáinak hozzáadását is lehetővé teheti. A szinonimákat a szolgáltatás szintjén adja hozzá a rendszer, és a **szolgáltatás minden tudásbázisa megosztja** a QnA Maker.
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
-Míg az angol nyelv szinonimái is vannak, a kis-és nagybetűk megkülönböztetése az [Alters API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) használatával a különböző űrlapokat használó kulcsszavak szinonimáinak hozzáadását is lehetővé teheti. QnA Maker felügyelt (előzetes verzió) szinonimái **hozzáadódnak a tudásbázishoz**.
+Míg az angol nyelv szinonimái is vannak, a kis-és nagybetűk megkülönböztetése az [Alters API](/rest/api/cognitiveservices/qnamaker/alterations/replace) használatával a különböző űrlapokat használó kulcsszavak szinonimáinak hozzáadását is lehetővé teheti. QnA Maker felügyelt (előzetes verzió) szinonimái **hozzáadódnak a tudásbázishoz**.
 
 |Eredeti szó|Szinonimák|
 |--|--|
@@ -138,10 +138,10 @@ Előfordulhat például, hogy két különálló QnAs rendelkezik a következő 
 |Hol található a parkoló *helye*|
 |Hol található az ATM *helye*|
 
-Mivel ez a két QnAs nagyon hasonló szavakkal van megfogalmazva, ez a hasonlóság nagyon hasonló pontszámokat okozhat számos olyan felhasználói lekérdezés esetében, amelyek  *"hol van a `<x>` hely"*. Ehelyett próbálja meg egyértelműen megkülönböztetni a lekérdezéseket, például  *a "hol van a parkolóban"* és *"hol van az ATM"* , a "location" kifejezéssel, amely a KB-ban sok kérdésben lehet.
+Mivel ez a két QnAs nagyon hasonló szavakkal van megfogalmazva, ez a hasonlóság nagyon hasonló pontszámokat okozhat számos olyan felhasználói lekérdezés esetében, amelyek  *"hol van a `<x>` hely"*. Ehelyett próbálja meg egyértelműen megkülönböztetni a lekérdezéseket, például  *a "hol van a parkolóban"* és *"hol van az ATM"*, a "location" kifejezéssel, amely a KB-ban sok kérdésben lehet.
 
 ## <a name="collaborate"></a>Együttműködés
-QnA Maker lehetővé teszi a felhasználók számára, hogy a Tudásbázisban [működjenek együtt](../How-to/collaborate-knowledge-base.md) . A tudásbázisok eléréséhez a felhasználóknak hozzá kell férniük az Azure QnA Maker erőforráscsoporthoz. Előfordulhat, hogy néhány szervezet szeretné kiszervezni a Tudásbázis szerkesztését és karbantartását, és továbbra is képes lesz biztosítani az Azure-erőforrásokhoz való hozzáférést. Ez a szerkesztő-jóváhagyó modell két azonos [QnA Maker-szolgáltatásnak](../How-to/set-up-qnamaker-service-azure.md) a különböző előfizetésekben való beállításával és a szerkesztési tesztelési ciklus egyikének kiválasztásával valósítható meg. A tesztelés befejezése után a Tudásbázis tartalma [importálási és exportálási](../Tutorials/migrate-knowledge-base.md) folyamattal kerül át a jóváhagyó QnA Maker szolgáltatásához, amely végül közzéteszi a tudásbázist, és frissíti a végpontot.
+QnA Maker lehetővé teszi a felhasználók számára, hogy a Tudásbázisban [működjenek együtt](../index.yml) . A tudásbázisok eléréséhez a felhasználóknak hozzá kell férniük az Azure QnA Maker erőforráscsoporthoz. Előfordulhat, hogy néhány szervezet szeretné kiszervezni a Tudásbázis szerkesztését és karbantartását, és továbbra is képes lesz biztosítani az Azure-erőforrásokhoz való hozzáférést. Ez a szerkesztő-jóváhagyó modell két azonos [QnA Maker-szolgáltatásnak](../How-to/set-up-qnamaker-service-azure.md) a különböző előfizetésekben való beállításával és a szerkesztési tesztelési ciklus egyikének kiválasztásával valósítható meg. A tesztelés befejezése után a Tudásbázis tartalma [importálási és exportálási](../Tutorials/migrate-knowledge-base.md) folyamattal kerül át a jóváhagyó QnA Maker szolgáltatásához, amely végül közzéteszi a tudásbázist, és frissíti a végpontot.
 
 
 
@@ -149,7 +149,7 @@ QnA Maker lehetővé teszi a felhasználók számára, hogy a Tudásbázisban [m
 
 Az [aktív tanulás](../How-to/use-active-learning.md) a legjobb megoldás arra, hogy alternatív kérdéseket tegyen fel, ha számos minőségi és mennyiségű felhasználó-alapú lekérdezést tartalmaz. Fontos, hogy az ügyfélalkalmazások felhasználói lekérdezései részt vegyenek az aktív tanulási visszajelzési hurokban a cenzúra nélkül. Ha kérdése van a QnA Maker-portálon, akkor a **[javaslatok alapján szűrheti a javaslatokat](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** , majd áttekintheti, elfogadhatja vagy elutasíthatja ezeket a javaslatokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis szerkesztése](../How-to/edit-knowledge-base.md)

@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b3bd6a71898576ac23cdd10c1eb52e1ef3a39b95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cfef6ce0fb38f074f854d5ceb77677843e44b91b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336588"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345729"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>A rendszer által hozzárendelt felügyelt identitások használata Azure Cosmos DB-adat eléréséhez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Ebben a lépésben hozzárendel egy rendszerhez rendelt felügyelt identitást a
 
 Ebben a lépésben hozzárendel egy szerepkört a Function alkalmazás rendszerhez rendelt felügyelt identitásához. Azure Cosmos DB több beépített szerepkörrel rendelkezik, amelyeket hozzárendelhet a felügyelt identitáshoz. Ebben a megoldásban a következő két szerepkört fogja használni:
 
-|Beépített szerepkör  |Description  |
+|Beépített szerepkör  |Leírás  |
 |---------|---------|
 |[DocumentDB-fiók közreműködői](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Felügyelheti Azure Cosmos DB fiókokat. Olvasási/írási kulcsok lekérését teszi lehetővé. |
 |[Cosmos DB fiók-olvasó szerepkör](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB fiókadatok olvasása. Lehetővé teszi az olvasási kulcsok lekérését. |
@@ -68,9 +68,9 @@ Ebben az esetben a Function alkalmazás beolvassa az akvárium hőmérsékletét
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="A szerepkör-hozzárendelés hozzáadása panelt ábrázoló képernyőfelvétel.":::
 
-   * **Szerepkör** : válassza ki a **DocumentDB fiók közreműködőjét**
-   * **Hozzáférés hozzárendelése** : a **rendszerhez rendelt felügyelt identitás kiválasztása** szakaszban válassza a **függvényalkalmazás** lehetőséget.
-   * **Select (kiválasztás** ): a panel az előfizetésben található összes Function-alkalmazással lesz feltöltve, és **felügyelt rendszeridentitással** rendelkezik. Ebben az esetben válassza ki a **FishTankTemperatureService** Function alkalmazást: 
+   * **Szerepkör**: válassza ki a **DocumentDB fiók közreműködőjét**
+   * **Hozzáférés hozzárendelése**: a **rendszerhez rendelt felügyelt identitás kiválasztása** szakaszban válassza a **függvényalkalmazás** lehetőséget.
+   * **Select (kiválasztás**): a panel az előfizetésben található összes Function-alkalmazással lesz feltöltve, és **felügyelt rendszeridentitással** rendelkezik. Ebben az esetben válassza ki a **FishTankTemperatureService** Function alkalmazást: 
 
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="A szerepkör-hozzárendelés hozzáadása ablaktábla példákkal való feltöltését bemutató képernyőkép.":::
 
@@ -214,7 +214,7 @@ namespace Monitor
 }
 ```
 
-Most már készen áll a [Function alkalmazás üzembe helyezésére](../azure-functions/functions-create-first-function-vs-code.md).
+Most már készen áll a [Function alkalmazás üzembe helyezésére](../azure-functions/create-first-function-vs-code-csharp.md).
 
 ## <a name="next-steps"></a>További lépések
 

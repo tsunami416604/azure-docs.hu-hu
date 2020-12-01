@@ -1,5 +1,5 @@
 ---
-title: AADCloudSyncTools PowerShell-modul a Azure AD Connect Cloud Sync szolgáltatáshoz
+title: AADCloudSyncTools PowerShell-modul a Azure AD Connect Cloud kiépítés számára
 description: Ez a cikk ismerteti, hogyan telepítheti a Azure AD Connect Cloud kiépítési ügynököt.
 services: active-directory
 author: billmath
@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3ce5a7a313ab0f0680558aa60b34e3ebb9b51c9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: ba71d3eedbb75780c20499daa890556574494a35
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255123"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348137"
 ---
-# <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-sync"></a>AADCloudSyncTools PowerShell-modul a Azure AD Connect Cloud Sync szolgáltatáshoz
+# <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-provisioning"></a>AADCloudSyncTools PowerShell-modul a Azure AD Connect Cloud kiépítés számára
 
 A nyilvános előzetes verzió 2. frissítésének kiadásával a Microsoft bevezette a AADCloudSyncTools PowerShell-modult.  Ez a modul olyan hasznos eszközöket biztosít, amelyekkel kezelheti a Azure AD Connect Cloud Sync-telepítéseket.
 
@@ -122,7 +122,7 @@ Módosítja a "AADConnectProvisioningAgent.exe.config" beállítást a részlete
 ### <a name="suspend-aadcloudsynctoolsjob"></a>Suspend-AADCloudSyncToolsJob
 Szünetelteti a szinkronizálást.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

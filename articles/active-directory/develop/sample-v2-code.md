@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: de25aafcfefee195e8d674c60ebdbaf79cb1ae10
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: a3f2eb8fe3da9b272c5fe61ef5dd66726cf7764d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95406888"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348432"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform Code Samples (v 2.0 végpont)
 
@@ -48,6 +48,7 @@ Ezek a minták azt mutatják be, hogyan lehet egy egyoldalas alkalmazást bizton
 | ![Ez a képen a reagáló embléma ](media/sample-v2-code/logo_react.png) [reagál (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| A SPA meghívja az egyéni webes API-t, amely viszont meghívja a Microsoft Graph  | [MS-Identity-JavaScript-reakciós-Spa-dotnetcore-webapi-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
 | ![Ez a képen a JavaScript ](media/sample-v2-code/logo_js.png) [-embléma javascript (MSAL.js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | A SPA meghívja az egyéni webes API-t, amely viszont meghívja a Microsoft Graph  | [MS-Identity-JavaScript-oktatóanyag-chapter4-OBO](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/4-1-call-api-graph) |
 | ![Ez a képen a szögletes embléma szögletes ábrázolása ](media/sample-v2-code/logo_angular.png) [(MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) látható | A SPA meghívja az egyéni webes API-t az alkalmazás szerepköreivel és biztonsági csoportjaival |[MS-Identity-JavaScript-szögletes-Spa-dotnetcore-webapi-roles-groups](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups) |
+| ![Ez a képen a Blazer logo ](media/sample-v2-code/logo-blazor.png) [Blazer webszerelvénye (MSAL-js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) látható | A Blazer webszerelvényének oktatóanyaga a felhasználók bejelentkezéséhez és az API-k hívásához Azure Active Directory |[MS-Identity-Blazer-wasm](https://github.com/Azure-Samples/ms-identity-blazor-wasm) |
 
 ## <a name="web-applications"></a>Webalkalmazások
 
@@ -64,7 +65,7 @@ Az alábbi példák bemutatják a felhasználók bejelentkezési webalkalmazása
 | ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | [Python-lombik webalkalmazás](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) -bejelentkezések – felhasználói oktatóanyag                   | [Python-lombik webalkalmazás](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) -bejelentkezések – felhasználók és hívások a Graph-ban – oktatóanyag |
 | ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | [Python-lombik webalkalmazás](https://github.com/Azure-Samples/ms-identity-b2c-python-flask-webapp-authentication/blob/main/README.md) -bejelentkezési felhasználói a B2C-vel                    |  |
 | ![Ez a képen a Ruby embléma látható](media/sample-v2-code/logo_ruby.png) |                   | [msgraph – képzés – rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
-
+| ![Ez a képen a Blazer embléma látható](media/sample-v2-code/logo-blazor.png)</p>Blazor Server | [A Blazer Server alkalmazás bejelentkezési felhasználói oktatóanyaga](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-OIDC) | [A Blazer Server-alkalmazások hívása Microsoft Graph](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-graph-user/Call-MSGraph)</p>Chapterwise-oktatóanyag: [a Blazer Server-alkalmazás a felhasználók bejelentkezéséhez és az API-k hívásához Azure Active Directory](https://github.com/Azure-Samples/ms-identity-blazor-server) |
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>Asztali és mobil nyilvános ügyfélalkalmazások
 
@@ -86,7 +87,7 @@ Az alábbi példák olyan nyilvános ügyfélalkalmazások (asztali vagy mobil a
 | Mobile (Android – Java)   | ![Ez a rendszerkép az Android-emblémát jeleníti meg](media/sample-v2-code/logo_Android.png) | [Engedélyezési kód](msal-authentication-flows.md#authorization-code) |  [Android – Java](https://github.com/Azure-Samples/ms-identity-android-java) |  |
 | Mobil (Android – Kotlin)   | ![Ez a rendszerkép az Android-emblémát jeleníti meg](media/sample-v2-code/logo_Android.png) | [Engedélyezési kód](msal-authentication-flows.md#authorization-code) |  [Android – Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin) |  |
 
-## <a name="daemon-applications"></a>Daemon-alkalmazások
+## <a name="daemon-applications"></a>Démonalkalmazások
 
 A következő minták egy olyan alkalmazást mutatnak be, amely a saját identitásával fér hozzá a Microsoft Graph API-hoz (felhasználó nélkül).
 

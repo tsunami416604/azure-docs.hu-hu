@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ad6a4d075ea861068ad0c929d92cd2f12efa6121
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 78324cfa58a8ac015b085052bdec7e3793befc1b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516103"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348398"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Oktatóanyag: Azure Active Directory integráció a Signagelive
 
@@ -52,7 +52,7 @@ Ha Signagelive szeretne hozzáadni a katalógusból, hajtsa végre a következő
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -60,7 +60,7 @@ Ha Signagelive szeretne hozzáadni a katalógusból, hajtsa végre a következő
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Signagelive**kifejezést. 
+4. A keresőmezőbe írja be a **Signagelive** kifejezést. 
 
      ![Signagelive az eredmények listájában](common/search-new-app.png)
 
@@ -68,7 +68,7 @@ Ha Signagelive szeretne hozzáadni a katalógusból, hajtsa végre a következő
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Signagelive-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Signagelive-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a Signagelive-ben.
 
 Az Azure AD egyszeri bejelentkezés Signagelive való konfigurálásához és teszteléséhez először végezze el a következő építőelemeket:
@@ -86,7 +86,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Signagelive való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Signagelive** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Signagelive** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -105,7 +105,7 @@ Az Azure AD egyszeri bejelentkezés Signagelive való konfigurálásához hajtsa
     A **bejelentkezési URL-cím** mezőben adjon meg egy URL-címet, amely a következő mintát használja:  `https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a [Signagelive ügyfél-támogatási csapatához](mailto:support@signagelive.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a [Signagelive ügyfél-támogatási csapatához](mailto:support@signagelive.com). Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget a **tanúsítvány (RAW)** letöltéséhez a szükséges beállítások alapján. Ezután mentse a számítógépére.
 
@@ -129,7 +129,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a Signagelive oldalon, k�
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -153,23 +153,23 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Signagelive hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Signagelive**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Signagelive** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Signagelive**lehetőséget.
+2. Az alkalmazások listában válassza a **Signagelive** lehetőséget.
 
     ![Az Signagelive hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Válassza a **felhasználó hozzáadása** gombot. Ezután a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
+4. Válassza a **felhasználó hozzáadása** gombot. Ezután a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédpanel **felhasználók** listájában válassza a **Britta Simon**elemet. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
+5. A **felhasználók és csoportok** párbeszédpanel **felhasználók** listájában válassza a **Britta Simon** elemet. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
 
 6. Ha az SAML-állításban a szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
 

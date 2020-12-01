@@ -3,12 +3,12 @@ title: Azure Event Grid kézbesítés és újrapróbálkozás
 description: Leírja, hogy Azure Event Grid hogyan kézbesíti az eseményeket, és hogyan kezeli a kézbesítetlen üzeneteket.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 7bf8fd3a647e28d18a7ca1e658761f9226d1153a
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 9a7bde33e322183f86c3c51d30bb004d06fa1406
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981102"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345353"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid üzenet kézbesítése és újrapróbálkozás
 
@@ -54,6 +54,22 @@ az eventgrid event-subscription create \
 Az Azure CLI és a Event Grid használatával kapcsolatos további információkért lásd: [tárolási események továbbítása webes végponthoz az Azure CLI-vel](../storage/blobs/storage-blob-event-quickstart.md).
 
 ## <a name="retry-schedule-and-duration"></a>Újrapróbálkozási ütemterv és időtartam
+
+Ha a EventGrid hibaüzenetet kap egy esemény kézbesítési kísérlete során, a EventGrid eldönti, hogy újra kell-e próbálkoznia a kézbesítéssel vagy a kézbesítetlen levelekkel, vagy el kell dobnia az eseményt a hiba típusa alapján. 
+
+Ha az előfizetett végpont által visszaadott hiba olyan konfigurációval kapcsolatos hiba, amely nem oldható fel az újrapróbálkozásokkal (például ha a végpont törölve van), EventGrid vagy kézbesítetlen betűket küld, vagy eldobja az eseményt, ha a kézbesítetlen levél nincs konfigurálva.
+
+A következő típusú végpontok típusai nem történnek újra:
+
+| Végpont típusa | Hibakódok |
+| --------------| -----------|
+| Azure-erőforrások | 400 hibás kérelem, 413 kérelem entitása túl nagy, 403 Tiltott | 
+| Webhook | 400 hibás kérelem, 413 kérelem entitása túl nagy, 403 Tiltott, 404 nem található, 401 jogosulatlan |
+ 
+> [!NOTE]
+> Ha a Dead-Letter nincs konfigurálva a végponthoz, az események a fenti hibák miatt elvesznek, ezért érdemes a kézbesítetlen levelek konfigurálását használni, ha nem szeretné, hogy az ilyen típusú események el legyenek dobva.
+
+Ha az előfizetett végpont által visszaadott hiba nem szerepel a fenti listában, a EventGrid a lent ismertetett szabályzatok használatával hajtja végre az újrapróbálkozást:
 
 Az üzenet kézbesítése után a Event Grid 30 másodpercet vár a válaszra. 30 másodperc elteltével, ha a végpont nem válaszolt, az üzenet várólistára kerül az újrapróbálkozáshoz. Event Grid exponenciális leállítási újrapróbálkozási házirendet használ az események kézbesítéséhez. Event Grid a következő ütemterv szerint újrapróbálkozik a kézbesítéssel az ajánlott eljárás alapján:
 
@@ -256,21 +272,21 @@ A Event Grid **csak** a következő http-válaszokat veszi figyelembe sikeres k�
 
 ### <a name="failure-codes"></a>Hibakódok
 
-Az összes többi, a fenti készletben nem szereplő kód (200-204) hibáknak minősül, és újra próbálkozik. Némelyikhez az alább vázolt konkrét újrapróbálkozási szabályzatok tartoznak, az összes többi pedig a standard exponenciális visszalépési modellt követi. Fontos szem előtt tartani, hogy a Event Grid architektúrájának nagy mértékben párhuzamos jellege miatt az újrapróbálkozási viselkedés nem determinisztikus. 
+Az összes többi, a fenti készletben nem szereplő kód (200-204) hibáknak minősül, és a rendszer újrapróbálkozik (ha szükséges). Némelyikhez az alább vázolt konkrét újrapróbálkozási szabályzatok tartoznak, az összes többi pedig a standard exponenciális visszalépési modellt követi. Fontos szem előtt tartani, hogy a Event Grid architektúrájának nagy mértékben párhuzamos jellege miatt az újrapróbálkozási viselkedés nem determinisztikus. 
 
 | Állapotkód | Újrapróbálkozási viselkedés |
 | ------------|----------------|
-| 400 Hibás kérés | Újrapróbálkozás 5 perc vagy több után (kézbesítetlen levelek azonnal, ha a kézbesítetlen levelek telepítője) |
-| 401 Nem engedélyezett | Újrapróbálkozás 5 perc vagy több idő után |
-| 403 Tiltott | Újrapróbálkozás 5 perc vagy több idő után |
-| 404 Nem található | Újrapróbálkozás 5 perc vagy több idő után |
+| 400 Hibás kérés | Nincs újrapróbálva |
+| 401 Nem engedélyezett | 5 perc múlva próbálkozzon újra az Azure-erőforrások végpontjai esetében |
+| 403 – Tiltott | Nincs újrapróbálva |
+| 404 Nem található | 5 perc múlva próbálkozzon újra az Azure-erőforrások végpontjai esetében |
 | 408 Kérés időtúllépése | Próbálkozzon újra 2 perc múlva |
-| 413 kérelem entitása túl nagy | Újrapróbálkozás 10 másodperc vagy több után (a kézbesítetlen levelek azonnal, ha a kézbesítetlen levelek telepítője) |
+| 413 kérelem entitása túl nagy | Nincs újrapróbálva |
 | 503 A szolgáltatás nem érhető el | Újrapróbálkozás 30 másodperc vagy több után |
 | Minden más | Újrapróbálkozás 10 másodperc vagy több után |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az események kézbesítési állapotának megtekintéséhez lásd: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * Az esemény-kézbesítési beállítások testreszabásával kapcsolatban lásd: [kézbesítetlen levelek és újrapróbálkozási szabályzatok](manage-event-delivery.md).

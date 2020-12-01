@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6c8be064ade8182355c320e948b3b60b846033d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279771"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348058"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: függvények referenciája
 Azure AD Connect a függvények egy attribútumérték manipulálására szolgálnak a szinkronizálás során.  
@@ -48,7 +48,7 @@ A típusokat a következő szintaxissal fejezzük ki:
 * **var** – a (szinte) bármely más típusú változata
 * **Void** – nem ad vissza értéket
 
-A **mvbin**, **mvstr**és **mvref** típusú függvények csak többértékű attribútumokon működhetnek. A **bin**, az **Str**és a **ref** függvények az egyértékű és a többértékű attribútumok esetében is működnek.
+A **mvbin**, **mvstr** és **mvref** típusú függvények csak többértékű attribútumokon működhetnek. A **bin**, az **Str** és a **ref** függvények az egyértékű és a többértékű attribútumok esetében is működnek.
 
 ## <a name="functions-reference"></a>Functions – referencia
 
@@ -114,8 +114,8 @@ A **mvbin**, **mvstr**és **mvref** típusú függvények csak többértékű at
   * [RandomNum](#randomnum)
 * **Többszörös * érték**
   * [Tartalmaz](#contains)
-  * [Darabszám](#count)
-  * [Elem](#item)
+  * [Száma](#count)
+  * [Item](#item)
   * [ItemOrNull](#itemornull)
   * [Csatlakozás](#join)
   * [RemoveDuplicates](#removeduplicates)
@@ -124,7 +124,7 @@ A **mvbin**, **mvstr**és **mvref** típusú függvények csak többértékű at
   * [Hiba](#error)
   * [IIF](#iif)
   * [Kiválasztás](#select)
-  * [Kapcsoló](#switch)
+  * [Kapcsoló (switch)](#switch)
   * [Ahol](#where)
   * [A](#with)
 * **Szöveg**
@@ -703,7 +703,7 @@ A beosztási függvény megkeresi egy karakterláncban szereplő alsztring első
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
-`num InStr(str stringcheck, str stringmatch, num start , enum compare)`
+`num InStr(str stringcheck, str stringmatch, num start, enum compare)`
 
 * karakterlánc: keresendő karakterlánc
 * keresettkarakterlánc: a rendszer megtalálni kívánt karakterláncot
@@ -868,7 +868,7 @@ A függvény inverzének neve IsNullOrEmpty.
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
-### <a name="item"></a>Elem
+### <a name="item"></a>Item
 **Leírás:**  
 Az Item függvény egy elemet ad vissza egy többértékű karakterlánc/attribútumból.
 
@@ -1224,7 +1224,7 @@ A RTrim függvény eltávolítja a szóközöket a sztringből.
 A "test" értéket adja vissza.
 
 ---
-### <a name="select"></a>Kiválasztás
+### <a name="select"></a>Válassza ezt:
 **Leírás:**  
 Egy többértékű attribútum (vagy egy kifejezés kimenete) összes értékének feldolgozása a megadott függvény alapján.
 

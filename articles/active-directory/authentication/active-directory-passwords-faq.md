@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7caeefb741e6916d69894ede3a7c64eb2e8f623f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b79eb842105734f0f6c145884d73f886a02dbbbc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174496"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348158"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Gyakori kérdések az önkiszolgáló jelszó-visszaállítással kapcsolatban
 
@@ -263,7 +263,7 @@ Ez a GYIK a következő szakaszokra oszlik:
   >
 * **K: milyen típusú fiókok jelszavas visszaírási működnek?**
 
-  > **A:** A jelszó-visszaírási a helyszíni Active Directoryról az Azure AD-be szinkronizált felhasználói fiókok esetében működik, beleértve az összevont, a jelszó-kivonattal szinkronizált és Pass-Through autentication felhasználókat.
+  > **A:** A jelszó-visszaírási a helyszíni Active Directoryról az Azure AD-be szinkronizált felhasználói fiókok esetében működik, beleértve az összevont, a jelszó-kivonattal szinkronizált és Pass-Through hitelesítési felhasználókat.
   >
   >
 * **K: a jelszó visszaírási érvényesíti a tartományom jelszavas szabályzatait?**
@@ -277,7 +277,7 @@ Ez a GYIK a következő szakaszokra oszlik:
   >
   >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
 * [A jelszó alaphelyzetbe állítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
