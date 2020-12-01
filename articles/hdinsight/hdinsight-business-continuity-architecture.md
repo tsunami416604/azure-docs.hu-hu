@@ -8,12 +8,12 @@ keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: c322380d6a41e69baa8f753b84c0bc074f334647
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0275fa4cc46dff8781d73563fd250b1ec62ddd56
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547027"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344113"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Az Azure HDInsight üzletmenet-folytonossági architektúrái
 
@@ -50,13 +50,13 @@ A másodlagos fürt általában csak olvasható. A másodlagos fürt írható é
 
 Az *igény szerinti másodlagos* architektúrával rendelkező aktív elsődleges verzióban az alkalmazások az aktív elsődleges régióban írhatók, míg a normál műveletek során egyetlen fürt sincs kiépítve a másodlagos régióban. A másodlagos régióban található SQL-Metaadattár és-tárolás állandó, míg a HDInsight-fürt csak az ütemezett struktúra replikálásának futtatása előtt van megírt és igény szerint üzembe helyezett.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="aktív elsődleges igény szerinti másodlagos":::
 
 #### <a name="hive-active-primary-with-standby-secondary"></a>Elsődleges struktúra aktív, készenléti másodlagos állapottal
 
 Egy *aktív, készenléti másodlagos állapotú aktív elsődlegesben* az alkalmazások az aktív elsődleges régióba írhatók, míg a normál működés során a (csak olvasási módban lévő) másodlagos fürtöt lefoglaló készenléti üzemmód fut. A normál műveletek során dönthet úgy, hogy kiszervezi a régió specifikus olvasási műveleteit a másodlagosra.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="aktív elsődleges és készenléti másodlagos":::
 
 A kaptár-replikációval és-kódokkal kapcsolatos további információkért tekintse meg [Apache Hive replikációt az Azure HDInsight-fürtökben](./interactive-query/apache-hive-replication.md)
 
@@ -85,13 +85,13 @@ Ha vannak olyan ügyfél-specifikus kódtárak, amelyek az HDInsight natív mód
 
 Az alkalmazások az elsődleges régióban található Spark-és kaptár-fürtök olvasását és írását írják le, míg a normál műveletek során egyetlen fürt sincs kiépítve a másodlagos régióban. Az SQL Metaadattár, a kaptár Storage és a Spark Storage állandó a másodlagos régióban. A Spark-és a kaptár-fürtök parancsfájl-és üzembe helyezése igény szerint történik. A kaptár replikációja a struktúra-tároló és a kaptár metaadattárak replikálására szolgál, miközben Azure Data Factory `DistCP` az önálló Spark-tároló másolására használható. A kaptár-fürtöket a függőségi számítás miatt a struktúra összes replikálásának futtatása előtt kell telepíteni `DistCp` .
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="aktív elsődleges az igény szerinti másodlagos Apache Spark architektúrával":::
 
 #### <a name="spark-active-primary-with-standby-secondary"></a>Spark aktív elsődleges és készenléti másodlagos
 
 Az alkalmazások az elsődleges régióban található Spark-és kaptár-fürtökre olvasást és írást végeznek, a normál műveletek során pedig a másodlagos régióban lévő, írásvédett módban futtatott készenléti és a Spark-fürtök. A normál működés során dönthet úgy, hogy kiszervezi a régió specifikus struktúráját és a Spark olvasási műveleteit a másodlagosra.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="aktív elsődleges készenléti másodlagos Apache Spark ":::
 
 ## <a name="apache-hbase"></a>Apache HBase
 
@@ -131,19 +131,19 @@ Ebben a régiók közötti replikációban a replikálás az elsődleges régió
 
 A másodlagos fürt normál HBase-fürtként működik, amely a saját táblázatait üzemelteti, és a regionális alkalmazások olvasását és írásait is képes kiszolgálni. A replikált táblákon vagy a másodlagos táblákon található írások azonban nem replikálódnak vissza az elsődlegesre.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="HBase Leader-követő modell":::
 
 #### <a name="hbase-replication--leader--leader-model"></a>HBase-replikáció: Leader – vezető modell
 
 Ez a régiók közötti beállítás nagyon hasonlít az egyirányú beállításhoz, azzal a különbséggel, hogy a replikálás az elsődleges régió és a másodlagos régió között kétirányú módon történik. Az alkalmazások mindkét fürtöt használhatják olvasási és írási módokon, és a frissítések aszinkron módon működnek egymás között.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="HBase Leader Leader-modell":::
 
 #### <a name="hbase-replication-multi-region-or-cyclic"></a>HBase-replikáció: több régió vagy ciklikus
 
 A többrégiós/ciklikus replikációs modell a HBase-replikáció kiterjesztése, és felhasználható egy globálisan redundáns HBase-architektúra létrehozására, amely több alkalmazással is rendelkezik, amelyek adott HBase-fürtöket olvasnak és írnak. A fürtöket az üzleti követelményektől függően a Leader/vezető, illetve vezető/követő különböző kombinációkban lehet beállítani.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="HBase ciklikus modell":::
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
@@ -151,7 +151,7 @@ A régiók közötti rendelkezésre állás engedélyezéséhez a 4,0 támogatja
 
 Attól függően, hogy milyen élettartamot indít el a replikáció, a MirrorMaker témakör replikációja különböző eltolásokat eredményezhet a forrás-és a replika témakörök között. A HDInsight Kafka-fürtök támogatják a partíciók replikálását is, amely az egyes fürtök szintjén magas rendelkezésre állású szolgáltatás.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Apache Kafka replikáció":::
 
 ### <a name="apache-kafka-architectures"></a>Apache Kafka architektúrák
 
@@ -172,7 +172,7 @@ Hátrányok:
 * Az aktív és a passzív fürtök közötti végleges konzisztencia.
 * Az elsődleges Failbacks az üzenetek inkonzisztenciát okozhatnak a témakörökben.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Aktív passzív modell Apache Kafka":::
 
 #### <a name="kafka-replication-active--active"></a>Kafka-replikáció: aktív – aktív
 
@@ -188,7 +188,7 @@ Hátrányok:
 * A körkörös replikáció problémáját meg kell oldani.  
 * A kétirányú replikáció a regionális adatforgalom magasabb költségeihez vezet.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Aktív aktív modell Apache Kafka":::
 
 ## <a name="hdinsight-enterprise-security-package"></a>HDInsight Enterprise Security Package
 
@@ -198,11 +198,11 @@ Ranger-Metaadattár replikációja:
 
 A Ranger Metaadattár az adathitelesítés szabályozására szolgáló Ranger-szabályzatok állandó tárolására és kiszolgálására szolgál. Javasoljuk, hogy a független Ranger-szabályzatokat az elsődleges és a másodlagos módon kezelje, és a másodlagost olvasási replikaként őrizze meg.
   
-Ha a szükséges, hogy a Ranger-szabályzatok szinkronban maradjanak az elsődleges és a másodlagos között, a [Ranger Importálás/exportálás](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export#:~:text=Ranger%20has%20introduced%20a%20new,can%20import%20and%20export%20policies.&text=Also%20can%20export%2Fimport%20a,repositories\)%20via%20Ranger%20Admin%20UI) szolgáltatásával rendszeres időközönként biztonsági mentést készíthet, és importálhatja a Ranger-házirendeket elsődlegesről másodlagosra.
+Ha a szükséges, hogy a Ranger-szabályzatok szinkronban maradjanak az elsődleges és a másodlagos között, a [Ranger Importálás/exportálás](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export) szolgáltatásával rendszeres időközönként biztonsági mentést készíthet, és importálhatja a Ranger-házirendeket elsődlegesről másodlagosra.
 
 Az elsődleges és a másodlagos Ranger-házirendek replikálásával a másodlagos érték írható, ami véletlen írást eredményezhet a másodlagos adatkövetkezetlenségek eléréséhez.  
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="HDInsight Enterprise Security Package architektúra":::
 
 ## <a name="next-steps"></a>További lépések
 

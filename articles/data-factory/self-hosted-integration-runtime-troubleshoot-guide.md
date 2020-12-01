@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 8195c4d072acce5345fa9752f97713aed22d962f
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 635178999398287649d8630fc5262a385afc48b2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296954"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341784"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
@@ -752,7 +752,7 @@ A probléma két lehetséges oka:
 - Az 1. okból győződjön meg arról, hogy az ADF-kiszolgáló tanúsítványát és a tanúsítványát a rendszer megbízhatónak tartja a számítógépen, amelyen telepítve van a rendszer.
 - A 2. okból bízza meg a lecserélt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT a lecserélt számítógépen, vagy konfigurálja a proxyt, hogy ne cserélje le az ADF-kiszolgáló tanúsítványát
 
-Tekintse át [ezt a cikket](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) a Windows rendszerű tanúsítványok megbízhatóságának részleteiért.
+Tekintse át [ezt a cikket](/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) a Windows rendszerű tanúsítványok megbízhatóságának részleteiért.
 
 #### <a name="additional-info"></a>További információ
 Egy új SSL-tanúsítványt vezetünk be, amely a DigiCert-ből van aláírva, ellenőrizze, hogy a DigiCert globális root G2 a megbízható legfelső szintű HITELESÍTÉSSZOLGÁLTATÓban van-e.
@@ -776,7 +776,7 @@ A saját üzemeltetésű integrációs modul nem osztható meg több Bérlővel.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hibaelhárítással kapcsolatos további segítségért próbálkozzon a következő erőforrásokkal:
 

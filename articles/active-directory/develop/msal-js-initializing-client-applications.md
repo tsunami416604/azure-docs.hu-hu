@@ -13,12 +13,12 @@ ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: ea8629e53ec793b4a63c817b6ec83278a2d23871
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6b5093c5a1a45aed3493fabd7a362b0579998171
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674084"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343586"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Ügyfélalkalmazások inicializálása MSAL.js használatával
 
@@ -37,9 +37,9 @@ Az alkalmazás regisztrálását követően az alábbi értékek közül egy vag
 | Érték | Kötelező | Leírás |
 |:----- | :------: | :---------- |
 | Alkalmazás (ügyfél) azonosítója | Kötelező | Egy GUID, amely egyedileg azonosítja az alkalmazást a Microsoft Identity platformon belül. |
-| Authority | Nem kötelező | Az identitás-szolgáltató URL-címe (a *példány* ) és a *bejelentkezési célközönség* az alkalmazáshoz. A példány és a bejelentkezési célközönség összefűzéskor a *szolgáltatót* hozza létre. |
-| Címtár (bérlő) azonosítója | Nem kötelező | Akkor adja meg ezt a lehetőséget, ha csak a szervezete számára készít üzletági alkalmazást, amelyet gyakran *egyetlen bérlős alkalmazásnak* nevezünk. |
-| Átirányítási URI | Nem kötelező | Ha webalkalmazást hoz létre, akkor a `redirectUri` meghatározza, hogy a rendszer hol adja vissza az identitás-szolgáltatót (a Microsoft Identity platform) a kiállított biztonsági jogkivonatokat. |
+| Authority | Választható | Az identitás-szolgáltató URL-címe (a *példány*) és a *bejelentkezési célközönség* az alkalmazáshoz. A példány és a bejelentkezési célközönség összefűzéskor a *szolgáltatót* hozza létre. |
+| Címtár (bérlő) azonosítója | Választható | Akkor adja meg ezt a lehetőséget, ha csak a szervezete számára készít üzletági alkalmazást, amelyet gyakran *egyetlen bérlős alkalmazásnak* nevezünk. |
+| Átirányítási URI | Választható | Ha webalkalmazást hoz létre, akkor a `redirectUri` meghatározza, hogy a rendszer hol adja vissza az identitás-szolgáltatót (a Microsoft Identity platform) a kiállított biztonsági jogkivonatokat. |
 
 ## <a name="initialize-msaljs-2x-apps"></a>MSAL.js 2. x alkalmazások inicializálása
 
@@ -108,7 +108,7 @@ msalInstance.handleRedirectPromise().then((tokenResponse) => {
 Az ígéretből három lehetséges eredmény érhető el:
 
 - `.then` meghívása és `tokenResponse` igaz: az alkalmazás egy sikeres átirányítási műveletből tér vissza.
-- `.then` meghívása és `tokenResponse` hamis ( `null` ): az alkalmazás nem ad vissza átirányítási műveletből.
+- `.then` meghívása és `tokenResponse` falsy ( `null` ): az alkalmazás nem ad vissza átirányítási műveletből.
 - `.catch` meghívása: az alkalmazás egy átirányítási műveletből tér vissza, és hiba történt.
 
 ## <a name="initialize-msaljs-1x-apps"></a>MSAL.js 1. x alkalmazás inicializálása
@@ -144,7 +144,7 @@ A MSAL.js 1. x és 2. x egyaránt úgy lett kialakítva, hogy egyetlen példánn
 
 A vagy a több példánya `UserAgentApplication` `PublicClientApplication` nem ajánlott, mert ütköző gyorsítótár-bejegyzéseket és viselkedést okoznak a böngészőben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a MSAL.js 2. x code minta a GitHubon azt mutatja be, hogyan hozható létre egy [PublicClientApplication][msal-js-publicclientapplication] egy [konfigurációs][msal-js-configuration] objektummal:
 

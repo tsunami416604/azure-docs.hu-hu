@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 25d716513c7ceb9311588b75b0fad1c68bf71bfd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a789cb3fde05d12a8793196043f1c246bbab6559
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081110"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342413"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-weboldal létrehozása
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 A Bing Custom Search szolgáltatással személyre szabott keresési funkciókat hozhat létre olyan témakörökhöz kapcsolódóan, amelyek jelentőséggel bírnak az Ön számára. Ha például egy olyan harcművészeti webhelyhez tartozik, amely keresési élményt nyújt, megadhatja a Bing által megkeresett tartományokat, alhelyeket és weblapokat. A felhasználók az érdeklődési körükhöz igazított keresési eredményeket látnak ahelyett, hogy több oldalnyi általános találatot kellene átnézniük, amelyben irreleváns tartalom is lehet. 
 
@@ -141,7 +141,7 @@ Az oktatóanyag hátralévő része az 1. **lehetőség: JavaScript-kódrészlet
 
 1. Nyissa meg a **Visual Studiót** a számítógépén.  
   
-2. A **Fájl** menüben válassza az **Új** , majd a **Projekt** elemet.  
+2. A **Fájl** menüben válassza az **Új**, majd a **Projekt** elemet.  
   
 3. A **New Project** (Új projekt) párbeszédpanelen válassza a **Visual C# / Web / ASP.NET Core Web Application** (Visual C#- / Web / ASP.NET Core-webalkalmazás) elemet, nevezze el a projektet, majd kattintson az **OK** gombra.  
   
@@ -214,7 +214,7 @@ A keresés végrehajtásakor a következőkhöz hasonló eredmények jelennek me
 
 ![Képernyőkép az egyéni keresés eredményeiről](./media/custom-search-webapp-results.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Bing Custom Search-végpont hívása (C#)](../call-endpoint-csharp.md)

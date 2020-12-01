@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 7823c63cf618808cb1ab4400c39f4bc64b7af338
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 1cee4d2ad1bc7f362a045a5991624ec43521b8d2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427547"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341648"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Oktatóanyag: Adatok Azure Cosmos DB-be migrálása az adatmigrálási eszköz használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,7 +24,7 @@ Ez az oktatóanyag útmutatást nyújt az Azure Cosmos DB adatmigrálási eszkö
 
 * **[SQL API](./introduction.md)** – az adatáttelepítési eszközben található bármelyik forrás-beállítást használhatja az adat kis léptékű importálásához. [Ismerje meg az Adatimportálási lehetőségeket nagy léptékben](cosmosdb-migrationchoices.md).
 * **[Table API](table-introduction.md)** – az adatáttelepítési eszköz vagy a [AzCopy](table-import.md#migrate-data-by-using-azcopy) használatával importálhat adatfájlokat. További információért olvassa el az [Adatok importálása az Azure Cosmos DB Table API-val való használathoz](table-import.md) című témakört.
-* **[Azure Cosmos db API-MongoDB](mongodb-introduction.md)** – az adatáttelepítési eszköz nem támogatja Azure Cosmos db API-ját MongoDB vagy forrásként, illetve célként. Ha Azure Cosmos DB gyűjteményekben lévő vagy azokon kívüli gyűjteményekbe szeretné áttelepíteni az adatait, tekintse át a [MongoDB-adatbázisok áttelepítését egy Cosmos-adatbázisba Azure Cosmos db API-val a MongoDB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) című témakört. Az adatáttelepítési eszközzel azonban exportálhat adatokat MongoDB-ből Azure Cosmos DB SQL API-gyűjteményekbe az SQL API-val való használathoz.
+* **[Azure Cosmos db API-MongoDB](mongodb-introduction.md)** – az adatáttelepítési eszköz nem támogatja Azure Cosmos db API-ját MongoDB vagy forrásként, illetve célként. Ha Azure Cosmos DB gyűjteményekben lévő vagy azokon kívüli gyűjteményekbe szeretné áttelepíteni az adatait, tekintse át a [MongoDB-adatbázisok áttelepítését egy Cosmos-adatbázisba Azure Cosmos db API-val a MongoDB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) című témakört. Az adatáttelepítési eszközzel azonban exportálhat adatokat MongoDB-ből Azure Cosmos DB SQL API-gyűjteményekbe az SQL API-val való használathoz.
 * **[Cassandra API](graph-introduction.md)** – az adatáttelepítési eszköz nem támogatott importálási eszköz Cassandra API-fiókokhoz. [Tudnivalók az Adatimportálási lehetőségekről a Cassandra APIba](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api)
 * **[GREMLIN API](graph-introduction.md)** – az adatáttelepítési eszköz jelenleg nem támogatott importálási eszköz a Gremlin API-fiókokhoz. [Tudnivalók az áttelepítés Gremlin API-ba történő importálási lehetőségeiről](cosmosdb-migrationchoices.md#other-apis) 
 
@@ -70,8 +70,8 @@ Az importálási eszköz tartalmaz egy grafikus felhasználói felületet (dtui.
 
 Az áttelepítési eszköz forráskódját elérheti [ebben a GitHub-adattárban](https://github.com/azure/azure-documentdb-datamigrationtool). Letöltheti a forráskódot, és lefordíthatja helyben a megoldást, vagy [letöltheti az előre lefordított bináris fájlokat is](https://aka.ms/csdmtool). Ezután futtathatja az alábbiak egyikét:
 
-* **Dtui.exe** : Az eszköz grafikus felhasználói felületet használó verziója.
-* **Dtui.exe** : Az eszköz grafikus parancssori verziója.
+* **Dtui.exe**: Az eszköz grafikus felhasználói felületet használó verziója.
+* **Dtui.exe**: Az eszköz grafikus parancssori verziója.
 
 ## <a name="select-data-source"></a>Adatforrás kiválasztása
 
@@ -131,7 +131,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a name="import-from-mongodb"></a><a id="MongoDB"></a>Importálás MongoDB-ből
 
 > [!IMPORTANT]
-> Ha a MongoDB-hez Azure Cosmos DB API-val konfigurált Cosmos-fiókba importálja, kövesse az alábbi [utasításokat](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json).
+> Ha a MongoDB-hez Azure Cosmos DB API-val konfigurált Cosmos-fiókba importálja, kövesse az alábbi [utasításokat](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json).
 
 A MongoDB forrás-importáló lehetőséggel egyetlen MongoDB-gyűjteményből importálhatja, opcionálisan szűrheti a dokumentumokat egy lekérdezés használatával, és kivetítéssel módosíthatja a dokumentum struktúráját.  
 
@@ -159,7 +159,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 ## <a name="import-mongodb-export-files"></a><a id="MongoDBExport"></a>MongoDB-exportfájlok importálása
 
 > [!IMPORTANT]
-> Ha a MongoDB-t támogató Azure Cosmos DB-fiókba importál, kövesse az alábbi [utasításokat](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json).
+> Ha a MongoDB-t támogató Azure Cosmos DB-fiókba importál, kövesse az alábbi [utasításokat](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json).
 
 Forrásként MongoDB-exportálási JSON-fájlokat választva importálhat egy vagy több olyan JSON-fájlt, amelyet a mongoexport segédprogrammal hozott létre.  
 
@@ -386,7 +386,7 @@ Az Azure Cosmos DB-fiók kapcsolati sztringjét beszerezheti az Azure Portal Kul
 > [!NOTE]
 > Ellenőrizze a Verify paranccsal, hogy elérhető-e a kapcsolati sztringben megadott Azure Cosmos DB-példány.
 
-Egyetlen gyűjtemény importálásához írja be annak a gyűjteménynek a nevét, amelyből importálni kívánja az adatokat, majd kattintson az Add (Hozzáadás) gombra. Ha egynél több gyűjteménybe szeretne importálni, egyenként adja meg az egyes gyűjtemények nevét, vagy használja a következő szintaxist egynél több gyűjtemény megadásához: *collection_prefix* [index-End index]. Ha egynél több gyűjteményt ad meg a fenti szintaxissal, tartsa szem előtt a következő irányelveket:
+Egyetlen gyűjtemény importálásához írja be annak a gyűjteménynek a nevét, amelyből importálni kívánja az adatokat, majd kattintson az Add (Hozzáadás) gombra. Ha egynél több gyűjteménybe szeretne importálni, egyenként adja meg az egyes gyűjtemények nevét, vagy használja a következő szintaxist egynél több gyűjtemény megadásához: *collection_prefix*[index-End index]. Ha egynél több gyűjteményt ad meg a fenti szintaxissal, tartsa szem előtt a következő irányelveket:
 
 1. Csak az integer adattípuson alapuló minták támogatottak. A „gyűjtemény[0-3]” minta például a következő gyűjteményeket hozza létre: gyűjtemény0, gyűjtemény1, gyűjtemény2, gyűjtemény3.
 2. Használhat rövidített szintaxist: A „gyűjtemény[3]” minta ugyanúgy az 1. lépésben említett gyűjteménykészletet hozza létre.
@@ -445,7 +445,7 @@ A Azure Cosmos DB fiókhoz tartozó kapcsolódási karakterláncot a Azure Porta
 > [!NOTE]
 > Ellenőrizze a Verify paranccsal, hogy elérhető-e a kapcsolati sztringben megadott Azure Cosmos DB-példány.
 
-Egyetlen gyűjteménybe való importáláshoz adja meg annak a gyűjteménynek a nevét, amelybe az adatimportálást be szeretné írni, majd kattintson a Hozzáadás gombra. Ha több gyűjteménybe szeretne importálni, egyenként adja meg az egyes gyűjtemények nevét. A következő szintaxist is használhatja több gyűjtemény megadásához: *collection_prefix* [index-End index]. Ha egynél több gyűjteményt ad meg a fenti szintaxison keresztül, tartsa szem előtt a következő irányelveket:
+Egyetlen gyűjteménybe való importáláshoz adja meg annak a gyűjteménynek a nevét, amelybe az adatimportálást be szeretné írni, majd kattintson a Hozzáadás gombra. Ha több gyűjteménybe szeretne importálni, egyenként adja meg az egyes gyűjtemények nevét. A következő szintaxist is használhatja több gyűjtemény megadásához: *collection_prefix*[index-End index]. Ha egynél több gyűjteményt ad meg a fenti szintaxison keresztül, tartsa szem előtt a következő irányelveket:
 
 1. Csak az integer adattípuson alapuló minták támogatottak. A „gyűjtemény[0-3]” minta például a következő gyűjteményeket hozza létre: gyűjtemény0, gyűjtemény1, gyűjtemény2, gyűjtemény3.
 2. Használhat rövidített szintaxist: A „gyűjtemény[3]” minta ugyanúgy az 1. lépésben említett gyűjteménykészletet hozza létre.
@@ -581,7 +581,7 @@ Adja meg a speciális konfigurációs képernyőn annak a naplófájlnak a hely�
 
     :::image type="content" source="./media/import-data/newimport.png" alt-text="Képernyőkép a Azure Cosmos DB JSON-exportálási lehetőségről az új importálás megerősítése párbeszédpanellel.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

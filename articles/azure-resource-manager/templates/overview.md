@@ -1,14 +1,14 @@
 ---
 title: Sablonok – Áttekintés
-description: A Azure Resource Manager-sablonok használatának előnyeit ismerteti az erőforrások üzembe helyezéséhez.
+description: A Azure Resource Manager-sablonok (ARM-sablonok) használatának előnyeit ismerteti az erőforrások üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 188fd5782795a4fb5456978a2a596cabc6dfd874
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: e25404fc74456f99a4d41c25786b34b6e1f3edda
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325060"
+ms.locfileid: "96342328"
 ---
 # <a name="what-are-arm-templates"></a>Mik azok az ARM-sablonok?
 
@@ -16,7 +16,7 @@ A felhőbe való áttéréssel számos csapat agilis fejlesztési módszereket f
 
 Ezeknek a kihívásoknak a kielégítéséhez automatizálhatja az üzembe helyezéseket, és használhatja az infrastruktúra mint kód gyakorlatát. A kódban definiálni kell a telepítendő infrastruktúrát. Az infrastruktúra kódja a projekt részévé válik. Az alkalmazás kódjához hasonlóan az infrastruktúra kódját is tárolhatja egy forrás adattárban, és annak verzióját is. A csapatának bármelyike futtathatja a kódot, és telepíthet hasonló környezeteket is.
 
-Ha az Azure-megoldások számára kíván infrastruktúra-kódot megvalósítani, használja a Azure Resource Manager (ARM) sablonokat. A sablon egy JavaScript Object Notation (JSON) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon olyan deklaratív szintaxist használ, amellyel anélkül határozhatja meg, hogy mit szeretne üzembe helyezni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A sablonban megadhatja a telepítendő erőforrásokat és az erőforrások tulajdonságait.
+Az infrastruktúra kódként való megvalósításához az Azure-megoldásokhoz használja Azure Resource Manager-sablonokat (ARM-sablonok). A sablon egy JavaScript Object Notation (JSON) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon olyan deklaratív szintaxist használ, amellyel anélkül határozhatja meg, hogy mit szeretne üzembe helyezni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A sablonban megadhatja a telepítendő erőforrásokat és az erőforrások tulajdonságait.
 
 ## <a name="why-choose-arm-templates"></a>Miért érdemes ARM-sablonokat választani?
 

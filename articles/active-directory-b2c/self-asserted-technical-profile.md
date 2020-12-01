@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4e76e3924b1b14660dce8a3b58f7dd5b2715eec
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e17c390dddcb2af9fdc83b45ae812ef1fff7f1c3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670128"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345082"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Önérvényesített technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -114,7 +114,7 @@ Ha egy olyan levélre vonatkozó szabályzat, amely ezt az alapszintű örökli,
 </TechnicalProfile>
 ```
 
-Az `age` alapházirendben lévő jogcím már nem jelenik meg a képernyőn a felhasználó számára – ez gyakorlatilag "rejtett". A jogcím megjelenítéséhez `age` és a kor értékének a felhasználótól való összegyűjtéséhez hozzá kell adnia egy `age` **DisplayClaim** .
+Az `age` alapházirendben lévő jogcím már nem jelenik meg a képernyőn a felhasználó számára – ez gyakorlatilag "rejtett". A jogcím megjelenítéséhez `age` és a kor értékének a felhasználótól való összegyűjtéséhez hozzá kell adnia egy `age` **DisplayClaim**.
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 349f57299387b616373bb5fb4d295da8df8ee493
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: d62e7566038af6647cab2992b02184a4ea5ba30b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279892"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344147"
 ---
 # <a name="secure-azure-digital-twins"></a>Biztonságos Azure digitális Twins
 
@@ -91,13 +91,13 @@ Ha egy felhasználó olyan műveletet próbál végrehajtani, amelyet nem enged�
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 
-A **szolgáltatás címkéje** egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét. A szolgáltatás címkével kapcsolatos további információkért lásd:  [*virtuális hálózati címkék*](../virtual-network/service-tags-overview.md). 
+A **szolgáltatás címkéje** egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét. A szolgáltatás címkével kapcsolatos további információkért lásd: [*virtuális hálózati címkék*](../virtual-network/service-tags-overview.md). 
 
-A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/network-security-groups-overview.md#security-rules)vagy Azure Firewallon határozhat meg hálózati hozzáférés-vezérlést   , ha a biztonsági szabályok létrehozásakor a szolgáltatási címkéket használja adott IP-címek helyett. [Azure Firewall](../firewall/service-tags.md) Ha megadja a szolgáltatási címke nevét (ebben az esetben a **AzureDigitalTwins** ) a szabály megfelelő *forrás*   vagy *cél*   mezőjében, engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. 
+A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/network-security-groups-overview.md#security-rules)vagy Azure Firewallon határozhat meg hálózati hozzáférés-vezérlést   , ha a biztonsági szabályok létrehozásakor a szolgáltatási címkéket használja adott IP-címek helyett. [Azure Firewall](../firewall/service-tags.md) Ha megadja a szolgáltatási címke nevét (ebben az esetben a **AzureDigitalTwins**) a szabály megfelelő *forrás*   vagy *cél*   mezőjében, engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. 
 
 Alább láthatók a **AzureDigitalTwins** szolgáltatás címkéjének részletei.
 
-| Címke | Rendeltetés | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
+| Címke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | --- | --- | --- | --- |
 | AzureDigitalTwins | Azure Digital Twins<br>Megjegyzés: Ez a címke vagy a címke által lefedett IP-címek használhatók az [esemény-útvonalakhoz](concepts-route-events.md)konfigurált végpontokhoz való hozzáférés korlátozására. | Bejövő | Nem | Igen |
 
@@ -121,13 +121,13 @@ Az Azure Digital Twins inaktív és átvitel alatt álló adatok titkosítását
 
 ## <a name="cross-origin-resource-sharing-cors"></a>Eltérő eredetű erőforrások megosztása (CORS)
 
-Az Azure Digital Twins jelenleg nem támogatja a **több eredetű erőforrás-megosztást (CORS)**. Ennek eredményeképpen, ha egy böngésző-alkalmazásból, egy [API Management (APIM)](../api-management/api-management-key-concepts.md) vagy egy [Power apps](https://docs.microsoft.com/powerapps/powerapps-overview) -összekötőből REST API hív meg, akkor a rendszer házirend-hibát észlelt.
+Az Azure Digital Twins jelenleg nem támogatja a **több eredetű erőforrás-megosztást (CORS)**. Ennek eredményeképpen, ha egy böngésző-alkalmazásból, egy [API Management (APIM)](../api-management/api-management-key-concepts.md) vagy egy [Power apps](/powerapps/powerapps-overview) -összekötőből REST API hív meg, akkor a rendszer házirend-hibát észlelt.
 
 A hiba elhárításához a következők egyikét teheti:
 * A CORS fejlécének leszalaga `Access-Control-Allow-Origin` az üzenetből. Ez a fejléc azt jelzi, hogy a válasz megosztható-e. 
 * Alternatív megoldásként hozzon létre egy CORS-proxyt, és tegye elérhetővé az Azure digitális Twins REST API kérését. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse meg ezeket a fogalmakat működés közben [*: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md).
 

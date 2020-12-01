@@ -13,12 +13,12 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c4f47fd771cfb92b3896963c96b39d9eb7d97b8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119878"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344878"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Az Android rendszerhez készült MSAL használata B2C-vel
 
@@ -129,7 +129,7 @@ AcquireTokenSilentParameters parameters = new AcquireTokenSilentParameters.Build
 
         @Override
         public void onError(MsalException exception) {
-            // Token request was unsuccesful, inspect the exception
+            // Token request was unsuccessful, inspect the exception
         }
     })
     .build();
@@ -139,7 +139,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>Házirend meghatározása
 
-Mivel a B2C-szabályzatok külön hatóságokként jelennek meg, az alapértelmezetttől eltérő házirendet nem kell megadnia egy `fromAuthority` záradék létrehozásával `acquireToken` vagy paraméterekkel való megadásával `acquireTokenSilent` .  Példa:
+Mivel a B2C-szabályzatok külön hatóságokként jelennek meg, az alapértelmezetttől eltérő házirendet nem kell megadnia egy `fromAuthority` záradék létrehozásával `acquireToken` vagy paraméterekkel való megadásával `acquireTokenSilent` .  Például:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -237,6 +237,6 @@ Mindegyik szabályzat `IAccount` minden felhasználóhoz hozzáadja a gyorsító
 
 Amikor megújítja a Szabályzathoz tartozó jogkivonatokat `acquireTokenSilent` , megadhatja, `IAccount` hogy a szabályzat korábbi hívásai milyen értéket adtak vissza  `AcquireTokenSilentParameters` . Egy másik házirend által visszaadott fiók megadása hibát eredményez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Active Directory B2Cról (Azure AD B2C) a [mi Azure Active Directory B2C?](../../active-directory-b2c/overview.md)

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.custom: contperfq2
-ms.openlocfilehash: 4c37923b0955652a0627808b19762095c18bdedc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a1d83f91ad82bddacb7e806e31151b8e4a7ab612
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737660"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344929"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Az Azure AD-beli attribútum-hozzárendelésekhez tartozó kifejezések írásához való hivatkozás
 
@@ -49,7 +49,7 @@ Az attribútum-hozzárendelések kifejezések szintaxisa Visual Basic for Applic
 
 **Paraméterek**
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
 | **utótag** |Kötelező |Sztring |A forrás érték végéhez hozzáfűzni kívánt karakterlánc. |
@@ -67,7 +67,7 @@ Más szóval a 0 értéket adja vissza minden esetben, kivéve, ha mindkét para
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **érték1** |Kötelező |num |Numerikus érték, amelynek AND'ed kell lennie a érték2|
 | **érték2** |Kötelező |num |Numerikus érték, amelynek AND'ed kell lennie a érték1|
@@ -87,7 +87,7 @@ Más szóval a 0 értéket adja vissza minden esetben, kivéve, ha mindkét para
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **expression** |Kötelező | kifejezés | Bármely érvényes kifejezés |
 
@@ -103,10 +103,10 @@ Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rende
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **source1 ... sourceN** | Kötelező | Sztring |Kötelező, változó számú alkalommal. Az attribútum neve általában a forrásoldali objektumban. |
-| **defaultValue** | Nem kötelező | Sztring | Az alapértelmezett érték, amelyet akkor kell használni, ha az összes forrás értéke NULL. Üres karakterlánc ("") lehet.
+| **defaultValue** | Választható | Sztring | Az alapértelmezett érték, amelyet akkor kell használni, ha az összes forrás értéke NULL. Üres karakterlánc ("") lehet.
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -116,7 +116,7 @@ Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rende
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az alap 64-re konvertálandó karakterlánc|
 
@@ -133,7 +133,7 @@ A "SABlAGwAbABvACAAdwBvAHIAbABkACEA" értéket adja vissza
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az UTF8 hexadecimális értékre konvertálandó karakterlánc|
 
@@ -150,7 +150,7 @@ A "SABlAGwAbABvACAAdwBvAHIAbABkACEA" értéket adja vissza
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **attribútum** |Kötelező |attribute |Többértékű attribútum, amely megszámolja az elemeket|
 
@@ -162,7 +162,7 @@ A "SABlAGwAbABvACAAdwBvAHIAbABkACEA" értéket adja vissza
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **value** |Kötelező | numerikus, hivatkozási vagy logikai | Számérték, hivatkozási attribútum vagy logikai érték lehet. |
 
@@ -179,7 +179,7 @@ A "CN = Joe, DC = contoso, DC = com" értéket adja vissza.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **value** |Kötelező | Dátum | A DateTime típusúra konvertálandó AD-dátum |
 
@@ -198,7 +198,7 @@ Egy DateTime értéket ad vissza, amely 2012 január 1-től 11:00-kor.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
 | **inputFormat** |Kötelező |Sztring |A forrás értékének várt formátuma. Támogatott formátumok: [/DotNet/standard/Base-types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
@@ -218,7 +218,7 @@ Egy DateTime értéket ad vissza, amely 2012 január 1-től 11:00-kor.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **feltétel** |Kötelező |Változó vagy kifejezés |Bármely érték vagy kifejezés, amelynek kiértékelése igaz vagy hamis lehet. |
 | **valueIfTrue** |Kötelező |Változó vagy karakterlánc | Ha a feltétel igaz értéket ad vissza, a visszaadott érték. |
@@ -235,12 +235,12 @@ Egy DateTime értéket ad vissza, amely 2012 január 1-től 11:00-kor.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **érték1** |Kötelező |Sztring |Keresendő karakterlánc |
 | **érték2** |Kötelező |Sztring |A megtalálni kívánt karakterlánc |
-| **Start** |Nem kötelező |Egész szám |A kiindulási pozíció a karakterlánc megkereséséhez|
-| **compareType** |Nem kötelező |Enumeráció |VbTextCompare vagy vbBinaryCompare lehet |
+| **Start** |Választható |Egész szám |A kiindulási pozíció a karakterlánc megkereséséhez|
+| **compareType** |Választható |Enumeráció |VbTextCompare vagy vbBinaryCompare lehet |
 
 **Például**
 `InStr("The quick brown fox","quick")`
@@ -259,7 +259,7 @@ Egy DateTime értéket ad vissza, amely 2012 január 1-től 11:00-kor.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **expression** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
@@ -277,7 +277,7 @@ A függvény inverzének neve IsPresent.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **expression** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
@@ -294,7 +294,7 @@ Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlán
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **expression** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
@@ -309,7 +309,7 @@ Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlán
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **expression** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
@@ -321,7 +321,7 @@ Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlán
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **attribútum** |Kötelező |Attribútum |Keresendő többértékű attribútum |
 | **index** |Kötelező |Egész szám | Index a Többértékű karakterlánc egyik elemébe|
@@ -339,7 +339,7 @@ Ha a forrásadatok egyike egy többértékű attribútum, akkor az adott attrib�
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **elválasztó** |Kötelező |Sztring |A forrásadatok elválasztására szolgáló karakterlánc, amely egyetlen sztringbe van fűzve. Lehet "", ha nem kötelező elválasztó. |
 | **source1 ... sourceN** |Kötelező, változó – ennyiszer |Sztring |A egyesíteni kívánt karakterlánc-értékek. |
@@ -355,7 +355,7 @@ Ha a sztring kevesebb karaktert tartalmaz a numChars megadott számnál, akkor a
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **Sztring** |Kötelező |Attribútum | A karakterlánc, amelyből karaktereket kell visszaadni |
 | **NumChars** |Kötelező |Egész szám | Egy szám, amely a sztring elejétől (balra) való visszatéréshez szükséges karakterek számát azonosítja.|
@@ -373,7 +373,7 @@ A "Joh" értéket adja vissza.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában. |
 | **Start** |Kötelező |egész szám |Az index a **forrás** sztringben, ahol az alsztringnek el kell indulnia. A karakterlánc első karakterének indexe 1, a második karakter pedig a 2. indexet fogja tartalmazni. |
@@ -387,7 +387,7 @@ A "Joh" értéket adja vissza.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring | Általában utónév vagy vezetéknév attribútum. |
 
@@ -399,7 +399,7 @@ A "Joh" értéket adja vissza.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Logikai karakterlánc |A várt **források** értéke "true" vagy "false". |
 
@@ -411,7 +411,7 @@ A "Joh" értéket adja vissza.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **value** |Kötelező | Sztring | A dátum és idő karakterlánca támogatott formátumban. Támogatott formátumok: https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx . |
 
@@ -431,7 +431,7 @@ A "Joh" értéket adja vissza.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **attribútum** |Kötelező |Többértékű attribútum |Több értékkel rendelkező attribútum, amelyből duplikált elemek lesznek eltávolítva|
 
@@ -453,25 +453,25 @@ A "Joh" értéket adja vissza.
 * A **regexPattern** és a **replacementValue** megadása esetén:
 
   * A függvény a **regexPattern** alkalmazza a **forrás** sztringre, és a regex-csoportok nevét használhatja a **replacementValue** karakterlánc létrehozásához.
-* A **regexPattern** , a **regexGroupName** és a **replacementValue** megadásakor:
+* A **regexPattern**, a **regexGroupName** és a **replacementValue** megadásakor:
   
   * A függvény a **regexPattern** alkalmazza a **forrás** sztringre, és lecseréli az összes olyan értéket, amely megfelel a **regexGroupName** a **replacementValue**
-* A **regexPattern** , a **regexGroupName** és a **replacementAttributeName** megadásakor:
+* A **regexPattern**, a **regexGroupName** és a **replacementAttributeName** megadásakor:
   
   * Ha a **forrásnak** nincs értéke, a rendszer visszaadja a **forrást** .
   * Ha a **forrás** értékkel rendelkezik, a függvény a **regexPattern** alkalmazza a **forrás** sztringre, és lecseréli az összes olyan értéket, amely megfelel a **regexGroupName** a **replacementAttributeName** társított értéknek.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a **forrásoldali** objektumban. |
-| **oldValue** |Nem kötelező |Sztring |A **forrásban** vagy **sablonban** cserélni kívánt érték. |
-| **regexPattern** |Nem kötelező |Sztring |A **forrásban** lecserélni kívánt érték regex-mintája. Vagy ha **replacementPropertyName** használ, a **replacementPropertyName** származó érték kinyerésére szolgáló minta. |
-| **regexGroupName** |Nem kötelező |Sztring |A csoport neve a **regexPattern** belül. Csak **replacementPropertyName** használata esetén a csoport értékének kinyerése a **replacementPropertyName** **replacementValue** történik. |
-| **replacementValue** |Nem kötelező |Sztring |Új érték a régi helyett. |
-| **replacementAttributeName** |Nem kötelező |Sztring |A helyettesítő értékhez használandó attribútum neve |
-| **sablon** |Nem kötelező |Sztring |Ha meg van adni a **sablon** értéke, megkeresjük a **OldValue** a sablonon belül, és lecseréljük a **forrás** értékre. |
+| **oldValue** |Választható |Sztring |A **forrásban** vagy **sablonban** cserélni kívánt érték. |
+| **regexPattern** |Választható |Sztring |A **forrásban** lecserélni kívánt érték regex-mintája. Vagy ha **replacementPropertyName** használ, a **replacementPropertyName** származó érték kinyerésére szolgáló minta. |
+| **regexGroupName** |Választható |Sztring |A csoport neve a **regexPattern** belül. Csak **replacementPropertyName** használata esetén a csoport értékének kinyerése a **replacementPropertyName** **replacementValue** történik. |
+| **replacementValue** |Választható |Sztring |Új érték a régi helyett. |
+| **replacementAttributeName** |Választható |Sztring |A helyettesítő értékhez használandó attribútum neve |
+| **sablon** |Választható |Sztring |Ha meg van adni a **sablon** értéke, megkeresjük a **OldValue** a sablonon belül, és lecseréljük a **forrás** értékre. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -482,13 +482,13 @@ A "Joh" értéket adja vissza.
 
  - Ez egy legfelső szintű függvény, nem ágyazható be.
  - Ez a függvény nem alkalmazható olyan attribútumokra, amelyek egyező elsőbbséggel rendelkeznek.   
- - Ez a függvény csak a bejegyzések létrehozásához használható. Ha attribútummal használja, állítsa a **leképezés alkalmazása** tulajdonságot csak az **objektum létrehozása során** .
+ - Ez a függvény csak a bejegyzések létrehozásához használható. Ha attribútummal használja, állítsa a **leképezés alkalmazása** tulajdonságot csak az **objektum létrehozása során**.
  - Ez a függvény jelenleg csak a "munkanap Active Directory a felhasználók kiosztásához" támogatott. Más kiépítési alkalmazásokkal nem használható. 
 
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **uniqueValueRule1 ... uniqueValueRuleN** |Legalább 2 szükséges, nincs felső korlát |Sztring | A kiértékelni kívánt egyedi érték-létrehozási szabályok listája. |
 
@@ -501,7 +501,7 @@ A "Joh" értéket adja vissza.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **AppRoleAssignments** |Kötelező |Sztring |**[appRoleAssignments]** objektum. |
 
@@ -513,7 +513,7 @@ A "Joh" értéket adja vissza.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |a frissítendő **forrás** értéke. |
 | **elválasztókarakter** |Kötelező |Sztring |Meghatározza a karakterlánc felosztására szolgáló karaktert (példa: ",") |
@@ -526,7 +526,7 @@ A "Joh" értéket adja vissza.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |a frissítendő **forrás** értéke. |
 
@@ -534,14 +534,14 @@ A "Joh" értéket adja vissza.
 ### <a name="switch"></a>Kapcsoló (switch)
 **Függvény:** Kapcsoló (forrás, defaultValue, key1, érték1, key2, érték2,...)
 
-**Leírás:** Ha a **forrás** értéke megegyezik egy **kulccsal** , az adott **kulcs** **értékét** adja vissza. Ha a **forrás** értéke nem felel meg a kulcsoknak, a a **defaultValue** értéket adja vissza.  A **kulcsok** és **értékek** paramétereit mindig párokban kell megadni. A függvény mindig páros számú paramétert vár. A függvény nem használható hivatkozási attribútumokhoz, például a kezelőhöz. 
+**Leírás:** Ha a **forrás** értéke megegyezik egy **kulccsal**, az adott **kulcs** **értékét** adja vissza. Ha a **forrás** értéke nem felel meg a kulcsoknak, a a **defaultValue** értéket adja vissza.  A **kulcsok** és **értékek** paramétereit mindig párokban kell megadni. A függvény mindig páros számú paramétert vár. A függvény nem használható hivatkozási attribútumokhoz, például a kezelőhöz. 
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |A frissítendő **forrás** értéke. |
-| **defaultValue** |Nem kötelező |Sztring |Az alapértelmezett érték, amelyet akkor kell használni, ha a forrás nem felel meg a kulcsoknak. Üres karakterlánc ("") lehet. |
+| **defaultValue** |Választható |Sztring |Az alapértelmezett érték, amelyet akkor kell használni, ha a forrás nem felel meg a kulcsoknak. Üres karakterlánc ("") lehet. |
 | **kulcs** |Kötelező |Sztring |A **kulcs** a **forrás** értékének összehasonlításához a következővel:. |
 | **value** |Kötelező |Sztring |A kulcsnak megfelelő **forrás** helyettesítő értéke. |
 
@@ -553,10 +553,10 @@ A "Joh" értéket adja vissza.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumból |
-| **kulturális környezet** |Nem kötelező |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2* , ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
+| **kulturális környezet** |Választható |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -566,10 +566,10 @@ A "Joh" értéket adja vissza.
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
-| **kulturális környezet** |Nem kötelező |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2* , ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
+| **kulturális környezet** |Választható |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
 
 ---
 ### <a name="word"></a>Word
@@ -583,7 +583,7 @@ Ha a karakterlánc kevesebb, mint szám szót tartalmaz, vagy a sztring nem tart
 
 **Paraméterek** 
 
-| Name (Név) | Szükséges/ismétlődő | Típus | Jegyzetek |
+| Név | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **Sztring** |Kötelező |Többértékű attribútum |Karakterlánc egy szó a következőből való visszaküldéséhez:.|
 | **WordNumber** |Kötelező | Egész szám | Az a szám, amelyből vissza kell adni a Word-számot|
@@ -610,7 +610,7 @@ A Felhasználónév beszerzéséhez a felhasználó e-mail-címéből egy ismert
 **Minta bemenet/kimenet:** 
 
 * **Bemenet** (e-mail): " john.doe@contoso.com "
-* **Kimenet** : "John. DOE"
+* **Kimenet**: "John. DOE"
 
 ### <a name="append-constant-suffix-to-user-name"></a>Állandó utótag hozzáfűzése a felhasználónévhez
 Ha Salesforce-munkaterületet használ, előfordulhat, hogy a szinkronizálás előtt hozzá kell fűzni egy további utótagot az összes felhasználónevehöz.
@@ -620,8 +620,8 @@ Ha Salesforce-munkaterületet használ, előfordulhat, hogy a szinkronizálás e
 
 **Minta bemenet/kimenet:** 
 
-* **Bemenet** : (userPrincipalName): " John.Doe@contoso.com "
-* **Kimenet** : " John.Doe@contoso.com.test "
+* **Bemenet**: (userPrincipalName): " John.Doe@contoso.com "
+* **Kimenet**: " John.Doe@contoso.com.test "
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Felhasználói alias előállítása az utónév és a vezetéknév összefűzésével
 Felhasználói aliast kell létrehoznia úgy, hogy az első 3 betűt a felhasználó utónevét és az első 5 betűt adja meg.
@@ -633,7 +633,7 @@ Felhasználói aliast kell létrehoznia úgy, hogy az első 3 betűt a felhaszn�
 
 * **Bemenet** (givenName): "John"
 * **Bemenet** (vezetéknév): "DOE"
-* **Kimenet** : "JohDoe"
+* **Kimenet**: "JohDoe"
 
 ### <a name="remove-diacritics-from-a-string"></a>Mellékjelek eltávolítása egy sztringből
 Az ékezetes jeleket tartalmazó karaktereket olyan karakterekkel kell helyettesíteni, amelyek nem tartalmaznak ékezetes jeleket.
@@ -643,7 +643,7 @@ Az ékezetes jeleket tartalmazó karaktereket olyan karakterekkel kell helyettes
 **Minta bemenet/kimenet:** 
 
 * **Bemenet** (givenName): "Zoë"
-* **Kimenet** : "Zoe"
+* **Kimenet**: "Zoe"
 
 ### <a name="split-a-string-into-a-multi-valued-array"></a>Sztring felosztása többértékű tömbbe
 A karakterláncok vesszővel tagolt listáját kell megadnia, és azokat egy olyan tömbbe kell bontani, amely egy többértékű attribútumhoz, például a Salesforce PermissionSets attribútumához csatlakoztatható. Ebben a példában az extensionAttribute5 az Azure AD-ben az engedélyezési készletek listája lett feltöltve.
@@ -652,8 +652,8 @@ A karakterláncok vesszővel tagolt listáját kell megadnia, és azokat egy oly
 
 **Minta bemenet/kimenet:** 
 
-* **Bemenet** (extensionAttribute5): "PermissionSetOne, PermisionSetTwo"
-* **Kimenet** : ["PermissionSetOne", "PermissionSetTwo"]
+* **Bemenet** (extensionAttribute5): "PermissionSetOne, PermissionSetTwo"
+* **Kimenet**: ["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Kimeneti dátum karakterláncként egy adott formátumban
 Bizonyos formátumban szeretné elküldeni a dátumokat egy SaaS-alkalmazásnak. Például a ServiceNow dátumát szeretné formázni.
@@ -665,7 +665,7 @@ Bizonyos formátumban szeretné elküldeni a dátumokat egy SaaS-alkalmazásnak.
 **Minta bemenet/kimenet:**
 
 * **Bemenet** (extensionAttribute1): "20150123105347.1 z"
-* **Kimenet** : "2015-01-23"
+* **Kimenet**: "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Érték cseréje előre megadott beállítások alapján
 
@@ -677,7 +677,7 @@ Meg kell határoznia a felhasználó időzónáját az Azure AD-ben tárolt áll
 **Minta bemenet/kimenet:**
 
 * **Bemenet** (állapot): "QLD"
-* **Kimenet** : "Ausztrália/Brisbane"
+* **Kimenet**: "Ausztrália/Brisbane"
 
 ### <a name="replace-characters-using-a-regular-expression"></a>Karakterek cseréje reguláris kifejezés használatával
 Meg kell keresnie a reguláris kifejezés értékének megfelelő karaktereket, és el kell távolítani őket.
@@ -689,7 +689,7 @@ Replace ([mailNickname],, "[a-zA-Z_] *",, "",,)
 **Minta bemenet/kimenet:**
 
 * **Bemenet** (mailNickname: "john_doe72"
-* **Kimenet** : "72"
+* **Kimenet**: "72"
 
 ### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Generált userPrincipalName (UPN) értékének kisbetűvé alakítása
 Az alábbi példában az UPN-érték a PreferredFirstName és a PreferredLastName forrás mezőinek összefűzésével jön létre, és a ToLower függvény a generált karakterláncon működik, hogy az összes karaktert kisbetűvé alakítsa. 
@@ -700,7 +700,7 @@ Az alábbi példában az UPN-érték a PreferredFirstName és a PreferredLastNam
 
 * **Bemenet** (PreferredFirstName): "John"
 * **Bemenet** (PreferredLastName): "Kovács"
-* **Kimenet** : " john.smith@contoso.com "
+* **Kimenet**: " john.smith@contoso.com "
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Egyedi érték előállítása a userPrincipalName (UPN) attribútumhoz
 A felhasználó utóneve, középső neve és vezetékneve alapján értéket kell létrehoznia az UPN-attribútumhoz, és meg kell adnia annak egyediségét a cél AD-címtárban, mielőtt az értéket az UPN-attribútumhoz rendeli.
@@ -719,9 +719,9 @@ A felhasználó utóneve, középső neve és vezetékneve alapján értéket ke
 
 * **Bemenet** (PreferredFirstName): "John"
 * **Bemenet** (PreferredLastName): "Kovács"
-* **Output** : " John.Smith@contoso.com ", ha John.Smith@contoso.com még nem létezik UPN-érték a címtárban
-* **Output** : " J.Smith@contoso.com ", ha John.Smith@contoso.com a címtárban már létezik UPN-érték
-* **Kimenet** : " Jo.Smith@contoso.com ", ha a fenti két UPN-érték már létezik a címtárban
+* **Output**: " John.Smith@contoso.com ", ha John.Smith@contoso.com még nem létezik UPN-érték a címtárban
+* **Output**: " J.Smith@contoso.com ", ha John.Smith@contoso.com a címtárban már létezik UPN-érték
+* **Kimenet**: " Jo.Smith@contoso.com ", ha a fenti két UPN-érték már létezik a címtárban
 
 ### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>A flow e-mail-értéke, ha nem NULL értékű, máskülönben flow userPrincipalName
 Ha megtalálható a mail attribútuma. Ha nem, akkor inkább a userPrincipalName értékét kell átvennie.
@@ -733,7 +733,7 @@ Ha megtalálható a mail attribútuma. Ha nem, akkor inkább a userPrincipalName
 
 * **Bemenet** (e-mail): NULL
 * **Bemenet** (userPrincipalName): " John.Doe@contoso.com "
-* **Kimenet** : " John.Doe@contoso.com "
+* **Kimenet**: " John.Doe@contoso.com "
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [A felhasználók üzembe helyezésének és megszüntetésének automatizálása az SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md)

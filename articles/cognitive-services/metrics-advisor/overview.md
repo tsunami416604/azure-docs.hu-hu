@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 1a57660733b7257b224c38a55059f1bf069495a0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0de93eff0fc422bc28fe7b2c42c295c8d8b1acc4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890242"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344470"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Mi a mérőszámok tanácsadója (előzetes verzió)? 
 
@@ -60,7 +60,7 @@ A munkafolyamat egyszerű: az adatfeldolgozás után finomíthatja a rendellenes
     4. Diagnosztikai ismeretek megtekintése
 3. A példány testreszabásához használja a REST API.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg a gyors útmutatóval: [Figyelje meg az első mérőszámot a weben](quickstarts/web-portal.md).
-* Ismerkedés a gyors üzembe helyezéssel: [a REST API-k segítségével testre szabhatja a megoldást](quickstarts/rest-api.md).
+* Ismerkedés a gyors üzembe helyezéssel: [a REST API-k segítségével testre szabhatja a megoldást](./quickstarts/rest-api-and-client-library.md).
