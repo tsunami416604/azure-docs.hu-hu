@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: a39b6973767b72e69a82750ab8d0d487c733eda0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e525fc0705dffcd4765e6a1f6c5235bdef260fcd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657108"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339676"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Az összesített névtér beállítása
 
@@ -83,7 +83,7 @@ Ez a lista a névtérbeli elérési utak maximális számát jeleníti meg konfi
   * 6 TB gyorsítótár – 10 névtér elérési útja
   * 23 TB gyorsítótár – 20 névtér elérési útja
 
-* Legfeljebb 5 GB/s átviteli sebesség:
+* Legfeljebb 4 GB/s átviteli sebesség:
 
   * 6 TB gyorsítótár – 10 névtér elérési útja
   * 12 TB gyorsítótár – 10 névtér elérési útja
@@ -129,7 +129,7 @@ A frissítési parancshoz használt beállítások hasonlóak a "Create" parancs
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután létrehozta a tárolási célok összesített névterét, csatlakoztathatja az ügyfeleket a gyorsítótárhoz. További információért olvassa el ezeket a cikkeket.
 

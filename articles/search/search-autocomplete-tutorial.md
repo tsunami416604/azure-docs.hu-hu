@@ -1,5 +1,5 @@
 ---
-title: Automatikus kiegészítés és javaslatok hozzáadása egy keresési mezőben
+title: Automatikus kiegészítés hozzáadása egy keresési mezőhöz
 titleSuffix: Azure Cognitive Search
 description: Az Azure-Cognitive Search keresési típusú lekérdezési műveleteinek engedélyezése a javaslatok létrehozásával és a befejezett kifejezésekkel vagy kifejezésekkel rendelkező keresőmező automatikus kiegészítésére szolgáló kérelmek összeállításával. A javasolt egyezéseket is visszaadhatja.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5b498b8f49f2f0636b010e3c4d86f13ad44ac090
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029013"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339608"
 ---
-# <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára
+# <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára az Azure Cognitive Search használatával
 
 A keresési típus egy gyakori módszer a felhasználó által kezdeményezett lekérdezések hatékonyságának javítására. Az Azure Cognitive Searchban ez a megoldás az *automatikus kiegészítésen* keresztül támogatott, amely egy kifejezést vagy kifejezést végez a részleges bevitel ("Micro" és "Microsoft") alapján. A második felhasználói élmény *javaslatok*, vagy a megfelelő dokumentumok rövid listája (a könyv címének visszaadása egy azonosítóval, amely a könyv részletes oldalára hivatkozik). Az automatikus kiegészítés és a javaslatok is az indexben egyeznek meg. A szolgáltatás nem kínál olyan lekérdezéseket, amelyek nulla eredményt adnak vissza.
 

@@ -3,12 +3,12 @@ title: Böngészőalapú kapcsolatok engedélyezése Azure DevTest Labs virtuál
 description: A DevTest Labs mostantól integrálva van az Azure Bastion szolgáltatással, a labor tulajdonosaként pedig engedélyezheti a tesztkörnyezet összes virtuális gépe elérését egy böngészőben.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 28a3c11f3df578265f9746a173fcb3029a132b26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d9d631c79c22f1f713cfc4ee7cdd766a4ad8f06
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870493"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341172"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>Böngészőalapú kapcsolatok engedélyezése Azure DevTest Labs virtuális gépeken 
 A DevTest Labs integrálható az [Azure Bastion](../bastion/index.yml)szolgáltatással, amely lehetővé teszi a virtuális gépekhez való kapcsolódást egy böngészőben. Először engedélyeznie kell a böngészőalapú kapcsolódást a labor virtuális gépeken.
@@ -20,7 +20,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a böngészőalapú kapcso
 
 ## <a name="prerequisites"></a>Előfeltételek 
 - Helyezzen üzembe egy megerősített gazdagépet a meglévő labor virtuális hálózatában **(vagy)** a labort egy megerősített konfigurált virtuális hálózattal.
-Ha meg szeretné tudni, hogyan helyezhet üzembe egy megerősített gazdagépet egy virtuális hálózaton, tekintse meg  [Az Azure Bastion-gazdagép létrehozása](../bastion/bastion-create-host-portal.md)című témakört. A megerősített gazdagép létrehozásakor válassza ki a labor virtuális hálózatát. 
+Ha meg szeretné tudni, hogyan helyezhet üzembe egy megerősített gazdagépet egy virtuális hálózaton, tekintse meg  [Az Azure Bastion-gazdagép létrehozása](../bastion/tutorial-create-host-portal.md)című témakört. A megerősített gazdagép létrehozásakor válassza ki a labor virtuális hálózatát. 
 - A tesztkörnyezet felhasználójának **olvasó** szerepkörrel kell rendelkeznie a megerősített gazdagépen és a megerősített virtuális hálózaton. 
 
 ## <a name="create-a-second-sub-net-in-the-bastion-virtual-network"></a>Második alhálózat létrehozása a megerősített virtuális hálózaton
@@ -40,7 +40,7 @@ Most engedélyezze a virtuális gépek létrehozását ebben az alhálózatban a
     > Az Azure Bastion mostantól általánosan elérhető a következő régiókban: USA nyugati régiója, USA keleti régiója, Nyugat-Európa, az USA déli középső régiója, Kelet-Ausztrália és Kelet-Japán. Ezért hozzon létre egy labort ezekben a régiókban, ha a labor egyike sincs bennük. 
     
 1. A bal oldali menüben a **Beállítások** szakaszban válassza a **konfiguráció és szabályzatok** lehetőséget. 
-1. Válassza a **virtuális hálózatok**lehetőséget.
+1. Válassza a **virtuális hálózatok** lehetőséget.
 1. Válassza a **Hozzáadás** lehetőséget az eszköztáron. 
 1. Válassza ki azt a **virtuális hálózatot** , amelyen telepítve van a megerősített gazdagép. 
 1. Válassza ki a virtuális gépek alhálózatát, ne pedig a **AzureBastionSubnet**, a másikat, amelyet korábban hozott létre. Zárjuk be a lapot, és nyissa meg újra, ha nem látja az alhálózatot a listában alul. 
@@ -57,8 +57,8 @@ Miután megtörtént egy megerősített virtuális hálózat létrehozása a lab
 Az alábbi lépéseket követve engedélyezheti a böngésző kapcsolódását a labor virtuális gépeken:
 
 1. A Azure Portal navigáljon a *laborhoz*.
-1. Válassza **a konfiguráció és szabályzatok**lehetőséget.
-1. A **Beállítások**területen válassza a **böngészőbeli kapcsolat**lehetőséget. Ha nem látja ezt a beállítást, akkor a **konfigurációs házirendek** lapon nyissa meg újra. 
+1. Válassza **a konfiguráció és szabályzatok** lehetőséget.
+1. A **Beállítások** területen válassza a **böngészőbeli kapcsolat** lehetőséget. Ha nem látja ezt a beállítást, akkor a **konfigurációs házirendek** lapon nyissa meg újra. 
 
     ![Böngészőalapú kapcsolatok engedélyezése](./media/enable-browser-connection-lab-virtual-machines/browser-connect.png)
 

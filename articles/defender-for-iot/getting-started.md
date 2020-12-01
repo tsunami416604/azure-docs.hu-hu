@@ -1,5 +1,5 @@
 ---
-title: Üzembe helyezési lehetőségek
+title: Üzembe helyezési beállítások
 description: Ismerkedjen meg a Defender alapszintű munkafolyamatával a IoT szolgáltatásainak és szolgáltatásának megismeréséhez.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: e3de253ee6f45f9296d6b09189fe4bc488be36ad
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 6aa525fd7f2d82194baa2e2a0c910cb71509c2d5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090063"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340016"
 ---
 # <a name="getting-started-with-azure-defender-for-iot"></a>Ismerkedés az Azure Defender IoT
 
@@ -30,9 +30,9 @@ Az Azure Defender IoT való üzembe helyezéséhez hajtsa végre az alábbi lép
 
 ## <a name="1-set-up-azure"></a>1. az Azure beállítása
 
-- Hozzon létre egy Azure-fiókot. További információ: Azure- [fiók létrehozása](https://docs.microsoft.com/learn/modules/create-an-azure-account/).
+- Hozzon létre egy Azure-fiókot. További információ: Azure- [fiók létrehozása](/learn/modules/create-an-azure-account/).
 
-- Tűzfal vagy proxy: Ha tűzfallal vagy hasonló beavatkozó hálózati eszközzel rendelkezik, amely lehetővé teszi a megadott kapcsolatok engedélyezését, ellenőrizze, hogy a *. azure-devices.net:443 meg van-e nyitva a tűzfal vagy a proxy számára. Ha a helyettesítő karakterek nem támogatottak, vagy ha több vezérlőt szeretne használni, akkor az adott IoT Hub teljes tartománynevet meg kell nyitni az FW-ben vagy a proxyban. További információ: [Reference-IoT hub végpontok](/azure/iot-hub/iot-hub-devguide-endpoints).
+- Tűzfal vagy proxy: Ha tűzfallal vagy hasonló beavatkozó hálózati eszközzel rendelkezik, amely lehetővé teszi a megadott kapcsolatok engedélyezését, ellenőrizze, hogy a *. azure-devices.net:443 meg van-e nyitva a tűzfal vagy a proxy számára. Ha a helyettesítő karakterek nem támogatottak, vagy ha több vezérlőt szeretne használni, akkor az adott IoT Hub teljes tartománynevet meg kell nyitni az FW-ben vagy a proxyban. További információ: [Reference-IoT hub végpontok](../iot-hub/iot-hub-devguide-endpoints.md).
 
 ## <a name="2-deploy-hardware-software-and-onboard-to-sensor"></a>2. hardverek, szoftverek és bevezetések üzembe helyezése az érzékelőn
 
@@ -63,7 +63,7 @@ További információ: az [Azure Defender for IoT szenzor felhasználói útmuta
 - Ha riasztási információkat szeretne küldeni az Azure Sentinelnek, konfigurálja az Azure Sentinelt: [az adatok összekapcsolását a Defendertől az Azure Sentinel IoT](how-to-configure-with-sentinel.md).
  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Defender engedélyezése a IoT](quickstart-onboard-iot-hub.md)
 - A [megoldás](quickstart-configure-your-solution.md) konfigurálása

@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 52fad84c9ed145b4acec73ffad1fa470acf94532
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b617ba8db8f9dbb1c25ac34aa879613c29c723b7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994587"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340288"
 ---
 # <a name="sizes-for-cloud-services"></a>Méretek Cloud Services
 Ez a témakör a Cloud Service-példányok (webes szerepkörök és feldolgozói szerepkörök) elérhető méreteit és beállításait ismerteti. Emellett üzembe helyezési megfontolásokat is biztosít, hogy az erőforrások használatának megtervezésekor vegye figyelembe a használatát. Minden mérethez tartozik egy azonosító, amelyet a [szolgáltatás definíciós fájljába](cloud-services-model-and-package.md#csdef)helyez. Az egyes méretek árai a [Cloud Services díjszabási](https://azure.microsoft.com/pricing/details/cloud-services/) oldalon érhetők el.
@@ -36,7 +36,7 @@ A virtuális gépek mérete befolyásolja az árképzést. A méret emellett hat
 
 Az alábbiak segíthetnek a megfelelő méret kiválasztásában:
 
-* Az A8–A11- és a H-sorozat méretei más néven *nagy számítási igényű példányokként* ismertek. Az ezeket a méreteket futtató hardver a nagy számítási és hálózatigényű alkalmazások futtatására lett kialakítva és optimalizálva, ide értve a nagy teljesítményű feldolgozási (HPC) fürtalkalmazásokat, a modellezést és a szimulációkat. Az A8–A11-sorozat Intel Xeon E5-2670 @ 2,6 GHz-es, a H-sorozat pedig Intel Xeon E5-2667 v3 @ 3,2 GHz-es processzorokat használ. A méretek használatával kapcsolatos részletes információkért és szempontokért lásd: [nagy teljesítményű számítási](../virtual-machines/sizes-hpc.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)virtuálisgép-méretek.
+* Az A8–A11- és a H-sorozat méretei más néven *nagy számítási igényű példányokként* ismertek. Az ezeket a méreteket futtató hardver a nagy számítási és hálózatigényű alkalmazások futtatására lett kialakítva és optimalizálva, ide értve a nagy teljesítményű feldolgozási (HPC) fürtalkalmazásokat, a modellezést és a szimulációkat. Az A8–A11-sorozat Intel Xeon E5-2670 @ 2,6 GHz-es, a H-sorozat pedig Intel Xeon E5-2667 v3 @ 3,2 GHz-es processzorokat használ. A méretek használatával kapcsolatos részletes információkért és szempontokért lásd: [nagy teljesítményű számítási](../virtual-machines/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)virtuálisgép-méretek.
 * A Dv3 sorozat, a Dv2 sorozat, a D sorozat, a G sorozat, ideális olyan alkalmazások számára, amelyek gyorsabb processzorokat, jobb helyi lemez-teljesítményt vagy nagyobb memóriát igényelnek. Nagyon hatékony kombinációt kínálnak számos nagyvállalati szintű alkalmazáshoz.
 * Az Azure-központokban lévő némelyik fizikai gazdagép nem képes futtatni a nagyobb virtuálisgép-méreteket, például az A5–A11 méreteket. Ennek eredményeképpen előfordulhat, hogy a hibaüzenet **nem tudta konfigurálni a (z) {Machine Name} virtuális gépet** , vagy **nem tudta létrehozni a (z) {Machine Name} virtuális** gépet a meglévő virtuális gép új méretre való átméretezése során. hozzon létre egy új virtuális gépet egy, a 2013. április 16. előtt létrehozott virtuális hálózaton. új virtuális gép hozzáadása egy meglévő felhőalapú szolgáltatáshoz. Lásd a következő [hibát: "nem sikerült konfigurálni a virtuális gépet"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) a támogatási fórumon az egyes telepítési forgatókönyvekre vonatkozó megkerülő megoldásokhoz.
 * Az előfizetés is korlátozhatja az egyes családokban üzembe helyezhető magok mennyiségét. A kvóták növelésével kapcsolatban vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
@@ -58,7 +58,7 @@ Létrehozta az Azure számítási egység (ACU) koncepcióját, amely lehetővé
 | [A5 – 7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
 | [Egy v2](#av2-series) |100 |
-| [T](#d-series) |160 |
+| [D](#d-series) |160 |
 | [D v2](#dv2-series) |160 – 190 * |
 | [D v3](#dv3-series) |160 – 190 * |
 | [E v3](#ev3-series) |160 – 190 * |
@@ -88,7 +88,7 @@ Az alábbi táblázatokban a méretek és azok kapacitásai láthatóak.
 | A7              | 8         | 56           | 2040                 | 4/magas |
 
 ## <a name="a-series---compute-intensive-instances"></a>A-sorozat – nagy számítási igényű példányok
-A méretek használatával kapcsolatos információkért és szempontokért lásd: [nagy teljesítményű számítási VM-méretek](../virtual-machines/sizes-hpc.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
+A méretek használatával kapcsolatos információkért és szempontokért lásd: [nagy teljesítményű számítási VM-méretek](../virtual-machines/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 | Méret            | Processzormagok | Memória: GiB  | Ideiglenes tárolás: GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
@@ -217,4 +217,4 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [az Azure-előfizetések és -szolgáltatások korlátozásait, kvótáit és megkötéseit](../azure-resource-manager/management/azure-subscription-service-limits.md).
-* További [Tudnivalók a nagy teljesítményű számítási virtuálisgép-méretekről](../virtual-machines/sizes-hpc.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) a HPC-munkaterhelések esetében.
+* További [Tudnivalók a nagy teljesítményű számítási virtuálisgép-méretekről](../virtual-machines/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a HPC-munkaterhelések esetében.

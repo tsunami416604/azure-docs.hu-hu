@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 8e18b79cc14fe98879ec97361f6e275d8fd918bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2634ed819b8818632c58b9e471b0f26190e5f16b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940929"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339965"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Biztonsági ügynök kiválasztása és üzembe helyezése a IoT-eszközön
 
@@ -45,7 +45,7 @@ A C-alapú biztonsági ügynök alacsonyabb memória-lábnyomot tartalmaz, és i
 | **Nyílt forráskódú** | Az [mit licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető el a [githubban](https://aka.ms/iot-security-github-c) | Az [mit licenc](https://en.wikipedia.org/wiki/MIT_License) alatt érhető el a [githubban](https://aka.ms/iot-security-github-cs) |
 | **Fejlesztési nyelv**    | C# | C# |
 | **Támogatott Windows-platformok?** | Nem | Igen |
-| **Windows előfeltételek** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **Windows előfeltételek** | --- | [WMI](/windows/desktop/wmisdk/) |
 | **Támogatott linuxos platformok?** | Igen, x64 és x86 | Igen, csak x64 |
 | **A Linux előfeltételei** | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins, sudo, netstat, iptables |
 | **Lemez lábnyoma** | 10,5 MB | 90 MB |
@@ -57,9 +57,9 @@ A C-alapú biztonsági ügynök alacsonyabb memória-lábnyomot tartalmaz, és i
 
 ## <a name="security-agent-installation-guidelines"></a>Biztonsági ügynök telepítési útmutatója
 
-**Windows**esetén: a install SecurityAgent.ps1 szkriptet rendszergazdai PowerShell-ablakból kell végrehajtani.
+**Windows** esetén: a install SecurityAgent.ps1 szkriptet rendszergazdai PowerShell-ablakból kell végrehajtani.
 
-**Linux**esetén: a InstallSecurityAgent.sh rendszergazdaként kell futnia. A telepítési parancs "sudo" előtaggal való előjavítását javasoljuk.
+**Linux** esetén: a InstallSecurityAgent.sh rendszergazdaként kell futnia. A telepítési parancs "sudo" előtaggal való előjavítását javasoljuk.
 
 ## <a name="choose-an-agent-flavor"></a>Ügynök íz kiválasztása
 
@@ -87,9 +87,9 @@ Az alábbi lista tartalmazza az összes jelenleg támogatott platformot.
 
 |Defender a IoT-ügynökhöz |Operációs rendszer |Architektúra |
 |--------------|------------|--------------|
-|C|Ubuntu 16.04 |    x64|
-|C|Ubuntu 18.04 |    x64, ARMv7|
-|C|Debian 9 |    x64, x86|
+|M|Ubuntu 16.04 |    x64|
+|M|Ubuntu 18.04 |    x64, ARMv7|
+|M|Debian 9 |    x64, x86|
 |C#|Ubuntu 16.04     |x64|
 |C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
@@ -97,7 +97,7 @@ Az alábbi lista tartalmazza az összes jelenleg támogatott platformot.
 |C#|Windows 10 IoT Core, Build 17763    |x64|
 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A konfigurációs beállításokkal kapcsolatos további tudnivalókért folytassa az ügynök konfigurációjának útmutatója című témakört.
 > [!div class="nextstepaction"]

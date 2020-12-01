@@ -3,12 +3,12 @@ title: Azure Event Hubs – kivételek (örökölt)
 description: Ez a cikk az Azure Event Hubs üzenetkezelési kivételek és a javasolt műveletek listáját tartalmazza.
 ms.topic: article
 ms.date: 11/02/2020
-ms.openlocfilehash: adaf7242530727a1f77a9662110a43341e57e80a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289331"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340967"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Üzenetkezelési kivételek Event Hubs – .NET (örökölt)
 Ez a szakasz a .NET-keretrendszer API-jai által generált .NET-kivételeket sorolja fel. 
@@ -70,7 +70,7 @@ Az alábbi táblázat az üzenetkezelési kivételek típusait, valamint azok ok
 | [Microsoft. ServiceBus. Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft. Azure. EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | A művelethez társított entitás nem létezik, vagy törölték. | Győződjön meg arról, hogy az entitás létezik. | Az újrapróbálkozás nem segít. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | Az ügyfél nem tud kapcsolatot létesíteni az Event hub szolgáltatással. |Győződjön meg arról, hogy a megadott állomásnév helyes, és a gazdagép elérhető. | Az újrapróbálkozás akkor lehet hasznos, ha akadozó kapcsolódási problémák léptek fel. |
 | [Microsoft. ServiceBus. Messaging ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft. Azure. EventHubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | A szolgáltatás jelenleg nem tudja feldolgozni a kérelmet. | Az ügyfél hosszabb ideig is megvárhat, majd próbálja megismételni a műveletet. <br /> Lásd: [ServerBusyException](#serverbusyexception). | Előfordulhat, hogy az ügyfél bizonyos intervallum után újra próbálkozik. Ha az újrapróbálkozások eltérő kivételt eredményeznek, akkor ellenőrizze, hogy az újrapróbálkozási viselkedést az adott kivétel okozza. |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Általános üzenetküldési kivétel, amely a következő esetekben fordulhat elő: kísérlet történt egy [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) létrehozására egy másik típusú entitáshoz tartozó névvel vagy elérési úttal (például egy témakör). 1 MB-nál nagyobb üzenet küldésére történt kísérlet. A kiszolgáló vagy szolgáltatás hibát észlelt a kérelem feldolgozása során. A részletekért tekintse meg a kivételt jelző üzenetet. Ez a kivétel általában átmeneti kivétel. | Ellenőrizze a kódot, és győződjön meg arról, hogy csak szerializálható objektumok használatosak az üzenet törzséhez (vagy használjon egyéni szerializáló). Keresse meg a tulajdonságok támogatott értékeit, és csak a támogatott típusokat használja. Keresse meg a [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) tulajdonságot. Ha az értéke **igaz** , megismételheti a műveletet. | Az újrapróbálkozási viselkedés nincs meghatározva, és lehet, hogy nem segít. |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | Általános üzenetküldési kivétel, amely a következő esetekben fordulhat elő: kísérlet történt egy [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) létrehozására egy másik típusú entitáshoz tartozó névvel vagy elérési úttal (például egy témakör). 1 MB-nál nagyobb üzenet küldésére történt kísérlet. A kiszolgáló vagy szolgáltatás hibát észlelt a kérelem feldolgozása során. A részletekért tekintse meg a kivételt jelző üzenetet. Ez a kivétel általában átmeneti kivétel. | Ellenőrizze a kódot, és győződjön meg arról, hogy csak szerializálható objektumok használatosak az üzenet törzséhez (vagy használjon egyéni szerializáló). Keresse meg a tulajdonságok támogatott értékeit, és csak a támogatott típusokat használja. Keresse meg a [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) tulajdonságot. Ha az értéke **igaz**, megismételheti a műveletet. | Az újrapróbálkozási viselkedés nincs meghatározva, és lehet, hogy nem segít. |
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) | Kísérlet történt olyan entitás létrehozására, amelynek a neve már használja egy másik entitás által az adott szolgáltatási névtérben. | Törölje a meglévő entitást, vagy válasszon másik nevet a létrehozandó entitás számára. | Az újrapróbálkozás nem segít. |
 | [Quotaexceededexception osztályról](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) | Az üzenetküldési entitás elérte a maximálisan engedélyezett méretet. Ez a kivétel akkor fordulhat elő, ha a fogadók maximális száma (amely 5) már meg van nyitva felhasználónkénti csoport szintjén. | Hozzon létre helyet az entitásban az entitásból vagy annak alvárólistából érkező üzenetek fogadásával. <br /> Lásd: [quotaexceededexception osztályról](#quotaexceededexception) | Az újrapróbálkozás akkor lehet hasznos, ha az üzenetek időközben el lettek távolítva. |
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | Futásidejű művelet kérése letiltott entitáson. |Aktiválja az entitást. | Az újrapróbálkozás segíthet abban az esetben, ha az entitást ideiglenesen aktiválták. |
@@ -107,11 +107,11 @@ Ez a hiba két okból fordulhat elő:
 
 - A terhelés nem egyenletesen oszlik el az Event hub összes partícióján, és egy partíció a helyi átviteli egységre vonatkozó korlátozást eredményez.
     
-    **Megoldás** : a partíció-terjesztési stratégia felülvizsgálata vagy a [EventHubClient. Send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) kipróbálása segíthet.
+    **Megoldás**: a partíció-terjesztési stratégia felülvizsgálata vagy a [EventHubClient. Send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) kipróbálása segíthet.
 
 - A Event Hubs névtérnek nincs elegendő átviteli egysége (a [Azure Portal](https://portal.azure.com) Event Hubs névtér ablakában ellenőrizheti a **mérőszámok** képernyőt a megerősítéshez). A portál összesített (1 perces) adatokat jelenít meg, de az átviteli sebességet valós időben mérjük, így csak becslést lehet készíteni.
 
-    **Megoldás** : a névtérben található átviteli egységek növelése segíthet. 
+    **Megoldás**: a névtérben található átviteli egységek növelése segíthet. 
 
     Az átviteli egységeket a Azure Portal **Event Hubs névtér** oldalának **Méretezés** lapján vagy **Áttekintés** lapján konfigurálhatja. Vagy használhatja az [automatikus](event-hubs-auto-inflate.md)kiemelést is, amely az átviteli egységek számának növelésével automatikusan méretezhető, hogy megfeleljen a használati igényeknek.
 
@@ -123,20 +123,20 @@ Ez a hiba két okból fordulhat elő:
     
     Az **Áttekintés** lap **mérőszámok megjelenítése** szakaszában váltson át az **átviteli sebesség** lapra. A diagramot kiválasztva megnyithatja azt egy nagyobb ablakban, az x tengelyen pedig 1 perces időközökkel. Tekintse meg a csúcsérték-értékeket, és ossza meg őket 60-re a bejövő bájtok/másodpercek vagy a kimenő bájtok/másodpercek lekéréséhez. Hasonló megközelítéssel számíthatja **ki a kérések lapon a** kérelmek másodpercenkénti számát. 
 
-    Ha az értékek nagyobbak, mint az adatmennyiség * korlát (1 MB/s a bejövő forgalomhoz, vagy 1000 bejövő forgalom/másodperc, 2 MB/s a kimenő forgalomhoz), növelje az TUs számát egy Event Hubs névtér **méretével** (a bal oldali menüben), vagy használja a Event Hubs [automatikus](event-hubs-auto-inflate.md) méretezési funkcióját. Vegye figyelembe, hogy az automatikus feltöltés legfeljebb 20 TUS-t tud emelni. Ahhoz, hogy pontosan 40 TUs-re növelje, küldjön egy [támogatási kérést](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+    Ha az értékek nagyobbak, mint az adatmennyiség * korlát (1 MB/s a bejövő forgalomhoz, vagy 1000 bejövő forgalom/másodperc, 2 MB/s a kimenő forgalomhoz), növelje az TUs számát egy Event Hubs névtér **méretével** (a bal oldali menüben), vagy használja a Event Hubs [automatikus](event-hubs-auto-inflate.md) méretezési funkcióját. Vegye figyelembe, hogy az automatikus feltöltés legfeljebb 20 TUS-t tud emelni. Ahhoz, hogy pontosan 40 TUs-re növelje, küldjön egy [támogatási kérést](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ### <a name="error-code-50001"></a>50001-es hibakód
 
 Ennek a hibának ritkán kell történnie. Ez akkor történik meg, amikor a névtér kódját futtató tárolója alacsony a CPU-ban – nem több, mint néhány másodperc, mielőtt megkezdődik a Event Hubs Load Balancer.
 
-**Megoldás** : korlátozza a GetRuntimeInformation metódus hívásait. Az Azure Event Hubs másodpercenként legfeljebb 50 hívást támogat a GetRuntimeInfo másodpercenként. A korlát elérésekor a következőhöz hasonló kivétel jelenhet meg:
+**Megoldás**: korlátozza a GetRuntimeInformation metódus hívásait. Az Azure Event Hubs másodpercenként legfeljebb 50 hívást támogat a GetRuntimeInfo másodpercenként. A korlát elérésekor a következőhöz hasonló kivétel jelenhet meg:
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 

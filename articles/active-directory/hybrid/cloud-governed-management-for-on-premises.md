@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5374dc2ef4c736535b218d8cd67521e83a24a40b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1b4d1041b9d330227fadf31f6afc1804174ea2ad
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836461"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340849"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Hogyan biztosítja az Azure AD a felhőben szabályozott felügyeletet a helyszíni számítási feladatokhoz
 
@@ -115,6 +115,6 @@ A hibrid környezetekben a Microsoft stratégiája az olyan üzemelő példányo
 
 ![Azure AD-architektúra](media/cloud-governed-management-for-on-premises/image6.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az utazás megkezdéséről: az Azure AD üzembehelyezési csomagjai, amely a következő címen található: <https://aka.ms/deploymentplans> . Teljes körű útmutatást nyújtanak Azure Active Directory (Azure AD) képességeinek üzembe helyezéséhez. Az egyes tervek ismertetik az Azure AD-képességek sikeres kiépítéséhez szükséges üzleti értékeket, tervezési szempontokat, kialakítási és üzemeltetési eljárásokat. A Microsoft folyamatosan frissíti az üzembe helyezési terveket az ügyfelek üzembe helyezésével és más visszajelzésekkel kapcsolatos ajánlott eljárásokkal, amikor új képességeket adunk a felhőből az Azure AD-vel való felügyelethez.

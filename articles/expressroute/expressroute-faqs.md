@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: b8ef1c14089744defaf6de5b3cf9e72d281452b6
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 7b7362d9315d8228e56dc85b2da22e0d507fa8ae
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027108"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339789"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -46,7 +46,7 @@ Nem. A szolgáltatótól bármilyen sebességű VPN-kapcsolat is megvásárolhat
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Ha fizetnem kell egy adott sávszélesség ExpressRoute, akkor használhatom a beszerzett sávszélességet?
 
-Igen, a ExpressRoute-áramkör másodlagos kapcsolatán elérhető sávszélességgel akár kétszer is felhasználhatja a sávszélesség-korlátot. Az áramkör beépített redundancia úgy van konfigurálva, hogy az elsődleges és másodlagos kapcsolatok, a megszerzett sávszélesség és a Microsoft vállalati peremhálózati útválasztói (Msee) használatával legyenek beállítva. Ha szükséges, a másodlagos kapcsolaton keresztül elérhető sávszélesség további forgalomhoz is használható. Mivel a másodlagos kapcsolatok a redundancia szempontjából jelentenek, azonban nem garantált, és nem használható tovább a hosszabb ideig tartó forgalomhoz. Ha többet szeretne megtudni arról, hogyan használható mindkét connnections a forgalom továbbítására [, tekintse](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending)meg a következőt:.
+Igen, a ExpressRoute-áramkör másodlagos kapcsolatán elérhető sávszélességgel akár kétszer is felhasználhatja a sávszélesség-korlátot. Az áramkör beépített redundancia úgy van konfigurálva, hogy az elsődleges és másodlagos kapcsolatok, a megszerzett sávszélesség és a Microsoft vállalati peremhálózati útválasztói (Msee) használatával legyenek beállítva. Ha szükséges, a másodlagos kapcsolaton keresztül elérhető sávszélesség további forgalomhoz is használható. Mivel a másodlagos kapcsolatok a redundancia szempontjából jelentenek, azonban nem garantált, és nem használható tovább a hosszabb ideig tartó forgalomhoz. Ha többet szeretne megtudni arról, hogyan használható mindkét connnections a forgalom továbbítására [, tekintse](./expressroute-optimize-routing.md#solution-use-as-path-prepending)meg a következőt:.
 Ha azt tervezi, hogy csak az elsődleges kapcsolatát használja a forgalom továbbítására, a kapcsolat sávszélessége rögzített, és a rendszer a túlfizetésre kísérli meg a csomagokat. Ha a forgalom egy ExpressRoute-átjárón keresztül áramlik, az SKU sávszélessége rögzített, és nem használható fel.
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Használhatom ugyanazt a magánhálózati hálózati kapcsolatokat a virtuális hálózattal és más Azure-szolgáltatásokkal egyidejűleg?

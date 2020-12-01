@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: a5382313c837482f116f498f3a05c36447062b0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b33c456d47426a3721e8582f24ffd603db0429c9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940944"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340033"
 ---
 # <a name="security-module"></a>Biztonsági modul
 
@@ -30,7 +30,7 @@ Az Azure-ban beépített IoT-megoldások esetében az eszközök az ikrek kulcss
 
 A IoT Defender teljes körű integrációt biztosít a meglévő IoT-eszközkezelés platformmal, lehetővé téve az eszköz biztonsági állapotának kezelését, valamint a meglévő eszközök vezérlési képességeinek kihasználását. Az integráció a IoT Hub Twin mechanizmus használatával érhető el.
 
-Tudjon meg többet az Azure IoT Hub [eszközön található ikrek](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) koncepciójának megismeréséről.
+Tudjon meg többet az Azure IoT Hub [eszközön található ikrek](../iot-hub/iot-hub-devguide-device-twins.md) koncepciójának megismeréséről.
 
 ## <a name="security-module-twins"></a>Biztonsági modul ikrek
 
@@ -38,7 +38,7 @@ A IoT Defender a szolgáltatás minden eszközéhez külön biztonsági modult t
 A biztonsági modul Twin tartalmazza az eszköz biztonságával kapcsolatos összes információt a megoldás minden egyes eszközén.
 Az eszköz biztonsági tulajdonságait egy külön biztonsági modulban, a biztonságosabb kommunikációhoz, valamint a kevesebb erőforrást igénylő frissítések és karbantartás engedélyezéséhez kell megőrizni.
 
-Lásd: a [biztonsági modul létrehozása](quickstart-create-security-twin.md) és a [biztonsági ügynökök konfigurálása](how-to-agent-configuration.md) , amelyekből megtudhatja, hogyan hozhatja létre, testreszabhatja és konfigurálhatja a Twin-et. Tekintse meg az ikrek [modul ismertetése](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) című témakört, amely részletesebben ismerteti a IoT hub-ben az ikrek koncepcióját.
+Lásd: a [biztonsági modul létrehozása](quickstart-create-security-twin.md) és a [biztonsági ügynökök konfigurálása](how-to-agent-configuration.md) , amelyekből megtudhatja, hogyan hozhatja létre, testreszabhatja és konfigurálhatja a Twin-et. Tekintse meg az ikrek [modul ismertetése](../iot-hub/iot-hub-devguide-module-twins.md) című témakört, amely részletesebben ismerteti a IoT hub-ben az ikrek koncepcióját.
 
 ## <a name="see-also"></a>Lásd még
 

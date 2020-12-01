@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9f816b35fd79d3f158ea12fd2c7e1d811823dc8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f521bd593369509fd520831f90ce9c601227f09
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936280"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340050"
 ---
 # <a name="security-module-for-azure-rtos-preview"></a>Biztonsági modul az Azure RTOS (előzetes verzió)
 
@@ -32,7 +32,7 @@ Az Azure RTOS biztonsági modulja a háttérben fut, és zökkenőmentes felhasz
 
 ## <a name="azure-rtos-netx-duo"></a>Azure RTOS NetX Duo
 
-Az Azure RTOS NetX Duo egy fejlett, nagyvállalati szintű TCP/IP hálózati verem, amely kifejezetten a mélyen beágyazott valós idejű és IoT alkalmazásokhoz készült. Az Azure RTOS NetX Duo egy kettős IPv4-és IPv6-alapú hálózati verem, amely a protokollok széles választékát biztosítja, beleértve a biztonságot és a felhőt is. További információ az [Azure RTOS NetX Duo](https://aka.ms/netxduo) megoldásairól.
+Az Azure RTOS NetX Duo egy fejlett, nagyvállalati szintű TCP/IP hálózati verem, amely kifejezetten a mélyen beágyazott valós idejű és IoT alkalmazásokhoz készült. Az Azure RTOS NetX Duo egy kettős IPv4-és IPv6-alapú hálózati verem, amely a protokollok széles választékát biztosítja, beleértve a biztonságot és a felhőt is. További információ az [Azure RTOS NetX Duo](/azure/rtos/netx-duo/) megoldásairól.
 
 A modul a következő funkciókat kínálja:
 
@@ -47,11 +47,11 @@ Az Azure RTOS biztonsági modulját az Azure IoT middleware-platformja inicializ
 :::image type="content" source="media/architecture/security-module-state-diagram.png" alt-text="Azure IoT biztonsági modul állapotának diagramja és információáramlás":::
 
 Az Azure RTOS biztonsági modulja három gyűjtő használatával figyeli a következő eszköz-tevékenységeket és-információkat:
-- Eszköz hálózati tevékenységének **TCP**, **UDP**és **ICM**
+- Eszköz hálózati tevékenységének **TCP**, **UDP** és **ICM**
 - Rendszerinformációk **Threadx** és **NetX Duo** verziókként
 - Szívverési események
 
-Minden gyűjtő egy prioritási csoporthoz van csatolva, és minden prioritási csoportnak saját intervalluma van, amely **alacsony**, **közepes**és **magas**lehetséges értékeket tartalmaz. Az intervallumok befolyásolják az adatok gyűjtésének és elküldéseinak időintervallumát.
+Minden gyűjtő egy prioritási csoporthoz van csatolva, és minden prioritási csoportnak saját intervalluma van, amely **alacsony**, **közepes** és **magas** lehetséges értékeket tartalmaz. Az intervallumok befolyásolják az adatok gyűjtésének és elküldéseinak időintervallumát.
 
 Minden időintervallum konfigurálható, és a IoT-összekötők engedélyezhetők és letilthatók a megoldás további [testreszabása](how-to-azure-rtos-security-module.md)érdekében. 
 
@@ -63,9 +63,8 @@ Az Azure RTOS biztonsági modulja támogatja a konkrét biztonsági riasztásoka
 
 Az Azure RTOS biztonsági modulja ingyenes letöltést biztosít a IoT-eszközökhöz. A IoT Cloud Service Defender egy 30 napos próbaidőszakot biztosít az Azure-előfizetések esetében. [Töltse le most a biztonsági modult](https://github.com/azure-rtos/azure-iot-preview/releases) , és ismerkedjen meg az első lépésekkel. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg az Azure RTOS [előfeltételeinek és beállításának](quickstart-azure-rtos-security-module.md)biztonsági moduljának használatába.
 - További információ az Azure RTOS biztonsági [riasztások és javaslatok támogatásával](concept-rtos-security-alerts-recommendations.md)kapcsolatos biztonsági modulról. 
 - Használja az Azure RTOS [Reference API](azure-rtos-security-module-api.md)biztonsági modulját.
-

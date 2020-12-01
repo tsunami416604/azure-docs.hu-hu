@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e8747b822916ba2c9ef7b45cc3cbbaa88d16dcb1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b2d4eb75002474bbec57753bbf0255cc4c2b4a16
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565789"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338639"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>A Bing Custom Search-élmény konfigurálása
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Az egyéni keresési példány lehetővé teszi a keresési élmény testreszabását, hogy csak olyan webhelyekről tartalmazzon tartalmat, amelyekkel a felhasználók törődnek. Webes keresés helyett a Bing csak az Önt érdeklő webes szeleteket keresi. Az egyéni kívánalmaknak megfelelő webes keresés létrehozásához használja a Bing Custom Search [portált](https://www.customsearch.ai).
 
@@ -89,7 +89,7 @@ A keresési példány teszteléséhez használja a portál jobb oldalán találh
 
 1. A keresőmező alatt válassza a **saját példány** lehetőséget. A keresési élmény eredményeit összehasonlíthatja a Bing-be a **Bing** lehetőség kiválasztásával. 
 2. Válassza ki a biztonságos keresési szűrőt és a keresendő piacot (lásd a [lekérdezési paramétereket](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
-3. Írjon be egy lekérdezést, és nyomja le az ENTER billentyűt, vagy kattintson a keresés ikonra az aktuális konfiguráció eredményeinek megtekintéséhez. A kívánt keresési típus módosításához kattintson a **web** , a **képek** vagy a **videó** lehetőségre a megfelelő eredmények eléréséhez. 
+3. Írjon be egy lekérdezést, és nyomja le az ENTER billentyűt, vagy kattintson a keresés ikonra az aktuális konfiguráció eredményeinek megtekintéséhez. A kívánt keresési típus módosításához kattintson a **web**, a **képek** vagy a **videó** lehetőségre a megfelelő eredmények eléréséhez. 
 
 <a name="adjustrank"></a>
 
@@ -160,7 +160,7 @@ Ha a megfelelő szinten előfizetett az egyéni keresésre (lásd a [díjszabás
 - A szám növelése és lefokozása két rangsorolási beállításként.
 - Az egyes egyéni keresési példányok esetében az elvégezhető PIN-kódok maximális száma a 200-ra korlátozódik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni keresés meghívása](./search-your-custom-view.md)
 - [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)

@@ -3,12 +3,12 @@ title: A funkciók áttekintése – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk részletesen ismerteti az Azure Event Hubs funkcióit és terminológiáját.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: db7c0244fd4e9e04f9cfbcbba8748ec8190fc5c5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a38cf4ba6a06dc6e977f9ea168fcf67ce83ff5de
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96007433"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339982"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Az Azure Event Hubs funkciói és terminológiája
 
@@ -33,7 +33,7 @@ Bármely entitás, amely adatokat küld az Event hub-nak, esemény-előállító
 
 ### <a name="publishing-an-event"></a>Esemény közzététele
 
-A AMQP 1,0, Kafka 1,0 (és újabb) vagy HTTPS protokollon keresztül tehet közzé eseményt. A Event Hubs szolgáltatás a [REST API](https://docs.microsoft.com/rest/api/eventhub/) és a [.net](event-hubs-dotnet-standard-getstarted-send.md), a [Java](event-hubs-java-get-started-send.md), a [Python](event-hubs-python-get-started-send.md), a [JavaScript](event-hubs-node-get-started-send.md)és a [Go](event-hubs-go-get-started-send.md) ügyféloldali kódtárainak használatával teszi közzé az eseményeket az Event hub-ban. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](https://qpid.apache.org/). 
+A AMQP 1,0, Kafka 1,0 (és újabb) vagy HTTPS protokollon keresztül tehet közzé eseményt. A Event Hubs szolgáltatás a [REST API](/rest/api/eventhub/) és a [.net](event-hubs-dotnet-standard-getstarted-send.md), a [Java](event-hubs-java-get-started-send.md), a [Python](event-hubs-python-get-started-send.md), a [JavaScript](event-hubs-node-get-started-send.md)és a [Go](event-hubs-go-get-started-send.md) ügyféloldali kódtárainak használatával teszi közzé az eseményeket az Event hub-ban. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](https://qpid.apache.org/). 
 
 Az eseményeket közzéteheti egyenként vagy kötegelve is. Egyetlen kiadvány (Event adatpéldány) legfeljebb 1 MB méretű lehet, függetlenül attól, hogy egyetlen eseményről vagy kötegről van szó. A küszöbértéket meghaladó közzétételi események hibát eredményeznek. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
 

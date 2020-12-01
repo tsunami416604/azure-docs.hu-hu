@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4b9b73e30094ed7d07e19f4b93f2fe8ab8f6af3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319911"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339421"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (nyilvános előzetes verzió) 
 A Microsoft új végpontot (API-t) helyezett üzembe a Azure AD Connect számára, amely javítja a szinkronizálási szolgáltatás műveleteinek teljesítményét Azure Active Directory. Az új v2-végpont kihasználása az Azure AD-ba való exportálás és importálás során észrevehető teljesítménybeli nyereséget tapasztal. Ez az új végpont a következőket támogatja:
@@ -54,7 +54,7 @@ A következő lépések végigvezetik a v2-végpont üzembe helyezésének lép�
 2. Az érvényesítés befejeződése után állítsa a **v2-kiszolgálót** az aktív kiszolgálóra és az átmeneti kiszolgálóként működő **v1** -kiszolgálóra. Jelenleg a szinkronizálni kívánt nagyméretű csoportok lesznek kiépítve az Azure AD-be, valamint a nagyméretű Microsoft 365 egyesített csoportok az AD-ben lesznek kiépítve, ha a csoport visszaírási engedélyezve van.
 3. Ellenőrizze, hogy a **v2-kiszolgáló** sikeresen végrehajtja és feldolgozza-e a nagyméretű csoportokat. Dönthet úgy, hogy megmarad ebben a lépésben, és figyeli a szinkronizálási folyamatot egy adott időszakra vonatkozóan.
   >[!NOTE]
-  > Ha vissza kell térnie az előző konfigurációra, a **v2-kiszolgálóról** a **v1-kiszolgálóra**történő áttelepítést is végrehajthatja. Mivel a v1-végpont nem támogatja a több mint 50 000 taggal rendelkező csoportokat, az Azure AD-ben vagy a helyszíni AD-ben az Azure AD Connect által kiépített nagy csoportok később törlődni fognak. 
+  > Ha vissza kell térnie az előző konfigurációra, a **v2-kiszolgálóról** a **v1-kiszolgálóra** történő áttelepítést is végrehajthatja. Mivel a v1-végpont nem támogatja a több mint 50 000 taggal rendelkező csoportokat, az Azure AD-ben vagy a helyszíni AD-ben az Azure AD Connect által kiépített nagy csoportok később törlődni fognak. 
 4. Ha biztos abban, hogy a v2-végpontot használja, frissítse a **v1-kiszolgálót** a v2-végpont használatának megkezdéséhez. 
  
 
@@ -141,7 +141,7 @@ A tagsági korlát növeléséhez a következő lépések használhatók:
 > Ha Azure AD Connect Health nincs engedélyezve, módosítsa a Windows-alkalmazás eseménynaplójának beállításait úgy, hogy felülírja a naplókat a felülírás helyett. A naplók felhasználhatók a jövőbeli hibaelhárítási erőfeszítések segítésére. 
 
 >[!NOTE]
-> Az új végpont engedélyezése után további exportálási hibák jelenhetnek meg a "DN-attributes-Error" nevű HRE-összekötőn. A rendszer a 6949 azonosítóval ellátott hibákhoz tartozó eseménynapló-bejegyzést is megadja. A hibák tájékoztató jellegűek, és nem jeleznek problémát a telepítés során, hanem a szinkronizálási folyamat nem tudott felvenni bizonyos tagokat egy csoportba az Azure AD-ben, mert maga a tag objektum nem lett szinkronizálva az Azure AD-vel. 
+> Az új végpont engedélyezése után további exportálási hibák jelenhetnek meg a "DN-attributes-Error" nevű HRE-összekötőn. A rendszer a 6949-es azonosítójú hibákhoz tartozó eseménynapló-bejegyzést fogja megadni. A hibák tájékoztató jellegűek, és nem jeleznek problémát a telepítés során, hanem a szinkronizálási folyamat nem tudott felvenni bizonyos tagokat egy csoportba az Azure AD-ben, mert maga a tag objektum nem lett szinkronizálva az Azure AD-vel. 
 
 Az új v2-végponti kód néhány típusú exportálási hibát kezel, némileg eltérve a v1-kódnak.  Ha a v2-végpontot használja, a további tájékoztató hibaüzenetek is megjelennek. 
 
@@ -155,7 +155,7 @@ A **HRE – csoportos csatlakozás** szinkronizálása szabályban a csoporttag 
 >[!NOTE]
 > Ha Microsoft 365 több mint 50 000 taggal rendelkező egyesített csoportokkal rendelkezik, a rendszer beolvassa a csoportokat a Azure AD Connectba, és ha a csoport visszaírási engedélyezve van, a rendszer a helyszíni AD-be fogja írni. 
 
-## <a name="rollback"></a>Visszaállítási 
+## <a name="rollback"></a>Visszaállítás 
 Ha engedélyezte a v2-végpontot, és vissza kell állítania a visszaállítást, kövesse az alábbi lépéseket: 
 
 1. A Azure AD Connect-kiszolgálón: a. Választható Adatbázis biztonsági másolatának készítése 
@@ -196,7 +196,7 @@ Ha engedélyezte a v2-végpontot, és vissza kell állítania a visszaállítás
 **K: a következő mérföldkőre való idő?**  
 </br>A nyilvános előzetes verzió funkcióit a további mérföldkövek elérése előtt lehet visszavonni és valószínűleg újratervezni.  
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

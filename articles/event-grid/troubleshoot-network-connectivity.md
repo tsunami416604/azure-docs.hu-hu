@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 7b93d7a110889192bb5be6fffa56a73758d6faa2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fa119784715b8c88ef3c9f2700b2cac1cc467234
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892315"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339745"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Kapcsolódási problémák elhárítása – Azure Event Grid
 
@@ -50,7 +50,7 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 Ha az Azure-t használja, időnként engedélyeznie kell bizonyos IP-címtartományok vagy URL-címek használatát a vállalati tűzfalon vagy proxyn a használt összes Azure-szolgáltatás eléréséhez. Ellenőrizze, hogy engedélyezett-e a forgalom a Event Grid által használt IP-címeken. Az Azure Event Grid által használt IP-címek esetében lásd: az [Azure IP-címtartományok és a szolgáltatás címkéi – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519) és [szolgáltatás AzureEventGrid](network-security.md#service-tags).
 
-Az [Azure IP-címtartományok és szolgáltatás-címkék – a nyilvános Felhőbeli](https://www.microsoft.com/download/details.aspx?id=56519) dokumentum az IP-címeket is felsorolja **régiónként** . A **témakör régiója** és a **párosított régió** a vállalati tűzfalon vagy proxyn is engedélyezheti a címtartományt. Egy adott régióhoz tartozó párosított régió esetében lásd [: Üzletmenet-folytonosság és vész-helyreállítási (BCDR): Azure párosított régiók](/azure/best-practices-availability-paired-regions). 
+Az [Azure IP-címtartományok és szolgáltatás-címkék – a nyilvános Felhőbeli](https://www.microsoft.com/download/details.aspx?id=56519) dokumentum az IP-címeket is felsorolja **régiónként**. A **témakör régiója** és a **párosított régió** a vállalati tűzfalon vagy proxyn is engedélyezheti a címtartományt. Egy adott régióhoz tartozó párosított régió esetében lásd [: Üzletmenet-folytonosság és vész-helyreállítási (BCDR): Azure párosított régiók](../best-practices-availability-paired-regions.md). 
 
 > [!NOTE]
 > Az új IP-címek hozzáadhatók a AzureEventGrid szolgáltatás címkéjéhez, bár ez nem szokásos. Ezért érdemes hetente megnézni a szolgáltatás címkéit.
@@ -118,6 +118,6 @@ Az átmeneti kapcsolódási problémák a háttérrendszer frissítése és újr
 
 Ezeknek az átmeneti hibáknak a kifogása, a biztonsági mentés és a hívás újbóli kipróbálása biztosítja, hogy a kód rugalmasan kezelje ezeket az átmeneti problémákat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további segítségre van szüksége, tegye fel a problémát a [stack overflow fórumba](https://stackoverflow.com/questions/tagged/azure-eventgrid) , vagy nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).
