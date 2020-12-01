@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/21/2020
+ms.date: 11/10/2020
 ms.author: memildin
-ms.openlocfilehash: b7c4c0565d17e62226a518bc443223df8339faec
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0e853a4ce1e3891ddffd2f9fb1315da49a896933
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949377"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433187"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Biztonsági pontszám az Azure Security Centerben
 
@@ -70,8 +70,6 @@ Az emlékeztetőhöz a biztonságos pontszám a Security Center portáljának ol
 
     :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="A biztonságos pontszám Security Center a javaslatok oldalon":::
 
-
-
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Szerezze be biztonságos pontszámát a REST API
 
 A pontszámot a biztonságos pontszám API-n keresztül érheti el (jelenleg előzetes verzióban érhető el). Az API-módszerek lehetővé teszik az adatlekérdezés rugalmasságát és a biztonságos pontszámok saját jelentési mechanizmusának elkészítését az idő múlásával. Használhatja például a [Secure scores API](/rest/api/securitycenter/securescores) -t egy adott előfizetés pontszámának lekéréséhez. Emellett a [Secure score Controls API](/rest/api/securitycenter/securescorecontrols) használatával is listázhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát.
@@ -79,8 +77,6 @@ A pontszámot a biztonságos pontszám API-n keresztül érheti el (jelenleg el�
 ![Egyetlen biztonságos pontszám beolvasása az API-n keresztül](media/secure-score-security-controls/single-secure-score-via-api.png)
 
 A biztonságos pontszám API-ra épülő eszközökre vonatkozó példákért tekintse meg [a GitHub-Közösség biztonságos pontszám területét](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score). 
-
-
 
 ### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Az Azure Resource Graph (ARG) biztonságos pontszámának beolvasása
 
@@ -114,13 +110,34 @@ Az ARG-sel rendelkező több előfizetés biztonságos pontszámának elérése:
 
 1. Válassza a **lekérdezés futtatása** lehetőséget.
 
+
+
+
+## <a name="tracking-your-secure-score-over-time"></a>A biztonságos pontszám nyomon követése az idő függvényében
+
+Ha Ön egy Pro-fiókkal rendelkező Power BI felhasználó, akkor a biztonságos pontszámot az **idő múlásával** Power bi irányítópulton követheti nyomon a biztonságos pontszámot az idő múlásával, és megvizsgálhatja a módosításokat.
+
+> [!TIP]
+> Ezt az irányítópultot és más eszközöket is megtalálhatja a biztonságos programozott módon való munkavégzéshez a GitHubon a Azure Security Center Közösség dedikált területén: https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score
+
+Az irányítópulton a következő két jelentés található, amelyek segítenek a biztonsági állapot elemzésében:
+
+- **Erőforrások összegzése** – az erőforrások állapotával kapcsolatos összesített információkat biztosít.
+- **Biztonságos pontszámok összegzése** – összesített információkat biztosít a pontszám előrehaladásával kapcsolatban. A pontszám változásainak megtekintéséhez használja a "biztonságos pontszám az idő múlásával egy időben" diagramot. Ha drámai változást tapasztal a pontszámban, tekintse meg a "a biztonságos pontszámra hatással lehet a védett pontok" táblázatot a módosítást okozó lehetséges változásokhoz. Ez a táblázat a törölt erőforrásokat, az újonnan telepített erőforrásokat, illetve az egyik javaslatban a biztonsági állapotukban megváltoztatott erőforrásokat ismerteti.
+
+:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="A választható biztonságos pontszám az idő múlásával PowerBI az irányítópulton a biztonságos pontszám nyomon követéséhez az idő múlásával és a változások kivizsgálásával":::
+
+
+
+
+
 ## <a name="how-your-secure-score-is-calculated"></a>A biztonságos pontszám kiszámításának módja 
 
 Az egyes biztonsági ellenőrzéseknek az általános biztonsági pontszámhoz való hozzájárulása egyértelműen a javaslatok oldalon látható.
 
 [![A fokozott biztonságú pontszám bevezeti a biztonsági vezérlőket](media/secure-score-security-controls/security-controls.png)](media/secure-score-security-controls/security-controls.png#lightbox)
 
-A biztonsági ellenőrzés összes lehetséges pontjának lekéréséhez minden erőforrásnak meg kell felelnie a biztonsági ellenőrzésen belüli összes biztonsági javaslatnak. Security Center például több javaslattal is rendelkezik a felügyeleti portok biztonságossá tételével kapcsolatban. A múltban a kapcsolódó és az egymástól függő ajánlások némelyikét orvosolhatja, miközben mások megoldatlanul maradnak, és a biztonságos pontszám javulni fog. A tárgyilagosan megvizsgálva egyszerűen azt is megteheti, hogy a biztonság még nem javult, amíg meg nem oldotta őket. Most pedig az összeset ki kell javítania, hogy különbséget tegyen a biztonságos pontszámával.
+A biztonsági ellenőrzés összes lehetséges pontjának lekéréséhez minden erőforrásnak meg kell felelnie a biztonsági ellenőrzésen belüli összes biztonsági javaslatnak. Security Center például több javaslattal is rendelkezik a felügyeleti portok biztonságossá tételével kapcsolatban. Ahhoz, hogy a biztonságos pontszáma eltérő legyen, az összeset javítania kell.
 
 Például a "rendszerfrissítések alkalmazása" nevű biztonsági vezérlő legfeljebb hat ponttal rendelkezik, amelyet az elemleírásban láthat a vezérlő lehetséges növelési értékeként:
 
@@ -137,9 +154,9 @@ A vezérlő maximális pontszáma, rendszerfrissítések alkalmazása, mindig 6.
 
 |Metric|Képlet és példa|
 |-|-|
-|**Biztonsági vezérlő aktuális pontszáma**|<br>![A biztonsági vezérlő aktuális pontszámának kiszámításához használt egyenlet](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Minden egyes biztonsági ellenőrzés hozzájárul a biztonsági pontszám eléréséhez. A vezérlőn belüli javaslat által érintett összes erőforrás a vezérlő aktuális pontszámának irányába járul hozzá. Az egyes vezérlők aktuális pontszáma *a vezérlőben lévő erőforrások* állapotának mértéke.<br>![A biztonsági vezérlő aktuális pontszámának kiszámításakor használt értékeket megjelenítő elemleírások](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Ebben a példában a 6 maximális pontszáma 78-re osztható, mert ez az egészséges és a nem kifogástalan erőforrások összege.<br>6/78 = 0,0769<br>A jelenlegi pontszám a (4) kifogástalan állapotú erőforrások számával való szorzását eredményezi:<br>0,0769 * 4 = **0,31**<br><br>|
-|**Biztonsági pontszám**<br>Egyetlen előfizetés|<br>![A jelenlegi biztonságos pontszám kiszámításához használt egyenlet](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Egyszeri előfizetés biztonságos pontszáma minden engedélyezett vezérlővel](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>Ebben a példában egyetlen előfizetés van az összes rendelkezésre álló biztonsági vezérlővel (a 60-pontok lehetséges maximális pontszáma). A pontszám 28 pontot mutat a lehetséges 60-ből, a fennmaradó 32 pont pedig a biztonsági vezérlők "lehetséges pontszám növelésének" számadatait tükrözi.<br>![A vezérlőelemek listája és a lehetséges pontszám növekedése](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
-|**Biztonsági pontszám**<br>Több előfizetés|<br>Az összes előfizetéshez tartozó összes erőforrás aktuális pontszáma hozzáadva, a számítás pedig azonos, mint egyetlen előfizetés esetén.<br><br>Több előfizetés megtekintésekor a biztonságos pontszám kiértékeli az összes engedélyezett szabályzaton belüli összes erőforrást, és a biztonsági vezérlők maximális pontszámára vonatkozó együttes hatásukat.<br>![Több előfizetés biztonságos pontszáma minden engedélyezett vezérlővel](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Az összesített pontszám **nem** átlag; Ehelyett az összes előfizetés összes erőforrása állapotának kiértékelt testtartása.<br>Itt is, ha a javaslatok lapra lép, és hozzáadja az elérhető lehetséges pontokat, akkor a jelenlegi pontszám (24) és a rendelkezésre álló maximális pontszám (60) közötti különbség jelenik meg.|
+|**Biztonsági vezérlő aktuális pontszáma**|<br>![A biztonsági vezérlő pontszámának kiszámításához használt egyenlet](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>Minden egyes biztonsági ellenőrzés hozzájárul a biztonsági pontszám eléréséhez. A vezérlőn belüli javaslat által érintett összes erőforrás a vezérlő aktuális pontszámának irányába járul hozzá. Az egyes vezérlők aktuális pontszáma *a vezérlőben lévő erőforrások* állapotának mértéke.<br>![A biztonsági vezérlő aktuális pontszámának kiszámításakor használt értékeket megjelenítő elemleírások](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Ebben a példában a 6 maximális pontszáma 78-re osztható, mert ez az egészséges és a nem kifogástalan erőforrások összege.<br>6/78 = 0,0769<br>A jelenlegi pontszám a (4) kifogástalan állapotú erőforrások számával való szorzását eredményezi:<br>0,0769 * 4 = **0,31**<br><br>|
+|**Biztonsági pontszám**<br>Egyetlen előfizetés|<br>![Az előfizetés biztonságos pontszámának kiszámításához használt egyenlet](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![Egyszeri előfizetés biztonságos pontszáma minden engedélyezett vezérlővel](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>Ebben a példában egyetlen előfizetés van az összes rendelkezésre álló biztonsági vezérlővel (a 60-pontok lehetséges maximális pontszáma). A pontszám 28 pontot mutat a lehetséges 60-ből, a fennmaradó 32 pont pedig a biztonsági vezérlők "lehetséges pontszám növelésének" számadatait tükrözi.<br>![A vezérlőelemek listája és a lehetséges pontszám növekedése](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
+|**Biztonsági pontszám**<br>Több előfizetés|<br>![Több előfizetés biztonságos pontszámának kiszámításához használt egyenlet](media/secure-score-security-controls/secure-score-equation-multiple-subs.png)<br><br>Több előfizetés összesített pontszámának kiszámításakor Security Center az egyes előfizetésekhez tartozó *súlyozást* is tartalmaz. Az előfizetések relatív súlyozását az Security Center határozza meg, az olyan tényezők alapján, mint az erőforrások száma.<br>Az egyes előfizetések aktuális pontszámát ugyanúgy számítjuk ki, mint egyetlen előfizetésnél, de a súlyozást a rendszer az egyenletben látható módon alkalmazza.<br>Több előfizetés megtekintésekor a biztonságos pontszám kiértékeli az összes engedélyezett szabályzaton belüli összes erőforrást, és a biztonsági vezérlők maximális pontszámára vonatkozó együttes hatásukat.<br>![Több előfizetés biztonságos pontszáma minden engedélyezett vezérlővel](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Az összesített pontszám **nem** átlag; Ehelyett az összes előfizetés összes erőforrása állapotának kiértékelt testtartása.<br>Itt is, ha a javaslatok lapra lép, és hozzáadja az elérhető lehetséges pontokat, akkor a jelenlegi pontszám (24) és a rendelkezésre álló maximális pontszám (60) közötti különbség jelenik meg.|
 ||||
 
 ### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>Mely javaslatok szerepelnek a biztonságos pontszámok számításában?
@@ -265,9 +282,10 @@ Igen. Javasoljuk, hogy tiltsa le a javaslatokat, ha azok nem alkalmazhatók a k�
 ### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>Ha egy biztonsági vezérlő nulla pontot biztosít a biztonságos pontszám felé, figyelmen kívül hagyhatom?
 Bizonyos esetekben a vezérlőelem maximális pontszáma nullánál nagyobb lesz, de a hatás nulla. Ha az erőforrások kijavításának növekményes pontszáma elhanyagolható, a rendszer nulla értékűre kerekíti. Ne hagyja figyelmen kívül ezeket az ajánlásokat, mivel azok továbbra is biztonsági javítást tesznek lehetővé. Az egyetlen kivétel a "további ajánlott eljárás" vezérlő. Szervizelését ezekkel az ajánlásokkal nem növeli a pontszámát, de a teljes biztonságot is növeli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk a biztonságos pontszámot és az általa bevezetett biztonsági ellenőrzéseket ismerteti. A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket:
 
 - [Tudnivalók a javaslatok különböző elemeiről](security-center-recommendations.md)
 - [Útmutató a javaslatok megoldásához](security-center-remediate-recommendations.md)
+- [A GitHub-alapú eszközök megtekintése a biztonságos pontszám használatával történő programozott munkához](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)

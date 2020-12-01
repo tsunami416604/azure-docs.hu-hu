@@ -47,6 +47,8 @@
           href: how-to-legacy-device-symm-key.md
         - name: Egyéni kiosztási szabályzatok használata
           href: tutorial-custom-allocation-policies.md
+        - name: Több X.509-eszköz kiépítése
+          href: tutorial-custom-hsm-enrollment-group-x509.md
     - name: 2 – Eszközök kiépítése több hubon
       items:
         - name: Több hub összekapcsolása a DPS-szel

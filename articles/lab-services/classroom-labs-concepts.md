@@ -1,16 +1,16 @@
 ---
-title: Tantermi Labs-fogalmak – Azure Lab Services | Microsoft Docs
+title: Labs-fogalmak – Azure Lab Services | Microsoft Docs
 description: Megismerheti a labor Services alapfogalmait, és azt, hogy miként hozhat létre és kezelhet laborokat.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 38dd77df7a80ad252b553b6afa8b52d7fee753a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa3a8dad195b4b3cbf0786c8923c8b330d148898
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85443706"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435518"
 ---
-# <a name="classroom-labs-concepts"></a>Osztályterem-tesztkörnyezetek alapelvei
+# <a name="labs-concepts"></a>Labs-fogalmak
 
 A következő lista a Key Lab Services alapfogalmait és definícióit tartalmazza:
 
@@ -48,7 +48,7 @@ Ez a cikk az Azure Lab Services különböző felhasználói profiljait ismertet
 
 ### <a name="educator"></a>Oktató
 
-A tesztkörnyezetfiókban lévő osztálytermi tesztkörnyezeteket általában olyan felhasználók hozzák létre, mint a tanárok vagy az online oktatók. Az oktató az alábbi feladatokat hajtja végre:
+A felhasználók, például tanárok vagy online trénerek labor-fiókban hoznak létre laborokat. Az oktató az alábbi feladatokat hajtja végre:
 
 - Létrehozza az osztályterem-tesztkörnyezetet.
 - Virtuális gépeket hoz létre a tesztkörnyezetben.

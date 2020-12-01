@@ -3,19 +3,19 @@ title: Virtuális gépek automatikus leállításának beállítása laborhoz Az
 description: Megtudhatja, hogyan engedélyezheti vagy tilthatja le a virtuális gépek automatikus leállítását, ha a távoli asztali kapcsolat le van választva.
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 67b51941207fdd4913df9a92362959bbd468d336
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f9080f3b7b762d3b9fa448a903a4167cd2cec4a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649881"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433945"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>Virtuális gépek automatikus leállításának beállítása laborhoz
 
 Ez a cikk bemutatja, hogyan konfigurálhatja a virtuális gépek automatikus leállítását laborokhoz.
 
 Több automatikus leállítási költség-vezérlési funkciót is engedélyezhet, hogy proaktív módon meggátolja a további költségeket, ha a virtuális gépeket nem használják aktívan. A következő három automatikus leállítási és leválasztási funkció kombinációja a legtöbb esetben megfogást nyújt, amikor a felhasználók véletlenül elhagyják a virtuális gépeket:
- 
+ 
 * A felhasználók automatikus leválasztása a virtuális gépekről, amelyeket az operációs rendszer tétlennek tekint.
 * A virtuális gépek automatikus leállítása a felhasználók leválasztásakor.
 * Automatikusan leállítja az elindított virtuális gépeket, de a felhasználók nem csatlakoznak.
@@ -38,6 +38,6 @@ Az automatikus leállítási beállítást a [Azure Lab Servicesban](https://lab
 
 > [!WARNING]
 > Ha a Linux vagy a Windows operációs rendszert (OS) leállítja egy virtuális gépen, mielőtt leválasztja az RDP-munkamenetet a virtuális géphez, az automatikus leállítási funkció nem fog megfelelően működni.  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Az osztályterem Labs irányítópultja](use-dashboard.md)
+[Labs-irányítópult](use-dashboard.md)

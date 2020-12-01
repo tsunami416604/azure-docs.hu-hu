@@ -1,14 +1,14 @@
 ---
-title: Használati beállítások konfigurálása a tanterem Labs-ban Azure Lab Services
+title: A Azure Lab Services Labs használati beállításainak konfigurálása
 description: Megtudhatja, hogyan konfigurálhatja a tanulók számát a laborban, regisztrálhatja őket a laborban, meghatározhatja, hogy hány órát használhatnak a virtuális gép, és így tovább.
 ms.topic: article
 ms.date: 11/11/2020
-ms.openlocfilehash: d3100f1a7e67e3b0d403375de02cb3daf5fcfb31
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e768c74d338cf21eb56660fe3790fc1f0f3ec80d
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555719"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434549"
 ---
 # <a name="add-and-manage-lab-users"></a>Tesztkörnyezeti felhasználók létrehozása és felügyelete
 
@@ -30,7 +30,7 @@ Ebben a szakaszban a tanulókat manuálisan vagy egy CSV-fájl feltöltésével 
 
     ![Felhasználók e-mail címeinek hozzáadása](./media/how-to-configure-student-usage/add-users-email-addresses.png)
 
-1. Válassza a **Save** (Mentés) lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 
     A lista megjeleníti az aktuális felhasználók e-mail-címeit és állapotát, függetlenül attól, hogy regisztrálva vannak-e a laborban. 
 
@@ -59,7 +59,7 @@ A CSV-szövegfájlok vesszővel tagolt (CSV) táblázatos adatok (számok és sz
 
     ![A "felhasználók hozzáadása" ablak a CSV-fájlból származó e-mail-címekkel](./media/how-to-configure-student-usage/add-users-window.png)
 
-1. Válassza a **Save** (Mentés) lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 
 1. A **felhasználók** ablaktáblán tekintse meg a felvett diákok listáját. 
 
@@ -81,7 +81,7 @@ Ez a módszer azt mutatja be, hogyan küldhet e-mailt egy regisztrációs hivatk
 
 1. A **Meghívás küldése e-mailben** ablakban adjon meg egy opcionális üzenetet, majd válassza a **Küldés** lehetőséget. 
 
-    Az e-mail automatikusan tartalmazza a regisztrációs hivatkozást. A regisztrációs hivatkozás külön beszerzéséhez és mentéséhez válassza a **felhasználók** ablaktábla tetején található három pontot ( **..**.), majd válassza a **regisztrációs hivatkozás** lehetőséget. 
+    Az e-mail automatikusan tartalmazza a regisztrációs hivatkozást. A regisztrációs hivatkozás külön beszerzéséhez és mentéséhez válassza a **felhasználók** ablaktábla tetején található három pontot (**..**.), majd válassza a **regisztrációs hivatkozás** lehetőséget. 
 
     ![A "regisztrációs hivatkozás küldése e-mailben" ablak](./media/tutorial-setup-classroom-lab/send-email.png)
 
@@ -97,7 +97,7 @@ Ez a módszer azt mutatja be, hogyan hívhat meg csak bizonyos tanulókat, és h
 
     ![Kiválasztott felhasználók meghívása](./media/how-to-configure-student-usage/invite-selected-users.png)
 
-1. A **Meghívás küldése e-mailben** ablakban adjon meg egy opcionális **üzenetet** , majd válassza a **Küldés** lehetőséget. 
+1. A **Meghívás küldése e-mailben** ablakban adjon meg egy opcionális **üzenetet**, majd válassza a **Küldés** lehetőséget. 
 
     ![E-mail küldése a kiválasztott felhasználóknak](./media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
 
@@ -169,7 +169,7 @@ További kvóták beállításához tegye a következőket:
 Ha tanulókat szeretne felvenni egy osztályterem laborba, használja az e-mail-fiókjait. A diákok a következő típusú e-mail-fiókokkal rendelkezhetnek:
 
 - Az Egyetem Azure Active Directory példánya által biztosított tanulói e-mail-fiók.
-- Egy Microsoft-tartományi e-mail-fiók, például a *Outlook.com* , a *hotmail.com* , a *MSN.com* vagy a *Live.com*.
+- Egy Microsoft-tartományi e-mail-fiók, például a *Outlook.com*, a *hotmail.com*, a *MSN.com* vagy a *Live.com*.
 - Nem a Microsofttól származó e-mail-fiók, például egy Yahoo! által biztosított vagy a Google. Az ilyen típusú fiókoknak azonban Microsoft-fiókhoz kell kapcsolódniuk.
 - Egy GitHub-fiók. Ennek a fióknak egy Microsoft-fiók-vel kell összekapcsolnia.
 
@@ -207,15 +207,15 @@ Ha még nem csatolták GitHub-fiókját egy Microsoft-fiókhoz, a következőket
 ## <a name="export-a-list-of-users-to-a-csv-file"></a>Felhasználók listájának exportálása CSV-fájlba
 
 1. Nyissa meg a **felhasználók** ablaktáblát.
-1. Az eszköztáron válassza a három pontot ( **..**.), majd válassza a **CSV exportálása** lehetőséget. 
+1. Az eszköztáron válassza a három pontot (**..**.), majd válassza a **CSV exportálása** lehetőséget. 
 
     ![A "CSV exportálása" gomb](./media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd az alábbi cikkeket:
 
 - Rendszergazdáknak: [labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)
 - Labor tulajdonosainak: [Labs létrehozása és kezelése](how-to-manage-classroom-labs.md) , [sablonok beállítása és közzététele](how-to-create-manage-template.md)
-- Labor-felhasználók számára: [Access tanterem Labs](how-to-use-classroom-lab.md)
+- Tesztkörnyezet felhasználói számára: [hozzáférés a laborokhoz](how-to-use-classroom-lab.md)

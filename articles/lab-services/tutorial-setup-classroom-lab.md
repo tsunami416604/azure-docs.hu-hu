@@ -3,12 +3,12 @@ title: Osztályterem-tesztkörnyezet beállítása az Azure Lab Services szolgá
 description: Ebben az oktatóanyagban a Azure Lab Services használatával állít be egy tantermi labort olyan virtuális gépekkel, amelyeket az osztályban tanulók használnak.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8981a03b53b1cfb67b03d89f8a1468511d9b1b93
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336734"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434855"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -35,20 +35,20 @@ Ebben a lépésben létrehoz egy labort az osztályhoz az Azure-ban.
 
 1. Lépjen az [Azure Lab Services weboldalára](https://labs.azure.com). Vegye figyelembe, hogy az Internet Explorer 11 még nem támogatott. 
 2. Válassza a **Bejelentkezés** lehetőséget, és adja meg a hitelesítő adatait. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
-3. Válassza az **új Labor**elemet. 
+3. Válassza az **új Labor** elemet. 
     
     ![Képernyőfelvétel: "Azure Lab Services", az "új Labor" gomb kiválasztásával.](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. Az **Új tesztkörnyezet** ablakban tegye a következőket: 
     1. Adja meg a labor **nevét** , majd kattintson a **Tovább gombra**.  
 
         ![Osztályterem-tesztkörnyezet létrehozása](./media/tutorial-setup-classroom-lab/new-lab-window.png)
-    2. A **virtuális gép hitelesítő adatai** lapon a tesztkörnyezet összes virtuális gépe alapértelmezett hitelesítő adatait adhatja meg. Adja meg a felhasználó **nevét** és **jelszavát** , majd kattintson a **tovább**gombra.  
+    2. A **virtuális gép hitelesítő adatai** lapon a tesztkörnyezet összes virtuális gépe alapértelmezett hitelesítő adatait adhatja meg. Adja meg a felhasználó **nevét** és **jelszavát** , majd kattintson a **tovább** gombra.  
 
         ![Új tesztkörnyezet ablak](./media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
         > [!IMPORTANT]
         > Jegyezze fel a felhasználónevet és a jelszót, mert többször nem fognak megjelenni.
-    3. A **labor-házirendek** lapon válassza a **Befejezés**lehetőséget. 
+    3. A **labor-házirendek** lapon válassza a **Befejezés** lehetőséget. 
 
         ![Kvóta az egyes felhasználók számára](./media/tutorial-setup-classroom-lab/quota-for-each-user.png)
 5. Az alábbi képernyő jelenik meg, amely a sablon virtuális gépek létrehozásának állapotát jeleníti meg. A művelet akár 20 percet is igénybe vehet. 
@@ -72,7 +72,7 @@ Ebben a lépésben közzéteszi a sablon virtuális gépet. Amikor közzéteszi 
 
     > [!WARNING]
     > Közzététel után a lépés nem vonható vissza. 
-2. A **sablon közzététele** lapon adja meg a laborban létrehozni kívánt virtuális gépek számát, majd válassza a **Közzététel**lehetőséget. 
+2. A **sablon közzététele** lapon adja meg a laborban létrehozni kívánt virtuális gépek számát, majd válassza a **Közzététel** lehetőséget. 
 
     ![Sablon közzététele – virtuális gépek száma](./media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
 3. A sablon **közzétételének állapota** az oldalon látható. Ez a folyamat akár egy órát is igénybe vehet. 
@@ -109,20 +109,20 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
         ![Ismétlődő ütemterv beállítása](./media/how-to-create-schedules/set-repeat-schedule.png)
 
 3. Az **ütemezett esemény hozzáadása** lapon a **Megjegyzések (nem kötelező)** mezőben adja meg az ütemezés leírását vagy megjegyzéseit. 
-4. Az **ütemezett esemény hozzáadása** lapon válassza a **Mentés**lehetőséget. 
+4. Az **ütemezett esemény hozzáadása** lapon válassza a **Mentés** lehetőséget. 
 
     ![Heti ütemterv](./media/how-to-create-schedules/add-schedule-page-weekly.png)
 5. A naptárban navigáljon a kezdő dátumhoz, és ellenőrizze, hogy az ütemterv be van-e állítva.
     
     ![Ütemterv a naptárban](./media/how-to-create-schedules/schedule-calendar.png)
 
-    További információ egy osztályhoz tartozó ütemtervek létrehozásáról és kezeléséről: [az Órarend létrehozása és kezelése az osztályterem Labs szolgáltatásban](how-to-create-schedules.md).
+    További információ egy osztályhoz tartozó ütemtervek létrehozásáról és kezeléséről: [az ütemterv létrehozása és kezelése a laborokhoz](how-to-create-schedules.md).
 
 
 ## <a name="add-users-to-the-lab"></a>Felhasználók hozzáadása a laborhoz
 
-1. Válassza a bal oldali menü **felhasználók** elemét. Alapértelmezés szerint a **hozzáférés korlátozása** beállítás engedélyezve van. Ha ez a beállítás be van kapcsolva, a felhasználók nem regisztrálhatnak a laborba még akkor sem, ha a felhasználó a felhasználók listáján szerepel. Csak a listán szereplő felhasználók regisztrálhatnak a laborba az Ön által küldött regisztrációs hivatkozás használatával. Ebben az eljárásban felhasználókat vesz fel a listára. Azt is megteheti, hogy kikapcsolja a **hozzáférés korlátozása**lehetőséget, amely lehetővé teszi a felhasználók számára, hogy regisztráljanak a laborban, amennyiben rendelkeznek a regisztrációs hivatkozással. 
-2. Válassza a **felhasználók hozzáadása** lehetőséget az eszköztáron, majd válassza a **Hozzáadás e-mail-cím alapján**lehetőséget. 
+1. Válassza a bal oldali menü **felhasználók** elemét. Alapértelmezés szerint a **hozzáférés korlátozása** beállítás engedélyezve van. Ha ez a beállítás be van kapcsolva, a felhasználók nem regisztrálhatnak a laborba még akkor sem, ha a felhasználó a felhasználók listáján szerepel. Csak a listán szereplő felhasználók regisztrálhatnak a laborba az Ön által küldött regisztrációs hivatkozás használatával. Ebben az eljárásban felhasználókat vesz fel a listára. Azt is megteheti, hogy kikapcsolja a **hozzáférés korlátozása** lehetőséget, amely lehetővé teszi a felhasználók számára, hogy regisztráljanak a laborban, amennyiben rendelkeznek a regisztrációs hivatkozással. 
+2. Válassza a **felhasználók hozzáadása** lehetőséget az eszköztáron, majd válassza a **Hozzáadás e-mail-cím alapján** lehetőséget. 
 
     ![Felhasználók hozzáadása gomb](./media/how-to-configure-student-usage/add-users-button.png)
 1. A **felhasználók hozzáadása** lapon adja meg a felhasználók e-mail-címeit külön sorokban, vagy egyetlen sorban pontosvesszővel elválasztva. 
@@ -140,10 +140,10 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
 1. Váltson a **felhasználók** nézetre, ha már nincs a lapon, és válassza az **összes meghívása** lehetőséget az eszköztáron. 
 
     ![Tanulók kiválasztása](./media/tutorial-setup-classroom-lab/invite-all-button.png)
-1. A **Meghívás küldése e-mailben** lapon adjon meg egy opcionális üzenetet, majd válassza a **Küldés**lehetőséget. Az e-mail automatikusan tartalmazza a regisztrációs hivatkozást. Ezt a regisztrációs hivatkozást a következő parancs kiválasztásával érheti el: **... (három pont)** az eszköztáron és a **regisztrációs hivatkozáson**. 
+1. A **Meghívás küldése e-mailben** lapon adjon meg egy opcionális üzenetet, majd válassza a **Küldés** lehetőséget. Az e-mail automatikusan tartalmazza a regisztrációs hivatkozást. Ezt a regisztrációs hivatkozást a következő parancs kiválasztásával érheti el: **... (három pont)** az eszköztáron és a **regisztrációs hivatkozáson**. 
 
     ![Regisztrációs hivatkozás küldése e-mailben](./media/tutorial-setup-classroom-lab/send-email.png)
-4. A **meghívás** állapota megjelenik a **felhasználók** listájában. Az állapotnak a **Küldés** gombra kell váltania, majd el kell **küldenie a &lt; dátumot &gt; **. 
+4. A **meghívás** állapota megjelenik a **felhasználók** listájában. Az állapotnak a **Küldés** gombra kell váltania, majd el kell **küldenie a &lt; dátumot &gt;**. 
 
     A tanulók osztályhoz való hozzáadásával és a labor használatának felügyeletével kapcsolatos további információkért lásd: [a tanulói használat konfigurálása](how-to-configure-student-usage.md).
 

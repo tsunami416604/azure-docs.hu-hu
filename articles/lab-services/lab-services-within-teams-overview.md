@@ -3,12 +3,12 @@ title: Azure Lab Services a Microsoft Teams szolgáltatáson belül
 description: Áttekintést nyújt Azure Lab Services használatáról a Microsoft Teams szolgáltatásban.
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 0c7defdb6f801a10c5fadfdca805381a31f39378
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f39613427ed174dfca80d4a48be9473ab7025e79
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047828"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433926"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Azure Lab Services a Microsoft Teams szolgáltatáson belül
 
@@ -23,14 +23,14 @@ Ez a cikk a Azure Lab Services csapatokon belüli használatának előnyeit muta
 
 Azure Lab Services a Microsoft Teams integrációja segít a pedagógusok számára a tantermi környezet kialakításában és a csapaton belüli virtuális labor-környezetekben (osztály): 
 
-* Az oktatók úgy állíthatják be a tantermi laborokat, hogy a tanulók a csapatoktól a csapatoktól elhagyva a csapattól és a [Azure Lab Services webhelyének](https://labs.azure.com)elérésével hozzáférjenek a virtuális gépekhez.
+* Az oktatók úgy állíthatják be a laborokat, hogy a tanulók a csapaton belül is hozzáférjenek a virtuális gépekhez, anélkül, hogy elhagyják [Azure Lab Services](https://labs.azure.com)a csapatokat, és nem kell megkeresniük
 * Egyszeri bejelentkezés (SSO) a csapatokból a Azure Lab Servicesba.
 * A csapat és a labor tulajdonosai számára nem szükséges, hogy az osztályokat két különböző rendszeren is meg lehessen őrizni – a labor felhasználói listán automatikusan ki van töltve a csoport tagsága, és a szinkronizálást minden 24 órában automatikusan elvégzi a rendszer. 
 * A sablon virtuális gép kezdeti közzétételét követően a labor kapacitása (azaz a laborban lévő virtuális gépek száma) automatikusan ki lesz igazítva a csoport tagságának felhasználói hozzáadásával/törlésével. 
 * A csapat és a labor tulajdonosai csak a csapattal és diákokkal kapcsolatos laborokat fogják megtekinteni, és csak azokat a virtuális gépeket tekintik meg, amelyek az adott csapat számára lettek kiépítve. 
 * A rendszer automatikusan regisztrálja a felhasználókat a laborban, és a rendszer automatikusan hozzárendeli a virtuális gépeket az első bejelentkezéshez a tesztkörnyezet közzétételekor. Az oktatóknak nem kell elküldeniük a meghívókat és a tanulókat nem kell külön regisztrálni a laborba.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd az alábbi cikkeket:
 

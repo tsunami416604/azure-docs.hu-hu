@@ -3,12 +3,12 @@ title: Ismerkedés a Azure Lab Services
 description: Ez a cikk bemutatja, hogyan kezdheti meg a Azure Lab Services használatát.
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: bdc4f4af06d70a1798e7409b78f6b47530ddd7f4
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 6fb0da7f91e0eecdeefecdb6635b657245fda9af
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917103"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434430"
 ---
 # <a name="get-started-with-lab-services"></a>Ismerkedés a labor Services szolgáltatással 
 
@@ -48,7 +48,7 @@ A virtuális gépek kezelése során a legfontosabb megjegyezni, hogy a gép bá
 
 ### <a name="overview"></a>Áttekintés
 
-A Azure Lab Services osztálytermi laborokhoz tartozó irányítópultok egy adott labor különböző szempontjait, például a virtuális gép adatait, a hozzárendelt és a nem hozzárendelt virtuális gépek számát, a regisztrált és a nem regisztrált felhasználók számát, valamint a labor-ütemtervekkel kapcsolatos információkat tartalmaznak. 
+A Azure Lab Services Labs-irányítópultok az adott labor különböző szempontjait, például a virtuálisgép-információkat, a hozzárendelt és a nem hozzárendelt virtuális gépek számát, a regisztrált és a nem regisztrált felhasználók számát, valamint a labor-ütemtervekkel kapcsolatos információkat tartalmaznak. 
 
 > [!NOTE]
 > Noha az irányítópult és a [Azure Lab Services webhely](https://labs.azure.com/) legtöbb felügyeleti aspektusa látható lesz a tanárok számára, a szerepkörre vonatkozó engedélyek befolyásolhatják az irányítópult bizonyos feltételeinek módosítását. Ha probléma merül fel az adott labor beállításakor, forduljon a TÁBLAKIFEJEZÉSEK-rendszergazdához.
@@ -170,6 +170,6 @@ Miután megkérte a felhasználókat, vagy megosztotta a hivatkozást, megfigyel
 
 Ha nem folytatja az ebben a rövid útmutatóban létrehozott erőforrások használatát, törölje az erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Tesztkörnyezetfiók beállítása](tutorial-setup-lab-account.md)

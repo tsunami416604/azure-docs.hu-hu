@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: 4125a4493b72fa60203067f3eba1ccebdc820b02
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: azureday1
+ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182971"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434991"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Oktatóanyag: hozzáférés Microsoft Graph a biztonságos alkalmazásból felhasználóként
 
@@ -25,7 +26,7 @@ Megtudhatja, hogyan érheti el Microsoft Graph egy Azure App Serviceon futó web
 
 Hozzá kívánja adni az Microsoft Graphhoz való hozzáférést a webalkalmazásból, és végrehajthat valamilyen műveletet a bejelentkezett felhasználóként. Ez a szakasz azt ismerteti, hogyan lehet delegált engedélyeket adni a webalkalmazásnak, és beolvasni a bejelentkezett felhasználó profiljának adatait Azure Active Directory (Azure AD) szolgáltatásból.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -74,6 +75,8 @@ Mentse a beállításokat a **put** lehetőség kiválasztásával. A beállít�
 ## <a name="call-microsoft-graph-net"></a>Microsoft Graph (.NET) hívása
 
 A webalkalmazás már rendelkezik a szükséges engedélyekkel, és hozzáadja Microsoft Graph ügyfél-AZONOSÍTÓját is a bejelentkezési paraméterekhez. A [Microsoft. Identity. Web kódtár](https://github.com/AzureAD/microsoft-identity-web/)használatával a webalkalmazás hozzáférési jogkivonatot kap a hitelesítéshez Microsoft Graph. A 1.2.0 és újabb verziókban a Microsoft. Identity. Web könyvtár integrálódik a-val, és a App Service hitelesítés/engedélyezési modul mellett is futtatható. A Microsoft. Identity. Web észleli, hogy a webalkalmazás a App Serviceban található, és lekéri a hozzáférési jogkivonatot a App Service Authentication/Authorization modulból. A hozzáférési jogkivonatot ezután a Microsoft Graph API-val hitelesített kérelmekkel együtt továbbítja a rendszer.
+
+Ha ezt a kódot egy minta alkalmazás részeként szeretné látni, tekintse [meg a githubon található mintát](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf).
 
 > [!NOTE]
 > A Microsoft. Identity. Web függvénytár nem szükséges az alapszintű hitelesítéshez/engedélyezéshez, illetve a kérelmek Microsoft Graph-vel történő hitelesítéséhez a webalkalmazásban. Az [alsóbb rétegbeli API-k biztonságosan hívhatók](tutorial-auth-aad.md#call-api-securely-from-server-code) , és csak a app Service hitelesítés/engedélyezési modul engedélyezett.

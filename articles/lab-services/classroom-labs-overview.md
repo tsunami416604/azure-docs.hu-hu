@@ -1,19 +1,19 @@
 ---
-title: A tanterem Labs ismertetése a Azure Lab Servicesban | Microsoft Docs
+title: Tudnivalók a Azure Lab Services Labs szolgáltatásról | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre gyorsan egy tantermi tesztkörnyezet-környezetet a felhőben – beállíthatja a labort egy sablonos virtuális géppel az osztályhoz szükséges szoftverrel, és elkészítheti a virtuális gép másolatát a osztály minden tanulója számára.
 ms.topic: overview
 ms.date: 06/26/2020
-ms.openlocfilehash: e6ff56a831282c3abf5eec644573b9a3e88c6543
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 79d6f1cc9f2a6d8d8be872359a4677b36602eea5
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85445627"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434804"
 ---
-# <a name="introduction-to-classroom-labs"></a>Az osztályterem-tesztkörnyezetek bemutatása
+# <a name="introduction-to-labs"></a>A Labs bemutatása
 Az Azure Lab Services lehetővé teszi egy osztályterem-tesztkörnyezet gyors beállítását a felhőben. Az oktató létrehoz egy osztályterem-tesztkörnyezetet, Windows vagy Linux rendszerű virtuális gépeket épít ki, telepíti a szükséges szoftvereket és eszközöket a tesztkörnyezetben, és elérhetővé teszi őket a diákok számára. A diákok osztályterem-tesztkörnyezetben található virtuális gépekhez csatlakoznak, és a projektjeikhez, feladataikhoz vagy osztálytermi gyakorlataikhoz használják őket. 
 
-Az osztályterem Labs az Azure által felügyelt Lab-típusok. A szolgáltatás maga kezeli a felügyelt tesztkörnyezet összes infrastruktúra-kezelését, a virtuális gépek (VM-EK) a hibák kezeléséhez és az infrastruktúra skálázásához. Ön megadhatja, milyen típusú infrastruktúrát igényel, és telepítheti az eszközöket vagy szoftvereket, amelyekre az osztálynak szüksége van. 
+A laborok az Azure által felügyelt tesztkörnyezet-típusok. A szolgáltatás maga kezeli a felügyelt tesztkörnyezet összes infrastruktúra-kezelését, a virtuális gépek (VM-EK) a hibák kezeléséhez és az infrastruktúra skálázásához. Ön megadhatja, milyen típusú infrastruktúrát igényel, és telepítheti az eszközöket vagy szoftvereket, amelyekre az osztálynak szüksége van. 
 
 ## <a name="automatic-management-of-azure-infrastructure-and-scale"></a>Az Azure-infrastruktúra és-méretezés automatikus felügyelete 
 A Azure Lab Services felügyelt szolgáltatás, ami azt jelenti, hogy a szolgáltatás automatikusan kezeli a labor alapjául szolgáló infrastruktúra kiépítését és felügyeletét. A felhasználók számára a megfelelő labor-élmény előkészítésére koncentrálhat. Hagyja, hogy a szolgáltatás kezelje a REST-et, és állítsa be a laborban lévő virtuális gépeket a hallgatóságba. A labort több száz virtuális gépre méretezheti egyetlen kattintással.

@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 8bedecd4a050c445af0ab0ae0250197369b9173b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f0546a76974e429b625ba03fdf4598da7d32c990
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131411"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433353"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Gyakori kérdések az Cloud Partner Portalról a partneri központba való áttérésről
 
@@ -58,16 +58,16 @@ Ezek a kivont Cloud Partner Portal és az aktuális partner központ közötti k
 
 | Felhőpartnerportál | Partnerközpont |
 | --- | --- |
-| **Hivatkozás** : https://cloudpartner.azure.com/ | **Hivatkozás** : https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory és https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **Navigáció** : a bejelentések kifizetésében megadott kifizetési jelentések | **Navigáció** : a partner Centerben megadott kifizetési jelentés – kifizetés ikon |
-| **Hatókör** :<ul><li>A tranzakció/sorban lévő elemek láthatók a folyamatban lévő, begyűjtött és fizetős gyűjteményekhez.</li><li>Jelentéskészítés – az összes sor elemet megjeleníti a beszerzési sorrend létrehozása után, beleértve a folyamatban lévő gyűjteményt és a számlázást, valamint a gyűjtemény állapotát és a sorokra vonatkozó olyan elemeket, amelyek még nem jogosultak a kifizetésre.</li></ul> | **Hatókör** :<ul><li>Megjeleníti a sorban lévő elemeket, miután a rendszer jogosult bevételnek tekinti őket.</li><li>Az ügyfelek először fizetnek a Microsoftnak, majd az ISV-ket láthatják a kifizetési jelentés megkezdéséről.</li><li>A kifizetési jelentés nem jeleníti meg a folyamatban lévő gyűjteményt, és a számlázás folyamatban van.</li></ul> |
-| A **tranzakció nem áll készen a kifizetésre** : a számlázás folyamatban van | A **tranzakció nem áll készen a kifizetésre** : következő becsült fizetés: a kifizetés állapota a feldolgozatlan állapotban van. |
-| **Kifizetés állapota** : n/a | **Kifizetés állapota** :<ul><li>Feldolgozatlan: a kereset fizetésre jogosult.</li><li>Közelgő: a befizetést a következő havi kifizetés keretében küldi el a rendszer a közzétevőnek.</li><li>Elküldve: a rendszer elküldje a fizetést a banknak.</li></ul> |
+| **Hivatkozás**: https://cloudpartner.azure.com/ | **Hivatkozás**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory és https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **Navigáció**: a bejelentések kifizetésében megadott kifizetési jelentések | **Navigáció**: a partner Centerben megadott kifizetési jelentés – kifizetés ikon |
+| **Hatókör**:<ul><li>A tranzakció/sorban lévő elemek láthatók a folyamatban lévő, begyűjtött és fizetős gyűjteményekhez.</li><li>Jelentéskészítés – az összes sor elemet megjeleníti a beszerzési sorrend létrehozása után, beleértve a folyamatban lévő gyűjteményt és a számlázást, valamint a gyűjtemény állapotát és a sorokra vonatkozó olyan elemeket, amelyek még nem jogosultak a kifizetésre.</li></ul> | **Hatókör**:<ul><li>Megjeleníti a sorban lévő elemeket, miután a rendszer jogosult bevételnek tekinti őket.</li><li>Az ügyfelek először fizetnek a Microsoftnak, majd az ISV-ket láthatják a kifizetési jelentés megkezdéséről.</li><li>A kifizetési jelentés nem jeleníti meg a folyamatban lévő gyűjteményt, és a számlázás folyamatban van.</li></ul> |
+| A **tranzakció nem áll készen a kifizetésre**: a számlázás folyamatban van | A **tranzakció nem áll készen a kifizetésre**: következő becsült fizetés: a kifizetés állapota a feldolgozatlan állapotban van. |
+| **Kifizetés állapota**: n/a | **Kifizetés állapota**:<ul><li>Feldolgozatlan: a kereset fizetésre jogosult.</li><li>Közelgő: a befizetést a következő havi kifizetés keretében küldi el a rendszer a közzétevőnek.</li><li>Elküldve: a rendszer elküldje a fizetést a banknak.</li></ul> |
 |||
 
 ## <a name="what-about-offers-i-published-in-the-cloud-partner-portal"></a>Mi a helyzet a Cloud Partner Portal közzétett ajánlatokkal?
 
-A rendszer áthelyezte az ajánlatokat a partneri központba, és elérhetővé válik a partner központba való bejelentkezés után, a Dynamics NAV által felügyelt szolgáltatás és a Cortana Intelligence ajánlatok kivételével. Ha az ajánlata a kereskedelmi piactéren volt elérhető, továbbra is élőben fog működni, és az ügyfelek továbbra is megvásárolhatják és üzembe helyezhetik azokat megszakítások nélkül. További részletekért tekintse meg a következő kérdést, **hogy milyen ajánlatokat helyeztek át a partner Centerbe?** .
+A rendszer áthelyezte az ajánlatokat a partneri központba, és elérhetővé válik a partner központba való bejelentkezés után, a Dynamics NAV által felügyelt szolgáltatás és a Cortana Intelligence ajánlatok kivételével. Ha az ajánlata a kereskedelmi piactéren volt elérhető, továbbra is élőben fog működni, és az ügyfelek továbbra is megvásárolhatják és üzembe helyezhetik azokat megszakítások nélkül. További részletekért tekintse meg a következő kérdést, **hogy milyen ajánlatokat helyeztek át a partner Centerbe?**.
 
 ## <a name="what-offers-were-moved-to-partner-center"></a>Milyen ajánlatokat helyeztek át a partner központba?
 
@@ -75,11 +75,11 @@ A Cloud Partner Portal által korábban támogatott összes típusú ajánlat t�
 
 A partner Centerben támogatott ajánlati típusok esetében az összes ajánlat az állapotuktól függetlenül mozgott. a draft, de a List és a Preview-only ajánlat is át lett helyezve.
 
-| Csomag típusa <img src="" width=150px>| Áthelyezte a partneri központba? <img src="" width=100px>| Következő lépések |
+| Csomag típusa <img src="" width=150px>| Áthelyezte a partneri központba? <img src="" width=100px>| További lépések |
 | --- | --- | --- |
 | SaaS | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [SaaS-ajánlat tervezése a kereskedelmi piactéren](plan-saas-offer.md). |
 | Virtuális gép | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ a [virtuális gépek ajánlatának megtervezése](marketplace-virtual-machines.md)című témakörben található. |
-| Azure-alkalmazás | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt az [Azure-alkalmazás ajánlatának létrehozása](partner-center-portal/create-new-azure-apps-offer.md)című témakörben olvashat. |
+| Azure-alkalmazás | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt az [Azure-alkalmazás ajánlatának létrehozása](create-new-azure-apps-offer.md)című témakörben olvashat. |
 | Dynamics 365 Business Central | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Dynamics 365 Business Central ajánlat](partner-center-portal/create-new-business-central-offer.md). |
 | Dynamics 365 a Customer engagement & PowerApps | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Dynamics 365 for Customer Engagement & PowerApps ajánlat](partner-center-portal/create-new-customer-engagement-offer.md). |
 | Dynamics 365 for Operations | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt a [Dynamics 365 for Operations ajánlat létrehozása](partner-center-portal/create-new-operations-offer.md)című témakörben olvashat. |
@@ -127,7 +127,7 @@ Ha nem tud bejelentkezni a fiókjába, itt is megnyithatja a [támogatási jegye
 
 ## <a name="where-are-instructions-for-using-partner-center"></a>Hol találhatók a partner Center használatára vonatkozó utasítások?
 
-Nyissa meg a [kereskedelmi piactér dokumentációját](index.yml), majd bontsa ki a **kereskedelmi piactér portált a partner Centerben** . Az ajánlatok a partner Centerben való létrehozásával kapcsolatos súgótémakörök megtekintéséhez bontsa ki az **új ajánlat létrehozása** elemet.
+Nyissa meg a [kereskedelmi piactér dokumentációját](index.yml), majd bontsa ki a **kereskedelmi piactér portált a partner Centerben**. Az ajánlatok a partner Centerben való létrehozásával kapcsolatos súgótémakörök megtekintéséhez bontsa ki az **új ajánlat létrehozása** elemet.
 
 ## <a name="what-are-the-publishing-and-offer-management-differences"></a>Mik a közzétételi és az ajánlat-kezelési különbségek?
 

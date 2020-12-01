@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3a3518ba68c9474fc4a34390e6fd9a7d1e88f6c6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f261db8d40e1a1cc1737ff6a3f5c50da661b73e6
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959594"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433472"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Oktatóanyag: környezet beállítása a gépi tanuláshoz IoT Edge
 
@@ -39,7 +39,7 @@ A fejlesztői virtuális gép a következőket fogja beállítani:
 * [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure PowerShell](/powershell/azure/?view=azps-1.1.0)
+* [Azure PowerShell](/powershell/azure/)
 * [VS Code-bővítmények](https://marketplace.visualstudio.com/search?target=VSCode)
   * [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
@@ -83,7 +83,7 @@ A virtuális gép létrehozása és konfigurálása körülbelül 30 percet vesz
 
    A szkript több percig fut, ahogy a következő lépéseket hajtja végre:
 
-    1. Telepíti a [Azure PowerShell az modult](/powershell/azure/new-azureps-module-az?view=azps-1.1.0).
+    1. Telepíti a [Azure PowerShell az modult](/powershell/azure/new-azureps-module-az).
     1. Felszólítja, hogy jelentkezzen be az Azure-ba.
     1. Megerősíti a virtuális gép létrehozásához szükséges információkat. Nyomja le az **y** vagy az **ENTER** billentyűt a folytatáshoz.
     1. Létrehozza az erőforráscsoportot, ha az nem létezik.
@@ -210,7 +210,7 @@ Az IoT hub létrehozásának részeként az előző szakaszban futtatott szkript
 
 1. Mivel nem történt módosítás, csak zárjuk be ezt a lapot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben létrehoztunk egy IoT Hub, és konfiguráltunk egy útvonalat egy Azure Storage-fiókhoz. A következő lépésben szimulált eszközökből származó adatok lesznek elküldve a IoT Hub a Storage-fiókba. Az oktatóanyag későbbi részében, miután konfiguráltuk IoT Edge eszközt és modulokat, újra felkeresjük az útvonalakat, és egy kicsit többet is megvizsgálunk az útválasztási lekérdezésben.
 

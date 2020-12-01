@@ -192,8 +192,16 @@
           href: application-proxy-remove-personal-data.md
         - name: Egyéni tartomány konfigurálása
           href: application-proxy-configure-custom-domain.md
-        - name: Örökölt alkalmazások védelme alkalmazásszolgáltatási vezérlők vagy hálózatok segítségével
-          href: secure-hybrid-access.md
+        - name: Örökölt alkalmazások védelmének biztosítása
+          items:
+            - name: Biztonságos hibrid hozzáférés az Azure AD-vel
+              href: secure-hybrid-access.md
+            - name: F5- és Azure AD-integráció
+              href: f5-aad-integration.md
+            - name: Az F5 BIG-IP VE üzembe helyezése az Azure IaaS-ban
+              href: f5-bigip-deployment-guide.md
+            - name: Az F5 Big-IP és az Azure AD használata jelszó nélküli VPN-hez
+              href: f5-aad-password-less-vpn.md
         - name: Közzétételi útmutatók
           items:
             - name: Integrálás alkalmazásproxyval NDES-kiszolgálón

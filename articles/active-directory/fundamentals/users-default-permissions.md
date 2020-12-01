@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019501eef0857c9dc7cd7f63a656eccf61608f1b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 29580564ffa2fed579065e6a8551a6f44597e41a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367822"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433257"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Melyek a Azure Active Directory alapértelmezett felhasználói engedélyei?
 Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználók hozzáférése a felhasználó típusától, a [szerepkörük hozzárendeléseitől](active-directory-users-assign-role-azure-portal.md), valamint az egyes objektumok tulajdonosainak. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait. Az alapértelmezett felhasználói engedélyeket csak az Azure AD felhasználói beállításaiban lehet módosítani.
@@ -39,7 +39,7 @@ Eszközök</li></ul> | <ul><li>Az összes eszköz listájának enumerálása<li>
 Címtár | <ul><li>Minden vállalati adat olvasása<li>Minden tartomány olvasása<li>Minden partnerszerződés olvasása</li></ul> | <ul><li>Cég megjelenítendő nevének olvasása<li>Minden tartomány olvasása</li></ul> | <ul><li>Cég megjelenítendő nevének olvasása<li>Minden tartomány olvasása</li></ul>
 Szerepkörök és hatókörök | <ul><li>Minden rendszergazdai szerepkör és tagság olvasása<li>Felügyeleti egységek minden tulajdonságának és tagságának olvasása</li></ul> | Nincs engedély | Nincs engedély
 Előfizetések | <ul><li>Minden előfizetés olvasása<li>Szolgáltatáscsomag-tag engedélyezése</li></ul> | Nincs engedély | Nincs engedély
-Házirendek | <ul><li>Szabályzatok minden tulajdonságának olvasása<li>Saját szabályzat minden tulajdonságának kezelése</li></ul> | Nincs engedély | Nincs engedély
+Szabályzatok | <ul><li>Szabályzatok minden tulajdonságának olvasása<li>Saját szabályzat minden tulajdonságának kezelése</li></ul> | Nincs engedély | Nincs engedély
 
 ## <a name="restrict-member-users-default-permissions"></a>A tag felhasználói alapértelmezett engedélyeinek korlátozása 
 
@@ -63,7 +63,7 @@ A vendég felhasználók alapértelmezett engedélyei a következő módokon kor
 
 Engedély | Magyarázat beállítása
 ---------- | ------------
-Vendég felhasználói hozzáférési korlátozások (előzetes verzió) | Ha ezt a beállítást szeretné beállítani a **vendég felhasználók számára, a tagoknak alapértelmezés szerint ugyanaz a hozzáférése, mint a tag** felhasználói engedélyeket.<p>Ha ezt a beállítást szeretné beállítani a **vendég felhasználói hozzáféréshez, a saját címtárobjektumok tulajdonságaira és tagságára korlátozódik** , alapértelmezés szerint csak a saját felhasználói profiljára korlátozza a vendég hozzáférését. A többi felhasználóhoz való hozzáférés már nem engedélyezett, még akkor is, ha az egyszerű felhasználónév, a ObjectId vagy a megjelenítendő név alapján keres. A csoportokhoz való hozzáféréshez, beleértve a csoportok tagságát is, már nem engedélyezett.<p>**Megjegyzés**: Ez a beállítás nem akadályozza meg, hogy egyes Microsoft 365 szolgáltatások, például a Microsoft Teams összevont csoportjaihoz hozzáférjenek. További információért tekintse meg a [Microsoft Teams vendég hozzáférését]() ismertető témakört.<p>A vendég felhasználók továbbra is hozzáadhatók a rendszergazdai szerepkörökhöz az engedély beállításaitól függetlenül.
+Vendég felhasználói hozzáférési korlátozások (előzetes verzió) | Ha ezt a beállítást szeretné beállítani a **vendég felhasználók számára, a tagoknak alapértelmezés szerint ugyanaz a hozzáférése, mint a tag** felhasználói engedélyeket.<p>Ha ezt a beállítást szeretné beállítani a **vendég felhasználói hozzáféréshez, a saját címtárobjektumok tulajdonságaira és tagságára korlátozódik** , alapértelmezés szerint csak a saját felhasználói profiljára korlátozza a vendég hozzáférését. A többi felhasználóhoz való hozzáférés már nem engedélyezett, még akkor is, ha az egyszerű felhasználónév, a ObjectId vagy a megjelenítendő név alapján keres. A csoportokhoz való hozzáféréshez, beleértve a csoportok tagságát is, már nem engedélyezett.<p>**Megjegyzés**: Ez a beállítás nem akadályozza meg, hogy egyes Microsoft 365 szolgáltatások, például a Microsoft Teams összevont csoportjaihoz hozzáférjenek. További információért tekintse meg a [Microsoft Teams vendég hozzáférését](https://docs.microsoft.com/MicrosoftTeams/guest-access) ismertető témakört.<p>A vendég felhasználók továbbra is hozzáadhatók a rendszergazdai szerepkörökhöz az engedély beállításaitól függetlenül.
 Vendégek küldhetnek meghívót | Ha ezt a beállítást választja, az Igen lehetőséget választva a vendégek más vendégeket is meghívhatnak. További információért lásd: [meghívások delegálása B2B-együttműködéshez](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) .
 Tagok küldhetnek meghívót | Ha ezt a beállítást Igen értékre állítja, a címtár nem rendszergazdai tagjai meghívhatják a vendégeket. További információért lásd: [meghívások delegálása B2B-együttműködéshez](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) .
 A vendégmeghívó szerepkörű rendszergazdák és felhasználók küldhetnek meghívót | Ha ezt a beállítást az Igen értékre állítja, a "vendég meghívó" szerepkörben a rendszergazdák és a felhasználók meghívhatják a vendégeket. Ha az Igen értékre van állítva, akkor a vendég meghívó szerepkörben lévő felhasználók továbbra is meghívhatják a vendégeket, függetlenül attól, hogy a tagok meghívhatják a beállításokat. További információért lásd: [meghívások delegálása B2B-együttműködéshez](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user) .
@@ -140,7 +140,7 @@ A felhasználók a következő műveleteket hajthatják végre a tulajdonos csop
 | Microsoft. Directory/csoportok/visszaállítás | Csoportok visszaállítása a Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/beállítások/frissítés | A groups. Settings tulajdonság frissítése Azure Active Directoryban. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a vendég felhasználói hozzáférési korlátozásokról, tekintse meg a következő témakört: a [vendég hozzáférési engedélyeinek korlátozása (előzetes verzió) Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 * További információ az Azure AD-rendszergazdai szerepkörök hozzárendeléséről: [felhasználó társítása rendszergazdai szerepkörökhöz Azure Active Directory](active-directory-users-assign-role-azure-portal.md)

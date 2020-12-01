@@ -453,7 +453,7 @@
                       href: ../image-version-vm-powershell.md
                     - name: Felügyelt lemezről vagy pillanatképből
                       href: ../image-version-snapshot-powershell.md
-                    - name: Migrálás felügyelt rendszerképből
+                    - name: Felügyelt rendszerkép klónozása
                       href: ../image-version-managed-image-powershell.md
                     - name: Másolás másik katalógusból
                       href: ../image-version-another-gallery-powershell.md
@@ -475,7 +475,7 @@
                       href: ../image-version-vm-cli.md
                     - name: Felügyelt lemezről vagy pillanatképből
                       href: ../image-version-snapshot-cli.md
-                    - name: Migrálás felügyelt rendszerképből
+                    - name: Felügyelt rendszerkép klónozása
                       href: ../image-version-managed-image-cli.md
                     - name: Másolás másik katalógusból
                       href: ../image-version-another-gallery-cli.md

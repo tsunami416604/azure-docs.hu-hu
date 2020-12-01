@@ -487,7 +487,7 @@
                       href: ../image-version-vm-cli.md
                     - name: Felügyelt lemezről vagy pillanatképből
                       href: ../image-version-snapshot-cli.md
-                    - name: Migrálás felügyelt rendszerképből
+                    - name: Felügyelt rendszerkép klónozása
                       href: ../image-version-managed-image-cli.md
                     - name: Másolás másik katalógusból
                       href: ../image-version-another-gallery-cli.md
@@ -511,7 +511,7 @@
                       href: ../image-version-vm-powershell.md
                     - name: Felügyelt lemezről vagy pillanatképből
                       href: ../image-version-snapshot-powershell.md
-                    - name: Migrálás felügyelt rendszerképből
+                    - name: Felügyelt rendszerkép klónozása
                       href: ../image-version-managed-image-powershell.md
                     - name: Másolás másik katalógusból
                       href: ../image-version-another-gallery-powershell.md
@@ -963,7 +963,7 @@
           items:
             - name: Architektúra
               href: ibm-db2-purescale-azure.md
-            - name: Üzembe helyezés
+            - name: Környezet
               href: deploy-ibm-db2-purescale-azure.md
     - name: Tárhely kezelése
       items:

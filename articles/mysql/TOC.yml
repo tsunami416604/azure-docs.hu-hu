@@ -124,6 +124,8 @@
           href: concepts-supported-versions.md
         - name: Korlátozások
           href: concepts-limits.md
+        - name: Ajánlott üzemeltetési eljárások
+          href: concept-operation-excellence-best-practices.md
         - name: Tarifacsomagok
           items:
             - name: Árképzési szintek
@@ -195,6 +197,10 @@
             - name: Teljesítménnyel kapcsolatos javaslatok
               href: concepts-performance-recommendations.md
               displayName: recommendation
+            - name: Ajánlott eljárások a monitorozáshoz
+              href: concept-monitoring-best-practices.md
+            - name: Ajánlott eljárások teljesítményének javításához
+              href: concept-performance-best-practices.md
         - name: Alkalmazásfejlesztés
           items:
             - name: Alkalmazásfejlesztés áttekintése

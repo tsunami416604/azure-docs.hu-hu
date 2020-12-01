@@ -3,12 +3,12 @@ title: Azure Lab Services használata a Hackathon
 description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Lab Services a ötletbörzékhez futtatásához használható laborok létrehozásához.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 561351636a37c2cd5c3070dbfef2a3122e5c29b0
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445882"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434260"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Azure Lab Services használata a következő Hackathon
 A Azure Lab Services könnyű és könnyen használható, így gyorsan üzembe helyezhet egy új, virtuális gépeket (VM) a Hackathon számára.  A következő ellenőrzőlista használatával biztosíthatja, hogy a Hackathon a lehető legzökkenőmentesebb legyen. Ezt az ellenőrzőlistát az informatikai részlegnek vagy a Hackathon-labor létrehozásával és felügyeletével megbízott szakoktatóknak kell elvégeznie. 
@@ -55,7 +55,7 @@ Ha labor-szolgáltatásokat szeretne használni a Hackathon, győződjön meg ar
 
     Győződjön meg arról, hogy az iskolai vagy szervezet tűzfalbeállítások lehetővé teszik a RDP\SSH.-t használó labor virtuális gépekhez való csatlakozást További információ: [útmutató a hálózat tűzfala beállításainak konfigurálásához](how-to-configure-firewall-settings.md).
 
-- **Telepítse a RDP\SSH-ügyfelet a résztvevő tablettákra, Mac-re, számítógépekre**stb.
+- **Telepítse a RDP\SSH-ügyfelet a résztvevő tablettákra, Mac-re, számítógépekre** stb.
 
     A Hackathon-résztvevőknek olyan RDP-és/vagy SSH-ügyféllel kell rendelkezniük, amely a labor-alapú virtuális gépekhez való kapcsolódáshoz használatos tablettán vagy laptopon telepítve van. Különböző RDP-vagy SSH-ügyfelek közül választhat, például:
 
@@ -86,4 +86,4 @@ Ez a szakasz a Hackathon napjának befejezésének lépéseit ismerteti.
         További információ: [útmutató a felhasználók meghívásának elküldéséhez](how-to-configure-student-usage.md?branch=master#send-invitations-to-users) és [a Linux rendszerű virtuális gépekhez való csatlakozáshoz](how-to-use-remote-desktop-linux-student.md?branch=master). 
 
 ## <a name="next-steps"></a>További lépések
-A Lab-fiók létrehozása az osztályterem Labs szolgáltatásban című cikk útmutatását követve megtudhatja, hogyan állíthat be [laboratóriumi fiókot a Azure Lab Services](tutorial-setup-lab-account.md).
+A labor-fiók létrehozásához a laborban kövesse az alábbi cikket: [oktatóanyag: labor-fiók beállítása Azure Lab Services](tutorial-setup-lab-account.md).

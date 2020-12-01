@@ -3,12 +3,12 @@ title: Hozzáférés osztályterem-tesztkörnyezethez az Azure Lab Servicesben |
 description: Megtudhatja, hogyan regisztrálhat egy osztálytermi laborba, megtekintheti az összes elérhető labort, elindíthatja és leállíthatja a virtuális gépet a laborban, és csatlakozhat a virtuális géphez.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 0c2f0ba5e6a47e00f47a31e08c036ea17ff2507a
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 6d5585082473a363df5f25f331475536544ae828
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946110"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433138"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Hozzáférés osztályterem-tesztkörnyezethez az Azure Lab Servicesben
 Ez a cikk bemutatja, hogyan regisztrálhat egy osztályterem laborba, megtekintheti az összes elérni kívánt labort, elindíthatja vagy leállíthatja a virtuális gépet a laborban, és csatlakozhat a virtuális géphez. 
@@ -37,7 +37,7 @@ Ez a cikk bemutatja, hogyan regisztrálhat egy osztályterem laborba, megtekinth
 1. **Indítsa el** a virtuális gépet az alábbi képen látható első gomb kiválasztásával. Ez a folyamat hosszabb időt vesz igénybe.  
 
     ![A virtuális gép elindítása](./media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
-4. Győződjön meg arról, hogy a virtuális gép állapota **fut**értékre van állítva. 
+4. Győződjön meg arról, hogy a virtuális gép állapota **fut** értékre van állítva. 
 
     ![Futó állapotú virtuális gép](./media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
 
@@ -70,8 +70,8 @@ A csempe folyamatjelzője megjeleníti az órák számát, amelyet a rendszer az
     ![Folyamatjelző sáv kék színnel](./media/tutorial-connect-vm-in-classroom-lab/progress-bar-blue-color.png)
 
 
-## <a name="view-all-the-classroom-labs"></a>Az összes osztályterem-tesztkörnyezet megtekintése
-A laborba való regisztráció után az alábbi lépéseket követve megtekintheti az összes osztályterem Labs-t: 
+## <a name="view-all-the-labs"></a>Az összes labor megtekintése
+A laborba való regisztráció után az alábbi lépéseket követve megtekintheti az összes labort: 
 
 1. Navigáljon a következőhöz: [https://labs.azure.com](https://labs.azure.com) . Az Internet Explorer 11 még nem támogatott. 
 2. Jelentkezzen be a szolgáltatásba a laborba való regisztrációhoz használt felhasználói fiók használatával. 

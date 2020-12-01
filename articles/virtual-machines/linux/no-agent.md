@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 30e76ec3085922ec2a1d4693681eb97c9052c026
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9f0309f4e8273c2ef19ea86636de8e3aa6b6c4bc
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978730"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435100"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Általánosított rendszerképek létrehozása kiépítési ügynök nélkül
 
@@ -199,7 +199,7 @@ WantedBy=multi-user.target
 Ez a rendszerű szolgáltatás az alapszintű kiépítés során három dolgot tesz:
 
 1. Készen áll az Azure-ra (amely azt jelzi, hogy sikeres volt a jelentés).
-1. Átnevezi a virtuális gépet a felhasználó által megadott virtuálisgép-név alapján, ha ezt az adatforrást az [Azure instance metadata Serviceról (IMDS)](./instance-metadata-service.md)húzza. **Megjegyzés** A IMDS más [példány-metaadatokat](./instance-metadata-service.md#accessing-azure-instance-metadata-service)is biztosít, például az SSH nyilvános kulcsokat, így az állomásnévnél többet is beállíthat.
+1. Átnevezi a virtuális gépet a felhasználó által megadott virtuálisgép-név alapján, ha ezt az adatforrást az [Azure instance metadata Serviceról (IMDS)](./instance-metadata-service.md)húzza. **Megjegyzés** A IMDS más [példány-metaadatokat](./instance-metadata-service.md#access-azure-instance-metadata-service)is biztosít, például az SSH nyilvános kulcsokat, így az állomásnévnél többet is beállíthat.
 1. Letiltja önmagát, hogy csak az első rendszerindításkor fusson, nem pedig a későbbi újraindítások során.
 
 A fájlrendszerben lévő egységhez futtassa a következő parancsot az engedélyezéséhez:
@@ -271,6 +271,6 @@ Jun 11 20:28:56 thstringnopa2 systemd[1]: Started Azure Provisioning.
 
 Ha saját üzembe helyezési kódot vagy ügynököt valósít meg, akkor a Microsoft támogatási szolgálata csak a nem elérhető kiépítési felületekkel kapcsolatos problémákat vizsgálja. Folyamatosan fejlesztünk javításokat és változásokat ezen a területen, ezért figyelnie kell a Cloud-init és az Azure Linux-ügynök változásait az API-változások kiépítési folyamatához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: Linux- [kiépítés](provisioning.md).

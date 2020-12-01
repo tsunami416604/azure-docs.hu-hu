@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0ff6d064b6bfabbd8a648c23b5648aae9b12a11d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8c037d35c2df4572800d2519347aa113a86cde36
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207495"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434838"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Oktatóanyag: kereskedelmi használatra kész Azure Remote rendering-alkalmazás létrehozása
 
@@ -98,7 +98,7 @@ Ez a lehetőség egy webportálon keresztül érhető el, ahol a felhasználók 
 
 A legigényesebb helyzetekben egy másik lehetőség a munkamenet-készletezés, ahol egy vagy több munkamenet létrehozása és inicializálása mindig folyamatban van. Ez egy munkamenet-készletet hoz létre, amely azonnali használatra kéri a kérelmező felhasználó számára. Ennek a megközelítésnek a hátránya, hogy a virtuális gép inicializálása után a szolgáltatás számlázása elindul. Nem költséghatékony, hogy egy munkamenet-készletet folyamatosan futtasson, de az elemzések alapján lehetséges, hogy megjósolhatja a maximális terhelést, vagy kombinálható a fenti ütemezési stratégiával, hogy előre megjósolja a munkamenetek szükségességét, és ennek megfelelően felgyorsítja a munkamenet-készletet.
 
-Ez a stratégia a *standard* és a *prémium* szintű munkamenetek közötti választást is lehetővé teszi a dinamikus módon, mert sokkal gyorsabban lehet váltani a két típus között egy adott felhasználói munkamenetben, például a *prémium* komplexitású modell első megtekintésekor, majd egy, a *standardon*belül működhet. Ha ezek a felhasználói munkamenetek meglehetősen hosszadalmasak, jelentős költségmegtakarítást érhet el.
+Ez a stratégia a *standard* és a *prémium* szintű munkamenetek közötti választást is lehetővé teszi a dinamikus módon, mert sokkal gyorsabban lehet váltani a két típus között egy adott felhasználói munkamenetben, például a *prémium* komplexitású modell első megtekintésekor, majd egy, a *standardon* belül működhet. Ha ezek a felhasználói munkamenetek meglehetősen hosszadalmasak, jelentős költségmegtakarítást érhet el.
 
 További információ az Azure távoli renderelési munkamenetekről:
 
@@ -106,23 +106,23 @@ További információ az Azure távoli renderelési munkamenetekről:
 
 ## <a name="standard-vs-premium-server-size-routing-strategies"></a>Standard és prémium szintű kiszolgálói útválasztási stratégiák
 
-A standard vagy *prémium* *szintű* kiszolgáló méretének kiválasztásához a felhasználói élmény és a végpontok közötti rendszer megtervezése kihívást jelent. Habár a kizárólag *prémium* szintű munkamenetek használata egy lehetőség, a *normál* munkamenetek jóval kevesebb Azure számítási erőforrást használnak, és a *prémiumnál*olcsóbbak. Ez erős motivációt biztosít a *standard szintű* munkamenetek használatára, amikor csak lehetséges, és csak szükség esetén használja a *prémium* szintet.
+A standard vagy *prémium* *szintű* kiszolgáló méretének kiválasztásához a felhasználói élmény és a végpontok közötti rendszer megtervezése kihívást jelent. Habár a kizárólag *prémium* szintű munkamenetek használata egy lehetőség, a *normál* munkamenetek jóval kevesebb Azure számítási erőforrást használnak, és a *prémiumnál* olcsóbbak. Ez erős motivációt biztosít a *standard szintű* munkamenetek használatára, amikor csak lehetséges, és csak szükség esetén használja a *prémium* szintet.
 
 Itt több lehetőséget is megosztunk, amelyek közül legalább a legátfogóbbat vesszük igénybe, hogy kezeljék a munkamenet-döntések kezelésének óhaját.
 
 ### <a name="use-only-standard-or-premium"></a>Csak standard vagy prémium szintű használata
 
-Ha biztos abban, hogy az igényeinek *mindig* a *standard* és a *prémium*küszöbértéke alá esik, akkor ez jelentősen leegyszerűsíti a döntést. Csak a *standard*használata. Ne feledje azonban, hogy a felhasználói élményre gyakorolt hatás jelentős, ha a betöltött eszközök teljes összetettségét túl összetettnek tekinti a *normál* munkamenetek esetében.
+Ha biztos abban, hogy az igényeinek *mindig* a *standard* és a *prémium* küszöbértéke alá esik, akkor ez jelentősen leegyszerűsíti a döntést. Csak a *standard* használata. Ne feledje azonban, hogy a felhasználói élményre gyakorolt hatás jelentős, ha a betöltött eszközök teljes összetettségét túl összetettnek tekinti a *normál* munkamenetek esetében.
 
-Hasonlóképpen, ha a felhasználás nagy hányada meghaladja a *standard* és a *prémium*közötti küszöbértéket, vagy a költségek nem kulcsfontosságú tényezők a használati esetekben, akkor a *prémium* lehetőség kiválasztásával is megtarthatja az egyszerűséget.
+Hasonlóképpen, ha a felhasználás nagy hányada meghaladja a *standard* és a *prémium* közötti küszöbértéket, vagy a költségek nem kulcsfontosságú tényezők a használati esetekben, akkor a *prémium* lehetőség kiválasztásával is megtarthatja az egyszerűséget.
 
 ### <a name="ask-the-user"></a>A felhasználó megkérdezése
 
-Ha mind a standard, mind a *prémium* *szintű* támogatást szeretné támogatni, a legegyszerűbb módszer annak meghatározására, hogy milyen típusú munkamenetet kell létrehoznia, hogy megkérdezze a felhasználót, amikor kiválasztja a 3D-eszközöket a megtekintéshez. Ezzel a módszerrel a felhasználónak meg kell ismernie a 3D-eszköz összetettségét, vagy akár több, megtekinthető eszközt is. Ez általában nem ajánlott erre az okból. Ha a felhasználó helytelenül választ, és a *standard*lehetőséget választja, akkor az eredményül kapott felhasználói élmény egy alkalmatlan pillanatban sérült.
+Ha mind a standard, mind a *prémium* *szintű* támogatást szeretné támogatni, a legegyszerűbb módszer annak meghatározására, hogy milyen típusú munkamenetet kell létrehoznia, hogy megkérdezze a felhasználót, amikor kiválasztja a 3D-eszközöket a megtekintéshez. Ezzel a módszerrel a felhasználónak meg kell ismernie a 3D-eszköz összetettségét, vagy akár több, megtekinthető eszközt is. Ez általában nem ajánlott erre az okból. Ha a felhasználó helytelenül választ, és a *standard* lehetőséget választja, akkor az eredményül kapott felhasználói élmény egy alkalmatlan pillanatban sérült.
 
 ### <a name="analyze-the-3d-model"></a>A 3D modell elemzése
 
-Egy másik viszonylag egyszerű módszer a kiválasztott 3D-eszközök bonyolultságának elemzése. Ha a modell összetettsége a *standard*küszöbérték alatt van, indítson el egy normál munkamenetet, ellenkező esetben egy *prémium* *szintű* munkamenetet kezdeményezzen. Itt az a kihívás, hogy egy-egy munkamenet végső soron több olyan modell megtekintésére is használható, amelynek némelyike meghaladhatja a *normál* munkamenet bonyolultsági küszöbértékét, ami azt eredményezi, hogy a különböző 3D-eszközök sorozatából nem képes zökkenőmentesen használni ugyanazt a munkamenetet.
+Egy másik viszonylag egyszerű módszer a kiválasztott 3D-eszközök bonyolultságának elemzése. Ha a modell összetettsége a *standard* küszöbérték alatt van, indítson el egy normál munkamenetet, ellenkező esetben egy *prémium* *szintű* munkamenetet kezdeményezzen. Itt az a kihívás, hogy egy-egy munkamenet végső soron több olyan modell megtekintésére is használható, amelynek némelyike meghaladhatja a *normál* munkamenet bonyolultsági küszöbértékét, ami azt eredményezi, hogy a különböző 3D-eszközök sorozatából nem képes zökkenőmentesen használni ugyanazt a munkamenetet.
 
 ### <a name="automatic-switching"></a>Automatikus váltás
 
@@ -213,7 +213,7 @@ A várható használati eset alapján határozza meg a legjobb helyet vagy a hel
 
 Ha a használati eset olyan használati mintázattal rendelkezik, ahol ugyanaz a 3D-eszköz többször is feltölthető, a háttér nyomon követheti, hogy mely modellek legyenek már konvertálva az ARR-vel való használatra, hogy a modell csak egyszer legyen feldolgozva több jövőbeli kiválasztáshoz. A tervezési áttekintés például az, hogy egy csapat Hogyan férhet hozzá egy közös eredeti 3D-eszközhöz. Minden csapattagnak a modelljét az ARR használatával kell áttekintenie a munkahelyi stream egy pontján. Ekkor csak az első nézet aktiválja az előfeldolgozás előtti lépést. A következő nézetek kikeresik a társított, feldolgozott, a SAS kimeneti tárolóban lévő fájlt.
 
-A használati esettől függően valószínű, hogy meg kell határoznia, hogy megmaradjon a megfelelő Azure Remote rendering Server-méret, *standard* vagy *prémium*szint az egyes 3D-eszközök vagy-csoportok számára, amelyek ugyanabban a munkamenetben lesznek megtekintve.  
+A használati esettől függően valószínű, hogy meg kell határoznia, hogy megmaradjon a megfelelő Azure Remote rendering Server-méret, *standard* vagy *prémium* szint az egyes 3D-eszközök vagy-csoportok számára, amelyek ugyanabban a munkamenetben lesznek megtekintve.  
 
 ### <a name="on-device-model-selection-list"></a>Az eszközön a modell kiválasztási listája
 
@@ -248,14 +248,14 @@ A vegyes valóság egyik meggyőző használati esete a CAD-munkafolyamatok terv
 
 A sokkal egyszerűbb, de valamivel kevésbé áramvonalas megközelítés automatizálhatja a 3D modell helyi merevlemezre mentésének folyamatát, majd kezdeményezheti a mentett fájlnak a SAS bemeneti tárolóba való továbbításának folyamatát.
 
-### <a name="azure-marketplace"></a>Azure Piactér
+### <a name="azure-marketplace"></a>Azure Marketplace
 
 Számos nagyvállalati ügyfél azt adja meg, hogy a Azure Stack a saját Azure-fiókjaik és a hitelesítő adataik biztonsági okokból történő üzembe helyezésére is szükség van. Ennek elvégzéséhez érdemes megfontolnia az Azure által felügyelt alkalmazások csomagolását úgy, hogy az Azure Marketplace-en is közzétehető legyen az Azure piactéren.
 
 További információk:
 
 * [Azure Marketplace](https://azure.microsoft.com/marketplace/)
-* [Oktatóanyag: Azure által felügyelt alkalmazások közzététele a piactéren](../../../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)
+* [Oktatóanyag: Azure által felügyelt alkalmazások közzététele a piactéren](../../../../marketplace/create-new-azure-apps-offer.md)
 
 ### <a name="security"></a>Biztonság
 
@@ -279,4 +279,4 @@ További információk:
 
 * [Azure AD-szolgáltatás hitelesítése](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-service-authentication)
 * [A biztonsági helyzet megerősítése az Azure-ban](https://azure.microsoft.com/overview/security/)
-* [Felhőbeli biztonság](https://azure.microsoft.com/product-categories/security/)
+* [Felhőbiztonság](https://azure.microsoft.com/product-categories/security/)

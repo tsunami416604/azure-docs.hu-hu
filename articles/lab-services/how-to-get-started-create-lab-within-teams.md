@@ -3,12 +3,12 @@ title: Első lépések és Azure Lab Services labor létrehozása a csapatokon b
 description: Megtudhatja, hogyan kezdheti el és hozhat létre Azure Lab Services laborokat a csapatokon belül.
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: e17b0be223a1630402fc4f32c692d7ecfe184783
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: cc4ad604bdf250cc6e4ba2c50c2f7143c921e906
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217082"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433971"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Első lépések és labor Services-tesztkörnyezet létrehozása a csapatokon belül
 
@@ -40,24 +40,24 @@ Csapatának tulajdonosaként közvetlenül is hozzáadhat **Azure Lab Services**
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/integrate-with-teams/add.png" alt-text="Lap hozzáadása":::
-1. Válassza ki a labor Services-fiókot, amelyet az osztályterem Labs létrehozásához szeretne használni ebben a csapatban. 
+1. Válassza ki a labor Services-fiókot, amelyet a laborok létrehozásához szeretne használni ebben a csapatban. 
 
     Azure Lab Services egyszeri bejelentkezést használ a [Azure Lab Services webhelyre](https://labs.azure.com) , és lekéri az összes olyan labor-fiókot, amelyhez hozzáféréssel rendelkezik. 
 
-    Azok a fiókok, amelyek ugyanabban a bérlőben találhatók, mint a csapatok, és amelyek **tulajdonosa**, **közreműködői**vagy **létrehozói** hozzáférése van jelen. 
+    Azok a fiókok, amelyek ugyanabban a bérlőben találhatók, mint a csapatok, és amelyek **tulajdonosa**, **közreműködői** vagy **létrehozói** hozzáférése van jelen. 
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/integrate-with-teams/welcome.png" alt-text="Lap hozzáadása":::
+    > :::image type="content" source="./media/integrate-with-teams/welcome.png" alt-text="Üdvözöljük az ALS-ben":::
 1. Nyomja meg a **Save (Mentés** ) gombot, és a lap bekerül a csatornába.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/integrate-with-teams/created.png" alt-text="Lap hozzáadása":::
+    > :::image type="content" source="./media/integrate-with-teams/created.png" alt-text="Az ALS lap létrehozása":::
 
     Most kiválaszthatja a csatorna **Azure Lab Services** lapját, és megkezdheti a laborok kezelését a következő cikkekben leírtak szerint.
 
 A labor-fiók kiválasztása után a csapat tulajdonosai létrehozhatnak Labs-t a csapat számára. A teljes tesztkörnyezet-létrehozási folyamat és a labor szinten található összes feladat elvégezhető a csapatokon belül. A felhasználók több labort is létrehozhatnak ugyanazon a csapaton belül, és a csapat tulajdonosa, a megfelelő hozzáféréssel a labor fiók szintjén, csak az adott csapathoz társított Labs-t fogja látni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha labort hoz létre a csapatokon belül, a rendszer automatikusan kitölti és szinkronizálja a labor felhasználói listáját a csoport tagságával. A csapat minden tagja, beleértve a tulajdonosokat, a tagokat és a vendégeket is, automatikusan hozzáadja a labor felhasználói listához. Az Azure Lab Services 24 óránként szinkronizálja a csoport tagságát, és automatikus szinkronizálást indít el. Részletes információ:
 

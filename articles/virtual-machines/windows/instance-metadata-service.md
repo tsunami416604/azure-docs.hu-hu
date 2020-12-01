@@ -1,6 +1,6 @@
 ---
-title: Azure Instance Metadata szolgáltatás
-description: REST-felület a virtuális gépek számítási, hálózati és közelgő karbantartási eseményeivel kapcsolatos információk lekéréséhez.
+title: Azure Instance Metadata Service Windows rendszerhez
+description: Ismerkedjen meg az Azure Instance Metadata Serviceával, valamint arról, hogy miként nyújt információt a jelenleg futó virtuálisgép-példányokról a Windows rendszerben.
 services: virtual-machines
 author: KumariSupriya
 manager: paulmey
@@ -11,38 +11,40 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 1de04a9486103af65deb6ca3b653b9efa6707716
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cc0d47807101a3cfbb26e7ea69cc7d117d3f9b31
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967074"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435229"
 ---
-# <a name="azure-instance-metadata-service"></a>Azure-példány metaadatainak szolgáltatása
+# <a name="azure-instance-metadata-service"></a>Azure Instance Metadata szolgáltatás
 
-Az Azure Instance Metadata Service (IMDS) információt nyújt a jelenleg futó virtuálisgép-példányokról, és a virtuális gépek felügyeletéhez és konfigurálásához használható.
+Az Azure Instance Metadata Service (IMDS) információt nyújt a jelenleg futó virtuálisgép-példányokról. Használhatja a virtuális gépek felügyeletére és konfigurálására.
 Ezen információk közé tartozik a SKU, a Storage, a hálózati konfigurációk és a közelgő karbantartási események. Az elérhető adatok teljes listáját lásd: [metadata API](#metadata-apis)-k.
-Instance Metadata Service a virtuális gép és a virtuálisgép-méretezési csoport példányainak futtatására is használható. Minden API támogatja a [Azure Resource Manager](/rest/api/resources/)használatával létrehozott/kezelt virtuális gépeket. Csak az igazolt és a hálózati végpontok támogatják a klasszikus (nem ARM) virtuális gépeket, és ezt csak korlátozott mértékben kell tanúsítani.
 
-Az Azure IMDS egy olyan REST-végpont, amely egy jól ismert, nem irányítható IP-címen () érhető el `169.254.169.254` , csak a virtuális gépen belülről érhető el. A virtuális gép és a IMDS közötti kommunikáció soha nem hagyja el a gazdagépet.
-Ajánlott a HTTP-ügyfeleket a virtuális gépen lévő webproxyk megkerülésére a IMDS lekérdezése során, és `169.254.169.254` ugyanazokat a szolgáltatásokkal kezelni [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) .
+
+A IMDS virtuális gépek (VM-EK) és virtuálisgép-méretezési csoport példányainak futtatására is használható. Minden API támogatja a [Azure Resource Manager](/rest/api/resources/)használatával létrehozott és kezelt virtuális gépeket. Csak az igazolt és a hálózati végpontok támogatják a klasszikus üzemi modell használatával létrehozott virtuális gépeket. Az igazolt végpont csak korlátozott mértékben működik.
+
+A IMDS egy olyan REST-végpont, amely jól ismert, nem irányítható IP-címen () érhető el `169.254.169.254` . Csak a virtuális gépen belülről férhet hozzá. A virtuális gép és a IMDS közötti kommunikáció soha nem hagyja el a gazdagépet.
+A IMDS lekérdezése során a HTTP-ügyfelek megkerülik a webes proxykat a virtuális gépen, és `169.254.169.254` ugyanazokat a-t kell kezelnie [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) .
 
 ## <a name="security"></a>Biztonság
 
-Az Instance Metadata Service végpont csak a futó virtuálisgép-példányból érhető el egy nem irányítható IP-címen. Emellett `X-Forwarded-For` a szolgáltatás elutasítja a fejléctel ellátott kérelmeket.
-A kérelmeknek tartalmaznia kell egy `Metadata: true` fejlécet is, amely biztosítja, hogy a tényleges kérelem közvetlenül a véletlen átirányítás része legyen.
+Az IMDS-végpont csak a futó virtuálisgép-példányon belül érhető el egy nem irányítható IP-címen. Emellett `X-Forwarded-For` a szolgáltatás elutasítja a fejléctel ellátott kérelmeket.
+A kéréseknek tartalmaznia kell egy `Metadata: true` fejlécet is, amely biztosítja, hogy a tényleges kérelem közvetlenül a véletlen átirányítás része legyen.
 
 > [!IMPORTANT]
-> A Instance Metadata Service nem a bizalmas adatok csatornája. A végpont minden folyamat számára nyitva van a virtuális gépen. A szolgáltatáson keresztül elérhető információkat a virtuális gépen futó összes alkalmazásnak megosztott információnak kell tekinteni.
+> A IMDS nem egy csatorna a bizalmas adatokhoz. A végpont a virtuális gépen futó összes folyamat számára nyitva van. Tekintse át a szolgáltatáson keresztül közzétett információkat megosztott információként a virtuális gépen futó összes alkalmazás számára.
 
 ## <a name="usage"></a>Használat
 
-### <a name="accessing-azure-instance-metadata-service"></a>Azure-Instance Metadata Service elérése
+### <a name="access-azure-instance-metadata-service"></a>Az Azure Instance Metadata Service elérése
 
-Instance Metadata Service eléréséhez hozzon létre egy virtuális gépet [Azure Resource Manager](/rest/api/resources/) vagy a [Azure Portal](https://portal.azure.com), és kövesse az alábbi mintákat.
-A IMDS lekérdezésével kapcsolatban további példákat talál az [Azure-példány metaadatait tartalmazó mintákban](https://github.com/microsoft/azureimds).
+A IMDS eléréséhez hozzon létre egy virtuális gépet [Azure Resource Manager](/rest/api/resources/) vagy a [Azure Portalból](https://portal.azure.com), és használja a következő mintákat.
+További Példákért lásd az [Azure-példány metaadatainak mintáit](https://github.com/microsoft/azureimds)ismertető témakört.
 
-Az alábbi mintakód egy példány összes metaadatának beolvasására szolgál az adott adatforráshoz való hozzáféréshez: [metadata API](#metadata-apis) szakasz. 
+Az alábbi mintakód egy példány metaadatainak beolvasására használható. Egy adott adatforrás eléréséhez tekintse meg a [metaadatok API](#metadata-apis) című szakaszt. 
 
 **Kérés**
 
@@ -50,12 +52,12 @@ Az alábbi mintakód egy példány összes metaadatának beolvasására szolgál
 Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2020-09-01 | ConvertTo-Json
 ```
 > [!NOTE]
-> A `-NoProxy` jelző csak a PowerShell 6-os vagy újabb verziójában érhető el. Ha nem rendelkezik proxy beállítással, akkor kihagyhatja a jelzőt.
+> A `-NoProxy` jelző csak a PowerShell 6-os vagy újabb verzióiban érhető el. Ha nem rendelkezik proxy beállítással, kihagyhatja a jelzőt.
 
 **Válasz**
 
 > [!NOTE]
-> A válasz egy JSON-karakterlánc. A REST-lekérdezést a `ConvertTo-Json` következő parancsmaggal vesszük át: Pretty-Printing.
+> A válasz egy JSON-karakterlánc. A REST-lekérdezéseket a `ConvertTo-Json` parancsmag használatával a Pretty-Printing szolgáltatáshoz.
 
 ```json
 {
@@ -180,16 +182,15 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http:/
 
 ### <a name="data-output"></a>Adatkimenet
 
-
-Alapértelmezés szerint a Instance Metadata Service JSON formátumú () adatokkal tér vissza `Content-Type: application/json` . Bizonyos API-k azonban más formátumokban is képesek visszaadni az adatkérést.
-Az alábbi táblázat más adatformátum-API-kat is támogat.
+Alapértelmezés szerint a IMDS JSON formátumban () adja vissza az értékeket `Content-Type: application/json` . Bizonyos API-k azonban más formátumokban is visszaadhatják az adattípusokat, ha szükséges.
+Az alábbi táblázat az API-k által támogatott egyéb adatformátumokat sorolja fel.
 
 API | Alapértelmezett adatformátum | Egyéb formátumok
 --------|---------------------|--------------
-/attested | json | Nincs
-/identity | json | Nincs
+/attested | json | nincs
+/identity | json | nincs
 /instance | json | szöveg
-/scheduledevents | json | Nincs
+/scheduledevents | json | nincs
 
 A nem alapértelmezett válasz formátumának eléréséhez a kérelemben a kért formátumot lekérdezési karakterlánc paraméterként kell megadni. Például:
 
@@ -198,11 +199,11 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http:
 ```
 
 > [!NOTE]
-> A/metadata/instance lévő Leaf-csomópontok `format=json` nem működnek. Ezeket a lekérdezéseket `format=text` explicit módon meg kell adni, mivel az alapértelmezett formátum a JSON.
+> A-ben `/metadata/instance` a levél csomópontjai `format=json` nem működnek. Ezeket a lekérdezéseket `format=text` explicit módon meg kell adni, mert az alapértelmezett formátum a JSON.
 
-### <a name="versioning"></a>Verziókezelés
+### <a name="version"></a>Verzió
 
-A Instance Metadata Service verziója, és a HTTP-kérelemben szereplő API-verzió megadása kötelező.
+A IMDS verziója, és a HTTP-kérelemben szereplő API-verzió megadása kötelező.
 
 A támogatott API-verziók a következők: 
 - 2017-03-01
@@ -227,14 +228,14 @@ A támogatott API-verziók a következők:
 - 2020-10-01
 
 > [!NOTE]
-> Az 2020-10-01-es verzió jelenleg be van vezetve, és lehetséges, hogy minden régióban még nem érhető el.
+> Lehetséges, hogy az 2020-10-01-es verzió még nem érhető el minden régióban.
 
-Ahogy újabb verziók lettek hozzáadva, a régebbi verziók továbbra is elérhetők a kompatibilitás érdekében, ha a parancsfájlok adott adatformátumok függőségeivel rendelkeznek.
+Az újabb verziók hozzáadásakor továbbra is elérheti a régebbi verziókat a kompatibilitás érdekében, ha a parancsfájlok adott adatformátumok függőségeivel rendelkeznek.
 
-Ha nincs megadva verzió, a rendszer egy hibaüzenetet ad vissza a legújabb támogatott verziók listájával.
+Ha nem ad meg verziót, a rendszer hibaüzenetet kap, és felsorolja a legújabb támogatott verziókat.
 
 > [!NOTE]
-> A válasz egy JSON-karakterlánc. A következő példa azt jelzi, hogy a hiba feltétele, ha nincs megadva a verzió, a válasz elég kinyomtatva az olvashatóság érdekében.
+> A válasz egy JSON-karakterlánc. A következő példa a hiba feltételét jelzi, ha nincs megadva a verzió. A válasz elég kinyomtatva az olvashatóság érdekében.
 
 **Kérés**
 
@@ -257,57 +258,57 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http:/
 
 ## <a name="metadata-apis"></a>Metaadat-API-k
 
-Metadata Service több, különböző adatforrásokat jelképező API-t tartalmaz.
+A IMDS több, különböző adatforrásokat jelképező API-t tartalmaz.
 
 API | Leírás | Verzió bevezetése
 ----|-------------|-----------------------
 /attested | [Igazolt](#attested-data) információ | 2018-10-01
 /identity | Lásd: [hozzáférési jogkivonat beszerzése](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 /instance | Lásd: [példány API](#instance-api) | 2017-04-02
-/scheduledevents | Lásd: [Scheduled Events](scheduled-events.md) | 2017-08-01
+/scheduledevents | [Ütemezett események](scheduled-events.md) megjelenítése | 2017-08-01
 
 ## <a name="instance-api"></a>Példány API
 
-A példány API elérhetővé teszi a virtuálisgép-példányok fontos metaadatait, beleértve a virtuális gépet, a hálózatot és a tárolót. A következő kategóriák érhetők el példányon/számításon keresztül:
+A példány API elérhetővé teszi a virtuálisgép-példányok fontos metaadatait, beleértve a virtuális gépet, a hálózatot és a tárolót. A következő kategóriákat érheti el `instance/compute` :
 
-Adatok | Leírás | Verzió bevezetése
+Adatok | Description | Verzió bevezetése
 -----|-------------|-----------------------
-azEnvironment | Az Azure-környezet, amelyben a virtuális gép fut | 2018-10-01
-customData | Ez a funkció jelenleg le van tiltva. Ezt a dokumentációt akkor fogjuk frissíteni, amikor elérhetővé válik | 2019-02-01
-isHostCompatibilityLayerVm | Annak azonosítása, hogy a virtuális gép a gazdagép kompatibilitási rétegén fut-e | 2020-06-01
-licenseType | A [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit)licencének típusa. Vegye figyelembe, hogy ez csak a AHB-kompatibilis virtuális gépek esetében jelent meg | 2020-09-01
-location | Az Azure-régió, amelyen a virtuális gép fut | 2017-04-02
-name | A virtuális gép neve | 2017-04-02
-offer | A virtuálisgép-lemezképre vonatkozó információkat nyújtja, és csak az Azure rendszerkép-katalógusból üzembe helyezett rendszerképekhez érhető el | 2017-04-02
+azEnvironment | Az Azure-környezet, amelyben a virtuális gép fut. | 2018-10-01
+customData | Ez a funkció jelenleg le van tiltva. | 2019-02-01
+isHostCompatibilityLayerVm | Azt határozza meg, hogy a virtuális gép a gazdagép kompatibilitási rétegén fut-e. | 2020-06-01
+licenseType | A [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit)licencének típusa. Vegye figyelembe, hogy ez csak a AHB-kompatibilis virtuális gépek esetében jelent meg. | 2020-09-01
+location | Az az Azure-régió, amelyben a virtuális gép fut. | 2017-04-02
+name | A virtuális gép neve. | 2017-04-02
+offer | Információ a virtuálisgép-rendszerképről. Ez csak az Azure rendszerkép-katalógusból üzembe helyezett rendszerképek esetében jelent meg. | 2017-04-02
 osProfile.adminUsername | Megadja a rendszergazdai fiók nevét. | 2020-07-15
-osProfile. számítógépnév | A számítógép nevét adja meg. | 2020-07-15
-osProfile. disablePasswordAuthentication | Megadja, hogy a jelszó-hitelesítés le van-e tiltva. Vegye figyelembe, hogy ez csak Linux rendszerű virtuális gépek esetén érhető el | 2020-10-01
-osType | Linux vagy Windows | 2017-04-02
-placementGroupId | A virtuálisgép-méretezési [csoport elhelyezési csoportja](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-csomag | Egy virtuális gép nevét, termékét és közzétevőjét tartalmazó [csomag megtervezése](/rest/api/compute/virtualmachines/createorupdate#plan) , ha az Azure Marketplace-rendszerkép | 2018-04-02
-platformUpdateDomain |  A virtuális gépet futtató [tartomány frissítése](../manage-availability.md) | 2017-04-02
-Platformfaultdomain tulajdonságot | A virtuális gép által futtatott tartalék [tartomány](../manage-availability.md) | 2017-04-02
-Szolgáltató | A virtuális gép szolgáltatója | 2018-10-01
-publicKeys | A virtuális géphez és elérési utakhoz rendelt [nyilvános kulcsok gyűjteménye](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
-közzétevő | A virtuális gép rendszerképének közzétevője | 2017-04-02
-resourceGroupName | A virtuális géphez tartozó [erőforráscsoport](../../azure-resource-manager/management/overview.md) | 2017-08-01
-resourceId | Az erőforrás [teljes](/rest/api/resources/resources/getbyid) azonosítója | 2019-03-11
-SKU | A virtuális gép rendszerképének adott SKU-jának | 2017-04-02
-securityProfile. secureBootEnabled | Annak azonosítása, hogy engedélyezve van-e az UEFI biztonságos rendszerindítás a virtuális gépen | 2020-06-01
-securityProfile.virtualTpmEnabled | Annak azonosítása, hogy a virtuális platformmegbízhatósági modul (TPM) engedélyezve van-e a virtuális GÉPEN | 2020-06-01
-storageProfile | Lásd: [tárolási profil](#storage-metadata) | 2019-06-01
-subscriptionId | Azure-előfizetés a virtuális géphez | 2017-08-01
-tags | A virtuális gép [címkéi](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
-tagsList | Az egyszerűbb programozási elemzéshez JSON-tömbként formázott Címkék  | 2019-06-04
-version | A VM-rendszerkép verziója | 2017-04-02
-vmId | A virtuális gép [egyedi azonosítója](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
-vmScaleSetName | A virtuálisgép-méretezési csoport virtuálisgép-méretezési [készletének neve](../../virtual-machine-scale-sets/overview.md) | 2017-12-01
-vmSize | [Virtuális gép mérete](../sizes.md) | 2017-04-02
-zóna | A virtuális gép [rendelkezésre állási zónája](../../availability-zones/az-overview.md) | 2017-12-01
+osProfile. számítógépnév | Megadja a számítógép nevét. | 2020-07-15
+osProfile. disablePasswordAuthentication | Megadja, hogy a jelszó-hitelesítés le van-e tiltva. Vegye figyelembe, hogy ez csak a Linux rendszerű virtuális gépek esetében jelent meg. | 2020-10-01
+osType | Linux vagy Windows. | 2017-04-02
+placementGroupId | A virtuálisgép-méretezési [csoport elhelyezési csoportja](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) . | 2017-08-01
+csomag | [Megtervezheti](/rest/api/compute/virtualmachines/createorupdate#plan) egy virtuális gép nevét, termékét és közzétevőjét, ha az egy Azure Marketplace-rendszerkép. | 2018-04-02
+platformUpdateDomain |  [Frissítési tartomány](../manage-availability.md) , amelyben a virtuális gép fut. | 2017-04-02
+Platformfaultdomain tulajdonságot | Az a tartalék [tartomány](../manage-availability.md) , amelyben a virtuális gép fut. | 2017-04-02
+Szolgáltató | A virtuális gép szolgáltatója. | 2018-10-01
+publicKeys | A virtuális géphez és elérési utakhoz rendelt [nyilvános kulcsok gyűjteménye](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) . | 2018-04-02
+közzétevő | A virtuális gép rendszerképének közzétevője. | 2017-04-02
+resourceGroupName | A virtuális géphez tartozó [erőforráscsoport](../../azure-resource-manager/management/overview.md) . | 2017-08-01
+resourceId | Az erőforrás [teljes](/rest/api/resources/resources/getbyid) azonosítója. | 2019-03-11
+SKU | A virtuális gép rendszerképének adott SKU-jának. | 2017-04-02
+securityProfile. secureBootEnabled | Azt határozza meg, hogy az UEFI biztonságos rendszerindítás engedélyezve van-e a virtuális gépen. | 2020-06-01
+securityProfile.virtualTpmEnabled | Meghatározza, hogy a virtuális platformmegbízhatósági modul (TPM) engedélyezve van-e a virtuális GÉPEN. | 2020-06-01
+storageProfile | Lásd: [tárolási profil](#storage-metadata). | 2019-06-01
+subscriptionId | Azure-előfizetés a virtuális géphez. | 2017-08-01
+tags | A virtuális géphez tartozó [címkék](../../azure-resource-manager/management/tag-resources.md) .  | 2017-08-01
+tagsList | Az egyszerűbb programozási elemzéshez JSON-tömbként formázott címkék.  | 2019-06-04
+version | A virtuálisgép-rendszerkép verziója. | 2017-04-02
+vmId | A virtuális gép [egyedi azonosítója](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) . | 2017-04-02
+vmScaleSetName | Virtuálisgép-méretezési [csoport neve](../../virtual-machine-scale-sets/overview.md) a virtuálisgép-méretezési csoport számára. | 2017-12-01
+vmSize | Lásd a [virtuális gép méretét](../sizes.md). | 2017-04-02
+zóna | A virtuális gép [rendelkezésre állási zónája](../../availability-zones/az-overview.md) . | 2017-12-01
 
-### <a name="sample-1-tracking-vm-running-on-azure"></a>1. példa: az Azure-on futó virtuális gép nyomon követése
+### <a name="sample-1-track-a-vm-running-on-azure"></a>1. példa: az Azure-on futó virtuális gépek nyomon követése
 
-Szolgáltatóként szükség lehet a szoftvert futtató virtuális gépek számának nyomon követésére, vagy olyan ügynökökkel, amelyeknek nyomon kell követniük a virtuális gép egyediségét. A virtuális gép egyedi AZONOSÍTÓjának beszerzéséhez használja a `vmId` mezőt instance metadata Service.
+Előfordulhat, hogy nyomon kell követnie a szoftvert futtató virtuális gépek számát, vagy olyan ügynökökkel kell rendelkeznie, amelyeknek nyomon kell követniük a virtuális gép egyediségét. Egy virtuális gép egyedi AZONOSÍTÓjának beszerzéséhez használja a `vmId` mezőt a IMDS.
 
 **Kérés**
 
@@ -321,11 +322,11 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http:
 5c08b38e-4d57-4c23-ac45-aca61037f084
 ```
 
-### <a name="sample-2-placement-of-containers-data-partitions-based-faultupdate-domain"></a>2. példa: tárolók elhelyezése, adatpartíció-alapú hiba/frissítési tartomány
+### <a name="sample-2-placement-of-different-data-replicas"></a>2. példa: különböző adatreplikák elhelyezése
 
 Bizonyos esetekben a különböző adatreplikák elhelyezése elsődleges fontossággal bír. Előfordulhat például, hogy az [HDFS replika elhelyezése](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) vagy a tároló elhelyezése egy [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) keresztül megkövetelheti `platformFaultDomain` a `platformUpdateDomain` és a virtuális gép futtatását.
 Ezen döntések elvégzéséhez [Availability Zones](../../availability-zones/az-overview.md) is használhatja a példányokhoz.
-Ezeket az adatlekérdezéseket közvetlenül a Instance Metadata Service keresztül kérdezheti le.
+Ezeket az adatlekérdezéseket közvetlenül a IMDS-on keresztül kérdezheti le.
 
 **Kérés**
 
@@ -339,9 +340,9 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http:
 0
 ```
 
-### <a name="sample-3-getting-more-information-about-the-vm-during-support-case"></a>3. példa: további információk a virtuális géppel kapcsolatban a támogatási esetekben
+### <a name="sample-3-get-more-information-about-the-vm-during-support-case"></a>3. példa: további információk a virtuális géppel kapcsolatban a támogatási esetekben
 
-Szolgáltatóként olyan támogatási hívást kaphat, amelyben további információkat szeretne megtudni a virtuális gépről. Ha arra kéri az ügyfelet, hogy ossza meg a számítási metaadatokat, alapvető információkat biztosíthat a támogatási szakember számára az Azure-beli virtuális gépekről.
+Szolgáltatóként olyan támogatási hívást kaphat, ahol további információkat szeretne megtudni a virtuális gépről. Ebben az esetben az ügyfélnek a számítási metaadatok megosztására való kérése hasznos lehet.
 
 **Kérés**
 
@@ -454,7 +455,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http:/
 }
 ```
 
-### <a name="sample-4-getting-azure-environment-where-the-vm-is-running"></a>4. példa: az Azure-környezet beszerzése, ahol a virtuális gép fut
+### <a name="sample-4-get-the-azure-environment-where-the-vm-is-running"></a>4. példa: az Azure-környezet beszerzése, amelyen a virtuális gép fut
 
 Az Azure számos szuverén felhővel rendelkezik, mint például a [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Időnként szükség van az Azure-környezetre bizonyos futtatókörnyezeti döntések elvégzéséhez. A következő minta bemutatja, hogyan érheti el ezt a viselkedést.
 
@@ -470,7 +471,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http:
 AzurePublicCloud
 ```
 
-A felhő és az Azure-környezet értékei az alábbiakban láthatók.
+A felhő és az Azure-környezet értékei itt láthatók.
 
  Felhőbeli   | Azure-környezet
 ---------|-----------------
@@ -481,21 +482,21 @@ A felhő és az Azure-környezet értékei az alábbiakban láthatók.
 
 ## <a name="network-metadata"></a>Hálózati metaadatok 
 
-A hálózati metaadatok a példány API részét képezik. A következő hálózati kategóriák érhetők el a példány/hálózat végponton keresztül.
+A hálózati metaadatok a példány API részét képezik. A következő hálózati kategóriák érhetők el a `instance/network` végponton keresztül.
 
-Adatok | Leírás | Verzió bevezetése
+Adatok | Description | Verzió bevezetése
 -----|-------------|-----------------------
-IPv4/Privateipaddress tulajdonságot | A virtuális gép helyi IPv4-címe | 2017-04-02
-IPv4/publicIpAddress | A virtuális gép nyilvános IPv4-címe | 2017-04-02
-alhálózat/címe | A virtuális gép alhálózati címe | 2017-04-02
-alhálózat/előtag | Alhálózat előtagja, 24. példa | 2017-04-02
-IPv6/IP-cím | A virtuális gép helyi IPv6-címe | 2017-04-02
-macAddress | VM MAC-címe | 2017-04-02
+IPv4/Privateipaddress tulajdonságot | A virtuális gép helyi IPv4-címe. | 2017-04-02
+IPv4/publicIpAddress | A virtuális gép nyilvános IPv4-címe. | 2017-04-02
+alhálózat/címe | A virtuális gép alhálózat-címe. | 2017-04-02
+alhálózat/előtag | Az alhálózat előtagja. Példa: 24 | 2017-04-02
+IPv6/IP-cím | A virtuális gép helyi IPv6-címe. | 2017-04-02
+macAddress | A virtuális gép MAC-címe. | 2017-04-02
 
 > [!NOTE]
 > Minden API-válasz JSON-karakterlánc. Az összes alábbi válasz elég kinyomtatva az olvashatóság érdekében.
 
-#### <a name="sample-1-retrieving-network-information"></a>1. példa: hálózati adatok beolvasása
+#### <a name="sample-1-retrieve-network-information"></a>1. példa: hálózati információk beolvasása
 
 **Kérés**
 
@@ -504,9 +505,6 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http:/
 ```
 
 **Válasz**
-
-> [!NOTE]
-> A válasz egy JSON-karakterlánc. Az alábbi példában szereplő válasz elég kinyomtatva az olvashatóság érdekében.
 
 ```json
 {
@@ -536,7 +534,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http:/
 
 ```
 
-#### <a name="sample-2-retrieving-public-ip-address"></a>2. minta: nyilvános IP-cím beolvasása
+#### <a name="sample-2-retrieve-public-ip-address"></a>2. minta: nyilvános IP-cím lekérése
 
 ```powershell
 Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
@@ -544,24 +542,24 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http:
 
 ## <a name="storage-metadata"></a>Tárolási metaadatok
 
-A tárolási metaadatok a példány-API részét képezik a példány/számítás/storageProfile végpont alatt.
+A tárolási metaadatok a példány API részét képezik, a `instance/compute/storageProfile` végpont alatt.
 A virtuális géphez társított tárolóeszközök adatait tartalmazza. 
 
 A virtuális gépek tárolási profilja három kategóriára oszlik: képhivatkozás, operációsrendszer-lemez és adatlemezek.
 
-A képhivatkozási objektum a következő információkat tartalmazza az operációsrendszer-lemezképpel kapcsolatban:
+A képhivatkozási objektum a következő információkat tartalmazza az operációs rendszer rendszerképével kapcsolatban:
 
-Adatok    | Leírás
+Adatok    | Description
 --------|-----------------
 id      | Erőforrás-azonosító
-offer   | A platform vagy a piactér rendszerképének ajánlata
+offer   | A platform vagy a rendszerkép ajánlata
 közzétevő | Rendszerkép kiadója
 SKU     | Rendszerkép SKU
-version | A platform vagy a piactér rendszerképének verziója
+version | A platform vagy a rendszerkép verziója
 
-Az operációsrendszer-lemez objektum a következő információkat tartalmazza a virtuális gép által használt operációsrendszer-lemezről:
+Az operációs rendszer lemezének objektuma a következő információkat tartalmazza a virtuális gép által használt operációsrendszer-lemezről:
 
-Adatok    | Leírás
+Adatok    | Description
 --------|-----------------
 gyorsítótárazás | Gyorsítótárazási követelmények
 createOption | Információk a virtuális gép létrehozásáról
@@ -573,11 +571,11 @@ managedDisk | Felügyelt lemez paramétereinek
 name    | Lemez neve
 osType  | A lemezen található operációs rendszer típusa
 VHD     | Virtuális merevlemez
-writeAcceleratorEnabled | Azt jelzi, hogy engedélyezve van-e a writeAccelerator a lemezen
+writeAcceleratorEnabled | Függetlenül attól, hogy engedélyezve van-e a `writeAccelerator` lemezen
 
 Az adatlemezek tömb tartalmazza a virtuális géphez csatolt adatlemezek listáját. Minden adatlemez-objektum a következő információkat tartalmazza:
 
-Adatok    | Leírás
+Adatok    | Description
 --------|-----------------
 gyorsítótárazás | Gyorsítótárazási követelmények
 createOption | Információk a virtuális gép létrehozásáról
@@ -588,7 +586,7 @@ LUN     | A lemez logikai egységének száma
 managedDisk | Felügyelt lemez paramétereinek
 name    | Lemez neve
 VHD     | Virtuális merevlemez
-writeAcceleratorEnabled | Azt jelzi, hogy engedélyezve van-e a writeAccelerator a lemezen
+writeAcceleratorEnabled | Függetlenül attól, hogy engedélyezve van-e a `writeAccelerator` lemezen
 
 Az alábbi példa bemutatja, hogyan lehet lekérdezni a virtuális gép tárolási adatait.
 
@@ -661,8 +659,8 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http:/
 
 ## <a name="vm-tags"></a>VM-Címkék
 
-A virtuális gépek címkéi a példány/számítás/címkék végpont alatt találhatók a példány API-val.
-Előfordulhat, hogy az Azure-beli virtuális gépen a címkék logikailag rendszerezve lettek. A virtuális géphez rendelt címkék az alábbi kérelem használatával kérhetők le.
+A virtuális gépek címkéi a példányok API-ját tartalmazzák, a `instance/compute/tags` végpont alatt.
+Előfordulhat, hogy az Azure-beli virtuális gépen a címkék logikailag rendszerezve lettek. A virtuális géphez rendelt címkéket a következő kérelem használatával kérheti le.
 
 **Kérés**
 
@@ -676,7 +674,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http:
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-A `tags` mező egy olyan karakterlánc, amelynek a címkéi pontosvesszővel vannak elválasztva. Ez a kimenet akkor lehet probléma, ha a címkékben pontosvesszőt használnak. Ha egy elemzőt a címkék programozott kinyeréséhez kell írni, a mezőre kell támaszkodnia `tagsList` . A `tagsList` mező egy olyan JSON-tömb, amely nem határolójeleket, és így könnyebben elemezhető.
+A `tags` mező egy olyan karakterlánc, amelynek a címkéi pontosvesszővel vannak elválasztva. Ez a kimenet akkor lehet probléma, ha a címkékben pontosvesszőt használnak. Ha egy elemzőt a címkék programozott kinyeréséhez kell írni, a mezőre kell támaszkodnia `tagsList` . A `tagsList` mező egy olyan JSON-tömb, amely nem határolójeleket mutat be, ezért könnyebben elemezhető.
 
 **Kérés**
 
@@ -705,9 +703,9 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http:/
 
 ## <a name="attested-data"></a>Igazolt adatértékek
 
-Instance Metadata Service által kiszolgált forgatókönyv része a garancia arra, hogy a megadott adatok az Azure-ból érkeznek. Aláírjuk ezen információk egy részét, hogy a piactér lemezképei biztosak legyenek abban, hogy az Azure-ban futnak.
+A IMDS segít biztosítani, hogy a megadott adatok az Azure-ból érkeznek. A Microsoft aláírja ezen információk egy részét, így meggyőződhet arról, hogy az Azure piactéren az Azure-ban futtatott rendszerkép látható.
 
-### <a name="sample-1-getting-attested-data"></a>1. példa: igazolt adatértékek beszerzése
+### <a name="sample-1-get-attested-data"></a>1. példa: igazolt adatlekérdezés
 
 > [!NOTE]
 > Minden API-válasz JSON-karakterlánc. Az alábbi példákban az olvashatóság érdekében a következő válaszokat kell kinyomtatni.
@@ -719,15 +717,12 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http:
 ```
 
 > [!NOTE]
-> A IMDS gyorsítótárazási mechanizmusa miatt előfordulhat, hogy a rendszer egy korábban gyorsítótárazott egyszeres értéket ad vissza.
+> A IMDS gyorsítótárazási mechanizmusa miatt előfordulhat, hogy a rendszer egy korábban gyorsítótárazott `nonce` értéket ad vissza.
 
-Az API-Version kötelező mező. Tekintse át a támogatott API-verziók [használati szakaszát](#usage) .
-Az alkalom egy opcionális 10 számjegyű karakterlánc. Ha nincs megadva, a IMDS az aktuális UTC időbélyeget adja vissza a helyén.
+`Api-version` kötelező mező. Tekintse át a támogatott API-verziók [használati szakaszát](#usage) .
+`Nonce` egy opcionális, 10 számjegyű karakterlánc. Ha nincs megadva, a IMDS az aktuálisan beállított világidő időbélyeget adja vissza a helyén.
 
 **Válasz**
-
-> [!NOTE]
-> A válasz egy JSON-karakterlánc. Az alábbi példában szereplő válasz elég kinyomtatva az olvashatóság érdekében.
 
 ```json
 {
@@ -735,26 +730,28 @@ Az alkalom egy opcionális 10 számjegyű karakterlánc. Ha nincs megadva, a IMD
 }
 ```
 
-Az aláírási blob a dokumentum [PKCS7](https://aka.ms/pkcs7) aláírt verziója. Ez tartalmazza az aláíráshoz használt tanúsítványt, valamint bizonyos virtuálisgép-specifikus részleteket. ARM virtuális gépek esetén ez magában foglalja az vmId, az SKU, az alkalom, a subscriptionId, a dokumentum létrehozásának és lejáratának időbélyegét, valamint a rendszerképre vonatkozó terv adatait. A csomag adatai csak az Azure Marketplace-lemezképek esetében vannak kitöltve. A klasszikus (nem ARM) virtuális gépek esetében csak a vmId garantáltan kell feltölteni. A tanúsítvány kinyerhető a válaszból, és annak ellenőrzésére szolgál, hogy a válasz érvényes-e, és az Azure-ból származik-e.
+Az aláírási blob a dokumentum egy [PKCS7](https://aka.ms/pkcs7)aláírt verziója. Az aláíráshoz használt tanúsítványt, valamint bizonyos virtuálisgép-specifikus részleteket tartalmaz. 
+
+A Azure Resource Manager használatával létrehozott virtuális gépek esetében a `vmId` `sku` `nonce` `subscriptionId` `timeStamp` dokumentum létrehozásához és lejáratához, valamint a rendszerkép információinak megtervezéséhez a, a, a, a. A csomag adatai csak az Azure Marketplace-lemezképek esetében vannak kitöltve. 
+
+A klasszikus üzemi modellel létrehozott virtuális gépek esetében csak a `vmId` kitöltése garantált. Kinyerheti a tanúsítványt a válaszból, és ezzel ellenőrizheti, hogy a válasz érvényes-e, és az Azure-ból érkezik-e.
+
 A dokumentum a következő mezőket tartalmazza:
 
-Adatok | Leírás | Verzió bevezetése
+Adatok | Description | Verzió bevezetése
 -----|-------------|-----------------------
-licenseType | A [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit)licencének típusa. Vegye figyelembe, hogy ez csak a AHB-kompatibilis virtuális gépek esetében jelent meg | 2020-09-01
-egyszeri | Egy karakterlánc, amely opcionálisan megadható a kérelemben. Ha nem adta meg a megadott időpontot, a rendszer az aktuális UTC-időbélyeget használja. | 2018-10-01
+licenseType | A [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit)licencének típusa. Vegye figyelembe, hogy ez csak a AHB-kompatibilis virtuális gépek esetében jelent meg. | 2020-09-01
+egyszeri | Egy karakterlánc, amely opcionálisan megadható a kérelemben. Ha nem `nonce` lett megadva, a rendszer az aktuálisan koordinált világidő-időbélyeget használja. | 2018-10-01
 csomag | Az [Azure Marketplace-rendszerkép terve](/rest/api/compute/virtualmachines/createorupdate#plan). A csomag AZONOSÍTÓját (név), a termék rendszerképét vagy az ajánlatot (terméket) és a közzétevő AZONOSÍTÓját (kiadó) tartalmazza. | 2018-10-01
-időbélyeg/createdOn | Az aláírt dokumentum létrehozási időpontjának UTC-időbélyege | 2018-20-01
-időbélyeg/expiresOn | Az aláírt dokumentum érvényességi időpontjának UTC-időbélyege | 2018-10-01
-vmId |  A virtuális gép [egyedi azonosítója](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2018-10-01
-subscriptionId | Azure-előfizetés a virtuális géphez | 2019-04-30
-SKU | A virtuális gép rendszerképének adott SKU-jának | 2019-11-01
+időbélyeg/createdOn | Az aláírt dokumentum létrehozásának időbélyege az egyezményes világidő szerint. | 2018-20-01
+időbélyeg/expiresOn | Az aláírt dokumentum érvényességének lejárati idejének egyezményes világidő. | 2018-10-01
+vmId |  A virtuális gép [egyedi azonosítója](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) . | 2018-10-01
+subscriptionId | A virtuális gép Azure-előfizetése. | 2019-04-30
+SKU | A virtuális gép rendszerképének adott SKU-jának. | 2019-11-01
 
-> [!NOTE]
-> A klasszikus (nem ARM) virtuális gépek esetében csak a vmId garantáltan kell feltölteni.
+### <a name="sample-2-validate-that-the-vm-is-running-in-azure"></a>2. minta: annak ellenőrzése, hogy a virtuális gép fut-e az Azure-ban
 
-### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>2. minta: annak ellenőrzése, hogy a virtuális gép fut-e az Azure-ban
-
-A piactér-szállítók biztosítani szeretnék, hogy a szoftverük csak az Azure-ban fusson. Ha valaki átmásolja a VHD-t a helyszíni rendszerbe, akkor képesnek kell lennie a felderítésére. A Instance Metadata Serviceba való behívásával a piactér-szállítók olyan aláírt adatokhoz juthatnak, amelyek csak az Azure-ból választanak.
+Az Azure piactéren lévő szállítók biztosítják, hogy a szoftverük csak az Azure-ban fusson. Ha valaki átmásolja a virtuális merevlemezt egy helyszíni környezetbe, a gyártónak képesnek kell lennie az észlelésére. A IMDS-en keresztül ezek a szállítók olyan aláírt adatokhoz juthatnak, amelyek csak az Azure-ból választanak.
 
 ```powershell
 # Get the signature
@@ -787,12 +784,12 @@ $json = $content | ConvertFrom-Json
 ```
 
 > [!NOTE]
-> A IMDS gyorsítótárazási mechanizmusa miatt előfordulhat, hogy a rendszer egy korábban gyorsítótárazott egyszeres értéket ad vissza.
+> A IMDS gyorsítótárazási mechanizmusa miatt előfordulhat, hogy a rendszer egy korábban gyorsítótárazott `nonce` értéket ad vissza.
 
-Az aláírt dokumentumban szereplő alkalom összehasonlítható, ha a kezdeti kérelemben egy egyalkalomú paramétert adott meg.
+Az `nonce` aláírt dokumentumban szereplő érték összehasonlítható, ha `nonce` a kezdeti kérelemben paramétert adott meg.
 
 > [!NOTE]
-> A nyilvános felhőhöz és minden szuverén felhőhöz tartozó tanúsítvány eltérő lesz.
+> A nyilvános felhőhöz és az egyes szuverén felhőhöz tartozó tanúsítvány eltérő lesz.
 
 Felhőbeli | Tanúsítvány
 ------|------------
@@ -802,28 +799,30 @@ Felhőbeli | Tanúsítvány
 [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                | *. metadata.microsoftazure.de
 
 > [!NOTE]
-> Az aláíráshoz használt tanúsítvány körül ismert probléma van. Előfordulhat, hogy a tanúsítványok nem rendelkeznek pontos egyezéssel a `metadata.azure.com` nyilvános felhőben. Ezért a minősítés érvényesítésének lehetővé kell tennie egy köznapi név használatát bármely `.metadata.azure.com` altartományból.
+> Előfordulhat, hogy a tanúsítványok nem egyeznek pontosan a `metadata.azure.com` nyilvános felhővel. Emiatt a minősítés érvényesítésének minden altartományból engedélyeznie kell a köznapi nevet `.metadata.azure.com` .
 
-Azokban az esetekben, amikor a közbenső tanúsítvány nem tölthető le, mert az érvényesítés során hálózati korlátozások miatt nem lehet letölteni, a köztes tanúsítvány rögzíthető. Az Azure azonban a szabványos PKI-gyakorlatnak megfelelően átadja a tanúsítványokat. A rögzített tanúsítványokat frissíteni kell, ha a váltás történik. A köztes tanúsítvány frissítésének megtervezése után az Azure-blog frissül, és az Azure-ügyfelek értesítést kapnak. A köztes tanúsítványokat [itt](https://www.microsoft.com/pki/mscorp/cps/default.htm)találja. Az egyes régiók köztes tanúsítványok különbözőek lehetnek.
+Azokban az esetekben, amikor a köztes tanúsítvány nem tölthető le, mert az érvényesítés során hálózati korlátozások miatt nem lehet letölteni, rögzítheti a köztes tanúsítványt. Vegye figyelembe, hogy az Azure átveszi a tanúsítványokat, ami a szabványos PKI-gyakorlat. A beváltáskor frissítenie kell a rögzített tanúsítványokat. A köztes tanúsítvány frissítésének megtervezése után az Azure-blog frissül, és az Azure-ügyfelek értesítést kapnak. 
+
+A köztes tanúsítványokat a PKI- [tárházban](https://www.microsoft.com/pki/mscorp/cps/default.htm)találja. Az egyes régiók köztes tanúsítványok különbözőek lehetnek.
 
 > [!NOTE]
-> Az Azure China 21Vianet köztes tanúsítvány a Baltimore helyett a DigiCert globális legfelső szintű HITELESÍTÉSSZOLGÁLTATÓTÓL fog származni.
-Ha az Azure China köztes tanúsítványokat is rögzítette a főláncú hatóság változásának részeként, akkor a köztes tanúsítványokat frissíteni kell.
+> Az Azure China 21Vianet köztes tanúsítvány a Baltimore helyett a DigiCert globális legfelső szintű HITELESÍTÉSSZOLGÁLTATÓTÓL származik.
+Ha az Azure China köztes tanúsítványokat a legfelső szintű láncbeli hatóság változásának részeként rögzítette, a köztes tanúsítványokat frissíteni kell.
 
 ## <a name="failover-clustering-in-windows-server"></a>Feladatátvételi fürtszolgáltatás a Windows Server rendszerben
 
-A feladatátvételi fürtszolgáltatással végzett Instance Metadata Service lekérdezésének bizonyos eseteihez hozzá kell adnia egy útvonalat az útválasztási táblához.
+Ha feladatátvételi fürtszolgáltatással kérdez le IMDS, időnként szükség van egy útvonal hozzáadására az útválasztási táblához. Ezt a következőképpen teheti meg:
 
 1. Nyisson meg egy parancssort rendszergazdai jogosultságokkal.
 
-1. Futtassa az alábbi parancsot, és jegyezze fel az `0.0.0.0` IPv4-útválasztási táblázatban található Hálózati célhely () adapterének a címeit.
+1. Futtassa a következő parancsot, és jegyezze fel az `0.0.0.0` IPv4-útválasztási táblázatban található Hálózati célhely () adapterének a címeit.
 
 ```bat
 route print
 ```
 
 > [!NOTE]
-> A feladatátvevő fürttel rendelkező Windows Server rendszerű virtuális gépek következő példájának kimenete csak az egyszerűség IPv4-útválasztási táblázatát tartalmazza.
+> A következő példa kimenete egy Windows Server rendszerű virtuális gép, amelyen engedélyezve van a feladatátvevő fürt. Az egyszerűség kedvéért a kimenet csak az IPv4-útválasztási táblázatot tartalmazza.
 
 ```text
 IPv4 Route Table
@@ -848,29 +847,29 @@ Network Destination        Netmask          Gateway       Interface  Metric
   255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
 ```
 
-Futtassa a következő parancsot, és használja a Hálózati célhely () interfészének címe (), `0.0.0.0` amely ebben a példában található () `10.0.1.10` .
+Futtassa a következő parancsot, és használja a Hálózati célhely () adapterének címe () `0.0.0.0` , amely ebben a példában () van `10.0.1.10` .
 
 ```bat
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
-## <a name="managed-identity-via-metadata-service"></a>Felügyelt identitás Metadata Serviceon keresztül
+## <a name="managed-identity"></a>Felügyelt identitás
 
-Egy rendszerhez rendelt felügyelt identitás engedélyezhető a virtuális gépen, vagy egy vagy több felhasználóhoz rendelt felügyelt identitás is hozzárendelhető a virtuális géphez.
-A felügyelt identitásokhoz tartozó jogkivonatok később is kérhetők Instance Metadata Service. Ezek a tokenek az egyéb Azure-szolgáltatásokkal (például Azure Key Vault) való hitelesítéshez használhatók.
+A rendszer által hozzárendelt felügyelt identitás engedélyezhető a virtuális gépen. Egy vagy több felhasználó által hozzárendelt felügyelt identitást is hozzárendelhet a virtuális géphez.
+Ezután jogkivonatokat kérhet a felügyelt identitásokhoz a IMDS-ből. Ezekkel a jogkivonatokkal hitelesíthetők más Azure-szolgáltatásokkal, például a Azure Key Vaultokkal.
 
 A szolgáltatás engedélyezésének részletes lépéseiért lásd: [hozzáférési jogkivonat beszerzése](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
-## <a name="scheduled-events-via-metadata-service"></a>Scheduled Events Metadata Service használatával
-Az ütemezett események állapotát metaadat-szolgáltatáson keresztül szerezheti be, majd a felhasználó megadhatja, hogy milyen műveletet hajtson végre az eseményeken.  Részletekért tekintse meg [Scheduled Events](scheduled-events.md) . 
+## <a name="scheduled-events"></a>Ütemezett események
+Az ütemezett események állapotát a IMDS használatával szerezheti be. Ezután a felhasználó megadhatja az eseményeken futtatandó műveletek készletét. További információ: [ütemezett események](scheduled-events.md). 
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-A szolgáltatás **általánosan elérhető** az összes Azure-felhőben.
+A szolgáltatás általánosan elérhető az összes Azure-felhőben.
 
 ## <a name="sample-code-in-different-languages"></a>Mintakód különböző nyelveken
 
-Minták a virtuális gépen belüli különböző nyelveket használó hívási metaadat-szolgáltatásban:
+A következő táblázat a virtuális gépen belüli különböző nyelvek használatával mutatja be a hívó IMDS mintáit:
 
 Nyelv      | Példa
 --------------|----------------
@@ -886,42 +885,57 @@ Python        | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 Ruby          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 Visual Basic  | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 
-## <a name="error-and-debugging"></a>Hiba és hibakeresés
+## <a name="errors-and-debugging"></a>Hibák és hibakeresés
 
-Ha nem található adatelem vagy helytelenül formázott kérelem, a Instance Metadata Service szabványos HTTP-hibákat ad vissza. Például:
+Ha nem található adatelem vagy helytelenül formázott kérelem, a IMDS szabványos HTTP-hibákat ad vissza. Például:
 
 HTTP-állapotkód | Ok
 -----------------|-------
 200 OK |
-400 Hibás kérés | Hiányzó `Metadata: true` fejléc vagy hiányzó paraméter `format=json` a levél csomópontjainak lekérdezése során
-404 Nem található  | A kért elem nem létezik
-405 metódus nem engedélyezett | Csak `GET` a kérelmek támogatottak
-410 elment | Némi várakozás után próbálja megismételni a maximális 70 másodpercet
-429 – Túl sok kérelem | Az API jelenleg legfeljebb 5 lekérdezést támogat másodpercenként
-500 szolgáltatási hiba     | Némi idő elteltével próbálkozzon újra
+400 Hibás kérés | Hiányzó `Metadata: true` fejléc vagy hiányzó paraméter `format=json` a levél csomópontjainak lekérdezése során.
+404 Nem található  | A kért elem nem létezik.
+405 metódus nem engedélyezett | Csak `GET` a kérelmek támogatottak.
+410 elment | Próbálkozzon újra egy kis idő elteltével, legfeljebb 70 másodpercig.
+429 – Túl sok kérelem | Az API jelenleg legfeljebb 5 lekérdezést támogat másodpercenként.
+500 szolgáltatási hiba     | Némi idő elteltével próbálkozzon újra.
 
-### <a name="known-issues-and-faq"></a>Ismert problémák és gyakori kérdések
+### <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-1. Hibaüzenetet kapok `400 Bad Request, Required metadata header not specified` . Mit jelent ez?
-   * A Instance Metadata Service megköveteli a fejléc átadását a `Metadata: true` kérelemben. Ha ezt a fejlécet a REST-hívásban adja át, akkor a Instance Metadata Servicehoz való hozzáférést is lehetővé teszi.
-1. Miért nem kapok számítási információt a virtuális géphez?
-   * A Instance Metadata Service jelenleg csak Azure Resource Manager által létrehozott példányokat támogatja.
-1. Létrehoztam a virtuális gépet Azure Resource Manager egy kicsit vissza. Miért nem jelenik meg a számítási metaadatok adatai?
-   * A Sep 2016 után létrehozott virtuális gépekhez adjon hozzá egy [címkét](../../azure-resource-manager/management/tag-resources.md) a számítási metaadatok megjelenítéséhez. Régebbi virtuális gépek esetében (a Sep 2016 előtt létrehozva) a metaadatok frissítéséhez hozzáadhat vagy eltávolíthat bővítményeket vagy adatlemezeket a virtuálisgép-példány (ok) hoz.
-1. Nem látom az új verzióhoz feltöltött összes adatot
-   * A Sep 2016 után létrehozott virtuális gépekhez adjon hozzá egy [címkét](../../azure-resource-manager/management/tag-resources.md) a számítási metaadatok megjelenítéséhez. Régebbi virtuális gépek esetében (a Sep 2016 előtt létrehozva) a metaadatok frissítéséhez hozzáadhat vagy eltávolíthat bővítményeket vagy adatlemezeket a virtuálisgép-példány (ok) hoz.
-1. Miért kapok hibát `500 Internal Server Error` vagy `410 Resource Gone` ?
-   * Próbálja megismételni a kérést az exponenciális visszalépési rendszer vagy az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults)szolgáló egyéb módszerek alapján. Ha a probléma továbbra is fennáll, hozzon létre egy támogatási problémát Azure Portal a virtuális gép számára.
-1. Működne a virtuálisgép-méretezési csoport példányai?
-   * Az igen metaadat-szolgáltatás elérhető a méretezési csoport példányaihoz.
-1. Frissítettem a címkéket Virtual Machine Scale Sets de nem jelennek meg a példányokban az Egypéldányos virtuális gépektől eltérően?
-   * A méretezési csoportok jelenleg csak a virtuális gépre mutatnak be egy újraindítás, rendszerkép vagy lemez módosítása a példányra.
-1. Időtúllépést kapok a kérésem a szolgáltatáshoz való meghívásakor?
-   * A metaadat-hívásokat a virtuális gép elsődleges hálózati kártyához rendelt elsődleges IP-címről kell elvégezni. Továbbá abban az esetben, ha módosította az útvonalakat, a virtuális gép helyi útválasztási táblázatában található 169.254.169.254/32-címnek útvonalnak kell lennie.
+**Hibaüzenetet kapok `400 Bad Request, Required metadata header not specified` . Mit jelent ez?**
+
+A IMDS megköveteli a fejléc átadását a `Metadata: true` kérelemben. Ha ezt a fejlécet a REST-hívásban adja át, a IMDS hozzáférése is elérhetővé válik.
+
+**Miért nem kapok számítási információt a virtuális géphez?**
+
+A IMDS jelenleg csak a Azure Resource Manager-vel létrehozott példányokat támogatja.
+
+**Létrehoztam a virtuális gépet Azure Resource Manager néhány évvel ezelőtt. Miért nem jelenik meg a számítási metaadatokkal kapcsolatos információ?**
+
+Ha a virtuális gépet a 2016 szeptember után hozta létre, vegyen fel egy [címkét](../../azure-resource-manager/management/tag-resources.md) a számítási metaadatok megjelenítésének megkezdéséhez. Ha a virtuális gépet 2016 szeptembere előtt hozta létre, akkor a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuálisgép-példányhoz.
+
+**Miért nem látok az új verzióhoz feltöltött összes adatot?**
+
+Ha a virtuális gépet a 2016 szeptember után hozta létre, vegyen fel egy [címkét](../../azure-resource-manager/management/tag-resources.md) a számítási metaadatok megjelenítésének megkezdéséhez. Ha a virtuális gépet 2016 szeptembere előtt hozta létre, akkor a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuálisgép-példányhoz.
+
+**Miért kapok hibát `500 Internal Server Error` vagy `410 Resource Gone` ?**
+
+Próbálja megismételni a kérést. További információ: [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults). Ha a probléma továbbra is fennáll, hozzon létre egy támogatási problémát a virtuális gép Azure Portaljában.
+
+**Működne a virtuálisgép-méretezési csoport példányai?**
+
+Igen, a virtuálisgép-méretezési csoport példányaihoz elérhető a IMDS.
+
+**Frissítettem a címkéket a virtuálisgép-méretezési csoportokban, de nem jelennek meg a példányokban (az Egypéldányos virtuális gépektől eltérően). Valami hiba történt?**
+
+Jelenleg a virtuálisgép-méretezési csoportokhoz tartozó címkék csak a virtuális GÉPRE mutatnak a példány újraindításakor, rendszerképének vagy lemezének változásakor.
+
+**Miért van időtúllépés a kérésem a szolgáltatáshoz való meghívásakor?**
+
+A metaadat-hívásokat a virtuális gép elsődleges hálózati kártyához rendelt elsődleges IP-címről kell elvégezni. Emellett, ha módosította az útvonalakat, a virtuális gép helyi útválasztási táblázatában a 169.254.169.254/32-címnek is szerepelnie kell egy útvonalnak.
    * <details>
         <summary>Az útválasztási táblázat ellenőrzése</summary>
 
-        1. Írja le a helyi útválasztási táblázatot, és keresse meg a IMDS bejegyzést (például):
+        1. Írja le a helyi útválasztási táblázatot, és keresse meg a IMDS bejegyzést. Például:
             ```console
             > route print
             IPv4 Route Table
@@ -953,7 +967,7 @@ HTTP-állapotkód | Ok
                Subnet Mask . . . . . . . . . . . : 255.255.255.0
             ... (continues) ...
             ```
-        1. Győződjön meg arról, hogy a csatoló megfelel a virtuális gép elsődleges hálózati adapterének és elsődleges IP-címének. Az elsődleges NIC/IP-címet a Azure Portal hálózati konfigurációjának megtekintésével vagy [Az Azure CLI-vel](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show)tekintheti meg. Jegyezze fel a nyilvános és a privát IP-címeket (és a MAC-címet, ha a CLI-t használja). PowerShell CLI-példa:
+        1. Győződjön meg arról, hogy a csatoló megfelel a virtuális gép elsődleges hálózati adapterének és elsődleges IP-címének. Az elsődleges hálózati adapter és az IP-cím megkereséséhez tekintse meg a Azure Portal hálózati konfigurációját, vagy az Azure CLI-vel megtekintve. Jegyezze fel a nyilvános és a privát IP-címeket (és a MAC-címet, ha a CLI-t használja). Íme egy PowerShell CLI-példa:
             ```powershell
             $ResourceGroup = '<Resource_Group>'
             $VmName = '<VM_Name>'
@@ -965,20 +979,18 @@ HTTP-állapotkód | Ok
             }
             # Output: wintest767 True 00-0D-3A-E5-1C-C0
             ```
-        1. Ha nem egyeznek, frissítse az útválasztási táblázatot úgy, hogy az elsődleges NIC/IP-címet célozza meg.
+        1. Ha nem egyeznek, frissítse az útválasztási táblázatot úgy, hogy az elsődleges NIC és az IP-címet célozza meg.
     </details>
 
-## <a name="support-and-feedback"></a>Támogatás és visszajelzés
+## <a name="support"></a>Támogatás
 
-Küldje el visszajelzését és megjegyzéseit https://feedback.azure.com .
+Ha több kísérlet után nem tud metaadat-választ kapni, létrehozhat egy támogatási problémát a Azure Portal.
+A **probléma típusa** beállításnál válassza a **felügyelet** lehetőséget. A **Kategória** mezőben válassza a **instance metadata Service** lehetőséget.
 
-A szolgáltatás támogatásának megszerzéséhez hozzon létre egy támogatási problémát a virtuális gép Azure Portaljában, ahol a hosszú újrapróbálkozás után nem tud metaadatokat kapni.
-Használja a probléma típusát, `Management` és válassza ki `Instance Metadata Service` a kategóriát.
+![Képernyőkép a Instance Metadata Service-támogatásról](./media/instance-metadata-service/InstanceMetadata-support.png)
 
-![Példány metaadatainak támogatása](./media/instance-metadata-service/InstanceMetadata-support.png "Képernyőfelvétel: támogatási eset megnyitása a Instance Metadata Serviceával kapcsolatos problémák esetén")
+## <a name="next-steps"></a>További lépések
 
-## <a name="next-steps"></a>Következő lépések
+[Hozzáférési jogkivonat beszerzése a virtuális géphez](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
 
-További információk:
-1.  [Szerezze be a virtuális gép hozzáférési jogkivonatát](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
-2.  [Scheduled Events](scheduled-events.md)
+[Ütemezett események](scheduled-events.md)

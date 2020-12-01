@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: f45e8435ea26e575398801471904b5038a518a44
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: f76d3b81c2d5425f7bb91c5c86a79faa097794e3
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948833"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435000"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>A portál felületének tesztelése Azure Managed Applications
 
@@ -28,7 +28,7 @@ Miután [létrehozta a createUiDefinition.jsfájlt](create-uidefinition-overview
 
    ![Homokozó megjelenítése](./media/test-createuidefinition/show-sandbox.png)
 
-1. Cserélje le az üres definíciót a fájl createUiDefinition.jstartalmára. Válassza az **előnézet**lehetőséget.
+1. Cserélje le az üres definíciót a fájl createUiDefinition.jstartalmára. Válassza az **előnézet** lehetőséget.
 
    ![Előnézet kiválasztása](./media/test-createuidefinition/select-preview.png)
 
@@ -38,7 +38,7 @@ Miután [létrehozta a createUiDefinition.jsfájlt](create-uidefinition-overview
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha az űrlap nem jelenik meg az **előnézet**kiválasztása után, lehet, hogy szintaktikai hiba történt. Keresse meg a piros kijelzőt a jobb oldali görgetősávon, és navigáljon hozzá.
+Ha az űrlap nem jelenik meg az **előnézet** kiválasztása után, lehet, hogy szintaktikai hiba történt. Keresse meg a piros kijelzőt a jobb oldali görgetősávon, és navigáljon hozzá.
 
 ![Szintaktikai hiba megjelenítése](./media/test-createuidefinition/show-syntax-error.png)
 
@@ -104,4 +104,4 @@ Most, hogy ellenőrizte, hogy a portál felülete a várt módon működik-e, id
 
 ## <a name="next-steps"></a>További lépések
 
-A portál felületének ellenőrzése után megismerheti, hogy az [Azure által felügyelt alkalmazás elérhető legyen a piactéren](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
+A portál felületének ellenőrzése után megismerheti, hogy az [Azure által felügyelt alkalmazás elérhető legyen a piactéren](../../marketplace/create-new-azure-apps-offer.md).

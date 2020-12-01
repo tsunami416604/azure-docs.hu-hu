@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: 3632a34678c7a0f0e6fa93e5ce8000b07bb413a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec17b98daa8eca31cda076921288e2838960511
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86054525"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434532"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure által felügyelt alkalmazások értesítésekkel
 
@@ -61,7 +61,7 @@ Első lépésként tekintse meg [a Service Catalog-alkalmazás közzététele Az
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>Azure Marketplace által felügyelt alkalmazások értesítéseinek hozzáadása
-További információ: Azure- [alkalmazási ajánlat létrehozása](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
+További információ: Azure- [alkalmazási ajánlat létrehozása](../../marketplace/create-new-azure-apps-offer.md).
 
 ![Az Azure Marketplace által felügyelt alkalmazások értesítései a Azure Portal](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>Eseményindítók

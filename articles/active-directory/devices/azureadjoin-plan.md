@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3587ef6be9d6c9969dff5d1af2181ed51aea7d29
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308277"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435450"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD JOIN megvalósításának megtervezése
 
@@ -91,9 +91,11 @@ Az eszközök Azure AD-hez való csatlakoztatásához nem használhat intelligen
 Ha a következőket hozza létre a felhasználók számára:
 
 - Helyszíni **Active Directory a** [Azure ad Connect](../hybrid/how-to-connect-sync-whatis.md)használatával szinkronizálnia kell őket az Azure ad-vel. 
-- Az **Azure ad** -ben nincs szükség további beállításra.
+- Az **Azure ad**-ben nincs szükség további beállításra.
 
 Az Azure AD UPN-től eltérő helyszíni UPN-ket az Azure AD-hez csatlakoztatott eszközök nem támogatják. Ha a felhasználók helyszíni UPN-t használnak, érdemes megtervezni, hogy az elsődleges UPN-t használják az Azure AD-ben.
+
+Az UPN-módosítások csak a Windows 10 2004 frissítésének megkezdése után támogatottak. A frissítéssel rendelkező eszközökön a felhasználók nem lesznek problémák a UPN-érték módosítása után. A Windows 10 2004 frissítést megelőzően a felhasználók SSO és feltételes hozzáférési problémákba ütköznek az eszközökön. A probléma megoldásához az új UPN használatával be kell jelentkezniük a Windowsba a "másik felhasználó" csempén. 
 
 ## <a name="assess-your-device-management"></a>Az eszközök kezelésének felmérése
 
@@ -187,7 +189,7 @@ Az Azure AD-hez csatlakoztatott eszközökhöz való távoli asztali kapcsolatho
 A Windows 10 2004 frissítésének indítása után a felhasználók a Távoli asztalt is használhatják egy Azure AD-beli regisztrált Windows 10-es eszközről egy Azure AD-hez csatlakoztatott eszközre. 
 
 ## <a name="understand-your-provisioning-options"></a>A kiépítési lehetőségek megismerése
-**Megjegyzés** : az Azure ad-hez csatlakoztatott eszközök nem telepíthetők rendszer-előkészítő eszközzel (Sysprep) vagy hasonló képalkotási eszközökkel
+**Megjegyzés**: az Azure ad-hez csatlakoztatott eszközök nem telepíthetők rendszer-előkészítő eszközzel (Sysprep) vagy hasonló képalkotási eszközökkel
 
 Az Azure AD JOIN a következő módszerekkel építhető ki:
 
@@ -243,7 +245,7 @@ Válassza az **Igen** lehetőséget, ha azt szeretné, hogy a felhasználók a M
 
 A mobilitási beállítások konfigurálása előtt előfordulhat, hogy előbb hozzá kell adnia egy MDM-szolgáltatót.
 
-**Mdm-szolgáltató hozzáadása** :
+**Mdm-szolgáltató hozzáadása**:
 
 1. A **Azure Active Directory lap** **kezelés** szakaszában kattintson a elemre `Mobility (MDM and MAM)` . 
 1. Kattintson az **alkalmazás hozzáadása** lehetőségre.
@@ -262,7 +264,7 @@ A telepítés hatóköre alapján válasszon ki **egy** vagy **mindet** .
 A hatókör alapján a következők egyike történik: 
 
 - **A felhasználó Mdm hatókörben** van: Ha prémium szintű Azure ad-előfizetéssel rendelkezik, a Mdm-regisztráció az Azure ad JOIN szolgáltatással együtt automatizálható. Az összes hatókörrel rendelkező felhasználónak rendelkeznie kell egy megfelelő licenccel a MDM. Ha ebben a forgatókönyvben a MDM-regisztráció meghiúsul, az Azure AD JOIN is vissza lesz állítva.
-- **A felhasználó nincs Mdm hatókörben** : Ha a felhasználók nincsenek a Mdm hatókörében, az Azure ad JOIN Mdm-regisztráció nélkül fejeződik be. Ez egy nem felügyelt eszköz eredményét eredményezi.
+- **A felhasználó nincs Mdm hatókörben**: Ha a felhasználók nincsenek a Mdm hatókörében, az Azure ad JOIN Mdm-regisztráció nélkül fejeződik be. Ez egy nem felügyelt eszköz eredményét eredményezi.
 
 ### <a name="mdm-urls"></a>MDM-URL-címek
 
@@ -284,7 +286,7 @@ A MAM nem vonatkozik az Azure AD JOIN szolgáltatásra.
 
 Ha engedélyezni szeretné az állapot-barangolást az Azure AD-ben, hogy a felhasználók szinkronizálják a beállításait az eszközök között, tekintse [meg a Enterprise State roaming engedélyezése a Azure Active Directoryban](enterprise-state-roaming-enable.md)című témakört. 
 
-**Javaslat** : engedélyezze ezt a beállítást még a hibrid Azure ad-hez csatlakoztatott eszközök esetében is.
+**Javaslat**: engedélyezze ezt a beállítást még a hibrid Azure ad-hez csatlakoztatott eszközök esetében is.
 
 ## <a name="configure-conditional-access"></a>Feltételes hozzáférés konfigurálása
 
@@ -294,7 +296,7 @@ Ha rendelkezik egy, az Azure AD-hez csatlakoztatott eszközökhöz konfigurált 
 
 Ezzel a megvalósítással [feltételes hozzáféréssel rendelkező felügyelt eszközöket igényelhet a Cloud app Access számára](../conditional-access/require-managed-devices.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Új Windows 10-es eszköz csatlakoztatása az Azure ad-vel az első futtatás során](azuread-joined-devices-frx.md) 

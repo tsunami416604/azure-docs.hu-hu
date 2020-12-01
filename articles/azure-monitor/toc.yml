@@ -676,6 +676,8 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: JVM-argumentumok beállítása
                       href: app/java-standalone-arguments.md
+                    - name: 'Frissítés a következőről: 2.x'
+                      href: app/java-standalone-upgrade-from-2x.md
             - name: Helyszíni kiszolgálók
               items:
                 - name: ASP.NET

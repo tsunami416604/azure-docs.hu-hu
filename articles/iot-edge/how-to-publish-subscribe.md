@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1ace40098e1d53c6199accea755ffb6969781663
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ecb034ae621c935c3ebcd5b480e116c2cb1d864f
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015663"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435535"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Közzététel és előfizetés Azure IoT Edge
 
@@ -27,16 +27,16 @@ Az üzenetek közzétételéhez és előfizetéséhez Azure IoT Edge MQTT Broker
 ## <a name="pre-requisites"></a>Előfeltételek
 
 - Érvényes előfizetéssel rendelkező Azure-fiók
-- Az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) `azure-iot` telepítve van a CLI bővítménnyel. További információ: az Azure [IoT bővítmény telepítési lépései az Azure Azure CLI-hez](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot).
+- Az [Azure CLI](/cli/azure/) `azure-iot` telepítve van a CLI bővítménnyel. További információ: az Azure [IoT bővítmény telepítési lépései az Azure Azure CLI-hez](/cli/azure/azure-cli-reference-for-iot).
 - Egy, az F1, S1, S2 vagy S3 értékű SKU- **IoT hub** .
 - Az **1,2-es vagy újabb verzióval rendelkező IoT Edge-eszköz**. Mivel IoT Edge MQTT Broker jelenleg nyilvános előzetes verzióban érhető el, a MQTT-átvitelszervező engedélyezéséhez állítsa az alábbi környezeti változókat True értékre a edgeHub-tárolón:
 
-   | Name | Érték |
+   | Név | Érték |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
-- A IoT Edge eszközre telepített **Mosquitto-ügyfelek** . Ez a cikk a [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) és [MOSQUITTO_SUBt](https://mosquitto.org/man/mosquitto_sub-1.html)tartalmazó népszerű Mosquitto-ügyfeleket használja. Ehelyett más MQTT-ügyfelek is használhatók. Ha Ubuntu-eszközön szeretné telepíteni a Mosquitto-ügyfeleket, futtassa a következő parancsot:
+- A IoT Edge eszközre telepített **Mosquitto-ügyfelek** . Ez a cikk a népszerű Mosquitto-ügyfeleket használja [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) és [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html). Ehelyett más MQTT-ügyfelek is használhatók. Ha Ubuntu-eszközön szeretné telepíteni a Mosquitto-ügyfeleket, futtassa a következő parancsot:
 
     ```cmd
     sudo apt-get update && sudo apt-get install mosquitto-clients
@@ -62,42 +62,42 @@ Ha az ügyfél az 8883-as porton (MQTTS) keresztül csatlakozik a MQTT-közvetí
 
 ### <a name="authentication"></a>Hitelesítés
 
-Ahhoz, hogy egy MQTT-ügyfél hitelesítse magát, először egy csatlakozási csomagot kell küldenie a MQTT-közvetítőnek, hogy kapcsolatot kezdeményezzen a nevében. Ez a csomag három hitelesítési információt biztosít: a `client identifier` , a `username` és `password` :
+Ahhoz, hogy egy MQTT-ügyfél hitelesítse magát, először egy csatlakozási csomagot kell küldenie a MQTT-közvetítőnek, hogy kapcsolatot kezdeményezzen a nevében. Ez a csomag három hitelesítési információt biztosít: a `client identifier` , a `username` és a `password` :
 
--   A `client identifier` mező a IoT hub eszköz vagy modul neve. A következő szintaxist használja:
+- A `client identifier` mező a IoT hub eszköz vagy modul neve. A következő szintaxist használja:
 
-    - Eszköz esetén: `<device_name>`
+  - Eszköz esetén: `<device_name>`
 
-    - Modul esetén: `<device_name>/<module_name>`
+  - Modul esetén: `<device_name>/<module_name>`
 
    A MQTT-átvitelszervezőhöz való kapcsolódáshoz az eszközt vagy a modult regisztrálni kell IoT Hubban.
 
-   Vegye figyelembe, hogy a közvetítő nem engedélyezi két ügyfél csatlakoztatását ugyanazzal a hitelesítő adatokkal. A közvetítő leválasztja a már csatlakoztatott ügyfelet, ha egy második ügyfél ugyanazzal a hitelesítő adatokkal csatlakozik.
+   A közvetítő nem teszi lehetővé, hogy több ügyfél kapcsolatait ugyanazzal a hitelesítő adatokkal használja. A közvetítő leválasztja a már csatlakoztatott ügyfelet, ha egy második ügyfél ugyanazzal a hitelesítő adatokkal csatlakozik.
 
 - A `username` mező az eszköz vagy a modul nevéből származik, és a IoTHub neve az eszköz a következő szintaxissal tartozik:
 
-    - Eszköz esetén: `<iot_hub_name>.azure-devices.net/<device_name>/?api-version=2018-06-30`
+  - Eszköz esetén: `<iot_hub_name>.azure-devices.net/<device_name>/?api-version=2018-06-30`
 
-    - Modul esetén: `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>/?api-version=2018-06-30`
+  - Modul esetén: `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>/?api-version=2018-06-30`
 
 - A `password` csatlakozási csomag mező a hitelesítési módból függ:
 
-    - A [szimmetrikus kulcsok hitelesítése](how-to-authenticate-downstream-device.md#symmetric-key-authentication)esetén a `password` mező sas-token.
-    - Az [X. 509 önaláírt hitelesítés](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)esetén a `password` mező nem jelenik meg. Ebben a hitelesítési módban a TLS-csatornát kötelező megadni. Az ügyfélnek csatlakoznia kell az 8883-as porthoz a TLS-kapcsolat létrehozásához. A TLS-kézfogás során a MQTT-közvetítő ügyféltanúsítványt kér. Ez a tanúsítvány az ügyfél identitásának ellenőrzésére szolgál, így a `password` mezőre a kapcsolódási csomag elküldésekor még nincs szükség. Az ügyféltanúsítvány és a jelszó mező elküldése hibát jelez, és a rendszer bezárja a kapcsolódást. A MQTT-kódtárak és a TLS-ügyféloldali kódtárak általában úgy is rendelkezhetnek, hogy a kapcsolatok kezdeményezése során ügyféltanúsítványt küldjenek. Az [X509-tanúsítvány használata az ügyfél-hitelesítéshez](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)szakasz lépésről lépésre látható példát mutat.
+  - A [szimmetrikus kulcsok hitelesítésének](how-to-authenticate-downstream-device.md#symmetric-key-authentication)használatakor a `password` mező sas-token.
+  - Ha [X. 509 önaláírt hitelesítést](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)használ, akkor a `password` mező nem jelenik meg. Ebben a hitelesítési módban a TLS-csatornát kötelező megadni. Az ügyfélnek csatlakoznia kell az 8883-as porthoz a TLS-kapcsolat létrehozásához. A TLS-kézfogás során a MQTT-közvetítő ügyféltanúsítványt kér. Ez a tanúsítvány az ügyfél identitásának ellenőrzésére szolgál, így a `password` mezőre a kapcsolódási csomag elküldésekor még nincs szükség. Az ügyféltanúsítvány és a jelszó mező elküldése hibát jelez, és a rendszer bezárja a kapcsolódást. A MQTT-kódtárak és a TLS-ügyféloldali kódtárak általában úgy is rendelkezhetnek, hogy a kapcsolatok kezdeményezése során ügyféltanúsítványt küldjenek. Az [X509-tanúsítvány használata az ügyfél-hitelesítéshez](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)szakasz lépésről lépésre látható példát mutat.
 
 A IoT Edge által központilag telepített modulok a [szimmetrikus kulcsok hitelesítését](how-to-authenticate-downstream-device.md#symmetric-key-authentication) használják, és a helyi [IoT Edge munkaterhelés API](https://github.com/Azure/iotedge/blob/40f10950dc65dd955e20f51f35d69dd4882e1618/edgelet/workload/README.md) -t hívhatják programozott módon, ha kapcsolat nélküli módban is megkapják az SAS-tokent.
 
 ### <a name="authorization"></a>Engedélyezés
 
-Miután a MQTT-ügyfelet hitelesítette IoT Edge hub-ra, engedélyezni kell a kapcsolódást. A csatlakozást követően engedélyezni kell a konkrét témakörök közzétételét vagy előfizetését. Ezeket az engedélyeket az IoT Edge hub engedélyezte az engedélyezési házirend alapján. Az engedélyezési házirend egy JSON-struktúraként kifejezett utasítások halmaza, amelyet a IoT Edge hub a Twin használatával továbbít. Egy IoT Edge hub-iker szerkesztése az engedélyezési házirend konfigurálásához.
+Ha egy MQTT-ügyfél hitelesítése IoT Edge hub-ra, engedélyezni kell a kapcsolódást. A csatlakozást követően engedélyezni kell a konkrét témakörök közzétételét vagy előfizetését. Ezeket az engedélyeket az IoT Edge hub engedélyezte az engedélyezési házirend alapján. Az engedélyezési házirend egy JSON-struktúraként kifejezett utasítások halmaza, amelyet a IoT Edge hub a Twin használatával továbbít. Egy IoT Edge hub-iker szerkesztése az engedélyezési házirend konfigurálásához.
 
 > [!NOTE]
-> A nyilvános előzetes verzióban a MQTT Broker engedélyezési házirendjeinek szerkesztése csak a Visual Studióban, a Visual Studio Code-ban vagy az Azure CLI-n keresztül érhető el. A Azure Portal jelenleg nem támogatja a IoT Edge hub Twin és annak engedélyezési szabályzatának szerkesztését.
+> A nyilvános előzetes verzióban a MQTT Broker engedélyezési házirendjeinek szerkesztése csak a Visual Studio, a Visual Studio Code vagy az Azure CLI használatával érhető el. A Azure Portal jelenleg nem támogatja a IoT Edge hub Twin és annak engedélyezési szabályzatának szerkesztését.
 
-Minden engedélyezési házirend-utasítás a (z) és a (z) és a (z) kombinációját tartalmazza `identities` `allow` `deny` `operations` `resources` :
+Minden engedélyezési házirend-utasítás a (z) és a (z) és a (z), `identities` `allow` `deny` `operations` és `resources` :
 
 - `identities` írja le a szabályzat tárgyát. Az `client identifier` ügyfélnek a kapcsolódási csomagban lévő ügyfeleknek kell leképeznie.
-- `allow` vagy `deny` a hatás határozza meg, hogy engedélyezi vagy megtagadja a műveleteket.
+- `allow` vagy `deny` a hatások határozzák meg, hogy engedélyezik vagy megtagadják a műveleteket.
 - `operations` adja meg az engedélyezni kívánt műveleteket. `mqtt:connect`, `mqtt:publish` és `mqtt:subscribe` a három támogatott művelet jelenleg.
 - `resources` a szabályzat objektumának megadása. Ez lehet egy témakör vagy egy [MQTT-helyettesítő karakterekkel](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107)definiált témakör-minta.
 
@@ -163,16 +163,18 @@ Az alábbi példa egy olyan engedélyezési házirendre mutat példát, amely ex
 ```
 
 Az engedélyezési szabályzat írásakor néhány dolgot figyelembe kell vennie:
+
 - Ehhez a `$edgeHub` Twin schema 1,2-es verziója szükséges.
 - Alapértelmezés szerint az összes művelet megtagadva.
 - Az engedélyezési utasítások a JSON-definícióban megjelenő sorrendben lesznek kiértékelve. Ekkor megtekinti a következőt: `identities` , majd kiválasztja a kérésnek megfelelő első engedélyezési vagy megtagadási utasítást. Az engedélyezési és megtagadási utasítások közötti ütközés esetén a megtagadási utasítás nyer.
-- Az engedélyezési házirendben több változó (például helyettesítések) is használható:
-    - `{{iot:identity}}` a jelenleg csatlakoztatott ügyfél identitását jelöli. Például egy `myDevice` eszköz esetében, ha `myEdgeDevice/SampleModule` egy modul.
-    - `{{iot:device_id}}` a jelenleg csatlakoztatott eszköz identitását jelöli. Például egy `myDevice` eszköz esetében, ha `myEdgeDevice` egy modul.
-    - `{{iot:module_id}}` a jelenleg csatlakoztatott modul identitását jelöli. Például "", ha egy eszköz esetében egy `SampleModule` modul.
+- Az engedélyezési házirendben több változó (például a helyettesítések) is használható:
+    - `{{iot:identity}}` a jelenleg csatlakoztatott ügyfél identitását jelöli. Például az eszköz identitása, `myDevice` vagy egy olyan azonosító, mint a modul `myEdgeDevice/SampleModule` .
+    - `{{iot:device_id}}` a jelenleg csatlakoztatott eszköz identitását jelöli. Például egy eszköz identitása, `myDevice` vagy az eszköz identitása, ahol egy modul fut `myEdgeDevice` .
+    - `{{iot:module_id}}` a jelenleg csatlakoztatott modul identitását jelöli. Ez a változó nem üres a csatlakoztatott eszközökhöz, vagy például a modul identitásához `SampleModule` .
     - `{{iot:this_device_id}}` az engedélyezési házirendet futtató IoT Edge eszköz identitását jelöli. Például: `myIoTEdgeDevice`.
 
-A IoT hub-témakörökre vonatkozó engedélyeket a felhasználó által definiált témakörök némileg eltérően kezelik. A következő fontos szempontokat érdemes megjegyezni:
+Az IoT hub-témakörökre vonatkozó engedélyeket a felhasználó által definiált témakörök némileg eltérően kezelik. A következő fontos szempontokat érdemes megjegyezni:
+
 - Az Azure IoT-eszközöknek vagy-moduloknak explicit engedélyezési szabályra van szükségük IoT Edge hub MQTT-átvitelszervezőhöz való kapcsolódáshoz. Az alábbi alapértelmezett csatlakozási engedélyezési házirendet kell megadnia.
 - Az Azure IoT-eszközök vagy-modulok alapértelmezés szerint az explicit engedélyezési szabályok nélkül férhetnek hozzá a saját IoT hub-témakörökhöz. Ebben az esetben azonban az engedélyek szülő/gyermek kapcsolatból származnak, és ezeket a kapcsolatokat be kell állítani. IoT Edge modulokat a rendszer automatikusan a IoT Edge eszköz gyermekeiként állítja be, de az eszközöket explicit módon be kell állítani a IoT Edge átjáró gyermekeiként.
 - Az Azure IoT-eszközök vagy-modulok hozzáférhetnek a témakörökhöz, beleértve az IoT hub-témaköröket más eszközök vagy modulok számára, amelyek biztosítják a megfelelő explicit engedélyezési szabályok definiálását.
@@ -230,7 +232,7 @@ Hozzon létre két IoT-eszközt a IoT Hubban, és kérje meg a jelszavukat. Az A
        az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> --key-type primary --du 3600
        ```
     
-       ahol a 3600 az SAS-token időtartama másodpercben (pl. 3600 = 1 óra).
+       ahol a 3600 az SAS-token időtartama másodpercben (például 3600 = 1 óra).
     
     - Modul esetén:
     
@@ -238,7 +240,7 @@ Hozzon létre két IoT-eszközt a IoT Hubban, és kérje meg a jelszavukat. Az A
        az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> -m <module_name> --key-type primary --du 3600
        ```
     
-       ahol a 3600 az SAS-token időtartama másodpercben (pl. 3600 = 1 óra).
+       ahol a 3600 az SAS-token időtartama másodpercben (például 3600 = 1 óra).
 
 3. Másolja az SAS-tokent, amely a kimenetből származó "sas" kulcsnak megfelelő érték. Íme egy példa a fenti Azure CLI-parancs kimenetére:
 
@@ -310,7 +312,7 @@ A közzétevő és az előfizető engedélyezéséhez szerkessze a IoT Edge hub-
 
 ### <a name="symmetric-keys-authentication-without-tls"></a>Szimmetrikus kulcsok hitelesítése TLS nélkül
 
-#### <a name="subscribe"></a>Feliratkozás
+#### <a name="subscribe"></a>Előfizetés
 
 Kapcsolódjon **sub_client** MQTT-ügyfeléhez a MQTT-közvetítőhöz, és fizessen elő a `test_topic` következő parancs futtatásával a IoT Edge eszközön:
 
@@ -327,7 +329,7 @@ mosquitto_sub \
 
 `<edge_device_address>`  =  `localhost` ebben a példában az ügyfél ugyanazon az eszközön fut, mint a IoT Edge.
 
-Vegye figyelembe, hogy az első példában a 1883-as (MQTT) port, például a TLS nélkül van használatban. Egy másik példa a 8883-as portra (MQTTS), például a TLS engedélyezése esetén a következő szakaszban látható.
+Vegye figyelembe, hogy a TLS nélküli 1883 (MQTT) port ebben az első példában van használatban. A következő szakaszban látható egy másik példa a 8883 (MQTTS) portra, amelyen engedélyezve van a TLS.
 
 A **sub_client** MQTT-ügyfél most elindult, és a bejövő üzenetekre vár `test_topic` .
 
@@ -384,7 +386,7 @@ A Twin-javítások fogadásához az ügyfeleknek elő kell fizetniük a speciál
 
 ### <a name="receive-direct-methods"></a>Közvetlen metódusok fogadása
 
-A közvetlen metódus fogadása nagyon hasonlít a teljes ikrek fogadására, azzal a kiegészítéssel, hogy az ügyfélnek vissza kell igazolnia, hogy megkapta a hívást. Az ügyfél először az IoT hub speciális témakörére iratkozott fel `$iothub/methods/POST/#` . Ezt követően a jelen témakörben a közvetlen metódus megérkezése után az ügyfélnek ki kell bontania a kérés azonosítóját `rid` a közvetlen metódus fogadására szolgáló altémakörből, és végül közzé kell tennie egy megerősítő üzenetet az IoT hub speciális témakörében `$iothub/methods/res/200/<request_id>` .
+A közvetlen metódus fogadása hasonló a teljes ikrek fogadásához, azzal a kiegészítéssel, hogy az ügyfélnek vissza kell igazolnia, hogy megkapta a hívást. Az ügyfél először az IoT hub speciális témakörére iratkozott fel `$iothub/methods/POST/#` . Ezt követően a jelen témakörben a közvetlen metódus megérkezése után az ügyfélnek ki kell bontania a kérés azonosítóját `rid` a közvetlen metódus fogadására szolgáló altémakörből, és végül közzé kell tennie egy megerősítő üzenetet az IoT hub speciális témakörében `$iothub/methods/res/200/<request_id>` .
 
 ### <a name="send-direct-methods"></a>Közvetlen metódusok küldése
 
@@ -392,7 +394,7 @@ A közvetlen metódus küldése HTTP-hívás, így nem halad át a MQTT-közvet�
 
 ## <a name="publish-and-subscribe-between-mqtt-brokers"></a>Közzététel és előfizetés a MQTT-közvetítők között
 
-Két MQTT-közvetítő összekapcsolásához a IoT Edge hub MQTT-hidat tartalmaz. A MQTT híd általában egy másik MQTT-közvetítőhöz kapcsolódó MQTT-közvetítő összekapcsolására szolgál. A helyi forgalomnak csak egy részhalmazát küldi el a rendszer általában egy másik közvetítőnek.
+Két MQTT-közvetítő összekapcsolásához a IoT Edge hub tartalmaz egy MQTT-hidat. Egy MQTT-híd általában egy másik MQTT-közvetítőhöz kapcsolódó MQTT-közvetítő összekapcsolására szolgál. A helyi forgalomnak csak egy részhalmazát küldi el a rendszer általában egy másik közvetítőnek.
 
 > [!NOTE]
 > Az IoT Edge hub-híd jelenleg csak a beágyazott IoT Edge-eszközök között használható. Nem használható adat küldésére az IoT hub számára, mivel a IoT hub nem teljes körűen Kiemelt MQTT-közvetítő. Ha többet szeretne megtudni a IoT hub MQTT Broker funkcióinak támogatásáról, tekintse meg [a kommunikáció az IoT hubhoz a MQTT protokoll használatával](../iot-hub/iot-hub-mqtt-support.md)című témakört. Az IoT Edge eszközök beágyazásával kapcsolatos további tudnivalókért lásd: [alsóbb rétegbeli IoT Edge-eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices) 
@@ -410,8 +412,8 @@ A MQTT-híd úgy konfigurálható, hogy egy IoT Edge hub MQTT-közvetítőt töb
 - `settings` meghatározza, hogy mely témaköröket kell áthidalni egy végpont számára. A végpontok több beállítást is használhatnak, és a következő értékek használhatók a konfigurálásához:
     - `direction`: `in` előfizethet a távoli közvetítő témaköreire, vagy `out` közzéteheti a távoli közvetítő témáit
     - `topic`: az alapvető téma mintája. A minta definiálásához [MQTT helyettesítő karakterek](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107) használhatók. A témakör különböző előtagokat alkalmazhat a helyi közvetítőn és a távoli közvetítőn.
-    - `outPrefix`: Előtag, amely a `topic` távoli közvetítőn lévő mintára vonatkozik.
-    - `inPrefix`: Előtag, amely a `topic` helyi közvetítőn lévő mintára vonatkozik.
+    - `outPrefix`: Előtag, amely a `topic` távoli közvetítőn alkalmazott mintára vonatkozik.
+    - `inPrefix`: Előtag, amely a `topic` helyi közvetítő mintázatára vonatkozik.
 
 Az alábbi példa egy olyan IoT Edge MQTT híd-konfigurációra mutat példát, amely egy szülő IoT Edge eszköznek a témakörökben fogadott összes üzenetet `alerts/#` egy alárendelt IoT Edge eszközre teszi közzé ugyanazon a témakörben, és újból közzéteszi az összes olyan üzenetet, amely a `/local/telemetry/#` gyermek IoT Edge eszköznek az alárendelt IoT Edge eszközre való küldésével kapcsolatos témakörökre vonatkozik `/remote/messages/#` .
 
@@ -439,6 +441,6 @@ Az alábbi példa egy olyan IoT Edge MQTT híd-konfigurációra mutat példát, 
 Egyéb megjegyzések a IoT Edge hub MQTT-hídhoz:
 - Az MQTT protokollt a rendszer automatikusan az upstream protokollként használja a MQTT-közvetítő használatakor, valamint azt, hogy a IoT Edge egy beágyazott konfigurációban, például egy megadott módon legyen használatban `parent_hostname` . A felsőbb rétegbeli protokollokkal kapcsolatos további tudnivalókért tekintse meg a [felhőalapú kommunikációt](iot-edge-runtime.md#cloud-communication)ismertető témakört. További információ a beágyazott konfigurációkról: [alsóbb rétegbeli IoT Edge eszköz csatlakoztatása Azure IoT Edge-átjáróhoz](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az IoT Edge hub ismertetése](iot-edge-runtime.md#iot-edge-hub)

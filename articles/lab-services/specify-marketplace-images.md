@@ -3,12 +3,12 @@ title: Marketplace-lemezképek megadása Azure Lab Servicesban található labor
 description: Ebből a cikkből megtudhatja, hogyan adhatja meg azokat a Piactéri rendszerképeket, amelyekkel a labor Creator használatával labor-fiókokat hozhat létre Azure Lab Servicesban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5a353394fec3dadf0f808a25ec66f6e9028820a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c81c8d7a15d67055729a29e98f5b7e30f3d0764
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445610"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434736"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>A tesztkörnyezet-készítők számára elérhető Piactéri lemezképek meghatározása
 A tesztkörnyezetfiók tulajdonosaként megadhatja azokat a Marketplace-beli rendszerképeket, amelyek használatával a tesztkörnyezet-létrehozók tesztkörnyezeteket hozhatnak létre a tesztkörnyezetfiókban. 
@@ -25,7 +25,7 @@ A listában csak azok a Marketplace-beli rendszerképek jelennek meg, amelyek me
 - Nincs szükség külön licenccsomag vásárlására.
 
 ## <a name="disable-images-for-a-lab"></a>A tesztkörnyezet rendszerképeinek letiltása 
-Egy tesztkörnyezet egyetlen rendszerképének letiltásához válassza a **... lehetőséget. (három pont)** az utolsó oszlopban, majd válassza a **rendszerkép letiltása**lehetőséget. 
+Egy tesztkörnyezet egyetlen rendszerképének letiltásához válassza a **... lehetőséget. (három pont)** az utolsó oszlopban, majd válassza a **rendszerkép letiltása** lehetőséget. 
 
 ![Egy rendszerkép letiltása](./media/tutorial-setup-lab-account/disable-one-image.png) 
 
@@ -37,7 +37,7 @@ Ha egyszerre több lemezképet szeretne letiltani, jelölje be a jelölőnégyze
 
 
 ## <a name="enable-images-for-a-lab"></a>Képek engedélyezése laborhoz
-A letiltott képek engedélyezéséhez válassza a... lehetőséget. ** (három pont)** az utolsó oszlopban válassza a **rendszerkép engedélyezése**lehetőséget. Azt is megteheti, hogy a kép neve előtt bejelöli a jelölőnégyzetet, majd kiválasztja a **kijelölt rendszerképek engedélyezése** lehetőséget az eszköztáron. 
+A letiltott képek engedélyezéséhez válassza a... lehetőséget. **(három pont)** az utolsó oszlopban válassza a **rendszerkép engedélyezése** lehetőséget. Azt is megteheti, hogy a kép neve előtt bejelöli a jelölőnégyzetet, majd kiválasztja a **kijelölt rendszerképek engedélyezése** lehetőséget az eszköztáron. 
 
 Ha egyszerre több lemezképet szeretne letiltani, jelölje be a jelölőnégyzeteket a lemezkép neve előtt, majd válassza a **kijelölt lemezképek engedélyezése** lehetőséget az eszköztáron. 
 
@@ -60,4 +60,4 @@ Lásd az alábbi cikkeket:
 - [Labor tulajdonosaként Labs létrehozása és kezelése](how-to-manage-classroom-labs.md)
 - [A labor tulajdonosaként hozzon létre és tegyen közzé sablonokat](how-to-create-manage-template.md)
 - [Tesztkörnyezet tulajdonosaként konfigurálhatja és szabályozhatja a labor használatát](how-to-configure-student-usage.md)
-- [Labor-felhasználóként az osztályterem Labs eléréséhez](how-to-use-classroom-lab.md)
+- [Labor-felhasználóként a hozzáférés Labs](how-to-use-classroom-lab.md)

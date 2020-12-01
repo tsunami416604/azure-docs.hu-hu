@@ -1,5 +1,5 @@
 ---
-title: Apache Spark kódtárainak kezelése az Azure szinapszis Analyticsben
+title: Apache Spark kódtárainak kezelése
 description: Megtudhatja, hogyan veheti fel és kezelheti a Apache Spark által használt könyvtárakat az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 8d478b35b702e02f303358972526c091ceb3657e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 27881b048a738d4de2acb57dcc4c2dad1f4d5b24
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95917125"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435365"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Apache Spark kódtárainak kezelése az Azure szinapszis Analyticsben
 
@@ -36,7 +36,7 @@ Miután azonosította a Spark-alkalmazáshoz használni kívánt kódtárakat, e
 
 > [!IMPORTANT]
 > - Ha a telepített csomag nagy méretű, vagy hosszú ideig tart a telepítés, ez hatással van a Spark-példány indítási idejére.
-> - A fordítási támogatást igénylő csomagok, például a GCC, nem támogatottak.
+> - A telepítéskor fordítási támogatást igénylő csomagok, például a GCC, nem támogatottak.
 > - A csomagokat nem lehet leértékelni, csak a Hozzáadás vagy a frissítés lehetőségre.
 > - A kódtárak telepítéséhez a tárolási blob adatközreműködőinek vagy a Storage blob-adattulajdonosi engedélyekkel kell rendelkeznie a szinapszis munkaterülethez csatolt elsődleges Gen2 Storage-fiókban.
 

@@ -1,6 +1,6 @@
 ---
 title: A Microsoft Spark segédprogramok bemutatása
-description: Oktatóanyag a MSSparkutils Azure szinapszis Analytics-jegyzetfüzetekben való használatáról.
+description: 'Oktatóanyag: MSSparkutils az Azure szinapszis Analytics-jegyzetfüzetekben'
 author: ruxu
 services: synapse-analytics
 ms.service: synapse-analytics
@@ -10,14 +10,14 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3c4e062393f9d75d478720041436c2e0f54485a3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: ff294c0227bb6a830a5aef2379248714a7f2f64a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795071"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435195"
 ---
-# <a name="introduction-of-microsoft-spark-utilities"></a>A Microsoft Spark segédprogramok bemutatása
+# <a name="introduction-to-microsoft-spark-utilities"></a>A Microsoft Spark segédprogramok bemutatása
 
 A Microsoft Spark Utilities (MSSparkUtils) egy beépített csomag, amely megkönnyíti a gyakori feladatok elvégzését. A MSSparkUtils használható a fájlrendszerekkel való együttműködéshez, környezeti változók beszerzéséhez és a titkokkal való munkához. A MSSparkUtils a, a és a jegyzetfüzetekben, valamint a `PySpark (Python)` `Scala` szinapszis- `.NET Spark (C#)` folyamatokban érhetők el.
 
