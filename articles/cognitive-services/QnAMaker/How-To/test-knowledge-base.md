@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 21984a03947e4f9f60e705955cb1be3b2df8933c
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376145"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353153"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>A Tudásbázis tesztelése QnA Maker
 
@@ -70,7 +70,7 @@ Válassza a **Mentés és a tanítás** lehetőséget a válasz megőrzéséhez.
 
 1. A Tudásbázisban a saját **Tudásbázis** lapján megjelenő név kiválasztásával férhet hozzá.
 1. A teszt kivetítése panel eléréséhez válassza a **tesztelés** lehetőséget az alkalmazás felső paneljén. 
-1. Ekkor megjelenik egy jelölőnégyzet a felső **megjelenített rövid válaszon** , amely alapértelmezés szerint ki van választva. Ezzel a beállítással engedélyezheti a MRC-alapú válaszadási tartomány észlelését a tesztelési panelen. 
+1. Ekkor megjelenik egy jelölőnégyzet a felső **megjelenített rövid válaszon**, amely alapértelmezés szerint ki van választva. Ezzel a beállítással engedélyezheti a MRC-alapú válaszadási tartomány észlelését a tesztelési panelen. 
 1. Írjon be egy lekérdezést a szövegmezőbe, majd válassza az ENTER billentyűt. 
 1. Minden lekérdezés esetében, ha van egy pontos válasz/rövid válasz a válasz áthaladásakor, majd a legjobb egyezéssel rendelkező válasz áthaladását, amely a Tudásbázisban szerepel, a lekérdezéshez is rövid választ fog adni.
     ![Felügyelt engedélyezett teszt panel](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
@@ -306,7 +306,7 @@ Ezekkel az eredményekkel láthatja, hogy csevegési naplót szeretne készíten
 
 A teszteléshez jó ötlet volt a meta-adattal való szűrés? Igen és nem. A tesztelési rendszernek létre kell hoznia minden egyes meta-adatpárokhoz tartozó tesztelési fájlt, valamint egy olyan tesztet, amely nem tartalmaz meta-adatpárokat.
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja a Tudásbázis tesztelését, törölje a Batch file eszközt és a tesztelési fájlokat.
 
@@ -320,7 +320,7 @@ Ha nem fogja tovább használni ezt a tudásbázist, törölje a tudásbázist a
 * az eszköz parancssori példája
 * a TSV bemeneti és kimeneti fájljainak formátuma
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Tudásbázis közzététele](./publish-knowledge-base.md)
+> [Tudásbázis közzététele](../quickstarts/create-publish-knowledge-base.md)

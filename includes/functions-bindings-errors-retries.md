@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
-ms.openlocfilehash: 39c0556350482e171234a3ff9dce0c16ed88d110
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2ccff72be66a88b9bf0a5e9eb9c29ade8397804b
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93406646"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356193"
 ---
 Egy Azure Functionsban felmerülő hibák a következő eredetek bármelyike esetén származhatnak:
 
@@ -149,6 +149,27 @@ Itt látható az újrapróbálkozási szabályzat a fájl *function.jsjában* :
     }
 }
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Itt látható az újrapróbálkozási szabályzat a fájl *function.jsjában* :
+
+
+```json
+{
+    "disabled": false,
+    "bindings": [
+        {
+            ....
+        }
+    ],
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 4,
+        "delayInterval": "00:00:10"
+    }
+}
+```
 ---
 
 #### <a name="exponential-backoff-retry"></a>Exponenciális leállítási újrapróbálkozás
@@ -249,6 +270,27 @@ Itt látható az újrapróbálkozási szabályzat a fájl *function.jsjában* :
     }
 }
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Itt látható az újrapróbálkozási szabályzat a fájl *function.jsjában* :
+
+```json
+{
+    "disabled": false,
+    "bindings": [
+        {
+            ....
+        }
+    ],
+    "retry": {
+        "strategy": "exponentialBackoff",
+        "maxRetryCount": 5,
+        "minimumInterval": "00:00:10",
+        "maximumInterval": "00:15:00"
+    }
+}
+```
 ---
 
 |function.jsa tulajdonságon  |Attribútum tulajdonsága | Leírás |
@@ -279,7 +321,7 @@ Ha például az alapértelmezett Service Bus kézbesítési szám 10 értéket h
 A következő eseményindítók támogatják az újrapróbálkozásokat az eseményindító forrásaként:
 
 * [Azure Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)
-* [Azure Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)
+* [Azure üzenetsor-tároló](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (Üzenetsor/témakör)](../articles/azure-functions/functions-bindings-service-bus.md)
 
 Alapértelmezés szerint a legtöbb eseményindító legfeljebb öt alkalommal próbálkozik újra. Az ötödik újrapróbálkozás után az Azure üzenetsor-tárolóban is megjelenik egy üzenet a [méreg-várólistába](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages).  Az alapértelmezett Service Bus üzenetsor és témakör-házirend 10 próbálkozás után üzenetet fog írni egy [kézbesítetlen levelek várólistára](../articles/service-bus-messaging/service-bus-dead-letter-queues.md) .

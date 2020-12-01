@@ -1,18 +1,18 @@
 ---
 title: Változók a sablonokban
-description: Leírja, hogyan határozhat meg változókat egy Azure Resource Manager sablonban.
+description: Leírja, hogyan lehet változókat definiálni egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 7758451747503cb8c42566dc081a91f84bafa375
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95916003"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353459"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Az Azure Resource Manager-sablonok változói
+# <a name="variables-in-arm-template"></a>Az ARM-sablonban szereplő változók
 
-Ez a cikk bemutatja, hogyan definiálhat és használhat változókat a Azure Resource Manager-sablonban. Változók használatával egyszerűsítheti a sablont. Ahelyett, hogy a sablonban megismételje a bonyolult kifejezéseket, Definiáljon egy változót, amely tartalmazza a bonyolult kifejezést. Ezután a sablonban szükség szerint hivatkozhat erre a változóra.
+Ez a cikk bemutatja, hogyan határozhat meg és használhat változókat a Azure Resource Manager-sablonban (ARM-sablon). Változók használatával egyszerűsítheti a sablont. Ahelyett, hogy a sablonban megismételje a bonyolult kifejezéseket, Definiáljon egy változót, amely tartalmazza a bonyolult kifejezést. Ezután a sablonban szükség szerint hivatkozhat erre a változóra.
 
 A Resource Manager a telepítési műveletek megkezdése előtt feloldja a változókat. Mindenhol, ahol a sablonban a változót kell használni, a Resource Manager lecseréli a változót a feloldott értékre.
 
@@ -95,5 +95,5 @@ Az alábbi példák a változók használatára vonatkozó forgatókönyveket sz
 
 ## <a name="next-steps"></a>További lépések
 
-* A változók elérhető tulajdonságainak megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md)című témakört.
+* A változók elérhető tulajdonságainak megismeréséhez tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
 * A változók létrehozásával kapcsolatos javaslatokért lásd: [ajánlott eljárások – változók](template-best-practices.md#variables).

@@ -10,19 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: a0187a5d2be6b2f93897fc358e26ad095e5a70f7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 014705cf628aa2d2df43d0964ff843fae09595ac
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364581"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352772"
 ---
 # <a name="what-is-bing-autosuggest"></a>Mi a Bing Autosuggest?
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Ha az alkalmazás a Bing Search API-k bármelyikére küld lekérdezéseket, a Bing Autosuggest API segítségével javíthatja a felhasználók keresési élményét. A Bing Autosuggest API visszaadja a javasolt lekérdezések listáját a keresőmező részleges lekérdezési karakterlánca alapján. Ahogy a karakterek bekerülnek a keresőmezőbe, a javaslatok a legördülő listában jelennek meg.
 

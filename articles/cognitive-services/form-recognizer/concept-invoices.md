@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: af3935bab5cd4d6a2aa4a9e3250f6beec19a8ea4
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 5c8af8ddb7a0870de37b73cbe09965ee63c88ba1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736677"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353748"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Űrlap-felismerő előre összeépített számlázási modellje
 
-Az Azure-űrlap felismerője az előre elkészített számla modelljeivel elemezheti és kinyerheti az értékesítési számlákból származó információkat. A számla API lehetővé teszi, hogy az ügyfelek különböző formátumokban fogadják a számlákat, és a feldolgozott adatmennyiséget a számla feldolgozásának automatizálására. A nagy teljesítményű [optikai karakterfelismerési (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) képességeket ötvözi a részletes tanulási modellekkel, hogy kinyerje a legfontosabb információkat a számlákból angol nyelven. Kibontja a szöveget, a táblákat és az információkat, például az ügyfelet, a szállítót, a számla AZONOSÍTÓját, a számla esedékes dátumát, a teljes összeget, a számla összegét, az adó mennyiségét, a szállítást és a számlázást, Az előre elkészített számla API nyilvánosan elérhető az űrlap felismerő v 2.1 előzetes verziójában.
+Az Azure-űrlap felismerője az előre elkészített számla modelljeivel elemezheti és kinyerheti az értékesítési számlákból származó információkat. A számla API lehetővé teszi, hogy az ügyfelek különböző formátumokban fogadják a számlákat, és a feldolgozott adatmennyiséget a számla feldolgozásának automatizálására. A nagy teljesítményű [optikai karakterfelismerési (OCR)](../computer-vision/concept-recognizing-text.md) képességeket ötvözi a részletes tanulási modellekkel, hogy kinyerje a legfontosabb információkat a számlákból angol nyelven. Kibontja a szöveget, a táblákat és az információkat, például az ügyfelet, a szállítót, a számla AZONOSÍTÓját, a számla esedékes dátumát, a teljes összeget, a számla összegét, az adó mennyiségét, a szállítást és a számlázást, Az előre elkészített számla API nyilvánosan elérhető az űrlap felismerő v 2.1 előzetes verziójában.
 
 ## <a name="what-does-the-invoice-service-do"></a>Mire szolgál a számlázási szolgáltatás?
 
@@ -104,7 +104,7 @@ A számlázási szolgáltatás kibontja a szöveget, a táblákat és a 26 szám
 | PreviousUnpaidBalance | szám | Explicit, korábban nem fizetett egyenleg | 500 USD | 500 |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Próbálja ki saját számláit és mintáit az [űrlap-felismerő minta felhasználói felületén](https://fott-preview.azurewebsites.net/).
 - Töltse ki az [űrlap-felismerő ügyféloldali függvénytárának](quickstarts/client-library.md) rövid útmutatóját, hogy megkezdje a számla-feldolgozó alkalmazás írását az űrlap felismerővel az Ön által választott nyelven.
@@ -113,4 +113,3 @@ A számlázási szolgáltatás kibontja a szöveget, a táblákat és a 26 szám
 
 * [Mi a Form Recognizer?](./overview.md)
 * [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)
-

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 10a2ae71d8c26d82a4a730bab3ba16e7c62d1243
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2b27da096ed18170ca8c9d70f31dc955fb74950
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911736"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352830"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Egyéni naplók gyűjtése Log Analytics ügynökkel Azure Monitor
 
@@ -30,7 +30,7 @@ A gyűjteni kívánt naplófájloknak meg kell egyezniük a következő feltéte
 
 - A naplófájl nem engedheti meg a körkörös naplózást vagy a napló elforgatását, ahol a fájl felülírása új bejegyzésekkel történik.
 - A naplófájlnak ASCII vagy UTF-8 kódolást kell használnia.  Más formátumok, például az UTF-16 nem támogatottak.
-- A Linux esetében az időzóna-elemzés nem támogatott a naplók időbélyegzői esetében.
+- A Linux esetében az időzóna-átalakítás nem támogatott a naplók időbélyegzői esetében.
 
 >[!NOTE]
 > Ha duplikált bejegyzések vannak a naplófájlban, akkor a Azure Monitor begyűjti őket. A lekérdezés eredményei azonban inkonzisztensek lesznek, ha a szűrő eredményei több eseményt mutatnak, mint az eredmények száma. Fontos, hogy ellenőrizze a naplót annak megállapításához, hogy az azt létrehozó alkalmazás okozza-e ezt a viselkedést, és ha lehetséges, adja meg az egyéni napló-gyűjtemény definíciójának létrehozása előtt.  

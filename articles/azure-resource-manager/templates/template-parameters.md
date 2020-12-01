@@ -1,18 +1,18 @@
 ---
 title: Sablonokban található paraméterek
-description: Ismerteti, hogyan lehet paramétereket definiálni egy Azure Resource Manager sablonban.
+description: Ismerteti, hogyan lehet paramétereket definiálni egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 8cdc95037967a32c2d8464f4dc39b1e7369102bb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ac1aeb579040b35b2a9b4cb90fb5687f91ebd3b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911413"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353510"
 ---
-# <a name="parameters-in-azure-resource-manager-templates"></a>Paraméterek használata az Azure Resource Manager-sablonokban
+# <a name="parameters-in-arm-templates"></a>Paraméterek az ARM-sablonokban
 
-Ez a cikk azt ismerteti, hogyan lehet paramétereket definiálni és használni a Azure Resource Manager-sablonban. A paraméterek eltérő értékeinek megadásával más környezetekhez is felhasználhat sablont.
+Ez a cikk azt ismerteti, hogyan lehet paramétereket definiálni és használni a Azure Resource Manager-sablonban (ARM-sablon). A paraméterek eltérő értékeinek megadásával más környezetekhez is felhasználhat sablont.
 
 A Resource Manager a telepítési műveletek megkezdése előtt oldja fel a paramétereket. Ha a paramétert használja a sablonban, a Resource Manager lecseréli azt a megoldott értékre.
 
@@ -159,9 +159,8 @@ Az alábbi példák a paraméterek használatának forgatókönyveit mutatják b
 |[az alapértelmezett értékek függvényeit tartalmazó paraméterek](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Bemutatja, hogyan használható a Template functions a paraméterek alapértelmezett értékeinek definiálásához. A sablon nem telepít semmilyen erőforrást. Paraméterek értékeit állítja össze, és visszaadja ezeket az értékeket. |
 |[paraméter objektum](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Egy paraméter objektumának használatát mutatja be. A sablon nem telepít semmilyen erőforrást. Paraméterek értékeit állítja össze, és visszaadja ezeket az értékeket. |
 
-
 ## <a name="next-steps"></a>További lépések
 
-* A paraméterek elérhető tulajdonságainak megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md)című témakört.
+* A paraméterek elérhető tulajdonságainak megismeréséhez tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
 * A paraméterek értékeinek fájlként való átadásáról a [Resource Manager-paraméterérték létrehozása](parameter-files.md)című témakörben olvashat bővebben.
 * A paraméterek létrehozásával kapcsolatos javaslatokért lásd: [ajánlott eljárások – paraméterek](template-best-practices.md#parameters).

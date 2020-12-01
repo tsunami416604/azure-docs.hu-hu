@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 89ddbca7a216421aad7240890a697f861d14fd1f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 67284225299641a71050342056ad7ca91bf39740
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026352"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353714"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Text to Speech gyakori kérdések
 
-Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb támogatási lehetőségeket](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext).
+Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb támogatási lehetőségeket](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext).
 
 ## <a name="general"></a>Általános kérdések
 
@@ -61,7 +61,7 @@ További szolgáltatásokat biztosítunk a parancsfájlok rögzítésére való 
 
 **A**: lásd a [Speech Services kvótáit és korlátozásait](speech-services-quotas-and-limits.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hibaelhárítás](troubleshooting.md)
 - [Kibocsátási megjegyzések](releasenotes.md)

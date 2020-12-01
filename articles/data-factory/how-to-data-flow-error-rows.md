@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: 49d11dfe3d42d99c610fae9fa64079a5fd87501f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c8b0ae7058aecc1813d720a3fbb2a1a1f967cf40
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006787"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352601"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>SQL-csonkolt hibák sorainak kezelése Data Factory leképezési adatforgalomban
 
@@ -23,13 +23,13 @@ A leképezési adatfolyamatok használatakor Data Factory gyakori forgatókönyv
 
 Az adatbázis-fogadóba az ADF-adatfolyamatok során két elsődleges módszer található a hibák kezelésére
 
-* Az adatbázis adatainak feldolgozásakor a "Folytatás hiba esetén" beállításnál állítsa be a fogadói [hiba sorainak kezelését](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#error-row-handling) . Ez egy automatizált catch-all metódus, amely nem igényel egyéni logikát az adatfolyamban.
+* Az adatbázis adatainak feldolgozásakor a "Folytatás hiba esetén" beállításnál állítsa be a fogadói [hiba sorainak kezelését](./connector-azure-sql-database.md#error-row-handling) . Ez egy automatizált catch-all metódus, amely nem igényel egyéni logikát az adatfolyamban.
 * Azt is megteheti, hogy az alábbi lépéseket követve olyan oszlopok naplózását adja meg, amelyek nem illeszkednek a cél sztring oszlopba, így az adatfolyam továbbra is folytatódhat.
 
 > [!NOTE]
 > Ha engedélyezi az automatikus hibajelentések kezelését, a saját hibakezelés logikájának írásakor az alábbi módszernek megfelelően a rendszer kis teljesítményű szankciót használ, és az ADF által végrehajtott további lépéseket végrehajtva kétfázisú műveletet hajt végre a hibák alátöltése érdekében.
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Használati példa
 
 1. Egy ```nvarchar(5)``` "Name" nevű oszlopot tartalmazó céladatbázis-táblánk van.
 

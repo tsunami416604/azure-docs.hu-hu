@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: QnA-készítő, alacsony kódú csevegési robotok, több fordulatos beszélgetések
-ms.openlocfilehash: 6a5ea51086e3ab532966c9cea9eb866334494bba
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 9655f64da455fb7a7124a97e6dc2d1d8437d05b7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874424"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353136"
 ---
 # <a name="what-is-qna-maker"></a>Mi a QnA Maker?
 
@@ -22,14 +22,14 @@ A QnA Maker általában olyan társalgási ügyfélalkalmazások készítésére
 
 ## <a name="when-to-use-qna-maker"></a>Mikor kell használni a QnA Maker
 
-* **Ha statikus információval rendelkezik** – használja a QnA Maker, ha a válaszokat a Tudásbázisban statikus információkkal látja el. Ez a Tudásbázis az Ön igényeinek megfelelően egyedi, amelyet dokumentumok, például [PDF-EK és URL-címek](../concepts/content-types.md)használatával készített.
+* **Ha statikus információval rendelkezik** – használja a QnA Maker, ha a válaszokat a Tudásbázisban statikus információkkal látja el. Ez a Tudásbázis az Ön igényeinek megfelelően egyedi, amelyet dokumentumok, például [PDF-EK és URL-címek](../index.yml)használatával készített.
 * **Ha ugyanazt a választ szeretné adni egy kérelemhez, kérdéshez vagy parancshoz** – ha a különböző felhasználók ugyanezt a kérdést nyújtják be, ugyanazt a választ adja vissza.
 * **Ha a metaadatok alapján szeretné szűrni a statikus adatokat** – a [metaadat](../how-to/metadata-generateanswer-usage.md) -Címkék hozzáadása lehetőséggel további szűrési lehetőségeket biztosíthat az ügyfélalkalmazás felhasználóival és az információkkal kapcsolatban. A metaadatok általános információi közé tartozik a [Chit-Chat](../how-to/chit-chat-knowledge-base.md), a tartalom típusa vagy a formátum, a tartalom célja és a tartalom frissessége.
 * **Ha olyan robot-beszélgetést szeretne kezelni, amely statikus adatokat tartalmaz** – a Tudásbázis egy felhasználó beszélgetési szövegét vagy parancsát veszi át, és válaszol rá. Ha a válasz egy előre meghatározott beszélgetési folyamat része, amely a Tudásbázisban a [többfordulatos kontextusban](../how-to/multiturn-conversation.md)szerepel, a robot egyszerűen megadhatja ezt a folyamatot.
 
 ## <a name="what-is-a-knowledge-base"></a>Mi az a Tudásbázis?
 
-QnA Maker [importálja a tartalmat](../concepts/knowledge-base.md) a kérdések és válaszok pár tudásbázisba. Az importálási folyamat kigyűjti a strukturált és a félig strukturált tartalom részei közötti kapcsolat adatait, hogy az a kérdés és a válasz párok közötti kapcsolatokat is magában foglalja. A kérdések és válaszok párokat szerkesztheti, vagy új párokat adhat hozzá.
+QnA Maker [importálja a tartalmat](../index.yml) a kérdések és válaszok pár tudásbázisba. Az importálási folyamat kigyűjti a strukturált és a félig strukturált tartalom részei közötti kapcsolat adatait, hogy az a kérdés és a válasz párok közötti kapcsolatokat is magában foglalja. A kérdések és válaszok párokat szerkesztheti, vagy új párokat adhat hozzá.
 
 A kérdés-válasz pár tartalma a következőket tartalmazza:
 * A kérdés összes alternatív formája
@@ -88,7 +88,7 @@ A legnépszerűbb programozási nyelveken olyan gyors útmutatókat találunk, a
 * [Ismerkedés a QnA Maker REST API-kkal](../quickstarts/quickstart-rest-curl.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 QnA Maker az egyéni Tudásbázis létrehozásához, kezeléséhez és üzembe helyezéséhez szükséges összes információt tartalmazza.
 
 > [!div class="nextstepaction"]

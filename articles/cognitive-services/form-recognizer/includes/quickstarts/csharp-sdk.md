@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 2d8b876f01f110a314734e596055831650a6c08b
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: d7577668d87ecaf2d769136d64990f95fc212fe6
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95870020"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356528"
 ---
 > [!IMPORTANT]
 > Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja.
@@ -189,7 +189,7 @@ Egy adott URL-címen található fájl tartalmának felismeréséhez használja 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
 
 > [!TIP]
-> A tartalmat egy helyi fájlból is lekérheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeContent**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
+> A tartalmat egy helyi fájlból is lekérheti. Tekintse meg a [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeContent**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
 
 A feladat többi része kiírja a tartalmat a konzolra.
 
@@ -239,7 +239,7 @@ A beérkezések URL-címről való felismeréséhez használja a `StartRecognize
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
 > [!TIP]
-> A helyi visszaigazolási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeReceipts**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
+> A helyi visszaigazolási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeReceipts**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
 
 A visszaadott érték objektumok gyűjteménye `RecognizedReceipt` : egyet a beküldött dokumentum minden lapján. A következő kód dolgozza fel a nyugtát a megadott URI-n, és kiírja a fő mezőket és értékeket a konzolra.
 
@@ -302,7 +302,7 @@ Ha egy URL-címről szeretné felismerni a névjegykártyákat, használja a `St
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
 
 > [!TIP]
-> A helyi visszaigazolási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeBusinessCards**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
+> A helyi visszaigazolási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeBusinessCards**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
 
 A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egy a dokumentum minden kártyája esetében. A következő kód feldolgozza a névjegykártyát a megadott URI-n, és kiírja a fő mezőket és értékeket a konzolra.
 
@@ -317,7 +317,7 @@ A számlák URL-címről való felismeréséhez használja a `StartRecognizeInvo
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
 
 > [!TIP]
-> A helyi számlázási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeInvoices**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
+> A helyi számlázási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeInvoices**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
 
 A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egyet a beküldött dokumentum minden egyes számlájához. A következő kód feldolgozza a számlát a megadott URI-n, és kiírja a fő mezőket és értékeket a konzolra.
 
@@ -471,7 +471,7 @@ A `StartRecognizeCustomFormsFromUri` metódust fogja használni.
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze)]
 
 > [!TIP]
-> Elemezheti a helyi fájlokat is. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeCustomForms**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
+> Elemezheti a helyi fájlokat is. Tekintse meg a [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeCustomForms**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
 
 A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egyet a beküldött dokumentum minden lapján. A következő kód kinyomtatja az elemzési eredményeket a-konzolra. Kinyomtatja az egyes felismert mezőket és a hozzá tartozó értékeket, valamint a megbízhatósági pontszámot.
 
@@ -630,7 +630,7 @@ Az AZONOSÍTÓra hivatkozva egy modellt is törölhet a fiókjából. Ez a lép�
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_delete)]
 
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccsal.
 

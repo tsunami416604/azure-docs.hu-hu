@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan csatlakozhat egy Azure Analysis Services-kiszol
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 11/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4658a4c05aac7932d8a99c3511f21024f19fbe47
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c91cfe24aa7a5dd224fd1aed31b6b0dee44e687f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013729"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352813"
 ---
 # <a name="connect-with-excel"></a>Kapcsolódás Excellel
 
@@ -26,16 +26,16 @@ A bejelentkezett fióknak a modell adatbázis-szerepköréhez kell tartoznia leg
 
 Az Excel-kiszolgálókhoz való kapcsolódás az Excel 2016-es és újabb verzióiban az adatlekérdezés használatával támogatott. A Power Pivot nem támogatja a csatlakozást a tábla importálása varázsló használatával. 
 
-1. Az Excelben az **adatok** menüszalagon kattintson a **külső adatok beolvasása**  >  **más forrásokból**lehetőségre  >  **Analysis Services**.
+1. Az Excelben az **adatok** menüszalagon kattintson az **adatok beolvasása** az  >  **adatbázisból** elemre  >  **Analysis Services** lehetőségre.
 
-2. Az Adatkapcsolat varázslóban, a **kiszolgáló neve**mezőben adja meg a kiszolgáló nevét, beleértve a protokollt és az URI-t. Például: asazure://westcentralus.asazure.windows.net/advworks. Ezután a **bejelentkezési hitelesítő adatok**területen jelölje be **a következő Felhasználónév és jelszó használata**jelölőnégyzetet, majd írja be a szervezeti felhasználónevet, például a nancy@adventureworks.com jelszót.
+2. Az Adatkapcsolat varázslóban, a **kiszolgáló neve** mezőben adja meg a kiszolgáló nevét, beleértve a protokollt és az URI-t. Például: asazure://westcentralus.asazure.windows.net/advworks. Ezután a **bejelentkezési hitelesítő adatok** területen jelölje be **a következő Felhasználónév és jelszó használata** jelölőnégyzetet, majd írja be a szervezeti felhasználónevet, például a nancy@adventureworks.com jelszót.
 
     > [!IMPORTANT]
     > Ha Microsoft-fiókkal, élő AZONOSÍTÓval, a Yahoo-val, a Gmailben vagy más felhasználóval jelentkezik be, vagy ha be kell jelentkeznie a többtényezős hitelesítéssel, hagyja üresen a jelszó mezőt. A Tovább gombra kattintás után a rendszer jelszót kér. 
 
     ![Kapcsolódás az Excel-bejelentkezésből](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 
-3. Az **adatbázis és tábla kiválasztása**lapon válassza ki az adatbázist és a modellt vagy perspektívát, majd kattintson a **Befejezés**gombra.
+3. Az **adatbázis és tábla kiválasztása** lapon válassza ki az adatbázist és a modellt vagy perspektívát, majd kattintson a **Befejezés** gombra.
    
     ![Kapcsolat az Excelből Select Model](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Iparági szabványnak megfelelő modellek integrálása
+title: Iparági szabványoknak megfelelő modellek integrálása
 titleSuffix: Azure Digital Twins
 description: Ismerje meg, hogyan integrálhatja az iparági szabványnak megfelelő modelleket az Azure Digital Twins DTDL-ba, akár speciális DTDL ontológiákat vagy meglévő ontológiákat átalakításával
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1866e9b233a1379474c061779ada09fd6d119107
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f5bfe128ddc04e8048bb89a8e39035434dfd2b92
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94338394"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352881"
 ---
 # <a name="integrate-industry-standard-models-with-dtdl-for-azure-digital-twins"></a>Iparági szabványnak megfelelő modellek integrálása az Azure Digital Twins DTDL
 
@@ -21,9 +21,9 @@ Az iparági szabványokon alapuló modellek használata vagy a standard ontológ
 Az Azure Digital Twins szolgáltatással való használathoz a modellnek a JSON-LD-alapú [**digitális Twins Definition Language (DTDL) nyelven**](concepts-models.md)kell szerepelnie. Ebből kifolyólag ez a cikk bemutatja, hogyan jelentheti az iparági szabványnak megfelelő modelleket a DTDL-ben, és integrálhatja a meglévő iparági fogalmakat DTDL szemantikaokkal, hogy az Azure digitális Twins használhassa őket. A DTDL modell ezután az igazság forrásaként szolgál a modellhez az Azure Digital Twins-n belül.
 
 Az iparági szabványnak megfelelő modellek DTDL való integrálásának három lehetséges útja van:
-* **Elfogadás** : megkezdheti a megoldást egy olyan nyílt forráskódú DTDL ontológia használatával, amely széles körben elfogadott iparági szabványokra épül. 
-* **Konvertálás** : Ha már rendelkezik meglévő modellekkel, a DTDL-re kell alakítania azokat.
-* **Szerző** : saját egyéni DTDL-modelljeit bármikor kifejlesztheti a semmiből, ahogyan az [*útmutató: egyéni modellek kezelése*](how-to-manage-model.md)című témakörben leírtak szerint.
+* **Elfogadás**: megkezdheti a megoldást egy olyan nyílt forráskódú DTDL ontológia használatával, amely széles körben elfogadott iparági szabványokra épül. 
+* **Konvertálás**: Ha már rendelkezik meglévő modellekkel, a DTDL-re kell alakítania azokat.
+* **Szerző**: saját egyéni DTDL-modelljeit bármikor kifejlesztheti a semmiből, ahogyan az [*útmutató: egyéni modellek kezelése*](how-to-manage-model.md)című témakörben leírtak szerint.
 
 ## <a name="adopt-an-open-source-dtdl-ontology"></a>Nyílt forráskódú DTDL ontológia bevezetése
 
@@ -35,7 +35,7 @@ Ezek a nyílt forráskódú DTDL-ontológiákat a modellek felhasználására é
 
 ## <a name="convert-existing-models-to-dtdl"></a>Meglévő modellek átalakítása DTDL
 
-A legtöbb iparági modell (más néven **ontológiákat** ) olyan szemantikai webes szabványokon alapul, mint például a [bagoly](https://www.w3.org/OWL/), az [RDF](https://www.w3.org/2001/sw/wiki/RDF)és a [kemence](https://www.w3.org/2001/sw/wiki/RDFS). 
+A legtöbb iparági modell (más néven **ontológiákat**) olyan szemantikai webes szabványokon alapul, mint például a [bagoly](https://www.w3.org/OWL/), az [RDF](https://www.w3.org/2001/sw/wiki/RDF)és a [kemence](https://www.w3.org/2001/sw/wiki/RDFS). 
 
 Az Azure Digital Twins-modell használatához DTDL formátumban kell megadni. Ez a szakasz az RDF-alapú modellek DTDL való átalakítására szolgáló **átalakítási minta** formájában történő általános tervezési útmutatót ismerteti, hogy az Azure Digital Twins használatával is használható legyen. 
 
@@ -111,7 +111,7 @@ Rendelkezésre áll egy minta alkalmazás, amely egy RDF-alapú modellt konvert�
 
 A minta egy **RdfToDtdlConverter** nevű .net Core parancssori alkalmazás.
 
-A mintát itt érheti el: [**RdfToDtdlConverter**](https://docs.microsoft.com/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/). 
+A mintát itt érheti el: [**RdfToDtdlConverter**](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/). 
 
 A kód a gépre való letöltéséhez nyomja le a *zip letöltése* gombot a minta kezdőlapján a cím alatt. Ezzel letölt egy *RdfToDtdlConverter_sample_application_to_convert_RDF_to_DTDL.zip* nevű *zip* -fájlt, amelyet később kibonthat és megvizsgálhat.
 

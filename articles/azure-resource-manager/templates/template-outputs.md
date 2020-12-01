@@ -1,18 +1,18 @@
 ---
 title: Kimenetek a sablonokban
-description: Ismerteti, hogyan lehet kimeneti értékeket definiálni egy Azure Resource Manager sablonban.
+description: Ismerteti, hogyan lehet kimeneti értékeket definiálni egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 8f782a78e523ebc55faac98344643982172476fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911430"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353527"
 ---
-# <a name="outputs-in-azure-resource-manager-template"></a>Kimenetek Azure Resource Manager sablonban
+# <a name="outputs-in-arm-templates"></a>Kimenetek ARM-sablonokban
 
-Ez a cikk bemutatja, hogyan határozhatja meg a kimeneti értékeket a Azure Resource Manager-sablonban. A kimenetek akkor használhatók, ha értékeket kell visszaadnia az üzembe helyezett erőforrásokból.
+Ez a cikk bemutatja, hogyan határozhatja meg a kimeneti értékeket a Azure Resource Manager-sablonban (ARM-sablon). A kimenetek akkor használhatók, ha értékeket kell visszaadnia az üzembe helyezett erőforrásokból.
 
 Az egyes kimeneti értékek formátumának meg kell egyeznie az egyik [adattípussal](template-syntax.md#data-types).
 
@@ -120,4 +120,4 @@ Az alábbi példák a kimenetek használatának forgatókönyveit mutatják be.
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a kimenetek elérhető tulajdonságairól: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md).
+* A kimenetek elérhető tulajdonságainak megismeréséhez tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című témakört.

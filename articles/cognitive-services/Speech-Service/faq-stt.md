@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 7c0b399f84e793d9e762c89dbbd1901bb5a95f26
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 32f6a9dae1a5b0be604b53d814ebc85cb7813b91
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024330"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353765"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
-Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb támogatási lehetőségeket](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext).
+Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb támogatási lehetőségeket](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext).
 
 ## <a name="general"></a>Általános kérdések
 
@@ -71,7 +71,7 @@ Ha kiigazította és telepítette az alapkonfiguráció 1.0-s verziójával rend
 
 **K: a rendszer naplózza a kérelmeket?**
 
-**A**: alapértelmezés szerint a kérelmek nincsenek naplózva (sem hang, sem átírás). Ha szükséges, kiválaszthatja a *naplózási tartalmat ebből a végpontból* beállítást, ha [Egyéni végpontot hoz létre](how-to-custom-speech-deploy-model.md) a nyomkövetés engedélyezéséhez. Ezt követően a rendszer a biztonságos tárolóban naplózza a kérelmeket az Azure-ban.
+**A**: alapértelmezés szerint a kérelmek nincsenek naplózva (sem hang, sem átírás). Ha szükséges, kiválaszthatja a *naplózási tartalmat ebből a végpontból* beállítást, ha [Egyéni végpontot hoz létre](./how-to-custom-speech-train-model.md) a nyomkövetés engedélyezéséhez. Ezt követően a rendszer a biztonságos tárolóban naplózza a kérelmeket az Azure-ban.
 
 **K: a kérelmek szabályozva vannak?**
 
@@ -164,7 +164,7 @@ Válasz **: attól** függ, hogy az alkalmazásban használt szókincs és kifej
 
 A Microsoft 365 beépített beszédfelismerési élmények, például a diktálás és a PowerPoint-feliratok nem változnak, amikor létrehoz egy bérlői modellt a Speech Service-alkalmazásokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hibaelhárítás](troubleshooting.md)
 - [Kibocsátási megjegyzések](releasenotes.md)

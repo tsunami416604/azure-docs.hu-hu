@@ -3,12 +3,12 @@ title: Hálózati elkülönítés Azure DevTest Labs
 description: A Azure DevTest Labs hálózati elkülönítésének megismerése.
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 28bfa048a8a6666deb58a8ecfff38779c91d95b8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149161"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352932"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>Hálózati elkülönítés a DevTest Labs szolgáltatásban
 
@@ -61,11 +61,11 @@ Tekintse át a következő cikkeket is:
 
    > [!div class="mx-imgBorder"]
    > ![Contoso Lab tűzfalak](./media/network-isolation/contoso-lab-firewalls-vnets.png)
-1. Ezután kattintson a **+ meglévő virtuális hálózat hozzáadása**lehetőségre, válassza ki a tesztkörnyezet létrehozásakor kiválasztott virtuális hálózatot és alhálózatot, és kattintson az **Engedélyezés**gombra. 
+1. Ezután kattintson a **+ meglévő virtuális hálózat hozzáadása** lehetőségre, válassza ki a tesztkörnyezet létrehozásakor kiválasztott virtuális hálózatot és alhálózatot, és kattintson az **Engedélyezés** gombra. 
 
    > [!div class="mx-imgBorder"]
    > ![Contoso saját vnet](./media/network-isolation/contoso-lab-my-vnet.png)
-5.  Miután a szolgáltatási végpont sikeresen engedélyezve lett a kiválasztott virtuális hálózatra, kattintson a **Hozzáadás**gombra. 
+5.  Miután a szolgáltatási végpont sikeresen engedélyezve lett a kiválasztott virtuális hálózatra, kattintson a **Hozzáadás** gombra. 
 
    > [!div class="mx-imgBorder"]
    > ![Hozzáadás](./media/network-isolation/contoso-firewall-add.png)
@@ -74,7 +74,7 @@ Ezzel az Azure Storage lehetővé teszi a hozzáadott virtuális hálózat bejö
 
 Ezen beállítások automatizálását is beállíthatja úgy, hogy több laborhoz is konfigurálja ezt a beállítást. 
 
-[További információ az Azure Storage-hoz készült alapértelmezett hálózati hozzáférési szabályok kezeléséről a PowerShell és a parancssori felület használatával](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
+[További információ az Azure Storage-hoz készült alapértelmezett hálózati hozzáférési szabályok kezeléséről a PowerShell és a parancssori felület használatával](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>Megjegyezhető dolgok a hálózat izolált üzemmódjában lévő laborok használatakor
 
@@ -92,6 +92,6 @@ Ha nincs megadva Storage-fiók, a művelet sikertelen lesz a hálózat izolált 
 
 [További információ a tesztkörnyezet használati adatoknak a megadott Storage-fiókban való exportálásáról](personal-data-delete-export.md#azure-powershell)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Labs automatikus létrehozása vagy módosítása Azure Resource Manager-sablonokkal és a PowerShell-lel](devtest-lab-use-arm-and-powershell-for-lab-resources.md)

@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizált adatfeldolgozás, dokumentumok feldolgozása, automatizált adatbevitel, űrlapok feldolgozása
-ms.openlocfilehash: 05024b8d7f4cf76024d71a79cb1fce489d58ee70
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 39243f4428d055ee5d4491c3e87b4b91213f63f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519523"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353680"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -76,7 +76,7 @@ Ha címkével ellátott adatokkal látja el a képzést, a modell felügyeli a t
 
 Az űrlap-felismerő az [elrendezési API](#layout-api) segítségével tanulja meg a nyomtatott és a kézírásos szöveges elemek várt méretét és pozícióit. Ezután a felhasználó által megadott címkéket használja a dokumentumok kulcs/érték társításának megismeréséhez. Azt javasoljuk, hogy az új modell betanítása és a modell pontosságának javítása érdekében használjon öt, azonos típusú manuálisan címkézett űrlapot (azonos struktúrát).
 
-[Ismerkedés a vonattal címkékkel](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+[Ismerkedés a vonattal címkékkel](./quickstarts/label-tool.md)
 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
@@ -160,6 +160,6 @@ A helyszíni API-funkciók üzembe helyezéséhez [használjon űrlap-felismerő
 
 Akárcsak az összes kognitív szolgáltatás esetében, az űrlap-felismerő szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft-szabályzatokat az ügyféladatok alapján. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Töltse ki az [ügyféloldali kódtár](quickstarts/client-library.md) gyors kezdését, hogy megkezdje az űrlapok feldolgozását az űrlap felismerővel az Ön által választott nyelven.

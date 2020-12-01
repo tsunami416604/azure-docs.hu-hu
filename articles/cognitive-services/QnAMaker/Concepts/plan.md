@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 0be2fecfad4d2a2b829266fa1d9574bcc4c50eee
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376677"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353170"
 ---
 # <a name="plan-your-qna-maker-app"></a>A QnA Maker alkalmazás megtervezése
 
@@ -94,13 +94,13 @@ Mostantól különböző nyelveken található tudásbázisok is megadhatók ugy
 
 ### <a name="ingest-data-sources"></a>Adatforrások betöltése
 
-Egy Tudásbázis létrehozásához a következő betöltött [adatforrások](knowledge-base.md) egyikét használhatja:
+Egy Tudásbázis létrehozásához a következő betöltött [adatforrások](../index.yml) egyikét használhatja:
 
 * Nyilvános URL-cím
 * Privát SharePoint URL-címe
 * Fájl
 
-A betöltési folyamat a [támogatott tartalomtípusokat](content-types.md) Markdown alakítja. A válasz további szerkesztése a Markdown- *mel* történik. A Tudásbázis létrehozása után szerkesztheti a [QnA párokat](question-answer-set.md) a QnA Maker-portálon, [Rich Text authoring](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)használatával.
+A betöltési folyamat a [támogatott tartalomtípusokat](../index.yml) Markdown alakítja. A válasz további szerkesztése a Markdown- *mel* történik. A Tudásbázis létrehozása után szerkesztheti a [QnA párokat](question-answer-set.md) a QnA Maker-portálon, [Rich Text authoring](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)használatával.
 
 ### <a name="data-format-considerations"></a>Adatformátumra vonatkozó megfontolások
 
@@ -124,17 +124,17 @@ Meg kell terveznie a beszélgetési folyamatát egy hurkoval, hogy a felhasznál
 
 A közreműködők más fejlesztők is lehetnek, akik megosztják a Tudásbázis-alkalmazás teljes fejlesztői veremét, vagy csak a tudásbázist használják.
 
-A Tudásbázis authoring számos [szerepköralapú hozzáférési engedélyt](../how-to/collaborate-knowledge-base.md) támogat, amelyeket a Azure Portal alkalmaz a közreműködő képességei hatókörének korlátozására.
+A Tudásbázis authoring számos [szerepköralapú hozzáférési engedélyt](../index.yml) támogat, amelyeket a Azure Portal alkalmaz a közreműködő képességei hatókörének korlátozására.
 
 ## <a name="integration-with-client-applications"></a>Integráció az ügyfélalkalmazások alkalmazásával
 
-Az [ügyfélalkalmazások](integration-with-other-applications.md) közötti integráció az előrejelzési futtatókörnyezet végpontjának lekérdezését küldi el. A rendszer egy lekérdezést küld az adott tudásbázisba egy SDK-val vagy REST-alapú kéréssel a QnA Maker webalkalmazás-végpontjának.
+Az [ügyfélalkalmazások](../index.yml) közötti integráció az előrejelzési futtatókörnyezet végpontjának lekérdezését küldi el. A rendszer egy lekérdezést küld az adott tudásbázisba egy SDK-val vagy REST-alapú kéréssel a QnA Maker webalkalmazás-végpontjának.
 
 Az ügyfélalkalmazás megfelelő hitelesítéséhez az ügyfélalkalmazás a megfelelő hitelesítő adatokat és Tudásbázis-azonosítót kell küldenie. Ha Azure Bot Service használ, ezeket a beállításokat a Azure Portal bot-konfigurációjának részeként adja meg.
 
 ### <a name="conversation-flow-in-a-client-application"></a>Beszélgetési folyamat egy ügyfélalkalmazás
 
-A beszélgetési folyamat egy [ügyfélalkalmazás](integration-with-other-applications.md), például egy Azure bot esetében a tudásbázissal való interakció előtt és után is megkövetelheti a funkciót.
+A beszélgetési folyamat egy [ügyfélalkalmazás](../index.yml), például egy Azure bot esetében a tudásbázissal való interakció előtt és után is megkövetelheti a funkciót.
 
 Támogatja az ügyfélalkalmazás a beszélgetési folyamatokat, vagy ha alternatív módszert biztosít a követő kérések kezelésére, vagy akár a Chit-Chitra? Ha igen, tervezze meg ezeket a korai lépéseket, és győződjön meg róla, hogy az ügyfélalkalmazás lekérdezését megfelelően kezeli egy másik szolgáltatás, vagy ha a tudásbázisba érkezik.
 
@@ -152,7 +152,7 @@ A QnA Maker az _aktív tanulással_ fejleszti a tudásbázist, ha alternatív k�
 
 ### <a name="providing-a-default-answer"></a>Alapértelmezett válasz megadása
 
-Ha a Tudásbázis nem talál választ, az _alapértelmezett választ_ adja vissza. Ez a válasz konfigurálható a QnA Maker portál **Beállítások** lapján vagy az [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)-kon.
+Ha a Tudásbázis nem talál választ, az _alapértelmezett választ_ adja vissza. Ez a válasz konfigurálható a QnA Maker portál **Beállítások** lapján vagy az [API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)-kon.
 
 Ez az alapértelmezett válasz eltér az Azure bot alapértelmezett válaszával. Az Azure bot alapértelmezett válaszát a Azure Portal a konfigurációs beállítások részeként konfigurálhatja. Ha a pontszám küszöbértéke nem teljesül, a függvény visszaadja.
 
@@ -197,7 +197,7 @@ A Tudásbázis összes lekérdezését Application Insights tárolja. A mérősz
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
 
-A felügyelt központi telepítésben a telemetria a [Azure monitor szolgáltatáson](https://docs.microsoft.com/azure/azure-monitor/)keresztül érhető el. A mérőszámok megismeréséhez használja a [legfontosabb lekérdezéseket](../how-to/get-analytics-knowledge-base.md) .
+A felügyelt központi telepítésben a telemetria a [Azure monitor szolgáltatáson](../../../azure-monitor/index.yml)keresztül érhető el. A mérőszámok megismeréséhez használja a [legfontosabb lekérdezéseket](../how-to/get-analytics-knowledge-base.md) .
 
 
 ---
@@ -217,13 +217,13 @@ Minden pár tartalmazhatja a következőket:
 
 ### <a name="devops-development"></a>DevOps-fejlesztés
 
-A DevOps-folyamatba beszúrandó Tudásbázis létrehozásához a tudásbázist a [Batch-tesztelés](../quickstarts/batch-testing.md)során el kell különíteni.
+A DevOps-folyamatba beszúrandó Tudásbázis létrehozásához a tudásbázist a [Batch-tesztelés](../index.yml)során el kell különíteni.
 
 A Tudásbázis megosztja a Cognitive Search indexet az QnA Maker erőforrás minden más tudásbázisával. Amíg a Tudásbázis el van különítve a partícióval, az index megosztása a közzétett tudásbázishoz képest különbséget eredményezhet a pontszámban.
 
 Ahhoz, hogy _ugyanaz a pontszám_ legyen a `test` és a `production` Tudásbázisban, el kell különíteni egy QnA Maker erőforrást egyetlen tudásbázisba. Ebben az architektúrában az erőforrásnak csak az elkülönített batch-teszt után kell élnie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure-erőforrások](../how-to/set-up-qnamaker-service-azure.md)
 * [Kérdés-válasz párok](question-answer-set.md)

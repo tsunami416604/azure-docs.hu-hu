@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 5185e7d0bd60eec239f1233db7f9789cbefc2c10
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83917214705546b21553e997ccab11a7511f77fd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006166"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353306"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
@@ -81,7 +81,7 @@ A QnA Maker felügyeleti SKU frissítése:
 
  Ha a Tudásbázisnak több kérést kell kiszolgálnia az ügyfélalkalmazás számára, frissítse a App Service díjszabási szintjét.
 
-A App Service vertikális [fel](https://docs.microsoft.com/azure/app-service/manage-scale-up) -vagy felskálázása.
+A App Service vertikális [fel](../../../app-service/manage-scale-up.md) -vagy felskálázása.
 
 Nyissa **meg a Azure Portal** app Service erőforrását, és szükség szerint válassza ki a vertikális felskálázás vagy a **kibővítés** lehetőséget.
 
@@ -154,13 +154,13 @@ Az üzletmenet-folytonossági terv elsődleges célja, hogy egy rugalmas Tudásb
 
 A fentiekben képviselt magas szintű ötlet a következő:
 
-1. Két párhuzamos QnA Maker- [szolgáltatás](set-up-qnamaker-service-azure.md) beállítása az [Azure párosított régiókban](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+1. Két párhuzamos QnA Maker- [szolgáltatás](set-up-qnamaker-service-azure.md) beállítása az [Azure párosított régiókban](../../../best-practices-availability-paired-regions.md).
 
 1. [Készítsen biztonsági másolatot](../../../app-service/manage-backup.md) az elsődleges QnA Maker app Service-ről, és [állítsa vissza](../../../app-service/web-sites-restore.md) a másodlagos telepítésben. Ez biztosítja, hogy mindkét beállítás ugyanazzal az állomásnévvel és kulcsokkal működjön.
 
 1. Tartsa szinkronban az elsődleges és a másodlagos Azure Search-indexeket. A GitHub [-minta használatával](https://github.com/pchoudhari/QnAMakerBackupRestore) megtekintheti, hogyan állíthatja vissza az Azure indexeket.
 
-1. A Application Insights biztonsági mentése [folyamatos exportálással](../../../application-insights/app-insights-export-telemetry.md).
+1. A Application Insights biztonsági mentése [folyamatos exportálással](../../../azure-monitor/app/export-telemetry.md).
 
 1. Az elsődleges és másodlagos csomagok beállítása után a [Traffic Manager](../../../traffic-manager/traffic-manager-overview.md) segítségével konfigurálja a két végpontot, és állítson be útválasztási módszert.
 
@@ -386,4 +386,4 @@ Ha törli a QnA Maker tudásbázishoz használt Azure-erőforrásokat, a tudásb
 További információ az [app Service](../../../app-service/index.yml) és a [Search szolgáltatásról](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
-> [További információ a másokkal való létrehozásról](../how-to/collaborate-knowledge-base.md)
+> [További információ a másokkal való létrehozásról](../index.yml)

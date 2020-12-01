@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: ac41fb5ed6fd1e46719fcc39ccaf5b29375e7410
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b6a8f192cd26639431cc9fcb6b43e1bc5e8e2843
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359901"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353629"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Oktatóanyag: a meta Networks-összekötő konfigurálása automatikus felhasználók kiépítéséhez
 
@@ -80,7 +80,7 @@ A felhasználók automatikus kiépítésének konfigurálása és engedélyezés
 
     ![Meta Networks-összekötő identitásszolgáltató ikonja](media/meta-networks-connector-provisioning-tutorial/icon.png)
 
-8.  A **scim konfigurálása** területen válassza ki az előző lépésekben létrehozott API-kulcsot. Kattintson a **Save (Mentés** ) gombra.
+8.  A **scim konfigurálása** területen válassza ki az előző lépésekben létrehozott API-kulcsot. Kattintson a **Save (Mentés**) gombra.
 
     ![Meta Networks Connector – SCIM konfigurálása](media/meta-networks-connector-provisioning-tutorial/configure.png)
 
@@ -179,7 +179,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

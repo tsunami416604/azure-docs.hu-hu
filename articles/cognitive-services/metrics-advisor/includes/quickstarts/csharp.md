@@ -9,14 +9,14 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: 124a1339b1ff685016b820e51417a9f1e0acb40f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: c0f2c9a6a9b17ce1979143840b0647e9af2183e7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94523672"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356392"
 ---
-[Dokumentáció](https://aka.ms/azsdk/net/docs/ref/metricsadvisor)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.MetricsAdvisor)  |  [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/samples/README.md)
+[Dokumentáció](/dotnet/api/overview/azure/ai.metricsadvisor-readme-pre)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.MetricsAdvisor)  |  [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/samples/README.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -96,7 +96,7 @@ A következő osztályok a metrikák Advisor C# SDK főbb funkcióit kezelik.
 
 |Név|Leírás|
 |---|---|
-| [MetricsAdvisorClient](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/MetricsAdvisorClient.cs) | **A következőhöz használatos** : <br> -Incidensek listázása <br> -Az incidensek kiváltó okának listázása <br> – A szolgáltatás által dúsított eredeti idősoros adatok és idősoros adatok beolvasása. <br> – Riasztások listázása <br> – Visszajelzés hozzáadása a modell finomhangolásához |
+| [MetricsAdvisorClient](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/MetricsAdvisorClient.cs) | **A következőhöz használatos**: <br> -Incidensek listázása <br> -Az incidensek kiváltó okának listázása <br> – A szolgáltatás által dúsított eredeti idősoros adatok és idősoros adatok beolvasása. <br> – Riasztások listázása <br> – Visszajelzés hozzáadása a modell finomhangolásához |
 | [MetricsAdvisorAdministrationClient](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/MetricsAdvisorAdministrationClient.cs)| **A következőket teszi lehetővé:** <br> – Adatcsatornák kezelése <br> -Anomáliák észlelési konfigurációinak konfigurálása <br> -Anomáliák riasztási konfigurációinak konfigurálása <br> – Hookok kezelése  |
 | [DataFeed](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/Models/DataFeed/DataFeed.cs)| **A metrikák tanácsadója az adatforrásból származik. A a `DataFeed` következőket tartalmazza:** <br> – Időbélyeg <br> – Nulla vagy több dimenzió <br> -Egy vagy több mérték  |
 | [DataFeedMetric](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/Models/DataFeed/DataFeedMetric.cs)| A egy `DataFeedMetric` számszerűsíthető mérték, amely egy adott üzleti folyamat állapotának figyelésére és értékelésére szolgál. Több idősorozat-érték kombinációját is kioszthatja dimenzióra. A webes állapot mérőszáma például a felhasználók számának és az en-us piacnak a dimenzióit is tartalmazhatja. |
@@ -118,9 +118,9 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 Az alkalmazás `Program` osztályában hozzon létre változókat az erőforrás kulcsainak és végpontjának megfelelően.
 
 > [!IMPORTANT]
-> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott metrikai Advisor-erőforrást sikeresen telepítette, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. Az előfizetési kulcsokat és végpontokat az erőforrás- **kezelés** területen találja az erőforrás **kulcs és végpont** lapján. <br><br>Az API-kulcs lekéréséhez nyissa meg a következőt: [https://metricsadvisor.azurewebsites.net](https://metricsadvisor.azurewebsites.net) . Válassza ki a megfelelőt: **címtár** , **előfizetések** és **munkaterület** az erőforráshoz, majd válassza az első **lépések** lehetőséget. Ezután lekérheti az API-kulcsokat a alkalmazásból [https://metricsadvisor.azurewebsites.net/api-key](https://metricsadvisor.azurewebsites.net/api-key) .   
+> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott metrikai Advisor-erőforrást sikeresen telepítette, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. Az előfizetési kulcsokat és végpontokat az erőforrás- **kezelés** területen találja az erőforrás **kulcs és végpont** lapján. <br><br>Az API-kulcs lekéréséhez nyissa meg a következőt: [https://metricsadvisor.azurewebsites.net](https://metricsadvisor.azurewebsites.net) . Válassza ki a megfelelőt: **címtár**, **előfizetések** és **munkaterület** az erőforráshoz, majd válassza az első **lépések** lehetőséget. Ezután lekérheti az API-kulcsokat a alkalmazásból [https://metricsadvisor.azurewebsites.net/api-key](https://metricsadvisor.azurewebsites.net/api-key) .   
 >
-> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) cikkben talál.
+> Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan. Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. További információt a Cognitive Services [biztonsági](../../../cognitive-services-security.md) cikkben talál.
 
 Ha rendelkezik az előfizetéssel és az API-kulcsokkal, hozzon létre egy MetricsAdvisorKeyCredential. A végpont és a kulcs hitelesítő adataival a következőket hozhatja létre [`MetricsAdvisorClient`](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src/MetricsAdvisorClient.cs) :
 
@@ -386,7 +386,7 @@ await foreach (DataPointAnomaly anomaly in client.GetAnomaliesAsync(alertConfigu
 ```
 
 
-### <a name="run-the-application"></a>Alkalmazás futtatása
+### <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccsal.
 

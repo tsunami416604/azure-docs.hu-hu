@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b836038aa2f8f60e25c51d1d5674d22497b3ce44
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6b767a2cf4739a0b36b9f5c5c960e3e3ead58262
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "96018960"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353085"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
@@ -94,7 +94,7 @@ Ha olyan végpontot szeretne létrehozni, amelyen engedélyezve van a kézbesít
 
 A kézbesítetlen levelek helyének beállítása előtt egy tárolóval rendelkező Storage-fiókkal kell rendelkeznie. Adja meg a tároló URL-címét a végpont létrehozásakor. A kézbesítetlen levél egy SAS-tokent tároló URL-ként van megadva. A jogkivonat csak a `write` Storage-fiókban lévő cél tárolóra vonatkozó engedélyre van szüksége. A teljesen formázott URL-cím a (z) formátumban jelenik meg: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-További információ az SAS-tokenekről: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](/azure/storage/common/storage-sas-overview)
+További információ az SAS-tokenekről: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../storage/common/storage-sas-overview.md)
 
 A kézbesítetlen levelekről további információt a [*fogalmak: események útvonalai*](concepts-route-events.md#dead-letter-events)című témakörben talál.
 

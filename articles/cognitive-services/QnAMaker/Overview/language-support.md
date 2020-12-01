@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: dc910c01c401468a3dae392a6318344bee25efb7
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375640"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353119"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker erőforrások és tudásbázisok nyelvi támogatása
 
@@ -48,7 +48,7 @@ A következőket ajánljuk figyelmébe:
 # <a name="qnamaker-managed-preview"></a>[QnAMaker által felügyelt (előzetes verzió)](#tab/v2)
 ![QnA Maker felügyelt nyelvi beállítás](../media/language-support/language-setting-managed.png)
 
-Ha **nem jelöli be a nyelvi beállítás engedélyezése a Tudásbázisban jelölőnégyzetet** , vegye figyelembe a következőket: 
+Ha **nem jelöli be a nyelvi beállítás engedélyezése a Tudásbázisban jelölőnégyzetet**, vegye figyelembe a következőket: 
 * A QnA Maker szolgáltatás és az összes tudásbázisa csak egy nyelvet támogat.
 * A nyelv explicit módon be van állítva a szolgáltatás első tudásbázisának létrehozásakor
 * A nyelv meghatározása a Tudásbázis létrehozásakor hozzáadott fájlokból és URL-címekből történik
@@ -140,7 +140,7 @@ A következő lista a QnA Maker erőforrás által támogatott nyelveket tartalm
 |Vietnámi|
 
 ## <a name="query-matching-and-relevance"></a>Lekérdezés megfeleltetése és relevanciája
-A QnA Maker az [Azure Cognitive Search Language Analyzers](https://docs.microsoft.com/rest/api/searchservice/language-support) szolgáltatástól függ az eredmények biztosításához.
+A QnA Maker az [Azure Cognitive Search Language Analyzers](/rest/api/searchservice/language-support) szolgáltatástól függ az eredmények biztosításához.
 
 Habár az Azure Cognitive Search képességei támogatott nyelveken is elérhetők, QnA Maker rendelkezik egy további, az Azure keresési eredményein felül található rangsorsal. Ebben a Ranger-modellben néhány speciális szemantikai és Word-alapú funkciót használunk a következő nyelveken.
 
@@ -163,7 +163,7 @@ Habár az Azure Cognitive Search képességei támogatott nyelveken is elérhet�
 
 Ez a további rangsorolás a QnA Maker rangsorának belső működése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Nyelv kiválasztása](../how-to/language-knowledge-base.md)
+> [Nyelv kiválasztása](../index.yml)

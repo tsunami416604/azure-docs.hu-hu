@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 8e9739b705848edd721c9ebe0d36c25dd5b8d80c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 39b3104f9d6cbc004383bf2c50d07c4dd345fa3c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517780"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353591"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Oktatóanyag: Azure Active Directory integráció a UserVoice
 
@@ -61,13 +61,13 @@ A UserVoice Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **UserVoice**kifejezést, válassza a **UserVoice** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **UserVoice** kifejezést, válassza a **UserVoice** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![UserVoice az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az UserVoice-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az UserVoice-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a UserVoice kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés UserVoice való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés UserVoice való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **UserVoice** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **UserVoice** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -130,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés UserVoice való konfigurálásához hajtsa v
 
 1. Egy másik böngészőablakban jelentkezzen be a UserVoice vállalati webhelyre rendszergazdaként.
 
-2. A felső eszköztáron kattintson a **Beállítások**elemre, majd válassza a menü **webes portál** menüpontját.
+2. A felső eszköztáron kattintson a **Beállítások** elemre, majd válassza a menü **webes portál** menüpontját.
    
     ![Beállítások szakasz az alkalmazás oldalán](./media/uservoice-tutorial/ic777519.png "Beállítások")
 
@@ -146,17 +146,17 @@ Az Azure AD egyszeri bejelentkezés UserVoice való konfigurálásához hajtsa v
  
     b. Illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt az **egyszeri bejelentkezéses távoli bejelentkezési** szövegmezőbe.
 
-    c. Illessze be a **kijelentkezési URL-címet** , amelyet a Azure Portal az **egyszeri bejelentkezéses távoli Sign-Out szövegmezőbe**másolt.
+    c. Illessze be a **kijelentkezési URL-címet** , amelyet a Azure Portal az **egyszeri bejelentkezéses távoli Sign-Out szövegmezőbe** másolt.
  
     d. Illessze be a Azure Portalba másolt **ujjlenyomat** -értéket az **aktuális tanúsítvány SHA1 ujjlenyomat** szövegmezőbe.
     
-    e. Kattintson a **hitelesítési beállítások mentése**lehetőségre.
+    e. Kattintson a **hitelesítési beállítások mentése** lehetőségre.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -174,21 +174,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a UserVoice hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **UserVoice**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **UserVoice** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **UserVoice**lehetőséget.
+2. Az alkalmazások listában válassza a **UserVoice** lehetőséget.
 
     ![Az UserVoice hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -214,13 +214,13 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Us
    
     ![Beállítások](./media/uservoice-tutorial/ic777811.png "Beállítások")
 
-3. Kattintson az **általános**elemre.
+3. Kattintson az **általános** elemre.
 
-4. Kattintson **az ügynökök és engedélyek**elemre.
+4. Kattintson **az ügynökök és engedélyek** elemre.
    
     ![Ügynökök és engedélyek](./media/uservoice-tutorial/ic777812.png "Ügynökök és engedélyek")
 
-5. Kattintson a **rendszergazdák hozzáadása**lehetőségre.
+5. Kattintson a **rendszergazdák hozzáadása** lehetőségre.
    
     ![Rendszergazdák hozzáadása](./media/uservoice-tutorial/ic777813.png "Rendszergazdák hozzáadása")
 
@@ -228,9 +228,9 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Us
    
     ![Rendszergazdák meghívása](./media/uservoice-tutorial/ic777814.png "Rendszergazdák meghívása")
    
-    a. Az e-mailek szövegmezőbe írja be a létrehozni kívánt fiók e-mail-címét, majd kattintson a **Hozzáadás**gombra.
+    a. Az e-mailek szövegmezőbe írja be a létrehozni kívánt fiók e-mail-címét, majd kattintson a **Hozzáadás** gombra.
    
-    b. Kattintson a **meghívás**gombra.
+    b. Kattintson a **meghívás** gombra.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a UserVoice által biztosított UserVoice felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.

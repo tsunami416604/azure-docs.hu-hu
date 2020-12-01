@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 6dbe97d615753f0a90c8ba80aa7afa6dafa15eb2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7f8fb0488c863868b1076ad5b3fa7868d1880a6b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658468"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353782"
 ---
 # <a name="what-is-custom-speech"></a>Mi az a Custom Speech?
 
@@ -31,7 +31,7 @@ Ez a diagram kiemeli a [Custom Speech portált](https://aka.ms/customspeech)alko
 
 1. [Előfizetés és projekt létrehozása](#set-up-your-azure-account) – hozzon létre egy Azure-fiókot, és fizessen elő a beszédfelismerési szolgáltatásra. Ez az egyesített előfizetés hozzáférést biztosít a beszéd-szöveg, a szöveg és a beszéd fordításához, valamint a [Custom Speech portálhoz](https://speech.microsoft.com/customspeech). Ezután használja a Speech Service-előfizetését, és hozza létre első Custom Speech projektjét.
 
-1. [Töltse fel a tesztelési](how-to-custom-speech-test-data.md) adatok feltöltésének tesztelési adatait (hangfájlok), hogy kiértékelje a Microsoft beszéd-szöveges ajánlatát az alkalmazásaihoz, eszközeihez és termékeihez.
+1. [Töltse fel a tesztelési](./how-to-custom-speech-test-and-train.md) adatok feltöltésének tesztelési adatait (hangfájlok), hogy kiértékelje a Microsoft beszéd-szöveges ajánlatát az alkalmazásaihoz, eszközeihez és termékeihez.
 
 1. A [felismerés minőségének vizsgálata](how-to-custom-speech-inspect-data.md) – a [Custom Speech-portálon](https://speech.microsoft.com/customspeech) visszajátszhatja a feltöltött hangfelvételeket, és megvizsgálhatja a tesztelési adatok beszédfelismerési minőségét. A mennyiségi mérések esetében lásd: [az adatvizsgálat](how-to-custom-speech-inspect-data.md).
 
@@ -99,9 +99,9 @@ A lejárati dátumokat a JSON- [`GetModel`](https://westus.dev.cognitive.microso
 
 Vegye figyelembe, hogy az egyéni beszédfelismerési végponton anélkül frissítheti a modellt, hogy az egyéni beszédfelismerési portál üzembe helyezés szakaszában vagy a Custom Speech API-n keresztül megváltoztatja a végpont által használt modellt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
+* [Az adatfeldolgozás előkészítése és tesztelése](./how-to-custom-speech-test-and-train.md)
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
 * [Modell pontosságának kiértékelése és javítása](how-to-custom-speech-evaluate-data.md)
 * [Modell betanítása és üzembe helyezése](how-to-custom-speech-train-model.md)

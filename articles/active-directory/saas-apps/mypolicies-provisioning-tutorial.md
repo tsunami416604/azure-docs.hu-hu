@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 55f7b64c9ade91bb2923161d60568e3ea14ee034
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 221f63ab9a7eb3f71a4c730a11565dda64c9edc9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353482"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353584"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés myPolicies konfigurálása
 
@@ -155,14 +155,14 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 ## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-* a myPolicies mindig **felhasználónevet** , **e-mail-címet** és **externalId** kell megadni.
+* a myPolicies mindig **felhasználónevet**, **e-mail-címet** és **externalId** kell megadni.
 * a myPolicies nem támogatja a felhasználói attribútumok rögzített törlését.
 
 ## <a name="change-log"></a>Változási napló
 
 * 09/15/2020 – az "ország" attribútum támogatása a felhasználók számára.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

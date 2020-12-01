@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: e00fd3d1dac0a18ac7f7377e08ae8d20ae132c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0d78d52ec13c91b82e6a8d10720269076f59a1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652617"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353544"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions-eseményindítók és -kötések – fogalmak
 
@@ -18,7 +18,7 @@ Ebből a cikkből megtudhatja, hogy milyen magas szintű fogalmakat indít a fun
 
 Az eseményindítók a függvény futtatását okozzák. Egy eseményindító határozza meg a függvény meghívásának módját, és a függvénynek pontosan egy eseményindítóval kell rendelkeznie. A triggerekhez társított adatok tartoznak, amelyek gyakran a függvény hasznos adataiként vannak megadva. 
 
-A függvények kötése egy másik erőforrás a függvényhez való deklaratív csatlakoztatásának módja. a kötések *bemeneti Kötésként*, *kimeneti Kötésként*vagy mindkettőként is csatlakoztathatók. A kötések adatai a függvények számára paraméterekként vannak megadva.
+A függvények kötése egy másik erőforrás a függvényhez való deklaratív csatlakoztatásának módja. a kötések *bemeneti Kötésként*, *kimeneti Kötésként* vagy mindkettőként is csatlakoztathatók. A kötések adatai a függvények számára paraméterekként vannak megadva.
 
 A különböző kötéseket igény szerint kombinálhatja. A kötések opcionálisak, és egy függvény egy vagy több bemeneti, illetve kimeneti kötéssel is rendelkezhet.
 
@@ -89,6 +89,10 @@ A következő táblázat példákat mutat be bizonyos kötési típusokra, amely
 
 [!INCLUDE [functions-bindings-code-example-chooser](../../includes/functions-bindings-code-example-chooser.md)]
 
+## <a name="custom-bindings"></a>Egyéni kötések
+
+Létrehozhat egyéni bemeneti és kimeneti kötéseket is. A kötéseket a .NET-ben kell létrehozni, de bármilyen támogatott nyelvről felhasználhatók. Az egyéni kötések létrehozásával kapcsolatos további információkért lásd: [Egyéni bemeneti és kimeneti kötések létrehozása](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
+
 ## <a name="resources"></a>További források
 - [Kötési kifejezések és minták](./functions-bindings-expressions-patterns.md)
 - [Az Azure Function Return értékének használata](./functions-bindings-return-value.md)
@@ -98,6 +102,6 @@ A következő táblázat példákat mutat be bizonyos kötési típusokra, amely
   - [Nem HTTP által aktivált függvény manuális futtatása](functions-manually-run-non-http.md)
 - [Kötési hibák feldolgozása](./functions-bindings-errors.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Azure Functions kötési bővítmények regisztrálása](./functions-bindings-register.md)

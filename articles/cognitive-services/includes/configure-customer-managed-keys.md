@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 17dff6056564b421f0741f55ce8171f3251c94c9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c79846b0a5b675c34e4e7919e9ecd9d591bfefe5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026635"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356358"
 ---
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Felhasználó által kezelt kulcsok az Azure Key Vaulttal
 
@@ -38,8 +38,8 @@ Az ügyfél által felügyelt kulcsok használata megköveteli, hogy a Key vault
 
 Ha meg szeretné tudni, hogyan engedélyezheti ezeket a tulajdonságokat egy meglévő kulcstartón, tekintse meg a következő cikkek egyikében, a **Soft-delete engedélyezése** és a **kiürítési védelem engedélyezése** című szakaszt:
 
-- [A Soft-delete használata a PowerShell-](../../key-vault/general/soft-delete-powershell.md)lel.
-- [A Soft delete használata a parancssori](../../key-vault/general/soft-delete-cli.md)felülettel.
+- [A Soft-delete használata a PowerShell-](../../key-vault/general/key-vault-recovery.md)lel.
+- [A Soft delete használata a parancssori](../../key-vault/general/key-vault-recovery.md)felülettel.
 
 Az Azure Storage-titkosítás csak a 2048 méretű RSA-kulcsokat támogatja. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/general/about-keys-secrets-certificates.md) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
 

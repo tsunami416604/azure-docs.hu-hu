@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 534916d81cfb4d3ad1e96d2934f43221067fb94f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 12b49bf81328cc405337b682241aef2cd965c3de
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95868875"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356545"
 ---
 > [!IMPORTANT]
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Tekintse meg az alábbi dokumentációt. 
@@ -138,7 +138,7 @@ Egy adott URL-címen található fájl tartalmának felismeréséhez használja 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
 > [!TIP]
-> A helyi rendszerképekből is kérhet tartalmat. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_content` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
+> A helyi rendszerképekből is kérhet tartalmat. Tekintse meg a [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_content` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
 
 ### <a name="output"></a>Kimenet
 
@@ -170,7 +170,7 @@ Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az Egyesült államo
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
 > [!TIP]
-> A helyi visszaigazolási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_receipts` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
+> A helyi visszaigazolási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_receipts` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
 
 ### <a name="output"></a>Kimenet
 
@@ -205,7 +205,7 @@ Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az angol üzleti ká
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
 
 > [!TIP]
-> A helyi névjegykártya-lemezképeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_business_cards` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
+> A helyi névjegykártya-lemezképeket is felismerheti. Tekintse meg a [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_business_cards` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
 
 ## <a name="recognize-invoices"></a>Számlák felismerése
 
@@ -214,7 +214,7 @@ Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az értékesítési 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> A helyi számlázási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_invoices` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
+> A helyi számlázási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_invoices` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
 
 ---
 
@@ -324,7 +324,7 @@ A `begin_recognize_custom_forms_from_url` metódust fogja használni. A visszaad
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_analyze)]
 
 > [!TIP]
-> A helyi lemezképeket is elemezheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_custom_forms` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
+> A helyi lemezképeket is elemezheti. Tekintse meg a [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_custom_forms` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
 
 
 ### <a name="output"></a>Kimenet
@@ -412,7 +412,7 @@ Az AZONOSÍTÓra hivatkozva egy modellt is törölhet a fiókjából. Ez a kód 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_delete)]
 
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban található paranccsal.
 
@@ -429,7 +429,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 Az űrlap-felismerő ügyféloldali kódtára az [Azure Core](https://aka.ms/azsdk-python-azure-core)-ban definiált kivételeket fogja növelni.
 

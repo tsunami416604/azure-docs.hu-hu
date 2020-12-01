@@ -4,12 +4,12 @@ ms.service: static-web-apps
 ms.topic: include
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 6923356ff30f2abd32e9a100ceeb1e61a158ebb1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 06a54456a076ae425866c1fa502bd97c505e41c6
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027483"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356443"
 ---
 ## <a name="create-a-repository"></a>Adattár létrehozása
 
@@ -17,8 +17,8 @@ Ez a cikk egy GitHub-sablon tárházát használja, amely megkönnyíti az első
 
 # <a name="no-framework"></a>[Nincs keretrendszer](#tab/vanilla-javascript)
 
-1. Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat:
-    1. https://github.com/staticwebdev/vanilla-basic/generate – Ha a hivatkozás nem működik, [Jelentkezzen be a githubba](https://github.com/login?return_to=%2Fstaticwebdev%2Fvanilla-basic%2Fgenerate) , és próbálkozzon újra
+1. Új tárház létrehozásához navigáljon a következő helyre:
+    1. [https://github.com/staticwebdev/vanilla-basic/generate](https://github.com/login?return_to=/staticwebdev/vanilla-basic/generate)
 1. Nevezze el az adattárat **az első-statikus-Web-App**
 
 > [!NOTE]
@@ -26,20 +26,20 @@ Ez a cikk egy GitHub-sablon tárházát használja, amely megkönnyíti az első
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-1. Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat:
-    1. https://github.com/staticwebdev/angular-basic/generate – Ha a hivatkozás nem működik, [Jelentkezzen be a githubba](https://github.com/login?return_to=%2Fstaticwebdev%2Fangular-basic%2Fgenerate) , és próbálkozzon újra
+1. Új tárház létrehozásához navigáljon a következő helyre:
+    1. [https://github.com/staticwebdev/angular-basic/generate](https://github.com/login?return_to=%2Fstaticwebdev%2Fangular-basic%2Fgenerate)
 1. Nevezze el az adattárat **az első-statikus-Web-App**
 
 # <a name="react"></a>[React](#tab/react)
 
-1. Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat:
-    1. https://github.com/staticwebdev/react-basic/generate – Ha a hivatkozás nem működik, [Jelentkezzen be a githubba](https://github.com/login?return_to=%2Fstaticwebdev%2Freact-basic%2Fgenerate) , és próbálkozzon újra
+1. Új tárház létrehozásához navigáljon a következő helyre:
+    1. [https://github.com/staticwebdev/react-basic/generate](https://github.com/login?return_to=%2Fstaticwebdev%2Freact-basic%2Fgenerate)
 1. Nevezze el az adattárat **az első-statikus-Web-App**
 
 # <a name="vue"></a>[Vue](#tab/vue)
 
-1. Győződjön meg arról, hogy be van jelentkezve a GitHubba, és a következő helyre navigálva hozzon létre egy új tárházat:
-    1. https://github.com/staticwebdev/vue-basic/generate – Ha a hivatkozás nem működik, [Jelentkezzen be a githubba](https://github.com/login?return_to=%2Fstaticwebdev%2Fvue-basic%2Fgenerate) , és próbálkozzon újra
+1. Új tárház létrehozásához navigáljon a következő helyre:
+    1. [https://github.com/staticwebdev/vue-basic/generate](https://github.com/login?return_to=%2Fstaticwebdev%2Fvue-basic%2Fgenerate)
 1. Nevezze el az adattárat **az első-statikus-Web-App**
 
 ---

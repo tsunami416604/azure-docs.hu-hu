@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: 9176205b93519f0afac0c57f5da8593df6673c0f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c78e15a0656abd510bbc241d39ffd026afddfd96
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356620"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353663"
 ---
 # <a name="getting-started-with-sql-queries"></a>Bevezetés az SQL-lekérdezések használatába
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,16 +34,16 @@ A legtöbb nagy mennyiségű olvasási terhelés Azure Cosmos DB a pontok és az
 
 Íme néhány példa arra, hogyan végezheti el az **SQL-lekérdezéseket** az egyes SDK-kal:
 
-- [.NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-dotnet-v3sdk-samples#query-examples)
-- [Java SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-java-sdk-samples#query-examples)
-- [Node.js SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-nodejs-samples#item-examples)
-- [Python SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-python-samples#item-examples)
+- [.NET SDK](./sql-api-dotnet-v3sdk-samples.md#query-examples)
+- [Java SDK](./sql-api-java-sdk-samples.md#query-examples)
+- [Node.js SDK](./sql-api-nodejs-samples.md#item-examples)
+- [Python SDK](./sql-api-python-samples.md#item-examples)
 
 A dokumentum hátralévő része azt mutatja be, hogyan kezdheti el az SQL-lekérdezések írását a Azure Cosmos DBban. Az SQL-lekérdezések az SDK-n vagy a Azure Portalon is futtathatók.
 
 ## <a name="upload-sample-data"></a>Mintaadatok feltöltése
 
-Az SQL API-Cosmos DB fiókjában nyissa meg a [adatkezelő](https://docs.microsoft.com/azure/cosmos-db/data-explorer) egy nevű tároló létrehozásához `Families` . A létrehozást követően az adatstruktúrák böngésző használatával megkeresheti és megnyithatja. A `Families` tárolóban megjelenik a `Items` tároló neve alatti jobb oldali lehetőség. Nyissa meg ezt a beállítást, és egy gomb jelenik meg a képernyő középső menüsorában egy új elem létrehozásához. Ezt a funkciót fogja használni az alábbi JSON-elemek létrehozásához.
+Az SQL API-Cosmos DB fiókjában nyissa meg a [adatkezelő](./data-explorer.md) egy nevű tároló létrehozásához `Families` . A létrehozást követően az adatstruktúrák böngésző használatával megkeresheti és megnyithatja. A `Families` tárolóban megjelenik a `Items` tároló neve alatti jobb oldali lehetőség. Nyissa meg ezt a beállítást, és egy gomb jelenik meg a képernyő középső menüsorában egy új elem létrehozásához. Ezt a funkciót fogja használni az alábbi JSON-elemek létrehozásához.
 
 ### <a name="create-json-items"></a>JSON-elemek létrehozása
 
@@ -189,7 +189,7 @@ Az előző példák a Cosmos DB lekérdezési nyelvének számos aspektusát mut
 
 * A Cosmos-tároló a JSON-elemek séma nélküli gyűjteménye. A tároló elemein belüli és azok közötti kapcsolatok implicit módon vannak rögzítve az adattárolással, nem az elsődleges kulcs és a idegenkulcs-kapcsolatok esetében. Ez a funkció fontos a cikk későbbi részében tárgyalt elemekhez tartozó illesztések esetében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Cosmos DB bemutatása](introduction.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 93d9cc871d1cb114f7f08b68eb8ae9d597e228b9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 9c042d044f5ceba5a64d6bd7dfefa34bbc69b107
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376485"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353204"
 ---
 # <a name="manage-qna-maker-app"></a>QnA Maker alkalmazás kezelése
 
@@ -23,7 +23,7 @@ A Tudásbázis nem változik automatikusan. A módosítások érvénybe léptet�
 
 ## <a name="add-azure-role-based-access-control-azure-rbac"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) hozzáadása
 
-QnA Maker lehetővé teszi, hogy több személy is működjenek együtt az összes Tudásbázisban ugyanabban a QnA Maker erőforrásban. Ez a szolgáltatás [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../../../active-directory/role-based-access-control-configure.md)érhető el.
+QnA Maker lehetővé teszi, hogy több személy is működjenek együtt az összes Tudásbázisban ugyanabban a QnA Maker erőforrásban. Ez a szolgáltatás [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../../../role-based-access-control/role-assignments-portal.md)érhető el.
 
 ## <a name="access-at-the-qna-maker-resource-level"></a>Hozzáférés a QnA Maker erőforrás szintjén
 
@@ -43,13 +43,13 @@ A következő lépések a közreműködő szerepkört használják, de a [szerep
 
     ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
     ![QnA Maker IAM Hozzáadás](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
 1. Válasszon ki egy szerepkört a következő listából:
 
-    |Szerepkör|
+    |Role|
     |--|
     |Tulajdonos|
     |Közreműködő|
@@ -91,7 +91,7 @@ Az aktív tanulás alapértelmezés szerint ki van kapcsolva. A javasolt kérdé
 
 1. A Tudásbázis közzétételéhez válassza a **Közzététel** lehetőséget. Az aktív tanulási lekérdezések csak a GenerateAnswer API-előrejelzési végpontról lesznek összegyűjtve. A QnA Maker portál teszt ablaktáblájára irányuló lekérdezések nem érintik az aktív tanulást.
 
-1. Az aktív tanulás bekapcsolásához a QnA Maker-portálon nyissa meg a jobb felső sarokban, válassza ki a **nevét** , és lépjen a [**Szolgáltatásbeállítások**](https://www.qnamaker.ai/UserSettings)menüpontra.
+1. Az aktív tanulás bekapcsolásához a QnA Maker-portálon nyissa meg a jobb felső sarokban, válassza ki a **nevét**, és lépjen a [**Szolgáltatásbeállítások**](https://www.qnamaker.ai/UserSettings)menüpontra.
 
     ![Kapcsolja be az aktív tanulás javasolt kérdéseit a szolgáltatás beállításai lapról. Válassza ki a felhasználónevét a jobb felső menüben, majd válassza a Szolgáltatásbeállítások elemet.](../media/improve-knowledge-base/Endpoint-Keys.png)
 
@@ -114,7 +114,7 @@ Alapértelmezés **szerint az Active** learning QnA Maker felügyelt (előzetes 
 
 [Tekintse át a további javasolt kérdéseket](improve-knowledge-base.md) az egyes tudásbázisok **szerkesztési** lapján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis létrehozása](./manage-knowledge-bases.md)

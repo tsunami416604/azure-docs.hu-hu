@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 0f49621d44b99412b9a6ab0360c30c894a71e5d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c231ac95841043e5576f064e683dd86d9695b108
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776867"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353187"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Biztonságos SharePoint-adatforrás hozzáadása a tudásbázishoz
 
@@ -27,7 +27,7 @@ Ha a QnA Maker Tudásbázis-kezelő nem a Active Directory Manager, akkor a foly
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Támogatott fájltípusok hozzáadása a tudásbázishoz
 
-A SharePoint-webhelyekről minden QnA Maker által támogatott [fájltípust](../Concepts/content-types.md) hozzáadhat a tudásbázishoz. Előfordulhat, hogy [engedélyeket](#permissions) kell megadnia, ha a fájl erőforrása védett.
+A SharePoint-webhelyekről minden QnA Maker által támogatott [fájltípust](../index.yml) hozzáadhat a tudásbázishoz. Előfordulhat, hogy [engedélyeket](#permissions) kell megadnia, ha a fájl erőforrása védett.
 
 1. A könyvtár és a SharePoint-webhely között válassza ki a fájl három pont menüjét `...` .
 1. Másolja a fájl URL-címét.
@@ -119,7 +119,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
     [![QnAMakerPortalSharePoint keresése a vállalati alkalmazások listájában](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
-1. A **Biztonság**területen lépjen az **engedélyek**elemre. Válassza **a rendszergazdai jóváhagyás megadása a szervezet számára**lehetőséget.
+1. A **Biztonság** területen lépjen az **engedélyek** elemre. Válassza **a rendszergazdai jóváhagyás megadása a szervezet számára** lehetőséget.
 
     [![Active Directory rendszergazda számára válassza a hitelesített felhasználó lehetőséget.](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 
@@ -156,7 +156,7 @@ Use the following steps to transform the SharePoint URL into a sharing token.
 
 ### Add or update a SharePoint File URI to your knowledge base
 
-Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](https://go.microsoft.com/fwlink/?linkid=2092179) or [updating a knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
+Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) or [updating a knowledge base](/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
 
 ```
 {
@@ -185,7 +185,7 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 
 -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Együttműködés a Tudásbázisban](collaborate-knowledge-base.md)
+> [Együttműködés a Tudásbázisban](../index.yml)

@@ -10,19 +10,19 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 489a158c49bc6695a460fdef5b92606335a07ef6
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9dabceda17defb24f2a916cd641f625feb551c6a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365992"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353289"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Entitások keresése a Bing Entity API-val
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 ## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Keresési kifejezések ajánlása a Bing Autosuggest API
 
@@ -301,7 +301,7 @@ Az alábbi példa tartalmaz egy `LicenseAttribution` szabályt.
 
 ![Licencek forrásmegjelölése](../media/cognitive-services-bing-entities-api/licenseattribution.png)
 
-A megjelenített licencadatok között kell lennie egy hivatkozásnak, amely a licenc információit tartalmazó webhelyre mutat. Általában a licenc nevét szokás hivatkozásként szerepeltetni. Például ha a tájékoztatás így szól: **A szövegre a CC-BY-SA licenc vonatkozik** , és a CC-BY-SA a licenc neve, a CC-BY-SA nevet érdemes hivatkozássá tenni.
+A megjelenített licencadatok között kell lennie egy hivatkozásnak, amely a licenc információit tartalmazó webhelyre mutat. Általában a licenc nevét szokás hivatkozásként szerepeltetni. Például ha a tájékoztatás így szól: **A szövegre a CC-BY-SA licenc vonatkozik**, és a CC-BY-SA a licenc neve, a CC-BY-SA nevet érdemes hivatkozássá tenni.
 
 ### <a name="link-and-text-attribution"></a>Hivatkozások és szövegek forrásmegjelölése
 

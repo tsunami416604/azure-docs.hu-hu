@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: b489964e5ef8ea483cbe203be1ff665078a6d66a
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95741729"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353697"
 ---
 # <a name="form-recognizer-layout-service"></a>Űrlap-felismerő elrendezési szolgáltatás
 
-Az Azure-űrlap felismerője szöveget, táblákat, kiválasztási jeleket és strukturált adatokat tud kinyerni a dokumentumokból az elrendezési szolgáltatás használatával. Az elrendezési API lehetővé teszi, hogy az ügyfelek különböző formátumokban fogadják a dokumentumokat, és a dokumentum strukturált adatait és ábrázolását adják vissza. A hatékony optikai karakterfelismerési [(OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) képességeket kombinálja a részletes tanulási modellekkel a szöveg, a táblák, a kiválasztási jelek és a dokumentumok szerkezetének kinyeréséhez. 
+Az Azure-űrlap felismerője szöveget, táblákat, kiválasztási jeleket és strukturált adatokat tud kinyerni a dokumentumokból az elrendezési szolgáltatás használatával. Az elrendezési API lehetővé teszi, hogy az ügyfelek különböző formátumokban fogadják a dokumentumokat, és a dokumentum strukturált adatait és ábrázolását adják vissza. A hatékony optikai karakterfelismerési [(OCR)](../computer-vision/concept-recognizing-text.md) képességeket kombinálja a részletes tanulási modellekkel a szöveg, a táblák, a kiválasztási jelek és a dokumentumok szerkezetének kinyeréséhez. 
 
 ## <a name="what-does-the-layout-service-do"></a>Mit tesz az elrendezési szolgáltatás?
 
@@ -86,7 +86,7 @@ Az elrendezés kibontja a táblákat a dokumentumokból (PDF, TIFF) és képekb�
 
 Az elrendezés kibontja a dokumentumok kiválasztási jeleit is. Kinyert kijelölési jelek közé tartozik a határolókeret, a megbízhatóság és az állapot (kiválasztott/nem kijelölt). A kijelölési megjelölés adatai a JSON-kimenet szakaszában vannak kibontva `"readResults"` . 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Saját elrendezés kinyerésének kipróbálása az [űrlap-felismerő minta felhasználói felületének](https://fott-preview.azurewebsites.net/) használatával
 - Töltse ki az [űrlap-felismerő ügyféloldali függvénytárának](quickstarts/client-library.md) gyors kezdését, hogy megkezdje az elrendezések kinyerését az Ön által választott nyelven.
@@ -96,7 +96,3 @@ Az elrendezés kibontja a dokumentumok kiválasztási jeleit is. Kinyert kijelö
 
 * [Mi a Form Recognizer?](./overview.md)
 * [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeLayoutAsync)
-
-
-
-

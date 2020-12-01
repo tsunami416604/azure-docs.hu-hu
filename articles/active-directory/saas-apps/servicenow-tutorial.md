@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 5ba81c7a3da6747b0fee8a05e359181e86e4a19d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7a15248300150c9b79c4678701f81fac923d56a3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181526"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353608"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ServiceNow
 
@@ -25,6 +25,8 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a ServiceNow a Azu
 * A ServiceNow-hez hozzáférő Azure AD-beli vezérlés.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a ServiceNow az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Jao6]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
