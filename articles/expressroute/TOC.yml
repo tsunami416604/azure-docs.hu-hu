@@ -101,7 +101,7 @@
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
     - name: Biztonsági attribútumok
-      href: expressroute-security-controls.md
+      href: ./security-baseline.md
     - name: BFD ExpressRoute-on keresztül
       href: expressroute-bfd.md
     - name: QoS-követelmények

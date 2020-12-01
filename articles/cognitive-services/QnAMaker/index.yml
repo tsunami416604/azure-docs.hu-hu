@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: A QnA Maker dokumentációja
   description: A QnA Maker egy olyan felhőalapú API-szolgáltatás, amely egy beszélgetés típusú, kérdésekből és válaszokból álló réteget hoz létre az adatok alapján. A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. A QnA Maker szolgáltatás egyezteti a felhasználók természetes nyelvi kérdéseit a Tudásbázisban szereplő kérdésekkel és válaszokkal, majd a lehető legjobban megfelelő választ adja vissza.
-  ms.openlocfilehash: 487e783aa0c3ac5ad294c34f8522ee54fbfd6aea
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+  ms.openlocfilehash: 54c5e8c880020ac4c29dc730902dadef10838390
+  ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95021337"
+  ms.lasthandoff: 11/30/2020
+  ms.locfileid: "96338086"
 landingContent:
 - title: A QnA Maker bemutatása
   linkLists:
@@ -34,18 +34,12 @@ landingContent:
     links:
     - text: Fejlesztési életciklus
       url: concepts/development-lifecycle-knowledge-base.md
-    - text: Adatforrások
-      url: concepts/knowledge-base.md
   - linkListType: video
     links:
     - text: Robot létrehozása percek alatt
       url: https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker
 - title: Tudásbázis létrehozása és szerkesztése
   linkLists:
-  - linkListType: concept
-    links:
-    - text: Mi az a tudásbázis?
-      url: concepts/knowledge-base.md
   - linkListType: get-started
     links:
     - text: 'Gyorsútmutató: Új tudásbázis létrehozása'
@@ -95,11 +89,11 @@ landingContent:
   - linkListType: get-started
     links:
     - text: 'Portál: Azure Bot Service-robot létrehozása'
-      url: tutorials/create-qna-bot.md
+      url: ./quickstarts/create-publish-knowledge-base.md#create-a-bot
     - text: 'Power Apps: QnA Maker által működtetett robot létrehozása'
       url: tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - text: 'Robotkeretrendszer: LUIS- és QnA Maker-alkalmazások közötti átadás'
-      url: https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs
+      url: /azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0
     - text: Egyéb mintarobotok
       url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
 - title: Referencia
@@ -109,15 +103,15 @@ landingContent:
     - text: A tudásbázis korlátai
       url: limits.md
     - text: API-k készítése
-      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase
+      url: /rest/api/cognitiveservices/qnamaker/knowledgebase
     - text: Válasz API-k létrehozása
-      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/Runtime
+      url: /rest/api/cognitiveservices/qnamaker4.0/Runtime
     - text: A .Net SDK referenciadokumentációja
-      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
+      url: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.6.0#cognitive_services
+      url: /powershell/module/az.cognitiveservices/?view=azps-2.6.0#cognitive_services
     - text: Azure parancssori felület (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
 - title: Súgó és visszajelzés
   linkLists:
   - linkListType: reference

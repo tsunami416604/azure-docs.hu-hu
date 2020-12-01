@@ -122,11 +122,11 @@
 - name: További források
   items:
     - name: Fejlessze a biztonsági készségeit a Microsoft Learnnel
-      href: 'https://docs.microsoft.com/learn/browse/?term=securityS&terms=securityS'
+      href: /learn/browse/?term=securityS&terms=securityS
     - name: Az Azure Security Center dokumentációja
-      href: 'https://docs.microsoft.com/azure/security-center/'
+      href: ../security-center/index.yml
     - name: Az Azure biztonsági dokumentációja
-      href: 'https://docs.microsoft.com/azure/security/'
+      href: ../security/index.yml
     - name: Azure RTOS biztonsági modul a Stack Overflow-n
       href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
     - name: 'Azure IoT biztonsági, adatvédelmi és megfelelőségi blog'
