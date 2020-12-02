@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/23/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3c40e4c7b00a5c78872a60af25e3b19fe08f324
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5efb1df378df323585bc0ca1094451cdb095fe4e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466795"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499781"
 ---
 # <a name="enabling-synapse-workspace-features-on-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>A szinapszis munkaterület funkcióinak engedélyezése meglévő dedikált SQL-készleten (korábban SQL DW)
 
@@ -44,7 +44,7 @@ A következő információk lesznek érvényesek, amikor dedikált SQL DW-t (kor
 
 - **Hálózati biztonság** Ha a meglévő dedikált SQL-készleten (korábban SQL DW) engedélyezte a szinapszis munkaterületet, akkor az adatszivárgás elleni védelem engedélyezve van. Hozzon létre egy felügyelt magánhálózati végponti kapcsolódást a munkaterületről a logikai SQL Serverre. Hagyja jóvá a magánhálózati végpont kapcsolódási kérelmét, hogy engedélyezze a kiszolgáló és a munkaterület közötti kommunikációt.
 - **Studió** Az **adatközpontban** található SQL-készletek a munkaterület engedélyezve dedikált SQL-készlet (korábban SQL DW) az adatközpontban található elemleírás segítségével azonosítható. 
-- **új DEDIKÁLT SQL-készlet létrehozása (korábban SQL DW)** Új dedikált SQL-készletek hozhatók létre a szinapszis munkaterületen és a Studióban, miután a munkaterület funkció engedélyezve lett, és az új készlet üzembe helyezése a logikai SQL-kiszolgálón történik. Az új erőforrások a Portálon és a Studióban fognak megjelenni a kiépítés befejezésekor.      
+- **Új DEDIKÁLT SQL-készlet létrehozása (korábban SQL DW)** Új dedikált SQL-készletek hozhatók létre a szinapszis munkaterületen és a Studióban, miután a munkaterület funkció engedélyezve lett, és az új készlet üzembe helyezése a logikai SQL-kiszolgálón történik. Az új erőforrások a Portálon és a Studióban fognak megjelenni a kiépítés befejezésekor.      
 
 ## <a name="next-steps"></a>További lépések
 A [szinapszis munkaterület funkcióinak](workspace-connected-create.md) engedélyezése a meglévő dedikált SQL-készleten (korábban SQL DW)

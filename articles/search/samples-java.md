@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 26e30b42906a3d8d7a3fcdc013537104a85f32fe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c1d21d88ed49cb14aa9f964791154f001a40fbe2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701857"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499577"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Java-kódok az Azure Cognitive Search
 
 Ismerje meg az Azure-Cognitive Search funkcióit és funkcióit bemutató Java-kódok mintáit. Az elsődleges Tárházak a következők:
 
-| Adattár | Leírás |
+| Adattár | Description |
 |------------|-------------|
 | [Azure-SDK-for-Java/Tree/Master/SDK/keresés/Azure-Search-Documents/src/Samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) | Az Azure SDK csapata által előállított minták, amelyek az SDK-ban a Azure.Search.Documents-ügyfél kódtárat szállítanak. A különböző API-k meghívásához tekintse át az [egységre vonatkozó teszteket](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/test) is az ügyféloldali kódtár számára. |
 | [Azure-Samples/Azure-Search-Java-Samples](https://github.com/Azure-Samples/azure-search-java-samples) | Az útmutató cikkeihez kapcsolódó kód mintái. A **tárházban lévő minták még nem frissültek a Javához készült Azure SDK használatára**. Ezek a minták jelenleg REST API-kat hívhatnak a Java-kódban.|
@@ -31,7 +31,7 @@ Ismerje meg az Azure-Cognitive Search funkcióit és funkcióit bemutató Java-k
 
 A Javához készült Azure SDK számos mintát és egy [első lépéseket tartalmazó oldalt](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) tartalmaz, amely a csomagok telepítését ismerteti. A lap a példák széles körét is felsorolja. Az alábbiakban felsorolunk néhány gyakori műveletet az Ön kényelme érdekében.
 
-| Példák | Leírás |
+| Példák | Description |
 |---------|-------------|
 | [Keresési index létrehozása](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) | Bemutatja, hogyan hozhat létre [keresési indexeket](search-what-is-an-index.md). |
 | [Szinonimák létrehozása](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/SynonymMapsCreateExample.java) | Bemutatja, hogyan hozhatók létre [szinonima térképek](search-synonyms.md).  |
@@ -43,9 +43,9 @@ A Javához készült Azure SDK számos mintát és egy [első lépéseket tartal
 
 ## <a name="documentation-samples"></a>Dokumentáció – minták
 
-Az alábbi példákban az [Azure Cognitive Search dokumentációjában](https://docs.microsoft.com/azure/search/)szerepel egy kapcsolódó cikk.
+Az alábbi példákban az [Azure Cognitive Search dokumentációjában](./index.yml)szerepel egy kapcsolódó cikk.
 
-| Példák | Leírás | 
+| Példák | Description | 
 |---------|-------------|
 | [QuickStart](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/quickstart) | Forráskód a gyors üzembe helyezéshez [: hozzon létre egy keresési indexet a javában](search-get-started-java.md). Ez a példa a REST API-kat hívja meg. |
 | [Keresés – Java-indexelő – bemutató](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/search-java-indexer-demo) | Egy Azure Cosmos DB indexelő használatát mutatja be javában. Ez a példa a REST API-kat hívja meg. |

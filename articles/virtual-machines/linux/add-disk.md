@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 7098744fe012c994e311696a376cd7ed0dc9ac53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9520196c8dce9ea511c2f3b799bd12b34c6f988f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076616"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499747"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 
@@ -34,7 +34,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>Meglévő lemez csatlakoztatása
 
-Meglévő lemez csatolásához keresse meg a lemez AZONOSÍTÓját, és adja át az azonosítót az [az VM Disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) parancsnak. A következő példa egy *myDataDisk* nevű lemezt kérdez le a *myResourceGroup*-ben, majd csatolja a *myVM*nevű virtuális géphez:
+Meglévő lemez csatolásához keresse meg a lemez AZONOSÍTÓját, és adja át az azonosítót az [az VM Disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) parancsnak. A következő példa egy *myDataDisk* nevű lemezt kérdez le a *myResourceGroup*-ben, majd csatolja a *myVM* nevű virtuális géphez:
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
@@ -44,7 +44,7 @@ az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 
 ## <a name="format-and-mount-the-disk"></a>A lemez formázása és csatlakoztatása
 
-Az új lemez particionálásához, formázásához és csatlakoztatásához, így a linuxos virtuális gép használhatja az SSH-t a virtuális géphez. További információ: [SSH használata Linuxon az Azure-on](mac-create-ssh-keys.md). A következő példa egy virtuális géphez csatlakozik a *10.123.123.25* nyilvános IP-címével, a Felhasználónév *azureuser*használatával:
+Az új lemez particionálásához, formázásához és csatlakoztatásához, így a linuxos virtuális gép használhatja az SSH-t a virtuális géphez. További információ: [SSH használata Linuxon az Azure-on](mac-create-ssh-keys.md). A következő példa egy virtuális géphez csatlakozik a *10.123.123.25* nyilvános IP-címével, a Felhasználónév *azureuser* használatával:
 
 ```bash
 ssh azureuser@10.123.123.25
@@ -70,7 +70,7 @@ sdb     1:0:1:0      14G
 sdc     3:0:0:0      50G
 ```
 
-Itt `sdc` látható a kívánt lemez, mert 50G. Ha nem biztos abban, hogy melyik lemez mérete kizárólag a méreten alapul, akkor nyissa meg a virtuális gép lapot a portálon, válassza a **lemezek**lehetőséget, és ellenőrizze a lemez LUN számát az **adatlemezek**területen. 
+Itt `sdc` látható a kívánt lemez, mert 50G. Ha nem biztos abban, hogy melyik lemez mérete kizárólag a méreten alapul, akkor nyissa meg a virtuális gép lapot a portálon, válassza a **lemezek** lehetőséget, és ellenőrizze a lemez LUN számát az **adatlemezek** területen. 
 
 
 ### <a name="format-the-disk"></a>A lemez formázása
@@ -179,7 +179,7 @@ A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-t�
 
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A linuxos virtuális gép megfelelő konfigurálásának biztosítása érdekében tekintse át a Linux rendszerű [gépek teljesítményével kapcsolatos javaslatok optimalizálását](optimization.md) ismertető oktatóanyagot.
-* Bővítse a tárolókapacitást további lemezek hozzáadásával és a [RAID konfigurálásával](configure-raid.md) a további teljesítmény érdekében.
+* Bővítse a tárolókapacitást további lemezek hozzáadásával és a [RAID konfigurálásával](/previous-versions/azure/virtual-machines/linux/configure-raid) a további teljesítmény érdekében.

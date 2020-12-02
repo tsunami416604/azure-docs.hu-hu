@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: dc6706d4ec9090c59d4dd668d2ae1dd3ce7d188a
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 819654ef88584cb91d6032e46256258aaed524fd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928042"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500308"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú virtuális gépek méretei
 
@@ -21,7 +21,7 @@ A B sorozatú virtuális gépek ideálisak olyan számítási feladatokhoz, amel
 
 A B sorozat a következő virtuálisgép-méretekhez tartozik:
 
-[Azure számítási egység (ACU)](./acu.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json): változó *<br>
+[Azure számítási egység (ACU)](./acu.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): változó *<br>
 [Premium Storage](premium-storage-performance.md): támogatott<br>
 [Premium Storage gyorsítótárazás](premium-storage-performance.md): nem támogatott<br>
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
@@ -59,7 +59,7 @@ Alapterv: 270%
 
 ![Óránkénti forgalmi adatok diagramja](./media/b-series-burstable/office-workload.png)
 
-| Használati eset | Idő | CPU-használat (%) | Halmozott kreditek<sup>1</sup> | Rendelkezésre álló kreditek |
+| Használati példa | Idő | CPU-használat (%) | Halmozott kreditek<sup>1</sup> | Rendelkezésre álló kreditek |
 | --- | --- | --- | --- | --- |
 | B16ms üzembe helyezése | Üzembe helyezés | Üzembe helyezés  | 480 (kezdeti kreditek) | 480 |
 | Nincs forgalom | 0:00 | 0 | 162 | 642 |
@@ -94,11 +94,11 @@ Egy olyan D16s_v3 esetében, amely 16 vCPU és 64 GiB memóriával rendelkezik, 
 ## <a name="q--a"></a>Kérdések és válaszok
 
 ### <a name="q-what-happens-when-my-credits-run-out"></a>K: mi történik, ha elfogynak a kreditek?
-**A** : a kreditek kimerítése után a virtuális gép az alapkonfiguráció teljesítményére tér vissza.
+**A**: a kreditek kimerítése után a virtuális gép az alapkonfiguráció teljesítményére tér vissza.
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>K: hogyan szerezhet be 135%-os alapteljesítményt egy virtuális gépről?
 
-**A** : a 135% meg van osztva a 8 vCPU között, amelyek a virtuális gép méretét alkotják. Ha például az alkalmazás a 8 mag használatát használja a Batch-feldolgozásban, és mindegyik 4 vCPU 30%-os kihasználtsággal fut, akkor a virtuális gép CPU-teljesítményének teljes mennyisége 120%-kal egyenlő lenne.  Azt jelenti, hogy a virtuális gép a kiindulási teljesítménytől számított 15%-os különbözet alapján felépíti a kredit időt.  Ez azt is jelenti, hogy ha vannak olyan kreditek, amelyekkel ugyanazon virtuális gép 100%-át használhatja mind a 8 vCPU, így a virtuális gép maximális CPU-teljesítménye 800%.
+**A**: a 135% meg van osztva a 8 vCPU között, amelyek a virtuális gép méretét alkotják. Ha például az alkalmazás a 8 mag használatát használja a Batch-feldolgozásban, és mindegyik 4 vCPU 30%-os kihasználtsággal fut, akkor a virtuális gép CPU-teljesítményének teljes mennyisége 120%-kal egyenlő lenne.  Azt jelenti, hogy a virtuális gép a kiindulási teljesítménytől számított 15%-os különbözet alapján felépíti a kredit időt.  Ez azt is jelenti, hogy ha vannak olyan kreditek, amelyekkel ugyanazon virtuális gép 100%-át használhatja mind a 8 vCPU, így a virtuális gép maximális CPU-teljesítménye 800%.
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>K: Hogyan figyelhető meg a kreditek egyenlege és a fogyasztásom?
 
@@ -108,9 +108,9 @@ További információ az Azure mérőszámok adatainak eléréséről: [a Micros
 
 ### <a name="q-how-are-credits-accumulated-and-consumed"></a>K: Hogyan történik a kreditek felhalmozódása és felhasználása?
 
-**A** : a virtuális gépek felhalmozódása és a használati díjak úgy vannak beállítva, hogy egy virtuális gép, amely pontosan az alapszintű teljesítmény szintjén fut, sem a nettó, sem a feltört kreditek számától függ.  Ha a virtuális gép az alapteljesítményi szint alatt fut, a kreditek nettó növekedését fogja tartalmazni, amikor a virtuális gép a CPU-t az alapszintnél nagyobb mértékben használja fel.
+**A**: a virtuális gépek felhalmozódása és a használati díjak úgy vannak beállítva, hogy egy virtuális gép, amely pontosan az alapszintű teljesítmény szintjén fut, sem a nettó, sem a feltört kreditek számától függ.  Ha a virtuális gép az alapteljesítményi szint alatt fut, a kreditek nettó növekedését fogja tartalmazni, amikor a virtuális gép a CPU-t az alapszintnél nagyobb mértékben használja fel.
 
-**Példa** : üzembe helyezhetek egy virtuális gépet a kis idő és a részvételi B1ms mérete alapján. Ez a méret lehetővé teszi, hogy az alkalmazásom a vCPU akár 20%-át használja alaptervként, ami 0,2 kredit, amelyet akár percenként is használhatok.
+**Példa**: üzembe helyezhetek egy virtuális gépet a kis idő és a részvételi B1ms mérete alapján. Ez a méret lehetővé teszi, hogy az alkalmazásom a vCPU akár 20%-át használja alaptervként, ami 0,2 kredit, amelyet akár percenként is használhatok.
 
 Az alkalmazásom az alkalmazottak munkanapjának elején és végén foglalt, 7:00-9:00-kor és 4:00-18:00 között. A nap további 20 órájában az alkalmazásom általában üresjáratban van, és csak a vCPU 10%-át használja. A nem maximális óraszám esetében percenként 0,2 kreditet keresünk, de percenként csak 0. l kreditet használunk, így a virtuális gép 0,1 x 60 = 6 kredit/óra lesz.  A 20 órán át, hogy én vagyok a csúcson, a bank 120 kreditet kap.  
 
@@ -120,7 +120,7 @@ Ha megszerezem a 120 kreditet, és kivonják a maximális időponthoz használt 
 
 ### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>K: Hogyan lehet kiszámítani a halmozott és felhasznált krediteket?
 
-**A** : a következő képletet használhatja:
+**A**: a következő képletet használhatja:
 
 (Virtuális gép alapszintű CPU-kihasználtsága)/100 = kreditek bankja vagy használat percenként
 
@@ -128,7 +128,7 @@ például a fenti példában az alapkonfiguráció 20%, és ha a processzor 10%-
 
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>K: támogatja a B sorozat a Premium Storage adatlemezeket?
 
-Válasz **: igen** , az összes B sorozatú méret támogatja Premium Storage adatlemezeket.
+Válasz **: igen**, az összes B sorozatú méret támogatja Premium Storage adatlemezeket.
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>K: Miért van a fennmaradó kreditem 0-ra az újbóli üzembe helyezés vagy a Leállítás/indítás után?
 
@@ -151,6 +151,6 @@ Válasz **: igen** , az összes B sorozatú méret támogatja Premium Storage ad
 
 További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

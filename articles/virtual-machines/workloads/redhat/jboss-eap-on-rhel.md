@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: ce07a0667b1fd4b439f061966e4ee0b1112578c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bab84b12c871c621b5a317ba8b47f9b18c91bff3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413207"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500189"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Vállalati Java-alkalmazások üzembe helyezése az Azure-ban a JBoss EAP használatával Red Hat Enterprise Linux
 
@@ -31,7 +31,7 @@ A JBoss EAP és a RHEL tartalmaz mindent, amire szüksége lehet a vállalati Ja
 
   Ha nem rendelkezik EAP-jogosultsággal, a Kezdés előtt szerezzen be egy [JBoss EAP próbaverziós előfizetést](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation) . Új Red Hat-előfizetés létrehozásához nyissa meg a [Red Hat Customer Portalt](https://access.redhat.com/) , és állítson be egy fiókot.
 
-* Az [Azure CLI](https://docs.microsoft.com/cli/azure/overview)-vel.
+* Az [Azure CLI](/cli/azure/overview)-vel.
 
 * RHEL beállításai. Válassza az utólagos elszámolású (TB) vagy a saját előfizetés (BYOS) lehetőséget. A BYOS-mel aktiválnia kell a [Red Hat Cloud Access](https://access.redhat.com/) RHEL Gold rendszerképet a gyors üzembe helyezési sablon telepítése előtt.
 
@@ -164,9 +164,9 @@ Ahhoz, hogy a RHEL operációs rendszer BYOS használhassa, érvényes Red Hat-e
 
    1. Várjon, amíg a Red Hat Gold images elérhetővé válik az Azure-előfizetésében. Ezek a lemezképek általában három órán belül elérhetők.
     
-3. Fogadja el az Azure Marketplace használati feltételeit a RHEL BYOS-lemezképek esetében. Ezt a folyamatot az alábbi Azure CLI-parancsok futtatásával végezheti el. További információ: [RHEL BYOS Gold images in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos) dokumentáció. Fontos, hogy az Azure CLI legújabb verzióját futtatja.
+3. Fogadja el az Azure Marketplace használati feltételeit a RHEL BYOS-lemezképek esetében. Ezt a folyamatot az alábbi Azure CLI-parancsok futtatásával végezheti el. További információ: [RHEL BYOS Gold images in Azure](./byos.md) dokumentáció. Fontos, hogy az Azure CLI legújabb verzióját futtatja.
 
-   1. Nyisson meg egy Azure CLI-munkamenetet, és végezzen hitelesítést az Azure-fiókjával. Segítségért lásd: [Bejelentkezés az Azure CLI-vel](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
+   1. Nyisson meg egy Azure CLI-munkamenetet, és végezzen hitelesítést az Azure-fiókjával. Segítségért lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli).
 
    1. A következő CLI-parancs futtatásával ellenőrizze, hogy a RHEL BYOS-lemezképei elérhetők-e az előfizetésben. Ha itt nem talál eredményt, győződjön meg arról, hogy az Azure-előfizetése aktiválva van a RHEL BYOS-lemezképek esetében.
    
@@ -189,7 +189,7 @@ Az előfizetése most már készen áll a RHEL 7,7 vagy a 8,0 BYOS üzembe helye
 
 A JBoss EAP csak a BYOS-modellen keresztül érhető el az Azure-on. A sablon telepítésekor meg kell adnia a RHSM hitelesítő adatait, valamint a RHSM-készlet AZONOSÍTÓját érvényes EAP-jogosultságokkal. Ha nem rendelkezik EAP-jogosultságokkal, a Kezdés előtt szerezzen be egy [JBoss EAP próbaverziós előfizetést](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation) .
 
-## <a name="deployment-options"></a>Üzembe helyezési lehetőségek
+## <a name="deployment-options"></a>Üzembe helyezési beállítások
 
 A sablont a következő módokon helyezheti üzembe:
 
@@ -203,9 +203,9 @@ A sablont a következő módokon helyezheti üzembe:
   New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri <raw link to the template which can be obtained from github>
   ```
  
-  A Azure PowerShell telepítéséről és konfigurálásáról a [PowerShell dokumentációjában](https://docs.microsoft.com/powershell/azure/)olvashat bővebben.  
+  A Azure PowerShell telepítéséről és konfigurálásáról a [PowerShell dokumentációjában](/powershell/azure/)olvashat bővebben.  
 
-- **Azure CLI** -vel. A sablon üzembe helyezéséhez futtassa a következő parancsokat:
+- **Azure CLI**-vel. A sablon üzembe helyezéséhez futtassa a következő parancsokat:
 
   ```
   az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new resource group for your deployment
@@ -215,7 +215,7 @@ A sablont a következő módokon helyezheti üzembe:
   az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
   ```
 
-  Az Azure CLI telepítésének és konfigurálásának részletes ismertetését lásd: [a CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+  Az Azure CLI telepítésének és konfigurálásának részletes ismertetését lásd: [a CLI telepítése](/cli/azure/install-azure-cli).
 
 - **Azure Portal**. A következő szakaszban leírtak szerint telepítheti a Azure Portalt az Azure-beli Gyorsindítás sablonokkal. A gyors útmutatóban válassza az **üzembe helyezés az Azure** -ban vagy a **Tallózás a githubon** gombot.
 
@@ -231,10 +231,10 @@ A következő Gyorsindítás sablonok egyikével kezdheti meg a JBoss EAP-t a RH
 
 ## <a name="resource-links"></a>Erőforrás-hivatkozások
 
-* [Azure Hybrid Benefit](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
-* [Java-alkalmazás konfigurálása Azure App Servicehoz](https://docs.microsoft.com/azure/app-service/configure-language-java)
+* [Azure Hybrid Benefit](../../windows/hybrid-use-benefit-licensing.md)
+* [Java-alkalmazás konfigurálása Azure App Servicehoz](../../../app-service/configure-language-java.md)
 * [JBoss EAP az Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)
-* [JBoss EAP Azure App Service Linux rendszeren](https://docs.microsoft.com/azure/app-service/quickstart-java)
+* [JBoss EAP Azure App Service Linux rendszeren](../../../app-service/quickstart-java.md)
 * [A JBoss EAP üzembe helyezése Azure App Service](https://github.com/JasonFreeberg/jboss-on-app-service)
 
 ## <a name="next-steps"></a>További lépések
@@ -242,6 +242,6 @@ A következő Gyorsindítás sablonok egyikével kezdheti meg a JBoss EAP-t a RH
 * További információ a [JBoss EAP 7,2](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/)-ről.
 * További információ a [JBoss EAP 7,3](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/)-ről.
 * További információ a [Red Hat előfizetés-kezelésről](https://access.redhat.com/products/red-hat-subscription-management).
-* Ismerje meg az Azure-beli [Red Hat számítási feladatokat](https://aka.ms/rhel-docs).
+* Ismerje meg az Azure-beli [Red Hat számítási feladatokat](./overview.md).
 * A [JBoss EAP üzembe helyezése RHEL virtuális gépen vagy virtuálisgép-méretezési csoporton az Azure piactéren](https://aka.ms/AMP-JBoss-EAP).
 * [A JBoss EAP üzembe helyezése egy RHEL virtuális gépen vagy egy virtuálisgép-méretezési csoporton az Azure gyorsindító-sablonokból](https://aka.ms/Quickstart-JBoss-EAP).

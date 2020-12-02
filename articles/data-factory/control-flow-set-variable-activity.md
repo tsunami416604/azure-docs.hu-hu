@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/07/2020
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3c1fae2cbf2a1ba8b71dcbc8f6639bda4765f5c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83832785"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498387"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Változó tevékenység beállítása Azure Data Factoryban
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,11 +27,11 @@ A változó beállítása tevékenységgel egy Data Factory-folyamatban definiá
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-name | A tevékenység neve a folyamatban | igen
+name | A tevékenység neve a folyamatban | yes
 leírás | A tevékenység működését leíró szöveg | nem
-típus | **SetVariable** értékre kell állítani | igen
-érték | Karakterlánc-vagy kifejezési objektum értéke, amelyhez a változó hozzá van rendelve | igen
-variableName | A tevékenység által beállított változó neve | igen
+típus | **SetVariable** értékre kell állítani | yes
+value | Karakterlánc-vagy kifejezési objektum értéke, amelyhez a változó hozzá van rendelve | yes
+variableName | A tevékenység által beállított változó neve | yes
 
 ## <a name="incrementing-a-variable"></a>Változó növelése
 

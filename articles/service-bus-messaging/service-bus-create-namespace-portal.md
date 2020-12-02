@@ -3,12 +3,12 @@ title: Service Bus névtér létrehozása a Azure Portal
 description: Ez a cikk útmutatást nyújt Azure Service Bus névtér létrehozásához a Azure Portalban.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: debca75d29d688bc01296d56d0e58f91a6128fc3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c0844ca144b4303631a0015c06a9b37f3538875b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95794331"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498812"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Service Bus-névtér létrehozása az Azure Portal használatával
 
@@ -19,6 +19,6 @@ A névtér egy hatókörkezelési tároló az üzenetkezelés összes összetev�
 Gratulálunk! Létrehozott egy Service Bus üzenetkezelési névteret.
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg [Service Bus mintákat](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/).
+Tekintse meg [Service Bus mintákat](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/).
 
 [create-namespace-using-arm]: service-bus-resource-manager-overview.md

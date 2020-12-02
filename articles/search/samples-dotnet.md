@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: d068365cc8197a579c0b043d3fff2da3d54eb803
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ab6408621616a4be62631391456f73e90fced752
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687092"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498999"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>.NET (C#) kód minták az Azure Cognitive Search
 
 Ismerje meg az Azure Cognitive Search funkcióit és funkcióit bemutató C#-kódrészleteket. Az elsődleges Tárházak a következők:
 
-| Adattár | Leírás |
+| Adattár | Description |
 |------------|-------------|
 | [Azure-SDK-for-net/SDK/Search/Azure.Search.Documents/Samples/](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/search/Azure.Search.Documents/samples) | Az Azure SDK csapata által előállított minták, amelyek az SDK-ban a Azure.Search.Documents-ügyfél kódtárat szállítanak. A különböző API-k meghívásához tekintse át az [egységre vonatkozó teszteket](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/search/Azure.Search.Documents/tests) is az ügyféloldali kódtár számára. |
 | [Azure-Samples/Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) | A dokumentációban szereplő cikkeket kísérő példák, beleértve [a .net-ügyfél függvénytárának használatát](search-howto-dotnet-sdk.md).|
@@ -32,7 +32,7 @@ Ismerje meg az Azure Cognitive Search funkcióit és funkcióit bemutató C#-kó
 
 A .NET-hez készült Azure SDK számos mintát tartalmaz, valamint egy, az egyes tartalmakat leíró [mintát](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/README.md) . Az alábbi lista az Ön kényelmét szolgálja.
 
-| Példák | Leírás |
+| Példák | Description |
 |---------|-------------|
 | ["Helló világ", szinkron módon](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/Sample01a_HelloWorld.md) | Bemutatja, hogyan hozhat létre ügyfelet, hitelesítheti és kezelheti a hibákat szinkron metódusok használatával.|
 | ["Helló világ", aszinkron módon](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/Sample01b_HelloWorldAsync.md) | Bemutatja, hogyan hozhat létre ügyfelet, hitelesítheti és kezelheti a hibákat aszinkron metódusok használatával.  |
@@ -44,9 +44,9 @@ A .NET-hez készült Azure SDK számos mintát tartalmaz, valamint egy, az egyes
 
 ## <a name="documentation-samples"></a>Dokumentáció – minták
 
-Az alábbi példákban az [Azure Cognitive Search dokumentációjában](https://docs.microsoft.com/azure/search/)szerepel egy kapcsolódó cikk.
+Az alábbi példákban az [Azure Cognitive Search dokumentációjában](./index.yml)szerepel egy kapcsolódó cikk.
 
-| Példák | Leírás |
+| Példák | Description |
 |---------|-------------|
 | [QuickStart](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) | Forráskód a gyors üzembe helyezéshez [: hozzon létre egy keresési indexet ](search-get-started-dotnet.md).  |
 | [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)  | Forráskód a [.net Ügyféloldali kódtár használatához](search-howto-dotnet-sdk.md) |
@@ -60,9 +60,9 @@ Az alábbi példákban az [Azure Cognitive Search dokumentációjában](https://
 
 ## <a name="standalone-samples-and-solutions"></a>Önálló minták és megoldások
 
-| Példák | Leírás |
+| Példák | Description |
 |---------|-------------|
 | [Azure-Search – Power-Skills](https://github.com/Azure-Samples/azure-search-power-skills)  | Forráskód a megnyert megoldásokban felépíthető egyéni képességekhez.  |
-| [Tudásbányászati megoldásgyorsító](https://docs.microsoft.com/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | A sablonokkal, a támogatási fájlokkal és az analitikai jelentésekkel a teljes körű tudás-bányászati megoldás prototípusát segíti.  |
+| [Tudásbányászati megoldásgyorsító](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | A sablonokkal, a támogatási fájlokkal és az analitikai jelentésekkel a teljes körű tudás-bányászati megoldás prototípusát segíti.  |
 | [Covid-19 keresési alkalmazás tárháza](https://github.com/liamca/covid19search) | Forráskód-tárház a Cognitive Search-alapú [Covid-19 keresési alkalmazáshoz](https://covid19search.azurewebsites.net/) |
 | [JFK](https://github.com/Microsoft/AzureSearch_JFK_Files) | További információ a [JFK megoldásról](https://www.microsoft.com/ai/ai-lab-jfk-files). |

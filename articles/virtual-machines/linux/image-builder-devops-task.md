@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a3016900b6265bfd56ad1a5a71f70efc01181af5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968667"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499254"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Az Azure rendszerkép-készítő szolgáltatás DevOps feladata
 
@@ -57,7 +57,7 @@ Két Azure VM rendszerkép-készítő (AIB) DevOps-feladat létezik:
 
 **Kiadási folyamat**  >  **szerkesztésének** kiválasztása
 
-A felhasználói ügynöknél válassza a *+* Hozzáadás lehetőséget, majd keressen rá a **rendszerkép-szerkesztőre**. Válassza a **Hozzáadás** lehetőséget.
+A felhasználói ügynöknél válassza a *+* Hozzáadás lehetőséget, majd keressen rá a **rendszerkép-szerkesztőre**. Válassza a **Hozzáadás** elemet.
 
 Adja meg a következő feladat tulajdonságait:
 
@@ -65,7 +65,7 @@ Adja meg a következő feladat tulajdonságait:
 
 Válassza ki a legördülő menüből azt az előfizetést, amelyen futtatni szeretné a rendszerkép-szerkesztőt. Használja ugyanazt az előfizetést, ahol a forrás-lemezképek találhatók, valamint a lemezképek terjesztésének helyét. Engedélyeznie kell a rendszerkép-szerkesztő közreműködői hozzáférését az előfizetéshez vagy az erőforráscsoporthoz.
 
-### <a name="resource-group"></a>Resource Group
+### <a name="resource-group"></a>Erőforráscsoport
 
 Használja azt az erőforráscsoportot, amelyben az ideiglenes Képsablon-összetevőt tárolni fogja. A sablon-összetevők létrehozásakor létrejön egy további ideiglenes rendszerkép-készítő erőforráscsoport `IT_<DestinationResourceGroup>_<TemplateName>_guid` . Az ideiglenes erőforráscsoport tárolja a rendszerkép metaadatait, például a parancsfájlokat. A feladat végén a rendszer törli a Képsablon összetevőjét és az ideiglenes rendszerkép-készítő erőforráscsoportot.
  
@@ -139,7 +139,7 @@ A **létrehozási útvonal** gombra kattintva válassza ki a képre helyezni kí
 
 A következő példa a működésének módját mutatja be:
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Válassza az összetevő hozzáadása lehetőséget a kiadási folyamatban.":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Hierarchia megjelenítésére szolgáló címtár-struktúra.":::
 
 
 * Windows-fájlok találhatók a-ben `C:\` . A rendszer létrehoz egy nevű könyvtárat `buildArtifacts` , amely tartalmazza a `webapp` könyvtárat.
@@ -194,7 +194,7 @@ A következő példa a működésének módját mutatja be:
     
 #### <a name="total-length-of-image-build"></a>A képépítés teljes hossza
 
-A teljes hossz még nem módosítható a DevOps-folyamat feladatban. Az alapértelmezett 240 percet használja. Ha szeretné bővíteni a [buildTimeoutInMinutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes), akkor a kiadási folyamat az az CLI feladat használatával végezhető el. Konfigurálja a feladatot egy sablon másolásához és elküldéséhez. Példaként tekintse meg ezt a [megoldást](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder), vagy használja az az PowerShellt.
+A teljes hossz még nem módosítható a DevOps-folyamat feladatban. Az alapértelmezett 240 percet használja. Ha szeretné bővíteni a [buildTimeoutInMinutes](./image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-buildtimeoutinminutes), akkor a kiadási folyamat az az CLI feladat használatával végezhető el. Konfigurálja a feladatot egy sablon másolásához és elküldéséhez. Példaként tekintse meg ezt a [megoldást](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder), vagy használja az az PowerShellt.
 
 
 #### <a name="storage-account"></a>Tárfiók
@@ -239,9 +239,9 @@ Ehhez a rendszerkép-szerkesztőhöz nem adhat át semmilyen értéket, ha a vir
 
 * Virtuálisgép- [méret](image-builder-json.md#vmprofile) – a virtuális gép méretét felülbírálhatja az alapértelmezett *Standard_D1_v2*. Előfordulhat, hogy felülbírálja a teljes testreszabási idő csökkentését, vagy azért, mert olyan rendszerképeket szeretne létrehozni, amelyek bizonyos virtuálisgép-mérettől függenek, például GPU/HPC stb.
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>A működési elv
 
-A kiadás létrehozásakor a feladat létrehoz egy tárolót a *imagebuilder-vststask*nevű Storage-fiókban. A zip-fájl feltöltésével feltölti a Build-összetevőket, és létrehoz egy SAS-jogkivonatot.
+A kiadás létrehozásakor a feladat létrehoz egy tárolót a *imagebuilder-vststask* nevű Storage-fiókban. A zip-fájl feltöltésével feltölti a Build-összetevőket, és létrehoz egy SAS-jogkivonatot.
 
 A feladat a rendszerkép-készítő sablon összetevő létrehozásához a feladat által átadott tulajdonságokat használja. A feladat a következő műveleteket végzi el:
 * Letölti a Build-összetevő zip-fájlját és az egyéb társított parancsfájlokat. A fájlok mentése egy Storage-fiókba történik az ideiglenes rendszerkép-készítő erőforráscsoporthoz `IT_<DestinationResourceGroup>_<TemplateName>` .
@@ -314,7 +314,7 @@ Ha felépítési hiba történik, a DevOps feladat nem törli az előkészítés
 
 Hibaüzenet jelenik meg a virtuálisgép-rendszerkép-szerkesztő feladathoz tartozó DevOps-naplóban, és megtekintheti a testreszabási napló helyét. Például:
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Válassza az összetevő hozzáadása lehetőséget a kiadási folyamatban.":::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Példa DevOps-feladatra, amely hibát jelez.":::
 
 A hibaelhárítással kapcsolatos további információkért lásd: az [Azure rendszerkép-készítő szolgáltatás hibaelhárítása](image-builder-troubleshoot.md). 
 
@@ -330,9 +330,9 @@ template name:  t_1556938436xxx
 
 ```
 
-A rendszerkép sablonjának erőforrás-összetevője a tevékenységben kezdetben megadott erőforráscsoport. Ha elkészült a hibaelhárítással, törölje az összetevőt. Ha a Azure Portal használatával törli az erőforráscsoportot, válassza a **rejtett típusok megjelenítése**lehetőséget az összetevő megtekintéséhez.
+A rendszerkép sablonjának erőforrás-összetevője a tevékenységben kezdetben megadott erőforráscsoport. Ha elkészült a hibaelhárítással, törölje az összetevőt. Ha a Azure Portal használatával törli az erőforráscsoportot, válassza a **rejtett típusok megjelenítése** lehetőséget az összetevő megtekintéséhez.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: az [Azure rendszerkép-készítő áttekintése](image-builder-overview.md).

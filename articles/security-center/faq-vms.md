@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: ff8d726203c5ddfae63a74a7a364c6f2b9ca783e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 32023fca15de9d3f9258bc05166c3cff4184ea15
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085139"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499849"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>GYAKORI kérdések – a Virtual Machines szolgáltatással kapcsolatos kérdések
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>Milyen típusú virtuális gépek támogatottak?
 
-A [klasszikus és a Resource Manager-alapú üzemi modellekkel](/azure/azure-resource-manager/management/deployment-models)létrehozott virtuális gépek (VM-EK) figyelése és javaslatai elérhetők.
+A [klasszikus és a Resource Manager-alapú üzemi modellekkel](../azure-resource-manager/management/deployment-models.md)létrehozott virtuális gépek (VM-EK) figyelése és javaslatai elérhetők.
 
 A támogatott platformok listáját a [Azure Security Center támogatott platformok](security-center-os-coverage.md) részben tekintheti meg.
 

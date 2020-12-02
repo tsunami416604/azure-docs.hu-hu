@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozz
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: d603e130d4e65667edb34121a4c89b7b0e02b819
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 6e707e77f4618d71cb2fa3f32b05895b97658f76
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636741"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500240"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor-partnerintegrációk
 
@@ -161,7 +161,7 @@ A Focus **ArcSight** rendelkezik egy intelligens összekötővel Azure monitor E
 
 A "Focus **Operations Bridge** " szolgáltatás automatikusan figyeli az összes hibrid it-erőforrást – bármilyen eszközt, operációs rendszert, adatbázist, alkalmazást vagy szolgáltatást, függetlenül attól, hogy hol futnak, és alkalmazza a AIOps az összes adattípusra – az eseményeket, a metrikákat, a naplókat és a függőségeket. A szolgáltatás a minőségi szolgáltatások figyelésének egyedi kombinációját biztosítja, amely a Deep Application Health Analytics-szel párosul, és átfogó teljesítményt és rendelkezésre állást biztosít a Microsoft Azure-szolgáltatások számára. Az Operations Bridge lehetővé teszi, hogy az ügyfelek egyetlen panelt biztosítanak az összes böngészővel rendelkező eszközön, így mind az üzleti, mind az érintett felek megismerhetik.
 
-További információ
+Tudjon meg többet
 - [Az OB Suite áttekintése](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Letöltés](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - A [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope az Operations Bridge Suite egyik összetevője.
@@ -263,7 +263,7 @@ Csökkentse az incidenseket és a MTTR MOSTANtól a AIOps platformmal a zaj, a r
 
 ![SignalFX embléma](./media/partners/signalfx.png)
 
-A SignalFx az adatvezérelt DevOps valós idejű operatív intelligenciának vezetője. A szolgáltatás felfedi és begyűjti a mérőszámokat a felhő minden összetevőjére. Lecseréli a hagyományos pontszerű eszközöket, és valós idejű láthatóságot biztosít a mai dinamikus környezetekben. A nagymértékben méretezhető SignalFx platform kihasználása a SaaS platform a tárolók és a szolgáltatásokon alapuló architektúrák számára van optimalizálva, és hatékony vizualizációt, proaktív riasztást és együttműködési osztályozási képességeket biztosít a különböző méretű szervezetekben. A SignalFx közvetlenül integrálható a Azure Monitor és a nyílt forráskódú összekötők, például a *Graf* , a *statd* és a *Collected* , hogy az Azure-ban az irányítópultok, az elemzések és a riasztások számára legmegfelelőbbek legyenek.
+A SignalFx az adatvezérelt DevOps valós idejű operatív intelligenciának vezetője. A szolgáltatás felfedi és begyűjti a mérőszámokat a felhő minden összetevőjére. Lecseréli a hagyományos pontszerű eszközöket, és valós idejű láthatóságot biztosít a mai dinamikus környezetekben. A nagymértékben méretezhető SignalFx platform kihasználása a SaaS platform a tárolók és a szolgáltatásokon alapuló architektúrák számára van optimalizálva, és hatékony vizualizációt, proaktív riasztást és együttműködési osztályozási képességeket biztosít a különböző méretű szervezetekben. A SignalFx közvetlenül integrálható a Azure Monitor és a nyílt forráskódú összekötők, például a *Graf*, a *statd* és a *Collected* , hogy az Azure-ban az irányítópultok, az elemzések és a riasztások számára legmegfelelőbbek legyenek.
 
 [a signalfx dokumentációja](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure)
 
@@ -310,6 +310,20 @@ A Sumo Logic egy biztonságos, Felhőbeli natív, gépi adatelemzési szolgálta
 A Turbonomic a teljesítmény, a költséghatékonyság és a megfelelőség valós idejű optimalizálása révén biztosítja a számítási feladatok automatizálását a hibrid felhők számára. A Turbonomic segít a szervezeteknek az Azure Estate-ben való rugalmas működésében azáltal, hogy folyamatosan optimalizálja a vagyont, így biztosítva, hogy az alkalmazások folyamatosan megkapják a szolgáltatói szerződésük teljesítéséhez szükséges erőforrásokat, valamint a számítási, tárolási és hálózati IaaS és a Péter-réteghez képest nem. A szervezetek szimulálják az áttelepítést, megfelelően méretezhetik a munkaterheléseket, és kivonják az adatközponti erőforrásokat, hogy az Azure-on időben, a teljesítmény és a megfelelőség biztosításával is biztosítva legyenek. Az Turbonomic API-alapú, és ügynök nélküli virtuális gépként fut az Azure-ban és a helyszínen.
 
 [Turbonomic bemutatása](https://turbonomic.com/)
+
+## <a name="partner-tools-with-event-hub-integration"></a>Partneri eszközök az Event hub-integrációval
+
+A figyelési és az Azure Event hub szolgáltatásba való átirányításához Azure Monitor használatával könnyedén integrálhat néhány külső SIEM-és figyelési eszközzel. A következő partnerekről ismert, hogy az Event hub használatával integrálva van. 
+
+| Eszköz | Az Azure-ban üzemeltetve | Description |
+|:---|:---| :---|
+|  IBM QRadar | Nem | A Microsoft Azure DSM és Microsoft Azure Event hub protokoll letölthető [az IBM támogatási webhelyéről](https://www.ibm.com/support). Az Azure-nal való integrációról a [QRADAR DSM-konfigurációjában](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)olvashat bővebben. |
+| Splunk | Nem | A [Splunk Microsoft Azure Add-On](https://splunkbase.splunk.com/app/3757/) egy nyílt forráskódú projekt, amely elérhető a Splunkbase-ben. <br><br> Ha nem telepíthet bővítményt a splunk-példányban, például ha proxyt használ, vagy ha a splunk-felhőben fut, ezeket az eseményeket a [splunk Azure Function](https://github.com/Microsoft/AzureFunctionforSplunkVS)használatával továbbíthatja a splunk http-esemény gyűjtője számára, amelyet az Event hub új üzenetei is aktiválnak. |
+| SumoLogic | Nem | Az SumoLogic adatok az Event hub-ból való felhasználásának beállítására vonatkozó utasítások [Az Azure-beli audit-alkalmazás eseménynaplójában érhetők el az Event hub-ból](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | Nem | A ArcSight Azure Event hub intelligens összekötő a [ArcSight intelligens összekötő gyűjteményének](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)részeként érhető el. |
+| Syslog-kiszolgáló | Nem | Ha Azure Monitor-adatforrást közvetlenül egy syslog-kiszolgálóra szeretné továbbítani, használhat egy [Azure-függvényen alapuló megoldást](https://github.com/miguelangelopereira/azuremonitor2syslog/).
+| LogRhythm | Nem| [Itt](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)találhat útmutatást a naplók LogRhythm való összegyűjtéséhez. 
+|Logz.io | Igen | További információ: [Ismerkedés az Azure-on futó Java-alkalmazások Logz.IO használatával a figyelés és a naplózás](/azure/developer/java/fundamentals/java-get-started-with-logzio) használatába
 
 
 ## <a name="next-steps"></a>További lépések

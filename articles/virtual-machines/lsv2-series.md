@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba971919037230cb6c09e627fde448647063b5b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652924"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498421"
 ---
 # <a name="lsv2-series"></a>Lsv2 sorozat
 
@@ -51,7 +51,7 @@ Feltört: támogatott<br>
 
 <sup>4</sup> a Lsv2 sorozatú virtuális gépek nem biztosítanak gazdagép-gyorsítótárat az adatlemez számára, mivel az nem használja ki a Lsv2 számítási feladatait.
 
-<sup>5</sup> a Lsv2 sorozatú virtuális gépek egyszerre akár 30 [percig is elérhetik a lemez](linux/disk-bursting.md) teljesítményét. 
+<sup>5</sup> a Lsv2 sorozatú virtuális gépek egyszerre akár 30 [percig is elérhetik a lemez](./disk-bursting.md) teljesítményét. 
 
 <sup>6</sup> több mint 64 vCPU rendelkező virtuális gépekhez a következő támogatott vendég operációs rendszerek egyike szükséges:
 
@@ -87,6 +87,6 @@ Feltört: támogatott<br>
 További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: b02c16c63d83fc33be5512d26eafb0ca0d6c9b98
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 54ac7b27ada62a969dd40428fd9a753bb5a99530
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145888"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499832"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Oktatóanyag: Alkalmazás üzembe helyezése a Service Fabric Meshben sablon használatával
 
@@ -59,7 +59,7 @@ az login
 az account set --subscription "<subscriptionName>"
 ```
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő paranccsal hozzon létre egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -107,7 +107,7 @@ Ahhoz, hogy képet tudjon küldeni egy ACR-példányba, először szüksége van
 >[!NOTE]
 > 2020. november 2., a [letöltési sebességre vonatkozó korlátozások](https://docs.docker.com/docker-hub/download-rate-limit/) a Docker ingyenes csomag fiókjaiból származó névtelen és hitelesített kérelmekre vonatkoznak, és az IP-cím kényszeríti. 
 > 
-> Ezek a parancsok a Docker hub nyilvános lemezképeit használják. Vegye figyelembe, hogy a díjszabás korlátozott lehet. További részletek: [hitelesítés a Docker hub](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub)használatával.
+> Ezek a parancsok a Docker hub nyilvános lemezképeit használják. Vegye figyelembe, hogy a díjszabás korlátozott lehet. További részletek: [hitelesítés a Docker hub](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)használatával.
 
 Windows-rendszerképek lekérése:
 
@@ -201,7 +201,7 @@ A Service Fabric Mesh-alkalmazás egy olyan Azure-erőforrás, amelyet az Azure 
 Ez az oktatóanyag egy teendőlistát használ példaként.  Új sablon és paraméterfájlok létrehozása helyett töltse le a [mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) üzembe helyezési sablont és a [mesh_rp.windows.parameter.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) paramétereket.
 
 ### <a name="parameters"></a>Paraméterek
-Ha a sablon olyan értékeket tartalmaz, amelyek az alkalmazás üzembe helyezését követően vagy üzemelő példányonként várhatóan változni fognak (amennyiben más üzemelő példányokhoz is használni kívánja a sablont), az ajánlott eljárás az értékek paraméterezése. Ehhez hozzon létre egy „paraméterek” szakaszt az üzembe helyezési sablon tetején, majd adja meg a paraméterek neveit és tulajdonságait, amelyekre később az üzembe helyezési sablonban hivatkozhat. A paraméterdefiníciók *type* , *defaultValue* és egy nem kötelező *metadata* szakaszt tartalmaznak *leírással* együtt.
+Ha a sablon olyan értékeket tartalmaz, amelyek az alkalmazás üzembe helyezését követően vagy üzemelő példányonként várhatóan változni fognak (amennyiben más üzemelő példányokhoz is használni kívánja a sablont), az ajánlott eljárás az értékek paraméterezése. Ehhez hozzon létre egy „paraméterek” szakaszt az üzembe helyezési sablon tetején, majd adja meg a paraméterek neveit és tulajdonságait, amelyekre később az üzembe helyezési sablonban hivatkozhat. A paraméterdefiníciók *type*, *defaultValue* és egy nem kötelező *metadata* szakaszt tartalmaznak *leírással* együtt.
 
 A Paraméterek szakasz az üzembe helyezési sablon tetején, az *erőforrások* szakasz előtt van definiálva:
 
@@ -401,7 +401,7 @@ Vizsgálja meg az üzembe helyezett alkalmazás naplóit az `az mesh code-packag
 az mesh code-package-log get --resource-group myResourceGroup --application-name todolistapp --service-name WebFrontEnd --replica-name 0 --code-package-name WebFrontEnd
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

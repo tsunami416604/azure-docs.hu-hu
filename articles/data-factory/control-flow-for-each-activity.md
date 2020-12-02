@@ -3,27 +3,27 @@ title: ForEach-tevékenység Azure Data Factory
 description: Az minden tevékenység esetében egy ismétlődő vezérlési folyamat van definiálva a folyamatban. Ez a művelet egy gyűjtemény átugrására és meghatározott tevékenységek végrehajtására szolgál.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71e96e6245d4cf922b82162e01a972264699f3ac
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417184"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499509"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-tevékenység Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A ForEach tevékenység a folyamat ismétlődő vezérlési folyamatát határozza meg. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Szintaxis
 A tulajdonságokat a cikk későbbi részében ismertetjük. Az Items tulajdonság a gyűjtemény és a gyűjtemény minden eleme a `@item()` következő szintaxissal látható módon hivatkozik rá:  
 
 ```json
@@ -195,7 +195,7 @@ A ForEach tevékenységben adjon meg egy olyan tömböt, amelyet meg kell ismét
 Több tevékenység is megismételhető (például másolási és webes tevékenységek) egy ForEach-tevékenységben. Ebben a forgatókönyvben azt javasoljuk, hogy több tevékenységet is elkülönítse egy külön folyamatba. Ezt követően használhatja a folyamat [ExecutePipeline tevékenységét](control-flow-execute-pipeline-activity.md) a foreach tevékenységgel, hogy meghívja a különálló folyamatot több tevékenységgel. 
 
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Szintaxis
 
 ```json
 {

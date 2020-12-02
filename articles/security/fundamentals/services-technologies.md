@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: a4cc6e31e49243af8fa52ac568bcbba660bcde7e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842736"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498795"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Az Azure-ban elérhető biztonsági szolgáltatások és technológiák
 
@@ -71,7 +71,7 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|Egy felhőalapú hitelesítési tárház, amely több-bérlős, felhőalapú címtárat és több Identitáskezelés-kezelő szolgáltatást támogat az Azure-on belül.  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|Identitáskezelés-kezelő szolgáltatás, amely lehetővé teszi, hogy az ügyfelek regisztráljanak, jelentkezzenek be és kezeljenek profilokat Azure-alapú alkalmazások használatakor.   |
 | [Azure Active Directory tartományi szolgáltatások](../../active-directory-domain-services/overview.md)| A Active Directory tartományi szolgáltatások felhőalapú és felügyelt verziója. |
-| [Azure AD-Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| A biztonságos információkhoz való hozzáférés engedélyezése előtt a hitelesítés és ellenőrzés számos különböző formáját alkalmazó biztonsági rendelkezés. |
+| [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| A biztonságos információkhoz való hozzáférés engedélyezése előtt a hitelesítés és ellenőrzés számos különböző formáját alkalmazó biztonsági rendelkezés. |
 
 ## <a name="backup-and-disaster-recovery"></a>Biztonsági mentés és vész-helyreállítás
 |Szolgáltatás|Leírás|
@@ -79,7 +79,7 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 | [Azure &nbsp; Backup](../../backup/backup-overview.md)| Azure-alapú szolgáltatás, amely az Azure-felhőben tárolt adatbiztonsági mentésére és helyreállítására szolgál. |
 | [Azure &nbsp; site &nbsp; Recovery](../../site-recovery/site-recovery-overview.md)|Egy online szolgáltatás, amely a fizikai és virtuális gépeken futó munkaterheléseket replikálja egy elsődleges helyről egy másodlagos helyre, hogy a meghibásodás után engedélyezze a szolgáltatások helyreállítását. |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 |Szolgáltatás|Leírás|
 |------|--------|
 | [Hálózati &nbsp; biztonsági &nbsp; csoportok](../../virtual-network/virtual-network-vnet-plan-design-arm.md)| Egy 5 rekordos hálózati hozzáférés-vezérlési funkció, amely lehetővé teszi vagy megtagadja a döntéseket.  |
@@ -91,5 +91,5 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 | [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)| Globális DNS-terheléselosztó.|
 | [Azure-alkalmazásproxy](../../active-directory/manage-apps/application-proxy.md)| A helyszíni környezetben üzemeltetett webalkalmazások távoli elérésének biztonságossá tételéhez használt hitelesítő kezelőfelület. |
 |[Azure Firewall](../../firewall/overview.md)|Felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure Virtual Network-erőforrásait.|
-|[Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)|Az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva védelmet nyújt a DDoS-támadásokkal szemben.|
+|[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)|Az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva védelmet nyújt a DDoS-támadásokkal szemben.|
 |[Virtual Network szolgáltatási végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)|Közvetlen kapcsolaton keresztül kiterjesztheti a virtuális hálózat privát címterület-területét és a VNet identitását az Azure-szolgáltatásokra.|

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 730a29ff579ce6a1970ceafad5891611b52c059d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7ed2a672f0f7149240e799b5529a7a3a6836a702
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972288"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499305"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>A IaaS-erőforrások migrálása a Azure Resource Managerra 2023. március 1-től 
 
@@ -45,12 +45,12 @@ Kezdje el megtervezni az áttelepítés megtervezését Azure Resource Managerre
    - Az Azure Resource Graph-t a [portál](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) vagy a [PowerShell](../governance/resource-graph/concepts/work-with-data.md) használatával is lekérdezheti az összes megjelölt virtuális gép (klasszikus) és a kapcsolódó információk listájának megtekintéséhez a kiválasztott előfizetések esetében. 
    - 2020. február 8-án és szeptember 2-án az előfizetések tulajdonosainak küldött e-maileket a virtuális gépeket tartalmazó összes előfizetés listájával (klasszikus). A lista létrehozásához használja őket. 
 
-1. [További](./windows/migration-classic-resource-manager-overview.md) információ a [Linux](./linux/migration-classic-resource-manager-plan.md) és a [Windows rendszerű](./windows/migration-classic-resource-manager-plan.md) virtuális gépek (klasszikus) Azure Resource Manager való áttelepítéséről. További információ: a [klasszikusról Azure Resource Manager áttelepítésre vonatkozó gyakori kérdések](./migration-classic-resource-manager-faq.md).
+1. [További](./migration-classic-resource-manager-overview.md) információ a [Linux](./migration-classic-resource-manager-plan.md) és a [Windows rendszerű](./migration-classic-resource-manager-plan.md) virtuális gépek (klasszikus) Azure Resource Manager való áttelepítéséről. További információ: a [klasszikusról Azure Resource Manager áttelepítésre vonatkozó gyakori kérdések](./migration-classic-resource-manager-faq.md).
 
-1. Javasoljuk, hogy indítsa el a tervezést a [platform-támogatás áttelepítési eszköz](./windows/migration-classic-resource-manager-overview.md) használatával a meglévő virtuális gépek három egyszerű lépéssel történő áttelepítéséhez: érvényesítés, előkészítés és végrehajtás. Az eszköz úgy lett kialakítva, hogy a virtuális gépeket minimálisan, állásidő nélkül telepítse át. 
+1. Javasoljuk, hogy indítsa el a tervezést a [platform-támogatás áttelepítési eszköz](./migration-classic-resource-manager-overview.md) használatával a meglévő virtuális gépek három egyszerű lépéssel történő áttelepítéséhez: érvényesítés, előkészítés és végrehajtás. Az eszköz úgy lett kialakítva, hogy a virtuális gépeket minimálisan, állásidő nélkül telepítse át. 
 
    1. Az első lépés, a validate nem befolyásolja a meglévő telepítést, és felsorolja az áttelepítéshez nem támogatott forgatókönyveket. 
-   1. A központi telepítés kijavításához és az áttelepítéshez való felkészüléshez végezze el a [megkerülő megoldások listáját](./windows/migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) . 
+   1. A központi telepítés kijavításához és az áttelepítéshez való felkészüléshez végezze el a [megkerülő megoldások listáját](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) . 
    1. Ideális esetben az összes érvényesítési hiba kijavítása után az előkészítés és a végrehajtás lépései során nem merülhet fel probléma. A végrehajtás sikeres végrehajtása után a rendszer áttelepíti az üzemelő példányt Azure Resource Manager, és a Azure Resource Manager által elérhetővé tett új API-kkal felügyelhető. 
 
    Ha az áttelepítési eszköz nem alkalmas az áttelepítésre, az áttelepítéshez [más számítási ajánlatokat](/azure/architecture/guide/technology-choices/compute-decision-tree) is megvizsgálhat. Mivel számos Azure-beli számítási ajánlat létezik, és ezek különböznek egymástól, nem biztosítható a platform által támogatott áttelepítési útvonal.  

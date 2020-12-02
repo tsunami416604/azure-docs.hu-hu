@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: 5df56b304463ab981026fbe0c82d831d83d702c3
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f23d1fb0162abf05fba97c2f6fb02be9238fabd2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380185"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500359"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances-linux"></a>Költségek megtakarítása a Azure Reserved VM Instances (Linux)
 
@@ -86,7 +86,7 @@ A fenntartott VM-példányok a legtöbb virtuálisgép-mérethez érhetők el, n
 
 ## <a name="buy-a-reserved-vm-instance"></a>Fenntartott virtuálisgép-példány vásárlása
 
-Egy fenntartott VM-példányt vásárolhat a [Azure Portalban](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/monthly-payments-reservations.md).
+Egy fenntartott VM-példányt vásárolhat a [Azure Portalban](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/prepare-buy-reservation.md).
 Ezek a követelmények a fenntartott VM-példányok vásárlására vonatkoznak:
 
 - Legalább egy EA-előfizetéshez vagy egy utólagos elszámolású előfizetéshez tartozó tulajdonosi szerepkörrel kell rendelkeznie.
@@ -158,6 +158,4 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
     - [A foglalási használat ismertetése használatalapú fizetéses előfizetés esetén](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
     - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
     - [A Reservations díjában nem szereplő Windows-szoftverköltségek](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
-    - [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](https://docs.microsoft.com/partner-center/azure-reservations)
-
-
+    - [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](/partner-center/azure-reservations)

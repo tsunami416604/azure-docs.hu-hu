@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6519f9d549c513e03400366447812a170f9ab41c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: acdddcd95883d13393838a47281fb888ac2f9274
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978662"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500393"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
 
@@ -50,7 +50,7 @@ Ebben a szakaszban a közös teljesítménymutatókat tárgyaljuk a Premium Stor
 
 ## <a name="iops"></a>IOPS
 
-A IOPS, illetve a másodpercenkénti bemeneti/kimeneti műveletek száma az, hogy az alkalmazás milyen kérelmeket küld a Storage-lemezeknek egy másodperc alatt. Egy bemeneti/kimeneti művelet olvasható vagy írható, szekvenciális vagy véletlenszerű lehet. Az online tranzakció-feldolgozási (OLTP) alkalmazások, mint például az online kiskereskedelmi webhelyek, azonnal fel kell dolgoznia számos egyidejű felhasználói kérést. A felhasználói kérések olyan intenzív adatbázis-tranzakciókat szúrnak be és frissítenek, amelyeket az alkalmazásnak gyorsan kell feldolgoznia. Ezért a OLTP-alkalmazások nagyon magas IOPS igényelnek. Ilyen alkalmazások több millió kis-és véletlenszerű IO-kérelmet kezelnek. Ha van ilyen alkalmazás, meg kell terveznie az alkalmazás-infrastruktúrát, hogy optimalizálja a IOPS. A későbbi, az *alkalmazások teljesítményének optimalizálása*című szakaszban részletesen ismertetjük az összes olyan tényezőt, amelyet meg kell fontolnia, hogy magas IOPS kapjon.
+A IOPS, illetve a másodpercenkénti bemeneti/kimeneti műveletek száma az, hogy az alkalmazás milyen kérelmeket küld a Storage-lemezeknek egy másodperc alatt. Egy bemeneti/kimeneti művelet olvasható vagy írható, szekvenciális vagy véletlenszerű lehet. Az online tranzakció-feldolgozási (OLTP) alkalmazások, mint például az online kiskereskedelmi webhelyek, azonnal fel kell dolgoznia számos egyidejű felhasználói kérést. A felhasználói kérések olyan intenzív adatbázis-tranzakciókat szúrnak be és frissítenek, amelyeket az alkalmazásnak gyorsan kell feldolgoznia. Ezért a OLTP-alkalmazások nagyon magas IOPS igényelnek. Ilyen alkalmazások több millió kis-és véletlenszerű IO-kérelmet kezelnek. Ha van ilyen alkalmazás, meg kell terveznie az alkalmazás-infrastruktúrát, hogy optimalizálja a IOPS. A későbbi, az *alkalmazások teljesítményének optimalizálása* című szakaszban részletesen ismertetjük az összes olyan tényezőt, amelyet meg kell fontolnia, hogy magas IOPS kapjon.
 
 Ha prémium szintű tárolót csatlakoztat a nagy méretű virtuális gépéhez, az Azure a lemez specifikációinak megfelelően kiosztja a garantált IOPS-t. A P50-es lemeznél például 7500 IOPS lesz kiosztva. Minden nagy méretű virtuális gép rendelkezik egy IOPS-korláttal is, amelyet még fenn tud tartani. A standard GS5 virtuális gép például 80 000 IOPS korláttal rendelkezik.
 
@@ -64,11 +64,11 @@ Az átviteli sebesség és a IOPS közötti kapcsolat az alábbi képletben lát
 
 ![A IOPS és az átviteli sebesség aránya](linux/media/premium-storage-performance/image1.png)
 
-Ezért fontos megállapítani az alkalmazás által igényelt optimális átviteli sebességet és IOPS értékeket. Ahogy az egyiket próbálja optimalizálni, a másik is hatással lesz rá. Az *alkalmazások teljesítményének optimalizálása*egy későbbi szakaszban a IOPS és az átviteli sebesség optimalizálásával kapcsolatos további részleteket tárgyaljuk.
+Ezért fontos megállapítani az alkalmazás által igényelt optimális átviteli sebességet és IOPS értékeket. Ahogy az egyiket próbálja optimalizálni, a másik is hatással lesz rá. Az *alkalmazások teljesítményének optimalizálása* egy későbbi szakaszban a IOPS és az átviteli sebesség optimalizálásával kapcsolatos további részleteket tárgyaljuk.
 
 ## <a name="latency"></a>Késés
 
-A késés azt az időtartamot veszi igénybe, ameddig egy alkalmazás egyetlen kérést kap, elküldheti a tároló lemezekre, és elküldheti a választ az ügyfélnek. Ez az alkalmazás teljesítményének kritikus mérőszáma a IOPS és az átviteli sebesség mellett. A Premium Storage-lemez késése a kérelem információinak lekéréséhez és az alkalmazással való kommunikációhoz szükséges idő. Premium Storage konzisztens kis késést biztosít. A prémium szintű lemezeket úgy tervezték, hogy a legtöbb IO-művelet esetében egyszámjegyű ezredmásodperces késést biztosítsanak. Ha a Premium Storage-lemezeken engedélyezte az írásvédett gazdagép gyorsítótárazását, sokkal alacsonyabb olvasási késést érhet el. A lemezes gyorsítótárazás részletes ismertetését a későbbi, az *alkalmazások teljesítményének optimalizálását*ismertető szakaszban tárgyaljuk.
+A késés azt az időtartamot veszi igénybe, ameddig egy alkalmazás egyetlen kérést kap, elküldheti a tároló lemezekre, és elküldheti a választ az ügyfélnek. Ez az alkalmazás teljesítményének kritikus mérőszáma a IOPS és az átviteli sebesség mellett. A Premium Storage-lemez késése a kérelem információinak lekéréséhez és az alkalmazással való kommunikációhoz szükséges idő. Premium Storage konzisztens kis késést biztosít. A prémium szintű lemezeket úgy tervezték, hogy a legtöbb IO-művelet esetében egyszámjegyű ezredmásodperces késést biztosítsanak. Ha a Premium Storage-lemezeken engedélyezte az írásvédett gazdagép gyorsítótárazását, sokkal alacsonyabb olvasási késést érhet el. A lemezes gyorsítótárazás részletes ismertetését a későbbi, az *alkalmazások teljesítményének optimalizálását* ismertető szakaszban tárgyaljuk.
 
 Ha a magasabb IOPS és átviteli sebesség eléréséhez optimalizálja az alkalmazást, az hatással lesz az alkalmazás késésére. Az alkalmazás teljesítményének finomhangolása után mindig mérje fel az alkalmazás késését, hogy elkerülje a váratlan nagy késési viselkedést.
 
@@ -169,7 +169,7 @@ Az IO-méret az egyik legfontosabb tényező. Az i/o-méret az alkalmazás álta
 
 Egyes alkalmazások lehetővé teszik az IO-méret módosítását, míg egyes alkalmazások nem. A SQL Server például meghatározza az optimális IO-méretet, és nem biztosítja a felhasználóknak semmilyen gomb megváltoztatását. Másfelől az Oracle egy [db- \_ blokk \_ méret](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) nevű paramétert biztosít, amellyel konfigurálhatja az adatbázis I/O-kérelmének méretét.
 
-Ha olyan alkalmazást használ, amely nem teszi lehetővé az i/o-méret módosítását, a cikk útmutatásai alapján optimalizálhatja az alkalmazáshoz leginkább kapcsolódó teljesítménymutatókat. Például:
+Ha olyan alkalmazást használ, amely nem teszi lehetővé az i/o-méret módosítását, a cikk útmutatásai alapján optimalizálhatja az alkalmazáshoz leginkább kapcsolódó teljesítménymutatókat. Példa:
 
 * Egy OLTP-alkalmazás több millió kis-és véletlenszerű IO-kérelmet hoz létre. Az ilyen típusú IO-kérelmek kezeléséhez meg kell terveznie az alkalmazás-infrastruktúrát, hogy nagyobb IOPS kapjon.  
 * Az adattárház-alkalmazások nagy és szekvenciális IO-kérelmeket generálnak. Az ilyen típusú IO-kérelmek kezeléséhez meg kell terveznie az alkalmazás-infrastruktúrát, hogy nagyobb sávszélességet vagy átviteli sebességet kapjon.
@@ -222,7 +222,7 @@ Ha azonban ugyanazt az alkalmazást Premium Storage-on üzemelteti, akkor a virt
 
 Az alábbi táblázat összefoglalja a forgatókönyvnek a standard és a Premium Storage szerinti lebontását.
 
-| &nbsp; | **Normál** | **Prémium** |
+| &nbsp; | **Standard** | **Prémium szintű** |
 | --- | --- | --- |
 | **Virtuális gép ára havonta** |$1 570,58 (szabványos \_ D14) |$1 003,66 (szabványos \_ DS13) |
 | **Lemezek havi díja** |$1 638,40 (32 x 1 – TB lemez) |$544,34 (4 x P30-lemez) |
@@ -293,7 +293,7 @@ A Premium Storage adatlemezek ReadOnly gyorsítótárazásának konfigurálásá
 Alapértelmezés szerint az operációsrendszer-lemezeken engedélyezve van a ReadWrite gyorsítótárazás. Mostanában a ReadWrite gyorsítótárazásának támogatása is támogatott az adatlemezeken. Ha ReadWrite gyorsítótárazást használ, megfelelő módon kell megadnia az adatok gyorsítótárból állandó lemezzé való írását. Például a SQL Server kezeli a gyorsítótárazott adatlemezek saját tárolóba való írását. Ha a ReadWrite cache-t olyan alkalmazással használja, amely nem kezeli a szükséges adatmegőrzést, adatvesztést okozhat, ha a virtuális gép összeomlik.
 
 *Nincs*  
-Jelenleg a **none** érték csak adatlemezeken támogatott. OPERÁCIÓSRENDSZER-lemezeken nem támogatott. Ha a **nincs** beállítást egy operációsrendszer-lemezen állítja be, akkor a rendszer felülbírálja ezt belsőleg, és **readonly**értékre állítja azt.
+Jelenleg a **none** érték csak adatlemezeken támogatott. OPERÁCIÓSRENDSZER-lemezeken nem támogatott. Ha a **nincs** beállítást egy operációsrendszer-lemezen állítja be, akkor a rendszer felülbírálja ezt belsőleg, és **readonly** értékre állítja azt.
 
 Az alábbi irányelvek alkalmazásával például Premium Storage futtathatja SQL Server a következő műveleteket:
 
@@ -307,9 +307,9 @@ Az alábbi irányelvek alkalmazásával például Premium Storage futtathatja SQ
 
 Az összes prémium szintű SSD-vagy Ultra-lemez esetében letilthatja a lemezen lévő fájlrendszerek "korlátozásait", hogy javítsa a teljesítményt, ha ismert, hogy nincsenek olyan gyorsítótárak, amelyek adatvesztést okozhatnak.  Ha az Azure Disk gyorsítótárazása ReadOnly vagy none értékre van beállítva, letilthatja a korlátozásokat.  Ha azonban a gyorsítótárazás a ReadWrite értékre van állítva, a korlátozásoknak engedélyezve kell maradniuk az írás tartósságának biztosítása érdekében.  A korlátok általában alapértelmezés szerint engedélyezve vannak, de az alábbi módszerek egyikével letilthatja a korlátozásokat a fájlrendszer típusától függően:
 
-* A **reiserFS**esetében a Barrier = none csatlakoztatási lehetőséggel tiltsa le a korlátokat.  A korlátok explicit engedélyezéséhez használja a Barrier = flush lehetőséget.
-* Az **ext3/ext4**esetén használja a Barrier = 0 csatlakoztatási lehetőséget a korlátok letiltásához.  A korlátok explicit engedélyezéséhez használja a Barrier = 1.
-* A **XFS**esetében használja a nem Barrier Mount kapcsolót a korlátok letiltásához.  A korlátok explicit engedélyezéséhez használja a gáton.  Vegye figyelembe, hogy a Linux kernel későbbi verzióiban a XFS fájlrendszer kialakítása mindig biztosítja a tartósságot, és a korlátok letiltásának nincs hatása.  
+* A **reiserFS** esetében a Barrier = none csatlakoztatási lehetőséggel tiltsa le a korlátokat.  A korlátok explicit engedélyezéséhez használja a Barrier = flush lehetőséget.
+* Az **ext3/ext4** esetén használja a Barrier = 0 csatlakoztatási lehetőséget a korlátok letiltásához.  A korlátok explicit engedélyezéséhez használja a Barrier = 1.
+* A **XFS** esetében használja a nem Barrier Mount kapcsolót a korlátok letiltásához.  A korlátok explicit engedélyezéséhez használja a gáton.  Vegye figyelembe, hogy a Linux kernel későbbi verzióiban a XFS fájlrendszer kialakítása mindig biztosítja a tartósságot, és a korlátok letiltásának nincs hatása.  
 
 ## <a name="disk-striping"></a>Lemezek csíkozása
 
@@ -319,7 +319,7 @@ Windows rendszeren a tárolóhelyek együtt használhatók a lemezek szalagos t�
 
 Fontos: a Kiszolgálókezelő felhasználói felületének használatával beállíthatja, hogy az oszlopok száma összesen legfeljebb 8 legyen a csíkozott kötetnél. Nyolcnál több lemez csatolásakor a PowerShell használatával hozza létre a kötetet. A PowerShell használatával megadhatja az oszlopok számát a lemezek számával megegyezően. Ha például 16 lemez van egyetlen szalagos készletben, a *New-VirtualDisk PowerShell-* parancsmag *NumberOfColumns* paraméterében 16 oszlopot kell megadnia.
 
-Linux rendszeren a lemezek együttes kiépítéséhez használja a MDADM segédprogramot. A Linux rendszerű lemezek csíkozásával kapcsolatos részletes lépéseket a [szoftveres RAID konfigurálása Linuxon](linux/configure-raid.md)című témakörben talál.
+Linux rendszeren a lemezek együttes kiépítéséhez használja a MDADM segédprogramot. A Linux rendszerű lemezek csíkozásával kapcsolatos részletes lépéseket a [szoftveres RAID konfigurálása Linuxon](/previous-versions/azure/virtual-machines/linux/configure-raid)című témakörben talál.
 
 *Sáv mérete*  
 A lemezes csíkozás fontos konfigurációja a sáv mérete. A sáv mérete vagy a blokk mérete az alkalmazás által a csíkozott köteten címezhető legkisebb adatmennyiség. A konfigurált sáv mérete az alkalmazás típusától és a kérelem mintától függ. Ha rossz szalagos méretet választ, az IO-hibákhoz vezethet, ami az alkalmazás csökkentett teljesítményéhez vezet.
@@ -376,7 +376,7 @@ A csíkozott kötetek esetében elég magas a várólista mélységének megőrz
 
 Az Azure Premium Storage a kiválasztott virtuálisgép-mérettől és a választott IOPS függően megadott számú adatmennyiséget és átviteli sebességet biztosít. Bármikor, amikor az alkalmazás megkísérli a IOPS vagy az átviteli sebesség megadását a virtuális gép vagy a lemez által kezelhető korlátok felett, Premium Storage fogja szabályozni. Ez a jegyzék az alkalmazás csökkentett teljesítményének formáját képezi. Ez magasabb késést, alacsonyabb átviteli sebességet vagy alacsonyabb IOPS jelenthet. Ha Premium Storage nem szabályozza a szabályozást, az alkalmazás teljesen meghiúsulhat, ha túllépi az erőforrások eléréséhez szükséges erőforrásokat. Így a teljesítménybeli problémák elkerülése érdekében a szabályozás miatt mindig elegendő erőforrást kell kiépíteni az alkalmazáshoz. Vegye figyelembe, hogy a fentiekben ismertetett virtuálisgép-méretek és a lemez méretei című szakaszban leírt módon. A teljesítményértékelés a legjobb módszer arra, hogy kiderítse, milyen erőforrásokra lesz szüksége az alkalmazás üzemeltetéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a lemez teljesítménytesztét szeretné használni, tekintse meg a következő cikkeket: a lemez teljesítményértékelése:
 

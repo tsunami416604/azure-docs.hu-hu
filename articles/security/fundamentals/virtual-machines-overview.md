@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 91dfb3cb07cca8ec89c77dea43f1cd075db11bbf
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ed2cb967b24ce5abdebadfe29847ae1a16b4e745
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014764"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498744"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure Virtual Machines biztonsági áttekintése
 Ez a cikk áttekintést nyújt a virtuális gépekkel használható alapvető Azure-beli biztonsági funkciókról.
@@ -117,7 +117,7 @@ Site Recovery:
 További információ:
 
 * [Mi az Azure Site Recovery?](../../site-recovery/site-recovery-overview.md)
-* [Hogy működik az Azure Site Recovery?](/azure/site-recovery/azure-to-azure-architecture)
+* [Hogy működik az Azure Site Recovery?](../../site-recovery/azure-to-azure-architecture.md)
 * [Milyen számítási feladatokat véd a Azure Site Recovery?](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Virtuális hálózat
@@ -128,7 +128,7 @@ Az Azure-beli virtuális hálózatok a fizikai Azure hálózati hálóra épül�
 
 További információ:
 
-* [Az Azure hálózati biztonság áttekintése](network-overview.md)
+* [A nagyvállalati hálózati biztonság áttekintése](network-overview.md)
 * [Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
 * [Hálózati funkciók és partnerkapcsolatok nagyvállalati forgatókönyvekhez](https://azure.microsoft.com/blog/networking-enterprise/)
 
@@ -169,6 +169,6 @@ További információ:
 * [Az Azure bizalmas számítástechnika bemutatása](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure Confidential Computing](https://azure.microsoft.com/blog/azure-confidential-computing/)  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A virtuális gépek és operációs rendszerek [biztonsági eljárásainak](iaas.md) megismerése.

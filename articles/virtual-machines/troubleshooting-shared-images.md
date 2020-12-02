@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: d15f58a2d87483e8e2fd6711481bfe8866ca1548
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 74e1dc12be9bfec57d76357a335b46a55912f6df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920610"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500274"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Megosztott rendszerkép-galériák az Azure-ban – problémamegoldás
 
@@ -137,7 +137,7 @@ Ha problémákat tapasztal a megosztott képtárakon, a képdefiníciókban és 
 
 *A ZRS nem támogatott ebben a régióban.*  
 **OK**: a standard Zone-redundáns tárolást (ZRS) választotta egy olyan régióban, amely még nem támogatja azt.  
-**Áthidaló megoldás**: módosítsa a Storage-fiók típusát **prémium \_ LRS** vagy **standard \_ LRS**. Tekintse meg a dokumentációt a ZRS előzetes [verzióval rendelkező régiók legújabb listájához](/azure/storage/common/storage-redundancy#zone-redundant-storage) .
+**Áthidaló megoldás**: módosítsa a Storage-fiók típusát **prémium \_ LRS** vagy **standard \_ LRS**. Tekintse meg a dokumentációt a ZRS előzetes [verzióval rendelkező régiók legújabb listájához](../storage/common/storage-redundancy.md#zone-redundant-storage) .
 
 ## <a name="creating-or-updating-image-versions"></a>Rendszerkép-verziók létrehozása vagy frissítése ##
 
@@ -341,6 +341,6 @@ A **--Expand ReplicationStatus** jelzővel ellenőrizze, hogy befejeződött-e a
 Az [Azure korlátai és kvótái](../azure-resource-manager/management/azure-subscription-service-limits.md) az összes megosztott képkatalógusra, a képdefinícióra és a rendszerkép verzió-erőforrásaira érvényesek. Győződjön meg arról, hogy az előfizetések korlátain belül van. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [megosztott képtárakról](./linux/shared-image-galleries.md).

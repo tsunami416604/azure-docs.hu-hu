@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 2b54b167413b0fcbe7022eab4bbbf34b37225be5
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 7275e33e44c20ece6eb7d620e2c1e8032be41a7b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810576"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498659"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>Üzenetek küldése és fogadása Azure Service Bus várólistákból (Python)
 Ebből a cikkből megtudhatja, hogyan küldhet üzeneteket és fogadhat üzeneteket Azure Service Bus várólistákból a Python használatával. 
@@ -208,5 +208,4 @@ Tekintse meg a következő dokumentációt és mintákat:
 - [Minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples). 
     - A **sync_samples** mappa olyan mintákat tartalmaz, amelyek bemutatják, hogyan kezelhető a Service Bus szinkron módon. Ebben a rövid útmutatóban ezt a módszert használta. 
     - A **async_samples** mappa olyan mintákat tartalmaz, amelyek bemutatják, hogyan lehet aszinkron módon kommunikálni a Service Busokkal. 
-- [Az Azure-servicebus dokumentációja](https://docs.microsoft.com/python/api/azure-servicebus/azure.servicebus?view=azure-python-preview&preserve-view=true)
-
+- [Az Azure-servicebus dokumentációja](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)

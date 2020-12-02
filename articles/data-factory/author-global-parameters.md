@@ -5,15 +5,15 @@ services: data-factory
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.date: 08/31/2020
-ms.openlocfilehash: c20bb77711833a1a17082e25e31d4a2e14db5bf9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 676b954854fd0c2b0c4b12c654972e2e80cae781
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328183"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500172"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globális paraméterek a Azure Data Factory
 
@@ -31,7 +31,7 @@ A Side-NAV lapon adjon meg egy nevet, válasszon ki egy adattípust, és adja me
 
 ![Képernyőkép, amely azt mutatja, hogy hol adja hozzá a nevet, az adattípust és az értéket az új globális paraméterhez.](media/author-global-parameters/create-global-parameter-2.png)
 
-A globális paraméter létrehozása után a paraméter nevére kattintva szerkesztheti. Ha egyszerre több paramétert szeretne módosítani, válassza az **összes szerkesztése**lehetőséget.
+A globális paraméter létrehozása után a paraméter nevére kattintva szerkesztheti. Ha egyszerre több paramétert szeretne módosítani, válassza az **összes szerkesztése** lehetőséget.
 
 ![Globális paraméterek létrehozása](media/author-global-parameters/create-global-parameter-3.png)
 
@@ -58,7 +58,7 @@ Ha globális paramétereket ad hozzá az ARM-sablonhoz, egy olyan gyári szintű
 
 A következő lépések azt ismertetik, hogyan helyezhetők üzembe globális paraméterek a PowerShell használatával. Ez akkor hasznos, ha a cél-előállító gyári szintű beállítással, például az ügyfél által felügyelt kulccsal rendelkezik.
 
-Ha egy gyárat tesz közzé, vagy globális paraméterekkel exportál egy ARM-sablont, a *globalParameters* nevű mappát egyyour-factory-name_GlobalParameters.jsnevű fájllal hozza létre * a*rendszer. Ez a fájl egy JSON-objektum, amely a közzétett gyár összes globális paraméter-típusát és értékét tartalmazza.
+Ha egy gyárat tesz közzé, vagy globális paraméterekkel exportál egy ARM-sablont, a *globalParameters* nevű mappát egyyour-factory-name_GlobalParameters.jsnevű fájllal hozza létre *a* rendszer. Ez a fájl egy JSON-objektum, amely a közzétett gyár összes globális paraméter-típusát és értékét tartalmazza.
 
 ![Globális paraméterek közzététele](media/author-global-parameters/global-parameters-adf-publish.png)
 

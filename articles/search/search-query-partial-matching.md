@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f36502eb464f051cd50b51245db69fa76daa915
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935772"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499543"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Részleges kifejezéses keresés és minták speciális karakterekkel (helyettesítő karakterek, regex, mintázatok)
 
@@ -160,7 +160,7 @@ Függetlenül attól, hogy az elemzőket kiértékeli, vagy egy adott konfigurá
 
 A beépített vagy előre definiált elemzők név szerint adhatók meg `analyzer` egy mező definíciójának tulajdonságában, és az indexben nem szükséges további konfiguráció. Az alábbi példa bemutatja, hogyan állíthatja be az `whitespace` elemzőt egy mezőre. 
 
-További forgatókönyvek és további információ a beépített elemzők használatáról: [előre definiált elemzők listája](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
+További forgatókönyvek és további információ a beépített elemzők használatáról: [előre definiált elemzők listája](./index-add-custom-analyzers.md#predefined-analyzers-reference). 
 
 ```json
     {
@@ -281,7 +281,7 @@ Az is elképzelhető, hogy a további jogkivonatok létrehozása nagyobb indexet
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk azt ismerteti, hogyan járulnak hozzá az elemzők a problémák lekérdezéséhez és a lekérdezési problémák megoldásához. A következő lépésként tekintse meg az analizátorra gyakorolt hatást az indexeléssel és a lekérdezések feldolgozásával kapcsolatban. Különösen érdemes lehet a Retext API-t használni a jogkivonat-kimenet visszaküldéséhez, hogy pontosan lássuk, mit hoz létre az elemző az indexhez.
 

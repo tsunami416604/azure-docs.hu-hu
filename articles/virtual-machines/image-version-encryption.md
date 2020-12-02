@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: b19dab8dffaa0c9c888e8a9974a43cbb48006fd7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 0f5eb6a2964cdb679c2a83bd9d9b6296e3e962ed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504322"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499288"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Előzetes verzió: az ügyfél által felügyelt kulcsok használata a rendszerképek titkosításához
 
@@ -218,8 +218,8 @@ Amikor létrehozza a rendszerkép verzióját a portálon, a **titkosítás** la
 
 Létrehozhat egy virtuális gépet a rendszerkép verziójának használatával, és az ügyfél által felügyelt kulcsokkal titkosíthatja a lemezeket. Amikor létrehozza a virtuális gépet a portálon, a **lemezek** lapon válassza a **titkosítás az ügyfelek által felügyelt kulcsokkal** vagy a **kettős titkosítás lehetőséget a platform által felügyelt és az ügyfél által felügyelt kulcsokkal** a **titkosítási típushoz**. Ezután kiválaszthatja a titkosítási készletet a legördülő listából.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a [kiszolgálóoldali lemezek titkosításáról](./windows/disk-encryption.md).
+További információ a [kiszolgálóoldali lemezek titkosításáról](./disk-encryption.md).
 
 A vásárlási tervre vonatkozó információk megadásával kapcsolatos információkért lásd: [Azure Marketplace vásárlási terv információinak megadása képek létrehozásakor](marketplace-images.md).

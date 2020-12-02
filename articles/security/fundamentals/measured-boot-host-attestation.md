@@ -8,19 +8,19 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
-ms.openlocfilehash: 73ae811c17a578cafc557b0cda9e98b101dd5c03
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f4906d4e0590df047bac4ee15cb0e996a59c3d5b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557653"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498863"
 ---
 # <a name="measured-boot-and-host-attestation"></a>Mért rendszerindítás és gazdagép-igazolás
 Ez a cikk azt ismerteti, hogyan biztosítja a Microsoft a gazdagépek integritását és biztonságát a mért rendszerindítás és a gazdagép-igazolás használatával.
 
 ## <a name="measured-boot"></a>Mért rendszerindítás
 
-A [platformmegbízhatósági modul](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM) egy megbízható külső fél által szolgáltatott belső vezérlőprogram által védett, illetéktelenül módosítható, titkosítással védett naplózási összetevő. A rendszerindítási konfigurációs napló a platform konfigurációs regiszterei (PCR) által rögzített, kivonattal láncolt méréseket tartalmaz, ha a gazdagép utoljára a rendszerindítás során következik be. Az alábbi ábra a rögzítési folyamatot mutatja be. A korábban kivonatos mérések növekményes hozzáadása a következő mérték kivonatához és a kivonatolási algoritmus futtatása a Union-ben a kivonatoló láncolást hajtja végre.
+A [platformmegbízhatósági modul](/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM) egy megbízható külső fél által szolgáltatott belső vezérlőprogram által védett, illetéktelenül módosítható, titkosítással védett naplózási összetevő. A rendszerindítási konfigurációs napló a platform konfigurációs regiszterei (PCR) által rögzített, kivonattal láncolt méréseket tartalmaz, ha a gazdagép utoljára a rendszerindítás során következik be. Az alábbi ábra a rögzítési folyamatot mutatja be. A korábban kivonatos mérések növekményes hozzáadása a következő mérték kivonatához és a kivonatolási algoritmus futtatása a Union-ben a kivonatoló láncolást hajtja végre.
 
 ![A gazdagép-igazolási szolgáltatás kivonat-láncolását bemutató diagram.](./media/measured-boot-host-attestation/hash-chaining.png)
 
@@ -51,11 +51,11 @@ A debuggerek hatékony eszközöket biztosítanak a fejlesztők számára. A mem
 ### <a name="code-integrity"></a>Kód integritása
 A UEFI [biztonságos rendszerindítás](secure-boot.md) biztosítja, hogy csak megbízható, alacsony szintű szoftverek futhatnak a rendszerindítási folyamat során. Ugyanezeket az ellenőrzéseket is alkalmazni kell a rendszerindítás utáni környezetben az illesztőprogramok és más végrehajtható fájlok kernel módú hozzáféréssel való használatával. Ebből a célból egy kód-integritási (CI) szabályzattal határozható meg, hogy mely illesztőprogramokat, bináris fájlokat és más végrehajtható fájlokat tekinti megbízhatónak az érvényes és érvénytelen aláírások megadásával. Ezeket a szabályzatokat a rendszer kényszeríti. A szabályzat megsértése riasztásokat állít elő a biztonsági incidensek válasza csapatának a vizsgálathoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni a platform integritásának és biztonságának elvégzéséről, olvassa el a következőt:
 
-- [Belső vezérlőprogram biztonsága](firmware.md)
+- [A belső vezérlőprogram biztonsága](firmware.md)
 - [Biztonságos rendszerindítás](secure-boot.md)
-- [Projekt Cerberus](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Titkosítás inaktív állapotban](encryption-atrest.md)
-- [A hypervisor biztonsága](hypervisor.md)
+- [A hipervizor biztonsága](hypervisor.md)

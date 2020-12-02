@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: mimckitt
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 10/02/2020
+ms.date: 11/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: 45bcfdb544d3951feb40a821b601ce60ecc0feaf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 90bc98d63b45e43c9325eed4fe019b18f52d0de8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356773"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500291"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>A virtuális gépek méreteinek korábbi generációi
 
@@ -64,7 +64,7 @@ MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 
 ## <a name="nvv2-series"></a>NVv2 sorozat
 
-**Újabb méretre vonatkozó javaslat** : [NVv3 sorozat](nvv3-series.md)
+**Újabb méretre vonatkozó javaslat**: [NVv3 sorozat](nvv3-series.md)
 
 A NVv2 sorozatú virtuális gépeket az [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU-k és az NVIDIA Grid Technology működteti az Intel Broadwell CPU-val. Ezek a virtuális gépek a GPU-gyorsított grafikus alkalmazásokat és virtuális asztalokat célozzák meg, ahol az ügyfelek szeretnék megjeleníteni az adatokat, szimulálni az eredményeket a megtekintésre, a CAD-re való munkavégzésre vagy a tartalmak megjelenítésére és továbbítására. Emellett ezek a virtuális gépek egyetlen pontosságú számítási feladatot futtathatnak, például a kódolást és a renderelést. A NVv2 Virtual Machines támogatja a Premium Storaget, és a korábbi NV-sorozattal összehasonlítva kétszer a rendszermemóriát (RAM) is elérheti.  
 
@@ -86,7 +86,7 @@ A Linux rendszerű virtuális gépek átméretezésével kapcsolatos további in
 
 ### <a name="basic-a"></a>Alapszintű A  
 
-**Újabb méretre vonatkozó javaslat** : [Av2 sorozat](av2-series.md)
+**Újabb méretre vonatkozó javaslat**: [Av2 sorozat](av2-series.md)
 
 Premium Storage: nem támogatott
 
@@ -116,7 +116,7 @@ A klasszikus üzemi modellben egyes virtuálisgép-méretek neve eltérő a CLI-
 
 ### <a name="a-series"></a>A-sorozat  
 
-**Újabb méretre vonatkozó javaslat** : [Av2 sorozat](av2-series.md)
+**Újabb méretre vonatkozó javaslat**: [Av2 sorozat](av2-series.md)
 
 ACU: 50–100
 
@@ -141,7 +141,7 @@ Premium Storage gyorsítótárazás: nem támogatott
 
 ### <a name="a-series---compute-intensive-instances"></a>A-sorozat – nagy számítási igényű példányok  
 
-**Újabb méretre vonatkozó javaslat** : [Av2 sorozat](av2-series.md)
+**Újabb méretre vonatkozó javaslat**: [Av2 sorozat](av2-series.md)
 
 ACU: 225
 
@@ -161,13 +161,13 @@ Az A8–A11- és a H-sorozat méretei más néven *nagy számítási igényű p�
 <sup>1</sup> Az MPI-alkalmazások esetében a dedikált RDMA háttérrendszer-hálózatot a FDR InfiniBand hálózata teszi lehetővé, amely rendkívül alacsony késést és nagy sávszélességet biztosít.  
 
 > [!NOTE]
-> Az A8 – A11-es virtuális gépek a 3/2021-es kivonulásra vannak tervezve. Javasoljuk, hogy ne hozzon létre új A8 – A11 virtuális gépeket. Telepítse át a meglévő A8 – A11-es virtuális gépeket újabb és nagy teljesítményű, nagy teljesítményű számítási virtuálisgép-méretekre, mint például a H, a HB, a HC, a HBv2, valamint az általános célú számítási virtuálisgép-méretek, például a D, E és F a jobb ár-teljesítmény érdekében. További információ: [HPC áttelepítési útmutató](https://azure.microsoft.com/resources/hpc-migration-guide/).
+> Az [A8 – A11-es virtuális gépek a 3/2021-es kivonulásra vannak tervezve](https://azure.microsoft.com/updates/a8-a11-azure-virtual-machine-sizes-will-be-retired-on-march-1-2021/). Javasoljuk, hogy ne hozzon létre új A8 – A11 virtuális gépeket. Telepítse át a meglévő A8 – A11-es virtuális gépeket újabb és nagy teljesítményű, nagy teljesítményű számítási virtuálisgép-méretekre, mint például a H, a HB, a HC, a HBv2, valamint az általános célú számítási virtuálisgép-méretek, például a D, E és F a jobb ár-teljesítmény érdekében. További információ: [HPC áttelepítési útmutató](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 <br>
 
 ### <a name="d-series"></a>D-sorozat  
 
-**Újabb méretre vonatkozó javaslat** : [Dav4 sorozat](dav4-dasv4-series.md), [DV4](dv4-dsv4-series.md) és [Ddv4](ddv4-ddsv4-series.md) sorozat
+**Újabb méretre vonatkozó javaslat**: [Dav4 sorozat](dav4-dasv4-series.md), [DV4](dv4-dsv4-series.md) és [Ddv4](ddv4-ddsv4-series.md) sorozat
 
 ACU: 160-250 <sup>1</sup>
 
@@ -188,7 +188,7 @@ Premium Storage gyorsítótárazás: nem támogatott
 
 ### <a name="d-series---memory-optimized"></a>D sorozat – optimalizált memória  
 
-**Újabb méretre vonatkozó javaslat** : [Dav4 sorozat](dav4-dasv4-series.md), [DV4](dv4-dsv4-series.md) és [Ddv4](ddv4-ddsv4-series.md) sorozat
+**Újabb méretre vonatkozó javaslat**: [Dav4 sorozat](dav4-dasv4-series.md), [DV4](dv4-dsv4-series.md) és [Ddv4](ddv4-ddsv4-series.md) sorozat
 
 ACU: 160-250 <sup>1</sup>
 
@@ -209,7 +209,7 @@ Premium Storage gyorsítótárazás: nem támogatott
 
 ### <a name="preview-dc-series"></a>Előzetes verzió: DC-sorozat
 
-**Újabb méretre vonatkozó javaslat** : [DCsv2 sorozat](dcv2-series.md)
+**Újabb méretre vonatkozó javaslat**: [DCsv2 sorozat](dcv2-series.md)
 
 Premium Storage: támogatott
 
@@ -224,12 +224,12 @@ A DC sorozat a SGX ENKLÁVÉHOZ technológiával rendelkező 3,7 GHz-es Intel XE
 
 > [!IMPORTANT]
 >
-> A DC sorozatú virtuális gépek [2. generációs virtuális gépek](./linux/generation-2.md#creating-a-generation-2-vm) , és csak a `Gen2` lemezképeket támogatják.
+> A DC sorozatú virtuális gépek [2. generációs virtuális gépek](./generation-2.md#creating-a-generation-2-vm) , és csak a `Gen2` lemezképeket támogatják.
 
 
 ### <a name="ds-series"></a>DS-sorozat  
 
-**Újabb méretre vonatkozó javaslat** : [Dasv4 sorozat](dav4-dasv4-series.md), [Dsv4](dv4-dsv4-series.md) és [Ddsv4](ddv4-ddsv4-series.md) sorozat
+**Újabb méretre vonatkozó javaslat**: [Dasv4 sorozat](dav4-dasv4-series.md), [Dsv4](dv4-dsv4-series.md) és [Ddsv4](ddv4-ddsv4-series.md) sorozat
 
 ACU: 160-250 <sup>1</sup>
 
@@ -250,7 +250,7 @@ Premium Storage gyorsítótárazás: támogatott
 
 ### <a name="ds-series---memory-optimized"></a>DS-sorozat – optimalizált memória  
 
-**Újabb méretre vonatkozó javaslat** : [Dasv4 sorozat](dav4-dasv4-series.md), [Dsv4](dv4-dsv4-series.md) és [Ddsv4](ddv4-ddsv4-series.md) sorozat
+**Újabb méretre vonatkozó javaslat**: [Dasv4 sorozat](dav4-dasv4-series.md), [Dsv4](dv4-dsv4-series.md) és [Ddsv4](ddv4-ddsv4-series.md) sorozat
 
 ACU: 160-250 <sup>1, 2</sup>
 
@@ -272,7 +272,7 @@ Premium Storage gyorsítótárazás: támogatott
 
 ### <a name="ls-series"></a>Ls-sorozat
 
-**Újabb méretre vonatkozó javaslat** : [Lsv2 sorozat](lsv2-series.md)
+**Újabb méretre vonatkozó javaslat**: [Lsv2 sorozat](lsv2-series.md)
 
 Az Ls-sorozat akár 32 virtuális processzort (vCPU) is biztosíthat az [Intel® Xeon® E5 v3 processzorcsalád](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html) használatával. Az Ls-sorozat ugyanakkora teljesítményt kínál, mint a G/GS-sorozat esetében, és vCPU-nként 8 GiB memóriát biztosít.
 
@@ -297,7 +297,7 @@ Az ls-sorozatú virtuális gépek maximális átviteli sebessége az összes csa
 
 ### <a name="gs-series"></a>GS sorozat
 
-**Újabb méretre vonatkozó javaslat** : [Easv4 sorozat](eav4-easv4-series.md), [Esv4 sorozat](ev4-esv4-series.md), [Edsv4-sorozat](edv4-edsv4-series.md) és [M-sorozat](m-series.md)
+**Újabb méretre vonatkozó javaslat**: [Easv4 sorozat](eav4-easv4-series.md), [Esv4 sorozat](ev4-esv4-series.md), [Edsv4-sorozat](edv4-edsv4-series.md) és [M-sorozat](m-series.md)
 
 ACU: 180 – 240 <sup>1</sup>
 
@@ -323,7 +323,7 @@ Premium Storage gyorsítótárazás: támogatott
 
 ### <a name="g-series"></a>G-sorozat
 
-**Újabb méretre vonatkozó javaslat** : [Eav4 sorozat](eav4-easv4-series.md), [Ev4](ev4-esv4-series.md) és [Edv4](edv4-edsv4-series.md) sorozat, valamint [M sorozat](m-series.md)
+**Újabb méretre vonatkozó javaslat**: [Eav4 sorozat](eav4-easv4-series.md), [Ev4](ev4-esv4-series.md) és [Edv4](edv4-edsv4-series.md) sorozat, valamint [M sorozat](m-series.md)
 
 ACU: 180–240
 
@@ -343,7 +343,7 @@ Premium Storage gyorsítótárazás: nem támogatott
 <br>
 
 ### <a name="nv-series"></a>NV sorozat
-**Újabb méretre vonatkozó javaslat** : [NVv3-sorozat](nvv3-series.md) és [NVv4 sorozat](nvv4-series.md)
+**Újabb méretre vonatkozó javaslat**: [NVv3-sorozat](nvv3-series.md) és [NVv4 sorozat](nvv4-series.md)
 
 Az NV-sorozatú virtuális gépeket az [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU-k és az NVIDIA Grid Technology működteti az asztali gyorsított alkalmazások és virtuális asztalok számára, amelyekben az ügyfelek képesek megjeleníteni az adatvagy szimulációkat. A felhasználók képesek megjeleníteni az NV-példányokon elérhető grafikai igényű munkafolyamatokat, így kiváló grafikai képességeket szerezhetnek, és emellett egyetlen pontosságú számítási feladatot is futtathatnak, például a kódolást és a renderelést. Az NV sorozatú virtuális gépeket az Intel Xeon E5-2690 v3 (Haswell) processzorok is működtetik.
 
@@ -367,7 +367,7 @@ Memória-megőrzési frissítések: nem támogatott
 <br>
 
 ### <a name="nc-series"></a>NC sorozat
-**Újabb méretre vonatkozó javaslat** : [NC T4 v3 sorozat](nct4-v3-series.md)
+**Újabb méretre vonatkozó javaslat**: [NC T4 v3 sorozat](nct4-v3-series.md)
 
 Az NC sorozatú virtuális gépeket az [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) kártya és az Intel Xeon E5-2690 v3 (Haswell) processzor látja el. A felhasználók gyorsabban végezhetik el az adatgyűjtést, ha a CUDA használatával hasznosítják az energetikai feltárási alkalmazásokat, az összeomlási szimulációkat, a Ray által követett renderelést, a mély tanulást stb. A NC24r konfiguráció alacsony késésű, nagy átviteli sebességű hálózati adaptert biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz.
 
@@ -394,7 +394,7 @@ Az NC sorozatú virtuális gépeket az [NVIDIA Tesla K80](https://www.nvidia.com
 
 
 ### <a name="ncv2-series"></a>NCv2 sorozat
-**Újabb méretre vonatkozó javaslat** : [NC T4 v3 sorozat](nct4-v3-series.md) és [NC V100 v3 sorozat](ncv3-series.md)
+**Újabb méretre vonatkozó javaslat**: [NC T4 v3 sorozat](nct4-v3-series.md) és [NC V100 v3 sorozat](ncv3-series.md)
 
 Az NCv2 sorozatú virtuális gépeket NVIDIA Tesla P100 GPU-k működtetik. Ezek a GPU-k az NC sorozat számítási teljesítményének több mint kétszeresét biztosítják. Az ügyfelek igénybe vehetik a frissített GPU-ket a hagyományos HPC-számítási feladatokhoz, mint például a tározó modellezése, a DNS-szekvencia, a protein-elemzés, a Monte Carlo-szimulációk és egyebek. A GPU-k mellett az Intel Xeon E5-2690 v4 (Broadwell) processzorok is a NCv2 sorozatú virtuális gépeket használják.
 
@@ -422,7 +422,7 @@ A NC24rs v2-konfiguráció alacsony késleltetésű, nagy átviteli sebességű 
 <br>
 
 ### <a name="nd-series"></a>ND sorozat
-**Újabb méretre vonatkozó javaslat** : [NDv2-sorozat](ndv2-series.md) és [NC V100 v3 sorozat](ncv3-series.md)
+**Újabb méretre vonatkozó javaslat**: [NDv2-sorozat](ndv2-series.md) és [NC V100 v3 sorozat](ncv3-series.md)
 
 Az ND sorozatú Virtual Machines az AI-hoz készült GPU-család, valamint a Deep learning számítási feladatainak egy új kiegészítése. Kiváló teljesítményt nyújtanak a képzéshez és a következtetésekhez. Az ND-példányokat az [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU-k és az Intel Xeon E5-2690 v4 (Broadwell) processzorok működtetik. Ezek a példányok kiváló teljesítményt biztosítanak az egyszeres pontosságú lebegőpontos műveletekhez, a Microsoft Cognitive Toolkit, TensorFlow, Cafe és más keretrendszereket használó AI-munkaterhelésekhez. Az ND sorozat emellett sokkal nagyobb GPU-memória méretet (24 GB) biztosít, ami lehetővé teszi, hogy a rendszer sokkal nagyobb neurális hálós modellekhez illeszkedjen. Az NC sorozathoz hasonlóan az ND sorozat egy olyan konfigurációt kínál, amely egy másodlagos, kis késleltetésű, nagy átviteli sebességű hálózattal rendelkezik a RDMA-on keresztül, és InfiniBand a kapcsolatot, így nagy léptékű, több GPU-ra kiterjedő képzési feladatokat is futtathat.
 
@@ -447,6 +447,6 @@ Az ND sorozatú Virtual Machines az AI-hoz készült GPU-család, valamint a Dee
 
 <br>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

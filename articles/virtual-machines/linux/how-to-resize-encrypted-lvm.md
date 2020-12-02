@@ -7,12 +7,12 @@ ms.subservice: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: ddd6097fffbc02c9b7b027bcb712e20cc47f2f96
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 732a2ef3c6c33d0b17deaf3b9bdc5d1ac5e5934c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487959"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498914"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>A Azure Disk Encryptiont használó logikai kötet-felügyeleti eszközök átméretezése
 
@@ -32,7 +32,7 @@ Ez az átméretezési folyamat a következő környezetekben használható:
 
 Ez a cikk feltételezi, hogy rendelkezik a következővel:
 
-- Egy meglévő LVM-konfiguráció. További információ: az [LVM konfigurálása Linux rendszerű virtuális gépen](configure-lvm.md).
+- Egy meglévő LVM-konfiguráció. További információ: az [LVM konfigurálása Linux rendszerű virtuális gépen](/previous-versions/azure/virtual-machines/linux/configure-lvm).
 
 - A Azure Disk Encryption által már titkosított lemezek. További információ: az [LVM és a RAID konfigurálása titkosított eszközökön](how-to-configure-lvm-raid-on-crypt.md).
 
@@ -573,7 +573,7 @@ Ezzel a módszerrel hozzáadhat helyet egy meglévő LV-hez. Vagy létrehozhat �
     >
     >További információ: az [LVM és a RAID konfigurálása titkosított eszközökön](how-to-configure-lvm-raid-on-crypt.md).
 
-    Íme egy példa:
+    Például:
 
     ``` bash
     az vm encryption enable \
@@ -850,6 +850,6 @@ A módosítások ellenőrzéséhez kövesse a következő lépéseket.
 
 Alkalmazza ugyanazt az átméretezési eljárást minden olyan LV-re, amelyhez szükség van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hibakeresés Azure Disk Encryption](disk-encryption-troubleshooting.md)

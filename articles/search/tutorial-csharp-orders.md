@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/02/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5fe8bf70374a2eec639a0a9365f7d227cf259d06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a55a330f6f4fefb86f2c056cd0ca3b2ba5f4b29
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667248"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499594"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Oktatóanyag: keresési eredmények sorrendbe helyezése a .NET SDK használatával
 
-Ebben az oktatóanyag-sorozatban az eredmények visszaadva lettek, és [alapértelmezett sorrendben](index-add-scoring-profiles.md#what-is-default-scoring)jelennek meg. Ebben az oktatóanyagban elsődleges és másodlagos rendezési feltételeket fog felvenni. A numerikus értékek alapján történő rendezés alternatívájaként az utolsó példa azt szemlélteti, hogyan rangsorolhatja az eredményeket egy egyéni pontozási profil alapján. Az _összetett típusok_megjelenítését is mélyebben fogjuk bemutatni.
+Ebben az oktatóanyag-sorozatban az eredmények visszaadva lettek, és [alapértelmezett sorrendben](index-add-scoring-profiles.md#what-is-default-scoring)jelennek meg. Ebben az oktatóanyagban elsődleges és másodlagos rendezési feltételeket fog felvenni. A numerikus értékek alapján történő rendezés alternatívájaként az utolsó példa azt szemlélteti, hogyan rangsorolhatja az eredményeket egy egyéni pontozási profil alapján. Az _összetett típusok_ megjelenítését is mélyebben fogjuk bemutatni.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -58,7 +58,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. Csak 
     ```
 
     >[!Note]
-    > Az alapértelmezett sorrend növekvő, de a tulajdonsághoz hozzáadhatja az **Asc** értéket, hogy ezt törölje. A csökkenő sorrendet a **desc**hozzáadásával határozhatja meg.
+    > Az alapértelmezett sorrend növekvő, de a tulajdonsághoz hozzáadhatja az **Asc** értéket, hogy ezt törölje. A csökkenő sorrendet a **desc** hozzáadásával határozhatja meg.
 
 1. Most futtassa az alkalmazást, és adja meg a gyakori keresési kifejezéseket. Előfordulhat, hogy az eredmények nem a megfelelő sorrendben jelennek meg, mert nem a fejlesztő, hanem nem a felhasználó, egyszerűen ellenőrizheti az eredményeket!
 
@@ -135,7 +135,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. Csak 
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-1. Nyissa meg a nézetet (index. cshtml), és cserélje le a renderelési ciklust (** &lt; !--jelenítse meg a szállodai adatkészletet.-- &gt; **) a következő kóddal.
+1. Nyissa meg a nézetet (index. cshtml), és cserélje le a renderelési ciklust (**&lt; !--jelenítse meg a szállodai adatkészletet.-- &gt;**) a következő kóddal.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -206,7 +206,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. Csak 
 
     Megfigyelheti, hogy több szálláshely azonos minősítéssel rendelkezik, és így a megjelenésük a képernyőn megjelenő sorrendben is megkezdődik, ami tetszőleges.
 
-    Mielőtt megnézzük a második szintű megrendelés hozzáadását, vegyünk fel egy kódot a szobaárak megjelenítéséhez. Ezt a kódot úgy vesszük fel, hogy az adatok kinyerését _összetett típusból_is megmutassa, és így a díjszabás alapján is megbeszéljük a sorrendet (az első legolcsóbbat).
+    Mielőtt megnézzük a második szintű megrendelés hozzáadását, vegyünk fel egy kódot a szobaárak megjelenítéséhez. Ezt a kódot úgy vesszük fel, hogy az adatok kinyerését _összetett típusból_ is megmutassa, és így a díjszabás alapján is megbeszéljük a sorrendet (az első legolcsóbbat).
 
 ### <a name="add-the-range-of-room-rates-to-the-view"></a>Adja hozzá a szobaárak tartományát a nézethez
 
@@ -473,7 +473,7 @@ Az eredmények földrajzi távolság alapján történő megjelenítéséhez tö
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Eredmények megrendelése pontozási profil alapján
 
-Az oktatóanyagban szereplő példák azt mutatják be, hogyan lehet megrendelni a numerikus értékeket (a minősítési, a felújítási dátumot, _a földrajzi_ távolságot). Egyes keresések és egyes adatértékek azonban nem alkalmasak arra, hogy egy ilyen egyszerű összehasonlítást végezzenek két adatelem között. Az Azure Cognitive Search a _pontozás_fogalmát is tartalmazza. A _pontozási profilok_ megadhatók olyan adathalmazokhoz, amelyek összetettebb és minőségi összehasonlítást is biztosítanak, ami a legértékesebb, ha a szöveges alapú adatmennyiséget a következőnek kell megjelennie.
+Az oktatóanyagban szereplő példák azt mutatják be, hogyan lehet megrendelni a numerikus értékeket (a minősítési, a felújítási dátumot, _a földrajzi_ távolságot). Egyes keresések és egyes adatértékek azonban nem alkalmasak arra, hogy egy ilyen egyszerű összehasonlítást végezzenek két adatelem között. Az Azure Cognitive Search a _pontozás_ fogalmát is tartalmazza. A _pontozási profilok_ megadhatók olyan adathalmazokhoz, amelyek összetettebb és minőségi összehasonlítást is biztosítanak, ami a legértékesebb, ha a szöveges alapú adatmennyiséget a következőnek kell megjelennie.
 
 A pontozási profilokat a felhasználók nem határozzák meg, de általában egy adathalmaz rendszergazdái. Több pontozási profil is be lett állítva a szállodákban tárolt értékekre. Nézzük meg, hogyan határozzák meg a pontozási profilt, majd próbáljon meg kódot írni a kereséshez.
 
@@ -965,7 +965,7 @@ Lássunk három példát a pontozási profilokra, és gondolja át, _Hogyan befo
 
 ### <a name="resources"></a>További források
 
-További információt az alábbi [pontozási profilok hozzáadása Azure Cognitive Search indexhez](/azure/search/index-add-scoring-profiles)című témakörben talál.
+További információt az alábbi [pontozási profilok hozzáadása Azure Cognitive Search indexhez](./index-add-scoring-profiles.md)című témakörben talál.
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 

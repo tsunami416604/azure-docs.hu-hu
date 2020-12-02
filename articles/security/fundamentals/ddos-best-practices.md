@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 435cb1d52b5505f4f29bd0c31986a1f7f72208fd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412867"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498931"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – rugalmas megoldások tervezése
 
@@ -54,7 +54,7 @@ A méretezhetőség azt szemlélteti, hogy a rendszer milyen jól tudja kezelni 
 
 A védelem részletesen a különböző védelmi stratégiák használatával kezelhető a kockázatkezelés. Az alkalmazásokban a biztonsági védelem egyre csökkenti a sikeres támadás lehetőségét. Javasoljuk, hogy az Azure platform beépített képességeinek használatával hozzon létre biztonságos terveket az alkalmazásaihoz.
 
-Például a támadás kockázata az alkalmazás méretével ( *felületével* ) nő. A felszín területét egy jóváhagyási lista használatával csökkentheti a kihelyezett IP-címtartomány és a terheléselosztó által nem szükséges portok figyelése ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) és az [Azure Application Gateway](../../application-gateway/application-gateway-create-probe-portal.md)). A [hálózati biztonsági csoportok (NSG)](../../virtual-network/network-security-groups-overview.md) egy másik módszer a támadási felület csökkentésére.
+Például a támadás kockázata az alkalmazás méretével (*felületével*) nő. A felszín területét egy jóváhagyási lista használatával csökkentheti a kihelyezett IP-címtartomány és a terheléselosztó által nem szükséges portok figyelése ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) és az [Azure Application Gateway](../../application-gateway/application-gateway-create-probe-portal.md)). A [hálózati biztonsági csoportok (NSG)](../../virtual-network/network-security-groups-overview.md) egy másik módszer a támadási felület csökkentésére.
 A [szolgáltatási címkék](../../virtual-network/network-security-groups-overview.md#service-tags) és az [alkalmazás-biztonsági csoportok](../../virtual-network/network-security-groups-overview.md#application-security-groups) használatával csökkentheti a biztonsági szabályok létrehozásának összetettségét, és konfigurálhatja a hálózati biztonságot az alkalmazások struktúrájának természetes kiterjesztéseként.
 
 Amikor csak lehetséges, üzembe kell helyeznie az Azure-szolgáltatásokat egy [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md) . Ez a gyakorlat lehetővé teszi a szolgáltatási erőforrások számára, hogy magánhálózati IP-címeken keresztül kommunikáljanak egymással. A virtuális hálózatról származó Azure-szolgáltatási forgalom alapértelmezés szerint a nyilvános IP-címeket használja forrás IP-címként. A [szolgáltatási végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) használatával a szolgáltatás forgalmát úgy fogja váltani, hogy a virtuális hálózati magánhálózati címeket használják forrás IP-címként, amikor egy virtuális hálózatról érik el az Azure-szolgáltatást.
@@ -113,7 +113,7 @@ Ha a nyilvános IP-cím támadás alatt áll, a rendszer a **DDoS-támadás alat
 
 Javasoljuk, hogy riasztást állítson be ezen a metrikán. Ekkor értesítést kap, ha a nyilvános IP-címen aktív DDoS-megoldás történik.
 
-További információ: [Azure DDoS Protection standard kezelése a Azure Portal használatával](../../virtual-network/manage-ddos-protection.md).
+További információ: [Azure DDoS Protection standard kezelése a Azure Portal használatával](../../ddos-protection/manage-ddos-protection.md).
 
 #### <a name="web-application-firewall-for-resource-attacks"></a>Webalkalmazási tűzfal erőforrás-támadásokhoz
 
@@ -179,7 +179,7 @@ Azt javasoljuk, hogy a DDoS-válasz csapata a szolgáltatás rendelkezésre áll
 
 ### <a name="alerts-during-an-attack"></a>Riasztások támadás közben
 
-Azure DDoS Protection standard azonosítja és csökkenti a DDoS-támadásokat felhasználói beavatkozás nélkül. Ha értesítést szeretne kapni, ha a védett nyilvános IP-címek esetében aktív megoldás van érvényben, beállíthatja, hogy a [metrika a](../../virtual-network/manage-ddos-protection.md) DDoS-támadás alatt legyen, **vagy nem**. Dönthet úgy, hogy riasztásokat hoz létre a többi DDoS mérőszámhoz a támadás méretezésének, az eldobott forgalomnak és egyéb részleteknek a megismeréséhez.
+Azure DDoS Protection standard azonosítja és csökkenti a DDoS-támadásokat felhasználói beavatkozás nélkül. Ha értesítést szeretne kapni, ha a védett nyilvános IP-címek esetében aktív megoldás van érvényben, beállíthatja, hogy a [metrika a](../../ddos-protection/manage-ddos-protection.md) DDoS-támadás alatt legyen, **vagy nem**. Dönthet úgy, hogy riasztásokat hoz létre a többi DDoS mérőszámhoz a támadás méretezésének, az eldobott forgalomnak és egyéb részleteknek a megismeréséhez.
 
 #### <a name="when-to-contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
@@ -260,7 +260,7 @@ Ez a hivatkozási architektúra egy [Azure HDInsight-fürt](../../hdinsight/inde
 
 Ebben az architektúrában az internetről érkező HDInsight-fürtre irányuló forgalmat a rendszer a HDInsight Gateway Load Balancerhez társított nyilvános IP-címhez irányítja. Az átjáró terheléselosztó ezt követően közvetlenül a főcsomópontokra vagy a feldolgozó csomópontokra küldi a forgalmat. Mivel DDoS Protection a standard engedélyezve van a HDInsight virtuális hálózaton, a virtuális hálózat összes nyilvános IP-címe lekéri a DDoS Protectiont a 3. és a 4. rétegben. Ez a hivatkozási architektúra kombinálható az N szintű és a többrégiós hivatkozási architektúrával is.
 
-További információ erről a hivatkozási architektúráról: az [Azure-HDInsight kiterjesztése azure Virtual Network](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%252fazure%252fvirtual-network%252ftoc.json) -dokumentáció használatával.
+További információ erről a hivatkozási architektúráról: az [Azure-HDInsight kiterjesztése azure Virtual Network](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -dokumentáció használatával.
 
 
 > [!NOTE]
@@ -270,4 +270,4 @@ További információ erről a hivatkozási architektúráról: az [Azure-HDInsi
 
 * [Megosztott feladatkörök a felhőben](shared-responsibility.md)
 * [Azure DDoS Protection termék lapja](https://azure.microsoft.com/services/ddos-protection/)
-* [Azure DDoS Protection dokumentáció](../../virtual-network/ddos-protection-overview.md)
+* [Azure DDoS Protection dokumentáció](../../ddos-protection/ddos-protection-overview.md)

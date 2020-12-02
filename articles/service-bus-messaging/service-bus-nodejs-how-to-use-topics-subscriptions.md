@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 56bed63a9030135966a208dd1ad9b4c45cde328d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: aac3b6339c318c76e9b0c9abd0bc3778f2563a6f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811701"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498693"
 ---
 # <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>Gyors útmutató: Service Bus témakörök és előfizetések Node.js és az előzetes verziójú Azure/Service-Bus csomaggal
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) csomagot egy JavaScript-programban, hogy üzeneteket küldjön egy Service Bus témakörbe, és üzeneteket fogadjon egy Service Bus-előfizetésből az adott témakörbe.
@@ -208,4 +208,4 @@ Tekintse meg a következő dokumentációt és mintákat:
 
 - [Azure Service Bus a Pythonhoz készült ügyféloldali kódtár](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
 - [Minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples). A **JavaScript** -mappa JavaScript-példákkal rendelkezik, az **írógéppel** pedig írógéppel készített mintákat tartalmaz. 
-- [Az Azure-servicebus dokumentációja](https://docs.microsoft.com/javascript/api/overview/azure/service-bus)
+- [Az Azure-servicebus dokumentációja](/javascript/api/overview/azure/service-bus)

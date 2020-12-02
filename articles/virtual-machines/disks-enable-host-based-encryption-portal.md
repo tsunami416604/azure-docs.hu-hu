@@ -8,20 +8,20 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4498e78b408f64ab5bc00b9f8730559b90c95d57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd74872bc1c46f3dddda1b6d15f14f26dc2187cb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88817655"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499373"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Az Azure Portal használatával engedélyezheti a végpontok közötti titkosítást a gazdagépen lévő titkosítás használatával
 
 Amikor engedélyezi a titkosítást a gazdagépen, a virtuálisgép-gazdagépen tárolt adatok titkosítva maradnak a tárolási szolgáltatásba titkosított adatforgalomban. A gazdagépen található titkosítással, valamint az egyéb felügyelt lemezes titkosítási típusokkal kapcsolatos elméleti információk:
 
-* Linux: [titkosítás a virtuális gép adatai számára a gazdagépek végpontok közötti titkosításával](./linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+* Linux: [titkosítás a virtuális gép adatai számára a gazdagépek végpontok közötti titkosításával](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 
-* Windows: [titkosítás a virtuális gép adatai számára a gazdagépen, végpontok közötti titkosítással](./windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+* Windows: [titkosítás a virtuális gép adatai számára a gazdagépen, végpontok közötti titkosítással](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 
 ## <a name="restrictions"></a>Korlátozások
 
@@ -63,7 +63,7 @@ Egy új virtuális gépet kell üzembe helyeznie, hogy engedélyezze a titkosít
 1. A **lemezek** panelen válassza az **Igen** lehetőséget a **titkosításhoz a gazdagépen**.
 1. Végezze el a többi kijelölést úgy, ahogy szeretné.
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="Képernyőfelvétel: a virtuális gépek létrehozási alapjai panel, a régió és a V M méret van kiemelve.":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="A virtuális gépek létrehozási lemezei panel képernyőképe a gazdagépen lévő titkosítás kiemelése.":::
 
 1. Fejezze be a virtuális gép telepítési folyamatát, és válassza ki a környezetnek megfelelő beállításokat.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7a5cd7a6019451b27b509aa7f486540c04c29ee2
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 464439516ee86d2fb6f900c3fcaf179095192acf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412646"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498880"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Biztonság-ellenőrzés: leltár-és eszközkezelés
 
@@ -76,7 +76,7 @@ A Azure Policy használatával korlátozásokat állíthat be az előfizetése (
 
 Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az előfizetése (ke) n belüli erőforrásait.  Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
-- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Lekérdezések létrehozása az Azure Graph használatával](../../governance/resource-graph/first-query-portal.md)
 
@@ -100,7 +100,7 @@ A Virtual Machines-ra telepített összes szoftver azonosításához használja 
 
 - [A fájl integritás-figyelésének használata](../../security-center/security-center-file-integrity-monitoring.md)
 
-- [Az Azure Change Tracking ismertetése](../../automation/change-tracking.md)
+- [Az Azure Change Tracking ismertetése](../../automation/change-tracking/overview.md)
 
 - [Az Azure-beli virtuális gépek leltározásának engedélyezése](../../automation/automation-tutorial-installed-software.md)
 
@@ -122,7 +122,7 @@ Azure Security Center Adaptive Application Controls használatával biztosíthat
 
 A Azure Policy használatával korlátozhatja, hogy mely szolgáltatásokat lehet kiépíteni a környezetben.
 
-- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Adott erőforrástípus megtagadása a következővel Azure Policy](../../governance/policy/samples/index.md)
 

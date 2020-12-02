@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a79ec9a54ae597bc7e9795029dc4292c2c82345
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fd1c7f5dec57127f92da52be908bd6faa2c90e85
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836393"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500223"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
@@ -66,6 +66,8 @@ A szakaszos bevezetéshez a következő forgatókönyvek támogatottak. A szolg�
 ## <a name="unsupported-scenarios"></a>Nem támogatott forgatókönyvek
 
 A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
+
+- Az alkalmazások vagy a Cloud Services örökölt hitelesítést alkalmaz, például a POP3 és az SMTP protokollt.
 
 - Bizonyos alkalmazások a hitelesítés során elküldik a "domain_hint" lekérdezési paramétert az Azure AD-nek. Ezek a folyamatok folytatódnak, és az előkészített bevezetésre engedélyezett felhasználók továbbra is a hitelesítéshez használják az összevonást.
 
@@ -246,5 +248,5 @@ A: nem, ez a funkció a felhőalapú hitelesítés tesztelésére szolgál. A si
 
 V: Igen. Ha szeretné megtudni, hogyan használhatja a PowerShellt a szakaszos bevezetéshez, tekintse meg az [Azure ad előzetes](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)verzióját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure AD 2,0 előzetes verzió](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: b0871b6365d78129cd6fdaec82fee14e2b0a7a4b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4fb20b221858c4717d67e0777afbe5c067c00a69
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693443"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499611"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Ügyfél által felügyelt kulcsok konfigurálása az adattitkosításhoz az Azure-ban Cognitive Search
 
@@ -96,7 +96,7 @@ Mindkét tulajdonságot megadhatja a portál, a PowerShell vagy az Azure CLI-par
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
-+ Ha telepítette az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)-t, a következő parancs futtatásával engedélyezheti a szükséges tulajdonságokat.
++ Ha telepítette az [Azure CLI](/cli/azure/install-azure-cli)-t, a következő parancs futtatásával engedélyezheti a szükséges tulajdonságokat.
 
    ```azurecli-interactive
    az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
@@ -173,7 +173,7 @@ A hozzáférési engedélyeket bármikor visszavonhatja. A visszavonás után a 
 
 ## <a name="5---encrypt-content"></a>5 – tartalom titkosítása
 
-Ha egy ügyfél által felügyelt kulcsot szeretne felvenni egy indexre, adatforrásra, készségkészlet, indexelő vagy szinonimára, akkor a [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) vagy egy SDK-t kell használnia. A portál nem teszi lehetővé a szinonimák leképezését vagy a titkosítási tulajdonságokat. Ha érvényes API-indexeket használ, az adatforrások, a szakértelmével, az indexelő és a szinonimák leképezései támogatják a legfelső szintű **encryptionKey** tulajdonságot.
+Ha egy ügyfél által felügyelt kulcsot szeretne felvenni egy indexre, adatforrásra, készségkészlet, indexelő vagy szinonimára, akkor a [Search REST API](/rest/api/searchservice/) vagy egy SDK-t kell használnia. A portál nem teszi lehetővé a szinonimák leképezését vagy a titkosítási tulajdonságokat. Ha érvényes API-indexeket használ, az adatforrások, a szakértelmével, az indexelő és a szinonimák leképezései támogatják a legfelső szintű **encryptionKey** tulajdonságot.
 
 Ebben a példában a REST API a Azure Key Vault és a Azure Active Directory értékeit használja:
 
@@ -196,7 +196,7 @@ Ebben a példában a REST API a Azure Key Vault és a Azure Active Directory ér
 
 ## <a name="example-index-encryption"></a>Példa: index encryption
 
-Hozzon létre egy titkosított indexet a [create index Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
+Hozzon létre egy titkosított indexet a [create index Azure Cognitive Search REST API](/rest/api/searchservice/create-index)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
 > [!Note]
 > Ezek a kulcstartó-részletek egyike sem minősül titkosnak, és könnyen lekérhető, ha megkeresi a megfelelő Azure Key Vault kulcsot tartalmazó lapot Azure Portal.
 
@@ -239,7 +239,7 @@ Most már elküldheti az index-létrehozási kérelmet, majd megkezdheti a norm�
 
 ### <a name="synonym-map-encryption"></a>Szinonimák leképezésének titkosítása
 
-Hozzon létre egy titkosított szinonima-leképezést a [szinonimák leképezése Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
+Hozzon létre egy titkosított szinonima-leképezést a [szinonimák leképezése Azure Cognitive Search REST API](/rest/api/searchservice/create-synonym-map)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
 
 ```json
 {
@@ -263,7 +263,7 @@ Most már elküldheti a szinonima-hozzárendelési kérést, majd normál módon
 
 ## <a name="example-data-source-encryption"></a>Példa: adatforrás titkosítása
 
-Hozzon létre egy titkosított adatforrást az [adatforrás létrehozása (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-data-source)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
+Hozzon létre egy titkosított adatforrást az [adatforrás létrehozása (Azure Cognitive Search REST API)](/rest/api/searchservice/create-data-source)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
 
 ```json
 {
@@ -289,7 +289,7 @@ Most már elküldheti az adatforrás-létrehozási kérést, majd megkezdheti a 
 
 ## <a name="example-skillset-encryption"></a>Példa: Készségkészlet titkosítás
 
-Hozzon létre egy titkosított készségkészlet a [create Készségkészlet Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
+Hozzon létre egy titkosított készségkészlet a [create Készségkészlet Azure Cognitive Search REST API](/rest/api/searchservice/create-skillset)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
 
 ```json
 {
@@ -315,7 +315,7 @@ Most már elküldheti a készségkészlet-létrehozási kérelmet, majd megkezdh
 
 ## <a name="example-indexer-encryption"></a>Példa: indexelő titkosítás
 
-Hozzon létre egy titkosított indexelő a [create indexelő Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/create-indexer)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
+Hozzon létre egy titkosított indexelő a [create indexelő Azure Cognitive Search REST API](/rest/api/searchservice/create-indexer)használatával. A `encryptionKey` tulajdonság használatával határozza meg a használandó titkosítási kulcsot.
 
 ```json
 {
@@ -388,7 +388,7 @@ A kulcs rotációja várhatóan az idő múlásával történik. A kulcsok elfor
 
 A keresési szolgáltatás teljesítménybeli okokból akár több óráig is gyorsítótárazza a kulcsot. Ha letiltja vagy törli a kulcsot anélkül, hogy újat kellene benyújtania, a lekérdezések ideiglenesen is működni fognak, amíg a gyorsítótár le nem jár. Ha azonban a keresési szolgáltatás nem tudja visszafejteni a tartalmat, a következő üzenet jelenik meg: "Hozzáférés megtiltva. Lehetséges, hogy a használt lekérdezési kulcsot visszavonták – próbálkozzon újra. " 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem ismeri az Azure biztonsági architektúráját, tekintse át az [Azure biztonsági dokumentációját](../security/index.yml), és különösen a következő cikket:
 

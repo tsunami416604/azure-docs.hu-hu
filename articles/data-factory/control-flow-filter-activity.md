@@ -3,26 +3,26 @@ title: Szűrési tevékenység Azure Data Factory
 description: A szűrő tevékenység szűri a bemeneteket.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650d55ede8e6099252858c9118c8705f59ab6780
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417213"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498540"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Szűrési tevékenység Azure Data Factory
 Egy folyamat szűrési tevékenységével szűrő kifejezést alkalmazhat egy bemeneti tömbre. 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Szintaxis
 
 ```json
 {
@@ -40,9 +40,9 @@ Egy folyamat szűrési tevékenységével szűrő kifejezést alkalmazhat egy be
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 name | A tevékenység neve `Filter` . | Sztring | Igen
-típus | **Szűrésre**kell beállítani. | Sztring | Igen
-feltétel | A bemenet szűréséhez használandó feltétel. | Expression | Igen
-elemek | Az a bemeneti tömb, amelyen alkalmazni kell a szűrőt. | Expression | Igen
+típus | **Szűrésre** kell beállítani. | Sztring | Igen
+feltétel | A bemenet szűréséhez használandó feltétel. | Kifejezés | Igen
+elemek | Az a bemeneti tömb, amelyen alkalmazni kell a szűrőt. | Kifejezés | Igen
 
 ## <a name="example"></a>Példa
 

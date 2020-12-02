@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: fceef1fa9f79ead0ffbbfd7de17b21b750659fc9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1e3551834e7664d5036fa8a5e0497e5a37f61c2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370236"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498506"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linux rendszerű virtuális gép optimalizálása az Azure-ban
 A linuxos virtuális gép (VM) létrehozása a parancssorból vagy a portálról egyszerű. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a teljesítményét a Microsoft Azure platform teljesítményének optimalizálása érdekében. Ez a témakör egy Ubuntu Server-alapú virtuális gépet használ, de [a saját rendszerképeit sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használva is létrehozhatja.  
@@ -27,11 +27,11 @@ Miután létrehozta a Linux rendszerű virtuális gépet az Azure-ban, két leme
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Lemezek hozzáadása a méret és a teljesítmény céljaihoz
 A virtuális gép mérete alapján akár 16 további lemezt is csatlakoztathat egy sorozatú, D sorozatú, 32-es és 64-es lemezeken egy G sorozatú gépen, amelyek mindegyike akár 32 TB méretű is lehet. A tárhely-és IOps-követelményekhez szükség szerint további lemezeket is hozzáadhat. Az egyes lemezek 500 IOps, a standard szintű tároláshoz és a Premium Storage IOps legfeljebb 20 000 rendelkeznek.
 
-Annak érdekében, hogy Premium Storage lemezek legmagasabb IOps legyenek elérhetők, ahol a gyorsítótár beállításai **readonly** vagy **none**értékre lettek állítva, le kell tiltania a **korlátokat** , miközben a fájlrendszert a Linux rendszerhez csatlakoztatja. Nincs szükség korlátokra, mert a lemezre Premium Storage lemezek írása a gyorsítótár-beállítások számára tartós.
+Annak érdekében, hogy Premium Storage lemezek legmagasabb IOps legyenek elérhetők, ahol a gyorsítótár beállításai **readonly** vagy **none** értékre lettek állítva, le kell tiltania a **korlátokat** , miközben a fájlrendszert a Linux rendszerhez csatlakoztatja. Nincs szükség korlátokra, mert a lemezre Premium Storage lemezek írása a gyorsítótár-beállítások számára tartós.
 
 * Ha a **reiserFS**-t használja, tiltsa le a korlátozásokat a csatlakoztatási lehetőség használatával `barrier=none` (az akadályok engedélyezéséhez `barrier=flush` )
 * Ha **ext3/ext4**-t használ, tiltsa le a korlátozásokat a csatlakoztatási lehetőség használatával `barrier=0` (az akadályok engedélyezéséhez `barrier=1` )
-* Ha **XFS**használ, tiltsa le a korlátozásokat a csatlakoztatási lehetőséggel `nobarrier` (a korlátok engedélyezéséhez használja a kapcsolót `barrier` ).
+* Ha **XFS** használ, tiltsa le a korlátozásokat a csatlakoztatási lehetőséggel `nobarrier` (a korlátok engedélyezéséhez használja a kapcsolót `barrier` ).
 
 ## <a name="unmanaged-storage-account-considerations"></a>Nem felügyelt Storage-fiókok szempontjai
 Ha az Azure CLI-vel hoz létre virtuális gépet, az alapértelmezett művelet az Azure Managed Disks használata.  Ezeket a lemezeket az Azure platform kezeli, és nem igényel előkészítést vagy helyet a tároláshoz.  A nem felügyelt lemezekhez szükség van egy Storage-fiókra, és további teljesítménnyel kapcsolatos szempontokat kell figyelembe vennie.  További információ a felügyelt lemezekről: [Azure Managed Disks – áttekintés](../managed-disks-overview.md).  A következő szakasz csak akkor ismerteti a teljesítménnyel kapcsolatos szempontokat, ha nem felügyelt lemezeket használ.  Az alapértelmezett és az ajánlott tárolási megoldás a felügyelt lemezek használata.
@@ -51,7 +51,7 @@ A **/etc/waagent.conf** -fájl nem használható a Cloud-init által kiépített
 
 Az alábbi lépések elvégzéséhez a legkönnyebben kezelhetők a rendszerképek cseréje:
 
-1. A **/var/lib/Cloud/Scripts/per-boot** mappában hozzon létre egy **create_swapfile. sh**nevű fájlt:
+1. A **/var/lib/Cloud/Scripts/per-boot** mappában hozzon létre egy **create_swapfile. sh** nevű fájlt:
 
    **$ sudo Touch/var/lib/Cloud/Scripts/per-boot/create_swapfile. sh**
 
@@ -150,9 +150,9 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 Az Ubuntu 18,04 és az Azure által hangolt kernel több várólistás I/O-ütemező használatával működik. Ebben az esetben `none` a megfelelő kijelölés a helyett `noop` . További információ: [Ubuntu I/O-ütemező](https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers).
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>A szoftveres RAID használata nagyobb I/Ops eléréséhez
-Ha a számítási feladatok több IOps igényelnek, mint amennyit csak egyetlen lemez tud biztosítani, több lemez szoftveres RAID-konfigurációját kell használnia. Mivel az Azure már elvégezte a lemezes rugalmasságot a helyi háló rétegben, a legmagasabb szintű teljesítményt érheti el egy RAID-0 csíkozási konfigurációból.  Lemezeket építhet ki és hozhat létre az Azure-környezetben, és csatlakoztathatja őket a linuxos virtuális géphez a meghajtók particionálása, formázása és csatlakoztatása előtt.  A szoftveres RAID-beállítás Azure-beli Linux rendszerű virtuális gépen való konfigurálásáról további részleteket a **[szoftveres RAID konfigurálása Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** -dokumentumban talál.
+Ha a számítási feladatok több IOps igényelnek, mint amennyit csak egyetlen lemez tud biztosítani, több lemez szoftveres RAID-konfigurációját kell használnia. Mivel az Azure már elvégezte a lemezes rugalmasságot a helyi háló rétegben, a legmagasabb szintű teljesítményt érheti el egy RAID-0 csíkozási konfigurációból.  Lemezeket építhet ki és hozhat létre az Azure-környezetben, és csatlakoztathatja őket a linuxos virtuális géphez a meghajtók particionálása, formázása és csatlakoztatása előtt.  A szoftveres RAID-beállítás Azure-beli Linux rendszerű virtuális gépen való konfigurálásáról további részleteket a **[szoftveres RAID konfigurálása Linux](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** -dokumentumban talál.
 
-A hagyományos RAID-konfiguráció alternatívájaként azt is megteheti, hogy a logikai kötet-kezelőt (LVM) is telepíti úgy, hogy több fizikai lemezt is konfiguráljon egyetlen csíkozott logikai tárolási kötetre. Ebben a konfigurációban az olvasások és írások elosztása a mennyiségi csoportban található több lemezre történik (a RAID0-hez hasonlóan). A teljesítmény szempontjából valószínű, hogy a logikai kötetek csíkozását szeretné használni, így az olvasás és az írás az összes csatlakoztatott adatlemezt felhasználja.  A csíkozott logikai kötetek Azure-beli Linux rendszerű virtuális gépen való konfigurálásával kapcsolatos további részleteket az **[LVM konfigurálása az Azure-ban linuxos virtuális gépen](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** című témakörben találhat.
+A hagyományos RAID-konfiguráció alternatívájaként azt is megteheti, hogy a logikai kötet-kezelőt (LVM) is telepíti úgy, hogy több fizikai lemezt is konfiguráljon egyetlen csíkozott logikai tárolási kötetre. Ebben a konfigurációban az olvasások és írások elosztása a mennyiségi csoportban található több lemezre történik (a RAID0-hez hasonlóan). A teljesítmény szempontjából valószínű, hogy a logikai kötetek csíkozását szeretné használni, így az olvasás és az írás az összes csatlakoztatott adatlemezt felhasználja.  A csíkozott logikai kötetek Azure-beli Linux rendszerű virtuális gépen való konfigurálásával kapcsolatos további részleteket az **[LVM konfigurálása az Azure-ban linuxos virtuális gépen](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** című témakörben találhat.
 
 ## <a name="next-steps"></a>Következő lépések
 Ne feledje, ahogy az összes optimalizálási vitafórumhoz hasonlóan az egyes módosítások előtt és után is végre kell hajtania a teszteket, hogy mérjék a változás hatását.  Az optimalizálás egy lépésről lépésre haladó folyamat, amely különböző eredményekkel rendelkezik a környezet különböző gépei között.  Előfordulhat, hogy az egyik konfiguráció működése nem működik mások számára.
@@ -160,4 +160,4 @@ Ne feledje, ahogy az összes optimalizálási vitafórumhoz hasonlóan az egyes 
 Néhány hasznos hivatkozás további erőforrásokra:
 
 * [Az Azure Linux-ügynök használati útmutatója](../extensions/agent-linux.md)
-* [Szoftveres RAID konfigurálása Linuxon](configure-raid.md)
+* [Szoftveres RAID konfigurálása Linuxon](/previous-versions/azure/virtual-machines/linux/configure-raid)

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 83d291ae72e79ec3600015fac07ee4ab80fe5df4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b7f6d30ffa849f78b0f7baa2d84e4fb01f3bf192
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843553"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500342"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Szabályzatok biztonsága és használata virtuális gépeken az Azure-ban
 
@@ -41,7 +41,7 @@ A titkosítás nem befolyásolja a felügyelt lemezek teljesítményét. A titko
 
 A felügyelt lemez titkosításához a platform által felügyelt kulcsokat használhatja, vagy a titkosítást saját kulcsok használatával is kezelheti. Ha úgy dönt, hogy a titkosítást a saját kulcsaival kezeli, megadhat egy *ügyfél által felügyelt kulcsot* , amelyet a felügyelt lemezeken lévő összes érték titkosítására és visszafejtésére használhat. 
 
-A kiszolgálóoldali titkosítással kapcsolatos további tudnivalókért tekintse meg a Windows vagy [Linux](linux/disk-encryption.md) [rendszerhez](windows/disk-encryption.md) készült cikkeket.
+A kiszolgálóoldali titkosítással kapcsolatos további tudnivalókért tekintse meg a Windows vagy [Linux](./disk-encryption.md) [rendszerhez](./disk-encryption.md) készült cikkeket.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -72,5 +72,5 @@ Az [Azure-szabályzatok](../governance/policy/overview.md) segítségével megha
 Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)használatával elkülönítheti a feladatait a csapaton belül, és csak a virtuális gépen lévő felhasználók számára biztosíthatja a feladataik elvégzéséhez szükséges hozzáférést. Ahelyett, hogy mindenki számára nem korlátozott engedélyeket adna a virtuális géphez, csak bizonyos műveleteket engedélyezhet. A virtuális gép hozzáférés-vezérlését az [Azure CLI](/cli/azure/role)vagy a[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)használatával konfigurálhatja a [Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 
-## <a name="next-steps"></a>Következő lépések
-- Megtudhatja, hogyan figyelheti a virtuális gépek biztonságát a [Linux](../security/fundamentals/overview.md) vagy a [Windows](windows/tutorial-azure-security.md)Azure Security Center használatával.
+## <a name="next-steps"></a>További lépések
+- Megtudhatja, hogyan figyelheti a virtuális gépek biztonságát a [Linux](../security/fundamentals/overview.md) vagy a [Windows](./tutorial-azure-security.md)Azure Security Center használatával.

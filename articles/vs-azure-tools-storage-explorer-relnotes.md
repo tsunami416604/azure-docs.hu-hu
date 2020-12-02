@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95521002"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499662"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer kibocsátási megjegyzések
 
@@ -559,7 +559,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
         
 ### <a name="new"></a>Új
 
-* Mostantól a Storage Explorer használatával férhet hozzá a blob-adataihoz a [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)-on keresztül. Ha be van jelentkezve, és Storage Explorer nem tudja lekérni a Storage-fiók kulcsait, akkor a rendszer egy OAuth-tokent használ a hitelesítéshez az adataival való interakció során.
+* Mostantól a Storage Explorer használatával férhet hozzá a blob-adataihoz a [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-on keresztül. Ha be van jelentkezve, és Storage Explorer nem tudja lekérni a Storage-fiók kulcsait, akkor a rendszer egy OAuth-tokent használ a hitelesítéshez az adataival való interakció során.
 * A Storage Explorer mostantól támogatja a ADLS Gen2 Storage-fiókokat. Ha Storage Explorer észleli, hogy a hierarchikus névtér engedélyezve van egy Storage-fiókhoz, a Storage-fiók neve mellett "(ADLS Gen2 Preview)" jelenik meg. A Storage Explorer képes megállapítani, hogy a hierarchikus névtér engedélyezve van-e a bejelentkezéskor, vagy ha a Storage-fiókot a név és a kulcs használatával csatlakoztatta. ADLS Gen2 Storage-fiókok esetében a következőket használhatja Storage Explorer:
   * Tárolók létrehozása és törlése
   * Tároló tulajdonságainak és engedélyeinek kezelése (bal oldali)
@@ -628,7 +628,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
         
 ### <a name="new"></a>Új
 
-* Mostantól a Storage Explorer használatával férhet hozzá a blob-adataihoz a [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)-on keresztül. Ha be van jelentkezve, és Storage Explorer nem tudja lekérni a Storage-fiók kulcsait, akkor a rendszer egy OAuth-tokent használ a hitelesítéshez az adataival való interakció során.
+* Mostantól a Storage Explorer használatával férhet hozzá a blob-adataihoz a [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-on keresztül. Ha be van jelentkezve, és Storage Explorer nem tudja lekérni a Storage-fiók kulcsait, akkor a rendszer egy OAuth-tokent használ a hitelesítéshez az adataival való interakció során.
 * A Storage Explorer mostantól támogatja a ADLS Gen2 Storage-fiókokat. Ha Storage Explorer észleli, hogy a hierarchikus névtér engedélyezve van egy Storage-fiókhoz, a Storage-fiók neve mellett "(ADLS Gen2 Preview)" jelenik meg. A Storage Explorer képes megállapítani, hogy a hierarchikus névtér engedélyezve van-e a bejelentkezéskor, vagy ha a Storage-fiókot a név és a kulcs használatával csatlakoztatta. ADLS Gen2 Storage-fiókok esetében a következőket használhatja Storage Explorer:
   * Tárolók létrehozása és törlése
   * Tároló tulajdonságainak és engedélyeinek kezelése (bal oldali)
@@ -683,7 +683,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
 
 ### <a name="new"></a>Új
 
-* Mostantól a Storage Explorer használatával férhet hozzá a blob-adataihoz a [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)-on keresztül. Ha be van jelentkezve, és Storage Explorer nem tudja lekérni a Storage-fiók kulcsait, akkor a rendszer egy OAuth-tokent használ a hitelesítéshez az adataival való interakció során.
+* Mostantól a Storage Explorer használatával férhet hozzá a blob-adataihoz a [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-on keresztül. Ha be van jelentkezve, és Storage Explorer nem tudja lekérni a Storage-fiók kulcsait, akkor a rendszer egy OAuth-tokent használ a hitelesítéshez az adataival való interakció során.
 * A Storage Explorer mostantól támogatja a ADLS Gen2 Storage-fiókokat. Ha Storage Explorer észleli, hogy a hierarchikus névtér engedélyezve van egy Storage-fiókhoz, a Storage-fiók neve mellett "(ADLS Gen2 Preview)" jelenik meg. A Storage Explorer képes megállapítani, hogy a hierarchikus névtér engedélyezve van-e a bejelentkezéskor, vagy ha a Storage-fiókot a név és a kulcs használatával csatlakoztatta. ADLS Gen2 Storage-fiókok esetében a következőket használhatja Storage Explorer:
   * Tárolók létrehozása és törlése
   * Tároló tulajdonságainak és engedélyeinek kezelése (bal oldali)

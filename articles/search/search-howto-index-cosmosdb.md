@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: aed1aa03527481014a63c636181725b91b17a1e8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: be7c6ec9dbc577143e6c7219580f42c876f536bc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003888"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499968"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB-adatok indexelése indexelővel az Azure Cognitive Searchben 
 
@@ -24,13 +24,13 @@ ms.locfileid: "96003888"
 > Ezek a szolgáltatások a [REST API előzetes verzióban](search-api-preview.md) érhetők el. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
 > [!WARNING]
-> Az Azure Cognitive Search csak olyan Cosmos DB-gyűjteményeket támogat, amelyeknek [konzisztens](/azure/cosmos-db/index-policy#indexing-mode) az [indexelési szabályzata](/azure/cosmos-db/index-policy) . A lusta indexelési házirenddel rendelkező gyűjtemények indexelése nem ajánlott, és a hiányzó adatvesztést okozhat. A letiltott indexeléssel rendelkező gyűjtemények nem támogatottak.
+> Az Azure Cognitive Search csak olyan Cosmos DB-gyűjteményeket támogat, amelyeknek [konzisztens](../cosmos-db/index-policy.md#indexing-mode) az [indexelési szabályzata](../cosmos-db/index-policy.md) . A lusta indexelési házirenddel rendelkező gyűjtemények indexelése nem ajánlott, és a hiányzó adatvesztést okozhat. A letiltott indexeléssel rendelkező gyűjtemények nem támogatottak.
 
 Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Cosmos db [Indexelő](search-indexer-overview.md) a tartalom kinyeréséhez és az Azure-Cognitive Search kereshetővé tételéhez. Ez a munkafolyamat létrehoz egy Azure Cognitive Search indexet, és betölti azt a Azure Cosmos DBból kinyert meglévő szöveggel. 
 
-Mivel a terminológia zavaró lehet, érdemes megjegyezni, hogy [Azure Cosmos db indexelés](/azure/cosmos-db/index-overview) és az [Azure Cognitive Search indexelés](search-what-is-an-index.md) különböző műveletek, amelyek egyediek az egyes szolgáltatásokhoz. Az Azure Cognitive Search indexelésének megkezdése előtt a Azure Cosmos DB-adatbázisnak már léteznie kell, és tartalmaznia kell az adatait.
+Mivel a terminológia zavaró lehet, érdemes megjegyezni, hogy [Azure Cosmos db indexelés](../cosmos-db/index-overview.md) és az [Azure Cognitive Search indexelés](search-what-is-an-index.md) különböző műveletek, amelyek egyediek az egyes szolgáltatásokhoz. Az Azure Cognitive Search indexelésének megkezdése előtt a Azure Cosmos DB-adatbázisnak már léteznie kell, és tartalmaznia kell az adatait.
 
-Az Azure Cognitive Search Cosmos DB indexelő képes a különböző protokollokon keresztül elért [Azure Cosmos db elemek](../cosmos-db/databases-containers-items.md#azure-cosmos-items) bejárására. 
+Az Azure Cognitive Search Cosmos DB indexelő képes a különböző protokollokon keresztül elért [Azure Cosmos db elemek](../cosmos-db/account-databases-containers-items.md#azure-cosmos-items) bejárására. 
 
 + A általánosan elérhető [SQL API](../cosmos-db/sql-query-getting-started.md)-k esetében a [portál](#cosmos-indexer-portal), a [REST API](/rest/api/searchservice/indexer-operations)vagy a [.net SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer) segítségével hozhatja létre az adatforrást és az indexelő.
 
@@ -130,7 +130,7 @@ A REST API használatával indexelheti Azure Cosmos db az összes indexelő munk
 > [!NOTE]
 > Cosmos DB Gremlin API-ból vagy Cosmos DB-Cassandra APIból származó adatok indexeléséhez először az [űrlap](https://aka.ms/azure-cognitive-search/indexer-preview)kitöltésével kell hozzáférést kérnie a kezdeményezett előnézetekhez. A kérelem feldolgozása után az adatforrások létrehozásához a [REST API 2020-06-30-es verziójának előzetes verzióját](search-api-preview.md) kell használnia.
 
-A cikk korábbi részeiben már említettük, hogy [Azure Cosmos db indexelés](/azure/cosmos-db/index-overview) és az [Azure Cognitive Search indexelési](search-what-is-an-index.md) indexelés különböző művelet. Cosmos DB indexeléshez alapértelmezés szerint a rendszer az összes dokumentumot automatikusan indexeli, kivéve a Cassandra API. Ha kikapcsolja az automatikus indexelést, a dokumentumok csak a saját vagy a dokumentumok AZONOSÍTÓjának használatával érhetők el. Az Azure Cognitive Search indexeléséhez Cosmos DB automatikus indexelést kell bekapcsolni az Azure Cognitive Search által indexelt gyűjteményben. Amikor regisztrál a Cosmos DB Cassandra API indexelő előzetes verziójára, útmutatást kap a Cosmos DB indexelés beállításával kapcsolatban.
+A cikk korábbi részeiben már említettük, hogy [Azure Cosmos db indexelés](../cosmos-db/index-overview.md) és az [Azure Cognitive Search indexelési](search-what-is-an-index.md) indexelés különböző művelet. Cosmos DB indexeléshez alapértelmezés szerint a rendszer az összes dokumentumot automatikusan indexeli, kivéve a Cassandra API. Ha kikapcsolja az automatikus indexelést, a dokumentumok csak a saját vagy a dokumentumok AZONOSÍTÓjának használatával érhetők el. Az Azure Cognitive Search indexeléséhez Cosmos DB automatikus indexelést kell bekapcsolni az Azure Cognitive Search által indexelt gyűjteményben. Amikor regisztrál a Cosmos DB Cassandra API indexelő előzetes verziójára, útmutatást kap a Cosmos DB indexelés beállításával kapcsolatban.
 
 > [!WARNING]
 > Azure Cosmos DB a DocumentDB következő generációja. Korábban a **2017-11-11** -es API-verzióval használhatja a `documentdb` szintaxist. Ez azt jelentette, hogy az adatforrás típusát a következőként adja meg: `cosmosdb` vagy `documentdb` . Az API **2019-05-06** -es verziójától kezdve az Azure Cognitive Search API-k és a portál csak a `cosmosdb` jelen cikkben leírtaknak megfelelően támogatja a szintaxist. Ez azt jelenti, hogy az adatforrás típusának a `cosmosdb` Cosmos db-végponthoz való kapcsolódáshoz is csatlakoznia kell.

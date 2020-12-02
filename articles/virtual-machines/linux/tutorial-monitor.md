@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 2bc1878739c9ce23cb1448eee87d71575823a2f6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a21df6e5f8d437415bb5376969d56d26153b5c5f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740307"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500461"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: Linux rendszerű virtuális gép figyelése az Azure-ban
 
@@ -118,7 +118,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
 
 A Linux rendszerű virtuális gépek egy dedikált gazdagéppel interaktálnak az Azure-ban. A rendszer automatikusan gyűjti a gazdagép metrikáit, amelyek a következőképpen tekinthetők meg az Azure Portalon:
 
-1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget, és válassza ki a **myResourceGroupMonitor** , majd a **myVM** elemet az erőforrások listájából.
+1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget, és válassza ki a **myResourceGroupMonitor**, majd a **myVM** elemet az erőforrások listájából.
 1. A virtuális gazdagép teljesítményének megtekintéséhez válassza a **Metrikák** elemet a virtuális gép ablakában, majd válassza ki valamelyik *[Gazdagép]* metrikát a **Rendelkezésre álló metrikák** területen.
 
     ![Gazdagép metrikáinak megtekintése](./media/tutorial-monitoring/monitor-host-metrics.png)
@@ -127,7 +127,7 @@ A Linux rendszerű virtuális gépek egy dedikált gazdagéppel interaktálnak a
 
 Az Azure-beli virtuális gép monitorozásának engedélyezése Azure Monitor for VMs használatával:
 
-1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor** , majd a **myVM** elemet az erőforrások listájából.
+1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor**, majd a **myVM** elemet az erőforrások listájából.
 
 2. A virtuális gép lap **figyelés** területén válassza az eredmények **(előzetes verzió)** lehetőséget.
 
@@ -150,11 +150,11 @@ Ha engedélyezte a figyelést, előfordulhat, hogy néhány percet várnia kell,
 
 Azure Monitor for VMs olyan teljesítménymutatókat tartalmaz, amelyek több fő teljesítménymutatót (KPI-ket) céloznak meg, amelyek segítségével meghatározhatja, hogy a virtuális gép milyen jól van végrehajtva. A virtuális gépről való hozzáféréshez hajtsa végre az alábbi lépéseket.
 
-1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor** , majd a **myVM** elemet az erőforrások listájából.
+1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor**, majd a **myVM** elemet az erőforrások listájából.
 
 2. A virtuális gép lap **figyelés** területén válassza az eredmények **(előzetes verzió)** lehetőséget.
 
-3. Válassza a **teljesítmény** fület.
+3. Válassza ki a **Teljesítmény** fület.
 
 Ez a lap nem csak a teljesítmény-kihasználtsági diagramokat tartalmazza, hanem egy táblázatot is, amely minden felderített logikai lemezhez, annak kapacitásához, kihasználtságához és teljes átlagához tartozik.
 
@@ -164,7 +164,7 @@ Létrehozhat megadott teljesítménymetrikákon alapuló riasztásokat. A riaszt
 
 A következő példában az átlagos processzorhasználat alapján hozunk létre riasztást.
 
-1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor** , majd a **myVM** elemet az erőforrások listájából.
+1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroupMonitor**, majd a **myVM** elemet az erőforrások listájából.
 
 2. Kattintson a **Riasztási szabályok** elemre a virtuális gép paneljén, majd a **Metrikariasztás hozzáadása** lehetőségre a riasztási panel felső részén.
 
@@ -176,7 +176,7 @@ A következő példában az átlagos processzorhasználat alapján hozunk létre
 
 6. Kattintson az **OK** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban konfigurálta és megtekintette a virtuális gép teljesítményét. Megtanulta végrehajtani az alábbi műveleteket:
 
@@ -192,4 +192,4 @@ Ebben az oktatóanyagban konfigurálta és megtekintette a virtuális gép telje
 Folytassa a következő oktatóanyaggal, amely az Azure Security Center használatát ismerteti.
 
 > [!div class="nextstepaction"]
-> [A virtuális gépek biztonságának kezelése](tutorial-azure-security.md)
+> [A virtuális gépek biztonságának kezelése](../tutorial-azure-security.md)

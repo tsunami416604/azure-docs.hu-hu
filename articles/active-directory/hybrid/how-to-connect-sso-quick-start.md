@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40d77f4ebb897884f03377e6d9f1243a6d436766
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295022"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500206"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
 
@@ -37,7 +37,7 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben:
 
 * **A Azure ad Connect-kiszolgáló beállítása**: Ha a bejelentkezési módszere [átmenő hitelesítést](how-to-connect-pta.md) használ, nincs szükség további előfeltételek ellenőrzésére. Ha a bejelentkezési módszerként [jelszó-kivonatolási szinkronizálást](how-to-connect-password-hash-synchronization.md) használ, és ha tűzfal van Azure ad Connect és az Azure ad között, ügyeljen a következőkre:
    - A Azure AD Connect 1.1.644.0 vagy újabb verzióját használja. 
-   - Ha a tűzfal vagy a proxy lehetővé teszi, vegye fel a kapcsolatot az engedélyezett listához a ** \* . Msappproxy.net** URL-címeken a 443-es porton keresztül. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek. Ez az előfeltétel csak akkor alkalmazható, ha engedélyezi a szolgáltatást. A tényleges felhasználói bejelentkezésekhez nem szükséges.
+   - Ha a tűzfal vagy a proxy lehetővé teszi, vegye fel a kapcsolatot az engedélyezett listához a **\* . Msappproxy.net** URL-címeken a 443-es porton keresztül. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek. Ez az előfeltétel csak akkor alkalmazható, ha engedélyezi a szolgáltatást. A tényleges felhasználói bejelentkezésekhez nem szükséges.
 
     >[!NOTE]
     >A 1.1.557.0, a 1.1.558.0, a 1.1.561.0 és a 1.1.614.0 verziók a jelszó-kivonat szinkronizálásával kapcsolatos problémával rendelkeznek. Azure AD Connect Ha _nem_ kívánja használni a jelszó-kivonatolási szinkronizálást az átmenő hitelesítéssel együtt, olvassa el a [Azure ad Connect kibocsátási megjegyzéseit](./reference-connect-version-history.md) további információért.
@@ -69,7 +69,7 @@ Ha Azure AD Connect friss telepítését végzi, válassza az [egyéni telepít�
 
 ![Azure AD Connect: felhasználói bejelentkezés](./media/how-to-connect-sso-quick-start/sso8.png)
 
-Ha már rendelkezik Azure AD Connect-telepítéssel, válassza a **felhasználó bejelentkezési** oldalának módosítása Azure ad Connect, majd a **tovább**lehetőséget. Ha Azure AD Connect 1.1.880.0 vagy újabb verziót használ, alapértelmezés szerint az **egyszeri bejelentkezés engedélyezése** lehetőség lesz kiválasztva. Ha a Azure AD Connect régebbi verzióit használja, jelölje be az **egyszeri bejelentkezés engedélyezése** lehetőséget.
+Ha már rendelkezik Azure AD Connect-telepítéssel, válassza a **felhasználó bejelentkezési** oldalának módosítása Azure ad Connect, majd a **tovább** lehetőséget. Ha Azure AD Connect 1.1.880.0 vagy újabb verziót használ, alapértelmezés szerint az **egyszeri bejelentkezés engedélyezése** lehetőség lesz kiválasztva. Ha a Azure AD Connect régebbi verzióit használja, jelölje be az **egyszeri bejelentkezés engedélyezése** lehetőséget.
 
 ![Azure AD Connect: a felhasználói bejelentkezés módosítása](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
@@ -87,7 +87,7 @@ Kövesse ezeket az utasításokat annak ellenőrzéséhez, hogy megfelelően eng
 
 1. Jelentkezzen be a [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival.
 2. A bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget.
-3. Válassza a **Azure ad Connect**lehetőséget.
+3. Válassza a **Azure ad Connect** lehetőséget.
 4. Győződjön meg arról, hogy a **zökkenőmentes egyszeri bejelentkezés** funkció **engedélyezve van**.
 
 ![Azure Portal: Azure AD Connect panel](./media/how-to-connect-sso-quick-start/sso10.png)
@@ -107,7 +107,7 @@ A zökkenőmentes SSO-t fokozatosan kiderítheti a felhasználók számára az a
 Emellett engedélyeznie kell egy intranetes zóna házirend-beállítását, amelynek neve a **frissítés engedélyezése az állapotsoron parancsfájlon** keresztül csoportházirend. 
 
 >[!NOTE]
-> Az alábbi utasítások csak az Internet Explorer és a Google Chrome Windows rendszeren működnek (ha a megbízható webhelyek URL-címeinek az Internet Explorerben való megosztását). A következő szakaszban megtudhatja, hogyan állíthatja be a Mozilla Firefoxot és a Google Chrome-ot macOS rendszeren.
+> Az alábbi utasítások csak az Internet Explorer, a Microsoft Edge és a Google Chrome használata esetén működnek Windows rendszeren (ha a megbízható hely URL-címeit megosztják az Internet Explorerben). A következő szakaszban megtudhatja, hogyan állíthatja be a Mozilla Firefoxot és a Google Chrome-ot macOS rendszeren.
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Miért kell módosítania a felhasználók intranetes zónájának beállításait?
 
@@ -123,8 +123,8 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 ### <a name="group-policy-option---detailed-steps"></a>"Csoportházirend" lehetőség – részletes lépések
 
 1. Nyissa meg az Csoportházirend-felügyeleti szerkesztő eszközt.
-2. Szerkessze az egyes felhasználókra alkalmazott csoportházirendet. Ez a példa az **alapértelmezett tartományi házirendet**használja.
-3. Tallózással keresse meg a **felhasználói konfigurációs**  >  **házirendet**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Internet Explorer**  >  **Internet Vezérlőpult**  >  **biztonsági lapján**. Ezután válassza **a hely – zóna hozzárendelési lista**lehetőséget.
+2. Szerkessze az egyes felhasználókra alkalmazott csoportházirendet. Ez a példa az **alapértelmezett tartományi házirendet** használja.
+3. Tallózással keresse meg a **felhasználói konfigurációs**  >  **házirendeket**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Internet Explorer**  >  **Internet Control Panel**  >  **Biztonság lapján**. Ezután válassza **a hely – zóna hozzárendelési lista** lehetőséget.
     ![Képernyőfelvétel: a "biztonsági lap" a "helyről a zónákhoz való hozzárendelés" listára kiválasztva.](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Engedélyezze a szabályzatot, majd adja meg a következő értékeket a párbeszédpanelen:
    - **Érték neve**: a Kerberos-jegyek továbbítására szolgáló Azure ad URL-cím.
@@ -137,14 +137,14 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
      Érték (adathalmaz): 1
 
    >[!NOTE]
-   > Ha szeretné letiltani egyes felhasználók számára a zökkenőmentes egyszeri bejelentkezést (például ha ezek a felhasználók megosztott kioszkokra jelentkeznek be), állítsa a fenti értékeket **4**értékre. Ez a művelet hozzáadja az Azure AD URL-címét a korlátozott zónához, és minden alkalommal sikertelen lesz a zökkenőmentes egyszeri bejelentkezés.
+   > Ha szeretné letiltani egyes felhasználók számára a zökkenőmentes egyszeri bejelentkezést (például ha ezek a felhasználók megosztott kioszkokra jelentkeznek be), állítsa a fenti értékeket **4** értékre. Ez a művelet hozzáadja az Azure AD URL-címét a korlátozott zónához, és minden alkalommal sikertelen lesz a zökkenőmentes egyszeri bejelentkezés.
    >
 
 5. Válassza az **OK**, majd újra az **OK** elemet.
 
     ![Képernyőfelvétel: a "tartalmak megjelenítése" ablak, amelyen a zóna-hozzárendelés van kiválasztva.](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Tallózással keresse meg a **felhasználói konfigurációs**  >  **házirendet**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Internet Explorer**  >  **Internet Vezérlőpult**  >  **biztonsági oldalának**  >  **intranet zónájában**. Ezután válassza **a frissítések engedélyezése állapotsoron parancsfájl használatával**lehetőséget.
+6. Tallózással keresse meg a **felhasználói konfigurációs**  >  **házirendeket**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Internet Explorer**  >  **Internet Vezérlőpult**  >  **biztonsági oldalának**  >  **intranet zónájában**. Ezután válassza **a frissítések engedélyezése állapotsoron parancsfájl használatával** lehetőséget.
 
     ![Képernyőkép: az "intranet zóna" oldal, amelyen a "frissítések engedélyezése az állapotsoron a szkripten keresztül" lehetőség van kiválasztva.](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -155,16 +155,16 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 ### <a name="group-policy-preference-option---detailed-steps"></a>"Csoportházirend-beállítások" beállítás – részletes lépések
 
 1. Nyissa meg az Csoportházirend-felügyeleti szerkesztő eszközt.
-2. Szerkessze az egyes felhasználókra alkalmazott csoportházirendet. Ez a példa az **alapértelmezett tartományi házirendet**használja.
-3. Tallózással keresse meg a **felhasználói konfiguráció**  >  **beállításait**a  >  **Windows beállításai**  >  **beállításjegyzék**  >  **új**  >  **beállításjegyzék-eleme**.
+2. Szerkessze az egyes felhasználókra alkalmazott csoportházirendet. Ez a példa az **alapértelmezett tartományi házirendet** használja.
+3. Tallózással keresse meg a **felhasználói konfiguráció**  >  **beállításait** a  >  **Windows beállításai**  >  **beállításjegyzék**  >  **új**  >  **beállításjegyzék-eleme**.
 
     ![Képernyőfelvétel: a "Registry" kiválasztott és a "beállításjegyzék-elem" lehetőség be van jelölve.](./media/how-to-connect-sso-quick-start/sso15.png)
 
-4. Adja meg a következő értékeket a megfelelő mezőkben, majd kattintson **az OK**gombra.
-   - **Kulcs elérési útja**: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon***
-   - **Érték neve**: ***https***
-   - **Érték típusa**: ***REG_DWORD***
-   - **Érték**: ***00000001***
+4. Adja meg a következő értékeket a megfelelő mezőkben, majd kattintson **az OK** gombra.
+   - **Kulcs elérési útja**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon_* _
+   - _* Érték neve * *: **_https_*_
+   - _* Érték típusa * *: **_REG_DWORD_*_
+   - _* Érték * *: **_00000001_*_
  
      ![Képernyőkép, amely az "új beállításjegyzék tulajdonságai" ablakot jeleníti meg.](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -176,8 +176,8 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 
 A Mozilla Firefox nem használ automatikusan Kerberos-hitelesítést. Az alábbi lépések segítségével minden felhasználónak manuálisan hozzá kell adnia az Azure AD URL-címét a Firefox-beállításaihoz:
 1. Futtassa a Firefoxot, és írja be `about:config` a címsorba. Zárja be a megjelenő értesítéseket.
-2. Keressen rá a **Network. Negotiate – auth. megbízható – URI-** k beállításra. Ez a beállítás felsorolja a Firefox megbízható helyeit a Kerberos-hitelesítéshez.
-3. Kattintson a jobb gombbal, és válassza a **módosítás**lehetőséget.
+2. Keresse meg az _ *Network. Negotiate-auth. megbízható-URI** beállítást. Ez a beállítás felsorolja a Firefox megbízható helyeit a Kerberos-hitelesítéshez.
+3. Kattintson a jobb gombbal, és válassza a **módosítás** lehetőséget.
 4. Adja meg `https://autologon.microsoftazuread-sso.com` a mezőt a mezőben.
 5. Kattintson **az OK gombra** , majd nyissa meg újra a böngészőt.
 
@@ -234,7 +234,7 @@ A kulcsok átadására vonatkozó utasításokért lásd [: Azure Active Directo
 >[!IMPORTANT]
 >Ezt a lépést nem kell _azonnal_ végrehajtania, miután engedélyezte a szolgáltatást. A Kerberos-visszafejtési kulcsok legalább 30 naponkénti átadása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Részletes [technikai](how-to-connect-sso-how-it-works.md)tudnivalók: az egyszerű Sign-On funkció működésének megismerése.
 - [Gyakori kérdések](how-to-connect-sso-faq.md): válaszokat kaphat a zökkenőmentes egyszeri bejelentkezéssel kapcsolatos gyakori kérdésekre.

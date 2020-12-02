@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: cc8d4458de5f3bbf1eaf111aa10f1377f3c9d46a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c352b9e6b067724fbfc00bf5b0338baf8514421
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292295"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500495"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése az Azure-beli használatra
 Ebből a cikkből megtudhatja, hogyan készítheti elő Red Hat Enterprise Linux (RHEL) virtuális gépet az Azure-ban való használatra. A cikkben tárgyalt RHEL-verziók 6,7 + és 7.1 +. A cikkben tárgyalt, a Hyper-V, a kernel-alapú virtuális gép (KVM) és a VMware. A Red Hat felhőalapú hozzáférési programjában való részvételre vonatkozó jogosultsági követelményekkel kapcsolatos további információkért tekintse [meg a Red Hat Cloud Access webhelyét](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) , és [futtassa a RHEL az Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)-ban című témakört. A RHEL-lemezképek készítésének automatizálásához tekintse meg az [Azure Image Builder](./image-builder-overview.md)című témakört.
@@ -28,7 +28,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 * Az Azure nem támogatja a VHDX formátumot. Az Azure csak a rögzített VHD-t támogatja. A Hyper-V kezelőjével átalakíthatja a lemezt VHD formátumba, vagy használhatja a convert-VHD parancsmagot is. Ha VirtualBox-t használ, a lemez létrehozásakor válassza a **rögzített méret** lehetőséget a dinamikusan lefoglalt alapértelmezett beállítással szemben.
 * Az Azure támogatja a Gen1 (BIOS rendszerindítási) & Gen2 (UEFI rendszerindítási) virtuális gépeket.
 * A VHD számára engedélyezett maximális méret 1 023 GB.
-* A logikai kötet-kezelő (LVM) támogatott, és az operációsrendszer-lemezen vagy az Azure-beli virtuális gépeken található adatlemezeken is használható. Általánosságban azonban ajánlott standard partíciókat használni az operációsrendszer-lemezen az LVM helyett. Ezzel a gyakorlattal elkerülhető, hogy az LVM Name ütközik a klónozott virtuális gépekkel, különösen akkor, ha az operációs rendszer lemezét egy másik azonos virtuális géphez kell csatlakoztatni a hibaelhárításhoz. Lásd még: az  [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és a [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dokumentációja.
+* A logikai kötet-kezelő (LVM) támogatott, és az operációsrendszer-lemezen vagy az Azure-beli virtuális gépeken található adatlemezeken is használható. Általánosságban azonban ajánlott standard partíciókat használni az operációsrendszer-lemezen az LVM helyett. Ezzel a gyakorlattal elkerülhető, hogy az LVM Name ütközik a klónozott virtuális gépekkel, különösen akkor, ha az operációs rendszer lemezét egy másik azonos virtuális géphez kell csatlakoztatni a hibaelhárításhoz. Lásd még: az  [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és a [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dokumentációja.
 * Az univerzális lemezes formázású (UDF-) fájlrendszerek kernel-támogatása szükséges. Az Azure első indításakor a vendéghez csatlakoztatott UDF formátumú adathordozó továbbítja a kiépítési konfigurációt a linuxos virtuális gépre. Az Azure Linux-ügynöknek képesnek kell lennie az UDF fájlrendszer csatlakoztatására a konfigurációjának olvasásához és a virtuális gép kiépítéséhez.
 * Ne állítson be swap partíciót az operációs rendszer lemezén. A Linux-ügynök úgy konfigurálható, hogy lapozófájlt hozzon létre az ideiglenes erőforrás lemezén.  Erről további információt a következő lépésekben találhat.
 * Az Azure-ban az összes virtuális merevlemeznek 1 MB-ra igazított virtuális mérettel kell rendelkeznie. Nyers lemezről VHD-re való konvertáláskor gondoskodnia kell arról, hogy a nyers lemez mérete a konverzió előtt egy 1MB többszöröse legyen. További részleteket az alábbi lépésekben találhat. További információért lásd a [Linux telepítési megjegyzéseit](create-upload-generic.md#general-linux-installation-notes) is.
@@ -294,7 +294,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
    A root felhasználó második mezőjének módosítása a következőről: "!!" a titkosított jelszóhoz.
 
-1. Hozzon létre egy virtuális gépet a KVM-ben a qcow2 rendszerképből. Állítsa be a lemez típusát a **qcow2**értékre, és állítsa a virtuális hálózati adapter modelljét a **virtio**értékre. Ezután indítsa el a virtuális gépet, és jelentkezzen be root-ként.
+1. Hozzon létre egy virtuális gépet a KVM-ben a qcow2 rendszerképből. Állítsa be a lemez típusát a **qcow2** értékre, és állítsa a virtuális hálózati adapter modelljét a **virtio** értékre. Ezután indítsa el a virtuális gépet, és jelentkezzen be root-ként.
 
 1. Hozza létre vagy szerkessze a `/etc/sysconfig/network` fájlt, és adja hozzá a következő szöveget:
 
@@ -490,7 +490,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
    A root felhasználó második mezőjének módosítása a következőről: "!!" a titkosított jelszóhoz.
 
-1. Hozzon létre egy virtuális gépet a KVM-ben a qcow2 rendszerképből. Állítsa be a lemez típusát a **qcow2**értékre, és állítsa a virtuális hálózati adapter modelljét a **virtio**értékre. Ezután indítsa el a virtuális gépet, és jelentkezzen be root-ként.
+1. Hozzon létre egy virtuális gépet a KVM-ben a qcow2 rendszerképből. Állítsa be a lemez típusát a **qcow2** értékre, és állítsa a virtuális hálózati adapter modelljét a **virtio** értékre. Ezután indítsa el a virtuális gépet, és jelentkezzen be root-ként.
 
 1. Hozza létre vagy szerkessze a `/etc/sysconfig/network` fájlt, és adja hozzá a következő szöveget:
 
@@ -669,7 +669,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
 * A Linux operációs rendszer telepítésekor azt javasoljuk, hogy az LVM helyett a standard partíciót használja, ami gyakran az alapértelmezett a sok telepítés esetén. Ezzel elkerülhető, hogy az LVM neve ütközik a klónozott virtuális géppel, különösen akkor, ha egy operációsrendszer-lemezt egy másik virtuális géphez csatlakoztatni kell a hibaelhárításhoz. Az LVM vagy RAID adatlemezeken is használható, ha az előnyben részesített.
 * Ne állítson be swap partíciót az operációs rendszer lemezén. A Linux-ügynököt beállíthatja úgy, hogy lapozófájlt hozzon létre az ideiglenes erőforrás lemezén. Erről további információt az alábbi lépésekben találhat.
-* A virtuális merevlemez létrehozásakor válassza a **virtuális lemez tárolása egyetlen fájlként**lehetőséget.
+* A virtuális merevlemez létrehozásakor válassza a **virtuális lemez tárolása egyetlen fájlként** lehetőséget.
 
 ### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>RHEL 6 virtuális gép előkészítése VMware-ről
 1. A RHEL 6 hálózatkezelő az Azure Linux-ügynököt is zavarhatja. A következő parancs futtatásával távolítsa el a csomagot:
@@ -1112,11 +1112,11 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
 1. Helyezze el azt a Kickstart-fájlt, ahová a telepítési rendszer hozzá tud férni.
 
-1. A Hyper-V kezelőjében hozzon létre egy új virtuális gépet. A **virtuális merevlemez csatlakoztatása** lapon válassza a **virtuális merevlemez csatolása később**lehetőséget, és fejezze be az új virtuális gép varázslót.
+1. A Hyper-V kezelőjében hozzon létre egy új virtuális gépet. A **virtuális merevlemez csatlakoztatása** lapon válassza a **virtuális merevlemez csatolása később** lehetőséget, és fejezze be az új virtuális gép varázslót.
 
 1. Nyissa meg a virtuális gép beállításait:
 
-    a.  Csatoljon egy új virtuális merevlemezt a virtuális géphez. Győződjön meg arról, hogy a **VHD-formátum** és a **rögzített méret**van kiválasztva.
+    a.  Csatoljon egy új virtuális merevlemezt a virtuális géphez. Győződjön meg arról, hogy a **VHD-formátum** és a **rögzített méret** van kiválasztva.
 
     b.  Csatlakoztassa a telepítési ISO-t a DVD-meghajtóhoz.
 
@@ -1124,7 +1124,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 
 1. Indítsa el a virtuális gépet. Amikor megjelenik a telepítési útmutató, nyomja le a **Tab** billentyűt a rendszerindítási beállítások konfigurálásához.
 
-1. Adja meg a `inst.ks=<the location of the kickstart file>` rendszerindítási beállítások végét, majd nyomja le az **ENTER**billentyűt.
+1. Adja meg a `inst.ks=<the location of the kickstart file>` rendszerindítási beállítások végét, majd nyomja le az **ENTER** billentyűt.
 
 1. Várjon, amíg a telepítés befejeződik. Ha elkészült, a rendszer automatikusan leállítja a virtuális gépet. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 

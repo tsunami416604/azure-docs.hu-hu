@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: aec8448cb82480397f561e095420bbd49982d4b2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 11f5fcd74b228fa2d57658f5c268e3bebc3c7e93
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093038"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499526"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Naplók és mérőszámok elemzése diagnosztikai beállításokkal
 
@@ -31,7 +31,7 @@ Válassza ki a figyelni kívánt naplózási kategóriát és metrikai kategóri
 
 ## <a name="logs"></a>Naplók
 
-|Napló | Leírás |
+|Napló | Description |
 |----|----|
 | **ApplicationConsole** | Az összes felhasználói alkalmazás konzoljának naplója. |
 | **SystemLogs** | Jelenleg csak a [Spring Cloud config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) naplózza ezt a kategóriát. |
@@ -40,7 +40,7 @@ Válassza ki a figyelni kívánt naplózási kategóriát és metrikai kategóri
 
 A metrikák teljes listájáért lásd: [Spring Cloud mérőszámok](./spring-cloud-concept-metrics.md#user-metrics-options).
 
-A kezdéshez engedélyezze, hogy az egyik szolgáltatás megkapja az adatfogadást. A Log Analytics konfigurálásával kapcsolatos további tudnivalókért tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/get-started-portal.md)című témakört.
+A kezdéshez engedélyezze, hogy az egyik szolgáltatás megkapja az adatfogadást. A Log Analytics konfigurálásával kapcsolatos további tudnivalókért tekintse meg a [log Analytics beszerzése a Azure monitorban](../azure-monitor/log-query/log-analytics-tutorial.md)című témakört.
 
 ## <a name="configure-diagnostics-settings"></a>Diagnosztikai beállítások konfigurálása
 
@@ -48,7 +48,7 @@ A kezdéshez engedélyezze, hogy az egyik szolgáltatás megkapja az adatfogadá
 1. Válassza a **diagnosztikai beállítások** lehetőséget, majd válassza a **diagnosztika hozzáadása beállítást**.
 1. Adja meg a beállítás nevét, majd válassza ki, hová szeretné elküldeni a naplókat. A következő három lehetőség bármelyik kombinációját kiválaszthatja:
     * **Archiválás egy Storage-fiókba**
-    * **Stream az Event hub-ba**
+    * **Streamelés eseményközpontba**
     * **Küldés a Log Analyticsnek**
 
 1. Válassza ki a figyelni kívánt naplózási kategóriát és metrikai kategóriát, majd adja meg a megőrzési időt (napokban). A megőrzési idő csak a Storage-fiókra vonatkozik.
@@ -64,7 +64,7 @@ A naplók és a metrikák megtekintésére többféle módszer áll rendelkezés
 ### <a name="use-the-logs-blade"></a>A naplók panel használata
 
 1. A Azure Portal nyissa meg az Azure Spring Cloud-példányát.
-1. A **naplóbeli keresés** ablaktábla megnyitásához válassza a **naplók**lehetőséget.
+1. A **naplóbeli keresés** ablaktábla megnyitásához válassza a **naplók** lehetőséget.
 1. A **táblák** keresési mezőjében
    * A naplók megtekintéséhez adjon meg egy egyszerű lekérdezést, például:
 
@@ -78,13 +78,13 @@ A naplók és a metrikák megtekintésére többféle módszer áll rendelkezés
     AzureMetrics
     | limit 50
     ```
-1. A keresés eredményének megtekintéséhez válassza a **Futtatás**lehetőséget.
+1. A keresés eredményének megtekintéséhez válassza a **Futtatás** lehetőséget.
 
 ### <a name="use-log-analytics"></a>A Log Analytics használata
 
-1. A Azure Portal a bal oldali ablaktáblán válassza a **log Analytics**lehetőséget.
+1. A Azure Portal a bal oldali ablaktáblán válassza a **log Analytics** lehetőséget.
 1. Válassza ki a diagnosztikai beállítások hozzáadásakor kiválasztott Log Analytics munkaterületet.
-1. A **naplóbeli keresés** ablaktábla megnyitásához válassza a **naplók**lehetőséget.
+1. A **naplóbeli keresés** ablaktábla megnyitásához válassza a **naplók** lehetőséget.
 1. A **táblák** keresési mezőjében
    * a naplók megtekintéséhez adjon meg egy egyszerű lekérdezést, például:
 
@@ -99,7 +99,7 @@ A naplók és a metrikák megtekintésére többféle módszer áll rendelkezés
     | limit 50
     ```
 
-1. A keresés eredményének megtekintéséhez válassza a **Futtatás**lehetőséget.
+1. A keresés eredményének megtekintéséhez válassza a **Futtatás** lehetőséget.
 1. A szűrési feltétel beállításával az adott alkalmazás vagy példány naplóit is megkeresheti:
 
     ```sql
@@ -116,8 +116,8 @@ Ha többet szeretne megtudni a Log Analytics használt lekérdezési nyelvről, 
 
 1. A Azure Portalban keresse meg a **Storage-fiókokat** a bal oldali navigációs panelen vagy a keresőmezőbe.
 1. Válassza ki azt a Storage-fiókot, amelyet a diagnosztikai beállítások hozzáadásakor választott ki.
-1. A blob- **tároló** panel megnyitásához válassza a **Blobok**lehetőséget.
-1. Az alkalmazás naplófájljainak áttekintéséhez keressen rá az elemzések **-naplók-applicationconsole**nevű tárolóra.
+1. A blob- **tároló** panel megnyitásához válassza a **Blobok** lehetőséget.
+1. Az alkalmazás naplófájljainak áttekintéséhez keressen rá az elemzések **-naplók-applicationconsole** nevű tárolóra.
 1. Az alkalmazás metrikáinak áttekintéséhez keressen rá a következő nevű tárolóra: **pt1m**.
 
 A diagnosztikai adatok Storage-fiókba való küldésével kapcsolatos további tudnivalókért lásd: [diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban](../storage/common/storage-introduction.md).
@@ -127,15 +127,15 @@ A diagnosztikai adatok Storage-fiókba való küldésével kapcsolatos további 
 1. A Azure Portal keresse meg **Event Hubs** a bal oldali navigációs panelen vagy a keresőmezőbe.
 
 1. Keresse meg és válassza ki azt az Event hub-t, amelyet a diagnosztikai beállítások hozzáadásakor választott ki.
-1. Az **Event hub-lista** panel megnyitásához válassza a **Event Hubs**lehetőséget.
+1. Az **Event hub-lista** panel megnyitásához válassza a **Event Hubs** lehetőséget.
 1. Az alkalmazás naplófájljainak áttekintéséhez keressen rá az "elemzések – **naplók – applicationconsole**" nevű Event hub kifejezésre.
-1. Az alkalmazás-metrikák áttekintéséhez keressen rá az **pt1m**nevű Event hub kifejezésre.
+1. Az alkalmazás-metrikák áttekintéséhez keressen rá az **pt1m** nevű Event hub kifejezésre.
 
 Ha többet szeretne megtudni a diagnosztikai információk esemény-központba küldéséről, olvassa el a következő témakört: [Streaming Azure Diagnostics adatok a gyors elérési úton Event Hubs használatával](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
 
 ## <a name="analyze-the-logs"></a>A naplók elemzése
 
-Az Azure Log Analytics Kusto motorral fut, így elemzés céljából lekérdezheti a naplókat. A naplók Kusto használatával történő lekérdezésének gyors bevezetéséhez tekintse át a [log Analytics oktatóanyagot](../azure-monitor/log-query/get-started-portal.md).
+Az Azure Log Analytics Kusto motorral fut, így elemzés céljából lekérdezheti a naplókat. A naplók Kusto használatával történő lekérdezésének gyors bevezetéséhez tekintse át a [log Analytics oktatóanyagot](../azure-monitor/log-query/log-analytics-tutorial.md).
 
 Az alkalmazás naplói kritikus információkat és részletes naplókat biztosítanak az alkalmazás állapotával, teljesítményével és egyéb adataival kapcsolatban. A következő részekben néhány egyszerű lekérdezés segíti az alkalmazás jelenlegi és múltbeli állapotának megértését.
 
@@ -206,6 +206,6 @@ AppPlatformLogsforSpring
 ```
 Használhatja ugyanezt a stratégiát más Java-naplókhoz is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md)

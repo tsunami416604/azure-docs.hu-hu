@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 05241715663ac2cbb90e16f345398f863541e6ed
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: efcfb2fd431dd9626ddcf918127964672b0e5ce0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972203"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500478"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>A Linux rendszerű virtuális gépekhez való kapcsolódás Távoli asztal telepítése és konfigurálása az Azure-ban
 Az Azure-ban a Linux rendszerű virtuális gépeket általában egy Secure Shell-(SSH-) kapcsolatok használatával kezelik a parancssorból. A Linux vagy a gyors hibaelhárítási forgatókönyvek esetében a távoli asztal használata egyszerűbb lehet. Ez a cikk részletesen ismerteti, hogyan telepíthet és konfigurálhat egy asztali környezetet ([Xfce](https://www.xfce.org)) és egy távoli asztalt ([Xrdp](http://xrdp.org)) a Linux rendszerű virtuális géphez a Resource Manager-alapú üzemi modell használatával.
@@ -36,7 +36,7 @@ Az Azure-ban a legtöbb Linux rendszerű virtuális gép nem rendelkezik alapér
 
 Az alábbi példa telepíti a Lightweight [Xfce4](https://www.xfce.org/) asztali környezetet egy Ubuntu 18,04 LTS virtuális gépre. A más disztribúciók parancsai némileg eltérőek (a `yum` Red Hat Enterprise Linux telepítésére és a megfelelő `selinux` szabályok konfigurálására, vagy `zypper` például a (z) rendszerre történő telepítésre HASZNÁLHATÓk a SUSE használatára).
 
-Először SSH-t a virtuális géphez. A következő példa a *myvm.westus.cloudapp.Azure.com* nevű virtuális géphez csatlakozik az *azureuser*felhasználónevével. Saját értékek használata:
+Először SSH-t a virtuális géphez. A következő példa a *myvm.westus.cloudapp.Azure.com* nevű virtuális géphez csatlakozik az *azureuser* felhasználónevével. Saját értékek használata:
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
@@ -73,7 +73,7 @@ sudo service xrdp restart
 
 
 ## <a name="set-a-local-user-account-password"></a>Helyi felhasználói fiók jelszavának beállítása
-Ha a virtuális gép létrehozásakor létrehozott egy jelszót a felhasználói fiókhoz, hagyja ki ezt a lépést. Ha csak az SSH-kulcsos hitelesítést használja, és nem rendelkezik helyi fiók jelszavával, adja meg a jelszót, mielőtt a xrdp használatával bejelentkezik a virtuális gépre. a xrdp nem fogadhatnak SSH-kulcsokat a hitelesítéshez. A következő példa a *felhasználói fiókhoz*tartozó jelszó megadását adja meg:
+Ha a virtuális gép létrehozásakor létrehozott egy jelszót a felhasználói fiókhoz, hagyja ki ezt a lépést. Ha csak az SSH-kulcsos hitelesítést használja, és nem rendelkezik helyi fiók jelszavával, adja meg a jelszót, mielőtt a xrdp használatával bejelentkezik a virtuális gépre. a xrdp nem fogadhatnak SSH-kulcsokat a hitelesítéshez. A következő példa a *felhasználói fiókhoz* tartozó jelszó megadását adja meg:
 
 ```bash
 sudo passwd azureuser
@@ -84,9 +84,9 @@ sudo passwd azureuser
 
 
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Hálózati biztonsági csoportra vonatkozó szabály létrehozása Távoli asztal forgalomhoz
-Annak engedélyezéséhez, hogy Távoli asztal forgalom elérje a linuxos virtuális gépet, létre kell hozni egy hálózati biztonsági csoportra vonatkozó szabályt, amely lehetővé teszi a TCP-t a 3389-as porton a virtuális gép eléréséhez. A hálózati biztonsági csoportokra vonatkozó szabályokkal kapcsolatos további információkért lásd: [Mi az a hálózati biztonsági csoport?](../../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) [A Azure Portal használatával létrehozhat egy hálózati biztonsági csoportra vonatkozó szabályt](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)is.
+Annak engedélyezéséhez, hogy Távoli asztal forgalom elérje a linuxos virtuális gépet, létre kell hozni egy hálózati biztonsági csoportra vonatkozó szabályt, amely lehetővé teszi a TCP-t a 3389-as porton a virtuális gép eléréséhez. A hálózati biztonsági csoportokra vonatkozó szabályokkal kapcsolatos további információkért lásd: [Mi az a hálózati biztonsági csoport?](../../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) [A Azure Portal használatával létrehozhat egy hálózati biztonsági csoportra vonatkozó szabályt](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)is.
 
-A következő példában létrehozunk egy hálózati biztonsági csoportra vonatkozó szabályt az [az VM Open-port](/cli/azure/vm#az-vm-open-port) on *3389*porton. Az Azure CLI-ből, ne a virtuális géphez tartozó SSH-munkamenetből nyissa meg a következő hálózati biztonsági csoport szabályt:
+A következő példában létrehozunk egy hálózati biztonsági csoportra vonatkozó szabályt az [az VM Open-port](/cli/azure/vm#az-vm-open-port) on *3389* porton. Az Azure CLI-ből, ne a virtuális géphez tartozó SSH-munkamenetből nyissa meg a következő hálózati biztonsági csoport szabályt:
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389
@@ -136,7 +136,7 @@ Más Linux-disztribúciók, például a Red Hat Enterprise Linux és a SUSE kül
 Ha nem kap választ a távoli asztal ügyfelén, és nem lát eseményeket a rendszernaplóban, ez a viselkedés azt jelzi, hogy a távoli asztali forgalom nem tudja elérni a virtuális gépet. Tekintse át a hálózati biztonsági csoport szabályait, és győződjön meg arról, hogy rendelkezik olyan szabállyal, amely engedélyezi a TCP-t a 3389-es port További információ: az [alkalmazások kapcsolódási problémáinak elhárítása](../troubleshooting/troubleshoot-app-connection.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az SSH-kulcsok Linux virtuális gépekkel való létrehozásával és használatával kapcsolatos további információkért lásd: [ssh-kulcsok létrehozása Linux rendszerű virtuális gépekhez az Azure-ban](mac-create-ssh-keys.md).
 
 További információ az SSH Windows rendszeren való használatáról: [ssh-kulcsok használata a Windowsban](ssh-from-windows.md).

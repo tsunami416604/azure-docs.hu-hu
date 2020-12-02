@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad97a822aaa6477616a6661a579df6c4ec82729
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919572"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498557"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>Hozzon létre rugalmasságot az identitás-és hozzáférés-kezelési infrastruktúrában
 
@@ -40,11 +40,11 @@ Az identitás-infrastruktúra kontextusában a rugalmasság lehetővé teszi az 
 
 ## <a name="why-worry-about-disruption"></a>Miért kell aggódnia a fennakadás miatt?
 
-A hitelesítési rendszer minden hívása megszakad, ha az Azure AD-hívás láncában lévő bármelyik összetevő meghibásodik. Ez azt jelenti, hogy az infrastruktúra bármely része megszakadhat, mert a felhasználók nem férhetnek hozzá a szükséges alkalmazásokhoz. Ezért a hitelesítési hívások számának és a függőségek számának csökkentése fontos a rugalmasság szempontjából. Az alkalmazások fejlesztői megadhatják a tokenek kérésének gyakoriságát. Például a fejlesztőkkel együttműködve gondoskodhat arról, hogy az Azure AD által felügyelt identitásokat használják az alkalmazásaikban, ahol lehetséges. 
+A hitelesítési rendszer minden hívása megszakad, ha a hívás bármely összetevője meghiúsul. Ha a hitelesítés megszakad, a mögöttes összetevő hibái miatt a felhasználók nem fognak hozzáférni az alkalmazásaihoz. Ezért a hitelesítési hívások számának és a függőségek számának csökkentése fontos a rugalmasság szempontjából. Az alkalmazások fejlesztői megadhatják a tokenek kérésének gyakoriságát. Például a fejlesztőkkel együttműködve gondoskodhat arról, hogy az Azure AD által felügyelt identitásokat használják az alkalmazásaikban, ahol lehetséges. 
 
 A jogkivonat-alapú hitelesítési rendszerekben, például az Azure AD-ben a felhasználó alkalmazásának (ügyfelének) biztonsági jogkivonatot kell bekérnie az Identity rendszerből ahhoz, hogy hozzáférhessen egy alkalmazáshoz vagy más erőforráshoz. Az érvényességi időszak alatt az ügyfél többször is használhatja ugyanazt a tokent az alkalmazás eléréséhez.
 
-Amikor az alkalmazásnak bemutatott jogkivonat lejár, az alkalmazás elutasítja a jogkivonatot, és az ügyfélnek új jogkivonatot kell bekérnie az Azure AD-ből. Az új jogkivonat beszerzéséhez szükség van felhasználói beavatkozásra, például a hitelesítő adatokra vonatkozó kérésekre. A hosszú élettartamú tokenekkel rendelkező hitelesítési hívások gyakoriságának csökkentése csökkenti ezt a kockázatot. Azonban a jogkivonat élettartamát a kevesebb házirend-értékelés által létrehozott kockázattal kell kiegyenlíteni. A jogkivonat-élettartamok kezelésével kapcsolatos további információkért tekintse meg ezt a cikket az [újrahitelesítéssel kapcsolatos kérések optimalizálásához](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
+Amikor az alkalmazásnak bemutatott jogkivonat lejár, az alkalmazás elutasítja a jogkivonatot, és az ügyfélnek új jogkivonatot kell bekérnie az Azure AD-ből. Az új token beszerzése szükségessé teszi a felhasználói beavatkozást, például a hitelesítő adatok megadását vagy a hitelesítési rendszer egyéb követelményeinek teljesítését. A hosszú élettartamú tokenekkel rendelkező hitelesítési hívások gyakoriságának csökkentése csökkenti a szükségtelen interakciókat. Azonban a jogkivonat élettartamát a kevesebb házirend-értékelés által létrehozott kockázattal kell kiegyenlíteni. A jogkivonat-élettartamok kezelésével kapcsolatos további információkért tekintse meg ezt a cikket az [újrahitelesítéssel kapcsolatos kérések optimalizálásához](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
 
 ## <a name="ways-to-increase-resilience"></a>A rugalmasság növelésének módjai
 A következő ábra a rugalmasság növelését hat konkrét módon mutatja be. Az egyes módszereket részletesen ismertetjük a cikk következő lépések részében csatolt cikkekben.

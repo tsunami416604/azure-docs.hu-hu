@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 9e3b376cfaf5379acaf92713c42509471200d066
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fc609b60c9d5d4d4734c3d73cbda87935b533caf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95549930"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500257"
 ---
 # <a name="troubleshooting-azure-linux-guest-agent"></a>Azure Linux-vendég ügynök hibaelhárítása
 
-Az [Azure Linux Guest Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) egy virtuális gép (VM) ügynöke. Lehetővé teszi a virtuális gép számára, hogy kommunikáljon a háló vezérlővel (a mögöttes fizikai kiszolgáló, amelyen a virtuális gép fut) az IP-168.63.129.16. Ez az IP-cím egy virtuális nyilvános IP-cím, amely megkönnyíti a kommunikációt. További információ: [Mi az IP-168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
+Az [Azure Linux Guest Agent](../extensions/agent-linux.md) egy virtuális gép (VM) ügynöke. Lehetővé teszi a virtuális gép számára, hogy kommunikáljon a háló vezérlővel (a mögöttes fizikai kiszolgáló, amelyen a virtuális gép fut) az IP-168.63.129.16. Ez az IP-cím egy virtuális nyilvános IP-cím, amely megkönnyíti a kommunikációt. További információ: [Mi az IP-168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 ## <a name="checking-agent-status-and-version"></a>Az ügynök állapotának és verziójának ellenőrzése
 
@@ -101,6 +101,6 @@ A virtuális gép nem tudja elérni a WireServer IP-címét a gazdagépen.
 1. Győződjön meg arról, hogy a Linux iptables vagy egy harmadik féltől származó tűzfal blokkolja-e a 80, 443 és 32526 portokhoz való hozzáférést. További információ arról, hogy a cím miért nem tiltható le: [Mi az IP-168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A "Windows Azure Guest Agent ügynök nem működik" probléma megoldásához forduljon a [Microsoft ügyfélszolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

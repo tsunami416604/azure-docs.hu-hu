@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 1b40eef0a4cae8fa68631426ff72003db43d7530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5452b1e2ffc3ca8a11f3acb591c6288806445e1b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88817619"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499390"
 ---
 # <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>A Azure Portal használatával engedélyezheti a kiszolgálóoldali titkosítást az ügyfél által felügyelt kulcsokkal a felügyelt lemezeken
 
 A Azure Disk Storage lehetővé teszi a saját kulcsok kezelését, ha kiszolgálóoldali titkosítást (SSE) használ a felügyelt lemezekhez, ha a lehetőséget választja. Az ügyfelek által felügyelt kulcsokkal és az egyéb felügyelt lemezes titkosítási típusokkal kapcsolatos koncepcionális információk a lemezes titkosítási cikk **ügyfél által felügyelt kulcsok** szakaszában találhatók:
 
-- Linux esetén: [ügyfél által felügyelt kulcsok](./linux/disk-encryption.md#customer-managed-keys)
-- Windows esetén: [ügyfél által felügyelt kulcsok](./windows/disk-encryption.md#customer-managed-keys)
+- Linux esetén: [ügyfél által felügyelt kulcsok](./disk-encryption.md#customer-managed-keys)
+- Windows esetén: [ügyfél által felügyelt kulcsok](./disk-encryption.md#customer-managed-keys)
 
 ## <a name="restrictions"></a>Korlátozások
 
@@ -63,7 +63,7 @@ A virtuális gép telepítési folyamata hasonló a normál telepítési folyama
 > A virtuális géphez csatlakoztatott lemezeken a lemez titkosításának engedélyezéséhez le kell állítania a virtuális gépet.
     
 1. Navigáljon egy olyan virtuális gépre, amely ugyanabban a régióban található, mint az egyik lemezes titkosítási csoport.
-1. Nyissa meg a virtuális gépet, és válassza a **Leállítás**lehetőséget.
+1. Nyissa meg a virtuális gépet, és válassza a **Leállítás** lehetőséget.
 
     ![Képernyőkép a példaként szolgáló virtuális gép fő átfedéséről, a Leállítás gomb kiemelve.](media/virtual-machines-disk-encryption-portal/server-side-encryption-stop-vm-to-encrypt-disk-fix.png)
 
@@ -72,7 +72,7 @@ A virtuális gép telepítési folyamata hasonló a normál telepítési folyama
     ![Képernyőkép a példaként szolgáló virtuális gépről a lemezek panel megnyitásával. Az operációsrendszer-lemez ki van emelve, mint például a kiválasztható lemez.](media/virtual-machines-disk-encryption-portal/server-side-encryption-existing-disk-select.png)
 
 1. Válassza a **titkosítás** lehetőséget, majd válassza a titkosítás lehetőséget az **ügyfél által felügyelt kulccsal** , majd válassza ki a lemez titkosítási készletét a legördülő listából.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     ![Képernyőkép a példa operációsrendszer-lemezéről. A titkosítás panel meg van nyitva, és az ügyfél által felügyelt kulccsal történő titkosítás van kiválasztva, valamint a példa Azure Key Vault. A beállítások megadása után a Mentés gomb van kiválasztva.](media/virtual-machines-disk-encryption-portal/server-side-encryption-encrypt-existing-disk-customer-managed-key.png)
 

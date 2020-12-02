@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 565b781b5015f82cafe4e47be2170f2327660821
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f60c83417e9c614ca30f140e6acbbf08e5643cf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971591"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500648"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Adatlemez csatlakoztatása Linux rendszerű virtuális géphez a portál használatával 
 Ez a cikk bemutatja, hogyan csatolhat új és meglévő lemezeket egy linuxos virtuális géphez a Azure Portal keresztül. [Adatlemezt a Azure Portal egy Windows rendszerű virtuális géphez is csatolhat](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -20,19 +20,19 @@ Ez a cikk bemutatja, hogyan csatolhat új és meglévő lemezeket egy linuxos vi
 Mielőtt lemezeket csatol a virtuális géphez, tekintse át a következő tippeket:
 
 * A virtuális gép mérete határozza meg, hogy hány adatlemezt tud csatlakoztatni. Részletekért lásd: [virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* A virtuális gépekhez csatolt lemezek valójában az Azure-ban tárolt VHD-fájlok. Részletekért tekintse [meg a Managed Disks bemutatása](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)című témakört.
+* A virtuális gépekhez csatolt lemezek valójában az Azure-ban tárolt VHD-fájlok. Részletekért tekintse [meg a Managed Disks bemutatása](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)című témakört.
 * A lemez csatolása után [csatlakoznia kell a Linux rendszerű virtuális géphez az új lemez csatlakoztatásához](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 
 ## <a name="find-the-virtual-machine"></a>A virtuális gép megkeresése
 1. A virtuális gép megkereséséhez nyissa meg a [Azure Portal](https://portal.azure.com/) . Keresse meg és válassza ki a **virtuális gépeket**.
 2. Válassza ki a virtuális gépet a listából.
-3. A **virtuális gépek** lap **Beállítások**területén válassza a **lemezek**elemet.
+3. A **virtuális gépek** lap **Beállítások** területén válassza a **lemezek** elemet.
 
 
 ## <a name="attach-a-new-disk"></a>Új lemez csatolása
 
-1. A **lemezek** ablaktáblán az **adatlemezek**területen válassza a **Létrehozás és az új lemez csatolása**lehetőséget.
+1. A **lemezek** ablaktáblán az **adatlemezek** területen válassza a **Létrehozás és az új lemez csatolása** lehetőséget.
 
 1. Adja meg a felügyelt lemez nevét. Tekintse át az alapértelmezett beállításokat, és szükség szerint frissítse a **tárolási típust**, a **méretet (GIB)**, a **titkosítást** és a **gazdagépek gyorsítótárazását** .
    
@@ -43,14 +43,14 @@ Mielőtt lemezeket csatol a virtuális géphez, tekintse át a következő tippe
 
 
 ## <a name="attach-an-existing-disk"></a>Meglévő lemez csatlakoztatása
-1. A **lemezek** ablaktábla **adatlemezek**területén válassza a  **meglévő lemezek csatolása**lehetőséget.
+1. A **lemezek** ablaktábla **adatlemezek** területén válassza a  **meglévő lemezek csatolása** lehetőséget.
 1. Kattintson a **lemez neve** legördülő menüre, és válasszon ki egy lemezt az elérhető felügyelt lemezek listájából. 
 
 1. Kattintson a **Save (Mentés** ) gombra a meglévő felügyelt lemez csatolásához és a virtuális gép konfigurációjának frissítéséhez:
    
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Csatlakozás a Linux rendszerű virtuális géphez az új lemez csatlakoztatásához
-Az új lemez particionálásához, formázásához és csatlakoztatásához, így a linuxos virtuális gép használhatja az SSH-t a virtuális géphez. További információ: [SSH használata Linuxon az Azure-on](mac-create-ssh-keys.md). A következő példa egy virtuális géphez csatlakozik a *10.123.123.25* nyilvános IP-címével, a Felhasználónév *azureuser*használatával: 
+Az új lemez particionálásához, formázásához és csatlakoztatásához, így a linuxos virtuális gép használhatja az SSH-t a virtuális géphez. További információ: [SSH használata Linuxon az Azure-on](mac-create-ssh-keys.md). A következő példa egy virtuális géphez csatlakozik a *10.123.123.25* nyilvános IP-címével, a Felhasználónév *azureuser* használatával: 
 
 ```bash
 ssh azureuser@10.123.123.25
@@ -224,5 +224,5 @@ A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-t�
     sudo fstrim /datadrive
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Adatlemezt](add-disk.md) az Azure CLI használatával is csatolhat.
