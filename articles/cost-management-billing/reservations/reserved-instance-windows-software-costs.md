@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: e302a8459d3092a5543efda7494c68d6660df39d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 625c40ea17cf20449f1be241a1605a80bf6a73f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690816"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353000"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Az Azure-beli fenntartott VM-példányok által nem tartalmazott szoftverköltségek
 
@@ -67,7 +67,7 @@ Az Azure RateCard API-n keresztül minden mérő díját lekérheti. Az Azure-be
 Az Azure-beli foglalásokkal kapcsolatos további információkért olvassa el a következő cikkeket:
 
 - [Mik azok a foglalások az Azure-ban?](save-compute-costs-reservations.md)
-- [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Foglalások kezelése az Azure-ban](manage-reserved-vm-instance.md)
 - [A foglalási kedvezmény alkalmazásának ismertetése](../manage/understand-vm-reservation-charges.md)
 - [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](understand-reserved-instance-usage.md)

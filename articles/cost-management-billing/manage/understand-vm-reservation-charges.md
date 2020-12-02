@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: e9ee1d9ff8145051bbbe6b65004f7f358b5fdade
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: bda93712dd9a7501fbfddf0e75b8ae3c0088ed55
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132142"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341240"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Az Azure-foglalási kedvezmény alkalmazása virtuális gépekre
 
@@ -106,7 +106,7 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mik azok a foglalások az Azure-ban?](../reservations/save-compute-costs-reservations.md)
-- [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../../azure-sql/database/reserved-capacity-overview.md)
 - [Foglalások kezelése az Azure-ban](../reservations/manage-reserved-vm-instance.md)
 - [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](../reservations/understand-reserved-instance-usage.md)

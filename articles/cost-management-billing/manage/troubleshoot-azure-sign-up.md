@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 91b3b7b71524c76006ad4d431774e05e47fd0266
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 85f6e64cb20a14b9cd03776d138872d6a4191535
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131071"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344487"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Új fiók az Azure Portalon vagy az Azure Fiókközpontban történő regisztrálásának hibaelhárítása
 
@@ -76,8 +76,8 @@ A probléma megoldásához ellenőrizze, hogy az alábbiak teljesülnek-e:
 
 #### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>A következő üzenet jelenik meg: „A jelenlegi fióktípus nem támogatott”
 
-Ez a probléma akkor fordulhat elő, ha a fiók regisztrálva van egy olyan [nem felügyelt Azure AD-címtárban](../../active-directory/users-groups-roles/directory-self-service-signup.md), amely nem a cég vagy szervezet Azure AD-címtára.
-A probléma megoldásához regisztráljon egy másik fiókot Azure-fiókként, vagy vegye át a nem felügyelt AD-címtárat. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../../active-directory/users-groups-roles/domains-admin-takeover.md) ismertető cikket.
+Ez a probléma akkor fordulhat elő, ha a fiók regisztrálva van egy olyan [nem felügyelt Azure AD-címtárban](../../active-directory/enterprise-users/directory-self-service-signup.md), amely nem a cég vagy szervezet Azure AD-címtára.
+A probléma megoldásához regisztráljon egy másik fiókot Azure-fiókként, vagy vegye át a nem felügyelt AD-címtárat. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../../active-directory/enterprise-users/domains-admin-takeover.md) ismertető cikket.
 
 ## <a name="identity-verification-by-phone"></a>Személyazonosság ellenőrzése telefonon
 

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bb8a52a2258143e1c68ca46ac31a8c986b1bcfe7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95893358"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457140"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 
@@ -282,13 +282,13 @@ Az Azure EA Portal segítséget nyújt az Azure EA-költségek és -használat f
 
 Minden szerepkör különböző szintű hozzáféréssel és jogosultsággal rendelkezik.
 
-A felhasználói szerepkörökkel kapcsolatos további információkért lásd: [Vállalati felhasználók szerepkörei](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles).
+A felhasználói szerepkörökkel kapcsolatos további információkért lásd: [Vállalati felhasználók szerepkörei](./understand-ea-roles.md#enterprise-user-roles).
 
 ## <a name="add-an-azure-ea-account"></a>Azure EA-fiók hozzáadása
 
 Az Azure EA-fiók az Azure EA Portal szervezeti egysége. Ez a fiók az előfizetések felügyeletére, valamint jelentéskészítésre használatos. Az Azure-szolgáltatások eléréséhez és használatához létre kell hoznia vagy hozatnia egy fiókot.
 
-Az Azure-fiókokkal kapcsolatos további információkért lásd a [fiók hozzáadását](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration#add-an-account) ismertető szakaszt.
+Az Azure-fiókokkal kapcsolatos további információkért lásd a [fiók hozzáadását](#add-an-account) ismertető szakaszt.
 
 ## <a name="enterprise-devtest-offer"></a>Enterprise Dev/Test ajánlat
 
@@ -361,7 +361,7 @@ Egy olyan előfizetés törlése, amely esetében Ön a fióktulajdonos:
 
 Csak a fiókadminisztrátorok szüntethetik meg az előfizetéseket.
 
-További információ: [Mi történik az előfizetés lemondása után?](cancel-azure-subscription.md#what-happens-after-i-cancel-my-subscription)
+További információ: [Mi történik az előfizetés lemondása után?](cancel-azure-subscription.md#what-happens-after-subscription-cancellation)
 
 ## <a name="delete-an-account"></a>Fiók eltávolítása
 

@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: overview
 ms.date: 11/18/2020
 ms.author: banders
-ms.openlocfilehash: eef19a6c421a64c3951d35eea78ea84f7e7d97b2
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 0ef3f833d1bac4f26f49ace2b366cdfcf5ef3e35
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887212"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352983"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -125,7 +125,7 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
     - [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](/partner-center/azure-reservations)
 
 - További információk a szolgáltatáscsomagok foglalásaival kapcsolatban:
-    - [Azure Reserved VM Instancesszel rendelkező virtuális gépek](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+    - [Azure Reserved VM Instancesszel rendelkező virtuális gépek](../../virtual-machines/prepay-reserved-vm-instances.md)
     - [Fenntartott Azure Cosmos DB-kapacitással rendelkező Azure Cosmos DB-erőforrások](../../cosmos-db/cosmos-db-reserved-capacity.md)
     - [Fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrások](../../azure-sql/database/reserved-capacity-overview.md)
     - [Fenntartott Azure Cache for Redis-kapacitással rendelkező Azure Cache for Redis-erőforrások](../../azure-cache-for-redis/cache-reserved-pricing.md) További információk a szoftvercsomagok foglalásaival kapcsolatban:

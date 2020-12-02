@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 16e325f029fc4c317a61db62df97ded5c213e0e5
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132533"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348925"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai
 
@@ -65,7 +65,7 @@ A fenntartott példányok a használatalapú fizetéshez képest akár 72 száza
 
 Egy Azure-beli fenntartott virtuálisgép-példány megvásárlásához a nagyvállalati Azure regisztrációs rendszergazdájának engedélyeznie kell a _Fenntartott példány_ vásárlási lehetőséget. Ez a lehetőség az [Azure EA Portal](https://ea.azure.com/)_Regisztráció_ lapjának _Regisztráció részletei_ szakaszában található.
 
-Ha az EA-regisztrációhoz engedélyezett a fenntartott példányok hozzáadása, akkor az EA-regisztrációval társított aktív előfizetéssel rendelkező bármely fióktulajdonos vásárolhat fenntartott virtuálisgép-példányt az [Azure Portalon](https://aka.ms/reservations). További információkért lásd: [Előre fizetés virtuális gépekért és költségmegtakarítás fenntartott virtuálisgép-példányokkal](../../virtual-machines/windows/prepay-reserved-vm-instances.md).
+Ha az EA-regisztrációhoz engedélyezett a fenntartott példányok hozzáadása, akkor az EA-regisztrációval társított aktív előfizetéssel rendelkező bármely fióktulajdonos vásárolhat fenntartott virtuálisgép-példányt az [Azure Portalon](https://aka.ms/reservations). További információkért lásd: [Előre fizetés virtuális gépekért és költségmegtakarítás fenntartott virtuálisgép-példányokkal](../../virtual-machines/prepay-reserved-vm-instances.md).
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>A fenntartott példányok vásárlásával kapcsolatos részletek megtekintése
 

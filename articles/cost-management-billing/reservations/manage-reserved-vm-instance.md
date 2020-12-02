@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 300ac0996d9dcb9ecb07abd3392447e393c1781b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 050984d58137ec03996572d2de41115073e4ab2b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151617"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338163"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Foglalások kezelése az Azure-erőforrásoknál
 
@@ -168,7 +168,7 @@ Az Azure Reservationszel kapcsolatos további információkért tekintse meg a k
 - [Mik azok a foglalások az Azure-ban?](save-compute-costs-reservations.md)
 
 Szolgáltatáscsomag vásárlása:
-- [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../../azure-sql/database/reserved-capacity-overview.md)
 - [Előre fizetés fenntartott Azure Cosmos DB-kapacitással rendelkező Azure Cosmos DB-erőforrásokért](../../cosmos-db/cosmos-db-reserved-capacity.md)
 

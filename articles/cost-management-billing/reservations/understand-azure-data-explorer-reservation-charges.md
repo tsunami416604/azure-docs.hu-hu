@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: af2dc8378d1f1fe952a568ecb4bd89d088e3e3d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b222e4ff519fbe2fbb4fa58b39555ac9fead0917
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147228"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352915"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>A foglalási kedvezmény alkalmazása az Azure Data Explorerre
 
@@ -29,7 +29,7 @@ Egy erőforrás leállításakor a rendszer a foglalási kedvezményt automatiku
 A foglalási kedvezmény az Azure Data Explorer árréshasználatára való alkalmazása óránkénti alapon történik. Azon Azure Data Explorer-erőforrások esetében, amelyek nem futnak egy teljes órán át, a rendszer automatikusan a foglalási attribútumokkal egyező egyéb Data Explorer-erőforrásokra alkalmazza a foglalási kedvezményt. A kedvezmény párhuzamosan futó Azure Data Explorer-erőforrásokra is alkalmazható. Ha nem rendelkezik olyan, a foglalási attribútumokkal egyező Azure Data Explorer-erőforrásokkal, amelyek egy teljes órán át futnak, akkor arra az órára nem kapja meg a foglalási kedvezménnyel járó teljes előnyt.
 
 > [!NOTE]
-> * A fenntartott kapacitással elérhető megtakarítás maximalizálása érdekében **határozottan ajánlott**[foglalási kapacitást](../../virtual-machines/windows/prepay-reserved-vm-instances.md) vásárolni az Azure Data Explorer-fürthöz használt virtuális géphez.
+> * A fenntartott kapacitással elérhető megtakarítás maximalizálása érdekében **határozottan ajánlott**[foglalási kapacitást](../../virtual-machines/prepay-reserved-vm-instances.md) vásárolni az Azure Data Explorer-fürthöz használt virtuális géphez.
 > * A foglalás megvásárlásakor a rendszer alkalmazza a kedvezményeket az összes régióra.
 
 ## <a name="examples"></a>Példák

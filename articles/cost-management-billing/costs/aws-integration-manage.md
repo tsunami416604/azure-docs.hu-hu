@@ -10,11 +10,11 @@ ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
 ms.openlocfilehash: 5fed70ccdbebbd178412c416f37c2e9001a81f38
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148976"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188105"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Az AWS-költségek és -használat kezelése az Azure-ban
 
@@ -22,7 +22,7 @@ Miután beállította és konfigurálta az AWS költség- és használati jelent
 
 Ha még nem konfigurálta az integrációt, lásd az [AWS használati jelentés integrálásának beállítását és konfigurálását ismertető részt](aws-integration-set-up-configure.md).
 
-_Előkészületek_ : Ha korábban még nem használta a költségelemzést, tekintse meg a [Költségek feltérképezése és elemzése költségelemzés használatával](quick-acm-cost-analysis.md) gyorsútmutatót. Ha pedig korábban még nem használta az Azure-költségvetéseket, tekintse meg az [Azure-költségvetések létrehozása és kezelése](tutorial-acm-create-budgets.md) oktatóanyagot.
+_Előkészületek_: Ha korábban még nem használta a költségelemzést, tekintse meg a [Költségek feltérképezése és elemzése költségelemzés használatával](quick-acm-cost-analysis.md) gyorsútmutatót. Ha pedig korábban még nem használta az Azure-költségvetéseket, tekintse meg az [Azure-költségvetések létrehozása és kezelése](tutorial-acm-create-budgets.md) oktatóanyagot.
 
 ## <a name="view-aws-costs-in-cost-analysis"></a>AWS-költségek megtekintése a költségelemzésben
 
@@ -44,7 +44,7 @@ A költségelemzésben nyissa meg a hatókörválasztót, és válassza ki azt a
 
 Az alábbi példa bemutatja a felügyeleti csoport költségeit a költségelemzésben, szolgáltató (Azure és AWS) szerint csoportosítva.
 
-:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="Példa a hatókör-kijelölési nézetre felügyeleti csoporthoz tartozó összekapcsolt fiókokkal" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="Negyedéves Azure- és AWS-költségeket bemutató példa a költségelemzésben" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
 
 > [!NOTE]
 > A felügyeleti csoportok a Microsoft Ügyfélszerződéssel (MCA) rendelkező ügyfelek esetében jelenleg nem támogatottak. Az MCA-ügyfelek létrehozhatják az összekötőt és megtekinthetik AWS-adataikat. Az MCA-ügyfelek azonban nem tekinthetik meg egyszerre az Azure- és az AWS-költségeiket egy felügyeleti csoport esetében.
@@ -55,17 +55,17 @@ A csatolt AWS-fiók költségeinek megtekintéséhez nyissa meg a hatókörvála
 
 Az alábbi példa egy csatolt AWS-fiók hatókörének kiválasztását mutatja be.
 
-:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="Példa a hatókör-kijelölési nézetre felügyeleti csoporthoz tartozó összekapcsolt fiókokkal" :::
+:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="Példa hatókör-kijelölési nézetre, amely összekapcsolt AWS-fiókokat mutat" :::
 
 ### <a name="view-aws-consolidated-account-costs"></a>Összesített AWS-fiók költségeinek megtekintése
 
 Az összesített AWS-fiók költségeinek megtekintéséhez nyissa meg a hatókörválasztót, és válassza ki az összesített AWS-fiókot. Az alábbi példa egy összesített AWS-fiók hatókörének kiválasztását mutatja be.
 
-:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="Példa a hatókör-kijelölési nézetre felügyeleti csoporthoz tartozó összekapcsolt fiókokkal" :::
+:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="Példa a hatókör-kijelölési nézetre összesített fiókokkal" :::
 
 Ez a hatókör összesített nézetet biztosít az összesített AWS-fiókhoz rendelt összes csatolt AWS-fiók esetében. Az alábbi példa egy összesített AWS-fiók költségeit mutatja be, szolgáltatásnév szerint csoportosítva.
 
-:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="Példa a hatókör-kijelölési nézetre felügyeleti csoporthoz tartozó összekapcsolt fiókokkal" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="Példa az összesített AWS-fiók költségeire a költségelemzésben" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
 
 ### <a name="dimensions-available-for-filtering-and-grouping"></a>A szűréshez és a csoportosításhoz rendelkezésre álló dimenziók
 
@@ -95,7 +95,7 @@ Az alábbi táblázat ismerteti a csoportosításhoz és szűréshez rendelkezé
 
 A költségvetések segítségével proaktív módon kezelhetők a költségek, illetve hatékonyabb szervezeti elszámoltathatóságot tesznek lehetővé. A költségvetések beállítása az összesített és a csatolt AWS-fiókok hatóköreire történik. Az alábbi példa bemutatja egy összesített AWS-fiók költségvetéseit a Cost Managementben:
 
-:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="Példa a hatókör-kijelölési nézetre felügyeleti csoporthoz tartozó összekapcsolt fiókokkal" :::
+:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="Példa egy összesített AWS-fiók költségvetéseiről" :::
 
 ## <a name="aws-data-collection-process"></a>AWS-adatgyűjtési folyamat
 
@@ -143,9 +143,9 @@ Az összekötő beállításainak ellenőrzéséhez legalább a közreműködői
 Ez a hiba azt jelenti, hogy a Cost Management nem tudja meghívni az AWS AssumeRole API-t. Ez a probléma a szerepkör-definícióval kapcsolatos hiba miatt fordulhat elő. Ellenőrizze, hogy a következő feltételek teljesülnek-e:
 
 - A külső azonosító megegyezik a szerepkör és az összekötő definíciójában szereplővel.
-- A szerepkörtípusa beállítása **másik, Önhöz vagy harmadik félhez tartozó AWS-fiók** .
+- A szerepkörtípusa beállítása **másik, Önhöz vagy harmadik félhez tartozó AWS-fiók**.
 - Az **MFA megkövetelése** kiválasztás törlődik.
-- Az AWS-szerepkörben található megbízható AWS-fiók: _432263259397_ .
+- Az AWS-szerepkörben található megbízható AWS-fiók: _432263259397_.
 
 ### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>A gyűjtés meghiúsult a hozzáférés megtagadása miatt – CUR-jelentésdefiníciók
 

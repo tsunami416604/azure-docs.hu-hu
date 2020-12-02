@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contentperfq2
-ms.openlocfilehash: 2c533ea08534444e5bf8d8d57d585e2bf975a93b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1dca2fa938c26ba45f162fae962aec0bfaf6cef7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677379"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353034"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Mi az az Azure Cost Management + Billing?
 
@@ -43,11 +43,11 @@ A számlázási fiók az Azure-ba való regisztráció során jön létre. A sz�
 
 Az Azure Portal jelenleg a következő típusú számlázási fiókokat támogatja:
 
-- **Microsoft Online Services Program** : A Microsoft Online Services Program egyéni számlázási fiókjai akkor jönnek létre, amikor az Azure webhelyén keresztül regisztrál az Azure-ba. Erre példa az ingyenes Azure-fiók, a használatalapú fizetést használó fiók és a Visual Studio-előfizetés.
+- **Microsoft Online Services Program**: A Microsoft Online Services Program egyéni számlázási fiókjai akkor jönnek létre, amikor az Azure webhelyén keresztül regisztrál az Azure-ba. Erre példa az ingyenes Azure-fiók, a használatalapú fizetést használó fiók és a Visual Studio-előfizetés.
 
-- **Nagyvállalati Szerződés** : Nagyvállalati Szerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet Nagyvállalati Szerződést (EA) köt az Azure használatára.
+- **Nagyvállalati Szerződés**: Nagyvállalati Szerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet Nagyvállalati Szerződést (EA) köt az Azure használatára.
 
-- **Microsoft-ügyfélszerződés** : A Microsoft-ügyfélszerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet a Microsoft képviselőjével együttműködve Microsoft-ügyfélszerződést köt. Egyes régiókban, ha a felhasználó az Azure-webhelyen regisztrál egy használatalapú fizetést használó fiókot, vagy frissíti ingyenes Azure-fiókját, külön számlázási fiókot kaphat a Microsoft-ügyfélszerződéshez.
+- **Microsoft-ügyfélszerződés**: A Microsoft-ügyfélszerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet a Microsoft képviselőjével együttműködve Microsoft-ügyfélszerződést köt. Egyes régiókban, ha a felhasználó az Azure-webhelyen regisztrál egy használatalapú fizetést használó fiókot, vagy frissíti ingyenes Azure-fiókját, külön számlázási fiókot kaphat a Microsoft-ügyfélszerződéshez.
 
 ### <a name="scopes-for-billing-accounts"></a>A számlázási fiókok hatóköre
 A hatókör egy csomópont a számlázási fiókban. Ennek használatával lehet megtekinteni és kezelni a számlázást. Itt lehet kezelni a számlázási adatokat, a fizetéseket, a számlákat, és itt történik az általános fiókkezelés.
@@ -108,7 +108,7 @@ A Cloudyn egy Cost Managementhez kapcsolódó Azure-szolgáltatás, amelyet 2020
 Az Azure más olyan eszközökkel is rendelkezik, amelyek nem képezik az Azure Cost Management + Billing szolgáltatásainak a részét. Fontos szerepet játszanak azonban a költségkezelési folyamatban. Az eszközökkel kapcsolatos további tudnivalókért lásd az alábbi hivatkozásokat.
 
 - [Azure Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) – segítségével becslést végezhet kezdeti felhőköltségeiről.
-- [Azure Migrate](/azure/migrate/migrate-services-overview) – felmérheti adatközpontja jelenlegi számítási feladatait, így betekintést nyerhet abba, hogy mit várjon el egy Azure helyettesítő megoldástól.
+- [Azure Migrate](../migrate/migrate-services-overview.md) – felmérheti adatközpontja jelenlegi számítási feladatait, így betekintést nyerhet abba, hogy mit várjon el egy Azure helyettesítő megoldástól.
 - [Azure Advisor](../advisor/advisor-overview.md) - azonosíthatja használaton kívüli virtuális gépeit, és javaslatokat kaphat Azure fenntartott példányok vásárlásával kapcsolatban.
 - [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) – használja az aktuális helyszíni Windows Server- vagy SQL Server-licenceit az Azure-beli virtuális gépeken a költségek csökkentése érdekében.
 

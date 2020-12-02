@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 15e45143d1da5ac405b3e408df197ab04b4dea39
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0f4f4d934361f1e59eceaaccca680f0cf155bb04
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412272"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348959"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Ismerkedés az Azure Enterprise portállal
 
@@ -44,33 +44,33 @@ A szervezet használati adatainak és költségeinek kezeléséhez a Nagyvállal
 - Részlegszintű rendszergazda (csak olvasási)
 - Fióktulajdonos
 
-Az egyes szerepkörök különböző szintű felhasználói korlátokkal és engedélyekkel rendelkeznek. További információ: [Szervezeti felépítés és engedélyek szerepkörönként](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-ea-roles#organization-structure-and-permissions-by-role).
+Az egyes szerepkörök különböző szintű felhasználói korlátokkal és engedélyekkel rendelkeznek. További információ: [Szervezeti felépítés és engedélyek szerepkörönként](./understand-ea-roles.md#organization-structure-and-permissions-by-role).
 
 ## <a name="activate-your-enrollment-create-a-subscription-and-other-administrative-tasks"></a>Regisztráció aktiválása, előfizetés létrehozása és egyéb adminisztratív feladatok
 
-A regisztráció aktiválásával, részleg vagy előfizetés létrehozásával, rendszergazdák és fióktulajdonosok hozzáadásával, valamint egyéb adminisztratív feladatokkal kapcsolatos további információkért lásd: [A nagyvállalati szerződéses Azure Portal adminisztrációja](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration).
+A regisztráció aktiválásával, részleg vagy előfizetés létrehozásával, rendszergazdák és fióktulajdonosok hozzáadásával, valamint egyéb adminisztratív feladatokkal kapcsolatos további információkért lásd: [A nagyvállalati szerződéses Azure Portal adminisztrációja](./ea-portal-administration.md).
 
-Ha többet szeretne megtudni egy Enterprise-előfizetés használatalapú fizetéses előfizetésbe való átviteléről, tekintse meg az [Azure Enterprise-átvitelek](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-transfers) című cikket.
+Ha többet szeretne megtudni egy Enterprise-előfizetés használatalapú fizetéses előfizetésbe való átviteléről, tekintse meg az [Azure Enterprise-átvitelek](./ea-transfers.md) című cikket.
 
 ## <a name="view-usage-summary-and-download-reports"></a>Használati adatok összegzésének megtekintése és jelentések letöltése
 
 Kezelheti az Azure EA számláit. A számla a számlájának felel meg, és mindig érdemes ellenőrizni a számla pontosságát.
 
-A használati adatok összegzésének megtekintéséhez, a jelentések letöltéséhez és a regisztrációs számlák kezeléséhez lásd: [Azure nagyvállalati regisztrációs számlák](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-enrollment-invoices).
+A használati adatok összegzésének megtekintéséhez, a jelentések letöltéséhez és a regisztrációs számlák kezeléséhez lásd: [Azure nagyvállalati regisztrációs számlák](./ea-portal-enrollment-invoices.md).
 
 ## <a name="now-that-youre-familiar-with-the-basics-here-are-some-additional-links-to-help-you-get-onboarded"></a>Most, hogy már ismeri az alapokat, az alábbi hivatkozások segítséget nyújtanak az előkészítéshez
 
-Az [Azure EA díjszabása](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-pricing-overview) részletesen ismerteti a használat számításának módját, valamint bemutatja a Nagyvállalati Szerződésben szereplő különböző Azure-szolgáltatások költségeit, amelyek esetében a számítások összetettebbek.
+Az [Azure EA díjszabása](./ea-pricing-overview.md) részletesen ismerteti a használat számításának módját, valamint bemutatja a Nagyvállalati Szerződésben szereplő különböző Azure-szolgáltatások költségeit, amelyek esetében a számítások összetettebbek.
 
-Ha többet szeretne megtudni arról, hogyan takaríthat meg pénzt a nagyvállalati regisztrációjában a fenntartott virtuálisgép-példányok Azure-foglalásainak segítségével, tekintse meg a [Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-vm-reservations) című cikket.
+Ha többet szeretne megtudni arról, hogyan takaríthat meg pénzt a nagyvállalati regisztrációjában a fenntartott virtuálisgép-példányok Azure-foglalásainak segítségével, tekintse meg a [Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai](./ea-portal-vm-reservations.md) című cikket.
 
-Az Azure nagyvállalati regisztrációhoz használható REST API-kkal kapcsolatos információkért, valamint a REST API-k gyakori problémáinak elhárításáért lásd: [Azure Enterprise REST API-k](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
+Az Azure nagyvállalati regisztrációhoz használható REST API-kkal kapcsolatos információkért, valamint a REST API-k gyakori problémáinak elhárításáért lásd: [Azure Enterprise REST API-k](./ea-portal-rest-apis.md).
 
-Az [Azure EA-szerződések és a módosításaik](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) rész bemutatja, hogyan milyen hatással lehetnek az Azure nagyvállalati szerződések és a módosításaik az Azure-szolgáltatások hozzáférésére, használatára és kifizetésére.
+Az [Azure EA-szerződések és a módosításaik](./ea-portal-agreements.md) rész bemutatja, hogyan milyen hatással lehetnek az Azure nagyvállalati szerződések és a módosításaik az Azure-szolgáltatások hozzáférésére, használatára és kifizetésére.
 
-Az [Azure Marketplace](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-azure-marketplace) rész ismerteti, hogy az EA-ügyfelek és a partnerek hogyan tekinthetik meg a Marketplace díjait, és hogyan engedélyezhetik az Azure Marketplace-en történő vásárlásokat.
+Az [Azure Marketplace](./ea-azure-marketplace.md) rész ismerteti, hogy az EA-ügyfelek és a partnerek hogyan tekinthetik meg a Marketplace díjait, és hogyan engedélyezhetik az Azure Marketplace-en történő vásárlásokat.
 
-A partner EA-rendszergazdák Azure EA Portalon elvégzendő gyakori feladatainak ismertetését lásd: [Azure EA portál adminisztrációja a partnerek számára](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-partner-portal-administration).
+A partner EA-rendszergazdák Azure EA Portalon elvégzendő gyakori feladatainak ismertetését lásd: [Azure EA portál adminisztrációja a partnerek számára](./ea-partner-portal-administration.md).
 
 ## <a name="get-started-on-azure-ea---faq"></a>Bevezetés az Azure EA használatába – gyakori kérdések
 
@@ -132,7 +132,7 @@ Az Azure EA-regisztrációban tetszőleges számú részleget hozhat létre. A h
 
 A részleg és az előfizetés létrehozásának befejezése után a használati jelentésben láthatja az információkat. Ezek az információk segítséget nyújtanak a használat nyomon követésében és a költségek kezelésében, valamint a részlegszinten való költésben.
 
-A jelentéskészítő API-n keresztül is hozzáférhet a használati adatokhoz. Részletes információkért és mintakódért lásd az [Azure Enterprise REST API-k](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis) dokumentációját.
+A jelentéskészítő API-n keresztül is hozzáférhet a használati adatokhoz. Részletes információkért és mintakódért lásd az [Azure Enterprise REST API-k](./ea-portal-rest-apis.md) dokumentációját.
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Megadhatom a költségkvótát, és kérhetek riasztásokat, ha közelítek a korlát felé?
 
@@ -142,9 +142,9 @@ A költségkvóta meghatározásához válasszon egy részleget, majd válassza 
 
 ### <a name="i-used-resource-groups-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>Erőforráscsoportokat használtam az RBAC implementálásához és a használat nyomon követéséhez. Hogyan tekinthetem meg a kapcsolódó használati adatokat?
 
-Ha használ _erőforráscsoportokat_ és _címkéket_ , ezen információk nyomon követése a szolgáltatás szintjén történik, és az információk a részletes használati adatokat tartalmazó (.csv) fájlban érhetők el. Lásd a [Használati jelentés letöltése](https://ea.azure.com/report/downloadusage) szakaszt az Azure Enterprise portálon.
+Ha használ _erőforráscsoportokat_ és _címkéket_, ezen információk nyomon követése a szolgáltatás szintjén történik, és az információk a részletes használati adatokat tartalmazó (.csv) fájlban érhetők el. Lásd a [Használati jelentés letöltése](https://ea.azure.com/report/downloadusage) szakaszt az Azure Enterprise portálon.
 
-Az API-n keresztül is hozzáférhet a használati adatokhoz. Részletes információkért és mintakódért lásd az [Azure Enterprise REST API-k](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis) dokumentációját.
+Az API-n keresztül is hozzáférhet a használati adatokhoz. Részletes információkért és mintakódért lásd az [Azure Enterprise REST API-k](./ea-portal-rest-apis.md) dokumentációját.
 
 > [!NOTE]
 > Csak olyan erőforrásokra alkalmazhat címkéket, amelyek támogatják az Azure Resource Manager-műveleteket. Ha egy virtuális gépet, virtuális hálózatot vagy tárolót a klasszikus üzemi modellel (például a klasszikus portált használva) hozott létre, akkor nem alkalmazhat címkét az adott erőforrásra. A címkézés támogatásához ismételten üzembe kell helyeznie ezeket az erőforrásokat a Resource Managerrel. Minden más erőforrás támogatja a címkézést.
