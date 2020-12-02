@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/21/2020
-ms.openlocfilehash: 42b586062378c59b66ca945880bf723418264071
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 949992418cb19c5c69ed8da92e9c2f0fc5f2f791
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241930"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445416"
 ---
 # <a name="creating-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
@@ -28,7 +28,7 @@ Az oktatóanyag lépéseinek elvégzéséhez hozzáféréssel kell rendelkeznie 
 ## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>Szinapszis-munkaterület létrehozása a Azure Portalban
 
 1. Nyissa meg a [Azure Portal](https://portal.azure.com), és a legfelső szintű keresés a **szinapszisban**.
-1. A keresési eredmények között, a **szolgáltatások** területen válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió)** lehetőséget.
+1. A keresési eredmények között, a **szolgáltatások** területen válassza az **Azure szinapszis Analytics** lehetőséget.
 1. Munkaterület létrehozásához válassza a **Hozzáadás** lehetőséget.
 1. Az **alapvető beállítások** területen adja meg a kívánt **előfizetést**, **erőforráscsoportot**, **régiót**, majd válassza ki a munkaterület nevét. Ebben az oktatóanyagban a **sajátmunkaterület**-t fogjuk használni.
 1. Navigáljon a **2. generációs Data Lake Storage kiválasztásához**. 
@@ -36,6 +36,10 @@ Az oktatóanyag lépéseinek elvégzéséhez hozzáféréssel kell rendelkeznie 
 1. Kattintson a **fájlrendszer** elemre, és nevezze el a **felhasználókat**. Ekkor létrejön egy **felhasználó** nevű tároló.
 1. A munkaterület ezt a Storage-fiókot fogja használni az "elsődleges" Storage-fiók a Spark-táblák és a Spark-alkalmazások naplói számára.
 1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A munkaterület pár percen belül elkészül.
+
+> [!NOTE]
+> Ha egy meglévő dedikált SQL-készletből (korábban SQL DW) kívánja engedélyezni a munkaterület-szolgáltatásokat, tekintse át a [munkaterület engedélyezése a DEDIKÁLT SQL-készlethez (korábban SQL DW) című témakört](./sql-data-warehouse/workspace-connected-create.md).
+
 
 ## <a name="open-synapse-studio"></a>A szinapszis Studio megnyitása
 
@@ -54,6 +58,9 @@ Az Azure szinapszis-munkaterület létrehozása után kétféleképpen nyithatja
 
 A dedikált SQL-készletek számlázható erőforrásokat használnak, amíg aktívak. A készletet később is szüneteltetheti a költségek csökkentése érdekében.
 
+> [!NOTE] 
+> Amikor új dedikált SQL-készletet (korábban SQL DW-t) hoz létre a munkaterületen, megnyílik a dedikált SQL Pool kiépítési oldal. A kiépítés a logikai SQL-kiszolgálón történik.
+
 ## <a name="create-a-serverless-apache-spark-pool"></a>Kiszolgáló nélküli Apache Spark készlet létrehozása
 
 1. A szinapszis Studióban a bal oldali ablaktáblán válassza a **Manage**  >  **Apache Spark készletek** kezelése lehetőséget.
@@ -69,7 +76,7 @@ A Spark-készlet azt mutatja be, hogy az Azure szinapszis hány Spark-erőforrá
 
 Minden munkaterülethez egy **beépített, beépített** kiszolgáló nélküli SQL-készlet tartozik. Ez a készlet nem törölhető. A kiszolgáló nélküli SQL-készletek lehetővé teszik az SQL használatát anélkül, hogy a kapacitást dedikált SQL-készletekkel kellene fenntartania. A dedikált SQL-készletektől eltérően a kiszolgáló nélküli SQL-készlet számlázása a lekérdezés futtatásához beolvasott adatmennyiségen alapul, nem a készlethez lefoglalt kapacitás számán.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés dedikált SQL-készlet használatával](get-started-analyze-sql-pool.md)

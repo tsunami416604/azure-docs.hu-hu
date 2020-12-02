@@ -1,25 +1,25 @@
 ---
-title: 'Gyors útmutató: modell módosítása REST API-kkal – LUIS'
+title: A LUIS-modell módosítása a REST API használatával
 titleSuffix: Azure Cognitive Services
-description: Ebben a REST API rövid útmutatóban adja hozzá például a hosszúságú kimondott szöveg egy modell módosításához és az alkalmazás betanításához.
+description: Ebben a cikkben a modell módosítására és az alkalmazás betanítására szolgáló példa hosszúságú kimondott szöveg adhat hozzá.
 services: cognitive-services
 manager: nitinme
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
-ms.date: 06/03/2020
+ms.topic: conceptual
+ms.date: 11/30/2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 84b3b592f46124dcd5b4e59775361c243dc67754
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7346037ad804da4f68a2bc6512494c461d7fc5bd
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91534675"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436181"
 ---
-# <a name="quickstart-change-model-with-rest-apis"></a>Gyors útmutató: modell módosítása REST API-kkal
+# <a name="how-to-change-the-luis-model-with-rest-apis"></a>A LUIS-modell módosítása REST API-kkal
 
-Ebben a rövid útmutatóban egy pizza-alkalmazáshoz és az alkalmazás betanításához fog példát hosszúságú kimondott szöveg hozzáadni. A kimondott példaszövegek szándékhoz rendelt beszélgetésre szánt felhasználói szövegek. A szándékok kimondott példaszövegeinek megadásával megtanítja a LUIS-t arra, hogy milyen típusú felhasználói szöveg mely szándékhoz tartozik.
+Ebben a cikkben egy pizza-alkalmazáshoz hosszúságú kimondott szöveg, és betanítja az alkalmazást. A kimondott példaszövegek szándékhoz rendelt beszélgetésre szánt felhasználói szövegek. A szándékok kimondott példaszövegeinek megadásával megtanítja a LUIS-t arra, hogy milyen típusú felhasználói szöveg mely szándékhoz tartozik.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](./includes/get-started-get-model-rest-csharp.md)]

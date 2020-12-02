@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d8ef4d9f768d6fdcf976c9317d1abec3d4533824
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d754674fe3aa65fa9fd8540b05083979ce96aff8
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554801"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437116"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer"></a>Modellek újratanítása Azure Machine Learning designerrel
 
@@ -47,7 +47,11 @@ A cikkben használt folyamat a tervezői kezdőlapon a minta-adatcsatorna [bevé
 
 ## <a name="create-a-pipeline-parameter"></a>Folyamat paraméterének létrehozása
 
-Folyamat paramétereinek létrehozása a változók dinamikus beállításához futásidőben. Ebben a példában egy rögzített értékről egy paraméterre módosítja a betanítási adatok elérési útját, hogy a modell a különböző adatokon is áttanítható legyen.
+A folyamat paramétereinek használatával sokoldalú folyamatokat hozhat létre, amelyek később is elindíthatók a különböző paraméterek értékeivel. A gyakori forgatókönyvek az adatkészletek frissítése vagy valamilyen Hyper-paraméterek az átképzéshez. Folyamat paramétereinek létrehozása a változók dinamikus beállításához futásidőben. 
+
+A folyamat paraméterei hozzáadhatók az adatforráshoz vagy a modul paramétereinek egy folyamathoz. A folyamat újraküldését követően megadhatja a paraméterek értékeit.
+
+Ebben a példában egy rögzített értékről egy paraméterre módosítja a betanítási adatok elérési útját, hogy a modell a különböző adatokon is áttanítható legyen. A használati esetnek megfelelően további modul-paramétereket is hozzáadhat a folyamat paramétereinek.
 
 1. Válassza az **adatimportálás** modult.
 
@@ -60,31 +64,22 @@ Folyamat paramétereinek létrehozása a változók dinamikus beállításához 
 
 1. Az **elérési út** mezőre, majd a megjelenő **path (útvonal** ) mező fölé kattintva válassza ki a megjelenő ellipsziseket.
 
-    ![Képernyőkép, amely bemutatja, hogyan lehet létrehozni egy folyamat paramétert](media/how-to-retrain-designer/add-pipeline-parameter.png)
-
 1. Válassza **a Hozzáadás a folyamathoz paramétert**.
 
 1. Adja meg a paraméter nevét és az alapértelmezett értéket.
 
-   > [!NOTE]
-   > A folyamat paramétereinek vizsgálatához és szerkesztéséhez válassza a folyamat piszkozatának címe melletti **Beállítások** fogaskerék ikont. 
+   ![Képernyőkép, amely bemutatja, hogyan lehet létrehozni egy folyamat paramétert](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
-1. Válassza a **Save** (Mentés) lehetőséget.
+1. Kattintson a **Mentés** gombra.
+
+   > [!NOTE]
+   > Leválaszthatja a modul paraméterét a modul részletes ablaktábláján található folyamat paraméterből is, hasonlóan a folyamat paramétereinek hozzáadásához.
+   >
+   > A folyamat paramétereinek vizsgálatához és szerkesztéséhez válassza a folyamat piszkozatának címe melletti **Beállítások** fogaskerék ikont. 
+   >    - A leválasztás után törölheti a folyamat paramétert a **setings** ablaktáblán.
+   >    - A **Beállítások** ablaktáblán hozzáadhat egy folyamat paramétert is, majd alkalmazhatja azt valamilyen modul-paraméterre.
 
 1. A folyamat futtatásának elküldése.
-
-## <a name="find-a-trained-model"></a>Betanított modell keresése
-
-A tervező az összes folyamat kimenetét, beleértve a betanított modelleket is, az alapértelmezett munkaterület-Storage-fiókba menti. A tervezőben közvetlenül is elérheti a betanított modelleket:
-
-1. Várjon, amíg a folyamat befejeződik.
-1. Válassza ki a **Train Model** modult.
-1. A modul részletek ablaktábláján, a vászontól jobbra válassza a **kimenetek + naplók** lehetőséget.
-1. A modellt **más kimenetekben** is megtalálhatja a futtatási naplókkal együtt.
-1. Másik lehetőségként válassza a **kimenet megtekintése** ikont. Innen követheti a párbeszédablak utasításait, hogy közvetlenül az adattárhoz navigáljon. 
-
-> [!div class="mx-imgBorder"]
-> ![A betanított modell letöltését bemutató képernyőkép](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>Betanítási folyamat közzététele
 
@@ -96,7 +91,7 @@ Egy folyamat közzététele egy folyamat végpontján, hogy a jövőben könnyed
    > [!NOTE]
    > Több folyamat is közzétehető egyetlen végponton. Egy adott végpont minden folyamata egy verziószámot kap, amelyet megadhat a folyamat végpontjának meghívásakor.
 
-1. Kattintson a **Publish** (Közzététel) elemre.
+1. Válassza a **Közzététel** lehetőséget.
 
 ## <a name="retrain-your-model"></a>A modell újratanítása
 
@@ -120,7 +115,7 @@ Az Áttekintés panelen megtalálhatja a közzétett folyamat REST-végpontját.
 
 A REST-hívások elvégzéséhez szüksége lesz egy OAuth 2,0 tulajdonosi típusú hitelesítési fejlécre. További információ a munkaterület hitelesítésének beállításáról és a paraméteres REST-hívás létrehozásáról: [Azure Machine learning folyamat létrehozása a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre egy paraméteres betanítási folyamat végpontját a tervező használatával.
 

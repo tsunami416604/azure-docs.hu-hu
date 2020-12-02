@@ -3,12 +3,12 @@ title: Azure Lighthouse és Azure Managed Applications
 description: Ismerje meg, hogy az Azure Lighthouse és az Azure által felügyelt alkalmazások hogyan segíthetnek a különböző forgatókönyvek engedélyezésében, és hogyan használhatók együtt.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 144917716da38cc99078f663cc2f4cb8ba0199c8
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b3d6c83a50f1da006f2618f7f4ff59759dac2555
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014987"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436521"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse és Azure Managed Applications
 
@@ -35,7 +35,7 @@ A felügyelt alkalmazásokban az alkalmazás által használt erőforrások öss
 
 A felügyelt alkalmazások támogatják a [testreszabott Azure Portal élményt](../../azure-resource-manager/managed-applications/concepts-view-definition.md) és [az egyéni szolgáltatókkal való integrációt](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md). Ezekkel a lehetőségekkel testre szabható és integrált felhasználói élményt biztosíthat, így az ügyfelek könnyebben végezhetnek el felügyeleti feladatokat.
 
-A felügyelt alkalmazások [közzétehető az Azure Marketplace](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)-en, akár privát ajánlatként, akár egy adott ügyfél általi használatra, akár olyan nyilvános ajánlatokra is, amelyeket több ügyfél is vásárolhat. A szervezeten belüli felhasználók számára is elérhetők, ha [felügyelt alkalmazásokat tesznek közzé a szolgáltatás katalógusában](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md). A Service Catalog és a piactér példányait ARM-sablonok használatával is üzembe helyezheti, amely tartalmazhat egy kereskedelmi Piactéri partner egyedi azonosítóját, amellyel nyomon követheti az [ügyfelek használati](../../marketplace/azure-partner-customer-usage-attribution.md)feladatait.
+A felügyelt alkalmazások [közzétehető az Azure Marketplace](../../marketplace/create-new-azure-apps-offer.md)-en, akár privát ajánlatként, akár egy adott ügyfél általi használatra, akár olyan nyilvános ajánlatokra is, amelyeket több ügyfél is vásárolhat. A szervezeten belüli felhasználók számára is elérhetők, ha [felügyelt alkalmazásokat tesznek közzé a szolgáltatás katalógusában](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md). A Service Catalog és a piactér példányait ARM-sablonok használatával is üzembe helyezheti, amely tartalmazhat egy kereskedelmi Piactéri partner egyedi azonosítóját, amellyel nyomon követheti az [ügyfelek használati](../../marketplace/azure-partner-customer-usage-attribution.md)feladatait.
 
 Az Azure által felügyelt alkalmazások jellemzően egy adott ügyfélhez szükségesek, amely a szolgáltató által teljes körűen felügyelt kulcsrakész megoldáson keresztül érhető el.
 
@@ -47,7 +47,7 @@ Előfordulhat például, hogy egy ügyfél a szolgáltató által az Azure Vilá
 
 Előfordulhat, hogy az ügyfelek több szolgáltató által felügyelt alkalmazások is érdeklik, függetlenül attól, hogy a felügyelt szolgáltatásokat is használják-e az Azure Lighthouse-n keresztül ezen szolgáltatók bármelyikén. Emellett a Cloud Solution Provider (CSP) program partnerei olyan felügyelt alkalmazásokat is megadhatnak, amelyeket az Azure Lighthouse-n keresztül támogatnak más ISV-ket. Számos lehetőség közül a szolgáltatók kiválaszthatják a megfelelő egyensúlyt az ügyfelek igényeinek kielégítéséhez, miközben szükség esetén korlátozzák az erőforrásokhoz való hozzáférést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure által felügyelt alkalmazásokról](../../azure-resource-manager/managed-applications/overview.md).
 - Ismerje meg, hogyan lehet [előfizetést bevezetni az Azure Lighthouse](../how-to/onboard-customer.md)szolgáltatásba.

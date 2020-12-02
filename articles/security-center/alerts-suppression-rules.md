@@ -1,6 +1,6 @@
 ---
 title: A riasztások mellőzése szabályok használatával elkerülheti a hamis pozitív vagy más nemkívánatos biztonsági riasztásokat a Azure Security Centerban.
-description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Security Center letiltási szabályai a nemkívánatos Azure Defender-riasztások elrejtéséhez
+description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Security Center letiltási szabályai a nemkívánatos biztonsági riasztások elrejtéséhez
 author: memildin
 manager: rkarlin
 services: security-center
@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: b954d6ed29074aa9261611f0d1bb79b5917d03f2
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 4f5049d1589b741e60db69c782107cab1f047b77
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372659"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436793"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Riasztások letiltása az Azure Defenderből
 
@@ -127,9 +127,9 @@ A riasztások letiltási szabályait a Security Center REST API segítségével 
 
 A REST API a következő letiltási szabályokra vonatkozó HTTP-metódusok:
 
-- **Put** : letiltási szabály létrehozása vagy frissítése egy adott előfizetésben.
+- **Put**: letiltási szabály létrehozása vagy frissítése egy adott előfizetésben.
 
-- **Beolvasás** :
+- **Beolvasás**:
 
     - Egy adott előfizetéshez konfigurált összes szabály listázása. Ez a metódus a vonatkozó szabályok tömbjét adja vissza.
 
@@ -137,7 +137,7 @@ A REST API a következő letiltási szabályokra vonatkozó HTTP-metódusok:
 
     - Egy letiltási szabály hatásának szimulálása még a tervezési fázisban. Ez a hívás azonosítja, hogy a meglévő riasztások közül melyik lett elvetve, ha a szabály aktív volt.
 
-- **Törlés** : töröl egy meglévő szabályt (de nem módosítja az általa már elvetett riasztások állapotát).
+- **Törlés**: töröl egy meglévő szabályt (de nem módosítja az általa már elvetett riasztások állapotát).
 
 A részletekért és a használati példákért tekintse meg az [API dokumentációját](/rest/api/securitycenter/). 
 

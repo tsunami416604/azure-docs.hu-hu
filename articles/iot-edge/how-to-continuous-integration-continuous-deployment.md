@@ -1,19 +1,19 @@
 ---
 title: Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge eszközökön – Azure IoT Edge
 description: Folyamatos integráció és folyamatos üzembe helyezés beállítása az Azure DevOps, Azure-folyamatokkal rendelkező YAML-Azure IoT Edge használatával
-author: shizn
+author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57031d4ccdfdba73b8b36c8dc943280a8280ffcc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 444ab8ccfe5a8441a4fd7d280e33d8e929d9387d
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048525"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435890"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge eszközökön
 
@@ -32,16 +32,16 @@ Ebből a cikkből megtudhatja, hogyan használhatja az Azure-folyamatok beépít
 
 Ha másként nincs megadva, az ebben a cikkben ismertetett eljárások nem tárgyalják a feladat paramétereinek használatával elérhető funkciókat. További információkat a következő cikkekben talál:
 
-* [Feladat verziója](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-versions)
+* [Feladat verziója](/azure/devops/pipelines/process/tasks?tabs=yaml#task-versions)
 * **Speciális** – ha alkalmazható, olyan modulokat adhat meg, amelyeket nem szeretne felépíteni.
-* [Vezérlési beállítások](/azure/devops/pipelines/process/tasks?tabs=classic&view=azure-devops#task-control-options)
-* [Környezeti változók](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#environment-variables)
-* [Kimeneti változók](/azure/devops/pipelines/process/variables?tabs=yaml%252cbatch&view=azure-devops#use-output-variables-from-tasks)
+* [Vezérlési beállítások](/azure/devops/pipelines/process/tasks?tabs=yaml#task-control-options)
+* [Környezeti változók](/azure/devops/pipelines/process/variables?tabs=yaml#environment-variables)
+* [Kimeneti változók](/azure/devops/pipelines/process/variables?tabs=yaml#use-output-variables-from-tasks)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure Repos-tárház. Ha még nem rendelkezik ilyennel, [létrehozhat egy új git-tárházat a projektben](/azure/devops/repos/git/create-new-repo?tabs=new-nav&view=vsts). Ebben a cikkben egy **IoTEdgeRepo**nevű tárházat hoztunk létre.
-* Egy IoT Edge-megoldás véglegesítve lett, és leküldve a tárházba. Ha a cikk teszteléséhez új mintavételi megoldást szeretne létrehozni, kövesse a [modulok fejlesztése és hibakeresése a Visual Studio Code](how-to-vs-code-develop-module.md) -ban című témakör lépéseit, illetve [C#-modulok fejlesztése és hibakeresése a Visual Studióban](./how-to-visual-studio-develop-module.md)című témakört. Ebben a cikkben létrehozunk egy megoldást a **IoTEdgeSolution**nevű adattárban, amely egy **filtermodule**nevű modul kódját tartalmaz.
+* Egy Azure Repos-tárház. Ha még nem rendelkezik ilyennel, [létrehozhat egy új git-tárházat a projektben](/azure/devops/repos/git/create-new-repo). Ebben a cikkben egy **IoTEdgeRepo** nevű tárházat hoztunk létre.
+* Egy IoT Edge-megoldás véglegesítve lett, és leküldve a tárházba. Ha a cikk teszteléséhez új mintavételi megoldást szeretne létrehozni, kövesse a [modulok fejlesztése és hibakeresése a Visual Studio Code](how-to-vs-code-develop-module.md) -ban című témakör lépéseit, illetve [C#-modulok fejlesztése és hibakeresése a Visual Studióban](./how-to-visual-studio-develop-module.md)című témakört. Ebben a cikkben létrehozunk egy megoldást a **IoTEdgeSolution** nevű adattárban, amely egy **filtermodule** nevű modul kódját tartalmaz.
 
    Ehhez a cikkhez mindössze annyit kell tennie, hogy a Visual Studio Code vagy a Visual Studio IoT Edge sablonjai által létrehozott megoldási mappát hozza létre. A továbblépés előtt nem kell ezt a kódot felépíteni, leküldeni, telepíteni vagy hibakeresést végeznie. Ezeket a folyamatokat az Azure-folyamatokban fogja beállítani.
 
@@ -50,7 +50,7 @@ Ha másként nincs megadva, az ebben a cikkben ismertetett eljárások nem tárg
 * Egy tároló-beállításjegyzék, amelyen leküldéses modul képei láthatók. [Azure Container Registry](../container-registry/index.yml) vagy külső gyártótól származó beállításjegyzéket is használhat.
 * Egy aktív Azure [IoT hub](../iot-hub/iot-hub-create-through-portal.md) legalább két IoT Edge eszközzel a különböző tesztelési és éles üzembe helyezési fázisok teszteléséhez. Az IoT Edge-eszköz [Linux](quickstart-linux.md) vagy [Windows](quickstart.md) rendszeren való létrehozásához kövesse a rövid útmutató cikkeit
 
-További információ az Azure Repos használatáról: [kód megosztása a Visual Studióval és az Azure repostel](/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)
+További információ az Azure Repos használatáról: [kód megosztása a Visual Studióval és az Azure repostel](/azure/devops/repos/git/share-your-code-in-git-vs)
 
 ## <a name="create-a-build-pipeline-for-continuous-integration"></a>Build folyamat létrehozása a folyamatos integrációhoz
 
@@ -60,17 +60,17 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. A folyamat automatikusan
 
    ![A DevOps-projekt megnyitása](./media/how-to-continuous-integration-continuous-deployment/initial-project.png)
 
-2. A projekt bal oldali ablaktáblájának menüjében válassza a **folyamatok**elemet. Válassza a **folyamat létrehozása** lehetőséget az oldal közepénél. Ha már rendelkezik Build-folyamatokkal, kattintson a jobb felső sarokban található **új folyamat** gombra.
+2. A projekt bal oldali ablaktáblájának menüjében válassza a **folyamatok** elemet. Válassza a **folyamat létrehozása** lehetőséget az oldal közepénél. Ha már rendelkezik Build-folyamatokkal, kattintson a jobb felső sarokban található **új folyamat** gombra.
 
     ![Új létrehozási folyamat létrehozása az új folyamat gomb használatával](./media/how-to-continuous-integration-continuous-deployment/add-new-pipeline.png)
 
-3. A **Hol található a kód?** lapon válassza az **Azure Repos git `YAML` **lehetőséget. Ha a klasszikus szerkesztővel szeretné létrehozni a projekt összeállítási folyamatait, tekintse meg a [klasszikus szerkesztési útmutatót](how-to-continuous-integration-continuous-deployment-classic.md).
+3. A **Hol található a kód?** lapon válassza az **Azure Repos git `YAML`** lehetőséget. Ha a klasszikus szerkesztővel szeretné létrehozni a projekt összeállítási folyamatait, tekintse meg a [klasszikus szerkesztési útmutatót](how-to-continuous-integration-continuous-deployment-classic.md).
 
 4. Válassza ki azt a tárházat, amelyhez folyamatot hoz létre.
 
     ![Válassza ki a felépítési folyamat tárházát](./media/how-to-continuous-integration-continuous-deployment/select-repository.png)
 
-5. A **folyamat konfigurálása** lapon válassza a **kezdő folyamat**lehetőséget. Ha már rendelkezik egy meglévő Azure-folyamattal, amelyet a folyamat létrehozásához kíván használni, kiválaszthatja a **meglévő Azure-folyamatok YAML-fájlját** , és megadhatja a tárházban található ágat és elérési utat a fájl YAML.
+5. A **folyamat konfigurálása** lapon válassza a **kezdő folyamat** lehetőséget. Ha már rendelkezik egy meglévő Azure-folyamattal, amelyet a folyamat létrehozásához kíván használni, kiválaszthatja a **meglévő Azure-folyamatok YAML-fájlját** , és megadhatja a tárházban található ágat és elérési utat a fájl YAML.
 
     ![Válassza a kezdő folyamat vagy a meglévő Azure-folyamatok YAML-fájl lehetőséget a létrehozási folyamat megkezdéséhez](./media/how-to-continuous-integration-continuous-deployment/configure-pipeline.png)
 
@@ -80,11 +80,11 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. A folyamat automatikusan
 
     ![Válassza a Segéd megjelenítése lehetőséget a feladatok paletta megnyitásához](./media/how-to-continuous-integration-continuous-deployment/show-assistant.png)
 
-7. Feladat hozzáadásához vigye a kurzort a YAML végére, vagy bárhová szeretné felvenni a feladathoz tartozó utasításokat. Keresse meg és válassza ki a **Azure IoT Edge**. Adja meg a feladat paramétereit az alábbiak szerint. Ezután válassza a **Hozzáadás**lehetőséget.
+7. Feladat hozzáadásához vigye a kurzort a YAML végére, vagy bárhová szeretné felvenni a feladathoz tartozó utasításokat. Keresse meg és válassza ki a **Azure IoT Edge**. Adja meg a feladat paramétereit az alábbiak szerint. Ezután válassza a **Hozzáadás** lehetőséget.
 
    | Paraméter | Leírás |
    | --- | --- |
-   | Művelet | Válassza a **modul-lemezképek létrehozása**lehetőséget. |
+   | Művelet | Válassza a **modul-lemezképek létrehozása** lehetőséget. |
    | Fájl .template.js | Adja meg a IoT Edge-megoldást tartalmazó tárházban található fájl **deployment.template.js** elérési útját. |
    | Alapértelmezett platform | Válassza ki a megfelelő operációs rendszert a modulok számára a célként megadott IoT Edge eszköz alapján. |
 
@@ -112,19 +112,19 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. A folyamat automatikusan
        | --- | --- |
        | Forrás mappája | A másolandó forrás mappája. Az üres érték a tárház gyökere. Használjon változókat, ha a fájlok nincsenek a tárházban. Példa: `$(agent.builddirectory)`.
        | Tartalom | Adjon hozzá két sort: `deployment.template.json` és `**/module.json` . |
-       | Célmappa | Határozza meg a változót `$(Build.ArtifactStagingDirectory)` . A leírással kapcsolatos további tudnivalókért lásd: [Build változók](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) . |
+       | Célmappa | Határozza meg a változót `$(Build.ArtifactStagingDirectory)` . A leírással kapcsolatos további tudnivalókért lásd: [Build változók](/azure/devops/pipelines/build/variables?tabs=yaml#build-variables) . |
 
    * Feladat: **Build** -összetevők közzététele
 
        | Paraméter | Leírás |
        | --- | --- |
-       | Közzététel elérési útja | Határozza meg a változót `$(Build.ArtifactStagingDirectory)` . A leírással kapcsolatos további tudnivalókért lásd: [Build változók](/azure/devops/pipelines/build/variables?tabs=yaml&view=azure-devops#build-variables) . |
+       | Közzététel elérési útja | Határozza meg a változót `$(Build.ArtifactStagingDirectory)` . A leírással kapcsolatos további tudnivalókért lásd: [Build változók](/azure/devops/pipelines/build/variables?tabs=yaml#build-variables) . |
        | Összetevő neve | Adja meg az alapértelmezett nevet: `drop` |
        | Összetevő közzétételi helye | Használja az alapértelmezett helyet: `Azure Pipelines` |
 
 9. Kattintson a Save ( **Mentés** ) gombra a **Mentés és Futtatás** legördülő menüből a jobb felső sarokban.
 
-10. A folyamatos integráció triggere alapértelmezés szerint engedélyezve van a YAML folyamat számára. Ha szerkeszteni szeretné ezeket a beállításokat, válassza ki a folyamatot, és kattintson a jobb felső sarokban található **Szerkesztés** gombra. Válassza a jobb felső sarokban található **Futtatás** gomb melletti **További műveletek** elemet, és lépjen az **Eseményindítók**elemre. A **folyamatos integráció** a folyamat neve alatt engedélyezettként jelenik meg. Ha meg szeretné tekinteni az trigger részleteit, jelölje be a **YAML folyamatos integrációs trigger felülbírálása itt** jelölőnégyzetet.
+10. A folyamatos integráció triggere alapértelmezés szerint engedélyezve van a YAML folyamat számára. Ha szerkeszteni szeretné ezeket a beállításokat, válassza ki a folyamatot, és kattintson a jobb felső sarokban található **Szerkesztés** gombra. Válassza a jobb felső sarokban található **Futtatás** gomb melletti **További műveletek** elemet, és lépjen az **Eseményindítók** elemre. A **folyamatos integráció** a folyamat neve alatt engedélyezettként jelenik meg. Ha meg szeretné tekinteni az trigger részleteit, jelölje be a **YAML folyamatos integrációs trigger felülbírálása itt** jelölőnégyzetet.
 
     ![A folyamat eseményindító-beállításainak áttekintését lásd: triggerek további műveletek alatt](./media/how-to-continuous-integration-continuous-deployment/check-trigger-settings.png)
 
@@ -134,7 +134,7 @@ Folytassa a következő szakasszal a kiadási folyamat felépítéséhez.
 
 [!INCLUDE [iot-edge-verify-iot-edge-continuous-integration-continuous-deployment](../../includes/iot-edge-verify-iot-edge-continuous-integration-continuous-deployment.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * IoT Edge DevOps – ajánlott eljárásokat ismertető példa az [Azure DevOps Starter for IoT Edge](how-to-devops-starter.md)
 * A IoT Edge központi telepítésének megismerése az [egyes eszközök IoT Edge központi telepítések megismeréséhez](module-deployment-monitoring.md)

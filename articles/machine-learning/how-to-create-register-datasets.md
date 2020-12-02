@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: f82c3b894a54dc08b0f6dd73108d6f4b2c17f8d6
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: e8388832985ca3b27baea008ff1a9bdd5df06964
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359833"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445119"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-adathalmazok létrehozása
 
@@ -124,7 +124,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 Az adatkészletek újbóli felhasználása és megosztása a munkaterületen a kísérlet során: [regisztrálja az adatkészletet](#register-datasets). 
 
 > [!TIP] 
-> Töltse fel a fájlokat egy helyi könyvtárból, és hozzon létre egy FileDataset egyetlen metódusban a nyilvános előnézet metódussal, [upload_directory ()](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py#methods). Ez a módszer egy [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes funkció, és bármikor megváltozhat. 
+> Töltse fel a fájlokat egy helyi könyvtárból, és hozzon létre egy FileDataset egyetlen metódusban a nyilvános előnézet metódussal, [upload_directory ()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-). Ez a módszer egy [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes funkció, és bármikor megváltozhat. 
 > 
 >  Ezzel a módszerrel feltöltheti az adatokat a mögöttes tárolóba, így a tárolási költségek is felmerülhetnek. 
 ### <a name="create-a-tabulardataset"></a>TabularDataset létrehozása
@@ -208,7 +208,7 @@ dataset = Dataset.Tabular.from_delimited_files(path = [(datastore, ('data/prepar
 ```
 
 > [!TIP]
-> TabularDataset létrehozása és regisztrálása a memóriában lévő Spark-vagy pandák-dataframe egyetlen metódussal, nyilvános előzetes módszerekkel [`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#methods) és [`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#methods) . Ezek a regisztrálási módszerek [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes funkciók, és bármikor megváltozhatnak. 
+> TabularDataset létrehozása és regisztrálása a memóriában lévő Spark-vagy pandák-dataframe egyetlen metódussal, nyilvános előzetes módszerekkel [`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?preserve-view=true&view=azure-ml-py#methods) és [`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?preserve-view=true&view=azure-ml-py#methods) . Ezek a regisztrálási módszerek [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes funkciók, és bármikor megváltozhatnak. 
 > 
 >  Ezek a módszerek adatokat töltenek fel a mögöttes tárolóba, és ennek eredményeképpen tárolási költségekkel járnak. 
 
@@ -255,7 +255,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  create_new_version = True)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, [Hogyan lehet betanítani az adatkészleteket](how-to-train-with-datasets.md).
 * Az automatizált gépi tanulást a TabularDatasets-mel való [betanításhoz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)használhatja.

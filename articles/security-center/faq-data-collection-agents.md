@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 2ea9fdcb11bd88755c0972fa166d1d94068ce60e
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638814"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444517"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -86,9 +86,9 @@ Az alapértelmezett munkaterület helye az Azure-régiótól függ:
 - Ausztráliában lévő virtuális gépek esetében a munkaterület helye Ausztrália
 
 
-## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Milyen adatokat gyűjtenek a Log Analytics ügynök?
+## <a name="what-security-events-are-collected-by-the-log-analytics-agent"></a>Milyen biztonsági eseményeket gyűjtenek a Log Analytics ügynök?
 
-Az ügynök által figyelt alkalmazások és szolgáltatások teljes listájáért tekintse meg a [mi által figyelt Azure monitor?](../azure-monitor/monitor-reference.md#azure-services)című témakört.
+Az ügynök által gyűjtött biztonsági események teljes listáját a ["Common" és a "Minimal" biztonsági események beállításainál](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal)tekintheti meg.
 
 > [!IMPORTANT]
 > Vegye figyelembe, hogy egyes szolgáltatásokhoz, például a Azure Firewallhoz, ha engedélyezte a naplózást, és kiválasztott egy csevegő erőforrást a naplóhoz (például a naplót *részletesen* állítja be), jelentős hatással lehet az log Analytics munkaterület tárolási igényeire. 
@@ -123,7 +123,7 @@ Meglévő Log Analytics munkaterület kiválasztása:
     > [!TIP]
     > A lista csak azokat a munkaterületeket tartalmazza, amelyekhez hozzáférése van, és amelyek az Azure-előfizetésében találhatók.
 
-1. Kattintson a **Mentés** gombra. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni a figyelt virtuális gépeket.
+1. Válassza a **Mentés** lehetőséget. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni a figyelt virtuális gépeket.
 
     - Válassza a **nem** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **csak az új virtuális gépeken legyenek érvényesek**. Az új munkaterület-beállítások csak az új ügynök telepítésére érvényesek; újonnan felderített virtuális gépek, amelyeken nincs telepítve a Log Analytics ügynök.
     - Válassza az **Igen** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások **minden virtuális gépen érvényesek** legyenek. Továbbá a Security Center létrehozott munkaterülethez csatlakozó összes virtuális gép újra csatlakozik az új cél munkaterülethez.
@@ -178,7 +178,7 @@ Az előfizetésekhez tartozó automatikus kiépítés kikapcsolható a biztonsá
 
     :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="Az Log Analytics-ügynök automatikus központi telepítésének engedélyezése":::
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 
 ## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>Letiltom az ügynök automatikus telepítését és a munkaterület létrehozását?

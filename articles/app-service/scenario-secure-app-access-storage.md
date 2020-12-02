@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: c596b0d218c0b935fa1f3e971067160e52d87af1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: azureday1
+ms.openlocfilehash: 72b1d4fe864c23c0ac065e47d96ab0c78866defa
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183124"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435841"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Oktatóanyag: az Azure Storage elérése egy webalkalmazásból
 
@@ -27,7 +28,7 @@ Hozzáférést szeretne adni az Azure-beli adatsíkon (Azure Storage, Azure SQL 
 
 Azure Active Directory (Azure AD) felügyelt identitása lehetővé teszi, hogy a App Service szerepköralapú hozzáférés-vezérléssel (RBAC) keresztül hozzáférjenek az erőforrásokhoz az alkalmazás hitelesítő adatainak megadása nélkül. Miután felügyelt identitást rendelt a webalkalmazáshoz, az Azure gondoskodik a tanúsítványok létrehozásáról és elosztásáról. Az embereknek nem kell aggódniuk a titkok vagy az alkalmazások hitelesítő adatainak kezelésével kapcsolatban.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -210,6 +211,8 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 ## <a name="access-blob-storage-net"></a>Hozzáférési Blob Storage (.NET)
 
 A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) osztály a kód jogkivonat-hitelesítő adatainak lekérésére szolgál az Azure Storage-ba irányuló kérelmek engedélyezéséhez. Hozza létre a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) osztály egy példányát, amely a felügyelt identitás használatával beolvassa a jogkivonatokat, és csatolja őket a szolgáltatás ügyfeléhez. A következő kódrészlet beolvassa a hitelesített jogkivonat hitelesítő adatait, és a használatával létrehoz egy szolgáltatás-ügyfél objektumot, amely feltölt egy új blobot.
+
+Ha ezt a kódot egy minta alkalmazás részeként szeretné látni, tekintse [meg a githubon található mintát](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/1-WebApp-storage-managed-identity).
 
 ### <a name="install-client-library-packages"></a>Ügyféloldali függvénytár-csomagok telepítése
 

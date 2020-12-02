@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 06d8b7cdd6edb6ae3dad27a8a5f50443e3fc8969
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8546ba5c80a4c8909876ff755bc094f1aec96482
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533599"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437082"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Oktatóanyag: Azure Database for MySQL tervezése az Azure CLI használatával
 
@@ -28,15 +28,11 @@ Az Azure Database for MySQL egy relációsadatbázis-szolgáltatás a Microsoft 
 > * Adatok frissítése
 > * Adatok visszaállítása
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Egy böngészőben az Azure Cloud Shell használatával vagy a számítógépen az [Azure CLI telepítésével]( /cli/azure/install-azure-cli) futtathatja az oktatóanyag kódblokkjait.
-
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
-
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+- Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van. Válasszon ki egy megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account#az-account-set) parancs segítségével.
 ```azurecli-interactive
@@ -198,7 +194,7 @@ Ha egy adott időpontra állít vissza egy kiszolgálót, azzal létrehoz egy ú
 
 Egy szinkron parancsról van szó, amelyet a rendszer a kiszolgáló visszaállítása után visszaad. Ha a visszaállítás kész, keresse meg a létrehozott új kiszolgálót. Ellenőrizze, hogy az adatok a várt módon álltak-e vissza.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha ezekre az erőforrásokra már nincs szüksége más gyorsútmutatókhoz/oktatóanyagokhoz, a következő paranccsal törölheti őket: 
 
 ```azurecli-interactive
@@ -211,7 +207,7 @@ Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja 
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag a következőket mutatta be:
 > [!div class="checklist"]
 > * Azure-adatbázis létrehozása MySQL-kiszolgálóhoz

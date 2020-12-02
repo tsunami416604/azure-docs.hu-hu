@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 002c718466b9e13d2f92fbea6dd055eb13d4d3a7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 41d98750f3c869eff5abf7482a9bb04435407318
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789114"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436759"
 ---
 # <a name="introduction-to-azure-defender"></a>Az Azure Defender bemutatása
 
@@ -20,7 +20,7 @@ Azure Security Center funkciói a Felhőbeli biztonság két fő pillérét fedi
 
 - **Cloud Security testtartás-felügyelet (CSPM)** – Security Center **ingyenesen** elérhető az összes Azure-felhasználó számára. Az ingyenes élmény olyan CSPM funkciókat tartalmaz, mint például a biztonságos pontszám, az Azure-gépek biztonsági konfigurációs beállításainak észlelése, az eszközök leltára stb. Ezekkel a CSPM funkciókkal erősítheti a hibrid Felhőbeli testtartást, és nyomon követheti a beépített szabályzatoknak való megfelelést.
 
-- **Cloud munkaterhelés Protection (CWP)** – a Security Center integrált felhőalapú munkaterhelés-védelmi platformja (CWPP), az **Azure Defender** , fejlett, intelligens, Azure-és hibrid erőforrások és számítási feladatok védelmét teszi lehetővé. Az Azure Defender engedélyezésének számos további biztonsági funkciója van, az ezen a lapon leírtak szerint. A beépített szabályzatok mellett, ha engedélyezte valamelyik Azure Defender-csomagot, egyéni szabályzatokat és kezdeményezéseket adhat hozzá. Hozzáadhat szabályozási szabványokat – például a NIST és az Azure CIS –, valamint az Azure biztonsági teljesítménytesztet a megfelelőségének valóban testreszabott nézetéhez.
+- **Cloud munkaterhelés Protection (CWP)** – a Security Center integrált felhőalapú munkaterhelés-védelmi platformja (CWPP), az **Azure Defender**, fejlett, intelligens, Azure-és hibrid erőforrások és számítási feladatok védelmét teszi lehetővé. Az Azure Defender engedélyezésének számos további biztonsági funkciója van, az ezen a lapon leírtak szerint. A beépített szabályzatok mellett, ha engedélyezte valamelyik Azure Defender-csomagot, egyéni szabályzatokat és kezdeményezéseket adhat hozzá. Hozzáadhat szabályozási szabványokat – például a NIST és az Azure CIS –, valamint az Azure biztonsági teljesítménytesztet a megfelelőségének valóban testreszabott nézetéhez.
 
 Az Azure Defender irányítópultja Security Center a környezethez tartozó CWP-funkciók láthatóságát és felügyeletét teszi lehetővé:
 
@@ -61,7 +61,7 @@ A virtuális gépek és a más Felhőbeli vagy helyszíni SQL-adatbázisok véde
 
 
 
-## <a name="azure-defender-alerts"></a>Azure Defender-riasztások 
+## <a name="security-alerts"></a>Biztonsági riasztások 
 
 Ha az Azure Defender fenyegetést észlel a környezet bármely területén, riasztást hoz létre. Ezek a riasztások ismertetik az érintett erőforrások részleteit, a javasolt szervizelési lépéseket, valamint bizonyos esetekben a logikai alkalmazások válaszként való aktiválásának lehetőségét.
 
@@ -92,7 +92,7 @@ További információ a következő lapokon:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta az Azure Defender előnyeit. 
 

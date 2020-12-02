@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 2f262b328efcc341c93f1e5c31cab8cbd3ecbf6b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5a2238f5c1561abb1e11d69aa6d0bfe761097c64
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184637"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437303"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor hálózatokhoz
 A hálózatok Azure Monitor az összes telepített hálózati erőforrás [állapotának](../../service-health/resource-health-checks-resource-types.md) és [metrikáinak](../platform/metrics-supported.md) átfogó áttekintését teszi lehetővé anélkül, hogy konfigurációt kellene igényelni. Emellett hozzáférést biztosít a hálózati figyelési funkciókhoz, például a [kapcsolati figyelőhöz](../../network-watcher/connection-monitor-preview.md), [a hálózati biztonsági csoportok (NSG) adatforgalmának naplózásához](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)és [Traffic Analytics](../../network-watcher/traffic-analytics.md). És más hálózati [diagnosztikai](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) funkciókat is biztosít.
@@ -26,7 +26,7 @@ A hálózatok Azure Monitor a monitorozás ezen kulcsfontosságú összetevői k
 
 A hálózatok Azure Monitor **áttekintése** lapon egyszerűen megjeleníthetők a hálózati erőforrások leltára, valamint a Resource Health és a riasztások. Négy kulcsfontosságú funkcionális területre oszlik: keresés és szűrés, erőforrás-állapot és mérőszámok, riasztások és függőségi nézetek.
 
-[ ![ Az áttekintő oldalt bemutató képernyőkép](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png)#lightbox)
+[![Képernyőkép az Áttekintés lapról](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png#lightbox)
 
 ### <a name="search-and-filtering"></a>Keresés és szűrés
 Az erőforrás állapota és riasztások nézetet a szűrők, például az **előfizetés**, az **erőforráscsoport** és a **típus** használatával szabhatja testre.
@@ -145,7 +145,7 @@ Az időtartomány az irányítópult beállításaitól függ.
 
 A szerkesztési mód használatával bármely oldalon vagy részletes mérőszámban megjelenített munkafüzetet szerkeszthet. Ezután új munkafüzetként mentheti a módosításokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a hálózati figyelésről: [Mi az az Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md)
 - Ismerje meg a forgatókönyveket, amelyekkel a munkafüzetek támogatottak, hogyan hozhatók létre jelentések és testreszabhatók a meglévő jelentések, és így tovább: [interaktív jelentések létrehozása Azure monitor munkafüzetek](../platform/workbooks-overview.md) használatával

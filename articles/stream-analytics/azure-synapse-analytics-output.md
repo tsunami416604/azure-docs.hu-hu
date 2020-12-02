@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0b3bec9c4d4476b95279e35953ff89177f4488d4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 63d03559b2a30020ed2e8bd1cd030855b8fb20b7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305838"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445105"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Az Azure szinapszis Analytics kimenete Azure Stream Analytics
 
-Az [Azure szinapszis Analytics](https://azure.microsoft.com/services/synapse-analytics) (korábban SQL Data Warehouse) egy korlátlan elemzési szolgáltatás, amely a nagyvállalati adattárházat és a Big adatelemzéseket is egyesíti. 
+Az [Azure szinapszis Analytics](https://azure.microsoft.com/services/synapse-analytics) egy korlátlan elemzési szolgáltatás, amely egyesíti a vállalati adattárházat és a Big adatelemzést. 
 
 Azure Stream Analytics feladatok kimenete egy dedikált SQL Pool-táblázatba kerül az Azure szinapszis Analyticsben, és képes feldolgozni az átviteli sebességet akár 200 MB/s-ra. Ez támogatja a legigényesebb valós idejű elemzési és a gyors elérésű adatfeldolgozási igényeket olyan számítási feladatokhoz, mint a jelentéskészítés és az irányítópult.  
 
@@ -28,7 +28,7 @@ Ha az Azure Szinapszisot kimenetként szeretné használni, győződjön meg arr
 
 A következő táblázat felsorolja a tulajdonságok nevét és leírásait az am Azure szinapszis Analytics kimenetének létrehozásához.
 
-|Tulajdonság neve|Leírás|
+|Tulajdonság neve|Description|
 |-|-|
 |Kimeneti alias |Egy rövid név, amely a lekérdezésekben a lekérdezés kimenetének az adatbázisba való irányításához használatos. |
 |Adatbázis |a dedikált SQL-címkészlet neve, ahová a kimenetet küldi. |
@@ -37,7 +37,7 @@ A következő táblázat felsorolja a tulajdonságok nevét és leírásait az a
 |Jelszó |Az adatbázishoz való kapcsolódáshoz használt jelszó. |
 |Tábla  | A tábla neve, ahol a kimenet meg van írva. A tábla neve megkülönbözteti a kis-és nagybetűket. A táblázat sémájának pontosan meg kell egyeznie a feladatok által létrehozott mezők és típusok számával.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 * [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)

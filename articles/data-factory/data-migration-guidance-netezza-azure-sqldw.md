@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 8192b1351d54acbb553bacb8b36474cba271cb05
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 89e4b1c7d7499a0d6e38a0a662bc610b3914bdfa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638074"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444873"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>A helyszíni Netezza-kiszolgálóról az Azure-ba történő Migrálás Azure Data Factory használata 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-A Azure Data Factory a helyszíni Netezza-kiszolgálóról az Azure Storage-fiókjába vagy az Azure szinapszis Analytics (korábban SQL Data Warehouse) adatbázisba való áttelepítését végző, hatékony és költséghatékony mechanizmust biztosít. 
+A Azure Data Factory egy nagy teljesítményű, robusztus és költséghatékony mechanizmust biztosít az adatok nagy léptékű áttelepítéséhez egy helyszíni Netezza-kiszolgálóról az Azure Storage-fiókjába vagy az Azure szinapszis Analytics-adatbázisába. 
 
 Ez a cikk a következő információkat tartalmazza az adatmérnökök és a fejlesztők számára:
 
@@ -206,6 +206,6 @@ További információt a következő cikkekben és útmutatókban talál:
 - [Adatok növekményes másolása több táblából](./tutorial-incremental-copy-multiple-tables-portal.md)
 - [Azure Data Factory díjszabási oldala](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Több tárolóból származó fájlok másolása Azure Data Factory használatával](solution-template-copy-files-multiple-containers.md)

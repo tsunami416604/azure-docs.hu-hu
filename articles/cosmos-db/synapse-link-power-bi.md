@@ -1,24 +1,27 @@
 ---
 title: Power BI és kiszolgáló nélküli SQL-készlet a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással
-description: Megtudhatja, hogyan hozhat létre egy szinapszis SQL Server nélküli adatbázist és nézetet a Azure Cosmos DB szinapszis hivatkozásán keresztül, lekérdezheti a Azure Cosmos DB tárolókat, majd felépítheti a modelleket Power BI a nézetek fölé.
+description: Megtudhatja, hogyan hozhat létre kiszolgáló nélküli SQL Pool-adatbázist és-nézeteket a szinapszis-kapcsolaton keresztül a Azure Cosmos DBhoz, lekérdezheti a Azure Cosmos DB tárolókat, majd felépítheti a modelleket Power BI a nézetek fölé.
 author: ArnoMicrosoft
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: 55a73ada39f4f48aeb22c5482bd85d1092d54c35
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 959070ca431c3397779a2a22c16f03b3adebbb35
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342249"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444509"
 ---
-# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>A Power BI és a kiszolgáló nélküli szinapszis SQL-készlet használata a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással (előzetes verzió) 
+# <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>A Power BI és a kiszolgáló nélküli szinapszis SQL-készlet (előzetes verzió) használatával elemezheti a Azure Cosmos DB-alapú és a szinapszis-hivatkozásokat 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre kiszolgáló nélküli SQL Pool-adatbázist és-nézeteket a szinapszis-kapcsolaton keresztül a Azure Cosmos DBhoz. Ezután lekérdezi a Azure Cosmos DB tárolókat, majd létrehoz egy modellt, Power BI ezen nézetek alapján, hogy tükrözze a lekérdezést.
 
 Ebben a forgatókönyvben a felületi termékek értékesítésével kapcsolatos dummy-információkat a partner kiskereskedelmi tárolójában fogjuk használni. A bevételeket a rendszer a nagy háztartások közelsége és a hirdetés egy adott hétre gyakorolt hatása alapján elemzi. Ebben a cikkben két nézetet hoz létre a **RetailSales** és a **StoreDemographics** nevű nézetben, valamint egy lekérdezést közöttük. Ebből a [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) -tárházból lekérheti a minta termék adatait.
+
+> [!IMPORTANT]
+> A szinapszis kiszolgáló nélküli SQL-készletének támogatása az Azure-beli szinapszis-hivatkozáshoz Azure Cosmos DB jelenleg előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +58,7 @@ Create database RetailCosmosDB
 
 Következő lépésként hozzon létre több nézetet a különböző szinapszis-hivatkozásokkal rendelkező Azure Cosmos-tárolók között. A nézetek lehetővé teszik a T-SQL használatával való csatlakozást és a különböző tárolókban található Azure Cosmos DB-adatlekérdezéseket.  A nézetek létrehozásakor ügyeljen arra, hogy a **RetailCosmosDB** -adatbázist válassza ki.
 
-A következő parancsfájlok azt mutatják be, hogyan hozhatók létre nézetek az egyes tárolókban. Az egyszerűség kedvéért használjuk a szinapszis SQL Server nélküli, szinapszis-kapcsolattal rendelkező tárolók [automatikus sémájának következtetését](analytical-store-introduction.md#analytical-schema) :
+A következő parancsfájlok azt mutatják be, hogyan hozhatók létre nézetek az egyes tárolókban. Az egyszerűség kedvéért használja a kiszolgáló nélküli SQL-készlet [automatikus séma-következtetési](analytical-store-introduction.md#analytical-schema) funkcióját a szinapszis-kapcsolattal rendelkező tárolók használatával:
 
 
 ### <a name="retailsales-view"></a>RetailSales nézet:
@@ -118,7 +121,7 @@ Ezután nyissa meg a Power BI asztalt, és kapcsolódjon a kiszolgáló nélkül
 
 1. Válassza ki az előnyben részesített hitelesítési módszert, például az Azure AD-t.
 
-1. Válassza ki a **RetailCosmosDB** -adatbázist és a **RetailSales** , **StoreDemographics** nézeteket.
+1. Válassza ki a **RetailCosmosDB** -adatbázist és a **RetailSales**, **StoreDemographics** nézeteket.
 
 1. Válassza a **Load (Betöltés** ) lehetőséget a két nézet közvetlen lekérdezési módba való betöltéséhez.
 

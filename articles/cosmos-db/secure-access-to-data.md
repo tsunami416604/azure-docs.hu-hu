@@ -6,14 +6,14 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 936e98b3efa27f2d0a85c373ccae0ab223f4fd95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7d50185169b22a136ce81bd3aebae235cf49498b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340906"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436623"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés az adatokhoz az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ Ez a cikk áttekintést nyújt a [Microsoft Azure Cosmos DBban](https://azure.mi
 
 Azure Cosmos DB kétféle kulcsot használ a felhasználók hitelesítéséhez és az adataihoz és erőforrásaihoz való hozzáférés biztosításához. 
 
-|Kulcs típusa|Forrásanyagok|
+|Kulcs típusa|További források|
 |---|---|
 |[Elsődleges kulcsok](#primary-keys) |Felügyeleti erőforrásokhoz használatos: adatbázis-fiókok, adatbázisok, felhasználók és engedélyek|
 |[Erőforrás-tokenek](#resource-tokens)|Alkalmazás-erőforrásokhoz használatos: tárolók, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF|
@@ -169,7 +169,7 @@ Az entitás mostantól képes olvasni Azure Cosmos DB erőforrásait.
 
 ## <a name="delete-or-export-user-data"></a>Felhasználói adatértékek törlése vagy exportálása
 
-Azure Cosmos DB lehetővé teszi, hogy az adatbázisban vagy gyűjteményekben található személyes adatait megkeresse, kiválassza, módosítsa és törölje. A Azure Cosmos DB API-kat biztosít a személyes adat megtalálásához és törléséhez, ezért az Ön felelőssége az API-k használata, és a személyes adat törléséhez szükséges logika meghatározása. Az egyes többmodelles API-k (SQL, MongoDB, Gremlin, Cassandra, Table) különböző nyelvi SDK-kat biztosítanak, amelyek a személyes adatkeresésre és törlésre vonatkozó módszereket tartalmaznak. Azt is engedélyezheti, hogy az élettartam [(TTL)](time-to-live.md) szolgáltatás automatikusan töröljön egy adott időszak után az adattörlést anélkül, hogy további költségeket kellene fizetnie.
+Adatbázis-szolgáltatásként a Azure Cosmos DB lehetővé teszi az adatbázisban vagy tárolókban található bármilyen adatkeresést, kijelölését, módosítását és törlését. Az Ön felelőssége, hogy a megadott API-kat használja, és szükség esetén adja meg a személyes adat megkereséséhez és törléséhez szükséges logikát. Az egyes többmodelles API-k (SQL, MongoDB, Gremlin, Cassandra, Table) különböző nyelvi SDK-kat biztosítanak, amelyek az egyéni predikátumok alapján keresik és törölhetik az adatkeresési és-törlési módszereket. Azt is engedélyezheti, hogy az élettartam [(TTL)](time-to-live.md) szolgáltatás automatikusan töröljön egy adott időszak után az adattörlést anélkül, hogy további költségeket kellene fizetnie.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 

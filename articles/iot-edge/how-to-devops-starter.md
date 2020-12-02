@@ -1,18 +1,18 @@
 ---
 title: CI/CD-folyamat az Azure DevOps Starter-Azure IoT Edge | Microsoft Docs
 description: Az Azure DevOps Starter megkönnyíti az Azure-ban való ismerkedést. Segítségével néhány gyors lépésben elindíthat egy Azure IoT Edge alkalmazást.
-author: shizn
+author: kgremban
 ms.author: kgremban
 ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d57c1828b9456851d37a65b88eb5f8ea860a80fe
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045856"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436997"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása IoT Edgehoz az Azure DevOps Starter-vel
 
@@ -26,21 +26,21 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure DevOps. Létrehozhat e
 
 1. Jelentkezzen be a [Microsoft Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali panelen válassza az **erőforrás létrehozása**lehetőséget, majd keresse meg a **DevOps Starter**elemet.  
+1. A bal oldali panelen válassza az **erőforrás létrehozása** lehetőséget, majd keresse meg a **DevOps Starter** elemet.  
 
 1. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-a-new-application-pipeline"></a>Új alkalmazás-folyamat létrehozása
 
-1. A Azure IoT Edge modul (ok) a [C#](tutorial-csharp-module.md), a [Node.js](tutorial-node-module.md), a [Python](tutorial-python-module.md), a [C](tutorial-c-module.md) és a [Java](tutorial-java-module.md)nyelven is írható. Válassza ki a kívánt nyelvet egy új alkalmazás indításához: **.net**, **Node.js**, **Python**, **C**vagy **Java**. A folytatáshoz válassza a **Tovább** gombot.
+1. A Azure IoT Edge modul (ok) a [C#](tutorial-csharp-module.md), a [Node.js](tutorial-node-module.md), a [Python](tutorial-python-module.md), a [C](tutorial-c-module.md) és a [Java](tutorial-java-module.md)nyelven is írható. Válassza ki a kívánt nyelvet egy új alkalmazás indításához: **.net**, **Node.js**, **Python**, **C** vagy **Java**. A folytatáshoz válassza a **Tovább** gombot.
 
    ![Új alkalmazás létrehozásához válassza a Language (nyelv) lehetőséget.](./media/how-to-devops-starter/select-language.png)
 
-2. Válassza az **egyszerű IoT** lehetőséget az alkalmazás-keretrendszerként, majd kattintson a **tovább**gombra.
+2. Válassza az **egyszerű IoT** lehetőséget az alkalmazás-keretrendszerként, majd kattintson a **tovább** gombra.
 
    ![Egyszerű IoT-keretrendszer kiválasztása](media/how-to-devops-starter/select-iot.png)
 
-3. Válassza a **IoT Edge** lehetőséget az alkalmazást üzembe helyező Azure-szolgáltatásként, majd kattintson a **tovább**gombra.
+3. Válassza a **IoT Edge** lehetőséget az alkalmazást üzembe helyező Azure-szolgáltatásként, majd kattintson a **tovább** gombra.
 
    ![IoT Edge szolgáltatás kiválasztása](media/how-to-devops-starter/select-iot-edge.png)
 
@@ -50,7 +50,7 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure DevOps. Létrehozhat e
 
    2. Válassza ki az Azure DevOps-szervezetét. Ha nem rendelkezik meglévő szervezettel, válassza a **További beállítások** lehetőséget, hogy újat hozzon létre.
 
-   3. Válassza ki az Azure-előfizetését.
+   3. Válassza ki Azure-előfizetését.
 
    4. Használja a projekt neve alapján létrehozott IoT Hub nevet, vagy adja meg a sajátját.
 
@@ -74,14 +74,14 @@ A DevOps Starter létrehozta a projekthez tartozó git-tárházat az Azure Repos
 
    ![Az Azure Reposben létrehozott adattár megtekintése](./media/how-to-devops-starter/view-repositories.png)
 
-> [!NOTE]
-> A következő lépések végigvezetik a böngészőben a kód módosításának lépésein. Ha a tárházat helyileg szeretné klónozottként használni, válassza a **klónozás** lehetőséget az ablak jobb felső sarkában. Használja a megadott URL-címet a git-tárház klónozásához a Visual Studio Code-ban vagy az előnyben részesített fejlesztői eszközben.
+   > [!NOTE]
+   > A következő lépések végigvezetik a böngészőben a kód módosításának lépésein. Ha a tárházat helyileg szeretné klónozottként használni, válassza a **klónozás** lehetőséget az ablak jobb felső sarkában. Használja a megadott URL-címet a git-tárház klónozásához a Visual Studio Code-ban vagy az előnyben részesített fejlesztői eszközben.
 
 2. A tárház már tartalmaz egy **FilterModule** nevű modul kódját a létrehozási folyamat során kiválasztott nyelv alapján. Nyissa meg a **modules/FilterModule/module.js** fájlt.
 
    ![module.jsmegnyitása a fájlon az Azure Reposban](./media/how-to-devops-starter/open-module-json.png)
 
-3. Figyelje meg, hogy ez a fájl az [Azure DevOps Build változókat](/azure/devops/pipelines/build/variables?view=vsts#build-variables) használja a **Version** paraméterben. Ez a konfiguráció biztosítja, hogy a rendszer minden új Build futtatásakor létrehozza a modul új verzióját.
+3. Figyelje meg, hogy ez a fájl az [Azure DevOps Build változókat](/azure/devops/pipelines/build/variables#build-variables) használja a **Version** paraméterben. Ez a konfiguráció biztosítja, hogy a rendszer minden új Build futtatásakor létrehozza a modul új verzióját.
 
 ## <a name="examine-the-cicd-pipeline"></a>A CI/CD-folyamat vizsgálata
 
@@ -101,7 +101,7 @@ Az előző szakaszban az Azure DevOps Starter automatikusan konfigurálta a IoT 
 
    ![A folyamat részleteinek szerkesztése](./media/how-to-devops-starter/edit-build-pipeline.png)
 
-5. Válassza a **mentés & üzenetsor**lehetőséget, majd kattintson a **Mentés**gombra. A megjegyzés nem kötelező.
+5. Válassza a **mentés & üzenetsor** lehetőséget, majd kattintson a **Mentés** gombra. A megjegyzés nem kötelező.
 
 6. Válassza az **Eseményindítók** lehetőséget a folyamat összeállítása menüből. A DevOps Starter automatikusan létrehozta a CI-triggert, és az adattárba való minden kötelezettség új buildet indít el.  Lehetősége van belefoglalni az ágakat, vagy kizárni őket a CI-folyamatból.
 
@@ -109,7 +109,7 @@ Az előző szakaszban az Azure DevOps Starter automatikusan konfigurálta a IoT 
 
 8. Válassza a **History (előzmények**) lehetőséget. Az előzmények panel a Build legutóbbi változásainak naplózási nyomvonalát tartalmazza. Az Azure-folyamatok nyomon követik a felépítési folyamaton végrehajtott módosításokat, és lehetővé teszik a verziók összehasonlítását.
 
-9. Amikor elkészült a Build folyamattal, navigáljon a megfelelő kiadási folyamathoz. Válassza a **kiadások** a **folyamatok**alatt lehetőséget, majd kattintson a **Szerkesztés** elemre a folyamat részleteinek megtekintéséhez.
+9. Amikor elkészült a Build folyamattal, navigáljon a megfelelő kiadási folyamathoz. Válassza a **kiadások** a **folyamatok** alatt lehetőséget, majd kattintson a **Szerkesztés** elemre a folyamat részleteinek megtekintéséhez.
 
     ![Kiadási folyamat megtekintése](media/how-to-devops-starter/release-pipeline.png)
 
@@ -121,7 +121,7 @@ Az előző szakaszban az Azure DevOps Starter automatikusan konfigurálta a IoT 
 
     ![Folyamatos üzembe helyezési feladatok megtekintése](media/how-to-devops-starter/choose-release.png)
 
-13. A jobb oldalon válassza a **kiadások megtekintése**lehetőséget. Ebben a nézetben a kiadások előzményei jelennek meg.
+13. A jobb oldalon válassza a **kiadások megtekintése** lehetőséget. Ebben a nézetben a kiadások előzményei jelennek meg.
 
 14. Válassza ki a kiadás nevét a további információk megtekintéséhez.
 
@@ -129,7 +129,7 @@ Az előző szakaszban az Azure DevOps Starter automatikusan konfigurálta a IoT 
 
 Törölheti Azure App Service és az egyéb kapcsolódó erőforrásokat, amelyeket akkor hozott létre, ha már nincs rá szükség. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg az Azure DevOps Azure IoT Edgeával kapcsolatos feladatokkal a [folyamatos integráció és a folyamatos üzembe helyezés Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md)
 * A IoT Edge központi telepítésének megismerése az [egyes eszközök IoT Edge központi telepítések megismeréséhez](module-deployment-monitoring.md)

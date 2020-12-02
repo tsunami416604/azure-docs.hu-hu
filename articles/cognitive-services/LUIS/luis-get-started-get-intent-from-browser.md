@@ -1,18 +1,18 @@
 ---
-title: 'Gyors útmutató: lekérdezés az előrejelzéshez a böngészővel – LUIS'
-description: Ebben a rövid útmutatóban egy elérhető nyilvános LUIS-alkalmazás használatával határozhatja meg a felhasználó szándékát a böngészőben a társalgási szövegben.
+title: Előrejelzések lekérdezése böngésző használatával – LUIS
+description: Ebben a cikkben egy elérhető nyilvános LUIS-alkalmazás használatával határozhatja meg a felhasználó szándékát a böngészőben a társalgási szövegben.
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
-ms.date: 04/21/2020
-ms.openlocfilehash: ce7544bee32586aa4cdeeb7f47a84744194db5da
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.topic: conceptual
+ms.date: 11/30/2020
+ms.openlocfilehash: 6aa681c8ea60cb57ac3e6d143c60cc46bc057719
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316273"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436912"
 ---
-# <a name="quickstart-query-prediction-runtime-with-user-text"></a>Gyors útmutató: lekérdezési előrejelzési futtatókörnyezet felhasználói szöveggel
+# <a name="how-to-query-the-prediction-runtime-with-user-text"></a>Az előrejelzési futtatókörnyezet lekérdezése felhasználói szöveggel
 
 Ha szeretné látni, mit ad vissza egy LUIS előrejelzési végpont, tekintsen meg egy előrejelzési eredményt egy webböngészőben.
 

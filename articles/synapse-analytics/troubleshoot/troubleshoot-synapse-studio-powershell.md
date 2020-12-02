@@ -1,5 +1,5 @@
 ---
-title: A szinapszis Studio-kapcsolat hibáinak megoldása
+title: A Synapse Studio kapcsolati problémáinak hibaelhárítása
 description: Az Azure szinapszis Studio-kapcsolat hibáinak megoldása a PowerShell használatával
 author: saveenr
 ms.service: synapse-analytics
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: e5e433fd857f638c1c13e4545c19e0b6314ee62e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 5f0dc73877d7742d4fc6a0c5b9bcf0529d475e0a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146506"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445271"
 ---
 # <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>A szinapszis Studio-kapcsolat hibáinak megoldása a PowerShell-lel
 
-Az Azure szinapszis Studio (előzetes verzió) a webes API-végpontok megfelelő működéséhez függ. Ez az útmutató segítséget nyújt a kapcsolódási problémák okának azonosításához a következő esetekben:
+Az Azure szinapszis Studio a megfelelő működés érdekében a webes API-végpontok számától függ. Ez az útmutató segítséget nyújt a kapcsolódási problémák okának azonosításához a következő esetekben:
 - a helyi hálózat (például a vállalati tűzfal mögötti hálózat) konfigurálása az Azure szinapszis Studio eléréséhez.
 - kapcsolódási problémák léptek fel az Azure szinapszis Studio használatával.
 
@@ -57,5 +57,5 @@ Ha Ön hálózati rendszergazda, és az Azure szinapszis studióhoz tartozó tű
  A sikertelen kérelmek esetében az OK sárga színnel jelenik meg, például: `NamedResolutionFailure` vagy `ConnectFailure` . Ezek az okok segíthetnek kideríteni, hogy vannak-e helytelen konfiguráció a hálózati környezettel.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha az előző lépések nem segítenek a probléma megoldásában, [hozzon létre egy támogatási jegyet](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).

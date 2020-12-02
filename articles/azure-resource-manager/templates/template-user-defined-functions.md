@@ -3,12 +3,12 @@ title: Felhasználó által definiált függvények a sablonokban
 description: Ismerteti, hogyan lehet felhasználó által definiált függvényeket definiálni és használni egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: c0d62abb5362d51a77db872c11416b04dcfb3f97
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 12199aca788438e4558ed2c607b866f0dc723e2a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353476"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436963"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>Felhasználó által definiált függvények az ARM-sablonban
 
@@ -103,8 +103,7 @@ A felhasználói függvények meghatározásakor bizonyos korlátozások vonatko
 * A függvény nem tudja használni a [Reference](template-functions-resource.md#reference) függvényt vagy a [List](template-functions-resource.md#list) függvények egyikét sem.
 * A függvény paraméterei nem rendelkezhetnek alapértelmezett értékekkel.
 
-
 ## <a name="next-steps"></a>További lépések
 
-* A felhasználó által definiált függvények elérhető tulajdonságainak megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md)című témakört.
-* A sablonhoz elérhető függvények listáját itt tekintheti meg: [Azure Resource Manager template functions](template-functions.md).
+* A felhasználó által definiált függvények elérhető tulajdonságainak megismeréséhez tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
+* Az elérhető sablon-függvények listáját az [ARM-sablon függvények](template-functions.md)című részben tekintheti meg.

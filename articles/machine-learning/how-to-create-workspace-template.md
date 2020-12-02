@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: f07efcc18f3eff7e40232941befb563cd236266b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: bd9199bc73e56ec36343b30d9b24f0b48799835e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95013029"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445189"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -41,7 +41,7 @@ További információ: [alkalmazások központi telepítése Azure Resource Mana
 
 ## <a name="limitations"></a>Korlátozások
 
-* Új munkaterület létrehozásakor engedélyezheti a munkaterületnek, hogy automatikusan létrehozza a szükséges Azure-szolgáltatásokat, vagy megadjon meglévő szolgáltatásokat. A meglévő szolgáltatások megadásakor ezeknek a szolgáltatásoknak mind ugyanabban az Azure-előfizetésben kell lenniük, mint a munkaterületnek.
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="workspace-resource-manager-template"></a>Munkaterület Resource Manager-sablon
 
@@ -683,7 +683,7 @@ Egy másik munkaterületet és privát végpontot tartalmazó virtuális hálóz
     az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../azure-resource-manager/templates/deploy-rest.md).
 * [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

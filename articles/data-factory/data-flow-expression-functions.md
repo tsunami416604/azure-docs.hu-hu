@@ -3,18 +3,16 @@ title: Expression függvények a leképezési adatfolyamban
 description: Tudnivalók a Expression functions szolgáltatásról a leképezési adatforgalomban.
 author: kromerm
 ms.author: makromer
-manager: anandsub
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/06/2020
-ms.openlocfilehash: 5645bd37ec466619a4093d767db1c846b90a4365
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/01/2020
+ms.openlocfilehash: 875b84613bede922b01b1043f2d6dab9aedbc2e8
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997859"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436929"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Adatátalakítási kifejezések a leképezési adatfolyamban
 
@@ -86,48 +84,6 @@ ___
 <code><b>atan2(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
 A sík pozitív x tengelye és a koordináták által megadott pont közötti szöget adja vissza radiánban.  
 * ``atan2(0, 0) -> 0.0``  
-___
-### <code>byOrigin</code>
-<code><b>byOrigin(<i>&lt;column name&gt;</i> : string, [<i>&lt;origin stream name&gt;</i> : string]) => any</b></code><br/><br/>
-Oszlop értékének kiválasztása a forrás adatfolyamban név alapján. A második argumentum a forrás-adatfolyam neve. Ha több egyezés van, a rendszer az első egyezést adja vissza. Ha nincs egyezés, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények egyikének kell átalakítania (TO_DATE, TO_STRING...). A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.  
-* ``toString(byOrigin('ancestor', 'ancestorStream'))``
-___
-### <code>byOrigins</code>
-<code><b>byOrigins(<i>&lt;column names&gt;</i> : array, [<i>&lt;origin stream name&gt;</i> : string]) => any</b></code><br/><br/>
-Kijelöli az oszlopok tömbjét név szerint az adatfolyamban. A második argumentum az a stream, ahonnan származik. Ha több egyezés van, a rendszer az első egyezést adja vissza. Ha nincs egyezés, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények egyikének kell átalakítania (TO_DATE, TO_STRING...) A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.
-* ``toString(byOrigins(['ancestor1', 'ancestor2'], 'ancestorStream'))``
-___
-### <code>byName</code>
-<code><b>byName(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-Oszlop értékének kiválasztása a streamben név szerint. A második argumentumként átadhat egy opcionális stream-nevet. Ha több egyezés van, a rendszer az első egyezést adja vissza. Ha nincs egyezés, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények egyikének kell átalakítania (TO_DATE, TO_STRING...).  A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.  
-* ``toString(byName('parent'))``  
-* ``toLong(byName('income'))``  
-* ``toBoolean(byName('foster'))``  
-* ``toLong(byName($debtCol))``  
-* ``toString(byName('Bogus Column'))``  
-* ``toString(byName('Bogus Column', 'DeriveStream'))``  
-___
-### <code>byNames</code>
-<code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-Válassza ki az oszlopok tömbjét név szerint az adatfolyamban. A második argumentumként átadhat egy opcionális stream-nevet. Ha több egyezés van, a rendszer az első egyezést adja vissza. Ha egy oszlophoz nem tartoznak egyezések, a teljes kimenet NULL értékű. A visszaadott értéknek egy Type Conversion functions (toDate, toString,...) típusúnak kell lennie.  A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.
-* ``toString(byNames(['parent', 'child']))``
-* ``byNames(['parent']) ? string``
-* ``toLong(byNames(['income']))``
-* ``byNames(['income']) ? long``
-* ``toBoolean(byNames(['foster']))``
-* ``toLong(byNames($debtCols))``
-* ``toString(byNames(['a Column']))``
-* ``toString(byNames(['a Column'], 'DeriveStream'))``
-* ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
-___
-### <code>byPosition</code>
-<code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
-Oszlop értékének kiválasztása az adatfolyamban lévő relatív pozíció (1 alapú) alapján. Ha a pozíció kívül esik a határértékeken, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények egyikének kell átalakítania (TO_DATE, TO_STRING...) A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.  
-* ``toString(byPosition(1))``  
-* ``toDecimal(byPosition(2), 10, 2)``  
-* ``toBoolean(byName(4))``  
-* ``toString(byName($colName))``  
-* ``toString(byPosition(1234))``  
 ___
 ### <code>case</code>
 <code><b>case(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, <i>&lt;false_expression&gt;</i> : any, ...) => any</b></code><br/><br/>
@@ -480,7 +436,7 @@ ___
 * ``levenshtein('boys', 'girls') -> 4``  
 ___
 ### <code>like</code>
-<code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></Code><br/><br/> a minta egy olyan karakterlánc, amely szó szerint egyezik. A kivételek a következő speciális szimbólumok: _ a bemenet bármelyik karakterének felel meg (ehhez hasonlóan). a POSIX REGU- l ar kifejezések esetében a (z)% a bemenetben lévő nulla vagy több karakternek felel meg (a következőhöz hasonlóan: POSIX regul a r Expressions).
+<code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></Code><br/><br/> a minta egy olyan karakterlánc, amely szó szerint egyezik. A kivételek a következő speciális szimbólumok: _ a (z) "" " (similar to  . POSIX" "" REGU- l ar kifejezésekben similar to . * szereplő a r "" "" {0} "karakterláncban szereplő"
 Az escape-karakter a következő: "". Ha egy escape-karakter egy speciális szimbólum vagy egy másik escape-karakter előtt következik be, a következő karakter egyeztetése szó szerint történik. Érvénytelen a menekülési other character.  
 * ``like('icecream', 'ice%') -> true``  
 ___
@@ -730,7 +686,8 @@ ___
 * ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``  
 ___
 ### <code>soundex</code>
-<code><b>soundex(<i>&lt;value1&gt;</i> : string) => string</b></Code><br/><br/> lekéri a Soundex kódot for the string.  
+<code><b>soundex(<i>&lt;value1&gt;</i> : string) => string</b></Code><br e ' ' ' /><br/>
+Gets t h Soundex ' ' ' kódfor the string.  
 * ``soundex('genius') -> 'G520'``  
 ___
 ### <code>split</code>
@@ -773,86 +730,6 @@ ___
 ### <code>tanh</code>
 <code><b>tanh(<i>&lt;value1&gt;</i> : number) => double</b></Code><br/><br/> kiszámítja a hyperbolic tangent value.  
 * ``tanh(0) -> 0.0``  
-___
-### <code>toBase64</code>
-<code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></Code><br/><br/> kódolja a megadott string in base64.  
-* ``toBase64('bojjus') -> 'Ym9qanVz'``  
-___
-### <code>toBinary</code>
-<code><b>toBinary(<i>&lt;value1&gt;</i> : any) => binary</b></kód><br/><br/> a numerikus/dátum/időbélyeg/sztring konvertálása binárisra representation.  
-* ``toBinary(3) -> [0x11]``  
-___
-### <code>toBoolean</code>
-<code><b>toBoolean(<i>&lt;value1&gt;</i> : string) => boolean</b></a (z)><br/><br/> kód értéke ("", "true", "y", "yes", "1") igaz és ("f", "false", "n", "No", "0") értékre vált a False és a NULL értékre. any other value.  
-* ``toBoolean('true') -> true``  
-* ``toBoolean('n') -> false``  
-* ``isNull(toBoolean('truthy')) -> true``  
-___
-### <code>toDate</code>
-<code><b>toDate(<i>&lt;string&gt;</i> : any, [<i>&lt;date format&gt;</i> : string]) => date</b></a Code><br/><br/> a bemeneti dátum karakterláncát dátumra alakítja egy opcionális input Date Form at. Refer Java's `S i mpleDateFormat ' osztály használatával a rendelkezésre álló formátumokhoz. Ha a bemeneti dátum formátuma nincs megadva, az alapértelmezett formátum: ÉÉÉÉ-[M] M-[d] d. Az elfogadott formátumok a következők: [éééé, éééé-[M] M, éééé-[M] M-[d] d, YYYy-[M]M-[d]dT* ].  
-* ``toDate('2012-8-18') -> toDate('2012-08-18')``  
-* ``toDate('12/18/2012', 'MM/dd/yyyy') -> toDate('2012-12-18')``  
-___
-### <code>toDecimal</code>
-<code><b>toDecimal(<i>&lt;value&gt;</i> : any, [<i>&lt;precision&gt;</i> : integral], [<i>&lt;scale&gt;</i> : integral], [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => decimal(10,0)</b></a br/><br/> kód><a numerikus vagy sztringet decimális értékké alakítja. Ha a pontosság és a skála nincs megadva, a rendszer alapértelmezés szerint a következőt adja meg: (10, 2). Az átalakításhoz választható Java decimális formátumot is használhat. Egy opcionális területi beállítás formátuma BCP47, például en-US, de, zh-CN.  
-* ``toDecimal(123.45) -> 123.45``  
-* ``toDecimal('123.45', 8, 4) -> 123.4500``  
-* ``toDecimal('$123.45', 8, 4,'$###.00') -> 123.4500``  
-* ``toDecimal('Ç123,45', 10, 2, 'Ç###,##', 'de') -> 123.45``  
-___
-### <code>toDouble</code>
-<code><b>toDouble(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => double</b></a br/><br/> kód><a numerikus vagy sztringet egy dupla értékre konvertálja. Az átalakításhoz választható Java decimális formátumot is használhat. Egy opcionális területi beállítás formátuma BCP47, például en-US, de, zh-CN.  
-* ``toDouble(123.45) -> 123.45``  
-* ``toDouble('123.45') -> 123.45``  
-* ``toDouble('$123.45', '$###.00') -> 123.45``  
-* ``toDouble('Ç123,45', 'Ç###,##', 'de') -> 123.45``  
-___
-### <code>toFloat</code>
-<code><b>toFloat(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => float</b></a br/><br/> kód><a numerikus vagy sztringet lebegőpontos értékké alakítja. Az átalakításhoz választható Java decimális formátumot is használhat. TRUNCates any double.  
-* ``toFloat(123.45) -> 123.45f``  
-* ``toFloat('123.45') -> 123.45f``  
-* ``toFloat('$123.45', '$###.00') -> 123.45f``  
-___
-### <code>toInteger</code>
-<code><b>toInteger(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => integer</b></a><br/><br/> kód a numerikus vagy a sztringet egész értékre konvertálja. Az átalakításhoz választható Java decimális formátumot is használhat. Bármilyen hosszúságú csonkítás, float, double.  
-* ``toInteger(123) -> 123``  
-* ``toInteger('123') -> 123``  
-* ``toInteger('$123', '$###') -> 123``  
-___
-### <code>toLong</code>
-<code><b>toLong(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => long</b></a br/><br/> kód><a numerikus vagy sztringet hosszú értékre alakítja át. Az átalakításhoz választható Java decimális formátumot is használhat. Csonkolt egyy float, double.  
-* ``toLong(123) -> 123``  
-* ``toLong('123') -> 123``  
-* ``toLong('$123', '$###') -> 123``  
-___
-### <code>toShort</code>
-<code><b>toShort(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => short</b></a br/><br/> kód><a numerikus vagy sztringet egy rövid értékre alakítja át. Az átalakításhoz választható Java decimális formátumot is használhat. Bármely egész szám, hosszú érték csonkítása, float, double.  
-* ``toShort(123) -> 123``  
-* ``toShort('123') -> 123``  
-* ``toShort('$123', '$###') -> 123``  
-___
-### <code>toString</code>
-<code><b>toString(<i>&lt;value&gt;</i> : any, [<i>&lt;number format/date format&gt;</i> : string]) => string</b></Code><br/><br/> egy primitív adattípust konvertál karakterlánccá. A számok és a dátum formátuma megadható. Ha nincs megadva, a rendszer alapértelmezés szerint ki van választva. A Java decimális formátum a számok esetében használatos. Tekintse meg a Java SimpleDateFormat az összes lehetséges dátumformátumot; az alapértelmezett t is yyyy-MM-dd.  
-* ``toStri ng(10) -> '10'``  
-* ``toString('engineer') -> 'engineer'``  
-* ``toString(123456.789, '##,###.##') - > '123,456.79'``  
-* ``toString(123.78, '000000.000') - forma > '000123.780'``  
-* ``toString(12345, '##0.#####E0')-> '12.345E3'``  
-* ``toString(toDate('2018-12-31')) -> '2018-12-31'``  
-* ``isNull(toString(toDate('2018-12-31', 'MM/dd/yy'))) -> true``  
-* ``toString(4 == 20) -> 'false'``  
-___
-### <code>toTimestamp</code>
-<code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></a><br/><br/> kód nem kötelező időbélyeg-formátumra konvertál egy karakterláncot egy időbélyegre. Ha az időbélyeg ki van hagyva, az alapértelmezett mint éééé-[M] M-[d] d óó: PP: SS [. f...] használatos. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. Az időbélyeg legfeljebb ezredmásodperces pontosságot támogat, amely 9 99. Refer Java's `S i mpleDateFormat osztályt biztosít az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``millisecond(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
-___
-### <code>toUTC</code>
-<code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></Code><br/><br/> átalakítja az időbélyeget UTC értékre. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. Alapértelmezés szerint az aktuális timezo ne. Refer Java's `S i mpleDateFormat osztálya elérhető formátumok számára. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
-* ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 ___
 ### <code>translate</code>
 <code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></Code><br/><br/> lecserél egy karakterkészletet egy másik karakterkészlettel a karakterláncban. A karakterek száma 1 t o 1 replacement.  
@@ -1051,38 +928,8 @@ ___
 * ``varianceSample(sales)``  
 ___
 ### <code>varianceSampleIf</code>
-<code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></Code><br/><br/> feltételek alapján, beolvassa az elfogulatlan Varia nce of a column.  
-* ``varianceSampleIf(region ==  'West' , Sales) ' ' # # W indow függvények a következő függvények csak az ablakban érhetők eltransformations.
-___
-### <code>cumeDist</code>
-<code><b>cumeDist() => integer</b></Code><br/><br/> a CumeDist függvény kiszámítja egy érték pozícióját a partícióban lévő összes értékhez viszonyítva. Ennek eredményeképpen a partíció rendezésének aktuális sorával megegyező vagy azzal egyenlő sorok száma elosztva a Windows-partíció sorainak teljes számával. A rendezésben szereplő összes döntetlen érték a következőre lesz kiértékelve:e same position.  
-* ``cumeDist()``  
-___
-### <code>denseRank</code>
-<code><b>denseRank() => integer</b></Code><br/><br/> kiszámítja egy érték rangsorát egy ablak Order by záradékában megadott értékek csoportjába. Az eredmény az a sor, amely a partíció sorrendje szerint az aktuális sorral megegyező vagy annál korábbi sorok számát jelöli. Az értékek nem hoznak létre hézagokat a sorozatban. A sűrű rangsor akkor is működik, ha az Adatrendezés nem történik meg, és a c-t keresihange in values.  
-* ``denseRank()``  
-___
-### <code>lag</code>
-<code><b>lag(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look before&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></Code><br/><br/> lekérdezi az első paraméter értékét, amely az aktuális sor előtt n sor lett kiértékelve. A második paraméter a visszakeresett sorok száma, az alapértelmezett érték pedig 1. Ha nincs annyi sor, a null értéket adja vissza, kivéve, ha egy alapértelmezett value is specified.  
-* ``lag(amount, 2)``  
-* ``lag(amount, 2000, 100)``  
-___
-### <code>lead</code>
-<code><b>lead(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look after&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></Code><br/><br/> lekérdezi az első paraméter értékét, amely az aktuális sor után n sor lett kiértékelve. A második paraméter a megtekinteni kívánt sorok száma, az alapértelmezett érték pedig 1. Ha nincs annyi sor, a null értéket adja vissza, kivéve, ha egy alapértelmezett value is specified.  
-* ``lead(amount, 2)``  
-* ``lead(amount, 2000, 100)``  
-___
-### <code>nTile</code>
-<code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></Code><br/><br/> a NTile függvény az egyes Windo sorait w pa r "n" gyűjtőre osztja el az f rom 1 értéktől a legtöbb "n"-ig. A gyűjtő értéke legfeljebb 1 lesz. Ha a partícióban lévő sorok száma nem egyenletesen oszlik meg a gyűjtők számával, akkor a fennmaradó értékeket a rendszer egy gyűjtőre osztja szét, az első gyűjtőtől kezdve. A NTile függvény a tertiles, a quartiles, a deciles és más gyakori összesítő statisztikák kiszámításához hasznos. A függvény két változót számít ki az inicializálás során: a normál gyűjtő méretének egy további sora lesz hozzáadva. Mindkét változó az aktuális partíció méretétől függ. A számítási folyamat során a függvény nyomon követi az aktuális sorszámot, az aktuális gyűjtő számát, valamint azt a sorszámot, amelynél a gyűjtő módosul (bucketThreshold). Ha az aktuális sor száma eléri a gyűjtő küszöbértékét, a rendszer eggyel növeli a gyűjtő értékét, a küszöbértéket pedig a gyűjtő mérete növeli (plusz egy extra, ha az aktuális Bu cket is padded).* ``nTile()``  
-* ``nTile(numOfBuckets)``  
-___
-### <code>rank</code>
-<code><b>rank() => integer</b></Code><br/><br/> kiszámítja egy érték rangsorát egy ablak Order by záradékában megadott értékek csoportjába. Az eredmény az a sor, amely a partíció sorrendje szerint az aktuális sorral megegyező vagy annál korábbi sorok számát jelöli. Az értékek a sorozatban mutatkozó hézagokat eredményezik. A rang akkor is működik, ha az Adatrendezés nem történik meg, és nem keresi a c-thange in values.  
-* ``rank()``  
-___
-### <code>rowNumber</code>
-<code><b>rowNumber() => integer</b></Code><br/><br/> hozzárendeli egy szekvenciális sorszámot a sorokhoz egy ablakban starting with 1.  
-* ``rowNumber()``* ``
+<code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></Code><br/><br/> feltételek alapján lekéri az elfogulatlan Variance of a column.  
+* ``varianceSampleIf(region == 'West', sales)``* ``
  @(
        name = 'Mark',
        types = [
@@ -1268,8 +1115,8 @@ Gets the levenshtein distance between two strings.
 ___
 ### <code>like</code>
 <code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
-The pattern is a string that is matched literally. The exceptions are the following special symbols:  _ matches any one character in the input (similar to . in posix regular expressions)
-  % matches zero or more characters in the input (similar to .* in posix regular expressions).
+The pattern is a string that is matched literally. The exceptions are the following special symbols:  _ matches any one character in the input (similar to . in ```posix``` regular expressions)
+  % matches zero or more characters in the input (similar to .* in ```posix``` regular expressions).
   The escape character is ''. If an escape character precedes a special symbol or another escape character, the following character is matched literally. It is invalid to escape any other character.  
 * ``like('icecream', 'ice%') -> true``  
 ___
@@ -1582,7 +1429,7 @@ Sorts the array using the provided predicate function. Sort expects a reference 
 ___
 ### <code>soundex</code>
 <code><b>soundex(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Gets the soundex code for the string.  
+Gets the ```soundex``` code for the string.  
 * ``soundex('genius') -> 'G520'``  
 ___
 ### <code>split</code>
@@ -1633,99 +1480,6 @@ ___
 <code><b>tanh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Calculates a hyperbolic tangent value.  
 * ``tanh(0) -> 0.0``  
-___
-### <code>toBase64</code>
-<code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Encodes the given string in base64.  
-* ``toBase64('bojjus') -> 'Ym9qanVz'``  
-___
-### <code>toBinary</code>
-<code><b>toBinary(<i>&lt;value1&gt;</i> : any) => binary</b></code><br/><br/>
-Converts any numeric/date/timestamp/string to binary representation.  
-* ``toBinary(3) -> [0x11]``  
-___
-### <code>toBoolean</code>
-<code><b>toBoolean(<i>&lt;value1&gt;</i> : string) => boolean</b></code><br/><br/>
-Converts a value of ('t', 'true', 'y', 'yes', '1') to true and ('f', 'false', 'n', 'no', '0') to false and NULL for any other value.  
-* ``toBoolean('true') -> true``  
-* ``toBoolean('n') -> false``  
-* ``isNull(toBoolean('truthy')) -> true``  
-___
-### <code>toDate</code>
-<code><b>toDate(<i>&lt;string&gt;</i> : any, [<i>&lt;date format&gt;</i> : string]) => date</b></code><br/><br/>
-Converts input date string to date using an optional input date format. Refer Java's `SimpleDateFormat` class for available formats. If the input date format is omitted, default format is yyyy-[M]M-[d]d. Accepted formats are :[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ].  
-* ``toDate('2012-8-18') -> toDate('2012-08-18')``  
-* ``toDate('12/18/2012', 'MM/dd/yyyy') -> toDate('2012-12-18')``  
-___
-### <code>toDecimal</code>
-<code><b>toDecimal(<i>&lt;value&gt;</i> : any, [<i>&lt;precision&gt;</i> : integral], [<i>&lt;scale&gt;</i> : integral], [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => decimal(10,0)</b></code><br/><br/>
-Converts any numeric or string to a decimal value. If precision and scale are not specified, it is defaulted to (10,2).An optional Java decimal format can be used for the conversion. An optional locale format in the form of BCP47 language like en-US, de, zh-CN.  
-* ``toDecimal(123.45) -> 123.45``  
-* ``toDecimal('123.45', 8, 4) -> 123.4500``  
-* ``toDecimal('$123.45', 8, 4,'$###.00') -> 123.4500``  
-* ``toDecimal('Ç123,45', 10, 2, 'Ç###,##', 'de') -> 123.45``  
-___
-### <code>toDouble</code>
-<code><b>toDouble(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => double</b></code><br/><br/>
-Converts any numeric or string to a double value. An optional Java decimal format can be used for the conversion. An optional locale format in the form of BCP47 language like en-US, de, zh-CN.  
-* ``toDouble(123.45) -> 123.45``  
-* ``toDouble('123.45') -> 123.45``  
-* ``toDouble('$123.45', '$###.00') -> 123.45``  
-* ``toDouble('Ç123,45', 'Ç###,##', 'de') -> 123.45``  
-___
-### <code>toFloat</code>
-<code><b>toFloat(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => float</b></code><br/><br/>
-Converts any numeric or string to a float value. An optional Java decimal format can be used for the conversion. Truncates any double.  
-* ``toFloat(123.45) -> 123.45f``  
-* ``toFloat('123.45') -> 123.45f``  
-* ``toFloat('$123.45', '$###.00') -> 123.45f``  
-___
-### <code>toInteger</code>
-<code><b>toInteger(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => integer</b></code><br/><br/>
-Converts any numeric or string to an integer value. An optional Java decimal format can be used for the conversion. Truncates any long, float, double.  
-* ``toInteger(123) -> 123``  
-* ``toInteger('123') -> 123``  
-* ``toInteger('$123', '$###') -> 123``  
-___
-### <code>toLong</code>
-<code><b>toLong(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => long</b></code><br/><br/>
-Converts any numeric or string to a long value. An optional Java decimal format can be used for the conversion. Truncates any float, double.  
-* ``toLong(123) -> 123``  
-* ``toLong('123') -> 123``  
-* ``toLong('$123', '$###') -> 123``  
-___
-### <code>toShort</code>
-<code><b>toShort(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => short</b></code><br/><br/>
-Converts any numeric or string to a short value. An optional Java decimal format can be used for the conversion. Truncates any integer, long, float, double.  
-* ``toShort(123) -> 123``  
-* ``toShort('123') -> 123``  
-* ``toShort('$123', '$###') -> 123``  
-___
-### <code>toString</code>
-<code><b>toString(<i>&lt;value&gt;</i> : any, [<i>&lt;number format/date format&gt;</i> : string]) => string</b></code><br/><br/>
-Converts a primitive datatype to a string. For numbers and date a format can be specified. If unspecified the system default is picked.Java decimal format is used for numbers. Refer to Java SimpleDateFormat for all possible date formats; the default format is yyyy-MM-dd.  
-* ``toString(10) -> '10'``  
-* ``toString('engineer') -> 'engineer'``  
-* ``toString(123456.789, '##,###.##') -> '123,456.79'``  
-* ``toString(123.78, '000000.000') -> '000123.780'``  
-* ``toString(12345, '##0.#####E0') -> '12.345E3'``  
-* ``toString(toDate('2018-12-31')) -> '2018-12-31'``  
-* ``isNull(toString(toDate('2018-12-31', 'MM/dd/yy'))) -> true``  
-* ``toString(4 == 20) -> 'false'``  
-___
-### <code>toTimestamp</code>
-<code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Converts a string to a timestamp given an optional timestamp format. If the timestamp is omitted the default pattern yyyy-[M]M-[d]d hh:mm:ss[.f...] is used. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. Timestamp supports up to millisecond accuracy with value of 999. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``  
-* ``millisecond(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
-___
-### <code>toUTC</code>
-<code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Converts the timestamp to UTC. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. It is defaulted to the current timezone. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
-* ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 ___
 ### <code>translate</code>
 <code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/>
@@ -1976,45 +1730,206 @@ ___
 <code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
 Based on a criteria, gets the unbiased variance of a column.  
 * ``varianceSampleIf(region == 'West', sales)``  
-## Window functions
-The following functions are only available in window transformations.
+
+## <a name="conversion-functions"></a>Konverziós függvények
+
+A konverziós függvények az adatok és az adattípusok átalakítására szolgálnak.
+
+### <code>toBase64</code>
+<code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
+A megadott karakterlánc kódolása Base64-ben.  
+* ``toBase64('bojjus') -> 'Ym9qanVz'``  
+___
+### <code>toBinary</code>
+<code><b>toBinary(<i>&lt;value1&gt;</i> : any) => binary</b></code><br/><br/>
+Bármilyen numerikus/dátum/timestamp/sztring konvertálása bináris ábrázolásra.  
+* ``toBinary(3) -> [0x11]``  
+___
+### <code>toBoolean</code>
+<code><b>toBoolean(<i>&lt;value1&gt;</i> : string) => boolean</b></code><br/><br/>
+A ("", "true", "y", "yes", "1") értéket True értékre ("f", "false", "n", "No", "0") konvertálja hamis értékre, és minden más értéket NULL értékűre.  
+* ``toBoolean('true') -> true``  
+* ``toBoolean('n') -> false``  
+* ``isNull(toBoolean('truthy')) -> true``  
+___
+### <code>toByte</code>
+<code><b>toByte(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => byte</b></code><br/><br/>
+Bármilyen numerikus vagy sztringet konvertál egy bájt értékre. Az átalakításhoz választható Java decimális formátumot is használhat.  
+* ``toByte(123)``
+* ``123``
+* ``toByte(0xFF)``
+* ``-1``
+* ``toByte('123')``
+* ``123``
+___
+### <code>toDate</code>
+<code><b>toDate(<i>&lt;string&gt;</i> : any, [<i>&lt;date format&gt;</i> : string]) => date</b></code><br/><br/>
+A bemeneti dátum karakterláncának dátumra konvertálása egy opcionális bemeneti dátumformátum használatával. Tekintse át `SimpleDateFormat` a Java osztályát a rendelkezésre álló formátumokhoz. Ha a bemeneti dátum formátuma nincs megadva, az alapértelmezett formátum: ÉÉÉÉ-[M] M-[d] d. Az elfogadott formátumok a következők: [éééé, éééé-[M] M, éééé-[M] M-[d] d, éééé-[M] M-[d] dT *].  
+* ``toDate('2012-8-18') -> toDate('2012-08-18')``  
+* ``toDate('12/18/2012', 'MM/dd/yyyy') -> toDate('2012-12-18')``  
+___
+### <code>toDecimal</code>
+<code><b>toDecimal(<i>&lt;value&gt;</i> : any, [<i>&lt;precision&gt;</i> : integral], [<i>&lt;scale&gt;</i> : integral], [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => decimal(10,0)</b></code><br/><br/>
+Bármilyen numerikus vagy sztringet decimális értékké alakít. Ha a pontosság és a skála nincs megadva, a rendszer alapértelmezés szerint a következőt adja meg: (10, 2). Az átalakításhoz választható Java decimális formátumot is használhat. Egy opcionális területi beállítás formátuma BCP47 nyelven, például en-US, de, zh-CN.  
+* ``toDecimal(123.45) -> 123.45``  
+* ``toDecimal('123.45', 8, 4) -> 123.4500``  
+* ``toDecimal('$123.45', 8, 4,'$###.00') -> 123.4500``  
+* ``toDecimal('Ç123,45', 10, 2, 'Ç###,##', 'de') -> 123.45``  
+___
+### <code>toDouble</code>
+<code><b>toDouble(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => double</b></code><br/><br/>
+Bármely numerikus vagy sztringet dupla értékre konvertál. Az átalakításhoz választható Java decimális formátumot is használhat. Egy opcionális területi beállítás formátuma BCP47 nyelven, például en-US, de, zh-CN.  
+* ``toDouble(123.45) -> 123.45``  
+* ``toDouble('123.45') -> 123.45``  
+* ``toDouble('$123.45', '$###.00') -> 123.45``  
+* ``toDouble('Ç123,45', 'Ç###,##', 'de') -> 123.45``  
+___
+### <code>toFloat</code>
+<code><b>toFloat(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => float</b></code><br/><br/>
+Bármely numerikus vagy sztringet lebegőpontos értékké alakít. Az átalakításhoz választható Java decimális formátumot is használhat. Bármilyen dupla csonkítása.  
+* ``toFloat(123.45) -> 123.45f``  
+* ``toFloat('123.45') -> 123.45f``  
+* ``toFloat('$123.45', '$###.00') -> 123.45f``  
+___
+### <code>toInteger</code>
+<code><b>toInteger(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => integer</b></code><br/><br/>
+Bármilyen numerikus vagy sztringet egész értékre konvertál. Az átalakításhoz választható Java decimális formátumot is használhat. Megrövidíti a hosszú, lebegőpontos és dupla hosszúságot.  
+* ``toInteger(123) -> 123``  
+* ``toInteger('123') -> 123``  
+* ``toInteger('$123', '$###') -> 123``  
+___
+### <code>toLong</code>
+<code><b>toLong(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => long</b></code><br/><br/>
+Tetszőleges numerikus vagy sztringet alakít át hosszú értékre. Az átalakításhoz választható Java decimális formátumot is használhat. Bármilyen lebegőpontos, dupla érték csonkítása.  
+* ``toLong(123) -> 123``  
+* ``toLong('123') -> 123``  
+* ``toLong('$123', '$###') -> 123``  
+___
+### <code>toShort</code>
+<code><b>toShort(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => short</b></code><br/><br/>
+Bármilyen numerikus vagy sztringet alakít át egy rövid értékre. Az átalakításhoz választható Java decimális formátumot is használhat. Az egész szám, a hosszú, az úszó és a dupla érték csonkítása.  
+* ``toShort(123) -> 123``  
+* ``toShort('123') -> 123``  
+* ``toShort('$123', '$###') -> 123``  
+___
+### <code>toString</code>
+<code><b>toString(<i>&lt;value&gt;</i> : any, [<i>&lt;number format/date format&gt;</i> : string]) => string</b></code><br/><br/>
+Egy primitív adattípust karakterlánccá alakít át. A számok és a dátum formátuma megadható. Ha nincs megadva, a rendszer alapértelmezés szerint ki van választva. A Java decimális formátum a számok esetében használatos. Tekintse meg a Java SimpleDateFormat az összes lehetséges dátumformátumot; az alapértelmezett formátum: éééé-hh-nn.  
+* ``toString(10) -> '10'``  
+* ``toString('engineer') -> 'engineer'``  
+* ``toString(123456.789, '##,###.##') -> '123,456.79'``  
+* ``toString(123.78, '000000.000') -> '000123.780'``  
+* ``toString(12345, '##0.#####E0') -> '12.345E3'``  
+* ``toString(toDate('2018-12-31')) -> '2018-12-31'``  
+* ``isNull(toString(toDate('2018-12-31', 'MM/dd/yy'))) -> true``  
+* ``toString(4 == 20) -> 'false'``  
+___
+### <code>toTimestamp</code>
+<code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/>
+Egy karakterláncot egy időbélyeg-formátumra konvertál, és nem kötelező időbélyeg-formátumot. Ha az időbélyeg ki van hagyva, az alapértelmezett mint éééé-[M] M-[d] d óó: PP: SS [. f...] használatos. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. Az időbélyeg legfeljebb ezredmásodperc pontosságot támogat 999 értékkel. Tekintse át `SimpleDateFormat` a Java osztályát a rendelkezésre álló formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``  
+* ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``  
+* ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``  
+* ``millisecond(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
+___
+### <code>toUTC</code>
+<code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
+Az időbélyeget UTC értékre alakítja. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. Alapértelmezés szerint az aktuális időzóna. Tekintse át `SimpleDateFormat` a Java osztályát a rendelkezésre álló formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
+* ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
+
+## <a name="metafunctions"></a>Metafunctions
+
+A Metafunctions elsődlegesen az adatfolyam metaadatainak függvénye
+
+### <code>byItem</code>
+<code><b>byItem(<i>&lt;parent column&gt;</i> : any, <i>&lt;column name&gt;</i> : string) => any</b></code><br/><br/>
+Ha több egyezés van, akkor a rendszer az első egyezést adja vissza egy struktúra vagy egy struktúra tömbje között. Ha nincs egyezés, NULL értéket ad vissza. A visszaadott értéket a Type átalakítási műveletek egyikének kell átalakítania (? dátum,? karakterlánc...).  A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is. * ``byItem( byName('customer'), 'orderItems') ? (itemName as string, itemQty as integer)``
+* ````
+* ``byItem( byItem( byName('customer'), 'orderItems'), 'itemName') ? string``
+* ````
+___
+### <code>byOrigin</code>
+<code><b>byOrigin(<i>&lt;column name&gt;</i> : string, [<i>&lt;origin stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Oszlop értékének kiválasztása a forrás adatfolyamban név alapján. A második argumentum a forrás-adatfolyam neve. Ha több egyezés van, a rendszer az első egyezést adja vissza. Ha nincs egyezés, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények egyikének kell átalakítania (TO_DATE, TO_STRING...). A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.  
+* ``toString(byOrigin('ancestor', 'ancestorStream'))``
+___
+### <code>byOrigins</code>
+<code><b>byOrigins(<i>&lt;column names&gt;</i> : array, [<i>&lt;origin stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Kijelöli az oszlopok tömbjét név szerint az adatfolyamban. A második argumentum az a stream, ahonnan származik. Ha több egyezés van, a rendszer az első egyezést adja vissza. Ha nincs egyezés, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények egyikének kell átalakítania (TO_DATE, TO_STRING...) A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.
+* ``toString(byOrigins(['ancestor1', 'ancestor2'], 'ancestorStream'))``
+___
+### <code>byName</code>
+<code><b>byName(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Oszlop értékének kiválasztása a streamben név szerint. A második argumentumként átadhat egy opcionális stream-nevet. Ha több egyezés van, a rendszer az első egyezést adja vissza. Ha nincs egyezés, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények egyikének kell átalakítania (TO_DATE, TO_STRING...).  A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.  
+* ``toString(byName('parent'))``  
+* ``toLong(byName('income'))``  
+* ``toBoolean(byName('foster'))``  
+* ``toLong(byName($debtCol))``  
+* ``toString(byName('Bogus Column'))``  
+* ``toString(byName('Bogus Column', 'DeriveStream'))``  
+___
+### <code>byNames</code>
+<code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Válassza ki az oszlopok tömbjét név szerint az adatfolyamban. A második argumentumként átadhat egy opcionális stream-nevet. Ha több egyezés van, a rendszer az első egyezést adja vissza. Ha egy oszlophoz nem tartoznak egyezések, a teljes kimenet NULL értékű. A visszaadott értéknek egy Type Conversion functions (toDate, toString,...) típusúnak kell lennie.  A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.
+* ``toString(byNames(['parent', 'child']))``
+* ``byNames(['parent']) ? string``
+* ``toLong(byNames(['income']))``
+* ``byNames(['income']) ? long``
+* ``toBoolean(byNames(['foster']))``
+* ``toLong(byNames($debtCols))``
+* ``toString(byNames(['a Column']))``
+* ``toString(byNames(['a Column'], 'DeriveStream'))``
+* ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
+___
+### <code>byPosition</code>
+<code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
+Oszlop értékének kiválasztása az adatfolyamban lévő relatív pozíció (1 alapú) alapján. Ha a pozíció kívül esik a határértékeken, NULL értéket ad vissza. A visszaadott értéket a Type konverziós függvények egyikének kell átalakítania (TO_DATE, TO_STRING...) A számított bemenetek nem támogatottak, de használhat paraméterekkel való helyettesítést is.  
+* ``toString(byPosition(1))``  
+* ``toDecimal(byPosition(2), 10, 2)``  
+* ``toBoolean(byName(4))``  
+* ``toString(byName($colName))``  
+* ``toString(byPosition(1234))``  
+
+## <a name="window-functions"></a>Ablakfunkciók
+A következő függvények csak az ablakos átalakításokban érhetők el.
 ___
 ### <code>cumeDist</code>
 <code><b>cumeDist() => integer</b></code><br/><br/>
-The CumeDist function computes the position of a value relative to all values in the partition. The result is the number of rows preceding or equal to the current row in the ordering of the partition divided by the total number of rows in the window partition. Any tie values in the  ordering will evaluate to the same position.  
+A CumeDist függvény kiszámítja egy érték pozícióját a partícióban lévő összes értékhez viszonyítva. Ennek eredményeképpen a partíció rendezésének aktuális sorával megegyező vagy azzal egyenlő sorok száma elosztva a Windows-partíció sorainak teljes számával. A rendezésben szereplő összes döntetlen érték ugyanarra a pozícióra lesz kiértékelve.  
 * ``cumeDist()``  
 ___
 ### <code>denseRank</code>
 <code><b>denseRank() => integer</b></code><br/><br/>
-Computes the rank of a value in a group of values specified in a window's order by clause. The result is one plus the number of rows preceding or equal to the current row in the ordering of the partition. The values will not produce gaps in the sequence. Dense Rank works even when data is not sorted and looks for change in values.  
+Kiszámítja egy érték rangsorát egy ablak Order by záradékában megadott értékek csoportjából. Az eredmény az a sor, amely a partíció sorrendje szerint az aktuális sorral megegyező vagy annál korábbi sorok számát jelöli. Az értékek nem hoznak létre hézagokat a sorozatban. A sűrű rangsor akkor is működik, ha az adatok nem rendezettek, és az értékek változását keresi.  
 * ``denseRank()``  
 ___
 ### <code>lag</code>
 <code><b>lag(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look before&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
-Gets the value of the first parameter evaluated n rows before the current row. The second parameter is the number of rows to look back and the default value is 1. If there are not as many rows a value of null is returned unless a default value is specified.  
+Az első paraméter értékének beolvasása n sor az aktuális sor előtt. A második paraméter a visszakeresett sorok száma, az alapértelmezett érték pedig 1. Ha nincs annyi sor, a rendszer null értéket ad vissza, hacsak nem ad meg alapértelmezett értéket.  
 * ``lag(amount, 2)``  
 * ``lag(amount, 2000, 100)``  
 ___
 ### <code>lead</code>
 <code><b>lead(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look after&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
-Gets the value of the first parameter evaluated n rows after the current row. The second parameter is the number of rows to look forward and the default value is 1. If there are not as many rows a value of null is returned unless a default value is specified.  
+Az első paraméter értékének beolvasása az aktuális sor után n sorban. A második paraméter a megtekinteni kívánt sorok száma, az alapértelmezett érték pedig 1. Ha nincs annyi sor, a rendszer null értéket ad vissza, hacsak nem ad meg alapértelmezett értéket.  
 * ``lead(amount, 2)``  
 * ``lead(amount, 2000, 100)``  
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-The NTile function divides the rows for each window partition into `n` buckets ranging from 1 to at most `n`. Bucket values will differ by at most 1. If the number of rows in the partition does not divide evenly into the number of buckets, then the remainder values are distributed one per bucket, starting with the first bucket. The NTile function is useful for the calculation of tertiles, quartiles, deciles, and other common summary statistics. The function calculates two variables during initialization: The size of a regular bucket will have one extra row added to it. Both variables are based on the size of the current partition. During the calculation process the function keeps track of the current row number, the current bucket number, and the row number at which the bucket will change (bucketThreshold). When the current row number reaches bucket threshold, the bucket value is increased by one and the threshold is increased by the bucket size (plus one extra if the current bucket is padded).  
+A ```NTile``` függvény az egyes ablakos partíciók sorait az `n` 1 és a közötti érték között osztja szét `n` . A gyűjtő értéke legfeljebb 1 lesz. Ha a partícióban lévő sorok száma nem egyenletesen oszlik meg a gyűjtők számával, akkor a fennmaradó értékeket a rendszer egy gyűjtőre osztja szét, az első gyűjtőtől kezdve. A ```NTile``` függvény a ```tertiles``` quartiles, a deciles és az egyéb gyakori összefoglaló statisztikák kiszámításához hasznos. A függvény két változót számít ki az inicializálás során: a normál gyűjtő méretének egy további sora lesz hozzáadva. Mindkét változó az aktuális partíció méretétől függ. A számítási folyamat során a függvény nyomon követi az aktuális sorszámot, az aktuális gyűjtő számát, valamint azt a sorszámot, amelynél a gyűjtő módosul (bucketThreshold). Ha az aktuális sor száma eléri a gyűjtő küszöbértékét, a rendszer eggyel növeli a gyűjtő értékét, a küszöbértéket pedig a gyűjtő mérete növeli (plusz egy extra, ha az aktuális gyűjtő betömött).  
 * ``nTile()``  
 * ``nTile(numOfBuckets)``  
 ___
 ### <code>rank</code>
 <code><b>rank() => integer</b></code><br/><br/>
-Computes the rank of a value in a group of values specified in a window's order by clause. The result is one plus the number of rows preceding or equal to the current row in the ordering of the partition. The values will produce gaps in the sequence. Rank works even when data is not sorted and looks for change in values.  
+Kiszámítja egy érték rangsorát egy ablak Order by záradékában megadott értékek csoportjából. Az eredmény az a sor, amely a partíció sorrendje szerint az aktuális sorral megegyező vagy annál korábbi sorok számát jelöli. Az értékek a sorozatban mutatkozó hézagokat eredményezik. A Rank akkor is működik, ha az adatok nem rendezettek, és az értékek változását keresi.  
 * ``rank()``  
 ___
 ### <code>rowNumber</code>
 <code><b>rowNumber() => integer</b></code><br/><br/>
-Assigns a sequential row numbering for rows in a window starting with 1.  
+Egymást követő sorszámozást rendel egy ablak soraihoz, 1-től kezdődően.  
 * ``rowNumber()``  
 
 ## <a name="next-steps"></a>További lépések

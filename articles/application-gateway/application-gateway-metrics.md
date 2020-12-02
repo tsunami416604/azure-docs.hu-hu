@@ -2,17 +2,17 @@
 title: A Application Gateway metrikáinak Azure Monitor
 description: Tudnivalók a metrikák használatáról az Application Gateway teljesítményének figyeléséhez
 services: application-gateway
-author: abshamsft
+author: surajmb
 ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
-ms.author: absha
-ms.openlocfilehash: c072e7c1339a2217a3c167be3237029bd71429c2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.author: surmb
+ms.openlocfilehash: be629d9f8441ad40fe15f005f4aeb0ec5565a7ec
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397739"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437065"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway metrikái
 
@@ -52,7 +52,7 @@ Application Gateway számos beépített időzítési metrikát biztosít a kére
 
   A kérelem fogadásához, feldolgozásához és az elküldött válaszhoz szükséges átlagos idő. 
 
-  Ez az az időtartam, amikor a Application Gateway megkapja a HTTP-kérelem első bájtját arra az időre, amikor az utolsó válasz bájtot elküldték az ügyfélnek. Ebbe beletartozik a Application Gateway által végrehajtott feldolgozási idő, a *háttérbeli utolsó bájt válaszideje* , a Application Gateway által az összes válasz és az *ügyfél RTT* elküldéséhez szükséges idő.
+  Ez az az időtartam, amikor a Application Gateway megkapja a HTTP-kérelem első bájtját arra az időre, amikor az utolsó válasz bájtot elküldték az ügyfélnek. Ebbe beletartozik a Application Gateway által végrehajtott feldolgozási idő, a *háttérbeli utolsó bájt válaszideje*, a Application Gateway által az összes válasz és az *ügyfél RTT* elküldéséhez szükséges idő.
 
 - **Ügyfél-RTT**
 
@@ -162,7 +162,7 @@ Application Gateway esetén a következő metrikák érhetők el:
 
 - **Sikertelen kérelmek**
 
-  A Application Gateway által a 5xx kiszolgálói hibakódokkal kiszolgált kérelmek száma. Ebbe beletartozik a Application Gateway generált 5xx-kódok, valamint a háttérből létrehozott 5xx-kódok is. A kérelmek száma tovább szűrhető úgy, hogy megjelenjenek az egyes/specifikus backend-készletek száma – a http-beállítások kombinációja.
+  A kapcsolódási problémák miatt sikertelen kérelmek száma. Ez a szám olyan kérelmeket tartalmaz, amelyek sikertelenek voltak, mert túllépte a "kérés időkorlátja" HTTP-beállítást, és az Application Gateway és a háttér közötti kapcsolódási problémák miatt sikertelen kérelmeket. Ez a szám nem tartalmaz olyan hibát, amely miatt nem érhető el kifogástalan állapotú háttér. a 4xx és a 5xx érkező válaszok nem tekintendők ennek a mérőszámnak a részeként.
 
 - **Válasz állapota**
 
@@ -214,7 +214,7 @@ Az alábbi példa végigvezeti egy olyan riasztási szabály létrehozásán, am
 
 2. A **szabály hozzáadása** lapon töltse ki a nevet, a feltételt és az értesítési szakaszt, majd kattintson **az OK gombra**.
 
-   * A **feltétel** -választóban válasszon ki egyet a következő négy érték közül: **nagyobb** , mint, **nagyobb vagy egyenlő** , **kisebb** , mint, vagy **kisebb vagy egyenlő**.
+   * A **feltétel** -választóban válasszon ki egyet a következő négy érték közül: **nagyobb**, mint, **nagyobb vagy egyenlő**, **kisebb**, mint, vagy **kisebb vagy egyenlő**.
 
    * Az **időszak** -választóban válasszon ki egy pontot öt perc és hat óra között.
 

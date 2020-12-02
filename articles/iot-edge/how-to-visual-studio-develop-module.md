@@ -8,12 +8,12 @@ ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 1883ffdff20bbbef8efec1440854f01a21a281dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2ae6d46198d979f91de5bf31d389f75961b4ab88
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994519"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437167"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio 2019 használatával
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan használhatja a Visual Studio 2019 Azure IoT Edge-es
 
 Ez a cikk azt feltételezi, hogy egy Windows rendszert futtató számítógépet vagy virtuális gépet használ fejlesztői számítógépként. Windows rendszerű számítógépeken Windows-és Linux-modulokat is fejleszthet. Windows-modulok fejlesztéséhez használjon 1809/Build 17763 vagy újabb verziót futtató Windows-számítógépet. Linux-modulok fejlesztéséhez használjon olyan Windows-számítógépet, amely megfelel a [Docker Desktop követelményeinek](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
 
-Mivel ez a cikk a Visual Studio 2019-et használja fő fejlesztői eszközként, telepítse a Visual studiót. Győződjön meg róla, hogy a Visual Studio 2019-es verziójában az **Azure-fejlesztés** és az **asztali fejlesztés C++** számítási feladatait tartalmazza. A [Visual Studio 2019](/visualstudio/install/modify-visual-studio?view=vs-2019) a szükséges számítási feladatok hozzáadásához is módosítható.
+Mivel ez a cikk a Visual Studio 2019-et használja fő fejlesztői eszközként, telepítse a Visual studiót. Győződjön meg róla, hogy a Visual Studio 2019-es verziójában az **Azure-fejlesztés** és az **asztali fejlesztés C++** számítási feladatait tartalmazza. A [Visual Studio 2019](/visualstudio/install/modify-visual-studio?view=vs-2019&preserve-view=true) a szükséges számítási feladatok hozzáadásához is módosítható.
 
 Miután a Visual Studio 2019 elkészült, a következő eszközökre és összetevőkre is szüksége lesz:
 

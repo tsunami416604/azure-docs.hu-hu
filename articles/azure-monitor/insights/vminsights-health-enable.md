@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318133"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444780"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs vendég állapotának engedélyezése (előzetes verzió)
 Azure Monitor for VMs vendég állapota lehetővé teszi egy virtuális gép állapotának megtekintését, amelyet a rendszeres időközönként mintavételnek alávetett teljesítmény-mérések határoznak meg. Ez a cikk bemutatja, hogyan engedélyezheti ezt a funkciót az előfizetésében, és hogyan engedélyezheti a vendég figyelését az egyes virtuális gépeken.
@@ -87,7 +87,7 @@ A virtuális gépek Azure Resource Manager használatával történő engedélye
 > [!NOTE]
 > Ha a Azure Portal segítségével engedélyez egy virtuális gépet, az itt ismertetett adatgyűjtési szabályt hozza létre a rendszer. Ebben az esetben nem kell elvégeznie ezt a lépést.
 
-A Azure Monitor for VMs vendég állapotában lévő figyelők konfigurációját az [adatgyűjtési szabályok (DCR)](../platform/data-collection-rule-overview.md)tárolja. Telepítse az alábbi Resource Manager-sablonban meghatározott adatgyűjtési szabályt, hogy engedélyezze az összes figyelőt a virtuális gépekhez a vendég Health bővítménnyel. A vendég állapot-kiterjesztésű virtuális gépeknek ehhez a szabályhoz kell társítaniuk.
+A Azure Monitor for VMs vendég állapotában lévő figyelők konfigurációját az [adatgyűjtési szabályok (DCR)](../platform/data-collection-rule-overview.md)tárolja. A vendég állapot-kiterjesztésű virtuális gépeknek ehhez a szabályhoz kell társítaniuk.
 
 > [!NOTE]
 > További adatgyűjtési szabályokat hozhat létre a figyelők alapértelmezett konfigurációjának módosításához a [figyelés konfigurálása Azure monitor for VMS vendég állapota (előzetes verzió)](vminsights-health-configure.md)című cikkben leírtak szerint.
@@ -115,7 +115,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 ---
 
-
+Az alábbi Resource Manager-sablonban meghatározott adatgyűjtési szabály lehetővé teszi a virtuális gépekhez tartozó összes figyelő használatát a vendég Health bővítménnyel. Tartalmaznia kell a figyelők által használt egyes teljesítményszámlálók adatforrásait.
 
 ```json
 {
@@ -138,7 +138,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
     "dataCollectionRuleLocation": {
       "type": "string",
       "metadata": {
-        "description": "The location code in which the data colleciton rule should be deployed. Examples: eastus, westeurope, etc"
+        "description": "The location code in which the data collection rule should be deployed. Examples: eastus, westeurope, etc"
       }
     }
   },
@@ -151,6 +151,19 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
       "properties": {
         "description": "Data collection rule for VM Insights health.",
         "dataSources": {
+          "performanceCounters": [
+              {
+                  "name": "VMHealthPerfCounters",
+                  "streams": [ "Microsoft-Perf" ],
+                  "scheduledTransferPeriod": "PT1M",
+                  "samplingFrequencyInSeconds": 60,
+                  "counterSpecifiers": [
+                      "\\LogicalDisk(*)\\% Free Space",
+                      "\\Memory\\Available Bytes",
+                      "\\Processor(_Total)\\% Processor Time"
+                  ]
+              }
+          ],
           "extensions": [
             {
               "name": "Microsoft-VMInsights-Health",
@@ -170,7 +183,11 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
                     }
                   }
                 ]
-              }
+              },
+              "inputDataSources": [
+                  "VMHealthPerfCounters"
+              ]
+
             }
           ]
         },
@@ -181,7 +198,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
               "name": "Microsoft-HealthStateChange-Dest"
             }
           ]
-        },
+        },                  
         "dataFlows": [
           {
             "streams": [
@@ -205,7 +222,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "healthDataCollectionRuleResourceId": {
+      "destinationWorkspaceResourceId": {
         "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
       },
       "dataCollectionRuleLocation": {
@@ -217,7 +234,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 
 
-## <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>A vendég állapot-kiterjesztés telepítése és az adatgyűjtési szabályhoz való hozzárendelés
+### <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>A vendég állapot-kiterjesztés telepítése és az adatgyűjtési szabályhoz való hozzárendelés
 A következő Resource Manager-sablon használatával engedélyezheti a virtuális gépeket a vendég állapotához. Ezzel telepíti a vendég Health bővítményt, és létrehozza a társítást az adatgyűjtési szabállyal. Ezt a sablont a [Resource Manager-sablonok bármely üzembe helyezési módszerével](../../azure-resource-manager/templates/deploy-powershell.md)üzembe helyezheti.
 
 
@@ -370,14 +387,11 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
       },
       "healthDataCollectionRuleResourceId": {
         "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.Insights/dataCollectionRules/Microsoft-VMInsights-Health"
-      },
-      "healthExtensionVersion": {
-        "value": "private-preview"
       }
   }
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Monitor for VMs által engedélyezett figyelők testreszabása](vminsights-health-configure.md)

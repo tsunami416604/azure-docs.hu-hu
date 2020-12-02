@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: 5e1a929924e2c291e0044da99f3ae5d7d1c3b894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f839eb04e0c036b5059e35fac16d9c702646cbd7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371565"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435688"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Igény szerinti hozzáférés engedélyezése és kérése Azure Managed Applications
 
@@ -72,7 +72,7 @@ Ha az ajánlatot a partner Centerben hozza létre, győződjön meg arról, hogy
 
 1. Jelentkezzen be a kereskedelmi piactér portálra a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
 
-1. Az új felügyelt alkalmazások létrehozásával kapcsolatos útmutatásért kövesse az [Azure-alkalmazási ajánlat létrehozása](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)című témakör lépéseit.
+1. Az új felügyelt alkalmazások létrehozásával kapcsolatos útmutatásért kövesse az [Azure-alkalmazási ajánlat létrehozása](../../marketplace/create-new-azure-apps-offer.md)című témakör lépéseit.
 
 1. A **technikai konfiguráció** lapon jelölje be az igény szerinti **(JIT) hozzáférés engedélyezése** jelölőnégyzetet.
 
@@ -88,7 +88,7 @@ JIT hozzáférési kérelem küldése:
 
 1. Válassza ki a hozzáféréshez szükséges felügyelt alkalmazás **JIT-hozzáférését** .
 
-1. Válassza a **jogosult szerepkörök**lehetőséget, majd válassza a művelet oszlopban az **aktiválás** elemet a kívánt szerepkörhöz.
+1. Válassza a **jogosult szerepkörök** lehetőséget, majd válassza a művelet oszlopban az **aktiválás** elemet a kívánt szerepkörhöz.
 
    ![Hozzáférési kérelem aktiválása](./media/request-just-in-time-access/send-request.png)
 
@@ -102,7 +102,7 @@ JIT hozzáférési kérelem küldése:
 
    Most meg kell várnia, hogy a fogyasztó [jóváhagyja a kérést](approve-just-in-time-access.md#approve-requests).
 
-1. Egy felügyelt alkalmazáshoz tartozó összes JIT-kérelem állapotának megtekintéséhez válassza az **JIT-hozzáférés** és a **kérelmek előzményei**lehetőséget.
+1. Egy felügyelt alkalmazáshoz tartozó összes JIT-kérelem állapotának megtekintéséhez válassza az **JIT-hozzáférés** és a **kérelmek előzményei** lehetőséget.
 
    ![Állapot megtekintése](./media/request-just-in-time-access/view-status.png)
 
@@ -110,6 +110,6 @@ JIT hozzáférési kérelem küldése:
 
 A JIT-hozzáférést kérő fiók résztvevő-AZONOSÍTÓjának explicit módon szerepelnie kell a felügyelt alkalmazás definíciójában. A fiók nem szerepelhet csak a csomagban megadott csoporton keresztül. Ezt a korlátozást egy későbbi kiadásban rögzíti a rendszer.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A JIT-hozzáférésre vonatkozó kérések jóváhagyásáról további információt az igény szerinti [hozzáférés jóváhagyása Azure Managed Applications-ben](approve-just-in-time-access.md)című témakörben talál.

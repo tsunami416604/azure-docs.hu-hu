@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b75964f8cfc41efc35858284dbffded3aa406eb6
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674627"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436062"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Marketplace mért számlázási API-k
 
@@ -20,7 +20,7 @@ A mért számlázási API-kat akkor kell használni, ha a közzétevő egyéni m
 
 Az egyéni mérési méretek SaaS-hoz történő létrehozásával kapcsolatos további információkért lásd: [SaaS-mért számlázás](saas-metered-billing.md).
 
-A felügyelt alkalmazási csomaggal rendelkező Azure-alkalmazásokra vonatkozó egyéni mérési dimenziók létrehozásával kapcsolatos további információkért tekintse meg az [új Azure apps-ajánlat létrehozása című témakör technikai konfiguráció szakaszát](create-new-azure-apps-offer.md#technical-configuration).
+A felügyelt alkalmazási csomaggal rendelkező Azure-alkalmazásokra vonatkozó egyéni mérési dimenziók létrehozásával kapcsolatos további információkért lásd: [Az Azure-alkalmazás ajánlatának](../create-new-azure-apps-offer.md#configure-your-azure-application-offer-setup-details)beállítása.
 
 ## <a name="enforcing-tls-12-note"></a>TLS 1,2-Megjegyzés kényszerítése
 
@@ -34,7 +34,7 @@ Egy naptári nap minden órájában csak egy használati eseményt lehet kiáll�
 
 Erőforráson belül egy naptári nap minden órájában csak egy használati esemény lehet kibocsátva. Ha egy órában több egység is használatban van, akkor az óránként felhasznált összes egységet összesíti, majd egyetlen esemény keretében bocsátja ki. A használati események csak az elmúlt 24 órában állíthatók elő. Ha 8:00 és 8:59:59 közötti időszakban bármikor bocsát ki használati eseményt, és a 8:00 és az 8:59:59 közötti időszakra vonatkozó további eseményt küld, akkor azt a rendszer duplikálja.
 
-**Post** : `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Post**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -275,6 +275,6 @@ Egy meglévő élő ajánlathoz is használhat privát csomagot, hogy a tesztel�
 
 Kövesse a [partner Center kereskedelmi piactér programjának támogatásával](../support.md) kapcsolatos útmutatást a közzétevők támogatási lehetőségeinek megismeréséhez, és nyisson meg egy támogatási jegyet a Microsofttal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Service API-k mérésével kapcsolatos további információkért lásd: a [piactér-mérési szolgáltatás API-jai – gyakori kérdések](./marketplace-metering-service-apis-faq.md).

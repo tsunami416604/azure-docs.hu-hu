@@ -6,16 +6,16 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6928da704236c4bb5492f99a4a5327bf297a323d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d111379cbeb0ea4eeac9ea0868b6d263a0a540c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84676842"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435722"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>.NET-alkalmazások Snapshot Debuggerának engedélyezése Azure App Service
 
-A Snapshot Debugger jelenleg a ASP.NET és a ASP.NET Core a Windows-szolgáltatási csomagok Azure App Service futó alkalmazásain működik.
+A Snapshot Debugger jelenleg a ASP.NET és a ASP.NET Core a Windows-szolgáltatási csomagok Azure App Service futó alkalmazásain működik. Javasoljuk, hogy az alkalmazást az alapszintű szolgáltatási szinten vagy magasabb szinten futtassa a Snapshot Debugger használatakor. A legtöbb alkalmazás esetében az ingyenes és a közös szolgáltatási rétegek nem rendelkeznek elegendő memóriával a pillanatképek mentéséhez.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Snapshot Debugger engedélyezése
 Az alkalmazások Snapshot Debuggerának engedélyezéséhez kövesse az alábbi utasításokat. Ha más típusú Azure-szolgáltatást futtat, akkor a Snapshot Debugger más támogatott platformokon való engedélyezésével kapcsolatban itt talál útmutatást:
@@ -43,7 +43,7 @@ Application Insights Snapshot Debugger előre telepítve van a App Services futt
 
 ## <a name="disable-snapshot-debugger"></a>Snapshot Debugger letiltása
 
-Hajtsa végre az **Snapshot Debugger engedélyezésének**lépéseit, de mindkét kapcsolót a Snapshot Debuggerra kapcsolhatja **ki**.
+Hajtsa végre az **Snapshot Debugger engedélyezésének** lépéseit, de mindkét kapcsolót a Snapshot Debuggerra kapcsolhatja **ki**.
 Javasoljuk, hogy az alkalmazás-kivételek diagnosztizálásához az összes alkalmazásnál Snapshot Debugger engedélyezzen.
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon

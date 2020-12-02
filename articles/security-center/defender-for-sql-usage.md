@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 236a604c2c1cecfb18a2d82c3796a88cc4341a34
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: d37c362da484a2a7e400da8f87dd0a37f0f80d3a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636384"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436725"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender a gépeken futó SQL-kiszolgálókon 
 
@@ -112,7 +112,7 @@ A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják
 
 ## <a name="explore-and-investigate-security-alerts"></a>Biztonsági riasztások feltárása és kivizsgálása
 
-Az Azure Defender-riasztások a Security Center riasztások lapján, az erőforrás Biztonság lapján, az [Azure Defender irányítópultján](azure-defender-dashboard.md)vagy a riasztási e-mailek közvetlen hivatkozásán keresztül érhetők el.
+Az Azure Defender for SQL-riasztások Security Center riasztások lapján, az erőforrás Biztonság lapján, az [Azure Defender irányítópultján](azure-defender-dashboard.md)vagy a riasztási e-mailek közvetlen hivatkozásán keresztül érhetők el.
 
 1. A riasztások megtekintéséhez válassza a **biztonsági riasztások** lehetőséget Security Center menüjében, és válassza ki a riasztást.
 

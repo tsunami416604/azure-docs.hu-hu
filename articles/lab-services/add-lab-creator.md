@@ -3,15 +3,15 @@ title: Felhasználó hozzáadása tesztkörnyezet létrehozójának Azure Lab Se
 description: Ez a cikk bemutatja, hogyan adhat hozzá felhasználót a labor létrehozói szerepkörhöz egy Azure Lab Services-beli labor-fiókhoz. A labor létrehozói létrehozhatnak laborokat ebben a laborban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6c89483744f943926f126701d28988358627a27
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399482"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435960"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Tesztkörnyezet-készítők hozzáadása labor-fiókhoz Azure Lab Services
-Ebből a cikkből megtudhatja, hogyan adhat hozzá felhasználókat labor-készítőként Azure Lab Services-beli labor-fiókhoz. Ezek az alkalmazások ezután létrehozhatnak tantermi laborokat a labor-fiókban. 
+Ebből a cikkből megtudhatja, hogyan adhat hozzá felhasználókat labor-készítőként Azure Lab Services-beli labor-fiókhoz. Ezek az alkalmazások ezután létrehozhatnak laborokat a Lab-fiókban. 
 
 ## <a name="add-microsoft-user-account-to-lab-creator-role"></a>Microsoft felhasználói fiók hozzáadása a labor Creator szerepkörhöz
 A felhasználónak **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnyezetfiókban ahhoz, hogy létrehozhasson egy osztályterem-tesztkörnyezetet. A tesztkörnyezetfiók létrehozásához használt fiók automatikusan hozzáadódik ehhez a szerepkörhöz. Ha ugyanazt a felhasználói fiókot tervezi használni az osztályterem-tesztkörnyezet létrehozásához, ezt a lépést kihagyhatja. Ha egy másik felhasználói fiókot tervez használni, kövesse a következő lépéseket: 
@@ -21,7 +21,7 @@ Ahhoz, hogy a pedagógusok számára engedélyt adjon a Labs létrehozásához a
 1. A **labor-fiók** lapon válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd kattintson a **+ szerepkör-hozzárendelés hozzáadása** elemre az eszköztáron. 
 
     ![Access Control – > szerepkör-hozzárendelés hozzáadása gomb](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. A **szerepkör-hozzárendelés hozzáadása** lapon válassza a **tesztkörnyezet létrehozója** **szerepkört**, válassza ki azt a felhasználót, amelyet hozzá szeretne adni a labor létrehozói szerepkörhöz, majd válassza a **Mentés**lehetőséget. 
+1. A **szerepkör-hozzárendelés hozzáadása** lapon válassza a **tesztkörnyezet létrehozója** **szerepkört**, válassza ki azt a felhasználót, amelyet hozzá szeretne adni a labor létrehozói szerepkörhöz, majd válassza a **Mentés** lehetőséget. 
 
     ![Tesztkörnyezet létrehozójának hozzáadása](./media/tutorial-setup-lab-account/add-lab-creator.png)
 
@@ -49,21 +49,21 @@ Microsoft-fiókra való feliratkozáshoz az oktatóknak a következő címen kel
 
 
 ### <a name="using-a-github-account"></a>GitHub-fiók használata
-Az oktatók egy meglévő GitHub-fiókkal is regisztrálhatnak és bejelentkezhetnek egy osztályterem laborba. Ha az oktató már rendelkezik egy Microsoft-fiók a GitHub-fiókjához, akkor bejelentkezhet, és megadhatja a jelszavát az előző szakaszban látható módon. Ha még nem csatolták a GitHub-fiókját egy Microsoft-fiókhoz, akkor a **bejelentkezési lehetőségeket**kell választania:
+Az oktatók egy meglévő GitHub-fiókkal is regisztrálhatnak és bejelentkezhetnek egy osztályterem laborba. Ha az oktató már rendelkezik egy Microsoft-fiók a GitHub-fiókjához, akkor bejelentkezhet, és megadhatja a jelszavát az előző szakaszban látható módon. Ha még nem csatolták a GitHub-fiókját egy Microsoft-fiókhoz, akkor a **bejelentkezési lehetőségeket** kell választania:
 
 ![Bejelentkezési beállítások hivatkozása](./media/how-to-configure-student-usage/signin-options.png)
 
-A **bejelentkezési beállítások** lapon válassza a **Bejelentkezés a githubkal**lehetőséget.
+A **bejelentkezési beállítások** lapon válassza a **Bejelentkezés a githubkal** lehetőséget.
 
 ![Bejelentkezés GitHub-hivatkozással](./media/how-to-configure-student-usage/signin-github.png)
 
 Végül a rendszer kéri, hogy hozzon létre egy Microsoft-fiók, amely a GitHub-fiókjához van csatolva. Automatikusan megtörténik, amikor az oktató kiválasztja a **Next (tovább**) gombot.  Ezután az oktató azonnal bejelentkezik, és csatlakozik az osztályterem laborhoz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
 - [Labor tulajdonosaként Labs létrehozása és kezelése](how-to-manage-classroom-labs.md)
 - [A labor tulajdonosaként hozzon létre és tegyen közzé sablonokat](how-to-create-manage-template.md)
 - [Tesztkörnyezet tulajdonosaként konfigurálhatja és szabályozhatja a labor használatát](how-to-configure-student-usage.md)
-- [Labor-felhasználóként az osztályterem Labs eléréséhez](how-to-use-classroom-lab.md)
+- [Labor-felhasználóként a hozzáférés Labs](how-to-use-classroom-lab.md)

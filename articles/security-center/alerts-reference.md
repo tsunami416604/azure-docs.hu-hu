@@ -1,5 +1,5 @@
 ---
-title: A Azure Security Center összes Azure Defender-riasztásának hivatkozási táblázata
+title: A Azure Security Center összes biztonsági riasztására vonatkozó hivatkozási táblázat
 description: Ez a cikk a Azure Security Center Azure Defender-irányítópultján látható biztonsági riasztásokat sorolja fel.
 services: security-center
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6d001e638b00cace1dd81d9631f498a911ca19a4
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: c5ee275fb92ff2c3787bef7868665c19fea2109c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96014601"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436776"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások - – referencia-útmutató
 
-Ez a cikk felsorolja azokat a biztonsági riasztásokat, amelyek az Azure Defenderből szerezhetők be. A környezetben megjelenő riasztások a védett erőforrásokra és szolgáltatásokra, valamint a testreszabott konfigurációra függenek.
+Ez a cikk felsorolja azokat a biztonsági riasztásokat, amelyeket a Azure Security Center és az Ön által engedélyezett Azure Defender-csomagoktól kaphat. A környezetben megjelenő riasztások a védett erőforrásokra és szolgáltatásokra, valamint a testreszabott konfigurációra függenek.
 
 Ha szeretné megtudni, hogyan válaszolhat ezekre a riasztásokra, tekintse meg a [biztonsági riasztások kezelése és válaszadás a Azure Security Center-ben](security-center-managing-and-responding-alerts.md)című témakört.
 
@@ -170,7 +170,7 @@ A lap alján található egy táblázat, amely leírja a riasztások szándéká
 |**A rendszer a helyi gazdagép felderítését észlelte**|A (z)% {feltört gazdagépen levő gazdagép adatainak elemzése során a rendszer a gyakori Linux bot-felderítéshez társított parancs végrehajtását észlelte.|-|Közepes|
 |**A gazdagép tűzfala által észlelt manipuláció [többször is látható]**|A (z)% {feltört gazdagépen levő gazdagép adatainak elemzése során a rendszer a gazdagépen tárolt tűzfal lehetséges manipulációját észlelte. A támadók gyakran letiltják ezt az exfiltrate. Ez a viselkedés [x] időpontot észlelt a mai napon a következő gépeken: [Machine Names]|-|Közepes|
 |**A gazdagép tűzfalának kezelése észlelve**|A (z)% {feltört gazdagépen levő gazdagép adatainak elemzése során a rendszer a gazdagépen tárolt tűzfal lehetséges manipulációját észlelte. A támadók gyakran letiltják ezt az exfiltrate.|-|Közepes|
-|**MITRE Caldera ügynök észlelve**<br>(VM_MitreCalderaTools)|A gépi naplók azt jelzik, hogy a (z) "% {gyanús folyamat}" gyanús folyamat futott a következőn:% {feltört gazdagép}. Ez gyakran a MITRE 54ndc47-ügynökhöz van társítva, amely valamilyen módon rosszindulatúan használható más gépek támadására.|Mind |Közepes|
+|**MITRE Caldera ügynök észlelve**<br>(VM_MitreCalderaTools)|A gépi naplók azt jelzik, hogy a (z) "% {gyanús folyamat}" gyanús folyamat futott a következőn:% {feltört gazdagép}. Ez gyakran a MITRE 54ndc47-ügynökhöz van társítva, amely valamilyen módon rosszindulatúan használható más gépek támadására.|Összes |Közepes|
 |**Új SSH-kulcs hozzáadva [többször is látható]**|Új SSH-kulcs lett hozzáadva a hitelesített kulcsok fájlhoz. Ez a viselkedés [x] időpontot észlelt a mai napon a következő gépeken: [Machine Names]|-|Alacsony|
 |**Új SSH-kulcs hozzáadva**|Új SSH-kulcs lett hozzáadva a hitelesített kulcsok fájlhoz|-|Alacsony|
 |**Lehetséges támadási eszköz észlelve [többször is látható]**|A gépi naplók azt jelzik, hogy a (z) "% {gyanús folyamat}" gyanús folyamat futott a következőn:% {feltört gazdagép}. Ezt az eszközt gyakran olyan rosszindulatú felhasználókkal társítják, akik valamilyen módon támadják meg más gépeket. Ez a viselkedés [x] időpontot észlelt a mai napon a következő gépeken: [Machine Names]|-|Közepes|

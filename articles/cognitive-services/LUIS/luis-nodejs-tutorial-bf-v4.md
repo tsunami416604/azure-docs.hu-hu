@@ -1,17 +1,17 @@
 ---
 title: 'Oktatóanyag: Language Understanding robot Node.js v4'
-description: A Node.js használatával az oktatóanyagban a Language Understanding (LUIS) szolgáltatással integrált csevegési robotot hozhat létre. Ez csevegőrobot a Human Resources app használatával rövid idő alatt megvalósít egy robotmegoldást. A robot összeállításához a Bot Framework 4-es verzióját és az Azure webalkalmazás-robotot használja.
+description: Ebben az oktatóanyagban a Language Understanding (LUIS) nyelvvel integrált csevegési robotot hozhat létre. Ez csevegőrobot a Human Resources app használatával rövid idő alatt megvalósít egy robotmegoldást.
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d070a03a81f70cdbf2c721cc67a3bc40c5d731fc
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dd5f97f2b1c2ad51dda3446412cd936e45c5982e
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018735"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436895"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Oktatóanyag: Language Understanding használatával engedélyezett webalkalmazás-robot használata Node.js
 
@@ -77,7 +77,7 @@ A bot Service létrehozási folyamata egy új LUIS-alkalmazást is létrehoz a s
 |Repülőjegy|`Travel to Paris`|
 |Mégse|`bye`|
 |GetWeather|`what's the weather like?`|
-|Nincs|Az app tartományán kívül bármi.|
+|Nincsenek|Az app tartományán kívül bármi.|
 
 ## <a name="test-the-bot-in-web-chat"></a>A robot tesztelése a webes csevegésben
 
@@ -390,7 +390,7 @@ Kérdezze meg a robotot a könyv repülési szándékáról.
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További [mintákat](https://github.com/microsoft/botframework-solutions) tekinthet meg a társalgási robotokkal.
 

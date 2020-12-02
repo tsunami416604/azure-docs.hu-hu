@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 23cf8a79c4978ccb3a65ad968b2ed5a01bb3d0ec
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 554b3ad1dbe1e736300387aefde195b9054ab326
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242330"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437099"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
 
@@ -36,9 +36,9 @@ Az ügyfél által felügyelt kulcsokkal rendelkező Azure Database for MySQL ad
 
 ## <a name="terminology-and-description"></a>Terminológia és leírás
 
-**Adattitkosítási kulcs (adattitkosítási kulcsot)** : egy partíció vagy adatblokk titkosításához használt szimmetrikus AES256-kulcs. Az egyes adatblokkok egy másik kulccsal való titkosítása nehezebbé teszi a titkosítási elemzési támadásokat. A DEKs való hozzáférésre az erőforrás-szolgáltató vagy az alkalmazás-példány szükséges, amely egy adott blokk titkosítását és visszafejtését végzi. Amikor új kulccsal cserél le egy ADATTITKOSÍTÁSI kulcsot, csak a hozzá tartozó blokkban lévő adatmennyiséget kell újra titkosítani az új kulccsal.
+**Adattitkosítási kulcs (adattitkosítási kulcsot)**: egy partíció vagy adatblokk titkosításához használt szimmetrikus AES256-kulcs. Az egyes adatblokkok egy másik kulccsal való titkosítása nehezebbé teszi a titkosítási elemzési támadásokat. A DEKs való hozzáférésre az erőforrás-szolgáltató vagy az alkalmazás-példány szükséges, amely egy adott blokk titkosítását és visszafejtését végzi. Amikor új kulccsal cserél le egy ADATTITKOSÍTÁSI kulcsot, csak a hozzá tartozó blokkban lévő adatmennyiséget kell újra titkosítani az új kulccsal.
 
-**Kulcs titkosítási kulcsa (KEK)** : a DEKs titkosításához használt titkosítási kulcs. Egy KEK, amely soha nem hagy Key Vault lehetővé teszi, hogy a DEKs titkosítva és vezérelve legyenek. Előfordulhat, hogy a KEK-hez hozzáférő entitás nem azonos a ADATTITKOSÍTÁSI kulcsot igénylő entitással. Mivel a KEK a DEKs visszafejtéséhez szükséges, a KEK gyakorlatilag egyetlen pont, amellyel a DEKs hatékonyan törölhető a KEK törlésével.
+**Kulcs titkosítási kulcsa (KEK)**: a DEKs titkosításához használt titkosítási kulcs. Egy KEK, amely soha nem hagy Key Vault lehetővé teszi, hogy a DEKs titkosítva és vezérelve legyenek. Előfordulhat, hogy a KEK-hez hozzáférő entitás nem azonos a ADATTITKOSÍTÁSI kulcsot igénylő entitással. Mivel a KEK a DEKs visszafejtéséhez szükséges, a KEK gyakorlatilag egyetlen pont, amellyel a DEKs hatékonyan törölhető a KEK törlésével.
 
 A KEK titkosított DEKs külön tárolja a rendszer. Csak egy KEK-hozzáféréssel rendelkező entitás képes visszafejteni ezeket a DEKs. További információ: [Biztonság a titkosításban a REST-ben](../security/fundamentals/encryption-atrest.md).
 
@@ -49,8 +49,8 @@ A KEK titkosított DEKs külön tárolja a rendszer. Csak egy KEK-hozzáféréss
 Ahhoz, hogy egy MySQL-kiszolgáló a ADATTITKOSÍTÁSI kulcsot titkosításához Key Vaultban tárolt ügyfél által felügyelt kulcsokat használjon, a Key Vault rendszergazdája a következő hozzáférési jogosultságokat biztosítja a kiszolgálóhoz:
 
 * **beolvasás: a** Key vaultban lévő kulcs nyilvános részének és tulajdonságainak lekérése.
-* **wrapKey** : a adattitkosítási kulcsot titkosítása. A titkosított ADATTITKOSÍTÁSI kulcsot a Azure Database for MySQL tárolja.
-* **unwrapKey** : a adattitkosítási kulcsot visszafejtéséhez. Azure Database for MySQL a visszafejtett ADATTITKOSÍTÁSI kulcsot szükséges az adattitkosításhoz/visszafejtéshez
+* **wrapKey**: a adattitkosítási kulcsot titkosítása. A titkosított ADATTITKOSÍTÁSI kulcsot a Azure Database for MySQL tárolja.
+* **unwrapKey**: a adattitkosítási kulcsot visszafejtéséhez. Azure Database for MySQL a visszafejtett ADATTITKOSÍTÁSI kulcsot szükséges az adattitkosításhoz/visszafejtéshez
 
 A Key Vault rendszergazdája [engedélyezheti Key Vault naplózási események naplózását](../azure-monitor/insights/key-vault-insights-overview.md)is, így később is naplózhatja őket.
 
@@ -61,14 +61,17 @@ Ha a kiszolgáló a Key vaultban tárolt ügyfél által felügyelt kulcs haszn�
 A Key Vault konfigurálásának követelményei a következők:
 
 * Key Vault és Azure Database for MySQL ugyanahhoz a Azure Active Directory (Azure AD) bérlőhöz kell tartoznia. A több-bérlős Key Vault és a kiszolgálói interakciók nem támogatottak. A Key Vault erőforrás áthelyezéséhez ezután újra kell konfigurálnia az adattitkosítást.
-* Az adatvesztés elleni védelem érdekében engedélyezze a Soft delete funkciót a Key vaultban, ha véletlen kulcs (vagy Key Vault) törlése történik. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, hacsak a felhasználó addig nem helyreállítja vagy törli őket. A helyreállítás és törlés műveletekhez saját engedélyek tartoznak egy Key Vault hozzáférési házirendben. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, de a PowerShell vagy az Azure CLI használatával is engedélyezhető (vegye figyelembe, hogy nem engedélyezheti a Azure Portal).
+* A [Soft-delete] ((...) engedélyezése /Key-Vault/General/Soft-delete-Overview.MD) funkció a **90 napig** beállított megőrzési időtartammal rendelkező kulcstartóban az adatvesztés elleni védelem érdekében, ha véletlen kulcs (vagy Key Vault) törlése történik. A rendszer alapértelmezés szerint 90 napig őrzi meg a törölt erőforrásokat, kivéve, ha a megőrzési időszak explicit módon <= 90 nap. A helyreállítás és törlés műveletekhez saját engedélyek tartoznak egy Key Vault hozzáférési házirendben. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, de a PowerShell vagy az Azure CLI használatával is engedélyezhető (vegye figyelembe, hogy nem engedélyezheti a Azure Portal).
+* Engedélyezze a [védelem kiürítése](../key-vault/general/soft-delete-overview.md#purge-protection) funkciót a kulcstartóban, a megőrzési időszak **90 napra** van állítva. A védelem kiürítése csak akkor engedélyezhető, ha a törlés engedélyezve van. Az Azure CLI vagy a PowerShell használatával kapcsolható be. Ha a védelem kiürítése be van kapcsolva, a törölt állapotban lévő tároló vagy objektum nem törölhető, amíg meg nem adta a megőrzési időszakot. A helyreállítható tárolók és objektumok továbbra is helyreállíthatók, így biztosítható, hogy az adatmegőrzési szabályzatot követni fogjuk. 
 * Adja meg az Azure Database for MySQL hozzáférést a Key vaulthoz a Get, a wrapKey és a unwrapKey engedélyekkel az egyedi felügyelt identitás használatával. A Azure Portal az egyedi "szolgáltatás" identitás automatikusan létrejön, ha engedélyezve van az adattitkosítás a MySQL-ben. Lásd: az [adattitkosítás konfigurálása a MySQL](howto-data-encryption-portal.md) -hez részletes, lépésenkénti útmutatás a Azure Portal használatakor.
 
 Az ügyfél által felügyelt kulcs konfigurálásának követelményei a következők:
 
 * A ADATTITKOSÍTÁSI kulcsot titkosításához használt ügyfél által felügyelt kulcs csak aszimmetrikus, RSA 2048 lehet.
-* A kulcs aktiválási dátumát (ha be van állítva) a múltban dátumnak és időpontnak kell lennie. A lejárati dátumnak (ha be van állítva) jövőbeli dátumnak és időpontnak kell lennie.
+* A kulcs aktiválási dátumát (ha be van állítva) a múltban dátumnak és időpontnak kell lennie. A lejárati dátum nincs beállítva.
 * A kulcsnak *engedélyezett* állapotban kell lennie.
+* A kulcsnak **90 napra** beállított megőrzési időtartammal [kell rendelkeznie.](../key-vault/general/soft-delete-overview.md)
+* A Kay-nek engedélyezve kell lennie a [kiürítési védelemmel](../key-vault/general/soft-delete-overview.md#purge-protection).
 * Ha [meglévő kulcsot importál](/rest/api/keyvault/ImportKey/ImportKey) a kulcstartóba, győződjön meg arról, hogy a támogatott fájlformátumokban ( `.pfx` , `.byok` ,) meg van-e biztosítva `.backup` .
 
 ## <a name="recommendations"></a>Javaslatok
@@ -80,7 +83,7 @@ Ha ügyfél által felügyelt kulccsal használja az adattitkosítást, a Key Va
 * Győződjön meg arról, hogy a Key Vault és a Azure Database for MySQL ugyanabban a régióban található, így biztosítva a gyorsabb hozzáférést a ADATTITKOSÍTÁSI kulcsot wrap és a kicsomagolási műveletek számára.
 * Az Azure kulcstartó zárolása csak **privát végpontok és kiválasztott hálózatok** számára, és csak *megbízható Microsoft* -szolgáltatások engedélyezése az erőforrások biztonságossá tételéhez.
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="A Bring Your Own Key áttekintését bemutató diagram":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="megbízható szolgáltatás – AKV":::
 
 Az ügyfél által felügyelt kulcs konfigurálására vonatkozó javaslatok:
 
@@ -135,11 +138,11 @@ A Azure Database for MySQL esetében az ügyfelek által felügyelt kulcs (CMK) 
 * Ez a funkció csak olyan régiókban és kiszolgálókon érhető el, amelyek legfeljebb 16 TB-nyi tárterületet támogatnak. A 16TB-et támogató Azure-régiók listáját [itt](concepts-pricing-tiers.md#storage) találja a dokumentáció tárolás szakaszában.
 
     > [!NOTE]
-    > - A fent felsorolt régiókban létrehozott összes új MySQL-kiszolgáló **elérhető** . a titkosítás támogatása az ügyfél-kezelő kulcsaival. Az időponthoz visszaállított (PITR) kiszolgáló vagy az olvasási replika nem lesz érvényes, de elméletileg az "új".
+    > - A fent felsorolt régiókban létrehozott összes új MySQL-kiszolgáló **elérhető**. a titkosítás támogatása az ügyfél-kezelő kulcsaival. Az időponthoz visszaállított (PITR) kiszolgáló vagy az olvasási replika nem lesz érvényes, de elméletileg az "új".
     > - Annak ellenőrzéséhez, hogy a kiépített kiszolgáló támogatja-e a 16TB, nyissa meg a portál díjszabási szintje paneljét, és tekintse meg a kiépített kiszolgáló által támogatott maximális tárterületet. Ha a csúszkát akár 4TB is áthelyezheti, előfordulhat, hogy a kiszolgáló nem támogatja a titkosítást az ügyfél által felügyelt kulcsokkal. Az adatforgalom azonban mindig a szolgáltatás által felügyelt kulcsokkal van titkosítva. AskAzureDBforMySQL@service.microsoft.comHa bármilyen kérdése van, lépjen kapcsolatba.
 
 * A titkosítás csak az RSA 2048 titkosítási kulccsal támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan [állíthatja be az adattitkosítást a MySQL-hez készült Azure-adatbázishoz tartozó ügyfél által felügyelt kulccsal a Azure Portal használatával](howto-data-encryption-portal.md).
+Ismerje meg, hogyan állíthatja be az adattitkosítást a MySQL-hez készült Azure-adatbázishoz a [Azure Portal](howto-data-encryption-portal.md) és az [Azure CLI](howto-data-encryption-cli.md)használatával.

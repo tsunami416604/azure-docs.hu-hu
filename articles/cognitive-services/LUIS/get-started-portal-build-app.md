@@ -4,13 +4,13 @@ description: Ebben a rövid útmutatóban létrehoz egy alkalmazás, szándékok
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/19/2020
-ms.openlocfilehash: 74866c65111fae9e6fb3b79d9b59819b14b03c16
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/30/2020
+ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131472"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436674"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rövid útmutató: új alkalmazás létrehozása a LUIS portálon
 
@@ -20,7 +20,7 @@ Ebben a rövid útmutatóban egy új alkalmazást hoz létre a LUIS portálon. E
 
 ## <a name="create-an-app"></a>Alkalmazás létrehozása
 
-Alkalmazás létrehozásához kattintson az  **+ új alkalmazás** lehetőségre. 
+Alkalmazás létrehozásához válassza az **+ új alkalmazás** lehetőséget. 
 
 A megjelenő ablakban adja meg a következő adatokat:
 
@@ -28,10 +28,10 @@ A megjelenő ablakban adja meg a következő adatokat:
 |---------|---------|
 |Név     | Az alkalmazás neve. Például: "Home Automation". Kötelező.        |
 |Kultúra     | A nyelv, amelyet az alkalmazás megértett és beszél. Kötelező.   |
-|Leírás | Az alkalmazás leírása. Választható.
+|Description | Az alkalmazás leírása. Választható.
 |Előrejelzési erőforrás | Az előrejelzési erőforrás, amely a lekérdezéseket fogja kapni. Választható. |
 
-Válassza a **Done** (Kész) lehetőséget.
+Válassza a **Kész** lehetőséget.
 
 >[!NOTE]
 >A kulturális környezet az alkalmazás létrehozása után nem módosítható.
@@ -53,7 +53,7 @@ Az alkalmazás két különböző _szándéka az alábbi célokhoz_ igazodik:
 
 A leképezések létrehozásához hajtsa végre a következő lépéseket:
 
-1. Az alkalmazás létrehozása után győződjön meg arról, hogy a **Build** szakasz **cél** lapján található. Válassza a **Létrehozás** lehetőséget.
+1. Az alkalmazás létrehozása után győződjön meg arról, hogy a **Build** szakasz **cél** lapján található. Kattintson a **Létrehozás** gombra.
 
    [![Képernyőkép: a Létrehozás gombra kattintva hozzon létre új leképezést](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
@@ -63,7 +63,7 @@ A leképezések létrehozásához hajtsa végre a következő lépéseket:
 
 A leképezések létrehozása után példaként adja hozzá a hosszúságú kimondott szöveg. Például a hosszúságú kimondott szöveg olyan szöveg, amelyet a felhasználó egy csevegési robotba vagy más ügyfélalkalmazásba ír. A felhasználó szövegének szándékát egy LUIS-szándékra képezik le. Ebben a példában az alkalmazás `FindForm` célja, például a hosszúságú kimondott szöveg fogja tartalmazni az űrlapot. Az ügyfélalkalmazás számára szükséges, hogy megfeleljen a felhasználó kérelmének, ezért fontos, hogy belefoglalja azt a teljességbe.
 
-A **cél** lapon `FindForm` adja hozzá a következő példát a hosszúságú kimondott szöveg ( **példa: Kimondás** ). 
+A **cél** lapon `FindForm` adja hozzá a következő példát a hosszúságú kimondott szöveg ( **példa: Kimondás**). 
 
 |#|Példák kimondott szövegekre|
 |--|--|
@@ -157,11 +157,11 @@ A LUIS-portál interaktív **teszt** paneljén ellenőrizheti, hogy az entitás 
 
    A felső előre jelzett szándék megfelelően **FindForm** , több mint 90%-os megbízhatósággal (0,977). A **FormNumber** entitás a hrf-234098 értékkel van kinyerve.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha ezzel a rövid útmutatóval végzett, és nem a következő rövid útmutatóra vált, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Ezután jelölje be az alkalmazás bal oldali jelölőnégyzetét a listából, majd válassza a  **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [2. alkalmazás üzembe helyezése](get-started-portal-deploy-app.md)

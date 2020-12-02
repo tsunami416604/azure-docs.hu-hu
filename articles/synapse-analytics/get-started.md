@@ -10,16 +10,16 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: f55e266b548ea3b43a50d9500a427dfe1199b73f
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: b1339a0ab5be9004643cf2e9f86203eba9a2cc72
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699763"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445058"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Ismerkedés az Azure szinapszis Analytics szolgáltatással
 
-Ez az oktatóanyag egy lépésenkénti útmutató, amely az Azure szinapszis Analytics főbb funkcióit ismerteti. Az oktatóanyag az ideális kiindulási pont az Azure szinapszis Analytics legfontosabb forgatókönyveit bemutató idegenvezetők számára. Az oktatóanyag lépéseinek követése után egy teljesen működőképes szinapszis-munkaterülettel fog rendelkezni, amelyben megkezdheti az adatok elemzését dedikált SQL-készlet, kiszolgáló nélküli SQL-készlet vagy Apache Spark használatával.
+Ez az oktatóanyag egy lépésenkénti útmutató, amely az Azure szinapszis Analytics főbb funkcióit ismerteti. Az oktatóanyag az ideális kiindulási pont az Azure szinapszis Analytics legfontosabb forgatókönyveit bemutató idegenvezetők számára. Az oktatóanyag lépéseit követve egy szinapszis-munkaterülettel fog rendelkezni. Ez az oktatóanyag olyan lépéseket is tartalmaz, amelyekkel [engedélyezheti a munkaterületet a DEDIKÁLT SQL-készlethez (korábban SQL DW)](./sql-data-warehouse/workspace-connected-create.md). A munkaterület létrehozása után megkezdheti az adatok elemzését a dedikált SQL-készlet, a kiszolgáló nélküli SQL-készlet vagy a kiszolgáló nélküli Apache Spark készlet használatával.
 
 Kövesse az alább *látható lépéseket,* és ismerkedjen meg a számos lehetőséggel, és Ismerje meg, hogyan gyakorolhatják alapvető funkcióit.
 

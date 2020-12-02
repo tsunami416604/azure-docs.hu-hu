@@ -1,17 +1,17 @@
 ---
-title: Tanterem Labs Azure Lab Servicesban – GYIK | Microsoft Docs
-description: Ez a cikk a Azure Lab Servicesban található tantermi laborokkal kapcsolatos gyakori kérdésekre (GYIK) ad választ.
+title: Labs Azure Lab Services – GYIK | Microsoft Docs
+description: Ez a cikk a Azure Lab Services Labs szolgáltatással kapcsolatos gyakori kérdésekre (GYIK) ad választ.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ca35d70bc1106e46df4e3c68889b03679fd54b86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 757af8f30e9a71a3889d9f625c87a002af2e1302
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85443298"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437184"
 ---
-# <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Tanterem Labs Azure Lab Servicesban – gyakori kérdések (GYIK)
-Választ kaphat a Azure Lab Servicesban található osztálytermi laborokkal kapcsolatos leggyakoribb kérdésekre. 
+# <a name="labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Labs Azure Lab Services – gyakori kérdések (GYIK)
+Választ kaphat a Azure Lab Services Labs szolgáltatásával kapcsolatos leggyakoribb kérdésekre. 
 
 ## <a name="quotas"></a>Kvóták
 
@@ -29,13 +29,14 @@ Nem. Nem minden virtuális gép. Csak azok a virtuális gépek, amelyek egy adot
 ## <a name="lab-accounts"></a>Tesztkörnyezetfiókok
 
 ### <a name="why-am-i-not-able-to-create-a-lab-because-of-unavailability-of-the-address-range"></a>Miért nem tudok labort létrehozni, mert a címtartomány nem áll rendelkezésre. 
-A tanterem Labs létrehozhat laboratóriumi virtuális gépeket egy olyan IP-címtartomány keretein belül, amelyet a Azure Portal a labor-fiók létrehozásakor határoz meg. Ha címtartomány van megadva, a rendszer minden olyan labort hoz létre, amelyet a rendszer a labor virtuális gépek 512 IP-címeinek kiosztotta után hozott létre. A Lab-fiókhoz tartozó címtartomány elég nagynak kell lennie ahhoz, hogy az összes, a labor-fiókban létrehozni kívánt labort befogadja. 
+
+A Labs létrehozhat laboratóriumi virtuális gépeket egy olyan IP-címtartomány keretein belül, amelyet a Azure Portal a labor-fiók létrehozásakor határoz meg. Ha címtartomány van megadva, a rendszer minden olyan labort hoz létre, amelyet a rendszer a labor virtuális gépek 512 IP-címeinek kiosztotta után hozott létre. A Lab-fiókhoz tartozó címtartomány elég nagynak kell lennie ahhoz, hogy az összes, a labor-fiókban létrehozni kívánt labort befogadja. 
 
 Ha például egy blokk/19-10.0.0.0/19, ez a címtartomány 8192 IP-címet és 16 Labs-t (8192/512 = 16 Labs) foglal magában. Ebben az esetben a labor létrehozása sikertelen a 17. labor létrehozásakor.
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Milyen porttartomány-beállításokat kell megnyitnia a szervezetem tűzfal-beállításán, hogy az RDP/SSH használatával kapcsolódjon a labor virtuális gépekhez?
 
-A portok a következők: 49152 – 65535. A tanterem Labs a terheléselosztó mögött található. Mindegyik tesztkörnyezet egyetlen nyilvános IP-címmel rendelkezik, és a tesztkörnyezet minden virtuális gépe egyedi porttal rendelkezik. 
+A portok a következők: 49152 – 65535. A Labs a terheléselosztó mögött található. Mindegyik tesztkörnyezet egyetlen nyilvános IP-címmel rendelkezik, és a tesztkörnyezet minden virtuális gépe egyedi porttal rendelkezik. 
 
 Az egyes virtuális gépek magánhálózati IP-címét a Azure Portalban található labor kezdőlapjának **virtuálisgép-készlet** lapján is megtekintheti. Ha újra közzétesz egy labort, a tesztkörnyezet nyilvános IP-címe nem változik, de a laborban lévő egyes virtuális gépek magánhálózati IP-címe és portszáma is változhat. További információt a következő cikkben talál: [Azure Lab Services](how-to-configure-firewall-settings.md).
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: d75d73fcd64917257b850861142e7f4a67da834c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cbff2358dcf8685298e31f18c430c35ec7de4948
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972305"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437337"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Az Azure-rendszerkép-készítő használata Linux rendszerű virtuális gépekhez, amely lehetővé teszi egy meglévő Azure-VNET való hozzáférést
 
@@ -21,9 +21,9 @@ Ez a cikk bemutatja, hogyan hozhat létre egy alapszintű, testreszabott Linux-r
 
 > [!IMPORTANT]
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="register-the-features"></a>A szolgáltatások regisztrálása
 
@@ -75,7 +75,7 @@ Hozza létre az erőforráscsoportot.
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="configure-networking"></a>Hálózatkezelés konfigurálása
+## <a name="configure-networking"></a>Hálózatkezelés beállítása
 
 Ha nem rendelkezik meglévő VNET\Subnet\NSG, a következő parancsfájl használatával hozzon létre egyet.
 
@@ -269,7 +269,7 @@ A rendszerképet úgy kell megtekinteni, hogy az SSH-kapcsolatok létrehozása u
 *******************************************************
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha most szeretné újból testreszabni a rendszerkép verzióját, hogy ugyanazon rendszerkép új verzióját hozza létre, ugorja át a következő lépéseket, és folytassa az [Azure rendszerkép-készítő használatával egy másik rendszerkép-verzió létrehozásához](image-builder-gallery-update-image-version.md).
 
@@ -314,6 +314,6 @@ az group delete -n $imageResourceGroup
 
 Ha ehhez a rövid útmutatóhoz létrehozott egy VNET, akkor törölheti a VNET, ha már nincs használatban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [Azure megosztott Képgalériákkal](shared-image-galleries.md)kapcsolatban.

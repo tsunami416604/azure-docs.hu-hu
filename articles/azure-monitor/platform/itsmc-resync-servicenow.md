@@ -6,14 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 2a9a8f3fe7422468ff2c8886dff7415322cf70f0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f7d69c4e112ded678c70a516202492d37ee8f60a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676878"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436861"
 ---
-# <a name="how-to-manually-fix-servicenow-sync-problems"></a>ServiceNow-szinkronizálási problémák manuális javítása
+# <a name="troubleshooting-problems-in-itsm-connector"></a>Hibaelhárítási problémák a ITSM-csatoló
+
+## <a name="how-to-manually-fix-servicenow-sync-problems"></a>ServiceNow-szinkronizálási problémák manuális javítása
 
 Azure Monitor csatlakozhat a harmadik féltől származó IT-szolgáltatói (ITSM-) szolgáltatóhoz. A ServiceNow az egyik ilyen szolgáltató.
 

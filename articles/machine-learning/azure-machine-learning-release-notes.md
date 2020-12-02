@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 53a30f92adaf25d87897e98834cda2d5f92b874c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 03825e0f091df01b98355dd6789eb5c9cb2897b0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012271"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444540"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -43,7 +43,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + Továbbfejlesztett dokumentáció a szolgáltatáshoz, amely `OutputDatasetConfig.register_on_complete` azt a viselkedést tartalmazza, hogy mi fog történni, ha a név már létezik.
     + Az adatkészletek bemeneti és kimeneti neveinek megadása, amelyek képesek a gyakori környezeti változók összeütközésére, mostantól figyelmeztetést fog eredményezni
     + Átadott paraméter az adattárolók `grant_workspace_access` regisztrálása során. Állítsa be a `True` virtuális hálózat mögötti adatok elérését Machine learning Studioról.
-      [További információ](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+      [További információ](./how-to-enable-studio-virtual-network.md)
     + A társított szolgáltatás API-ját finomították. Erőforrás-azonosító megadása helyett 3 külön paraméter van megadva a konfigurációban sub_id, RG és név.
     + Annak érdekében, hogy az ügyfelek a jogkivonat-meghibásodási problémák megoldására is feloldják, engedélyezze a munkaterület-jogkivonat szinkronizálását nyilvános metódusként.
     + Ez a módosítás lehetővé teszi, hogy egy script_param értékének üres karakterláncot lehessen használni
@@ -109,8 +109,8 @@ További információ a [rendszerkép-példányok szegmentálásának címkézé
 
 ### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Azure Machine Learning Studio notebookok felülete (októberi frissítés)
 + **Új funkciók**
-  + [Teljes virtuális hálózati támogatás](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
-  + [Fókusz mód](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#focus-mode)
+  + [Teljes virtuális hálózati támogatás](./how-to-enable-studio-virtual-network.md)
+  + [Fókusz mód](./how-to-run-jupyter-notebooks.md#focus-mode)
   + Jegyzetfüzetek mentése CTRL-S
   + Sorok száma
 
@@ -797,7 +797,7 @@ Mostantól közvetlenül a Azure Machine Learning Studio webes felületén belü
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
     
-| Webalapú eszköz  |     Leírás  |
+| Webalapú eszköz  |     Description  |
 |---|---|
 | Azure ML Studio notebookok   |     A notebook-fájlok első, osztályon belüli létrehozása és az Azure ML Python SDK-ban elérhető összes művelet támogatása. | 
 
@@ -1309,7 +1309,7 @@ A studióból betaníthatja, tesztelheti, üzembe helyezheti és kezelheti Azure
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
 
-| Webalapú eszköz | Leírás | 
+| Webalapú eszköz | Description | 
 |-|-|-|
 | Notebook VM (előzetes verzió) | Teljes körűen felügyelt felhőalapú munkaállomás | 
 | [Automatikus gépi tanulás](tutorial-first-experiment-automated-ml.md) (előzetes verzió) | Nincs programkód a gépi tanulási modellek fejlesztésének automatizálásához | 

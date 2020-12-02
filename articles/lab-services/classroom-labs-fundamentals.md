@@ -5,12 +5,12 @@ author: emaher
 ms.topic: overview
 ms.date: 09/16/2020
 ms.author: enewman
-ms.openlocfilehash: ac390fb6624ffc762f77b676c778165e7382f73f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71d59e8bcf7b4078255d6b119e9d62f366e46033
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334038"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437320"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Az architektúra alapjai a Azure Lab Servicesban
 
@@ -20,7 +20,7 @@ Azure Lab Services biztosít néhány olyan területet, amely lehetővé teszi a
 
 Alább látható egy osztályterem labor alapszintű architektúrája.  A labor-fiók az előfizetésében van tárolva. A tanuló virtuális gépeket, valamint a virtuális gépek támogatásához szükséges erőforrásokat a labor Services által birtokolt előfizetésben üzemeltetik. Ismerkedjen meg a labor szolgáltatás előfizetésével kapcsolatos részletes információkkal.
 
-![Tantermi Labs alapszintű architektúrája](./media/classroom-labs-fundamentals/labservices-basic-architecture.png)
+![Labs alapszintű architektúrája](./media/classroom-labs-fundamentals/labservices-basic-architecture.png)
 
 ## <a name="hosted-resources"></a>Üzemeltetett erőforrások
 

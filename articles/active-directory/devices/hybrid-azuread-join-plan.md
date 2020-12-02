@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 955e77bc947baed889de24ce34e7acec737164f6
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: f13dfa4221f8f09c24cce3a451f3180d15ee3b99
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097303"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435757"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -106,6 +106,8 @@ Ha a Windows 10 tartományhoz csatlakoztatott eszközök az Azure AD-t a bérlő
 
 - A Windows 10 1903 kiadástól kezdve a TPM 1,2 nem használatos a hibrid Azure AD-csatlakozással és azokkal az eszközökkel, amelyek esetében ezek a TPM nem rendelkeznek TPM-mel.
 
+- Az UPN-módosítások csak a Windows 10 2004 frissítésének megkezdése után támogatottak. A Windows 10 2004 frissítést megelőzően a felhasználók SSO és feltételes hozzáférési problémákba ütköznek az eszközökön. A probléma megoldásához meg kell szüntetnie az eszköz csatlakoztatását az Azure AD-ből (futtassa a "dsregcmd/Leave" parancsot emelt szintű jogosultságokkal), és csatlakozzon újra (automatikusan megtörténik). A vállalati Windows Hello szolgáltatással bejelentkezett felhasználók azonban nem szembesülnek ezzel a problémával.
+
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás ellenőrzött ellenőrzésének áttekintése
 
 Ha az összes előfeltétel teljesül, a Windows rendszerű eszközök automatikusan regisztrálják az eszközöket az Azure AD-bérlőben. Az Azure AD-beli eszköz-identitások állapotát hibrid Azure AD-csatlakozásnak nevezzük. A cikkben ismertetett fogalmakkal kapcsolatos további információkért tekintse meg a [Azure Active Directory eszköz-Identitáskezelés kezelése](overview.md)című cikket.
@@ -138,7 +140,7 @@ Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltató
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Az **ADFS/Services/Trust/2005/windowstransport** , vagy az **ADFS/Services/Trust/13/windowstransport** beállítást csak intranetes végpontként kell engedélyezni, és a webalkalmazás-proxyn keresztül nem szabad az extranet felé irányuló végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg [a WS-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)című témakört. Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási**  >  **végpontok**alatt.
+> Az **ADFS/Services/Trust/2005/windowstransport** , vagy az **ADFS/Services/Trust/13/windowstransport** beállítást csak intranetes végpontként kell engedélyezni, és a webalkalmazás-proxyn keresztül nem szabad az extranet felé irányuló végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg [a WS-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)című témakört. Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási**  >  **végpontok** alatt.
 
 > [!NOTE]
 > Az Azure AD nem támogatja a felügyelt tartományokban található intelligens kártyákat vagy tanúsítványokat.
@@ -169,7 +171,7 @@ Az alábbi táblázat részletesen ismerteti ezen helyszíni AD UPN-ket a Window
 | Irányítható | Felügyelt | 1803-es kiadásból | Általánosan elérhető, az Azure AD SSPR a Windows lockscreen nem támogatott |
 | Nem irányítható | Felügyelt | Nem támogatott | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hibrid Azure Active Directory csatlakozás konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md) 

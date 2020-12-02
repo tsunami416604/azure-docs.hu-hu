@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 0bbb18a82de508f79cd2fd5dde58c1cf33520950
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 57b54fbe20df4eb74ee17c7b5ac83d773114463b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887399"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437371"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
@@ -146,6 +146,7 @@ A következő táblázat összefoglalja ezeket a további paramétereket. A szin
 |`forecast_horizon`|Meghatározza, hogy hány időszakot továbbítson az előrejelzéshez. A horizont az idősorozat gyakoriságának egységében van. Az egységek a betanítási adatokat tartalmazó időintervallumon alapulnak, például havi, heti rendszerességgel, amelyet az előrejelzésnek meg kell jósolnia.|✓|
 |`enable_dnn`|[Előrejelzési DNN engedélyezése]().||
 |`time_series_id_column_names`|Az oszlop neve (i), amely az azonos időbélyegzővel rendelkező több sorból álló adatsorozatok egyedi azonosítására szolgál. Ha az idősorozat-azonosítók nincsenek meghatározva, az adathalmazt a rendszer egy idősorozatként feltételezi. Az egyidejű adatsorozatokkal kapcsolatos további tudnivalókért tekintse meg a [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).||
+|`freq`| Az idősorozat-adatkészlet gyakorisága Ez a paraméter azt az időszakot jelöli, amelyben az események várhatóan előfordulnak, például naponta, hetente, évente stb. A gyakoriságnak [pandák eltolású aliasnak](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)kell lennie.||
 |`target_lags`|A megcélzott értékeket az adatok gyakorisága alapján késleltető sorok száma. A lag listaként vagy egyetlen egész számként jelenik meg. A késést akkor kell használni, ha a független változók és a függő változó közötti kapcsolat alapértelmezés szerint nem felel meg egymásnak. ||
 |`feature_lags`| A rendszer automatikusan eldönti a lag funkcióit, ha `target_lags` be van állítva, és `feature_lags` be van állítva `auto` . A szolgáltatás lekésésének engedélyezése segíthet a pontosság növelésében. A funkció alapértelmezés szerint le van tiltva. ||
 |`target_rolling_window_size`|*n* korábbi időszakok, amelyeket az előre jelzett értékek előállítására használhat, <= betanítási készlet mérete. Ha nincs megadva, az *n* a teljes betanítási készlet mérete. Akkor válassza ezt a paramétert, ha csak bizonyos mennyiségű előzményt szeretne figyelembe venni a modell betanításakor. További információ a [cél gördülő ablak összesítéséről](#target-rolling-window-aggregation).||
@@ -297,7 +298,7 @@ from azureml.automl.core.forecasting_parameters import ForecastingParameters
 forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                             forecast_horizon=50,
                                             short_series_handling_config='auto',
-                                            freq = 50
+                                            freq = '7',
                                             target_lags='auto')
 ```
 Az alábbi táblázat a rendelkezésre álló beállításait foglalja össze `short_series_handling_config` .
@@ -375,7 +376,7 @@ Tekintse meg az [előrejelzési minta jegyzetfüzeteket](https://github.com/Azur
 * [a gördülő ablak összesített funkciói](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
 * [DNN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 * Ismerje meg az [értelmezést: modell-magyarázatok az automatikus gépi tanulásban (előzetes verzió)](how-to-machine-learning-interpretability-automl.md). 

@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: negoe
-ms.reviewer: negoe,celested
+ms.reviewer: marsma, negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: d27498748f03fb101d165351ec80c77d57f78f1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1ea6462d22242d23629bcec192d7760314dfed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141499"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444816"
 ---
 # <a name="national-clouds"></a>Országos felhők
 
@@ -60,8 +60,8 @@ A következő táblázat felsorolja az egyes nemzeti felhők jogkivonatának bes
 
 Az Azure AD-engedélyezési vagy jogkivonat-végpontokra irányuló kéréseket a megfelelő régióspecifikus alap URL-cím használatával lehet megalkotni. Az Azure Germany esetében például:
 
-  - Az engedélyezési Common Endpoint értéke `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` .
-  - A token Common Endpoint értéke `https://login.microsoftonline.de/common/oauth2/v2.0/token` .
+- Az engedélyezési Common Endpoint értéke `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` .
+- A token Common Endpoint értéke `https://login.microsoftonline.de/common/oauth2/v2.0/token` .
 
 Egybérlős alkalmazások esetében az előző URL-címek "Common" értékét cserélje le a bérlői AZONOSÍTÓra vagy a névre. Például: `https://login.microsoftonline.de/contoso.com`.
 
@@ -74,11 +74,12 @@ Ha meg szeretné tudni, hogyan hívhatja meg a Microsoft Graph API-kat egy nemze
 
 Ha meg szeretné tudni, hogyan hozhat létre egy alkalmazást a Microsoft Identity platform használatával, kövesse a [Microsoft Authentication Library (MSAL) oktatóanyagot](msal-national-cloud.md). Pontosabban, az alkalmazás bejelentkezik egy felhasználóval, és hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információk:
+Ismerje meg, hogyan használhatja a [Microsoft Authentication Libraryt (MSAL) egy nemzeti felhőalapú környezetben](msal-national-cloud.md).
+
+Nemzeti felhő dokumentációja:
 
 - [Azure Government](../../azure-government/index.yml)
 - [Azure China 21Vianet](/azure/china/)
 - [Azure Germany](../../germany/index.yml)
-- [Az Azure AD-hitelesítés alapjai](./authentication-vs-authorization.md)

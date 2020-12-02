@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 3728fdd07172f2402ddb1dc7434ddb1993b984b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e9e630f4199e0bfb67509f008f403c0a7a490887
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999875"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436691"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 
@@ -32,7 +32,7 @@ A Customer használati jóváírás három üzembe helyezési lehetőséget tám
 >
 >- Az ügyfél-használati jóváírás új központi telepítéseket tartalmaz, és nem támogatja a már telepített meglévő erőforrások címkézését.
 >
->- Az Azure piactéren közzétett Azure- [alkalmazásokhoz](./partner-center-portal/create-new-azure-apps-offer.md) az ügyfél-használati jóváírás szükséges.
+>- Az Azure piactéren közzétett Azure- [alkalmazásokhoz](./create-new-azure-apps-offer.md) az ügyfél-használati jóváírás szükséges.
 >
 >- Nem minden Azure-szolgáltatás kompatibilis az ügyfél-használati jóváírással. Az Azure Kubernetes Services (ak) és a VM Scale Sets olyan ismert problémákkal rendelkeznek, amelyek jelenleg a használatot okozzák.
 
@@ -64,7 +64,7 @@ A GUID azonosítókat regisztrálni kell a partner Centerben, hogy lehetővé v�
 Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynökhöz, és regisztrálja a GUID azonosítót a partner Centerben, a rendszer nyomon követi a jövőbeli központi telepítéseket.
 
 > [!NOTE]
-> Ha a partner centeren keresztül teszi közzé [Azure-alkalmazásait](./partner-center-portal/create-new-azure-apps-offer.md) az Azure Marketplace-en, a sablonban használt új GUID azonosító automatikusan regisztrálva lesz a partner Center-profilban a sablon feltöltésekor.  
+> Ha a partner centeren keresztül teszi közzé [Azure-alkalmazásait](./create-new-azure-apps-offer.md) az Azure Marketplace-en, a sablonban használt új GUID azonosító automatikusan regisztrálva lesz a partner Center-profilban a sablon feltöltésekor.  
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard).
 
@@ -90,7 +90,7 @@ Számos partneri megoldás Azure Resource Manager-sablonok használatával van �
 > [!NOTE]
 > A megoldási sablonok létrehozásával és közzétételével kapcsolatos további információkért lásd:
 > * [Hozza létre és telepítse az első Resource Manager-sablont](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
->* [Azure-alkalmazás ajánlata](./partner-center-portal/create-new-azure-apps-offer.md).
+>* [Azure-alkalmazás ajánlata](./create-new-azure-apps-offer.md).
 >* Videó: [megoldási sablonok és felügyelt alkalmazások fejlesztése az Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603)-en.
 
 

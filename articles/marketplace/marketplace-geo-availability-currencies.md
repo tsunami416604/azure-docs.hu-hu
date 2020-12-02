@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: c277525927f7f74f281220bf5e593e98509d8237
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 40bae584e673e8885416bd1ae08dd808071034e7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126685"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436130"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
 
@@ -20,7 +20,7 @@ ms.locfileid: "93126685"
 
 A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által meghatározott 141 földrajzi helyen vásárolhatók meg, a tranzakciók pedig 17 pénznemben végezhetők el. A következő táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 2 számjegyű alfa-kódot](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
 
-|   Ország/régió neve               |   ISO-2   |   Currency (Pénznem)   |
+|   Ország/régió neve               |   ISO-2   |   Pénznem   |
 |-------------------------------------|-----------|--------------|
 | Afganisztán                         | AF        | USD          |
 | Albánia                             | AL        | USD          |
@@ -50,7 +50,7 @@ A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által megha
 | Kanada                              | CA        | CAD          |
 | Kajmán-szigetek                      | KY        | USD          |
 | Chile                               | CL        | USD          |
-| Kína\**                            | CN        | N/A          |
+| Kína\**                            | CN        | N.A.          |
 | Kolumbia                            | CO        | USD          |
 | Costa Rica                          | CR        | USD          |
 | Côte d'Ivoire                       | CI        | USD          |
@@ -194,7 +194,7 @@ Az egyes árakat (amelyeknek a beállításaik attól függően, hogy milyen be�
 
 Az egyes ajánlati típusok árának megadásával kapcsolatos részletekért tekintse meg a következő cikkeket:
 
-- [Azure-alkalmazásajánlat létrehozása](partner-center-portal/create-new-azure-apps-offer.md)
+- [Azure-alkalmazásajánlat létrehozása](create-new-azure-apps-offer.md)
 - [Azure Container-ajánlat létrehozása](partner-center-portal/create-azure-container-offer.md)
 - [Azure-beli virtuális géppel kapcsolatos ajánlat létrehozása](azure-vm-create.md)
 - [Tanácsadási szolgáltatásajánlat létrehozása](partner-center-portal/create-consulting-service-offer.md)

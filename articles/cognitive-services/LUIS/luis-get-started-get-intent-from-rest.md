@@ -1,22 +1,22 @@
 ---
-title: 'Gyors útmutató: leképezés a REST API-kkal – LUIS'
-description: Ebben a REST API rövid útmutatóban egy elérhető nyilvános LUIS-alkalmazás használatával határozhatja meg, hogy a felhasználó milyen szándéka van a társalgási szövegben.
+title: Szándék beszerzése a REST API használatával
+description: Ebben a cikkben egy elérhető nyilvános LUIS-alkalmazás használatával határozhatja meg, hogy a felhasználó milyen szándéka van a társalgási szövegben.
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
-ms.date: 05/18/2020
+ms.topic: conceptual
+ms.date: 11/30/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: d03ebc1ec5730f1905ce1ee5b9c484312f5aeee1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b49d90ffe2a262895727fdd4ef5f8a7950104102
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316327"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437014"
 ---
-# <a name="quickstart-get-intent-with-rest-apis"></a>Gyors útmutató: leképezés a REST API-kkal
+# <a name="how-to-get-an-intent-using-the-rest-apis"></a>Szándék beszerzése a REST API-k használatával
 
-Ebben a rövid útmutatóban egy LUIS-alkalmazást fog használni, amellyel meghatározhatja, hogy a felhasználó milyen szándéka legyen a társalgási szövegben. Küldje el a felhasználó szándékát szövegként a pizza-alkalmazás HTTP-előrejelzési végpontjának. A-végponton LUIS a pizza-alkalmazás modelljét alkalmazza, hogy elemezze a szöveg természetes nyelvét, és meghatározza az alkalmazás tárgyi tartományára vonatkozó általános szándékot és kinyeri az adatokat.
+Ebben a cikkben egy LUIS-alkalmazást fog használni, amellyel meghatározhatja, hogy a felhasználó milyen szándéka legyen a társalgási szövegből. Küldje el a felhasználó szándékát szövegként a pizza-alkalmazás HTTP-előrejelzési végpontjának. A-végponton LUIS a pizza-alkalmazás modelljét alkalmazza, hogy elemezze a szöveg természetes nyelvét, és meghatározza az alkalmazás tárgyi tartományára vonatkozó általános szándékot és kinyeri az adatokat.
 
 Ehhez a cikkhez egy ingyenes [LUIS](https://www.luis.ai)-fiókra van szüksége.
 

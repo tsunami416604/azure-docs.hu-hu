@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: b82478338603750a76718da956d74e23d242692e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d015cec30e516541b50c2acfac38fad898965e1b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896534"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436351"
 ---
 # <a name="managed-application-metered-billing"></a>Felügyelt alkalmazás mért számlázása 
 
@@ -22,7 +22,7 @@ A Marketplace mérési szolgáltatással olyan felügyelt alkalmazáscsomag hozh
 
 Ahhoz, hogy egy felügyelt alkalmazás megtervezze a mért számlázást, a következőket kell tennie:
 
-* Teljesítse az összes ajánlatra vonatkozó követelményt az [Azure-alkalmazás létrehozása ajánlatban](create-new-azure-apps-offer.md)ismertetett módon.
+* Teljesítse az összes ajánlatra vonatkozó követelményt az [Azure-alkalmazás létrehozása ajánlatban](../create-new-azure-apps-offer.md)ismertetett módon.
 * Konfigurálja a **díjszabást** az ügyfelek számára a szolgáltatás havi díja alapján. A díj nulla lehet, ha nem szeretne rögzített díjat fizetni, hanem teljes mértékben mért számlázásra támaszkodik.
 * Adja meg a **Számlázási dimenziókat** azon mérési eseményeknél, amelyeket az ügyfél az átalány alapján fog fizetni.
 * Integrálja a [piactér-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -kkal, hogy tájékoztassa a Microsoftot a számlázható eseményekről.
@@ -56,18 +56,18 @@ Egy Azure-ügyfél, amely a CoA szolgáltatásra előfizető, a kiválasztott cs
 
 A számlázási dimenziók használatával kommunikálnak a felhasználóval arról, hogy hogyan lesznek kiszámlázva a szoftver használatáért.  Ezeket a dimenziókat a használati események a Microsoftnak való kommunikációjához is használják. Ezek az alábbiak szerint vannak meghatározva:
 
-* **Dimenzió azonosítója** : a használati események kibocsátása közben megváltoztathatatlan azonosító.
-* **Dimenzió neve** : a dimenzióhoz társított megjelenítendő név, például "szöveges üzenetek elküldve".
-* **Mértékegység** : a számlázási egység leírása, például "szöveges üzenet" vagy "/100 e-mailek".
-* **Díj/egység** : a dimenzió egy egységének díja.
-* **Belefoglalt mennyiség a havi időszakra** : az ismétlődő havi díjat fizető ügyfelek számára havi dimenzióban szereplő mennyiségnek egész számnak kell lennie.
+* **Dimenzió azonosítója**: a használati események kibocsátása közben megváltoztathatatlan azonosító.
+* **Dimenzió neve**: a dimenzióhoz társított megjelenítendő név, például "szöveges üzenetek elküldve".
+* **Mértékegység**: a számlázási egység leírása, például "szöveges üzenet" vagy "/100 e-mailek".
+* **Díj/egység**: a dimenzió egy egységének díja.
+* **Belefoglalt mennyiség a havi időszakra**: az ismétlődő havi díjat fizető ügyfelek számára havi dimenzióban szereplő mennyiségnek egész számnak kell lennie.
 
 A számlázási dimenziók az ajánlat minden csomagjában meg vannak osztva. Egyes attribútumok a dimenzióra vonatkoznak az összes csomagra, és más attribútumok is megtervezve.
 
 A dimenziót definiáló attribútumok az ajánlat minden csomagjában meg vannak osztva. Mielőtt közzéteszi az ajánlatot, az ezen attribútumok bármely csomag kontextusában történt módosítása hatással lesz az összes csomag dimenziójának meghatározására. Miután közzétette az ajánlatot, ezek az attribútumok többé nem lesznek szerkeszthetve. Az attribútumok a következők:
 
 * Azonosító
-* Name (Név)
+* Név
 * Mértékegység
 
 A dimenziók egyéb attribútumai az egyes csomagokra jellemzőek, és a tervtől eltérő értékekkel rendelkezhetnek.  A terv közzététele előtt módosíthatja ezeket az értékeket, és csak ezt a csomagot fogja érinteni. Miután közzétette a csomagot, ezek az attribútumok többé nem lesznek szerkeszthetve. Az attribútumok a következők:
@@ -79,7 +79,7 @@ A dimenziók egyéb attribútumai az egyes csomagokra jellemzőek, és a tervtő
 A méretek két speciális fogalmat is tartalmazhatnak, amelyek "engedélyezve" és "végtelen":
 
 * Az **engedélyezve** érték azt jelzi, hogy ez a csomag részt vesz ebben a dimenzióban.  Ha olyan új csomagot hoz létre, amely nem küldi el ezt a dimenziót, előfordulhat, hogy ezt a beállítást nem kell kijelölnie. Emellett a csomag első közzététele után hozzáadott új dimenziók a már közzétett tervben "nem engedélyezettként" jelennek meg.  A kikapcsolt dimenziók nem jelennek meg az ügyfelek által látott csomag dimenzióinak listájában.
-* A **végtelen** , amelyet a "∞" végtelen szimbólum jelöl, azt jelzi, hogy ez a csomag részt vesz ebben a dimenzióban, a dimenzióra vonatkozó mért használat nélkül. Ha meg szeretné jeleníteni ügyfelei számára, hogy a dimenzió által képviselt funkciók beletartoznak a csomagba, de a használat korlátozás nélkül.  A végtelen használatú dimenziók az ügyfelek által látott csomag dimenzióinak listájában jelennek meg.  Ez a csomag soha nem számít fel díjat.
+* A **végtelen**, amelyet a "∞" végtelen szimbólum jelöl, azt jelzi, hogy ez a csomag részt vesz ebben a dimenzióban, a dimenzióra vonatkozó mért használat nélkül. Ha meg szeretné jeleníteni ügyfelei számára, hogy a dimenzió által képviselt funkciók beletartoznak a csomagba, de a használat korlátozás nélkül.  A végtelen használatú dimenziók az ügyfelek által látott csomag dimenzióinak listájában jelennek meg.  Ez a csomag soha nem számít fel díjat.
 
 >[!Note] 
 >A következő forgatókönyvek explicit módon támogatottak:  <br> – Új dimenziót adhat hozzá egy új tervhez.  Az új dimenzió nem lesz engedélyezve a már közzétett csomagok esetében. <br> – A csomagot rögzített havi díjjal és dimenziók nélkül is közzéteheti, majd hozzáadhat egy új tervet, és konfigurálhat egy új dimenziót az adott tervhez. Az új dimenzió nem lesz engedélyezve a már közzétett tervekhez.
@@ -93,7 +93,7 @@ A Marketplace-mérési szolgáltatással használt dimenzió azt mutatja be, hog
 Ha egy ajánlatot közzétesznek egy dimenzióval, az adott dimenzióra vonatkozó ajánlati szintű adatok már nem módosíthatók:
 
 * Azonosító
-* Name (Név)
+* Név
 * Mértékegység
 
 A csomag közzététele után a terv szintű részletek már nem módosíthatók:
@@ -119,6 +119,6 @@ Ha az alábbi problémák valamelyikével rendelkezik, nyisson meg egy támogat�
 
 Kövesse a [partner Center kereskedelmi piactér programjának támogatását](../support.md) ismertető témakör útmutatását a kiadói támogatási lehetőségek megismeréséhez és a Microsoft támogatási jegyének megnyitásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információért lásd: [Marketplace-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -k.

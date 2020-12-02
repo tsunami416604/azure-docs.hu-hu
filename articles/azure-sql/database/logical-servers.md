@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 38133a63d65e45a4d1c83e9752dcaa01a86da33e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e0736e58983d4c28b8f2f4a20241cd36ac84fdfa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782892"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445377"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Mi a logikai SQL Server Azure SQL Database és az Azure szinapszis?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,7 +26,7 @@ A Azure SQL Database és az Azure szinapszis Analyticsben a kiszolgálók olyan 
 
 Ez a kiszolgáló különbözik egy olyan SQL Server-példánytól, amely a helyszíni világban is ismerős lehet. Az adatbázisok vagy az adatraktár-adatbázis helye nem jelent garanciát az azokat kezelő kiszolgálóhoz képest. Emellett sem Azure SQL Database, sem az Azure szinapszis nem tesz elérhetővé semmilyen példány szintű hozzáférést vagy funkciót. Ezzel szemben a felügyelt példányban található példány-adatbázisok mind fizikailag közösen helyezkednek el, ugyanúgy, mint a helyszíni vagy a virtuális gépek világában SQL Server.
 
-Kiszolgáló létrehozásakor meg kell adnia egy kiszolgálói bejelentkezési fiókot és jelszót, amely rendszergazdai jogosultságokkal rendelkezik a kiszolgálón található főadatbázishoz és a kiszolgálón létrehozott összes adatbázishoz. Ez a kezdeti fiók egy SQL-bejelentkezési fiók. A Azure SQL Database és a szinapszis Analytics támogatja az SQL-hitelesítést és Azure Active Directory hitelesítést a hitelesítéshez. További információ a bejelentkezésekről és a hitelesítésről: [adatbázisok és bejelentkezések kezelése Azure SQL Databaseban](logins-create-manage.md). A Windows-hitelesítés nem támogatott.
+Kiszolgáló létrehozásakor meg kell adnia egy kiszolgálói bejelentkezési fiókot és jelszót, amely rendszergazdai jogosultságokkal rendelkezik a kiszolgálón található főadatbázishoz és a kiszolgálón létrehozott összes adatbázishoz. Ez a kezdeti fiók egy SQL-bejelentkezési fiók. A Azure SQL Database és az Azure szinapszis Analytics támogatja az SQL-hitelesítést és Azure Active Directory hitelesítést a hitelesítéshez. További információ a bejelentkezésekről és a hitelesítésről: [adatbázisok és bejelentkezések kezelése Azure SQL Databaseban](logins-create-manage.md). A Windows-hitelesítés nem támogatott.
 
 Egy kiszolgáló a SQL Database és az Azure Szinapszisban:
 
@@ -190,7 +190,7 @@ Kiszolgálók, adatbázisok és tűzfalak létrehozásához és kezeléséhez ha
 |[Tűzfalszabályok – Get](/rest/api/sql/firewallrules/get)|Tűzfalszabály beolvasása.|
 |[Tűzfalszabályok – kiszolgálók listázása](/rest/api/sql/firewallrules/listbyserver)|A tűzfalszabályok listáját adja vissza.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A SQL Server-adatbázisok Azure SQL Databaseba való áttelepítésével kapcsolatos információkért lásd: [áttelepítés Azure SQL Databasere](migrate-to-database-from-sql-server.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](features-comparison.md).

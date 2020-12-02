@@ -9,12 +9,12 @@ ms.date: 06/22/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3916855a62e506b12f72de713ccb56e89f846938
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 797b5f569f081065eb950f7c10bf6449002f733b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171806"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436980"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és futtatókörnyezet frissítése
 
@@ -194,7 +194,7 @@ A IoT Edge-eszközök frissítésére két összetevő használható:
 
 3. Ha a letöltött. cab-fájlhoz architektúra utótag tartozik, nevezze át a fájlt csak **Microsoft-Azure-IoTEdge.cab**.
 
-4. Ha offline összetevőkkel szeretné frissíteni a frissítést, a [dot forrás](/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) a PowerShell-parancsfájl helyi példányát adja meg. Ezután használja a `-OfflineInstallationPath` paramétert a parancs részeként, `Update-IoTEdge` és adja meg a fájl könyvtárának abszolút elérési útját. Példa:
+4. Ha offline összetevőkkel szeretné frissíteni a frissítést, a [dot forrás](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) a PowerShell-parancsfájl helyi példányát adja meg. Ezután használja a `-OfflineInstallationPath` paramétert a parancs részeként, `Update-IoTEdge` és adja meg a fájl könyvtárának abszolút elérési útját. Példa:
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1
@@ -215,7 +215,7 @@ A cikk fejezeteiből megtudhatja, hogyan frissíthet egy IoT Edge eszközt a biz
 
 Ha IoT Edge telepíti a rendszert, és nem frissíti a meglévő telepítést, kövesse az [Offline vagy az adott verzió telepítésének](how-to-install-iot-edge.md#offline-or-specific-version-installation)lépéseit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a legújabb [Azure IoT Edge kiadásokat](https://github.com/Azure/azure-iotedge/releases).
 

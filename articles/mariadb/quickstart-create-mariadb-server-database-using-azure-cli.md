@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4d2300e36bd06313cf889f40f37d672d66534db6
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3279150d0cb7b287f0a78581094a51356033596c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538362"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435739"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása az Azure CLI használatával
 
@@ -21,9 +21,9 @@ Az Azure CLI használatával a parancssorból vagy szkriptekkel hozhat létre é
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Ha helyileg telepíti és használja a CLI-t, az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+- Ehhez a cikkhez az Azure CLI 2,0-es vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 Ha több előfizetéssel rendelkezik, válassza ki az erőforrást tartalmazó előfizetés vagy azt az előfizetést, amelyért fizet. A fiókja egy megadott előfizetés-azonosítójának kiválasztásához használja az [az account set](/cli/azure/account#az-account-set) parancsot:
 
@@ -51,12 +51,12 @@ name | **mydemoserver** | Adjon meg egy egyedi nevet, amely azonosítja az Azure
 resource-group | **myresourcegroup** | Adja meg az Azure-erőforráscsoport nevét.
 sku-name | **GP_Gen5_2** | A termékváltozat neve. Az egyezmény *díjszabási szintjéhez* tartozó \_ *számítási generációs* \_ *virtuális mag* a gyorsírásban követhető. Az **sku-name** paraméterről az alábbi táblázat utáni szakaszban talál további információt.
 backup-retention | **7** | Az az időtartam, ameddig egy biztonsági mentést meg kell őrizni. A mértékegysége a nap. Tartomány: 7–35. 
-geo-redundant-backup | **Disabled** | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Engedélyezett értékek: **engedélyezve** , **Letiltva**.
+geo-redundant-backup | **Disabled** | Azt adja meg, hogy a georedundáns biztonsági mentést engedélyezni kell-e ehhez a kiszolgálóhoz. Engedélyezett értékek: **engedélyezve**, **Letiltva**.
 location | **westus** | A kiszolgáló Azure-helye.
-ssl-enforcement | **Engedélyezve** | Azt adja meg, hogy engedélyezni kell-e az SSL-t ehhez a kiszolgálóhoz. Engedélyezett értékek: **engedélyezve** , **Letiltva**.
+ssl-enforcement | **Engedélyezve** | Azt adja meg, hogy engedélyezni kell-e az SSL-t ehhez a kiszolgálóhoz. Engedélyezett értékek: **engedélyezve**, **Letiltva**.
 storage-size | **51 200** | A kiszolgáló tárkapacitása (megabájtban megadva). Az érvényes tárolóméretek: 5120 Mb (legalább), 1024 MB-os egységekben történő növekedéssel. További információ a tárolóméret korlátairól: [Tarifacsomagok](./concepts-pricing-tiers.md). 
 version | **10,2** | A MariaDB fő motorjának verziója.
-admin-user | **myadmin** | A rendszergazdai bejelentkezés felhasználóneve. Az **admin-user** paraméter nem lehet **azure_superuser** , **admin** , **administrator** , **root** , **guest** vagy **public**.
+admin-user | **myadmin** | A rendszergazdai bejelentkezés felhasználóneve. Az **admin-user** paraméter nem lehet **azure_superuser**, **admin**, **administrator**, **root**, **guest** vagy **public**.
 admin-password | *a jelszó* | A rendszergazda felhasználó jelszava. A jelszó 8–128 karakterből állhat. Legalább háromféle karaktert tartalmaznia kell a következő kategóriák közül: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek.
 
 Az sku-name paraméter értéke a {tarifacsomag}\_{számítási generáció}\_{virtuális magok} mintát követi, a következő példákban látható módon:
@@ -223,7 +223,7 @@ Csatlakozás a kiszolgálóhoz a mysql parancssori eszköz használatával:
 
 4. A kapcsolatra kattintva sikeresen csatlakozhat a kiszolgálóhoz.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az ebben a rövid útmutatóban használt erőforrásokra már nincs szüksége egy másik rövid útmutatóhoz vagy oktatóanyagokhoz, a következő parancs futtatásával törölheti azokat: 
 
@@ -237,7 +237,7 @@ Ha csak az ebben a rövid útmutatóban létrehozott kiszolgálót szeretné tö
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [MariaDB-adatbázis tervezése az Azure CLI-vel](tutorial-design-database-cli.md)

@@ -12,19 +12,19 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c7225adcfe970d17f8f86afdd15e36e2ba76de3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287015"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437240"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: új bérlő létrehozása Azure Active Directory
 Az Azure Active Directory (Azure AD) portált használva elvégezheti valamennyi felügyeleti feladatát, a szervezet számára új bérlő létrehozását is beleértve. 
 
 Ebből a rövid útmutatóból megtudhatja, hogyan érheti el az Azure portált és az Azure Active Directory-t, és megtudhatja, hogyan hozhat létre alapszintű bérlőt a szervezete számára.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>Új bérlő létrehozása a szervezetén belül
 Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szervezet számára. Az új bérlő a szervezetét képviseli és segíti a Microsoft felhőszolgáltatások konkrét példányának kezelését a belső és külső felhasználók számára.
@@ -33,37 +33,41 @@ Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szerv
 
 1. Jelentkezzen be a szervezet [Azure Portalba](https://portal.azure.com/).
 
-1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet.  
+1. A Azure Portal menüben válassza a **Azure Active Directory** lehetőséget.  
 
-    ![Azure Active Directory resoure lap létrehozása](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    <kbd>![Azure Active Directory – Áttekintés lap – bérlő létrehozása](media/active-directory-access-create-new-tenant/azure-ad-portal.png)</kbd>  
 
-1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+1. Válassza **a bérlő létrehozása** lehetőséget.
 
-    Megjelenik a **Címtár létrehozása** lap.
+1. Az alapvető beállítások lapon válassza ki a létrehozni kívánt bérlő típusát **Azure Active Directory** vagy **Azure Active Directory (B2C)**.
 
-    ![Azure Active Directory Létrehozás oldal](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)
+1. Válassza a **Tovább: konfigurálás** elemet a konfiguráció lapra való áttéréshez.
 
-1.  A **Címtár létrehozása** lapon adja meg a következő információkat:
+    <kbd>![Azure Active Directory – bérlői lap létrehozása – konfiguráció lap ](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)</kbd>
+
+1.  A konfiguráció lapon adja meg a következő adatokat:
     
-    - Írja be, hogy _Contoso_ a **Szervezet név** mezőbe.
+    - Írja be a _contoso-szervezet_ **nevet a szervezet neve** mezőbe.
 
-    - Írja be, hogy _Contoso_ a **Kezdeti tartománynév** mezőbe.
+    - Írja _Contosoorg_ be a Contosoorg **nevet a kezdeti tartománynév** mezőbe.
 
     - Hagyja meg az _Egyesült Államok_ beállítást az **Ország vagy régió** mezőben.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Next (tovább): felülvizsgálat + létrehozás** elemet. Tekintse át a megadott adatokat, és ha az adatok helyesek, válassza a **Létrehozás** lehetőséget.
+
+    <kbd>![Azure Active Directory – bérlői oldal áttekintése és létrehozása](media/active-directory-access-create-new-tenant/azure-ad-review.png)</kbd>
 
 Az új bérlő létrejön a contoso.onmicrosoft.com tartománnyal.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha nem folytatja az alkalmazás használatát, a következő lépésekkel törölheti a bérlőt:
 
-- Győződjön meg arról, hogy be van jelentkezve a törölni kívánt címtárba az Azure Portal **címtár + előfizetés** szűrője segítségével, és szükség esetén váltson a célhelyre.
+- Győződjön meg arról, hogy be van jelentkezve a törölni kívánt könyvtárba a Azure Portal **Directory + előfizetés** szűrője segítségével, és szükség esetén váltson a célhelyre.
 - Válassza ki **Azure Active Directoryt**, majd a **Contoso – áttekintés** lapon a **Címtár törlése** lehetőséget.
 
     A bérlő és a hozzá kapcsolódó információk törlődnek.
 
-    ![Áttekintő lap, a kijelölt könyvtár törlése gombbal](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
+    <kbd>![Áttekintő lap, a kijelölt könyvtár törlése gombbal](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)</kbd>
 
 ## <a name="next-steps"></a>További lépések
 - Tartománynevek módosítása és továbbiak felvétele: [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](add-custom-domain.md)

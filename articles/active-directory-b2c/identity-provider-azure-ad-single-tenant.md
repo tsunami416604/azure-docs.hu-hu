@@ -12,12 +12,12 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4fa4b64c6519df90d5883e8c5760b3ed2ce0337
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a079cfe155119a6afe8575767dd3e7c09a564f9a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004459"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445620"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása egy adott Azure Active Directory szervezet számára Azure Active Directory B2C
 
@@ -29,9 +29,9 @@ Ha egy Azure Active Directory (Azure AD) [identitás-szolgáltatóként](authori
 
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőt tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-1. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider**lehetőséget.
+1. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider** lehetőséget.
 1. Adjon meg egy **nevet**. Adja meg például a *contoso Azure ad*-t.
-1. A **metaadatok URL-címéhez**adja meg az alábbi URL-címet, `{tenant}` amely az Azure ad-bérlő tartománynevét helyettesíti:
+1. A **metaadatok URL-címéhez** adja meg az alábbi URL-címet, `{tenant}` amely az Azure ad-bérlő tartománynevét helyettesíti:
 
     ```
     https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
@@ -40,17 +40,17 @@ Ha egy Azure Active Directory (Azure AD) [identitás-szolgáltatóként](authori
     Például: `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
     Például: `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`.
 
-1. Az **ügyfél-azonosító**mezőben adja meg a korábban rögzített alkalmazás azonosítóját.
-1. Az **ügyfél titkos kulcsa**mezőben adja meg a korábban rögzített ügyfél-titkot.
-1. A **hatókörben**adja meg a következőt: `openid profile` .
-1. Hagyja meg a **Válasz típusa**és a **válasz mód**alapértelmezett értékeit.
-1. Választható A **tartományhoz tartozó tipp**esetében adja meg a következőt: `contoso.com` . További információ: [közvetlen bejelentkezés beállítása Azure Active Directory B2C használatával](direct-signin.md#redirect-sign-in-to-a-social-provider).
-1. Az **Identity Provider jogcímek leképezése**területen válassza ki a következő jogcímeket:
+1. Az **ügyfél-azonosító** mezőben adja meg a korábban rögzített alkalmazás azonosítóját.
+1. Az **ügyfél titkos kulcsa** mezőben adja meg a korábban rögzített ügyfél-titkot.
+1. A **hatókörben** adja meg a következőt: `openid profile` .
+1. Hagyja meg a **Válasz típusa** és a **válasz mód** alapértelmezett értékeit.
+1. Választható A **tartományhoz tartozó tipp** esetében adja meg a következőt: `contoso.com` . További információ: [közvetlen bejelentkezés beállítása Azure Active Directory B2C használatával](direct-signin.md#redirect-sign-in-to-a-social-provider).
+1. Az **Identity Provider jogcímek leképezése** területen válassza ki a következő jogcímeket:
 
     * **Felhasználói azonosító**: *OID*
     * **Megjelenítendő név**: *név*
     * **Utónév**: *given_name*
     * **Vezetéknév**: *family_name*
-    * **E-mail**: *unique_name*
+    * **E-mail**: *preferred_username*
 
 1. Válassza a **Mentés** lehetőséget.

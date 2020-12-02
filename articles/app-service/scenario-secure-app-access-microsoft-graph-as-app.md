@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: bdd6dbf790bcf2ec97be33504e51ca3db2eb3ef7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: azureday1
+ms.openlocfilehash: facc6a4ab8344f9f72fc7abc27433c18ab435504
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182988"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436538"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>Oktatóanyag: hozzáférés Microsoft Graph egy biztonságos alkalmazásból az alkalmazással
 
@@ -25,7 +26,7 @@ Megtudhatja, hogyan érheti el Microsoft Graph egy Azure App Serviceon futó web
 
 Meg szeretné hívni Microsoft Graph a webalkalmazáshoz. A webalkalmazások adatokhoz való hozzáférésének biztonságos módja, ha [rendszerhez rendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md)használ. A Azure Active Directory felügyelt identitása lehetővé teszi, hogy a App Service szerepköralapú hozzáférés-vezérléssel (RBAC) keresztül hozzáférjen az erőforrásokhoz az alkalmazás hitelesítő adatainak megadása nélkül. Miután felügyelt identitást rendelt a webalkalmazáshoz, az Azure gondoskodik a tanúsítványok létrehozásáról és elosztásáról. Nem kell aggódnia a titkok vagy az alkalmazások hitelesítő adatainak kezelésével kapcsolatban.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -120,6 +121,8 @@ Az **Áttekintés** területen válassza az **engedélyek** lehetőséget, majd 
 ## <a name="call-microsoft-graph-net"></a>Microsoft Graph (.NET) hívása
 
 A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) osztály egy jogkivonat hitelesítő adatának beszerzésére szolgál a kód számára, amely engedélyezi a kérések Microsoft Graph. Hozza létre a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) osztály egy példányát, amely a felügyelt identitás használatával beolvassa a jogkivonatokat, és csatolja őket a szolgáltatás ügyfeléhez. A következő kódrészlet beolvassa a hitelesített jogkivonat hitelesítő adatait, és a használatával létrehoz egy szolgáltatás-ügyfél objektumot, amely a csoportban lévő felhasználókat kéri le.
+
+Ha ezt a kódot egy minta alkalmazás részeként szeretné látni, tekintse [meg a githubon található mintát](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity).
 
 ### <a name="install-the-microsoftgraph-client-library-package"></a>A Microsoft. Graph ügyféloldali kódtár csomagjának telepítése
 

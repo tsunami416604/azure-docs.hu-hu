@@ -2,13 +2,13 @@
 title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 7c8e535978bff38146caee1a3b5177d5befaa6a1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 11/30/2020
+ms.openlocfilehash: fffac8fef8742cf1f151de06ba6b528035a6668d
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185861"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436827"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | --------------------------- | ------------- |
 | Microsoft. HRE | [Azure Active Directory tartományi szolgáltatások](../../active-directory-domain-services/index.yml) |
 | Microsoft. addons | Core |
-| Microsoft. ADHybridHealthService<sup>1</sup> | [Azure Active Directory](../../active-directory/index.yml) |
+| Microsoft. ADHybridHealthService – [regisztrált](#registration) | [Azure Active Directory](../../active-directory/index.yml) |
 | Microsoft. Advisor | [Azure Advisor](../../advisor/index.yml) |
 | Microsoft. AlertsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. AnalysisServices | [Azure Analysis Services](../../analysis-services/index.yml) |
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. AppConfiguration | [Azure App Configuration](../../azure-app-configuration/index.yml) |
 | Microsoft. AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft. igazolás | Azure-igazolási szolgáltatás |
-| Microsoft. Authorization<sup>1</sup> | [Azure Resource Manager](../index.yml) |
+| Microsoft. Authorization – [regisztrált](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft. Automation | [Automatizálás](../../automation/index.yml) |
 | Microsoft. AutonomousSystems | [Autonóm rendszerek](https://www.microsoft.com/ai/autonomous-systems) |
 | Microsoft. AVS | [Azure VMware Solution](../../azure-vmware/index.yml) |
@@ -37,7 +37,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. AzureStack | Core |
 | Microsoft. AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
-| Microsoft. számlázás<sup>1</sup> | [Költségkezelés és számlázás](/azure/billing/) |
+| Microsoft. számlázás – [regisztrált](#registration) | [Költségkezelés és számlázás](/azure/billing/) |
 | Microsoft. BingMaps | [Bing Térképek](/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft. Blockchain | [Azure Blockchain Service](../../blockchain/workbench/index.yml) |
 | Microsoft. BlockchainTokens | [Azure Blockchain Tokens](https://azure.microsoft.com/services/blockchain-tokens/) |
@@ -52,16 +52,16 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. ClassicInfrastructureMigrate | Klasszikus üzembe helyezési modell migrálása |
 | Microsoft. ClassicNetwork | Klasszikus üzembe helyezési modell virtuális hálózata |
 | Microsoft. ClassicStorage | Klasszikus üzembe helyezési modell tárterülete |
-| Microsoft. ClassicSubscription<sup>1</sup> | Klasszikus üzemi modell |
+| Microsoft. ClassicSubscription – [regisztrált](#registration) | Klasszikus üzemi modell |
 | Microsoft. CognitiveServices | [Cognitive Services](../../cognitive-services/index.yml) |
-| Microsoft. Commerce<sup>1</sup> | Core |
+| Microsoft. Commerce – [regisztrált](#registration) | Core |
 | Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
-| Microsoft.<sup>1</sup> . felhasználás | [Költségkezelés](/azure/cost-management/) |
+| Microsoft. fogyasztás – [regisztrált](#registration) | [Cost Management](/azure/cost-management/) |
 | Microsoft. ContainerInstance | [Tárolópéldányok](../../container-instances/index.yml) |
 | Microsoft. ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
 | Microsoft. Tárolószolgáltatás | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
-| Microsoft. CostManagement<sup>1</sup> | [Költségkezelés](/azure/cost-management/) |
-| Microsoft. CostManagementExports | [Költségkezelés](/azure/cost-management/) |
+| Microsoft. CostManagement – [regisztrált](#registration) | [Cost Management](/azure/cost-management/) |
+| Microsoft. CostManagementExports | [Cost Management](/azure/cost-management/) |
 | Microsoft. CustomerLockbox | [Ügyfélszéf a Microsoft Azure-hoz](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Azure Custom Providers](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](../../databox/index.yml) |
@@ -90,7 +90,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. EnterpriseKnowledgeGraph | Enterprise Knowledge Graph |
 | Microsoft. EventGrid | [Event Grid](../../event-grid/index.yml) |
 | Microsoft. EventHub | [Event Hubs](../../event-hubs/index.yml) |
-| Microsoft. features<sup>1</sup> | [Azure Resource Manager](../index.yml) |
+| Microsoft. features – [regisztrált](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft. GuestConfiguration | [Azure Policy](../../governance/policy/index.yml) |
 | Microsoft. HanaOnAzure | [SAP HANA on Azure Large Instances](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft. HardwareSecurityModules | [Azure Dedicated HSM](../../dedicated-hsm/index.yml) |
@@ -120,7 +120,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. Maps | [Azure Maps](../../azure-maps/index.yml) |
 | Microsoft. Marketplace | Core |
 | Microsoft. MarketplaceApps | Core |
-| Microsoft. MarketplaceOrdering<sup>1</sup> | Core |
+| Microsoft. MarketplaceOrdering – [regisztrált](#registration) | Core |
 | Microsoft. Media | [Media Services](../../media-services/index.yml) |
 | Microsoft. Microservices4Spring | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft. Migrálás | [Azure Migrate](../../migrate/migrate-services-overview.md) |
@@ -135,7 +135,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. OperationsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. peering | [Azure Peering Service](../../peering-service/index.yml) |
 | Microsoft. PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
-| Microsoft. Portal<sup>1</sup> | [Azure Portal](../../azure-portal/index.yml) |
+| Microsoft. Portal – [regisztrált](#registration) | [Azure Portal](../../azure-portal/index.yml) |
 | Microsoft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft. PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
 | Microsoft. PowerPlatform | [Power Platform](/power-platform/) |
@@ -144,15 +144,15 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. Recoveryservices szolgáltatónál | [Azure Site Recovery](../../site-recovery/index.yml) |
 | Microsoft. RedHatOpenShift | [Azure Red Hat OpenShift](../../virtual-machines/linux/openshift-get-started.md) |
 | Microsoft. Relay | [Azure Relay](../../azure-relay/relay-what-is-it.md) |
-| Microsoft. ResourceGraph<sup>1</sup> | [Azure Resource Graph](../../governance/resource-graph/index.yml) |
+| Microsoft. ResourceGraph – [regisztrált](#registration) | [Azure Resource Graph](../../governance/resource-graph/index.yml) |
 | Microsoft. ResourceHealth | [Azure Service Health](../../service-health/index.yml) |
-| Microsoft. Resources<sup>1</sup> | [Azure Resource Manager](../index.yml) |
+| Microsoft. Resources – [regisztrált](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft. SaaS | Core |
 | Microsoft. Scheduler | [Scheduler](../../scheduler/index.yml) |
 | Microsoft. Search | [Azure Cognitive Search](../../search/index.yml) |
 | Microsoft. Security | [Biztonsági központ](../../security-center/index.yml) |
 | Microsoft. SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
-| Microsoft. SerialConsole<sup>1</sup> | [Windows rendszerhez készült Azure soros konzol](../../virtual-machines/troubleshooting/serial-console-windows.md) |
+| Microsoft. SerialConsole – [regisztrált](#registration) | [Windows rendszerhez készült Azure soros konzol](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [Szolgáltatásbusz](/azure/service-bus/) |
 | Microsoft. ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft. ServiceFabricMesh | [Service Fabric Mesh](../../service-fabric-mesh/index.yml) |
@@ -168,7 +168,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. StorSimple | [StorSimple](../../storsimple/index.yml) |
 | Microsoft. StreamAnalytics | [Azure Stream Analytics](../../stream-analytics/index.yml) |
 | Microsoft. előfizetés | Core |
-| Microsoft. support<sup>1</sup> | Core |
+| Microsoft. support – [regisztrált](#registration) | Core |
 | Microsoft. szinapszis | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft. TimeSeriesInsights | [Azure Time Series Insights](../../time-series-insights/index.yml) |
 | Microsoft. token | Jogkivonat |
@@ -181,10 +181,15 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. WindowsDefenderATP | [Microsoft Defender Advanced Threat Protection](../../security-center/security-center-wdatp.md) |
 | Microsoft. WindowsESU | Bővített biztonsági frissítések |
 | Microsoft. WindowsIoT | [Windows 10 IoT Core Services](/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
-| Microsoft. WorkloadMonitor<sup>1</sup> | [Azure Monitor](../../azure-monitor/index.yml) |
+| Microsoft. WorkloadMonitor | [Azure Monitor](../../azure-monitor/index.yml) |
 
-<sup>1</sup> alapértelmezés szerint regisztrálva
+## <a name="registration"></a>Regisztráció
 
-## <a name="next-steps"></a>Következő lépések
+Az előfizetéséhez tartozó, **regisztráltként** megjelölt erőforrások szolgáltatói alapértelmezés szerint regisztrálva vannak. A többi erőforrás-szolgáltató használatához [regisztrálnia kell őket](resource-providers-and-types.md). Azonban számos erőforrás-szolgáltató regisztrálva van, amikor bizonyos műveleteket végez. Ha például létrehoz egy erőforrást a portálon keresztül, a portál automatikusan regisztrálja a szükséges nem regisztrált erőforrás-szolgáltatókat. Ha [Azure Resource Manager sablonnal](../templates/overview.md)telepít erőforrásokat, a szükséges erőforrás-szolgáltatók is regisztrálva lesznek.
+
+> [!IMPORTANT]
+> Csak akkor regisztrálja az erőforrás-szolgáltatót, amikor készen áll a használatra. A regisztrációs lépés lehetővé teszi a legalacsonyabb jogosultságok fenntartását az előfizetésen belül. Egy rosszindulatú felhasználó nem használhat olyan erőforrás-szolgáltatót, amely nincs regisztrálva.
+
+## <a name="next-steps"></a>További lépések
 
 Az erőforrás-szolgáltatókkal kapcsolatos további információkért, beleértve az erőforrás-szolgáltatók regisztrálásának módját, tekintse meg az [Azure erőforrás-szolgáltatók és típusok](resource-providers-and-types.md)című témakört.

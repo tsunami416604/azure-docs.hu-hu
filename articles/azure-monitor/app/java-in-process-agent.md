@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights Java
 description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz programkód módosítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 36e2b419da2bccdf2f5f13227457172cf644994c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7046e4a1aeeda5e537208c79858c95c79e188348
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351537"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437201"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>A Java Code unapplication monitoring Azure monitor Application Insights
 
@@ -122,20 +122,21 @@ További részletek: [konfigurációs beállítások](./java-standalone-config.m
 * Log4j (beleértve a MDC tulajdonságokat)
 * SLF4J/Logback (beleértve a MDC-tulajdonságokat)
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 * Mikrométer (beleértve a Spring boot indítószerkezet metrikáit)
 * JMX metrikák
 
-## <a name="sending-custom-telemetry-from-your-application"></a>Egyéni telemetria küldése az alkalmazásból
+## <a name="send-custom-telemetry-from-your-application"></a>Egyéni telemetria küldése az alkalmazásból
 
 A 3.0-s célunk, hogy az egyéni telemetria standard API-k használatával küldje el.
 
-Támogatjuk a mikrométert, a OpenTelemetry API-t és a népszerű naplózási keretrendszereket. Application Insights a Java 3,0 automatikusan rögzíti a telemetria, és összekapcsolja azt az összes automatikusan összegyűjtött telemetria együtt.
+Eddig támogatjuk a mikrométereket, a népszerű naplózási keretrendszereket és a Application Insights Java 2. x SDK-t.
+Application Insights Java 3,0 automatikusan rögzíti az ezen API-kon keresztül továbbított telemetria, és korrelálja azt az automatikusan összegyűjtött telemetria.
 
 ### <a name="supported-custom-telemetry"></a>Támogatott egyéni telemetria
 
-Az alábbi táblázat a jelenleg támogatott egyéni telemetria-típusokat jeleníti meg, amelyeket a Java 3,0-ügynök kiegészítéseként engedélyezhet. Az összegzéshez az egyéni metrikákat a Mikrométerek támogatják, az egyéni kivételek és a nyomkövetési funkciók a naplózási keretrendszereken keresztül engedélyezhetők, és az egyéni telemetria bármilyen típusa támogatott a [Application Insights Java 2. x SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x)-n keresztül. 
+Az alábbi táblázat a jelenleg támogatott egyéni telemetria-típusokat jeleníti meg, amelyeket a Java 3,0-ügynök kiegészítéseként engedélyezhet. Az összegzéshez az egyéni metrikákat a Mikrométerek támogatják, az egyéni kivételek és a nyomkövetési funkciók a naplózási keretrendszereken keresztül engedélyezhetők, és az egyéni telemetria bármilyen típusa támogatott a [Application Insights Java 2. x SDK](#send-custom-telemetry-using-application-insights-java-2x-sdk)-n keresztül.
 
 |                     | Mikrométer | Log4j, logback, JUL | 2. x SDK |
 |---------------------|------------|---------------------|---------|
@@ -149,82 +150,101 @@ Az alábbi táblázat a jelenleg támogatott egyéni telemetria-típusokat jelen
 
 Jelenleg nem tervezzük Application Insights 3,0-es SDK kiadását.
 
-Application Insights Java 3,0 már figyeli a Application Insights Java SDK 2. x verzióban eljuttatott telemetria. Ez a funkció fontos részét képezi a meglévő 2. x-felhasználók frissítési történetének, és az egyéni telemetria-támogatás fontos hiányosságot tölt be, amíg a OpenTelemetry API nem a GA.
+Application Insights Java 3,0 már figyeli a Application Insights Java 2. x SDK-nak eljuttatott telemetria. Ez a funkció fontos részét képezi a meglévő 2. x-felhasználók frissítési történetének, és az egyéni telemetria-támogatás fontos hiányosságot tölt be, amíg a OpenTelemetry API nem a GA.
 
-## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Egyéni telemetria küldése Application Insights Java SDK 2. x használatával
+### <a name="send-custom-metrics-using-micrometer"></a>Egyéni metrikák küldése a Mikrométer használatával
+
+Adja hozzá a mikrométert az alkalmazáshoz:
+
+```xml
+<dependency>
+  <groupId>io.micrometer</groupId>
+  <artifactId>micrometer-core</artifactId>
+  <version>1.6.1</version>
+</dependency>
+```
+
+A Mikrométer [globális beállításjegyzékének](https://micrometer.io/docs/concepts#_global_registry) használata mérőszám létrehozásához:
+
+```java
+static final Counter counter = Metrics.counter("test_counter");
+```
+
+a metrikák rögzítéséhez használja a következőt:
+
+```java
+counter.increment();
+```
+
+### <a name="send-custom-traces-and-exceptions-using-your-favorite-logging-framework"></a>Egyéni Nyomkövetések és kivételek küldése a kedvenc naplózási keretrendszer használatával
+
+A Log4j, a Logback és a Java. util. Logging automatikusan lett kialakítva, és ezekkel a naplózási keretrendszerek használatával végrehajtott naplózást a nyomkövetési és kivételi telemetria automatikusan gyűjti.
+
+Alapértelmezés szerint a rendszer csak akkor gyűjti a naplózást, ha a naplózás az adatok szintjén vagy felett van elvégezve.
+A szint módosításához tekintse meg a [konfigurációs beállításokat](./java-standalone-config.md#auto-collected-logging) .
+
+Ha egyéni dimenziókat szeretne csatolni a naplókhoz, használhatja a [Log4j 1 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), a [Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)vagy a [Logback MDC](http://logback.qos.ch/manual/mdc.html), és a Application Insights Java 3,0 automatikusan rögzíti ezeket a MDC-tulajdonságokat egyéni dimenzióként a nyomkövetési és kivételi telemetria.
+
+### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>Egyéni telemetria küldése Application Insights Java 2. x SDK használatával
 
 Vegye fel az `applicationinsights-core-2.6.0.jar` alkalmazást az alkalmazásba (az összes 2. x verziót támogatja Application Insights Java 3,0, de érdemes a legújabbat használni, ha van ilyen választása):
 
 ```xml
-  <dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>applicationinsights-core</artifactId>
-    <version>2.6.0</version>
-  </dependency>
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-core</artifactId>
+  <version>2.6.0</version>
+</dependency>
 ```
 
 Hozzon létre egy TelemetryClient:
 
   ```java
-private static final TelemetryClient telemetryClient = new TelemetryClient();
+static final TelemetryClient telemetryClient = new TelemetryClient();
 ```
 
-és használja ezt az egyéni telemetria küldéséhez.
+és használja az egyéni telemetria küldéséhez:
 
-### <a name="events"></a>Események
+##### <a name="events"></a>Események
 
-  ```java
+```java
 telemetryClient.trackEvent("WinGame");
 ```
-### <a name="metrics"></a>Metrikák
 
-Metrikus telemetria a [mikrométer](https://micrometer.io)használatával küldhet:
+##### <a name="metrics"></a>Mérőszámok
 
 ```java
-  Counter counter = Metrics.counter("test_counter");
-  counter.increment();
+telemetryClient.trackMetric("queueLength", 42.0);
 ```
 
-Emellett a Application Insights Java SDK 2. x verzióját is használhatja:
+##### <a name="dependencies"></a>Függőségek
 
 ```java
-  telemetryClient.trackMetric("queueLength", 42.0);
+boolean success = false;
+long startTime = System.currentTimeMillis();
+try {
+    success = dependency.call();
+} finally {
+    long endTime = System.currentTimeMillis();
+    RemoteDependencyTelemetry telemetry = new RemoteDependencyTelemetry();
+    telemetry.setTimestamp(new Date(startTime));
+    telemetry.setDuration(new Duration(endTime - startTime));
+    telemetryClient.trackDependency(telemetry);
+}
 ```
 
-### <a name="dependencies"></a>Függőségek
+##### <a name="logs"></a>Naplók
 
 ```java
-  boolean success = false;
-  long startTime = System.currentTimeMillis();
-  try {
-      success = dependency.call();
-  } finally {
-      long endTime = System.currentTimeMillis();
-      RemoteDependencyTelemetry telemetry = new RemoteDependencyTelemetry();
-      telemetry.setTimestamp(new Date(startTime));
-      telemetry.setDuration(new Duration(endTime - startTime));
-      telemetryClient.trackDependency(telemetry);
-  }
+telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-### <a name="logs"></a>Naplók
-Az egyéni naplók telemetria a kedvenc naplózási keretrendszerén keresztül is elküldheti.
-
-Emellett a Application Insights Java SDK 2. x verzióját is használhatja:
+##### <a name="exceptions"></a>Kivételek
 
 ```java
-  telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
-```
-
-### <a name="exceptions"></a>Kivételek
-Az egyéni kivételek telemetria a kedvenc naplózási keretrendszerén keresztül is elküldheti.
-
-Emellett a Application Insights Java SDK 2. x verzióját is használhatja:
-
-```java
-  try {
-      ...
-  } catch (Exception e) {
-      telemetryClient.trackException(e);
-  }
+try {
+    ...
+} catch (Exception e) {
+    telemetryClient.trackException(e);
+}
 ```

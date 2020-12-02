@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 075f6f83e5af43cde3886f637a8ee326309e4218
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c12b1c7fd393227cb22d011f8b88f914cfded59
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015043"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445496"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin modul és függőségek üzembe helyezése a semmiből
 
@@ -117,7 +117,7 @@ A modulok Azure IoT Edge átjáró eszközre történő központi telepítésén
 
 1. Telepítse az OPC Twin- [függőségeket](howto-opc-twin-deploy-dependencies.md) , és szerezte be az eredményül kapott `.env` fájlt. Figyelje meg a változó üzembe helyezését `hub name` `PCS_IOTHUBREACT_HUB_NAME` az eredményül kapott `.env` fájlban.
 
-2. Regisztráljon és indítson el egy [Linux](../iot-edge/how-to-install-iot-edge-linux.md) -vagy [Windows](../iot-edge/how-to-install-iot-edge-windows.md) IoT Edge-átjárót, és jegyezze fel `device id` .
+2. Regisztráljon és indítson el egy [Linux](../iot-edge/how-to-install-iot-edge.md) -vagy [Windows](../iot-edge/how-to-install-iot-edge.md) IoT Edge-átjárót, és jegyezze fel `device id` .
 
 ### <a name="deploy-to-an-edge-device"></a>Üzembe helyezés peremhálózati eszközön
 

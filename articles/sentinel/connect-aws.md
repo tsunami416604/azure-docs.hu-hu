@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: e80f7d26fb7ab598651d08b4c1b6478b2ae75e3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7405824d2477d2d39c45a56ae545e58a090c321
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563058"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436606"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Az Azure Sentinel összekötése AWS-CloudTrail
 
@@ -38,15 +38,15 @@ Használja az AWS-összekötőt az AWS CloudTrail-kezelési események Azure Sen
 ## <a name="connect-aws"></a>Az AWS csatlakoztatása 
 
 
-1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd válassza ki az **Amazon Web Services** sort a táblázatban, majd az AWS ablaktáblán a jobb oldalon kattintson az **összekötő lap megnyitása**lehetőségre.
+1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd válassza ki az **Amazon Web Services** sort a táblázatban, majd az AWS ablaktáblán a jobb oldalon kattintson az **összekötő lap megnyitása** lehetőségre.
 
 1. A következő lépések végrehajtásával kövesse a **konfiguráció** szakasz utasításait.
  
-1.  A Amazon Web Services-konzol **biztonság, identitás & megfelelőség**területén válassza a **iam**lehetőséget.
+1.  A Amazon Web Services-konzol **biztonság, identitás & megfelelőség** területén válassza a **iam** lehetőséget.
 
     ![AWS1](./media/connect-aws/aws-1.png)
 
-1.  Válassza a **szerepkörök** lehetőséget, majd válassza a **szerepkör létrehozása**lehetőséget.
+1.  Válassza a **szerepkörök** lehetőséget, majd válassza a **szerepkör létrehozása** lehetőséget.
 
     ![AWS2](./media/connect-aws/aws-2.png)
 
@@ -58,7 +58,7 @@ Használja az AWS-összekötőt az AWS CloudTrail-kezelési események Azure Sen
 
     ![AWS4](./media/connect-aws/aws-4.png)
 
-1.  Az **engedélyek csatolása házirendben** válassza a **AWSCloudTrailReadOnlyAccess**lehetőséget.
+1.  Az **engedélyek csatolása házirendben** válassza a **AWSCloudTrailReadOnlyAccess** lehetőséget.
 
     ![AWS5](./media/connect-aws/aws-5.png)
 
@@ -74,17 +74,17 @@ Használja az AWS-összekötőt az AWS CloudTrail-kezelési események Azure Sen
 
     ![AWS8](./media/connect-aws/aws-8.png)
 
-1.  Másolja az **ARN szerepkört**. Az Azure Sentinel portálon, a Amazon Web Services összekötő képernyőjén illessze be azt a **szerepkörbe a mező hozzáadásához** , majd kattintson a **Hozzáadás**gombra.
+1.  Másolja az **ARN szerepkört**. Az Azure Sentinel portálon, a Amazon Web Services összekötő képernyőjén illessze be azt a **szerepkörbe a mező hozzáadásához** , majd kattintson a **Hozzáadás** gombra.
 
     ![AWS9](./media/connect-aws/aws-9.png)
 
 1. Az AWS-események Log Analytics vonatkozó sémájának használatához keresse meg a **AWSCloudTrail**.
 
+    > [!IMPORTANT]
+    > 2020. december 1-től a **AwsRequestId** mezőt a **AwsRequestId_** mező váltotta fel (jegyezze fel a hozzáadott aláhúzást). A régi **AwsRequestId** mezőben lévő adatok az ügyfél megadott adatmegőrzési időszakának végére kerülnek.
 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható az AWS CloudTrail az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
 - Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
-

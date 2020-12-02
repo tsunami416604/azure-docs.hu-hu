@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 78600b7b57a7c30fc609434a700f13fa21e079ce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 35bb17a5cdfcc6aff4a513a594a08283ab1f1305
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019259"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437031"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Lefelé irányuló eszköz csatlakoztatása Azure IoT Edge-átjáróhoz
 
@@ -100,7 +100,7 @@ A következő üzenetnek kell megjelennie: "tanúsítványok frissítése a/etc/
 
 A következő lépések egy példa arra, hogyan telepíthet HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt egy Windows rendszerű gazdagépre. Ez a példa azt feltételezi, hogy a **Azure-IOT-test-only. root. ca. CERT. PEM** tanúsítványt használja az előfeltételek cikkeiből, és a tanúsítványt egy helyre másolta az alsóbb rétegbeli eszközön.
 
-A tanúsítványokat a PowerShell [importálási tanúsítványával](/powershell/module/pkiclient/import-certificate?view=win10-ps) rendszergazdaként telepítheti:
+A tanúsítványokat a PowerShell [importálási tanúsítványával](/powershell/module/pkiclient/import-certificate) rendszergazdaként telepítheti:
 
 ```powershell
 import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root

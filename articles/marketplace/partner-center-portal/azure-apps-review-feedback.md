@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 351a9742e9d839a8e217fdea35cad922acc3339f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ede4e5dd781851c781407a8acea640e3e501f259
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095672"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436385"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Az Azure-alkalmazások ajánlati felülvizsgálati visszajelzésének feldolgozása
 
@@ -39,7 +39,7 @@ A következő eljárással ellenőrizheti a lekéréses kérelemben dokumentált
     [![Lekéréses kérelem kezdőlapja](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *Kattintson erre a képre a kibontáshoz.*
 
-1. Választható Az ablak jobb oldalán, a **szabályzatok** szakaszban válassza ki a problémát jelző üzenetet (ebben a példában a **házirend ellenőrzése nem sikerült** ) a probléma alacsony szintű részleteinek vizsgálatához, beleértve a kapcsolódó naplófájlokat is. A hibák általában a naplófájlok alján jelennek meg.
+1. Választható Az ablak jobb oldalán, a **szabályzatok** szakaszban válassza ki a problémát jelző üzenetet (ebben a példában a **házirend ellenőrzése nem sikerült**) a probléma alacsony szintű részleteinek vizsgálatához, beleértve a kapcsolódó naplófájlokat is. A hibák általában a naplófájlok alján jelennek meg.
 
 1. A Kezdőlap bal oldali menüjében válassza a **fájlok** lehetőséget, hogy megjelenjenek az ajánlat technikai eszközeiből álló fájlok. A Microsoft felülvizsgálók számára a felderített kritikus problémák leírását ismertető megjegyzésekkel kell rendelkeznie. A következő példában két probléma merült fel.
 
@@ -55,6 +55,6 @@ A következő eljárással ellenőrizheti a lekéréses kérelemben dokumentált
 
    ![Első javítás és Megjegyzés válasza](./media/first-comment-reply.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Miután javította a PR (k) felülvizsgálatával kapcsolatos kritikus problémákat, újra közzé kell tennie az [Azure-alkalmazás ajánlatát](./create-new-azure-apps-offer.md#publish).
+Miután javította a PR (k) felülvizsgálatával kapcsolatos kritikus problémákat, újra közzé kell tennie az [Azure-alkalmazás ajánlatát](../create-new-azure-apps-offer.md).

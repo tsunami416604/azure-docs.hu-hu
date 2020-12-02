@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f327749d1bdfb8cf2cba00cf4c5f68b4b2b77999
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 50a65583c41dd94b174a33432afcf42b31e67df0
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379553"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437048"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Oktatóanyag: felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal
 
@@ -41,7 +41,7 @@ Az oktatóanyag elvégzéséhez ismernie kell a következőket:
 
 Ebben az oktatóanyagban egy felügyelt alkalmazást hoz létre, és a felügyelt erőforráscsoport egyéni szolgáltatói példányt, Storage-fiókot és-függvényt fog tartalmazni. Az ebben a példában használt Azure-függvény olyan API-t valósít meg, amely kezeli az egyéni szolgáltatói műveleteket a műveletekhez és az erőforrásokhoz. Az Azure Storage-fiók alapszintű tárolóként használható az egyéni szolgáltatói erőforrások számára.
 
-A felügyelt alkalmazás példányának létrehozásához szükséges felhasználói felület definíciója tartalmazza a `funcname` és a `storagename` bemeneti elemeket. A Storage-fiók nevének és a függvény nevének globálisan egyedinek kell lennie. Alapértelmezés szerint a Function Files a [minta Function csomagból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)lesz üzembe helyezve, de módosítható úgy, hogy hozzáad egy bemeneti elemet a csomag hivatkozásához a *createUiDefinition.json* :
+A felügyelt alkalmazás példányának létrehozásához szükséges felhasználói felület definíciója tartalmazza a `funcname` és a `storagename` bemeneti elemeket. A Storage-fiók nevének és a függvény nevének globálisan egyedinek kell lennie. Alapértelmezés szerint a Function Files a [minta Function csomagból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)lesz üzembe helyezve, de módosítható úgy, hogy hozzáad egy bemeneti elemet a csomag hivatkozásához a *createUiDefinition.json*:
 
 ```json
 {
@@ -74,7 +74,7 @@ A felügyelt alkalmazás példányának létrehozásához szükséges felhaszná
 }
 ```
 
-és kimenet *createUiDefinition.json* :
+és kimenet *createUiDefinition.json*:
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -254,8 +254,8 @@ az managedapp definition create \
 
 3. Adja meg a Service Catalog-definíciók létrehozásához szükséges értékeket:
 
-    * Adja meg a szolgáltatás-katalógus definíciójának egyedi **nevét** , a **megjelenítendő nevet** és a *leírást* (nem kötelező).
-    * Válassza ki azt az **előfizetést** , **erőforráscsoportot** és **helyet** , ahová az alkalmazás-definíciót létre kívánja hozni. Használhatja ugyanazt az erőforráscsoportot, amelyet a zip-csomaghoz használ, vagy létrehozhat egy új erőforráscsoportot.
+    * Adja meg a szolgáltatás-katalógus definíciójának egyedi **nevét** , a **megjelenítendő nevet** és a *leírást*(nem kötelező).
+    * Válassza ki azt az **előfizetést**, **erőforráscsoportot** és **helyet** , ahová az alkalmazás-definíciót létre kívánja hozni. Használhatja ugyanazt az erőforráscsoportot, amelyet a zip-csomaghoz használ, vagy létrehozhat egy új erőforráscsoportot.
     * A **Package file URI** esetében adja meg az előző lépésben létrehozott zip-fájl elérési útját.
 
     ![Értékek megadása](./media/tutorial-create-managed-app-with-custom-provider/add-service-catalog-managed-application.png)
@@ -314,7 +314,7 @@ az managedapp create \
 
 4. Adja meg a felügyelt alkalmazás példányának a Service Catalog-definícióból való létrehozásához szükséges értékeket:
 
-    * Válassza ki azt az **előfizetést** , **erőforráscsoportot** és **helyet** , ahová az alkalmazás-példányt létre kívánja hozni.
+    * Válassza ki azt az **előfizetést**, **erőforráscsoportot** és **helyet** , ahová az alkalmazás-példányt létre kívánja hozni.
     * Adjon meg egy egyedi Azure-függvény nevét és az Azure Storage-fiók nevét.
 
     ![Alkalmazásbeállítások](./media/tutorial-create-managed-app-with-custom-provider/application-settings.png)
@@ -351,8 +351,8 @@ Megtekintheti a felügyelt alkalmazás példányát, és **egyéni műveleteket*
 
 Ha kérdése van a Azure Managed Applicationsával kapcsolatban, próbálja meg megkérdezni a [stack overflow](https://stackoverflow.com/questions/tagged/azure-managedapps). Előfordulhat, hogy egy hasonló kérdést már megtettek és megválaszoltak, ezért először A feladás előtt érdemes megnézni. A címke hozzáadásával `azure-managedapps` gyors választ kaphat!
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha közzétenné felügyelt alkalmazását az Azure Marketplace-en, tekintse meg az [Azure-beli felügyelt alkalmazások a Marketplace piactéren](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md) című témakört.
+Ha közzétenné felügyelt alkalmazását az Azure Marketplace-en, tekintse meg az [Azure-beli felügyelt alkalmazások a Marketplace piactéren](../../marketplace/create-new-azure-apps-offer.md) című témakört.
 
 További információ az [Egyéni Azure-szolgáltatókról](../custom-providers/overview.md).

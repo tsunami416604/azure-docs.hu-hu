@@ -3,16 +3,16 @@ title: Példák a Azure Lab Services-osztályokra | Microsoft Docs
 description: Bizonyos típusú osztályokat biztosít, amelyekhez a Azure Lab Services használatával állíthatja be a laborokat.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1c2caac35125c3f69c2257750bac417971af5dbd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 7ebc89c040be732c230f0c3f54f68fb91466eb68
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490984"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436402"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Osztályok típusai – áttekintés – Azure Lab Services
 
-Azure Lab Services lehetővé teszi, hogy gyorsan be lehessen állítani a Felhőbeli tantermi tesztkörnyezet környezeteit. Az ebben a szakaszban található cikkek segítséget nyújtanak a különböző típusú osztálytermi laborok beállításához Azure Lab Services használatával.
+Azure Lab Services lehetővé teszi, hogy gyorsan be lehessen állítani a Felhőbeli tantermi tesztkörnyezet környezeteit. Az ebben a szakaszban található cikkek segítséget nyújtanak a különböző típusú laborok beállításához Azure Lab Services használatával.
 
 ## <a name="big-data-analytics"></a>Big data elemzése
 Beállíthat egy GPU-labort big data elemzési osztály tanításához. Ilyen típusú osztályok esetén a tanulók megismerhetik a nagy adatmennyiségek kezelését, valamint gépi és statisztikai tanulási algoritmusokat alkalmazhatnak az adatelemzések kinyeréséhez. A tanulók számára a fő cél az, hogy megtanulja az adatelemzési eszközök használatát, mint például a Apache Hadoop nyílt forráskódú szoftvercsomag, amely eszközöket biztosít a big data tárolásához, kezeléséhez és feldolgozásához. 

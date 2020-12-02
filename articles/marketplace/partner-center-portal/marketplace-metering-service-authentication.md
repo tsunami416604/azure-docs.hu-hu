@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e8f9a8e1d10e39e37480e06a25fcc0e203a104ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ddcd7e5c3e5651062f88b261e7003fb0dd2ef3b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378729"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435994"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace-mérési szolgáltatás hitelesítési stratégiái
 
@@ -114,7 +114,7 @@ Az alábbi lépéseket követve például Windows rendszerű virtuális gép has
     * [Azure Portal felhasználói felület](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
     * [Parancssori felület](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
     * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
-    * [Azure Resource Manager sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [Azure Resource Manager-sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
     * [Rest](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
     * [Azure SDK-k](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
@@ -153,7 +153,7 @@ Az alábbi lépéseket követve például Windows rendszerű virtuális gép has
 
 1. Használja a [piactér-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -ját a használat kibocsátása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Azure-alkalmazásajánlat létrehozása](./create-new-azure-apps-offer.md)
+* [Azure-alkalmazásajánlat létrehozása](../create-new-azure-apps-offer.md)
 * [SaaS-ajánlat tervezése](../plan-saas-offer.md)

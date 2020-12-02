@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 02fd0a4c7d931f439ab85af8d90de323105e21f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c45445415f3eaa7cb0f9069dd5f64b57c19e5836
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096699"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437150"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -29,11 +29,11 @@ Azure Cosmos DB áttelepítési stratégiák jelenleg eltérőek az API-k válas
 
 Az Azure Cosmos DB az adatáttelepítés meglévő eszközei bizonyos korlátozásokkal rendelkeznek, amelyek különösen nagy léptékekben lesznek láthatók:
 
- * **Korlátozott kibővíthető képességek** : Ha a lehető leggyorsabban szeretné áttelepíteni a terabájtos adatmennyiséget a Azure Cosmos DBba, és hatékonyan felhasználja a teljes kiosztott átviteli sebességet, az áttelepítési ügyfeleknek képesnek kell lenniük a határozatlan idejű méretezésre.  
+ * **Korlátozott kibővíthető képességek**: Ha a lehető leggyorsabban szeretné áttelepíteni a terabájtos adatmennyiséget a Azure Cosmos DBba, és hatékonyan felhasználja a teljes kiosztott átviteli sebességet, az áttelepítési ügyfeleknek képesnek kell lenniük a határozatlan idejű méretezésre.  
 
-* A **folyamat nyomon követésének és ellenőrzésének hiánya** : fontos, hogy nyomon követhesse az áttelepítési folyamatot, és a nagyméretű adathalmazok áttelepítése során a rendszer a bejelentkezést is bemutasson. Ellenkező esetben az áttelepítés során felmerülő hibák miatt a rendszer leállítja az áttelepítést, és teljesen el kell indítania a folyamatot. Nem lenne hatékony a teljes áttelepítési folyamat újraindítása, amikor a 99%-a már befejeződött.  
+* A **folyamat nyomon követésének és ellenőrzésének hiánya**: fontos, hogy nyomon követhesse az áttelepítési folyamatot, és a nagyméretű adathalmazok áttelepítése során a rendszer a bejelentkezést is bemutasson. Ellenkező esetben az áttelepítés során felmerülő hibák miatt a rendszer leállítja az áttelepítést, és teljesen el kell indítania a folyamatot. Nem lenne hatékony a teljes áttelepítési folyamat újraindítása, amikor a 99%-a már befejeződött.  
 
-* A **kézbesítetlen levelek várólistájának hiánya** : a nagyméretű adatkészleteken belül bizonyos esetekben problémák merülhetnek fel a forrásadatok részeivel. Emellett átmeneti problémák merülhetnek fel az ügyféllel vagy a hálózattal kapcsolatban. Ezen esetek egyike sem okozhatja a teljes áttelepítést. Annak ellenére, hogy a legtöbb áttelepítési eszköz robusztus újrapróbálkozási képességekkel rendelkezik, amelyek védelmet biztosítanak az időszakos problémák ellen, nem mindig elég. Ha például a forrásoldali adatdokumentumok kevesebb mint 0,01%-a mérete meghaladja a 2 MB-ot, akkor a dokumentum írása sikertelen lesz Azure Cosmos DB. Ideális esetben az áttelepítési eszköz számára hasznos, hogy a "sikertelen" dokumentumokat egy másik kézbesítetlen levelek várólistáján is megőrzi, amely az áttelepítés után dolgozható fel. 
+* A **kézbesítetlen levelek várólistájának hiánya**: a nagyméretű adatkészleteken belül bizonyos esetekben problémák merülhetnek fel a forrásadatok részeivel. Emellett átmeneti problémák merülhetnek fel az ügyféllel vagy a hálózattal kapcsolatban. Ezen esetek egyike sem okozhatja a teljes áttelepítést. Annak ellenére, hogy a legtöbb áttelepítési eszköz robusztus újrapróbálkozási képességekkel rendelkezik, amelyek védelmet biztosítanak az időszakos problémák ellen, nem mindig elég. Ha például a forrásoldali adatdokumentumok kevesebb mint 0,01%-a mérete meghaladja a 2 MB-ot, akkor a dokumentum írása sikertelen lesz Azure Cosmos DB. Ideális esetben az áttelepítési eszköz számára hasznos, hogy a "sikertelen" dokumentumokat egy másik kézbesítetlen levelek várólistáján is megőrzi, amely az áttelepítés után dolgozható fel. 
 
 A korlátozások nagy része az Azure-beli adatáttelepítési szolgáltatásokhoz hasonló eszközökhöz készült. 
 
@@ -143,13 +143,7 @@ Az előfeltételek teljesítése után az alábbi lépéseket követve áttelep�
 
 Az áttelepítés befejezése után ellenőrizheti, hogy a dokumentumok száma Azure Cosmos DB-e, és megegyezik-e a forrás-adatbázisban lévő dokumentumok számával. Ebben a példában a Azure Cosmos DB teljes mérete 65 terabájtra van kialakítva. A Migrálás után az indexelés szelektíven bekapcsolható, és az RUs a számítási feladatok műveletei által megkövetelt szintre is csökkenthető.
 
-## <a name="contact-the-azure-cosmos-db-team"></a>Kapcsolatfelvétel a Azure Cosmos DB csapattal
-Bár a nagy méretű adathalmazok sikeres áttelepítésére a nagyméretű adatkészletek Azure Cosmos DB, a nagyméretű áttelepítések esetében azt javasoljuk, hogy az adatmodellezés és az általános architektúra-felülvizsgálat ellenőrzéséhez a Azure Cosmos DB termék csapatát is el kell érnie. Az adatkészletek és a számítási feladatok alapján a termék csapata más teljesítményre és költséghatékonyságra is utalhat, amelyek alkalmazhatók az Ön számára. Ha a nagyléptékű áttelepítéssel kapcsolatos segítségért szeretne segítséget nyújtani a Azure Cosmos DB csapatának, nyisson meg egy támogatási jegyet az "általános tanácsadó" probléma típusa és a "nagy (TB +) Migrálás" problémás altípuson az alábbi ábrán látható módon.
-
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Áttelepítési eszköz beállítása":::
-
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ: a [.net](bulk-executor-dot-net.md) és a [Java](bulk-executor-java.md)szolgáltatásban a tömeges végrehajtó függvénytárat használó minta alkalmazások kipróbálása. 
 * A tömeges végrehajtó függvénytár integrálva van a Cosmos DB Spark-összekötőbe, és további információt a [Azure Cosmos db Spark-összekötő](spark-connector.md) című cikkben talál.  

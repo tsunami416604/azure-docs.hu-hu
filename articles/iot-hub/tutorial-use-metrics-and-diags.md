@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: d59e37cdcb6f530b08e980cf75d8834aed332252
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a16dbeedc2362f4a263d59a673dbb4358f7ba034
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315330"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436487"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Oktatóanyag: mérőszámok és naplók beállítása és használata IoT hub használatával
 
@@ -42,9 +42,9 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* A fejlesztői gépen a .NET Core SDK 2,1-es vagy újabb szükséges. A .NET Core SDK-t többféle platformra a [.NET](https://www.microsoft.com/net/download/all) oldaláról töltheti le.
+- A fejlesztői gépen a .NET Core SDK 2,1-es vagy újabb szükséges. A .NET Core SDK-t többféle platformra a [.NET](https://www.microsoft.com/net/download/all) oldaláról töltheti le.
 
   A C# aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
 
@@ -52,11 +52,11 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
   dotnet --version
   ```
 
-* E-mail fiók, amely képes e-mailek fogadására.
+- E-mail fiók, amely képes e-mailek fogadására.
 
-* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+- Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="set-up-resources"></a>Erőforrások beállítása
 
@@ -68,7 +68,7 @@ Itt láthatók a szükséges lépések.
 
 2. Hozzon létre egy IoT hubot.
 
-3. Log Analytics munkaterület létrehozása.
+3. Egy Log Analytics-munkaterület létrehozása.
 
 4. Regisztrálja a szimulált eszköz identitását, amely üzeneteket küld az IoT hubhoz. Mentse a szimulált eszköz konfigurálásához használandó eszköz-kapcsolódási karakterláncot.
 
@@ -170,7 +170,7 @@ Most a metrikák Explorerrel hozzunk létre egy diagramot, amely a nyomon követ
 
 1. Az IoT hub bal oldali paneljén válassza a **metrikák** lehetőséget a **figyelés** szakaszban.
 
-1. A képernyő felső részén válassza az **elmúlt 24 óra (automatikus)** lehetőséget. A megjelenő legördülő menüben válassza az **utolsó 4 óra** az **időtartományhoz** lehetőséget, állítsa az **időrészletességet** **1 percre** , majd válassza a **helyi** lehetőséget az **idő megjelenítéséhez**. A beállítások mentéséhez kattintson az **alkalmaz** gombra. A beállításnak most a helyi idő szerint kell megjelennie **: az elmúlt 4 óra (1 perc)**.
+1. A képernyő felső részén válassza az **elmúlt 24 óra (automatikus)** lehetőséget. A megjelenő legördülő menüben válassza az **utolsó 4 óra** az **időtartományhoz** lehetőséget, állítsa az **időrészletességet** **1 percre**, majd válassza a **helyi** lehetőséget az **idő megjelenítéséhez**. A beállítások mentéséhez kattintson az **alkalmaz** gombra. A beállításnak most a helyi idő szerint kell megjelennie **: az elmúlt 4 óra (1 perc)**.
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-select-time-range.png" alt-text="A metrikák időbeállítását bemutató képernyőkép.":::
 
@@ -225,17 +225,17 @@ Metrikai riasztások beállítása:
 
     1. A **jel logikájának konfigurálása** panelen állítsa be vagy erősítse meg a következő mezőket a **riasztási logika** alatt (figyelmen kívül hagyhatja a diagramot):
 
-       **Küszöbérték** :  *statikus*.
+       **Küszöbérték**:  *statikus*.
 
-       **Operátor** : *nagyobb, mint*.
+       **Operátor**: *nagyobb, mint*.
 
-       **Összesítés típusa** : *összesen*.
+       **Összesítés típusa**: *összesen*.
 
-       **Küszöbérték** : 1000.
+       **Küszöbérték**: 1000.
 
-       **Összesítés részletessége (időszak)** : *5 perc*.
+       **Összesítés részletessége (időszak)**: *5 perc*.
 
-       **Értékelés gyakorisága** : *1 percenként*
+       **Értékelés gyakorisága**: *1 percenként*
 
         :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-set-conditions.png" alt-text="A riasztási feltételek beállításait megjelenítő képernyőkép.":::
 
@@ -285,17 +285,17 @@ Metrikai riasztások beállítása:
 
     * A **jel logikájának konfigurálása** panelen állítsa be vagy erősítse meg a következő mezőket (a diagram figyelmen kívül hagyható):
 
-       **Küszöbérték** :  *statikus*.
+       **Küszöbérték**:  *statikus*.
 
-       **Operátor** : *nagyobb, mint*.
+       **Operátor**: *nagyobb, mint*.
 
-       **Összesítés típusa** : *maximum*.
+       **Összesítés típusa**: *maximum*.
 
-       **Küszöbérték** : 4000.
+       **Küszöbérték**: 4000.
 
-       **Összesítés részletessége (időszak)** : *1 perc*.
+       **Összesítés részletessége (időszak)**: *1 perc*.
 
-       **Értékelés gyakorisága** : *1 percenként*
+       **Értékelés gyakorisága**: *1 percenként*
 
        Ezekkel a beállításokkal állítható be a jel, ha az üzenetek száma eléri a 4000 értéket. A metrika percenként lesz kiértékelve.
 
@@ -415,7 +415,7 @@ Az erőforráscsoport az [az group delete](/cli/azure/group#az-group-delete) par
 az group delete --name ContosoResources
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja IoT Hub metrikákat és naplókat a következő feladatok végrehajtásával:
 

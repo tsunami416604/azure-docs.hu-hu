@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 7669b49735843bf941c52aee5cc3b71d1644c01a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b381f2f1871ea7e26950d5b02d5906a50c6129d3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635813"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445018"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>A Azure Data Factory adatáthelyezésének biztonsági szempontjai
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -51,8 +51,8 @@ Ha érdekli az Azure megfelelősége, és hogyan védi az Azure a saját infrast
 
 Ebben a cikkben a következő két adatáthelyezési forgatókönyvben tekintjük át a biztonsági szempontokat: 
 
-- **Felhőbeli forgatókönyv** : ebben az esetben a forrás és a cél is nyilvánosan elérhető az interneten keresztül. Ezek közé tartoznak a felügyelt felhőalapú tárolási szolgáltatások, például az Azure Storage, az Azure szinapszis Analytics (korábban SQL Data Warehouse), a Azure SQL Database, a Azure Data Lake Store, az Amazon S3, az Amazon vöröseltolódás, az SaaS-szolgáltatások, például a Salesforce és a webes protokollok, például az FTP és a OData. A támogatott  [adattárakban és-formátumokban](copy-activity-overview.md#supported-data-stores-and-formats)található támogatott adatforrások teljes listája.
-- **Hibrid forgatókönyv** : ebben a forgatókönyvben a forrás vagy a cél egy tűzfal mögött vagy egy helyszíni vállalati hálózaton belül van. Az adattár pedig magánhálózat vagy virtuális hálózat (leggyakrabban a forrás), és nem nyilvánosan elérhető. A virtuális gépeken üzemeltetett adatbázis-kiszolgálók is ebbe a forgatókönyvbe tartoznak.
+- **Felhőbeli forgatókönyv**: ebben az esetben a forrás és a cél is nyilvánosan elérhető az interneten keresztül. Ezek közé tartoznak a felügyelt felhőalapú tárolási szolgáltatások, például az Azure Storage, az Azure szinapszis Analytics, a Azure SQL Database, a Azure Data Lake Store, az Amazon S3, az Amazon vöröseltolódás, az SaaS-szolgáltatások, például a Salesforce és a webes protokollok, például az FTP és a OData. A támogatott  [adattárakban és-formátumokban](copy-activity-overview.md#supported-data-stores-and-formats)található támogatott adatforrások teljes listája.
+- **Hibrid forgatókönyv**: ebben a forgatókönyvben a forrás vagy a cél egy tűzfal mögött vagy egy helyszíni vállalati hálózaton belül van. Az adattár pedig magánhálózat vagy virtuális hálózat (leggyakrabban a forrás), és nem nyilvánosan elérhető. A virtuális gépeken üzemeltetett adatbázis-kiszolgálók is ebbe a forgatókönyvbe tartoznak.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -60,8 +60,8 @@ Ebben a cikkben a következő két adatáthelyezési forgatókönyvben tekintjü
 
 ### <a name="securing-data-store-credentials"></a>Adattároló hitelesítő adatainak biztonságossá tétele
 
-- **Titkosított hitelesítő adatok tárolása egy Azure Data Factory felügyelt tárolóban** . A Data Factory az adattár hitelesítő adatainak védelme érdekében titkosítja őket a Microsoft által kezelt tanúsítványokkal. Ezeket a tanúsítványokat kétévente elforgatják (ami magában foglalja a tanúsítvány megújítását és a hitelesítő adatok áttelepítését). Az Azure Storage biztonságával kapcsolatos további információkért lásd: az [Azure Storage biztonsági áttekintése](../storage/blobs/security-recommendations.md).
-- **Hitelesítő adatok tárolása Azure Key Vaultban** . Az adattár hitelesítő adatait [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)is tárolhatja. Data Factory lekéri a hitelesítő adatot egy tevékenység végrehajtása során. További információ: [a hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md).
+- **Titkosított hitelesítő adatok tárolása egy Azure Data Factory felügyelt tárolóban**. A Data Factory az adattár hitelesítő adatainak védelme érdekében titkosítja őket a Microsoft által kezelt tanúsítványokkal. Ezeket a tanúsítványokat kétévente elforgatják (ami magában foglalja a tanúsítvány megújítását és a hitelesítő adatok áttelepítését). Az Azure Storage biztonságával kapcsolatos további információkért lásd: az [Azure Storage biztonsági áttekintése](../storage/blobs/security-recommendations.md).
+- **Hitelesítő adatok tárolása Azure Key Vaultban**. Az adattár hitelesítő adatait [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)is tárolhatja. Data Factory lekéri a hitelesítő adatot egy tevékenység végrehajtása során. További információ: [a hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md).
 
 ### <a name="data-encryption-in-transit"></a>Adattitkosítás az átvitel során
 Ha a felhőalapú adattár támogatja a HTTPS-t vagy a TLS-t, az adatátviteli Data Factory szolgáltatások és a felhőalapú adattárolók közötti adatforgalom a biztonságos csatorna HTTPS vagy TLS protokollon keresztül történik.
@@ -111,9 +111,9 @@ A parancssori csatorna lehetővé teszi az adatátviteli szolgáltatások közö
 ### <a name="on-premises-data-store-credentials"></a>Helyszíni adattároló hitelesítő adatai
 A hitelesítő adatokat a rendszer az adat-előállítóban tárolhatja, vagy az [adat-előállító](store-credentials-in-key-vault.md) az Azure Key Vault-ból futtatott futtatókörnyezetben hivatkozhat rá. Ha a adat-előállítóban tárolja a hitelesítő adatokat, a rendszer mindig titkosítja a saját üzemeltetésű integrációs modulban. 
  
-- **Hitelesítő adatok helyi tárolása** . Ha közvetlenül a **set-AzDataFactoryV2LinkedService** parancsmagot használja a kapcsolati karakterláncokkal és a JSON-ban beágyazott hitelesítő adatokkal, akkor a társított szolgáltatás titkosítva van, és a saját üzemeltetésű integrációs modulban tárolódik.  Ebben az esetben a hitelesítő adatok az Azure háttér-szolgáltatáson keresztül futnak, amely rendkívül biztonságos a saját üzemeltetésű integrációs géphez, ahol végül titkosítva és tárolva van. A saját üzemeltetésű integrációs modul a Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) használatával titkosítja a bizalmas adatokat és a hitelesítő adatokat.
+- **Hitelesítő adatok helyi tárolása**. Ha közvetlenül a **set-AzDataFactoryV2LinkedService** parancsmagot használja a kapcsolati karakterláncokkal és a JSON-ban beágyazott hitelesítő adatokkal, akkor a társított szolgáltatás titkosítva van, és a saját üzemeltetésű integrációs modulban tárolódik.  Ebben az esetben a hitelesítő adatok az Azure háttér-szolgáltatáson keresztül futnak, amely rendkívül biztonságos a saját üzemeltetésű integrációs géphez, ahol végül titkosítva és tárolva van. A saját üzemeltetésű integrációs modul a Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) használatával titkosítja a bizalmas adatokat és a hitelesítő adatokat.
 
-- **Hitelesítő adatok tárolása Azure Key Vaultban** . Az adattár hitelesítő adatait [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)is tárolhatja. Data Factory lekéri a hitelesítő adatot egy tevékenység végrehajtása során. További információ: [a hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md).
+- **Hitelesítő adatok tárolása Azure Key Vaultban**. Az adattár hitelesítő adatait [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)is tárolhatja. Data Factory lekéri a hitelesítő adatot egy tevékenység végrehajtása során. További információ: [a hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md).
 
 - A hitelesítő **adatokat helyileg tárolhatja anélkül, hogy a hitelesítő adatokat a saját üzemeltetésű integrációs modulra kellene átadnia az Azure-háttér** használatával. Ha a hitelesítő adatokat a saját üzemeltetésű integrációs modulban helyileg kívánja titkosítani és tárolni anélkül, hogy a hitelesítő adatokat a adat-előállító háttérrendszer használatával kellene elvégeznie, kövesse a [hitelesítő adatok titkosítása a helyszíni adattárakhoz Azure Data Factory-ben](encrypt-credentials-self-hosted-integration-runtime.md)című témakört. Az összes összekötő támogatja ezt a beállítást. A saját üzemeltetésű integrációs modul a Windows [DPAPI](/previous-versions/ms995355(v=msdn.10)) használatával titkosítja a bizalmas adatokat és a hitelesítő adatokat. 
 
@@ -173,7 +173,7 @@ A következő táblázat a vállalati tűzfalak kimenő portokra és tartományo
 
 A következő táblázat a Windows tűzfal bejövő portokra vonatkozó követelményeit tartalmazza:
 
-| Bejövő portok | Leírás                              |
+| Bejövő portok | Description                              |
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | A PowerShell-titkosítási parancsmag szükséges a [helyi adattárakhoz tartozó hitelesítő adatok titkosítása Azure Data Factoryban](encrypt-credentials-self-hosted-integration-runtime.md), valamint a Hitelesítőadat-kezelő alkalmazás által a helyi adattárakhoz tartozó hitelesítő adatok biztonságos beállítása a saját üzemeltetésű integrációs modulban. |
 
@@ -201,6 +201,6 @@ Igen. További részletek [.](https://azure.microsoft.com/blog/sharing-a-self-ho
 A saját üzemeltetésű integrációs modul lehetővé teszi, hogy a HTTP-alapú kapcsolatok hozzáférjenek az internethez. A kapcsolódáshoz a saját üzemeltetésű integrációs modul 443 kimenő portjait kell megnyitni. Nyissa meg a 8060-es bejövő portot csak a számítógép szintjén (nem a vállalati tűzfal szintjén) a Hitelesítőadat-kezelő alkalmazáshoz. Ha Azure SQL Database vagy az Azure szinapszis Analytics a forrásként vagy a célhelyként van használatban, akkor a 1433-as portot is meg kell nyitnia. További információ: [tűzfal-konfigurációk és engedélyezési lista beállítása az IP-címekhez](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) szakasz. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A másolási tevékenység teljesítményének Azure Data Factory a [másolási tevékenység teljesítményének és hangolásának útmutatója](copy-activity-performance.md)című témakörben talál további információt.
 
