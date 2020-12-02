@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 91a3a0c2ae066fde55892af90a3d666a3c1221a3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 3f28c50be73b2b87ed8b25429cfa2dee9a663f1b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445489"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452173"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a kulcstartóhoz
 
@@ -44,9 +44,9 @@ További információ a Key Vault hitelesítéséről: [hitelesítés Azure Key 
 
 Amikor kulcstartót hoz létre egy Azure-előfizetésben, az automatikusan társítva lesz az előfizetés Azure AD-bérlője számára. Mindkét síkon lévő hívónak regisztrálnia kell ebben a bérlőben, és hitelesítenie kell magát a kulcstartó eléréséhez. Mindkét esetben az alkalmazások háromféle módon férhetnek hozzá a Key Vaulthoz:
 
-- **Csak alkalmazás** : az alkalmazás az egyszerű szolgáltatásnév vagy a felügyelt identitást jelöli. Ez az identitás a leggyakoribb forgatókönyv azon alkalmazások esetében, amelyeknek időnként szükségük van tanúsítványokra, kulcsokra vagy titkos kulcsok elérésére a kulcstartóból. Ahhoz, hogy ez a forgatókönyv működjön, a `objectId` hozzáférési házirendben meg kell adni az alkalmazást, és `applicationId` a _nem_ adható meg vagy kötelező `null` .
-- **Csak felhasználó** : a felhasználó hozzáfér a Key vaulthoz a bérlőben regisztrált bármely alkalmazásból. Ilyen típusú hozzáférés például a Azure PowerShell és a Azure Portal. Ahhoz, hogy ez a forgatókönyv működjön, a `objectId` felhasználónak meg kell adni a hozzáférési szabályzatot, és `applicationId` a _nem_ adható meg vagy kötelező `null` .
-- **Alkalmazás-Plus-User** (más néven _összetett identitás_ ): a felhasználónak egy adott alkalmazásból kell hozzáférnie a kulcstartóhoz _, és_ az alkalmazásnak a felhasználó megszemélyesítéséhez a hitelesítési (OBO) folyamatot kell használnia. Ahhoz, hogy ez a forgatókönyv működjön, mindkettőt `applicationId` `objectId` meg kell adni a hozzáférési házirendben. Az `applicationId` azonosítja a szükséges alkalmazást, és `objectId` azonosítja a felhasználót. Ez a lehetőség jelenleg nem érhető el az Azure RBAC (előzetes verzió) adatsíkon.
+- **Csak alkalmazás**: az alkalmazás az egyszerű szolgáltatásnév vagy a felügyelt identitást jelöli. Ez az identitás a leggyakoribb forgatókönyv azon alkalmazások esetében, amelyeknek időnként szükségük van tanúsítványokra, kulcsokra vagy titkos kulcsok elérésére a kulcstartóból. Ahhoz, hogy ez a forgatókönyv működjön, a `objectId` hozzáférési házirendben meg kell adni az alkalmazást, és `applicationId` a _nem_ adható meg vagy kötelező `null` .
+- **Csak felhasználó**: a felhasználó hozzáfér a Key vaulthoz a bérlőben regisztrált bármely alkalmazásból. Ilyen típusú hozzáférés például a Azure PowerShell és a Azure Portal. Ahhoz, hogy ez a forgatókönyv működjön, a `objectId` felhasználónak meg kell adni a hozzáférési szabályzatot, és `applicationId` a _nem_ adható meg vagy kötelező `null` .
+- **Alkalmazás-Plus-User** (más néven _összetett identitás_): a felhasználónak egy adott alkalmazásból kell hozzáférnie a kulcstartóhoz _, és_ az alkalmazásnak a felhasználó megszemélyesítéséhez a hitelesítési (OBO) folyamatot kell használnia. Ahhoz, hogy ez a forgatókönyv működjön, mindkettőt `applicationId` `objectId` meg kell adni a hozzáférési házirendben. Az `applicationId` azonosítja a szükséges alkalmazást, és `objectId` azonosítja a felhasználót. Ez a lehetőség jelenleg nem érhető el az Azure RBAC (előzetes verzió) adatsíkon.
 
 Az alkalmazás minden típusú hozzáférés esetén az Azure AD-vel hitelesíti magát. Az alkalmazás a [támogatott hitelesítési módszereket](../../active-directory/develop/authentication-vs-authorization.md) használja az alkalmazás típusától függően. Az alkalmazás jogkivonatot ad a síkon lévő erőforráshoz a hozzáférés biztosításához. Az erőforrás az Azure-környezet alapján a felügyelet vagy az adatsík végpontja. Az alkalmazás a jogkivonatot használja, és egy REST API kérelmet küld Key Vaultnak. További információért tekintse át a [teljes hitelesítési folyamatot](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
@@ -73,8 +73,8 @@ A felügyeleti síkon az [Azure szerepköralapú hozzáférés-vezérlés (Azure
 
 Hozzon létre egy kulcstartót egy erőforráscsoporthoz, és kezelje a hozzáférést az Azure AD használatával. A felhasználók vagy csoportok számára engedélyezheti az erőforráscsoport kulcstárolóinak kezelését. A hozzáférést adott hatóköri szinten kell megadni a megfelelő Azure-szerepkörök hozzárendelésével. Ahhoz, hogy hozzáférést biztosítson egy felhasználónak a kulcstartók kezeléséhez, egy előre definiált [Key Vault közreműködői](../../role-based-access-control/built-in-roles.md#key-vault-contributor) szerepkört kell hozzárendelni a felhasználóhoz egy adott hatókörben. Az Azure-szerepkörökhöz a következő hatóköröket lehet hozzárendelni:
 
-- **Előfizetés** : az előfizetés szintjén hozzárendelt Azure-szerepkörök az adott előfizetésen belüli összes erőforráscsoport és erőforrásra érvényesek.
-- **Erőforráscsoport** : az erőforráscsoport szintjén hozzárendelt Azure-szerepkör az adott erőforráscsoport összes erőforrására vonatkozik.
+- **Előfizetés**: az előfizetés szintjén hozzárendelt Azure-szerepkörök az adott előfizetésen belüli összes erőforráscsoport és erőforrásra érvényesek.
+- **Erőforráscsoport**: az erőforráscsoport szintjén hozzárendelt Azure-szerepkör az adott erőforráscsoport összes erőforrására vonatkozik.
 - **Adott** erőforrás: egy adott erőforráshoz hozzárendelt Azure-szerepkör az adott erőforrásra vonatkozik. Ebben az esetben az erőforrás egy adott kulcstartó.
 
 Számos előre definiált szerepkör létezik. Ha egy előre meghatározott szerepkör nem felel meg az igényeinek, megadhatja saját szerepkörét. További információ: [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md). 
@@ -130,19 +130,19 @@ A Key Vault tűzfallal és virtuális hálózatokkal kapcsolatos további inform
 
 ## <a name="private-endpoint-connection"></a>Magánhálózati végponti kapcsolatok
 
-Ha teljes mértékben le kell tiltani Key Vault a nyilvános expozíciót, egy Azure-beli [privát végpont](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) is használható. Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
+Ha teljes mértékben le kell tiltani Key Vault a nyilvános expozíciót, egy Azure-beli [privát végpont](../../private-link/private-endpoint-overview.md) is használható. Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
 
 Az Azure-szolgáltatások privát hivatkozásának használatának gyakori forgatókönyvei:
 
-- **Saját hozzáférésű szolgáltatások az Azure platformon** : virtuális hálózatának összekapcsolása az Azure-ban, nyilvános IP-cím nélkül a forráson vagy a célhelyen. A szolgáltatók saját virtuális hálózatban tehetik a szolgáltatásaikat, és a felhasználók a helyi virtuális hálózatban érhetik el a szolgáltatásokat. A privát kapcsolati platform a fogyasztó és a szolgáltatások közötti kapcsolatot fogja kezelni az Azure-beli gerinc hálózaton. 
+- **Saját hozzáférésű szolgáltatások az Azure platformon**: virtuális hálózatának összekapcsolása az Azure-ban, nyilvános IP-cím nélkül a forráson vagy a célhelyen. A szolgáltatók saját virtuális hálózatban tehetik a szolgáltatásaikat, és a felhasználók a helyi virtuális hálózatban érhetik el a szolgáltatásokat. A privát kapcsolati platform a fogyasztó és a szolgáltatások közötti kapcsolatot fogja kezelni az Azure-beli gerinc hálózaton. 
  
-- Helyszíni és egymással **összekapcsolt hálózatok** : az Azure-ban futó, privát végpontokat használó EXPRESSROUTE, VPN-alagutakra és a virtuális hálózatokra épülő, az Azure-ban futtatott hozzáférési szolgáltatások. A szolgáltatás eléréséhez nincs szükség a nyilvános vagy az Internet bejárására. A privát hivatkozás biztonságos módszert biztosít a számítási feladatok Azure-ba történő átirányításához.
+- Helyszíni és egymással **összekapcsolt hálózatok**: az Azure-ban futó, privát végpontokat használó EXPRESSROUTE, VPN-alagutakra és a virtuális hálózatokra épülő, az Azure-ban futtatott hozzáférési szolgáltatások. A szolgáltatás eléréséhez nincs szükség a nyilvános vagy az Internet bejárására. A privát hivatkozás biztonságos módszert biztosít a számítási feladatok Azure-ba történő átirányításához.
  
-- **Védelem az adatszivárgás ellen** : a rendszer a teljes szolgáltatás helyett egy privát végpontot rendel egy Pásti erőforrás egy példányához. A felhasználók csak az adott erőforráshoz tudnak csatlakozni. A szolgáltatás bármely más erőforrásához való hozzáférés le van tiltva. Ez a mechanizmus védelmet nyújt az adatszivárgási kockázatokkal szemben. 
+- **Védelem az adatszivárgás ellen**: a rendszer a teljes szolgáltatás helyett egy privát végpontot rendel egy Pásti erőforrás egy példányához. A felhasználók csak az adott erőforráshoz tudnak csatlakozni. A szolgáltatás bármely más erőforrásához való hozzáférés le van tiltva. Ez a mechanizmus védelmet nyújt az adatszivárgási kockázatokkal szemben. 
  
-- **Globális elérhetőség** : kapcsolódjon a más régiókban futó szolgáltatásokhoz. A fogyasztó virtuális hálózata az A régióba kerülhet, és a B régióban található privát hivatkozás mögött található szolgáltatásokhoz is csatlakozhat.  
+- **Globális elérhetőség**: kapcsolódjon a más régiókban futó szolgáltatásokhoz. A fogyasztó virtuális hálózata az A régióba kerülhet, és a B régióban található privát hivatkozás mögött található szolgáltatásokhoz is csatlakozhat.  
  
-- **Kiterjesztheti saját szolgáltatásait** : az Azure-beli felhasználók számára is lehetővé teszi, hogy a szolgáltatás magántulajdonban legyen. Ha a szolgáltatást egy szabványos Azure Load Balancer mögött helyezi el, akkor azt privát hivatkozásként is engedélyezheti. A fogyasztó ezután közvetlenül kapcsolódhat a szolgáltatáshoz a saját virtuális hálózatában található privát végpont használatával. A kapcsolatkérelmeket a jóváhagyási hívási folyamat használatával kezelheti. Az Azure Private link a különböző Azure Active Directory bérlők számára tartozó felhasználók és szolgáltatások számára is működik. 
+- **Kiterjesztheti saját szolgáltatásait**: az Azure-beli felhasználók számára is lehetővé teszi, hogy a szolgáltatás magántulajdonban legyen. Ha a szolgáltatást egy szabványos Azure Load Balancer mögött helyezi el, akkor azt privát hivatkozásként is engedélyezheti. A fogyasztó ezután közvetlenül kapcsolódhat a szolgáltatáshoz a saját virtuális hálózatában található privát végpont használatával. A kapcsolatkérelmeket a jóváhagyási hívási folyamat használatával kezelheti. Az Azure Private link a különböző Azure Active Directory bérlők számára tartozó felhasználók és szolgáltatások számára is működik. 
 
 További információ a privát végpontokról: [Key Vault az Azure Private linkkel](./private-link-service.md)
 
@@ -151,15 +151,15 @@ További információ a privát végpontokról: [Key Vault az Azure Private link
 Ebben a példában egy olyan alkalmazást fejlesztünk, amely egy tanúsítványt használ a TLS/SSL-hez, az Azure Storage-hoz az adattároláshoz, valamint egy RSA 2 048 bites kulcsot az Azure Storage-ban tárolt adattitkosításhoz. Az alkalmazás egy Azure-beli virtuális gépen (VM) (vagy egy virtuálisgép-méretezési csoporton) fut. Az alkalmazás titkos kulcsainak tárolására kulcstartót használhatunk. Az alkalmazás által az Azure AD-vel való hitelesítéshez használt rendszerindító tanúsítványt tároljuk.
 
 Hozzáférésre van szükségünk a következő tárolt kulcsokhoz és titkos kulcsokhoz:
-- **TLS/SSL-tanúsítvány** : TLS/SSL-hez használatos.
-- **Tárolási kulcs** : a Storage-fiók eléréséhez használatos.
-- **RSA 2 048 bites kulcs** : az Azure Storage által az adattitkosítási kulcs becsomagolására/kicsomagolására használatos.
-- **Alkalmazás által felügyelt identitás** : az Azure ad-vel való hitelesítéshez használatos. A Key Vaulthoz való hozzáférés engedélyezése után az alkalmazás beolvashatja a tárolási kulcsot és a tanúsítványt.
+- **TLS/SSL-tanúsítvány**: TLS/SSL-hez használatos.
+- **Tárolási kulcs**: a Storage-fiók eléréséhez használatos.
+- **RSA 2 048 bites kulcs**: az Azure Storage által az adattitkosítási kulcs becsomagolására/kicsomagolására használatos.
+- **Alkalmazás által felügyelt identitás**: az Azure ad-vel való hitelesítéshez használatos. A Key Vaulthoz való hozzáférés engedélyezése után az alkalmazás beolvashatja a tárolási kulcsot és a tanúsítványt.
 
 Meg kell határoznia a következő szerepköröket annak meghatározásához, hogy ki kezelheti, telepítheti és naplózhatja az alkalmazást:
-- **Biztonsági csapat** : a KSH (a biztonsági tisztviselő) vagy hasonló közreműködők irodájában dolgozó személyzet. A biztonsági csapat feladata a titkok megfelelő védelme. A titkok közé tartoznak a TLS/SSL-tanúsítványok, az RSA-kulcsok a titkosításhoz, a kapcsolati karakterláncok és a Storage-fiók kulcsainak.
-- **Fejlesztők és operátorok** : az alkalmazást fejlesztő és az Azure-ban üzembe helyezett munkatársak. A csapat tagjai nem tartoznak a biztonsági személyzetbe. Nem férhetnek hozzá a bizalmas adatokhoz, például a TLS/SSL-tanúsítványokhoz és az RSA-kulcsokhoz. Csak az általuk telepített alkalmazások férhetnek hozzá a bizalmas adatokhoz.
-- **Könyvvizsgálók** : Ez a szerepkör olyan közreműködők számára szól, akik nem tagjai a fejlesztési vagy általános informatikai munkatársainak. A biztonsági szabványoknak való megfelelés biztosítása érdekében áttekintik a tanúsítványok, kulcsok és titkok használatát és karbantartását.
+- **Biztonsági csapat**: a KSH (a biztonsági tisztviselő) vagy hasonló közreműködők irodájában dolgozó személyzet. A biztonsági csapat feladata a titkok megfelelő védelme. A titkok közé tartoznak a TLS/SSL-tanúsítványok, az RSA-kulcsok a titkosításhoz, a kapcsolati karakterláncok és a Storage-fiók kulcsainak.
+- **Fejlesztők és operátorok**: az alkalmazást fejlesztő és az Azure-ban üzembe helyezett munkatársak. A csapat tagjai nem tartoznak a biztonsági személyzetbe. Nem férhetnek hozzá a bizalmas adatokhoz, például a TLS/SSL-tanúsítványokhoz és az RSA-kulcsokhoz. Csak az általuk telepített alkalmazások férhetnek hozzá a bizalmas adatokhoz.
+- **Könyvvizsgálók**: Ez a szerepkör olyan közreműködők számára szól, akik nem tagjai a fejlesztési vagy általános informatikai munkatársainak. A biztonsági szabványoknak való megfelelés biztosítása érdekében áttekintik a tanúsítványok, kulcsok és titkok használatát és karbantartását.
 
 Van egy másik szerepkör, amely az alkalmazás hatókörén kívül esik: az előfizetés (vagy erőforráscsoport) rendszergazdája. Az előfizetés-rendszergazda beállítja a kezdeti hozzáférési engedélyeket a biztonsági csapat számára. Hozzáférést biztosítanak a biztonsági csapathoz egy olyan erőforráscsoport használatával, amely az alkalmazás által igényelt erőforrásokkal rendelkezik.
 
@@ -182,11 +182,11 @@ A következő műveleteket kell engedélyeznie a szerepkörökhöz:
 
 A következő táblázat összefoglalja a szerepkörök és alkalmazások hozzáférési engedélyeit.
 
-| Szerepkör | Felügyeleti sík engedélyei | Adatsík engedélyei – tár-hozzáférési szabályzatok | Adatsík engedélyei – Azure RBAC (előzetes verzió)  |
+| Role | Felügyeleti sík engedélyei | Adatsík engedélyei – tár-hozzáférési szabályzatok | Adatsík engedélyei – Azure RBAC (előzetes verzió)  |
 | --- | --- | --- | --- |
 | Biztonsági csapat | [Key Vault közreműködő](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Tanúsítványok: minden művelet <br> Kulcsok: minden művelet <br> Titkok: minden művelet | [Key Vault rendszergazda (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
-| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés** : ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincsenek | Nincsenek |
-| Ellenőrök | Nincsenek | Tanúsítványok: lista <br> Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés** : ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). | [Key Vault olvasó (előzetes verzió)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
+| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincsenek | Nincsenek |
+| Ellenőrök | Nincsenek | Tanúsítványok: lista <br> Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). | [Key Vault olvasó (előzetes verzió)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
 | Azure Storage-tárfiók neve | Nincsenek | Kulcsok: beolvasás, Listázás, wrapKey, unwrapKey <br> | [Titkosítási szolgáltatás titkosításának Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
 | Alkalmazás | Nincsenek | Titkok: lekérés, Listázás <br> Tanúsítványok: lekérés, Listázás | [Key Vault olvasó (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault Secret User (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 

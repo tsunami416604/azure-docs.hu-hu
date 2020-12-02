@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: a5d167ef06e8319004a1f33bead29485b22abc3d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6920d6cd190927747a69fc4dc0f0791278665abe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685783"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451689"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Felhasználó által definiált sémák a szinapszis SQL-en belül
 
@@ -27,7 +27,7 @@ A hagyományos elemzési architektúra gyakran külön adatbázisokat használ a
 Ehelyett a szinapszis SQL egy adatbázison belül futtatja a teljes elemzési munkafolyamatot. Az adatbázison keresztüli illesztések nem engedélyezettek. A szinapszis SQL elvárja, hogy a raktár által használt összes tábla az egy adatbázisban legyen tárolva.
 
 > [!NOTE]
-> A dedikált SQL-készletek nem támogatják a különböző típusú adatbázisok lekérdezéseit. Ennek következtében az ezt a mintát használó elemzési implementációkat felül kell vizsgálni. A kiszolgáló nélküli SQL-készlet (előzetes verzió) támogatja az adatbázison keresztüli lekérdezéseket.
+> A dedikált SQL-készletek nem támogatják a különböző típusú adatbázisok lekérdezéseit. Ennek következtében az ezt a mintát használó elemzési implementációkat felül kell vizsgálni. A kiszolgáló nélküli SQL-készlet támogatja az adatbázison keresztüli lekérdezéseket.
 
 ## <a name="user-defined-schema-recommendations"></a>Felhasználó által definiált séma-javaslatok
 
@@ -120,6 +120,6 @@ FROM    [edw].customer
 
 Ha további részletességi engedélyek szükségesek, akkor használhatja az adatbázis-szerepköröket. Az adatbázis-szerepkörökkel kapcsolatos további információkért tekintse meg az [adatbázis-szerepkörök és-felhasználók kezelése](../../analysis-services/analysis-services-database-users.md) című cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További fejlesztési tippek: a [SZINAPSZIS SQL-fejlesztés áttekintése](develop-overview.md).

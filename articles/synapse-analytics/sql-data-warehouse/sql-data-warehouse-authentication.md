@@ -1,6 +1,6 @@
 ---
-title: Hitelesítés
-description: Ismerje meg, hogyan végezhet hitelesítést az Azure szinapszis Analytics szolgáltatásban Azure Active Directory (Azure AD) vagy SQL Server hitelesítés használatával.
+title: Hitelesítés dedikált SQL-készlethez (korábban SQL DW)
+description: Megtudhatja, hogyan végezhet hitelesítést a dedikált SQL-készletben (korábban SQL DW) az Azure szinapszis Analyticsben Azure Active Directory (Azure AD) vagy SQL Server hitelesítés használatával.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,24 +12,24 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: 29709dc03ee3a06bdf2aec2587909a08ee13504e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2b5ca024046c5bc46fff756c55688d3ff0cfea1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85206730"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451961"
 ---
-# <a name="authenticate-to-azure-synapse-analytics"></a>Hitelesítés az Azure szinapszis Analytics szolgáltatásban
+# <a name="authenticate-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Hitelesítés dedikált SQL-készlettel (korábban SQL DW) az Azure szinapszis Analyticsben
 
-Megtudhatja, hogyan hitelesítheti magát a szinapszis SQL-ben az Azure Szinapszisban Azure Active Directory (HRE) vagy SQL Server hitelesítés használatával.
+Megtudhatja, hogyan végezhet hitelesítést a dedikált SQL-készletben (korábbi nevén SQL DW) az Azure Szinapszisban Azure Active Directory (Azure AD) vagy SQL Server hitelesítés használatával.
 
-SQL-készlethez való kapcsolódáshoz hitelesítő adatokat kell megadnia hitelesítési célokra. A kapcsolat létrehozásakor a rendszer bizonyos kapcsolatbeállításokat a lekérdezési munkamenet létrehozásának részeként konfigurál.  
+Ha egy dedikált SQL-készlethez (korábban SQL DW) szeretne csatlakozni, hitelesítő adatokat kell megadnia hitelesítési célokra. A kapcsolat létrehozásakor a rendszer bizonyos kapcsolatbeállításokat a lekérdezési munkamenet létrehozásának részeként konfigurál.  
 
-A biztonsággal és az adattárház kapcsolatainak engedélyezésével kapcsolatos további információkért lásd az [adatbázis-dokumentáció biztonságossá](sql-data-warehouse-overview-manage-security.md)tételét ismertető témakört.
+További információ a biztonságról és a dedikált SQL-készlet (korábban SQL DW) kapcsolatainak engedélyezéséről: [adatbázis-dokumentáció biztonságossá tétele](sql-data-warehouse-overview-manage-security.md).
 
 ## <a name="sql-authentication"></a>SQL-hitelesítés
 
-Az SQL-készlethez való kapcsolódáshoz a következő információkat kell megadnia:
+A dedikált SQL-készlethez (korábban SQL DW) való kapcsolódáshoz a következő információkat kell megadnia:
 
 * Teljes kiszolgálónév
 * SQL-hitelesítés meghatározása
@@ -45,9 +45,9 @@ Alapértelmezés szerint a kapcsolat a *Master* adatbázishoz csatlakozik, nem p
 > [!NOTE]
 > A Transact-SQL-utasítás a **MyDatabase; használata** nem támogatott a kapcsolatok adatbázisának módosításához. Ahhoz, hogy útmutatást biztosítson egy SQL-készlethez a SSDT-mel, tekintse meg a [lekérdezés a Visual Studio](sql-data-warehouse-query-visual-studio.md) használatával című cikket.
 
-## <a name="azure-active-directory-aad-authentication"></a>Azure Active Directory (HRE) hitelesítés
+## <a name="azure-active-directory-authentication"></a>Hitelesítés Azure Active Directory-fiókkal
 
-[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) hitelesítés a Azure Active Directory (Azure ad) identitások használatával történő csatlakozásának mechanizmusa az SQL-készlethez. A Azure Active Directory hitelesítéssel központilag kezelheti az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásait egy központi helyen. A központi AZONOSÍTÓk kezelése egyetlen helyet biztosít az Azure szinapszis-felhasználók felügyeletéhez, és egyszerűbbé teszi az engedélyek kezelését.
+[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) hitelesítés a Azure Active Directory (Azure ad) identitások használatával történő csatlakozásának mechanizmusa az SQL-készlethez. A Azure Active Directory hitelesítéssel központilag kezelheti az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásait egy központi helyen. A központi AZONOSÍTÓk kezelése egyetlen helyet biztosít a dedikált SQL-készlet (korábban SQL DW) felhasználók felügyeletéhez, és leegyszerűsíti az engedélyek kezelését.
 
 ### <a name="benefits"></a>Előnyök
 
@@ -57,7 +57,7 @@ A Azure Active Directory előnyei a következők:
 * Segít leállítani a felhasználói identitások elterjedését a kiszolgálók között.
 * Központi helyet biztosít a jelszóváltoztatáshoz
 * Adatbázis-engedélyek kezelése külső (Azure AD) csoportok használatával.
-* Az integrált Windows-hitelesítés, valamint a Azure Active Directory által támogatott, a hitelesítéssel nem rendelkező hitelesítési formák engedélyezésével kiküszöböli a jelszavak tárolását.
+* Az integrált Windows-hitelesítés és a Azure Active Directory által támogatott hitelesítés más formáinak engedélyezésével kiküszöböli a jelszavak tárolását.
 * A a tárolt adatbázis-felhasználók használatával hitelesíti az identitásokat az adatbázis szintjén.
 * Támogatja a jogkivonat-alapú hitelesítést az SQL-készlethez kapcsolódó alkalmazások esetében.
 * A többtényezős hitelesítést Active Directory univerzális hitelesítéssel támogatja különböző eszközökhöz, például [SQL Server Management Studio](../../azure-sql/database/authentication-mfa-ssms-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) és [SQL Server Data Toolsekhez](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).

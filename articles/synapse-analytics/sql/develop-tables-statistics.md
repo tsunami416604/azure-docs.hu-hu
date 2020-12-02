@@ -11,16 +11,16 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: b3e1c4b8dec0e62bb2a77939a36e38b61837033a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 52e3ea3e07a81495f64f70f72686154a02a654af
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638852"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451802"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statisztika a szinapszis SQL-ben
 
-Ez a cikk ajánlásokat és példákat tartalmaz a lekérdezés-optimalizálási statisztikák létrehozására és frissítésére a szinapszis SQL-erőforrások használatával: dedikált SQL-készlet és kiszolgáló nélküli SQL-készlet (előzetes verzió).
+Ez a cikk ajánlásokat és példákat tartalmaz a lekérdezés-optimalizálási statisztikák létrehozására és frissítésére a szinapszis SQL-erőforrások használatával: dedikált SQL-készlet és kiszolgáló nélküli SQL-készlet.
 
 ## <a name="statistics-in-dedicated-sql-pool"></a>Statisztika a dedikált SQL-készletben
 
@@ -74,7 +74,7 @@ A mérhető teljesítmény elkerülése érdekében először létre kell hoznia
 > [!NOTE]
 > A statisztikák létrehozása a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) egy másik felhasználói környezetben történik.
 
-Az automatikus statisztikák létrehozásakor a rendszer az alábbiakat használja: _WA_Sys_ <8 jegyű oszlop azonosítóját hexadecimális>_<8 számjegyű tábla azonosítóját hexadecimális>. A már létrehozott statisztikákat a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) parancs futtatásával tekintheti meg:
+Az automatikus statisztikák létrehozásakor a rendszer az alábbiakat használja: _WA_Sys_<8 jegyű oszlop azonosítóját hexadecimális>_<8 számjegyű tábla azonosítóját hexadecimális>. A már létrehozott statisztikákat a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) parancs futtatásával tekintheti meg:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -557,7 +557,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - A 2767-es egyéni hiba nem támogatott.
 
 
-## <a name="statistics-in-serverless-sql-pool-preview"></a>Statisztika a kiszolgáló nélküli SQL-készletben (előzetes verzió)
+## <a name="statistics-in-serverless-sql-pool"></a>Statisztika a kiszolgáló nélküli SQL-készletben
 
 Az adott adatkészlethez (tárolási útvonal) tartozó statisztikákat egy adott oszlop alapján hozza létre a rendszer.
 
@@ -566,7 +566,7 @@ Az adott adatkészlethez (tárolási útvonal) tartozó statisztikákat egy adot
 
 ### <a name="why-use-statistics"></a>Miért használja a statisztikát?
 
-Minél több kiszolgáló nélküli SQL-készlet (előzetes verzió) ismeri az adatait, annál gyorsabban végezhet lekérdezéseket. Az adatokra vonatkozó statisztikák gyűjtése az egyik legfontosabb dolog, amit a lekérdezések optimalizálásához is el lehet végezni. 
+Minél több kiszolgáló nélküli SQL-készlet ismeri az adatait, annál gyorsabban végezhet lekérdezéseket. Az adatokra vonatkozó statisztikák gyűjtése az egyik legfontosabb dolog, amit a lekérdezések optimalizálásához is el lehet végezni. 
 
 A kiszolgáló nélküli SQL Pool lekérdezés-optimalizáló egy költséghatékony optimalizáló. Összehasonlítja a különböző lekérdezési csomagok költségeit, majd kiválasztja a legalacsonyabb díjszabású csomagot. A legtöbb esetben azt a tervet választja, amely a leggyorsabb végrehajtást fogja végrehajtani. 
 
@@ -882,7 +882,7 @@ WHERE   st.[user_created] = 1
 ;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A dedikált SQL-készlet lekérdezési teljesítményének növeléséhez lásd: a számítási feladatok és ajánlott eljárások [figyelése](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) [dedikált SQL-készlethez](best-practices-sql-pool.md#maintain-statistics).
 

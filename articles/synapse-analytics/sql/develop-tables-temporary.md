@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: dd285e8029d8e140380b0f90c60081d0e1f8dd56
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06faa1da71331c299245a93af96166880e7732de
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305033"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451788"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Ideiglenes táblák a szinapszis SQL-ben
 
 Ez a cikk alapvető útmutatást tartalmaz az ideiglenes táblák használatához, és kiemeli a munkamenetek szintjének ideiglenes tábláinak alapelveit a szinapszis SQL-en belül. 
 
-A dedikált SQL Pool és a kiszolgáló nélküli SQL-készlet (előzetes verzió) erőforrásai is használhatják az ideiglenes táblákat. A kiszolgáló nélküli SQL-készlet korlátozásait a cikk végén tárgyaljuk. 
+A dedikált SQL-készlet és a kiszolgáló nélküli SQL-készlet erőforrásai is használhatják az ideiglenes táblákat. A kiszolgáló nélküli SQL-készlet korlátozásait a cikk végén tárgyaljuk. 
 
 ## <a name="temporary-tables"></a>Ideiglenes táblák
 
@@ -226,13 +226,13 @@ A dedikált SQL-készletnek van néhány implementációs korlátja az ideiglene
 - Nem hozhatók létre nézetek ideiglenes táblákon.
 - Ideiglenes táblákat csak kivonattal vagy ciklikus multiplexelés eloszlással lehet létrehozni.  A replikált ideiglenes tábla eloszlása nem támogatott. 
 
-## <a name="temporary-tables-in-serverless-sql-pool-preview"></a>Ideiglenes táblák a kiszolgáló nélküli SQL-készletben (előzetes verzió)
+## <a name="temporary-tables-in-serverless-sql-pool"></a>Ideiglenes táblák a kiszolgáló nélküli SQL-készletben
 
 A kiszolgáló nélküli SQL-készletben lévő ideiglenes táblák támogatottak, de a használatuk korlátozott. Nem használhatók olyan lekérdezésekben, amelyek megcélozják a fájlokat. 
 
 Nem lehet például olyan ideiglenes táblát csatlakoztatni, amely a tárolóban lévő fájlokból származó adatokkal rendelkezik. Az ideiglenes táblák száma 100, a teljes méretük pedig 100 MB-ra van korlátozva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A táblázatok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [táblák tervezése a SZINAPSZIS SQL-erőforrások használatával](develop-tables-overview.md) című cikket.
 

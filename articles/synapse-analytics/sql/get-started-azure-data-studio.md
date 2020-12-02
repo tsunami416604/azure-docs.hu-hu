@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás a szinapszis SQLhoz a Azure Data Studio használatával (előzetes verzió)
-description: A Azure Data Studio (előzetes verzió) használatával kapcsolódhat és lekérdezheti a szinapszis SQL-t az Azure szinapszis Analytics szolgáltatásban.
+title: Kapcsolódás a szinapszis SQLhoz a Azure Data Studio használatával
+description: A Azure Data Studio használatával csatlakozhat a szinapszis SQL-hez az Azure szinapszis Analytics szolgáltatásban, és lekérdezheti azokat.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,24 +9,24 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3af28ef575f770a5b8c3fb73ade1f9c53be66843
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 580dfe779ff0f550524781076d3e27805ffd6689
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685749"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451653"
 ---
-# <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Kapcsolódás a szinapszis SQLhoz a Azure Data Studio használatával (előzetes verzió)
+# <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Kapcsolódás a szinapszis SQLhoz a Azure Data Studio használatával
 
 > [!div class="op_single_selector"]
 >
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [Sqlcmd](get-started-connect-sqlcmd.md)
+> * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-[Azure Data Studio (előzetes verzió)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával kapcsolódhat a szinapszis SQL-hez az Azure szinapszis Analytics szolgáltatásban, és lekérdezheti azokat. 
+A [Azure Data Studio)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával kapcsolódhat a szinapszis SQL-hez az Azure szinapszis Analytics szolgáltatásban, és lekérdezheti azt. 
 
 ## <a name="connect"></a>Kapcsolódás
 
@@ -42,7 +42,7 @@ A kapcsolathoz a következő paraméterek szükségesek:
 * **Adatbázis:** Adatbázis neve
 
 > [!NOTE]
-> Ha **kiszolgáló nélküli SQL-készletet szeretne használni (előzetes verzió)** , az URL-címnek a következőképpen kell kinéznie:
+> Ha a kiszolgáló nélküli SQL- **készletet** szeretné használni, az URL-címnek a következőhöz hasonlóan kell kinéznie:
 >
 > - `<Azure Synapse workspace name>`– ondemand.sql.azuresynapse.net.
 >
@@ -87,12 +87,12 @@ OPENROWSET(
     FORMAT='PARQUET'
 )
 ```
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 Ismerkedjen meg a szinapszis SQL-hez való kapcsolódás egyéb módjaival: 
 
 - [SSMS](get-started-ssms.md)
 - [Power BI](get-started-power-bi-professional.md)
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Sqlcmd](get-started-connect-sqlcmd.md)
+- [sqlcmd](get-started-connect-sqlcmd.md)
 
 További információért látogasson el a [Azure Data Studio használatára az adatok összekapcsolásához és lekérdezéséhez egy DEDIKÁLT SQL-készlet használatával az Azure szinapszis Analyticsben](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-dw). 

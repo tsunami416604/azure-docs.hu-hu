@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/13/2020
 ms.author: alkohli
-ms.openlocfilehash: 7ddc83874526a99383f94491771a81da2cde86d8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4aa25024273d62fe5b292d329f6470a828b952a7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047301"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449534"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>A Azure Stack Edge Pro és a GPU általánosan elérhető (GA) kibocsátási megjegyzései
 
@@ -21,7 +21,7 @@ A következő kibocsátási megjegyzések azonosítják az Azure Stack Edge Pro-
 
 A kibocsátási megjegyzések folyamatosan frissülnek, és olyan kritikus fontosságú problémák észlelhetők, amelyek megkerülő megoldást igényelnek. A Azure Stack Edge Pro-eszköz üzembe helyezése előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
 
-Ez a cikk az **Azure stack Edge Pro 2010** kiadására vonatkozik, amely a szoftver verziószámának **2.1.1377.2170**van leképezve.
+Ez a cikk az **Azure stack Edge Pro 2010** kiadására vonatkozik, amely a szoftver verziószámának **2.1.1377.2170** van leképezve.
 
 ## <a name="whats-new"></a>Újdonságok
 
@@ -35,10 +35,10 @@ A következő új szolgáltatások érhetők el az Azure Stack Edge 2010 kiadás
 
 Az alábbi táblázat összefoglalja az Azure Stack Edge Pro-eszköz ismert problémáit.
 
-| Nem. | Szolgáltatás | Probléma | Áthidaló megoldás/megjegyzések |
+| Nem. | Jellemző | Probléma | Áthidaló megoldás/megjegyzések |
 | --- | --- | --- | --- |
 |**1.**|Előzetes verziójú funkciók |Ebben a kiadásban a következő funkciók érhetők el: helyi Azure Resource Manager, virtuális gépek, Kubernetes, Azure arc-kompatibilis Kubernetes, többfolyamatos szolgáltatás (mp) GPU-hoz – az Azure Stack Edge Pro-eszköz előzetes verziójában érhető el.  |Ezek a funkciók általánosan elérhetők lesznek egy későbbi kiadásban. |
-| **2.** |Azure Stack Edge Pro + Azure SQL | Az SQL Database létrehozásához rendszergazdai hozzáférés szükséges.   |Hajtsa végre az alábbi lépéseket a 1-2. lépés helyett a következőben: [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) . <ul><li>Az eszköz helyi felhasználói felületén engedélyezze a számítási felületet. Válassza **a számítási > port # > engedélyezés a számítási > alkalmazáshoz lehetőséget.**</li><li>Letöltés az `sqlcmd` ügyfélgépről https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>Kapcsolódjon a számítási felület IP-címéhez (az engedélyezett porthoz), és adjon hozzá egy ", 1401" értéket a cím végéhez.</li><li>A végső parancs a következőképpen fog kinézni: Sqlcmd-S {Interface IP}, 1401-U SA-P "strong! Passw0rd".</li>Ezt követően az aktuális dokumentáció 3-4. lépésének meg kell egyeznie. </li></ul> |
+| **2.** |Azure Stack Edge Pro + Azure SQL | Az SQL Database létrehozásához rendszergazdai hozzáférés szükséges.   |Hajtsa végre az alábbi lépéseket a 1-2. lépés helyett a következőben: [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) . <ul><li>Az eszköz helyi felhasználói felületén engedélyezze a számítási felületet. Válassza **a számítási > port # > engedélyezés a számítási > alkalmazáshoz lehetőséget.**</li><li>Letöltés az `sqlcmd` ügyfélgépről https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>Kapcsolódjon a számítási felület IP-címéhez (az engedélyezett porthoz), és adjon hozzá egy ", 1401" értéket a cím végéhez.</li><li>A végső parancs a következőképpen fog kinézni: Sqlcmd-S {Interface IP}, 1401-U SA-P "strong! Passw0rd".</li>Ezt követően az aktuális dokumentáció 3-4. lépésének meg kell egyeznie. </li></ul> |
 | **3.** |Frissítés| A Blobok a **frissítésen** keresztül visszaállított növekményes módosításai nem támogatottak |BLOB-végpontok esetén a Blobok részleges frissítése a frissítés után előfordulhat, hogy a frissítés nem töltődik fel a felhőbe. Például a következő műveletek sorozatából:<ul><li>Hozzon létre egy blobot a felhőben. Vagy törölhet egy korábban feltöltött blobot az eszközről.</li><li>Frissítse a blobot a felhőből a készülékre a frissítési funkció használatával.</li><li>Csak a blob egy részét frissítse az Azure SDK REST API-k használatával.</li></ul>Ezek a műveletek a blob frissített részeit eredményezik, hogy a felhőben ne legyen frissítve. <br>**Megkerülő megoldás**: a teljes Blobok cseréjéhez használjon olyan eszközöket, mint a Robocopy vagy a hagyományos fájlmásolás az Explorer vagy a parancssor használatával.|
 |**4.**|Throttling|A szabályozás során, ha az új írások nem engedélyezettek az eszközön, az NFS-ügyfél által végzett írás "engedély megtagadva" hibával meghiúsul.| A hiba az alábbi módon jelenik meg:<br>`hcsuser@ubuntu-vm:~/nfstest$ mkdir test`<br>mkdir: a (z) "test" könyvtár nem hozható létre: az engedély megtagadva|
 |**5.**|Blob Storage betöltés|Ha a AzCopy 10-es verzióját használja a blob Storage betöltéséhez, futtassa a AzCopy a következő argumentummal: `Azcopy <other arguments> --cap-mbps 2000`| Ha ezek a korlátok nincsenek megadva a AzCopy, akkor előfordulhat, hogy nagy mennyiségű kérelmet küld az eszköznek, és problémákat okozhat a szolgáltatásban.|
@@ -63,7 +63,6 @@ Az alábbi táblázat összefoglalja az Azure Stack Edge Pro-eszköz ismert prob
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felkészülés a Azure Stack Edge Pro-eszköz GPU-val való üzembe helyezésére](azure-stack-edge-gpu-deploy-prep.md)
-

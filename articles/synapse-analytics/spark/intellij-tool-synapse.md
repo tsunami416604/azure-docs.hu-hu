@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – Azure Toolkit for IntelliJ (Spark-alkalmazás)
-description: Oktatóanyag – a Azure Toolkit for IntelliJ használatával fejlesztheti a Scala-ben írt Spark-alkalmazásokat, és beküldheti azokat egy kiszolgáló nélküli Apache Spark-készletbe (előzetes verzió).
+description: Oktatóanyag – a Azure Toolkit for IntelliJ használatával fejlesztheti a Scala-ben írt Spark-alkalmazásokat, és elküldheti azokat egy kiszolgáló nélküli Apache Spark készletbe.
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,22 +9,22 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 5a9fcf3e13c2f86a11e9626be486a585ec659044
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 75cc23df41741a95e87ad64d168aea4fa4f45733
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013768"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451048"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Oktatóanyag: Apache Spark-alkalmazás létrehozása a IntelliJ a szinapszis-munkaterület használatával
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Toolkit for IntelliJ beépülő modult Apache Spark alkalmazások fejlesztéséhez, amelyek a [Scala](https://www.scala-lang.org/)-ben íródtak, majd a IntelliJ integrált fejlesztői környezetből (ide) közvetlenül beküldhetik a kiszolgáló nélküli Apache Spark készletbe (előzetes verzió). A beépülő modult többféleképpen is használhatja:
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Toolkit for IntelliJ beépülő modult Apache Spark alkalmazások fejlesztéséhez, amelyek a [Scala](https://www.scala-lang.org/)-ben íródtak, majd a IntelliJ integrált fejlesztői környezetből (ide) közvetlenül beküldhetik a kiszolgáló nélküli Apache Spark készletbe. A beépülő modult többféleképpen is használhatja:
 
 - Egy Spark-készleten fejlesztheti és küldheti el a Scala Spark-alkalmazásokat.
 - Hozzáférhet a Spark-készletek erőforrásaihoz.
 - A Scala Spark alkalmazást helyileg fejlesztheti és futtathatja.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 >
 > - A Azure Toolkit for IntelliJ beépülő modul használata
@@ -67,7 +67,7 @@ Az oktatóanyag a következőket ismerteti:
 
     ![Az Apache Spark SDK kiválasztása](./media/intellij-tool-synapse/create-synapse-application02.png)
 
-7. Válassza a **Befejezés** lehetőséget. A projekt elérhetővé válása néhány percet igénybe vehet.
+7. Válassza a **Befejezés** gombot. A projekt elérhetővé válása néhány percet igénybe vehet.
 8. A Spark-projekt automatikusan létrehoz egy összetevőt. Az összetevő megtekintéséhez hajtsa végre a következő műveleteket:
 
    a. A menüsávban navigáljon a **fájl**  >  **projekt szerkezete...** elemre.

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: d323504a46cd35525c889a94d2d044193c1471ac
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8637b33ebc4b697ee6f498acb84ee33718c53f6d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535945"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448853"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>PHP-beli Vendégkönyv állapot nélküli alkalmazás üzembe helyezése a Redis on arc enabled Kubernetes-fürtön Azure Stack Edge Pro GPU-val
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy egyszerű, t
 
 Az üzembe helyezés a Azure Stack Edge Pro-eszközön a GitOps használatával történik az arc-kompatibilis Kubernetes-fürtön. 
 
-Ez az eljárás azok számára készült, akik áttekintették a Kubernetes számítási feladatait [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-workload-management.md) , és ismeri az [Azure arc-kompatibilis Kubernetes (előzetes verzió)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)fogalmait.
+Ez az eljárás azok számára készült, akik áttekintették a Kubernetes számítási feladatait [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-workload-management.md) , és ismeri az [Azure arc-kompatibilis Kubernetes (előzetes verzió)](../azure-arc/kubernetes/overview.md)fogalmait.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -44,7 +44,7 @@ Az állapot nélküli alkalmazás üzembe helyezése előtt győződjön meg arr
 
 1. Van egy Windows-ügyfélrendszer, amely az Azure Stack Edge Pro-eszköz elérésére szolgál majd.
   
-    - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - Bármely más ügyfél [támogatott operációs rendszerrel](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. 
     
@@ -174,6 +174,6 @@ C:\Users\user>
 ```-->
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [figyelheti a Kubernetes irányítópultot a Azure stack Edge Pro-eszközön üzemelő példányok figyelésére](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)

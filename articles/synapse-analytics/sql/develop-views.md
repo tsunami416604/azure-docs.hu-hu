@@ -1,6 +1,6 @@
 ---
 title: SQL-készleteket használó T-SQL-nézetek
-description: Tippek a T-SQL-nézetek használatához és a megoldások fejlesztéséhez dedikált SQL-készlettel és kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analyticsben.
+description: Tippek a T-SQL-nézetek használatához és a megoldások fejlesztése dedikált SQL-készlettel és kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5097c35d97e33ef2d6fa0be12c796bf7e4e06950
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6fb75257a86e9e46d6c180a2a38193adecb2b36a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685732"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451684"
 ---
-# <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-preview--in-azure-synapse-analytics"></a>T-SQL-nézetek dedikált SQL-készlettel és kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
+# <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-in-azure-synapse-analytics"></a>T-SQL-nézetek dedikált SQL-készlettel és kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
-Ebből a cikkből megtudhatja, hogyan használhatók a T-SQL-nézetek és a megoldások fejlesztése dedikált SQL-készlettel és kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban.
+Ebből a cikkből megtudhatja, hogyan használhatja a T-SQL-nézeteket, és hogyan fejleszthet megoldásokat dedikált SQL-készlettel és kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analytics szolgáltatásban.
 
 ## <a name="why-use-views"></a>A nézetek használata
 
@@ -72,7 +72,7 @@ A szinapszis SQL nézetei csak metaadatokként vannak tárolva. Ennek következt
 * A kibontási/kibontási útmutatók nem támogatottak
 * Nincsenek indexelt nézetek a szinapszis SQL-ben
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További fejlesztési tippek: a [SZINAPSZIS SQL-fejlesztés áttekintése](develop-overview.md).
 

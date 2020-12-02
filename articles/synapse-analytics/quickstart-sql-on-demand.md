@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: kiszolgáló nélküli SQL-készlet használata'
-description: Ebből a rövid útmutatóból megtudhatja, hogy milyen egyszerűen lekérdezheti a különböző típusú fájlokat a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogy milyen egyszerűen lekérdezheti a különböző típusú fájlokat a kiszolgáló nélküli SQL-készlet használatával.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 270942392e028964c7e9b1c110e4d9f118bd4953
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682978"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450506"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>Gyors útmutató: kiszolgáló nélküli SQL-készlet használata
 
-A szinapszis kiszolgáló nélküli SQL-készlete (előzetes verzió) egy kiszolgáló nélküli lekérdezési szolgáltatás, amely lehetővé teszi, hogy SQL-lekérdezéseket futtasson az Azure Storage-ban elhelyezett fájlokon. Ebből a rövid útmutatóból megtudhatja, hogyan kérdezheti le a különböző típusú fájlokat a kiszolgáló nélküli SQL-készlet használatával. A támogatott formátumok a [OpenRowset](sql/develop-openrowset.md)-ben vannak felsorolva.
+A szinapszis kiszolgáló nélküli SQL-készlete egy kiszolgáló nélküli lekérdezési szolgáltatás, amely lehetővé teszi, hogy SQL-lekérdezéseket futtasson az Azure Storage-ba helyezett fájlokon. Ebből a rövid útmutatóból megtudhatja, hogyan kérdezheti le a különböző típusú fájlokat a kiszolgáló nélküli SQL-készlet használatával. A támogatott formátumok a [OpenRowset](sql/develop-openrowset.md)-ben vannak felsorolva.
 
 Ez a rövid útmutató a következő lekérdezéseket mutatja be: CSV, Apache Parquet és JSON-fájlok.
 
@@ -178,7 +178,7 @@ WHERE
 > [!IMPORTANT]
 > A teljes JSON-fájlt egysoros/oszlopként olvasjuk. Így a FIELDTERMINATOR, a FIELDQUOTE és a ROWTERMINATOR a 0x0b értékre van állítva, mert nem várjuk, hogy megkeresjük a fájlban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már készen áll a folytatásra a következő cikkekkel:
 

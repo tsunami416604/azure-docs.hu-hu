@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: ba903793844e44b26931a70183860c983adaf18a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52f0bcbb332b5d5e47440accff9d9895dcef7056
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743403"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449361"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Azure Stack Edge Pro telepítése GPU-val
 
@@ -228,7 +228,7 @@ A következő lépésekkel csatlakoztassa az eszközt az áramellátáshoz és a
 7. A PORT 2, PORT 3, PORT 4, PORT 5 vagy PORT 6 közül legalább egyet az adatközponti hálózathoz/internethez kell csatlakoztatni.
 
     - Ha a 2-es PORTOT csatlakoztatja, használja az 1-GbE RJ-45 hálózati kábelt.
-    - A 10/25 GbE hálózati adapterek esetében használja az SFP + Copper kábeleket.
+    - A 10/25 GbE hálózati adapterek esetében használja az SFP + réz kábeleket vagy a szálat. Ha Fiber-t használ, használjon optikai és SFP-adaptert.
 
 ## <a name="next-steps"></a>További lépések
 

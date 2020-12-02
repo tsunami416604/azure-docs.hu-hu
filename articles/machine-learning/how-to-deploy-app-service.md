@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 491fa39bed9e73a41f5a29a9040df052b6945552
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5f3861d43715ed68116d25206efe4347ea96805c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578025"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452134"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 
@@ -29,7 +29,7 @@ Megtudhatja, hogyan helyezhet üzembe modellt Azure Machine Learning webalkalmaz
 A Azure Machine Learning segítségével Docker-rendszerképeket hozhat létre a képzett gépi tanulási modellekből. Ez a rendszerkép olyan webszolgáltatást tartalmaz, amely fogadja az adatok fogadását, elküldi a modellbe, majd visszaadja a választ. A Azure App Service használható a lemezkép üzembe helyezéséhez, és a következő funkciókat biztosítja:
 
 * Speciális [hitelesítés](../app-service/configure-authentication-provider-aad.md) a fokozott biztonsághoz. A hitelesítési módszerek közé tartozik a Azure Active Directory és a multi-Factor Auth is.
-* Az [autoskálázást](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json) anélkül, hogy újra kellene telepíteni.
+* Az [autoskálázást](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json) anélkül, hogy újra kellene telepíteni.
 * [TLS-támogatás](../app-service/configure-ssl-certificate-in-code.md) az ügyfelek és a szolgáltatás közötti biztonságos kommunikációhoz.
 
 A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további információkért tekintse meg a [app Service áttekintését](../app-service/overview.md).
@@ -70,7 +70,7 @@ A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webs
 
     A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
-* **Függőségek** , például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
+* **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
 
 Ezek az entitások egy __következtetési konfigurációba__ vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
 
@@ -268,10 +268,10 @@ print(response.elapsed)
 print(response.json())
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan konfigurálhatja a webalkalmazást a Linux dokumentációjának [app Service](/azure/app-service/containers/) .
-* További információ az automatikus skálázás az [Azure](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)-ban való használatáról.
+* További információ az automatikus skálázás az [Azure](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)-ban való használatáról.
 * [Használjon TLS/SSL-tanúsítványt a Azure app Service](../app-service/configure-ssl-certificate-in-code.md).
 * [Konfigurálja a app Service alkalmazást Azure Active Directory bejelentkezés használatára](../app-service/configure-authentication-provider-aad.md).
 * [Webszolgáltatásként üzembe helyezett ML-modell felhasználása](how-to-consume-web-service.md)

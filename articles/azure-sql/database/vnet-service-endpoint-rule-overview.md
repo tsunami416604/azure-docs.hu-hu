@@ -11,17 +11,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 97be3bf0ecec20c4bf2e1633f893c9aa0d9ba49d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2ff8f6134f74e0eda355342a7282e8be81a3d8df
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020282"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450227"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuális hálózati szolgáltatási végpontok és szabályok használata a Azure SQL Database-kiszolgálókon
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-A *virtuális hálózati szabályok* egy tűzfal biztonsági funkciója, amely azt szabályozza, hogy az adatbázisok és a rugalmas készletek kiszolgálója [Azure SQL Database](sql-database-paas-overview.md) vagy az [Azure szinapszisban](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) lévő adatbázisaiban fogadja-e a virtuális hálózatok egyes alhálózatai által továbbított kommunikációt. Ez a cikk azt ismerteti, hogy miért érdemes a virtuális hálózati szabály funkciót időnként a Azure SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) közötti kommunikáció biztonságos engedélyezésére.
+A *virtuális hálózati szabályok* egy tűzfal biztonsági funkciója, amely azt szabályozza, hogy az adatbázisok és a rugalmas készletek kiszolgálója [Azure SQL Database](sql-database-paas-overview.md) vagy az [Azure szinapszisban](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) lévő adatbázisaiban fogadja-e a virtuális hálózatok egyes alhálózatai által továbbított kommunikációt. Ebből a cikkből megtudhatja, miért érdemes a virtuális hálózati szabály funkciót időnként a Azure SQL Database és az Azure szinapszis Analytics szolgáltatásban az adatbázishoz való kommunikáció biztonságos engedélyezésére.
 
 > [!NOTE]
 > Ez a cikk a Azure SQL Database és az Azure szinapszis Analytics szolgáltatásra is vonatkozik. Az egyszerűség kedvéért az "adatbázis" kifejezés a Azure SQL Database és az Azure szinapszis Analytics mindkét adatbázisára vonatkozik. Hasonlóképpen, a "Server"re mutató hivatkozások a Azure SQL Database és az Azure szinapszis Analytics szolgáltatást futtató [logikai SQL Serverre](logical-servers.md) hivatkoznak.
@@ -281,7 +281,7 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 - [Azure Virtual Network szolgáltatásbeli végpontok][vm-virtual-network-service-endpoints-overview-649d]
 - [Kiszolgálói szintű és adatbázis-szintű tűzfalszabályok][sql-db-firewall-rules-config-715d]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A PowerShell használatával hozzon létre egy virtuális hálózati szolgáltatási végpontot, majd egy virtuális hálózati szabályt a Azure SQL Databasehoz.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [Virtual Network szabályok:][rest-api-virtual-network-rules-operations-862r] a REST API-kkal végzett műveletek

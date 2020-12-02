@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 573d52b836aef36063dd288bf5a5016b98d220ef
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 22a7738c2d4d3cc02c03c233e0821f07b459dd94
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95524130"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452083"
 ---
 # <a name="support-for-moving-azure-sql-resources-between-azure-regions"></a>Azure SQL-erőforrások Azure-régiók közötti áthelyezésének támogatása
 
@@ -22,7 +22,7 @@ Ez a cikk az Azure SQL-erőforrások Azure-régiók közötti áthelyezésének 
 
 A követelményeket a következő táblázat foglalja össze.
 
-**Funkció** | **Támogatott/nem támogatott** | **Részletek**
+**Jellemző** | **Támogatott/nem támogatott** | **Részletek**
 --- | --- | ---
 **Azure SQL Database nagy kapacitású** | Nem támogatott | Az adatbázisok nem helyezhetők át az Azure SQL nagy kapacitású szolgáltatási szintjébe az erőforrás-mozgató szolgáltatással.
 **Zónaredundancia** | Támogatott |  Támogatott áthelyezési beállítások:<br/><br/> – A zóna redundanciát támogató régiók között.<br/><br/> – A zónák redundanciát nem támogató régiók között.<br/><br/> – Egy olyan régió között, amely támogatja a zóna-redundancia-t egy olyan régióban, amely nem támogatja a zóna-redundanciát.<br/><br/> – Egy olyan régió között, amely nem támogatja a zóna-redundancia támogatását egy olyan régióban, amely támogatja a zóna-redundanciát. 
@@ -38,7 +38,7 @@ A követelményeket a következő táblázat foglalja össze.
 **Automatikus hangolás** | Nem támogatott. | Áthidaló megoldás: az áthelyezés után állítsa be az automatikus finomhangolási beállításokat. [További információk](../azure-sql/database/automatic-tuning-enable.md).
 **Adatbázis-riasztások** | Nem támogatott. | Megkerülő megoldás: az áthelyezés után riasztásokat állíthat be. [További információk](../azure-sql/database/alerts-insights-configure-portal.md).
 **Azure SQL Server stretch Database** | Nem támogatott | Az SQL Server stretch Database-adatbázisok nem helyezhetők át az erőforrás-mozgatóval.
-**Azure Synapse Analytics** | Nem támogatott | A szinapszis Analytics (korábban SQL Data Warehouse) nem helyezhető át az erőforrás-mozgatóval.
-## <a name="next-steps"></a>Következő lépések
+**Azure Synapse Analytics** | Nem támogatott | Az Azure szinapszis Analytics nem helyezhető át az erőforrás-mozgatóval.
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki az [Azure SQL-erőforrásokat](tutorial-move-region-sql.md) egy másik régióba az erőforrás-mozgató használatával.

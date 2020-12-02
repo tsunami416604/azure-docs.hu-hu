@@ -1,6 +1,6 @@
 ---
 title: A hozzáférési hitelesítő adatok biztonságossá tétele az Azure szinapszis Analytics Apache Spark társított szolgáltatásaival
-description: Ez a cikk azokat a fogalmakat ismerteti, amelyekkel biztonságosan integrálható a szinapszis-elemzések Apache Spark a társított szolgáltatások és a jogkivonat-függvénytár használatával más szolgáltatásokkal
+description: Ez a cikk az Azure szinapszis Analytics Apache Sparkának biztonságos integrálását ismerteti más szolgáltatásokkal a társított szolgáltatások és a jogkivonat-függvénytár használatával
 services: synapse-analytics
 author: mlee3gsd
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 1cdb010e34674d52ebe2135ad1591a163a078708
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d542e6ef784d763e406aad28231431cbc382fbfd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324960"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450918"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>A hitelesítő adatok biztonságossá tétele a társított szolgáltatásokkal a TokenLibrary
 A külső forrásokból származó adatokhoz való hozzáférés gyakori minta. Ha a külső adatforrás engedélyezi a névtelen hozzáférést, akkor előfordulhat, hogy a kapcsolatot hitelesítő adatokkal, titkos kulccsal vagy kapcsolati karakterlánccal kell védenie.  
@@ -120,7 +120,7 @@ accountKey = token_library.getConnectionStringAsMap("<LINKED SERVICE NAME>").get
 print(accountKey)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Írás dedikált SQL-készletbe](./synapse-spark-sql-pool-import-export.md)
 

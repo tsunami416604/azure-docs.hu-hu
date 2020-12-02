@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: b25bae460ff11c3dab84e80524acd2eaf878561c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fb7672a0d7bdd14415a51f2296c281e92cf5542a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184688"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450659"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rövid útmutató: szinapszis-munkaterület létrehozása
 Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munkaterületet a Azure Portal használatával.
@@ -22,7 +22,7 @@ Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munk
 ## <a name="create-a-synapse-workspace"></a>Synapse-munkaterület létrehozása
 
 1. Nyissa meg a [Azure Portal](https://portal.azure.com), és a legfelső szintű keresés a **szinapszisban**.
-1. A keresési eredmények között, a **szolgáltatások** területen válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió)** lehetőséget.
+1. A keresési eredmények között, a **szolgáltatások** területen válassza az **Azure szinapszis Analytics** lehetőséget.
 1. Munkaterület létrehozásához válassza a **Hozzáadás** lehetőséget.
 1. Az **alapvető beállítások** lapon adjon meg egy egyedi nevet a munkaterületnek. Ebben a dokumentumban a **mysworkspace** -t fogjuk használni
 1. Munkaterület létrehozásához ADLSGEN2-fiókra van szükség. A legegyszerűbb választás egy új létrehozása. Ha újra szeretné használni a meglévőket, néhány további konfigurálást is végre kell hajtania. 
@@ -34,7 +34,7 @@ Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munk
 1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A munkaterület pár percen belül elkészül.
 
 > [!NOTE]
-> Az Azure szinapszis-munkaterület létrehozása után nem fogja tudni áthelyezni a munkaterületet egy másik Azure Active Directory bérlőbe. Ha ezt az előfizetések áttelepítése vagy más műveletek útján végzi el, a munkaterületen található összetevőkhöz nem férhet hozzá.  
+> Az Azure szinapszis-munkaterület létrehozása után nem fogja tudni áthelyezni a munkaterületet egy másik Azure Active Directory bérlőbe. Ha ezt az előfizetések migrálása vagy más műveletek útján mégis megkísérli, elveszítheti a hozzáférést a munkaterületen belüli összetevőkhöz.  
 
 ## <a name="open-synapse-studio"></a>A szinapszis Studio megnyitása
 
@@ -43,7 +43,7 @@ Az Azure szinapszis-munkaterület létrehozása után kétféleképpen nyithatja
 * Nyissa meg a szinapszis munkaterületet a [Azure Portal](https://portal.azure.com). Az **Áttekintés** szakasz tetején válassza a **szinapszis Studio elindítása** lehetőséget.
 * Lépjen a `https://web.azuresynapse.net` munkaterületre, és jelentkezzen be.
 
-## <a name="prepare-an-existing-storage-account-for-use-with-synapse-analytics"></a>Meglévő Storage-fiók előkészítése a szinapszis Analytics szolgáltatással való használatra
+## <a name="prepare-an-existing-storage-account-for-use-with-azure-synapse-analytics"></a>Meglévő Storage-fiók előkészítése az Azure szinapszis Analytics szolgáltatással való használatra
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. Nyisson meg egy meglévő ADLSGEN2 Storage-fiókot
@@ -64,9 +64,9 @@ Előfordulhat, hogy az Azure szinapszis-munkaterülethez tartozó felügyelt ide
     * A Storage- **blob adatközreműködői** szerepköréhez a Storage-fiókban rendeljen **sajátmunkaterület** a munkaterület-identitáshoz.
     * Rendelje hozzá a **sajátmunkaterület** a munkaterület neveként.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Dedikált SQL-készlet létrehozása](quickstart-create-sql-pool-studio.md) 
 * [Kiszolgáló nélküli Apache Spark készlet létrehozása](quickstart-create-apache-spark-pool-portal.md)

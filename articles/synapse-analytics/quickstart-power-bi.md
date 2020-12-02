@@ -9,16 +9,16 @@ ms.subservice: business-intelligence
 ms.date: 10/27/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick
-ms.openlocfilehash: 36334142595d4a6bd4865a690f154279967a70d5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 996233e2526b8b69c13abd4340ead4c5e2175916
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746302"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450667"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>Gyors útmutató: Power BI munkaterület összekapcsolása egy szinapszis-munkaterülettel
 
-Ebből a rövid útmutatóból megtudhatja, hogyan csatlakoztatható egy Power BI munkaterület a szinapszis Analytics-munkaterülethez új Power BI jelentések és adatkészletek létrehozásához a szinapszis studióból (előzetes verzió).
+Ebből a rövid útmutatóból megtudhatja, hogyan csatlakoztatható egy Power BI munkaterület egy Azure szinapszis Analytics-munkaterülethez új Power BI jelentések és adatkészletek létrehozásához a szinapszis studióból.
 
 Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
@@ -68,6 +68,6 @@ A munkaterületek összekapcsolása után böngészhet a Power BI adatkészletek
 ![Power BI jelentés megtekintése és szerkesztése.](media/quickstart-link-powerbi/powerbi-report.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [Azure Storage-ban tárolt fájlokról Power bi jelentés létrehozásáról](sql/tutorial-connect-power-bi-desktop.md).

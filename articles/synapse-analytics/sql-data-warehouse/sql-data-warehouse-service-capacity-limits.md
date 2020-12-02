@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: dac2a60b6b9db082a10d2473eb22b86d8097eee0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7f0eff28533d8cf736d032aff61454a49bcf379e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313139"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449718"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet kapacitásának korlátai az Azure szinapszis Analyticsben
 
@@ -26,7 +26,7 @@ Az Azure szinapszis Analytics szolgáltatásban a dedikált SQL-készlet külön
 
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
-| [Adatraktár-egységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximális DWU egyetlen dedikált SQL-készlethez (adattárház-egységhez) | Gen1: DW6000<br></br>Gen2: DW30000c |
+| [Adatraktár-egységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Egyetlen dedikált SQL-készlet maximális DWU  | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Adatraktár-egységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Alapértelmezett DTU kiszolgálónkénti |54 000<br></br>Alapértelmezés szerint minden SQL-kiszolgáló (például myserver.database.windows.net) 54 000-as DTU-kvótával rendelkezik, amely akár DW5000c is lehetővé teszi. Ez a kvóta egyszerűen egy biztonsági korlát. A kvótát megnövelheti [egy támogatási jegy létrehozásával](sql-data-warehouse-get-started-create-support-ticket.md) , és a kérelem típusaként kiválaszthatja a *kvótát* .  A DTU-szükségletek kiszámításához szorozza meg a 7,5-et a szükséges teljes DWU, vagy szorozza meg a 9,5-et a szükséges teljes cDWU. Például:<br></br>DW6000 x 7,5 = 45 000 DTU<br></br>DW5000c x 9,5 = 47 500 DTU.<br></br>Az aktuális DTU-felhasználást a portálon, az SQL Server lehetőségnél tekintheti meg. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. |
 | Adatbázis-kapcsolatok |Egyidejű nyitott munkamenetek maximális száma |1024<br/><br/>Az egyidejű nyitott munkamenetek száma a kiválasztott DWU függően változhat. A DWU600c és újabb verziók legfeljebb 1024 nyitott munkamenetet támogatnak. A DWU500c és az alatta az egyidejű nyitott munkamenetek maximális 512-os korlátját támogatja. Vegye figyelembe, hogy az egyidejűleg végrehajtható lekérdezések száma korlátozott. Ha túllépi a párhuzamossági korlátot, a kérelem egy belső várólistába kerül, ahol a rendszer feldolgozza azt. |
 | Adatbázis-kapcsolatok |Előkészített utasítások maximális memóriája |20 MB |
@@ -97,6 +97,6 @@ Az Azure szinapszis Analytics szolgáltatásban a dedikált SQL-készlet külön
 | sys.dm_pdw_sql_requests |A sys.dm_pdw_exec_requestsban tárolt legutóbbi 1000 SQL-kérelmek. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure szinapszis használatával kapcsolatos javaslatokért tekintse meg a [Cheat lapot](cheat-sheet.md).

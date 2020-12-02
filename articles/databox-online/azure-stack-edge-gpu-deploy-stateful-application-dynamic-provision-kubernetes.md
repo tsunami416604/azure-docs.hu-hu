@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: d37152f7dec78d5f5db21fdde9a8ec25c36c4e05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a52b26c5291f788ac81caeb2ca5416a2f58d36
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899466"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448868"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>A kubectl használata Kubernetes állapot-nyilvántartó alkalmazások futtatásához a StorageClass-mel a Azure Stack Edge Pro GPU-eszközön
 
@@ -35,7 +35,7 @@ Az állapot-nyilvántartó alkalmazás üzembe helyezése előtt győződjön me
 ### <a name="for-client-accessing-the-device"></a>Az eszközt elérő ügyfél
 
 - Van egy Windows-ügyfélrendszer, amely az Azure Stack Edge Pro-eszköz elérésére szolgál majd.
-    - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - Bármely más ügyfél [támogatott operációs rendszerrel](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. 
     
@@ -324,6 +324,6 @@ C:\Users\user>
 ```                                                                                         
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hálózatkezelés kubectl-n keresztüli konfigurálásával kapcsolatban lásd: [állapot nélküli alkalmazás üzembe helyezése Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)

@@ -2,14 +2,14 @@
 title: Erőforrás-szolgáltatók és-erőforrástípusok
 description: A Azure Resource Managert támogató erőforrás-szolgáltatókat ismerteti. Ismerteti a sémákat, az elérhető API-verziókat, valamint azokat a régiókat, amelyek tárolhatják az erőforrásokat.
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 12/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a8adbce80d5e8f9ee9df2050d8f43363cbf57dc3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6413a1279c9c7a995bb144097e3db55d5f3a90d2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352099"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452111"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-beli erőforrás-szolgáltatók és -típusok
 
@@ -32,7 +32,7 @@ Az erőforrás-szolgáltatókat az Azure-szolgáltatásokhoz leképező listán 
 
 ## <a name="register-resource-provider"></a>Erőforrás-szolgáltató regisztrálása
 
-Az erőforrás-szolgáltató használata előtt az Azure-előfizetést regisztrálni kell az erőforrás-szolgáltatóhoz. A regisztráció konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. Egyes erőforrás-szolgáltatók alapértelmezés szerint regisztrálva vannak. Más erőforrás-szolgáltatók automatikusan regisztrálva vannak, amikor bizonyos műveleteket végez. Ha például létrehoz egy erőforrást a portálon keresztül, az erőforrás-szolgáltató általában regisztrálva van. Más forgatókönyvek esetében előfordulhat, hogy manuálisan kell regisztrálnia egy erőforrás-szolgáltatót.
+Az erőforrás-szolgáltató használata előtt az Azure-előfizetést regisztrálni kell az erőforrás-szolgáltatóhoz. A regisztráció konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. Egyes erőforrás-szolgáltatók alapértelmezés szerint regisztrálva vannak. Más erőforrás-szolgáltatók automatikusan regisztrálva vannak, amikor bizonyos műveleteket végez. Ha például létrehoz egy erőforrást a portálon keresztül, az erőforrás-szolgáltató általában regisztrálva van. Más forgatókönyvek esetében előfordulhat, hogy manuálisan kell regisztrálnia egy erőforrás-szolgáltatót. Az alapértelmezés szerint regisztrált erőforrás-szolgáltatók listáját az Azure- [szolgáltatások erőforrás-szolgáltatói](azure-services-resource-providers.md)című részében tekintheti meg.
 
 Ez a cikk bemutatja, hogyan ellenőrizhető az erőforrás-szolgáltató regisztrációs állapota, és szükség szerint regisztrálható. Engedéllyel kell rendelkeznie a művelet végrehajtásához `/register/action` az erőforrás-szolgáltatón. Az engedélyt a közreműködő és a tulajdonosi szerepkör tartalmazza.
 

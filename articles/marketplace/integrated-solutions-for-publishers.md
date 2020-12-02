@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 705b0f02682b6aa41cb5c8e77d8da39faa5edb1f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660904"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450130"
 ---
 # <a name="publish-an-integrated-solution"></a>Integrált megoldás közzététele
 
-Ez a cikk az integrált megoldás kereskedelmi piactéren való közzétételének általános folyamatát és követelményeit ismerteti. Egy csomagban található, integrált megoldás egy szolgáltatási partner üzembe helyezésével és támogatásával ötvözi a szoftvergyártók pont-megoldási technológiáit. A szolgáltatási partner a Microsoft AppSource vagy az Azure Marketplace [tanácsadói szolgáltatásként](./consulting-services.md)sorolja fel az ajánlatot.
+Ez a cikk az integrált megoldás kereskedelmi piactéren való közzétételének általános folyamatát és követelményeit ismerteti. Egy csomagban található, integrált megoldás egy szolgáltatási partner üzembe helyezésével és támogatásával ötvözi a szoftvergyártók pont-megoldási technológiáit. A szolgáltatási partner a Microsoft AppSource vagy az Azure Marketplace [tanácsadói szolgáltatásként](./plan-consulting-service-offer.md)sorolja fel az ajánlatot.
 
 Az integrált megoldások célja, hogy egy adott vásárlói igényt vagy forgatókönyvet foglalkozzon. A szolgáltatók az iparági kihívások vagy a fájdalom pontok megismerésével kezdődnek. Ezután integrálják a két vagy több legjobb technológiát, hogy egységes és ismételhető üzembe helyezési élményt hozzanak létre az ügyfelek számára. A szolgáltatók gyorsan elérhetik az ügyfeleket. Az ügyfél számára egyetlen kapcsolódási pontot biztosítanak, amely biztosítja a megfelelő testreszabási, tanácsadási és megoldási támogatást. Az eredmény egy integrált megoldás, beleértve a technológiát és a szolgáltatásokat.
 
@@ -104,7 +104,7 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
 
 ## <a name="publish-your-integrated-solution"></a>Az integrált megoldás közzététele
 
-Miután befejezte a technikai integrációt és a marketing-biztosítékot, tekintse meg a [Microsoft AppSource és az Azure Marketplace tanácsadói szolgáltatásainak](./consulting-services.md)közzétevői útmutatóját. Ezzel az erőforrással megállapíthatja, hogy a megoldás közzé lesz-e téve Microsoft AppSource vagy az Azure Marketplace-en. Az útmutatót is használhatja a közzétételi összetevők előkészítéséhez és a közzétételi folyamat befejezéséhez.
+Miután befejezte a technikai integrációt és a marketing-biztosítékot, tekintse meg a [Microsoft AppSource és az Azure Marketplace tanácsadói szolgáltatásainak](./plan-consulting-service-offer.md)közzétevői útmutatóját. Ezzel az erőforrással megállapíthatja, hogy a megoldás közzé lesz-e téve Microsoft AppSource vagy az Azure Marketplace-en. Az útmutatót is használhatja a közzétételi összetevők előkészítéséhez és a közzétételi folyamat befejezéséhez.
 
 Bár öt szolgáltatási típus érhető el a tanácsadási szolgáltatásokhoz, az integrált megoldásnak vagy a koncepció igazolásának vagy teljes megvalósításának kell lennie.
 
@@ -112,6 +112,6 @@ Bár öt szolgáltatási típus érhető el a tanácsadási szolgáltatásokhoz,
 
 Ha a megoldás a Microsoft AppSource vagy az Azure Marketplace-en él, érdemes lehet a marketing-tevékenységekkel kapcsolatos ismereteket és igényt vezetnie. Tekintse át a [projekt tervében és idővonalában](https://aka.ms/AA5qiuc)felsorolt tevékenységeket. Ez az erőforrás olyan tevékenységeket tartalmaz, amelyeket a partnerek a saját csapatában és egymással tudnak vezetni. Ezután elérheti a piactéren közzétett partnereink piacra jutási [előnyeit](./gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) . Minden integrált megoldási ajánlat próbaverziós ellátásra alkalmas.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Integrált megoldások jelölési űrlapja](https://aka.ms/AA5qicu)

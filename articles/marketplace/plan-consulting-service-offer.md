@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: dfc812771f0eeb8dcb0d95bdad1e76ed0b12297e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c56d83e551265f3fb4de106cb8fa77efd6dcbabc
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754435"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452117"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Tanácsadási szolgáltatás ajánlatának megtervezése a kereskedelmi piactéren
 
@@ -36,7 +36,7 @@ Ha többet szeretne megtudni a AppSource és az Azure Marketplace közötti kül
 
 ## <a name="eligibility-requirements"></a>Jogosultsági követelmények
 
-Annak bemutatásához, hogy az ügyfelek egy adott területen szakértelmét nyújtsanak, meg kell felelnie a jogosultsági követelményeknek, mielőtt közzéteszi a tanácsadói szolgáltatást. A követelmények az ajánlat középpontjában álló terméktől függenek. Az egyes elsődleges termékekre vonatkozó támogathatósági követelmények teljes listája a [tanácsadási szolgáltatások minősítési házirendjeiben](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services)található.
+Annak bemutatásához, hogy az ügyfelek egy adott területen szakértelmét nyújtsanak, meg kell felelnie a jogosultsági követelményeknek, mielőtt közzéteszi a tanácsadói szolgáltatást. A követelmények az ajánlat középpontjában álló terméktől függenek. Az egyes elsődleges termékekre vonatkozó támogathatósági követelmények teljes listája a [tanácsadási szolgáltatások minősítési házirendjeiben](/legal/marketplace/certification-policies#800-consulting-services)található.
 
 > [!NOTE]
 > Egyes elsődleges termékek esetén a Microsoft egy arany-vagy ezüst-kompetenciával rendelkezik a megoldás területén. További információ: [Microsoft Partner Network kompetenciák](https://partner.microsoft.com/membership/competencies).
@@ -45,11 +45,11 @@ Annak bemutatásához, hogy az ügyfelek egy adott területen szakértelmét ny�
 
 A kereskedelmi piactér öt típusú tanácsadói szolgáltatást támogat:
 
-* **Értékelés** : az ügyfél környezetének kiértékelése a megoldás alkalmazhatóságának meghatározásához, valamint a megvalósítás költségeit és idővonalának becsléséhez.
-* **Tájékoztatás** : egy megoldás vagy szolgáltatás bemutatása keretrendszerek, bemutatók és felhasználói példák használatával.
-* **Implementáció** : teljes telepítés, amely teljesen működőképes megoldást eredményez.
-* A **koncepció igazolása** : korlátozott hatókörű implementáció annak megállapítására, hogy a megoldás megfelel-e az ügyfél követelményeinek.
-* **Workshop** : interaktív részvétel az ügyfél telephelyén. Olyan képzéseket, tájékoztatókat, felméréseket és bemutatókat is tartalmazhat, amelyek az ügyfél által tárolt adatszolgáltatásra vagy környezetre épülnek.
+* **Értékelés**: az ügyfél környezetének kiértékelése a megoldás alkalmazhatóságának meghatározásához, valamint a megvalósítás költségeit és idővonalának becsléséhez.
+* **Tájékoztatás**: egy megoldás vagy szolgáltatás bemutatása keretrendszerek, bemutatók és felhasználói példák használatával.
+* **Implementáció**: teljes telepítés, amely teljesen működőképes megoldást eredményez.
+* A **koncepció igazolása**: korlátozott hatókörű implementáció annak megállapítására, hogy a megoldás megfelel-e az ügyfél követelményeinek.
+* **Workshop**: interaktív részvétel az ügyfél telephelyén. Olyan képzéseket, tájékoztatókat, felméréseket és bemutatókat is tartalmazhat, amelyek az ügyfél által tárolt adatszolgáltatásra vagy környezetre épülnek.
 
 A szolgáltatásnak rögzített és előre meghatározott időtartammal kell rendelkeznie, amely legfeljebb 10 hétig tart. A szolgáltatás időtartamát explicit módon kell megadni az ajánlati listán.
 
@@ -75,7 +75,7 @@ Amikor a partner Centerben hozza létre a tanácsadási szolgáltatás ajánlat�
 6. Ország/régió
 7. Ajánlat neve
 8. Keresési eredmények összegzése
-9. Leírás
+9. Description
 10. Képernyőképek/videók
 11. Támogató dokumentumok
 
@@ -84,7 +84,7 @@ Amikor a partner Centerben hozza létre a tanácsadási szolgáltatás ajánlat�
 
 Ha könnyebben létre szeretné hozni az ajánlatot, készítse elő ezeket az elemeket az idő előtt. Ha másként nincs jelezve, a következő elemek szükségesek.
 
-**Name (név** ): Ez a név jelenik meg a kereskedelmi piactéren az ajánlati lista címeként. A név lehet védjeggyel ellátott. Nem tartalmazhat hangulatjelek (kivéve, ha a védjegyek és a szerzői jogi szimbólumok), és legfeljebb 50 karakter hosszúnak kell lennie. A névnek tartalmaznia kell az ajánlat időtartamát és a szolgáltatás típusát, hogy maximalizálja a keresőmotor-optimalizálást (SEO). A kötelező formátum *neve: időtartam + típus* . Csak akkor adja meg a vállalat nevét, ha a termék neve is. Néhány példa:
+**Name (név**): Ez a név jelenik meg a kereskedelmi piactéren az ajánlati lista címeként. A név lehet védjeggyel ellátott. Nem tartalmazhat hangulatjelek (kivéve, ha a védjegyek és a szerzői jogi szimbólumok), és legfeljebb 50 karakter hosszúnak kell lennie. A névnek tartalmaznia kell az ajánlat időtartamát és a szolgáltatás típusát, hogy maximalizálja a keresőmotor-optimalizálást (SEO). A kötelező formátum *neve: időtartam + típus*. Csak akkor adja meg a vállalat nevét, ha a termék neve is. Néhány példa:
 
 |Ne mondd |Mondja a következőt:  |
 |---|---|
@@ -92,9 +92,9 @@ Ha könnyebben létre szeretné hozni az ajánlatot, készítse elő ezeket az e
 |Workshop az intelligens kenyérpirítók számára |Intelligens kenyérpirítók: 1 hetes workshop |
 |SQL Server áttelepítési PoC a contoso által |SQL-Migrálás: 3 – hét a koncepció igazolása |
 
-**Keresési eredmények összegzése** : az ajánlat célját vagy célját 200 vagy kevesebb karakterből írja le. Ezt az összegzést a kereskedelmi piactéren a keresési eredmények listájában lehet használni. Nem lehet azonos a címmel. Érdemes megfontolni a legnépszerűbb SEO-kulcsszavakat is.
+**Keresési eredmények összegzése**: az ajánlat célját vagy célját 200 vagy kevesebb karakterből írja le. Ezt az összegzést a kereskedelmi piactéren a keresési eredmények listájában lehet használni. Nem lehet azonos a címmel. Érdemes megfontolni a legnépszerűbb SEO-kulcsszavakat is.
 
-**Leírás** : Ez a leírás a kereskedelmi piactér listájában jelenik meg. Vegye figyelembe az érték kiosztását, a főbb előnyöket, a kívánt felhasználói bázist és bármely kategóriát vagy iparági társítást is.
+**Leírás**: Ez a leírás a kereskedelmi piactér listájában jelenik meg. Vegye figyelembe az érték kiosztását, a főbb előnyöket, a kívánt felhasználói bázist és bármely kategóriát vagy iparági társítást is.
 
 A Leírás írásakor kövesse az alábbi feltételeket a szolgáltatás típusa szerint:
 
@@ -117,15 +117,15 @@ A Leírás írásakor kövesse az alábbi feltételeket a szolgáltatás típusa
 
 A leírást a HTML-címkék használatával formázhatja. Ebben a mezőben legfeljebb 2 000 karaktert adhat meg, beleértve a HTML-címkéket és a szóközöket is. További információ a HTML-formázásról: [a kereskedelmi piactér ajánlatának leírásában támogatott HTML-címkék](./supported-html-tags.md).
 
-**Kulcsszavak keresése** (nem kötelező): legfeljebb három olyan kulcsszavat adjon meg, amelyekkel az ügyfelek megtalálják az ajánlatot az online áruházakban. Nem kell megadnia az ajánlat **nevét** és **leírását** .
+**Kulcsszavak keresése** (nem kötelező): legfeljebb három olyan kulcsszavat adjon meg, amelyekkel az ügyfelek megtalálják az ajánlatot az online áruházakban. Nem kell megadnia az ajánlat **nevét** és **leírását**.
 
-**Időtartam** : a tanácsadási szolgáltatási ajánlatnak előre meghatározott időtartammal kell rendelkeznie, amely legfeljebb 10 hét lehet.
+**Időtartam**: a tanácsadási szolgáltatási ajánlatnak előre meghatározott időtartammal kell rendelkeznie, amely legfeljebb 10 hét lehet.
 
-**Kapcsolattartási adatok** : a partner Centerben a vállalatnál két személy nevét, e-mail-címét és telefonszámát kell megadnia (a két partner egyike lehet). Ezt az információt fogjuk használni az ajánlattal való kommunikációhoz. Ezek az információk nem jelennek meg az ügyfelek számára, de a Cloud Solution Provider (CSP) partnerei számára is elérhetők.
+**Kapcsolattartási adatok**: a partner Centerben a vállalatnál két személy nevét, e-mail-címét és telefonszámát kell megadnia (a két partner egyike lehet). Ezt az információt fogjuk használni az ajánlattal való kommunikációhoz. Ezek az információk nem jelennek meg az ügyfelek számára, de a Cloud Solution Provider (CSP) partnerei számára is elérhetők.
 
-**Támogató dokumentumok** : töltsön fel legalább egyet, és akár három, az ügyfelek által elérhető PDF-dokumentumot, amely az ajánlatával kapcsolatos információkat tartalmaz. Ezek lehetnek például tanulmányok vagy brosúrák.
+**Támogató dokumentumok**: töltsön fel legalább egyet, és akár három, az ügyfelek által elérhető PDF-dokumentumot, amely az ajánlatával kapcsolatos információkat tartalmaz. Ezek lehetnek például tanulmányok vagy brosúrák.
 
-**Marketplace Media – logók** : adjon meg egy PNG-fájlt a nagy méretű emblémához. A partner Center egy kis embléma létrehozására fogja használni. A kis emblémát később is lecserélheti egy másik képre.
+**Marketplace Media – logók**: adjon meg egy PNG-fájlt a nagy méretű emblémához. A partner Center egy kis embléma létrehozására fogja használni. A kis emblémát később is lecserélheti egy másik képre.
 
 * Nagyméretű (216 x 216 és 350 x 350 px, kötelező)
 * Kicsi (48 x 48 px, opcionális)
@@ -139,11 +139,11 @@ Kövesse az alábbi irányelveket a logókhoz:
 * Ha átlátszó hátteret használ, az embléma és a szöveg ne legyen fehér, fekete vagy kék.
 * Kerülje az embléma vagy a háttér színátmeneteit. Ne helyezzen el szöveget az emblémára, még a vállalat vagy a márka nevét se.
 
-**Piactéri média – képernyőképek** : vegyen fel legalább egy és legfeljebb öt képet, amely bemutatja az ajánlatot. Az összes képnek 1280 x 720 képpont méretűnek és a-ben kell lennie. PNG-formátum.
+**Piactéri média – képernyőképek**: vegyen fel legalább egy és legfeljebb öt képet, amely bemutatja az ajánlatot. Az összes képnek 1280 x 720 képpont méretűnek és a-ben kell lennie. PNG-formátum.
 
 **Marketplace Media – videók** (nem kötelező): legfeljebb négy olyan videót adhat hozzá, amely bemutatja az ajánlatát. A videókat a YouTube vagy a Vimeo szolgáltatásban kell tárolni, és egy miniatűrnek kell lennie (1280 x 720 PNG-fájl).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Tanácsadási szolgáltatási ajánlat létrehozása a kereskedelmi piactéren](./create-consulting-service-offer.md)
 * [Ajánlatlistákra vonatkozó ajánlott eljárások](./gtm-offer-listing-best-practices.md)

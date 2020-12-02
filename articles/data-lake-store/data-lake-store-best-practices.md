@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a5c5f9a4033b70a664071d6077a69f38c905093
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667741"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452219"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Ajánlott eljárások Azure Data Lake Storage Gen1 használatához
 
@@ -37,7 +37,7 @@ Ha a biztonsági csoporthoz engedélyek vannak rendelve, a csoportba tartozó fe
 
 ### <a name="security-for-groups"></a>Csoportok biztonsága
 
-Ahogy azt már említettük, a felhasználóknak a Data Lake Storage Gen1hoz való hozzáférésre van szükségük, Azure Active Directory biztonsági csoportok használata ajánlott. Előfordulhat, hogy néhány javasolt csoport a **ReadOnlyUsers**, a **WriteAccessUsers**és a **FullAccessUsers** a fiók gyökeréhez, és akár külön is a legfontosabb almappákhoz. Ha a felhasználók más várható felhasználói csoportjai is hozzáadhatók, de még nincsenek azonosítva, érdemes lehet olyan dummy biztonsági csoportokat létrehozni, amelyek bizonyos mappákhoz férnek hozzá. A biztonsági csoport használatával biztosíthatja, hogy a későbbiekben ne kelljen hosszú feldolgozási időt igényelni új engedélyek több ezer fájlhoz való hozzárendeléséhez.
+Ahogy azt már említettük, a felhasználóknak a Data Lake Storage Gen1hoz való hozzáférésre van szükségük, Azure Active Directory biztonsági csoportok használata ajánlott. Előfordulhat, hogy néhány javasolt csoport a **ReadOnlyUsers**, a **WriteAccessUsers** és a **FullAccessUsers** a fiók gyökeréhez, és akár külön is a legfontosabb almappákhoz. Ha a felhasználók más várható felhasználói csoportjai is hozzáadhatók, de még nincsenek azonosítva, érdemes lehet olyan dummy biztonsági csoportokat létrehozni, amelyek bizonyos mappákhoz férnek hozzá. A biztonsági csoport használatával biztosíthatja, hogy a későbbiekben ne kelljen hosszú feldolgozási időt igényelni új engedélyek több ezer fájlhoz való hozzárendeléséhez.
 
 ### <a name="security-for-service-principals"></a>Az egyszerű szolgáltatások biztonsága
 
@@ -45,11 +45,11 @@ Azure Active Directory egyszerű szolgáltatásokat általában olyan szolgálta
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>A Data Lake Storage Gen1 tűzfal engedélyezése az Azure-szolgáltatás elérésével
 
-Data Lake Storage Gen1 támogatja a tűzfal bekapcsolásának lehetőségét, és csak az Azure-szolgáltatásokhoz való hozzáférést korlátozza, ami a kisebb támadási vektorok számára ajánlott. A tűzfal engedélyezhető a Azure Portal Data Lake Storage Gen1 fiókjában **a tűzfalon**a tűzfal  >  **engedélyezése (on)** az  >  **Azure-szolgáltatások elérésének engedélyezése** lehetőséggel.
+Data Lake Storage Gen1 támogatja a tűzfal bekapcsolásának lehetőségét, és csak az Azure-szolgáltatásokhoz való hozzáférést korlátozza, ami a kisebb támadási vektorok számára ajánlott. A tűzfal engedélyezhető a Azure Portal Data Lake Storage Gen1 fiókjában **a tűzfalon** a tűzfal  >  **engedélyezése (on)** az  >  **Azure-szolgáltatások elérésének engedélyezése** lehetőséggel.
 
 ![Tűzfalbeállítások a Data Lake Storage Gen1](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Tűzfalbeállítások a Data Lake Storage Gen1")
 
-Ha a tűzfal engedélyezve van, csak az olyan Azure-szolgáltatások érhetők Data Lake Storage Gen1 el, mint a HDInsight, az Data Factory, az Azure szinapszis Analytics (korábban SQL Data Warehouse) stb.). Az Azure által használt belső hálózati címfordítás miatt a Data Lake Storage Gen1 tűzfal nem támogatja az IP-címek korlátozását, és csak az Azure-on kívüli végpontokra, például a helyszíni szolgáltatásokra vonatkozik.
+Ha a tűzfal engedélyezve van, csak az Azure-szolgáltatások (például a HDInsight, a Data Factory, az Azure szinapszis Analytics stb.) férhetnek hozzá a Data Lake Storage Gen1hoz. Az Azure által használt belső hálózati címfordítás miatt a Data Lake Storage Gen1 tűzfal nem támogatja az IP-címek korlátozását, és csak az Azure-on kívüli végpontokra, például a helyszíni szolgáltatásokra vonatkozik.
 
 ## <a name="performance-and-scale-considerations"></a>Teljesítmény-és méretezési szempontok
 
@@ -114,7 +114,7 @@ A másolási feladatok az Apache Oozie-munkafolyamatok által indíthatók el, g
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>A másolási feladatok ütemezett Azure Data Factory használata
 
-A Azure Data Factory is használható a másolási feladatok **másolási tevékenységgel**való megadására, és a másolás **varázsló**segítségével is beállítható a gyakoriság. Ne feledje, hogy Azure Data Factory a Felhőbeli adatáthelyezési egységek (DMUs-EK) korlátja, és végül a nagyméretű adatszámítási feladatokhoz tartozó átviteli sebesség/számítás. Emellett Azure Data Factory jelenleg nem biztosít különbözeti frissítéseket Data Lake Storage Gen1 fiókok között, így a kaptár-táblákhoz a replikáláshoz teljes másolat szükséges. A Data Factory használatával történő másolással kapcsolatos további információkért tekintse meg a [másolási tevékenység hangolási útmutatóját](../data-factory/copy-activity-performance.md) .
+A Azure Data Factory is használható a másolási feladatok **másolási tevékenységgel** való megadására, és a másolás **varázsló** segítségével is beállítható a gyakoriság. Ne feledje, hogy Azure Data Factory a Felhőbeli adatáthelyezési egységek (DMUs-EK) korlátja, és végül a nagyméretű adatszámítási feladatokhoz tartozó átviteli sebesség/számítás. Emellett Azure Data Factory jelenleg nem biztosít különbözeti frissítéseket Data Lake Storage Gen1 fiókok között, így a kaptár-táblákhoz a replikáláshoz teljes másolat szükséges. A Data Factory használatával történő másolással kapcsolatos további információkért tekintse meg a [másolási tevékenység hangolási útmutatóját](../data-factory/copy-activity-performance.md) .
 
 ### <a name="adlcopy"></a>AdlCopy
 
@@ -189,7 +189,7 @@ NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
 
 A közvetlenül az adatbázisokba (például a kaptárba vagy a hagyományos SQL-adatbázisba) feldolgozott batch-adatokat nem kell **/in** vagy **/out** mappához adni, mivel a kimenet már egy különálló mappába kerül a kaptár-tábla vagy a külső adatbázis számára. Például az ügyfelek napi kinyerése a saját mappáiba kerül, és a Azure Data Factory, az Apache Oozie vagy az Apache légáram egy olyan napi struktúrát vagy Spark-feladatot indít el, amely feldolgozza és beírja az adatait egy kaptár-táblába.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 * [Access Control a Azure Data Lake Storage Gen1](data-lake-store-access-control.md)

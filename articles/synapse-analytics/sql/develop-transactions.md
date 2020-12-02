@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a2597a4bc6c5ed44f0e0050be3f69d7e840665e5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c4fe512ff6db24498148ffa724c3144a2f61823f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323845"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451718"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tranzakciók használata dedikált SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -27,7 +27,7 @@ Ahogy azt várnánk, a dedikált SQL-készlet az adatraktár számítási felada
 
 ## <a name="transaction-isolation-levels"></a>Tranzakciók elkülönítési szintjei
 
-Az SQL-készlet savas tranzakciókat valósít meg. A tranzakciós támogatás elkülönítési szintje alapértelmezés szerint nem VÉGLEGESÍThető.  Ha a Master adatbázishoz csatlakozik, a felhasználói adatbázis READ_COMMITTED_SNAPSHOT adatbázis lehetőségének bekapcsolásával módosíthatja az előjegyzett PILLANATKÉPek ELKÜLÖNÍTÉSét.  
+A dedikált SQL-készlet savas tranzakciókat valósít meg. A tranzakciós támogatás elkülönítési szintje alapértelmezés szerint nem VÉGLEGESÍThető.  Ha a Master adatbázishoz csatlakozik, a felhasználói adatbázis READ_COMMITTED_SNAPSHOT adatbázis lehetőségének bekapcsolásával módosíthatja az előjegyzett PILLANATKÉPek ELKÜLÖNÍTÉSét.  
 
 Ha engedélyezve van, a rendszer az ebben az adatbázisban lévő összes tranzakciót az OLVASÁSI véglegesített PILLANATKÉPek ELKÜLÖNÍTÉSe területen hajtja végre, és a munkamenet szintjén az olvasás VÉGLEGESÍTÉSe beállítást nem fogja figyelembe venni. A részletekért lásd az [Alter Database set Options (Transact-SQL) beállítást](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true) .
 
@@ -89,7 +89,7 @@ A naplóba írt adatmennyiség optimalizálása és minimálisra csökkentése �
 
 ## <a name="transaction-state"></a>Tranzakció állapota
 
-Az SQL-készlet a XACT_STATE () függvényt használja a sikertelen tranzakciók jelentésére a-2 érték használatával. Ez az érték azt jelenti, hogy a tranzakció meghiúsult, és csak visszaállításra van megjelölve.
+A dedikált SQL Pool a XACT_STATE () függvényt használja a sikertelen tranzakciók jelentésére a-2 érték használatával. Ez az érték azt jelenti, hogy a tranzakció meghiúsult, és csak visszaállításra van megjelölve.
 
 > [!NOTE]
 > A (2) XACT_STATE függvény használata a sikertelen tranzakciók jelölésére a SQL Server eltérő viselkedését jelöli. A SQL Server a-1 érték használatával nem véglegesíthető tranzakciót jelöl. A SQL Server egy tranzakción belül bizonyos hibákat el lehet viselni anélkül, hogy nem véglegesíthető jelöléssel kellene megjelölni. Például `SELECT 1/0` hibát okozhat, de nem kényszerítheti a tranzakciót nem véglegesíthető állapotba. A SQL Server a nem véglegesíthető tranzakcióban is engedélyezi a beolvasást. A dedikált SQL-készlet azonban nem teszi lehetővé. Ha egy dedikált SQL Pool-tranzakción belül hiba történik, akkor a rendszer automatikusan megadja a-2 állapotot, és nem fog tudni további kiválasztási utasításokat készíteni, amíg az utasítás vissza nem áll. Ezért fontos, hogy az alkalmazás kódjában ellenőrizze, hogy az XACT_STATE () protokollt használja-e, mivel előfordulhat, hogy programkódot kell módosítania.
@@ -193,7 +193,7 @@ Ez a modern implementáció a kivételek előléptetéséhez a dedikált SQL-ké
 
 ## <a name="limitations"></a>Korlátozások
 
-Az SQL-készletnek van néhány más korlátozása, amely a tranzakcióhoz kapcsolódik. Ezek a következők:
+A dedikált SQL-készletnek van néhány más, a tranzakcióhoz kapcsolódó korlátozása. Ezek a következők:
 
 * Nincsenek elosztott tranzakciók
 * Nincsenek engedélyezett beágyazott tranzakciók
@@ -202,6 +202,6 @@ Az SQL-készletnek van néhány más korlátozása, amely a tranzakcióhoz kapcs
 * Nincsenek megjelölt tranzakciók
 * Nem támogatott a DDL, például a CREATE TABLE egy felhasználó által definiált tranzakción belül
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A tranzakciók optimalizálásával kapcsolatos további tudnivalókért tekintse meg a [tranzakciók ajánlott eljárásai](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakört. További ajánlott eljárások az [SQL-készlethez](best-practices-sql-pool.md) és a [kiszolgáló nélküli SQL-készlethez (előzetes verzió)](best-practices-sql-on-demand.md)is elérhetők.
+A tranzakciók optimalizálásával kapcsolatos további tudnivalókért tekintse meg a [tranzakciók ajánlott eljárásai](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakört. További ajánlott eljárásokat ismertető útmutatók a [DEDIKÁLT SQL-készlet](best-practices-sql-pool.md) és a [kiszolgáló nélküli SQL-készlet](best-practices-sql-on-demand.md)számára is elérhetők.

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: f65ee85b37e74f0ca16ccf6988eb2117231c3bc5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635762"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452200"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory – gyakori kérdések
 
@@ -95,9 +95,9 @@ A 2017-es kezdeti nyilvános előzetes kiadás óta a Data Factory a következő
 ## <a name="what-is-the-integration-runtime"></a>Mi az Integration Runtime?
 Az Integration Runtime az a számítási infrastruktúra, amelyet a Azure Data Factory használ a következő adatintegrációs képességek biztosítására különböző hálózati környezetekben:
 
-- **Adatáthelyezés** : az adatáthelyezéshez az integrációs modul a forrás és a cél adattárolók között helyezi át az adatátvitelt, miközben támogatja a beépített összekötőket, a formátum átalakítását, az oszlopok hozzárendelését, valamint a teljesítmény és a skálázható adatátvitelt.
-- **Küldési tevékenységek** : átalakításhoz az integrációs modul képes natív módon végrehajtani a SSIS-csomagokat.
-- **SSIS-csomagok végrehajtása** : az Integration Runtime natív módon végrehajtja a SSIS-csomagokat egy felügyelt Azure számítási környezetben. Az Integration Runtime számos számítási szolgáltatáson (például Azure HDInsight, Azure Machine Learning, SQL Database és SQL Server) futó átalakítási tevékenységek elküldését és figyelését is támogatja.
+- **Adatáthelyezés**: az adatáthelyezéshez az integrációs modul a forrás és a cél adattárolók között helyezi át az adatátvitelt, miközben támogatja a beépített összekötőket, a formátum átalakítását, az oszlopok hozzárendelését, valamint a teljesítmény és a skálázható adatátvitelt.
+- **Küldési tevékenységek**: átalakításhoz az integrációs modul képes natív módon végrehajtani a SSIS-csomagokat.
+- **SSIS-csomagok végrehajtása**: az Integration Runtime natív módon végrehajtja a SSIS-csomagokat egy felügyelt Azure számítási környezetben. Az Integration Runtime számos számítási szolgáltatáson (például Azure HDInsight, Azure Machine Learning, SQL Database és SQL Server) futó átalakítási tevékenységek elküldését és figyelését is támogatja.
 
 Az integrációs modul egy vagy több példányát is telepítheti az adatáthelyezéshez és-átalakításhoz szükséges módon. Az Integration Runtime egy Azure-beli nyilvános hálózaton vagy egy privát hálózaton (helyszíni, Azure Virtual Network vagy Amazon Web Services virtuális magánhálózati felhőben [VPC]) is futtatható. 
 
@@ -129,7 +129,7 @@ A társított szolgáltatásoknak két célja van Data Factoryban:
 - Egy olyan *adattár* képviseletére, amely tartalmaz, de nem korlátozódik a SQL Server példányra, egy Oracle-adatbázis példányára, egy fájlmegosztás vagy egy Azure Blob Storage-fiókra. A támogatott adattárak listáját lásd: [másolási tevékenység Azure Data Factoryban](copy-activity-overview.md).
 - Olyan *számítási erőforrás* jelölésére, amely egy tevékenység végrehajtását képes tárolni. A HDInsight struktúra tevékenység például egy HDInsight Hadoop-fürtön fut. Az átalakítási tevékenységek és a támogatott számítási környezetek listáját lásd: az [adatok átalakítása Azure Data Factoryban](transform-data.md).
 
-### <a name="triggers"></a>Triggerek
+### <a name="triggers"></a>Eseményindítók
 Az eseményindítók olyan feldolgozási egységeket jelölnek, amelyek meghatározzák, hogy mikor indul el a folyamat végrehajtása. A különböző típusú eseményekhez eltérő típusú eseményindítók tartoznak. 
 
 ### <a name="pipeline-runs"></a>Folyamatfuttatások
@@ -150,7 +150,7 @@ A Data Factory alapelveivel kapcsolatban további információkat a következő 
 
 - [Adatkészletek és társított szolgáltatások](concepts-datasets-linked-services.md)
 - [Folyamatok és tevékenységek](concepts-pipelines-activities.md)
-- [Integrációs modul](concepts-integration-runtime.md)
+- [Integration Runtime](concepts-integration-runtime.md)
 
 ## <a name="what-is-the-pricing-model-for-data-factory"></a>Mi a Data Factory díjszabási modellje?
 A Azure Data Factory díjszabásáról a [Data Factory díjszabását](https://azure.microsoft.com/pricing/details/data-factory/)ismertető témakörben talál további információt.
@@ -190,7 +190,7 @@ Ha a Microsoft segítséget vagy hibaelhárítást biztosít az adatfolyamatokka
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>A Data Factory más 90 adatkészlet-típusaival Hogyan a hozzáférési adatokat?
 
-A leképezési adatfolyam funkció jelenleg lehetővé teszi az Azure SQL Database, az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse), az Azure Blob Storage-ból vagy a Azure Data Lake Storage Gen2-ból származó, határolt szövegfájlok és a a blob Storage-ból származó, illetve a forrás-és fogadó Data Lake Storage Gen2 natív módon történő használatát 
+A leképezési adatfolyam funkció jelenleg lehetővé teszi az Azure SQL Database, az Azure szinapszis Analytics, az Azure Blob Storage-ból vagy a Azure Data Lake Storage Gen2-ből származó, illetve a forrás-és a fogadók számára natív módon Data Lake Storage Gen2 fájlokból származó, tagolt szövegfájlok használatát. 
 
 A másolási tevékenység használatával a többi összekötőtől származó adatok is megadhatók, majd az adatok átalakítását követően végrehajthat egy adatfolyam-tevékenységet. Például a folyamat először a blob Storage-ba másol, majd egy adatfolyam-tevékenység egy adatkészletet fog használni a forrásban az adatátalakításhoz.
 
@@ -276,7 +276,7 @@ A huzavona-adatfolyam a következő adattípusokat támogatja az SQL-ben. Érvé
 
 A jövőben más adattípusok is támogatottak lesznek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az adat-előállító létrehozásával kapcsolatos részletes utasításokért tekintse meg a következő oktatóanyagokat:
 
 - [Gyors útmutató: adatelőállító létrehozása](quickstart-create-data-factory-dot-net.md)

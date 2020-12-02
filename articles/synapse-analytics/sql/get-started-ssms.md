@@ -9,26 +9,26 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4239b5400e919621dfff001ca7e6cb9de1626658
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: da698a1a8d91273321d4633abd683a06cb4cf403
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686208"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451621"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Kapcsolódás a szinapszis SQLhoz a SQL Server Management Studio (SSMS) használatával
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 > 
 > 
 
-A [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) használatával kapcsolódhat és lekérdezheti a szinapszis SQL-et az Azure szinapszis Analytics szolgáltatásban a kiszolgáló nélküli SQL-készlet (előzetes verzió) vagy a dedikált SQL Pool-erőforrások segítségével. 
+A [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) használatával kapcsolódhat és lekérdezheti a szinapszis SQL-et az Azure szinapszis Analytics szolgáltatásban a kiszolgáló nélküli SQL-készlet vagy a dedikált SQL Pool-erőforrások segítségével. 
 
-### <a name="supported-tools-for-serverless-sql-pool-preview"></a>A kiszolgáló nélküli SQL-készlethez támogatott eszközök (előzetes verzió)
+### <a name="supported-tools-for-serverless-sql-pool"></a>A kiszolgáló nélküli SQL-készlethez támogatott eszközök
 
 A [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) teljes mértékben támogatott a 1.18.0 verziótól kezdődően. A SSMS részlegesen támogatott a 18,5-es verziótól kezdődően, csak a kapcsolódáshoz és a lekérdezésekhez használható.
 
@@ -63,7 +63,7 @@ A következő lépésekkel csatlakozhat a szinapszis SQL-hez a dedikált SQL-ké
     ![Ismerkedés a AdventureWorksDW 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="serverless-sql-pool-preview"></a>Kiszolgáló nélküli SQL-készlet (előzetes verzió)
+### <a name="serverless-sql-pool"></a>Kiszolgáló nélküli SQL-készlet
 
 Ha kiszolgáló nélküli SQL-készlettel szeretne csatlakozni a szinapszis SQL-hez, kövesse az alábbi lépéseket: 
 
@@ -124,7 +124,7 @@ Most, hogy létrehozta az adatbázis-kapcsolatokat, lekérdezheti az adatforrás
    
     ![Lekérdezés eredménye 2](./media/get-started-ssms/results.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](get-started-power-bi-professional.md).
 
 A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés a SZINAPSZIS SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-ben.

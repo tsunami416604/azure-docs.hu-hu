@@ -11,13 +11,13 @@ ms.author: memildin
 manager: rkarlin
 author: memildin
 ms.reviewer: vanto
-ms.date: 09/21/2020
-ms.openlocfilehash: d147303df43c4f86843df518c71316e6a97b6671
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 12/01/2020
+ms.openlocfilehash: 4bb7f2fd5823a9d8ebf4234f3bb41d955574b838
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678082"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451535"
 ---
 # <a name="azure-defender-for-sql"></a>Azure Defender SQL-hez
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -41,12 +41,14 @@ A következő lépésekkel kezdheti meg az Azure Defendert.
 
 ## <a name="enable-azure-defender"></a>Az Azure Defender engedélyezése
 
-Az Azure Defender a [Azure Portalon](https://portal.azure.com)keresztül érhető el. Engedélyezze az Azure Defender számára a kiszolgáló vagy a felügyelt példány **biztonsági** fejléce alatt navigáljon a **Security Centerben** .
+Az Azure Defender a [Azure Portalon](https://portal.azure.com)keresztül érhető el. Engedélyezze az Azure Defender számára, hogy a kiszolgáló vagy a felügyelt példány **biztonsági** fejléce alatt **Security Center** navigáljon.
 
 > [!NOTE]
 > A rendszer automatikusan létrehozza és konfigurálja a **biztonsági rések felmérésének** eredményeinek tárolására szolgáló Storage-fiókot. Ha már engedélyezte az Azure Defender használatát ugyanazon erőforráscsoport és régió egy másik kiszolgálóján, akkor a rendszer a meglévő Storage-fiókot használja.
 >
 > Az Azure Defender díja Azure Security Center standard szintű díjszabással van összhangban, ahol a csomópont a teljes kiszolgáló vagy a felügyelt példány. Így csak egyszer kell fizetnie a kiszolgálón található összes adatbázis vagy a felügyelt példány Azure Defender szolgáltatással való védelméhez. Először kipróbálhatja az Azure Defendert az ingyenes próbaverzióval.
+
+:::image type="content" source="media/azure-defender-for-sql/enable-azure-defender.png" alt-text="Az Azure Defender engedélyezése":::
 
 ## <a name="start-tracking-vulnerabilities-and-investigating-threat-alerts"></a>A biztonsági rések nyomon követése és a fenyegetésekkel kapcsolatos riasztások vizsgálata
 
@@ -54,17 +56,21 @@ Kattintson a **sebezhetőségi felmérési** kártyára a sebezhetőségi vizsg�
 
 ## <a name="manage-azure-defender-settings"></a>Az Azure Defender beállításainak kezelése
 
-Az Azure Defender beállításainak megtekintéséhez és kezeléséhez a kiszolgáló vagy a felügyelt példány **biztonsági** fejléce alatt navigáljon a **Security Center** elemhez. Ezen a lapon engedélyezheti vagy letilthatja az Azure Defender szolgáltatást, valamint módosíthatja a sebezhetőségi felmérést és a komplex veszélyforrások elleni védelem beállításait a teljes kiszolgálón vagy a felügyelt példányon.
+Az Azure Defender beállításainak megtekintéséhez és kezeléséhez navigáljon **Security Center** a kiszolgáló vagy a felügyelt példány **biztonsági** fejléce alatt. Ezen a lapon engedélyezheti vagy letilthatja az Azure Defender szolgáltatást, valamint módosíthatja a sebezhetőségi felmérést és a komplex veszélyforrások elleni védelem beállításait a teljes kiszolgálón vagy a felügyelt példányon.
+
+:::image type="content" source="media/azure-defender-for-sql/security-server-settings.png" alt-text="biztonsági kiszolgáló beállításai":::
 
 ## <a name="manage-azure-defender-settings-for-a-database"></a>Adatbázis Azure Defender-beállításainak kezelése
 
-Egy adott adatbázis Azure Defender-beállításainak felülbírálásához jelölje be az **Azure Defender engedélyezése az SQL-hez az adatbázis szintjén** jelölőnégyzetet. Ezt a lehetőséget csak akkor használja, ha külön követelmény, hogy különálló, komplex veszélyforrások elleni védelmi riasztásokat vagy Sebezhetőségi felmérési eredményeket kapjon az egyes adatbázisokra vonatkozóan, a kiszolgálón vagy a felügyelt példányon lévő összes adatbázisra vonatkozóan kapott riasztások és eredmények helyett.
+Egy adott adatbázis Azure Defender-beállításainak felülbírálásához jelölje be az **Azure Defender engedélyezése az SQL-hez** jelölőnégyzetet az adatbázis-szint jelölőnégyzetet az adatbázis **Security Center** beállítások területén. Ezt a lehetőséget csak akkor használja, ha külön követelmény, hogy különálló, komplex veszélyforrások elleni védelmi riasztásokat vagy Sebezhetőségi felmérési eredményeket kapjon az egyes adatbázisokra vonatkozóan, a kiszolgálón vagy a felügyelt példányon lévő összes adatbázisra vonatkozóan kapott riasztások és eredmények helyett.
 
 Ha a jelölőnégyzet be van jelölve, megadhatja a megfelelő beállításokat ehhez az adatbázishoz.
 
-Az Azure Defender a kiszolgáló vagy a felügyelt példány SQL-beállításaihoz is elérhető az Azure Defender-adatbázis paneljén. Kattintson a **Beállítások** elemre az Azure Defender fő ablaktábláján, majd kattintson az **Azure DEFENDER megtekintése az SQL Server-beállításokhoz** lehetőségre.
+:::image type="content" source="media/azure-defender-for-sql/enable-for-database-level.png" alt-text="Az Azure Defender engedélyezése az adatbázis szintjén":::
 
-## <a name="next-steps"></a>Következő lépések
+Az Azure Defender a kiszolgáló vagy a felügyelt példány SQL-beállításaihoz is elérhető az Azure Defender-adatbázis paneljén. A fő Security Center ablaktáblán kattintson a **Beállítások** elemre, majd az **Azure DEFENDER megtekintése az SQL Server-beállításokhoz** lehetőségre.
+
+## <a name="next-steps"></a>További lépések
 
 - További információ a [sebezhetőségi felmérésről](sql-vulnerability-assessment.md)
 - További információ a komplex [veszélyforrások elleni védelemről](threat-detection-configure.md)

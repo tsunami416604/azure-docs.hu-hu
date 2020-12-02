@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 4cb707896aa7874aa2bf287723e8a53d7d6d974c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bcb8cc6da3d2fc631058386103575549e376a32c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577787"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452151"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Azure-alkalmazás ajánlatának megtervezése a kereskedelmi piactéren
 
@@ -33,18 +33,18 @@ Az Azure-alkalmazások tervezésével, létrehozásával és tesztelésével az 
 
 Tekintse át a következő erőforrásokat, amikor megtervezi az Azure-alkalmazás ajánlatát a kereskedelmi piactéren.
 
-- [Azure Resource Manager sablonok ismertetése](/azure/azure-resource-manager/templates/template-syntax)
+- [Azure Resource Manager sablonok ismertetése](../azure-resource-manager/templates/template-syntax.md)
 - Gyorsútmutatók:
     - [Azure-gyorssablonok](https://azure.microsoft.com/documentation/templates/)
     - [Azure-sablonok – ajánlott eljárások útmutatója](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
-    - [Alkalmazásdefiníció közzététele](/azure/managed-applications/publish-service-catalog-app)
-    - [Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése](/azure/managed-applications/deploy-service-catalog-quickstart)
+    - [Alkalmazásdefiníció közzététele](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
+    - [Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése](../azure-resource-manager/managed-applications/deploy-service-catalog-quickstart.md)
 - Oktatóanyagok:
-    - [Definíciós fájlok létrehozása](/azure/managed-applications/publish-service-catalog-app)
+    - [Definíciós fájlok létrehozása](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
 - Minták
-    - [Azure CLI](/azure/managed-applications/cli-samples)
-    - [Azure PowerShell](/azure/managed-applications/powershell-samples)
-    - [Felügyelt alkalmazási megoldások](/azure/managed-applications/sample-projects)
+    - [Azure CLI](../azure-resource-manager/managed-applications/cli-samples.md)
+    - [Azure PowerShell](../azure-resource-manager/managed-applications/powershell-samples.md)
+    - [Felügyelt alkalmazási megoldások](../azure-resource-manager/managed-applications/sample-projects.md)
 
 Az Azure Marketplace-hez készült videó- [létrehozási megoldási sablonok és a felügyelt alkalmazások](https://channel9.msdn.com/Events/Build/2018/BRK3603) átfogó bevezetést biztosítanak az Azure-alkalmazás ajánlatának típusára:
 
@@ -59,12 +59,12 @@ Az Azure Marketplace-hez készült videó- [létrehozási megoldási sablonok é
 
 Az Azure-alkalmazás kezeléséhez válasszon egyet vagy mindkettőt a következő parancsfájl-környezetek közül:
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure PowerShell](/powershell/azure/)
+- [Azure CLI](/cli/azure)
 
 Javasoljuk, hogy a következő eszközöket adja hozzá a fejlesztői környezethez:
 
-- [Azure Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 - [Visual Studio Code](https://code.visualstudio.com/) a következő kiterjesztésekkel:
     - Kiterjesztés: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     - Kiterjesztés: [szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -120,8 +120,8 @@ Amikor új Azure-alkalmazást hoz létre a partner Centerben, szöveget, képet,
 4. Használati feltételek
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Összefoglalás
-8. Leírás
+7. Összegzés
+8. Description
 9. Képernyőképek/videók
 
 Az alábbi képernyőképen látható, hogyan jelennek meg az ajánlat adatai a Azure Portalban:
@@ -140,21 +140,21 @@ Az alábbi képernyőképen látható, hogyan jelennek meg az ajánlat adatai a 
 
 Ha könnyebben létre szeretné hozni az ajánlatot, készítse elő ezeket az elemeket az idő előtt. Ha másként nincs jelezve, a következő elemek szükségesek.
 
-- **Name (név** ): Ez a név jelenik meg a kereskedelmi piactéren az ajánlati lista címeként. A név lehet védjeggyel ellátott. Nem tartalmazhat hangulatjelek (kivéve, ha a védjegyek és a szerzői jogi szimbólumok), és legfeljebb 50 karakter hosszúnak kell lennie.
-- **Keresési eredmények összegzése** : az ajánlat célját vagy funkcióját egyetlen mondatként írja le, egyszerű szövegként, Sortörés nélkül, 100 vagy kevesebb karakter. Ezt az összegzést a kereskedelmi Piactéri lista (ok) keresési eredményei használják.
-- **Rövid leírás** : legfeljebb 256 karakter hosszú lehet. Ez az összefoglalás az ajánlat részletek lapján jelenik meg.
-- **Leírás** : Ez a leírás az Azure Marketplace-lista (ek) áttekintésében fog megjelenni. Érdemes megfontolni egy érték kiosztását, a legfontosabb előnyöket, a kívánt felhasználói bázist, a kategória-vagy iparági társításokat, az alkalmazáson belüli vásárlási lehetőségeket, az ügyfelek igényét vagy a fájdalmat, amelyet az ajánlat címe, a szükséges információk és a további információkra mutató hivatkozás tartalmaz.
+- **Name (név**): Ez a név jelenik meg a kereskedelmi piactéren az ajánlati lista címeként. A név lehet védjeggyel ellátott. Nem tartalmazhat hangulatjelek (kivéve, ha a védjegyek és a szerzői jogi szimbólumok), és legfeljebb 50 karakter hosszúnak kell lennie.
+- **Keresési eredmények összegzése**: az ajánlat célját vagy funkcióját egyetlen mondatként írja le, egyszerű szövegként, Sortörés nélkül, 100 vagy kevesebb karakter. Ezt az összegzést a kereskedelmi Piactéri lista (ok) keresési eredményei használják.
+- **Rövid leírás**: legfeljebb 256 karakter hosszú lehet. Ez az összefoglalás az ajánlat részletek lapján jelenik meg.
+- **Leírás**: Ez a leírás az Azure Marketplace-lista (ek) áttekintésében fog megjelenni. Érdemes megfontolni egy érték kiosztását, a legfontosabb előnyöket, a kívánt felhasználói bázist, a kategória-vagy iparági társításokat, az alkalmazáson belüli vásárlási lehetőségeket, az ügyfelek igényét vagy a fájdalmat, amelyet az ajánlat címe, a szükséges információk és a további információkra mutató hivatkozás tartalmaz.
 
     Ez a szövegmező olyan Rich Text Editor-vezérlőkkel rendelkezik, amelyekkel a Leírás még vonzóbbá teheti a leírást. A leírást a HTML-címkék használatával is formázhatja. Ebben a mezőben legfeljebb 3 000 karaktert adhat meg, amely HTML-jelölést és szóközöket tartalmaz. További tippeket a [kereskedelmi piactér ajánlatának leírásában](supported-html-tags.md), a [nagyszerű alkalmazás leírását](/windows/uwp/publish/write-a-great-app-description) és a HTML-címkéket ismertető témakörben talál.
 
 - **Kulcsszavak keresése** (nem kötelező): legfeljebb három olyan keresési kulcsszót adhat meg, amelyeket az ügyfelek az online áruházban kereshetnek. A legjobb eredmény érdekében ezeket a kulcsszavakat is használhatja a leírásában. Nem kell megadnia az ajánlat **nevét** és **leírását**. A szöveg automatikusan belekerül a keresésbe.
-- **Adatvédelmi szabályzat hivatkozása** : a vállalata adatvédelmi szabályzatának URL-címe. Érvényes adatvédelmi szabályzatot kell megadnia, és annak biztosításáért felelős, hogy az alkalmazás megfelel az adatvédelmi törvényeknek és előírásoknak.
+- **Adatvédelmi szabályzat hivatkozása**: a vállalata adatvédelmi szabályzatának URL-címe. Érvényes adatvédelmi szabályzatot kell megadnia, és annak biztosításáért felelős, hogy az alkalmazás megfelel az adatvédelmi törvényeknek és előírásoknak.
 - **Hasznos hivatkozások** (nem kötelező): az ajánlat felhasználói számára különböző forrásokra mutató hivatkozásokat is megadhat. Például fórumok, GYIK és kibocsátási megjegyzések.
-- **Kapcsolattartási adatok** : a szervezet következő névjegyeit kell kijelölnie:
-  - **Támogatási kapcsolattartó** : adja meg a Microsoft-partnerek nevét, telefonszámát és e-mail-címét, amelyet az ügyfelek nyitott jegyekként használhatnak. Meg kell adnia a támogatási webhely URL-címét is.
-  - **Mérnöki kapcsolattartó** : adja meg a Microsoft számára a nevét, telefonszámát és e-mail-címét, ha problémák merülnek fel az ajánlatával kapcsolatban. A kapcsolattartási adatok nem szerepelnek a kereskedelmi piactéren.
+- **Kapcsolattartási adatok**: a szervezet következő névjegyeit kell kijelölnie:
+  - **Támogatási kapcsolattartó**: adja meg a Microsoft-partnerek nevét, telefonszámát és e-mail-címét, amelyet az ügyfelek nyitott jegyekként használhatnak. Meg kell adnia a támogatási webhely URL-címét is.
+  - **Mérnöki kapcsolattartó**: adja meg a Microsoft számára a nevét, telefonszámát és e-mail-címét, ha problémák merülnek fel az ajánlatával kapcsolatban. A kapcsolattartási adatok nem szerepelnek a kereskedelmi piactéren.
   - **CSP programbeli kapcsolat** (nem kötelező): adja meg a nevet, a telefonszámot és az e-mailt, ha a Cloud Solution Provider (CSP) programhoz bejelentkezett, így ezek a partnerek bármilyen kérdéssel felvehetik Önnel a kapcsolatot. Megadhatja a marketing-anyagok URL-címét is.
-- **Média – logók** : adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni egy **kis** és **közepes** embléma létrehozásához. Ezeket később is lecserélheti a különböző rendszerképekre.
+- **Média – logók**: adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni egy **kis** és **közepes** embléma létrehozásához. Ezeket később is lecserélheti a különböző rendszerképekre.
   - Nagyméretű (216 x 216 és 350 x 350 px, kötelező)
   - Közepes (90 x 90 px, nem kötelező)
   - Kicsi (48 x 48 px, opcionális)
@@ -197,10 +197,10 @@ Az előnézeti célközönséget az Azure-előfizetési azonosítók használat�
 
 Az olyan felügyelt alkalmazások esetében, amelyek mérési eseményeket bocsátanak ki a [Marketplace-mérési szolgáltatás API](partner-center-portal/marketplace-metering-service-apis.md)-k használatával, meg kell adnia azt az identitást, amelyet a szolgáltatás a mérési események kibocsátásakor használni fog.
 
-Erre a konfigurációra akkor van szükség, ha a [Batch-használati eseményt](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event)szeretné használni. Ha [használati eseményt](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)szeretne beküldeni, a [példány metaadatainak szolgáltatásával](/azure/active-directory/managed-identities-azure-resources/overview) lekérheti a [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatát](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)is.
+Erre a konfigurációra akkor van szükség, ha a [Batch-használati eseményt](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event)szeretné használni. Ha [használati eseményt](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)szeretne beküldeni, a [példány metaadatainak szolgáltatásával](../active-directory/managed-identities-azure-resources/overview.md) lekérheti a [JSON webes jogkivonat (JWT) tulajdonosi jogkivonatát](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)is.
 
-- **Azure Active Directory bérlői azonosító** (kötelező): a Azure Portal belül létre kell [hoznia egy Azure Active Directory (ad) alkalmazást](/azure/active-directory/develop/howto-create-service-principal-portal) , hogy a két szolgáltatás közötti kapcsolat ellenőrizhető legyen egy hitelesített kommunikáció mögött. A Azure Active Directory (Azure AD) alkalmazás [bérlői azonosítójának](/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in) megkereséséhez a Azure Active Directory [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) paneljén. A **megjelenítendő név** oszlopban válassza ki az alkalmazást. Ezután keresse meg a **tulajdonságokat** , majd a **címtár (bérlő) azonosítóját** (például: `50c464d3-4930-494c-963c-1e951d15360e` ).
-- **Azure Active Directory alkalmazás azonosítója** (kötelező): szüksége lesz az [alkalmazás azonosítójára](/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in.md) és egy hitelesítési kulcsra is. Az alkalmazás AZONOSÍTÓjának megkereséséhez nyissa meg a Azure Active Directory [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) paneljét. A **megjelenítendő név** oszlopban válassza ki az alkalmazást, majd keresse meg az **alkalmazás (ügyfél) azonosítóját** (például `50c464d3-4930-494c-963c-1e951d15360e` ). A hitelesítési kulcs megkereséséhez lépjen a **Beállítások** elemre, és válassza a **kulcsok** lehetőséget. Meg kell adnia egy leírást és egy időtartamot, és ezután meg kell adni egy számértéket.
+- **Azure Active Directory bérlői azonosító** (kötelező): a Azure Portal belül létre kell [hoznia egy Azure Active Directory (ad) alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md) , hogy a két szolgáltatás közötti kapcsolat ellenőrizhető legyen egy hitelesített kommunikáció mögött. A Azure Active Directory (Azure AD) alkalmazás [bérlői azonosítójának](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) megkereséséhez a Azure Active Directory [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) paneljén. A **megjelenítendő név** oszlopban válassza ki az alkalmazást. Ezután keresse meg a **tulajdonságokat**, majd a **címtár (bérlő) azonosítóját** (például: `50c464d3-4930-494c-963c-1e951d15360e` ).
+- **Azure Active Directory alkalmazás azonosítója** (kötelező): szüksége lesz az [alkalmazás azonosítójára](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) és egy hitelesítési kulcsra is. Az alkalmazás AZONOSÍTÓjának megkereséséhez nyissa meg a Azure Active Directory [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) paneljét. A **megjelenítendő név** oszlopban válassza ki az alkalmazást, majd keresse meg az **alkalmazás (ügyfél) azonosítóját** (például `50c464d3-4930-494c-963c-1e951d15360e` ). A hitelesítési kulcs megkereséséhez lépjen a **Beállítások** elemre, és válassza a **kulcsok** lehetőséget. Meg kell adnia egy leírást és egy időtartamot, és ezután meg kell adni egy számértéket.
 
 > [!NOTE]
 > Az Azure-alkalmazás azonosítója a közzétevő-AZONOSÍTÓhoz lesz társítva, és csak ebben a közzétevő fiókban használható újra.
@@ -209,8 +209,8 @@ Erre a konfigurációra akkor van szükség, ha a [Batch-használati eseményt](
 
 Dönthet úgy, hogy a Microsoft által támogatott marketing-és értékesítési csatornákat is bekapcsolja. Ha az ajánlatot a partner Centerben hozza létre, két lap jelenik meg a folyamat vége felé:
 
-- **Viszonteladás a CSP** -n keresztül: ezzel a beállítással engedélyezheti, hogy a Microsoft Cloud-szolgáltatói (CSP) partnerek egy csomagban lévő ajánlat részeként eladják a megoldást. További információért lásd a [Cloud Solution Provider programot](/azure/marketplace/cloud-solution-providers) .
-- **Közös értékesítés a Microsofttal** : Ez a beállítás lehetővé teszi, hogy a Microsoft értékesítési csapatai az ügyfelek igényeinek kiértékelése során fontolják meg az Ön IP-címének közös értékesítését. Az ajánlat értékelésre való előkészítésével kapcsolatos részletes információkért lásd: [közös értékesítés lehetőség a partner Centerben](partner-center-portal/commercial-marketplace-co-sell.md) . Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](cloud-solution-providers.md)című témakört.
+- **Viszonteladás a CSP**-n keresztül: ezzel a beállítással engedélyezheti, hogy a Microsoft Cloud-szolgáltatói (CSP) partnerek egy csomagban lévő ajánlat részeként eladják a megoldást. További információért lásd a [Cloud Solution Provider programot](./cloud-solution-providers.md) .
+- **Közös értékesítés a Microsofttal**: Ez a beállítás lehetővé teszi, hogy a Microsoft értékesítési csapatai az ügyfelek igényeinek kiértékelése során fontolják meg az Ön IP-címének közös értékesítését. Az ajánlat értékelésre való előkészítésével kapcsolatos részletes információkért lásd: [közös értékesítés lehetőség a partner Centerben](partner-center-portal/commercial-marketplace-co-sell.md) . Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](cloud-solution-providers.md)című témakört.
 
 További információ: [a felhőalapú üzleti növekedés az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 
@@ -224,14 +224,14 @@ A csomagokkal, például a díjszabási modellekkel és a saját csomagokkal kap
 
 Kétféle Azure-alkalmazási csomag létezik: _megoldás sablon_ és _felügyelt alkalmazás_. Mindkét díjcsomag támogatja a megoldás üzembe helyezésének és konfigurálásának automatizálását egyetlen virtuális gépen (VM) túl. Automatizálhatja több erőforrás, többek között a virtuális gépek, a Hálózatkezelés és a tárolási erőforrások megadásának folyamatát összetett megoldások, például IaaS-megoldások biztosítása érdekében. Mindkét projekttípus számos különböző Azure-erőforrást alkalmazhat, beleértve a virtuális gépeket, de nem korlátozódik rájuk.
 
-- A **megoldási sablonok** az egyik fő módszer a megoldás közzétételére a kereskedelmi piactéren. A megoldási sablonok csomagjai nem vonhatók le a kereskedelmi piactéren, de használhatók a kereskedelmi Piactéren keresztül számlázott fizetős virtuális gépek üzembe helyezésére. Használja a megoldás sablonjának típusát, ha az ügyfél felügyeli a megoldást, és a tranzakciók számlázása egy másik csomagon keresztül történik. A megoldási sablonok létrehozásával kapcsolatos további információkért lásd: [Mi az Azure Resource Manager?](/azure/azure-resource-manager/resource-group-overview)
+- A **megoldási sablonok** az egyik fő módszer a megoldás közzétételére a kereskedelmi piactéren. A megoldási sablonok csomagjai nem vonhatók le a kereskedelmi piactéren, de használhatók a kereskedelmi Piactéren keresztül számlázott fizetős virtuális gépek üzembe helyezésére. Használja a megoldás sablonjának típusát, ha az ügyfél felügyeli a megoldást, és a tranzakciók számlázása egy másik csomagon keresztül történik. A megoldási sablonok létrehozásával kapcsolatos további információkért lásd: [Mi az Azure Resource Manager?](../azure-resource-manager/management/overview.md)
 - A **felügyelt alkalmazási** csomagok segítségével egyszerűen hozhat létre és biztosíthat teljes körűen felügyelt, kulcsrakész alkalmazásokat ügyfelei számára. Ugyanazokkal a képességekkel rendelkeznek, mint a megoldási sablonok, és néhány fő különbség:
     - Az erőforrások üzembe helyezése egy erőforráscsoporthoz történik, és az alkalmazás közzétevője felügyeli. Az erőforráscsoport az ügyfél előfizetésében található meg, de a közzétevő bérlőjének egy identitása rendelkezik hozzáféréssel az erőforráscsoporthoz. 
     - Közzétevőként meg kell adnia a megoldás folyamatos támogatásának költségeit, és a tranzakciók a kereskedelmi Piactéren keresztül támogatottak.
  
-    Használja a felügyelt alkalmazáscsomag típusát, ha Ön vagy az ügyfél megköveteli, hogy a megoldást egy partner felügyelje, vagy egy előfizetésen alapuló megoldást helyezzen üzembe. További információ a felügyelt alkalmazások előnyeiről és típusairól: az [Azure által felügyelt alkalmazások áttekintése](/azure/managed-applications/overview).
+    Használja a felügyelt alkalmazáscsomag típusát, ha Ön vagy az ügyfél megköveteli, hogy a megoldást egy partner felügyelje, vagy egy előfizetésen alapuló megoldást helyezzen üzembe. További információ a felügyelt alkalmazások előnyeiről és típusairól: az [Azure által felügyelt alkalmazások áttekintése](../azure-resource-manager/managed-applications/overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A megoldási sablon megtervezéséhez lásd: [megoldási sablon tervezése Azure-alkalmazási ajánlathoz](plan-azure-app-solution-template.md).
 - Az Azure által felügyelt alkalmazások megtervezéséhez tekintse meg az Azure [által felügyelt alkalmazások megtervezése Azure-alkalmazásokhoz](plan-azure-app-managed-app.md)című témakört.

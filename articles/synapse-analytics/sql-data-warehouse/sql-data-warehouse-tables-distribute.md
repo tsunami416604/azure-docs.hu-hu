@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a3715abdebce319979d867d12764a22b4ed16c35
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c452d51018ef3f204cd7281971c07fb6337d39bf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323621"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449710"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Útmutató elosztott táblák tervezéséhez dedikált SQL-készlet használatával az Azure szinapszis Analyticsben
 
@@ -44,7 +44,7 @@ A kivonatok – az elosztott tábla a számítási csomópontok között egy det
 
 ![Elosztott tábla](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Elosztott tábla")  
 
-Mivel az azonos értékek mindig azonos eloszlásba kerülnek, az adattárház beépített ismeretekkel rendelkezik a sorok helyeiről. A dedikált SQL-készletben ez az információ az adatáthelyezés minimalizálására szolgál a lekérdezések során, ami javítja a lekérdezési teljesítményt.
+Mivel az azonos értékek mindig ugyanazzal az eloszlással vannak kialakítva, az SQL Analytics beépített ismeretekkel rendelkezik a sorok helyeiről. A dedikált SQL-készletben ez az információ az adatáthelyezés minimalizálására szolgál a lekérdezések során, ami javítja a lekérdezési teljesítményt.
 
 A kivonattal terjesztett táblázatok jól működnek a csillag sémában található nagyméretű táblákhoz. Nagyon nagy mennyiségű sorból állhatnak, és továbbra is nagy teljesítmény érhető el. Természetesen vannak olyan kialakítási megfontolások, amelyek segítenek az elosztott rendszer által biztosított teljesítmény megszerzésében. A megfelelő terjesztési oszlop kiválasztása az ebben a cikkben ismertetett szempontok egyike.
 
@@ -221,7 +221,7 @@ RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_ProductKey];
 RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Elosztott tábla létrehozásához használja az alábbi utasítások egyikét:
 

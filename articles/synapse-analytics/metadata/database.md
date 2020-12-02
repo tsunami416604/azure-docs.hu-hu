@@ -1,6 +1,6 @@
 ---
 title: Megosztott adatbázis
-description: Az Azure szinapszis Analytics olyan megosztott metaadat-modellt biztosít, amelyben egy adatbázis kiszolgáló nélküli Apache Spark készletben való létrehozása lehetővé teszi a kiszolgáló nélküli SQL-készletből (előzetes verzió) és az SQL Pool-motorokból való elérhetővé tételét.
+description: Az Azure szinapszis Analytics olyan megosztott metaadat-modellt biztosít, amelyben egy adatbázis kiszolgáló nélküli Apache Spark készletben való létrehozása lehetővé teszi a kiszolgáló nélküli SQL-készletből és az SQL Pool-motorokból való elérhetővé tételét.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,20 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e17eb44a5f4f4aace9ce9d541b8218b35db0f5d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317841"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451818"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Az Azure szinapszis Analytics megosztott adatbázisa
 
-Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző számítási munkaterület-hajtóművek adatbázisokat és táblákat osszanak meg a kiszolgáló nélküli Apache Spark készletek (előzetes verzió) és a kiszolgáló nélküli SQL-készlet (előzetes verzió) motorja között.
+Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző számítási munkaterület-hajtóművek adatbázisokat és táblákat osszanak meg a kiszolgáló nélküli Apache Spark készletek és a kiszolgáló nélküli SQL-készlet motorja között.
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
-
-A Spark-feladatokkal létrehozott adatbázis a munkaterület összes jelenlegi és jövőbeli Spark-készlete (előzetes verzió) esetében látható lesz, beleértve a kiszolgáló nélküli SQL-készlet motorját is.
+A Spark-feladatokkal létrehozott adatbázisok a munkaterület összes jelenlegi és jövőbeli Spark-készletével azonos névvel lesznek láthatóak, beleértve a kiszolgáló nélküli SQL-készlet motorját.
 
 A meghívott Spark alapértelmezett adatbázis `default` a kiszolgáló nélküli SQL-készlet kontextusában is látható lesz a nevű adatbázisként `default` .
 
@@ -48,7 +46,7 @@ Ha például egy nevű Spark `mydb` -adatbázis jön létre az Azure szinapszis 
 
 A Spark-adatbázisok és-táblák, valamint az SQL-motorban szinkronizált ábrázolások az alapul szolgáló tárolási szinten lesznek biztosítva.
 
-Az adatbázist létrehozó rendszerbiztonsági tag ennek az adatbázisnak a tulajdonosa, és minden jogosultsággal rendelkezik az adatbázishoz és az objektumaihoz.
+Az adatbázist létrehozó rendszerbiztonsági tag ennek az adatbázisnak a tulajdonosa, és minden jogosultsággal rendelkezik az adatbázishoz és annak objektumaihoz.
 
 Ahhoz, hogy egy rendszerbiztonsági tag, például egy felhasználó vagy egy biztonsági csoport hozzáférhessen egy adatbázishoz, adja meg a megfelelő POSIX-mappát és-engedélyeket a címtárban található alapul szolgáló mappákhoz és fájlokhoz `warehouse` . 
 
@@ -74,7 +72,7 @@ SELECT * FROM sys.databases;
 
 Ellenőrizze, hogy `mytestdb` szerepel-e az eredmények között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ az Azure szinapszis Analytics megosztott metaadatairól](overview.md)
 - [További információ az Azure szinapszis Analytics megosztott metaadatait tartalmazó tábláiról](table.md)

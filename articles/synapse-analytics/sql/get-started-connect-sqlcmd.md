@@ -1,6 +1,6 @@
 ---
 title: Kapcsolódás a szinapszis SQL-hez a Sqlcmd használatával
-description: Használja a Sqlcmd parancssori segédprogramot a kiszolgáló nélküli SQL-készlet (előzetes verzió) és a dedikált SQL-készlet lekérdezéséhez.
+description: Használja a Sqlcmd parancssori segédprogramot a kiszolgáló nélküli SQL-készlet és a dedikált SQL-készlet lekérdezéséhez.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,23 +9,23 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43fae026f91e4430fbce0d01141a86a913db089d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 88ee95789bdc1c6ee9884a021067318caab203d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686140"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451646"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>Kapcsolódás a szinapszis SQL-hez a Sqlcmd használatával
 
 > [!div class="op_single_selector"]
-> * [Azure Data Studio (előzetes verzió)](get-started-azure-data-studio.md)
+> * [Azure Data Studio)](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-A [Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) parancssori segédprogrammal kapcsolódhat és lekérdezheti a kiszolgáló nélküli SQL-készletet (előzetes verzió) és a kijelölt SQL-készletet a szinapszis SQL-en belül.  
+A [Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) parancssori segédprogrammal kapcsolódhat és lekérdezheti a kiszolgáló nélküli SQL-készletet és a dedikált SQL-készletet a szinapszis sqlon belül.  
 
 ## <a name="1-connect"></a>1. kapcsolat
 A [Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)megkezdéséhez nyissa meg a parancssort, és írja be a **Sqlcmd** , majd a szinapszis SQL Database-hez tartozó kapcsolódási karakterláncot. A kapcsolati sztringben a következő paraméterekre van szükség:
@@ -118,6 +118,6 @@ sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P
 "SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')" | sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I > ./tables.out
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Sqlcmd beállításaival kapcsolatos további információkért tekintse meg a [Sqlcmd dokumentációját](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).

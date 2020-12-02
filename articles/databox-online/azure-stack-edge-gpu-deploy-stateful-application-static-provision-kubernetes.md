@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 6949b2265e1b22d924b67d0d46e5b2f2bf9c23ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2a14c12baac29d73754bb17e3ca386cc48e1ba0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330400"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449229"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Kubernetes állapot-nyilvántartó alkalmazás futtatása a kubectl használatával a Azure Stack Edge Pro-eszközön PersistentVolume
 
@@ -37,7 +37,7 @@ Az állapot-nyilvántartó alkalmazás üzembe helyezése előtt győződjön me
 ### <a name="for-client-accessing-the-device"></a>Az eszközt elérő ügyfél
 
 - Van egy Windows-ügyfélrendszer, amely az Azure Stack Edge Pro-eszköz elérésére szolgál majd.
-    - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
     
     - Bármely más ügyfél [támogatott operációs rendszerrel](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. 
     
@@ -62,13 +62,13 @@ A PV statikus kiépítéséhez létre kell hoznia egy megosztást az eszközön.
 > [!NOTE]
 > Az ebben a útmutatóban használt példa nem működik az NFS-megosztásokkal. Az NFS-megosztások általában az Azure Stack Edge-eszközön, nem adatbázis-alkalmazásokkal is üzembe helyezhetők.
 
-1. Válassza ki, hogy szeretne-e peremhálózati megosztást vagy peremhálózati helyi megosztást létrehozni. Megosztás létrehozásához kövesse a [megosztás hozzáadása](azure-stack-edge-manage-shares.md#add-a-share) című témakör utasításait. Ügyeljen arra, hogy jelölje be a **megosztás Edge-számítással való használatának**jelölőnégyzetét.
+1. Válassza ki, hogy szeretne-e peremhálózati megosztást vagy peremhálózati helyi megosztást létrehozni. Megosztás létrehozásához kövesse a [megosztás hozzáadása](azure-stack-edge-manage-shares.md#add-a-share) című témakör utasításait. Ügyeljen arra, hogy jelölje be a **megosztás Edge-számítással való használatának** jelölőnégyzetét.
 
     ![Edge helyi megosztás a PV-hez](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/edge-local-share-static-provision-1.png)
 
     1. Új megosztás létrehozása helyett, ha úgy dönt, hogy meglévő megosztást használ, csatlakoztatnia kell a megosztást.
     
-        Az Azure Stack Edge-erőforrás Azure Portal lépjen a **megosztások**elemre. A meglévő megosztások listájában válassza ki a használni kívánt megosztást, és kattintson rá.
+        Az Azure Stack Edge-erőforrás Azure Portal lépjen a **megosztások** elemre. A meglévő megosztások listájában válassza ki a használni kívánt megosztást, és kattintson rá.
 
         ![Meglévő helyi megosztás kiválasztása a PV-hez](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/mount-edge-share-1.png)
 
@@ -354,6 +354,6 @@ A PV már nem kötődik a PVC-hez, mert a PVC törölve lett. Mivel a rendszer a
     ![Helyi megosztás törlése a PV-hez](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/delete-edge-local-share-1.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A tárolók dinamikus kiépítésének megismeréséhez tekintse [meg az állapot-nyilvántartó alkalmazások üzembe helyezése dinamikus kiépítés Azure stack Edge Pro-eszközön keresztül](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md) című témakört.

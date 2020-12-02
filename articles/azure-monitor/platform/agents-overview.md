@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2020
-ms.openlocfilehash: c6db5a856b127d4549de9597f8157f524a38af79
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c453219638b9586d4ad2cc2a89311b1f2bdeefe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186660"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450100"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor ügynökök áttekintése
 
@@ -35,7 +35,7 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 | | Azure Monitor-ügynök (előzetes verzió) | Diagnosztika<br>kiterjesztés (WAD) | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|:---|
 | **Támogatott környezetek** | Azure<br>Egyéb felhő (Azure arc)<br>Helyszíni (Azure arc)  | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni | 
-| **Ügynökre vonatkozó követelmények**  | Nincs | Nincs | Nincs | Log Analytics-ügynököt igényel |
+| **Ügynökre vonatkozó követelmények**  | Nincsenek | Nincsenek | Nincsenek | Log Analytics-ügynököt igényel |
 | **Összegyűjtött adatok** | Eseménynaplók<br>Teljesítmény | Eseménynaplók<br>ETW események<br>Teljesítmény<br>Fájl alapú naplók<br>IIS-naplók<br>.NET-alkalmazás naplói<br>Összeomlási memóriaképek<br>Ügynök diagnosztikai naplói | Eseménynaplók<br>Teljesítmény<br>Fájl alapú naplók<br>IIS-naplók<br>Bepillantást és megoldásokat<br>Egyéb szolgáltatások | Folyamatok függőségei<br>Hálózati kapcsolatok metrikái |
 | **Adatküldés** | Azure Monitor-naplók<br>Azure Monitor-metrikák | Azure Storage<br>Azure Monitor-metrikák<br>Eseményközpont | Azure Monitor-naplók | Azure Monitor-naplók<br>(Log Analytics ügynökön keresztül) |
 | **Szolgáltatások és**<br>**szolgáltatások**<br>**támogatott** | Log Analytics<br>Metrikaböngésző | Metrikaböngésző | Azure Monitor virtuális gépekhez<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | Azure Monitor virtuális gépekhez<br>Szolgáltatástérkép |
@@ -45,7 +45,7 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 | | Azure Monitor-ügynök (előzetes verzió) | Diagnosztika<br>bővítmény (LAD) | Telegraf<br>ügynök | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|:---|:---|
 | **Támogatott környezetek** | Azure<br>Egyéb felhő (Azure arc)<br>Helyszíni (arc ív) | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni |
-| **Ügynökre vonatkozó követelmények**  | Nincs | Nincs | Nincs | Nincs | Log Analytics-ügynököt igényel |
+| **Ügynökre vonatkozó követelmények**  | Nincsenek | Nincsenek | Nincsenek | Nincsenek | Log Analytics-ügynököt igényel |
 | **Összegyűjtött adatok** | Rendszernapló<br>Teljesítmény | Rendszernapló<br>Teljesítmény | Teljesítmény | Rendszernapló<br>Teljesítmény| Folyamatok függőségei<br>Hálózati kapcsolatok metrikái |
 | **Adatküldés** | Azure Monitor-naplók<br>Azure Monitor-metrikák | Azure Storage<br>Eseményközpont | Azure Monitor-metrikák | Azure Monitor-naplók | Azure Monitor-naplók<br>(Log Analytics ügynökön keresztül) |
 | **Szolgáltatások és**<br>**szolgáltatások**<br>**támogatott** | Log Analytics<br>Metrikaböngésző | | Metrikaböngésző | Azure Monitor virtuális gépekhez<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | Azure Monitor virtuális gépekhez<br>Szolgáltatástérkép |
@@ -176,6 +176,7 @@ A következő táblázatok a Azure Monitor ügynökök által támogatott operá
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                        |   | X | X |   |
 | Red Hat Enterprise Linux Server 6.7 +                     |   | X | X | X |
+| SUSE Linux Enterprise Server 15,1                        |   | X |   |   |
 | SUSE Linux Enterprise Server 15                          | X | X |   |   |
 | SUSE Linux Enterprise Server 12                          | X | X | X | X |
 | Ubuntu 20,04 LTS                                         |   | X |   |   |
@@ -205,7 +206,7 @@ Mivel a függőségi ügynök a kernel szintjén működik, a támogatás a kern
 | Debian                          | 9      | 4.9  | 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További részleteket az egyes ügynökökről a következő címen talál:
 

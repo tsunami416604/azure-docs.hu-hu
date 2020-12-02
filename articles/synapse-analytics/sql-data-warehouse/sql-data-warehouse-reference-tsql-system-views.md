@@ -1,6 +1,6 @@
 ---
-title: A dedikált SQL-készlet rendszernézetei
-description: Az Azure szinapszis Analytics szolgáltatásban található dedikált SQL-készlet rendszernézeteinek dokumentációja.
+title: A dedikált SQL-készlet rendszernézetei (korábban SQL DW)
+description: Hivatkozások a rendszernézetek dokumentációra a dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 81ce875b5ee9baa96fe9aaa9fa4ea99a730d307e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9149238099704a3567a8d7f34eddbc99ee8f304e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313360"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449917"
 ---
-# <a name="system-views-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet rendszernézetei az Azure szinapszis Analyticsben
+# <a name="system-views-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>A dedikált SQL Pool (korábban SQL DW) rendszernézetei az Azure szinapszis Analyticsben
 
-Hivatkozások a dedikált SQL-készletben támogatott T-SQL-utasítások dokumentációjában.
+Hivatkozások a dedikált SQL-készletben (korábban SQL DW) támogatott T-SQL-utasítások dokumentációjában.
 
-## <a name="dedicated-sql-pool-catalog-views"></a>Dedikált SQL Pool Catalog-nézetek
+## <a name="dedicated-sql-pool-formerly-sql-dw-catalog-views"></a>Dedikált SQL-készlet (korábbi nevén SQL DW) katalógus nézetei
 
 * [sys.pdw_column_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-column-distribution-properties-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_distributions](/sql/relational-databases/system-catalog-views/sys-pdw-distributions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -48,7 +48,7 @@ Hivatkozások a dedikált SQL-készletben támogatott T-SQL-utasítások dokumen
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.workload_management_workload_groups](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-groups-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="dedicated-sql-pool-dynamic-management-views-dmvs"></a>Dedikált SQL Pool dinamikus felügyeleti nézetek (DMV)
+## <a name="dedicated-sql-pool-formerly-sql-dw-dynamic-management-views-dmvs"></a>Dedikált SQL-készlet (korábban SQL DW) dinamikus felügyeleti nézetek (DMV)
 
 * [sys.dm_pdw_dms_cores](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-cores-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_dms_external_work](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-external-work-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -70,9 +70,9 @@ Hivatkozások a dedikált SQL-készletben támogatott T-SQL-utasítások dokumen
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool"></a>A dedikált SQL-készletre vonatkozó SQL Server DMV
+## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool-formerly-sql-dw"></a>A dedikált SQL-készletre (korábban SQL DW) vonatkozó DMV SQL Server
 
-A következő DMV a dedikált SQL-készletre érvényesek, de a **Master** adatbázishoz való csatlakozással kell végrehajtani.
+A következő DMV érvényesek a dedikált SQL-készletre (korábban SQL DW), de a **Master** adatbázishoz való csatlakozással kell végrehajtani.
 
 * [sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -152,16 +152,16 @@ A következő DMV a dedikált SQL-készletre érvényesek, de a **Master** adatb
 * [sys. types](/sql/relational-databases/system-catalog-views/sys-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys. views](/sql/relational-databases/system-catalog-views/sys-views-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-available-in-dedicated-sql-pool"></a>SQL Server a dedikált SQL-készletben elérhető DMV
+## <a name="sql-server-dmvs-available-in-dedicated-sql-pool-formerly-sql-dw"></a>SQL Server DMV elérhető a dedikált SQL-készletben (korábban SQL DW)
 
-A dedikált SQL Pool számos SQL Server dinamikus felügyeleti nézetet (DMV) tesz elérhetővé. Ezek a nézetek a dedikált SQL-készletben való lekérdezéskor a terjesztéseken futó SQL-adatbázisok állapotát jelentik.
+A dedikált SQL-készlet (korábbi nevén SQL DW) számos SQL Server dinamikus felügyeleti nézetet (DMV) tesz elérhetővé. Ezek a nézetek, amikor a dedikált SQL-készletben (korábban az SQL DW-ben) kérdeztek le jelentéseket, a disztribúciókban futó SQL-adatbázisok állapotát jelentik.
 
-A dedikált SQL Pool és a Parallel adattárház (PDW) ugyanazt a rendszernézetet használja. Minden DMV rendelkezik egy pdw_node_id nevű oszloppal, amely a számítási csomópont azonosítója.
+A dedikált SQL-készlet (korábban SQL DW) és a Parallel adattárház (PDW) ugyanazt a rendszernézetet használja. Minden DMV rendelkezik egy pdw_node_id nevű oszloppal, amely a számítási csomópont azonosítója.
 
 > [!NOTE]
 > A nézetek használatához illessze be a "pdw_nodes_" nevet a névbe, ahogy az alábbi táblázatban látható:
 
-| A DMV neve dedikált SQL-készletben | SQL Server Transact-SQL-cikk|
+| DMV neve dedikált SQL-készletben (korábban SQL DW) | SQL Server Transact-SQL-cikk|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
@@ -223,9 +223,9 @@ A dedikált SQL Pool és a Parallel adattárház (PDW) ugyanazt a rendszernézet
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-top-version-generators-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool"></a>SQL Server 2016 alapszintű DMV érhető el dedikált SQL-készletben
+## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool-formerly-sql-dw"></a>SQL Server 2016 alapszintű DMV érhető el dedikált SQL-készletben (korábban SQL DW)
 
-A következő DMV a dedikált SQL-készletre érvényesek, de a **Master** adatbázishoz való csatlakozással kell végrehajtani.
+A következő DMV érvényesek a dedikált SQL-készletre (korábban SQL DW), de a **Master** adatbázishoz való csatlakozással kell végrehajtani.
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -250,6 +250,6 @@ A következő DMV a dedikált SQL-készletre érvényesek, de a **Master** adatb
 * [VIEW_TABLE_USAGE](/sql/relational-databases/system-information-schema-views/view-table-usage-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [KILÁTÁSSAL](/sql/relational-databases/system-information-schema-views/views-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ: [t-SQL-utasítások a DEDIKÁLT SQL-készletben](sql-data-warehouse-reference-tsql-statements.md)és a [t-SQL nyelvi elemei a dedikált SQL-készletben](sql-data-warehouse-reference-tsql-language-elements.md).
+További információ: [t-SQL-utasítások a DEDIKÁLT SQL-készletben (korábbi nevén SQL DW)](sql-data-warehouse-reference-tsql-statements.md)és [a t-SQL nyelvű elemek a dedikált SQL-készletben (korábban SQL DW)](sql-data-warehouse-reference-tsql-language-elements.md).

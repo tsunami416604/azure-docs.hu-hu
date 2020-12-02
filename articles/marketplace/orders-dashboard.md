@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: ceecaf88f87a94473011eb48e944db7a011b3acc
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 943f1361a2a9d6bf8d891f8b4f2137b8738f0836
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563783"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450768"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>A Rendelések irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -21,7 +21,7 @@ Ez a cikk a partner Center orders (megrendelések) irányítópultján tartalmaz
 Ha az Orders (megrendelések) irányítópultot szeretné elérni a partner Centerben, **[Analyze](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** a **kereskedelmi piactér** területen válassza a  >  **megrendelések** elemzése lehetőséget.
 
 >[!NOTE]
-> Az analitikai terminológia részletes leírását lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./partner-center-portal/faq-terminology.md).
+> Az analitikai terminológia részletes leírását lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./analytics-faq.md).
 
 ## <a name="orders-dashboard"></a>Rendelések irányítópult
 
@@ -69,9 +69,9 @@ Az munkaállomásonkénti és a hely szerinti vonalas diagramon megjelenő **Ord
 
 Az SaaS-ajánlatok a következő két díjszabási modell egyikét használhatják: átalánydíjas (hely-alapú) vagy felhasználónként (ülőhely-alapú).
 
-- **Átalány** : az ajánlathoz való hozzáférés engedélyezése egyetlen havi vagy éves átalány-díjszabással. Ezt más néven a hely alapú díjszabásnak is nevezzük.
-- **Felhasználónkénti** : az ajánlathoz való hozzáférés engedélyezése az ajánlathoz hozzáférő felhasználók számán vagy a foglalt ülőhelyek megtartásán alapuló díjszabás alapján. Ezzel a használaton alapuló modellel beállíthatja a csomag által támogatott felhasználók minimális és maximális számát. Több tervet is létrehozhat a különböző díjszabások konfigurálásához a felhasználók száma alapján. Ezeket a mezőket nem kötelező megadni. Ha nem jelöli be a jelölőnégyzetet, a rendszer a felhasználók számát úgy értelmezi, hogy nem rendelkezik korláttal (a szolgáltatás által támogatott szolgáltatások közül min. 1 és Max). Ezeket a mezőket a csomag frissítésének részeként lehet szerkeszteni.
-- **Mért számlázás** : az átalány díjszabása alapján. Ezzel az árképzési modellel meghatározhat olyan mért csomagokat is, amelyek a Piactéri mérési szolgáltatás API-ját használják a nem az átalány által jelzett használati díjakra.
+- **Átalány**: az ajánlathoz való hozzáférés engedélyezése egyetlen havi vagy éves átalány-díjszabással. Ezt más néven a hely alapú díjszabásnak is nevezzük.
+- **Felhasználónkénti**: az ajánlathoz való hozzáférés engedélyezése az ajánlathoz hozzáférő felhasználók számán vagy a foglalt ülőhelyek megtartásán alapuló díjszabás alapján. Ezzel a használaton alapuló modellel beállíthatja a csomag által támogatott felhasználók minimális és maximális számát. Több tervet is létrehozhat a különböző díjszabások konfigurálásához a felhasználók száma alapján. Ezeket a mezőket nem kötelező megadni. Ha nem jelöli be a jelölőnégyzetet, a rendszer a felhasználók számát úgy értelmezi, hogy nem rendelkezik korláttal (a szolgáltatás által támogatott szolgáltatások közül min. 1 és Max). Ezeket a mezőket a csomag frissítésének részeként lehet szerkeszteni.
+- **Mért számlázás**: az átalány díjszabása alapján. Ezzel az árképzési modellel meghatározhat olyan mért csomagokat is, amelyek a Piactéri mérési szolgáltatás API-ját használják a nem az átalány által jelzett használati díjakra.
 
 Az ülések, a helyek és a mért alapú számlázás további részleteiért lásd: [SaaS-ajánlat tervezése a kereskedelmi piactéren](plan-saas-offer.md).
 
@@ -79,7 +79,7 @@ Az ülések, a helyek és a mért alapú számlázás további részleteiért l�
 
 Az ajánlatok és SKU-diagramok szerinti megrendelések az összes ajánlat mértékeit és trendjét mutatják:
 
-- A legfontosabb ajánlatok a gráfban jelennek meg, a többi ajánlat pedig az **összes Rest** -ként van csoportosítva.
+- A legfontosabb ajánlatok a gráfban jelennek meg, a többi ajánlat pedig az **összes Rest**-ként van csoportosítva.
 - A jelmagyarázatban szereplő ajánlatok közül kiválaszthatja, hogy csak az ajánlat és a hozzá tartozó SKU jelenjen meg a gráfban.
 - Ha a diagramon egy szelet fölé viszi az egérmutatót, a megrendelések száma és az ajánlat százalékos aránya az összes ajánlathoz képest teljes számú rendelésre hasonlít.
 - A **Orders by ajánlatok trend** a havi havi növekedési trendeket jeleníti meg. A hónap oszlop a megrendelések számát jelöli az ajánlat neve alapján. A diagram egy z-tengelyen ábrázolt százalékos növekedési arányt jeleníti meg.
@@ -135,7 +135,7 @@ Az Order Details (megrendelés részletei) tábla a 1 000 Top orders (beszerzés
 | Offer Name | Offer Name | A kereskedelmi Piactéri ajánlat neve. |
 | Próbaverzió befejezési dátuma | Próbaverzió befejezési dátuma | Az a dátum, ameddig a rendelés próbaidőszaka lejár vagy véget ér. |
 | Ügyfél-azonosító | Ügyfél-azonosító | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik. |
-| Számlázási fiók azonosítója | Számlázási fiók azonosítója | Annak a fióknak az azonosítója, amelyre a számlázást létrehozták. A fizetési tranzakciós jelentés ügyfél-, megrendelés-és használati jelentésekkel való összekapcsolásához társítsa a *Számlázási fiók azonosítóját* * a **Vevőkód** -hez. |
+| Számlázási fiók azonosítója | Számlázási fiók azonosítója | Annak a fióknak az azonosítója, amelyre a számlázást létrehozták. A fizetési tranzakciós jelentés ügyfél-, megrendelés-és használati jelentésekkel való összekapcsolásához társítsa a *Számlázási fiók azonosítóját** a **Vevőkód** -hez. |
 | AssetCount | Eszközök száma | A megrendelési AZONOSÍTÓhoz társított eszközök száma. |
 ||||
 
@@ -146,7 +146,7 @@ Az **orders (megrendelések** ) oldal szűrői az Orders (megrendelések) lap sz
 > [!TIP]
 > Az adatletöltéshez használhatja a letöltés ikont bármelyik widget jobb felső sarkában. Az egyes widgetekkel kapcsolatos visszajelzéseket a "hüvelykujj fel" vagy a "hüvelykujj lefelé" ikonra kattintva teheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [hozzáférés analitikus jelentések a kereskedelmi piactérhez a partner Centerben](./partner-center-portal/analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).
@@ -154,4 +154,4 @@ Az **orders (megrendelések** ) oldal szűrői az Orders (megrendelések) lap sz
 - A virtuális gép (VM) használati és mért számlázási mérőszámokat kínál, lásd [a használati irányítópultot a kereskedelmi piactér elemzésében](./usage-dashboard.md).
 - Az elmúlt 30 napban a letöltési kérelmek listáját lásd: a [kereskedelmi piactér Analytics letöltések irányítópultja](./partner-center-portal/downloads-dashboard.md).
 - Ha szeretné megtekinteni az Azure Marketplace-en és a AppSource-on található ajánlatokra vonatkozó felhasználói visszajelzések összevont nézetét, tekintse meg a következőt: [ratings & Reviews](./partner-center-portal/ratings-reviews.md)
-- A kereskedelmi piactér elemzésével és az adatkifejezések átfogó szótárával kapcsolatos gyakori kérdésekért lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./partner-center-portal/faq-terminology.md).
+- A kereskedelmi piactér elemzésével és az adatkifejezések átfogó szótárával kapcsolatos gyakori kérdésekért lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./analytics-faq.md).

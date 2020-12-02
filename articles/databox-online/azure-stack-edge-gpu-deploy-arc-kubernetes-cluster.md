@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 11/12/2020
 ms.author: alkohli
-ms.openlocfilehash: c38b0b1d3a2e71502ac86bf46771ecfb637ba15d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 342f6a2c4761104823694f2181b3ffa8726a441e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952216"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449416"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure arc engedélyezése a Kubernetes-fürtön az Azure Stack Edge Pro GPU-eszközön
 
 Ez a cikk bemutatja, hogyan engedélyezheti az Azure arc szolgáltatást egy meglévő Kubernetes-fürtön a Azure Stack Edge Pro-eszközön. 
 
-Ez az eljárás azok számára készült, akik áttekintették a Kubernetes számítási feladatait [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-workload-management.md) , és ismeri az [Azure arc-kompatibilis Kubernetes (előzetes verzió)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)fogalmait?
+Ez az eljárás azok számára készült, akik áttekintették a Kubernetes számítási feladatait [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-workload-management.md) , és ismeri az [Azure arc-kompatibilis Kubernetes (előzetes verzió)](../azure-arc/kubernetes/overview.md)fogalmait?
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -39,14 +39,13 @@ Mielőtt engedélyezi az Azure arc használatát a Kubernetes-fürtön, győződ
 
 1. Van egy Windows-ügyfélrendszer, amely az Azure Stack Edge Pro-eszköz elérésére szolgál majd.
   
-    - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Az ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a következőt: [install Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows).
     
     - Bármely más ügyfél [támogatott operációs rendszerrel](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. 
     
 1. Végrehajtotta az [Azure stack Edge Pro-eszközön a Kubernetes-fürt eléréséhez](azure-stack-edge-gpu-create-kubernetes-cluster.md)című témakörben leírt eljárást. A következőket teheti:
     
-    - `kubectl`Az ügyfélre telepítve  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
-    
+    - Telepítve van `kubectl` az ügyfélen.    
     - Győződjön meg arról, hogy az `kubectl` ügyfél verziószáma nem több, mint egy, a Azure stack Edge Pro-eszközön futó Kubernetes-verzió. 
       - Ezzel a paranccsal `kubectl version` ellenőrizhető az ügyfélen futó kubectl verziója. Jegyezze fel a teljes verziót.
       - A Azure Stack Edge Pro-eszköz helyi felhasználói felületén lépjen a **szoftverfrissítés** elemre, és jegyezze fel a Kubernetes-kiszolgáló verziószámát. 
@@ -55,7 +54,6 @@ Mielőtt engedélyezi az Azure arc használatát a Kubernetes-fürtön, győződ
       
       - Ellenőrizze, hogy a két verzió kompatibilis-e. 
 
-<!-- az cli version requirements-->
 
 ## <a name="register-kubernetes-resource-providers"></a>Kubernetes erőforrás-szolgáltató regisztrálása
 
@@ -66,7 +64,7 @@ Mielőtt engedélyezi az Azure arc-t a Kubernetes-fürtön, engedélyeznie kell 
 
     ![Kubernetes erőforrás-szolgáltató regisztrálása](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-1.png)
 
-1. Válasszon ki egy erőforrás-szolgáltatót, és a parancssáv felső részén válassza a **regisztráció**lehetőséget. A regisztráció több percet is igénybe vehet. 
+1. Válasszon ki egy erőforrás-szolgáltatót, és a parancssáv felső részén válassza a **regisztráció** lehetőséget. A regisztráció több percet is igénybe vehet. 
 
     ![Kubernetes-erőforrás-szolgáltatók regisztrálása 2](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-2.png)
 
@@ -78,11 +76,11 @@ Az erőforrás-szolgáltatókat a használatával is regisztrálhatja `az cli` .
 
 ## <a name="create-service-principal-assign-role"></a>Egyszerű szolgáltatásnév létrehozása, szerepkör kiosztása
 
-1. Győződjön meg arról, hogy rendelkezik az `Subscription ID` Azure stack Edge szolgáltatás erőforrás-telepítéséhez használt erőforráscsoport nevével. Az előfizetés-azonosító beszerzéséhez nyissa meg az Azure Stack Edge-erőforrást a Azure Portal. Navigáljon az **áttekintés > Essentials**elemre.
+1. Győződjön meg arról, hogy rendelkezik az `Subscription ID` Azure stack Edge szolgáltatás erőforrás-telepítéséhez használt erőforráscsoport nevével. Az előfizetés-azonosító beszerzéséhez nyissa meg az Azure Stack Edge-erőforrást a Azure Portal. Navigáljon az **áttekintés > Essentials** elemre.
 
     ![Előfizetés-azonosító lekérése](media/azure-stack-edge-gpu-connect-powershell-interface/get-subscription-id-1.png)
 
-    Az erőforráscsoport nevének beszerzéséhez lépjen a **Tulajdonságok**elemre.
+    Az erőforráscsoport nevének beszerzéséhez lépjen a **Tulajdonságok** elemre.
 
     ![Erőforráscsoport nevének lekérése](media/azure-stack-edge-gpu-connect-powershell-interface/get-resource-group-name-1.png)
 
@@ -90,7 +88,7 @@ Az erőforrás-szolgáltatókat a használatával is regisztrálhatja `az cli` .
 
     `az ad sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
 
-    A alkalmazásba való bejelentkezéssel kapcsolatos információkért `az cli` [indítsa el a Cloud Shell a Azure Portal](../cloud-shell/quickstart-powershell.md?view=azure-cli-latest#start-cloud-shell)
+    A alkalmazásba való bejelentkezéssel kapcsolatos információkért `az cli` [indítsa el a Cloud Shell a Azure Portal](../cloud-shell/quickstart-powershell.md#start-cloud-shell)
 
     Íme egy példa. 
     
@@ -129,7 +127,7 @@ Az erőforrás-szolgáltatókat a használatával is regisztrálhatja `az cli` .
     }
     PS /home/user>
     ```
-    Az egyszerű szolgáltatásnév létrehozásával és a szerepkör-hozzárendelés végrehajtásával kapcsolatos további információkért tekintse meg az [Azure arc-kompatibilis](https://docs.microsoft.com/azure/azure-arc/kubernetes/create-onboarding-service-principal)bevezetési szolgáltatás létrehozása című témakör lépéseit.
+    Az egyszerű szolgáltatásnév létrehozásával és a szerepkör-hozzárendelés végrehajtásával kapcsolatos további információkért tekintse meg az [Azure arc-kompatibilis](../azure-arc/kubernetes/create-onboarding-service-principal.md)bevezetési szolgáltatás létrehozása című témakör lépéseit.
 
 
 ## <a name="enable-arc-on-kubernetes-cluster"></a>Az Arc engedélyezése a Kubernetes-fürtön
@@ -142,7 +140,10 @@ Az alábbi lépéseket követve konfigurálhatja a Kubernetes-fürtöt az Azure 
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    Az Azure arc Azure Stack Edge Pro-eszközön való üzembe helyezéséhez győződjön meg arról, hogy az [Azure arc támogatott régióját](../azure-arc/kubernetes/overview.md#supported-regions)használja. Az Azure arc jelenleg előzetes verzióban érhető el. A paranccsal a parancsmagnak átadandó régió pontos nevét is megtalálhatja a `az account list-locations` parancs használatával.
+
+    > [!NOTE]
+    > - Az Azure arc eszközön való üzembe helyezéséhez győződjön meg arról, hogy az [Azure arc támogatott régióját](../azure-arc/kubernetes/overview.md#supported-regions)használja. 
+    > - A parancs használatával állapítsa `az account list-locations` meg, hogy pontosan melyik helyen kell átadni a `Set-HcsKubernetesAzureArcAgent` parancsmagot. A helyek nevei általában szóközök nélkül vannak formázva.
     
     Alább bemutatunk egy példát:
    
@@ -221,6 +222,9 @@ Az Azure arc-felügyelet eltávolításához kövesse az alábbi lépéseket:
 
     `Remove-HcsKubernetesAzureArcAgent` 
 
+
+> [!NOTE]
+> Alapértelmezés szerint, ha az erőforrást `yamls` a git-tárházból törli, a rendszer nem törli a megfelelő erőforrásokat a Kubernetes-fürtből. Az arc OperatorParams kell beállítania, `--sync-garbage-collection`  hogy lehetővé váljon az erőforrások törlése a git-tárházból való törléskor. További információ: [konfiguráció törlése](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)
 
 ## <a name="next-steps"></a>További lépések
 

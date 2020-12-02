@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 05/04/2020
-ms.openlocfilehash: 60bb16b0a4fd2e710d0d5fddc6cf82916f2f66af
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 750e8cc59f196fda6bf3a816885c3c0b29a69a56
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741417"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451919"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Virtuális hálózat megtervezése az Azure HDInsight
 
@@ -148,7 +148,7 @@ Ha engedélyezni szeretné a névfeloldást a virtuális hálózat és az össze
 
          * Továbbítsa az összes többi kérést a helyszíni DNS-kiszolgálónak. A helyszíni DNS minden más névfeloldási kérelmet kezel, még az internetes erőforrásokra, például a Microsoft.com-re vonatkozó kéréseket is.
 
-     * Helyszíni __DNS__ : továbbítási kérelmek a virtuális hálózat DNS-utótagja számára az egyéni DNS-kiszolgálóhoz. Az egyéni DNS-kiszolgáló ezután továbbítja az Azure rekurzív feloldót.
+     * Helyszíni __DNS__: továbbítási kérelmek a virtuális hálózat DNS-utótagja számára az egyéni DNS-kiszolgálóhoz. Az egyéni DNS-kiszolgáló ezután továbbítja az Azure rekurzív feloldót.
 
        Ez a konfiguráció a virtuális hálózat DNS-utótagját tartalmazó teljes tartománynevek kérelmeit az egyéni DNS-kiszolgálóra irányítja. Az összes többi kérést (még a nyilvános internetes címek esetében is) a helyszíni DNS-kiszolgáló kezeli.
 
@@ -205,11 +205,11 @@ Az Apache Ambari és más weboldalakhoz a virtuális hálózaton keresztül tör
 
 HDInsight-fürt létrehozásakor a terheléselosztó is létrejön. A terheléselosztó típusa az alapszintű [SKU szintjén](../load-balancer/skus.md)van, amely bizonyos korlátozásokkal rendelkezik. Ezen megkötések egyike az, hogy ha két virtuális hálózattal rendelkezik különböző régiókban, akkor nem lehet alapszintű terheléselosztóhoz csatlakozni. További információért lásd [a Virtual Networks gyakori kérdések: a globális vnet-társítás korlátozásai](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure-beli virtuális hálózatok létrehozásával kapcsolatos Példákért lásd: [virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md).
 * A helyszíni hálózathoz való kapcsolódás HDInsight konfigurálásának teljes körű példáját lásd: [a HDInsight összekapcsolása egy helyszíni hálózattal](./connect-on-premises-network.md).
 * Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az [azure Virtual Network áttekintését](../virtual-network/virtual-networks-overview.md).
 * A hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md).
 * A felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd: [felhasználó által definiált útvonalak és IP-továbbítás](../virtual-network/virtual-networks-udr-overview.md).
-* A forgalom szabályozásával kapcsolatos további információkért lásd: a [hálózati forgalom szabályozása](./control-network-traffic.md).
+* További információ a forgalom szabályozásáról, beleértve a tűzfalak integrációját: a [hálózati forgalom szabályozása](./control-network-traffic.md).

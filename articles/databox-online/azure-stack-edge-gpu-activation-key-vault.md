@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 8957d8982a3bfe1da2811dc10d0c3e77a72fc288
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ec7a32739940d53d976e73a7e170df96a0acc245
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367601"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449527"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Azure Key Vault integráció az Azure Stack Edge-vel 
 
@@ -49,7 +49,7 @@ A Key Vault a Azure Stack Edge-erőforráshoz jön létre az aktiválási kulcs 
 
 - A véletlen törlés megakadályozása érdekében az erőforrás-zárolás engedélyezve van a kulcstartón. A Key vaultban a Soft delete is engedélyezve van, amely lehetővé teszi, hogy a Key Vault 90 napon belül visszaállítható legyen, ha véletlen törlés van. További információ: Azure Key Vault a [Soft-delete áttekintése](../key-vault/general/soft-delete-overview.md)
 
-    Ha a Key vaultot véletlenül törölte, és a 90 napos kiürítési időtartam nem telt el, a [kulcstartó helyreállításához](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)kövesse az alábbi lépéseket. 
+    Ha a Key vaultot véletlenül törölte, és a 90 napos kiürítési időtartam nem telt el, a [kulcstartó helyreállításához](../key-vault/general/key-vault-recovery.md#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates)kövesse az alábbi lépéseket. 
 
 - Ha már rendelkezik egy meglévő Azure Stack Edge-erőforrással, mielőtt a Azure Key Vault integrálva volt az Azure Stack Edge-erőforrással, nem érinti a rendszer. Továbbra is használhatja meglévő Azure Stack Edge-erőforrását. 
 
@@ -70,7 +70,6 @@ When you generate an activation key, the following events occur:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [aktiválási kulcs létrehozásáról](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key).
-

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: ceb1aea1edcc4916fdd802673c3145b12de01801
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 8225d50e9991ff632fb831c63e194551dbe02b31
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980915"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451877"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -22,7 +22,7 @@ Ez a szakasz a beépített szerepkörökben használt Azure-erőforrás-szolgál
 
 A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgáltató nevére a következő táblázatban.
 
-## <a name="all"></a>Mind
+## <a name="all"></a>Összes
 
 | Általános kérdések |
 | --- |
@@ -3862,7 +3862,7 @@ Azure-szolgáltatás: [Azure Cosmos db](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Azure SQL felügyelt példány](../azure-sql/managed-instance/index.yml), [azure szinapszis Analytics (korábban SQL Data Warehouse)](../synapse-analytics/sql-data-warehouse/index.yml)
+Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Azure SQL felügyelt példány](../azure-sql/managed-instance/index.yml), [Azure szinapszis Analytics](../synapse-analytics/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Művelet | Leírás |
@@ -9792,7 +9792,7 @@ Azure-szolgáltatás: [Azure digitális Twins](../digital-twins/index.yml)
 > | Microsoft. DigitalTwins/modellek/írás | Bármely modell létrehozása vagy frissítése |
 > | Microsoft. DigitalTwins/models/delete | Bármely modell törlése |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Beépített Azure-szerepkörök](built-in-roles.md)

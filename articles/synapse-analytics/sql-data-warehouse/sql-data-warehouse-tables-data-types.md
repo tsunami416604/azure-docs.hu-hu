@@ -1,6 +1,6 @@
 ---
-title: Táblázatos adattípusok a dedikált SQL-készletben
-description: Javaslatok táblázatos adattípusok definiálásához a dedikált SQL-készletben.
+title: Tábla adattípusai a dedikált SQL-készletben (korábban SQL DW)
+description: Javaslatok táblázatos adattípusok definiálásához a dedikált SQL-készlet (korábban SQL DW) számára az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 01/06/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5bb1d10978171b93ee697b37ee9ac0702d3f898c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6526ae2c15bd53af69854309632c83fa65af8d85
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313071"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449692"
 ---
-# <a name="table-data-types-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Táblázatos adattípusok a dedikált SQL-készlethez az Azure szinapszis Analyticsben 
+# <a name="table-data-types-for-dedicated-sql-pool-formerly--sql-dw-in-azure-synapse-analytics"></a>Tábla adattípusai dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben 
 
 Ebben a cikkben a táblázatos adattípusok a dedikált SQL-készletben való definiálásával kapcsolatos javaslatok szerepelnek.
 
 ## <a name="supported-data-types"></a>Támogatott adattípusok
 
-A dedikált SQL-készlet a leggyakrabban használt adattípusokat támogatja. A támogatott adattípusok listáját lásd: [adattípusok](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes) a CREATE TABLE utasításban.
+A dedikált SQL-készlet (korábbi nevén SQL DW) a leggyakrabban használt adattípusokat támogatja. A támogatott adattípusok listáját lásd: [adattípusok](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes) a CREATE TABLE utasításban.
 
 ## <a name="minimize-row-length"></a>Sor hosszának csökkentése
 
@@ -51,7 +51,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 
 ## <a name="workarounds-for-unsupported-data-types"></a><a name="unsupported-data-types"></a>Megkerülő megoldások nem támogatott adattípusok esetén
 
-A következő lista azokat az adattípusokat tartalmazza, amelyeket a dedikált SQL-készlet nem támogat, és hasznos alternatívákat biztosít a nem támogatott adattípusokhoz.
+A következő lista azokat az adattípusokat mutatja be, amelyeket a dedikált SQL-készlet (korábban SQL DW) nem támogat, és hasznos alternatívákat biztosít a nem támogatott adattípusokhoz.
 
 | Nem támogatott adattípus | Áthidaló megoldás |
 | --- | --- |
@@ -68,6 +68,6 @@ A következő lista azokat az adattípusokat tartalmazza, amelyeket a dedikált 
 | [felhasználó által definiált típus](/sql/relational-databases/native-client/features/using-user-defined-types?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Ha lehetséges, váltson vissza a natív adattípusra. |
 | alapértelmezett értékek | Az alapértelmezett értékek csak a literálokat és az állandókat támogatják. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a táblázatok létrehozásáról: [táblázat – áttekintés](sql-data-warehouse-tables-overview.md).

@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 9fb8bbffb423031afd31e156183bc4f8be3c147e
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 791cab369dcbf9cab8d1256377cfee4a433c21b9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302532"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450888"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>Oktatóanyag: Power BI-jelentés létrehozása Apache Spark és az Azure szinapszis Analytics használatával
 
@@ -74,7 +74,7 @@ Ebben a példában a Apache Spark használatával végezheti el a New York-i tax
   ```
    
 ## <a name="query-data-using-serverless-sql-pools"></a>Az adatlekérdezés kiszolgáló nélküli SQL-készletekkel
-Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok adatbázisokat és táblákat osszanak meg a kiszolgáló nélküli Apache Spark készletek (előzetes verzió) és a kiszolgáló nélküli SQL-készlet (előzetes verzió) között. Ez a szinapszis [megosztott metaadat-kezelési](../metadata/overview.md) képességein keresztül érhető el. Ennek eredményeképpen a Spark által létrehozott adatbázisok és a parketta által támogatott táblázatok láthatóvá válnak a munkaterület kiszolgáló nélküli SQL-készletében.
+Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok adatbázisokat és táblákat osszanak meg kiszolgáló nélküli Apache Spark készletei és kiszolgáló nélküli SQL-készlete között. Ez a szinapszis [megosztott metaadat-kezelési](../metadata/overview.md) képességein keresztül érhető el. Ennek eredményeképpen a Spark által létrehozott adatbázisok és a parketta által támogatott táblázatok láthatóvá válnak a munkaterület kiszolgáló nélküli SQL-készletében.
 
 Apache Spark tábla lekérdezése a kiszolgáló nélküli SQL-készlettel:
    1. Miután mentette a Apache Spark táblát, váltson át az **adat** lapra.

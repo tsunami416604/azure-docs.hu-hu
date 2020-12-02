@@ -9,14 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: f5c5edc067b3f7b525fd129462c48ca50fdafc8f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 605a5f2f74ca6fb46d851c41f60001c48a95be95
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314043"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450883"
 ---
-# <a name="tutorial-machine-learning-model-scoring-wizard-for-dedicated-sql-pools"></a>Oktatóanyag: gépi tanulási modell pontozási varázsló dedikált SQL-készletekhez
+# <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>Oktatóanyag: gépi tanulási modell pontozása varázsló (előzetes verzió) dedikált SQL-készletekhez
 
 Megtudhatja, hogyan gazdagíthatja adatait a dedikált SQL-készletekben a prediktív gépi tanulási modellekkel.  Az adatszakértők által létrehozott modellek mostantól könnyen elérhetők az adatszakemberek számára a prediktív elemzésekhez. A Szinapszisban található adatszakember egyszerűen kiválaszthat egy modellt a Azure Machine Learning modell beállításjegyzékből a szinapszis SQL-készletekbe való üzembe helyezéshez, és előrejelzéseket indíthat az adatok dúsítására.
 
@@ -31,8 +31,8 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A [szinapszis Analytics-munkaterület](../get-started-create-workspace.md) egy ADLS Gen2 Storage-fiókkal, amely alapértelmezett tárolóként van konfigurálva. A ADLS Gen2-fájlrendszer **Storage blob-Adatközreműködőinek** kell lennie.
-- Dedikált SQL-készlet a szinapszis Analytics-munkaterületen. Részletekért lásd [a DEDIKÁLT SQL-készlet létrehozása](../quickstart-create-sql-pool-studio.md)című témakört.
-- Azure Machine Learning társított szolgáltatást a szinapszis Analytics-munkaterületen. Részletekért lásd: [Azure Machine learning társított szolgáltatás létrehozása a szinapszisban](quickstart-integrate-azure-machine-learning.md).
+- Dedikált SQL-készlet az Azure szinapszis Analytics-munkaterületen. Részletekért lásd [a DEDIKÁLT SQL-készlet létrehozása](../quickstart-create-sql-pool-studio.md)című témakört.
+- Azure Machine Learning társított szolgáltatás az Azure szinapszis Analytics-munkaterületen. Részletekért lásd: [Azure Machine learning társított szolgáltatás létrehozása a szinapszisban](quickstart-integrate-azure-machine-learning.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -146,7 +146,7 @@ A jegyzetfüzet összes cellájának futtatása előtt ellenőrizze, hogy fut-e 
 
    ![Előrejelzések futtatása](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00g.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyors útmutató: új Azure Machine Learning társított szolgáltatás létrehozása a Szinapszisban](quickstart-integrate-azure-machine-learning.md)
-- [Az Azure szinapszis Analytics Machine Learning képességei (munkaterületek előzetes verzió)](what-is-machine-learning.md)
+- [Az Azure szinapszis Analytics Machine Learning képességei](what-is-machine-learning.md)

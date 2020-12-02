@@ -1,6 +1,6 @@
 ---
 title: Kapcsolódás a szinapszis SQL-hez Power BI Professional használatával
-description: Ebben az oktatóanyagban áttekintjük, hogyan csatlakoztatható Power BI asztali kiszolgáló nélküli SQL-készlethez (előzetes verzió).
+description: Ebben az oktatóanyagban végigvezeti a Power BI asztal kiszolgáló nélküli SQL-készlethez való kapcsolódásának lépésein.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c26e2bd27c0c3187768252fd922c31a2cc23d735
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b33edb99109b7516e1792497a936031cf954bc15
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682088"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451607"
 ---
 # <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Kapcsolódás kiszolgáló nélküli SQL-készlethez Power BI Professional használatával
 
@@ -23,10 +23,10 @@ ms.locfileid: "94682088"
 > - [Azure Data Studio](get-started-azure-data-studio.md)
 > - [Power BI](get-started-power-bi-professional.md)
 > - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> - [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-Ebben az oktatóanyagban áttekintjük a Power BI Desktop kiszolgáló nélküli SQL-készlethez (előzetes verzió) való csatlakoztatásának lépéseit.
+Ebben az oktatóanyagban elsajátítjuk a Power BI-asztal kiszolgáló nélküli SQL-készlethez való csatlakoztatásának lépéseit.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ A lekérdezések kiküldéséhez a következő eszközök szükségesek:
 - Tetszőleges SQL-ügyfél:
 
   - Azure Data Studio
-  - SQL Server Management Studio
+  - Az SQL Server Management Studio
 
 - Power BI asztali telepítés
 
@@ -106,6 +106,6 @@ Válassza ki az **Azure** -t a menüben, majd **Azure SQL Database**.
 Írja be az adatbázis URL-címét és annak az adatbázisnak a nevét, ahol a nézet található.
 ![Válassza ki az adatbázist a végponton.](./media/get-started-power-bi-professional/step-2-db.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [tárolási fájlok lekérdezésével](get-started-azure-data-studio.md) megtudhatja, hogyan csatlakozhat a kiszolgáló nélküli SQL-készlethez Azure Data Studio használatával.
