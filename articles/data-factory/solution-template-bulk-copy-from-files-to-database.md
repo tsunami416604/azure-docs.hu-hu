@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: c7f4cba10117efef4099b3524b49cae313593a9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecf3c3954bd77962e56ee289b623806efb352410
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442713"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461274"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>Tömeges másolás fájlokból adatbázisba
 
@@ -46,7 +46,7 @@ A sablon a következő két paramétert definiálja:
 
     ![Új kapcsolódás létrehozása a fogadó adattárához](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
     
-3. Válassza **a sablon használata**lehetőséget.
+3. Válassza **a sablon használata** lehetőséget.
 
     ![Sablon használata](media/solution-template-bulk-copy-from-files-to-database/use-template.png)
     
@@ -55,11 +55,11 @@ A sablon a következő két paramétert definiálja:
     ![A folyamat áttekintése](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > Ha az **Azure szinapszis Analytics (korábbi nevén SQL DW)** lehetőséget választotta a fent említett **2. lépésben** megadott adat célhelyként, meg kell adnia egy kapcsolódást az Azure Blob Storage-hoz az átmeneti tároláshoz, az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) által megkövetelt módon. A következő képernyőfelvételen látható, hogy a sablon automatikusan létrehozza a blob Storage *tárolási útvonalát* . Ellenőrizze, hogy létrejött-e a tároló a folyamat futtatása után.
+    > Ha az **Azure szinapszis Analytics (korábbi nevén SQL DW)** lehetőséget választotta a fenti **2. lépésben** megadott adat célhelyként, meg kell adnia egy, az Azure-beli blob Storage-hoz való kapcsolódást az Azure szinapszis Analytics-alapú alapszintű verziójának megfelelően. A következő képernyőfelvételen látható, hogy a sablon automatikusan létrehozza a blob Storage *tárolási útvonalát* . Ellenőrizze, hogy létrejött-e a tároló a folyamat futtatása után.
         
     ![Alapszintű beállítás](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 
-5. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
+5. Válassza a **hibakeresés** lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
 
     ![Kattintson * * hibakeresés * *](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
 
@@ -68,6 +68,6 @@ A sablon a következő két paramétert definiálja:
     ![Az eredmény áttekintése](media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png)
 
        
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Data Factory bemutatása](introduction.md)

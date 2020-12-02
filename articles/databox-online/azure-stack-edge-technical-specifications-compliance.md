@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: c177de3a862370f4d1daa19c6560950b66b18352
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826838"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460293"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro technikai specifikációi
 
@@ -34,7 +34,7 @@ A rendszer minden olyan Azure Stack Edge Pro-eszközön tartalmaz egy programozh
 
 | Specifikáció           | Érték                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> A rendelkezésre álló Deep neurális hálózati (DNN) modellek ugyanazok, mint a [Cloud FPGA-példányok által támogatottak](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).|
+| FPGA   | Intel Arria 10 <br> A rendelkezésre álló Deep neurális hálózati (DNN) modellek ugyanazok, mint a [Cloud FPGA-példányok által támogatottak](../machine-learning/how-to-deploy-fpga-web-service.md#fpga-support-in-azure).|
 
 ## <a name="power-supply-unit-specifications"></a>Tápegység-egységek specifikációi
 
@@ -43,7 +43,7 @@ Az Azure Stack Edge Pro-eszköz két 100-240 V-os tápegységgel (PSUs) rendelke
 | Specifikáció           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximális kimeneti teljesítmény    | 750 W                     |
-| Frequency               | 50/60 Hz                   |
+| Gyakoriság               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 100-240 V AC |
 | Gyors csatlakoztatás           | Igen                        |
 
@@ -60,13 +60,13 @@ The following table lists the typical power consumption data (actual values may 
 
 Azure Stack Edge Pro-eszközének 6 hálózati adaptere van, a PORT1-PORT6.
 
-| Specifikáció           | Leírás                 |
+| Specifikáció           | Description                 |
 |-------------------------|----------------------------|
 |  Hálózati adapterek    | 2 db 1 GbE sávszélességű illesztő – 1 a kezeléshez, a felhasználó által nem konfigurálható, a kezdeti beállításhoz való. A másik felület a felhasználó által konfigurálható, adatátvitelre használható, és alapértelmezés szerint a DHCP. <br>2 db 25 GbE sávszélességű illesztő – 10 GbE sávszélességű illesztőként is üzemelnek. Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet. <br> 2 db 25 GbE sávszélességű illesztő – Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet.                  |
 
 A használt hálózati adapterek a következők: 
 
-| Specifikáció           | Leírás                 |
+| Specifikáció           | Description                 |
 |-------------------------|----------------------------|
 |Hálózati lánya kártya (rNDC) |QLogic FastLinQ 41264 Dual port 25GbE SFP +, Dual port 1 GbE, rNDC|
 |PCI hálózati adapter |QLogic FastLinQ 41262 Zwei-portok 25Gbit/s SFP28 adapter|
@@ -153,6 +153,6 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 |    35 °C – 40 °C (95 °f – 104 °F)            |    A maximális hőmérsékletet 1 °C/175 m (1 °F/319 Ft) csökkenti 950 m felett (3 117 Ft).    |
 |    40 °C-ról 45 °C-ra (104 °F – 113 °F)           |    A maximális hőmérsékletet 1 °C/125 m (1 °F/228 Ft) csökkenti 950 m felett (3 117 Ft).    |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Stack Edge Pro üzembe helyezése](azure-stack-edge-deploy-prep.md)

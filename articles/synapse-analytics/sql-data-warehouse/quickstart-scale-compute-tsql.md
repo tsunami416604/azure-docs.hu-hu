@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: számítási méretezés az Azure szinapszis Analyticsben – T-SQL'
-description: A számítások méretezése az Azure szinapszis Analyticsben T-SQL és SQL Server Management Studio (SSMS) használatával. Bővítéssel a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők.
+title: 'Gyors útmutató: számítás skálázása dedikált SQL-készletben (korábban SQL DW) – T-SQL'
+description: A számítási műveletek méretezése a dedikált SQL-készletben (korábbi nevén SQL DW) T-SQL és SQL Server Management Studio (SSMS) használatával. Bővítéssel a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők.
 services: synapse-analytics
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d11474a3f3b5d8c314f67260fddbbe0a98fe5196
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 37033e3c5f388d1a55a122899114914e661565f6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569896"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460233"
 ---
-# <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Gyors útmutató: a számítások méretezése az Azure szinapszis Analyticsben T-SQL használatával
+# <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>Gyors útmutató: számítások méretezése dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben a T-SQL használatával
 
-A számítások méretezése az Azure szinapszis Analyticsben (korábban SQL DW) T-SQL és SQL Server Management Studio (SSMS) használatával. [Felskálázással](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
+A számítási műveletek méretezése a dedikált SQL-készletben (korábbi nevén SQL DW) T-SQL és SQL Server Management Studio (SSMS) használatával. [Felskálázással](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -28,9 +28,9 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 Töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) legújabb verzióját.
 
-## <a name="create-a-data-warehouse"></a>Adattárház létrehozása
+## <a name="create-a-dedicated-sql-pool-formerly-sql-dw"></a>Dedikált SQL-készlet létrehozása (korábban SQL DW)
 
-Kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) gyors útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához. Fejezze be a gyors üzembe helyezést, és győződjön meg arról, hogy van tűzfalszabály, és SQL Server Management Studioon belül tud csatlakozni az adattárházhoz.
+A [Létrehozás és kapcsolódás – portál](create-data-warehouse-portal.md) használatával hozzon létre egy dedikált SQL-készletet (korábban SQL DW) **mySampleDataWarehouse** néven. Fejezze be a gyors üzembe helyezést, és győződjön meg arról, hogy van tűzfalszabály, és a dedikált SQL-készlethez (korábban SQL DW) tud csatlakozni SQL Server Management Studioon belülről.
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Csatlakozás a kiszolgálóhoz kiszolgáló-rendszergazdaként
 
@@ -58,11 +58,11 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
 
 ## <a name="view-service-objective"></a>Szolgáltatási cél megtekintése
 
-A szolgáltatási cél beállítása tartalmazza az adattárház adattárházegységeinek számát.
+A szolgáltatási cél beállítása a dedikált SQL-készlet (korábban SQL DW) adatraktár-egységeinek számát tartalmazza.
 
-Az adattárház jelenlegi adattárházegység-számának megtekintéséhez:
+A dedikált SQL-készlet aktuális adattárház-egységének megtekintése (korábban SQL DW):
 
-1. A **mySampleDataWarehouseservername.database.Windows.net**-hez való kapcsolódás alatt bontsa ki a **rendszeradatbázisok**csomópontot.
+1. A **mySampleDataWarehouseservername.database.Windows.net**-hez való kapcsolódás alatt bontsa ki a **rendszeradatbázisok** csomópontot.
 2. Kattintson a jobb gombbal a **master** elemre, és válassza a **New Query** (Új lekérdezés) lehetőséget. Megnyílik egy új lekérdezési ablak.
 3. Futtassa a következő lekérdezést a sys.database_service_objectives dinamikus felügyeleti nézetből való választáshoz.
 
@@ -85,7 +85,7 @@ Az adattárház jelenlegi adattárházegység-számának megtekintéséhez:
 
 ## <a name="scale-compute"></a>Számítások méretezése
 
-Az Azure Szinapszisban az adatraktár-egységek módosításával növelheti vagy csökkentheti a számítási erőforrásokat. A [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) gyorsútmutató létrehozta a **mySampleDataWarehouse** adattárházat, és inicializálta azt 400 adattárházegységgel. Az alábbi lépésekkel módosíthatja a **mySampleDataWarehouse** adattárházban az adattárházegységek számát.
+A dedikált SQL-készletben (korábban az SQL DW-ben) az adatraktár-egységek módosításával növelheti vagy csökkentheti a számítási erőforrásokat. A [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) gyorsútmutató létrehozta a **mySampleDataWarehouse** adattárházat, és inicializálta azt 400 adattárházegységgel. Az alábbi lépésekkel módosíthatja a **mySampleDataWarehouse** adattárházban az adattárházegységek számát.
 
 Az adattárházegységek számának módosításához:
 
@@ -130,13 +130,13 @@ A szolgáltatásobjektum módosítási állapotának lekérdezése:
 
     ![Művelet állapota](./media/quickstart-scale-compute-tsql/polling-output.png)
 
-## <a name="check-data-warehouse-state"></a>Az adattárház állapotának ellenőrzése
+## <a name="check-dedicated-sql-pool-formerly-sql-dw-state"></a>Dedikált SQL-készlet (korábban SQL DW) állapotának keresése
 
-A szüneteltetett adattárházakhoz nem tud T-SQL-utasításokkal csatlakozni. Az adattárház jelenlegi állapotát megtekintheti egy PowerShell-parancsmag használatával. Példa: az [adatraktár állapotának megtekintése – PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state).
+Ha egy dedikált SQL-készlet (korábban SQL DW) szüneteltetve van, nem tud csatlakozni a T-SQL-hez. A dedikált SQL-készlet (korábban SQL DW) aktuális állapotának megtekintéséhez PowerShell-parancsmagot is használhat. Példaként tekintse meg a [DEDIKÁLT SQL Pool (korábbi nevén SQL DW) állapot – PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state)című témakört.
 
 ## <a name="check-operation-status"></a>Műveleti állapot ellenőrzése
 
-Az Azure szinapszis különböző felügyeleti műveleteivel kapcsolatos információk visszaküldéséhez futtassa a következő lekérdezést a [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV-on. A lekérdezés például visszaadja a műveletet és annak állapotát, amely IN_PROGRESS, vagy COMPLETED lehet.
+A dedikált SQL-készleten (korábban SQL DW) lévő különböző felügyeleti műveletekkel kapcsolatos információk visszaküldéséhez futtassa a következő lekérdezést a [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV-on. A lekérdezés például visszaadja a műveletet és annak állapotát, amely IN_PROGRESS, vagy COMPLETED lehet.
 
 ```sql
 SELECT *
@@ -150,7 +150,7 @@ AND
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban megismerhette, hogyan skálázható egy adattárház számítási kapacitása. Ha többet szeretne megtudni az Azure Szinapszisról, folytassa az információk betöltésére vonatkozó oktatóanyaggal.
+Most megtanulta, hogyan méretezheti a számítási feladatait a dedikált SQL-készlethez (korábban SQL DW). Ha többet szeretne megtudni az Azure szinapszis Analytics szolgáltatásról, folytassa az információk betöltésére szolgáló oktatóanyaggal.
 
 > [!div class="nextstepaction"]
->[Az Azure szinapszis Analyticsbe való betöltés](load-data-from-azure-blob-storage-using-polybase.md)
+>[Adat betöltése egy dedikált SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md)

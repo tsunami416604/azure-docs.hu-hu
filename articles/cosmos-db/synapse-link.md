@@ -5,20 +5,20 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 11/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1e78a7ff806cbd6a7f30c68786e62f8508c850ac
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d083bc0b7726a284dcfd03e49d47c2a342db023c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340685"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461812"
 ---
-# <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Mi az az Azure szinapszis-hivatkozás a Azure Cosmos DB (előzetes verzió)?
+# <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>Mi az az Azure Cosmos DB-hez készült Azure Synapse Link?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 > [!IMPORTANT]
-> Az Azure szinapszis hivatkozása Azure Cosmos DB jelenleg előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A szinapszis kiszolgáló nélküli SQL-készletének támogatása az Azure-beli szinapszis-hivatkozáshoz Azure Cosmos DB jelenleg előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az Azure szinapszis hivatkozása Azure Cosmos DB egy felhőalapú hibrid tranzakciós és analitikai feldolgozási (HTAP) képesség, amely lehetővé teszi a közel valós idejű elemzések futtatását Azure Cosmos DB-ban lévő operatív adaton. Az Azure szinapszis-kapcsolat szoros zökkenőmentes integrációt hoz létre a Azure Cosmos DB és az Azure szinapszis Analytics között.
 
@@ -36,7 +36,7 @@ A hagyományos ETL-alapú megoldásokkal összehasonlítva az Azure szinapszis h
 
 ### <a name="reduced-complexity-with-no-etl-jobs-to-manage"></a>Kevesebb bonyolultság a kezelendő ETL-feladatok nélkül
 
-Az Azure szinapszis-hivatkozás lehetővé teszi, hogy az Azure szinapszis Analytics használatával közvetlenül hozzáférhessen Azure Cosmos DB analitikus áruházhoz az összetett adatáthelyezés nélkül. Az operatív adatokon végrehajtott frissítések közel valós időben láthatók az analitikai tárolóban, amely nem tartalmaz ETL-t vagy adatcsatorna-módosítási feladatot. A szinapszis Analytics szolgáltatással nagy léptékű elemzéseket futtathat az analitikus tárolón, további adatátalakítás nélkül.
+Az Azure szinapszis-hivatkozás lehetővé teszi, hogy az Azure szinapszis Analytics használatával közvetlenül hozzáférhessen Azure Cosmos DB analitikus áruházhoz az összetett adatáthelyezés nélkül. Az operatív adatokon végrehajtott frissítések közel valós időben láthatók az analitikai tárolóban, amely nem tartalmaz ETL-t vagy adatcsatorna-módosítási feladatot. Az Azure szinapszis Analytics segítségével nagy léptékű elemzéseket futtathat az analitikus áruházból, további adatátalakítás nélkül.
 
 ### <a name="near-real-time-insights-into-your-operational-data"></a>Közel valós idejű betekintést nyerhet az operatív adataiba
 
@@ -75,13 +75,13 @@ Ha globálisan elosztott Azure Cosmos DB-fiókkal rendelkezik, a tárolóhoz tar
 
 ### <a name="integration-with-azure-synapse-analytics"></a><a id="synapse-link-integration"></a>Integráció az Azure szinapszis Analytics szolgáltatással
 
-A szinapszis link használatával mostantól közvetlenül kapcsolódhat Azure Cosmos DB tárolóhoz az Azure szinapszis Analytics szolgáltatásból, és külön összekötők nélkül férhet hozzá az analitikai tárolóhoz. Az Azure szinapszis Analytics jelenleg a szinapszis [Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) és az [SQL Server](../synapse-analytics/sql/on-demand-workspace-overview.md)nélküli szinapszis-hivatkozásokat támogatja.
+A szinapszis link használatával mostantól közvetlenül kapcsolódhat Azure Cosmos DB tárolóhoz az Azure szinapszis Analytics szolgáltatásból, és külön összekötők nélkül férhet hozzá az analitikai tárolóhoz. Az Azure szinapszis Analytics jelenleg támogatja a szinapszis-kapcsolatot a [szinapszis Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) és a [kiszolgáló nélküli SQL-készlettel](../synapse-analytics/sql/on-demand-workspace-overview.md).
 
 Az adatok lekérdezése Azure Cosmos DB analitikus áruházból egyidejűleg végezhető el, az Azure szinapszis Analytics által támogatott különböző elemzési futtatási időpontokban való együttműködéssel. Az operatív információk elemzéséhez nincs szükség további adatátalakításra. Az analitikai tár adatai az alábbiak használatával kérdezhető le és elemezhetők:
 
 * A szinapszis Apache Spark teljes körű támogatást nyújt a Scala, a Python, a SparkSQL és a C# nyelvhez. A szinapszis Spark az adattervezés és az adatelemzési forgatókönyvek központi része
 
-* SQL Server nélküli, T-SQL nyelvvel és az ismerős BI-eszközök támogatásával (például Power BI Premium stb.)
+* Kiszolgáló nélküli SQL-készlet a T-SQL nyelvvel és az ismerős BI-eszközök támogatása (például Power BI Premium stb.)
 
 > [!NOTE]
 > Az Azure szinapszis Analytics szolgáltatásban a Azure Cosmos DB tárolóban található analitikai és tranzakciós tárolók is elérhetők. Ha azonban nagy léptékű elemzéseket vagy vizsgálatokat szeretne futtatni az operatív adatokon, javasoljuk, hogy az analitikai tároló használatával elkerülje a tranzakciós számítási feladatokra gyakorolt hatást.
@@ -133,7 +133,7 @@ Az Azure szinapszis hivatkozás számlázási modellje tartalmazza a Azure Cosmo
 
 További információért lásd a következő dokumentumokat:
 
-* [Azure Cosmos DB analitikus áruház – áttekintés](analytical-store-introduction.md)
+* [Az Azure Cosmos DB elemzési tár áttekintése](analytical-store-introduction.md)
 
 * [Az Azure Cosmos DB-hez készült Azure Synapse Link használatának első lépései](configure-synapse-link.md)
  

@@ -1,6 +1,6 @@
 ---
-title: Adattárolás lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió)
-description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni az Azure Storage-t az Azure-beli kiszolgáló nélküli SQL Pool (előzetes verzió) erőforrás használatával az Azure szinapszis Analytics
+title: Adattárolás lekérdezése kiszolgáló nélküli SQL-készlettel
+description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni az Azure Storage-t a kiszolgáló nélküli SQL Pool-erőforrás használatával az Azure szinapszis Analytics szolgáltatásban.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 81a892b10996686cf58d45867e3d889505b5d3d9
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: 967250cf29d1f0248f296cb545a764bd8e611773
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299581"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462666"
 ---
-# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Tárolási fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
+# <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Tárolási fájlok lekérdezése kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
-A kiszolgáló nélküli SQL-készlet (előzetes verzió) segítségével lekérdezheti az adatait az adattóban. Egy T-SQL-lekérdezési felületet kínál, amely a félig strukturált és a strukturálatlan adatlekérdezéseket is tartalmazza. A lekérdezéshez a következő T-SQL-szempontok támogatottak:
+A kiszolgáló nélküli SQL-készlet lehetővé teszi, hogy lekérdezze az adatait a saját adattóban. Egy T-SQL-lekérdezési felületet kínál, amely a félig strukturált és a strukturálatlan adatlekérdezéseket is tartalmazza. A lekérdezéshez a következő T-SQL-szempontok támogatottak:
 
 - Teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) felületi terület, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét.
 - KÜLSŐ tábla létrehozása SELECT ([CETAS](develop-tables-cetas.md)) – létrehoz egy [külső táblát](develop-tables-external-tables.md) , majd párhuzamosan exportálja a Transact-SQL SELECT utasítás eredményeit az Azure Storage-ba.
@@ -222,9 +222,9 @@ A különböző típusú adattípusok lekérdezésével kapcsolatos további inf
 ### <a name="tools"></a>Eszközök
 
 A lekérdezések kibocsátásához szükséges eszközök:
-    - Azure szinapszis Studio (előzetes verzió)
+    - Azure szinapszis Studio 
     - Azure Data Studio
-    - SQL Server Management Studio
+    - Az SQL Server Management Studio
 
 ### <a name="demo-setup"></a>Bemutató beállítása
 
@@ -248,7 +248,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 - Parketta-fájlok beágyazott oszlopokkal
 - Könyvek JSON formátumban
 
-| Mappa elérési útja                                                  | Leírás                                                  |
+| Mappa elérési útja                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CSV                                                        | CSV formátumú adatszülő mappa                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Különböző CSV formátumú adatfájlokkal rendelkező mappák. |
@@ -260,7 +260,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 | /json/books/                                                 | Könyvekből származó JSON-fájlok                                   |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A különböző fájltípusok lekérdezésével, valamint a nézetek létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

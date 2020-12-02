@@ -11,22 +11,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: de0224c51debe4d0203400b55721208ce7093649
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 05f336af62bc0869249d5b32700ea3515ac5994f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636289"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459706"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Adatok betöltése az Office 365-ből Azure Data Factory használatával
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési adatait az Office 365-ből az Azure Blob Storage-ba_ . A hasonló lépéseket követve másolhatja az Adatmásolást Azure Data Lake Gen1 vagy Gen2. Tekintse meg az [office 365-összekötőt](connector-office-365.md) az Office 365-ből általában az adatok másolásáról szóló cikket.
+Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési adatait az Office 365-ből az Azure Blob Storage-ba_. A hasonló lépéseket követve másolhatja az Adatmásolást Azure Data Lake Gen1 vagy Gen2. Tekintse meg az [office 365-összekötőt](connector-office-365.md) az Office 365-ből általában az adatok másolásáról szóló cikket.
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory** : 
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**: 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -34,11 +34,11 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési 
       
    ![Új adat-előállító lap](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **Név** : adjon meg egy globálisan egyedi nevet az Azure-beli adatgyár számára. Ha "a *LoadFromOffice365Demo* nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállítónak. Használhatja például a _**sajátneve**_**LoadFromOffice365Demo** nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
-    * **Előfizetés** : válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
-    * **Erőforráscsoport** : válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-    * **Verzió** : Válassza a **V2** lehetőséget.
-    * **Hely** : válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. Ezek az adattárak a következők: Azure Data Lake Store, Azure Storage, Azure SQL Database stb.
+    * **Név**: adjon meg egy globálisan egyedi nevet az Azure-beli adatgyár számára. Ha "a *LoadFromOffice365Demo* nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállítónak. Használhatja például a _**sajátneve**_**LoadFromOffice365Demo** nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+    * **Előfizetés**: válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
+    * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+    * **Verzió**: Válassza a **V2** lehetőséget.
+    * **Hely**: válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. Ezek az adattárak a következők: Azure Data Lake Store, Azure Storage, Azure SQL Database stb.
 
 3. Kattintson a **Létrehozás** gombra.
 4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható:
@@ -59,7 +59,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési 
 
 ### <a name="configure-source"></a>Forrás konfigurálása
 
-1. Nyissa meg a folyamat > **forrás lapot** , és kattintson az **+ új** elemre a forrás-adatkészlet létrehozásához. 
+1. Nyissa meg a folyamat > **forrás lapot**, és kattintson az **+ új** elemre a forrás-adatkészlet létrehozásához. 
 
 2. Az új adatkészlet ablakban válassza az **Office 365** lehetőséget, majd kattintson a **Folytatás** gombra.
  
@@ -89,7 +89,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési 
 
 ### <a name="configure-sink"></a>Fogadó konfigurálása
 
-1. Nyissa meg a folyamat > fogadó **lapot** , és válassza az **+ új** lehetőséget a fogadó adatkészlet létrehozásához.
+1. Nyissa meg a folyamat > fogadó **lapot**, és válassza az **+ új** lehetőséget a fogadó adatkészlet létrehozásához.
  
 2. Az új adatkészlet ablakban figyelje meg, hogy csak a támogatott célhelyek vannak kiválasztva az Office 365-ból való másoláskor. Válassza az **Azure Blob Storage** lehetőséget, válassza a bináris formátum lehetőséget, majd kattintson a **Folytatás** gombra.  Ebben az oktatóanyagban az Office 365-es verzióját egy Azure-Blob Storage másolja.
 
@@ -130,7 +130,7 @@ A folyamat futásához társított tevékenységfuttatások megtekintéséhez ka
 
 ![Tevékenység figyelése](./media/load-office-365-data/activity-status.png) 
 
-Ha ez az első alkalom, amikor adatokat kér ehhez a környezethez (amely az adattábla egy kombinációja, amelybe a rendszer betölti az adatokat, és hogy melyik felhasználói identitás teszi az adatelérési kérelmet), a másolási tevékenység állapota **folyamatban** , és csak akkor jelenik meg, ha a műveletek területen a részletek hivatkozásra kattint, és az állapot **RequesetingConsent** lesz látható.  Az adathozzáférés-jóváhagyó csoport tagjának jóvá kell hagynia a kérést a Privileged Access Management az adatgyűjtés folytatásához.
+Ha ez az első alkalom, amikor adatokat kér ehhez a környezethez (amely az adattábla egy kombinációja, amelybe a rendszer betölti az adatokat, és hogy melyik felhasználói identitás teszi az adatelérési kérelmet), a másolási tevékenység állapota **folyamatban**, és csak akkor jelenik meg, ha a műveletek területen a részletek hivatkozásra kattint, és az állapot **RequesetingConsent** lesz látható.  Az adathozzáférés-jóváhagyó csoport tagjának jóvá kell hagynia a kérést a Privileged Access Management az adatgyűjtés folytatásához.
 
 _Engedély kérése:_ 
  ![ Tevékenység-végrehajtás részletei – kérelem beleegyezike](./media/load-office-365-data/activity-details-request-consent.png) 
@@ -145,9 +145,9 @@ Miután megadta a beleegyezett adatgyűjtést, a rendszer folytatja az adatfeldo
 
 Most lépjen a cél Azure Blob Storagera, és ellenőrizze, hogy az Office 365-es Adatkivonatok bináris formátumban lettek kibontva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A következő cikkből megismerheti az Azure szinapszis Analytics (korábban SQL Data Warehouse) támogatását: 
+A következő cikkből megismerheti az Azure szinapszis Analytics támogatását: 
 
 > [!div class="nextstepaction"]
 >[Office 365-összekötő](connector-office-365.md)

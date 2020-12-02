@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ec619681f1eebc51da85d31ad15f1db25cfd3cbc
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917919"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460054"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>A Key Vault és az Azure Private Link integrálása
 
@@ -53,7 +53,7 @@ A Key Vault alapalapjainak konfigurálása után válassza a hálózatkezelés f
 1. Válassza a magánhálózati végpont választógombot a hálózatkezelés lapon.
 1. Privát végpont hozzáadásához kattintson a "+ Hozzáadás" gombra.
 
-    ![Kép](../media/private-link-service-1.png)
+    ![Rendszerkép](../media/private-link-service-1.png)
  
 1. A privát végpont létrehozása panel "location" mezőjében válassza ki azt a régiót, amelyben a virtuális hálózat található. 
 1. A "név" mezőben hozzon létre egy leíró nevet, amely lehetővé teszi a privát végpont azonosítását. 
@@ -61,7 +61,7 @@ A Key Vault alapalapjainak konfigurálása után válassza a hálózatkezelés f
 1. Hagyja változatlanul az "integráció a saját DNS-zónával" beállítást.  
 1. Válassza az OK gombot.
 
-    ![Kép](../media/private-link-service-8.png)
+    ![Rendszerkép](../media/private-link-service-8.png)
  
 Ekkor megtekintheti a konfigurált privát végpontot. Most már lehetősége van a privát végpont törlésére és szerkesztésére. Válassza a "felülvizsgálat + létrehozás" gombot, és hozza létre a Key vaultot. A telepítés befejezéséhez 5-10 percet vesz igénybe. 
 
@@ -105,7 +105,7 @@ Négy kiépítési állapot létezik:
 1. Kattintson a jóváhagyás gombra.
 1. Ha van olyan privát végponti kapcsolat, amelyet el szeretne utasítani, legyen az egy függőben lévő kérelem vagy létező kapcsolat, válassza ki a kapcsolatot, és kattintson az "elutasítás" gombra.
 
-    ![Kép](../media/private-link-service-7.png)
+    ![Rendszerkép](../media/private-link-service-7.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
@@ -226,14 +226,14 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 * Ellenőrizze, hogy van-e saját DNS zóna erőforrása. 
     1. Rendelkeznie kell egy saját DNS zóna-erőforrással a pontos névvel: privatelink.vaultcore.azure.net. 
-    2. Ha szeretné megtudni, hogyan állíthatja be ezt a műveletet, tekintse meg a következő hivatkozást. [saját DNS zónák](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    2. Ha szeretné megtudni, hogyan állíthatja be ezt a műveletet, tekintse meg a következő hivatkozást. [saját DNS zónák](../../dns/private-dns-privatednszone.md)
     
 * Győződjön meg arról, hogy a Privát DNS-zóna nincs virtuális hálózathoz csatolva. Ez lehet a probléma, ha továbbra is a visszaadott nyilvános IP-címet kapja. 
     1. Ha a privát zóna DNS-je nincs a virtuális hálózathoz kapcsolva, a virtuális hálózatból származó DNS-lekérdezés a kulcstartó nyilvános IP-címét fogja visszaadni. 
     2. Navigáljon a Azure Portal saját DNS zóna erőforrásához, és kattintson a virtuális hálózati kapcsolatok lehetőségre. 
     4. A Key Vault hívásait végrehajtó virtuális hálózatnak szerepelnie kell a listáján. 
     5. Ha nincs ott, vegye fel. 
-    6. A részletes lépésekért tekintse meg a következő dokumentum [hivatkozását Virtual Network saját DNS zónához](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)
+    6. A részletes lépésekért tekintse meg a következő dokumentum [hivatkozását Virtual Network saját DNS zónához](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network)
 
 * Győződjön meg arról, hogy a saját DNS zónában nem hiányzik egy rekord a kulcstartóhoz. 
     1. Navigáljon a saját DNS zóna lapra. 

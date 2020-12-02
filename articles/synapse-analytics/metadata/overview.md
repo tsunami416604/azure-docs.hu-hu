@@ -1,6 +1,6 @@
 ---
 title: Megosztott metaadat-modell
-description: Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok adatbázisokat és táblákat osszanak meg a kiszolgáló nélküli Apache Spark készletek (előzetes verzió), a kiszolgáló nélküli SQL-készlet (előzetes verzió) és a dedikált SQL-készletek között.
+description: Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok adatbázisokat és táblákat osszanak meg a kiszolgáló nélküli Apache Spark készletek, a kiszolgáló nélküli SQL-készlet és a dedikált SQL-készletek között.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -9,18 +9,16 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64c19f3331be8ffda433207da88ebf22c546ee4e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b10b6f011fa7daee4094f0cc7b819d36127fedcd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324668"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460341"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure szinapszis Analytics megosztott metaadatok
 
-Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok adatbázisokat és táblákat osszanak meg a kiszolgáló nélküli Apache Spark készletek (előzetes verzió) és a kiszolgáló nélküli SQL-készlet (előzetes verzió) között.
-
-[!INCLUDE [preview](../includes/note-preview.md)]
+Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok adatbázisokat és táblákat osszanak meg kiszolgáló nélküli Apache Spark készletei és kiszolgáló nélküli SQL-készlete között.
 
 A megosztás támogatja az úgynevezett modern adattárház-mintát, és lehetővé teszi a munkaterület SQL-motorjai számára a Spark használatával létrehozott adatbázisok és táblák elérését. Azt is lehetővé teszi, hogy az SQL-motorok olyan saját objektumokat hozzanak létre, amelyek nem a többi motorral vannak megosztva.
 
@@ -46,7 +44,7 @@ A Spark segítségével adatbázisok, külső táblák, felügyelt táblák és 
 
 ## <a name="security-model-at-a-glance"></a>Biztonsági modell áttekintése
 
-A Spark-adatbázisok és-táblák, valamint az SQL-motorban szinkronizált ábrázolások a mögöttes tárolási szinten vannak biztosítva. Ha a táblát bármely olyan motor kérdezi le, amelyet a lekérdezés küldője jogosult használni, a lekérdezés elküldő rendszerbiztonsági tagja átkerül az alapul szolgáló fájlokra. A rendszer a fájlrendszer szintjén ellenőrzi az engedélyeket.
+A Spark-adatbázisok és-táblák, valamint az SQL-motorban szinkronizált ábrázolások a mögöttes tárolási szinten vannak biztosítva. Ha a táblát bármely olyan motor kérdezi le, amelyet a lekérdezés küldője jogosult használni, a lekérdezés elküldő rendszerbiztonsági tagja átkerül az alapul szolgáló fájlokra. Az engedélyezés ellenőrzésére a fájlrendszer szintjén kerül sor.
 
 További információ: az [Azure szinapszis Analytics megosztott adatbázisa](database.md).
 
@@ -54,7 +52,7 @@ További információ: az [Azure szinapszis Analytics megosztott adatbázisa](da
 
 Ha egy metaadat-objektumot törölnek vagy módosítanak a Sparktal, a módosítások bekerülnek a kiszolgáló nélküli SQL-készletbe, és propagálva lesznek. A szinkronizálás aszinkron módon történik, és a módosítások rövid késleltetés után az SQL-motorban is megjelennek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ az Azure szinapszis Analytics megosztott metaadat-adatbázisairól](database.md)
 - [További információ az Azure szinapszis Analytics megosztott metaadatait tartalmazó tábláiról](table.md)

@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
-ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0e807a01f575615967a039d360505a4f090cd1fd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.reviewer: nibruno; jrasnick; azure-synapse
+ms.openlocfilehash: 902f0ac96349cf3e30ec12aeda02130afc2b800c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478320"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460753"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Teljesítmény-Finomhangolás az anyagbeli nézetekkel
 
-A szinapszis SQL-készletben található, jelentős nézetek egy kis karbantartási módszert biztosítanak a komplex analitikai lekérdezésekhez, amelyekkel a lekérdezés módosítása nélkül juthatnak hozzá a gyors teljesítményhez. Ebből a cikkből megtudhatja, hogyan használhatja az általános útmutatást a jelentős nézetek használatával kapcsolatban.
+Az Azure-beli szinapszis SQL-készletben található jelentős nézetek alacsony karbantartási módszert biztosítanak a komplex analitikai lekérdezésekhez, így a lekérdezés módosítása nélkül juthatnak hozzá a gyors teljesítményhez. Ebből a cikkből megtudhatja, hogyan használhatja az általános útmutatást a jelentős nézetek használatával kapcsolatban.
 
 ## <a name="materialized-views-vs-standard-views"></a>Az alapvető nézetek és a szabványos nézetek
 
-Az SQL-készlet támogatja a szabványos és a jelentős nézeteket.  Mindkettő olyan virtuális táblákat hoz létre, amelyek a SELECT kifejezésekkel lettek létrehozva, és a lekérdezéseket logikai táblázatként mutatja  A nézetek összefoglalják a közös adatszámítások összetettségét, és felvesznek egy absztrakt réteget a számítási változásokhoz, így nincs szükség a lekérdezések újraírására.  
+Az Azure Szinapszisban az SQL-készlet szabványos és jelentős nézeteket támogat.  Mindkettő olyan virtuális táblákat hoz létre, amelyek a SELECT kifejezésekkel lettek létrehozva, és a lekérdezéseket logikai táblázatként mutatja  A nézetek összefoglalják a közös adatszámítások összetettségét, és felvesznek egy absztrakt réteget a számítási változásokhoz, így nincs szükség a lekérdezések újraírására.  
 
-A normál nézet minden alkalommal kiszámítja az adatmegjelenítést, amikor a nézet használatban van.  A lemezen nem találhatók adattárolók. A személyek általában szabványos nézeteket használnak olyan eszközként, amely segít megszervezni a logikai objektumokat és lekérdezéseket egy adatbázisban.  Normál nézet használatához a lekérdezésnek közvetlen hivatkozást kell tartalmaznia.
+A normál nézet minden alkalommal kiszámítja az adatmegjelenítést, amikor a nézet használatban van.  A lemezen nem találhatók adattárolók. A személyek általában szabványos nézeteket használnak olyan eszközként, amely segít megszervezni a logikai objektumokat és lekérdezéseket egy SQL-készletben.  Normál nézet használatához a lekérdezésnek közvetlen hivatkozást kell tartalmaznia.
 
 Egy anyagilag megtekinthető nézet előre kiszámítja, tárolja és karbantartja az adataikat az SQL-készletben, ugyanúgy, mint egy tábla.  A rendszer minden alkalommal nem igényel újraszámítást, amikor egy anyagbeli nézetet használ.  Ezért az olyan lekérdezések, amelyek az összes vagy az adatok egy részhalmazát használják az anyagokban, gyorsabb teljesítményt érhet el.  Még jobb is, ha a lekérdezések egy anyagbeli nézetet is használhatnak közvetlen hivatkozás nélkül, ezért nincs szükség az alkalmazás kódjának módosítására.  
 
@@ -38,7 +38,7 @@ A standard nézetekre vonatkozó követelmények többsége továbbra is érvén
 |Adatfrissítés                    | Mindig frissítve                               | Mindig frissítve
 |Az összetett lekérdezések adatainak megtekintési sebessége     | Lassú                                         | Gyors  
 |Extra tárterület                   | Nem                                           | Igen
-|Syntax                          | CREATE VIEW                                  | A KIVÁLASZTÁSNAK MEGFELELŐEN HOZZON LÉTRE EGY ANYAGBELI NÉZETET
+|Szintaxis                          | CREATE VIEW                                  | A KIVÁLASZTÁSNAK MEGFELELŐEN HOZZON LÉTRE EGY ANYAGBELI NÉZETET
 
 ## <a name="benefits-of-using-materialized-views"></a>A lényeges nézetek használatának előnyei
 
@@ -58,7 +58,7 @@ Az egyéb adattárház-szolgáltatók összehasonlításával az Azure szinapszi
 - Széleskörű összesítő függvények támogatása. Lásd: [anyagelszámolású nézet létrehozása Select (Transact-SQL) néven](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 - A lekérdezés-specifikus, jelentős megjelenítésre vonatkozó javaslat támogatása.  Lásd: [Magyarázat (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="common-scenarios"></a>Gyakori helyzetek  
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek  
 
 A rendszer általában az alábbi helyzetekben használja az anyagilag látható nézeteket:
 
@@ -79,7 +79,7 @@ A más hangolási lehetőségekkel, például a skálázással és a statisztika
 
 **A lekérdezési teljesítmény gyorsabb elvégzéséhez eltérő adatelosztási stratégia szükséges**
 
-A szinapszis SQL egy elosztott lekérdezés-feldolgozó rendszer.  Az SQL-táblákban lévő adatokat 60-csomópontok osztják szét a három [terjesztési stratégia](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (kivonat, round_robin vagy replikált) egyikének használatával.   
+Az Azure szinapszis Analytics egy elosztott lekérdezés-feldolgozó rendszer.  Az SQL-táblákban lévő adatokat 60-csomópontok osztják szét a három [terjesztési stratégia](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (kivonat, round_robin vagy replikált) egyikének használatával.   
 
 Az adateloszlás a tábla létrehozási idején van megadva, és a tábla eldobása előtt változatlan marad. A lemezes virtuális tábla a kivonatoló és az round_robin adateloszlást is támogatja.  A felhasználók kiválaszthatnak egy adateloszlást, amely eltér az alaptábláktól, de optimális a nézeteket használó lekérdezések teljesítményéhez.  
 
@@ -97,11 +97,11 @@ A felhasználók a lekérdezés-optimalizáló által ajánlott, a WITH_RECOMMEN
 
 **Vegye figyelembe a gyorsabb lekérdezések és a díjak közötti kompromisszumot.**
 
-Minden egyes anyag nézet esetében az adattárolási költségeket és a nézet fenntartásának költségeit kell megfizetni.  Az alaptáblákban megjelenő adatváltozások esetén az anyagilag megjelenő nézet mérete megnő, és a fizikai szerkezete is megváltozik.  A lekérdezési teljesítmény romlásának elkerülése érdekében az SQL-készlet motorja külön kezeli az összes anyagra vonatkozó nézetet.  
+Minden egyes anyag nézet esetében az adattárolási költségeket és a nézet fenntartásának költségeit kell megfizetni.  Az alaptáblákban megjelenő adatváltozások esetén az anyagilag megjelenő nézet mérete megnő, és a fizikai szerkezete is megváltozik.  A lekérdezési teljesítmény romlásának elkerülése érdekében az SQL Analytics motor külön kezeli az összes anyagra vonatkozó nézetet.  
 
 A karbantartási munkaterhelés magasabb lesz, ha az anyagilag megjelenő nézetek és az alaptábla változásai növekednek.   A felhasználóknak ellenőriznie kell, hogy az összes jelentős nézetből felmerült költségek ellensúlyozzák-e a lekérdezési teljesítmény nyereségét.  
 
-Ezt a lekérdezést futtathatja a következő adatbázisban található, anyagként szolgáló nézet listájára:
+Ezt a lekérdezést futtathatja egy SQL-készletben található, az anyagként szolgáló nézet listájára:
 
 ```sql
 SELECT V.name as materialized_view, V.object_id
@@ -115,7 +115,7 @@ A kimutatott nézetek számának csökkentésére szolgáló beállítások:
 
 - Dobja el az alacsony kihasználtságú vagy már nem szükséges anyagbeli nézeteket.  A letiltott anyagbeli nézet nem tart fenn, de továbbra is A tárolási költségekkel jár.  
 
-- Összekapcsolhatja az azonos vagy hasonló alaptáblákon létrehozott, az adatok átfedését még akkor is, ha az adatok nem fedik át egymást.  A jelentős nézetek kombinálásával a különálló nézetek összege nagyobb méretű nézetet eredményezhet, a karbantartási költségeket azonban csökkenteni kell.  Példa:
+- Összekapcsolhatja az azonos vagy hasonló alaptáblákon létrehozott, az adatok átfedését még akkor is, ha az adatok nem fedik át egymást.  A jelentős nézetek kombinálásával a különálló nézetek összege nagyobb méretű nézetet eredményezhet, a karbantartási költségeket azonban csökkenteni kell.  Például:
 
 ```sql
 
@@ -141,7 +141,7 @@ GROUP BY A, C
 
 **A teljesítmény finomhangolása nem igényli a lekérdezés módosítását**
 
-Az SQL-készlet-optimalizáló a lekérdezési teljesítmény javítása érdekében automatikusan felhasználhatja az üzembe helyezett, jelentős nézeteket.  Ez a támogatás transzparens módon van alkalmazva olyan lekérdezésekre, amelyek nem hivatkoznak az összesítéseket használó nézetekre és lekérdezésekre, és nem támogatottak az anyagilag létrehozott nézetek létrehozásakor.  Nincs szükség lekérdezési módosításra. Megtekintheti a lekérdezés becsült végrehajtási tervét, és ellenőrizheti, hogy van-e egy anyagbeli nézet.  
+Az SQL Analytics-optimalizáló a lekérdezési teljesítmény javítása érdekében automatikusan felhasználja a központilag telepített, jelentős nézeteket.  Ez a támogatás transzparens módon van alkalmazva olyan lekérdezésekre, amelyek nem hivatkoznak az összesítéseket használó nézetekre és lekérdezésekre, és nem támogatottak az anyagilag létrehozott nézetek létrehozásakor.  Nincs szükség lekérdezési módosításra. Megtekintheti a lekérdezés becsült végrehajtási tervét, és ellenőrizheti, hogy van-e egy anyagbeli nézet.  
 
 **A lényeges nézetek figyelése**
 
@@ -151,7 +151,7 @@ A lekérdezési teljesítmény romlásának elkerülése érdekében érdemes fu
 
 **Anyagelszámolású nézet és eredményhalmaz gyorsítótárazása**
 
-Ez a két funkció az SQL-készletben, a lekérdezési teljesítmény finomhangolása során is bevezethető.  Az eredményhalmaz gyorsítótárazásával nagy párhuzamosságot és gyors választ kaphat a statikus adatokra irányuló ismétlődő lekérdezésektől.  
+Ez a két funkció a lekérdezési teljesítmény finomhangolásához egy időben, az SQL Analyticsben is elérhető.  Az eredményhalmaz gyorsítótárazásával nagy párhuzamosságot és gyors választ kaphat a statikus adatokra irányuló ismétlődő lekérdezésektől.  
 
 A gyorsítótárazott eredmény használatához a lekérdezést kérő gyorsítótárnak egyeznie kell azzal a lekérdezéssel, amely a gyorsítótárat hozta létre.  Emellett a gyorsítótárazott eredményt is a teljes lekérdezésre kell alkalmazni.  
 
@@ -364,6 +364,6 @@ Vizsgálja meg újra az eredeti lekérdezés végrehajtási tervét.  Most az ö
 
 A nagy mennyiségű nézetekkel ugyanaz a lekérdezés sokkal gyorsabban fut a kód módosítása nélkül.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További fejlesztési tippek: a [SZINAPSZIS SQL-készlet fejlesztése – áttekintés](sql-data-warehouse-overview-develop.md).

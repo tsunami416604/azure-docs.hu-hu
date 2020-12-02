@@ -1,6 +1,6 @@
 ---
-title: Az SQL-készlet számítási erőforrásának kezelése
-description: Ismerje meg az Azure szinapszis Analytics SQL-készlet teljesítmény-Felskálázási funkcióit. Az adattárház felfüggesztésével felskálázást végez a DWU és az alacsonyabb költségek módosításával.
+title: Számítási erőforrás kezelése a dedikált SQL-készlethez (korábban SQL DW)
+description: Ismerje meg az Azure szinapszis Analytics szolgáltatásban a dedikált SQL-készlet (korábban SQL DW) teljesítményének kibővítő képességeit. A dedikált SQL-készlet felfüggesztésével csökkentheti a DWU és a költségek csökkentését.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,28 +11,28 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 90815d52e6884efe6cff9a7860c093b4b5c1bc94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 300759b4ab6f806c02e748ff4c9a63a6a772bff4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85204541"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461076"
 ---
-# <a name="manage-compute-in-azure-synapse-analytics-data-warehouse"></a>Számítások kezelése az Azure szinapszis Analytics-adattárházban
+# <a name="manage-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>A dedikált SQL-készlet (korábban SQL DW) számítási feladatainak kezelése az Azure szinapszis Analyticsben
 
-Tudnivalók a számítási erőforrások kezeléséről az Azure szinapszis Analytics SQL-készletben. Csökkentse az SQL-készlet felfüggesztését, vagy méretezze át az adattárházat a teljesítmény iránti igények kielégítése érdekében.
+Ismerje meg a számítási erőforrások dedikált SQL-készlet (korábban SQL DW) felügyeletét az Azure szinapszis Analyticsben. Alacsonyabb költségek a dedikált SQL-készlet szüneteltetésével vagy a dedikált SQL-készlet méretezésével a teljesítménybeli igények kielégítése érdekében.
 
 ## <a name="what-is-compute-management"></a>Mi a számítási felügyelet?
 
-Az adatraktár architektúrája elkülöníti a tárolást és a számítást, ami lehetővé teszi, hogy mindegyik egymástól függetlenül méretezhető legyen. Ennek eredményeképp az adattárolástól függetlenül megfelelhet a számítási méretezés teljesítményigényeinek. Emellett szüneteltetheti és folytathatja az erőforrásokat. Ennek az architektúrának a természetes következménye, hogy a számítás és a tárolás [számlázása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) külön történik. Ha egy ideig nincs szüksége az adattárházra, a számítás szüneteltetésével számítási költségeket takaríthat meg.
+A dedikált SQL-készlet (korábban SQL DW) architektúrája elkülöníti a tárolást és a számítást, ami lehetővé teszi, hogy mindegyik egymástól függetlenül méretezhető legyen. Ennek eredményeképp az adattárolástól függetlenül megfelelhet a számítási méretezés teljesítményigényeinek. Emellett szüneteltetheti és folytathatja az erőforrásokat. Ennek az architektúrának a természetes következménye, hogy a számítás és a tárolás [számlázása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) külön történik. Ha egy ideig nem kell a dedikált SQL-készletet (korábban SQL DW) használni, a számítási költségeket a számítási költségek felfüggesztésével mentheti.
 
 ## <a name="scaling-compute"></a>Méretezési számítás
 
-Az SQL-készlet [adatraktár-egységeinek](what-is-a-data-warehouse-unit-dwu-cdwu.md) beállításával kibővítheti vagy méretezheti a számítási kapacitást. A betöltési és lekérdezési teljesítmény lineárisan növekedik több adattárházegység hozzáadásával.
+A dedikált SQL-készlet (korábban SQL DW) [adatraktár-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md) beállítása beállításával kibővítheti vagy méretezheti a számítási kapacitást. A betöltési és lekérdezési teljesítmény lineárisan növekedik több adattárházegység hozzáadásával.
 
 A kibővített lépésekért tekintse meg a [Azure Portal](quickstart-scale-compute-portal.md), a [PowerShell](quickstart-scale-compute-powershell.md)vagy a [T-SQL](quickstart-scale-compute-tsql.md) rövid útmutatót. Kibővíthető műveleteket is végrehajthat [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)használatával.
 
-A méretezési művelet végrehajtásához az SQL-készlet először megöli az összes bejövő lekérdezést, majd Visszagörgeti a tranzakciókat, így biztosítva a konzisztens állapotot. A méretezés csak a tranzakciók visszaállítása után történik. A méretezési műveletekhez a rendszer leválasztja a tárolási réteget a számítási csomópontokból, kiszámítja a számítási csomópontokat, majd újra csatolja a tárolási réteget a számítási réteghez. A rendszer minden SQL-készletet 60-Eloszlásként tárol, amelyek egyenletesen oszlanak el a számítási csomópontokon. További számítási csomópontok hozzáadásával további számítási kapacitást adhat hozzá. A számítási csomópontok számának növekedésével a számítási csomópontok száma csökken, és nagyobb számítási teljesítményt biztosít a lekérdezésekhez. Hasonlóképpen, a csökkenő adattárház-egységek csökkentik a számítási csomópontok számát, ami csökkenti a lekérdezések számítási erőforrásait.
+A méretezési művelet végrehajtásához a dedikált SQL-készlet (korábban SQL DW) először megöli az összes bejövő lekérdezést, majd Visszagörgeti a tranzakciókat, így konzisztens állapotot biztosít. A méretezés csak a tranzakciók visszaállítása után történik. A méretezési műveletekhez a rendszer leválasztja a tárolási réteget a számítási csomópontokból, kiszámítja a számítási csomópontokat, majd újra csatolja a tárolási réteget a számítási réteghez. Minden dedikált SQL-készlet (korábbi nevén SQL DW) 60 Eloszlásként van tárolva, amelyek egyenletesen oszlanak el a számítási csomópontokon. További számítási csomópontok hozzáadásával további számítási kapacitást adhat hozzá. A számítási csomópontok számának növekedésével a számítási csomópontok száma csökken, és nagyobb számítási teljesítményt biztosít a lekérdezésekhez. Hasonlóképpen, a csökkenő adattárház-egységek csökkentik a számítási csomópontok számát, ami csökkenti a lekérdezések számítási erőforrásait.
 
 A következő táblázat azt mutatja be, hogy a számítási csomópontok hány eloszlása változik az adatraktár-egységek változásakor.  A DW30000c 60 számítási csomópontot biztosít, és sokkal nagyobb lekérdezési teljesítményt érhet el, mint a DW100c.
 
@@ -57,11 +57,11 @@ A következő táblázat azt mutatja be, hogy a számítási csomópontok hány 
 
 ## <a name="finding-the-right-size-of-data-warehouse-units"></a>Az adatraktár-egységek megfelelő méretének megállapítása
 
-Ha szeretné megtekinteni a horizontális felskálázás teljesítményének előnyeit, különösen a nagyobb adattárház-egységek esetében, legalább 1 TB-os adatkészletet szeretne használni. Az SQL-készlethez tartozó adatraktár-egységek legjobb számának megkereséséhez próbálja meg felfelé és lefelé méretezni a méretezést. Az adatok betöltése után futtasson néhány lekérdezést különböző számú adattárház-egységgel. Mivel a skálázás gyors, különböző teljesítményszint kipróbálására van lehetőség egy órán belül.
+Ha szeretné megtekinteni a horizontális felskálázás teljesítményének előnyeit, különösen a nagyobb adattárház-egységek esetében, legalább 1 TB-os adatkészletet szeretne használni. A dedikált SQL-készlet (korábban SQL DW) adattárház-egységeinek legjobb számának megkereséséhez próbálja meg felfelé és lefelé méretezni a méretezést. Az adatok betöltése után futtasson néhány lekérdezést különböző számú adattárház-egységgel. Mivel a skálázás gyors, különböző teljesítményszint kipróbálására van lehetőség egy órán belül.
 
 Javaslatok a legjobb számú adatraktár-egység megtalálásához:
 
-- Egy fejlesztés alatt álló SQL-készlet esetében kisebb számú adattárház-egységet válasszon ki.  Jó kiindulási pont a DW400c vagy a DW200c.
+- Egy dedikált SQL-készlet (korábban SQL DW) fejlesztésben való kiválasztásával kezdjen egy kisebb számú adattárház-egység kijelölésével.  Jó kiindulási pont a DW400c vagy a DW200c.
 - Figyelheti az alkalmazás teljesítményét, és megfigyelheti a kiválasztott adatraktár-egységek számát a megfigyelt teljesítményhez képest.
 - Tegyük fel a lineáris skálázást, és határozza meg, hogy mennyit kell fokoznia vagy csökkentenie az adatraktár-egységeket.
 - Folytassa a módosításokat, amíg el nem éri az üzleti igényeknek megfelelő optimális teljesítményt.
@@ -86,21 +86,21 @@ Adattárház-egységek hozzáadása a párhuzamosság növeléséhez. Ha a munka
 ## <a name="pausing-and-resuming-compute"></a>Számítás szüneteltetése és folytatása
 
 A számítási műveletek felfüggesztése miatt a tárolási réteg leválasztható a számítási csomópontokból. A számítási erőforrások kiadása a fiókból történik. Nem számítunk fel díjat, amíg a számítás szünetel. A számítás folytatása a számítási csomópontok számára újracsatlakoztatja a tárolót, és folytatja a számítási költségeket.
-SQL-készlet szüneteltetése esetén:
+Ha egy dedikált SQL-készletet szüneteltet (korábban SQL DW):
 
 - A számítási és memória-erőforrásokat a rendszer visszaadja az adatközpontban elérhető erőforrások készletének.
 - Az adatraktár egységének költségei a Szüneteltetés időtartamára nulla értékűek.
 - Az adattárolás nem érinti az adattárolást, és az adatai érintetlenek maradnak.
 - Minden futó vagy várólistán lévő művelet meg lett szakítva.
 
-SQL-készlet folytatásakor:
+Ha egy dedikált SQL-készletet folytat (korábban SQL DW):
 
-- Az SQL-készlet a számítási és a memória-erőforrásokat szerzi be az adattárház-egységek beállításához.
+- A dedikált SQL-készlet (korábbi nevén SQL DW) számítási és memória-erőforrásokat vásárol az adattárház-egységek beállításához.
 - Az adatraktár-egységek számítási díjai folytatódnak.
 - Az adatai elérhetővé válnak.
-- Ha az SQL-készlet online állapotban van, újra kell indítania a munkaterhelés-lekérdezéseket.
+- Miután a dedikált SQL-készlet (korábban SQL DW) online állapotban van, újra kell indítania a munkaterhelés-lekérdezéseket.
 
-Ha mindig elérhetővé szeretné tenni az SQL-készletet, akkor a felfüggesztés helyett érdemes a legkisebb méretre méreteznie.
+Ha mindig elérhetővé szeretné tenni a dedikált SQL-készletet (korábban az SQL DW-t), érdemes lehet a legkisebb méretre méretezni a felfüggesztés helyett.
 
 A szüneteltetési és folytatási lépésekért tekintse meg a [Azure Portal](pause-and-resume-compute-portal.md)vagy a [PowerShell](pause-and-resume-compute-powershell.md) rövid útmutatóit. Használhatja a [pause REST API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) vagy a [resume REST API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute)is.
 
@@ -108,7 +108,7 @@ A szüneteltetési és folytatási lépésekért tekintse meg a [Azure Portal](p
 
 Azt javasoljuk, hogy a szüneteltető vagy a skálázási művelet megkezdése előtt engedélyezze a meglévő tranzakciók befejezését.
 
-Az SQL-készlet szüneteltetése vagy skálázása során a rendszer megszakítja a lekérdezéseket a felfüggesztési vagy méretezési kérelem elindításakor. Egy egyszerű választó lekérdezés megszakítása gyors művelet, amelynek szinte semmilyen hatása nincs az üzemelő példány felfüggesztéséhez vagy méretezéséhez szükséges időtartamra.  Azonban a tranzakciós lekérdezések, amelyek adatokat vagy az adatok szerkezetét is módosítják, nem biztos, hogy ilyen hamar le tudnak állni. **A tranzakciós lekérdezéseknek definíciójuk szerint vagy teljesen be kell fejeződniük, vagy vissza kell állítaniuk az általuk végrehajtott módosításokat.** A tranzakciós lekérdezések által elvégzett módosítások visszaállítása ugyanannyi, vagy akár hosszabb ideig is tarthat, mint a lekérdezés által elvégzett eredeti módosítás végrehajtása. Például ha megszakít egy olyan lekérdezést, amely sorokat törölt és már egy órája futott, a rendszernek egy újabb órájába telhet, hogy a törölt sorokat visszaállítsa. Ha a felfüggesztést vagy a méretezést olyankor futtatja, amikor épp tranzakciók vannak folyamatban, a felfüggesztés vagy a méretezés látszólag hosszú időt vehet igénybe, mivel e műveleteknek meg kell várniuk, amíg a visszaállítás lezajlik.
+Ha szünetelteti vagy méretezi a dedikált SQL-készletet (korábban az SQL DW-t), a színfalak mögött a rendszer megszakítja a lekérdezéseket a Szüneteltetés vagy a skálázási kérelem elindításakor. Egy egyszerű választó lekérdezés megszakítása gyors művelet, amelynek szinte semmilyen hatása nincs az üzemelő példány felfüggesztéséhez vagy méretezéséhez szükséges időtartamra.  Azonban a tranzakciós lekérdezések, amelyek adatokat vagy az adatok szerkezetét is módosítják, nem biztos, hogy ilyen hamar le tudnak állni. **A tranzakciós lekérdezéseknek definíciójuk szerint vagy teljesen be kell fejeződniük, vagy vissza kell állítaniuk az általuk végrehajtott módosításokat.** A tranzakciós lekérdezések által elvégzett módosítások visszaállítása ugyanannyi, vagy akár hosszabb ideig is tarthat, mint a lekérdezés által elvégzett eredeti módosítás végrehajtása. Például ha megszakít egy olyan lekérdezést, amely sorokat törölt és már egy órája futott, a rendszernek egy újabb órájába telhet, hogy a törölt sorokat visszaállítsa. Ha a felfüggesztést vagy a méretezést olyankor futtatja, amikor épp tranzakciók vannak folyamatban, a felfüggesztés vagy a méretezés látszólag hosszú időt vehet igénybe, mivel e műveleteknek meg kell várniuk, amíg a visszaállítás lezajlik.
 
 Lásd még: [tranzakciók ismertetése](sql-data-warehouse-develop-transactions.md)és [tranzakciók optimalizálása](sql-data-warehouse-develop-best-practices-transactions.md).
 
@@ -116,13 +116,13 @@ Lásd még: [tranzakciók ismertetése](sql-data-warehouse-develop-transactions.
 
 A számítási felügyeleti műveletek automatizálását lásd: [a számítások kezelése az Azure functions](manage-compute-with-azure-functions.md)használatával.
 
-A kibővített, szüneteltetési és folytatási műveletek végrehajtása több percet is igénybe vehet. Ha a méretezés, a felfüggesztés vagy a folytatás automatikusan történik, javasoljuk, hogy végezze el a logikát, és győződjön meg arról, hogy bizonyos műveletek befejeződtek, mielőtt továbblép egy másik művelettel. Az SQL-készlet állapotának különböző végpontokon keresztüli ellenőrzése lehetővé teszi az ilyen műveletek automatizálásának megfelelő megvalósítását.
+A kibővített, szüneteltetési és folytatási műveletek végrehajtása több percet is igénybe vehet. Ha a méretezés, a felfüggesztés vagy a folytatás automatikusan történik, javasoljuk, hogy végezze el a logikát, és győződjön meg arról, hogy bizonyos műveletek befejeződtek, mielőtt továbblép egy másik művelettel. A dedikált SQL-készlet (korábbi nevén SQL DW) állapotának ellenőrzése különböző végpontokon keresztül lehetővé teszi az ilyen műveletek automatizálásának megfelelő megvalósítását.
 
-Az SQL-készlet állapotának megtekintéséhez tekintse meg a [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) vagy a [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) rövid útmutatóját. Az SQL-készlet állapotát [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state)is megtekintheti.
+A dedikált SQL-készlet (korábban SQL DW) állapotának vizsgálatához tekintse meg a [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) vagy a [T-SQL](quickstart-scale-compute-tsql.md#check-dedicated-sql-pool-formerly-sql-dw-state) rövid útmutatóját. Azt is megteheti, hogy a dedikált SQL-készlet (korábbi nevén SQL DW) állapotot is megtekintheti egy [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
 
 ## <a name="permissions"></a>Engedélyek
 
-Az SQL-készlet skálázásához az [Alter Database](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)utasításban leírt engedélyek szükségesek.  A Szüneteltetés és folytatás megköveteli az [SQL-adatbázis közreműködői](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#sql-db-contributor) engedélyét, különösen a Microsoft. SQL/kiszolgálók/adatbázisok/művelet esetében.
+A dedikált SQL-készlet (korábbi nevén SQL DW) méretezéséhez az [Alter Database](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)utasításban ismertetett engedélyek szükségesek.  A Szüneteltetés és folytatás megköveteli az [SQL-adatbázis közreműködői](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#sql-db-contributor) engedélyét, különösen a Microsoft. SQL/kiszolgálók/adatbázisok/művelet esetében.
 
 ## <a name="next-steps"></a>További lépések
 

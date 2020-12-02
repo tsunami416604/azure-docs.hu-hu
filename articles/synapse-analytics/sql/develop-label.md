@@ -11,19 +11,19 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 0b2c03c5c7ea8c65cb1cde3cbdb73b6bb838dc06
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 59fa68d12f1d8be598810399fc5623c2af983979
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324466"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462260"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>Lekérdezési címkék használata a szinapszis SQL-ben
 
 Ebben a cikkben a lekérdezési címkék a szinapszis SQL-ben való használatához szükséges tippek találhatók.
 
 > [!NOTE]
-> A kiszolgáló nélküli SQL-készlet (előzetes verzió) nem támogatja a címkézési lekérdezéseket.
+> A kiszolgáló nélküli SQL-készlet nem támogatja a címkézési lekérdezéseket.
 
 ## <a name="what-are-query-labels"></a>A lekérdezési címkék ismertetése
 
@@ -54,7 +54,7 @@ WHERE   r.[label] = 'My Query Label'
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További fejlesztési tippek: a [fejlesztés áttekintése](develop-overview.md).
 
 

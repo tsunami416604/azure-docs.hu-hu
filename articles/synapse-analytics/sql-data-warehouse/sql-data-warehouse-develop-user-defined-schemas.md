@@ -1,25 +1,25 @@
 ---
 title: Felhasználó által definiált sémák használata
-description: Tippek a T-SQL felhasználó által definiált sémák használatához a szinapszis SQL-készletben lévő megoldások fejlesztéséhez.
+description: Tippek a T-SQL felhasználó által definiált sémák használatához a dedikált SQL-készletek megoldásainak fejlesztéséhez az Azure szinapszis Analyticsben.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fc5e035215e7cabd02861c6ee2498cadd1ef0534
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 3204c77dd076d9aac6eb5a60b489280caefcbf4b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213363"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460458"
 ---
-# <a name="user-defined-schemas-in-synapse-sql-pool"></a>Felhasználó által definiált sémák a szinapszis SQL-készletben
-Ez a cikk arra összpontosít, hogy több tippet is biztosítson a T-SQL felhasználó által definiált sémák használatához a szinapszis SQL-készletben található megoldások fejlesztéséhez.
+# <a name="user-defined-schemas-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Felhasználó által definiált sémák dedikált SQL-készletekhez az Azure szinapszis Analyticsben
+Ez a cikk a T-SQL felhasználó által definiált sémák használatának számos tippjét ismerteti a dedikált SQL-készletben lévő megoldások fejlesztéséhez.
 
 ## <a name="schemas-for-application-boundaries"></a>Az alkalmazás határaihoz tartozó sémák
 
@@ -27,7 +27,7 @@ A hagyományos adattárházak gyakran külön adatbázisokat használnak az alka
 
 Egy hagyományos SQL Server adattárház például tartalmazhat átmeneti adatbázist, adattárház-adatbázist és néhány data mart adatbázist. Ebben a topológiában minden adatbázis munkaterhelésként és biztonsági határként működik az architektúrában.
 
-Ezzel szemben az SQL-készlet a teljes adattárház-munkaterhelést egy adatbázison belül futtatja. Az adatbázison keresztüli illesztések nem engedélyezettek. Az SQL-készlet elvárja, hogy a raktár által használt összes tábla egy adatbázison belül legyen tárolva.
+Ezzel szemben a dedikált SQL-készlet egy adatbázison belül futtatja a teljes adattárház-munkafolyamatot. Az adatbázison keresztüli illesztések nem engedélyezettek. A dedikált SQL-készlet arra vár, hogy a raktár által használt összes tábla egy adatbázison belül legyen tárolva.
 
 > [!NOTE]
 > Az SQL-készlet nem támogatja a bármilyen típusú adatbázisok lekérdezését. Ennek következtében az ezt a mintát használó adatraktár-implementációkat felül kell vizsgálni.
@@ -37,11 +37,11 @@ Ezzel szemben az SQL-készlet a teljes adattárház-munkaterhelést egy adatbáz
 ## <a name="recommendations"></a>Javaslatok
 A következő javaslatok a számítási feladatok, a biztonság, a tartomány és a funkcionális határok konszolidálása felhasználó által definiált sémák használatával:
 
-- Egy SQL Pool-adatbázis használatával futtathatja a teljes adattárház számítási feladatát.
-- Konszolidálja meglévő adattárház-környezetét egy SQL Pool-adatbázis használatához.
+- Egy dedikált SQL-készletben lévő adatbázis használatával futtathatja a teljes adattárház-munkafolyamatot.
+- Konszolidálja meglévő adattárház-környezetét egy dedikált SQL Pool-adatbázis használatához.
 - **Felhasználó által definiált sémák** használata a korábban adatbázisokkal megvalósított határ biztosításához.
 
-Ha korábban nem használták a felhasználó által definiált sémákat, akkor tiszta lappal rendelkezik. Használja a régi adatbázis nevét a felhasználó által definiált sémák alapjául az SQL-készlet adatbázisában.
+Ha korábban nem használták a felhasználó által definiált sémákat, akkor tiszta lappal rendelkezik. Használja a régi adatbázis nevét a felhasználó által definiált sémák alapjául a dedikált SQL Pool-adatbázisban.
 
 Ha a sémák már használatban vannak, akkor néhány lehetőség közül választhat:
 
@@ -50,7 +50,7 @@ Ha a sémák már használatban vannak, akkor néhány lehetőség közül vála
 - Tartsa meg a régi sémák nevét úgy, hogy egy további sémában lévő nézeteket implementál, hogy újra létrehozza a régi séma-struktúrát.
 
 > [!NOTE]
-> Előfordulhat, hogy a 3. első ellenőrzési lehetőség a leginkább vonzó megoldásnak tűnik. Az ördög azonban részletesen szerepel. A nézetek csak olvashatók az SQL-készletben. Az alaptáblán minden adat-vagy tábla-módosítást el kell végezni. A 3. lehetőség is bevezeti a nézet rétegét a rendszerbe. Érdemes lehet ezt néhány további gondolatot használni, ha már használja a nézeteket az architektúrában.
+> Előfordulhat, hogy a 3. első ellenőrzési lehetőség a leginkább vonzó megoldásnak tűnik. Az ördög azonban részletesen szerepel. A nézetek csak a dedikált SQL-készletben olvashatók. Az alaptáblán minden adat-vagy tábla-módosítást el kell végezni. A 3. lehetőség is bevezeti a nézet rétegét a rendszerbe. Érdemes lehet ezt néhány további gondolatot használni, ha már használja a nézeteket az architektúrában.
 > 
 > 
 

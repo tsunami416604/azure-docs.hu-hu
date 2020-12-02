@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: bb978f30104b1e38bd8930ccb058c4057d394e51
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d6c3dbc28da7bee0bc24a6dc24608c78e480c20e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899670"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462160"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerés, átalakítás és betöltés (ETL) skálán
 
@@ -86,7 +86,7 @@ Az adatkészletek terabájt tartományban való feltöltéséhez a hálózati k�
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Az Azure szinapszis Analytics (korábbi nevén SQL DW) megfelelő választás az előkészített eredmények tárolására. Az Azure HDInsight segítségével az Azure szinapszis Analytics szolgáltatáshoz is elvégezheti ezeket a szolgáltatásokat.
+Az Azure szinapszis Analytics megfelelő választás az előkészített eredmények tárolására. Az Azure HDInsight segítségével az Azure szinapszis Analytics szolgáltatáshoz is elvégezheti ezeket a szolgáltatásokat.
 
 Az Azure szinapszis Analytics egy, az analitikus számítási feladatokra optimalizált, összehasonlítható adatbázis-tároló. Particionált táblák alapján méretezhető. A táblák több csomópont között is particionálva lehetnek. A csomópontok a létrehozáskor vannak kiválasztva. Az is előfordulhat, hogy a tény után méretezhetők, de ez egy aktív folyamat, amely adatáthelyezést igényelhet. További információ: [a számítások kezelése az Azure szinapszis Analyticsben](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 
@@ -138,7 +138,7 @@ Az Apache Flume nem használható az Azure HDInsight. Egy helyszíni Hadoop-tele
 
 Miután az adatok megtalálhatók a kiválasztott helyen, meg kell tisztítania, össze kell állítania, vagy elő kell készítenie egy adott használati mintához. A kaptár, a Pig és a Spark SQL minden jó választás az adott típusú munkához. Ezek mind támogatottak a HDInsight.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Apache Hive használata ETL-eszközként](apache-hadoop-using-apache-hive-as-an-etl-tool.md)
 - [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

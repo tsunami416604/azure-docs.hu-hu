@@ -1,6 +1,6 @@
 ---
 title: Teljesítmény-finomhangolás eredményhalmaz gyorsítótárazásával
-description: Az eredményhalmaz gyorsítótárazási funkcióinak áttekintése a szinapszis SQL-készlethez az Azure szinapszis Analyticsben
+description: Az eredményhalmaz gyorsítótárazási funkcióinak áttekintése a dedikált SQL-készlethez az Azure szinapszis Analyticsben
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 933ec541e358f1839c1b4d24acd19e439ea26375
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2b54277d0306244dc4ab6740fdd30e52668dd63c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541281"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460767"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Teljesítmény-finomhangolás eredményhalmaz gyorsítótárazásával
 
-Ha az eredményhalmaz gyorsítótárazása engedélyezve van, a szinapszis SQL automatikusan gyorsítótárazza a lekérdezési eredményeket a felhasználói adatbázisban ismétlődő használatra.  Ez lehetővé teszi, hogy a későbbi lekérdezés-végrehajtások közvetlenül a megőrzött gyorsítótárból kapjanak eredményeket, így az újraszámításra nincs szükség.   Az eredményhalmaz gyorsítótárazása javítja a lekérdezési teljesítményt, és csökkenti a számítási erőforrások használatát.  Emellett a gyorsítótárazott eredményeket használó lekérdezések nem használnak párhuzamossági tárolóhelyeket, így nem számítanak bele a meglévő egyidejűségi korlátokba. A biztonság érdekében a felhasználók csak akkor érhetik el a gyorsítótárazott eredményeket, ha ugyanazokat az adatelérési engedélyeket használják, mint a gyorsítótárazott eredményeket létrehozó felhasználók.  
+Ha az eredményhalmaz gyorsítótárazása engedélyezve van, a dedikált SQL-készlet automatikusan gyorsítótárazza a lekérdezés eredményeit a felhasználói adatbázisban ismétlődő használatra.  Ez lehetővé teszi, hogy a későbbi lekérdezés-végrehajtások közvetlenül a megőrzött gyorsítótárból kapjanak eredményeket, így az újraszámításra nincs szükség.   Az eredményhalmaz gyorsítótárazása javítja a lekérdezési teljesítményt, és csökkenti a számítási erőforrások használatát.  Emellett a gyorsítótárazott eredményeket használó lekérdezések nem használnak párhuzamossági tárolóhelyeket, így nem számítanak bele a meglévő egyidejűségi korlátokba. A biztonság érdekében a felhasználók csak akkor érhetik el a gyorsítótárazott eredményeket, ha ugyanazokat az adatelérési engedélyeket használják, mint a gyorsítótárazott eredményeket létrehozó felhasználók.  
 
 ## <a name="key-commands"></a>Legfontosabb parancsok
 
@@ -47,7 +47,7 @@ Ha az eredményhalmaz gyorsítótárazása be van kapcsolva egy adatbázishoz, a
 > - Ha az ORDER BY oszlopokban lévő adatok nem egyediek, az ORDER BY Columns utasításban nem szerepelnek garanteed sorok, függetlenül attól, hogy az eredményhalmaz gyorsítótárazása engedélyezve van vagy le van tiltva.
 
 > [!IMPORTANT]
-> Az eredményhalmaz gyorsítótárának létrehozásához és az adatok a gyorsítótárból való lekéréséhez szükséges műveletek a szinapszis SQL Pool-példány vezérlés csomópontján történnek.
+> Az eredményhalmaz gyorsítótárának létrehozásához és az adatok a gyorsítótárból való lekéréséhez szükséges műveletek egy dedikált SQL Pool-példány vezérlési csomópontján történnek.
 > Ha a eredményhalmaz gyorsítótárazása be van kapcsolva, a nagyméretű eredményhalmaz (például >1GB) visszaadó lekérdezések futtatása nagy sávszélességet eredményezhet a vezérlő csomóponton, és lelassítja a példányon a lekérdezésre adott teljes választ.  Ezeket a lekérdezéseket általában az adatfelderítési vagy ETL-műveletek során használják. A vezérlő csomópontjának kihangsúlyozása és a teljesítménnyel kapcsolatos probléma elkerülése érdekében a felhasználóknak ki kell kapcsolniuk az eredményhalmaz gyorsítótárazását az adatbázison az ilyen típusú lekérdezések futtatása előtt.  
 
 Futtassa ezt a lekérdezést az eredményhalmaz gyorsítótárazási műveletei által a lekérdezéshez megadott időtartamra:
@@ -85,7 +85,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 Az eredményhalmaz gyorsítótárának maximális mérete 1 TB/adatbázis.  A gyorsítótárazott eredményeket a rendszer automatikusan érvényteleníti, amikor az alapul szolgáló lekérdezési adat megváltoznak.  
 
-A gyorsítótár-kiürítést a szinapszis SQL automatikusan kezeli az alábbi ütemterv szerint:
+A gyorsítótár kiürítését a dedikált SQL-készlet kezeli automatikusan az alábbi ütemterv szerint:
 
 - 48 óránként, ha az eredményhalmaz nem lett felhasználva vagy érvénytelenítve lett.
 - Ha az eredményhalmaz gyorsítótára a maximális méretet közelíti meg.
@@ -97,6 +97,6 @@ A felhasználók a teljes eredményhalmaz gyorsítótárát manuálisan is kiür
 
 Az adatbázis szüneteltetése nem üres a gyorsítótárazott eredményhalmaz számára.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).

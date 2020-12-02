@@ -3,12 +3,12 @@ title: Azure Lab Services – rendszergazdai útmutató | Microsoft Docs
 description: Ez az útmutató segít a rendszergazdáknak, hogy Azure Lab Services használatával hozzanak létre és kezeljenek labor-fiókokat.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 08d2fea719ad67f666ea9da09721dc3f7ab54768
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999280"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462466"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – rendszergazdai útmutató
 Az Egyetem Felhőbeli erőforrásait kezelő informatikai rendszergazdák általában felelősek az iskolájuk labor-fiókjának beállításához. Miután beállított egy labor-fiókot, a rendszergazdák vagy a pedagógusok létrehozzák a fiókban található laborokat. Ez a cikk átfogó áttekintést nyújt az érintett Azure-erőforrásokról és a létrehozásához szükséges útmutatóról.
@@ -116,7 +116,7 @@ A megosztott rendszerképek logikai csoportosításához a következők egyikét
 
 A Azure Lab Services első lépéseiben azt javasoljuk, hogy hozzon létre elnevezési konvenciókat az erőforráscsoportok, a labor-fiókok, a Labs és a megosztott képgyűjtemény számára. Bár a létrehozott elnevezési konvenciók egyediek lesznek a szervezet igényeinek megfelelően, a következő táblázat általános irányelveket tartalmaz:
 
-| Erőforrás típusa | Szerepkör | Javasolt minta | Példák |
+| Erőforrás típusa | Role | Javasolt minta | Példák |
 | ------------- | ---- | ----------------- | -------- | 
 | Erőforráscsoport | Egy vagy több Lab-fiókot, valamint egy vagy több megosztott képgyűjteményt tartalmaz | \<organization short name\>-\<environment\>– RG<ul><li>A **szervezet rövid neve** azonosítja annak a szervezetnek a nevét, amelyet az erőforráscsoport támogat.</li><li>A **környezet** azonosítja az erőforrás környezetét, például a *kísérleti* vagy a *üzemi* környezetet.</li><li>A **RG** az erőforrástípus *erőforráscsoport*.</li></ul> | contosouniversitylabs – RG<br/>contosouniversitylabs-Pilot-RG<br/>contosouniversitylabs – Prod-RG |
 | Labor-fiók | Egy vagy több labort tartalmaz | \<organization short name\>-\<environment\>– La<ul><li>A **szervezet rövid neve** azonosítja annak a szervezetnek a nevét, amelyet az erőforráscsoport támogat.</li><li>A **környezet** azonosítja az erőforrás környezetét, például a *kísérleti* vagy a *üzemi* környezetet.</li><li>A **La** az erőforrástípus Lab- *fiókja*.</li></ul> | contosouniversitylabs-La<br/>mathdeptlabs-La<br/>sciencedeptlabs – pilóta – La<br/>sciencedeptlabs-Prod-La |
@@ -167,14 +167,14 @@ Ha a rendszergazdák vagy a labor-készítők létrehoznak egy labort, a külön
 
 | Méret | Jellemzők | Adatsorozat | Javasolt használat |
 | ---- | ----- | ------ | ------------- |
-| Kicsi| <ul><li>2 &nbsp; mag</li><li>3,5 gigabájt (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | A legmegfelelőbb a parancssorhoz, a webböngésző, az alacsony forgalmú webkiszolgálók, a kis és közepes adatbázisok megnyitásához. |
-| Közepes | <ul><li>4 &nbsp; mag</li><li>7 &nbsp; GB &nbsp; RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Legmegfelelőbb a kapcsolódó adatbázisokhoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. |
-| Közepes (beágyazott virtualizálás) | <ul><li>4 &nbsp; mag</li><li>16 &nbsp; GB &nbsp; RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | Legmegfelelőbb a kapcsolódó adatbázisokhoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez.
+| Kicsi| <ul><li>2 &nbsp; mag</li><li>3,5 gigabájt (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | A legmegfelelőbb a parancssorhoz, a webböngésző, az alacsony forgalmú webkiszolgálók, a kis és közepes adatbázisok megnyitásához. |
+| Közepes | <ul><li>4 &nbsp; mag</li><li>7 &nbsp; GB &nbsp; RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Legmegfelelőbb a kapcsolódó adatbázisokhoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. |
+| Közepes (beágyazott virtualizálás) | <ul><li>4 &nbsp; mag</li><li>16 &nbsp; GB &nbsp; RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | Legmegfelelőbb a kapcsolódó adatbázisokhoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez.
 | Nagy | <ul><li>8 &nbsp; mag</li><li>16 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | A legjobb megoldás a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára.  Ez a méret támogatja a beágyazott virtualizálás szolgáltatást is. |
-| Nagyméretű (beágyazott virtualizálás) | <ul><li>8 &nbsp; mag</li><li>32 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | A legjobb megoldás a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára. |
+| Nagyméretű (beágyazott virtualizálás) | <ul><li>8 &nbsp; mag</li><li>32 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | A legjobb megoldás a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára. |
 | Kis GPU (vizualizáció) | <ul><li>6 &nbsp; mag</li><li>56 &nbsp; GB &nbsp; RAM</li>  | [Standard_NV6](../virtual-machines/nv-series.md) | A legjobb megoldás a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz és a kódoláshoz olyan keretrendszerek használatával, mint az OpenGL és a DirectX. |
 | Kis GPU (számítás) | <ul><li>6 &nbsp; mag</li><li>56 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md) |A legmegfelelőbb a számítógép-igényes alkalmazásokhoz, mint például az AI és a Deep learning. |
-| Közepes GPU (vizualizáció) | <ul><li>12 &nbsp; mag</li><li>112 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | A legjobb megoldás a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz és a kódoláshoz olyan keretrendszerek használatával, mint az OpenGL és a DirectX. |
+| Közepes GPU (vizualizáció) | <ul><li>12 &nbsp; mag</li><li>112 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | A legjobb megoldás a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz és a kódoláshoz olyan keretrendszerek használatával, mint az OpenGL és a DirectX. |
 
 ## <a name="manage-identity"></a>Identitás kezelése
 
@@ -265,7 +265,7 @@ Ebben a példában a Cost a következő:
 > [!NOTE]
 > Az előző számítás csak példaként szolgál. A megosztott képkatalógus használatával kapcsolatos tárolási költségeket fedi le, és *nem* tartalmazza a kimenő forgalom költségeit. A tárolás tényleges díjszabása: [Managed Disks díjszabása](https://azure.microsoft.com/en-us/pricing/details/managed-disks/).
 
-#### <a name="cost-management"></a>Cost Management
+#### <a name="cost-management"></a>Költségkezelés
 
 A labor-fiókok rendszergazdái számára fontos, hogy a katalógusból rendszeresen törölje a szükségtelen rendszerkép-verziókat. 
 

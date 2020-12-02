@@ -11,14 +11,14 @@ ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9132c9609961053e7f60344dc387b2a8d01bd6b9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ae21368269a2c098b4e35bf83b8c9fdf2749a297
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85212989"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460549"
 ---
-# <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Rövid útmutató: a munkaterhelés elkülönítésének konfigurálása T-SQL használatával
+# <a name="quickstart-configure-workload-isolation-in-a-dedicated-sql-pool-using-t-sql"></a>Rövid útmutató: a munkaterhelés elkülönítésének konfigurálása egy dedikált SQL-készletben a T-SQL használatával
 
 Ebben a rövid útmutatóban gyorsan létre fog hozni egy munkaterhelési csoportot és egy besorolást az erőforrások az adatok betöltéséhez való kiszolgálásához. A munkaterhelés-csoport a rendszererőforrások 20%-át az adatterhelések számára fogja kiosztani.  A számítási feladatok besorolása a kérelmeket az adatterhelések terhelési csoportjához rendeli.  Az adatterhelések 20%-os elkülönítése esetén a rendszer garantált forrásokat biztosít a kitalált SLA-hoz.
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy szinapszis SQL-példánnyal az Azure Szinapszisban, és hogy rendelkezik az ADATBÁZISra vonatkozó engedélyekkel. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
+Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy szinapszis SQL-példánnyal az Azure Szinapszisban, és hogy rendelkezik az ADATBÁZISra vonatkozó engedélyekkel. Ha létre kell hoznia egyet, a [Létrehozás és összekapcsolás-portál](create-data-warehouse-portal.md) használatával hozzon létre egy **MYSAMPLEDATAWAREHOUSE** nevű dedikált SQL-készletet.
 
 ## <a name="create-login-for-dataloads"></a>DataLoads-beli bejelentkezés létrehozása
 
@@ -103,10 +103,10 @@ DROP USER [ELTLogin]
 ;
 ```
 
-Az adattárház-egységek és az adattárházban tárolt adatforgalomért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
+Az adatraktár-egységek és a dedikált SQL-készletben tárolt adatmennyiségért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
-- Ha meg szeretné őrizni az adatok tárolását, szüneteltetheti a számítást, ha nem használja az SQL-készletet. A számítás felfüggesztésével csak az adattárolás díját számítjuk fel. Ha készen áll az adatok feldolgozására, folytassa a számítást.
-- Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is.
+- Ha meg szeretné őrizni az adatok tárolását, szüneteltetheti a számítást, ha nem használja a dedikált SQL-készletet. A számítás felfüggesztésével csak az adattárolás díját számítjuk fel. Ha készen áll az adatok feldolgozására, folytassa a számítást.
+- Ha el szeretné távolítani a jövőbeli díjakat, törölheti a dedikált SQL-készletet.
 
 ## <a name="next-steps"></a>További lépések
 

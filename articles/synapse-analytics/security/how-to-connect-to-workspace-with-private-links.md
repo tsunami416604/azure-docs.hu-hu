@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ee915346a93a600ea352be42dc14e0464525c025
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 699a7321646167b0a9fb20a77a40999ec33b14f0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312249"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461339"
 ---
-# <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Csatlakozás az Azure szinapszis-munkaterülethez privát hivatkozások használatával (előzetes verzió)
+# <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>Csatlakozás saját Azure Synapse-munkaterülethez privát hivatkozással
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy privát végpontot az Azure szinapszis-munkaterülethez. További információért tekintse meg a [privát hivatkozások és a privát végpontok](https://docs.microsoft.com/azure/private-link/) című témakört.
 
@@ -58,7 +58,7 @@ Ha a telepítés befejeződött, nyissa meg az Azure szinapszis munkaterületét
 
 ![Az előfizetés és a régió részleteinek kiválasztása 4](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-5.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [felügyelt munkaterületről Virtual Network](./synapse-workspace-managed-vnet.md)
 

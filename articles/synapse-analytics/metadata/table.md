@@ -1,6 +1,6 @@
 ---
 title: Megosztott metaadatok táblái
-description: Az Azure szinapszis Analytics olyan megosztott metaadat-modellt biztosít, amelyben egy tábla kiszolgáló nélküli Apache Spark készletből való létrehozása lehetővé teszi, hogy a kiszolgáló nélküli SQL-készletből (előzetes verzió) és a dedikált SQL-készletből az adatok duplikálása nélkül legyen elérhető.
+description: Az Azure szinapszis Analytics olyan megosztott metaadat-modellt biztosít, amelyben egy tábla kiszolgáló nélküli Apache Spark készletből való létrehozása lehetővé teszi, hogy a kiszolgáló nélküli SQL-készletből és a dedikált SQL-készletből az adatok duplikálása nélkül legyen elérhető.
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,18 +10,17 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f269217908bea4b5e8ef3c0004a9cec9d5d682c7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314545"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461384"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Az Azure szinapszis Analytics megosztott metaadatait tartalmazó táblái
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok a Apache Spark-készletek (előzetes verzió) és a kiszolgáló nélküli SQL-készlet (előzetes verzió) között megosszák az adatbázisokat és a parketta által támogatott táblákat.
+Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok megosszák az adatbázisokat és a parketta által támogatott táblákat a Apache Spark-készletek és a kiszolgáló nélküli SQL-készlet között.
 
 Miután létrehozta az adatbázist egy Spark-feladatokkal, a Sparkban létrehozhat olyan táblákat, amelyek tárolási formátumként használják a parketta-t. Ezek a táblák azonnal elérhetővé válnak az Azure szinapszis-munkaterület Spark-készletei bármelyikének lekérdezéséhez. Ezek bármelyik Spark-feladatból is felhasználhatók, az engedélyek alá tartoznak.
 
@@ -87,9 +86,9 @@ A Spark-táblázatok különböző adattípusokat biztosítanak, mint a szinapsz
 
 A Spark-adatbázisok és-táblák, valamint az SQL Engine-ben szinkronizált ábrázolások a mögöttes tárolási szinten lesznek biztosítva. Mivel jelenleg nem rendelkeznek engedélyekkel az objektumokhoz, az objektumok az Object Explorerben láthatók.
 
-A felügyelt táblát létrehozó rendszerbiztonsági tag a tábla tulajdonosa, és rendelkezik a táblához, valamint a mögöttes mappákhoz és fájlokhoz szükséges jogokkal. Emellett az adatbázis tulajdonosa automatikusan a tábla társtulajdonosa lesz.
+A felügyelt táblát létrehozó rendszerbiztonsági tag a tábla tulajdonosa, és minden jogosultsággal rendelkezik a táblához, valamint annak mögöttes mappáihoz és fájljaihoz. Az adatbázis tulajdonosa automatikusan a tábla társtulajdonosává válik.
 
-Ha olyan Spark-vagy SQL-alapú külső táblázatot hoz létre, amelynek a hitelesítése átmenő, az adatai csak a mappák és a fájlok szintjén biztonságosak. Ha valaki lekérdezi az ilyen típusú külső táblákat, a rendszer a lekéréses küldő biztonsági identitását a fájlrendszerre továbbítja, amely a hozzáférési jogosultságokat fogja megkeresni.
+Ha átmenő hitelesítéssel rendelkező külső Spark- vagy SQL-táblát hoz létre, az adatok csak a mappák és a fájlok szintjén vannak védve. Ha valaki lekérdezi az ilyen típusú külső táblákat, a rendszer a lekérés elküldőjének biztonsági identitását a fájlrendszerre továbbítja, amely ellenőrzi a hozzáférési jogosultságokat.
 
 A mappákra és fájlokra vonatkozó engedélyek beállításával kapcsolatos további információkért lásd: az [Azure szinapszis Analytics megosztott adatbázisa](database.md).
 
@@ -191,7 +190,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ az Azure szinapszis Analytics megosztott metaadatairól](overview.md)
 - [További információ az Azure szinapszis Analytics megosztott metaadat-adatbázisáról](database.md)

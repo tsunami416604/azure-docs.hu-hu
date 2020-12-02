@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: 40bae584e673e8885416bd1ae08dd808071034e7
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: bd6067b39f12888bb903a68fb9834250c9d86638
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436130"
+ms.locfileid: "96462443"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
 
@@ -197,7 +197,7 @@ Az egyes ajánlati típusok árának megadásával kapcsolatos részletekért te
 - [Azure-alkalmazásajánlat létrehozása](create-new-azure-apps-offer.md)
 - [Azure Container-ajánlat létrehozása](partner-center-portal/create-azure-container-offer.md)
 - [Azure-beli virtuális géppel kapcsolatos ajánlat létrehozása](azure-vm-create.md)
-- [Tanácsadási szolgáltatásajánlat létrehozása](partner-center-portal/create-consulting-service-offer.md)
+- [Tanácsadási szolgáltatásajánlat létrehozása](./create-consulting-service-offer.md)
 - [Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Dynamics 365 for Operations-ajánlat létrehozása](partner-center-portal/create-new-operations-offer.md)
 - [Microsoft Dynamics 365 Business Central-ajánlat létrehozása](partner-center-portal/create-new-business-central-offer.md)

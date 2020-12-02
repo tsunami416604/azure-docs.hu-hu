@@ -1,6 +1,6 @@
 ---
-title: Mappák és több fájl lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió)
-description: A kiszolgáló nélküli SQL-készlet (előzetes verzió) a helyettesítő karakterek használatával több fájl/mappa olvasását is támogatja, amelyek a Windows operációs rendszerben használt helyettesítő karakterekhez hasonlóak.
+title: Mappák és több fájl lekérdezése kiszolgáló nélküli SQL-készlettel
+description: A kiszolgáló nélküli SQL-készlet támogatja több fájl/mappa olvasását helyettesítő karakterekkel, amelyek hasonlóak a Windows operációs rendszerben használt helyettesítő karakterekhez.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9d15d681a114b0f364e8e33adc786b4d0ba7df0e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684559"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462634"
 ---
 # <a name="query-folders-and-multiple-files"></a>Mappák és több fájl lekérdezése  
 
-Ebből a cikkből megtudhatja, hogyan írhat lekérdezéseket kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban.
+Ebből a cikkből megtudhatja, hogyan írhat lekérdezéseket kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analytics szolgáltatásban.
 
 A kiszolgáló nélküli SQL-készlet támogatja több fájl/mappa olvasását helyettesítő karakterekkel, amelyek hasonlóak a Windows operációs rendszerben használt helyettesítő karakterekhez. Ez azonban nagyobb rugalmasságot jelent, mivel több helyettesítő karakter is engedélyezett.
 
@@ -273,6 +273,6 @@ ORDER BY
 
 Mivel csak egy olyan mappája van, amely megfelel a feltételeknek, a lekérdezés eredménye ugyanaz, mint a [mappában található fájlok olvasási részhalmaza](#read-subset-of-files-in-folder) , és az [összes fájl beolvasása az adott mappából](#read-all-files-from-specific-folder). Összetettebb helyettesítő karakteres használati forgatókönyvek találhatók a [lekérdezési parketta fájljaiban](query-parquet-files.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információt a [lekérdezési fájlok](query-specific-files.md) című cikkben talál.

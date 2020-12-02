@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: be3b82765f2f5268a75147e8e1ef6de34aeb8ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d1ff372009c6158f2148847dd77126bcb4d189f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441068"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461240"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Tömeges másolás egy vezérlőelem-táblázattal rendelkező adatbázisból
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Egy adattárházból az Oracle Server, a Netezza, a Teradata vagy a SQL Server az Azure szinapszis Analytics szolgáltatásba (korábban SQL Data Warehouse) való adatmásoláshoz több táblából származó nagy mennyiségű adatmennyiséget kell betölteni. Az adatok általában az egyes táblákban particionálva vannak, így egyetlen táblából párhuzamosan több szálat tartalmazó sorok is betölthetők. Ez a cikk az ezekben a forgatókönyvekben használandó sablont ismerteti.
+Az adatok adattárházból való másolásához az Oracle Server, a Netezza, a Teradata vagy a SQL Server az Azure szinapszis Analytics szolgáltatásban nagy mennyiségű adattal kell betölteni több táblából. Az adatok általában az egyes táblákban particionálva vannak, így egyetlen táblából párhuzamosan több szálat tartalmazó sorok is betölthetők. Ez a cikk az ezekben a forgatókönyvekben használandó sablont ismerteti.
 
- >! Vegye figyelembe, hogy ha kis számú, viszonylag kis adatmennyiséggel rendelkező táblából szeretne adatmásolni az Azure szinapszis Analytics szolgáltatásba, hatékonyabban használhatja a [Azure Data Factory adatok másolása eszközt](copy-data-tool.md). A cikkben ismertetett sablon ennél a forgatókönyvnél többre van szüksége.
+ >! Vegye figyelembe, hogy a kis mennyiségű, viszonylag kis adatmennyiségű táblából származó adatoknak az Azure szinapszis Analyticsbe való másolásával hatékonyabban használhatja a [Azure Data Factory adatok másolása eszközt](copy-data-tool.md). A cikkben ismertetett sablon ennél a forgatókönyvnél többre van szüksége.
 
 ## <a name="about-this-solution-template"></a>Tudnivalók a megoldási sablonról
 
@@ -48,7 +48,7 @@ Az utolsó három paraméter, amely meghatározza a célhely elérési útját, 
 
 ## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 
-1. Hozzon létre egy vezérlőelem-táblázatot SQL Server vagy Azure SQL Database a forrás adatbázis-partíciók listájának tömeges másoláshoz való tárolásához. A következő példában öt partíció található a forrás adatbázisban. A *datasource_table*három partíció van, a kettő pedig a *project_table*. A *LastModifytime* oszlop az adatok a forrásadatbázis *datasource_table* történő particionálására szolgál. Az első partíció olvasásához használt lekérdezés "select * from datasource_table, ahol LastModifytime >=" "2015-01-01 00:00:00" "és LastModifytime <=" "2015-12-31 23:59:59.999" ". Hasonló lekérdezést használhat más partíciók adatainak olvasásához.
+1. Hozzon létre egy vezérlőelem-táblázatot SQL Server vagy Azure SQL Database a forrás adatbázis-partíciók listájának tömeges másoláshoz való tárolásához. A következő példában öt partíció található a forrás adatbázisban. A *datasource_table* három partíció van, a kettő pedig a *project_table*. A *LastModifytime* oszlop az adatok a forrásadatbázis *datasource_table* történő particionálására szolgál. Az első partíció olvasásához használt lekérdezés "select * from datasource_table, ahol LastModifytime >=" "2015-01-01 00:00:00" "és LastModifytime <=" "2015-12-31 23:59:59.999" ". Hasonló lekérdezést használhat más partíciók adatainak olvasásához.
 
      ```sql
             Create table ControlTableForTemplate
@@ -80,13 +80,13 @@ Az utolsó három paraméter, amely meghatározza a célhely elérési útját, 
 
     ![Új kapcsolódás létrehozása a célhelyhez](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
-5. Válassza **a sablon használata**lehetőséget.
+5. Válassza **a sablon használata** lehetőséget.
 
 6. Ekkor megjelenik a folyamat, ahogy az az alábbi példában is látható:
 
     ![A folyamat áttekintése](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
+7. Válassza a **hibakeresés** lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
 
     ![Kattintson * * hibakeresés * *](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 
@@ -98,6 +98,6 @@ Az utolsó három paraméter, amely meghatározza a célhely elérési útját, 
     
     ![Alapszintű beállítás](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Data Factory bemutatása](introduction.md)

@@ -1,18 +1,18 @@
 ---
-title: 'Gyors útmutató: kérdések és válaszok hozzáadása QnA Maker portálon'
-description: Ez a rövid útmutató bemutatja, hogyan adhat hozzá a kérdésekhez és a válaszokhoz a metaadatokat, hogy a felhasználók megtalálják a megfelelő választ a kérdésére.
+title: Kérdések és válaszok hozzáadása QnA Maker portálon
+description: Ez a cikk bemutatja, hogyan adhat hozzá a kérdésekhez és a válaszokhoz a metaadatokat, hogy a felhasználók megtalálják a megfelelő választ a kérdésére.
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e56d718892d9cfdbfda9068ecd68ef31f7f2ea46
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 53c0afa1cdb8c9920875b7ba694339107714bd54
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353069"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462206"
 ---
-# <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Gyors útmutató: kérdések és válaszok felvétele QnA Maker portálra
+# <a name="add-questions-and-answer-with-qna-maker-portal"></a>Kérdések és válaszok hozzáadása QnA Maker portálon
 
 Miután létrehozta a tudásbázist, adja hozzá a kérdés-és válasz (QnA) párokat metaadatokkal a válasz szűréséhez. Az alábbi táblázatban szereplő kérdések az Azure szolgáltatási korlátaival kapcsolatosak, de mindegyiknek egy másik Azure Search szolgáltatással kell foglalkoznia.
 

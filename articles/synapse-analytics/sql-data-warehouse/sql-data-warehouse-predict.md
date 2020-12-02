@@ -1,6 +1,6 @@
 ---
 title: Az ELŐREJELZÉSsel rendelkező gépi tanulási modellek pontszáma
-description: Megtudhatja, hogyan szerzi be a gépi tanulási modelleket a szinapszis SQL-ben a T-SQL ELŐREJELZÉSi függvény használatával.
+description: Megtudhatja, hogyan szerzi be a gépi tanulási modelleket a dedikált SQL-készlet T-SQL-ELŐREJELZÉSi funkciójával.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a8caf6cd5072b4c098adff57194784491c92bb0a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7b35997e763434d7ae4d849c33d358d1593d7e33
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325376"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460529"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Az ELŐREJELZÉSsel rendelkező gépi tanulási modellek pontszáma
 
-A szinapszis SQL lehetővé teszi a gépi tanulási modellek a jól ismert T-SQL nyelv használatával való kiértékelését. A T-SQL [előrejelzéssel](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)megadhatja a már meglévő gépi tanulási modelleket, és az adattárház biztonságos határain belül is megszerezheti azokat. A PREDIKTÍV függvény [ONNX (Open neurális hálózati Exchange)](https://onnx.ai/) modellt és adatokat használ bemenetként. Ez a szolgáltatás kiküszöböli az értékes adattárházon kívüli adatáthelyezés lépéseit. Az informatikai szakemberek számára lehetővé teszi, hogy az ismerős T-SQL-felülettel könnyedén üzembe helyezhetik a gépi tanulási modelleket, valamint hogy zökkenőmentesen működjenek együtt a feladataik megfelelő keretrendszerével dolgozó adatszakértőkkel.
+A dedikált SQL-készlet lehetővé teszi, hogy a jól ismert T-SQL nyelv használatával a gépi tanulási modelleket is megszerezze. A T-SQL [előrejelzéssel](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)megadhatja a már meglévő gépi tanulási modelleket, és az adattárház biztonságos határain belül is megszerezheti azokat. A PREDIKTÍV függvény [ONNX (Open neurális hálózati Exchange)](https://onnx.ai/) modellt és adatokat használ bemenetként. Ez a szolgáltatás kiküszöböli az értékes adattárházon kívüli adatáthelyezés lépéseit. Az informatikai szakemberek számára lehetővé teszi, hogy az ismerős T-SQL-felülettel könnyedén üzembe helyezhetik a gépi tanulási modelleket, valamint hogy zökkenőmentesen működjenek együtt a feladataik megfelelő keretrendszerével dolgozó adatszakértőkkel.
 
 > [!NOTE]
 > Ez a funkció jelenleg nem támogatott a kiszolgáló nélküli SQL-készletekben.
@@ -31,9 +31,9 @@ A funkció használatához a modellt a szinapszis SQL-en kívül kell tanítani.
 
 ## <a name="training-the-model"></a>A modell betanítása
 
-A szinapszis SQL egy előre betanított modellt vár. Tartsa szem előtt a következő tényezőket, amikor betanít egy gépi tanulási modellt, amely az előrejelzések a szinapszis SQL-ben való végrehajtására szolgál.
+A dedikált SQL-készlet előre betanított modellt vár. Tartsa szem előtt a következő tényezőket, amikor a dedikált SQL-készletben előrejelzéseket végző gépi tanulási modellt használ.
 
-- A szinapszis SQL csak a ONNX formátumot támogatja. A ONNX egy nyílt forráskódú modell formátuma, amely lehetővé teszi a különböző keretrendszerek közötti modellek cseréjét az együttműködés lehetővé tételéhez. A meglévő modelleket ONNX formátumra konvertálhatja olyan keretrendszerek használatával, amelyek natív módon támogatják vagy a csomagok átalakítását is lehetővé teszik. A [sklearn-Onnx](https://github.com/onnx/sklearn-onnx) csomag például a scikit-Learn modellek konvertálása Onnx. A [ONNX GitHub-adattár](https://github.com/onnx/tutorials#converting-to-onnx-format) a támogatott keretrendszerek és példák listáját tartalmazza.
+- A dedikált SQL-készlet csak a ONNX formátumot támogatja. A ONNX egy nyílt forráskódú modell formátuma, amely lehetővé teszi a különböző keretrendszerek közötti modellek cseréjét az együttműködés lehetővé tételéhez. A meglévő modelleket ONNX formátumra konvertálhatja olyan keretrendszerek használatával, amelyek natív módon támogatják vagy a csomagok átalakítását is lehetővé teszik. A [sklearn-Onnx](https://github.com/onnx/sklearn-onnx) csomag például a scikit-Learn modellek konvertálása Onnx. A [ONNX GitHub-adattár](https://github.com/onnx/tutorials#converting-to-onnx-format) a támogatott keretrendszerek és példák listáját tartalmazza.
 
    Ha az [automatikus ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) -t használja a betanításhoz, ügyeljen arra, hogy a *enable_onnx_compatible_models* paraméter értéke TRUE (igaz) legyen, hogy Onnx formátumú modellt hozzon létre. Az [automatizált Machine learning notebookon](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) látható egy példa arra, hogyan használható a AUTOML a ONNX formátumú gépi tanulási modell létrehozásához.
 
@@ -47,7 +47,7 @@ A szinapszis SQL egy előre betanított modellt vár. Tartsa szem előtt a köve
 
 ## <a name="loading-the-model"></a>A modell betöltése
 
-A modellt egy szinapszis SQL felhasználói táblában tárolja hexadecimális karakterláncként. Az azonosító és a Leírás további oszlopokat is hozzáadhat a modell táblában a modell azonosításához. Használja a varbinary (max) értéket a modell oszlop adattípusa szerint. Az alábbi példa egy olyan táblázatra mutat be példát, amely a modellek tárolására használható:
+A modell egy dedikált SQL Pool felhasználói táblában van tárolva hexadecimális karakterláncként. Az azonosító és a Leírás további oszlopokat is hozzáadhat a modell táblában a modell azonosításához. Használja a varbinary (max) értéket a modell oszlop adattípusa szerint. Az alábbi példa egy olyan táblázatra mutat be példát, amely a modellek tárolására használható:
 
 ```sql
 -- Sample table schema for storing a model and related data
@@ -66,7 +66,7 @@ GO
 
 ```
 
-Miután a modell át lett konvertálva egy hexadecimális sztringre, és megadta a tábla definícióját, a [másolási paranccsal](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) vagy a (z) használatával töltse be a modellt a szinapszis SQL-táblába. A következő mintakód a Másolás parancs használatával tölti be a modellt.
+Ha a modellt egy hexadecimális karakterlánccá alakítja át, és a tábla definíciója meg van adva, a [másolási paranccsal](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) vagy a kiindulással töltheti be a modellt a dedikált SQL-készlet táblába. A következő mintakód a Másolás parancs használatával tölti be a modellt.
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location
@@ -91,6 +91,6 @@ FROM PREDICT(MODEL = (SELECT Model FROM Models WHERE Id = 1),
 DATA = dbo.mytable AS d) WITH (Score float) AS p;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a PREDIKTÍV függvényről: [előrejelzés (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest).

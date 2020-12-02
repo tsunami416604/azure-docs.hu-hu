@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d2d6ee8357698e4af59f44579ce7f2c3aa82991c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 99c7490c4bf842da119a3a0abd4623c64d720ac8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340322"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462211"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory másolási varázsló
 
@@ -48,7 +48,7 @@ Az adatok egy részét előzetesen megtekintheti a kiválasztott adatforrásból
 Előfordulhat, hogy a bemeneti adatok sémája nem egyezik meg bizonyos esetekben a kimeneti adatok sémájával. Ebben a forgatókönyvben a forrás sémából származó oszlopokat kell leképeznie a célként megadott sémából származó oszlopokra.
 
 > [!TIP]
-> Ha az adatok másolása SQL Server vagy Azure SQL Database az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse) történik, ha a tábla nem létezik a célhelyen, Data Factory támogatja az automatikus tábla létrehozását a forrás sémája segítségével. További információ: [adatok áthelyezése az Azure szinapszis Analytics szolgáltatásba és onnan az Azure Data Factory használatával](./data-factory-azure-sql-data-warehouse-connector.md).
+> Ha az adatok másolása SQL Server vagy Azure SQL Database az Azure szinapszis Analytics szolgáltatásba történik, ha a tábla nem létezik a célhelyen, Data Factory támogatja az automatikus tábla létrehozását a forrás sémájának használatával. További információ: [adatok áthelyezése az Azure szinapszis Analytics szolgáltatásba és onnan az Azure Data Factory használatával](./data-factory-azure-sql-data-warehouse-connector.md).
 
 Egy legördülő lista használatával kiválaszthat egy oszlopot a forrásoldali sémából a célként megadott sémában lévő oszlopra való leképezéshez. A másolási varázsló megpróbálja megérteni az oszlopok megfeleltetésének mintáját. Ugyanezt a mintát alkalmazza a többi oszlopra is, így nem kell egyenként kiválasztania az egyes oszlopokat a séma-hozzárendelés befejezéséhez. Ha szeretné, felülbírálhatja ezeket a leképezéseket a legördülő lista segítségével, hogy egyenként képezze le az oszlopokat. A minta pontosabb lesz, ha további oszlopokat szeretne leképezni. A másolás varázsló folyamatosan frissíti a mintát, és végül eléri a megfelelő mintát az elérni kívánt oszlop-hozzárendeléshez.     
 

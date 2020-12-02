@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: efb86dbcbe7619ff6727c5e7374835dc3fc7d731
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: ed4b4d9c1de1e9024e8ea86d4661b42d6c68b0ae
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220499"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460988"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Az Azure Data Share szerepkörei és követelményei 
 
@@ -43,7 +43,7 @@ SQL-alapú megosztás esetén az SQL-felhasználót egy olyan külső szolgálta
 |**SQL Database típusa**|**Adatszolgáltató SQL-felhasználói engedélye**|**Adatfogyasztói SQL-felhasználói engedély**|
 |---|---|---|
 |Azure SQL Database | db_datareader | db_datareader, db_datawriter, db_ddladmin
-|Azure Synapse Analytics (korábban SQL DW) | db_datareader | db_datareader, db_datawriter, db_ddladmin
+|Azure Synapse Analytics | db_datareader | db_datareader, db_datawriter, db_ddladmin
 |
 
 ### <a name="data-provider"></a>Adatszolgáltató
@@ -58,14 +58,14 @@ Ha manuálisan szeretné létrehozni az adatmegosztási erőforrás felügyelt i
 
 1. Navigáljon az Azure-adattárhoz.
 1. Válassza a **Access Control (iam)** lehetőséget.
-1. Válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.
-1. A *szerepkör*területen válassza ki a szerepkört a fenti szerepkör-hozzárendelési táblában (például Storage-fiók esetén válassza a *Storage blob-Adatolvasó*lehetőséget).
-1. A *kiválasztás*mezőben adja meg az Azure-beli adatmegosztási erőforrás nevét.
+1. Válassza **a szerepkör-hozzárendelés hozzáadása** lehetőséget.
+1. A *szerepkör* területen válassza ki a szerepkört a fenti szerepkör-hozzárendelési táblában (például Storage-fiók esetén válassza a *Storage blob-Adatolvasó* lehetőséget).
+1. A *kiválasztás* mezőben adja meg az Azure-beli adatmegosztási erőforrás nevét.
 1. Kattintson a *Mentés* gombra.
 
 A szerepkör-hozzárendeléssel kapcsolatos további tudnivalókért tekintse meg [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)című témakört. Ha REST API-k használatával oszt meg adatmegosztást, a szerepkör-hozzárendelést az API használatával is létrehozhatja [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása az REST API használatával](../role-based-access-control/role-assignments-rest.md)való hivatkozással. 
 
-SQL-alapú források esetén létre kell hozni egy SQL-felhasználót egy külső szolgáltatótól SQL Database ugyanazzal a névvel, mint az Azure-beli adatmegosztási erőforrással az SQL Database-hez való kapcsolódáskor Azure Active Directory hitelesítés használatával. Ezt a felhasználót *db_datareader* jogosultsággal kell megadnia. Az SQL-alapú megosztás egyéb előfeltételeivel együtt a [megosztás Azure SQL Database vagy a szinapszis Analytics](how-to-share-from-sql.md) oktatóanyagban található. 
+SQL-alapú források esetén létre kell hozni egy SQL-felhasználót egy külső szolgáltatótól SQL Database ugyanazzal a névvel, mint az Azure-beli adatmegosztási erőforrással az SQL Database-hez való kapcsolódáskor Azure Active Directory hitelesítés használatával. Ezt a felhasználót *db_datareader* jogosultsággal kell megadnia. Az SQL-alapú megosztás egyéb előfeltételeivel együtt a [megosztás a Azure SQL Database vagy az Azure szinapszis Analytics](how-to-share-from-sql.md) oktatóanyagban található. 
 
 ### <a name="data-consumer"></a>Adatfogyasztó
 Az adatok fogadásához a fogyasztói adatmegosztási erőforrás felügyelt identitásának hozzáférést kell biztosítania a cél Azure-adattárhoz. A Storage-fiók esetében például az adatmegosztási erőforrás felügyelt identitása megkapja a Storage blob adatközreműködői szerepkört. 
@@ -78,14 +78,14 @@ Ha manuálisan szeretné létrehozni az adatmegosztási erőforrás felügyelt i
 
 1. Navigáljon az Azure-adattárhoz.
 1. Válassza a **Access Control (iam)** lehetőséget.
-1. Válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.
-1. A *szerepkör*területen válassza ki a szerepkört a fenti szerepkör-hozzárendelési táblában (például Storage-fiók esetén válassza a *Storage blob-Adatolvasó*lehetőséget).
-1. A *kiválasztás*mezőben adja meg az Azure-beli adatmegosztási erőforrás nevét.
+1. Válassza **a szerepkör-hozzárendelés hozzáadása** lehetőséget.
+1. A *szerepkör* területen válassza ki a szerepkört a fenti szerepkör-hozzárendelési táblában (például Storage-fiók esetén válassza a *Storage blob-Adatolvasó* lehetőséget).
+1. A *kiválasztás* mezőben adja meg az Azure-beli adatmegosztási erőforrás nevét.
 1. Kattintson a *Mentés* gombra.
 
 A szerepkör-hozzárendeléssel kapcsolatos további tudnivalókért tekintse meg [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)című témakört. Ha REST API-k használatával fogadja az adatait, létrehozhat szerepkör-hozzárendelést az API-val [Az Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása az REST API használatával](../role-based-access-control/role-assignments-rest.md). 
 
-SQL-alapú cél esetén az SQL-felhasználót egy külső szolgáltatóból kell létrehozni SQL Database az Azure-beli adatmegosztási erőforrással megegyező névvel az SQL Database-hez való kapcsolódáskor Azure Active Directory hitelesítés használatával. Ezt a felhasználót *db_datareader, db_datawriter, db_ddladmin* engedéllyel kell megadnia. Az SQL-alapú megosztás egyéb előfeltételeivel együtt a [megosztás Azure SQL Database vagy a szinapszis Analytics](how-to-share-from-sql.md) oktatóanyagban található. 
+SQL-alapú cél esetén az SQL-felhasználót egy külső szolgáltatóból kell létrehozni SQL Database az Azure-beli adatmegosztási erőforrással megegyező névvel az SQL Database-hez való kapcsolódáskor Azure Active Directory hitelesítés használatával. Ezt a felhasználót *db_datareader, db_datawriter, db_ddladmin* engedéllyel kell megadnia. Az SQL-alapú megosztás egyéb előfeltételeivel együtt a [megosztás a Azure SQL Database vagy az Azure szinapszis Analytics](how-to-share-from-sql.md) oktatóanyagban található. 
 
 ## <a name="resource-provider-registration"></a>Erőforrás-szolgáltató regisztrálása 
 
@@ -97,14 +97,14 @@ Előfordulhat, hogy manuálisan kell regisztrálnia a Microsoft. DataShare erőf
 
 Az alábbi lépéseket követve regisztrálja a Microsoft. DataShare erőforrás-szolgáltatót az Azure-előfizetésében. Az erőforrás-szolgáltató regisztrálásához *közreműködői* hozzáférésre van szüksége az Azure-előfizetéshez.
 
-1. A Azure Portal navigáljon az **előfizetések**elemre.
+1. A Azure Portal navigáljon az **előfizetések** elemre.
 1. Válassza ki az Azure-adatmegosztáshoz használt előfizetést.
-1. Kattintson az **erőforrás-szolgáltatók**elemre.
+1. Kattintson az **erőforrás-szolgáltatók** elemre.
 1. Keressen rá a Microsoft. DataShare kifejezésre.
 1. Kattintson a **Regisztrálás** parancsra.
  
 Az erőforrás-szolgáltatóval kapcsolatos további tudnivalókért tekintse meg az [Azure-erőforrás-szolgáltatókat és-típusokat](../azure-resource-manager/management/resource-providers-and-types.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az Azure-beli szerepkörökről – a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md)

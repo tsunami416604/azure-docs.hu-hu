@@ -9,14 +9,18 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: eda05cbdf2f5b077fd6cf217a00cc58b1c6eda27
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 439337233e24dfcae2c8c911a9224fd3394d6846
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986640"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462698"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Az Azure szinapszis link Preview-ban található kiszolgáló nélküli SQL-készlettel rendelkező lekérdezés Azure Cosmos DB
+
+> [!IMPORTANT]
+> Jelenleg előzetes verzióban érhető el a kiszolgáló nélküli SQL Pool-támogatás a Azure Cosmos DB Azure-beli szinapszis-hivatkozáshoz. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 A kiszolgáló nélküli SQL-készletek lehetővé teszik az [Azure szinapszis-hivatkozással](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) rendelkező Azure Cosmos db tárolókban lévő adatok elemzését, a tranzakciós feladatok teljesítményének befolyásolása nélkül. Jól ismert T-SQL-szintaxist biztosít az [analitikus áruházból](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) származó adatok lekérdezéséhez és az üzleti intelligenciával (BI) és az alkalmi lekérdezési eszközökhöz való integrált kapcsolódáshoz a t-SQL felületen keresztül.
 
@@ -258,7 +262,7 @@ Azure Cosmos DB SQL (Core) API-fiókok esetében a JSON-tulajdonságok száma, k
 
 | Azure Cosmos DB tulajdonság típusa | SQL-oszlop típusa |
 | --- | --- |
-| Logikai | bit |
+| Logikai érték | bit |
 | Egész szám | bigint |
 | Tizedesjegy | float |
 | Sztring | varchar (UTF-8 adatbázis-rendezés) |
@@ -356,7 +360,7 @@ A lehetséges hibák és hibaelhárítási műveletek az alábbi táblázatban l
 
 A javaslatok és a problémák jelentését az [Azure szinapszis Analytics visszajelzési oldalán](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)teheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért tekintse át a következő cikkeket:
 

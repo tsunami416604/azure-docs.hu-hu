@@ -16,12 +16,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8258aeef33be9192608f0d4cb29b46f08da64e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f8de6389a04448579672b84e91f0bb4dd0f4ce2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010630"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460471"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Jogkivonat-alapú (HTTP/2) hitelesítés a APNS
 
@@ -52,7 +52,7 @@ A jogkivonat-alapú hitelesítés engedélyezéséhez a következő tulajdonság
 
 ### <a name="key-identifier"></a>Kulcs azonosítója
 
-A kulcs azonosítóját a **tanúsítványok, azonosítók & profilok**elem alatti **kulcsok** lapon érheti el az Apple fejlesztői fiókjában:
+A kulcs azonosítóját a **tanúsítványok, azonosítók & profilok** elem alatti **kulcsok** lapon érheti el az Apple fejlesztői fiókjában:
 
 ![Tanúsítványok](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
 
@@ -78,7 +78,7 @@ A jogkivonat-alapú hitelesítő adatok a következő mezőkből állnak:
 
 * **Key ID**: az Apple fejlesztői portálon létrehozott titkos kulcs azonosítója; például: `2USFGKSKLT` .
 * **Csoport azonosítója**: "előtag" vagy "alkalmazás előtagja". Ez a szervezet azonosítója az Apple fejlesztői portálon; például: `S4V3D7CHJR` .
-* **Köteg azonosítója**: "app id" néven is ismert. Ez az alkalmazás köteg-azonosítója; például: `com.example.myapp` . Vegye figyelembe, hogy számos alkalmazáshoz használhat egy kulcsot. Ez az érték leképezi a `apns-topic` http-fejlécet egy értesítés küldésekor, és az adott alkalmazás célzására szolgál. Ne feledje, hogy explicit módon nem állíthatja be a értéket `apns-topic` .
+* **Bundle-azonosító**: az "app id" néven is ismert. Ez az alkalmazás köteg-azonosítója; például: `com.example.myapp` . Vegye figyelembe, hogy egy alkalmazáshoz csak egy kulcsot használhat. Ez az érték leképezi a `apns-topic` http-fejlécet egy értesítés küldésekor, és az adott alkalmazás célzására szolgál. Explicit módon nem állítható be a megadott érték `apns-topic` .
 * **Token**: "Key" vagy "Private Key" néven is ismert. Ez az Apple fejlesztői portálon létrehozott. P8 fájlból szerezhető be. A kulcsnak engedélyezve kell lennie a APNS (amely a kulcs létrehozásakor az Apple fejlesztői portálon van kiválasztva). Az értéknek az NH Portal/API-hoz való megadásakor el kell távolítania a PEM fejlécét vagy láblécét.
 * **Végpont**: ez egy váltógomb a Notification Hubs-portál panelen és egy karakterlánc-mező az API-ban. Az érvényes értékek a következők: `https://api.development.push.apple.com:443/3/device` vagy `https://api.sandbox.push.apple.com:443/3/device` . Az Notification Hubs ezt az értéket használja az éles vagy a homokozó környezethez az értesítések küldéséhez. Ennek meg kell egyeznie az `aps-environment` alkalmazás jogosultságával, ellenkező esetben a GENERÁLT APNS-eszközök jogkivonatai nem egyeznek a környezettel, és az értesítések nem lesznek elküldve.
 
@@ -96,7 +96,7 @@ desc.ApnsCredential.Endpoint = @"https://api.development.push.apple.com:443/3/de
 nm.UpdateNotificationHubAsync(desc);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Notification Hub-központ létrehozása az Azure Portalon](create-notification-hub-portal.md)
 * [Értesítési központ konfigurálása a Azure Portal](create-notification-hub-portal.md)

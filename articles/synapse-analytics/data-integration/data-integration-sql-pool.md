@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 44d17bafe534fea2d408c92a3a01efb699250a78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: afebb6a67b4c8a33e812c0e51ff225f16cd35356
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974425"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461465"
 ---
 # <a name="ingest-data-into-a-dedicated-sql-pool"></a>Az adat betöltése egy dedikált SQL-készletbe
 
@@ -73,4 +73,4 @@ Ebben a lépésben az előző lépésben közzétett folyamatot manuálisan ind�
 
 ## <a name="next-steps"></a>További lépések
 
-A szinapszis Analytics adatintegrálásával kapcsolatos további információkért lásd: adatok beolvasása [Azure Data Lake Storage Gen2 ](data-integration-data-lake.md) cikkbe.
+Az Azure szinapszis Analytics adatintegrálásával kapcsolatos további információkért lásd: adatok beolvasása [Azure Data Lake Storage Gen2 ](data-integration-data-lake.md) cikkbe.

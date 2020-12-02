@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 460fed7244ba8094da41ae6b5b8161de3d9efe65
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317269"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462405"
 ---
 # <a name="sql-authentication"></a>SQL-hitelesítés
 
@@ -22,14 +22,14 @@ Az Azure szinapszis Analytics két SQL-űrlapot tartalmaz – az erőforrás-fel
 
 A szinapszis SQL engedélyezéséhez két engedélyezési típust használhat:
 
-- Azure Active Directory engedélyezése
+- Azure Active Directory-engedélyezés
 - SQL-engedélyezés
 
 Azure Active Directory lehetővé teszi, hogy egyetlen helyet biztosítson a felhasználók felügyeletéhez. Az SQL-hitelesítés lehetővé teszi, hogy az örökölt alkalmazások jól ismert módon használják a szinapszis SQL-t.
 
 ## <a name="administrative-accounts"></a>Rendszergazdai fiókok
 
-Kettő rendszergazdaként működő felügyeleti fiók létezik ( **Kiszolgálói rendszergazdai** és **Active Directory-rendszergazdai** ). Az SQL Serverhez tartozó rendszergazdai fiókok azonosításához nyissa meg a Azure Portal, és keresse meg a szinapszis SQL Tulajdonságok lapját.
+Kettő rendszergazdaként működő felügyeleti fiók létezik (**Kiszolgálói rendszergazdai** és **Active Directory-rendszergazdai**). Az SQL Serverhez tartozó rendszergazdai fiókok azonosításához nyissa meg a Azure Portal, és keresse meg a szinapszis SQL Tulajdonságok lapját.
 
 ![SQL Server-rendszergazdák](./media/sql-authentication/sql-admins.png)
 
@@ -51,7 +51,7 @@ A **kiszolgálói rendszergazda** és az **Azure ad-rendszergazdai** fiókok jel
 - Tagokat adhat hozzá és távolíthat el a `dbmanager` és a `loginmanager` szerepkörökhöz.
 - Megtekintheti a `sys.sql_logins` rendszertáblát.
 
-## <a name="serverless-sql-pool-preview"></a>[Kiszolgáló nélküli SQL-készlet (előzetes verzió)](#tab/serverless)
+## <a name="serverless-sql-pool"></a>[Kiszolgáló nélküli SQL-készlet](#tab/serverless)
 
 A kiszolgáló nélküli SQL-készlethez hozzáféréssel rendelkező felhasználók kezeléséhez az alábbi utasításokat használhatja.
 
@@ -187,7 +187,7 @@ A hatékony hozzáférés-kezelés egyéni bejelentkezési adatok helyett csopor
 
 - SQL Server-hitelesítés használata esetén hozzon létre tartalmazottadatbázis-felhasználókat az adatbázisban. Helyezzen egy vagy több adatbázis-felhasználót egy [adatbázis-szerepkörbe](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), majd rendeljen [engedélyeket](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) az adatbázis-szerepkörhöz.
 
-Az adatbázis-szerepkörök lehetnek beépített szerepkörök, mint például a **db_owner** , a **db_ddladmin** , a **db_datawriter** , a **db_datareader** , a **db_denydatawriter** vagy a **db_denydatareader**. A **db_owner** általában teljes körű engedélyek biztosítására szolgál néhány felhasználó számára. A többi rögzített adatbázis-szerepkör hasznos az egyszerű adatbázisok fejlesztésének gyors elkezdéséhez, de a legtöbb éles környezetbeli adatbázishoz nem ajánlott. 
+Az adatbázis-szerepkörök lehetnek beépített szerepkörök, mint például a **db_owner**, a **db_ddladmin**, a **db_datawriter**, a **db_datareader**, a **db_denydatawriter** vagy a **db_denydatareader**. A **db_owner** általában teljes körű engedélyek biztosítására szolgál néhány felhasználó számára. A többi rögzített adatbázis-szerepkör hasznos az egyszerű adatbázisok fejlesztésének gyors elkezdéséhez, de a legtöbb éles környezetbeli adatbázishoz nem ajánlott. 
 
 A **db_datareader** rögzített adatbázis-szerepkör csak olvasási hozzáférést biztosít az adatbázis minden táblájához, ami általában több a feltétlenül szükségesnél. 
 
@@ -208,7 +208,7 @@ A SQL Database-beli bejelentkezések és felhasználók kezelésekor vegye figye
 - Az utasítások végrehajtásakor csatlakoznia kell a **Master** adatbázishoz `CREATE/ALTER/DROP DATABASE` .
 - A **kiszolgáló-rendszergazdai** bejelentkezéshez tartozó adatbázis-felhasználó nem módosítható és nem távolítható el.
 - A **kiszolgáló-rendszergazdai** bejelentkezés alapértelmezett nyelve az amerikai angol (US-English).
-- Csak a rendszergazdák ( **kiszolgáló-rendszergazdai** bejelentkező vagy Azure AD-rendszergazda) és a **master** adatbázis **dbmanager** adatbázis-szerepkörének tagjai rendelkeznek a `CREATE DATABASE` és a `DROP DATABASE` utasítások futtatásához szükséges engedéllyel.
+- Csak a rendszergazdák (**kiszolgáló-rendszergazdai** bejelentkező vagy Azure AD-rendszergazda) és a **master** adatbázis **dbmanager** adatbázis-szerepkörének tagjai rendelkeznek a `CREATE DATABASE` és a `DROP DATABASE` utasítások futtatásához szükséges engedéllyel.
 - A `CREATE/ALTER/DROP LOGIN` utasítások futtatásához csatlakoznia kell a master adatbázishoz. A bejelentkezési adatok használata azonban nem javasolt. Helyette használja a tartalmazott adatbázis felhasználóit.
 - A felhasználói adatbázishoz történő csatlakozáshoz adja meg a kapcsolati sztringben szereplő adatbázis nevét.
 - Csak a kiszolgálószintű fő bejelentkező és a **master adatbázis****loginmanager** adatbázis-szerepkörének tagjai rendelkeznek a `CREATE LOGIN`, `ALTER LOGIN` és `DROP LOGIN` utasítások futtatásához szükséges engedéllyel.
@@ -234,7 +234,7 @@ A SQL Database-beli bejelentkezések és felhasználók kezelésekor vegye figye
 - A `CREATE/ALTER/DROP` utasítás használatához a felhasználónak `ALTER ANY USER` engedéllyel kell rendelkeznie az adatbázisban.
 - Ha az adatbázis-szerepkör tulajdonosa szeretne hozzáadni vagy eltávolítani egy felhasználót az adott szerepkörből, akkor a következő hiba léphet fel: **A „Név” felhasználó vagy szerepkör nem található ebben az adatbázisban.** Ez a hiba azért fordul elő, mert a felhasználó nem látható a tulajdonos számára. A probléma megoldása érdekében ruházza fel a szerepkör tulajdonosát a `VIEW DEFINITION` engedéllyel. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](https://msdn.microsoft.com/library/ff929188.aspx) cikkben talál.
  

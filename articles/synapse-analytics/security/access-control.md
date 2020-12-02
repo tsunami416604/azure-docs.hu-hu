@@ -1,6 +1,6 @@
 ---
 title: Munkaterületekhez, adatbázisokhoz és folyamatokhoz való hozzáférés kezelése
-description: Megtudhatja, hogyan kezelheti az Azure szinapszis Analytics-munkaterületen (előzetes verzió) lévő munkaterületekhez, adatszolgáltatásokhoz és folyamatokhoz való hozzáférés-vezérlést.
+description: Ismerje meg, hogyan kezelheti a hozzáférés-vezérlést a munkaterületekhez, az adatbázisokhoz és a folyamatokhoz az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5d95ddcc610fb0350f47e0e5b494cbd16b95468c
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c4304aeadf2950c1a91ee50ba9ecd895b2561b41
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255224"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461344"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Munkaterületekhez, adatbázisokhoz és folyamatokhoz való hozzáférés kezelése
 
-Megtudhatja, hogyan kezelheti az Azure szinapszis Analytics-munkaterületen (előzetes verzió) lévő munkaterületekhez, adatszolgáltatásokhoz és folyamatokhoz való hozzáférés-vezérlést.
+Ismerje meg, hogyan kezelheti a hozzáférés-vezérlést a munkaterületekhez, az adatbázisokhoz és a folyamatokhoz az Azure szinapszis Analyticsben.
 
 > [!NOTE]
 > A GA esetében az Azure RBAC a szinapszis-specifikus Azure-szerepkörök bevezetésével lesz kifejlesztve
@@ -171,7 +171,7 @@ Ha **egyetlen** SQL-adatbázishoz szeretne hozzáférést adni egy felhasználó
 
 A felhasználók létrehozása után ellenőrizze, hogy le tudja-e kérdezni a Storage-fiókot a kiszolgáló nélküli SQL-készlet használatával.
 
-## <a name="access-control-to-workspace-pipeline-runs"></a>Hozzáférés-vezérlés a munkaterület-folyamat futtatásához
+## <a name="access-control-to-workspace-pipeline-runs"></a>Munkaterület folyamatfuttatásainak hozzáférés-vezérlése
 
 ### <a name="workspace-managed-identity"></a>Munkaterület által felügyelt identitás
 
@@ -198,6 +198,6 @@ REVOKE CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
 DROP USER [<workspacename>];
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A szinapszis munkaterület által felügyelt identitás áttekintését lásd: az [Azure szinapszis munkaterület felügyelt identitása](../security/synapse-workspace-managed-identity.md). További információ az adatbázis-rendszerbiztonsági tagekről: [rendszerbiztonsági tag](https://msdn.microsoft.com/library/ms181127.aspx). Az adatbázis-szerepkörökkel kapcsolatos további információkért tekintse meg az [adatbázis-szerepkörök](https://msdn.microsoft.com/library/ms189121.aspx) című cikket.

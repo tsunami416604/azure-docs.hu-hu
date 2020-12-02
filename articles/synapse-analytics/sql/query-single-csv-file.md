@@ -1,6 +1,6 @@
 ---
-title: CSV-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió)
-description: Ebből a cikkből megtudhatja, hogyan kérdezheti le az egyetlen CSV-fájlt különböző fájlformátumokkal a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával.
+title: CSV-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel
+description: Ebből a cikkből megtudhatja, hogyan kérdezheti le az egyetlen CSV-fájlt különböző fájlformátumokkal a kiszolgáló nélküli SQL-készlet használatával.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9faff6589466c7cbe78a11c283139acb72bce4bb
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f2f0cdf307e91fb40c55d4a98139bad1a5eca886
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685647"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462586"
 ---
 # <a name="query-csv-files"></a>CSV-fájlok lekérdezése
 
-Ebből a cikkből megtudhatja, hogyan kérdezheti le egyetlen CSV-fájlt a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával az Azure szinapszis Analytics szolgáltatásban. A CSV-fájlok formátuma eltérő lehet: 
+Ebből a cikkből megtudhatja, hogyan kérdezheti le egyetlen CSV-fájlt a kiszolgáló nélküli SQL-készlet használatával az Azure szinapszis Analyticsben. A CSV-fájlok formátuma eltérő lehet: 
 
 - Fejléc-sorral és anélkül
 - Vesszővel és tabulátorral tagolt értékek
@@ -47,8 +47,8 @@ from openrowset(
 Ezzel a beállítással lehet `firstrow` kihagyni a CSV-fájl első olyan sorát, amely ebben az esetben a fejlécet jelöli. Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájlt SAS-kulccsal vagy egyéni identitással védi, a [kiszolgáló szintű hitelesítő adatokat kell beállítania az SQL-bejelentkezéshez](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
 
 > [!IMPORTANT]
-> Ha a CSV-fájl UTF-8 karaktereket tartalmaz, ügyeljen arra, hogy az UTF-8 adatbázis-rendezést használja (például `Latin1_General_100_CI_AS_SC_UTF8` ).
-> A fájl és a rendezés szöveges kódolása nem egyezik meg, mert nem várt konverziós hiba történt.
+> Ha a CSV-fájl UTF-8 karaktereket tartalmaz, győződjön meg róla, hogy UTF-8 adatbázis-rendezést használ (például `Latin1_General_100_CI_AS_SC_UTF8` ).
+> A fájl szöveges kódolása és a rendezés eltérése váratlan konverziós hibákat okozhat.
 > Az aktuális adatbázis alapértelmezett rendezését az alábbi T-SQL-utasítás használatával egyszerűen módosíthatja: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>Adatforrás használata
@@ -344,7 +344,7 @@ WITH (
 ) AS [r]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkek a következőkre mutatnak:
 

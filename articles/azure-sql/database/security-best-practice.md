@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 803c9a98f0dc10ff8218ac7b7c20dcb117700034
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187102"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459672"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>A közös biztonsági követelmények kezelése a Azure SQL Database és az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Ez a dokumentum útmutatást nyújt a Azure SQL Database és az Azure SQL felüg
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>Az útmutatóban nem szereplő központi telepítési ajánlatok
 
-- Azure Synapse Analytics (korábban SQL Data Warehouse)
+- Azure Synapse Analytics
 - Azure SQL virtuális gépek (IaaS)
 - SQL Server
 
@@ -800,6 +800,6 @@ A legtöbb biztonsági szabvány a működés folytonossága szempontjából az 
     - [Magas rendelkezésre állás – zóna redundáns konfigurációja általános célú szolgáltatási réteghez](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
     - [Az üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át [a Azure SQL Database biztonsági funkcióinak áttekintését](security-overview.md)

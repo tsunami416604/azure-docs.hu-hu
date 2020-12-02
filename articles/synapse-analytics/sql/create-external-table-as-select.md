@@ -1,6 +1,6 @@
 ---
 title: Lekérdezési eredmények tárolása kiszolgáló nélküli SQL-készletből
-description: Ebből a cikkből megtudhatja, hogyan tárolhat lekérdezési eredményeket a Storage szolgáltatásban kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával.
+description: Ebből a cikkből megtudhatja, hogyan tárolhat lekérdezési eredményeket a Storage szolgáltatásban a kiszolgáló nélküli SQL-készlet használatával.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 50897d81ed5ef2fc33e458bd46d9229f6184fea8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: dd989d5925da864728e944e84962086c0cfb08ea
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322616"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462313"
 ---
-# <a name="store-query-results-to-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Lekérdezési eredmények tárolása a Storage szolgáltatásban kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával az Azure szinapszis Analyticsben
+# <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Lekérdezési eredmények tárolása a Storage-ban kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
-Ebből a cikkből megtudhatja, hogyan tárolhat lekérdezési eredményeket a Storage szolgáltatásban kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával.
+Ebből a cikkből megtudhatja, hogyan tárolhat lekérdezési eredményeket a Storage szolgáltatásban a kiszolgáló nélküli SQL-készlet használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -94,6 +94,6 @@ ORDER BY
     [population] DESC;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A különböző fájltípusok lekérdezésével kapcsolatos további információkért tekintse meg az [egyszerű CSV-fájl lekérdezése](query-single-csv-file.md), a [Parquet-fájlok lekérdezése](query-parquet-files.md)és a [JSON-fájlok lekérdezése](query-json-files.md) című cikket.

@@ -8,12 +8,12 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: daae45c9eca45022225ea47aa048815d5eff70c4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 035cf5be4471cad7ac11eb8ce9a8a0ecb13a68da
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964507"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462366"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>A IoT Edge eszköz hibáinak megoldása
 
@@ -81,7 +81,7 @@ Az eszköz frissítésével kapcsolatos utasításokért tekintse meg [a IoT Edg
 
 ## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>IoT Edge telepítésének ellenőrzése az eszközökön
 
-Az eszközökön IoT Edge telepítésének ellenőrzéséhez tekintse meg [a edgeAgent-modul Twin](https://docs.microsoft.com/azure/iot-edge/how-to-monitor-module-twins)utasításait.
+Az eszközökön IoT Edge telepítésének ellenőrzéséhez tekintse meg [a edgeAgent-modul Twin](./how-to-monitor-module-twins.md)utasításait.
 
 Ha a legújabb edgeAgent-modult szeretné beszerezni, futtassa a következő parancsot [Azure Cloud Shell](https://shell.azure.com/):
 
@@ -89,7 +89,7 @@ Ha a legújabb edgeAgent-modult szeretné beszerezni, futtassa a következő par
    az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
    ```
 
-Ezzel a paranccsal a rendszer az összes [jelentett edgeAgent-tulajdonságot](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub)megjeleníti. Íme néhány hasznos funkció az eszköz állapotának figyeléséhez:
+Ezzel a paranccsal a rendszer az összes [jelentett edgeAgent-tulajdonságot](./module-edgeagent-edgehub.md)megjeleníti. Íme néhány hasznos funkció az eszköz állapotának figyeléséhez:
 
 * futtatókörnyezet állapota
 * futtatókörnyezet indítási ideje
@@ -284,7 +284,7 @@ Míg a IoT Edge továbbfejlesztett konfigurációt biztosít Azure IoT Edge futt
 |AMQP|5671|Letiltva (alapértelmezett)|Megnyitás (alapértelmezett)|<ul> <li>Az IoT Edge alapértelmezett kommunikációs protokollja. <li> Úgy kell konfigurálni, hogy nyitva legyen, ha Azure IoT Edge nincs más támogatott protokollhoz konfigurálva, vagy a AMQP a kívánt kommunikációs protokoll.<li>a IoT Edge nem támogatja a AMQP használatát. 5672<li>A port letiltása, ha a Azure IoT Edge egy másik IoT Hub támogatott protokollt használ.<li>A bejövő (bejövő) kapcsolatokat le kell tiltani.</ul></ul>|
 |HTTPS|443|Letiltva (alapértelmezett)|Megnyitás (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) 443-es megnyitását IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges. <li>A bejövő (bejövő) kapcsolatok csak bizonyos esetekben nyithatók meg: <ul> <li>  Ha olyan transzparens átjáróval rendelkezik, amely olyan Leaf-eszközökkel rendelkezik, amelyek metódus-kérelmeket küldhetnek. Ebben az esetben a 443-es portot nem szabad külső hálózatokhoz csatlakozni a IoTHub-hez való csatlakozáshoz vagy a IoTHub szolgáltatások nyújtásához Azure IoT Edgeon keresztül. Így a Bejövő szabály csak a bejövő (bejövő) és a belső hálózatról nyitható meg. <li> Az ügyfél – eszköz (C2D) forgatókönyvek esetében.</ul><li>a IoT Edge nem támogatja a HTTP-t (80).<li>Ha nem HTTP protokoll (például AMQP vagy MQTT) nem konfigurálható a vállalatban; az üzenetek elküldhetők websocketek használatával. Ebben az esetben a 443-es portot fogja használni a WebSocket-kommunikációhoz.</ul>|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Úgy gondolja, hogy hibát talált az IoT Edge platformon? [Küldjön el egy problémát](https://github.com/Azure/iotedge/issues) , hogy tovább javítsuk.
 

@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: e84afc949a84da90a4799d7db3b3e7ad3e0057a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3fc7a7f137701590e4bddd791a3fdd2d1eaeca4a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323527"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461611"
 ---
 # <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>Gyors útmutató: új kiszolgáló nélküli Apache Spark készlet létrehozása a Azure Portal használatával
 
@@ -67,7 +67,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 4. Kattintson a **Tovább gombra: címkék**. Ne adjon hozzá címkéket.
     ![Apache Spark készlet folyamat létrehozása – további beállítások lap.](media/quickstart-create-apache-spark-pool/create-spark-pool-03-tags.png)
 
-5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+5. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
 6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek, majd válassza a **Létrehozás** lehetőséget.
     ![Apache Spark készlet létrehozása folyamat – felülvizsgálati beállítások lap.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-05.png)
@@ -89,14 +89,14 @@ Az alábbi lépések végrehajtásával törölje a Apache Spark-készletet a mu
 Ha törölni szeretné a Apache Spark-készletet, tegye a következőket:
 
 1. Navigáljon a munkaterületen a Apache Spark készletek panelre.
-2. Válassza ki a törölni kívánt Apache Spark-készletet (ebben az esetben a **contosospark** ).
+2. Válassza ki a törölni kívánt Apache Spark-készletet (ebben az esetben a **contosospark**).
 3. Nyomja le a **delete** billentyűt.
  ![Apache Spark készletek felsorolása a legutóbb létrehozott készlettel.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-08.png)
 4. Erősítse meg a törlést, majd nyomja le a **delete (Törlés** ) gombot.
  ![Megerősítő párbeszédpanel a kiválasztott Apache Spark-készlet törléséhez.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-10.png)
 5. Ha a folyamat sikeresen befejeződik, a Apache Spark-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a rövid útmutató [: Apache Spark jegyzetfüzet létrehozása](quickstart-apache-spark-notebook.md)című témakört.
-- Lásd [: gyors útmutató: szinapszis DEDIKÁLT SQL-készlet létrehozása a Azure Portal használatával](quickstart-create-sql-pool-portal.md).
+- Lásd [: gyors útmutató: DEDIKÁLT SQL-készlet létrehozása a Azure Portal használatával](quickstart-create-sql-pool-portal.md).

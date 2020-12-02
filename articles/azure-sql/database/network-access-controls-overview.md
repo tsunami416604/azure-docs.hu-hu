@@ -1,7 +1,7 @@
 ---
 title: Hálózati hozzáférés-vezérlés
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: A Azure SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse) hálózati hozzáférésének kezelése és szabályozása.
+description: A Azure SQL Database és az Azure szinapszis Analytics hálózati hozzáférésének kezelése és szabályozása.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,16 +12,16 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: be327fabdffc0f98dc0449b51e7e4d73651d80d8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 90bc57af3aaf0d11cd354bfe7163014f836a72e8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789488"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460007"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>A Azure SQL Database és az Azure szinapszis Analytics hálózati hozzáférés-vezérlés
 
-Ha Azure SQL Database és az Azure szinapszis Analytics [Azure Portal](single-database-create-quickstart.md) hoz létre logikai SQL Server-kiszolgálót, az eredmény egy nyilvános végpont, amely a következő formátumú: *yourservername.database.Windows.net* .
+Ha Azure SQL Database és az Azure szinapszis Analytics [Azure Portal](single-database-create-quickstart.md) hoz létre logikai SQL Server-kiszolgálót, az eredmény egy nyilvános végpont, amely a következő formátumú: *yourservername.database.Windows.net*.
 
 A következő hálózati hozzáférés-vezérlésekkel szelektíven engedélyezheti az adatbázisokhoz való hozzáférést a nyilvános végponton keresztül:
 
@@ -34,7 +34,7 @@ Az adatbázishoz való privát hozzáférést is engedélyezheti a [virtuális h
 - Privát hivatkozás: ezzel a szolgáltatással létrehozhat egy privát végpontot a [logikai SQL Server](logical-servers.md) számára egy adott virtuális hálózaton belül
 
 > [!IMPORTANT]
-> Ez a cikk *nem* vonatkozik az **SQL felügyelt példányára** . A hálózati konfigurációval kapcsolatos további információkért lásd: [Csatlakozás az Azure SQL felügyelt példányához](../managed-instance/connect-application-instance.md) .
+> Ez a cikk *nem* vonatkozik az **SQL felügyelt példányára**. A hálózati konfigurációval kapcsolatos további információkért lásd: [Csatlakozás az Azure SQL felügyelt példányához](../managed-instance/connect-application-instance.md) .
 
 Tekintse meg az alábbi videót, amely részletesen ismerteti ezeket a hozzáférés-vezérléseket, és hogy mit tesznek:
 
@@ -42,7 +42,7 @@ Tekintse meg az alábbi videót, amely részletesen ismerteti ezeket a hozzáfé
 
 ## <a name="allow-azure-services"></a>Azure-szolgáltatások engedélyezése
 
-Alapértelmezés szerint a Azure Portal új logikai SQL [-](single-database-create-quickstart.md)kiszolgáló létrehozásakor ez a beállítás **ki van kapcsolva** . Ez a beállítás akkor jelenik meg, ha a kapcsolat engedélyezett a nyilvános szolgáltatási végpont használatával.
+Alapértelmezés szerint a Azure Portal új logikai SQL [-](single-database-create-quickstart.md)kiszolgáló létrehozásakor ez a beállítás **ki van kapcsolva**. Ez a beállítás akkor jelenik meg, ha a kapcsolat engedélyezett a nyilvános szolgáltatási végpont használatával.
 
 Ezt a beállítást a tűzfal ablaktáblán is módosíthatja, miután a logikai SQL-kiszolgáló létrejött a következőképpen.
   
@@ -56,7 +56,7 @@ Ez azonban hatással van az Azure-beli virtuális gépeken futó alábbi szolgá
 
 ### <a name="import-export-service"></a>Exportálási szolgáltatás importálása
 
-Az importálási exportálási szolgáltatás nem működik, ha az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás **ki van kapcsolva** . Azonban a probléma megoldásához manuálisan is [futtathatja sqlpackage.exe egy Azure](./database-import-export-azure-services-off.md) -beli virtuális gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.
+Az importálási exportálási szolgáltatás nem működik, ha az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás **ki van kapcsolva**. Azonban a probléma megoldásához manuálisan is [futtathatja sqlpackage.exe egy Azure](./database-import-export-azure-services-off.md) -beli virtuális gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.
 
 ### <a name="data-sync"></a>Adatszinkronizálás
 
@@ -142,7 +142,7 @@ A virtuális hálózati szabályok egyszerűbben használhatók a virtuális gé
 
 A privát hivatkozás lehetővé teszi, hogy egy **privát végponton** keresztül kapcsolódjon egy kiszolgálóhoz. A privát végpont egy magánhálózati IP-cím egy adott [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md) és alhálózaton belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A kiszolgálói szintű IP-tűzfalszabály létrehozásával kapcsolatos rövid útmutató: [adatbázis létrehozása SQL Databaseban](single-database-create-quickstart.md).
 

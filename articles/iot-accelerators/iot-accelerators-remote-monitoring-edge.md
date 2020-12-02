@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: f5ffc7472bb0744d76b5ceaacc95f74af22e762e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e234cc29589e7b104ea7ef54ab7493e27d11cf27
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739802"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460440"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Oktatóanyag: rendellenességek észlelése a szélén a távoli figyelési megoldás gyorsítása révén
 
@@ -80,15 +80,15 @@ Annak érdekében, hogy könnyebben kezelje a megoldás IoT Edge eszközeit, hoz
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Feladat     | Címkéket  |
+    | Feladat     | Címkék  |
     | Feladat neve | AddEdgeTag |
     | Kulcs     | IsOilPump |
-    | Érték   | Y     |
+    | Érték   | I     |
     | Típus    | Szöveg  |
 
     [![Címke hozzáadása](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
-1. Kattintson az **alkalmaz** , majd a **Bezárás** elemre.
+1. Kattintson az **alkalmaz**, majd a **Bezárás** elemre.
 
 1. A **Device Explorer** lapon kattintson az **erőforráscsoportok kezelése** elemre.
 
@@ -96,10 +96,10 @@ Annak érdekében, hogy könnyebben kezelje a megoldás IoT Edge eszközeit, hoz
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név)    | OilPumps |
+    | Név    | OilPumps |
     | Mező   | Címkék. IsOilPump |
     | Operátor | = Egyenlő |
-    | Érték    | Y |
+    | Érték    | I |
     | Típus     | Szöveg |
 
     [![Eszközcsoport létrehozása](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
@@ -207,11 +207,11 @@ Ezután létre kell hoznia egy IoT Edge telepítési jegyzéket, amely meghatár
 
 1. A **központi telepítés létrehozása > név és címke** lapon adja meg az **Oil-Pump-Device** nevet. Kattintson a **Tovább** gombra.
 
-1. A **központi telepítés létrehozása > modulok hozzáadása** lapon kattintson a **+ Hozzáadás** gombra. Válassza **IoT Edge modult** .
+1. A **központi telepítés létrehozása > modulok hozzáadása** lapon kattintson a **+ Hozzáadás** gombra. Válassza **IoT Edge modult**.
 
 1. A **IoT Edge egyéni modulok** panelen írja be a **hőmérséklet-érzékelő** nevet és a **asaedgedockerhubtest/ASA-Edge-test-Module: Sensor-ad-Linux-amd64** értéket a rendszerkép URI-jaként. Kattintson a **Mentés** gombra.
 
-1. A **központi telepítés létrehozása > modulok hozzáadása** lapon kattintson a **+ Hozzáadás** elemre egy második modul hozzáadásához. Válassza **Azure stream Analytics modult** .
+1. A **központi telepítés létrehozása > modulok hozzáadása** lapon kattintson a **+ Hozzáadás** elemre egy második modul hozzáadásához. Válassza **Azure stream Analytics modult**.
 
 1. Az **Edge Deployment (peremhálózati telepítés** ) panelen válassza ki az előfizetését és az előző szakaszban létrehozott **EdgeDeviceJob** . Kattintson a **Mentés** gombra.
 
@@ -275,7 +275,7 @@ Most már készen áll a csomag üzembe helyezésére az eszközön.
 
     | Beállítás | Érték |
     | ------ | ----- |
-    | Name (Név)   | OilPumpDevices |
+    | Név   | OilPumpDevices |
     | Csomag típusa | Edge-jegyzékfájl |
     | Csomag | oil-pump-device.jsbekapcsolva |
     | Eszközcsoport | OilPumps |
@@ -301,7 +301,7 @@ A **központi telepítések** lap a következő metrikákat jeleníti meg:
 A távoli monitorozás webes FELÜLETén megtekintheti az olajszivattyú-eszköz telemetria hőmérsékletét:
 
 1. Navigáljon a **Device Explorer** lapra, és válassza ki az olajszivattyú eszközét.
-1. Az **eszköz részletei** panel **telemetria** szakaszában kattintson a **hőmérséklet** :
+1. Az **eszköz részletei** panel **telemetria** szakaszában kattintson a **hőmérséklet**:
 
     [![Telemetria megtekintése](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-expanded.png#lightbox)
 
@@ -315,7 +315,7 @@ Ha a küszöbérték elérésekor értesíteni szeretné a kezelőket, létrehoz
     | Beállítás | Érték |
     | ------ | ----- |
     | Szabály neve | Olaj-szivattyú hőmérséklete |
-    | Leírás | Az olaj-szivattyú hőmérséklete túllépte a 300 |
+    | Description | Az olaj-szivattyú hőmérséklete túllépte a 300 |
     | Eszközcsoport | OilPumps |
     | Számítás | Azonnali |
     | Mező | hőmérséklet |
@@ -329,13 +329,13 @@ Ha a küszöbérték elérésekor értesíteni szeretné a kezelőket, létrehoz
 
 1. Navigáljon az **irányítópult** lapra. Egy riasztás a **riasztások** panelen jelenik meg, ha az **olaj-szivattyú** eszköz hőmérséklete 300-ra csökken.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatja, hogyan adhat hozzá és konfigurálhat egy IoT Edge eszközt a távoli figyelési megoldás gyorsító eszközében. Ha többet szeretne megtudni a IoT Edge-csomagok a távoli figyelési megoldásban való használatáról, tekintse meg a következő útmutatókat:
 
 > [!div class="nextstepaction"]
 > [IoT Edge csomag importálása a távoli figyelési megoldás-gyorsító eszközbe](iot-accelerators-remote-monitoring-import-edge-package.md)
 
-Az IoT Edge futtatókörnyezet telepítésével kapcsolatos további tudnivalókért tekintse [meg a Azure IoT Edge Runtime telepítése Linux rendszeren (x64)](../iot-edge/how-to-install-iot-edge-linux.md)című témakört.
+Az IoT Edge futtatókörnyezet telepítésével kapcsolatos további tudnivalókért tekintse [meg a Azure IoT Edge Runtime telepítése Linux rendszeren (x64)](../iot-edge/how-to-install-iot-edge.md)című témakört.
 
 Az Edge-eszközök Azure Stream Analyticsával kapcsolatos további tudnivalókért tekintse meg a [Azure stream Analytics üzembe helyezése IoT Edge modulként](../iot-edge/tutorial-deploy-stream-analytics.md)című témakört.

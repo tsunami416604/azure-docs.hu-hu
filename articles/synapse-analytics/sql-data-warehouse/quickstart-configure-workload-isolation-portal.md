@@ -1,6 +1,6 @@
 ---
 title: 'Rövid útmutató: a munkaterhelés elkülönítésének konfigurálása – portál'
-description: A számítási feladatok elkülönítésének konfigurálásához használja a Azure Portal.
+description: A Azure Portal használatával konfigurálhatja a számítási feladatok elkülönítését a dedikált SQL-készlethez.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 30862a0c16995e143df72f2a243419819941f54e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 302249b7d8490e43b841116c52500e686626433d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213040"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460621"
 ---
-# <a name="quickstart-configure-synapse-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Rövid útmutató: a szinapszis SQL-készlet számítási feladatainak elkülönítése munkaterhelési csoport használatával a Azure Portalban
+# <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Rövid útmutató: a dedikált SQL Pool számítási feladatok elkülönítésének beállítása munkaterhelés-csoporttal a Azure Portal
 
 Ebben a rövid útmutatóban a [munkaterhelés elkülönítését](sql-data-warehouse-workload-isolation.md) úgy konfigurálja, hogy létrehoz egy munkaterhelés-csoportot az erőforrások megőrzéséhez.  Ebben az oktatóanyagban a meghívott adatok betöltése munkaterhelési csoportot hozunk létre `DataLoads` . A munkaterhelés-csoport a rendszererőforrások 20%-át fogja lefoglalni.  Az adatterhelések 20%-os elkülönítése esetén azok garantált erőforrások, amelyek lehetővé teszik számukra, hogy kitalálják a SLA-kat.  A munkaterhelési csoport létrehozása után [hozzon létre egy](quickstart-create-a-workload-classifier-portal.md) számítási feladattal rendelkező számítási feladatot, amely lekérdezéseket rendel ehhez a munkaterhelés-csoporthoz
 
@@ -31,32 +31,32 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 > [!NOTE]
-> Ha SQL Pool-példányt hoz létre az Azure szinapszis Analytics szolgáltatásban, akkor egy új számlázható szolgáltatást eredményezhet.  További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Ha egy dedikált SQL Pool-példányt hoz létre az Azure szinapszis Analytics szolgáltatásban, akkor egy új számlázható szolgáltatást eredményezhet.  További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy SQL Pool-példánnyal a szinapszis SQL-ben, és hogy rendelkezik az adatbázis VEZÉRLÉSéhez szükséges engedélyekkel. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
+Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy dedikált SQL Pool-példánnyal a szinapszis SQL-ben, és rendelkezik a VEZÉRLÉSi adatbázis engedélyeivel. Ha létre kell hoznia egyet, használja a rövid útmutató [: DEDIKÁLT SQL-készlet létrehozása-portált](../quickstart-create-sql-pool-portal.md) egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
 
 >[!IMPORTANT] 
->A számítási feladatok kezelésének konfigurálásához az SQL-készletnek online állapotban kell lennie. 
+>A számítási feladatok kezelésének konfigurálásához a dedikált SQL-készletnek online állapotban kell lennie. 
 
 ## <a name="configure-workload-isolation"></a>Munkaterhelés elkülönítésének konfigurálása
-Az SQL-készlet erőforrásai elkülöníthetők és meghatározott számítási feladatokhoz vannak lefoglalva, munkaterhelési csoportok létrehozásával.  Tekintse meg a munkaterhelés [elkülönítési](sql-data-warehouse-workload-isolation.md) koncepciójának dokumentációját, ahol további információt talál arról, hogy a munkaterhelés-csoportok hogyan segítik a számítási feladatok kezelését.  A [create and összekapcsolás-Portal](create-data-warehouse-portal.md) rövid útmutatója létrehozta a **mySampleDataWarehouse** , és inicializálta azt 400 DWU. A következő lépésekkel hozhat létre munkaterhelés-csoportot a **mySampleDataWarehouse**-ben.
+
+A dedikált SQL Pool-erőforrások elkülönítése és meghatározott számítási feladatokhoz való lefoglalása munkaterhelési csoportok létrehozásával lehetséges.  Tekintse meg a munkaterhelés [elkülönítési](sql-data-warehouse-workload-isolation.md) koncepciójának dokumentációját, ahol további információt talál arról, hogy a munkaterhelés-csoportok hogyan segítik a számítási feladatok kezelését.  A [Létrehozás és összekapcsolás-portál](create-data-warehouse-portal.md) rövid útmutatója létrehozta a **mySampleDataWarehouse** , és inicializálta azt a DW100c címen. A következő lépésekkel hozhat létre munkaterhelés-csoportot a **mySampleDataWarehouse**-ben.
 
 Munkaterhelés-csoport létrehozása 20%-os elkülönítéssel:
-1.  Az Azure Portal bal oldalán kattintson az **Azure szinapszis Analytics (korábban SQL DW)** elemre.
-2.  Válassza a **mySampleDataWarehouse** lehetőséget az **Azure szinapszis Analytics (korábban SQL DW)** lapon. Megnyílik az SQL-készlet.
-3.  Kattintson a **munkaterhelés-kezelés**elemre.
-4.  Kattintson az **új munkaterhelés csoport**elemre.
-5.  Kattintson az **Egyéni**elemre.
+1.  Navigáljon a **mySampleDataWarehouse** dedikált SQL-készlet lapjához.
+1.  Válassza a  **munkaterhelés-kezelés** lehetőséget.
+1.  Válassza az **új munkaterhelési csoport** lehetőséget.
+1.  Válassza az **Egyéni** lehetőséget.
 
     ![Kattintson az egyéni elemre.](./media/quickstart-configure-workload-isolation-portal/create-wg.png)
 
 6.  Adja meg `DataLoads` a **munkaterhelés csoportot**.
-7.  Adja meg `20` a **(z)%. erőforrások minimális**értékeit.
+7.  Adja meg `20` a **(z)%. erőforrások minimális** értékeit.
 8.  Adja meg `5` a **(z)%-os minimális erőforrások számát**.
 9.  Adja meg `100` a **Cap-erőforrások%**-át.
-10.   Kattintson a **Mentés** gombra.
+10. Adja meg a **Mentés** gombot.
 
    ![Kattintson a Save (Mentés) gombra.](./media/quickstart-configure-workload-isolation-portal/configure-wg.png)
 
@@ -68,11 +68,11 @@ A munkaterhelési csoport létrehozásakor megjelenik egy portál értesítése.
 
 Az `DataLoads` oktatóanyagban létrehozott munkaterhelés-csoport törlése:
 1. Kattintson a **`...`** `DataLoads` munkaterhelés csoport jobb oldalán.
-2. Kattintson a **munkaterhelési csoport törlése**elemre.
+2. Kattintson a **munkaterhelési csoport törlése** elemre.
 3. Kattintson az **Igen** gombra, amikor a rendszer felszólítja a munkaterhelés-csoport törlésének megerősítésére.
 4. Kattintson a **Save (Mentés**) gombra.
 
-   ![Kattintson a Törlés gombra](./media/quickstart-configure-workload-isolation-portal/delete-wg.png)
+   ![Kattintson a Törlés gombra.](./media/quickstart-configure-workload-isolation-portal/delete-wg.png)
 
 
 
@@ -83,17 +83,13 @@ Az adattárház-egységek és az adattárházban tárolt adatforgalomért kell f
 
 Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki a dedikált SQL-készletet.
 
     ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start**gombra.
+2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start** gombra.
 
-3. Ha el szeretné távolítani az adattárházat, hogy ne számítsa ki a számítási és a tárolási díjat, válassza a **Törlés**lehetőséget.
-
-4. A létrehozott SQL-kiszolgáló eltávolításához válassza a **sqlpoolservername.database.Windows.net** lehetőséget az előző képen, majd válassza a **Törlés**lehetőséget.  A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
-
-5. Az erőforráscsoport eltávolításához válassza a **myResourceGroup**lehetőséget, majd válassza az **erőforráscsoport törlése**lehetőséget.
+3. Ha el szeretné távolítani az adattárházat, hogy ne számítsa ki a számítási és a tárolási díjat, válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

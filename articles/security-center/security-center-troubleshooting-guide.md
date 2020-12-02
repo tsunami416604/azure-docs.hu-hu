@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6646b8a563cfe156a23b47011a769c6df015a286
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 64b39dfa581b242fbb490d61b388f2bf260976ef
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340342"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460409"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 
@@ -29,7 +29,7 @@ Riasztási típusok:
 
 * Virtuális gép működésének elemzése (VMBA)
 * Hálózatelemzés
-* SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse) elemzése
+* SQL Database és az Azure szinapszis Analytics elemzése
 * Környezeti információk
 
 A riasztástípusoktól függően az ügyfelek a riasztás vizsgálatához szükséges információkat az alábbi erőforrások használatával gyűjthetik össze:
@@ -62,7 +62,7 @@ Ha megnyitja a szolgáltatások kezelése konzolt (Services. msc), akkor a Log A
 
 ![Szolgáltatások](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-Az ügynök adott verziójának megtekintéséhez nyissa meg a **Feladatkezelő eszközt**a **folyamatok** lapon, keresse meg a **log Analytics ügynök szolgáltatást**, kattintson rá a jobb gombbal, majd kattintson a **Tulajdonságok**parancsra. A **Részletek** lapon keresse meg a fájlverziót az alábbi módon:
+Az ügynök adott verziójának megtekintéséhez nyissa meg a **Feladatkezelő eszközt** a **folyamatok** lapon, keresse meg a **log Analytics ügynök szolgáltatást**, kattintson rá a jobb gombbal, majd kattintson a **Tulajdonságok** parancsra. A **Részletek** lapon keresse meg a fájlverziót az alábbi módon:
 
 ![Fájl](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
@@ -94,7 +94,7 @@ A **Figyelés állapota** megmutatja, hogy a Security Center miért nem tudja si
 | Az ügynök nem válaszol, vagy hiányzik az azonosító | A Security Center annak ellenére sem tudja lekérni a virtuális gépről beolvasott biztonsági adatokat, hogy az ügynök telepítve van. | Az ügynök nem jelent semmilyen adatot, például szívverést sem. Előfordulhat, hogy az ügynök sérült, vagy valami blokkolja a forgalmat. Vagy az ügynök jelentéskészítési adatforrást tartalmaz, de hiányzik az Azure-erőforrás azonosítója, így nem lehet az Azure-beli virtuális géphez igazodni. A Linux hibaelhárításával kapcsolatban lásd: a [Linux rendszerhez készült log Analytics-ügynök hibaelhárítási útmutatója](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Windows hibaelhárítása: [Windows rendszerű virtuális gépek hibaelhárítása](../virtual-machines/extensions/oms-windows.md#troubleshoot-and-support). |
 | Az ügynök nincs telepítve | Az adatgyűjtés le van tiltva. | Kapcsolja be az adatgyűjtést a biztonsági házirendben, vagy telepítse manuálisan a Log Analytics-ügynököt. |
 
-## <a name="troubleshooting-monitoring-agent-network-requirements"></a>A figyelőügynök hibaelhárítása – hálózati követelmények <a name="mon-network-req"></a>
+## <a name="troubleshooting-monitoring-agent-network-requirements"></a>A figyelési ügynök hálózati követelményeinek hibaelhárítása <a name="mon-network-req"></a>
 
 Ahhoz, hogy az ügynökök kapcsolódni és regisztrálni tudjanak a Security Centerben, hozzáféréssel kell rendelkezniük a hálózati erőforrásokhoz, beleértve a portszámokat és a tartományok URL-címét.
 
@@ -105,10 +105,10 @@ Az alábbi táblázat a kommunikációhoz szükséges erőforrásokat tartalmazz
 
 | Ügynök erőforrása | Portok | HTTPS-ellenőrzés kihagyása |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Yes |
-| *.oms.opinsights.azure.com | 443 | Yes |
-| *.blob.core.windows.net | 443 | Yes |
-| *.azure-automation.net | 443 | Yes |
+| *.ods.opinsights.azure.com | 443 | Igen |
+| *.oms.opinsights.azure.com | 443 | Igen |
+| *.blob.core.windows.net | 443 | Igen |
+| *.azure-automation.net | 443 | Igen |
 
 Ha problémába ütközik az ügynök előkészítése során, olvassa el a következő cikket: [Az Operations Management Suite előkészítési problémáinak hibaelhárítása](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 

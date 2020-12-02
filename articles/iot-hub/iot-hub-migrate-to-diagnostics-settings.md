@@ -8,18 +8,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: eb53e7052db6d4de365864184b9bd2e6585b7e2d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: dfd819d82f5e35183802e33e5d423cad4de36c38
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412108"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461582"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>IoT Hub migrálása az Operations monitoring szolgáltatásból Azure Monitor erőforrás-naplókba
 
 Azok az ügyfelek, akik a [műveletek figyelésével](iot-hub-operations-monitoring.md) követik a műveletek állapotát, IoT hub áttelepíthetik ezt a munkafolyamatot [Azure monitor erőforrás-naplókra](../azure-monitor/platform/platform-logs-overview.md), a Azure monitor egy funkciójának használatára. Az erőforrás-naplók számos Azure-szolgáltatás erőforrás-szintű diagnosztikai információit biztosítják.
 
-**A IoT hub Operations monitoring funkciója elavult** , és el lett távolítva a portálról. Ez a cikk azokat a lépéseket ismerteti, amelyekkel áthelyezheti a munkaterheléseket az operatív figyelésből Azure Monitor erőforrás-naplókba. Az elavult idővonalról további információt az [Azure IoT-megoldások monitorozása Azure monitor és Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)című témakörben talál.
+**A IoT hub Operations monitoring funkciója elavult**, és el lett távolítva a portálról. Ez a cikk azokat a lépéseket ismerteti, amelyekkel áthelyezheti a munkaterheléseket az operatív figyelésből Azure Monitor erőforrás-naplókba. Az elavult idővonalról további információt az [Azure IoT-megoldások monitorozása Azure monitor és Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)című témakörben talál.
 
 ## <a name="update-iot-hub"></a>IoT Hub frissítése
 
@@ -49,9 +49,9 @@ A Azure Portal IoT Hub frissítéséhez először hozzon létre egy diagnosztika
 
 1. A beállítások mentéséhez válassza a **Mentés** lehetőséget.
 
-Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezt követően a naplók a konfigurált célhelyen jelennek meg. A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [adatok gyűjtése és felhasználása az Azure-erőforrásokból](/azure/azure-monitor/platform/platform-logs-overview).
+Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezt követően a naplók a konfigurált célhelyen jelennek meg. A diagnosztika konfigurálásával kapcsolatos további információkért lásd: [adatok gyűjtése és felhasználása az Azure-erőforrásokból](../azure-monitor/platform/platform-logs-overview.md).
 
-A diagnosztikai beállítások létrehozásával, beleértve a PowerShell-lel és az Azure CLI-vel kapcsolatos részletes információkat a Azure Monitor dokumentációjának [diagnosztikai beállítások](/azure/azure-monitor/platform/diagnostic-settings) című részében találja.
+A diagnosztikai beállítások létrehozásával, beleértve a PowerShell-lel és az Azure CLI-vel kapcsolatos részletes információkat a Azure Monitor dokumentációjának [diagnosztikai beállítások](../azure-monitor/platform/diagnostic-settings.md) című részében találja.
 
 ### <a name="turn-off-operations-monitoring"></a>Műveletek figyelésének kikapcsolása
 

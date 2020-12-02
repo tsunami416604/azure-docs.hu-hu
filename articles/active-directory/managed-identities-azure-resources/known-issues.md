@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/06/2020
+ms.date: 12/01/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: c41ec06b1f985296377d27dcbe72b5f41224809b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d7debce83928e21072c981b007e8048bfc4c594
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835407"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460924"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásával kapcsolatos gyakori kérdések és ismert problémák
 
@@ -85,6 +85,46 @@ Nem. A felügyelt identitások jelenleg nem támogatják a könyvtárak között
 - Rendszer által hozzárendelt felügyelt identitás: írási engedélyre van szüksége az erőforráson. Virtuális gépek esetében például a Microsoft.Compute/virtualMachines/write engedélyre van szükség. Ez a művelet az erőforrás-specifikus beépített szerepkörök, például a [virtuális gépek közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)része.
 - Felhasználó által hozzárendelt felügyelt identitás: írási engedélyre van szüksége az erőforráson. Virtuális gépek esetében például a Microsoft.Compute/virtualMachines/write engedélyre van szükség. A felügyelt identitás- [kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkör-hozzárendelésen felül a felügyelt identitáson kívül is.
 
+### <a name="how-do-i-prevent-the-creation-of-user-assigned-managed-identities"></a>Hogyan a felhasználó által hozzárendelt felügyelt identitások létrehozásának megakadályozása?
+
+Megtarthatja, hogy a felhasználók az [Azure Policy](../../governance/policy/overview.md) használatával hozzanak létre felhasználó által hozzárendelt felügyelt identitásokat
+
+- Lépjen a [Azure Portalra](https://portal.azure.com) , és nyissa meg a **házirendet**.
+- **Definíciók** kiválasztása
+- Válassza a **+ szabályzat definíciója** lehetőséget, és adja meg a szükséges információkat.
+- A házirend-szabály szakaszban illessze be
+
+```json
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.ManagedIdentity/userAssignedIdentities"
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters": {}
+}
+
+```
+
+A szabályzat létrehozása után rendelje hozzá a használni kívánt erőforráscsoporthoz.
+
+- Navigáljon az erőforráscsoportok elemre.
+- Keresse meg a teszteléshez használt erőforráscsoportot.
+- A bal oldali menüben válassza a **szabályzatok** lehetőséget.
+- Válassza a **házirend kiosztása** elemet.
+- Az **alapok** szakaszban adja meg a következőket:
+    - **Hatókör** A teszteléshez használt erőforráscsoport
+    - **Házirend-definíció**: a korábban létrehozott szabályzat.
+- Hagyja meg az összes többi beállítást az alapértelmezett értékeken, majd válassza a **felülvizsgálat + létrehozás** lehetőséget.
+
+Ezen a ponton sikertelen lesz a felhasználó által hozzárendelt felügyelt identitások létrehozása az erőforráscsoporthoz.
+
+  ![Szabályzat megsértése](./media/known-issues/policy-violation.png)
 
 ## <a name="known-issues"></a>Ismert problémák
 

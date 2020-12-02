@@ -1,6 +1,6 @@
 ---
-title: A Parquet-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió)
-description: Ebből a cikkből megtudhatja, hogyan kérdezheti le a Parquet-fájlokat a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával.
+title: A Parquet-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel
+description: Ebből a cikkből megtudhatja, hogyan kérdezheti le a Parquet-fájlokat a kiszolgáló nélküli SQL-készlet használatával.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 97b34d85e4628c0ef01dd02d3a9be85da7f8291e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 20bfbaeea48711a680877e4d5d8f618e84eb12d7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685613"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462576"
 ---
-# <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
+# <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
-Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával, amely a Parquet-fájlokat fogja olvasni.
+Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést olyan kiszolgáló nélküli SQL-készlet használatával, amely beolvassa a parketta-fájlokat.
 
 ## <a name="quickstart-example"></a>Rövid útmutató – példa
 
@@ -38,8 +38,8 @@ from openrowset(
 Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájl SAS-kulccsal vagy egyéni Azure-identitással védett, akkor az SQL-bejelentkezéshez be kell állítania a [kiszolgálói szintű hitelesítő adatokat](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy UTF-8 adatbázis-rendezést használ (például `Latin1_General_100_CI_AS_SC_UTF8` ), mert a parketta-fájlokban lévő karakterlánc-értékek UTF-8 kódolással vannak kódolva.
-> A parketta-fájl kódolása nem egyezik, és a rendezés váratlan konverziós hibákat okozhat.
+> Győződjön meg arról, hogy UTF-8 adatbázis-rendezést használ (például `Latin1_General_100_CI_AS_SC_UTF8` ), mert a parkettázott fájlokban lévő karakterlánc-értékek UTF-8 kódolással vannak kódolva.
+> A PARQUEt fájlban lévő szöveg kódolása nem egyezik, és a rendezés váratlan konverziós hibákat okozhat.
 > Az aktuális adatbázis alapértelmezett rendezését az alábbi T-SQL-utasítás használatával egyszerűen módosíthatja: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>Adatforrás használata
@@ -168,6 +168,6 @@ ORDER BY
 
 A Parquet típusú SQL natív típushoz való leképezéshez a [Parquet típusú leképezéshez](develop-openrowset.md#type-mapping-for-parquet).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan lehet [lekérdezni a parketta beágyazott típusait](query-parquet-nested-types.md).

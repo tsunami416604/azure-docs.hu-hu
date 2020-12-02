@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: a879ac81859c855bb7b7bc2eddb1e3c9b62adb34
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 31298be4d50c7f562e2e2b9adbf889b165b197e5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321410"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461867"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Transzparens adattitkosítás (TDE)-védő eltávolítása a PowerShell használatával
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -35,13 +35,13 @@ Ne feledje, hogy ha a TDE-védőt Key Vaultban törli, akár 10 percen belül, m
 Ez a útmutató a feltört incidensek válasza után a kívánt eredménytől függően két megközelítést mutat be:
 
 - Az adatbázisok Azure SQL Database/Azure szinapszis Analyticsben való **elérhetetlenné** tétele.
-- A Azure SQL Database/Azure Azure szinapszis Analytics (korábban SQL Data Warehouse) adatbázisainak **elérhetetlenné** tétele.
+- Az adatbázisok Azure SQL Database/Azure Azure szinapszis Analyticsben való elérhetetlenné tétele nem **érhető** el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetéssel kell rendelkeznie, és az előfizetés rendszergazdájának kell lennie
 - A Azure PowerShell telepítése és futtatása szükséges.
-- Ez a útmutató azt feltételezi, hogy már használ egy kulcsot Azure Key Vault TDE-védőként egy Azure SQL Database vagy Azure szinapszis (korábban SQL Data Warehouse) számára. További információ: [TRANSZPARENS ADATTITKOSÍTÁS BYOK-támogatással](transparent-data-encryption-byok-overview.md) .
+- Ez a útmutató azt feltételezi, hogy már használ egy kulcsot Azure Key Vault TDE-védőként egy Azure SQL Database vagy egy Azure szinapszis számára. További információ: [TRANSZPARENS ADATTITKOSÍTÁS BYOK-támogatással](transparent-data-encryption-byok-overview.md) .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -189,7 +189,7 @@ A parancsokra vonatkozó hivatkozásokat az [Azure CLI](/cli/azure/keyvault/key)
 
 [!INCLUDE [sql-database-akv-permission-delay](../includes/sql-database-akv-permission-delay.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan forgathatja el egy kiszolgáló TDE-védelmezőjét a biztonsági követelmények teljesítése érdekében: [a transzparens adattitkosítás Protector elforgatása a PowerShell használatával](transparent-data-encryption-byok-key-rotation.md)
 - Ismerkedés a Bring Your Own Key támogatásával a TDE-hez: a [TDE bekapcsolása a saját kulcsával Key Vault a PowerShell használatával](transparent-data-encryption-byok-configure.md)

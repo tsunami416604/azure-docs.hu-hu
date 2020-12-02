@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 3968f19329536169c3fb3eb1fbbaff99e99c293d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ae8b01522a248b8b1dbdd255a9fcd55f16cf2369
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079649"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461711"
 ---
 # <a name="develop-without-using-an-azure-iot-hub-sdk"></a>Fejlesztés Azure IoT Hub SDK használata nélkül
 
@@ -46,12 +46,12 @@ Segítség az Azure IoT SDK-val nem rendelkező következő protokollok használ
 
 * Eszköz-vagy háttérbeli alkalmazások a **AMQP**, lásd: [AMQP-támogatás](iot-hub-amqp-support.md).
 
-* A **MQTT**eszköz alkalmazásai: [MQTT-támogatás](iot-hub-mqtt-support.md). Ennek a témakörnek a többsége közvetlenül a MQTT protokoll használatát kezeli. Emellett a [IOT MQTT-minta tárházának](https://github.com/Azure-Samples/IoTMQTTSample)használatával kapcsolatos információkat is tartalmaz. Ez a tárház C mintákat tartalmaz, amelyek az Eclipse Mosquitto könyvtárat használják az üzenetek IoT Hub való küldéséhez.
+* A **MQTT** eszköz alkalmazásai: [MQTT-támogatás](iot-hub-mqtt-support.md). Ennek a témakörnek a többsége közvetlenül a MQTT protokoll használatát kezeli. Emellett a [IOT MQTT-minta tárházának](https://github.com/Azure-Samples/IoTMQTTSample)használatával kapcsolatos információkat is tartalmaz. Ez a tárház C mintákat tartalmaz, amelyek az Eclipse Mosquitto könyvtárat használják az üzenetek IoT Hub való küldéséhez.
 
-* Eszköz-vagy háttérbeli alkalmazások **https**-en, tekintse meg az [Azure IoT hub REST API-kat](https://docs.microsoft.com/rest/api/iothub/). Ügyeljen arra, hogy a [fejlesztés előfeltételei](#development-prerequisites)szerint ne használja az X. 509 HITELESÍTÉSSZOLGÁLTATÓ (CA) hitelesítést a HTTPS protokollal.
+* Eszköz-vagy háttérbeli alkalmazások **https**-en, tekintse meg az [Azure IoT hub REST API-kat](/rest/api/iothub/). Ügyeljen arra, hogy a [fejlesztés előfeltételei](#development-prerequisites)szerint ne használja az X. 509 HITELESÍTÉSSZOLGÁLTATÓ (CA) hitelesítést a HTTPS protokollal.
 
 Az eszközök esetében erősen ajánlott a MQTT használata, ha az eszköz támogatja azt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [MQTT-támogatás](iot-hub-mqtt-support.md)

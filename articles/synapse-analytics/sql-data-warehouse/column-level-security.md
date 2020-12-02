@@ -1,5 +1,5 @@
 ---
-title: Mi az az Azure Szinapszishoz tartozó oszlop szintű biztonság?
+title: Oszlop szintű biztonság dedikált SQL-készlethez
 description: A Column-Level biztonság lehetővé teszi az ügyfelek számára, hogy az adatbázis-táblázat oszlopaihoz való hozzáférést a felhasználó végrehajtási környezete vagy csoporttagság alapján szabályozzák, leegyszerűsítve az alkalmazás biztonságának megtervezését és kódolását, és lehetővé teszi az oszlopok hozzáférésére vonatkozó korlátozások megvalósítását.
 services: synapse-analytics
 author: julieMSFT
@@ -12,27 +12,27 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: f8bb40f9c80a0785c81c7aeacf783553bf73aa90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 817a912dabfc5365eabe8e0dabd7e0b40e40c525
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259883"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462506"
 ---
-# <a name="column-level-security"></a>Oszlop szintű biztonság
+# <a name="column-level-security"></a>Oszlopszintű biztonság
 
 A Column-Level biztonság lehetővé teszi, hogy az ügyfelek a felhasználó végrehajtási környezete vagy csoporttagság alapján szabályozzák a táblákhoz való hozzáférést.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Mivel ez a videó közzé lett téve, az Azure szinapszis számára elérhetővé vált a [sor szintjének biztonsága](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+Mivel ez a videó közzé lett téve, a [soros szintű biztonság](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) elérhetővé vált a dedikált SQL-készlet számára az Azure szinapszisban.
 
 Az oszlop szintű biztonság leegyszerűsíti az alkalmazás biztonságának megtervezését és kódolását, ami lehetővé teszi az oszlopokhoz való hozzáférés korlátozását a bizalmas adatok védelme érdekében. Tegyük fel például, hogy egy adott felhasználó csak a saját részlegéhez tartozó táblázat bizonyos oszlopaihoz fér hozzá. A hozzáférés-korlátozási logika az adatbázis-szinten található, nem pedig egy másik alkalmazási szinten lévő adatoktól. Az adatbázis minden alkalommal alkalmazza a hozzáférési korlátozásokat, amikor az adathozzáférés bármely szintjéről megkísérelhető. Ez a korlátozás megbízhatóbb és robusztus biztonságot tesz lehetővé azáltal, hogy csökkenti az általános biztonsági rendszerek felületi területét. Emellett az oszlop szintű biztonság is szükségtelenné teszi a nézetek bevezetését, hogy kiszűrje a hozzáférési korlátozásokat a felhasználók számára.
 
-Az oszlop szintű biztonságot a [Grant](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-utasítással implementálhatja. Ezzel a mechanizmussal az SQL és a Azure Active Directory (Azure AD) hitelesítés is támogatott.
+Az oszlop szintű biztonság a [Grant](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-utasítással valósítható meg. Ezzel a mechanizmussal az SQL és a Azure Active Directory (Azure AD) hitelesítés is támogatott.
 
 ![A diagramon egy sematikus táblázat látható, amelyben az első oszlop egy zárt lakattal és a hozzá tartozó cellákkal narancssárga színű, míg a többi oszlop fehér cella.](./media/column-level-security/cls.png)
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Szintaxis
 
 ```syntaxsql
 GRANT <permission> [ ,...n ] ON
@@ -85,5 +85,5 @@ SELECT * FROM Membership;
 
 Néhány példa arra, hogyan használják az oszlop szintű biztonságot a mai napon:
 
-- A pénzügyi szolgáltatások vállalata csak a fiókok kezelői számára teszi lehetővé, hogy hozzáférjenek az ügyfél társadalombiztosítási számaihoz (SSN), a telefonszámokhoz és az egyéb személyazonosításra alkalmas adatokhoz.
+- Egy pénzügyi szolgáltatói cég lehetővé teszi, hogy csak a fiókok kezelői férhessenek hozzá az ügyfél társadalombiztosítási számaihoz (SSN), a telefonszámokhoz és egyéb személyes adatokhoz.
 - Az egészségügyi szolgáltató lehetővé teszi, hogy csak az orvosok és ápolók férhessenek hozzá bizalmas egészségügyi adatokhoz, miközben a számlázási részleg tagjai nem tekintik meg ezeket az adatokat.

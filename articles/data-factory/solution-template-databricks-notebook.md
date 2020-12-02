@@ -11,24 +11,24 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: f9dc11bd046bdc3a8913b4b05f1b68b84c9736c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c20508d27d03c00a6842979731fb905bbaa9def
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438449"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461256"
 ---
 # <a name="transformation-with-azure-databricks"></a>Átalakítás az Azure Databricks szolgáltatással
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ebben az oktatóanyagban egy végpontok közötti folyamatot hoz létre, amely tartalmazza az **érvényesítési**, az **adatmásolási**és a **Jegyzetfüzet** -tevékenységeket Azure Data Factoryban.
+Ebben az oktatóanyagban egy végpontok közötti folyamatot hoz létre, amely tartalmazza az **érvényesítési**, az **adatmásolási** és a **Jegyzetfüzet** -tevékenységeket Azure Data Factoryban.
 
 - Az **ellenőrzéssel** biztosítható, hogy a forrás-adatkészlet készen álljon az alsóbb rétegbeli felhasználásra, mielőtt aktiválja a másolási és elemzési feladatot.
 
 - Az **Adatmásolás** duplikálja a forrás adatkészletet a fogadó tárolóba, amely a Azure Databricks jegyzetfüzetben DBFS van csatlakoztatva. Így az adatkészletet közvetlenül a Spark használhatja fel.
 
-- A **Jegyzetfüzet** elindítja a Databricks-jegyzetfüzetet, amely átalakítja az adatkészletet. Emellett hozzáadja az adatkészletet egy feldolgozott mappához vagy az Azure Azure szinapszis Analyticshez (korábban SQL Data Warehouse).
+- A **Jegyzetfüzet** elindítja a Databricks-jegyzetfüzetet, amely átalakítja az adatkészletet. Emellett hozzáadja az adatkészletet egy feldolgozott mappához vagy az Azure Azure szinapszis Analytics szolgáltatáshoz.
 
 Az egyszerűség kedvéért az oktatóanyagban szereplő sablon nem hoz létre ütemezett triggert. Szükség esetén egyet is hozzáadhat.
 
@@ -46,9 +46,9 @@ Az egyszerűség kedvéért az oktatóanyagban szereplő sablon nem hoz létre �
 
 **Átalakítási** jegyzetfüzet importálása a Databricks-munkaterületre:
 
-1. Jelentkezzen be Azure Databricks munkaterületére, majd válassza az **Importálás**lehetőséget.
+1. Jelentkezzen be Azure Databricks munkaterületére, majd válassza az **Importálás** lehetőséget.
        ![A munkaterületek importálására szolgáló menüparancsok a ](media/solution-template-Databricks-notebook/import-notebook.png) munkaterület elérési útjának különbözőek lehetnek, de később is megjegyezhető.
-1. Válassza **az Importálás innen: URL**lehetőséget. A szövegmezőbe írja be a szöveget `https://adflabstaging1.blob.core.windows.net/share/Transformations.html` .
+1. Válassza **az Importálás innen: URL** lehetőséget. A szövegmezőbe írja be a szöveget `https://adflabstaging1.blob.core.windows.net/share/Transformations.html` .
 
    ![Jegyzetfüzetek importálásának kiválasztása](media/solution-template-Databricks-notebook/import-from-url.png)
 
@@ -56,37 +56,37 @@ Az egyszerűség kedvéért az oktatóanyagban szereplő sablon nem hoz létre �
 
    Az importált jegyzetfüzetben lépjen az **5. parancsra** az alábbi kódrészletben látható módon.
 
-   - Cserélje le `<storage name>` a és a értékét `<access key>` a saját Storage-kapcsolatok adataira.
+   - Cserélje le `<storage name>` a és a értékét `<access key>` a saját Storage-kapcsolatok adataira.
    - Használja a Storage-fiókot a `sinkdata` tárolóval.
 
     ```python
-    # Supply storageName and accessKey values  
-    storageName = "<storage name>"  
-    accessKey = "<access key>"  
+    # Supply storageName and accessKey values  
+    storageName = "<storage name>"  
+    accessKey = "<access key>"  
 
-    try:  
-      dbutils.fs.mount(  
-        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
-        mount_point = "/mnt/Data Factorydata",  
-        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
+    try:  
+      dbutils.fs.mount(  
+        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
+        mount_point = "/mnt/Data Factorydata",  
+        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
 
-    except Exception as e:  
-      # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.
+    except Exception as e:  
+      # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.
 
-    import re
-    result = re.findall(r"\^\s\*Caused by:\s*\S+:\s\*(.*)\$", e.message, flags=re.MULTILINE)
-    if result:
-      print result[-1] \# Print only the relevant error message
-    else:  
-      print e \# Otherwise print the whole stack trace.  
+    import re
+    result = re.findall(r"\^\s\*Caused by:\s*\S+:\s\*(.*)\$", e.message, flags=re.MULTILINE)
+    if result:
+      print result[-1] \# Print only the relevant error message
+    else:  
+      print e \# Otherwise print the whole stack trace.  
     ```
 
 1. **Databricks hozzáférési token** létrehozása Data Factory számára a Databricks eléréséhez.
    1. A Databricks munkaterületen válassza ki a felhasználói profil ikont a jobb felső sarokban.
-   1. Válassza a **felhasználói beállítások**lehetőséget.
+   1. Válassza a **felhasználói beállítások** lehetőséget.
     ![A felhasználói beállítások menü parancsa](media/solution-template-Databricks-notebook/user-setting.png)
    1. Válassza az **új jogkivonat előállítása** lehetőséget a **hozzáférési tokenek** lapon.
-   1. Válassza a **készítés**lehetőséget.
+   1. Válassza a **készítés** lehetőséget.
 
     !["Generált" gomb](media/solution-template-Databricks-notebook/generate-new-token.png)
 
@@ -118,7 +118,7 @@ Az egyszerűség kedvéért az oktatóanyagban szereplő sablon nem hoz létre �
 
         ![A fürthöz való csatlakozásra kiválasztott beállítások](media/solution-template-Databricks-notebook/databricks-connection.png)
 
-1. Válassza **a sablon használata**lehetőséget. Ekkor létrejön egy folyamat.
+1. Válassza **a sablon használata** lehetőséget. Ekkor létrejön egy folyamat.
 
     ![Folyamat létrehozása](media/solution-template-Databricks-notebook/new-pipeline.png)
 
@@ -126,23 +126,23 @@ Az egyszerűség kedvéért az oktatóanyagban szereplő sablon nem hoz létre �
 
 Az új folyamat során a legtöbb beállítás automatikusan be van állítva az alapértelmezett értékekkel. Tekintse át a folyamat konfigurációit, és végezze el a szükséges módosításokat.
 
-1. Az **érvényesítési** tevékenység **rendelkezésre állása jelzőben**ellenőrizze, hogy a forrás **adatkészlet** értéke a korábban létrehozott értékre van-e állítva `SourceAvailabilityDataset` .
+1. Az **érvényesítési** tevékenység **rendelkezésre állása jelzőben** ellenőrizze, hogy a forrás **adatkészlet** értéke a korábban létrehozott értékre van-e állítva `SourceAvailabilityDataset` .
 
    ![Forrás adatkészlet értéke](media/solution-template-Databricks-notebook/validation-settings.png)
 
-1. Az **Adatmásolási** tevékenység **fájl – blob**elemnél keresse meg a **forrás** és **a** fogadó lapokat. Szükség esetén módosítsa a beállításokat.
+1. Az **Adatmásolási** tevékenység **fájl – blob** elemnél keresse meg a **forrás** és **a** fogadó lapokat. Szükség esetén módosítsa a beállításokat.
 
    - **Forrás** lap ![ forrás lapja](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
    - **Sink** Fogadó lap fogadójának ![ lapja](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
-1. A **Jegyzetfüzet** tevékenység- **átalakítás**területén szükség szerint tekintse át és frissítse az elérési utakat és beállításokat.
+1. A **Jegyzetfüzet** tevékenység- **átalakítás** területén szükség szerint tekintse át és frissítse az elérési utakat és beállításokat.
 
    A **Databricks társított szolgáltatásnak** előre ki kell töltenie egy előző lépésben megadott értékkel, ahogy az látható: ![ a Databricks társított szolgáltatás feltöltésének értéke](media/solution-template-Databricks-notebook/notebook-activity.png)
 
    A **Jegyzetfüzet** beállításainak ellenõrzése:
   
-    1. Válassza a **Beállítások** lapot. A **Jegyzetfüzet elérési útja**beállításnál ellenőrizze, hogy helyes-e az alapértelmezett elérési út. Előfordulhat, hogy a megfelelő jegyzetfüzet elérési útját kell megkeresnie és kiválasztania.
+    1. Válassza a **Beállítások** lapot. A **Jegyzetfüzet elérési útja** beállításnál ellenőrizze, hogy helyes-e az alapértelmezett elérési út. Előfordulhat, hogy a megfelelő jegyzetfüzet elérési útját kell megkeresnie és kiválasztania.
 
        ![Jegyzetfüzet elérési útja](media/solution-template-Databricks-notebook/notebook-settings.png)
 
@@ -183,6 +183,6 @@ Az új folyamat során a legtöbb beállítás automatikusan be van állítva az
     > A Data Factory-folyamat futtatásával való korrelációhoz ez a példa a folyamat futtatási AZONOSÍTÓját fűzi hozzá az adatok gyárból a kimeneti mappába. Ez segít nyomon követni az egyes futtatások által létrehozott fájlokat.
     > ![Hozzáfűzött folyamat futtatási azonosítója](media/solution-template-Databricks-notebook/verify-data-files.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Data Factory bemutatása](introduction.md)

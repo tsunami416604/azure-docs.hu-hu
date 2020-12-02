@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: 0b445f9d4fdda0b1fac9dcdb4344533cfd7d37a9
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: fd3fa04d2d7e868476838788dd9cf0e27c07aeca
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491239"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461765"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó
 
@@ -37,7 +37,7 @@ A központi telepítési sablon tartalmazza a megoldását alkotó összes Azure
 - **Tesztvezetés Azure Resource Manager sablon** – töltse fel a Azure Resource Manager sablont tartalmazó. zip fájlt. További információ a Azure Resource Manager sablon létrehozásáról a rövid útmutató a [Azure Resource Manager-sablonok létrehozása és telepítése a Azure Portal használatával](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)című cikkben található.
 
     > [!note]
-    > A sikeres közzétételhez fontos, hogy érvényesítse az ARM-sablon formátumát. Ezt kétféleképpen teheti meg (1) egy [online API-eszköz](https://docs.microsoft.com/rest/api/resources/deployments/validate) vagy (2) használatával, [tesztelési célú telepítéssel](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal).
+    > A sikeres közzétételhez fontos, hogy érvényesítse az ARM-sablon formátumát. Ezt kétféleképpen teheti meg (1) egy [online API-eszköz](/rest/api/resources/deployments/validate) vagy (2) használatával, [tesztelési célú telepítéssel](../azure-resource-manager/templates/deploy-portal.md).
 
 - **Tesztelési meghajtó időtartama** (kötelező) – Itt adhatja meg, hogy hány óra elteltével marad aktív a tesztvezetés. A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után. Csak egész számokat használjon (például "2" óra érvényes, "1,5").
 
@@ -316,7 +316,7 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
    6. Kattintson a **Létrehozás** gombra.
    7. Az alkalmazás létrehozása után válassza a **Tulajdonságok**  >  **több-bérlős beállítást** , majd a **Mentés** lehetőséget.
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 5. Másolja ki az alkalmazás AZONOSÍTÓját a regisztrált alkalmazáshoz, és illessze be a test Drive (teszt) mezőbe.
 
@@ -334,9 +334,9 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
 
       ![Engedélyek hozzáadása](media/test-drive/access-control-permissions.jpg)
 
-   1. Kattintson a **Mentés** gombra.
+   1. Válassza a **Mentés** lehetőséget.
 
-7. **Azure ad alkalmazás** hitelesítési kulcs létrehozása. A **kulcsok** területen adja meg a **kulcs leírását** , állítsa be az időtartamot, hogy **Soha ne járjon le** (a lejárt kulcs megszakítja a tesztelési meghajtót éles környezetben), majd válassza a **Mentés** lehetőséget. Másolja és illessze be ezt az értéket a szükséges tesztvezetés mezőjébe.
+7. **Azure ad alkalmazás** hitelesítési kulcs létrehozása. A **kulcsok** területen adja meg a **kulcs leírását**, állítsa be az időtartamot, hogy **Soha ne járjon le** (a lejárt kulcs megszakítja a tesztelési meghajtót éles környezetben), majd válassza a **Mentés** lehetőséget. Másolja és illessze be ezt az értéket a szükséges tesztvezetés mezőjébe.
 
 ![Megjeleníti az Azure AD-alkalmazás kulcsait](media/test-drive/azure-ad-app-keys.png)
 
@@ -352,7 +352,7 @@ Most, hogy az összes Test Drive-mező elkészült, **tegye közzé** újra az a
 
 Ne törölje az ügyfelek számára kiépített tesztvezetés-példányokat. a test Drive szolgáltatás automatikusan törli ezeket az erőforráscsoportokat, miután az ügyfél befejezte azt.
 
-Ha már elégedett az előzetes verzió ajánlatával, itt az ideje, hogy **éljünk** ! Végső felülvizsgálati folyamattal ellenőrizheti a teljes végpontok közötti élményt. Ha elutasítjuk az ajánlatot, elküldjük Önnek az ajánlat mérnöki kapcsolattartóját, amely elmagyarázza, mit kell rögzíteni.
+Ha már elégedett az előzetes verzió ajánlatával, itt az ideje, hogy **éljünk**! Végső felülvizsgálati folyamattal ellenőrizheti a teljes végpontok közötti élményt. Ha elutasítjuk az ajánlatot, elküldjük Önnek az ajánlat mérnöki kapcsolattartóját, amely elmagyarázza, mit kell rögzíteni.
 
 ## <a name="next-steps"></a>További lépések
 

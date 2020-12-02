@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 063373b2ad21f46e37145a544b156ed100621a4c
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 6bb54cf6a5545a49b3c84df59a9ee1294b788846
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327015"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462679"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Az Azure szinapszis SQL által támogatott Transact-SQL-funkciók
 
 Az Azure szinapszis SQL egy big data analitikus szolgáltatás, amely lehetővé teszi, hogy a T-SQL nyelv használatával lekérdezéseket és elemzéseket lehessen készíteni az adatairól. Az adatelemzéshez a SQL Server és Azure SQL Database által használt SQL-nyelv szabványos ANSI-kompatibilis dialektusát használhatja. 
 
-Az SQL Server nélküli és a dedikált modellben használt Transact-SQL nyelv a különböző objektumokra hivatkozhat, és a támogatott funkciók némelyike eltérő lehet. Ezen az oldalon magas szintű Transact-SQL nyelvi különbségeket talál a szinapszis SQL felhasználási modelljei között.
+A Transact-SQL nyelv használata a kiszolgáló nélküli SQL-készletben és a dedikált modellben különböző objektumokra hivatkozhat, és a támogatott funkciók némelyike eltérő lehet. Ezen az oldalon magas szintű Transact-SQL nyelvi különbségeket talál a szinapszis SQL felhasználási modelljei között.
 
 ## <a name="database-objects"></a>Adatbázis-objektumok
 
@@ -116,10 +116,10 @@ Az adatlekérdezéshez különféle eszközöket használhat a szinapszis SQL-he
 | **Power BI** | Igen | [Igen](tutorial-connect-power-bi-desktop.md) |
 | **Azure Analysis Service** | Igen | Igen |
 | **Azure Data Studio** | Igen | Igen, 1.18.0 vagy újabb verzió. Az SQL-parancsfájlok és az SQL-jegyzetfüzetek támogatottak. |
-| **SQL Server Management Studio** | Igen | Igen, 18,5-es vagy újabb verzió |
+| **Az SQL Server Management Studio** | Igen | Igen, 18,5-es vagy újabb verzió |
 
 > [!NOTE]
-> A SSMS segítségével csatlakozhat a kiszolgáló nélküli SQL-készlethez (előzetes verzió) és a lekérdezéshez. Részlegesen támogatott a 18,5-es verziótól kezdődően, csak a kapcsolódáshoz és a lekérdezésekhez használható.
+> A SSMS segítségével csatlakozhat a kiszolgáló nélküli SQL-készlethez és a lekérdezéshez. Részlegesen támogatott a 18,5-es verziótól kezdődően, csak a kapcsolódáshoz és a lekérdezésekhez használható.
 
 Az alkalmazások többsége szabványos Transact-SQL nyelvet használ a szinapszis SQL dedikált és kiszolgáló nélküli használati modelljeinek lekérdezéséhez.
 

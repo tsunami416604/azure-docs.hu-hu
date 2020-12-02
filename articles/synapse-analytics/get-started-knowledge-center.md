@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 0314f5e55a476cd1cd1f8a31bd918e0ebb64c75f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 611d2163e242d7851398821344c3ed595df364cb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95254238"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460264"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>A szinapszis Tudásközpont megismerése
 
@@ -56,7 +56,10 @@ A **Tudásközpont** három dolgot tesz lehetővé:
 1. Kattintson a **Futtatás** gombra.
 1. Ez több táblát hoz létre a New York-i taxik adataihoz, és betölti azokat a T-SQL COPY paranccsal.
 
-## <a name="next-steps"></a>Következő lépések
+    > [!NOTE] 
+    > Ha az SQL-parancsfájlhoz egy dedikált SQL-készlettel (korábban SQL DW) használja a minta-katalógust, csak egy meglévő dedikált SQL-készletet (korábban SQL DW) használhat.
+
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés az Azure szinapszis Analytics szolgáltatással](get-started.md)
 * [Munkaterület létrehozása](quickstart-create-workspace.md)

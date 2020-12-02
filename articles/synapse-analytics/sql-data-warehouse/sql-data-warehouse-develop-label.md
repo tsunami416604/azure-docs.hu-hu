@@ -1,32 +1,30 @@
 ---
 title: Címkék használata a hangeszközök lekérdezéséhez
-description: Tippek Címkék létrehozásához a szinapszis SQL-készletben a megoldások fejlesztéséhez.
+description: Tippek Címkék használatával a dedikált SQL-készletekhez tartozó lekérdezésekhez az Azure szinapszis Analyticsben.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 91b6dac5fba4bb8dfd8cf4a3bb4e5952f8388bb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 7958caf71658dcdcbf31bac84697931e9049452f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459147"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462753"
 ---
-# <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Címkék használata a szinapszis SQL-készletben lévő eszközök lekérdezéséhez
+# <a name="using-labels-to-instrument-queries-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Címkék használata a dedikált SQL-készletekre vonatkozó lekérdezésekhez az Azure szinapszis Analyticsben
 
-Ebben a cikkben a megoldások az SQL-készletben címkék segítségével történő fejlesztésével kapcsolatos tippeket talál.
-
-Tippek Címkék létrehozásához az Azure szinapszis Analyticsben a megoldások fejlesztéséhez.
+Ebben a cikkben a megoldás olyan tippekkel szolgál, amelyekkel a dedikált SQL-készletekben címkék segítségével hozhatja ki a megoldásokat.
 
 ## <a name="what-are-labels"></a>Mik a Címkék?
 
-Az SQL-készlet támogatja a lekérdezési címkék nevű koncepciót. Mielőtt bármilyen mélységbe kerül, tekintsük át a következő példát:
+A dedikált SQL-készlet támogatja a lekérdezési címkék nevű koncepciót. Mielőtt bármilyen mélységbe kerül, tekintsük át a következő példát:
 
 ```sql
 SELECT *
@@ -53,6 +51,6 @@ WHERE   r.[label] = 'My Query Label'
 > [!NOTE]
 > A lekérdezés során elengedhetetlen, hogy szögletes zárójeleket vagy idézőjeleket helyezzen el a szó címkéje körül. A címke egy foglalt szó, és hibát okoz, ha nincs elválasztva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).

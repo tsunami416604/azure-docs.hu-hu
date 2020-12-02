@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 919b8fb89e9189df7cb1964cbe0149dc6945ad2d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e0309b4c96b2ae25eb568e390717ba76cfd84fa5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323163"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461312"
 ---
-# <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Felügyelt privát végpont létrehozása az adatforráshoz (előzetes verzió)
+# <a name="create-a-managed-private-endpoint-to-your-data-source"></a>Felügyelt privát végpont létrehozása az adatforráshoz
 
 Ez a cikk bemutatja, hogyan hozhat létre felügyelt privát végpontot az Azure-beli adatforráshoz. További információért lásd: [felügyelt privát végpontok](./synapse-workspace-managed-private-endpoints.md) .
 
@@ -45,6 +45,6 @@ A kérelem elküldése után megjelenik az állapota. Annak ellenőrzéséhez, h
 Azt is láthatja, hogy a *jóváhagyási állapot* *függőben* van. A célként megadott erőforrás tulajdonosa jóváhagyhatja vagy megtagadhatja a magánhálózati végponti kapcsolatok kérelmét. Ha a tulajdonos jóváhagyja a magánhálózati végponti kapcsolódási kérelmet, akkor létrejön egy privát kapcsolat. Ha meg van tagadva, a magánhálózati kapcsolat nincs létrehozva.
 ![Felügyelt magánhálózati végpont-létrehozási kérelem állapota](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [felügyelt privát végpontokról](./synapse-workspace-managed-private-endpoints.md)

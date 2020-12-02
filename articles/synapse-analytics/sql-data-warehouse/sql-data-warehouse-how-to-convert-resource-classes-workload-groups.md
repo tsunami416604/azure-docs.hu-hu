@@ -1,6 +1,6 @@
 ---
 title: Erőforrás osztály átalakítása munkaterhelés-csoportba
-description: Megtudhatja, hogyan hozhat létre olyan munkaterhelés-csoportot, amely hasonló az Azure szinapszis Analytics egyik erőforrás-osztályához.
+description: Megtudhatja, hogyan hozhat létre olyan munkaterhelés-csoportot, amely hasonló egy dedikált SQL-készletben található erőforrás-osztályhoz.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fe65aa8c69bc4bd3837ea68bc48ffdbbeed87e0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b82342ffb76f8bb58b8f6875751601094d6131ca
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461374"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461892"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Erőforrás-osztályok átalakítása munkaterhelés-csoportokra
 
@@ -86,7 +86,7 @@ SELECT request_id, [label], classifier_name, group_name, command
   ORDER BY submit_time DESC
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Munkaterhelés elkülönítése](sql-data-warehouse-workload-isolation.md)
 - [Útmutató: munkaterhelés-csoport létrehozása](quickstart-configure-workload-isolation-tsql.md)

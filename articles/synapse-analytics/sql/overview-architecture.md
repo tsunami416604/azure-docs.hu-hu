@@ -10,18 +10,16 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 22cbd0b4ce512df70d13d89c5f2539420dac2b85
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: da6c9f6df0e9e74de297cf6c8f655b62e3446bad
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307026"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462715"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure szinapszis SQL-architektúra 
 
 Ez a cikk a szinapszis SQL architektúrájának összetevőit ismerteti.
-
-[!INCLUDE [preview](../includes/note-preview.md)]
 
 ## <a name="synapse-sql-architecture-components"></a>Szinapszis SQL Architecture-összetevők
 
@@ -115,6 +113,6 @@ Az alábbi ábrán egy olyan replikált tábla látható, amely az első eloszl�
 
 ![Replikált tábla](media/overview-architecture/replicated-table.png "Replikált tábla") 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri a szinapszis SQL-t, ismerkedjen meg [a DEDIKÁLT SQL-készlet gyors létrehozásával](../quickstart-create-sql-pool-portal.md) és a [mintaadatok betöltésével](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Vagy elkezdheti [használni a kiszolgáló nélküli SQL-készletet](../quickstart-sql-on-demand.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md), amikor az új fogalmakkal ismerkedik. 

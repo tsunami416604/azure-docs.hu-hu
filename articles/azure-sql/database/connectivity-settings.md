@@ -3,18 +3,18 @@ title: A Azure SQL Database és az Azure szinapszis Analytics kapcsolódási be�
 description: Ez a cikk ismerteti a Transport Layer Security (TLS) verzióját, valamint a proxy és az átirányítási beállítások Azure SQL Database és az Azure szinapszis Analytics számára című témakört.
 services: sql-database
 ms.service: sql-database
-titleSuffix: Azure SQL Database and Azure Synapse Analytics (formerly SQL Data Warehouse)
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 9856d71a6398bcea5b979788846afce17e7955f7
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e3422f468d1355245fb31e8f04d5f8625f583c37
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412989"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462190"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-kapcsolati beállítások
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,12 +104,12 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 A minimális [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) verzió beállítása lehetővé teszi, hogy az ügyfelek kiválaszthatják, hogy az SQL Database milyen verziójú TLS-verziót használ.
 
-Jelenleg a TLS 1,0, 1,1 és 1,2 támogatott. A TLS minimális verziójának beállítása biztosítja, hogy az újabb TLS-verziók támogatottak legyenek. Ha például a 1,1-nál nagyobb TLS-verziót választ, a rendszer csak a TLS 1,1-es és 1,2-as kapcsolatokat fogadja el, és a TLS 1,0-mel létesített kapcsolatokat a rendszer elutasítja. Miután ellenőrizte, hogy alkalmazásai támogatják-e, javasoljuk, hogy a minimális TLS-verziót 1,2-re állítsa. Ez a verzió a korábbi verziókban található biztonsági rések javításait tartalmazza, és az Azure SQL Database által támogatott TLS legmagasabb verziója.
+Jelenleg a TLS 1.0-s, 1.1-es és 1.2-es verziója támogatott. Egy minimális TLS-verzió beállítása biztosítja, hogy az újabb TLS-verziók támogatottak legyenek. A TLS 1.1-es verziójánál újabb verzió kiválasztása például azt jelenti, hogy a rendszer csak a TLS 1.1-es és 1.2-es verziójú kapcsolatokat fogadja el, a TLS 1.0-s verziójúakat elutasítja. Miután megerősítette, hogy az alkalmazások támogatják, ajánlott az 1.2-es minimális TLS-verziót beállítani. Ez a verzió tartalmazza a korábbi verziókban található biztonsági rések javításait, és ez az Azure SQL-adatbázisban támogatott legmagasabb TLS-verzió.
 
 > [!IMPORTANT]
 > A minimális TLS-verzió alapértelmezett értéke az összes verzió engedélyezése. A TLS verziójának betartatása után nem lehet visszaállítani az alapértelmezett értéket.
 
-A TLS régebbi verzióit használó ügyfelek esetében javasoljuk, hogy az alkalmazások követelményeinek megfelelően állítsa be a TLS minimális verzióját. Azon ügyfelek esetében, akik nem titkosított kapcsolaton keresztül kapcsolódnak az alkalmazásokhoz, javasoljuk, hogy ne állítson be minimális TLS-verziót.
+A TLS régebbi verzióit futtató alkalmazásokat használó ügyfelek esetében javasoljuk, hogy az alkalmazások követelményeinek megfelelően állítsa be a TLS minimális verzióját. A nem titkosított kapcsolaton keresztül kapcsolódó alkalmazásokat használó ügyfelek esetében javasoljuk, hogy ne állítson be minimális TLS-verziót.
 
 További információ: TLS- [megfontolások SQL Database kapcsolathoz](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 

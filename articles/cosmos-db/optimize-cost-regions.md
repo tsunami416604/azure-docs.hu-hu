@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 010ca40f4f3aacd6353aecd150e944672cc09066
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a559a51feafa310a4645282dc6368f520fc6b972
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097508"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459623"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Több régióban való üzemeltetés költségeinek optimalizálása az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,20 +26,20 @@ A többrégiós írások esetében a rendelkezésre álló, írási műveletekhe
 
 ### <a name="example"></a>Példa
 
-Vegye figyelembe, hogy az USA nyugati régiójában olyan tároló van, amely az egyrégiós írásokhoz van konfigurálva, és a (z) 10K RU/s-vel van kiépítve Tegyük fel, hogy hozzáad egy régiót, az USA keleti régióját ugyanazzal a tárolóval és átviteli sebességgel, és azt szeretné, hogy az alkalmazásból mindkét régióban lévő tárolókban lehessen írni. Havonta a havi számla (feltéve, hogy 31 nap) a következő:
+Vegye figyelembe, hogy az USA nyugati régiójában olyan tároló található, amely a 10 000 RU/s kapacitással lett kiépítve, és ezen a hónapban 0,5 TB-nyi adatot tárol. Tegyük fel, hogy hozzáad egy régiót, az USA keleti régióját ugyanazzal a tárterülettel és átviteli sebességgel, és szeretné, hogy az alkalmazásból származó régiókban is írni tudja a tárolókat. Az új teljes havi számla (feltéve, hogy havonta 730 óra) a következő lesz:
 
 |**Item**|**Használat (havi)**|**Sebesség**|**Havi költség**|
 |----|----|----|----|
-|Az USA nyugati régiójában lévő tároló átviteli sebessége (egyszeri írási régiók) |10K RU/s * 24 óra * 31 nap |$0,008/100 RU/s óránként |$584,06 |
-|Adatforgalmi számla a 2 régióban található tárolóhoz – USA nyugati régiója & USA keleti régiója (több írási régió) |2 * 10K RU/s * 24 óra * 31 nap|$0,016/100 RU/s óránként |$2 336,26 |
-|Storage-számla az USA nyugati régiójában lévő tárolóhoz |1 TB (vagy 1 024 GB) |0,25/GB |$256 |
-|Storage-számla 2 régióban – USA nyugati régiója & USA keleti régiója |2 * 1 TB (vagy 3 072 GB) |0,25/GB |$768 |
+|Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz (egyetlen írási régió) |10K RU/s * 730 óra |$0,008/100 RU/s óránként |$584 |
+|Adatforgalmi számla a 2 régióban található tárolóhoz – USA nyugati régiója & USA keleti régiója (több írási régió) |2 * 10K RU/s * 730 óra |$0,016/100 RU/s óránként |$2 336 |
+|Storage-számla az USA nyugati régiójában lévő tárolóhoz |0,5 TB (vagy 512 GB) |0,25/GB |$128 |
+|Storage-számla a 2 régióban található tárolóhoz – USA nyugati régiója & USA keleti régiója |2 * 0,5 TB (vagy 1 024 GB) |0,25/GB |$256 |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Az adatforgalom kihasználtságának növelése régiónként-alapon
 
 Ha nem hatékony kihasználtságot használ, például egy vagy több használatban lévő olvasási régiót, akkor hajtsa végre a lépéseket, hogy az olvasási régiókban a hírcsatornák maximálisan használhatók legyenek az olvasási régióból, vagy helyezze át egy másik másodlagosra, ha túlzott kihasználtságú. Először gondoskodnia kell a kiépített átviteli sebesség (RUs) optimalizálásáról az írási régióban. A drágább, mint az olvasási költségeket, kivéve, ha nagyon nagy lekérdezések, így a még kihasználtság fenntartása is kihívást jelenthet. Összességében nyomon követheti a régiókban felhasznált adatátviteli sebességet, és az olvasási és írási sebesség méretezése érdekében igény szerint hozzáadhat vagy eltávolíthat régiókat, így biztos lehet abban, hogy az adott régióban üzembe helyezett alkalmazások késésére is hatással van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 

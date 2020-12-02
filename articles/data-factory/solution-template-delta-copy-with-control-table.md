@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 255e4085e24ee7520c603f8a00b3e46c23367a77
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7b7acb7e67d809229825b3d393fe49af12b3642
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000827"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461217"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Különbözeti másolat egy adatbázisból egy vezérlő táblával
 
@@ -140,7 +140,7 @@ A sablon a következő paramétereket definiálja:
 
     Látni fogja, hogy csak az új sorok lettek átmásolva a célhelyre.
 
-15. Választható Ha az Azure szinapszis Analytics (korábbi nevén SQL DW) lehetőséget választja az adatok célhelyként, akkor az Azure Blob Storage-hoz az átmeneti tároláshoz is meg kell adnia egy kapcsolódást, amelyet az Azure szinapszis Analytics (korábban SQL Data Warehouse) alapszintű elemzéséhez szükséges. A sablon létrehozza a tároló elérési útját. A folyamat futtatása után győződjön meg arról, hogy a tároló létre lett-e hozva a blob Storage-ban.
+15. Választható Ha az Azure szinapszis Analytics lehetőséget választja az adatok célhelyként, akkor az Azure-alapú blob Storage-hoz történő átmeneti tároláshoz is meg kell adnia egy kapcsolódási lehetőséget. A sablon létrehozza a tároló elérési útját. A folyamat futtatása után győződjön meg arról, hogy a tároló létre lett-e hozva a blob Storage-ban.
     
     ![A bázisterület konfigurálása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

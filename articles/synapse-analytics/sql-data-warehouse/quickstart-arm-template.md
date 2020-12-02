@@ -1,5 +1,5 @@
 ---
-title: SQL-készlet létrehozása Azure Resource Manager sablon használatával
+title: Dedikált SQL-készlet (korábban SQL DW) létrehozása Azure Resource Manager sablon használatával
 description: Ismerje meg, hogyan hozhat létre Azure szinapszis Analytics SQL-készletet Azure Resource Manager sablon használatával.
 services: azure-resource-manager
 author: julieMSFT
@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 29d4e4d696b34aa493714c870ebb466f491c47fe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 70adb7409c44a79345a192df173a1a073cc9b7dd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88641874"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460742"
 ---
-# <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>Rövid útmutató: Azure szinapszis Analytics SQL-készlet létrehozása ARM-sablonnal
+# <a name="quickstart-create-an-azure-synapse-analytics-dedicated-sql-pool-formerly-sql-dw-by-using-an-arm-template"></a>Rövid útmutató: Azure szinapszis Analytics dedikált SQL-készlet (korábban SQL DW) létrehozása ARM-sablonnal
 
-Ez a Azure Resource Manager sablon (ARM-sablon) egy Azure szinapszis Analytics SQL-készletet hoz létre, amelynek transzparens adattitkosítás engedélyezve van. A szinapszis SQL-készlet az Azure Szinapszisban általánosan elérhető vállalati adattárház-funkciókra utal.
+Ez a Azure Resource Manager sablon (ARM-sablon) egy dedikált SQL-készletet (korábban SQL DW) hoz létre, transzparens adattitkosítás engedélyezve. A dedikált SQL-készlet (korábbi nevén SQL DW) az Azure Szinapszisban általánosan elérhető vállalati adattárház-funkciókra utal.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -41,7 +41,7 @@ A sablon egy erőforrást definiál:
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-1. Válassza ki az alábbi rendszerképet az Azure-ba való bejelentkezéshez és a sablon megnyitásához. Ez a sablon egy szinapszis SQL-készletet hoz létre.
+1. Válassza ki az alábbi rendszerképet az Azure-ba való bejelentkezéshez és a sablon megnyitásához. Ez a sablon egy dedikált SQL-készletet (korábban SQL DW) hoz létre.
    
    [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-sql-data-warehouse-transparent-encryption-create%2Fazuredeploy.json)
 
@@ -53,7 +53,7 @@ A sablon egy erőforrást definiál:
    * **SQL Server neve**: fogadja el az alapértelmezett nevet, vagy adja meg a SQL Server nevének nevét.
    * **SQL-rendszergazdai bejelentkezés**: adja meg a SQL Server rendszergazdai felhasználónevét.
    * **SQL-rendszergazda jelszava**: adja meg a SQL Server rendszergazdai jelszavát.
-   * **Adatraktár neve**: adjon meg egy SQL-készlet nevét.
+   * **Adatraktár neve**: adjon meg egy dedikált SQL-készlet nevét.
    * **Transzparens adattitkosítás**: fogadja el az alapértelmezett, engedélyezve értéket. 
    * **Szolgáltatási szint célkitűzése**: fogadja el az alapértelmezett DW400c.
    * **Hely**: fogadja el az erőforráscsoport alapértelmezett helyét.
@@ -67,7 +67,7 @@ Használhatja a Azure Portal az üzembe helyezett erőforrások vizsgálatához,
 # <a name="cli"></a>[Parancssori felület](#tab/CLI)
 
 ```azurecli-interactive
-echo "Enter the resource group where your Synapse SQL pool exists:" &&
+echo "Enter the resource group where your dedicated SQL pool (formerly SQL DW) exists:" &&
 read resourcegroupName &&
 az resource list --resource-group $resourcegroupName 
 ```
@@ -75,7 +75,7 @@ az resource list --resource-group $resourcegroupName
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name where your SQL pool account exists"
+$resourceGroupName = Read-Host -Prompt "Enter the resource group name where your dedicated SQL pool (formerly SQL DW) account exists"
 (Get-AzResource -ResourceType "Microsoft.Sql/servers/databases" -ResourceGroupName $resourceGroupName).Name
  Write-Host "Press [ENTER] to continue..."
 ```
@@ -107,7 +107,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy Azure szinapszis Analytics SQL-készletet egy ARM-sablonnal, és ellenőrizte az üzembe helyezést. Ha többet szeretne megtudni az Azure szinapszis Analyticsről és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy dedikált SQL-készletet (korábban SQL DW) egy ARM-sablonnal, és ellenőrizte az üzemelő példányt. Ha többet szeretne megtudni az Azure szinapszis Analyticsről és Azure Resource Managerról, tekintse meg az alábbi cikkeket.
 
 - Az [Azure szinapszis Analytics áttekintése](sql-data-warehouse-overview-what-is.md)
 - További információ az [Azure Resource Managerről](../../azure-resource-manager/management/overview.md)

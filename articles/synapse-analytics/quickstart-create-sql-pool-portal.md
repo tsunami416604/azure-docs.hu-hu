@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: dedikált SQL-készlet (előzetes verzió) létrehozása a Azure Portal használatával'
+title: 'Rövid útmutató: dedikált SQL-készlet létrehozása a Azure Portal használatával'
 description: Az útmutató lépéseinek követésével hozzon létre egy új dedikált SQL-készletet a Azure Portal használatával.
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3537b126adf082c8b00a02d999789d8a32b3f51d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541011"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462012"
 ---
-# <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>Rövid útmutató: dedikált SQL-készlet (előzetes verzió) létrehozása a Azure Portal használatával
+# <a name="quickstart-create-a-dedicated-sql-pool-using-the-azure-portal"></a>Rövid útmutató: dedikált SQL-készlet létrehozása a Azure Portal használatával
 
 Az Azure szinapszis Analytics számos analitikai motort kínál az adatai betöltéséhez, átalakításához, modellezéséhez és elemzéséhez. A dedikált SQL-készlet A T-SQL-alapú számítási és tárolási funkciókat kínál. Miután létrehozott egy dedikált SQL-készletet a szinapszis munkaterületen, az adat betölthető, modellezhető, feldolgozható és leküldhető a gyorsabb elemzési elemzéshez.
 
@@ -64,7 +64,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
 ![dedikált SQL-készlet folyamat létrehozása – további beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
-5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+5. Válassza az **Áttekintés + létrehozás** lehetőséget.
 6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek. Kattintson a **Létrehozás** gombra.
 ![dedikált SQL-készlet létrehozása folyamat – felülvizsgálati beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-04.png)
 
@@ -77,7 +77,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
 A dedikált SQL-készlet létrehozása után elérhető lesz a munkaterületen az adatok betöltéséhez, a streamek feldolgozásához, a tótól való olvasáshoz stb.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az alábbi lépések végrehajtásával törölje a dedikált SQL-készletet a munkaterületről.
 > [!WARNING]
@@ -86,12 +86,12 @@ Az alábbi lépések végrehajtásával törölje a dedikált SQL-készletet a m
 Ha törölni szeretné a dedikált SQL-készletet, hajtsa végre a következő lépéseket:
 
 1. Navigáljon az SQL-készletek panelre a munkaterület panelen
-1. Válassza ki a törölni kívánt dedikált SQL-készletet (ebben az esetben **contosowdw** )
+1. Válassza ki a törölni kívánt dedikált SQL-készletet (ebben az esetben **contosowdw**)
 1. A kijelölés után nyomja le a **delete** billentyűt.
 1. Erősítse meg a törlést, **majd nyomja le a Delete (** törlés ![ ) gombra dedikált SQL-készlet – áttekintés – a törlés megerősítésének kijelölését.](media/quickstart-create-sql-pool/create-sql-pool-portal-11.png)
 1. Ha a folyamat sikeresen befejeződik, a dedikált SQL-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd [: gyors útmutató: kiszolgáló nélküli Apache Spark készlet létrehozása a szinapszis Studióban webes eszközök használatával](quickstart-apache-spark-notebook.md).
 - Lásd [: gyors útmutató: kiszolgáló nélküli Apache Spark készlet létrehozása a Azure Portal használatával](quickstart-create-apache-spark-pool-portal.md).

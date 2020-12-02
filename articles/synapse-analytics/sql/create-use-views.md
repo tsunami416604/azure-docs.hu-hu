@@ -1,6 +1,6 @@
 ---
-title: Nézetek létrehozása és használata kiszolgáló nélküli SQL-készletben (előzetes verzió)
-description: Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat nézeteket a kiszolgáló nélküli SQL-készletek (előzetes verziójú) lekérdezések becsomagolásához. A nézetek segítségével újra felhasználhatja ezeket a lekérdezéseket. A nézetekre akkor is szükség van, ha olyan eszközöket kíván használni, mint például a Power BI, a kiszolgáló nélküli SQL-készlettel együtt.
+title: Nézetek létrehozása és használata kiszolgáló nélküli SQL-készletben
+description: Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat nézeteket a kiszolgáló nélküli SQL Pool-lekérdezések becsomagolásához. A nézetek segítségével újra felhasználhatja ezeket a lekérdezéseket. A nézetekre akkor is szükség van, ha olyan eszközöket kíván használni, mint például a Power BI, a kiszolgáló nélküli SQL-készlettel együtt.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 302cf97db7c1d2ba489a84b6be912816d20f6091
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 0948c7c82d7577bae07057bff9d1be4d7e09f978
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685562"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462291"
 ---
-# <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Nézetek létrehozása és használata kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
+# <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Nézetek létrehozása és használata kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat nézeteket a kiszolgáló nélküli SQL-készletek (előzetes verziójú) lekérdezések becsomagolásához. A nézetek segítségével újra felhasználhatja ezeket a lekérdezéseket. A nézetekre akkor is szükség van, ha olyan eszközöket kíván használni, mint például a Power BI, a kiszolgáló nélküli SQL-készlettel együtt.
+Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat nézeteket a kiszolgáló nélküli SQL Pool-lekérdezések becsomagolásához. A nézetek segítségével újra felhasználhatja ezeket a lekérdezéseket. A nézetekre akkor is szükség van, ha olyan eszközöket kíván használni, mint például a Power BI, a kiszolgáló nélküli SQL-készlettel együtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -90,6 +90,6 @@ ORDER BY
     [population] DESC;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A különböző fájltípusok lekérdezésével kapcsolatos további információkért tekintse meg az [egyszerű CSV-fájl lekérdezése](query-single-csv-file.md), a [Parquet-fájlok lekérdezése](query-parquet-files.md)és a [JSON-fájlok lekérdezése](query-json-files.md) című cikket.

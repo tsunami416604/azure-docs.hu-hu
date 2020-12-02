@@ -11,14 +11,14 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 691cdcb525f8e9e3d1fb914372b9f62366f4bfba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c761404ab5a95bc0189407cc97ce779b66356fe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213023"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460678"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-workload-classifier-using-the-azure-portal"></a>Gyors útmutató: szinapszis SQL Pool számítási feladatok besorolásának létrehozása a Azure Portal használatával
+# <a name="quickstart-create-a-dedicated-sql-pool-workload-classifier-using-the-azure-portal"></a>Gyors útmutató: dedikált SQL Pool számítási feladatok besorolásának létrehozása a Azure Portal használatával
 
 Ebben a rövid útmutatóban egy számítási feladatot fog [létrehozni, amellyel](sql-data-warehouse-workload-classification.md) lekérdezéseket rendelhet a munkaterhelés-csoportokhoz.  Az osztályozó az SQL-felhasználótól érkező kérelmeket `ELTLogin` a `DataLoads` munkaterhelés csoportjába rendeli.   Kövesse a gyors üzembe helyezési útmutató: a számítási [feladatok elkülönítése](quickstart-configure-workload-isolation-portal.md) oktatóanyagot a `DataLoads` munkaterhelés csoport létrehozásához.  Ez az oktatóanyag az WLM_LABEL lehetőséggel létrehoz egy számítási feladatot, amely segít a kérelmek helyes osztályozásában.  Az osztályozó a számítási `HIGH` [feladatok fontosságát](sql-data-warehouse-workload-importance.md) is hozzárendeli a kérelmekhez.
 
@@ -31,16 +31,16 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 > [!NOTE]
-> Ha SQL Pool-példányt hoz létre az Azure szinapszis Analytics szolgáltatásban, akkor egy új számlázható szolgáltatást eredményezhet.  További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Ha egy dedikált SQL Pool-példányt hoz létre az Azure szinapszis Analytics szolgáltatásban, akkor egy új számlázható szolgáltatást eredményezhet.  További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy SQL Pool-példánnyal a szinapszis SQL-ben, és hogy rendelkezik az adatbázis VEZÉRLÉSéhez szükséges engedélyekkel. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
+Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy dedikált SQL Pool-példánnyal, amely rendelkezik az adatbázis VEZÉRLÉSéhez szükséges engedélyekkel. Ha létre kell hoznia egyet, a [Létrehozás és összekapcsolás-portál](create-data-warehouse-portal.md) használatával hozzon létre egy **MYSAMPLEDATAWAREHOUSE** nevű dedikált SQL-készletet.
 <br><br>
 Egy munkaterhelés-csoport `DataLoads` létezik.  A munkaterhelési csoport létrehozásához tekintse meg a következő rövid útmutatót [: a munkaterhelés elkülönítésének konfigurálása](quickstart-configure-workload-isolation-portal.md) oktatóanyag.
 <br><br>
 >[!IMPORTANT] 
->A számítási feladatok kezelésének konfigurálásához az SQL-készletnek online állapotban kell lennie. 
+>A számítási feladatok kezelésének konfigurálásához a dedikált SQL-készletnek online állapotban kell lennie. 
 
 
 ## <a name="create-a-login-for-eltlogin"></a>ELTLogin-bejelentkezés létrehozása
@@ -72,18 +72,17 @@ END
 A besorolás lehetővé teszi, hogy a kérelmeket egy adott szabálykészlet alapján átirányítsa egy munkaterhelés-csoportra.  A gyors üzembe helyezési útmutató [: a munkaterhelés elkülönítésének konfigurálása](quickstart-configure-workload-isolation-portal.md) oktatóanyag létrehozta a `DataLoads` munkaterhelés csoportot.  Most létre kell hoznia egy számítási feladat-osztályozó a lekérdezések a munkaterhelés-csoportba való továbbításához `DataLoads` .
 
 
-1.  Az Azure Portal bal oldalán kattintson az **Azure szinapszis Analytics (korábban SQL DW)** elemre.
-2.  Válassza a **mySampleDataWarehouse** lehetőséget az **Azure szinapszis Analytics (korábban SQL DW)** lapon. Megnyílik az SQL-készlet.
-3.  Kattintson a **munkaterhelés-kezelés**elemre.
+1.  Navigáljon a **mySampleDataWarehouse** dedikált SQL-készlet lapjára.
+3.  Válassza a **munkaterhelés-kezelés** lehetőséget.
 
     ![Kattintson a menü](./media/quickstart-create-a-workload-classifier-portal/menu.png)
 
-4.  Kattintson a **Settings (beállítások) & osztályozók** elemre a `DataLoads` munkaterhelés csoport jobb oldalán.
+4.  Válassza a **beállítások & osztályozók** lehetőséget a `DataLoads` munkaterhelés csoport jobb oldalán.
 
     ![Kattintson a Létrehozás gombra](./media/quickstart-create-a-workload-classifier-portal/settings-classifiers.png)
 
-5. Kattintson az **osztályozók**elemre.
-6. Kattintson az **osztályozó hozzáadása**lehetőségre.
+5. Válassza a  **nincs konfigurálva** lehetőséget az osztályozók oszlopban.
+6. Válassza az **+ osztályozó hozzáadása** elemet.
 
     ![Kattintson az Add (Hozzáadás) parancsra](./media/quickstart-create-a-workload-classifier-portal/add-wc.png)
 
@@ -91,8 +90,8 @@ A besorolás lehetővé teszi, hogy a kérelmeket egy adott szabálykészlet ala
 8.  Adja meg `ELTLogin` a **tagot**.
 9.  Válassza `High` a **kérés fontosságát**.  Nem *kötelező*, a normál fontosság alapértelmezett.
 10. Adja meg `fact_loads` a **címkét**.
-11. Kattintson a **Hozzáadás** parancsra.
-12. Kattintson a **Mentés** gombra.
+11. Válassza a **Hozzáadás** elemet.
+12. Válassza a **Mentés** lehetőséget.
 
     ![Kattintson a konfiguráció elemre.](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
@@ -135,41 +134,35 @@ WHERE [label] = 'fact_loads'
 ORDER BY submit_time DESC
 ```
 
-
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az `ELTLoginDataLoads` oktatóanyagban létrehozott számítási feladatok besorolásának törlése:
 
 1. Kattintson az **1. besorolásra** a `DataLoads` munkaterhelés csoport jobb oldalán.
 
-    ![Kattintson a Törlés gombra](./media/quickstart-create-a-workload-classifier-portal/delete-wc.png)
+    ![Kattintson a Törlés gombra.](./media/quickstart-create-a-workload-classifier-portal/delete-wc.png)
 
-2. Kattintson az **osztályozók**elemre.
+2. Kattintson az **osztályozók** elemre.
 3. Kattintson a **`...`** munkaterhelés-osztályozó jobb oldalán `ELTLoginDataLoads` .
-4. Kattintson a **Törlés**gombra.
+4. Kattintson a **Törlés** gombra.
 5. Kattintson a **Save (Mentés**) gombra.
 
     ![Kattintson a Save (Mentés) gombra.](./media/quickstart-create-a-workload-classifier-portal/delete-save-wc.png)
 
-Az adattárház-egységek és az adattárházban tárolt adatforgalomért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
+Az adatraktár-egységek és a dedikált SQL-készletben tárolt adatmennyiségért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
-- Ha szeretné az adatokat megtartani a tárolóban, a számítási erőforrásokat szüneteltetheti, amíg nem használja az adattárházat. A számítás felfüggesztésével csak az adattárolás díját számítjuk fel. Ha készen áll az adatok feldolgozására, folytassa a számítást.
-- Ha szeretné megelőzni a jövőbeli kiadásokat, az adattárházat törölheti is.
+- Ha meg szeretné őrizni az adatok tárolását, szüneteltetheti a számítást, ha nem használja a dedikált SQL-készletet. A számítás felfüggesztésével csak az adattárolás díját számítjuk fel. Ha készen áll az adatok feldolgozására, folytassa a számítást.
+- Ha el szeretné távolítani a jövőbeli díjakat, törölheti a dedikált SQL-készletet.
 
 Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki a dedikált SQL-készletet.
 
     ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start**gombra.
+2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha a dedikált SQL-készlet fel van függesztve, a **Start** gomb jelenik meg.  A számítás folytatásához kattintson a **Start** gombra.
 
-3. Ha el szeretné távolítani az adattárházat, hogy ne számítsa ki a számítási és a tárolási díjat, válassza a **Törlés**lehetőséget.
-
-4. A létrehozott SQL-kiszolgáló eltávolításához válassza a **sqlpoolservername.database.Windows.net** lehetőséget az előző képen, majd válassza a **Törlés**lehetőséget.  A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
-
-5. Az erőforráscsoport eltávolításához válassza a **myResourceGroup**lehetőséget, majd válassza az **erőforráscsoport törlése**lehetőséget.
+3. Ha el szeretné távolítani a dedikált SQL-készletet, hogy ne számítsa ki a számítási vagy a tárolási díjat, válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7aa84336a3d71349c127ad15a90af98ffe2133fe
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 1b17729437b238b98f60e2cd97664fa6aafcccd4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980235"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462453"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>Az IoT Plug and Play-eszközök minősítése
 
@@ -42,9 +42,9 @@ A minősítési követelmények teljesítéséhez az eszköznek a következőket
 - Telemetria, tulajdonságok vagy parancsok implementálása a IoT Plug and Play konvenciót követve.
 - Írja le az eszköz interakcióit egy [DTDL v2](https://aka.ms/dtdl) -modellel.
 - Tegye közzé a modellt és az összes szükséges felületet az [Azure IoT nyilvános modell adattárában](https://devicemodels.azureiotsolutions.com/) .
-- Küldje el a modell AZONOSÍTÓját a DPS- [regisztráció](concepts-developer-guide-device-csharp.md#dps-payload) során a DPS kiépítési hasznos adattartalomban.
-- Bejelenti a modell AZONOSÍTÓját a [MQTT-kapcsolatban](concepts-developer-guide-device-csharp.md#model-id-announcement).
-- Minden eszköz modellnek kompatibilisnek kell lennie az [Azure IoT Centralával](https://aka.ms/pnp-iotc-getstarted).
+- Küldje el a modell AZONOSÍTÓját a DPS- [regisztráció](./concepts-developer-guide-device.md#dps-payload) során a DPS kiépítési hasznos adattartalomban.
+- Bejelenti a modell AZONOSÍTÓját a [MQTT-kapcsolatban](./concepts-developer-guide-device.md#model-id-announcement).
+- Minden eszköz modellnek kompatibilisnek kell lennie az [Azure IoT Centralával](../iot-central/core/overview-iot-central-developer.md).
 
 > [!NOTE]
 > Az Azure IoT Central jelenleg nem támogatja teljes mértékben a **tömb** -és **térinformatikai** DTDL adattípusait.
@@ -213,6 +213,6 @@ Ha az eszközön további manuális ellenőrzésre van szükség a minősítés 
 
 Egy eszköz minősítése **esetén a termék** összegzése lapon közzéteheti a termék részleteit az Azure Certified-eszköz katalógusában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az eszköz beküldésének befejezése után a következő lépésekkel léphet kapcsolatba az eszköz minősítési csapatával, [iotcert@microsoft.com](mailto:iotcert@microsoft.com) amely tartalmazza a Microsoft Partner Network tagságának ellenőrzését és az első lépéseket ismertető útmutatók áttekintését. Ha az összes követelmény teljesül, dönthet úgy, hogy az eszközt belefoglalja az [Azure IoT-eszközökre tanúsított tanúsítvánnyal](https://aka.ms/devicecatalog).

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9821cc8905caa9576662a192fc704c53b35af82d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 878fa181ff09d547ef6594a238e9c1d883cc89b7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564871"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460479"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Az ügyfelek irányítópultja a kereskedelmi piactér elemzésében
 
@@ -21,7 +21,7 @@ Ez a cikk a partner Center ügyfelek irányítópultján tartalmaz információk
 Ha az ügyfelek irányítópultot szeretné elérni a partner Centerben, a **kereskedelmi piactér** területen válassza az **[Analyze](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **ügyfelek** elemzése lehetőséget.
 
 >[!NOTE]
-> Az analitikai terminológia részletes leírását lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./partner-center-portal/faq-terminology.md).
+> Az analitikai terminológia részletes leírását lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./analytics-faq.md).
 
 ## <a name="customers-dashboard"></a>Ügyfelek irányítópultja
 
@@ -172,7 +172,7 @@ Az ügyfelek oldal szűrői az ügyfelek oldal szintjén lesznek alkalmazva. Tö
 > [!TIP]
 > Az adatletöltéshez használhatja a letöltés ikont bármelyik widget jobb felső sarkában. Az egyes widgetekkel kapcsolatos visszajelzéseket a "hüvelykujj fel" vagy a "hüvelykujj lefelé" ikonra kattintva teheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [hozzáférés analitikus jelentések a kereskedelmi piactérhez a partner Centerben](./partner-center-portal/analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).
@@ -180,4 +180,4 @@ Az ügyfelek oldal szűrői az ügyfelek oldal szintjén lesznek alkalmazva. Tö
 - A virtuális gép (VM) használati és mért számlázási mérőszámokat kínál, lásd [a használati irányítópultot a kereskedelmi piactér elemzésében](./usage-dashboard.md).
 - Az elmúlt 30 napban a letöltési kérelmek listáját lásd: a [kereskedelmi piactér Analytics letöltések irányítópultja](./partner-center-portal/downloads-dashboard.md).
 - Ha szeretné megtekinteni az Azure Marketplace-en és a Microsoft AppSource-on található ajánlatok felhasználói visszajelzésének összevont nézetét, tekintse meg a következő témakört: [ratings & Reviews Analytics](./partner-center-portal/ratings-reviews.md)
-- A kereskedelmi piactér elemzésével és az adatkifejezések átfogó szótárával kapcsolatos gyakori kérdésekért lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./partner-center-portal/faq-terminology.md).
+- A kereskedelmi piactér elemzésével és az adatkifejezések átfogó szótárával kapcsolatos gyakori kérdésekért lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./analytics-faq.md).

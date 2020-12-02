@@ -1,6 +1,6 @@
 ---
-title: Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
-description: Ez a cikk az Azure szinapszis Analytics (korábbi nevén SQL DW) az ügyfelektől és a fejlesztőktől érkező gyakori kérdéseit sorolja fel.
+title: Dedikált SQL-készlet (korábban SQL DW) – gyakori kérdések
+description: Ez a cikk a dedikált SQL-készlettel (korábban SQL DW) kapcsolatos gyakori kérdéseket sorolja fel az ügyfelek és fejlesztők Azure szinapszis Analytics szolgáltatásában.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d1e2f82ecd80579d19f3a8793db64f6b8a17a440
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c8f8ae81f6f030245899ec82dbe16b29846dab23
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323599"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460511"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
+# <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-frequently-asked-questions"></a>Dedikált SQL-készlet (korábban SQL DW) az Azure szinapszis Analyticsben – gyakori kérdések
 
 ## <a name="general"></a>Általános kérdések
 
@@ -27,11 +27,11 @@ A. Az Azure szinapszis egy elemzési szolgáltatás, amely egyesíti az adattár
 
 K. Mi történt a Azure SQL Data Warehouse?
 
-A. Az Azure szinapszis Azure SQL Data Warehouse fejlődött. Ugyanezt az piacvezető adattárházat készítettük a teljesítmény és a képességek egész új szintjére. Az Azure szinapszis használatával folytathatja a meglévő adattárház-számítási feladatok futtatását az éles környezetben. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
+A. Az Azure szinapszis Azure SQL Data Warehouse fejlődött. Ugyanezt az piacvezető adattárházat készítettük a teljesítmény és a képességek egész új szintjére. Továbbra is futtathatja meglévő adattárház-számítási feladatait éles környezetben a dedikált SQL-készlettel (korábban SQL DW) az Azure Szinapszisban. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
-K. Mi az a dedikált SQL-készlet?
+K. Mi a dedikált SQL-készlet (korábban SQL DW) az Azure szinapszis Analyticsben?
 
-A. A dedikált SQL-készlet az Azure szinapszis szolgáltatással általánosan elérhető nagyvállalati adattárház-funkciókra utal. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
+A. A dedikált SQL-készlet (korábbi nevén SQL DW) az Azure szinapszis szolgáltatással általánosan elérhető vállalati adattárház-funkciókra utal. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
 K. Hogyan az Azure szinapszis megkezdése?
 
@@ -49,7 +49,7 @@ K. Csatlakozhatok Power BIhoz?
 
 A. Igen! Habár Power BI támogatja az Azure szinapszis közvetlen lekérdezését, nem sok felhasználónak vagy valós idejű adatmennyiségnek a célja. A Power BI teljesítményének további optimalizálása érdekében érdemes lehet Power BIt használni a Azure Analysis Services vagy az Analysis Service IaaS.
 
-K. Mik a dedikált SQL-készletek kapacitásának korlátai?
+K. Mi a dedikált SQL-készlet (korábban az SQL DW) kapacitásának korlátai?
 
 A. Tekintse meg a jelenlegi [Kapacitási korlátok](sql-data-warehouse-service-capacity-limits.md) lapot.
 
@@ -83,15 +83,15 @@ A. Számos funkció támogatott. A nem támogatott funkciók a nem támogatott [
 
 ## <a name="tooling-and-administration"></a>Eszközök és felügyelet
 
-K. Támogatja a dedikált SQL Pool a REST API-kat?
+K. Támogatja a dedikált SQL-készlet (korábbi nevén SQL DW) a REST API-kat?
 
-A. Igen. A SQL Database használható legtöbb REST-funkció a dedikált SQL-készlettel is elérhető. A REST dokumentációs oldalain vagy [adatbázisaiban](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)találhat API-információkat.
+A. Igen. A SQL Database használható legtöbb REST-funkció a dedikált SQL-készlettel (korábban SQL DW) is elérhető. A REST dokumentációs oldalain vagy [adatbázisaiban](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)találhat API-információkat.
 
 ## <a name="loading"></a>Betöltés
 
 K. Milyen ügyfél-illesztőprogramokat támogat?
 
-A. A dedikált SQL-készlet illesztőprogram-támogatása a [kapcsolatok karakterláncok](../sql/connection-strings.md) oldalán található.
+A. A dedikált SQL-készlet (korábban SQL DW) illesztőprogram-támogatása a [kapcsolatok karakterláncok](sql-data-warehouse-connection-strings.md) oldalán található.
 
 K: milyen fájlformátumokat támogat a Base?
 
@@ -107,8 +107,8 @@ A: nem, a csak a Storage-összetevőkkel kommunikáló
 
 K: csatlakozhatok a HDI szolgáltatáshoz?
 
-A: a HDI a ADLS vagy a WASB is használhatja a HDFS rétegként. Ha a HDFS réteggel rendelkezik, ezeket az adatait egy dedikált SQL-készletbe töltheti be. Azonban nem hozhatja pushdown számítást a HDI-példányra.
+A: a HDI a ADLS vagy a WASB is használhatja a HDFS rétegként. Ha a HDFS réteggel rendelkezik, ezeket az adatait egy dedikált SQL-készletbe (korábban SQL DW) is betöltheti. Azonban nem hozhatja pushdown számítást a HDI-példányra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Azure szinapszis egészére vonatkozó további információkért tekintse meg az [Áttekintés](sql-data-warehouse-overview-faq.md) oldalt.
+További információ a dedikált SQL-készletről (korábbi nevén SQL DW) az Azure Szinapszisban: [Áttekintés](sql-data-warehouse-overview-what-is.md) oldal.

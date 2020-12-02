@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6cda99bfcb883dd42aa813d6edb922f2701ed1fe
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e48b1357b8576baca0e8defca94f4c5248c6f74e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352201"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461290"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory Azure biztonsági alapterve
 
@@ -578,7 +578,7 @@ Ha a privát hivatkozás elérhető, használjon privát végpontokat az Azure D
 
 **Útmutató**: Ha a felhőalapú adattár támogatja a HTTPS-t vagy a TLS-t, az adatátviteli Data Factory szolgáltatások és a felhőalapú adattárolók közötti adatforgalom a biztonságos csatorna HTTPS vagy TLS protokollon keresztül történik. A használt TLS-verzió 1,2.
 
-A Azure SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) összes kapcsolata titkosítást (SSL/TLS) igényel, miközben az adatok átvitele folyamatban van az adatbázisba és onnan. Amikor JSON használatával készít folyamatokat, adja hozzá a titkosítási tulajdonságot, és állítsa igaz értékre a kapcsolódási karakterláncban. Az Azure Storage esetében a kapcsolati sztringben HTTPS protokollt használhat.
+Az Azure SQL Database és az Azure szinapszis Analytics szolgáltatással létesített összes kapcsolat titkosítást (SSL/TLS) igényel, miközben az adatok átvitele az adatbázisba és az adatbázisból történik. Amikor JSON használatával készít folyamatokat, adja hozzá a titkosítási tulajdonságot, és állítsa igaz értékre a kapcsolódási karakterláncban. Az Azure Storage esetében a kapcsolati sztringben HTTPS protokollt használhat.
 
 * [A Azure Data Factory-átvitel titkosításának ismertetése](./data-movement-security-considerations.md)
 

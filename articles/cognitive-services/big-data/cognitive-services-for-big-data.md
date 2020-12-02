@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 1b08925db12edffdaf5c85f1fa6f5934a412d81f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: aaade03edbbb109656fb7371a063cdc2512c5a20
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363306"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461625"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Azure-Cognitive Services Big-adatmennyiségekhez
 
@@ -35,10 +35,10 @@ Az API-kkal és SDK-kkal elért [Cognitive Services](../index.yml)segítségéve
 
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Computer Vision](../computer-vision/index.yml "Számítógépes látástechnológia")| A Computer Vision szolgáltatás a rendszerképek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális algoritmusokhoz. |
-|[Face](../face/index.yml "Arcfelismerés")| A Face szolgáltatás hozzáférést biztosít a speciális arc-algoritmusokhoz, lehetővé téve a Face attribútumok észlelését és felismerését. |
+|[Computer Vision](../computer-vision/index.yml "Computer Vision")| A Computer Vision szolgáltatás a rendszerképek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális algoritmusokhoz. |
+|[Face](../face/index.yml "Face")| A Face szolgáltatás hozzáférést biztosít a speciális arc-algoritmusokhoz, lehetővé téve a Face attribútumok észlelését és felismerését. |
 
-### <a name="speech"></a>Beszéd
+### <a name="speech"></a>Speech
 
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
@@ -54,7 +54,7 @@ Az API-kkal és SDK-kkal elért [Cognitive Services](../index.yml)segítségéve
 
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
-|[Text Analytics](../text-analytics/index.yml "Szövegelemzés")| A Text Analytics szolgáltatás természetes nyelvi feldolgozást tesz lehetővé a nyers szövegekben az érzelmek elemzése, a kulcs-kifejezés kinyerése és a nyelvfelismerés terén.|
+|[Text Analytics](../text-analytics/index.yml "Text Analytics")| A Text Analytics szolgáltatás természetes nyelvi feldolgozást tesz lehetővé a nyers szövegekben az érzelmek elemzése, a kulcs-kifejezés kinyerése és a nyelvfelismerés terén.|
 
 ### <a name="search"></a>Keresés
 
@@ -84,11 +84,11 @@ Az [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) a Mi
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Az [Azure szinapszis Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) (korábbi nevén SQL Data Warehouse) olyan vállalati adattárház, amely nagy mértékben párhuzamos feldolgozást használ. A szinapszis Analytics segítségével gyorsan futtathat összetett lekérdezéseket az petabájt között. Az Azure szinapszis Analytics felügyelt Spark-készleteket biztosít a Spark-feladatok intuitív Jupyter Notebook felülettel való futtatásához.
+Az [Azure szinapszis Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) olyan vállalati adattárház, amely nagy mértékben párhuzamos feldolgozást használ. A szinapszis Analytics segítségével gyorsan futtathat összetett lekérdezéseket az petabájt között. Az Azure szinapszis Analytics felügyelt Spark-készleteket biztosít a Spark-feladatok intuitív Jupyter Notebook felülettel való futtatásához.
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Az [Azure Kubernetes Service (ak)](../../aks/index.yml) nagy léptékű Docker-tárolókat és elosztott alkalmazásokat szervez. Az AK egy felügyelt Kubernetes-ajánlat, amely leegyszerűsíti a Kubernetes használatát az Azure-ban. A Kubernetes lehetővé teszi a kognitív szolgáltatások skálázásának, késésének és hálózatkezelésének részletes szabályozását. Ha azonban nem ismeri a Apache Spark használatát, javasoljuk, hogy használjon Azure Databricks vagy szinapszis-elemzést.
+Az [Azure Kubernetes Service (ak)](../../aks/index.yml) nagy léptékű Docker-tárolókat és elosztott alkalmazásokat szervez. Az AK egy felügyelt Kubernetes-ajánlat, amely leegyszerűsíti a Kubernetes használatát az Azure-ban. A Kubernetes lehetővé teszi a kognitív szolgáltatások skálázásának, késésének és hálózatkezelésének részletes szabályozását. Ha azonban nem ismeri a Apache Spark használatát, javasoljuk, hogy használja a Azure Databricks vagy az Azure szinapszis Analytics szolgáltatást.
 
 ### <a name="data-connectors"></a>Adatösszekötők
 

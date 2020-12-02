@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: 24e468007e0e5ea849ac4d7f945b0aaf6377e580
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b7f0a352afeb4a2e58d97bd5278115673f6b6df6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633807"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461693"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – .NET API-változási napló
 > [!NOTE]
@@ -75,7 +75,7 @@ Szolgáltatások kiegészítései:
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
 * Új StorageFormat típusú [OrcFormat](/dotnet/api/microsoft.azure.management.datafactories.models.orcformat) -típus hozzáadása a fájlok optimalizált, oszlopos (ORK) formátumban való másolásához.
 * Adja hozzá a [AllowPolyBase](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) és a PolyBaseSettings tulajdonságot a SqlDWSink.
-  * Lehetővé teszi az adatok másolását az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse).
+  * Lehetővé teszi, hogy a Base használatával az adatok az Azure szinapszis Analyticsbe másolhatók.
 
 ## <a name="version-461"></a>4.6.1-es verzió
 ### <a name="bug-fixes"></a>Hibajavítások
@@ -154,7 +154,7 @@ A következő osztályok lettek átnevezve. Az új nevek az osztályok eredeti n
 | Régi név | Új név |
 |:--- |:--- |
 | ITableOperations |[IDatasetOperations](/dotnet/api/microsoft.azure.management.datafactories.idatasetoperations) |
-| Tábla |[Adatkészlet](/dotnet/api/microsoft.azure.management.datafactories.models.dataset) |
+| Tábla |[Adathalmaz](/dotnet/api/microsoft.azure.management.datafactories.models.dataset) |
 | TableProperties |[DatasetProperties](/dotnet/api/microsoft.azure.management.datafactories.models.datasetproperties) |
 | TableTypeProprerties |[DatasetTypeProperties](/dotnet/api/microsoft.azure.management.datafactories.models.datasettypeproperties) |
 | TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](/dotnet/api/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters) |
@@ -181,5 +181,5 @@ A következő osztályok lettek átnevezve. Az új nevek az osztályok eredeti n
 * A **List** folyamat API a teljes részletek helyett csak egy folyamat összegzését adja vissza. Például egy folyamat összefoglaló tevékenységei csak a nevet és a típust tartalmazzák.
 
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
-* A [SqlDWSink](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) osztály két új tulajdonságot ( **SliceIdentifierColumnName** és **SqlWriterCleanupScript** ) támogat az Azure Azure szinapszis Analytics idempotens-másolásának támogatásához. Ezen tulajdonságokkal kapcsolatos részletekért tekintse meg az [Azure szinapszis Analytics](data-factory-azure-sql-data-warehouse-connector.md) -cikket.
-* A másolási tevékenység részeként mostantól támogatjuk a Azure SQL Database és az Azure szinapszis Analytics-források futtatására szolgáló tárolt eljárást. A [SqlSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqlsource) és a [SqlDWSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsource) osztály a következő tulajdonságokkal rendelkezik: **SqlReaderStoredProcedureName** és **StoredProcedureParameters** . Ezekről a tulajdonságokról a Azure.com [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) és az [Azure szinapszis Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) cikkeiben talál további információkat.
+* A [SqlDWSink](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) osztály két új tulajdonságot ( **SliceIdentifierColumnName** és **SqlWriterCleanupScript**) támogat az Azure Azure szinapszis Analytics idempotens-másolásának támogatásához. Ezen tulajdonságokkal kapcsolatos részletekért tekintse meg az [Azure szinapszis Analytics](data-factory-azure-sql-data-warehouse-connector.md) -cikket.
+* A másolási tevékenység részeként mostantól támogatjuk a Azure SQL Database és az Azure szinapszis Analytics-források futtatására szolgáló tárolt eljárást. A [SqlSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqlsource) és a [SqlDWSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsource) osztály a következő tulajdonságokkal rendelkezik: **SqlReaderStoredProcedureName** és **StoredProcedureParameters**. Ezekről a tulajdonságokról a Azure.com [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) és az [Azure szinapszis Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) cikkeiben talál további információkat.

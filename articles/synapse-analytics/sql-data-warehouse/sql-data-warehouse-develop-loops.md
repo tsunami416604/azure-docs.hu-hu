@@ -1,34 +1,34 @@
 ---
 title: T-SQL-hurkok használata
-description: Tippek a megoldások fejlesztéséhez a T-SQL-hurkok használatával és kurzorok cseréje a szinapszis SQL-készletben.
+description: Tippek a megoldások fejlesztéséhez T-SQL-hurkok használatával, valamint a dedikált SQL-készletek mutatóinak cseréje az Azure szinapszis Analyticsben.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 25dad01a54b6ffe08656379340f58e0fe70ec666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 3477b3095414248afa9fbc7417ab707c94f35546
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213414"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462734"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>T-SQL-hurkok használata a szinapszis SQL-készletben
+# <a name="using-t-sql-loops-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>A T-SQL-hurkok használata dedikált SQL-készletekhez az Azure szinapszis Analyticsben
 
-Ez a cikk a T-SQL-hurkok használatával és a kurzorok cseréjével kapcsolatos tippeket tartalmaz az SQL Pool-megoldások fejlesztéséhez.
+Ebben a cikkben a T-SQL-hurkok használatával és a kurzorok cseréjével kapcsolatos tippek találhatók a dedikált SQL Pool-megoldások fejlesztéséhez.
 
 ## <a name="purpose-of-while-loops"></a>Hurkok célja
 
-A szinapszis SQL-készlet a [while](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ciklust is támogatja az utasítások ismételt végrehajtásához. Ez a ciklus addig folytatódik, amíg a megadott feltételek teljesülnek, vagy amíg a kód kifejezetten leállítja a hurkot a BREAK kulcsszó használatával.
+Az Azure szinapszis dedikált SQL-készletei támogatják [a ciklusok](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismételt végrehajtásához szükséges hurkokat. Ez a ciklus addig folytatódik, amíg a megadott feltételek teljesülnek, vagy amíg a kód kifejezetten leállítja a hurkot a BREAK kulcsszó használatával.
 
 A hurkok hasznosak az SQL-kódban definiált kurzorok cseréjéhez. Szerencsére az SQL Code-ban írt összes kurzor a gyors továbbítás, csak olvasható fajta. Szóval, míg a hurkok nagyszerű alternatíva a kurzorok cseréjéhez.
 
-## <a name="replacing-cursors-in-synapse-sql-pool"></a>Kurzorok cseréje a szinapszis SQL-készletben
+## <a name="replacing-cursors-in-dedicated-sql-pool"></a>Kurzorok cseréje dedikált SQL-készletben
 
 Mielőtt azonban először is felmerülnek a merülés előtt, a következő kérdéssel kell megkérdezni: "lehetséges, hogy a kurzor újraírható a set-based Operations használatára?"
 

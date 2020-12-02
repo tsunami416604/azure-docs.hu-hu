@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a543f03cb73d9eae8eaa81eeb3a37fd59e4e6a81
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 9ae13b88d767e43c425ceb86d0be455cebc0e6ac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685800"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462519"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Gyakori hibakódok a Azure Key Vault
 
@@ -22,7 +22,7 @@ Az alábbi táblázatban felsorolt hibakódokat egy Azure Key Vault-művelet is 
 
 | Hibakód | Felhasználói üzenet |
 |--|--|
-| VaultAlreadyExists |  A megadott névvel rendelkező új kulcstartó létrehozásának kísérlete meghiúsult, mert a név már használatban van. Ha nemrég törölt egy ilyen nevű kulcstartót, akkor lehet, hogy a törlésre kész állapotban van. [Itt](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault) ellenőrizheti, hogy létezik-e a Soft Deleted állapotban |
+| VaultAlreadyExists |  A megadott névvel rendelkező új kulcstartó létrehozásának kísérlete meghiúsult, mert a név már használatban van. Ha nemrég törölt egy ilyen nevű kulcstartót, akkor lehet, hogy a törlésre kész állapotban van. [Itt](./key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault) ellenőrizheti, hogy létezik-e a Soft Deleted állapotban |
 | VaultNameNotValid |  A tár nevének 24 karakterből kell állnia, alfanumerikusnak kell lennie, és betűvel kell kezdődnie |
 | AccessDenied |  Előfordulhat, hogy a művelet végrehajtásához a hozzáférési házirendben hiányoznak engedélyek. |
 | ForbiddenByFirewall |  Az ügyfél címe nincs engedélyezve, és a hívó nem megbízható szolgáltatás. |
@@ -34,7 +34,7 @@ Az alábbi táblázatban felsorolt hibakódokat egy Azure Key Vault-művelet is 
 | CertificateExpired |  A tanúsítvány lejárati dátumának és érvényességi idejének megadásához. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd: [Azure Key Vault fejlesztői útmutató](developers-guide.md)
 - További információ a [Key Vault hitelesítéséről](authentication.md)

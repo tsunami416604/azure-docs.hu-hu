@@ -3,12 +3,12 @@ title: Azure Key Vault Event Grid forrásként
 description: A Azure Key Vault eseményekhez megadott tulajdonságokat és sémát ismerteti Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b3d961228429c1f84e45c1df9147fa1687ab5074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 605502794f2f3aa4f4edd14b49efda5003b91146
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324076"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460405"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault Event Grid forrásként
 
@@ -20,7 +20,7 @@ Ez a cikk a [Azure Key Vault](../key-vault/index.yml)eseményeinek tulajdonsága
 
 Egy Azure Key Vault fiók a következő típusú eseményeket hozza létre:
 
-| Esemény teljes neve | Esemény megjelenítendő neve | Leírás |
+| Esemény teljes neve | Esemény megjelenítendő neve | Description |
 | ---------- | ----------- |---|
 | Microsoft. kulcstartó. CertificateNewVersionCreated | Tanúsítvány új verziója létrehozva | Új tanúsítvány vagy új tanúsítvány-verzió létrehozásakor aktiválódik. |
 | Microsoft. kulcstartó. CertificateNearExpiry | A tanúsítvány hamarosan lejár | Akkor aktiválódik, ha a tanúsítvány aktuális verziója hamarosan lejár. (Az esemény a lejárati dátum előtt 30 nappal aktiválódik.) |
@@ -35,7 +35,7 @@ Egy Azure Key Vault fiók a következő típusú eseményeket hozza létre:
 
 ### <a name="event-examples"></a>Példák az eseményekre
 
-Az alábbi példa a **Microsoft. kulcstartó. SecretNewVersionCreated**sémáját mutatja be:
+Az alábbi példa a **Microsoft. kulcstartó. SecretNewVersionCreated** sémáját mutatja be:
 
 ```JSON
 [
@@ -64,7 +64,7 @@ Az alábbi példa a **Microsoft. kulcstartó. SecretNewVersionCreated**sémájá
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | ---------- | ----------- |---|
 | id | sztring | Az eseményt kiváltó objektum azonosítója |
 | vaultName | sztring | Az eseményt kiváltó objektum kulcstárolójának neve |
@@ -81,9 +81,9 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | [Oktatóanyag: Key Vault események létrehozása és figyelése a Event Grid](../key-vault/general/event-grid-logicapps.md) | Megtudhatja, hogyan állíthatja be a Key Vault Event Grid értesítéseit. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).
-* A Key VAulttal kapcsolatos további információkért lásd: [Mi az Azure Key Vault?](../key-vault/general/overview.md)
+* További információ a Key Vaultről: [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 

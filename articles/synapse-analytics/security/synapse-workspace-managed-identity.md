@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4100640fd619d9d971ac1c7083eedef8e2125fc3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5506a54193efc813927663533ddfd89be3ddf40a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738285"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461304"
 ---
-# <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure szinapszis-munkaterület felügyelt identitása (előzetes verzió)
+# <a name="azure-synapse-workspace-managed-identity"></a>Az Azure Synapse-munkaterület által kezelt identitás
 
 Ebből a cikkből megismerheti az Azure szinapszis munkaterület felügyelt identitását.
 
@@ -25,9 +25,9 @@ Az Azure-erőforrások felügyelt identitása Azure Active Directory egyik funkc
 
 Az Azure-erőforrások felügyelt identitásai a korábban Managed Service Identity (MSI) néven ismert szolgáltatás új neve. További információért lásd: [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
-## <a name="azure-synapse-workspace-managed-identity"></a>Azure szinapszis-munkaterület felügyelt identitása
+## <a name="azure-synapse-workspace-managed-identity"></a>Az Azure Synapse-munkaterület által kezelt identitás
 
-A munkaterület létrehozásakor létrejön egy rendszerhez rendelt felügyelt identitás az Azure szinapszis-munkaterülethez.
+A munkaterület létrehozása közben egy rendszer által hozzárendelt felügyelt identitás jött létre az Azure Synapse-munkaterületen.
 
 >[!NOTE]
 >Ezt a munkaterület felügyelt identitását felügyelt identitásnak nevezzük a dokumentum többi részén.
@@ -48,14 +48,14 @@ Indítsa el az **Azure szinapszis Studio alkalmazást** , és válassza a **keze
 
 ![Társított szolgáltatás létrehozása 1](./media/synapse-workspace-managed-identity/workspace-managed-identity-2.png)
 
-Az **új társított szolgáltatás** ablakban írja be a következőt: *Azure Data Lake Storage Gen2* . Válassza ki a **Azure Data Lake Storage Gen2** erőforrástípust az alábbi listából, majd válassza a **Folytatás** lehetőséget.
+Az **új társított szolgáltatás** ablakban írja be a következőt: *Azure Data Lake Storage Gen2*. Válassza ki a **Azure Data Lake Storage Gen2** erőforrástípust az alábbi listából, majd válassza a **Folytatás** lehetőséget.
 
 ![Társított szolgáltatás létrehozása 2](./media/synapse-workspace-managed-identity/workspace-managed-identity-3.png)
 
-A következő ablakban válassza a **felügyelt identitás** lehetőséget a **hitelesítési módszerhez** . Ekkor megjelenik a felügyelt identitás **neve** és az **objektum azonosítója** .
+A következő ablakban válassza a **felügyelt identitás** lehetőséget a **hitelesítési módszerhez**. Ekkor megjelenik a felügyelt identitás **neve** és az **objektum azonosítója**.
 
 ![Társított szolgáltatás létrehozása 3](./media/synapse-workspace-managed-identity/workspace-managed-identity-4.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ [Az Azure szinapszis-munkaterület felügyelt identitására vonatkozó engedélyek megadásáról](./how-to-grant-workspace-managed-identity-permissions.md)

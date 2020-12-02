@@ -9,15 +9,16 @@ ms.date: 11/18/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 4387aadd70ddb373df1bdfa61cbe9ed7f2af283d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bad71cfeb8f15f463bb9659be704374325d1f50a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919719"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461990"
 ---
 # <a name="azure-synapse-analytics-notebooks"></a>Azure szinapszis Analytics-jegyzetfüzetek
-A szinapszis Studio (előzetes verzió) jegyzetfüzet egy webes kezelőfelület, amellyel élő kódokat, vizualizációkat és elbeszélési szöveget tartalmazó fájlokat hozhat létre. A jegyzetfüzetek jó kiindulópontot nyújtanak az ötletek érvényesítéséhez és a gyors kísérletekhez az adatokból származó elemzések megszerzéséhez. 
+
+A szinapszis Studio notebook egy webes felület, amellyel élő kódot, vizualizációkat és narratív szöveget tartalmazó fájlokat hozhat létre. A jegyzetfüzetek jó kiindulópontot nyújtanak az ötletek érvényesítéséhez és a gyors kísérletekhez az adatokból származó elemzések megszerzéséhez. 
 
 Az Azure szinapszis Studio notebook használatával a következőket teheti:
 

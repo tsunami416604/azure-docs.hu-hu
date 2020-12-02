@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4ea1982e7545f4ac39a5ecd15dc9e19a582ae31c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780189"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459640"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database nagy kapacitású – gyakori kérdések
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,17 +42,17 @@ A virtuális mag-alapú szolgáltatási rétegek a következő táblázatban le�
 
 | | Erőforrás típusa | Általános célú |  Rugalmas skálázás | Üzletileg kritikus |
 |:---:|:---:|:---:|:---:|:---:|
-| **A következőkre alkalmas** |Mind|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|A legtöbb üzleti számítási feladat. A tárterület automatikus skálázása 100 TB-ig, gyors vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
+| **A következőkre alkalmas** |Összes|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|A legtöbb üzleti számítási feladat. A tárterület automatikus skálázása 100 TB-ig, gyors vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
 |  **Erőforrás típusa** ||SQL Database/SQL felügyelt példány | Önálló adatbázis | SQL Database/SQL felügyelt példány |
 | **Számítási méret**|SQL Database * | 1 – 80 virtuális mag | 1 – 80 virtuális mag * | 1 – 80 virtuális mag |
-| **Számítási méret**|SQL Managed Instance | 8, 16, 24, 32, 40, 64, 80 virtuális mag | N/A | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
-| **Tárolási típus** | Mind |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
+| **Számítási méret**|SQL Managed Instance | 8, 16, 24, 32, 40, 64, 80 virtuális mag | N.A. | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
+| **Tárolási típus** | Összes |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
 | **Tárterület mérete** | SQL Database *| 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
-| **Tárterület mérete** | SQL Managed Instance  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
+| **Tárterület mérete** | SQL Managed Instance  | 32 GB – 8 TB | N.A. | 32 GB – 4 TB |
 | **IOPS** | Önálló adatbázis | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
-| **IOPS** | SQL Managed Instance | Fájlmérettől függ | N/A | 1375 IOPS/virtuális mag |
-|**Rendelkezésre állás**|Mind|1 replika, nincs olvasási felskálázás, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási felskálázás, részleges helyi gyorsítótár | 3 replika, 1 olvasási felskálázás, zóna – redundáns HA, teljes helyi tárterület |
-|**Biztonsági másolatok**|Mind|RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap)| RA-GRS, 7 napos megőrzés, állandó időpontok közötti helyreállítási idő (PITR) | RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap) |
+| **IOPS** | SQL Managed Instance | Fájlmérettől függ | N.A. | 1375 IOPS/virtuális mag |
+|**Rendelkezésre állás**|Összes|1 replika, nincs olvasási felskálázás, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási felskálázás, részleges helyi gyorsítótár | 3 replika, 1 olvasási felskálázás, zóna – redundáns HA, teljes helyi tárterület |
+|**Biztonsági másolatok**|Összes|RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap)| RA-GRS, 7 napos megőrzés, állandó időpontok közötti helyreállítási idő (PITR) | RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap) |
 
 \* A rugalmas készletek nem támogatottak a nagy kapacitású szolgáltatási szinten
 
@@ -118,7 +118,7 @@ A nagy kapacitású támogatja az összes SQL Server munkaterhelést, de elsődl
 
 Ha jelenleg interaktív elemzési lekérdezéseket futtat SQL Server adattárházként, a nagy kapacitású nagyszerű megoldás, mivel a kis-és közepes méretű adattárházak (például néhány TB akár 100 TB-ig) alacsonyabb díjszabás mellett is telepíthetők, és az SQL Server adattárház-munkaterheléseket a minimális T-SQL-nagy kapacitású áttelepítheti.
 
-Ha az adatelemzést nagyméretű, összetett lekérdezésekkel, valamint 100 MB/s-nál nagyobb folyamatos betöltési aránysal futtatja, vagy párhuzamos adatraktár (PDW), Teradata vagy más nagymértékben párhuzamos feldolgozási (MPP) adattárházak használatával, az Azure szinapszis Analytics (korábban SQL Data Warehouse) lehet a legjobb választás.
+Ha az adatelemzést nagy méretekben futtatja összetett lekérdezésekkel és tartós betöltési sebességgel, amely nagyobb, mint 100 MB/s, vagy párhuzamos adattárház (PDW), Teradata vagy más nagymértékben párhuzamos feldolgozási (MPP) adattárházak használata, az Azure szinapszis Analytics lehet a legjobb választás.
   
 ## <a name="hyperscale-compute-questions"></a>Nagy kapacitású számítási kérdések
 
@@ -392,6 +392,6 @@ Nem. A nagy kapacitású-adatbázisok megosztott tárolóval rendelkeznek, ami a
 
 Az adatok késése attól az időponttól kezdve, amikor egy tranzakció véglegesítve lett az elsődlegesen a másodlagos olvasáskor, az aktuális log-generálási aránytól, a tranzakciók méretétől, a replika terhelésének és egyéb tényezőktől függ. A kisméretű tranzakciók tipikus adatkésése több tízezer ezredmásodperc, de nincs felső korlát az adatkéséshez. Egy adott másodlagos replikán lévő adat mindig tranzakciós szempontból konzisztens. Azonban egy adott időpontban az adatkésés eltérő lehet a másodlagos replikák esetében. Azokat a munkaterheléseket, amelyeknek azonnal el kell olvasniuk a véglegesített adatokról, az elsődleges replikán kell futniuk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a nagy kapacitású szolgáltatási szintjéről: [nagy kapacitású szolgáltatási szintje](service-tier-hyperscale.md).
