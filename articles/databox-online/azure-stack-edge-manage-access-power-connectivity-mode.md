@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 9636c76caf2302b872a2ecbb8e2e4bacfc1408a6
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 6455e4c9fa9460e47e3be7c860f89be540a514b0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952131"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453073"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>A Azure Stack Edge Pro hozzáférési, energiagazdálkodási és csatlakozási módjának kezelése
 
@@ -35,18 +35,18 @@ Az Azure Stack Edge Pro-eszköz hozzáférését az eszköz jelszavának haszná
 
 Az eszköz jelszavának módosításához kövesse az alábbi lépéseket a helyi felhasználói felületen.
 
-1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > jelszavának módosítása**elemre.
+1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > jelszavának módosítása** elemre.
 2. Adja meg az aktuális jelszót, majd az új jelszót. A megadott jelszónak 8 és 16 karakter közöttinek kell lennie. A jelszónak legalább hármat tartalmaznia kell a következő karakterek közül: nagybetűk, kisbetűk, számok és speciális karakterek. Erősítse meg az új jelszót.
 
     ![Change password](media/azure-stack-edge-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. Válassza a **jelszó módosítása**lehetőséget.
+3. Válassza a **jelszó módosítása** lehetőséget.
  
 ### <a name="reset-device-password"></a>Eszköz jelszavának alaphelyzetbe állítása
 
 A munkafolyamat alaphelyzetbe állítása nem igényli, hogy a felhasználó felidézze a régi jelszót, és akkor is hasznos, ha a jelszó elvész. Ezt a munkafolyamatot a Azure Portal hajtja végre.
 
-1. A Azure Portal lépjen az **áttekintés > rendszergazdai jelszó visszaállítása**elemre.
+1. A Azure Portal lépjen az **áttekintés > rendszergazdai jelszó visszaállítása** elemre.
 
     ![Új jelszó létrehozása](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
@@ -68,7 +68,7 @@ Az Azure Stack Edge Pro-eszköz aktiválási kulcsának létrehozásakor, illetv
 
 Ahhoz, hogy a rendszer `User` képes legyen hozzáférni Active Directory bérlőhöz `Read all directory objects` . Nem lehet vendég felhasználó, mert nem rendelkezik engedéllyel a szolgáltatáshoz `Read all directory objects` . Ha vendég, akkor az olyan műveleteket, mint például az aktiválási kulcs létrehozása, a Azure Stack Edge Pro-eszközön létrehozott megosztás létrehozása, a felhasználó létrehozása, a peremhálózati számítási szerepkör konfigurálása, az eszköz jelszavának alaphelyzetbe állítása sikertelen lesz.
 
-A felhasználók Microsoft Graph API-hoz való hozzáférésének biztosításával kapcsolatos további információkért lásd: [Microsoft Graph engedélyek referenciája](https://docs.microsoft.com/graph/permissions-reference).
+A felhasználók Microsoft Graph API-hoz való hozzáférésének biztosításával kapcsolatos további információkért lásd: [Microsoft Graph engedélyek referenciája](/graph/permissions-reference).
 
 ### <a name="register-resource-providers"></a>Erőforrás-szolgáltatók regisztrálása
 
@@ -114,7 +114,7 @@ Az alapértelmezett teljes kapcsolaton kívül az eszköz részben csatlakoztato
 Az eszköz üzemmódjának módosításához kövesse az alábbi lépéseket:
 
 1. Az eszköz helyi webes FELÜLETén nyissa meg a **konfigurációs > a felhő beállításait**.
-2. A legördülő listából válassza ki azt a módot, amelyre az eszközt használni szeretné. Kiválaszthatja a **teljes kapcsolat**, a **részlegesen csatlakoztatott**és a **teljesen leválasztott**lehetőséget is. Az eszköz részlegesen leválasztott módban való futtatásához engedélyezze **Azure Portal felügyeletet**.
+2. A legördülő listából válassza ki azt a módot, amelyre az eszközt használni szeretné. Kiválaszthatja a **teljes kapcsolat**, a **részlegesen csatlakoztatott** és a **teljesen leválasztott** lehetőséget is. Az eszköz részlegesen leválasztott módban való futtatásához engedélyezze **Azure Portal felügyeletet**.
 
     ![Kapcsolati mód](media/azure-stack-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  
@@ -122,7 +122,7 @@ Az eszköz üzemmódjának módosításához kövesse az alábbi lépéseket:
 
 A fizikai eszköz a helyi webes felhasználói felülettel állítható le vagy indítható újra. Az újraindítás előtt ajánlott offline állapotba állítani az adatkiszolgálón található megosztásokat, majd magát az eszközt is. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét.
 
-1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > energiagazdálkodási beállítások**elemre.
+1. A helyi webes KEZELŐFELÜLETen lépjen a **karbantartás > energiagazdálkodási beállítások** elemre.
 2. A kívánt művelettől függően válassza a **Leállítás** vagy az **Újraindítás** lehetőséget.
 
     ![Energiaellátási beállítások](media/azure-stack-edge-manage-access-power-connectivity-mode/shut-down-restart-1.png)

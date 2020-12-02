@@ -1,26 +1,26 @@
 ---
-title: Contoso kiskereskedelmi adatgyűjtési szolgáltatás betöltése a szinapszis SQL-be
-description: A contoso kiskereskedelmi adatokból származó két tábla a szinapszis SQL-be való betöltéséhez használja a Base és a T-SQL-parancsokat.
+title: A contoso kiskereskedelmi adatainak betöltése dedikált SQL-készletekbe
+description: Használja a "Base" és a "T-SQL" parancsokat két tábla betöltésére a contoso kiskereskedelmi adataiból a dedikált SQL-készletekbe.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/17/2018
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 904ce55f376e42156b014056b1226512b2784742
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbe61444404b16a09a1e0d2bdead72ac53a60744
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461697"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452891"
 ---
-# <a name="load-contoso-retail-data-to-synapse-sql"></a>Contoso kiskereskedelmi adatgyűjtési szolgáltatás betöltése a szinapszis SQL-be 
+# <a name="load-contoso-retail-data-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>A contoso kiskereskedelmi adatai a dedikált SQL-készletekbe tölthetők be az Azure szinapszis Analyticsben
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja a "Base" és a "T-SQL" parancsokat két tábla betöltésére a contoso kiskereskedelmi adatokból a szinapszis SQL-be.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a "Base" és a "T-SQL" parancsokat két tábla betöltésére a contoso kiskereskedelmi adataiból a dedikált SQL-készletekbe.
 
 Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
@@ -30,11 +30,11 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyag futtatásához olyan Azure-fiókra van szükség, amely már rendelkezik egy szinapszis SQL-fiókkal. Ha nincs kiépítve adattárház, tekintse [meg az adattárház létrehozása és a kiszolgálói szintű tűzfalszabály beállítása](create-data-warehouse-portal.md)című témakört.
+Az oktatóanyag futtatásához olyan Azure-fiókra van szükség, amely már rendelkezik egy dedikált SQL-készlettel. Ha nincs kiépítve adattárház, tekintse [meg az adattárház létrehozása és a kiszolgálói szintű tűzfalszabály beállítása](create-data-warehouse-portal.md)című témakört.
 
 ## <a name="configure-the-data-source"></a>Az adatforrás konfigurálása
 
-A Base T-SQL külső objektumokat használ a külső adatok helyének és attribútumainak meghatározásához. A külső objektum-definíciók a szinapszis SQL-ben tárolódnak. Az adattárolást külsőleg tárolja a rendszer.
+A Base T-SQL külső objektumokat használ a külső adatok helyének és attribútumainak meghatározásához. A külső objektumok definíciói a dedikált SQL-készletekben vannak tárolva. Az adattárolást külsőleg tárolja a rendszer.
 
 ## <a name="create-a-credential"></a>Hitelesítő adat létrehozása
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Oszlopcentrikus tömörítés optimalizálása
 
-Alapértelmezés szerint a szinapszis SQL a táblázatot fürtözött oszlopcentrikus-indexként tárolja. A betöltés befejeződése után előfordulhat, hogy egyes adatsorok nem lesznek tömörítve a oszlopcentrikus.  Ennek számos oka lehet. További információ: [oszlopcentrikus indexek kezelése](sql-data-warehouse-tables-index.md).
+Alapértelmezés szerint a dedikált SQL-készletek fürtözött oszlopcentrikus indexként tárolják a táblát. A betöltés befejeződése után előfordulhat, hogy egyes adatsorok nem lesznek tömörítve a oszlopcentrikus.  Ennek számos oka lehet. További információ: [oszlopcentrikus indexek kezelése](sql-data-warehouse-tables-index.md).
 
 A lekérdezés teljesítményének és a oszlopcentrikus a terhelés utáni tömörítésének optimalizálásához építse újra a táblázatot a oszlopcentrikus index kikényszerítéséhez az összes sor tömörítéséhez.
 
@@ -340,7 +340,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 
 ## <a name="achievement-unlocked"></a>A megvalósítás feloldva!
 
-Sikeresen betöltötte a nyilvános adatait az adattárházba. Remek!
+Sikeresen betöltötte a nyilvános adatait az adattárházba. Szép munka!
 
 Most már megkezdheti a táblázatok lekérdezését, hogy megismerkedjen az adataival. Futtassa a következő lekérdezést a teljes értékesítés/márka megállapításához:
 
@@ -352,7 +352,7 @@ JOIN    [cso].[DimProduct]      AS p ON f.[ProductKey] = p.[ProductKey]
 GROUP BY p.[BrandName]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A teljes adathalmaz betöltéséhez futtassa a példát a [teljes contoso kiskereskedelmi adattárház betöltésére](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md) a Microsoft SQL Server Samples adattárból.
 További fejlesztési tippek: [tervezési döntések és kódolási technikák az adattárházak számára](sql-data-warehouse-overview-develop.md).

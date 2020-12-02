@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
-ms.reviewer: nacanuma
+ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 566c429fc70ae3f0fc18f024b745d8142535932c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f631ad650b20110084ff902043447f26c2d4ab3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348407"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453603"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>A MSAL használata nemzeti Felhőbeli környezetben
 
@@ -83,7 +83,7 @@ MSAL.js alkalmazásának engedélyezése a szuverén felhők esetében:
 1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét.
 1. Ez az oktatóanyag megköveteli az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md)engedélyezését. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés** lehetőséget.
 1. A **Speciális beállítások** területén az **implicit engedélyezés** területen jelölje be az **azonosító tokenek** és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>2. lépés: a webkiszolgáló vagy projekt beállítása
 
@@ -150,9 +150,9 @@ A MSAL Python-alkalmazás szuverén felhőkhöz való engedélyezése:
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- A Microsoft Graph meghívásához egy adott gráf-végpont URL-címe szükséges, amely attól függ, hogy melyik felhőt használja. Az összes országos felhők Microsoft Graph végpontjának megkereséséhez tekintse meg a [Microsoft Graph és a Graph Explorer szolgáltatás gyökérszintű végpontját](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- A Microsoft Graph API meghívásához a használt felhőhöz tartozó végponti URL-cím szükséges. Az összes országos felhők Microsoft Graph végpontjának megkereséséhez tekintse meg a [Microsoft Graph és a Graph Explorer szolgáltatás gyökérszintű végpontját](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
-    Íme egy példa egy gráf-végpontra, hatókörrel:
+    Íme egy példa egy Microsoft Graph végpontra, hatókörrel:
 
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
@@ -173,7 +173,7 @@ Példa a szolgáltatóra:
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- A Microsoft Graph meghívásához egy adott gráf-végpont URL-címe szükséges, amely attól függ, hogy melyik felhőt használja. Az összes országos felhők Microsoft Graph végpontjának megkereséséhez tekintse meg a [Microsoft Graph és a Graph Explorer szolgáltatás gyökérszintű végpontját](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- A Microsoft Graph API meghívásához a használt felhőhöz tartozó végponti URL-cím szükséges. Az összes országos felhők Microsoft Graph végpontjának megkereséséhez tekintse meg a [Microsoft Graph és a Graph Explorer szolgáltatás gyökérszintű végpontját](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 Íme egy példa egy gráf-végpontra, hatókörrel:
 
@@ -222,9 +222,10 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>További lépések
 
-További információk:
+Az egyes felhőhöz tartozó Azure Portal URL-címek és jogkivonat-végpontok listájáért lásd: [nemzeti Felhőbeli hitelesítési végpontok](authentication-national-cloud.md) .
 
-- [Hitelesítés az országos felhőkben](authentication-national-cloud.md)
+Nemzeti felhő dokumentációja:
+
 - [Azure Government](../../azure-government/index.yml)
 - [Azure China 21Vianet](/azure/china/)
 - [Azure Germany](../../germany/index.yml)

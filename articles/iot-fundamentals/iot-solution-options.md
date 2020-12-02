@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
-ms.openlocfilehash: 1afb24a0e3e78acb1d44185843538bd55c491edf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7ff8193e87d138878d95e783d144d445436e7a08
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976776"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452998"
 ---
 # <a name="what-is-the-right-iot-solution-for-your-business"></a>Mi a megfelelő IoT megoldás vállalata számára?
 
@@ -55,7 +55,7 @@ Milyen díjszabási struktúra a legjobban megfelel az igényeinek?
 
 - Válassza ki a felügyelt alkalmazás platformjának megközelítését egy egyszerű, kiszámítható díjszabási struktúrához.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A platform szolgáltatásainak megközelítése a felhőalapú megoldással és az eszköz szakértelmével kapcsolatos üzleti megoldások esetében megfelelő.
 
@@ -69,10 +69,10 @@ A felügyelt alkalmazás platformjának megközelítése olyan vállalkozás sz�
 - Kiszámítható árképzési struktúrát szeretne.
 - Bizonyos testreszabási képességeket szeretne.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A különböző szolgáltatások és platformok részletes ismertetését, valamint a használatuk módját lásd: az [Azure IoT Services és Technologies](iot-services-and-technologies.md).
 
 Ha többet szeretne megtudni a sikeres IoT-megoldások legfontosabb attribútumairól, tekintse meg a [sikeres IoT-megoldások 8 attribútumát](https://aka.ms/8attributes) ismertető tanulmányt.
 
-Az IoT-architektúra részletes ismertetéséhez tekintse át a következő dokumentumot: [Microsoft Azure IoT Reference Architecture](https://aka.ms/iotrefarchitecture) (Microsoft Azure IoT-referenciaarchitektúra).
+Az IoT-architektúra részletes ismertetéséhez tekintse át a következő dokumentumot: [Microsoft Azure IoT Reference Architecture](/azure/architecture/reference-architectures/iot) (Microsoft Azure IoT-referenciaarchitektúra).

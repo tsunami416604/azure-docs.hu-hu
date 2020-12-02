@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ba444a497fa4fccab6b8dec1fadb3383420e4d49
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540968"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452969"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -86,7 +86,7 @@ Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` az objektumok egy `Id` mezővel rendelkeznek. Ezt a mezőt üresen hagyhatja, de ha egy azonosító értéket ad hozzá, akkor meg kell egyeznie a hívásnak átadott ID paraméterrel `CreateOrReplaceDigitalTwinAsync()` . Ilyenek többek között:
+> `BasicDigitalTwin` az objektumok egy `Id` mezővel rendelkeznek. Ezt a mezőt üresen hagyhatja, de ha egy azonosító értéket ad hozzá, akkor meg kell egyeznie a hívásnak átadott ID paraméterrel `CreateOrReplaceDigitalTwinAsync()` . Például:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -99,7 +99,7 @@ A következőhöz hasonló módon érheti el bármelyik digitális Twin adatait 
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
-Ez a hívás a kettős adattípust adja vissza, például: `BasicDigitalTwin` . Íme egy példa arra, hogyan használhatja ezt a Twin részletek megtekintésére:
+Ez a hívás a kettős adattípust adja vissza, például: `BasicDigitalTwin` . `BasicDigitalTwin` a egy olyan szerializálási segítő osztály, amely tartalmazza az SDK-t, amely az alapszintű Twin metaadatokat és tulajdonságokat az előre elemzett űrlapon fogja visszaadni. Íme egy példa arra, hogyan használhatja ezt a Twin részletek megtekintésére:
 
 ```csharp
 Response<BasicDigitalTwin> twin = client.GetDigitalTwin("myRoomId");
@@ -176,21 +176,7 @@ A digitális iker definiált tulajdonságai a digitális iker felső szintű tul
     - Az egyes írható tulajdonságok szinkronizálási állapota. Ez a leghasznosabb az eszközök esetében, ahol lehetséges, hogy a szolgáltatás és az eszköz eltérő állapotú (például ha egy eszköz offline állapotban van). Ez a tulajdonság jelenleg csak IoT Hubhoz csatlakoztatott fizikai eszközökre vonatkozik. A metaadatok szakaszban található adatokkal megismerheti a tulajdonságok teljes állapotát, valamint az utolsó módosítás időbélyegét is. A szinkronizálási állapottal kapcsolatos további információkért tekintse meg [ezt az IoT hub oktatóanyagot](../iot-hub/tutorial-device-twins.md) az eszköz állapotának szinkronizálásához.
     - Szolgáltatás-specifikus metaadatok, például IoT Hub vagy Azure digitális Twins. 
 
-A visszaadott JSON-t elemezheti a Twin paranccsal egy tetszőleges JSON-elemzési kódtár használatával, például: `System.Text.Json` .
-
-Használhatja az SDK részét képező szerializálási segítő osztályt is `BasicDigitalTwin` , amely az alapszintű Twin metaadatokat és tulajdonságokat az előre elemzett űrlapon fogja visszaadni. Alább bemutatunk egy példát:
-
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_Id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
-
-További információ a szerializálási segítő osztályokról [*: az Azure Digital Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md).
+További információ a szerializálási segítő osztályokról, például a `BasicDigitalTwin` [*útmutató: az Azure Digital Twins API-k és SDK*](how-to-use-apis-sdks.md)-k használata.
 
 ## <a name="view-all-digital-twins"></a>Az összes digitális ikrek megtekintése
 
@@ -550,6 +536,6 @@ Itt látható a fenti program konzoljának kimenete:
 
 :::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="Konzol kimenete, amely azt mutatja, hogy a Twin létrehozása, frissítése és törlése megtörtént" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet kapcsolatokat a digitális ikrek között: _ [ *útmutató: a Twin gráf kezelése a kapcsolatokkal*](how-to-manage-graph.md)

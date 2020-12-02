@@ -1,14 +1,14 @@
 ---
 title: A csatlakoztatott számítógép Windows-ügynökének áttekintése
 description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis kiszolgálók ügynökéről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
-ms.date: 09/30/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8a66f99f535013b8aac52fdee43b91a8c734b10a
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1bc9546e6db35153424ba670f8157adb86d19b71
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577583"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452955"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
 
@@ -31,7 +31,7 @@ Az Azure-beli csatlakoztatott gépi ügynök csomag számos logikai összetevőt
     * A vendég-hozzárendelést a rendszer 14 napig helyileg tárolja. A 14 napos időszakon belül, ha a csatlakoztatott számítógép ügynöke újracsatlakozik a szolgáltatáshoz, a rendszer újraalkalmazza a házirend-hozzárendeléseket.
     * A hozzárendelések 14 nap után törlődnek, és a 14 napos időszak után nem lesznek hozzárendelve a géphez.
 
-* A bővítmény ügynöke kezeli a virtuálisgép-bővítményeket, beleértve a telepítést, az eltávolítást és a frissítést. A bővítmények az Azure-ból tölthetők le, és a mappába kerülnek a `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` Windowsban, és a Linux rendszerhez `/opt/GC_Ext/downloads` . Windows rendszeren a bővítmény a következő elérési útra van telepítve, `%SystemDrive%\Packages\Plugins\<extension>` és Linux rendszeren a bővítmény telepítve van `/var/lib/waagent/<extension>` .
+* A bővítmény ügynöke kezeli a virtuálisgép-bővítményeket, beleértve a telepítést, az eltávolítást és a frissítést. A bővítmények az Azure-ból tölthetők le, és a mappába kerülnek a `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` Windowsban, és a Linux rendszerhez `/opt/GC_Ext/downloads` . Windows rendszeren a bővítmény a következő elérési útra van telepítve, `%SystemDrive%\Packages\Plugins\<extension>` és Linux rendszeren a bővítmény telepítve van `/var/lib/waagent/<extension>` .
 
 ## <a name="download-agents"></a>Ügynökök letöltése
 
@@ -90,7 +90,7 @@ Szolgáltatás címkéi:
 
 URLs
 
-| Ügynök erőforrása | Leírás |
+| Ügynök erőforrása | Description |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -100,7 +100,7 @@ URLs
 
 Az előzetes verziójú ügynököknek (0,11-es és alacsonyabb verzió) a következő URL-címekhez is hozzáférést kell adni:
 
-| Ügynök erőforrása | Leírás |
+| Ügynök erőforrása | Description |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|Vendégkonfiguráció|
 |`*-agentservice-prod-1.azure-automation.net`|Vendégkonfiguráció|
@@ -164,46 +164,46 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * A telepítés során a következő telepítési mappák jönnek létre.
 
-    |Mappa |Leírás |
+    |Mappa |Description |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Az ügynök által támogatott fájlokat tartalmazó alapértelmezett telepítési útvonal.|
     |%ProgramData%\AzureConnectedMachineAgent |Az ügynök konfigurációs fájljait tartalmazza.|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |A beszerzett jogkivonatokat tartalmazza.|
     |%ProgramData%\AzureConnectedMachineAgent\Config |Az ügynök konfigurációs fájlját tartalmazza `agentconfig.json` , amely rögzíti a regisztrációs adatokat a szolgáltatással.|
-    |%SystemDrive%\Program Files\ArcConnectedMachineAgent\ExtensionService\GC | A vendég konfigurációs ügynök fájljait tartalmazó telepítési útvonal. |
+    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | A vendég konfigurációs ügynök fájljait tartalmazó telepítési útvonal. |
     |%ProgramData%\GuestConfig |Az Azure-ból származó (alkalmazott) szabályzatokat tartalmazza.|
-    |%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads | A bővítmények letölthetők az Azure-ból, és ide másolhatók.|
+    |%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads | A bővítmények letölthetők az Azure-ból, és ide másolhatók.|
 
 * Az ügynök telepítése során a következő Windows-szolgáltatások jönnek létre a célszámítógépen.
 
-    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
+    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Description |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid Instance Metadata Service |himds.exe |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
     |DscService |Vendég konfigurációs szolgáltatás |dsc_service.exe |A kívánt állapot-konfiguráció (DSC v2) az Azure-ban használt, In-Guest házirend megvalósítására szolgáló kód.|
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre.
 
-    |Név |Alapértelmezett érték |Leírás |
+    |Név |Alapértelmezett érték |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Több naplófájl is elérhető a hibaelhárításhoz. Ezeket a következő táblázat ismerteti.
 
-    |Napló |Leírás |
+    |Napló |Description |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Az ügynökök (HIMDS) szolgáltatás és az Azure interakciójának adatait rögzíti.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |A azcmagent eszköz parancsainak kimenetét tartalmazza a részletes (-v) argumentum használatakor.|
     |%ProgramData%\GuestConfig\ gc_agent_logs \ gc_agent. log |A DSC szolgáltatási tevékenység részleteit rögzíti,<br> különösen a HIMDS szolgáltatás és a Azure Policy közötti kapcsolat.|
     |% ProgramData% \GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |A DSC szolgáltatás telemetria és részletes naplózási adatait rögzíti.|
-    |%SystemDrive%\ProgramData\GuestConfig\ ext_mgr_logs|A bővítmény ügynök összetevőjének adatait rögzíti.|
-    |%SystemDrive%\ProgramData\GuestConfig\ extension_logs\<Extension>|A telepített bővítmény adatait rögzíti.|
+    |%ProgramData%\GuestConfig\ ext_mgr_logs|A bővítmény ügynök összetevőjének adatait rögzíti.|
+    |%ProgramData%\GuestConfig\ extension_logs\<Extension>|A telepített bővítmény adatait rögzíti.|
 
 * Létrejön a helyi biztonsági csoport **hibrid ügynök bővítményének alkalmazásai** .
 
 * Az ügynök eltávolítása során a rendszer nem távolítja el a következő összetevőket.
 
-    * *%ProgramData%\AzureConnectedMachineAgent\Log
+    * %ProgramData%\AzureConnectedMachineAgent\Log
     * %ProgramData%\AzureConnectedMachineAgent és alkönyvtárak
     * %ProgramData%\GuestConfig
 
@@ -215,7 +215,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * A telepítés során a következő telepítési mappák jönnek létre.
 
-    |Mappa |Leírás |
+    |Mappa |Description |
     |-------|------------|
     |/var/opt/azcmagent/ |Az ügynök által támogatott fájlokat tartalmazó alapértelmezett telepítési útvonal.|
     |/opt/azcmagent/ |
@@ -227,14 +227,14 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * Az ügynök telepítése során a következő démonok jönnek létre a célszámítógépen.
 
-    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
+    |Szolgáltatásnév |Megjelenített név |Folyamatnév |Description |
     |-------------|-------------|-------------|------------|
     |himdsd. Service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
     |DSCD. Service |Vendég konfigurációs szolgáltatás |/opt/DSC/dsc_linux_service |Ez a kívánt állapot-konfiguráció (DSC v2) az Azure-ban használt, In-Guest házirend megvalósítására szolgáló rendszerbeállításai.|
 
 * Több naplófájl is elérhető a hibaelhárításhoz. Ezeket a következő táblázat ismerteti.
 
-    |Napló |Leírás |
+    |Napló |Description |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Az ügynökök (HIMDS) szolgáltatás és az Azure interakciójának adatait rögzíti.|
     |/var/opt/azcmagent/log/azcmagent.log |A azcmagent eszköz parancsainak kimenetét tartalmazza a részletes (-v) argumentum használatakor.|
@@ -245,7 +245,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre. Ezek a változók a ben vannak beállítva `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Név |Alapértelmezett érték |Leírás |
+    |Név |Alapértelmezett érték |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -255,7 +255,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure arc-kompatibilis kiszolgálók kiértékelésének megkezdéséhez kövesse a [hibrid gépek az Azure-ba való összekapcsolását ismertető cikket a Azure Portal](onboard-portal.md).
 

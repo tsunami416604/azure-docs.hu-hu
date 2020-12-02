@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de4661bcfd7106d515480e39dc4660f44f469a3d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 81c1b84bff04e62f2dabeb3880f4103112139ee0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631699"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453568"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – gyakran ismételt kérdések
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "92631699"
 
 ## <a name="general-questions"></a>Általános kérdések
 ### <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
-A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely **automatizálja az adatátvitelt és-átalakítást** . Csakúgy, mint egy olyan gyár, amely a berendezéseket a nyersanyagok begyűjtésére és a kész termékekre alakítja, Data Factory összehangolja a meglévő olyan szolgáltatásokat, amelyek nyers adatokat gyűjtenek, és a használatra kész információkra alakítják át azokat.
+A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely **automatizálja az adatátvitelt és-átalakítást**. Csakúgy, mint egy olyan gyár, amely a berendezéseket a nyersanyagok begyűjtésére és a kész termékekre alakítja, Data Factory összehangolja a meglévő olyan szolgáltatásokat, amelyek nyers adatokat gyűjtenek, és a használatra kész információkra alakítják át azokat.
 
 Data Factory lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre az adatok áthelyezéséhez a helyszíni és a Felhőbeli adattárak között, valamint az adatok feldolgozását/átalakítását számítási szolgáltatásokkal, például az Azure HDInsight és a Azure Data Lake Analytics használatával. Ha olyan folyamatot hoz létre, amely a szükséges műveletet végzi, rendszeres időközönként (óránként, naponta, hetente stb.) futtathatja azt.   
 
@@ -72,7 +72,7 @@ A következő táblázat felsorolja a Data Factory által támogatott számítá
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 | [Azure Machine Learning Studio (klasszikus)](data-factory-compute-linked-services.md#azure-machine-learning-studio-classic-linked-service) |[Studio (klasszikus) tevékenységek: kötegelt végrehajtás és erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure szinapszis Analytics (korábban SQL Data Warehouse)](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Tárolt eljárás](data-factory-stored-proc-activity.md) |
+| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure szinapszis Analytics](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Tárolt eljárás](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Hogyan hasonlítható össze Azure Data Factory a SQL Server Integration Servicesval (SSIS)? 
 Tekintse meg a [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) bemutatót az egyik MVP (legértékesebb szakemberektől): Reza rad. Előfordulhat, hogy a Data Factory közelmúltbeli módosításai nem szerepelnek a dia-pakliban. Folyamatosan bővítjük a Azure Data Factory további képességeit. Folyamatosan bővítjük a Azure Data Factory további képességeit. Ezeket a frissítéseket a Microsoft adatintegrációs technológiáinak az év későbbi részében való összehasonlításával fogjuk egyesíteni.   
@@ -141,7 +141,7 @@ A fenti példában a otherLinkedServiceName1 és a otherLinkedServiceName2 olyan
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>Miért nem kész állapotban vannak a bemeneti szeletek?
 Gyakori hiba, hogy a bemeneti adatkészlet nem állítja be a **külső** tulajdonságot **igaz** értékre, ha a bemeneti adatok kívül vannak az adat-előállítón (amelyet a adat-előállító nem állít elő).
 
-A következő példában a **DataSet1 elemet** -on csak az igaz értékre kell beállítani a **külsőt** .  
+A következő példában a **DataSet1 elemet**-on csak az igaz értékre kell beállítani a **külsőt** .  
 
 **DataFactory1** 1. folyamat: DataSet1 elemet-> activity1-> dataset2-> activity2-> dataset3-folyamat 2: dataset3-> activity3-> dataset4
 

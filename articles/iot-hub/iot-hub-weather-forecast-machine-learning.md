@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: c53f78702aeb5404bd353274ddb29b9356229fae
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ab9e122ba0b2b50203a2d66ae14f03f3b6300f96
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145771"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452349"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Időjárás-előrejelzés az IoT hub Sensor-adatainak használatával Azure Machine Learning Studio (klasszikus)
 
@@ -46,7 +46,7 @@ Az Azure IoT hub hőmérséklet-és páratartalom-adatainak használatával megt
   - Az előfizetéshez tartozó Azure IoT hub.
   - Egy ügyfélalkalmazás, amely üzeneteket küld az Azure IoT hub-nak.
 - Egy [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net/) fiók.
-- Egy [Azure Storage-fiók](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts), egy **általános célú v2-** fiók használata javasolt, de az Azure Blob Storage-t támogató Azure Storage-fiókok is működni fognak.
+- Egy [Azure Storage-fiók](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts), egy **általános célú v2-** fiók használata javasolt, de az Azure Blob Storage-t támogató Azure Storage-fiókok is működni fognak.
 
 > [!Note]
 > Ez a cikk Azure Stream Analytics és számos más fizetős szolgáltatást használ. Az adatoknak az Azure-régiókban való átadásakor a Azure Stream Analytics további díjakat számítunk fel. Ezért jó lenne gondoskodni arról, hogy az erőforráscsoport, a IoT Hub és az Azure Storage-fiók, valamint az oktatóanyagban később hozzáadott Machine Learning Studio (klasszikus) munkaterület és Azure Stream Analytics-feladatok is elérhetők legyenek, amelyek ugyanabban az Azure-régióban találhatók. Az [Azure-termékek rendelkezésre állása régiónként lapon](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)a Azure Machine learning Studio (klasszikus) és más Azure-szolgáltatások regionális támogatását is megtekintheti.
@@ -106,7 +106,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    ![Futtassa a kísérletet a lépések ellenőrzéséhez](media/iot-hub-weather-forecast-machine-learning/run-experiment.png)
 
-1. Válassza a **webszolgáltatás**  >  **prediktív webszolgáltatás**beállítása lehetőséget. Megnyílik a prediktív kísérlet diagramja.
+1. Válassza a **webszolgáltatás**  >  **prediktív webszolgáltatás** beállítása lehetőséget. Megnyílik a prediktív kísérlet diagramja.
 
    ![Az időjárási előrejelzési modell üzembe helyezése Azure Machine Learning Studio (klasszikus)](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
 
@@ -133,7 +133,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
-1. A [Azure Portal](https://portal.azure.com/)válassza az **erőforrás létrehozása**lehetőséget. Írja be a "stream Analytics-feladatok" kifejezést a keresőmezőbe, majd válassza ki **stream Analytics feladatot** az eredmények legördülő listából. Amikor megnyílik a **stream Analytics feladatok** ablaktábla, válassza a **Létrehozás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)válassza az **erőforrás létrehozása** lehetőséget. Írja be a "stream Analytics-feladatok" kifejezést a keresőmezőbe, majd válassza ki **stream Analytics feladatot** az eredmények legördülő listából. Amikor megnyílik a **stream Analytics feladatok** ablaktábla, válassza a **Létrehozás** lehetőséget.
 1. Adja meg a feladat alábbi adatait.
 
    **Feladat neve**: A feladat neve. A névnek globálisan egyedinek kell lennie.
@@ -154,7 +154,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
 1. Nyissa meg a Stream Analytics feladatot.
 1. A **Feladattopológia** területen válassza a **Bemenetek** lehetőséget.
-1. A **bemenetek** ablaktáblán válassza a **stream-bemenet hozzáadása**lehetőséget, majd a legördülő listából válassza a **IoT hub** lehetőséget. Az **új beviteli** panelen válassza a **Select IoT hub az előfizetések** közül, és adja meg a következő adatokat:
+1. A **bemenetek** ablaktáblán válassza a **stream-bemenet hozzáadása** lehetőséget, majd a legördülő listából válassza a **IoT hub** lehetőséget. Az **új beviteli** panelen válassza a **Select IoT hub az előfizetések** közül, és adja meg a következő adatokat:
 
    **Bemeneti alias**: a bemenet egyedi aliasa.
 
@@ -162,7 +162,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    **IoT hub**: válassza ki az IoT hubot az előfizetésből.
 
-   **Megosztott elérési házirend neve**: válassza a  **szolgáltatás**elemet. (A **iothubowner**is használhatja.)
+   **Megosztott elérési házirend neve**: válassza a  **szolgáltatás** elemet. (A **iothubowner** is használhatja.)
 
    **Fogyasztói csoport**: válassza ki a létrehozott fogyasztói csoportot.
 
@@ -170,12 +170,12 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    ![Bemenet hozzáadása a Stream Analytics feladathoz az Azure-ban](media/iot-hub-weather-forecast-machine-learning/add-input-stream-analytics-job.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
 1. A **Feladattopológia** területen válassza a **Kimenetek** lehetőséget.
-1. A **kimenetek** ablaktáblán válassza a **Hozzáadás**lehetőséget, majd válassza a **blob Storage/Data Lake Storage** elemet a legördülő listából. Az **új kimenet** ablaktáblán válassza ki a **tároló kiválasztása az előfizetések** közül, és adja meg a következő adatokat:
+1. A **kimenetek** ablaktáblán válassza a **Hozzáadás** lehetőséget, majd válassza a **blob Storage/Data Lake Storage** elemet a legördülő listából. Az **új kimenet** ablaktáblán válassza ki a **tároló kiválasztása az előfizetések** közül, és adja meg a következő adatokat:
 
    **Kimeneti áljel**: A kimenet egyedi áljele.
 
@@ -185,16 +185,16 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    **Container (tároló**): az a tároló, amelyben a blob mentve van. Létrehozhat egy tárolót, vagy használhat egy meglévőt is.
 
-   **Esemény szerializálási formátuma**: válassza a **CSV**lehetőséget.
+   **Esemény szerializálási formátuma**: válassza a **CSV** lehetőséget.
 
    ![Kimenet hozzáadása a Stream Analytics feladatokhoz az Azure-ban](media/iot-hub-weather-forecast-machine-learning/add-output-stream-analytics-job.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Függvény hozzáadása a Stream Analytics feladathoz a telepített webszolgáltatás meghívásához
 
-1. A **feladatok topológiája**területen válassza a **függvények**lehetőséget.
-1. A **függvények** ablaktáblán válassza a **Hozzáadás**lehetőséget, majd válassza ki az **Azure ml Studio** elemet a legördülő listából. (Ügyeljen arra, hogy az Azure **ml Studio**és ne az **Azure ml szolgáltatás**legyen kiválasztva.) Az **új függvény** ablaktáblán válassza a **Azure Machine Learningi függvény beállításainak manuális** megadása lehetőséget, és adja meg a következő adatokat:
+1. A **feladatok topológiája** területen válassza a **függvények** lehetőséget.
+1. A **függvények** ablaktáblán válassza a **Hozzáadás** lehetőséget, majd válassza ki az **Azure ml Studio** elemet a legördülő listából. (Ügyeljen arra, hogy az Azure **ml Studio** és ne az **Azure ml szolgáltatás** legyen kiválasztva.) Az **új függvény** ablaktáblán válassza a **Azure Machine Learningi függvény beállításainak manuális** megadása lehetőséget, és adja meg a következő adatokat:
 
    **Függvény aliasa**: ENTER `machinelearning` .
 
@@ -204,7 +204,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    ![Függvény hozzáadása a Stream Analytics feladathoz az Azure-ban](media/iot-hub-weather-forecast-machine-learning/add-function-stream-analytics-job.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
@@ -215,7 +215,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
    WITH machinelearning AS (
       SELECT EventEnqueuedUtcTime, temperature, humidity, machinelearning(temperature, humidity) as result from [YourInputAlias]
    )
-   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[scored probabilities] AS FLOAT ) AS 'probabalities of rain'
+   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[scored probabilities] AS FLOAT ) AS 'probabalities of rain'
    Into [YourOutputAlias]
    From machinelearning
    ```
@@ -224,14 +224,14 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    A `[YourOutputAlias]` elemet cserélje le a feladat kimeneti áljelére.
 
-1. Válassza a **lekérdezés mentése**lehetőséget.
+1. Válassza a **lekérdezés mentése** lehetőséget.
 
 > [!Note]
-> Ha a **lekérdezés tesztelése**lehetőséget választja, a következő üzenet jelenik meg: a lekérdezés tesztelése Machine learning függvényekkel nem támogatott. Módosítsa a lekérdezést, és próbálkozzon újra. Nyugodtan figyelmen kívül hagyhatja ezt az üzenetet, és az **OK** gombra kattintva zárhatja be az üzenet mezőjét. Mielőtt továbblép a következő szakaszra, győződjön meg róla, hogy menti a lekérdezést.
+> Ha a **lekérdezés tesztelése** lehetőséget választja, a következő üzenet jelenik meg: a lekérdezés tesztelése Machine learning függvényekkel nem támogatott. Módosítsa a lekérdezést, és próbálkozzon újra. Nyugodtan figyelmen kívül hagyhatja ezt az üzenetet, és az **OK** gombra kattintva zárhatja be az üzenet mezőjét. Mielőtt továbblép a következő szakaszra, győződjön meg róla, hogy menti a lekérdezést.
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
-A Stream Analyticsi feladatokban válassza az **Áttekintés** lehetőséget a bal oldali ablaktáblán. Ezután válassza az **Indítás**  >  **most**  >  **Indítás**lehetőséget. Ha a feladat sikeresen elindult, a feladat állapota **Leállítva** értékről **Fut** értékre változik.
+A Stream Analyticsi feladatokban válassza az **Áttekintés** lehetőséget a bal oldali ablaktáblán. Ezután válassza az **Indítás**  >  **most**  >  **Indítás** lehetőséget. Ha a feladat sikeresen elindult, a feladat állapota **Leállítva** értékről **Fut** értékre változik.
 
 ![Stream Analytics-feladat futtatása](media/iot-hub-weather-forecast-machine-learning/run-stream-analytics-job.png)
 

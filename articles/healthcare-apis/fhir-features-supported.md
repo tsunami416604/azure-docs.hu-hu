@@ -8,14 +8,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 3aea2322129c383a385168c54001464da5dae276
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9a4c331d82695aecb53990fd604ade82f3361959
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520084"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452913"
 ---
-# <a name="features"></a>Szolgáltatások
+# <a name="features"></a>Funkciók
 
 A FHIR készült Azure API teljes körűen felügyelt üzembe helyezést biztosít az Azure-hoz készült Microsoft FHIR-kiszolgáló számára. A kiszolgáló a [FHIR](https://hl7.org/fhir) standard implementációja. Ez a dokumentum a FHIR-kiszolgáló fő funkcióit sorolja fel.
 
@@ -59,7 +59,7 @@ Az összes keresési paraméter típusa támogatott.
 | Dátum/dátum/idő         | Igen       | Igen       | Igen       |         |
 | Sztring                | Igen       | Igen       | Igen       |         |
 | Jogkivonat                 | Igen       | Igen       | Igen       |         |
-| Referencia             | Igen       | Igen       | Igen       |         |
+| Hivatkozás             | Igen       | Igen       | Igen       |         |
 | Kompozit             | Igen       | Igen       | Igen       |         |
 | Mennyiség              | Igen       | Igen       | Igen       |         |
 | URI                   | Igen       | Igen       | Igen       |         |
@@ -135,7 +135,7 @@ Jelenleg az adott szerepkörre vonatkozó engedélyezett műveletek *globálisan
 
 ## <a name="service-limits"></a>Szolgáltatási korlátozások
 
-* [**Kérelmek egységei (RUS)**](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) – a FHIR-hez készült Azure API-portálon akár 10 000 RUs is konfigurálható. Legalább 400 RUs vagy 10 RUs/GB szükséges, attól függően, hogy melyik a nagyobb. Ha 10 000 RUs-nál többre van szüksége, a megnövelt támogatási jegybe helyezhető. Az elérhető maximális érték 1 000 000.
+* [**Kérelmek egységei (RUS)**](../cosmos-db/concepts-limits.md) – a FHIR-hez készült Azure API-portálon akár 10 000 RUs is konfigurálható. Legalább 400 RUs vagy 10 RUs/GB szükséges, attól függően, hogy melyik a nagyobb. Ha 10 000 RUs-nál többre van szüksége, a megnövelt támogatási jegybe helyezhető. Az elérhető maximális érték 1 000 000.
 
 * **Egyidejű kapcsolatok** és **példányok** – a dafault öt párhuzamos kapcsolatot biztosít a fürt két példányán (összesen 10 egyidejű kérelem esetén). Ha úgy gondolja, hogy több egyidejű kérésre van szüksége, nyisson meg egy támogatási jegyet az igényeinek megfelelő részletekkel.
 
@@ -154,7 +154,7 @@ A rendszer teljesítménye az RUs, az egyidejű kapcsolatok és a végrehajtott 
 | 10,000   | 225-400       |
 | 100.000  | 2500 – 4000   |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a FHIR készült Azure API támogatott FHIR szolgáltatásairól olvashat. Ezután telepítse az Azure API-t a FHIR-hez.
  

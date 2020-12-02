@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c12727e08c6ec9075aa6c1e256279ab7596417b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 33eb5977ecb373a0dba87c26cacea247f541be8f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324532"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452731"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Táblázatok kialakítása a szinapszis SQL használatával az Azure szinapszis Analyticsben
 
-Ez a dokumentum a táblázatok dedikált SQL-készlettel és kiszolgáló nélküli SQL-készlettel (előzetes verzió) történő tervezésével kapcsolatos főbb fogalmakat tartalmazza.  
+Ez a dokumentum a táblázatok dedikált SQL-készlettel és kiszolgáló nélküli SQL-készlettel való tervezésével kapcsolatos főbb fogalmakat tartalmazza.  
 
-A [kiszolgáló nélküli SQL-készlet (előzetes verzió)](on-demand-workspace-overview.md) egy lekérdezési szolgáltatás a adatközpontban található adaton keresztül. Nem rendelkezik helyi tárterülettel az adatfeldolgozáshoz. A [DEDIKÁLT SQL-készlet](best-practices-sql-pool.md) a szinapszis SQL használatakor kiépített analitikus erőforrások gyűjteményét jelöli. A dedikált SQL-készlet méretét az adattárház-egységek (DWU-EK) határozzák meg.
+A [kiszolgáló nélküli SQL-készlet](on-demand-workspace-overview.md) egy lekérdezési szolgáltatás a adatközpontban található adaton keresztül. Nem rendelkezik helyi tárterülettel az adatfeldolgozáshoz. A [DEDIKÁLT SQL-készlet](best-practices-sql-pool.md) a szinapszis SQL használatakor kiépített analitikus erőforrások gyűjteményét jelöli. A dedikált SQL-készlet méretét az adattárház-egységek (DWU-EK) határozzák meg.
 
 A következő táblázat felsorolja a dedikált SQL-készlethez és a kiszolgáló nélküli SQL-készlethez kapcsolódó témaköröket:
 
@@ -76,7 +76,7 @@ A táblák Szervezetének a dedikált SQL-készletben való megjelenítéséhez 
 | Wideworldimportersdw adattárházat táblázat  | Tábla típusa | dedikált SQL-készlet |
 |:-----|:-----|:------|:-----|
 | City | Dimenzió | WWI. DimCity |
-| Rendelés | Fact | WWI. FactOrder |
+| Sorrend | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Tábla megőrzése
 
@@ -206,7 +206,7 @@ A dedikált SQL-készlet esetében az elsődleges kulcs csak akkor támogatott, 
 
 A dedikált SQL-készlet esetében új üres táblaként hozhat létre táblát. Létrehozhat és fel is tölthet egy táblát a SELECT utasítás eredményeivel. A következő a T-SQL-parancsok egy tábla létrehozásához.
 
-| T-SQL-utasítás | Leírás |
+| T-SQL-utasítás | Description |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Egy üres táblát hoz létre a tábla összes oszlopának és beállításának definiálásával. |
 | [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Létrehoz egy külső táblát. A tábla definícióját a dedikált SQL-készlet tárolja. A tábla az Azure Blob Storage-ban vagy Azure Data Lake Storageban tárolódik. |
@@ -438,6 +438,6 @@ ORDER BY    distribution_id
 ;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután létrehozta az adattárházhoz tartozó táblákat, a következő lépés az adatai betöltése a táblába.  Betöltési oktatóanyag: az [adat betöltése DEDIKÁLT SQL-készletbe](../sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#load-the-data-into-sql-pool).

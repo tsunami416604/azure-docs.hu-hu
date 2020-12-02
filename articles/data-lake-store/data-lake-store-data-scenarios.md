@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: fe911ac8985f9997125eb5149348b50a7fa83222
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 702a59f768bfe978e1a7708d91c6b6b1bb9c92fe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109255"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452240"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>A Azure Data Lake Storage Gen1 használata big data követelményekhez
 
@@ -130,5 +130,5 @@ A szolgáltatások együttes használatával a Data Lake Storage Gen1ban tárolt
 
 ![Az Data Lake Storage Gen1ban lévő adatmegjelenítés](./media/data-lake-store-data-scenarios/visualize-data.png "Az Data Lake Storage Gen1ban lévő adatmegjelenítés")
 
-* Az [adatok Data Lake Storage Gen1ból az Azure szinapszis analyticsbe való áthelyezéséhez Azure Data Factory használatával indítható (korábban SQL Data Warehouse)](../data-factory/copy-activity-overview.md)
+* Az [adatok Data Lake Storage Gen1ból az Azure szinapszis analyticsbe való áthelyezéséhez Azure Data Factory](../data-factory/copy-activity-overview.md) használatával kezdheti
 * Ezután [integrálhatja Power bi az Azure szinapszis Analytics szolgáltatással](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) , hogy vizuálisan jelenítse meg az adatmegjelenítést.

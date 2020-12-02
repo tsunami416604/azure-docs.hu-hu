@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 4a9aaca8128570af74370213e9848e26dec25156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a9a5f6a4644717227d0b659407e9ba0bc56675
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89490258"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452403"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>Több táblázat másolása ömlesztve Azure Data Factory használatával a PowerShell használatával
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ez az oktatóanyag azt mutatja be, hogyan **másolhat több táblát Azure SQL Databaseról az Azure szinapszis analyticsbe (korábban SQL Data Warehouse)**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
+Ez az oktatóanyag azt mutatja be, hogyan **másolhat több táblázatot Azure SQL Databaseról az Azure szinapszis Analytics szolgáltatásba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
 
 Az oktatóanyag a következő főbb lépésekből áll:
 
@@ -172,7 +172,7 @@ Ebben az oktatóanyagban létrehoz három társított szolgáltatást a forrás,
     }
     ```
 
-2. A társított szolgáltatás létrehozásához: **AzureSqlDWLinkedService**futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot.
+2. A társított szolgáltatás létrehozásához: **AzureSqlDWLinkedService** futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
@@ -208,7 +208,7 @@ Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure B
     }
     ```
 
-2. A társított szolgáltatás létrehozásához: **AzureStorageLinkedService**futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot.
+2. A társított szolgáltatás létrehozásához: **AzureStorageLinkedService** futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -263,7 +263,7 @@ Ebben az oktatóanyagban létrehozza a forrás és a fogadó adatkészletet, ame
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
     ```
 
-### <a name="create-a-dataset-for-sink-synapse-analytics"></a>Adatkészlet létrehozása a fogadó szinapszis Analyticshez
+### <a name="create-a-dataset-for-sink-azure-synapse-analytics"></a>Adatkészlet létrehozása a fogadó Azure szinapszis Analyticshez
 
 1. Hozzon létre egy **AzureSqlDWDataset.json** nevű JSON-fájlt a **C:\ADFv2TutorialBulkCopy** mappában a következő tartalommal: A „tableName” paraméterként van beállítva. A másolási tevékenység, amely erre az adatkészletre hivatkozik, később át fogja adni a tényleges értéket az adatkészletnek.
 

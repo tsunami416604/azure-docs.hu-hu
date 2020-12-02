@@ -7,16 +7,16 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ca2319a78fb4c0c720a21e97944d5b75ada9d008
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad5c6f205fc832eb125e52b4135990fc58742e62
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014989"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453242"
 ---
 # <a name="preview-tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>Oktatóanyag: Time Series Insights Gen2 létrehozása és csatlakoztatása a IoT Plug and Play eszköz telemetria tárolásához, megjelenítéséhez és elemzéséhez
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat megfelelően egy [Azure Time Series Insights Gen2](https://docs.microsoft.com/azure/time-series-insights/overview-what-is-tsi) (ÁME) környezetet a IoT Plug and Play megoldással való integrációhoz. Használja az ÁME-t az idősoros adatok gyűjtésére, feldolgozására, tárolására, lekérdezésére és megjelenítésére eszközök internetes hálózata (IoT) skálán.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat megfelelően egy [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) (ÁME) környezetet a IoT Plug and Play megoldással való integrációhoz. Használja az ÁME-t az idősoros adatok gyűjtésére, feldolgozására, tárolására, lekérdezésére és megjelenítésére eszközök internetes hálózata (IoT) skálán.
 
 Először is üzembe kell helyeznie egy ÁME-környezetet, és csatlakoztatnia kell az IoT hub-t adatfolyam-eseményforrásként. Ezt követően a modell szinkronizálásával elkészítheti az [Idősorozat-modellt](../time-series-insights/concepts-model-overview.md) a hőmérséklet-vezérlő és a termosztátos eszközökhöz használt [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) minta alapján.
 
@@ -39,7 +39,7 @@ Ha el szeretné kerülni az Azure CLI helyi telepítésének követelményét, h
 
 ## <a name="prepare-your-event-source"></a>Az eseményforrás előkészítése
 
-A korábban létrehozott IoT hub az ÁME-környezet [eseményének forrása](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingestion-event-sources)lesz.
+A korábban létrehozott IoT hub az ÁME-környezet [eseményének forrása](../time-series-insights/concepts-streaming-ingestion-event-sources.md)lesz.
 
 > [!IMPORTANT]
 > Tiltsa le a meglévő IoT Hub útvonalakat. Ismert probléma van, ha az IoT hub-t az ÁME-esemény forrásaként konfigurálta az [útválasztással](../iot-hub/iot-hub-devguide-messages-d2c.md#routing-endpoints) . Ideiglenesen tiltsa le az útválasztási végpontokat, és ha az IoT hub az ÁME-hez van csatlakoztatva, akkor újra engedélyezheti őket.
@@ -67,7 +67,7 @@ Ez a szakasz azt ismerteti, hogyan lehet kiépíteni a Azure Time Series Insight
 
 A következő parancs:
 
-* Létrehoz egy Azure Storage-fiókot a környezete [hűtőházi tárolójához](https://docs.microsoft.com/azure/time-series-insights/concepts-storage#cold-store), amely hosszú távú adatmegőrzésre és a múltbeli adatok elemzésére szolgál.
+* Létrehoz egy Azure Storage-fiókot a környezete [hűtőházi tárolójához](../time-series-insights/concepts-storage.md#cold-store), amely hosszú távú adatmegőrzésre és a múltbeli adatok elemzésére szolgál.
   * Cserélje le a változót `mytsicoldstore` egy egyedi névre a hűtőházi Storage-fiókhoz.
 * Egy Azure Time Series Insights Gen2-környezetet hoz létre, amely tartalmazza a meleg tárolást a hét napos megőrzési időtartammal, valamint a hideg tárolást a végtelen megőrzés érdekében.
   * A helyére írja be az `my-tsi-env` ÁME-környezet egyedi nevét.

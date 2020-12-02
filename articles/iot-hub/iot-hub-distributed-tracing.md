@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: efc4d07e9e3a64a36f2ecf3fa0000379bef380f9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538578"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452400"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-eszközről a felhőbe irányuló üzenetek nyomon követése elosztott nyomkövetéssel (előzetes verzió)
 
@@ -59,13 +59,13 @@ Ebben a szakaszban egy IoT Hub konfigurál az elosztott nyomkövetési attribút
 
 1. Kattintson a **diagnosztikai beállítás hozzáadása** elemre.
 
-1. A **név** mezőbe írja be az új diagnosztikai beállítás nevét. Például: **DistributedTracingSettings** .
+1. A **név** mezőbe írja be az új diagnosztikai beállítás nevét. Például: **DistributedTracingSettings**.
 
 1. Válasszon egyet vagy többet a következő lehetőségek közül, amelyek meghatározzák, hogy a naplózás hol lesz elküldve:
 
-    - **Archiválás egy Storage-fiókba** : a naplózási adatokat tartalmazó Storage-fiók konfigurálása.
-    - **Stream az Event hub** -ba: az Event hub konfigurálása, hogy tartalmazza a naplózási adatokat.
-    - **Küldés log Analyticsba** : konfigurálja a log Analytics-munkaterületet, hogy tartalmazza a naplózási adatokat.
+    - **Archiválás egy Storage-fiókba**: a naplózási adatokat tartalmazó Storage-fiók konfigurálása.
+    - **Stream az Event hub**-ba: az Event hub konfigurálása, hogy tartalmazza a naplózási adatokat.
+    - **Küldés log Analyticsba**: konfigurálja a log Analytics-munkaterületet, hogy tartalmazza a naplózási adatokat.
 
 1. A **napló** szakaszban válassza ki azokat a műveleteket, amelyeknek a naplózási adatait meg szeretné jeleníteni.
 
@@ -222,7 +222,7 @@ A felhőből nyomon követett üzenetek százalékos arányának módosításáh
 
 1. Nyissa meg a VS Code-ot, és [állítsa be IoT hub a kapcsolatok karakterláncát](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites).
 
-1. Bontsa ki az eszközt, és keresse meg az **elosztott nyomkövetési beállítást (előzetes verzió)** . Alatta kattintson az alcsomópontok **elosztott nyomkövetési beállításainak frissítése (előzetes verzió)** elemre.
+1. Bontsa ki az eszközt, és keresse meg az **elosztott nyomkövetési beállítást (előzetes verzió)**. Alatta kattintson az alcsomópontok **elosztott nyomkövetési beállításainak frissítése (előzetes verzió)** elemre.
 
     ![Elosztott nyomkövetés engedélyezése az Azure IoT Hub bővítményben](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
@@ -272,7 +272,7 @@ AzureDiagnostics
 
 Példák a Log Analytics által megjelenített naplókra:
 
-| TimeGenerated | OperationName | Kategória | Szint | CorrelationId | DurationMs | Tulajdonságok |
+| TimeGenerated | OperationName | Category | Level | CorrelationId | DurationMs | Tulajdonságok |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Tájékoztató | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
 | 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Tájékoztató | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "parentSpanId": "0144d2590aacd909"} |
@@ -295,7 +295,7 @@ Az alábbi képen az App Map elosztott nyomkövetése látható három útválas
 
 ### <a name="context"></a>Környezet
 
-Számos IoT-megoldás, beleértve a saját [hivatkozási architektúrát](https://aka.ms/iotrefarchitecture) (csak angol nyelven), általában a [Service architektúrájának](/azure/architecture/microservices/)egy változatát követi. Mivel a IoT-megoldás összetettebb, a végén egy tucat vagy több szolgáltatást használ. Előfordulhat, hogy ezek a szolgáltatások nem az Azure-ból származnak. Kihívást jelenthet a IoT üzenetek eldobásának és lelassulásának a kimutatása. Például egy IoT-megoldással rendelkezik, amely 5 különböző Azure-szolgáltatást és 1500 aktív eszközt használ. Minden eszköz 10 eszközről a felhőbe irányuló üzenetet küld/másodpercet (összesen 15 000 üzenet/másodperc), de észreveheti, hogy a webalkalmazás csak 10 000 üzenetet lát/másodpercet. Hol található a probléma? Hogyan találják meg a bűnöst?
+Számos IoT-megoldás, beleértve a saját [hivatkozási architektúrát](/azure/architecture/reference-architectures/iot) (csak angol nyelven), általában a [Service architektúrájának](/azure/architecture/microservices/)egy változatát követi. Mivel a IoT-megoldás összetettebb, a végén egy tucat vagy több szolgáltatást használ. Előfordulhat, hogy ezek a szolgáltatások nem az Azure-ból származnak. Kihívást jelenthet a IoT üzenetek eldobásának és lelassulásának a kimutatása. Például egy IoT-megoldással rendelkezik, amely 5 különböző Azure-szolgáltatást és 1500 aktív eszközt használ. Minden eszköz 10 eszközről a felhőbe irányuló üzenetet küld/másodpercet (összesen 15 000 üzenet/másodperc), de észreveheti, hogy a webalkalmazás csak 10 000 üzenetet lát/másodpercet. Hol található a probléma? Hogyan találják meg a bűnöst?
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>Elosztott nyomkövetési minta a Service Architecture architektúrában
 
@@ -325,7 +325,7 @@ Ha engedélyezve van, az elosztott nyomkövetés támogatása IoT Hub a követke
 - A felhőből az eszközre történő kettős képesség nem érhető el [IoT hub alapszintű csomaghoz](iot-hub-scaling.md#basic-and-standard-tiers). A IoT Hub azonban továbbra is Azure Monitor, ha a megfelelő számú nyomkövetési környezeti fejlécet lát.
 - A hatékony működés biztosítása érdekében a IoT Hub a naplózás mértékét fogja alkalmazni, amely az elosztott nyomkövetés részeként fordulhat elő.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha többet szeretne megtudni az általános elosztott nyomkövetési mintával kapcsolatban, tekintse meg a következő témakört [: a Service architektúrájának mintája: elosztott nyomkövetés](https://microservices.io/patterns/observability/distributed-tracing.html).
 - Ha úgy szeretné beállítani a konfigurációt, hogy az elosztott nyomkövetési beállításokat nagy számú eszközre alkalmazza, tekintse meg a [IoT-eszközök konfigurálása és figyelése skálán](./iot-hub-automatic-device-management.md)című témakört

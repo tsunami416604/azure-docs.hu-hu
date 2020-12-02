@@ -1,6 +1,6 @@
 ---
-title: A oszlopcentrikus index teljesítményének javítása
-description: Csökkentse a memória követelményeit, vagy növelje a rendelkezésre álló memóriát, hogy maximalizálja a sorok számát az egyes sorcsoport belül.
+title: A oszlopcentrikus index teljesítményének javítása dedikált SQL-készlethez
+description: Csökkentse a memória követelményeit, vagy növelje a rendelkezésre álló memóriát, hogy maximalizálja a sorok számát az egyes sorcsoport a dedikált SQL-készleten belül.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6984ad41c07f7790a746dbd197c18dce2aa83e2f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797768"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453716"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>A oszlopcentrikus sorcsoport-minőségének maximalizálása
+# <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>A sorcsoport minőségének maximalizálása a dedikált SQL-készlet oszlopcentrikus indexei esetében 
 
 A sorcsoport minőségét a sorcsoport sorainak száma határozza meg. A rendelkezésre álló memória növelésével maximalizálható, hogy a oszlopcentrikus-indexek hány sort tömörítenek az egyes sorcsoport.  Ezekkel a módszerekkel javíthatja a tömörítési sebességet és a lekérdezési teljesítményt a oszlopcentrikus indexek esetében.
 
@@ -99,7 +99,7 @@ Egy sorcsoport tömörítéséhez szükséges maximális memória körülbelül
 
 A hosszú karakterláncok tömörítve lettek a szöveg tömörítésére szolgáló tömörítési módszerrel. Ez a tömörítési módszer *szótárt* használ a szöveges mintázatok tárolásához. A szótár maximális mérete 16 MB. A sorcsoport minden hosszú sztring oszlopához csak egy szótár van.
 
-A oszlopcentrikus memória követelményeinek részletes ismertetését lásd: a videó [SZINAPSZIS SQL-készlet skálázása: konfiguráció és útmutatás](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
+A oszlopcentrikus memória követelményeinek részletes ismertetését lásd a [DEDIKÁLT SQL Pool skálázás: konfiguráció és útmutatás](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)című témakörben.
 
 ## <a name="ways-to-reduce-memory-requirements"></a>A memória-követelmények csökkentésének módjai
 
@@ -122,7 +122,7 @@ További memória-követelmények a karakterláncok tömörítéséhez:
 
 ### <a name="avoid-over-partitioning"></a>A túlzott particionálás elkerülése
 
-A oszlopcentrikus indexek egy vagy több sorcsoportokba való tömörítéséhez hoznak létre. Az Azure szinapszis Analyticsben az SQL-készlet esetében a partíciók száma gyorsan növekszik, mert az Adatelosztás és az egyes eloszlások particionálva vannak.
+A oszlopcentrikus indexek egy vagy több sorcsoportokba való tömörítéséhez hoznak létre. Az Azure szinapszis Analyticsben lévő dedikált SQL-készlet esetén a partíciók száma gyorsan növekszik, mivel az elosztott adatforgalom és az egyes eloszlások particionálva vannak.
 
 Ha a tábla túl sok partíciót tartalmaz, előfordulhat, hogy nem áll rendelkezésre elegendő sor a sorcsoportokba való tömörítéséhez kitöltéséhez. A sorok hiánya nem hozza létre a memória terhelését a tömörítés során. Azonban olyan sorcsoportokba való tömörítéséhez vezet, amelyek nem érik el a legjobb oszlopcentrikus-lekérdezési teljesítményt.
 
@@ -165,4 +165,4 @@ A betöltési lekérdezések memória-engedélyezésének növeléséhez növelj
 
 ## <a name="next-steps"></a>További lépések
 
-Az SQL Pool teljesítményének növelésével kapcsolatos további lehetőségekért tekintse meg a [teljesítmény áttekintését](cheat-sheet.md).
+A dedikált SQL-készlet teljesítményének növelésével kapcsolatos további lehetőségekért tekintse meg a [teljesítmény áttekintését](cheat-sheet.md).

@@ -1,6 +1,6 @@
 ---
-title: Mi az Azure szinapszis Analytics (korábban SQL DW)?
-description: Az Azure szinapszis Analytics (korábbi nevén SQL DW) egy korlátlan elemzési szolgáltatás, amely a nagyvállalati adattárházat és a Big adatelemzéseket is egyesíti.
+title: Mi az a dedikált SQL-készlet (korábban SQL DW)?
+description: Az Azure szinapszis Analytics dedikált SQL-készlete (korábbi nevén SQL DW) a vállalati adattárház-kezelő funkció az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,37 +10,30 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 8840791c7b18d1efa499c2826a6eaf041a6da787
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2f9ab6dacde0259905368d8a0cb788dde77bbfb2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317485"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453626"
 ---
-# <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Mi az Azure szinapszis Analytics (korábban SQL DW)?
+# <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Mi a dedikált SQL-készlet (korábban SQL DW) az Azure szinapszis Analyticsben?
+
+Az Azure Synapse Analytics egy elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. A dedikált SQL-készlet (korábbi nevén SQL DW) az Azure szinapszis Analyticsben elérhető vállalati adattárház-funkciókra utal.
+
+
+
+![Dedikált SQL-készlet (korábban SQL DW) az Azure Szinapszishoz képest](./media/sql-data-warehouse-overview-what-is/dedicated-sql-pool.png)
+
+
+
+A dedikált SQL-készlet (korábbi nevén SQL DW) a szinapszis SQL használatakor kiépített analitikai erőforrások gyűjteményét jelöli. A dedikált SQL-készlet (korábban SQL DW) méretét az adatraktározási egységek (DWU-EK) határozzák meg.
+
+Miután létrehozta a dedikált SQL-készletet, importálhatja a big datat egyszerű, [Base](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-lekérdezésekkel, majd az elosztott lekérdezési motor erejével futtathatja a nagy teljesítményű elemzéseket. Az adat integrálásával és elemzésével a dedikált SQL-készlet (korábban SQL DW) lesz az igazság egyetlen verziója, amelyet az üzleti vállalkozása a gyorsabb és robusztusabb elemzésekhez is felhasználhat.
 
 > [!NOTE]
->Ismerje meg az [Azure szinapszis (munkaterületek előzetes verzió) dokumentációját](../overview-what-is.md).
->
-
-Az Azure szinapszis egy elemzési szolgáltatás, amely egyesíti a vállalati adattárházat és a Big adatelemzést. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben. Az Azure Synapse egységes felületen egyesíti ezt a két területet az adatok betöltéséhez, előkészítéséhez, kezeléséhez és azonnali szolgáltatásához az üzleti intelligencia és gépi tanulási igények szerint.
-
-Az Azure szinapszis négy összetevőből áll:
-
-- Szinapszis SQL: teljes T-SQL-alapú elemzés – általánosan elérhető
-  - Dedikált SQL-készlet (fizetés/DWU kiépítve)
-  - Kiszolgáló nélküli SQL-készlet (fizetés/TB feldolgozott) (előzetes verzió)
-- Spark: mélyen integrált Apache Spark (előzetes verzió)
-- Szinapszis-folyamatok: hibrid Adatintegráció (előzetes verzió)
-- Studio: egyesített felhasználói élmény. (előzetes verzió)
-
-## <a name="dedicated-sql-pool-in-azure-synapse"></a>Dedikált SQL-készlet az Azure Szinapszisban
-
-A dedikált SQL-készlet az Azure Szinapszisban általánosan elérhető vállalati adattárház-funkciókra utal.
-
-A dedikált SQL-készlet a szinapszis SQL használatakor kiépített analitikus erőforrások gyűjteményét jelöli. A dedikált SQL-készlet méretét az adattárház-egységek (DWU-EK) határozzák meg.
-
-Importálja big data egyszerű, [alapszintű](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-lekérdezésekkel, majd használja az elosztott lekérdezési motor erejét a nagy teljesítményű elemzések futtatásához. Az adatintegrálás és-elemzés során a szinapszis SQL az igazság egyetlen verzióját fogja kiszámítani, amellyel a vállalat gyorsabban és megbízhatóbban elemezheti az elemzéseket. 
+>Ismerje meg az [Azure szinapszis Analytics dokumentációját](../overview-what-is.md).
+> 
 
 ## <a name="key-component-of-a-big-data-solution"></a>Egy big data-megoldás fő összetevője
 
@@ -48,13 +41,13 @@ Az adattárházak a felhőalapú, végpontok közötti big data megoldások egyi
 
 ![Adattárház-megoldás](./media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png)
 
-A felhőbeli adatmegoldásokban az adatok a különböző forrásokból big data-tárolóba kerülnek. Miután bekerültek a big data-tárolókba, a Hadoop-, a Spark- és a gépi tanulási algoritmusok előkészítik és betanítják az adatokat. Ha az adatok készen állnak az összetett elemzésre, a dedikált SQL-készlet a big data-tárolók lekérdezéséhez használ albase-t. A Base standard T-SQL-lekérdezéseket használ az adatok dedikált SQL Pool-táblákba való bevonásához.
+A felhőbeli adatmegoldásokban az adatok a különböző forrásokból big data-tárolóba kerülnek. Miután bekerültek a big data-tárolókba, a Hadoop-, a Spark- és a gépi tanulási algoritmusok előkészítik és betanítják az adatokat. Ha az adatok készen állnak az összetett elemzésre, a dedikált SQL-készlet a big data-tárolók lekérdezéséhez használ albase-t. A Base standard T-SQL-lekérdezéseket használ, hogy az adatok dedikált SQL-készletbe (korábban SQL DW) táblái legyenek.
 
-A dedikált SQL Pool oszlopos tárolással rendelkező, kapcsolódó táblákban tárolja az adataikat. Ez a formátum jelentős mértékben csökkenti az adattárolási költségeket, és javítja a lekérdezési teljesítményt. Az adattárolást követően nagy méretekben futtathat elemzéseket. A hagyományos adatbázis-rendszerekkel összehasonlítva az elemzési lekérdezések percek helyett másodpercek alatt, vagy akár napok helyett órák alatt képesek lefutni.
+A dedikált SQL-készlet (korábbi nevén SQL DW) oszlopos tárolással rendelkező, egymással összefüggő táblákban tárolja az adataikat. Ez a formátum jelentős mértékben csökkenti az adattárolási költségeket, és javítja a lekérdezési teljesítményt. Az adattárolást követően nagy méretekben futtathat elemzéseket. A hagyományos adatbázis-rendszerekkel összehasonlítva az elemzési lekérdezések percek helyett másodpercek alatt, vagy akár napok helyett órák alatt képesek lefutni.
 
 Az elemzések eredményei globális jelentéskészítési adatbázisokba vagy alkalmazásokba küldhetőek. Az üzleti elemzők így az ezekből nyerhető betekintések révén tájékozott üzleti döntéseket hozhatnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az [Azure szinapszis architektúrájának](massively-parallel-processing-mpp-architecture.md) megismerése
 - [DEDIKÁLT SQL-készlet gyors létrehozása](create-data-warehouse-portal.md)

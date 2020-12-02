@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 0863ccda9f292f3da9f7064a78ba700ab5962eb2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd7d08e4f65612b9a76b63e8153603d043209ad3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014635"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453374"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Virtuális hálózati szolgáltatásvégpontok és szabályok használata az Azure Database for MariaDB-hez
 
@@ -112,7 +112,7 @@ Azure Database for MariaDB esetében a virtuális hálózati szabályok funkció
 
 - A virtuális hálózati szabályok csak Azure Resource Manager virtuális hálózatokra érvényesek; és nem a [klasszikus üzembe helyezési modell][resource-manager-deployment-model-568f] hálózatait.
 
-- A virtuális hálózati szolgáltatás végpontok bekapcsolásával Azure Database for MariaDB a **Microsoft. SQL** szolgáltatás címkéje lehetővé teszi az összes Azure Database-szolgáltatás végpontjának használatát is: Azure Database for MariaDB, Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse).
+- A virtuális hálózati szolgáltatási végpontok bekapcsolásával Azure Database for MariaDB a **Microsoft. SQL** szolgáltatás címkéje lehetővé teszi az összes Azure Database-szolgáltatás végpontjának használatát is: Azure Database for MariaDB, Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database és az Azure szinapszis Analytics.
 
 - A VNet szolgáltatás-végpontok támogatása csak a általános célú és a memóriára optimalizált kiszolgálók esetében támogatott.
 

@@ -1,6 +1,6 @@
 ---
-title: Adatbázis biztonságossá tétele
-description: Tippek egy dedikált SQL-készlet biztonságossá tételéhez és az Azure szinapszis Analytics-megoldások fejlesztéséhez.
+title: Dedikált SQL-készlet biztonságossá tétele (korábban SQL DW)
+description: Tippek a dedikált SQL-készlet (korábban SQL DW) biztonságossá tételéhez és az Azure szinapszis Analytics-megoldások fejlesztéséhez.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -11,14 +11,14 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: f6c1370cab573926183a937b8e749ef490c19334
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ce09488e2323aada5f99494ef3920681b685ec0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317696"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453633"
 ---
-# <a name="secure-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Dedikált SQL-készlet védelme az Azure szinapszis Analytics szolgáltatásban
+# <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Dedikált SQL-készlet (korábban SQL DW) védelme az Azure szinapszis Analytics szolgáltatásban
 
 > [!div class="op_single_selector"]
 >
@@ -27,7 +27,7 @@ ms.locfileid: "93317696"
 > * [Titkosítás (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Titkosítás (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-Ez a cikk végigvezeti a dedikált SQL-készlet biztonságossá tételének alapjain. Ez a cikk bemutatja, hogyan használhatja az erőforrásokat a hozzáférés korlátozásához, az adatok védelméhez és a figyelési tevékenységekhez a dedikált SQL Pool használatával.
+Ez a cikk végigvezeti a dedikált SQL-készlet (korábban SQL DW) biztonságossá tételének alapjain. Ez a cikk bemutatja, hogyan használhatja az erőforrásokat a hozzáférés korlátozásához, az adatok védelméhez és a figyelési tevékenységekhez a dedikált SQL-készlet (korábban SQL DW) használatával.
 
 ## <a name="connection-security"></a>Kapcsolatbiztonság
 
@@ -35,15 +35,15 @@ A kapcsolatbiztonság azt jelenti, hogy hogyan korlátozza és védi az adatbáz
 
 A tűzfalszabályok használatát mind a [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) , mind az adatbázisai használják, hogy elutasítja a kapcsolódási kísérleteket a nem jóváhagyott IP-címekről. Ha engedélyezni szeretné az alkalmazás vagy az ügyfélszámítógép nyilvános IP-címének kapcsolatait, először létre kell hoznia egy kiszolgálói szintű tűzfalszabály-szabályt a Azure Portal, REST API vagy a PowerShell használatával.
 
-Az ajánlott eljárás az, hogy a lehető legnagyobb mértékben korlátozza a kiszolgálói szintű tűzfalon keresztül engedélyezett IP-címtartományt.  Ha a helyi számítógépről szeretné elérni a dedikált SQL-készletet, győződjön meg arról, hogy a tűzfal a hálózaton és a helyi számítógépen lehetővé teszi a kimenő kommunikációt a 1433-es TCP-porton.  
+Az ajánlott eljárás az, hogy a lehető legnagyobb mértékben korlátozza a kiszolgálói szintű tűzfalon keresztül engedélyezett IP-címtartományt.  A dedikált SQL-készlet (korábban SQL DW) helyi számítógépről való eléréséhez győződjön meg arról, hogy a tűzfal a hálózaton és a helyi számítógépen lehetővé teszi a kimenő kommunikációt a 1433-es TCP-porton.  
 
-Az Azure szinapszis Analytics kiszolgálói szintű IP-tűzfalszabályok használatával működik. Az adatbázis-szintű IP-tűzfalszabályok nem támogatottak. További információ: [Azure SQL Database tűzfalszabályok](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+A dedikált SQL-készlet (korábbi nevén SQL DW) kiszolgálói szintű IP-tűzfalszabályok használatára szolgál. Az adatbázis-szintű IP-tűzfalszabályok nem támogatottak. További információ: [Azure SQL Database tűzfalszabályok](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
-A dedikált SQL-készlet kapcsolatai alapértelmezés szerint titkosítva vannak.  A rendszer figyelmen kívül hagyja a kapcsolódási beállítások módosítását a titkosítás letiltásához.
+A dedikált SQL-készlet (korábbi nevén SQL DW) kapcsolatai alapértelmezés szerint titkosítva vannak.  A rendszer figyelmen kívül hagyja a kapcsolódási beállítások módosítását a titkosítás letiltásához.
 
 ## <a name="authentication"></a>Hitelesítés
 
-A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. A dedikált SQL-készlet jelenleg támogatja a felhasználónévvel és jelszóval SQL Server hitelesítést, valamint a Azure Active Directory.
+A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. A dedikált SQL-készlet (korábban SQL DW) jelenleg a felhasználónévvel és jelszóval SQL Server hitelesítést, valamint a Azure Active Directoryt támogatja.
 
 Amikor létrehozta a kiszolgálót az adatbázishoz, a "kiszolgálói rendszergazda" bejelentkezési azonosítót adta meg felhasználónévvel és jelszóval. Ezeknek a hitelesítő adatoknak a használatával a hitelesítő adatokat az adott kiszolgálón található adatbázis-tulajdonosként vagy a "dbo" SQL Server hitelesítésen keresztül végezheti el.
 
@@ -57,7 +57,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Ezután kapcsolódjon a **DEDIKÁLT SQL Pool-adatbázishoz** a kiszolgáló-rendszergazdai bejelentkezéssel, és hozzon létre egy adatbázis-felhasználót a létrehozott kiszolgálói bejelentkezés alapján.
+Ezután kapcsolódjon a **DEDIKÁLT SQL-készlethez (korábban SQL DW)** a kiszolgáló-rendszergazdai bejelentkezéssel, és hozzon létre egy adatbázis-felhasználót a létrehozott kiszolgálói bejelentkezés alapján.
 
 ```sql
 -- Connect to the database and create a database user
@@ -102,6 +102,6 @@ SQL Database az adatbázis-titkosítási kulcsot egy beépített kiszolgálótan
 
 Az adatbázis titkosítása a [Azure Portal](sql-data-warehouse-encryption-tde.md) vagy a [T-SQL](sql-data-warehouse-encryption-tde-tsql.md)használatával végezhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További részletek és példák a Warehouse-hoz való csatlakozásra különböző protokollokkal: [Csatlakozás DEDIKÁLT SQL-készlethez](../sql/connect-overview.md).
+További részletek és példák a Warehouse-hoz való csatlakozásra különböző protokollokkal: [Csatlakozás DEDIKÁLT SQL-készlethez (korábban SQL DW)](sql-data-warehouse-connect-overview.md).

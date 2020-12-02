@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: feabfe505601276269c2774e3b39dd5cbaa32087
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb3c7dd7b3d7e8e42e230eedcd0d1b43af104327
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022921"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452530"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Társított szolgáltatás biztonságossá tétele privát hivatkozásokkal
 
@@ -69,7 +69,7 @@ Ezzel létrehozott egy biztonságos és privát kapcsolatot a szinapszis és a t
 ## <a name="next-steps"></a>További lépések
 
 
-Ha további ismereteket szeretne megtudni a saját felügyelt privát végpontról a szinapszis Analyticsben, tekintse meg a [felügyelt privát végpontokat](../security/synapse-workspace-managed-private-endpoints.md).
+A felügyelt privát végpont Azure szinapszis Analyticsben való megismeréséhez lásd: [felügyelt privát végpontok](../security/synapse-workspace-managed-private-endpoints.md).
 
 
-A szinapszis Analytics adatintegrálásával kapcsolatos további információkért tekintse meg az adatok betöltését [Data Lake](data-integration-data-lake.md) cikkben.
+Az Azure szinapszis Analytics adatintegrálásával kapcsolatos további információkért tekintse meg az adatok betöltését [Data Lake](data-integration-data-lake.md) cikkben.

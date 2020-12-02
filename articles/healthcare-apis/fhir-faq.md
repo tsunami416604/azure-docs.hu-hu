@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: d013af82a862f1bc6b5324e7523aeea5593a4f94
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030662"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452942"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>A FHIR készült Azure API-val kapcsolatos gyakori kérdések
 
@@ -31,7 +31,7 @@ Igen, az Azure-ban felügyelt adatbázisok tárolják az adattárolást. A FHIR 
 Jelenleg az identitás-szolgáltatóként támogatja a Microsoft Azure Active Directory.
 
 ### <a name="what-is-the-recovery-point-objective-rpo-for-the-azure-api-for-fhir"></a>Mi a helyreállítási pont célkitűzése (RPO) a FHIR készült Azure API-hoz?
-A FHIR készült Azure API-t a Cosmos DB tekintjük meg, mint az adatmegőrzési szolgáltató. Emiatt a szolgáltatás RPO egyenlő [Cosmos db (egyetlen régió)](https://docs.microsoft.com/azure/cosmos-db/consistency-levels) , és < 240 perc.
+A FHIR készült Azure API-t a Cosmos DB tekintjük meg, mint az adatmegőrzési szolgáltató. Emiatt a szolgáltatás RPO egyenlő [Cosmos db (egyetlen régió)](../cosmos-db/consistency-levels.md) , és < 240 perc.
 
 ### <a name="what-fhir-version-do-you-support"></a>Milyen FHIR-verziót támogat?
 

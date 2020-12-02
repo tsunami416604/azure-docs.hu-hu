@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f8eab59d810fb825dbebf80d01d8efd2dd0a9841
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46e911ad6bdf5a478d46e425f8700740ece56c6e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720537"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452665"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>Adatok betöltése a tárolási környezetekbe elemzés céljából
 
-A csoportos adatelemzési folyamat megköveteli, hogy az egyes fázisokban az adatmennyiséget a legmegfelelőbb módon kell betölteni vagy betölteni. Az adatcélhelyek közé tartozhatnak az Azure Blob Storage, a SQL Azure SQL Server-adatbázisok, az Azure-beli virtuális gépek, a HDInsight (Hadoop), a szinapszis-elemzések és a Azure Machine Learning. 
+A csoportos adatelemzési folyamat megköveteli, hogy az egyes fázisokban az adatmennyiséget a legmegfelelőbb módon kell betölteni vagy betölteni. Az adatcélhelyek közé tartozhatnak az Azure Blob Storage, a SQL Azure SQL Server-adatbázisok, az Azure-beli virtuális gépek, a HDInsight (Hadoop), az Azure szinapszis Analytics és a Azure Machine Learning. 
 
 Az alábbi cikkek azt ismertetik, hogyan lehet az adatgyűjtést különböző célpont-környezetekben tárolni és feldolgozni.
 

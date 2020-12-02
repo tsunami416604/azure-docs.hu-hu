@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2250a2565aa4fbab32daed54830fb701a3a2a1ac
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 27210dad3e32d4a308310ff114499ca468c4deac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636187"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452270"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure Data Factory 1-es verzió által támogatott számítási környezetek
 > [!NOTE]
@@ -49,7 +49,7 @@ A Microsoft frissíti a támogatott HDInsight-verziók listáját a legújabb Ha
 2017. december 15. után:
 
 - Már nem hozhat létre a Linux-alapú HDInsight 3,3-es (vagy korábbi verziójú) fürtöket egy igény szerinti HDInsight társított szolgáltatás használatával Data Factory az 1. verzióban. 
-- Ha a [ **osType** és a **verzió** tulajdonságai](#azure-hdinsight-on-demand-linked-service) nincsenek explicit módon meghatározva egy meglévő Data Factory 1. verziójú, igény szerinti HDInsight társított szolgáltatáshoz, az alapértelmezett érték a **verzió = 3.1, osType = Windows** – **Version = \<latest HDI default version\> ( https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , osType = Linux** ) értékre módosul.
+- Ha a [ **osType** és a **verzió** tulajdonságai](#azure-hdinsight-on-demand-linked-service) nincsenek explicit módon meghatározva egy meglévő Data Factory 1. verziójú, igény szerinti HDInsight társított szolgáltatáshoz, az alapértelmezett érték a **verzió = 3.1, osType = Windows** – **Version = \<latest HDI default version\> ( https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , osType = Linux**) értékre módosul.
 
 2018. július 31-ig:
 
@@ -58,7 +58,7 @@ A Microsoft frissíti a támogatott HDInsight-verziók listáját a legújabb Ha
 ### <a name="recommended-actions"></a>Ajánlott műveletek
 
 - Annak érdekében, hogy a legújabb Hadoop ökoszisztéma-összetevőket és-javításokat is használhassa, frissítse az érintett Data Factory 1. verziójú, igény szerinti HDInsight társított szolgáltatási definíciók [ **OsType** és **verziójának** tulajdonságait](#azure-hdinsight-on-demand-linked-service) az újabb Linux-alapú HDInsight-verzióra (HDInsight 3,6). 
-- 2017. december 15. előtt Data Factory tesztelje az 1. verziójú kaptár, a Pig, a MapReduce és a Hadoop streaming tevékenységeket, amelyek az érintett társított szolgáltatásra hivatkoznak. Győződjön meg arról, hogy kompatibilisek az új **osType** és a **verzió** alapértelmezett értékeivel ( **Version = 3.6** , **OsType = Linux** ) vagy a explicit HDInsight-verzióval és az operációs rendszer típusával, amelyre frissíteni szeretne. 
+- 2017. december 15. előtt Data Factory tesztelje az 1. verziójú kaptár, a Pig, a MapReduce és a Hadoop streaming tevékenységeket, amelyek az érintett társított szolgáltatásra hivatkoznak. Győződjön meg arról, hogy kompatibilisek az új **osType** és a **verzió** alapértelmezett értékeivel (**Version = 3.6**, **OsType = Linux**) vagy a explicit HDInsight-verzióval és az operációs rendszer típusával, amelyre frissíteni szeretne. 
   További információ a kompatibilitásról: [áttelepítés Windows-alapú HDInsight-fürtről Linux-alapú fürtre](../../hdinsight/index.yml) , valamint [a HDInsight-hez elérhető Hadoop-összetevők és-verziók](../../hdinsight/hdinsight-component-versioning.md). 
 - Ha **a Windows-** alapú HDInsight-2017 fürtök létrehozásához Data Factory egy igény szerinti HDInsight **társított szolgáltatással** kívánja tovább használni az 1 Javasoljuk, hogy 2018. július 31-ig telepítsen Linux-alapú HDInsight-fürtökre. 
 - Ha igény szerinti HDInsight társított szolgáltatást használ a (z) Data Factory 1. verziójú DotNet egyéni tevékenység végrehajtásához, akkor frissítse a DotNet egyéni tevékenység JSON-definícióját, hogy ehelyett egy Azure Batch társított szolgáltatást használjon. További információ: [egyéni tevékenységek használata Data Factory folyamatokban](./data-factory-use-custom-activities.md). 
@@ -112,7 +112,7 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 ```
 
 > [!IMPORTANT]
-> A HDInsight-fürt létrehoz egy *alapértelmezett tárolót* a JSON **linkedServiceName** tulajdonságban megadott Azure Blob Storage-tárolóban. A HDInsight nem törli ezt a tárolót a fürt törlése után. Egy igény szerinti HDInsight társított szolgáltatás esetén a rendszer minden alkalommal létrehoz egy HDInsight-fürtöt, amikor egy szeletet fel kell dolgozni, kivéve, ha van meglévő élő fürt ( **TimeToLive** ). A rendszer törli a fürtöt a feldolgozás befejezésekor. 
+> A HDInsight-fürt létrehoz egy *alapértelmezett tárolót* a JSON **linkedServiceName** tulajdonságban megadott Azure Blob Storage-tárolóban. A HDInsight nem törli ezt a tárolót a fürt törlése után. Egy igény szerinti HDInsight társított szolgáltatás esetén a rendszer minden alkalommal létrehoz egy HDInsight-fürtöt, amikor egy szeletet fel kell dolgozni, kivéve, ha van meglévő élő fürt (**TimeToLive**). A rendszer törli a fürtöt a feldolgozás befejezésekor. 
 >
 > Ahogy egyre több szeletet dolgoz fel, a blob Storage-ban sok tároló jelenik meg. Ha nincs szüksége a tárolók hibaelhárítási feladatokhoz, érdemes törölni a tárolókat a tárolási díjak csökkentése érdekében. A tárolók neve a következő mintát követi: `adf<your Data Factory name>-<linked service name>-<date and time>`. A blob Storage tárolóban lévő tárolók törléséhez használhatja a [Microsoft Azure Storage Explorer](https://storageexplorer.com/) eszközt.
 >
@@ -127,7 +127,7 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 | version                      | A HDInsight-fürt verziója. Az engedélyezett HDInsight-verziók esetében lásd: [támogatott HDInsight-verziók](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions). Ha ez az érték nincs megadva, a rendszer a [legújabb HDI alapértelmezett verziót](../../hdinsight/hdinsight-component-versioning.md) használja. | Nem       |
 | linkedServiceName            | Az Azure Storage társított szolgáltatása, amelyet az igény szerinti fürt az adattároláshoz és-feldolgozáshoz használ. A HDInsight-fürt ugyanabban a régióban jön létre, mint a Storage-fiók.<p>Jelenleg nem hozhat létre Azure Data Lake Store tárolóként használó igény szerinti HDInsight-fürtöt. Ha az HDInsight feldolgozásból származó eredményeket szeretné tárolni Data Lake Storeban, a másolási tevékenység használatával másolja át az adatait a blob Storage-ból a Data Lake Storeba. </p> | Igen      |
 | additionalLinkedServiceNames | További Storage-fiókok megadása a HDInsight társított szolgáltatáshoz. Data Factory regisztrálja a Storage-fiókokat az Ön nevében. Ezeknek a tárolási fiókoknak ugyanabban a régióban kell lenniük, mint a HDInsight-fürtnek. A HDInsight-fürt ugyanabban a régióban jön létre, mint a **linkedServiceName** tulajdonság által megadott Storage-fiók. | Nem       |
-| osType                       | Az operációs rendszer típusa. Az engedélyezett értékek a **Linux** és a **Windows** . Ha ez az érték nincs megadva, a rendszer a **Linux** -t használja.  <br /><br />A Linux-alapú HDInsight-fürtök használatát javasoljuk. A Windows HDInsight kivonulási dátuma 2018. július 31-ig tart. | Nem       |
+| osType                       | Az operációs rendszer típusa. Az engedélyezett értékek a **Linux** és a **Windows**. Ha ez az érték nincs megadva, a rendszer a **Linux** -t használja.  <br /><br />A Linux-alapú HDInsight-fürtök használatát javasoljuk. A Windows HDInsight kivonulási dátuma 2018. július 31-ig tart. | Nem       |
 | hcatalogLinkedServiceName    | Annak az Azure SQL társított szolgáltatásnak a neve, amely a HCatalog-adatbázisra mutat. Az igény szerinti HDInsight-fürt létrehozásához az SQL Database-t használja metaadattár. | Nem       |
 
 #### <a name="example-linkedservicenames-json"></a>Példa: LinkedServiceNames JSON
@@ -197,9 +197,9 @@ A fej-, az adatés a ZooKeeper-csomópontok méretének megadásához használja
 
 | Tulajdonság          | Leírás                              | Kötelező |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | Beállítja a fő csomópont méretét. Az alapértelmezett érték **Standard_D3** . Részletekért lásd a [csomópontok méretének megadása](#specify-node-sizes)című témakört. | Nem       |
-| dataNodeSize      | Az adatcsomópont méretének beállítása. Az alapértelmezett érték **Standard_D3** . | Nem       |
-| zookeeperNodeSize | Beállítja a ZooKeeper-csomópont méretét. Az alapértelmezett érték **Standard_D3** . | Nem       |
+| headNodeSize      | Beállítja a fő csomópont méretét. Az alapértelmezett érték **Standard_D3**. Részletekért lásd a [csomópontok méretének megadása](#specify-node-sizes)című témakört. | Nem       |
+| dataNodeSize      | Az adatcsomópont méretének beállítása. Az alapértelmezett érték **Standard_D3**. | Nem       |
+| zookeeperNodeSize | Beállítja a ZooKeeper-csomópont méretét. Az alapértelmezett érték **Standard_D3**. | Nem       |
 
 #### <a name="specify-node-sizes"></a>Csomópontok méretének meghatározása
 Az előző szakaszban ismertetett tulajdonságokkal megadható karakterlánc-értékekhez lásd: [virtuális gépek méretei](../../virtual-machines/sizes.md). Az értékeknek meg kell felelniük a [virtuális gépek méreteiben](../../virtual-machines/sizes.md)hivatkozott parancsmagoknak és API-knak. A nagyméretű (alapértelmezett) adatcsomópont-méret 7 GB memóriával rendelkezik. Előfordulhat, hogy ez nem elegendő a forgatókönyvhöz. 
@@ -232,7 +232,7 @@ Az ilyen típusú konfiguráció a következő számítási környezetekben tám
 * Azure Batch
 * Azure Machine Learning Studio (klasszikus)
 * Azure Data Lake Analytics
-* Azure SQL Database, Azure szinapszis Analytics (korábban SQL Data Warehouse), SQL Server
+* Azure SQL Database, Azure szinapszis Analytics, SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight társított szolgáltatás
 Létrehozhat egy HDInsight társított szolgáltatást, hogy regisztrálja a saját HDInsight-fürtöt Data Factory használatával.

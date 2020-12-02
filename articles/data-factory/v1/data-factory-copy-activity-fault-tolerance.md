@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 742c69709eee19a37abdb3e5330cd7fb8ce315b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65584b2a6a3bdfbb863c26dac688b20279c4b54d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89436391"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452285"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Hibatűrés hozzáadása a másolási tevékenységhez inkompatibilis sorok kihagyása
 
@@ -48,7 +48,7 @@ A másolási tevékenység három olyan forgatókönyvet támogat, amelyek nem k
     Például: adatok másolása egy SQL-kiszolgálóról egy SQL-adatbázisba. Elsődleges kulcs van definiálva a fogadó SQL-adatbázisban, de nincs ilyen elsődleges kulcs definiálva a forrás SQL-kiszolgálón. A forrásban található duplikált sorok nem másolhatók a fogadóba. A másolási tevékenység csak a forrásadatok első sorát másolja a fogadóba. A duplikált elsődleges kulcs értékét tartalmazó következő forrásfájlokat inkompatibilisként észleli a rendszer, és kihagyja.
 
 >[!NOTE]
->Ez a funkció nem alkalmazható, ha a másolási tevékenység úgy van konfigurálva, hogy külső betöltési mechanizmust hív meg, beleértve az [Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse)](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) vagy az [Amazon vöröseltolódás eltávolítását](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift). Az adatoknak az Azure szinapszis Analyticsbe való betöltéséhez használja a "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" kifejezést a másolási tevékenységben a natív hibatűrés támogatásával.
+>Ez a funkció nem érvényes, ha a másolási tevékenység úgy van konfigurálva, hogy külső betöltési mechanizmust indítson el, beleértve az [Azure szinapszis Analytics-alapú](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) , illetve az [Amazon vöröseltolódás](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift) Az adatoknak az Azure szinapszis Analyticsbe való betöltéséhez használja a "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" kifejezést a másolási tevékenységben a natív hibatűrés támogatásával.
 
 ## <a name="configuration"></a>Konfiguráció
 A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok másolási tevékenységbe való kihagyásának konfigurálásához:
@@ -89,5 +89,5 @@ data1, data2, data3, UserErrorInvalidDataValue,Column 'Prop_2' contains an inval
 data4, data5, data6, Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewithpk'. Cannot insert duplicate key in object 'dbo.tblintstrdatetimewithpk'. The duplicate key value is (data4).
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni Azure Data Factory másolási tevékenységről, olvassa el az [adatáthelyezés a másolási tevékenységgel](data-factory-data-movement-activities.md)című témakört.

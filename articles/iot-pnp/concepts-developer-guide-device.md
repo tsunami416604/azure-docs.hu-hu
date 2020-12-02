@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 8d8da39f038f465030a2dced092ab1b008e30e5e
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 3aa236570e518b142adb8382387a8cdea4fc08a0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511449"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453269"
 ---
 # <a name="iot-plug-and-play-device-developer-guide"></a>IoT Plug and Play-eszköz fejlesztői útmutatója
 
@@ -62,13 +62,13 @@ Miután az eszköz vagy a modul implementációja elkészült, az [Azure IoT Exp
 
 :::zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a IoT Plug and Play-eszköz fejlesztését, néhány további erőforrást is talál:
 
 - [Digitális Twins-definíciós nyelv (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
-- [C eszköz SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [C eszköz SDK](/azure/iot-hub/iot-c-sdk-ref/)
+- [IoT REST API](/rest/api/iothub/device)
 - [Modell összetevői](concepts-components.md)
 - [A DTDL authoring Tools telepítése és használata](howto-use-dtdl-authoring-tools.md)
 - [IoT Plug and Play Service – fejlesztői útmutató](concepts-developer-guide-service.md)

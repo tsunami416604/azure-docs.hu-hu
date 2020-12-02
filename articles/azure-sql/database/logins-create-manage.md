@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 940ea0ac471604b22c64dc008eebd8b580121cf7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782739"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452432"
 ---
-# <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Adatbázis-hozzáférés engedélyezése SQL Database, SQL felügyelt példányhoz és az Azure szinapszis Analytics szolgáltatáshoz
+# <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Adatbázis-hozzáférés engedélyezése az SQL Database-hez, a felügyelt SQL-példányhoz és az Azure Synapse Analyticshez
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Ez a cikk a következőket ismerteti:
 
-- A Azure SQL Database, az Azure SQL felügyelt példányának és az Azure szinapszis Analytics (korábban SQL Data Warehouse) konfigurálásának lehetőségei lehetővé teszik a felhasználók számára a rendszergazdai feladatok elvégzését és az ezekben az adatbázisokban tárolt adatok elérését.
+- A Azure SQL Database, az Azure SQL felügyelt példányának és az Azure szinapszis Analytics konfigurálásának lehetőségei lehetővé teszik a felhasználók számára a rendszergazdai feladatok elvégzését és az ezekben az adatbázisokban tárolt adatok elérését.
 - A hozzáférési és engedélyezési konfiguráció a kezdeti új kiszolgáló létrehozása után.
 - Bejelentkezések és felhasználói fiókok hozzáadása a főadatbázisban és a felhasználói fiókokban, majd a fiókok rendszergazdai engedélyeinek megadása.
 - Felhasználói fiókok hozzáadása felhasználói adatbázisokban a bejelentkezésekhez vagy a benne foglalt felhasználói fiókokhoz társítva.
@@ -46,7 +46,7 @@ Amikor egy felhasználó megpróbál csatlakozni egy adatbázishoz, felhasznál�
 
   Ezzel a hitelesítési módszerrel a felhasználó elküld egy felhasználói fióknevet és kéréseket, hogy a szolgáltatás a Azure Active Directory (Azure AD) által tárolt hitelesítő adatokat használja.
 
-**Bejelentkezések és felhasználók** : egy adatbázisban lévő felhasználói fiók társítható a főadatbázisban tárolt bejelentkezési azonosítóval, vagy lehet egy különálló adatbázisban tárolt Felhasználónév.
+**Bejelentkezések és felhasználók**: egy adatbázisban lévő felhasználói fiók társítható a főadatbázisban tárolt bejelentkezési azonosítóval, vagy lehet egy különálló adatbázisban tárolt Felhasználónév.
 
 - A **Bejelentkezés** a főadatbázis egy különálló fiókja, amelyhez egy vagy több adatbázisban lévő felhasználói fiók csatolható. Ha rendelkezik bejelentkezési azonosítóval, a felhasználói fiókhoz tartozó hitelesítő adatokat a rendszer a bejelentkezési azonosítóval együtt tárolja.
 - A **felhasználói fiók** minden olyan adatbázishoz tartozik, amely lehet, de nem feltétlenül szükséges egy bejelentkezési azonosítóhoz csatolva. Ha a felhasználói fiók nincs bejelentkezési azonosítóhoz rendelve, a rendszer a felhasználói fiókkal együtt tárolja a hitelesítő adatokat.
@@ -55,7 +55,7 @@ Az adatokhoz való hozzáférés [**engedélyezése**](security-overview.md#auth
 
 ## <a name="existing-logins-and-user-accounts-after-creating-a-new-database"></a>Meglévő bejelentkezések és felhasználói fiókok új adatbázis létrehozása után
 
-Amikor először telepíti az Azure SQL-t, a bejelentkezéshez meg kell adnia egy rendszergazdai bejelentkezési azonosítót és egy hozzá tartozó jelszót. A rendszergazdai fiók neve **kiszolgáló-rendszergazda** . Az üzembe helyezés során a rendszer a következő konfigurációkat és felhasználókat a fő és a felhasználói adatbázisokban is megtörténik:
+Amikor először telepíti az Azure SQL-t, a bejelentkezéshez meg kell adnia egy rendszergazdai bejelentkezési azonosítót és egy hozzá tartozó jelszót. A rendszergazdai fiók neve **kiszolgáló-rendszergazda**. Az üzembe helyezés során a rendszer a következő konfigurációkat és felhasználókat a fő és a felhasználói adatbázisokban is megtörténik:
 
 - A rendszergazdai jogosultságokkal rendelkező SQL-bejelentkezés a megadott bejelentkezési névvel hozható létre. A [Bejelentkezés](/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) egy egyéni felhasználói fiók, amellyel bejelentkezhet a SQL Databaseba, az SQL felügyelt példányaiba és az Azure szinapszisba.
 - Ez a bejelentkezési azonosító teljes rendszergazdai jogosultságokkal rendelkezik minden adatbázishoz [kiszolgálói szintű rendszerbiztonsági tagként](/sql/relational-databases/security/authentication-access/principals-database-engine). A bejelentkezés minden rendelkezésre álló engedéllyel rendelkezik, és nem korlátozható. A felügyelt SQL-példányokban ez a bejelentkezés a [sysadmin (rendszergazda) rögzített kiszolgálói szerepkörbe](/sql/relational-databases/security/authentication-access/server-level-roles) kerül (ez a szerepkör nem létezik a Azure SQL Database).
@@ -137,7 +137,7 @@ Miután létrehozott egy felhasználói fiókot egy adatbázisban, vagy egy beje
 
 - **Rögzített adatbázis-szerepkörök**
 
-  Adja hozzá a felhasználói fiókot egy [rögzített adatbázis-szerepkörhöz](/sql/relational-databases/security/authentication-access/database-level-roles). 9 rögzített adatbázis-szerepkör van, amelyek mindegyike meghatározott engedélyekkel rendelkezik. A leggyakoribb rögzített adatbázis-szerepkörök a következők: **db_owner** , **db_ddladmin** , **db_datawriter** , **db_datareader** , **db_denydatawriter** és **db_denydatareader** . A **db_owner** általában teljes körű engedélyek biztosítására szolgál néhány felhasználó számára. A többi rögzített adatbázis-szerepkör hasznos az egyszerű adatbázisok fejlesztésének gyors elkezdéséhez, de a legtöbb éles környezetbeli adatbázishoz nem ajánlott. A **db_datareader** rögzített adatbázis-szerepkör például olvasási hozzáférést biztosít az adatbázisban található összes táblához, ami nagyobb, mint a szigorúan szükséges.
+  Adja hozzá a felhasználói fiókot egy [rögzített adatbázis-szerepkörhöz](/sql/relational-databases/security/authentication-access/database-level-roles). 9 rögzített adatbázis-szerepkör van, amelyek mindegyike meghatározott engedélyekkel rendelkezik. A leggyakoribb rögzített adatbázis-szerepkörök a következők: **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter** és **db_denydatareader**. A **db_owner** általában teljes körű engedélyek biztosítására szolgál néhány felhasználó számára. A többi rögzített adatbázis-szerepkör hasznos az egyszerű adatbázisok fejlesztésének gyors elkezdéséhez, de a legtöbb éles környezetbeli adatbázishoz nem ajánlott. A **db_datareader** rögzített adatbázis-szerepkör például olvasási hozzáférést biztosít az adatbázisban található összes táblához, ami nagyobb, mint a szigorúan szükséges.
 
   - Felhasználó hozzáadása rögzített adatbázis-szerepkörhöz:
 
@@ -169,6 +169,6 @@ A hatékony hozzáférés-vezérlés Active Directory biztonsági csoportokhoz, 
 - Az [adatmaszkolás](dynamic-data-masking-overview.md) használatával korlátozhatja a bizalmas adatok megjelenítését.
 - A [tárolt eljárások](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) segítségével korlátozhatja az adatbázisban végezhető műveleteket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az összes Azure SQL Database és SQL felügyelt példány biztonsági funkciójának áttekintését lásd: [biztonsági áttekintés](security-overview.md).

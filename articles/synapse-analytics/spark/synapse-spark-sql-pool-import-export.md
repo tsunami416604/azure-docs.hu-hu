@@ -1,6 +1,6 @@
 ---
-title: A kiszolgáló nélküli Apache Spark készletek (előzetes verzió) és az SQL-készletek közötti adatimportálás és exportálás
-description: Ez a cikk azt ismerteti, hogyan használható az egyéni összekötő az adatok dedikált SQL-készletek és kiszolgáló nélküli Apache Spark készletek (előzetes verzió) közötti áthelyezéséhez.
+title: Az adatimportálás és-exportálás kiszolgáló nélküli Apache Spark készletek és SQL-készletek között
+description: Ez a cikk azt ismerteti, hogyan használható az egyéni összekötő az adatok dedikált SQL-készletek és kiszolgáló nélküli Apache Spark készletek közötti áthelyezéséhez.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: ee82fbaa9687e064747908600c7e5c9017f8f1a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 178fc12fe8e8e20af8deb40c62990c279af4ab64
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323902"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452835"
 ---
 # <a name="introduction"></a>Bevezetés
 
-Az Azure szinapszis Apache Spark a szinapszis SQL connectorhoz úgy lett kialakítva, hogy hatékonyan vigye át az adatátvitelt a kiszolgáló nélküli Apache Spark készletek (előzetes verzió) és az SQL-készletek között az Azure Szinapszisban Az Azure szinapszis Apache Spark, hogy a szinapszis SQL Connector csak dedikált SQL-készleteken működik, nem működik a kiszolgáló nélküli SQL-készlettel.
+Az Azure szinapszis Apache Spark, amellyel a szinapszis SQL Connector a kiszolgáló nélküli Apache Spark készletek és az Azure Szinapszisban található SQL-készletek közötti adatátvitel hatékony átvitelét szolgálja. Az Azure szinapszis Apache Spark, hogy a szinapszis SQL Connector csak dedikált SQL-készleteken működik, nem működik a kiszolgáló nélküli SQL-készlettel.
 
 ## <a name="design"></a>Tervezés
 
@@ -235,7 +235,7 @@ A munkaterülethez csatlakoztatott ADLS Gen2 Storage-fiókban tárolnia kell a b
 > [!IMPORTANT]
 > Ügyeljen arra, hogy ne válassza az "alapértelmezett" lehetőséget, ha nem kívánja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Dedikált SQL-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 - [Új Apache Spark-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

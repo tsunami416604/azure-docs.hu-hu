@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 5124e7084a8e878e54e594424ec0926410f002ca
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: eb290b8c154c40388bfb3e7f9cbac7b645aa9609
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682485"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452678"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Virtuális gépek minősítésének hibáinak megoldása
 
@@ -68,7 +68,7 @@ Győződjön meg arról, hogy a virtuális gép üzembe helyezési folyamatát s
 
 A kiépítési problémák a következő meghibásodási helyzetekben lehetnek:
 
-|Használati eset|Hiba|Ok|Megoldás|
+|Használati példa|Hiba|Ok|Megoldás|
 |---|---|---|---|
 |1|Érvénytelen virtuális merevlemez (VHD)|Ha a VHD-láblécben megadott cookie-érték helytelen, a VHD-fájl érvénytelennek tekintendő.|Hozza létre újra a lemezképet, és küldje el a kérést.|
 |2|Érvénytelen blob-típus|A virtuális gép kiépítés meghiúsult, mert a használt blokk egy oldal típusa helyett blob típusú.|Hozza létre újra a lemezképet, és küldje el a kérést.|
@@ -140,7 +140,7 @@ Töltse le a [Microsoft minősítési eszközkészletet](azure-vm-image-test.md)
 
 A következő táblázat felsorolja az eszközkészlet által futtatott Linux-tesztelési eseteket. A teszt érvényesítése a leírásban van megadva.
 
-|Használati eset|Teszteset|Leírás|
+|Használati példa|Teszteset|Leírás|
 |---|---|---|
 |1|Bash-előzmények|A rendszer a virtuális gép rendszerképének létrehozása előtt törli a bash-előzmények fájljait.|
 |2|Linux-ügynök verziója|Telepíteni kell az Azure Linux Agent 2.2.41 vagy újabb verzióját.|
@@ -157,7 +157,7 @@ A következő táblázat felsorolja az eszközkészlet által futtatott Linux-te
 
 Tekintse meg az alábbi táblázatot a tesztelési esetek futtatásakor előforduló gyakori hibákról:
 
-| Használati eset | Teszteset | Hiba | Megoldás |
+| Használati példa | Teszteset | Hiba | Megoldás |
 | --- | --- | --- | --- |
 | 1 | Linux-ügynök verziója – tesztelési eset | A Linux-ügynök minimális verziója 2.2.41 vagy újabb. Ezt a követelményt a 2020. május 1. óta kötelező megadni. | Frissítse a Linux-ügynök verzióját. 2,241 vagy újabb verziónak kell lennie. További információért látogasson el a [Linux-ügynök verziójának frissítése oldalra](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support). |
 | 2 | Bash-előzmények tesztelési esete | Hiba történik, ha az elküldött képen a bash-előzmények mérete meghaladja az 1 kilobájtot (KB). A méret 1 KB-ra korlátozódik annak biztosítására, hogy a bash History-fájlja ne tartalmazzon potenciálisan bizalmas adatokat. | Oldja fel a virtuális merevlemezt egy másik működő virtuális gépre, és módosítsa a méretet 1 KB vagy annál kisebb értékre. Törölje például az `.bash` Előzmények fájljait. |
@@ -169,7 +169,7 @@ Tekintse meg az alábbi táblázatot a tesztelési esetek futtatásakor előford
 
 A következő táblázat felsorolja az eszközkészlet által futtatott Windows-tesztelési eseteket, valamint a tesztek ellenőrzésének leírását:
 
-|Használati eset |Tesztelési esetek|Leírás|
+|Használati példa |Tesztelési esetek|Leírás|
 |---|---|---|---|
 |1|Operációs rendszer architektúrája|Az Azure csak a 64 bites operációs rendszereket támogatja.|
 |2|Felhasználói fióktól való függőség|Az alkalmazás végrehajtása nem függhet a rendszergazdai fióktól.|
@@ -319,7 +319,7 @@ Ha a kérést SSH-letiltott képpel szeretné elküldeni a minősítési folyama
     
 A következő táblázat tartalmazza azokat a problémákat, amelyek a virtuálisgép-rendszerkép közös hozzáférési aláírással (SAS) való letöltésekor merülnek fel.
 
-|Használati eset|Hiba|Ok|Megoldás|
+|Használati példa|Hiba|Ok|Megoldás|
 |---|---|---|---|
 |1|A blob nem található|Lehet, hogy a VHD-t törölték vagy áthelyezték a megadott helyről.|| 
 |2|BLOB használatban|A virtuális merevlemezt egy másik belső folyamat használja.|A VHD-nek használatban lévő állapotban kell lennie, amikor letölti egy SAS URL-címmel.|
@@ -474,7 +474,7 @@ Ha az Azure Marketplace-ről származó összes lemezképet újra fel kell haszn
 
 * **Windows** esetén a használatával általánosíthatja a Windows-lemezképeket `sysreptool` .
 
-  További információ az `sysreptool` eszközről: a [rendszer-előkészítés (Sysprep) áttekintése](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+  További információ az `sysreptool` eszközről: a [rendszer-előkészítés (Sysprep) áttekintése](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
 ## <a name="datadisk-errors"></a>Adatlemez hibák
 
@@ -600,11 +600,11 @@ Ezután tegye közzé újra az ajánlatot.
 
 1. Válassza **a felülvizsgálat és közzététel** lehetőséget.
 2. Ha bármilyen információt meg kell adnia a minősítési csapatnak, adja hozzá a **Megjegyzések a minősítéshez** mezőben.
-3. Kattintson a **Publish** (Közzététel) elemre.
+3. Válassza a **Közzététel** lehetőséget.
 
 A közzétételi folyamat befejezéséhez tekintse meg az [ajánlatok áttekintése és közzététele](review-publish-offer.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Virtuálisgép-ajánlat tulajdonságainak konfigurálása](azure-vm-create-properties.md)
 - [Aktív Piactéri előnyök](partner-center-portal/marketplace-rewards.md)

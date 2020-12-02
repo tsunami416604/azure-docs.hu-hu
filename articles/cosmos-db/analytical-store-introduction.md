@@ -1,24 +1,21 @@
 ---
-title: Mi a Azure Cosmos DB Analytical Store (előzetes verzió)?
+title: Mi az Azure Cosmos DB analitikus tároló?
 description: Ismerkedjen meg Azure Cosmos DB tranzakciós (sor-alapú) és analitikai (oszlop alapú) tárolóval. A nagyméretű számítási feladatokhoz és a tranzakciós tárolóból az analitikai tárolóba történő automatikus szinkronizálás előnyei, valamint a teljesítményre gyakorolt hatás
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 9cde9586d453632ceaa61de7c095a5f95d1ea2e4
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337406"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452859"
 ---
-# <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Mi a Azure Cosmos DB Analytical Store (előzetes verzió)?
+# <a name="what-is-azure-cosmos-db-analytical-store"></a>Mi az Azure Cosmos DB analitikus tároló?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
-
-> [!IMPORTANT]
-> Azure Cosmos DB analitikus tároló jelenleg előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A Azure Cosmos DB Analytical Store egy teljesen elkülönített oszlop, amely lehetővé teszi, hogy a nagy léptékű elemzéseket a Azure Cosmos DB működési adatain keresztül engedélyezze, anélkül, hogy ez hatással lenne a tranzakciós munkaterhelésekre. 
 
@@ -36,7 +33,7 @@ Az ETL-folyamatok akkor is bonyolultak lesznek, ha az operatív információkra 
 
 Azure Cosmos DB analitikus tároló foglalkozik a hagyományos ETL-folyamatokkal kapcsolatos bonyolultsági és késési kihívásokkal. Azure Cosmos DB az analitikus tároló automatikusan szinkronizálhatja az operatív adatait egy külön oszlopos tárolóba. Az oszlopos tároló formátuma alkalmas a nagyméretű analitikai lekérdezések optimalizált módon történő elvégzésére, ami az ilyen lekérdezések késésének javítását eredményezi.
 
-Az Azure szinapszis-hivatkozás használatával most már nem ETL HTAP-megoldásokat hozhat létre közvetlenül a szinapszis Analyticsből Azure Cosmos DB analitikus áruházhoz való csatolással. Lehetővé teszi a közel valós idejű, nagy léptékű elemzések futtatását az operatív adatain.
+Az Azure szinapszis-hivatkozás használatával most már nem ETL HTAP-megoldásokat hozhat létre az Azure szinapszis Analytics Azure Cosmos DB analitikus áruházához való közvetlen hivatkozással. Lehetővé teszi a közel valós idejű, nagy léptékű elemzések futtatását az operatív adatain.
 
 ## <a name="features-of-analytical-store"></a>Az analitikai tároló funkciói 
 
@@ -153,7 +150,7 @@ Itt látható az összes tulajdonság adattípusa és az utótag-ábrázolások 
 | Dupla |  ".float64" |    24,99|
 | Tömb | ". Array" |    ["a", "b"]|
 |Bináris | ". Binary" |0|
-|Logikai    | ". bool"   |Igaz|
+|Logikai érték    | ". bool"   |Igaz|
 |Int32  | ". Int32"  |123|
 |Int64  | ". Int64"  |255486129307|
 |Null   | ". null"   | null|
@@ -181,10 +178,10 @@ Az analitikai tárolóval megegyező hitelesítés megegyezik egy adott adatbáz
 
 Az analitikai tároló úgy van optimalizálva, hogy skálázhatóságot, rugalmasságot és teljesítményt nyújtson az analitikus számítási feladatokhoz, és ez nem függ a számítási futtatási időktől. A tárolási technológia önállóan felügyelhető, hogy manuális erőfeszítések nélkül optimalizálja az elemzési számítási feladatokat.
 
-Az analitikai tárolási rendszer az analitikai számítási rendszerből való leválasztásával a Azure Cosmos DB analitikus tárolóban lévő adatok az Azure szinapszis Analytics által támogatott különböző elemzési futtatókörnyezetekkel párhuzamosan kérhetők le. Napjainkban a szinapszis Analytics a Apache Spark és az SQL Server nélküli kiszolgálót is támogatja Azure Cosmos DB analitikus tárolóval.
+Az analitikai tárolási rendszer az analitikai számítási rendszerből való leválasztásával a Azure Cosmos DB analitikus tárolóban lévő adatok az Azure szinapszis Analytics által támogatott különböző elemzési futtatókörnyezetekkel párhuzamosan kérhetők le. Napjainkban az Azure szinapszis Analytics Apache Spark és kiszolgáló nélküli SQL-készletet támogat Azure Cosmos DB analitikus tárolóval.
 
 > [!NOTE]
-> Az analitikai áruházból csak a szinapszis Analytics futtatási idején lehet olvasni. A tranzakciós tárolóba visszaírhatja az adatait a kiszolgálóként szolgáló rétegként.
+> Az analitikus áruházból csak az Azure szinapszis Analytics futtatási idejét tudja olvasni. A tranzakciós tárolóba visszaírhatja az adatait a kiszolgálóként szolgáló rétegként.
 
 ## <a name="pricing"></a><a id="analytical-store-pricing"></a> Árképzési
 
@@ -194,10 +191,7 @@ Az analitikus tároló egy fogyasztáson alapuló díjszabási modellt követ, a
 
 * Analitikus írási műveletek: az operatív adatok frissítéseinek teljes körű kezelése a tranzakciós tárolóból az analitikai tárolóba (automatikus szinkronizálás)
 
-* Analitikai olvasási műveletek: az analitikai tárolón végrehajtott olvasási műveletek a szinapszis Analytics Spark és az SQL Server nélküli futtatási időpontokban.
-
-> [!NOTE]
-> A Azure Cosmos DB Analytical Store jelenleg díjmentes nyilvános előzetes kiadásban érhető el.
+* Analitikai olvasási műveletek: az Azure szinapszis Analytics Spark-készlet és a kiszolgáló nélküli SQL-készlet futtatási ideje alapján végrehajtott olvasási műveletek az analitikus tárolón.
 
 Az analitikus tároló díjszabása nem azonos a tranzakciós áruház díjszabási modelljével. Az analitikai tár nem rendelkezik kiépített RUs-koncepcióval. Tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/), amely részletesen ismerteti az analitikus tároló díjszabási modelljét.
 

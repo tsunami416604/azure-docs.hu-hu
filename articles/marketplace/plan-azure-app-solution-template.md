@@ -8,27 +8,27 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 38c7072472a13d7fe3d529933ca17a51e6a86733
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 3e4d0513808cdc44fc71e182a07fa6b050d182ee
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577804"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452507"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>Megoldási sablon megtervezése Azure-alkalmazási ajánlathoz
 
 Ez a cikk ismerteti a megoldási sablonok Azure-beli alkalmazásokra vonatkozó tervének közzétételének követelményeit. A megoldási sablon az Azure-alkalmazások által támogatott két típusú csomag egyike. További információ a két csomag típusa közötti különbségről: [csomagok típusai](plan-azure-application-offer.md#plans). Ha még nem tette meg, olvassa el [Az Azure-alkalmazás ajánlatának megtervezése](plan-azure-application-offer.md)című cikkét.
 
-A megoldási sablon típusa [Azure Resource Manager sablont (ARM-sablont)](/azure/azure-resource-manager/templates/overview) igényel a megoldás-infrastruktúra automatikus telepítéséhez.
+A megoldási sablon típusa [Azure Resource Manager sablont (ARM-sablont)](../azure-resource-manager/templates/overview.md) igényel a megoldás-infrastruktúra automatikus telepítéséhez.
 
 ## <a name="solution-template-requirements"></a>A megoldás sablonjának követelményei
 
 | Követelmények | Részletek |
 | ------------ | ------------- |
 | Számlázás és mérés | A megoldási sablonok csomagjai nem vonhatók le, de használhatók a Microsoft kereskedelmi Piactéren keresztül számlázott fizetős virtuális gépek üzembe helyezésére. A megoldás ARM-sablonja által üzembe helyezett erőforrások az ügyfél Azure-előfizetésében vannak beállítva. Az utólagos elszámolású virtuális gépeket a Microsoft és az ügyfél Azure-előfizetése alapján számlázzák az ügyfélen keresztül. <br><br> A saját licencek (BYOL) számlázásához, bár a Microsoft az ügyfél-előfizetésben felmerülő infrastrukturális költségeket számláz, a szoftveres licencelési díjakat közvetlenül a vásárlónak kell átirányítani. |
-| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni. További információ:<ul><li>[Azure-beli virtuális gép technikai eszközének létrehozása](/azure/marketplace/partner-center-portal/vm-certification-issues-solutions#how-to-address-a-vulnerability-or-exploit-in-a-vm-offer.md) (Windows rendszerű virtuális merevlemezekhez)</li><li>Az Azure-ban [támogatott Linux-disztribúciók](/azure/virtual-machines/linux/endorsed-distros) (linuxos virtuális merevlemezek esetén).</li></ul> |
+| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni. További információ:<ul><li>[Azure-beli virtuális gép technikai eszközének létrehozása](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows rendszerű virtuális merevlemezekhez)</li><li>Az Azure-ban [támogatott Linux-disztribúciók](../virtual-machines/linux/endorsed-distros.md) (linuxos virtuális merevlemezek esetén).</li></ul> |
 | Ügyfelek általi használat nyomon követése | Az Azure Marketplace-en közzétett összes megoldási sablonban engedélyezni kell az ügyfél-használati jóváírást. További információ az ügyfél-használati feladatokról és annak engedélyezéséről: az [Azure-partneri ügyfél használati](azure-partner-customer-usage-attribution.md)feladatának megállapítása. |
-| Felügyelt lemezek használata | A [Managed Disks](/azure/virtual-machines/windows/managed-disks-overview) az alapértelmezett beállítás az Azure-beli infrastruktúra-(IaaS-) virtuális gépek megőrzött lemezei számára. A megoldási sablonokban felügyelt lemezeket kell használnia.<ul><li>A megoldási sablonok frissítéséhez kövesse a [felügyelt lemezek használata Azure Resource Manager-sablonokban](/azure/virtual-machines/using-managed-disks-template-deployments)című témakör útmutatását, és használja a megadott [mintákat](https://github.com/Azure/azure-quickstart-templates).</li><li>Ha a virtuális merevlemezt képként szeretné közzétenni az Azure Marketplace-en, a felügyelt lemezek mögöttes VHD-jét a [Azure PowerShell](/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd) vagy az [Azure CLI](/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd) használatával importálhatja egy Storage-fiókba.</ul> |
+| Felügyelt lemezek használata | A [Managed Disks](../virtual-machines/managed-disks-overview.md) az alapértelmezett beállítás az Azure-beli infrastruktúra-(IaaS-) virtuális gépek megőrzött lemezei számára. A megoldási sablonokban felügyelt lemezeket kell használnia.<ul><li>A megoldási sablonok frissítéséhez kövesse a [felügyelt lemezek használata Azure Resource Manager-sablonokban](../virtual-machines/using-managed-disks-template-deployments.md)című témakör útmutatását, és használja a megadott [mintákat](https://github.com/Azure/azure-quickstart-templates).</li><li>Ha a virtuális merevlemezt képként szeretné közzétenni az Azure Marketplace-en, a felügyelt lemezek mögöttes VHD-jét a [Azure PowerShell](../virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md) vagy az [Azure CLI](../virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md) használatával importálhatja egy Storage-fiókba.</ul> |
 | Központi telepítési csomag | Szüksége lesz egy központi telepítési csomagra, amely lehetővé teszi az ügyfeleknek a terv üzembe helyezését. Ha több olyan csomagot hoz létre, amelyek ugyanazt a technikai konfigurációt igénylik, akkor ugyanazt a csomagot használhatja. Részletekért tekintse meg a következő szakaszt: üzembehelyezési csomag. |
 |||
 
@@ -38,8 +38,8 @@ A központi telepítési csomag tartalmazza az ehhez a csomaghoz szükséges ös
 
 Az összes Azure-alkalmazásnak tartalmaznia kell a következő két fájlt a. zip archívum gyökérkönyvtárában:
 
-- Egy [mainTemplate.js](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md)nevű Resource Manager-sablonfájl. Ez a sablon határozza meg az ügyfél Azure-előfizetésében telepítendő erőforrásokat. A Resource Manager-sablonokra vonatkozó példákért tekintse meg az [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/) katalógusát vagy a megfelelő [githubot: Azure Resource Manager Gyorsindítás sablonok](https://github.com/azure/azure-quickstart-templates) tárháza.
-- Felhasználói felület definíciója az Azure-alkalmazás létrehozási élményéhez [createUiDefinition.js](/azure/azure-resource-manager/managed-application-createuidefinition-overview). A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
+- Egy [mainTemplate.js](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template)nevű Resource Manager-sablonfájl. Ez a sablon határozza meg az ügyfél Azure-előfizetésében telepítendő erőforrásokat. A Resource Manager-sablonokra vonatkozó példákért tekintse meg az [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/) katalógusát vagy a megfelelő [githubot: Azure Resource Manager Gyorsindítás sablonok](https://github.com/azure/azure-quickstart-templates) tárháza.
+- Felhasználói felület definíciója az Azure-alkalmazás létrehozási élményéhez [createUiDefinition.js](../azure-resource-manager/managed-applications/create-uidefinition-overview.md). A felhasználói felületen elemeket ad meg, amelyek lehetővé teszik a felhasználók számára paraméterértékek megadását.
 
 A maximálisan támogatott fájlméretek a következők:
 
@@ -50,7 +50,7 @@ Az Azure-alkalmazások minden új ajánlatának tartalmaznia kell egy [Azure-par
 
 ## <a name="azure-regions"></a>Azure-régiók
 
-A tervet közzéteheti az Azure nyilvános régiójában, Azure Government régióban vagy mindkettőben. A [Azure Government](/azure/azure-government/documentation-government-manage-marketplace-partners)való közzététel előtt tesztelje és érvényesítse a tervet a környezetben, mivel egyes végpontok eltérőek lehetnek. A csomag beállításához és teszteléséhez [Microsoft Azure Government próbaverzióból](https://azure.microsoft.com/global-infrastructure/government/request/)kérjen próbaverziós fiókot.
+A tervet közzéteheti az Azure nyilvános régiójában, Azure Government régióban vagy mindkettőben. A [Azure Government](../azure-government/documentation-government-manage-marketplace-partners.md)való közzététel előtt tesztelje és érvényesítse a tervet a környezetben, mivel egyes végpontok eltérőek lehetnek. A csomag beállításához és teszteléséhez [Microsoft Azure Government próbaverzióból](https://azure.microsoft.com/global-infrastructure/government/request/)kérjen próbaverziós fiókot.
 
 Ön, mint közzétevő, felelős a megfelelőségi ellenőrzésért, a biztonsági intézkedésekért és az ajánlott eljárásokhoz. A Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található).
 
@@ -74,6 +74,6 @@ A megoldási sablonokhoz a tervet az Azure Marketplace-ről is elvégezheti. Err
 
 További információ: [privát ajánlatok a Microsoft kereskedelmi piactéren](private-offers.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-alkalmazások ajánlatának létrehozása a kereskedelmi piactéren](create-new-azure-apps-offer.md)

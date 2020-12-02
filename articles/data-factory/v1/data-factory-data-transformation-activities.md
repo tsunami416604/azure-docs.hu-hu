@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 91755dd1b5eea9f72978e09a605fc47d41ff3dee
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dfe8863f38da0aeb701b063f051a199e27745eeb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371715"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453355"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Az adatátalakítás Azure Data Factory 1. verzióban
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Az idő múlásával a Studio (klasszikus) pontozási kísérletek prediktív mo
 A Studio (klasszikus) tevékenységek részletes ismertetését lásd: [Azure Machine learning Studio (klasszikus) tevékenységek használata](data-factory-azure-ml-batch-execution-activity.md) . 
 
 ## <a name="stored-procedure-activity"></a>Tárolt eljárási tevékenység
-A Data Factory folyamat SQL Server tárolt eljárása tevékenységgel egy tárolt eljárást hívhat meg a következő adattárak egyikében: Azure SQL Database, Azure szinapszis Analytics (korábban SQL Data Warehouse), SQL Server adatbázis a vállalatban vagy egy Azure-beli virtuális gépen. Részletekért lásd a [tárolt eljárási tevékenységről](data-factory-stored-proc-activity.md) szóló cikket.  
+A Data Factory folyamat SQL Server tárolt eljárása tevékenységgel egy tárolt eljárást hívhat meg a következő adattárak egyikében: Azure SQL Database, Azure szinapszis Analytics, SQL Server adatbázis a vállalatban vagy egy Azure-beli virtuális gépen. Részletekért lásd a [tárolt eljárási tevékenységről](data-factory-stored-proc-activity.md) szóló cikket.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>U-SQL-Data Lake Analytics tevékenység
 Data Lake Analytics U-SQL-tevékenység egy U-SQL-szkriptet futtat egy Azure Data Lake Analytics-fürtön. Részletekért lásd: [adatelemzési U-SQL-tevékenység](data-factory-usql-activity.md) . 
@@ -79,11 +79,11 @@ Létrehozhat egy egyéni tevékenységet R-parancsfájlok futtatására egy olya
 Hozzon létre egy társított szolgáltatást a számítási környezethez, majd használja a társított szolgáltatást egy átalakítási tevékenység definiálásakor. Data Factory által támogatott számítási környezeteknek két típusa van. 
 
 1. **Igény szerinti**: ebben az esetben a számítástechnikai környezetet teljes mértékben a Data Factory felügyeli. A Data Factory szolgáltatás automatikusan hozza létre, mielőtt egy feladatot elküld az adatok feldolgozásához, és eltávolítja azokat a feladatok befejezésekor. Konfigurálhatja és szabályozhatja az igény szerinti számítási környezet részletes beállításait a feladatok végrehajtásához, a fürtözés kezeléséhez és a rendszerindítás műveleteihez. 
-2. **Saját**környezet használata: ebben az esetben regisztrálhat saját számítástechnikai környezetet (például HDInsight-fürtöt) a Data Factory társított szolgáltatásként. A számítástechnikai környezetet Ön felügyeli, és a Data Factory szolgáltatás ezt használja a tevékenységek végrehajtásához. 
+2. **Saját** környezet használata: ebben az esetben regisztrálhat saját számítástechnikai környezetet (például HDInsight-fürtöt) a Data Factory társított szolgáltatásként. A számítástechnikai környezetet Ön felügyeli, és a Data Factory szolgáltatás ezt használja a tevékenységek végrehajtásához. 
 
 A Data Factory által támogatott számítási szolgáltatások megismeréséhez tekintse meg a [számítási társított szolgáltatások](data-factory-compute-linked-services.md) című cikket. 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Azure Data Factory a következő Adatátalakítási tevékenységeket és a tevékenységek számítási környezeteit támogatja. Az átalakítási tevékenységek hozzáadhatók a folyamatokhoz, akár külön, akár egy másik tevékenységgel.
 
 | Adatátalakítási tevékenység | Számítási környezet |

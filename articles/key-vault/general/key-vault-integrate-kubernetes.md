@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: b7d587f2be5141f7de82e9294b1fdb9fba4a6a41
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: c628ba780ae64fceb32322fdb2004d69e2ebf24b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488643"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452755"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
 
@@ -77,11 +77,11 @@ Fejezze be az [Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI ha
     ```azurecli
     kubectl version
     ```
-1. Győződjön meg arról, hogy a Kubernetes verziója 1.16.0 vagy újabb. Windows-fürtök esetén győződjön meg arról, hogy a Kubernetes verziója 1.18.0 vagy újabb. A következő parancs frissíti a Kubernetes-fürtöt és a csomópont-készletet is. A parancs végrehajtása néhány percet is igénybe vehet. Ebben a példában az erőforráscsoport *contosoResourceGroup* , a Kubernetes-fürt pedig *contosoAKSCluster*.
+1. Győződjön meg arról, hogy a Kubernetes verziója 1.16.0 vagy újabb. Windows-fürtök esetén győződjön meg arról, hogy a Kubernetes verziója 1.18.0 vagy újabb. A következő parancs frissíti a Kubernetes-fürtöt és a csomópont-készletet is. A parancs végrehajtása néhány percet is igénybe vehet. Ebben a példában az erőforráscsoport *contosoResourceGroup*, a Kubernetes-fürt pedig *contosoAKSCluster*.
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. A létrehozott AK-fürt metaadatainak megjelenítéséhez használja a következő parancsot. Másolja a **principalId** , a **clientId** , a **subscriptionId** és a **nodeResourceGroup** a későbbi használatra. Ha a KÉRDÉSes fürt nem lett engedélyezve a felügyelt identitásokkal, a **principalId** és a **clientId** null értékű lesz. 
+1. A létrehozott AK-fürt metaadatainak megjelenítéséhez használja a következő parancsot. Másolja a **principalId**, a **clientId**, a **subscriptionId** és a **nodeResourceGroup** a későbbi használatra. Ha a KÉRDÉSes fürt nem lett engedélyezve a felügyelt identitásokkal, a **principalId** és a **clientId** null értékű lesz. 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -121,21 +121,21 @@ Ha a Secrets Store CSI-illesztőprogramhoz tartozó, szolgáltatói specifikus p
 
 A minta SecretProviderClass YAML fájljában adja meg a hiányzó paramétereket. A következő paraméterek szükségesek:
 
-* **userAssignedIdentityID** : # [kötelező] Ha egyszerű szolgáltatásnevet használ, az ügyfél-azonosító segítségével megadhatja, hogy melyik felhasználóhoz rendelt felügyelt identitást kívánja használni. Ha felhasználó által hozzárendelt identitást használ a virtuális gép felügyelt identitása, akkor az identitás ügyfél-azonosítóját kell megadnia. Ha az érték üres, alapértelmezés szerint a rendszer által hozzárendelt identitást használja a virtuális gépen. 
-* **keyvaultName** : a kulcstartó neve
-* **objektumok** : a csatlakoztatni kívánt titkos tartalom tárolója
-    * **objectName** : a titkos tartalom neve
-    * **objektumtípus** : az objektum típusa (titok, kulcs, tanúsítvány)
-* **resourceGroup** : a kulcstartó erőforráscsoporthoz tartozó [verzió < 0.0.4] nevű erőforráscsoport neve
-* **subscriptionId** : a kulcstartó előfizetés-azonosítója # [a (z) < 0.0.4-verzióhoz szükséges] a kulcstartó előfizetés-azonosítója
-* **tenantID** : a Key Vault bérlői azonosítója vagy CÍMTÁR-azonosítója
+* **userAssignedIdentityID**: # [kötelező] Ha egyszerű szolgáltatásnevet használ, az ügyfél-azonosító segítségével megadhatja, hogy melyik felhasználóhoz rendelt felügyelt identitást kívánja használni. Ha felhasználó által hozzárendelt identitást használ a virtuális gép felügyelt identitása, akkor az identitás ügyfél-azonosítóját kell megadnia. Ha az érték üres, alapértelmezés szerint a rendszer által hozzárendelt identitást használja a virtuális gépen. 
+* **keyvaultName**: a kulcstartó neve
+* **objektumok**: a csatlakoztatni kívánt titkos tartalom tárolója
+    * **objectName**: a titkos tartalom neve
+    * **objektumtípus**: az objektum típusa (titok, kulcs, tanúsítvány)
+* **resourceGroup**: a kulcstartó erőforráscsoporthoz tartozó [verzió < 0.0.4] nevű erőforráscsoport neve
+* **subscriptionId**: a kulcstartó előfizetés-azonosítója # [a (z) < 0.0.4-verzióhoz szükséges] a kulcstartó előfizetés-azonosítója
+* **tenantID**: a Key Vault bérlői azonosítója vagy CÍMTÁR-azonosítója
 
 Az összes kötelező mező dokumentációja itt érhető el: [hivatkozás](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
 
 A frissített sablon a következő kódban látható. Töltse le YAML-fájlként, és töltse ki a kötelező mezőket. Ebben a példában a Key Vault **contosoKeyVault5** van. Két titkot, **secret1** és **secret2** tartalmaz.
 
 > [!NOTE] 
-> Ha felügyelt identitásokat használ, állítsa a **usePodIdentity** értéket *igaz* értékre, és állítsa be a **userAssignedIdentityID** értéket idézőjelek közé ( **""** ). 
+> Ha felügyelt identitásokat használ, állítsa a **usePodIdentity** értéket *igaz* értékre, és állítsa be a **userAssignedIdentityID** értéket idézőjelek közé (**""**). 
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
@@ -362,4 +362,4 @@ Ellenőrizze, hogy a titkos kód tartalma megjelenik-e.
 
 A Key Vault helyreállításának biztosításához lásd:
 > [!div class="nextstepaction"]
-> [A Soft delete bekapcsolása](./soft-delete-cli.md)
+> [A Soft delete bekapcsolása](./key-vault-recovery.md)

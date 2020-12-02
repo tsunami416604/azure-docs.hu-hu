@@ -1,6 +1,6 @@
 ---
-title: Kapcsolat a VSTS
-description: Az Azure szinapszis Analytics lekérdezése a Visual Studióval.
+title: Kapcsolódás dedikált SQL-készlethez (korábban SQL DW) a VSTS
+description: Dedikált SQL-készlet (korábban SQL DW) lekérdezése az Azure szinapszis Analytics és a Visual Studio használatával.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,34 +11,34 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 59e0aed3ceda369909c6a4aecd03637a82a2dd1b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c55f8483ba54ecf9778693b364603d642ddb3deb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305382"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452325"
 ---
-# <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Kapcsolódás az Azure szinapszis Analyticshez a Visual Studióval és a SSDT
+# <a name="connect-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Kapcsolódás dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben a Visual Studióval és a SSDT
 
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md) 
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
 
-A Visual Studióval mindössze néhány perc alatt lekérdezheti az Azure szinapszison belül egy dedikált SQL-készletet. Ez a metódus a SQL Server Data Tools (SSDT) bővítményt használja a Visual Studio 2019-ben. 
+A Visual Studióval mindössze néhány perc alatt lekérdezheti az Azure Szinapszisban található dedikált SQL-készletet (korábban SQL DW). Ez a metódus a SQL Server Data Tools (SSDT) bővítményt használja a Visual Studio 2019-ben. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
-* Egy meglévő dedikált SQL-készlet. A létrehozáshoz tekintse meg [a DEDIKÁLT SQL-készlet létrehozása](create-data-warehouse-portal.md)című témakört.
+* Egy meglévő dedikált SQL-készlet (korábban SQL DW). A létrehozáshoz tekintse meg [a DEDIKÁLT SQL-készlet (korábban SQL DW) létrehozását](create-data-warehouse-portal.md)ismertető témakört.
 * SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studióval, valószínűleg már rendelkezik SSDT a Visual Studióval. A telepítés menetéről és a beállításokról [A Visual Studio és az SSDT telepítése](sql-data-warehouse-install-visual-studio.md) című cikkben olvashat bővebben.
-* Az Azure SQL-kiszolgáló teljes neve. Az információk megkereséséhez lásd: [Kapcsolódás DEDIKÁLT SQL-készlethez](../sql/connect-overview.md).
+* Az Azure SQL-kiszolgáló teljes neve. Ezen információk megkereséséhez lásd: [Kapcsolódás DEDIKÁLT SQL-készlethez (korábban SQL DW)](sql-data-warehouse-connect-overview.md).
 
-## <a name="1-connect-to-your-dedicated-sql-pool"></a>1. kapcsolódás a dedikált SQL-készlethez
+## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1. kapcsolódás a dedikált SQL-készlethez (korábban SQL DW)
 1. Nyissa meg a Visual Studio 2019 alkalmazást.
 2. SQL Server Object Explorer megnyitásához válassza a **nézet**  >  **SQL Server Object Explorer** lehetőséget.
    
@@ -77,7 +77,7 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
    
     ![Lekérdezés eredményei](./media/sql-data-warehouse-query-visual-studio/query-results.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](sql-data-warehouse-get-started-visualize-with-power-bi.md).
 
-A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés DEDIKÁLT SQL-készletbe](sql-data-warehouse-authentication.md).
+A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés DEDIKÁLT SQL-készletbe (korábban SQL DW)](sql-data-warehouse-authentication.md).

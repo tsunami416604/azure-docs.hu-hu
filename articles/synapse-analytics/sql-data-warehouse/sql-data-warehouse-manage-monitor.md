@@ -1,6 +1,6 @@
 ---
-title: SQL-készlet számítási feladatainak figyelése a DMV használatával
-description: Ismerje meg, hogyan figyelheti meg az Azure szinapszis Analytics SQL-készlet számítási feladatait és a lekérdezések végrehajtását a DMV használatával.
+title: A dedikált SQL-készlet számítási feladatának figyelése a DMV használatával
+description: Ismerje meg, hogyan figyelheti meg az Azure szinapszis Analytics dedikált SQL-készlet számítási feladatait és a lekérdezés végrehajtását a DMV használatával.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 70ce0d6aada2b03646500720b0eba980a1f2d8f8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1992c3d525fc1f5a098e1969887a752233d47990
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515729"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453807"
 ---
-# <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>Az Azure szinapszis Analytics SQL-készlet számítási feladatának figyelése a DMV használatával
+# <a name="monitor-your-azure-synapse-analytics-dedicated-sql-pool-workload-using-dmvs"></a>Az Azure szinapszis Analytics dedikált SQL-készlet számítási feladatának figyelése a DMV használatával
 
 Ez a cikk azt ismerteti, hogyan használhatók a dinamikus felügyeleti nézetek (DMV) a számítási feladatok figyelésére, többek között az SQL-készlet lekérdezés-végrehajtásának kivizsgálására.
 
@@ -176,7 +176,7 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-Ha a lekérdezés aktívan várakozik egy másik lekérdezés erőforrásaira, akkor az állapot **AcquireResources**válik.  Ha a lekérdezés rendelkezik az összes szükséges erőforrással, akkor a rendszer megadja **Granted**az állapotot.
+Ha a lekérdezés aktívan várakozik egy másik lekérdezés erőforrásaira, akkor az állapot **AcquireResources** válik.  Ha a lekérdezés rendelkezik az összes szükséges erőforrással, akkor a rendszer megadja **Granted** az állapotot.
 
 ## <a name="monitor-tempdb"></a>Tempdb figyelése
 
@@ -307,6 +307,6 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a DMV: [rendszernézetek](../sql/reference-tsql-system-views.md).

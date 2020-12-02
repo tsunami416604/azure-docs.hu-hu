@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3f5cb2831a58ce9d0d30039b80815e281401e883
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 38d0c350718480506e1267c161a85505ece4b69d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542558"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452263"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>A Azure Machine Learning megismerése Jupyter notebookokkal
 
@@ -56,7 +56,7 @@ A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-lemezkép
 
 [!INCLUDE [aml-dsvm-server](../../includes/aml-dsvm-server.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg a [minta jegyzetfüzetekkel](https://github.com/Azure/MachineLearningNotebooks) , hogy megismerje, milyen Azure Machine learning lehet.
 
