@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 11/04/2020
 ms.author: alkohli
-ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899271"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448698"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes a Azure Stack Edge Pro GPU-eszközön
 
@@ -41,7 +41,7 @@ Annak megismeréséhez, hogy a tárterület hogyan legyen kezelve a Kubernetes, 
 
 A tárolók kiépítés lehet statikus vagy dinamikus. A kiépítési típusok mindegyikét a következő szakaszok tárgyalják.
 
-## <a name="staticprovisioning"></a>Statikus kiépítés
+## <a name="static-provisioning"></a>Statikus kiépítés
 
 A Kubernetes-fürt rendszergazdái statikusan is kiépíthetik a tárolót. Ehhez használhatja az SMB/NFS fájlrendszereken alapuló tárolási hátteret, vagy olyan iSCSI-lemezeket használhat, amelyek helyileg, helyszíni környezetben, vagy akár a felhőben lévő Azure Files vagy Azure-lemezek használatával csatlakoznak a hálózathoz. Az ilyen típusú tárolók alapértelmezés szerint nincsenek kiépítve, és a fürt rendszergazdáinak meg kell tervezniük és kezelnie kell ezt a kiépítési lehetőséget. 
  
@@ -58,7 +58,7 @@ A következő lépések történnek:
 1. **PVC csatlakoztatása a tárolóhoz**: Ha a PVC a PV-hez van kötve, csatlakoztathatja ezt a PVC-t a tároló egyik elérési útjához. Amikor a tárolóban lévő alkalmazás logikája beolvassa vagy beírja az elérési utat, az adatok bekerülnek az SMB-tárolóba.
  
 
-## <a name="dynamicprovisioning"></a>Dinamikus kiépítés
+## <a name="dynamic-provisioning"></a>Dinamikus kiépítés
 
 Itt látható egy diagram, amely azt ábrázolja, hogyan használják a statikusan kiosztott tárolókat a Kubernetes: 
 
@@ -105,6 +105,26 @@ spec:
 
 További információ: állapot- [nyilvántartó alkalmazás üzembe helyezése statikus kiépítés használatával a Azure stack Edge Pro-n keresztül a kubectl-on keresztül](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
 
+Ha ugyanazt a statikusan kiosztott tárolót szeretné elérni, a IoT tartozó tárolási kötések megfelelő mennyiségi csatlakoztatási beállításai a következők. Az az az `/home/input` elérési út, ahol a kötet elérhető a tárolón belül.
+
+```
+{
+"HostConfig": {
+"Mounts": [
+{
+"Target": "/home/input",
+"Source": "<nfs-or-smb-share-name-here>",
+"Type": "volume"
+},
+{
+"Target": "/home/output",
+"Source": "<nfs-or-smb-share-name-here>",
+"Type": "volume"
+}]
+}
+}
+```
+
 Azure Stack Edge Pro is rendelkezik egy olyan beépített `StorageClass` névvel `ase-node-local` , amely egy, a Kubernetes-csomóponthoz csatolt adatlemez-tárolót használ. Ez `StorageClass` támogatja a dinamikus kiépítés használatát. Létrehozhat egy `StorageClass` hivatkozást a pod-alkalmazásokban, és a rendszer automatikusan létrehoz egy PV-t az Ön számára. További információkért tekintse meg a [Kubernetes-irányítópultot](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) a lekérdezéshez `ase-node-local StorageClass` .
 
 ![Beépített tárolási osztály a Kubernetes-irányítópulton](./media/azure-stack-edge-gpu-kubernetes-storage/dynamic-provisioning-builtin-storage-class-1.png)
@@ -123,7 +143,7 @@ Előfordulhat, hogy az üzembe helyezett munkaterheléstől függően ki kell v�
 A hozzáférési módokkal kapcsolatos további információkért lásd: [Kubernetes-kötetek hozzáférési módja](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A statikus kiépítésének megismeréséhez `PersistentVolume` lásd:
 

@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: aa85822b433e2d8128df9ae3664411ea3fcddec4
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 66a9c9d605911a9d3b30a55d47e16026e26e502a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012932"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447264"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 
@@ -32,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning munka
 
 ## <a name="limitations"></a>Korlátozások
 
-* Új munkaterület létrehozásakor engedélyezheti a munkaterületnek, hogy automatikusan létrehozza a szükséges Azure-szolgáltatásokat, vagy megadjon meglévő szolgáltatásokat. A meglévő szolgáltatások megadásakor ezeknek a szolgáltatásoknak mind ugyanabban az Azure-előfizetésben kell lenniük, mint a munkaterületnek.
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>A CLI összekötése az Azure-előfizetéssel
 
@@ -417,6 +417,6 @@ A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Regis
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A gépi tanuláshoz készült Azure CLI bővítménnyel kapcsolatos további információkért tekintse meg az az [ml](/cli/azure/ext/azure-cli-ml/ml?preserve-view=true&view=azure-cli-latest) dokumentációt.

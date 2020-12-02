@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: cb10eb0f89ce37bc484c8570995ebaa098c696f1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 492d1370a228fc4fc80880102899c9207a514f57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541300"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447186"
 ---
 # <a name="configure-and-submit-training-runs"></a>Betanítási futtatások konfigurálása és elküldése
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat és küldhet be Azure Machine Learning-futtatásokat a modellek betanításához.
+Ebből a cikkből megtudhatja, hogyan konfigurálhat és küldhet be Azure Machine Learning-futtatásokat a modellek betanításához. A kódrészletek a betanítási szkriptek konfigurációjának és beküldésének főbb részeit ismertetik.  Ezután használja az egyik [példa notebookot](#notebooks) a teljes körű működésre vonatkozó példák megtalálásához.
 
 Ha betanítást végez, gyakori, hogy elindítsa a helyi számítógépen, majd később kibővíti a felhőalapú fürtöt. A Azure Machine Learning használatával különböző számítási célokból futtathat parancsfájlokat anélkül, hogy módosítani kellene a betanítási szkriptet.
 
@@ -38,10 +38,10 @@ A [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preser
 
 A betanítási kísérletet egy ScriptRunConfig-objektummal küldi el.  Ez az objektum az alábbiakat tartalmazza:
 
-* **source_directory** : a betanítási parancsfájlt tartalmazó forrás könyvtára
-* **parancsfájl** : a futtatandó betanítási szkript
-* **compute_target** : a futtatandó számítási cél
-* **környezet** : a parancsfájl futtatásakor használandó környezet
+* **source_directory**: a betanítási parancsfájlt tartalmazó forrás könyvtára
+* **parancsfájl**: a futtatandó betanítási szkript
+* **compute_target**: a futtatandó számítási cél
+* **környezet**: a parancsfájl futtatásakor használandó környezet
 * és néhány további konfigurálható lehetőség is (további információt a [dokumentációban](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) talál)
 
 ## <a name="train-your-model"></a><a id="submit"></a>A modell betanítása
@@ -94,7 +94,7 @@ A környezetekkel kapcsolatos további információkért és részletekért lás
   
 ### <a name="local-compute-target"></a><a name="local"></a>Helyi számítási cél
 
-Ha a számítási cél a **helyi gép** , Ön felelős annak biztosításáért, hogy az összes szükséges csomag elérhető legyen a Python-környezetben, ahol a szkript fut.  A használatával az `python.user_managed_dependencies` aktuális Python-környezetet (vagy a Pythont a megadott elérési úton) használhatja.
+Ha a számítási cél a **helyi gép**, Ön felelős annak biztosításáért, hogy az összes szükséges csomag elérhető legyen a Python-környezetben, ahol a szkript fut.  A használatával az `python.user_managed_dependencies` aktuális Python-környezetet (vagy a Pythont a megadott elérési úton) használhatja.
 
 ```python
 from azureml.core import Environment
@@ -152,7 +152,7 @@ run.wait_for_completion(show_output=True)
 > További információ a pillanatképekről: [Pillanatképek](concept-azure-machine-learning-architecture.md#snapshots).
 
 > [!IMPORTANT]
-> **Speciális mappák** Két mappa, *kimenet* és *napló* , a Azure Machine learning speciális kezelést kap. Ha a betanítás során a rendszer a gyökérkönyvtárhoz viszonyított *kimeneteket* és *naplókat* tartalmazó mappákba ír fájlokat `./outputs` , `./logs` a fájlok automatikusan feltöltve lesznek a futtatási előzményekbe, hogy a Futtatás befejezése után hozzáférhessenek hozzájuk.
+> **Speciális mappák** Két mappa, *kimenet* és *napló*, a Azure Machine learning speciális kezelést kap. Ha a betanítás során a rendszer a gyökérkönyvtárhoz viszonyított *kimeneteket* és *naplókat* tartalmazó mappákba ír fájlokat `./outputs` , `./logs` a fájlok automatikusan feltöltve lesznek a futtatási előzményekbe, hogy a Futtatás befejezése után hozzáférhessenek hozzájuk.
 >
 > Az összetevőknek a betanítás során történő létrehozásához (például a Model Files, az ellenőrzőpontok, az adatfájlok vagy a képek kirajzolása) írja ezeket a `./outputs` mappába.
 >
@@ -164,7 +164,7 @@ run.wait_for_completion(show_output=True)
 
 Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a rendszer a tárház adatait a futtatási előzményekben tárolja. További információ: git- [integráció Azure Machine Learninghoz](concept-train-model-git-integration.md).
 
-## <a name="notebook-examples"></a>Jegyzetfüzet-példák
+## <a name="notebook-examples"></a><a name="notebooks"></a>Jegyzetfüzet-példák
 
 Tekintse meg ezeket a jegyzetfüzeteket a futtatások konfigurálására példákat a különböző képzési forgatókönyvekhez:
 * [Képzés különböző számítási célokból](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
@@ -173,7 +173,7 @@ Tekintse meg ezeket a jegyzetfüzeteket a futtatások konfigurálására példá
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
 * Megtudhatja, hogyan taníthat modelleket konkrét ML-keretrendszerekkel, például a [Scikit-Learn](how-to-train-scikit-learn.md), a [TensorFlow](how-to-train-tensorflow.md)és a [PyTorch](how-to-train-pytorch.md).

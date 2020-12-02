@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be7d477d08b025fd450bfa859e8eb677ba680143
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903639"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446373"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>A Azure Stack Edge Pro-rendezéssel kapcsolatos problémák elhárítása
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ![Nem támogatott előfizetés vagy régió](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-01.png)
 
-**Javasolt megoldás:**  Győződjön meg arról, hogy olyan támogatott előfizetést használt, mint például a [Microsoft nagyvállalati szerződés (EA)](https://azure.microsoft.com/overview/sales-number/), a [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)vagy a [Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/). Az utólagos elszámolású előfizetések nem támogatottak. További információ: [Azure stack Edge-erőforrás előfeltételei](azure-stack-edge-deploy-prep.md#prerequisites).
+**Javasolt megoldás:**  Győződjön meg arról, hogy olyan támogatott előfizetést használt, mint például a [Microsoft nagyvállalati szerződés (EA)](https://azure.microsoft.com/overview/sales-number/), a [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp)vagy a [Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/). Az utólagos elszámolású előfizetések nem támogatottak. További információ: [Azure stack Edge-erőforrás előfeltételei](azure-stack-edge-deploy-prep.md#prerequisites).
 
 Lehetséges, hogy a Microsoft engedélyezheti az előfizetési típus frissítését eseti alapon. Vegye fel a kapcsolatot a [Microsoft ügyfélszolgálatával](https://azure.microsoft.com/support/options/) , hogy tisztában legyen az igényeivel, és megfelelően módosítsa ezeket a korlátokat.
 
@@ -45,11 +45,11 @@ Lehetséges, hogy a Microsoft engedélyezheti az előfizetési típus frissíté
 
 **Javasolt megoldás:** Az Azure Stack Edge erőforrás-szolgáltató regisztrálásához kövesse az alábbi lépéseket:
 
-1. A Azure Portalban lépjen a **Kezdőlap**  >  **előfizetések**elemre.
+1. A Azure Portalban lépjen a **Kezdőlap**  >  **előfizetések** elemre.
 
 2. Válassza ki azt az előfizetést, amelyet az eszköz megrendeléséhez használni fog.
 
-3. Válassza az **erőforrás-szolgáltatók** lehetőséget, majd keressen rá a **Microsoft. DataBoxEdge**kifejezésre.
+3. Válassza az **erőforrás-szolgáltatók** lehetőséget, majd keressen rá a **Microsoft. DataBoxEdge** kifejezésre.
 
     ![Erőforrás-szolgáltató regisztrálása](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-02.png)
 
@@ -61,7 +61,7 @@ További információ: erőforrás- [szolgáltatók regisztrálása](azure-stack
 
 **Hiba:** Azure Portal a Azure Stack Edge Pro vagy a Data Box Gateway esetében használni kívánt előfizetést választhatja, és a következő hibaüzenetet kaphatja:
 
-*Erőforrás-szolgáltató (k): a Microsoft. DataBoxEdge nincs regisztrálva az előfizetés &lt; -előfizetés neveként &gt; , és nincs engedélye az erőforrás-szolgáltató regisztrálására az előfizetés- &lt; előfizetés neveként &gt; *.
+*Erőforrás-szolgáltató (k): a Microsoft. DataBoxEdge nincs regisztrálva az előfizetés &lt; -előfizetés neveként &gt; , és nincs engedélye az erőforrás-szolgáltató regisztrálására az előfizetés- &lt; előfizetés neveként &gt;*.
 
 **Javasolt megoldás:** Emelje fel az előfizetés-hozzáférését, vagy keressen tulajdonosi vagy közreműködői hozzáféréssel rendelkező személyt az erőforrás-szolgáltató regisztrálásához.
 
@@ -73,6 +73,6 @@ További információ: erőforrás- [szolgáltatók regisztrálása](azure-stack
 
 **Javasolt megoldás:** Ez a hiba egy meglévő Azure-szabályzat miatt fordul elő, amely blokkolja az erőforrások létrehozását. Az Azure-szabályzatokat a szervezet rendszergazdája állítja be, hogy biztosítsa az Azure-erőforrások használatának vagy létrehozásának megfelelőségét. Ha bármely ilyen házirend blokkolja Azure Stack peremhálózati erőforrás-létrehozást, forduljon a rendszergazdához az Azure-szabályzat szerkesztéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [Azure stack Edge Pro-problémák elhárításáról](azure-stack-edge-troubleshoot.md).

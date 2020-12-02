@@ -1,5 +1,5 @@
 ---
-title: A szinapszis Studio (előzetes verzió) hibáinak megoldása
+title: A Synapse Studio hibaelhárítása
 description: Az Azure szinapszis Studio hibáinak megoldása
 author: julieMSFT
 ms.service: synapse-analytics
@@ -8,18 +8,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3fe31f83ccc0dcbd2d61a7c70d40a64da08d13a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a96709c7538bda6d6b338c29dc512902e9ca2c87
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321027"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445855"
 ---
-# <a name="azure-synapse-studio-preview-troubleshooting"></a>Az Azure szinapszis Studio (előzetes verzió) hibaelhárítása
+# <a name="azure-synapse-studio-troubleshooting"></a>Az Azure szinapszis Studio hibaelhárítása
 
 Ez a hibaelhárítási útmutató útmutatást nyújt arról, hogy milyen információkat kell megadnia a hálózati kapcsolattal kapcsolatos támogatási jegyek megnyitásakor. A megfelelő információkkal a probléma gyorsabban oldható fel.
 
-## <a name="serverless-sql-pool-preview-service-connectivity-issue"></a>Kiszolgáló nélküli SQL-készlet (előzetes verzió) szolgáltatás kapcsolódási problémája
+## <a name="serverless-sql-pool-service-connectivity-issue"></a>Kiszolgáló nélküli SQL Pool szolgáltatás kapcsolódási problémája
 
 ### <a name="symptom-1"></a>1. tünet
 
@@ -61,7 +61,7 @@ Keresse meg azt az elemet, amelynek URL-oszlopa megfelel a következő mintának
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-Ahol [ *A* ] a munkaterület neve, és a "-OnDemand" lehet "-sqlod", és A [ *B* ] nevet kell megadni, például: "Master". Legfeljebb két elemnek kell lennie ugyanazzal az URL-címmel, de eltérő metódusi értékekkel; BEÁLLÍTÁSOK és POST. Győződjön meg arról, hogy a két elem "200" vagy "20x" értékkel rendelkezik az Állapot oszlopban, ahol az "x" egyetlen számjegy lehet.
+Ahol [*A*] a munkaterület neve, és a "-OnDemand" lehet "-sqlod", és A [*B*] nevet kell megadni, például: "Master". Legfeljebb két elemnek kell lennie ugyanazzal az URL-címmel, de eltérő metódusi értékekkel; BEÁLLÍTÁSOK és POST. Győződjön meg arról, hogy a két elem "200" vagy "20x" értékkel rendelkezik az Állapot oszlopban, ahol az "x" egyetlen számjegy lehet.
 
 Ha egyikük sem a "20x", sem a következőhöz tartozik:
 
@@ -101,5 +101,5 @@ Bizonyos böngészők támogatják az időbélyegek megjelenítését a "konzol"
 
 ![időbélyegző megjelenítése](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha az előző lépések nem segítenek a probléma megoldásában, [hozzon létre egy támogatási jegyet](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

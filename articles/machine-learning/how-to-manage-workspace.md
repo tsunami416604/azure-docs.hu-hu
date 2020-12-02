@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 9524577d40c3b6b65bb3c3c8ff9e257b015ed90d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012947"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447319"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning-munkaterületek létrehozása és kezelése 
 
@@ -25,12 +25,12 @@ Az igények változásának vagy az automatizálásra vonatkozó követelmények
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 * Ha a Python SDK-t használja, [telepítse az SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t.
 
 ## <a name="limitations"></a>Korlátozások
 
-* Új munkaterület létrehozásakor engedélyezheti a munkaterületnek, hogy automatikusan létrehozza a szükséges Azure-szolgáltatásokat, vagy megadjon meglévő szolgáltatásokat. A meglévő szolgáltatások megadásakor ezeknek a szolgáltatásoknak mind ugyanabban az Azure-előfizetésben kell lenniük, mint a munkaterületnek.
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
@@ -134,7 +134,7 @@ Ha problémája merül fel az előfizetés elérésekor, tekintse [meg a Azure M
    Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését. A munkaterület neve megkülönbözteti a kis-és nagybetűket.
    Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
    Erőforráscsoport | Az előfizetés valamelyik meglévő erőforráscsoportját használja, vagy adjon meg egy nevet új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást** használjuk. Meglévő erőforráscsoport használatához *közreműködői* vagy *tulajdonosi* szerepkörre van szükség.  További információ a hozzáférésről: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md).
-   Region | Válassza ki a felhasználókhoz legközelebb eső Azure-régiót, valamint az adatforrásokat a munkaterület létrehozásához.
+   Régió | Válassza ki a felhasználókhoz legközelebb eső Azure-régiót, valamint az adatforrásokat a munkaterület létrehozásához.
    | Tárfiók | A munkaterület alapértelmezett Storage-fiókja. Alapértelmezés szerint a rendszer létrehoz egy újat. |
    | Key Vault | A munkaterület által használt Azure Key Vault. Alapértelmezés szerint a rendszer létrehoz egy újat. |
    | Application Insights | A munkaterület Application Insight-példánya. Alapértelmezés szerint a rendszer létrehoz egy újat. |
@@ -155,7 +155,7 @@ Ha problémája merül fel az előfizetés elérésekor, tekintse [meg a Azure M
  
 ---
 
-### <a name="networking"></a>Hálózatkezelés  
+### <a name="networking"></a>Hálózat  
 
 > [!IMPORTANT]  
 > További információ a saját munkaterülettel rendelkező privát végpontok és virtuális hálózatok használatáról: [hálózati elkülönítés és adatvédelem](how-to-network-security-overview.md).
@@ -363,7 +363,7 @@ A [Azure Portal](https://portal.azure.com/)a törölni kívánt munkaterület te
 
 ---
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
@@ -390,6 +390,6 @@ Példák a munkaterület létrehozására:
 * [Munkaterület és számítási példány létrehozása](tutorial-1st-experiment-sdk-setup.md) Azure Portal használatával
 * [Munkaterület létrehozása a saját környezetében](tutorial-1st-experiment-sdk-setup-local.md) a Python SDK használatával
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha már rendelkezik munkaterülettel, megismerheti a [modellek betanítását és üzembe helyezését](tutorial-train-models-with-aml.md).

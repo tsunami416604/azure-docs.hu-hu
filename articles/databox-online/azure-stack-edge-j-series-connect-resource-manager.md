@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 048f2585d8e9ac1b10293083bda0900e7ce468bb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891268"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447600"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Resource Manager csatlakoztatása a Azure Stack Edge Pro-eszközön
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-A Azure Resource Manager olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetésében lévő erőforrások létrehozását, frissítését és törlését. Az Azure Stack Edge Pro-eszköz ugyanazokat a Azure Resource Manager API-kat támogatja a helyi előfizetésben lévő virtuális gépek létrehozásához, frissítéséhez és törléséhez. Ez a támogatás lehetővé teszi az eszköznek a felhővel konzisztens módon történő kezelését. 
+Az Azure Resource Manager egy olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetésben lévő erőforrások létrehozását, frissítését és törlését. Az Azure Stack Edge Pro-eszköz ugyanazokat a Azure Resource Manager API-kat támogatja a helyi előfizetésben lévő virtuális gépek létrehozásához, frissítéséhez és törléséhez. Ez a támogatás lehetővé teszi az eszköznek a felhővel konzisztens módon történő kezelését. 
 
 Ez az oktatóanyag azt ismerteti, hogyan csatlakozhat a helyi API-khoz Azure Stack Edge Pro-eszközön a Azure PowerShell használatával Azure Resource Manager segítségével.
 
@@ -124,7 +124,7 @@ A Windows-ügyfélnek, amelyen meg kell hívnia a Azure Resource Manager API-kat
 
 1. A (z *). cer* KITERJESZTÉSű der-formátumban exportált főtanúsítványt most importálni kell az ügyfélrendszer megbízható legfelső szintű hitelesítésszolgáltatók hatóságaiba. A részletes lépésekért lásd: [tanúsítványok importálása a megbízható legfelső szintű hitelesítésszolgáltatók tárolójába.](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)
 
-2. A *. pfx* fájlba exportált végpont-tanúsítványokat *. cer*fájlként kell exportálni. Ezt a *. cer* -et a rendszer a **személyes** tanúsítványtárolóba importálja. A részletes lépésekért lásd: [tanúsítványok importálása személyes tárolóba](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format).
+2. A *. pfx* fájlba exportált végpont-tanúsítványokat *. cer* fájlként kell exportálni. Ezt a *. cer* -et a rendszer a **személyes** tanúsítványtárolóba importálja. A részletes lépésekért lásd: [tanúsítványok importálása személyes tárolóba](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format).
 
 ## <a name="step-3-install-powershell-on-the-client"></a>3. lépés: a PowerShell telepítése az ügyfélen 
 
@@ -138,9 +138,9 @@ A Windows-ügyfélnek meg kell felelnie a következő előfeltételeknek:
 
     Hasonlítsa **össze a** főverziót, és győződjön meg róla, hogy 5,0 vagy újabb.
 
-    Ha elavult verzióval rendelkezik, tekintse meg a [meglévő Windows PowerShell frissítését](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) ismertető témakört.
+    Ha elavult verzióval rendelkezik, tekintse meg a [meglévő Windows PowerShell frissítését](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) ismertető témakört.
 
-    Ha nem \' rendelkezik PowerShell 5,0-lel, kövesse a [Windows PowerShell telepítését](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6).
+    Ha nem \' rendelkezik PowerShell 5,0-lel, kövesse a [Windows PowerShell telepítését](/powershell/scripting/install/installing-windows-powershell?view=powershell-6).
 
     Az alábbiakban egy példa látható a kimenetre.
 
@@ -175,11 +175,11 @@ A Windows-ügyfélnek meg kell felelnie a következő előfeltételeknek:
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-Ha a tárház nem megbízható, vagy további információra van szüksége, tekintse meg [a PowerShell-Galéria kisegítő lehetőségek ellenőrzése](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility)című témakört.
+Ha a tárház nem megbízható, vagy további információra van szüksége, tekintse meg [a PowerShell-Galéria kisegítő lehetőségek ellenőrzése](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility)című témakört.
 
 ## <a name="step-4-set-up-azure-powershell-on-the-client"></a>4. lépés: Azure PowerShell beállítása az ügyfélen 
 
-<!--1. Verify the API profile of the client and identify which version of the Azure PowerShell modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the Azure PowerShell modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
 
 1. Telepítenie kell Azure PowerShell modulokat az ügyfélen, amely együttműködik az eszközzel.
 
@@ -297,9 +297,9 @@ Ellenőrizze, hogy a végpont neve fel van-e oldva azon az ügyfélen, amelyet a
 Állítsa be a Azure Resource Manager környezetet, és ellenőrizze, hogy az eszköz Azure Resource Manager-e az ügyfél-kommunikációra. Az ellenőrzéshez hajtsa végre a következő lépéseket:
 
 
-1. A `Add-AzureRmEnvironment` parancsmaggal ellenőrizze, hogy a Azure Resource Manageron keresztüli kommunikáció megfelelően működik-e, és az API-hívások a Azure Resource Manager-443 dedikált porton keresztül haladnak-e.
+1. Az `Add-AzureRmEnvironment` parancsmag alkalmazásával gondoskodhat arról, hogy az Azure Resource Manager használatával történő kommunikáció megfelelően működjön, és az API-hívások az Azure Resource Manager részére dedikált 443-as porton keresztül haladjanak.
 
-    A `Add-AzureRmEnvironment` parancsmag végpontokat és metaadatokat hoz létre, amelyek lehetővé teszik Azure Resource Manager parancsmagok számára a Azure Resource Manager új példányával való kapcsolódást. 
+    Az `Add-AzureRmEnvironment` parancsmag végpontokat és metaadatokat hoz létre, amelyek lehetővé teszik az Azure Resource Manager-parancsmagok számára az Azure Resource Manager új példányához való csatlakozást. 
 
 
     > [!IMPORTANT]
@@ -319,7 +319,7 @@ Ellenőrizze, hogy a végpont neve fel van-e oldva azon az ügyfélen, amelyet a
     AzDBE https://management.dbe-n6hugc2ra.microsoftdatabox.com https://login.dbe-n6hugc2ra.microsoftdatabox.com/adfs/
     ```
 
-2. Állítsa be a környezetet Azure Stack Edge Pro-ként és a Azure Resource Manager-hívásokhoz használandó portot 443-ként. A környezet két módon adható meg:
+2. Környezetként az Azure Stack Edge Pro lehetőséget, az Azure Resource Manager-hívásokhoz használandó portként pedig a 443-as portot adja meg. A környezet két módon adható meg:
 
     - Állítsa be a környezetet. Írja be a következő parancsot:
 
@@ -327,13 +327,13 @@ Ellenőrizze, hogy a végpont neve fel van-e oldva azon az ügyfélen, amelyet a
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    További információkért keresse fel a [set-AzureRMEnvironment](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0).
+    További információkért keresse fel a [set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0).
 
     - Adja meg a környezetet minden olyan parancsmagnál, amelyet végrehajt. Ez biztosítja, hogy minden API-hívás a megfelelő környezetben legyen. Alapértelmezés szerint a hívások az Azure nyilvános verzióján keresztül történnek, de azt szeretné, hogy az Azure Stack Edge Pro-eszközhöz beállított környezeten át lehessen lépni.
 
     - A [AzureRM-környezetek váltásával](#switch-environments)kapcsolatos további információkért lásd:.
 
-2. Hívja meg a helyi eszközök API-jait a Azure Resource Manager kapcsolatok hitelesítéséhez. 
+2. A helyi eszköz API-jait hívja meg az Azure Resource Managerhez tartozó kapcsolatok hitelesítéséhez. 
 
     1. Ezek a hitelesítő adatok egy helyi számítógépfiók, és kizárólag API-hozzáféréshez használatosak.
 
@@ -458,6 +458,6 @@ ExtendedProperties : {}
 ```
 Ezzel átváltotta a kívánt környezetet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Virtuális gépek üzembe helyezése Azure stack Edge Pro-eszközön](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).

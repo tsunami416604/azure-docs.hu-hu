@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 9a01dabbd0a3e9d76caaead544be655b9505030d
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 55e9d2d1af863084b080c2de7833712413221050
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289204"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445645"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Felügyeleti portok védelme igény szerinti hozzáféréssel
 
@@ -89,9 +89,9 @@ A Security Centerból engedélyezheti és konfigurálhatja a JIT VM-hozzáféré
 
     Minden porthoz (egyéni és alapértelmezett) a **port hozzáadása konfiguráció** ablaktábla a következő lehetőségeket kínálja:
 
-    - **Protokoll** – a kérelem jóváhagyásakor a porton engedélyezett protokoll
-    - **Engedélyezett forrás IP** -címek – a kérés jóváhagyásakor a porton engedélyezett IP-címtartományok
-    - **Kérelmek maximális ideje** – az a maximális időtartam, ameddig egy adott portot meg lehet nyitni
+    - **Protokoll**– a kérelem jóváhagyásakor a porton engedélyezett protokoll
+    - **Engedélyezett forrás IP**-címek – a kérés jóváhagyásakor a porton engedélyezett IP-címtartományok
+    - **Kérelmek maximális ideje**– az a maximális időtartam, ameddig egy adott portot meg lehet nyitni
 
      1. Állítsa be a port biztonságát az igényeinek megfelelően.
 
@@ -300,7 +300,7 @@ Futtassa a következőt a PowerShellben:
 
     ```azurepowershell
     $JitPolicyVm1 = (@{
-        id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
+        id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
         ports=(@{
            number=22;
            endTimeUtc="2020-07-15T17:00:00.3658798Z";
@@ -363,7 +363,7 @@ A naplóbeli kereséssel betekintést nyerhet a virtuális gépek tevékenysége
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan állíthatja be és használhatja a virtuális gépek igény szerinti elérését. A JIT használatának okának megismeréséhez olvassa el a következő témakört:
 

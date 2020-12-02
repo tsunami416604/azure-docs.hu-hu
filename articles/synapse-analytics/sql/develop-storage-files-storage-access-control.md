@@ -1,6 +1,6 @@
 ---
-title: A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez (előzetes verzió)
-description: Leírja, hogy a kiszolgáló nélküli SQL-készlet (előzetes verzió) hogyan fér hozzá az Azure Storage-hoz, és Hogyan szabályozható a kiszolgáló nélküli SQL-készlet tárolási hozzáférése az Azure szinapszis Analyticsben.
+title: A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez
+description: Leírja, hogy a kiszolgáló nélküli SQL-készlet hogyan fér hozzá az Azure Storage-hoz, és Hogyan szabályozható a kiszolgáló nélküli SQL-készlet tárolási hozzáférése az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 958f371a0018d20331e73d0eabba9354614d121c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 631aaf3c6a99e093f6ed59089f7ce99803f3f054
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315733"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446626"
 ---
-# <a name="control-storage-account-access-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez (előzetes verzió) az Azure szinapszis Analyticsben
+# <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
 A kiszolgáló nélküli SQL-készlet lekérdezése közvetlenül az Azure Storage-ból olvassa be a fájlokat. Az Azure Storage-beli fájlok eléréséhez szükséges engedélyek két szinten vannak szabályozva:
 - **Tárolási szint** – a felhasználónak engedéllyel kell rendelkeznie a mögöttes tárolási fájlok eléréséhez. A tároló rendszergazdájának engedélyeznie kell az Azure AD-rendszerbiztonsági tag számára a fájlok olvasását/írását, vagy a tároló eléréséhez használni kívánt SAS-kulcs létrehozását.
@@ -33,7 +33,7 @@ A kiszolgáló nélküli SQL-készletbe bejelentkezett felhasználók számára 
 
 ### <a name="user-identity"></a>[Felhasználói identitás](#tab/user-identity)
 
-A **felhasználói identitás** , amely az "Azure ad pass-through" néven is ismert, olyan engedélyezési típus, ahol a kiszolgáló nélküli SQL-készletbe bejelentkezett Azure ad-felhasználó identitása az adatok elérésének engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak. Ahogy az alábbi táblázatban is látható, az SQL-felhasználó típusa nem támogatott.
+A **felhasználói identitás**, amely az "Azure ad pass-through" néven is ismert, olyan engedélyezési típus, ahol a kiszolgáló nélküli SQL-készletbe bejelentkezett Azure ad-felhasználó identitása az adatok elérésének engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak. Ahogy az alábbi táblázatban is látható, az SQL-felhasználó típusa nem támogatott.
 
 > [!IMPORTANT]
 > Az adatok eléréséhez rendelkeznie kell egy Storage blob-adattulajdonosi/közreműködői/olvasói szerepkörrel, amely az Ön identitását használja.
@@ -144,7 +144,7 @@ Az SQL-felhasználók nem használhatják az Azure AD-hitelesítést a tárolóh
 
 A következő parancsfájl egy kiszolgálói szintű hitelesítő adatot hoz létre, amelyet a függvények használhatnak az `OPENROWSET` Azure Storage-beli fájlok sas-token használatával való eléréséhez. Ennek a hitelesítő adatnak a létrehozásával engedélyezheti az olyan SQL-rendszerbiztonsági tag számára, amely végrehajtja `OPENROWSET` a függvényt az SAS-kulccsal védett fájlok olvasásához az Azure Storage-ban a hitelesítő adatok
 
-Az Exchange < *mystorageaccountname* > a tényleges Storage-fiók nevével, és < *mystorageaccountcontainername* > a tároló tényleges nevével:
+Az Exchange <*mystorageaccountname*> a tényleges Storage-fiók nevével, és <*mystorageaccountcontainername*> a tároló tényleges nevével:
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
@@ -318,7 +318,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE 
 GO
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alább felsorolt cikkek segítenek megismerni a különböző típusú mappák, fájltípusok és a nézetek létrehozásának és használatának a lekérdezését:
 

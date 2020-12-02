@@ -9,16 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 382ba871f95b3b36c3f819de8d582ba2c5dc358a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 20f095a058434c36373c30ed2a633db12643814d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316085"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448283"
 ---
-# <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Az Azure szinapszis Analytics Machine Learning képességei (munkaterületek előzetes verzió)
-
-[!INCLUDE [preview](../includes/note-preview.md)]
+# <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics Machine Learning képességei
 
 Az Azure szinapszis Analytics különböző gépi tanulási funkciókat kínál. Ez a cikk áttekintést nyújt arról, hogyan alkalmazhat Machine Learning az Azure szinapszis környezetében.
 
@@ -48,11 +46,11 @@ A [Azure Data Factorynak](/azure/data-factory/introduction)köszönhetően az Az
 
 A gépi tanulási folyamat fontos része az, hogy megértse az adatelemzést és vizualizációkat.
 
-Az adattárolás helyétől függően a szinapszis különféle eszközöket kínál az elemzéshez és a gépi tanuláshoz való felkészüléshez és előkészítéséhez. Az adatfeltárás első lépéseinek egyik leggyorsabb módja Apache Spark vagy szinapszis SQL Server nélküli készleteket használ közvetlenül a adat-Lake-ben lévő adaton keresztül.
+Az adattárolás helyétől függően a szinapszis különféle eszközöket kínál az elemzéshez és a gépi tanuláshoz való felkészüléshez és előkészítéséhez. Az adatfeltárás első lépéseinek egyik leggyorsabb módja Apache Spark vagy kiszolgáló nélküli SQL-készletek használata közvetlenül a Microsoft adatkezelési szolgáltatásában.
 
 * A [Apache Spark for Azure szinapszis](../spark/apache-spark-overview.md) olyan képességeket kínál, amelyek nagy mennyiségű adatátalakítást, előkészítést és feltárást biztosítanak. Ezek a Spark-készletek olyan eszközöket kínálnak, mint a PySpark/Python, a Scala és a .NET az adatfeldolgozáshoz. A hatékony vizualizációs kódtárak használatával az adatfeltárási élmény jobban megismerheti az adatelemzést. [Ismerje meg, hogyan derítheti fel és jelenítheti meg a szinapszis adatait a Spark használatával](../get-started-analyze-spark.md).
 
-* A [SZINAPSZIS SQL Server nélküli készletek](../sql/on-demand-workspace-overview.md) lehetővé teszik az adatelemzést közvetlenül a TSQL használatával. A szinapszis SQL Server nélküli készletek is kínálnak néhány beépített vizualizációt a szinapszis Studióban. [További információ a SZINAPSZIS SQL Server nélküli készletekkel kapcsolatos](../get-started-analyze-sql-on-demand.md)információk megismeréséről.
+* A [kiszolgáló nélküli SQL-készletek](../sql/on-demand-workspace-overview.md) lehetővé teszik az adatelemzést közvetlenül a TSQL használatával. A kiszolgáló nélküli SQL-készletek néhány beépített vizualizációt is kínálnak a szinapszis Studióban. [További információ az adatelemzés kiszolgáló nélküli SQL-készletekkel való megismeréséről](../get-started-analyze-sql-on-demand.md).
 
 ### <a name="modeling"></a>Modellezés
 
@@ -76,7 +74,7 @@ Az Azure Szinapszisban vagy az Azure szinapszison kívül már betanított model
 
 * Az Azure Szinapszisban a gépi tanulási modellek egy másik lehetősége az Azure szinapszis Apache Spark készletének kihasználása. A modellek betanításához használt könyvtáraktól függően a Batch-pontozási futtatásához használhat programkódot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés az Azure szinapszis Analytics szolgáltatással](../get-started.md)
 * [Munkaterület létrehozása](../get-started-create-workspace.md)

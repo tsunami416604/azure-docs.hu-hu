@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cd288926e6f7a3f454be2788479b5c9d414b167a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 68cac756a3c84d0360d475a4bf88a392e3961f1d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185487"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447557"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Oktatóanyag: adatok átvitele megosztásokon keresztül Azure Stack Edge Pro GPU-val
 
@@ -24,7 +24,7 @@ Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá és csatlakozhat a Azure S
 
 A folyamat elvégzése körülbelül 10 percet vesz igénybe.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -66,7 +66,7 @@ Megosztás létrehozásához hajtsa végre a következő eljárást:
     A kiválasztott szolgáltatás típusa attól függ, hogy milyen formátumban szeretné használni az Azure-ban az adatok használatát. Ebben a példában, mert az adatblokk-blobokat az Azure-ban szeretnénk tárolni, válassza a **blob letiltása** lehetőséget. Ha kijelöli az **oldal blobot**, ügyeljen arra, hogy az adatai 512 bájtra legyenek igazítva. A VHDX például mindig 512 bájtos igazítású.
 
    > [!IMPORTANT]
-   > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Azure Stack Edge Pro vagy Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Azure Stack Edge Pro vagy Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](../storage/blobs/storage-blob-immutability-policies-manage.md).
 
     e. Hozzon létre egy új BLOB-tárolót, vagy használjon egy meglévőt a legördülő listából. BLOB-tároló létrehozásakor adja meg a tároló nevét. A rendszer létrehoz egy tárolót a tárfiókban az újonnan létrehozott megosztás nevével, ha még nem létezik ilyen.
    
@@ -186,7 +186,7 @@ Az Azure Stack Edge Pro-eszközhöz csatlakoztatott Linux-ügyfélen hajtsa vég
 > - Egy fájl megosztásból való törlése nem törli a bejegyzést az Azure Storage-fiókban.
 > - Ha az `rsync` NFS-en keresztül történő másolásra használja, használja a `--inplace` jelzőt. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a következő Azure Stack Edge Pro-témaköröket:
 
@@ -198,5 +198,3 @@ Ha szeretné megtudni, hogyan alakíthatja át adatait Azure Stack Edge Pro hasz
 
 > [!div class="nextstepaction"]
 > [Az adatátalakítás Azure Stack Edge Pro-val](./azure-stack-edge-j-series-deploy-configure-compute.md)
-
-

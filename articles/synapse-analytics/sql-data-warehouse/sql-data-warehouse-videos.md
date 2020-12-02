@@ -11,16 +11,16 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b0b3a924008d4180c045455aecda8ec109845939
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eaf41e903f1a55dd85c6b6282617564a32087707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320996"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447821"
 ---
-# <a name="azure-synapse-analytics---dedicated-sql-pool-videos"></a>Azure szinapszis Analytics – dedikált SQL Pool-videók
+# <a name="azure-synapse-analytics---dedicated-sql-pool--formerly-sql-dw-videos"></a>Azure szinapszis Analytics – dedikált SQL-készlet (korábban SQL DW) videók
 
-Tekintse meg a legújabb dedikált SQL Pool-videókat, amelyekkel megismerheti az új képességeket és a teljesítménnyel kapcsolatos fejlesztéseket. 
+Tekintse meg a legújabb dedikált SQL-készlet (korábban SQL DW) videóit, és ismerkedjen meg az új képességekkel és a teljesítménnyel kapcsolatos fejlesztésekkel. 
 
 Első lépésként válassza az alábbi áttekintő videót, és ismerkedjen meg a dedikált SQL-készlet új frissítéseivel. Azt is megismerheti, hogyan használhatók a modern adattárház-mintázatok olyan valós forgatókönyvek kezelésére, mint például a számítógépes bűnözés.
 </br>

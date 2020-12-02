@@ -1,6 +1,6 @@
 ---
-title: PowerShell & REST API-k
-description: Keresse meg az Azure szinapszis Analytics SQL-készlet legfontosabb PowerShell-parancsmagait, beleértve az adatbázisok szüneteltetését és folytatását.
+title: PowerShell & REST API-k dedikált SQL-készlethez (korábban SQL DW)
+description: Top PowerShell-parancsmagok a dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben, beleértve az adatbázisok szüneteltetését és folytatását.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: aaf290fac71fec0ff4106e3f8a1895dd65b94e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb26ac0071a50095f8e93ce0cc25da0055bdbac8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072893"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448220"
 ---
-# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>PowerShell & REST API-k az Azure szinapszis Analytics SQL-készlethez
+# <a name="powershell--rest-apis-for-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>PowerShell & REST API-k a dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben 
 
-Az Azure szinapszis Analytics SQL-készletének számos felügyeleti feladatát Azure PowerShell parancsmagok vagy REST API-k használatával lehet felügyelni.  Az alábbiakban néhány példát láthat arra, hogyan használhatja a PowerShell-parancsokat az SQL-készlet gyakori feladatainak automatizálására.  Néhány jó REST-példákért tekintse meg a [méretezhetőség és a REST kezelése](sql-data-warehouse-manage-compute-rest-api.md)című cikket.
+Számos dedikált SQL Pool felügyeleti feladat felügyelhető Azure PowerShell parancsmagok vagy REST API-k használatával.  Az alábbiakban néhány példát láthat arra, hogyan használhatók a PowerShell-parancsok a dedikált SQL-készlet (korábban SQL DW) gyakori feladatainak automatizálására.  Néhány jó REST-példákért tekintse meg a [méretezhetőség és a REST kezelése](sql-data-warehouse-manage-compute-rest-api.md)című cikket.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -83,7 +83,7 @@ Ezek a PowerShell-parancsmagok az Azure szinapszis Analytics-adattárházban tá
 * [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 * [Felfüggesztés – AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További PowerShell-példákat a következő témakörben talál:
 

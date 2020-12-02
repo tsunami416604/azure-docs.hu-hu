@@ -9,20 +9,18 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2052e27cde3427986dbf7784dcd5dbb179c5b209
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: c315dae7e5f02f112dfdfbec02e1ebaaa5e48a9f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380929"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445782"
 ---
-# <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Mi az Azure szinapszis Analytics (munkaterületek előzetes verziója)?
-
-[!INCLUDE [preview](includes/note-preview.md)]
+# <a name="what-is-azure-synapse-analytics"></a>Mi az az Azure Synapse Analytics?
 
 A nagyvállalati elemzési szolgáltatásnak bármilyen típusú, nyers, finomított vagy nagy teljesítményű adatmennyiségen kell működnie. Ehhez általában a vállalatoknak össze kell fűzve a big data és az adattárház-technológiákat olyan összetett adatfolyamatokban, amelyek a kapcsolati tárolókban és az adattavakban tárolt adatmennyiségek között működnek. Ezeket a megoldásokat nehéz felépíteni, karbantartani és biztonságossá tenni. Az Insight-vállalatok számára szükséges összetettségi késések.
 
-Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely felgyorsítja az adattárházak és a Big Data rendszerek betekintésének idejét. Az Azure szinapszis a nagyvállalati adattárházban, a big data használt **Spark** -technológiákban, valamint az adatintegrációs és az ETL/elt- **adatcsatornákhoz** használt **SQL** -technológiákat egyesíti. A **szinapszis Studio** egységes felhasználói élményt nyújt a felügyelethez, a monitorozáshoz, a kódoláshoz és a biztonsághoz. A szinapszis szoros integrációt tartalmaz más Azure-szolgáltatásokkal, például a **PowerBI** , a **CosmosDB** és a **AzureML**.
+Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely felgyorsítja az adattárházak és a Big Data rendszerek betekintésének idejét. Az Azure szinapszis a nagyvállalati adattárházban, a big data használt **Spark** -technológiákban, valamint az adatintegrációs és az ETL/elt- **adatcsatornákhoz** használt **SQL** -technológiákat egyesíti. A **szinapszis Studio** egységes felhasználói élményt nyújt a felügyelethez, a monitorozáshoz, a kódoláshoz és a biztonsághoz. A szinapszis szoros integrációt tartalmaz más Azure-szolgáltatásokkal, mint például a **Power bi**, a **CosmosDB** és a **AzureML**.
 
 ## <a name="key-features--benefits"></a>A főbb funkciók & előnyök
 
@@ -53,7 +51,7 @@ Az Azure szinapszis eltávolítja a hagyományos technológiai korlátokat az SQ
 
 ### <a name="built-in-data-integration-via-pipelines"></a>Beépített Adatintegráció az adatcsatornákon keresztül
 
-Az Azure szinapszis beépített, ugyanazzal az adatintegrációs motorral és tapasztalatokkal rendelkezik, mint a Azure Data Factory, ami lehetővé teszi, hogy a szinapszis-elemzések elhagyása nélkül hozzon létre gazdag, méretezhető ETL-folyamatokat.
+Az Azure szinapszis a Azure Data Factoryával azonos adatintegrációs motorral és tapasztalatokkal rendelkezik, így az Azure szinapszis Analytics használata nélkül hozhat létre gazdag, az ETL-alapú adatátviteli folyamatokat.
 
 * Adatok beolvasása 90 és adatforrásból
 * Code-Free ETL adatáramlási tevékenységekkel
@@ -80,7 +78,7 @@ A **szinapszis Studio** az a webes felület, amely az adatmérnökökkel együtt
 - [Stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse): forduljon a fejlesztési kérdésekhez.
 - [A Microsoft Q&egy kérdést tartalmazó oldalt](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html): technikai kérdéseket tehet fel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés az Azure szinapszis Analytics szolgáltatással](get-started.md)
 * [Munkaterület létrehozása](quickstart-create-workspace.md)

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 76d8c84fd1dd403c88e8261cf49e3620f3a6ec14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18de1f445990f167041c755aa5e7d909819319b1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903614"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446467"
 ---
 # <a name="azure-stack-edge-pro-power-cord-specifications"></a>Azure Stack Edge Pro tápkábel specifikációi
 
@@ -76,7 +76,7 @@ A következő táblázat segítségével megkeresheti a régiójának megfelelő
 |India|250|10|IS694 3x 0,75|1293|C13|1830|
 |Indonézia|250|10|H05Z1Z1 3x 0,75|CEE 7|C13|1830|
 |Írország|250|5|H05VV-F 3x 0,75|BS 1363/SS145/A|C13|1800|
-|Izrael|250|2,5|H05VV-F 3x 1.00|SI 32|C13|2000|
+|Izrael|250|2.5|H05VV-F 3x 1.00|SI 32|C13|2000|
 |Olaszország|250|10|H05VV-F 3x 0,75|CEI 23-50|C13|1800|
 |Jamaica|125|10|SVE 18/3|NÉMA 5 – 15P|C13|1830|
 |Japán|125|15|VCTF 3x 2,00|JIS C 8303|C13|2300|
@@ -156,6 +156,6 @@ A következő táblázat segítségével megkeresheti a régiójának megfelelő
 |Zambia|250|5|H05VV-F 3x 0,75|BS 1363/SS145/A|C13|1800|
 |Zimbabwe|250|5|H05VV-F 3x 0,75|BS 1363/SS145/A|C13|1800|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Azure Stack Edge Pro technikai specifikációi](data-box-edge-technical-specifications-compliance.md)
+[Azure Stack Edge Pro technikai specifikációi](./azure-stack-edge-technical-specifications-compliance.md)

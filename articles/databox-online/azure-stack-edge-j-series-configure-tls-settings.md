@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 9a6b0910fcfd2a632f2520a2fe683b15592017cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15e2d7a144b54f443b8298b20dbfacf78a50f9e1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891179"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447553"
 ---
 # <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>A TLS 1,2 konfigurálása Azure Stack Edge Pro-eszközt elérő Windows-ügyfeleken
 
@@ -38,11 +38,11 @@ Az alábbi lépéseket követve konfigurálja a TLS 1,2-t az ügyfélen.
 
 Ha a környezethez az egész rendszerre kiterjedő TLS 1,2-et kívánja beállítani, kövesse a következő dokumentumokban található útmutatást:
 
-- [Általános – a TLS 1,2 engedélyezése](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)
-- [A TLS 1,2 engedélyezése az ügyfeleken](https://docs.microsoft.com/configmgr/core/plan-design/security/enable-tls-1-2-client)
-- [A TLS 1,2 engedélyezése a hely kiszolgálóin és a távoli hely rendszerein](https://docs.microsoft.com/configmgr/core/plan-design/security/enable-tls-1-2-server)
-- [Protokollok a TLS/SSL-ben (Schannel SSP)](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-ecc-curve-order)
-- [Titkosító csomagok](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12): kifejezetten a [TLS titkosítási csomag megrendelésének konfigurálása](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order) , győződjön meg arról, hogy az aktuális titkosítási csomagokat és az előtagot a következő listából kilistázza:
+- [Általános – a TLS 1,2 engedélyezése](/windows-server/security/tls/tls-registry-settings#tls-12)
+- [A TLS 1,2 engedélyezése az ügyfeleken](/configmgr/core/plan-design/security/enable-tls-1-2-client)
+- [A TLS 1,2 engedélyezése a hely kiszolgálóin és a távoli hely rendszerein](/configmgr/core/plan-design/security/enable-tls-1-2-server)
+- [Protokollok a TLS/SSL-ben (Schannel SSP)](/windows-server/security/tls/manage-tls#configuring-tls-ecc-curve-order)
+- [Titkosító csomagok](/windows-server/security/tls/tls-registry-settings#tls-12): kifejezetten a [TLS titkosítási csomag megrendelésének konfigurálása](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order) , győződjön meg arról, hogy az aktuális titkosítási csomagokat és az előtagot a következő listából kilistázza:
 
     - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
     - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
@@ -68,10 +68,10 @@ Ha a környezethez az egész rendszerre kiterjedő TLS 1,2-et kívánja beállí
     New-ItemProperty -Path "$HklmSoftwarePath\Policies\Microsoft\Cryptography\Configuration\SSL\00010002" -Name "EccCurves" -PropertyType MultiString -Value @("NistP256", "NistP384")
     ```
     
-    - [Állítsa be a minimális RSA-kulcs Exchange-méretét 2048-](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#keyexchangealgorithm---client-rsa-key-sizes)ra.
+    - [Állítsa be a minimális RSA-kulcs Exchange-méretét 2048-](/windows-server/security/tls/tls-registry-settings#keyexchangealgorithm---client-rsa-key-sizes)ra.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Kapcsolódás Azure Resource Managerhoz](azure-stack-edge-j-series-connect-resource-manager.md)

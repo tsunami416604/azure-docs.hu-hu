@@ -1,6 +1,6 @@
 ---
-title: Azure szinapszis Analytics (korábban SQL DW) architektúrája
-description: Ismerje meg, hogy az Azure szinapszis Analytics (korábbi nevén SQL DW) hogyan ötvözi az elosztott lekérdezés-feldolgozási képességeket az Azure Storage szolgáltatással a nagy teljesítmény és méretezhetőség érdekében.
+title: Dedikált SQL-készlet (korábban SQL DW) architektúrája
+description: Ismerje meg, hogy az Azure szinapszis Analytics dedikált SQL-készlete (korábban SQL DW) hogyan ötvözi az elosztott lekérdezés-feldolgozási képességeket az Azure Storage szolgáltatással a nagy teljesítmény és méretezhetőség érdekében.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,49 +10,44 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d32aa011e9e816f97b050d43f9558af0cf82e90
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 45c7f89f773095a102429c07f7441223de3c2dec
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319650"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448269"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure szinapszis Analytics (korábban SQL DW) architektúrája
+# <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Dedikált SQL-készlet (korábban SQL DW) architektúra az Azure szinapszis Analyticsben
 
-Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben. Az Azure Synapse egységes felületen egyesíti ezt a két területet az adatok betöltéséhez, előkészítéséhez, kezeléséhez és azonnali szolgáltatásához az üzleti intelligencia és gépi tanulási igények szerint.
+Az Azure Synapse Analytics egy elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy a feltételek alapján lekérdezze az adatait.
 
- Az Azure szinapszis négy összetevőből áll:
+> [!NOTE]
+>Ismerje meg az [Azure szinapszis Analytics dokumentációját](../overview-what-is.md).
+>
 
-- Szinapszis SQL: teljes T-SQL-alapú elemzés
-
-  - Dedikált SQL-készlet (fizetés/DWU kiépítve) – általánosan elérhető
-  - Kiszolgáló nélküli SQL-készlet (fizetés/TB feldolgozott) – (előzetes verzió)
-- Spark: mélyen integrált Apache Spark (előzetes verzió)
-- Adatintegráció: hibrid Adatintegráció (előzetes verzió)
-- Studio: egyesített felhasználói élmény.  (Előzetes verzió)
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
 ## <a name="synapse-sql-architecture-components"></a>Szinapszis SQL Architecture-összetevők
 
-A [SZINAPSZIS SQL](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) egy kibővített architektúrát használ a számítási folyamatok több csomóponton történő elosztására. A skála egysége az [adattárház-egységként](what-is-a-data-warehouse-unit-dwu-cdwu.md)ismert számítási teljesítmény absztrakciója. A számítás elkülönül a tárterülettől, ami lehetővé teszi a számítások egymástól független skálázását a rendszeren lévő adatoktól függetlenül.
+A [DEDIKÁLT SQL-készlet (korábbi nevén SQL DW)](sql-data-warehouse-overview-what-is.md) egy kibővített architektúrát használ az adatszámítási feldolgozás több csomóponton keresztüli elosztásához. A skála egysége az [adattárház-egységként](what-is-a-data-warehouse-unit-dwu-cdwu.md)ismert számítási teljesítmény absztrakciója. A számítás elkülönül a tárterülettől, ami lehetővé teszi a számítások egymástól független skálázását a rendszeren lévő adatoktól függetlenül.
 
-![A Synapse SQL architektúrája](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
+![Dedikált SQL-készlet (korábban SQL DW) architektúrája](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-A szinapszis SQL egy node-alapú architektúrát használ. Az alkalmazások a T-SQL-parancsokat egy vezérlő csomóponthoz csatlakoznak, amely a szinapszis SQL beléptetésének egyetlen pontja. A vezérlő csomópont futtatja az elosztott lekérdezési motort, amely optimalizálja a párhuzamos feldolgozásra irányuló lekérdezéseket, majd a műveleteket a számítási csomópontokon továbbítja a munkájukat párhuzamosan.
+A dedikált SQL-készlet (korábbi nevén SQL DW) node-alapú architektúrát használ. Az alkalmazások a T-SQL-parancsokat egy vezérlő csomóponthoz kötik. A vezérlő csomópont futtatja az elosztott lekérdezési motort, amely optimalizálja a párhuzamos feldolgozásra irányuló lekérdezéseket, majd a műveleteket a számítási csomópontokon továbbítja a munkájukat párhuzamosan.
 
 A számítási csomópontok az összes felhasználói adatot az Microsoft Azure Storage-ban tárolják, és futtatják a párhuzamos lekérdezéseket. Az adatáthelyezési szolgáltatás (DMS) egy rendszerszintű belső szolgáltatás, amely szükség szerint áthelyezi az adatokat a csomópontok között a lekérdezések párhuzamos futtatásához és pontos eredmények visszaadásához.
 
-A leválasztott tárolással és számítással a szinapszis SQL-készlet használatakor a következőket teheti:
+A leválasztott tárolással és számítással a dedikált SQL-készlet (korábbi nevén SQL DW) használata esetén a következőket teheti:
 
 - A tárolási igényektől függetlenül a számítási kapacitás egymástól függetlenül méretezhető.
-- Az adatok áthelyezése nélkül növelheti vagy csökkentheti a számítási teljesítményt egy SQL-készleten (adatraktáron) belül.
+- Az adatok áthelyezése nélkül növelheti vagy csökkentheti a számítási teljesítményt egy dedikált SQL-készletben (korábban SQL DW) belül.
 - Szüneteltetheti a számítási kapacitást az adatok megőrzésével, hogy csak a tárterületért kelljen fizetnie.
 - Működési időben újra aktiválhatja a számítási kapacitást.
 
 ### <a name="azure-storage"></a>Azure Storage
 
-A szinapszis SQL kihasználja az Azure Storage-t a felhasználói adatai biztonságának megőrzése érdekében.  Mivel az Azure Storage tárolja és kezeli az adatait, külön díjat számítunk fel a tárterület-felhasználásért. Az adat felosztása a rendszer teljesítményének **optimalizálása érdekében történik** . Kiválaszthatja, hogy melyik horizontális Felskálázási mintát kell használnia az adatterjesztéshez a tábla meghatározásakor. Ezek a horizontális skálázási minták támogatottak:
+A dedikált SQL Pool SQL (korábbi nevén SQL DW) az Azure Storage-t használja a felhasználói adat biztonságának megőrzése érdekében.  Mivel az Azure Storage tárolja és kezeli az adatait, külön díjat számítunk fel a tárterület-felhasználásért. Az adat felosztása a rendszer teljesítményének **optimalizálása érdekében történik** . Kiválaszthatja, hogy melyik horizontális Felskálázási mintát kell használnia az adatterjesztéshez a tábla meghatározásakor. Ezek a horizontális skálázási minták támogatottak:
 
 - Kivonat
 - Ciklikus időszeletelés
@@ -74,9 +69,9 @@ Az adatátviteli szolgáltatás (DMS) az adatátviteli technológia, amely koord
 
 ## <a name="distributions"></a>Disztribúciók
 
-Az elosztás a tárolás és az elosztott adatokon futtatott párhuzamos lekérdezések feldolgozásának alapegysége. Ha a szinapszis SQL egy lekérdezést futtat, a munka 60 kisebb, párhuzamosan futó lekérdezésekre oszlik.
+A elosztás a tárolás és az elosztott adatokon futtatott párhuzamos lekérdezések feldolgozásának alapegysége. Ha a szinapszis SQL egy lekérdezést futtat, a munka 60 kisebb, párhuzamosan futó lekérdezésekre oszlik.
 
-Az 60-es kisebb lekérdezések az egyik adateloszláson futnak. Minden számítási csomópont egy vagy több 60-disztribúciót kezel. A maximális számítási erőforrásokkal rendelkező SQL-készletekhez számítási csomópontok egyetlen eloszlással rendelkeznek. A minimális számítási erőforrásokkal rendelkező SQL-készletek egy számítási csomóponton lévő összes disztribúcióval rendelkeznek.  
+Az 60-es kisebb lekérdezések az egyik adateloszláson futnak. Minden számítási csomópont egy vagy több 60-disztribúciót kezel. A maximális számítási erőforrásokkal rendelkező dedikált SQL-készlet (korábban SQL DW) számítási csomóponton egyetlen eloszlással rendelkezik. A minimális számítási erőforrásokkal rendelkező dedikált SQL-készlet (korábban SQL DW) egy számítási csomóponton minden eloszlással rendelkezik.  
 
 ## <a name="hash-distributed-tables"></a>Kivonat alapján elosztott táblák
 
@@ -110,9 +105,9 @@ Az alábbi ábrán egy olyan replikált tábla látható, amely az első eloszl�
 
 ![Replikált tábla](./media/massively-parallel-processing-mpp-architecture/replicated-table.png "Replikált tábla")
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy már ismeri az Azure Szinapszisot, megtudhatja, hogyan [hozhat létre gyorsan SQL-készletet](create-data-warehouse-portal.md) , és hogyan [tölthető be a mintaadatok](load-data-from-azure-blob-storage-using-polybase.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), amikor az új fogalmakkal ismerkedik. Vagy tekintse meg a többi Azure szinapszis-erőforrást.  
+Most, hogy már ismeri az Azure Szinapszisot, megtudhatja, hogyan [hozhat létre gyorsan egy DEDIKÁLT SQL-készletet (korábban SQL DW)](create-data-warehouse-portal.md) , és hogyan [tölthet be mintavételi információkat](load-data-from-azure-blob-storage-using-polybase.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), amikor az új fogalmakkal ismerkedik. Vagy tekintse meg a többi Azure szinapszis-erőforrást.  
 
 - [Ügyfelek sikertörténetei](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Blogok](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)

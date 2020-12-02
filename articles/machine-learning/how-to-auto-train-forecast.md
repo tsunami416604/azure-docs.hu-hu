@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 57b54fbe20df4eb74ee17c7b5ac83d773114463b
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8c6a27f0cfaafe7e6c1181651e672d0e828af855
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437371"
+ms.locfileid: "96444482"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
@@ -128,7 +128,7 @@ Az automatizált gépi tanulás automatikusan különböző modelleket és algor
 >[!Tip]
 > A rendszer a hagyományos regressziós modelleket is teszteli a javaslatrendszer részeként az előrejelzési kísérletekhez. A modellek teljes listájáért tekintse meg a [támogatott modell táblázatát](how-to-configure-auto-train.md#supported-models) . 
 
-Modellek| Leírás | Előnyök
+Modellek| Description | Előnyök
 ----|----|---
 Próféta (előzetes verzió)|A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A modell kihasználása érdekében telepítse helyileg a használatával `pip install fbprophet` . | Pontos & gyors, robusztus a kiugró értékek, a hiányzó adatmennyiségek és az idősorozat drámai változásai.
 Automatikus ARIMA (előzetes verzió)|Az automatikusan újradegresszív, integrált mozgóátlag (ARIMA) a legjobbat hajtja végre, ha az adatok állomáson vannak. Ez azt jelenti, hogy a statisztikai tulajdonságok, például a középérték és a variancia állandó a teljes készleten. Ha például egy érme tükrözését hajtja végre, akkor a fejek megszerzésének valószínűsége 50% lesz, függetlenül attól, hogy a mai, a holnapi vagy a következő évre fordít-e.| Kiválóan használható a univariate sorozatokhoz, mivel a korábbi értékeket a jövőbeli értékek előrejelzésére használjuk.
@@ -154,7 +154,7 @@ A következő táblázat összefoglalja ezeket a további paramétereket. A szin
 
 
 A következő kód, 
-* Kihasználja az [`ForecastingParameters`](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) osztályt, hogy meghatározza az előrejelzési paramétereket a kísérlet betanításához
+* Kihasználja az [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) osztályt, hogy meghatározza az előrejelzési paramétereket a kísérlet betanításához
 * Beállítja a `time_column_name` értékét az `day_datetime` adatkészlet mezőjére. 
 * A paramétert adja meg a következőhöz: `time_series_id_column_names` `"store"` . Ez biztosítja, hogy az **adatsorozatok két különálló csoportja** legyen létrehozva. egyet az A és A B áruházhoz.
 * A 50 értékre állítja a `forecast_horizon` teljes tesztelési készlet előrejelzését. 

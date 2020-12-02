@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 212e5fb62043c2ffe2b8876249a6aad1d224411d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3d7e6357fd8f1091509cbf27875c028d3af310cb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685851"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445918"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure Portal használatával
 
@@ -45,13 +45,13 @@ A titkos kód a tárolóhoz való hozzáadásához kövesse az alábbi lépések
 1. Kattintson a **Létrehozás/Importálás** gombra.
 1. A **Titkos kód létrehozása** képernyőn válassza az alábbi értékeket:
     - **Feltöltési beállítások**: Manuális.
-    - **Név**: írja be a titok nevét. A titkos névnek egyedinek kell lennie egy Key Vault belül. A névnek 1-127 karakterből álló karakterláncnak kell lennie, betűvel kell kezdődnie, és csak 0-9, a-z, A-Z és-. További információ a névadásról: [Key Vault objektumok, azonosítók és verziószámozás](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning)
+    - **Név**: írja be a titok nevét. A titkos névnek egyedinek kell lennie egy Key Vault belül. A névnek 1-127 karakterből álló karakterláncnak kell lennie, betűvel kell kezdődnie, és csak 0-9, a-z, A-Z és-. További információ a névadásról: [Key Vault objektumok, azonosítók és verziószámozás](../general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)
     - **Érték**: adja meg a titok értékét. Key Vault API-k elfogadják és visszaadják a titkos értékeket karakterláncként. 
     - A többi értéket hagyja az alapértelmezett értéken. Kattintson a **Létrehozás** gombra.
 
 Miután megérkezett az üzenet arról, hogy a titkos kulcs sikeresen létrejött, kattintson rá a listában. 
 
-További információ a titkok attribútumairól: [Tudnivalók a Azure Key Vault titkokról](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets)
+További információ a titkok attribútumairól: [Tudnivalók a Azure Key Vault titkokról](./about-secrets.md)
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>Titkos kód beolvasása Key Vault
 
@@ -75,9 +75,9 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 3. Az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
 > [!NOTE]
-> Fontos megjegyezni, hogy a titkos kulcs, a kulcs, a tanúsítvány vagy a kulcstartó törlése után a rendszer a 7 – 90 naptári nap konfigurálható időtartamára helyreállítható marad. Ha nincs megadva konfiguráció, az alapértelmezett helyreállítási időszak 90 napra lesz állítva. Ez elegendő időt biztosít a felhasználóknak a véletlen titkos törlésre és a válaszadásra. A Key vaultok és a Key Vault-objektumok törlésével és helyreállításával kapcsolatos további információkért lásd: [Azure Key Vault-törlés – áttekintés](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)
+> Fontos megjegyezni, hogy a titkos kulcs, a kulcs, a tanúsítvány vagy a kulcstartó törlése után a rendszer a 7 – 90 naptári nap konfigurálható időtartamára helyreállítható marad. Ha nincs megadva konfiguráció, az alapértelmezett helyreállítási időszak 90 napra lesz állítva. Ez elegendő időt biztosít a felhasználóknak a véletlen titkos törlésre és a válaszadásra. A Key vaultok és a Key Vault-objektumok törlésével és helyreállításával kapcsolatos további információkért lásd: [Azure Key Vault-törlés – áttekintés](../general/soft-delete-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy Key Vault, és egy titkos kulcsot tárolt benne. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 

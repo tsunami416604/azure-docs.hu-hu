@@ -8,16 +8,16 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: f5d816b3d44a6fadd8dd462a14e62de4cdac2a00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6585718a549c0e0a6eac1ab50788798e1021fef9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995930"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446820"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>A megoldás-gyorsító üzembe helyezése a azureiotsolutions.com webhely használatával
 
-Az Azure IoT megoldás-gyorsítók üzembe helyezhetők az Azure-előfizetésben a [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators)-ből. A AzureIoTSolutions.com a Microsoft nyílt forráskódú és partneri megoldásának gyorssegédeit is üzemelteti. Ezek a megoldás-gyorsítók az [Azure IoT hivatkozási architektúrával](https://aka.ms/iotrefarchitecture)vannak összehangolva. A hely használatával gyorsan üzembe helyezhet egy megoldás-gyorssegédet bemutatóként vagy éles környezetben.
+Az Azure IoT megoldás-gyorsítók üzembe helyezhetők az Azure-előfizetésben a [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators)-ből. A AzureIoTSolutions.com a Microsoft nyílt forráskódú és partneri megoldásának gyorssegédeit is üzemelteti. Ezek a megoldás-gyorsítók az [Azure IoT hivatkozási architektúrával](/azure/architecture/reference-architectures/iot)vannak összehangolva. A hely használatával gyorsan üzembe helyezhet egy megoldás-gyorssegédet bemutatóként vagy éles környezetben.
 
 ![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
 

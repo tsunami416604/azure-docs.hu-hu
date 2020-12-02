@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 745d0df07b6d0d01acf0d564df8c242e16f3f56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b49659f67e779b6eb8079492b47fef9419ca6b1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890984"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447509"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Egyéni virtuálisgép-rendszerképek létrehozása az Azure Stack Edge Pro-eszközhöz
 
@@ -42,7 +42,7 @@ A következő lépések végrehajtásával hozzon létre egy Windows rendszerű 
     
         `c:\windows\system32\sysprep\sysprep.exe /oobe /generalize /shutdown /mode:vm`
    
-       A [Sysprep (rendszer-előkészítés) áttekintését](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)is megtekintheti.
+       A [Sysprep (rendszer-előkészítés) áttekintését](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)is megtekintheti.
 
 Ezzel a VHD-vel most létrehozhatja és üzembe helyezheti a virtuális gépet a Azure Stack Edge Pro-eszközön.
 
@@ -71,14 +71,14 @@ Hozzon létre egy linuxos virtuálisgép-rendszerképet a következő lépésekk
 
 Ezzel a VHD-vel most létrehozhatja és üzembe helyezheti a virtuális gépet a Azure Stack Edge Pro-eszközön. A következő két Azure Marketplace-rendszerkép használatával hozhat létre linuxos egyéni rendszerképeket:
 
-|Elemnév  |Leírás  |Publisher  |
+|Elemnév  |Description  |Publisher  |
 |---------|---------|---------|
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Az Ubuntu Server a világ legnépszerűbb Linux-környezete.|Canonical|
 |[Debian 8 "Megbéklyóz"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |A Debian GNU/Linux az egyik legnépszerűbb Linux-disztribúció.     |credativ|
 
-Az Azure Marketplace rendszerképeinek teljes listáját, amelyek működhetnek (nem teszteltek), látogasson el az [Azure marketplace Azure stack hub számára elérhető elemeire](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910).
+Az Azure Marketplace rendszerképeinek teljes listáját, amelyek működhetnek (nem teszteltek), látogasson el az [Azure marketplace Azure stack hub számára elérhető elemeire](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Virtuális gépek üzembe helyezése Azure stack Edge Pro-eszközön](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).

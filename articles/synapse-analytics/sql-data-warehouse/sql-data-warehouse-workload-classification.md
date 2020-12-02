@@ -1,6 +1,6 @@
 ---
-title: Számítási feladatok besorolása
-description: Útmutató a besorolás használatához az Azure szinapszis Analytics-lekérdezések egyidejűségi, fontossági és számítási erőforrásainak kezeléséhez.
+title: Számítási feladatok besorolása dedikált SQL-készlethez
+description: Útmutató a besorolás használatához a lekérdezési Egyidejűség, a fontosság és a számítási erőforrások kezelésére a dedikált SQL-készlethez az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6b66b8a9fb3b5eb7dc78c00ba084e8609877dec7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bf19e2d1674d0a0c2102280b28b5549505c1dfab
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323885"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447768"
 ---
-# <a name="azure-synapse-analytics-workload-classification"></a>Azure szinapszis Analitika – számítási feladatok besorolása
+# <a name="workload-classification-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet számítási feladatainak besorolása az Azure szinapszis Analyticsben
 
 Ez a cikk ismerteti a munkaterhelés-csoportok hozzárendelési folyamatát, valamint a beérkező kérések fontosságát a dedikált SQL-készletekkel az Azure Szinapszisban.
 
-## <a name="classification"></a>Besorolás
+## <a name="classification"></a>Osztályozás
 
 > [!Video https://www.youtube.com/embed/QcCRBAhoXpM]
 
@@ -36,7 +36,7 @@ Nem minden utasítás van besorolva, mert nincs szükség erőforrásra, vagy fo
 
 ## <a name="classification-process"></a>Besorolási folyamat
 
-Az Azure Szinapszisban elérhető dedikált SQL-készlet besorolása ma a felhasználók olyan szerepkörhöz való hozzárendelésével érhető el, amely a hozzá tartozó, [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használatával hozzárendelt erőforrás-osztállyal rendelkezik. Az erőforrás-osztályba való bejelentkezésen túli kérések jellemzésének lehetősége korlátozott ezzel a képességgel. Most már elérhető a számítási [feladatok](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) besorolása szintaxissal, amely a besoroláshoz használható.  Ezzel a szintaxissal a dedikált SQL Pool-felhasználók is kioszthatják a fontosságot, és hogy mennyi rendszererőforrás van hozzárendelve egy kérelemhez a `workload_group` paraméter használatával.
+A dedikált SQL-készlet besorolása ma érhető el, ha olyan szerepkörhöz rendel hozzá felhasználókat, amelyhez hozzá van rendelve egy megfelelő erőforrás-osztály [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használatával. Az erőforrás-osztályba való bejelentkezésen túli kérések jellemzésének lehetősége korlátozott ezzel a képességgel. Most már elérhető a számítási [feladatok](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) besorolása szintaxissal, amely a besoroláshoz használható.  Ezzel a szintaxissal a dedikált SQL Pool-felhasználók is kioszthatják a fontosságot, és hogy mennyi rendszererőforrás van hozzárendelve egy kérelemhez a `workload_group` paraméter használatával.
 
 > [!NOTE]
 > A besorolást a rendszer a kérelmek alapján értékeli ki. Egy munkamenetben több kérelem is besorolva különböző módon.
@@ -90,7 +90,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','st
 sp_droprolemember '[Resource Class]', membername
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az osztályozó létrehozásával kapcsolatos további információkért lásd a [munkaterhelés-osztályozó létrehozása (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)című témakört.  
 - Tekintse meg a számítási feladatok besorolásának létrehozásával kapcsolatos útmutatót a számítási [feladatok besorolása](quickstart-create-a-workload-classifier-tsql.md)című témakörben.

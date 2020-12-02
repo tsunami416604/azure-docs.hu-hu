@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3bdf234156c55e3c30df74c672866a118fd2f4f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: ec62724b7aedbad4111a4882dd89f86d116b2a96
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323506"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448055"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Táblák tervezése dedikált SQL-készlettel az Azure szinapszis Analytics szolgáltatásban
 
@@ -47,7 +47,7 @@ A táblák Szervezetének a dedikált SQL-készletben való megjelenítéséhez 
 | Wideworldimportersdw adattárházat táblázat  | Tábla típusa | Dedikált SQL-készlet |
 |:-----|:-----|:------|:-----|
 | City | Dimenzió | WWI. DimCity |
-| Rendelés | Fact | WWI. FactOrder |
+| Sorrend | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Tábla megőrzése
 
@@ -111,7 +111,7 @@ A tábla kategóriája általában meghatározza, hogy melyik lehetőséget kell
 
 ## <a name="table-partitions"></a>Tábla partíciói
 
-A particionált táblák az adattartományok szerint tárolják és végrehajtják a táblázat sorain lévő műveleteket. Egy tábla lehet például nap, hónap vagy év szerint particionálva. Javíthatja a lekérdezési teljesítményt a partíciók eltávolításán keresztül, ami korlátozza a lekérdezési vizsgálatát egy partíción belül. Az adattárolást partíciós váltással is megtarthatja. Mivel az Azure szinapszis Analyticsben lévő adat már el van terjesztve, túl sok partíció lassítja a lekérdezések teljesítményét. További információ: [particionálási útmutató](sql-data-warehouse-tables-partition.md).  Ha a partíció nem üres táblázatos partícióra vált, érdemes lehet az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás TRUNCATE_TARGET kapcsolóját használni, ha a meglévő adatok csonkítva lesznek. Az alábbi kód az átalakított napi adatértékeket a SalesFact felülírja a meglévő összes adattal.
+A particionált táblák az adattartományok szerint tárolják és végrehajtják a táblázat sorain lévő műveleteket. Egy tábla lehet például nap, hónap vagy év szerint particionálva. Javíthatja a lekérdezési teljesítményt a partíciók eltávolításán keresztül, ami korlátozza a lekérdezési vizsgálatát egy partíción belül. Az adattárolást partíciós váltással is megtarthatja. Mivel az SQL-készletben lévő adat már el van terjesztve, túl sok partíció lassítja a lekérdezések teljesítményét. További információ: [particionálási útmutató](sql-data-warehouse-tables-partition.md).  Ha a partíció nem üres táblázatos partícióra vált, érdemes lehet az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás TRUNCATE_TARGET kapcsolóját használni, ha a meglévő adatok csonkítva lesznek. Az alábbi kód az átalakított napi adatértékeket a SalesFact felülírja a meglévő összes adattal.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -144,7 +144,7 @@ Az elsődleges kulcs csak akkor támogatott, ha nem FÜRTÖZÖTT és nem KÉNYSZ
 
 Táblát új üres táblaként is létrehozhat. Létrehozhat és fel is tölthet egy táblát a SELECT utasítás eredményeivel. A következő a T-SQL-parancsok egy tábla létrehozásához.
 
-| T-SQL-utasítás | Leírás |
+| T-SQL-utasítás | Description |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Egy üres táblát hoz létre a tábla összes oszlopának és beállításának definiálásával. |
 | [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Létrehoz egy külső táblát. A tábla definícióját a dedikált SQL-készlet tárolja. A tábla az Azure Blob Storage-ban vagy Azure Data Lake Storeban tárolódik. |
@@ -373,6 +373,6 @@ ORDER BY    distribution_id
 ;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután létrehozta a táblákat a dedikált SQL-készlethez, a következő lépés az adat betöltése a táblába.  A betöltési oktatóanyagért lásd: [az adattöltés DEDIKÁLT SQL-készletbe](load-data-wideworldimportersdw.md).

@@ -1,6 +1,6 @@
 ---
-title: Fájlok elérése a tárolóban a kiszolgáló nélküli SQL-készletben (előzetes verzió)
-description: Leírja a tárolási fájlok lekérdezését a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával az Azure szinapszis Analyticsben.
+title: Fájlok elérése a tárolóban a kiszolgáló nélküli SQL-készletben
+description: Leírja a tárolási fájlok lekérdezését a kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64148cd8fd467be6a5f09ee723e230bdc8181d2d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685681"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446576"
 ---
-# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Külső tárterület elérése az Azure szinapszis Analytics kiszolgáló nélküli SQL-készletével (előzetes verzió)
+# <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Külső tárterület elérése kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
 Ez a dokumentum azt ismerteti, hogyan lehet a felhasználók beolvasni az Azure Storage-ban tárolt fájlok adatait a kiszolgáló nélküli SQL-készletben. A felhasználók a következő beállításokkal férhetnek hozzá a tárolóhoz:
 
@@ -188,7 +188,7 @@ A következő táblázat a fent felsorolt műveletekhez szükséges engedélyeke
 | KIVÁLASZTÁS KÜLSŐ TÁBLÁBÓL | `SELECT TABLE` és `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | CETAS | Tábla létrehozása:, `CREATE TABLE` , `ALTER ANY SCHEMA` `ALTER ANY DATA SOURCE` , és `ALTER ANY EXTERNAL FILE FORMAT` . Az adat olvasása: `ADMINISTER BULK OPERATIONS` vagy a `REFERENCES CREDENTIAL` `SELECT TABLE` lekérdezés + R/W engedélyének minden táblája/nézete/funkciója a Storage-ban |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már készen áll a folytatásra a következő cikkekkel:
 

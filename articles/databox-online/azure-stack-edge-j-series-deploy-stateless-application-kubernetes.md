@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6356089daed02270a14903639afee8001153b195
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890739"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447377"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes állapot nélküli alkalmazás üzembe helyezése az Azure Stack Edge Pro GPU-eszközön a kubectl használatával
 
@@ -25,7 +25,7 @@ A Kubernetes-fürt létrehozása és a `kubectl` parancssori eszköz használata
 
 - A bejelentkezési hitelesítő adatok egy 1 csomópontos Azure Stack Edge Pro-eszközhöz tartoznak.
 
-- A Windows PowerShell 5,0-es vagy újabb verziója Windows-ügyfélre van telepítve az Azure Stack Edge Pro-eszköz eléréséhez. Bármely más ügyfél támogatott operációs rendszerrel is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a [Windows PowerShell telepítését](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+- A Windows PowerShell 5,0-es vagy újabb verziója Windows-ügyfélre van telepítve az Azure Stack Edge Pro-eszköz eléréséhez. Bármely más ügyfél támogatott operációs rendszerrel is rendelkezhet. Ez a cikk a Windows-ügyfelek használatakor követendő eljárást ismerteti. A Windows PowerShell legújabb verziójának letöltéséhez nyissa meg a [Windows PowerShell telepítését](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
 
 - A számítási funkció engedélyezve van az Azure Stack Edge Pro-eszközön. A számítás engedélyezéséhez lépjen a **számítási** lapra az eszköz helyi felhasználói felületén. Ezután válasszon ki egy hálózati adaptert, amelyet engedélyezni szeretne a számítási feladatokhoz. Válassza az **Engedélyezés** lehetőséget. A számítási eredmények lehetővé teszik, hogy az eszközön egy virtuális kapcsolót hozzanak létre az adott hálózati adapteren. További információ: a [számítási hálózat engedélyezése a Azure stack Edge Pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)-ban.
 
@@ -361,6 +361,6 @@ PS C:\Users\user> kubectl delete deployment nginx-deployment -n "test1"
 deployment.extensions "nginx-deployment" deleted
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A Kubernetes áttekintése](azure-stack-edge-gpu-kubernetes-overview.md)

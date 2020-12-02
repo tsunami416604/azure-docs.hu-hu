@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 730141d22b318d79c8c2b7d995b98ee1c311aaf5
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 77420939c25401c170007d3971d63ca9c5b2d04c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491273"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446209"
 ---
 # <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
 
@@ -28,7 +28,7 @@ Képzeljünk el például egy játékfejlesztő vállalatot, amely több petabá
 
 A naplók elemzéséhez a vállalatnak a helyszíni adattárban tárolt referenciaadatokat kell felhasználnia, mint például az ügyféladatokat, a játékadatokat és a reklámkampány-adatokat. A vállalat úgy kívánja hasznosítani ezeket a helyszíni adattárakból származó adatokat, hogy azokat további, a felhőalapú adattárban lévő naplóadatokkal kombinálja. 
 
-Az elemzések kinyeréséhez a Felhőbeli Spark-fürt (Azure HDInsight) használatával szeretné feldolgozni az egyesített adatok feldolgozását, és az átalakított adatok közzétételét egy Felhőbeli adattárházba, például az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse), hogy egyszerűen létrejöjjön egy jelentés. A vállalat automatizálni, illetve napi rendszerességgel monitorozni és kezelni szeretné ezt a munkafolyamatot. Ezenkívül végre is szeretné hajtani, ha fájlok kerülnek egy blobtárolóba.
+Az elemzések kinyeréséhez a Felhőbeli Spark-fürt (Azure HDInsight) használatával szeretné feldolgozni az összevont adatok feldolgozását, és egy Felhőbeli adattárházban (például az Azure szinapszis Analyticsben) közzéteheti az átalakított információkat, így egyszerűen létrehozhat egy jelentést. A vállalat automatizálni, illetve napi rendszerességgel monitorozni és kezelni szeretné ezt a munkafolyamatot. Ezenkívül végre is szeretné hajtani, ha fájlok kerülnek egy blobtárolóba.
 
 Az Azure Data Factory az a platform, amely az ilyen adatforgatókönyvek esetében sikeresen használható. Ez a *FELHŐALAPÚ ETL-és adatintegrációs szolgáltatás, amely lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre az adatáthelyezés előkészítéséhez és a nagy léptékű adatátalakításhoz*. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok. Összetett ETL-folyamatokat hozhat létre, amelyek az adatok vizuálisan alakíthatók át adatfolyamatokkal vagy számítási szolgáltatások, például Azure HDInsight Hadoop, Azure Databricks és Azure SQL Database használatával. 
 
@@ -58,7 +58,7 @@ Ha inkább a kód átalakítását részesíti előnyben, az ADF támogatja a k�
 ### <a name="cicd-and-publish"></a>CI/CD és közzététel
 A Data Factory teljes körű támogatást nyújt az adatfolyamatok CI/CD-hez az Azure DevOps és a GitHub használatával. Ez lehetővé teszi az ETL-folyamatok fokozatos fejlesztését és továbbítását a végtermék közzététele előtt. Miután a nyers adatok át lettek alakítva üzleti használatra kész formába, feltöltheti azokat az Azure Data Warehouse-ba, az Azure SQL Database-be, az Azure CosmosDB-be vagy bármely olyan elemzési motorra, amelyre üzleti felhasználói intelligens üzleti eszközeikkel rámutathatnak.
 
-### <a name="monitor"></a>Figyelés
+### <a name="monitor"></a>Monitor
 Miután sikeresen kiépítette és üzembe helyezte az adatintegrációs folyamatot, amely üzleti értéket állít elő a feldolgozott adatokból, kövesse figyelemmel az ütemezett tevékenységek és folyamatok sikerességi arányát. A Azure Data Factory beépített támogatást nyújt a folyamat-figyeléshez Azure Monitor, API, PowerShell, Azure Monitor naplók és az Azure Portal található állapotadatok használatával.
 
 ## <a name="top-level-concepts"></a>Legfelső szintű fogalmak
@@ -95,7 +95,7 @@ A társított szolgáltatásokat két célból használjuk a Data Factoryban:
 
 - Olyan **számítási erőforrás** jelölésére, amely egy tevékenység végrehajtását képes tárolni. A HDInsightHive-tevékenység végrehajtása például egy HDInsight Hadoop-fürtön történik. Az átalakítási tevékenységek és a támogatott számítási környezetek listáját lásd az [adatok átalakítása](transform-data.md) cikkben.
 
-### <a name="triggers"></a>Triggerek
+### <a name="triggers"></a>Eseményindítók
 Az eseményindítók olyan feldolgozási egységek, amelyek meghatározzák, hogy mikor kezdődjön egy folyamat végrehajtása. A különböző típusú eseményekhez eltérő típusú eseményindítók tartoznak.
 
 ### <a name="pipeline-runs"></a>Folyamatfuttatások
@@ -119,7 +119,7 @@ A következő, fontos dokumentumok a következők:
 
 - [Adatkészletek és társított szolgáltatások](concepts-datasets-linked-services.md)
 - [Folyamatok és tevékenységek](concepts-pipelines-activities.md)
-- [Integrációs modul](concepts-integration-runtime.md)
+- [Integration Runtime](concepts-integration-runtime.md)
 - [Adatfolyamok leképezése](concepts-data-flow-overview.md)
 - [Data Factory felhasználói felülete az Azure Portalon](quickstart-create-data-factory-portal.md)
 - [Adatok másolása eszköz az Azure Portalon](quickstart-create-data-factory-copy-data-tool.md)
@@ -127,5 +127,5 @@ A következő, fontos dokumentumok a következők:
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
 - [REST](quickstart-create-data-factory-rest-api.md)
-- [Azure Resource Manager-sablon](quickstart-create-data-factory-resource-manager-template.md)
+- [Azure Resource Manager sablon](quickstart-create-data-factory-resource-manager-template.md)
  

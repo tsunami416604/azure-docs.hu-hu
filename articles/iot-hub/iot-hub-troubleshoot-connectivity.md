@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: b179bb3566cc19b8033a56348db34cd1f05cee10
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506396"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446402"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Az Azure IoT Hub-vel való kapcsolat figyelése, diagnosztizálása és hibakeresése
 
@@ -58,7 +58,7 @@ A következő témakörökből megtudhatja, hogyan figyelheti meg az eszközök 
 
 * Az eszköz-csatlakoztatási események megrendelésével kapcsolatos oktatóanyagért lásd: [eszközök csatlakoztatási eseményeinek megrendelése az Azure IoT Hub Azure Cosmos db használatával](iot-hub-how-to-order-connection-state-events.md).
 
-* Az e-mail-értesítések küldésével kapcsolatos oktatóanyagért lásd: [e-mail-értesítések küldése az Azure IoT hub eseményekről az Event Grid dokumentációjának Event Grid és Logic Apps használatával](/azure/event-grid/publish-iot-hub-events-to-logic-apps) .
+* Az e-mail-értesítések küldésével kapcsolatos oktatóanyagért lásd: [e-mail-értesítések küldése az Azure IoT hub eseményekről az Event Grid dokumentációjának Event Grid és Logic Apps használatával](../event-grid/publish-iot-hub-events-to-logic-apps.md) .
 
 ## <a name="azure-monitor-route-connection-events-to-logs"></a>Azure Monitor: kapcsolódási események továbbítása a naplókhoz
 
@@ -181,7 +181,7 @@ Ha az előző lépések nem segítettek, próbálkozzon a következő lépésekk
 
 Ha segítségre van szüksége mindenki számára, az alábbi visszajelzések szakaszban hagyja meg a megjegyzéseit, ha az útmutató nem segít Önnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az átmeneti problémák megoldásával kapcsolatos további tudnivalókért lásd: az [átmeneti hibák kezelésének](/azure/architecture/best-practices/transient-faults)ismertetése.
 

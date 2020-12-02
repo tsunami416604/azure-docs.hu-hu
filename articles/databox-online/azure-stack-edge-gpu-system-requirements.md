@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: d835507a17417f8b500c0fc13d0a662e606a37ff
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d97f500bb84f816bacf44208ba305840e797b3bd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996416"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447712"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro rendszerkövetelményei 
 
@@ -81,9 +81,9 @@ Használja a következő táblázatot a port konfigurálásához a Azure IoT Edg
 
 | Port nem. | Be vagy ki | Port hatóköre | Kötelező | Útmutató |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Ki       | WAN        | Yes      | A kimenő Megnyitás IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges.|
+| TCP 443 (HTTPS)| Ki       | WAN        | Igen      | A kimenő Megnyitás IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges.|
 
-A teljes információ: a [tűzfal és a port konfigurációs szabályai IoT Edge központi telepítéshez](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
+A teljes információ: a [tűzfal és a port konfigurációs szabályai IoT Edge központi telepítéshez](../iot-edge/troubleshoot.md).
 
 ## <a name="url-patterns-for-firewall-rules"></a>Tűzfalszabályok URL-mintái
 
@@ -142,7 +142,7 @@ Az alábbi tényezőket érdemes figyelembe venni:
 
 A megoldás teljesítményének megismeréséhez és pontosításához használhatja a következőt:
 
-- A Azure Portalben elérhető számítási mérőszámok. Nyissa meg az Azure Stack Edge-erőforrást, és válassza a **figyelés > metrikák**lehetőséget. Tekintse meg az **Edge számítási memória használatának** és a **peremhálózati számítási kapacitásának százalékos arányát** , hogy megismerje a rendelkezésre álló erőforrásokat és a felhasznált erőforrásokat.
+- A Azure Portalben elérhető számítási mérőszámok. Nyissa meg az Azure Stack Edge-erőforrást, és válassza a **figyelés > metrikák** lehetőséget. Tekintse meg az **Edge számítási memória használatának** és a **peremhálózati számítási kapacitásának százalékos arányát** , hogy megismerje a rendelkezésre álló erőforrásokat és a felhasznált erőforrásokat.
 - A számítási modulok figyeléséhez és hibaelhárításához lépjen a [Kubernetes](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge)hibaelhárítása című lépésre.
 
 Végezetül ellenőrizze, hogy az adatkészleten érvényesíti-e a megoldást, és az éles környezetben való üzembe helyezés előtt számszerűsítse Azure Stack Edge Pro teljesítményét.

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 9f443b15cd427dd31c2ffa95af8d1124f1169881
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 9081ba0aae14c39d70e62818dc13aa4d92c91986
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302649"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445951"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Gyors útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához Azure PowerShell használatával
 
@@ -239,7 +239,7 @@ Ebben a szakaszban a terheléselosztó háttér-készletéhez tartozó három vi
 
 * Hozzon létre három hálózati adaptert a [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface).
 
-* Állítsa be a virtuális gépek rendszergazdai felhasználónevét és jelszavát a [Get-hitelesítő adatokkal](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential).
+* Állítsa be a virtuális gépek rendszergazdai felhasználónevét és jelszavát a [Get-hitelesítő adatokkal](/powershell/module/microsoft.powershell.security/get-credential).
 
 * Hozza létre a virtuális gépeket az alábbiakkal:
     * [New-AzVM](/powershell/module/az.compute/new-azvm)

@@ -10,17 +10,17 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2a24a61e26bdfaba0619e3965e95b1828380a1c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d47b4847a12b63532e44a8a1a47101dd065f811b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322100"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446595"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Tervezési döntések és kódolási technikák a szinapszis SQL-funkciókhoz az Azure szinapszis Analyticsben
-Ebben a cikkben a szinapszis SQL-hez készült dedikált SQL Pool és kiszolgáló nélküli SQL Pool (előzetes verzió) függvények erőforrásainak listáját találja. Az ajánlott cikkek két szakaszra oszlanak: a legfontosabb tervezési döntések, a fejlesztési és kódolási technikák.
+Ebben a cikkben a szinapszis SQL-hez készült dedikált SQL Pool és kiszolgáló nélküli SQL Pool függvények erőforrásainak listáját találja. Az ajánlott cikkek két szakaszra oszlanak: a legfontosabb tervezési döntések, a fejlesztési és kódolási technikák.
 
-Ennek a cikknek a célja, hogy segítséget nyújtson az optimális technikai megközelítés kialakításában a szinapszis Analytics szolgáltatásban található szinapszis SQL-összetevőkhöz.
+A cikk célja, hogy segítsen az optimális technikai megközelítés kialakításában az Azure szinapszis Analytics szolgáltatásban található szinapszis SQL-összetevőkhöz.
 
 ## <a name="key-design-decisions"></a>Kulcsfontosságú tervezési döntések
 Az alábbi cikkek kiemelik a szinapszisok SQL-fejlesztésével kapcsolatos fogalmakat és tervezési döntéseket:

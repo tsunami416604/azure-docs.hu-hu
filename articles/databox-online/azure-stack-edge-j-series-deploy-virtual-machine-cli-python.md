@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12935a4b0b9cbbf088ba7b9c5ea804be0ce85a1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890722"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447352"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Virtuális gépek üzembe helyezése Azure Stack Edge Pro GPU-eszközön az Azure CLI és a Python használatával
 
@@ -53,7 +53,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
 
 2. Hálózati adapter engedélyezése a számítási feladatokhoz. Ez a hálózati adapter IP-címe virtuális kapcsoló létrehozásához használatos a virtuális gép telepítéséhez. Az alábbi lépések végigvezetik a folyamaton:
 
-    1. Ugrás a **számítási**feladatokra. Válassza ki azt a hálózati adaptert, amelyet a virtuális kapcsoló létrehozásához használni fog.
+    1. Ugrás a **számítási** feladatokra. Válassza ki azt a hálózati adaptert, amelyet a virtuális kapcsoló létrehozásához használni fog.
 
         > [!IMPORTANT] 
         > Csak egy portot lehet beállítani a számítási feladatokhoz.
@@ -117,7 +117,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
 
 ### <a name="verify-profile-and-install-azure-cli"></a>Profil ellenőrzése és az Azure CLI telepítése
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
 
 1. Telepítse az Azure CLI-t az ügyfélre. Ebben a példában az Azure CLI-2.0.80 telepítve lett. Az Azure CLI verziójának ellenőrzéséhez futtassa a `az --version` parancsot.
 
@@ -147,7 +147,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
     PS C:\windows\system32>
     ```
 
-    Ha nem rendelkezik Azure CLI-vel, töltse le és [telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)-t Windows rendszeren. Az Azure CLI-t a Windows parancssorból vagy a Windows PowerShell használatával futtathatja.
+    Ha nem rendelkezik Azure CLI-vel, töltse le és [telepítse az Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)-t Windows rendszeren. Az Azure CLI-t a Windows parancssorból vagy a Windows PowerShell használatával futtathatja.
 
 2. Jegyezze fel a parancssori felület Python-helyét. Erre azért van szükség, hogy meghatározza a megbízható Főtanúsítvány-tároló helyét az Azure CLI-hez.
 
@@ -308,7 +308,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. Jelentkezzen be az Azure Stack Edge Pro-környezetbe a `az login` paranccsal. Bejelentkezhet a Azure Stack Edge Pro-környezetbe, akár felhasználóként, akár [szolgáltatásnévként](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+4. Jelentkezzen be az Azure Stack Edge Pro-környezetbe a `az login` paranccsal. Bejelentkezhet a Azure Stack Edge Pro-környezetbe, akár felhasználóként, akár [szolgáltatásnévként](../active-directory/develop/app-objects-and-service-principals.md).
 
    A következő lépésekkel jelentkezhet be *felhasználóként*:
 
@@ -344,7 +344,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét az Azure 
    ```
    Jegyezze fel a és az `id` `tenantId` értékeket, mivel ezek megfelelnek a Azure Resource Manager előfizetés-azonosítójának és a Azure Resource Manager BÉRLŐi azonosítónak, és a későbbi lépésben lesz használva.
        
-   A következő környezeti változókat kell beállítani az *egyszerű szolgáltatásnév*működéséhez:
+   A következő környezeti változókat kell beállítani az *egyszerű szolgáltatásnév* működéséhez:
 
    ```
    $ENV:ARM_TENANT_ID = "c0257de7-538f-415c-993a-1b87a031879d"
@@ -427,6 +427,6 @@ A rendszer egy Python-szkriptet hoz létre a virtuális gép létrehozásához. 
     ``` 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Általános az CLI parancsok Linux rendszerű virtuális gépekhez](../virtual-machines/linux/cli-manage.md)

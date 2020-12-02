@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 8ae95518bab5ed9bc100a5902acf1fd1db631dbe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3fb4085ba275bda1fe784f368eb5d92ac0c668f0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91617162"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448523"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Mi az a GPU-val rendelkező Azure Stack Edge Pro?
 
@@ -25,7 +25,7 @@ Azure Stack Edge Pro a GPU-val egy szolgáltatásként nyújtott hardveres megol
 
 Az alábbiakban azokat a forgatókönyveket láthatja, amelyekben a Azure Stack Edge Pro gyors Machine Learning (ML), amely a peremhálózat szélén és az adatok előfeldolgozása előtt használható az Azure-ba való küldés előtt.
 
-- **Következtetés a Azure Machine learning** -with Azure stack Edge Pro használatával: ml-modellek futtatásával gyors eredményeket érhet el, amelyek a felhőbe való adatküldés előtt is elhelyezhetők. A teljes adatkészletet igény szerint átviheti, hogy továbbra is újratanítsa és javítsa a ML-modelleket. Az Azure ML hardveres gyorsított modellek az Azure Stack Edge Pro-eszközön történő használatáról további információt az [Azure ml hardveres gyorsított modellek üzembe helyezése Azure stack Edge Pro](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)-ban című témakörben talál.
+- **Következtetés a Azure Machine learning** -with Azure stack Edge Pro használatával: ml-modellek futtatásával gyors eredményeket érhet el, amelyek a felhőbe való adatküldés előtt is elhelyezhetők. A teljes adatkészletet igény szerint átviheti, hogy továbbra is újratanítsa és javítsa a ML-modelleket. Az Azure ML hardveres gyorsított modellek az Azure Stack Edge Pro-eszközön történő használatáról további információt az [Azure ml hardveres gyorsított modellek üzembe helyezése Azure stack Edge Pro](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)-ban című témakörben talál.
 
 - Adatátalakítási adatok **előfeldolgozása** az Azure-ba való elküldés előtt a számítási lehetőségek, például a tároló munkaterhelések és a Virtual Machines használatával egy sokkal hatékonyabb adatkészlet hozható létre. Az előfeldolgozás az alábbiakra használható: 
 

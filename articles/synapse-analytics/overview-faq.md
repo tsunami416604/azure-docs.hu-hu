@@ -1,6 +1,6 @@
 ---
-title: Gyakori kérdések – Azure szinapszis Analytics (munkaterületek – előzetes verzió)
-description: Gyakori kérdések az Azure szinapszis Analytics szolgáltatásról (munkaterületek előzetes verzió)
+title: GYIK – Azure szinapszis Analytics
+description: Az Azure szinapszis Analytics szolgáltatással kapcsolatos gyakori kérdések
 services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
@@ -9,22 +9,20 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5acfc8c01f375164979e1fb051563fcfb2da3bd3
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 05fef320d558de30830f76031d3b96262ae29f07
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436256"
+ms.locfileid: "96445793"
 ---
-# <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure szinapszis Analytics (munkaterületek előzetes verzió) – gyakori kérdések
+# <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure szinapszis Analytics – gyakori kérdések
 
 Ebben az útmutatóban az Azure szinapszis Analytics szolgáltatással kapcsolatos leggyakrabban feltett kérdéseket találja.
 
-[!INCLUDE [preview](includes/note-preview.md)]
-
 ## <a name="general"></a>Általános kérdések
 
-### <a name="q-what-rbac-roles-exist-and-how-i-use-them-to-secure-a-synapse-workspace"></a>K: milyen RBAC-szerepkörök léteznek, és hogyan használhatók a szinapszis-munkaterület biztonságossá tételéhez?
+### <a name="q-what-rbac-roles-exist-and-how-do-i-use-them-to-secure-a-synapse-workspace"></a>K: milyen RBAC-szerepkörök léteznek, és hogyan használhatom őket a szinapszis-munkaterület biztonságossá tételéhez?
 
 A: az Azure szinapszis számos olyan szerepkört és hatókört vezet be, amelyekkel hozzárendelheti azokat, így egyszerűbbé válik a munkaterület biztonságossá tétele.
 

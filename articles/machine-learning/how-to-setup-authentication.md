@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 7fa6beacf4456145e312494a72dad321dfef3754
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ca8a36584c09d850ed1daab8cba301b244f76526
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843927"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447024"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Hitelesítés beállítása az Azure Machine Learning-erőforrásokhoz és -munkafolyamatokhoz
 
@@ -67,7 +67,7 @@ Az [Azure parancssori](/cli/azure/install-azure-cli?preserve-view=true&view=azur
 
     Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások [https://aka.ms/devicelogin](https://aka.ms/devicelogin) egy engedélyezési kód böngészését és beírását foglalják magukban.
 
-    Ha több Azure-előfizetéssel rendelkezik, akkor a `az account set -s <subscription name or ID>` paranccsal állíthatja be az előfizetést. További információ: [több Azure-előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Ha több Azure-előfizetéssel rendelkezik, akkor a `az account set -s <subscription name or ID>` paranccsal állíthatja be az előfizetést. További információ: [több Azure-előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
 
     A hitelesítés egyéb módszereivel kapcsolatban lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
 
@@ -184,7 +184,7 @@ A dokumentációban és a mintákban a legtöbb példa interaktív hitelesítés
 > interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
 > ```
 
-Az Azure CLI használatakor a `az login` parancs a CLI-munkamenet hitelesítésére szolgál. További információ: Ismerkedés [Az Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Az Azure CLI használatakor a `az login` parancs a CLI-munkamenet hitelesítésére szolgál. További információ: Ismerkedés [Az Azure CLI-vel](/cli/azure/get-started-with-azure-cli).
 
 > [!TIP]
 > Ha az SDK-t olyan környezetből használja, amelyben korábban már hitelesítette az Azure CLI-t, az `AzureCliAuthentication` osztály használatával hitelesítheti a munkaterületet a CLI által gyorsítótárazott hitelesítő adatok használatával:
@@ -399,7 +399,7 @@ ws = Workspace(subscription_id="your-sub-id",
                 )
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [titkok használata a képzésben](how-to-use-secrets-in-runs.md).
 * [Webszolgáltatásként üzembe helyezett modellek hitelesítésének konfigurálása](how-to-authenticate-web-service.md).

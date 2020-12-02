@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 2bbc57d8ddc004c1926da7e0037efdc1fcf2d76e
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 55e5a587a0ad02fa1f8993027b46162a14a58832
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318099"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448237"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>A figyelés konfigurálása Azure Monitor for VMs vendég állapota adatgyűjtési szabályokkal (előzetes verzió)
 [Azure monitor for VMS vendég állapota](vminsights-health-overview.md) lehetővé teszi egy virtuális gép állapotának megtekintését, amelyet a rendszeres időközönként mintavételnek alávetett teljesítmény-mérések határoznak meg. Ez a cikk azt ismerteti, hogyan módosíthatja az alapértelmezett figyelést több virtuális gépen az adatgyűjtési szabályok használatával.
@@ -20,7 +20,7 @@ ms.locfileid: "95318099"
 ## <a name="monitors"></a>Monitorozások
 A virtuális gép állapotát az egyes figyelők [állapotának összesítése](vminsights-health-overview.md#health-rollup-policy) határozza meg. Az alábbi táblázatban látható két típusú figyelő szerepel a Azure Monitor for VMs vendég állapotában.
 
-| Monitor | Leírás |
+| Monitor | Description |
 |:---|:---|
 | Egység figyelője | Egy erőforrás vagy alkalmazás bizonyos aspektusait méri. Lehetséges, hogy az erőforrás teljesítményének és rendelkezésre állásának megállapításához a teljesítményszámláló ellenőrzése szükséges. |
 | Összesítő figyelő | Csoportosítson több figyelőt egyetlen összesített állapot biztosításához. Egy összesített figyelő tartalmazhat egy vagy több egységet figyelőket és más összesítő figyelőket. |
@@ -30,7 +30,7 @@ A Azure Monitor for VMs Guest Health által használt figyelők készlete és az
 ## <a name="monitor-properties"></a>Figyelő tulajdonságai
 Az alábbi táblázat az egyes figyelőket konfiguráló tulajdonságokat ismerteti.
 
-| Tulajdonság | Monitorozások | Leírás |
+| Tulajdonság | Monitorozások | Description |
 |:---|:---|:---|
 | Engedélyezve | Összesítés<br>Egység | Ha az értéke igaz, a rendszer kiszámítja az állapot figyelőt, és a virtuális gép állapotát is hozzájárul. Riasztási riasztást aktiválhat. |
 | Riasztások kezelése | Összesítés<br>Egység | Ha az értéke TRUE (igaz), a figyelő riasztást küld, ha nem Kifogástalan állapotra vált. Ha hamis, a figyelő állapota továbbra is hozzájárul a virtuális gép állapotához, amely riasztást vált ki. |
@@ -49,9 +49,9 @@ A következő táblázat felsorolja az egyes figyelők alapértelmezett konfigur
 
 | Monitor | Engedélyezve | Riasztások kezelése | Figyelmeztetés | Kritikus | Kiértékelés gyakorisága | Lookback | Kiértékelés típusa | Minimális minta | Minták maximális száma |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Processzorhasználat  | Igaz | Hamis | Nincs | \> 90%    | 60 másodperc | 240 mp | Min | 2 | 3 |
-| Igénybe vehető memória | Igaz | Hamis | Nincs | \< 100 MB | 60 másodperc | 240 mp | Max | 2 | 3 |
-| Fájlrendszer      | Igaz | Hamis | Nincs | \< 100 MB | 60 másodperc | 120 mp | Max | 1 | 1 |
+| Processzorhasználat  | Igaz | Hamis | Nincsenek | \> 90%    | 60 másodperc | 240 mp | Min | 2 | 3 |
+| Igénybe vehető memória | Igaz | Hamis | Nincsenek | \< 100 MB | 60 másodperc | 240 mp | Max | 2 | 3 |
+| Fájlrendszer      | Igaz | Hamis | Nincsenek | \< 100 MB | 60 másodperc | 120 mp | Max | 1 | 1 |
 
 
 ## <a name="overrides"></a>Felülbírálások
@@ -271,107 +271,9 @@ Meghatározza a kritikus feltétel küszöbértékét és összehasonlító logi
 | `operator`  | Nem | Meghatározza az összehasonlító operátort a küszöbérték kifejezésben való használathoz. Lehetséges értékek: >, <, >=, <=, = =. |
 
 ## <a name="sample-data-collection-rule"></a>Minta adatgyűjtési szabály
-A következő minta adatgyűjtési szabály a figyelés konfigurálására szolgáló felülbírálási példát mutat be.
+A vendég figyelését lehetővé tevő minta adatgyűjtési szabály: [virtuális gép engedélyezése Resource Manager-sablon használatával](vminsights-health-enable.md#enable-a-virtual-machine-using-resource-manager-template).
 
 
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "defaultHealthDataCollectionRuleName": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the name of the data collection rule to create."
-      },
-      "defaultValue": "Microsoft-VMInsights-Health"
-    },
-    "destinationWorkspaceResourceId": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the Azure resource ID of the Log Analytics workspace to use to store virtual machine health data."
-      }
-    },
-    "dataCollectionRuleLocation": {
-      "type": "string",
-      "metadata": {
-        "description": "The location code in which the data collection rule should be deployed. Examples: eastus, westeurope, etc"
-      }
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Insights/dataCollectionRules",
-      "name": "[parameters('defaultHealthDataCollectionRuleName')]",
-      "location": "[parameters('dataCollectionRuleLocation')]",
-      "apiVersion": "2019-11-01-preview",
-      "properties": {
-        "description": "Data collection rule for VM Insights health.",
-        "dataSources": {
-          "performanceCounters": [
-              {
-                  "name": "VMHealthPerfCounters",
-                  "streams": [ "Microsoft-Perf" ],
-                  "scheduledTransferPeriod": "PT1M",
-                  "samplingFrequencyInSeconds": 60,
-                  "counterSpecifiers": [
-                      "\\LogicalDisk(*)\\% Free Space",
-                      "\\Memory\\Available Bytes",
-                      "\\Processor(_Total)\\% Processor Time"
-                  ]
-              }
-          ],
-          "extensions": [
-            {
-              "name": "Microsoft-VMInsights-Health",
-              "streams": [
-                "Microsoft-HealthStateChange"
-              ],
-              "extensionName": "HealthExtension",
-              "extensionSettings": {
-                "schemaVersion": "1.0",
-                "contentVersion": "",
-                "healthRuleOverrides": [
-                  {
-                    "scopes": [ "*" ],
-                    "monitors": ["root"],
-                    "alertConfiguration": {
-                      "isEnabled": true
-                    }
-                  }
-                ]
-              },
-              "inputDataSources": [
-                  "VMHealthPerfCounters"
-              ]
-
-            }
-          ]
-        },
-        "destinations": {
-          "logAnalytics": [
-            {
-              "workspaceResourceId": "[parameters('destinationWorkspaceResourceId')]",
-              "name": "Microsoft-HealthStateChange-Dest"
-            }
-          ]
-        },                  
-        "dataFlows": [
-          {
-            "streams": [
-              "Microsoft-HealthStateChange"
-            ],
-            "destinations": [
-              "Microsoft-HealthStateChange-Dest"
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [adatgyűjtési szabályokról](../platform/data-collection-rule-overview.md).

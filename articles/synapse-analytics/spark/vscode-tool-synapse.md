@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – Spark & kaptár eszközei a VSCode-hez (Spark-alkalmazás)
-description: Oktatóanyag – a VSCode Spark &-struktúra eszközeivel fejlesztheti a Pythonban írt Spark-alkalmazásokat, és elküldheti azokat egy kiszolgáló nélküli Apache Spark készletbe (előzetes verzió).
+description: Oktatóanyag – a VSCode Spark & struktúrájának eszközei a Pythonban írt Spark-alkalmazások fejlesztéséhez és kiszolgáló nélküli Apache Spark készletbe való beküldéséhez.
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: 99b2b04d0f29d92b503cc0bed2460b79cfa6c354
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eb4a4c2c8d1d52690a07b784640d20d96ff2d600
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315664"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445678"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>Oktatóanyag: Apache Spark-alkalmazások létrehozása a VSCode a szinapszis-munkaterület használatával
 
@@ -30,7 +30,7 @@ A cikk lépéseinek végrehajtásához a következő elemek szükségesek:
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Monó](https://www.mono-project.com/docs/getting-started/install/). A Mono csak Linux és macOS rendszerekhez szükséges.
 - [PySpark interaktív környezet a Visual Studio Code](../../hdinsight/set-up-pyspark-interactive-environment.md)-hoz.
-- Helyi könyvtár. Ez a cikk a  **C:\HD\Synaseexample** -t használja.
+- Helyi könyvtár. Ez a cikk a  **C:\HD\Synaseexample**-t használja.
 
 ## <a name="install-spark--hive-tools"></a>A Spark & Kas eszközeinek telepítése
 
@@ -52,13 +52,13 @@ Az előfeltételek teljesítése után a Spark & kaptár Tools for Visual Studio
 
 Az alábbi lépéseket követve nyisson meg egy munkahelyi mappát, és hozzon létre egy fájlt a Visual Studio Code-ban:
 
-1. A menüsávban navigáljon a **fájl**  >  **megnyitása mappába..**  >  . **C:\HD\Synaseexample** , majd kattintson a **mappa kiválasztása** gombra. A mappa a bal oldali **Explorer** nézetben jelenik meg.
+1. A menüsávban navigáljon a **fájl**  >  **megnyitása mappába..**  >  . **C:\HD\Synaseexample**, majd kattintson a **mappa kiválasztása** gombra. A mappa a bal oldali **Explorer** nézetben jelenik meg.
 
 2. A **Explorer** nézetben válassza ki a **Synaseexample** mappát, majd válassza az **új fájl** ikont a munkahelyi mappa mellett:
 
      ![Visual Studio Code új fájl ikon](./media/vscode-tool-synapse/visual-studio-code-new-file.png)
 
-3. Nevezze el az új fájlt a `.py` (Spark script) fájlkiterjesztés használatával. Ez a példa az **HelloWorld.py** -t használja.
+3. Nevezze el az új fájlt a `.py` (Spark script) fájlkiterjesztés használatával. Ez a példa az **HelloWorld.py**-t használja.
 
 ## <a name="connect-to-your-spark-pools"></a>Kapcsolódás a Spark-készletekhez
 
@@ -68,7 +68,7 @@ Jelentkezzen be az Azure-előfizetésbe a Spark-készletekhez való kapcsolódá
 
 Az Azure-hoz való kapcsolódáshoz kövesse az alábbi lépéseket:
 
-1. A menüsávban navigáljon a **View**  >  **parancs paletta megtekintése...** elemre, és írja be az **Azure: bejelentkezés** :
+1. A menüsávban navigáljon a **View**  >  **parancs paletta megtekintése...** elemre, és írja be az **Azure: bejelentkezés**:
 
      ![A Spark & struktúra eszközei a Visual Studio Code-beli bejelentkezéshez](./media/vscode-tool-synapse/hdinsight-for-vscode-extension-login.png)
 
@@ -178,7 +178,7 @@ for (word, count) in sortedCollection:
 
      ![az alapértelmezett Spark-készlet beállítása és újratöltése](./media/vscode-tool-synapse/set-the-default-spark-pool-and-reload.png)
 
-3. Kattintson a PySpark elemre a kernel a **szinapszis PySpark** való átváltásához, majd kattintson egy idő elteltével a **Futtatás cellára** , az eredmény megjelenik.
+3. Kattintson a PySpark elemre a kernel a **szinapszis PySpark** való átváltásához, majd kattintson egy idő elteltével a **Futtatás cellára**, az eredmény megjelenik.
 
      ![ipynb-eredmények futtatása](./media/vscode-tool-synapse/run-ipynb-file-results.png)
 
@@ -238,7 +238,7 @@ Az Azure Explorerben különböző műveleteket hajthat végre a Spark & kaptár
 
 ### <a name="launch-workspace"></a>Munkaterület elindítása
 
-1. Az Azure Explorerben navigáljon a **szinapszishoz** , bontsa ki, majd jelenítse meg a szinapszis-előfizetések listáját.
+1. Az Azure Explorerben navigáljon a **szinapszishoz**, bontsa ki, majd jelenítse meg a szinapszis-előfizetések listáját.
 
      ![szinapszis-kezelő](./media/vscode-tool-synapse/synapse-explorer.png)
 
@@ -252,7 +252,7 @@ Az Azure Explorerben különböző műveleteket hajthat végre a Spark & kaptár
 
 4. Kibonthat egy munkaterületet, az **alapértelmezett tárolót** és a **Spark-készleteket** .
 
-5. Kattintson a jobb gombbal az **alapértelmezett tárolóra** , a **Másolás teljes elérési útját** , és **nyissa meg a szinapszis Studióban** . 
+5. Kattintson a jobb gombbal az **alapértelmezett tárolóra**, a **Másolás teljes elérési útját** , és **nyissa meg a szinapszis Studióban** . 
 
      ![kattintson a jobb gombbal az alapértelmezett tárolóra](./media/vscode-tool-synapse/right-click-on-default-storage.png)
 
@@ -262,7 +262,7 @@ Az Azure Explorerben különböző műveleteket hajthat végre a Spark & kaptár
 
      ![alapértelmezett tároló a szinapszis Studióban](./media/vscode-tool-synapse/default-storage-in-synapse-studio.png)
 
-6. Bontsa ki az **alapértelmezett tárolót** , az elsődleges Storage-fiók megjelenik.
+6. Bontsa ki az **alapértelmezett tárolót**, az elsődleges Storage-fiók megjelenik.
 
 7. A **Spark-készletek** kibontásával a munkaterület összes Spark-készlete megjelenik.
 
@@ -278,7 +278,7 @@ Az Azure Explorerben különböző műveleteket hajthat végre a Spark & kaptár
 ![ismert problémák](./media/vscode-tool-synapse/known-issue.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Synapse Analytics](../overview-what-is.md)
 - [Új Apache Spark-készlet létrehozása az Azure szinapszis Analytics-munkaterülethez](../../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)

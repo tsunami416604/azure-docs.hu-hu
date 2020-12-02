@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d9349c5d1c4e6255dc0854537bb7e93e3e636ce8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: e7fc89dcc0e7938ea2958d5c804abe82e20f186d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321061"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447933"
 ---
 # <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet táblázatos statisztikái az Azure szinapszis Analyticsben
 
@@ -72,7 +72,7 @@ A mérhető teljesítmény elkerülése érdekében először létre kell hoznia
 > [!NOTE]
 > A statisztikák létrehozása [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) egy másik felhasználói környezet alatt lesz naplózva.
 
-Az automatikus statisztikák létrehozásakor a rendszer a (z) _WA_Sys_ <8 jegyű oszlop azonosítóját hexadecimális>_<8 számjegyű tábla azonosítóját hexadecimális>. A már létrehozott statisztikákat a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) parancs futtatásával tekintheti meg:
+Az automatikus statisztikák létrehozásakor a rendszer a (z) _WA_Sys_<8 jegyű oszlop azonosítóját hexadecimális>_<8 számjegyű tábla azonosítóját hexadecimális>. A már létrehozott statisztikákat a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) parancs futtatásával tekintheti meg:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -101,7 +101,7 @@ Ezt a kérdést nem lehet megválaszolni az adatkor alapján. Előfordulhat, hog
 
 Nincs dinamikus felügyeleti nézet annak megállapítására, hogy a táblázatban lévő adatok módosultak-e a legutóbbi statisztika frissítése óta.  A következő két lekérdezés segíthet megállapítani, hogy a statisztikák elavultak-e.
 
-**1. lekérdezés:**  Megtudhatja, hogy miben különbözik a sorok száma a statisztikában ( **stats_row_count** ) és a tényleges sorok száma ( **actual_row_count** ). 
+**1. lekérdezés:**  Megtudhatja, hogy miben különbözik a sorok száma a statisztikában (**stats_row_count**) és a tényleges sorok száma (**actual_row_count**). 
 
 ```sql
 select 
@@ -312,11 +312,11 @@ CREATE STATISTICS stats_col2 on dbo.table2 (col2);
 CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
-### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Tárolt eljárás használata statisztikák létrehozásához az adatbázis összes oszlopán
+### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-sql-pool"></a>Tárolt eljárás használata statisztikák létrehozásához az SQL-készlet összes oszlopán
 
-A dedikált SQL-készlet nem rendelkezik olyan rendszerszintű tárolt eljárással, amely egyenértékű a SQL Server sp_create_statsával. Ez a tárolt eljárás egyetlen oszlopos statisztikai objektumot hoz létre az adatbázis minden olyan oszlopán, amely még nem rendelkezik statisztikával.
+A dedikált SQL-készlet nem rendelkezik olyan rendszerszintű tárolt eljárással, amely egyenértékű a SQL Server sp_create_statsával. Ez a tárolt eljárás egyetlen oszlopból álló statisztikai objektumot hoz létre egy olyan SQL-készlet minden oszlopán, amely még nem rendelkezik statisztikával.
 
-Az alábbi példa segítséget nyújt az adatbázis kialakításának megkezdéséhez. Nyugodtan alkalmazkodhat az igényeihez.
+Az alábbi példa segítséget nyújt az SQL-készlet kialakításának megkezdéséhez. Nyugodtan alkalmazkodhat az igényeihez.
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -476,7 +476,7 @@ A statisztikával kapcsolatos információk megkereséséhez számos rendszerné
 
 Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmaznak:
 
-| Katalógus nézet | Leírás |
+| Katalógus nézet | Description |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Egy sor az egyes oszlopokhoz. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Egy sor az adatbázis minden objektumához. |
@@ -490,7 +490,7 @@ Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmazn
 
 Ezek a rendszerfunkciók a statisztikákkal való munkavégzéshez hasznosak:
 
-| System függvény | Leírás |
+| System függvény | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |A statisztikai objektum utolsó frissítésének dátuma. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Összegző szint és részletes információk az értékek eloszlásáról a statisztikai objektum által értelmezett módon. |
@@ -588,6 +588,6 @@ A DBCC SHOW_STATISTICS () a SQL Serverhoz képest a dedikált SQL-készletben sz
 - A statisztikai objektumok azonosítására szolgáló oszlopnevek nem használhatók.
 - A 2767-es egyéni hiba nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A lekérdezési teljesítmény javítása érdekében lásd: [a munkaterhelés figyelése](sql-data-warehouse-manage-monitor.md)

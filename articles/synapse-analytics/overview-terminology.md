@@ -1,5 +1,5 @@
 ---
-title: Terminológia – Azure szinapszis Analytics (munkaterületek – előzetes verzió)
+title: Terminológia – Azure szinapszis Analitika
 description: Útmutató a felhasználónak az Azure szinapszis Analytics szolgáltatással való bejárásához
 services: synapse-analytics
 author: saveenr
@@ -9,20 +9,18 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 60c3fc6688dc4a25faf5ed94df25055e29d34403
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 7f0ca83c194aae6f4a8d04d70c2d4f3746ad2ca5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309817"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446718"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Az Azure szinapszis Analytics terminológiája
 
-[!INCLUDE [preview](includes/note-preview.md)]
-
 Ez a dokumentum végigvezeti az Azure szinapszis Analytics alapfogalmait.
 
-## <a name="basics"></a>Alapvető beállítások
+## <a name="basics"></a>Alapbeállítások
 
 A **szinapszis munkaterület** biztonságos együttműködési határ az Azure-beli felhőalapú vállalati elemzésekhez. A munkaterület egy adott régióban van üzembe helyezve, és rendelkezik egy társított ADLS Gen2 fiókkal és fájlrendszerrel (az ideiglenes adattárolók tárolásához). A munkaterület egy erőforráscsoport alatt található.
 

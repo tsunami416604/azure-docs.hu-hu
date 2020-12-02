@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 0f67a36ac4ccb27d7b955158b7e4a9cf4f5185d0
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 5b96e568b57c34fec1c93727aabe8e739a2a45cd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636918"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448652"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes az Azure Stack Edge Pro GPU-eszközön
 
@@ -57,7 +57,7 @@ Az alkalmazások számítási feladatainak támogatásához csatlakoztathatja az
 
 További információ: Storage-létesítési beállítások a Kubernetes-tárolóban lévő alkalmazások számára az [Azure stack Edge Pro-eszközhöz](azure-stack-edge-gpu-kubernetes-storage.md).
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 A Kubernetes hálózatkezelés lehetővé teszi a Kubernetes-hálózaton belüli kommunikáció konfigurálását, többek között a tárolók közötti hálózatkezelést, a pod-Pod hálózatkezelést, a pod-szolgáltatást és az internetről a szolgáltatásba történő hálózatkezelést. További információ: hálózati modell a [Kubernetes hálózatkezelésben az Azure stack Edge Pro-eszközhöz](azure-stack-edge-gpu-kubernetes-networking.md).
 
@@ -106,7 +106,7 @@ Az alkalmazások Kubernetes-fürtön IoT Edge használatával történő közpon
 
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes és az Azure arc
 
-Az Azure arc egy hibrid felügyeleti eszköz, amely lehetővé teszi, hogy alkalmazásokat helyezzen üzembe a Kubernetes-fürtökön. Az Azure arc azt is lehetővé teszi, hogy a tárolók Azure Monitor használatával megtekinthesse és figyelje a fürtöket. További információért látogasson el a [Mi az Azure-Arc enabled Kubernetes?](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)című témakörben. Az Azure arc díjszabásával kapcsolatos információkért látogasson el az [Azure arc díjszabására](https://azure.microsoft.com/services/azure-arc/#pricing).
+Az Azure arc egy hibrid felügyeleti eszköz, amely lehetővé teszi, hogy alkalmazásokat helyezzen üzembe a Kubernetes-fürtökön. Az Azure arc azt is lehetővé teszi, hogy a tárolók Azure Monitor használatával megtekinthesse és figyelje a fürtöket. További információért látogasson el a [Mi az Azure-Arc enabled Kubernetes?](../azure-arc/kubernetes/overview.md)című témakörben. Az Azure arc díjszabásával kapcsolatos információkért látogasson el az [Azure arc díjszabására](https://azure.microsoft.com/services/azure-arc/#pricing).
 
 
 ## <a name="next-steps"></a>További lépések

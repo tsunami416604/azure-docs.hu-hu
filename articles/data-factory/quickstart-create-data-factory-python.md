@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6344e8e02f61da0bc742dcc6e05914bebf5d1fba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013326"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446042"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rövid útmutató: Adat-előállító és folyamat létrehozása a Python használatával
 
@@ -32,7 +32,7 @@ Ebben a rövid útmutatóban egy adatelőállítót hoz létre a Python használ
 
 A Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi adatvezérelt munkafolyamatok létrehozását az adatáthelyezés és az adatátalakítások előkészítéséhez és automatizálásához. A Azure Data Factory használatával adatvezérelt munkafolyamatokat hozhat létre és ütemezhet, folyamatok néven.
 
-A folyamatok különböző adattárakból származó adatok betöltésére képesek. A folyamatok számítási szolgáltatások, például Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning használatával dolgozzák fel vagy alakítják át az adatfeldolgozást. A folyamatok olyan adattárakba teszik közzé a kimeneti adatokat, mint például az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) az üzleti intelligenciát (BI) használó alkalmazásokhoz.
+A folyamatok különböző adattárakból származó adatok betöltésére képesek. A folyamatok számítási szolgáltatások, például Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning használatával dolgozzák fel vagy alakítják át az adatfeldolgozást. A folyamatok kimeneti adatokat tesznek közzé az adattárakban, például az Azure szinapszis Analytics for Business Intelligence-(BI-) alkalmazásokhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

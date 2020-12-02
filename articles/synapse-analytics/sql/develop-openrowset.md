@@ -1,6 +1,6 @@
 ---
-title: A OPENROWSET használata kiszolgáló nélküli SQL-készletben (előzetes verzió)
-description: Ez a cikk a kiszolgáló nélküli SQL-készlet (előzetes verzió) OPENROWSET szintaxisát ismerteti, és ismerteti az argumentumok használatát.
+title: A OPENROWSET használata kiszolgáló nélküli SQL-készletben
+description: Ez a cikk a kiszolgáló nélküli SQL-készletben található OPENROWSET szintaxisát ismerteti, és ismerteti az argumentumok használatát.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 90a5afb19c9ba5061b9304c739914262bcdbee15
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122720"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446676"
 ---
-# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
-A `OPENROWSET(BULK...)` függvény lehetővé teszi a fájlok elérését az Azure Storage-ban. `OPENROWSET` a függvény egy távoli adatforrás tartalmát olvassa be (például fájl), és a tartalmat sorok halmaza adja vissza. A kiszolgáló nélküli SQL-készlet (előzetes verzió) erőforráson belül a OPENROWSET tömeges sorhalmaz szolgáltatója a OPENROWSET függvény meghívásával és a TÖMEGES beállítás megadásával érhető el.  
+A `OPENROWSET(BULK...)` függvény lehetővé teszi a fájlok elérését az Azure Storage-ban. `OPENROWSET` a függvény egy távoli adatforrás tartalmát olvassa be (például fájl), és a tartalmat sorok halmaza adja vissza. A kiszolgáló nélküli SQL-készlet erőforráson belül a OPENROWSET tömeges sorhalmaz szolgáltatója a OPENROWSET függvény meghívásával és a TÖMEGES beállítás megadásával érhető el.  
 
 A `OPENROWSET` függvény hivatkozhat a `FROM` lekérdezés záradékára úgy, mintha a tábla neve lenne `OPENROWSET` . Olyan beépített TÖMEGES szolgáltatón keresztül támogatja a tömeges műveleteket, amely lehetővé teszi, hogy egy fájlból származó adatok beolvassák és visszaadjanak a sorhalmazban.
 

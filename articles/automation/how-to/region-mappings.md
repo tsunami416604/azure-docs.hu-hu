@@ -1,16 +1,16 @@
 ---
 title: A társított Log Analytics-munkaterület esetében támogatott régiók
 description: Ez a cikk az Automation-fiók és a Log Analytics munkaterület közötti támogatott régió-hozzárendeléseket ismerteti, mivel azok a Azure Automation egyes szolgáltatásaihoz kapcsolódnak.
-ms.date: 10/19/2020
+ms.date: 12/01/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 23e5293301a2fc311565d0c1c8ec5fd92bebe9b2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 25ddf562f92ca96a505432a58f137657a2bbc4bd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183566"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446974"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>A társított Log Analytics-munkaterület esetében támogatott régiók
 
@@ -31,6 +31,7 @@ A következő táblázat a támogatott leképezéseket tartalmazza:
 |---|---|
 |**USA**||
 |<sup>1</sup> . EastUS|EastUS2|
+|<sup>2</sup> . EastUS2|EastUS|
 |WestUS2|WestUS2|
 |SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
@@ -40,7 +41,7 @@ A következő táblázat a támogatott leképezéseket tartalmazza:
 |AustraliaSoutheast|AustraliaSoutheast|
 |SoutheastAsia|SoutheastAsia|
 |CentralIndia|CentralIndia|
-|<sup>2</sup> . ChinaEast2|ChinaEast2|
+|<sup>3</sup> . ChinaEast2|ChinaEast2|
 |JapanEast|JapanEast|
 |**Európa**||
 |UKSouth|UKSouth|
@@ -48,11 +49,13 @@ A következő táblázat a támogatott leképezéseket tartalmazza:
 |SwitzerlandNorth|SwitzerlandNorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
-|<sup>2</sup> . USGovArizona|USGovArizona|
+|<sup>3</sup> . USGovArizona|USGovArizona|
 
 <sup>1</sup> a log Analytics-munkaterületek Automation-fiókokba való EastUS nem pontos a régiók közötti leképezés, de a megfelelő leképezés.
 
-<sup>2</sup> ebben a régióban csak Update Management támogatott, és más funkciók, például a Change Tracking és a leltár jelenleg nem érhetők el.
+<sup>2</sup> a log Analytics-munkaterületek Automation-fiókokba való EastUS2 nem a régió – régió típusú leképezés, hanem a megfelelő leképezés.
+
+<sup>3</sup> ebben a régióban csak Update Management támogatott, és más funkciók, például a Change Tracking és a leltár jelenleg nem érhetők el.
 
 ## <a name="unlink-a-workspace"></a>Munkaterület leválasztása
 
@@ -85,7 +88,7 @@ Azt is megteheti, hogy leválasztja a munkaterületet az Automation-fiókjából
 1. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások** területen.
 2. Az Automation-fiók lapon válassza a **fiók megszüntetése** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg Update Management [Update Management áttekintésében](../update-management/overview.md).
 * Ismerkedjen meg a Change Tracking és a leltárral [change Tracking és leltár áttekintésében](../change-tracking/overview.md).

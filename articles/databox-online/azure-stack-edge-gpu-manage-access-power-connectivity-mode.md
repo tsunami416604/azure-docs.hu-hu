@@ -6,18 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 11/04/2020
 ms.author: alkohli
-ms.openlocfilehash: b66a184abce53c31fade19fc9e10ffe4c7ff8415
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 38dcb32b2993838f8c3f13334e0bc44e9146f113
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532443"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448627"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>A Azure Stack Edge Pro GPU hozzáférés-, energiagazdálkodási és csatlakozási módjának kezelése
 
 Ez a cikk azt ismerteti, hogyan kezelhető a Azure Stack Edge Pro és a GPU-eszköz hozzáférésének, teljesítményének és csatlakozási módjának kezelése. Ezek a műveletek a helyi webes felületen vagy a Azure Portalon keresztül hajthatók végre.
+
+Ez a cikk Azure Stack Edge Pro GPU-ra, Azure Stack Edge Pro R-re és Azure Stack Edge mini R-eszközökre vonatkozik.
+
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -31,6 +34,8 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 ## <a name="manage-device-access"></a>Eszközök hozzáférésének kezelése
 
 Az Azure Stack Edge Pro-eszköz hozzáférését az eszköz jelszavának használatával szabályozhatja. A jelszó a helyi webes felületen keresztül módosítható. Alaphelyzetbe állíthatja az eszköz jelszavát is a Azure Portalban.
+
+Az eszközökön található adatokhoz való hozzáférést a titkosítást a REST-kulcsok is ellenőrzik.
 
 ### <a name="change-device-password"></a>Az eszköz jelszavának módosítása
 
@@ -54,6 +59,40 @@ A munkafolyamat alaphelyzetbe állítása nem igényli, hogy a felhasználó fel
 
 2. Adja meg az új jelszót, majd erősítse meg. A megadott jelszónak 8 és 16 karakter közöttinek kell lennie. A jelszónak legalább hármat tartalmaznia kell a következő karakterek közül: nagybetűk, kisbetűk, számok és speciális karakterek. Válassza az **Alaphelyzetbe állítás** lehetőséget.
 
+    ![2. jelszó alaphelyzetbe állítása](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+
+### <a name="manage-access-to-device-data"></a>Az eszközre vonatkozó adathozzáférés kezelése
+
+Az Azure Stack Edge Pro R és a Azure Stack Edge mini R-eszközök esetében az eszköz adataihoz való hozzáférést az eszköz meghajtókon található titkosítást használó kulcsok vezérlik. Miután sikeresen konfigurálta az eszközt a titkosításhoz, az eszköz helyi felhasználói felületén elérhetővé válik a REST-nyugalmi kulcsok elforgatása lehetőség. 
+
+Ezzel a művelettel módosíthatja a BitLocker-kötetek kulcsait, `HcsData` `HcsInternal` valamint az eszközön lévő összes öntitkosítási meghajtót.
+
+Az alábbi lépéseket követve elforgathatja a titkosító Rest-kulcsokat.
+
+1. Az eszköz helyi felhasználói felületén nyissa meg az **első lépések** lapot. A **Biztonság** csempén válassza a **titkosítás – Rest: a kulcsok elforgatása** lehetőséget. Ez a beállítás csak akkor érhető el, ha sikeresen beállította a REST-alapú titkosítási kulcsokat.
+
+    ![Válassza a kulcsok elforgatása titkosításhoz – az első lépések oldalon](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-1.png)
+
+1. Használhatja a saját BitLocker-kulcsait, vagy használhatja a rendszer által generált kulcsokat is.  
+
+    A saját kulcs megadásához adjon meg egy 32 karakter hosszú Base-64 kódolású karakterláncot. A bemenet a következőhöz hasonló lesz, mint amikor az első alkalommal konfigurálja a titkosítást.
+
+    ![Saját titkosítási kulcs használata](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-2.png)
+
+    A rendszer által generált kulcsot is használhat.
+
+    ![Rendszer által generált titkosítási kulcs használata](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-3.png)
+
+1. Kattintson az **Alkalmaz** gombra. A rendszer elforgatja a kulcs-védőket.
+
+    ![Az új titkosítás – nyugalmi kulcs alkalmazása](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-4.png)
+
+1. Amikor a rendszer kéri a kulcsfájl letöltését és mentését, válassza a **letöltés és folytatás** lehetőséget. 
+
+    ![A kulcsfájl letöltése és folytatása](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-5.png)
+
+    Mentse a `.json` kulcsfájl biztonságos helyen. Ez a fájl az eszköz lehetséges jövőbeli helyreállításának megkönnyítésére szolgál.
+
     ![Képernyőfelvétel: az eszköz jelszavának alaphelyzetbe állítása párbeszédpanel.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Erőforrás-hozzáférés kezelése
@@ -69,7 +108,7 @@ Az Azure Stack Edge Pro-eszköz aktiválási kulcsának létrehozásakor, illetv
 
 Ahhoz, hogy a rendszer `User` képes legyen hozzáférni Active Directory bérlőhöz `Read all directory objects` . Nem lehet vendég felhasználó, mert nem rendelkezik engedéllyel a szolgáltatáshoz `Read all directory objects` . Ha vendég, akkor az olyan műveleteket, mint például az aktiválási kulcs létrehozása, a Azure Stack Edge Pro-eszközön létrehozott megosztás létrehozása, a felhasználó létrehozása, a peremhálózati számítási szerepkör konfigurálása, az eszköz jelszavának alaphelyzetbe állítása sikertelen lesz.
 
-A felhasználók Microsoft Graph API-hoz való hozzáférésének biztosításával kapcsolatos további információkért lásd: [Microsoft Graph engedélyek referenciája](https://docs.microsoft.com/graph/permissions-reference).
+A felhasználók Microsoft Graph API-hoz való hozzáférésének biztosításával kapcsolatos további információkért lásd: [Microsoft Graph engedélyek referenciája](/graph/permissions-reference).
 
 ### <a name="register-resource-providers"></a>Erőforrás-szolgáltatók regisztrálása
 
@@ -115,7 +154,7 @@ Az alapértelmezett teljes kapcsolaton kívül az eszköz részben csatlakoztato
 Az eszköz üzemmódjának módosításához kövesse az alábbi lépéseket:
 
 1. Az eszköz helyi webes FELÜLETén nyissa meg a **konfiguráció > a felhőben**.
-2. A legördülő listából válassza ki azt a módot, amelyre az eszközt használni szeretné. Kiválaszthatja a **teljes kapcsolat** , a **részlegesen csatlakoztatott** és a **teljesen leválasztott** lehetőséget is. Az eszköz részlegesen leválasztott módban való futtatásához engedélyezze **Azure Portal felügyeletet**.
+2. A legördülő listából válassza ki azt a módot, amelyre az eszközt használni szeretné. Kiválaszthatja a **teljes kapcsolat**, a **részlegesen csatlakoztatott** és a **teljesen leválasztott** lehetőséget is. Az eszköz részlegesen leválasztott módban való futtatásához engedélyezze **Azure Portal felügyeletet**.
 
  
 ## <a name="manage-power"></a>A Power kezelése
@@ -132,6 +171,6 @@ A fizikai eszköz a helyi webes felhasználói felülettel állítható le vagy 
 > [!NOTE]
 > Ha leállítja a fizikai eszközt, a bekapcsolásához le kell küldenie az eszköz főkapcsoló gombját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [kezelheti a megosztásokat](azure-stack-edge-manage-shares.md).

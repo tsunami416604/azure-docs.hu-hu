@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cd877a91c7c082ce7845394f2636857f33b7940f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 957274e6080ab4b77e6528386fe0b24b2d877219
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578756"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447313"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Virtuális gépek üzembe helyezése Azure Stack Edge Pro GPU-eszközön Azure PowerShell parancsfájl használatával
 
@@ -83,7 +83,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét a Azure S
 
     `Uninstall-Module -Name Azure.Storage`
 
-5. [Töltse le a AzCopy 10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#download-azcopy) rendszert a Windows-ügyfélre. Jegyezze fel ezt a helyet, mert a parancsfájl futtatásakor paraméterként adja át.
+5. [Töltse le a AzCopy 10](../storage/common/storage-use-azcopy-v10.md#download-azcopy) rendszert a Windows-ügyfélre. Jegyezze fel ezt a helyet, mert a parancsfájl futtatásakor paraméterként adja át.
 
 6. Győződjön meg arról, hogy a Windows-ügyfél TLS 1,2 vagy újabb rendszert futtat.
 
@@ -116,6 +116,6 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét a Azure S
     ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Virtuális gépek üzembe helyezése Azure PowerShell-parancsmagok használatával](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)

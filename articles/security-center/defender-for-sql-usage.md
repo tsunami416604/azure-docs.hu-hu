@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: d37c362da484a2a7e400da8f87dd0a37f0f80d3a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a80747a88087e1ad3a70f198a260e41a6848e34f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436725"
+ms.locfileid: "96445664"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender a gépeken futó SQL-kiszolgálókon 
 
@@ -108,7 +108,7 @@ A sebezhetőségi felmérés eredményei közvetlenül a Security Center tekinth
     Az egyes nézetekben a biztonsági ellenőrzések **Súlyosság** szerint rendezve jelennek meg. Egy adott biztonsági vizsgálatra kattintva megtekintheti a részleteket tartalmazó ablaktáblát **, amely** **leírja, hogyan** javíthatja, és egyéb kapcsolódó információkat, például a **hatást** vagy a **teljesítménytesztet**.
 
 ## <a name="azure-defender-for-sql-alerts"></a>SQL-alapú Azure Defender-riasztások
-A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják az SQL-gépek eléréséhez vagy kiaknázásához. Ezek az események riasztásokat indíthatnak a riasztások [SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) szakaszában a riasztások hivatkozása lapon](alerts-reference.md#alerts-sql-db-and-warehouse).
+A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják az SQL-gépek eléréséhez vagy kiaknázásához. Ezek az események riasztásokat indíthatnak a riasztások [SQL Database és az Azure szinapszis Analytics szakaszban, a riasztások hivatkozása lapon](alerts-reference.md#alerts-sql-db-and-warehouse).
 
 ## <a name="explore-and-investigate-security-alerts"></a>Biztonsági riasztások feltárása és kivizsgálása
 
@@ -128,7 +128,7 @@ Az Azure Defender for SQL-riasztások Security Center riasztások lapján, az er
 
 Kapcsolódó anyagok esetében tekintse meg a következő cikket:
 
-- [Biztonsági riasztások SQL Database és az Azure szinapszis Analyticshez (korábban SQL Data Warehouse)](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [Biztonsági riasztások SQL Database és az Azure szinapszis Analytics szolgáltatáshoz](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [E-mail-értesítések beállítása biztonsági riasztásokhoz](security-center-provide-security-contact-details.md)
 - [További információ az Azure Sentinelről](../sentinel/index.yml)
 - [Azure Security Center adatbiztonsági csomagja](../azure-sql/database/azure-defender-for-sql.md)

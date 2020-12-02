@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a65d8a499f6eba130dc9537de3cb2b3dc3abe8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447173"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446771"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Távoli monitorozási architektúra lehetőségei
 
@@ -23,7 +23,7 @@ Az Azure IoT távoli monitorozási megoldásának gyorsítása egy nyílt forrá
 - Eszközfelügyelet
 - Stream-feldolgozás
 
-A távoli figyelési megoldás a javasolt [Azure IoT-hivatkozási architektúrát](https://aka.ms/iotrefarchitecture)követi.
+A távoli figyelési megoldás a javasolt [Azure IoT-hivatkozási architektúrát](/azure/architecture/reference-architectures/iot)követi.
 
 Ez a cikk a távoli figyelési alrendszerek főbb építészeti és műszaki lehetőségeit ismerteti. A távoli figyelési megoldásban készített Microsoft technikai döntések azonban nem az egyetlen módszer a távoli figyelési IoT megoldás megvalósítására. Tekintse át a technikai megvalósítási alapkonfigurációt a sikeres alkalmazások létrehozásához, és módosítsa a következőre:
 
@@ -86,4 +86,4 @@ A Docker alternatívái többek között a Azure App Service. A Kubernetes-megol
 
 * A távoli figyelési megoldás üzembe helyezése [itt](https://www.azureiotsolutions.com/).
 * Ismerkedjen meg a GitHub-kóddal a [C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) és a [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/)nyelven.  
-* További információ a IoT- [hivatkozás architektúráról](https://aka.ms/iotrefarchitecture).
+* További információ a IoT- [hivatkozás architektúráról](/azure/architecture/reference-architectures/iot).

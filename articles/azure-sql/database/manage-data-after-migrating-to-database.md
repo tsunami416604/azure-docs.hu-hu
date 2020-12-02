@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: fe49dce276a15d9d7bc8ddaa5618c0e43dec62e9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b34ac24cb26bf5db4a49a5ad5b531deb252f4695
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841223"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446117"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Új DBA a felhőben – Azure SQL Database kezelése az áttelepítés után
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -101,12 +101,12 @@ A [Azure Security Center](https://azure.microsoft.com/services/security-center/)
 
 A SQL Databaseban két hitelesítési módszer érhető el:
 
-- [Azure Active Directory hitelesítés](authentication-aad-overview.md)
+- [Azure Active Directory-hitelesítés](authentication-aad-overview.md)
 - [SQL-hitelesítés](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 A hagyományos Windows-hitelesítés nem támogatott. Azure Active Directory (Azure AD) egy központi identitás-és hozzáférés-kezelési szolgáltatás. Ezzel kihasználhatja az egyszeri bejelentkezéses hozzáférést (SSO) a szervezet minden munkatársa számára. Ez azt jelenti, hogy a hitelesítő adatok az összes Azure-szolgáltatásban meg vannak osztva az egyszerűbb hitelesítéshez. 
 
-Az Azure AD támogatja az [Azure ad multi-Factor Authentication](authentication-mfa-ssms-overview.md) , és [néhány kattintással](../../active-directory/hybrid/how-to-connect-install-express.md) integrálható az Azure ad-vel a Windows Server Active Directory. Az SQL-hitelesítés pontosan úgy működik, ahogy korábban is használta. Adja meg a felhasználónevet és a jelszót, és a felhasználókat egy adott kiszolgálón található adatbázishoz hitelesítheti. Ez lehetővé teszi a SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse) számára, hogy az Azure AD-tartományon belül Multi-Factor Authentication és vendég felhasználói fiókokat is kínáljon. Ha már rendelkezik egy Active Directory helyszíni szolgáltatással, a könyvtárat összevonása a Azure Active Directory segítségével bővítheti a címtárat az Azure-ban.
+Az Azure AD támogatja az [Azure ad multi-Factor Authentication](authentication-mfa-ssms-overview.md) , és [néhány kattintással](../../active-directory/hybrid/how-to-connect-install-express.md) integrálható az Azure ad-vel a Windows Server Active Directory. Az SQL-hitelesítés pontosan úgy működik, ahogy korábban is használta. Adja meg a felhasználónevet és a jelszót, és a felhasználókat egy adott kiszolgálón található adatbázishoz hitelesítheti. Ez lehetővé teszi az SQL Database és az Azure szinapszis Analytics számára, hogy Multi-Factor Authentication és vendég felhasználói fiókokat nyújtson az Azure AD-tartományon belül. Ha már rendelkezik egy Active Directory helyszíni szolgáltatással, a könyvtárat összevonása a Azure Active Directory segítségével bővítheti a címtárat az Azure-ban.
 
 |**Ha...**|**SQL Database/Azure szinapszis-elemzés**|
 |---|---|
@@ -127,7 +127,7 @@ Az Ön rendelkezésére áll több olyan módszer is, amelyekkel optimális kapc
 - VNet-szolgáltatásvégpontok
 - Fenntartott IP-címek
 
-#### <a name="firewall"></a>Firewall
+#### <a name="firewall"></a>Tűzfal
 
 A tűzfal nem engedélyezi a hozzáférést a kiszolgálóhoz egy külső entitásból azáltal, hogy csak bizonyos entitások férhetnek hozzá a kiszolgálóhoz. Alapértelmezés szerint a kiszolgálón belüli adatbázisokhoz való összes kapcsolat nem engedélyezett, a többi Azure-szolgáltatástól érkező kapcsolatok kivételével (optionally7). Tűzfalszabály esetén a számítógép IP-címének a tűzfalon keresztüli engedélyezésével megnyithatja a kiszolgálóhoz való hozzáférést csak olyan entitások (például egy fejlesztői számítógép) számára, amelyeknek jóvá kell hagynia. Azt is lehetővé teszi, hogy olyan IP-címtartományt határozzon meg, amelyet engedélyezni szeretne a kiszolgálóhoz való hozzáféréshez. A szervezet fejlesztői számítógépének IP-címei például a tűzfal beállításai lapon egy tartomány megadásával adhatók hozzá.
 
@@ -169,7 +169,7 @@ A titkosítás erős mechanizmust biztosít a behatolókkal szembeni bizalmas ad
 A SQL Database alapértelmezés szerint az adatok és naplófájlok a tárolási alrendszerben tárolt adatai teljesen és mindig titkosítva vannak a [transzparens adattitkosítás [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használatával. A biztonsági másolatok is titkosítva vannak. A TDE esetében nem szükséges módosítani az alkalmazás oldalán az adatokhoz való hozzáférést. A titkosítás és a visszafejtés transzparens módon történik; Ezért a név.
 A bizalmas adatok repülés közbeni és nyugalmi állapotban való védelme érdekében SQL Database a [Always encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine)nevű szolgáltatást nyújt. Az AE az ügyféloldali titkosítás egy formája, amely titkosítja a bizalmas oszlopokat az adatbázisban (így rejtjelezett az adatbázis-rendszergazdák és a jogosulatlan felhasználók számára). A kiszolgáló fogadja a titkosított adatvesztést. A Always Encrypted kulcsát az ügyfél oldalán is tárolja a rendszer, így csak a hitelesítő ügyfelek tudják visszafejteni a bizalmas oszlopokat. A kiszolgáló és az adatok rendszergazdái nem láthatják a bizalmas adatokat, mivel a titkosítási kulcsok tárolása az ügyfélen történik. Az AE a bizalmas oszlopokat a tábla végétől végéig titkosítja, a jogosulatlan ügyfelektől a fizikai lemezig. Az AE támogatja a mai egyenlőség-összehasonlításokat, így a Adattervezők továbbra is lekérdezheti a titkosított oszlopokat az SQL-parancsaik részeként. Always Encrypted számos kulcstároló-lehetőséggel használható, például a [Azure Key Vault](always-encrypted-azure-key-vault-configure.md), a Windows tanúsítványtároló és a helyi hardveres biztonsági modulok használatával.
 
-|**Jellemzők**|**Always Encrypted**|**Transzparens adattitkosítás**|
+|**Jellemzők**|**Always Encrypted**|**transzparens adattitkosítás**|
 |---|---|---|
 |**Titkosítási tartomány**|Végpontok közötti|Rest-adatok|
 |**A kiszolgáló bizalmas adatokat tud elérni**|Nem|Igen, mivel az inaktív adatok titkosítása|
@@ -335,6 +335,6 @@ Ezt többféleképpen is elérheti:
 - **[Adatszinkronizálás](sql-data-sync-data-sql-server-sql-database.md)** – ez a funkció segítséget nyújt a kétirányú adatszinkronizáláshoz több SQL Server adatbázis és SQL Database között. SQL Server adatbázisokkal való szinkronizáláshoz telepítenie és konfigurálnia kell a szinkronizálási ügynököt egy helyi számítógépen vagy virtuális gépen, és meg kell nyitnia a 1433-es kimenő TCP-portot.
 - **[Tranzakciós](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** replikáció – a tranzakciós replikációval szinkronizálhatja az adatokat egy SQL Server adatbázisból, hogy Azure SQL Database a közzétevő és az előfizető Azure SQL Database SQL Server példányával. Egyelőre csak ez a beállítás támogatott. Az adatok SQL Server adatbázisból az Azure SQL-be minimális állásidővel való áttelepítésével kapcsolatos további információkért lásd: a [tranzakciós replikáció használata](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [SQL Database](sql-database-paas-overview.md)megismerése.

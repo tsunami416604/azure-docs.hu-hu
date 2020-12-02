@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 088300d4b6f92886310315b67763536e39cbb019
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5109139c7168026c74a475128832fbb0733ce832
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789522"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447123"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private-hivatkozás Azure SQL Database és az Azure szinapszis Analyticshez
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "92789522"
 A privát hivatkozás lehetővé teszi, hogy egy **privát végponton** keresztül kapcsolódjon az Azure-beli különböző Pásti-szolgáltatásokhoz. A privát kapcsolati funkciót támogató Pásti-szolgáltatások listáját a [Private link dokumentációs oldalán találja](../../private-link/index.yml) . A privát végpont egy adott [VNet](../../virtual-network/virtual-networks-overview.md) és alhálózaton belüli magánhálózati IP-cím.
 
 > [!IMPORTANT]
-> Ez a cikk a Azure SQL Database és az Azure szinapszis Analytics (korábban SQL Data Warehouse) szolgáltatásra is vonatkozik. Az egyszerűség kedvéért az "adatbázis" kifejezés a Azure SQL Database és az Azure szinapszis Analytics mindkét adatbázisára vonatkozik. Hasonlóképpen, a "Server"re mutató hivatkozások a Azure SQL Database és az Azure szinapszis Analytics szolgáltatást futtató [logikai SQL Serverre](logical-servers.md) hivatkoznak. Ez a cikk *nem* vonatkozik az **Azure SQL felügyelt példányaira** .
+> Ez a cikk a Azure SQL Database és az Azure szinapszis Analytics szolgáltatásra is vonatkozik. Az egyszerűség kedvéért az "adatbázis" kifejezés a Azure SQL Database és az Azure szinapszis Analytics mindkét adatbázisára vonatkozik. Hasonlóképpen, a "Server"re mutató hivatkozások a Azure SQL Database és az Azure szinapszis Analytics szolgáltatást futtató [logikai SQL Serverre](logical-servers.md) hivatkoznak. Ez a cikk *nem* vonatkozik az **Azure SQL felügyelt példányaira**.
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Privát hivatkozás beállítása Azure SQL Databasehoz 
 
@@ -50,7 +50,7 @@ Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE
 1. Jóváhagyás vagy elutasítás után a lista a megfelelő állapotot jeleníti meg a válasz szövegével együtt.
 ![A jóváhagyás utáni összes Pécs képernyőképe][5]
 
-## <a name="on-premises-connectivity-over-private-peering"></a>Helyszíni kapcsolat privát társon keresztül
+## <a name="on-premises-connectivity-over-private-peering"></a>Helyi kapcsolat privát társhálózat-létesítésen keresztül
 
 Amikor az ügyfelek a helyszíni gépekről csatlakoznak a nyilvános végponthoz, az IP-címüket [kiszolgálói szintű tűzfalszabály](firewall-create-server-level-portal-quickstart.md)használatával kell hozzáadni az IP-alapú tűzfalhoz. Habár ez a modell jól működik, hogy lehetővé tegye az egyes gépekhez való hozzáférést a fejlesztési vagy tesztelési feladatokhoz, nehéz felügyelni éles környezetben.
 
@@ -149,7 +149,7 @@ Vegyünk például egy olyan forgatókönyvet, amelyben SQL Server Management St
 1. Csak a virtuális gép magánhálózati IP-címének használatával engedélyezze a SQL Database-adatbázis felé irányuló forgalmat. További információt a [szolgáltatás-végpont](vnet-service-endpoint-rule-overview.md) és a [virtuális hálózati tűzfalszabályok](firewall-configure.md)cikkeiben talál.
 1. Az Azure-beli virtuális gépen a következő módon Szűkítse le a kimenő kapcsolatok hatókörét [hálózati biztonsági csoportok (NSG)](../../virtual-network/manage-network-security-group.md) és szolgáltatás-címkék használatával.
     - Olyan NSG-szabályt ad meg, amely engedélyezi a forgalmat a Service tag = SQL szolgáltatásban. WestUs – csak az USA nyugati régiójában lévő SQL Databasehoz való kapcsolódás engedélyezése
-    - NSG-szabály megadása ( **magasabb prioritással** ) a Service tag által megtagadott forgalom megtagadásához = SQL – az összes régióban SQL Database kapcsolatok megtagadása
+    - NSG-szabály megadása ( **magasabb prioritással**) a Service tag által megtagadott forgalom megtagadásához = SQL – az összes régióban SQL Database kapcsolatok megtagadása
 
 A telepítő végén az Azure-beli virtuális gép csak az USA nyugati régiójában lévő SQL Database adatbázisához tud csatlakozni. A kapcsolat azonban nem korlátozódik egyetlen adatbázisra sem a SQL Database-ben. A virtuális gép továbbra is csatlakozhat az USA nyugati régiójában található bármely adatbázishoz, beleértve azokat az adatbázisokat is, amelyek nem részei az előfizetésnek. Noha a fenti forgatókönyvben lévő adatmennyiséget egy adott régióra csökkentették, nem kiszűrése el teljesen.
 
@@ -179,7 +179,7 @@ A helyszíni környezet és a SQL Database-adatbázis közötti kapcsolat létes
 
 A Base és a COPY utasítást általában az Azure szinapszis Analytics szolgáltatásba való betöltésére használják az Azure Storage-fiókokból. Ha az Azure Storage-fiók, amelyről az adatok betöltésére vonatkozó korlátozások vonatkoznak, csak a virtuális hálózati alhálózatok egy készletét érheti el privát végpontokon, szolgáltatási végpontokon vagy IP-alapú tűzfalakon keresztül, akkor a rendszer megszakítja a kapcsolatot a Base és a MÁSOLÁSi utasítással. Az importálási és exportálási forgatókönyvek az Azure-beli virtuális hálózathoz védett Azure Storage-hoz való csatlakozásának engedélyezéséhez kövesse az [itt](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)ismertetett lépéseket. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Azure SQL Database biztonság áttekintését lásd: [az adatbázis biztonságossá tétele](security-overview.md)
 - Az Azure SQL Database kapcsolatok áttekintését lásd: [Azure SQL connectivity Architecture](connectivity-architecture.md)

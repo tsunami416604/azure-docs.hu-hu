@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: ff294c0227bb6a830a5aef2379248714a7f2f64a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: fee7e244e26a59a773a5d5c9c74e23acd4113ee6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435195"
+ms.locfileid: "96446699"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>A Microsoft Spark segédprogramok bemutatása
 
@@ -33,7 +33,7 @@ Az alábbi lépések végrehajtásával győződjön meg arról, hogy az Azure A
 1. Nyissa meg a [Azure Portal](https://portal.azure.com/) és az elérni kívánt Storage-fiókot. Navigáljon az elérni kívánt tárolóhoz.
 2. Válassza ki a **hozzáférés-vezérlést (iam)** a bal oldali panelen.
 3. Rendelje hozzá az **Azure ad-fiókot** és **a munkaterület-identitást** (ugyanaz, mint a munkaterület neve) a Storage-beli **blob adatközreműködői** szerepkörhöz a Storage-fiókban, ha még nincs hozzárendelve. 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 A következő URL-címen keresztül férhet hozzá ADLS Gen2hoz a szinapszis Spark használatával:
 
@@ -879,6 +879,6 @@ Env.GetClusterId()
 ## <a name="next-steps"></a>További lépések
 
 - [Tekintse meg a szinapszis-minta jegyzetfüzeteket](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
-- [Rövid útmutató: Apache Spark készlet (előzetes verzió) létrehozása az Azure szinapszis Analytics szolgáltatásban webes eszközök használatával](../quickstart-apache-spark-notebook.md)
+- [Rövid útmutató: Apache Spark-készlet létrehozása az Azure szinapszis Analyticsben webes eszközök használatával](../quickstart-apache-spark-notebook.md)
 - [Az Azure szinapszis Analytics Apache Spark](apache-spark-overview.md)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

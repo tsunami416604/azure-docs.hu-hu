@@ -1,6 +1,6 @@
 ---
-title: A külső tábla definícióinak Apache Spark szinkronizálása a kiszolgáló nélküli SQL-készletben (előzetes verzió)
-description: A Spark-táblázatok kiszolgáló nélküli SQL-készlettel való lekérdezésének áttekintése (előzetes verzió)
+title: A külső táblák definícióinak Apache Spark szinkronizálása a kiszolgáló nélküli SQL-készletben
+description: A Spark-táblák lekérdezése kiszolgáló nélküli SQL-készlettel – áttekintés
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea4e7cd009be8a78faa0dcfab44371a350b6a200
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 057a69881b8b407e5d75fa3510ca1c3eb1830bc7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315825"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446495"
 ---
-# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool-preview"></a>Az Azure szinapszis külső táblázatos definícióinak Apache Spark szinkronizálása a kiszolgáló nélküli SQL-készletben (előzetes verzió)
+# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool"></a>Az Azure szinapszis külső táblázat-definícióinak Apache Spark szinkronizálása a kiszolgáló nélküli SQL-készletben
 
-A kiszolgáló nélküli SQL-készlet (előzetes verzió) automatikusan képes szinkronizálni a metaadatokat Apache Spark. A rendszer létrehoz egy kiszolgáló nélküli SQL Pool-adatbázist a kiszolgáló nélküli Apache Spark készletek (előzetes verzió) szolgáltatásban létező összes adatbázishoz. 
+A kiszolgáló nélküli SQL-készlet képes automatikusan szinkronizálni a metaadatokat a Apache Sparkból. A kiszolgáló nélküli Apache Spark-készletekben található minden adatbázishoz létre fog hozni egy kiszolgáló nélküli SQL-készletet tartalmazó adatbázist. 
 
 A Parquet és az Azure Storage-on alapuló Spark külső táblák esetében egy külső tábla jön létre egy kiszolgáló nélküli SQL Pool-adatbázisban. Így leállíthatja a Spark-készleteket, és továbbra is lekérdezheti a Spark külső táblákat a kiszolgáló nélküli SQL-készletből.
 
@@ -63,6 +63,6 @@ SELECT * FROM [db].dbo.[spark_table]
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a [storage Access Control](develop-storage-files-storage-access-control.md) cikkével, amely további információt biztosít a Storage hozzáférés-vezérléséről.
