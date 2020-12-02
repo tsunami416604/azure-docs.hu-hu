@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6107ffea4fe4d615a42973ab1b231ca9f6b5241f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674955"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518668"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX-alkalmazás szószedetének csatolása
 
@@ -108,7 +108,19 @@ A leválasztás értesíti az operációs rendszert arról, hogy egy jelenleg ne
 
 ## <a name="cim"></a>CIM
 
-. A CIM a kompozit képfájlok rendszeréhez (CimFS) társított új fájlkiterjesztés. A CIM-fájlok csatlakoztatása és leválasztása gyorsabb a VHD-fájlokban. A CIM a VHD-nél kevesebb PROCESSZORt és memóriát is felhasznál.
+A. CIM egy új fájlkiterjesztés, amely a kompozit képfájlok rendszeréhez (CimFS) van társítva. A CIM-fájlok csatlakoztatása és leválasztása gyorsabb a VHD-fájlokban. A CIM a VHD-nél kevesebb PROCESSZORt és memóriát is felhasznál.
+
+A CIM-fájl egy fájl. CIM-bővítmény, amely metaadatokat és legalább hat további, tényleges adatokat tartalmazó fájlt tartalmaz. A CIM-fájlban található fájlok nem rendelkeznek bővítményekkel. A következő táblázat felsorolja a CIM-ban található példákat:
+
+| Fájlnév | Kiterjesztés | Méret |
+|-----------|-----------|------|
+| VSC | CIM | 1 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 27 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 20 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 42 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 428 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 217 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 264 132 KB |
 
 A következő táblázat a VHD-k és a CimFS közötti teljesítmény-összehasonlítás. Ezek a számok egy DSv4-gépen futtatott, 500 300 MB-os fájlokkal futtatott teszt eredményei.
 
@@ -119,6 +131,6 @@ A következő táblázat a VHD-k és a CimFS közötti teljesítmény-összehaso
 | Memóriahasználat | 6% (8 GB)                      | 2% (8 GB)       |
 | PROCESSZOR (szám-tüske)          | Többszöri maxed | Nincs hatás |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az MSIX alkalmazáshoz, tekintse át az [áttekintést](what-is-app-attach.md) és a [gyakori kérdéseket](app-attach-faq.md). Ellenkező esetben Ismerkedjen [meg az alkalmazások csatlakoztatásának beállítása](app-attach.md)című lépéssel.

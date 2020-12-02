@@ -1,6 +1,6 @@
 ---
 title: A Jupyter helyi telepítése és kapcsolódás a Sparkhoz az Azure HDInsight
-description: Ismerje meg, hogyan telepítheti helyileg a Jupyter-jegyzetfüzetet a számítógépre, és hogyan csatlakoztatható egy Apache Spark-fürthöz.
+description: Megtudhatja, hogyan telepítheti Jupyter Notebook helyileg a számítógépre, és hogyan csatlakoztatható egy Apache Spark-fürthöz.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,21 +8,21 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 96b2e7deff464f00ced4457a514ac833a90bd42d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 16cb8a9c2a951c9f60640248ef74757d1e5ee200
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999892"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518923"
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Telepítse a Jupyter notebookot a számítógépre, és kapcsolódjon Apache Spark a HDInsight
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Telepítse a Jupyter Notebookt a számítógépre, és kapcsolódjon a HDInsight Apache Sparkhoz
 
-Ebből a cikkből megtudhatja, hogyan telepítheti a Jupyter notebookot az egyéni PySpark (Python) és a Apache Spark (a Scala) kernelekhez a Spark Magic használatával. Ezután csatlakoztassuk a jegyzetfüzetet egy HDInsight-fürthöz.
+Ebből a cikkből megtudhatja, hogyan telepítheti a Jupyter Notebookt az egyéni PySpark (a Python esetében) és a Apache Spark (a Scala) kernelekhez a Spark Magic használatával. Ezután csatlakoztassuk a jegyzetfüzetet egy HDInsight-fürthöz.
 
 A Jupyter telepítése és a HDInsight szolgáltatáshoz való Apache Spark csatlakozás négy fő lépésből áll.
 
 * A Spark-fürt konfigurálása.
-* Telepítse a Jupyter notebookot.
+* Telepítse a Jupyter Notebook.
 * Telepítse a PySpark és a Spark-kerneleket a Spark magictal.
 * A Spark Magic konfigurálása a HDInsight-beli Spark-fürt eléréséhez.
 
@@ -34,7 +34,7 @@ Az egyéni kernelekkel és a Spark Magic szolgáltatással kapcsolatos további 
 
 * A Jupyter-notebookok és a HDInsighton futó Spark használatának ismerete.
 
-## <a name="install-jupyter-notebook-on-your-computer"></a>A Jupyter notebook telepítése a számítógépre
+## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter Notebook telepítése a számítógépre
 
 Telepítse a Pythont a Jupyter-jegyzetfüzetek telepítése előtt. Az [anaconda-disztribúció](https://www.anaconda.com/download/) a Pythont és a Jupyter notebook is telepíti.
 
@@ -150,7 +150,7 @@ Ebben a szakaszban azt a Spark-varázst konfigurálja, amelyet korábban telepí
 
     a. Hozzon létre új notebookot. A jobb oldali sarokban válassza az **új** lehetőséget. Ekkor meg kell jelennie az alapértelmezett kernel **Python 2** vagy **Python 3** és a telepített kerneleknek. A tényleges értékek a telepítési lehetőségektől függően eltérőek lehetnek.  Válassza a **PySpark** lehetőséget.
 
-    ![Elérhető kernelek a Jupyter notebookon](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Kernelek a Jupyter notebookon")
+    ![Elérhető kernelek a Jupyter Notebook](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Kernelek a Jupyter Notebookban")
 
     > [!IMPORTANT]  
     > Miután kiválasztotta az **új** rendszerhéj áttekintését a hibákhoz.  Ha úgy látja a hibát, hogy a `TypeError: __init__() got an unexpected keyword argument 'io_loop'` Tornado bizonyos verzióiban ismert probléma merülhet fel.  Ha igen, állítsa le a kernelt, majd a következő paranccsal minősítse le a tornádó telepítését: `pip install tornado==4.5.3` .
@@ -170,7 +170,7 @@ Ebben a szakaszban azt a Spark-varázst konfigurálja, amelyet korábban telepí
 
 A Jupyter telepítésének okai a számítógépen, majd a HDInsight-fürthöz való kapcsolódás a Apache Spark-fürtön:
 
-* Lehetőséget nyújt a jegyzetfüzetek helyi létrehozására, az alkalmazás tesztelésére egy futó fürtön, majd feltölti a jegyzetfüzeteket a fürtbe. A jegyzetfüzetek fürtbe való feltöltéséhez feltöltheti őket a vagy a fürtöt futtató Jupyter-jegyzetfüzettel, vagy mentheti őket a `/HdiNotebooks` fürthöz társított Storage-fiók mappájába. A jegyzetfüzetek fürtön való tárolásával kapcsolatos további információkért lásd: [Hol vannak tárolva a Jupyter notebookok](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
+* Lehetőséget nyújt a jegyzetfüzetek helyi létrehozására, az alkalmazás tesztelésére egy futó fürtön, majd feltölti a jegyzetfüzeteket a fürtbe. A jegyzetfüzetek fürtbe való feltöltéséhez feltöltheti őket a vagy a fürtöt futtató Jupyter Notebook használatával, vagy mentheti őket a `/HdiNotebooks` fürthöz társított Storage-fiók mappájába. A jegyzetfüzetek fürtön való tárolásával kapcsolatos további információkért lásd: [Hol vannak tárolva a Jupyter notebookok](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
 * A helyileg elérhető jegyzetfüzetek esetében az alkalmazásra vonatkozó követelmény alapján csatlakozhat különböző Spark-fürtökhöz.
 * A GitHub segítségével implementálhatja a verziókövetés rendszerét, és vezérelheti a jegyzetfüzetek verziószámát. Olyan együttműködési környezetet is használhat, amelyben több felhasználó is dolgozhat ugyanazzal a jegyzetfüzettel.
 * A jegyzetfüzetekkel helyileg is dolgozhat, anélkül, hogy fürtöt kellene létesítenie. Csak egy fürtre van szüksége a jegyzetfüzetek teszteléséhez, a jegyzetfüzetek és a fejlesztési környezetek manuális kezeléséhez nem.
@@ -182,5 +182,5 @@ A Jupyter telepítésének okai a számítógépen, majd a HDInsight-fürthöz v
 ## <a name="next-steps"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
-* [Kernelek Jupyter notebookhoz Apache Sparkon](apache-spark-jupyter-notebook-kernels.md)
+* [A Apache Spark Jupyter Notebook kernelei](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal Apache Spark](apache-spark-jupyter-notebook-use-external-packages.md)

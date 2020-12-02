@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 87dff3bbb4a7ff5e40a06d1b63bdc38987d727fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f9b9681b08f5864dc34bbf1c35dc6919129c24cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492692"
+ms.locfileid: "96518804"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
 
@@ -61,7 +61,7 @@ Ha a kiszolgáló a Key vaultban tárolt ügyfél által felügyelt kulcs haszn�
 A Key Vault konfigurálásának követelményei a következők:
 
 * Key Vault és Azure Database for MySQL ugyanahhoz a Azure Active Directory (Azure AD) bérlőhöz kell tartoznia. A több-bérlős Key Vault és a kiszolgálói interakciók nem támogatottak. A Key Vault erőforrás áthelyezéséhez ezután újra kell konfigurálnia az adattitkosítást.
-* A [Soft-delete] ((...) engedélyezése /Key-Vault/General/Soft-delete-Overview.MD) funkció a **90 napig** beállított megőrzési időtartammal rendelkező kulcstartóban az adatvesztés elleni védelem érdekében, ha véletlen kulcs (vagy Key Vault) törlése történik. A rendszer alapértelmezés szerint 90 napig őrzi meg a törölt erőforrásokat, kivéve, ha a megőrzési időszak explicit módon <= 90 nap. A helyreállítás és törlés műveletekhez saját engedélyek tartoznak egy Key Vault hozzáférési házirendben. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, de a PowerShell vagy az Azure CLI használatával is engedélyezhető (vegye figyelembe, hogy nem engedélyezheti a Azure Portal).
+* Az adatvesztés elleni védelem érdekében [engedélyezze a (](../key-vault/general/soft-delete-overview.md) z) **90 napig** beállított megőrzési időtartamot a Key vaultban, hogy védve legyen az adatvesztéstől, ha véletlen kulcs (vagy Key Vault) törlése történik. A rendszer alapértelmezés szerint 90 napig őrzi meg a törölt erőforrásokat, kivéve, ha a megőrzési időszak explicit módon <= 90 nap. A helyreállítás és törlés műveletekhez saját engedélyek tartoznak egy Key Vault hozzáférési házirendben. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, de a PowerShell vagy az Azure CLI használatával is engedélyezhető (vegye figyelembe, hogy nem engedélyezheti a Azure Portal).
 * Engedélyezze a [védelem kiürítése](../key-vault/general/soft-delete-overview.md#purge-protection) funkciót a kulcstartóban, a megőrzési időszak **90 napra** van állítva. A védelem kiürítése csak akkor engedélyezhető, ha a törlés engedélyezve van. Az Azure CLI vagy a PowerShell használatával kapcsolható be. Ha a védelem kiürítése be van kapcsolva, a törölt állapotban lévő tároló vagy objektum nem törölhető, amíg meg nem adta a megőrzési időszakot. A helyreállítható tárolók és objektumok továbbra is helyreállíthatók, így biztosítható, hogy az adatmegőrzési szabályzatot követni fogjuk. 
 * Adja meg az Azure Database for MySQL hozzáférést a Key vaulthoz a Get, a wrapKey és a unwrapKey engedélyekkel az egyedi felügyelt identitás használatával. A Azure Portal az egyedi "szolgáltatás" identitás automatikusan létrejön, ha engedélyezve van az adattitkosítás a MySQL-ben. Lásd: az [adattitkosítás konfigurálása a MySQL](howto-data-encryption-portal.md) -hez részletes, lépésenkénti útmutatás a Azure Portal használatakor.
 
@@ -70,8 +70,8 @@ Az ügyfél által felügyelt kulcs konfigurálásának követelményei a követ
 * A ADATTITKOSÍTÁSI kulcsot titkosításához használt ügyfél által felügyelt kulcs csak aszimmetrikus, RSA 2048 lehet.
 * A kulcs aktiválási dátumát (ha be van állítva) a múltban dátumnak és időpontnak kell lennie. A lejárati dátum nincs beállítva.
 * A kulcsnak *engedélyezett* állapotban kell lennie.
-* A kulcsnak **90 napra** beállított megőrzési időtartammal [kell rendelkeznie.](../key-vault/general/soft-delete-overview.md)
-* A Kay-nek engedélyezve kell lennie a [kiürítési védelemmel](../key-vault/general/soft-delete-overview.md#purge-protection).
+* A kulcsnak **90 napra** beállított megőrzési időtartammal [kell rendelkeznie.](../key-vault/general/soft-delete-overview.md) Ez implicit módon beállítja a szükséges Key attribútumot recoveryLevel: "helyreállítható". Ha az adatmegőrzés értéke < 90 nap, a recoveryLevel: "CustomizedRecoverable", amely nem a követelmény, ezért győződjön meg arról, hogy a megőrzési időtartam beállítása **90 nap**.
+* A kulcsnak engedélyezve kell lennie a [kiürítési védelemmel](../key-vault/general/soft-delete-overview.md#purge-protection).
 * Ha [meglévő kulcsot importál](/rest/api/keyvault/ImportKey/ImportKey) a kulcstartóba, győződjön meg arról, hogy a támogatott fájlformátumokban ( `.pfx` , `.byok` ,) meg van-e biztosítva `.backup` .
 
 ## <a name="recommendations"></a>Javaslatok

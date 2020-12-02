@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 9ecac482c138447a3a9dc99193fb131b688993e4
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 28bacb923578fa0c631aa7b5092e0d11f98b1dcf
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556607"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518413"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure Portal használata az Azure-beli virtuális gépen SQL Server rendelkezésre állási csoport (előzetes verzió) konfigurálásához 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -100,9 +100,6 @@ Ehhez kövesse az alábbi lépéseket:
 1. Tekintse át a fürt beállításait. 
 1. Válassza az alkalmaz elemet a fürt **beléptetéséhez** , majd a folytatáshoz válassza az **Igen** lehetőséget.
 
-
-
-
 ## <a name="create-availability-group"></a>Rendelkezésre állási csoport létrehozása
 
 A fürt létrehozása vagy előkészítése után hozza létre a rendelkezésre állási csoportot a Azure Portal használatával. Ehhez kövesse az alábbi lépéseket:
@@ -171,7 +168,7 @@ Ha további SQL Server virtuális gépeket szeretne hozzáadni a fürthöz, köv
 
 1. Bontsa ki a **Windows Server feladatátvételi fürt hitelesítő adatait** , és adja meg a SQL Server szolgáltatáshoz, a fürthöz és a fürthöz tartozó rendszertöltő fiókokhoz használt fiókokat. 
 1. Válassza ki azokat a SQL Server virtuális gépeket, amelyeket hozzá szeretne adni a fürthöz. 
-1. Kattintson az **Alkalmaz** elemre. 
+1. Kattintson az **Alkalmaz** gombra. 
 
 A központi telepítés állapotát a **tevékenység naplójában** tekintheti meg, amely a felső navigációs sávon harang ikonján keresztül érhető el. 
 
@@ -179,7 +176,7 @@ A központi telepítés állapotát a **tevékenység naplójában** tekintheti 
 ## <a name="modify-availability-group"></a>Rendelkezésre állási csoport módosítása 
 
 
-**További replikákat adhat hozzá** a rendelkezésre állási csoporthoz, **konfigurálhatja a figyelőt** , vagy **törölheti a figyelőt** a Azure Portal **magas rendelkezésre állási** lapjáról a rendelkezésre állási csoport melletti három pontra (...) kattintva: 
+**További replikákat adhat hozzá** a rendelkezésre állási csoporthoz, **konfigurálhatja a figyelőt**, vagy **törölheti a figyelőt** a Azure Portal **magas rendelkezésre állási** lapjáról a rendelkezésre állási csoport melletti három pontra (...) kattintva: 
 
 :::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="Jelölje ki a rendelkezésre állási csoport melletti három pontot, majd válassza a replika hozzáadása lehetőséget a rendelkezésre állási csoport további replikáinak hozzáadásához.":::
 
@@ -207,7 +204,7 @@ Ezután távolítsa el a fürt metaadatait az SQL IaaS-ügynök bővítményből
 # Remove the cluster from the SQL VM RP metadata
 # example: az sql vm group delete --name Cluster --resource-group SQLVM-RG
 
-az sql vm group delete --name <cluster name> Cluster --resource-group <resource group name>
+az sql vm group delete --name <cluster name> --resource-group <resource group name>
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -235,7 +232,7 @@ Ezután távolítsa el a fürt metaadatait az SQL IaaS-ügynök bővítményből
 # Remove the cluster metadata
 # example: Remove-AzSqlVMGroup -ResourceGroupName "SQLVM-RG" -Name "Cluster"
 
-Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster name> "
+Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster name>"
 ```
 
 ---
@@ -269,7 +266,7 @@ Ez azt jelzi, hogy az erőforrás-szolgáltató nem fér hozzá a SQL Server szo
 - Ellenőrizze, hogy a portálon megadott hitelesítő adatok megfelelnek-e a SQL Server szolgáltatásnak. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 A rendelkezésre állási csoportokról további információt a következő témakörben talál:

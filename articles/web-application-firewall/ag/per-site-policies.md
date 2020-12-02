@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 3ac0540856d8cb8ccba6f1d176292d634d2dc80f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc15c8deb7aea3256cc0077fbdc3ce1a2492b1b2
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856602"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519025"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Helyi WAF házirendek konfigurálása Azure PowerShell használatával
 
@@ -28,14 +28,14 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * A hálózat beállítása
 * WAF szabályzat létrehozása
 * Alkalmazásátjáró létrehozása engedélyezett WAF-fel
-* A WAF szabályzat globális, webhelyre és URI-ra való alkalmazása (előzetes verzió)
+* A WAF szabályzat globális, webhelyre és URI-ra való alkalmazása 
 * Virtuálisgép-méretezési csoport létrehozása
 * Tárfiók létrehozása és diagnosztika konfigurálása
 * Az alkalmazásátjáró tesztelése
 
 ![Példa webalkalmazási tűzfalra](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -249,7 +249,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy-preview"></a>URI-házirend alkalmazása (előzetes verzió)
+### <a name="apply-a-per-uri-policy"></a>URI-szabályzat alkalmazása
 
 Az URI-szabályzatok alkalmazásához egyszerűen hozzon létre egy új házirendet, és alkalmazza azt az elérésiút-szabály konfigurációjában. 
 
@@ -442,6 +442,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Applicat
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Webalkalmazási tűzfalszabályok testreszabása](application-gateway-customize-waf-rules-portal.md)

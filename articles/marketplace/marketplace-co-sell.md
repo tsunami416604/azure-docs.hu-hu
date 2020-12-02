@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/20/2020
-ms.openlocfilehash: 9d6970331024ea0cd08e890cc62507d9eb230678
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/2/2020
+ms.openlocfilehash: 99b5e7bee93ffee14585f048506104ec313b9bff
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016333"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518535"
 ---
 # <a name="co-sell-partner-engagement"></a>Együttes értékesítési partnerek bevonása
 
@@ -24,7 +24,7 @@ A közös értékesítésre szolgáló program a **szellemi tulajdon (IP) révé
 
     ![Diagram, amely bemutatja, hogyan történik a közös értékesítés a Microsoft által felügyelt ügyfeleken megosztva, elfogadva és megnyert értékesítési érdeklődők esetén.](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
 
-- **Közös értékesítésű incentivized** Az IP-megoldások a Microsoft értékesítési csoportjaival együttműködve, a piactéren elérhető, az alábbiakban felsorolt előnyök mellett is igénybe vehetik a Microsoft Field Sellers ösztönzőit.</li></ul>
+- **Közös értékesítésű incentivized** Az IP-címek a Microsoft értékesítési csoportjaival együttműködve, az alább felsorolt Piactéri előnyök mellett is igénybe vehetik a Microsoft Field Sellers ösztönzőit.</li></ul>
 
 ## <a name="marketplace-benefits-for-incentivized-offers"></a>A piactér előnyei incentivized-ajánlatok számára
 
@@ -67,7 +67,7 @@ Az alábbi lépéseket követve közvetlenül a partner Centerben kezdheti meg a
 
     :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="Ez a képen a közös értékesítés lap Listázás szakasza látható.":::  
 
-1. Adja meg az ajánlat részleteit, és töltse fel a biztosítékokat a **dokumentumok** szakaszban. A Microsoft Sellers ezeket az információkat az ajánlat ajánlása és értékesítése céljából fogja használni. (*Kötelező: ügyfél One-pager és Customer prezentációs Deck.*)
+1. Adja meg az ajánlat részleteit, és töltse fel a biztosítékokat a **dokumentumok** szakaszban. A Microsoft Sellers ezeket az információkat az ajánlat ajánlása és értékesítése céljából fogja használni. *(Kötelező: megoldás/ajánlat egy-pager és megoldás/ajánlat pitch Deck. Az Azure IP közös értékesítésének incentivized állapotának eléréséhez szükséges: hivatkozás architektúra diagram.)*
 
     :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Ez a rendszerkép a dokumentumok szakaszt jeleníti meg a közös értékesítés lapon.":::
 
@@ -93,7 +93,7 @@ A [partner Centerben a közös értékesítés lehetőséggel](./partner-center-
  :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="Ez a rendszerkép az ajánlatok aktuális közös értékesítési állapotát jeleníti meg.":::
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Microsofttal való értékesítésről](https://partner.microsoft.com/membership/sell-with-microsoft).
 - További információ a [partneri központ közös értékesítéssel kapcsolatos lehetőségéről](./partner-center-portal/commercial-marketplace-co-sell.md).

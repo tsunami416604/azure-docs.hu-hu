@@ -2,15 +2,15 @@
 title: Sablon létrehozása és üzembe helyezése – spec
 description: Megtudhatja, hogyan hozhat létre egy sablont az ARM-sablon alapján. Ezután telepítse a SPECT egy erőforráscsoporthoz az előfizetésében.
 author: tfitzmac
-ms.date: 11/17/2020
+ms.date: 12/01/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 8439b1de5a69b3e5bfc22e10f089938da921c1cb
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 03cf2013f1cec9722af5d7e72285d9f11d8a6bc1
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747502"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518957"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Gyors útmutató: sablon létrehozása és üzembe helyezése specifikáció (előzetes verzió)
 
@@ -21,15 +21,37 @@ Ebből a rövid útmutatóból megtudhatja, hogyan csomagolhat egy Azure Resourc
 Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. A használatához telepítenie kell a PowerShell vagy az Azure CLI legújabb verzióját. Azure PowerShell esetén használja a [5.0.0 vagy újabb verziót](/powershell/azure/install-az-ps). Azure CLI esetén használja az [2.14.2 vagy újabb verziót](/cli/azure/install-azure-cli).
+> A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. Ha Azure PowerShell használatával szeretné használni, telepítenie kell a [5.0.0 vagy újabb verziót](/powershell/azure/install-az-ps). Ha az Azure CLI-vel szeretné használni, használja a [Version 2.14.2 vagy az újabb verziót](/cli/azure/install-azure-cli).
 
 ## <a name="create-template-spec"></a>Sablon létrehozása – spec
 
-A sablon spec a **Microsoft. Resources/templateSpecs** nevű erőforrástípus. A sablon specifikációjának létrehozásához használhatja a Azure PowerShell, az Azure CLI vagy egy ARM-sablont. Minden lehetőségnél szüksége van egy ARM-sablonra, amely a sablon specifikációjának megfelelően van csomagolva.
+A sablon spec a **Microsoft. Resources/templateSpecs** nevű erőforrástípus. A sablon specifikációjának létrehozásához használhatja a Azure Portal, az Azure PowerShell, az Azure CLI vagy egy ARM-sablont. Minden lehetőségnél szüksége van egy ARM-sablonra, amely a sablon specifikációjának megfelelően van csomagolva.
 
 A PowerShell és a CLI használatával az ARM-sablon a parancs paraméterként lesz átadva. A ARM-sablonnal a sablon specifikációja a sablonon belül, a spec-definícióban van beágyazva.
 
 Ezek a beállítások alább láthatók.
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A képernyő felső részén, az **erőforrások, szolgáltatások és dokumentumok keresése** lapon írja be a **sablon specifikációk** kifejezést, majd válassza a **sablon specifikációk** lehetőséget.
+1. Válassza a **sablon létrehozása spec** elemet.
+1. Válassza ki vagy adja meg a következő értékeket:
+
+    - **Név**: adja meg a sablon specifikációjának nevét.  Például: **storageSpec**
+    - **Előfizetés**: válassza ki a sablon specifikációjának létrehozásához használt Azure-előfizetést.
+    - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, majd adjon meg egy új erőforráscsoport-nevet.  Például: **templateSpecRG**.
+    - **Hely**: válasszon egy helyet az erőforráscsoportnak. Például:  **USA 2. nyugati** régiója.
+    - **Verzió**: adja meg a sablon specifikációjának verzióját. Például: **1,0**, vagy **v 1.0**.
+
+1. Válassza a **Tovább: sablon szerkesztése** lehetőséget.
+1. Cserélje le a sablon tartalmát a következő JSON-ra:
+
+    :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+
+    Ez az a sablon, amelyet a rendszer a sablon specifikációjában csomagol.
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -203,7 +225,23 @@ Ezek a beállítások alább láthatók.
 
 ## <a name="deploy-template-spec"></a>Sablon üzembe helyezése – spec
 
-Most már üzembe helyezheti a sablon specifikációját. A sablon specifikációjának központi telepítése ugyanúgy történik, mint a benne található sablon üzembe helyezése, kivéve, ha a sablonhoz tartozó specifikáció erőforrás-AZONOSÍTÓját adja meg. Ugyanazokat az üzembe helyezési parancsokat használja, és szükség esetén adja át a paraméter értékét a sablon specifikációjának.
+Most már üzembe helyezheti a sablon specifikációját. A sablon specifikációjának telepítése ugyanúgy történik, mint a benne található sablon üzembe helyezése, azzal a kivétellel, hogy az Azure PowerShell vagy az Azure CLI-ben a sablonhoz tartozó specifikáció erőforrás-AZONOSÍTÓját adja meg. Ugyanazokat az üzembe helyezési parancsokat használja, és szükség esetén adja át a paraméter értékét a sablon specifikációjának.
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+
+1. A Azure Portal nyissa meg az utolsó eljárásban létrehozott erőforráscsoportot.  Például **templateSpecRG**.
+1. Válassza ki a létrehozott specifikációt. Például: **storageSpec**.
+1. Válassza az **Üzembe helyezés** lehetőséget.
+1. Válassza ki vagy adja meg a következő értékeket:
+
+    - **Előfizetés**: válasszon ki egy Azure-előfizetést az erőforrás létrehozásához.
+    - **Erőforráscsoport**: válassza az **új létrehozása** elemet, majd adja meg a **storageRG**.
+    - **Storage-fiók típusa**: válassza a **Standard_GRS** lehetőséget.
+
+    Hozzon létre egy új erőforráscsoportot, és telepítse a sablont a sablon specifikációjában az új erőforráscsoporthoz.
+
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
+1. Válassza a **Létrehozás** lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -350,6 +388,6 @@ Az ebben a rövid útmutatóban üzembe helyezett erőforrás törléséhez tör
 
 1. A felső menüben válassza az Erőforráscsoport törlése lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretne többet megtudni arról, hogyan hozható létre csatolt sablonokat tartalmazó sablon-specifikáció, tekintse meg a [csatolt sablon specifikációjának létrehozása](template-specs-create-linked.md)című témakört.

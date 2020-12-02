@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ac87e8394eaa609f7c57eaf9d83fe11a2bdb04f6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435824"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519042"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure Database for MySQL adattitkosítás az Azure CLI használatával
 
@@ -24,7 +24,7 @@ Ismerje meg, hogyan állíthatja be és kezelheti a Azure Database for MySQL ada
 * Hozzon létre egy Key vaultot és egy, az ügyfél által felügyelt kulcshoz használandó kulcsot. A Key vaulton engedélyezze a kiürítést és a helyreállítható törlést is.
 
   ```azurecli-interactive
-  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
+  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
   ```
 
 * A létrehozott Azure Key Vault hozzon létre egy kulcsot, amelyet a rendszer a Azure Database for MySQL adattitkosításához fog használni.
@@ -55,7 +55,8 @@ Ismerje meg, hogyan állíthatja be és kezelheti a Azure Database for MySQL ada
   * Nincs lejárati dátum
   * Nincs letiltva
   * **Get**, **wrap**, **dewrap** műveletek végrehajtása
-  * a recoverylevel attribútum **helyreállítható** értékre van állítva.
+  * a recoverylevel attribútum **helyreállítható** értékre van állítva (ehhez a 90 napig beállított megőrzési időtartammal rendelkező Soft delete engedélyezése szükséges)
+  * Védelem kiürítése engedélyezve
 
 A következő parancs használatával ellenőrizheti a kulcs fenti attribútumait:
 

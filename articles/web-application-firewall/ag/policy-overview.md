@@ -7,21 +7,16 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 59ca0b85ba2aff29bdb2ad3379c1054041d2b4cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990125"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518736"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Az Azure webalkalmazási tűzfal (WAF) szabályzatának áttekintése
 
 A webalkalmazási tűzfal házirendjei a WAF összes beállítását és konfigurációját tartalmazzák. Ide tartoznak a kizárások, az egyéni szabályok, a felügyelt szabályok stb. Ezeket a szabályzatokat ezután egy Application Gateway (Global), egy figyelő (hely) vagy egy elérésiút-alapú szabály (URI) társítják, amelyek érvénybe lépnek.
-
-> [!NOTE]
-> Az Azure webalkalmazási tűzfal (WAF) URI-házirendjei nyilvános előzetes verzióban érhetők el.
-> 
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A létrehozható szabályzatok száma nincs korlátozva. Amikor létrehoz egy házirendet, az alkalmazásnak hozzá kell rendelnie egy Application Gateway-hez, amely érvénybe lép. Az Application Gateway, a figyelők és az elérésiút-alapú szabályok tetszőleges kombinációjával társítható.
 
@@ -60,6 +55,6 @@ Ebben a példában egy globális szabályzattal rendelkezik, amely két helyre v
 Az új webalkalmazási tűzfal WAF-beállításai (egyéni szabályok, felügyelt szabálykészlet-konfigurációk, kizárások stb.) léteznek egy WAF-szabályzatban. Ha rendelkezik meglévő WAF, ezek a beállítások továbbra is előfordulhatnak a WAF-konfigurációban. Az új WAF házirendre való áttéréssel kapcsolatos további információkért [telepítse át a WAF config-t egy WAF-házirendbe](./migrate-policy.md). 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hozzon létre egy hely és egy URI-házirendet a Azure PowerShell használatával](per-site-policies.md).

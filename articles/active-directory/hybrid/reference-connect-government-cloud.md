@@ -11,19 +11,19 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 219893859d05eb419bc862484a9083abf8c26db7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997715"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518209"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Hibrid identitási megfontolások a Azure Government felhőhöz
 
 Ez a cikk a hibrid környezetek Microsoft Azure Government felhővel való integrálásával kapcsolatos szempontokat ismerteti. Ez az információ a Azure Government felhővel dolgozó rendszergazdák és építészek számára készült referenciául szolgál.
 
 > [!NOTE]
-> A helyszíni Microsoft Azure Active Directory (Azure AD) környezetnek a Azure Government felhővel való integrálásához frissítenie kell a [Azure ad Connect](https://www.microsoft.com/download/details.aspx?id=47594)legújabb verziójára.
+> Ahhoz, hogy integrálni lehessen a Microsoft Active Directory környezetét (akár helyszíni, akár egy olyan IaaS, amely ugyanabban a felhőalapú példányban található Azure Government), frissítenie kell a [Azure ad Connect](https://www.microsoft.com/download/details.aspx?id=47594)legújabb kiadására.
 
 Egyesült Államok kormányzati védelmi végpontok teljes listáját a [dokumentációban](/office365/enterprise/office-365-u-s-government-dod-endpoints)találja.
 

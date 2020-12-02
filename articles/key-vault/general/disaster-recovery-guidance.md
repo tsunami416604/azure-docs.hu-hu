@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: aea5f0428fe55c0dae3734e196008cbc26a974b9
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: d66fe736936963e601aad7cba7bdaa94f0c3ec3f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576220"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518447"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Az Azure Key Vault rendelkezésre állása és redundanciája
 
@@ -23,11 +23,13 @@ Azure Key Vault több réteget is tartalmaz, így biztosíthatja, hogy a kulcsok
 > [!NOTE]
 > Ez az útmutató a tárolók esetében érvényes. A felügyelt HSM-készletek eltérő magas rendelkezésre állású és vész-helyreállítási modellt használnak. További információkért lásd: [felügyelt HSM vész-helyreállítási útmutató](../managed-hsm/disaster-recovery-guide.md) .
 
-A Key Vault tartalmát a régión belül, illetve legalább 150 mérfölddel arrébb egy másodlagos régióba replikálja a rendszer, de ugyanazon a földrajzon belül a kulcsok és titkok magas tartósságának fenntartása érdekében. Az adott régió párokkal kapcsolatos részletekért lásd: [Azure párosított régiók](../../best-practices-availability-paired-regions.md). A párosított régiók modelljének kivétele Brazília déli régiója, amely csak a Dél-Brazíliában található tárolt adatmegőrzési lehetőséget teszi lehetővé. Dél-Brazília a helyileg redundáns tárolás (LRS) használatával háromszor replikálja az adatait az adott helyen/régióban.   
+A Key Vault tartalmát a régión belül, illetve legalább 150 mérfölddel arrébb egy másodlagos régióba replikálja a rendszer, de ugyanazon a földrajzon belül a kulcsok és titkok magas tartósságának fenntartása érdekében. Az adott régió párokkal kapcsolatos részletekért lásd: [Azure párosított régiók](../../best-practices-availability-paired-regions.md). A párosított régiók modelljének kivétele Brazília déli régiója, amely csak a Dél-Brazíliában található tárolt adatmegőrzési lehetőséget teszi lehetővé. Dél-Brazília a Zone redundáns Storage (ZRS) használatával háromszor replikálja az adatait az adott helyen/régióban.   
 
 Ha a Key Vault szolgáltatásban lévő egyes összetevők meghibásodnak, a régión belüli alternatív összetevők, hogy kiszolgálják a kérést, hogy a rendszer ne csökkentse a funkciók romlását. A folyamat elindításához semmilyen műveletet nem kell végrehajtania, automatikusan megtörténik, és transzparens lesz.
 
-Abban a ritka esetben, ha egy teljes Azure-régió nem érhető el, az adott régióban Azure Key Vault a kérelmeket a rendszer automatikusan átirányítja ( *feladatátvétel* ) egy másodlagos régióba. Ha az elsődleges régió újra elérhetővé válik, a rendszer visszairányítja a kérelmeket az elsődleges régióhoz (a *sikertelen visszaállítást* ). Többé nem kell semmit tennie, mert ez automatikusan megtörténik.
+Abban a ritka esetben, ha egy teljes Azure-régió nem érhető el, az adott régióban Azure Key Vault a kérelmeket a rendszer automatikusan átirányítja egy másodlagos régióba, kivéve a *Dél-brazíliai* régió esetében. Ha az elsődleges régió újra elérhetővé válik, a rendszer visszairányítja a kérelmeket az elsődleges régióhoz (a *sikertelen visszaállítást*). Többé nem kell semmit tennie, mert ez automatikusan megtörténik.
+
+A Dél-brazíliai régióban meg kell terveznie az Azure Key vaultok helyreállítását egy régió meghibásodása esetén. Az Azure Key Vault biztonsági mentéséhez és visszaállításához válasszon egy tetszőleges régiót, majd hajtsa végre a [Azure Key Vault biztonsági mentésben](backup.md)részletesen ismertetett lépéseket. 
 
 A magas rendelkezésre állás kialakításán keresztül a Azure Key Vault nem igényel állásidőt karbantartási tevékenységekhez.
 

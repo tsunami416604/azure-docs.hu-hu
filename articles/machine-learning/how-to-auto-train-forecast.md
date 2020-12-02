@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 8c6a27f0cfaafe7e6c1181651e672d0e828af855
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 605e8cd57ab5863c1011082f0f2dbd93d078980b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444482"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518940"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
@@ -128,7 +128,7 @@ Az automatizált gépi tanulás automatikusan különböző modelleket és algor
 >[!Tip]
 > A rendszer a hagyományos regressziós modelleket is teszteli a javaslatrendszer részeként az előrejelzési kísérletekhez. A modellek teljes listájáért tekintse meg a [támogatott modell táblázatát](how-to-configure-auto-train.md#supported-models) . 
 
-Modellek| Description | Előnyök
+Modellek| Leírás | Előnyök
 ----|----|---
 Próféta (előzetes verzió)|A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A modell kihasználása érdekében telepítse helyileg a használatával `pip install fbprophet` . | Pontos & gyors, robusztus a kiugró értékek, a hiányzó adatmennyiségek és az idősorozat drámai változásai.
 Automatikus ARIMA (előzetes verzió)|Az automatikusan újradegresszív, integrált mozgóátlag (ARIMA) a legjobbat hajtja végre, ha az adatok állomáson vannak. Ez azt jelenti, hogy a statisztikai tulajdonságok, például a középérték és a variancia állandó a teljes készleten. Ha például egy érme tükrözését hajtja végre, akkor a fejek megszerzésének valószínűsége 50% lesz, függetlenül attól, hogy a mai, a holnapi vagy a következő évre fordít-e.| Kiválóan használható a univariate sorozatokhoz, mivel a korábbi értékeket a jövőbeli értékek előrejelzésére használjuk.
@@ -286,19 +286,19 @@ Tekintse meg a [cél gördülő ablak összesítési funkcióját](https://githu
 
 ### <a name="short-series-handling"></a>Rövid adatsorozat-kezelő
 
-Az automatizált ML egy **rövid** adatsorozatot vesz figyelembe, ha nincs elegendő adatpont a modell fejlesztésének betanítási és ellenőrzési fázisának végrehajtásához. Az adatpontok száma minden kísérlet esetében változik, és a max_horizontól, a több ellenőrzési osztástól, valamint a modell lookback hosszától függ, azaz az idősorozat-funkciók létrehozásához szükséges előzmények maximális száma. A pontos számításhoz tekintse meg a [short_series_handling_config dokumentációját](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
+Az automatizált ML egy **rövid** adatsorozatot vesz figyelembe, ha nincs elegendő adatpont a modell fejlesztésének betanítási és ellenőrzési fázisának végrehajtásához. Az adatpontok száma minden kísérlet esetében változik, és a max_horizontól, a több ellenőrzési osztástól, valamint a modell lookback hosszától függ, azaz az idősorozat-funkciók létrehozásához szükséges előzmények maximális száma. A pontos számításhoz tekintse meg a [short_series_handling_configuration dokumentációját](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
 
-Az automatikus ML az `short_series_handling_config` objektumban található paraméterrel alapértelmezés szerint rövid adatsorozat-kezelést nyújt `ForecastingParameters` . 
+Az automatikus ML az `short_series_handling_configuration` objektumban található paraméterrel alapértelmezés szerint rövid adatsorozat-kezelést nyújt `ForecastingParameters` . 
 
-A rövid adatsorozatok kezelésére a `freq` paramétert is meg kell adni. Az alapértelmezett viselkedés módosításához `short_series_handling_config = auto` frissítse a `short_series_handling_config` paramétert az `ForecastingParameter` objektumban.  
+A rövid adatsorozatok kezelésére a `freq` paramétert is meg kell adni. Az óránkénti gyakoriság meghatározásához be kell állítani a következőt: `freq='H'` . [Itt](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)tekintheti meg a gyakorisági karakterlánc beállításait. Az alapértelmezett viselkedés módosításához `short_series_handling_configuration = 'auto'` frissítse a `short_series_handling_configuration` paramétert az `ForecastingParameter` objektumban.  
 
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
 forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                             forecast_horizon=50,
-                                            short_series_handling_config='auto',
-                                            freq = '7',
+                                            short_series_handling_configuration='auto',
+                                            freq = 'H',
                                             target_lags='auto')
 ```
 Az alábbi táblázat a rendelkezésre álló beállításait foglalja össze `short_series_handling_config` .
@@ -306,7 +306,7 @@ Az alábbi táblázat a rendelkezésre álló beállításait foglalja össze `s
 |Beállítás|Leírás
 |---|---
 |`auto`| A rövid adatsorozatok kezelésére vonatkozó alapértelmezett viselkedés a következő: <li> *Ha az összes adatsorozat rövid*, a pad az adategységeket. <br> <li> *Ha nem minden adatsor rövid*, dobja el a rövid sorozatot. 
-|`pad`| Ha `short_series_handling_config = pad` a, akkor az automatikus ml a megtalált egyes rövid adatsorokhoz hozzáadja a próbabábu értékeit. Az alábbi táblázat felsorolja az oszlop típusait, valamint azt, hogy mire vannak feltöltve: <li>NaNs rendelkező objektumok oszlopai <li> Numerikus oszlopok 0 <li> Logikai/logikai oszlopok hamis értékkel <li> A célként megadott oszlop véletlenszerű értékekkel van feltöltve, és az értéke nulla, a szórás pedig 1. 
+|`pad`| Ha `short_series_handling_config = pad` a, akkor az automatikus ml véletlenszerű értékeket hoz létre minden egyes talált rövid adatsorozathoz. Az alábbi táblázat felsorolja az oszlop típusait, valamint azt, hogy mire vannak feltöltve: <li>NaNs rendelkező objektumok oszlopai <li> Numerikus oszlopok 0 <li> Logikai/logikai oszlopok hamis értékkel <li> A célként megadott oszlop véletlenszerű értékekkel van feltöltve, és az értéke nulla, a szórás pedig 1. 
 |`drop`| Ha `short_series_handling_config = drop` a, akkor az automatikus ml elveszi a rövid sorozatot, és nem lesz használatban képzésre vagy előrejelzésre. A sorozathoz tartozó előrejelzések a NaN által visszaadott értéket adják vissza.
 |`None`| Egy adatsorozat nem párnázott vagy nem lett elvetve
 

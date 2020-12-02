@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3db475b5eb0c584f86c8810e9c993e4d5d7b497e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7016abc9d52aa12b497d29f605fe351ee3f6a2dd
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452903"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519113"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
@@ -90,47 +90,59 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 Ha egy végpont nem tud eseményt kézbesíteni egy adott időszakon belül, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt elküldheti egy Storage-fiókba. Ezt a folyamatot **Kézbesítetlen levélnek** nevezzük.
 
-A kézbesítetlen levelekről további információt a [*fogalmak: események útvonalai*](concepts-route-events.md#dead-letter-events)című témakörben talál.
+A kézbesítetlen levelekről további információt a [*fogalmak: események útvonalai*](concepts-route-events.md#dead-letter-events)című témakörben talál. A leállási végpontok bekapcsolásával kapcsolatos útmutatásért folytassa a szakasz további részében leírtakat.
 
 #### <a name="set-up-storage-resources"></a>Tárolási erőforrások beállítása
 
-A kézbesítetlen levelek helyének [beállítása előtt](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) rendelkeznie kell egy, az Azure-fiókban [beállított tárolóval](../storage/common/storage-account-create.md?tabs=azure-portal) . A tároló URL-címét meg kell adnia a végpont létrehozásakor.
-A kézbesítetlen levél egy [sas-tokent](../storage/common/storage-sas-overview.md)tároló URL-ként van megadva. A jogkivonat csak a `write` Storage-fiókban lévő cél tárolóra vonatkozó engedélyre van szüksége. A teljesen formázott URL-cím a (z) formátumban jelenik meg: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+A kézbesítetlen levelek helyének [beállítása előtt](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) rendelkeznie kell egy, az Azure-fiókban [beállított tárolóval](../storage/common/storage-account-create.md?tabs=azure-portal) . 
+
+A tároló URL-címét meg kell adnia a végpont létrehozásakor. A kézbesítetlen levelek helye a végpontnak egy [sas-tokent](../storage/common/storage-sas-overview.md)tartalmazó tároló URL-ként lesz megadva. Ennek a tokennek engedélyre van szüksége a `write` Storage-fiókban lévő cél tárolóhoz. A teljesen formázott URL-cím formátuma: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>` .
 
 Az alábbi lépéseket követve állíthatja be ezeket a tárolási erőforrásokat az Azure-fiókjában, hogy előkészítse a végponti kapcsolatok beállítását a következő szakaszban.
 
-1. [Ezt a cikket](../storage/common/storage-account-create.md?tabs=azure-portal) követve hozzon létre egy Storage-fiókot, és mentse a Storage-fiók nevét későbbi használatra.
-2. Hozzon létre egy tárolót a [cikk](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) használatával, és mentse a tároló nevét később, a tároló és a végpont közötti kapcsolat beállításakor.
-3. Ezután hozzon létre egy SAS-jogkivonatot a Storage-fiókjához. Először navigáljon a Storage-fiókjához a [Azure Portalban](https://ms.portal.azure.com/#home) (a portál keresési sávjával megkeresheti a nevet).
-4. A Storage-fiók lapon a bal oldali navigációs sávon válassza a _közös hozzáférési aláírás_ hivatkozását, hogy kiválassza a megfelelő engedélyeket az SAS-jogkivonat létrehozásához.
-5. Az _engedélyezett szolgáltatások_ és az _engedélyezett erőforrástípusok_ esetében válassza ki a kívánt beállításokat. Minden kategóriában ki kell választania legalább egy mezőt. Az engedélyezett engedélyek esetében válassza az **írás** lehetőséget (ha szeretné, további engedélyeket is kijelölhet).
-Adja meg a többi beállítást, de szeretné.
-6. Ezután kattintson az _sas létrehozása és kapcsolati karakterlánc létrehozása_ gombra az SAS-jogkivonat létrehozásához. Ezzel a beállítással több SAS-és kapcsolatok-karakterlánc-értéket fog létrehozni ugyanazon oldal alján. Görgessen lefelé az értékek megtekintéséhez, és a másolás a vágólapra ikonra kattintva másolja az **sas-jogkivonat** értékét. Mentse, hogy később használhassa.
+1. Az Azure-előfizetéshez tartozó **Storage-fiók** létrehozásához kövesse a [*Storage-fiók létrehozása*](../storage/common/storage-account-create.md?tabs=azure-portal) című témakör lépéseit. Jegyezze fel a Storage-fiók nevét, hogy később használhassa.
+2. Az új Storage-fiókban **lévő tároló** létrehozásához kövesse a [*tároló létrehozása*](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) című témakör lépéseit. Jegyezze fel a tároló nevét, hogy később használhassa.
+3. Ezután hozzon létre egy **sas-jogkivonatot** a Storage-fiókjához, amelyet a végpont az eléréséhez használhat. Először navigáljon a Storage-fiókjához a [Azure Portalban](https://ms.portal.azure.com/#home) (a portál keresési sávjával megkeresheti a nevet).
+4. A Storage-fiók lapon a bal oldali navigációs sávban válassza a _közös hozzáférési aláírás_ HIVATKOZÁST a sas-jogkivonat beállításának megkezdéséhez.
 
-:::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token.png" alt-text="Az Azure Portal Storage-fiók lapja, amely az SAS-tokenek létrehozásához szükséges összes beállítást megjeleníti." lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token.png":::
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token-1.png" alt-text="A Storage-fiók lapja a Azure Portal" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token-1.png":::
 
-:::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="A kézbesítetlen levél titkos kódjában használandó SAS-token másolása." lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+1. A *közös hozzáférésű aláírás lapon* az *engedélyezett szolgáltatások* és az *engedélyezett erőforrástípusok* területen válassza ki a kívánt beállításokat. Minden kategóriában ki kell választania legalább egy mezőt. Az *engedélyezett engedélyek* területen válassza az **írás** lehetőséget (ha szeretné, további engedélyeket is kijelölhet).
+1. Állítsa be a többi beállításhoz használni kívánt értékeket.
+1. Ha elkészült, kattintson a _sas létrehozása és kapcsolati karakterlánc létrehozása_ gombra az SAS-jogkivonat létrehozásához. 
 
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token-2.png" alt-text="A Storage-fiók lap a Azure Portal megjeleníti az SAS-token előállítására kijelölt összes beállítást, és kiemelve az &quot;SAS és kapcsolati karakterlánc létrehozása&quot; gombot." lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token-2.png"::: 
+
+1. Ezzel a beállítással több SAS-és kapcsolatok-karakterlánc-értéket fog létrehozni ugyanazon oldal alján. Görgessen lefelé az értékek megtekintéséhez, és a *Másolás a vágólapra* ikonra kattintva másolja az **sas-jogkivonat** értékét. Mentse, hogy később használhassa.
+
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="A kézbesítetlen levél titkos kódjában használandó SAS-token másolása." lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+    
 #### <a name="configure-the-endpoint"></a>A végpont konfigurálása
 
-A kézbesítetlen levelek végpontja Azure Resource Manager API-k használatával jön létre. Végpont létrehozásakor használja az [Azure Resource Manager API-kat](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) a szükséges kérés paramétereinek kitöltéséhez. Emellett adja hozzá a elemet a `deadLetterSecret` Tulajdonságok objektumhoz a kérelem **törzsében** , amely tartalmazza a Storage-fiókhoz tartozó tároló URL-címét és Sas-tokenjét.
+Ha olyan végpontot szeretne létrehozni, amelynél engedélyezve van a kézbesítetlen üzenetek használata, létre kell hoznia a végpontot a Azure Resource Manager API-k használatával. 
+
+1. Először a [Azure Resource Manager API-k dokumentációjának](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) használatával állítson be egy végpont létrehozására vonatkozó kérést, és töltse ki a szükséges kérési paramétereket. 
+
+1. Ezután vegyen fel egy `deadLetterSecret` mezőt a tulajdonságok objektumba a **kérelem törzsében** . Állítsa ezt az értéket az alábbi sablon alapján, amely a Storage-fiók neve, a tároló neve és az SAS-jogkivonat értékének az [előző szakaszban](#set-up-storage-resources)összegyűjtött URL-címét tartalmazza.
       
-```json
-{
-  "properties": {
-    "endpointType": "EventGrid",
-    "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
-    "accessKey1": "xxxxxxxxxxx",
-    "accessKey2": "xxxxxxxxxxx",
-    "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
-  }
-}
-```
+    ```json
+    {
+      "properties": {
+        "endpointType": "EventGrid",
+        "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
+        "accessKey1": "xxxxxxxxxxx",
+        "accessKey2": "xxxxxxxxxxx",
+        "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
+      }
+    }
+    ```
+1. Küldje el a kérést a végpont létrehozásához.
+
 A kérelem strukturálásával kapcsolatos további információkért tekintse meg az Azure digitális Twins REST API dokumentációját: [endpoints-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
 
 ### <a name="message-storage-schema"></a>Üzenet tárolási sémája
 
-A kézbesítetlen üzenetek a következő formátumban lesznek tárolva a Storage-fiókban:
+Miután beállította a végpontot a kézbesítetlen üzenetek beállításával, a rendszer a következő formátumban tárolja a kézbesítetlen üzeneteket a Storage-fiókban:
 
 `{container}/{endpointName}/{year}/{month}/{day}/{hour}/{eventId}.json`
 

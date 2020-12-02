@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 838276c47085a3c7ad0f7c0a35a2578b13eb5026
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 57948cf705d2a58b4f8e19e56121115ba33362ad
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511267"
+ms.locfileid: "96518634"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure szinapszis Analytics – gyakori kérdések
 
@@ -22,7 +22,7 @@ Ebben az útmutatóban az Azure szinapszis Analytics szolgáltatással kapcsolat
 
 ## <a name="general"></a>Általános kérdések
 
-### <a name="q-what-rbac-roles-exist-and-how-do-i-use-them-to-secure-a-synapse-workspace"></a>K: milyen RBAC-szerepkörök léteznek, és hogyan használhatom őket a szinapszis-munkaterület biztonságossá tételéhez?
+### <a name="q-how-can-i-use-rbac-roles-to-secure-my-workspace"></a>K: Hogyan használhatom a RBAC-szerepköröket a munkaterület biztonságossá tételéhez?
 
 A: az Azure szinapszis számos olyan szerepkört és hatókört vezet be, amelyekkel hozzárendelheti azokat, így egyszerűbbé válik a munkaterület biztonságossá tétele.
 
@@ -36,16 +36,16 @@ Szinapszis RBAC szerepkörei:
 * Szinapszis számítási operátor (előzetes verzió)
 * Szinapszis hitelesítő felhasználója (előzetes verzió)
 
-Szinapszis RBAC hatókörök:
-* Munkaterület 
-* Spark-készlet
-* Integrációs modul
+A szinapszis-munkaterület biztonságossá tételéhez rendelje hozzá a RBAC szerepköröket a következő RBAC-hatókörökhöz:
+* Munkaterületek
+* Spark-készletek
+* Integrációs modulok
 * Társított szolgáltatások
-* Hitelesítő adat
+* Hitelesítő adatok
 
 Emellett a dedikált SQL-készletekkel azonos biztonsági funkciókkal rendelkezik, amelyeket ismer és szeret.
 
-### <a name="q-how-can-i-cost-control-for-the-capabilities-inside-a-synapse-workspace-such-as-dedicated-sql-pools-serverless-spark-pools-and-serverless-sql-pools"></a>K: Hogyan lehet a szinapszisok munkaterületen belül, például dedikált SQL-készletekben, kiszolgáló nélküli Spark-készletekben és kiszolgáló nélküli SQL-készletekben lévő képességeket szabályozni?
+### <a name="q-how-do-i-control-cont-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>K: Hogyan vezérlőn a dedikált SQL-készletek, a kiszolgáló nélküli SQL-készletek és a kiszolgáló nélküli Spark-készletek?
 
 A: kiindulási pontként az Azure szinapszis az Azure-előfizetési szinten elérhető beépített Cost Analysis and Cost-riasztásokkal működik.
 

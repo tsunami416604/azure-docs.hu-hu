@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 35f2f82b4fe6862f0d023a70b32c964698b0c0eb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 682db0ef52e624a23d95aa18a007f05a78f39677
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547809"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518787"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight kezelése – IP-címek
 
@@ -32,7 +32,7 @@ A következő fejezetek a megadott IP-címeket tárgyalják, amelyeket engedély
 
 ## <a name="azure-dns-service"></a>Azure DNS szolgáltatás
 
-Ha az Azure által biztosított DNS-szolgáltatást használja, engedélyezze a hozzáférést a __168.63.129.16__ a 53-es porton. További információ: a [virtuális gépek és a szerepkör példányainak névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) . Ha egyéni DNS-t használ, ugorja át ezt a lépést.
+Ha az Azure által biztosított DNS-szolgáltatást használja, engedélyezze a hozzáférést az 53-as porton a TCP és az UDP protokoll __168.63.129.16__ . További információ: a [virtuális gépek és a szerepkör példányainak névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) . Ha egyéni DNS-t használ, ugorja át ezt a lépést.
 
 ## <a name="health-and-management-services-all-regions"></a>Állapot-és felügyeleti szolgáltatások: minden régió
 
@@ -93,7 +93,7 @@ További információ: a [hálózati forgalom szabályozása](./control-network-
 
 Ha felhasználó által megadott útvonalakat (UDR) használ, meg kell adnia egy útvonalat, és engedélyeznie kell a kimenő forgalmat a virtuális hálózatról a fenti IP-címekre a következő ugrás "Internet" értékre állításával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md)
 * [Hálózati biztonsági csoport (NSG) szolgáltatás címkéi az Azure HDInsight](hdinsight-service-tags.md)

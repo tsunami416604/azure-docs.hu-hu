@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26078c3757e42c3e290a5f4122461b287582fb80
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86146599"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518821"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Webalkalmazási tűzfal házirendjeinek létrehozása a Application Gatewayhoz
 
@@ -23,8 +23,6 @@ Tetszőleges számú szabályzatot készíthet. Miután létrehozta a szabályza
 Ha a Application Gateway szabályzatot alkalmaz, majd egy másik szabályzatot alkalmaz egy figyelőre az adott Application Gateway, akkor a figyelő házirendje érvénybe lép, csak azokhoz a figyelőkhöz, amelyekhez hozzá van rendelve. A Application Gateway szabályzat továbbra is érvényes minden olyan figyelőre, amely nem rendelkezik a hozzájuk rendelt házirenddel. 
 
    > [!NOTE]
-   > Az URI-WAF szabályzatok nyilvános előzetes verzióban érhetők el. Ez azt jelenti, hogy ez a funkció a Microsoft kiegészítő használati feltételeinek hatálya alá tartozik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-   > [!NOTE]
    > Miután egy tűzfalszabály társítva van egy WAF, mindig az adott WAF tartozó házirendnek kell lennie. Felülírhatja ezt a házirendet, de a WAF teljes mértékben nem támogatja a szabályzatok társítását. 
 
 A webalkalmazási tűzfal minden új WAF-beállítása (egyéni szabályok, felügyelt rulset konfigurációk, kizárások stb.) egy WAF-szabályzaton belül él. Ha rendelkezik meglévő WAF, ezek a beállítások továbbra is előfordulhatnak a WAF-konfigurációban. Az új WAF-házirendre való áttérés lépéseiért lásd a jelen cikk későbbi, a [WAF-konfiguráció áttelepítésének WAF-házirendjére](#migrate) című témakörét. 
@@ -33,7 +31,7 @@ A webalkalmazási tűzfal minden új WAF-beállítása (egyéni szabályok, fel�
 
 Először hozzon létre egy alapszintű WAF szabályzatot egy felügyelt alapértelmezett szabálykészlet (DRS) használatával a Azure Portal segítségével.
 
-1. A portál bal felső részén válassza az **erőforrás létrehozása**lehetőséget. Keresse meg a **WAF**, válassza a **webalkalmazási tűzfal**elemet, majd kattintson a **Létrehozás**gombra.
+1. A portál bal felső részén válassza az **erőforrás létrehozása** lehetőséget. Keresse meg a **WAF**, válassza a **webalkalmazási tűzfal** elemet, majd kattintson a **Létrehozás** gombra.
 2. A **WAF házirend létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**:
 
    |Beállítás  |Érték  |
@@ -42,12 +40,12 @@ Először hozzon létre egy alapszintű WAF szabályzatot egy felügyelt alapér
    |Előfizetés     |Adja meg az előfizetés nevét|
    |Erőforráscsoport     |Az erőforráscsoport kiválasztása|
    |Házirend neve     |Adjon egyedi nevet a WAF-házirendnek.|
-3. A **társítás** lapon adja meg a következő beállítások egyikét, majd válassza a **Hozzáadás**lehetőséget:
+3. A **társítás** lapon adja meg a következő beállítások egyikét, majd válassza a **Hozzáadás** lehetőséget:
 
    |Beállítás  |Érték  |
    |---------|---------|
    |Application Gateway hozzárendelése     |Válassza ki a Application Gateway profil nevét.|
-   |Figyelők hozzárendelése     |Válassza ki a Application Gateway figyelő nevét, majd válassza a **Hozzáadás**lehetőséget.|
+   |Figyelők hozzárendelése     |Válassza ki a Application Gateway figyelő nevét, majd válassza a **Hozzáadás** lehetőséget.|
 
    > [!NOTE]
    > Ha olyan házirendet rendel hozzá a Application Gatewayhoz (vagy figyelőhöz), amely már rendelkezik szabályzattal, a rendszer felülírja az eredeti szabályzatot, és felülírja az új házirendet.
@@ -57,7 +55,7 @@ Először hozzon létre egy alapszintű WAF szabályzatot egy felügyelt alapér
 
 ## <a name="configure-waf-rules-optional"></a>WAF-szabályok konfigurálása (nem kötelező)
 
-WAF szabályzat létrehozásakor alapértelmezés szerint *észlelési* módban van. Észlelési módban a WAF nem blokkolja a kérelmeket. Ehelyett a rendszer naplózza a megfelelő WAF-szabályokat a WAF-naplókba. A WAF működés közbeni megtekintéséhez módosíthatja a mód beállításait a *megelőzés*lehetőségre. A megelőzési módban a kiválasztott CRS-szabályokban meghatározott egyezési szabályokat a rendszer letiltja és/vagy naplózza a WAF-naplókban.
+WAF szabályzat létrehozásakor alapértelmezés szerint *észlelési* módban van. Észlelési módban a WAF nem blokkolja a kérelmeket. Ehelyett a rendszer naplózza a megfelelő WAF-szabályokat a WAF-naplókba. A WAF működés közbeni megtekintéséhez módosíthatja a mód beállításait a *megelőzés* lehetőségre. A megelőzési módban a kiválasztott CRS-szabályokban meghatározott egyezési szabályokat a rendszer letiltja és/vagy naplózza a WAF-naplókban.
 
 ## <a name="managed-rules"></a>Felügyelt szabályok
 
