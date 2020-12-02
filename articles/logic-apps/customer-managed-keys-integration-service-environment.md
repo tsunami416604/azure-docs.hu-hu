@@ -3,15 +3,15 @@ title: Ügyfél által felügyelt kulcsok beállítása az inaktív adatok titko
 description: Saját titkosítási kulcsok létrehozása és kezelése az integrációs szolgáltatási környezetek (ISEs) Azure Logic Appsban való biztonságossá tételéhez
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, rarayudu, logicappspm
+ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: 30b09d43cbe510318ac4f48e0655d5483491c215
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 11/20/2020
+ms.openlocfilehash: 59c60c876058f8664b38411b562e57c2d5cdc2a8
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682774"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510624"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához
 
@@ -27,11 +27,15 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg sajá
 
 * Az ügyfél által felügyelt kulcs csak akkor adható meg, *Ha létrehozza az ISE*-t, nem pedig később. Az ISE létrehozása után ezt a kulcsot nem lehet letiltani. Jelenleg nem létezik támogatás egy ügyfél által felügyelt kulcs elforgatásához egy ISE esetében.
 
-* Az ügyfél által felügyelt kulcsok támogatásához az ISE megköveteli, hogy a [rendszer által hozzárendelt felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) engedélyezve legyen. Ez az identitás lehetővé teszi, hogy az ISE hitelesítse a más Azure Active Directory (Azure AD) bérlők erőforrásaihoz való hozzáférést, így nem kell bejelentkeznie a hitelesítő adataival.
+* Az ügyfél által felügyelt kulcsok támogatásához az ISE megköveteli, hogy engedélyezze a [rendszer által hozzárendelt vagy a felhasználó által hozzárendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Ez az identitás lehetővé teszi, hogy az ISE hitelesítse a biztonságos erőforrásokhoz, például a virtuális gépekhez és más rendszerekhez vagy szolgáltatásokhoz való hozzáférést, amelyek egy Azure-beli virtuális hálózathoz tartoznak vagy kapcsolódnak. Így nem kell bejelentkeznie a hitelesítő adataival.
 
-* Jelenleg olyan ISE létrehozásához, amely támogatja az ügyfél által felügyelt kulcsokat, és engedélyezve van a rendszer által hozzárendelt identitása, a Logic Apps REST API HTTPS PUT-kérelem használatával kell meghívnia.
+* Jelenleg olyan ISE létrehozásához, amely támogatja az ügyfél által felügyelt kulcsokat, és a felügyelt identitás típusa engedélyezve van, egy HTTPS PUT-kérelem használatával kell meghívnia a Logic Apps REST API.
 
-* Az ISE-t létrehozó HTTPS PUT-kérelem elküldése után *30 percen* belül meg kell [adnia a Key Vault-hozzáférést az ISE rendszerhez rendelt identitásához](#identity-access-to-key-vault). Ellenkező esetben az ISE létrehozása meghiúsul, és az engedélyek hibát jelez.
+* A [Key vaultnak hozzáférést kell adnia az ISE felügyelt identitásához](#identity-access-to-key-vault), az időzítés azonban attól függ, hogy melyik felügyelt identitást használja.
+
+  * **Rendszer által hozzárendelt felügyelt identitás**: az ISE-t létrehozó HTTPS Put-kérelem elküldése *után 30 percen* belül meg kell [adnia a Key Vault-hozzáférést az ISE felügyelt identitásához](#identity-access-to-key-vault). Ellenkező esetben az ISE létrehozása meghiúsul, és az engedélyek hibaüzenetet kapnak.
+
+  * **Felhasználó által hozzárendelt felügyelt identitás**: az ISE-t létrehozó HTTPS Put-kérelem elküldése előtt adja meg a [Key Vault számára az ISE felügyelt identitásának elérését](#identity-access-to-key-vault).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +60,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg sajá
 
 * Egy eszköz, amellyel létrehozhatja az ISE-t úgy, hogy meghívja a Logic Apps REST API egy HTTPS PUT-kéréssel. Használhatja például a [Poster](https://www.getpostman.com/downloads/)-t, vagy létrehozhat egy logikai alkalmazást, amely elvégzi ezt a feladatot.
 
-<a name="enable-support-key-system-identity"></a>
+<a name="enable-support-key-managed-identity"></a>
 
 ## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>ISE létrehozása a Key vaulttal és a felügyelt identitások támogatásával
 
@@ -65,7 +69,7 @@ Az ISE létrehozásához a Logic Apps REST API meghívásával végezze el ezt a
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> A Logic Apps REST API 2019-05-01-es verziójának a saját HTTP PUT-kérelmét kell használnia az ISE-összekötők számára.
+> A Logic Apps REST API 2019-05-01-es verziójának a saját HTTPS PUT-kérelmét kell tennie az ISE-összekötők számára.
 
 Az üzembe helyezés általában két órán belül befejeződik. Alkalmanként az üzembe helyezés akár négy órát is igénybe vehet. A központi telepítés állapotának megtekintéséhez a [Azure Portal](https://portal.azure.com)az Azure eszköztárán válassza az értesítések ikont, amely megnyitja az értesítések panelt.
 
@@ -88,7 +92,7 @@ A kérelem fejlécében adja meg a következő tulajdonságokat:
 
 A kérelem törzsében engedélyezze a további elemek támogatását az ISE-definícióban található információk megadásával:
 
-* A rendszer által hozzárendelt felügyelt identitás, amelyet az ISE a kulcstartó eléréséhez használ
+* Az ISE által a Key vaulthoz való hozzáféréshez használt felügyelt identitás
 * A Key Vault és a használni kívánt ügyfél által felügyelt kulcs
 
 #### <a name="request-body-syntax"></a>Kérelem törzsének szintaxisa
@@ -106,7 +110,14 @@ Itt látható a kérelem törzsének szintaxisa, amely leírja az ISE létrehoz�
       "capacity": 1
    },
    "identity": {
-      "type": "SystemAssigned"
+      "type": <"SystemAssigned" | "UserAssigned">,
+      // When type is "UserAssigned", include the following "userAssignedIdentities" object:
+      "userAssignedIdentities": {
+         "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{user-assigned-managed-identity-object-ID}": {
+            "principalId": "{principal-ID}",
+            "clientId": "{client-ID}"
+         }
+      }
    },
    "properties": {
       "networkConfiguration": {
@@ -153,7 +164,13 @@ A példaként szolgáló kérelem törzse a következő minta értékeket jelen�
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "WestUS2",
    "identity": {
-      "type": "SystemAssigned"
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+         "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/*********************************": {
+            "principalId": "*********************************",
+            "clientId": "*********************************"
+         }
+      }
    },
    "sku": {
       "name": "Premium",
@@ -197,7 +214,11 @@ A példaként szolgáló kérelem törzse a következő minta értékeket jelen�
 
 ## <a name="grant-access-to-your-key-vault"></a>Hozzáférés biztosítása a kulcstartóhoz
 
-*30 percen* belül, miután elküldte a http Put-kérést az ISE létrehozásához, hozzá kell adnia egy hozzáférési szabályzatot a kulcstartóhoz az ISE rendszerhez rendelt identitásához. Ellenkező esetben az ISE létrehozása meghiúsul, és az engedélyek hibaüzenetet kapnak. 
+Bár az időzítés eltér a használt felügyelt identitástól, meg kell [adnia a Key vaulthoz való hozzáférést az ISE felügyelt identitásához](#identity-access-to-key-vault).
+
+* **Rendszer által hozzárendelt felügyelt identitás**: az ISE-t létrehozó HTTPS Put-kérelem elküldése *után 30 percen* belül hozzá kell adnia egy hozzáférési szabályzatot a kulcstartóhoz az ISE rendszerhez rendelt felügyelt identitásához. Ellenkező esetben az ISE létrehozása meghiúsul, és az engedélyek hibaüzenetet kapnak.
+
+* **Felhasználó által hozzárendelt felügyelt identitás**: mielőtt elküldte az ISE-t létrehozó HTTPS Put-kérést, adjon hozzá egy hozzáférési szabályzatot a kulcstartóhoz az ISE felhasználó által hozzárendelt felügyelt identitásához.
 
 Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsot, vagy a következő lépésekkel követheti el a Azure Portal:
 
@@ -227,6 +248,6 @@ Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy]
 
 További információ: a [hitelesítés Key Vault](../key-vault/general/authentication.md) és [egy Key Vault hozzáférési szabályzat kiosztása](../key-vault/general/assign-access-policy-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [Azure Key Vault](../key-vault/general/overview.md)

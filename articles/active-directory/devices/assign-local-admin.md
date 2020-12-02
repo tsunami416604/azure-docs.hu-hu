@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0903828b04922104a9dd93ac79459bf73644f35c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f705150f927a08b5ca2f91b702ee0853766ac23a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365833"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511117"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
@@ -49,8 +49,8 @@ A Azure Portal az **eszközök** lapon kezelheti az eszköz rendszergazdai szere
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként.
 1. Keresse meg és válassza ki az *Azure Active Directoryt*.
-1. A **kezelés** szakaszban kattintson az **eszközök**elemre.
-1. Az **eszközök** lapon kattintson az **eszközbeállítások**elemre.
+1. A **kezelés** szakaszban kattintson az **eszközök** elemre.
+1. Az **eszközök** lapon kattintson az **eszközbeállítások** elemre.
 
 Az eszköz rendszergazdai szerepkörének módosításához **további helyi rendszergazdákat kell konfigurálnia az Azure ad-hez csatlakoztatott eszközökön**.  
 
@@ -72,14 +72,19 @@ Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhö
 >[!NOTE]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
+
 A Windows 10 2004 Update-től kezdődően az Azure AD-csoportok használatával felügyelheti az Azure AD-hez csatlakoztatott eszközök rendszergazdai jogosultságait a [korlátozott csoportok](/windows/client-management/mdm/policy-csp-restrictedgroups) Mdm házirenddel. Ez a szabályzat lehetővé teszi, hogy egyéni felhasználókat vagy Azure AD-csoportokat rendeljen hozzá a helyi rendszergazdák csoportjához egy Azure AD-hez csatlakoztatott eszközön, és így részletességgel konfigurálja a különböző rendszergazdákat az eszközök különböző csoportjaihoz. 
 
-Jelenleg nincs felhasználói felület az Intune-ban a szabályzat kezeléséhez, és [Egyéni OMA-URI beállításokkal](/mem/intune/configuration/custom-settings-windows-10)kell konfigurálni. Ehhez a Szabályzathoz a következő szempontokat kell figyelembe vennie: 
+>[!NOTE]
+> A Windows 10 20H2 frissítésének megkezdése előtt javasoljuk a [helyi felhasználók és csoportok](/windows/client-management/mdm/policy-csp-localusersandgroups) házirend használatát a korlátozott csoportok házirend helyett.
+
+
+Jelenleg nincs felhasználói felület az Intune-ban a házirendek kezeléséhez, és [Egyéni OMA-URI-beállításokkal](/mem/intune/configuration/custom-settings-windows-10)kell konfigurálni őket. Néhány megfontolandó szempont a következő házirendek valamelyikének használatához: 
 
 - Az Azure AD-csoportok szabályzaton keresztüli hozzáadásához a csoport biztonsági azonosítóját a csoportok API végrehajtásával lehet megszerezni. A SID-t a groups API tulajdonsága határozza meg `securityIdentifier` .
-- A korlátozott csoportok házirendjének betartatásakor a rendszer a tagok listáján nem szereplő összes aktuális tagot eltávolítja. Ennek a szabályzatnak az új tagokkal vagy csoportokkal való érvényesítése eltávolítja a meglévő rendszergazdákat, azaz az eszközhöz csatlakozó felhasználót, az eszköz rendszergazdai szerepkörét és a globális rendszergazdai szerepkört az eszközről. A meglévő tagok eltávolításának elkerüléséhez konfigurálnia kell őket a korlátozott csoportok házirendjének tagok listájának részeként. 
-- Ez a szabályzat csak a következő jól ismert csoportok esetében alkalmazható a Windows 10-es eszközökön – rendszergazdák, felhasználók, vendégek, Kiemelt felhasználók, Távoli asztal felhasználók és távfelügyeleti felhasználók. 
-- A helyi rendszergazdák korlátozott csoportok használatával történő kezelése nem alkalmazható a hibrid Azure AD-hez csatlakoztatott vagy az Azure AD által regisztrált eszközökre.
+- A korlátozott csoportok házirendjének betartatásakor a rendszer a tagok listáján nem szereplő összes aktuális tagot eltávolítja. Ennek a szabályzatnak az új tagokkal vagy csoportokkal való érvényesítése eltávolítja a meglévő rendszergazdákat, azaz az eszközhöz csatlakozó felhasználót, az eszköz rendszergazdai szerepkörét és a globális rendszergazdai szerepkört az eszközről. A meglévő tagok eltávolításának elkerüléséhez konfigurálnia kell őket a korlátozott csoportok házirendjének tagok listájának részeként. Ez a korlátozás akkor fordul elő, ha a helyi felhasználók és csoportok házirendet használja, amely engedélyezi a növekményes frissítéseket a csoporttagság számára
+- A két házirendet használó rendszergazdai jogosultságokat a rendszer csak a következő jól ismert csoportok esetében értékeli ki egy Windows 10-es eszközön: rendszergazdák, felhasználók, vendégek, Kiemelt felhasználók, Távoli asztal felhasználók és távfelügyeleti felhasználók. 
+- A helyi rendszergazdák Azure AD-csoportokkal való kezelése nem alkalmazható a hibrid Azure AD-hez csatlakoztatott vagy az Azure AD által regisztrált eszközökre.
 - Habár a Windows 10 2004 frissítése előtt már létezett a korlátozott csoportok házirend, az nem támogatja az Azure AD-csoportokat az eszköz helyi rendszergazdák csoportjának tagjaként. 
 
 ## <a name="manage-regular-users"></a>Normál felhasználók kezelése
@@ -93,7 +98,7 @@ Alapértelmezés szerint az Azure AD hozzáadja az Azure AD-csatlakozást végz�
 
 Az Azure AD JOIN folyamatán kívül manuálisan is beállíthatja, hogy egy normál felhasználó helyi rendszergazda legyen egy adott eszközön. Ehhez a lépéshez már a helyi Rendszergazdák csoport tagjának kell lennie. 
 
-A **Windows 10 1709** kiadástól kezdve ezt a feladatot elvégezheti a **Beállítások – > fiókok – > más felhasználók**. Válassza a **munkahelyi vagy iskolai felhasználó hozzáadása**lehetőséget, írja be a felhasználó egyszerű felhasználónevét a **felhasználói fiók** területen, és válassza a *rendszergazda* elemet a **Fiók típusa** területen.  
+A **Windows 10 1709** kiadástól kezdve ezt a feladatot elvégezheti a **Beállítások – > fiókok – > más felhasználók**. Válassza a **munkahelyi vagy iskolai felhasználó hozzáadása** lehetőséget, írja be a felhasználó egyszerű felhasználónevét a **felhasználói fiók** területen, és válassza a *rendszergazda* elemet a **Fiók típusa** területen.  
  
 Emellett a parancssor használatával is hozzáadhat felhasználókat:
 

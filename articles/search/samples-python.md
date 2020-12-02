@@ -8,30 +8,30 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 244408cc512a51683ecb3c062113170b1c7f4781
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6e0f3d318cc462b03151d5a4935ae318df46e2c5
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499560"
+ms.locfileid: "96510556"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>Python-kód minták az Azure Cognitive Search
 
 Ismerje meg az Azure Cognitive Search funkcióit és funkcióit bemutató Python-kód mintáit. Az elsődleges Tárházak a következők:
 
-| Adattár | Description |
+| Adattár | Leírás |
 |------------|-------------|
 | [Azure-SDK-for-Python/Tree/Master/SDK/keresés/Azure-Search-Documents/Samples/](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/samples) | Az Azure SDK csapata által előállított minták, amelyek az SDK-ban a Azure.Search.Documents-ügyfél kódtárat szállítanak. A különböző API-k meghívásához tekintse át az [egységre vonatkozó teszteket](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/tests) is az ügyféloldali kódtár számára. |
 | [Azure-Samples/Azure-Search-Python-Samples](https://github.com/Azure-Samples/azure-search-python-samples) | Az útmutatókat kísérő kódrészletek, beleértve a gyors üzembe helyezést [: keresési index létrehozása a Pythonban](search-get-started-python.md).|
 
 > [!Tip]
-> Próbálja ki a [minták böngészőt](/samples/browse/?languages=csharp&products=azure-cognitive-search) a githubon a Microsoft Code-minták kereséséhez, termék, szolgáltatás és nyelv szerint szűrve.
+> Próbálja ki a [minták böngészőt](/samples/browse/?languages=python&products=azure-cognitive-search) a githubon a Microsoft Code-minták kereséséhez, termék, szolgáltatás és nyelv szerint szűrve.
 
 ## <a name="python-sdk-samples"></a>Python SDK-minták
 
 A Pythonhoz készült Azure SDK számos mintát és egy [első lépések oldalt](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/search/azure-search-documents/samples) tartalmaz, amely tartalmazza az előfeltételeket és a csomagok telepítését. A lap az alábbi példákra mutató hivatkozásokat is tartalmaz, amelyek itt láthatók az Ön kényelme érdekében.
 
-| Példák | Description |
+| Példák | Leírás |
 |---------|-------------|
 | [Hitelesítés](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_authentication.py) | Bemutatja, hogyan konfigurálhat egy ügyfelet, és hogyan végezhet hitelesítést a szolgáltatásban. | 
 | [Index Create-Read-Update-DELETE művelet](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) | Bemutatja a [keresési indexek](search-what-is-an-index.md)létrehozását, frissítését, beolvasását, listázását és törlését. |
@@ -47,7 +47,7 @@ A Pythonhoz készült Azure SDK számos mintát és egy [első lépések oldalt]
 
 Az alábbi példákban az [Azure Cognitive Search dokumentációjában](./index.yml)szerepel egy kapcsolódó cikk.
 
-| Példák | Description | 
+| Példák | Leírás | 
 |---------|-------------|
 | [QuickStart](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Quickstart) | Forráskód a gyors üzembe helyezéshez [: keresési index létrehozása a Pythonban](search-get-started-python.md).  |
 | [oktatóanyag – AI-gazdagodás](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment)  | [Oktatóanyag: a Python és a AI használatával kereshető tartalmak hozhatók elő az Azure-blobokból](cognitive-search-tutorial-blob-python.md).  |

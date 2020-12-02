@@ -1,6 +1,6 @@
 ---
 title: Mi az az Azure Security Center?| Microsoft Docs
-description: Ez az oldal leírja Security Center főbb előnyeit – felfedezheti a biztonsági állapotát, és javíthatja a Felhőbeli és a helyszíni erőforrások lefedettségével.
+description: Ez az oldal leírja a Security Center főbb előnyeit – felfedezheti a biztonsági állapotát, és javíthatja a Felhőbeli és a helyszíni erőforrások lefedettségével.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: d62ed31a68d9469a1bd1fc66e479b0f91db2f916
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 0a1cac0fe61ea13a18224ea5992b5c7c1ba69d8a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372268"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510335"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 
@@ -37,11 +37,11 @@ Az Azure Security Center a három legsürgetőbb biztonsági kihívásra reagál
 
 A Security Center eszközeivel megvédheti magát a fenti kihívásokkal szemben, és a következőket teheti:
 
--   A **biztonsági helyzet megerősítése** : Security Center felméri a környezetet, és lehetővé teszi az erőforrások állapotának megismerését, és hogy azok biztonságosak-e.
+-   A **biztonsági helyzet megerősítése**: Security Center felméri a környezetet, és lehetővé teszi az erőforrások állapotának megismerését, és hogy azok biztonságosak-e.
 
--   **Fenyegetések elleni védelem** : Security Center felméri a számítási feladatokat, és növeli a veszélyforrások megelőzésére vonatkozó ajánlásokat és biztonsági riasztásokat.
+-   **Fenyegetések elleni védelem**: Security Center felméri a számítási feladatokat, és növeli a veszélyforrások megelőzésére vonatkozó ajánlásokat és biztonsági riasztásokat.
 
--   **Gyorsabb biztonság** : A Security Centerben minden a felhőkörnyezetek sebességével történik. A natív integrációnak köszönhetően a Security Center üzembe helyezése könnyű, ezután pedig kihasználhatja az automatikus kiépítés és az Azure-szolgáltatások nyújtotta védelem előnyeit.
+-   **Gyorsabb biztonság**: A Security Centerben minden a felhőkörnyezetek sebességével történik. A natív integrációnak köszönhetően a Security Center üzembe helyezése könnyű, ezután pedig kihasználhatja az automatikus kiépítés és az Azure-szolgáltatások nyújtotta védelem előnyeit.
 
 > [!NOTE]
 > Ez a szolgáltatás támogatja az [Azure Lighthouse](../lighthouse/overview.md)-t, amely lehetővé teszi a szolgáltatók számára, hogy bejelentkezzenek a saját bérlőbe az ügyfelek által delegált előfizetések és erőforráscsoportok kezeléséhez. Azure Security Center forgatókönyvek esetén az előfizetést különálló erőforráscsoportok helyett delegálni kell.

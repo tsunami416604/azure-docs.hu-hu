@@ -5,13 +5,13 @@ author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 10/23/2020
-ms.openlocfilehash: 74000322372652b90e0d0db07d687f8e57c4f88e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 12/01/2020
+ms.openlocfilehash: e2df34b7897ee2543d967d147317859ab26971e9
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518245"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510479"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Oktatóanyag: VPN Gateway létrehozása és kezelése Azure Portal használatával
 
@@ -74,9 +74,9 @@ Hozzon létre egy virtuális hálózati átjárót a következő értékek haszn
 
 Az átjáró nyilvános IP-címét az átjáró **Áttekintés** oldalán tekintheti meg.
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="VNet és VPN Gateway diagram":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Áttekintő lap":::
 
-Ha további információkat szeretne látni a nyilvános IP-cím objektumról, kattintson a **nyilvános IP-cím**melletti név/IP-cím hivatkozásra.
+Ha további információkat szeretne látni a nyilvános IP-cím objektumról, kattintson a **nyilvános IP-cím** melletti név/IP-cím hivatkozásra.
 
 ## <a name="resize-a-gateway-sku"></a><a name="resize"></a>Átjáró SKU-jának átméretezése
 
@@ -96,9 +96,9 @@ Ha nem folytatja az alkalmazás használatát, vagy folytassa a következő okta
 
 1. Válassza az **Erőforráscsoport törlése** elemet.
 
-1. Adja meg az erőforráscsoport **nevét, írja be az erőforráscsoport nevét** , majd válassza a **Törlés**lehetőséget.
+1. Adja meg az erőforráscsoport **nevét, írja be az erőforráscsoport nevét** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a VPN-átjáróval rendelkezik, megadhatja a kapcsolatokat. Az alábbi cikkek segítséget nyújtanak a leggyakoribb konfigurációk létrehozásához:
 

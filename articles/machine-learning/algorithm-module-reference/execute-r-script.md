@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/21/2020
-ms.openlocfilehash: 1e71d3883b8dacefa9b501ee3a9a0533d5c7d515
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/02/2020
+ms.openlocfilehash: 57b4b6f3f49e9b82ada4b37c8e2de0697781e063
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592668"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510590"
 ---
 # <a name="execute-r-script-module"></a>R-parancsfájl végrehajtása modul
 
@@ -78,25 +78,27 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
  > A csomag telepítése előtt ellenőrizze, hogy már létezik-e, így nem kell megismételni a telepítést. Az ismételt telepítések miatt a webszolgáltatás-kérelmek időtúllépést okozhatnak.     
 
+## <a name="access-to-registered-dataset"></a>Hozzáférés a regisztrált adatkészlethez
+
+A következő mintakód a munkaterületén [regisztrált adatkészletekhez](../how-to-create-register-datasets.md) való hozzáféréshez használható:
+
+```R
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="uploading-files"></a>Fájlok feltöltése
 Az R-szkript végrehajtása modul támogatja a fájlok feltöltését a Azure Machine Learning R SDK használatával.
 
 Az alábbi példa bemutatja, hogyan tölthet fel egy képfájlt az R-szkript végrehajtása során:
 ```R
-
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main,
-# which is the entry point for this module.
-
-# Note that functions dependent on the X11 library,
-# such as "View," are not supported because the X11 library
-# is not preinstalled.
-
-# The entry point function MUST have two input arguments.
-# If the input port is not connected, the corresponding
-# dataframe argument will be null.
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
 
@@ -119,22 +121,6 @@ A folyamat futásának befejezése után a rendszerképet a modul jobb oldali pa
 > [!div class="mx-imgBorder"]
 > ![Feltöltött rendszerkép előnézete](media/module/upload-image-in-r-script.png)
 
-## <a name="access-to-registered-dataset"></a>Hozzáférés a regisztrált adatkészlethez
-
-A következő mintakód a munkaterületén [regisztrált adatkészletekhez](../how-to-create-register-datasets.md) való hozzáféréshez használható:
-
-```R
-    azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
-  run = get_current_run()
-  ws = run$experiment$workspace
-  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
-  dataframe2 <- dataset$to_pandas_dataframe()
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
-
 ## <a name="how-to-configure-execute-r-script"></a>Az R-szkript végrehajtásának konfigurálása
 
 Az R-szkript végrehajtása modul kiindulási pontként tartalmazza a mintakód kódot.
@@ -147,11 +133,11 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
 
 1. Csatlakoztasson minden olyan bemenetet, amelyhez a szkriptnek szüksége van. A bemenetek nem kötelezőek, és tartalmazhatnak adatokat és további R-kódokat is.
 
-    * **DataSet1 elemet** : az első bemenetre hivatkozik `dataframe1` . A bemeneti adatkészletet CSV-, TSV-vagy ARFF-fájlként kell formázni. Vagy összekapcsolhat egy Azure Machine Learning adatkészletet.
+    * **DataSet1 elemet**: az első bemenetre hivatkozik `dataframe1` . A bemeneti adatkészletet CSV-, TSV-vagy ARFF-fájlként kell formázni. Vagy összekapcsolhat egy Azure Machine Learning adatkészletet.
 
-    * **Dataset2** : a második bemenetre hivatkozik `dataframe2` . Ezt az adatkészletet CSV-, TSV-vagy ARFF-fájlként, vagy Azure Machine Learning adatkészletként kell formázni.
+    * **Dataset2**: a második bemenetre hivatkozik `dataframe2` . Ezt az adatkészletet CSV-, TSV-vagy ARFF-fájlként, vagy Azure Machine Learning adatkészletként kell formázni.
 
-    * **Parancsfájl-csomag** : a harmadik bemenet elfogadja a. zip fájlokat. A tömörített fájlok több fájlt és több fájltípust is tartalmazhatnak.
+    * **Parancsfájl-csomag**: a harmadik bemenet elfogadja a. zip fájlokat. A tömörített fájlok több fájlt és több fájltípust is tartalmazhatnak.
 
 1. Az **r-szkript** szövegmezőbe írja be vagy illessze be az érvényes R-szkriptet.
 
@@ -503,6 +489,6 @@ Jelenleg a következő előre telepített R-csomagok érhetők el:
 | zeallot      | 0.1.0      | 
 | zoo          | 1.8-6      | 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

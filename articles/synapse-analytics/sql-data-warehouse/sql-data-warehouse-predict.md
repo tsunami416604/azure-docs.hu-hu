@@ -11,16 +11,16 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7b35997e763434d7ae4d849c33d358d1593d7e33
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ce77a169e28e21aa37be2a49997a58ee42c93807
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460529"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510828"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Az ELŐREJELZÉSsel rendelkező gépi tanulási modellek pontszáma
 
-A dedikált SQL-készlet lehetővé teszi, hogy a jól ismert T-SQL nyelv használatával a gépi tanulási modelleket is megszerezze. A T-SQL [előrejelzéssel](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)megadhatja a már meglévő gépi tanulási modelleket, és az adattárház biztonságos határain belül is megszerezheti azokat. A PREDIKTÍV függvény [ONNX (Open neurális hálózati Exchange)](https://onnx.ai/) modellt és adatokat használ bemenetként. Ez a szolgáltatás kiküszöböli az értékes adattárházon kívüli adatáthelyezés lépéseit. Az informatikai szakemberek számára lehetővé teszi, hogy az ismerős T-SQL-felülettel könnyedén üzembe helyezhetik a gépi tanulási modelleket, valamint hogy zökkenőmentesen működjenek együtt a feladataik megfelelő keretrendszerével dolgozó adatszakértőkkel.
+A dedikált SQL-készlet lehetővé teszi, hogy a jól ismert T-SQL nyelv használatával a gépi tanulási modelleket is megszerezze. A T-SQL [előrejelzéssel](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)megadhatja a már meglévő gépi tanulási modelleket, és az adattárház biztonságos határain belül is megszerezheti azokat. A PREDIKTÍV függvény [ONNX (Open neurális hálózati Exchange)](https://onnx.ai/) modellt és adatokat használ bemenetként. Ez a szolgáltatás kiküszöböli az értékes adattárházon kívüli adatáthelyezés lépéseit. Az informatikai szakemberek számára lehetővé teszi, hogy az ismerős T-SQL-felülettel könnyedén üzembe helyezhetik a gépi tanulási modelleket, valamint hogy zökkenőmentesen működjenek együtt a feladataik megfelelő keretrendszerével dolgozó adatszakértőkkel.
 
 > [!NOTE]
 > Ez a funkció jelenleg nem támogatott a kiszolgáló nélküli SQL-készletekben.
@@ -66,7 +66,7 @@ GO
 
 ```
 
-Ha a modellt egy hexadecimális karakterlánccá alakítja át, és a tábla definíciója meg van adva, a [másolási paranccsal](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) vagy a kiindulással töltheti be a modellt a dedikált SQL-készlet táblába. A következő mintakód a Másolás parancs használatával tölti be a modellt.
+Ha a modellt egy hexadecimális karakterlánccá alakítja át, és a tábla definíciója meg van adva, a [másolási paranccsal](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) vagy a kiindulással töltheti be a modellt a dedikált SQL-készlet táblába. A következő mintakód a Másolás parancs használatával tölti be a modellt.
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location
@@ -80,17 +80,17 @@ WITH (
 
 ## <a name="scoring-the-model"></a>A modell pontozása
 
-Ha a modell és az adat betöltődik az adattárházba, a **T-SQL előrejelzési** függvénnyel szerzi be a modellt. Győződjön meg arról, hogy az új bemeneti adatok formátuma megegyezik a modell létrehozásához használt képzési adatokkal. A T-SQL előrejelzés két bemenetet vesz igénybe: modell és új pontozási bemeneti adat, és új oszlopokat hoz létre a kimenethez. A modell változóként, literálal vagy skaláris sub_query is megadható. A [WITH common_table_expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-ver15) használatával megadhatja az adatparaméter elnevezett eredményhalmaz értékét.
+Ha a modell és az adat betöltődik az adattárházba, a **T-SQL előrejelzési** függvénnyel szerzi be a modellt. Győződjön meg arról, hogy az új bemeneti adatok formátuma megegyezik a modell létrehozásához használt képzési adatokkal. A T-SQL előrejelzés két bemenetet vesz igénybe: modell és új pontozási bemeneti adat, és új oszlopokat hoz létre a kimenethez. A modell változóként, literálal vagy skaláris sub_query is megadható. A [WITH common_table_expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=azure-sqldw-latest&preserve-view=true) használatával megadhatja az adatparaméter elnevezett eredményhalmaz értékét.
 
-Az alábbi példa egy példaként szolgáló lekérdezést mutat be az előrejelzési függvény használatával. Egy további, a *pontszám* és az adattípusú *lebegőpontos* oszlop jön létre, amely tartalmazza az előrejelzés eredményeit. Az összes bemeneti adatoszlop, valamint a kimeneti előrejelzési oszlopok is elérhetők a SELECT utasítással való megjelenítéshez. További részletek: [előrejelzés (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest).
+Az alábbi példa egy példaként szolgáló lekérdezést mutat be az előrejelzési függvény használatával. Egy további, a *pontszám* és az adattípusú *lebegőpontos* oszlop jön létre, amely tartalmazza az előrejelzés eredményeit. Az összes bemeneti adatoszlop, valamint a kimeneti előrejelzési oszlopok is elérhetők a SELECT utasítással való megjelenítéshez. További részletek: [előrejelzés (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 ```sql
 -- Query for ML predictions
 SELECT d.*, p.Score
 FROM PREDICT(MODEL = (SELECT Model FROM Models WHERE Id = 1),
-DATA = dbo.mytable AS d) WITH (Score float) AS p;
+DATA = dbo.mytable AS d, RUNTIME = ONNX) WITH (Score float) AS p;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ a PREDIKTÍV függvényről: [előrejelzés (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest).
+További információ a PREDIKTÍV függvényről: [előrejelzés (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).

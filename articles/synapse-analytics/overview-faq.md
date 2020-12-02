@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 05fef320d558de30830f76031d3b96262ae29f07
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 838276c47085a3c7ad0f7c0a35a2578b13eb5026
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445793"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511267"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure szinapszis Analytics – gyakori kérdések
 
@@ -28,13 +28,13 @@ A: az Azure szinapszis számos olyan szerepkört és hatókört vezet be, amelye
 
 Szinapszis RBAC szerepkörei:
 * Szinapszis-rendszergazda
-* Szinapszis közreműködője
-* Szinapszis-összetevő szerzője
-* Szinapszis-összetevő olvasója
-* Szinapszis számítási igazgató
-* Szinapszis hitelesítő felhasználója
-* Szinapszis felügyelt magánhálózati végpont rendszergazdája
-* Szinapszis-olvasó
+* Szinapszis SQL-rendszergazda
+* Szinapszis Spark-rendszergazda
+* Szinapszis közreműködő (előzetes verzió)
+* Szinapszis-összetevő közzétevője (előzetes verzió)
+* Szinapszis-összetevő felhasználója (előzetes verzió)
+* Szinapszis számítási operátor (előzetes verzió)
+* Szinapszis hitelesítő felhasználója (előzetes verzió)
 
 Szinapszis RBAC hatókörök:
 * Munkaterület 

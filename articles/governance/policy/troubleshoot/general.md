@@ -1,14 +1,14 @@
 ---
 title: Gyakori hibák elhárítása
 description: Ismerje meg, hogy miként lehet elhárítani a szabályzat-definíciókat, a különböző SDK-t és a Kubernetes bővítményét.
-ms.date: 10/30/2020
+ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 74b622dd41fb28e845a35780e5d06588189ec029
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146279"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510998"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Hibák elhárítása a Azure Policy használatával
 
@@ -56,7 +56,7 @@ Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi 
 
 #### <a name="issue"></a>Probléma
 
-Egy erőforrás nem a _megfelelő_ vagy _nem megfelelő_ , az adott erőforrás számára várt értékelési állapotban van.
+Egy erőforrás nem a _megfelelő_ vagy _nem megfelelő_, az adott erőforrás számára várt értékelési állapotban van.
 
 #### <a name="cause"></a>Ok
 
@@ -95,7 +95,7 @@ A házirend-hozzárendelés _le_ lett állítva a [enforcementMode](../concepts/
 A szabályzat-hozzárendelés kényszerítésének hibaelhárításához kövesse az alábbi lépéseket:
 
 1. Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi eredmények elérhetővé válnak Azure Portal vagy SDK-ban. Ha Azure PowerShell vagy REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
-1. Győződjön meg arról, hogy a hozzárendelési paraméterek és a hozzárendelési hatókör helyesen van beállítva, és hogy a **EnforcementMode** _engedélyezve_ van. 
+1. Győződjön meg arról, hogy a hozzárendelési paraméterek és a hozzárendelési hatókör helyesen van beállítva, és hogy a **EnforcementMode** _engedélyezve_ van.
 1. Ellenőrizze a [szabályzatdefiníciós módot](../concepts/definition-structure.md#mode):
    - Az összes erőforrástípus "all" üzemmódja.
    - Az "indexelt" mód, ha a házirend-definíció címkéket vagy helyet keres.
@@ -190,24 +190,6 @@ Részletes tájékoztatást a következő blogbejegyzésben talál:
 
 ## <a name="add-on-for-kubernetes-general-errors"></a>Bővítmény a Kubernetes általános hibáihoz
 
-### <a name="scenario-add-on-doesnt-work-with-aks-clusters-on-version-119-preview"></a>Forgatókönyv: a bővítmény a 1,19-es verzióban nem működik az AK-fürtökkel (előzetes verzió)
-
-#### <a name="issue"></a>Probléma
-
-A 1,19-es verzió-fürtök a következő hibát adják vissza a forgalomirányító vezérlő és a szabályzat webhook hüvelye használatával:
-
-```
-2020/09/22 20:06:55 http: TLS handshake error from 10.244.1.14:44282: remote error: tls: bad certificate
-```
-
-#### <a name="cause"></a>Ok
-
-A 1,19-es (előzetes) verzióban található AK-clusers még nem kompatibilis a Azure Policy bővítménnyel.
-
-#### <a name="resolution"></a>Feloldás
-
-Kerülje a Kubernetes 1,19 (előzetes verzió) használatát a Azure Policy bővítménnyel. A bővítmény bármely támogatott általánosan elérhető verzióval használható, például 1,16, 1,17 vagy 1,18.
-
 ### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-egress-restrictions"></a>Forgatókönyv: a bővítmény nem tudja elérni a Azure Policy szolgáltatási végpontot a kimenő forgalomra vonatkozó korlátozások miatt
 
 #### <a name="issue"></a>Probléma
@@ -239,7 +221,7 @@ A bővítmény nem tudja elérni a Azure Policy szolgáltatás végpontját, és
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordul elő, ha a _Add-Pod-Identity_ telepítve van a fürtön, és a _Kube rendszer_ nem zárja ki a _HRE-Pod identitást_ .
+Ez a hiba akkor fordul elő, ha a _Add-Pod-Identity_ telepítve van a fürtön, és a _Kube rendszer_ nem zárja ki a _HRE-Pod identitást_.
 
 A _HRE-Pod-Identity_ összetevő csomópont felügyelt identitás (NMI) hüvelye módosítja a csomópontok iptables-t az Azure-példány metaadatainak végpontjának hívására. Ez a beállítás azt jelenti, hogy a metaadat-végpontra vonatkozó összes kérést a NMI akkor is elfogja, ha a pod nem használja a _HRE-Pod-Identity_ kapcsolót.
 **AzurePodIdentityException** A CRD úgy konfigurálható, hogy tájékoztassa a _HRE-Pod-Identity_ attribútumot arról, hogy a CRD-ben definiált címkével rendelkező Pod-ból származó metaadatokra irányuló kérések a NMI-ben végzett feldolgozás nélkül legyenek proxy.
@@ -277,10 +259,19 @@ spec:
 
 #### <a name="issue"></a>Probléma
 
-A bővítmény elérheti a Azure Policy szolgáltatás végpontját, de a következő hibaüzenetet látja:
+A bővítmény elérheti a Azure Policy szolgáltatás végpontját, de a következő hibák valamelyikét látja a bővítmény naplófájljaiban:
 
 ```
-The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See https://aka.ms/policy-register-subscription for how to register subscriptions.
+The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
+https://aka.ms/policy-register-subscription for how to register subscriptions.
+```
+
+vagy
+
+```
+policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
+StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
+Code="InternalServerError" Message="Encountered an internal server error."
 ```
 
 #### <a name="cause"></a>Ok
@@ -289,9 +280,9 @@ Az `Microsoft.PolicyInsights` erőforrás-szolgáltató nincs regisztrálva, és
 
 #### <a name="resolution"></a>Feloldás
 
-Regisztrálja az `Microsoft.PolicyInsights` erőforrás-szolgáltatót. Útmutatásért lásd: [erőforrás-szolgáltató regisztrálása](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+Regisztrálja az `Microsoft.PolicyInsights` erőforrás-szolgáltatót a fürt előfizetésében. Útmutatásért lásd: [erőforrás-szolgáltató regisztrálása](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
-### <a name="scenario-the-subscript-is-disabled"></a>Forgatókönyv: az alszkript le van tiltva
+### <a name="scenario-the-subscription-is-disabled"></a>Forgatókönyv: az előfizetés le van tiltva
 
 #### <a name="issue"></a>Probléma
 
@@ -307,9 +298,9 @@ Ez a hiba azt jelzi, hogy az előfizetés problémás, és a szolgáltatás jelz
 
 #### <a name="resolution"></a>Feloldás
 
-A `azuredg@microsoft.com` probléma kivizsgálásához és megoldásához lépjen kapcsolatba a szolgáltatás csapatával. 
+A `azuredg@microsoft.com` probléma kivizsgálásához és megoldásához lépjen kapcsolatba a szolgáltatás csapatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

@@ -1,7 +1,7 @@
 ---
 title: Helyi Futtatás és központi telepítés
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan futtathat betanított modelleket a helyi gépen.
+description: Ez a cikk azt ismerteti, hogyan használható a helyi számítógép a Azure Machine Learning-ben létrehozott modellek betanításához, hibakereséséhez vagy üzembe helyezéséhez célként.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,36 +10,36 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: fcea7c162e5c978a7c8ff1b42e09ffe0afb98f3c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 1d2e25f76d9a68eeb01a45c34651fe1537297980
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95550096"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510573"
 ---
 # <a name="deploy-on-your-local-machines-models-trained-with-azure-machine-learning"></a>Üzembe helyezheti a Azure Machine Learning-mel betanított helyi gépek modelljeit
 
-Ez a cikk bemutatja, hogyan használható a helyi számítógép a Azure Machine Learning-ben létrehozott modellek betanításához vagy üzembe helyezéséhez. Azure Machine Learning rugalmassága lehetővé teszi, hogy működjön a legtöbb Python Machine learning-keretrendszerrel. A gépi tanulási megoldások általában olyan összetett függőségekkel rendelkeznek, amelyeket nehéz lehet duplikálni. Ez a cikk bemutatja, hogyan kereskedhet a teljes ellenőrzés és a könnyű használat között.
+Ez a cikk azt ismerteti, hogyan használható a helyi számítógép a Azure Machine Learning-ben létrehozott modellek betanításához vagy üzembe helyezéséhez célként. A Azure Machine Learning a legtöbb Python Machine learning-keretrendszerrel való együttműködéshez elég rugalmas. A gépi tanulási megoldások általában olyan összetett függőségekkel rendelkeznek, amelyeket nehéz lehet duplikálni. Ebből a cikkből megtudhatja, hogyan kiegyensúlyozhatja a teljes irányítást egyszerű használattal.
 
-A helyi telepítés egyes forgatókönyvei a következők:
+A helyi telepítés forgatókönyvei a következők:
 
-* Egy projekt elején gyorsan megismételheti az adat, parancsfájlokat és modelleket
-* Hibakeresés és hibaelhárítás a későbbi fázisokban
-* Végső üzembe helyezés felhasználó által felügyelt hardveren
+* Egy projekt elején gyorsan megismételheti az adat, parancsfájlokat és modelleket.
+* Hibakeresés és hibaelhárítás a későbbi fázisokban.
+* Végső telepítés a felhasználó által felügyelt hardveren.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md)
-- Modell és környezet. Ha nem rendelkezik betanított modellel, használhatja az [oktatóanyagban](tutorial-train-models-with-aml.md) megadott modellt és függőségi fájlokat
-- A [Pythonhoz készült Azure Machine learning szoftverfejlesztői készlet (SDK)](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
-- Conda-kezelő, például anaconda vagy miniconda, ha szeretné tükrözni Azure Machine Learning csomagjának függőségeit
-- Docker, ha a Azure Machine Learning környezet egy tárolós verzióját szeretné használni
+- Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
+- Modell és környezet. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](tutorial-train-models-with-aml.md)szereplő modell-és függőségi fájlokat is használhatja.
+- A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+- Conda-kezelő, például anaconda vagy Miniconda, ha meg szeretné jeleníteni Azure Machine Learning csomag függőségeinek tükrözését.
+- Docker, ha a Azure Machine Learning környezet egy tárolós verzióját kívánja használni.
 
 ## <a name="prepare-your-local-machine"></a>A helyi gép előkészítése
 
 Azure Machine Learning modell helyi futtatásának legmegbízhatóbb módja egy Docker-rendszerkép. A Docker-rendszerkép egy elkülönített, tárolóban lévő, duplikált, a hardverrel kapcsolatos problémákat, az Azure végrehajtási környezetét is lehetővé teszi. A Docker fejlesztési forgatókönyvek telepítésével és konfigurálásával kapcsolatos további információkért lásd: a [Windowson a Docker Remote Development áttekintése](/windows/dev-environment/docker/overview).
 
-Habár lehetséges a hibakereső csatlakoztatása a Docker-ben futó folyamathoz (lásd: [csatolás egy futó tárolóhoz](https://code.visualstudio.com/docs/remote/attach-container)), érdemes lehet hibakeresést végezni, és megismételni a Python-kódot a Docker bevonása nélkül. Ebben az esetben fontos, hogy a helyi gép ugyanazokat a kódtárakat használja, mint amelyeket a kísérlet Azure Machine Learning való futtatásakor használ. A Python-függőségek kezeléséhez az Azure a [Conda](https://docs.conda.io/)-t használja. Habár a környezetet más csomagkezelő használatával is újra létrehozhatja, a helyi gépen a Conda telepítése és konfigurálása a legegyszerűbb módja a szinkronizálásnak. 
+Egy hibakeresőt csatlakoztathat a Docker-ben futó folyamathoz. (Lásd: [csatolás egy futó tárolóhoz](https://code.visualstudio.com/docs/remote/attach-container).) Azonban érdemes lehet hibakeresést végezni, és megismételni a Python-kódot a Docker bevonása nélkül. Ebben az esetben fontos, hogy a helyi gép ugyanazokat a kódtárakat használja, mint amelyeket a kísérlet Azure Machine Learning való futtatásakor használ. A Python-függőségek kezeléséhez az Azure a [Conda](https://docs.conda.io/)-t használja. A környezetet más csomagkezelő használatával újra létrehozhatja, de a helyi gépen a Conda telepítése és konfigurálása a legegyszerűbb módja a szinkronizálásnak. 
 
 ## <a name="prepare-your-entry-script"></a>A nevezési parancsfájl előkészítése
 
@@ -48,7 +48,7 @@ Akkor is, ha a Docker használatával kezeli a modellt és a függőségeket, a 
 - Olyan `init()` metódus, amely nem tartalmaz argumentumot, és nem ad vissza semmit 
 - Egy `run()` JSON-formázott karakterláncot tartalmazó metódus, amely egy JSON-szerializálható objektumot ad vissza.
 
-A metódus argumentuma a következő lesz `run()` : 
+A metódus argumentuma `run()` ezen az űrlapon fog megjelenni: 
 
 ```json
 {
@@ -58,7 +58,7 @@ A metódus argumentuma a következő lesz `run()` :
 
 A metódusból visszaadott objektumnak `run()` meg kell valósítania `toJSON() -> string` .
 
-Az alábbi példa bemutatja, hogyan tölthető be a regisztrált scikit-modell, és hogyan szerezheti be a NumPy-információkat. Ez a példa az [oktatóanyag](tutorial-train-models-with-aml.md)modelljén és függőségein alapul:
+Az alábbi példa bemutatja, hogyan tölthető be a regisztrált scikit-modell, és hogyan szerzi be azt a NumPy-alapú adatelemzési szolgáltatással. Ez a példa az [oktatóanyag](tutorial-train-models-with-aml.md)modelljén és függőségein alapul.
 
 ```python
 import json
@@ -70,32 +70,32 @@ import joblib
 def init():
     global model
     # AZUREML_MODEL_DIR is an environment variable created during deployment.
-    # It is the path to the model folder (./azureml-models/$MODEL_NAME/$VERSION)
-    # For multiple models, it points to the folder containing all deployed models (./azureml-models)
+    # It's the path to the model folder (./azureml-models/$MODEL_NAME/$VERSION).
+    # For multiple models, it points to the folder containing all deployed models (./azureml-models).
     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
     model = joblib.load(model_path)
 
 def run(raw_data):
     data = np.array(json.loads(raw_data)['data'])
-    # make prediction
+    # Make prediction.
     y_hat = model.predict(data)
-    # you can return any data type as long as it is JSON-serializable
+    # You can return any data type as long as it's JSON-serializable.
     return y_hat.tolist()
 ```
 
-A speciális példákat, például az automatikus hencegés sémájának létrehozását, valamint a bináris adat (például képek) adatának a kiértékelését, a [speciális bejegyzés parancsfájl-létrehozási](how-to-deploy-advanced-entry-script.md)módját olvashatja. 
+A speciális példákhoz, beleértve az automatikus hencegés sémájának létrehozását és a bináris adatmegjelenítést (például képek), lásd: [speciális bejegyzés parancsfájl-készítés](how-to-deploy-advanced-entry-script.md). 
 
-## <a name="deploy-as-a-local-web-service-using-docker"></a>Üzembe helyezés helyi webszolgáltatásként a Docker használatával
+## <a name="deploy-as-a-local-web-service-by-using-docker"></a>Üzembe helyezés helyi webszolgáltatásként a Docker használatával
 
-A Azure Machine Learning által használt környezet replikálásának legegyszerűbb módja, ha a Docker használatával helyez üzembe egy webszolgáltatást. A helyi gépen futó Docker a következőket teszi:
+A Azure Machine Learning által használt környezet replikálásának legegyszerűbb módja, ha a Docker használatával helyez üzembe egy webszolgáltatás-szolgáltatást. A helyi gépen futó Docker a következőket teszi:
 
-1. Kapcsolódás a Azure Machine Learning munkaterülethez, amelyben a modell regisztrálva van
-1. `Model`A modellt jelképező objektum létrehozása
-1. Hozzon létre egy `Environment` objektumot, amely tartalmazza a függőségeket, és definiálja azt a szoftver-környezetet, amelyben a kód futni fog
-1. Hozzon létre egy `InferenceConfig` objektumot, amely társítja a bejegyzési parancsfájlt és a `Environment`
-1. Alosztály `DeploymentConfiguration` objektumának létrehozása `LocalWebserviceDeploymentConfiguration`
-1. Objektum létrehozásához használja a következőt: `Model.deploy()` `Webservice` . Ez a metódus letölti a Docker-rendszerképet, és társítja azt a `Model` , `InferenceConfig` , és `DeploymentConfiguration`
-1. A és a közötti aktiválása `Webservice``Webservice.wait_for_deployment()`
+1. Kapcsolódjon ahhoz a Azure Machine Learning-munkaterülethez, amelyben a modell regisztrálva van.
+1. Hozzon létre egy `Model` objektumot, amely a modellt jelképezi.
+1. Hozzon létre egy `Environment` objektumot, amely tartalmazza a függőségeket, és definiálja azt a szoftver-környezetet, amelyben a kód futni fog.
+1. Hozzon létre egy `InferenceConfig` objektumot, amely társítja a bejegyzési parancsfájlt a paranccsal `Environment` .
+1. Hozzon létre egy `DeploymentConfiguration` objektumot az alosztályból `LocalWebserviceDeploymentConfiguration` .
+1. Objektum létrehozásához használja a következőt: `Model.deploy()` `Webservice` . Ez a metódus letölti a Docker-rendszerképet, és társítja azt a `Model` , `InferenceConfig` , és `DeploymentConfiguration` .
+1. Aktiválja a t a `Webservice` használatával `Webservice.wait_for_deployment()` .
 
 Az alábbi kód a következő lépéseket mutatja be:
 
@@ -125,11 +125,11 @@ local_service.wait_for_deployment(show_output=True)
 print(f"Scoring URI is : {local_service.scoring_uri}")
 ```
 
-A hívása `Model.deploy()` néhány percet is igénybe vehet. A kezdeti üzembe helyezést követően hatékonyabban használhatja a `update()` metódust, nem pedig teljesen új. Lásd: [központilag telepített webszolgáltatás frissítése](how-to-deploy-update-web-service.md).
+A hívása `Model.deploy()` néhány percet is igénybe vehet. Miután először telepítette a webszolgáltatást, hatékonyabban használhatja a `update()` metódust ahelyett, hogy teljesen megkezdené. Lásd: [központilag telepített webszolgáltatás frissítése](how-to-deploy-update-web-service.md).
 
 ### <a name="test-your-local-deployment"></a>A helyi telepítés tesztelése
 
-Az előző üzembe helyezési parancsfájl futtatásakor a rendszer kiírja az URI-t, amelyre a pontozáshoz (például) is KÖZZÉTEHETi az adatokat `http://localhost:6789/score` . Az alábbi példa egy olyan parancsfájlt mutat be, amely a `"sklearn-mnist-local"` helyileg üzembe helyezett modellel szerzi be a mintaadatok. A modell, ha megfelelően be van tanítva, a kikövetkeztetés `normalized_pixel_values` "2"-ként értelmezhető. 
+Az előző üzembe helyezési parancsfájl futtatásakor a rendszer kiírja az URI-t, amelybe adatokat tehet közzé (például: `http://localhost:6789/score` ). Az alábbi példa egy olyan parancsfájlt mutat be, amely a helyileg telepített modell használatával szerzi be a mintaadatok `"sklearn-mnist-local"` . A modell, ha megfelelően be van tanítva, a kikövetkeztetés `normalized_pixel_values` "2"-ként értelmezhető. 
 
 ```python
 import requests
@@ -177,18 +177,18 @@ print("prediction:", resp.text)
 
 ## <a name="download-and-run-your-model-directly"></a>A modell letöltése és futtatása közvetlenül
 
-Miközben a Docker használatával helyezi üzembe a modellt webszolgáltatásként a leggyakoribb lehetőség, érdemes lehet közvetlenül a helyi Python-szkriptekkel is futtatnia a kódot. Két fontos elemre lesz szüksége: 
+A Docker használatával a modellt webszolgáltatásként helyezheti üzembe a leggyakoribb megoldásként. Előfordulhat azonban, hogy a kódot közvetlenül a helyi Python-parancsfájlok használatával szeretné futtatni. Két fontos összetevőre lesz szüksége: 
 
 - Maga a modell
 - Azok a függőségek, amelyekre a modell támaszkodik 
 
-A modell letöltése a következőket teheti:  
+A modellt a következőket töltheti le:  
 
-- A portálon válassza a **modellek** fület, válassza ki a kívánt modellt, majd a **részletek** lapról válassza a **Letöltés** lehetőséget.
-- A parancssorból a használatával `az ml model download` (lásd a [modell letöltési referenciáját](/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext_azure_cli_ml_az_ml_model_download&preserve-view=false))
-- A Python SDK-val a metódus használatával `Model.download()` (lásd a [modell API-referenciáját](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#download-target-dir------exist-ok-false--exists-ok-none-&preserve-view=false))
+- A portálon válassza a **modellek** fület, válassza ki a kívánt modellt, majd a **részletek** lapon válassza a **Letöltés** lehetőséget.
+- A parancssorból a használatával `az ml model download` . (Lásd a [modell letöltését.](/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext_azure_cli_ml_az_ml_model_download&preserve-view=false))
+- A Python SDK módszer használatával `Model.download()` . (Lásd a [Model osztályt.](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#download-target-dir------exist-ok-false--exists-ok-none-&preserve-view=false))
 
-Az Azure-modell egy vagy több szerializált Python-objektum, amely Python-lé-fájlként (**. PKL** kiterjesztéssel) van csomagolva. A lé-fájl tartalma a modell betanításához használt ML-könyvtár vagy-módszertől függ. Ha például az oktatóanyag modelljéből származik, a modellt a következővel lehet betölteni:
+Az Azure-modell egy vagy több szerializált Python-objektum, amely Python-lé-fájlként (. PKL kiterjesztéssel) van csomagolva. A lé-fájl tartalma a gépi tanulási könyvtártól vagy a modell betanításához használt technikától függ. Ha például az oktatóanyagban használja a modellt, a modellt a következővel töltheti be:
 
 ```python
 import pickle
@@ -197,25 +197,25 @@ with open('sklearn_mnist_model.pkl', 'rb') as f :
     logistic_model = pickle.load(f, encoding='latin1')
 ```
 
-A függőségek mindig trükkös, különösen a gépi tanulással, ahol gyakran egy adott verzióra vonatkozó követelmények szédítő webes változata lehet. Az `Environment` osztály metódusának használatával újra létrehozhat egy Azure Machine learning környezetet a helyi gépen teljes Conda-környezetként vagy Docker-rendszerképként `build_local()` . 
+A függőségek mindig trükkös, különösen a gépi tanulással, ahol gyakran egy adott verzióra vonatkozó követelmények szédítő webes változata lehet. A helyi gépen újra létrehozhat egy Azure Machine Learning környezetet teljes Conda-környezetként vagy Docker-rendszerképként a következő `build_local()` osztály metódusának használatával `Environment` : 
 
 ```python
 ws = Workspace.from_config()
 myenv = Environment.get(workspace=ws, name="tutorial-env", version="1")
-myenv.build_local(workspace=ws, useDocker=False) #Creates conda env
+myenv.build_local(workspace=ws, useDocker=False) #Creates conda environment.
 ```
 
-Ha az argumentumát a értékre állítja `build_local()` `useDocker` `True` , akkor a függvény Conda-környezet helyett Docker-rendszerképet hoz létre. Ha további vezérlésre van szüksége, használhatja a `Environment` `save_to_directory()` metódust, amely a **conda_dependencies. yml** és a **azureml_environment.jst írja be a** definíciós fájlokra, amelyeket a bővítmény alapjaként finomhangolásra és használatra használhat. 
+Ha az `build_local()` `useDocker` argumentumot a értékre állítja `True` , akkor a függvény Conda-környezet helyett Docker-rendszerképet hoz létre. Ha további vezérlésre van szüksége, használhatja a (z `save_to_directory()` ) metódusát `Environment` , amely conda_dependencies. yml és azureml_environment.jst ír a definíciós fájlokra, amelyeket a bővítmény alapjaként finomhangolásra és használatra használhat. 
 
-Az `Environment` osztály számos más módszerrel is szinkronizálhatja a környezeteket a számítási hardverek, az Azure-munkaterület és a Docker-lemezképek között. További információkért lásd az API- [ `Environment` referenciát](/python/api/azureml-core/azureml.core.environment(class)).
+Az `Environment` osztály számos más módszerrel is szinkronizálhatja a környezeteket a számítási hardverek, az Azure-munkaterület és a Docker-lemezképek között. További információ: [környezeti osztály](/python/api/azureml-core/azureml.core.environment(class)).
 
-Miután letöltötte a modellt, és feloldotta a függőségeit, nincsenek az Azure-ban definiált korlátozások a pontozási teljesítményének, a modell finomhangolásának, az átadási tanulás használatának és így tovább. 
+Miután letöltötte a modellt, és feloldotta a függőségeit, nincsenek Azure-definiált korlátozások a pontozási teljesítményének, a modell finomhangolásának, az átadási tanulás használatának és így tovább. 
 
 ## <a name="upload-a-retrained-model-to-azure-machine-learning"></a>Újratanított modell feltöltése Azure Machine Learning
 
-Ha van egy helyileg betanított vagy átképzett modellje, regisztrálhatja azt az Azure-ban. A regisztráció után folytathatja az Azure számítási szolgáltatással történő finomhangolását, vagy üzembe helyezheti azt az Azure-szolgáltatások, például az [Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md) vagy a [Triton következtetési kiszolgáló (előzetes verzió)](how-to-deploy-with-triton.md)használatával.
+Ha van egy helyileg betanított vagy átképzett modellje, regisztrálhatja azt az Azure-ban. A regisztrációt követően folytathatja az Azure számítási szolgáltatással történő finomhangolását, illetve az Azure-szolgáltatások, például az [Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md) vagy a [Triton következtetési kiszolgáló (előzetes verzió)](how-to-deploy-with-triton.md)használatával történő üzembe helyezését.
 
-A Azure Machine Learning Python SDK-val való használathoz a modellt olyan szerializált Python-objektumként kell tárolni, amely egy **PKL** -fájlban van, és olyan metódust kell megvalósítani, `predict(data)` amely JSON-szerializálható objektumot ad vissza. Előfordulhat például, hogy egy helyileg betanított scikit-Learn diabétesz modellt tárol a következővel: 
+A Azure Machine Learning Python SDK-val való használathoz a modellt egy olyan szerializált Python-objektumként kell tárolni, amely a lé formátumában (a. PKL fájl) található. Emellett olyan metódust is végre kell hajtania `predict(data)` , amely egy JSON-szerializálható objektumot ad vissza. Előfordulhat például, hogy egy helyileg betanított scikit-Learn diabétesz modellt tárol a következővel: 
 
 ```python
 import joblib
@@ -242,13 +242,13 @@ model = Model.register(model_path="sklearn_regression_model.pkl",
                        workspace=ws)
 ```
 
-Ezután megkeresheti az újonnan regisztrált modellt Azure Machine Learning Model ( **modell** ) lapján:
+Ezután megkeresheti az újonnan regisztrált modellt a Azure Machine Learning **Model (modell** ) lapon:
 
-:::image type="content" source="media/how-to-deploy-local/registered-model.png" alt-text="Képernyőkép a Azure Machine Learning Model lapról, amely a feltöltött modellt mutatja.":::
+:::image type="content" source="media/how-to-deploy-local/registered-model.png" alt-text="Képernyőkép a Azure Machine Learning modell lapról, amely egy feltöltött modellt mutat.":::
 
 A modellek és környezetek feltöltésével és frissítésével kapcsolatos további információkért lásd: [modell regisztrálása és helyi telepítése speciális használattal](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local-advanced.ipynb).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A környezetek kezelésével kapcsolatos további információkért tekintse meg a következő témakört: [Create & Software Environments in Azure Machine learning](how-to-use-environments.md)
-- Az adattárból származó adatok eléréséről a Kapcsolódás az [Azure-beli tárolási szolgáltatásokhoz](how-to-access-data.md) című témakörben olvashat bővebben.
+- A környezetek kezelésével kapcsolatos további információkért tekintse meg a következő témakört: [Create & Software Environments in Azure Machine learning](how-to-use-environments.md).
+- Az adattárból származó adatok elérésének megismeréséhez lásd: [Kapcsolódás a Storage Services szolgáltatáshoz az Azure](how-to-access-data.md)-ban.

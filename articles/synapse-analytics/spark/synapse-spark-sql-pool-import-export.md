@@ -6,25 +6,28 @@ author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: spark
-ms.date: 04/15/2020
+ms.date: 11/19/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 178fc12fe8e8e20af8deb40c62990c279af4ab64
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e0bdfa4a451269e82b73194e921f9067d848868e
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452835"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511083"
 ---
 # <a name="introduction"></a>Bevezetés
 
-Az Azure szinapszis Apache Spark, amellyel a szinapszis SQL Connector a kiszolgáló nélküli Apache Spark készletek és az Azure Szinapszisban található SQL-készletek közötti adatátvitel hatékony átvitelét szolgálja. Az Azure szinapszis Apache Spark, hogy a szinapszis SQL Connector csak dedikált SQL-készleteken működik, nem működik a kiszolgáló nélküli SQL-készlettel.
+Az Azure szinapszis Apache Spark a szinapszis SQL connectorhoz úgy lett kialakítva, hogy hatékonyan vigye át az adatátvitelt a kiszolgáló nélküli Apache Spark készletek és az Azure-beli dedikált SQL-készletek között. Az Azure szinapszis Apache Spark, hogy a szinapszis SQL Connector csak dedikált SQL-készleteken működik, nem működik a kiszolgáló nélküli SQL-készlettel.
+
+> [!WARNING]
+> A **sqlanalytics ()** függvény neve módosult a következőre: **synapsesql ()**. A sqlanalytics függvény továbbra is működni fog, de a rendszer elavulttá válik.  A jövőbeli fennakadások elkerülése érdekében módosítsa a **sqlanalytics ()** és a **synapsesql ()** függvényt.
 
 ## <a name="design"></a>Tervezés
 
 A Spark-készletek és az SQL-készletek közötti adatátvitel a JDBC használatával végezhető el. Azonban a két elosztott rendszer, például a Spark és az SQL-készletek miatt a JDBC általában szűk keresztmetszetet jelent a soros adatátvitel során.
 
-Az Azure szinapszis Apache Spark Pool to szinapszis SQL Connector a Apache Spark adatforrások implementációja. A dedikált SQL-készletekben lévő Azure Data Lake Storage Gen2t és a viszonyítási alapot használja a Spark-fürt és a szinapszis SQL-példány közötti adatátvitel hatékony átviteléhez.
+Az Azure szinapszis Apache Spark Pool to szinapszis SQL Connector a Apache Spark adatforrások implementációja. A dedikált SQL-készletekben lévő Azure Data Lake Storage Gen2t és a bázist használja a Spark-fürt és a szinapszis dedikált SQL-példánya közötti adatátvitelhez.
 
 ![Összekötő-architektúra](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -37,6 +40,8 @@ Ezért nem kell hitelesítő adatokat létrehoznia, vagy megadnia azokat az öss
 ## <a name="constraints"></a>Korlátozások
 
 - Ez az összekötő csak a Scalaben működik.
+- A pySpark a [Python használata](#use-pyspark-with-the-connector) című szakaszban talál részleteket.
+- Ez az összekötő nem támogatja az SQL-nézetek lekérdezését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -80,7 +85,7 @@ Az importálási utasítások nem szükségesek, ezeket a rendszer előre import
 #### <a name="read-api"></a>API olvasása
 
 ```scala
-val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
+val df = spark.read.synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 A fenti API a belső (felügyelt) és az SQL-készletben található külső táblák esetében is működik.
@@ -88,7 +93,7 @@ A fenti API a belső (felügyelt) és az SQL-készletben található külső tá
 #### <a name="write-api"></a>API írása
 
 ```scala
-df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+df.write.synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 Az írási API létrehozza a táblát a dedikált SQL-készletben, majd meghívja a albase-et az adatok betöltéséhez.  A tábla nem létezhet a dedikált SQL-készletben, vagy a rendszer hibaüzenetet küld, amely szerint a "már létezik objektum neve..."
@@ -101,7 +106,7 @@ TableType-értékek
 SQL-készlet – felügyelt tábla
 
 ```scala
-df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
+df.write.synapsesql("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 ```
 
 SQL Pool – külső tábla
@@ -130,7 +135,7 @@ A külső HITELESÍTŐADAT-objektum nem szükséges, ha Azure Active Directory �
 df.write.
     option(Constants.DATA_SOURCE, <DataSourceName>).
     option(Constants.FILE_FORMAT, <FileFormatName>).
-    sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
+    synapsesql("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
 
 ```
 
@@ -149,7 +154,7 @@ df.write.
 ```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
-sqlanalytics("<DBName>.<Schema>.<TableName>")
+synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 #### <a name="write-api"></a>API írása
@@ -157,7 +162,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```scala
 df.write.
 option(Constants.SERVER, "samplews.database.windows.net").
-sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="use-sql-auth-instead-of-azure-ad"></a>SQL-hitelesítés használata az Azure AD helyett
@@ -171,7 +176,7 @@ val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
-sqlanalytics("<DBName>.<Schema>.<TableName>")
+synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 #### <a name="write-api"></a>API írása
@@ -181,10 +186,10 @@ df.write.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
-sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="use-the-pyspark-connector"></a>Az PySpark-összekötő használata
+### <a name="use-pyspark-with-the-connector"></a>A PySpark használata az összekötővel
 
 > [!NOTE]
 > Ez a példa csak a jegyzetfüzettel kapcsolatos, szem előtt tartott felülettel van megadva.
@@ -203,7 +208,7 @@ A PySpark notebookon a Magics használatával futtasson egy Scala-cellát:
 %%spark
 val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
-scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
+scala_df.write.synapsesql("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
 
 Hasonlóképpen, az olvasási forgatókönyvben olvassa el az adataikat a Scala használatával, majd írja be egy ideiglenes táblába, és használja a Spark SQL-et a PySpark-ben, hogy lekérdezze a temp táblát egy dataframe.
@@ -235,7 +240,8 @@ A munkaterülethez csatlakoztatott ADLS Gen2 Storage-fiókban tárolnia kell a b
 > [!IMPORTANT]
 > Ügyeljen arra, hogy ne válassza az "alapértelmezett" lehetőséget, ha nem kívánja.
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Dedikált SQL-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 - [Új Apache Spark-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

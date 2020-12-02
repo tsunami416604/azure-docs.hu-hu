@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a2373f0cf7005e465c2d3bd42817b3394a84de
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654854"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510274"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight-beli gyorsított írási műveletek Apache HBase-hez
 
@@ -20,15 +20,15 @@ Ez a cikk a **gyorsított írások** funkciójának hátterét mutatja be az Apa
 
 ## <a name="overview-of-hbase-architecture"></a>A HBase architektúra áttekintése
 
-A HBase-ben egy **sor** egy vagy több **oszlopból** áll, és egy **sor kulcs**azonosítja. Több sor alkot egy **táblát**. Az oszlopok **cellákat**tartalmaznak, amelyek az oszlopban szereplő érték időbélyegzős verziói. Az oszlopok **oszlopos családokba**vannak csoportosítva, és egy adott oszlopban lévő összes oszlop együtt tárolódik a **HFiles**nevű tárolási fájlokban.
+A HBase-ben egy **sor** egy vagy több **oszlopból** áll, és egy **sor kulcs** azonosítja. Több sor alkot egy **táblát**. Az oszlopok **cellákat** tartalmaznak, amelyek az oszlopban szereplő érték időbélyegzős verziói. Az oszlopok **oszlopos családokba** vannak csoportosítva, és egy adott oszlopban lévő összes oszlop együtt tárolódik a **HFiles** nevű tárolási fájlokban.
 
 Az adatfeldolgozási terhelés kiegyensúlyozására a HBase **régióit** használják. A HBase először a tábla sorait tárolja egyetlen régióban. A sorok több régióban oszlanak el, mivel a tábla adatai mennyisége növekszik. A **régió-kiszolgálók** több régióban is kezelhetik a kérelmeket.
 
 ## <a name="write-ahead-log-for-apache-hbase"></a>Írási napló az Apache HBase
 
-A HBase először az adatfrissítéseket írja be egy írási előre írásos naplónak (WAL) nevezett véglegesítő naplóba. A frissítés a WAL-ben való tárolása után a memóriában lévő **MemStore**van írva. Ha a memóriában lévő adatmennyiség eléri a maximális kapacitást, a lemezként **HFile**van írva.
+A HBase először az adatfrissítéseket írja be egy írási előre írásos naplónak (WAL) nevezett véglegesítő naplóba. A frissítés a WAL-ben való tárolása után a memóriában lévő **MemStore** van írva. Ha a memóriában lévő adatmennyiség eléri a maximális kapacitást, a lemezként **HFile** van írva.
 
-Ha egy **RegionServer** összeomlik vagy elérhetetlenné válik a MemStore kiürítése előtt, az írási előre napló használható a frissítések visszajátszására. A WAL nélkül, ha egy **RegionServer** összeomlik a frissítések egy **HFile**való kiürítése előtt, az összes frissítés elvész.
+Ha egy **RegionServer** összeomlik vagy elérhetetlenné válik a MemStore kiürítése előtt, az írási előre napló használható a frissítések visszajátszására. A WAL nélkül, ha egy **RegionServer** összeomlik a frissítések egy **HFile** való kiürítése előtt, az összes frissítés elvész.
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Gyorsított írási funkciók az Azure HDInsight for Apache HBase
 
@@ -36,9 +36,9 @@ A gyorsított írási funkció megoldja a Felhőbeli tárolásban lévő írási
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Gyorsított írások engedélyezése a HBase a HDInsight-ben
 
-Ha új HBase-fürtöt szeretne létrehozni a gyorsított írási funkciókkal, kövesse a [fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md) című szakasz lépéseit, amíg el nem éri a **3. lépést, a tárterületet**. A **Metaadattár beállításai**területen jelölje be a **HBase gyorsított írások engedélyezése**jelölőnégyzetet. Ezután folytassa a fürt létrehozásához szükséges további lépéseket.
+Ha új HBase-fürtöt szeretne létrehozni a gyorsított írási funkciókkal, kövesse a [fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md) című szakasz lépéseit, amíg el nem éri a **3. lépést, a tárterületet**. A **Metaadattár beállításai** területen jelölje be a **HBase gyorsított írások engedélyezése** jelölőnégyzetet. Ezután folytassa a fürt létrehozásához szükséges további lépéseket.
 
-![Gyorsított írási lehetőségek engedélyezése a HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
+![Gyorsított írási lehetőségek engedélyezése a HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/azure-portal-create-hbase-wals.png)
 
 ## <a name="other-considerations"></a>További szempontok
 

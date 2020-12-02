@@ -5,24 +5,24 @@ services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 12/01/2020
 ms.author: sukishen
-ms.openlocfilehash: 6b2595eaf1e373c3a15014d0bc684d6e3914a665
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a92dafe6237d0f061f837f07c5dcf2686b1a8a7e
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566639"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510734"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Interconnect Kínával az Azure Virtual WAN és a Secure hub használatával
 
-A közös autóipari, gyártási, logisztikai vagy egyéb intézmények, például a nagykövetségek esetében gyakran a Kínával való összekapcsolással kapcsolatos kérdésekkel foglalkozunk. Ezek a tökéletesítések elsősorban a Cloud Services, például a Microsoft 365, az Azure globális szolgáltatásainak vagy a kínai összekötő-ágaknak a felhasználói gerinctel való használatához szükségesek.
+A közös autóipari, gyártási, logisztikai vagy egyéb intézmények, például a nagykövetségek esetében gyakran a Kínával folytatott kapcsolatok fejlesztésével kapcsolatos kérdésekkel foglalkozunk. Ezek a tökéletesítések elsősorban a Cloud Services, például a Microsoft 365, az Azure globális szolgáltatásainak vagy a kínai összekötő-ágaknak a felhasználói gerinctel való használatához szükségesek.
 
 A legtöbb esetben az ügyfelek nagy késéssel, alacsony sávszélességgel, instabil kapcsolattal és a Kínával (például Európa vagy a Egyesült Államok) való kapcsolódás magas költségeivel küzdenek.
 
 Ezen küzdelmek egyik oka a "kínai nagy tűzfal", amely megvédi az Internet kínai részét, és szűri a forgalmat Kínában. A kínai kontinensről a Kínából kívülre irányuló forgalom csaknem minden, a különleges adminisztrációs zónák, például Hongkong és Makaó esetében, a nagyszerű tűzfalon halad át. A Hongkongon és Makaón futó forgalom nem éri el a nagy tűzfalat a teljes körű működésben, hanem a nagy tűzfal egy részhalmaza kezeli.
 
-![Szolgáltatói összekötő](./media/interconnect-china/provider.png)
+:::image type="content" source="./media/interconnect-china/provider.png" alt-text="A diagram megjeleníti a szolgáltatói összekötőt.":::
 
 A virtuális WAN használatával az ügyfél több teljesítményű és stabil kapcsolatot létesíthet Microsoft Cloud szolgáltatásokkal, és kapcsolatot létesít a vállalati hálózattal a kínai kiberbiztonsági törvény feltörése nélkül.
 
@@ -71,11 +71,17 @@ A következő lista a Hongkongban lehetséges internetes cseréket mutatja be:
 
 Ha ezt a kapcsolatot használja, a Microsoft-szolgáltatásokhoz tartozó következő BGP-ugrásnak a Microsoft autonóm rendszer számának kell lennie (AS #) 8075. Ha egyetlen helyet vagy SDWAN-megoldást használ, az a választás lenne.
 
+A szárazföldi Kína és Hongkong közötti kapcsolatokra vonatkozó jelenlegi változások miatt a legtöbb ilyen hálózati szolgáltató létrehoz egy MPLS-hidat a kínai anyaország és Hongkong között.
+
+Láthatja, hogy a helyek közötti VPN-kapcsolatok Kínában engedélyezettek, és többnyire stabilak. Ugyanez vonatkozik a helyek közötti, a világ többi részén található ágak közötti kapcsolatokra. A szolgáltatók most létrehoznak egy VPN/SDWAN összesítést mindkét oldalon és a hídon a MPLS keresztül.
+
+:::image type="content" source="./media/interconnect-china/china-mpls-bridge.png" alt-text="A diagramon a China MPLS Bridge látható.":::
+
 Akárhogy is, javasoljuk, hogy a kínai anyaországban egy második és egy hagyományos internetes kitörés is rendelkezésre áll. Ezt a forgalmat a nagyvállalati forgalom és a felhőalapú szolgáltatások, például a Microsoft 365 és az Azure közötti forgalom, valamint a törvény által szabályozott internetes forgalom felosztására kell osztani.
 
 Kínában a megfelelő hálózati architektúra a következő példához hasonlóan néz ki:
 
-![Több ág](./media/interconnect-china/multi-branch.png)
+:::image type="content" source="./media/interconnect-china/multi-branch.png" alt-text="A diagramon több ág látható.":::
 
 Ebben a példában a Microsoft Global bejövő hálózati forgalom Hongkonggal való kapcsolattal rendelkezik, mostantól elkezdheti kihasználni az [Azure Virtual WAN globális átviteli architektúráját](virtual-wan-global-transit-network-architecture.md) és további szolgáltatásait, például az Azure Secure Virtual WAN hub szolgáltatást, hogy a szolgáltatásokat és az adatközpontot a Kínában kívüli ágakhoz és adatközpontokhoz is használja.
 
@@ -85,7 +91,7 @@ Ebben a szakaszban a virtuális WAN hub – hub kommunikációt használjuk az i
 
 A minta architektúra A következő példához hasonlóan néz ki:
 
-![WAN-minta](./media/interconnect-china/sample.png)
+:::image type="content" source="./media/interconnect-china/sample.png" alt-text="A diagramon a WAN minta látható.":::
 
 Ebben a példában a kínai ágak VPN-vagy MPLS-kapcsolatok használatával csatlakoznak az Azure Cloud China-hoz és egymáshoz. A globális szolgáltatásokhoz csatlakozni kívánó ágak a közvetlenül a Hongkonghoz csatlakozó MPLS-vagy internetalapú szolgáltatásokat használják. Ha a ExpressRoute-t Hongkongban, illetve a másik régióban is használni szeretné, konfigurálnia kell a [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) a ExpressRoute-áramkörök összekapcsolásához.
 
@@ -93,7 +99,7 @@ A ExpressRoute Global Reach egyes régiókban nem érhető el. Ha például Braz
 
 Az alábbi ábrán a forgatókönyv mindkét példája látható.
 
-![Global Reach](./media/interconnect-china/global.png)
+:::image type="content" source="./media/interconnect-china/global.png" alt-text="A diagramon Global Reach látható.":::
 
 ## <a name="secure-internet-breakout-for-microsoft-365"></a><a name="secure"></a>Biztonságos internetes kitörési Microsoft 365
 
@@ -103,7 +109,7 @@ A virtuális WAN esetében mindkét forgatókönyv esetében kihasználhatja az 
 
 Az alábbi ábrán egy példa látható erre a forgatókönyvre:
 
-![Internetes breakout webes és Microsoft-szolgáltatások forgalmához](./media/interconnect-china/internet.png)
+:::image type="content" source="./media/interconnect-china/internet.png" alt-text="A diagramon a webes és a Microsoft-szolgáltatások forgalmára vonatkozó internetes breakout látható.":::
 
 ## <a name="architecture-and-traffic-flows"></a><a name="traffic"></a>Architektúra és forgalmi folyamatok
 
@@ -117,7 +123,7 @@ Ha az Azure Virtual WAN-t internetkapcsolattal együtt használja, minden kapcso
 
 Ez a szakasz egy olyan kialakítást mutat be, amely SDWAN vagy VPN-t használ a Hongkong és más ágak számára. Ez a beállítás a használat és a forgalom folyamatát mutatja be, ha a virtuális WAN-gerinc mindkét helyén tiszta internetkapcsolatot használ. Ebben az esetben a rendszer dedikált internet-hozzáférés vagy egy ICP Provider SDWAN-megoldás használatával kezdeményezi a kapcsolatot Hongkongban. Más ágak tiszta internetes vagy SDWAN megoldásokat is használnak.
 
-![Kína – Hongkong-forgalom](./media/interconnect-china/china-traffic.png)
+:::image type="content" source="./media/interconnect-china/china-traffic.png" alt-text="A diagramon Kína és Hongkong közötti forgalom látható.":::
 
 Ebben az architektúrában minden hely a Microsoft globális hálózatához csatlakozik a VPN és az Azure Virtual WAN használatával. A helyek és a Hongkong közötti forgalom továbbítása a Microsoft-hálózaton keresztül történik, és csak az utolsó mérföldes internetkapcsolatot használja.
 
@@ -125,7 +131,7 @@ Ebben az architektúrában minden hely a Microsoft globális hálózatához csat
 
 Ez a szakasz egy olyan kialakítást mutat be, amely ExpressRoute használ Hongkongban és más ágakban VPN-/SDWAN-ágakkal. Ez a lehetőség a Hongkongban és a SDWAN vagy a VPN-en keresztül csatlakozó más ágakban lezárt és ExpressRoute használatát mutatja be. A Hongkongban található ExpressRoute jelenleg a szolgáltatók rövid listájára korlátozódnak, amelyek az [Express Route-partnerek](../expressroute/expressroute-locations-providers.md#global-commercial-azure)listáján találhatók.
 
-![Kína – Hongkong forgalmi ExpressRoute](./media/interconnect-china/expressroute.png)
+:::image type="content" source="./media/interconnect-china/expressroute.png" alt-text="A diagramon Kína és Hongkong közötti forgalom – ExpressRoute látható.":::
 
 A Kínából, például Dél-Koreában vagy Japánban is megszüntetheti a ExpressRoute. A megfelelőség, a szabályozás és a késés miatt azonban Hongkong jelenleg a legjobb választás.
 
@@ -135,13 +141,13 @@ Ez a szakasz egy olyan kialakítást mutat be, amelyben a ExpressRoute a Hongkon
 
 Az összekapcsolt ágakra vagy a kínai helyekre irányuló forgalom az adott architektúrán belül más megközelítést fog követni. A virtuális WAN jelenleg nem támogatja a ExpressRoute és a ExpressRoute átvitelét. A forgalom a ExpressRoute Global Reach vagy a harmadik féltől származó összekötőt a virtuális WAN-központ átadása nélkül fogja kihasználni. Közvetlenül az egyik Microsoft Enterprise Edge (MSEE) rendszerről egy másikra áramlik.
 
-![Az ExpressRoute Global Reach](./media/interconnect-china/expressroute-virtual.png)
+:::image type="content" source="./media/interconnect-china/expressroute-virtual.png" alt-text="A diagramon a ExpressRoute Global Reach látható.":::
 
 Jelenleg a ExpressRoute Global Reach minden országban/régióban nem érhető el, de az Azure Virtual WAN használatával is konfigurálhat megoldást.
 
 Beállíthat például egy ExpressRoute a Microsoft-partnerekkel, és egy VPN-alagutat is összekapcsolhat az Azure Virtual WAN-hoz. Most, hogy engedélyezte, újra áthaladt a VPN és a ExpressRoute közötti átvitel Global Reach és külső szolgáltató és szolgáltatás nélkül, például a Megaport Cloud.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információt a következő cikkekben talál:
 
