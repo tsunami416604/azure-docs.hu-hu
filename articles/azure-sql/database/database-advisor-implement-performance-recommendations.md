@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b1ef29eb71ccd945552550f64e5ae95bc85be44d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 79ccf0f8aae7e915601081f875cea294de52d787
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672109"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500852"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>A Azure SQL Database teljesítményére vonatkozó javaslatok Database Advisor
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,10 +29,10 @@ A teljesítmény áttekintése áttekintést nyújt az adatbázis teljesítmény
 
 ![A Azure SQL Database teljesítményének áttekintése](./media/database-advisor-implement-performance-recommendations/performance-overview-annotated.png)
 
-- A **javaslatok** csempéje az adatbázis hangolási javaslatainak részletezését biztosítja (a három legfontosabb javaslat látható, ha van több). A csempére kattintva megtekintheti a **[teljesítményre vonatkozó javaslat beállításait](database-advisor-find-recommendations-portal.md#viewing-recommendations)** .
+- A **javaslatok** csempéje az adatbázis hangolási javaslatainak részletezését biztosítja (a három legfontosabb javaslat látható, ha van több). A csempére kattintva megtekintheti a **[teljesítményre vonatkozó javaslat beállításait](database-advisor-find-recommendations-portal.md#viewing-recommendations)**.
 - A **hangolási tevékenység** csempe összefoglalja az adatbázis folyamatban lévő és befejezett hangolási műveleteit, így gyors áttekintést nyújt a hangolási tevékenység előzményeiről. Erre a csempére kattintva megtekintheti az adatbázis teljes hangolási előzményeit.
 - Az **automatikus hangolás** csempéje az adatbázis **[Automatikus hangolási konfigurációját](automatic-tuning-enable.md)** jeleníti meg (az adatbázisra automatikusan alkalmazott hangolási beállításokat). A csempére kattintva megnyílik az Automation konfigurálása párbeszédpanel.
-- Az **adatbázis-lekérdezések** csempe az adatbázis lekérdezési teljesítményének összegzését jeleníti meg (a teljes DTU-használat és a legfelső szintű erőforrás-felhasználású lekérdezések esetében). A csempére kattintva **[lekérdezési terheléselemző](query-performance-insight-use.md)** .
+- Az **adatbázis-lekérdezések** csempe az adatbázis lekérdezési teljesítményének összegzését jeleníti meg (a teljes DTU-használat és a legfelső szintű erőforrás-felhasználású lekérdezések esetében). A csempére kattintva **[lekérdezési terheléselemző](query-performance-insight-use.md)**.
 
 ## <a name="performance-recommendation-options"></a>Teljesítménnyel kapcsolatos javaslatok beállításai
 
@@ -105,7 +105,7 @@ A "séma javítása" javaslat akkor jelenik meg, ha Azure SQL Database észleli 
 
 | SQL-hibakód | Üzenet |
 | --- | --- |
-| 201 |A (z) "" eljárás vagy függvény a (z) "" *paramétert várja* , amely nem lett megadva. |
+| 201 |A (z) "" eljárás vagy függvény a (z) ""*paramétert várja*, amely nem lett megadva. |
 | 207 |Érvénytelen oszlopnév: "*". |
 | 208 |Érvénytelen objektumnév: "*". |
 | 213 |Az oszlop neve vagy a megadott értékek száma nem felel meg a tábla definíciójának. |
@@ -116,7 +116,7 @@ A "séma javítása" javaslat akkor jelenik meg, ha Azure SQL Database észleli 
 
 A fejlesztők fontolóra vehetik az egyéni alkalmazások fejlesztését a Azure SQL Database teljesítményével kapcsolatos javaslatok használatával. Az adatbázis-portálon felsorolt összes javaslat a [Get-AzSqlDatabaseRecommendedAction](/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API-n keresztül érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az adatbázis-indexek és a lekérdezés-végrehajtási tervek automatikus finomhangolásával kapcsolatos további információkért lásd: [Azure SQL Database automatikus hangolás](automatic-tuning-overview.md).
 - Az adatbázis teljesítményének automatikus és a teljesítménnyel kapcsolatos problémák kiváltó okának elemzésével kapcsolatos további információkért lásd: [Azure SQL Intelligent Insights](intelligent-insights-overview.md).

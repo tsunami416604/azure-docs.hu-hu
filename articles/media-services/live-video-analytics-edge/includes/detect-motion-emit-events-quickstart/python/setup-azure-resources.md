@@ -1,17 +1,17 @@
 ---
-ms.openlocfilehash: 67d90836c382728f989ab2cb4fde4d81bac9eb25
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5fa8377b3cdddb2818c04c5a75e347ff73dc07d8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88691024"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509335"
 ---
 Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 
 * IoT Hub
 * Tárfiók
 * Azure Media Services fiók
-* Linux virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](../../../../../iot-edge/how-to-install-iot-edge-linux.md) telepítve
+* Linux virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](../../../../../iot-edge/how-to-install-iot-edge.md) telepítve
 
 Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lévő szükséges erőforrások üzembe helyezéséhez használja az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Ehhez kövesse az alábbi lépéseket:
 
@@ -29,10 +29,9 @@ Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lé
     Ha a parancsfájl sikeresen befejeződik, az előfizetésben szereplő összes szükséges erőforrást látnia kell.
 1. A szkript befejeződése után válassza ki a kapcsos zárójeleket, hogy elérhetővé tegye a mappastruktúrát. A *~/clouddrive/LVA-Sample* könyvtárban néhány fájl jelenik meg. Ebben a rövid útmutatóban a következők szerepelnek:
 
-     * ***~/clouddrive/LVA-Sample/Edge-Deployment/.env*** – ez a fájl olyan tulajdonságokat tartalmaz, amelyeket a Visual Studio Code használ a modulok peremhálózati eszközre való telepítéséhez.
-     * ***~/clouddrive/lva-sample/appsetting.json*** -Visual Studio Code ezt a fájlt használja a mintakód futtatásához.
+     * ***~/clouddrive/LVA-Sample/Edge-Deployment/.env** _ – ez a fájl olyan tulajdonságokat tartalmaz, amelyeket a Visual Studio Code használ a modulok peremhálózati eszközre való telepítéséhez.
+     _ ***~/clouddrive/lva-sample/appsetting.json*** -Visual Studio Code ezt a fájlt használja a mintakód futtatásához.
      
     Ezekre a fájlokra szüksége lesz, amikor a következő szakaszban a Visual Studio Code-ban beállítja a fejlesztési környezetet. Előfordulhat, hogy most egy helyi fájlba szeretné másolni őket.
     
     ![Alkalmazásbeállítások](../../../media/quickstarts/clouddrive.png)
-    

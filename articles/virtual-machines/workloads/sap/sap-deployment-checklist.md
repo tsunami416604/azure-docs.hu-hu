@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ac75ab31f8c9cdd9405115db4f5c35d28707e29f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 06d20dd47ceb71b51e226d662892eab06b072685
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950363"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500937"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -243,8 +243,8 @@ Ebben a fázisban gyűjti a tapasztalt és megtanult adatokat a nem éles körny
     - Az Azure Premium Storage a késésre érzékeny lemezekhez használatos, vagy a [99,9%-os egyszeri virtuális gépre vonatkozó SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) -t kell megadni.
     - Az Azure írásgyorsító megfelelően van telepítve.
         - Győződjön meg arról, hogy a virtuális gépeken belül a tárolóhelyek és a csíkkészletek megfelelően lettek kiépítve a írásgyorsítót igénylő lemezeken.
-        - A [szoftveres RAID konfigurációjának megtekintése Linux rendszeren](../../linux/configure-raid.md).
-        - Az [LVM konfigurálása az Azure-beli Linux rendszerű virtuális gépeken](../../linux/configure-lvm.md).
+        - A [szoftveres RAID konfigurációjának megtekintése Linux rendszeren](/previous-versions/azure/virtual-machines/linux/configure-raid).
+        - Az [LVM konfigurálása az Azure-beli Linux rendszerű virtuális gépeken](/previous-versions/azure/virtual-machines/linux/configure-lvm).
     - Az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) használata kizárólag.
     - A virtuális gépek üzembe helyezése a megfelelő rendelkezésre állási csoportokban és Availability Zones.
     - Az [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) engedélyezve van az SAP-alkalmazás rétegében és az SAP adatbázis-kezelő rétegében használt virtuális gépeken.
@@ -299,7 +299,7 @@ Ez a fázis a rendszer figyelésére, üzemeltetésére és felügyeletére szol
 3. Optimalizálja a rendszerek leállításának időpontját.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el a következő cikkeket:
 
 - [Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása](./planning-guide.md)

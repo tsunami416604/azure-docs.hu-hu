@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/30/2020
-ms.openlocfilehash: 180f6e8902dc881c99a74a6491eeb3012bc03d0f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 4204254754307f8310d5ccfda19400de57381075
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675223"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500869"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatikus hangolás a Azure SQL Database és az Azure SQL felügyelt példányában
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -69,7 +69,7 @@ A Azure SQL Database és az Azure SQL felügyelt példányaiban elérhető Autom
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL Database automatikus finomhangolása
 
-A Azure SQL Database automatikus finomhangolása a **create index** , **drop index** és a **Last Good Plan** adatbázis-tanácsadói javaslatok használatával optimalizálja az adatbázis teljesítményét. További információ: az [adatbázis-tanácsadói javaslatok a Azure Portal](database-advisor-find-recommendations-portal.md), a [PowerShellben](/powershell/module/az.sql/get-azsqldatabaserecommendedaction)és a [REST API](/rest/api/sql/serverautomatictuning).
+A Azure SQL Database automatikus finomhangolása a **create index**, **drop index** és a **Last Good Plan** adatbázis-tanácsadói javaslatok használatával optimalizálja az adatbázis teljesítményét. További információ: az [adatbázis-tanácsadói javaslatok a Azure Portal](database-advisor-find-recommendations-portal.md), a [PowerShellben](/powershell/module/az.sql/get-azsqldatabaserecommendedaction)és a [REST API](/rest/api/sql/serverautomatictuning).
 
 Manuálisan alkalmazhatja a hangolási javaslatokat a Azure Portal használatával, vagy engedélyezheti az automatikus finomhangolást a hangolási javaslatok önálló alkalmazásával. A rendszer önálló finomhangolási javaslatok használatának előnye, hogy automatikusan ellenőrzi, hogy van-e pozitív nyereség a munkaterhelés teljesítményében, és ha nem észlelhető jelentős teljesítmény-javulás, automatikusan visszaállíthatja a hangolási javaslatot. Vegye figyelembe, hogy a gyakran nem végrehajtott hangolási javaslatok által érintett lekérdezések esetében az ellenőrzési fázis akár 72 órával is eltarthat.
 
@@ -92,7 +92,7 @@ Az Automatikus hangolási javaslatokra vonatkozó e-mail-értesítések létreho
 
 Az SQL felügyelt példányának automatikus finomhangolása csak az **utolsó jó csomag kényszerítését** támogatja. Az Automatikus hangolási beállítások T-SQL-en keresztüli konfigurálásával kapcsolatos további információkért lásd: az automatikus [hangolás bevezeti az automatikus terv javítását](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) és az [automatikus terv javítását](/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az automatikus hangolásban használt beépített intelligenciával kapcsolatos információkért lásd: [mesterséges intelligencia-dallamok Azure SQL Database](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/).
 - Annak megismeréséhez, hogy az automatikus hangolás hogyan működik a motorháztető alatt, tekintse meg a [több millió adatbázis automatikus indexelése Microsoft Azure SQL Databaseban](https://www.microsoft.com/research/uploads/prod/2019/02/autoindexing_azuredb.pdf)című témakört.

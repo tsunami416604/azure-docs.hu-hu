@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: c4132ca675af136d7fd50b8ddd02277919a5ed28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 534619ace09b4e11934062a591adf8d9ab6f77ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361092"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500801"
 ---
 # <a name="create-an-azure-vm-assessment"></a>Azure-beli virtuális gép felmérésének létrehozása
 
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan hozhat létre Azure-beli virtuálisgép-értékelés
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
+- Győződjön meg arról, hogy [létrehozott](./create-manage-projects.md) egy Azure Migrate projektet.
 - Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
 - Értékelés létrehozásához be kell állítania egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)rendszerhez. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. [További információk](migrate-appliance.md).
 
@@ -31,8 +31,8 @@ Kétféle méretezési feltétel használható az Azure-beli virtuális gépek �
 
 **Értékelés** | **Részletek** | **Adatok**
 --- | --- | ---
-**Teljesítményalapú** | Értékelések az összegyűjtött teljesítményadatok alapján | **Ajánlott**virtuálisgép-méret: a processzor-és memóriahasználat adatai alapján.<br/><br/> **Ajánlott lemez típusa (standard vagy prémium szintű felügyelt lemez)**: a helyszíni lemezek IOPS és átviteli sebessége alapján.
-**Helyszíni** | Helyszíni méretezésen alapuló értékelések. | **Ajánlott**virtuálisgép-méret: a helyszíni virtuális gép méretétől függően<br/><br> **Ajánlott lemez típusa**: az értékeléshez kiválasztott tárolási típus alapján.
+**Teljesítményalapú** | Értékelések az összegyűjtött teljesítményadatok alapján | **Ajánlott** virtuálisgép-méret: a processzor-és memóriahasználat adatai alapján.<br/><br/> **Ajánlott lemez típusa (standard vagy prémium szintű felügyelt lemez)**: a helyszíni lemezek IOPS és átviteli sebessége alapján.
+**Helyszíni** | Helyszíni méretezésen alapuló értékelések. | **Ajánlott** virtuálisgép-méret: a helyszíni virtuális gép méretétől függően<br/><br> **Ajánlott lemez típusa**: az értékeléshez kiválasztott tárolási típus alapján.
 
 [További](concepts-assessment-calculation.md) információ az értékelésekről.
 
@@ -41,11 +41,11 @@ Kétféle méretezési feltétel használható az Azure-beli virtuális gépek �
 Az értékelést a következőképpen futtathatja:
 
 1. Tekintse át az értékelések létrehozásának [ajánlott eljárásait](best-practices-assessment.md).
-2. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson az **értékelés**elemre.
+2. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson az **értékelés** elemre.
 
     ![A képernyőképen Azure Migrate-kiszolgálók láthatók a kiértékelési eszközök területen.](./media/how-to-create-assessment/assess.png)
 
-3. A **kiszolgálók értékelése**területen válassza ki az értékelés típusát "Azure VM" néven, válassza ki a felderítés forrását, és adja meg az értékelés nevét.
+3. A **kiszolgálók értékelése** területen válassza ki az értékelés típusát "Azure VM" néven, válassza ki a felderítés forrását, és adja meg az értékelés nevét.
 
     ![A kiértékelés alapjai](./media/how-to-create-assessment/assess-servers-azurevm.png)
 
@@ -54,7 +54,7 @@ Az értékelést a következőképpen futtathatja:
     ![Kiértékelés tulajdonságai](./media/how-to-create-assessment//view-all.png)
 
 5. Kattintson a **Tovább** gombra az **értékelni kívánt gépek kiválasztásához**. A **Csoport kiválasztása vagy létrehozása** területen válassza az **Új létrehozása** lehetőséget, majd adja meg a csoport nevét. A csoport egy vagy több virtuális gépet foglal magába a kiértékeléshez.
-6. A **számítógépek hozzáadása a csoporthoz**területen válassza ki a csoportba felvenni kívánt virtuális gépeket.
+6. A **számítógépek hozzáadása a csoporthoz** területen válassza ki a csoportba felvenni kívánt virtuális gépeket.
 7. Kattintson a **Tovább** gombra a **Felülvizsgálat + létrehozás** területre lépéshez, a kiértékelés részleteinek áttekintéséhez.
 8. A csoport létrehozásához kattintson az **Értékelés létrehozása** elemre, majd futtassa az értékelést.
 
@@ -75,18 +75,18 @@ Az Azure-beli virtuális gépek kiértékelése a következőket tartalmazza:
 
 ### <a name="view-an-azure-vm-assessment"></a>Azure-beli virtuális gépek felmérésének megtekintése
 
-1. Az **áttelepítési célok**  >   **kiszolgálóin**kattintson az **értékelések** **Azure Migrate: kiszolgáló értékelése**elemre.
-2. Az **értékelésekben**kattintson egy értékelésre a megnyitásához.
+1. Az **áttelepítési célok**  >   **kiszolgálóin** kattintson az **értékelések** **Azure Migrate: kiszolgáló értékelése** elemre.
+2. Az **értékelésekben** kattintson egy értékelésre a megnyitásához.
 
     ![Kiértékelés összegzése](./media/how-to-create-assessment/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>Az Azure-kompatibilitás áttekintése
 
-1. Az **Azure készültségi**területén ellenőrizze, hogy a virtuális gépek készen állnak-e az Azure-ba való áttelepítésre.
+1. Az **Azure készültségi** területén ellenőrizze, hogy a virtuális gépek készen állnak-e az Azure-ba való áttelepítésre.
 2. A virtuális gép állapotának áttekintése:
     - **Azure-beli használatra kész**: Az Azure Migrate javaslatot tesz a virtuálisgép-méretre, illetve költségbecslést ad az értékelésben szereplő virtuális gépekhez.
     - **Feltételekkel kész**: megjeleníti a problémákat és a javasolt szervizelést.
-    - **Nem áll készen az Azure-ra: a**problémákat és a javasolt szervizelést jeleníti meg.
+    - **Nem áll készen az Azure-ra: a** problémákat és a javasolt szervizelést jeleníti meg.
     - **Felkészültségi ismeretlen**: akkor használatos, ha az adatelérhetőségi problémák miatt Azure Migrate nem tudja felmérni a készültséget.
 
 3. Kattintson egy **Azure-készültségi** állapotra. Megtekintheti a VM-készültség részleteit, és részletesen megtekintheti a virtuális gép részleteit, beleértve a számítási, tárolási és hálózati beállításokat.
@@ -130,7 +130,7 @@ Az értékelés megbízhatósági minősítése a következő.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan hozhat létre nagy megbízhatóságú csoportokat a [függőségi leképezés](how-to-create-group-machine-dependencies.md) használatával.
 - [További információk](concepts-assessment-calculation.md) az értékelések számításával kapcsolatban.

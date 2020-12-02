@@ -6,18 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: rahugup
-ms.openlocfilehash: e1b34db7f2473e16d3ebde11376652f654f2f778
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 4ef4d3989f063e9d31718bc7143662c4f20cc90b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377955"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500818"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>VMware virtuális gépek áttelepítésének skálázása 
 
-Ebből a cikkből megtudhatja, hogyan használhatók a parancsfájlok nagy számú VMware virtuális gép (VM) áttelepítésére az ügynök nélküli módszer használatával. A Migrálás méretezéséhez [Azure Migrate PowerShell-modult](https://aka.ms/azuremigratepowershellvmware)használ. 
+Ebből a cikkből megtudhatja, hogyan használhatók a parancsfájlok nagy számú VMware virtuális gép (VM) áttelepítésére az ügynök nélküli módszer használatával. A Migrálás méretezéséhez [Azure Migrate PowerShell-modult](./tutorial-migrate-vmware-powershell.md)használ. 
 
-A Azure Migrate VMware Migration Automation-parancsfájlok letölthetők a GitHubon elérhető [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) -tárházban. A parancsfájlok használhatók a VMware virtuális gépek Azure-ba történő áttelepítéséhez az ügynök nélküli áttelepítési módszer használatával. Az ezekben a parancsfájlokban használt Azure Migrate PowerShell-parancsokat [itt](https://aka.ms/azuremigratepowershellvmware)dokumentálja.
+A Azure Migrate VMware Migration Automation-parancsfájlok letölthetők a GitHubon elérhető [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) -tárházban. A parancsfájlok használhatók a VMware virtuális gépek Azure-ba történő áttelepítéséhez az ügynök nélküli áttelepítési módszer használatával. Az ezekben a parancsfájlokban használt Azure Migrate PowerShell-parancsokat [itt](./tutorial-migrate-vmware-powershell.md)dokumentálja.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 - Ezek a parancsfájlok támogatják a VMware virtuális gépek összes lemezről történő áttelepítését. Frissítheti a parancsfájlokat, ha szelektíven szeretné replikálni a VMware virtuális géphez csatolt lemezeket. 
@@ -26,7 +26,7 @@ A Azure Migrate VMware Migration Automation-parancsfájlok letölthetők a GitHu
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Fejezze be a felderítési oktatóanyagot](tutorial-discover-vmware.md) az Azure és a VMware áttelepítésre való előkészítéséhez.
-- Javasoljuk, hogy az Azure-ba való Migrálás előtt fejezze be a második oktatóanyagot a [VMWare virtuális gépek felméréséhez](tutorial-assess-vmware.md) .
+- Javasoljuk, hogy az Azure-ba való Migrálás előtt fejezze be a második oktatóanyagot a [VMWare virtuális gépek felméréséhez](./tutorial-assess-vmware-azure-vm.md) .
 - A Azure PowerShell `Az` modul. Ha Azure PowerShell telepítésére vagy frissítésére van szüksége, kövesse ezt az [útmutatót a Azure PowerShell telepítéséhez és konfigurálásához](/powershell/azure/install-az-ps) .
 
 ## <a name="install-azure-migrate-powershell-module"></a>Azure Migrate PowerShell-modul telepítése
@@ -123,4 +123,4 @@ Ha végre szeretné hajtani a parancsfájlt a virtuális gépek replikálásána
 ".\AzMigrate_StartReplication.ps1" .\Input.csv 
 ```
 
-Ha többet szeretne megtudni a VMware virtuális gépek Azure Migrate használatával történő áttelepítéséről Azure PowerShell használatáról, kövesse az [oktatóanyagot](https://aka.ms/azuremigratepowershellvmware).
+Ha többet szeretne megtudni a VMware virtuális gépek Azure Migrate használatával történő áttelepítéséről Azure PowerShell használatáról, kövesse az [oktatóanyagot](./tutorial-migrate-vmware-powershell.md).

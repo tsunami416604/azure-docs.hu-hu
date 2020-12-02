@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 06/06/2020
-ms.openlocfilehash: 9674b7188251312056812ac8e1dcae5885579e2a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d7a57f98551cf91ed87858caba0907471bcf6b12
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791307"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501226"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Az eseménynaplóban a kiterjesztett események Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ Ez a témakör egy kétfázisú mintakód-mintát mutat be:
 
 - Telepítenie kell a [Azure PowerShell modulokat](https://go.microsoft.com/?linkid=9811175) .
 
-  - A modulok olyan parancsokat biztosítanak, mint a- **New-AzStorageAccount** .
+  - A modulok olyan parancsokat biztosítanak, mint a- **New-AzStorageAccount**.
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>1. fázis: az Azure Storage-tároló PowerShell-kódja
 
@@ -258,7 +258,7 @@ A PowerShell-parancsfájl néhány elnevezett értéket kinyomtatott, amikor vé
 6. Mentse, majd futtassa a parancsfájlt.
 
 > [!WARNING]
-> Az előző PowerShell-parancsfájl által generált SAS-kulcs értéke "?" kezdetű lehet. (kérdőjel). Ha a következő T-SQL-parancsfájlban az SAS-kulcsot használja, *el kell távolítania a vezetőt (?* ). Ellenkező esetben előfordulhat, hogy a biztonság blokkolja a saját erőfeszítéseit.
+> Az előző PowerShell-parancsfájl által generált SAS-kulcs értéke "?" kezdetű lehet. (kérdőjel). Ha a következő T-SQL-parancsfájlban az SAS-kulcsot használja, *el kell távolítania a vezetőt (?*). Ellenkező esetben előfordulhat, hogy a biztonság blokkolja a saját erőfeszítéseit.
 
 ### <a name="transact-sql-code"></a>Transact-SQL-kód
 
@@ -506,9 +506,9 @@ A kiterjesztett események adatainak megtekintésére szolgáló speciális beá
 
 Tegyük fel, hogy az előző Transact-SQL-mintát szeretné futtatni Microsoft SQL Serveron.
 
-- Az egyszerűség kedvéért szeretné teljesen lecserélni az Azure Storage-tároló használatát egy egyszerű fájllal (például *C:\myeventdata.xel* ). A fájl a SQL Servert futtató számítógép helyi merevlemezére íródik.
-- Nem szükséges semmilyen Transact-SQL-utasítás a **főkulcs létrehozásához** és a **hitelesítő adatok létrehozásához** .
-- Az **esemény-munkamenet létrehozása** utasításban, az **Add Target** záradékában a **filename =** számára hozzárendelt http-értéket cserélje le a teljes elérésiút-karakterlánccal (például *C:\myfile.xel* ).
+- Az egyszerűség kedvéért szeretné teljesen lecserélni az Azure Storage-tároló használatát egy egyszerű fájllal (például *C:\myeventdata.xel*). A fájl a SQL Servert futtató számítógép helyi merevlemezére íródik.
+- Nem szükséges semmilyen Transact-SQL-utasítás a **főkulcs létrehozásához** és a **hitelesítő adatok létrehozásához**.
+- Az **esemény-munkamenet létrehozása** utasításban, az **Add Target** záradékában a **filename =** számára hozzárendelt http-értéket cserélje le a teljes elérésiút-karakterlánccal (például *C:\myfile.xel*).
   
   - Nincs szükség Azure Storage-fiókra.
 

@@ -9,21 +9,21 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 11/02/2020
-ms.openlocfilehash: 31d00222da540751a1f95120bea00535b099403d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1f7abcdd1439fe5e6eeb2f718862f4875c61230c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026232"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509258"
 ---
 A modell üzemeltetéséhez használt számítási cél a telepített végpont költségeit és rendelkezésre állását is befolyásolja. A táblázat segítségével kiválaszthatja a megfelelő számítási célt.
 
-| Számítási cél | Alkalmazási cél | GPU-támogatás | FPGA-támogatás | Leírás |
+| Számítási cél | Alkalmazási cél | GPU-támogatás | FPGA-támogatás | Description |
 | ----- | ----- | ----- | ----- | ----- |
 | [Helyi &nbsp; webszolgáltatás &nbsp;](../articles/machine-learning/how-to-deploy-local-container-notebook-vm.md) | Tesztelés/hibakeresés | &nbsp; | &nbsp; | Korlátozott teszteléshez és hibaelhárításhoz használható. A hardveres gyorsítás a helyi rendszer könyvtárainak használatából függ.
 | [Azure Kubernetes Service (AKS)](../articles/machine-learning/how-to-deploy-azure-kubernetes-service.md) | Valós idejű következtetés |  [Igen](../articles/machine-learning/how-to-deploy-inferencing-gpus.md) (webszolgáltatás üzembe helyezése) | [Igen](../articles/machine-learning/how-to-deploy-fpga-web-service.md)   |Nagy léptékű üzembe helyezések esetén használható. Gyors válaszidőt és automatikus skálázást biztosít a telepített szolgáltatás számára. A fürt automatikus skálázása nem támogatott a Azure Machine Learning SDK-n keresztül. Az AK-fürt csomópontjainak módosításához használja a Azure Portalban az AK-fürt felhasználói felületét. <br/><br/> A tervező támogatja. |
 | [Azure Container Instances](../articles/machine-learning/how-to-deploy-azure-container-instance.md) | Tesztelés vagy fejlesztés | &nbsp;  | &nbsp; | Alacsony léptékű CPU-alapú számítási feladatokhoz használható, amelyek kevesebb mint 48 GB RAM memóriát igényelnek. <br/><br/> A tervező támogatja. |
-| [Az Azure Machine Learning számítási fürtjei](../articles/machine-learning/how-to-use-parallel-run-step.md) | Batch- &nbsp; következtetés | [Igen](../articles/machine-learning/how-to-use-parallel-run-step.md) (gépi tanulási folyamat) | &nbsp;  | Kötegelt pontozás futtatása kiszolgáló nélküli számítási feladatokhoz. A a normál és az alacsony prioritású virtuális gépeket támogatja. |
+| [Az Azure Machine Learning számítási fürtjei](../articles/machine-learning/tutorial-pipeline-batch-scoring-classification.md) | Batch- &nbsp; következtetés | [Igen](../articles/machine-learning/tutorial-pipeline-batch-scoring-classification.md) (gépi tanulási folyamat) | &nbsp;  | Kötegelt pontozás futtatása kiszolgáló nélküli számítási feladatokhoz. A a normál és az alacsony prioritású virtuális gépeket támogatja. |
 
 > [!NOTE]
 > Bár a számítási célok, például a helyi, Azure Machine Learning számítások, és a Azure Machine Learning számítási fürtök támogatják a GPU-t a betanításhoz és kísérletezéshez, GPU-t használ, _Ha webszolgáltatásként való üzembe helyezés esetén_ csak az AK-ban támogatott.

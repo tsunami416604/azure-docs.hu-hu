@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 7f1acc44a80d5ef70145997698a928e6f9ce0d48
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a460d77a032f36505c8036bc60aa37017f630e55
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888878"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501141"
 ---
 # <a name="what-is-azure-iot-hub"></a>Mi az Azure IoT Hub?
 
@@ -91,6 +91,7 @@ Az [IoT Hubhoz](https://azure.microsoft.com/support/legal/sla/iot-hub/) 99,9%-os
 Az [Azure IoT eszközoldali SDK](./iot-hub-devguide-sdks.md)-kódtárakkal olyan alkalmazásokat készíthet, amelyek az eszközökön futnak, és az IoT Hubbal kommunikálnak. A támogatott platformok közé tartozik több Linux-disztribúció, Windows és valós idejű operációs rendszer. A támogatott nyelvek közé tartoznak a következők:
 
 * C#
+* Beágyazott C
 * C#
 * Java
 * Python
@@ -120,13 +121,13 @@ Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, a
 
 * [Az IoT Hub szabályozása és Ön](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
-## <a name="iot-hub-on-azure-stack-hub-preview"></a>IoT Hub az Azure Stack hub-on (előzetes verzió)
+## <a name="iot-hub-on-azure-stack-hub-preview"></a>IoT Hub az Azure Stack Event Hubon (előzetes verzió)
 
 A IoT Hub on Azure Stack hub (előzetes verzió) lehetővé teszi hibrid IoT-megoldások létrehozását. A IoT Hub felügyelt szolgáltatás, amely központi üzenetsorként működik a IoT-alkalmazás és az általa kezelt eszközök közötti kétirányú kommunikációhoz. A IoT Hub on Azure Stack hub segítségével IoT-megoldásokat hozhat létre a IoT-eszközök és a helyszíni megoldások közötti megbízható és biztonságos kommunikációval.
 
 A nyilvános előzetes verzióban a IoT Hub on Azure Stack hub ingyenes. További információ: [IoT Hub Azure stack hub – áttekintés](/azure-stack/operator/iot-hub-rp-overview).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A végpontok közötti IoT-megoldás kipróbálásához tekintse meg az IoT Hub rövid útmutatóit:
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: ad9f3a115ed226b492a08dae29db61029d9098eb
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 03cf20e5c796a7092dc16c466934f377c945ad48
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556004"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509308"
 ---
 A tárfiókok az Azure-fájlmegosztások vagy más tárolási erőforrások, például blobok vagy üzenetsorok üzembe helyezéséhez használható tárolók közös készletei. A tárfiókok korlátlan számú megosztást tartalmazhatnak, a megosztásokban pedig tetszőleges számú fájlt tárolhat, egészen a tárfiókja kapacitásának korlátjáig.
 
@@ -30,7 +30,7 @@ Tárfiók létrehozása:
     > [!NOTE]
     > Ez a rövid útmutató egy szabványos fájlmegosztást hoz létre, de ha prémium szintű fájlmegosztást szeretne használni, válassza a **prémium** helyet.
 
-1. A **Fiók típusa** mezőben válassza a **StorageV2** lehetőséget. További információ a különböző típusú tárfiókokkal kapcsolatban: [Az Azure-tárfiókok ismertetése](../articles/storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+1. A **Fiók típusa** mezőben válassza a **StorageV2** lehetőséget. További információ a különböző típusú tárfiókokkal kapcsolatban: [Az Azure-tárfiókok ismertetése](../articles/storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
     > [!NOTE]
     > Ez a rövid útmutató egy általános célú v2-fiókot hoz létre. Ha a prémium szintű fájlmegosztást szeretné használni, válassza a **FileStorage** helyet.

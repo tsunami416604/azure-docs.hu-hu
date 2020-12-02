@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: a6ea3925f3b6bc786be6a4855b2f3bfb6b402d70
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d9a9d3c303739e68b5b8ef28053d6cf0b071f955
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455174"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501056"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Az Azure szinapszis Analytics-munkaterületek titkosítása
 
@@ -47,13 +47,13 @@ A következő szinapszis-összetevőkben lévő adatforgalom a munkaterület szi
 A munkaterületek konfigurálhatók úgy, hogy lehetővé tegyék a dupla titkosítást egy ügyfél által felügyelt kulccsal a munkaterület létrehozásakor. Az új munkaterület létrehozásakor a "biztonság" lapon válassza a "dupla titkosítás engedélyezése ügyfél által felügyelt kulcs használatával" lehetőséget. Megadhat egy kulcs-azonosító URI-t, vagy kijelölhet egy, a munkaterülettel **azonos régióban** található kulcstartók listájából. Magának a Key Vaultnak engedélyezve kell lennie a **kiürítési védelemmel**.
 
 > [!IMPORTANT]
-> A kettős titkosítás konfigurációs beállítása jelenleg nem módosítható a munkaterület létrehozása után.
+> A kettős titkosítás konfigurációs beállítása a munkaterület létrehozása után nem módosítható.
 
 :::image type="content" source="./media/workspaces-encryption/workspaces-encryption.png" alt-text="Ez az ábra azt a beállítást mutatja be, amely lehetővé teszi, hogy a munkaterületet egy ügyfél által felügyelt kulccsal való dupla titkosításra engedélyezze.":::
 
 ### <a name="key-access-and-workspace-activation"></a>Kulcs-hozzáférés és munkaterület aktiválása
 
-Az ügyfél által felügyelt kulcsokkal rendelkező Azure szinapszis titkosítási modell magában foglalja a munkaterületet, amely a Azure Key Vault kulcsait használja a titkosításhoz és a visszafejtéshez szükség szerint. A kulcsok elérhetővé válnak a munkaterület számára hozzáférési házirend vagy Azure Key Vault RBAC-hozzáférés ([előzetes](../../key-vault/general/rbac-guide.md)verzió) használatával. Amikor engedélyeket ad meg egy Azure Key Vault hozzáférési házirenden keresztül, válassza a házirend létrehozásakor az "csak alkalmazás" lehetőséget.
+Az ügyfél által felügyelt kulcsokkal rendelkező Azure szinapszis titkosítási modell magában foglalja a munkaterületet, amely a Azure Key Vault kulcsait használja a titkosításhoz és a visszafejtéshez szükség szerint. A kulcsok elérhetővé válnak a munkaterület számára hozzáférési házirend vagy Azure Key Vault RBAC-hozzáférés ([előzetes](../../key-vault/general/rbac-guide.md)verzió) használatával. Amikor engedélyeket ad meg egy Azure Key Vault hozzáférési házirenden keresztül, válassza a házirend létrehozásakor a ["csak alkalmazás"](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) lehetőséget (válassza ki a munkaterület felügyelt identitását, és ne adja hozzá engedélyezett alkalmazásként).
 
  A munkaterület által felügyelt identitásnak meg kell adnia a Key Vault számára szükséges engedélyeket a munkaterület aktiválása előtt. Ez a munkaterületek aktiválásának szakaszos megközelítése biztosítja, hogy a munkaterületen lévő adatforgalom titkosítva legyen az ügyfél által felügyelt kulccsal. Vegye figyelembe, hogy a titkosítás engedélyezhető vagy letiltható a dedikált SQL-készletekben – az egyes készletek nem engedélyezettek alapértelmezés szerint a titkosításhoz.
 
@@ -76,6 +76,9 @@ Miután létrehozta a munkaterületet (a dupla titkosítás engedélyezve), a re
 A Azure Portal **titkosítási** lapján lévő adatok titkosításához használt ügyfél által felügyelt kulcs módosítható. Itt is kiválaszthat egy új kulcsot a kulcs azonosítójának használatával, vagy kiválaszthatja azokat a kulcstartók közül, amelyekhez a munkaterülettel azonos régióban férhet hozzá. Ha egy másik kulcstartóban lévő kulcsot választ a korábban használt adatok közül, adja meg a munkaterület által felügyelt identitás "Get", "wrap" és "kicsomagolás" engedélyeit az új kulcstartón. A munkaterület érvényesíti az új kulcstartóhoz való hozzáférését, és a munkaterületen lévő összes adattal újra titkosítva lesz az új kulccsal.
 
 :::image type="content" source="./media/workspaces-encryption/workspace-encryption-management.png" alt-text="Ez az ábra a Azure Portal munkaterület-titkosítási szakaszát mutatja be.":::
+
+>[!IMPORTANT]
+>Egy munkaterület titkosítási kulcsának módosításakor tartsa meg a kulcsot, amíg a munkaterületen egy új kulccsal lecseréli. Ez lehetővé teszi az adatvisszafejtést a régi kulccsal, mielőtt újra titkosítja az új kulccsal.
 
 Az Azure Key Vault-szabályzatok automatikusan, a kulcsok rendszeres elforgatásához vagy a kulcsok műveleteihez új kulcs-verziók létrehozását okozhatják. Megadhatja, hogy a munkaterületen lévő összes adattal újra titkosítja az aktív kulcs legújabb verzióját. A-re történő újratitkosításhoz módosítsa a kulcsát a Azure Portal egy ideiglenes kulcsra, majd váltson vissza a titkosításhoz használni kívánt kulcsra. Ha például az aktív kulcs Key1 legújabb verziójának használatával szeretné frissíteni az adattitkosítást, módosítsa a munkaterület ügyfél által felügyelt kulcsát az ideiglenes kulcsra, Key2. Várjon, amíg a Key2 befejeződik a titkosítás. Ezt követően állítsa vissza a munkaterület által felügyelt Key1 a munkaterületen a Key1 legújabb verziójára.
 

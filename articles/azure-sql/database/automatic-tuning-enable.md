@@ -9,20 +9,20 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 12/03/2019
-ms.openlocfilehash: 35fc4b18ee5a98270f715a969354df2be5000150
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35e2a73b0cfae104cee417e7d4a159e7fd169a17
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444093"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500903"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>A Azure Portal automatikus hangolásának engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 
-A Azure SQL Database automatikusan kezeli azokat az adatszolgáltatásokat, amelyek folyamatosan figyelik a lekérdezéseket, és azonosítják a munkaterhelés teljesítményének növelése érdekében végrehajtható műveleteket. Áttekintheti az ajánlásokat, és manuálisan alkalmazhatja őket, vagy engedélyezheti Azure SQL Database a javítási műveletek automatikus alkalmazását – ezt az **Automatikus hangolási módot**nevezzük.
+A Azure SQL Database automatikusan kezeli azokat az adatszolgáltatásokat, amelyek folyamatosan figyelik a lekérdezéseket, és azonosítják a munkaterhelés teljesítményének növelése érdekében végrehajtható műveleteket. Áttekintheti az ajánlásokat, és manuálisan alkalmazhatja őket, vagy engedélyezheti Azure SQL Database a javítási műveletek automatikus alkalmazását – ezt az **Automatikus hangolási módot** nevezzük.
 
 Az automatikus hangolás a kiszolgálón vagy az adatbázis szintjén engedélyezhető a következő módon:
 
@@ -56,13 +56,13 @@ Ha engedélyezni szeretné az automatikus finomhangolást Azure SQL Database- [k
 > [!NOTE]
 > Vegye figyelembe, hogy a **DROP_INDEX** lehetőség jelenleg nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal, és ezeket az eseteket nem szabad engedélyezni. A nem használt indexek nem támogatottak a prémium és üzletileg kritikus szolgáltatási szinteken.
 
-Válassza ki az engedélyezni kívánt Automatikus hangolási beállításokat, és kattintson az **alkalmaz**gombra.
+Válassza ki az engedélyezni kívánt Automatikus hangolási beállításokat, és kattintson az **alkalmaz** gombra.
 
 A kiszolgálón az Automatikus hangolási beállítások a kiszolgálón lévő összes adatbázisra vonatkoznak. Alapértelmezés szerint az összes adatbázis örökli a konfigurációt a szülő kiszolgálóról, de ez felülbírálható és megadható minden egyes adatbázishoz.
 
 ### <a name="rest-api"></a>REST API
 
-Ha többet szeretne megtudni a **kiszolgálók**automatikus finomhangolásának engedélyezéséről REST API használatáról, tekintse meg a [kiszolgáló automatikus finomhangolásának frissítése és a http-METÓDUSok beolvasása](/rest/api/sql/serverautomatictuning)című témakört.
+Ha többet szeretne megtudni a **kiszolgálók** automatikus finomhangolásának engedélyezéséről REST API használatáról, tekintse meg a [kiszolgáló automatikus finomhangolásának frissítése és a http-METÓDUSok beolvasása](/rest/api/sql/serverautomatictuning)című témakört.
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Automatikus hangolás engedélyezése egy adott adatbázison
 
@@ -73,7 +73,7 @@ Azure SQL Database lehetővé teszi az egyes adatbázisok Automatikus hangolási
 
 ### <a name="azure-portal"></a>Azure Portal
 
-**Egyetlen adatbázis**automatikus finomhangolásának engedélyezéséhez navigáljon a Azure Portal adatbázisához, és válassza az **automatikus hangolás**lehetőséget.
+**Egyetlen adatbázis** automatikus finomhangolásának engedélyezéséhez navigáljon a Azure Portal adatbázisához, és válassza az **automatikus hangolás** lehetőséget.
 
 Az egyes adatbázisokhoz külön konfigurálható az automatikus finomhangolási beállítások. Manuálisan is konfigurálhat egyéni Automatikus hangolási beállítást, vagy megadhatja, hogy egy beállítás örökli a beállításait a-kiszolgálótól.
 
@@ -81,9 +81,9 @@ Az egyes adatbázisokhoz külön konfigurálható az automatikus finomhangolási
 
 Vegye figyelembe, hogy az DROP_INDEX lehetőség jelenleg nem kompatibilis a partíciós váltást és az indexeket használó alkalmazásokkal, és ezeket az eseteket nem szabad engedélyezni.
 
-Miután kiválasztotta a kívánt konfigurációt, kattintson az **alkalmaz**gombra.
+Miután kiválasztotta a kívánt konfigurációt, kattintson az **alkalmaz** gombra.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rest API
 
 Ha szeretne többet megtudni arról, hogyan használhatja az automatikus finomhangolást egyetlen adatbázison REST API, tekintse meg a [Azure SQL Database Automatikus hangolási frissítés és a http-metódusok BEolvasása](/rest/api/sql/databaseautomatictuning)című témakört.
 
@@ -125,7 +125,7 @@ Az automatikus hangolás használatához a felhasználónak való megadáshoz mi
 
 Lásd az [e-mail értesítések automatikus finomhangolása](automatic-tuning-email-notifications-configure.md) útmutatót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az automatikus hangolással kapcsolatos további információkért olvassa el az automatikus finomhangolásról szóló [cikket](automatic-tuning-overview.md) , és azt, hogy miként segíthet a teljesítmény javításában.
 - Tekintse meg a teljesítményre vonatkozó [javaslatokat](database-advisor-implement-performance-recommendations.md) a Azure SQL Database teljesítményével kapcsolatos javaslatok áttekintéséhez.

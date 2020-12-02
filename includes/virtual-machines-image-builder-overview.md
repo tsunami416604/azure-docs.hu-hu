@@ -5,12 +5,12 @@ ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
-ms.openlocfilehash: 5c028fc1abd77bda1a41857a7a7c77da1ad1b2d2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eb864837e9063aa39827abf61f7efece4c909118
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025774"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509325"
 ---
 A szabványosított virtuálisgép-lemezképek lehetővé teszik a szervezetek számára a felhőbe való Migrálás és az üzemelő példányok egységességének biztosítását. A képek jellemzően előre definiált biztonsági és konfigurációs beállításokat és szükséges szoftvereket tartalmaznak. A saját képfeldolgozási folyamatának beállítása idő, infrastruktúra és beállítás szükséges, de az Azure VM rendszerkép-készítővel egyszerűen egy egyszerű konfigurációt kell megadnia, amely leírja a lemezképet, beküldi a szolgáltatást, és a lemezképet összeállította és terjeszti.
  
@@ -84,7 +84,7 @@ Ha rendelkezik az Ön számára szükséges engedélyekkel, ezt megteheti, haszn
 Az engedélyeket [itt](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)részletesebben ismertetjük, a példák pedig azt mutatják be, hogy ez hogyan valósul meg.
 
 > [!Note]
-> A AIB korábban a AIB SPN-t használja, és megadja az SPN-engedélyeket a rendszerkép-erőforráscsoportok számára. A jövőbeli képességek lehetővé teszik a modellből való átlépést. 2020. május 26-án a képszerkesztő nem fogad el olyan sablonokat, amelyek nem rendelkeznek felhasználó által hozzárendelt identitással, a meglévő sablonokat újra el kell küldeni a szolgáltatásnak [felhasználói identitással](../articles/virtual-machines/linux/image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#identity). A példák már azt mutatják be, hogyan hozhat létre felhasználó által hozzárendelt identitást, és hogyan adhatja hozzá őket egy sablonhoz. További információkért tekintse át ezt a [dokumentációt](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information) a változásról és a kiadásokról.
+> A AIB korábban a AIB SPN-t használja, és megadja az SPN-engedélyeket a rendszerkép-erőforráscsoportok számára. A jövőbeli képességek lehetővé teszik a modellből való átlépést. 2020. május 26-án a képszerkesztő nem fogad el olyan sablonokat, amelyek nem rendelkeznek felhasználó által hozzárendelt identitással, a meglévő sablonokat újra el kell küldeni a szolgáltatásnak [felhasználói identitással](../articles/virtual-machines/linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#identity). A példák már azt mutatják be, hogyan hozhat létre felhasználó által hozzárendelt identitást, és hogyan adhatja hozzá őket egy sablonhoz. További információkért tekintse át ezt a [dokumentációt](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information) a változásról és a kiadásokról.
 
 ## <a name="costs"></a>Költségek
 A lemezképek Azure Image Builder szolgáltatással való létrehozásakor, kiépítésekor és tárolásakor a számítási, hálózati és tárolási költségek is felmerülhetnek. Ezek a költségek hasonlóak az egyéni lemezképek manuális létrehozása során felmerülő költségekhez. Az erőforrásokra az Azure díjszabása alapján számítunk fel díjat. 
@@ -98,6 +98,6 @@ Az Azure-rendszerkép-szerkesztő továbbítja a rendszerképet a kiválasztott 
 ## <a name="hyper-v-generation"></a>Hyper-V generáció
 A rendszerkép-készítő jelenleg csak natív módon támogatja a Hyper-V generációs (Gen1) 1 lemezképek létrehozását az Azure Shared Image Gallery (SIG) vagy a Managed Image használatával. Ha Gen2-lemezképeket szeretne létrehozni, akkor forrás-Gen2 lemezképet kell használnia, és a virtuális merevlemezre kell terjesztenie. Ezután létre kell hoznia egy felügyelt rendszerképet a VHD-ből, és be kell szúrnia a SIG-ba Gen2-képként.
  
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
  
 Az Azure Image Builder kipróbálásához tekintse meg a [Linux](../articles/virtual-machines/linux/image-builder.md) -és [Windows](../articles/virtual-machines/windows/image-builder.md) -rendszerképek készítésével foglalkozó cikkeket.

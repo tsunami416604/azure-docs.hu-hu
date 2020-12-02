@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 325e28b9fde349fc4bf01d2b130bee0be0684962
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: 6982b782fdd6b5b269c1562c54be3478c58bbce9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299598"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500997"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-tárolótípusok SAP számítási feladathoz
 Az Azure számos különböző tárolási típussal rendelkezik, amelyek nagy mértékben különböznek a képességek, a teljesítmény, a késés és az árak között. A tárolási típusok némelyike nem, vagy kizárólag SAP-forgatókönyvekhez használható. Míg számos Azure-beli tárolási típus jól használható vagy speciális SAP-munkaterhelési forgatókönyvekhez van optimalizálva. Különösen a SAP HANA esetében egyes Azure-beli tárolási típusok minősítést kaptak a SAP HANAval való használathoz. Ebben a dokumentumban a különböző típusú tárolásokat vesszük át, és leírjuk a képességeiket és a használhatóságát az SAP-munkaterhelésekkel és az SAP-összetevőkkel.
@@ -164,7 +164,7 @@ Az Azure Premium Storage nem teljesíti SAP HANA tárolási késési KPI-ket az 
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Azure burst-funkciók a Premium Storage-hoz
-Az Azure Premium Storage-lemezek esetében kisebb vagy egyenlő, mint a 512 GiB kapacitás, a burst funkció elérhető. A lemez-kitörés működésének pontos módját a [lemez kitörése](../../linux/disk-bursting.md)című cikk ismerteti. A cikk elolvasása során megérti a IOPS és az átviteli sebesség felmerülésének koncepcióját abban az esetben, amikor az I/O-munkaterhelés a lemezek névleges IOPS és átviteli sebessége alá esik (a névleges átviteli sebességről lásd: [felügyelt lemez díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)). A IOPS és az átviteli sebesség különbözetét fogja felhalmozni a jelenlegi használat és a lemez névleges értékei között. A törések legfeljebb 30 percre vannak korlátozva.
+Az Azure Premium Storage-lemezek esetében kisebb vagy egyenlő, mint a 512 GiB kapacitás, a burst funkció elérhető. A lemez-kitörés működésének pontos módját a [lemez kitörése](../../disk-bursting.md)című cikk ismerteti. A cikk elolvasása során megérti a IOPS és az átviteli sebesség felmerülésének koncepcióját abban az esetben, amikor az I/O-munkaterhelés a lemezek névleges IOPS és átviteli sebessége alá esik (a névleges átviteli sebességről lásd: [felügyelt lemez díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)). A IOPS és az átviteli sebesség különbözetét fogja felhalmozni a jelenlegi használat és a lemez névleges értékei között. A törések legfeljebb 30 percre vannak korlátozva.
 
 Azok az ideális esetek, ahol a burst funkció megtervezhető, valószínűleg a különböző adatbázis-kezelő rendszer adatfájljait tartalmazó kötetek vagy lemezek lesznek. A várt I/O-számítási feladat várható a kötetek esetében, különösen kis-és közepes hatótávolságú rendszerek esetén a következőnek kell kinéznie:
 
@@ -371,9 +371,8 @@ A sávok méretére vonatkozó javaslatokért olvassa el a különböző adatbá
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el a cikkeket:
 
 - [Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez](./dbms_guide_general.md)
 - [SAP HANA Azure-beli virtuális gépek tárkonfigurációi](./hana-vm-operations-storage.md)
- 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12240dd3c8dca2c686950f420f49411fde5f7f28
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b605c2c9f3c7468d0fe1f2cccd8c3602c556714b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460372"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501073"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure szinapszis Analytics által felügyelt Virtual Network
 
@@ -52,8 +52,6 @@ Ha a jelölőnégyzet nincs bejelölve, a munkaterülethez nem tartozik Virtual 
 
 ![Felügyelt munkaterület engedélyezése Virtual Network](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
->[!NOTE]
->A felügyelt munkaterületről érkező összes kimenő forgalom Virtual Network a felügyelt privát végpontok kivételével a jövőben le lesz tiltva. Javasoljuk, hogy felügyelt magánhálózati végpontokat hozzon létre, amelyek a munkaterületen kívüli összes Azure-adatforráshoz csatlakoznak. 
 
 Megtekintheti, hogy az Azure szinapszis-munkaterülete felügyelt munkaterülethez van-e társítva Virtual Network a Azure Portal **Áttekintés** lehetőség kiválasztásával.
 

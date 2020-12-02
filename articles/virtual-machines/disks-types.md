@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ef481b73b6dc42bc35252c08ae8d63b9de95b2ba
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1a7e8e71e26af241d16095a5fa1e6a02a7e3d4c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325094"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500767"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen típusú lemezek érhetőek el az Azure-ban?
 
@@ -84,7 +84,7 @@ Ha Premium Storage-lemezt épít ki, a standard szintű tárterülettől eltér�
 
 A P30-nál kisebb méretű prémium SSD a lemezes adatmennyiséget, a IOPS pedig akár 3 500-ig, akár 170 MB/s-ra növelve. A bursás automatizált, és kreditrendszer alapján működik. A kreditek automatikusan halmozódnak, amikor a lemezes forgalom a kiosztott teljesítményű célpont alá esik, és a rendszer automatikusan felhasználja a krediteket, amikor a forgalom a célon kívül esik, a maximális burst korlátig. A maximális burst korlát határozza meg a lemez IOPS & sávszélességét akkor is, ha a rendszer felhasználja a feltört krediteket. A lemezek felskálázása nagyobb toleranciát biztosít az i/o-minták előre nem látható változásaihoz. A legjobb megoldás az operációs rendszer lemezes rendszerindításához és a tüskés forgalommal rendelkező alkalmazásokhoz.    
 
-A lemezek kitörésének támogatását a rendszer alapértelmezés szerint engedélyezi a megfelelő méretű lemezekre vonatkozó új központi telepítések esetén, és nincs szükség felhasználói beavatkozásra. A megfelelő méretű lemezek meglévő lemezei esetében engedélyezheti a kitörést a két lehetőség közül: válassza le és csatlakoztassa újra a lemezt, vagy állítsa le, majd indítsa újra a csatlakoztatott virtuális gépet. Az összes érintett lemez mérete a teljes burst kredit gyűjtővel kezdődik, ha a lemez egy olyan virtuális géphez van csatlakoztatva, amely legfeljebb 30 percnél hosszabb időt támogat a maximálisan megengedettnél. Ha többet szeretne megtudni az Azure-lemezek kitörésével kapcsolatban, tekintse meg a [prémium SSD burst](linux/disk-bursting.md)című témakört. 
+A lemezek kitörésének támogatását a rendszer alapértelmezés szerint engedélyezi a megfelelő méretű lemezekre vonatkozó új központi telepítések esetén, és nincs szükség felhasználói beavatkozásra. A megfelelő méretű lemezek meglévő lemezei esetében engedélyezheti a kitörést a két lehetőség közül: válassza le és csatlakoztassa újra a lemezt, vagy állítsa le, majd indítsa újra a csatlakoztatott virtuális gépet. Az összes érintett lemez mérete a teljes burst kredit gyűjtővel kezdődik, ha a lemez egy olyan virtuális géphez van csatlakoztatva, amely legfeljebb 30 percnél hosszabb időt támogat a maximálisan megengedettnél. Ha többet szeretne megtudni az Azure-lemezek kitörésével kapcsolatban, tekintse meg a [prémium SSD burst](./disk-bursting.md)című témakört. 
 
 ### <a name="transactions"></a>Tranzakciók
 

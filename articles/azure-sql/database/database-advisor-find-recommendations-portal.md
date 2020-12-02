@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 6ad8f3e146c13e7b88752b8ef6d514346542ce26
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 748ac448ad8bf5c06e5be8b7a4a8b00a9b7af84b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672264"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500886"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Teljesítményre vonatkozó javaslatok keresése és alkalmazása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,12 +25,12 @@ A Azure Portal használatával olyan teljesítménnyel kapcsolatos javaslatokat 
 
 ## <a name="viewing-recommendations"></a>Javaslatok megtekintése
 
-A teljesítménnyel kapcsolatos javaslatok megtekintéséhez és alkalmazásához a megfelelő [Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC)](../../role-based-access-control/overview.md) engedélyek szükségesek az Azure-ban. Az **olvasó** , az **SQL-adatbázis közreműködői** engedélyekre van szükség a javaslatok megtekintéséhez és a **tulajdonoshoz** , az **SQL-adatbázis közreműködői** engedélyekre van szükség a műveletek végrehajtásához; indexek létrehozása vagy eldobása, indexek létrehozásának megszakítása.
+A teljesítménnyel kapcsolatos javaslatok megtekintéséhez és alkalmazásához a megfelelő [Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC)](../../role-based-access-control/overview.md) engedélyek szükségesek az Azure-ban. Az **olvasó**, az **SQL-adatbázis közreműködői** engedélyekre van szükség a javaslatok megtekintéséhez és a **tulajdonoshoz**, az **SQL-adatbázis közreműködői** engedélyekre van szükség a műveletek végrehajtásához; indexek létrehozása vagy eldobása, indexek létrehozásának megszakítása.
 
 A következő lépések végrehajtásával találhat teljesítménnyel kapcsolatos javaslatokat a Azure Portal:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
-2. Nyissa meg az **összes szolgáltatás**  >  **SQL-adatbázisát** , és válassza ki az adatbázist.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Nyissa meg az **összes szolgáltatás**  >  **SQL-adatbázisát**, és válassza ki az adatbázist.
 3. A kiválasztott adatbázishoz elérhető javaslatok megtekintéséhez navigáljon a **teljesítménnyel kapcsolatos javaslathoz** .
 
 A teljesítménnyel kapcsolatos javaslatok az alábbi ábrán láthatóhoz hasonló táblázatban láthatók:
@@ -39,7 +39,7 @@ A teljesítménnyel kapcsolatos javaslatok az alábbi ábrán láthatóhoz hason
 
 A javaslatok a következő kategóriákba sorolhatók a teljesítményre gyakorolt lehetséges hatás szerint:
 
-| Hatás | Leírás |
+| Hatás | Description |
 |:--- |:--- |
 | Magas |A nagy hatású ajánlásoknak meg kell adniuk a legjelentősebb teljesítményre gyakorolt hatást. |
 | Közepes |A közepes hatású javaslatoknak javítaniuk kell a teljesítményt, de lényegében nem. |
@@ -118,7 +118,7 @@ Válassza ki az egyik javaslatot, majd kattintson a **parancsfájl megjeleníté
 
 ### <a name="canceling-recommendations"></a>Javaslatok megszakítása
 
-A **függőben lévő** , **érvényesítési** vagy **sikerességi** állapotú javaslatok megvonhatók. Nem lehet megszakítani a **végrehajtás** állapotával kapcsolatos ajánlásokat.
+A **függőben lévő**, **érvényesítési** vagy **sikerességi** állapotú javaslatok megvonhatók. Nem lehet megszakítani a **végrehajtás** állapotával kapcsolatos ajánlásokat.
 
 1. Válasszon ki egy javaslatot a **hangolási előzmények** területen a **javaslatok részletei** lap megnyitásához.
 2. Kattintson a **Mégse** gombra a javaslat alkalmazási folyamatának megszakításához.
@@ -160,7 +160,7 @@ A javaslatok sikeres implementálása után (jelenleg csak az indexelési művel
 
 Azure SQL Database az adatbázis teljesítményének javítására vonatkozó ajánlásokat tartalmaz. A T-SQL-parancsfájlok nyújtásával segítséget nyújt az adatbázis optimalizálásában, és végül a lekérdezési teljesítmény javításában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Figyelje a javaslatokat, és alkalmazza őket a teljesítmény pontosítására. Az adatbázis-számítási feladatok dinamikusak, és folyamatosan változnak. Azure SQL Database folytatja az adatbázis teljesítményének növelésére szolgáló javaslatok figyelését és megadását.
 

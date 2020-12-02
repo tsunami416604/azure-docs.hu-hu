@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan helyezhet üzembe egy táblázatos modellt egy 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 45ea75b65e75f9bac4d6d4839ffe7fa095e3b25d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 9df10760164dcd0d207663c14107f72c46b76d25
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018776"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501243"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Modell üzembe helyezése a Visual Studióból
 
@@ -27,7 +27,7 @@ A kezdéshez a következők szükségesek:
 * **Helyszíni átjáró** – Ha a szervezete hálózatában egy vagy több helyszíni adatforrás található, telepítenie kell egy [helyszíni adatátjárót](analysis-services-gateway.md). Az átjáróra azért van szükség, hogy a felhőben található kiszolgálója csatlakozni tudjon a helyszíni adatforrásaihoz a modellben található adatok feldolgozásához és frissítéséhez.
 
 > [!TIP]
-> Az üzembe helyezés előtt győződjön meg róla, hogy a tábláiban található adatok feldolgozhatók. A Visual Studióban kattintson a **modell**  >  **folyamat**  >  **összes feldolgozása**elemre. Ha a feldolgozás meghiúsul, nem fog sikerülni a telepítés.
+> Az üzembe helyezés előtt győződjön meg róla, hogy a tábláiban található adatok feldolgozhatók. A Visual Studióban kattintson a **modell**  >  **folyamat**  >  **összes feldolgozása** elemre. Ha a feldolgozás meghiúsul, nem fog sikerülni a telepítés.
 > 
 > 
 
@@ -39,7 +39,7 @@ Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekint�
 
 ## <a name="to-deploy-from-visual-studio"></a>Üzembe helyezés a Visual studióból
 
-1. A Visual Studio > **megoldáskezelő**kattintson a jobb gombbal a projekt > **tulajdonságai**elemre. Ezután a **telepítési**  >  **kiszolgálón** illessze be a kiszolgáló nevét.   
+1. A Visual Studio > **megoldáskezelő** kattintson a jobb gombbal a projekt > **tulajdonságai** elemre. Ezután a **telepítési**  >  **kiszolgálón** illessze be a kiszolgáló nevét.   
    
     ![Az üzembehelyezési kiszolgáló tulajdonságához illessze be a kiszolgáló nevét.](./media/analysis-services-deploy/aas-deploy-deployment-server-property.png)
 2. A **Megoldáskezelőben** kattintson a jobb gombbal a **Tulajdonságok** elemre, majd kattintson az **Üzembe helyezés** lehetőségre. Lehet, hogy a rendszer arra kéri, hogy jelentkezzen be az Azure-ba.
@@ -59,8 +59,8 @@ Ha a metaadatok telepítésekor a telepítés meghiúsul, akkor valószínű, ho
 
 Ha a telepítés egy táblán sikertelen, annak valószínűleg az az oka, hogy a kiszolgálója nem tudott csatlakozni egy adatforráshoz. Ha a szervezete hálózatában helyszíni adatforrás található, mindenképp telepítsen egy [helyszíni adatátjárót](analysis-services-gateway.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután sikeresen telepítette a kiszolgálóra a táblázatos modellt, azonnal csatlakozhat is hozzá. [SQL Server Management Studio (SSMS)](analysis-services-manage.md) használatával is csatlakozhat a kezeléséhez. Továbbá [csatlakozhat hozzá ügyféleszközzel](analysis-services-connect.md) is, például Power BI, Power BI Desktop vagy Excel segítségével, és megkezdheti a jelentések létrehozását.   
 
-A speciális üzembe helyezési módszerekkel kapcsolatos további információkért lásd: [táblázatos modell megoldásának üzembe helyezése](/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).
+A speciális üzembe helyezési módszerekkel kapcsolatos további információkért lásd: [táblázatos modell megoldásának üzembe helyezése](/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current&preserve-view=true).

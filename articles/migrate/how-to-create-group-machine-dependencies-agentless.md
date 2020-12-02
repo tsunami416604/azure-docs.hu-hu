@@ -3,12 +3,12 @@ title: Ügynök nélküli függőségi elemzés beállítása Azure Migrate Serv
 description: Az ügynök nélküli függőségek elemzésének beállítása Azure Migrate Server Assessment-ben.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 8893b0f41bb7a06c02a6c2aa28002980144b582a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 722ad4cc27132815c1416331aaf0691754ccee05
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337693"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500784"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>A gép függőségeinek elemzése (ügynök nélküli)
 
@@ -31,7 +31,7 @@ Ez a cikk az ügynök nélküli függőségek elemzésének beállítását isme
 
 - [Tekintse át](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) a támogatott operációs rendszereket és a szükséges engedélyeket.
 - Győződjön meg róla, hogy:
-    - Azure Migrate projekttel rendelkezik. Ha nem, [hozzon létre](how-to-add-tool-first-time.md) egyet most.
+    - Azure Migrate projekttel rendelkezik. Ha nem, [hozzon létre](./create-manage-projects.md) egyet most.
     - Győződjön meg arról, hogy [hozzáadta](how-to-assess.md) a Azure Migrate: Server Assessment eszközt a projekthez.
     - [Azure Migrate berendezés](migrate-appliance.md) beállítása a helyszíni gépek felderítéséhez. [Állítson be egy készüléket](how-to-set-up-appliance-vmware.md) a VMWare virtuális gépekhez. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését.
 - Győződjön meg arról, hogy az összes elemezni kívánt virtuális gépre telepítve van a VMware-eszközök (10,2-nál újabb).
@@ -49,7 +49,7 @@ Adja hozzá a felhasználói fiókot a készülékhez.
 1. Nyissa meg a berendezés-kezelő alkalmazást. 
 2. Navigáljon az **adja meg a vCenter részletei** panelt.
 3. Az **alkalmazás és a virtuális gépek függőségeinek felderítése** területen kattintson a **hitelesítő adatok hozzáadása** lehetőségre.
-3. Válassza ki az **operációs rendszert** , adjon meg egy felhasználóbarát nevet a fiókhoz, és a **Felhasználónév** / **jelszava**
+3. Válassza ki az **operációs rendszert**, adjon meg egy felhasználóbarát nevet a fiókhoz, és a **Felhasználónév** / **jelszava**
 6. Kattintson a **Mentés** gombra.
 7. Kattintson **a Mentés gombra, és indítsa el a felderítést**.
 
@@ -59,7 +59,7 @@ Adja hozzá a felhasználói fiókot a készülékhez.
 
 Válassza ki azokat a gépeket, amelyeken engedélyezni szeretné a függőségi felderítést. 
 
-1. **Azure Migrate: kiszolgáló értékelése** , kattintson a **felderített kiszolgálók** elemre.
+1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók** elemre.
 2. Kattintson a **függőség elemzése** ikonra.
 3. Kattintson a **kiszolgálók hozzáadása** elemre.
 4. A **kiszolgálók hozzáadása** lapon válassza ki azt a készüléket, amely a megfelelő gépeket felfedi.
@@ -72,7 +72,7 @@ A függőségek felderítésének megkezdése után hat órán belül megjelení
 
 ## <a name="visualize-dependencies"></a>Függőségek megjelenítése
 
-1. **Azure Migrate: kiszolgáló értékelése** , kattintson a **felderített kiszolgálók** elemre.
+1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók** elemre.
 2. Keresse meg a megtekinteni kívánt gépet.
 3. A **függőségek** oszlopban kattintson a **függőségek megtekintése** elemre.
 4. Módosítsa azt az időtartamot, ameddig a térképet meg szeretné **tekinteni az időtartam legördülő lista** használatával.
@@ -93,7 +93,7 @@ A függőségek felderítésének megkezdése után hat órán belül megjelení
 
 ## <a name="export-dependency-data"></a>Függőségi adatgyűjtés exportálása
 
-1. **Azure Migrate: kiszolgáló értékelése** , kattintson a **felderített kiszolgálók** elemre.
+1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók** elemre.
 2. Kattintson a **függőség elemzése** ikonra.
 3. Kattintson az **alkalmazás függőségeinek exportálása** elemre.
 4. Az **alkalmazás-függőségek exportálása** lapon válassza ki azt a készüléket, amely a megfelelő gépeket felfedi.
@@ -127,7 +127,7 @@ Célport | Portszám a célszámítógépen
 
 Válassza ki azokat a gépeket, amelyeken le szeretné állítani a függőségi felderítést. 
 
-1. **Azure Migrate: kiszolgáló értékelése** , kattintson a **felderített kiszolgálók** elemre.
+1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók** elemre.
 2. Kattintson a **függőség elemzése** ikonra.
 3. Kattintson a **kiszolgálók eltávolítása** elemre.
 3. A **kiszolgálók eltávolítása** lapon válassza ki azt a **készüléket** , amely felderíti azokat a virtuális gépeket, amelyeken meg szeretné szüntetni a függőségi felderítést.

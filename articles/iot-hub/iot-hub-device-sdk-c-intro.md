@@ -13,16 +13,19 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 24f1332e940929cff6aeb6a0d5d3c43e28d36f22
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 9b870e21ffd5c6a8261b6731b939b5dff558256d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149174"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501192"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C-hez készült Azure IoT eszközoldali SDK
 
 Az **Azure IoT ESZKÖZOLDALI SDK** olyan kódtárak összessége, amelyek leegyszerűsítik az üzenetek küldésének és fogadásának folyamatát az **Azure IoT hub** szolgáltatásból. Az SDK különböző variációi vannak, amelyek mindegyike egy adott platformra vonatkozik, de ez a cikk a **C Azure IoT Device SDK**-t ismerteti.
+
+> [!NOTE]
+> A beágyazott C SDK a saját hálózat használata (BYON) megközelítését támogató korlátozott eszközök alternatívája. A IoT-fejlesztők szabadon hozhatják létre a MQTT-ügyfelet, a TLS-t és a választott szoftvercsatornát az eszköz megoldásához. [További információ a beágyazott C SDK-ról](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -74,7 +77,7 @@ A minta alkalmazás kódjának beszerzéséhez töltse le az SDK egy példányá
 
 ### <a name="obtain-the-device-credentials"></a>Az eszköz hitelesítő adatainak beszerzése
 
-Most, hogy már rendelkezik a minta forráskódtal, a következő lépés az eszköz hitelesítő adatainak beolvasása. Ahhoz, hogy egy eszköz hozzáférhessen egy IoT hubhoz, előbb fel kell vennie az eszközt a IoT Hub Identity registrybe. Az eszköz hozzáadásakor megkapja az eszköz hitelesítő adatait, amelyeknek szüksége van ahhoz, hogy az eszköz csatlakozni tudjon az IoT hubhoz. A következő szakaszban tárgyalt példák a hitelesítő adatokat egy **eszköz-összekapcsolási karakterlánc**formájában számítják fel.
+Most, hogy már rendelkezik a minta forráskódtal, a következő lépés az eszköz hitelesítő adatainak beolvasása. Ahhoz, hogy egy eszköz hozzáférhessen egy IoT hubhoz, előbb fel kell vennie az eszközt a IoT Hub Identity registrybe. Az eszköz hozzáadásakor megkapja az eszköz hitelesítő adatait, amelyeknek szüksége van ahhoz, hogy az eszköz csatlakozni tudjon az IoT hubhoz. A következő szakaszban tárgyalt példák a hitelesítő adatokat egy **eszköz-összekapcsolási karakterlánc** formájában számítják fel.
 
 Számos nyílt forráskódú eszköz segíti az IoT hub kezelését.
 
@@ -96,9 +99,9 @@ Ha nem ismeri az Eszközkezelő eszközt, az alábbi eljárás azt ismerteti, ho
 
    ![Device Explorer Twin képernyőkép](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
-1. Adja meg az **IoT hub a kapcsolatok karakterláncát** az első mezőben, majd kattintson a **frissítés**gombra. Ez a lépés úgy konfigurálja az eszközt, hogy az képes legyen kommunikálni IoT Hubokkal. 
+1. Adja meg az **IoT hub a kapcsolatok karakterláncát** az első mezőben, majd kattintson a **frissítés** gombra. Ez a lépés úgy konfigurálja az eszközt, hogy az képes legyen kommunikálni IoT Hubokkal. 
 
-A **kapcsolati karakterlánc** a **IoT hub Service**  >  **Settings**  >  **Shared Access Policy**  >  **iothubowner**alatt található.
+A **kapcsolati karakterlánc** a **IoT hub Service**  >  **Settings**  >  **Shared Access Policy**  >  **iothubowner** alatt található.
 
 1. Ha a IoT Hub kapcsolódási karakterlánc konfigurálva van, kattintson a **kezelés** fülre:
 
@@ -106,7 +109,7 @@ A **kapcsolati karakterlánc** a **IoT hub Service**  >  **Settings**  >  **Shar
 
 Ezen a lapon kezelheti az IoT hub-ban regisztrált eszközöket.
 
-1. Hozzon létre egy eszközt a **Létrehozás** gombra kattintva. Megjelenik egy párbeszédpanel előre megadott kulcsokkal (elsődleges és másodlagos). Adja meg az **eszköz azonosítóját** , majd kattintson a **Létrehozás**gombra.
+1. Hozzon létre egy eszközt a **Létrehozás** gombra kattintva. Megjelenik egy párbeszédpanel előre megadott kulcsokkal (elsődleges és másodlagos). Adja meg az **eszköz azonosítóját** , majd kattintson a **Létrehozás** gombra.
 
    ![Eszköz létrehozása képernyőfelvétel](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
@@ -114,7 +117,7 @@ Ezen a lapon kezelheti az IoT hub-ban regisztrált eszközöket.
 
    ![Device Explorer kattintson a jobb gombbal az eredmény elemre.](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
 
-1. Ha a **kiválasztott eszközhöz a kapcsolódási karakterlánc másolása**lehetőséget választja, a rendszer az eszköz kapcsolódási karakterláncát másolja a vágólapra. Őrizze meg az eszköz-kapcsolatok karakterláncának másolatát. A következő szakaszokban ismertetett minta alkalmazások futtatásakor szüksége lesz rá.
+1. Ha a **kiválasztott eszközhöz a kapcsolódási karakterlánc másolása** lehetőséget választja, a rendszer az eszköz kapcsolódási karakterláncát másolja a vágólapra. Őrizze meg az eszköz-kapcsolatok karakterláncának másolatát. A következő szakaszokban ismertetett minta alkalmazások futtatásakor szüksége lesz rá.
 
 A fenti lépések elvégzése után már készen áll egy kód futtatására. A legtöbb minta állandó a fő forrásfájl tetején, amely lehetővé teszi a kapcsolati karakterlánc megadását. Például a **iothub_client \_ minták \_ iothub_convenience_sample** alkalmazás megfelelő sora a következőképpen jelenik meg.
 
@@ -124,7 +127,7 @@ static const char* connectionString = "[device connection string]";
 
 ## <a name="use-the-iothubclient-library"></a>A Iothubclientről-könyvtár használata
 
-A **iothub \_ Client** mappában az [Azure-IOT-SDK-c](https://github.com/azure/azure-iot-sdk-c) tárházban található egy **minta** nevű mappa, amely egy **iothub- \_ ügyfél \_ minta \_ mqtt**nevű alkalmazást tartalmaz.
+A **iothub \_ Client** mappában az [Azure-IOT-SDK-c](https://github.com/azure/azure-iot-sdk-c) tárházban található egy **minta** nevű mappa, amely egy **iothub- \_ ügyfél \_ minta \_ mqtt** nevű alkalmazást tartalmaz.
 
 A **iothub_client \_ minta \_ iothub_convenience_sample** alkalmazás Windows-verziója a következő Visual Studio-megoldást tartalmazza:
 
@@ -166,7 +169,7 @@ else
 
 Átadja az Eszközkezelő eszköztől a függvénynek beszerzett eszköz-kapcsolódási karakterlánc másolatát. A használni kívánt kommunikációs protokollt is kijelöli. Ez a példa MQTT használ, de a AMQP és a HTTPS is lehetőség.
 
-Ha érvényes **IOTHUB-ügyfél- \_ \_ leíróval**rendelkezik, megkezdheti az API-k meghívását, hogy üzeneteket küldjön és fogadjon IoT hub.
+Ha érvényes **IOTHUB-ügyfél- \_ \_ leíróval** rendelkezik, megkezdheti az API-k meghívását, hogy üzeneteket küldjön és fogadjon IoT hub.
 
 ### <a name="send-messages"></a>Üzenetek küldése
 
@@ -339,7 +342,7 @@ A **iothubclientről** -függvénytár emellett precízen szabályozza az eszkö
 
 A **szerializáló** könyvtára elméletileg a **iothubclientről** könyvtár tetején található az SDK-ban. A **iothubclientről** könyvtárat használja az IoT hub-vel való kommunikációhoz, de olyan modellezési képességeket biztosít, amelyek megszüntetik a fejlesztőtől az üzenetek szerializálásával járó terheket. Egy példa szemlélteti, hogyan működik ez a könyvtár.
 
-Az [Azure-IOT-SDK-c tárház](https://github.com/Azure/azure-iot-sdk-c) **szerializáló** mappájában egy **minta** mappa található, amely egy **simplesample \_ mqtt**nevű alkalmazást tartalmaz. A minta Windows-verziója a következő Visual Studio-megoldást tartalmazza:
+Az [Azure-IOT-SDK-c tárház](https://github.com/Azure/azure-iot-sdk-c) **szerializáló** mappájában egy **minta** mappa található, amely egy **simplesample \_ mqtt** nevű alkalmazást tartalmaz. A minta Windows-verziója a következő Visual Studio-megoldást tartalmazza:
 
   ![Visual Studio-megoldás a mqtt-minta számára](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
@@ -393,7 +396,7 @@ else
 
 A **szerializáló \_ init** függvény hívása egy egyszeri hívás, amely inicializálja az alapul szolgáló könyvtárat. Ezután hívja meg az **iothubclientről \_ ll \_ CreateFromConnectionString** függvényt, amely megegyezik az **iothubclientről** -mintával megegyező API-val. Ez a hívás beállítja az eszköz kapcsolati karakterláncát (ez a hívás a használni kívánt protokollt is kiválasztja). Ez a példa az MQTT-t használja átvitelként, de a AMQP vagy a HTTPS protokollt is használhatja.
 
-Végül hívja meg a ** \_ modell létrehozása \_ példány** -függvényt. A **WeatherStation** a modell névtere, a **ContosoAnemometer** pedig a modell neve. A modell példányának létrehozása után megkezdheti az üzenetek küldését és fogadását. Fontos azonban megérteni, hogy mi a modell.
+Végül hívja meg a **\_ modell létrehozása \_ példány** -függvényt. A **WeatherStation** a modell névtere, a **ContosoAnemometer** pedig a modell neve. A modell példányának létrehozása után megkezdheti az üzenetek küldését és fogadását. Fontos azonban megérteni, hogy mi a modell.
 
 ### <a name="define-the-model"></a>A modell meghatározása
 
@@ -413,9 +416,9 @@ WITH_ACTION(SetAirResistance, int, Position)
 END_NAMESPACE(WeatherStation);
 ```
 
-A névtér és a **végpontok \_ ** **megkezdése \_ ** makrók a modell névterét is elvégzik argumentumként. A rendszer azt várta, hogy ezek a makrók a modell vagy modellek definícióját, valamint a modellek által használt adatstruktúrákat határozzák meg.
+A névtér és a **végpontok \_** **megkezdése \_** makrók a modell névterét is elvégzik argumentumként. A rendszer azt várta, hogy ezek a makrók a modell vagy modellek definícióját, valamint a modellek által használt adatstruktúrákat határozzák meg.
 
-Ebben a példában a **ContosoAnemometer**nevű egyetlen modell létezik. Ez a modell két adatot határoz meg, amelyeket az eszköz el tud küldeni a IoT Hub: **DeviceID** és a **Szélsebesség**. Emellett három olyan műveletet (üzenetet) is meghatároz, amelyet az eszköz fogadni tud: **TurnFanOn**, **TurnFanOff**és **SetAirResistance**. Minden adatelem rendelkezik egy típussal, és mindegyik művelethez tartozik egy név (és opcionálisan egy paraméter is).
+Ebben a példában a **ContosoAnemometer** nevű egyetlen modell létezik. Ez a modell két adatot határoz meg, amelyeket az eszköz el tud küldeni a IoT Hub: **DeviceID** és a **Szélsebesség**. Emellett három olyan műveletet (üzenetet) is meghatároz, amelyet az eszköz fogadni tud: **TurnFanOn**, **TurnFanOff** és **SetAirResistance**. Minden adatelem rendelkezik egy típussal, és mindegyik művelethez tartozik egy név (és opcionálisan egy paraméter is).
 
 A modellben definiált adatműveletek és műveletek olyan API-felületet határoznak meg, amely segítségével üzeneteket küldhetnek a IoT Hubba, és válaszolhat az eszköznek küldött üzenetekre. A modell használatát egy példán keresztül érdemes értelmezni.
 
@@ -444,7 +447,7 @@ else
 }
 ```
 
-Ez a kód szerializálja az eszközről a felhőbe irányuló puffert (erre a **célra**hivatkozik). A kód ezután meghívja a **üzenetküldés** függvényt, hogy elküldje az üzenetet a IoT hubnak:
+Ez a kód szerializálja az eszközről a felhőbe irányuló puffert (erre a **célra** hivatkozik). A kód ezután meghívja a **üzenetküldés** függvényt, hogy elküldje az üzenetet a IoT hubnak:
 
 ```c
 static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
@@ -541,7 +544,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 }
 ```
 
-Ez a kód nem szabványos – ez minden megoldás esetében azonos. Ez a függvény fogadja az üzenetet, és gondoskodik arról, hogyan irányítja át a megfelelő függvénynek a végrehajtás meghívásával ** \_ paranccsal**. Az ebben a pontban meghívott függvény a modell műveleteinek meghatározásából függ.
+Ez a kód nem szabványos – ez minden megoldás esetében azonos. Ez a függvény fogadja az üzenetet, és gondoskodik arról, hogyan irányítja át a megfelelő függvénynek a végrehajtás meghívásával **\_ paranccsal**. Az ebben a pontban meghívott függvény a modell műveleteinek meghatározásából függ.
 
 Amikor megad egy műveletet a modellben, meg kell valósítania egy olyan függvényt, amely akkor lesz meghívva, amikor az eszköz megkapja a megfelelő üzenetet. Ha például a modell meghatározza ezt a műveletet:
 
@@ -581,7 +584,7 @@ Mindhárom függvény a korábban leírt három inicializálási függvényhez i
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk a **C-hez készült Azure IoT Device SDK**kódtárainak használatának alapjait tárgyalja. Ez elegendő információt biztosít ahhoz, hogy megértsük az SDK-t, az architektúráját és a Windows-minták használatának megkezdését. A következő cikk a [iothubclientről könyvtárával kapcsolatos további tudnivalókkal](iot-hub-device-sdk-c-iothubclient.md)folytatja az SDK leírását.
+Ez a cikk a **C-hez készült Azure IoT Device SDK** kódtárainak használatának alapjait tárgyalja. Ez elegendő információt biztosít ahhoz, hogy megértsük az SDK-t, az architektúráját és a Windows-minták használatának megkezdését. A következő cikk a [iothubclientről könyvtárával kapcsolatos további tudnivalókkal](iot-hub-device-sdk-c-iothubclient.md)folytatja az SDK leírását.
 
 Ha többet szeretne megtudni a IoT Hub fejlesztéséről, tekintse meg az [Azure IoT SDK](iot-hub-devguide-sdks.md)-kat.
 

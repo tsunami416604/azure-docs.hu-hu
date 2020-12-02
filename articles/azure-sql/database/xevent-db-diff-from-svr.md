@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: reference
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0c89dc28a330e319e18a6289e5f6759c56e46ae8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791273"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501209"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Bővített események Azure SQL Database 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -73,7 +73,7 @@ A kapcsolódó témakörök két mintakód-mintát biztosítanak:
 
 A kiterjesztett események funkciót számos [katalógus-nézet](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql)támogatja. A katalógus nézeteiből megtudhatja, hogy az aktuális adatbázisban a felhasználó által létrehozott esemény-munkamenetek *metaadatai vagy definíciói* szerepelnek-e. A nézetek nem adnak vissza adatokat az aktív esemény-munkamenetek példányairól.
 
-| Neve<br/>Katalógus nézet | Leírás |
+| Neve<br/>Katalógus nézet | Description |
 |:--- |:--- |
 | **sys.database_event_session_actions** |Minden művelet sorát adja vissza egy esemény-munkamenet minden eseményén. |
 | **sys.database_event_session_events** |Egy adott esemény-munkamenetben lévő események sorát adja vissza. |
@@ -81,13 +81,13 @@ A kiterjesztett események funkciót számos [katalógus-nézet](/sql/relational
 | **sys.database_event_session_targets** |Egy adott esemény-munkamenethez tartozó összes esemény céljának sorát adja vissza. |
 | **sys.database_event_sessions** |Az adatbázis minden esemény-munkamenetének sorát adja vissza. |
 
-A Microsoft SQL Server hasonló katalógus-nézetek olyan nevekkel rendelkeznek, amelyek. *Server \_* helyett a. *Database \_* nevet tartalmazzák. A név mint **sys.server_event_%** .
+A Microsoft SQL Server hasonló katalógus-nézetek olyan nevekkel rendelkeznek, amelyek. *Server \_* helyett a. *Database \_* nevet tartalmazzák. A név mint **sys.server_event_%**.
 
 ## <a name="new-dynamic-management-views-dmvs"></a>Új dinamikus felügyeleti nézetek [(DMV)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
 A Azure SQL Database [dinamikus felügyeleti nézetekkel (DMV) rendelkeznek](/sql/relational-databases/system-dynamic-management-views/extended-events-dynamic-management-views) , amelyek támogatják a kiterjesztett eseményeket. DMV az *aktív* esemény-munkamenetekről.
 
-| DMV neve | Leírás |
+| DMV neve | Description |
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |Az esemény-munkamenet műveletekkel kapcsolatos adatokat adja vissza. |
 | **sys.dm_xe_database_session_events** |A munkamenet-eseményekre vonatkozó adatokat adja vissza. |
@@ -97,7 +97,7 @@ A Azure SQL Database [dinamikus felügyeleti nézetekkel (DMV) rendelkeznek](/sq
 
 A Microsoft SQL Server hasonló katalógus-nézetek neve nem a név *\_ adatbázis* része, például:
 
-- **sys.dm_xe_sessions** a név helyett<br/>**sys.dm_xe_database_sessions** .
+- **sys.dm_xe_sessions** a név helyett<br/>**sys.dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>DMV közös
 
@@ -174,7 +174,7 @@ Ha olyan hibaüzenetet kap, amely szerint a rendszer maximálisan kikényszerít
 - Kevesebb egyidejű esemény-munkamenet futtatása.
 - Az esemény-munkamenetek **létrehozási** és **módosítási** utasításai segítségével csökkentheti a **maximális \_ memória** záradékban megadott memória mennyiségét.
 
-### <a name="network-latency"></a>Hálózati késleltetés
+### <a name="network-latency"></a>Hálózati késés
 
 Az **eseményvezérelt fájl** célja hálózati késést vagy hibát tapasztalhat, miközben az Azure Storage-Blobok számára is megőrzi az adatait. Előfordulhat, hogy a Azure SQL Database egyéb eseményei késleltetve vannak, amíg a hálózati kommunikáció befejezésére várnak. Ez a késleltetés csökkentheti a számítási feladatokat.
 

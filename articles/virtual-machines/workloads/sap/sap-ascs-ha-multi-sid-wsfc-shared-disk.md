@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9998c4a9c37d30a35acaad8972b9345c5e251e42
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bd0c2e720736feb9faf129237ba960dedda08c6f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950533"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500988"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és a megosztott lemezzel az Azure-ban
 
@@ -44,7 +44,7 @@ Ebből a cikkből megtudhatja, hogyan helyezhet át egyetlen ASCS/SCS-telepíté
 A terheléselosztó korlátaival kapcsolatos további információkért tekintse meg a [hálózatkezelési korlátok: Azure Resource Manager][networking-limits-azure-resource-manager]a "privát ELŐTÉR-IP/terheléselosztó" című szakaszt.
 
 > [!IMPORTANT]
-> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.  
+> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.  
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -255,7 +255,7 @@ A magas szintű eljárás a következő:
 
 10. [Tesztelje az SAP ASCS/SCS instance feladatátvételi és SIOS replikációját][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hálózati korlátok: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Több VIP Azure Load Balancer][load-balancer-multivip-overview]

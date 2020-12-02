@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: c88b777e08bc165caefa14fe28d43c498e3fefcd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790372"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501260"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database Lekérdezési terheléselemző
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,15 +41,15 @@ Lekérdezési terheléselemző megköveteli, hogy a [lekérdezési tároló](/sq
 
 A Lekérdezési terheléselemző használatához a következő [Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC)](../../role-based-access-control/overview.md) engedélyek szükségesek:
 
-* **Olvasó** , **tulajdonos** , **közreműködő** , **SQL db közreműködő** vagy **SQL Server közreműködő** engedély szükséges a legfelső szintű erőforrás-felhasználású lekérdezések és diagramok megtekintéséhez.
-* A lekérdezés szövegének megtekintéséhez **tulajdonos** , **közreműködő** , **SQL-adatbázis közreműködői** vagy **SQL Server közreműködői** engedélyek szükségesek.
+* **Olvasó**, **tulajdonos**, **közreműködő**, **SQL db közreműködő** vagy **SQL Server közreműködő** engedély szükséges a legfelső szintű erőforrás-felhasználású lekérdezések és diagramok megtekintéséhez.
+* A lekérdezés szövegének megtekintéséhez **tulajdonos**, **közreműködő**, **SQL-adatbázis közreműködői** vagy **SQL Server közreműködői** engedélyek szükségesek.
 
 ## <a name="use-query-performance-insight"></a>A Lekérdezési terheléselemző használata
 
 A Lekérdezési terheléselemző könnyen használható:
 
 1. Nyissa meg a [Azure Portal](https://portal.azure.com/) , és keresse meg a vizsgálni kívánt adatbázist.
-2. A bal oldali menüben nyissa meg az **intelligens teljesítmény**  >  **lekérdezési terheléselemző** .
+2. A bal oldali menüben nyissa meg az **intelligens teljesítmény**  >  **lekérdezési terheléselemző**.
   
    ![Lekérdezési terheléselemző a menüben](./media/query-performance-insight-use/tile.png)
 
@@ -160,7 +160,7 @@ A hosszan futó lekérdezések a lehető legnagyobb potenciállal rendelkeznek a
 A hosszú ideig futó lekérdezések azonosítása:
 
 1. Nyissa meg Lekérdezési terheléselemző **Egyéni** lapját a kiválasztott adatbázishoz.
-2. Módosítsa a mérőszámok **időtartamát** .
+2. Módosítsa a mérőszámok **időtartamát**.
 3. Válassza ki a lekérdezések számát és a megfigyelési időközt.
 4. Válassza ki az összesítési függvényt:
 
@@ -197,7 +197,7 @@ Például számos adatvezérelt webhely minden felhasználói kérelem esetében
 A gyakran végrehajtott ("Csevegő") lekérdezések azonosítása:
 
 1. Nyissa meg Lekérdezési terheléselemző **Egyéni** lapját a kiválasztott adatbázishoz.
-2. Módosítsa a mérőszámokat a **végrehajtások számára** .
+2. Módosítsa a mérőszámokat a **végrehajtások számára**.
 3. Válassza ki a lekérdezések számát és a megfigyelési időközt.
 4. Kattintson a **Go >** gombra a testreszabott nézet megjelenítéséhez.
 
@@ -238,14 +238,14 @@ A második eset akkor fordul elő, ha a lekérdezési tár nincs engedélyezve, 
 
 Az adatmegőrzési szabályzatoknak két típusa van:
 
-* **Méret-alapú** : Ha a házirend **automatikus** értékre van beállítva, akkor a rendszer automatikusan törli az adatmennyiséget, amikor a maximális méret elérte a szinteket.
-* **Időalapú** : alapértelmezés szerint ez a házirend 30 napra van állítva. Ha a lekérdezési tároló nem áll rendelkezésre, a 30 napnál régebbi lekérdezési adatokat fogja törölni.
+* **Méret-alapú**: Ha a házirend **automatikus** értékre van beállítva, akkor a rendszer automatikusan törli az adatmennyiséget, amikor a maximális méret elérte a szinteket.
+* **Időalapú**: alapértelmezés szerint ez a házirend 30 napra van állítva. Ha a lekérdezési tároló nem áll rendelkezésre, a 30 napnál régebbi lekérdezési adatokat fogja törölni.
 
 Beállíthatja a rögzítési szabályzatot a következőre:
 
-* **Összes** : a lekérdezési tároló rögzíti az összes lekérdezést.
-* **Automatikus** : a lekérdezési tároló figyelmen kívül hagyja a ritka lekérdezéseket és a nem jelentős fordítási és végrehajtási időtartamú lekérdezéseket. A végrehajtások száma, a fordítás időtartama és a futásidejű időtartam küszöbértékei belsőleg vannak meghatározva. Ez az alapértelmezett beállítás.
-* **Nincs** : a lekérdezési tároló leállítja az új lekérdezések rögzítését, de a már rögzített lekérdezésekhez tartozó futásidejű statisztikák továbbra is begyűjthetők.
+* **Összes**: a lekérdezési tároló rögzíti az összes lekérdezést.
+* **Automatikus**: a lekérdezési tároló figyelmen kívül hagyja a ritka lekérdezéseket és a nem jelentős fordítási és végrehajtási időtartamú lekérdezéseket. A végrehajtások száma, a fordítás időtartama és a futásidejű időtartam küszöbértékei belsőleg vannak meghatározva. Ez az alapértelmezett beállítás.
+* **Nincs**: a lekérdezési tároló leállítja az új lekérdezések rögzítését, de a már rögzített lekérdezésekhez tartozó futásidejű statisztikák továbbra is begyűjthetők.
 
 Javasoljuk, hogy a [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) vagy a Azure Portal az alábbi parancsok végrehajtásával állítsa be az összes szabályzatot **automatikusra** és a tisztítási házirendre. (Cserélje le `YourDB` az adatbázis nevére.)
 
@@ -276,6 +276,6 @@ Ezen beállítások alkalmazása végül a Query Store telemetria gyűjti az új
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Érdemes [Azure SQL Analyticst](../../azure-monitor/insights/azure-sql.md) használni az önálló és készletezett adatbázisok, rugalmas készletek, felügyelt példányok és példány-adatbázisok nagy flottájának speciális teljesítményének figyelésére.
