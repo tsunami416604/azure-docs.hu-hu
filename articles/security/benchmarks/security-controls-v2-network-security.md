@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6ddce9bd8eaa57571cd3c3eac660806340db4b74
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b6aaad9cce330d755fb69f8be48737f9a8f6c4a7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408668"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487745"
 ---
 # <a name="security-control-v2-network-security"></a>Security Control v2: hálózati biztonság
 
@@ -40,9 +40,9 @@ Az Azure Sentinel használatával felderítheti az örökölt nem biztonságos p
 
 - [Azure Sentinel – nem biztonságos protokollok – munkafüzet](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -54,7 +54,7 @@ Az Azure Sentinel használatával felderítheti az örökölt nem biztonságos p
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| NS – 2 | N/A | CA-3, AC-17, MA-4 |
+| NS – 2 | N.A. | CA-3, AC-17, MA-4 |
 
 Az Azure ExpressRoute vagy az Azure virtual private Network (VPN) használatával privát kapcsolatokat hozhat létre az Azure-adatközpontok és a helyszíni infrastruktúra között egy közös elhelyezésű környezetben. A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, így megbízhatóbbak, gyorsabbak és kevesebb késéssel rendelkeznek, mint a szokásos internetes kapcsolatok. Pont – hely típusú VPN-és helyek közötti VPN esetén a VPN-beállítások és az Azure ExpressRoute bármely kombinációja segítségével a helyszíni eszközöket vagy hálózatokat egy virtuális hálózathoz is összekapcsolhatja.
 
@@ -68,9 +68,9 @@ Ha két vagy több virtuális hálózatot szeretne összekapcsolni az Azure-ban,
 
 - [Azure Private Link](../../private-link/private-link-service-overview.md)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -78,7 +78,7 @@ Ha két vagy több virtuális hálózatot szeretne összekapcsolni az Azure-ban,
 
 - [Alkalmazások biztonsága és DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: magánhálózati hozzáférés létrehozása az Azure-szolgáltatásokhoz
+## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Privát hálózati hozzáférés létesítése Azure-szolgáltatásokhoz
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
@@ -92,9 +92,9 @@ Az Azure-szolgáltatások által kínált hitelesítés és adatforgalmi biztons
 
 - [Virtual Network szolgáltatási végpontok ismertetése](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -120,11 +120,11 @@ Az Azure-erőforrások védelmet nyújthatnak a külső hálózatokból érkező
 
 - [Az Azure WAF üzembe helyezése](../../web-application-firewall/overview.md)
 
-- [Azure DDoS Protection standard kezelése a Azure Portal használatával](../../virtual-network/manage-ddos-protection.md)
+- [Azure DDoS Protection standard kezelése a Azure Portal használatával](../../ddos-protection/manage-ddos-protection.md)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 Nincsenek
 
@@ -144,9 +144,9 @@ Megjegyzés: Ha rendelkezik az AZONOSÍTÓk/IP-címek használatára vonatkozó 
 
 - [Microsoft Defender ATP EDR-képesség](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -170,9 +170,9 @@ Az alkalmazás biztonsági csoportjaival is egyszerűsítheti az összetett bizt
 
 - [Az alkalmazás biztonsági csoportjai megismerése és használata](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -184,7 +184,7 @@ Az alkalmazás biztonsági csoportjaival is egyszerűsítheti az összetett bizt
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| NS-7 | N/A | SC-20, SC-21 |
+| NS-7 | N.A. | SC-20, SC-21 |
 
 Kövesse a DNS-biztonság ajánlott eljárásait a gyakori támadásokkal szemben, például a DNS-t, a DNS-erősítési támadásokat, a DNS-mérgezést és a hamisítást stb. 
 
@@ -196,9 +196,9 @@ Ha a rendszer a mérvadó DNS-szolgáltatásként Azure DNS használja, győződ
 
 - [A DNS-bejegyzések letiltásának és a tartományon belüli átvétel elkerülésének megakadályozása](../fundamentals/subdomain-takeover.md)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

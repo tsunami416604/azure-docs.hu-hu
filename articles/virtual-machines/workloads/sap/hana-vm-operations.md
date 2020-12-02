@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ce9ab371c0ed1e81cf1dfb53fca7e359e1aeb35
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9a907f2a6fc54c96dbef9f2091a91cac50bbd4ca
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967499"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486521"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra és az Azure natív virtuális gépeken üzembe helyezett operációs SAP HANA rendszerek konfigurálásához. A dokumentum a M128s virtuális gép SKU-jának SAP HANA kibővíthető konfigurációs adatait is tartalmazza. Ez a dokumentum nem helyettesíti a szabványos SAP-dokumentációt, amely a következő tartalmakat tartalmazza:
@@ -245,8 +245,8 @@ A DT 2,0 ajánlott eljárási útmutatója alapján a lemez i/o-átviteli sebess
 Több Azure-lemez csatlakoztatására van szükség a DT 2,0 virtuális géphez, és az operációs rendszer szintjén létre kell hoznia egy szoftveres RAID-t (csíkozást), hogy a maximálisan engedélyezett legyen a lemez sebessége virtuális gépenként. Egyetlen Azure-lemez nem tudja biztosítani az átviteli sebességet a virtuális gép maximális korlátjának eléréséhez. Az Azure Premium Storage használata kötelező a DT 2,0 futtatásához. 
 
 - Az elérhető Azure-lemezekre vonatkozó részletek [itt](../../disks-types.md) találhatók
-- A szoftveres RAID mdadm használatával történő létrehozásával kapcsolatos részletek [itt](../../linux/configure-raid.md) találhatók
-- [Itt](../../linux/configure-lvm.md) talál részletes információt az LVM konfigurálásáról egy csíkozott kötet létrehozásához a maximális átviteli sebesség érdekében
+- A szoftveres RAID mdadm használatával történő létrehozásával kapcsolatos részletek [itt](/previous-versions/azure/virtual-machines/linux/configure-raid) találhatók
+- [Itt](/previous-versions/azure/virtual-machines/linux/configure-lvm) talál részletes információt az LVM konfigurálásáról egy csíkozott kötet létrehozásához a maximális átviteli sebesség érdekében
 
 A méretre vonatkozó követelményektől függően különböző lehetőségek érhetők el egy virtuális gép maximális átviteli sebességének eléréséhez. Az alábbi lehetséges adatmennyiség-lemezes konfigurációk minden DT 2,0 virtuálisgép-típus esetében elérhetők a virtuális gép maximális átviteli sebességének eléréséhez. A E32sv3 virtuális gépet a kisebb munkaterhelések belépési szintjére kell tekinteni. Ha úgy gondolja, hogy nem elég gyors, szükséges lehet a virtuális gép átméretezése a M64-32ms.
 Mivel a M64-32ms virtuális gép sok memóriát tartalmaz, előfordulhat, hogy az i/o-terhelés nem éri el a korlátot, különösen az olvasási igényű számítási feladatok esetében. Emiatt a Stripe-készlet kevesebb lemeze is elegendő lehet az ügyfél-specifikus munkaterheléstől függően. A biztonságos oldalon azonban az alábbi lemez-konfigurációk garantálják a maximális átviteli sebességet:
@@ -324,4 +324,3 @@ Ismerkedjen meg a felsorolt cikkekkel
 - [SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával Red Hat Enterprise Linux](./sap-hana-scale-out-standby-netapp-files-rhel.md)
 - [SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server](./sap-hana-high-availability.md)
 - [SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux](./sap-hana-high-availability-rhel.md)
-

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
+ms.date: 12/01/2020
 ms.author: memildin
-ms.openlocfilehash: 6b54f02b39e233dcf35f0d18682ca102883d76c3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 85dffd4d96a78bab9dd890d9ad37572f3e524f06
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791868"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487932"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>E-mail-értesítések konfigurálása biztonsági riasztásokhoz 
 
@@ -31,9 +31,9 @@ Az értesítő e-mailek saját beállításainak megadásához Azure Security Ce
 
 A riasztások fáradtságának elkerülése érdekében Security Center korlátozza a kimenő levelek mennyiségét. Az egyes előfizetésekhez Security Center a következőt küldi el:
 
-- legfeljebb **négy** e-mail-cím naponta a **nagy súlyosságú** riasztásokhoz
-- a **közepes súlyosságú** riasztások esetében naponta legfeljebb **két** e-mail-üzenet
-- legfeljebb **egy** e-mail-cím naponta az **alacsony súlyosságú** riasztásokhoz
+- legfeljebb egy e-mail/ **6 óra** (naponta 4 e-mail) a **nagy súlyosságú** riasztásokhoz
+- legfeljebb egy e-mail/ **12 óra** (naponta 2 e-mail) a **közepes súlyosságú** riasztásokhoz
+- legfeljebb egy e-mail-cím **24 óránként** az **alacsony súlyosságú** riasztásokhoz
 
 :::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="A biztonsági riasztásokkal kapcsolatos e-maileket fogadó partner adatainak konfigurálása." :::
  
@@ -62,10 +62,9 @@ E-mailes értesítéseket küldhet magánszemélyeknek vagy az adott Azure-szere
 1. A biztonsági kapcsolattartási adatok előfizetésre való alkalmazásához válassza a **Mentés** lehetőséget.
 
 
-## <a name="next-steps"></a>Következő lépések
-
+## <a name="see-also"></a>Lásd még
 A biztonsági riasztásokkal kapcsolatos további tudnivalókért tekintse meg a következő lapokat:
 
 - [Biztonsági riasztások – útmutató](alerts-reference.md)a Azure Security Center veszélyforrások elleni védelmi moduljában esetlegesen megjelenő biztonsági riasztások megismeréséhez
 - [Biztonsági riasztások kezelése és válaszadás a Azure Security Center-ben](security-center-managing-and-responding-alerts.md)– útmutató a biztonsági riasztások kezeléséhez és megválaszolásához
-- A [Security Center eseményindítóra adott válaszok automatizálása](workflow-automation.md)– az automatizálással válaszolhat Security Center triggerekre egyéni értesítési logikával
+- [Munkafolyamat-automatizálás](workflow-automation.md)– a riasztásokra adott válaszok automatizálása egyéni értesítési logikával

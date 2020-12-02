@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan hozhat létre egy Office-adatkapcsolati fájlt 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 12/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 039783fc10fb08523dc81e13b5f6f456fa8d0c97
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 8fa657f3b343cdf49723dc68601bb1c9513ff504
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014766"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487337"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office-adatkapcsolatok fájljának létrehozása
 
-A cikkben található információk azt ismertetik, hogyan hozhat létre Office-adatkapcsolati fájlt egy Azure Analysis Services-kiszolgálóhoz való kapcsolódáshoz az Excel 2016-es verziójának 16.0.7369.2117 vagy korábbi verziójából, vagy az Excel 2013-ből. A frissített [MSOLAP. 7 szolgáltató](/analysis-services/client-libraries?view=azure-analysis-services-current) is szükséges.
+A cikkben található információk azt ismertetik, hogyan hozhat létre Office-adatkapcsolati fájlt egy Azure Analysis Services-kiszolgálóhoz való kapcsolódáshoz az Excel 2016-es verziójának 16.0.7369.2117 vagy korábbi verziójából, vagy az Excel 2013-ből. A frissített [MSOLAP. 7 szolgáltató](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true) is szükséges.
 
 
 1. Másolja be az alábbi minta-kapcsolatfájl, és illessze be egy szövegszerkesztőbe. 
@@ -31,7 +31,7 @@ A cikkben található információk azt ismertetik, hogyan hozhat létre Office-
 
 4. Mentse a fájlt egy `.odc` kiterjesztéssel a C:\Users \\ *username*\Documents\My adatforrások mappájába.
 
-5. Kattintson a jobb gombbal a fájlra, majd kattintson a **Megnyitás az Excelben**elemre. Vagy **az Excelben az adatszalagon** kattintson a **létező kapcsolatok**elemre, jelölje ki a fájlt, majd kattintson a **Megnyitás**gombra.
+5. Kattintson a jobb gombbal a fájlra, majd kattintson a **Megnyitás az Excelben** elemre. Vagy **az Excelben az adatszalagon** kattintson a **létező kapcsolatok** elemre, jelölje ki a fájlt, majd kattintson a **Megnyitás** gombra.
 
 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/24/2020
 ms.author: memildin
-ms.openlocfilehash: ee2582d25477d9b9f4fe0bac6b230132a797fd0f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6c0e92c566dd69cdea14c9c7d346a5ec65f892bf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95896594"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487949"
 ---
 # <a name="pricing-of-azure-security-center"></a>A Azure Security Center díjszabása
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Lehetővé teszi a hibrid Felhőbeli számítási feladatok, az aktív védelem és a fenyegetések kialakulásának csökkentését, valamint az intelligens észlelést, amely megkönnyíti a gyors fejlődést jelentő számítógépes kockázatok megtartását.
@@ -50,7 +50,7 @@ Az Azure Defender engedélyezése:
 1. A Security Center főmenüjében válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki a frissíteni kívánt előfizetést.
 1. A frissítéshez válassza az **Azure Defender** lehetőséget.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Az alábbi példa egy előfizetésre vonatkozó díjszabási oldalt mutat be. Megfigyelheti, hogy az Azure Defender minden csomagja külön díjszabású, és egyénileg be-és kikapcsolható.
 
@@ -86,9 +86,9 @@ Az előfizetéshez az alábbi módokon engedélyezheti az Azure Defender haszná
 |Metódus  |Utasítások  |
 |---------|---------|
 |A Azure Portal Azure Security Center lapja|[Az Azure Defender engedélyezése](#enable-azure-defender)|
-|REST API|[Díjszabási API](https://docs.microsoft.com/rest/api/securitycenter/pricings)|
-|Azure CLI|[az Security díjszabása](https://docs.microsoft.com/cli/azure/security/pricing)|
-|PowerShell|[Set-AzSecurityPricing](https://docs.microsoft.com/powershell/module/az.security/set-azsecuritypricing)|
+|REST API|[Díjszabási API](/rest/api/securitycenter/pricings)|
+|Azure CLI|[az Security díjszabása](/cli/azure/security/pricing)|
+|PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|
 |Azure Policy|[Csomagok díjszabása](https://github.com/Azure/Azure-Security-Center/tree/master/Pricing%20%26%20Settings/Azure%20Policy%20definitions/Bundle%20Pricings)|
 |||
 

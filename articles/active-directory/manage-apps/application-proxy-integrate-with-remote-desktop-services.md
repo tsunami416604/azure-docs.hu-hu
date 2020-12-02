@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfa9367e06c099e21a54ad8c03f8d5ab853aaafb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348075"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488068"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Távoli asztal közzététele Azure AD-alkalmazásproxy használatával
 
@@ -130,9 +130,11 @@ Az ebben a cikkben ismertetett konfiguráció az RDS-webhelyeken vagy a távoli 
 
 | Hitelesítési módszer | Támogatott ügyfél-konfiguráció |
 | --------------------- | ------------------------------ |
-| Előhitelesítés    | RD Web-Windows 7/10 Internet Explorer vagy [Edge króm IE Mode](/deployedge/edge-ie-mode) + RDS ActiveX bővítmény használatával <br /> *Megjegyzés: a saját alkalmazások portál csak az Edge-t támogatja.* |
+| Előhitelesítés    | RD Web-Windows 7/10 Internet Explorer * vagy [Edge Chromium IE Mode](/deployedge/edge-ie-mode) + RDS ActiveX-bővítmény használatával |
 | Előhitelesítés    | Távoli asztali webes ügyfél – HTML5-kompatibilis webböngésző, például a Microsoft Edge, az Internet Explorer 11, a Google Chrome, a Safari vagy a Mozilla Firefox (v 55.0 és újabb verziók) |
 | Csatlakoztatott | Minden más operációs rendszer, amely támogatja a Microsoft Távoli asztal alkalmazást |
+
+* Az Edge Chromium IE mód megadása akkor kötelező, ha a My apps portál a Távoli asztal alkalmazás elérésére szolgál.  
 
 Az előhitelesítési folyamat több biztonsági előnyt kínál, mint az áteresztő folyamat. Az előzetes hitelesítéssel az Azure AD-hitelesítési funkciókat, például az egyszeri bejelentkezést, a feltételes hozzáférést, valamint a helyszíni erőforrások kétlépéses ellenőrzését is használhatja. Győződjön meg arról is, hogy csak a hitelesített forgalom éri el a hálózatot.
 

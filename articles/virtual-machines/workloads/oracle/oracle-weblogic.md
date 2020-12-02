@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: 51f0e68b3e07a157a5222a4374f9e1b74ef7e403
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 277e9049d2069190a68dd98c22acd60212c1b99d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968706"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486691"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Melyik megoldásokkal futtatható az Oracle WebLogic Server az Azure Virtual Machinesben?
 
 Ez az oldal az Oracle WebLogic Server (WLS) Azure-beli virtuális gépeken való futtatásának megoldásait ismerteti. Ezeket a megoldásokat az Oracle és a Microsoft közösen fejleszti és támogatja.
 
-A WLS az Azure Kubernetes szolgáltatásban is futtatható. Ennek a megoldásnak a leírását [ebben a Microsoft-cikkben](/azure/virtual-machines/workloads/oracle/weblogic-aks)találja.
+A WLS az Azure Kubernetes szolgáltatásban is futtatható. Ennek a megoldásnak a leírását [ebben a Microsoft-cikkben](./weblogic-aks.md)találja.
 
 A WLS egy vezető Java-alkalmazáskiszolgáló, amely a legtöbb kritikus vállalati Java-alkalmazást futtatja szerte a világon. A WLS az Oracle Software Suite-hoz készült middleware Foundation-t képezi. Az Oracle és a Microsoft elkötelezte magát arra, hogy az Azure-ban vezető felhőalapú platformként futtatott munkaterheléseket és rugalmasságot biztosító WLS ügyfelei számára.
 
@@ -57,7 +57,7 @@ A megoldások az éles környezetben felépíthető üzembe helyezési architekt
 
 A megoldások által automatikusan kiépített igényeken túl az ügyfelek rugalmasan testre szabhatják az üzembe helyezést. Valószínű, hogy az alkalmazások üzembe helyezése során az ügyfelek a további Azure-erőforrásokat is integrálják az üzemelő példányokkal. Javasoljuk, hogy visszajelzéseket nyújtson a megoldások további tökéletesítéséről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Fedezze fel az ajánlatokat az Azure-ban.
 

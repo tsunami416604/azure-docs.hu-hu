@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: b9154b124f89a8b672c58d5e7bce28c0833e8a8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d7fb8be1894ffa5f8c35e16e1ed3aa0949b3ff
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84988037"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488204"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Klasszikusról VPN Gateway a Resource Manager-áttelepítésre
 A VPN-átjárók mostantól áttelepíthetők a Klasszikusból a Resource Manager-alapú üzemi modellbe. További információ: Azure Resource Manager [funkciók és előnyök](../azure-resource-manager/management/overview.md). Ebben a cikkben részletesen ismertetjük, hogyan lehet migrálni a klasszikus üzemelő példányokról az újabb Resource Manager-alapú modellre. 
 
-A VPN-átjárók áttelepítése a Klasszikusból a Resource Managerbe VNet áttelepítés részeként történik. Az áttelepítés egyszerre egy VNet történik. A Migrálás eszközeinek és előfeltételeinek semmilyen további követelménye nincs. Az áttelepítési lépések megegyeznek a meglévő VNet-áttelepítéssel, és dokumentálva vannak a [IaaS-erőforrások áttelepítése lapon](../virtual-machines/windows/migration-classic-resource-manager-ps.md). Az áttelepítés során nincs adatelérési út, így a meglévő munkaterhelések továbbra is működőképesek maradnak a helyi kapcsolat elvesztése nélkül az áttelepítés során. A VPN-átjáróhoz társított nyilvános IP-cím nem változik az áttelepítési folyamat során. Ez azt jelenti, hogy az áttelepítés befejeződése után a helyszíni útválasztót nem kell újrakonfigurálnia.  
+A VPN-átjárók áttelepítése a Klasszikusból a Resource Managerbe VNet áttelepítés részeként történik. Az áttelepítés egyszerre egy VNet történik. A Migrálás eszközeinek és előfeltételeinek semmilyen további követelménye nincs. Az áttelepítési lépések megegyeznek a meglévő VNet-áttelepítéssel, és dokumentálva vannak a [IaaS-erőforrások áttelepítése lapon](../virtual-machines/migration-classic-resource-manager-ps.md). Az áttelepítés során nincs adatelérési út, így a meglévő munkaterhelések továbbra is működőképesek maradnak a helyi kapcsolat elvesztése nélkül az áttelepítés során. A VPN-átjáróhoz társított nyilvános IP-cím nem változik az áttelepítési folyamat során. Ez azt jelenti, hogy az áttelepítés befejeződése után a helyszíni útválasztót nem kell újrakonfigurálnia.  
 
 A Resource Manager modellje eltér a klasszikus modelltől, és virtuális hálózati átjárók, helyi hálózati átjárók és a kapcsolatok erőforrásaiból áll. Ezek a VPN-átjárót képviselik, a helyszíni címterület és a két közötti kapcsolat közötti kapcsolatot képviselő helyi helyet. Az áttelepítés befejezése után az átjárók nem lesznek elérhetők a klasszikus modellben, és a virtuális hálózati átjárók, a helyi hálózati átjárók és a kapcsolatok objektumainak minden felügyeleti műveletét Resource Manager-modell használatával kell végrehajtani.
 
@@ -66,5 +66,4 @@ Mivel a VNet-t a helyi telephelyek megkövetelése nélkül VNet a kapcsolatra, 
 * Hozzon létre explicit kapcsolatot az érintett VNet a helyszíni helyet képviselő helyi hálózati átjáróval. Ehhez az IPsec-alagút létrehozásához és konfigurálásához a helyszíni útválasztón is módosítani kell a konfigurációt.
 
 ## <a name="next-steps"></a>További lépések
-A VPN Gateway áttelepítési támogatásának megismerése után lépjen a [platform által támogatott IaaS-erőforrások áttelepítésére a Klasszikusból a Resource Managerbe](../virtual-machines/windows/migration-classic-resource-manager-ps.md) a kezdéshez.
-
+A VPN Gateway áttelepítési támogatásának megismerése után lépjen a [platform által támogatott IaaS-erőforrások áttelepítésére a Klasszikusból a Resource Managerbe](../virtual-machines/migration-classic-resource-manager-ps.md) a kezdéshez.

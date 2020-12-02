@@ -2,19 +2,19 @@
 title: Váltás a Azure Data Factoryban
 description: A kapcsoló tevékenység lehetővé teszi, hogy egy feltétel alapján vezérelje a feldolgozási folyamatot.
 services: data-factory
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd5bb37d54183020e233774a778d27f5d4588bb4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81418014"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486006"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Váltás a Azure Data Factoryban
 
@@ -22,7 +22,7 @@ ms.locfileid: "81418014"
 
 A kapcsoló tevékenység ugyanazokat a funkciókat biztosítja, mint a Switch utasítások a programozási nyelveken. Kiértékeli a feltételnek megfelelő esetet, amely megfelel a feltétel kiértékelésének.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Szintaxis
 
 ```json
 

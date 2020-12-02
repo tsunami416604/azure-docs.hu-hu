@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: a24f9e78de34b17977a1876cbefb473cc2610db0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4c710792dd7966fad76b33954fdf7c2253cf18f0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95550047"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488238"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Webalkalmazási tűzfal (WAF) finomhangolása az Azure bejárati ajtóhoz
  
@@ -136,7 +136,7 @@ A kizárási lista használatának egyik előnye, hogy csak a kizárni kívánt 
  
 Fontos figyelembe venni, hogy a kizárások globális beállítások. Ez azt jelenti, hogy a konfigurált kizárás a WAF áthaladó összes forgalomra érvényes lesz, nem csak egy adott webalkalmazásra vagy URI-ra. Ez lehet például egy olyan probléma, ha *1 = 1* egy adott webalkalmazás törzsében érvényes kérelem, de nem az azonos WAF-szabályzatban szereplő mások számára. Ha érdemes különböző kizárási listát használni a különböző alkalmazásokhoz, érdemes lehet különböző WAF-házirendeket alkalmazni az egyes alkalmazásokhoz, és azokat alkalmazni az egyes alkalmazások előtérben.
  
-A felügyelt szabályok kizárási listájának konfigurálásakor dönthet úgy, hogy kizárja a szabálykészlet összes szabályát, a szabálykészlet összes szabályát vagy egy adott szabályt. A kizárási lista a [PowerShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0), az [Azure CLI](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add), a [REST API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)vagy a Azure Portal használatával konfigurálható.
+A felügyelt szabályok kizárási listájának konfigurálásakor dönthet úgy, hogy kizárja a szabálykészlet összes szabályát, a szabálykészlet összes szabályát vagy egy adott szabályt. A kizárási lista a [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0), az [Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add), a [REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)vagy a Azure Portal használatával konfigurálható.
 
 * Kizárások egy szabály szintjén
   * A kizárások szabály szintjén történő alkalmazása azt jelenti, hogy a megadott kizárások csak az adott szabály alapján lesznek elemezve, míg a szabálykészlet minden más szabálya továbbra is elemzésre kerül. Ez a legrészletesebb kizárási szint, amellyel a felügyelt szabálykészlet a WAF-naplókban található információk alapján finomítható az események hibaelhárításakor.
@@ -193,7 +193,7 @@ Ha biztos abban, hogy az adott feltételnek megfelelő kérések letiltanak egy 
  
 A szabályok letiltása azonban globális beállítás, amely a WAF házirendhez társított összes előtér-gazdagépre vonatkozik. Ha egy szabály letiltását választja, akkor előfordulhat, hogy a WAF-házirendhez társított egyéb előtér-gazdagépek védelme vagy észlelése nélkül kilép a biztonsági rések ellen.
  
-Ha a felügyelt szabály letiltásához Azure PowerShellt szeretne használni, tekintse meg az [`PSAzureManagedRuleOverride`](https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?view=azps-4.7.0&preserve-view=true) objektum dokumentációját. Ha az Azure CLI-t szeretné használni, tekintse meg a [`az network front-door waf-policy managed-rules override`](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?view=azure-cli-latest&preserve-view=true) dokumentációt.
+Ha a felügyelt szabály letiltásához Azure PowerShellt szeretne használni, tekintse meg az [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?preserve-view=true&view=azps-4.7.0) objektum dokumentációját. Ha az Azure CLI-t szeretné használni, tekintse meg a [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?preserve-view=true&view=azure-cli-latest) dokumentációt.
 
 ![WAF-szabályok](../media/waf-front-door-tuning/waf-rules.png)
 
@@ -264,7 +264,7 @@ A kérések és válaszok fejlécek megtekintésének egy másik módja, ha a b�
 
 Ha a kérelem cookie-kat tartalmaz, a cookie-k lapon lehet megtekinteni őket a Hegedűsben. A cookie-adatok használatával kizárásokat vagy egyéni szabályokat hozhat létre a WAF-ben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg az [Azure webalkalmazási tűzfalat](../overview.md).
 - Útmutató a [Front Door létrehozásához](../../frontdoor/quickstart-create-front-door.md).

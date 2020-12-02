@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/29/2020
+ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: 6e906e6c86d615852191e2fd65a2b1a58695ed34
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b111dae035e7a055628642fe7c460734199ff608
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968553"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486342"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 
@@ -69,6 +69,7 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
   * [Red Hat Enterprise Linux 7,4 (és újabb) High-Availability fürt telepítése és konfigurálása Microsoft Azure](https://access.redhat.com/articles/3252491)
   * [A RHEL 8 – magas rendelkezésre állás és fürtök bevezetésének szempontjai](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [Az SAP S/4HANA ASCS/ERS konfigurálása önálló sorba helyezni-kiszolgáló 2 (ENSA2) segítségével a pacemaker on RHEL 7,6](https://access.redhat.com/articles/3974941)
+  * [Az Azure-beli SAP-ajánlatok RHEL](https://access.redhat.com/articles/5456301)
 
 ## <a name="cluster-installation"></a>Fürt telepítése
 
@@ -80,7 +81,7 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
 
 A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes csomópontra érvényesek, **[1]** – csak az 1. vagy **[2]** csomópontra érvényesek, csak a 2. csomópontra.
 
-1. **[A]** regisztráljon. Erre a lépésre nincs szükség, ha RHEL 8. x HA-kompatibilis lemezképet használ.  
+1. **[A]** regisztráljon. Ez a lépés nem szükséges, ha a RHEL SAP HA-kompatibilis lemezképeket használ.  
 
    Regisztrálja a virtuális gépeket, és csatolja azt egy készlethez, amely a RHEL 7 tárházait tartalmazza.
 
@@ -90,9 +91,9 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Ha készletet csatlakoztat egy Azure Marketplace-TB RHEL-rendszerképhez, a RHEL-használat után gyakorlatilag egyszer kell fizetnie, és egyszer kell megadnia a RHEL jogosultságot a csatolni kívánt készletben. Ennek enyhítése érdekében az Azure mostantól BYOS RHEL-lemezképeket biztosít. További információt [itt](../redhat/byos.md) talál.
+   Ha készletet csatlakoztat egy Azure Marketplace-TB RHEL-rendszerképhez, a RHEL-használat után gyakorlatilag egyszer kell fizetnie, és egyszer kell megadnia a RHEL jogosultságot a csatolni kívánt készletben. Ennek enyhítése érdekében az Azure mostantól BYOS RHEL-lemezképeket biztosít. További információt [itt](../redhat/byos.md) talál.  
 
-1. **[A]** engedélyezze a RHEL az SAP-repók számára. Erre a lépésre nincs szükség, ha RHEL 8. x HA-kompatibilis lemezképet használ.  
+1. **[A]** engedélyezze a RHEL az SAP-repók számára. Ez a lépés nem szükséges, ha a RHEL SAP HA-kompatibilis lemezképeket használ.  
 
    A szükséges csomagok telepítéséhez engedélyezze a következő adattárakat.
 
@@ -318,7 +319,7 @@ op monitor interval=3600
 > [!TIP]
 >Az Azure kerítés ügynöke a nyilvános végponti pontokhoz kapcsolódóan dokumentált kimenő kapcsolatot igényel, valamint a lehetséges megoldásokkal együtt a [standard szintű ILB használó virtuális gépek nyilvános végponti kapcsolatát](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

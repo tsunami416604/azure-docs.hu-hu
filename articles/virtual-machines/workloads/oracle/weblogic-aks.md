@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: a57d5a00fad9a17e01b96ebdf395fb7a4b857935
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cf44ad8d81656248329d993d86e9922dc4985258
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968689"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486674"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Milyen megoldások futnak az Oracle WebLogic Server Azure Kubernetes Service-ben való futtatásához?
 
 Ez az oldal az Oracle WebLogic Server (WLS) Azure Kubernetes szolgáltatásban (ak) való futtatásának megoldásait ismerteti. Ezeket a megoldásokat az Oracle és a Microsoft közösen fejleszti és támogatja.
 
-A WebLogic-kiszolgálót az Azure Virtual Machines is futtathatja. Ennek a megoldásnak a leírását [ebben a Microsoft-cikkben](/azure/virtual-machines/workloads/oracle/oracle-weblogic)találja.
+A WebLogic-kiszolgálót az Azure Virtual Machines is futtathatja. Ennek a megoldásnak a leírását [ebben a Microsoft-cikkben](./oracle-weblogic.md)találja.
 
 A WebLogic Server egy vezető Java-alkalmazáskiszolgáló, amely a legtöbb kritikus vállalati Java-alkalmazást futtatja szerte a világon. A WebLogic-kiszolgáló az Oracle Software Suite-hoz készült middleware Foundation-t képezi. Az Oracle és a Microsoft elkötelezte magát arra, hogy a WebLogic-kiszolgáló ügyfeleinek az Azure-ban vezető felhőalapú platformként futtatott számítási feladatokat és rugalmasságot biztosítanak.
 
@@ -47,7 +47,7 @@ Az Oracle WebLogic Server Azure Kubernetes szolgáltatásban való futtatására
 
 A megoldások az ügyfelek számára teljes rugalmasságot biztosítanak az üzemelő példányok testreszabásához. Valószínű, hogy az alkalmazások üzembe helyezése során az ügyfelek a további Azure-erőforrásokat is integrálják az üzemelő példányokkal. Javasoljuk, hogy visszajelzéseket nyújtson a felmérésben a megoldások továbbfejlesztése érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Oracle WebLogic Server futtatását az Azure Kubernetes szolgáltatásban.
 

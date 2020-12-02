@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
-ms.openlocfilehash: a0afee57eaaa0708ebde2a2aeaced76f008ebd9f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 96a4b13d11e40e24e78d3aed8dfebcc88b41c525
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366128"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486878"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Oktatóanyag: lemezképek feltöltése a Bing Visual Search APIba
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 A Bing Visual Search API lehetővé teszi, hogy az Ön által feltöltött képekhez hasonló képeket keressen a weben. Ezzel az Oktatóanyaggal létrehozhat egy webalkalmazást, amely képes képet küldeni az API-nak, és megjeleníti a weblapon visszaadott elemzéseket. Vegye figyelembe, hogy ez az alkalmazás nem felel meg az API-k használatának összes [Bing-és megjelenítési követelményének](../bing-web-search/use-display-requirements.md) .
 

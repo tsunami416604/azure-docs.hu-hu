@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: a430333f57b3734e5977db5c104c8f6d37bfd3c4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 27cf5fef027b1e4786c0ff77f9f673bafea15f98
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949088"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487269"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -26,7 +26,7 @@ A nyelvi támogatás a beszédfelismerési szolgáltatás működésének függv
 
 A Microsoft Speech SDK és a REST API egyaránt a következő nyelveket támogatja (területi beállítások). 
 
-A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza számára ajánljuk a **hang-és emberi címkével ellátott átiratok** vagy a **kapcsolódó szövegek feltöltésével: mondatok**. A testreszabással kapcsolatos további tudnivalókért tekintse meg [a Custom Speech első lépéseivel foglalkozó](how-to-custom-speech.md)témakört.
+A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza számára ajánljuk a **hang-és emberi címkével ellátott átiratok** vagy a **kapcsolódó szövegek feltöltésével: mondatok**. A testreszabással kapcsolatos további tudnivalókért tekintse meg [a Custom Speech első lépéseivel foglalkozó](./custom-speech-overview.md)témakört.
 
 <!--
 To get the AM and ML bits:
@@ -375,7 +375,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | Kiswahili               | `sw`          |
 | Klingon                 | `tlh-Latn`    |
 | Klingon (plqaD)         | `tlh-Piqd`    |
-| koreai                  | `ko`          |
+| Koreai                  | `ko`          |
 | Lett                 | `lv`          |
 | Litván              | `lt`          |
 | Malgas                | `mg`          |
@@ -384,9 +384,9 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | Máltai                 | `mt`          |
 | maori                   | `mi`          |
 | marathi                 | `mr`          |
-| norvég               | `nb`          |
+| Norvég               | `nb`          |
 | perzsa                 | `fa`          |
-| lengyel                  | `pl`          |
+| Lengyel                  | `pl`          |
 | Portugál (Brazília)     | `pt-br`       |
 | Portugál (Portugália)   | `pt-pt`       |
 | pandzsábi                 | `pa`          |
@@ -405,14 +405,14 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | telugu                  | `te`          |
 | Thai                    | `th`          |
 | Tongai                  | `to`          |
-| török                 | `tr`          |
+| Török                 | `tr`          |
 | Ukrán               | `uk`          |
 | urdu                    | `ur`          |
 | Vietnámi              | `vi`          |
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="speaker-recognition"></a>Beszélőfelismerés
+## <a name="speaker-recognition"></a>Speaker Recognition
 
 A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
 
@@ -426,7 +426,7 @@ A különböző Speaker Recognition API-khoz támogatott nyelveket a következő
 |Francia (Kanada)     | fr – CA     | n/a     | igen |     igen|
 |Francia (Franciaország)     | fr-FR     | n/a     | igen     | igen|
 |Német (Németország)     | de-DE     | n/a     | igen     | igen|
-|olasz | it-IT     |     n/a     | igen |     igen|
+|Olasz | it-IT     |     n/a     | igen |     igen|
 |Japán     | ja-JP | n/a     | igen     | igen|
 |Portugál (Brazília) | pt-BR |     n/a |     igen |     igen|
 |Spanyol (Mexikó)     | es-MX     | n/a |     igen |     igen|
@@ -435,4 +435,4 @@ A különböző Speaker Recognition API-khoz támogatott nyelveket a következő
 ## <a name="next-steps"></a>Következő lépések
 
 * [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
-* [Lásd: beszéd felismerése a C-ben #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)
+* [Lásd: beszéd felismerése a C-ben #](./get-started-speech-to-text.md?pivots=programming-language-chsarp)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bd69f239a1c65040c44da776186ab8d955f5e333
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3a232f8e8c35e265a8243ac79e465c03f6b9650e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693183"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487864"
 ---
 # <a name="security-control-network-security"></a>Biztonsági ellenőrzés: hálózati biztonság
 
@@ -76,7 +76,7 @@ A NSG konfigurálásához használja a Azure Security Center igény szerinti há
 
 Azure Security Center adaptív hálózati korlátozással olyan NSG-konfigurációkat javasolhat, amelyek a portok és a forrás IP-címeket korlátozzák a tényleges forgalom és a veszélyforrások felderítése alapján.
 
-- [A DDoS Protection konfigurálása](../../virtual-network/manage-ddos-protection.md)
+- [A DDoS Protection konfigurálása](../../ddos-protection/manage-ddos-protection.md)
 
 - [Azure Firewall üzembe helyezése](../../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -150,7 +150,7 @@ A hálózati erőforrások szabványos biztonsági konfigurációinak definiál�
 
 Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, például az Azure Resources Manager-sablonokat, az Azure RBAC-vezérlőket és a szabályzatokat egyetlen terv definíciójában. A tervrajzot új előfizetésekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el.
 
-- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Policy minták a hálózatkezeléshez](../../governance/policy/samples/built-in-policies.md#network)
 
@@ -186,6 +186,6 @@ Az Azure-tevékenység naplójának használatával figyelheti az erőforrás-ko
 
 - [Riasztások létrehozása a Azure Monitorban](../../azure-monitor/platform/alerts-activity-log.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a következő biztonsági vezérlőt: [naplózás és figyelés](security-control-logging-monitoring.md)

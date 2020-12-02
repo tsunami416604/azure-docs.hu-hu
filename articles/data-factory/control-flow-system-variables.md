@@ -3,20 +3,20 @@ title: Rendszerváltozók a Azure Data Factoryban
 description: Ez a cikk a Azure Data Factory által támogatott rendszerváltozókat ismerteti. Ezeket a változókat kifejezésekben használhatja Data Factory entitások definiálásához.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 2690ded0ac45719cb1082c85ab535c91ad491172
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1780b4a64de349c1e272158fe6bfde9cab6f8369
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417963"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486045"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott rendszerváltozók
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,7 +26,7 @@ Ez a cikk a Azure Data Factory által támogatott rendszerváltozókat ismerteti
 ## <a name="pipeline-scope"></a>Folyamat hatóköre
 Ezeket a rendszerváltozókat a folyamat JSON-ban bárhol lehet hivatkozni.
 
-| Változó neve | Leírás |
+| Változó neve | Description |
 | --- | --- |
 | @pipeline(). DataFactory |Annak az adatelőállítónak a neve, amelyen a folyamat futása fut |
 | @pipeline(). Folyamat |A folyamat neve |
@@ -39,7 +39,7 @@ Ezeket a rendszerváltozókat a folyamat JSON-ban bárhol lehet hivatkozni.
 ## <a name="schedule-trigger-scope"></a>Trigger hatókörének ütemterve
 Ezek a rendszerváltozók az trigger JSON-ban bárhol szerepelhetnek, ha az trigger típusa: "ScheduleTrigger".
 
-| Változó neve | Leírás |
+| Változó neve | Description |
 | --- | --- |
 | @trigger().scheduledTime |Az az idő, amikor az eseményindító ütemezve lett a folyamat futásának meghívására. Például egy 5 percenként elindított trigger esetén ez a változó a következőt fogja visszaadni: `2017-06-01T22:20:00Z` `2017-06-01T22:25:00Z` `2017-06-01T22:30:00Z` .|
 | @trigger(). kezdő időpont |Az az idő, amikor az eseményindító **ténylegesen** elindította a folyamat futtatását. Például egy 5 percenként elindított trigger esetén ez a változó a következőhöz hasonló értéket adhat vissza: `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:25:00.7958577Z` `2017-06-01T22:30:00.9935483Z` . (Megjegyzés: az időbélyeg alapértelmezés szerint ISO 8601 formátumú)|
@@ -48,7 +48,7 @@ Ezek a rendszerváltozók az trigger JSON-ban bárhol szerepelhetnek, ha az trig
 Ezek a rendszerváltozók az trigger JSON-ban bárhol szerepelhetnek, ha az trigger típusa: "TumblingWindowTrigger".
 (Megjegyzés: az időbélyeg alapértelmezés szerint ISO 8601 formátumú)
 
-| Változó neve | Leírás |
+| Változó neve | Description |
 | --- | --- |
 | @trigger(). outputs. windowStartTime |Az ablak elindítása, amikor az eseményindító ütemezve lett a folyamat futásának meghívására. Ha a kieséses ablak triggerének gyakorisága "óránként", ez az idő az óra elején.|
 | @trigger(). outputs. windowEndTime |Az ablak vége, amikor az eseményindító ütemezve lett a folyamat futásának meghívására. Ha a kieséses ablak triggerének "óránként" gyakorisága van, akkor ez az idő az óra végén.|

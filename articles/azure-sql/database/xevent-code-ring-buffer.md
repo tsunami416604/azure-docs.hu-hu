@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: d73efd7a64d0118cea11ca9b0a35f659ce7fee6a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791290"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487303"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>A kibővített eseményekhez tartozó gyűrűs pufferek Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,10 +28,10 @@ A tesztelés során egy teljes kódrészletet szeretne használni a kibővített
 Ez a témakör egy Transact-SQL-kód mintát mutat be, amely a következőket tartalmazza:
 
 1. Létrehoz egy táblázatot, amely a következővel szemlélteti az-t:.
-2. Munkamenetet hoz létre egy meglévő bővített eseményhez, azaz **SQLServer.sql_statement_starting** .
+2. Munkamenetet hoz létre egy meglévő bővített eseményhez, azaz **SQLServer.sql_statement_starting**.
 
-   * Az esemény olyan SQL-utasításokra korlátozódik, amelyek egy adott frissítési karakterláncot tartalmaznak: a **(z) "% Update tabEmployee%" utasítást** .
-   * Úgy dönt, hogy elküldi az esemény kimenetét egy gyűrűs puffer típusú célnak, azaz  **package0.ring_buffer** .
+   * Az esemény olyan SQL-utasításokra korlátozódik, amelyek egy adott frissítési karakterláncot tartalmaznak: a **(z) "% Update tabEmployee%" utasítást**.
+   * Úgy dönt, hogy elküldi az esemény kimenetét egy gyűrűs puffer típusú célnak, azaz  **package0.ring_buffer**.
 3. Elindítja az esemény-munkamenetet.
 4. Néhány egyszerű SQL UPDATE-utasítást is kiad.
 5. Egy SQL SELECT utasítás kiírása az esemény kimenetének a gyűrűs pufferből való lekéréséhez.

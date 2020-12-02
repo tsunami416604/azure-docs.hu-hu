@@ -10,19 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: f5df94f95ea486f069ece264b8d09de1d9fc8607
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b44b77445192aec68e2be803978ab3aad64906d6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095016"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486997"
 ---
 # <a name="default-insights-tag"></a>Alapértelmezett adatáttekintési címke
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Az alapértelmezett adatáttekintési címke az a mező, amely `displayName` üres karakterláncra van beállítva. Az alábbi példa az alapértelmezett adatmennyiségek (műveletek) lehetséges listáját mutatja. A válasz részét képező műveletek listája a rendszerképtől függ. Az egyes műveletek esetében a tulajdonságok listája a rendszerképtől függően változhat, ezért ellenőrizze, hogy a tulajdonság létezik-e, mielőtt megpróbálja használni.
 
@@ -426,7 +426,7 @@ A DocumentLevelSuggestions Insight a javasolt keresési kifejezések listáját 
       }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a Bing-információk [használatának példáit](bing-insights-usage.md) , hogy megtudja, hogyan jelenítheti meg a Bing a vizualizációs információkat.
 

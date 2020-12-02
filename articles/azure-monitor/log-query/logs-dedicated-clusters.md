@@ -6,24 +6,23 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: d261640dfdb59b2b06cfe3066fca26640a0bed54
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a68501bd1189993b4dd0c2acdecaa7434fa51dcc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874644"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488034"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor a dedikált fürtöket naplózza
 
-Azure Monitor a dedikált fürtök a nagy mennyiségű ügyfelek jobb kiszolgálására szolgáló központi telepítési lehetőség. Azok az ügyfelek, akik naponta több mint 4 TB-nyi adatot töltenek fel, dedikált fürtöket fognak használni. A dedikált fürtökkel rendelkező ügyfelek kiválaszthatják a fürtökön üzemeltetett munkaterületeket.
+Azure Monitor a dedikált fürtök naplózása olyan központi telepítési lehetőség, amely lehetővé teszi a speciális képességet a Azure Monitor naplók ügyfelei számára. A dedikált fürtökkel rendelkező ügyfelek kiválaszthatják a fürtökön üzemeltetett munkaterületeket.
 
-A nagy mennyiségű támogatáson kívül más előnyökkel is jár a dedikált fürtök használata:
+A dedikált fürtöket igénylő képességek a következők:
 
-- **Díjszabási korlát** – az ügyfelek magasabb betöltési [arányra vonatkozó korlátját](../service-limits.md#data-ingestion-volume-rate) csak dedikált fürtön lehet megszabni.
-- **Szolgáltatások** – bizonyos vállalati funkciók csak dedikált fürtökön érhetők el – különösen az ügyfél által felügyelt kulcsokra (CMK) és a kulcstároló-támogatásra. 
-- **Konzisztencia** – az ügyfelek saját dedikált erőforrásaikkal rendelkeznek, így az ugyanazon a megosztott infrastruktúrán futó többi ügyféltől sincs befolyása.
-- **Költséghatékonyság** – a dedikált fürt használata költséghatékonyabb lehet, mivel a hozzárendelt kapacitás foglalási szintjei figyelembe veszik az összes fürt betöltését, és az összes munkaterületére érvényesek, még akkor is, ha ezek némelyike kicsi, és nem jogosult a kapacitás foglalási kedvezményére.
-- A **több munkaterületet tartalmazó** lekérdezések gyorsabban futnak, ha az összes munkaterület ugyanazon a fürtön található.
+- **[Ügyfél által felügyelt kulcsok](../platform/customer-managed-keys.md)** – a fürtözött adattitkosítást az ügyfél által megadott és vezérelt kulcsok használatával titkosítja.
+- **[Kulcstároló](../platform/customer-managed-keys.md#customer-lockbox-preview)** – az ügyfelek vezérelhetik a Microsoft támogatási mérnökök hozzáférési kérelmeit.
+- A **[kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** védelmet biztosít olyan esetekben, amikor a titkosítási algoritmusok vagy kulcsok egyike sérül. Ebben az esetben a további titkosítási réteg továbbra is védi az adatait.
+- **[Több munkaterület](../log-query/cross-workspace-query.md)** – ha egy ügyfél több munkaterületet használ az éles környezetben, érdemes lehet dedikált fürtöt használni. A több munkaterületre kiterjedő lekérdezések gyorsabban futnak, ha az összes munkaterület ugyanazon a fürtön található. Az is előfordulhat, hogy a dedikált fürt használata a hozzárendelt kapacitás foglalási szintjeinek figyelembevételével költséghatékony, és az összes munkaterületre vonatkozik, és az összes munkaterületére érvényes, még akkor is, ha ezek némelyike kicsi, és nem jogosult a kapacitás foglalási kedvezményére.
 
 A dedikált fürtök esetében az ügyfeleknek legalább 1 TB-os adatfeldolgozási kapacitással kell véglegesíteni. A dedikált fürtre történő áttelepítés egyszerű. Nincs adatvesztés vagy-szolgáltatás megszakítása. 
 
@@ -406,7 +405,7 @@ Fürt törléséhez használja a következő REST-hívást:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [log Analytics dedikált fürt számlázásáról](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
 - A [log Analytics-munkaterületek megfelelő kialakításának](../platform/design-logs-deployment.md) megismerése

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c553652d4d8abd16b4e5fd4ff896e42bdba103ad
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8602450ef7df7f728fc5bdcda4f46ae30058fc94
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408974"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487796"
 ---
 # <a name="security-control-v2-asset-management"></a>Biztonsági vezérlő v2: Asset Management
 
 Az eszközkezelés kiterjed az Azure-erőforrások biztonságának és irányításának biztosítására szolgáló vezérlőkre. Ide tartoznak a biztonsági személyzet engedélyeivel kapcsolatos javaslatok, az eszközök leltározásának biztonsági hozzáférése, valamint a szolgáltatások és erőforrások jóváhagyásának kezelése (leltár, nyomon követés és helyes).
 
-## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Győződjön meg arról, hogy a biztonsági csapat az eszközök kockázataival rendelkezik
+## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Az összetevőket érintő kockázatok biztonsági csapat általi átláthatóságának biztosítása
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
@@ -26,57 +26,57 @@ Az eszközkezelés kiterjed az Azure-erőforrások biztonságának és irányít
 
 Győződjön meg arról, hogy a biztonsági csapatoknak biztonsági olvasói engedélyekkel kell rendelkezniük az Azure-bérlőben és-előfizetésekben, hogy a biztonsági kockázatokat a Azure Security Center használatával felügyeljék 
 
-A biztonsági csapat feladatainak strukturálása, a biztonsági kockázatok figyelése a központi biztonsági csapat vagy egy helyi csapat feladata lehet. Azt is mondta, hogy a biztonsági ismereteket és a kockázatokat mindig központilag összesíteni kell egy szervezeten belül. 
+A biztonsági kockázatok monitorozása a biztonsági csapat felelősségi köreinek struktúrájától függően egy központi biztonsági csapat vagy egy helyi csapat felelőssége lehet. A biztonsági megállapításokat és kockázatokat azonban mindig központilag kell összesíteni egy szervezeten belül. 
 
-A biztonsági olvasó engedélyei széles körben alkalmazhatók egy teljes bérlőre (gyökérszintű felügyeleti csoportra), vagy a felügyeleti csoportokra vagy az adott előfizetésekre is. 
+A biztonsági olvasó engedélyek széles körben alkalmazhatók egy teljes bérlőre (gyökérszintű felügyeleti csoport), vagy a hatókör alkalmazható adott felügyeleti csoportokra vagy előfizetésekre. 
 
-Megjegyzés: Előfordulhat, hogy további engedélyek szükségesek a számítási feladatok és szolgáltatások láthatóságának megismeréséhez. 
+Megjegyzés: A számítási feladatok és a szolgáltatások átláthatóvá tételéhez további engedélyek lehetnek szükségesek. 
 
 - [A biztonsági olvasó szerepkör áttekintése](../../role-based-access-control/built-in-roles.md#security-reader)
 
-- [Az Azure Management Groups áttekintése](../../governance/management-groups/overview.md)
+- [Az Azure-beli felügyeleti csoportok áttekintése](../../governance/management-groups/overview.md)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
 - [Biztonsági megfelelőség kezelése](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2: gondoskodjon arról, hogy a biztonsági csapat hozzáférjen az eszközök leltárához és metaadataihoz
+## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2: Az összetevőleltár és a metaadatok biztonsági csapat általi elérhetőségének biztosítása
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
 | AM-2 | 1,1, 1,2, 1,4, 1,5, 9,1, 12,1 | CM-8, PM-5 |
 
-Győződjön meg arról, hogy a biztonsági csapatok hozzáférhetnek az Azure-beli adategységek folyamatosan frissített leltározásához. A biztonsági csapatoknak gyakran erre a leltárra van szükségük ahhoz, hogy kiértékeljék a szervezetnek a felmerülő kockázatokat, valamint a folyamatos biztonsági tökéletesítéseket. 
+Győződjön meg arról, hogy a biztonsági csapatok hozzáférhetnek az Azure-beli adategységek folyamatosan frissített leltározásához. A biztonsági csapatoknak gyakran van szükségük erre a leltárra a vállalat új kockázatokkal szembeni kitettségének felméréséhez, és a folyamatos biztonsági fejlesztéséket szolgáló információként. 
 
 A Azure Security Center Inventory szolgáltatás és az Azure Resource Graph az előfizetések összes erőforrását lekérdezheti és felderítheti, beleértve az Azure-szolgáltatásokat, az alkalmazásokat és a hálózati erőforrásokat is.  
 
-Az eszközöket logikailag rendezheti a szervezet besorolása alapján a címkék használatával, valamint az Azure-ban található egyéb metaadatokkal (név, leírás és kategória).  
+Az összetevőket címkék, valamint más Azure-beli metaadatok (név, leírás és kategória) használatával rendszerezheti logikailag a vállalati elnevezéseknek megfelelően.  
 
 - [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../../governance/resource-graph/first-query-portal.md)
 
 - [Azure Security Center Asset Inventory Management](../../security-center/asset-inventory.md)
 
-- [További információ az eszközök címkézéséről: erőforrás-elnevezési és címkézési döntési útmutató](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
+- [További információ az eszközök címkézéséről: erőforrás-elnevezési és címkézési döntési útmutató](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
 - [Biztonsági megfelelőség kezelése](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="am-3-use-only-approved-azure-services"></a>AM-3: csak jóváhagyott Azure-szolgáltatások használata
+## <a name="am-3-use-only-approved-azure-services"></a>AM-3: Csak jóváhagyott Azure-szolgáltatások használata
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
 | AM-3 | 2,3, 2,4 | CM-7, CM-8 |
 
-A Azure Policy használatával naplózhatja és korlátozhatja, hogy mely szolgáltatások felhasználói tudnak kiépíteni a környezetben. Az Azure Resource Graph segítségével lekérdezheti és felderítheti az előfizetésen belüli erőforrásokat.  A Azure Monitor használatával olyan szabályokat is létrehozhat, amelyek riasztásokat aktiválnak, ha a rendszer nem jóváhagyott szolgáltatást észlel.
+Az Azure Policy használatával ellenőrizheti és korlátozhatja a felhasználók által a környezetben kiépíthető szolgáltatások körét. Az Azure Resource Graph használatával lekérdezheti és felderítheti az előfizetésükön belüli erőforrásokat.  Az Azure Monitort is használhatja olyan szabályok létrehozásához, amelyek riasztást aktiválnak nem jóváhagyott szolgáltatás észlelésekor.
 
 - [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -84,29 +84,29 @@ A Azure Policy használatával naplózhatja és korlátozhatja, hogy mely szolg�
 
 - [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../../governance/resource-graph/first-query-portal.md)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Biztonsági megfelelőség kezelése](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
 - [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
-## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: az eszközök életciklus-kezelésének biztonsága
+## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: Az objektuméletciklus-kezelés biztonságának garantálása
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
 | AM-4 | 2,3, 2,4, 2,5 | CM-7, CM-8, CM-10, CM-11 |
 
-Hozzon létre vagy frissítsen olyan biztonsági házirendeket, amelyek az eszköz életciklus-kezelési folyamataiban potenciálisan nagy hatású módosításokat végeznek. A módosítások közé tartoznak a következők: az identitás-szolgáltatók és a hozzáférés, az adatok érzékenysége, a hálózati konfiguráció és a rendszergazdai jogosultságok kiosztása.
+Hozzon létre vagy frissítsen olyan biztonsági házirendeket, amelyek az eszköz életciklus-kezelési folyamataiban potenciálisan nagy hatású módosításokat végeznek. Ezek a módosítások a következők módosításait tartalmazzák: identitásszolgáltatók és hozzáférés, adatbizalmasság, hálózati konfiguráció, adminisztratív jogosultságok hozzárendelése.
 
-Ha már nincs rájuk szükség, távolítsa el az Azure-erőforrásokat.
+Távolítsa el az Azure-erőforrásokat, ha már nincs rájuk szükség.
 
-- [Azure-erőforráscsoport és-erőforrás törlése](../../azure-resource-manager/management/delete-resource-group.md)
+- [Azure-erőforráscsoport és -erőforrás törlése](../../azure-resource-manager/management/delete-resource-group.md)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -124,9 +124,9 @@ Az Azure AD feltételes hozzáférés használatával korlátozhatja, hogy a fel
 
 - [Feltételes hozzáférés konfigurálása az Azure Resources Manager elérésének blokkolásához](../../role-based-access-control/conditional-access-azure-management.md)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -154,9 +154,9 @@ Harmadik féltől származó megoldást is használhat a nem jóváhagyott szoft
 
 - [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 

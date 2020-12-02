@@ -4,16 +4,16 @@ description: Ismerkedjen meg Azure Analysis Servicesával, amely egy teljes kör
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/19/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 496b2ea7272be96774d4bd0900fc35c6de8cf9eb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e70d02c02ba9a3f14d1659851919fbccf71776d1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457779"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487354"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -243,7 +243,7 @@ Az Azure Analysis Services támogatja a [dinamikus felügyeleti nézetek (DMV-k)
 
 Itt található az Azure Analysis Services dokumentációja. A cikkeket a böngésző képernyőjének bal oldalán látható tartalomjegyzékben keresheti meg. 
 
-Mivel a Azure Analysis Services táblázatos modelljei sokkal ugyanazok, mint a SQL Server Analysis Services és Power BI Premium adatkészletek táblázatos modelljei, a közös adatmodellezési útmutatók széles skáláját mutatja be [Analysis Services dokumentációjában](/analysis-services/?view=azure-analysis-services-current). A megosztott Analysis Services dokumentációjában szereplő cikkek azt mutatják, hogy a Azure Analysis Servicesre a cím alatt érvényes szalagcím vonatkozik-e. A tartalomjegyzék fölött a Version választót is használhatja, hogy csak azokat a cikkeket tekintse meg, amelyek az Ön által használt platformra vonatkoznak.
+Mivel a Azure Analysis Services táblázatos modelljei sokkal ugyanazok, mint a SQL Server Analysis Services és Power BI Premium adatkészletek táblázatos modelljei, a közös adatmodellezési útmutatók széles skáláját mutatja be [Analysis Services dokumentációjában](/analysis-services/?view=azure-analysis-services-current&preserve-view=true). A megosztott Analysis Services dokumentációjában szereplő cikkek azt mutatják, hogy a Azure Analysis Servicesre a cím alatt érvényes szalagcím vonatkozik-e. A tartalomjegyzék fölött a Version választót is használhatja, hogy csak azokat a cikkeket tekintse meg, amelyek az Ön által használt platformra vonatkoznak.
 
 ![Közös dokumentáció](./media/analysis-services-overview/aas-overview-applies-to.png)
 

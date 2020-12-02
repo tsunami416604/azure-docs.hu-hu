@@ -7,61 +7,61 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ae0930e0845e8e8bd6dc4571dc3e8e27491a7be6
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e4da0b288bca2517e4e0f58569215709a5f71a5e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408792"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487762"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>Security Control v2: irányítási és stratégiai
 
 A szabályozás és a stratégia útmutatást nyújt egy koherens biztonsági stratégia és dokumentált irányítási megközelítés biztosításához a biztonsági garanciák kialakításához és fenntartásához, beleértve a szerepkörök és felelősségek létrehozását a Felhőbeli biztonsági funkciók, az egységes műszaki stratégia és a támogatási szabályzatok és szabványok tekintetében.
 
-## <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: eszközkezelés és adatvédelmi stratégia meghatározása
+## <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: Eszközkezelési és adatvédelmi stratégia
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
 | GS-1 | 2, 13 | SC, AC |
 
-Gondoskodjon róla, hogy a rendszerek és az információk folyamatos monitorozásával és védelmével kapcsolatos egyértelmű stratégiát dokumentáljon és tájékoztasson. Az üzleti szempontból kritikus fontosságú adatmennyiségek és rendszerek felderítésének, értékelésének, védelmének és figyelésének rangsorolása. 
+Gondoskodjon róla, hogy a rendszerek és az információk folyamatos monitorozásával és védelmével kapcsolatos egyértelmű stratégiát dokumentáljon és tájékoztasson. Állítsa fel az üzletileg kritikus adatok és rendszerek felmérésének, védelmének és monitorozásának fontossági sorrendjét. 
 
-Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmutatását, szabályzatát és szabványait: 
+Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és az alábbi elemek szabványait: 
 
-- Az adatbesorolási szabvány az üzleti kockázatoknak megfelelően
+- Az üzleti kockázattal összhangban lévő adatbesorolási szabványok
 
-- A biztonsági szervezet betekintést nyerhet a kockázatokra és az eszközök leltározására 
+- A kockázatok és az eszközleltár biztonsági szervezet általi láthatósága 
 
-- Az Azure-szolgáltatások használatának biztonsági szervezet általi jóváhagyása 
+- A használandó Azure-szolgáltatások biztonsági szervezet általi jóváhagyása 
 
-- Az eszközök biztonsága életcikluson keresztül
+- Az biztonsága azok teljes életciklusában
 
 - A szükséges hozzáférés-vezérlési stratégia a szervezeti adatbesorolásnak megfelelően
 
-- Az Azure Native és a harmadik féltől származó adatvédelmi képességek használata
+- Az Azure natív védelmi funkcióinak és külső védelmi funkciók használata
 
-- Adattitkosítási követelmények átvitel közbeni és nyugalmi használati esetekben
+- Adattitkosítási követelmények a használatban lévő és a jelenleg nem használt használati esetekhez
 
-- Megfelelő titkosítási szabványok
+- A megfelelő titkosítási szabványok
 
-További információkért tekintse meg a következő referenciákat:
-- [Azure biztonsági architektúra – javaslat – tárolás, adatkezelés és titkosítás](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%252fsecurity%252fcompass%252fbreadcrumb%252ftoc.json&toc=%252fsecurity%252fcompass%252ftoc.json)
+További információkat az alábbi hivatkozásokon találhat:
+- [Az Azure Security architektúrára vonatkozó ajánlásai – Tárolás, adatok és titkosítás](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
-- [Az Azure biztonsági alapjai – Azure-adatbiztonság, titkosítás és tárolás](../fundamentals/encryption-overview.md)
+- [Az Azure Security alapjai – Azure-beli adatbiztonság, titkosítás és tárolás](../fundamentals/encryption-overview.md)
 
-- [Felhőalapú bevezetési keretrendszer – az Azure adatbiztonsági és-titkosítási ajánlott eljárásai](../fundamentals/data-encryption-best-practices.md?amp;bc=%252fazure%252fcloud-adoption-framework%252f_bread%252ftoc.json&toc=%252fazure%252fcloud-adoption-framework%252ftoc.json)
+- [Felhőadaptálási keretrendszer – Az Azure-beli adatbiztonsághoz és titkosításhoz ajánlott eljárások](../fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure biztonsági teljesítményteszt – eszközkezelés](security-controls-v2-asset-management.md)
+- [Azure Security Benchmark – Eszközkezelés](security-controls-v2-asset-management.md)
 
-- [Azure biztonsági teljesítményteszt – adatvédelem](security-controls-v2-data-protection.md)
+- [Azure Security Benchmark – Adatvédelem](security-controls-v2-data-protection.md)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Minden érintett](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2: vállalati szegmentálási stratégia definiálása
+## <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2: Nagyvállalati szegmentálási stratégia definiálása
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
@@ -69,59 +69,59 @@ További információkért tekintse meg a következő referenciákat:
 
 Hozzon létre egy nagyvállalati stratégiát, amely az eszközök hozzáférésének szegmentálására használatos az identitás, a hálózat, az alkalmazás, az előfizetés, a felügyeleti csoport és más vezérlők kombinációjával.
 
-Körültekintően kell elkülöníteni a biztonsági elkülönítés szükségességét annak érdekében, hogy lehetővé váljon a rendszerek napi működésének engedélyezése, amelyeknek kommunikálnia kell egymással, és az adathozzáférésre van szükségük.
+Gondosan egyensúlyozza ki a biztonsági elkülönítés igényét azoknak a rendszereknek a mindennapos működésével, amelyeknek kommunikálniuk kell egymással, és hozzá kell férniük az adatokhoz.
 
-Győződjön meg arról, hogy a szegmentálási stratégia következetesen van implementálva a különböző típusú vezérlőkben, beleértve a hálózati biztonságot, az identitás-és hozzáférési modelleket, valamint az alkalmazás engedély/hozzáférési modelljeit, valamint az emberi folyamatok vezérlés
+Gondoskodjon róla, hogy a szegmentálási stratégia következetesen meg legyen valósítva az olyan vezérlőtípusokon, mint a hálózati biztonság, az identitás- és hozzáférés-modellek, az alkalmazások jogosultsági és hozzáférési modelljei és az emberi folyamatokra vonatkozó vezérlők.
 
-- [Útmutató a szegmentálási stratégiához az Azure-ban (videó)](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
+- [Útmutató Azure-beli szegmentálási stratégiához (videó)](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
 
-- [Útmutató a szegmentálási stratégiához az Azure-ban (dokumentum)](/security/compass/governance#enterprise-segmentation-strategy)
+- [Útmutató Azure-beli szegmentálási stratégiához (dokumentum)](/security/compass/governance#enterprise-segmentation-strategy)
 
-- [Hálózati szegmentálás igazítása nagyvállalati szegmentálási stratégiával](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
+- [Hálózati szegmentálás vállalati szegmentálási stratégiához igazítása](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Minden érintett](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-3-define-security-posture-management-strategy"></a>GS-3: a biztonsági testhelyzet kezelési stratégiájának meghatározása
+## <a name="gs-3-define-security-posture-management-strategy"></a>GS-3: Biztonsági állapotot felügyelő stratégiája definiálása
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
 | GS-3 | 20, 3, 5 | RA, CM, SC |
 
-Folyamatosan méri és csökkenti a kockázatokat az egyes eszközeivel és a bennük üzemeltetett környezettel kapcsolatban. Rangsorolja a nagy értékű eszközöket és a nagy teljesítményű támadási felületeket, például a közzétett alkalmazásokat, a hálózati bejövő és kimenő pontokat, a felhasználói és rendszergazdai végpontokat stb.
+Folyamatosan méri és csökkenti a kockázatokat az egyes eszközeivel és a bennük üzemeltetett környezettel kapcsolatban. Kezelje kiemelten az olyan nagy értékű összetevőket és leginkább elérhetővé tett támadási felületeket, mint a közzétett alkalmazások, a hálózat be- és kilépési pontjai, a felhasználói és rendszergazdai végpontok stb.
 
-- [Azure biztonsági teljesítményteszt – a testtartás és a sebezhetőségek kezelése](security-controls-v2-posture-vulnerability-management.md)
+- [Azure Security Benchmark - Biztonsági állapot és biztonsági rések felmérése](security-controls-v2-posture-vulnerability-management.md)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Minden érintett](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4: szervezeti szerepkörök, felelősségek és elszámoltathatóság igazítása
+## <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4: A vállalati szerepkörök, a felelősség és az elszámoltathatóság összehangolása
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| GS-4 | N/A | PL. PM |
+| GS-4 | N.A. | PL. PM |
 
-Győződjön meg arról, hogy dokumentálja és kommunikálja a biztonsági szervezet szerepköreinek és feladatainak egyértelmű stratégiáját. Rangsorolja a biztonsági döntések egyértelmű elszámoltathatóságát, mindenki számára elérhetővé teszi a megosztott felelősségi modellt, és megtanítja a technikai csapatokat a felhő védelméhez.
+Győződjön meg arról, hogy dokumentálja és kommunikálja a biztonsági szervezet szerepköreinek és feladatainak egyértelmű stratégiáját. Kezelje kiemelten a biztonsági döntések egyértelmű elszámoltathatóságát, a megosztott felelősségi modell oktatását mindenki számára, és a technikai csapatok oktatását a felhőbeli biztonsági technikákra.
 
-- [Azure Security – ajánlott eljárás 1 – emberek: a csapatok képzése a Felhőbeli biztonsági úton](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
+- [Ajánlott Azure-biztonsági eljárások 1 – Személyek: Csapatok oktatása a felhőbeli biztonság kialakítására](/azure/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)
 
-- [Azure Security – ajánlott eljárás 2 – emberek: a csapatok képzése a Felhőbeli biztonsági technológiában](/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)
+- [Ajánlott Azure-biztonsági eljárások 2 – Személyek: Csapatok oktatása a felhőbeli biztonsági technológiákra](/azure/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)
 
-- [Azure Security – ajánlott eljárás 3 – folyamat: elszámoltathatóság kiosztása a Felhőbeli biztonsági döntésekhez](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
+- [Ajánlott Azure-biztonsági eljárások 3 – Folyamat: Elszámoltathatóság hozzárendelése felhőbeli biztonsági döntésekhez](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Minden érintett](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-5-define-network-security-strategy"></a>GS-5: hálózati biztonsági stratégia definiálása
+## <a name="gs-5-define-network-security-strategy"></a>GS-5: Hálózati biztonsági stratégia definiálása
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
@@ -129,37 +129,37 @@ Győződjön meg arról, hogy dokumentálja és kommunikálja a biztonsági szer
 
 Hozzon létre egy Azure-alapú hálózati biztonsági megközelítést a szervezet általános biztonsági hozzáférés-vezérlési stratégiájának részeként.  
 
-Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmutatását, szabályzatát és szabványait: 
+Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és az alábbi elemek szabványait: 
 
-- Központosított Hálózatkezelés és biztonsági felelősség
+- Központosított hálózatkezelési és biztonsági felelősség
 
-- A virtuális hálózat szegmentálási modellje a nagyvállalati szegmentálási stratégiához igazodik
+- A vállalati szegmentálási stratégiának megfelelő virtuális hálózati szegmentálási modell
 
-- Szervizelési stratégia a különböző veszélyforrások és támadási helyzetekben
+- Szervizelési stratégia különböző fenyegetési és támadási helyzetekre
 
-- Az Internet Edge és a bejövő forgalom és a kimenő forgalom stratégiája
+- Internetes peremhálózati, bejövő és kimenő forgalomra vonatkozó stratégia
 
-- Hibrid felhő és helyszíni összekapcsolási stratégia
+- Hibrid felhős és helyszíni kapcsolódási stratégia
 
-- Naprakész hálózati biztonsági összetevők (például hálózati diagramok, hivatkozási hálózati architektúra)
+- Naprakész hálózati biztonsági összetevők (pl. hálózati diagramok, hálózati referencia-architektúra)
 
-További információkért tekintse meg a következő referenciákat:
+További információkat az alábbi hivatkozásokon találhat:
 
-- [Azure Security – ajánlott eljárás 11 – architektúra. Egyetlen egységes biztonsági stratégia](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
+- [Ajánlott Azure-biztonsági eljárások 11 – Architektúra. Egyetlen egységes biztonsági stratégia](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure biztonsági teljesítményteszt – hálózati biztonság](security-controls-v2-network-security.md)
+- [Azure Security Benchmark – Hálózati biztonság](security-controls-v2-network-security.md)
 
-- [Az Azure hálózati biztonság áttekintése](../fundamentals/network-overview.md)
+- [A nagyvállalati hálózati biztonság áttekintése](../fundamentals/network-overview.md)
 
-- [Vállalati hálózati architektúra stratégia](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
+- [Nagyvállalati hálózati architektúrára vonatkozó stratégia](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Minden érintett](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6: identitás-és privilegizált hozzáférési stratégia meghatározása
+## <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6: Identitáskezelési és emelt jogosultságú hozzáférési stratégia definiálása
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
@@ -167,72 +167,72 @@ További információkért tekintse meg a következő referenciákat:
 
 Hozzon létre egy Azure-identitást és egy emelt szintű hozzáférési megközelítést a szervezet általános biztonsági hozzáférés-vezérlési stratégiájának részeként.  
 
-Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmutatását, szabályzatát és szabványait: 
+Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és az alábbi elemek szabványait: 
 
-- Központi identitás-és hitelesítési rendszer, valamint az egyéb belső és külső identitási rendszerekkel való kapcsolat
+- Központosított identitáskezelési és hitelesítési rendszer és annak kapcsolatai más belső és külső identitásrendszerekkel
 
-- Erős hitelesítési módszerek különböző használati esetekben és kikötésekben
+- Erős hitelesítési módszerek különböző használati helyzetek és feltételek esetén
 
-- Magas jogosultsági szintű felhasználók védelme
+- Emelt jogosultságú felhasználók védelme
 
-- Felhasználói tevékenységek rendellenességének figyelése és feldolgozása  
+- Rendellenes felhasználói tevékenységek monitorozása és kezelése  
 
-- Felhasználói identitás és hozzáférés felülvizsgálata és egyeztetési folyamata
+- Felhasználói identitások és hozzáférések felülvizsgálati és egyeztetési folyamata
 
-További információkért tekintse meg a következő referenciákat:
+További információkat az alábbi hivatkozásokon találhat:
 
-- [Azure biztonsági teljesítményteszt – Identitáskezelés](security-controls-v2-identity-management.md)
+- [Azure Security Benchmark – Identitáskezelés](security-controls-v2-identity-management.md)
 
-- [Azure biztonsági teljesítményteszt – emelt szintű hozzáférés](security-controls-v2-privileged-access.md)
+- [Azure Security Benchmark – Emelt jogosultságú hozzáférés](security-controls-v2-privileged-access.md)
 
-- [Azure Security – ajánlott eljárás 11 – architektúra. Egyetlen egységes biztonsági stratégia](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
+- [Ajánlott Azure-biztonsági eljárások 11 – Architektúra. Egyetlen egységes biztonsági stratégia](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Az Azure Identity Management biztonsági áttekintése](../fundamentals/identity-management-overview.md)
+- [Az Azure identitáskezelésének biztonsági áttekintése](../fundamentals/identity-management-overview.md)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Minden érintett](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7: a naplózási és a veszélyforrások reagálási stratégiájának meghatározása
+## <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7: Naplózási és veszélyforrás-kezelési stratégia definiálása
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
 | GS-7 | 19 | IR, AU, RA, SC |
 
-Hozzon létre egy naplózási és veszélyforrás-reagálási stratégiát a fenyegetések gyors észlelése és elhárítása érdekében a megfelelőségi követelmények teljesítése mellett. Rangsorolja az elemzőket kiváló minőségű riasztásokkal és zökkenőmentes tapasztalatokkal, hogy az integráció és a manuális lépések helyett a fenyegetésekre összpontosítsanak. 
+Hozzon létre egy naplózási és veszélyforrás-reagálási stratégiát a fenyegetések gyors észlelése és elhárítása érdekében a megfelelőségi követelmények teljesítése mellett. Biztosítson jó minőségű riasztásokat és zökkenőmentes élményt az elemzőknek, így a fenyegetésekre összpontosíthatnak az integráció és a manuális lépések helyett. 
 
-Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmutatását, szabályzatát és szabványait: 
+Ennek a stratégiának tartalmaznia kell az alábbi elemek dokumentált útmutatóit, szabályzatait és szabványait: 
 
-- A biztonsági műveletek (SecOps) szervezet szerepköre és feladatai 
+- A biztonsági üzemeltetési (SecOps) szervezet szerepköre és feladatai 
 
-- Egy jól definiált incidens-reagálási folyamat NIST vagy más iparági keretrendszerrel való összehangolása 
+- Jól definiált incidenskezelési folyamat az NIST-vel vagy más iparági keretrendszerrel összhangban 
 
-- A fenyegetések észlelését, az incidensek megválaszolását és a megfelelőségi igényeket támogató napló rögzítése és megőrzése
+- Naplórögzítés és -megőrzés a veszélyforrások észlelése, az incidensek kezelése és a megfelelőségi igények támogatására
 
-- A fenyegetésekkel kapcsolatos központosított láthatóság és korrelációs információk a SIEM, a natív Azure-képességek és más források használatával 
+- A fenyegetésekkel kapcsolatos információk központosított láthatósága és összevetése SIEM, natív Azure-képességek és más források használatával 
 
-- Kommunikációs és értesítési terv ügyfeleivel, szállítókkal és az érdekelt felekkel
+- Kommunikációs és értesítési terv az ügyfelek, szállítók és külső érdekelt felek számára
 
-- Az Azure Native és a harmadik féltől származó platformok használata az incidensek kezelésére, mint például a naplózás és a veszélyforrások észlelése, a kriminalisztika, valamint a támadási problémák elhárítása és felszámolása
+- Natív Azure-beli és külső platformok használata incidensek kezelésére, például naplózásra és veszélyforrások észlelésére, kivizsgálásra és a támadások megfékezésére és megszüntetésére
 
-- Az incidensek és az incidens utáni tevékenységek kezelésének folyamatai, például a tanulságok és a bizonyítékok megőrzése
+- Folyamatok az olyan incidenskezelési és incidens utáni tevékenységekhez, mint a tanulságok levonása és a nyomok megőrzése
 
-További információkért tekintse meg a következő referenciákat:
-- [Azure biztonsági teljesítményteszt – naplózás és fenyegetések észlelése](security-controls-v2-logging-threat-detection.md)
+További információkat az alábbi hivatkozásokon találhat:
+- [Azure Security Benchmark – Naplózás és fenyegetésészlelés](security-controls-v2-logging-threat-detection.md)
 
-- [Azure biztonsági teljesítményteszt – incidens válasza](security-controls-v2-incident-response.md)
+- [Azure Security Benchmark – Incidenskezelés](security-controls-v2-incident-response.md)
 
-- [Azure Security – ajánlott eljárás 4 – folyamat. Incidensek frissítési folyamatainak frissítése a felhőben](/azure/cloud-adoption-framework/security/security-top-10#3-process-assign-accountability-for-cloud-security-decisions)
+- [Ajánlott Azure-biztonsági eljárások 4 – Folyamat. Incidensválasz-folyamat frissítése a felhőhöz](/azure/cloud-adoption-framework/security/security-top-10#3-process-assign-accountability-for-cloud-security-decisions)
 
-- [Azure bevezetési keretrendszer, naplózás és jelentéskészítési döntési útmutató](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
+- [Azure-adaptálási keretrendszer, útmutató naplózási és jelentéskészítési döntésekhez](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
 
-- [Az Azure nagyvállalati szintű skálázása, kezelése és monitorozása](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)
+- [Azure-beli nagyvállalati szintű skálázás, felügyelet és monitorozás](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Minden érintett](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -244,7 +244,7 @@ További információkért tekintse meg a következő referenciákat:
 
 Hozzon létre egy Azure biztonsági mentési és helyreállítási stratégiát a szervezet számára. 
 
-Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmutatását, szabályzatát és szabványait: 
+Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és az alábbi elemek szabványait: 
 
 - A helyreállítási időre vonatkozó célkitűzés (RTO) és a helyreállítási pontok célkitűzése (RPO) meghatározása az üzleti rugalmassági célkitűzéseknek megfelelően
 
@@ -252,15 +252,15 @@ Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmu
 
 - A biztonsági mentés védelme a hozzáférés-vezérlés és az adattitkosítás használatával
 
-További információkért tekintse meg a következő referenciákat:
+További információkat az alábbi hivatkozásokon találhat:
 - [Azure biztonsági teljesítményteszt – biztonsági mentés és helyreállítás](security-controls-v2-backup-recovery.md)
 
 - [Azure Well-Architecture Framework – biztonsági mentés és vész-helyreállítás Azure-alkalmazásokhoz](/azure/architecture/framework/resiliency/backup-and-recovery)
 
 - [Azure-beli bevezetési keretrendszer – Üzletmenet-folytonosság és vész-helyreállítás](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
-**Felelősség** : ügyfél
+**Felelősség**: Ügyfél
 
-**Ügyfelek biztonságával foglalkozó érdekelt felek** ( [További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Minden érintett](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)

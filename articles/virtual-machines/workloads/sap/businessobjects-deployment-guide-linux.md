@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 647009854ef5a0c0811fc303914f724272f1a3f5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965357"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486657"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>SAP BusinessObjects BI platformtelepítési útmutató Linuxhoz az Azure-on
 
@@ -37,7 +37,7 @@ Ebben a példában a termék verziója és a fájlrendszer elrendezése van hasz
 - Azure Database for MySQL (verzió: 8.0.15)
 - MySQL C API-összekötő – libmysqlclient (verzió: 6.1.11)
 
-| Fájlrendszer        | Leírás                                                                                                               | Méret (GB)             | Tulajdonos  | Csoport  | Storage                    |
+| Fájlrendszer        | Description                                                                                                               | Méret (GB)             | Tulajdonos  | Csoport  | Storage                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | Az SAP BOBI-példány, az alapértelmezett tomcat-webalkalmazás és az adatbázis-illesztőprogramok telepítéséhez használt fájlrendszer (ha szükséges) | SAP-Méretezési irányelvek | bl1adm | sapsys | Felügyelt prémium lemez – SSD |
 | /usr/sap/frsinput  | A csatlakoztatási könyvtár a megosztott fájlok között minden olyan BOBI-gazdagépen megtalálható, amelyet bemeneti adattárként fog használni.  | Üzleti igények         | bl1adm | sapsys | Azure NetApp Files         |
@@ -615,7 +615,7 @@ A CMS-adatbázisok más adatbázis-KEZELŐi telepítéséhez tekintse meg a köv
 
 A file adattár-kiszolgáló (FRS) arra a lemez-címtárakra utal, ahol a tartalmak, például a jelentések, a világegyetemek és a kapcsolatok tárolódnak. Ezt a rendszer az összes alkalmazás-kiszolgálója között megosztja. Ezért győződjön meg arról, hogy a szolgáltatás nagyon elérhető.
 
-Az Azure-ban kiválaszthatja az [Azure Premium-fájlokat](../../../storage/files/storage-files-introduction.md) vagy a [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) olyan fájlmegosztás esetén, amelynek a használata kiválóan elérhető és nagyon tartós jellegű. További információ: Azure Files [redundancia](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy) című szakasza.
+Az Azure-ban kiválaszthatja az [Azure Premium-fájlokat](../../../storage/files/storage-files-introduction.md) vagy a [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) olyan fájlmegosztás esetén, amelynek a használata kiválóan elérhető és nagyon tartós jellegű. További információ: Azure Files [redundancia](../../../storage/files/storage-files-planning.md#redundancy) című szakasza.
 
 > [!NOTE]
 > Az SMB protokoll Azure Files általánosan elérhető, de a Azure Files NFS protokoll támogatása jelenleg előzetes verzióban érhető el. További információ: az [NFS 4,1-támogatás a Azure Files számára már előzetes](https://azure.microsoft.com/en-us/blog/nfs-41-support-for-azure-files-is-now-in-preview/) verzióban érhető el
@@ -667,7 +667,7 @@ A Azure Site Recovery szolgáltatás használatával Virtual Machines replikálh
 
   Használhatja Azure NetApp Files régiók közötti replikálást, amely jelenleg [előzetes](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/) verzióban érhető el, amely a NetApp snapmirror® technológiát használja. Így a rendszer csak a megváltozott blokkokat tömörített, hatékony formátumban továbbítja a hálózaton. Ez a szabadalmaztatott technológia minimálisra csökkenti a régiók közötti replikáláshoz szükséges adatmennyiséget, így az adatátviteli költségeket is megtakaríthatja. Emellett lerövidíti a replikálási időt, így elérheti a kisebb visszaállítási pontok célját (RPO). További információkért tekintse meg a [régiók közötti replikáció használatára vonatkozó követelményeket és szempontokat](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md) .
 
-- Az **Azure Premium-fájlok** csak a helyileg REDUNDÁNS (LRS) és a Zone redundáns tárolás (ZRS) használatát támogatják. Az Azure Premium Files DR stratégia esetében a [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) vagy a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/) használatával másolhatja át a fájlokat egy másik, eltérő régióban lévő Storage-fiókba. További információ: vész [-helyreállítási és Storage-fiók feladatátvétele](../../../storage/common/storage-disaster-recovery-guidance.md)
+- Az **Azure Premium-fájlok** csak a helyileg REDUNDÁNS (LRS) és a Zone redundáns tárolás (ZRS) használatát támogatják. Az Azure Premium Files DR stratégia esetében a [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) vagy a [Azure PowerShell](/powershell/module/az.storage/) használatával másolhatja át a fájlokat egy másik, eltérő régióban lévő Storage-fiókba. További információ: vész [-helyreállítási és Storage-fiók feladatátvétele](../../../storage/common/storage-disaster-recovery-guidance.md)
 
 #### <a name="cms-database"></a>CMS-adatbázis
 
@@ -690,9 +690,9 @@ Az alábbiakban az ebben a példában használt egyes szintek vész-helyreállí
 | Azure NetApp Files        | Fájl alapú másolási eszköz az adatreplikáláshoz a másodlagos régióba **vagy** a ANF régiók közötti replikálásra (előzetes verzió) |
 | Azure Database for MySQL  | A tartományok közötti olvasási replikák **vagy** a biztonsági mentés visszaállítása a Geo-redundáns biztonsági mentésből.                             |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Vész-helyreállítás beállítása többrétegű SAP-alkalmazások üzembe helyezéséhez](../../../site-recovery/site-recovery-sap.md)
 - [Azure Virtual Machines az SAP tervezéséhez és megvalósításához](planning-guide.md)
 - [Azure Virtual Machines üzembe helyezés az SAP-ban](deployment-guide.md)
-- [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz](dbms-guide.md)
+- [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz](./dbms_guide_general.md)

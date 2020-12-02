@@ -5,16 +5,16 @@ services: data-factory
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: df5a13b3d7c3fea98cd571a241b9d25e36ffeea6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa1246a65dc6971107abe35f4a418b0bbb05641b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570635"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486130"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Felügyeleti központ Azure Data Factory
 
@@ -52,7 +52,7 @@ Ha szeretné felülbírálni a létrehozott Resource Manager-sablon paraméterei
 
 ## <a name="manage-authoring"></a>Szerzői műveletek kezelése
 
-### <a name="triggers"></a>Triggerek
+### <a name="triggers"></a>Eseményindítók
 
 Az eseményindítók határozzák meg, hogy a folyamat mikor fusson. Az eseményindítók jelenleg egy falióra-ütemezéssel, rendszeres időközönként működnek, vagy egy eseménytől függenek. További információért olvassa el az [trigger-végrehajtást](concepts-pipeline-execution-triggers.md#trigger-execution)ismertető témakört. A felügyeleti központban létrehozhat, szerkeszthet, törölhet vagy megtekintheti az trigger aktuális állapotát.
 
@@ -64,7 +64,7 @@ A globális paraméterek állandók egy olyan adatelőállítón keresztül, ame
 
 ![Globális paraméterek létrehozása](media/author-global-parameters/create-global-parameter-3.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [konfigurálhat git-tárházat](source-control.md) az ADF-hez
 

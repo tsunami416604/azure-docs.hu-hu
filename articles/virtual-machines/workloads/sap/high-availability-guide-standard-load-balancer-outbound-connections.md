@@ -14,21 +14,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/16/2020
+ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: a6b62e9c894c25b2c3cd064524881ae5db51ec5a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9c9979699b5bcb3636adc0f9b58331568ea9cad1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968536"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486302"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Nyilvános végponti kapcsolat a Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben
 
 A cikk hatóköre a konfigurációk leírására szolgál, amelyek lehetővé teszik a kimenő kapcsolódást a nyilvános végpont (ok) hoz. A konfigurációk főleg a magas rendelkezésre állás kontextusában vannak a SUSE/RHEL esetében.  
 
-Ha a magas rendelkezésre állású megoldásban az Azure kerítés ügynökkel együtt használja a pacemakert, akkor a virtuális gépeknek kimenő kapcsolattal kell rendelkezniük az Azure felügyeleti API-val.  
-A cikk több lehetőséget is kínál, amelyekkel kiválaszthatja a forgatókönyvhöz legjobban illő lehetőséget.  
+Ha a magas rendelkezésre állású megoldásban az Azure kerítés ügynökkel együtt használja a pacemakert, akkor a virtuális gépeknek kimenő kapcsolattal kell rendelkezniük az Azure felügyeleti API-val. A cikk több lehetőséget is kínál, amelyekkel kiválaszthatja a forgatókönyvhöz legjobban illő lehetőséget.  
 
 ## <a name="overview"></a>Áttekintés
 
@@ -42,12 +41,12 @@ Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános
 
 Ha a virtuális gép nyilvános IP-címet kap, vagy a virtuális gép egy, a terheléselosztó egy nyilvános IP-címmel rendelkező készletében van, akkor kimenő kapcsolattal fog rendelkezni a nyilvános végpontokkal.  
 
-Az SAP-rendszerek gyakran bizalmas üzleti adatokat tartalmaznak. Az SAP-rendszereket üzemeltető virtuális gépek számára ritkán fogadható el nyilvános IP-címek. Ugyanakkor vannak olyan forgatókönyvek is, amelyek a virtuális gépről kimenő kapcsolatot igényelnek a nyilvános végpontok számára.  
+Az SAP-rendszerek gyakran bizalmas üzleti adatokat tartalmaznak. Az SAP-rendszereket üzemeltető virtuális gépek nyilvános IP-címeken keresztüli elérhetősége ritkán elfogadható. Ugyanakkor vannak olyan forgatókönyvek is, amelyek a virtuális gépről kimenő kapcsolatot igényelnek a nyilvános végpontok számára.  
 
 Az Azure nyilvános végponthoz való hozzáférést igénylő forgatókönyvek például a következők:  
-- Az Azure kerítés-ügynök használata a pacemaker-fürtökben lévő kerítési mechanizmusként
-- Azure Backup
-- Azure Site Recovery  
+- Az Azure kerítés ügynökének hozzáférésre van szüksége a **Management.Azure.com** és a **login.microsoftonline.com**  
+- [Azure Backup](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)
+- [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)  
 - Nyilvános tárház használata az operációs rendszer javításához
 - Előfordulhat, hogy az SAP-alkalmazás adatforgalmának kimenő kapcsolatra van szüksége a nyilvános végponthoz
 
@@ -70,7 +69,7 @@ Először olvassa el az alábbi dokumentumokat:
 * [Virtual Networks – felhasználó által definiált szabályok](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) – Azure-útválasztási fogalmak és szabályok  
 * [Biztonsági csoportok szolgáltatás címkéi](../../../virtual-network/network-security-groups-overview.md#service-tags) – a hálózati biztonsági csoportok és a tűzfal konfigurációjának leegyszerűsítése a szolgáltatás-címkékkel
 
-## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>További külső Azure-standard Load Balancer az internet felé irányuló kimenő kapcsolatokhoz
+## <a name="option-1-additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>1. lehetőség: további külső Azure-standard Load Balancer az internet felé irányuló kimenő kapcsolatokhoz
 
 Az egyik lehetőség a nyilvános végpontok felé irányuló kimenő kapcsolat elérése anélkül, hogy a virtuális gép felé irányuló bejövő kapcsolat a nyilvános végpontról is elérhető legyen, egy második, nyilvános IP-címmel rendelkező terheléselosztó létrehozása, a virtuális gépek hozzáadása a második Load Balancer háttér-készletéhez, és csak [Kimenő szabályok](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)definiálása.  
 [Hálózati biztonsági csoportokkal](../../../virtual-network/network-security-groups-overview.md) vezérelheti a nyilvános végpontokat, amelyek elérhetők a virtuális gép kimenő hívásainak számára.  
@@ -120,7 +119,7 @@ A konfiguráció a következőképpen fog kinézni:
 
    Az Azure-beli hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [biztonsági csoportok ](../../../virtual-network/network-security-groups-overview.md). 
 
-## <a name="azure-firewall-for-outbound-connections-to-internet"></a>Az internet felé irányuló kimenő kapcsolatok Azure Firewall
+## <a name="option-2-azure-firewall-for-outbound-connections-to-internet"></a>2. lehetőség: Azure Firewall az internet felé irányuló kimenő kapcsolatokhoz
 
 Egy másik lehetőség a nyilvános végpontok felé irányuló kimenő kapcsolatok elérésére anélkül, hogy a nyilvános végpontokból érkező, a virtuális géphez való bejövő kapcsolódást nem engedélyezi Azure Firewall. A Azure Firewall egy felügyelt szolgáltatás, amely beépített, magas rendelkezésre állású, és több Availability Zones is terjedhet.  
 Emellett telepítenie kell a [felhasználó által megadott útvonalat](../../../virtual-network/virtual-networks-udr-overview.md#custom-routes), amely ahhoz az alhálózathoz van társítva, amelyben a virtuális gépek és az Azure Load Balancer telepítve van, és az Azure tűzfalra mutat, hogy átirányítsa a forgalmat a Azure Firewallon keresztül.  
@@ -166,11 +165,11 @@ Az architektúra így néz ki:
    A tűzfalszabály a következőhöz hasonló lesz: ![ diagram, amely azt mutatja, hogy a tűzfal milyen módon fog kinézni.](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. Hozzon létre felhasználó által megadott útvonalat a virtuális gépek alhálózatáról a **MyAzureFirewall** magánhálózati IP-címére.
-   1. Ahogy az útválasztási táblázatban van elhelyezve, kattintson az útvonalak elemre. Válassza a Hozzáadás elemet. 
+   1. Ahogy az útválasztási táblázatban van elhelyezve, kattintson az útvonalak elemre. Válassza a Hozzáadás lehetőséget. 
    1. Útvonal neve: ToMyAzureFirewall, címzési előtag: **0.0.0.0/0**. Következő ugrás típusa: válassza a virtuális berendezés elemet. Következő ugrási cím: adja meg a konfigurált tűzfal magánhálózati IP-címét: **11.97.1.4**.  
    1. Mentés
 
-## <a name="using-proxy-for-pacemaker-calls-to-azure-management-api"></a>Proxy használata a pacemaker-hívások számára az Azure felügyeleti API-hoz
+## <a name="option-3-using-proxy-for-pacemaker-calls-to-azure-management-api"></a>3. lehetőség: a proxy használata az Azure felügyeleti API-hoz tartozó pacemaker-hívásokhoz
 
 A proxy használatával engedélyezheti a pacemaker-hívásokat az Azure felügyeleti API nyilvános végpontjának.  
 
@@ -221,14 +220,14 @@ Ha engedélyezni szeretné, hogy a pacemaker kommunikáljon az Azure felügyelet
      sudo pcs property set maintenance-mode=false
      ```
 
-## <a name="other-solutions"></a>Egyéb megoldások
+## <a name="other-options"></a>Egyéb lehetőségek
 
-Ha a kimenő forgalom továbbítása harmadik féltől származó tűzfalon keresztül történik:
+Ha a kimenő forgalom továbbítása harmadik féltől történik, az URL-alapú tűzfal proxyja:
 
 - Ha az Azure kerítés ügynökét használja, győződjön meg arról, hogy a tűzfal konfigurációja lehetővé teszi a kimenő kapcsolatot az Azure felügyeleti API-val: `https://management.azure.com``https://login.microsoftonline.com`   
 - Ha a SUSE Azure-beli nyilvános Felhőbeli frissítési infrastruktúráját használja a frissítések és javítások alkalmazásához, tekintse meg az [Azure nyilvános felhő frissítési infrastruktúrája 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg, hogyan konfigurálhatja a pacemakert a SUSE-ben az Azure-ban](./high-availability-guide-suse-pacemaker.md)
 * [Ismerje meg, hogyan konfigurálhatja a pacemakert az Azure-beli Red Hat-ban](./high-availability-guide-rhel-pacemaker.md)

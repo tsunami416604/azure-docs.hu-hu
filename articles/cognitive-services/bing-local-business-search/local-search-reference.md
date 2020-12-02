@@ -10,19 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 2a9c6b924f564c96c6018fbc395ad226a383280f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9791d99598fe3d043c42a37e2f4993edd6c5b3ba
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364649"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487133"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>A Bing helyi üzleti keresési API v7-dokumentációja
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 A helyi üzleti keresési API keresési lekérdezést küld a Bingnek, így olyan eredményeket érhet el, amelyek éttermeket, szállodákat vagy más helyi vállalkozásokat foglalnak magukban. Helyek esetén a lekérdezés megadhatja a helyi vállalat nevét vagy kategóriáját (például éttermek közelében). Az entitástalálatok személyek, helyek vagy dolgok lehetnek. Ebben a kontextusban az üzleti entitások, Államok, országok/régiók stb. is helyette.  
 
@@ -55,7 +55,7 @@ A kérelemnek a HTTPS protokollt kell használnia.
 ## <a name="headers"></a>Fejlécek  
 A következő fejlécek lehetnek a kérések és válaszok.  
   
-|Fejléc|Leírás|  
+|Fejléc|Description|  
 |------------|-----------------|  
 |Elfogadás|Választható kérelemfejléc.<br /><br /> Az alapértelmezett adathordozó-típus az Application/JSON. Annak megadásához, hogy a válasz [JSON-ld-](https://json-ld.org/)t használ, állítsa az elfogadás fejlécet Application/ld + JSON értékre.|  
 |<a name="acceptlanguage"></a>Accept-Language|Választható kérelemfejléc.<br /><br /> Nyelvek vesszővel elválasztott listája a felhasználói felület sztringjeihez. A lista prioritás szerinti csökkenő sorrendben jelenik meg. További információért, például a várt formátummal kapcsolatos részletekért lásd: [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ez a fejléc és a [](#setlang)setLang&mdash; lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt.<br /><br /> Ha beállítja ezt a fejlécet, akkor a cc lekérdezési paramétert is meg kell adnia. A megfelelő piac meghatározásához a Bing a listában talált első támogatott nyelvet használja, és kombinálja azt a `cc` paraméter értékével. Ha a lista nem tartalmaz támogatott nyelvet, a Bing megkeresi a kérelmet támogató legközelebbi nyelvet és piacot, vagy másik lehetőségként egy összesített vagy alapértelmezett piacot használ az eredmények beszerzéséhez. A Bing által használt piac meghatározásához tekintse meg a BingAPIs-Market fejlécet.<br /><br /> Csak akkor használja ezt a fejlécet és a `cc` lekérdezési paramétert, ha több nyelvet ad meg. Ellenkező esetben használja az [mkt](#mkt) és a [setLang](#setlang) lekérdezési paramétereket.<br /><br /> A felhasználóifelület-sztring egy olyan sztring, amelyet feliratként használnak a felhasználói felületen. A JSON-válaszobjektumok tartalmaznak néhány felhasználóifelület-sztringet. A válaszobjektumokban található, a Bing.com tulajdonságaira mutató hivatkozások a megadott nyelvet alkalmazzák.|  
@@ -92,7 +92,7 @@ A kérelem tartalmazhat a következő lekérdezési paramétereket. Tekintse meg
 Az alábbi JSON-válaszok objektumai lehetnek a válaszban. Ha a kérelem sikeres, a válasz legfelső szintű objektuma a [SearchResponse](#searchresponse) objektum. Ha a kérelem meghiúsul, a legfelső szintű objektum a [ErrorResponse](#errorresponse) objektum.
 
 
-|Objektum|Leírás|  
+|Objektum|Description|  
 |------------|-----------------|  
 |[Helyben](#place)|A helyi üzleti adatok, például egy étterem vagy egy Hotel adatainak meghatározása.|  
 
@@ -172,10 +172,10 @@ Meghatározza azt a lekérdezési környezetet, amelyet a Bing a kérelemhez has
   
 |Elem|Leírás|Típus|  
 |-------------|-----------------|----------|  
-|adultIntent|Logikai érték, amely jelzi, hogy a megadott lekérdezésnek van-e felnőtt szándéka. Az érték **igaz** , ha a lekérdezés felnőtt szándékkal rendelkezik; Ellenkező esetben **hamis**.|Logikai|  
-|alterationOverrideQuery|A lekérdezési karakterlánc, amely az eredeti sztring használatára kényszeríti a Bing használatát. Ha például a lekérdezési karakterlánc *saling hátszél* , a felülbírálás lekérdezési karakterlánca a *+ saling hátszél* lesz. Ne felejtse el kódolni a lekérdezési karakterláncot, amely a következőt eredményezi: *% 2Bsaling + hátszél*.<br /><br /> Ez a mező csak akkor szerepel, ha az eredeti lekérdezési karakterlánc helyesírási hibát tartalmaz.|Sztring|  
+|adultIntent|Logikai érték, amely jelzi, hogy a megadott lekérdezésnek van-e felnőtt szándéka. Az érték **igaz** , ha a lekérdezés felnőtt szándékkal rendelkezik; Ellenkező esetben **hamis**.|Logikai érték|  
+|alterationOverrideQuery|A lekérdezési karakterlánc, amely az eredeti sztring használatára kényszeríti a Bing használatát. Ha például a lekérdezési karakterlánc *saling hátszél*, a felülbírálás lekérdezési karakterlánca a *+ saling hátszél* lesz. Ne felejtse el kódolni a lekérdezési karakterláncot, amely a következőt eredményezi: *% 2Bsaling + hátszél*.<br /><br /> Ez a mező csak akkor szerepel, ha az eredeti lekérdezési karakterlánc helyesírási hibát tartalmaz.|Sztring|  
 |alteredQuery|A Bing által a lekérdezés végrehajtásához használt lekérdezési karakterlánc. A Bing a megváltoztatott lekérdezési karakterláncot használja, ha az eredeti lekérdezési karakterlánc helyesírási hibákat foglalt le. Ha például a lekérdezési karakterlánc `saling downwind` , a megváltoztatott lekérdezési karakterlánc lesz `sailing downwind` .<br /><br /> Ez a mező csak akkor szerepel, ha az eredeti lekérdezési karakterlánc helyesírási hibát tartalmaz.|Sztring|  
-|askUserForLocation|Logikai érték, amely azt jelzi, hogy a Bing megköveteli-e a felhasználó tartózkodási helyének pontos eredményének megadását. Ha a felhasználó helyét az [x-MSEdge-ügyfélip](#clientip) és az [x-Search-Location](#location) fejlécek segítségével adta meg, akkor figyelmen kívül hagyhatja ezt a mezőt.<br /><br /> A helyhez kapcsolódó lekérdezések, például a "mai időjárási viszonyok" vagy a "közeli éttermek", amelyeknek szükségük van a felhasználó tartózkodási helyének pontos eredményeinek megadására, ez a mező **igaz** értékre van állítva.<br /><br /> A helyet (például "Seattle Weather") tartalmazó helyhez kapcsolódó lekérdezések esetén ez a mező **hamis** értékre van állítva. Ez a mező **hamis** értékre van állítva olyan lekérdezések esetén is, amelyek nem ismerik fel a helyeket, például a "legjobb értékesítők".|Logikai|  
+|askUserForLocation|Logikai érték, amely azt jelzi, hogy a Bing megköveteli-e a felhasználó tartózkodási helyének pontos eredményének megadását. Ha a felhasználó helyét az [x-MSEdge-ügyfélip](#clientip) és az [x-Search-Location](#location) fejlécek segítségével adta meg, akkor figyelmen kívül hagyhatja ezt a mezőt.<br /><br /> A helyhez kapcsolódó lekérdezések, például a "mai időjárási viszonyok" vagy a "közeli éttermek", amelyeknek szükségük van a felhasználó tartózkodási helyének pontos eredményeinek megadására, ez a mező **igaz** értékre van állítva.<br /><br /> A helyet (például "Seattle Weather") tartalmazó helyhez kapcsolódó lekérdezések esetén ez a mező **hamis** értékre van állítva. Ez a mező **hamis** értékre van állítva olyan lekérdezések esetén is, amelyek nem ismerik fel a helyeket, például a "legjobb értékesítők".|Logikai érték|  
 |originalQuery|A kérelemben megadott lekérdezési karakterlánc.|Sztring|  
 
 ### <a name="identifiable"></a>Azonosítható
@@ -226,7 +226,7 @@ Vegye figyelembe, hogy ha a szolgáltatás egy szolgáltatásmegtagadási támad
 
 A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:  
   
-|Állapotkód|Leírás|  
+|Állapotkód|Description|  
 |-----------------|-----------------|  
 |200|Sikeres művelet.|  
 |400|A lekérdezési paraméterek egyike hiányzik vagy érvénytelen.|  
@@ -266,7 +266,7 @@ Ha a kérelem sikertelen, a válasz egy [ErrorResponse](#errorresponse) objektum
 
 A lehetséges hibakód és az alhibakódok értéke a következő:
 
-|Code|Alkód|Leírás
+|Kód|Alkód|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|A HTTP-állapotkód 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokkolva|A Bing visszaadja a InvalidRequest, ha a kérelem bármely része érvénytelen. Például hiányzik egy kötelező paraméter, vagy a paraméter értéke érvénytelen.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a HTTP-állapotkód 400.<br/><br/>Ha HTTPS helyett HTTP protokollt használ, a Bing visszaadja a HttpNotAllowed, a HTTP-állapotkód pedig 410.

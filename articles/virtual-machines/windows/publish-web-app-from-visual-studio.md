@@ -10,12 +10,12 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7cf2474c9ca005d85cea28f2b8fa1e23836b191f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008888"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487558"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>ASP.NET-webalkalmazás közzététele Azure-beli virtuális gépen a Visual studióból
 
@@ -26,7 +26,7 @@ Ahhoz, hogy a Visual Studio használatával közzé lehessen tenni egy ASP.NET-p
 
 - A gépet úgy kell konfigurálni, hogy ASP.NET-webalkalmazást futtasson, és telepítve legyen a web Deploy. További információ: [ASP.net virtuális gép létrehozása Webdeploy](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md)paranccsal.
 
-- A virtuális gépnek konfigurálnia kell egy DNS-nevet. További információt a [Windows rendszerű virtuális gépekhez tartozó Azure Portal teljes tartománynév létrehozása](portal-create-fqdn.md)című témakörben talál.
+- A virtuális gépnek konfigurálnia kell egy DNS-nevet. További információt a [Windows rendszerű virtuális gépekhez tartozó Azure Portal teljes tartománynév létrehozása](../create-fqdn.md)című témakörben talál.
 
 ## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>ASP.NET-webalkalmazás közzététele az Azure-beli virtuális gépen a Visual Studio használatával
 A következő szakasz azt ismerteti, hogyan tehet közzé egy meglévő ASP.NET-webalkalmazást egy Azure-beli virtuális gépen.
@@ -69,7 +69,7 @@ A következő szakasz azt ismerteti, hogyan tehet közzé egy meglévő ASP.NET-
 
 11. Ha a közzététel sikeres, egy böngésző elindul az újonnan közzétett webhely URL-címének megnyitásához.
 
-**Sikerült!**
+**Sikeres!**
 
 Most sikeresen közzétette a webalkalmazást egy Azure-beli virtuális gépen.
 
