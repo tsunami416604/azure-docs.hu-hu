@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 7621a19b510d302454465f9fcbacec27a14dddf9
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340175"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463112"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB-hez készült Azure Synapse Link: Közel valós idejű elemzési használati esetek
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -53,9 +53,9 @@ A korábbi architektúra alapján a következő használati esetek érhetők el 
 
   A Azure Cosmos DB szinapszis hivatkozása lehetővé teszi a gazdag üzleti intelligencia (BI)/Reporting forgatókönyvek használatát:
 
-  * A Azure Cosmos DB analitikus áruházból származó operatív adatok lekérdezése a szinapszis SQL Server nélküli és a teljes kifejező T-SQL nyelv használatával történő natív integrációval.
+  * A Azure Cosmos DB analitikus áruházból származó operatív adatok lekérdezése a kiszolgáló nélküli SQL-készlettel való natív integráció és a T-SQL nyelv teljes kifejező használatával.
 
-  * A BI-irányítópultok automatikus frissítésének modellezése és közzététele Azure Cosmos DB a szinapszis SQL Server nélküli támogatásával ismerős BI-eszközökön. Például Azure Analysis Services, Power BI Premium stb.
+  * A BI-irányítópultok automatikus frissítésének modellezése és közzététele Azure Cosmos DB keresztül a kiszolgáló nélküli SQL-készlet támogatásával ismerős BI-eszközökön. Például Azure Analysis Services, Power BI Premium stb.
 
 Az alábbiakban néhány útmutatást talál a Batch adatintegrációs & a Azure Cosmos DB:
 
@@ -143,4 +143,4 @@ További információért lásd a következő dokumentumokat:
 
 * [Apache Spark az Azure szinapszis Analyticsben](../synapse-analytics/spark/apache-spark-concepts.md)
 
-* [SQL Server nélküli futásidejű támogatás az Azure szinapszis Analyticsben](../synapse-analytics/sql/on-demand-workspace-overview.md)
+* [Kiszolgáló nélküli SQL Pool Runtime-támogatás az Azure szinapszis Analyticsben](../synapse-analytics/sql/on-demand-workspace-overview.md)

@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
-ms.openlocfilehash: 9e8aecfe8b16d8af755d3f4c3c71b875d4e8ec40
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 88779f67a2fa9b18f0177a1459b32c672343bb57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95751249"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462944"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Az üzemeltetett tesztelési meghajtók részletes konfigurációja
 
@@ -29,7 +29,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálható a Dynamics 365-hez az ügyfelek
 
     - **A tesztvezetés típusa** – válassza **a Microsoft által üzemeltetett (Dynamics 365 for Customer engagement & PowerApps)** lehetőséget. Ez azt jelzi, hogy a Microsoft fogja üzemeltetni és karbantartani a szolgáltatást, amely végrehajtja a tesztelési meghajtó felhasználó általi üzembe helyezését és megszüntetését.
 
-5. Adja meg Microsoft AppSource engedélyt a tesztoldal-felhasználók kiépítéséhez és kiépítéséhez a bérlőn [ezen utasítások](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)használatával. Ebben a lépésben a **Azure ad alkalmazás azonosítóját** és a **Azure ad alkalmazás legfontosabb** értékeket fogja előállítani.
+5. Adja meg Microsoft AppSource engedélyt a tesztoldal-felhasználók kiépítéséhez és kiépítéséhez a bérlőn [ezen utasítások](./test-drive-azure-subscription-setup.md)használatával. Ebben a lépésben a **Azure ad alkalmazás azonosítóját** és a **Azure ad alkalmazás legfontosabb** értékeket fogja előállítani.
 6. Hajtsa végre ezeket a mezőket a **Test Drive technikai konfiguráció** lapján.
 
     [![A test Drive technikai konfigurációjának lapja.](media/test-drive/technical-config-details.png)](media/test-drive/technical-config-details.png#lightbox)
@@ -81,7 +81,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálható a Dynamics 365-hez az ügyfelek
     - **Azure Active Directory bérlő neve** – a Dynamics 365-példány Azure-bérlőjának neve. Használja a következő formátumot: `<tenantname>.onmicrosoft.com`. Példa értéke: `testdrive.onmicrosoft.com` .
     - **Azure Active Directory alkalmazás azonosítója** – az 5. lépésben létrehozott Azure Active Directory (ad) alkalmazás azonosítója. Példa értéke: `53852862-a2ae-4e43-9461-faa49650a096` .
     - **Azure Active Directory alkalmazás-ügyfél titkos kulcsa** – az 5. lépésben létrehozott Azure ad-alkalmazás titka. Példa értéke: `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=` .
-    - **Próbaverziós jogi személy** – adjon meg egy jogi személyt a próbaverziós felhasználó hozzárendeléséhez. Létrehozhat egy újat egy [jogi entitás létrehozásakor vagy módosításakor](https://technet.microsoft.com/library/hh242184.aspx).
+    - **Próbaverziós jogi személy** – adjon meg egy jogi személyt a próbaverziós felhasználó hozzárendeléséhez. Létrehozhat egy újat egy [jogi entitás létrehozásakor vagy módosításakor](/dynamicsax-2012/appuser-itpro/create-or-modify-a-legal-entity).
     - **Szerepkör neve** – a tesztelési meghajtóhoz létrehozott egyéni Dynamics 365 biztonsági szerepkör AOT-beli neve (Application Object Tree). Ez a szerepkör lesz hozzárendelve a felhasználókhoz a tesztelési meghajtón.
 
         :::image type="content" source="./media/test-drive/security-config.png" alt-text="A biztonsági konfiguráció lap.":::

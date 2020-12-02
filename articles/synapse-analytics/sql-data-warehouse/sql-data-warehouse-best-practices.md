@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások a szinapszis SQL-készlethez az Azure szinapszis Analyticsben (korábban SQL DW)
-description: Javaslatok és ajánlott eljárások az SQL-készlethez kapcsolódó megoldások fejlesztéséhez az Azure szinapszis Analyticsben (korábban SQL DW).
+title: Ajánlott eljárások dedikált SQL-készlethez (korábban SQL DW)
+description: Javaslatok és ajánlott eljárások a dedikált SQL Pool (korábban SQL DW) megoldások fejlesztéséhez az Azure szinapszis Analytics szolgáltatásban.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: cf841da85dc929366991d6aed8f3d400ab3b31cc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9802e6553d553aae4f13194dc9951d1a17af6f66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489642"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462886"
 ---
-# <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Ajánlott eljárások a szinapszis SQL-készlethez az Azure szinapszis Analyticsben (korábban SQL DW)
+# <a name="best-practices-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Ajánlott eljárások a dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben
 
-Ez a cikk az ajánlott eljárások gyűjteménye, amelyekkel optimális teljesítményt érhet el az [SQL-készlet](sql-data-warehouse-overview-what-is.md) üzembe helyezése során.  A cikk célja, hogy alapszintű útmutatást nyújtson, és kiemelje a hangsúly fontos területeit.  
+Ez a cikk az ajánlott eljárások gyűjteménye, amely segítséget nyújt az optimális teljesítmény eléréséhez a [DEDIKÁLT SQL-készletből (korábban SQL DW)](sql-data-warehouse-overview-what-is.md) történő üzembe helyezéssel.  A cikk célja, hogy alapszintű útmutatást nyújtson, és kiemelje a hangsúly fontos területeit.  
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Költségek csökkentése felfüggesztés és méretezés által
 
@@ -27,7 +27,7 @@ A költségek felfüggesztéssel és skálázással való csökkentéséről tov
 
 ## <a name="maintain-statistics"></a>Statisztikák karbantartása
 
-Az SQL-készlet konfigurálható úgy, hogy automatikusan felderítse és létrehozza az oszlopok statisztikáit.  Az optimalizáló által létrehozott lekérdezési tervek csak a rendelkezésre álló statisztikáknak megfelelőek.  
+A dedikált SQL-készlet (korábban SQL DW) úgy konfigurálható, hogy automatikusan felismeri és létrehozza a statisztikát az oszlopokon.  Az optimalizáló által létrehozott lekérdezési tervek csak a rendelkezésre álló statisztikáknak megfelelőek.  
 
 Javasoljuk, hogy engedélyezze az adatbázisok AUTO_CREATE_STATISTICSét, és tartsa meg a statisztikákat naponta, vagy az egyes terhelések után, hogy a lekérdezésekben használt oszlopokra vonatkozó statisztikák mindig naprakészek legyenek.
 
@@ -40,7 +40,7 @@ Lásd még: [táblák statisztikáinak kezelése](sql-data-warehouse-tables-stat
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>A lekérdezések megfigyelése és optimalizálása DMV-kkel
 
-Az SQL-készlet több DMV is rendelkezik, amelyek a lekérdezés végrehajtásának figyelésére használhatók.  A számítási feladatok figyelése a DMV használatával részletes útmutatást nyújt a végrehajtó lekérdezés részleteinek megtekintéséhez.  
+A dedikált SQL-készlet (korábbi nevén SQL DW) több DMV is rendelkezik, amelyekkel figyelheti a lekérdezések végrehajtását.  A számítási [feladatok figyelése a DMV használatával](sql-data-warehouse-manage-monitor.md) részletes útmutatást nyújt a végrehajtó lekérdezés részleteinek megtekintéséhez.  
 
 Ha gyorsan szeretne lekérdezéseket kikeresni a DMV-kben, segíthet, ha a lekérdezéseknél használja a LABEL beállítást.
 
@@ -62,7 +62,7 @@ Lásd még: [Insert](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synaps
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>Az adatok gyors betöltése és exportálása a PolyBase segítségével
 
-Az SQL-készlet támogatja az adatok betöltését és exportálását számos eszközön, többek között a Azure Data Factory, a Base és a BCP használatával.  Kis mennyiségű adat kezelése esetén, ahol a teljesítmény nem kulcsfontosságú tényező, bármelyik eszköz megfelelhet az igényeinek.  Amikor nagy mennyiségű adatot tölt be vagy exportál, vagy gyors teljesítményre van szükség, a PolyBase a legjobb választás.  
+A dedikált SQL-készlet (korábbi nevén SQL DW) számos eszközön keresztül támogatja az adatok betöltését és exportálását, többek között a Azure Data Factory, a Base és a BCP  Kis mennyiségű adat kezelése esetén, ahol a teljesítmény nem kulcsfontosságú tényező, bármelyik eszköz megfelelhet az igényeinek.  Amikor nagy mennyiségű adatot tölt be vagy exportál, vagy gyors teljesítményre van szükség, a PolyBase a legjobb választás.  
 
 A Base úgy lett kialakítva, hogy kihasználja a rendszer elosztott jellegét, és minden más eszköznél gyorsabban betöltse és exportálja az adatmennyiséget.  A PolyBase-betöltések a CTAS vagy az INSERT INTO paranccsal futtathatók.   
 
@@ -74,13 +74,13 @@ A Azure Data Factory támogatja a alapszintű terheléseket is, és a CTAS hason
 > [!NOTE]
 > A gzip szövegfájlok használatakor az átviteli sebesség maximalizálása érdekében bontsa a fájlokat 60 vagy több fájlba, hogy maximalizálja a terhelés párhuzamosságát.  A gyorsabb teljes átviteli teljesítmény érdekében érdemes lehet egy időben betölteni az adatokat.
 
-Lásd még: [adatok betöltése](design-elt-data-loading.md), [útmutató a következőhöz: alapszintű](guidance-for-loading-data.md), [SQL Pool betöltési minták és stratégiák](https://blogs.msdn.microsoft.com/sqlcat/20../../), [adatok betöltése a Azure Data Factory]( ../../data-factory/load-azure-sql-data-warehouse.md), [adatok áthelyezése Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md), [külső fájlformátum létrehozása](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), és [CREATE TABLE as Select (CTAS)](sql-data-warehouse-develop-ctas.md).
+Lásd még: [adatok betöltése](design-elt-data-loading.md), [útmutató a (z) alapszintű](guidance-for-loading-data.md), [dedikált SQL Pool-betöltési minták és stratégiák](https://blogs.msdn.microsoft.com/sqlcat/20../../)használatához, [adatok betöltése Azure Data FACTORYSAL]( ../../data-factory/load-azure-sql-data-warehouse.md), [adatok áthelyezése Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md), [külső fájlformátum létrehozása](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), és [CREATE TABLE as Select (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="load-then-query-external-tables"></a>Betöltés, majd külső táblák lekérdezése
 
 Míg a PolyBase, más néven a külső táblák használata lehet az adatok betöltésének leggyorsabb módja, lekérdezésekhez nem ez a legjobb megoldás. A alapszintű táblák jelenleg csak az Azure Blob-fájlokat és Azure Data Lake tárolót támogatják. Ezekhez a fájlokhoz nem tartoznak külön számítási erőforrások.  
 
-Ennek eredményeképpen az SQL-készlet nem tudja kiszervezni ezt a munkát, ezért az adatolvasáshoz be kell töltenie a teljes fájlt a tempdb-be való betöltésével.  Ezért ha több olyan lekérdezése is van, amelyek ennek a fájlnak az adatait kérik le, érdemesebb egyszer betölteni az adatokat, és úgy beállítani a lekérdezéseket, hogy a helyi táblát használják.
+Ennek eredményeképpen a dedikált SQL-készlet nem tudja kiszervezni ezt a munkát, ezért a teljes fájlt el kell olvasnia a tempdb-be való betöltésével az adat olvasásához.  Ezért ha több olyan lekérdezése is van, amelyek ennek a fájlnak az adatait kérik le, érdemesebb egyszer betölteni az adatokat, és úgy beállítani a lekérdezéseket, hogy a helyi táblát használják.
 
 Lásd még: [útmutató a Base használatához](guidance-for-loading-data.md).
 
@@ -101,9 +101,9 @@ Lásd még: [táblák áttekintése](sql-data-warehouse-tables-overview.md), [t�
 
 ## <a name="do-not-over-partition"></a>Túl sok partíció használatának kerülése
 
-Míg az adatparticionálás hatékonyan kezelheti az adatait a partíciók váltásával vagy a vizsgálatok optimalizálásával a partíciók eltávolításával, a túl sok partíció lelassíthatja a lekérdezéseket.  Gyakran nagy részletességű particionálási stratégia, amely jól működik SQL Server előfordulhat, hogy nem működik megfelelően az SQL-készletben.  
+Míg az adatparticionálás hatékonyan kezelheti az adatait a partíciók váltásával vagy a vizsgálatok optimalizálásával a partíciók eltávolításával, a túl sok partíció lelassíthatja a lekérdezéseket.  Gyakran nagy részletességű particionálási stratégia, amely jól működik SQL Server előfordulhat, hogy nem működik megfelelően a dedikált SQL-készletben (korábban SQL DW).  
 
-A túl sok partíció a fürtözött oszlopcentrikus indexek hatékonyságát is csökkentheti, ha az egyes partíciók kevesebb mint 1 millió sorral rendelkeznek.  Ne feledje, hogy a színfalak mögött az SQL Pool a 60-adatbázisokba particionálja az adatait, így ha 100-partíciót tartalmazó táblát hoz létre, akkor ez a 6000-partíciók tényleges eredményét eredményezi.  
+A túl sok partíció a fürtözött oszlopcentrikus indexek hatékonyságát is csökkentheti, ha az egyes partíciók kevesebb mint 1 millió sorral rendelkeznek.  Ne feledje, hogy a színfalak mögött a dedikált SQL Pool a 60-adatbázisokba particionálja az adatait, így ha 100-partíciót tartalmazó táblát hoz létre, akkor ez valójában 6000 partíciót eredményez.  
 
 Mindegyik számítási feladat különböző, így érdemes kísérletezni a particionálással, és kideríteni, hogy az adott számítási feladatnál melyik megoldás a célravezető.  Érdemes kisebb szintű részletességet használni, mint az SQL Serveren.  A napi partíciók helyett például érdemes lehet heti vagy havi partíciókat használni.
 
@@ -145,13 +145,13 @@ Lásd még: [ideiglenes táblák](sql-data-warehouse-tables-temporary.md), [CREA
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Fürtözött oszlopcentrikus táblák optimalizálása
 
-A fürtözött oszlopcentrikus indexek az egyik leghatékonyabb módszer az SQL-készletben tárolt adattároláshoz.  Alapértelmezés szerint az SQL-készletben lévő táblák fürtözött Oszlopcentrikus jönnek létre.  Annak érdekében, hogy az oszlopcentrikus táblák a lehető legjobb teljesítménnyel fussanak, fontos a jó szegmensminőség.  
+A fürtözött oszlopcentrikus indexek az egyik leghatékonyabb módszer, amellyel az adatai a dedikált SQL-készletben tárolhatók.  Alapértelmezés szerint a dedikált SQL-készletben lévő táblák fürtözött Oszlopcentrikus jönnek létre.  Annak érdekében, hogy az oszlopcentrikus táblák a lehető legjobb teljesítménnyel fussanak, fontos a jó szegmensminőség.  
 
 Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  A szegmensminőség a tömörített sorcsoportokban található sorok száma alapján mérhető fel.  A fürtözött oszlopcentrikus-táblák szegmensének minőségének észlelésével és javításával kapcsolatos részletes utasításokért tekintse meg a [gyenge oszlopcentrikus indexének okait](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality) a [táblázat indexek](sql-data-warehouse-tables-index.md) című cikkben.  
 
 Mivel a kiváló minőségű oszlopcentrikus szegmensek fontosak, hasznos lehet a közepes vagy nagy erőforrás-osztályba tartozó felhasználói azonosítók használata az betöltéshez. Az alacsonyabb [adattárház-egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) használata azt jelenti, hogy nagyobb erőforrás-osztályt szeretne hozzárendelni a betöltési felhasználóhoz.
 
-Mivel a oszlopcentrikus-táblák általában nem küldenek le az adatlemezeket egy tömörített oszlopcentrikus, amíg a táblázat több mint 1 000 000 sort tartalmaz, és minden SQL Pool-tábla 60 táblázatba van particionálva, a oszlopcentrikus táblái nem kapnak lekérdezést, kivéve, ha a tábla több mint 60 000 000 sorral rendelkezik.  Előfordulhat, hogy a 60 milliónál kevesebb sorral rendelkező táblák esetén egyáltalán nem érdemes oszlopcentrikus indexet használni.  A használatuk azonban hátrányt sem jelent.  
+Mivel a oszlopcentrikus-táblák általában nem küldenek le az adataikat egy tömörített oszlopcentrikus, amíg a táblázat több mint 1 000 000 sort tartalmaz, és minden egyes dedikált SQL Pool-tábla 60 táblázatba van particionálva, a oszlopcentrikus-táblák nem kapnak lekérdezést, kivéve, ha a tábla több mint 60 000 000 sorral rendelkezik.  Előfordulhat, hogy a 60 milliónál kevesebb sorral rendelkező táblák esetén egyáltalán nem érdemes oszlopcentrikus indexet használni.  A használatuk azonban hátrányt sem jelent.  
 
 Ha particionálja az adatait, akkor azt is érdemes figyelembe venni, hogy minden partíciónak 1 millió sorral kell rendelkeznie a fürtözött oszlopcentrikus indexek előnyeinek kihasználása érdekében.  Ha egy tábla 100 partíciót tartalmaz, akkor legalább 6 000 000 000 sort kell használnia a fürtözött oszlopok tárolójának kihasználása érdekében (60 distributers *100 partitions* 1 000 000 sor).  
 
@@ -164,7 +164,7 @@ Lásd még a [táblaindexekkel](sql-data-warehouse-tables-index.md), az [oszlopc
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>Nagyobb erőforrásosztály használata a lekérdezés teljesítményének javítása érdekében
 
-Az SQL-készlet erőforráscsoportok használatával foglal le memóriát a lekérdezésekhez.  Az összes felhasználó hozzá van rendelve a kisméretű erőforrás osztályhoz, amely elosztás esetén 100 MB memóriát biztosít.  Mivel mindig 60 elosztás van és mindegyik elosztás minimum 100 MB-ot kap, a rendszeren belül összesen 6000 MB, vagyis majdnem 6 GB memória van lefoglalva.  
+A dedikált SQL-készlet erőforráscsoportok használatával oszt le memóriát a lekérdezésekhez.  Az összes felhasználó hozzá van rendelve a kisméretű erőforrás osztályhoz, amely elosztás esetén 100 MB memóriát biztosít.  Mivel mindig 60 elosztás van és mindegyik elosztás minimum 100 MB-ot kap, a rendszeren belül összesen 6000 MB, vagyis majdnem 6 GB memória van lefoglalva.  
 
 Bizonyos lekérdezéseknél, például a nagyobb egyesítéseknél vagy a fürtözött oszlopcentrikus táblákba végzett betöltésnél előnyt jelent a nagyobb memórialefoglalások használata.  Egyes lekérdezések, például a tiszta vizsgálatok, nem kapnak kedvezményt.  A nagyobb erőforrás-osztályok használata azonban csökkenti a párhuzamosságot, ezért figyelembe kell vennie ezt a hatást, mielőtt az összes felhasználót egy nagy erőforrás-osztályba helyezné.
 

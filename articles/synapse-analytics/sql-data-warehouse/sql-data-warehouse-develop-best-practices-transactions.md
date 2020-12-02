@@ -1,6 +1,6 @@
 ---
 title: Tranzakciók optimalizálása
-description: Ismerje meg, hogyan optimalizálhatja a tranzakciós kód teljesítményét a szinapszis SQLban, miközben minimalizálja a hosszú visszaállítások kockázatát.
+description: Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét a dedikált SQL-készletben, miközben minimalizálja a hosszú visszaállítások kockázatát.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ddb6dbde941d5a2f399aba55eec415c879e74384
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46a165ea7fa21c02e859c16027086695f1f378c3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461205"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462789"
 ---
-# <a name="optimizing-transactions-in-synapse-sql"></a>Tranzakciók optimalizálása a szinapszis SQL-ben
+# <a name="optimizing-transactions-in-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tranzakciók optimalizálása dedikált SQL-készletben az Azure szinapszis Analyticsben
 
-Ismerje meg, hogyan optimalizálhatja a tranzakciós kód teljesítményét a szinapszis SQLban, miközben minimalizálja a hosszú visszaállítások kockázatát.
+Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét a dedikált SQL-készletben, miközben minimalizálja a hosszú visszaállítások kockázatát.
 
 ## <a name="transactions-and-logging"></a>Tranzakciók és naplózás
 
-A tranzakciók a kapcsolatok adatbázis-működtetői egyik fontos összetevője. A tranzakciók az adatmódosítás során használatosak. Ezek a tranzakciók explicitek vagy implicitek lehetnek. Az egyszeri INSERT, UPDATE és DELETE utasítások mindegyike implicit tranzakcióra mutat. A Explicit tranzakciók a BEGIN TRAN, a COMMon TRAN vagy a VISSZAÁLLÍTÁSi TRAN szolgáltatást használják. A explicit tranzakciókat jellemzően akkor használják, ha több módosítási utasítást kell összekötni egyetlen atomi egységben.
+A tranzakciók a kapcsolódó SQL Pool-motor fontos összetevői. A tranzakciók az adatmódosítás során használatosak. Ezek a tranzakciók explicitek vagy implicitek lehetnek. Az egyszeri INSERT, UPDATE és DELETE utasítások mindegyike implicit tranzakcióra mutat. A Explicit tranzakciók a BEGIN TRAN, a COMMon TRAN vagy a VISSZAÁLLÍTÁSi TRAN szolgáltatást használják. A explicit tranzakciókat jellemzően akkor használják, ha több módosítási utasítást kell összekötni egyetlen atomi egységben.
 
-Az adatbázis változásai a tranzakciónaplók használatával követhetők nyomon. Minden elosztás saját tranzakciónaplóval rendelkezik. A tranzakciónapló-írások automatikusak. Nincs szükség konfigurációra. Bár ez a folyamat garantálja az írást, a rendszer terhelést vezet be. Ezt a hatást a tranzakciós hatékony kód írásával csökkentheti. A tranzakciós szempontból hatékony kód nagyjából két kategóriába esik.
+Az SQL-készlet változásai a tranzakciónaplók használatával követhetők nyomon. Minden elosztás saját tranzakciónaplóval rendelkezik. A tranzakciónapló-írások automatikusak. Nincs szükség konfigurációra. Bár ez a folyamat garantálja az írást, a rendszer terhelést vezet be. Ezt a hatást a tranzakciós hatékony kód írásával csökkentheti. A tranzakciós szempontból hatékony kód nagyjából két kategóriába esik.
 
 * Minimális naplózási szerkezetek használata, ha lehetséges
 * Az adatfeldolgozás hatókörrel rendelkező kötegek használatával a hosszú ideig futó tranzakciók elkerülése érdekében
@@ -51,7 +51,7 @@ A következő műveletek képesek minimálisan naplózni:
 * AZ ALTER INDEX ÚJRAÉPÍTÉSE
 * DROP INDEX
 * TRUNCATE TABLE
-* TÁBLÁZAT ELDOBÁSA
+* DROP TABLE
 * MÓDOSÍTÁSI TÁBLA KAPCSOLÓJÁNAK PARTÍCIÓJA
 
 <!--
@@ -79,7 +79,7 @@ CTAS és Beszúrás... Válassza a tömeges betöltési műveletek lehetőséget
 Érdemes megjegyezni, hogy a másodlagos vagy nem fürtözött indexek frissítésére vonatkozó írások mindig teljesen naplózott műveletnek számítanak.
 
 > [!IMPORTANT]
-> A szinapszis SQL Pool-adatbázis 60-disztribúcióval rendelkezik. Ezért feltételezve, hogy az összes sort egyenletesen osztják el, és egy partíción belül kikerülnek, a kötegnek legalább 6 144 000 sort kell tartalmaznia, hogy a rendszer minimálisan naplózza a fürtözött Oszlopcentrikus indexbe való íráskor. Ha a tábla particionálva van, és a sorok kiosztási partíció határain belül vannak beszúrva, akkor a partíciók határán 6 144 000 sor szükséges, feltéve, hogy az adateloszlás is megtörténik. Az egyes eloszlások mindegyik partíciójának egymástól függetlennek kell lennie, mint a Beszúrás minimálisan megengedett 102 400-as küszöbértéke.
+> Egy dedikált SQL-készlethez 60-disztribúció tartozik. Ezért feltételezve, hogy az összes sort egyenletesen osztják el, és egy partíción belül kikerülnek, a kötegnek legalább 6 144 000 sort kell tartalmaznia, hogy a rendszer minimálisan naplózza a fürtözött Oszlopcentrikus indexbe való íráskor. Ha a tábla particionálva van, és a sorok kiosztási partíció határain belül vannak beszúrva, akkor a partíciók határán 6 144 000 sor szükséges, feltéve, hogy az adateloszlás is megtörténik. Az egyes eloszlások mindegyik partíciójának egymástól függetlennek kell lennie, mint a Beszúrás minimálisan megengedett 102 400-as küszöbértéke.
 
 A fürtözött indexekkel rendelkező, nem üres táblába való betöltés általában a teljesen naplózott és a minimálisan naplózott sorok keverékét is tartalmazhatja. A fürtözött indexek lapok kiegyensúlyozott fastruktúrája (b-Tree). Ha a megírt lap már tartalmaz egy másik tranzakció sorait, akkor ezek az írások teljesen be lesznek jelentkezve. Ha azonban az oldal üres, akkor az adott oldalra való írás a legkevesebb naplóba kerül.
 
@@ -178,7 +178,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> A nagyméretű táblák újbóli létrehozása kihasználhatja a szinapszis SQL Pool munkaterhelés-kezelési funkcióinak használatát. További információ: erőforrás- [osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).
+> A nagyméretű táblák újbóli létrehozása kihasználhatja a dedikált SQL Pool számítási feladatok kezelési funkcióit. További információ: erőforrás- [osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).
 
 ## <a name="optimizing-with-partition-switching"></a>Optimalizálás a partíciós váltással
 
@@ -407,16 +407,16 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>Útmutató szüneteltetése és skálázása
 
-A szinapszis SQL segítségével igény szerint [szüneteltetheti, folytathatja és méretezheti](sql-data-warehouse-manage-compute-overview.md) az SQL-készletet. Ha szünetelteti vagy méretezi az SQL-készletet, fontos tisztában lennie azzal, hogy a repülés közbeni tranzakciók azonnal megszűnnek; a nyitott tranzakciók visszaállításának visszavonása. Ha a munkaterhelés a szüneteltetési vagy a skálázási művelet előtt hosszú ideig futó és hiányos adatmódosítást adott ki, akkor ennek a munkának vissza kell maradnia. Ezzel a művelettel az SQL-készlet szüneteltetéséhez vagy méretezéséhez szükséges idő is hatással lehet.
+A dedikált SQL-készlet lehetővé teszi a dedikált SQL-készlet [szüneteltetését, folytatását és méretezését](sql-data-warehouse-manage-compute-overview.md) igény szerint. Ha szünetelteti vagy méretezi a dedikált SQL-készletet, fontos tisztában lennie azzal, hogy a repülés közbeni tranzakciók azonnal megszűnnek; a nyitott tranzakciók visszaállításának visszavonása. Ha a munkaterhelés a szüneteltetési vagy a skálázási művelet előtt hosszú ideig futó és hiányos adatmódosítást adott ki, akkor ennek a munkának vissza kell maradnia. Ezzel a művelettel a dedikált SQL-készlet szüneteltetéséhez vagy méretezéséhez szükséges idő is hatással lehet.
 
 > [!IMPORTANT]
 > Mindkettő `UPDATE` és `DELETE` teljesen naplózott művelet, így ezek a visszavonási/ismétlési műveletek jelentősen hosszabb időt vehetnek igénybe, mint az egyenértékű, minimálisan naplózott műveletek.
 
-A legjobb megoldás az, ha az SQL-készlet szüneteltetése vagy skálázása előtt befejezi a repülési adatmódosítási tranzakciók befejezését. Előfordulhat azonban, hogy ez a forgatókönyv nem mindig praktikus. A hosszú visszaállítás kockázatának enyhítéséhez vegye figyelembe az alábbi lehetőségek egyikét:
+A legjobb megoldás, ha egy dedikált SQL-készlet felfüggesztése vagy skálázása előtt a repülési adatmódosítási tranzakciók befejeződik. Előfordulhat azonban, hogy ez a forgatókönyv nem mindig praktikus. A hosszú visszaállítás kockázatának enyhítéséhez vegye figyelembe az alábbi lehetőségek egyikét:
 
 * A hosszú ideig futó műveletek újraírása a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával
 * A művelet felosztása darabokra; a sorok egy részhalmazán működik
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az elkülönítési szintekkel és a tranzakciós korlátokkal kapcsolatos további információkért tekintse meg a [SZINAPSZIS SQL tranzakciói](sql-data-warehouse-develop-transactions.md) című témakört.  Az egyéb ajánlott eljárások áttekintését lásd: az [Azure szinapszis Analytics ajánlott eljárásai](sql-data-warehouse-best-practices.md).
+Az elkülönítési szintekkel és a tranzakciós korlátokkal kapcsolatos további tudnivalókért tekintse meg a [DEDIKÁLT SQL-készlet tranzakciói](sql-data-warehouse-develop-transactions.md) című témakört.  Az egyéb ajánlott eljárások áttekintését lásd: [DEDIKÁLT SQL Pool](sql-data-warehouse-best-practices.md)– ajánlott eljárások.

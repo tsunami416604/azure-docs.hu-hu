@@ -1,5 +1,5 @@
 ---
-title: Kiszolgáló nélküli SQL-készlet (előzetes verzió)
+title: Kiszolgáló nélküli SQL-készlet
 description: Ismerje meg a kiszolgáló nélküli SQL-készletet az Azure szinapszis Analytics szolgáltatásban.
 services: synapse analytics
 author: filippopovic
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e0d47567c3bc0b05c47efafa3bdc8b297a7bdbea
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 34ce36f0ff348f896b7c2ea680c113b5e9e4ea09
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306875"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463163"
 ---
-# <a name="serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Kiszolgáló nélküli SQL-készlet (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban 
+# <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Kiszolgáló nélküli SQL-készlet az Azure szinapszis Analyticsben 
 
-Az Azure szinapszis Analytics-munkaterülete (előzetes verzió) kiszolgáló nélküli SQL-készlet (előzetes verzió) típusú végpontokat tartalmaz, amelyek segítségével a Lake-ben lévő adatlekérdezéseket végezheti el.
+Minden Azure szinapszis Analytics-munkaterület olyan kiszolgáló nélküli SQL Pool-végpontokat tartalmaz, amelyek segítségével lekérdezheti a tóban lévő adatlekérdezéseket.
 
 A kiszolgáló nélküli SQL-készlet egy lekérdezési szolgáltatás a adatközpontban található adaton keresztül. Az alábbi funkciókkal érheti el az adatait:
  
@@ -82,7 +82,7 @@ Támogatott T-SQL:
 A kiszolgáló nélküli SQL-készletnek nincs helyi tárterülete, csak a metaadat-objektumokat tárolja az adatbázisokban. Ezért a következő fogalmakhoz kapcsolódó T-SQL nem támogatott:
 
 - Táblák
-- Triggerek
+- Eseményindítók
 - Tényleges táblán alapuló nézetek
 - A nézetekhez és a biztonsághoz kapcsolódó DDL-utasítások
 - DML-utasítások
@@ -123,7 +123,7 @@ A kiszolgáló nélküli SQL-készlet hitelesítése arra utal, hogy a felhaszn�
 
   Ez a hitelesítési módszer egy felhasználónevet és egy jelszót használ.
 
-- **Azure Active Directory hitelesítés** :
+- **Azure Active Directory hitelesítés**:
 
   Ez a hitelesítési módszer Azure Active Directory által felügyelt identitásokat használ. Az Azure AD-felhasználók esetében a többtényezős hitelesítés is engedélyezhető. [Amikor csak lehet](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), használja az Active Directory-hitelesítést (beépített biztonság).
 
@@ -143,7 +143,7 @@ A kiszolgáló nélküli SQL Pool szolgáltatásba bejelentkezett felhasználó 
 
 - A **felhasználói identitás** (más néven "átmenő") olyan engedélyezési típus, ahol a kiszolgáló nélküli SQL-készletbe bejelentkezett Azure ad-felhasználó identitása az adatokhoz való hozzáférés engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak az adatokhoz való hozzáféréshez. Ez az engedélyezési típus a kiszolgáló nélküli SQL-készletbe bejelentkezett Azure AD-felhasználót használja, ezért az SQL-felhasználói típusok nem támogatottak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A végponti kapcsolatok és a lekérdezési fájlok további információi a következő cikkekben találhatók: 
 - [Kapcsolódás a végponthoz](connect-overview.md)
 - [Fájlok lekérdezése](develop-storage-files-overview.md)

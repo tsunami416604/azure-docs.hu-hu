@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c0dcaec9c8e9a310af1fd6fc319e0784694610e2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999297"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463092"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Vöröseltolódásból a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -61,12 +61,12 @@ Az alábbi táblázat az Amazon vöröseltolódás társított szolgáltatásáh
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **típusa** |Ezt a tulajdonságot **AmazonRedshift** értékre kell beállítani. |Yes |
-| **Server** |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Yes |
+| **típusa** |Ezt a tulajdonságot **AmazonRedshift** értékre kell beállítani. |Igen |
+| **Server** |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Igen |
 | **Port** |Az Amazon vöröseltolódás-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port száma. |Nem (az alapértelmezett érték 5439) |
-| **adatbázis** |Az Amazon vöröseltolódás-adatbázis neve. |Yes |
-| **username** |Annak a felhasználónak a neve, aki hozzáfér az adatbázishoz. |Yes |
-| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Yes |
+| **adatbázis** |Az Amazon vöröseltolódás-adatbázis neve. |Igen |
+| **username** |Annak a felhasználónak a neve, aki hozzáfér az adatbázishoz. |Igen |
+| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
@@ -87,7 +87,7 @@ Másolási tevékenység esetén, ha a forrás **AmazonRedshiftSource** típusú
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **lekérdezés** | Az egyéni lekérdezéssel olvashatja el az adatgyűjtést. |Nem (ha meg van adva egy adatkészlet **Táblanév** tulajdonsága) |
-| **redshiftUnloadSettings** | A tulajdonságot tartalmazza **a vöröseltolódás eltávolítása** parancs használatakor. | No |
+| **redshiftUnloadSettings** | A tulajdonságot tartalmazza **a vöröseltolódás eltávolítása** parancs használatakor. | Nem |
 | **s3LinkedServiceName** | Az Amazon S3, amelyet ideiglenes tárolóként kell használni. A társított szolgáltatás egy **awsaccesskey használnia** típusú Azure Data Factory-név használatával van megadva. | A **redshiftUnloadSettings** tulajdonság használatakor szükséges |
 | **bucketName** | Azt az Amazon S3 gyűjtőt jelzi, amely az ideiglenes adattároláshoz használható. Ha ez a tulajdonság nincs megadva, a másolási tevékenység automatikusan létrehoz egy gyűjtőt. | A **redshiftUnloadSettings** tulajdonság használatakor szükséges |
 
@@ -101,7 +101,7 @@ Azt is megteheti, hogy a **RelationalSource** típust használja, amely tartalma
 
 Az Amazon Vöröseltolódásának [**eltávolítási**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) parancsa eltávolít egy lekérdezés eredményét egy vagy több fájlra az Amazon S3-on. Ezt a parancsot az Amazon ajánlja a nagyméretű adathalmazok Vöröseltolódásból való másolásához.
 
-**Példa: adatok másolása az Amazon Vöröseltolódásból az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse)**
+**Példa: adatok másolása az Amazon Vöröseltolódásból az Azure szinapszis Analyticsbe**
 
 Ebben a példában az Amazon vöröseltolódásról származó adatok másolása az Azure szinapszis Analytics szolgáltatásba. A példa a vöröseltolódás **KItöltési** parancsát, az előkészített adatok másolását és a Microsoft Base-t használja.
 
@@ -333,7 +333,7 @@ A következő leképezések akkor használatosak, ha a másolási tevékenység 
 | EGÉSZ SZÁM |Int32 |
 | BIGINT |Int64 |
 | DECIMÁLIS |Tizedesjegy |
-| VALÓS SZÁM |Egyszeres |
+| VALÓS SZÁM |Egyirányú |
 | DUPLA PONTOSSÁG |Dupla |
 | LOGIKAI |Sztring |
 | CHAR |Sztring |

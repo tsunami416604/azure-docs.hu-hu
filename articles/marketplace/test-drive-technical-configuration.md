@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: de85e4eb553f623790b472e79f8f97487ba96b48
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95751113"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462897"
 ---
 # <a name="test-drive-technical-configuration"></a>Tesztverzió műszaki konfigurálása
 
@@ -38,9 +38,9 @@ A Microsoft el tudja távolítani a tesztelési meghajtó beállításának öss
 
 - **Szerepkör neve** (kötelező) – adja meg az egyéni Dynamics 365-tesztelési meghajtóban definiált biztonsági szerepkör nevét, amely a felhasználóhoz lesz hozzárendelve a tesztelési meghajtón (például Test-Drive-role).
 
-A Dynamics 365-környezet tesztelési meghajtóhoz való beállításával és a AppSource engedélyek megadásával kapcsolatos segítségért kövesse az [alábbi utasításokat](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup).
+A Dynamics 365-környezet tesztelési meghajtóhoz való beállításával és a AppSource engedélyek megadásával kapcsolatos segítségért kövesse az [alábbi utasításokat](./test-drive-azure-subscription-setup.md).
 
-Az üzemeltetett tesztelési meghajtó listázásával és konfigurálásával kapcsolatos részletes utasításokért tekintse meg az [üzemeltetett tesztelési meghajtó részletes konfigurációját](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) .
+Az üzemeltetett tesztelési meghajtó listázásával és konfigurálásával kapcsolatos részletes utasításokért tekintse meg az [üzemeltetett tesztelési meghajtó részletes konfigurációját](./test-drive-hosted-detailed-config.md) .
 
 ## <a name="logic-app-test-drive"></a>Logic app Test Drive
 
@@ -95,11 +95,11 @@ A a partner központ **Test Drive (tesztelési** meghajtó) lapján található 
 
 Ha jelenleg a partner Centerben hozza létre a tesztelési meghajtót, a folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
-Az üzemeltetett tesztelési meghajtó listázásával és konfigurálásával kapcsolatos részletes utasításokért tekintse meg az [üzemeltetett tesztelési meghajtó részletes konfigurációját](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) .
+Az üzemeltetett tesztelési meghajtó listázásával és konfigurálásával kapcsolatos részletes utasításokért tekintse meg az [üzemeltetett tesztelési meghajtó részletes konfigurációját](./test-drive-hosted-detailed-config.md) .
 
 ## <a name="additional-resources"></a>További források
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tesztelési meghajtó – ajánlott eljárások](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Áttekintés](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása)

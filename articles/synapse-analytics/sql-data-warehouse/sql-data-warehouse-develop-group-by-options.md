@@ -1,30 +1,30 @@
 ---
 title: Csoportosítási lehetőségek használata
-description: Tippek a csoportosítási lehetőségek végrehajtásához a szinapszis SQL-készletben.
+description: Tippek az Azure szinapszis Analytics szolgáltatásban a dedikált SQL-készletek lehetőségeinek megvalósításához.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 260bd7cc6402a7cb4ed17d004d0f61b7462c51d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: cdac3b1e502a203c272db75eb4345446b0f7c0c8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213448"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462763"
 ---
-# <a name="group-by-options-in-synapse-sql-pool"></a>Csoportosítási lehetőségek a szinapszis SQL-készletben
+# <a name="group-by-options-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Csoportosítási lehetőségek a dedikált SQL-készletek számára az Azure szinapszis Analyticsben
 
-Ebből a cikkből megtudhatja, hogyan implementálhatja a Group By Options funkciót az SQL-készletben.
+Ebből a cikkből megtudhatja, hogyan hozhatja ki a csoportok beállításait a dedikált SQL-készletekben.
 
 ## <a name="what-does-group-by-do"></a>Mit tesz a GROUP BY do?
 
-A [Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL záradék összesíti az adatokat egy sorok összesítési halmazával. A CSOPORTOSÍTÁSi lehetőségek az SQL-készlet által nem támogatott beállítások. Ezek a beállítások megkerülő megoldásokkal rendelkeznek, amelyek a következők:
+A [Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL záradék összesíti az adatokat egy sorok összesítési halmazával. A CSOPORTOSÍTÁSi lehetőségek a dedikált SQL-készlet által nem támogatott beállítások. Ezek a beállítások megkerülő megoldásokkal rendelkeznek, amelyek a következők:
 
 * Csoportosítás ÖSSZESÍTÉSsel
 * CSOPORTOSÍTÁSI KÉSZLETEK

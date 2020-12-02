@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 06f308b4e0b2df0487a351ae38f16f3872961cfb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 17765d89cacfb6083df5ac911d2b24d573fba511
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89436256"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463064"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -35,7 +35,7 @@ Például egy játékokkal foglalkozó vállalat a játékok által készített 
 
 A naplók elemzéséhez a vállalatnak a helyszíni adattárban tárolt referenciaadatokat kell felhasználnia, például az ügyféladatokat, a játékadatokat és a reklámkampány-adatokat. Ennélfogva a vállalat szeretne hozzáférni a felhőbeli adattárban található naplóadatokhoz és a helyszíni adattárban található referenciaadatokhoz. 
 
-Ezután fel szeretné dolgozni az adatokat a Hadoop használatával a felhőben (Azure HDInsight). Egy Felhőbeli adattárházban szeretnék közzétenni az eredményeket, például az Azure szinapszis Analytics (korábban SQL Data Warehouse) vagy egy helyszíni adattár (például SQL Server) számára. A vállalat ezt a munkafolyamatot hetente egyszer szeretné futtatni. 
+Ezután fel szeretné dolgozni az adatokat a Hadoop használatával a felhőben (Azure HDInsight). Az eredményeket egy Felhőbeli adattárházba kívánják közzétenni, például az Azure szinapszis Analytics szolgáltatásba vagy egy helyszíni adattárba, például SQL Serverba. A vállalat ezt a munkafolyamatot hetente egyszer szeretné futtatni. 
 
 A vállalatnak egy olyan platformra van szüksége, amellyel létrehozhat egy munkafolyamatot, amely képes kiolvasni az adatokat a helyszíni és a felhőbeli adattárolókból. A vállalatnak ezenkívül képesnek kell lennie arra, hogy átalakítsa és feldolgozza az adatokat létező számítási szolgáltatások, például a Hadoop használatával, és közzétegye az eredményeket helyszíni vagy felhőbeli adattárolókon a BI-alkalmazások általi felhasználáshoz. 
 
@@ -140,7 +140,7 @@ Az Azure Data Factoryben a következő eszközök és API-k használhatók adatf
 
 A következő oktatóanyagok részletes utasításait követve megtudhatja, hogyan építhet ki adatfolyamatokkal rendelkező adat-előállítókat:
 
-| Oktatóanyag | Leírás |
+| Oktatóanyag | Description |
 | --- | --- |
 | [Két felhőalapú adattár közötti adatáthelyezés](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Hozzon létre egy adatfeldolgozót egy olyan folyamattal, amely a blob Storage-ból SQL Databaseba helyezi át az adatait. |
 | [Adatok átalakítása Hadoop-fürttel](data-factory-build-your-first-pipeline.md) |Kiépítheti az első Azure adat-előállítóját egy olyan adatfolyamattal, amely egy Azure HDInsight- (Hadoop-) fürtön futtatott Hive-szkripttel dolgozza fel az adatokat. |

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 85f5beb6188b1f6987934f1c39c579d5a3028a5e
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 61ee0b769664d1f574177e27b5b1fb10e9845035
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579487"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463107"
 ---
 # <a name="configure-a-managed-application-plan"></a>Felügyelt alkalmazáscsomag konfigurálása
 
@@ -80,7 +80,7 @@ Beállíthatja, hogy az egyes tervek mindenki számára láthatók legyenek, vag
 
 A **terv láthatósága** területen tegye a következők egyikét:
 
-- A csomag nyilvános beállításához válassza a **nyilvános** választógombot (más néven _választógombot_ ).
+- A csomag nyilvános beállításához válassza a **nyilvános** választógombot (más néven _választógombot_).
 - A csomag magánjellegűvé tételéhez válassza a **privát** beállítás gombot, és adja hozzá manuálisan vagy CSV-fájllal az Azure-előfizetési azonosítókat.
 
 > [!NOTE]
@@ -135,10 +135,10 @@ A tervhez tartozó JIT-hozzáférés engedélyezéséhez jelölje be az igény s
 
 Válassza ki a **teljes** vagy **növekményes** üzembe helyezési módot.
 
-- **Teljes** módban az ügyfél által az alkalmazás újratelepítése a felügyelt erőforráscsoport erőforrásainak eltávolítását eredményezi, ha az erőforrások nincsenek meghatározva a [mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md).
+- **Teljes** módban az ügyfél által az alkalmazás újratelepítése a felügyelt erőforráscsoport erőforrásainak eltávolítását eredményezi, ha az erőforrások nincsenek meghatározva a [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template).
 - A **növekményes** módban az alkalmazás újratelepítése változatlanul hagyja a meglévő erőforrásokat.
 
-További információ az üzembe helyezési módokról: [Azure Resource Manager telepítési módok](/azure/azure-resource-manager/deployment-modes).
+További információ az üzembe helyezési módokról: [Azure Resource Manager telepítési módok](../azure-resource-manager/templates/deployment-modes.md).
 
 ### <a name="provide-a-notification-endpoint-url"></a>Értesítési végpont URL-címének megadása
 
@@ -181,11 +181,11 @@ Egy vagy több csomag létrehozása után megtekintheti a csomag nevét, a terv 
 
 A **terv áttekintés** lapjának **művelet** oszlopában elérhető műveletek a csomag állapotától függően változhatnak, és a következőket foglalhatják magukban:
 
-- Ha a terv állapota **Piszkozat** , a **művelet** oszlopban szereplő hivatkozás a **delete piszkozatot** fogja mondani.
-- Ha a terv állapota **élő** , a **művelet** oszlopban található hivatkozás nem fogja **megszüntetni a terv értékesítését** vagy a **privát célközönség szinkronizálását**. A **privát célközönség szinkronizálása** hivatkozás csak a privát célközönségek módosításait teszi közzé anélkül, hogy közzé kellene tenni az ajánlatban esetlegesen végrehajtott egyéb frissítéseket.
+- Ha a terv állapota **Piszkozat**, a **művelet** oszlopban szereplő hivatkozás a **delete piszkozatot** fogja mondani.
+- Ha a terv állapota **élő**, a **művelet** oszlopban található hivatkozás nem fogja **megszüntetni a terv értékesítését** vagy a **privát célközönség szinkronizálását**. A **privát célközönség szinkronizálása** hivatkozás csak a privát célközönségek módosításait teszi közzé anélkül, hogy közzé kellene tenni az ajánlatban esetlegesen végrehajtott egyéb frissítéseket.
 - Ha egy másik csomagot szeretne létrehozni ehhez az ajánlathoz, a **terv áttekintése** lap tetején válassza az **+ új terv létrehozása** lehetőséget. Ezután ismételje meg az [Azure-alkalmazási ajánlathoz tartozó csomagok létrehozása](create-new-azure-apps-offer-plans.md)című témakör lépéseit. Ellenkező esetben, ha elkészült a csomagok létrehozásával, ugorjon a következő szakaszra: további lépések.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-alkalmazás ajánlatának tesztelése és közzététele](create-new-azure-apps-offer-test-publish.md).
 - Ismerje meg [, hogyan forgalmazhatja Azure-alkalmazásait](create-new-azure-apps-offer-marketing.md) a Microsofttal való közös értékesítéssel és a CSP-programokkal való viszonteladással.

@@ -1,5 +1,5 @@
 ---
-title: Tranzakciók használata a szinapszis SQL-készletben
+title: Tranzakciók használata az Azure szinapszis Analytics SQL-készletben
 description: Ez a cikk tippeket tartalmaz a tranzakciók megvalósításához és megoldások fejlesztéséhez a szinapszis SQL-készletben.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: xiaoyul
+ms.custom: azure-synapse
 ms.reviewer: igorstan
-ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a3c0863bb35f0988d7928bb9a2857f6aceded6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213380"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463209"
 ---
-# <a name="use-transactions-in-synapse-sql-pool"></a>Tranzakciók használata a szinapszis SQL-készletben
+# <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>SQL-készletben lévő tranzakciók használata az Azure Szinapszisban 
 
 Ez a cikk tippeket tartalmaz a tranzakciók megvalósításához és a megoldások SQL-készletben való fejlesztéséhez.
 
@@ -27,7 +28,7 @@ Ahogy várható, az SQL-készlet az adatraktár számítási feladatainak része
 
 ## <a name="transaction-isolation-levels"></a>Tranzakciók elkülönítési szintjei
 
-Az SQL-készlet savas tranzakciókat valósít meg. A tranzakciós támogatás elkülönítési szintje alapértelmezés szerint nem VÉGLEGESÍThető.  Ha a Master adatbázishoz csatlakozik, a felhasználói adatbázis READ_COMMITTED_SNAPSHOT adatbázis lehetőségének bekapcsolásával módosíthatja az előjegyzett PILLANATKÉPek ELKÜLÖNÍTÉSét.  
+Az SQL-készlet savas tranzakciókat valósít meg. A tranzakciós támogatás elkülönítési szintje alapértelmezés szerint nem VÉGLEGESÍThető.  Ha a Master adatbázishoz csatlakozik, a felhasználói SQL-készlet READ_COMMITTED_SNAPSHOT adatbázis lehetőségének bekapcsolásával módosíthatja az előjegyzett PILLANATKÉPek ELKÜLÖNÍTÉSét.  
 
 Ha engedélyezve van, a rendszer az ebben az adatbázisban lévő összes tranzakciót az OLVASÁSI véglegesített PILLANATKÉPek ELKÜLÖNÍTÉSe területen hajtja végre, és a munkamenet szintjén az olvasás VÉGLEGESÍTÉSe beállítást nem fogja figyelembe venni. A részletekért lásd az [Alter Database set Options (Transact-SQL) beállítást](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 

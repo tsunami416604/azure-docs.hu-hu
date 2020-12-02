@@ -1,5 +1,5 @@
 ---
-title: Kapcsolódás a szinapszis SQL-készlethez
+title: Kapcsolódás SQL-készlethez az Azure Szinapszisban
 description: Csatlakozás az SQL-készlethez.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,24 +10,24 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, devx-track-csharp
-ms.openlocfilehash: ab169f7b814dedbc63f3cb6cddbfb822bdb57ab9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: azure-synapse, seo-lt-2019, devx-track-csharp
+ms.openlocfilehash: 3483fa03e8c05101b88bde5c964b74b382d32a52
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016444"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462847"
 ---
-# <a name="connect-to-synapse-sql-pool"></a>Kapcsolódás a szinapszis SQL-készlethez
+# <a name="connect-to-a-sql-pool-in-azure-synapse"></a>Kapcsolódás SQL-készlethez az Azure Szinapszisban 
 
-Csatlakozás az SQL-készlethez.
+Csatlakozás egy SQL-készlethez az Azure Szinapszisban.
 
 ## <a name="find-your-server-name"></a>A kiszolgálónév lekérdezése
 
 A kiszolgáló neve a következő példában sqlpoolservername.database.windows.net. A teljes kiszolgálónév lekérdezése:
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Kattintson az **Azure szinapszis Analytics**elemre.
+2. Kattintson az **Azure szinapszis Analytics** elemre.
 3. Kattintson arra az SQL-készletre, amelyhez csatlakozni szeretne.
 4. Keresse meg a teljes kiszolgálónevet.
 
@@ -70,13 +70,13 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 Az SQL-készlet Szabványosít néhány beállítást a csatlakozás és az objektum létrehozása során. Ezeket a beállításokat nem lehet felülírni, és a következők lehetnek:
 
-| Adatbázis-beállítások | Érték |
+| SQL-készlet beállítása | Érték |
 |:--- |:--- |
 | [ANSI_NULLS](/sql/t-sql/statements/set-ansi-nulls-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |ON |
 | [QUOTED_IDENTIFIERS](/sql/t-sql/statements/set-quoted-identifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |ON |
 | [DATEFORMAT](/sql/t-sql/statements/set-dateformat-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |hné |
 | [DATEFIRST](/sql/t-sql/statements/set-datefirst-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |7 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval](sql-data-warehouse-query-visual-studio.md). További információ a hitelesítési lehetőségekről: [Az Azure szinapszis Analytics hitelesítése](sql-data-warehouse-authentication.md).

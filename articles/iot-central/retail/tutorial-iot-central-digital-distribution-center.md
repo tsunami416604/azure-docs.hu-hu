@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d19310dbd54c8bd5f9854ff86af051b68c5cd378
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980737"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463311"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Oktatóanyag: a Digital Distribution Center alkalmazás-sablon üzembe helyezése és átjárása
 
@@ -34,8 +34,7 @@ Az alábbi lépések végrehajtásával hozhat létre alkalmazást
 
 1. Navigáljon az Azure IoT Central Application Manager webhelyére. Válassza a **Létrehozás** lehetőséget a bal oldali navigációs sávon, majd kattintson a **kereskedelmi** fülre.
 
-    > [!div class="mx-imgBorder"]
-    > ![A Digital Distribution Center alkalmazás sablonjának kijelölését bemutató képernyőkép](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-ddc/iotc-retail-homepage.png" alt-text="A Digital Distribution Center alkalmazás sablonja":::
 
 2. Válassza a **kereskedelem** fület, és válassza az alkalmazás **létrehozása** a **digitális terjesztési központ alkalmazás** alatt elemet.
 
@@ -45,11 +44,9 @@ Az alábbi lépések végrehajtásával hozhat létre alkalmazást
    **Számlázási információ**: a címtár, az Azure-előfizetés és a régió részletei szükségesek az erőforrások kiépítéséhez.
    **Létrehozás**: válassza a létrehozás lehetőséget az oldal alján az alkalmazás üzembe helyezéséhez.
 
-    > [!div class="mx-imgBorder"]
-    > ![Képernyőfelvétel: alkalmazás létrehozása a Digital Distribution Center Application sablonból](./media/tutorial-iot-central-ddc/ddc-create.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create.png" alt-text="Képernyőfelvétel: alkalmazás létrehozása a Digital Distribution Center Application sablonból":::
 
-    > [!div class="mx-imgBorder"]
-    > ![Az alkalmazás létrehozásakor a számlázási beállításokat ábrázoló képernyőkép](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create-billinginfo.png" alt-text="Az alkalmazás létrehozásakor a számlázási beállításokat ábrázoló képernyőkép":::
 
 ## <a name="walk-through-the-application-dashboard"></a>Az alkalmazás irányítópultjának átjárása 
 
@@ -108,7 +105,7 @@ Válassza a feladatok fület az alkalmazás sablonjának részeként öt külön
 > ![A Digital Distribution Center alkalmazásban található feladatok listáját bemutató képernyőkép](./media/tutorial-iot-central-ddc/ddc-jobs.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját a **felügyeleti**  >  **alkalmazás beállításainak** meglátogatásával, és kattintson a **Törlés**gombra.
+Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját a **felügyeleti**  >  **alkalmazás beállításainak** meglátogatásával, és kattintson a **Törlés** gombra.
 
 > [!div class="mx-imgBorder"]
 > ![Képernyőfelvétel az alkalmazás törléséről, ha elkészült vele](./media/tutorial-iot-central-ddc/ddc-cleanup.png)

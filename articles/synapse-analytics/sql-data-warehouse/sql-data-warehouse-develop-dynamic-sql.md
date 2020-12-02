@@ -1,30 +1,30 @@
 ---
 title: Dinamikus SQL használata
-description: Tippek a dinamikus SQL-t használó fejlesztési megoldásokhoz a szinapszis SQL-készletben.
+description: Tippek a dinamikus SQL-készleteket használó fejlesztői megoldásokhoz az Azure szinapszis Analyticsben.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bce79b8e18b3ec6f1fd139af280086281bbdda98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 52bc7bdc63f754d52bf4a69097c1dd309a6dc3ec
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213465"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462783"
 ---
-# <a name="dynamic-sql-in-synapse-sql-pool"></a>Dinamikus SQL a szinapszis SQL-készletben
+# <a name="dynamic-sql-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Dinamikus SQL a dedikált SQL-készletek számára az Azure szinapszis Analyticsben
 
-Ez a cikk az SQL-készletben található dinamikus SQL-t használó fejlesztési megoldásokhoz nyújt tippeket.
+Ez a cikk a dinamikus SQL-t használó, dedikált SQL-készletekben található fejlesztési megoldásokhoz nyújt tippeket.
 
 ## <a name="dynamic-sql-example"></a>Dinamikus SQL-példa
 
-Az SQL-készlet kódjának fejlesztésekor előfordulhat, hogy dinamikus SQL-t kell használnia a rugalmas, általános és moduláris megoldások biztosításához. Az SQL-készlet jelenleg nem támogatja a blob-adattípusokat.
+A dedikált SQL-készletek alkalmazási kódjának fejlesztésekor előfordulhat, hogy a dinamikus SQL-t kell használnia a rugalmas, általános és moduláris megoldások biztosításához. A dedikált SQL-készletek jelenleg nem támogatják a blob-adattípusokat.
 
 A blob-adattípusok nem támogatják a karakterláncok méretét, mivel a blob-adattípusok a varchar (max) és a nvarchar (max) típusokat is tartalmazzák.
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 5e2bdec8b3c628f1d470acb3e27bb18eabbc71ac
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 563ccdb0633f94acccf3ade9faf1c40c28f108ac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565538"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462937"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>A Használat irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -21,7 +21,7 @@ Ez a cikk a partner Center használati irányítópultján tartalmaz informáci�
 A partner Center használati irányítópultjának **kereskedelmi piactér** területén való eléréséhez válassza a **[Analyze](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **használat** elemzése lehetőséget.
 
 >[!NOTE]
-> Az analitikai terminológia részletes leírását lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./partner-center-portal/faq-terminology.md).
+> Az analitikai terminológia részletes leírását lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./analytics-faq.md).
 
 ## <a name="usage-dashboard"></a>Használat irányítópult
 
@@ -76,7 +76,7 @@ Kiválaszthat bármely ajánlatot, és legfeljebb három SKU-t az ajánlathoz é
 
 Az **ajánlatok és SKU-diagramok alapján** megjelenő megrendelések az összes ajánlat mértékeit és trendeit mutatják be. Vegye figyelembe a következőket:
 
-- A legfontosabb ajánlatok a gráfban jelennek meg, a többi ajánlat pedig az **összes Rest** -ként van csoportosítva.
+- A legfontosabb ajánlatok a gráfban jelennek meg, a többi ajánlat pedig az **összes Rest**-ként van csoportosítva.
 - A jelmagyarázatban megadott ajánlatokat kiválasztva csak a gráfban található ajánlatokat jelenítheti meg.
 - Ha a diagramon egy szelet fölé viszi az egérmutatót, a megrendelések száma és az ajánlat százalékos aránya az összes ajánlathoz képest teljes számú rendelésre hasonlít.
 - A **Orders by ajánlatok trend** a havi havi növekedési trendeket jeleníti meg. A hónap oszlop a megrendelések számát jelöli az ajánlat neve alapján. A diagram a z-tengelyen ábrázolt növekedési százalékos trendet jeleníti meg.
@@ -171,13 +171,13 @@ A virtuális gépek nyers használatára szolgáló widgetek és exportálási j
 
 A **mért használat** lap az ajánlati típusok használati adatait jeleníti meg, ahol a használat mérése a/mérési dimenzió alapján történik. Jelenleg az SaaS-ajánlat típusa meghaladja a következőt:. A lapon láthatók a túlterhelési trendek grafikus ábrázolása a SaaS által mért számlázási használat esetében:
 
-- Túlhasználati **trend mérési dimenzió szerint** : az ajánlat kiválasztott mérési dimenziójához tartozó havi túlhasználati trendet jeleníti meg. Az X tengely a hónapot jelöli, és az Y tengely a túlhasználati felhasználás mennyiségét jelöli. Az egyéni fogyasztásmérő mértékegysége az Y tengelyen is megjelenik.
+- Túlhasználati **trend mérési dimenzió szerint**: az ajánlat kiválasztott mérési dimenziójához tartozó havi túlhasználati trendet jeleníti meg. Az X tengely a hónapot jelöli, és az Y tengely a túlhasználati felhasználás mennyiségét jelöli. Az egyéni fogyasztásmérő mértékegysége az Y tengelyen is megjelenik.
 
     :::image type="content" source="./media/usage-dashboard/metered-usage.png" alt-text="A virtuális gép normalizált használati diagramjának ábrázolása a használati irányítópulton.":::
 
-- Túlterhelési **trend SKU szerint** : a kiválasztott mérési dimenzió használati mennyiségének a SKU/Plans alapján történő használatának tendenciáját jelöli. Megjelenik az első öt csomag a kiválasztott ajánlat legmagasabb használati szintjével.
+- Túlterhelési **trend SKU szerint**: a kiválasztott mérési dimenzió használati mennyiségének a SKU/Plans alapján történő használatának tendenciáját jelöli. Megjelenik az első öt csomag a kiválasztott ajánlat legmagasabb használati szintjével.
 
-- **Többek közti trend az ügyfelektől** : a vásárlói Tanács a legmagasabb használati időt használó ügyfelek halmozott listáját jeleníti meg, és a _ranglistán_ jelenik meg, amelyet az egyéni fogyasztásmérő legmagasabb használata rangsorol. Válasszon ki egy ügyfelet a ranglistán a kiválasztott mérési dimenzió túlhasználati trendjeinak megtekintéséhez.
+- **Többek közti trend az ügyfelektől**: a vásárlói Tanács a legmagasabb használati időt használó ügyfelek halmozott listáját jeleníti meg, és a _ranglistán_ jelenik meg, amelyet az egyéni fogyasztásmérő legmagasabb használata rangsorol. Válasszon ki egy ügyfelet a ranglistán a kiválasztott mérési dimenzió túlhasználati trendjeinak megtekintéséhez.
 
     :::image type="content" source="./media/usage-dashboard/metered-usage-by-customers.png" alt-text="A mért használatot mutatja az ügyfelek diagramon a használati irányítópulton.":::
 
@@ -186,7 +186,7 @@ Ha több egyéni mérőszámot használó ajánlata van, a mért számlázási h
 > [!TIP]
 > Az adatletöltéshez használhatja a letöltés ikont bármelyik widget jobb felső sarkában. Az egyes widgetekkel kapcsolatos visszajelzéseket a "hüvelykujj fel" vagy a "hüvelykujj lefelé" ikonra kattintva teheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [hozzáférés analitikus jelentések a kereskedelmi piactérhez a partner Centerben](./partner-center-portal/analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).
@@ -194,4 +194,4 @@ Ha több egyéni mérőszámot használó ajánlata van, a mért számlázási h
 - A virtuális gép (VM) használati és mért számlázási mérőszámokat kínál, lásd [a használati irányítópultot a kereskedelmi piactér elemzésében](usage-dashboard.md).
 - Az elmúlt 30 napban a letöltési kérelmek listáját lásd: a [kereskedelmi piactér Analytics letöltések irányítópultja](./partner-center-portal/downloads-dashboard.md).
 - Ha szeretné megtekinteni az Azure Marketplace-en és a Microsoft AppSource-on található ajánlatok felhasználói visszajelzésének összevont nézetét, tekintse meg a következő témakört: [ratings & Reviews Analytics](./partner-center-portal/ratings-reviews.md)
-- A kereskedelmi piactér elemzésével és az adatkifejezések átfogó szótárával kapcsolatos gyakori kérdésekért lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./partner-center-portal/faq-terminology.md).
+- A kereskedelmi piactér elemzésével és az adatkifejezések átfogó szótárával kapcsolatos gyakori kérdésekért lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./analytics-faq.md).

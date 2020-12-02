@@ -1,6 +1,6 @@
 ---
-title: Folyamatos integráció és üzembe helyezés
-description: Nagyvállalati szintű adatbázis-DevOps az adattárház-kezelés beépített támogatásával az Azure-folyamatok használatával történő folyamatos integrációhoz és üzembe helyezéshez.
+title: Folyamatos integráció és üzembe helyezés a dedikált SQL-készlethez
+description: Nagyvállalati szintű adatbázis-DevOps felület az Azure szinapszis Analytics dedikált SQL-készletéhez, beépített támogatással a folyamatos integrációhoz és üzembe helyezéshez az Azure-folyamatok használatával.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 061be5addd0c236db5d982e6103e3cf455b9c361
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 35f503e7214fa91962c91c35611fc9447302f9fc
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480530"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462805"
 ---
-# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Az adattárházak folyamatos integrációja és üzembe helyezése
+# <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet folyamatos integrációja és üzembe helyezése az Azure szinapszis Analytics szolgáltatásban
 
 Ez az egyszerű oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz-(SSDT-) adatbázis-projekt az Azure DevOps, és hogyan használhat Azure-folyamatokat a folyamatos integráció és üzembe helyezés beállításához. Ez az oktatóanyag a folyamatos integrációs és üzembe helyezési folyamat kiépítésének második lépése az adattárházak esetében.
 
@@ -58,9 +58,9 @@ Ezen a ponton olyan egyszerű környezettel rendelkezik, ahol a forrás-felügye
 
    A folyamat futtatása és ellenőrzése. Helyben végezheti a módosításokat, és ellenőrizheti a verziókövetés módosításait, amelyeknek automatikus buildet és üzembe helyezést kell létrehozniuk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A [SZINAPSZIS SQL Pool architektúrájának](massively-parallel-processing-mpp-architecture.md) megismerése
-- [SQL-készlet gyors létrehozása](create-data-warehouse-portal.md)
+- A [DEDIKÁLT SQL-készlet (korábban SQL DW) architektúrájának](massively-parallel-processing-mpp-architecture.md) megismerése
+- [DEDIKÁLT SQL-készlet gyors létrehozása (korábban SQL DW)](create-data-warehouse-portal.md)
 - [Mintaadatok betöltése](load-data-from-azure-blob-storage-using-polybase.md)
 - [Videók](sql-data-warehouse-videos.md) megismerése

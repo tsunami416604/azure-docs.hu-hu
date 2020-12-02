@@ -1,5 +1,5 @@
 ---
-title: Szinapszis SQL-javaslatok
+title: Dedikált SQL Pool Azure Advisor javaslatok
 description: Tudnivalók a szinapszis SQL-javaslatairól és azok létrehozásáról
 services: synapse-analytics
 author: kevinvngo
@@ -11,18 +11,18 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 667629b7f613b11f40528b039c7525339b7a62d0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85482853"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462857"
 ---
-# <a name="synapse-sql-recommendations"></a>Szinapszis SQL-javaslatok
+# <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Javaslatok Azure Advisor dedikált SQL-készletre az Azure szinapszis Analyticsben
 
-Ez a cikk a Azure Advisor által kiszolgált szinapszis SQL-ajánlásokat ismerteti.  
+Ez a cikk a Azure Advisorban elérhető dedikált SQL Pool-javaslatokat ismerteti.  
 
-A szinapszis SQL javaslatokat tesz arra vonatkozóan, hogy az adattárház számítási feladatait következetesen optimalizálták a teljesítmény érdekében. A javaslatok szorosan integrálva vannak a [Azure Advisorekkel](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) , így közvetlenül a [Azure Portalon](https://aka.ms/Azureadvisor)belül biztosíthatja az ajánlott eljárásokat. A szinapszis SQL napi ütemben gyűjti az aktív számítási feladatra vonatkozó telemetria és felületek javaslatait. A támogatott javaslatok alább láthatók a javasolt műveletek alkalmazásával együtt.
+A dedikált SQL-készlet ajánlásokat biztosít, amelyek biztosítják, hogy az adattárház-számítási feladatok konzisztensen legyenek optimalizálva teljesítményre. A javaslatok szorosan integrálva vannak a [Azure Advisorekkel](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) , így közvetlenül a [Azure Portalon](https://aka.ms/Azureadvisor)belül biztosíthatja az ajánlott eljárásokat. A dedikált SQL-készlet az aktív számítási feladatok telemetria és felületi javaslatait napi szinten gyűjti. A támogatott javaslatok alább láthatók a javasolt műveletek alkalmazásával együtt.
 
 [A javaslatait](https://aka.ms/Azureadvisor) még ma is megtekintheti! 
 
@@ -73,4 +73,4 @@ A lekérdezés teljesítménye csökkenhet, ha magas a tempdb-tartalom.  A tempd
 
 ## <a name="data-loading-misconfiguration"></a>Az adatbetöltések helytelen konfigurációja
 
-Az adatok a késés csökkentése érdekében mindig az SQL-készlettel azonos régióban lévő Storage-fiókból tölthetők be. Az átviteli sebesség maximalizálása érdekében használja a [másolási utasítást a nagy átviteli sebességű adatok](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) betöltéséhez és a tárolási fiókban található előkészített fájlok felosztásához. Ha nem tudja használni a COPY utasítást, a SqlBulkCopy API-t vagy a BCP-t is használhatja a jobb átviteli sebesség érdekében. További információ a következő [dokumentációban](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)található: további adattöltési útmutató. 
+A késés csökkentése érdekében mindig töltsön be egy olyan Storage-fiók adatait, amely ugyanabban a régióban található, mint a dedikált SQL-készlet. Az átviteli sebesség maximalizálása érdekében használja a [másolási utasítást a nagy átviteli sebességű adatok](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) betöltéséhez és a tárolási fiókban található előkészített fájlok felosztásához. Ha nem tudja használni a COPY utasítást, a SqlBulkCopy API-t vagy a BCP-t is használhatja a jobb átviteli sebesség érdekében. További információ a következő [dokumentációban](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)található: további adattöltési útmutató. 
