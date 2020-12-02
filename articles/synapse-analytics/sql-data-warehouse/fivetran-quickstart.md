@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Fivetran és adattárház'
-description: Ismerkedés a Fivetran és az Azure szinapszis Analytics adattárházával.
+title: 'Rövid útmutató: Fivetran és dedikált SQL-készlet (korábban SQL DW)'
+description: Ismerkedjen meg a Fivetran és a dedikált SQL-készlettel (korábban SQL DW) az Azure szinapszis Analytics szolgáltatásban.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 96e679c0b284cc649dbde3fba1b640f4e09df05e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f332c3b0bd53d80d4a8471f53c56ecab611787c1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001847"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456378"
 ---
-# <a name="quickstart-fivetran-with-data-warehouse"></a>Gyors útmutató: Fivetran az adattárházban 
+# <a name="quickstart-fivetran-with-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Rövid útmutató: Fivetran dedikált SQL-készlettel (korábban SQL DW) az Azure szinapszis Analyticsben 
 
-Ez a rövid útmutató azt ismerteti, hogyan állíthat be új Fivetran-felhasználót egy SQL-készlettel kiépített Azure szinapszis Analytics-adattárházhoz való együttműködéshez. A cikk feltételezi, hogy van egy meglévő adattárháza.
+Ez a rövid útmutató azt ismerteti, hogyan állítható be egy új Fivetran-felhasználó egy dedikált SQL-készlettel (korábban SQL DW) való működéshez. A cikk feltételezi, hogy rendelkezik egy meglévő dedikált SQL-készlettel (korábban SQL DW).
 
 ## <a name="set-up-a-connection"></a>Kapcsolatok beállítása
 
-1. Keresse meg az adattárházhoz való kapcsolódáshoz használt teljes kiszolgálónév és adatbázisnév nevét.
+1. Keresse meg a dedikált SQL-készlethez (korábban SQL DW) való kapcsolódáshoz használt teljes kiszolgálónevet és adatbázisnevet.
     
-    Ha segítségre van szüksége az információk megtalálásához, tekintse meg a [Kapcsolódás az adattárházhoz](../sql/connect-overview.md)című témakört.
+    Ha segítségre van szüksége az információk megtalálásához, tekintse [meg a Kapcsolódás a DEDIKÁLT SQL-készlethez (korábbi nevén SQL DW)](sql-data-warehouse-connection-strings.md)című témakört.
 
 2. A telepítővarázsló segítségével válassza ki, hogy közvetlenül vagy SSH-alagúton keresztül kívánja-e csatlakozni az adatbázist.
 
@@ -34,13 +34,13 @@ Ez a rövid útmutató azt ismerteti, hogyan állíthat be új Fivetran-felhaszn
 
    Ha úgy dönt, hogy SSH-alagúton keresztül csatlakozik, a Fivetran egy külön kiszolgálóhoz csatlakozik a hálózaton. A kiszolgáló egy SSH-alagutat biztosít az adatbázishoz. Ezt a módszert kell használnia, ha az adatbázis nem elérhető alhálózatban van egy virtuális hálózaton.
 
-3. Adja hozzá az IP- **52.0.2.4** a kiszolgálói szintű tűzfallal, hogy engedélyezze a bejövő kapcsolatokat az adattárház-példányhoz a Fivetran.
+3. Adja hozzá az IP- **52.0.2.4** a kiszolgálói szintű tűzfallal, hogy engedélyezze a bejövő kapcsolatokat a dedikált SQL-készlet (korábban SQL DW) példányához a Fivetran.
 
    További információ: [kiszolgálói szintű tűzfalszabály létrehozása](create-data-warehouse-portal.md#create-a-server-level-firewall-rule).
 
 ## <a name="set-up-user-credentials"></a>Felhasználói hitelesítő adatok beállítása
 
-1. Kapcsolódjon az adattárházhoz SQL Server Management Studio (SSMS) vagy az Ön által előnyben részesített eszköz használatával. Jelentkezzen be kiszolgálói rendszergazda felhasználóként. Ezután futtassa a következő SQL-parancsokat a Fivetran felhasználó létrehozásához:
+1. Kapcsolódjon a dedikált SQL-készlethez (korábbi nevén SQL DW) a SQL Server Management Studio (SSMS) vagy az Ön által előnyben részesített eszköz használatával. Jelentkezzen be kiszolgálói rendszergazda felhasználóként. Ezután futtassa a következő SQL-parancsokat a Fivetran felhasználó létrehozásához:
 
     - A Master adatbázisban: 
     
@@ -48,7 +48,7 @@ Ez a rövid útmutató azt ismerteti, hogyan állíthat be új Fivetran-felhaszn
       CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
       ```
 
-    - Az adatraktár-adatbázisban:
+    - A dedikált SQL-készlet (korábban SQL DW) adatbázisban:
 
       ```sql
       CREATE USER fivetran_user_without_login without login;
@@ -56,7 +56,7 @@ Ez a rövid útmutató azt ismerteti, hogyan állíthat be új Fivetran-felhaszn
       GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
       ```
 
-2. Adja meg a Fivetran felhasználónak a következő engedélyeket az adattárházhoz:
+2. Adja meg a Fivetran felhasználónak a következő engedélyeket a dedikált SQL-készlethez (korábban SQL DW):
 
     ```sql
     GRANT CONTROL to fivetran;
@@ -77,7 +77,7 @@ Ez a rövid útmutató azt ismerteti, hogyan állíthat be új Fivetran-felhaszn
 
 ## <a name="connect-from-fivetran"></a>Kapcsolat a Fivetran
 
-Ha a Fivetran-fiókból szeretne csatlakozni az adattárházhoz, adja meg az adatraktár eléréséhez használt hitelesítő adatokat: 
+Ha a Fivetran-fiókból szeretne csatlakozni a dedikált SQL-készlethez (korábban SQL DW), adja meg a dedikált SQL-készlet eléréséhez használt hitelesítő adatokat (korábbi nevén SQL DW): 
 
 * Gazdagép (a kiszolgáló neve).
 * Port.

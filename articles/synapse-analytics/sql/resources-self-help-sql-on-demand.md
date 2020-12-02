@@ -1,6 +1,6 @@
 ---
-title: Kiszolgáló nélküli SQL-készlet (előzetes verzió) – önsegítő
-description: Ez a szakasz olyan információkat tartalmaz, amelyek segíthetnek a kiszolgáló nélküli SQL-készlet (előzetes verzió) hibáinak elhárításában.
+title: Kiszolgáló nélküli SQL-készlet önkiszolgáló súgója
+description: Ez a szakasz olyan információkat tartalmaz, amelyek segíthetnek a kiszolgáló nélküli SQL-készlettel kapcsolatos problémák elhárításában.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,23 +9,23 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: aefdb90c3e6c8d3abc3924ecebb2aa46739e99ad
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682621"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457183"
 ---
-# <a name="self-help-for-serverless-sql-pool-preview"></a>Önsegítő kiszolgáló nélküli SQL-készlet (előzetes verzió)
+# <a name="self-help-for-serverless-sql-pool"></a>Önkiszolgáló nélküli SQL-készlet – Súgó
 
-Ez a cikk azt ismerteti, hogyan lehet elhárítani a leggyakoribb problémákat a kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban.
+Ez a cikk azt ismerteti, hogyan lehet elhárítani a leggyakoribb problémákat a kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben.
 
 ## <a name="serverless-sql-pool-is-grayed-out-in-synapse-studio"></a>A kiszolgáló nélküli SQL-készlet szürkén jelenik meg a szinapszis Studióban
 
 Ha a szinapszis Studio nem tud kapcsolatot létesíteni a kiszolgáló nélküli SQL-készlettel, megfigyelheti, hogy a kiszolgáló nélküli SQL-készlet szürkén jelenik meg, vagy "offline" állapotot jelenít meg. Ez a probléma általában akkor fordul elő, ha a következő esetek valamelyike történik:
 
-1) A hálózat megakadályozza az Azure szinapszis-háttérrel való kommunikációt. A leggyakoribb eset az, hogy a 1443-es port le van tiltva. A kiszolgáló nélküli SQL-készlet működésének megkezdéséhez tiltsa le a portot. Más problémák miatt előfordulhat, hogy a kiszolgáló nélküli SQL-készlet is működik, [További információért látogasson el a teljes hibaelhárítási útmutatóba](../troubleshoot/troubleshoot-synapse-studio.md).
-2) Nincs engedélye a kiszolgáló nélküli SQL-készletbe való bejelentkezésre. A hozzáféréshez az Azure szinapszis-munkaterület rendszergazdáinak egyike adja hozzá a munkaterület-rendszergazdához vagy az SQL-rendszergazdai szerepkörhöz. [További információkért tekintse meg a hozzáférés-vezérlés teljes útmutatóját](access-control.md).
+1) A hálózat megakadályozza az Azure szinapszis-háttérrel való kommunikációt. A legtöbb esetben a 1443-as port le van tiltva. A kiszolgáló nélküli SQL-készlet működésének megkezdéséhez tiltsa le a portot. Más problémák miatt előfordulhat, hogy a kiszolgáló nélküli SQL-készlet is működik, [További információért látogasson el a teljes hibaelhárítási útmutatóba](../troubleshoot/troubleshoot-synapse-studio.md).
+2) Nincs engedélye a kiszolgáló nélküli SQL-készletbe való bejelentkezésre. A hozzáféréshez az Azure Synapse-munkaterület egyik rendszergazdájának hozzá kell adnia Önt a munkaterület-rendszergazda vagy az SQL-rendszergazda szerepkörhöz. [További információért tekintse meg a hozzáférés-vezérlés teljes körű útmutatóját](access-control.md).
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>A lekérdezés sikertelen, mert a fájl nem nyitható meg
 
@@ -37,7 +37,7 @@ Ha a lekérdezés sikertelen, a következő hibaüzenet jelenik meg: "Ez a leké
 
 - Győződjön meg arról, hogy megfelelő méretű adattípusok vannak használatban. Emellett a karakterlánc-oszlopokhoz tartozó Parquet-fájlok sémáját is megadhatja, mivel alapértelmezés szerint VARCHAR (8000) lesz. 
 
-- Ha a lekérdezés CSV-fájlokat céloz meg, érdemes lehet [statisztikai adatokat létrehoznia](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview). 
+- Ha a lekérdezés CSV-fájlokat céloz meg, érdemes lehet [statisztikai adatokat létrehoznia](develop-tables-statistics.md#statistics-in-serverless-sql-pool). 
 
 - A lekérdezés optimalizálásához látogasson el [a kiszolgáló nélküli SQL-készlet teljesítményének bevált eljárásaira](best-practices-sql-on-demand.md) .  
 
@@ -71,7 +71,7 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
 WITH ( FORMAT_TYPE = PARQUET)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a következő cikkeket, amelyekből többet tudhat meg a kiszolgáló nélküli SQL-készlet használatáról:
 

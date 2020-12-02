@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: szinapszis SQL-készlet létrehozása Azure PowerShell'
-description: Hozzon létre gyorsan egy szinapszis SQL-készletet egy kiszolgálói szintű tűzfalszabály segítségével Azure PowerShell használatával.
+title: 'Gyors útmutató: dedikált SQL-készlet létrehozása (korábban SQL DW) Azure PowerShell'
+description: A Azure PowerShell használatával gyorsan létrehozhat egy dedikált SQL-készletet (korábban SQL DW) egy kiszolgálói szintű tűzfalszabály segítségével.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 5408944f16509f83c30b9ee066d6f0a93dab95f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ce94b62d67048896cdf7355043ec2dde7f2df79
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91567655"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456587"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-with-azure-powershell"></a>Gyors útmutató: szinapszis SQL-készlet létrehozása Azure PowerShell
+# <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Gyors útmutató: dedikált SQL-készlet létrehozása (korábban SQL DW) Azure PowerShell
 
-Hozzon létre egy szinapszis SQL-készletet (adattárház) az Azure szinapszis Analyticsben Azure PowerShell használatával.
+Hozzon létre egy dedikált SQL-készletet (korábbi nevén SQL DW) az Azure szinapszis Analyticsben Azure PowerShell használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 > [!IMPORTANT]
-> Egy SQL-készlet létrehozása egy új számlázható szolgáltatáshoz vezethet.  További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Egy dedikált SQL-készlet (korábban SQL DW) létrehozása egy új számlázható szolgáltatást eredményezhet.  További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -72,7 +72,7 @@ $endip = "0.0.0.0"
 $databasename = "mySampleDataWarehouse"
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy [Azure-erőforráscsoportot](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancs használatával. Az erőforráscsoport egy tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen.
 
@@ -93,7 +93,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása
 
-Hozzon létre egy [kiszolgálói szintű tűzfalszabály](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancs használatával. A kiszolgálói szintű tűzfalszabályok lehetővé teszik egy külső alkalmazás, például SQL Server Management Studio vagy a SQLCMD segédprogram számára az SQL-készlethez való kapcsolódást az SQL Pool szolgáltatás tűzfala segítségével.
+Hozzon létre egy [kiszolgálói szintű tűzfalszabály](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancs használatával. A kiszolgálói szintű tűzfalszabályok lehetővé teszik egy külső alkalmazás, például a SQL Server Management Studio vagy a SQLCMD segédprogram számára a dedikált SQL-készlethez (korábban SQL DW) való kapcsolódást a dedikált SQL Pool Service tűzfalon keresztül.
 
 A következő példában a tűzfal csak más Azure-erőforrások számára van nyitva. A külső csatlakozási lehetőségek engedélyezéséhez módosítsa az IP-címet egy, az Ön környezetének megfelelő címre. Az összes IP-cím megnyitásához használja a 0.0.0.0 címet kezdő IP-címként és a 255.255.255.255 címet zárócímként.
 
@@ -107,9 +107,9 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 > Az SQL-végpontok a 1433-es porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, lehetséges, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, akkor nem fog tudni csatlakozni a kiszolgálóhoz, ha az informatikai részleg megnyitja a 1433-es portot.
 >
 
-## <a name="create-a-sql-pool"></a>SQL-készlet létrehozása
+## <a name="create-a-dedicated-sql-pool-formerly-sql-dw"></a>Dedikált SQL-készlet létrehozása (korábban SQL DW)
 
-Az alábbi példa egy SQL-készletet hoz létre a korábban definiált változók használatával.  Meghatározza a szolgáltatás célját DW100c, amely az SQL-készlet alacsonyabb díjszabású kiindulási pontja.
+Az alábbi példa egy dedikált SQL-készletet (korábban SQL DW) hoz létre a korábban definiált változók használatával.  Meghatározza a szolgáltatás célját a DW100c, amely a dedikált SQL-készlet (korábban SQL DW) alacsonyabb díjas kiindulópontja.
 
 ```Powershell
 New-AzSqlDatabase `
@@ -125,10 +125,10 @@ New-AzSqlDatabase `
 A szükséges paraméterek a következők:
 
 * **RequestedServiceObjectiveName**: a kért [adatraktár-egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) mennyisége. Az érték növelése növeli a számítási költségeket. A támogatott értékek listáját a [memória és a Egyidejűség korlátai](memory-concurrency-limits.md)című részben tekintheti meg.
-* **Databasename**: a létrehozandó SQL-készlet neve.
+* **Databasename**: a létrehozandó dedikált SQL-készlet (korábban SQL DW) neve.
 * **Kiszolgálónév**: a létrehozáshoz használt kiszolgáló neve.
 * **ResourceGroupName**: az Ön által használt erőforráscsoport. Az előfizetésben elérhető erőforráscsoportok kereséséhez használja a Get-AzureResource parancsot.
-* **Kiadás**: az SQL-készlet létrehozásához "DataWarehouse" értéknek kell lennie.
+* **Kiadás**: "DataWarehouse" kell lennie egy dedikált SQL-készlet (korábban SQL DW) létrehozásához.
 
 A választható paraméterek a következők:
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>További lépések
 
-Ezzel létrehozott egy SQL-készletet, létrehozott egy tűzfalszabályet, és csatlakoztatta az SQL-készlethez. További információért folytassa az [SQL-készletbe való betöltéssel](load-data-from-azure-blob-storage-using-polybase.md) foglalkozó cikket.
+Létrehozott egy dedikált SQL-készletet (korábban SQL DW), létrehozott egy tűzfalszabályet, és csatlakoztatta a dedikált SQL-készlethez. További információért folytassa a [betöltési információkat egy DEDIKÁLT SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md) .

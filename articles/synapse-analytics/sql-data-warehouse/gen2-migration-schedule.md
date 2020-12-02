@@ -1,6 +1,6 @@
 ---
-title: SQL-készlet migrálása a Gen2-be
-description: A meglévő SQL-készletek Gen2 és az áttelepítési ütemterv régiónként való áttelepítésére vonatkozó utasítások.
+title: A dedikált SQL-készlet (korábban SQL DW) migrálása a Gen2-be
+description: Útmutató meglévő dedikált SQL-készlet (korábban SQL DW) Gen2-re történő áttelepítéséhez és az áttelepítési ütemtervhez régiónként.
 services: synapse-analytics
 author: mlee3gsd
 ms.author: anjangsh
@@ -12,16 +12,16 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: eebde4470ba2635a5287cb3b0103fa49e0e243e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 512775369bd7787c6228c6d452be0e236ddf5cc2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441000"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456329"
 ---
-# <a name="upgrade-your-sql-pool-to-gen2"></a>SQL-készlet frissítése Gen2
+# <a name="upgrade-your-dedicated-sql-pool-formerly-sql-dw-to-gen2"></a>A dedikált SQL-készlet (korábban SQL DW) frissítése a Gen2
 
-A Microsoft segít csökkenteni az SQL-készletek beléptetési szintű költségeit.  Az SQL-készlethez már elérhetők az alacsonyabb számítási szintek, amelyek képesek az igényes lekérdezések kezelésére. Olvassa el a teljes bejelentést a [Gen2-hez készült, alacsonyabb számítási szintű támogatással](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Az új ajánlat az alábbi táblázatban említett régiókban érhető el. A támogatott régiók esetében a meglévő Gen1 SQL-készletek a következő módon frissíthetők Gen2-re:
+A Microsoft segít csökkenteni a dedikált SQL-készlet (korábban SQL DW) futtatásának belépési szintű költségeit.  A igényes lekérdezések kezelésére képes alacsonyabb számítási szintek már elérhetők a dedikált SQL-készlet (korábban SQL DW) számára. Olvassa el a teljes bejelentést a [Gen2-hez készült, alacsonyabb számítási szintű támogatással](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Az új ajánlat az alábbi táblázatban említett régiókban érhető el. A támogatott régiók esetében a meglévő Gen1 dedikált SQL-készlet (korábbi nevén SQL DW) a következőkre frissíthető Gen2:
 
 - **Az automatikus frissítési folyamat:** Az automatikus frissítések nem indulnak el, amint a szolgáltatás elérhető egy régióban.  Ha az automatikus frissítések egy adott régióban kezdődnek, az egyes adatraktár-frissítések a kiválasztott karbantartási ütemezés szerint zajlanak.
 - [**Saját frissítés a Gen2-re:**](#self-upgrade-to-gen2) A frissítéshez beállíthatja, hogy mikor kell frissíteni a Gen2. Ha a régiója még nem támogatott, a visszaállítási pontról közvetlenül egy támogatott régió Gen2-példányára állíthatja vissza.
@@ -43,9 +43,9 @@ A következő táblázat összefoglalja a régiót, ha az alsó Gen2 számítás
 
 ## <a name="automatic-upgrade-process"></a>Automatikus frissítési folyamat
 
-A fenti rendelkezésre állási diagram alapján a Gen1-példányok automatikus frissítéseit ütemezjük. Az SQL-készlet rendelkezésre állásával kapcsolatos váratlan megszakítások elkerülése érdekében az automatikus frissítések ütemezése a karbantartási ütemezés szerint történik. Az új Gen1-példány létrehozásának lehetősége le lesz tiltva a Gen2-re történő automatikus frissítéssel rendelkező régiókban. Az automatikus frissítések befejezését követően a Gen1 elavulttá válik. További információ az ütemtervekről: [karbantartási ütemterv megtekintése](maintenance-scheduling.md#view-a-maintenance-schedule)
+A fenti rendelkezésre állási diagram alapján a Gen1-példányok automatikus frissítéseit ütemezjük. A dedikált SQL-készlet (korábban SQL DW) rendelkezésre állásával kapcsolatos váratlan megszakítások elkerülése érdekében az automatikus frissítések ütemezése a karbantartási ütemterv szerint történik. Az új Gen1-példány létrehozásának lehetősége le lesz tiltva a Gen2-re történő automatikus frissítéssel rendelkező régiókban. Az automatikus frissítések befejezését követően a Gen1 elavulttá válik. További információ az ütemtervekről: [karbantartási ütemterv megtekintése](maintenance-scheduling.md#view-a-maintenance-schedule)
 
-A frissítési folyamat egy rövid, a kapcsolat (körülbelül 5 perc) bekapcsolását is magában foglalja az SQL-készlet újraindításakor.  Az SQL-készlet újraindítása után a szolgáltatás teljes mértékben elérhető lesz. A teljesítmény romlása azonban akkor is előfordulhat, ha a frissítési folyamat továbbra is frissíti az adatfájlokat a háttérben. A teljesítménycsökkenés teljes időtartama az adatfájlok méretétől függően változik.
+A frissítési folyamat egy rövid, a kapcsolat (körülbelül 5 perc) bekapcsolását vonja maga után, amikor újraindítjuk a dedikált SQL-készletet (korábban SQL DW).  Ha a dedikált SQL-készlet (korábban SQL DW) újra lett indítva, a teljes használatra elérhető lesz. A teljesítmény romlása azonban akkor is előfordulhat, ha a frissítési folyamat továbbra is frissíti az adatfájlokat a háttérben. A teljesítménycsökkenés teljes időtartama az adatfájlok méretétől függően változik.
 
 Az adatfájlok frissítési folyamatát is felgyorsíthatja az [Alter index Újraépítés](sql-data-warehouse-tables-index.md) az összes elsődleges oszlopcentrikus-táblán való futtatásával, az újraindítás után egy nagyobb slo-t és egy erőforrás-osztályt használva.
 
@@ -54,12 +54,12 @@ Az adatfájlok frissítési folyamatát is felgyorsíthatja az [Alter index Újr
 
 ## <a name="self-upgrade-to-gen2"></a>Saját frissítés a Gen2-re
 
-Az alábbi lépéseket egy meglévő Gen1 SQL-készleten hajthatja végre. Ha úgy dönt, hogy saját frissítést végez, az automatikus frissítési folyamat megkezdése előtt el kell végeznie azt a régióban. Így biztosítható, hogy az automatikus frissítések kockázata ne okozzon ütközést.
+Az alábbi lépéseket egy meglévő, Gen1 dedikált SQL-készleten (korábban SQL DW) is kiválaszthatja. Ha úgy dönt, hogy saját frissítést végez, az automatikus frissítési folyamat megkezdése előtt el kell végeznie azt a régióban. Így biztosítható, hogy az automatikus frissítések kockázata ne okozzon ütközést.
 
-Önfrissítéskor két lehetőség közül választhat.  Az aktuális SQL-készletet helyben is frissítheti, vagy visszaállíthatja egy Gen1 SQL-készletet egy Gen2-példányba.
+Önfrissítéskor két lehetőség közül választhat.  A jelenlegi dedikált SQL-készletet (korábban SQL DW) helyben is frissítheti, vagy visszaállíthatja egy Gen1 dedikált SQL-készletet (korábban SQL DW) egy Gen2-példányba.
 
-- [Helyben történő frissítés](upgrade-to-latest-generation.md) – ez a beállítás a meglévő Gen1 SQL-készletet a Gen2-re frissíti. A frissítési folyamat egy rövid, a kapcsolat (körülbelül 5 perc) bekapcsolását is magában foglalja az SQL-készlet újraindításakor.  Az SQL-készlet újraindítása után a szolgáltatás teljes mértékben elérhető lesz. Ha a frissítés során problémák merülnek fel, nyisson meg egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) , és hivatkozzon a "Gen2 upgrade" kifejezésre a lehetséges okok miatt.
-- [Frissítés visszaállítási pontról](sql-data-warehouse-restore-points.md) – hozzon létre egy felhasználó által definiált visszaállítási pontot az aktuális Gen1 SQL-készleten, majd állítsa vissza közvetlenül egy Gen2-példányra. A meglévő Gen1 SQL-készlet továbbra is érvényben marad. A visszaállítás befejezése után a Gen2 SQL-készlete teljes mértékben elérhető lesz a használatra.  Miután futtatta az összes tesztelési és érvényesítési folyamatot a visszaállított Gen2-példányon, törölheti az eredeti Gen1-példányt.
+- [Helyben történő frissítés](upgrade-to-latest-generation.md) – ez a beállítás frissíti a meglévő GEN1 dedikált SQL-készletet (korábbi NEVÉN SQL DW) a Gen2. A frissítési folyamat egy rövid, a kapcsolat (körülbelül 5 perc) bekapcsolását vonja maga után, amikor újraindítjuk a dedikált SQL-készletet (korábban SQL DW).  Az újraindítás után teljes mértékben elérhető lesz. Ha a frissítés során problémák merülnek fel, nyisson meg egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) , és hivatkozzon a "Gen2 upgrade" kifejezésre a lehetséges okok miatt.
+- [Frissítés visszaállítási pontról](sql-data-warehouse-restore-points.md) – hozzon létre egy felhasználó által definiált visszaállítási pontot az aktuális GEN1 dedikált SQL-készleten (korábban SQL DW), majd állítsa vissza közvetlenül egy Gen2-példányra. A meglévő Gen1 dedikált SQL-készlet (korábban SQL DW) továbbra is érvényben marad. A visszaállítás befejezése után a Gen2 dedikált SQL-készlete (korábban SQL DW) teljes mértékben elérhető lesz a használatra.  Miután futtatta az összes tesztelési és érvényesítési folyamatot a visszaállított Gen2-példányon, törölheti az eredeti Gen1-példányt.
 
   - 1. lépés: a Azure Portalból [hozzon létre egy felhasználó által definiált visszaállítási pontot](sql-data-warehouse-restore-active-paused-dw.md).
   - 2. lépés: a felhasználó által definiált visszaállítási pontról történő visszaállításkor állítsa a "teljesítményszint" értéket az előnyben részesített Gen2-szintre.
@@ -71,7 +71,7 @@ A háttérben futó adatáttelepítési folyamat meggyorsítása érdekében azo
 > [!NOTE]
 > Az Alter index Rebuild egy offline művelet, és a táblák addig nem lesznek elérhetők, amíg az Újraépítés be nem fejeződik.
 
-Ha bármilyen probléma merül fel az SQL-készlettel kapcsolatban, hozzon létre egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) , és hivatkozzon a "Gen2 upgrade" kifejezésre a lehetséges okok miatt.
+Ha bármilyen probléma merül fel a dedikált SQL-készlettel (korábban SQL DW), hozzon létre egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) , és hivatkozzon a "Gen2 upgrade" kifejezésre a lehetséges okok miatt.
 
 További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.md).
 
@@ -89,12 +89,12 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 
 - Válasz: frissítheti a helyet, vagy frissíthet egy visszaállítási pontról.
 
-  - A helyben történő frissítés során az SQL-készletet egy pillanatra szüneteltetheti és folytathatja.  A háttérben futó folyamat folytatódni fog, amíg az SQL-készlet online állapotban van.  
+  - A helyben történő Verziófrissítéskor a dedikált SQL-készlet (korábban SQL DW) egy pillanatra szüneteltethető és folytatható.  A háttérben futó folyamat folytatódni fog, amíg a dedikált SQL-készlet (korábbi nevén SQL DW) online állapotban van.  
   - Ha egy visszaállítási ponton keresztül frissíti a szolgáltatást, a frissítés a teljes visszaállítási folyamaton keresztül történik.
 
 **K: mennyi ideig tart az automatikus frissítés?**
 
-- A: a frissítés tényleges állásidője csak a szolgáltatás szüneteltetéséhez és folytatásához szükséges idő, amely 5 – 10 percet vesz igénybe. A rövid állásidőt követően egy háttérfolyamat tárolómigrálást fog futtatni. A háttérben futó folyamat időtartama az SQL-készlet méretétől függ.
+- A: a frissítés tényleges állásidője csak a szolgáltatás szüneteltetéséhez és folytatásához szükséges idő, amely 5 – 10 percet vesz igénybe. A rövid állásidőt követően egy háttérfolyamat tárolómigrálást fog futtatni. A háttérben futó folyamat időtartama a dedikált SQL-készlet (korábban SQL DW) méretétől függ.
 
 **K: Mikor kerül sor az automatikus frissítésre?**
 
@@ -110,7 +110,7 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 
 **K: Letilthatom a Geo-biztonsági mentést?**
 
-- V: Nem. A Geo-Backup egy vállalati szolgáltatás, amellyel megőrizheti az SQL-készlet rendelkezésre állását abban az esetben, ha egy régió elérhetetlenné válik. Ha további kérdései vannak, nyisson meg egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) .
+- V: Nem. A Geo-Backup egy vállalati szolgáltatás, amellyel megőrizheti a dedikált SQL-készlet (korábban SQL DW) rendelkezésre állását abban az esetben, ha egy régió elérhetetlenné válik. Ha további kérdései vannak, nyisson meg egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) .
 
 **K: van különbség a Gen1 és a Gen2 között a T-SQL szintaxisban?**
 
@@ -124,7 +124,7 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 
 - V: Nem. A régió frissítése után az új Gen1-példányok létrehozása le lesz tiltva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Frissítési lépések](upgrade-to-latest-generation.md)
 - [Karbantartási időszakok](maintenance-scheduling.md)

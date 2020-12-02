@@ -1,37 +1,37 @@
 ---
 title: ETL helyett a design ELT
-description: Rugalmas betöltési stratégiák implementálása a szinapszis SQL-készlethez az Azure szinapszis Analyticsen belül
+description: Rugalmas betöltési stratégiákat alkalmazhat a dedikált SQL-készletek számára az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 05/13/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 0533e76863d01675cee7aaca79e32821e5efc749
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8b75345743bb398458752d03f853738df713b4f9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92507803"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456430"
 ---
-# <a name="data-loading-strategies-for-synapse-sql-pool"></a>Adatbetöltési stratégiák Synapse SQL-készlethez
+# <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Betöltési stratégiák a dedikált SQL-készlethez az Azure szinapszis Analytics szolgáltatásban
 
-A hagyományos SMP SQL-készletek kinyerési, átalakítási és betöltési (ETL) folyamatot használnak az adatok betöltéséhez. A szinapszis SQL az Azure szinapszis Analyticsen belül elosztott lekérdezés-feldolgozási architektúrát használ, amely kihasználja a számítási és tárolási erőforrások méretezhetőségét és rugalmasságát.
+A hagyományos SMP dedikált SQL-készletek kinyerési, átalakítási és betöltési (ETL) folyamatot használnak az adatok betöltéséhez. A szinapszis SQL az Azure szinapszis Analyticsen belül elosztott lekérdezés-feldolgozási architektúrát használ, amely kihasználja a számítási és tárolási erőforrások méretezhetőségét és rugalmasságát.
 
 A kinyerési, betöltési és átalakítási (ELT) folyamat a beépített elosztott lekérdezés-feldolgozási képességeket használja, és kiküszöböli az adatok átalakításához szükséges erőforrásokat a betöltés előtt.
 
-Míg az SQL-készlet számos betöltési módszert támogat, beleértve a népszerű SQL Server lehetőségeket, például a [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) -t és a [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)-t, az adatok betöltésének leggyorsabb és leginkább méretezhető módja a albase külső táblák és a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Míg a dedikált SQL-készletek számos betöltési módszert támogatnak, beleértve a népszerű SQL Server lehetőségeket, például a [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) -t és a [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)-t, az adatok betöltésének leggyorsabb és leginkább méretezhető módja a albase külső táblákon és a [copy utasításon](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)keresztül.
 
 A Base és a COPY utasítás használatával az Azure Blob Storage-ban vagy Azure Data Lake Storeban tárolt külső adatokhoz a T-SQL nyelv használatával férhet hozzá. A betöltés legrugalmasabban a MÁSOLÁSi utasítás használata javasolt.
 
 
 ## <a name="what-is-elt"></a>Mi az a ELT?
 
-A kinyerési, betöltési és átalakítási (ELT) folyamat során a rendszer egy SQL-készletbe tölti be az adatok kinyerését, majd átalakítja azokat.
+A kinyerési, betöltési és átalakítási (ELT) folyamat során a rendszer kinyeri az adatforrást egy dedikált SQL-készletbe, majd átalakítja azokat.
 
 A ELT megvalósításának alapvető lépései a következők:
 
@@ -62,7 +62,7 @@ Az Azure Storage-ba történő adatáthelyezéshez használható eszközök és 
 
 - Az [Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) szolgáltatás javítja a hálózat teljesítményét, a teljesítményt és a kiszámíthatóságot. A ExpressRoute egy olyan szolgáltatás, amely az Azure-hoz való dedikált privát kapcsolatban továbbítja az adatait. A ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül irányítják az adattovábbítást. A kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok a nyilvános interneten.
 - A [AZCopy segédprogram](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az Azure Storage-ba helyezi át az adatátvitelt a nyilvános interneten keresztül. Ez akkor működik, ha az adatméretek 10 TB-nál kisebbek. A AZCopy rendszeres betöltéséhez tesztelje a hálózati sebességet, és ellenőrizze, hogy elfogadható-e.
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) olyan átjáróval rendelkezik, amelyet telepíthet a helyi kiszolgálóra. Ezután létrehozhat egy folyamatot, amely a helyi kiszolgálóról az Azure Storage-ba helyezi át az adatok áthelyezését. A Data Factory SQL-készlettel való használatához lásd: az [SQL-készlethez tartozó információk betöltése](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) olyan átjáróval rendelkezik, amelyet telepíthet a helyi kiszolgálóra. Ezután létrehozhat egy folyamatot, amely a helyi kiszolgálóról az Azure Storage-ba helyezi át az adatok áthelyezését. Ha a Data Factory dedikált SQL-készletekkel szeretné használni, tekintse meg a [DEDIKÁLT SQL-készletek adatainak betöltése](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)című témakört.
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. az adatgyűjtés előkészítése a betöltéshez
 
@@ -70,9 +70,9 @@ Előfordulhat, hogy a betöltés előtt elő kell készítenie és meg kell tisz
 
 ### <a name="define-the-tables"></a>A táblák megadása
 
-A COPY utasítás használatakor először meg kell határoznia azokat a táblázat (oka) t, amelyeket be kell töltenie az SQL-készletbe.
+A COPY utasítás használatakor először a dedikált SQL-készletbe betöltött táblázat (oka) t kell meghatároznia.
 
-Ha a Base-t használja, a betöltés előtt meg kell határoznia a külső táblákat az SQL-készletben. A Base külső táblákat használ az Azure Storage-ban tárolt adatok definiálásához és eléréséhez. Egy külső tábla hasonlít egy adatbázis-nézethez. A külső tábla tartalmazza a tábla sémáját, és az SQL-készleten kívül tárolt adatértékekre mutat.
+Ha a Base-t használja, a betöltés előtt meg kell határoznia a külső táblákat a dedikált SQL-készletben. A Base külső táblákat használ az Azure Storage-ban tárolt adatok definiálásához és eléréséhez. Egy külső tábla hasonlít egy adatbázis-nézethez. A külső tábla tartalmazza a tábla sémáját, és a dedikált SQL-készleten kívül tárolt adatra mutat.
 
 A külső táblák meghatározása magában foglalja az adatforrás megadását, a szövegfájlok formátumát és a tábla definícióit. A T-SQL szintaxissal kapcsolatos, a szükséges cikkek a következők:
 
@@ -130,12 +130,12 @@ Ha a Base-t használja, a külső objektumoknak meg kell igazítaniuk a szövegf
 A szövegfájlok formázása:
 
 - Ha az adatok nem összehasonlítható forrásból származnak, át kell alakítania azokat sorokra és oszlopokra. Függetlenül attól, hogy az adatok egy rokon vagy nem rokon forrásból származnak-e, az adatoknak át kell alakítani a táblázat azon oszlopainak definícióját, amelybe az adatok betöltését tervezi.
-- Formázza a szövegfájlban lévő adattípusokat, hogy a cél táblában lévő oszlopokkal és adattípusokkal igazodjanak. A külső szövegfájlokban lévő adattípusok és az SQL Pool tábla közötti helytelen igazítás a sorok elutasítását okozza a terhelés során.
+- Formázza a szövegfájlban lévő adattípusokat, hogy a cél táblában lévő oszlopokkal és adattípusokkal igazodjanak. A külső szövegfájlokban lévő adattípusok és a dedikált SQL Pool tábla közötti helytelen igazítás a sorok elutasítását okozza a terhelés során.
 - Külön mezők a szövegfájlban egy lezáró fájllal.  Ügyeljen arra, hogy olyan karaktert vagy karaktert használjon, amely nem található meg a forrásadatok között. Használja a [külső fájlformátum létrehozásakor](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)megadott lezárót.
 
 ## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4. az adatok betöltése a Base vagy a COPY utasítás használatával
 
-Az ajánlott eljárás az, ha az adatgyűjtést egy előkészítési táblába tölti be. Az előkészítési táblázatok lehetővé teszik a hibák kezelését az éles táblákkal való beavatkozás nélkül. Az előkészítési táblázat lehetővé teszi, hogy az SQL Pool párhuzamos feldolgozási architektúrát használja az adatátalakításokhoz, mielőtt beilleszti az adatfeldolgozási táblákba.
+Az ajánlott eljárás az, ha az adatgyűjtést egy előkészítési táblába tölti be. Az előkészítési táblázatok lehetővé teszik a hibák kezelését az éles táblákkal való beavatkozás nélkül. Az előkészítési táblázat lehetővé teszi, hogy a dedikált SQL Pool párhuzamos feldolgozási architektúrát használja az adatátalakításokhoz, mielőtt beilleszti az adatfeldolgozási táblákba.
 
 ### <a name="options-for-loading"></a>Betöltési beállítások
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 10/28/2020
-ms.openlocfilehash: 2a648b4f4c614fc64fa7817102215720e51abe7f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d303a5d5b9779a2003b12d063c97c36a90576dd3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095601"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456632"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Együttes értékesítési lehetőség a Partnerközpontban
 
@@ -83,10 +83,10 @@ Megadhatja a névjegyeket úgy, hogy letölti a CSV-sablont a partneri központb
 
 Exportálhatja egy ajánlat névjegyeinek meglévő listáját is, majd módosíthatja a fájlt.
 
-* *Név (kötelező)* : a partner neve.
-* *E-mail-cím (kötelező)* : a partner e-mail-címe.
-* *Beosztás (kötelező)* : beosztás.
-* *Szerepkör (kötelező)* : használja a következő szerepkörök bármelyikét.
+* *Név (kötelező)*: a partner neve.
+* *E-mail-cím (kötelező)*: a partner e-mail-címe.
+* *Beosztás (kötelező)*: beosztás.
+* *Szerepkör (kötelező)*: használja a következő szerepkörök bármelyikét.
 
     | **Szerepkör**    | **Leírás**  |
     | :------------------- | :-------------------|
@@ -108,7 +108,7 @@ A hivatkozási architektúra diagram egy olyan modell, amely az ajánlat alapjá
 
 A dokumentum több eszköz használatával is létrehozható. Javasoljuk, hogy a Microsoft Visio alkalmazáshoz több, az Azure Architecture-modelleket ábrázoló rajzsablon is tartozik.
 
-A hivatkozási architektúra diagramjainak kiépítéséhez hasznos kiindulópont az Azure- [architektúra modelljeinek](https://docs.microsoft.com/azure/architecture/browse/)kihasználása.
+A hivatkozási architektúra diagramjainak kiépítéséhez hasznos kiindulópont az Azure- [architektúra modelljeinek](/azure/architecture/browse/)kihasználása.
 
 ### <a name="typical-components-of-a-reference-architecture-diagram"></a>A hivatkozási architektúra diagramjának jellemző összetevői
 - Felhőalapú szolgáltatások, amelyek az Ön ajánlatát üzemeltetik és kezelik, beleértve az Azure-fogyasztást generáló szolgáltatásokat is
@@ -123,6 +123,6 @@ A hivatkozási architektúra diagramjainak kiépítéséhez hasznos kiindulópon
 
 (A fenti példában szereplő hivatkozási architektúra diagramja egy vertikális iparági Csevegőrobot, amely integrálható az intranetes webhelyekkel, így a különböző ERP-rendszerek ellátási láncával és gyártási ütemezési adataival Machine Learning algoritmussal lehet elősegíteni az előrejelzési igény forgatókönyveit. A robot úgy van kialakítva, hogy kérdéseket tegyen fel, ha egy értékesítési személy véglegesítheti a megrendelés lehetséges kézbesítési dátumát.)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ: [értékesítés a Microsofttal](https://partner.microsoft.com/membership/sell-with-microsoft).

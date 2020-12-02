@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0f389615c95ef9b9bc8280b6486740ddba4fb4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441629"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456831"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Ismételhető másolás Azure Data Factory
 
@@ -104,7 +104,7 @@ A másolási tevékenység lefuttatta a törlési parancsfájlt, hogy törölje 
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>2. mechanizmus: a sliceIdentifierColumnName használata
 > [!IMPORTANT]
-> Jelenleg a sliceIdentifierColumnName nem támogatott az Azure szinapszis Analyticsben (korábban SQL Data Warehouse). 
+> A sliceIdentifierColumnName jelenleg nem támogatott az Azure szinapszis Analytics szolgáltatásban. 
 
 A ismételhetőség elérésének második mechanizmusa egy dedikált oszlop (sliceIdentifierColumnName) a cél táblában. Ezt az oszlopot a Azure Data Factory fogja használni a forrás és a célhely szinkronizálásának biztosítása érdekében. Ez a megközelítés akkor működik, ha a cél SQL-tábla sémájának módosítása vagy meghatározása rugalmas. 
 
@@ -147,7 +147,7 @@ Azure Data Factory ezt az oszlopot a szükséges módon tölti fel a forrás és
 
 Az 1. mechanizmushoz hasonlóan a másolási tevékenység automatikusan törli az adott szelet adatait a cél SQL-táblából. Ezután beszúrja az adatait a forrásból a cél táblába. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át a következő összekötő-cikkeket a teljes JSON-példákhoz: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: szinapszis SQL-készlet létrehozása és lekérdezése (Azure Portal)'
-description: Szinapszis SQL-készlet létrehozása és lekérdezése a Azure Portal használatával
+title: 'Rövid útmutató: dedikált SQL-készlet létrehozása és lekérdezése (Azure Portal)'
+description: Dedikált SQL-készlet létrehozása és lekérdezése a Azure Portal használatával
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 470892aa46d3f75ce8e17200f7d0549ae14b0e86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3d4884fd64c773647f78a98dc7aeb1063d539edf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023786"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456749"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása és lekérdezése a Azure Portal használatával
+# <a name="quickstart-create-and-query-a-dedicated-sql-pool-in-azure-synapse-analytics-using-the-azure-portal"></a>Rövid útmutató: dedikált SQL-készlet létrehozása és lekérdezése az Azure szinapszis Analyticsben az Azure Portal használatával
 
-Gyorsan létrehozhat és lekérdezheti a szinapszis SQL-készletet (adattárházat) az Azure szinapszis Analyticsben (korábban SQL DW) a Azure Portal használatával.
+A Azure Portal használatával gyorsan létrehozhat és lekérdezheti a szinapszis SQL-készletet (adattárházat) az Azure szinapszis Analyticsben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

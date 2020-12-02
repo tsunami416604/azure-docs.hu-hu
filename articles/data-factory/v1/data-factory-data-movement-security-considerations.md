@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0da49a6f5299ef4e53b06acd5ce3fb838915a661
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e995cd8f300787a19934e9b9eeae1dea73e8576c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633926"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457084"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – az adatáthelyezés biztonsági szempontjai
 
@@ -42,26 +42,26 @@ Ha érdekli az Azure megfelelősége, és hogy az Azure Hogyan védi a saját in
 
 Ebben a cikkben a következő két adatáthelyezési forgatókönyvben tekintjük át a biztonsági szempontokat: 
 
-- **Felhőalapú forgatókönyv** – ebben a forgatókönyvben a forrás és a cél is nyilvánosan elérhető az interneten keresztül. Ezek közé tartoznak a felügyelt felhőalapú tárolási szolgáltatások, például az Azure Storage, az Azure szinapszis Analytics (korábban SQL Data Warehouse), a Azure SQL Database, a Azure Data Lake Store, az Amazon S3, az Amazon vöröseltolódás, az SaaS-szolgáltatások, például a Salesforce és a webes protokollok, például az FTP és a OData. A támogatott adatforrások teljes listáját [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats)találja.
-- **Hibrid forgatókönyv** – ebben a forgatókönyvben a forrás vagy a cél tűzfal mögött van, vagy egy helyszíni vállalati hálózaton belül, vagy az adattár egy magánhálózat/virtuális hálózatban (leggyakrabban a forrás) található, és nem nyilvánosan elérhető. A virtuális gépeken üzemeltetett adatbázis-kiszolgálók is ebbe a forgatókönyvbe tartoznak.
+- **Felhőalapú forgatókönyv**– ebben a forgatókönyvben a forrás és a cél is nyilvánosan elérhető az interneten keresztül. Ezek közé tartoznak a felügyelt felhőalapú tárolási szolgáltatások, például az Azure Storage, az Azure szinapszis Analytics, a Azure SQL Database, a Azure Data Lake Store, az Amazon S3, az Amazon vöröseltolódás, az SaaS-szolgáltatások, például a Salesforce és a webes protokollok, például az FTP és a OData. A támogatott adatforrások teljes listáját [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats)találja.
+- **Hibrid forgatókönyv**– ebben a forgatókönyvben a forrás vagy a cél tűzfal mögött van, vagy egy helyszíni vállalati hálózaton belül, vagy az adattár egy magánhálózat/virtuális hálózatban (leggyakrabban a forrás) található, és nem nyilvánosan elérhető. A virtuális gépeken üzemeltetett adatbázis-kiszolgálók is ebbe a forgatókönyvbe tartoznak.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>Felhőbeli forgatókönyvek
 ### <a name="securing-data-store-credentials"></a>Adattároló hitelesítő adatainak biztonságossá tétele
-Azure Data Factory védi az adattár hitelesítő **adatait a** **Microsoft által kezelt tanúsítványok** használatával. Ezeket a tanúsítványokat **kétévente elforgatják (ami** magában foglalja a tanúsítvány megújítását és a hitelesítő adatok áttelepítését). Ezeket a titkosított hitelesítő adatokat a rendszer biztonságosan tárolja **Azure Data Factory felügyeleti szolgáltatások által felügyelt Azure-tárolóban** . Az Azure Storage biztonságával kapcsolatos további információkért tekintse meg az [Azure Storage biztonsági áttekintése](../../storage/blobs/security-recommendations.md)című témakört.
+Azure Data Factory védi az adattár hitelesítő **adatait a** **Microsoft által kezelt tanúsítványok** használatával. Ezeket a tanúsítványokat **kétévente elforgatják (ami** magában foglalja a tanúsítvány megújítását és a hitelesítő adatok áttelepítését). Ezeket a titkosított hitelesítő adatokat a rendszer biztonságosan tárolja **Azure Data Factory felügyeleti szolgáltatások által felügyelt Azure-tárolóban**. Az Azure Storage biztonságával kapcsolatos további információkért tekintse meg az [Azure Storage biztonsági áttekintése](../../storage/blobs/security-recommendations.md)című témakört.
 
 ### <a name="data-encryption-in-transit"></a>Adattitkosítás az átvitel során
 Ha a felhőalapú adattár támogatja a HTTPS-t vagy a TLS-t, az adatátviteli Data Factory szolgáltatások és a felhőalapú adattárolók közötti adatforgalom a biztonságos csatorna HTTPS vagy TLS protokollon keresztül történik.
 
 > [!NOTE]
-> A **Azure SQL Database** és az **Azure szinapszis Analytics** összes kapcsolata mindig titkosítást (SSL/TLS) igényel, miközben az adatok átvitele az adatbázisból és az adatbázisból történik. Egy folyamat JSON-szerkesztővel való készítése közben adja hozzá a **titkosítási** tulajdonságot, és állítsa **igaz** értékre a **kapcsolódási karakterláncban** . A [Másolás varázsló](data-factory-azure-copy-wizard.md)használatakor a varázsló alapértelmezés szerint beállítja ezt a tulajdonságot. Az **Azure Storage** esetében a kapcsolati sztringben **HTTPS protokollt** használhat.
+> A **Azure SQL Database** és az **Azure szinapszis Analytics** összes kapcsolata mindig titkosítást (SSL/TLS) igényel, miközben az adatok átvitele az adatbázisból és az adatbázisból történik. Egy folyamat JSON-szerkesztővel való készítése közben adja hozzá a **titkosítási** tulajdonságot, és állítsa **igaz** értékre a **kapcsolódási karakterláncban**. A [Másolás varázsló](data-factory-azure-copy-wizard.md)használatakor a varázsló alapértelmezés szerint beállítja ezt a tulajdonságot. Az **Azure Storage** esetében a kapcsolati sztringben **HTTPS protokollt** használhat.
 
 ### <a name="data-encryption-at-rest"></a>Adat-titkosítás inaktív állapotban
 Egyes adattárak támogatják a nyugalmi állapotban lévő adatok titkosítását. Javasoljuk, hogy ezekhez az adattárakhoz engedélyezze az adattitkosítási mechanizmust. 
 
 #### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
-Az Azure szinapszis Analytics transzparens adattitkosítás (TDE) szolgáltatásával megvédheti a kártékony tevékenységek fenyegetését azáltal, hogy valós idejű titkosítást és visszafejtést végez a nyugalmi állapotban. Ez a viselkedés átlátható az ügyfél számára. További információ: [adatbázis biztonságossá tétele a szinapszis Analyticsben](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
+Az Azure szinapszis Analytics transzparens adattitkosítás (TDE) szolgáltatásával megvédheti a kártékony tevékenységek fenyegetését azáltal, hogy valós idejű titkosítást és visszafejtést végez a nyugalmi állapotban. Ez a viselkedés átlátható az ügyfél számára. További információ: [adatbázis biztonságossá tétele az Azure szinapszis Analyticsben](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 A Azure SQL Database támogatja az transzparens adattitkosítást (TDE), amely segít megvédeni a kártékony tevékenységek fenyegetését azáltal, hogy az alkalmazás módosítása nélkül valós idejű titkosítást és visszafejtést végez. Ez a viselkedés átlátható az ügyfél számára. További információ: [transzparens adattitkosítás Azure SQL Database](/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database). 
@@ -92,7 +92,7 @@ A **parancssori csatorna** lehetővé teszi az adatátviteli szolgáltatások k�
 A helyszíni adattárakhoz tartozó hitelesítő adatokat helyileg (nem a felhőben) tárolja a rendszer. Három különböző módon is megadhatók. 
 
 - **Egyszerű szöveges** (kevésbé biztonságos) használata a HTTPS-en keresztül az Azure Portal/másolás varázslójával. A hitelesítő adatokat a rendszer egyszerű szövegként adja át a helyszíni átjárónak.
-- **JavaScript titkosítási függvénytár használata a másolási varázslóval** .
+- **JavaScript titkosítási függvénytár használata a másolási varázslóval**.
 - A **Click-Once-alapú hitelesítő adatok kezelő alkalmazásának** használata. A Click-Once alkalmazás a helyszíni gépen fut, amely hozzáféréssel rendelkezik az átjáróhoz, és beállítja a hitelesítő adatokat az adattárhoz. Ez a lehetőség és a következő a legbiztonságosabb lehetőség. A Hitelesítőadat-kezelő alkalmazás alapértelmezés szerint a 8050-as portot használja a gépen a biztonságos kommunikáció érdekében.  
 - A hitelesítő adatok titkosításához használja a [New-AzDataFactoryEncryptValue PowerShell-](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) parancsmagot. A parancsmag azt a tanúsítványt használja, amelyet az átjáró a hitelesítő adatok titkosítására való használatra konfigurált. Használhatja a parancsmag által visszaadott titkosított hitelesítő adatokat, és hozzáadhatja a **ConnectionString** **EncryptedCredential** eleméhez a [New-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) parancsmaggal vagy a portálon a Data Factory-szerkesztőben használt JSON-kódrészletben. Ez a lehetőség és a Click-Once alkalmazás a legbiztonságosabb lehetőség. 
 
@@ -149,7 +149,7 @@ A vállalatokban a **vállalati tűzfal** a szervezet központi útválasztójá
 
 A következő táblázat a **vállalati tűzfal** **kimenő portokra** és tartományokra vonatkozó követelményeit tartalmazza.
 
-| Tartománynevek | Kimenő portok | Leírás |
+| Tartománynevek | Kimenő portok | Description |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Az átjáró számára szükséges az adatátviteli szolgáltatásokhoz való kapcsolódáshoz Data Factory |
 | `*.core.windows.net` | 443 | Az átjáró az Azure Storage-fiókhoz való csatlakozáshoz használja az [előkészített másolási](data-factory-copy-activity-performance.md#staged-copy) szolgáltatás használatakor. | 
@@ -162,7 +162,7 @@ A következő táblázat a **vállalati tűzfal** **kimenő portokra** és tarto
 
 A következő táblázat a **Windows tűzfal** **bejövő portokra** vonatkozó követelményeit tartalmazza.
 
-| Bejövő portok | Leírás | 
+| Bejövő portok | Description | 
 | ------------- | ----------- | 
 | 8050 (TCP) | A Hitelesítőadat-kezelő alkalmazása megköveteli a helyszíni adattárakhoz tartozó hitelesítő adatok biztonságos beállítását az átjárón. | 
 
@@ -190,5 +190,5 @@ A következő felhőalapú adattárakhoz az átjáró-számítógép IP-címéne
 **Kérdés:** Mik a tanúsítványokra vonatkozó követelmények az átjáróhoz?
 **Válasz:** Az aktuális átjáróhoz szükség van egy tanúsítványra, amelyet a Hitelesítőadat-kezelő alkalmazás az adattár hitelesítő adatainak biztonságos beállításához használ. Ez a tanúsítvány az átjáró telepítője által létrehozott és konfigurált önaláírt tanúsítvány. Ehelyett saját TLS/SSL-tanúsítványt is használhat. További információ: [Click-Once Hitelesítőadat-kezelő alkalmazás](#click-once-credentials-manager-app) szakasz. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A másolási tevékenység teljesítményével kapcsolatos további információkért lásd: a [másolási tevékenység teljesítményének és finomhangolásának útmutatója](data-factory-copy-activity-performance.md).

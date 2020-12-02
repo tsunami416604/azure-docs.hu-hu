@@ -12,25 +12,25 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4e6b0afab5c86131575d0e3d12b9984a8463f5a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 68c9e594201f0d0689a289e13f2c4ebf909c2f87
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321106"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457095"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Töltsön be 1 TB-ot az Azure szinapszis Analytics szolgáltatásba 15 perc alatt Data Factory
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a következőt: az [Azure szinapszis Analytics (korábban SQL Data Warehouse) adatainak másolása Data Factory használatával](../connector-azure-sql-data-warehouse.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg az adatok másolása az Azure szinapszis Analytics szolgáltatásba vagy az Data Factory használatával](../connector-azure-sql-data-warehouse.md)című témakört.
 
 
 Az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) egy felhőalapú, kibővíthető adatbázis, amely nagy mennyiségű, a kapcsolatok és a nem kapcsolatok kezelésére képes.  A nagymértékben párhuzamos feldolgozási (MPP) architektúrára épülő Azure szinapszis Analytics a vállalati adattárház számítási feladataihoz van optimalizálva.  A felhő rugalmasságának köszönhetően rugalmasan méretezheti a tárolást és a számításokat egymástól függetlenül.
 
 Az Azure szinapszis Analytics használatának első lépései mostantól minden eddiginél könnyebben **Azure Data Factory**.  A Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás, amely az Azure szinapszis Analytics és a meglévő rendszer adatainak feltöltésére használható, és értékes időt takaríthat meg az Azure szinapszis Analytics kiértékelése és az elemzési megoldások kiépítése során. Az alábbi főbb előnyökkel jár az Azure szinapszis Analytics szolgáltatásba való betöltés a Azure Data Factory használatával:
 
-* **Könnyen beállítható** : 5 lépésből álló intuitív varázsló, amely nem igényel parancsfájlt.
-* **Gazdag adattár-támogatás** : beépített támogatás a helyszíni és felhőalapú adattárak gazdag készletéhez.
-* **Biztonságos és megfelelő** : az adatátvitel HTTPS-vagy ExpressRoute keresztül történik, és a globális szolgáltatás jelenléte biztosítja, hogy az adatai soha nem hagyják el a földrajzi határt
+* **Könnyen beállítható**: 5 lépésből álló intuitív varázsló, amely nem igényel parancsfájlt.
+* **Gazdag adattár-támogatás**: beépített támogatás a helyszíni és felhőalapú adattárak gazdag készletéhez.
+* **Biztonságos és megfelelő**: az adatátvitel HTTPS-vagy ExpressRoute keresztül történik, és a globális szolgáltatás jelenléte biztosítja, hogy az adatai soha nem hagyják el a földrajzi határt
 * **Páratlan teljesítmény a Base használatával** – a Base használatával a leghatékonyabb módszer az adatok áthelyezése az Azure szinapszis analyticsbe. Az átmeneti blob funkcióval nagy terhelési sebességet érhet el az Azure Blob Storage melletti összes adattárolóból, amelyet alapértelmezés szerint a Base támogat.
 
 Ebből a cikkből megtudhatja, hogyan használhatók a Data Factory másolási varázslóval az Azure-Blob Storage 1 TB-os adatok betöltésére az Azure szinapszis Analytics szolgáltatásba 15 percen belül, több mint 1,2 GB/s sebességnél.
@@ -111,7 +111,7 @@ Ez a cikk részletes útmutatást nyújt az adatáthelyezéshez az Azure szinaps
   Az előfeltételként szükséges lépések elvégzésével most már készen áll a másolási tevékenység konfigurálására a másolás varázslóval.
 
 ## <a name="launch-copy-wizard"></a>A Másolás varázsló indítása
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 2. Kattintson az **erőforrás létrehozása** elemre a bal felső sarokban, kattintson az **intelligencia és Analitika** elemre, majd a **Data Factory** elemre.
 3. Az **új adatgyár** panelen:
 
@@ -212,6 +212,6 @@ Alapértelmezés szerint be van jelölve a " **Base** " jelölőnégyzet.  Katti
 
 További részletekért tekintse meg az [Azure szinapszis Analytics ajánlott eljárásai](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Data Factory másolási varázsló](data-factory-copy-wizard.md) – ez a cikk a másolás varázsló részleteit tartalmazza.
 * [Másolási tevékenység teljesítményének és finomhangolásának útmutatója](data-factory-copy-activity-performance.md) – ez a cikk a referenciák teljesítményének méréseit és hangolási útmutatóját tartalmazza.

@@ -1,30 +1,30 @@
 ---
-title: Adatgyűjtési ajánlott eljárások a szinapszis SQL-készlethez
-description: Javaslatok és teljesítmény-optimalizálás az betöltéshez a szinapszis SQL-készlet használatával.
+title: Ajánlott eljárások a dedikált SQL-készletekhez
+description: Javaslatok és teljesítmény-optimalizálás az betöltéshez dedikált SQL-készletek használatával az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 34a536ea535fa222340bd004253ee54b9c13bea9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39625914f179dfc8d5511b9a3d386cc8332b7efa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441221"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456306"
 ---
-# <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Ajánlott eljárások az betöltéshez a szinapszis SQL-készlet használatával
+# <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Ajánlott eljárások az betöltéshez dedikált SQL-készletek használatával az Azure szinapszis Analyticsben
 
-Ebből a cikkből megtudhatja, milyen ajánlásokat és teljesítmény-optimalizálást kell használnia az betöltéshez az SQL-készlet használatával.
+Ebből a cikkből megtudhatja, milyen ajánlásokat és teljesítmény-optimalizálást kell használnia az betöltéshez a dedikált SQL-készlet használatával.
 
 ## <a name="preparing-data-in-azure-storage"></a>Adatok előkészítése az Azure Storage-ban
 
-A késés minimalizálásához helyezze a tárolási réteget és az SQL-készletet.
+A késés minimalizálásához helyezze a tárolási réteget és a dedikált SQL-készletet.
 
 Az adatok ORC fájlformátumba való exportálásakor Java memóriahiány-hibák jelentkezhetnek, ha a szövegoszlopok túl nagyok. Ezt a korlátozást úgy küszöbölheti ki, ha az oszlopok csak egy részhalmazát exportálja.
 
@@ -34,7 +34,7 @@ A nagy tömörített fájlokat ossza fel kisebb tömörített fájlokra.
 
 ## <a name="running-loads-with-enough-compute"></a>Betöltések futtatása elegendő számítási teljesítménnyel
 
-A leggyorsabb betöltési sebesség érdekében egyszerre egy betöltési feladatot futtasson. Ha ez nem valósítható meg, futtasson minimális számú terhelést egyszerre. Ha nagy betöltési feladatot vár, érdemes megfontolnia az SQL-készlet méretezését a terhelés előtt.
+A leggyorsabb betöltési sebesség érdekében egyszerre egy betöltési feladatot futtasson. Ha ez nem valósítható meg, futtasson minimális számú terhelést egyszerre. Ha nagy betöltési feladatra számíthat, érdemes lehet a dedikált SQL-készletet a terhelés előtt méretezni.
 
 A betöltések megfelelő számítási erőforrásokkal való futtatásához hozzon létre betöltések futtatására kijelölt felhasználókat. Az egyes betöltési felhasználókat egy adott munkaterhelés-csoportba sorolja be. Betöltés futtatásához jelentkezzen be az egyik betöltési felhasználóként, majd futtassa a betöltést. A betöltés a felhasználó munkaterhelési csoportján fut.  
 
@@ -47,10 +47,10 @@ Ez a példa egy adott munkaterhelés-csoportba sorolt betöltési felhasználót
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-Kapcsolódjon az SQL-készlethez, és hozzon létre egy felhasználót. A következő kód azt feltételezi, hogy csatlakozik a mySampleDataWarehouse nevű adatbázishoz. Bemutatja, hogyan hozhat létre egy betöltő felhasználót, és a [másolási utasítás](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)használatával lehetővé teszi a felhasználók számára táblák és betöltés létrehozását. Ezután osztályozza a felhasználót a DataLoads munkaterhelés csoportba a maximális erőforrásokkal. 
+Kapcsolódjon a dedikált SQL-készlethez, és hozzon létre egy felhasználót. A következő kód azt feltételezi, hogy csatlakozik a mySampleDataWarehouse nevű adatbázishoz. Bemutatja, hogyan hozhat létre egy betöltő felhasználót, és a [másolási utasítás](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)használatával lehetővé teszi a felhasználók számára táblák és betöltés létrehozását. Ezután osztályozza a felhasználót a DataLoads munkaterhelés csoportba a maximális erőforrásokkal. 
 
 ```sql
-   -- Connect to the SQL pool
+   -- Connect to the dedicated SQL pool
    CREATE USER loader FOR LOGIN loader;
    GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
    GRANT INSERT ON <yourtablename> TO loader;
@@ -76,7 +76,7 @@ Ha terhelést szeretne futtatni a terhelés betöltéséhez szükséges erőforr
 
 ## <a name="allowing-multiple-users-to-load-polybase"></a>Több felhasználó betöltésének engedélyezése (alapszintű)
 
-Gyakran van szükség több felhasználó betöltésére az SQL-készletbe. A ( [Transact-SQL) CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) betöltéséhez az ADATBÁZISnak vezérlési engedélyekkel kell rendelkeznie.  A CONTROL engedély az összes séma vezérlését biztosítja.
+Gyakran van szükség több felhasználó betöltésére egy dedikált SQL-készletbe. A ( [Transact-SQL) CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) betöltéséhez az ADATBÁZISnak vezérlési engedélyekkel kell rendelkeznie.  A CONTROL engedély az összes séma vezérlését biztosítja.
 
 Előfordulhat, hogy nem szeretné, hogy minden betöltést végző felhasználó vezérelési jogot kapjon az összes sémához. Az engedélyek korlátozására használja a DENY CONTROL utasítást.
 
@@ -91,9 +91,9 @@ A User_A és user_B mostantól ki vannak zárva a másik részleg sémájában.
 
 ## <a name="loading-to-a-staging-table"></a>Betöltés előkészítési táblába
 
-A leggyorsabb betöltési sebesség eléréséhez, amely lehetővé tenné az adatáthelyezést egy SQL-készletbe, töltsön be egy előkészítési táblába az adatátvitelt.  Határozza meg az előkészítési táblát halomként, és használjon ciklikus időszeletelést a terjesztési beállításhoz.
+Az adat egy dedikált SQL Pool-táblába való áthelyezéséhez szükséges leggyorsabb betöltési sebesség eléréséhez töltse be az adathalmazt egy átmeneti táblába.  Határozza meg az előkészítési táblát halomként, és használjon ciklikus időszeletelést a terjesztési beállításhoz.
 
-Vegye figyelembe, hogy a betöltés általában egy kétlépéses folyamat, amelyben először betöltődik egy előkészítési táblába, majd beszúrja az adatkészletet egy éles SQL-készlet táblájába. Ha az éles tábla kivonatoló terjesztést használ, a betöltés és a beszúrás teljes ideje gyorsabb lehet, ha meghatároz egy előkészítési táblát a kivonatoló terjesztéssel.
+Vegye figyelembe, hogy a betöltés általában kétlépéses folyamat, amelyet először betölt egy előkészítési táblába, majd beszúrja az adathalmazt egy éles, dedikált SQL Pool-táblába. Ha az éles tábla kivonatoló terjesztést használ, a betöltés és a beszúrás teljes ideje gyorsabb lehet, ha meghatároz egy előkészítési táblát a kivonatoló terjesztéssel.
 
 Az előkészítési táblába való betöltés több időt vesz igénybe, de a sorok az éles táblába való beszúrásának második lépése nem jár a disztribúciók közötti adatmozgatással.
 
@@ -111,7 +111,7 @@ Ha korlátozott a rendelkezésre álló memória mennyisége, előfordulhat, hog
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>A Batch méretének növeléséhez a SqLBulkCopy API vagy a BCP használata esetén
 
-A COPY utasítással való betöltés a legmagasabb adatátviteli sebességet adja meg az SQL-készlettel. Ha nem tudja használni a MÁSOLÁSt a betöltéshez, és a [SQLBULKCOPY API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) -t vagy [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)-t kell használnia, érdemes növelni a Batch méretét a jobb átviteli sebesség érdekében.
+A COPY utasítással való betöltés a legmagasabb átviteli sebességet biztosítja dedikált SQL-készletekkel. Ha nem tudja használni a MÁSOLÁSt a betöltéshez, és a [SQLBULKCOPY API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) -t vagy [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)-t kell használnia, érdemes növelni a Batch méretét a jobb átviteli sebesség érdekében.
 
 > [!TIP]
 > Az optimális batch-kapacitás meghatározásához az ajánlott alapkonfiguráció a 100 K és 1 millió közötti szám közötti méretű köteg.
@@ -173,7 +173,7 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 A mögöttes külső adatforrásokban nem kell más módosítást elvégezni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A kinyerési, betöltési és átalakítási (ELT) folyamat megtervezése során a MÁSOLÁSi utasítással vagy a kiindulással kapcsolatos további információkért lásd: [elt az Azure szinapszis analyticshez](design-elt-data-loading.md).
 - A betöltési oktatóanyaghoz [használja a copy utasítást az adatok Azure Blob Storage-ból a SZINAPSZIS SQL-be való betöltéséhez](load-data-from-azure-blob-storage-using-polybase.md).
