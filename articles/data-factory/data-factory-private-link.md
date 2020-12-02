@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: c21b4d746d763f41f4360cf93f67939bcd6dc49f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8d28a1f2040cfec7b81081754a6abd3bc3e14439
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632685"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511474"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure-beli privát hivatkozás Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Az Azure Private link használatával az Azure-ban egy privát végponton keresztül kapcsolódhat különböző platformokhoz (a szolgáltatásként) üzemelő példányokhoz. A privát végpont egy magánhálózati IP-cím egy adott virtuális hálózaton és alhálózaton belül. A privát kapcsolati funkciót támogató, a következő helyen található, a Private link [dokumentációját](../private-link/index.yml)tartalmazó, 
+Az Azure Private link használatával az Azure-ban egy privát végponton keresztül kapcsolódhat különböző platformokhoz (az Azure-ban) üzemelő példányokhoz. A privát végpont egy magánhálózati IP-cím egy adott virtuális hálózaton és alhálózaton belül. A privát kapcsolati funkciót támogató, a következő helyen található, a Private link [dokumentációját](../private-link/index.yml)tartalmazó, 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>Biztonságos kommunikáció az ügyfél-hálózatok és a Azure Data Factory között 
 Beállíthat egy Azure-beli virtuális hálózatot a hálózat logikai ábrázolásához a felhőben. Ez a következő előnyöket nyújtja:
@@ -53,10 +53,10 @@ A Azure Data Factory szolgáltatással folytatott kommunikáció a privát kapcs
 ![Azure Data Factory architektúrához tartozó privát hivatkozás ábrája.](./media/data-factory-private-link/private-link-architecture.png)
 
 A Private link Service minden korábbi kommunikációs csatornán való engedélyezése a következő funkciókat kínálja:
-- **Támogatott** :
+- **Támogatott**:
    - A virtuális hálózatban megadhatja és figyelheti az adatokat előállítót, még akkor is, ha letiltja az összes kimenő kommunikációt.
    - A saját üzemeltetésű integrációs modul és a Azure Data Factory szolgáltatás közötti kommunikáció biztonságos, magánhálózati környezetben is elvégezhető. A saját üzemeltetésű integrációs modul és a Azure Data Factory szolgáltatás közötti forgalom privát kapcsolaton keresztül halad. 
-- **Jelenleg nem támogatott** :
+- **Jelenleg nem támogatott**:
    - A saját üzemeltetésű integrációs modult használó interaktív szerzői műveletek, például a kapcsolat tesztelése, a mappák listájának és a táblák listájának lekérése, a séma beolvasása és az előnézeti adatmegjelenítés.
    - Ha engedélyezi az automatikus frissítést, a saját üzemeltetésű integrációs modul új verziója automatikusan letölthető a Microsoft letöltőközpontból.
 
@@ -65,6 +65,33 @@ A Private link Service minden korábbi kommunikációs csatornán való engedél
 
 > [!WARNING]
 > Társított szolgáltatás létrehozásakor győződjön meg arról, hogy a hitelesítő adatai egy Azure Key vaultban vannak tárolva. Ellenkező esetben a hitelesítő adatok nem fognak működni, ha engedélyezi a Azure Data Factoryban található privát hivatkozást.
+
+## <a name="dns-changes-for-private-endpoints"></a>A magánhálózati végpontok DNS-módosításai
+Privát végpont létrehozásakor a rendszer a Data Factory DNS CNAME erőforrásrekordot a "privatelink" előtaggal rendelkező altartományban lévő aliasra frissíti. Alapértelmezés szerint a "privatelink" altartománynak megfelelő [privát DNS-zónát](https://docs.microsoft.com/azure/dns/private-dns-overview)is létrehozunk, A DNS a saját végpontokhoz tartozó erőforrásrekordokat.
+
+Ha a VNet kívülről oldja fel az adatgyár-végpont URL-címét a privát végponttal, a rendszer feloldja az adatok gyári szolgáltatásának nyilvános végpontját. A magánhálózati végpontot futtató VNet feloldva a tárolási végpont URL-címe feloldja a magánhálózati végpont IP-címét.
+
+A fenti ábrán látható példában a "DataFactoryA" Data Factory DNS-erőforrásrekordok a privát végpontot üzemeltető VNet kívülről oldhatók fel, a következők:
+
+| Név | Típus | Érték |
+| ---------- | -------- | --------------- |
+| DataFactoryA. {Region}. DataFactory. Azure. net | CNAME   | DataFactoryA. {Region}. privatelink. DataFactory. Azure. net |
+| DataFactoryA. {Region}. privatelink. DataFactory. Azure. net | CNAME   | < a adatfeldolgozó szolgáltatás nyilvános végpontja > |
+| < a adatfeldolgozó szolgáltatás nyilvános végpontja >  | A | < a adatfeldolgozó szolgáltatás nyilvános IP-címe > |
+
+A DataFactoryA tartozó DNS-erőforrásrekordok a privát végpontot üzemeltető VNet feloldva a következők:
+
+| Név | Típus | Érték |
+| ---------- | -------- | --------------- |
+| DataFactoryA. {Region}. DataFactory. Azure. net | CNAME   | DataFactoryA. {Region}. privatelink. DataFactory. Azure. net |
+| DataFactoryA. {Region}. privatelink. DataFactory. Azure. net   | A | < magánhálózati végpont IP-címe > |
+
+Ha a hálózaton egyéni DNS-kiszolgálót használ, az ügyfeleknek képesnek kell lenniük az Data Factory végpont teljes tartománynevének feloldására a magánhálózati végpont IP-címére. A DNS-kiszolgálót úgy kell konfigurálni, hogy delegálja a magánhálózati kapcsolat altartományát a VNet tartozó magánhálózati DNS-zónához, vagy konfigurálja a "DataFactoryA" rekordokat. {Region}. privatelink. DataFactory. Azure. net "a magánhálózati végpont IP-címével.
+
+A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konfigurálásával kapcsolatos további információkért tekintse meg a következő cikkeket:
+- [Azure virtuális hálózatokon található erőforrások névfeloldása](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [A magánhálózati végpontok DNS-konfigurációja](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Privát hivatkozás beállítása Azure Data Factoryhoz
 [A Azure Portal](../private-link/create-private-endpoint-portal.md)használatával saját végpontokat is létrehozhat.

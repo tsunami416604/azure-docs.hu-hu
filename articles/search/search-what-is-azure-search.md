@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/24/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 1d5047a9be6b4cf53304858d12a0cb7b49b575ca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c36a88317f71d08094b43d06cc7ba86985a73ca0
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499917"
+ms.locfileid: "96511848"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Mi az az Azure Cognitive Search?
 
@@ -22,10 +22,11 @@ Az Azure Cognitive Search ([korábbi nevén "Azure Search"](whats-new.md#new-ser
 
 Cognitive Search szolgáltatás létrehozásakor a következőket kapja:
 
-+ egy keresőmotor, amely indexelési és lekérdezés-végrehajtást végez
-+ A képek és a nem differenciált szöveg mesterséges elemzése és átalakítása az indexelés során
-+ a létrehozott és kezelt keresési indexek állandó tárolása
-+ lekérdezési nyelv egyszerű és összetett lekérdezések létrehozásához
++ Egy keresőmotor, amely indexelési és lekérdezés-végrehajtást végez
++ A létrehozott és kezelt keresési indexek állandó tárolása
++ Lekérdezési nyelv egyszerű és összetett lekérdezések létrehozásához
++ AI-központú elemzés, kereshető tartalom létrehozása képekből, nyers szövegből, alkalmazásfájlokből
++ Integráció az Azure-szolgáltatásokkal a keresési indexelő alkalmazással, az adatimportálás és-frissítés automatizálása
 
 A keresési szolgáltatás építészeti szempontból a nem indexelt adatokat tartalmazó külső adattárak között, valamint egy olyan ügyfélalkalmazás között ül, amely lekérdezési kérelmeket küld egy keresési indexnek, és kezeli a választ.
 

@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 10/21/2020
-ms.openlocfilehash: e0da478e221fe392135362cd74cbdd8baca101ef
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/02/2020
+ms.openlocfilehash: 360f0ce60a35bc96c6dd8e46d636f07124d01255
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421362"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511916"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
@@ -37,7 +37,7 @@ A Azure Machine Learning a Python anaconda-eloszlását használja, amely számo
 
 A teljes listát az [előre telepített Python-csomagok](#preinstalled-python-packages)című szakaszban találja.
 
-Ha olyan csomagokat szeretne telepíteni, amelyek nincsenek az előre telepített listában (például *scikit-misc* ), adja hozzá a következő kódot a parancsfájlhoz: 
+Ha olyan csomagokat szeretne telepíteni, amelyek nincsenek az előre telepített listában (például *scikit-misc*), adja hozzá a következő kódot a parancsfájlhoz: 
 
 ```python
 import os
@@ -59,6 +59,36 @@ if spec is None:
 
 > [!WARNING]
 > A Excute Python parancsfájl-modulja nem támogatja olyan csomagok telepítését, amelyek olyan további natív kódtárak függenek, mint a "apt-get", például a Java, a PyODBC és az etc. Ennek az az oka, hogy ezt a modult egy egyszerű, csak a Python előre telepített és nem rendszergazdai engedéllyel rendelkező környezetben hajtja végre.  
+
+## <a name="access-to-registered-datasets"></a>Hozzáférés a regisztrált adatkészletekhez
+
+A következő mintakód a munkaterületén [regisztrált adatkészletekhez](../how-to-create-register-datasets.md) való hozzáféréshez használható:
+
+```Python
+def azureml_main(dataframe1 = None, dataframe2 = None):
+
+    # Execution logic goes here
+    print(f'Input pandas.DataFrame #1: {dataframe1}')
+    from azureml.core import Run
+    run = Run.get_context(allow_offline=True)
+    ws = run.experiment.workspace
+
+    from azureml.core import Dataset
+    dataset = Dataset.get_by_name(ws, name='test-register-tabular-in-designer')
+    dataframe1 = dataset.to_pandas_dataframe()
+     
+    # If a zip file is connected to the third input port,
+    # it is unzipped under "./Script Bundle". This directory is added
+    # to sys.path. Therefore, if your zip file contains a Python file
+    # mymodule.py you can import it using:
+    # import mymodule
+
+    # Return value must be of a sequence of pandas.DataFrame
+    # E.g.
+    #   -  Single return value: return dataframe1,
+    #   -  Two return values: return dataframe1, dataframe2
+    return dataframe1,
+```
 
 ## <a name="upload-files"></a>Fájlok feltöltése
 A Python parancsfájl végrehajtása modul támogatja a fájlok feltöltését a [Azure Machine learning PYTHON SDK](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#upload-file-name--path-or-stream-)használatával.
@@ -114,7 +144,7 @@ A Python-szkript végrehajtása modul olyan minta Python-kódot tartalmaz, amely
 
     Az adatkészlet használata nem kötelező. Akkor használja, ha a Python használatával kívánja előállítani az adatgyűjtést, vagy a Python-kód használatával importálja az adategységeket közvetlenül a modulba.
 
-    Ez a modul támogatja egy második adatkészlet hozzáadását a **Dataset2** -on. Hivatkozzon a Python-szkript második adatkészletére **DataFrame2**.
+    Ez a modul támogatja egy második adatkészlet hozzáadását a **Dataset2**-on. Hivatkozzon a Python-szkript második adatkészletére **DataFrame2**.
 
     Az Azure Machine Learningban tárolt adatkészletek automatikusan a Panda adatkeretbe lesznek konvertálva, ha a modul betöltődik.
 
@@ -197,9 +227,9 @@ A beágyazott Python-kód alapján történő számítások eredményeit a köve
 
 A modul két adatkészletet ad vissza:  
   
-+ Az **eredmények adatkészlet 1** , a Python-szkriptek első visszaadott pandák adatkerete által definiált érték.
++ Az **eredmények adatkészlet 1**, a Python-szkriptek első visszaadott pandák adatkerete által definiált érték.
 
-+ A **2. eredmény adatkészlete** , amelyet a második visszaadott pandák adatkeret definiál egy Python-parancsfájlban.
++ A **2. eredmény adatkészlete**, amelyet a második visszaadott pandák adatkeret definiál egy Python-parancsfájlban.
 
 ## <a name="preinstalled-python-packages"></a>Előre telepített Python-csomagok
 Az előre telepített csomagok a következők:

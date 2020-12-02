@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d6449a00886b7366bcd1f6e2fcec910fd3cb38db
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1ea326cc4537176c0ddcff070f4dc3b3f77f4b58
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461048"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512035"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-teljesítési API-k 2-es verziója a kereskedelmi piactéren
 
@@ -20,7 +20,7 @@ Ez a cikk azokat az API-kat ismerteti, amelyek lehetővé teszik a partnerek sz�
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>Az SaaS-előfizetési életciklus kezelése
 
-A kereskedelmi piactér egy SaaS-előfizetés teljes életciklusát kezeli a végfelhasználók általi megvásárlása után.  A kezdőlapot, a teljesítési API-kat, az operatív API-kat és a webhookot használja a tényleges SaaS-előfizetés aktiválásának, használatának, frissítésének és törlésének elvégzéséhez.  A végfelhasználói számla a Microsoft által fenntartott SaaS-előfizetés állapotától függ. 
+A kereskedelmi piactér egy SaaS-előfizetés teljes életciklusát kezeli a végfelhasználók általi megvásárlása után. A kezdőlapot, a teljesítési API-kat, az operatív API-kat és a webhookot használja a tényleges SaaS-előfizetés aktiválásának, használatának, frissítésének és törlésének elvégzéséhez. A végfelhasználói számla a Microsoft által fenntartott SaaS-előfizetés állapotától függ. 
 
 ### <a name="states-of-a-saas-subscription"></a>SaaS-előfizetés állapota
 
@@ -44,11 +44,11 @@ Ilyen hívás például az, hogy `https://contoso.com/signup?token=<blob>` az Sa
 
 A Kezdőlap URL-címének minden nap, minden nap, és készen kell állnia arra, hogy az új hívásokat mindig megkapja a Microsofttól. Ha a Kezdőlap elérhetetlenné válik, az ügyfelek nem regisztrálhatnak az SaaS szolgáltatásra, és nem tudják használni azt.
 
-Ezután a közzétevőnek vissza kell adnia a *jogkivonatot* a Microsoftnak a [SaaS-feloldási API](#resolve-a-purchased-subscription)meghívásával, majd a tokent a header paraméter értékének megadásával `x-ms-marketplace-token header` .  Az API-hívás feloldásának eredményeképpen a jogkivonat a SaaS-vásárlás részleteit cseréli ki, mint például a vásárlás, a megvásárolt ajánlat azonosítója és a megvásárolt csomag AZONOSÍTÓjának egyedi azonosítója.
+Ezután a közzétevőnek vissza kell adnia a *jogkivonatot* a Microsoftnak a [SaaS-feloldási API](#resolve-a-purchased-subscription)meghívásával, majd a tokent a header paraméter értékének megadásával `x-ms-marketplace-token header` . Az API-hívás feloldásának eredményeképpen a jogkivonat a SaaS-vásárlás részleteit cseréli ki, mint például a vásárlás, a megvásárolt ajánlat azonosítója és a megvásárolt csomag AZONOSÍTÓjának egyedi azonosítója.
 
 A kezdőlapon az ügyfélnek Azure Active Directory (Azure AD) egyszeri bejelentkezéssel (SSO) keresztül be kell jelentkeznie az új vagy meglévő SaaS-fiókba.
 
-A közzétevőnek be kell vezetnie az SSO-t, hogy elérhetővé tegye a Microsoft által ehhez a folyamathoz szükséges felhasználói élményt. Ügyeljen arra, hogy a több-bérlős Azure AD-alkalmazást használja, és engedélyezze a munkahelyi és iskolai fiókokat, illetve a személyes Microsoft-fiókokat az egyszeri bejelentkezés konfigurálásakor.  Ez a követelmény csak a kezdőlapra vonatkozik azon felhasználók esetében, akik a SaaS szolgáltatáshoz vannak átirányítva, amikor már bejelentkezett a Microsoft hitelesítő adataival. Az SaaS szolgáltatáshoz nem szükséges az egyszeri bejelentkezés.
+A közzétevőnek be kell vezetnie az SSO-t, hogy elérhetővé tegye a Microsoft által ehhez a folyamathoz szükséges felhasználói élményt. Ügyeljen arra, hogy a több-bérlős Azure AD-alkalmazást használja, és engedélyezze a munkahelyi és iskolai fiókokat, illetve a személyes Microsoft-fiókokat az egyszeri bejelentkezés konfigurálásakor. Ez a követelmény csak a kezdőlapra vonatkozik azon felhasználók esetében, akik a SaaS szolgáltatáshoz vannak átirányítva, amikor már bejelentkezett a Microsoft hitelesítő adataival. Az SaaS szolgáltatáshoz nem szükséges az egyszeri bejelentkezés.
 
 > [!NOTE]
 >Ha az SSO megköveteli, hogy a rendszergazdának engedélyt kell adnia egy alkalmazáshoz, a partner Centerben lévő ajánlat leírásának közzé kell tennie, hogy rendszergazdai szintű hozzáférésre van szükség. Ez a közzététel megfelel a [kereskedelmi Piactéri minősítési szabályzatoknak](/legal/marketplace/certification-policies#10003-authentication-options).
@@ -82,11 +82,11 @@ Csak aktív előfizetés lehet frissítve. Az előfizetés frissítése közben 
 
 ##### <a name="update-initiated-from-the-commercial-marketplace"></a>A kereskedelmi piactéren kezdeményezett frissítés
 
-Ebben a folyamatban az ügyfél módosítja az előfizetési tervet vagy a munkaállomások számát a Azure Portal vagy Microsoft 365 felügyeleti központból.  
+Ebben a folyamatban az ügyfél módosítja az előfizetési tervet vagy a munkaállomások számát a Azure Portal vagy Microsoft 365 felügyeleti központból.
 
-1. A frissítés beírása után a Microsoft meghívja a közzétevő webhook URL-címét, amelyet a partner Center **kapcsolati webhook** mezőjében konfigurál, és megfelelő értéket kell megadnia a *művelethez* és egyéb releváns paraméterekhez.  
+1. A frissítés beírása után a Microsoft meghívja a közzétevő webhook URL-címét, amelyet a partner Center **kapcsolati webhook** mezőjében konfigurál, és megfelelő értéket kell megadnia a *művelethez* és egyéb releváns paraméterekhez. 
 1. A közzétevő oldalnak el kell végeznie a szükséges módosításokat az SaaS szolgáltatásban, és a Microsoft értesítése után értesítenie kell a [műveletet az Operation API frissítési állapotának](#update-the-status-of-an-operation)meghívásával.
-1. Ha a javítást *sikertelen* állapottal küldik el, a frissítési folyamat nem fejeződik be a Microsoft oldalán.  Az SaaS-előfizetés megtartja a meglévő csomagot és az ülőhelyek mennyiségét.
+1. Ha a javítást *sikertelen* állapottal küldik el, a frissítési folyamat nem fejeződik be a Microsoft oldalán. Az SaaS-előfizetés megtartja a meglévő csomagot és az ülőhelyek mennyiségét.
 
 > [!NOTE]
 > A közzétevőnek meg kell hívnia a javítást az [Operation API állapotának frissítéséhez](#update-the-status-of-an-operation) a hiba/sikeres válasz alapján a webhook értesítésének kézhezvételétől számított *10 másodperces időszakon belül* . Ha a művelet állapota nem érkezik meg 10 másodpercen belül, a módosítási terv *automatikusan sikeres* lesz. 
@@ -101,7 +101,7 @@ Ebben a folyamatban az ügyfél az SaaS-szolgáltatástól vásárolt előfizet�
 
 1. A közzétevő kódjának meg kell hívnia a [módosítási terv API](#change-the-plan-on-the-subscription) -t és/vagy a [mennyiség módosítása API](#change-the-quantity-of-seats-on-the-saas-subscription) -t, mielőtt a közzétevő oldalon megtenné a kért változást. 
 
-1. A Microsoft alkalmazza a módosítást az előfizetésre, majd a **kapcsolaton** keresztül értesíti a közzétevőt, hogy alkalmazza ugyanezt a módosítást.  
+1. A Microsoft alkalmazza a módosítást az előfizetésre, majd a **kapcsolaton** keresztül értesíti a közzétevőt, hogy alkalmazza ugyanezt a módosítást.
 
 1. Ezt követően a közzétevőnek csak akkor kell végrehajtania a szükséges módosításokat az SaaS-előfizetésben, és értesítenie kell a Microsoftot, ha a módosítást az [Operation API frissítési állapotának](#update-the-status-of-an-operation)meghívásával végzi.
 
@@ -113,7 +113,7 @@ A közzétevő oldalról kezdeményezett frissítési forgatókönyv API-hívás
 
 Ez az állapot azt jelzi, hogy a rendszer nem fogadta el az ügyfél SaaS szolgáltatásának fizetését. A közzétevő értesítést kap erről a változásról a Microsoft SaaS-előfizetési állapotában. Az értesítés a *Felfüggesztettre* beállított *Action* paraméterrel való webhook hívása útján történik.
 
-Előfordulhat, hogy a közzétevő nem módosítja a SaaS szolgáltatást a közzétevő oldalán. Javasoljuk, hogy a közzétevő elérhetővé teszi ezeket az információkat a felfüggesztett ügyfél számára, és korlátozza vagy blokkolja az ügyfél hozzáférését az SaaS szolgáltatáshoz.  A fizetés soha nem fog megjelenni.
+Előfordulhat, hogy a közzétevő nem módosítja a SaaS szolgáltatást a közzétevő oldalán. Javasoljuk, hogy a közzétevő elérhetővé teszi ezeket az információkat a felfüggesztett ügyfél számára, és korlátozza vagy blokkolja az ügyfél hozzáférését az SaaS szolgáltatáshoz. A fizetés soha nem fog megjelenni.
 
 A Microsoft az előfizetés automatikus megszakítása előtt 30 napos türelmi időszakot biztosít az ügyfélnek. Ha egy előfizetés *felfüggesztett* állapotban van:
 
@@ -126,26 +126,26 @@ Az előfizetés állapota felfüggesztve állapotra változik a Microsoft oldalo
 
 Ez a művelet azt jelzi, hogy az ügyfél fizetési eszköze ismét érvényes lesz, az SaaS-előfizetésre vonatkozó fizetés történt, és az előfizetés visszaállításra kerül. Ebben az esetben: 
 
-1. A Microsoft meghívja a webhookot egy *műveleti* paraméterrel, amely a *visszaállítás értékre* van beállítva.  
+1. A Microsoft meghívja a webhookot egy *műveleti* paraméterrel, amely a *visszaállítás értékre* van beállítva.
 1. A közzétevő ellenőrzi, hogy az előfizetés teljesen működőképes-e a közzétevő oldalán.
-1. A közzétevő meghívja a [javítási művelet API](#update-the-status-of-an-operation) -ját a sikeres állapottal.  
+1. A közzétevő meghívja a [javítási művelet API](#update-the-status-of-an-operation) -ját a sikeres állapottal.
 1. Az újratelepítési folyamat sikeres, és az ügyfél számlázása újra történik az SaaS-előfizetés esetében. 
 
 Ha a javítást *sikertelen* állapottal küldik el, a visszaállítási folyamat nem fejeződik be a Microsoft oldalán, és az előfizetés *felfüggesztve* marad.
 
-Csak a felfüggesztett előfizetés állítható vissza.  A felfüggesztett SaaS-előfizetés *felfüggesztett* állapotban marad a visszaállítás során.  A művelet befejeződése után az előfizetés állapota *aktív* lesz.
+Csak a felfüggesztett előfizetés állítható vissza. A felfüggesztett SaaS-előfizetés *felfüggesztett* állapotban marad a visszaállítás során. A művelet befejeződése után az előfizetés állapota *aktív* lesz.
 
 #### <a name="renewed-subscribed"></a>Megújított (*előfizetett*)
 
-Az SaaS-előfizetést a Microsoft a hónap vagy egy év előfizetési időszakának végén automatikusan megújítja.  Az automatikus megújítási beállítás alapértelmezett értéke az összes SaaS-előfizetés esetében *igaz* . Az aktív SaaS-előfizetések továbbra is megújítva lesznek a rendszeres lépésszám használatával. A Microsoft nem értesíti a közzétevőt az Előfizetés megújítása esetén. Az ügyfelek kikapcsolhatják az SaaS-előfizetések automatikus megújítását a Microsoft 365 felügyeleti portálon vagy a Azure Portalon keresztül.  Ebben az esetben a rendszer az aktuális számlázási időszak végén automatikusan megszakítja az SaaS-előfizetést.  Az ügyfél bármikor megszakíthatja az SaaS-előfizetést.
+Az SaaS-előfizetést a Microsoft a hónap vagy egy év előfizetési időszakának végén automatikusan megújítja. Az automatikus megújítási beállítás alapértelmezett értéke az összes SaaS-előfizetés esetében *igaz* . Az aktív SaaS-előfizetések továbbra is megújítva lesznek a rendszeres lépésszám használatával. A Microsoft nem értesíti a közzétevőt az Előfizetés megújítása esetén. Az ügyfelek kikapcsolhatják az SaaS-előfizetések automatikus megújítását a Microsoft 365 felügyeleti portálon keresztül. Ebben az esetben a rendszer az aktuális számlázási időszak végén automatikusan megszakítja az SaaS-előfizetést. Az ügyfél bármikor megszakíthatja az SaaS-előfizetést.
 
-A rendszer csak az aktív előfizetéseket újítja meg automatikusan.  Az előfizetések aktívak maradnak a megújítási folyamat során, és ha az automatikus megújítás sikeres.  A megújítás után az előfizetési időszak kezdő és záró dátuma frissül az új kifejezés dátumaira.
+A rendszer csak az aktív előfizetéseket újítja meg automatikusan. Az előfizetések aktívak maradnak a megújítási folyamat során, és ha az automatikus megújítás sikeres. A megújítás után az előfizetési időszak kezdő és záró dátuma frissül az új kifejezés dátumaira.
 
 Ha az automatikus megújítás egy fizetési probléma miatt meghiúsul, akkor az előfizetés fel lesz *függesztve* , és a közzétevő értesítést kap.
 
 #### <a name="canceled-unsubscribed"></a>Megszakított (*leiratkozott*) 
 
-Az előfizetések ezt az állapotot egy explicit ügyfél-vagy CSP-műveletre adott válaszként egy előfizetésnek a közzétevő webhelyről, a Azure Portal vagy Microsoft 365 felügyeleti központból való megszakításával érik el.  Egy előfizetést implicit módon is meg lehet szüntetni a díjak fizetésének eredményeképpen, a *felfüggesztett* állapot után 30 napig.
+Az előfizetések ezt az állapotot egy explicit ügyfél-vagy CSP-műveletre adott válaszként egy előfizetésnek a közzétevő webhelyről, a Azure Portal vagy Microsoft 365 felügyeleti központból való megszakításával érik el. Egy előfizetést implicit módon is meg lehet szüntetni a díjak fizetésének eredményeképpen, a *felfüggesztett* állapot után 30 napig.
 
 Miután a közzétevő kézhez kapott egy lemondási webhook-hívást, legalább hét napig meg kell őriznie a helyreállításhoz szükséges ügyféladatokat. Csak ezután törölheti az ügyféladatokat.
 
@@ -163,7 +163,7 @@ Az **operatív API-kat** a következőknek kell használni:
 * Szerezze be azon alkalmazások listáját, amelyek a közzétevő által tudomásul vehetők.
 
 > [!NOTE]
-> A TLS-verzió 1,2-es verziója hamarosan érvénybe lép a HTTPS-kommunikáció minimális verziójaként. Ügyeljen rá, hogy ezt a TLS-verziót használja a kódban.  A TLS 1,0-es és 1,1-es verziója hamarosan elavulttá válik.
+> A TLS-verzió 1,2-es verziója hamarosan érvénybe lép a HTTPS-kommunikáció minimális verziójaként. Ügyeljen rá, hogy ezt a TLS-verziót használja a kódban. A TLS 1,0-es és 1,1-es verziója hamarosan elavulttá válik.
 
 ### <a name="subscription-apis"></a>Előfizetési API-k
 
@@ -968,7 +968,7 @@ A *terv módosítása*, a *mennyiség módosítása* és a *leiratkozási* műve
 
 A kiadói támogatási lehetőségekért lásd: [a kereskedelmi piactér program támogatása a partner Centerben](../support.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a kereskedelmi [Piactéri mérési szolgáltatás API-kat](marketplace-metering-service-apis.md) a kereskedelmi piactéren elérhető SaaS-ajánlatok további lehetőségeiért.
 

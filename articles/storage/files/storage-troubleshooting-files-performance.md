@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 5a35d939c12639770e25c3096c77f13d31310f85
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 90942e4deebdc65fe26ce94f04a15fe2b8c0684c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492012"
+ms.locfileid: "96512069"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Az Azure file shares teljesítményével kapcsolatos problémák elhárítása
 
@@ -74,11 +74,12 @@ Ha a használt alkalmazás egyetlen szálból áll, akkor ez a beállítás a ki
 
 ### <a name="cause"></a>Ok
 
-A virtuális gép (VM) a fájlmegosztás egy másik régiójában található.
+A virtuális gép (VM) a fájlmegosztás egy másik régiójában található. A nagy késés miatti egyéb ok oka az ügyfél vagy a hálózat által okozott késés lehet.
 
 ### <a name="solution"></a>Megoldás
 
 - Futtassa az alkalmazást egy olyan virtuális gépről, amely ugyanabban a régióban található, mint a fájlmegosztás.
+- A Storage-fiók esetében tekintse át a tranzakciós metrikák **SuccessE2ELatency** és  **SuccessServerLatency** a Azure Portal **Azure monitoron** keresztül. A SuccessE2ELatency és a SuccessServerLatency metrikák értékei közötti nagy különbség a hálózat vagy az ügyfél által valószínűleg okozott késés jele. Lásd: [tranzakciós metrikák](storage-files-monitoring-reference.md#transaction-metrics) Azure Files monitorozási adatok referenciája.
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Az ügyfél nem tudja elérni a hálózat által támogatott maximális átviteli sebességet
 

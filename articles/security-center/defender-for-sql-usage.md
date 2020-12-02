@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: a80747a88087e1ad3a70f198a260e41a6848e34f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 07a94685fb3655aa5aa21a8658b9d975c764daff
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445664"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512278"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender a gépeken futó SQL-kiszolgálókon 
 
@@ -30,7 +30,7 @@ A riasztások akkor jelennek meg, ha gyanús adatbázis-tevékenységek, potenci
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|A **gépeken futó Azure Defender szolgáltatás** számlázása [a díjszabási oldalon](security-center-pricing.md) látható módon történik.|
 |Védett SQL-verziók:|Azure SQL Server (a Microsoft támogatási szolgálata által érintett összes verzió)|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
@@ -68,7 +68,7 @@ A fentiek mindegyikét alább találja.
 
         ![A nem alapértelmezett munkaterület megkeresése cím szerint](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-1. Állítsa be a **(z) Azure Defender for SQL Servers for Machines (előzetes verzió)** beállítását a következőre:. **on** 
+1. Állítsa be az **Azure Defender for SQL Servers for Machines** szolgáltatást **a következőre:.** 
 
     ![Security Center díjszabási oldal opcionális csomagokkal](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)
 
@@ -79,7 +79,7 @@ A fentiek mindegyikét alább találja.
 
 
 1. Szükség esetén az e-mail-értesítések konfigurálása a biztonsági riasztásokhoz. 
-    Megadhatja a címzettek listáját, amely e-mailben értesítést kap a Security Center riasztások létrehozásakor. Az e-mail tartalmaz egy közvetlen hivatkozást a riasztáshoz Azure Security Center az összes releváns részletet. További információ: [e-mail-értesítések beállítása biztonsági riasztásokhoz](security-center-provide-security-contact-details.md).
+    Megadhatja a címzettek listáját, amely e-mailben értesítést kap a Security Center riasztások létrehozásakor. Az e-mail tartalmaz egy közvetlen SK-t a riasztáshoz Azure Security Center az összes vonatkozó részletet. További információ: [e-mail-értesítések beállítása biztonsági riasztásokhoz](security-center-provide-security-contact-details.md).
 
 
 
@@ -124,7 +124,7 @@ Az Azure Defender for SQL-riasztások Security Center riasztások lapján, az er
     [További információ a riasztások kezeléséről és megválaszolásáról](security-center-managing-and-responding-alerts.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kapcsolódó anyagok esetében tekintse meg a következő cikket:
 

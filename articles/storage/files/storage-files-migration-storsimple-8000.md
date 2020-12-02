@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 046cca4e683a8f14893bf48ac8601b138a7c28a7
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: daa7c657a47414b01197bed3644caefeda98af1c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630277"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512171"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
 
@@ -175,7 +175,7 @@ Több replikációs beállítás is rendelkezésre áll. További információ a
 Csak a következő két lehetőség közül választhat:
 
 * *Helyileg redundáns tárolás (LRS)*.
-* A *zóna redundáns tárolási (ZRS)* , amely nem érhető el az összes Azure-régióban.
+* A *zóna redundáns tárolási (ZRS)*, amely nem érhető el az összes Azure-régióban.
 
 > [!NOTE]
 > Csak a LRS és a ZRS redundancia-típusok kompatibilisek a nagyméretű 100-TiB-Capacity Azure-fájlmegosztás-megosztásokkal.
@@ -215,7 +215,7 @@ A Storage-fiókok létrehozása után nyissa meg a Storage-fiók **fájlmegoszt�
 
 ### <a name="storsimple-data-manager"></a>StorSimple Data Manager
 
-Az áttelepítési feladatokat tároló Azure-Erőforrás neve **StorSimple Data Manager**. Válassza ki az **új erőforrást** , és keressen rá. Ezután válassza a **Létrehozás** elemet.
+Az áttelepítési feladatokat tároló Azure-Erőforrás neve **StorSimple Data Manager**. Válassza ki az **új erőforrást**, és keressen rá. Ezután válassza a **Létrehozás** elemet.
 
 Ez az ideiglenes erőforrás a koordináláshoz használatos. Az áttelepítés befejezése után kiépíti azt. A StorSimple-fióknak ugyanabban az előfizetésben, erőforráscsoporthoz és régióban kell lennie.
 
@@ -267,7 +267,7 @@ Az áttelepítési terv részeként dönthet úgy, hogy a StorSimple-köteten l�
 
 A leképezés balról jobbra: [\Source Path] \> [\Target Path].
 
-|Szemantikai karakter          | Értelmezés  |
+|Szemantikai karakter          | Jelentés  |
 |:---------------------------|:---------|
 | **\\**                     | Legfelső szintű kijelző.       |
 | **\>**                     | [Forrás] és [cél-hozzárendelés] operátor.     |
@@ -320,8 +320,8 @@ A 3. fázis végén futtathatja az Adatátalakítási szolgáltatás feladatait 
 
 Az Azure-fájlmegosztás eléréséhez két fő stratégia van:
 
-* **Azure file Sync** : [Azure file Sync üzembe helyezése](#deploy-azure-file-sync) helyszíni Windows Server-példányon. Azure File Sync rendelkezik a helyi gyorsítótár összes előnyével, akárcsak a StorSimple.
-* **Közvetlen megosztás – hozzáférés** : [közvetlen megosztású hozzáférés üzembe helyezése](#deploy-direct-share-access). Akkor használja ezt a stratégiát, ha az adott Azure-fájlmegosztás hozzáférési forgatókönyve nem részesül a helyi gyorsítótárazásban, vagy ha már nem tud helyszíni Windows Server-példányt üzemeltetni. Itt a felhasználók és az alkalmazások továbbra is hozzáférhetnek az SMB protokollon keresztüli SMB-megosztásokhoz. Ezek a megosztások már nem egy helyszíni kiszolgálón, hanem közvetlenül a felhőben is elérhetők.
+* **Azure file Sync**: [Azure file Sync üzembe helyezése](#deploy-azure-file-sync) helyszíni Windows Server-példányon. Azure File Sync rendelkezik a helyi gyorsítótár összes előnyével, akárcsak a StorSimple.
+* **Közvetlen megosztás – hozzáférés**: [közvetlen megosztású hozzáférés üzembe helyezése](#deploy-direct-share-access). Akkor használja ezt a stratégiát, ha az adott Azure-fájlmegosztás hozzáférési forgatókönyve nem részesül a helyi gyorsítótárazásban, vagy ha már nem tud helyszíni Windows Server-példányt üzemeltetni. Itt a felhasználók és az alkalmazások továbbra is hozzáférhetnek az SMB protokollon keresztüli SMB-megosztásokhoz. Ezek a megosztások már nem egy helyszíni kiszolgálón, hanem közvetlenül a felhőben is elérhetők.
 
 Meg kell határoznia, hogy melyik lehetőség a legmegfelelőbb az útmutató [1. fázisában](#phase-1-prepare-for-migration) .
 
@@ -418,18 +418,18 @@ Ha Azure File Synct használ egy Azure-fájlmegosztás esetében, akkor fontos, 
 A Azure Portal használatával megtekintheti, hogy a névtér teljesen megérkezett-e.
 
 * Jelentkezzen be a Azure Portalba, és lépjen a szinkronizálási csoportba. A szinkronizálási csoport és a kiszolgálói végpont szinkronizálási állapotának bejelölése.
-* Az érdekes irány letöltése. Ha a kiszolgálói végpont újonnan lett kiépítve, akkor megjelenik a **kezdeti szinkronizálás** , ami azt jelzi, hogy a névtér még mindig leáll.
+* Az érdekes irány letöltése. Ha a kiszolgálói végpont újonnan lett kiépítve, akkor megjelenik a **kezdeti szinkronizálás**, ami azt jelzi, hogy a névtér még mindig leáll.
 Ezt követően a névtér teljes mértékben **Initial sync** ki lesz töltve a kiszolgálón. Most már folytathatja a helyi RoboCopyt is.
 
 #### <a name="windows-server-event-viewer"></a>Windows Server Eseménynapló
 
 A Windows Server-példányon lévő Eseménynapló is megadhatja, ha a névtér teljesen megérkezett.
 
-1. Nyissa meg a **Eseménynapló** , és lépjen az **alkalmazások és szolgáltatások** elemre.
+1. Nyissa meg a **Eseménynapló**, és lépjen az **alkalmazások és szolgáltatások** elemre.
 1. Nyissa meg a **Microsoft\FileSync\Agent\Telemetry**.
-1. Keresse meg a legutóbbi, **9102** -as eseményt, amely megfelel egy befejezett szinkronizálási munkamenetnek.
+1. Keresse meg a legutóbbi, **9102**-as eseményt, amely megfelel egy befejezett szinkronizálási munkamenetnek.
 1. Válassza a **részletek** lehetőséget, és győződjön meg arról, hogy egy olyan eseményt keres, ahol a **SyncDirection** érték **le van letöltve**.
-1. Arra az időre, amikor a névtér befejezte a letöltést a-kiszolgálóra, egyetlen esemény lesz a **forgatókönyv** , a **FullGhostedSync** érték és a **HResult**  =  **0**.
+1. Arra az időre, amikor a névtér befejezte a letöltést a-kiszolgálóra, egyetlen esemény lesz a **forgatókönyv**, a **FullGhostedSync** érték és a **HResult**  =  **0**.
 1. Ha kihagyja ezt az eseményt, további **9102 eseményt** is megkereshet a **SyncDirection**  =  **letöltésével** és a **Scenario**  =  **"RegularSync"** forgatókönyvvel. Az események egyikének megkeresése azt is jelzi, hogy a névtér befejezte a letöltést és a szinkronizálást a rendszeres szinkronizálási munkamenetek miatt, függetlenül attól, hogy van-e valami szinkronizálás, vagy sem.
 
 ### <a name="a-final-robocopy"></a>A végső RoboCopy
@@ -448,7 +448,7 @@ Ezen a ponton a helyszíni Windows Server-példány és a StorSimple 8100-es vag
 A RoboCopy több paraméterrel rendelkezik. Az alábbi példa egy befejezett parancsot és a paraméterek kiválasztásának okait mutatja be.
 
 ```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 Háttér
@@ -475,6 +475,14 @@ Háttér
    :::column-end:::
    :::column span="1":::
       A konzol ablakának kimenete. Egy naplófájlban a kimenettel együtt használatos.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /NP
+   :::column-end:::
+   :::column span="1":::
+      Kihagyja az előrehaladás naplózását, hogy a napló olvasható legyen.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -559,7 +567,7 @@ A Migrálás befejeződött.
 > Továbbra is kérdése van vagy probléma merült fel?</br>
 > Itt segítünk AzureFilesMigration@microsoft.com .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg [Azure file Syncával: aka.MS/AFS](./storage-sync-files-planning.md).
 * Ismerje meg a [felhőre vonatkozó szintű](storage-sync-cloud-tiering.md) házirendek rugalmasságát.

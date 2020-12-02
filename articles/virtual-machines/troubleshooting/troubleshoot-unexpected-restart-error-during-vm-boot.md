@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 186b1c46303be59e191a1754361e07a2003b997a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfeb040893ae2be5842959ed8458bd713bebe6ee
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87036182"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512137"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>Operációs rendszer indítása – a számítógép váratlanul újraindult, vagy váratlan hibát észlelt.
 
@@ -37,31 +37,27 @@ Ha [rendszerindítási diagnosztika](./boot-diagnostics.md) használatával teki
 
 ## <a name="cause"></a>Ok
 
-A gép egy [általánosított rendszerkép](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)kezdeti indítását kísérli meg, de a feldolgozás alatt álló egyéni válaszfájl (unattend.xml) miatt problémát tapasztal. Az egyéni válaszfájlok használata nem támogatott az Azure-ban. 
+A gép egy [általánosított rendszerkép](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)kezdeti indítását kísérli meg, de a feldolgozás alatt álló egyéni válaszfájl (Unattend.xml) miatt problémát tapasztal. **Az egyéni válaszfájlok nem támogatottak az Azure-ban**. 
 
 A válaszfájl egy speciális XML-fájl, amely a Windows Server operációs rendszer telepítése során automatizálni kívánt konfigurációs beállítások definícióit és értékeit tartalmazza. A konfigurációs beállítások közé tartozik a lemezek particionálásával kapcsolatos utasítások, a telepítendő Windows-rendszerkép, az alkalmazandó termékkulcs és a futtatni kívánt egyéb parancsok.
 
-Az Azure-ban az egyéni válaszfájlok nem támogatottak. Ha a lehetőség használatával egyéni **Unattend.xml** fájlt adott meg `sysprep /unattend:<your file’s name>` , akkor ez a hiba történhet.
+Az egyéni válaszfájlok nem támogatottak az Azure-ban. Ezért ez a helyzet akkor fordul elő, ha egy rendszerképet készítettek az Azure-ban való használatra, de egyéni Unattend.xml-fájlt adott meg a **SYSPREP** használatával a következő parancshoz hasonló jelzővel:
 
-Az Azure-ban használja a **Sysprep.exe**a beépített **felhasználói élmény (OOBE)** beállítást, vagy használja a `sysprep /oobe` Unattend.xml fájl helyett.
+`sysprep /oobe /generalize /unattend:<your file’s name> /shutdown`
 
-Ez a probléma leggyakrabban akkor jön létre, amikor a **Sysprep.exe** helyszíni virtuális géppel feltölt egy ÁLTALÁNOSÍTOTT virtuális gépet az Azure-ba. Ebben az esetben érdemes lehet egy általánosított virtuális gép megfelelő feltöltését is érdekelni.
+Az Azure-ban használja a **rendszerelőkészítő eszköz grafikus felhasználói felületének** **beírása (System out-of-box) (OOBE)** beállítását, vagy használja `sysprep /oobe` a Unattend.xml fájl helyett.
+
+Ez a probléma leggyakrabban akkor jön létre, amikor a sysprept egy helyszíni virtuális géppel használja az általános virtuális gép Azure-ba való feltöltéséhez. Ebben az esetben érdemes lehet egy általánosított virtuális gép megfelelő feltöltését is érdekelni.
 
 ## <a name="solution"></a>Megoldás
 
-### <a name="replace-unattended-answer-file-option"></a>A felügyelet nélküli válaszfájl cseréje lehetőség
+### <a name="do-not-use-unattendxml"></a>Ne használja a Unattend.xml
 
-Ez a helyzet akkor fordul elő, ha egy képet készítettek az Azure-ban való használatra, de egyéni válaszfájlt használtak, amelyet az Azure nem támogat, és a **sysprept** a következő parancshoz hasonló jelzővel használta:
-
-`sysprep /oobe /generalize /unattend:<NameOfYourAnswerFile.XML> /shutdown`
-
-- Az előző parancsban cserélje le a helyére a `<NameOfYourAnswerFile.XML>` fájl nevét.
-
-A probléma megoldásához kövesse [Az Azure-útmutatást a rendszerkép előkészítéséhez/rögzítéséhez](../windows/upload-generalized-managed.md) és egy új általánosított rendszerkép előkészítéséhez. A Sysprep alatt ne használja a `/unattend:<answerfile>` jelzőt. Ehelyett csak az alábbi jelzőket használja:
+A probléma megoldásához kövesse [Az Azure-útmutatást a rendszerkép előkészítéséhez/rögzítéséhez](../windows/upload-generalized-managed.md) és egy új általánosított rendszerkép előkészítéséhez. A Sysprep alatt ne **használja a `/unattend:<your file’s name>` jelzőt**. Ehelyett csak az alábbi jelzőket használja:
 
 `sysprep /oobe /generalize /shutdown`
 
-- A beépített **felhasználói élmény** (OOBE) az Azure-beli virtuális gépek támogatott beállítása.
+- A beépített felhasználói élmény (OOBE) az Azure-beli virtuális gépek támogatott beállítása.
 
 Használhatja a **rendszerelőkészítő eszköz grafikus felhasználói felületét** is, hogy ugyanazt a feladatot használja, mint a fenti parancs, és válassza az alább látható beállításokat:
 

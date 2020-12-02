@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/20/2020
+ms.date: 12/01/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 65bd5a89d132a575817480d0609109a3f379e969
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833962"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512205"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -32,6 +32,14 @@ A Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalma
 **K**: regisztrálja az eszközt úgy, hogy a vállalat vagy szolgáltatás számára hozzáférést biztosítson az eszközhöz?
 
 **A**: az eszköz regisztrálása lehetővé teszi, hogy az eszköz hozzáférjen a szervezet szolgáltatásaihoz, és nem teszi lehetővé a szervezet számára az eszköz hozzáférését.
+
+## <a name="too-many-app-permissions"></a>Túl sok alkalmazás-engedély
+
+**K**: Miért kéri az alkalmazás a sok engedélyt?
+
+**A**: itt látható a megadható engedélyek teljes listája, valamint az alkalmazás által használt alkalmazások. A megjelenő konkrét engedélyek a telefon típusától függenek.
+
+- **Hely**. Előfordulhat, hogy a szervezete szeretné tudni a tartózkodási helyét, mielőtt engedélyezi bizonyos erőforrások elérését. Az alkalmazás csak abban az esetben fogja kérni ezt az engedélyt, ha a szervezete rendelkezik egy helyet igénylő házirenddel. 
 
 ### <a name="legacy-apns-support-deprecated"></a>Örökölt APNs-támogatás elavult
 
@@ -200,7 +208,7 @@ Válasz **: a** hitelesítő hozzáadása az új eszközhöz nem távolítja el 
 
 **A**: először is meg kell győződnie arról, hogy Ön úgy döntött, hogy megosztja az elemzést velünk. Ha Ön Testflighthoz-felhasználó, már regisztrálva van. Ellenkező esetben lépjen a **beállítások > adatvédelem > elemzés** lehetőségre, és válassza az **iPhone megosztása & az elemzés** és a **megosztás az alkalmazások fejlesztői** lehetőségeivel lehetőséget.<br>A regisztrációt követően megpróbálhatja reprodukálni az összeomlást, hogy a rendszer automatikusan elküldje az összeomlási naplókat a vizsgálathoz. Ha azonban nem tudja reprodukálni az összeomlást, manuálisan is átmásolhatja a naplófájlokat, és elküldheti azokat nekünk.<ol><li>Nyissa meg a Watch alkalmazást a telefonján, lépjen a **beállítások > általános** elemre, majd kattintson az **elemzés megtekintése** elemre.</li><li>Keresse meg a megfelelő összeomlást a **settings > Privacy > analytics > Analytics-adatok** területen, majd manuálisan másolja a teljes szöveget.</li><li>Nyissa meg a hitelesítő eszközt a telefonján, és illessze be a vágólapra a **megosztás az alkalmazás-fejlesztők** szövegmezőbe a **naplók küldése** oldalon.</li></ol>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző kód problémáinak elhárítása** című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
 

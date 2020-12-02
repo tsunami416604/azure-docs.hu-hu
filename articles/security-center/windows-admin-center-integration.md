@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 36f519ce41ccfbfb48ca696ed2a61c6131a75998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca3dd410474af0a42a3cd5b4217c3bba90b8ff1a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906325"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511984"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>A Windows felügyeleti központ erőforrásainak védetté Security Center
 
@@ -29,7 +29,7 @@ Ha sikeresen felkészített egy kiszolgálót a Windows felügyeleti központbó
 * Biztonsági riasztások és javaslatok megtekintése a Windows felügyeleti központ Security Center bővítményében
 * Megtekintheti a biztonsági helyzeteket, és további részletes információkat kérhet le a Windows felügyeleti központ felügyelt kiszolgálóiról Security Center belül a Azure Portal (vagy egy API-n keresztül)
 
-Ennek a két eszköznek a kombinálásával a Security Center lesz az egyetlen üvegtábla, amely az összes biztonsági információt megtekintheti, bármi is legyen az erőforrás: a Windows felügyeleti központ felügyelt helyszíni kiszolgálók, a virtuális gépek és a további Pásti munkaterhelések védelme.
+Ennek a két eszköznek a kombinálásával a Security Center az összes biztonsági információt megtekintheti, függetlenül az erőforrástól: a Windows felügyeleti központ által felügyelt helyszíni kiszolgálók, a virtuális gépek és a további Pásti számítási feladatok védelme.
 
 ## <a name="onboard-windows-admin-center-managed-servers-into-security-center"></a>Windows felügyeleti központ által felügyelt kiszolgálók előkészítése Security Center
 
@@ -40,7 +40,7 @@ Ennek a két eszköznek a kombinálásával a Security Center lesz az egyetlen �
     > [!NOTE]
     > Ha a kiszolgáló már bekerült a Security Centerba, akkor a beállítás ablak nem jelenik meg.
 
-1. Kattintson **a bejelentkezés az Azure-ba és a beállítás**elemre.
+1. Kattintson **a bejelentkezés az Azure-ba és a beállítás** elemre.
     ![Windows felügyeleti központ bővítmény bevezetése Azure Security Center](./media/windows-admin-center-integration/onboarding-from-wac-welcome.png)
 
 1. A kiszolgáló Security Centerhoz való összekapcsolásához kövesse az utasításokat. Miután megadta a szükséges adatokat, és megerősítette, Security Center végrehajtja a szükséges konfigurációs módosításokat, hogy a következők mindegyike igaz legyen:

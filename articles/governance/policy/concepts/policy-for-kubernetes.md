@@ -1,14 +1,14 @@
 ---
 title: A Kubernetes Azure Policy megismerése
 description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt házirend-ügynököt az Azure-ban vagy a helyszínen futó Kubernetes futtató fürtök kezelésére.
-ms.date: 09/29/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1e85d7af26e52ea38c09ec0c052b5c6a2787bb80
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e2b9253d8ce60d5dc77d406e3c9d0469539f2c77
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146296"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511331"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>A Kubernetes-fürtökhöz tartozó Azure Policy ismertetése
 
@@ -25,7 +25,7 @@ A Kubernetes Azure Policy a következő fürt-környezeteket támogatja:
 - [AK-motor](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> Az KABAi motor és az arc-kompatibilis Kubernetes-bővítmények **előzetes** verzióban érhetők el. A Kubernetes Azure Policy csak a Linux-csomópontok készleteit és a beépített szabályzat-definíciókat támogatja. A beépített szabályzat-definíciók a **Kubernetes** kategóriában találhatók. A korlátozott előzetes verziójú házirend-definíciók a **EnforceOPAConstraint** és a **EnforceRegoPolicy** effektussal, a kapcsolódó **Kubernetes-szolgáltatások** kategóriája pedig _elavult_ . Ehelyett használja a hatások _naplózása_ és a _Megtagadás_ erőforrás-szolgáltatói módot `Microsoft.Kubernetes.Data` .
+> Az KABAi motor és az arc-kompatibilis Kubernetes-bővítmények **előzetes** verzióban érhetők el. A Kubernetes Azure Policy csak a Linux-csomópontok készleteit és a beépített szabályzat-definíciókat támogatja. A beépített szabályzat-definíciók a **Kubernetes** kategóriában találhatók. A korlátozott előzetes verziójú házirend-definíciók a **EnforceOPAConstraint** és a **EnforceRegoPolicy** effektussal, a kapcsolódó **Kubernetes-szolgáltatások** kategóriája pedig _elavult_. Ehelyett használja a hatások _naplózása_ és a _Megtagadás_ erőforrás-szolgáltatói módot `Microsoft.Kubernetes.Data` .
 
 ## <a name="overview"></a>Áttekintés
 
@@ -62,7 +62,7 @@ A következő általános korlátozások érvényesek a Kubernetes-fürtök Azur
 A következő korlátozások érvényesek az AK-ra vonatkozó Azure Policy-bővítményre:
 
 - Az [AK Pod biztonsági házirend](../../../aks/use-pod-security-policies.md) és az AK Azure Policy bővítménye nem engedélyezhető egyszerre. További információ: [AK Pod biztonsági korlátozás](../../../aks/use-pod-security-on-azure-policy.md#limitations).
-- A Azure Policy bővítmény által automatikusan kizárt névterek a következő kiértékeléshez: _Kube-System_ , _forgalomirányító-System_ és _AK-periszkóp_ .
+- A Azure Policy bővítmény által automatikusan kizárt névterek a következő kiértékeléshez: _Kube-System_, _forgalomirányító-System_ és _AK-periszkóp_.
 
 ## <a name="recommendations"></a>Javaslatok
 
@@ -217,7 +217,7 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
    |`login.windows.net` |`443` |
    |`dc.services.visualstudio.com` |`443` |
 
-1. A házirend-elemzési adatíró (előzetes verzió) szerepkör hozzárendelése az Azure arc-kompatibilis Kubernetes-fürthöz. Cserélje le az értékét az `<subscriptionId>` előfizetés-azonosítóra, `<rg>` Az Azure arc-kompatibilis Kubernetes-fürt erőforráscsoporthoz, valamint az `<clusterName>` Azure arc-kompatibilis Kubernetes-fürt nevével. Tartsa nyomon a _AppID_ , a _jelszó_ és a _bérlő_ visszaadott értékeit a telepítési lépésekhez.
+1. A házirend-elemzési adatíró (előzetes verzió) szerepkör hozzárendelése az Azure arc-kompatibilis Kubernetes-fürthöz. Cserélje le az értékét az `<subscriptionId>` előfizetés-azonosítóra, `<rg>` Az Azure arc-kompatibilis Kubernetes-fürt erőforráscsoporthoz, valamint az `<clusterName>` Azure arc-kompatibilis Kubernetes-fürt nevével. Tartsa nyomon a _AppID_, a _jelszó_ és a _bérlő_ visszaadott értékeit a telepítési lépésekhez.
 
    - Azure CLI
 
@@ -405,13 +405,13 @@ A következő lépésekkel megkeresheti a fürt kezelésére szolgáló beépít
 
    - **Letiltva** – nem kényszeríti ki a szabályzatot a fürtön. A Kubernetes vonatkozó beléptetési kérelmeket nem tagadja meg a rendszer. A megfelelőség értékelésének eredményei továbbra is elérhetők. Amikor új szabályzat-definíciókat hoz létre a fürtök futtatásához, a _letiltott_ beállítás hasznos lehet a szabályzat-definíció teszteléséhez, mivel a rendszer nem tagadja meg a beléptetési kérelmek megsértését.
 
-1. Válassza a **Tovább** gombot.
+1. Kattintson a **Tovább** gombra.
 
 1. **Paraméterek értékének** beállítása
 
-   - Ha ki szeretné zárni a Kubernetes-névtereket a szabályzat kiértékelése alól, a névtér **kizárása** paraméterben határozza meg a névterek listáját. Azt javasoljuk, hogy zárja ki a következőket: _Kube-System_ , _forgalomirányító-System_ és _Azure-arc_ .
+   - Ha ki szeretné zárni a Kubernetes-névtereket a szabályzat kiértékelése alól, a névtér **kizárása** paraméterben határozza meg a névterek listáját. Azt javasoljuk, hogy zárja ki a következőket: _Kube-System_, _forgalomirányító-System_ és _Azure-arc_.
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
 Másik megoldásként használja a [szabályzat társítása – portál](../assign-policy-portal.md) rövid útmutatót a Kubernetes szabályzat megkereséséhez és hozzárendeléséhez. Keressen egy Kubernetes házirend-definíciót a "naplózási virtuális gépek" minta helyett.
 
@@ -436,6 +436,14 @@ A bővítmény 15 percenként meghívja a fürt teljes vizsgálatát. Miután ö
 > [!NOTE]
 > A Kubernetes-fürtök Azure Policy összes megfelelőségi jelentése magában foglalja az elmúlt 45 percen belüli összes jogsértést. Az időbélyegző azt jelzi, hogy mikor történt megsértés.
 
+Egyéb megfontolások:
+
+- Ha a fürt előfizetése Azure Security Center van regisztrálva, akkor Azure Security Center Kubernetes szabályzatokat a rendszer automatikusan alkalmazza a fürtön.
+
+- Ha a meglévő Kubernetes-erőforrásokkal rendelkező fürtön megtagadási házirend van érvényben, az új szabályzatnak nem megfelelő összes meglévő erőforrás továbbra is fut. Ha a nem megfelelő erőforrás egy másik csomóponton lesz átütemezett, a forgalomirányító blokkolja az erőforrás-létrehozást.
+
+- Ha egy fürt olyan megtagadási házirenddel rendelkezik, amely érvényesíti az erőforrásokat, a felhasználó nem fog elutasítási üzenetet látni a központi telepítés létrehozásakor. Vegyünk például egy olyan Kubernetes-telepítést, amely replicasets és hüvelyeket tartalmaz. Amikor a felhasználó végrehajtja a műveleteket `kubectl describe deployment $MY_DEPLOYMENT` , nem küld visszautasítási üzenetet az események részeként. `kubectl describe replicasets.apps $MY_DEPLOYMENT`A visszautasításhoz tartozó eseményeket azonban visszaadja.
+
 ## <a name="logging"></a>Naplózás
 
 Kubernetes-vezérlőként/tárolóként az _Azure-Policy_ és a _forgalomirányító_ hüvelyek is megőrzik a naplókat a Kubernetes-fürtben. A naplók elérhetők a Kubernetes-fürt elemzések **lapján.**
@@ -452,6 +460,10 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 ```
 
 További információ: a forgalomirányító dokumentációjának [hibakeresése](https://github.com/open-policy-agent/gatekeeper#debugging) .
+
+## <a name="troubleshooting-the-add-on"></a>A bővítmény hibaelhárítása
+
+A Kubernetes-bővítmény hibaelhárításával kapcsolatos további információkért tekintse meg a Azure Policy hibaelhárítási cikk [Kubernetes című szakaszát](/azure/governance/policy/troubleshoot/general#add-on-for-kubernetes-general-errors) .
 
 ## <a name="remove-the-add-on"></a>A bővítmény eltávolítása
 
@@ -532,7 +544,7 @@ A bővítmény által gyűjtött információk nem személyes adatok. A rendszer
 - Az ügynök telepítése során Azure Policy bővítmény által észlelt kivételek/hibák a szabályzat kiértékelése során
 - A Azure Policy bővítmény által nem telepített forgalomirányító házirend-definíciók száma
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.

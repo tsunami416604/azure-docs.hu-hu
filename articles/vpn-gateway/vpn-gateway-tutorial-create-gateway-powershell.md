@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: b70a3fe4884ef209e57fbb954c27aa83486b5c98
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: aaeb38b4d46188205841d6a93437533e30061485
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94661001"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512093"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Oktatóanyag: VPN-átjáró létrehozása és kezelése a PowerShell-lel
 
@@ -26,7 +26,7 @@ Az Azure VPN-átjárók helyszínek közötti kapcsolatot biztosítanak az ügyf
 
 Az alábbi diagram az oktatóanyag keretében létrehozott virtuális hálózatot és VPN-átjárót mutatja.
 
-:::image type="content" source="./media/vpn-gateway-tutorial-create-gateway-powershell/gateway-diagram.png" alt-text="VNet és VPN Gateway diagram":::
+:::image type="content" source="./media/vpn-gateway-tutorial-create-gateway-powershell/diagram.png" alt-text="VNet és VPN Gateway diagram":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 9740506da2c03996db756175551867ed43575a7c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 682a97738e94c2a8188b4976a229d6a850a5b6ac
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488179"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512001"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
@@ -31,7 +31,7 @@ A cikk előfeltételeinek részeként korábban már be kellett állítania egy 
 Az alhálózatot delegálni kell Azure NetApp Files.  
 [Alhálózat delegálása az Azure NetApp Fileshoz](azure-netapp-files-delegate-subnet.md)
 
-## <a name="requirements-for-active-directory-connections"></a>Active Directory kapcsolatokra vonatkozó követelmények
+## <a name="requirements-for-active-directory-connections"></a>Az Active Directory-kapcsolatok követelményei
 
  SMB-kötet létrehozása előtt létre kell hoznia Active Directory kapcsolatokat. A Active Directory kapcsolatokra vonatkozó követelmények a következők: 
 
@@ -45,7 +45,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     |    AD Web Services    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    N/A       |    Visszhangos válasz    |
+    |    ICMPv4             |    N.A.       |    Visszhangos válasz    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -84,7 +84,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 
 * A Azure NetApp Files támogatja az [LDAP-aláírást](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server), ami lehetővé teszi az LDAP-forgalom biztonságos átvitelét a Azure NetApp Files szolgáltatás és a megcélozt [Active Directory tartományvezérlők](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)között. Ha az LDAP-aláíráshoz a Microsoft tanácsadói [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) útmutatását követi, akkor a Azure NetApp Files LDAP-aláírási funkciójának engedélyezéséhez a [Csatlakozás Active Directory](#create-an-active-directory-connection) ablakban jelölje be az **LDAP** -aláírás jelölőnégyzetet. 
 
-    Az [LDAP-csatorna kötési](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) konfigurációja nincs hatással a Azure NetApp Files szolgáltatásra. 
+    Az [LDAP-csatorna kötési](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) konfigurációja önmagában nincs hatással a Azure NetApp Files szolgáltatásra. Ha azonban az LDAP-csatorna kötését és a Secure LDAP-t (például LDAPs vagy `start_tls` ) használja, akkor az SMB-kötet létrehozása sikertelen lesz.
 
 További információ a további AD-információkról: Azure NetApp Files [SMB-gyakori kérdések](./azure-netapp-files-faqs.md#smb-faqs) . 
 
@@ -119,7 +119,7 @@ A Azure NetApp Files további AADDS szempontokat is figyelembe kell venni:
 
 Active Directory-kapcsolatok létrehozásakor vegye figyelembe a következő AADDS vonatkozó jellemzőket:
 
-* Az **elsődleges DNS** -, **másodlagos DNS** -és **ad DNS-tartománynevek** adatait a AADDS menüben találja.  
+* Az **elsődleges DNS**-, **másodlagos DNS**-és **ad DNS-tartománynevek** adatait a AADDS menüben találja.  
 A DNS-kiszolgálók esetében két IP-cím lesz használva a Active Directory-kapcsolatok konfigurálásához. 
 * A **szervezeti egység elérési útja** : `OU=AADDC Computers` .  
 Ez a beállítás a **NetApp-fiókhoz** tartozó **Active Directory-kapcsolatokban** van konfigurálva:
@@ -321,7 +321,7 @@ A fájlokra vagy mappákra vonatkozó engedélyeket a Windows SMB-ügyfélben ta
  
 ![Fájl-és mappa engedélyeinek beállítása](../media/azure-netapp-files/set-file-folder-permissions.png) 
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * [Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)

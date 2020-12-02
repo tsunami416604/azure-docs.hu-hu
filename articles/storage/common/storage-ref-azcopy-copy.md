@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a5c0d8bb47b337b0415565a0b6dad5c6822d0b94
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781736"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512154"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -107,6 +107,14 @@ Fájlok és könyvtárak feltöltése SAS-token és helyettesítő karakter (*) 
 ```azcopy
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
+
+Töltse fel a fájlokat és könyvtárakat az Azure Storage-fiókba, és állítsa be a lekérdezés-karakterlánc kódolású címkéket a blobon. 
+
+- A címkék {Key = "bla bla", val = "foo"} és {Key = "bla bla 2", val = "Bar"} beállításához használja a következő szintaxist: `azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+    
+- A kulcsok és értékek URL-kódolású, a kulcs-érték párok pedig egy jellel ("&") vannak elválasztva.
+
+- A címkék a blobokra való beállítása során további engedélyek (nem "a címkékhez) találhatók az SAS-ben, amelyek nélkül a szolgáltatás visszaadja az engedélyezési hibát.
 
 Töltsön le egyetlen fájlt a OAuth-hitelesítés használatával. Ha még nem jelentkezett be a AzCopy-be, futtassa a `azcopy login` parancsot a következő parancs futtatása előtt.
 
@@ -214,9 +222,19 @@ Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimból
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
+Fájlok és könyvtárak átvitele az Azure Storage-fiókba, valamint a megadott lekérdezési karakterláncot tartalmazó címkék beállítása a blobon. 
+
+- A címkék {Key = "bla bla", val = "foo"} és {Key = "bla bla 2", val = "Bar"} beállításához használja a következő szintaxist: `azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+        
+- A kulcsok és értékek URL-kódolású, a kulcs-érték párok pedig egy jellel ("&") vannak elválasztva.
+    
+- A címkék a blobokra való beállítása során további engedélyek (nem "a címkékhez) találhatók az SAS-ben, amelyek nélkül a szolgáltatás visszaadja az engedélyezési hibát.
+
 ## <a name="options"></a>Beállítások
 
 **– biztonsági mentés** Aktiválja a Windows SeBackupPrivilege a feltöltésekhez vagy SeRestorePrivilege a letöltésekhez, hogy lehetővé tegye a AzCopy számára az összes fájl megtekintését és olvasását, a fájlrendszer engedélyeitől függetlenül, valamint az összes engedély visszaállítását. Megköveteli, hogy a AzCopy-t futtató fiók már rendelkezik ezekkel az engedélyekkel (például rendszergazdai jogokkal rendelkezik, vagy a `Backup Operators` csoport tagja). Ez a jelző aktiválja azokat a jogosultságokat, amelyekkel a fiók már rendelkezik.
+
+**--blob-címkék** sztring a Blobok címkéit a Storage-fiókban lévő adatkategorizáláshoz.
 
 **--a blob-Type** karakterlánc határozza meg a blob típusát a célhelyen. Ez a Blobok feltöltésére és a fiókok közötti másolásra használatos (alapértelmezett `Detect` ). Az érvényes értékek a következők:,, `Detect` `BlockBlob` `PageBlob` és `AppendBlob` . A fiókok közötti másoláskor a `Detect` AzCopy hatására a rendszer a forrás blob típusát használja a cél blob típusának meghatározásához. Fájl feltöltésekor meghatározza, hogy `Detect` a fájl egy VHD vagy egy VHDX-fájl a fájlkiterjesztés alapján. Ha a fájl az éter VHD-vagy VHDX-fájlja, a AzCopy oldal blobként kezeli a fájlt. (alapértelmezett "észlelés")
 

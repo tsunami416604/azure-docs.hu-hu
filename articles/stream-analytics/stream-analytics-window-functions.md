@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: c4ddffa5f9e9ff4b313f05c9cedb3cb207695225
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4765c0c43cfd9760eb5b4392604bfaeedc69c388
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129703"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511440"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Bevezetés az Stream Analytics Windowing functions használatába
 
@@ -36,7 +36,7 @@ Az ugróablak típusú függvények egy adott időtartamot ugranak előre az id�
 
 ## <a name="sliding-window"></a>Ablak csúsztatása
 
-A Windows csúszó ablakai, a felhúzással vagy a beugró ablakokkal ellentétben, a kimeneti események csak az adott időszakra vonatkozó tartalommal kapcsolatos időpontokban jelennek meg. Más szóval, amikor egy esemény belép vagy kilép az ablakból. Minden ablaknak van legalább egy eseménye, például a Windows-hopping esetében, az események több csúszó ablakhoz is tartozhatnak.
+A Windows csúszó ablakai, a felhúzással vagy a beugró ablakokkal ellentétben, a kimeneti események csak az adott időszakra vonatkozó tartalommal kapcsolatos időpontokban jelennek meg. Más szóval, amikor egy esemény belép vagy kilép az ablakból. Így minden ablaknak legalább egy eseménye van. A Windows-hopping hasonló események több csúszó ablakhoz is tartozhatnak.
 
 ![Stream Analytics csúszó ablak](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
@@ -57,7 +57,7 @@ Pillanatkép Windows-csoportok eseményei, amelyek ugyanazzal az időbélyegzőv
 
 ![Pillanatkép-ablak Stream Analytics](media/stream-analytics-window-functions/snapshot.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
