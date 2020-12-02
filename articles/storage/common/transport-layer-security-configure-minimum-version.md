@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 5f772bd996b126a4cd7182a2ce088c2d3edc8e7d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 683f0e070ad77add62ed76eabd70b42ba15f012e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312021"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498132"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Transport Layer Security (TLS) minimálisan szükséges verziójának kikényszerítés a Storage-fiókra irányuló kérelmekhez
 
@@ -35,7 +35,7 @@ A Storage-fiók minimális TLS-verziójának kikényszerített elutasítása ese
 
 A kérelmek Azure Storage-fiókba való naplózásához és az ügyfél által használt TLS-verzió meghatározásához használhatja az Azure Storage-naplózást Azure Monitor (előzetes verzió). További információ: az [Azure Storage figyelése](../blobs/monitor-blob-storage.md).
 
-Az Azure Storage Azure Monitor támogatja a naplózási lekérdezések használatát a naplófájlok elemzéséhez. A naplók lekérdezéséhez használhat Azure Log Analytics munkaterületet. További információ a naplók lekérdezéséről [: oktatóanyag: log Analytics lekérdezések első lépései](../../azure-monitor/log-query/get-started-portal.md).
+Az Azure Storage Azure Monitor támogatja a naplózási lekérdezések használatát a naplófájlok elemzéséhez. A naplók lekérdezéséhez használhat Azure Log Analytics munkaterületet. További információ a naplók lekérdezéséről [: oktatóanyag: log Analytics lekérdezések első lépései](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
 Az Azure Storage-beli adatAzure Monitor és az Azure Log Analytics való elemzéséhez először létre kell hoznia egy diagnosztikai beállítást, amely meghatározza, hogy milyen típusú kérelmeket és milyen tárolási szolgáltatásokat szeretne naplózni. Ha diagnosztikai beállítást szeretne létrehozni a Azure Portalban, kövesse az alábbi lépéseket:
 
@@ -44,7 +44,7 @@ Az Azure Storage-beli adatAzure Monitor és az Azure Log Analytics való elemzé
 1. Az Azure Portalon nyissa meg a tárfiókot.
 1. A figyelés szakaszban válassza a **diagnosztikai beállítások (előzetes verzió)** lehetőséget.
 1. Válassza ki azt az Azure Storage-szolgáltatást, amelyhez be szeretné jelentkezni a kérelmeket. Például válassza a **blob** lehetőséget a blob Storage-ba irányuló kérelmek naplózásához.
-1. Válassza a **diagnosztikai beállítás hozzáadása** lehetőséget.
+1. Válassza a **Diagnosztikai beállítások megadása** lehetőséget.
 1. Adja meg a diagnosztikai beállítás nevét.
 1. A **Kategória részletei** területen, a **napló** szakaszban válassza ki a naplózandó kérelmek típusát. Az olvasási, írási és törlési kérelmek naplózása is megadható. Ha például a **StorageRead** és a **StorageWrite** lehetőséget választja, a a kiválasztott szolgáltatásba írja be az olvasási és írási kérelmeket.
 1. A **célhely részletei** területen válassza **a Küldés log Analyticsba** lehetőséget. Válassza ki az előfizetését és a korábban létrehozott Log Analytics munkaterületet, ahogy az az alábbi képen is látható.
@@ -91,7 +91,7 @@ Ha biztos abban, hogy a TLS régebbi verzióit használó ügyfelektől érkező
 
 A Storage-fiók minimális TLS-verziójának konfigurálásához állítsa be a **MinimumTlsVersion** verzióját a fiókhoz. Ez a tulajdonság minden olyan Storage-fiókhoz elérhető, amely a Azure Resource Manager telepítési modellel lett létrehozva. További információ a Azure Resource Manager telepítési modellről: a [Storage-fiók áttekintése](storage-account-overview.md).
 
-A **MinimumTlsVersion** tulajdonság alapértelmezés szerint nincs beállítva, és nem ad vissza értéket, amíg explicit módon be nem állítja azt.  Ha a tulajdonság értéke **Null** , a Storage-fiók engedélyezi a TLS 1,0-es vagy újabb verziójával küldött kérelmeket.
+A **MinimumTlsVersion** tulajdonság alapértelmezés szerint nincs beállítva, és nem ad vissza értéket, amíg explicit módon be nem állítja azt.  Ha a tulajdonság értéke **Null**, a Storage-fiók engedélyezi a TLS 1,0-es vagy újabb verziójával küldött kérelmeket.
 
 # <a name="portal"></a>[Portál](#tab/portal)
 
@@ -173,7 +173,7 @@ Egy sablonhoz tartozó Storage-fiók minimális TLS-verziójának konfigurálás
 
 1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget.
 1. A **Keresés a piactéren** mezőbe írja be a **sablon központi telepítése** kifejezést, majd nyomja le az **ENTER** billentyűt.
-1. Válassza **template Deployment (üzembe helyezés egyéni sablonok használatával) (előzetes verzió)** , válassza a **Létrehozás** lehetőséget, majd **a szerkesztőben válassza a saját sablon** létrehozása lehetőséget.
+1. Válassza **template Deployment (üzembe helyezés egyéni sablonok használatával) (előzetes verzió)**, válassza a **Létrehozás** lehetőséget, majd **a szerkesztőben válassza a saját sablon** létrehozása lehetőséget.
 1. A sablon szerkesztőjében illessze be a következő JSON-t egy új fiók létrehozásához, és állítsa be a TLS 1,2-es minimális verzióját. Ne felejtse el lecserélni a helyőrzőket a saját értékeire a szögletes zárójelben.
 
     ```json
@@ -344,7 +344,7 @@ Az alábbi képen látható az a hiba, amely akkor fordul elő, ha olyan Storage
 
 Amikor egy ügyfél kérelmet küld a Storage-fióknak, az ügyfél először a Storage-fiók nyilvános végpontját hozza létre a kérések feldolgozása előtt. A TLS-verzió minimális beállítása a kapcsolatok létrehozása után van bejelölve. Ha a kérelem a TLS egy korábbi verzióját használja, mint amit a beállítás meghatároz, a kapcsolódás továbbra is sikeres lesz, de a kérelem végül sikertelen lesz. Az Azure Storage nyilvános végpontokkal kapcsolatos további információkért lásd: [erőforrás URI-szintaxisa](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#resource-uri-syntax).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Transport Layer Security (TLS) konfigurálása ügyfélalkalmazás számára](transport-layer-security-configure-client-version.md)
 - [Biztonsági javaslatok a blob Storage-hoz](../blobs/security-recommendations.md)

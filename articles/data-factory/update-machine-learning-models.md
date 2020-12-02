@@ -3,20 +3,20 @@ title: Azure Machine Learning Studio (klasszikus) modellek frissítése Azure Da
 description: Útmutató prediktív folyamatok létrehozásához Azure Data Factory és Azure Machine Learning Studio használatával (klasszikus)
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 83950c2d3c5439886ff787b69d9da4d0c214de31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bec300414483181617a7aa009157a4c4a332c745
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092541"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496738"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>Azure Machine Learning Studio (klasszikus) modellek frissítése az erőforrás frissítése tevékenység használatával
 
@@ -63,7 +63,7 @@ A következő JSON-kódrészlet egy Azure Machine Learning Studio (klasszikus) b
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | A folyamatban szereplő tevékenység neve     | Igen      |
 | leírás                   | A tevékenység működését leíró szöveg  | Nem       |
-| típus                          | A Azure Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenység esetén a  **AzureMLUpdateResource**a tevékenység típusa. | Igen      |
+| típus                          | A Azure Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenység esetén a  **AzureMLUpdateResource** a tevékenység típusa. | Igen      |
 | linkedServiceName             | Azure Machine Learning Studio (klasszikus) társított szolgáltatás, amely a updateResourceEndpoint tulajdonságot tartalmazza. | Igen      |
 | trainedModelName              | A frissítendő webszolgáltatási kísérletben szereplő betanított modell modul neve | Igen      |
 | trainedModelLinkedServiceName | Az Azure Storage társított szolgáltatás neve, amely a frissítési művelettel feltöltött ilearner fájlt tartja | Igen      |
@@ -73,7 +73,7 @@ A következő JSON-kódrészlet egy Azure Machine Learning Studio (klasszikus) b
 
 A végrehajtott teljes folyamata és a prediktív webszolgáltatások frissítése a következő lépésekkel jár:
 
-- Hívja meg a **betanítási webszolgáltatást** a **Batch végrehajtási tevékenység**használatával. A betanítási webszolgáltatás meghívása ugyanaz, mint a prediktív [adatcsatornák létrehozása Azure Machine learning Studio (klasszikus) és Data Factory batch-végrehajtási tevékenység használatával](transform-data-using-machine-learning.md). A betanítási webszolgáltatás kimenete egy iLearner-fájl, amelyet a prediktív webszolgáltatás frissítésére használhat.
+- Hívja meg a **betanítási webszolgáltatást** a **Batch végrehajtási tevékenység** használatával. A betanítási webszolgáltatás meghívása ugyanaz, mint a prediktív [adatcsatornák létrehozása Azure Machine learning Studio (klasszikus) és Data Factory batch-végrehajtási tevékenység használatával](transform-data-using-machine-learning.md). A betanítási webszolgáltatás kimenete egy iLearner-fájl, amelyet a prediktív webszolgáltatás frissítésére használhat.
 - A **prediktív webszolgáltatás** frissítési **erőforrás-végpontjának** meghívásával frissítse a webszolgáltatást az újonnan betanított modellel a webszolgáltatás **frissítése tevékenységgel** .
 
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (klasszikus) társított szolgáltatás
@@ -170,7 +170,7 @@ A következő JSON-kódrészlet egy Azure Machine Learning Studio (klasszikus) t
 }
 ```
 
-A **Azure Machine learning Studio (klasszikus)** területen tegye a következőket a **MlEndpoint** és a **apiKey**értékeinek lekéréséhez:
+A **Azure Machine learning Studio (klasszikus)** területen tegye a következőket a **MlEndpoint** és a **apiKey** értékeinek lekéréséhez:
 
 1. A bal oldali menüben kattintson a **Web Services** elemre.
 2. A webszolgáltatások listájában kattintson a **betanítási webszolgáltatás** elemre.

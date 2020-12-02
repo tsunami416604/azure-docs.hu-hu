@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2d426952e92951185c43b68266196a6764f4f601
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e67c717a4476ab9191471483d9aa8e8f222cd750
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125013"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498268"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -39,7 +39,7 @@ Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 * IoT Hub
 * Tárfiók
 * Azure Media Services fiók
-* Egy Linux rendszerű virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](../../iot-edge/how-to-install-iot-edge-linux.md) telepítve
+* Egy Linux rendszerű virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](../../iot-edge/how-to-install-iot-edge.md) telepítve
 
 Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lévő szükséges erőforrások üzembe helyezéséhez használja az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Ehhez kövesse az alábbi lépéseket:
 
@@ -48,7 +48,11 @@ Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lé
 1. A Cloud Shell ablak bal oldalán lévő legördülő menüben válassza a **bash** lehetőséget a környezetében.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="Élő videó-elemzés a mozgásészlelés alapján"
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="Környezeti választó":::
+1. Futtassa az alábbi parancsot.
+
+    ```
+    bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
 Ha a parancsfájl sikeresen befejeződik, az előfizetésben szereplő összes szükséges erőforrást látnia kell. A szkript kimenetében az erőforrások táblázata felsorolja az IoT hub nevét. Keresse meg az erőforrás típusát `Microsoft.Devices/IotHubs` , és jegyezze fel a nevet. Ezt a nevet a következő lépésben kell megadnia. 
@@ -77,19 +81,20 @@ A modulok üzembe helyezése mostantól megtörtént, de az adathordozó-diagram
 Kövesse ezeket az utasításokat az IoT hubhoz való kapcsolódáshoz az Azure IoT Tools bővítmény használatával.
 
 1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
-1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai** lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Élő videó-elemzés a mozgásészlelés alapján" lehetőséget.
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Bővítmény beállításai":::
+1. Keresse meg és engedélyezze a "részletes üzenet megjelenítése" lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Élő videó-elemzés a mozgásészlelés alapján":::
-1. Válassza a **View**  >  **Explorer**lehetőséget. Vagy válassza a CTRL + SHIFT + E billentyűkombinációt.
-1. Az **Explorer** lap bal alsó sarkában válassza az **Azure IoT hub**elemet.
-1. A helyi menü megjelenítéséhez kattintson a **További beállítások** ikonra. Ezután válassza a **IoT hub a kapcsolatok karakterláncának beállítása**lehetőséget.
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Részletes üzenet megjelenítése":::
+1. Válassza a **View**  >  **Explorer** lehetőséget. Vagy válassza a CTRL + SHIFT + E billentyűkombinációt.
+1. Az **Explorer** lap bal alsó sarkában válassza az **Azure IoT hub** elemet.
+1. A helyi menü megjelenítéséhez kattintson a **További beállítások** ikonra. Ezután válassza a **IoT hub a kapcsolatok karakterláncának beállítása** lehetőséget.
 1. Amikor megjelenik egy beviteli mező, adja meg IoT Hub kapcsolódási karakterláncát. Cloud Shell a (z) *~/clouddrive/lva-sample/appsettings.js*.
 
-Ha a kapcsolatok sikeresek, megjelenik az Edge-eszközök listája. Legalább egy **LVA-Sample-Device**nevű eszközt kell látnia. Mostantól kezelheti IoT Edge eszközeit, és a helyi menüben használhatja az Azure IoT Hubt. A peremhálózati eszközön üzembe helyezett modulok megtekintéséhez a **LVA – minta-eszköz**területen bontsa ki a **modulok** csomópontot.
+Ha a kapcsolatok sikeresek, megjelenik az Edge-eszközök listája. Legalább egy **LVA-Sample-Device** nevű eszközt kell látnia. Mostantól kezelheti IoT Edge eszközeit, és a helyi menüben használhatja az Azure IoT Hubt. A peremhálózati eszközön üzembe helyezett modulok megtekintéséhez a **LVA – minta-eszköz** területen bontsa ki a **modulok** csomópontot.
 
 ![LVA – minta – eszköz csomópont](./media/quickstarts/lva-sample-device-node.png)
 
@@ -104,7 +109,7 @@ A modul segítségével közvetlen metódusok meghívásával elemezheti az él�
 
 A modul összes [gráf topológiájának](media-graph-concept.md#media-graph-topologies-and-instances) enumerálása:
 
-1. A Visual Studio Code-ban kattintson a jobb gombbal a **lvaEdge** modulra, és válassza a **modul közvetlen metódusának meghívása**lehetőséget.
+1. A Visual Studio Code-ban kattintson a jobb gombbal a **lvaEdge** modulra, és válassza a **modul közvetlen metódusának meghívása** lehetőséget.
 1. A megjelenő mezőben adja meg a *GraphTopologyList*.
 1. Másolja a következő JSON-adattartalmat, majd illessze be a mezőbe. Ezután válassza ki az ENTER billentyűt.
 
@@ -525,7 +530,7 @@ Az eredmények megfigyeléséhez kövesse az alábbi lépéseket.
 
 1. A Visual Studio Code-ban nyissa meg az **Explorer** ablaktáblát. A bal alsó sarokban keresse meg az **Azure IoT hub**.
 2. Bontsa ki az **eszközök** csomópontot.
-3. Kattintson a jobb gombbal a **LVA-Sample-Device** elemre, majd válassza a **figyelés beépített események figyelése**lehetőséget.
+3. Kattintson a jobb gombbal a **LVA-Sample-Device** elemre, majd válassza a **figyelés beépített események figyelése** lehetőséget.
 
     ![IOT hub-események figyelésének megkezdése](./media/quickstarts/start-monitoring-iothub-events.png)
     
@@ -691,7 +696,7 @@ Próbálkozzon a következő lépésekkel:
 
 Ha nem folytatja az alkalmazás használatát, törölje az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan [rögzíthet videót a IoT Edge élő video Analytics használatával](continuous-video-recording-tutorial.md).
 * További információ a [diagnosztikai üzenetekről](monitoring-logging.md).

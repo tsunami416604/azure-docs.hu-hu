@@ -3,20 +3,20 @@ title: 'Adatátalakítás: az Adatátalakítási folyamat & '
 description: Megtudhatja, hogyan alakíthatja át az adatkezelési és-adatfeldolgozási Azure Data Factory Hadoop, Azure Machine Learning Studio (klasszikus) vagy Azure Data Lake Analytics használatával.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: dfe8863f38da0aeb701b063f051a199e27745eeb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 587e8eaf36a8e9d0be86237e2db72f952853a0ff
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453355"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495684"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Az adatátalakítás Azure Data Factory 1. verzióban
 > [!div class="op_single_selector"]
@@ -83,7 +83,7 @@ Hozzon létre egy társított szolgáltatást a számítási környezethez, majd
 
 A Data Factory által támogatott számítási szolgáltatások megismeréséhez tekintse meg a [számítási társított szolgáltatások](data-factory-compute-linked-services.md) című cikket. 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Azure Data Factory a következő Adatátalakítási tevékenységeket és a tevékenységek számítási környezeteit támogatja. Az átalakítási tevékenységek hozzáadhatók a folyamatokhoz, akár külön, akár egy másik tevékenységgel.
 
 | Adatátalakítási tevékenység | Számítási környezet |

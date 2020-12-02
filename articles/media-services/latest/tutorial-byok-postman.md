@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: 93bbd84c25f02ac1653a46ebb4a70c1dfa90c744
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c8a5b682e2ac4879d2181bdb069cf554bad512d9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687245"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498285"
 ---
 # <a name="tutorial-use-customer-managed-keys-or-byok-with-media-services-rest-api"></a>Oktatóanyag: ügyfél által felügyelt kulcsok vagy BYOK használata Media Services REST API
 
@@ -43,8 +43,8 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverz
 
 ### <a name="register-a-service-principal-with-the-needed-permissions"></a>Egyszerű szolgáltatásnév regisztrálása a szükséges engedélyekkel
 
-1. [Egyszerű szolgáltatásnév létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-1. Lépjen a [2. lehetőségre: hozzon létre egy új alkalmazás titkot](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#authentication-two-options) a szolgáltatás egyszerű titkának beszerzéséhez.
+1. [Egyszerű szolgáltatásnév létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md).
+1. Lépjen a [2. lehetőségre: hozzon létre egy új alkalmazás titkot](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) a szolgáltatás egyszerű titkának beszerzéséhez.
 
    > [!IMPORTANT]
    >Másolja ki és mentse a titkot későbbi használatra. A titkos oldal a portálon való elhagyása után nem fér hozzá a titokhoz.
@@ -133,7 +133,7 @@ Media Services automatikusan észleli a kulcs módosításakor. A folyamat teszt
 
 Ha nem folytatja a létrehozott erőforrások használatát, és *nem kívánja tovább használni a számlázást*, törölje őket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan teheti meg a következőket:
 > [!div class="nextstepaction"]

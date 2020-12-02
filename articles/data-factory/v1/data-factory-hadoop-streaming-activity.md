@@ -3,8 +3,8 @@ title: Adatátalakítás az Hadoop streaming-tevékenység használatával – A
 description: Megtudhatja, hogyan alakíthatja át az Hadoop streaming-tevékenységet egy Azure-beli adatgyárban az Hadoop streaming-programok futtatásával egy igény szerinti vagy saját HDInsight-fürtön.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9c6661a762886140997b9305f88f5c4e25476e57
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 80f78e3d2e7fdcd8fef53ca0412676a37c6486c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371698"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495599"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Adatátalakítás Hadoop-adatfolyam-továbbítási tevékenység használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -26,8 +26,8 @@ ms.locfileid: "92371698"
 > * [MapReduce tevékenység](data-factory-map-reduce.md)
 > * [Hadoop streaming-tevékenység](data-factory-hadoop-streaming-activity.md)
 > * [Spark-tevékenység](data-factory-spark.md)
-> * [Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenység](data-factory-azure-ml-update-resource-activity.md)
+> * [Az Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenysége](data-factory-azure-ml-batch-execution-activity.md)
+> * [Az Azure Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenysége](data-factory-azure-ml-update-resource-activity.md)
 > * [Tárolt eljárási tevékenység](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL-tevékenység](data-factory-usql-activity.md)
 > * [.NET egyéni tevékenység](data-factory-use-custom-activities.md)
@@ -95,7 +95,7 @@ A rendszer automatikusan kitölti a HDInsight-fürtöt például programok (wc.e
 Vegye figyelembe a következő szempontokat:
 
 1. Állítsa be a **linkedServiceName** a társított szolgáltatás nevére, amely arra a HDInsight-fürtre mutat, amelyen a streaming MapReduce-feladatot futtatja.
-2. Állítsa be a tevékenység típusát a **HDInsightStreaming**értékre.
+2. Állítsa be a tevékenység típusát a **HDInsightStreaming** értékre.
 3. A **Mapper** tulajdonságnál adja meg a Mapper végrehajtható fájljának nevét. A példában a cat.exe a Mapper végrehajtható fájl.
 4. A **csökkentő** tulajdonságnál adja meg a csökkentő végrehajtható fájl nevét. A példában a wc.exe a csökkentő végrehajtható fájl.
 5. A **bemeneti** típus tulajdonságnál adja meg a Mapper bemeneti fájlját (beleértve a helyét is). A példában:: adfsample a blob-tároló, például a (z), a (z) és a (z) `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` mappa, a davinci.txt pedig a blob.
@@ -174,7 +174,7 @@ Az ebben a példában szereplő folyamat nem tesz elérhetővé semmilyen bemene
 ```
 
 ### <a name="pipeline"></a>Folyamat
-Az ebben a példában szereplő folyamathoz csak egy: **HDInsightStreaming**típusú tevékenység tartozik. 
+Az ebben a példában szereplő folyamathoz csak egy: **HDInsightStreaming** típusú tevékenység tartozik. 
 
 A rendszer automatikusan kitölti a HDInsight-fürtöt például programok (wc.exe és cat.exe) és az adatok (davinci.txt) alapján. Alapértelmezés szerint a HDInsight-fürt által használt tároló neve a fürt neve. Ha például a fürt neve myhdicluster, a társított blob-tároló neve myhdicluster lesz.  
 

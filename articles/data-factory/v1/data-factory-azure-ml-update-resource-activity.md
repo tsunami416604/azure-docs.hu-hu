@@ -3,20 +3,20 @@ title: Machine Learning modellek frissítése a Azure Data Factory használatáv
 description: Útmutató prediktív folyamatok létrehozásához Azure Data Factory v1 és Azure Machine Learning Studio (klasszikus) használatával
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: c456c7eb31e1e8e66aa3276a0cb5f6f8b39efa9a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 556936eb6e8c1c1c2dd1fab4ce7dfc1b648710b7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631750"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496602"
 ---
 # <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>Azure Machine Learning Studio (klasszikus) modellek frissítése az erőforrás-frissítési tevékenység használatával
 
@@ -42,7 +42,7 @@ Ez a cikk a fő Azure Data Factory-Azure Machine Learning Studio (klasszikus) in
 Idővel a Azure Machine Learning Studio (klasszikus) pontozási kísérletek prediktív modelljeit új bemeneti adatkészletek használatával kell áttanítani. Miután végzett az újraképzéssel, frissítenie kell a pontozási webszolgáltatást az áttelepített ML-modellel. A Studio (klasszikus) modellek webszolgáltatásokon keresztül történő átképzésének és frissítésének tipikus lépései a következők:
 
 1. Hozzon létre egy kísérletet [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net).
-2. Ha elégedett a modellel, használja a Azure Machine Learning Studio (klasszikus) lehetőséget a webes szolgáltatások közzétételére a **betanítási kísérlet** és a pontozási/ **prediktív kísérlet** során.
+2. Ha elégedett a modellel, használja a Azure Machine Learning Studio (klasszikus) lehetőséget a webes szolgáltatások közzétételére a **betanítási kísérlet** és a pontozási/**prediktív kísérlet** során.
 
 A következő táblázat ismerteti az ebben a példában használt webszolgáltatásokat.  A részletekért lásd: [Azure Machine learning Studio (klasszikus) modellek átképzése programozott](../../machine-learning/classic/retrain-machine-learning-model.md) módon.
 
@@ -58,7 +58,7 @@ A **betanítási webszolgáltatás** a **Azure Machine learning Studio (klasszik
 A **pontozási webszolgáltatás** meghívásához használja az **Azure Machine learning Studio (klasszikus) frissítési erőforrás tevékenységét** , hogy frissítse a webszolgáltatást az újonnan betanított modellel. A következő példák a társított szolgáltatás definícióit biztosítják: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>A pontozási webszolgáltatás egy klasszikus webszolgáltatás
-Ha a pontozási webszolgáltatás egy **klasszikus webszolgáltatás** , akkor a Azure Portal használatával hozza létre a második **nem alapértelmezett és frissíthető végpontot** . A lépések a [végpontok létrehozása](../../machine-learning/classic/create-endpoint.md) című cikkben olvashatók. Miután létrehozta a nem alapértelmezett frissíthető végpontot, hajtsa végre a következő lépéseket:
+Ha a pontozási webszolgáltatás egy **klasszikus webszolgáltatás**, akkor a Azure Portal használatával hozza létre a második **nem alapértelmezett és frissíthető végpontot** . A lépések a [végpontok létrehozása](../../machine-learning/classic/create-endpoint.md) című cikkben olvashatók. Miután létrehozta a nem alapértelmezett frissíthető végpontot, hajtsa végre a következő lépéseket:
 
 * Kattintson a **Batch-végrehajtás** elemre a **mlEndpoint** JSON-tulajdonság URI-értékének lekéréséhez.
 * Kattintson az **erőforrás frissítése** hivatkozásra az **updateResourceEndpoint** JSON-tulajdonság URI-értékének lekéréséhez. Az API-kulcs maga a végpont oldalon található (a jobb alsó sarokban).
@@ -260,7 +260,7 @@ A Studio (klasszikus) frissítési erőforrás tevékenysége nem eredményez ki
 ```
 
 ### <a name="pipeline"></a>Folyamat
-A folyamat két tevékenységgel rendelkezik: **AzureMLBatchExecution** és **AzureMLUpdateResource** . A Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység bemenetként veszi át a betanítási adatokat, és kimenetként létrehoz egy iLearner-fájlt. A tevékenység behívja a betanítási webszolgáltatást (webszolgáltatásként közzétett betanítási kísérlet) a bemeneti betanítási adatokkal, és a webszolgáltatásból fogadja a ilearner-fájlt. A placeholderBlob csak egy olyan próbabábu kimeneti adatkészlete, amelyre a Azure Data Factory szolgáltatásnak szüksége van a folyamat futtatásához.
+A folyamat két tevékenységgel rendelkezik: **AzureMLBatchExecution** és **AzureMLUpdateResource**. A Azure Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység bemenetként veszi át a betanítási adatokat, és kimenetként létrehoz egy iLearner-fájlt. A tevékenység behívja a betanítási webszolgáltatást (webszolgáltatásként közzétett betanítási kísérlet) a bemeneti betanítási adatokkal, és a webszolgáltatásból fogadja a ilearner-fájlt. A placeholderBlob csak egy olyan próbabábu kimeneti adatkészlete, amelyre a Azure Data Factory szolgáltatásnak szüksége van a folyamat futtatásához.
 
 ![folyamat diagramja](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

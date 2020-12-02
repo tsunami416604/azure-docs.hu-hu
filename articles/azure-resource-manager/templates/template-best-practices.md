@@ -2,13 +2,13 @@
 title: Ajánlott eljárások a sablonokhoz
 description: A Azure Resource Manager sablonok létrehozásához ajánlott megközelítéseket ismerteti. Javaslatokat nyújt a gyakori problémák elkerülésére a sablonok használatakor.
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/01/2020
+ms.openlocfilehash: c62bde8fc8cfc79330d13b7b2ff4f778dadf1339
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87809255"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497979"
 ---
 # <a name="arm-template-best-practices"></a>ARM-sablon – ajánlott eljárások
 
@@ -87,11 +87,9 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
    },
    ```
 
-* Ne használjon paramétert az API-verzióhoz az erőforrástípus esetében. Az erőforrás-tulajdonságok és az értékek verziószáma eltérő lehet. Az IntelliSense egy szerkesztőprogramban nem tudja meghatározni a megfelelő sémát, ha az API-verzió értéke paraméter. Ehelyett a sablonban rögzített API-verziót kell használnia.
-
 * Használjon `allowedValues` takarékosan. Csak akkor használja, ha meg kell győződnie arról, hogy néhány érték nem szerepel az engedélyezett beállítások között. Ha `allowedValues` túl széles körben használja, letilthatja az érvényes központi telepítéseket, ha nem tartja naprakészen a listát.
 
-* Ha a sablon egyik paramétere megegyezik a PowerShell üzembe helyezési parancsában szereplő paraméterekkel, az erőforrás-kezelő feloldja ezt az elnevezési ütközést úgy, hogy hozzáadja a Postfix **FromTemplate** a sablon paraméterhez. Ha például egy **ResourceGroupName** nevű paramétert tartalmaz a sablonban, az ütközik a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsmag **ResourceGroupName** paraméterével. Az üzembe helyezés során a rendszer kéri, hogy adjon meg egy értéket a **ResourceGroupNameFromTemplate**számára.
+* Ha a sablon egyik paramétere megegyezik a PowerShell üzembe helyezési parancsában szereplő paraméterekkel, az erőforrás-kezelő feloldja ezt az elnevezési ütközést úgy, hogy hozzáadja a Postfix **FromTemplate** a sablon paraméterhez. Ha például egy **ResourceGroupName** nevű paramétert tartalmaz a sablonban, az ütközik a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) parancsmag **ResourceGroupName** paraméterével. Az üzembe helyezés során a rendszer kéri, hogy adjon meg egy értéket a **ResourceGroupNameFromTemplate** számára.
 
 ### <a name="security-recommendations-for-parameters"></a>Paraméterekkel kapcsolatos biztonsági javaslatok
 
@@ -146,8 +144,6 @@ A következő információk hasznosak lehetnek a [változók](template-variables
 
 * Használjon változókat a sablon függvények összetett elrendezése alapján létrehozott értékekhez. A sablon könnyebben olvasható, ha a komplex kifejezés csak a változókban jelenik meg.
 
-* Ne használjon változókat `apiVersion` erőforráson. Az API verziója határozza meg az erőforrás sémáját. A verzió gyakran nem módosítható az erőforrás tulajdonságainak módosítása nélkül.
-
 * A [hivatkozási](template-functions-resource.md#reference) függvény nem használható a sablon **változók** szakaszában. A **Reference** függvény az erőforrás futásidejű állapotáról származtatja az értékét. A változók azonban a sablon kezdeti elemzése során is megoldhatók. Olyan értékeket kell megadnia, amelyeknek a **hivatkozási** függvényt közvetlenül a sablon **erőforrások** vagy **kimenetek** szakaszában kell megadniuk.
 
 * Adja meg azokat az erőforrásnevek változóit, amelyeknek egyedinek kell lenniük.
@@ -155,6 +151,16 @@ A következő információk hasznosak lehetnek a [változók](template-variables
 * Használjon egy [másolási hurkot a változók között](copy-variables.md) , hogy ismétlődő JSON-objektumokat hozzon létre.
 
 * Távolítsa el a nem használt változókat.
+
+## <a name="api-version"></a>API-verzió
+
+Állítsa a `apiVersion` tulajdonságot egy rögzített API-verzióra az erőforrás típusához. Új sablon létrehozásakor javasoljuk, hogy az erőforrástípus legújabb API-verzióját használja. Az elérhető értékek meghatározásához tekintse meg a [sablon-referenciát](/azure/templates/).
+
+Ha a sablon a várt módon működik, javasoljuk, hogy használja ugyanazt az API-verziót. Ha ugyanazt az API-verziót használja, nem kell aggódnia a későbbi verziókban esetlegesen bevezetett változtatások miatt.
+
+Ne használjon paramétert az API-verzióhoz. Az erőforrás tulajdonságai és értékei az API-verziótól eltérőek lehetnek. Az IntelliSense egy szerkesztőprogramban nem tudja meghatározni a megfelelő sémát, ha az API-verzió értéke paraméter. Ha olyan API-verziót ad át, amely nem egyezik a sablon tulajdonságaival, a telepítés sikertelen lesz.
+
+Ne használjon változókat az API-verzióhoz. Különösen ne használja a [providers függvényt](template-functions-resource.md#providers) az API-verziók dinamikus beszerzésére az üzembe helyezés során. Előfordulhat, hogy a dinamikusan lekért API-verzió nem egyezik meg a sablon tulajdonságaival.
 
 ## <a name="resource-dependencies"></a>Erőforrás-függőségek
 
@@ -278,7 +284,7 @@ Az ARM-sablon tesztelési eszközkészlete egy olyan parancsfájl, amely ellenő
 
 A sablon befejezése után futtassa a tesztelési eszközkészletet, és ellenőrizze, hogy van-e lehetőség az informatikai megvalósítás javítására. További információ: [ARM template test Toolkit](test-toolkit.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A sablonfájl struktúrájával kapcsolatos információkért lásd [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
 * Az összes Azure-beli felhőalapú környezetben működő sablonok létrehozásával kapcsolatos javaslatokért lásd: [ARM-sablonok fejlesztése a Felhőbeli konzisztencia](templates-cloud-consistency.md)érdekében.

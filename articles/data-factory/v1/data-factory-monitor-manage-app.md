@@ -3,8 +3,8 @@ title: Az adatfolyamatok monitorozása és kezelése – Azure
 description: Ismerje meg, hogyan használható a figyelési és felügyeleti alkalmazás az Azure-beli adatüzemek és-folyamatok figyeléséhez és kezeléséhez.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afab2b03d31045b9f49f357b49d15368cde898da
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570094"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495701"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory folyamatok monitorozása és kezelése a figyelési és felügyeleti alkalmazás használatával
 > [!div class="op_single_selector"]
@@ -58,7 +58,7 @@ A középső ablaktáblán a tevékenység Windows listájában megjelenik egy t
 Ha nem rendelkezik Data Factory alkalmazással a lépések teszteléséhez, tegye az oktatóanyagot: [adatok másolása blob Storageból SQL Database Data Factory használatával](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="understand-the-monitoring-and-management-app"></a>A figyelési és felügyeleti alkalmazás megismerése
-A bal oldalon három lap található: **erőforrás-kezelő**, **figyelési nézetek**és **riasztások**. Alapértelmezés szerint az első lap (**erőforrás-kezelő**) van kiválasztva.
+A bal oldalon három lap található: **erőforrás-kezelő**, **figyelési nézetek** és **riasztások**. Alapértelmezés szerint az első lap (**erőforrás-kezelő**) van kiválasztva.
 
 ### <a name="resource-explorer"></a>erőforrás-kezelő
 A következőket látja:
@@ -66,7 +66,7 @@ A következőket látja:
 * A erőforrás-kezelő **fanézet** a bal oldali ablaktáblán.
 * A **diagram nézet** a középső ablaktáblán felül
 * A középső ablaktábla alján található **tevékenység-Windows** lista.
-* A **Tulajdonságok**, a **tevékenység ablak-kezelője**és a **szkript** lapjai a jobb oldali ablaktáblán.
+* A **Tulajdonságok**, a **tevékenység ablak-kezelője** és a **szkript** lapjai a jobb oldali ablaktáblán.
 
 Erőforrás-kezelő az adat-előállító összes erőforrását (folyamatait, adatkészleteit, társított szolgáltatásait) látja fanézetben. Amikor kiválaszt egy objektumot a erőforrás-kezelőban:
 
@@ -159,7 +159,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 
 <table>
 <tr>
-    <th align="left">status</th><th align="left">Részállapot</th><th align="left">Leírás</th>
+    <th align="left">Állapot</th><th align="left">Részállapot</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Várakozó</td><td>ScheduleTime</td><td>A tevékenység ablak futtatásának ideje.</td>
@@ -177,7 +177,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 <td>ActivityResume</td><td>A tevékenység szüneteltetve van, és nem futtathatja a tevékenység ablakait egészen addig, amíg újra nem fut.</td>
 </tr>
 <tr>
-<td>Ismét</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
+<td>Retry</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
 </tr>
 <tr>
 <td>Érvényesítés</td><td>Az érvényesítés még nincs elindítva.</td>
@@ -244,7 +244,7 @@ A **parancsfájl** lapon megtekintheti a kijelölt Data Factory entitás (társ�
 ![Parancsfájl lap](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## <a name="use-system-views"></a>Rendszernézetek használata
-A figyelési és felügyeleti alkalmazás olyan előre elkészített rendszernézeteket tartalmaz (**legutóbbi tevékenységek**, Windows, **sikertelen tevékenységek**Windows, **folyamatban lévő tevékenységek Windows**), amelyekkel megtekintheti a legutóbbi/sikertelen/folyamatban lévő tevékenységek windowsját a saját adatelőállítója számára.
+A figyelési és felügyeleti alkalmazás olyan előre elkészített rendszernézeteket tartalmaz (**legutóbbi tevékenységek**, Windows, **sikertelen tevékenységek** Windows, **folyamatban lévő tevékenységek Windows**), amelyekkel megtekintheti a legutóbbi/sikertelen/folyamatban lévő tevékenységek windowsját a saját adatelőállítója számára.
 
 Kattintson rá a bal oldali **figyelési nézetek** lapra.
 
@@ -252,9 +252,9 @@ Kattintson rá a bal oldali **figyelési nézetek** lapra.
 
 Jelenleg három rendszernézet támogatott. Válassza ki azt a lehetőséget, hogy megjelenjenek a legutóbbi tevékenységek Windows, sikertelen tevékenység Windows vagy folyamatban lévő tevékenységek Windows a tevékenység Windows-listájában (a középső ablaktábla alján).
 
-Ha a **Legutóbbi tevékenység Windows** lehetőséget választja, a legutóbbi **kísérlet időpontjának**csökkenő sorrendjében láthatja az összes legutóbbi tevékenység-időablakot.
+Ha a **Legutóbbi tevékenység Windows** lehetőséget választja, a legutóbbi **kísérlet időpontjának** csökkenő sorrendjében láthatja az összes legutóbbi tevékenység-időablakot.
 
-A **sikertelen tevékenység Windows** nézet használatával megtekintheti a listában szereplő összes sikertelen tevékenység ablakát. A listából válassza ki a meghibásodott tevékenység ablakát, és tekintse meg a **Tulajdonságok** ablakban vagy a **tevékenység ablak Explorerben**a részleteket. A sikertelen tevékenységek ablakának naplóit is letöltheti.
+A **sikertelen tevékenység Windows** nézet használatával megtekintheti a listában szereplő összes sikertelen tevékenység ablakát. A listából válassza ki a meghibásodott tevékenység ablakát, és tekintse meg a **Tulajdonságok** ablakban vagy a **tevékenység ablak Explorerben** a részleteket. A sikertelen tevékenységek ablakának naplóit is letöltheti.
 
 ## <a name="sort-and-filter-activity-windows"></a>Tevékenységek rendezése és szűrése a Windowsban
 Módosítsa a parancssáv **indítási** és **befejezési** időpontjának beállításait a tevékenység-ablakok szűréséhez. Miután módosította a kezdési időt és a befejezési időpontot, kattintson a befejezési időpont melletti gombra a tevékenység Windows-listájának frissítéséhez.
@@ -266,7 +266,7 @@ Módosítsa a parancssáv **indítási** és **befejezési** időpontjának beá
 >
 >
 
-A **tevékenység Windows listán**kattintson az oszlop nevére (például: állapot).
+A **tevékenység Windows listán** kattintson az oszlop nevére (például: állapot).
 
 ![Tevékenység Windows-lista oszlop menü](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
@@ -286,7 +286,7 @@ A szűrők törléséhez használhatja ugyanezt az előugró ablakot. Ha töröl
 
 ## <a name="perform-batch-actions"></a>Batch-műveletek végrehajtása
 ### <a name="rerun-selected-activity-windows"></a>Kijelölt tevékenységek újrafuttatása Windows
-Válassza ki a tevékenység ablakát, kattintson az első parancssáv gombján látható lefelé mutató nyílra, **és válassza az**újrafuttatás az újrafuttatással a  /  **folyamaton**keresztül lehetőséget. Ha kiválasztja az **Újrafuttatás a felfelé a folyamaton** lehetőséget, akkor az összes felsőbb rétegbeli tevékenység ablakát is Újrafuttatja.
+Válassza ki a tevékenység ablakát, kattintson az első parancssáv gombján látható lefelé mutató nyílra, **és válassza az** újrafuttatás az újrafuttatással a  /  **folyamaton** keresztül lehetőséget. Ha kiválasztja az **Újrafuttatás a felfelé a folyamaton** lehetőséget, akkor az összes felsőbb rétegbeli tevékenység ablakát is Újrafuttatja.
     ![Tevékenység ablakának újrafuttatása](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
 A listában több tevékenység ablak is kijelölhető, majd újra futtathatja őket. Előfordulhat, hogy a tevékenység ablakait az állapot alapján kell szűrni (például: **sikertelen**) –, majd újra kell futtatnia a sikertelen tevékenység időpontját, miután kijavította a tevékenység Windows-meghibásodását okozó problémát. Tekintse meg a következő szakaszt, amely részletesen ismerteti a listában szereplő tevékenységek Windows rendszerbeli szűrését.  

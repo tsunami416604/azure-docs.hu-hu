@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ad45d5f0e313c06619fa9c998515e434de957ea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08c4020fc03f89b2c583a2458c70e18ecbbe0ba1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997562"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498064"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Rögzített hivatkozások átirányítása az Azure AD Application Proxy közzétett alkalmazásokhoz
 
@@ -86,28 +86,28 @@ A helyszíni alkalmazásokban két általános típusú belső kapcsolat létezi
 - **Relatív belső hivatkozások** , amelyek egy megosztott erőforrásra mutatnak egy helyi fájlmegosztás, például: `/claims/claims.html` . Ezek a hivatkozások automatikusan működnek az Application proxyn keresztül közzétett alkalmazásokban, és a kapcsolat fordításával vagy anélkül is dolgozhatnak. 
 - **Rögzített belső hivatkozások** más helyszíni alkalmazásokhoz, például a vagy a `http://expenses` közzétett fájlokhoz, például: `http://expenses/logo.jpg` . A hivatkozás fordítási funkciója a rögzített belső hivatkozásokon működik, és úgy módosítja őket, hogy azok a külső URL-címekre mutassanak, amelyeket a távoli felhasználóknak el kell végezniük.
 
-Az Application proxy által támogatott HTML-kódelemek teljes listája a következőkhöz:
-* a
-* hang
-* base
-* gombra
-* div
-* beágyaz
-* űrlap
-* keret
-* fej
-* html
-* iframe
-* kép
-* bemenet
-* hivatkozás
-* MENUITEM
-* meta
-* object
-* parancsfájl
-* source
-* követés
-* videó
+A HTML-kódban szereplő azon attribútumok teljes listája, amelyeket az alkalmazásproxy támogat a következőkhöz:
+* a (href)
+* hang (src)
+* Alap (href)
+* gomb (formaction)
+* div (adatforrások, stílus, adatforrások)
+* beágyazás (src)
+* űrlap (művelet)
+* keret (src)
+* Head (profil)
+* HTML (jegyzékfájl)
+* IFrame (longdesc, src)
+* IMG (longdesc, src)
+* bemenet (formaction, src, Value)
+* hivatkozás (href)
+* MENUITEM (ikon)
+* meta (tartalom)
+* objektum (archív, adatok, kód)
+* parancsfájl (src)
+* forrás (src)
+* Track (src)
+* videó (src, poszter)
 
 Emellett a CSS-en belül az URL-attribútum is le van fordítva.
 

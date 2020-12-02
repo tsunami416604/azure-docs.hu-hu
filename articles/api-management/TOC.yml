@@ -80,6 +80,8 @@
       href: observability.md
     - name: CI/CD ARM-sablonokkal
       href: devops-api-development-templates.md
+    - name: Helyreállítható törlés
+      href: soft-delete.md
 - name: Útmutatók
   items:
     - name: API-k meghatározása

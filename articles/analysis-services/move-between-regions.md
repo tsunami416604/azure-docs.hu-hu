@@ -4,16 +4,16 @@ description: Ismerteti, hogyan helyezhető át egy Azure Analysis Services erőf
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 049ff6d14c3967481eb73037814082fa261154e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018194"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497928"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services áthelyezése másik régióba
 
@@ -73,9 +73,9 @@ Sablon exportálása az Azure Portallal:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza a **minden erőforrás**lehetőséget, majd válassza ki a Analysis Services-kiszolgálót.
+2. Válassza a **minden erőforrás** lehetőséget, majd válassza ki a Analysis Services-kiszolgálót.
 
-3. Válassza > **Beállítások**  >  **Exportálás sablon**lehetőséget.
+3. Válassza > **Beállítások**  >  **Exportálás sablon** lehetőséget.
 
 4. Válassza a **Letöltés** lehetőséget a **sablon exportálása** panelen.
 
@@ -88,7 +88,7 @@ Sablon exportálása az Azure Portallal:
 
 Sablon exportálása a PowerShell használatával:
 
-1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) paranccsal, és kövesse a képernyőn megjelenő utasításokat:
+1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount) paranccsal, és kövesse a képernyőn megjelenő utasításokat:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -123,13 +123,13 @@ Közös hozzáférésű aláírás beszerzése a portál használatával:
 
 1. A portálon válassza ki a kiszolgáló-adatbázis biztonsági mentéséhez használt Storage-fiókot.
 
-2. Válassza ki **Storage Explorer**, majd bontsa ki a **blob-tárolók**elemet. 
+2. Válassza ki **Storage Explorer**, majd bontsa ki a **blob-tárolók** elemet. 
 
-3. Kattintson a jobb gombbal a Storage-tárolóra, majd válassza a **közös hozzáférési aláírás beolvasása**elemet.
+3. Kattintson a jobb gombbal a Storage-tárolóra, majd válassza a **közös hozzáférési aláírás beolvasása** elemet.
 
     :::image type="content" source="media/move-between-regions/get-sas.png" alt-text="SAS beszerzése":::
 
-4. A **megosztott hozzáférés aláírása**lapon válassza a **Létrehozás**lehetőséget. Alapértelmezés szerint a SAS 24 órán belül lejár.
+4. A **megosztott hozzáférés aláírása** lapon válassza a **Létrehozás** lehetőséget. Alapértelmezés szerint a SAS 24 órán belül lejár.
 
 5. Másolja ki és mentse az **URI**-t. 
 
@@ -177,7 +177,7 @@ A sablon módosítása:
 
 #### <a name="regions"></a>Régiók
 
-Az Azure-régiók beszerzéséhez tekintse meg az [Azure-telephelyeket](https://azure.microsoft.com/global-infrastructure/locations/). Ha a PowerShell használatával szeretne régiókat beolvasni, futtassa a [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) parancsot.
+Az Azure-régiók beszerzéséhez tekintse meg az [Azure-telephelyeket](https://azure.microsoft.com/global-infrastructure/locations/). Ha a PowerShell használatával szeretne régiókat beolvasni, futtassa a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) parancsot.
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -189,33 +189,33 @@ Ha új kiszolgálói erőforrást szeretne üzembe helyezni egy másik régióba
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A portálon válassza az **erőforrás létrehozása**lehetőséget.
+1. A portálon válassza az **erőforrás létrehozása** lehetőséget.
 
-2. A **Keresés a piactéren**mezőbe írja be a **sablon központi telepítése**kifejezést, majd nyomja le az **ENTER**billentyűt.
+2. A **Keresés a piactéren** mezőbe írja be a **sablon központi telepítése** kifejezést, majd nyomja le az **ENTER** billentyűt.
 
-3. Válassza a **template Deployment**lehetőséget.
+3. Válassza a **template Deployment** lehetőséget.
 
 4. Kattintson a **Létrehozás** gombra.
 
 5. Válassza **a saját sablon létrehozása lehetőséget a szerkesztőben**.
 
-6. Válassza a **fájl betöltése**lehetőséget, majd kövesse az utasításokat az exportált és módosított fájl **template.js** betöltéséhez.
+6. Válassza a **fájl betöltése** lehetőséget, majd kövesse az utasításokat az exportált és módosított fájl **template.js** betöltéséhez.
 
 7. Ellenőrizze, hogy a sablon-szerkesztő megjeleníti-e az új célkiszolgáló helyes tulajdonságait.
 
-8. Kattintson a **Mentés** gombra.
+8. Válassza a **Mentés** lehetőséget.
 
 9. Adja meg vagy válassza ki a tulajdonságértékek értékét:
 
     - **Előfizetés**: Válassza ki az Azure-előfizetést.
     
-    - **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget, majd adja meg az erőforráscsoport nevét. Kiválaszthat egy meglévő erőforráscsoportot, amely még nem tartalmaz ugyanazzal a névvel rendelkező Analysis Services kiszolgálót.
+    - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét. Kiválaszthat egy meglévő erőforráscsoportot, amely még nem tartalmaz ugyanazzal a névvel rendelkező Analysis Services kiszolgálót.
     
     - **Hely**: válassza ki ugyanazt a régiót, amelyet a sablonban megadott.
 
-10. Válassza **a felülvizsgálat és létrehozás**lehetőséget.
+10. Válassza **a felülvizsgálat és létrehozás** lehetőséget.
 
-11. Tekintse át a feltételeket és az alapismereteket, majd válassza a **Létrehozás**lehetőséget.
+11. Tekintse át a feltételeket és az alapismereteket, majd válassza a **Létrehozás** lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -262,15 +262,15 @@ Kövesse a [Restore (visszaállítás](analysis-services-backup.md#restore) ) c�
 
 Nem kötelező: a modell-adatbázis visszaállítása után dolgozza fel a modell és a táblák adatait az adatok adatforrásokból való frissítéséhez. A modell és a tábla feldolgozása a SSMS használatával:
 
-1. A SSMS-ben kattintson a jobb gombbal a modell adatbázis > **folyamat adatbázis**elemre.
+1. A SSMS-ben kattintson a jobb gombbal a modell adatbázis > **folyamat adatbázis** elemre.
 
-2. Bontsa ki a **táblák**csomópontot, kattintson a jobb gombbal a táblázatra. A **folyamat tábláiban**válassza a minden tábla lehetőséget, majd kattintson **az OK gombra**.
+2. Bontsa ki a **táblák** csomópontot, kattintson a jobb gombbal a táblázatra. A **folyamat tábláiban** válassza a minden tábla lehetőséget, majd kattintson **az OK gombra**.
 
 ## <a name="verify"></a>Ellenőrzés
 
 1. A portálon lépjen az új célkiszolgálóra.
 
-2. Az Áttekintés lap **Analysis Services-kiszolgáló modelljei**területén ellenőrizze, hogy a visszaállított modellek megjelennek-e.
+2. Az Áttekintés lap **Analysis Services-kiszolgáló modelljei** területén ellenőrizze, hogy a visszaállított modellek megjelennek-e.
 
 3. Egy ügyfélalkalmazás, például Power BI vagy Excel használatával kapcsolódhat a modellhez az új kiszolgálón. Ellenőrizze, hogy vannak-e olyan objektummodell-objektumok, mint a táblák, mértékek, hierarchiák. 
 
@@ -278,7 +278,7 @@ Nem kötelező: a modell-adatbázis visszaállítása után dolgozza fel a model
 
 Opcionális: a [Alm Toolkit](http://alm-toolkit.com/) egy *nyílt forráskódú* eszköz Power bi adatkészletek összehasonlításához és kezeléséhez *, valamint* a táblázatos modell-adatbázisok Analysis Servicesához. Az eszközkészlet használatával csatlakozhat a forrás-és a célkiszolgáló adatbázisaihoz, és összehasonlíthatja azokat. Ha az adatbázis-áttelepítés sikeres, a Model Objects ugyanaz lesz a definíció. 
 
-:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="SAS beszerzése":::
+:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="ALM Toolkit":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -288,7 +288,7 @@ Miután meggyőződött arról, hogy az ügyfélalkalmazások csatlakozni tudnak
 
 A forráskiszolgáló törlése a portálról:
 
-A forráskiszolgáló **Áttekintés** lapján válassza a **Törlés**lehetőséget.
+A forráskiszolgáló **Áttekintés** lapján válassza a **Törlés** lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

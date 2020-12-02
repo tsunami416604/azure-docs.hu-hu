@@ -3,12 +3,12 @@ title: Eseményvezérelt videó rögzítése a felhőben és lejátszás a Felh�
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást a Azure IoT Edgeon, hogy rögzítse a felhőbe, és hogyan játssza vissza a felhőből.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 03c97854673b369db9fe1cb026161a1e81a6bf31
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 84f6ef813fb1b2cc425e096212010717d0561aef
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346639"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498302"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: esemény-alapú videofelvétel a felhőbe és a felhőből való lejátszás
 
@@ -52,7 +52,7 @@ Ezen lépések végén az Azure-előfizetésében üzembe helyezett Azure-erőfo
 * Azure IoT Hub
 * Azure Storage-fiók
 * Azure Media Services fiók
-* Linux rendszerű virtuális gép az Azure-ban, telepített [IoT Edge futtatókörnyezettel](../../iot-edge/how-to-install-iot-edge-linux.md)
+* Linux rendszerű virtuális gép az Azure-ban, telepített [IoT Edge futtatókörnyezettel](../../iot-edge/how-to-install-iot-edge.md)
 
 ## <a name="concepts"></a>Alapelvek
 
@@ -86,8 +86,8 @@ Mielőtt elkezdené, győződjön meg róla, hogy végrehajtotta a harmadik fels
 
 Ebben az oktatóanyagban a következő fájlok szerepelnek:
 
-* **~/clouddrive/LVA-Sample/Edge-Deployment/.env** : olyan tulajdonságokat tartalmaz, amelyeket a Visual Studio Code használ a modulok peremhálózati eszközre való telepítéséhez.
-* **~/clouddrive/lva-sample/appsetting.json** : a mintakód futtatásához a Visual Studio Code használatos.
+* **~/clouddrive/LVA-Sample/Edge-Deployment/.env**: olyan tulajdonságokat tartalmaz, amelyeket a Visual Studio Code használ a modulok peremhálózati eszközre való telepítéséhez.
+* **~/clouddrive/lva-sample/appsetting.json**: a mintakód futtatásához a Visual Studio Code használatos.
 
 Ezekre a lépésekre szüksége lesz a fájlokra.
 
@@ -132,10 +132,10 @@ A Visual Studio Code-ban keresse meg az src/Edge lehetőséget. Ekkor megjelenik
 
 Az src/Edge/deployment.objectCounter.template.jsmegnyitása a következőn:. A **modulok** szakasz négy bejegyzést tartalmaz, amelyek megfelelnek az előző "fogalmak" szakaszban felsorolt elemeknek:
 
-* **lvaEdge** : az élő videó Analytics IoT Edge modulon.
-* **yolov3** : Ez a YOLO v3 modell használatával létrehozott AI-modul.
-* **rtspsim** : ez az RTSP-szimulátor.
-* **objectCounter** : ez az a modul, amely a yolov3 eredményeiből származó adott objektumokat keresi.
+* **lvaEdge**: az élő videó Analytics IoT Edge modulon.
+* **yolov3**: Ez a YOLO v3 modell használatával létrehozott AI-modul.
+* **rtspsim**: ez az RTSP-szimulátor.
+* **objectCounter**: ez az a modul, amely a yolov3 eredményeiből származó adott objektumokat keresi.
 
 A objectCounter modul esetében tekintse meg a "rendszerkép" értékhez használt karakterláncot ($ {modules. objectCounter}). Ez a IoT Edge modul fejlesztésének [oktatóanyagán](../../iot-edge/tutorial-develop-for-linux.md) alapul. A Visual Studio Code automatikusan felismeri, hogy a objectCounter modul kódja az src/Edge/modules/objectCounter. 
 
@@ -421,7 +421,7 @@ Megvizsgálhatja a gráf által létrehozott Media Services adategységet, ha be
 
 Ha szeretné kipróbálni a többi oktatóanyagot, tartsa be a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portal, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az erőforráscsoportot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera) , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Az ONVIF-kompatibilis [termékek lapon](https://www.onvif.org/conformant-products/) megkeresheti az RTSP-támogatással rendelkező IP-kamerákat a G, S vagy T profiloknak megfelelő eszközök keresésével.
-* AMD64 vagy x64 Linux rendszerű eszköz használata (Azure Linux rendszerű virtuális gép használata). Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse a következő témakör utasításait: [Install Azure IoT Edge Runtime on Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Ezután kövesse az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközre című](../../iot-edge/quickstart-linux.md) rövid útmutatót az eszköz Azure IoT hub való regisztrálásához.
+* AMD64 vagy x64 Linux rendszerű eszköz használata (Azure Linux rendszerű virtuális gép használata). Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse a következő témakör utasításait: [Install Azure IoT Edge Runtime on Linux](../../iot-edge/how-to-install-iot-edge.md). Ezután kövesse az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközre című](../../iot-edge/quickstart-linux.md) rövid útmutatót az eszköz Azure IoT hub való regisztrálásához.

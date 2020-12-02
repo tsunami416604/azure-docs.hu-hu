@@ -3,20 +3,20 @@ title: 'Data Factory oktatóanyag: az első adatfolyamat '
 description: Ez a Azure Data Factory oktatóanyag azt mutatja be, hogyan hozhat létre és ütemezhet olyan adatelőállítót, amely egy Hadoop-fürtön található kaptár-parancsfájl használatával dolgozza fel az adatfeldolgozást.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 80644ed2d655544fa176a7be92aec3c01aa3bf14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a79872c11d76a74932fe232fa3f7818edc58ffcc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75966071"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496211"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Oktatóanyag: az első folyamat létrehozása az Hadoop-fürtön keresztüli adatátalakításhoz
 > [!div class="op_single_selector"]
@@ -40,13 +40,13 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 1. Hozzon létre egy **adatelőállítót**. Az adatfeldolgozók egy vagy több adatfolyamatot is tartalmazhatnak, amelyek áthelyezik és átalakítják az adatátvitelt.
 
     Ebben az oktatóanyagban egy folyamatot hoz létre az adatelőállítóban.
-2. **Folyamat**létrehozása. Egy folyamat egy vagy több tevékenységgel rendelkezhet (például: másolási tevékenység, HDInsight struktúra tevékenység). Ez a példa a HDInsight-struktúra tevékenységét használja, amely egy HDInsight Hadoop-fürtön futtatja a kaptár-parancsfájlt. A szkript először létrehoz egy táblázatot, amely az Azure Blob Storage-ban tárolt nyers webnapló-adatokra hivatkozik, majd a nyers adatok év és hónap szerint particionálva.
+2. **Folyamat** létrehozása. Egy folyamat egy vagy több tevékenységgel rendelkezhet (például: másolási tevékenység, HDInsight struktúra tevékenység). Ez a példa a HDInsight-struktúra tevékenységét használja, amely egy HDInsight Hadoop-fürtön futtatja a kaptár-parancsfájlt. A szkript először létrehoz egy táblázatot, amely az Azure Blob Storage-ban tárolt nyers webnapló-adatokra hivatkozik, majd a nyers adatok év és hónap szerint particionálva.
 
     Ebben az oktatóanyagban a folyamat a kaptár tevékenységgel alakítja át az adatátalakítást egy Azure HDInsight Hadoop fürtön futó kaptár-lekérdezés futtatásával.
-3. **Társított szolgáltatások**létrehozása. Egy társított szolgáltatás létrehozásával összekapcsolhatja az adattárakat vagy a számítási szolgáltatásokat az adatok gyárával. Az adattárak, például az Azure Storage a folyamatban lévő tevékenységek bemeneti/kimeneti adatait tárolják. Olyan számítási szolgáltatás, mint például a HDInsight Hadoop, az adatok átalakítását végzi.
+3. **Társított szolgáltatások** létrehozása. Egy társított szolgáltatás létrehozásával összekapcsolhatja az adattárakat vagy a számítási szolgáltatásokat az adatok gyárával. Az adattárak, például az Azure Storage a folyamatban lévő tevékenységek bemeneti/kimeneti adatait tárolják. Olyan számítási szolgáltatás, mint például a HDInsight Hadoop, az adatok átalakítását végzi.
 
     Ebben az oktatóanyagban két társított szolgáltatást hoz létre: az **Azure Storage** -t és az **Azure HDInsight**-t. Az Azure Storage társított szolgáltatás egy Azure Storage-fiókot társít, amely a bemeneti/kimeneti adatokat tárolja az adat-előállítóban. Az Azure HDInsight társított szolgáltatás egy Azure HDInsight-fürtöt társít, amely az adatátalakításra szolgál az adatgyárban.
-3. Bemeneti és kimeneti **adatkészletek**létrehozása. A bemeneti adatkészletek a folyamattevékenységek bemenetét jelölik, a kimeneti adatkészletek pedig a tevékenységek kimeneteit.
+3. Bemeneti és kimeneti **adatkészletek** létrehozása. A bemeneti adatkészletek a folyamattevékenységek bemenetét jelölik, a kimeneti adatkészletek pedig a tevékenységek kimeneteit.
 
     Ebben az oktatóanyagban a bemeneti és kimeneti adatkészletek a bemeneti és kimeneti adatok helyét adják meg az Azure Blob Storageban. Az Azure Storage társított szolgáltatás határozza meg, hogy melyik Azure Storage-fiókot használja a rendszer. A bemeneti adatkészlet meghatározza a bemeneti fájlok helyét, és a kimeneti adatkészlet meghatározza, hogy a kimeneti fájlok hol vannak elhelyezve.
 

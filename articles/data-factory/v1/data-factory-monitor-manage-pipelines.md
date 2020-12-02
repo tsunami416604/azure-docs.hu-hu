@@ -3,20 +3,20 @@ title: Folyamatok monitorozása és kezelése a Azure Portal és a PowerShell ha
 description: Megtudhatja, hogyan használhatja a Azure Portal és Azure PowerShell a létrehozott Azure-beli adatüzemek és-folyamatok figyelésére és felügyeletére.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 4473df318f65c0e0097aed298d0be57e3bca382b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2a30c755bc19849ad3a821cbbc75b787a3b0bb98
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636935"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495854"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Data Factory folyamatok monitorozása és kezelése a Azure Portal és a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ A Azure Portal használatával a következőket teheti:
 Ez a szakasz azt is leírja, hogy az adatkészlet-szeletek hogyan alakulnak át az egyik állapotból egy másikba.   
 
 ### <a name="navigate-to-your-data-factory"></a>Navigáljon a saját adatgyárhoz
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Kattintson a bal oldali menüben található **adatüzemek** elemre. Ha nem jelenik meg, kattintson a **További szolgáltatások >** elemre, majd kattintson az **intelligencia és Analitika** kategóriába tartozó **adat** -előállítók elemre.
 
    ![Az összes >-adatgyár tallózása](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -79,7 +79,7 @@ A nagyításhoz, a kicsinyítéshez, a nagyításhoz, a nagyításhoz 100%-ra, a
 ### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>Az egyes tevékenységek állapotának megtekintése egy folyamaton belül
 A tevékenységek aktuális állapotát úgy tekintheti meg, hogy megtekinti a tevékenység által létrehozott adathalmazok állapotát.
 
-Ha duplán kattint a **OutputBlobTable** a **diagramon** , megtekintheti a különböző tevékenységek által létrehozott összes szeletet egy folyamaton belül. Láthatja, hogy a másolási tevékenység sikeresen futott az elmúlt nyolc órában, és **kész** állapotban hozta létre a szeleteket.  
+Ha duplán kattint a **OutputBlobTable** a **diagramon**, megtekintheti a különböző tevékenységek által létrehozott összes szeletet egy folyamaton belül. Láthatja, hogy a másolási tevékenység sikeresen futott az elmúlt nyolc órában, és **kész** állapotban hozta létre a szeleteket.  
 
 ![A folyamat állapota](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
 
@@ -87,7 +87,7 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 
 <table>
 <tr>
-    <th align="left">Állapot</th><th align="left">Alállapotot</th><th align="left">Leírás</th>
+    <th align="left">Állam</th><th align="left">Alállapotot</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Várakozó</td><td>ScheduleTime</td><td>A szelet futtatásához szükséges idő.</td>
@@ -205,7 +205,7 @@ A Azure Data Factory sokoldalú funkciókat biztosít a folyamatok hibakeresés�
 Ha a tevékenység futtatása meghiúsul egy folyamat során, a folyamat által előállított adatkészlet hibás állapotba kerül, a hiba miatt. A következő módszerekkel végezheti el a hibakeresést és a hibák elhárítását Azure Data Factoryban.
 
 #### <a name="use-the-azure-portal-to-debug-an-error"></a>Hibák hibakeresése a Azure Portal használatával
-1. A **tábla** panelen kattintson arra a problémás szeletre, amelynél az **állapot** értéke **sikertelen** .
+1. A **tábla** panelen kattintson arra a problémás szeletre, amelynél az **állapot** értéke **sikertelen**.
 
    ![Táblázat panel a probléma szelettel](./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png)
 2. Az **adatszelet** panelen kattintson a sikertelen művelet futtatására.
@@ -216,8 +216,8 @@ Ha a tevékenység futtatása meghiúsul egy folyamat során, a folyamat által 
    ![A tevékenység futtatási részletei panel hibával](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
 #### <a name="use-powershell-to-debug-an-error"></a>Hiba hibakeresése a PowerShell használatával
-1. Indítsa el a **PowerShellt** .
-2. Futtassa a **Get-AzDataFactorySlice** parancsot a szeletek és állapotuk megjelenítéséhez. Egy olyan szeletnek kell megjelennie, amelynek állapota **sikertelen** .        
+1. Indítsa el a **PowerShellt**.
+2. Futtassa a **Get-AzDataFactorySlice** parancsot a szeletek és állapotuk megjelenítéséhez. Egy olyan szeletnek kell megjelennie, amelynek állapota **sikertelen**.        
 
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
@@ -309,7 +309,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![Új riasztás létrehozása](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
-3.  Adja meg a **riasztási feltételt** . (Ügyeljen arra, hogy a **szűrés erőforrás típusa** mezőben válassza az **adatüzemek** elemet.) Megadhatja a **dimenziók** értékeit is.
+3.  Adja meg a **riasztási feltételt**. (Ügyeljen arra, hogy a **szűrés erőforrás típusa** mezőben válassza az **adatüzemek** elemet.) Megadhatja a **dimenziók** értékeit is.
 
     ![A riasztási feltétel meghatározása – cél kiválasztása](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
 
@@ -317,7 +317,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![A riasztási feltétel meghatározása – riasztási logika hozzáadása](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
 
-4.  Adja meg a **riasztás részleteit** .
+4.  Adja meg a **riasztás részleteit**.
 
     ![A riasztás részleteinek megadása](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
 

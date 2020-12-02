@@ -3,8 +3,8 @@ title: Adatátalakítás a Pig tevékenységgel Azure Data Factory
 description: Megtudhatja, hogyan használhatja a Pig-tevékenységet a Azure Data Factory v1-ben a Pig-parancsfájlok futtatásához igény szerinti vagy saját HDInsight-fürtön.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: 5af07a1a-2087-455e-a67b-a79841b4ada5
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c94d66bf98645e12a6c603f2b35d229080717734
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 0ad84a0e848abda1b786958947b4081b11b139a7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616858"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495345"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Adatátalakítás a Pig tevékenységgel Azure Data Factory
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -41,7 +41,7 @@ A HDInsight Pig-tevékenység egy Data Factory [folyamat](data-factory-create-pi
 > [!NOTE] 
 > Ha még nem ismeri a Azure Data Factoryt, olvassa el az [Azure Data Factory bevezetését](data-factory-introduction.md) , és végezze el az oktatóanyagot: a cikk elolvasása előtt hozza [létre az első adatfolyamatát](data-factory-build-your-first-pipeline.md) . 
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Szintaxis
 
 ```JSON
 {
@@ -210,7 +210,7 @@ A paraméteres Pig-parancsfájl használatához tegye a következőket:
       }
     }
     ```
-* A Pig-szkriptben a következő példában látható módon tekintse át a paramétereket a " **$parameterName** " használatával:
+* A Pig-szkriptben a következő példában látható módon tekintse át a paramétereket a "**$parameterName**" használatával:
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);

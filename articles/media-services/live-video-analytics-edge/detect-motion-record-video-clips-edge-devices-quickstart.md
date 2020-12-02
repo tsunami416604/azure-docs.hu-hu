@@ -4,12 +4,12 @@ description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a 
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: e456bb5b8d6d6658158af0c58f05ab38fe4693b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e4334cdd14242337a2a870f31886606020654685
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88682348"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498353"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Rövid útmutató: mozgás észlelése és videó rögzítése a peremhálózati eszközökön
  
@@ -123,4 +123,4 @@ Ha szeretné kipróbálni a többi rövid útmutatót, tartsa meg a létrehozott
 * Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 
     * Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera) , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Az RTSP-t támogató IP-kamerákat a [ONVIF-megfelelőségi termékek](https://www.onvif.org/conformant-products) lapon találja. Keresse meg azokat az eszközöket, amelyek megfelelnek a G, S vagy T profiloknak.
-    * A Linux rendszerű virtuális gépek helyett AMD64 vagy x64 Linux-eszközt használjon az Azure-ban. Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse a következő témakör utasításait: [Install Azure IoT Edge Runtime on Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Ezután kövesse az [első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön](../../iot-edge/quickstart-linux.md) című témakör útmutatását az eszköz Azure IoT hub való regisztrálásához.
+    * A Linux rendszerű virtuális gépek helyett AMD64 vagy x64 Linux-eszközt használjon az Azure-ban. Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse a következő témakör utasításait: [Install Azure IoT Edge Runtime on Linux](../../iot-edge/how-to-install-iot-edge.md). Ezután kövesse az [első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön](../../iot-edge/quickstart-linux.md) című témakör útmutatását az eszköz Azure IoT hub való regisztrálásához.

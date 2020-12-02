@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan konfigurálhatja a verziókövetés Azure Data 
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 37982d1c28d445d40fa9d53a2a1eb076fbbf7f2f
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: d219ff8469c471a37deb47e0f217292d70e8f0f9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566707"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497112"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -203,7 +203,7 @@ Ha követte ezeket a lépéseket, a gyár csatlakozni tud a szervezeten belüli 
 
 ## <a name="version-control"></a>Verziókövetés
 
-A verziókövetés rendszerei (más néven a _verziókövetés_ ) lehetővé teszik a fejlesztők számára a kód és a kód alapján végzett módosítások nyomon követését. A verziókövetés elengedhetetlen eszköz a több fejlesztő projektjeihez.
+A verziókövetés rendszerei (más néven a _verziókövetés_) lehetővé teszik a fejlesztők számára a kód és a kód alapján végzett módosítások nyomon követését. A verziókövetés elengedhetetlen eszköz a több fejlesztő projektjeihez.
 
 ### <a name="creating-feature-branches"></a>Szolgáltatási ágak létrehozása
 
@@ -260,7 +260,7 @@ A Data Factory társított szolgáltatások esetében ajánlott a Azure Key Vaul
 
 A Key Vault vagy az MSI-hitelesítés használata is megkönnyíti a folyamatos integrációt és üzembe helyezést, mivel nem kell megadnia ezeket a titkokat a Resource Manager-sablonok telepítése során.
 
-## <a name="troubleshooting-git-integration"></a>A git-integráció hibaelhárítása
+## <a name="troubleshooting-git-integration"></a>A Git-integráció hibaelhárítása
 
 ### <a name="stale-publish-branch"></a>Elavult közzétételi ág
 
@@ -268,7 +268,7 @@ Ha a közzétételi ág nem szinkronizált a főágra, és a legutóbbi közzét
 
 1. Az aktuális git-tárház eltávolítása
 1. Konfigurálja újra a git-t ugyanazokkal a beállításokkal, de győződjön meg arról, hogy a **meglévő Data Factory erőforrások importálása az adattárba** lehetőség van **kiválasztva**
-1. Lekéréses kérelem létrehozása az együttműködési ág változásainak egyesítéséhez 
+1. Lekéréses kérelem létrehozása a változások együttműködési ágba való egyesítéséhez 
 
 Az alábbi példák olyan helyzetekre mutatnak, amelyek elavult közzétételi ágat okozhatnak:
 - Egy felhasználónak több ága van. Az egyik szolgáltatási ág törölte azt a társított szolgáltatást, amely nincs AKV társítva (nem AKV kapcsolódó szolgáltatások közzététele azonnal, függetlenül attól, hogy a git vagy sem), és soha nem egyesítette a szolgáltatási ágat az együttműködési ágra.
@@ -291,7 +291,7 @@ Miután eltávolította az aktuális tárházhoz való társítást, beállítha
 > [!IMPORTANT]
 > A git-konfiguráció adat-előállítóból való eltávolítása nem törli az adattárból származó semmit. A gyár minden közzétett erőforrást tartalmaz majd. A gyárat továbbra is szerkesztheti közvetlenül a szolgáltatással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A folyamatok figyelésével és kezelésével kapcsolatos további információkért lásd a [folyamatok programozott figyelését és](monitor-programmatically.md)felügyeletét ismertető témakört.
 * A folyamatos integráció és üzembe helyezés megvalósításához tekintse [meg az Azure Data Factory folyamatos integrációját és továbbítását (CI/CD)](continuous-integration-deployment.md).

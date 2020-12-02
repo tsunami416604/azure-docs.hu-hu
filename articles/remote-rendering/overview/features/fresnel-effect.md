@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 11/09/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0596d118d1f3c09bc295891f023fe9990f3f1e05
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c8ecd3afc95cf4b8054cd7db3530c15afebea3ce
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557702"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498234"
 ---
 # <a name="fresnel-effect"></a>Fresnel-effektus
 
@@ -21,7 +21,7 @@ A Fresnel hatás az érintett objektumokat színesen ragyogja az élek szélei k
 
 ## <a name="enabling-the-fresnel-effect"></a>A Fresnel hatás engedélyezése
 
-A Fresnel Effect funkció használatához engedélyezni kell a szóban forgó anyagokon. A [PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures) FresnelEffect-bit beállításával engedélyezheti a [pbr-anyagokon](../../overview/features/pbr-materials.md). Ugyanez a minta a [ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering) és a [színanyagra](../../overview/features/color-materials.md)is vonatkozik. A használati bemutatóhoz lásd a Code Samples szakaszt.
+A Fresnel Effect funkció használatához engedélyezni kell a szóban forgó anyagokon. A [PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures) FresnelEffect-bit beállításával engedélyezheti a [pbr-anyagokon](../../overview/features/pbr-materials.md). Ugyanez a minta a [ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering) és a [színanyagra](../../overview/features/color-materials.md)is vonatkozik. A használati bemutatóhoz lásd a Code Samples szakaszt.
 
 Az engedélyezés után a Fresnel effektus azonnal láthatóvá válik. Alapértelmezés szerint a ragyogás fehér lesz (1, 1, 1, 1), és 1. kitevővel rendelkezik. Ezeket a beállításokat az alábbi paraméterekkel lehet testreszabni.
 
@@ -93,12 +93,12 @@ void SetFresnelEffect(ApiHandle<AzureSession> session, ApiHandle<Material> mater
 
 ## <a name="api-documentation"></a>API-dokumentáció
 
-* [C# PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
-* [C++ PbrMaterialFeatures](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterialfeatures)
-* [C# ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
-* [C++ ColorMaterialFeatures](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterialfeatures)
+* [C# PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
+* [C++ PbrMaterialFeatures](/cpp/api/remote-rendering/pbrmaterialfeatures)
+* [C# ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
+* [C++ ColorMaterialFeatures](/cpp/api/remote-rendering/colormaterialfeatures)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Anyagok](../../concepts/materials.md)
 * [PBR-anyagok](../../overview/features/pbr-materials.md)

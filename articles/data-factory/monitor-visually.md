@@ -3,19 +3,19 @@ title: Az Azure Data Factory vizuális monitorozása
 description: Ismerje meg, hogyan figyelheti vizuálisan az Azure-beli adatüzemeket
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 45ebd793d96ed8cf0edf88d5631353fb6cd6a982
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f2bf1b1a16660b4e80bc0acc5c6e4201b452098f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96008769"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497911"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Az Azure Data Factory vizuális monitorozása
 
@@ -72,7 +72,7 @@ A listanézet azokat a tevékenység-futtatásokat jeleníti meg, amelyek megfel
 | Futtatás indítása | A tevékenység futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
 | Időtartam | Futtatás időtartama (óó: PP: SS) |
 | Állapot | **Sikertelen**, **sikeres**, **folyamatban** vagy **megszakítva** |
-| Integration Runtime | Integration Runtime a tevékenység futtatása |
+| Integrációs modul | Integration Runtime a tevékenység futtatása |
 | Felhasználói tulajdonságok | A tevékenység felhasználó által definiált tulajdonságai |
 | Hiba | Ha a tevékenység nem sikerült, a futtatási hiba |
 | Futtatási azonosító | A tevékenység futtatásának azonosítója |

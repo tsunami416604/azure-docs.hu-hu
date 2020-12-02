@@ -2,13 +2,13 @@
 title: Sablon szerkezete és szintaxisa
 description: Ismerteti Azure Resource Manager sablonok (ARM-sablonok) szerkezetét és tulajdonságait a deklaratív JSON szintaxis használatával.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: c0e1e3225d63d0463164a3ed599fb0b760367123
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 12/01/2020
+ms.openlocfilehash: ce36d725b3844fcd4c8d43a9f044423611d44fbd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353493"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497877"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Az ARM-sablonok struktúrájának és szintaxisának megismerése
 
@@ -174,7 +174,7 @@ További információ a `copy` változó értékének a használatával történ
 
 Példák a változók használatára: [változók az ARM-sablonban](template-variables.md).
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Függvények
 
 A sablonon belül létrehozhat saját függvényeket is. Ezek a függvények a sablonban használhatók. Jellemzően olyan bonyolult kifejezéseket határozhat meg, amelyeket nem szeretne megismételni a sablon során. A felhasználó által definiált függvényeket a sablonok által támogatott kifejezésekből és [függvényekből](template-functions.md) hozza létre.
 
@@ -283,7 +283,7 @@ Az erőforrásokat az alábbi struktúrával definiálhatja:
 |:--- |:--- |:--- |
 | feltétel | Nem | Logikai érték, amely azt jelzi, hogy az erőforrás a telepítés során lesz-e kiépítve. Amikor `true` az erőforrás létrejön az üzembe helyezés során. Ha `false` az erőforrás ki van hagyva ehhez a központi telepítéshez. Lásd a [feltételt](conditional-resource-deployment.md). |
 | típus |Igen |Az erőforrás típusa. Ez az érték az erőforrás-szolgáltató névterének és az erőforrás típusának (például a **Microsoft. Storage/storageAccounts**) a kombinációja. Az elérhető értékek meghatározásához tekintse meg a [sablon-referenciát](/azure/templates/). Gyermek erőforrás esetén a típus formátuma attól függ, hogy a szülő erőforráson belül van-e beágyazva, vagy a szülő erőforráson kívül van-e definiálva. Lásd: [a gyermek erőforrások nevének és típusának beállítása](child-resource-name-type.md). |
-| apiVersion |Igen |Az erőforrás létrehozásához használandó REST API verziója. Az elérhető értékek meghatározásához tekintse meg a [sablon-referenciát](/azure/templates/). |
+| apiVersion |Igen |Az erőforrás létrehozásához használandó REST API verziója. Új sablon létrehozásakor állítsa ezt az értéket az üzembe helyezett erőforrás legújabb verziójára. Ha a sablon szükség szerint működik, használja továbbra is ugyanazt az API-verziót. Ha továbbra is ugyanazt az API-verziót használja, azzal csökkentheti az új API-verzió kockázatát, amely megváltoztatja a sablon működését. Érdemes csak akkor frissíteni az API-verziót, ha egy későbbi verzióban bevezetett új funkciót szeretne használni. Az elérhető értékek meghatározásához tekintse meg a [sablon-referenciát](/azure/templates/). |
 | name |Igen |Az erőforrás neve. A névnek követnie kell a RFC3986-ben definiált URI-összetevők korlátozásait. Azok az Azure-szolgáltatások, amelyek az erőforrás nevét külső feleknek teszik elérhetővé, érvényesítik a nevet, hogy a rendszer ne Próbálkozzon másik identitás hamisításával. Gyermek erőforrás esetén a név formátuma attól függ, hogy a szülő erőforráson belül van-e beágyazva, vagy a szülő erőforráson kívül van-e definiálva. Lásd: [a gyermek erőforrások nevének és típusának beállítása](child-resource-name-type.md). |
 | Megjegyzések |Nem |A sablon erőforrásainak dokumentálására szolgáló megjegyzései. További információ: [Megjegyzések a sablonokban](template-syntax.md#comments). |
 | location |Változó |A megadott erőforrás támogatott földrajzi helyei. Bármelyik elérhető helyet kiválaszthatja, de általában érdemes lehet a felhasználókhoz közelebbi választ adni. Általában az is fontos, hogy olyan erőforrásokat helyezzen el, amelyek egymással együttműködnek ugyanabban a régióban. A legtöbb erőforrástípus egy helyet igényel, de bizonyos típusok (például a szerepkör-hozzárendelés) nem igényelnek helyet. Lásd az [erőforrás helyének beállítása](resource-location.md)című témakört. |
@@ -351,7 +351,7 @@ A beágyazott megjegyzésekhez használhatja a vagy a parancsot `//` , `/* ... *
   ],
 ```
 
-A Visual Studio Code-ban a [Azure Resource Manager Tools bővítmény](quickstart-create-templates-use-visual-studio-code.md) automatikusan képes azonosítani a Resource Manager-sablont, és ennek megfelelően módosíthatja a nyelvi módot. Ha a VS Code jobb alsó sarkában **Azure Resource Manager sablon** látható, akkor használhatja a beágyazott megjegyzéseket. A beágyazott megjegyzések már nem érvénytelenként vannak megjelölve.
+A Visual Studio Code-ban a [Azure Resource Manager Tools bővítmény](quickstart-create-templates-use-visual-studio-code.md) képes automatikusan felderíteni egy ARM-sablont, és módosítani a nyelvi módot. Ha a VS Code jobb alsó sarkában **Azure Resource Manager sablon** látható, akkor használhatja a beágyazott megjegyzéseket. A beágyazott megjegyzések már nem érvénytelenként vannak megjelölve.
 
 ![Visual Studio Code Azure Resource Manager sablon üzemmód](./media/template-syntax/resource-manager-template-editor-mode.png)
 

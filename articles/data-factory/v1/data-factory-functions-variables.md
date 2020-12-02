@@ -2,20 +2,20 @@
 title: Data Factory függvények és rendszerváltozók
 description: A Azure Data Factory függvények és rendszerváltozók listáját tartalmazza
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: cbc7fd22915af1c9645d915a9898679a3a7c30d0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9b5f91655367e866858a04b941cec4ee61dfe180
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631512"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495650"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – functions és System változók
 > [!NOTE]
@@ -25,7 +25,7 @@ Ez a cikk a Azure Data Factory által támogatott függvényekről és változó
 
 ## <a name="data-factory-system-variables"></a>Rendszerváltozók Data Factory
 
-| Változó neve | Leírás | Objektum hatóköre | JSON-hatókör és-használati esetek |
+| Változó neve | Description | Objektum hatóköre | JSON-hatókör és-használati esetek |
 | --- | --- | --- | --- |
 | WindowStart |Az aktuális tevékenység futtatási ablakának időintervallumának kezdete |tevékenység |<ol><li>Az adatkijelölési lekérdezések meghatározása. Lásd az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben hivatkozott összekötő cikkeket.</li> |
 | WindowEnd |Az aktuális tevékenység futtatási időszakának vége |tevékenység |ugyanaz, mint a WindowStart. |
@@ -72,10 +72,10 @@ A következő példában a JSON-fájl **sqlReaderQuery** tulajdonsága a függv�
 
 Tekintse meg az [Egyéni dátum-és időformátum-karakterláncok](/dotnet/standard/base-types/custom-date-and-time-format-strings) témakört, amely leírja a különböző formázási beállításokat (például: ay vagy nn). 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Függvények
 A következő táblázatok a Azure Data Factory összes funkcióját felsorolják:
 
-| Kategória | Függvény | Paraméterek | Leírás |
+| Category | Függvény | Paraméterek | Description |
 | --- | --- | --- | --- |
 | Idő |AddHours (X, Y) |X: dátum és idő <br/><br/>Y: int |Y óra beadása a megadott időponthoz X. <br/><br/>Például: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Idő |AddMinutes (X, Y) |X: dátum és idő <br/><br/>Y: int |Y percet vesz fel X-re.<br/><br/>Például: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |

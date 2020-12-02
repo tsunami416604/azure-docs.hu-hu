@@ -3,12 +3,12 @@ title: Élő videó-elemzés üzembe helyezése egy IoT Edge eszközön – Azur
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: a64fc11d7afa70d5200fdbd24bd3facdb8a95a7e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 4fa4a9643976ba513b025706cacec26b2a50afb5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019579"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498319"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Élő videó-elemzés üzembe helyezése IoT Edge eszközön
 
@@ -23,8 +23,8 @@ Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az �
 * X86-64 vagy ARM64-eszköz, amely a [támogatott Linux operációs rendszerek](../../iot-edge/support.md#operating-systems) egyikét futtatja
 * Azure-előfizetés, amelyhez [tulajdonosi jogosultsággal](../../role-based-access-control/built-in-roles.md#owner) rendelkezik
 * [IoT Hub létrehozása és beállítása](../../iot-hub/iot-hub-create-through-portal.md)
-* [IoT Edge eszköz regisztrálása](../../iot-edge/how-to-register-device.md)
-* [Az Azure IoT Edge-futtatókörnyezet telepítése Debian-alapú Linux rendszereken](../../iot-edge/how-to-install-iot-edge-linux.md)
+* [IoT Edge eszköz regisztrálása](../../iot-edge/how-to-manual-provision-symmetric-key.md)
+* [Az Azure IoT Edge-futtatókörnyezet telepítése Debian-alapú Linux rendszereken](../../iot-edge/how-to-install-iot-edge.md)
 * [Azure Media Services-fiók létrehozása](../latest/create-account-howto.md)
 
     * Használja a következő régiók egyikét: USA 2. keleti régiója, USA középső régiója, USA északi középső régiója, Kelet-Japán, USA nyugati régiója, USA 2. nyugati régiója, az USA nyugati középső régiója, Kelet-Kanada, Egyesült Királyság déli régiója, Közép-Franciaország, Dél-Németország, Észak-Svájc, Nyugat-Svájc és Nyugat-Japán.
@@ -95,7 +95,7 @@ A Azure Portal végigvezeti az üzembe helyezési jegyzék létrehozásán és a
 1. Jelentkezzen be a [Azure Portalba](https://ms.portal.azure.com/) , és navigáljon az IoT hubhoz.
 1. A menüből válassza a **IoT Edge** lehetőséget.
 1. Kattintson a céleszköz AZONOSÍTÓJÁRA az eszközök listájából.
-1. Válassza a **modulok beállítása**lehetőséget.
+1. Válassza a **modulok beállítása** lehetőséget.
 
 #### <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzék konfigurálása
 
@@ -113,7 +113,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
     ![Képernyőfelvétel: a modul beállításai lap.](./media/deploy-iot-edge-device/add.png)
     
     > [!TIP]
-    > Ne válassza a **Hozzáadás** lehetőséget, amíg meg nem adta a **modul beállításai**, a tároló- **létrehozási beállítások**és a **modul Twin-beállítások** lapjait a jelen eljárásban leírtak szerint.
+    > Ne válassza a **Hozzáadás** lehetőséget, amíg meg nem adta a **modul beállításai**, a tároló- **létrehozási beállítások** és a **modul Twin-beállítások** lapjait a jelen eljárásban leírtak szerint.
     
     > [!WARNING]
     > A Azure IoT Edge a kis-és nagybetűk megkülönböztetése, amikor hívásokat kezdeményez a modulokra. Jegyezze fel a modul neveként használt pontos karakterláncot.
@@ -215,7 +215,7 @@ Tekintse át az üzembe helyezési adatokat, majd kattintson a Létrehozás gomb
 A központi telepítés létrehozása után térjen vissza az IoT hub IoT Edge lapjára.
 
 1. Válassza ki azt a IoT Edge eszközt, amelyet a központi telepítéshez céloz, hogy megnyissa a részleteit.
-2. Az eszköz részletei között ellenőrizze, hogy a blob Storage modul a **telepítésben és az eszköz által jelentett**módon van-e felsorolva.
+2. Az eszköz részletei között ellenőrizze, hogy a blob Storage modul a **telepítésben és az eszköz által jelentett** módon van-e felsorolva.
 
 Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd visszaküldhető a IoT Hubra. Frissítse az oldalt, és tekintse meg a frissített állapotot.
 Állapotkód: 200 – az OK érték azt jelenti, hogy [az IoT Edge futtatókörnyezet](../../iot-edge/iot-edge-runtime.md) kifogástalan, és működik.
@@ -250,7 +250,7 @@ A következő lépésként lehetővé teszi a minta tesztelését egy közvetlen
 
     ![Az 200-es állapotú üzenet](./media/deploy-iot-edge-device/connection-timeout.png) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki a rövid útmutató [: első lépések – élő videó Analytics IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
