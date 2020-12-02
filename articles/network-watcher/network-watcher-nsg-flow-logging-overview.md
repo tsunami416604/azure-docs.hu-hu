@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 792908236c4f240db64bd3899474d779d5b0570c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b6f66813ea23f6c9d4b47a3733d0c72c683d0676
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018103"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493984"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Bevezetés a hálózati biztonsági csoportok folyamatnaplózásába
 
@@ -59,7 +59,7 @@ A flow-naplók a Felhőbeli környezet összes hálózati tevékenységének az 
 **Alapfogalmak**
 
 - A szoftver által definiált hálózatok a virtuális hálózatok (virtuális hálózatok) és az alhálózatok köré szerveződnek. Ezeknek a virtuális hálózatok és alhálózatoknak a biztonsága felügyelhető NSG használatával.
-- A hálózati biztonsági csoport (NSG) olyan _biztonsági szabályok_ listáját tartalmazza, amelyek engedélyezik vagy megtagadják a hálózati forgalmat a kapcsolódó erőforrásokban. A NSG a virtuális gépekhez (Resource Manager) csatolt alhálózatokhoz, egyéni virtuális gépekhez vagy egyedi hálózati adapterekhez (NIC) is társítható. További információ: [hálózati biztonsági csoport áttekintése](../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json).
+- A hálózati biztonsági csoport (NSG) olyan _biztonsági szabályok_ listáját tartalmazza, amelyek engedélyezik vagy megtagadják a hálózati forgalmat a kapcsolódó erőforrásokban. A NSG a virtuális gépekhez (Resource Manager) csatolt alhálózatokhoz, egyéni virtuális gépekhez vagy egyedi hálózati adapterekhez (NIC) is társítható. További információ: [hálózati biztonsági csoport áttekintése](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - A hálózatban lévő összes adatforgalom kiértékelése a vonatkozó NSG található szabályok alapján történik.
 - Ezen értékelések eredménye a NSG. A flow-naplókat az Azure platformon gyűjtjük össze, és nem szükséges módosítani az ügyfél erőforrásait.
 - Megjegyzés: a szabályok két típusból állnak – az & megszakítása leáll, amelyek mindegyike különböző naplózási viselkedéssel rendelkezik.

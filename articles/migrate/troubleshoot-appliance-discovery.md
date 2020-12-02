@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: b6fed24c7de87424bde94b864d4a9db91828a510
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0d4630cad94a30e0dd53785c512e452d7b4a7d38
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315786"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494443"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -31,7 +31,7 @@ Ha "a megadott jegyzékfájl érvénytelen: érvénytelen OVF manifest-bejegyzé
 2. Ha a telepítés továbbra is meghiúsul, és a VMware vSphere ügyfél használatával telepíti a OVF-fájlt, próbálja meg telepíteni a vSphere webes ügyfelén keresztül. Ha az üzembe helyezés továbbra is sikertelen, próbálkozzon más böngészővel.
 3. Ha a vSphere webes ügyfélprogramot használja, és vCenter Server 6,5-es vagy 6,7-es számítógépen szeretné telepíteni, próbálja meg közvetlenül telepíteni a PETESEJTeket az ESXi-gazdagépre:
    - Kapcsolódjon közvetlenül az ESXi-gazdagéphez (vCenter Server helyett) a webes ügyféllel (https://<*gazdagép IP-címe*>/UI).
-   - A **saját**  >  **leltár**területen válassza a **fájl**  >  **központi telepítése OVF sablont**. Tallózással keresse meg a PETESEJTeket, és fejezze be a telepítést.
+   - A **saját**  >  **leltár** területen válassza a **fájl**  >  **központi telepítése OVF sablont**. Tallózással keresse meg a PETESEJTeket, és fejezze be a telepítést.
 4. Ha az üzembe helyezés továbbra is sikertelen, forduljon Azure Migrate támogatási szolgálathoz.
 
 ## <a name="cant-connect-to-the-internet"></a>Nem lehet csatlakozni az internethez
@@ -80,7 +80,7 @@ Ha ezt a hibaüzenetet kapja, előfordulhat, hogy nem tud csatlakozni a (z) vCen
     - [További](./migrate-appliance.md#appliance---vmware) információ a szükséges Azure-szerepkörökről és-engedélyekről.
 - 60039-es hiba: "előfordulhat, hogy a készülék nem regisztrálható sikeresen a Azure Migrate projektben" akkor fordulhat elő, ha a regisztráció sikertelen, mert a berendezés regisztrálásához használt Azure Migrate projekt nem található.
     - A Azure Portalon, és győződjön meg arról, hogy a projekt létezik az erőforráscsoporthoz.
-    - Ha a projekt nem létezik, hozzon létre egy új Azure Migrate projektet az erőforráscsoporthoz, és regisztrálja újra a készüléket. [Ismerje meg, hogyan](./how-to-add-tool-first-time.md#create-a-project-and-add-a-tool) hozhat létre új projektet.
+    - Ha a projekt nem létezik, hozzon létre egy új Azure Migrate projektet az erőforráscsoporthoz, és regisztrálja újra a készüléket. [Ismerje meg, hogyan](./create-manage-projects.md#create-a-project-for-the-first-time) hozhat létre új projektet.
 
 ## <a name="error-6003060031-key-vault-management-operation-failed"></a>60030/60031-es hiba: a Key Vault felügyeleti művelet sikertelen volt.
 
@@ -157,9 +157,9 @@ Ha ez nem működik, és a VMware-kiszolgálókat felkeresi:
 
 Ha a felderített virtuális gépek nem jelennek meg a portálon, vagy ha a VM-adat elavult, várjon néhány percet. Akár 30 percet is igénybe vehet, hogy a felderített virtuális gépek konfigurációs információi megjelenjenek a portálon. Eltarthat néhány órát az alkalmazásadatok változásainak megjelenítéséhez. Ha ez idő után nem állnak rendelkezésre adatsorok, próbálkozzon a frissítéssel, a következőképpen
 
-1. A **kiszolgálók**  >  **Azure Migrate kiszolgáló értékelése**lapon válassza az **Áttekintés**lehetőséget.
-2. A **kezelés**területen válassza a **Agent Health**lehetőséget.
-3. Válassza az **ügynök frissítése**lehetőséget.
+1. A **kiszolgálók**  >  **Azure Migrate kiszolgáló értékelése** lapon válassza az **Áttekintés** lehetőséget.
+2. A **kezelés** területen válassza a **Agent Health** lehetőséget.
+3. Válassza az **ügynök frissítése** lehetőséget.
 4. Várjon, amíg a frissítési művelet befejeződik. Ekkor megjelenik a naprakész információ.
 
 ## <a name="deleted-vms-appear-in-portal"></a>A törölt virtuális gépek megjelennek a portálon
@@ -179,9 +179,9 @@ Ez az állapot akkor jelenik meg, ha a CSV-feltöltés érvényesítési hiba mi
 ## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>Ne tekintse meg az alkalmazás részleteit még a vendég hitelesítő adatainak frissítése után is
 Az alkalmazás-felderítés 24 óránként egyszer fut. Ha azonnal szeretné megtekinteni a részleteket, frissítse az alábbiak szerint. Ez a nem függvénytől függően néhány percet is igénybe vehet. a felderített virtuális gépek.
 
-1. A **kiszolgálók**  >  **Azure Migrate kiszolgáló értékelése**lapon válassza az **Áttekintés**lehetőséget.
-2. A **kezelés**területen válassza a **Agent Health**lehetőséget.
-3. Válassza az **ügynök frissítése**lehetőséget.
+1. A **kiszolgálók**  >  **Azure Migrate kiszolgáló értékelése** lapon válassza az **Áttekintés** lehetőséget.
+2. A **kezelés** területen válassza a **Agent Health** lehetőséget.
+3. Válassza az **ügynök frissítése** lehetőséget.
 4. Várjon, amíg a frissítési művelet befejeződik. Ekkor megjelenik a naprakész információ.
 
 ## <a name="unable-to-export-application-inventory"></a>Nem lehet exportálni az alkalmazás leltárát
@@ -249,5 +249,5 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Állítson be egy berendezést a [VMware](how-to-set-up-appliance-vmware.md), a [Hyper-V](how-to-set-up-appliance-hyper-v.md)vagy a [fizikai kiszolgálók](how-to-set-up-appliance-physical.md)számára.

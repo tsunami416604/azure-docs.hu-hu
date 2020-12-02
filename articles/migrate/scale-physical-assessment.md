@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: 227e27d25ad5d0c61ed4f36c234222a079315619
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6009975337f8f4caaf43e4b8b715e42c6ce2ffdc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317141"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494579"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Nagy számú fizikai kiszolgáló értékelése az Azure-ba való áttelepítéshez
 
@@ -73,7 +73,7 @@ A tervezési követelményekkel összhangban tegye a következőket:
 1. Azure Migrate-projekt létrehozása.
 2. Adja hozzá a Azure Migrate Server Assessment eszközt a projektekhez.
 
-[További információ](how-to-add-tool-first-time.md)
+[További információ](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>Értékelés létrehozása és áttekintése
 
@@ -83,7 +83,7 @@ A tervezési követelményekkel összhangban tegye a következőket:
 [További](tutorial-assess-physical.md) információ az értékelések létrehozásáról és áttekintéséről.
     
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben:
  

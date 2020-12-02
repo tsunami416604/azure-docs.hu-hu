@@ -1,18 +1,18 @@
 ---
 title: Huzavona adatfolyam-átalakítási függvények Azure Data Factory
 description: A Azure Data Factory elérhető huzavona-adatáramlási funkcióinak áttekintése
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: c56c52193f433571f16e4acf7bd6e7b89641b26f
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 28c6228d4401db0fd1301137167a86cb6f18cbeb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233950"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494919"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transzformációs függvények a huzavona-adatfolyamban
 
@@ -88,7 +88,7 @@ Tartsa meg és távolítsa el a Top, Keep Range (megfelelő M függvények, csak
 
 ## <a name="known-unsupported-functions"></a>Ismert nem támogatott függvények
 
-| Függvény | status |
+| Függvény | Állapot |
 | -- | -- |
 | Table.PromoteHeaders | Nem támogatott. Ugyanezt az eredményt az "első sor fejlécként" beállítással lehet megvalósítani az adatkészletben. |
 | Table.CombineColumns | Ez egy olyan gyakori forgatókönyv, amely közvetlenül nem támogatott, de úgy érhető el, hogy hozzáad egy új oszlopot, amely két adott oszlopot ÖSSZEFŰZ.  Például: table. AddColumn (RemoveEmailColumn, "Name", each [FirstName] & "" & [LastName]) |

@@ -3,20 +3,20 @@ title: Azure Data Factory – minták
 description: A Azure Data Factory szolgáltatással szállított minták adatait tartalmazza.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ed63d148afa6f5674d36cc50c18351b2a06966eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b373b5c440bf2ef2f50bf323baa2488981cdc775
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019616"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495191"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – minták
 > [!NOTE]
@@ -46,7 +46,7 @@ A [GitHub Azure-DataFactory adattár](https://github.com/azure/azure-datafactory
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 A Data Factory a GitHubon a következő Azure Resource Manager sablonokat találhatja meg.
 
-| Sablon | Leírás |
+| Sablon | Description |
 | --- | --- |
 | [Másolás az Azure Blob Storageból a Azure SQL Databaseba](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |A sablon üzembe helyezése egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely átmásolja a megadott Azure Blob Storage-ból származó adatok Azure SQL Database |
 | [Másolás a Salesforce-ből az Azure-ba Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |A sablon üzembe helyezése egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely átmásolja a megadott Salesforce-fiókból az Azure Blob Storage-ba. |

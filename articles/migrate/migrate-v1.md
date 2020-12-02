@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 53a10123bf3304ab9c949146d7cad6b904c8323d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c87290b36ec77e834a0d0fcd99e9a8bdb05675b5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317205"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494698"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>A Azure Migrate korábbi verziójának használata
 
@@ -31,13 +31,13 @@ A Azure Migrate szolgáltatásnak két verziója van:
 
 ## <a name="upgrade-between-versions"></a>Frissítés verziók között
 
-Az előző verzióban lévő projektek vagy összetevők nem frissíthetők az új verzióra. [Létre kell hoznia egy új Azure Migrate projektet](create-manage-projects.md), és [hozzá kell adnia az értékelési és áttelepítési eszközöket](how-to-add-tool-first-time.md) . Az oktatóanyagok segítségével megismerheti, hogyan használhatja az elérhető értékelési és áttelepítési eszközöket. Ha egy klasszikus projekthez csatlakoztatott Log Analytics munkaterülettel rendelkezik, a klasszikus projekt törlése után csatolhatja azt egy aktuális verzió projekthez.
+Az előző verzióban lévő projektek vagy összetevők nem frissíthetők az új verzióra. [Létre kell hoznia egy új Azure Migrate projektet](create-manage-projects.md), és [hozzá kell adnia az értékelési és áttelepítési eszközöket](./create-manage-projects.md) . Az oktatóanyagok segítségével megismerheti, hogyan használhatja az elérhető értékelési és áttelepítési eszközöket. Ha egy klasszikus projekthez csatlakoztatott Log Analytics munkaterülettel rendelkezik, a klasszikus projekt törlése után csatolhatja azt egy aktuális verzió projekthez.
 
 ## <a name="find-projects-from-previous-version"></a>Projektek keresése az előző verzióból
 
 Az előző verzióból származó projekteket a következőképpen keresheti meg:
 
-1. A Azure Portal > **minden szolgáltatás**területen keresse meg és válassza ki **Azure Migrate**. 
+1. A Azure Portal > **minden szolgáltatás** területen keresse meg és válassza ki **Azure Migrate**. 
 2. A Azure Migrate irányítópulton van egy értesítés és egy hivatkozás a régi Azure Migrate projektek eléréséhez.
 3. A klasszikus projektek megnyitásához kattintson a hivatkozásra.
 
@@ -45,7 +45,7 @@ Az előző verzióból származó projekteket a következőképpen keresheti meg
 
 Az előző verzióból származó projekteket a következőképpen keresheti meg és törölheti:
 
-1. A Azure Portal > **minden szolgáltatás**területen keresse meg és válassza ki **Azure Migrate**. 
+1. A Azure Portal > **minden szolgáltatás** területen keresse meg és válassza ki **Azure Migrate**. 
 2. A Azure Migrate irányítópulton van egy értesítés és egy hivatkozás a régi Azure Migrate projektek eléréséhez.
 3. A klasszikus projektek megnyitásához kattintson a hivatkozásra.
 4. Válassza ki a törölni és törölni kívánt projektet. 
@@ -85,7 +85,7 @@ A gépek csak akkor haladnak át egy későbbi fázisban, ha az előzőre kerül
 
 Az értékelésben az Azure használatához szükséges állapotnézet az egyes virtuális gépek készenléti állapotát jeleníti meg.
 
-**Készenlét** | **Állapot** | **Részletek**
+**Készenlét** | **Állam** | **Részletek**
 --- | --- | ---
 Készen áll az Azure-beli használatra | Nincsenek kompatibilitási problémák. A gép telepíthető át az Azure-ba, és az Azure-ban teljes körű Azure-támogatással indul el. | A kész virtuális gépekhez az Azure Migrate javasol egy virtuálisgép-méretet az Azure-ban.
 Feltételesen készen áll az Azure-beli használatra | Előfordulhat, hogy a gép az Azure-ban indul el, de nem rendelkezik teljes körű Azure-támogatással. Például egy olyan gép, amelyen az Azure nem támogatja a Windows Server régebbi verzióját. | A Azure Migrate ismerteti a készültségi problémákat, és szervizelési lépéseket tesz lehetővé.
@@ -207,7 +207,7 @@ A függőségi vizualizáció beállításához egy Log Analytics munkaterülete
 
 A függőségi vizualizáció használatához egy Log Analytics munkaterületet társít egy áttelepítési projekthez. A munkaterületet csak abban az előfizetésben lehet létrehozni vagy csatolni, amelyben az áttelepítési projekt létrejött.
 
-1. Ha Log Analytics munkaterületet szeretne csatolni egy projekthez, az **áttekintés**> **Essentials**szolgáltatásban kattintson a **Konfigurálás szükséges**elemre.
+1. Ha Log Analytics munkaterületet szeretne csatolni egy projekthez, az **áttekintés**> **Essentials** szolgáltatásban kattintson a **Konfigurálás szükséges** elemre.
 2. Létrehozhat egy új munkaterületet, vagy csatolhat egy meglévőt:
   - Új munkaterület létrehozásához adjon meg egy nevet. A munkaterület ugyanabban az [Azure-földrajzbeli](https://azure.microsoft.com/global-infrastructure/geographies/) régióban jön létre, mint az áttelepítési projekt.
   - Ha meglévő munkaterületet csatol, az összes elérhető munkaterületet az áttelepítési projekttel megegyező előfizetésben is kiválaszthatja. Csak azok a munkaterületek jelennek meg, amelyek egy [támogatott Service Map régióban](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)lettek létrehozva. Munkaterület csatolásához ellenőrizze, hogy van-e "olvasó" hozzáférése a munkaterülethez.
@@ -219,8 +219,8 @@ A függőségi vizualizáció használatához egy Log Analytics munkaterületet 
 
 A munkaterület konfigurálása után le kell töltenie és telepítenie kell az ügynököket minden olyan helyszíni gépen, amelyet ki szeretne értékelni. Továbbá, ha olyan gépekkel rendelkezik, amelyeknek nincs internetkapcsolata, le kell töltenie és telepítenie kell [log Analytics-átjárót](../azure-monitor/platform/gateway.md) .
 
-1. Az **Áttekintés**lapon kattintson **Manage**  >  a**gépek**kezelése lehetőségre, és válassza ki a szükséges gépet.
-2. A **függőségek** oszlopban kattintson az **ügynökök telepítése**elemre.
+1. Az **Áttekintés** lapon kattintson **Manage**  >  a **gépek** kezelése lehetőségre, és válassza ki a szükséges gépet.
+2. A **függőségek** oszlopban kattintson az **ügynökök telepítése** elemre.
 3. A **függőségek** lapon töltse le és telepítse a Microsoft monitoring Agent (MMA) és a függőségi ügynököt minden olyan virtuális gépen, amelyet fel szeretne mérni.
 4. Másolja ki a munkaterület-azonosítót és -kulcsot. Ezekre akkor van szükség, amikor telepíti az MMA-t a helyszíni gépre.
 
@@ -234,8 +234,8 @@ Az ügynök telepítése Windows rendszerű gépre:
 
 1. Kattintson duplán a letöltött ügynökre.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. **A licencfeltételek oldalon kattintson** **az Elfogadom gombra a** licenc elfogadásához.
-3. A **célmappában**tartsa meg vagy módosítsa az alapértelmezett telepítési mappát > a **Tovább gombra**.
-4. Az **ügynök telepítési beállításai**területen válassza az **Azure log Analytics**  >  **tovább**lehetőséget.
+3. A **célmappában** tartsa meg vagy módosítsa az alapértelmezett telepítési mappát > a **Tovább gombra**.
+4. Az **ügynök telepítési beállításai** területen válassza az **Azure log Analytics**  >  **tovább** lehetőséget.
 5. Új Log Analytics munkaterület hozzáadásához kattintson a **Hozzáadás** gombra. Illessze be azt a munkaterület-azonosítót és-kulcsot, amelyet a portálról másolt. Kattintson a **Tovább** gombra.
 
 Az ügynököt a parancssorból vagy egy automatizált módszerrel, például Configuration Manager is telepítheti. [További](../azure-monitor/platform/log-analytics-agent.md#installation-options) információ az MMA-ügynök telepítésével kapcsolatban ezen módszerek használatával.
@@ -270,7 +270,7 @@ A System Center Operations Manager 2012 R2 vagy újabb verziói által monitoroz
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Függőségi leképezést tartalmazó csoport létrehozása
 
-1. Az ügynökök telepítése után lépjen a portálra, és kattintson a **Manage**  >  **gépek**kezelése lehetőségre.
+1. Az ügynökök telepítése után lépjen a portálra, és kattintson a **Manage**  >  **gépek** kezelése lehetőségre.
 2. Keresse meg azt a gépet, amelyre az ügynököket telepítette.
 3. A gép **függőségek** oszlopának ekkor a következőnek kell megjelennie: **View függőségei**. Az oszlopra kattintva megtekintheti a gép függőségeit.
 4. A gép függőségi térképe a következő adatokat jeleníti meg:
@@ -285,7 +285,7 @@ A System Center Operations Manager 2012 R2 vagy újabb verziói által monitoroz
    > [!NOTE]
    >    Legfeljebb egy óra időtartamú időtartomány támogatott. A [függőségi adat](./how-to-create-group-machine-dependencies.md) hosszabb időtartamon keresztüli lekérdezéséhez használjon Azure monitor naplókat.
 
-5. Miután azonosította a csoportba felvenni kívánt függő gépeket, a CTRL billentyűt lenyomva tartva több gépet is kiválaszthat a térképen, majd kattintson a **számítógépek csoportosítása**lehetőségre.
+5. Miután azonosította a csoportba felvenni kívánt függő gépeket, a CTRL billentyűt lenyomva tartva több gépet is kiválaszthat a térképen, majd kattintson a **számítógépek csoportosítása** lehetőségre.
 6. Adja meg a csoport nevét. Győződjön meg arról, hogy a Azure Migrate a függő gépeket deríti fel.
 
     > [!NOTE]
@@ -302,13 +302,13 @@ A Service Map által rögzített függőségi adatmennyiség a Azure Migrate pro
 
 A Kusto-lekérdezések futtatása:
 
-1. Az ügynökök telepítése után lépjen a portálra, és kattintson az **Áttekintés**elemre.
-2. Az **Áttekintés**területen nyissa meg a projekt **Essentials (alapok** ) szakaszát, és kattintson a **OMS munkaterület**melletti munkaterület neve elemre.
-3. A log Analytics munkaterület lapon kattintson az **általános**  >  **naplók**elemre.
+1. Az ügynökök telepítése után lépjen a portálra, és kattintson az **Áttekintés** elemre.
+2. Az **Áttekintés** területen nyissa meg a projekt **Essentials (alapok** ) szakaszát, és kattintson a **OMS munkaterület** melletti munkaterület neve elemre.
+3. A log Analytics munkaterület lapon kattintson az **általános**  >  **naplók** elemre.
 4. A függőségi adatok Azure Monitor naplók használatával történő gyűjtésének megírása a lekérdezésbe. Keresse meg a következő szakaszban szereplő lekérdezéseket.
 5. Futtassa a lekérdezést a Futtatás gombra kattintva. 
 
-[További](../azure-monitor/log-query/get-started-portal.md) információ a Kusto-lekérdezések írásához. 
+[További](../azure-monitor/log-query/log-analytics-tutorial.md) információ a Kusto-lekérdezések írásához. 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Példa Azure Monitor naplók lekérdezésére
 
@@ -349,5 +349,5 @@ VMConnection
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További](migrate-services-overview.md) információ a Azure Migrate legújabb verziójáról.

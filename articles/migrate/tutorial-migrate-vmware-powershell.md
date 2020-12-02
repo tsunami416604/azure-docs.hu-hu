@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
 ms.author: rahugup
-ms.openlocfilehash: 185979fcc0eeaebbe1c3b09d74050e05899737af
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 3cd8d29a498a6a00fa8fff679afc969b339934b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376799"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494341"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök nélkül) – PowerShell
 
@@ -38,7 +38,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 Az oktatóanyag elkezdése előtt:
 
 1. [Fejezze be a felderítési oktatóanyagot](tutorial-discover-vmware.md) az Azure és a VMware áttelepítésre való előkészítéséhez.
-2. Javasoljuk, hogy az Azure-ba való Migrálás előtt fejezze be a második oktatóanyagot a [VMWare virtuális gépek felméréséhez](tutorial-assess-vmware.md) .
+2. Javasoljuk, hogy az Azure-ba való Migrálás előtt fejezze be a második oktatóanyagot a [VMWare virtuális gépek felméréséhez](./tutorial-assess-vmware-azure-vm.md) .
 3. A Azure PowerShell `Az` modul. Ha Azure PowerShell telepítésére vagy frissítésére van szüksége, kövesse ezt az [útmutatót a Azure PowerShell telepítéséhez és konfigurálásához](/powershell/azure/install-az-ps) .
 
 ## <a name="install-azure-migrate-powershell-module"></a>Azure Migrate PowerShell-modul telepítése
@@ -57,7 +57,7 @@ Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` parancsmaggal.
 Connect-AzAccount
 ```
 
-Válassza ki az Azure-előfizetését. Használja a `Get-AzSubscription` parancsmagot azon Azure-előfizetések listájának lekéréséhez, amelyekhez hozzáfér. Válassza ki azt az Azure-előfizetést, amelynél a Azure Migrate-projekt használható a `Set-AzContext` parancsmag használatával.
+Válassza ki Azure-előfizetését. Használja a `Get-AzSubscription` parancsmagot azon Azure-előfizetések listájának lekéréséhez, amelyekhez hozzáfér. Válassza ki azt az Azure-előfizetést, amelynél a Azure Migrate-projekt használható a `Set-AzContext` parancsmag használatával.
 
 ```azurepowershell
 Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
@@ -117,10 +117,10 @@ $DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.
 
 [Azure Migrate: a kiszolgáló áttelepítése](migrate-services-overview.md#azure-migrate-server-migration-tool) több Azure-erőforrást használ a virtuális gépek áttelepítéséhez. A kiszolgáló áttelepítése a következő erőforrásokat a projekttel megegyező erőforráscsoporthoz helyezi el.
 
-- **Service Bus** : a kiszolgáló áttelepítése a Service Bus használatával küldi el a replikációs előkészítési üzeneteket a berendezésnek.
-- **Átjáró Storage-fiók** : a kiszolgáló áttelepítése az átjáró Storage-fiók használatával tárolja a replikált virtuális gépekre vonatkozó állapotinformációkat.
-- **Log Storage-fiók** : a Azure Migrate készülék feltölti a virtuális gépek replikációs naplóit egy log Storage-fiókba. Azure Migrate a replikációs adatokat a replika által felügyelt lemezekre alkalmazza.
-- **Key Vault** : a Azure Migrate készülék a kulcstartó használatával kezeli a Service Bus kapcsolati karakterláncait, valamint a replikáció során használt Storage-fiókok hozzáférési kulcsait.
+- **Service Bus**: a kiszolgáló áttelepítése a Service Bus használatával küldi el a replikációs előkészítési üzeneteket a berendezésnek.
+- **Átjáró Storage-fiók**: a kiszolgáló áttelepítése az átjáró Storage-fiók használatával tárolja a replikált virtuális gépekre vonatkozó állapotinformációkat.
+- **Log Storage-fiók**: a Azure Migrate készülék feltölti a virtuális gépek replikációs naplóit egy log Storage-fiókba. Azure Migrate a replikációs adatokat a replika által felügyelt lemezekre alkalmazza.
+- **Key Vault**: a Azure Migrate készülék a kulcstartó használatával kezeli a Service Bus kapcsolati karakterláncait, valamint a replikáció során használt Storage-fiókok hozzáférési kulcsait.
 
 Mielőtt replikálja az első virtuális gépet a Azure Migrate projektben, futtassa a következő szkriptet a replikációs infrastruktúra kiépítéséhez. Ez a szkript kiépíti és konfigurálja a fent említett erőforrásokat, így elkezdheti a VMware virtuális gépek áttelepítését.
 
@@ -476,15 +476,12 @@ Write-Output $StopReplicationJob.State
 ## <a name="post-migration-best-practices"></a>Az áttelepítés utáni ajánlott eljárások
 
 - A nagyobb rugalmasság érdekében:
-    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információ](../backup/quick-backup-vm-portal.md).
-    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információ](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk](../backup/quick-backup-vm-portal.md).
+    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - A biztonság fokozása érdekében:
     - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](../security-center/security-center-just-in-time.md).
-    - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](../virtual-network/security-overview.md) használatával.
+    - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md) használatával.
     - Az [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) üzembe helyezésével biztonságba helyezheti a lemezeket, és megóvhatja az adatokat a lopási kísérletektől és a jogosulatlan hozzáféréstől.
     - Látogasson el a [az Azure Security Center](https://azure.microsoft.com/services/security-center/) webhelyére, és tudjon meg többet az [IaaS-erőforrások biztosításáról](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/).
 - Figyelési és felügyeleti eszközök:
 -  Fontolja meg az [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
-
-
-

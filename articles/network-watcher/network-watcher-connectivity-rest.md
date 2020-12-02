@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
-ms.openlocfilehash: 1cb790bf15ba232b45fbf144c77ca177bab17b99
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: be74871b5669ee249fc06232d804b28c4446757b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968468"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494052"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Az Azure Network Watcher-vel való kapcsolatok hibáinak megoldása az Azure-REST API használatával
 
@@ -37,7 +37,7 @@ Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 * Virtuális gépek a szolgáltatással való kapcsolódási hibák megoldásához.
 
 > [!IMPORTANT]
-> A kapcsolati hibákhoz az szükséges, hogy a rendszer a virtuálisgép- `AzureNetworkWatcherExtension` bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json). A cél végponton nem szükséges a kiterjesztés.
+> A kapcsolati hibákhoz az szükséges, hogy a rendszer a virtuálisgép- `AzureNetworkWatcherExtension` bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
 ## <a name="log-in-with-armclient"></a>Bejelentkezés a ARMClient
 
@@ -464,7 +464,7 @@ A következő példa az előző API-hívás futtatásának válasza. Az ellenőr
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan automatizálható a csomagok rögzítése a virtuális gépi riasztásokkal a [riasztások által aktivált csomagok létrehozásával](network-watcher-alert-triggered-packet-capture.md).
 

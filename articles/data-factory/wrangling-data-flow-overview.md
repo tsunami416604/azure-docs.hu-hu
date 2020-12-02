@@ -1,18 +1,18 @@
 ---
 title: Huzavona-adatfolyamok Azure Data Factory
 description: A Azure Data Factory huzavona-adatforgalmának áttekintése
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: fe3fd25753344c5ccfd21310ae01fca9962e3971
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 607ed6167ec761a6bf380a2cc420eb72f808f0a3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636068"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494868"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Mik azok az huzavona-adatforgalom?
 
@@ -68,6 +68,6 @@ A támogatott átalakításokkal kapcsolatos további információkért lásd: [
 
 Az huzavona-adatfolyam jelenleg csak egy fogadóba való írást támogatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [hozhat létre huzavona-adatfolyamokat](wrangling-data-flow-tutorial.md).

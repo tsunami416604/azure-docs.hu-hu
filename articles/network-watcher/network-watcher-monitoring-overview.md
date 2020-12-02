@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: c5bf559ec7bf85e92cf21e3d4c493cae1361ea7c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e4782bf09b8c27132417f6021927408e18755104
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968026"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494018"
 ---
 # <a name="what-is-azure-network-watcher"></a>Mi az az Azure Network Watcher?
 
@@ -31,7 +31,7 @@ Az Azure Network Watcher eszközeivel monitorozhatja és diagnosztizálhatja az 
 
 A végpontok lehetnek másik virtuális gépek (VM), teljes tartománynevek (FQDN), URI-k vagy IPv4-címek. A *kapcsolatmonitor* funkció rendszeres időközönként monitorozza a kommunikációt, és értesíti Önt az elérhetőségről, a késésről, valamint a virtuális gép és a végpont közötti hálózati topológiai változásokról. Rendelkezhet például olyan webkiszolgáló virtuális géppel, amely egy adatbázis-kiszolgáló virtuális géppel kommunikál. Valaki a cégén belül az Ön tudta nélkül alkalmazhat egy egyéni útvonalat vagy hálózati biztonsági szabályt a webkiszolgáló vagy adatbázis-kiszolgáló virtuális gépre vagy alhálózatra.
 
-Ha egy végpont elérhetetlenné válik, a kapcsolat-hibaelhárítási funkció értesíti Önt ennek okáról. Ennek lehetséges okai többek között: DNS-névfeloldási probléma, a virtuális gép processzora, memóriája vagy az operációs rendszeren belüli tűzfal, egy egyéni útvonal ugrástípusa, a virtuális gép vagy a kimenő kapcsolat alhálózatának biztonsági szabálya. További információ az Azure [biztonsági szabályaival](../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json#security-rules) és [útvonalugrási típusaival](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) kapcsolatban.
+Ha egy végpont elérhetetlenné válik, a kapcsolat-hibaelhárítási funkció értesíti Önt ennek okáról. Ennek lehetséges okai többek között: DNS-névfeloldási probléma, a virtuális gép processzora, memóriája vagy az operációs rendszeren belüli tűzfal, egy egyéni útvonal ugrástípusa, a virtuális gép vagy a kimenő kapcsolat alhálózatának biztonsági szabálya. További információ az Azure [biztonsági szabályaival](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules) és [útvonalugrási típusaival](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) kapcsolatban.
 
 A kapcsolatmonitor továbbá az adott idő alatt megfigyelt minimális, átlag- és maximális késést is megmutatja. Egy kapcsolat késésének ismeretében előfordulhat, hogy csökkentheti a késést, ha az Azure-erőforrásokat más Azure-régiókba helyezi át. További információ az [Azure-régiók és az internetszolgáltatók közötti relatív késés](#determine-relative-latencies-between-azure-regions-and-internet-service-providers) meghatározásával, illetve azzal kapcsolatban, hogyan monitorozható a virtuális gépek és végpontok közötti kommunikáció a [kapcsolatmonitor](connection-monitor.md) használatával. Ha a kapcsolat adott időn keresztül történő monitorozása helyett (ahogyan ezt a kapcsolatmonitorral tenné), inkább egy adott időpontban szeretné tesztelni a kapcsolatot, használja a [kapcsolat-hibaelhárítási](#connection-troubleshoot) funkciót.
 
@@ -75,7 +75,7 @@ A Network Watcher szolgáltatásból lekérheti az Azure-régiók közötti és 
 
 Egy hálózati adapter érvényben lévő biztonsági szabályai a hálózati adapteren, valamint az azon az alhálózaton alkalmazott összes biztonsági szabályból állnak, amelyen az adapter található.  A *biztonsági csoport nézet* képesség megmutatja a hálózati adapteren és az azon az alhálózaton alkalmazott összes biztonsági szabályt, amelyen az adapter található, majd összesíti ezeket. Miután megértette, hogy melyik szabályok vannak alkalmazva a hálózati adapteren, hozzáadhat, eltávolíthat és módosíthat szabályokat, ha azok nem a kívánt módon engedélyezik vagy tiltják le a forgalmat. További információ a [biztonsági csoport nézettel](network-watcher-security-group-view-overview.md) kapcsolatban.
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 
 Az egy Azure-előfizetésen és -régión belül létrehozható hálózati erőforrások száma [korlátozott](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits). Ha eléri a korlátot, nem fog tudni további erőforrásokat létrehozni az előfizetésen vagy régión belül. A *hálózati előfizetés korlátja* funkció összegzést biztosít az egy előfizetésben és régióban üzembe helyezett hálózati erőforrások számáról, illetve az erőforrás korlátairól. Az alábbi képen az USA keleti régiójában üzembe helyezett hálózati erőforrások részleges kimenete látható egy példa-előfizetés esetében:
 
@@ -100,6 +100,6 @@ Lehetősége van engedélyezni az Azure hálózati erőforrások (pl. hálózati
 ## <a name="network-watcher-automatic-enablement"></a>Automatikus engedélyezés Network Watcher
 Amikor virtuális hálózatot hoz létre vagy módosít az előfizetésben, a Network Watcher automatikusan engedélyezve lesz a virtuális hálózat régiójában. A Network Watcher automatikus engedélyezése az Ön erőforrásait nem érinti, és nem jár költségekkel. További információ: [Network Watcher Create](network-watcher-create.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A cikk az Azure Network Watcherről nyújtott áttekintést. A Network Watcher használatának első lépéseként diagnosztizálja egy virtuális gép bejövő és kimenő kommunikációjának egy gyakori problémáját az IP-forgalom ellenőrzése funkcióval. Ennek ismertetését a [virtuális gépek hálózatiforgalom-szűrési problémájának diagnosztizálását](diagnose-vm-network-traffic-filtering-problem.md) ismertető rövid útmutatóban találja.

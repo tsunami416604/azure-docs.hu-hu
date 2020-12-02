@@ -3,12 +3,12 @@ title: Azure Migrate GYIK
 description: Választ kaphat a Azure Migrate szolgáltatással kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 95fd2ea9ecf5e4bcdf3fb2291e4cf7bf5b111c5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0877ad0d36e131525a227050cf44321e39e8b30
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847465"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494613"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: gyakori kérdések
 
@@ -41,7 +41,7 @@ A Azure Migrate: a kiszolgáló áttelepítési eszköze néhány háttér-Site 
 
 ## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>Van egy olyan projektem, amely a Azure Migrate korábbi klasszikus élményét. Hogyan az új verzió használatának megkezdése?
 
-Az előző verzióban lévő projektek vagy összetevők nem frissíthetők az új verzióra. [Létre kell hoznia egy új Azure Migrate projektet](create-manage-projects.md), és [hozzá kell adnia az értékelési és áttelepítési eszközöket](how-to-add-tool-first-time.md) . Az oktatóanyagok segítségével megismerheti, hogyan használhatja az elérhető értékelési és áttelepítési eszközöket. Ha egy klasszikus projekthez csatlakoztatott Log Analytics munkaterülettel rendelkezik, a klasszikus projekt törlése után csatolhatja azt egy aktuális verzió projekthez.
+Az előző verzióban lévő projektek vagy összetevők nem frissíthetők az új verzióra. [Létre kell hoznia egy új Azure Migrate projektet](create-manage-projects.md), és [hozzá kell adnia az értékelési és áttelepítési eszközöket](./create-manage-projects.md) . Az oktatóanyagok segítségével megismerheti, hogyan használhatja az elérhető értékelési és áttelepítési eszközöket. Ha egy klasszikus projekthez csatlakoztatott Log Analytics munkaterülettel rendelkezik, a klasszikus projekt törlése után csatolhatja azt egy aktuális verzió projekthez.
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Mi a különbség a Azure Migrate: Server Assessment és a MAP Toolkit között?
 
@@ -80,6 +80,6 @@ Az áttelepítési utat nyomon követheti a Azure Migrate projekt, az Azure és 
 
 További információ a [projektek törléséről](how-to-delete-project.md). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

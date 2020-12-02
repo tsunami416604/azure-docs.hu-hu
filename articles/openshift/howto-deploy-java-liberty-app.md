@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, profil, Open-Liberty, WebSphere-Liberty, ARO, openshift, Red Hat
-ms.openlocfilehash: 41891b58942efbfd705747cc16219185f2a2daa2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0c17c911d1eefe646785314a26b6a9b1e964ca67
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018392"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493941"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Java-alkalmazás üzembe helyezése Open Liberty/WebSphere Liberty-vel egy Azure Red Hat OpenShift 4 fürtön
 
@@ -25,26 +25,26 @@ Ez az útmutató bemutatja, hogyan futtatható a Java, a Java EE, a [Jakarta EE]
 Az útmutató lépéseinek végrehajtásához hajtsa végre az alábbi előfeltételeket.
 
 > [!NOTE]
-> Az Azure Red Hat OpenShift legalább 40 mag szükséges a OpenShift-fürt létrehozásához és futtatásához. Egy új Azure-előfizetéshez tartozó alapértelmezett Azure-erőforrás-kvóta nem felel meg ennek a követelménynek. Az erőforrás-korlát növeléséhez tekintse meg a [standard kvóta: a határértékek](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)csökkentése virtuálisgép-sorozat szerint című témakört. Vegye figyelembe, hogy az ingyenes próbaverziós előfizetés nem jogosult a kvóta növelésére, az utólagos elszámolású [előfizetésre való áttérésre](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription) , a kvóta növelésének kérelmezése előtt.
+> Az Azure Red Hat OpenShift legalább 40 mag szükséges a OpenShift-fürt létrehozásához és futtatásához. Egy új Azure-előfizetéshez tartozó alapértelmezett Azure-erőforrás-kvóta nem felel meg ennek a követelménynek. Az erőforrás-korlát növeléséhez tekintse meg a [standard kvóta: a határértékek](../azure-portal/supportability/per-vm-quota-requests.md)csökkentése virtuálisgép-sorozat szerint című témakört. Vegye figyelembe, hogy az ingyenes próbaverziós előfizetés nem jogosult a kvóta növelésére, az utólagos elszámolású [előfizetésre való áttérésre](../cost-management-billing/manage/upgrade-azure-subscription.md) , a kvóta növelésének kérelmezése előtt.
 
 1. Készítsen elő egy olyan helyi gépet, amely a UNIX-hoz hasonló operációs rendszer van telepítve (például Ubuntu, macOS).
 1. Telepítsen Java SE-implementációt (például [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)).
 1. Telepítse a [Maven](https://maven.apache.org/download.cgi) 3.5.0 vagy újabb verzióját.
 1. Telepítse a [Docker](https://docs.docker.com/get-docker/) -t az operációs rendszeréhez.
-1. Telepítse az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -2.0.75 vagy újabb verzióját.
+1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) -2.0.75 vagy újabb verzióját.
 1. Ellenőrizze és telepítse, [`envsubst`](https://command-not-found.com/envsubst) Ha nem az operációs rendszer előre telepítve van.
 1. A minta kódjának klónozása a helyi rendszeren. A minta a [githubon](https://github.com/Azure-Samples/open-liberty-on-aro)található.
-1. Kövesse az [Azure Red Hat OpenShift 4-fürt létrehozása](/azure/openshift/tutorial-create-cluster)című témakör utasításait.
+1. Kövesse az [Azure Red Hat OpenShift 4-fürt létrehozása](./tutorial-create-cluster.md)című témakör utasításait.
 
    Bár a "Red Hat pull-kulcs beolvasása" lépés opcionálisként van megjelölve, ez a **cikk szükséges**.  A lekéréses titok lehetővé teszi, hogy az Azure Red Hat OpenShift-fürt megtalálja a nyílt Liberty-kezelőt.
 
-   Ha memória-igényű alkalmazásokat szeretne futtatni a fürtön, a paraméter használatával adja meg a munkavégző csomópontok megfelelő virtuálisgép-méretét `--worker-vm-size` . Például `Standard_E4s_v3` a virtuális gép minimális mérete, hogy a Elasticsearch-kezelőt egy fürtön telepítse. További információkért lásd:
+   Ha memória-igényű alkalmazásokat szeretne futtatni a fürtön, a paraméter használatával adja meg a munkavégző csomópontok megfelelő virtuálisgép-méretét `--worker-vm-size` . Például `Standard_E4s_v3` a virtuális gép minimális mérete, hogy a Elasticsearch-kezelőt egy fürtön telepítse. További információ:
 
-   * [Azure CLI fürt létrehozásához](https://docs.microsoft.com/cli/azure/aro?view=azure-cli-latest&preserve-view=true#az-aro-create)
-   * [A virtuális gépek támogatott méretei a memória optimalizálása esetén](/azure/openshift/support-policies-v4#memory-optimized)
+   * [Azure CLI fürt létrehozásához](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [A virtuális gépek támogatott méretei a memória optimalizálása esetén](./support-policies-v4.md#memory-optimized)
    * [A Elasticsearch operátor telepítésének előfeltételei](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 
-1. Kapcsolódjon a fürthöz a [Kapcsolódás Azure Red Hat OpenShift 4-fürthöz](/azure/openshift/tutorial-connect-cluster)című témakör lépéseit követve.
+1. Kapcsolódjon a fürthöz a [Kapcsolódás Azure Red Hat OpenShift 4-fürthöz](./tutorial-connect-cluster.md)című témakör lépéseit követve.
    * Ügyeljen arra, hogy kövesse a "OpenShift CLI telepítése" című szakasz lépéseit, mert a `oc` parancsot a cikk későbbi részében fogjuk használni.
    * Jegyezze fel a fürt konzoljának URL-címét, amely a következőképpen néz ki: `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` .
    * Jegyezze fel a `kubeadmin` hitelesítő adatokat.
@@ -312,11 +312,11 @@ Törölje az alkalmazást a CLI-ből a parancs végrehajtásával.
 oc delete -f openlibertyapplication.yaml
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Törölje az ARO-fürtöt az [oktatóanyag: Azure Red Hat OpenShift 4-fürt törlése](/azure/openshift/tutorial-delete-cluster) című témakör lépéseit követve.
+Törölje az ARO-fürtöt az [oktatóanyag: Azure Red Hat OpenShift 4-fürt törlése](./tutorial-delete-cluster.md) című témakör lépéseit követve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban megtanulta, hogyan teheti meg a következőket:
 > [!div class="checklist"]

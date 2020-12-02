@@ -3,20 +3,20 @@ title: Ütemezés és végrehajtás a Data Factory
 description: Az Azure Data Factory alkalmazás modelljének ütemezési és végrehajtási szempontjainak megismerése.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e0707f9a7694741f54771699f5aeb3b452b11b8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60410eb2a9a5f18abf2daf87646943ffdc944402
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85319720"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495174"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory ütemezés és végrehajtás
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "85319720"
 Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. Ez a cikk azt feltételezi, hogy tisztában van a Data Factory az alkalmazás modelljével kapcsolatos fogalmak, például a tevékenységek, a folyamatok, a társított szolgáltatások és az adatkészletek alapjaival. A Azure Data Factory alapvető fogalmait a következő cikkekben találja:
 
 * [A Data Factory bemutatása](data-factory-introduction.md)
-* [Folyamatok](data-factory-create-pipelines.md)
+* [Pipelines](data-factory-create-pipelines.md)
 * [Adatkészletek](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>A folyamat kezdő és befejező időpontja
@@ -50,7 +50,7 @@ Nem a végrehajtott folyamat. Ez a folyamat által a folyamat általános körny
 },
 ```
 
-Ahogy az a következő ábrán is látható, egy adott tevékenységhez tartozó ütemterv megadásával egy sor, a folyamat kezdő és befejező időpontjában eltelt időszakot eredményező ablak jelenik meg. A kieséssel ellátott ablakok rögzített méretű, nem átfedésben lévő, összefüggő időintervallumok. Az adott tevékenységhez tartozó logikai kiesési ablakokat a **tevékenység ablakoknak**nevezzük.
+Ahogy az a következő ábrán is látható, egy adott tevékenységhez tartozó ütemterv megadásával egy sor, a folyamat kezdő és befejező időpontjában eltelt időszakot eredményező ablak jelenik meg. A kieséssel ellátott ablakok rögzített méretű, nem átfedésben lévő, összefüggő időintervallumok. Az adott tevékenységhez tartozó logikai kiesési ablakokat a **tevékenység ablakoknak** nevezzük.
 
 ![Feladatütemező – példa](media/data-factory-scheduling-and-execution/scheduler-example.png)
 
@@ -164,7 +164,7 @@ A következő folyamat-definícióban az **ütemező** tulajdonság a tevékenys
 
 Ebben a példában a tevékenység óránként fut a folyamat kezdési és befejezési időpontja között. A kimeneti adatokat óránként, három órás időszakra készíti elő a rendszer (8 – 9 órakor, 9 – 10 ÓRAKOR és 10 ÓRAKOR – 11 ÓRAKOR). 
 
-A tevékenység-Futtatás által felhasznált vagy előállított adategységeket **adatszeletnek**nevezzük. Az alábbi ábrán egy olyan tevékenység látható, amely egy bemeneti adatkészlettel és egy kimeneti adatkészlettel rendelkezik: 
+A tevékenység-Futtatás által felhasznált vagy előállított adategységeket **adatszeletnek** nevezzük. Az alábbi ábrán egy olyan tevékenység látható, amely egy bemeneti adatkészlettel és egy kimeneti adatkészlettel rendelkezik: 
 
 ![Rendelkezésre állási ütemező](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
 
@@ -172,7 +172,7 @@ Az ábrán a bemeneti és a kimeneti adatkészlet óránkénti adatszeletei lát
 
 A (z) [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) és a [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables)változó használatával elérheti az adatkészlet JSON-fájljában az aktuális szelethez társított időintervallumot. Hasonlóképpen, a WindowStart és a WindowEnd használatával is elérheti a tevékenységi időszakhoz társított időintervallumot. Egy tevékenység ütemtervének meg kell egyeznie a tevékenység kimeneti adatkészletének ütemtervével. Ezért a SliceStart és a SliceEnd értékek ugyanazok, mint a WindowStart és a WindowEnd érték. További információ ezekről a változókról: [Data Factory függvények és rendszerváltozók](data-factory-functions-variables.md#data-factory-system-variables) cikkei.  
 
-Ezeket a változókat különböző célokra használhatja a tevékenység JSON-ban. Használhatja például az idősoros adatokat jelölő bemeneti és kimeneti adatkészletből származó adatok kiválasztását (például: 8 – 9). Ez a példa a **WindowStart** és a **WindowEnd** segítségével kiválasztja a tevékenység futtatásához szükséges adatokat, és átmásolja a megfelelő **folderPath**rendelkező blobba. A **folderPath** paraméter úgy van, hogy minden órában külön mappa legyen.  
+Ezeket a változókat különböző célokra használhatja a tevékenység JSON-ban. Használhatja például az idősoros adatokat jelölő bemeneti és kimeneti adatkészletből származó adatok kiválasztását (például: 8 – 9). Ez a példa a **WindowStart** és a **WindowEnd** segítségével kiválasztja a tevékenység futtatásához szükséges adatokat, és átmásolja a megfelelő **folderPath** rendelkező blobba. A **folderPath** paraméter úgy van, hogy minden órában külön mappa legyen.  
 
 Az előző példában a bemeneti és a kimeneti adatkészletekhez megadott ütemterv megegyezik (óránként). Ha a tevékenység bemeneti adatkészlete eltérő gyakorisággal érhető el, azaz 15 percenként, az ezt a kimeneti adatkészletet előállító tevékenység még óránként egyszer fut, mivel a kimeneti adatkészlet a tevékenység ütemtervét vezeti. További információ: [különböző gyakorisággal rendelkező adatkészletek modellezése](#model-datasets-with-different-frequencies).
 
@@ -226,7 +226,7 @@ A következő adatkészlet havi adathalmaz, amely minden hónap 3. napján, 8:00
 ```
 
 ### <a name="dataset-policy"></a>Adatkészlet-házirend
-Az adatkészlet rendelkezhet egy olyan érvényesítési házirenddel, amely meghatározza, hogy a szeletek végrehajtásával létrehozott adatokat hogyan lehet érvényesíteni, mielőtt készen áll a felhasználásra. Ilyen esetekben a szelet végrehajtásának befejeződése után a kimeneti szelet állapota úgy módosul, hogy az **Érvényesítés**alállapotára **várakozik** . A szeletek ellenőrzése után a szelet állapota **készre**változik. Ha egy adatszeletet állítottak elő, de nem adták át az ellenőrzést, akkor a rendszer nem dolgozza fel a szelettől függő alsóbb rétegbeli szeletek tevékenységeit. A [folyamatok figyelése és kezelése](data-factory-monitor-manage-pipelines.md) a Data Factory adatszeletek különböző állapotait fedi le.
+Az adatkészlet rendelkezhet egy olyan érvényesítési házirenddel, amely meghatározza, hogy a szeletek végrehajtásával létrehozott adatokat hogyan lehet érvényesíteni, mielőtt készen áll a felhasználásra. Ilyen esetekben a szelet végrehajtásának befejeződése után a kimeneti szelet állapota úgy módosul, hogy az **Érvényesítés** alállapotára **várakozik** . A szeletek ellenőrzése után a szelet állapota **készre** változik. Ha egy adatszeletet állítottak elő, de nem adták át az ellenőrzést, akkor a rendszer nem dolgozza fel a szelettől függő alsóbb rétegbeli szeletek tevékenységeit. A [folyamatok figyelése és kezelése](data-factory-monitor-manage-pipelines.md) a Data Factory adatszeletek különböző állapotait fedi le.
 
 Az adatkészlet definíciójának **szabályzat** szakasza meghatározza azokat a feltételeket vagy feltételt, amelyeknek az adatkészlet-szeleteknek teljesíteniük kell. A következő táblázat a **szabályzat** szakaszban használható tulajdonságokat ismerteti:
 
@@ -266,7 +266,7 @@ További információt ezekről a tulajdonságokról és példákról az [adatk�
 ## <a name="activity-policies"></a>Tevékenység-szabályzatok
 A házirendek hatással vannak egy tevékenység futásidejű viselkedésére, különösen akkor, ha egy tábla szeletét dolgozzák fel. A részleteket a következő táblázat tartalmazza.
 
-| Tulajdonság | Megengedett értékek | Alapértelmezett érték | Leírás |
+| Tulajdonság | Megengedett értékek | Alapértelmezett érték | Description |
 | --- | --- | --- | --- |
 | Egyidejűség |Egész szám <br/><br/>Maximális érték: 10 |1 |A tevékenység egyidejű végrehajtásának száma.<br/><br/>Meghatározza, hogy hány párhuzamos tevékenység-végrehajtás történhet a különböző szeleteken. Ha például egy tevékenységnek az elérhető adatmennyiség nagy készletén kell haladnia, a nagyobb párhuzamossági érték felgyorsítja az adatfeldolgozást. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Meghatározza a feldolgozás alatt álló adatszeletek sorrendjét.<br/><br/>Ha például 2 szelete van (egy 16:00-kor történik, egy másik pedig 5 órakor), és mindkettő függőben van. Ha úgy állítja be a executionPriorityOrder, hogy a NewestFirst, a szeletet 5 ÓRAKOR dolgozza fel a rendszer. Hasonlóképpen, ha úgy állítja be a executionPriorityORder, hogy a OldestFIrst legyen, akkor a szelet 4 ÓRAKOR lesz feldolgozva. |

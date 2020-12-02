@@ -8,17 +8,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 7afc16beaacee5b75d57c4e4216a105734d20a09
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: bd18a26a1c199e1ecc32cfc371d2931b1dee0c3f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637071"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494970"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory-hibák elhárítása
 > [!NOTE]
@@ -65,7 +65,7 @@ Az adatkezelési átjáró expressz telepítéséhez az Internet Explorer vagy e
 Indítsa el **adatkezelés átjárót Configuration Manager** az átjárót használó számítógépen, és a **Hibaelhárítás** lapon tesztelje a SQL Serverhoz való kapcsolódást az átjáró gépről. A kapcsolat/átjáróval kapcsolatos problémák elhárításához kapcsolódó tippekért lásd: [átjárókkal kapcsolatos problémák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .   
 
 ### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Probléma: a bemeneti szeletek örökre várakozó állapotban vannak
-Különböző okok miatt a szeletek **várakozási** állapotba kerülhetnek. Az egyik gyakori oka, hogy a **külső** tulajdonság értéke nem **true (igaz** ). A Azure Data Factory hatókörén kívül létrehozott adatkészleteket **külső** tulajdonsággal kell megjelölni. Ez a tulajdonság azt jelzi, hogy az adatforrások kívül vannak, és az adatelőállítón belüli folyamatok nem rendelkeznek biztonsági mentéssel. Az adatszeletek **Készként** vannak jelölve, amint elérhetőek az adatok a megfelelő tárban.
+Különböző okok miatt a szeletek **várakozási** állapotba kerülhetnek. Az egyik gyakori oka, hogy a **külső** tulajdonság értéke nem **true (igaz**). A Azure Data Factory hatókörén kívül létrehozott adatkészleteket **külső** tulajdonsággal kell megjelölni. Ez a tulajdonság azt jelzi, hogy az adatforrások kívül vannak, és az adatelőállítón belüli folyamatok nem rendelkeznek biztonsági mentéssel. Az adatszeletek **Készként** vannak jelölve, amint elérhetőek az adatok a megfelelő tárban.
 
 Tekintse meg a következő példát az **external** tulajdonság használatáról. Opcionálisan megadhatja a **externalData** _ értéket, ha a külsőt igaz értékre állítja.
 
@@ -97,7 +97,7 @@ A tulajdonságról az [adatkészleteket](data-factory-create-datasets.md) ismert
 }
 ```
 
-A hiba elhárításához adja hozzá a _ *External* * tulajdonságot és a választható **externalData** SZAKASZT a bemeneti tábla JSON-definíciójában, és hozza létre újból a táblát.
+A hiba elhárításához adja hozzá a _ *External** tulajdonságot és a választható **externalData** SZAKASZT a bemeneti tábla JSON-definíciójában, és hozza létre újból a táblát.
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>Probléma: a hibrid másolási művelet meghiúsul
 Az [átjáróval kapcsolatos hibák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) a helyszíni adattárakból a adatkezelés átjáró használatával történő másolásával kapcsolatos hibák elhárítása című témakörben található.
