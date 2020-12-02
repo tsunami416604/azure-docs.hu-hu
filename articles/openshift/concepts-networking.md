@@ -5,29 +5,25 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 06/22/2020
-ms.openlocfilehash: 3417b59d0be9e285f8793ef598abb7f98bda7549
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 11/23/2020
+ms.openlocfilehash: 2d9169e836b5819756e716c64ed9d41094f08c5e
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95527989"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512365"
 ---
-# <a name="networking-in-azure-red-hat-on-openshift-4"></a>Hálózatkezelés az Azure Red Hat-on a OpenShift 4
+# <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Az Azure Red Hat OpenShift (ARO) hálózati fogalmak
 
-Ez az útmutató áttekintést nyújt a OpenShift 4 fürtökön található Azure Red Hat-beli hálózatkezelésről, valamint egy diagramról és a fontos végpontok listájáról.
-
-Az alapvető OpenShift hálózati fogalmakkal kapcsolatos további részletekért tekintse meg az [Azure Red Hat OpenShift 4 hálózatkezelési dokumentációját](https://docs.openshift.com/aro/4/networking/understanding-networking.html).
-
-## <a name="networking-concepts-in-azure-red-hat-openshift"></a>Hálózati fogalmak az Azure Red Hat OpenShift
+Ez az útmutató áttekintést nyújt a hálózatkezelésről az Azure Red Hat-OpenShift a OpenShift 4 fürtökön, valamint egy diagramot és a fontos végpontok listáját. Az alapvető OpenShift hálózati fogalmakkal kapcsolatos további információkért tekintse meg az [Azure Red Hat OpenShift 4 hálózatkezelési dokumentációját](https://docs.openshift.com/aro/4/networking/understanding-networking.html).
 
 ![Azure Red Hat OpenShift 4 hálózati diagram](./media/concepts-networking/aro4-networking-diagram.png)
 
-Ha a OpenShift 4 rendszeren telepíti az Azure Red Hat-ot, a teljes fürt egy virtuális hálózaton belül található. Ezen a virtuális hálózaton belül a főcsomópontok és a munkavégzők csomópontjai a saját alhálózatában élnek. Mindegyik alhálózat nyilvános és belső terheléselosztó használatával működik.
+Ha a OpenShift 4 rendszeren telepíti az Azure Red Hat-ot, a teljes fürt egy virtuális hálózaton belül található. Ezen a virtuális hálózaton belül a főcsomópontok és a munkavégzők csomópontjai a saját alhálózatában élnek. Mindegyik alhálózat egy belső terheléselosztó és egy nyilvános terheléselosztó használatával működik.
 
-## <a name="explanation-of-endpoints"></a>A végpontok magyarázata
+## <a name="networking-components"></a>Hálózati összetevők
 
-Az alábbi lista az Azure Red Hat OpenShift-fürtök fontos végpontait ismerteti.
+Az alábbi lista az Azure Red Hat OpenShift-fürt fontos hálózati összetevőit ismerteti.
 
 * **ARO-pls**
     * Ez egy Azure Private link-végpont, amelyet a Microsoft és a Red Hat site megbízhatósági mérnökök használnak a fürt kezeléséhez.
@@ -38,50 +34,42 @@ Az alábbi lista az Azure Red Hat OpenShift-fürtök fontos végpontait ismertet
 * **ARO – belső**
     * Ez a végpont kiegyensúlyozza a belső szolgáltatási forgalmat. A terheléselosztó esetében a feldolgozó csomópontok a háttér-készletben találhatók.
     * A terheléselosztó alapértelmezés szerint nem jön létre. Ez a terheléselosztó akkor jön létre, ha a terheléselosztó típusú szolgáltatást a megfelelő megjegyzésekkel hozza létre. Például: service.beta.kubernetes.io/azure-load-balancer-internal: "true".
-* **Hálózati házirendek (bejövő forgalom)**
-    * A OpenShift SDN részeként támogatott
-    * Alapértelmezés szerint engedélyezve van, az ügyfelek által végzett kényszerítés
-    * A v1 NetworkPolicy megfelelő, azonban a "kimenő és IPBlock" típusok még nem támogatottak
-    * **ARO**
-    * Ez a végpont kiegyensúlyozza az API-kiszolgáló felé irányuló forgalmat. A terheléselosztó esetében a fő csomópontok a háttér-készletben találhatók.
-  * **ARO – belső-LB**
+* **ARO – belső-LB**
     * Ez a végpont bármilyen nyilvános forgalomhoz használatos. A létrehozás és az alkalmazás és az útvonal esetében ez a bejövő forgalom elérési útja.
     * Ez a terheléselosztó a kifelé irányuló internetkapcsolatot is magában foglalja a munkavégző csomópontokon futó összes Pod Azure Load Balancer kimenő szabályokon keresztül.
-        * Jelenleg a kimenő szabályok nem konfigurálhatók. 1 024 TCP-portot foglalnak le az egyes csomópontokhoz.
+        * A kimenő szabályok jelenleg nem konfigurálhatók. 1 024 TCP-portot foglalnak le az egyes csomópontokhoz.
         * A új választható disableoutboundsnat nincs beállítva az LB-szabályokban, így a hüvelyek az ebben az ALB-ben konfigurált nyilvános IP-címekként is beszerezhetők.
         * A két előző pont következményeként az ideiglenes SNAT-portok hozzáadásának egyetlen módja, ha nyilvános terheléselosztó-szolgáltatásokat ad hozzá az ARO-hoz.
-* **Hálózati házirendek (kimenő forgalom)**
-    * A kimenő forgalomra vonatkozó szabályzatokat a OpenShift-ben elérhető kimenő tűzfal funkció segítségével lehet támogatni.
-    * Csak egy névtér/projekt esetében.
-    * A kimenő forgalomra vonatkozó szabályzatok nem támogatottak az "alapértelmezett" névtérben.
-    * A kimenő forgalomra vonatkozó szabályok kiértékelése sorrendben történik (a legelsőtől az utolsóig).
-    * **ARO-kimenő – pip**
-        * Ez a végpont a munkavégző csomópontok nyilvános IP-címeként (PIP) szolgál.
-        * Ez a végpont lehetővé teszi, hogy a szolgáltatások hozzáadhatnak egy Azure Red Hat OpenShift-fürtből származó adott IP-címet egy engedélyezési listához.
-* **ARO-Node-NSG**
-    * Ha egy szolgáltatást tesz elérhetővé, az API létrehoz egy szabályt ebben a hálózati biztonsági csoportban, így a forgalom átáramlik és eléri a csomópontokat.
+* **ARO-kimenő – pip**
+    * Ez a végpont a munkavégző csomópontok nyilvános IP-címeként (PIP) szolgál.
+    * Ez a végpont lehetővé teszi, hogy a szolgáltatások hozzáadhatnak egy Azure Red Hat OpenShift-fürtből származó adott IP-címet egy engedélyezési listához.
+* **ARO – NSG**
+    * Ha egy szolgáltatást tesz elérhetővé, az API létrehoz egy szabályt ebben a hálózati biztonsági csoportban, így a forgalom áthalad a vezérlési síkon és a csomópontokon.
     * Alapértelmezés szerint ez a hálózati biztonsági csoport engedélyezi az összes kimenő forgalmat. A kimenő forgalom jelenleg csak az Azure Red Hat OpenShift-vezérlési síkra korlátozódik.
 * **ARO-controlplane-NSG**
-    * Ez a végpont csak a főcsomópontok 6443-as portján keresztül engedélyezi a forgalmat.
+  * Ez a végpont csak a főcsomópontok 6443-as portján keresztül engedélyezi a forgalmat.
 * **Azure Container Registry**
-    * Ez egy tároló-beállításjegyzék, amelyet a Microsoft belsőleg biztosít és használ.
+    * Ez egy tároló-beállításjegyzék, amelyet a Microsoft belsőleg biztosít és használ. Ez a beállításjegyzék írásvédett, és nem az Azure Red Hat OpenShift-felhasználók általi használatra készült.
         * Ez a beállításjegyzék a gazdagép-platform lemezképeit és a fürt összetevőit tartalmazza. Például a tárolók figyelése vagy naplózása.
-        * Nem az Azure Red Hat OpenShift ügyfelei számára készült.  
-        * Csak olvasható.
         * A beállításjegyzék kapcsolatai a szolgáltatási végponton keresztül történnek (az Azure-szolgáltatások közötti belső kapcsolat).
         * Ez a belső beállításjegyzék alapértelmezés szerint nem érhető el a fürtön kívül.
 * **Privát kapcsolat**
-    * Engedélyezi a hálózati kapcsolatot a felügyeleti síkon a fürtszolgáltatás fürtbe.
-    * A Microsoft és a Red Hat site megbízhatósági mérnökök segítenek a fürt felügyeletében.
+    * Engedélyezi a hálózati kapcsolatot a felügyeleti síkon a Microsoft és a Red Hat hely megbízhatósági szakemberei számára a fürt kezeléséhez.
+
+## <a name="networking-policies"></a>Hálózati házirendek
+
+* **Bejövő** forgalom: a bejövő hálózati házirend a [OpenShift Sdn](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html)részeként támogatott. Ez a hálózati házirend alapértelmezés szerint engedélyezve van, és a kényszerítést a felhasználók hajtják végre. Míg a bejövő hálózati házirend a v1 NetworkPolicy-kompatibilis, a kimenő és a IPBlock típusok nem támogatottak.
+
+* **Kimenő** forgalom: a kimenő hálózati házirendeket a OpenShift-ben elérhető [kimenő tűzfal](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/configuring-egress-firewall.html) szolgáltatással lehet támogatni. Egy névtér/projekt esetében csak egy kimenő forgalomra vonatkozó szabályzat érhető el. A kimenő forgalomra vonatkozó szabályzatok nem támogatottak az "alapértelmezett" névtérben, és a kiértékelésük sorrendben történik (az elsőtől az utolsóig).
 
 ## <a name="networking-basics-in-openshift"></a>Hálózatkezelés alapjai a OpenShift-ben
 
-A OpenShift szoftver által definiált hálózatkezelés (SDN) az vSwitch (OVS), a Container Network Interface (CNI) specifikáción alapuló OpenFlow implementáció használatával konfigurálja az átfedési hálózatot. Az SDN különböző beépülő modulokat támogat, a hálózati házirend pedig az Azure Red Hat-on a OpenShift 4 platformon használt beépülő modul. Az SDN felügyeli az összes hálózati kommunikációt, így a virtuális hálózatokon nincs szükség további útvonalakra a pod-alapú kommunikáció eléréséhez.
+A OpenShift szoftver által definiált hálózatkezelés [(Sdn)](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) az VSwitch [(OVS)](https://www.openvswitch.org/), a Container Network Interface (CNI) specifikáción alapuló OpenFlow implementáció használatával konfigurálja az átfedési hálózatot. Az SDN különböző beépülő modulok használatát támogatja – a hálózati házirend az Azure Red Hat-on az OpenShift 4-ben használt beépülő modul. Az SDN felügyeli az összes hálózati kommunikációt, így a virtuális hálózatokon nincs szükség további útvonalakra a pod-alapú kommunikáció eléréséhez.
 
-## <a name="azure-red-hat-openshift-networking-specifics"></a>Azure Red Hat OpenShift hálózatkezelési sajátosságai
+## <a name="networking--for-azure-red-hat-openshift"></a>Hálózatkezelés az Azure Red Hat OpenShift
 
-Az alábbi szolgáltatások az Azure Red Hat OpenShift vonatkoznak:
-* A saját virtuális hálózat használata támogatott.
+A következő hálózatkezelési funkciók az Azure Red Hat OpenShift vonatkoznak:
+* A felhasználók létrehozhatják az ARO-fürtöt egy meglévő virtuális hálózaton, vagy létrehozhatnak egy virtuális hálózatot az ARO-fürt létrehozásakor.
 * A pod és a Service Network CIDRs konfigurálható.
 * A csomópontok és a főkiszolgálók eltérő alhálózatokban találhatók.
 * A csomópontoknak és a főkiszolgálók virtuális hálózati alhálózatának minimális/27-nek kell lennie.
@@ -92,7 +80,7 @@ Az alábbi szolgáltatások az Azure Red Hat OpenShift vonatkoznak:
 
 ## <a name="network-settings"></a>Hálózati beállítások
 
-A következő hálózati beállítások érhetők el az Azure Red Hat OpenShift 4-ben:
+Az Azure Red Hat OpenShift 4 fürtökhöz a következő hálózati beállítások érhetők el:
 
 * **API láthatósága** – az az [ARO Create parancs](tutorial-create-cluster.md#create-the-cluster)futtatásakor az API láthatóságát állíthatja be.
     * "Nyilvános" – az API-kiszolgáló külső hálózatok számára érhető el.
@@ -102,14 +90,25 @@ A következő hálózati beállítások érhetők el az Azure Red Hat OpenShift 
     * A "privát" útvonalak alapértelmezett értéke a belső terheléselosztó (ez módosítható).
 
 ## <a name="network-security-groups"></a>Hálózati biztonsági csoportok
-A hálózati biztonsági csoportok a csomópont erőforráscsoport-csoportjában lesznek létrehozva, amely zárolva van. A hálózati biztonsági csoportok közvetlenül az alhálózatokhoz vannak rendelve, nem a csomópont hálózati adapterén. A hálózati biztonsági csoportok nem változtathatók meg, ami azt jelenti, hogy nincs engedélye a módosítására. 
+A hálózati biztonsági csoportok a csomópont erőforráscsoport-csoportjában jönnek létre, amely a felhasználók számára van zárolva. A hálózati biztonsági csoportok közvetlenül az alhálózatokhoz vannak rendelve, nem a csomópont hálózati adapterén. A hálózati biztonsági csoportok nem változtathatók meg, és a felhasználók nem rendelkeznek a rájuk vonatkozó engedélyekkel.
 
-Nyilvánosan látható API-kiszolgálóval azonban nem hozhat létre hálózati biztonsági csoportokat, és hozzárendelheti azokat a hálózati adapterekhez.
+Nyilvánosan látható API-kiszolgáló esetén nem hozhat létre hálózati biztonsági csoportokat, és hozzárendelheti azokat a hálózati adapterekhez.
 
 ## <a name="domain-forwarding"></a>Tartomány továbbítása
-Az Azure Red Hat OpenShift az CoreDNS-t használja. A tartomány továbbítása konfigurálható (további részletekért tekintse meg a [DNS-továbbítás használatával](https://docs.openshift.com/aro/4/networking/dns-operator.html#nw-dns-forward_dns-operator) kapcsolatos dokumentációt).
+Az Azure Red Hat OpenShift az CoreDNS-t használja. A tartomány továbbítása konfigurálható. Saját DNS-t nem lehet a virtuális hálózatokhoz. További információ: a [DNS-továbbítás használatának](https://docs.openshift.com/aro/4/networking/dns-operator.html#nw-dns-forward_dns-operator)dokumentációja.
 
-Jelenleg nem hozhatja a saját DNS-t a virtuális hálózatokra.
+## <a name="whats-new-in-openshift-45"></a>Az OpenShift 4,5 újdonságai
 
+Az OpenShift 4,5 támogatásával az Azure Red Hat OpenShift néhány jelentős építészeti változást vezetett be. Ezek a módosítások csak az OpenShift 4,5-ot futtató újonnan létrehozott fürtökre érvényesek. A OpenShift 4,5-re frissített meglévő fürtök esetén a frissítési folyamat nem módosítja a hálózati architektúrát. A felhasználóknak újra létre kell hozniuk a fürtöket az új architektúra használatához.
 
+![Azure Red Hat OpenShift 4,5 hálózatkezelési diagram](./media/concepts-networking/aro-4-5-networking-diagram.png)
+
+A fenti ábrán látható módon néhány módosítást láthat:
+* Korábban az ARO két nyilvános LoadBalancers használt: egyet az API-kiszolgálóhoz, egyet pedig a Worker Node-készlethez. Ennek az architektúrának a frissítésével ezt egyetlen terheléselosztó keretében konszolidálták. 
+* A bonyolultság csökkentése érdekében a dedikált külső IP-címek erőforrásai el lettek távolítva.
+* Az ARO-vezérlő síkja mostantól ugyanazzal a hálózati biztonsági csoporttal rendelkezik, mint az ARO Worker csomópontjai.
+
+A OpenShift 4,5-es verziójával kapcsolatos további információkért tekintse meg a [OpenShift 4,5 kibocsátási megjegyzéseit](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html).
+
+## <a name="next-steps"></a>Következő lépések
 A kimenő forgalomról és arról, hogy az Azure Red Hat OpenShift milyen támogatást nyújt a kilépéshez, tekintse meg a [támogatási szabályzatok](support-policies-v4.md) dokumentációját.

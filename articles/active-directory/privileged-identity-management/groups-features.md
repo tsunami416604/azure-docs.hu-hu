@@ -12,20 +12,23 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 12/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30724edafdee0c04f0c8b004ce335072b4ce0fd4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 759781fd61cd42d05f2823d390e99d128dd2fcac
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367448"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512392"
 ---
 # <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>A Privileged Access Azure AD-csoportok felügyeleti képességei (előzetes verzió)
 
 Privileged Identity Management (PIM) mostantól jogosultságot rendelhet az emelt szintű hozzáférési csoportok tagságához vagy tulajdonosához. Ettől az előzetes verziótól kezdődően Azure Active Directory (Azure AD) beépített szerepköröket rendelhet a felhőalapú csoportokhoz, és a PIM használatával kezelheti a csoporttagokat és a tulajdonosi jogosultságokat és az aktiválást. További információ a szerepkör-hozzárendelésre használható csoportokról Az Azure AD-ben: [felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)](../roles/groups-concept.md).
+
+>[!Important]
+> Ha emelt szintű hozzáférési csoportot szeretne hozzárendelni egy szerepkörhöz az Exchange-hez, a biztonsági és a megfelelőségi központhoz vagy a SharePointhoz való rendszergazdai hozzáféréshez, használja az Azure AD-portál **szerepköreit és a rendszergazdák** felületét, nem pedig a privilegizált hozzáférési csoportok felhasználói felületén, hogy a felhasználó vagy csoport jogosult legyen az aktiválásra a csoportba.
 
 ## <a name="require-different-policies-for-each-role-assignable-group"></a>Különböző szabályzatok megkövetelése az egyes szerepkörökhöz hozzárendelhető csoportok számára
 

@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: a68501bd1189993b4dd0c2acdecaa7434fa51dcc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d2446e866c0e12d50a0759373682f4f62bc4bba0
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488034"
+ms.locfileid: "96512222"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor a dedikált fürtöket naplózza
 
-Azure Monitor a dedikált fürtök naplózása olyan központi telepítési lehetőség, amely lehetővé teszi a speciális képességet a Azure Monitor naplók ügyfelei számára. A dedikált fürtökkel rendelkező ügyfelek kiválaszthatják a fürtökön üzemeltetett munkaterületeket.
+Azure Monitor a dedikált fürtök naplózása olyan központi telepítési lehetőség, amely fejlett képességeket biztosít a Azure Monitor naplók ügyfelei számára. A dedikált fürtökkel rendelkező ügyfelek kiválaszthatják a fürtökön üzemeltetett munkaterületeket.
 
 A dedikált fürtöket igénylő képességek a következők:
 
@@ -52,7 +52,7 @@ A fürtön két számlázási mód van használatban. Ezeket a paraméter megadh
 
 2. **Munkaterületek**: a fürt kapacitás-foglalási költségei arányosak a fürtben lévő munkaterületekhez (az egyes munkaterületek esetében a [Azure Security Center](../../security-center/index.yml) az egyes munkaterületek esetében a csomópontok közötti foglalások elszámolása után).
 
-Vegye figyelembe, hogy ha a munkaterület csomópont-díjszabási szinten használ örökölt, akkor a fürthöz való csatlakozáskor a rendszer a fürt kapacitásának lefoglalása során betöltött adatmennyiség alapján számlázza a díjat, és a csomópontok után már nem. A Azure Security Center-ból származó csomópont-adatfoglalások továbbra is érvényben lesznek.
+Ha a munkaterület örökölt, csomóponton alapuló árképzési szintet használ, akkor a fürthöz kapcsolt, a fürt kapacitásának lefoglalásakor betöltött adat alapján kell fizetnie, és a csomópontok száma már nem lehet. A Azure Security Center-ból származó csomópont-adatfoglalások továbbra is érvényben lesznek.
 
 További részletek: Log Analytics dedikált fürtök számlázása [itt]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)érhető el.
 
@@ -405,7 +405,7 @@ Fürt törléséhez használja a következő REST-hívást:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [log Analytics dedikált fürt számlázásáról](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
 - A [log Analytics-munkaterületek megfelelő kialakításának](../platform/design-logs-deployment.md) megismerése

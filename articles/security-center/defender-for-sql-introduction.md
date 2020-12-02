@@ -3,29 +3,31 @@ title: Azure Defender for SQL – az előnyök és funkciók
 description: Ismerje meg az Azure Defender for SQL előnyeit és funkcióit.
 author: memildin
 ms.author: memildin
-ms.date: 11/22/2020
+ms.date: 11/30/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 102d4916caf9dcae577006b6b847979f98ab3673
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c2fc1bf065bce3ca844c5284168d8ff96fa065bf
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499900"
+ms.locfileid: "96512239"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Az SQL-hez készült Azure Defender bemutatása
 
 Az SQL-hez készült Azure Defender két Azure Defender-csomagot tartalmaz, amelyek kiterjesztik Azure Security Center [adatbiztonsági csomagját](../azure-sql/database/azure-defender-for-sql.md) , hogy az adatbázisok és az adataik bárhonnan biztonságosak legyenek. 
 
+> [!VIDEO https://www.youtube.com/embed/V7RdB6RSVpc]
+
 ## <a name="availability"></a>Rendelkezésre állás
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|**Azure Defender az Azure SQL Database-kiszolgálókhoz** – általánosan elérhető (GA)<br>**Azure Defender a gépeken futó SQL-kiszolgálókon** – előzetes verzió<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Kiadás állapota:|**Azure Defender az Azure SQL Database-kiszolgálókhoz** – általánosan elérhető (GA)<br>**Azure Defender a gépeken futó SQL-kiszolgálókhoz** – általánosan elérhető (GA) |
 |Árképzési|Az **Azure Defender for SQL** -t alkotó két csomag számlázása [a díjszabási oldalon](security-center-pricing.md) látható módon történik|
-|Védett SQL-verziók:|SQL Azure-beli virtuális gépeken – [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) és [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md)<br>[Arc-kompatibilis SQL-kiszolgálók](/sql/sql-server/azure-arc/overview) (beleértve a helyszíni SQL-kiszolgálókat is)<br>Önálló Azure SQL- [adatbázisok](../azure-sql/database/single-database-overview.md) és [rugalmas készletek](../azure-sql/database/elastic-pool-overview.md)<br>[Felügyelt Azure SQL-példány](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure szinapszis Analytics dedikált SQL-készlet](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
+|Védett SQL-verziók:|[SQL Azure-beli virtuális gépeken](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure arc-kompatibilis SQL-kiszolgálók](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)<br>Helyszíni SQL-kiszolgálók a Windows rendszerű gépeken az Azure arc nélkül<br>Önálló Azure SQL- [adatbázisok](../azure-sql/database/single-database-overview.md) és [rugalmas készletek](../azure-sql/database/elastic-pool-overview.md)<br>[Felügyelt Azure SQL-példány](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure szinapszis Analytics (korábban SQL DW) dedikált SQL-készlet](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
@@ -34,11 +36,15 @@ Az SQL-hez készült Azure Defender két Azure Defender-csomagot tartalmaz, amel
 **Az Azure Defender for SQL** két különálló Azure Defender-csomagból áll:
 
 - **Az Azure Defender for Azure SQL Database-kiszolgálók a** következőket védik:
-  - [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)
-  - [Felügyelt Azure SQL-példány](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
-  - [Dedikált SQL-készlet az Azure Szinapszisban](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+    - [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)
+    - [Felügyelt Azure SQL-példány](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
+    - [Dedikált SQL-készlet az Azure Szinapszisban](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-- A **gépeken futó Azure Defender (előzetes verzió)** kiterjeszti az Azure-natív SQL-kiszolgálók védelmét, így teljes mértékben támogatja a hibrid környezeteket, és védelmet biztosít az Azure-ban, más felhőalapú környezetekben és akár helyszíni gépeken üzemeltetett SQL-kiszolgálóknak (az összes támogatott verziónak).
+- Az **Azure Defender az SQL-kiszolgálókon a gépeken** kiterjeszti az Azure-natív SQL-kiszolgálók védelmét, így teljes mértékben támogatja a hibrid környezeteket, és védelmet biztosít az Azure-ban, más felhőalapú környezetekben és akár helyszíni gépeken üzemeltetett SQL-kiszolgálóknak (az összes támogatott verziónak).
+    - [SQL Server on Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/)
+    - Helyszíni SQL Server-kiszolgálók:
+        - [Azure Arc-kompatibilis SQL Server (előzetes verzió)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [Windows rendszerű gépeken futó SQL Server Azure arc nélkül](../azure-monitor/platform/agent-windows.md)
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>Milyen előnyökkel jár az Azure Defender for SQL?
@@ -52,11 +58,11 @@ Ez a két csomag a lehetséges adatbázis-sebezhetőségek azonosítására és 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>Milyen típusú riasztások biztosítják az Azure Defender for SQL szolgáltatást?
 
-A biztonsági riasztások akkor aktiválódnak, ha:
+A fenyegetésekkel kapcsolatos bővített biztonsági riasztások akkor aktiválódnak, ha:
 
 - **Lehetséges SQL-injektálási támadások** – az észlelt biztonsági réseket is beleértve, ha az alkalmazások hibás SQL-utasítást hoznak elő az adatbázisban
 - **Rendellenes adatbázis-hozzáférés és lekérdezési minták** – például rendellenesen nagy számú sikertelen bejelentkezési kísérlet különböző hitelesítő adatokkal (találgatásos kísérlet)
-- **Gyanús adatbázis-tevékenység** – például egy SQL-importálási és exportálási művelet exportálási célhelyének változása
+- **Gyanús adatbázis-tevékenység** – például egy legitim felhasználó, aki egy olyan megsértett számítógépről fér hozzá a SQL Serverhoz, amely kriptográfiai C&c kiszolgálóval kommunikált
 
 A riasztások tartalmazzák az azokat kiváltó incidens részleteit, valamint a fenyegetések kivizsgálásával és szervizelésével kapcsolatos javaslatokat.
 
@@ -66,8 +72,10 @@ A riasztások tartalmazzák az azokat kiváltó incidens részleteit, valamint a
 
 Ebben a cikkben megtanulta az SQL-hez készült Azure Defendert.
 
+> [!div class="nextstepaction"]
+> [Az Azure Defender szolgáltatással kapcsolatos biztonsági rések ellenőrzése az SQL-kiszolgálókon](defender-for-sql-usage.md)
+
 A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket: 
 
-- [Az Azure Defender engedélyezése a gépeken futó SQL-kiszolgálókon](defender-for-sql-usage.md)
 - [Az Azure Defender engedélyezése az SQL Database-kiszolgálókhoz](../azure-sql/database/azure-defender-for-sql.md)
-- [Az SQL-hez készült Azure Defender-riasztások listája](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [Az SQL Server-alapú biztonsági riasztások listája](alerts-reference.md#alerts-sql-db-and-warehouse)

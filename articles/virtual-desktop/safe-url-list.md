@@ -1,21 +1,21 @@
 ---
-title: Windows rendszerű virtuális asztali biztonságos URL-címek listája – Azure
-description: A feloldani kívánt URL-címek listája, hogy a Windows rendszerű virtuális asztali környezet a kívánt módon működjön.
+title: Windows rendszerű virtuális asztali kötelező URL-címek listája – Azure
+description: A feloldani kívánt URL-címek listája, amely biztosítja, hogy a Windows rendszerű virtuális asztali környezet a kívánt módon működjön.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 12/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6b3fdc18a04dadf4bf1cf380c7bb51d21f826633
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023173"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512341"
 ---
-# <a name="safe-url-list"></a>Biztonságos URL-címek listája
+# <a name="required-url-list"></a>Szükséges URL-címek listája
 
-Fel kell oldania bizonyos URL-címek blokkolását, hogy a Windows rendszerű virtuális asztal üzembe helyezése megfelelően működjön. Ez a cikk felsorolja ezeket az URL-címeket, hogy tudja, melyek biztonságosak.
+A Windows rendszerű virtuális asztalok üzembe helyezéséhez és használatához fel kell oldania bizonyos URL-címek blokkolását, hogy a virtuális gépek (VM-EK) bármikor hozzáférhessenek hozzájuk. Ez a cikk felsorolja a tiltás feloldásához szükséges URL-címeket.
 
 ## <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
@@ -53,7 +53,7 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 |*. servicebus.usgovcloudapi.net|443|Ügynök forgalma|AzureCloud|
 |* xt.table.core.usgovcloudapi.net|443|Ügynök forgalma|AzureCloud|
 |Kms.core.usgovcloudapi.net|1688|A Windows aktiválása|Internet|
-|mrsglobalstugviffx.core.usgovcloudapi.net|443|Ügynök-és SXS-verem frissítései|AzureCloud|
+|mrsglobalstugviffx.blob.core.usgovcloudapi.net|443|Ügynök-és SXS-verem frissítései|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure Portal támogatás|AzureCloud|
 | 169.254.169.254 | 80 | [Azure-példány metaadatainak szolgáltatási végpontja](../virtual-machines/windows/instance-metadata-service.md) | N.A. |
 | 168.63.129.16 | 80 | [Munkamenet-gazdagép állapotának figyelése](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | N.A. |
@@ -63,15 +63,19 @@ A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekh
 |Cím|Kimenő TCP-port|Cél|Azure gov|
 |---|---|---|---|
 |*.microsoftonline.com|443|Hitelesítés a Microsoft Online Services szolgáltatásban|login.microsoftonline.us|
-|*. events.data.microsoft.com|443|Telemetriai szolgáltatás|Nincs|
-|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincs|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincs|
+|*. events.data.microsoft.com|443|Telemetriai szolgáltatás|Nincsenek|
+|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincsenek|
+|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincsenek|
 |login.windows.net|443|Bejelentkezés a Microsoft Online Servicesbe, Microsoft 365|login.microsoftonline.us|
 |*. sfx.ms|443|OneDrive-ügyfélszoftver frissítései|oneclient.sfx.ms|
-|*. digicert.com|443|Tanúsítvány visszavonási állapotának ellenőrzése|Nincs|
+|*. digicert.com|443|Tanúsítvány visszavonási állapotának ellenőrzése|Nincsenek|
+|*. azure-dns.com|443|Azure DNS felbontás|Nincsenek|
+|*. azure-dns.net|443|Azure DNS felbontás|Nincsenek|
 
 >[!NOTE]
 >A Windows virtuális asztal jelenleg nem tartalmaz olyan IP-címtartományok listáját, amelyekkel engedélyezhető a hálózati forgalom. Jelenleg csak bizonyos URL-címek blokkolását támogatjuk.
+>
+>Ha a következő generációs tűzfalat (NGFW) használja, az Azure-beli IP-címekre vonatkozó dinamikus listát kell használnia, hogy biztosan csatlakozhasson.
 >
 >A biztonságos Office-hoz kapcsolódó URL-címek listáját, beleértve a szükséges Azure Active Directory kapcsolódó URL-címeket, lásd: [Office 365 URL-címek és IP-címtartományok](/office365/enterprise/urls-and-ip-address-ranges).
 >
@@ -89,11 +93,11 @@ A használt Távoli asztal ügyfeleknek hozzáféréssel kell rendelkezniük a k
 |---|---|---|---|---|
 |*. wvd.microsoft.com|443|Szolgáltatás forgalma|Mind|*. wvd.microsoft.us|
 |*.servicebus.windows.net|443|Hibaelhárítási hibák|Mind|*. servicebus.usgovcloudapi.net|
-|go.microsoft.com|443|Microsoft-Fwlinkek|Mind|Nincs|
-|aka.ms|443|Microsoft URL-rövidített|Mind|Nincs|
-|docs.microsoft.com|443|Dokumentáció|Mind|Nincs|
-|privacy.microsoft.com|443|Adatvédelmi nyilatkozat|Mind|Nincs|
-|query.prod.cms.rt.microsoft.com|443|Ügyfelek frissítései|Windows asztali rendszer|Nincs|
+|go.microsoft.com|443|Microsoft-Fwlinkek|Mind|Nincsenek|
+|aka.ms|443|Microsoft URL-rövidített|Mind|Nincsenek|
+|docs.microsoft.com|443|Dokumentáció|Mind|Nincsenek|
+|privacy.microsoft.com|443|Adatvédelem|Mind|Nincsenek|
+|query.prod.cms.rt.microsoft.com|443|Ügyfelek frissítései|Windows asztali rendszer|Nincsenek|
 
 >[!IMPORTANT]
 >Az URL-címek megnyitása elengedhetetlen a megbízható ügyfél-élményhez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja.

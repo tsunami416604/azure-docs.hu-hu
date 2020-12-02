@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 278c842d6e6f73bff5468f601eea77f8b140a07c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 473ed1f14d77470e31c2f14665a12542a70a2a98
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444429"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512298"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Oktatóanyag: felügyelt identitás használata a Key Vault Azure-webalkalmazáshoz való összekapcsolásához a .NET-ben
 
 A [Azure Key Vault](./overview.md) lehetővé teszi a hitelesítő adatok és más titkos kulcsok tárolását a fokozott biztonság érdekében. A kódnak azonban hitelesítenie kell Key Vault a lekéréséhez. [Az Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md) segítenek megoldani ezt a problémát azáltal, hogy az Azure-szolgáltatások számára automatikusan felügyelt identitást biztosítanak Azure Active Directoryban (Azure ad). Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vaultt, anélkül, hogy meg kellene adni a hitelesítő adatokat a kódban.
 
-Ebben az oktatóanyagban egy felügyelt identitás használatával hitelesít egy Azure-webalkalmazást egy Azure Key vaulttal. A [.net-hez készült Azure Key Vault 4-es verziójú ügyféloldali kódtárat](/dotnet/api/overview/azure/key-vault) és az [Azure CLI](/cli/azure/get-started-with-azure-cli)-t fogja használni. Ugyanezek az alapelveket akkor kell alkalmazni, ha az Ön által választott fejlesztési nyelvet használja, Azure PowerShell és/vagy a Azure Portal.
+Ebben az oktatóanyagban egy felügyelt identitás használatával hitelesít egy Azure-webalkalmazást egy Azure Key vaulttal. A [.net-hez készült Azure Key Vault Secret ügyféloldali kódtárat](/dotnet/api/overview/azure/key-vault) és az [Azure CLI](/cli/azure/get-started-with-azure-cli)-t fogja használni. Ugyanezek az alapelveket akkor kell alkalmazni, ha az Ön által választott fejlesztési nyelvet használja, Azure PowerShell és/vagy a Azure Portal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -253,9 +253,11 @@ Hozzáférési szabályzatokat a [Azure Portal](./assign-access-policy-portal.md
 
 ### <a name="modify-the-app-to-access-your-key-vault"></a>Az alkalmazás módosítása a Key Vault eléréséhez
 
+Ebben az oktatóanyagban a [Azure Key Vault Secret ügyféloldali függvénytárat](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.secrets-readme) fogja bemutató célokra használni. [Azure Key Vault tanúsítvány ügyféloldali függvénytárát](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.certificates-readme)vagy [Azure Key Vault kulcs ügyféloldali függvénytárát](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.keys-readme)is használhatja.
+
 #### <a name="install-the-packages"></a>A csomagok telepítése
 
-A terminál ablakban telepítse a .NET-csomagok Azure Key Vault ügyféloldali kódtárat:
+A terminál ablakban telepítse a .NET-hez készült Azure Key Vault titkos ügyféloldali kódtárat és az Azure Identity ügyféloldali függvénytár-csomagokat:
 
 ```console
 dotnet add package Azure.Identity
@@ -318,12 +320,11 @@ git push azure master
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-A "„Helló világ!” alkalmazás!" előtt ekkor megjelenik a titkos kulcs értéke: "sikeres".
+A "„Helló világ!” alkalmazás!" előtt ekkor megjelenik a titkos kulcs értéke.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Azure Key Vault használata a .NET-alapú virtuális gépekre telepített alkalmazásokkal](./tutorial-net-virtual-machine.md)
 - További információ az [Azure-erőforrások felügyelt identitásáról](../../active-directory/managed-identities-azure-resources/overview.md)
-- További információ a [app Service felügyelt identitásáról](../../app-service/overview-managed-identity.md?tabs=dotnet)
 - A [fejlesztői útmutató](./developers-guide.md) megtekintése
 - [Biztonságos hozzáférés a kulcstartóhoz](./secure-your-key-vault.md)

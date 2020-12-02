@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: 2977946b2e1f37aa356ee075d2caac237170df0f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 90a4da2aadbbdf07d851e4407d2d417fc76d32af
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95993330"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512324"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
@@ -54,9 +54,9 @@ Az alábbi táblázatból megtudhatja, hogy mely szolgáltatásokat lehet aszink
 > [!NOTE]
 > Ha a (z) vagy a végpontot szeretné használni, szüksége lesz egy Text Analytics-erőforrásra a standard (k) [árképzési szint](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) használatával `/analyze` `/health` .
 
-1.  Először nyissa meg a [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) , és hozzon létre egy új Text Analytics-erőforrást, ha még nem rendelkezik ilyennel. Ha a vagy a végpontot szeretné használni, válassza a standard (S) árképzési szintet `/analyze` `/health` .
+1.  Először nyissa meg a [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) , és hozzon létre egy új Text Analytics-erőforrást, ha még nem rendelkezik ilyennel. Ha a vagy a végpontot szeretné használni, válassza a **Standard (S) árképzési szintet** `/analyze` `/health` .
 
-2.  Válassza ki azt a régiót, amelynek használni szeretné a végpontját.
+2.  Válassza ki a végponthoz használni kívánt régiót.  Vegye figyelembe, hogy a `/analyze` és a `/health` végpontok csak a következő régiókban érhetők el: USA 2. nyugati régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa és Nyugat-Európa.
 
 3.  Hozza létre a Text Analytics-erőforrást, és lépjen a lap bal oldalán található kulcsok és végpont panelre. Másolja az API-k meghívásakor később használni kívánt kulcsot. Ezt később adja hozzá a fejléc értékeként `Ocp-Apim-Subscription-Key` .
 
