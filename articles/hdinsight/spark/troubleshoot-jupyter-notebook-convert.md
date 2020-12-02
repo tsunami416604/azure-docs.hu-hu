@@ -1,5 +1,5 @@
 ---
-title: Nem sikerült létrehozni a Jupyter-jegyzetfüzetet az Azure HDInsight
+title: Nem lehet létrehozni Jupyter Notebook az Azure HDInsight
 description: Ismerje meg az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,20 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/11/2020
-ms.openlocfilehash: 50a77e240315796d0d4c98fc8fba8edfc9cd2b7d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 41eefd18419969c6e8c54ba68ce6c0d1eeb7832b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545531"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519195"
 ---
-# <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Nem sikerült létrehozni a Jupyter-jegyzetfüzetet az Azure HDInsight
+# <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Nem lehet létrehozni Jupyter Notebook az Azure HDInsight
 
 Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
 ## <a name="issue"></a>Probléma
 
-Jupyter-jegyzetfüzet indításakor a következő hibaüzenet jelenik meg:
+Jupyter Notebook indításakor a következőket tartalmazó hibaüzenet jelenik meg:
 
 ```error
 Cannot convert notebook to v5 because that version doesn't exist
@@ -50,13 +50,13 @@ A verziószám nem egyezik.
     version_info = (4, 0, 3)
     ```
 
-    Mentse a módosításokat a **CTRL + X** , **Y** , **ENTER** billentyűkombináció megadásával.
+    Mentse a módosításokat a **CTRL + X**, **Y**, **ENTER** billentyűkombináció megadásával.
 
 1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net/#/main/services/JUPYTER` , ahol a a `CLUSTERNAME` fürt neve.
 
 1. Indítsa újra a Jupyter szolgáltatást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

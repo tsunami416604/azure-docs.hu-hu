@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: c7a2373f0cf7005e465c2d3bd42817b3394a84de
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 27b0485fdd7b3c352a85fe7eb39fba33c53bf727
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510274"
+ms.locfileid: "96519212"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight-beli gyorsított írási műveletek Apache HBase-hez
 
@@ -36,7 +36,7 @@ A gyorsított írási funkció megoldja a Felhőbeli tárolásban lévő írási
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Gyorsított írások engedélyezése a HBase a HDInsight-ben
 
-Ha új HBase-fürtöt szeretne létrehozni a gyorsított írási funkciókkal, kövesse a [fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md) című szakasz lépéseit, amíg el nem éri a **3. lépést, a tárterületet**. A **Metaadattár beállításai** területen jelölje be a **HBase gyorsított írások engedélyezése** jelölőnégyzetet. Ezután folytassa a fürt létrehozásához szükséges további lépéseket.
+A gyorsított írási funkcióval rendelkező új HBase-fürt létrehozásához kövesse a [fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md)című témakör lépéseit. Az **alapvető beállítások** lapon válassza ki a fürt típusát HBaseként, adjon meg egy összetevő-verziót, majd kattintson a melletti jelölőnégyzetre a **HBase gyorsított írások engedélyezése** lehetőség mellett. Ezután folytassa a fürt létrehozásához szükséges további lépéseket.
 
 ![Gyorsított írási lehetőségek engedélyezése a HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/azure-portal-create-hbase-wals.png)
 

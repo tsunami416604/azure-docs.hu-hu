@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: dd1836220b5fd5a0af2d4ece3d9bc3932f1ae554
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f8ec80d178af274c285371b4f53820eb9e41ccf7
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748865"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519161"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes szolgáltatás (ak) üzemidő SLA
 
@@ -27,11 +27,14 @@ Az ügyfelek továbbra is létrehozhatnak korlátlan számú ingyenes fürtöt 9
 
 A rendelkezésre állási SLA nyilvános régiókban és Azure Government-régiókban érhető el, ahol az [AK támogatott](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
 
-* Az Azure China 21Vianet jelenleg nem támogatott.
-
 ## <a name="limitations"></a>Korlátozások
 
-* A privát fürtök jelenleg nem támogatottak.
+A privát fürtök csak a következő régiókban támogatottak:
+ *  USA keleti régiója
+ *  USA nyugati régiója
+ *  USA 2. nyugati régiója
+ *  USA északi középső régiója
+ *  USA nyugati középső régiója
 
 ## <a name="sla-terms-and-conditions"></a>SLA-feltételek és kikötések
 
@@ -112,7 +115,7 @@ A [`az aks update`][az-aks-nodepool-update] parancs használatával frissítse a
   },
   ```
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 A díjak elkerüléséhez távolítsa el a létrehozott erőforrásokat. A fürt törléséhez használja a [`az group delete`][az-group-delete] parancsot az AK-erőforráscsoport törléséhez:
 
@@ -121,7 +124,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [Availability Zones][availability-zones] használatával növelheti a magas rendelkezésre állást az AK-fürt számítási feladataival.
 
