@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 19fe6be0487772524516172bd32e0562512c4e3c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e680ba10c507ef83591b56652ee8e95c4d665dda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630175"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492063"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>A Linux (SMB) Azure Files problémáinak elhárítása
 
@@ -107,7 +107,7 @@ Egy fájlmegosztás, könyvtár vagy fájl megnyitott leíróinak bezárásához
 
 - Ha nem rendelkezik meghatározott minimális I/O-mérettel, javasoljuk, hogy az optimális teljesítmény érdekében az 1 MiB-t használja az I/O-mérethez.
 - Használja a megfelelő másolási módszert:
-    - Használjon [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) a két fájlmegosztás közötti átvitelhez.
+    - Használjon [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a két fájlmegosztás közötti átvitelhez.
     - A CP vagy a dd párhuzamosan történő használata a másolási sebesség növelését eredményezheti, a szálak száma a használati esettől és a számítási feladatoktól függ. A következő példák hat-ot használnak: 
     - CP-példa (a CP a fájlrendszer alapértelmezett méretét fogja használni az adathalmaz méretének megfelelően): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` .
     - dd-példa (ez a parancs explicit módon beállítja az adatrészlet méretét 1 MiB-re): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`

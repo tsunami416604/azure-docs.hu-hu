@@ -8,16 +8,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
-author: juliemsft
-ms.author: jrasnick
+author: WilliamDAssafMSFT
+ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 04/19/2020
-ms.openlocfilehash: b76390efaed94003a792b04836d6850e6b7a7ead
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 480e9f9031481621ac9d568a7bd97b942f47b947
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789556"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493641"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>A Microsoft Azure SQL Database és a felügyelt Azure SQL-példány teljesítményének monitorozása dinamikus felügyeleti nézetekkel
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

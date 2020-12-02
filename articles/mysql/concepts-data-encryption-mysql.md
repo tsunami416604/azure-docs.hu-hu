@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 554b3ad1dbe1e736300387aefde195b9054ab326
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 87dff3bbb4a7ff5e40a06d1b63bdc38987d727fe
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437099"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492692"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
 
@@ -97,8 +97,8 @@ Ha az adattitkosítást Key Vault ügyfél által felügyelt kulccsal konfigurá
 
 * Ha olyan időpontot hozunk létre a Azure Database for MySQL, amelynél engedélyezve van az adattitkosítás, az újonnan létrehozott kiszolgáló *elérhetetlen* állapotban lesz. Ezt [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) vagy [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)-n keresztül javíthatja.
 * Ha olyan olvasási replikát hozunk létre a Azure Database for MySQLhoz, amelynél engedélyezve van az adattitkosítás, a replika kiszolgáló *elérhetetlenné* válik. Ezt [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) vagy [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)-n keresztül javíthatja.
-* Ha törli a kulcstartót, akkor a Azure Database for MySQL nem fér hozzá a kulcshoz, és nem *elérhető* állapotba kerül. Állítsa helyre a [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) , és érvényesítse újra az adattitkosítást, hogy *elérhetővé* tegye a kiszolgálót.
-* Ha töröljük a kulcsot a kulcstartóból, a Azure Database for MySQL nem fogja tudni elérni a kulcsot, és nem *elérhető* állapotba lép. Állítsa helyre a [kulcsot](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) , és érvényesítse újra az adattitkosítást, hogy *elérhetővé* tegye a kiszolgálót.
+* Ha törli a kulcstartót, akkor a Azure Database for MySQL nem fér hozzá a kulcshoz, és nem *elérhető* állapotba kerül. Állítsa helyre a [Key Vault](../key-vault/general/key-vault-recovery.md) , és érvényesítse újra az adattitkosítást, hogy *elérhetővé* tegye a kiszolgálót.
+* Ha töröljük a kulcsot a kulcstartóból, a Azure Database for MySQL nem fogja tudni elérni a kulcsot, és nem *elérhető* állapotba lép. Állítsa helyre a [kulcsot](../key-vault/general/key-vault-recovery.md) , és érvényesítse újra az adattitkosítást, hogy *elérhetővé* tegye a kiszolgálót.
 * Ha az Azure kulcstartóban tárolt kulcs lejár, a kulcs érvénytelenné válik, és a Azure Database for MySQL *elérhetetlen* állapotba kerül. Terjessze ki a kulcs lejárati dátumát a [parancssori](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) felület használatával, majd ellenőrizze újra az adattitkosítást, hogy *elérhetővé* tegye a kiszolgálót.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Véletlen kulcs-hozzáférés visszavonása a Key Vault

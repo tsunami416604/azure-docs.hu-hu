@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: ae73885016a40cd3cf79de968ca7c07c51f1400a
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 3fe63deb8115c0043023301c6d0dc3731e97743f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336063"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492625"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Replikák olvasása Azure Database for MySQL – rugalmas kiszolgáló
 
@@ -55,7 +55,7 @@ Ha a forráskiszolgáló nem rendelkezik meglévő replika-kiszolgálókkal, a f
 A replika létrehozása munkafolyamat indításakor létrejön egy üres Azure Database for MySQL-kiszolgáló. Az új kiszolgáló a forráskiszolgálón lévő adattal van feltöltve. A létrehozási idő a forrásban lévő adatok mennyiségétől és az utolsó heti teljes biztonsági mentés óta eltelt idővel függ. Az idő néhány perctől akár több órára is terjedhet.
 
 > [!NOTE]
-> Az olvasási replikák ugyanazzal a kiszolgáló-konfigurációval jönnek létre, mint a forrás. A replika-kiszolgáló konfigurációja a létrehozása után módosítható. A replika-kiszolgáló mindig ugyanabban az erőforráscsoporthoz, ugyanazon a helyen és előfizetésben jön létre, mint a forráskiszolgálón. Ha egy másik erőforráscsoporthoz vagy egy másik előfizetéshez szeretne replikát létrehozni, akkor [a replika-kiszolgálót a létrehozás után helyezheti át](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) . Azt javasoljuk, hogy a replika-kiszolgáló konfigurációját a forrásnál egyenlő vagy nagyobb értékkel kell megőrizni, hogy a replika képes legyen lépést tartani a forrással.
+> Az olvasási replikák ugyanazzal a kiszolgáló-konfigurációval jönnek létre, mint a forrás. A replika-kiszolgáló konfigurációja a létrehozása után módosítható. A replika-kiszolgáló mindig ugyanabban az erőforráscsoporthoz, ugyanazon a helyen és előfizetésben jön létre, mint a forráskiszolgálón. Ha egy másik erőforráscsoporthoz vagy egy másik előfizetéshez szeretne replikát létrehozni, akkor [a replika-kiszolgálót a létrehozás után helyezheti át](../../azure-resource-manager/management/move-resource-group-and-subscription.md) . Azt javasoljuk, hogy a replika-kiszolgáló konfigurációját a forrásnál egyenlő vagy nagyobb értékkel kell megőrizni, hogy a replika képes legyen lépést tartani a forrással.
 
 Megtudhatja, hogyan [hozhat létre olvasási replikát a Azure Portalban](how-to-read-replicas-portal.md).
 
@@ -65,7 +65,7 @@ A létrehozáskor a replika örökli a forráskiszolgáló csatlakozási módsze
 
 A replika örökli a rendszergazdai fiókot a forráskiszolgálóról. A forráskiszolgáló összes felhasználói fiókja replikálódik az olvasási replikára. Csak olvasási replikához csatlakozhat a forráskiszolgálón elérhető felhasználói fiókok használatával.
 
-A replikához a hostname és egy érvényes felhasználói fiók használatával kapcsolódhat, ahogy azt egy normál Azure Database for MySQL rugalmas kiszolgálón tenné. Ahhoz, hogy egy **myreplica** nevű kiszolgáló rendszergazdai felhasználónevét **myadmin** , a MySQL CLI használatával kapcsolódhat a replikához:
+A replikához a hostname és egy érvényes felhasználói fiók használatával kapcsolódhat, ahogy azt egy normál Azure Database for MySQL rugalmas kiszolgálón tenné. Ahhoz, hogy egy **myreplica** nevű kiszolgáló rendszergazdai felhasználónevét **myadmin**, a MySQL CLI használatával kapcsolódhat a replikához:
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin -p
@@ -114,7 +114,7 @@ Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, 
 
 ## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 
-| Használati eset | Korlátozás/megfontolás |
+| Használati példa | Korlátozás/megfontolás |
 |:-|:-|
 | Replika a kiszolgálón a következő zónával: redundáns HA engedélyezve | Nem támogatott |
 | Régiók közötti olvasási replikáció | Nem támogatott |

@@ -3,12 +3,12 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: dead1d29392f203f5617c9caf430ff952f02f9bc
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 6cc67a6af9e11e5667479eadfe277d400c2d4947
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317503"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492216"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -208,7 +208,7 @@ Forrás IP-címének megőrzése | Igen
 Azure Virtual Network szolgáltatásbeli végpontok<br/> | Igen
 Gyorsított hálózatkezelés | Nem
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 **Összetevő** | **Támogatott**
 --- | ---
 Dinamikus lemez | Az operációsrendszer-lemeznek alaplemeznek kell lennie. <br/><br/>Az adatlemezek lehetnek dinamikus lemezek
@@ -258,7 +258,7 @@ Gyors tárolás| Nem
 Blokkblobok | Nem
 Titkosítás – Rest (SSE)| Igen
 Titkosítás – Rest (CMK)| Igen (a PowerShell az 3.3.0 modultól kezdődően)
-Dupla titkosítás a nyugalmi állapotban | Igen (a PowerShell az 3.3.0 modultól kezdődően). További információ a [Windows](../virtual-machines/windows/disk-encryption.md) és a [Linux](../virtual-machines/linux/disk-encryption.md)támogatott régióiról.
+Dupla titkosítás a nyugalmi állapotban | Igen (a PowerShell az 3.3.0 modultól kezdődően). További információ a [Windows](../virtual-machines/disk-encryption.md) és a [Linux](../virtual-machines/disk-encryption.md)támogatott régióiról.
 Prémium szintű Storage | Igen
 Biztonságos átvitel lehetőség | Igen
 Importálási/exportálási szolgáltatás | Nem

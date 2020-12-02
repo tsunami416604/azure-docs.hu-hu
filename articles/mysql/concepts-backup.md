@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 05cc6579d83fe0cd861f3f91b8d44297963f8101
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a124f576b2540399d27fcd97e0e58476dba4ba4b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433274"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492811"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Biztonsági mentés és visszaállítás Azure Database for MySQL
 
@@ -38,11 +38,11 @@ A tranzakciós naplók biztonsági mentése öt percenként történik.
 Az általános célú tárolás a háttérbeli tároló, amely a [általános célú](concepts-pricing-tiers.md) és a [memóriára optimalizált platform](concepts-pricing-tiers.md) -kiszolgálót támogatja. A 4 TB-os általános célú tárolóval rendelkező kiszolgálók esetében a teljes biztonsági mentés hetente egyszer történik. A különbözeti biztonsági mentések naponta kétszer történnek. A tranzakciós naplók biztonsági mentése öt percenként történik. Az általános célú, 4 TB-os tárterületre vonatkozó biztonsági másolatok nem pillanatkép-alapúak, és az i/o-sávszélességet használják a biztonsági mentés időpontjában. A 4 TB-os tárolón található nagyméretű adatbázisok (> 1 TB) esetében javasoljuk, hogy vegye figyelembe a következőt:
 
 - További IOPs kiépítés a Backup IOs vagy a
-- Azt is megteheti, hogy olyan általános célú tárhelyre telepít át, amely akár 16 TB-nyi tárhelyet is támogat, ha a mögöttes tároló-infrastruktúra elérhető az Ön által preferált [Azure](/azure/mysql/concepts-pricing-tiers#storage)- A legfeljebb 16 TB-nyi tárterületet támogató általános célú tárterületre nem vonatkozik további díj. A 16 TB-os tárhelyre való áttelepítéssel kapcsolatos segítségért nyisson meg egy támogatási jegyet Azure Portalról.
+- Azt is megteheti, hogy olyan általános célú tárhelyre telepít át, amely akár 16 TB-nyi tárhelyet is támogat, ha a mögöttes tároló-infrastruktúra elérhető az Ön által preferált [Azure](./concepts-pricing-tiers.md#storage)- A legfeljebb 16 TB-nyi tárterületet támogató általános célú tárterületre nem vonatkozik további díj. A 16 TB-os tárhelyre való áttelepítéssel kapcsolatos segítségért nyisson meg egy támogatási jegyet Azure Portalról.
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Általános célú Storage-kiszolgálók legfeljebb 16 TB tárhellyel
 
-Az [Azure-régiók](/azure/mysql/concepts-pricing-tiers#storage)egy részhalmazában az újonnan kiosztott kiszolgálók az általános célú tárolást akár 16 TB tárhellyel is támogathatják. Ez azt jelenti, hogy a tárterület akár 16 TB tárhellyel is az alapértelmezett általános célú tárterület az összes olyan [régió](concepts-pricing-tiers.md#storage) esetében, ahol ez támogatott. A 16 TB-os tárolási kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek későbbi biztonsági mentései csak különbségi biztonsági mentések lesznek.
+Az [Azure-régiók](./concepts-pricing-tiers.md#storage)egy részhalmazában az újonnan kiosztott kiszolgálók az általános célú tárolást akár 16 TB tárhellyel is támogathatják. Ez azt jelenti, hogy a tárterület akár 16 TB tárhellyel is az alapértelmezett általános célú tárterület az összes olyan [régió](concepts-pricing-tiers.md#storage) esetében, ahol ez támogatott. A 16 TB-os tárolási kiszolgálókon a biztonsági másolatok pillanatkép-alapúak. Az első teljes pillanatkép biztonsági mentése a kiszolgáló létrehozása után azonnal ütemezve van. Az első teljes pillanatkép biztonsági mentése a kiszolgáló alapbiztonsági mentéseként marad. A pillanatképek későbbi biztonsági mentései csak különbségi biztonsági mentések lesznek.
 
 A különbségi biztonsági mentések legalább naponta egyszer végbemennek. A különbségi biztonsági mentések nem meghatározott ütemezés szerint mennek végbe. A különbözeti Pillanatképek biztonsági mentése 24 óránként történik, kivéve, ha a tranzakciós napló (BinLog a MySQL-ben) meghaladja a 50 GB-ot az utolsó különbözeti biztonsági mentés óta. Egy adott napon legfeljebb hat különbségi pillanatkép készítése engedélyezett.
 

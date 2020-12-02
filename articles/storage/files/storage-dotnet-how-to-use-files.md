@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0196330df01f98e216c39bcc689eac2bde2f4cd9
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e112060db4a44884d3094a939b03ff106ba72e65
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629342"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492199"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel
 
@@ -51,7 +51,7 @@ A Azure Files ügyféloldali kódtárat bármilyen típusú .NET-alkalmazásban 
 Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A következő lépések bemutatják, hogyan hozhat létre egy Console-alkalmazást a Visual Studio 2019-ben. A lépések a Visual Studio más verziói esetén is hasonlók.
 
 1. Indítsa el a Visual studiót, és válassza **az új projekt létrehozása** lehetőséget.
-1. A **create a New Project (új projekt létrehozása** ) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# számára, majd kattintson a **tovább** gombra.
+1. A **create a New Project (új projekt létrehozása**) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# számára, majd kattintson a **tovább** gombra.
 1. Az **új projekt konfigurálása** lapon adja meg az alkalmazás nevét, majd válassza a **Létrehozás** lehetőséget.
 
 Adja hozzá a cikkben szereplő összes példát a Program.cs- `Program` fájl osztályához *Program.cs* .
@@ -316,7 +316,7 @@ A megosztott hozzáférési aláírások létrehozásával és használatával k
 
 Az Azure Files ügyféloldali kódtár 5. x-es verziójától kezdve egy fájlt másolhat egy másik fájlba, egy fájlt egy blobba vagy egy blobot egy fájlba.
 
-A AzCopy használatával az egyik fájlt átmásolhatja egy másikba, vagy átmásolhatja a blobot egy fájlba vagy fordítva. Lásd: Ismerkedés [a AzCopy szolgáltatással](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+A AzCopy használatával az egyik fájlt átmásolhatja egy másikba, vagy átmásolhatja a blobot egy fájlba vagy fordítva. Lásd: Ismerkedés [a AzCopy szolgáltatással](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 > [!NOTE]
 > Ha egy blobot másol egy fájlba vagy egy fájlt egy blobba, akkor is közös hozzáférésű jogosultságkóddal (SAS) kell engedélyeznie a forrásobjektumhoz való hozzáférést, ha a másolás tárfiókon belül történik.
@@ -624,7 +624,7 @@ További információ a Azure Filesről:
 
 ### <a name="tooling-support-for-file-storage"></a>File Storage-eszköztámogatás
 
-- [Bevezetés az AzCopy használatába](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)
+- [Bevezetés az AzCopy használatába](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 - [Azure Files-problémák hibaelhárítása Windowson](./storage-troubleshoot-windows-file-connection-problems.md)
 
 ### <a name="reference"></a>Hivatkozás

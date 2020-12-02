@@ -10,19 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
-ms.openlocfilehash: 3d4e9bf67aa1d3df815c674fdc1e2019f68b4a60
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e0a3bdc7e68301c067b7e1ca80a3e708522e0df1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086703"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493355"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Példák a Bing-adatok használatára
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Ez a cikk példákat tartalmaz arra vonatkozóan, hogy a Bing hogyan használhatja és képelemzéseket jeleníthet meg a Bing.com.
 
@@ -78,7 +78,7 @@ A nem alapértelmezett címkék közé tartozik az a keret, amely a címkére vo
 
 ![Határolókeret és gyors elérésű hely](./media/click-to-search.PNG)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az első kérésének megkezdéséhez tekintse meg a gyors útmutatót:
 
@@ -89,8 +89,3 @@ Az első kérésének megkezdéséhez tekintse meg a gyors útmutatót:
 * [node.js](quickstarts/nodejs.md)
 
 * [Python](quickstarts/python.md)
-
-
-
-
-

@@ -3,12 +3,12 @@ title: Nagy számú VMware virtuális gép értékelése az Azure-ba való Migr�
 description: Ismerteti, hogyan lehet kiértékelni az Azure-ba való áttelepítéshez szükséges nagy számú VMware virtuális gépet az Azure Migrate szolgáltatás használatával. e
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 0a5a29ffc8abe0e8ec4fe85a41b4b67c2e655d2b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0be7a7ea4afc400787456533689fe00b1db1c116
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314119"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492930"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Nagy számú VMware virtuális gép értékelése az Azure-ba való áttelepítéshez
 
@@ -88,7 +88,7 @@ A tervezési követelményekkel összhangban tegye a következőket:
 1. Hozzon létre egy Azure Migrate projekteket.
 2. Adja hozzá a Azure Migrate Server Assessment eszközt a projektekhez.
 
-[További információ](how-to-add-tool-first-time.md)
+[További információ](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>Értékelés létrehozása és áttekintése
 
@@ -99,7 +99,7 @@ A tervezési követelményekkel összhangban tegye a következőket:
 A beállítások konfigurálásához kövesse az [oktatóanyag](./tutorial-assess-vmware-azure-vm.md) utasításait.
     
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben:
  

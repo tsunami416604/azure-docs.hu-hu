@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcdc05ae696a207546eb62160fe89ea38d307058
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362814"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492267"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
 
@@ -166,7 +166,7 @@ A dokumentumot az indexelő elolvasta és feldolgozta, de az index mezőinek és
 | Ok | Részletek/példa
 | --- | ---
 | Az indexelő által kinyert mező (k) adattípusa nem kompatibilis a megfelelő cél index mező adatmodelljével. | A (z) "888" kulccsal rendelkező dokumentumban levő "adatmező"_érvénytelen "EDM_. String" értékű. A várt típus: "Collection (EDM. String)". |
-| Nem sikerült kibontani a JSON-entitásokat egy karakterlánc-értékből. | Nem sikerült elemezni a (z) ""_típusú ""_ EDM. String "" érték "MEZŐjét JSON-objektumként. Hiba: "az érték elemzése után a rendszer váratlan karaktert észlelt:" ". Elérési_út_útvonala, 1. sor, pozíció: 3162. |
+| Nem sikerült kibontani a JSON-entitásokat egy karakterlánc-értékből. | Nem sikerült elemezni a (z) ""_típusú ""_ EDM. String "" érték "MEZŐjét JSON-objektumként. Hiba: "az érték elemzése után a rendszer váratlan karaktert észlelt:" ". Elérési _út_ útvonala, 1. sor, pozíció: 3162. |
 | Nem sikerült kibontani a JSON-entitások gyűjteményét egy karakterlánc-értékből.  | Nem sikerült értelmezni a (z) ""_típusú ""_ EDM. String "" érték "MEZŐjét JSON-tömbként. Hiba: "az érték elemzése után a rendszer váratlan karaktert észlelt:" ". Elérési út: "[0]", 1. sor, 27. pozíció |
 | Ismeretlen típus lett felderítve a forrásbizonylat dokumentumban. | Ismeretlen típus (_ismeretlen_) nem indexelhető |
 | A forrás dokumentumban nem kompatibilis jelölés szerepel a földrajzi pontokhoz. | A WKT pont karakterlánca nem támogatott. Ehelyett használjon GeoJson pont literálokat |
@@ -348,8 +348,8 @@ A figyelmeztetés megkerüléséhez határozza meg, hogy mi a blob szöveges kó
 
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>Figyelmeztetés: Cosmos DB "X" gyűjteménynek van egy lusta indexelési házirendje. Egyes adatvesztések elveszhetnek
 
-A [lusta](/azure/cosmos-db/index-policy#indexing-mode) indexelési házirendekkel rendelkező gyűjteményeket nem lehet következetesen lekérdezni, így az indexelő adatai hiányoznak. A figyelmeztetés megkerüléséhez módosítsa az indexelési házirendet Konzisztensre.
+A [lusta](../cosmos-db/index-policy.md#indexing-mode) indexelési házirendekkel rendelkező gyűjteményeket nem lehet következetesen lekérdezni, így az indexelő adatai hiányoznak. A figyelmeztetés megkerüléséhez módosítsa az indexelési házirendet Konzisztensre.
 
 ## <a name="warning-the-document-contains-very-long-words-longer-than-64-characters-these-words-may-result-in-truncated-andor-unreliable-model-predictions"></a>Figyelmeztetés: a dokumentum nagyon hosszú szavakat tartalmaz (64 karakternél hosszabb). Ezek a szavak csonkolt és/vagy megbízhatatlan modellek előrejelzését eredményezhetnek.
 
-Ezt a figyelmeztetést a Text Analytics szolgáltatás adja át.  Bizonyos esetekben nyugodtan figyelmen kívül hagyhatja ezt a figyelmeztetést, például ha a dokumentum hosszú URL-címet tartalmaz (ami valószínűleg nem kulcsfontosságú kifejezés vagy a vezetési hangulat stb.).  Ügyeljen arra, hogy ha egy szó 64 karakternél hosszabb, akkor a rendszer az 64 karakterre csonkolja a modell előrejelzéseit.  
+Ezt a figyelmeztetést a Text Analytics szolgáltatás adja át.  Bizonyos esetekben nyugodtan figyelmen kívül hagyhatja ezt a figyelmeztetést, például ha a dokumentum hosszú URL-címet tartalmaz (ami valószínűleg nem kulcsfontosságú kifejezés vagy a vezetési hangulat stb.).  Ügyeljen arra, hogy ha egy szó 64 karakternél hosszabb, akkor a rendszer az 64 karakterre csonkolja a modell előrejelzéseit.

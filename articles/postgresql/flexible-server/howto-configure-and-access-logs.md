@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 319b7a40a87d29454b22a26088df313ef524dc56
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3b54fe1ffd49c12db82a038ad449190a0049133f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545820"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492352"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Naplók konfigurálása és elérése Azure Database for PostgreSQL-rugalmas kiszolgálón
 
@@ -22,7 +22,7 @@ A PostgreSQL-naplók egy rugalmas kiszolgáló minden csomópontján elérhetők
 
 ## <a name="configure-diagnostic-settings"></a>Diagnosztikai beállítások konfigurálása
 
-A postgres-kiszolgáló diagnosztikai beállításait a Azure Portal, a CLI, az REST API és a PowerShell használatával engedélyezheti. A kijelölni kívánt **PostgreSQLLogs** .
+A postgres-kiszolgáló diagnosztikai beállításait a Azure Portal, a CLI, az REST API és a PowerShell használatával engedélyezheti. A kijelölni kívánt **PostgreSQLLogs**.
 
 Az erőforrás-naplók engedélyezése a Azure Portal használatával:
 
@@ -35,8 +35,8 @@ Az erőforrás-naplók engedélyezése a Azure Portal használatával:
 
 4. Válassza ki az előnyben részesített végpontot (Storage-fiók, Event hub, log Analytics). 
 
-5. Válassza ki a napló típusát **PostgreSQLLogs** .
-   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Diagnosztikai beállítások hozzáadása gomb":::
+5. Válassza ki a napló típusát **PostgreSQLLogs**.
+   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="PostgreSQL-naplók kiválasztása":::
 
 7. Mentse a beállítást.
 
@@ -69,7 +69,7 @@ AzureDiagnostics
 
 A fenti lekérdezés a munkaterület összes postgres-kiszolgálójának utolsó 6 órájában megjeleníti az eredményeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Ismerkedés a log Analytics-lekérdezésekkel](../../azure-monitor/log-query/get-started-portal.md)
+- [Ismerkedés a log Analytics-lekérdezésekkel](../../azure-monitor/log-query/log-analytics-tutorial.md)
 - További tudnivalók az [Azure Event hub](../../event-hubs/event-hubs-about.md) -ról

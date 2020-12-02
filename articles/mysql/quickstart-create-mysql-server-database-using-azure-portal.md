@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 4282294ff54fd3da3f764f53efc8b040b9522191
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f71bcc1fd3b92a32a3e6d9fa056bae7131a663bd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542252"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492607"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Gyors útmutató: Azure Database for MySQL-kiszolgáló létrehozása a Azure Portal használatával
 
@@ -27,7 +27,7 @@ Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, mi
    >[!div class="mx-imgBorder"]
    > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/find-azure-mysql-in-portal.png" alt-text="Azure Database for MySQL keresése":::
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 2. A **Azure Database for MySQL központi telepítési lehetőség kiválasztása** lapon válassza az  **egyetlen kiszolgáló** lehetőséget:
    >[!div class="mx-imgBorder"]
@@ -42,12 +42,12 @@ Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, mi
    ---|---|---
    Előfizetés | Az Ön előfizetése | Válassza ki a kívánt Azure-előfizetést.
    Erőforráscsoport | **myresourcegroup** | Adjon meg egy új erőforráscsoportot vagy egy meglévőt az előfizetésből.
-   A kiszolgáló neve | **mydemoserver** | Adjon meg egy egyedi nevet. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Az értéknek 3 – 63 karaktert kell tartalmaznia.
+   Kiszolgálónév | **mydemoserver** | Adjon meg egy egyedi nevet. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Az értéknek 3 – 63 karaktert kell tartalmaznia.
    Adatforrás |**Nincs** | Válassza a **Nincs** lehetőséget egy teljesen új kiszolgáló létrehozásához. Csak akkor válassza a **biztonsági mentést** , ha egy meglévő kiszolgáló geo-biztonsági másolatából végzi a visszaállítást.
    Hely |A kívánt hely | Válasszon ki egy helyet a listából.
-   Verzió | A legújabb főverzió| Használja a legújabb főverziót. Tekintse meg [az összes támogatott verziót](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
-   Számítás + tárolás | Az alapértelmezett beállítások használata| Az alapértelmezett díjszabási csomag **4 virtuális mag** és **100 GB** tárhellyel **általános célú** . A biztonsági másolatok megőrzésének beállítása **7 nap** , a **földrajzilag redundáns** biztonsági mentési lehetőséggel.<br/>Tekintse át a [díjszabási](https://azure.microsoft.com/pricing/details/mysql/) oldalt, és ha szükséges, frissítse az alapértelmezett értékeket.
-   Rendszergazdai felhasználónév | **mydemoadmin** | Adja meg a kiszolgáló rendszergazdájának felhasználónevét. A rendszergazdai felhasználónévhez nem használhatja **azure_superuser** , **Admin** , **Administrator** , **root** , **Guest** vagy **Public** .
+   Verzió | A legújabb főverzió| Használja a legújabb főverziót. Tekintse meg [az összes támogatott verziót](../postgresql/concepts-supported-versions.md).
+   Számítás + tárolás | Az alapértelmezett beállítások használata| Az alapértelmezett díjszabási csomag **4 virtuális mag** és **100 GB** tárhellyel **általános célú** . A biztonsági másolatok megőrzésének beállítása **7 nap**, a **földrajzilag redundáns** biztonsági mentési lehetőséggel.<br/>Tekintse át a [díjszabási](https://azure.microsoft.com/pricing/details/mysql/) oldalt, és ha szükséges, frissítse az alapértelmezett értékeket.
+   Rendszergazdai felhasználónév | **mydemoadmin** | Adja meg a kiszolgáló rendszergazdájának felhasználónevét. A rendszergazdai felhasználónévhez nem használhatja **azure_superuser**, **Admin**, **Administrator**, **root**, **Guest** vagy **Public** .
    Jelszó | Jelszó | Új jelszó a kiszolgáló-rendszergazda felhasználó számára. A jelszónak 8 – 128 karakter hosszúnak kell lennie, és tartalmaznia kell kis-és nagybetűket, számokat és nem alfanumerikus karaktereket (!, $, #,% stb.).
   
 
@@ -67,7 +67,7 @@ Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, mi
 
 Alapértelmezés szerint az új kiszolgáló tűzfallal védett. A kapcsolódáshoz meg kell adnia a hozzáférést az IP-címhez a következő lépések végrehajtásával:
 
-1. A kiszolgáló erőforrásának bal oldali ablaktábláján lépjen a **kapcsolatbiztonsági** elemre. Ha nem tudja, hogyan keresheti meg az erőforrást, olvassa el az [erőforrás megnyitását](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)ismertető témakört.
+1. A kiszolgáló erőforrásának bal oldali ablaktábláján lépjen a **kapcsolatbiztonsági** elemre. Ha nem tudja, hogyan keresheti meg az erőforrást, olvassa el az [erőforrás megnyitását](../azure-resource-manager/management/manage-resources-portal.md#open-resources)ismertető témakört.
 
    >[!div class="mx-imgBorder"]
    > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="A kapcsolatbiztonsági > tűzfalszabályok oldalát bemutató képernyőkép.":::
@@ -138,7 +138,7 @@ A helyi környezetből [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/mysql-doc-feedback)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ezzel létrehozott egy Azure Database for MySQL-kiszolgálót egy erőforráscsoporthoz.  Ha nem szeretné, hogy a jövőben is szükség lenne ezekre az erőforrásokra, törölheti őket az erőforráscsoport törlésével, vagy egyszerűen törölheti a MySQL-kiszolgálót is. Az erőforráscsoport törléséhez hajtsa végre a következő lépéseket:
 1. A Azure Portal keresse meg és válassza ki az **erőforráscsoportok** elemet.
 2. Az erőforráscsoportok listájában válassza ki az erőforráscsoport nevét.
@@ -149,11 +149,11 @@ A kiszolgáló törléséhez válassza a **Törlés** lehetőséget a kiszolgál
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="A kiszolgáló áttekintés lapján található Törlés gombot megjelenítő képernyőkép.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
->[PHP-alkalmazás létrehozása Windowson MySQL-sel](../app-service/app-service-web-tutorial-php-mysql.md) <br/>
+>[PHP-alkalmazás létrehozása Windowson MySQL-sel](../app-service/tutorial-php-mysql-app.md) <br/>
 
 > [!div class="nextstepaction"]
->[PHP-alkalmazás létrehozása Linuxon a MySQL-vel](../app-service/containers/tutorial-php-mysql-app.md)<br/><br/>
+>[PHP-alkalmazás létrehozása Linuxon a MySQL-vel](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%3fpivots%3dplatform-linux)<br/><br/>
 
 [Nem találja, amit keres? Tudassa velünk.](https://aka.ms/mysql-doc-feedback)

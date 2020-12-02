@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 1eddca26152f27ced20bbae66b3265639b97e64e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 266862a1691387caf1b1ffa9a47b0e60e84970d8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629495"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492131"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) és a [Network File System (NFS) protokollon](https://en.wikipedia.org/wiki/Network_File_System) (előzetes verzió) keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -184,7 +184,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
     - Azure File Sync megőrzi és replikálja az összes tulajdonosi ACL-t vagy DACL-t (akár Active Directory-alapú, akár helyi) az összes olyan kiszolgálói végpontra, amelyet szinkronizál. 
     
-    Az Azure Storage szolgáltatásban támogatott összes protokoll átfogó megjelenítéséhez tekintse meg az [Azure Storage-hozzáférés engedélyezését](../common/storage-auth.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) ismertető témakört. 
+    Az Azure Storage szolgáltatásban támogatott összes protokoll átfogó megjelenítéséhez tekintse meg az [Azure Storage-hozzáférés engedélyezését](../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető témakört. 
     
 * <a id="encryption-at-rest"></a>
 **Hogyan biztosíthatom, hogy az Azure-fájlmegosztás titkosítatlan állapotban legyen?**  
@@ -463,7 +463,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 **Hogyan Azure Files az IBM MQ-val?**  
     Az IBM kiadott egy olyan dokumentumot, amely segítséget nyújt az IBM MQ-ügyfeleknek az IBM szolgáltatással való Azure Files konfigurálásában. További információ: az [IBM MQ többpéldányos üzenetsor-kezelő beállítása Microsoft Azure Files szolgáltatással](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)
 * [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)
 * [Azure File Sync – hibaelhárítás](storage-sync-files-troubleshoot.md)

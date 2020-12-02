@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 3f159a11dc9607daf479c13f6612cab0175dae0c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634888"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493100"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók létrehozása
 
@@ -45,7 +45,7 @@ Ha *próbaverzióról* *fizetett* video Indexer fiókra vált, az összes videó
 
     Ezt a tagot fogja használni a Video Indexer-fiók Azure-hoz való csatlakoztatásakor.
 
-    Ennek a felhasználónak az Azure-előfizetésében egy **tulajdonosi** szerepkörrel, vagy a **közreműködő** és a **felhasználói hozzáférés rendszergazdai** szerepköreivel rendelkező tagnak kell lennie. A felhasználók kétszer is hozzáadhatók két szerepkörrel. Egyszer a közreműködővel és egyszer a felhasználói hozzáférés rendszergazdájával. További információ: [a felhasználó hozzáférésének megtekintése az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/role-based-access-control/check-access).
+    Ennek a felhasználónak az Azure-előfizetésében egy **tulajdonosi** szerepkörrel, vagy a **közreműködő** és a **felhasználói hozzáférés rendszergazdai** szerepköreivel rendelkező tagnak kell lennie. A felhasználók kétszer is hozzáadhatók két szerepkörrel. Egyszer a közreműködővel és egyszer a felhasználói hozzáférés rendszergazdájával. További információ: [a felhasználó hozzáférésének megtekintése az Azure-erőforrásokhoz](../../role-based-access-control/check-access.md).
 
     ![hozzáférés-vezérlés](./media/create-account/access-control-iam.png)
 
@@ -53,7 +53,7 @@ Ha *próbaverzióról* *fizetett* video Indexer fiókra vált, az összes videó
 
 * Regisztrálja a EventGrid erőforrás-szolgáltatót a Azure Portal használatával.
 
-    A [Azure Portal](https://portal.azure.com/)lépjen az **előfizetések** -> [előfizetés] – > **ResourceProviders** elemre.
+    A [Azure Portal](https://portal.azure.com/)lépjen az **előfizetések**-> [előfizetés] – >**ResourceProviders** elemre.
 
     Keressen rá a **Microsoft. Media** és a **Microsoft. EventGrid** kifejezésre. Ha nem a "regisztrált" állapotban van, kattintson a **regisztráció** elemre. A regisztráció néhány percet vesz igénybe.
 
@@ -127,7 +127,7 @@ Ha nem sikerült csatlakozni az Azure-hoz, a probléma megoldásához manuálisa
     2. Válassza ki az [egyszerű szolgáltatás hitelesítési módszerét](../previous/media-services-portal-get-started-with-aad.md).
     3. Az ügyfél-azonosító és az ügyfél titkos kulcsának beolvasása
 
-        Miután kiválasztotta a **Beállítások** -> **kulcsokat** , adja hozzá a **leírást** , nyomja meg a **Mentés** gombot, és a kulcs értéke feltöltve lesz.
+        Miután kiválasztotta a **Beállítások** -> **kulcsokat**, adja hozzá a **leírást**, nyomja meg a **Mentés** gombot, és a kulcs értéke feltöltve lesz.
 
         Ha a kulcs lejár, a fiók tulajdonosának kapcsolatba kell lépnie Video Indexer támogatással a kulcs megújításához.
 
@@ -180,7 +180,7 @@ A következő Azure Media Services kapcsolódó megfontolások érvényesek:
     ![Media Services streaming végpont](./media/create-account/ams-streaming-endpoint.png)
 
     A streaming-végpontok jelentős indítási idővel rendelkeznek. Ezért több percet is igénybe vehet, amikor a fiókját az Azure-ba csatlakoztatta, amíg a videók nem továbbíthatók és nem nézték a Video Indexer webalkalmazásban.
-* Ha meglévő Media Services-fiókhoz csatlakozik, Video Indexer nem módosítja az alapértelmezett adatfolyam-végpont konfigurációját. Ha nincs futó adatfolyam- **végpont** , akkor nem nézhet meg videókat ebből a Media Services fiókból vagy video Indexerból.
+* Ha meglévő Media Services-fiókhoz csatlakozik, Video Indexer nem módosítja az alapértelmezett adatfolyam-végpont konfigurációját. Ha nincs futó adatfolyam- **végpont**, akkor nem nézhet meg videókat ebből a Media Services fiókból vagy video Indexerból.
 * Ha automatikusan csatlakozik, Video Indexer beállítja a Media szolgáltatás **számára fenntartott egységeket** 10 S3 egységre:
 
     ![Media Services fenntartott egységek](./media/create-account/ams-reserved-units.png)

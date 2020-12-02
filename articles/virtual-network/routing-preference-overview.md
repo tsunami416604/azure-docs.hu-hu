@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 171ae04a70f3639981e74d20d260a03359a0f2c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f5653e4c184e88bce86026681dde1aee9e14d49
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187438"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491417"
 ---
 # <a name="what-is-routing-preference-preview"></a>Mi az útválasztási preferencia (előzetes verzió)?
 
@@ -26,11 +26,11 @@ Az Azure-útválasztási beállítások lehetővé teszik, hogy kiválassza, hog
 
 > [!IMPORTANT]
 > Az útválasztási preferencia jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="routing-via-microsoft-global-network"></a>Útválasztás a Microsoft globális hálózatán keresztül
 
-Ha a *Microsoft globális hálózatán*keresztül irányítja át a forgalmat, a forgalom a világ egyik legnagyobb hálózatán keresztül történik, amely több mint 160 000 km-re halad át, és több mint 165 Edge jelenléti ponttal (POP) rendelkezik. A hálózat jól kiépíthető több redundáns szál elérési úttal, így biztosítva a rendkívül magas megbízhatóságot és rendelkezésre állást. A Traffic Engineering egy olyan, a szoftver által definiált WAN-vezérlő által felügyelt, amely biztosítja a forgalom kis késleltetésű elérési útját, és a prémium szintű hálózati teljesítményt kínálja.
+Ha a *Microsoft globális hálózatán* keresztül irányítja át a forgalmat, a forgalom a világ egyik legnagyobb hálózatán keresztül történik, amely több mint 160 000 km-re halad át, és több mint 165 Edge jelenléti ponttal (POP) rendelkezik. A hálózat jól kiépíthető több redundáns szál elérési úttal, így biztosítva a rendkívül magas megbízhatóságot és rendelkezésre állást. A Traffic Engineering egy olyan, a szoftver által definiált WAN-vezérlő által felügyelt, amely biztosítja a forgalom kis késleltetésű elérési útját, és a prémium szintű hálózati teljesítményt kínálja.
 
 ![Útválasztás a Microsoft globális hálózatán keresztül](media/routing-preference-overview/route-via-microsoft-global-network.png)
 
@@ -62,27 +62,15 @@ A "Microsoft Global Network" nevű útválasztási beállításokat tartalmazó 
 * Application Gateway
 * Azure Firewall
 
-A tároláshoz az elsődleges végpontok mindig a **Microsoft globális hálózatot**használják. A másodlagos végpontokat az **internettel** engedélyezheti, ha a forgalom útválasztását választja. A támogatott tárolási szolgáltatások a következők:
+A tároláshoz az elsődleges végpontok mindig a **Microsoft globális hálózatot** használják. A másodlagos végpontokat az **internettel** engedélyezheti, ha a forgalom útválasztását választja. A támogatott tárolási szolgáltatások a következők:
 
 * Blobok
-* Files
+* Fájlok
 * Web
 * Azure DataLake
 
 ## <a name="pricing"></a>Díjszabás
-A két lehetőség közötti árkülönbség az internetes kimenő adatforgalom díjszabása szerint jelenik meg. Az Útválasztás a **Microsoft globális hálózati** adatátviteli díjszabása szerint megegyezik az aktuális internetes forgalom díjszabásával. A legfrissebb díjszabási információkért tekintse meg az [Azure sávszélesség-díjszabási oldalát](https://azure.microsoft.com/pricing/details/bandwidth/) . A **nyilvános interneten** keresztüli útválasztás alacsonyabb, mint az alábbi táblázatban látható:
-
-| Kimenő források régiója | 0-5 GB/hó | 5 GB-10 TB/hó | 10-50 TB/hó | 50-150 TB/hó | 150-500 TB/hó |
-| --- | --- | --- | --- | --- | --- |
-| 1. zóna | 0/GB | $0.085/GB | $0.065/GB | $0.06/GB | $0.04/GB |
-| 2. zóna | 0/GB | $0,11/GB | $0.075/GB | $0,07/GB | $0.06/GB  |
-
-[Vegye fel velünk a kapcsolatot](https://azure.microsoft.com/overview/sales-number/) a 500 TB-os havi adatmennyiséggel.
-* 1. zóna – Ausztrália középső régiója, Közép-Ausztrália, Közép-Kanada, Kelet-Kanada, Észak-Európa, Nyugat-Európa, Közép-Franciaország, Dél-Németország, Észak-Németország (nyilvános), Középnyugat-Németország (nyilvános), Kelet-Norvégia, Norvégia nyugati régiója, Észak-Svájc, Nyugat-Svájc, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA középső régiója, USA 2. keleti régiója, USA északi középső régiója
-
-* 2. zóna – Kelet-Ázsia, Délkelet-Ázsia, Kelet-Ausztrália, Ausztrália délkeleti régiója, Közép-India, Dél-India, Nyugat-India, Kelet-Japán, Nyugat-Japán, Korea középső régiója és Dél-Korea.
-
-* 3. zóna – Dél-Brazília, Dél-Afrika, Dél-Afrika, Nyugat-Európa, Egyesült Arab Emírségek és Észak-Ausztrália.
+A két lehetőség közötti árkülönbség az internetes kimenő adatforgalom díjszabása szerint jelenik meg. Az Útválasztás a **Microsoft globális hálózati** adatátviteli díjszabása szerint megegyezik az aktuális internetes forgalom díjszabásával. A legfrissebb díjszabási információkért tekintse meg az [Azure sávszélesség-díjszabási oldalát](https://azure.microsoft.com/pricing/details/bandwidth/) . 
 
 ## <a name="availability"></a>Rendelkezésre állás
 

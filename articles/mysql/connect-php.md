@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: b93bc4d1adfa2787f14106707b3848ebfe5c57bc
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cb3b711c532ccf44bebf08d42b5284db458cf5b7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021201"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492658"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a PHP használatával csatlakozhat és lekérdezheti Azure Database for MySQL
 Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet [PHP](https://secure.php.net/manual/intro-whatis.php)-alkalmazás használatával csatlakozni a MySQL-hez készült Azure Database-hez. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban.
@@ -24,13 +24,13 @@ Ehhez a rövid útmutatóhoz a következőkre lesz szüksége:
 - Azure Database for MySQL önálló kiszolgáló létrehozása [Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md) használatával <br/> vagy az [Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) -vel, ha még nem rendelkezik ilyennel.
 - Attól függően, hogy nyilvános vagy privát hozzáférést használ-e, a kapcsolat engedélyezéséhez hajtsa végre az alábbi műveletek **egyikét** .
 
-    |Műveletek| Kapcsolati mód|Útmutató|
+    |Művelet| Kapcsolati mód|Útmutató|
     |:--------- |:--------- |:--------- |
     | **Tűzfalszabályok konfigurálása** | Nyilvános | [Portál](./howto-manage-firewall-using-portal.md) <br/> [Parancssori felület](./howto-manage-firewall-using-cli.md)|
     | **Szolgáltatási végpont konfigurálása** | Nyilvános | [Portál](./howto-manage-vnet-using-portal.md) <br/> [Parancssori felület](./howto-manage-vnet-using-cli.md)|
     | **Privát hivatkozás konfigurálása** | Személyes | [Portál](./howto-configure-privatelink-portal.md) <br/> [Parancssori felület](./howto-configure-privatelink-cli.md) |
 
-- [Adatbázis és nem rendszergazda felhasználó létrehozása](/azure/mysql/howto-create-users?tabs=single-server)
+- [Adatbázis és nem rendszergazda felhasználó létrehozása](./howto-create-users.md?tabs=single-server)
 - Az operációs rendszer legújabb PHP-verziójának telepítése
     - [PHP macOS rendszeren](https://secure.php.net/manual/install.macosx.php)
     - [PHP Linuxon](https://secure.php.net/manual/install.unix.php)
@@ -160,7 +160,7 @@ mysqli_stmt_close($stmt);
 }
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
 
@@ -170,7 +170,7 @@ az group delete \
     --yes
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Azure Database for MySQL-kiszolgáló kezelése a portál használatával](./howto-create-manage-server-portal.md)<br/>
 

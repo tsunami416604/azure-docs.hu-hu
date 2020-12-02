@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 42e15da2fd31d163bc8822a347101704b27e1222
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 000ab3e3911c65554622a48d34abda79d60411df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913416"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492386"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Gyors útmutató: Azure Database for PostgreSQL-kiszolgáló létrehozása a Azure Portal használatával
 
@@ -27,7 +27,7 @@ Azure Database for PostgreSQL egykiszolgálós adatbázis létrehozásához nyis
 >[!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-database-portal/search-postgres.png" alt-text="Azure Database for PostgreSQL keresése.":::
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 2. A Azure Database for PostgreSQL létrehozása lapon válassza az  **egyetlen kiszolgáló** lehetőséget.
 
@@ -44,8 +44,8 @@ Azure Database for PostgreSQL egykiszolgálós adatbázis létrehozásához nyis
    |Előfizetés|az előfizetés neve|Válassza ki a kívánt Azure-előfizetést.|
    |Erőforráscsoport|*myresourcegroup*| Új vagy meglévő erőforráscsoport az előfizetésből.|
    |Kiszolgálónév |*mydemoserver*|Egy egyedi név, amely az Azure Database for PostgreSQL-kiszolgálót azonosítja. A rendszer hozzáfűzi a *postgres.database.Azure.com* tartománynevet a megadott kiszolgálónévhez. A kiszolgáló neve csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. Az értéknek 3 – 63 karaktert kell tartalmaznia.|
-   |Adatforrás | None | Válassza a **Nincs** lehetőséget egy teljesen új kiszolgáló létrehozásához. Csak akkor válassza a **biztonsági mentést** , ha egy meglévő kiszolgáló geo-biztonsági másolatából végez visszaállítást.|
-   |Rendszergazdai felhasználónév |*myadmin*| Adja meg a kiszolgáló-rendszergazdai felhasználónevét. Nem kezdődhet **pg_** és ezek az értékek nem engedélyezettek: **azure_superuser** , **azure_pg_admin** , **Admin** , **Administrator** , **root** , **Guest** vagy **Public**.|
+   |Adatforrás | Nincsenek | Válassza a **Nincs** lehetőséget egy teljesen új kiszolgáló létrehozásához. Csak akkor válassza a **biztonsági mentést** , ha egy meglévő kiszolgáló geo-biztonsági másolatából végez visszaállítást.|
+   |Rendszergazdai felhasználónév |*myadmin*| Adja meg a kiszolgáló-rendszergazdai felhasználónevét. Nem kezdődhet **pg_** és ezek az értékek nem engedélyezettek: **azure_superuser**, **azure_pg_admin**, **Admin**, **Administrator**, **root**, **Guest** vagy **Public**.|
    |Jelszó |az ön jelszava| Új jelszó a kiszolgáló-rendszergazda felhasználó számára. 8 – 128 karaktert tartalmazhat a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számok (0 – 9) és nem alfanumerikus karakterek (például!, $, #,%).|
    |Hely|a kívánt hely| Válasszon ki egy helyet a legördülő listából.|
    |Verzió|A legújabb főverzió| A legújabb PostgreSQL-főverzió, hacsak nincsenek más konkrét követelmények.|
@@ -65,7 +65,7 @@ Azure Database for PostgreSQL egykiszolgálós adatbázis létrehozásához nyis
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/postgres-doc-feedback)
 
 ## <a name="configure-a-firewall-rule"></a>Tűzfalszabály konfigurálása
-Alapértelmezés szerint a létrehozott kiszolgáló nem érhető el nyilvánosan. Engedélyeket kell adnia az IP-címéhez. Nyissa meg a kiszolgálói erőforrást a Azure Portalban, és válassza a **kapcsolatbiztonsági** lehetőséget a kiszolgáló erőforrásának bal oldali menüjében. Ha nem tudja, hogyan találja meg az erőforrását, tekintse [meg az erőforrások megnyitása](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)című témakört.
+Alapértelmezés szerint a létrehozott kiszolgáló nem érhető el nyilvánosan. Engedélyeket kell adnia az IP-címéhez. Nyissa meg a kiszolgálói erőforrást a Azure Portalban, és válassza a **kapcsolatbiztonsági** lehetőséget a kiszolgáló erőforrásának bal oldali menüjében. Ha nem tudja, hogyan találja meg az erőforrását, tekintse [meg az erőforrások megnyitása](../azure-resource-manager/management/manage-resources-portal.md#open-resources)című témakört.
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="A kapcsolatbiztonsági szabályokra vonatkozó tűzfalszabályok bemutató képernyőkép.":::

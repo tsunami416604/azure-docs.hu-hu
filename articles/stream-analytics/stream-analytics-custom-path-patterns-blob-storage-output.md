@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72718285ff83a23acd21a5e29001ea96e1f061c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9763a0ac3cba15dcfd66b8fad83230e2b0eb356b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95531355"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491672"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Egyéni blob kimeneti particionálás Azure Stream Analytics
 
@@ -25,7 +25,7 @@ Az egyéni mezők vagy a bemeneti attribútumok javítják az adatfeldolgozási 
 
 ### <a name="partition-key-options"></a>Partíciós kulcs beállításai
 
-A bemeneti adatok particionálásához használt partíciós kulcs vagy oszlopnév a kötőjeleket, aláhúzásokat és szóközöket tartalmazó alfanumerikus karaktereket tartalmazhat. A beágyazott mezőket nem lehet partíciós kulcsként használni, kivéve, ha aliasokkal együtt használják. A partíció kulcsának NVARCHAR (MAX), BIGINT, FLOAT vagy BIT értékűnek kell lennie (1,2 kompatibilitási szint vagy magasabb). További információ: [Azure stream Analytics adattípusok](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+A bemeneti adatok particionálásához használt partíciós kulcs vagy oszlopnév a kötőjeleket, aláhúzásokat és szóközöket tartalmazó alfanumerikus karaktereket tartalmazhat. A beágyazott mezőket nem lehet partíciós kulcsként használni, kivéve, ha aliasokkal együtt használják. A partíció kulcsának NVARCHAR (MAX), BIGINT, FLOAT vagy BIT értékűnek kell lennie (1,2 kompatibilitási szint vagy magasabb). További információ: [Azure stream Analytics adattípusok](/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Példa
 
@@ -73,7 +73,7 @@ Az egyéni DateTime elérésiút-minták lehetővé teszik olyan kimeneti formá
 
 A következő formátumú megadási jogkivonatok használhatók önállóan vagy kombinálva egyéni DateTime formátumok eléréséhez:
 
-|Megadási formátum   |Leírás   |Az eredmények például 2018-01-02T10:06:08|
+|Megadási formátum   |Description   |Az eredmények például 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{datetime: ÉÉÉÉ}|Az év egy négyjegyű számként|2018|
 |{datetime: PP}|Hónap, 01 és 12 között|01|
@@ -131,6 +131,6 @@ A művelet elindításakor a rendszer a blob-tárolóban létrehozza az elérés
 
 ![BLOB-kimenet Stream Analytics egyéni elérésiút-mintázattal](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-output-folder-structure.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Azure Stream Analytics kimenetének megismerése](stream-analytics-define-outputs.md)

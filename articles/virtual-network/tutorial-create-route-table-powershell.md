@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c94c7709a8066b31a6ac1ebc54180d41a303f44a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41c0f9546b07158a2c7fb3344698598f0c38521f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078231"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492080"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Hálózati forgalom irányítása útválasztási táblázattal a PowerShell használatával
 
@@ -38,7 +38,7 @@ Egy adott virtuális hálózaton belül az Azure alapértelmezés szerint automa
 * Virtuális gépek (VM) üzembe helyezése különböző alhálózatokban
 * Forgalom irányítása egyik alhálózatról hálózati virtuális berendezésen keresztül
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -52,7 +52,7 @@ Az útválasztási táblázat létrehozása előtt hozzon létre egy erőforrás
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Hozzon létre egy útválasztási táblázatot a [New-AzRouteTable](/powershell/module/az.network/new-azroutetable). A következő példa egy *myroutetablepublic elemet*nevű útválasztási táblázatot hoz létre.
+Hozzon létre egy útválasztási táblázatot a [New-AzRouteTable](/powershell/module/az.network/new-azroutetable). A következő példa egy *myroutetablepublic elemet* nevű útválasztási táblázatot hoz létre.
 
 ```azurepowershell-interactive
 $routeTablePublic = New-AzRouteTable `
@@ -79,7 +79,7 @@ Get-AzRouteTable `
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Útválasztási táblázat társítása alhálózattal
 
-Ahhoz, hogy egy útválasztási táblázatot alhálózathoz lehessen rendelni, létre kell hoznia egy virtuális hálózatot és alhálózatot. Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). A következő példában létrehozunk egy *myVirtualNetwork* nevű virtuális hálózatot a *10.0.0.0/16*előtaggal.
+Ahhoz, hogy egy útválasztási táblázatot alhálózathoz lehessen rendelni, létre kell hoznia egy virtuális hálózatot és alhálózatot. Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). A következő példában létrehozunk egy *myVirtualNetwork* nevű virtuális hálózatot a *10.0.0.0/16* előtaggal.
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -89,7 +89,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Hozzon létre három alhálózatot három alhálózat konfigurációjának létrehozásával a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Az alábbi példa három alhálózati konfigurációt hoz létre a *nyilvános*, a *privát*és a *DMZ* -alhálózatokhoz:
+Hozzon létre három alhálózatot három alhálózat konfigurációjának létrehozásával a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Az alábbi példa három alhálózati konfigurációt hoz létre a *nyilvános*, a *privát* és a *DMZ* -alhálózatokhoz:
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
@@ -121,7 +121,7 @@ Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork `
   -Name 'Public' `
   -AddressPrefix 10.0.0.0/24 `
-  -RouteTable $routeTablePublic | `
+  -RouteTable $myRouteTablePublic | `
 Set-AzVirtualNetwork
 ```
 
@@ -178,7 +178,7 @@ $vmConfig = New-AzVMConfig `
   Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-Hozza létre a virtuális gépet a VM-konfigurációval a [New-AzVM](/powershell/module/az.compute/new-azvm)használatával. A következő példa egy *myVmNva*nevű virtuális gépet hoz létre.
+Hozza létre a virtuális gépet a VM-konfigurációval a [New-AzVM](/powershell/module/az.compute/new-azvm)használatával. A következő példa egy *myVmNva* nevű virtuális gépet hoz létre.
 
 ```azurepowershell-interactive
 $vmNva = New-AzVM `
@@ -250,7 +250,7 @@ New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 
 Bár a nyomkövetési útvonal a jelen cikkben található Útválasztás tesztelésére szolgál, a Windows tűzfalon az éles környezetekben való üzembe helyezéshez nem ajánlott az ICMP engedélyezése.
 
-Az Azure-ban a virtuális gép hálózati adapterében, az IP-továbbítás engedélyezése szakaszban engedélyezte az IP-továbbítást. A virtuális gépen, az operációs rendszeren, vagy egy a virtuális gépen futó alkalmazáson belül szintén működnie kell a hálózati forgalom továbbításának. Engedélyezze az IP-továbbítást a *myVmNva*operációs rendszerén belül.
+Az Azure-ban a virtuális gép hálózati adapterében, az IP-továbbítás engedélyezése szakaszban engedélyezte az IP-továbbítást. A virtuális gépen, az operációs rendszeren, vagy egy a virtuális gépen futó alkalmazáson belül szintén működnie kell a hálózati forgalom továbbításának. Engedélyezze az IP-továbbítást a *myVmNva* operációs rendszerén belül.
 
 A *myVmPrivate* virtuális gépen egy parancssorból a Távoli asztalról a *myVmNva*:
 
@@ -296,7 +296,7 @@ over a maximum of 30 hops:
 Trace complete.
 ```
 
-Láthatja, hogy az első ugrás a 10.0.2.4 cím, amely az NVA magánhálózati IP-címe. A második ugrás a 10.0.1.4 cím – ez a *myVmPrivate* virtuális gép magánhálózati IP-címe. A*myRouteTablePublic* útválasztási táblázathoz hozzáadott és a *Magánjellegű* alhálózathoz rendelt útvonal miatt az Azure az NVA-n keresztül továbbította a forgalmat ahelyett, hogy közvetlenül a *Privát* alhálózatra továbbította volna.
+Láthatja, hogy az első ugrás a 10.0.2.4 cím, amely az NVA magánhálózati IP-címe. A második ugrás a 10.0.1.4 cím – ez a *myVmPrivate* virtuális gép magánhálózati IP-címe. A *myRouteTablePublic* útválasztási táblázathoz hozzáadott és a *Magánjellegű* alhálózathoz rendelt útvonal miatt az Azure az NVA-n keresztül továbbította a forgalmat ahelyett, hogy közvetlenül a *Privát* alhálózatra továbbította volna.
 
 Zárja be a *myVmPublic* virtuális gépre irányuló távoli asztali munkamenetet. Ez nem bontja a *myVmPrivate* virtuális géppel való kapcsolatot.
 
@@ -329,7 +329,7 @@ Ha már nincs rá szükség, a [Remove-AzResourcegroup](/powershell/module/az.re
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben létrehozta az útválasztási táblázatot, és hozzárendelte azt egy alhálózathoz. Létrehozott egy egyszerű hálózati virtuális készüléket, amely egy nyilvános alhálózatról egy privát alhálózatra irányítja a forgalmat. Helyezzen üzembe számos előre konfigurált hálózati virtuális készüléket, amelyek olyan hálózati funkciókat végeznek, mint például a tűzfal és a WAN-optimalizálás az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking). További információ az útválasztásról: [Az útválasztás áttekintése](virtual-networks-udr-overview.md); [Útválasztási táblázat kezelése](manage-route-table.md).
 

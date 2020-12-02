@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: a49dbdace01396656c3114df0bc0d4589aff57c1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 5a35d939c12639770e25c3096c77f13d31310f85
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916491"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492012"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Az Azure file shares teljesítményével kapcsolatos problémák elhárítása
 
@@ -196,7 +196,7 @@ A többcsatornás SMB konfigurációs beállításainak legutóbbi módosítása
 
 ### <a name="cause"></a>Ok  
 
-A fájlmegosztás nagy számú fájl-változási értesítése jelentős késést okozhat. Ez általában a részletesen beágyazott címtár-struktúrával rendelkező fájlmegosztás során futtatott webhelyekkel történik. Egy tipikus forgatókönyv az IIS által üzemeltetett webalkalmazás, amelyben az alapértelmezett konfigurációban az egyes könyvtárakra vonatkozóan a fájl módosítására vonatkozó értesítés van beállítva. Az SMB-ügyfél által regisztrált megosztás minden változása ([ReadDirectoryChangesW](https://docs.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) leküldéses értesítéseket küld a fájlszolgáltatásoktől az ügyfélnek, amely a rendszererőforrásokat veszi igénybe, és a változások számával romlik a probléma. Ez megoszthatja a megosztás szabályozását, és így magasabb ügyféloldali késést eredményezhet. 
+A fájlmegosztás nagy számú fájl-változási értesítése jelentős késést okozhat. Ez általában a részletesen beágyazott címtár-struktúrával rendelkező fájlmegosztás során futtatott webhelyekkel történik. Egy tipikus forgatókönyv az IIS által üzemeltetett webalkalmazás, amelyben az alapértelmezett konfigurációban az egyes könyvtárakra vonatkozóan a fájl módosítására vonatkozó értesítés van beállítva. Az SMB-ügyfél által regisztrált megosztás minden változása ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) leküldéses értesítéseket küld a fájlszolgáltatásoktől az ügyfélnek, amely a rendszererőforrásokat veszi igénybe, és a változások számával romlik a probléma. Ez megoszthatja a megosztás szabályozását, és így magasabb ügyféloldali késést eredményezhet. 
 
 A megerősítéshez használhatja az Azure-mérőszámokat a portálon – 
 
@@ -284,7 +284,7 @@ Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, t
 
 Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 - [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)  
 - [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)  
 - [Gyakori kérdések az Azure Files-szal kapcsolatban](storage-files-faq.md)

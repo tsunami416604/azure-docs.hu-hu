@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan futtathatja a VMware virtuális gépek ügynök
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 7eb918a844b1cd542664ac7e5aec2736ceba0e6f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 202886bc0a7738f8211cfea6d90a380c7bac82b8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301644"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492947"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök nélkül)
 
@@ -21,7 +21,7 @@ Ez az oktatóanyag egy sorozat harmadik része, amely bemutatja, hogyan lehet fe
 > Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Ahol lehet, az oktatóanyagok az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és módot. 
 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Adja hozzá az Azure Migration: Server áttelepítési eszközét.
@@ -38,7 +38,7 @@ Az oktatóanyag elkezdése előtt:
 
 1. [Fejezze be az első oktatóanyagot](./tutorial-discover-vmware.md) az Azure és a VMware áttelepítésre való előkészítéséhez.
 2. Javasoljuk, hogy fejezze be a második oktatóanyagot a [VMWare virtuális gépek felméréséhez](./tutorial-assess-vmware-azure-vm.md) , mielőtt áttelepíti őket az Azure-ba, de nem kell. 
-3. Lépjen a már létrehozott projekthez, vagy [hozzon létre egy új projektet](https://docs.microsoft.com/azure/migrate/create-manage-projects)
+3. Lépjen a már létrehozott projekthez, vagy [hozzon létre egy új projektet](./create-manage-projects.md)
 4. Az Azure-fiók engedélyeinek ellenőrzése – az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>A Azure Migrate berendezés beállítása

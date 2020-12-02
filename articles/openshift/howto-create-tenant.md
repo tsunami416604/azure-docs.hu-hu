@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: e949f1ac5259ba35772ce98c2ee88e5ea66c2d84
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: b57bafdc3f4748bf634955334424941b55e02fd8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221162"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492369"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Azure AD-bérlő létrehozása az Azure Red Hat OpenShift
 
@@ -21,7 +21,7 @@ ms.locfileid: "92221162"
 > Kövesse ezt az útmutatót [egy Azure Red Hat OpenShift 4-fürt létrehozásához](tutorial-create-cluster.md).
 > Ha konkrét kérdései vannak, vegye [fel velünk a kapcsolatot](mailto:arofeedback@microsoft.com).
 
-Microsoft Azure Red Hat OpenShift olyan [Azure Active Directory (Azure ad)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) bérlőt igényel, amelyben létre kívánja hozni a fürtöt. A *bérlő* az Azure ad dedikált példánya, amelyet a szervezet vagy az alkalmazás fejlesztője kap, amikor kapcsolatot hoz létre a Microsofttal az Azure-ra, Microsoft Intunera vagy Microsoft 365re való regisztráláskor. Minden Azure AD-bérlő különálló, és elkülönül a többi Azure AD-bérlőtől, és saját munkahelyi és iskolai identitásokkal és alkalmazás-regisztrációval rendelkezik.
+Microsoft Azure Red Hat OpenShift olyan [Azure Active Directory (Azure ad)](../active-directory/develop/quickstart-create-new-tenant.md) bérlőt igényel, amelyben létre kívánja hozni a fürtöt. A *bérlő* az Azure ad dedikált példánya, amelyet a szervezet vagy az alkalmazás fejlesztője kap, amikor kapcsolatot hoz létre a Microsofttal az Azure-ra, Microsoft Intunera vagy Microsoft 365re való regisztráláskor. Minden Azure AD-bérlő különálló, és elkülönül a többi Azure AD-bérlőtől, és saját munkahelyi és iskolai identitásokkal és alkalmazás-regisztrációval rendelkezik.
 
 Ha még nem rendelkezik Azure AD-Bérlővel, az alábbi utasításokat követve hozhat létre egyet.
 
@@ -34,12 +34,12 @@ Bérlő létrehozása:
 3. Adja meg a **szervezet nevét**.
 4. Adja meg a **kezdeti tartománynevet**. Ehhez hozzá kell fűzni a *onmicrosoft.com* . Itt újra felhasználhatja a *szervezet nevének* értékét.
 5. Válassza ki azt az országot vagy régiót, ahol létre kívánja hozni a bérlőt.
-6. Kattintson a **Létrehozás** lehetőségre.
+6. Kattintson a **Létrehozás** gombra.
 7. Miután létrehozta az Azure AD-bérlőt, válassza a **kattintson ide az új címtár-hivatkozás kezeléséhez** . Az új bérlő nevét a Azure Portal jobb felső sarkában kell megjeleníteni:  
 
     ![Képernyőkép a bérlő nevét bemutató portálról a jobb felső sarokban][tenantcallout]  
 
-8. Jegyezze fel a *bérlő azonosítóját* , hogy később meg tudja határozni, hová hozza létre az Azure Red Hat OpenShift-fürtöt. A portálon ekkor megjelenik az új bérlő Azure Active Directory áttekintés panelje. Válassza a **Tulajdonságok** lehetőséget, és másolja a **címtár-azonosító**értékét. Erre az értékre `TENANT` az [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) című oktatóanyagban talál.
+8. Jegyezze fel a *bérlő azonosítóját* , hogy később meg tudja határozni, hová hozza létre az Azure Red Hat OpenShift-fürtöt. A portálon ekkor megjelenik az új bérlő Azure Active Directory áttekintés panelje. Válassza a **Tulajdonságok** lehetőséget, és másolja a **címtár-azonosító** értékét. Erre az értékre `TENANT` az [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) című oktatóanyagban talál.
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
@@ -47,7 +47,7 @@ Bérlő létrehozása:
 
 Az [Azure ad-Bérlővel](../active-directory/develop/quickstart-create-new-tenant.md)kapcsolatos további információkért tekintse meg [Azure Active Directory dokumentációját](../active-directory/index.yml) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan hozhat létre egyszerű szolgáltatásnevet, hogyan hozhat létre egy ügyfél-titkos és hitelesítési visszahívási URL-címet, és hogyan hozhat létre új Active Directory felhasználót az Azure Red Hat OpenShift-fürtön futó alkalmazások teszteléséhez.
 

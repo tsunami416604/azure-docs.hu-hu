@@ -6,12 +6,12 @@ ms.author: jiangma
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0a6449e6b728ee690dd6ddee192868aaeb3511ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9ed53721b66dc03bad24e0510e0c8a970c61aec1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911039"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492420"
 ---
 # <a name="configure-built-in-container-registry-for-azure-red-hat-openshift-4"></a>Az Azure Red Hat OpenShift 4 beépített tárolóregisztrációs adatbázisának konfigurálása
 
@@ -26,9 +26,9 @@ Ebben a cikkben a beépített tárolók rendszerképének beállításjegyzéké
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő ARO-fürttel. Ha ARO-fürtre van szüksége, tekintse meg az ARO oktatóanyagot, [hozzon létre egy Azure Red Hat OpenShift 4-fürtöt](/azure/openshift/tutorial-create-cluster). Győződjön meg arról, hogy a következő argumentummal hozza létre a fürtöt: `--pull-secret` `az aro create` .  Ez a Azure Active Directory hitelesítés és a beépített tároló-beállításjegyzék konfigurálásához szükséges.
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő ARO-fürttel. Ha ARO-fürtre van szüksége, tekintse meg az ARO oktatóanyagot, [hozzon létre egy Azure Red Hat OpenShift 4-fürtöt](./tutorial-create-cluster.md). Győződjön meg arról, hogy a következő argumentummal hozza létre a fürtöt: `--pull-secret` `az aro create` .  Ez a Azure Active Directory hitelesítés és a beépített tároló-beállításjegyzék konfigurálásához szükséges.
 
-Miután elvégezte a fürtöt, kapcsolódjon a fürthöz a [Kapcsolódás Azure Red Hat OpenShift 4-fürthöz](/azure/openshift/tutorial-connect-cluster)című témakör lépéseit követve.
+Miután elvégezte a fürtöt, kapcsolódjon a fürthöz a [Kapcsolódás Azure Red Hat OpenShift 4-fürthöz](./tutorial-connect-cluster.md)című témakör lépéseit követve.
    * Ügyeljen arra, hogy kövesse a "OpenShift CLI telepítése" című szakasz lépéseit, mert a `oc` parancsot a cikk későbbi részében fogjuk használni.
    * Jegyezze fel a fürt konzoljának URL-címét, amely a következőképpen néz ki: `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` . A és a értékeit a `<random>` `<region>` cikk későbbi részében fogja használni.
    * Jegyezze fel a `kubeadmin` hitelesítő adatokat. Ezeket a cikk későbbi részében is használni fogjuk.

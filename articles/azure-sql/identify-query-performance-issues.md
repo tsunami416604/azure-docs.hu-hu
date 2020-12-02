@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: ce5bf86073b2c478108e264010bb3c213c214368
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6ea17f04538e3444b1baddaa8862add2cfbbaa9c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791749"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493423"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>A lekérdezési teljesítményt érintő szűk keresztmetszetek típusai az Azure SQL Database-ben
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -27,8 +27,8 @@ Az ilyen típusú teljesítménybeli szűk keresztmetszetek észleléséhez Azur
 
 ![Munkaterhelési állapotok](./media/identify-query-performance-issues/workload-states.png)
 
-**Futó problémák** : a futtatással kapcsolatos problémák általában olyan fordítási problémákkal kapcsolatosak, amelyek a nem elégséges vagy túlhasználatú erőforrásokkal kapcsolatos, a legoptimálisabb lekérdezési tervet vagy végrehajtási problémákat eredményeznek.
-**Várakozással kapcsolatos problémák** : a várakozással kapcsolatos problémák általában a következőkhöz kapcsolódnak:
+**Futó problémák**: a futtatással kapcsolatos problémák általában olyan fordítási problémákkal kapcsolatosak, amelyek a nem elégséges vagy túlhasználatú erőforrásokkal kapcsolatos, a legoptimálisabb lekérdezési tervet vagy végrehajtási problémákat eredményeznek.
+**Várakozással kapcsolatos problémák**: a várakozással kapcsolatos problémák általában a következőkhöz kapcsolódnak:
 
 - Zárolások (blokkolás)
 - I/O
@@ -137,13 +137,13 @@ Ha újrafordítási emlékeztetőt használ, a rendszer nem gyorsítótárazza a
 
 Az újrafordítás (vagy a gyorsítótár kiürítése utáni friss fordítás) továbbra is az eredetivel megegyező lekérdezés-végrehajtási terv létrehozását eredményezheti. Ha a terv a korábbi vagy az eredeti csomag alapján változik, a következő magyarázatok valószínűek:
 
-- **Megváltozott fizikai kialakítás** : például az újonnan létrehozott indexek hatékonyabban fedik le a lekérdezés követelményeit. Az új indexeket új fordításban lehet használni, ha a lekérdezés-optimalizáló úgy dönt, hogy az új indexet használja, mint az eredetileg a lekérdezés-végrehajtás első verziójára kiválasztott adatstruktúra használata. A hivatkozott objektumok fizikai változásai a fordítási idő új tervének megválasztásához vezethetnek.
+- **Megváltozott fizikai kialakítás**: például az újonnan létrehozott indexek hatékonyabban fedik le a lekérdezés követelményeit. Az új indexeket új fordításban lehet használni, ha a lekérdezés-optimalizáló úgy dönt, hogy az új indexet használja, mint az eredetileg a lekérdezés-végrehajtás első verziójára kiválasztott adatstruktúra használata. A hivatkozott objektumok fizikai változásai a fordítási idő új tervének megválasztásához vezethetnek.
 
-- **Kiszolgáló erőforrásainak eltérései** : Ha egy rendszer egyik csomagja eltér a tervtől, akkor az erőforrás rendelkezésre állása, például az elérhető processzorok száma, befolyásolhatja, hogy melyik tervet hozza létre a rendszer. Ha például egy rendszer több processzorral rendelkezik, lehetséges, hogy egy párhuzamos tervet választ ki.
+- **Kiszolgáló erőforrásainak eltérései**: Ha egy rendszer egyik csomagja eltér a tervtől, akkor az erőforrás rendelkezésre állása, például az elérhető processzorok száma, befolyásolhatja, hogy melyik tervet hozza létre a rendszer. Ha például egy rendszer több processzorral rendelkezik, lehetséges, hogy egy párhuzamos tervet választ ki.
 
-- **Különböző statisztikák** : a hivatkozott objektumokhoz társított statisztikák változhattak, vagy az eredeti rendszer statisztikái lényegesen eltérőek lehetnek. Ha a statisztikai változás és az újrafordítás történik, a lekérdezés-optimalizáló a változástól kezdődő statisztikát használja. Az átdolgozott statisztikai adatok eloszlása és gyakorisága eltérő lehet az eredeti fordítástól. Ezek a változások a kardinális becslések létrehozásához használatosak. (A *kardinális becslések* a logikai lekérdezési fában áthaladó sorok száma.) A kardinális becslések változásai a különböző fizikai operátorok és a hozzájuk tartozó műveletek elvégzésére is kiválaszthatók. A statisztikában még kisebb változások is megváltoztathatják a lekérdezés végrehajtási tervét.
+- **Különböző statisztikák**: a hivatkozott objektumokhoz társított statisztikák változhattak, vagy az eredeti rendszer statisztikái lényegesen eltérőek lehetnek. Ha a statisztikai változás és az újrafordítás történik, a lekérdezés-optimalizáló a változástól kezdődő statisztikát használja. Az átdolgozott statisztikai adatok eloszlása és gyakorisága eltérő lehet az eredeti fordítástól. Ezek a változások a kardinális becslések létrehozásához használatosak. (A *kardinális becslések* a logikai lekérdezési fában áthaladó sorok száma.) A kardinális becslések változásai a különböző fizikai operátorok és a hozzájuk tartozó műveletek elvégzésére is kiválaszthatók. A statisztikában még kisebb változások is megváltoztathatják a lekérdezés végrehajtási tervét.
 
-- **Módosult az adatbázis-kompatibilitási szint vagy a Cardinals-kalkulátor verziója** : az adatbázis kompatibilitási szintjének módosítása lehetővé teszi, hogy az új stratégiák és szolgáltatások egy másik lekérdezés-végrehajtási tervet eredményeznek. Az adatbázis-kompatibilitási szinten kívül a letiltott vagy engedélyezett nyomkövetési jelző 4199 vagy az adatbázis hatókörű QUERY_OPTIMIZER_HOTFIXES konfigurációjának módosult állapota is befolyásolhatja a lekérdezés végrehajtási tervének választási lehetőségeit a fordítás ideje alatt. A nyomkövetési jelzők 9481 (örökölt CE) és 2312 (az alapértelmezett CE kényszerített) a tervet is érintik.
+- **Módosult az adatbázis-kompatibilitási szint vagy a Cardinals-kalkulátor verziója**: az adatbázis kompatibilitási szintjének módosítása lehetővé teszi, hogy az új stratégiák és szolgáltatások egy másik lekérdezés-végrehajtási tervet eredményeznek. Az adatbázis-kompatibilitási szinten kívül a letiltott vagy engedélyezett nyomkövetési jelző 4199 vagy az adatbázis hatókörű QUERY_OPTIMIZER_HOTFIXES konfigurációjának módosult állapota is befolyásolhatja a lekérdezés végrehajtási tervének választási lehetőségeit a fordítás ideje alatt. A nyomkövetési jelzők 9481 (örökölt CE) és 2312 (az alapértelmezett CE kényszerített) a tervet is érintik.
 
 ## <a name="resource-limits-issues"></a>Erőforrás-korlátokkal kapcsolatos problémák
 
@@ -173,11 +173,11 @@ Az alkalmazások forgalmának növekedése és a számítási feladatok mennyis�
 
 Nem mindig könnyű megállapítani a CPU-problémát okozó számítási feladatok kötetének változását. Vegye figyelembe a következő tényezőket:
 
-- **Megváltoztatott erőforrás-használat** : Vegyünk például egy olyan forgatókönyvet, amelyben a CPU-használat hosszabb ideig 80%-ra nőtt. A CPU-használat önmagában nem jelenti azt, hogy a munkaterhelés mennyisége megváltozott. A lekérdezés-végrehajtási terv és az adateloszlás változásainak regressziói is hozzájárulhatnak az erőforrás-használathoz, még akkor is, ha az alkalmazás ugyanazt a munkaterhelést hajtja végre.
+- **Megváltoztatott erőforrás-használat**: Vegyünk például egy olyan forgatókönyvet, amelyben a CPU-használat hosszabb ideig 80%-ra nőtt. A CPU-használat önmagában nem jelenti azt, hogy a munkaterhelés mennyisége megváltozott. A lekérdezés-végrehajtási terv és az adateloszlás változásainak regressziói is hozzájárulhatnak az erőforrás-használathoz, még akkor is, ha az alkalmazás ugyanazt a munkaterhelést hajtja végre.
 
-- **Új lekérdezés megjelenése** : az alkalmazás különböző időpontokban lehet új lekérdezéseket vezetni.
+- **Új lekérdezés megjelenése**: az alkalmazás különböző időpontokban lehet új lekérdezéseket vezetni.
 
-- **A kérelmek számának növelése vagy csökkenése** : Ez a forgatókönyv a számítási feladatok legnyilvánvalóbb mérőszáma. A lekérdezések száma nem mindig felel meg az erőforrás-felhasználásnak. Ez a metrika azonban még mindig jelentős jel, feltéve, hogy más tényezők nem változnak.
+- **A kérelmek számának növelése vagy csökkenése**: Ez a forgatókönyv a számítási feladatok legnyilvánvalóbb mérőszáma. A lekérdezések száma nem mindig felel meg az erőforrás-felhasználásnak. Ez a metrika azonban még mindig jelentős jel, feltéve, hogy más tényezők nem változnak.
 
 Intelligent Insights használata a [munkaterhelés növekedésének](database/intelligent-insights-troubleshoot-performance.md#workload-increase) észleléséhez és a [regressziók tervezéséhez](database/intelligent-insights-troubleshoot-performance.md#plan-regression).
 
@@ -185,7 +185,7 @@ Intelligent Insights használata a [munkaterhelés növekedésének](database/in
 
 Miután megnyitotta a legoptimálisabb tervet, és a *várakozással kapcsolatos* problémák a végrehajtási problémákkal kapcsolatosak, a teljesítményproblémák általában a lekérdezések valószínűleg egy adott erőforrásra várnak. A várakozással kapcsolatos problémákat az alábbiak okozhatják:
 
-- **Blokkolás** :
+- **Blokkolás**:
 
   Előfordulhat, hogy egy lekérdezés zárolja az adatbázisban lévő objektumokat, míg mások megpróbálnak hozzáférni ugyanahhoz az objektumhoz. A blokkoló lekérdezések a [DMV](database/monitoring-with-dmvs.md#monitoring-blocked-queries) vagy a [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#locking)használatával azonosíthatók.
 - **IO-problémák**
@@ -220,6 +220,6 @@ A lekérdezési tárolót nyomon követő DMV és a várakozási statisztikának
 > - [TigerToolbox várakozások és zárak](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [SQL Database monitorozás és hangolás áttekintése](database/monitor-tune-overview.md)

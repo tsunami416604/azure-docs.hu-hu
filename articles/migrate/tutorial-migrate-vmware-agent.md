@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan futtathatja a VMware virtuális gépek ügynök
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 437dbce1c577b5d837ad0c70e8e8865ba59cf9e6
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 46f23953e6572b752f8773bc9db86be946ccf212
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302757"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492997"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök-alapú)
 
 Ebből a cikkből megtudhatja, hogyan telepítheti át a helyszíni VMware virtuális gépeket az Azure-ba a [Azure Migrate: Server áttelepítési](migrate-services-overview.md#azure-migrate-server-migration-tool) eszközzel, az ügynök-alapú áttelepítés segítségével.  A VMware virtuális gépeket ügynök-alapú áttelepítéssel is áttelepítheti. [Hasonlítsa össze](server-migrate-overview.md#compare-migration-methods) a metódusokat.
 
 
- Az oktatóanyag a következőket ismerteti:
+ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Készítse elő az Azure-t a Azure Migrate való együttműködéshez.
 > * Felkészülés az ügynök alapú áttelepítésre. Hozzon létre egy VMware-fiókot, hogy Azure Migrate képes legyen felderíteni a gépeket az áttelepítéshez. Állítson be egy fiókot, hogy a mobilitási szolgáltatás ügynöke telepíthető legyen az áttelepíteni kívánt gépekre, és készítse elő a gépet, hogy a replikációs berendezésként működjön.
@@ -133,7 +133,6 @@ Győződjön meg arról, hogy a VMware-kiszolgálók és a virtuális gépek meg
 
 > [!NOTE]
 > Az ügynök-alapú áttelepítés Azure Migrate kiszolgáló áttelepítésével a Azure Site Recovery szolgáltatás szolgáltatásain alapul. Néhány követelmény Site Recovery dokumentációra mutató hivatkozásokat is tartalmazhat.
-
 
 ## <a name="set-up-the-replication-appliance"></a>A replikációs berendezés beállítása
 

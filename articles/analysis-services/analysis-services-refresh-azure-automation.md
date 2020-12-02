@@ -4,20 +4,20 @@ description: Ez a cikk azt ismerteti, hogyan lehet kódokat frissíteni a Azure 
 author: chrislound
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/01/2020
 ms.author: chlound
-ms.openlocfilehash: fe811c81d0774393f40dc5c8403d1af8b22da109
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 7c801511b6f24cf5ef04d55bb195e3a4c62d7b6d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019137"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491247"
 ---
 # <a name="refresh-with-azure-automation"></a>Frissítés az Azure Automationnel
 
 A Azure Automation és a PowerShell Runbookok használatával automatizált adatfrissítési műveleteket hajthat végre az Azure Analysis táblázatos modelleken.  
 
-A cikkben szereplő példa a [SQLServer PowerShell-modult](/powershell/module/sqlserver/?view=sqlserver-ps)használja. A cikk későbbi részében a modell frissítését bemutató PowerShell-Runbook is elérhető.  
+A cikkben szereplő példa a [SQLServer PowerShell-modult](/powershell/module/sqlserver/?view=sqlserver-ps&preserve-view=true)használja. A cikk későbbi részében a modell frissítését bemutató PowerShell-Runbook is elérhető.  
 
 ## <a name="authentication"></a>Hitelesítés
 
@@ -30,13 +30,13 @@ Az összes hívást érvényes Azure Active Directory (OAuth 2) jogkivonattal ke
 
 ### <a name="install-sqlserver-modules-from-powershell-gallery"></a>Telepítse a SqlServer-modulokat a PowerShell-galériából.
 
-1. A Azure Automation-fiókban kattintson a **modulok**elemre, majd a **Tallózás**katalógus lehetőségre.
+1. A Azure Automation-fiókban kattintson a **modulok** elemre, majd a **Tallózás** katalógus lehetőségre.
 
 2. A keresési sávban keresse meg a **SQLServer**.
 
     ![Keresési modulok](./media/analysis-services-refresh-azure-automation/1.png)
 
-3. Válassza a SqlServer lehetőséget, majd kattintson az **Importálás**elemre.
+3. Válassza a SqlServer lehetőséget, majd kattintson az **Importálás** elemre.
  
     ![Modul importálása](./media/analysis-services-refresh-azure-automation/2.png)
 
@@ -56,7 +56,7 @@ Az Ön által létrehozott egyszerű szolgáltatásnak kiszolgálói rendszergaz
 
     ![Képernyőfelvétel: a "hitelesítő adatok hozzáadása" lapon a "hitelesítő adatok" művelet van kiválasztva.](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. Adja meg a hitelesítő adatok részleteit. A **Felhasználónév**mezőben adja meg az egyszerű szolgáltatásnév (AppID) nevet, majd a **jelszó**mezőben adja meg az egyszerű szolgáltatás titkos kulcsát.
+2. Adja meg a hitelesítő adatok részleteit. A **Felhasználónév** mezőben adja meg az egyszerű szolgáltatásnév (AppID) nevet, majd a **jelszó** mezőben adja meg az egyszerű szolgáltatás titkos kulcsát.
 
     ![Hitelesítő adat létrehozása](./media/analysis-services-refresh-azure-automation/7.png)
 
@@ -64,25 +64,25 @@ Az Ön által létrehozott egyszerű szolgáltatásnak kiszolgálói rendszergaz
 
     ![Képernyőfelvétel: a "Runbookok" (runbook importálása) műveletet megjelenítő lap.](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. Tallózással keresse meg a [Refresh-Model.ps1](#sample-powershell-runbook) fájlt, adjon meg egy **nevet** és egy **leírást**, majd kattintson a **Létrehozás**gombra.
+4. Tallózással keresse meg a [Refresh-Model.ps1](#sample-powershell-runbook) fájlt, adjon meg egy **nevet** és egy **leírást**, majd kattintson a **Létrehozás** gombra.
 
     > [!NOTE]
     > A dokumentum alján található, [minta PowerShell-Runbook](#sample-powershell-runbook) tartozó parancsfájl használatával hozzon létre egy Refresh-Model.ps1 nevű fájlt, és mentse a helyi gépre a Runbook-be való importáláshoz.
 
     ![Runbook importálása](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. A Runbook létrehozásakor a rendszer automatikusan szerkesztési módba lép.  Kattintson a **Publish** (Közzététel) elemre.
+5. A Runbook létrehozásakor a rendszer automatikusan szerkesztési módba lép.  Válassza a **Közzététel** lehetőséget.
 
     ![Runbook közzététele](./media/analysis-services-refresh-azure-automation/10.png)
 
     > [!NOTE]
     > A korábban létrehozott hitelesítőadat-erőforrást a runbook a **Get-AutomationPSCredential** parancs használatával kéri le.  Ezt a parancsot a rendszer átadja a **meghívó-ProcessASADatabase PowerShell-** parancsnak a Azure Analysis Services hitelesítésének végrehajtásához.
 
-6. A **Start**gombra kattintva tesztelje a runbook.
+6. A **Start** gombra kattintva tesztelje a runbook.
 
     ![Képernyőkép: az "áttekintés" oldal, amelyen a "Start" művelet be van jelölve.](./media/analysis-services-refresh-azure-automation/11.png)
 
-7. Töltse ki a **databasename**, a **ANALYSISSERVER**és a **REFRESHTYPE** paramétert, majd kattintson **az OK**gombra. A **WEBHOOKDATA** paraméter nem szükséges, ha a Runbook futtatása manuálisan történik.
+7. Töltse ki a **databasename**, a **ANALYSISSERVER** és a **REFRESHTYPE** paramétert, majd kattintson **az OK** gombra. A **WEBHOOKDATA** paraméter nem szükséges, ha a Runbook futtatása manuálisan történik.
 
     ![A Runbook elindítása](./media/analysis-services-refresh-azure-automation/12.png)
 
@@ -96,11 +96,11 @@ A Runbook beállítható úgy, hogy ütemezett alapon aktiválja a Azure Analysi
 
 Ezt a következőképpen lehet konfigurálni:
 
-1. Az Automation Runbook kattintson az **ütemtervek**lehetőségre, majd **adjon hozzá egy ütemtervet**.
+1. Az Automation Runbook kattintson az **ütemtervek** lehetőségre, majd **adjon hozzá egy ütemtervet**.
  
     ![Ütemterv létrehozása](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. Kattintson az **ütemezett**  >  **új ütemterv létrehozása**lehetőségre, majd adja meg a részleteket.
+2. Kattintson az **ütemezett**  >  **új ütemterv létrehozása** lehetőségre, majd adja meg a részleteket.
 
     ![Ütemterv konfigurálása](./media/analysis-services-refresh-azure-automation/15.png)
 
@@ -117,9 +117,9 @@ Ezt a következőképpen lehet konfigurálni:
 Ha a runbook Azure Data Factory használatával szeretné felhasználni, először hozzon létre egy **webhookot** a runbook. A **webhook** egy URL-címet ad meg, amely Azure Data Factory webes tevékenységgel hívható meg.
 
 > [!IMPORTANT]
-> **Webhook**létrehozásához **közzé**kell tenni a Runbook állapotát.
+> **Webhook** létrehozásához **közzé** kell tenni a Runbook állapotát.
 
-1. Az Automation-Runbook kattintson a **webhookok**elemre, majd kattintson a **webhook hozzáadása**elemre.
+1. Az Automation-Runbook kattintson a **webhookok** elemre, majd kattintson a **webhook hozzáadása** elemre.
 
    ![Webhook hozzáadása](./media/analysis-services-refresh-azure-automation/17.png)
 
@@ -174,7 +174,7 @@ Egy statikus nyilvános IP-címmel rendelkező Azure-beli virtuális gép Azure 
 >
 >A hibrid feldolgozók Azure Automation konfigurálásával kapcsolatos további információkért lásd: [hibrid Runbook Worker telepítése](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation).
 
-A hibrid feldolgozók konfigurálása után hozzon létre egy webhookot a következő szakaszban leírtak szerint: [Data Factory használata](#consume-with-data-factory).  Az egyetlen különbség, hogy a **Run on**  >  webhook konfigurálásakor kiválasztja a**hibrid** feldolgozó futtatása lehetőséget.
+A hibrid feldolgozók konfigurálása után hozzon létre egy webhookot a következő szakaszban leírtak szerint: [Data Factory használata](#consume-with-data-factory).  Az egyetlen különbség, hogy a **Run on**  >  webhook konfigurálásakor kiválasztja a **hibrid** feldolgozó futtatása lehetőséget.
 
 Példa a hibrid feldolgozót használó webhookra:
 
@@ -202,7 +202,7 @@ $_Credential = Get-AutomationPSCredential -Name "ServicePrincipal"
 
 # If runbook was called from Webhook, WebhookData will not be null.
 if ($WebhookData)
-{ 
+{ 
     # Retrieve AAS details from Webhook request body
     $atmParameters = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
     Write-Output "CredentialName: $($atmParameters.CredentialName)"
@@ -223,7 +223,7 @@ else
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Példák](analysis-services-samples.md)  
 [REST API](/rest/api/analysisservices/servers)

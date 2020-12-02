@@ -6,18 +6,18 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: e756e033c8e5b2508dca9bde76ad16be26a940fa
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505784"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493661"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>A PostgreSQL-adatbázis frissítése a dump és a Restore használatával
 
 A következő módszerekkel frissítheti a PostgreSQL-kiszolgálót Azure Database for PostgreSQL – egyetlen kiszolgálón is, ha az adatbázisait egy magasabb verziószámú kiszolgálóra telepíti át.
 * **Offline** metódus a PostgreSQL [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) használatával és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) , amely az adatáttelepítés során felmerülő állásidőt okoz. Ez a dokumentum a frissítési/áttelepítési módszert tárgyalja.
-* **Online** metódus [Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) (DMS) használatával. Ez a módszer csökkenti a leállások áttelepítését, és a célként megadott adatbázist szinkronban tartja a forrással, és kiválaszthatja, hogy mikor kell kivágni. A DMS használata azonban néhány előfeltételt és korlátozást is igénybe vehet. Részletekért lásd a [DMS dokumentációját](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal). 
+* **Online** metódus [Database Migration Service](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) (DMS) használatával. Ez a módszer csökkenti a leállások áttelepítését, és a célként megadott adatbázist szinkronban tartja a forrással, és kiválaszthatja, hogy mikor kell kivágni. A DMS használata azonban néhány előfeltételt és korlátozást is igénybe vehet. Részletekért lásd a [DMS dokumentációját](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md). 
 
  Az alábbi táblázat az adatbázisok méretétől és forgatókönyveken alapuló javaslatokat tartalmaz.
 
@@ -28,7 +28,7 @@ A következő módszerekkel frissítheti a PostgreSQL-kiszolgálót Azure Databa
 | Kis adathordozós adatbázisok (10 GB – 100 GB) | X | X |
 | Nagyméretű adatbázisok (> 100 GB) |  | X |
 | Leállást biztosíthat a verziófrissítéshez (az adatbázis méretétől függetlenül) | X |  |
-| Megadhatja a DMS [előfeltételeit](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal#prerequisites), beleértve az újraindítást is? |  | X |
+| Megadhatja a DMS [előfeltételeit](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md#prerequisites), beleértve az újraindítást is? |  | X |
 | Elkerülheti a frissítési folyamat során a DDLs és a nem naplózott táblákat? | |  X |
 
 Ez az útmutató néhány offline áttelepítési módszert és példát tartalmaz, amelyek bemutatják, hogyan telepíthet át a forráskiszolgálóról a PostgreSQL újabb verzióját futtató célkiszolgálóra.
@@ -103,7 +103,7 @@ Ha nem rendelkezik PostgreSQL-ügyféllel, vagy a Azure Cloud Shell szeretné ha
     pg_dump -Fc -v --mySourceServer --port=5432 --username=myUser --dbname=mySourceDB | pg_restore -v --no-owner --host=myTargetServer --port=5432 --username=myUser --dbname=myTargetDB
     ```
 
-    Például:
+    Példa:
 
     ```azurecli-interactive
     pg_dump -Fc -v --host=pg-95.postgres.database.azure.com --port=5432 --username=pg@pg-95 --dbname=bench5gb | pg_restore -v --no-owner --host=pg-11.postgres.database.azure.com --port=5432 --username=pg@pg-11 --dbname=bench5gb
@@ -131,7 +131,7 @@ Ezt a metódust akkor érdemes figyelembe venni, ha az adatbázis néhány nagyo
     psql "host=myTargetServer port=5432 dbname=postgres user=myuser password=###### sslmode=mySSLmode"
     postgresl> create database myDB;
    ```
-   Például:
+   Példa:
     ```bash
     psql "host=pg-11.postgres.database.azure.com port=5432 dbname=postgres user=pg@pg-11 password=###### sslmode=require"
 
@@ -144,7 +144,7 @@ Ezt a metódust akkor érdemes figyelembe venni, ha az adatbázis néhány nagyo
     ```bash
     pg_dump -Fd -v --host=sourceServer --port=5432 --username=myUser --dbname=mySourceDB -j 4 -f myDumpDirectory
     ```
-    Például:
+    Példa:
     ```bash
     pg_dump -Fd -v --host=pg-95.postgres.database.azure.com --port=5432 --username=pg@pg-95 --dbname=bench5gb -j 4 -f dump.dir
     ```
@@ -153,7 +153,7 @@ Ezt a metódust akkor érdemes figyelembe venni, ha az adatbázis néhány nagyo
     ```bash
     $ pg_restore -v --no-owner --host=myTargetServer --port=5432 --username=myUser --dbname=myTargetDB -j 4 myDumpDir
     ```
-    Például:
+    Példa:
     ```bash
     $ pg_restore -v --no-owner --host=pg-11.postgres.database.azure.com --port=5432 --username=pg@pg-11 --dbname=bench5gb -j 4 dump.dir
     ```
@@ -161,7 +161,7 @@ Ezt a metódust akkor érdemes figyelembe venni, ha az adatbázis néhány nagyo
 > [!TIP]
 > Az ebben a dokumentumban említett folyamat az előzetes verzióban elérhető Azure Database for PostgreSQL rugalmas kiszolgáló frissítésére is használható. A fő különbség a rugalmas kiszolgáló céljának a () nélküli kapcsolatok karakterlánca `@dbName` .  Ha például a Felhasználónév `pg` , akkor az egyetlen kiszolgáló felhasználónevét a kapcsolódási karakterláncban `pg@pg-95` , míg a rugalmas kiszolgálóval, egyszerűen használhatja `pg` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Miután elégedett a céladatbázis-függvénnyel, elhúzhatja a régi adatbázis-kiszolgálót. 
 - Ha ugyanazt az adatbázis-végpontot szeretné használni, mint a forráskiszolgáló, akkor a régi forrás-adatbázis-kiszolgáló törlése után létrehozhat egy olvasási replikát a régi adatbázis-kiszolgáló nevével. Ha az állandó állapot létrejött, leállíthatja a replikát, amely a replika-kiszolgálót egy független kiszolgálónak fogja előléptetni. További részletekért lásd: [replikáció](./concepts-read-replicas.md) .

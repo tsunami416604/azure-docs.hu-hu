@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: cd0d4c2dc550beef1b5fceb373a4cb96ed75a172
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 688786fd60d7945340e0a027cf6ee28e6dc2bb32
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544496"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492471"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrálás a Network Performance Monitorről a kapcsolódási figyelőbe
 
@@ -71,8 +71,8 @@ Az áttelepítés után ügyeljen a következőre:
 * Telepítse át a külső integrációkat a ConnectionMonitor_CL táblába. A külső integrációk példái a Power BI-és Grafana található irányítópultok, valamint a biztonsági információkkal és az Event Management-(SIEM-) rendszerekkel való integrációk.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A kapcsolódási Figyelőről további információt a következő témakörben talál:
-* [Áttelepítés a kapcsolódási Figyelőről a kapcsolódási figyelőre](/azure/network-watcher/migrate-to-connection-monitor-from-connection-monitor-classic)
+* [Áttelepítés a kapcsolódási Figyelőről a kapcsolódási figyelőre](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
 * [Csatlakozáskezelő létrehozása a Azure Portal használatával](./connection-monitor-create-using-portal.md)

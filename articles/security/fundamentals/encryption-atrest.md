@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c9a68661a89f53c5aa27bdd046b5bc09a47db400
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 092320db9b7fe2b1f3fe142f84ad201d40dc6e2e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556624"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492284"
 ---
-# <a name="azure-data-encryption-at-rest"></a>Inaktív adatok titkosítása az Azure-ban
+# <a name="azure-data-encryption-at-rest"></a>Az Azure-beli adattitkosítás inaktív állapotban
 
 Microsoft Azure olyan eszközöket tartalmaz, amelyek a vállalat biztonsági és megfelelőségi igényeinek megfelelően védik az adatvédelmet. A tanulmány a következőkre összpontosít:
 
@@ -136,7 +136,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 
 Az Azure-szolgáltatásokon belül tárolt ügyféladatok védelme kiemelkedő fontosságú a Microsoft számára. Az összes Azure-beli üzemeltetett szolgáltatás elkötelezett amellett, hogy titkosítást biztosítson a REST-beállításokban. Az Azure-szolgáltatások a szolgáltatás által felügyelt kulcsokat, az ügyfél által felügyelt kulcsokat vagy az ügyféloldali titkosítást támogatják. Az Azure-szolgáltatások széles körben javítják a titkosítást a REST rendelkezésre állása során, és az új lehetőségek az előzetes verzióra és az általános elérhetőségre vannak tervezve a következő hónapokban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A szolgáltatás által felügyelt kulcsokkal és az ügyfél által felügyelt kulcsokkal kapcsolatos további tudnivalókért tekintse meg az [adattitkosítási modelleket](encryption-models.md) .
 - Ismerje meg, hogyan használja az Azure a [kettős titkosítást](double-encryption.md) az adattitkosítással kapcsolatos fenyegetések enyhítésére.

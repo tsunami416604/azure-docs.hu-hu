@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e446ec08d63c44566b2f45c1427999536d0be703
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188717"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492046"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>A Windows (SMB) Azure Files problémáinak elhárítása
 
@@ -147,7 +147,7 @@ További információért tekintse meg a TechNet [LmCompatibilityLevel](/previou
 
 ### <a name="solution"></a>Megoldás
 
-Csökkentse az egyidejű megnyitott fogópontok számát néhány leíró bezárásával, majd próbálkozzon újra. További információ: [Microsoft Azure Storage teljesítmény-és méretezhetőségi ellenőrzőlista](../blobs/storage-performance-checklist.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+Csökkentse az egyidejű megnyitott fogópontok számát néhány leíró bezárásával, majd próbálkozzon újra. További információ: [Microsoft Azure Storage teljesítmény-és méretezhetőségi ellenőrzőlista](../blobs/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 Egy fájlmegosztás, könyvtár vagy fájl nyitott leíróinak megtekintéséhez használja a [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell-parancsmagot.  
 
@@ -262,7 +262,7 @@ Előfordulhat, hogy a lassú teljesítmény jelenik meg, amikor fájlokat prób�
 - Ha nem rendelkezik meghatározott minimális I/O-mérettel, javasoljuk, hogy az optimális teljesítmény érdekében az 1 MiB-t használja az I/O-mérethez.
 -   Ha ismeri az írásokkal kiterjeszthető fájl végső méretét, és a szoftver nem rendelkezik kompatibilitási problémákkal, ha a fájl íratlan farka nulla értéket tartalmaz, a fájl méretét előre állítsa be ahelyett, hogy minden írási kibővítést ír.
 -   Használja a megfelelő másolási módszert:
-    -   Használjon [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) a két fájlmegosztás közötti átvitelhez.
+    -   Használjon [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a két fájlmegosztás közötti átvitelhez.
     -   Egy helyszíni számítógépen lévő fájlmegosztás esetén használja a [Robocopy](./storage-files-deployment-guide.md#robocopy) szolgáltatást.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>A Windows 8,1 vagy a Windows Server 2012 R2 szempontjai
@@ -401,7 +401,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 A parancsmag az alábbi ellenőrzéseket hajtja végre egymás után, és útmutatást nyújt a hibákhoz:
 1. CheckADObjectPasswordIsCorrect: Győződjön meg arról, hogy a Storage-fiókot jelképező AD-identitáson konfigurált jelszó megegyezik a kerb1 vagy a kerb2 kulcsával. Ha a jelszó helytelen, az [Update-AzStorageAccountADObjectPassword](./storage-files-identity-ad-ds-update-password.md) futtatásával állíthatja alaphelyzetbe a jelszót. 
 2. CheckADObject: Ellenőrizze, hogy van-e olyan objektum a Active Directoryban, amely a Storage-fiókot jelöli, és rendelkezik a megfelelő SPN-vel (egyszerű szolgáltatásnév). Ha az egyszerű szolgáltatásnév nem megfelelően van beállítva, futtassa a Debug parancsmagban visszaadott set-AD parancsmagot az egyszerű szolgáltatásnév konfigurálásához.
-3. CheckDomainJoined: ellenőrzi, hogy az ügyfélszámítógép tartományhoz van-e csatlakoztatva az AD-hez. Ha a számítógép nincs tartományhoz csatlakoztatva az AD-hez, tekintse meg ezt a [cikket](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) a tartományhoz való csatlakozással kapcsolatos útmutatásért.
+3. CheckDomainJoined: ellenőrzi, hogy az ügyfélszámítógép tartományhoz van-e csatlakoztatva az AD-hez. Ha a számítógép nincs tartományhoz csatlakoztatva az AD-hez, tekintse meg ezt a [cikket](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain) a tartományhoz való csatlakozással kapcsolatos útmutatásért.
 4. CheckPort445Connectivity: Győződjön meg arról, hogy a 445-es port az SMB-kapcsolatok számára meg van nyitva. Ha a szükséges port nincs megnyitva, tekintse meg a hibaelhárítási eszközt [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) a Azure Files kapcsolódási problémáinak elhárításához.
 5. CheckSidHasAadUser: Győződjön meg róla, hogy a bejelentkezett AD-felhasználó szinkronizálva van az Azure AD-vel. Ha szeretné megkeresni, hogy egy adott AD-felhasználó szinkronizálva van-e az Azure AD-val, megadhatja a-UserName és a-domain paramétert a bemeneti paraméterekben. 
 6. CheckGetKerberosTicket: a Storage-fiókhoz való kapcsolódásra irányuló Kerberos-jegy beszerzésére tett kísérlet. Ha nincs érvényes Kerberos-jogkivonat, futtassa a klist Get CIFS/Storage-Account-Name. file. Core. Windows. net parancsmagot, és vizsgálja meg a hibakódot a fő – a jegy lekérési hibája miatt.

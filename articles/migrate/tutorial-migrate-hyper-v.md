@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 038d0ec817d4f81371546e8d7aa4b48b299c8d98
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 2d31c5b90f37f336b48118e4f4adde4777f8cf4a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302550"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493134"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>A Hyper-V virtuális gépek migrálása az Azure-ba 
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag egy sorozat harmadik része, amely bemutatja, hogyan lehet fe
 > [!NOTE]
 > Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Ahol lehet, az oktatóanyagok az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és módot. 
 
- Az oktatóanyag a következőket ismerteti:
+ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Adja hozzá a Azure Migrate: Server áttelepítési eszközt.
@@ -45,7 +45,6 @@ Az oktatóanyag elkezdése előtt:
 4. Javasoljuk, hogy az Azure-ba való Migrálás előtt mérje fel a  [Hyper-V virtuális gépeket](tutorial-assess-hyper-v.md) , de nem kell.
 5. Lépjen a már létrehozott projekthez, vagy [hozzon létre egy új projektet](https://docs.microsoft.com/azure/migrate/create-manage-projects)
 6. Az Azure-fiók engedélyeinek ellenőrzése – az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
-
 
 ## <a name="download-and-install-the-provider"></a>A szolgáltató letöltése és telepítése
 

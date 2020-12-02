@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: f31a883a2b10f37d6a4a7a91fff37739e340ac60
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 73d88f69057dc6fe39f6329e89eb72ecebf853f0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348848"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491978"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>A Queue Storage használata C++-szal
 
@@ -23,7 +23,7 @@ ms.locfileid: "93348848"
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure üzenetsor-tárolási szolgáltatás használatával. A kódminták C++ nyelven íródtak, és az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) használják. A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása** , **bepillantása** , **beolvasása** és **törlése** , valamint a **várólisták létrehozása és törlése**.
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure üzenetsor-tárolási szolgáltatás használatával. A kódminták C++ nyelven íródtak, és az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) használják. A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása**, **bepillantása**, **beolvasása** és **törlése** , valamint a **várólisták létrehozása és törlése**.
 
 > [!NOTE]
 > Ez az útmutató az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárának 1.0.0-s és újabb verziójára vonatkozik. Az ajánlott verzió a Storage ügyféloldali kódtárának 2.2.0-s verziója, amely elérhető a [NuGeten](https://www.nuget.org/packages/wastorage) vagy a [GitHubon](https://github.com/Azure/azure-storage-cpp/) keresztül.
@@ -60,7 +60,7 @@ Adja hozzá a következő include utasításokat a C++ fájl elejéhez, ahol az 
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage-beli kapcsolatok karakterláncának beállítása
 
-Az Azure Storage-ügyfél egy tárolási kapcsolati sztringet használ az adatkezelési szolgáltatások elérésére szolgáló végpontok és hitelesítő adatok tárolásához. Ha egy ügyfélalkalmazás fut, a tárolási kapcsolati karakterláncot a következő formátumban kell megadnia a Storage-fiók neve és a *accountname* és a *AccountKey* értékek [Azure Portal](https://portal.azure.com) lévő Storage-fiókhoz tartozó Storage-hozzáférési kulcs használatával. További információ a Storage-fiókokról és a hozzáférési kulcsokról: [Tudnivalók az Azure Storage-fiókokról](../common/storage-account-create.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json). Ez a példa bemutatja, hogyan deklarálhat statikus mezőt a kapcsolati sztring tárolására:
+Az Azure Storage-ügyfél egy tárolási kapcsolati sztringet használ az adatkezelési szolgáltatások elérésére szolgáló végpontok és hitelesítő adatok tárolásához. Ha egy ügyfélalkalmazás fut, a tárolási kapcsolati karakterláncot a következő formátumban kell megadnia a Storage-fiók neve és a *accountname* és a *AccountKey* értékek [Azure Portal](https://portal.azure.com) lévő Storage-fiókhoz tartozó Storage-hozzáférési kulcs használatával. További információ a Storage-fiókokról és a hozzáférési kulcsokról: [Tudnivalók az Azure Storage-fiókokról](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). Ez a példa bemutatja, hogyan deklarálhat statikus mezőt a kapcsolati sztring tárolására:
 
 ```cpp
 // Define the connection-string with your values.
@@ -272,7 +272,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 queue.delete_queue_if_exists();  
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a várólista-tárolás alapjait, kövesse az alábbi hivatkozásokat, és ismerkedjen meg az Azure Storage szolgáltatással.
 

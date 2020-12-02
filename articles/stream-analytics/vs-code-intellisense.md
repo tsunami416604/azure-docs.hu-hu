@@ -6,16 +6,16 @@ author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 756604b71efd1715ae3b4ca3d5eebf0fdfa41e34
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 988b9d364f09a4c88bcaab1fe81ae80c8de5d4d9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129796"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491570"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense Azure Stream Analytics Visual Studio Code-eszközökön
 
-Az IntelliSense [stream Analytics lekérdezési nyelvhez](/stream-analytics-query/stream-analytics-query-language-reference?bc=https%253a%252f%252fdocs.microsoft.com%252fazure%252fbread%252ftoc.json&toc=https%253a%252f%252fdocs.microsoft.com%252fazure%252fstream-analytics%252ftoc.json) érhető el a [vs Code Azure stream Analytics eszközökben](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview). Az IntelliSense egy kód-kiegészítési támogatás, amely számos funkciót tartalmaz: tagok listázása, a paraméterek adatai, a gyors információ és a teljes szó. Az IntelliSense szolgáltatásait más nevek is meghívják, például a "kód befejezése", a "Content Assist" és a "Code Hinting".
+Az IntelliSense [stream Analytics lekérdezési nyelvhez](/stream-analytics-query/stream-analytics-query-language-reference?bc=https%253a%2f%2fdocs.microsoft.com%2fazure%2fbread%2ftoc.json&toc=https%253a%2f%2fdocs.microsoft.com%2fazure%2fstream-analytics%2ftoc.json) érhető el a [vs Code Azure stream Analytics eszközökben](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview). Az IntelliSense egy kód-kiegészítési támogatás, amely számos funkciót tartalmaz: tagok listázása, a paraméterek adatai, a gyors információ és a teljes szó. Az IntelliSense szolgáltatásait más nevek is meghívják, például a "kód befejezése", a "Content Assist" és a "Code Hinting".
 
 ![IntelliSense-bemutató](./media/vs-code-intellisense/intellisense.gif)
 
@@ -37,7 +37,7 @@ A VS Code IntelliSense Stream Analytics eszközei különböző típusú kiegés
 |Befejezés     |  Típus       |
 | ----- | ------- |
 | Kulcsszavak | `keyword`
-| Functions | `build-in function`, `user defined function`  |
+| Függvények | `build-in function`, `user defined function`  |
 | Adathalmaz neve| `input`, `output`, `intermediate result set`|
 | Adathalmaz oszlopának neve|`input`, `intermediate result set`|
 
@@ -69,7 +69,7 @@ A nyelvi szolgáltatás által biztosítottak szerint az egyes azonosítók **gy
 
 Ezt a problémát a hiányzó bemeneti konfiguráció okozta, amely adatokat biztosít. Megtekintheti, hogy a [helyi bemenet](visual-studio-code-local-run.md#define-a-local-input) vagy az [élő bemenet](visual-studio-code-local-run-live-input.md#define-a-live-stream-input) megfelelően van-e konfigurálva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-visual-studio-code.md)
 * [A Visual Studio Code segítségével helyileg tesztelheti Stream Analytics lekérdezéseket a mintaadatok használatával](visual-studio-code-local-run.md)
