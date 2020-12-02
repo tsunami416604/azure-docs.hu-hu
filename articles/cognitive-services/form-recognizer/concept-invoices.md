@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 5c8af8ddb7a0870de37b73cbe09965ee63c88ba1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eb1be4c78be0eb7fb943700b168fa82ede4d3861
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353748"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458395"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Űrlap-felismerő előre összeépített számlázási modellje
 
@@ -45,7 +45,7 @@ Szüksége lesz egy Azure-előfizetésre ([hozzon létre egyet ingyen](https://a
 
 ## <a name="the-analyze-invoice-operation"></a>A számla elemzése művelet
 
-A [számla elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync) művelet a számla egy képét vagy PDF-fájlját veszi fel, és Kinyeri a kamat értékét. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
+A [számla elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291) művelet a számla egy képét vagy PDF-fájlját veszi fel, és Kinyeri a kamat értékét. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
 
 |Válasz fejléce| Eredmény URL-címe |
 |:-----|:----|
@@ -53,7 +53,7 @@ A [számla elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/ser
 
 ## <a name="the-get-analyze-invoice-result-operation"></a>Az elemzés számla eredményének lekérése művelet
 
-A második lépés az elemzési [számla eredményének beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeInvoiceResult) művelet hívása. Ez a művelet a számla elemzése művelettel létrehozott eredmény-azonosítót veszi figyelembe. Egy olyan JSON-választ ad vissza, amely tartalmazza az **állapot** mezőt a következő lehetséges értékekkel. Ezt a műveletet a iteratív hívja meg, amíg vissza nem tér a **sikeres** értékkel. A kérések másodpercenkénti (RPS) arányának meghaladása érdekében használjon 3 – 5 másodperces intervallumot.
+A második lépés az elemzési [számla eredményének beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83) művelet hívása. Ez a művelet a számla elemzése művelettel létrehozott eredmény-azonosítót veszi figyelembe. Egy olyan JSON-választ ad vissza, amely tartalmazza az **állapot** mezőt a következő lehetséges értékekkel. Ezt a műveletet a iteratív hívja meg, amíg vissza nem tér a **sikeres** értékkel. A kérések másodpercenkénti (RPS) arányának meghaladása érdekében használjon 3 – 5 másodperces intervallumot.
 
 |Mező| Típus | Lehetséges értékek |
 |:-----|:----:|:----|
@@ -74,7 +74,7 @@ A JSON-kimenet 3 részből áll:
 
 A számlázási szolgáltatás kibontja a szöveget, a táblákat és a 26 számla mezőt. Az alábbiakban láthatók a JSON-kimenetre adott számlán kinyert mezők (az alábbi kimenet ezt a [mintát](./media/sample-invoice.jpg)használja)  
 
-|Név| Típus | Leírás | Szöveg | Érték (szabványosított kimenet) |
+|Név| Típus | Description | Szöveg | Érték (szabványosított kimenet) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | sztring | Az ügyfél számlázása folyamatban van | Microsoft Corp |  |
 | CustomerId | sztring | Az ügyfél hivatkozási azonosítója | CID-12345 |  |

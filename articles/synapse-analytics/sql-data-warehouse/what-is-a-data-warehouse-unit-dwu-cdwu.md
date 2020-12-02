@@ -1,5 +1,5 @@
 ---
-title: Adatraktár-egységek (DWU-EK) az Azure szinapszis Analyticsben (korábban SQL DW)
+title: Adatraktár-egységek (DWU-EK) dedikált SQL-készlethez (korábban SQL DW)
 description: Javaslatok az adatraktár-egységek (DWU) ideális számának kiválasztásához az árak és a teljesítmény optimalizálásához, valamint az egységek számának módosításához.
 services: synapse-analytics
 author: mlee3gsd
@@ -11,20 +11,20 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bfcd9c6430deea948804ba8c1d37e404b1897c5f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3d9d5d4009ad40eecee26271b726c6a3e9aeb8b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311890"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459199"
 ---
-# <a name="data-warehouse-units-dwus"></a>Adatraktár-egységek (DWU)
+# <a name="data-warehouse-units-dwus-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Adatraktár-egységek (DWU) dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben
 
 Javaslatok az adatraktár-egységek (DWU) ideális számának kiválasztásához az árak és a teljesítmény optimalizálásához, valamint az egységek számának módosításához.
 
 ## <a name="what-are-data-warehouse-units"></a>Mik az adatraktár-egységek
 
-A [SZINAPSZIS SQL-készlet](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) a kiépített analitikai erőforrások gyűjteményét jelöli. Az analitikai erőforrások a CPU, a memória és az IO kombinációja vannak meghatározva.
+A [DEDIKÁLT SQL-készlet (korábban SQL DW)](sql-data-warehouse-overview-what-is.md) a kiépített analitikai erőforrások gyűjteményét jelöli. Az analitikai erőforrások a CPU, a memória és az IO kombinációja vannak meghatározva.
 
 Ez a három erőforrás az adatraktár-egységek (DWU) számítási skálázási egységei között van. A DWU a számítási erőforrások és teljesítmény absztrakt, normalizált mértéke.
 
@@ -34,8 +34,8 @@ A nagyobb teljesítmény érdekében növelheti az adatraktár-egységek számá
 
 Az adatraktár-egységek teljesítménye a következő adatraktár-számítási feladatok mérőszámán alapul:
 
-- A standard dedikált SQL-készlet lekérdezésének gyorsasága nagy mennyiségű sort tud beolvasni, majd összetett összesítést hajt végre. Ez a művelet I/O-és CPU-igényes.
-- A dedikált SQL-készlet gyors betöltése az Azure Storage-Blobokból vagy Azure Data Lakeból. A művelet a hálózati és a CPU-igényes.
+- A standard dedikált SQL-készlet (korábban SQL DW) lekérdezésének gyorsasága nagy mennyiségű sort tud beolvasni, majd összetett összesítést hajt végre. Ez a művelet I/O-és CPU-igényes.
+- A dedikált SQL-készlet (korábbi nevén SQL DW) az Azure Storage-Blobokból vagy a Azure Data Lakeokból származó adatok betöltését hajthatja meg. A művelet a hálózati és a CPU-igényes.
 - A [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL-parancs által a tábla másolásának gyorsasága. A művelet magában foglalja az adatok tárolásból való beolvasását, a berendezés csomópontjain való terjesztését és a tárolóba való írást. Ez a művelet CPU-, IO-és hálózati igényű.
 
 Növekvő DWU:
@@ -48,12 +48,12 @@ Növekvő DWU:
 
 A szolgáltatási szint célkitűzése (SLO) a méretezhetőségi beállítás, amely meghatározza az adattárház költségeit és teljesítményét. A Gen2 szolgáltatási szintjeit számítási adattárház-egységek (cDWU-EK) mérik, például DW2000c. A Gen1 szolgáltatási szintjei a DWU-ben vannak mérve, például DW2000.
 
-A szolgáltatási szint célkitűzés (SLO) a méretezhetőségi beállítás, amely meghatározza a dedikált SQL-készlet költségeit és teljesítményét. A Gen2 dedikált SQL-készlet szolgáltatási szintjeit az adatraktár-egységek (DWU) mérik, például DW2000c.
+A szolgáltatási szint célkitűzés (SLO) a méretezhetőségi beállítás, amely meghatározza a dedikált SQL-készlet (korábban SQL DW) költségeit és teljesítményét. A Gen2 dedikált SQL-készlet (korábban SQL DW) szolgáltatási szintjeit az adatraktár-egységek (DWU-EK) mérik (például DW2000c).
 
 > [!NOTE]
-> Az Azure szinapszis Analytics Gen2 nemrégiben hozzáadott további méretezési képességeket a számítási rétegek támogatásához, ami 100 cDWU. A jelenleg a Gen1-on található meglévő adattárházak, amelyek az alacsonyabb számítási szinteket igénylik, mostantól a Gen2-ra frissíthetik azokat a régiókat, amelyek jelenleg elérhetők a további díjak nélkül.  Ha a régiója még nem támogatott, akkor továbbra is frissíthet egy támogatott régióra. További információ: [verziófrissítés a Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> A dedikált SQL-készlet (korábban SQL DW) Gen2 nemrég hozzáadott további méretezési képességeket a számítási rétegek támogatásához, amely 100 cDWU. A jelenleg a Gen1-on található meglévő adattárházak, amelyek az alacsonyabb számítási szinteket igénylik, mostantól a Gen2-ra frissíthetik azokat a régiókat, amelyek jelenleg elérhetők a további díjak nélkül.  Ha a régiója még nem támogatott, akkor továbbra is frissíthet egy támogatott régióra. További információ: [verziófrissítés a Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-A T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg a szolgáltatási szintet és a teljesítmény szintjét a dedikált SQL-készlethez.
+A T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg a szolgáltatási szintet és a dedikált SQL-készlet (korábban SQL DW) teljesítményét.
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -88,7 +88,7 @@ A számítási feladatok legjobb DWU megkeresésének lépései:
 2. Az alkalmazások teljesítményének figyelése az adatterhelések a rendszeren való tesztelésekor, a kiválasztott DWU számának megjelölésével.
 3. Azonosítsa a maximális tevékenység időszakos időszakára vonatkozó további követelményeket. Előfordulhat, hogy a jelentős csúcsokat és a tevékenységekben lévő vályúkat bemutató munkaterheléseket gyakran kell méretezni.
 
-A dedikált SQL Pool egy kibővíthető rendszer, amely nagy mennyiségű számítási és lekérdezési mennyiségű adat kiépítését is képes biztosítani.
+A dedikált SQL-készlet (korábbi nevén SQL DW) egy kibővíthető rendszer, amely nagy mennyiségű számítási és lekérdezési mennyiségű adat kiépítését képes kiépíteni.
 
 Ha szeretné megtekinteni a skálázás valódi képességeit, különösen nagyobb DWU esetében, javasoljuk, hogy az adatkészletet méretezéssel méretezheti, hogy elegendő mennyiségű adattal rendelkezzen a processzorok megadásához. A méretezési teszteléshez legalább 1 TB-ot ajánlott használni.
 
@@ -141,7 +141,7 @@ A DWU módosításához használja a [set-AzSqlDatabase PowerShell-](/powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-További információ: PowerShell- [parancsmagok az Azure szinapszis analyticshez](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+További információ: [PowerShell-parancsmagok a DEDIKÁLT SQL-készlethez (korábban SQL DW)](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -173,7 +173,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-További REST API Példákért lásd: [REST API-k az Azure szinapszis analyticshez](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+További REST API példákat a [REST API-k a DEDIKÁLT SQL-készlethez (korábban SQL DW)](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakörben talál.
 
 ## <a name="check-status-of-dwu-changes"></a>DWU-változások állapotának ellenõrzése
 
@@ -204,7 +204,7 @@ FROM      sys.databases
     ;
     ```
 
-Ez a DMV a dedikált SQL-készlet különböző felügyeleti műveleteivel, például a művelettel és a művelet állapotával kapcsolatos információkat ad vissza, amely vagy IN_PROGRESS vagy kész.
+Ez a DMV a dedikált SQL-készlet (korábban SQL DW) különböző felügyeleti műveleteivel kapcsolatos információkat ad vissza, például a műveletet és a művelet állapotát, amely vagy IN_PROGRESS vagy kész.
 
 ## <a name="the-scaling-workflow"></a>A skálázási munkafolyamat
 
@@ -213,6 +213,6 @@ Amikor elindít egy méretezési műveletet, a rendszer először az összes nyi
 - A skálázási műveletek esetében a rendszer leválasztja az összes számítási csomópontot, kiépíti a további számítási csomópontokat, majd újracsatlakoztatja a tárolási réteghez.
 - A leskálázási művelethez a rendszer leválasztja az összes számítási csomópontot, majd csak a szükséges csomópontokat csatlakoztatja a tárolási réteghez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A teljesítmény kezelésével kapcsolatos további információkért lásd: [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md) , valamint a [memória és a Egyidejűség korlátai](memory-concurrency-limits.md).

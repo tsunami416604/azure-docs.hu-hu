@@ -9,16 +9,16 @@ ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 27881b048a738d4de2acb57dcc4c2dad1f4d5b24
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 62610e1b86671021e66891ae232bacbd4b3e40ed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435365"
+ms.locfileid: "96458823"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Apache Spark kódtárainak kezelése az Azure szinapszis Analyticsben
 
-A tárak újrafelhasználható kódot biztosítanak, amelyet a programok vagy projektek számára érdemes felvenni. Ahhoz, hogy a harmadik féltől származó vagy helyileg létrehozott kódot elérhetővé tegye az alkalmazásai számára, telepítheti a kódtárat az egyik kiszolgáló nélküli Apache Spark készletbe (előzetes verzió). Miután telepítette a tárat egy Spark-készlethez, az minden munkamenet számára elérhető lesz, amely ugyanazt a készletet használja. 
+A tárak újrafelhasználható kódot biztosítanak, amelyet a programok vagy projektek számára érdemes felvenni. Ahhoz, hogy a harmadik féltől származó vagy helyileg létrehozott kódot elérhetővé tegye az alkalmazásai számára, telepítheti a kódtárat az egyik kiszolgáló nélküli Apache Spark készletbe. Miután telepítette a tárat egy Spark-készlethez, az minden munkamenet számára elérhető lesz, amely ugyanazt a készletet használja. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 - A kódtárak telepítéséhez és frissítéséhez a **Storage blob Adatközreműködőinek** vagy a **Storage blob-adattulajdonosi** engedélyekkel kell rendelkeznie az Azure szinapszis Analytics-munkaterülethez csatolt elsődleges Gen2 Storage-fiókban.
@@ -26,11 +26,11 @@ A tárak újrafelhasználható kódot biztosítanak, amelyet a programok vagy pr
 ## <a name="default-installation"></a>Alapértelmezett telepítés
 Apache Spark az Azure szinapszis Analyticsben a teljes anacondas telepítése és további könyvtárak is elérhetők. A teljes kódtárak listája a következő címen érhető el: [Apache Spark Version support](apache-spark-version-support.md). 
 
-A Spark-példány indításakor ezek a kódtárak automatikusan szerepelni fognak. A Spark-készlet (előzetes verzió) szintjén további Python-és egyéni létrehozott csomagok is hozzáadhatók.
+A Spark-példány indításakor ezek a kódtárak automatikusan szerepelni fognak. A Spark-készlet szintjén további Python-és egyéni létrehozott csomagok is hozzáadhatók.
 
 
 ## <a name="manage-python-packages"></a>Python-csomagok kezelése
-Miután azonosította a Spark-alkalmazáshoz használni kívánt kódtárakat, egy Spark-készletbe (előzetes verzió) is telepítheti őket. 
+Miután azonosította a Spark-alkalmazáshoz használni kívánt kódtárakat, egy Spark-készletbe is telepítheti őket. 
 
  A virtuális környezet frissítéséhez *requirements.txt* fájl (a parancs kimenete `pip freeze` ) használható. A telepítéshez vagy frissítéshez a fájlban felsorolt csomagok letöltése a PyPi a készlet indításakor történik. Ezt a követelményt a rendszer minden alkalommal felhasználja, amikor egy Spark-példányt létrehoznak a Spark-készletből.
 
@@ -54,7 +54,7 @@ alabaster==0.7.10
 A Spark-alkalmazás fejlesztése során előfordulhat, hogy frissítenie kell a meglévőt, vagy új kódtárakat kell telepítenie. A tárak a készlet létrehozásakor vagy azt követően is frissíthetők.
 
 #### <a name="install-packages-during-pool-creation"></a>Csomagok telepítése a készlet létrehozása során
-Könyvtárak telepítése Spark-készletre (előzetes verzió) a készlet létrehozása során:
+Tárak telepítése Spark-készletre a készlet létrehozása során:
    
 1. Navigáljon az Azure szinapszis Analytics-munkaterületre a Azure Portal.
    
@@ -66,7 +66,7 @@ Könyvtárak telepítése Spark-készletre (előzetes verzió) a készlet létre
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>Csomagok telepítése a szinapszis munkaterületről
-További kódtárak frissítése vagy hozzáadása a Spark-készlethez (előzetes verzió) az Azure szinapszis Analytics-portálról:
+További kódtárak frissítése vagy hozzáadása Spark-készlethez az Azure szinapszis Analytics-portálon:
 
 1.  Navigáljon az Azure szinapszis Analytics-munkaterületre a Azure Portal.
    
@@ -79,7 +79,7 @@ További kódtárak frissítése vagy hozzáadása a Spark-készlethez (előzete
     ![Python-kódtárak hozzáadása a szinapszisban](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>Csomagok telepítése a Azure Portal
-Függvénytár telepítése Spark-készletre (előzetes verzió) közvetlenül a Azure Portalról:
+Függvénytár telepítése Spark-készletre közvetlenül a Azure Portal:
    
  1. Navigáljon az Azure szinapszis Analytics-munkaterületre a Azure Portal.
    

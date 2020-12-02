@@ -9,14 +9,14 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e06f0918ce23beded7475f644e7cc6019facacc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 28af603c0969419cd2e7b8683373faf3838e2242
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322590"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458944"
 ---
-# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>A Azure Cosmos DB használata az Azure szinapszis-kapcsolaton keresztüli Apache Spark használatával (előzetes verzió)
+# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Azure Cosmos DB használata az Azure szinapszis-kapcsolaton keresztüli Apache Spark használatával
 
 Ebből a cikkből megtudhatja, hogyan kommunikálhat a Azure Cosmos DB a szinapszis Apache Spark használatával. A Scala, a Python, a SparkSQL és a C# teljes körű támogatásával a szinapszis Apache Spark az Azure-beli [szinapszis-hivatkozáson](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)alapuló adatelemzési, adattervezési, adatelemzési és adatelemzési forgatókönyvek (Azure Cosmos db) központi része.
 
@@ -211,7 +211,7 @@ Ebből a példából megtudhatja, hogyan hivatkozhat a külső kódtárak a JAR-
 ```
 Ha távoli Spark-feladatokra vonatkozó definíciókat szeretne elküldeni egy kiszolgáló nélküli Apache Spark készletbe, megtudhatja, hogyan hivatkozhat a külső könyvtárakra az [oktatóanyag](../spark/apache-spark-job-definitions.md)követésével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Minták az Azure szinapszis hivatkozásának megkezdéséhez a GitHubon](https://aka.ms/cosmosdb-synapselink-samples)
 * [Ismerje meg, mi támogatott az Azure szinapszis-hivatkozás Azure Cosmos DB](./concept-synapse-link-cosmos-db-support.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az adattavak feltárása és elemzése kiszolgáló nélküli szinapszis SQL-sel'
-description: Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a különböző Azure Open-adatkészleteket ötvöző felderítő adatok elemzését a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatával, és megjelenítheti az eredményeket a szinapszis Studio for Azure szinapszis Analyticsben.
+title: 'Oktatóanyag: kiszolgáló nélküli SQL-készlet használata Azure-beli nyílt adatkészletek elemzéséhez az Azure szinapszis Studióban'
+description: Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a feltárt adatok elemzését a különböző Azure Open-adatkészletek kiszolgáló nélküli SQL-készlettel való kombinálásával, és megjelenítheti az eredményeket az Azure szinapszis Studióban
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 11/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: af6fc75b5de22fc77313932ca17ce695e889dad3
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7b2d4953b3a42c5d66fca4a67b4a6d0f13700a35
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237963"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459118"
 ---
-# <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool-preview"></a>Oktatóanyag: az adattavak feltárása és elemzése kiszolgáló nélküli SQL-készlettel (előzetes verzió)
+# <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool"></a>Oktatóanyag: az adattavak feltárása és elemzése kiszolgáló nélküli SQL-készlettel
 
 Ebből az oktatóanyagból megtudhatja, hogyan végezheti el a felderítő adatok elemzését. A különböző Azure Open-adatkészleteket kiszolgáló nélküli SQL-készlettel kombinálhatja. Ezután megjelenítheti az eredményeket a szinapszis Studio for Azure szinapszis Analytics szolgáltatásban.
 
@@ -208,7 +208,7 @@ A lekérdezés eredménye azt jelzi, hogy a taxik számának csökkenése a köv
 
 Ebből az oktatóanyagból megtudhatta, hogy az adatelemzők hogyan tudják gyorsan végrehajtani a felderítő adatelemzést, és hogy a kiszolgáló nélküli SQL-készlet használatával könnyedén egyesítheti a különböző adatkészleteket, és megjelenítheti az eredményeket az Azure szinapszis Studio használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A kiszolgáló nélküli SQL-Power BI Desktop készlet összekapcsolásával és a jelentések létrehozásával kapcsolatos további információkért lásd: [kiszolgáló nélküli SQL-készlet összekötése a Power bi Desktop és jelentések létrehozásához](tutorial-connect-power-bi-desktop.md).
 

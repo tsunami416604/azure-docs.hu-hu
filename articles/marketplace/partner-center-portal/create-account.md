@@ -8,12 +8,12 @@ ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: ccdc87d03181bad1aba4dd362a651fa42381343a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 39a9b363c847b615bfbe049b4b47628e8688c607
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542286"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458114"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactér-fiók létrehozása a partner Centerben
 
@@ -114,7 +114,7 @@ Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. Folytas
 >
 >Az egyéni fiókok olyan fejlesztők számára készültek, akik saját maguk dolgoznak. A vállalati fiókok a szervezetekhez és a vállalkozásokhoz tartoznak. A vállalati fiókok hozzáférést biztosítanak az alkalmazások további funkciókkal való elküldéséhez.
 >
-> Annak megállapításához, hogy engedélyezte-e a fiók beállítását a vállalatnál, a regisztráció után további ellenőrzésre van szükség a vállalati fiókokról. Ez az ellenőrzés néhány napig is eltarthat néhány hétig, és gyakran tartalmaz telefonhívást a vállalatnak. Mindkét típusú fiók lehetővé teszi az alkalmazások, beépülő modulok és szolgáltatások beküldését. További információkért lásd a [fióktípus, a helyszínek és a díjak](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)című témakört.
+> Annak megállapításához, hogy engedélyezte-e a fiók beállítását a vállalatnál, a regisztráció után további ellenőrzésre van szükség a vállalati fiókokról. Ez az ellenőrzés néhány napig is eltarthat néhány hétig, és gyakran tartalmaz telefonhívást a vállalatnak. Mindkét típusú fiók lehetővé teszi az alkalmazások, beépülő modulok és szolgáltatások beküldését. További információkért lásd a [fióktípus, a helyszínek és a díjak](/windows/uwp/publish/account-types-locations-and-fees)című témakört.
 
 Ha regisztrálja a kereskedelmi piactér programját a fejlesztői programtal megegyező fiókkal, a partner Center bal oldali ablaktábláján láthatja az összes meglévő program-regisztrációt.
 
@@ -161,7 +161,7 @@ Az azonos Azure Active Directory bérlő további felhasználói a következő l
 
 A folyamat befejezése után nyissa meg a kereskedelmi piactér fiókot, amely megjelenik a bal oldali panelen az újonnan létrehozott közzétevő kezeléséhez. Ha nem látja a kereskedelmi Piactéri fiókot, frissítse az oldalt. Az új közzétevő megjelenik a **közzétevők** listájában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mit az a Microsoft kereskedelmi piactér?](../overview.md)
 - [A kereskedelmi piactér-fiók kezelése a partner Centerben](manage-account.md)

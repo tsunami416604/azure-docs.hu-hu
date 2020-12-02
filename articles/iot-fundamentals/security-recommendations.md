@@ -12,12 +12,12 @@ ms.custom:
 - security-recommendations
 - amqp
 - mqtt
-ms.openlocfilehash: 5a7fc2a5a5a6be7695fa816f28e3cdf61c5839f2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a1de3a71253b1a82b4423bff279fbf3f7e378da4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208268"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457605"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Biztonsági javaslatok az Azure eszközök internetes hálózata (IoT) üzembe helyezéséhez
 
@@ -40,7 +40,7 @@ A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikus
 
 | Ajánlás | Megjegyzések | Az ASC támogatja |
 |-|----|--|
-| A hub hozzáférés-vezérlésének meghatározása | [Ismerje meg és határozza meg az egyes összetevők hozzáférésének típusát](iot-security-deployment.md#securing-the-cloud) a IoT hub-megoldásban a funkció alapján. Az engedélyezett engedélyek a *Registry Read*, a *RegistryReadWrite*, a *ServiceConnect*és a *DeviceConnect*. Az [IoT hub alapértelmezett megosztott elérési szabályzatai](../iot-hub/iot-hub-devguide-security.md#access-control-and-permissions) az egyes összetevők engedélyeinek definiálásához is segítséget nyújtanak a szerepkörük alapján. | - |
+| A hub hozzáférés-vezérlésének meghatározása | [Ismerje meg és határozza meg az egyes összetevők hozzáférésének típusát](iot-security-deployment.md#securing-the-cloud) a IoT hub-megoldásban a funkció alapján. Az engedélyezett engedélyek a *Registry Read*, a *RegistryReadWrite*, a *ServiceConnect* és a *DeviceConnect*. Az [IoT hub alapértelmezett megosztott elérési szabályzatai](../iot-hub/iot-hub-devguide-security.md#access-control-and-permissions) az egyes összetevők engedélyeinek definiálásához is segítséget nyújtanak a szerepkörük alapján. | - |
 | A háttér-szolgáltatások hozzáférés-vezérlésének meghatározása | A IoT Hub-megoldás által betöltött adatmennyiség más Azure-szolgáltatások, például [Cosmos db](../cosmos-db/index.yml), [stream Analytics](../stream-analytics/index.yml), [app Service](../app-service/index.yml), [Logic apps](../logic-apps/index.yml)és [blob Storage](../storage/blobs/storage-blobs-introduction.md)használatával is felhasználható. Ügyeljen rá, hogy megértse és engedélyezze a megfelelő hozzáférési engedélyeket a szolgáltatások dokumentációjában. | - |
 
 ## <a name="data-protection"></a>Adatvédelem
@@ -51,7 +51,7 @@ A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikus
 | Biztonságos eszközök kommunikációja | A IoT Hub a Transport Layer Security (TLS) szabvány, a 1,2-es és a 1,0-es verziókat támogató eszközök közötti kapcsolatokat biztosítja. A maximális biztonság érdekében a [TLS 1,2](https://tools.ietf.org/html/rfc5246) -et használja. | - |
 | Biztonságos szolgáltatás kommunikációja | A IoT Hub végpontokat biztosít a háttér-szolgáltatásokhoz, például az [Azure Storage](../storage/index.yml) -hoz vagy a [Event HUBS](../event-hubs/index.yml) csak a TLS protokollal való kapcsolódáshoz, és a végpontok nem titkosított csatornán vannak kitéve. Ha ezek az adatok elérik ezeket a háttér-szolgáltatásokat a tároláshoz vagy az elemzéshez, ügyeljen arra, hogy a szolgáltatáshoz megfelelő biztonsági és titkosítási módszereket alkalmazzon, és megvédje a háttérbeli bizalmas adatokat. | - |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 | Ajánlás | Megjegyzések | Az ASC támogatja |
 |-|----|--|
@@ -63,9 +63,9 @@ A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikus
 | Ajánlás | Megjegyzések | Az ASC támogatja |
 |-|----|--|
 | Jogosulatlan hozzáférés figyelése az eszközökhöz |  Az eszköz operációs rendszerének naplózási funkciója segítségével figyelheti az eszköz vagy a portok biztonsági megsértését vagy fizikai illetéktelen módosítását. | - |
-| A IoT-megoldás figyelése a felhőből | A IoT Hub-megoldás általános állapotát a [Azure monitor metrikáinak](../iot-hub/iot-hub-metrics.md)használatával figyelheti. | - |
-| Diagnosztika beállítása | Részletesen tekintse meg a műveleteit a megoldásban lévő események naplózásával, majd küldje el a diagnosztikai naplókat a Azure Monitor a teljesítmény láthatóságának megismeréséhez. További információért olvassa el a [figyelés és a problémák diagnosztizálása az IoT hub-ban](../iot-hub/iot-hub-monitor-resource-health.md) című témakört. | - |
+| A IoT-megoldás figyelése a felhőből | A IoT Hub-megoldás általános állapotát a [Azure monitor metrikáinak](../iot-hub/monitor-iot-hub.md)használatával figyelheti. | - |
+| Diagnosztika beállítása | Részletesen tekintse meg a műveleteit a megoldásban lévő események naplózásával, majd küldje el a diagnosztikai naplókat a Azure Monitor a teljesítmény láthatóságának megismeréséhez. További információért olvassa el a [figyelés és a problémák diagnosztizálása az IoT hub-ban](../iot-hub/monitor-iot-hub.md) című témakört. | - |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure IoT-t érintő speciális forgatókönyvek esetében előfordulhat, hogy további biztonsági követelményeket kell figyelembe vennie. További útmutatásért lásd: [IoT biztonsági architektúra](iot-security-architecture.md) .

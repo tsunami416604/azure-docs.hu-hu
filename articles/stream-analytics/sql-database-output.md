@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 9d5ddb508740cf5fec670d258926419512e3d549
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ac2c9cb1710c4b4f67ba2aa06707d08cc45d4907
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129830"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459247"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure SQL Database kimenete
 
@@ -24,7 +24,7 @@ Az [Azure SQL felügyelt példányát](../azure-sql/managed-instance/sql-managed
 
 A következő táblázat felsorolja a tulajdonságok nevét és leírását SQL Database kimenet létrehozásához.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias |Egy rövid név, amely a lekérdezésekben a lekérdezés kimenetének az adatbázisba való irányításához használatos. |
 | Adatbázis | Annak az adatbázisnak a neve, ahová a kimenetet küldi. |
@@ -35,11 +35,11 @@ A következő táblázat felsorolja a tulajdonságok nevét és leírását SQL 
 |Partíciós séma öröklése| Az előző lekérdezési lépés particionálási sémájának öröklésére szolgáló lehetőség, amely lehetővé teszi, hogy teljesen párhuzamos topológiát engedélyezzen több íróival a táblához. További információ: [Azure stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md).|
 |Kötegek maximális száma| Az összes tömeges beszúrási tranzakcióval ellátott rekordok számának ajánlott felső korlátja.|
 
-Két olyan adapter van, amely lehetővé teszi a Azure Stream Analytics kimenetét az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse): SQL Database és az Azure Szinapszisba. Azt javasoljuk, hogy az SQL Database adapter helyett az Azure szinapszis Analytics-adaptert válassza, ha az alábbi feltételek bármelyike teljesül:
+Két olyan adapter van, amely lehetővé teszi a Azure Stream Analytics kimenetét az Azure szinapszis Analytics: SQL Database és az Azure szinapszis számára. Azt javasoljuk, hogy az SQL Database adapter helyett az Azure szinapszis Analytics-adaptert válassza, ha az alábbi feltételek bármelyike teljesül:
 
-* **Átviteli sebesség** : Ha a várt átviteli sebesség meghaladja a 10 MB/s-ot, a jobb teljesítmény érdekében használja az Azure szinapszis kimeneti kapcsolóját.
+* **Átviteli sebesség**: Ha a várt átviteli sebesség meghaladja a 10 MB/s-ot, a jobb teljesítmény érdekében használja az Azure szinapszis kimeneti kapcsolóját.
 
-* **Bemeneti partíciók** : Ha nyolc vagy több bemeneti partícióval rendelkezik, az Azure szinapszis kimeneti beállításával jobban kibővítheti a méretezést.
+* **Bemeneti partíciók**: Ha nyolc vagy több bemeneti partícióval rendelkezik, az Azure szinapszis kimeneti beállításával jobban kibővítheti a méretezést.
 
 ## <a name="partitioning"></a>Particionálás
 
@@ -49,7 +49,7 @@ A particionálásnak engedélyezve kell lennie, és a lekérdezésben a PARTITIO
 
 Az üzenetek maximális méretét a **kötegek maximális száma** beállítással állíthatja be. Az alapértelmezett maximális érték 10 000, és az alapértelmezett minimum a 100 sor egy tömeges beszúrással. További információ: [Azure SQL-korlátok](../azure-sql/database/resource-limits-logical-server.md). A kötegek kezdetben tömegesen vannak beszúrva a kötegek maximális számával. A Batch az SQL-újrapróbálkozást lehetővé tevő hibák alapján fél (a minimális kötegek száma) között oszlik meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 * [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)

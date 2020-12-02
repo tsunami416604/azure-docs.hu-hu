@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: a számítások szüneteltetése és folytatása a szinapszis SQL-készletben a Azure Portal használatával'
+title: 'Rövid útmutató: a számítási feladat szüneteltetése és folytatása a dedikált SQL-készletben (korábban SQL DW) a Azure Portalon keresztül'
 description: A Azure Portal használatával szüneteltetheti az SQL-készlet számítási felszámítását a költségek megtakarítása érdekében. Ha készen áll az adattárház használatára, folytassa a számítást.
 services: synapse-analytics
 author: kevinvngo
@@ -7,20 +7,20 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
-ms.date: 04/18/2018
+ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bf9d8234be754bd6ed325713f3c9ad27bd283b79
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 88f6782a0f81b94977b37bd8f87bf26a0d4c8a72
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91567638"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457672"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Rövid útmutató: a számítások szüneteltetése és folytatása a szinapszis SQL-készletben a Azure Portal használatával
+# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-via-the-azure-portal"></a>Rövid útmutató: a számítási feladat szüneteltetése és folytatása a dedikált SQL-készletben (korábban SQL DW) a Azure Portalon keresztül
 
-A Azure Portal használatával szüneteltetheti és folytathatja a szinapszis SQL-készlet (adatraktár) számítási erőforrásait. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+A Azure Portal a dedikált SQL-készlet (korábban SQL DW) számítási erőforrásainak szüneteltetésére és folytatására használható. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -28,82 +28,77 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A [create és a összekapcsolás-Portal](create-data-warehouse-portal.md) használatával hozzon létre egy **mySampleDataWarehouse**nevű SQL-készletet. 
+A [create és a összekapcsolás-Portal](../quickstart-create-sql-pool-portal.md) használatával hozzon létre egy **MYSAMPLEDATAWAREHOUSE** nevű dedikált SQL-készletet. 
 
 ## <a name="pause-compute"></a>Számítás szüneteltetése
 
-A költségek csökkentése érdekében igény szerint szüneteltetheti és folytathatja a számítási erőforrásokat. Ha például nem fogja használni az adatbázist az éjszaka és a hétvégén, szüneteltetheti ezeket az időpontokban, és a nap folyamán folytathatja. 
+A költségek csökkentése érdekében igény szerint szüneteltetheti és folytathatja a számítási erőforrásokat. Ha például nem fogja használni az adatbázist az éjszaka és a hétvégén, szüneteltetheti ezeket az időpontokban, és a nap folyamán folytathatja.
+ 
 >[!NOTE]
 >A számítási erőforrásokért nem számítunk fel díjat, amíg az adatbázis szüneteltetve van. Azonban továbbra is a tárterületért kell fizetnie. 
 
-Egy SQL-készlet szüneteltetéséhez kövesse az alábbi lépéseket:
+Az alábbi lépéseket követve szüneteltetheti a dedikált SQL-készletet:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson az **Azure szinapszis Analytics (korábban SQL DW)** elemre a Azure Portal bal oldali navigációs oldalán.
-2. Az SQL-készlet megnyitásához válassza a **mySampleDataWarehouse** lehetőséget az **Azure szinapszis Analytics (korábban SQL DW)** lapon. 
+2. Kattintson a **DEDIKÁLT SQL-készlet (korábban SQL DW)** elemre a Azure Portal bal oldali navigációs oldalán.
+2. Az SQL-készlet megnyitásához válassza a **mySampleDataWarehouse** elemet a **dedikált SQL-készlet (korábban SQL DW)** lapon. 
 3. A **mySampleDataWarehouse** lapon a figyelmeztetés állapota **online** **állapotú** .
 
     ![Számítás online](././media/pause-and-resume-compute-portal/compute-online.png)
 
-4. Az SQL-készlet szüneteltetéséhez kattintson a **szüneteltetés** gombra. 
+4. A dedikált SQL-készlet szüneteltetéséhez kattintson a **szüneteltetés** gombra. 
 5. A folytatáshoz egy megerősítést kérő kérdés jelenik meg. Kattintson a **Yes** (Igen) gombra.
 6. Várjon néhány percet, és figyelje meg, hogy **Status** az állapot **szünetel**.
 
     ![Képernyőfelvétel: a minta adattárház Azure Portal egy szüneteltetési állapottal.](./media/pause-and-resume-compute-portal/pausing.png)
 
 7. A szüneteltetési művelet befejezésekor a rendszer **szünetelteti** az állapotot, és a beállítás gombja **folytatódik**.
-8. Az SQL-készlet számítási erőforrásai mostantól offline állapotban vannak. A számítási feladatokért nem számítunk fel díjat, amíg újra nem folytatja a szolgáltatást.
+8. A dedikált SQL-készlet számítási erőforrásai mostantól offline állapotban vannak. A számítási feladatokért nem számítunk fel díjat, amíg újra nem folytatja a szolgáltatást.
 
     ![Számítás offline](././media/pause-and-resume-compute-portal/compute-offline.png)
 
 
 ## <a name="resume-compute"></a>Számítás folytatása
 
-Az SQL-készlet folytatásához kövesse az alábbi lépéseket.
+A dedikált SQL-készlet folytatásához kövesse az alábbi lépéseket.
 
-1. Az Azure Portal bal oldalán kattintson az **Azure szinapszis Analytics (korábban SQL DW)** elemre.
-2. Az SQL-készlet lap megnyitásához válassza a **mySampleDataWarehouse** lehetőséget az **Azure szinapszis Analytics (korábban SQL DW)** lapon. 
+1. A Azure Portal bal oldalán kattintson a **DEDIKÁLT SQL-készlet (korábban SQL DW)** elemre.
+2. Az SQL-készlet lap megnyitásához válassza a **mySampleDataWarehouse** lehetőséget a **dedikált SQL-készlet (korábban SQL DW)** lapon. 
 3. A **mySampleDataWarehouse** lapon a figyelmeztetés **állapota** **szünetel**.
 
     ![Számítás offline](././media/pause-and-resume-compute-portal/compute-offline.png)
 
-4. Az SQL-készlet folytatásához kattintson a **Folytatás**gombra. 
-5. Egy megerősítő kérdés jelenik meg, amely megkérdezi, hogy szeretné-e elindítani. Kattintson a **Yes** (Igen) gombra.
-6. Figyelje meg, hogy az **állapot** **folytatása**folyamatban van.
+1. Az SQL-készlet folytatásához kattintson a **Folytatás** gombra. 
+1. Egy megerősítő kérdés jelenik meg, amely megkérdezi, hogy szeretné-e elindítani. Kattintson a **Yes** (Igen) gombra.
+1. Figyelje meg, hogy az **állapot** **folytatása** folyamatban van.
 
     ![A képernyőképen egy minta adattárház Azure Portal látható a Start gomb kiválasztásával és a folytatás állapot értékével.](./media/pause-and-resume-compute-portal/resuming.png)
 
-7. Ha az SQL-készlet ismét online állapotba kerül, az állapota **online** állapotban van, a választókapcsoló pedig **szünetel**.
-8. Az SQL-készlet számítási erőforrásai online állapotban vannak, és használhatja a szolgáltatást. A számítási költségek újraindultak.
+1. Ha az SQL-készlet ismét online állapotba kerül, az állapota **online** állapotban van, a választókapcsoló pedig **szünetel**.
+1. Az SQL-készlet számítási erőforrásai online állapotban vannak, és használhatja a szolgáltatást. A számítási költségek újraindultak.
 
     ![Számítás online](././media/pause-and-resume-compute-portal/compute-online.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az adatraktár-egységekért és az SQL-készletben tárolt adatforgalomért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva. 
+Az adatraktár-egységekért és a dedikált SQL-készletben tárolt adatért számítunk fel díjat. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva. 
 
 - Ha meg szeretné őrizni az adatok tárolását, szüneteltetheti a számítást.
-- Ha el szeretné távolítani a jövőbeli díjakat, törölheti az SQL-készletet. 
+- Ha el szeretné távolítani a jövőbeli díjakat, törölheti a dedikált SQL-készletet. 
 
 Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolítására.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és kattintson az SQL-készletre.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki a dedikált SQL-készletet.
 
     ![Az erőforrások eltávolítása](./media/pause-and-resume-compute-portal/clean-up-resources.png)
 
 1. A számítási erőforrások szüneteltetéshez kattintson a **Szüneteltetés** gombra. 
 
-2. Ha el szeretné távolítani az SQL-készletet, hogy ne legyen kiszámítva a számítás vagy a tárterület, kattintson a **Törlés**gombra.
+1. Ha el szeretné távolítani a dedikált SQL-készletet, hogy ne kelljen fizetnie a számításért vagy a tárolásért, kattintson a **Törlés** gombra.
 
-3. A létrehozott SQL-kiszolgáló eltávolításához kattintson a **sqlpoolservername.database.Windows.net**elemre, majd a **Törlés**elemre.  
-
-   > [!CAUTION]
-   > A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
-
-5. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ezzel szüneteltette és folytatta a számítást az SQL-készlethez. A következő cikkből megtudhatja, hogyan [tölthetők be](load-data-from-azure-blob-storage-using-polybase.md)az információk az SQL-készletbe. A számítási képességek kezelésével kapcsolatos további információkért tekintse meg a [számítás áttekintését](sql-data-warehouse-manage-compute-overview.md) ismertető cikket. 
+Ezzel szüneteltette és folytatta a számítást a dedikált SQL-készlethez. A következő cikkből megtudhatja, hogyan tölthetők be az információk [egy DEDIKÁLT SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md). A számítási képességek kezelésével kapcsolatos további információkért tekintse meg a [számítás áttekintését](sql-data-warehouse-manage-compute-overview.md) ismertető cikket. 
 

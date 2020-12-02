@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 8f85e9c77cc6fed7e2763f694664332b124d0780
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9089fee7565633b198043efeed929fc7446437d5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561794"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458293"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>A Marketplace Insights irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -20,7 +20,7 @@ Ez a cikk a partner Center Piactéri információk irányítópultján nyújt in
 
 Ha a **piactéren elérhető Piactéri** irányítópultot szeretné elérni a partner Centerben, a kereskedelmi piactér területen válassza a Marketplace- **[elemzések elemzése](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** lehetőséget  >  **Marketplace Insights**.
 
-Az analitikai terminológia részletes leírását lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./partner-center-portal/faq-terminology.md).
+Az analitikai terminológia részletes leírását lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./analytics-faq.md).
 
 ## <a name="marketplace-insights-dashboard"></a>Marketplace Insights irányítópult
 
@@ -54,29 +54,29 @@ Az egyes lapok jobb felső sarkában megtalálhatja a hónapok tartományának k
 
 A Piactéri információk **látogatói** diagramon a kiválasztott számítási időszakra vonatkozó _látogatások_ és _egyedi látogatók_ száma látható.
 
-**Oldalak meglátogatása** : Ez a szám a kiválasztott számítási időszakra vonatkozó ajánlati lista lapon (a termék részletes adatai oldalon) lévő különböző felhasználói munkamenetek számát jelöli. A piros és a zöld százalékos mutatók az oldalak látogatottságának százalékos arányát jelölik. A trend diagram a látogatások hónap és hónap közötti számát jelöli.
+**Oldalak meglátogatása**: Ez a szám a kiválasztott számítási időszakra vonatkozó ajánlati lista lapon (a termék részletes adatai oldalon) lévő különböző felhasználói munkamenetek számát jelöli. A piros és a zöld százalékos mutatók az oldalak látogatottságának százalékos arányát jelölik. A trend diagram a látogatások hónap és hónap közötti számát jelöli.
 
-**Egyedi látogatók** : Ez a szám az Azure Marketplace-en és a AppSource található ajánlat (ok) esetében a kiválasztott számítási időszakban a különböző látogatók számát jelöli. Egy vagy több termékspecifikus oldalt felkereső látogató egy egyedi látogatónak számít.
+**Egyedi látogatók**: Ez a szám az Azure Marketplace-en és a AppSource található ajánlat (ok) esetében a kiválasztott számítási időszakban a különböző látogatók számát jelöli. Egy vagy több termékspecifikus oldalt felkereső látogató egy egyedi látogatónak számít.
 
 [![A Piactéri eredmények irányítópultjának látogatói diagramját mutatja be.](./media/insights-dashboard/visitors.png)](./media/insights-dashboard/visitors.png#lightbox)
 
 ### <a name="call-to-actions-trend"></a>Műveletek trendének meghívása
 
-Ez a szám azt jelzi, **hogy a művelet hívása** gombra kattintások száma az ajánlati lista lapon (a termék részletes lapján) befejeződött. A _művelet meghívása_ akkor számít, ha a felhasználók kiválasztják a letöltés **most** , az **ingyenes próbaverzió** , a **Kapcsolatfelvétel** vagy a **Test Drive** gombokat.
+Ez a szám azt jelzi, **hogy a művelet hívása** gombra kattintások száma az ajánlati lista lapon (a termék részletes lapján) befejeződött. A _művelet meghívása_ akkor számít, ha a felhasználók kiválasztják a letöltés **most**, az **ingyenes próbaverzió**, a **Kapcsolatfelvétel** vagy a **Test Drive** gombokat.
 
 [![A Piactéri elemzések irányítópultján a műveleti diagram hívása.](./media/insights-dashboard/call-to-actions-trend.png)](./media/insights-dashboard/call-to-actions-trend.png#lightbox)
 
 ### <a name="page-visits-and-call-to-actions-against-offers-referral-domains-and-campaign-ids"></a>Oldalak meglátogatása és az ajánlatok, a hivatkozó tartományok és a kampány-azonosítók közötti műveletek meghívása
 
-**Átirányítási tartományok** : egy adott hivatkozó tartomány kiválasztásakor a diagramon a jobb oldalon megjelenő látogatások és hívások havi trendje látható.
+**Átirányítási tartományok**: egy adott hivatkozó tartomány kiválasztásakor a diagramon a jobb oldalon megjelenő látogatások és hívások havi trendje látható.
 
 :::image type="content" source="./media/insights-dashboard/referral-domain.png" alt-text="Az átirányítási tartomány diagramját mutatja be a Marketplace-alapú adatáttekintési irányítópulton.":::
 
-**Ajánlatok** : válasszon ki egy adott ajánlatot, hogy megtekintse a látogatások havi trendjét, valamint a diagramon a jobb oldalon végrehajtandó műveletek meghívását.
+**Ajánlatok**: válasszon ki egy adott ajánlatot, hogy megtekintse a látogatások havi trendjét, valamint a diagramon a jobb oldalon végrehajtandó műveletek meghívását.
 
 :::image type="content" source="./media/insights-dashboard/offer-alias.png" alt-text="Az ajánlat-alias diagramot mutatja be a Marketplace-adatáttekintési irányítópulton.":::
 
-**Kampány-azonosítók** : egy adott kampány azonosítójának kiválasztásával megismerheti a kampány sikerességét. Minden kampánynál láthatja, hogy az oldal látogatói és a meghívások havi trendje látható a diagramon a jobb oldalon.
+**Kampány-azonosítók**: egy adott kampány azonosítójának kiválasztásával megismerheti a kampány sikerességét. Minden kampánynál láthatja, hogy az oldal látogatói és a meghívások havi trendje látható a diagramon a jobb oldalon.
 
 :::image type="content" source="./media/insights-dashboard/campaign.png" alt-text="A Marketplace-beli elemzése irányítópultjának kampány diagramját mutatja be.":::
 
@@ -104,7 +104,7 @@ Ez a táblázat a meglátogatott oldalak megtekintését, valamint a kiválaszto
 > [!TIP]
 > Az adatletöltéshez használhatja a letöltés ikont bármelyik widget jobb felső sarkában. Az egyes widgetekkel kapcsolatos visszajelzéseket a "hüvelykujj fel" vagy a "hüvelykujj lefelé" ikonra kattintva teheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [hozzáférés analitikus jelentések a kereskedelmi piactérhez a partner Centerben](./partner-center-portal/analytics.md).
 - További információ a megrendelésekről grafikus és letölthető formátumban: [Orders Dashboard a kereskedelmi piactér elemzésében](./orders-dashboard.md).
@@ -112,4 +112,4 @@ Ez a táblázat a meglátogatott oldalak megtekintését, valamint a kiválaszto
 - Az ügyfelekkel kapcsolatos részletes információkért, beleértve a növekedési trendeket, lásd [a kereskedelmi piactér elemzésének ügyfél-irányítópultját](./customer-dashboard.md).
 - Az elmúlt 30 napban a letöltési kérelmek listáját lásd: a [kereskedelmi piactér Analytics letöltések irányítópultja](./partner-center-portal/downloads-dashboard.md).
 - Ha szeretné megtekinteni az Azure Marketplace-en és a AppSource-on található ajánlatokra vonatkozó felhasználói visszajelzések összevont nézetét, tekintse meg a következőt: [ratings & Reviews](./partner-center-portal/ratings-reviews.md)
-- A kereskedelmi piactér elemzésével és az adatkifejezések átfogó szótárával kapcsolatos gyakori kérdésekért lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./partner-center-portal/faq-terminology.md).
+- A kereskedelmi piactér elemzésével és az adatkifejezések átfogó szótárával kapcsolatos gyakori kérdésekért lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./analytics-faq.md).

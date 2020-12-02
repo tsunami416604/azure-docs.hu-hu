@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d7c95317667999ac17803f08575e68641100b967
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a9d8c42432d619ab120afd0bd5734f6fa269b514
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023260"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458106"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Oktatóanyag: az Azure Digital ikrek megismerése egy minta ügyfélalkalmazás alkalmazásával
 
@@ -47,9 +47,9 @@ A _**AdtE2ESample**_ -projektet megnyitó Visual Studio-ablakban a *megoldáskez
 
 Válassza a *Room.json* lehetőséget a szerkesztési ablakban való megnyitásához, és módosítsa a következő módokon:
 
-* **Frissítse a verziószámot**, hogy jelezze, hogy a modell egy frissített verzióját biztosítja. Ezt úgy teheti meg, hogy az érték végén lévő *1* `@id` értéket egy *2* értékre módosítja. A jelenlegi verziószámnál nagyobb szám is fog működni.
-* **Tulajdonság szerkesztése**. Módosítsa a `Humidity` tulajdonság nevét *HumidityLevel* értékre (vagy valami más, ha szeretné. Ha más, mint a *HumidityLevel*-t használja, jegyezze fel, hogy mit használt, és folytatja a használatát a *HumidityLevel* helyett az oktatóanyag során.
-* **Adjon hozzá egy tulajdonságot**. A `HumidityLevel` 15. sorban végződő tulajdonság alatt illessze be a következő kódot, és adjon hozzá egy `RoomName` tulajdonságot a helyiséghez:
+1. **Frissítse a verziószámot**, hogy jelezze, hogy a modell egy frissített verzióját biztosítja. Ezt úgy teheti meg, hogy az érték végén lévő *1* `@id` értéket egy *2* értékre módosítja. A jelenlegi verziószámnál nagyobb szám is fog működni.
+1. **Tulajdonság szerkesztése**. Módosítsa a `Humidity` tulajdonság nevét *HumidityLevel* értékre (vagy valami más, ha szeretné. Ha más, mint a *HumidityLevel*-t használja, jegyezze fel, hogy mit használt, és folytatja a használatát a *HumidityLevel* helyett az oktatóanyag során.
+1. **Adjon hozzá egy tulajdonságot**. A `HumidityLevel` 15. sorban végződő tulajdonság alatt illessze be a következő kódot, és adjon hozzá egy `RoomName` tulajdonságot a helyiséghez:
 
     ```json
     ,
@@ -59,13 +59,13 @@ Válassza a *Room.json* lehetőséget a szerkesztési ablakban való megnyitás�
       "schema": "string"
     }
     ```
-* **Kapcsolat hozzáadása**. Az `RoomName` imént hozzáadott tulajdonság alatt illessze be a következő kódot, hogy az ilyen típusú Twin formátumhoz való képességet a más *contains* ikrekkel való kapcsolatokkal együtt adja hozzá:
+1. **Kapcsolat hozzáadása**. Az `RoomName` imént hozzáadott tulajdonság alatt illessze be a következő kódot, hogy az ilyen típusú Twin formátumhoz való képességet a más *contains* ikrekkel való kapcsolatokkal együtt adja hozzá:
 
     ```json
     ,
     {
       "@type": "Relationship",
-      "name": "contains",
+      "name": "contains"
     }
     ```
 

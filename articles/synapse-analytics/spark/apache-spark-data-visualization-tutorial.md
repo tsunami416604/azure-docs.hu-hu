@@ -1,5 +1,5 @@
 ---
-title: Az adatmegjelenítés Apache Spark
+title: Adatvizualizáció az Apache Spark használatával
 description: Gazdag adatvizualizációk létrehozása Apache Spark és Azure szinapszis Analytics-jegyzetfüzetek használatával
 services: synapse-analytics
 author: midesa
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 820dd8b607f5ec2fdc44d25063e0a941f76237ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919743"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458771"
 ---
 # <a name="analyze-data-with-apache-spark"></a>Az adatelemzés Apache Spark
 
@@ -99,7 +99,7 @@ A beépített jegyzetfüzet-diagramok mellett népszerű nyílt forráskódú k�
 
 > [!Note]
 > 
-> Alapértelmezés szerint minden Azure-beli szinapszis-elemzési Apache Spark-készlet gyakran használt és alapértelmezett kódtárakat tartalmaz. Megtekintheti a kódtárak teljes listáját az [Azure szinapszis futtatókörnyezetben](../spark/apache-spark-version-support.md). dokumentáció. Emellett, ha az alkalmazások számára elérhetővé kívánja tenni a harmadik féltől származó vagy helyileg létrehozott kódokat, [telepítheti](../spark/apache-spark-azure-portal-add-libraries.md) az egyik Spark-készletre (előzetes verzió).
+> Alapértelmezés szerint minden Azure-beli szinapszis-elemzési Apache Spark-készlet gyakran használt és alapértelmezett kódtárakat tartalmaz. Megtekintheti a kódtárak teljes listáját az [Azure szinapszis futtatókörnyezetben](../spark/apache-spark-version-support.md). dokumentáció. Emellett, ha az alkalmazások számára elérhetővé kívánja tenni a harmadik féltől származó vagy helyileg létrehozott kódokat, telepítheti az egyik Spark-készletbe [a könyvtárat](../spark/apache-spark-azure-portal-add-libraries.md) is.
 >
 
 1. Annak érdekében, hogy a fejlesztés könnyebben és olcsóbban történjen, a rendszer leegyszerűsíti az adathalmaz mintáját. A beépített Apache Spark mintavételezési funkciót fogjuk használni. Emellett a Seaborn és a Matplotlib is szükség van egy Panda dataframe vagy NumPy tömbre. A pandák dataframe beszerzéséhez a parancsot fogjuk használni a ```toPandas()``` dataframe konvertálásához.

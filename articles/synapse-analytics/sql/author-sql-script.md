@@ -1,6 +1,6 @@
 ---
-title: SQL-parancsfájlok az Azure szinapszis Studióban (előzetes verzió)
-description: Az Azure szinapszis Studio (előzetes verzió) SQL-parancsfájljainak bemutatása
+title: SQL-parancsfájlok a szinapszis Studióban
+description: Bevezetés a szinapszis Studio SQL-parancsfájljaiba az Azure szinapszis Analytics szolgáltatásban.
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 3f3009799889bd6b118f586676e22338d821d37c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 077815d117af0328a3466346727e135caaf8ff21
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635289"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458003"
 ---
-# <a name="using-sql-scripts-in-azure-synapse-studio-preview"></a>SQL-parancsfájlok használata az Azure szinapszis Studióban (előzetes verzió)
+# <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>A szinapszis Studio SQL-parancsfájljai az Azure szinapszis Analyticsben 
 
-Az Azure szinapszis Studio (előzetes verzió) egy SQL-parancsfájl webes felületét kínálja az SQL-lekérdezések létrehozásához. Csatlakozhat az SQL-készlethez (előzetes verzió). 
+A szinapszis Studio SQL-szkriptek webes felületét biztosít az SQL-lekérdezések létrehozásához. 
 
 ## <a name="begin-authoring-in-sql-script"></a>Szerzői műveletek megkezdése az SQL-szkriptben 
 

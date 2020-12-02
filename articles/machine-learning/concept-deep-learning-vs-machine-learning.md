@@ -10,18 +10,18 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 1a6708214eadb2f5d0d66d72f5db5cb4a195d206
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 43b03abb2aac13358a2187a0a5dc570c1e45934e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324872"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458496"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Mélyreható tanulás és gépi tanulás a Azure Machine Learning
 
 Ez a cikk a részletes tanulást és a gépi tanulást ismerteti, valamint azt, hogy azok hogyan illeszkednek a mesterséges intelligencia tágabb kategóriába. Ismerkedjen meg a Azure Machine Learningre épülő mélyreható tanulási megoldásokkal, például a csalások észlelésével, a hang-és Arcfelismerés, a hangulat elemzése és az idősorozat-előrejelzés használatával.
 
-Az algoritmusok megoldáshoz való kiválasztásával kapcsolatos útmutatásért tekintse meg a [Machine learning algoritmust tartalmazó Cheat lapot](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri).
+Az algoritmusok megoldáshoz való kiválasztásával kapcsolatos útmutatásért tekintse meg a [Machine learning algoritmust tartalmazó Cheat lapot](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri).
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Mély tanulás, gépi tanulás és AI
 
@@ -115,7 +115,7 @@ A többrendszeres neurális hálózat egy különösen hatékony mesterséges ne
 
 A többszintű neurális hálózatok olyan területeken lettek felhasználva, mint a videó-felismerés, a képfelismerés és az ajánlott rendszerek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkek további lehetőségeket mutatnak be a nyílt forráskódú mély tanulási modellek [Azure Machine Learningban](./index.yml?WT.mc_id=docs-article-lazzeri)való használatára:
 

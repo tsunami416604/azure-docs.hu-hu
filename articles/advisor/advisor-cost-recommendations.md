@@ -3,16 +3,16 @@ title: A szolgáltatási költségek csökkentése Azure Advisor használatával
 description: A Azure Advisor használatával optimalizálhatja az Azure-beli üzemelő példányok költségeit.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 454ed02c06511b55f9f592bbe6fe5ab08605d752
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 767c82c818535304552c1c98ff50a252acc0d08a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075909"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458507"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
 
-A Azure Advisor a tétlen és a kihasználatlan erőforrások azonosításával megkönnyíti az Azure-kiadások optimalizálását és csökkentését.A Cost javaslatait az Advisor irányítópultjának **Cost (Cost** ) lapján érheti el.
+A Azure Advisor a tétlen és a kihasználatlan erőforrások azonosításával megkönnyíti az Azure-kiadások optimalizálását és csökkentését. A Cost javaslatait az Advisor irányítópultjának **Cost (Cost** ) lapján érheti el.
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizálja virtuálisgép-költségeit az alacsony kihasználtságú példányok átméretezésével vagy leállításával 
 
@@ -71,7 +71,7 @@ Az Advisor az elmúlt 30 napban elemzi az Azure Blob Storage-t és Azure Data La
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>A MariaDB, a MySQL és a PostgreSQL fenntartott kapacitása
 Az Advisor az elmúlt 30 napban Azure Database for MariaDB, Azure Database for MySQL és Azure Database for PostgreSQL használati mintáit elemzi. Ezután javaslatot tesz a fenntartott kapacitások vásárlására a költségek optimalizálása érdekében. A fenntartott kapacitás használatával előre megvásárolhatja a MariaDB, a MySQL és a PostgreSQL óradíjas használatát, és megtakaríthatja az aktuális költségeket. A fenntartott kapacitás számlázási juttatás, és automatikusan érvényes az új és a meglévő központi telepítésekre. Az Advisor 3 éves foglalási díjszabás és az elmúlt 30 nap során megfigyelt használati minták alapján számítja ki az egyéni előfizetések megtakarítási becsléseit. A megosztott hatókörre vonatkozó javaslatok elérhetők a fenntartott kapacitású vásárlásokhoz, és növelhetik a megtakarítást.
 
-### <a name="azure-synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Az Azure szinapszis Analytics (korábban SQL Data Warehouse) fenntartott kapacitása
+### <a name="azure-synapse-analytics-reserved-capacity"></a>Az Azure szinapszis Analytics számára fenntartott kapacitása
 Az Advisor az elmúlt 30 nap során elemzi az Azure szinapszis Analytics használati mintáit, és a fenntartott kapacitások vásárlását javasolja a költségek optimalizálása érdekében. A fenntartott kapacitás használatával előre megvásárolhatja a szinapszis Analytics óránkénti használatát, és megtakaríthatja az igény szerinti költségeket. A fenntartott kapacitás számlázási juttatás, és automatikusan érvényes az új és a meglévő központi telepítésekre. Az Advisor 3 éves foglalási díjszabás és az elmúlt 30 nap során megfigyelt használati minták alapján számítja ki az egyéni előfizetések megtakarítási becsléseit. A megosztott hatókörre vonatkozó javaslatok elérhetők a fenntartott kapacitású vásárlásokhoz, és növelhetik a megtakarítást.
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>A nem társított nyilvános IP-címek törlése a pénz megtakarítása érdekében
@@ -107,7 +107,7 @@ Az Advisor azonosítja azokat az erőforrásokat, amelyekben a tábla-gyorsító
 
 1. Az **Advisor** irányítópulton válassza a **Cost (Cost** ) lapot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Advisor ajánlásaival kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 * [Az Advisor bemutatása](advisor-overview.md)

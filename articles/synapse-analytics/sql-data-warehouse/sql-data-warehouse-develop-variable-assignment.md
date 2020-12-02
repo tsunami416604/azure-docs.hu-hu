@@ -1,30 +1,30 @@
 ---
 title: Változók kiosztása
-description: Ebben a cikkben alapvető tippeket talál a T-SQL-változók SQL-készletben való hozzárendeléséhez.
+description: Ebben a cikkben alapvető tippeket talál a T-SQL-változók a dedikált SQL-készletekhez való hozzárendeléséhez az Azure szinapszis Analyticsben.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0cbadc10fb817c70bd259397c840aae68abc2d54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 87448ea737c11af13a52632e5bf4f67dc54d9ae3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213329"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459219"
 ---
-# <a name="assign-variables-in-synapse-sql-pool"></a>Változók társítása a szinapszis SQL-készletben
+# <a name="assign-variables-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Változók kiosztása dedikált SQL-készletekhez az Azure szinapszis Analyticsben
 
-Ebben a cikkben alapvető tippeket talál a T-SQL-változók SQL-készletben való hozzárendeléséhez.
+Ebben a cikkben alapvető tippeket talál a T-SQL-változók dedikált SQL-készletben való hozzárendeléséhez.
 
 ## <a name="set-variables-with-declare"></a>Változók beállítása a DECLARE értékkel
 
-Az SQL-készletben lévő változók az `DECLARE` utasítással vagy az utasítással állíthatók be `SET` . A DEKLARÁLt változók inicializálása az egyik legrugalmasabb módszer az SQL-készletben lévő változó értékének megadására.
+A dedikált SQL-készletben lévő változók az `DECLARE` utasítással vagy az utasítással állíthatók be `SET` . A DEKLARÁLt változók inicializálása az egyik legrugalmasabb módszer az SQL-készletben lévő változó értékének megadására.
 
 ```sql
 DECLARE @v  int = 0

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7518d6ac8bc0cde515ab8da2f3d9c1496cb93f08
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b8b0ac002cb52acdc043e4e8ca4fa91daae4e665
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311711"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457979"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory hitelesítés használata a szinapszis SQL-sel való hitelesítéshez
 
@@ -36,7 +36,7 @@ A konfigurációs lépések a következő eljárásokat ismertetik Azure Active 
 
 1. Hozza létre és töltse fel az Azure AD-t.
 2. Azure Active Directory identitás létrehozása
-3. Szerepkör kiosztása létrehozva Azure Active Directory identitás a szinapszis munkaterületen (előzetes verzió)
+3. Szerepkör társítása létrehozott Azure Active Directory identitáshoz a szinapszis munkaterületen
 4. Kapcsolódjon a szinapszis studióhoz az Azure AD-identitások használatával.
 
 ## <a name="azure-ad-pass-through-in-azure-synapse-analytics"></a>Azure AD-továbbítás az Azure szinapszis Analytics szolgáltatásban
@@ -65,7 +65,7 @@ Az Azure AD-hitelesítés használatakor két rendszergazdai fiók létezik a sz
 
 Az Azure AD rendszergazdai bejelentkezés egy Azure AD-felhasználó vagy egy Azure AD-csoport lehet. Ha a rendszergazda egy csoportfiók, bármely csoporttag használhatja, így több Azure AD-rendszergazda is engedélyezhető a szinapszis SQL-példányhoz. 
 
-A csoportfiók rendszergazdaként való használata javítja a kezelhetőséget azáltal, hogy lehetővé teszi a csoporttagok központi hozzáadását és eltávolítását az Azure AD-ben anélkül, hogy módosítani kellene a felhasználók vagy engedélyek módosítását a szinapszis Analytics-munkaterületen. Egyszerre csak egy Azure AD-rendszergazda (felhasználó vagy csoport) konfigurálható.
+A csoportfiókok rendszergazdaként való használata javítja a kezelhetőséget azáltal, hogy lehetővé teszi a csoporttagok központi hozzáadását és eltávolítását az Azure AD-ben anélkül, hogy módosítani kellene a felhasználókat vagy az engedélyeket az Azure szinapszis Analytics-munkaterületen. Egyszerre csak egy Azure AD-rendszergazda (felhasználó vagy csoport) konfigurálható.
 
 ![felügyeleti struktúra](./media/aad-authentication/3-admin-structure.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory hitelesítés a következő módszereket támogatja az ad
 - Univerzális Azure Active Directory MFA-val
 - Alkalmazás-jogkivonat hitelesítésének használata
 
-Az Azure AD Server-rendszerbiztonsági tag (Logins) ( **nyilvános előzetes** verzió) esetében az alábbi hitelesítési módszerek támogatottak:
+Az Azure AD Server-rendszerbiztonsági tag (Logins) esetében az alábbi hitelesítési módszerek támogatottak:
 
 - Azure Active Directory jelszó
 - Integrált Azure Active Directory
@@ -119,7 +119,7 @@ Az Azure AD Server-rendszerbiztonsági tag (Logins) ( **nyilvános előzetes** v
 
 - A kezelhetőség növelése érdekében javasoljuk, hogy hozzon létre egy dedikált Azure AD-csoportot rendszergazdaként.
 - Egyszerre csak egy Azure AD-rendszergazda (egy felhasználó vagy csoport) konfigurálható a szinapszis SQL-készlethez.
-  - A szinapszis SQL (előzetes verzió) szolgáltatáshoz készült Azure AD Server-rendszerbiztonsági tag (login) hozzáadása lehetővé teszi több Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezés) létrehozását, amelyek hozzáadhatók a `sysadmin` szerepkörhöz.
+  - A szinapszis SQL-hez készült Azure AD Server-rendszerbiztonsági tag (login) hozzáadása lehetővé teszi több Azure AD-kiszolgáló rendszerbiztonsági tag (bejelentkezés) létrehozását, amelyek hozzáadhatók a `sysadmin` szerepkörhöz.
 - Csak a szinapszis SQL Azure AD-rendszergazdája csatlakozhat a szinapszis SQL-hez egy Azure Active Directory fiók használatával. A Active Directory rendszergazda konfigurálhatja a következő Azure AD-adatbázis felhasználóit.
 - Javasoljuk, hogy a kapcsolat időtúllépését 30 másodpercre állítsa be.
 - SQL Server 2016 Management Studio és SQL Server Data Tools a Visual Studio 2015 (14.0.60311.1 április 2016-ös vagy újabb verziója) támogatja a Azure Active Directory hitelesítést. (Az Azure AD-hitelesítést a **.NET-keretrendszer SQLServer-adatszolgáltatója** támogatja; legalább a .NET-keretrendszer 4,6-es verziója). Így az eszközök és adatrétegbeli alkalmazások legújabb verziói (DAC és. A BACPAC) az Azure AD-hitelesítést is használhatja.
@@ -127,7 +127,7 @@ Az Azure AD Server-rendszerbiztonsági tag (Logins) ( **nyilvános előzetes** v
 - A Visual Studio 2015 SQL Server Data Tools használatához legalább az Adateszközök (14.0.60311.1-verzió) április 2016-es verziója szükséges. Az Azure AD-felhasználók jelenleg nem jelennek meg a SSDT Object Explorerban. Áthidaló megoldásként tekintse meg [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)felhasználóit.
 - [A SQL Server rendszerhez készült Microsoft JDBC-6,0 illesztőprogram támogatja az](https://www.microsoft.com/download/details.aspx?id=11774) Azure ad-hitelesítést. Lásd még: [a kapcsolatok tulajdonságainak beállítása](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A szinapszis SQL hozzáférésének és vezérlésének áttekintését lásd: [SZINAPSZIS SQL-hozzáférés-vezérlés](../sql/access-control.md).
 - További információ az adatbázis résztvevőivel kapcsolatban: [Résztvevők](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).

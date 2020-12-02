@@ -1,6 +1,6 @@
 ---
-title: A számítási feladat fontosságának kezelése és figyelése
-description: Ismerje meg, hogyan kezelheti és figyelheti a kérelmek szintjének fontosságát az Azure szinapszis Analyticsben.
+title: A számítási feladatok fontosságának kezelése és figyelése dedikált SQL-készletben
+description: Ismerje meg, hogyan kezelheti és figyelheti a kérelmek szintjének fontosságát a dedikált SQL-készlet az Azure szinapszis Analytics szolgáltatásban.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 43006456142728287ddf4adba1fbb9b45f5ccc89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0a5fbf33b48521882646bf8fb5eb3fe5dacca6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211969"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459206"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>A számítási feladatok fontosságának kezelése és figyelése az Azure szinapszis Analyticsben
+# <a name="manage-and-monitor-workload-importance-in-dedicated-sql-pool-for-azure-synapse-analytics"></a>A számítási feladatok fontosságának kezelése és figyelése az Azure szinapszis Analytics dedikált SQL-készletében
 
-Az Azure Szinapszisban az DMV-és katalógus-nézetek segítségével kezelheti és figyelheti a szinapszis SQL-kérelmek szintjének fontosságát.
+Felügyelheti és figyelheti a dedikált SQL Pool-kérelmek szintjének fontosságát az Azure Szinapszisban az DMV-és katalógus-nézetek használatával.
 
 ## <a name="monitor-importance"></a>Figyelés fontossága
 

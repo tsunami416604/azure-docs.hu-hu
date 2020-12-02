@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: 0267d09bc23f9aa5c1f5981ddf9386f3827c75d3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b40144079304b6981ff8faf251a345dbb163ecac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754505"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459304"
 ---
 # <a name="how-to-configure-your-consulting-service-offer-properties"></a>A tanácsadási szolgáltatás ajánlati tulajdonságainak konfigurálása
 
@@ -25,18 +25,18 @@ A partner Center ajánlatának **Tulajdonságok** lapján az elsődleges termék
 
 Az **elsődleges termék** legördülő listában válassza ki azt a Microsoft-terméket, amely a tanácsadási szolgáltatás ajánlatának fókusza lesz. A kiválasztott termék fogja meghatározni, hogy az ajánlat közzé lesz-e téve Microsoft AppSource vagy az Azure Marketplace-en.
 
-* Ha az Azure-t választja, az ajánlat az Azure Marketplace-en jelenik meg. Válasszon ki legfeljebb három **megoldást a megoldás területére** . Ezek megkönnyítik az ügyfelek számára az ajánlat megtalálását.
-* Ha az elsődleges termék *nem* az Azure, az ajánlat közzétételre kerül a AppSource webhelyen. Válasszon ki legalább egyet és legfeljebb három **alkalmazható terméket** . Ezek megkönnyítik az ügyfelek számára az ajánlat megtalálását.
+* Ha az Azure-t választja, az ajánlat az Azure Marketplace-en jelenik meg. Válasszon ki legfeljebb három **megoldást a megoldás területére**. Ezek megkönnyítik az ügyfelek számára az ajánlat megtalálását.
+* Ha az elsődleges termék *nem* az Azure, az ajánlat közzétételre kerül a AppSource webhelyen. Válasszon ki legalább egyet és legfeljebb három **alkalmazható terméket**. Ezek megkönnyítik az ügyfelek számára az ajánlat megtalálását.
 
 ## <a name="select-the-consulting-service-type"></a>A tanácsadási szolgáltatás típusának kiválasztása
 
 A **tanácsadási szolgáltatás típusa** legördülő menüben válassza ki, hogy milyen típusú tanácsadási szolgáltatást kínál az ügyfeleknek. A rendelkezésre álló típusok a következők:
 
-* **Értékelés** : az ügyfél környezetének kiértékelése a megoldás alkalmazhatóságának meghatározásához, valamint a megvalósítás költségeit és idővonalának becsléséhez.
-* **Tájékoztatás** : egy megoldás vagy szolgáltatás bemutatása keretrendszerek, bemutatók és felhasználói példák használatával.
-* **Implementáció** : teljes telepítés, amely teljesen működőképes megoldást eredményez.
-* A **koncepció igazolása** : korlátozott hatókörű implementáció annak megállapítására, hogy a megoldás megfelel-e az ügyfél követelményeinek.
-* **Workshop** : interaktív részvétel az ügyfél telephelyén. Olyan képzéseket, tájékoztatókat, felméréseket és bemutatókat is tartalmazhat, amelyek az ügyfél által tárolt adatszolgáltatásra vagy környezetre épülnek.
+* **Értékelés**: az ügyfél környezetének kiértékelése a megoldás alkalmazhatóságának meghatározásához, valamint a megvalósítás költségeit és idővonalának becsléséhez.
+* **Tájékoztatás**: egy megoldás vagy szolgáltatás bemutatása keretrendszerek, bemutatók és felhasználói példák használatával.
+* **Implementáció**: teljes telepítés, amely teljesen működőképes megoldást eredményez.
+* A **koncepció igazolása**: korlátozott hatókörű implementáció annak megállapítására, hogy a megoldás megfelel-e az ügyfél követelményeinek.
+* **Workshop**: interaktív részvétel az ügyfél telephelyén. Olyan képzéseket, tájékoztatókat, felméréseket és bemutatókat is tartalmazhat, amelyek az ügyfél által tárolt adatszolgáltatásra vagy környezetre épülnek.
 
 ## <a name="select-relevant-industries"></a>Érintett iparágak kiválasztása
 
@@ -50,10 +50,10 @@ Az ebben a szakaszban található információk segítenek kategorizálni az aj�
 Legfeljebb három olyan kompetenciát választhat, amelyek az ajánlat szolgáltatási területére vonatkoznak. A kiválasztás az ajánlati listán szereplő ügyfelek számára jelenik meg.
 
 > [!IMPORTANT]
-> Az elsődleges terméktől függően legalább egy kompetenciának szüksége lehet az ajánlat közzétételére. A részletekért tekintse meg a [tanúsítási szabályzatokat](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) .
+> Az elsődleges terméktől függően legalább egy kompetenciának szüksége lehet az ajánlat közzétételére. A részletekért tekintse meg a [tanúsítási szabályzatokat](/legal/marketplace/certification-policies#800-consulting-services) .
 
 A folytatás előtt mentse a piszkozatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ajánlati lista részleteinek konfigurálása](create-consulting-service-offer-listing.md)

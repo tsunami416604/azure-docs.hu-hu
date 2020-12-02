@@ -3,17 +3,17 @@ title: Rövid útmutató – Azure IoT Central-alkalmazás létrehozása | Micro
 description: Rövid útmutató – új Azure IoT Central-alkalmazás létrehozása. Hozza létre az alkalmazást az ingyenes díjszabási csomag vagy az egyik standard díjszabási csomag használatával.
 author: viv-liu
 ms.author: viviali
-ms.date: 11/16/2020
+ms.date: 11/23/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 313826e9e3fb5fd34d42dd735cf66259773084f7
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: a156150c2cd28964658fa8529181a70ef546b78f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122341"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457333"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Rövid útmutató – Azure IoT Central-alkalmazás létrehozása
 
@@ -50,7 +50,7 @@ Hozzon létre egy új alkalmazást az iparághoz kapcsolódó IoT Central sablon
 1. Válassza ezt az alkalmazást a 7 napos ingyenes próbaverzió díjszabási csomagjának használatával, vagy a standard díjszabási csomagok valamelyikével:
 
     - Az *ingyenes* csomag használatával létrehozott alkalmazások hét napig ingyenesen használhatók, és legfeljebb öt eszközt támogatnak. Egy standard díjszabási csomag használatára a lejárat előtt bármikor átalakítható.
-    - A *standard* csomag használatával létrehozott alkalmazások számlázása eszközönként történik, a **standard 1** vagy **Standard 2** díjszabási csomaggal pedig az első két eszköz ingyenesen használható. Az ingyenes és standard díjszabási csomagokról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/)tájékozódhat. Ha standard díjszabási csomag használatával hoz létre alkalmazást, ki kell választania a *címtárat*, az *Azure-előfizetést* és a *helyet*:
+    - A *standard* csomag használatával létrehozott alkalmazások számlázása eszközönként történik, a **standard 0**, **standard 1** vagy standard **2** díjszabás közül választhat, amely az első két eszközzel ingyenes. Az ingyenes és standard díjszabási csomagokról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/)tájékozódhat. Ha standard díjszabási csomag használatával hoz létre alkalmazást, ki kell választania a *címtárat*, az *Azure-előfizetést* és a *helyet*:
         - A *könyvtár* az a Azure Active Directory, amelyben létrehozza az alkalmazást. A Azure Active Directory felhasználói identitásokat, hitelesítő adatokat és egyéb szervezeti adatokat tartalmaz. Ha nincs Azure Active Directory, akkor létrejön egy Azure-előfizetés létrehozásakor.
         - Az *Azure-előfizetéssel* Azure-szolgáltatások példányait hozhatja létre. IoT Central az előfizetéshez tartozó erőforrásokat. Ha nem rendelkezik Azure-előfizetéssel, az [Azure regisztrációs oldalán](https://aka.ms/createazuresubscription)ingyenesen létrehozhat egyet. Az Azure-előfizetés létrehozása után váltson vissza az **új alkalmazás** lapra. Az új előfizetés mostantól megjelenik az **Azure-előfizetés** legördülő menüjében.
         - A hely az a [földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) *hely* , ahol létre szeretné hozni az alkalmazást. Az optimális teljesítmény érdekében általában ki kell választania az eszközökhöz legközelebb eső helyet. Ha kiválasztott egy helyet, később nem helyezheti át az alkalmazást egy másik helyre.

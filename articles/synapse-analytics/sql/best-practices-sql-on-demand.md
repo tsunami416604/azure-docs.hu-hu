@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások kiszolgáló nélküli SQL-készlethez (előzetes verzió)
-description: Javaslatok és ajánlott eljárások a kiszolgáló nélküli SQL-készlet (előzetes verzió) használata esetén.
+title: Ajánlott eljárások kiszolgáló nélküli SQL-készlethez
+description: Javaslatok és ajánlott eljárások a kiszolgáló nélküli SQL-készlettel való munkavégzéshez.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638869"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457907"
 ---
-# <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások a kiszolgáló nélküli SQL-készlethez (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
+# <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Ajánlott eljárások kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
-Ebből a cikkből megtudhatja, hogyan használhatók az ajánlott eljárások a kiszolgáló nélküli SQL-készlet (előzetes verzió) használatához. A kiszolgáló nélküli SQL-készlet az Azure szinapszis Analytics egyik erőforrása.
+Ebben a cikkben az ajánlott eljárások gyűjteményét találja a kiszolgáló nélküli SQL-készlet használatára. A kiszolgáló nélküli SQL-készlet az Azure szinapszis Analytics egyik erőforrása.
 
 ## <a name="general-considerations"></a>Általános megfontolások
 
@@ -129,7 +129,7 @@ A CSV-fájlok lekérdezése teljesítményre optimalizált elemző használatáv
 
 ## <a name="manually-create-statistics-for-csv-files"></a>CSV-fájlok statisztikáinak manuális létrehozása
 
-A kiszolgáló nélküli SQL-készlet statisztikái támaszkodik az optimális lekérdezés-végrehajtási tervek létrehozásához. A statisztikák automatikusan létrejönnek a Parquet-fájlok oszlopaihoz, ha szükséges. Jelenleg nem jön létre automatikusan statisztikai adatok a CSV-fájlokban lévő oszlopokhoz, és a lekérdezésekben használt oszlopok esetében manuálisan kell létrehoznia a statisztikát, különösen a DISTINCT, a JOIN, a WHERE, a ORDER BY és a GROUP BY utasításban. A részletekért olvassa [el a kiszolgáló nélküli SQL-készlet statisztikáit](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview) .
+A kiszolgáló nélküli SQL-készlet statisztikái támaszkodik az optimális lekérdezés-végrehajtási tervek létrehozásához. A statisztikák automatikusan létrejönnek a Parquet-fájlok oszlopaihoz, ha szükséges. Jelenleg nem jön létre automatikusan statisztikai adatok a CSV-fájlokban lévő oszlopokhoz, és a lekérdezésekben használt oszlopok esetében manuálisan kell létrehoznia a statisztikát, különösen a DISTINCT, a JOIN, a WHERE, a ORDER BY és a GROUP BY utasításban. Győződjön meg róla, hogy [statisztika a kiszolgáló nélküli SQL-készletben] (fejlesztés-Tables-Statistics. MD # statisztika-in-Server nélküli-SQL-Pool a részletekért.
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>A CETAS használata a lekérdezések teljesítményének és illesztésének növeléséhez
 
@@ -145,6 +145,6 @@ A kiszolgáló nélküli SQL-készlet lehetővé teszi a tárolóban lévő fáj
 
 Ha jobb teljesítményre van szüksége, próbálja meg SAS hitelesítő adatok használatával hozzáférni a tárolóhoz, amíg az Azure AD átmenő teljesítmény nem javul.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a gyakori problémák megoldására vonatkozó [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket. Ha kiszolgáló nélküli SQL-készlet helyett dedikált SQL-készlettel dolgozik, tekintse meg az ajánlott [eljárásokat a DEDIKÁLT SQL](best-practices-sql-pool.md) -készletekhez az adott útmutatáshoz.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 174ad4692d043390e6773a98e31f0985d75c8e2e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 61efc7719b071ff4e8e5c0e07534b72a2883aff1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018814"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458876"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Servicesben
 
@@ -88,21 +88,21 @@ Egy Azure Analysis Services kiszolgáló helyszíni adatforrásaihoz való csatl
 
 ## <a name="understanding-providers"></a>Szolgáltatók ismertetése
 
-Táblázatos 1400 és a Visual Studióban a magasabb modellbeli projektek létrehozásakor alapértelmezés szerint nem adhat meg adatszolgáltatót adatforráshoz való csatlakozáskor az **adatlekérdezés**használatával. A táblázatos 1400-es és újabb modellek [Power Query](/power-query/power-query-what-is-power-query) összekötőket használnak a kapcsolatok, az adatlekérdezések és az adatforrások és a Analysis Services közötti adategyesítések kezelésére. Ezeket más néven *strukturált* adatforrás-kapcsolatoknak nevezzük, amelyekben a kapcsolati tulajdonságok beállításai vannak beállítva. A Visual Studióban azonban engedélyezheti az örökölt adatforrásokat a modell-projektekhez. Ha engedélyezve van, a **Táblázat importálása varázslóval** kapcsolódhat a táblázatos 1200-ben hagyományosan támogatott adatforrásokhoz, valamint az *örökölt*vagy *szolgáltatói* adatforrásként használt alacsonyabb modellekhez. Ha szolgáltatói adatforrásként van megadva, megadhat egy adott adatszolgáltatót és egyéb speciális kapcsolódási tulajdonságokat. Csatlakozhat például egy SQL Server adattárház-példányhoz, vagy akár egy Azure SQL Database örökölt adatforrásként is. Ezután kiválaszthatja a OLE DB illesztőprogramot SQL Server MSOLEDBSQL adatszolgáltatóhoz. Ebben az esetben egy OLE DB adatszolgáltató kiválasztása nagyobb teljesítményt biztosíthat az Power Query-összekötőn keresztül. 
+Táblázatos 1400 és a Visual Studióban a magasabb modellbeli projektek létrehozásakor alapértelmezés szerint nem adhat meg adatszolgáltatót adatforráshoz való csatlakozáskor az **adatlekérdezés** használatával. A táblázatos 1400-es és újabb modellek [Power Query](/power-query/power-query-what-is-power-query) összekötőket használnak a kapcsolatok, az adatlekérdezések és az adatforrások és a Analysis Services közötti adategyesítések kezelésére. Ezeket más néven *strukturált* adatforrás-kapcsolatoknak nevezzük, amelyekben a kapcsolati tulajdonságok beállításai vannak beállítva. A Visual Studióban azonban engedélyezheti az örökölt adatforrásokat a modell-projektekhez. Ha engedélyezve van, a **Táblázat importálása varázslóval** kapcsolódhat a táblázatos 1200-ben hagyományosan támogatott adatforrásokhoz, valamint az *örökölt* vagy *szolgáltatói* adatforrásként használt alacsonyabb modellekhez. Ha szolgáltatói adatforrásként van megadva, megadhat egy adott adatszolgáltatót és egyéb speciális kapcsolódási tulajdonságokat. Csatlakozhat például egy SQL Server adattárház-példányhoz, vagy akár egy Azure SQL Database örökölt adatforrásként is. Ezután kiválaszthatja a OLE DB illesztőprogramot SQL Server MSOLEDBSQL adatszolgáltatóhoz. Ebben az esetben egy OLE DB adatszolgáltató kiválasztása nagyobb teljesítményt biztosíthat az Power Query-összekötőn keresztül. 
 
 Ha a Visual Studióban a tábla importálása varázslót használja, az adatforrásokhoz való kapcsolódáshoz adatszolgáltató szükséges. Az alapértelmezett adatszolgáltató van kiválasztva. Szükség esetén módosíthatja az adatszolgáltatót. A választott szolgáltató típusa a teljesítménytől függ, függetlenül attól, hogy a modell memóriában tárolt tárolót vagy DirectQuery használ-e, és Analysis Services platformot, amelybe üzembe helyezi a modellt.
 
 ### <a name="specify-provider-data-sources-in-tabular-1400-and-higher-model-projects"></a>Szolgáltatói adatforrások meghatározása táblázatos 1400 és magasabb modell-projektekben
 
-A szolgáltatói adatforrások engedélyezéséhez a Visual Studióban kattintson az **eszközök**  >  **Beállítások**  >  **Analysis Services táblázatos**  >  **adatimportálás**elemre, majd válassza az **örökölt adatforrások engedélyezése**lehetőséget.
+A szolgáltatói adatforrások engedélyezéséhez a Visual Studióban kattintson az **eszközök**  >  **Beállítások**  >  **Analysis Services táblázatos**  >  **adatimportálás** elemre, majd válassza az **örökölt adatforrások engedélyezése** lehetőséget.
 
 ![Örökölt adatforrások engedélyezése](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
 
-Ha az örökölt adatforrások engedélyezve vannak, a **táblázatos modell Explorerben**kattintson a jobb gombbal az **adatforrások**importálás adatforrásból  >  **(örökölt)** elemre.
+Ha az örökölt adatforrások engedélyezve vannak, a **táblázatos modell Explorerben** kattintson a jobb gombbal az **adatforrások** importálás adatforrásból  >  **(örökölt)** elemre.
 
 ![Örökölt adatforrások a táblázatos modell Explorerben](media/analysis-services-datasource/aas-import-legacy-datasources.png)
 
-Mint a táblázatos 1200 modell projektjeihez hasonlóan, a **tábla importálása varázslóval** csatlakozhat egy adatforráshoz. A kapcsolat lapon kattintson a **speciális**elemre. Adja meg az adatszolgáltatót és az egyéb kapcsolatbeállításokat a **Speciális tulajdonságok beállítása**lapon.
+Mint a táblázatos 1200 modell projektjeihez hasonlóan, a **tábla importálása varázslóval** csatlakozhat egy adatforráshoz. A kapcsolat lapon kattintson a **speciális** elemre. Adja meg az adatszolgáltatót és az egyéb kapcsolatbeállításokat a **Speciális tulajdonságok beállítása** lapon.
 
 ![Örökölt adatforrások speciális tulajdonságai](media/analysis-services-datasource/aas-import-legacy-advanced.png)
 
@@ -120,7 +120,7 @@ Felhőbeli adatforrások esetén:
 
 ## <a name="oauth-credentials"></a>OAuth hitelesítő adatai
 
-A 1400-es és újabb kompatibilitási szinten található táblázatos modellek memórián belüli módban, Azure SQL Database, az Azure szinapszis (korábban SQL Data Warehouse), a Dynamics 365 és a SharePoint-lista segítségével támogatják a OAuth hitelesítő adatait. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. Érvényes tokenek létrehozásához Power Query használatával állítsa be a hitelesítő adatokat.
+A 1400-es és újabb kompatibilitási szinten található táblázatos modellek memórián belüli módban, Azure SQL Database, az Azure szinapszis, a Dynamics 365 és a SharePoint-lista segítségével támogatják a OAuth hitelesítő adatait. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. Érvényes tokenek létrehozásához Power Query használatával állítsa be a hitelesítő adatokat.
 
 A OAuth hitelesítő adatai nem támogatják a közvetlen lekérdezési módot.
 
@@ -161,7 +161,7 @@ Az Oracle által felügyelt szolgáltató engedélyezése:
 3. Indítsa újra a kiszolgálót.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Helyszíni átjáró](analysis-services-gateway.md)
 * [A kiszolgáló kezelése](analysis-services-manage.md)

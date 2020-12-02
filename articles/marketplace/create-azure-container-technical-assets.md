@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 11/30/2020
-ms.openlocfilehash: 30f9eac0a0e88092a243b4d9421d2a4f33b07841
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 014bcd6fc519c267cdf17e9e98b850425c25ead6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95759002"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459334"
 ---
 # <a name="prepare-your-azure-container-technical-assets"></a>Az Azure Container technikai eszközeinek előkészítése
 
@@ -20,7 +20,7 @@ Ez a cikk az Azure Marketplace-en elérhető tárolók létrehozására szolgál
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A gyors útmutatókkal, oktatóanyagokkal és mintákkal kapcsolatban tekintse meg a [Azure Container instances dokumentációját](/azure/container-instances/).
+A gyors útmutatókkal, oktatóanyagokkal és mintákkal kapcsolatban tekintse meg a [Azure Container instances dokumentációját](../container-instances/index.yml).
 
 ## <a name="fundamental-technical-knowledge"></a>Alapvető műszaki ismeretek
 
@@ -43,7 +43,7 @@ A tároló rendszerképének kezeléséhez válasszon egyet vagy mindkettőt a k
 
 Javasoljuk, hogy adja hozzá ezeket az eszközöket a fejlesztési környezethez:
 
-- [Azure Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
+- [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Kiterjesztés: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Kiterjesztés: [szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -55,10 +55,10 @@ Tekintse át az elérhető eszközöket az [Azure fejlesztői eszközök](https:
 
 Helyszíni beállításjegyzékből nem lehet lemezképet telepíteni Azure Container Instances.
 
-- Ha már rendelkezik egy működő tárolóval a helyi beállításjegyzékben, hozzon létre egy Azure-beállításjegyzéket, és töltse fel a tároló képét a Azure Container Registryba. További információ: [oktatóanyag: tároló-lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal](/azure/container-registry/container-registry-tutorial-quick-task.md).
+- Ha már rendelkezik egy működő tárolóval a helyi beállításjegyzékben, hozzon létre egy Azure-beállításjegyzéket, és töltse fel a tároló képét a Azure Container Registryba. További információ: [oktatóanyag: tároló-lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal](../container-registry/container-registry-tutorial-quick-task.md).
 
-- Ha még nem rendelkezik tároló-lemezképpel, és meg kell tárolóba helyezése a meglévő alkalmazást, vagy létre kell hoznia egy új tároló-alapú alkalmazást, akkor a GitHubról kell megnyitnia az alkalmazás forráskódját, létre kell hoznia egy tároló rendszerképet az alkalmazás forrásáról, és tesztelni kell egy helyi Docker-környezetben. További információ: [oktatóanyag: tároló rendszerképének létrehozása a Azure Container instances való üzembe helyezéshez](/azure/container-instances/container-instances-tutorial-prepare-app.md).
+- Ha még nem rendelkezik tároló-lemezképpel, és meg kell tárolóba helyezése a meglévő alkalmazást, vagy létre kell hoznia egy új tároló-alapú alkalmazást, akkor a GitHubról kell megnyitnia az alkalmazás forráskódját, létre kell hoznia egy tároló rendszerképet az alkalmazás forrásáról, és tesztelni kell egy helyi Docker-környezetben. További információ: [oktatóanyag: tároló rendszerképének létrehozása a Azure Container instances való üzembe helyezéshez](../container-instances/container-instances-tutorial-prepare-app.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A tároló ajánlat létrehozása](create-azure-container-offer.md)

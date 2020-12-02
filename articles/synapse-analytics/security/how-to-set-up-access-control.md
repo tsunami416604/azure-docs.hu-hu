@@ -1,5 +1,5 @@
 ---
-title: A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
+title: A Synapse-munkaterület védelme
 description: Ebből a cikkből megtudhatja, hogyan használhatja a szerepköröket és a hozzáférés-vezérlést a tevékenységek vezérléséhez és a szinapszis munkaterület adataihoz való hozzáféréshez.
 services: synapse-analytics
 author: matt1883
@@ -9,20 +9,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79a4db1f7d4be88260ea41ce1090007bc66cc7c8
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 25e191af919c5880045a6c4c7c79b675cf02520e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556029"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458722"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió) 
+# <a name="secure-your-synapse-workspace"></a>A Synapse-munkaterület védelme 
 
 Ez a cikk bemutatja, hogyan használhatja a szerepköröket és a hozzáférés-vezérlést a tevékenységek vezérléséhez és az adateléréshez. Ezeket az utasításokat követve az Azure szinapszis Analytics hozzáférés-vezérlése egyszerűsített. A felhasználókat csak három biztonsági csoport egyikére kell felvennie és eltávolítania.
 
 ## <a name="overview"></a>Áttekintés
 
-A szinapszis-munkaterület (előzetes verzió) biztonságossá tételéhez kövesse az alábbi elemek konfigurálásának mintáját:
+A szinapszis-munkaterület biztonságossá tételéhez kövesse az alábbi elemek konfigurálásának mintáját:
 
 - Azure-szerepkörök (például a beépítettek, mint a tulajdonos, közreműködő stb.)
 - Szinapszis-szerepkörök – ezek a szerepkörök egyediek a szinapszisok számára, és nem az Azure szerepkörein alapulnak. A szerepkörök közül három:
@@ -36,7 +36,7 @@ A szinapszis-munkaterület (előzetes verzió) biztonságossá tételéhez köve
 
 Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséhez. Cserélje le azokat bármely tetszőleges névvel.
 
-|Beállítás | Példaérték | Leírás |
+|Beállítás | Példaérték | Description |
 | :------ | :-------------- | :---------- |
 | **Szinapszis-munkaterület** | WS1 |  A szinapszis munkaterület neve. |
 | **ADLSGEN2-fiók** | STG1 | A munkaterülethez használni kívánt ADLS-fiók. |
@@ -71,7 +71,7 @@ A tárterülettel kapcsolatos információk azonosítása:
 
  A Azure Portal hozzon létre egy szinapszis-munkaterületet:
 
-- Az előfizetés kiválasztása
+- Válassza ki az előfizetést
 - Válassza ki az erőforráscsoportot – hozzá kell férnie egy olyan erőforráscsoporthoz, amelyhez hozzá lett rendelve a **tulajdonosi** szerepkör.
 - A munkaterület WS1 neve
 - Válassza a STG1 lehetőséget a Storage-fiókhoz –. Válassza a CNT1 lehetőséget a tárolóhoz, amelyet "fájlrendszerként" használ.
@@ -182,6 +182,6 @@ A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog műk�
 > [1] a tárolókban lévő adatokhoz való hozzáférés a ADLS Gen2 hozzáférés-vezérléstől függ. </br>
 > [2] az SQL OD-táblák és a Spark-táblázatok tárolja az ADLS Gen2 és a hozzáféréshez szükséges megfelelő engedélyeket a ADLS Gen2.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Szinapszis- [munkaterület](../quickstart-create-workspace.md) létrehozása

@@ -3,17 +3,17 @@ title: Mi az az Azure IoT Central? | Microsoft Docs
 description: Az Azure IoT Central egy IoT-alkalmazási platform, amely leegyszerűsíti a IoT-megoldások létrehozását, és segít csökkenteni a IoT-kezelési műveletek terheit és költségeit, valamint a fejlesztést. Ez a cikk áttekintést nyújt az Azure IoT Central jellemzőiről.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 11/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 41dba796327d7f5857098af6165be996bed226fb
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 55f187781a0f11417b0c918034dcfe3362be4468
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122699"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457667"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
@@ -137,7 +137,7 @@ IoT Central alkalmazásait teljes mértékben a Microsoft üzemelteti, ami csök
 A 7 napos ingyenes próbaverzió használatával IoT Central alkalmazást hozhat létre, vagy használhat standard díjszabási csomagot is.
 
 - Az *ingyenes* csomag használatával létrehozott alkalmazások hét napig ingyenesen használhatók, és legfeljebb öt eszközt támogatnak. Egy standard díjszabási csomag használatára a lejárat előtt bármikor átalakítható.
-- A *standard* csomag használatával létrehozott alkalmazások számlázása eszközönként történik, a **standard 1** vagy **Standard 2** díjszabási csomaggal pedig az első két eszköz ingyenesen használható. További információ a [IoT Central díjszabásáról](https://aka.ms/iotcentral-pricing).
+- A *standard* csomag használatával létrehozott alkalmazások számlázása eszközönként történik, a **standard 0**, **standard 1** vagy standard **2** díjszabás közül választhat, amely az első két eszközzel ingyenes. További információ a [IoT Central díjszabásáról](https://aka.ms/iotcentral-pricing).
 
 ## <a name="quotas"></a>Kvóták
 

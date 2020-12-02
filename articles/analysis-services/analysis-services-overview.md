@@ -8,12 +8,12 @@ ms.date: 10/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: d8c7965a1d77d443b538392a4c190a8f578d8e18
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 496b2ea7272be96774d4bd0900fc35c6de8cf9eb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183209"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457779"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -79,7 +79,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
-|Region  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Dél-Brazília     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
@@ -88,8 +88,8 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |USA 2. keleti régiója     |     S8v2, S9v2   |    1    |
 |USA északi középső régiója     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA északi középső régiója     |     S8v2, S9v2    |    1     |
-|Az USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Az USA középső régiója     |    S8v2, S9v2     |    1     |
+|USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|USA középső régiója     |    S8v2, S9v2     |    1     |
 |USA déli középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA nyugati középső régiója   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA nyugati régiója     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
@@ -99,7 +99,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="europe"></a>Európa
 
-|Region  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Észak-Európa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Észak-Európa     |    S8v2, S9v2      |    3     |
@@ -109,7 +109,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
 
-|Region  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Kelet-Ausztrália     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Kelet-Ausztrália     |    S8v2, S9v2    |    1     |
@@ -145,7 +145,7 @@ A táblázatos modelleket a memóriában tárolt és a DirectQuery módok egyar�
 
 A particionálás révén elérhetővé válik a növekményes betöltés, növelhető a párhuzamos folyamatkezelés mértéke, és csökkenthető a memóriahasználat. Ezen kívül olyan speciális adatmodellezési funkciók is támogatottak, mint például a számított táblázatok és az összes DAX-függvény. Az adatforrásokból származó, gyorsítótárazott adatok frissítéséhez a memóriában tárolt modelleket frissíteni kell (fel kell dolgozni). Az Azure-szolgáltatás egyszerű támogatása, a PowerShell, a TOM, a TMSL és a REST használatával végzett felügyelet nélküli frissítési műveletekkel rugalmasan biztosítható, hogy a modell adatai mindig naprakészek legyenek. 
 
-A tároláshoz és a lekérdezések futtatásához a DirectQuery mód* a háttérbeli relációs adatbázist használja. A rendkívül nagy adathalmazok egyetlen SQL Serverban, SQL Server adattárházban, Azure SQL Databaseban, az Azure szinapszis Analyticsben (korábban SQL Data Warehouse), az Oracle-ben és az Teradata-adatforrásokban is támogatottak. A háttérbeli adatkészletek mérete meghaladhatja a rendelkezésre álló kiszolgálói erőforrás memóriájának méretét. Nincs szükség az összetett adatmodellek frissítésére. Vannak olyan korlátozások is, mint például a korlátozott adatforrások, a DAX-képlet korlátozásai, és egyes speciális adatmodellezési funkciók nem támogatottak. Az Ön számára legmegfelelőbb mód kiválasztása előtt tekintse át a [DirectQuery mód](/analysis-services/tabular-models/directquery-mode-ssas-tabular) szakaszban leírtakat.
+A tároláshoz és a lekérdezések futtatásához a DirectQuery mód* a háttérbeli relációs adatbázist használja. A rendkívül nagy adathalmazok egyetlen SQL Serverban, SQL Server adattárházban, Azure SQL Databaseban, az Azure szinapszis Analyticsben, az Oracle-ben és az Teradata-adatforrásokban is támogatottak. A háttérbeli adatkészletek mérete meghaladhatja a rendelkezésre álló kiszolgálói erőforrás memóriájának méretét. Nincs szükség az összetett adatmodellek frissítésére. Vannak olyan korlátozások is, mint például a korlátozott adatforrások, a DAX-képlet korlátozásai, és egyes speciális adatmodellezési funkciók nem támogatottak. Az Ön számára legmegfelelőbb mód kiválasztása előtt tekintse át a [DirectQuery mód](/analysis-services/tabular-models/directquery-mode-ssas-tabular) szakaszban leírtakat.
 
 \* A rendelkezésre álló funkciók köre a választott szinttől függ.
 
@@ -164,7 +164,7 @@ Az Azure Analysis Services többszintű biztonságot nyújt bizalmas adatai szá
 
 A kiszolgáló szintjén a Analysis Services tűzfalat, Azure-hitelesítést, kiszolgálói rendszergazdai szerepköröket és Server-Side titkosítást biztosít. Az adatmodell szintjén a felhasználói szerepkörök, a sorcsoport és az objektumorientált biztonság gondoskodik az adatai biztonságáról, és azokat csak azok a felhasználók látják, akik számára a célja.
 
-### <a name="firewall"></a>Firewall
+### <a name="firewall"></a>Tűzfal
 
 Az Azure Analysis Services tűzfala minden olyan ügyfélkapcsolatot blokkol, amelyek IP-címe nincs megadva a szabályokban. Alapértelmezés szerint a tűzfalbeállítások nincs engedélyezve az új kiszolgálókon. Az ajánlott tűzfalbeállítások engedélyezve van, és a szabályok konfigurálása a kiszolgáló létesítési parancsfájljának részeként vagy a portálon közvetlenül a kiszolgáló létrehozása után történik. Az engedélyezett IP-címeket meghatározó szabályok egyesével, ügyfél IP-címenként vagy tartományonként is konfigurálhatók. A Power BI- (szolgáltatási) kapcsolatok szintén engedélyezhetők vagy blokkolhatók. A tűzfalat és a szabályokat a portálon vagy a PowerShell használatával konfigurálhatja. További információ: [Kiszolgálószintű tűzfal konfigurálása](analysis-services-qs-firewall.md).
 
@@ -261,7 +261,7 @@ A dolgok gyorsan változnak. Szerezze be a legfrissebb információkat a [Power 
 
 Az Analysis Services felhasználói pezsgő közösséget alkotnak. Csatlakozzon a párbeszédhez az [Azure Analysis Services fórumon](https://aka.ms/azureanalysisservicesforum).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure ingyenes próbaverziójának kipróbálása](https://azure.microsoft.com/offers/ms-azr-0044p/)   

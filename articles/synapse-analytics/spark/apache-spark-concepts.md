@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: d29fa6454839b0c34830374282b8abb5fa6e4c51
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8df7a2ecd2a6732a011267eb0efe00e8eaf2bef4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313404"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458751"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark az Azure szinapszis Analytics alapvető fogalmakkal
 
@@ -22,15 +22,15 @@ A Apache Spark egy párhuzamos feldolgozási keretrendszer, amely támogatja a m
 
 Az Azure szinapszis megkönnyíti a Spark-képességek létrehozását és konfigurálását az Azure-ban. Az Azure szinapszis ezen Spark-képességek eltérő implementációját biztosítja, amelyek dokumentálva vannak itt.
 
-## <a name="spark-pools-preview"></a>Spark-készletek (előzetes verzió)
+## <a name="spark-pools"></a>Spark-készletek
 
-A rendszer létrehoz egy kiszolgáló nélküli Apache Spark készletet (előzetes verzió) a Azure Portal. Ez egy olyan Spark-készlet definíciója, amely a példányok létrehozásakor egy olyan Spark-példány létrehozására szolgál, amely az adatfeldolgozást végzi. Spark-készlet létrehozásakor a rendszer csak metaadatként működik, és nem használja fel, nem futtatja és nem számlázza fel az erőforrásokat. A Spark-készlet olyan tulajdonságokkal rendelkezik, amelyek a Spark-példány jellemzőit vezérlik. Ezek a tulajdonságok közé tartoznak például a név, a méret, a skálázási viselkedés, az élettartam.
+Kiszolgáló nélküli Apache Spark készlet jön létre a Azure Portal. Ez egy olyan Spark-készlet definíciója, amely a példányok létrehozásakor egy olyan Spark-példány létrehozására szolgál, amely az adatfeldolgozást végzi. Spark-készlet létrehozásakor a rendszer csak metaadatként működik, és nem használja fel, nem futtatja és nem számlázza fel az erőforrásokat. A Spark-készlet olyan tulajdonságokkal rendelkezik, amelyek a Spark-példány jellemzőit vezérlik. Ezek a tulajdonságok közé tartoznak például a név, a méret, a skálázási viselkedés, az élettartam.
 
 Mivel a Spark-készletek létrehozásához nem jár dollár vagy erőforrás-díj, tetszőleges számú különböző konfigurációval hozható létre. Az engedélyek olyan Spark-készletekre is alkalmazhatók, amelyek lehetővé teszik a felhasználók számára, hogy mások számára is hozzáférjenek.
 
 Az ajánlott eljárás az, hogy olyan kisebb Spark-készleteket hozzon létre, amelyek fejlesztési és hibakeresési célokra használhatók, majd nagyobbak a termelési munkaterhelések futtatásához is.
 
-Megtudhatja, hogyan hozhat létre egy Spark-készletet, és hogyan tekintheti meg az összes tulajdonságot itt [megkezdheti a Spark-készletek a szinapszis Analyticsben](../quickstart-create-apache-spark-pool-portal.md)
+Megtudhatja, hogyan hozhat létre egy Spark-készletet, és hogyan tekintheti meg az összes tulajdonságot itt [megismerheti a Spark-készleteket az Azure szinapszis Analytics szolgáltatásban](../quickstart-create-apache-spark-pool-portal.md)
 
 ## <a name="spark-instances"></a>Spark-példányok
 
@@ -93,7 +93,7 @@ However, the pool is consuming yy vcores out of available zz vcores.Try ending t
 
 Ennek a problémának a megoldásához csökkentenie kell a készlet erőforrásainak használatát, mielőtt egy jegyzetfüzetet vagy feladatot futtasson egy új erőforrás-kérelem elküldése előtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
 - [Apache Spark dokumentáció](https://spark.apache.org/docs/2.4.5/)

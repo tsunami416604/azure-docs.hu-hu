@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e6708874fee3e15349b4389f1ecafa3d48a628dd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95917201"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458830"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Oktatóanyag: kísérletek futtatása az Azure automatizált ML és Apache Spark használatával
 
@@ -72,7 +72,7 @@ df = spark.read.parquet(wasbs_path)
 
 ```
 
-3. A Spark-készlet (előzetes verzió) méretétől függően előfordulhat, hogy a nyers adatmennyiség túl nagy, vagy túl sok időt vesz igénybe. Ezeket az adatmennyiségeket leszűkítheti a ```start_date``` és a szűrők használatával ```end_date``` . Ez egy olyan szűrőt alkalmaz, amely egy hónapot ad vissza. Miután megtörtént a szűrt dataframe, a függvényt is futtatjuk ```describe()``` az új dataframe az egyes mezők összegző statisztikáinak megtekintéséhez. 
+3. A Spark-készlet méretétől függően előfordulhat, hogy a nyers adatmennyiség túl nagy, vagy túl sok időbe telik a működés. Ezeket az adatmennyiségeket leszűkítheti a ```start_date``` és a szűrők használatával ```end_date``` . Ez egy olyan szűrőt alkalmaz, amely egy hónapot ad vissza. Miután megtörtént a szűrt dataframe, a függvényt is futtatjuk ```describe()``` az új dataframe az egyes mezők összegző statisztikáinak megtekintéséhez. 
 
    Az összegző statisztika alapján láthatjuk, hogy az adatokban nincsenek szabálytalanságok és kiugró értékek. A statisztikák például azt mutatják, hogy a minimális utazási távolság nullánál kisebb. Ezeket a szabálytalan adatpontokat ki kell szűrni.
    

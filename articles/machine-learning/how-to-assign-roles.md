@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 8af3da5d04f9aaafc18299f4837660694ee34b51
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0719f2d9200741798c798aca4b4196812f1229c9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345269"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458446"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterülethez való hozzáférés kezelése
 
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan kezelheti a hozzáférés (Engedélyezés)
 >
 > * [Az Azure Kubernetes-fürt erőforrásaihoz való hozzáférés szabályozása](../aks/azure-ad-rbac.md)
 > * [Az Azure RBAC használata az Kubernetes-hitelesítéshez](../aks/manage-azure-rbac.md)
-> * [Az Azure RBAC használata a Blobok eléréséhez](/azure/storage/common/storage-auth-aad-rbac-portal)
+> * [Az Azure RBAC használata a Blobok eléréséhez](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!WARNING]
 > Egyes szerepkörök alkalmazása a Azure Machine Learning Studióban korlátozhatja a felhasználói felület funkcióit más felhasználók számára. Ha például egy felhasználó szerepköre nem képes számítási példányt létrehozni, a számítási példány létrehozásának lehetősége nem lesz elérhető a Studióban. Ez a viselkedés várható, és megakadályozza, hogy a felhasználó megkísérelje a hozzáférés-megtagadási hibát visszaadó műveleteket.

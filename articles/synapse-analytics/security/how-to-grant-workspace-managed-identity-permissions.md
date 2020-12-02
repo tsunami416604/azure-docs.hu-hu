@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 54612bee5715cdb78141a8aacfa5d24c814269d1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 46fe27205a2c30d6cb2319bf620c6fe1ee34c31e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014720"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459013"
 ---
-# <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Engedélyek megadása a munkaterület által felügyelt identitásnak (előzetes verzió)
+# <a name="grant-permissions-to-workspace-managed-identity"></a>Engedélyek megadása munkaterület által felügyelt identitásnak
 
 Ez a cikk bemutatja, hogyan adhat engedélyeket a felügyelt identitásnak az Azure szinapszis munkaterületen. Az engedélyek lehetővé teszik a dedikált SQL-készletek elérését a munkaterületen, és a Azure Portal keresztül ADLS Gen2 Storage-fiókot.
 
