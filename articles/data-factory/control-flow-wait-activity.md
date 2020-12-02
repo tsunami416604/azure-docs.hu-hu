@@ -3,20 +3,20 @@ title: Várakozási tevékenység Azure Data Factory
 description: A várakozási tevékenység szünetelteti a folyamat végrehajtását a megadott időszakra vonatkozóan.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12c9027067c00a3db84e6610a0d73090cc011713
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417912"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485910"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Várakozási tevékenység végrehajtása a Azure Data Factoryban
 Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a megadott időtartamot, és csak az után folytatja a további tevékenységek futtatását. 
@@ -24,7 +24,7 @@ Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a me
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Szintaxis
 
 ```json
 {
@@ -42,7 +42,7 @@ Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a me
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 name | A tevékenység neve `Wait` . | Sztring | Igen
-típus | **Várakozási**értékre kell beállítani. | Sztring | Igen
+típus | **Várakozási** értékre kell beállítani. | Sztring | Igen
 waitTimeInSeconds | Azon másodpercek száma, ameddig a folyamat várakozik a feldolgozás folytatása előtt. | Egész szám | Igen
 
 ## <a name="example"></a>Példa

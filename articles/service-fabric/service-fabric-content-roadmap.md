@@ -3,12 +3,12 @@ title: További információ az Azure Service Fabric
 description: Ismerje meg az Azure Service Fabric legfontosabb alapfogalmait és főbb területeit. A részletes áttekintést nyújt a Service Fabricről és a szolgáltatások létrehozásáról.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 07b41f10430592e6035bfe0179cb717d0bc5c8b0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 36215dd3419050cf498a749b5caf927c3c4e275a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681737"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485450"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Szeretne többet megtudni a Service Fabricról?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  Service Fabric nagy felülettel rendelkezik, és sokat tanulhat.  Ez a cikk áttekintést nyújt a Service Fabricekről, valamint ismerteti az alapvető fogalmakat, programozási modelleket, az alkalmazások életciklusát, a tesztelést, a fürtöket és az állapot-figyelést Olvassa el az [áttekintést](service-fabric-overview.md) , és [Mik azok a szolgáltatások?](service-fabric-overview-microservices.md) a bevezetéshez és a Service Fabric használhatók a-szolgáltatások létrehozásához. Ez a cikk nem tartalmaz átfogó listát, de a Service Fabric összes területének áttekintésére és az első lépéseket ismertető cikkekre mutató hivatkozást tartalmaz. 
@@ -51,7 +51,7 @@ A [particionálás](service-fabric-concepts-partitioning.md) nem egyedi a Servic
 
 Az egyes partíciók replikái a fürt csomópontjain oszlanak el, ami lehetővé teszi, hogy az elnevezett szolgáltatás a [méretezést](service-fabric-concepts-scalability.md). Mivel az adatmennyiség növekedésre szorul, a partíciók növekednek, és Service Fabric a partíciókat a csomópontok között a hardveres erőforrások hatékony kihasználásához. Ha új csomópontokat ad hozzá a fürthöz, Service Fabric a csomópontok számának megnövekedésével újra kiegyenlíti a partíció replikáit. Az alkalmazások teljes teljesítményének növelése és a memória-hozzáférés csökkentése. Ha a fürt csomópontjait nem használják hatékonyan, csökkentheti a fürt csomópontjainak számát. Service Fabric ismét kiegyensúlyozza a partíció replikáit a csomópontok számának csökkenésével, hogy jobban használhassa a hardvert az egyes csomópontokon.
 
-Egy partíción belül az állapot nélküli elnevezett szolgáltatások rendelkeznek példányokkal, míg az állapot-nyilvántartó nevű szolgáltatások replikákkal rendelkeznek. Általában az állapot nélküli nevesített szolgáltatások esetében csak egy partíció van, mivel nincsenek belső állapotuk, bár [kivételek](https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-partitioning#partition-service-fabric-stateless-services)vannak. A partíciós példányok [rendelkezésre állást](service-fabric-availability-services.md)biztosítanak. Ha az egyik példány meghibásodik, más példányok továbbra is szabályosan működnek, majd Service Fabric új példányt hoz létre. Az állapot-nyilvántartó elnevezett szolgáltatások megőrzik a replikán belüli állapotukat, és mindegyik partícióhoz saját replikakészlet tartozik. Az olvasási és írási műveletek az egyik replikán (elsődleges) vannak elvégezve. Az írási műveletek állapotának módosításait a rendszer több más replikára replikálja (az Active formátumú másodlagos zónák néven). Ha egy replika meghibásodik, Service Fabric új replikát hoz létre a meglévő replikák közül.
+Egy partíción belül az állapot nélküli elnevezett szolgáltatások rendelkeznek példányokkal, míg az állapot-nyilvántartó nevű szolgáltatások replikákkal rendelkeznek. Általában az állapot nélküli nevesített szolgáltatások esetében csak egy partíció van, mivel nincsenek belső állapotuk, bár [kivételek](./service-fabric-concepts-partitioning.md#partition-service-fabric-stateless-services)vannak. A partíciós példányok [rendelkezésre állást](service-fabric-availability-services.md)biztosítanak. Ha az egyik példány meghibásodik, más példányok továbbra is szabályosan működnek, majd Service Fabric új példányt hoz létre. Az állapot-nyilvántartó elnevezett szolgáltatások megőrzik a replikán belüli állapotukat, és mindegyik partícióhoz saját replikakészlet tartozik. Az olvasási és írási műveletek az egyik replikán (elsődleges) vannak elvégezve. Az írási műveletek állapotának módosításait a rendszer több más replikára replikálja (az Active formátumú másodlagos zónák néven). Ha egy replika meghibásodik, Service Fabric új replikát hoz létre a meglévő replikák közül.
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Állapot nélküli és állapotalapú mikroszolgáltatások a Service Fabrichez
 A Service Fabric segítségével mikroszolgáltatásokból vagy tárolókból álló alkalmazásokat építhet. Az állapot nélküli mikroszolgáltatások (például a protokollátjárók és webproxyk) nem tartanak fenn változtatható állapotot a kéréseken és a szolgáltatástól ezekre kapott válaszokon kívül. Az Azure Cloud Services feldolgozói szerepkörei például állapotmentes szolgáltatások. Az állapotalapú mikroszolgáltatások (például felhasználói fiókok, adatbázisok, eszközök, kosarak és üzenetsorok) változtatható, mérvadó állapotot tartanak fenn a kéréseken és a válaszokon kívül is. A modern webes alkalmazások állapot nélküli és állapotalapú mikroszolgáltatások kombinációjából állnak. 
@@ -182,7 +182,7 @@ A monitorozás és diagnosztika általános munkafolyamata három lépésből á
 
 Ezen a három területen több termék is elérhető, és mindegyikhez szabadon választhat különböző technológiákat. További információért olvassa el [Az Azure Service Fabric figyelését és diagnosztizálását](service-fabric-diagnostics-overview.md)ismertető témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megismerkedhet egy [azure-beli fürt](service-fabric-cluster-creation-via-portal.md) vagy egy [önálló windowsbeli fürt](service-fabric-cluster-creation-for-windows-server.md) létrehozásával.
 * Próbáljon szolgáltatást létrehozni a [Reliable Services](service-fabric-reliable-services-quick-start.md) vagy a [Reliable Actors](service-fabric-reliable-actors-get-started.md) programozási modellek használatával.
 * Ismerje meg, hogyan [telepíthet át Cloud Servicesról](service-fabric-cloud-services-migration-differences.md).

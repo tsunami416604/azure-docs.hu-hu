@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fbfec218c1bf1d018157fc6d78c700991f332a13
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5a4586c9c1be51b0ebbdebcf0c23289fc39f9eda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172804"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485501"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>A Service Fabric-szolgáltatások elhelyezési házirendjei
 Az elhelyezési házirendek olyan további szabályok, amelyek segítségével szabályozható a szolgáltatások elhelyezése bizonyos konkrét, kevésbé gyakori helyzetekben. Ilyen forgatókönyvek például a következők:
@@ -150,7 +150,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> Jelenleg a szabályzat csak olyan állapot nélküli szolgáltatások esetében támogatott, amelyeknél a ExclusiveProcess [Service Package aktiválási módja](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)van.
+> Jelenleg a szabályzat csak olyan állapot nélküli szolgáltatások esetében támogatott, amelyeknél a ExclusiveProcess [Service Package aktiválási módja](/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)van.
 >
 
 > [!WARNING]
@@ -158,10 +158,10 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> Ha nagy értékű [MinInstanceCount](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) használ ezzel az elhelyezési házirenddel, akkor az alkalmazások frissítései megakadnak. Ha például öt csomópontos fürttel rendelkezik, és a InstanceCount = 10 érték van beállítva, akkor minden csomóponton két példány fog szerepelni. Ha a MinInstanceCount = 9-et állítja be, a megkísérelt alkalmazások frissítése megakad; a MinInstanceCount = 8 használatával elkerülhető.
+> Ha nagy értékű [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) használ ezzel az elhelyezési házirenddel, akkor az alkalmazások frissítései megakadnak. Ha például öt csomópontos fürttel rendelkezik, és a InstanceCount = 10 érték van beállítva, akkor minden csomóponton két példány fog szerepelni. Ha a MinInstanceCount = 9-et állítja be, a megkísérelt alkalmazások frissítése megakad; a MinInstanceCount = 8 használatával elkerülhető.
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A szolgáltatások konfigurálásával kapcsolatos további információkért [tekintse meg a szolgáltatások konfigurálását](service-fabric-cluster-resource-manager-configure-services.md) ismertető témakört.
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
