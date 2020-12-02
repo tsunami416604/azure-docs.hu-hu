@@ -7,18 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 3df7d3d01dcd5e5b097eba53ef0dae29e86fd0a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cddc7f4f453f22b0cb36b1d3a1e9c2fba2dcabaf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973257"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455089"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows rendszerű virtuális gép létrehozása specializált lemezből a PowerShell-lel
 
 Hozzon létre egy új virtuális gépet egy speciális felügyelt lemez csatlakoztatásával operációsrendszer-lemezként. A speciális lemezek a virtuális merevlemezek (VHD-k) másolata egy meglévő virtuális gépről, amely tartalmazza az eredeti virtuális gépről származó felhasználói fiókokat, alkalmazásokat és egyéb állapotinformációkat. 
-
-Ha speciális virtuális merevlemezt használ egy új virtuális gép létrehozásához, az új virtuális gép megőrzi az eredeti virtuális gép számítógépnevét. Más számítógépekre vonatkozó információk is megmaradnak, és bizonyos esetekben ez a duplikált információ problémákat okozhat. A virtuális gépek másolásakor vegye figyelembe, hogy az alkalmazásai milyen típusú számítógép-specifikus információkat használnak.
 
 Erre számos lehetősége van:
 * [Meglévő felügyelt lemez használata](#option-1-use-an-existing-disk). Ez a beállítás akkor hasznos, ha olyan virtuális géppel rendelkezik, amely nem megfelelően működik. Törölheti a virtuális gépet, majd újra felhasználhatja a felügyelt lemezt egy új virtuális gép létrehozásához. 
@@ -28,6 +26,11 @@ Erre számos lehetősége van:
 A Azure Portal használatával [egy új virtuális gépet is létrehozhat egy speciális VHD-ből](create-vm-specialized-portal.md).
 
 Ez a cikk bemutatja, hogyan használhatja a felügyelt lemezeket. Ha olyan örökölt központi telepítéssel rendelkezik, amely Storage-fiók használatát igényli, tekintse meg a [virtuális gép létrehozása egy speciális VHD-ből a Storage-fiókban](/previous-versions/azure/virtual-machines/windows/sa-create-vm-specialized)című témakört.
+
+> [!IMPORTANT]
+> 
+> Ha speciális lemezt használ egy új virtuális gép létrehozásához, az új virtuális gép megőrzi az eredeti virtuális gép számítógépnevét. A számítógépekre vonatkozó egyéb információk (például a CMID) is megmaradnak, és bizonyos esetekben az ismétlődő információk problémákat okozhatnak. A virtuális gépek másolásakor vegye figyelembe, hogy az alkalmazásai milyen típusú számítógép-specifikus információkat használnak.  
+> Ezért ne használjon speciális lemezt, ha több virtuális gépet szeretne létrehozni. Ehelyett nagyobb telepítések esetén [hozzon létre egy rendszerképet](capture-image-resource.md) , majd [ezt a rendszerképet használva hozzon létre több virtuális](create-vm-generalized-managed.md)gépet.
 
 Azt javasoljuk, hogy az egyidejű központi telepítések számát legfeljebb 20 virtuális gépre korlátozza egyetlen VHD-fájlból vagy pillanatképből. 
 
@@ -150,7 +153,7 @@ Hozzon létre hálózatkezelést és más virtuálisgép-erőforrásokat, amelye
 
 Hozza létre a [virtuális hálózatot](../../virtual-network/virtual-networks-overview.md) és az alhálózatot a virtuális géphez.
 
-1. Hozza létre az alhálózatot. Ez a példa létrehoz egy *mySubNet*nevű alhálózatot az erőforráscsoport *myDestinationResourceGroup*, és az alhálózati címnek az *10.0.0.0/24*értékre állítja az előtagot.
+1. Hozza létre az alhálózatot. Ez a példa létrehoz egy *mySubNet* nevű alhálózatot az erőforráscsoport *myDestinationResourceGroup*, és az alhálózati címnek az *10.0.0.0/24* értékre állítja az előtagot.
    
     ```powershell
     $subnetName = 'mySubNet'
@@ -159,7 +162,7 @@ Hozza létre a [virtuális hálózatot](../../virtual-network/virtual-networks-o
        -AddressPrefix 10.0.0.0/24
     ```
     
-2. Hozza létre a virtuális hálózatot. Ebben a példában a virtuális hálózat nevét *myVnetName*, az *USA nyugati*régióját és a virtuális hálózat *10.0.0.0/16*-ra való helyét állítja be. 
+2. Hozza létre a virtuális hálózatot. Ebben a példában a virtuális hálózat nevét *myVnetName*, az *USA nyugati* régióját és a virtuális hálózat *10.0.0.0/16*-ra való helyét állítja be. 
    
     ```powershell
     $vnetName = "myVnetName"
@@ -174,7 +177,7 @@ Hozza létre a [virtuális hálózatot](../../virtual-network/virtual-networks-o
 ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>A hálózati biztonsági csoport és egy RDP-szabály létrehozása
 Ahhoz, hogy be tudja jelentkezni a virtuális gépre a Remote Desktop Protocol (RDP) használatával, rendelkeznie kell egy olyan biztonsági szabállyal, amely engedélyezi az RDP-hozzáférést a 3389-es porton. A példánkban az új virtuális gép virtuális merevlemeze egy meglévő speciális virtuális gépről lett létrehozva, így olyan fiókot használhat, amely a forrás virtuális gépen létezett RDP-hez.
 
-Ez a példa beállítja a hálózati biztonsági csoport (NSG) nevét a *myNsg* és az RDP-szabály nevét a *myRdpRule*értékre.
+Ez a példa beállítja a hálózati biztonsági csoport (NSG) nevét a *myNsg* és az RDP-szabály nevét a *myRdpRule* értékre.
 
 ```powershell
 $nsgName = "myNsg"
@@ -195,7 +198,7 @@ További információ a végpontokról és a NSG-szabályokról: [portok megnyit
 ### <a name="create-a-public-ip-address-and-nic"></a>Nyilvános IP-cím és hálózati adapter létrehozása
 Ha engedélyezni szeretné a virtuális hálózatban lévő virtuális géppel való kommunikációt, szüksége lesz egy [nyilvános IP-címére](../../virtual-network/public-ip-addresses.md) és egy hálózati adapterre.
 
-1. Hozza létre a nyilvános IP-címet. Ebben a példában a nyilvános IP-cím neve *myIP*értékre van állítva.
+1. Hozza létre a nyilvános IP-címet. Ebben a példában a nyilvános IP-cím neve *myIP* értékre van állítva.
    
     ```powershell
     $ipName = "myIP"
@@ -205,7 +208,7 @@ Ha engedélyezni szeretné a virtuális hálózatban lévő virtuális géppel v
        -AllocationMethod Dynamic
     ```       
     
-2. Hozza létre a hálózati adaptert. Ebben a példában a hálózati adapter neve *myNicName*értékre van állítva.
+2. Hozza létre a hálózati adaptert. Ebben a példában a hálózati adapter neve *myNicName* értékre van állítva.
    
     ```powershell
     $nicName = "myNicName"
@@ -261,12 +264,12 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Annak ellenőrzése, hogy a virtuális gép létrejött-e
-Az újonnan létrehozott virtuális gépet a virtuális gépek **böngészése**vagy a következő PowerShell-parancsok használatával tekintheti meg a [Azure Portal](https://portal.azure.com)  >  **Virtual machines**.
+Az újonnan létrehozott virtuális gépet a virtuális gépek **böngészése** vagy a következő PowerShell-parancsok használatával tekintheti meg a [Azure Portal](https://portal.azure.com)  >  **Virtual machines**.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup
 $vmList.Name
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Jelentkezzen be az új virtuális gépre. További információ: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md).

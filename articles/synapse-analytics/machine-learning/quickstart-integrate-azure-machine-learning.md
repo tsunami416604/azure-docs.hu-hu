@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 2597aa1f0589fea75af0a3ac41244e3718d5eb3e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a5d84b936679cdd5ebd5bec4938d6db7fcb641e7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307966"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455505"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Gyors útmutató: új Azure Machine Learning társított szolgáltatás létrehozása a Szinapszisban
 
-Ebben a rövid útmutatóban egy szinapszis Analytics-munkaterületet csatol egy Azure Machine Learning munkaterülethez. A munkaterületek összekapcsolása lehetővé teszi, hogy kihasználja Azure Machine Learning a szinapszis különböző tapasztalataiból.
+Ebben a rövid útmutatóban egy Azure szinapszis Analytics-munkaterületet csatol egy Azure Machine Learning munkaterülethez. A munkaterületek összekapcsolása lehetővé teszi, hogy kihasználja Azure Machine Learning a szinapszis különböző tapasztalataiból.
 
 Egy Azure Machine Learning munkaterületre való hivatkozás például lehetővé teszi a következő élményeket:
 
@@ -77,7 +77,7 @@ Ez a lépés létrehoz egy új egyszerű szolgáltatásnevet. Ha egy meglévő s
 
    Ha a kapcsolatok tesztelése nem sikerült, győződjön meg arról, hogy az egyszerű szolgáltatásnév és a titkos kód helyes, és próbálkozzon újra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: gépi tanulási modell pontozása varázsló – dedikált SQL-készlet](tutorial-sql-pool-model-scoring-wizard.md)
-- [Az Azure szinapszis Analytics Machine Learning képességei (munkaterületek előzetes verzió)](what-is-machine-learning.md)
+- [Az Azure szinapszis Analytics Machine Learning képességei](what-is-machine-learning.md)

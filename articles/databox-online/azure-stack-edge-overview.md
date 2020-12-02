@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 7030030699668b3d316743955dabfb2cc175f6e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 51469c23574f55c102f0c6fb98e5aa5178b59a4a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90893882"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455737"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>Mi az FPGA-val rendelkező Azure Stack Edge Pro?
 
@@ -27,7 +27,7 @@ Azure Stack Edge Pro és a FPGA egy szolgáltatásként nyújtott hardveres mego
 
 Az alábbiakban azokat a forgatókönyveket láthatja, amelyekben a Azure Stack Edge Pro gyors Machine Learning (ML), amely a peremhálózat szélén és az adatok előfeldolgozása előtt használható az Azure-ba való küldés előtt.
 
-- **Következtetés a Azure Machine learning** -with Azure stack Edge Pro használatával: ml-modellek futtatásával gyors eredményeket érhet el, amelyek a felhőbe való adatküldés előtt is elhelyezhetők. A teljes adatkészletet igény szerint átviheti, hogy továbbra is újratanítsa és javítsa a ML-modelleket. Az Azure ML hardveres gyorsított modellek az Azure Stack Edge Pro-eszközön történő használatáról további információt az [Azure ml hardveres gyorsított modellek üzembe helyezése Azure stack Edge Pro](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)-ban című témakörben talál.
+- **Következtetés a Azure Machine learning** -with Azure stack Edge Pro használatával: ml-modellek futtatásával gyors eredményeket érhet el, amelyek a felhőbe való adatküldés előtt is elhelyezhetők. A teljes adatkészletet igény szerint átviheti, hogy továbbra is újratanítsa és javítsa a ML-modelleket. Az Azure ML hardveres gyorsított modellek az Azure Stack Edge Pro-eszközön történő használatáról további információt az [Azure ml hardveres gyorsított modellek üzembe helyezése Azure stack Edge Pro](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)-ban című témakörben talál.
 
 - Adatátalakítási adatok **előfeldolgozása** az Azure-ba való elküldés előtt, amely egy hatékonyabb adatkészlet létrehozásához szükséges. Az előfeldolgozás az alábbiakra használható: 
 
@@ -78,7 +78,7 @@ Az Azure Stack Edge Pro-megoldás Azure Stack Edge-erőforrásból, Azure Stack 
 
 Azure Stack Edge Pro fizikai eszköz, az Azure-erőforrás és a célként megadott Storage-fiók, amelybe az adatok átvitele nem feltétlenül azonos régióban kell, hogy legyen.
 
-- **Erőforrás rendelkezésre állása** – az összes olyan régióban, ahol az Azure stack peremhálózati erőforrás elérhető, tekintse meg a régiók [által elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)listáját. A Azure Stack Edge Pro a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
+- **Erőforrás rendelkezésre állása** – az összes olyan régióban, ahol az Azure stack peremhálózati erőforrás elérhető, tekintse meg a régiók [által elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)listáját. A Azure Stack Edge Pro a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](../azure-government/documentation-government-welcome.md)
     
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok Azure Stack Edge Pro-adataikat tárolják, közel kell lennie ahhoz, hogy az eszköz az optimális teljesítmény érdekében legyen. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
 

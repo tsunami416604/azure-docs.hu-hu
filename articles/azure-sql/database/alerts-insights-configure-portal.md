@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 64bef8a1cd4353ed9602c36cf728a0d727458251
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 512f6044e46fba49ea1c63a89d11135751e7ce43
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675136"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455977"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Riasztások létrehozása a Azure SQL Database és az Azure szinapszis Analytics számára a Azure Portal használatával
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "92675136"
 
 ## <a name="overview"></a>Áttekintés
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure SQL Database és az Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) adatbázisaihoz tartozó riasztásokat a Azure Portal használatával. A riasztások e-mailt küldhetnek, vagy meghívhatnak egy webhookot, ha valamilyen metrika (például az adatbázis mérete vagy a CPU-használat) eléri a küszöbértéket.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a riasztásokat a Azure SQL Database és az Azure szinapszis Analytics szolgáltatásban található adatbázisokhoz a Azure Portal használatával. A riasztások e-mailt küldhetnek, vagy meghívhatnak egy webhookot, ha valamilyen metrika (például az adatbázis mérete vagy a CPU-használat) eléri a küszöbértéket.
 
 > [!NOTE]
 > Az Azure SQL felügyelt példányaira vonatkozó utasításokért lásd: [riasztások létrehozása az Azure SQL felügyelt példányaihoz](../managed-instance/alerts-create.md).
@@ -61,7 +61,7 @@ A riasztási szabályokkal kapcsolatos információkat a
   ![Feltétel meghatározása](./media/alerts-insights-configure-portal/create-rule.png)
 5. A **jel logikai beállítása** lapon válasszon ki egy jelet.
   ![Jel kiválasztása](./media/alerts-insights-configure-portal/select-signal.png)
-6. Ha kiválasztott egy jelet, például a **CPU-százalékot** , megjelenik a **jel logikai beállítása** lap.
+6. Ha kiválasztott egy jelet, például a **CPU-százalékot**, megjelenik a **jel logikai beállítása** lap.
   ![Jellogika konfigurálása](./media/alerts-insights-configure-portal/configure-signal-logic.png)
 7. Ezen a lapon konfigurálhatja a küszöbértéket, az operátort, az összesítési típust, a küszöbértéket, az Összesítés részletességét és a kiértékelés gyakoriságát. Ezután kattintson a **kész** gombra.
 8. A **szabály létrehozása** lapon válasszon ki egy meglévő **műveleti csoportot** , vagy hozzon létre egy új csoportot. A műveleti csoport lehetővé teszi, hogy meghatározza a riasztási feltétel bekövetkezésekor végrehajtandó műveletet.
@@ -71,6 +71,6 @@ A riasztási szabályokkal kapcsolatos információkat a
 
 10 percen belül a riasztás aktív, és a korábban leírt módon aktiválódik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [webhookok riasztásokban való konfigurálásáról](../../azure-monitor/platform/alerts-webhooks.md).

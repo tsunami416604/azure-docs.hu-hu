@@ -1,6 +1,6 @@
 ---
 title: Memória és egyidejűségi korlátok
-description: Megtekintheti a különböző teljesítményszint és erőforrás-osztályok számára lefoglalt memóriát és egyidejűségi korlátokat az Azure szinapszis Analyticsben.
+description: Megtekintheti az Azure szinapszis Analytics szolgáltatásban található dedikált SQL-készlethez tartozó különböző teljesítményszint és erőforrás-osztályok számára lefoglalt memóriát és egyidejűségi korlátokat.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0ad93fb4a1269b4cca02b114c0427f0c44a31b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441680"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455358"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Az Azure szinapszis Analytics memóriája és egyidejűségi korlátai
+# <a name="memory-and-concurrency-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet memóriájának és egyidejűségének korlátai az Azure szinapszis Analyticsben
 
 Megtekintheti a különböző teljesítményszint és erőforrás-osztályok számára lefoglalt memóriát és egyidejűségi korlátokat az Azure szinapszis Analyticsben.  
 
@@ -127,7 +127,7 @@ Az alábbi táblázat az egyes [dinamikus erőforrás-osztályok](resource-class
 
 Ha nincs elegendő egyidejűségi tárolóhely a lekérdezés végrehajtásának megkezdéséhez, a lekérdezéseket a rendszer a fontosság alapján várólistára helyezi és végrehajtja.  Ha ennek megfelelő jelentősége van, a lekérdezéseket a rendszer az első, első kijelentkezési alapon hajtja végre.  A lekérdezések befejeződése után a lekérdezések és a tárolóhelyek száma a határértékek alá esik, az Azure szinapszis Analytics várólistán lévő lekérdezéseket szabadít fel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni arról, hogyan használhat erőforrás-osztályokat a számítási feladatok további optimalizálása érdekében, tekintse át a következő cikkeket:
 

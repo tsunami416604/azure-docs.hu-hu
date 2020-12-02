@@ -10,12 +10,12 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1, devx-track-azurecli
-ms.openlocfilehash: 5916a687c4eff4c6c8890b14a8c204cbabc145ea
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9c9af6e3bc3dfd798f4b3f0cad9319aa573c425d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792191"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456002"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Rugalmas készletek kezelése Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -94,7 +94,7 @@ A meglévő rugalmas készletekben lévő adatbázisok létrehozásához és át
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Egy adatbázis áthelyezése a, a vagy a rugalmas készletek között.|
 |[ADATBÁZIS eldobása (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Töröl egy adatbázist.|
 |[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|A kiszolgálón lévő összes rugalmas készlet erőforrás-használati statisztikáit adja vissza. Minden rugalmas készlethez egy sor tartozik minden 15 másodperces jelentési ablakhoz (percenként négy sor). Ide tartozik a CPU, az IO, a log, a Storage-felhasználás és az egyidejű kérelmek/munkamenetek kihasználtsága a készletben lévő összes adatbázis esetében.|
-|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|A kiadást (szolgáltatási szintet), a szolgáltatási célt (árképzési szintet) és a rugalmas készlet nevét adja vissza SQL Database vagy Azure szinapszis Analytics (korábban SQL Data Warehouse) adatbázisához. Ha bejelentkezett a főadatbázisba egy kiszolgálón, az az összes adatbázisra vonatkozó információt adja vissza. Az Azure szinapszis Analytics esetében csatlakoznia kell a Master adatbázishoz.|
+|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|A kiadást (szolgáltatási szintet), a szolgáltatási célt (árképzési szintet) és a rugalmas készlet nevét adja vissza SQL Database vagy Azure szinapszis Analytics-adatbázishoz. Ha bejelentkezett a főadatbázisba egy kiszolgálón, az az összes adatbázisra vonatkozó információt adja vissza. Az Azure szinapszis Analytics esetében csatlakoznia kell a Master adatbázishoz.|
 
 ## <a name="rest-api"></a>REST API
 
@@ -115,7 +115,7 @@ SQL Database rugalmas készletek és készletezett adatbázisok létrehozásáho
 |[Adatbázisok – kiszolgálók listázása](/rest/api/sql/databases/listbyserver)|Egy kiszolgáló adatbázisainak listáját adja vissza.|
 |[Adatbázisok – frissítés](/rest/api/sql/databases/update)|Frissít egy meglévő adatbázist.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](saas-tenancy-app-design-patterns.md) című részt.
 * A rugalmas készleteket használó SaaS-oktatóanyagért tekintse [meg a Wingtip SaaS-alkalmazás bemutatása](saas-dbpertenant-wingtip-app-overview.md)című témakört.

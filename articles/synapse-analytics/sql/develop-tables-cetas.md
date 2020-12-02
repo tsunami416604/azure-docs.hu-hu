@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: df0198ba77e1661bb18aa72285e100ca070966a8
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 8ffb3a0948267ea40a5d0511de63a80ad23584d1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331736"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454676"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS a szinapszis SQL-sel
 
-A következő feladatok végrehajtásához használhatja a CREATE EXTERNAL TABLE AS SELECT (CETAS) elemet a dedikált SQL Pool vagy a kiszolgáló nélküli SQL-készletben (előzetes verzió):  
+A következő feladatok végrehajtásához használhatja a CREATE EXTERNAL TABLE AS SELECT (CETAS) elemet a dedikált SQL-készlet vagy kiszolgáló nélküli SQL-készletben:  
 
 - Külső tábla létrehozása
 - A Transact-SQL SELECT utasítás eredményeinek párhuzamos exportálása a következőre:

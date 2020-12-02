@@ -9,18 +9,18 @@ ms.topic: how-to
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
-ms.date: 09/21/2020
-ms.openlocfilehash: 68ab5c820f3a67a7fd332557d47918d2a7aa4b62
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 12/01/2020
+ms.openlocfilehash: 1425003c718ca52c0bea712e9d25cd3e4c035cf1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789420"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453955"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Az összetett veszélyforrások elleni védelem konfigurálása Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A Azure SQL Database komplex [veszélyforrások elleni védelme](threat-detection-overview.md) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. A komplex veszélyforrások elleni védelem képes azonosítani a **lehetséges SQL-injektálásokat** , **a szokatlan helyről vagy adatközpontból való hozzáférést** , **az ismeretlen elsődleges vagy potenciálisan ártalmas alkalmazások elérését** , valamint a **találgatásos SQL-hitelesítő adatokat** . További részletek a komplex [veszélyforrások elleni védelmi riasztásokban](threat-detection-overview.md#alerts).
+A Azure SQL Database komplex [veszélyforrások elleni védelme](threat-detection-overview.md) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. A komplex veszélyforrások elleni védelem képes azonosítani a **lehetséges SQL-injektálásokat**, **a szokatlan helyről vagy adatközpontból való hozzáférést**, **az ismeretlen elsődleges vagy potenciálisan ártalmas alkalmazások elérését**, valamint a **találgatásos SQL-hitelesítő adatokat** . További részletek a komplex [veszélyforrások elleni védelmi riasztásokban](threat-detection-overview.md#alerts).
 
 Értesítéseket kaphat az észlelt fenyegetésekről az [e-mail-értesítések](threat-detection-overview.md#explore-detection-of-a-suspicious-event) vagy a [Azure Portal](threat-detection-overview.md#explore-alerts-in-the-azure-portal) használatával
 
@@ -28,18 +28,20 @@ A komplex [veszélyforrások elleni védelem](threat-detection-overview.md) az [
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Az összetett veszélyforrások elleni védelem beállítása a Azure Portal
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
-2. Navigáljon a védetté tenni kívánt kiszolgáló konfigurációs lapjára. A biztonsági beállítások területen válassza a **Security Center** elemet.
-3. Az **Azure Defender** konfigurációs oldalán:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Navigáljon a védetté tenni kívánt kiszolgáló konfigurációs lapjára. A biztonsági beállítások lapon válassza a **Security Center** lehetőséget.
+3. Az **Azure Defender for SQL** konfigurálása lapon:
 
-   - Engedélyezze az Azure Defendert a kiszolgálón.
-   - Az **összetett veszélyforrások elleni védelem beállításaiban** a **riasztások küldése** a szövegmezőbe mezőbe írja be azoknak az e-maileknek a listáját, amelyek biztonsági riasztásokat kapnak a rendellenes adatbázis-tevékenységek észlelése után.
+   - Engedélyezze az **Azure Defender for SQL** szolgáltatást a kiszolgálón.
+   - Az **összetett veszélyforrások elleni védelem beállításainál** adja meg az e-mailek azon listáját, amely a **riasztások küldése** szövegmezőbe a rendellenes adatbázis-tevékenységek észlelése után biztonsági riasztásokat kap.
+   
+   :::image type="content" source="media/azure-defender-for-sql/set-up-advanced-threat-protection.png" alt-text="komplex veszélyforrások elleni védelem beállítása":::
 
 ## <a name="set-up-advanced-threat-protection-using-powershell"></a>Az Advanced Threat Protection beállítása PowerShell használatával
 
 A parancsfájlokra példa: a [naplózás és az összetett veszélyforrások elleni védelem konfigurálása a PowerShell használatával](scripts/auditing-threat-detection-powershell-configure.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a komplex [veszélyforrások elleni védelemről](threat-detection-overview.md).
 - További információ a komplex [veszélyforrások elleni védelemről az SQL felügyelt példányában](../managed-instance/threat-detection-configure.md).  

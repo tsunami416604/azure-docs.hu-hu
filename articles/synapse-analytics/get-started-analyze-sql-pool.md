@@ -10,16 +10,16 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: ae7b15bf2e2efd72184110a105f68815516569ab
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9014469ca063ca52be0965ecbd4e8b21709d10a0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843910"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455156"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Az adatelemzés dedikált SQL-készletekkel
 
-Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQL-készlettel. Ebben az oktatóanyagban a New York-i taxi-adatszolgáltatások segítségével megismerheti a dedicted SQL-készlet képességeit.
+Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQL-készlettel. Ebben az oktatóanyagban a New York-i taxi-adataival felhasználhatja a dedikált SQL-készlet képességeit.
 
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>A New York-i taxi-szolgáltatás betöltése a SQLPOOL1
 
@@ -94,10 +94,11 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
 
     Ez a lekérdezés azt mutatja be, hogy a teljes utazási távolság és az átlagos utazási távolság az utasok számával függ.
 1. Az SQL-parancsfájl eredményének ablakában módosítsa **View** a nézetet **diagramra** , hogy megjelenítse az eredmények vonal diagramként való megjelenítését.
+    
+    > [!NOTE]
+    > Egy dedikált SQL-készletet (korábban SQL DW) engedélyező munkaterület az adatközpontban található elemleírás segítségével azonosítható.
 
-
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés a Spark használatával](get-started-analyze-spark.md)

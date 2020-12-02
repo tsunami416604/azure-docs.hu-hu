@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: b796d6689db143cf59ae4ca0a180c2c7c317b7bd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 36a96a1927aeedb5f841083241d487e0c61d6813
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789437"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454031"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Adatfolyam-továbbítás Azure SQL Database Azure Stream Analytics Integration (előzetes verzió)
 
@@ -31,7 +31,7 @@ A felhasználók mostantól a valós idejű adatfolyam-adatok táblázatba való
 - További egyszerű használat az előzetes verziójú adatokkal: a beérkező adatok előnézete az események forrásáról (Event hub/IoT Hub) a kiválasztott tábla kontextusában
 
 > [!IMPORTANT]
-> Az Azure Stream Analytics feladatok kimenete Azure SQL Database, Azure SQL felügyelt példány vagy Azure szinapszis Analytics (korábbi nevén SQL Data Warehouse) lehet. További információt a [kimenetek](../../stream-analytics/stream-analytics-define-outputs.md)című témakörben talál.
+> Az Azure Stream Analytics-feladatok kimenete Azure SQL Database, Azure SQL felügyelt példány vagy Azure szinapszis Analytics számára végezhető el. További információt a [kimenetek](../../stream-analytics/stream-analytics-define-outputs.md)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -54,11 +54,11 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
 4. Adja meg az események forrásának adatait, majd válassza a **Tovább: kimenet** lehetőséget.
 
-   - **Bemenet típusa** : Event Hub/IoT hub
-   - **Bemeneti alias** : adjon meg egy nevet az események forrásának azonosításához
-   - **Előfizetés** : ugyanaz, mint Azure SQL Database előfizetés
-   - **Event hub-névtér** : névtér neve
-   - **Event hub neve** : az Event hub neve a kiválasztott névtéren belül
+   - **Bemenet típusa**: Event Hub/IoT hub
+   - **Bemeneti alias**: adjon meg egy nevet az események forrásának azonosításához
+   - **Előfizetés**: ugyanaz, mint Azure SQL Database előfizetés
+   - **Event hub-névtér**: névtér neve
+   - **Event hub neve**: az Event hub neve a kiválasztott névtéren belül
    - **Event hub-házirend neve** (alapértelmezés szerint új létrehozása): adjon meg egy szabályzatot
    - **Event hub fogyasztói csoport** (alapértelmezés szerint új létrehozása): felhasználói csoport nevének megadása  
 
@@ -68,8 +68,8 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
 5. Válassza ki, hogy melyik táblát szeretné bevenni a streaming-adataiba. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
-   - **Felhasználónév** , **jelszó** : adja meg az SQL Server-hitelesítéshez tartozó hitelesítő adatait. Válassza az **Érvényesítés** lehetőséget.
-   - **Tábla** : válassza az **új létrehozása** vagy a **meglévő használata** lehetőséget. Ehhez a folyamathoz válassza a **Létrehozás** lehetőséget. Ez egy új táblát hoz létre a stream Analytics-feladatok indításakor.
+   - **Felhasználónév**, **jelszó**: adja meg az SQL Server-hitelesítéshez tartozó hitelesítő adatait. Válassza az **Érvényesítés** lehetőséget.
+   - **Tábla**: válassza az **új létrehozása** vagy a **meglévő használata** lehetőséget. Ehhez a folyamathoz válassza a **Létrehozás** lehetőséget. Ez egy új táblát hoz létre a stream Analytics-feladatok indításakor.
 
      ![Stream Analytics-feladatok létrehozása](./media/stream-data-stream-analytics-integration/create.png)
 
@@ -78,7 +78,7 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
    - A **bemenet** (bemeneti események forrása), amelyből adatokat tölt be  
    - Az átalakított adatokat tároló **kimenet** (kimeneti tábla)
    - Példa [SAQL-lekérdezésre](../../stream-analytics/stream-analytics-stream-analytics-query-patterns.md) a SELECT utasítással.
-   - **Bemeneti előnézet** : a bemeneti események forrásának legújabb bejövő adatainak pillanatképét jeleníti meg.
+   - **Bemeneti előnézet**: a bemeneti események forrásának legújabb bejövő adatainak pillanatképét jeleníti meg.
      - A rendszer automatikusan észleli a szerializálási típust az adataiban (JSON/CSV). Manuálisan is módosíthatja azt JSON/CSV/AVRO.
      - A bejövő adatértékeket táblázatos formátumban vagy nyers formátumban is megtekintheti.
      - Ha a megjelenített adatai nem aktuálisak, válassza a **frissítés** lehetőséget a legújabb események megtekintéséhez.
@@ -87,42 +87,42 @@ Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz
 
      ![lekérdezés tesztelése](./media/stream-data-stream-analytics-integration/test-query.png)
 
-   - **Tesztek eredményei** : válassza a **teszt lekérdezés** lehetőséget, és láthatja a folyamatos átviteli lekérdezés eredményét.
+   - **Tesztek eredményei**: válassza a **teszt lekérdezés** lehetőséget, és láthatja a folyamatos átviteli lekérdezés eredményét.
 
      ![teszteredmények](./media/stream-data-stream-analytics-integration/test-results.png)
 
-   - **Teszteredmények sémája** : a tesztelés után megjeleníti a folyamatos átviteli lekérdezés eredményeinek sémáját. Győződjön meg arról, hogy a test Results séma megfelel a kimeneti sémának.
+   - **Teszteredmények sémája**: a tesztelés után megjeleníti a folyamatos átviteli lekérdezés eredményeinek sémáját. Győződjön meg arról, hogy a test Results séma megfelel a kimeneti sémának.
 
      ![teszteredmények sémája](./media/stream-data-stream-analytics-integration/test-results-schema.png)
 
-   - **Kimeneti séma** : az 5. lépésben kiválasztott tábla sémáját tartalmazza (új vagy meglévő).
+   - **Kimeneti séma**: az 5. lépésben kiválasztott tábla sémáját tartalmazza (új vagy meglévő).
 
       - Új létrehozása: Ha ezt a beállítást választotta az 5. lépésben, a séma még nem jelenik meg, amíg el nem indítja a folyamatos átviteli feladatot. Új tábla létrehozásakor válassza ki a megfelelő tábla-indexet. A tábla indexelésével kapcsolatos további információkért tekintse meg a következő témakörben [leírt fürtözött és nem fürtözött indexeket](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described/):.
       - Meglévő használata: Ha ezt a beállítást választotta az 5. lépésben, megjelenik a kiválasztott tábla sémája.
 
 7. Ha elkészült a lekérdezés & tesztelésével, válassza a **lekérdezés mentése** lehetőséget. Az átalakított adatok SQL-táblába való betöltésének megkezdéséhez válassza a **Start stream Analytics feladatok** lehetőséget. Miután véglegesíti a következő mezőket, **indítsa el** a feladatot.
-   - **Kimeneti kezdési idő** : Ez határozza meg a feladatok első kimenetének időpontját.  
+   - **Kimeneti kezdési idő**: Ez határozza meg a feladatok első kimenetének időpontját.  
      - Most: a feladatsor most elindítja az új bejövő adatok feldolgozását.
      - Custom (egyéni): a rendszer most elindítja a feladatot, de egy adott időpontból dolgozza fel az adatait (ez lehet a múltban vagy a jövőben is). További információ: [Azure stream Analytics feladatok elindítása](../../stream-analytics/start-job.md).
-   - **Folyamatos átviteli egységek** : a Azure stream Analytics díjszabása a szolgáltatásba való adatfeldolgozáshoz szükséges folyamatos átviteli egységek számával történik. További információ: [Azure stream Analytics díjszabása](https://azure.microsoft.com/pricing/details/stream-analytics/).
-   - **Kimeneti adathibaok feldolgozása** :  
+   - **Folyamatos átviteli egységek**: a Azure stream Analytics díjszabása a szolgáltatásba való adatfeldolgozáshoz szükséges folyamatos átviteli egységek számával történik. További információ: [Azure stream Analytics díjszabása](https://azure.microsoft.com/pricing/details/stream-analytics/).
+   - **Kimeneti adathibaok feldolgozása**:  
      - Újrapróbálkozás: Ha hiba lép fel, Azure Stream Analytics újrapróbálkozik az esemény határozatlan idejű írásával, amíg az írás nem sikerül. Nincs időkorlát az újrapróbálkozásokhoz. Végül az összes további eseményt le kell tiltani az újrapróbálkozást követően. Ez a beállítás az alapértelmezett kimeneti hiba kezelési szabályzata.
      - Drop: Azure Stream Analytics el fog dobni minden olyan kimeneti eseményt, amely Adatátalakítási hibát eredményez. Az eldobott események később nem állíthatók helyre újrafeldolgozásra. A rendszer az összes átmeneti hibát (például hálózati hibákat) újrapróbálkozik, függetlenül attól, hogy milyen kimeneti hiba történik a házirend-konfigurációban.
-   - **SQL Database kimeneti beállítások** : az előző lekérdezési lépés particionálási sémájának öröklésére szolgáló lehetőség, amely lehetővé teszi, hogy teljesen párhuzamos topológiát engedélyezzen több író használatával a táblához. További információ: [Azure stream Analytics kimenet Azure SQL Database](../../stream-analytics/stream-analytics-sql-output-perf.md).
-   - **Kötegek maximális száma** : az összes tömeges beszúrási tranzakcióval ellátott rekordok számának ajánlott felső korlátja.  
+   - **SQL Database kimeneti beállítások**: az előző lekérdezési lépés particionálási sémájának öröklésére szolgáló lehetőség, amely lehetővé teszi, hogy teljesen párhuzamos topológiát engedélyezzen több író használatával a táblához. További információ: [Azure stream Analytics kimenet Azure SQL Database](../../stream-analytics/stream-analytics-sql-output-perf.md).
+   - **Kötegek maximális száma**: az összes tömeges beszúrási tranzakcióval ellátott rekordok számának ajánlott felső korlátja.  
     A kimeneti hibák kezelésével kapcsolatos további információkért lásd: [kimeneti hibák házirendjei a Azure stream Analyticsban](../../stream-analytics/stream-analytics-output-error-policy.md).  
 
      ![kezdési feladatok](./media/stream-data-stream-analytics-integration/start-job.png)
 
 8. Miután elindította a feladatot, látni fogja a futó feladatot a listában, és a következő műveleteket hajthatja végre:
-   - **A művelet indítása/leállítása** : Ha a feladatot futtatja, leállíthatja a feladatot. Ha a feladatot leállítja, elkezdheti a feladatot.
-   - **Feladatok szerkesztése** : szerkesztheti a lekérdezést. Ha további módosításokat szeretne végrehajtani a feladatban, vegyen fel további bemeneteket/kimeneteket, majd nyissa meg a feladatot Stream Analyticsban. A Szerkesztés lehetőség le van tiltva, amikor a feladatot futtatják.
-   - **Előzetes verziójú kimeneti tábla** : megtekintheti a táblázatot az SQL-lekérdezés szerkesztőjében.
-   - **Megnyitás stream Analyticsban** : Nyissa meg a feladatot a stream Analyticsban a figyelés, a feladathoz tartozó hibakeresés részleteinek megtekintéséhez.
+   - **A művelet indítása/leállítása**: Ha a feladatot futtatja, leállíthatja a feladatot. Ha a feladatot leállítja, elkezdheti a feladatot.
+   - **Feladatok szerkesztése**: szerkesztheti a lekérdezést. Ha további módosításokat szeretne végrehajtani a feladatban, vegyen fel további bemeneteket/kimeneteket, majd nyissa meg a feladatot Stream Analyticsban. A Szerkesztés lehetőség le van tiltva, amikor a feladatot futtatják.
+   - **Előzetes verziójú kimeneti tábla**: megtekintheti a táblázatot az SQL-lekérdezés szerkesztőjében.
+   - **Megnyitás stream Analyticsban**: Nyissa meg a feladatot a stream Analyticsban a figyelés, a feladathoz tartozó hibakeresés részleteinek megtekintéséhez.
 
      ![Stream Analytics-feladatok](./media/stream-data-stream-analytics-integration/jobs.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Stream Analytics dokumentációja](../../stream-analytics/index.yml)
 - [Az Azure Stream Analytics megoldásmintái](../../stream-analytics/stream-analytics-solution-patterns.md)

@@ -12,18 +12,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: c5caf48dd4e2860ec5f4815eb38629ad66391a2c
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5558480f568e802637deb30c9f1b41c00826c9b5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990108"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454502"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és tölthet fel egy Azure Active Directory (Azure AD-példányt), majd hogyan használhatja az Azure AD-t a [Azure SQL Database](sql-database-paas-overview.md), az [Azure SQL felügyelt példányával](../managed-instance/sql-managed-instance-paas-overview.md)és az [azure szinapszis Analytics (korábban SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)használatával. Az áttekintést lásd: [Azure Active Directory hitelesítés](authentication-aad-overview.md).
+Ebből a cikkből megtudhatja, hogyan hozhat létre és tölthet fel egy Azure Active Directory (Azure AD-példányt), majd hogyan használhatja az Azure AD-t a [Azure SQL Database](sql-database-paas-overview.md), az [Azure SQL felügyelt példányaival](../managed-instance/sql-managed-instance-paas-overview.md)és az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)szolgáltatással. Az áttekintést lásd: [Azure Active Directory hitelesítés](authentication-aad-overview.md).
 
 ## <a name="azure-ad-authentication-methods"></a>Azure AD-hitelesítési módszerek
 
@@ -344,7 +344,7 @@ A következő szoftvereket kell telepítenie minden olyan ügyfélszámítógép
 
 - A .NET-keretrendszer 4,6-es vagy újabb verziója [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers) .
 - SQL Server (*ADAL.DLL*) Azure Active Directory hitelesítési könyvtára. Az alábbi letöltési hivatkozások segítségével telepítheti a *ADAL.DLL* könyvtárat tartalmazó legújabb SSMS, ODBC és OLE DB illesztőprogramot.
-  - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+  - [Az SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
   - [ODBC-illesztő, 17 SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
   - [OLE DB 18. illesztőprogram SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
 
@@ -532,7 +532,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 Az Azure AD-hitelesítéssel kapcsolatos hibaelhárítással kapcsolatban az alábbi blogban talál útmutatást: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A bejelentkezések, a felhasználók, az adatbázis-szerepkörök és a SQL Databaseban lévő engedélyek áttekintését lásd: [bejelentkezések, felhasználók, adatbázis-szerepkörök és felhasználói fiókok](logins-create-manage.md).
 - További információ az adatbázis résztvevőivel kapcsolatban: [Résztvevők](/sql/relational-databases/security/authentication-access/principals-database-engine).

@@ -1,6 +1,6 @@
 ---
-title: A számítási feladatok elemzése
-description: Módszerek az Azure szinapszis Analytics szolgáltatásbeli számítási feladatok rangsorolásának elemzéséhez.
+title: Számítási feladatok elemzése dedikált SQL-készlethez
+description: Technikák a lekérdezés rangsorolásának elemzéséhez az Azure szinapszis Analytics dedikált SQL-készlete számára.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c547263be8c61d75491d1517b58c03b6365ef929
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14c3ad30bac7cec4c11822d825323bb9db2ba440
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85208399"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454528"
 ---
-# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Számítási feladatok elemzése az Azure szinapszis Analytics szolgáltatásban
+# <a name="analyze-your-workload-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet számítási feladatainak elemzése az Azure szinapszis Analyticsben
 
-Technikák a szinapszis SQL-munkaterhelések elemzéséhez az Azure szinapszis Analyticsben. 
+Technikák a dedikált SQL Pool-számítási feladatok elemzéséhez az Azure szinapszis Analyticsben. 
 
 ## <a name="resource-classes"></a>Erőforrásosztályok
 
-A szinapszis SQL erőforrás-osztályokat biztosít a rendszererőforrásoknak a lekérdezésekhez való hozzárendeléséhez.  Az erőforrás-osztályokkal kapcsolatos további információkért lásd: [erőforrás-osztályok & munkaterhelés-kezelés](resource-classes-for-workload-management.md).  A lekérdezések megvárhatják, ha a lekérdezéshez hozzárendelt erőforrás-osztálynak több erőforrásra van szüksége, mint amennyi jelenleg elérhető.
+A dedikált SQL-készlet erőforrás-osztályokat biztosít a rendszererőforrásoknak a lekérdezésekhez való hozzárendeléséhez.  Az erőforrás-osztályokkal kapcsolatos további információkért lásd: [erőforrás-osztályok & munkaterhelés-kezelés](resource-classes-for-workload-management.md).  A lekérdezések megvárhatják, ha a lekérdezéshez hozzárendelt erőforrás-osztálynak több erőforrásra van szüksége, mint amennyi jelenleg elérhető.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Várólistán lévő lekérdezések észlelése és egyéb DMV
 
-A `sys.dm_pdw_exec_requests` DMV használatával azonosíthatja a párhuzamossági sorban Várakozó lekérdezéseket. Az egyidejű tárolóhelyre várakozó lekérdezések **felfüggesztve**állapottal rendelkeznek.
+A `sys.dm_pdw_exec_requests` DMV használatával azonosíthatja a párhuzamossági sorban Várakozó lekérdezéseket. Az egyidejű tárolóhelyre várakozó lekérdezések **felfüggesztve** állapottal rendelkeznek.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-A szinapszis SQL a következő várakozási típusokkal rendelkezik:
+A dedikált SQL-készlet a következő várakozási típusokkal rendelkezik:
 
 * **LocalQueriesConcurrencyResourceType**: az egyidejű tárolóhely-keretrendszeren kívüli lekérdezések. A DMV-lekérdezések és a rendszerfüggvények, például a `SELECT @@VERSION` helyi lekérdezések példái.
 * **UserConcurrencyResourceType**: az egyidejű tárolóhely-keretrendszerben található lekérdezések. A végfelhasználói táblákra irányuló lekérdezések olyan példákat mutatnak be, amelyek ezt az erőforrástípust használják.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele a SZINAPSZIS SQL-ben](sql-data-warehouse-overview-manage-security.md). További információ arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét: [az indexek újraépítése a szegmensek minőségének javítása érdekében](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+További információ az adatbázis-felhasználók és a biztonság kezeléséről: [DEDIKÁLT SQL-készlet biztonságossá tétele (korábban SQL DW)](sql-data-warehouse-overview-manage-security.md). További információ arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét: [az indexek újraépítése a szegmensek minőségének javítása érdekében](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

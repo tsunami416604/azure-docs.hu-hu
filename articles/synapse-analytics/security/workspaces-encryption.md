@@ -8,17 +8,17 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: 17dbdbbef45e0068601835197a1177ee20d98ca3
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: a6ea3925f3b6bc786be6a4855b2f3bfb6b402d70
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296794"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455174"
 ---
-# <a name="encryption-for-azure-synapse-analytics-workspaces-preview"></a>Az Azure szinapszis Analytics titkosítása (munkaterületek előzetes verzió)
+# <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Az Azure szinapszis Analytics-munkaterületek titkosítása
 
 Ez a cikk a következőket ismerteti:
-* Inaktív adatok titkosítása az Azure szinapszis Analytics-munkaterületein.
+* Inaktív adatok titkosítása a szinapszis Analytics-munkaterületeken.
 * A szinapszis-munkaterületek konfigurációja, amely lehetővé teszi a titkosítást az ügyfél által felügyelt kulccsal.
 * A munkaterületeken tárolt adattitkosításhoz használt kulcsok kezelése.
 
@@ -86,7 +86,7 @@ Az Azure Key Vault-szabályzatok automatikusan, a kulcsok rendszeres elforgatás
 
 Az SQL transzparens adattitkosítás (TDE) elérhető a dedikált SQL-készletek számára a munkaterületeken, amelyek *nem* engedélyezettek a kettős titkosításhoz. Az ilyen típusú munkaterületeken a szolgáltatás által felügyelt kulcs a dedikált SQL-készletekben található adat kettős titkosításának biztosítására szolgál. A szolgáltatás által felügyelt kulccsal rendelkező TDE engedélyezhető vagy letiltható az egyes dedikált SQL-készleteknél.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A beépített Azure-szabályzatok használatával titkosíthatja a szinapszis-munkaterületek titkosítási védelmét](../policy-reference.md)
 

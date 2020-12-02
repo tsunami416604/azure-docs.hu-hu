@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 4bae9e28a22a99d092db2bf887f0cd790e04c52a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 23ec79b7e3989c9749edf98d930ad8305324c9da
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318559"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454000"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Mi az a Azure Stack Edge mini R?
 
@@ -45,7 +45,7 @@ Azure Stack Edge mini R a következő képességekkel rendelkezik:
 
 Íme a különböző forgatókönyvek, amelyekben a Azure Stack Edge mini R a gyors Machine Learning (ML), amely a peremhálózat szélén és az adatok előfeldolgozásához használható, mielőtt elküldené az Azure-ba.
 
-- **Következtetés a Azure Machine learning** – a Azure stack Edge mini R használatával a rendszer az adatküldés előtt a felhőbe irányuló, gyors eredményekhez is futtathat ml-modelleket. A teljes adatkészletet igény szerint átviheti, hogy továbbra is újratanítsa és javítsa a ML-modelleket. Az Azure ML hardveres gyorsított modellek az Azure Stack Edge mini R-eszközön történő használatáról további információt az [Azure ml hardveres gyorsított modellek üzembe helyezése Azure stack Edge mini r](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)-ben című témakörben talál.
+- **Következtetés a Azure Machine learning** – a Azure stack Edge mini R használatával a rendszer az adatküldés előtt a felhőbe irányuló, gyors eredményekhez is futtathat ml-modelleket. A teljes adatkészletet igény szerint átviheti, hogy továbbra is újratanítsa és javítsa a ML-modelleket. Az Azure ML hardveres gyorsított modellek az Azure Stack Edge mini R-eszközön történő használatáról további információt az [Azure ml hardveres gyorsított modellek üzembe helyezése Azure stack Edge mini r](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)-ben című témakörben talál.
 
 - Adatátalakítási adatok **előfeldolgozása** számítási lehetőségekkel, például tárolókkal vagy virtuális gépekkel, mielőtt elküldené azt az Azure-ba egy további végrehajtható adatkészlet létrehozásához. Az előfeldolgozás az alábbiakra használható:
 
@@ -83,5 +83,3 @@ Azure Stack Edge mini R fizikai eszközét, az Azure-erőforrást és a célkén
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse át az [Azure stack Edge mini R rendszerkövetelményeit](azure-stack-edge-gpu-system-requirements.md).
-
-

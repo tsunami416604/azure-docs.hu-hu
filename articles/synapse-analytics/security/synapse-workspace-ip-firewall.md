@@ -8,20 +8,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00b4f38f4a2a44b88718224db2b2442033816f83
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3cbd9fd697bbae8779f5b2b9fa4ab817efce30ac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313899"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454635"
 ---
-# <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure szinapszis Analytics IP-tűzfalszabályok (előzetes verzió)
+# <a name="azure-synapse-analytics-ip-firewall-rules"></a>Az Azure szinapszis Analytics IP-tűzfalszabályok
 
 Ez a cikk ismerteti az IP-tűzfalszabályok szabályait, és megtanítja, hogyan konfigurálhatja őket az Azure szinapszis Analyticsben.
 
 ## <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
 
-Az IP-tűzfalszabályok engedélyezik vagy megtagadják a hozzáférését a szinapszis munkaterülethez az egyes kérések származó IP-címe alapján. Beállíthatja a munkaterület IP-tűzfalszabályok szabályait. A munkaterület szintjén konfigurált IP-tűzfalszabályok a munkaterület összes nyilvános végpontján érvényesek (dedikált SQL-készletek, kiszolgáló nélküli SQL-készlet és fejlesztés).
+Az IP-tűzfalszabályok engedélyezik vagy tiltják a Synapse-munkaterülethez való hozzáférést az egyes kérések kiindulási IP-címe alapján. Konfigurálhat IP-tűzfalszabályokat a munkaterületéhez. A munkaterület szintjén konfigurált IP-tűzfalszabályok a munkaterület összes nyilvános végpontján érvényesek (dedikált SQL-készletek, kiszolgáló nélküli SQL-készlet és fejlesztés).
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>IP-tűzfalszabályok létrehozása és kezelése
 
@@ -45,7 +45,7 @@ Emellett engedélyeznie kell a kimenő kommunikációt a 53-es UDP-porton a szin
 
 Ha az alapértelmezett átirányítási házirend-beállítást használja, lehetséges, hogy engedélyeznie kell a kimenő kommunikációt a további portokon. A kapcsolatok házirendjeiről [itt](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)olvashat bővebben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure szinapszis-munkaterület](../quickstart-create-workspace.md) létrehozása
 

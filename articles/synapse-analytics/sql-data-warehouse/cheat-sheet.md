@@ -1,6 +1,6 @@
 ---
-title: Cheat Sheet for Azure szinapszis Analytics (korábban SQL DW)
-description: Az Azure szinapszis Analytics (korábban SQL DW) megoldások gyors létrehozásához kapcsolódó hivatkozásokat és ajánlott eljárásokat talál.
+title: Cheat Sheet dedikált SQL-készlethez (korábban SQL DW)
+description: Hivatkozásokat és ajánlott eljárásokat talál a dedikált SQL-készlet (korábban SQL DW) gyors létrehozásához az Azure szinapszis Analytics szolgáltatásban.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 648f06ef1af5d6dce9fa3583c6358d3bd173f209
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a236cf99d3131e83619cfab06e8ec028938a87ba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319680"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454605"
 ---
-# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Cheat Sheet for Azure szinapszis Analytics (korábban SQL DW)
+# <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>A dedikált SQL Pool (korábban SQL DW) Azure szinapszis analitikus
 
-Ez a Cheat-táblázat hasznos tippeket és ajánlott eljárásokat nyújt az Azure szinapszis-megoldások létrehozásához.
+Ez a Cheat-táblázat hasznos tippeket és ajánlott eljárásokat biztosít a dedikált SQL-készlet (korábban SQL DW) megoldások létrehozásához.
 
-A következő ábra egy adattárház tervezésének folyamatát mutatja be:
+Az alábbi ábrán egy adattárház dedikált SQL-készlettel (korábban SQL DW) történő megtervezésének folyamata látható:
 
 ![Vázlat](./media/cheat-sheet/picture-flow.png)
 
@@ -121,13 +121,13 @@ Az erőforráscsoportok használatával memóriát foglalhat le a lekérdezések
 
 Ha úgy látja, hogy a lekérdezések túl sokáig tartanak, ellenőrizze, hogy a felhasználók nem nagyméretű erőforrásosztályokban futnak-e. A nagyméretű erőforrás osztályok számos egyidejű helyet foglalnak le, ezért más lekérdezések várólistára helyezését okozhatják.
 
-Végül az [SQL-készlet](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)Gen2 használatával minden erőforráscsoport 2,5-szor több memóriát kap, mint a Gen1.
+Végül a [DEDIKÁLT SQL-készlet (korábban SQL DW)](sql-data-warehouse-overview-what-is.md)Gen2 használatával minden erőforráscsoport 2,5-szor több memóriát kap, mint a Gen1.
 
 További információk az [erőforrásosztályokról és a párhuzamos működésről](resource-classes-for-workload-management.md).
 
 ## <a name="lower-your-cost"></a>Csökkentheti költségeit
 
-Az Azure szinapszis egyik fő funkciója a [számítási erőforrások kezelése](sql-data-warehouse-manage-compute-overview.md). Ha nem használja, szüneteltetheti az SQL-készletet, ami leállítja a számítási erőforrások számlázását. Az erőforrásokat a teljesítményigényeinek megfelelően skálázhatja. A szüneteltetést az [Azure Portalon](pause-and-resume-compute-portal.md) vagy a [PowerShell-lel](pause-and-resume-compute-powershell.md) végezheti el. A skálázáshoz használhatja az [Azure Portalt](quickstart-scale-compute-portal.md), a [PowerShellt](quickstart-scale-compute-powershell.md), a [T-SQL-t](quickstart-scale-compute-tsql.md) vagy egy [REST API-t](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+Az Azure szinapszis egyik fő funkciója a [számítási erőforrások kezelése](sql-data-warehouse-manage-compute-overview.md). Ha nem használja, szüneteltetheti a dedikált SQL-készlet (korábban SQL DW) használatát, ami leállítja a számítási erőforrások számlázását. Az erőforrásokat a teljesítményigényeinek megfelelően skálázhatja. A szüneteltetést az [Azure Portalon](pause-and-resume-compute-portal.md) vagy a [PowerShell-lel](pause-and-resume-compute-powershell.md) végezheti el. A méretezéshez használja a [Azure Portal](quickstart-scale-compute-portal.md), a [PowerShell](quickstart-scale-compute-powershell.md), a [T-SQL](quickstart-scale-compute-tsql.md)vagy a [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
 Az Azure Functions használatával mostantól bármikor használhatja az automatikus skálázást:
 
@@ -137,8 +137,8 @@ Az Azure Functions használatával mostantól bármikor használhatja az automat
 
 Küllős architektúra esetén az SQL Database és az Azure Analysis Services használatát javasoljuk. Ez a megoldás a munkaterhelések elkülönítését biztosítja a különböző felhasználói csoportok között, és az SQL Database és az Azure Analysis Services speciális biztonsági funkcióinak használatát teszi lehetővé. Emellett ezzel a módszerrel korlátlan párhuzamos működést biztosíthat a felhasználók számára.
 
-Ismerje meg az [Azure szinapszis előnyeit kihasználó tipikus architektúrákat](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Ismerkedjen meg a [tipikus architektúrákkal, amelyek kihasználják a DEDIKÁLT SQL-készlet (korábban SQL DW) előnyeit az Azure szinapszis Analytics szolgáltatásban](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
 
-Az SQL-készletből az SQL-adatbázisból a küllőket egyetlen kattintással telepítheti:
+Egyetlen kattintással üzembe helyezheti az SQL-adatbázisokat a dedikált SQL-készletből (korábban SQL DW):
 
 [![Az "üzembe helyezés az Azure-ban" feliratú gombot ábrázoló kép.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json)

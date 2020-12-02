@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: ce3903bad4f7e4675406956ddedbc9011a6d2be8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f4803cc9871b71e65e4d94ed37d3f9771be1cae0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522260"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454961"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -47,7 +47,7 @@ Az Azure Private link a következő előnyöket biztosítja:
 | Azure Queue Storage       |  Összes nyilvános régió<br/> Minden kormányzati régió       |  A fiók típusa általános célú v2-ben támogatott | FE <br/> [Megtudhatja, hogyan hozhat létre privát végpontot a várólista-tároláshoz.](tutorial-private-endpoint-storage-portal.md) |
 | Azure Table Storage       |  Összes nyilvános régió<br/> Minden kormányzati régió       |  A fiók típusa általános célú v2-ben támogatott | FE <br/> [Megtudhatja, hogyan hozhat létre privát végpontot a Table Storage szolgáltatáshoz.](tutorial-private-endpoint-storage-portal.md)  |
 |  Azure SQL Database         | Összes nyilvános régió <br/> Minden kormányzati régió<br/>Minden kínai régió      |  Proxy- [kapcsolatok házirendjében](../azure-sql/database/connectivity-architecture.md#connection-policy) támogatott | FE <br/> [Ismerje meg, hogyan hozhat létre privát végpontot az Azure SQL-hez](create-private-endpoint-portal.md)      |
-|Azure Synapse Analytics (korábban SQL Data Warehouse)| Összes nyilvános régió <br/> Minden kormányzati régió |  Proxy- [kapcsolatok házirendjében](../azure-sql/database/connectivity-architecture.md#connection-policy) támogatott |FE <br/> [Ismerje meg, hogyan hozhat létre privát végpontot az Azure szinapszis Analytics szolgáltatáshoz.](../azure-sql/database/private-endpoint-overview.md)|
+|Azure Synapse Analytics| Összes nyilvános régió <br/> Minden kormányzati régió |  Proxy- [kapcsolatok házirendjében](../azure-sql/database/connectivity-architecture.md#connection-policy) támogatott |FE <br/> [Ismerje meg, hogyan hozhat létre privát végpontot az Azure szinapszis Analytics szolgáltatáshoz.](../azure-sql/database/private-endpoint-overview.md)|
 |Azure Cosmos DB|  Összes nyilvános régió<br/> Minden kormányzati régió</br> Minden kínai régió | |FE <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Cosmos DBhoz.](./tutorial-private-endpoint-cosmosdb-portal.md)|
 |  Azure Database for PostgreSQL – egyetlen kiszolgáló         | Összes nyilvános régió <br/> Minden kormányzati régió<br/>Minden kínai régió     | A általános célú és a memória optimalizált díjszabási szintjein támogatott | FE <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Database for PostgreSQLhoz.](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | Összes nyilvános régió<br/> Minden kormányzati régió<br/>Minden kínai régió      |  | FE <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Database for MySQLhoz.](../mysql/concepts-data-access-security-private-link.md)     |
@@ -103,7 +103,7 @@ A korlátokat lásd: [Azure Private link Limits](../azure-resource-manager/manag
 ## <a name="service-level-agreement"></a>szolgáltatói szerződés
 SLA esetén lásd: [SLA az Azure Private linkhez](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: privát végpont létrehozása Azure Portal használatával](create-private-endpoint-portal.md)
 - [Rövid útmutató: privát link szolgáltatás létrehozása a Azure Portal használatával](create-private-link-service-portal.md)

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8fbf765168fd848a2ae349badf4017289b5a4380
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 413a93a145ae063a3aab4066ed62365e154d744a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952267"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454106"
 ---
 # <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>A Azure Portal használata az Azure Stack Edge Pro-beli megosztások kezeléséhez
 
@@ -33,7 +33,7 @@ Az adatok Azure-ba történő átviteléhez megosztásokat kell létrehoznia a A
 
 Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Portalon.
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások**lehetőséget. Válassza a **+ megosztás hozzáadása** parancsot a parancssorban.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások** lehetőséget. Válassza a **+ megosztás hozzáadása** parancsot a parancssorban.
 
     ![Válassza a megosztás hozzáadása elemet.](media/azure-stack-edge-j-series-manage-shares/add-share-1.png)
 
@@ -45,7 +45,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
 4. Adja meg azt a **tárfiókot**, ahol a megosztás található. A rendszer a tárfiókban létrehoz egy tárolót a megosztás nevével, ha még nem létezik ilyen. Ha létezik, akkor a rendszer a meglévő tárolót használja.
 
-5. A legördülő listából válassza ki a **Storage szolgáltatást** a blob, az oldal blob vagy a Files blokkban. A kiválasztott szolgáltatástípustól függ, hogy az Azure milyen formátumban tárolja az adatokat. Ebben az esetben például azt szeretnénk, hogy az adat az Azure-ban blokkolja a blobokat, ezért a **blob blokkolása**lehetőséget választjuk. Az **oldal blobjának**kiválasztásakor győződjön meg arról, hogy az adatai 512 bájtra vannak igazítva. Az **oldal blobjának** használata VHD-k vagy VHDX esetén, amelyek mindig 512 bájtra vannak igazítva.
+5. A legördülő listából válassza ki a **Storage szolgáltatást** a blob, az oldal blob vagy a Files blokkban. A kiválasztott szolgáltatástípustól függ, hogy az Azure milyen formátumban tárolja az adatokat. Ebben az esetben például azt szeretnénk, hogy az adat az Azure-ban blokkolja a blobokat, ezért a **blob blokkolása** lehetőséget választjuk. Az **oldal blobjának** kiválasztásakor győződjön meg arról, hogy az adatai 512 bájtra vannak igazítva. Az **oldal blobjának** használata VHD-k vagy VHDX esetén, amelyek mindig 512 bájtra vannak igazítva.
 
 6. A következő lépés attól függ, hogy SMB- vagy NFS-megosztást hozunk-e létre.
     - **SMB-megosztás létrehozásakor** – A **Teljes körű jogosultsággal rendelkező helyi felhasználó** mezőben válasszon az **Új létrehozása** és a **Meglévő használata** lehetőségek közül. Ha új helyi felhasználót hoz létre, adja meg a **felhasználónevet** és a **jelszót**, majd erősítse meg a jelszót. Ezzel hozzárendeli az engedélyeket a helyi felhasználóhoz. A hozzárendelt engedélyeket később a Fájlkezelővel módosíthatja.
@@ -63,7 +63,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
 ## <a name="add-a-local-share"></a>Helyi megosztás hozzáadása
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások**lehetőséget. Válassza a **+ megosztás hozzáadása** parancsot a parancssorban.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások** lehetőséget. Válassza a **+ megosztás hozzáadása** parancsot a parancssorban.
 
     ![Válassza a 2. megosztás hozzáadása lehetőséget](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
 
@@ -74,11 +74,11 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 3. Válasszon egy **típust** a megosztáshoz. A típus lehet **SMB** vagy **NFS**, és az SMB az alapértelmezett. Ez a szokásos típus Windows-ügyfelekhez, míg az NFS a Linux rendszerű ügyfelekhez használatos. Attól függően, hogy az SMB vagy az NFS típust választja, a megjelenő beállítások kis mértékben eltérőek.
 
    > [!IMPORTANT]
-   > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Azure Stack Edge Pro vagy Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Azure Stack Edge Pro vagy Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](../storage/blobs/storage-blob-immutability-policies-manage.md).
 
 4. Az Edge számítási modulok megosztásának egyszerű eléréséhez használja a helyi csatlakoztatási pontot. Válassza **a megosztás Edge-számítással** lehetőséget, hogy a peremhálózati modul a helyi csatlakoztatási ponttal tudja használni a számítást.
 
-5. Válassza **a konfigurálás helyi megosztásként**lehetőséget. A helyi megosztásokban lévő információk helyileg maradnak az eszközön. Ezeket az adatfolyamatokat helyileg is feldolgozhatja.
+5. Válassza **a konfigurálás helyi megosztásként** lehetőséget. A helyi megosztásokban lévő információk helyileg maradnak az eszközön. Ezeket az adatfolyamatokat helyileg is feldolgozhatja.
 
 6. A **minden jogosultság helyi felhasználó** mezőben válassza az **új létrehozása** lehetőséget, vagy **használja a meglévőt**.
 
@@ -99,15 +99,15 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 Ha létrehozott egy megosztást, mielőtt beállította a számítást a Azure Stack Edge Pro-eszközön, csatlakoztatnia kell a megosztást. A megosztás csatlakoztatásához hajtsa végre az alábbi lépéseket.
 
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások**lehetőséget. A megosztások listájában válassza ki a csatlakoztatni kívánt megosztást. A **számítási** oszlophoz használt érték a kiválasztott megosztásnál **letiltott** állapotot jeleníti meg.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások** lehetőséget. A megosztások listájában válassza ki a csatlakoztatni kívánt megosztást. A **számítási** oszlophoz használt érték a kiválasztott megosztásnál **letiltott** állapotot jeleníti meg.
 
     ![Jelölje ki a megosztást](media/azure-stack-edge-j-series-manage-shares/mount-share-1.png)
 
-2. Válassza a **Csatlakoztatás**lehetőséget.
+2. Válassza a **Csatlakoztatás** lehetőséget.
 
     ![Csatlakoztatás kiválasztása](media/azure-stack-edge-j-series-manage-shares/mount-share-2.png)
 
-3. Ha a rendszer megerősítést kér, válassza az **Igen**lehetőséget. Ekkor a rendszer csatlakoztatja a megosztást.
+3. Ha a rendszer megerősítést kér, válassza az **Igen** lehetőséget. Ekkor a rendszer csatlakoztatja a megosztást.
 
     ![Csatlakoztatás megerősítése](media/azure-stack-edge-j-series-manage-shares/mount-share-3.png)
 
@@ -123,19 +123,19 @@ Ha létrehozott egy megosztást, mielőtt beállította a számítást a Azure S
 
 A megosztás leválasztásához hajtsa végre az alábbi lépéseket a Azure Portalben.
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások**lehetőséget.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások** lehetőséget.
 
     ![2. megosztás kiválasztása](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
 
-2. A megosztások listájában válassza ki a leválasztani kívánt megosztást. Meg szeretné győződni arról, hogy a leválasztott megosztást egyetlen modul sem használja. Ha a megosztást egy modul használja, akkor a rendszer a megfelelő modullal kapcsolatos problémákat fogja látni. Válassza a **Leválasztás**lehetőséget.
+2. A megosztások listájában válassza ki a leválasztani kívánt megosztást. Meg szeretné győződni arról, hogy a leválasztott megosztást egyetlen modul sem használja. Ha a megosztást egy modul használja, akkor a rendszer a megfelelő modullal kapcsolatos problémákat fogja látni. Válassza a **Leválasztás** lehetőséget.
 
     ![Válassza a leválasztás lehetőséget](media/azure-stack-edge-j-series-manage-shares/unmount-share-2.png)
 
-3. Ha a rendszer megerősítést kér, válassza az **Igen**lehetőséget. Ezzel leválasztja a megosztást.
+3. Ha a rendszer megerősítést kér, válassza az **Igen** lehetőséget. Ezzel leválasztja a megosztást.
 
     ![Leválasztás megerősítése](media/azure-stack-edge-j-series-manage-shares/unmount-share-3.png)
 
-4. A megosztás leválasztása után lépjen a megosztások listájára. Láthatja, hogy a számítási oszlophoz **használt** érték a megosztás állapotát **letiltottként**jeleníti meg.
+4. A megosztás leválasztása után lépjen a megosztások listájára. Láthatja, hogy a számítási oszlophoz **használt** érték a megosztás állapotát **letiltottként** jeleníti meg.
 
     ![Megosztás leválasztva](media/azure-stack-edge-j-series-manage-shares/unmount-share-4.png)
 

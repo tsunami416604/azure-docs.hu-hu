@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 094e40fe55e1ba51b0539d740ecb449a8327d6a6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4f90299daed46d06dad9ab37103e3b8f53763ed4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841240"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454389"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Többtényezős hitelesítés konfigurálása SQL Server Management Studio és az Azure AD-hez
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Ez a cikk bemutatja, hogyan használható a Azure Active Directory (Azure AD) multi-Factor Authentication (MFA) a SQL Server Management Studio (SSMS) szolgáltatással. Az Azure AD MFA a SSMS vagy a SqlPackage.exe [Azure SQL Database](sql-database-paas-overview.md), az [Azure SQL felügyelt példányának](../managed-instance/sql-managed-instance-paas-overview.md) és az [azure szinapszis Analytics (korábban SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)összekapcsolására használható. A többtényezős hitelesítés áttekintését lásd: [univerzális hitelesítés SQL Database, SQL felügyelt példánnyal és Azure szinapszis (SSMS-támogatás az MFA-hoz)](../database/authentication-mfa-ssms-overview.md).
+Ez a cikk bemutatja, hogyan használható a Azure Active Directory (Azure AD) multi-Factor Authentication (MFA) a SQL Server Management Studio (SSMS) szolgáltatással. Az Azure AD MFA a SSMS vagy a SqlPackage.exe [Azure SQL Database](sql-database-paas-overview.md), az [Azure SQL felügyelt példány](../managed-instance/sql-managed-instance-paas-overview.md) és az [Azure szinapszis Analytics szolgáltatáshoz](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)való csatlakoztatásakor használható. A többtényezős hitelesítés áttekintését lásd: [univerzális hitelesítés SQL Database, SQL felügyelt példánnyal és Azure szinapszis (SSMS-támogatás az MFA-hoz)](../database/authentication-mfa-ssms-overview.md).
 
 > [!IMPORTANT]
-> A Azure SQL Databaseban, az Azure SQL felügyelt példányában és az Azure Szinapszisban (korábbi nevén SQL Data Warehouse) lévő adatbázisokat a cikk további részében adatbázisként hivatkoznak, és a kiszolgáló arra a [kiszolgálóra](logical-servers.md) hivatkozik, amely az adatbázisokat üzemelteti a Azure SQL Database és az Azure szinapszis számára.
+> A Azure SQL Databaseban, az Azure SQL felügyelt példányában és az Azure Szinapszisban található adatbázisokat a cikk további részében adatbázisként hivatkoznak, és a kiszolgáló arra a [kiszolgálóra](logical-servers.md) hivatkozik, amely a Azure SQL Database és az Azure szinapszis adatbázisait tárolja.
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések
 
@@ -76,7 +76,7 @@ A következő lépések bemutatják, hogyan csatlakozhat a legújabb SSMS haszn�
 
 Az ellenőrzés befejezésekor a SSMS általában feltételezi az érvényes hitelesítő adatokat és a tűzfal elérését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A többtényezős hitelesítés áttekintését lásd: [univerzális hitelesítés SQL Database, SQL felügyelt példánnyal és Azure szinapszis (SSMS-támogatás az MFA-hoz)](../database/authentication-mfa-ssms-overview.md).  
 - Mások hozzáférésének biztosítása az adatbázishoz: [SQL Database hitelesítés és engedélyezés: hozzáférés biztosítása](logins-create-manage.md)  

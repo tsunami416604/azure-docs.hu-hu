@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 7433c51b45b0d8459ad1959b29f61660537b8851
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 9d402599c4d6732ce92b8c64af6f660bcedbc4ba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337457"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455062"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>Rövid útmutató: az első Logic Apps munkafolyamat létrehozása – Azure Portal
 
@@ -112,7 +112,7 @@ A logikai alkalmazás most már él, azonban nem végez mást, mint az RSS-hírc
 
 ## <a name="add-the-send-email-action"></a>Az "e-mail küldése" művelet hozzáadása
 
-Miután [hozzáadott egy triggert a logikai alkalmazáshoz](#add-rss-trigger), hozzá kell adnia egy [műveletet](../logic-apps/logic-apps-overview.md#logic-app-concepts) a válasz meghatározásához, amikor a logikai alkalmazás ellenőrzi az RSS-hírcsatornát, és megjelenik egy új elem. A logikai alkalmazásokat sokkal összetettebb műveletekkel is létrehozhatja, mint például az [e-mailek feldolgozásához Logic apps, Azure functions és az Azure Storage](/azure/logic-apps/tutorial-process-email-attachments-workflow)használatával.
+Miután [hozzáadott egy triggert a logikai alkalmazáshoz](#add-rss-trigger), hozzá kell adnia egy [műveletet](../logic-apps/logic-apps-overview.md#logic-app-concepts) a válasz meghatározásához, amikor a logikai alkalmazás ellenőrzi az RSS-hírcsatornát, és megjelenik egy új elem. A logikai alkalmazásokat sokkal összetettebb műveletekkel is létrehozhatja, mint például az [e-mailek feldolgozásához Logic apps, Azure functions és az Azure Storage](./tutorial-process-email-attachments-workflow.md)használatával.
 
 > [!NOTE]
 > Ez a példa az Office 365 Outlookot használja e-mail-szolgáltatásként. Ha más támogatott e-mail szolgáltatást használ a logikai alkalmazásban, a felhasználói felület eltérő lehet. A másik e-mail szolgáltatáshoz való kapcsolódás alapvető fogalmai azonban változatlanok maradnak.
@@ -167,7 +167,7 @@ Miután [hozzáadott egy triggert a logikai alkalmazáshoz](#add-rss-trigger), h
 
       ![Képernyőkép a Logic Apps Designerről, amely az "e-mail küldése" műveletet és egy példaként szolgáló e-mailt tartalmaz a "hírcsatorna címe" tulajdonsággal.](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
 
-      Ha egy "for each" ciklus megjelenik a tervezőben, akkor egy tömbhöz tartozó jogkivonatot választott ki. például a **Categories-Item** token. Az ilyen tokentípusoknál a tervező automatikusan hozzáadja ezt a hurkot a tokenre hivatkozó művelet köré. Így a logikai alkalmazás a tömb mindegyik elemén végrehajtja ugyanazt a műveletet. A hurok eltávolításához válassza a hurok **címsorán lévő három** pontot ( **..**.), majd válassza a **Törlés** lehetőséget.
+      Ha egy "for each" ciklus megjelenik a tervezőben, akkor egy tömbhöz tartozó jogkivonatot választott ki. például a **Categories-Item** token. Az ilyen tokentípusoknál a tervező automatikusan hozzáadja ezt a hurkot a tokenre hivatkozó művelet köré. Így a logikai alkalmazás a tömb mindegyik elemén végrehajtja ugyanazt a műveletet. A hurok eltávolításához válassza a hurok **címsorán lévő három** pontot (**..**.), majd válassza a **Törlés** lehetőséget.
 
    1. A **törzs** mezőben adja meg az e-mail törzsének tartalmát. Ebben a példában a tartalom három, leíró szöveggel ellátott tulajdonságot tartalmaz: `Title:` , a **hírcsatorna címe** tulajdonságot `Date published:` , a tulajdonságban **közzétett hírcsatornát** , valamint `Link:` az **elsődleges hírcsatorna hivatkozás** tulajdonságát. Ha üres sorokat kíván hozzáadni a szerkesztőmezőkhöz, nyomja le a Shift + Enter billentyűkombinációt.
 

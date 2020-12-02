@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: aa492acdedc2d131d28c894031de2181e87a2f3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed6b77f77c9df0bb69edeb7451022605f1633aa3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890695"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454307"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge Pro GPU-eszközön Azure PowerShell használatával
 
@@ -103,10 +103,10 @@ Ezt az előfizetést a virtuális gépek üzembe helyezéséhez fogjuk használn
     
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat, például a Storage-fiókot, a lemezt, a felügyelt lemezt.
+Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmaggal. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat, például a Storage-fiókot, a lemezt, a felügyelt lemezt.
 
 > [!IMPORTANT]
-> Az összes erőforrás ugyanabban a helyen jön létre, mint az eszköz, és a hely a **DBELocal**értékre van állítva.
+> Az összes erőforrás ugyanabban a helyen jön létre, mint az eszköz, és a hely a **DBELocal** értékre van állítva.
 
 ```powershell
 New-AzureRmResourceGroup -Name <Resource group name> -Location DBELocal
@@ -227,7 +227,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-Az alábbiakban egy példa látható a kimenetre. A parancsmaggal kapcsolatos további információkért nyissa meg a [New-AzureRmDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0).
+Az alábbiakban egy példa látható a kimenetre. A parancsmaggal kapcsolatos további információkért nyissa meg a [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0).
 
 ```powershell
 Tags               :
@@ -267,7 +267,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-Az alábbiakban egy példa látható a kimenetre. A parancsmaggal kapcsolatos további információkért nyissa meg a [New-AzureRmImage](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0).
+Az alábbiakban egy példa látható a kimenetre. A parancsmaggal kapcsolatos további információkért nyissa meg a [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0).
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -406,7 +406,7 @@ $VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine -Id $image
 New-AzureRmVM -ResourceGroupName <Resource Group Name> -Location DBELocal -VM $VirtualMachine -Verbose
 ```
 
-## <a name="connect-to-a-vm"></a>Kapcsolódás virtuális géphez
+## <a name="connect-to-a-vm"></a>Csatlakozás virtuális géphez
 
 Attól függően, hogy létrehozott-e Windows vagy Linux rendszerű virtuális gépet, a kapcsolódás lépései különbözőek lehetnek.
 
@@ -463,11 +463,11 @@ Futtassa a következő parancsmagot az eszközön futó virtuális gépek bekapc
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
 
-A parancsmaggal kapcsolatos további információkért nyissa meg a [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0).
+A parancsmaggal kapcsolatos további információkért nyissa meg a [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0).
 
 ### <a name="suspend-or-shut-down-the-vm"></a>A virtuális gép felfüggesztése vagy leállítása
 
-Futtassa a következő parancsmagot az eszközön futó virtuális gép leállításához vagy leállításához:
+Futtassa az alábbi parancsmagot az eszközön futó virtuális gépek leállításához vagy kikapcsolásához:
 
 
 ```powershell
@@ -475,7 +475,7 @@ Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
 
-A parancsmaggal kapcsolatos további információkért nyissa meg a [stop-AzureRmVM parancsmagot](https://docs.microsoft.com/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0).
+A parancsmaggal kapcsolatos további információkért nyissa meg a [stop-AzureRmVM parancsmagot](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0).
 
 ### <a name="add-a-data-disk"></a>Adatlemez hozzáadása
 
@@ -489,13 +489,13 @@ Update-AzureRmVM -ResourceGroupName "<Resource Group Name string>" -VM $VirtualM
 
 ### <a name="delete-the-vm"></a>A virtuális gép törlése
 
-Futtassa a következő parancsmagot a virtuális gép eszközről való eltávolításához:
+Az alábbi parancsmaggal távolíthat el egy virtuális gépet az eszközről:
 
 ```powershell
 Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
-A parancsmaggal kapcsolatos további információkért nyissa meg a [Remove-AzureRmVm parancsmagot](https://docs.microsoft.com/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0).
+A parancsmaggal kapcsolatos további információkért nyissa meg a [Remove-AzureRmVm parancsmagot](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0).
 
 
 ## <a name="supported-vm-sizes"></a>Támogatott virtuálisgép-méretek
@@ -553,7 +553,7 @@ Az Azure Stack Edge Pro-eszköz eléréséhez használt ügyfélen állítson be
 
 ### <a name="on-windows-client"></a>Windows-ügyfélen 
 
-`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
+`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
 
 ### <a name="on-linux-client"></a>Linux-ügyfélen
 
@@ -565,6 +565,6 @@ A következő lépésekkel ellenőrizheti, hogy a AzCopy környezeti változója
 2. Keresse meg a `AZCOPY_DEFAULT_SERVICE_API_VERSION` paramétert. Ennek az előző lépésekben beállított értéknek kell lennie.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Azure Resource Manager-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager-parancsmagok](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

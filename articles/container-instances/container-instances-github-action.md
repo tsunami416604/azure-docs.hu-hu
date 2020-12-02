@@ -4,12 +4,12 @@ description: Hozzon létre egy GitHub-műveletet, amely automatizálja a szüks�
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 221ecbe5fbe2cdea4105362c43a5765bcc298d46
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0068b9869e5ef7a3b6c0fd21c1b69cdae1d4ab4b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843655"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454812"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub-művelet konfigurálása tárolópéldány létrehozásához
 
@@ -56,7 +56,7 @@ A GitHub-munkafolyamatban Azure-beli hitelesítő adatokat kell megadnia az Azur
 Először kérje le az erőforráscsoport erőforrás-AZONOSÍTÓját. Helyettesítse be a csoport nevét a következő az [Group show][az-group-show] paranccsal:
 
 ```azurecli
-groupId=$(az group show \
+$groupId=$(az group show \
   --name <resource-group-name> \
   --query id --output tsv)
 ```
@@ -299,7 +299,7 @@ az group delete \
   --name <resource-group-name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További műveletek a [GitHub-piactéren](https://github.com/marketplace?type=actions) a fejlesztési munkafolyamat automatizálásához
 

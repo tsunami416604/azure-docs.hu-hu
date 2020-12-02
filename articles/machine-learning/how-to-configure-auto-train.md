@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: f4546433f5bd20e2f001d6d868d8adfb4b9bf8c0
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: b03eb8015d318471cf8bf11fc5a3cd94044d2cfe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920372"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455583"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
@@ -46,7 +46,7 @@ Ehhez a cikkhez szükséges,
     Az SDK telepítéséhez használhatja a következőt is, 
     * Hozzon létre egy számítási példányt, amely automatikusan telepíti az SDK-t, és előre konfigurálva van a ML-munkafolyamatokhoz. További információkért lásd: [Azure Machine learning számítási példány létrehozása és kezelése](how-to-create-manage-compute-instance.md) . 
 
-    * [Telepítse a `automl` csomagot saját kezűleg](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment), amely tartalmazza az SDK [alapértelmezett telepítését](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py#default-install&preserve-view=true) .
+    * [Telepítse a `automl` csomagot saját kezűleg](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment), amely tartalmazza az SDK [alapértelmezett telepítését](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py#default-install) .
 
 ## <a name="select-your-experiment-type"></a>A kísérlet típusának kiválasztása
 
@@ -220,7 +220,7 @@ Minden automatizált gépi tanulási kísérlet során az adatok automatikusan m
 
 A kísérletek az objektumban való konfigurálásakor `AutoMLConfig` engedélyezheti vagy letilthatja a beállítást `featurization` . A következő táblázat a [AutoMLConfig objektum](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)featurization elfogadott beállításait tartalmazza. 
 
-|Featurization-konfiguráció | Leírás |
+|Featurization-konfiguráció | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-configure-auto-features.md#featurization) . **Alapértelmezett beállítás**.|
 |`"featurization": 'off'`| Azt jelzi, hogy a featurization lépést nem kell automatikusan elvégezni.|
@@ -375,7 +375,7 @@ Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md)
 > [!NOTE]
 > A magyarázat-ügyfél jelenleg nem támogatja a ForecastTCN modellt. Ez a modell nem ad vissza magyarázat-irányítópultot, ha az a legjobb modellként lett visszaadva, és nem támogatja az igény szerinti magyarázatok futtatását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 

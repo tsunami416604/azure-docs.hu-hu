@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: b20f2ce88695cb68de496d126c5e3cd52f9eb6c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 38b0f23a44a16125726e7810b2045d244a2e6b06
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316132"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454661"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Gyors útmutató: kiszolgáló nélküli Apache Spark készlet létrehozása az Azure szinapszis Analyticsben webes eszközök használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre kiszolgáló nélküli Apache Spark készletet (előzetes verzió) az Azure Szinapszisban webes eszközökkel. Ezután megismerheti a Apache Spark készlethez való kapcsolódást és a Spark SQL-lekérdezések futtatását a fájlokon és táblákon. Az Apache Spark a memóriában végzett feldolgozás segítségével teszi lehetővé a gyors adatelemzést és fürtszámítást. További információ a Sparkról az Azure Szinapszisban [: Áttekintés: Apache Spark az Azure szinapszisban](./spark/apache-spark-overview.md).
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre kiszolgáló nélküli Apache Spark készletet az Azure Szinapszisban webes eszközökkel. Ezután megismerheti a Apache Spark készlethez való kapcsolódást és a Spark SQL-lekérdezések futtatását a fájlokon és táblákon. Az Apache Spark a memóriában végzett feldolgozás segítségével teszi lehetővé a gyors adatelemzést és fürtszámítást. További információ a Sparkról az Azure Szinapszisban [: Áttekintés: Apache Spark az Azure szinapszisban](./spark/apache-spark-overview.md).
 
 > [!IMPORTANT]
 > A Spark-példányok számlázása percenként történik, függetlenül attól, hogy használja-e őket. A használata után állítsa le a Spark-példányt, vagy állítson be egy rövid időkorlátot. További információkért lásd a cikk **Az erőforrások eltávolítása** című szakaszát.
@@ -120,7 +120,7 @@ A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben haszn
 6. Az X tengely oszlop mezőjében válassza az "állapot" lehetőséget.
 7. Az Y tengely oszlop mezőjében válassza a "fizetés" lehetőséget.
 8. Az **Összesítés** mezőben válassza az "AVG" lehetőséget.
-9. Válassza az **Alkalmaz** lehetőséget.
+9. Kattintson az **Alkalmaz** gombra.
 
    ![Diagram kimenete az Azure szinapszis Sparkban](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Diagram kimenete az Azure szinapszis Sparkban")
 
@@ -143,7 +143,7 @@ Mivel a készlet díjai több időt vesznek igénybe, mint a tárterületre vona
 
 A Spark-példány leállításának biztosításához fejezze be a csatlakoztatott munkameneteket (jegyzetfüzeteket). A készlet leáll, amikor eléri a Apache Spark készletben megadott **üresjárati időt** . A **befejezési munkamenetet** a jegyzetfüzet alján található állapotsorból is kiválaszthatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre kiszolgáló nélküli Apache Spark készletet, és hogyan futtathat egy alapszintű Spark SQL-lekérdezést.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: c2a9dbb5fa821d408835cd1bcbf3e6afdade36e1
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 17648b9bc973285764bb0bd6242506122a043780
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317486"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454259"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -80,15 +80,15 @@ Néhány konfigurációs lépés aszinkron módon fut, mert nem hajthatók végr
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+N.A.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-N/A
+N.A.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N/A
+N.A.
 
 # <a name="rest"></a>[REST](#tab/rest)
 
@@ -155,7 +155,7 @@ A művelet aszinkron, és hosszabb időt is igénybe vehet.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+N.A.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -279,7 +279,7 @@ Storage-fiók összekapcsolása *a* munkaterülethez – a *mentett keresési* l
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+N.A.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -323,7 +323,7 @@ Storage-fiók csatolása a munkaterülethez tartozó *riasztásokhoz* – a *log
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+N.A.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -375,7 +375,7 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
   
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  N/A
+  N.A.
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -437,7 +437,7 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
 
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  N/A
+  N.A.
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -470,7 +470,7 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
 
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  N/A
+  N.A.
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -511,15 +511,15 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
 
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  N/A
+  N.A.
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-  N/A
+  N.A.
 
   # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-  N/A
+  N.A.
 
   # <a name="rest"></a>[REST](#tab/rest)
 
@@ -545,7 +545,7 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
 
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  N/A
+  N.A.
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -574,7 +574,7 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
 
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  N/A
+  N.A.
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -605,7 +605,7 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
 
   # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-  N/A
+  N.A.
 
   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -656,6 +656,12 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
 
 - A fürtre mutató hivatkozás sikertelen lesz, ha egy másik fürthöz van csatolva.
 
+- A kulcstároló jelenleg nem érhető el Kínában. 
+
+- A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) automatikusan konfigurálva van a támogatott régiókban a 2020 október 1-jétől létrehozott fürtökhöz. Ellenőrizheti, hogy a fürt a GET kérelem alapján kettős titkosításra van-e konfigurálva, és megfigyelheti a `"isDoubleEncryptionEnabled"` tulajdonság értékét – ez `true` a kettős titkosítással rendelkező fürtök esetében engedélyezett. 
+  - Ha létrehoz egy fürtöt, és "<region-Name> nem támogatja a fürtök kettős titkosítását", akkor továbbra is létrehozhatja a fürtöt dupla titkosítás nélkül. `"properties": {"isDoubleEncryptionEnabled": false}`Tulajdonság hozzáadása a REST-kérelem törzsében.
+  - A fürt létrehozása után a kettős titkosítási beállítás nem módosítható.
+
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 - Működés Key Vault rendelkezésre állással
@@ -682,10 +688,6 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
 - Bizonyos műveletek hosszúak, és eltarthat egy ideig – ezek a fürtök létrehozása, a fürt kulcsának frissítése és a fürt törlése. A művelet állapotát kétféleképpen tekintheti meg:
   1. a REST használatakor másolja az Azure-AsyncOperation URL értéket a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
   2. GET kérelem küldése a fürtnek vagy a munkaterületnek, és figyelje meg a választ. A nem összekapcsolt munkaterület például nem rendelkezik a *szolgáltatások* *clusterResourceId* .
-
-- A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) automatikusan konfigurálva van a támogatott régiókban a 2020 október 1-jétől létrehozott fürtökhöz. Ellenőrizheti, hogy a fürt a GET kérelem alapján kettős titkosításra van-e konfigurálva, és megfigyelheti a `"isDoubleEncryptionEnabled"` tulajdonság értékét – ez `true` a kettős titkosítással rendelkező fürtök esetében engedélyezett. 
-  - Ha létrehoz egy fürtöt, és "<region-Name> nem támogatja a fürtök kettős titkosítását", akkor továbbra is létrehozhatja a fürtöt dupla titkosítás nélkül. Adja hozzá `"properties": {"isDoubleEncryptionEnabled": false}` a REST-kérelem törzsét.
-  - A fürt létrehozása után a kettős titkosítási beállítás nem módosítható.
 
 - Hibaüzenetek
   
