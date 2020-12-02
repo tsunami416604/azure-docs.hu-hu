@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: f26fffe8e6b2be6ede064b4750d012b3e4535c66
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5ac96d703ea646d26b84d6d6486d9ee44ad87cd2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433331"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490125"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -129,7 +129,7 @@ A **rendszerfrissítéseket telepíteni kell a Machines** javaslatra. Az új ver
 
 - Dúsított adatok az Azure Resource Graph (ARG) javaslatához. Az ARG egy olyan Azure-szolgáltatás, amely hatékony erőforrás-feltárást tesz lehetővé. Az ARG használatával nagy léptékű lekérdezéseket végezhet az adott előfizetések között, így hatékonyan szabályozhatja a környezetét. 
 
-    Azure Security Center esetében az ARG és a [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) használatával kérdezheti le a biztonsági testhelyzetek széles körét.
+    Azure Security Center esetében az ARG és a [Kusto lekérdezési nyelv (KQL)](/azure/data-explorer/kusto/query/) használatával kérdezheti le a biztonsági testhelyzetek széles körét.
 
     Korábban, ha a jelen ajánlást az ARG-ben kérdezte le, az egyetlen elérhető információ az volt, hogy a javaslatot szervizelni kell egy gépen. A továbbfejlesztett verzió következő lekérdezése visszaküldi a hiányzó rendszerfrissítéseket a számítógép szerint csoportosítva.
 
@@ -172,7 +172,7 @@ Főbb képességek:
 
 [További információ az integrált sebezhetőségi képolvasó hibrid gépekre való üzembe helyezéséről](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
 
-[További információ az Azure arc használatára képes kiszolgálókról](https://docs.microsoft.com/azure/azure-arc/servers/).
+[További információ az Azure arc használatára képes kiszolgálókról](../azure-arc/servers/index.yml).
 
 
 ### <a name="azure-firewall-recommendation-added-preview"></a>Azure Firewall javaslat hozzáadva (előzetes verzió)
@@ -206,7 +206,7 @@ További információ: [standard eltávolítása az irányítópultról](update-
 
 Az Azure Resource Graph egy Azure-szolgáltatás, amelynek célja, hogy hatékony erőforrás-feltárást biztosítson, amely lehetővé teszi az adott előfizetések skálájának lekérdezését, így hatékonyan szabályozhatja a környezetét. 
 
-Azure Security Center esetében az ARG és a [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) használatával kérdezheti le a biztonsági testhelyzetek széles körét. Például:
+Azure Security Center esetében az ARG és a [Kusto lekérdezési nyelv (KQL)](/azure/data-explorer/kusto/query/) használatával kérdezheti le a biztonsági testhelyzetek széles körét. Például:
 
 - Eszközök leltározása (ARG)
 - Dokumentáltak egy példa ARG-lekérdezést a [fiókok azonosításához a többtényezős hitelesítés (MFA) engedélyezése nélkül](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
@@ -295,7 +295,7 @@ extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
 
 További információt a következő hivatkozásokon talál:
 - [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md)
-- [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
+- [Kusto lekérdezési nyelv (KQL)](/azure/data-explorer/kusto/query/)
 
 
 ## <a name="september-2020"></a>2020. szeptember

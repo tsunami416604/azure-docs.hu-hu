@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: f9a828b78dc5ba6bdbc77e22daa75be4182015f0
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 84f6473c25a5be11eeda7cd2b311d93a7226a78c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95805696"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488391"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>A Storage Explorer használata az Azure File Storage szolgáltatással
 
@@ -31,7 +31,7 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 - [A Storage Explorer letöltése és telepítése](https://www.storageexplorer.com/)
 
-- [Kapcsolódás Azure Storage-fiókhoz vagy-szolgáltatáshoz](/azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [Kapcsolódás Azure Storage-fiókhoz vagy-szolgáltatáshoz](./vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
 
@@ -47,7 +47,7 @@ A következő lépések bemutatják, hogyan hozhat létre fájlmegosztást a Sto
 
     ![Fájlmegosztás létrehozása](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-1. A **Fájlmegosztások** mappa alatt megjelenik egy szövegbeviteli mező. Adja meg a fájlmegosztás nevét. A fájlmegosztások elnevezésére vonatkozó szabályokat és korlátozásokat a [Megosztáselnevezési szabályok](/azure/storage/storage-dotnet-how-to-use-blobs) című szakaszban olvashatja el.
+1. A **Fájlmegosztások** mappa alatt megjelenik egy szövegbeviteli mező. Adja meg a fájlmegosztás nevét. A fájlmegosztások elnevezésére vonatkozó szabályokat és korlátozásokat a [Megosztáselnevezési szabályok](./storage/blobs/storage-quickstart-blobs-dotnet.md) című szakaszban olvashatja el.
 
     ![A megosztás elnevezése](media/vs-azure-tools-storage-explorer-files/image2.png)
 
@@ -77,7 +77,7 @@ A következő lépések bemutatják, hogyan tekintheti meg egy fájlmegosztás t
 
 ## <a name="delete-a-file-share"></a>Fájlmegosztás törlése
 
-A fájlmegosztások szükség szerint egyszerűen létrehozhatók és törölhetők. (Az egyes fájlok törlésének módját lásd a [Fájlmegosztásban lévő fájlok kezelése](/azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container) című szakaszban.)
+A fájlmegosztások szükség szerint egyszerűen létrehozhatók és törölhetők. (Az egyes fájlok törlésének módját lásd a [Fájlmegosztásban lévő fájlok kezelése](./vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) című szakaszban.)
 
 A következő lépések bemutatják, hogyan törölhet fájlmegosztást a Storage Explorerben.
 
@@ -97,7 +97,7 @@ A következő lépések bemutatják, hogyan törölhet fájlmegosztást a Storag
 
 ## <a name="copy-a-file-share"></a>Fájlmegosztás másolása
 
-A Storage Explorer lehetővé teszi egy fájlmegosztás vágólapra másolását, majd egy másik tárfiókba történő beillesztését. (Az egyes fájlok másolásának módját lásd a [Fájlmegosztásban lévő fájlok kezelése](/azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container) című szakaszban.)
+A Storage Explorer lehetővé teszi egy fájlmegosztás vágólapra másolását, majd egy másik tárfiókba történő beillesztését. (Az egyes fájlok másolásának módját lásd a [Fájlmegosztásban lévő fájlok kezelése](./vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) című szakaszban.)
 
 A következő lépések bemutatják, hogyan másolhat át fájlmegosztást egyik tárfiókból a másikba.
 
@@ -117,7 +117,7 @@ A következő lépések bemutatják, hogyan másolhat át fájlmegosztást egyik
 
 ## <a name="get-the-sas-for-a-file-share"></a>SAS lekérése fájlmegosztáshoz
 
-A [közös hozzáférésű jogosultságkód (SAS)](/azure/storage/storage-dotnet-shared-access-signature-part-1) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz. Ez azt jelenti, hogy egy adott időszakra megadhatja az ügyfeleknek a tárfiókban lévő objektumokra vonatkozó engedélyek bizonyos készletét a tár hozzáférési kulcsainak megosztása nélkül.
+A [közös hozzáférésű jogosultságkód (SAS)](./storage/common/storage-sas-overview.md) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz. Ez azt jelenti, hogy egy adott időszakra megadhatja az ügyfeleknek a tárfiókban lévő objektumokra vonatkozó engedélyek bizonyos készletét a tár hozzáférési kulcsainak megosztása nélkül.
 
 A következő lépések bemutatják, hogyan hozhat létre SAS-t egy fájlmegosztáshoz:+
 
@@ -229,7 +229,7 @@ A következő lépések bemutatják, hogyan kezelhetők a fájlok (és mappák) 
         
         c. **A letöltött fájl helyének megadása** párbeszédpanelen adja meg, hogy hová kívánja letölteni a fájlt, és adja meg a fájl kívánt nevét.
 
-        d. Kattintson a **Mentés** gombra.
+        d. Válassza a **Mentés** lehetőséget.
 
     - **Fájl megnyitása a helyi számítógépen**
         

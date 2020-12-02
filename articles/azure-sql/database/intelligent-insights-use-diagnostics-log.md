@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 488d10906039327d830bfb6bcffc3163d65ad01e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6720058ce6e7614284111a75a2ab3a91525df1a3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792038"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488765"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>A Azure SQL Database és az Azure SQL felügyelt példányok teljesítményével kapcsolatos problémák Intelligent Insights teljesítmény diagnosztikai naplójának használata
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -140,7 +140,7 @@ A Intelligent Insights teljesítmény naplójának utolsó része az azonosítot
 
 A Intelligent Insights Teljesítménynapló [Azure monitor naplókkal]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) vagy harmadik féltől származó megoldással az egyéni DevOps-riasztásokhoz és jelentéskészítési funkciókhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg [Intelligent Insights](intelligent-insights-overview.md) fogalmakkal.
 - Ismerje meg, hogy miként lehet [elhárítani a Intelligent Insights teljesítményével kapcsolatos problémákat](intelligent-insights-troubleshoot-performance.md).

@@ -3,12 +3,12 @@ title: Az Azure Service Bus-üzenetkezelés áttekintése | Microsoft Docs
 description: Ez a cikk átfogó áttekintést nyújt a Azure Service Busről, amely egy teljes körűen felügyelt Enterprise Integration Message Broker.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: bb894800482cb2b7b4e5d699ab050bd5c93ad038
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca04b4a41489fba61e7c0ee2bb3f4f7f0b8b80f4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345303"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489479"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 A Microsoft Azure Service Bus egy teljes körűen felügyelt Enterprise Message Broker Üzenetsor-kezeléssel és nyilvános előfizetési témakörökkel. Service Bus az alkalmazások és szolgáltatások egymástól való elválasztására szolgálnak, a következő előnyöket biztosítva:
@@ -23,9 +23,9 @@ Az adatok különböző alkalmazások és szolgáltatások közötti átvitele a
 Néhány gyakori üzenetküldési forgatókönyv:
 
 * *Üzenetküldés*. Üzleti adatok (például értékesítési vagy beszerzési rendelések, naplók vagy leltározási mozgások) továbbítása.
-* *Alkalmazások* leválasztása. Az alkalmazások és szolgáltatások megbízhatóságának és méretezhetőségének javítása. A gyártónak és a fogyasztónak nem kell online vagy azonnal elérhetőnek lennie. A [terhelést úgy kell megterhelni](https://docs.microsoft.com/azure/architecture/patterns/queue-based-load-leveling) , hogy a forgalmi tüskék ne túladóztat meg a szolgáltatást. 
-* *Terheléselosztás.* Lehetővé teszi több [versengő fogyasztó](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers) számára, hogy egy várólistából is beolvassák a kizárólagos tulajdonosi jogokat bizonyos üzenetekhez. 
-* *Témakörök és előfizetések*. 1:*n* kapcsolatok engedélyezése a [közzétevők és az előfizetők](https://docs.microsoft.com/azure/architecture/patterns/publisher-subscriber)között, amely lehetővé teszi, hogy az előfizetők kiválasszák az adott üzeneteket a közzétett üzenet-adatfolyamból.
+* *Alkalmazások* leválasztása. Az alkalmazások és szolgáltatások megbízhatóságának és méretezhetőségének javítása. A gyártónak és a fogyasztónak nem kell online vagy azonnal elérhetőnek lennie. A [terhelést úgy kell megterhelni](/azure/architecture/patterns/queue-based-load-leveling) , hogy a forgalmi tüskék ne túladóztat meg a szolgáltatást. 
+* *Terheléselosztás.* Lehetővé teszi több [versengő fogyasztó](/azure/architecture/patterns/competing-consumers) számára, hogy egy várólistából is beolvassák a kizárólagos tulajdonosi jogokat bizonyos üzenetekhez. 
+* *Témakörök és előfizetések*. 1:*n* kapcsolatok engedélyezése a [közzétevők és az előfizetők](/azure/architecture/patterns/publisher-subscriber)között, amely lehetővé teszi, hogy az előfizetők kiválasszák az adott üzeneteket a közzétett üzenet-adatfolyamból.
 * *Tranzakciók*. Lehetővé teszi, hogy több műveletet végezzen el, amelyek mindegyike egy atomi tranzakció hatókörében van. Például a következő műveletek hajthatók végre egy tranzakció hatókörében.  
 
     1. Üzenet beszerzése egy várólistából.
@@ -138,11 +138,11 @@ A nemkívánatos forgalom elleni védelem érdekében Service Bus olyan [biztons
 
 Az Azure SDK-n keresztül teljes mértékben támogatott Service Bus ügyféloldali kódtárak érhetők el.
 
-- [.NET-Azure Service Bus](https://docs.microsoft.com/dotnet/api/overview/azure/service-bus?view=azure-dotnet&preserve-view=true)
-- [Java-kódtárak Azure Service Bus](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-stable&preserve-view=true)
+- [.NET-Azure Service Bus](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
+- [Java-kódtárak Azure Service Bus](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
 - [Azure Service Bus-szolgáltató a Java JMS 2,0-hez](how-to-use-java-message-service-20.md)
-- [A JavaScript és az írógéppel Azure Service Bus moduljai](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
-- [Azure Service Bus kódtárak a Pythonhoz](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
+- [A JavaScript és az írógéppel Azure Service Bus moduljai](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
+- [Azure Service Bus kódtárak a Pythonhoz](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
 
 [Azure Service Bus ' az elsődleges protokoll a AMQP 1,0](service-bus-amqp-overview.md) , és bármely AMQP 1,0-kompatibilis protokoll-ügyfélről használható. Számos nyílt forráskódú AMQP-ügyfél olyan mintákat tartalmaz, amelyek kifejezetten bemutatják Service Bus együttműködési képességet. Tekintse át a [AMQP 1,0 protokoll útmutatóját](service-bus-amqp-protocol-guide.md) , amelyből megtudhatja, hogyan használhatja a AMQP 1,0-ügyfeleket közvetlenül a Service Bus funkcióit.
 

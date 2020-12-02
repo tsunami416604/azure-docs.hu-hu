@@ -5,13 +5,13 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: 0791ed6882feedeab47b75eff6a69bf0a49ab7ee
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 11/30/2020
+ms.openlocfilehash: 82133f990c1714276aa13ff22c3f19d0993d16df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341289"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488714"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -22,7 +22,7 @@ A Azure Cosmos DB Azure szinapszis-hivatkozása szoros integrációt hoz létre 
 
 ### <a name="is-azure-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>Támogatott-e az Azure szinapszis-hivatkozás az összes Azure Cosmos DB API-hoz?
 
-A nyilvános előzetes kiadásban az Azure szinapszis hivatkozása támogatott a Azure Cosmos DB SQL (Core) API és a MongoDB Azure Cosmos DB API-hoz. 
+Az Azure szinapszis hivatkozása támogatott a Azure Cosmos DB SQL (Core) API-hoz és a MongoDB Azure Cosmos DB API-hoz. 
 
 ### <a name="is-azure-synapse-link-supported-for-multi-region-azure-cosmos-db-accounts"></a>Támogatott-e az Azure szinapszis-hivatkozás a többrégiós Azure Cosmos DB fiókok esetében?
 
@@ -32,7 +32,7 @@ Ha többrégiós Azure Cosmos DB-fiók az analitikai tár támogatásával való
 
 ### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Engedélyezhető az Azure szinapszis-hivatkozás engedélyezése csak bizonyos régiókban, és nem minden régióban a többrégiós fiók beállítása?
 
-Az előzetes kiadásban, ha az Azure szinapszis-hivatkozás engedélyezve van egy többrégiós fiók esetében, az analitikai tároló minden régióban létrejön. Az alapul szolgáló adatok a tranzakciós tárolóban a teljesítményre és a tranzakciós konzisztenciare vannak optimalizálva.
+Ha az Azure szinapszis-kapcsolat engedélyezve van egy többrégiós fiók esetében, az analitikai tároló minden régióban létrejön. Az alapul szolgáló adatok a tranzakciós tárolóban a teljesítményre és a tranzakciós konzisztenciare vannak optimalizálva.
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Támogatott-e a biztonsági mentés és a visszaállítás az Azure szinapszis-kapcsolattal rendelkező fiókok esetében?
 
@@ -42,9 +42,13 @@ Ha a szinapszis-hivatkozás engedélyezve van egy adatbázis-fiókon, Azure Cosm
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>Letiltható az Azure szinapszis hivatkozás funkciója a Azure Cosmos DB fiókomhoz?
 
-Jelenleg nem tilthatja le a Synapse Link képességet, miután fiókszinten engedélyezte azt. Fontos tudni, hogy nem jár költséggel, ha a Synapse Link képesség engedélyezve van a fiók szintjén, és nem találhatók elemzésitár-kompatibilis tárolók. 
+Jelenleg nem tilthatja le a Synapse Link képességet, miután fiókszinten engedélyezte azt. Fontos tudni, hogy nem jár költséggel, ha a Synapse Link képesség engedélyezve van a fiók szintjén, és nem találhatók elemzésitár-kompatibilis tárolók.
 
 Ha ki kell kapcsolnia a képességet, kétféle lehetősége van. Az első lehetőség az, hogy törli, majd újból létrehozza az új Azure Cosmos DB-fiókot, ha szükséges, az adatok migrálásával. A második lehetőség a támogatási jegy nyitása, hogy segítséget kaphasson az adatok másik fiókba való migrálásához.
+
+### <a name="does-analytical-store-have-any-impact-on-cosmos-db-transactional-slas"></a>Az analitikai tároló hatással van Cosmos DB tranzakciós SLA-ra?
+
+Nem, nincs hatása.
 
 ## <a name="azure-cosmos-db-analytical-store"></a>Azure Cosmos DB analitikus tároló
 
@@ -73,7 +77,7 @@ Igen, a tranzakciós tárolóban lévő adattörlési és-frissítési művelete
 Csak az Azure Synapse Analytics által biztosított különböző futtatókörnyezetekkel érhet el és futtathat lekérdezéseket az elemzési táron. Az elemzési tár a következők használatával kérdezhető le és elemezhető:
 
 * A szinapszis Spark teljes körű támogatást nyújt a Scala, a Python, a SparkSQL és a C# nyelvhez. A Synapse Spark az adatfeldolgozási és -elemzési forgatókönyvek központi eleme
-* Kiszolgáló nélküli SQL T-SQL nyelvvel és az ismert BI-eszközök támogatásával (például Power BI Premium stb.)
+* Kiszolgáló nélküli SQL-készlet a T-SQL nyelvvel és az ismerős BI-eszközök támogatása (például Power BI Premium stb.)
 
 ### <a name="can-i-connect-to-analytical-store-from-synapse-sql-provisioned"></a>Csatlakozhatok az analitikus tárolóhoz a szinapszis SQL kiépített használatával?
 
@@ -121,7 +125,12 @@ Az összes tranzakciós frissítést és törlést a rendszer átmásolja az ana
 
 ### <a name="what-is-the-billing-model-of-azure-synapse-link-for-azure-cosmos-db"></a>Mi a Azure Cosmos DB Azure szinapszis-hivatkozás számlázási modellje?
 
-A [Azure Cosmos db Analytical Store](analytical-store-introduction.md) nyilvános előzetes kiadásban érhető el, az analitikai tár díja nélkül, 2020. augusztus 30-ig. A szinapszis Spark és a szinapszis SQL számlázása a [szinapszis szolgáltatás felhasználásán](https://azure.microsoft.com/pricing/details/synapse-analytics/)keresztül történik.
+Az Azure szinapszis hivatkozás számlázási modellje tartalmazza a Azure Cosmos DB analitikus tároló és a szinapszis-futtatókörnyezet használatával felmerülő költségeket. További információért lásd a [Azure Cosmos db analitikus áruház díjszabását](analytical-store-introduction.md#analytical-store-pricing) és az [Azure szinapszis Analytics árképzési](https://azure.microsoft.com/pricing/details/synapse-analytics/) cikkeit.
+
+### <a name="what-is-the-billing-impact-if-i-enable-synapse-link-in-my-azure-cosmos-db-database-account"></a>Mi a számlázási hatás, ha a szinapszis hivatkozást Engedélyezem a Azure Cosmos DB adatbázis-fiókban?
+
+Nincsenek. A rendszer csak akkor számítja fel a díjat, amikor létrehoz egy analitikai tárolót engedélyező tárolót, és megkezdi az adattöltést.
+
 
 ## <a name="security"></a>Biztonság
 
@@ -136,10 +145,10 @@ Az analitikai tárolóval való hitelesítés megegyezik a tranzakciós tároló
 |Azure szinapszis futtatókörnyezet |Jelenlegi támogatás |
 |---------|---------|
 |Azure szinapszis Spark-készletek | Olvasás, írás (tranzakciós tárolón keresztül), tábla, ideiglenes nézet |
-|Azure szinapszis SQL Server nélküli készletek    | Olvasás, megtekintés |
+|Azure szinapszis kiszolgáló nélküli SQL-készlet    | Olvasás, megtekintés |
 |Azure szinapszis SQL kiépítve   |  Nem elérhető |
 
-### <a name="do-my-azure-synapse-spark-tables-sync-with-my-azure-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>Az Azure szinapszis Spark-táblái az Azure szinapszis SQL Server nélküli tábláival szinkronizálhatók, ugyanúgy, mint a Azure Data Lake?
+### <a name="do-my-azure-synapse-spark-tables-sync-with-my-azure-synapse-serverless-sql-pool-tables-the-same-way-they-do-with-azure-data-lake"></a>Az Azure szinapszis Spark-táblái az Azure szinapszis kiszolgáló nélküli SQL Pool-tábláival szinkronizálhatók, ugyanúgy, mint a Azure Data Lake?
 
 Ez a funkció jelenleg nem érhető el.
 

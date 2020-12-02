@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 36c101acc9e272ca0860649aad1a5e18fb5000a5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 23a5ea2d3ffc1511bea66bb8bc3c4282b6d16cc2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957333"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489122"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>SAP HANA kibővíthető rendszer magas rendelkezésre állása Red Hat Enterprise Linux 
 
@@ -153,7 +153,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
 
     d. Válassza a **hálózatkezelés** lehetőséget, majd csatlakoztassa a hálózati adaptert. A **hálózati adapter csatolása** legördülő listában válassza ki a már létrehozott hálózati adaptereket és az `inter` `hsr` alhálózatokat.  
     
-    e. Kattintson a **Mentés** gombra. 
+    e. Válassza a **Mentés** lehetőséget. 
  
     f. Ismételje meg a b – e lépéseket a fennmaradó virtuális gépek esetében (példánkban a  **Hana-S1-DB2**, **Hana-S1-db3**, **Hana-S2-db1**, **Hana-S2-DB2** és **Hana-S2-db3**).
  
@@ -221,7 +221,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
       1. Válassza az **OK** lehetőséget.
 
    > [!IMPORTANT]
-   > A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.    
+   > A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.    
    
    > [!Note]
    > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
@@ -1167,7 +1167,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 Javasoljuk, hogy alaposan tesztelje a SAP HANA-fürtöt úgy, hogy a teszteket is végrehajtja, ha az Azure-beli [virtuális gépeken a RHEL](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)-on SAP HANA.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

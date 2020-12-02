@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5d114017d5e5dfecfe20afc69849763a87aadd41
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b04b9ababfe0e4c2a60d14044b9d3ee120837dc5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015317"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491043"
 ---
 # <a name="automation-with-service-principals"></a>Automatizálás szolgáltatásnevekkel
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO és ADOMD 
 
-Az ügyfél- és a webalkalmazások összekapcsolása esetén a NuGet [AMO- és ADOMD-ügyfélkódtárainak](/analysis-services/client-libraries?view=azure-analysis-services-current) 15.0.2 és újabb telepíthető csomagjai támogatják a szolgáltatásneveket a kapcsolati sztringek esetén a következő szintaxissal: `app:AppID` és jelszó, vagy `cert:thumbprint`. 
+Az ügyfél- és a webalkalmazások összekapcsolása esetén a NuGet [AMO- és ADOMD-ügyfélkódtárainak](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true) 15.0.2 és újabb telepíthető csomagjai támogatják a szolgáltatásneveket a kapcsolati sztringek esetén a következő szintaxissal: `app:AppID` és jelszó, vagy `cert:thumbprint`. 
 
 Az alábbi példában az `appID` és egy `password` segítségével végezheti el egy modelladatbázis frissítési műveletét:
 
@@ -108,7 +108,7 @@ tbl.RequestRefresh(RefreshType.Full);
 db.Model.SaveChanges();
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Bejelentkezés Azure PowerShell](/powershell/azure/authenticate-azureps)   
 [Frissítés a Logic Apps használatával](analysis-services-refresh-logic-app.md)  
 [Frissítés az Azure Automationnel](analysis-services-refresh-azure-automation.md)  

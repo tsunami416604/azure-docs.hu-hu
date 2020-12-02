@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: c00af3a128685dfbd2435b65fe4d00107ca22ba4
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: f4784cc2e1b0276caf8326df8fad93b12f0d551d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744357"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490074"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Videó-és hangfájlok elemzése Azure Media Services
 
@@ -45,9 +45,9 @@ A Media Services jelenleg a következő beépített analizátor-beállításkés
 |**Előre definiált név**|**Forgatókönyv**|**Részletek**|
 |---|---|---|
 |[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio standard elemzése|Az előre definiált AI-alapú elemzési műveletek, beleértve a beszédfelismerést, előre meghatározott készletet alkalmaznak. Jelenleg az előre definiált tartalom egyetlen hangfelvételsel támogatja a tartalmat, amely egyetlen nyelven tartalmaz beszédet. Megadhatja a bemenetben lévő hangtartalom nyelvét a "Language tag-Region" BCP-47 formátumával. A támogatott nyelvek: angol ("en-US" és "en-GB"), spanyol ("es-ES" és "es-MX"), francia ("fr-FR"), olasz ("It"), Japán ("ja-JP"), Portugál ("PT-BR"), Kínai ("zh-CN"), német ("de-DE"), Arab ("AR-EG" és "AR-SY"), Orosz ("ru-RU"), hindi ("Hi-IN") és koreai ("ko-KR").<br/><br/> Ha a nyelv nincs megadva vagy NULL értékre van állítva, az automatikus nyelvfelismerés kiválasztja az első nyelvet, és a fájl időtartamára folytatja a kiválasztott nyelvet. Az automatikus nyelvfelismerés funkció jelenleg a következőket támogatja: angol, kínai, francia, német, olasz, Japán, spanyol, orosz és portugál. Az első nyelv észlelése után nem támogatja a nyelvek közötti dinamikus váltást. Az automatikus nyelvfelismerés funkció a hangfelvételek és a jól felismerhető beszédek esetében a legjobban működik. Ha az automatikus nyelvfelismerés nem találja a nyelvet, az átirat visszatérhet az angol nyelvre.|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Az alapszintű hang elemzése|Ez a mód beszéd – szöveg típusú átírást és VTT alcím/képaláírás-fájl létrehozását végzi. A mód kimenete tartalmaz egy bepillantást nem tartalmazó JSON-fájlt, amely csak a kulcsszavakat, az átírást és az időzítési adatokat tartalmazza. Ez a mód nem tartalmazza az automatikus nyelvfelismerés és a hangszórók diarization. A támogatott nyelvek listája [itt](https://go.microsoft.com/fwlink/?linkid=2109463) érhető el|
-|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Hang és videó elemzése|Kinyeri az elemzéseket (gazdag metaadatokat) a hang-és a videóból, és egy JSON formátumú fájlt ad kimenetként. Megadhatja, hogy a videofájl feldolgozásakor csak hangelemzéseket szeretne-e kinyerni. További információt a [videó elemzése](analyze-videos-tutorial-with-api.md)című témakörben talál.|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|A videóban lévő arcok észlelése|Ismerteti azokat a beállításokat, amelyeket a rendszer a videó elemzésekor használ a jelen lévő összes arc észleléséhez.|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Az alapszintű hang elemzése|Ez a mód beszéd – szöveg típusú átírást és VTT alcím/képaláírás-fájl létrehozását végzi. A mód kimenete tartalmaz egy bepillantást nem tartalmazó JSON-fájlt, amely csak a kulcsszavakat, az átírást és az időzítési adatokat tartalmazza. Ez a mód nem tartalmazza az automatikus nyelvfelismerés és a hangszórók diarization. A támogatott nyelvek listája [itt](#built-in-presets) érhető el|
+|[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Hang és videó elemzése|Kinyeri az elemzéseket (gazdag metaadatokat) a hang-és a videóból, és egy JSON formátumú fájlt ad kimenetként. Megadhatja, hogy a videofájl feldolgozásakor csak hangelemzéseket szeretne-e kinyerni. További információt a [videó elemzése](analyze-videos-tutorial-with-api.md)című témakörben talál.|
+|[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|A videóban lévő arcok észlelése|Ismerteti azokat a beállításokat, amelyeket a rendszer a videó elemzésekor használ a jelen lévő összes arc észleléséhez.|
 
 ### <a name="audioanalyzerpreset-standard-mode"></a>AudioAnalyzerPreset standard üzemmód
 
@@ -458,6 +458,6 @@ A felnőtt vagy zamatos tartalmat tartalmazó videók csak privát nézethez ér
 }
 ] 
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Oktatóanyag: Videók elemzése az Azure Media Services segítségével](analyze-videos-tutorial-with-api.md)

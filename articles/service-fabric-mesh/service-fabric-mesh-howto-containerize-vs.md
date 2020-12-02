@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0f236292fff0d0e806e6eec32e1e058cbf67545c
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 2fb6aa7d7c655a1ba4b44dabc33e32ce04ae458f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93144477"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489275"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Meglévő .NET-alkalmazás tárolóba helyezése a Service Fabric Mesh használatához
 
@@ -39,13 +39,13 @@ Az **üzlet** -projekt másolatának beolvasása:
 git clone https://github.com/MikkelHegn/ContainersSFLab.git
 ```
 
-A letöltés után a Visual Studio 2017-es verziójában nyissa meg a **ContainersSFLab\eShopLegacyWebFormsSolution\eShopLegacyWebForms.SLN** .
+A letöltés után a Visual Studio 2017-es verziójában nyissa meg a **ContainersSFLab\eShopLegacyWebFormsSolution\eShopLegacyWebForms.SLN**.
 
 ## <a name="add-container-support"></a>Tároló-támogatás hozzáadása
  
 Adja hozzá a Container-előkészítési támogatást egy meglévő ASP.NET-vagy konzol-projekthez az Service Fabric Mesh Tools használatával a következőképpen:
 
-A Visual Studio Solution Explorerben kattintson a jobb gombbal a projekt nevére (a példában a **eShopLegacyWebForms** ), majd válassza a tároló **hozzáadása**  >  **Orchestrator-támogatás** lehetőséget.
+A Visual Studio Solution Explorerben kattintson a jobb gombbal a projekt nevére (a példában a **eShopLegacyWebForms**), majd válassza a tároló **hozzáadása**  >  **Orchestrator-támogatás** lehetőséget.
 Megjelenik a **Container Orchestrator-támogatás hozzáadása** párbeszédpanel.
 
 ![A Visual Studio tároló-Orchestrator hozzáadása párbeszédpanel](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
@@ -54,12 +54,12 @@ Válassza ki **Service Fabric rácsvonalat** a legördülő listából, majd kat
 
 
 >[!NOTE]
-> 2020. november 2., a [letöltési sebességre vonatkozó korlátozások](https://docs.docker.com/docker-hub/download-rate-limit/) a Docker ingyenes csomag fiókjaiból származó névtelen és hitelesített kérelmekre vonatkoznak, és az IP-cím kényszeríti. További részletek: [hitelesítés a Docker hub](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub)használatával.
+> 2020. november 2., a [letöltési sebességre vonatkozó korlátozások](https://docs.docker.com/docker-hub/download-rate-limit/) a Docker ingyenes csomag fiókjaiból származó névtelen és hitelesített kérelmekre vonatkoznak, és az IP-cím kényszeríti. További részletek: [hitelesítés a Docker hub](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)használatával.
 >
 > A korlátozott arány elkerülése érdekében győződjön meg arról, hogy a `FROM microsoft/aspnet:4.7.2-windowsservercore-1803 AS base` Docker alapértelmezett értéke lecserélve a következőre: `FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-1803 AS base`
 
 Az eszköz ezután ellenőrzi, hogy telepítve van-e a Docker, hozzáadja a Docker a projekthez, és lekéri a projekthez tartozó Docker-rendszerképet.  
-A megoldáshoz egy Service Fabric Mesh-alkalmazási projekt van hozzáadva. A háló közzétételi profiljait és konfigurációs fájljait tartalmazza. A projekt neve megegyezik a projekt nevével, az "alkalmazás" a végéhez fűzve, például **eShopLegacyWebFormsApplication** . 
+A megoldáshoz egy Service Fabric Mesh-alkalmazási projekt van hozzáadva. A háló közzétételi profiljait és konfigurációs fájljait tartalmazza. A projekt neve megegyezik a projekt nevével, az "alkalmazás" a végéhez fűzve, például **eShopLegacyWebFormsApplication**. 
 
 Az új háló projektben két mappát fog látni:
 - Olyan YAML-fájlokat tartalmazó **alkalmazás-erőforrások** , amelyek további rácsvonal-erőforrásokat, például a hálózatot írják le.
@@ -71,6 +71,6 @@ Miután hozzáadta a Container-előkészítési támogatást az alkalmazáshoz, 
 
 Most már közzéteheti az alkalmazást az Azure Service Fabric Mesh szolgáltatásban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg, hogyan tehet közzé egy alkalmazást a Service Fabric Meshban: [oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

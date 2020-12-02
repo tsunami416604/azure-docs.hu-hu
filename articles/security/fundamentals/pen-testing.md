@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2020
 ms.author: terrylan
-ms.openlocfilehash: dfacf124f8db0e5323c9abff56c4a78f85f6f014
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af61b6ee1e69d175f47170df30f75832033d61d5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816133"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489717"
 ---
 # <a name="penetration-testing"></a>Behatolás tesztelése
 
@@ -46,7 +46,7 @@ A végrehajtható szabványos tesztek a következők:
 Az egyfajta tollas teszt nem hajtható végre, mert a [szolgáltatásmegtagadási (DOS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) támadások egyike. Ez a teszt magában foglalja a DoS-támadás kezdeményezését, vagy olyan kapcsolódó tesztek elvégzését, amelyek bármilyen típusú DoS-támadást meghatározhatnak, bemutatnak vagy szimulálnak.
 
 >[!Note]
->A Microsoft a BreakingPoint-felhővel együttműködve olyan felületet hoz létre, amely a szimulációk számára DDoS Protection-kompatibilis nyilvános IP-címekkel való adatforgalmat is létrehoz. További információ a töréspontok felhő-szimulációról: a [DDoS-észlelés ellenőrzése](../../virtual-network/manage-ddos-protection.md#validate-ddos-detection).
+>A Microsoft a BreakingPoint-felhővel együttműködve olyan felületet hoz létre, amely a szimulációk számára DDoS Protection-kompatibilis nyilvános IP-címekkel való adatforgalmat is létrehoz. További információ a töréspontok felhő-szimulációról: a [DDoS-észlelés ellenőrzése](../../ddos-protection/manage-ddos-protection.md#validate-and-test).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -162,6 +162,8 @@
           href: expressroute-howto-coexist-resource-manager.md
         - name: Zónaredundáns virtuális hálózati átjáró létrehozása az Azure Availability Zones szolgáltatásban
           href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
+    - name: Költségtervezés és a költségek kezelése
+      href: plan-manage-cost.md
     - name: Váltás klasszikusról Resource Manager-alapú környezetre
       items:
         - name: Kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra

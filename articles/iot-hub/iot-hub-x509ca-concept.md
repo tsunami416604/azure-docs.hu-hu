@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 877200cbafbe68fa6161025572abfddad651e172
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308112"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490720"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok fogalmi megértése a IoT-iparágban
 
@@ -40,6 +40,8 @@ Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI hitelesítés megkülönböztető attribú
 Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI hitelesítés egy másik fontos attribútuma az ellátási lánc logisztikájának egyszerűsítése. Az eszközök biztonságos hitelesítéséhez az szükséges, hogy mindegyik eszköz egyedi titkos kulcsot, például a megbízhatóság alapját adja. A tanúsítványalapú hitelesítésben ez a titok egy titkos kulcs. Egy tipikus eszköz-előállítási folyamat több lépést és gyámot is magában foglal. Az eszköz titkos kulcsainak biztonságos kezelése több gyámon keresztül és a megbízhatóság fenntartása nehéz és költséges. A hitelesítésszolgáltatók használata megoldja ezt a problémát úgy, hogy az egyes felügyelőket egy megbízhatósági láncba aláírja, nem pedig az eszköz titkos kulcsaival. Az egyes gyámok a gyártási folyamat során aláírják az eszközöket. A teljes eredmény egy optimális ellátási lánc, amely beépített elszámoltathatóságot biztosít a titkosítási lánc megbízhatósági láncának használatával. Érdemes megjegyezni, hogy ez a folyamat a legnagyobb biztonságot eredményezi, ha az eszközök védik egyedi titkos kulcsaikat. Ebből a célból arra buzdítjuk a hardveres biztonságos modulok (HSM) használatát, amely olyan titkos kulcsok belső generálására alkalmas, amely soha nem fog megjelenni a nap világosságában.
 
 Ez a cikk teljes körű áttekintést nyújt az X. 509 HITELESÍTÉSSZOLGÁLTATÓI hitelesítés használatáról az ellátási lánc beállítása és az eszköz közötti kapcsolatok között, miközben a valós világ példáját használja az adatok megszilárdulása érdekében.
+
+A beléptetési csoportokat az Azure IoT Hub Device Provisioning Service (DPS) használatával is használhatja az eszközök hubokba való kiosztásának kezeléséhez. A DPS X. 509 tanúsítványok kiépítéséhez való használatáról további információt az [oktatóanyag: több X. 509 eszköz kiépítése regisztrációs csoportokkal](../iot-dps/tutorial-custom-hsm-enrollment-group-x509.md)című témakörben talál.
 
 ## <a name="introduction"></a>Bevezetés
 
@@ -75,7 +77,7 @@ A Self-Signed X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozásána
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>Regisztrálja az X. 509 tanúsítványt IoT Hub
 
-A vállalat-X regisztrálnia kell az X. 509 HITELESÍTÉSSZOLGÁLTATÓT, hogy IoT Hub, ahol az a kapcsolódáskor a Smart-X-widgetek hitelesítéséhez fog szolgálni. Ez egy egyszeri folyamat, amely lehetővé teszi tetszőleges számú intelligens X-widget-eszköz hitelesítését és kezelését. Ez a folyamat egyszeri, mert egy-a-többhöz kapcsolat van a hitelesítésszolgáltató tanúsítványa és eszközei között, és az X. 509 HITELESÍTÉSSZOLGÁLTATÓI hitelesítési módszer egyik fő előnye is. A másik lehetőség, hogy feltölti az egyes tanúsítványok ujjlenyomatai megfelelnek minden egyes intelligens X-widget-eszközre, és ezzel felveszi a működési költségeket.
+A vállalat-X regisztrálnia kell az X. 509 HITELESÍTÉSSZOLGÁLTATÓT, hogy IoT Hub, ahol az a kapcsolódáskor a Smart-X-widgetek hitelesítéséhez fog szolgálni. Ez egy egyszeri folyamat, amely lehetővé teszi tetszőleges számú intelligens X-widget-eszköz hitelesítését és kezelését. Ez egy egyszeri folyamat, mert egy-a-többhöz kapcsolat van a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány és az eszköz tanúsítványai között, amelyeket a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vagy egy köztes tanúsítvány írt alá. Ez a kapcsolat az X. 509 HITELESÍTÉSSZOLGÁLTATÓI hitelesítési módszer egyik legfőbb előnyét képezi. A másik lehetőség, hogy feltölti az egyes tanúsítványok ujjlenyomatai megfelelnek minden egyes intelligens X-widget-eszközre, és ezzel felveszi a működési költségeket.
 
 Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány regisztrálása kétlépéses folyamat, a tanúsítvány feltöltése és a tanúsítvány igazolása.
 

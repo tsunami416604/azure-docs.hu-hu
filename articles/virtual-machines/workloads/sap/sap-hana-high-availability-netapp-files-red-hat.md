@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: f107ba4dd0150e9727183d0bd334c9279de17337
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cfa68bde2462cefd6f690247cfd1e3bd2e3dbc74
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950006"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489207"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>A SAP HANA skálázás magas rendelkezésre állása Azure NetApp Filesekkel Red Hat Enterprise Linux
 
@@ -230,7 +230,7 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
 7.  A virtuális gép létrehozása során nem adunk hozzá lemezeket, mert az összes csatlakoztatási pont a Azure NetApp Files NFS-megosztásokon lesz. 
 
 > [!IMPORTANT]
-> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.    
+> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.    
 
 > [!NOTE] 
 > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).

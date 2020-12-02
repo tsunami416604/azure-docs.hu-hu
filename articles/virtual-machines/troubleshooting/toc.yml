@@ -342,7 +342,7 @@
 - name: Migrálási és áthelyezési problémák
   items:
     - name: Azure Resource Managerrel végzett migrálás (ASM–ARM) – GYIK
-      href: ../windows/migration-classic-resource-manager-overview.md
+      href: ../migration-classic-resource-manager-overview.md
 - name: Tervezett karbantartás
   items:
     - name: Áttekintés

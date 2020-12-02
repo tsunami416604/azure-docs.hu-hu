@@ -10,19 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
-ms.openlocfilehash: e8a8b843345d21d38c11789b09003a4b82f768f5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 37d9352b6384ee2b5e95903f35d531bd672b25b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369494"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490975"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Keresési lekérdezések küldése a Bing Visual Search API
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Ez a cikk a Bing Visual Search API küldött kérések paramétereit és attribútumait, valamint a válasz objektumot ismerteti. 
 
@@ -89,7 +89,7 @@ Az alábbiakban azok a lekérdezési paraméterek láthatók, amelyeket a kérel
 
 Az alábbiakban azok a fejlécek láthatók, amelyeket a kérelmének meg kell adnia. A `Content-Type` és a `Ocp-Apim-Subscription-Key` fejlécek az egyetlen szükséges fejlécek, de a következőket is tartalmaznia kell:,, `User-Agent` `X-MSEdge-ClientID` `X-MSEdge-ClientIP` és `X-Search-Location` .
 
-| Fejléc | Leírás |
+| Fejléc | Description |
 | --- | --- |
 | <a name="acceptlanguage"></a>Accept-Language  | Választható kérelemfejléc.<br /><br /> Nyelvek vesszővel elválasztott listája a felhasználói felület sztringjeihez. A lista prioritás szerinti csökkenő sorrendben jelenik meg. További információért, például a várt formátummal kapcsolatos részletekért lásd: [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ez a fejléc és a [](#setlang)setLang&mdash; lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt.<br /><br /> Ha beállítja ezt a fejlécet, akkor a [cc](#cc) lekérdezési paramétert is meg kell adnia. A megfelelő piac meghatározásához a Bing a listában talált első támogatott nyelvet használja, és kombinálja azt a `cc` paraméter értékével. Ha a lista nem tartalmaz támogatott nyelvet, a Bing megkeresi a kérelmet támogató legközelebbi nyelvet és piacot, vagy másik lehetőségként egy összesített vagy alapértelmezett piacot használ az eredmények beszerzéséhez. A Bing által használt piac meghatározásához tekintse meg a `BingAPIs-Market` fejlécet.<br /><br /> Csak akkor használja ezt a fejlécet és a `cc` lekérdezési paramétert, ha több nyelvet ad meg. Ellenkező esetben használja az [mkt](#mkt) és a [setLang](#setlang) lekérdezési paramétereket.<br /><br /> A felhasználóifelület-sztring egy olyan sztring, amelyet feliratként használnak a felhasználói felületen. A JSON-válaszobjektumok tartalmaznak néhány felhasználóifelület-sztringet. A válaszobjektumokban található, a Bing.com tulajdonságaira mutató hivatkozások a megadott nyelvet alkalmazzák.  |
 | <a name="contenttype"></a>Content-Type  |     |

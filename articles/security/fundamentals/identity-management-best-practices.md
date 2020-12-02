@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832602"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489819"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások
 
@@ -229,12 +229,12 @@ Az emelt szintű hozzáférés biztonságossá tétele kulcsfontosságú az üzl
 
 A Kiemelt jogosultságú fiókok olyan fiókok, amelyek az informatikai rendszereket felügyelik és kezelik. A Cyber-támadók megcélozzák ezeket a fiókokat, hogy hozzáférjenek a szervezet adateszközeihez és rendszereihez. A rendszerjogosultságú hozzáférés biztonságossá tételéhez el kell különíteni a fiókokat és a rendszereket a rosszindulatú felhasználók számára elérhető kockázattól.
 
-Javasoljuk, hogy fejlesszen és kövessen egy olyan ütemtervet, amely biztonságos hozzáférést biztosít a Cyber-támadók ellen. További információ az Azure AD-ben, Microsoft Azure, Microsoft 365 és más felhőalapú szolgáltatásokban kezelt vagy jelentett identitások és hozzáférések védelméről, valamint az Azure AD-ben történő [hibrid és Felhőbeli üzemelő példányok védelméről](../../active-directory/users-groups-roles/directory-admin-roles-secure.md).
+Javasoljuk, hogy fejlesszen és kövessen egy olyan ütemtervet, amely biztonságos hozzáférést biztosít a Cyber-támadók ellen. További információ az Azure AD-ben, Microsoft Azure, Microsoft 365 és más felhőalapú szolgáltatásokban kezelt vagy jelentett identitások és hozzáférések védelméről, valamint az Azure AD-ben történő [hibrid és Felhőbeli üzemelő példányok védelméről](../../active-directory/roles/security-planning.md).
 
-A következő összefoglalja az [Azure ad-ben az emelt szintű hozzáférés biztonságossá tételével kapcsolatos](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)ajánlott eljárásokat:
+A következő összefoglalja az [Azure ad-ben az emelt szintű hozzáférés biztonságossá tételével kapcsolatos](../../active-directory/roles/security-planning.md)ajánlott eljárásokat:
 
 **Ajánlott eljárás**: a Kiemelt fiókokhoz való hozzáférés kezelése, szabályozása és figyelése.   
-**Részletek**: [Azure ad Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)bekapcsolása. A Privileged Identity Management bekapcsolását követően értesítési e-mail-üzeneteket fog kapni az emelt szintű hozzáférési szerepkör változásairól. Ezek az értesítések korai figyelmeztetést nyújtanak, ha további felhasználókat adnak hozzá a címtár magas jogosultsági szintű szerepköreihez.
+**Részletek**: [Azure ad Privileged Identity Management](../../active-directory/roles/security-planning.md)bekapcsolása. A Privileged Identity Management bekapcsolását követően értesítési e-mail-üzeneteket fog kapni az emelt szintű hozzáférési szerepkör változásairól. Ezek az értesítések korai figyelmeztetést nyújtanak, ha további felhasználókat adnak hozzá a címtár magas jogosultsági szintű szerepköreihez.
 
 **Ajánlott eljárás**: gondoskodjon arról, hogy minden kritikus rendszergazdai fiók felügyelve legyen az Azure ad-fiókokkal.
 **Részletek**: távolítsa el a felhasználói fiókokat a kritikus rendszergazdai szerepkörökből (például Microsoft-fiókok, például hotmail.com, live.com és Outlook.com).
@@ -261,10 +261,10 @@ A következő összefoglalja az [Azure ad-ben az emelt szintű hozzáférés biz
 **Ajánlott eljárás**: legalább két vészhelyzeti hozzáférési fiókot adjon meg.   
 **Részletek**: a sürgősségi hozzáférésű fiókok segítenek a szervezeteknek a rendszerjogosultságú hozzáférés korlátozásában egy meglévő Azure Active Directory környezetben. Ezek a fiókok Kiemelt jogosultságokkal rendelkeznek, és nem adott személyekhez vannak rendelve. A sürgősségi hozzáférési fiókok olyan forgatókönyvekre korlátozódnak, amelyekben nem használhatók normál rendszergazdai fiókok. A szervezeteknek csak a szükséges időtartamra kell korlátoznia a segélyhívó fiók használatát.
 
-Értékelje ki azokat a fiókokat, amelyek a globális rendszergazdai szerepkörhöz vannak rendelve vagy jogosultak. Ha nem látja a csak felhőalapú fiókokat a `*.onmicrosoft.com` tartomány használatával (vészhelyzeti hozzáférés céljára), hozza létre őket. További információ: [a sürgősségi hozzáférés felügyeleti fiókjainak kezelése az Azure ad-ben](../../active-directory/users-groups-roles/directory-emergency-access.md).
+Értékelje ki azokat a fiókokat, amelyek a globális rendszergazdai szerepkörhöz vannak rendelve vagy jogosultak. Ha nem látja a csak felhőalapú fiókokat a `*.onmicrosoft.com` tartomány használatával (vészhelyzeti hozzáférés céljára), hozza létre őket. További információ: [a sürgősségi hozzáférés felügyeleti fiókjainak kezelése az Azure ad-ben](../../active-directory/roles/security-emergency-access.md).
 
 **Ajánlott** eljárás: vészhelyzet esetén a "break Glass" folyamat van érvényben.
-**Részletek**: kövesse az [Azure ad-ben az emelt szintű hozzáférés biztonságossá tétele a hibrid és a felhőben történő üzembe helyezéshez](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)című témakör lépéseit.
+**Részletek**: kövesse az [Azure ad-ben az emelt szintű hozzáférés biztonságossá tétele a hibrid és a felhőben történő üzembe helyezéshez](../../active-directory/roles/security-planning.md)című témakör lépéseit.
 
 **Ajánlott eljárás**: az összes kritikus rendszergazdai fiók jelszó nélküli (előnyben részesített) vagy Multi-Factor Authentication megkövetelésének megkövetelése.
 **Részletek**: a [Microsoft Authenticator alkalmazás](../../active-directory/authentication/howto-authentication-passwordless-phone.md) használatával jelszó nélkül JELENTKEZHET be bármely Azure ad-fiókba. A [vállalati Windows Hello-hez](/windows/security/identity-protection/hello-for-business/hello-identity-verification)hasonlóan a Microsoft Authenticator a kulcs-alapú hitelesítés használatával engedélyezi az eszközhöz kötött felhasználói hitelesítő adatokat, és biometrikus hitelesítést vagy PIN-kódot használ.
@@ -284,25 +284,25 @@ Az Azure AD Multi-Factor Authentication bejelentkezéskor minden olyan felhaszn�
 **Részletek**: Microsoft 365 Attack Simulator vagy egy harmadik féltől származó ajánlat használatával reális támadási forgatókönyveket futtathat a szervezetben. Ez segít a veszélyeztetett felhasználók megtalálásában a valódi támadás előtt.
 
 **Ajánlott** eljárás: lépéseket tesz a leggyakrabban használt módszerek enyhítésére.  
-**Részletek**: [azonosítsa a Microsoft-fiókokat olyan rendszergazdai szerepkörökben, amelyeket munkahelyi vagy iskolai fiókokra kell váltani](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+**Részletek**: [azonosítsa a Microsoft-fiókokat olyan rendszergazdai szerepkörökben, amelyeket munkahelyi vagy iskolai fiókokra kell váltani](../../active-directory/roles/security-planning.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
-[Különálló felhasználói fiókok és a levelezés továbbítása globális rendszergazdai fiókokhoz](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
+[Különálló felhasználói fiókok és a levelezés továbbítása globális rendszergazdai fiókokhoz](../../active-directory/roles/security-planning.md)  
 
-[Győződjön meg arról, hogy a rendszergazdai fiókok jelszavai nemrég módosultak](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+[Győződjön meg arról, hogy a rendszergazdai fiókok jelszavai nemrég módosultak](../../active-directory/roles/security-planning.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
-[Jelszó-kivonat szinkronizálásának bekapcsolása](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
+[Jelszó-kivonat szinkronizálásának bekapcsolása](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)  
 
-[Multi-Factor Authentication megkövetelése minden Kiemelt szerepkörrel rendelkező és a felhasználók számára elérhető felhasználók számára](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[Multi-Factor Authentication megkövetelése minden Kiemelt szerepkörrel rendelkező és a felhasználók számára elérhető felhasználók számára](../../active-directory/roles/security-planning.md#require-multi-factor-authentication-for-users-in-privileged-roles-and-exposed-users)  
 
-[A Microsoft 365 biztonságos pontszámának beszerzése (ha Microsoft 365 használ)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
+[A Microsoft 365 biztonságos pontszámának beszerzése (ha Microsoft 365 használ)](../../active-directory/roles/security-planning.md#obtain-your-microsoft-365-secure-score-if-using-microsoft-365)  
 
-[Tekintse át a Microsoft 365 biztonsági útmutatást (ha Microsoft 365 használ)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[Tekintse át a Microsoft 365 biztonsági útmutatást (ha Microsoft 365 használ)](../../active-directory/roles/security-planning.md#review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365)  
 
-[Microsoft 365 tevékenység figyelésének konfigurálása (ha Microsoft 365 használ)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#configure-office-365-activity-monitoring-if-using-office-365)  
+[Microsoft 365 tevékenység figyelésének konfigurálása (ha Microsoft 365 használ)](../../active-directory/roles/security-planning.md#configure-microsoft-365-activity-monitoring-if-using-microsoft-365)  
 
-[Incidens/vészhelyzeti válasz terv tulajdonosainak létrehozása](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
+[Incidens/vészhelyzeti válasz terv tulajdonosainak létrehozása](../../active-directory/roles/security-planning.md#establish-incidentemergency-response-plan-owners)  
 
-[Biztonságos helyszíni privilegizált rendszergazdai fiókok](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
+[Biztonságos helyszíni privilegizált rendszergazdai fiókok](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)
 
 Ha nem védi a Kiemelt jogosultságú hozzáférést, előfordulhat, hogy túl sok felhasználója van magas jogosultsági szintű szerepkörben, és a támadásokkal szemben sebezhető. Rosszindulatú szereplők, beleértve a Cyber-támadókat, gyakran a rendszergazdai fiókokat és a privilegizált hozzáférés más elemeit a bizalmas adatokhoz és rendszerekhez való hozzáféréshez a hitelesítő adatok ellopásával.
 

@@ -3,12 +3,12 @@ title: Saját kulcs konfigurálása a Azure Service Bus inaktív adatok titkosí
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a saját kulcsát a Azure Service Bus adatok titkosításához.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 32fcdad28b06df1763ab1efb1740d87d0b247b0a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 35680819350582062dd4227c65f9e72ae8b3ee5c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843400"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489700"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal használatával
 A Azure Service Bus Premium az Azure Storage Service Encryption (Azure SSE) szolgáltatásban tárolt adatok titkosítását teszi lehetővé. Service Bus Premium az Azure Storage szolgáltatásban tárolja az adattárolást, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal a Microsoft által felügyelt kulcsokkal titkosítva van. 
@@ -42,7 +42,7 @@ Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kö
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Key Vault beállítása kulcsokkal
 
-Miután engedélyezte az ügyfél által felügyelt kulcsokat, hozzá kell rendelnie az ügyfél által felügyelt kulcsot a Azure Service Bus névtérhez. A Service Bus csak Azure Key Vault használatát támogatja. Ha az előző szakaszban az **ügyfél által felügyelt kulcs** beállítással engedélyezi a titkosítást, a kulcsot Azure Key Vaultba kell importálnia. Emellett a kulcsoknak is rendelkeznie kell a **Soft delete** szolgáltatással, és **nem szabad kiüríteni** a kulcsot. Ezeket a beállításokat a [PowerShell](../key-vault/general/soft-delete-powershell.md) vagy a [parancssori](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)felület használatával lehet konfigurálni.
+Miután engedélyezte az ügyfél által felügyelt kulcsokat, hozzá kell rendelnie az ügyfél által felügyelt kulcsot a Azure Service Bus névtérhez. A Service Bus csak Azure Key Vault használatát támogatja. Ha az előző szakaszban az **ügyfél által felügyelt kulcs** beállítással engedélyezi a titkosítást, a kulcsot Azure Key Vaultba kell importálnia. Emellett a kulcsoknak is rendelkeznie kell a **Soft delete** szolgáltatással, és **nem szabad kiüríteni** a kulcsot. Ezeket a beállításokat a [PowerShell](../key-vault/general/key-vault-recovery.md) vagy a [parancssori](../key-vault/general/key-vault-recovery.md)felület használatával lehet konfigurálni.
 
 1. Új kulcstartó létrehozásához kövesse [az Azure Key Vault rövid](../key-vault/general/overview.md)útmutatót. A meglévő kulcsok importálásával kapcsolatos további információkért lásd: [a kulcsok, a titkok és a tanúsítványok ismertetése](../key-vault/general/about-keys-secrets-certificates.md).
 1. Ha be szeretné kapcsolni a törlés és a kiürítés védelmét a tároló létrehozásakor, használja az az kulcstartó [create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) parancsot.
@@ -319,7 +319,7 @@ Ebben a lépésben frissíteni fogja a Service Bus névteret a Key Vault-inform�
     ```
     
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 - [Service Bus áttekintése](service-bus-messaging-overview.md)
 - [Key Vault áttekintése](../key-vault/general/overview.md)

@@ -4,12 +4,12 @@ description: Ebben a rövid útmutatóban Java-kódokat ír az Azure-Messaging-s
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: ab0ba2bb2814ba12a49f4044cbbb7a0ce56f5fc8
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 011dbfef1155b82daca216e9519db07188260130
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452602"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489547"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Üzenetek küldése egy Azure Service Bus témakörnek, és üzenetek fogadása az előfizetésből a témakörbe (Java)
 Ebben a rövid útmutatóban Java-kódokat ír az Azure-Messaging-servicebus csomag használatával, amely üzeneteket küld egy Azure Service Bus témakörnek, majd üzeneteket fogad az előfizetésből az adott témakörbe.
@@ -226,7 +226,7 @@ Tekintse meg a következő dokumentációt és mintákat:
 
 - [A Javához készült ügyféloldali kódtár Azure Service Bus – readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
 - [Példák a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus/src/samples)
-- [Java API-referenciák](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-preview&preserve-view=true)
+- [Java API-referenciák](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-preview)
 
 
 [Azure SDK for Java]: /java/api/overview/azure/
@@ -235,4 +235,3 @@ Tekintse meg a következő dokumentációt és mintákat:
 [SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter
 [SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
-

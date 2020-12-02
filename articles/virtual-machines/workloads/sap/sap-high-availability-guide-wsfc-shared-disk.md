@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 079a1aed500014b5ec3f14c1cf6ece97e104558e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e46aa79bc84f3eba218932c1e8a463584de3f1bb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958523"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488953"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Az SAP ASCS/SCS-példányok fürtözése Windows feladatátvevő fürtön az Azure-ban megosztott fürtözött lemez használatával
 
@@ -52,7 +52,7 @@ A Azure Load Balancer szolgáltatás *belső Load balancert* biztosít az Azure-
 Helyezze üzembe a belső terheléselosztó-t a fürtcsomópontok tartalmazó erőforráscsoporthoz. Ezután konfigurálja az összes szükséges port továbbítási szabályt a belső Load Balancer mintavételi portjaival. Az ügyfelek a virtuális állomásnév használatával kapcsolódhatnak. A DNS-kiszolgáló feloldja a fürt IP-címét, és a belső terheléselosztó kezeli a port továbbítását a fürt aktív csomópontjára.
 
 > [!IMPORTANT]
-> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.  
+> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.  
 
 ![1. ábra: Windows feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban megosztott lemez nélkül][sap-ha-guide-figure-1001]
 
@@ -192,7 +192,7 @@ _Windows feladatátvételi fürtszolgáltatás konfigurálása az Azure-ban a SI
 > A magas rendelkezésre álláshoz nincs szükség megosztott lemezekre, néhány adatbázis-kezelő termékkel, például a SQL Serversal. SQL Server a AlwaysOn replikálja az adatbázis-kezelői adatait és a naplófájlokat az egyik fürtcsomópont helyi lemezéről egy másik fürtcsomópont helyi lemezére. Ebben az esetben a Windows-fürt konfigurációjának nincs szüksége megosztott lemezre.
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Készítse elő az Azure-infrastruktúrát az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS-példány megosztott lemezének használatával][sap-high-availability-infrastructure-wsfc-shared-disk]
 

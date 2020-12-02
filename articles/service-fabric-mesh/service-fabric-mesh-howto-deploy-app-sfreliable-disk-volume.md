@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 66d0d3ebf9d5866039bbbac3171513b37330be7a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 79ac8e7868b04a63637e24d6dde651b218ce6a46
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146790"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489190"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Kiválóan elérhető Service Fabric megbízható lemez alapú kötet csatlakoztatása egy Service Fabric Mesh-alkalmazásban 
 A tároló alkalmazásokkal való megőrzés közös módszere a távoli tárolás, például az Azure File Storage vagy az adatbázis, például a Azure Cosmos DB használata. Ez jelentős olvasási és írási hálózati késést okoz a távoli tárolónak.
@@ -36,7 +36,7 @@ az login
 az account set --subscription "<subscriptionID>"
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot, amelyben az alkalmazást üzembe helyezheti. A következő parancs egy nevű erőforráscsoportot hoz létre `myResourceGroup` a keleti Egyesült Államok egy helyen. Ha megváltoztatja az erőforráscsoport nevét az alábbi parancsban, ne felejtse el módosítani az összes következő parancsban.
 
@@ -49,7 +49,7 @@ az group create --name myResourceGroup --location eastus
 >[!NOTE]
 > 2020. november 2., a [letöltési sebességre vonatkozó korlátozások](https://docs.docker.com/docker-hub/download-rate-limit/) a Docker ingyenes csomag fiókjaiból származó névtelen és hitelesített kérelmekre vonatkoznak, és az IP-cím kényszeríti. 
 > 
-> Ez a sablon a Docker hub nyilvános lemezképeit használja. Vegye figyelembe, hogy a díjszabás korlátozott lehet. További részletek: [hitelesítés a Docker hub](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub)használatával.
+> Ez a sablon a Docker hub nyilvános lemezképeit használja. Vegye figyelembe, hogy a díjszabás korlátozott lehet. További részletek: [hitelesítés a Docker hub](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)használatával.
 
 A következő parancs egy linuxos alkalmazást helyez üzembe a [ sabloncounter.sfreliablevolume.linux.js](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json)használatával. Windows-alkalmazás központi telepítéséhez használja a [counter.sfreliablevolume.windows.jsa sablonban](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Vegye figyelembe, hogy a nagyobb méretű tárolók lemezképei hosszabb ideig tarthatnak.
 
@@ -86,7 +86,7 @@ Gyakran törölje azokat az erőforrásokat, amelyeket már nem használ az Azur
 az group delete --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a Service Fabric megbízható kötet lemez minta alkalmazást a [githubon](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
 - A Service Fabric-erőforrásmodellel kapcsolatos további tudnivalókért lásd a [Service Fabric Mesh-erőforrásmodellt](service-fabric-mesh-service-fabric-resources.md) bemutató cikket.

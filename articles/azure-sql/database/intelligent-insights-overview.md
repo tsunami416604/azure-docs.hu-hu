@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 6133d838fa31919a37ddd633193e5559c50de9b6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 0f3dce3ca79b12b05325a1d8284dd3304653d5fa
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790440"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488867"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyelésére és hibakeresésére (előzetes verzió)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -185,7 +185,7 @@ A Intelligent Insights napló a hibás kérelmek számát adja eredményül. Ez 
 
 Ha a figyelt kritikus kivételek bármelyike átlépi a rendszer által kezelt abszolút küszöbértékeket, akkor a kritikus kivétel részleteivel intelligens elemzés jön létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [figyelheti meg az adatbázisokat az SQL Analytics használatával](../../azure-monitor/insights/azure-sql.md).
 - Ismerje meg, hogy miként lehet [elhárítani a Intelligent Insights teljesítményével kapcsolatos problémákat](intelligent-insights-troubleshoot-performance.md).

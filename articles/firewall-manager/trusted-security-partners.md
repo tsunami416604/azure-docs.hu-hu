@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 12/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3c09e75a98e5342ab54710e05466755d86705b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399431"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490108"
 ---
 # <a name="what-are-security-partner-providers"></a>Mik azok a biztonságipartner-szolgáltatók?
 
@@ -22,7 +22,7 @@ A gyors konfigurálással biztonságossá teheti a hubot egy támogatott biztons
 
 Az Ön által választott biztonsági partnerrel konfigurált biztonságos hubokat több Azure-régióban is üzembe helyezheti, így a felhasználók bárhonnan és biztonságosan érhetik el a felhasználókat a különböző régiókban. A biztonsági partnernek az internetes/SaaS-alkalmazások forgalmára való használatának, valamint a biztonságos hubokon Azure Firewall a privát forgalomra való felépítése lehetővé teszi, hogy a globálisan elosztott felhasználókhoz és alkalmazásokhoz közeledő Azure-beli biztonsági szegélyt fejlesszen fel.
 
-A támogatott biztonsági partnerek a következők: **ZScaler**, **ellenőrzési pont** (előzetes verzió) és **iboss** (előzetes verzió).
+A támogatott biztonsági partnerek a következők: **Zscaler**, **[ellenőrzési pont](check-point-overview.md)** és **iboss**.
 
 ![Biztonságipartner-szolgáltatók](media/trusted-security-partners/trusted-security-partners.png)
 
@@ -64,6 +64,6 @@ Microsoft 365 esetében a hálózati késés és a teljesítmény kritikus fonto
 
 Emellett a Microsoft 365 kapcsolatok titkosítva vannak, és hatékony, védett protokollokat használnak a teljesítménnyel kapcsolatos okokból. Ez a hagyományos hálózati szintű biztonsági megoldásokhoz való csatlakozást nem teszi lehetővé. Ezen okok miatt javasoljuk, hogy az ügyfelek közvetlenül az ágakból küldjenek Microsoft 365 forgalmat az Azure-on keresztüli adatforgalom elküldése előtt. A Microsoft több, az Azure-ral és a Microsoft 365-nal integrált SD-WAN-megoldással rendelkezik, és megkönnyíti az ügyfelek számára Microsoft 365 közvetlen és helyi internetes kitörés engedélyezését. Részletekért lásd: [Mi az az Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Telepítsen egy biztonsági partneri ajánlatot egy biztonságos hubhoz a Azure Firewall Manager használatával](deploy-trusted-security-partner.md).

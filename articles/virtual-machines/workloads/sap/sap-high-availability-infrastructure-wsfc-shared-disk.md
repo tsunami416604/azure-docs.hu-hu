@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 205a290d2483a032ed6b5579dbedd555f9f6d02f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 00d0aa10f2beda3d7b8508e5ca823e020dc79d95
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005520"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489139"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Az Azure-infrastruktúra előkészítése az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS közös lemezének használatával
 
@@ -203,7 +203,7 @@ A megjelenített forgatókönyv állomásneve és IP-címe a következő:
 Az SAP ASCS, az SAP SCS és az új SAP-ERS2 a virtuális állomásnév és a virtuális IP-címek használata. Az Azure-ban a virtuális IP-címek használatához [Load Balancer](../../../load-balancer/load-balancer-overview.md) szükséges. Javasoljuk, hogy használja a [standard Load balancert](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md). 
 
 > [!IMPORTANT]
-> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.    
+> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.    
 
 
 Az alábbi lista az (A) SCS/ERS Load Balancer konfigurációját mutatja be. Az SAP-ASCS és a ERS2 konfigurációja is ugyanabban az Azure Load balancerben történik.  

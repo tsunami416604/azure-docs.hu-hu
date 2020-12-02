@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 2783d9dc7151190857d870b5493465884b82ffcc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2e263e1bf8849c3936fdaab713c3fcb3583c114a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017950"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489048"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server
 
@@ -136,7 +136,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 1. Adatlemezek hozzáadása.
 
 > [!IMPORTANT]
-> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.   
+> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.   
 
 > [!Note]
 > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  

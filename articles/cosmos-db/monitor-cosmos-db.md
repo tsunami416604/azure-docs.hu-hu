@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 550418761e91a8292761d7595ff32d939c0d542e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9410a38f7bc7a787fc439b5ad51f4a49f76771f8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350398"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488782"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Az Azure Cosmos DB monitorozása
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -83,7 +83,7 @@ A gyűjtött mérőszámokat és naplókat a következő szakaszokban tárgyalju
 
 A Azure Cosmos DB a metrikák használatának egyéni élményét biztosítja. A metrikákat a **Azure monitor** menüből **megnyitva a metrikák** segítségével elemezheti az Azure Cosmos db metrikáit más Azure-szolgáltatásoktól származó metrikákkal. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../azure-monitor/platform/metrics-getting-started.md) . Azt is megteheti, hogyan figyelheti a [kiszolgálóoldali késést](monitor-server-side-latency.md), a [kérés egység használatát](monitor-request-unit-usage.md)és a [normalizált kérések egység használatát](monitor-normalized-request-units.md) a Azure Cosmos db erőforrásaihoz.
 
-A Azure Cosmos DB összegyűjtött platform-metrikák listáját lásd: [monitoring Azure Cosmos DB adathivatkozás metrikák] monitor-Cosmos-db-Reference. MD # mérőszámok) cikk.
+A Azure Cosmos DB összegyűjtött platform-metrikák listáját az [Azure Cosmos db adatreferenciák metrikáinak monitorozása](monitor-cosmos-db-reference.md#metrics) című cikkben tekintheti meg.
 
 Az Azure Cosmos DB összes mérőszáma a névtérben **Cosmos dB standard mérőszámokban** szerepel. A következő dimenziókat használhatja ezekkel a metrikákkal, amikor szűrőt ad hozzá egy diagramhoz:
 
@@ -176,7 +176,7 @@ Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek ta
 
 Az alábbi táblázat például az erőforrásokra vonatkozó riasztási szabályokat sorolja fel. A riasztási szabályok részletes listáját a Azure Portalban találja. További információt a [riasztások konfigurálása](create-alerts.md) című cikkben talál.  
 
-| Riasztástípus | Feltétel | Leírás  |
+| Riasztástípus | Feltétel | Description  |
 |:---|:---|:---|
 |Kérelmek egységeinek korlátozása (metrikus riasztás) |Dimenzió neve: StatusCode, operátor: egyenlő, dimenzió értékei: 429  | Riasztás, ha a tároló vagy az adatbázis túllépte a kiosztott átviteli sebességet. |
 |A régió feladatátvétele megtörtént |Operátor: nagyobb, mint, összesítés típusa: darabszám, küszöbérték: 1 | Egyetlen régió feladatátvétele esetén. Ez a riasztás akkor hasznos, ha nem engedélyezte az automatikus feladatátvételt. |

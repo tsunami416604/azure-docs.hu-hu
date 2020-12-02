@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: daed8dc62fdfd86ecf785a0bfd83b2b6c0b4cc03
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e2be62180907e94401548774b3403db0f36caca3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026513"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488467"
 ---
 A virtuális gépek egyetlen régióban való elhelyezése csökkenti a példányok közötti fizikai távolságot. Ha egyetlen rendelkezésre állási zónába helyezi őket, az is fizikailag szorosabban fog működni. Mivel azonban az Azure-lábnyom növekszik, az egyetlen rendelkezésre állási zóna több fizikai adatközpontra is kiterjedhet, ami az alkalmazást érintő hálózati késést eredményezhet. 
 
@@ -82,7 +82,7 @@ Ha a közelségi elhelyezési csoport van `Not Aligned` , akkor stop\deallocate,
 Ha az üzembe helyezési megkötések miatt lefoglalási hiba merül fel, előfordulhat, hogy az érintett közelségi elhelyezési csoport összes erőforrását először be kell stop\deallocate (beleértve az igazított erőforrásokat), majd újra kell indítania őket az igazítás visszaállításához.
 
 ## <a name="best-practices"></a>Ajánlott eljárások 
-- A legkisebb késés érdekében használja a közeli elhelyezési csoportokat a gyorsított hálózatkezeléssel együtt. További információ: [Linux rendszerű virtuális gép gyorsított hálózatkezeléssel való létrehozása](../articles/virtual-network/create-vm-accelerated-networking-cli.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) vagy [Windows rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](../articles/virtual-network/create-vm-accelerated-networking-powershell.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
+- A legkisebb késés érdekében használja a közeli elhelyezési csoportokat a gyorsított hálózatkezeléssel együtt. További információ: [Linux rendszerű virtuális gép gyorsított hálózatkezeléssel való létrehozása](../articles/virtual-network/create-vm-accelerated-networking-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [Windows rendszerű virtuális gép létrehozása gyorsított hálózatkezeléssel](../articles/virtual-network/create-vm-accelerated-networking-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Minden virtuálisgép-méret üzembe helyezése egyetlen sablonban. Ha el szeretné kerülni, hogy a hardver nem támogatja a szükséges összes virtuálisgép-t és méretet, vegye fel az összes alkalmazási szintet egyetlen sablonba, hogy azok mind egyszerre legyenek telepítve.
 - Ha az üzembe helyezést a PowerShell, a CLI vagy az SDK használatával végezi el, lefoglalási hibaüzenetet kaphat `OverconstrainedAllocationRequest` . Ebben az esetben le kell állítania/fel kell szabadítania az összes meglévő virtuális GÉPET, és módosítania kell a telepítési parancsfájlban szereplő sorozatot, hogy a sikertelen virtuálisgép-SKU/-méretekkel kezdődjön. 
 - Ha olyan meglévő elhelyezési csoportot kíván újra használni, amelyből a virtuális gépek törölve lettek, várjon, amíg a törlés teljes mértékben befejeződik, mielőtt hozzáadja a virtuális gépeket.

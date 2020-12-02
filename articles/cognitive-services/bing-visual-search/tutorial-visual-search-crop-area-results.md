@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/31/2019
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 14b32e4d666a81b8cba0e23c99b5878b1d9d4351
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 0ad73d7086a2066517c24a8b10a7f54503535942
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368066"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490295"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Oktatóanyag: kép körülvágása a C Bing Visual Search SDK-val #
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 A Bing Visual Search SDK lehetővé teszi, hogy egy képet a hasonló online képek keresése előtt levágja. Ez az alkalmazás egyetlen személyt termeszt egy több embert tartalmazó képből, majd visszaadja azokat a keresési eredményeket, amelyek a hasonló, online állapotú képeket tartalmaznak.
 

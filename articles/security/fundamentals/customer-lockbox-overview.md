@@ -8,17 +8,17 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 09/15/2020
-ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01232aa101e2964354acfbeb6cea341a0da33ca6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331658"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489888"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Ügyfélszéf a Microsoft Azure-hoz
 
 > [!NOTE]
-> Ennek a funkciónak a használatához a szervezetnek rendelkeznie kell egy minimális **fejlesztői**szintű [Azure-támogatási csomaggal](https://azure.microsoft.com/support/plans/) .
+> Ennek a funkciónak a használatához a szervezetnek rendelkeznie kell egy minimális **fejlesztői** szintű [Azure-támogatási csomaggal](https://azure.microsoft.com/support/plans/) .
 
 Az Ügyfélszéf a Microsoft Azure-hoz egy felületet biztosít az ügyfeleknek, ahol áttekinthetik, illetve jóváhagyhatják vagy elutasíthatják az ügyféladatok hozzáférési kérelmeit. Olyan esetekben használatos, amikor egy Microsoft-mérnöknek egy támogatási kérelem kezelése során hozzá kell férnie az ügyfél adataihoz.
 
@@ -64,7 +64,7 @@ Az Ügyfélszéf jelenleg engedélyezve van a virtuális gépek távoli asztali 
 - Virtuálisgép-méretezési csoport – Windows és Linux
 
 > [!NOTE]
-> Ügyfélszéf nem támogatja a klasszikus IaaS-példányok használatát. Ha IaaS klasszikus példányokon futó számítási feladatokkal rendelkezik, javasoljuk, hogy a Klasszikusból a Resource Manager-alapú üzemi modellekbe telepítse át őket. Utasítások: [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való, platform által támogatott migrálása](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+> Ügyfélszéf nem támogatja a klasszikus IaaS-példányok használatát. Ha IaaS klasszikus példányokon futó számítási feladatokkal rendelkezik, javasoljuk, hogy a Klasszikusból a Resource Manager-alapú üzemi modellekbe telepítse át őket. Utasítások: [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való, platform által támogatott migrálása](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
 #### <a name="detailed-audit-logs"></a>Részletes auditnaplók
 
@@ -105,15 +105,15 @@ Az alábbi lépések egy Ügyfélszéf-kérelem tipikus munkafolyamatát ismerte
 
    A kérelem négy napig az ügyfél-várólistában marad. Ezt követően a hozzáférési kérelem automatikusan lejár, és a Microsoft-mérnökök nem kapnak hozzáférést.
 
-9. A függőben lévő kérelem részleteinek beszerzéséhez a kijelölt jóváhagyó kiválaszthatja a **függőben lévő kérelmekből**származó kulcstároló-kéréseket:
+9. A függőben lévő kérelem részleteinek beszerzéséhez a kijelölt jóváhagyó kiválaszthatja a **függőben lévő kérelmekből** származó kulcstároló-kéréseket:
 
     ![Azure Ügyfélszéf – a függőben lévő kérelem megtekintése](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
-10. A kijelölt jóváhagyó azt is kiválaszthatja, hogy a **szolgáltatási kérelem azonosítója** megtekintse az eredeti felhasználó által létrehozott támogatási jegyre vonatkozó kérelmet. Ez az információ kontextust biztosít a Microsoft ügyfélszolgálata és a jelentett probléma előzményeihez. Példa:
+10. A kijelölt jóváhagyó azt is kiválaszthatja, hogy a **szolgáltatási kérelem azonosítója** megtekintse az eredeti felhasználó által létrehozott támogatási jegyre vonatkozó kérelmet. Ez az információ kontextust biztosít a Microsoft ügyfélszolgálata és a jelentett probléma előzményeihez. Például:
 
     ![Azure Ügyfélszéf – a támogatási jegyre vonatkozó kérelem megtekintése](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 
-11. A kérelem áttekintése után a kijelölt jóváhagyó kiválasztja a **jóváhagyás** vagy a **Megtagadás**lehetőséget:
+11. A kérelem áttekintése után a kijelölt jóváhagyó kiválasztja a **jóváhagyás** vagy a **Megtagadás** lehetőséget:
 
     ![Azure Ügyfélszéf – válassza a jóváhagyás vagy a Megtagadás lehetőséget](./media/customer-lockbox-overview/customer-lockbox-approval.png)
 
@@ -147,8 +147,8 @@ Az Ügyfélszéf-kérelmeket a következő mérnöki támogatási forgatókönyv
 
 - A Microsoft-mérnök a hibaelhárítás során hozzáfér az Azure-platformhoz, és véletlenül az ügyféladatokhoz is hozzáfér. Például az Azure hálózati csapata olyan hibaelhárítást végez, amely egy hálózati eszközön lévő csomag rögzítését eredményezi. Ha azonban az ügyfél a továbbítás során titkosította az adatforgalmat, a mérnök nem tudja beolvasni az adatokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A Ügyfélszéf automatikusan elérhető minden olyan ügyfél számára, akik [Azure-támogatási csomaggal](https://azure.microsoft.com/support/plans/) rendelkeznek, és ez a **fejlesztő**minimális szintű.
+A Ügyfélszéf automatikusan elérhető minden olyan ügyfél számára, akik [Azure-támogatási csomaggal](https://azure.microsoft.com/support/plans/) rendelkeznek, és ez a **fejlesztő** minimális szintű.
 
 Ha jogosult támogatási csomaggal rendelkezik, a Ügyfélszéf engedélyezéséhez nincs szükség beavatkozásra. Ügyfélszéf a kérelmeket egy Microsoft-mérnök kezdeményezi, ha ez a művelet szükséges ahhoz, hogy egy támogatási jegyet lehessen benyújtani a szervezetében található valakitől.

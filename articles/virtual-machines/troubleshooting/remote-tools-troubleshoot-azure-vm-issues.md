@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5974388c096c9bc8693c5fc2cf918989c6eadd3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509086"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488731"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Távoli eszközök használata az Azure-beli virtuális gépekkel kapcsolatos problémák elhárításához
 
@@ -180,7 +180,7 @@ Futtassa a következő parancsot az ügyfélszámítógép helye alapján:
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * Azure Resource Manager virtuális gép esetében először adjon hozzá egy DNS-nevet a nyilvános IP-címhez. A részletes lépésekért lásd: [teljes tartománynév létrehozása a Azure Portal a Windows rendszerű virtuális](../windows/portal-create-fqdn.md)gépekhez. Ezután futtassa a következő parancsot:
+  * Azure Resource Manager virtuális gép esetében először adjon hozzá egy DNS-nevet a nyilvános IP-címhez. A részletes lépésekért lásd: [teljes tartománynév létrehozása a Azure Portal a Windows rendszerű virtuális](../create-fqdn.md)gépekhez. Ezután futtassa a következő parancsot:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -214,7 +214,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. Ugyanazon a virtuális hálózaton lévő másik virtuális gépről nyissa meg a Beállításszerkesztőt (regedit.exe).
 
-2. Válassza a **fájl**  >  **összekötése hálózati beállításjegyzék**lehetőséget.
+2. Válassza a **fájl**  >  **összekötése hálózati beállításjegyzék** lehetőséget.
 
    ![Rendszerleíróadatbázis-szerkesztő](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
@@ -235,11 +235,11 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 >
 >RDFE virtuális gépek esetén olyan végponttal kell rendelkeznie, amely rendelkezik 5986-es privát porttal és egy nyilvános porttal. Azt is meg kell nyitnia, hogy a nyilvános port a NSG.
 
-1. Egy ugyanazon a virtuális hálózaton lévő másik virtuális gépről nyissa meg a **Services. msc**egy példányát.
+1. Egy ugyanazon a virtuális hálózaton lévő másik virtuális gépről nyissa meg a **Services. msc** egy példányát.
 
 2. Kattintson a jobb gombbal a **szolgáltatások (helyi)** elemre.
 
-3. Válassza **a Kapcsolódás másik számítógéphez**lehetőséget.
+3. Válassza **a Kapcsolódás másik számítógéphez** lehetőséget.
 
    ![Távoli szolgáltatás](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
 

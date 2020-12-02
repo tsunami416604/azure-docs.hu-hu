@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: d03416f390abb8656ac1aed81419864443122ce6
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 7d59c0e751054522f4c54fe059f19aa0a941464e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122427"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490001"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>További veszélyforrások elleni védelem Azure Security Center
 A beépített [Azure Defender-védelem](azure-defender.md)mellett a Azure Security Center a következő veszélyforrások elleni védelmi képességeket is biztosítja.
@@ -89,7 +89,7 @@ Az elosztott szolgáltatásmegtagadási (DDoS) támadások könnyen végrehajtha
 
 A DDoS-támadás megpróbál kimeríteni egy alkalmazás erőforrásait, így az alkalmazás nem érhető el a legitim felhasználók számára. A DDoS-támadások az interneten keresztül elérhető végpontokat is megcélozhatja.
 
-A DDoS-támadások elleni védelemhez vásároljon Azure DDoS Protection-licencet, és győződjön meg róla, hogy az alkalmazás kialakításának ajánlott eljárásait követi. A DDoS Protection különböző szolgáltatási szinteket biztosít. További információ: [Azure DDoS Protection Overview (áttekintés](../virtual-network/ddos-protection-overview.md)).
+A DDoS-támadások elleni védelemhez vásároljon Azure DDoS Protection-licencet, és győződjön meg róla, hogy az alkalmazás kialakításának ajánlott eljárásait követi. A DDoS Protection különböző szolgáltatási szinteket biztosít. További információ: [Azure DDoS Protection Overview (áttekintés](../ddos-protection/ddos-protection-overview.md)).
 
 A Azure DDoS Protection riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-azureddos)tekintheti meg.
 

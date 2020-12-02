@@ -1,5 +1,5 @@
 ---
-title: Windows leállítási hiba – hardverhiba
+title: Windows leállási hiba – Hardverhiba
 description: Ez a cikk olyan problémák megoldását ismerteti, amelyekben a Windows Server 2008 rendszerű virtuális gépek olyan hibaüzenettel ütköznek, amely a hardver meghibásodását jelzi.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/13/2020
 ms.author: v-mibufo
-ms.openlocfilehash: eb4e0a246d6a33c3fad5f44b99a37997e4462f05
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 18622d60f3a33658fadfd28c53c93a07b4b438a9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663861"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488646"
 ---
-# <a name="windows-stop-error---hardware-malfunction"></a>Windows leállítási hiba – hardverhiba
+# <a name="windows-stop-error---hardware-malfunction"></a>Windows leállási hiba – Hardverhiba
 
 Ez a cikk olyan problémák megoldását ismerteti, amelyekben a Windows Server 2008 rendszerű virtuális gépek olyan hibaüzenettel ütköznek, amely a hardver meghibásodását jelzi.
 
@@ -63,7 +63,7 @@ Ez a képernyő akkor jelenik meg, ha a vendég operációs rendszer nem megfele
     ```
     REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
     ```
-    [További információk megtekintése a REG ADD paranccsal](https://docs.microsoft.com/windows-server/administration/windows-commands/reg-add)
+    [További információk megtekintése a REG ADD paranccsal](/windows-server/administration/windows-commands/reg-add)
 4. *(Nem kötelező)* Telepítési memóriakép gyűjteménye:
 
     ```
@@ -77,13 +77,13 @@ Ez a képernyő akkor jelenik meg, ha a vendég operációs rendszer nem megfele
     BCDEDIT /ems {current} on, or bcdedit /ems '{current}' on if you are using PowerShell
     BCDEDIT /emssettings EMSPORT:1 EMSBAUDRATE:115200 
     ```
-    [További információk megtekintése a BCDEDIT paranccsal kapcsolatban](https://docs.microsoft.com/windows-server/administration/windows-commands/bcdedit)
+    [További információk megtekintése a BCDEDIT paranccsal kapcsolatban](/windows-server/administration/windows-commands/bcdedit)
 6. Indítsa újra a virtuális gépet a következő paranccsal:
 
     ```
     SHUTDOWN /r /t 0 /f 
     ```
-    [További információk megtekintése a leállítási parancsról](https://docs.microsoft.com/windows-server/administration/windows-commands/shutdown)
+    [További információk megtekintése a leállítási parancsról](/windows-server/administration/windows-commands/shutdown)
 
 > [!IMPORTANT]
 > A problémát most meg kell oldani!
@@ -165,7 +165,7 @@ A virtuális gép újraépítése előtt ajánlott engedélyezni a memóriakép-
 
 * A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure-beli virtuális gépek rendszerindítási hibáinak elhárítása](./boot-error-troubleshoot.md)

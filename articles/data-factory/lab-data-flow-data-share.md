@@ -1,18 +1,18 @@
 ---
 title: Adatintegráció a Azure Data Factory és az Azure-adatmegosztás használatával
 description: Adatmásolás, átalakítás és megosztás az Azure Data Factory és az Azure-beli adatmegosztás használatával
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 11f4e7c50acc8256722949a50760c574d3b9d9e9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0a578f1edb51efd5f0905e663d42bf5a6fbfc783
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318246"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489037"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Adatintegráció a Azure Data Factory és az Azure-adatmegosztás használatával
 
@@ -22,23 +22,23 @@ Mivel az ügyfelek a modern adattárház-és elemzési projektekhez csatlakoznak
 
 Ha a Code-Free ETL/ELT lehetővé teszi, hogy átfogó képet hozzon létre az adatokon, a Azure Data Factory fejlesztése lehetővé teszi, hogy az adatmérnökök magabiztosan és így nagyobb értéket kapjanak a vállalat számára. Az Azure-beli adatmegosztás lehetővé teszi, hogy az üzleti vállalkozások megosztójának irányítását irányított módon végezze el.
 
-Ebben a workshopban Azure Data Factory (ADF) használatával végezheti el az adatok Azure SQL Databaseba való betöltését Azure Data Lake Storage Gen2 (ADLS Gen2). Miután megtörtént az adatgyűjtés a tóban, át kell alakítania a leképezési adatfolyamatok, a gyári natív transzformációs szolgáltatás és az Azure szinapszis Analytics (korábbi nevén SQL DW) használatával. Ezt követően az Azure-adatmegosztás használatával megoszthatja a táblázatot az átalakított adataival és néhány további adattal. 
+Ebben a workshopban Azure Data Factory (ADF) használatával végezheti el az adatok Azure SQL Databaseba való betöltését Azure Data Lake Storage Gen2 (ADLS Gen2). Miután megtörtént az adatgyűjtés a tóban, át kell alakítania a leképezési adatfolyamatok, a gyári natív transzformációs szolgáltatás és az Azure szinapszis Analytics között. Ezt követően az Azure-adatmegosztás használatával megoszthatja a táblázatot az átalakított adataival és néhány további adattal. 
 
 A laborban használt adatkészletek New York-i taxik. A SQL Database-adatbázisba való importáláshoz töltse le a [taxi-bacpac fájlt](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés** : Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-* **Azure SQL Database** : Ha nem rendelkezik SQL-adatbázissal, Ismerje meg, hogyan [hozhat létre SQL db-fiókot](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)
+* **Azure SQL Database**: Ha nem rendelkezik SQL-adatbázissal, Ismerje meg, hogyan [hozhat létre SQL db-fiókot](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)
 
-* **Azure Data Lake Storage Gen2 Storage-fiók** : Ha nem rendelkezik ADLS Gen2 Storage-fiókkal, megtudhatja, hogyan [hozhat létre ADLS Gen2 Storage](../storage/common/storage-account-create.md)-fiókot.
+* **Azure Data Lake Storage Gen2 Storage-fiók**: Ha nem rendelkezik ADLS Gen2 Storage-fiókkal, megtudhatja, hogyan [hozhat létre ADLS Gen2 Storage](../storage/common/storage-account-create.md)-fiókot.
 
-* **Azure szinapszis Analytics (korábbi nevén SQL DW)** : Ha nincs Azure szinapszis Analytics (korábban SQL DW), Ismerje meg, hogyan [hozhat létre Azure szinapszis Analytics-példányt](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
+* **Azure szinapszis Analytics (korábbi nevén SQL DW)**: Ha nincs Azure szinapszis Analytics (korábban SQL DW), Ismerje meg, hogyan [hozhat létre Azure szinapszis Analytics-példányt](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
 
-* **Azure Data Factory** : Ha még nem hozott létre egy adatelőállítót, olvassa el [a hogyan hozhat létre egy adatelőállítót](./quickstart-create-data-factory-portal.md).
+* **Azure Data Factory**: Ha még nem hozott létre egy adatelőállítót, olvassa el [a hogyan hozhat létre egy adatelőállítót](./quickstart-create-data-factory-portal.md).
 
-* **Azure-adatmegosztás** : Ha még nem hozott létre adatmegosztást, olvassa el az [adatmegosztás létrehozása](../data-share/share-your-data.md#create-a-data-share-account)című témakört.
+* **Azure-adatmegosztás**: Ha még nem hozott létre adatmegosztást, olvassa el az [adatmegosztás létrehozása](../data-share/share-your-data.md#create-a-data-share-account)című témakört.
 
 ## <a name="set-up-your-azure-data-factory-environment"></a>A Azure Data Factory környezet beállítása
 
@@ -308,7 +308,7 @@ Ezzel befejezte a tesztkörnyezet adatelőállító részét. Tegye közzé erő
 
 ## <a name="share-data-using-azure-data-share"></a>Adatmegosztás az Azure-adatmegosztás használatával
 
-Ebből a szakaszból megtudhatja, hogyan állíthat be új adatmegosztást a Azure Portal használatával. Ebbe beletartozik egy új adatmegosztás létrehozása, amely a Azure Data Lake Store Gen2 és az Azure szinapszis Analytics (korábban SQL Data Warehouse) adatkészleteit fogja tartalmazni. Ezután konfigurálhat egy pillanatkép-ütemtervet, amely lehetővé teszi az adatok számára, hogy automatikusan frissítse a velük megosztott adatok frissítését. Ezután meghívja a címzetteket az adatmegosztásra. 
+Ebből a szakaszból megtudhatja, hogyan állíthat be új adatmegosztást a Azure Portal használatával. Ez magában foglalja egy új adatmegosztás létrehozását, amely adatkészleteket fog tartalmazni Azure Data Lake Store Gen2 és az Azure szinapszis Analyticsből. Ezután konfigurálhat egy pillanatkép-ütemtervet, amely lehetővé teszi az adatok számára, hogy automatikusan frissítse a velük megosztott adatok frissítését. Ezután meghívja a címzetteket az adatmegosztásra. 
 
 Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó* lesz. Az adatfogyasztóként elsajátíthatja az adatmegosztási meghívások elfogadásának folyamatát, beállíthatja, hogy a rendszer hol fogadja el az adatokat, és hogyan rendelje hozzá az adatkészleteket a különböző tárolóhelyekhez. Ezután elindít egy pillanatképet, amely az Önnel megosztott adatok másolását a megadott célhelyre másolja. 
 
@@ -342,7 +342,7 @@ Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó
 
     ![1. adatkészlet hozzáadása](media/lab-data-flow-data-share/add-dataset.png)
 
-1. Válassza az **Azure szinapszis Analytics** (korábban SQL Data Warehouse) lehetőséget egy olyan tábla kiválasztásához az Azure szinapszis Analyticsből, amelyet az ADF-transzformációk befoglaltak.
+1. Válassza az **Azure szinapszis Analytics** elemet, és válassza ki az Azure szinapszis Analytics azon tábláját, amelyet az ADF-transzformációk befoglaltak.
 
     ![Adatkészlet SQL-adatbázisának hozzáadása](media/lab-data-flow-data-share/add-dataset-sql.png)
 

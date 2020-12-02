@@ -10,19 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 210de0ef2cfbaec676528b4788bebecaa34136e4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2e72abd777ac4834385fd916b730d438b8540203
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095084"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490261"
 ---
 # <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>Földrajzi határok használata a Bing helyi üzleti keresési API eredményeinek szűréséhez
 
 > [!WARNING]
-> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](https://aka.ms/cogsvcs/bingmove)ismertetett eljárás követésével kell kiépíteni.
+> Bing Search API-k átkerülnek a Cognitive Servicesról Bing Search szolgáltatásokra. **2020. október 30-ig** a Bing Search új példányait az [itt](/bing/search-apis/bing-web-search/create-bing-search-service-resource)ismertetett eljárás követésével kell kiépíteni.
 > A Cognitive Services használatával kiépített Bing Search API-k a következő három évben vagy a Nagyvállalati Szerződés végéig lesz támogatva, attól függően, hogy melyik történik először.
-> Az áttelepítési utasításokért lásd: [Bing Search Services](https://aka.ms/cogsvcs/bingmigration).
+> Az áttelepítési utasításokért lásd: [Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 A Bing helyi üzleti keresési API lehetővé teszi, hogy a `localCircularView` vagy a lekérdezési paraméterek használatával a keresett földrajzi terület határain belül legyenek meghatározva `localMapView` . Ügyeljen arra, hogy csak egy paramétert használjon a lekérdezésekben. 
 
@@ -54,7 +54,7 @@ Lekérdezés befejezése:
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localMapView=47.619987,-122.181671,47.6421,-122.13715&appid=0123456789ABCDEF&mkt=en-us&form=monitr
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Helyi üzleti keresés – Java rövid útmutató](quickstarts/local-search-java-quickstart.md)
 - [Helyi üzleti keresés C# rövid útmutató](quickstarts/local-quickstart.md)
 - [Helyi üzleti keresési csomópont rövid útmutatója](quickstarts/local-search-node-quickstart.md)

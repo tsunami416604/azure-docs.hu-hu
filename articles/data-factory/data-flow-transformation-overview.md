@@ -1,18 +1,18 @@
 ---
 title: Az adatfolyam-átalakítás megfeleltetésének áttekintése
 description: A leképezési adatfolyamban elérhető különböző átalakítások áttekintése
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 6fe85db6612a16099f61cb52fe9c5864882f35b3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 9d44890e84e97a413543a4291d1331fee0f04841
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892927"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490890"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Az adatfolyam-átalakítás megfeleltetésének áttekintése
 
@@ -20,7 +20,7 @@ ms.locfileid: "92892927"
 
 Alább látható a leképezési folyamat által jelenleg támogatott átalakítások listája. A konfiguráció részleteinek megismeréséhez kattintson az egyes átalakításokra.
 
-| Name (Név) | Kategória | Leírás |
+| Név | Kategória | Leírás |
 | ---- | -------- | ----------- |
 | [Összesítés](data-flow-aggregate.md) | Séma-módosító | Definiáljon különböző típusú összesítéseket, például a SUM, a MIN, a MAX és a COUNT értéket meglévő vagy számított oszlopok szerint csoportosítva. | 
 | [Sor módosítása](data-flow-alter-row.md) | Sor módosítója | Sorok beszúrási, törlési, frissítési és upsert beállítása. |

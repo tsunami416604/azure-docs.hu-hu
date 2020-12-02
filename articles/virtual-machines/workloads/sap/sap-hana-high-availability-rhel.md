@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 597bb4392bbe22b0d980e512b136c0d2c92641ad
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 277ed8ad5f9888daa911cb3b5c7dcf00fd285bf4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958829"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489156"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux
 
@@ -126,7 +126,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 1. Adatlemezek hozzáadása.
 
 > [!IMPORTANT]
-> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.    
+> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.    
 
 > [!Note]
 > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
@@ -843,7 +843,7 @@ A manuális feladatátvételt a hn1-db-0 csomóponton található fürt leállí
 </code></pre>
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

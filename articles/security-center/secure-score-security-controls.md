@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2020
 ms.author: memildin
-ms.openlocfilehash: 0e853a4ce1e3891ddffd2f9fb1315da49a896933
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3cd536d051f3e227ba86429ae3f1633bf6c2e82f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433187"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490533"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Biztonsági pontszám az Azure Security Centerben
 
@@ -80,7 +80,7 @@ A biztonságos pontszám API-ra épülő eszközökre vonatkozó példákért te
 
 ### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Az Azure Resource Graph (ARG) biztonságos pontszámának beolvasása
 
-Az Azure Resource Graph azonnali hozzáférést biztosít az erőforrás-információkhoz a felhőalapú környezetekben, robusztus szűrési, csoportosítási és rendezési képességekkel. Az Azure-előfizetések programozott vagy a Azure Portalon keresztüli lekérdezésének gyors és hatékony módja. [További információ az Azure Resource Graph-ról](https://docs.microsoft.com/azure/governance/resource-graph/).
+Az Azure Resource Graph azonnali hozzáférést biztosít az erőforrás-információkhoz a felhőalapú környezetekben, robusztus szűrési, csoportosítási és rendezési képességekkel. Az Azure-előfizetések programozott vagy a Azure Portalon keresztüli lekérdezésének gyors és hatékony módja. [További információ az Azure Resource Graph-ról](../governance/resource-graph/index.yml).
 
 Az ARG-sel rendelkező több előfizetés biztonságos pontszámának elérése:
 
@@ -152,7 +152,7 @@ A vezérlő maximális pontszáma, rendszerfrissítések alkalmazása, mindig 6.
 
 ### <a name="calculations---understanding-your-score"></a>Számítások – a pontszám megismerése
 
-|Metric|Képlet és példa|
+|Metrika|Képlet és példa|
 |-|-|
 |**Biztonsági vezérlő aktuális pontszáma**|<br>![A biztonsági vezérlő pontszámának kiszámításához használt egyenlet](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>Minden egyes biztonsági ellenőrzés hozzájárul a biztonsági pontszám eléréséhez. A vezérlőn belüli javaslat által érintett összes erőforrás a vezérlő aktuális pontszámának irányába járul hozzá. Az egyes vezérlők aktuális pontszáma *a vezérlőben lévő erőforrások* állapotának mértéke.<br>![A biztonsági vezérlő aktuális pontszámának kiszámításakor használt értékeket megjelenítő elemleírások](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Ebben a példában a 6 maximális pontszáma 78-re osztható, mert ez az egészséges és a nem kifogástalan erőforrások összege.<br>6/78 = 0,0769<br>A jelenlegi pontszám a (4) kifogástalan állapotú erőforrások számával való szorzását eredményezi:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Biztonsági pontszám**<br>Egyetlen előfizetés|<br>![Az előfizetés biztonságos pontszámának kiszámításához használt egyenlet](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![Egyszeri előfizetés biztonságos pontszáma minden engedélyezett vezérlővel](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>Ebben a példában egyetlen előfizetés van az összes rendelkezésre álló biztonsági vezérlővel (a 60-pontok lehetséges maximális pontszáma). A pontszám 28 pontot mutat a lehetséges 60-ből, a fennmaradó 32 pont pedig a biztonsági vezérlők "lehetséges pontszám növelésének" számadatait tükrözi.<br>![A vezérlőelemek listája és a lehetséges pontszám növekedése](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|

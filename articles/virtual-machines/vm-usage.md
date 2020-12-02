@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: d43f94d3555a660d6b7c8f755eebfec253d31dc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b845d547224fb173d2a4b156575778783e0281fa
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322923"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488565"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Az Azure-beli virtuális gépek használatának ismertetése
 Az Azure-beli használati adatok elemzésével hatékony fogyasztási adatokat nyerhetnek ki – olyan elemzéseket készíthet, amelyek lehetővé teszik a szervezeten belüli jobb költséghatékonyságot és kiosztást. Ez a dokumentum részletesen ismerteti az Azure-beli számítási felhasználás részleteit. Az Azure általános használatának részletes ismertetését a [számla megismerése](../cost-management-billing/understand/review-individual-bill.md)című rész ismerteti.
@@ -24,7 +24,7 @@ Az Azure-beli használati adatok elemzésével hatékony fogyasztási adatokat n
 A kezdéshez [töltse le a használati adatokat](../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). Az alábbi táblázat a Azure Resource Manager használatával üzembe helyezett Virtual Machines használatának definícióját és példáit tartalmazza. Ez a dokumentum nem tartalmaz részletes információkat a klasszikus modellen keresztül üzembe helyezett virtuális gépekről.
 
 
-| Mező | Értelmezés | Példa értékek | 
+| Mező | Jelentés | Példa értékek | 
 |---|---|---|
 | Usage Date (Használat dátuma) | Az erőforrás használatának dátuma | `11/23/2017` |
 | Meter ID | Meghatározza azt a legfelső szintű szolgáltatást, amelynek a használata a következőhöz tartozik:| `Virtual Machines`|
@@ -33,11 +33,11 @@ A kezdéshez [töltse le a használati adatokat](../cost-management-billing/mana
 | Meter Region| Az igénybe vett vagy üzemeltető adatközpont elhelyezkedése, ha a szolgáltatás díjszabása az adatközpontok elhelyezkedésétől is függ.|  `JA East`|
 | Egység| A szolgáltatás számlázási egységét jelöli. A számítási erőforrások számlázása óránként történik.| `Hours`|
 | Consumed (Felhasznált mennyiség)| Az adott napra felhasznált erőforrás mennyisége. A számítási feladatokhoz minden percben a virtuális gép egy adott órában futott (legfeljebb 6 tizedesjegy pontossággal).| `1, 0.5`|
-| Resource Location (Erőforrás helye)  | Az az adatközpont, amelyen az erőforrás fut.| `JA East`|
+| Resource Location  | Az az adatközpont, amelyen az erőforrás fut.| `JA East`|
 | Consumed Service | Az Azure platform szolgáltatás, amelyet használt.| `Microsoft.Compute`|
 | Erőforráscsoport | Az az erőforráscsoport, amelyben az üzembe helyezett erőforrás fut. További információ: [Azure Resource Manager Overview (áttekintés).](../azure-resource-manager/management/overview.md)|`MyRG`|
 | Instance ID | Az erőforrás azonosítója. Az azonosító tartalmazza az erőforrás számára a létrehozáskor megadott nevet. A virtuális gépek esetében a példány azonosítója a SubscriptionId, a ResourceGroupName és a VMName (vagy a méretezési csoportnak a méretezési csoport használatának nevét) fogja tartalmazni.| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>vagy<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
-| Címkék| Az erőforráshoz hozzárendelt címke. Címkék használatával csoportosíthatja a számlázási rekordokat. Megtudhatja, hogyan címkézheti Virtual Machines a [CLI](./linux/tag.md) vagy a [PowerShell](./windows/tag.md) használatával ez csak Resource Manager-alapú virtuális gépek esetén érhető el.| `{"myDepartment":"RD","myUser":"myName"}`|
+| Címkék| Az erőforráshoz hozzárendelt címke. Címkék használatával csoportosíthatja a számlázási rekordokat. Megtudhatja, hogyan címkézheti Virtual Machines a [CLI](./tag-cli.md) vagy a [PowerShell](./tag-portal.md) használatával ez csak Resource Manager-alapú virtuális gépek esetén érhető el.| `{"myDepartment":"RD","myUser":"myName"}`|
 | Additional Info (További információ) | Szolgáltatásspecifikus metaadatok. Virtuális gépek esetén a további információ mezőben a következő adatokat töltjük fel: <br><br> Képtípusra jellemző rendszerkép, amelyet futtatott. A támogatott sztringek teljes listáját megtalálja a képtípusok alatt.<br><br> Szolgáltatás típusa: a telepített méret.<br><br> VMName: a virtuális gép neve. Ez a mező csak a méretezési csoport virtuális gépei esetében van kitöltve. Ha szüksége van a virtuális gép nevére a méretezési csoport virtuális gépei számára, akkor azt a fenti AZONOSÍTÓJÚ példányban találja.<br><br> Usagetype értékre: Ez határozza meg az ezt jelképező használati típust.<br><br> A ComputeHR az alapul szolgáló virtuális gép számítási óradíjának használata, például Standard_D1_v2.<br><br> ComputeHR_SW a prémium szintű szoftverek díja, ha a virtuális gép prémium szintű szoftvert használ, például Microsoft R Server. | Virtual Machines<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Virtual Machine Scale Sets<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Prémium szintű szoftver<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
 
 ## <a name="image-type"></a>Rendszerkép típusa
@@ -136,5 +136,5 @@ A klasszikus modellben az erőforrások számlázása a Cloud Service szintjén 
 ### <a name="why-is-pricing-not-available-for-dsfsgsls-sizes-on-the-pricing-page"></a>Miért nem érhető el az árképzés a DS/FS/GS/LS méretekhez a díjszabási oldalon?
 A Premium Storage-kompatibilis virtuális gépek számlázása ugyanolyan sebességgel történik, mint a nem prémium szintű Storage-kompatibilis virtuális gépek. Csak a tárolási költségek különböznek. További információért látogasson el a [Storage díjszabási oldalára](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A használati adatokkal kapcsolatos további információkért lásd: [Microsoft Azure számlájának ismertetése.](../cost-management-billing/understand/review-individual-bill.md)

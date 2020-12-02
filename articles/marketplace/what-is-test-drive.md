@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 06/19/2020
-ms.openlocfilehash: 304e1ab475213bde2644c8241905408ade5672ed
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 193e7bd78046a1d73cb55171c15c9cb6a7278297
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489964"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490040"
 ---
 # <a name="what-is-a-test-drive"></a>Mit jelent a tesztverzió?
 
@@ -24,7 +24,7 @@ Az ügyfelek kihasználhatják a tesztelési meghajtókat is. Azáltal, hogy el�
 
 A tesztelési meghajtók olyan felügyelt példányok, amelyek igény szerint elindítják a megoldást vagy az alkalmazást a kérelmező ügyfelek számára. A test Drive-példány hozzárendelése után az adott ügyfél számára elérhetővé válik egy meghatározott időtartamra. Az időszak lejárta után a rendszer törli a helyet egy másik ügyfél számára.
 
-Közzétevőként kezelheti és konfigurálhatja a tesztelési meghajtó beállításait a partner Centerben. A technikai konfiguráció részletei az ajánlat típusától függően változnak. Részletes útmutatásért tekintse meg a [Test Drive technikai konfigurációját](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
+Közzétevőként kezelheti és konfigurálhatja a tesztelési meghajtó beállításait a partner Centerben. A technikai konfiguráció részletei az ajánlat típusától függően változnak. Részletes útmutatásért tekintse meg a [Test Drive technikai konfigurációját](./test-drive-technical-configuration.md).
 
 A potenciális ügyfelek a [AppSource](https://appsource.microsoft.com/en-US/)-on keresztül, az Ön ajánlatán keresztül felderítik a teszt-meghajtót. Megadják a kapcsolattartási adataikat, és elfogadják az ajánlat használati feltételeit és adatvédelmi szabályzatát, majd hozzáférhetnek az előre konfigurált környezethez, hogy kipróbálják azt egy rögzített időtartamra. Az ügyfelek a termék főbb funkcióit és előnyeit igénybe vevő, saját irányítású próbaidőszakot kapnak, és értékes érdeklődőket kapnak.
 
@@ -43,7 +43,7 @@ A kereskedelmi piactéren különböző tesztelési meghajtók érhetők el, a t
 - Logikai alkalmazás (csak támogatási módban)
 - Power BI
 
-A tesztelési meghajtók egyikének konfigurálásával kapcsolatos részletekért tekintse meg a [meghajtó technikai konfigurációjának tesztelése](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)című témakört. 
+A tesztelési meghajtók egyikének konfigurálásával kapcsolatos részletekért tekintse meg a [meghajtó technikai konfigurációjának tesztelése](./test-drive-technical-configuration.md)című témakört. 
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó
 
@@ -51,7 +51,7 @@ Ez a központi telepítési sablon tartalmazza a megoldását alkotó összes Az
 
 - Azure-alkalmazások
 - SaaS
-- Virtuális gépek
+- Virtual machines (Virtuális gépek)
 
 >[!NOTE]
 >Ez az egyetlen tesztelési mód a virtuális gépekhez és az Azure-alkalmazások ajánlatához.
@@ -65,7 +65,7 @@ Az üzemeltetett tesztvezetés eltávolítja a telepítő összetettségét azá
 
 ### <a name="logic-app-test-drive"></a>Logic app Test Drive
 
-Az ilyen típusú tesztelési meghajtót nem a Microsoft üzemelteti, és Azure Resource Manager (ARM) sablonokat használ a Dynamics AX/CRM-ajánlatok típusaihoz. A szükséges erőforrások létrehozásához futtatnia kell az ARM-sablont az Azure-előfizetésében. A Logic app Test Drive jelenleg csak támogatási módban érhető el, és a Microsoft nem ajánlja a Logic app test-meghajtó konfigurálásával kapcsolatos részletekért lásd: a [Test Drive technikai konfigurálása](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
+Az ilyen típusú tesztelési meghajtót nem a Microsoft üzemelteti, és Azure Resource Manager (ARM) sablonokat használ a Dynamics AX/CRM-ajánlatok típusaihoz. A szükséges erőforrások létrehozásához futtatnia kell az ARM-sablont az Azure-előfizetésében. A Logic app Test Drive jelenleg csak támogatási módban érhető el, és a Microsoft nem ajánlja a Logic app test-meghajtó konfigurálásával kapcsolatos részletekért lásd: a [Test Drive technikai konfigurálása](./test-drive-technical-configuration.md).
 
 ### <a name="power-bi-test-drive"></a>Power BI tesztelési meghajtó
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 2b4710fec43e27235ef6c05abb6018e1af4310d3
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: f5cf432e3824ca0bb441a458a08fc7353291cf1f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434940"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490057"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Ügynökök és bővítmények automatikus kiépítés a Azure Security Centerból
 
@@ -93,7 +93,7 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 
 1. Válassza az **alkalmaz** lehetőséget a konfiguráció ablaktáblán.
 
-1. Kattintson a **Mentés** gombra. Ha egy munkaterületet ki kell építeni, az ügynök telepítése akár 25 percet is igénybe vehet.
+1. Válassza a **Mentés** lehetőséget. Ha egy munkaterületet ki kell építeni, az ügynök telepítése akár 25 percet is igénybe vehet.
 
 1. A rendszer megkérdezi, hogy szeretné-e újrakonfigurálni azokat a figyelt virtuális gépeket, amelyek korábban egy alapértelmezett munkaterülethez voltak csatlakoztatva:
 
@@ -118,7 +118,7 @@ A log Analytics ügynökön kívüli bővítmény automatikus kiépítés enged�
 
     :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Váltás az automatikus kiépítés engedélyezéséhez a K8s házirend-bővítményéhez":::
 
-1. Kattintson a **Mentés** gombra. Az Azure-szabályzat hozzá van rendelve, és létrejön egy szervizelési feladat.
+1. Válassza a **Mentés** lehetőséget. Az Azure-szabályzat hozzá van rendelve, és létrejön egy szervizelési feladat.
 
     |Kiterjesztés  |Szabályzat  |
     |---------|---------|
@@ -211,8 +211,8 @@ A Log Analytics-ügynök manuális telepítése:
 
 1. Ha az ügynököket a PowerShell használatával szeretné telepíteni, használja a Virtual Machines dokumentációjának utasításait:
 
-    - [Windowsos gépek esetén](../virtual-machines/extensions/oms-windows.md?toc=%252fazure%252fazure-monitor%252ftoc.json#powershell-deployment)
-    - [Linuxos gépek esetén](../virtual-machines/extensions/oms-linux.md?toc=%252fazure%252fazure-monitor%252ftoc.json#azure-cli-deployment)
+    - [Windowsos gépek esetén](../virtual-machines/extensions/oms-windows.md?toc=%2fazure%2fazure-monitor%2ftoc.json#powershell-deployment)
+    - [Linuxos gépek esetén](../virtual-machines/extensions/oms-linux.md?toc=%2fazure%2fazure-monitor%2ftoc.json#azure-cli-deployment)
 
 > [!TIP]
 > A Security Center PowerShell használatával történő előkészítésével kapcsolatos útmutatásért lásd: [a Azure Security Center bevezetésének automatizálása a PowerShell használatával](security-center-powershell-onboarding.md).
@@ -251,7 +251,7 @@ Az ügynök automatikus kiépítési funkciójának kikapcsolásához:
 
     :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="Bekapcsolja az automatikus kiépítés letiltását az ügynök típusa szerint":::
 
-1. Kattintson a **Mentés** gombra. Ha az automatikus kiépítés le van tiltva, az alapértelmezett munkaterület-konfiguráció szakasz nem jelenik meg:
+1. Válassza a **Mentés** lehetőséget. Ha az automatikus kiépítés le van tiltva, az alapértelmezett munkaterület-konfiguráció szakasz nem jelenik meg:
 
     :::image type="content" source="./media/security-center-enable-data-collection/empty-configuration-column.png" alt-text="Ha az automatikus kiépítés le van tiltva, a konfigurációs cella üres":::
 

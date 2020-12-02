@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 526947c4d2db9fd87727fdd60c33bcaa9e75c6ff
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8a82fd6e6dc1bea0804c429f3af46884f004de69
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699865"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489768"
 ---
-# <a name="azure-network-security-overview"></a>Az Azure hálózati biztonság áttekintése
+# <a name="azure-network-security-overview"></a>A nagyvállalati hálózati biztonság áttekintése
 
 A hálózati biztonság úgy definiálható, mint az erőforrások jogosulatlan hozzáféréstől vagy támadástól való védelmének folyamata a hálózati forgalomra vonatkozó vezérlők alkalmazásával. A cél az, hogy csak a megbízható forgalom legyen engedélyezett. Az Azure robusztus hálózati infrastruktúrát tartalmaz az alkalmazások és szolgáltatások csatlakozási követelményeinek támogatásához. A hálózati kapcsolat az Azure-ban, a helyszíni és az Azure által üzemeltetett erőforrások, valamint az internetről és az Azure-ból származó erőforrások között lehetséges.
 
@@ -332,7 +332,7 @@ A **Microsoft az Azure** platform részeként ismert DDoS Protectiont biztosít.
 
 További információ:
 
-* [A DDOS Protection áttekintése](../../virtual-network/ddos-protection-overview.md)
+* [A DDOS Protection áttekintése](../../ddos-protection/ddos-protection-overview.md)
 
 ## <a name="azure-front-door"></a>Azure Front Door
 

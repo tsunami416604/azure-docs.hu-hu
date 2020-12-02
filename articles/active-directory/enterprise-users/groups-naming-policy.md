@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac878db8d81cc7d9d9dfc6d7c3a4ba63f966110
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 18e6b0f12298bda8e9328989c5396aa9916c6a0f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348364"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488918"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Elnevezési szabályzat érvénybe léptetése Microsoft 365 csoportokban Azure Active Directory
 
@@ -79,7 +79,6 @@ A kiválasztott rendszergazdák mentesülnek a szabályzatokból, az összes cso
 - 1. partneri szintű támogatás
 - 2. partneri szintű támogatás
 - Felhasználói rendszergazda
-- Címtár-írók
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Elnevezési házirend konfigurálása a Azure Portalban
 
