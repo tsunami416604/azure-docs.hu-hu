@@ -9,20 +9,20 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237476"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484663"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Gyors útmutató: tömeges betöltés a szinapszis SQL-sel
 
-Az adatbetöltések soha nem voltak egyszerűbbek a szinapszis Studióban a tömeges betöltés varázsló használatakor. A varázsló végigvezeti egy T-SQL-parancsfájl létrehozásán a [másolási utasítással](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) a tömeges betöltési adatokhoz. 
+Az adatgyűjtés egyszerűen betöltődik a szinapszis Studióban található tömeges betöltés varázslóval. A tömeges betöltés varázsló végigvezeti egy T-SQL-parancsfájl létrehozásán a [másolási utasítással](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) a tömeges betöltési adatokhoz. 
 
 ## <a name="entry-points-to-the-bulk-load-wizard"></a>Belépési pontok a tömeges betöltés varázslóba
 
-Mostantól egyszerűen, a szinapszis Studióban az alábbi területekre kattintva könnyedén tömegesen betöltheti az adatterhelést a dedikált SQL-készletek használatával:
+A speciális SQL-készletek használatával egyszerűen tömegesen betöltheti az betöltést a szinapszis Studióban található alábbi területekre kattintva:
 
 - Egy fájl vagy mappa a munkaterülethez csatolt Azure Storage-fiókból, a ![ jobb gombbal egy fájlra vagy mappára kattint a Storage-fiókból](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
@@ -60,7 +60,7 @@ Mostantól egyszerűen, a szinapszis Studióban az alábbi területekre kattintv
 
 6. Válassza a "parancsfájl megnyitása" lehetőséget, és egy T-SQL-szkriptet fog generálni a MÁSOLÁSi utasítással, amely betöltődik a adattóban: ![ az SQL-szkript megnyitása](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A MÁSOLÁSi lehetőségekkel kapcsolatos további információkért olvassa el a [copy utasításról](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) szóló cikket.
 - Tekintse át az [adatbetöltések áttekintése című](./sql-data-warehouse/design-elt-data-loading.md#what-is-elt) cikket

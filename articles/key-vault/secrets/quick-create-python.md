@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 7fe5b8da0b6dfa69d04a5ad152aa34a8686d854f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 68c58769302bbefd29b483a8fda225201d242dd9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786105"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483644"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Gyors útmutató: Azure Key Vault titkos ügyféloldali kódtár a Pythonhoz
 
@@ -54,7 +54,7 @@ Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatáva
 1. Az Azure Active Directory Identity Library telepítése:
 
     ```terminal
-    pip install azure.identity
+    pip install azure-identity
     ```
 
 
@@ -197,7 +197,7 @@ Ellenőrizheti, hogy a titkos kulcs el lett-e távolítva az Azure CLI-parancs a
 
 A törlés után a titkos kód törölve marad, de egy ideig visszanyerhető állapotban van. Ha újra futtatja a kódot, használjon másik titkos nevet.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a [tanúsítványokkal](../certificates/quick-create-python.md) és [kulcsokkal](../keys/quick-create-python.md)is kísérletezni szeretne, a cikkben létrehozott Key Vault is felhasználhatja.
 
@@ -207,7 +207,7 @@ Ellenkező esetben, ha elkészült az ebben a cikkben létrehozott erőforrások
 az group delete --resource-group KeyVault-PythonQS-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Key Vault áttekintése](../general/overview.md)
 - [Biztonságos hozzáférés a kulcstartóhoz](../general/secure-your-key-vault.md)

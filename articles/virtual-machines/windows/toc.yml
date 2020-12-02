@@ -300,7 +300,7 @@
         - name: Fenntartott példányok
           items:
             - name: Előre fizetés virtuális gépekért
-              href: prepay-reserved-vm-instances.md
+              href: ../prepay-reserved-vm-instances.md
             - name: Mi az az Azure Reservations?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Virtuálisgép-példányok méretrugalmassága
@@ -570,7 +570,7 @@
             - name: Bastion-gazdagép létrehozása
               items:
                 - name: Portál
-                  href: ../../bastion/bastion-create-host-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: parancssori felület
@@ -650,6 +650,7 @@
         - name: Operációsrendszer-lemez cseréje
           href: os-disk-swap.md
         - name: Virtuális gép címkézése
+          href: time-sync.md
           items:
             - name: Portál
               href: ../tag-portal.md
@@ -660,7 +661,6 @@
             - name: Sablon
               href: ../tag-template.md
             - name: Időszinkronizálás
-          href: time-sync.md
         - name: Szkriptek futtatása virtuális gépeken
           href: run-scripts-in-vm.md
           items:
@@ -863,8 +863,6 @@
           href: install-mongodb.md
         - name: Az SAP az Azure-on
           href: ../workloads/sap/get-started.md
-        - name: MATLAB fürt
-          href: matlab-mdcs-cluster.md
         - name: Visual Studio
           href: using-visual-studio-vm.md
         - name: Nagy teljesítményű számítástechnika (HPC)

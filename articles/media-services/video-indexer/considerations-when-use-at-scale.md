@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: how-to
 ms.date: 11/13/2020
 ms.author: juliako
-ms.openlocfilehash: 7d5108d2c155c7e21f2f94f532bd1aa0a96c5b3f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b955c0f494b757fd29c400194ef8b11314a89a03
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96020528"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483610"
 ---
 # <a name="things-to-consider-when-using-video-indexer-at-scale"></a>Megfontolandó szempontok Video Indexer méretezéskor
 
@@ -50,7 +50,7 @@ Ha URL-cím használatával tölt fel videókat, csak meg kell adnia a médiafá
 > [!TIP]
 > Használja a `videoUrl` videó feltöltése API opcionális paraméterét.
 
-Ha szeretné megtekinteni, hogyan tölthet fel videókat URL-cím használatával, tekintse meg [ezt a példát](upload-index-videos.md#code-sample). A [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) segítségével gyorsan és megbízhatóan is használhatja a tartalmat egy olyan Storage-fiókba, amelyről beküldheti video Indexer [sas URL-cím](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)használatával.
+Ha szeretné megtekinteni, hogyan tölthet fel videókat URL-cím használatával, tekintse meg [ezt a példát](upload-index-videos.md#code-sample). A [AzCopy](../../storage/common/storage-use-azcopy-v10.md) segítségével gyorsan és megbízhatóan is használhatja a tartalmat egy olyan Storage-fiókba, amelyről beküldheti video Indexer [sas URL-cím](../../storage/common/storage-sas-overview.md)használatával.
 
 ## <a name="increase-media-reserved-units-if-needed"></a>Szükség esetén növelje a Media szolgáltatás számára fenntartott egységeket
 

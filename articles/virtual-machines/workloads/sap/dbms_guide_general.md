@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 38f6cf039de2404c7b3eeecc74ee33233f4a2058
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5638b60b60f3952ab40fa000e457082f4748ac35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965289"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484345"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -160,8 +160,8 @@ Ha a IOPS-követelmény meghaladja az egy virtuális merevlemezt, akkor az adatb
 >
 > Csak a MDADM és a Logical Volume Manager (LVM) támogatott a szoftveres RAID Linuxon való létrehozásához. További információ:
 >
-> - [Szoftveres RAID konfigurálása Linux rendszeren a](../../linux/configure-raid.md) MDADM használatával
-> - [Az LVM konfigurálása linuxos virtuális gépen az Azure-ban az](../../linux/configure-lvm.md) LVM használatával
+> - [Szoftveres RAID konfigurálása Linux rendszeren a](/previous-versions/azure/virtual-machines/linux/configure-raid) MDADM használatával
+> - [Az LVM konfigurálása linuxos virtuális gépen az Azure-ban az](/previous-versions/azure/virtual-machines/linux/configure-lvm) LVM használatával
 >
 >
 
@@ -210,7 +210,7 @@ A következő javaslatok ezeket az I/O-tulajdonságokat feltételezik a szabván
 
 A standard szintű tároláshoz a lehetséges gyorsítótár-típusok a következők:
 
-* Nincs
+* Nincsenek
 * Olvasás
 * Olvasás/írás
 
@@ -218,7 +218,7 @@ A konzisztens és determinisztikus teljesítmény érdekében állítsa be a sza
 
 Az Azure Premium Storage esetében a következő gyorsítótárazási lehetőségek léteznek:
 
-* Nincs
+* Nincsenek
 * Olvasás
 * Olvasás/írás
 * Nincs + írásgyorsító, amely csak az Azure M sorozatú virtuális gépekhez használható
@@ -363,7 +363,7 @@ Az SAP-alkalmazások Azure-beli virtuális gépeken történő éles használat�
 További információ a SAPOSCOL és az SAP-állomás ügynökeit tároló összetevők üzembe helyezéséről, valamint ezeknek az összetevőknek a életciklus-kezeléséről: [telepítési útmutató][deployment-guide].
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Egy adott adatbázis-kezelő rendszerről további információt a következő témakörben talál:
 
 - [SQL Server rendszerű Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sqlserver.md)

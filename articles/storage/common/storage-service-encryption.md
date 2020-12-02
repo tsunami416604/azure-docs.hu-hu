@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: bc0a556841c3c6ee91ae472087aaaf7c74009b67
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: da1acc6316d7af87ffe35b9560919c324373591a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785782"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484600"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Inaktív adatok Azure Storage-titkosítása
 
@@ -32,7 +32,7 @@ Az Azure Storage-ba az 2017. október 20. után írt összes blokk blob, blob ho
 
 További információ az Azure Storage-titkosítás alapjául szolgáló kriptográfiai modulokról [: a kriptográfiai API: Next Generation](/windows/desktop/seccng/cng-portal).
 
-Az Azure Managed Disks titkosításával és kulcskezelő szolgáltatásával kapcsolatos információkért lásd: az [Azure Managed Disks szolgáltatás kiszolgálóoldali titkosítása](../../virtual-machines/windows/disk-encryption.md) Windows rendszerű virtuális gépekhez, illetve az [Azure Managed Disks szolgáltatás kiszolgálóoldali titkosítása](../../virtual-machines/linux/disk-encryption.md) Linux rendszerű virtuális gépekhez.
+Az Azure Managed Disks titkosításával és kulcskezelő szolgáltatásával kapcsolatos információkért lásd: az [Azure Managed Disks szolgáltatás kiszolgálóoldali titkosítása](../../virtual-machines/disk-encryption.md) Windows rendszerű virtuális gépekhez, illetve az [Azure Managed Disks szolgáltatás kiszolgálóoldali titkosítása](../../virtual-machines/disk-encryption.md) Linux rendszerű virtuális gépekhez.
 
 ## <a name="about-encryption-key-management"></a>A titkosítási kulcsok kezelése
 
@@ -46,7 +46,7 @@ Az alábbi táblázat összehasonlítja az Azure Storage-titkosítás legfontosa
 | Kulcskezelő paraméter | Microsoft által felügyelt kulcsok | Felhasználó által kezelt kulcsok | Ügyfél által biztosított kulcsok |
 |--|--|--|--|
 | Titkosítási/visszafejtési műveletek | Azure | Azure | Azure |
-| Az Azure Storage szolgáltatásai támogatottak | Mind | BLOB Storage, Azure Files<sup>1, 2</sup> | Blob Storage |
+| Az Azure Storage szolgáltatásai támogatottak | Összes | BLOB Storage, Azure Files<sup>1, 2</sup> | Blob Storage |
 | Kulcstároló | Microsoft Key Store | Azure Key Vault vagy Key Vault HSM | Ügyfél saját kulcstárolója |
 | Kulcs rotációs felelőssége | Microsoft | Ügyfél | Ügyfél |
 | Kulcs vezérlő | Microsoft | Ügyfél | Ügyfél |
@@ -107,7 +107,7 @@ Ha a titkosítási hatókör védett a Azure Key Vault ügyfél által felügyel
 > [!NOTE]
 > Titkosítási hatókört nem lehet törölni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 - [Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz](customer-managed-keys-overview.md)

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 12/01/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e37065e6fa61f3784d1a6165bd88c515bdfc29f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706183"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484107"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Alkalmazások hozzáadása az Azure AD-hez
 
@@ -105,7 +105,7 @@ A saját maga által hozzáadott alkalmazások (amelyek a diagramon az **alkalma
   * Attribútum-hozzárendelések (felhasználói kiépítés)
 * Az egyszerű szolgáltatással és az alkalmazás-objektumokkal kapcsolatos részletes információkért tekintse meg a Microsoft Graph API-dokumentációt:
   * [Alkalmazás](/graph/api/resources/application?view=graph-rest-1.0)
-  * [Szolgáltatásnév](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [Egyszerű szolgáltatásnév](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Az alkalmazások hogyan integrálhatók az Azure AD-vel?
 
@@ -118,6 +118,7 @@ Az alkalmazások az Azure AD-be való hozzáadásával kihasználhatják az ált
 * Szerepköralapú hozzáférés-vezérlés – a címtár használatával határozhatja meg az alkalmazás szerepköreit a szerepköralapú engedélyezési ellenőrzések végrehajtásához egy alkalmazásban.
 * OAuth engedélyezési szolgáltatások – a Microsoft 365 és más Microsoft-alkalmazások által használt API-khoz és erőforrásokhoz való hozzáférés engedélyezéséhez
 * Alkalmazás közzététele és proxy – alkalmazás közzététele egy magánhálózat és az internet között
+* Címtár-séma bővítmény attribútumai – [az egyszerű szolgáltatásnév és a felhasználói objektumok sémájának kiterjesztése](active-directory-schema-extensions.md) további adattárolásra az Azure ad-ben 
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Kinek van engedélye alkalmazások hozzáadására az Azure AD-példányhoz?
 
@@ -144,7 +145,7 @@ Ha továbbra is meg szeretné akadályozni, hogy a címtárban lévő felhaszná
 
 * Annak megakadályozása, hogy a felhasználók regisztrálják a saját alkalmazásaikat:
   1. A Azure Portal lépjen a [felhasználói beállítások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) szakaszra Azure Active Directory
-  2. A módosítással a **felhasználók regisztrálhatják az alkalmazásokat** a **nem**értékre.
+  2. A módosítással a **felhasználók regisztrálhatják az alkalmazásokat** a **nem** értékre.
 
 > [!NOTE]
 > A Microsoft maga az alapértelmezett konfigurációt használja a felhasználók számára az alkalmazások regisztrálásához és a saját nevében lévő alkalmazásokhoz való hozzájárulásukat.

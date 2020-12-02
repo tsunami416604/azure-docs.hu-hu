@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 9101944a567df5000d3584ed48eff24e4c5e0057
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 572b3b3459e1d837130f3c987d45ee45629f37ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89565803"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485076"
 ---
 # <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>Modell tesztelése a Speech Studio hangfájljának használatával
 
@@ -23,43 +23,43 @@ Ebben a útmutatóban a Speech Studio használatával konvertálja a hangfájlok
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Speech Portal használata előtt [kövesse az alábbi utasításokat egy Azure-fiók létrehozásához és a beszédfelismerési szolgáltatásra való előfizetéshez](../how-to-custom-speech.md#set-up-your-azure-account). Ez az egyesített előfizetés hozzáférést biztosít a beszéd-szöveg, a szöveg és a beszéd fordításához, valamint a Custom Speech portálhoz.
+A Speech Portal használata előtt [kövesse az alábbi utasításokat egy Azure-fiók létrehozásához és a beszédfelismerési szolgáltatásra való előfizetéshez](../custom-speech-overview.md#set-up-your-azure-account). Ez az egyesített előfizetés hozzáférést biztosít a beszéd-szöveg, a szöveg és a beszéd fordításához, valamint a Custom Speech portálhoz.
 
 ## <a name="download-an-audio-file"></a>Hangfájl letöltése
 
 Az alábbi lépéseket követve letöltheti a beszédet tartalmazó hangfájlt, és csomagolhatja azt egy zip-fájlba.
 
-1. Töltse le a **[minta wav-fájlt ebből a hivatkozásból. ehhez](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav)** kattintson a jobb gombbal a hivatkozásra, és válassza a **hivatkozás mentése másként**lehetőséget. Kattintson a **Save (Mentés** ) gombra a fájl letöltéséhez `whatstheweatherlike.wav` .
-2. Egy zip-eszközzel rendelkező fájlkezelő vagy Terminálablak használatával hozzon létre egy nevű zip-fájlt, `whatstheweatherlike.zip` amely tartalmazza a `whatstheweatherlike.wav` letöltött fájlt. A Windowsban nyissa meg a Windows Intézőt, lépjen a `Downloads` mappába, kattintson a jobb gombbal a gombra, kattintson a Küldés elemre, `whatstheweatherliike.wav` kattintson a **tömörített (zip) mappa**elemre, és az alapértelmezett fájlnév elfogadásához nyomja le az ENTER **Send to**billentyűt.
+1. Töltse le a **[minta wav-fájlt ebből a hivatkozásból. ehhez](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav)** kattintson a jobb gombbal a hivatkozásra, és válassza a **hivatkozás mentése másként** lehetőséget. Kattintson a **Save (Mentés** ) gombra a fájl letöltéséhez `whatstheweatherlike.wav` .
+2. Egy zip-eszközzel rendelkező fájlkezelő vagy Terminálablak használatával hozzon létre egy nevű zip-fájlt, `whatstheweatherlike.zip` amely tartalmazza a `whatstheweatherlike.wav` letöltött fájlt. A Windowsban nyissa meg a Windows Intézőt, lépjen a `Downloads` mappába, kattintson a jobb gombbal a gombra, kattintson a Küldés elemre, `whatstheweatherliike.wav` kattintson a **tömörített (zip) mappa** elemre, és az alapértelmezett fájlnév elfogadásához nyomja le az ENTER **Send to** billentyűt.
 
 ## <a name="create-a-project-in-the-custom-speech-portal"></a>Projekt létrehozása a Custom Speech portálon
 
 Kövesse az alábbi lépéseket egy olyan projekt létrehozásához, amely egy hangfájl zip-fájlját tartalmazza.
 
-1. Nyissa meg a [Speech studiót](https://speech.microsoft.com/), és kattintson az **új projekt**elemre. Adja meg a projekt nevét, majd kattintson a **Létrehozás**gombra. A projekt megjelenik a Custom Speech listán.
-2. Kattintson a projekt nevére. Az adatok lapon kattintson az **adatok feltöltése**elemre.
-3. A beszédfelismerési adattípus alapértelmezés szerint **csak a hanganyagot**adja meg, ezért kattintson a **tovább**gombra.
-4. Nevezze el az új beszédfelismerési adatkészletet `MyZipOfAudio` , és kattintson a **tovább**gombra.
-5. Kattintson a **Fájlok tallózása...** lehetőségre, keresse meg a `whatstheweatherlike.zip` fájlt, és kattintson a **Megnyitás**gombra.
+1. Nyissa meg a [Speech studiót](https://speech.microsoft.com/), és kattintson az **új projekt** elemre. Adja meg a projekt nevét, majd kattintson a **Létrehozás** gombra. A projekt megjelenik a Custom Speech listán.
+2. Kattintson a projekt nevére. Az adatok lapon kattintson az **adatok feltöltése** elemre.
+3. A beszédfelismerési adattípus alapértelmezés szerint **csak a hanganyagot** adja meg, ezért kattintson a **tovább** gombra.
+4. Nevezze el az új beszédfelismerési adatkészletet `MyZipOfAudio` , és kattintson a **tovább** gombra.
+5. Kattintson a **Fájlok tallózása...** lehetőségre, keresse meg a `whatstheweatherlike.zip` fájlt, és kattintson a **Megnyitás** gombra.
 6. Kattintson az **Upload** (Feltöltés) gombra. A böngésző feltölti a zip-fájlt a Speech studióba, a Speech Studio pedig feldolgozza a tartalmakat.
 
 ## <a name="test-a-model"></a>Modell tesztelése
 
 Miután a Speech Studio feldolgozza a zip-fájl tartalmát, lejátszhatja a forrás hangját, miközben megvizsgálhatja az átírást a hibák vagy kihagyások kereséséhez. Az alábbi lépéseket követve ellenőrizheti az átiratok minőségét a böngészőben.
 
-1. Kattintson a **tesztelés** fülre, majd a **teszt hozzáadása**gombra.
+1. Kattintson a **tesztelés** fülre, majd a **teszt hozzáadása** gombra.
 2. Ebben a tesztben a csak hangalapú adatok minőségét vizsgáljuk, ezért kattintson a **tovább** gombra a teszt típusának elfogadásához.
-3. Nevezze el a tesztet `MyModelTest` , majd kattintson a **tovább**gombra.
-4. Kattintson a bal oldali választógombra `MyZipOfAudio` , majd kattintson a **tovább**gombra.
-5. Az **1. modell** legördülő lista alapértelmezett értéke a legújabb felismerési modell, ezért kattintson a **Létrehozás**gombra. A hangadatkészlet tartalmának feldolgozása után a teszt állapota **sikeres**lesz.
-6. Kattintson a **MyModelTest**elemre. Megjelenik a beszédfelismerés eredményei. Kattintson a kör jobb oldali háromszögére a hang meghallásához, és hasonlítsa össze a szöveget a kör alapján.
+3. Nevezze el a tesztet `MyModelTest` , majd kattintson a **tovább** gombra.
+4. Kattintson a bal oldali választógombra `MyZipOfAudio` , majd kattintson a **tovább** gombra.
+5. Az **1. modell** legördülő lista alapértelmezett értéke a legújabb felismerési modell, ezért kattintson a **Létrehozás** gombra. A hangadatkészlet tartalmának feldolgozása után a teszt állapota **sikeres** lesz.
+6. Kattintson a **MyModelTest** elemre. Megjelenik a beszédfelismerés eredményei. Kattintson a kör jobb oldali háromszögére a hang meghallásához, és hasonlítsa össze a szöveget a kör alapján.
 
 ## <a name="download-detailed-results"></a>Részletes találatok letöltése
 
 Az átiratokat leíró fájlokat sokkal részletesebben töltheti le. A fájlok közé tartoznak a hangfájlokban lévő beszédek lexikális formája, valamint az egyes szavak eltolását, időtartamát és átírását tartalmazó JSON-fájlok. Ezeket a lépéseket követve tekintheti meg ezeket a fájlokat.
 
-1. Kattintson a **Letöltés**gombra.
-2. A letöltés párbeszédpanelen törölje a **hang**kijelölését, majd kattintson a **Letöltés**gombra.
+1. Kattintson a **Letöltés** gombra.
+2. A letöltés párbeszédpanelen törölje a **hang** kijelölését, majd kattintson a **Letöltés** gombra.
 3. Bontsa ki a letöltött zip-fájlt, és vizsgálja meg a kibontott fájlokat.
 
 ## <a name="next-steps"></a>További lépések

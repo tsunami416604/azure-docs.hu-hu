@@ -7,18 +7,18 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: a544d0c5fafbdaf9d272fed552fb38eda613292f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c9866ac2c14e4deb29326ffdd1a93a7d8eae1ea3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522141"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484804"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Oktatóanyag: Kapcsolódás Azure Cosmos-fiókhoz Azure Private-végpont használatával
 
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy virtuális hálózatot és egy megerősített gazdagépet.
@@ -53,7 +53,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Erőforráscsoport   | **MyResourceGroup** kiválasztása |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Region           | Válassza ki az **USA keleti** régióját |
+    | Régió           | Válassza ki az **USA keleti** régióját |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -72,7 +72,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Alhálózat neve | **MySubnet** megadása |
     | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
 8. Válassza a **Biztonság** fület.
 
@@ -104,9 +104,9 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | Erőforráscsoport | **MyResourceGroup** kiválasztása |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM** megadása |
-    | Region | Válassza ki az **USA keleti** régióját |
+    | Régió | Válassza ki az **USA keleti** régióját |
     | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
-    | Kép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
+    | Rendszerkép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
     | Azure Spot-példány | Válassza a **nem** lehetőséget |
     | Méret | A virtuális gép méretének kiválasztása vagy az alapértelmezett beállítás megadása |
     | **Rendszergazdai fiók** |  |
@@ -174,7 +174,7 @@ Ebben a szakaszban létrehoz egy Cosmos DB fiókot, és konfigurálja a magánh�
     | Előfizetés | Válassza ki az Azure-előfizetését |
     | Erőforráscsoport | **MyResourceGroup** kiválasztása |
     | Hely | Válassza ki az **USA keleti** régióját |
-    | Name | **MyPrivateEndpoint** megadása |
+    | Név | **MyPrivateEndpoint** megadása |
     | Cél alerőforrás | Hagyja meg az alapértelmezett **mag (SQL)** |
     | **Hálózat** |  |
     | Virtuális hálózat | **MyVNet** kiválasztása |
@@ -248,7 +248,7 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
     A rendszer a **10.1.0.5** magánhálózati IP-címét adja vissza a Cosmos db fiók nevéhez.  Ez a címe a korábban létrehozott virtuális hálózat alhálózatában található.
 
-9. Telepítse a [Microsoft Azure Storage Explorert](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json) a virtuális gépre.
+9. Telepítse a [Microsoft Azure Storage Explorert](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) a virtuális gépre.
 
 10. A **Microsoft Azure Storage Explorer** telepítése után válassza a **Befejezés** lehetőséget.  Az alkalmazás megnyitásához hagyja bejelölve a jelölőnégyzetet.
 

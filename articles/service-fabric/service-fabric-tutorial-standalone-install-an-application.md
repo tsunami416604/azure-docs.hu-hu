@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan telepíthet alkalmaz
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 0b35bd02af5e1c90cac2e94d31dfca2344f3cc85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae946321b34f12c816a717db4a3d07f57feefe52
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840625"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485360"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Oktatóanyag: Alkalmazás üzembe helyezése a különálló Service Fabric-fürtön
 
@@ -17,7 +17,7 @@ Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a sajá
 
 Ez az oktatóanyag egy sorozat harmadik része.  Service Fabric önálló fürtök lehetővé teszi, hogy kiválassza a saját környezetét, és hozzon létre egy fürtöt a "bármely operációs rendszer, bármilyen felhő" megközelítés részeként a Service Fabric használatával. Ez az oktatóanyag bemutatja, hogyan hozhatja létre az önálló fürt futtatásához szükséges AWS-infrastruktúrát.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ebből a cikkből megtudhatja, hogyan:
 
 > [!div class="checklist"]
 > * A mintaalkalmazás letöltése
@@ -50,7 +50,7 @@ Az alkalmazás letöltése után telepítheti azt a fürtön, közvetlenül a Vi
 
 4. A Megoldáskezelőben kattintson a jobb gombbal a `Voting` alkalmazásra, és válassza a **Közzététel** lehetőséget.
 
-5. Kattintson a **Kapcsolati végpont** legördülő menüjére, és írja be a fürtben lévő egyik csomópont DNS-nevét.  Például: `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Az Azure-ban a teljes tartománynév (FQDN) nincs automatikusan megadva, de egyszerűen [beállítható a virtuális gép áttekintése lapon.](../virtual-machines/linux/portal-create-fqdn.md)
+5. Kattintson a **Kapcsolati végpont** legördülő menüjére, és írja be a fürtben lévő egyik csomópont DNS-nevét.  Például: `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Az Azure-ban a teljes tartománynév (FQDN) nincs automatikusan megadva, de egyszerűen [beállítható a virtuális gép áttekintése lapon.](../virtual-machines/create-fqdn.md)
 
 6. Nyissa meg az előnyben részesített böngészőt, és adja meg a fürt címét (a kapcsolati végpontot; ez az alkalmazás a 8080-as porton van üzembe helyezve; például: ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 

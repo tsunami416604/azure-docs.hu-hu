@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 420259929afc50b2884bf075212402d80b6b52f4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85549899"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483538"
 ---
 # <a name="create-a-group-for-assessment"></a>Csoport létrehozása az értékeléshez
 
@@ -35,15 +35,15 @@ Létrehozhat egy csoportot is, ha létrehoz egy [értékelést](how-to-create-as
 
 Ha manuálisan szeretne létrehozni egy csoportot az értékelés létrehozásán kívül, tegye a következőket:
 
-1. A Azure Migrate projekt > **áttekintése**területen kattintson a **kiszolgálók felmérése és migrálása**elemre. **Azure Migrate: kiszolgáló értékelése**, kattintson a **csoportok** elemre.
+1. A Azure Migrate projekt > **áttekintése** területen kattintson a **kiszolgálók felmérése és migrálása** elemre. **Azure Migrate: kiszolgáló értékelése**, kattintson a **csoportok** elemre.
     - Ha még nem adta hozzá a Azure Migrate: Server Assessment eszközt, kattintson ide a hozzáadásához. [További információk](how-to-assess.md).
-    - Ha még nem hozott létre Azure Migrate projektet, [További információt itt](how-to-add-tool-first-time.md)olvashat.
+    - Ha még nem hozott létre Azure Migrate projektet, [További információt itt](./create-manage-projects.md)olvashat.
 
     ![Csoportok kiválasztása](./media/how-to-create-a-group/select-groups.png)
 
 2. Kattintson a **csoport** ikonra.
-3. A **csoport létrehozása**területen adja meg a csoport nevét és a **készülék neve**területen válassza ki a számítógép-felderítéshez használt Azure Migrate készüléket.
-4. A számítógép listából válassza ki azokat a gépeket, amelyeket hozzá szeretne adni a csoporthoz > **Létrehozás**gombra.
+3. A **csoport létrehozása** területen adja meg a csoport nevét és a **készülék neve** területen válassza ki a számítógép-felderítéshez használt Azure Migrate készüléket.
+4. A számítógép listából válassza ki azokat a gépeket, amelyeket hozzá szeretne adni a csoporthoz > **Létrehozás** gombra.
 
     ![Csoport létrehozása](./media/how-to-create-a-group/create-group.png)
 
@@ -58,15 +58,15 @@ Függőségek leképezése segít a függőségek megjelenítésében a gépek k
 
 Ha már [beállította a függőségi leképezést](how-to-create-group-machine-dependencies.md), és egy meglévő csoportot szeretne pontosítani, tegye a következőket:
 
-1. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson a **csoportok**elemre.
+1. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson a **csoportok** elemre.
 2. Kattintson arra a csoportra, amelyet szeretne pontosítani.
-    - Ha még nem állította be a függőségi leképezést, akkor a **függőségek** oszlopban a **szükséges telepítési** állapot jelenik meg. Minden olyan virtuális géphez, amelynek függőségeit szeretné megjeleníteni, kattintson a **telepítés szükséges**elemre. Telepítsen néhány ügynököt az egyes virtuális gépekre, mielőtt le tudja képezni a számítógép-függőségeket. [További információk](how-to-create-group-machine-dependencies.md).
+    - Ha még nem állította be a függőségi leképezést, akkor a **függőségek** oszlopban a **szükséges telepítési** állapot jelenik meg. Minden olyan virtuális géphez, amelynek függőségeit szeretné megjeleníteni, kattintson a **telepítés szükséges** elemre. Telepítsen néhány ügynököt az egyes virtuális gépekre, mielőtt le tudja képezni a számítógép-függőségeket. [További információk](how-to-create-group-machine-dependencies.md).
 
         ![Függőségi leképezés hozzáadása](./media/how-to-create-a-group/add-dependency-mapping.png)
 
     - Ha már beállította a függőségi leképezést, a csoport lapon kattintson a **függőségek megtekintése** elemre a csoport függőségi térképének megnyitásához.
 
-3. Miután a **függőségek megtekintése**elemre kattintott, a csoport függőségi térképe a következőket jeleníti meg:
+3. Miután a **függőségek megtekintése** elemre kattintott, a csoport függőségi térképe a következőket jeleníti meg:
 
     - Bejövő (ügyfelek) és kimenő (kiszolgálók) TCP-kapcsolatok a csoportban lévő összes olyan gépre, amelyeken telepítve van a függőségi ügynök.
     - Azok a függő gépek, amelyeken nincs telepítve a függőségi ügynökök, portszámok szerint vannak csoportosítva.
@@ -89,4 +89,3 @@ Ha már [beállította a függőségi leképezést](how-to-create-group-machine-
 ## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan állíthatja be és használhatja a [függőségi leképezést](how-to-create-group-machine-dependencies.md) a magas megbízhatóságú csoportok létrehozásához.
-

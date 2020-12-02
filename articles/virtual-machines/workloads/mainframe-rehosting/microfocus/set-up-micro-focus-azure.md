@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: bd8da9ae7e31fb60ba0ca553f5aa304ccd3621d2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d9e5f9b531fc28caf8f3162a70318927d40bb923
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127178"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483062"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>A Micro Focus Enterprise Server 5,0 és Enterprise Developer 5,0 telepítése az Azure-ban
 
@@ -42,12 +42,12 @@ Az első lépések előtt tekintse át az alábbi előfeltételeket:
     > [!Note]
     > Néhány lehetőség van a virtuális gépekhez való hozzáférés szabályozására:
     > -   Az ajánlott eljárás az [Azure Bastion](https://azure.microsoft.com/services/azure-bastion/)beállítása.
-    > -   [Helyek közötti virtuális magánhálózati (VPN)](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md) alagút.
+    > -   [Helyek közötti virtuális magánhálózati (VPN)](../../../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) alagút.
     > -   Egy Jumpbox virtuális gép.
 
 ## <a name="install-enterprise-server"></a>Az Enterprise Server telepítése
 
-1.  A jobb biztonság és kezelhetőség érdekében érdemes lehet új erőforráscsoportot létrehozni ehhez a projekthez – például **RGMicroFocusEntServer** . Használja az Azure-beli név első részét az erőforrás típusának kiválasztásához, hogy könnyebb legyen a listában.
+1.  A jobb biztonság és kezelhetőség érdekében érdemes lehet új erőforráscsoportot létrehozni ehhez a projekthez – például **RGMicroFocusEntServer**. Használja az Azure-beli név első részét az erőforrás típusának kiválasztásához, hogy könnyebb legyen a listában.
 
 2.  Virtuális gépet hoz létre. Az Azure Marketplace-en válassza ki a kívánt virtuális gépet és operációs rendszert. Egy ajánlott beállítás:
 
@@ -97,7 +97,7 @@ A telepítés után ellenőrizze, hogy az előfeltételként szükséges tovább
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>Enterprise Developer telepítése a fejlesztői gépen
 
-1.  Válassza ki a korábban létrehozott erőforráscsoportot (például **RGMicroFocusEntServer** ), majd válassza ki a fejlesztői rendszerképet.
+1.  Válassza ki a korábban létrehozott erőforráscsoportot (például **RGMicroFocusEntServer**), majd válassza ki a fejlesztői rendszerképet.
 
 2.  A virtuális gépre való bejelentkezéshez nyissa meg az **Áttekintés** szakaszt, és válassza a **Kapcsolódás** lehetőséget. Ez a bejelentkezés egy RDP-munkamenetet indít el. Jelentkezzen be a virtuális géphez létrehozott hitelesítő adatok használatával.
 

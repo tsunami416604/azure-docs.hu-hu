@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fc44b7a49785a24460ea11f07e5248b266f5dfad
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7008cfcdeb4615b42839f92a6df71357f9acf911
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793007"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484991"
 ---
 # <a name="storage-account-overview"></a>Tárfiókok áttekintése
 
@@ -32,7 +32,7 @@ Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb
 
 - Blobok (az összes típus: letiltás, Hozzáfűzés, lap)
 - Data Lake Gen2
-- Files
+- Fájlok
 - Lemezek
 - Üzenetsorok
 - Táblák
@@ -49,7 +49,7 @@ Az általános célú v2 Storage-fiókok több hozzáférési szintet is kínál
 Az általános célú v1 Storage-fiókok hozzáférést biztosítanak az összes Azure Storage-szolgáltatáshoz, de nem rendelkezhetnek a legújabb szolgáltatásokkal, illetve a legalacsonyabb/gigabájt díjszabással. Az általános célú v1 Storage-fiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
 
 - Blobok (az összes típus)
-- Files
+- Fájlok
 - Lemezek
 - Üzenetsorok
 - Táblák
@@ -127,7 +127,7 @@ A Storage-fiókban lévő összes adat titkosítva van a szolgáltatás oldalán
 
 A Storage-fiók egyedi névteret biztosít az Azure-ban az adataihoz. Az Azure Storage-ban tárolt összes objektumhoz tartozik egy olyan címe, amely tartalmazza az egyedi fióknevet. A fiók neve és az Azure Storage szolgáltatás végpontja a Storage-fiókhoz tartozó végpontokat képezi le.
 
-Ha például az általános célú Storage-fiók neve *mystorageaccount* , akkor az adott fiókhoz tartozó alapértelmezett végpontok a következők:
+Ha például az általános célú Storage-fiók neve *mystorageaccount*, akkor az adott fiókhoz tartozó alapértelmezett végpontok a következők:
 
 - BLOB Storage: `https://*mystorageaccount*.blob.core.windows.net`
 - Tábla tárterülete: `https://*mystorageaccount*.table.core.windows.net`
@@ -138,7 +138,7 @@ Ha például az általános célú Storage-fiók neve *mystorageaccount* , akkor
 > [!NOTE]
 > A blob-és blob Storage-fiókok csak a Blob service végpontot teszik elérhetővé.
 
-Hozzon létre egy objektum elérésére szolgáló URL-címet egy Storage-fiókban úgy, hogy hozzáfűzi az objektum helyét a Storage-fiókban a végponthoz. Például egy blobcím formátuma lehet a következő: http:// *mystorageaccount* .blob.core.windows.net/ *mycontainer*/*myblob* .
+Hozzon létre egy objektum elérésére szolgáló URL-címet egy Storage-fiókban úgy, hogy hozzáfűzi az objektum helyét a Storage-fiókban a végponthoz. Például egy blobcím formátuma lehet a következő: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
 
 A Storage-fiók a Blobok egyéni tartományának használatára is konfigurálható. További információ: [Egyéni tartománynév beállítása az Azure Storage-fiókhoz](../blobs/storage-custom-domain-name.md).  
 
@@ -167,7 +167,7 @@ Ha egy általános célú v1-vagy blob Storage-fiókból egy általános célú 
 
 ### <a name="azcopy"></a>AzCopy
 
-Az AzCopy egy Windows parancssori segédprogram, amely az adatok az Azure Storage szolgáltatásba vagy onnan máshová való nagyteljesítményű másolására lett kifejlesztve. A AzCopy használatával egy meglévő általános célú Storage-fiókból másolhatja át az adatait egy blob Storage-fiókba, vagy feltölthet adatokkal a helyszíni tárolóeszközökből. További információt [az AzCopy parancssori segédprogrammal történő adatátvitelt](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) ismertető szakaszban talál.
+Az AzCopy egy Windows parancssori segédprogram, amely az adatok az Azure Storage szolgáltatásba vagy onnan máshová való nagyteljesítményű másolására lett kifejlesztve. A AzCopy használatával egy meglévő általános célú Storage-fiókból másolhatja át az adatait egy blob Storage-fiókba, vagy feltölthet adatokkal a helyszíni tárolóeszközökből. További információt [az AzCopy parancssori segédprogrammal történő adatátvitelt](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető szakaszban talál.
 
 ### <a name="data-movement-library"></a>Adatátviteli könyvtár
 
@@ -188,7 +188,7 @@ Az Azure Storage REST APIával kapcsolatos további információkért lásd: az 
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tárfiók létrehozása](storage-account-create.md)
 - [Blokkblob-tárfiók létrehozása](../blobs/storage-blob-create-account-block-blob.md)

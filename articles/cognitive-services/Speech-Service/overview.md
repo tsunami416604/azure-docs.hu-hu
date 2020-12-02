@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: 291ac7804109b098b556e38c57ca493ba74f1b14
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3b20773de62f036b507f1612f2b38d613d54ba2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183098"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485195"
 ---
 # <a name="what-is-the-speech-service"></a>Mi az a beszédszolgáltatás?
 
@@ -49,7 +49,7 @@ A következő lépésekhez egy Microsoft-fiók és egy Azure-fiókra van szüks�
 Ha Microsoft-fiók, nyissa meg az [Azure regisztrációs oldalát](https://azure.microsoft.com/free/ai/), válassza az **ingyenes indítás** lehetőséget, és hozzon létre egy új Azure-fiókot egy Microsoft-fiók használatával. Az alábbi videóból [megtudhatja, hogyan regisztrálhat az ingyenes Azure-fiókra](https://www.youtube.com/watch?v=GWT2R1C_uUU).
 
 > [!NOTE]
-> Ha regisztrál egy ingyenes Azure-fiókra, az $200-as szolgáltatási Kredittel rendelkezik, amelyet a fizetős szolgáltatás előfizetéséhez is alkalmazhat, akár 30 napig érvényes. Az Azure-szolgáltatások le vannak tiltva, ha a kredit lejár, vagy a 30 nap végén lejár. Az Azure-szolgáltatások további használatához frissítenie kell a fiókját. További információ: az [ingyenes Azure-fiók frissítése](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription). 
+> Ha regisztrál egy ingyenes Azure-fiókra, az $200-as szolgáltatási Kredittel rendelkezik, amelyet a fizetős szolgáltatás előfizetéséhez is alkalmazhat, akár 30 napig érvényes. Az Azure-szolgáltatások le vannak tiltva, ha a kredit lejár, vagy a 30 nap végén lejár. Az Azure-szolgáltatások további használatához frissítenie kell a fiókját. További információ: az [ingyenes Azure-fiók frissítése](../../cost-management-billing/manage/upgrade-azure-subscription.md). 
 >
 > A beszédfelismerési szolgáltatásnak két szolgáltatási szintje van: ingyenes (F0) és előfizetés (S0), amelyek eltérő korlátozásokkal és előnyökkel rendelkeznek. Ha az ingyenes, kis mennyiségű Speech Service-szintet használja, akkor az ingyenes próbaverzió vagy a szolgáltatási jóváírás lejárta után is megtarthatja ezt az ingyenes előfizetést. További információ: [Cognitive Services díjszabása-Speech Service](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
@@ -70,8 +70,8 @@ A Speech Service-erőforrások (ingyenes vagy fizetős szintek) hozzáadása az 
 1. Válassza a **Létrehozás** lehetőséget, majd:
 
    - Adjon egyedi nevet az új erőforrásnak. A név segít különbséget tenni az ugyanahhoz a szolgáltatáshoz kötött több előfizetés között.
-   - Válassza ki azt az Azure-előfizetést, amelyhez az új erőforrás társítva van, hogy megtudja, hogyan történik a díjak számlázása. Itt látható az Azure- [előfizetések](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal) Azure Portalban való létrehozásának bevezetője.
-   - Válassza ki azt a [régiót](regions.md) , ahol az erőforrást használni szeretné. Az Azure egy globális felhőalapú platform, amely világszerte számos régióban általánosan elérhető. A legjobb teljesítmény eléréséhez válasszon egy Önhöz legközelebb eső régiót, vagy az alkalmazás futását. A beszédfelismerési szolgáltatás elérhetősége különböző régiókban változhat. Győződjön meg arról, hogy az erőforrást egy támogatott régióban hozza létre. Lásd: [régió támogatása a Speech Services számára](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation).
+   - Válassza ki azt az Azure-előfizetést, amelyhez az új erőforrás társítva van, hogy megtudja, hogyan történik a díjak számlázása. Itt látható az Azure- [előfizetések](../../cost-management-billing/manage/create-subscription.md#create-a-subscription-in-the-azure-portal) Azure Portalban való létrehozásának bevezetője.
+   - Válassza ki azt a [régiót](regions.md) , ahol az erőforrást használni szeretné. Az Azure egy globális felhőalapú platform, amely világszerte számos régióban általánosan elérhető. A legjobb teljesítmény eléréséhez válasszon egy Önhöz legközelebb eső régiót, vagy az alkalmazás futását. A beszédfelismerési szolgáltatás elérhetősége különböző régiókban változhat. Győződjön meg arról, hogy az erőforrást egy támogatott régióban hozza létre. Lásd: [régió támogatása a Speech Services számára](./regions.md#speech-to-text-text-to-speech-and-translation).
    - Válassza az ingyenes (F0) vagy a fizetős (S0) árképzési szintet. Az egyes csomagokra vonatkozó díjszabási és használati kvótákkal kapcsolatos teljes információkért válassza a **teljes díjszabás megtekintése** vagy a [Speech Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)című témakört. Az erőforrásokra vonatkozó korlátokat az [Azure Cognitive Services korlátai](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits)című témakörben tekintheti meg.
    - Hozzon létre egy új erőforráscsoportot ehhez a beszédfelismerési előfizetéshez, vagy rendelje hozzá az előfizetést egy meglévő erőforráscsoporthoz. Az erőforráscsoportok segítségével megőrizheti különböző Azure-előfizetéseit.
    - Kattintson a **Létrehozás** gombra. Ezzel áttekintheti a központi telepítés áttekintését és megjeleníti az üzembe helyezési folyamat üzeneteit.  
@@ -112,7 +112,7 @@ A beszédfelismerési szolgáltatás használatának megkezdése után próbálj
 
 - [Oktatóanyag: beszédfelismerési szándékok felismerése a Speech SDK és a LUIS, C használatával #](how-to-recognize-intents-from-speech-csharp.md)
 - [Oktatóanyag: hang engedélyezése a robotnak a Speech SDK-val, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
-- [Oktatóanyag: a szöveg fordítását, a hangulat elemzését és a fordítás szövegét beszédre, REST-re alakító lombik-alkalmazás létrehozása](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252fazure%252fcognitive-services%252fspeech-service%252fbreadcrumb%252ftoc.json%252c%252fen-us%252fazure%252fbread%252ftoc.json&toc=%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json%252c%252fen-us%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json)
+- [Oktatóanyag: a szöveg fordítását, a hangulat elemzését és a fordítás szövegét beszédre, REST-re alakító lombik-alkalmazás létrehozása](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json%252c%2fen-us%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json%252c%2fen-us%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json)
 
 ## <a name="get-sample-code"></a>Mintakód letöltése
 
@@ -129,7 +129,7 @@ A beszédfelismerési szolgáltatás a beépített modellekkel jól működik, a
 
 Más termékek olyan beszédfelismerési modelleket ajánlanak, mint például az egészségügyi ellátás vagy a biztosítás, de mindenki számára elérhetők. Az Azure Speech-ben való Testreszabás az *egyedülálló* versenyelőny részévé válik, amely bármely más felhasználó vagy ügyfél számára nem érhető el. Ez azt jelenti, hogy a modelleket saját és egyéni használatra beállították a használati esetekhez.
 
-| Beszédszolgáltatás | Platform | Leírás |
+| Beszédszolgáltatás | Platform | Description |
 | -------------- | -------- | ----------- |
 | Speech-to-Text | [Custom Speech](https://aka.ms/customspeech) | Testreszabhatja a beszédfelismerési modelleket igényeihez és rendelkezésre álló adataihoz. Leküzdheti a beszédfelismerési akadályokat, például a beszéd stílusát, a szókincset és a háttérzajt. |
 | Text-to-Speech | [Egyéni hang](https://aka.ms/customvoice) | Létrehozhat egy felismerhető és egyedülálló hangot szövegfelolvasási alkalmazásaihoz az elérhető beszédadatokkal. A hangkimeneteket tovább finomíthatja a hangparaméterek készletének módosításával. |
@@ -154,7 +154,7 @@ A [Speech Service-tárolók használatával](speech-container-howto.md) üzembe 
 - [REST API: kötegelt átírás és testreszabás](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a beszédfelismerési szöveggel](./get-started-speech-to-text.md) 

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: cdc6cbbea8b222007d94ecac99902bc4498a42fe
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505257"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483627"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -51,7 +51,7 @@ További információ az alapszintű audio Analyzer módból: [videó-és hangf�
 
 A legtöbb tulajdonság frissítése mostantól engedélyezett az élő események leállításakor. Emellett a felhasználók megadhatnak egy előtagot a statikus állomásnévhez az élő esemény bemeneti és előnézeti URL-címeihez. A VanityUrl most úgy lett meghívva `useStaticHostName` , hogy jobban tükrözze a tulajdonság szándékát.
 
-Az élő események mostantól készenléti állapottal rendelkeznek.  Tekintse [meg az élő eseményeket és a Media Services élő kimeneteit](https://docs.microsoft.com/azure/media-services/latest/live-events-outputs-concept).
+Az élő események mostantól készenléti állapottal rendelkeznek.  Tekintse [meg az élő eseményeket és a Media Services élő kimeneteit](./live-events-outputs-concept.md).
 
 Egy élő esemény támogatja A különböző bemeneti méretarányok fogadását. A stretch mód lehetővé teszi, hogy az ügyfelek megadják a kimenet nyújtásának viselkedését.
 
@@ -120,7 +120,7 @@ Media Services GA'ed a következő Azure Government régiókban: *USA Korm. Ariz
 
 Az élő és a videó igény szerinti folyamatos átviteléhez a CDN támogatását is hozzáadta a *forrás-és a kisegítő* fejlécekhez. olyan ügyfelek számára érhető el, akik közvetlen szerződést kötöttek a Akamai CDN-vel. Origin-Assist CDN-Prefetch funkció a következő HTTP-fejléceket foglalja magában a Akamai CDN és a Azure Media Services-forrás között:
 
-|HTTP-fejléc|Értékek|Küldő|Fogadó|Rendeltetés|
+|HTTP-fejléc|Értékek|Küldő|Fogadó|Cél|
 | ---- | ---- | ---- | ---- | ----- |
 |CDN-Origin-Assist-prefektus-enabled | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e|
 |CDN-Origin-Assist-prefektus-Path| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|A CDN elérési útjának biztosítása|
@@ -431,7 +431,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 [Áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Áttekintés](media-services-overview.md)
 - [A Media Services v3 dokumentációjának frissítései](docs-release-notes.md)

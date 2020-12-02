@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 5631cbdd0b1eae343899be2147720d980e605dbb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5bd41396cf075f83fd37a4276f7a30223ec8c1f3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452719"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96482943"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 üzembe helyezése az Azure-ban több-bérlős üzemeltetési jogosultságokkal 
 A Windows 10 Enterprise E3/E5 felhasználónkénti vagy a Windows virtuális asztali hozzáférés felhasználónként (felhasználói előfizetési licencek vagy kiegészítő felhasználói előfizetési licencek) rendelkező ügyfelei számára a Windows 10 rendszerhez készült több-bérlős üzemeltetési jogosultság lehetővé teszi a Windows 10-es licencek felhőbe való bevezetését, valamint a Windows 10 Virtual Machines Azure-beli futtatását anélkül, hogy más licenccel kellene fizetnie. További információ: több- [bérlős üzemeltetés a Windows 10 rendszerhez](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -36,9 +36,11 @@ A PowerShell, a parancssori felület és a Azure Resource Manager sablon üzembe
 ## <a name="qualify-for-multi-tenant-hosting-rights"></a>A több-bérlős üzemeltetési jogosultságok beszerzése 
 A több-bérlős üzemeltetési jogosultságok beszerzéséhez és a Windows 10 rendszerképeinek Azure-felhasználókon való futtatásához a következő előfizetések egyike szükséges: 
 
--   Microsoft 365 E3/E5/F3/a3/a5
--   Windows 10 Enterprise E3/E5 
--   Windows 10 Education a3/a5
+-   E3/E5 Microsoft 365 
+-   Microsoft 365 F3 
+-   Microsoft 365 a3/a5 
+-   Windows 10 Enterprise E3/E5
+-   Windows 10 Education a3/a5 
 -   Windows VDA E3/E5
 
 

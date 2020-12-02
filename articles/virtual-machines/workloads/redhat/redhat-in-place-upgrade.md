@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 4487aeba72cc71a31871169c0647efbff34ee068
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9b35a3cbe23af91f7f0b8aceecfb8ba3c9720461
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968621"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484413"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Helyi frissítések Red Hat Enterprise Linux
 
@@ -35,7 +35,7 @@ A frissítés megkezdése előtt vegye figyelembe a következő szempontokat.
 >[!Important] 
 > A frissítés megkezdése előtt készítsen pillanatképet a rendszerképről.
 
-* Győződjön meg arról, hogy a legújabb RHEL 7 verziót használja. Jelenleg a legújabb verzió a RHEL 7,9. Ha zárolt verziót használ, és nem tud frissíteni a RHEL 7,9-re, akkor kövesse az [alábbi lépéseket a nem EUs (bővített frissítés támogatása) adattárra való váltáshoz](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock).
+* Győződjön meg arról, hogy a legújabb RHEL 7 verziót használja. Jelenleg a legújabb verzió a RHEL 7,9. Ha zárolt verziót használ, és nem tud frissíteni a RHEL 7,9-re, akkor kövesse az [alábbi lépéseket a nem EUs (bővített frissítés támogatása) adattárra való váltáshoz](./redhat-rhui.md#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock).
 
 * Futtassa a következő parancsot a frissítés vizsgálatához, és ellenőrizze, hogy a rendszer sikeresen befejeződik-e. A parancsnak */var/log/leapp/leapp-report.txt* fájlt kell előállítania. Ez a fájl ismerteti a folyamatot, mi történik, és hogy lehetséges-e a frissítés.
 
@@ -136,7 +136,7 @@ A következő hibák gyakran történnek, ha a `leapp preupgrade` folyamat meghi
     Ez a hiba akkor fordul elő, ha a root SSH-hozzáférés nincs engedélyezve a */etc/sshd_configban*. További információt a jelen cikk [előkészületek](#preparations) című szakaszában talál. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ [Az Azure-beli Red Hat-lemezképekről](./redhat-images.md).
 * További információ a [Red Hat frissítési infrastruktúráról](./redhat-rhui.md).
 * További információ a [RHEL BYOS ajánlatáról](./byos.md).

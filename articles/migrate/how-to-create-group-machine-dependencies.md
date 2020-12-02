@@ -3,12 +3,12 @@ title: Ügynök-alapú függőségi elemzés beállítása Azure Migrate Server 
 description: Ez a cikk azt ismerteti, hogyan állítható be az ügynök-alapú függőségek elemzése Azure Migrate Server Assessment-ben.
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 58c1aeea00ae033def0f45d220c12d13cc28b4b2
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 1ab5d639d68b5ce2298f907ef8346488e16b4020
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302840"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483470"
 ---
 # <a name="set-up-dependency-visualization"></a>Függőségi vizualizáció beállítása
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan állítható be az ügynök-alapú függőségi 
     - [Fizikai kiszolgálók](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
     - [Hyper-V virtuális gépek](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
 - Győződjön meg róla, hogy:
-    - Azure Migrate projekttel rendelkezik. Ha nem, [hozzon létre](how-to-add-tool-first-time.md) egyet most.
+    - Azure Migrate projekttel rendelkezik. Ha nem, [hozzon létre](./create-manage-projects.md) egyet most.
     - Győződjön meg arról, hogy [hozzáadta](how-to-assess.md) a Azure Migrate: Server Assessment eszközt a projekthez.
     - [Azure Migrate berendezés](migrate-appliance.md) beállítása a helyszíni gépek felderítéséhez. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. Készülék beállítása a következőhöz:
         - [VMware](how-to-set-up-appliance-vmware.md) Virtuális gépek.
@@ -147,7 +147,7 @@ A csoport létrehozása után javasoljuk, hogy telepítse az ügynököket a cso
 A Azure Migrate projekthez társított Log Analytics munkaterületen Service Map által rögzített függőségi adatmennyiséget kérdezheti le. A Log Analytics Azure Monitor naplók írására és futtatására szolgál.
 
 - [Megtudhatja, hogyan](../azure-monitor/insights/service-map.md#log-analytics-records) kereshet Service Map-adatLog Analyticsokban.
-- [Tekintse](../azure-monitor/log-query/get-started-queries.md)  át a [log Analytics](../azure-monitor/log-query/get-started-portal.md)naplójának lekérdezéseit.
+- [Tekintse](../azure-monitor/log-query/get-started-queries.md)  át a [log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)naplójának lekérdezéseit.
 
 Futtasson egy lekérdezést a függőségi értékekhez a következő módon:
 

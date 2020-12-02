@@ -9,14 +9,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/22/2020
+ms.date: 11/30/2020
 ms.author: allensu
-ms.openlocfilehash: 169889dbb87d00fdde44ff72c0d2004c331604ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c593cda7761ce1defa6bdb31e0dbb528b9e5eca
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073036"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483988"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Az Azure CDN használati mintáinak elemzése
 
@@ -31,7 +31,7 @@ Szabványos Microsoft-profillal engedélyezheti a nyers naplókat, és kiválasz
 
 Az Azure Log Analytics megtekintheti a figyelési metrikákat, és beállíthatja a riasztásokat. 
 
-További információ: [Azure CDN http nyers naplók](enable-raw-logs.md).
+További információ: [Azure CDN http nyers naplók](monitoring-and-access-log.md).
 
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Alapvető elemzések az Azure diagnosztikai naplóin keresztül
@@ -50,7 +50,7 @@ Az egyéni jelentések megjelenítik a találatok vagy az átvitt adatmennyiség
 
 ## <a name="azure-cdn-premium-from-verizon-reports"></a>Prémium szintű Azure CDN Verizon-jelentésekben
 
-A **Verizon Azure CDN Premium**csomaggal a következő jelentések is elérhetők:
+A **Verizon Azure CDN Premium** csomaggal a következő jelentések is elérhetők:
    * [Speciális HTTP-jelentések](cdn-advanced-http-reports.md)
    * [Valós idejű statisztikák](cdn-real-time-stats.md)
    * [Azure CDN Edge-csomópont teljesítménye](cdn-edge-performance.md)
@@ -61,6 +61,4 @@ Ebből a cikkből megtudhatta, hogyan használhatók a Azure CDN elemzési jelen
 A Azure CDNről és a jelen cikkben említett egyéb Azure-szolgáltatásokról további információt a következő témakörben talál:
 
 * [Mi az Azure CDN?](cdn-overview.md)
-* [HTTP nyers naplók Azure CDN](enable-raw-logs.md)
-
-
+* [HTTP nyers naplók Azure CDN](monitoring-and-access-log.md)

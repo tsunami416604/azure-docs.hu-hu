@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 5c4f02eff06c08f1829f9f1c74d1dcb09ee57905
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a562c28235608d4a2425455b5543a76c99374f80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024789"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483814"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Beszédfelismerési szolgáltatás: a docs újdonságai
 
@@ -32,7 +32,7 @@ Ha szeretne többet megtudni a Speech Service, a Speech SDK, a Speech Devices SD
 
 ### <a name="new-articles"></a>Új cikkek
 
-* [Custom Speech modell javítása](how-to-custom-speech-improve-accuracy.md)
+* [Custom Speech modell javítása](./how-to-custom-speech-evaluate-data.md)
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
@@ -44,7 +44,7 @@ Ha szeretne többet megtudni a Speech Service, a Speech SDK, a Speech Devices SD
 * Gyors útmutató [: a hosszú formátumú hang aszinkron szintézise a Pythonban (előzetes verzió)](./long-audio-api.md) – a rendszer a nyilvános neurális hangok támogatásával és a hozzájuk tartozó paraméterekkel frissült.
 * Gyors útmutató [: beszédfelismerési funkció felismerése hangfájl](./get-started-speech-to-text.md) használatával – JavaScript-utasítások hozzáadása a dokumentációhoz.
 * Gyors útmutató [: a beszédfelismerési funkció felismerése egy mikrofon](./get-started-speech-to-text.md) használatával – a további tudnivalókat és JavaScript-utasításokat a dokumentációban találja.
-* Rövid útmutató [: a blob Storage-ban tárolt beszéd felismerése](quickstarts/from-blob.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
+* Rövid útmutató [: a blob Storage-ban tárolt beszéd felismerése](./batch-transcription.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
 * [Gyors útmutató: beszédek, szándékok és entitások felismerése Language Understanding (LUIS)](quickstarts/intent-recognition.md)
 * Gyors útmutató [: telepítési fejlesztési környezet](quickstarts/setup-platform.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
 * Gyors útmutató [: a beszédfelismerés hangfájlba való szintézise](./get-started-text-to-speech.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
@@ -58,7 +58,7 @@ Ezek a problémák májusban lettek megnyitva. Ez a táblázat felsorolja azt a 
 
 Ez a tábla havonta frissül, és csak a májusában megnyitott problémákat tükrözi.  
 
-|ID (Azonosító)|Felhasználó|Description|Megnyitott|Állapot|Típus|
+|ID (Azonosító)|Felhasználó|Description|Megnyitott|Állam|Típus|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |[56045](https://github.com/MicrosoftDocs/azure-docs/issues/56045)|rhalaly|A tevékenység el lett dobva, mert hiányzik a robot végpontja|2020-05-31|Lezárt|Probléma|
 |[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|Helytelen közzétételi robot-lépések|2020-05-31|Megnyitás|Probléma|

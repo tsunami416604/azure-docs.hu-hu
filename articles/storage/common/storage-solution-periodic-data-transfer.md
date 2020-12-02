@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a0efc6f6f6d4ae6355fbb42fbc7e13ad7c078cf3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 19a4645e2bde4cf6b9f9a78123b334c290581ac4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792888"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484532"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Időszakos adatátviteli megoldások
  
@@ -21,28 +21,28 @@ Ez a cikk áttekintést nyújt az adatátviteli megoldásokról, amikor rendszer
 
 Az összes rendelkezésre álló adatátviteli lehetőség áttekintését itt találja: [válasszon egy Azure adatátviteli megoldást](storage-choose-data-transfer-solution.md).
 
-## <a name="recommended-options"></a>Ajánlott beállítások
+## <a name="recommended-options"></a>Ajánlott lehetőségek
 
-Az időszakos adatátvitel ajánlott lehetőségei két kategóriába sorolhatók attól függően, hogy az átvitel ismétlődő vagy folyamatos.
+Az időszakos adatátvitel javasolt beállításai két kategóriába sorolhatók attól függően, hogy az átvitel ismétlődő-e vagy folyamatos.
 
-- **Megírt/programozott eszközök** – a rendszeres időközönként bekövetkezett adatátvitelhez használja a megírt és programozott eszközöket, például a AzCopy és az Azure Storage REST API-kat. Ezeket az eszközöket az informatikai szakemberek és a fejlesztők célozzák meg.
+- **Megírt/programozott eszközök** – a rendszeres időközönként bekövetkezett adatátvitelhez használja a megírt és programozott eszközöket, például a AzCopy és az Azure Storage REST API-kat. Ezen eszközök esetében a célcsoportot az informatikai szakemberek és a fejlesztők alkotják.
 
-    - **AzCopy** – ezzel a parancssori eszközzel könnyedén másolhatók az Azure-Blobok,-fájlok és-tárolók adatai az optimális teljesítmény érdekében. A AzCopy támogatja a párhuzamosságot és a párhuzamosságot, valamint lehetővé teszi a másolási műveletek folytatását megszakítás közben.
+    - **AzCopy** – ezzel a parancssori eszközzel könnyedén másolhatók az Azure-Blobok,-fájlok és-tárolók adatai az optimális teljesítmény érdekében. Az AzCopy támogatja az egyidejűséget és a párhuzamosságot, valamint lehetővé teszi a másolási műveletek folytatását egy esetleges megszakítás esetén.
     - **Azure Storage REST API-k/SDK** -k – egy alkalmazás létrehozásakor az Azure Storage REST API-kon keresztül fejlesztheti az alkalmazást, és használhatja a több nyelven elérhető Azure SDK-kat. A REST API-k az Azure Storage adatátviteli függvénytárát is kihasználhatják, amely különösen az Azure-ba irányuló és az adatok nagy teljesítményű másolására szolgál.
 
-- **Folyamatos adatfeldolgozási eszközök** – folyamatos, folyamatos adatfeldolgozás esetén kiválaszthatja Data Box online átvitelű eszköz vagy Azure Data Factory egyikét. Ezeket az eszközöket informatikai szakemberek teszik elérhetővé, és transzparens módon automatizálják az adatátvitelt.
+- **Folyamatos adatfeldolgozási eszközök** – folyamatos, folyamatos adatfeldolgozás esetén kiválaszthatja Data Box online átvitelű eszköz vagy Azure Data Factory egyikét. Az eszközök beállítását informatikai szakemberek végzik, és lehetővé teszik az adatátvitel átlátható automatizálását.
 
-    - **Azure Data Factory** – Data Factory kell használni az adatátviteli műveletek felskálázásához, és ha szükség van a koordinálásra és a nagyvállalati szintű figyelési lehetőségekre. A Azure Data Factory használatával beállíthat egy felhőalapú folyamatot, amely rendszeresen továbbítja a fájlokat több Azure-szolgáltatás, a helyszíni környezet vagy a kettő kombinációja között. Azure Data Factory lehetővé teszi olyan adatvezérelt munkafolyamatok előkészítését, amelyek különböző adattárakból származó adatokkal töltenek be, és automatizálják az adatáthelyezést és az adatátalakítást.
-    - **Azure Data Box család online átvitelhez** – a Data Box Edge és a Data Box Gateway olyan online hálózati eszközök, amelyek az Azure-ba és az-ba helyezhetik át az adatátvitelt. A Data Box Edge a mesterséges intelligencia (AI)-kompatibilis Edge számítási funkcióját használja a feltöltés előtt az adatok előzetes feldolgozásához. Data Box Gateway az eszköz virtuális verziója azonos adatátviteli képességekkel.
+    - **Azure Data Factory** – Data Factory kell használni az adatátviteli műveletek felskálázásához, és ha szükség van a koordinálásra és a nagyvállalati szintű figyelési lehetőségekre. Az Azure Data Factory használatával létrehozhat egy olyan felhőalapú folyamatot, amely rendszeresen továbbítja a fájlokat több Azure- vagy helyszíni szolgáltatás, illetve a kettő kombinációja között. Az Azure Data Factoryvel olyan adatvezérelt munkafolyamatokat vezényelhet, amelyek különböző adattárakból töltenek be adatokat, illetve automatizálják az adatáthelyezést és az adatátalakítást.
+    - **Azure Data Box család online átvitelhez** – a Data Box Edge és a Data Box Gateway olyan online hálózati eszközök, amelyek az Azure-ba és az-ba helyezhetik át az adatátvitelt. A Data Box Edge mesterséges intelligenciára (MI) épülő peremhálózati számítást alkalmaz az adatok feltöltés előtti feldolgozásához. A Data Box Gateway az eszköz virtuális verziója, amely ugyanazokkal az adatátviteli képességekkel rendelkezik.
 
 
 ## <a name="comparison-of-key-capabilities"></a>A főbb képességek összehasonlítása
 
-A következő táblázat összefoglalja a főbb képességek különbségeit.
+Az alábbi táblázat a fő képességek közötti különbségeket összegzi.
 
 ### <a name="scriptedprogrammatic-network-data-transfer"></a>Parancsfájlos/programozott hálózati adatátvitel
 
-| Képesség                  | AzCopy                                 | Azure Storage – REST API-k       |
+| Képesség                  | AzCopy                                 | Azure Storage REST API-k       |
 |-----------------------------|----------------------------------------|-------------------------------|
 | Űrlap tényező                 | A Microsoft parancssori eszköze       | Az ügyfelek a tárterületen dolgoznak <br> REST API-k az Azure ügyféloldali kódtárai használatával |
 | Kezdeti egyszeri telepítés     | Minimális                                | Mérsékelt, változó fejlesztési tevékenység    |
@@ -52,7 +52,7 @@ A következő táblázat összefoglalja a főbb képességek különbségeit.
 
 ### <a name="continuous-data-ingestion-over-network"></a>Folyamatos adatfeldolgozás hálózaton keresztül
 
-| Szolgáltatás                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
+| Jellemző                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | Űrlap tényező                                   | Virtuális eszköz             | Fizikai eszköz          | Szolgáltatás Azure Portalban, helyszíni ügynök                                                            |
 | Hardver                                      | A hypervisor            | Microsoft által biztosított    | NA                                                            |
@@ -63,9 +63,9 @@ A következő táblázat összefoglalja a főbb képességek különbségeit.
 | Átvitel más felhőkből                    | Nem                         | Nem                       | Igen                                                           |
 | Díjszabás                                       | [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Díjszabás](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Adatok átvitele a AzCopy](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ftables%252ftoc.json).
+- [Adatok átvitele a AzCopy](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
 - [További információ a Storage REST API-kkal való adatátvitelről](/dotnet/api/overview/azure/storage).
 - Ismerje meg a következőket:
     - [Adatok átvitele Data Box Gatewaysal](../../databox-online/data-box-gateway-deploy-add-shares.md).

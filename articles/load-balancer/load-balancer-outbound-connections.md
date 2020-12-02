@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 5a2d7f9f60253916eae808a7f65bc4b4b289bd67
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3f4791c5cbcf731e118bac4bf692adcad7e9ff44
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694780"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483589"
 ---
 # <a name="using-snat-for-outbound-connections"></a>SNAT használata a kimenő kapcsolatokhoz
 
@@ -66,7 +66,7 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
  | Nyilvános Load Balancer vagy önálló | [SNAT (forrás hálózati címfordítás)](#snat) </br> nincs használatban. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (biztonsági tartalom beágyazása) |
 
 
- #### <a name="description"></a>Leírás
+ #### <a name="description"></a>Description
 
 
  Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja az összes kimenő folyamathoz. A példányhoz minden elérhető ideiglenes port tartozik. Nem számít, hogy a virtuális gép terheléselosztás alatt áll-e. Ez a forgatókönyv elsőbbséget élvez a többiekkel szemben. 
@@ -83,7 +83,7 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
  | Nyilvános Load Balancer | A terheléselosztó felületi IP-címeinek használata a [SNAT](#snat).| TCP </br> UDP |
 
 
- #### <a name="description"></a>Leírás
+ #### <a name="description"></a>Description
 
 
  A terheléselosztó erőforrás egy kimenő szabállyal vagy egy terheléselosztási szabállyal van konfigurálva, amely engedélyezi az alapértelmezett SNAT. Ez a szabály a nyilvános IP-frontend és a háttér-készlet közötti kapcsolat létrehozására szolgál. 
@@ -109,9 +109,9 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
 
  | Szövetségek | Metódus | IP-protokollok |
  | ------------ | ------ | ------------ |
- |Nincs </br> Alapszintű Load Balancer | [SNAT](#snat) a példány-szintű dinamikus IP-címmel| TCP </br> UDP | 
+ |Nincsenek </br> Alapszintű Load Balancer | [SNAT](#snat) a példány-szintű dinamikus IP-címmel| TCP </br> UDP | 
 
- #### <a name="description"></a>Leírás
+ #### <a name="description"></a>Description
 
 
  Amikor a virtuális gép létrehoz egy kimenő folyamatot, az Azure lefordítja a forrás IP-címet egy dinamikusan lefoglalt nyilvános forrás IP-címére. Ez a nyilvános IP-cím **nem konfigurálható** , és nem foglalható le. Ez a cím nem számít az előfizetés nyilvános IP-erőforrásának korlátja alapján. 
@@ -182,8 +182,6 @@ További információ az Azure Virtual Network NAT-ról: [Mi az az azure Virtual
 
 ## <a name="constraints"></a>Korlátozások
 
-*   A portok 15 másodperc után lesznek felszabadítva, ha az **első TCP** -t fogadják vagy elküldik
-*   A portok 240 másodperc után lesznek felszabadítva, ha **FINACK** érkezik vagy elküldve
 *   Ha a kapcsolatok nem kapnak új csomagokat, a portok 4 – 120 percet követően lesznek felszabadítva.
   * Ez a küszöbérték a kimenő szabályok használatával konfigurálható.
 *   Minden IP-cím 64 000 portot biztosít, amely a SNAT használható.
@@ -192,7 +190,7 @@ További információ az Azure Virtual Network NAT-ról: [Mi az az azure Virtual
   * A TCP SNAT-portok több kapcsolathoz is használhatók ugyanahhoz a cél IP-címhez, ha a célként megadott portok eltérőek.
 *   A SNAT kimerültség akkor következik be, amikor egy háttérbeli példány kifogyott a megadott SNAT-portok közül. A terheléselosztó továbbra is használhat fel nem használt SNAT-portokat. Ha a háttérbeli példány SNAT-portjai meghaladják a megadott SNAT-portokat, nem fog tudni új kimenő kapcsolatokat létesíteni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 *   [A kimenő kapcsolatok hibáinak elhárítása a SNAT kimerülése miatt](./troubleshoot-outbound-connection.md)
 *   [Tekintse át az SNAT mérőszámait](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) , és ismerkedjen meg a megfelelő szűrési, felosztási és megtekintési módszerekkel.

@@ -7,12 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89b795011460ee2803d07d14b9c2abe9c8ffca55
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260020"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483351"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>VMware virtuális gépek migrálása a kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal rendelkező Azure virtuális gépekre
 
@@ -22,12 +22,12 @@ Az Azure Migrate Server Migration Portal felülete lehetővé teszi a [VMWare vi
 
 A cikkben szereplő példák a Resource Manager-sablon létrehozásához és üzembe helyezéséhez szükséges feladatok elvégzéséhez [Azure PowerShell](/powershell/azure/new-azureps-module-az) használnak.
 
-[További](../virtual-machines/windows/disk-encryption.md) információ a felügyelt lemezekkel rendelkező, ügyfél által felügyelt kulcsokkal (CMK) rendelkező kiszolgálóoldali titkosításról.
+[További](../virtual-machines/disk-encryption.md) információ a felügyelt lemezekkel rendelkező, ügyfél által felügyelt kulcsokkal (CMK) rendelkező kiszolgálóoldali titkosításról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Tekintse át a](tutorial-migrate-vmware.md) VMWare virtuális gépek Azure-ba történő áttelepítéséről szóló oktatóanyagot az ügynök nélküli replikációval az eszközre vonatkozó követelmények megismeréséhez.
-- Az [alábbi utasításokat követve](how-to-add-tool-first-time.md) hozzon létre egy Azure Migrate projektet, és adja hozzá a **Azure Migrate: Server áttelepítési** eszközt a projekthez.
+- Az [alábbi utasításokat követve](./create-manage-projects.md) hozzon létre egy Azure Migrate projektet, és adja hozzá a **Azure Migrate: Server áttelepítési** eszközt a projekthez.
 - [Kövesse ezeket az utasításokat](how-to-set-up-appliance-vmware.md) a VMware-hez készült Azure Migrate berendezés beállításához a helyszíni környezetben, és fejezze be a felderítést.
 
 ## <a name="prepare-for-replication"></a>Felkészülés a replikálásra

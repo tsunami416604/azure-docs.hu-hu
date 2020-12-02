@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 0de8d8d5ff0f14d0268dbcca743f4d06ed877903
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 331ceb6124463604989116ce84bc73acd8cfb22f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544394"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483249"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel
 
@@ -30,7 +30,7 @@ Ebből az útmutatóból megtudhatja, hogyan használhatja a blobfuse, és hogya
 ## <a name="install-blobfuse-on-linux"></a>A blobfuse telepítése Linux rendszeren
 A Blobfuse bináris fájljai a Linux for Ubuntu és a RHEL disztribúciók [Microsoft-szoftverek tárházában](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) érhetők el. A blobfuse az adott disztribúcióra való telepítéséhez konfigurálja az egyik tárházat a listából. A forráskód bináris fájljait az [Azure Storage telepítési lépéseit](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) követve is létrehozhatja, ha nincs elérhető bináris fájl a terjesztéshez.
 
-A Blobfuse támogatja az Ubuntu 14,04, 16,04 és 18,04 rendszereken való telepítést. Futtassa ezt a parancsot, és győződjön meg arról, hogy telepítve van-e a telepített verziók egyike:
+A Blobfuse az Ubuntu 14,04, 16,04, 18,04 és 20,04 rendszeren támogatja a telepítést. Futtassa ezt a parancsot, és győződjön meg arról, hogy telepítve van-e a telepített verziók egyike:
 ```
 lsb_release -a
 ```
@@ -141,7 +141,7 @@ mkdir test
 echo "hello world" > test/blob.txt
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Blobfuse kezdőlapja](https://github.com/Azure/azure-storage-fuse#blobfuse)
 * [Blobfuse-problémák jelentése](https://github.com/Azure/azure-storage-fuse/issues)

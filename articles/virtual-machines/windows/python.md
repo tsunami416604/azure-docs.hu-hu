@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: 402a61b4b5335c19d75cd1182243783453a0e7fa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a7117d30eb1774753f21e82ad5f812a7309d8386
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974855"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483096"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban a Python használatával
 
@@ -26,21 +26,21 @@ Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%
 > * Az erőforrások létrehozása
 > * Felügyeleti feladatok végrehajtása
 > * Erőforrások törlése
-> * Alkalmazás futtatása
+> * Az alkalmazás futtatása
 
 Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. Ha még nem tette meg, telepítse a [Visual studiót](/visualstudio/install/install-visual-studio). Válassza a **Python-fejlesztés** elemet a munkaterhelések lapon, majd kattintson a **telepítés**gombra. Az összegzésben láthatja, hogy a **Python 3 64-bit (3.6.0)** automatikusan ki van választva. Ha már telepítette a Visual studiót, a Python munkaterhelést a Visual Studio Launcher használatával adhatja hozzá.
-2. A Visual Studio telepítése és elindítása után kattintson a **fájl**  >  **új**  >  **projekt**elemre.
-3. Kattintson a **sablonok**  >  **Python**  >  **Python-alkalmazás**elemre, írja be a *myPythonProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK**gombra.
+1. Ha még nem tette meg, telepítse a [Visual studiót](/visualstudio/install/install-visual-studio). Válassza a **Python-fejlesztés** elemet a munkaterhelések lapon, majd kattintson a **telepítés** gombra. Az összegzésben láthatja, hogy a **Python 3 64-bit (3.6.0)** automatikusan ki van választva. Ha már telepítette a Visual studiót, a Python munkaterhelést a Visual Studio Launcher használatával adhatja hozzá.
+2. A Visual Studio telepítése és elindítása után kattintson a **fájl**  >  **új**  >  **projekt** elemre.
+3. Kattintson a **sablonok**  >  **Python**  >  **Python-alkalmazás** elemre, írja be a *myPythonProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK** gombra.
 
 ## <a name="install-packages"></a>Csomagok telepítése
 
-1. Megoldáskezelő a *myPythonProject*alatt kattintson a jobb gombbal a **Python-környezetek**elemre, majd válassza a **virtuális környezet hozzáadása**elemet.
-2. A virtuális környezet hozzáadása képernyőn fogadja el az *env*alapértelmezett nevét, győződjön meg arról, hogy a *Python 3,6 (64-bit)* van kiválasztva az alapértelmező számára, majd kattintson a **Létrehozás**gombra.
-3. Kattintson a jobb gombbal a létrehozott *env* -környezetre, kattintson a **Python-csomag telepítése**parancsra, írja be az *Azure* kifejezést a keresőmezőbe, majd nyomja le az ENTER billentyűt.
+1. Megoldáskezelő a *myPythonProject* alatt kattintson a jobb gombbal a **Python-környezetek** elemre, majd válassza a **virtuális környezet hozzáadása** elemet.
+2. A virtuális környezet hozzáadása képernyőn fogadja el az *env* alapértelmezett nevét, győződjön meg arról, hogy a *Python 3,6 (64-bit)* van kiválasztva az alapértelmező számára, majd kattintson a **Létrehozás** gombra.
+3. Kattintson a jobb gombbal a létrehozott *env* -környezetre, kattintson a **Python-csomag telepítése** parancsra, írja be az *Azure* kifejezést a keresőmezőbe, majd nyomja le az ENTER billentyűt.
 
 A kimeneti ablakokban látnia kell, hogy az Azure-csomagok telepítése sikeres volt. 
 
@@ -88,7 +88,7 @@ A lépés elkezdése előtt győződjön meg arról, hogy rendelkezik [Active Di
         return credentials
     ```
 
-    Cserélje le az **Application-ID**, a **Authentication-Key**és a **bérlői azonosító** értékét azokra az értékekre, amelyeket korábban a Azure Active Directory egyszerű szolgáltatás létrehozásakor gyűjtött.
+    Cserélje le az **Application-ID**, a **Authentication-Key** és a **bérlői azonosító** értékét azokra az értékekre, amelyeket korábban a Azure Active Directory egyszerű szolgáltatás létrehozásakor gyűjtött.
 
 5. A korábban hozzáadott függvény meghívásához adja hozzá ezt a kódot az **IF** utasításban a. a. reszelő végén:
 
@@ -492,7 +492,7 @@ A központi telepítés számos aspektusát figyelembe kell venni a virtuális g
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Adatlemez hozzáadása a virtuális géphez
 
-A virtuális gépekhez egy vagy több VHD-ként tárolt [adatlemez](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) tartozhat.
+A virtuális gépekhez egy vagy több VHD-ként tárolt [adatlemez](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) tartozhat.
 
 1. Ha adatlemezt szeretne hozzáadni a virtuális géphez, adja hozzá ezt a függvényt a. a. file-fájl változói után: 
 
@@ -555,7 +555,7 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
 
 3. Mentse a *myPythonProject.py*.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 1. A konzol alkalmazás futtatásához kattintson a **Start** gombra a Visual Studióban.
 
@@ -564,7 +564,7 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
     Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig. Az alkalmazás befejezését követően több percet is igénybe vehet, mielőtt az összes erőforrást és az erőforráscsoportot törölné.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha problémák merültek fel az üzembe helyezés során, a következő lépésről lásd: [Troubleshooting resource group deployments with Azure Portal](../../azure-resource-manager/templates/deployment-history.md) (Erőforráscsoportok üzemelő példányainak hibaelhárítása az Azure Portalon)
 - További információ az [Azure Python-könyvtárról](/python/api/overview/azure/?view=azure-python)

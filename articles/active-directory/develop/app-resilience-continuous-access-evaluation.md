@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: cf5a7a5902484536d0cf2a1844be469f29e15f4b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 86c379316737b7718b62165a6feb93ca3a0e9954
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348466"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484039"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>A folyamatos hozzáférés kiértékelését engedélyező API-k használata az alkalmazásokban
 
@@ -27,9 +27,9 @@ Ez a cikk bemutatja, hogyan használhatók a CAE-kompatibilis API-k az alkalmaz�
 
 ## <a name="implementation-considerations"></a>Implementálási szempontok
 
-A folyamatos hozzáférés kiértékeléséhez az alkalmazásnak és az erőforrás-API-nak is elérhetőnek kell lennie a CAE-enabled beállításban. Azonban a kód előkészítése a CAE-kompatibilis erőforrások használatára nem akadályozza meg, hogy olyan API-kat használjon, amelyek nem engedélyezettek a CAE-ben. 
+A folyamatos hozzáférés kiértékeléséhez az alkalmazásnak és az erőforrás-API-nak is elérhetőnek kell lennie a CAE-enabled beállításban. Azonban a kód előkészítése a CAE-kompatibilis erőforrások használatára nem akadályozza meg, hogy olyan API-kat használjon, amelyek nem engedélyezettek a CAE-ben.
 
-Ha egy erőforrás-API a CAE-t implementálja, és az alkalmazása kijelenti, hogy képes a CAE kezelésére, az alkalmazás az adott erőforráshoz tartozó CAE-jogkivonatokat kap. Ebben az esetben, ha az alkalmazáshoz tartozó CAE-t kinyilvánítja, az alkalmazásnak kezelnie kell a CAE-jogcím kihívását minden olyan erőforrás-API esetében, amely elfogadja a Microsoft Identity hozzáférési jogkivonatokat. Ha nem kezeli a CAE-válaszokat ezekben az API-hívásokban, az alkalmazás egy hurokban próbálkozhat egy olyan tokenrel, amely még mindig a token visszaadott élettartamában van, de a CAE miatt visszavonták. 
+Ha egy erőforrás-API a CAE-t implementálja, és az alkalmazása kijelenti, hogy képes a CAE kezelésére, az alkalmazás az adott erőforráshoz tartozó CAE-jogkivonatokat kap. Ebben az esetben, ha az alkalmazáshoz tartozó CAE-t kinyilvánítja, az alkalmazásnak kezelnie kell a CAE-jogcím kihívását minden olyan erőforrás-API esetében, amely elfogadja a Microsoft Identity hozzáférési jogkivonatokat. Ha nem kezeli a CAE-válaszokat ezekben az API-hívásokban, az alkalmazás egy hurokban próbálkozhat egy olyan tokenrel, amely még mindig a token visszaadott élettartamában van, de a CAE miatt visszavonták.
 
 ## <a name="the-code"></a>A kód
 
@@ -116,4 +116,4 @@ Az alkalmazás teszteléséhez jelentkezzen be egy felhasználót az alkalmazás
 
 ## <a name="next-steps"></a>További lépések
 
-További információ: [folyamatos hozzáférés kiértékelése](/conditional-access/concept-continuous-access-evaluation.md).
+További információ: [folyamatos hozzáférés kiértékelése](../conditional-access/concept-continuous-access-evaluation.md).

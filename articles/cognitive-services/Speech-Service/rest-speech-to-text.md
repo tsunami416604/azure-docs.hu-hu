@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 89e5fa180b011cbedebc25a5e5d555a2190805f8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dff7ff0afd6c236645731dc7edd936b0b808716b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015358"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483920"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -58,7 +58,7 @@ Ezek a paraméterek szerepelhetnek a REST-kérelem lekérdezési karakterláncá
 | `language` | Azonosítja a felismert nyelvet. Lásd: [támogatott nyelvek](language-support.md#speech-to-text). | Kötelező |
 | `format` | Megadja az eredmény formátumát. Az elfogadott értékek: `simple` és `detailed` . Az egyszerű eredmények közé tartoznak a következők:,, `RecognitionStatus` `DisplayText` `Offset` és `Duration` . A részletes válaszok a megjelenítendő szöveg négy különböző ábrázolását tartalmazzák. Az alapértelmezett beállítás: `simple`. | Választható |
 | `profanity` | Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek olyanok, `masked` amelyek a káromkodást helyettesítik a csillagokkal, `removed` ami eltávolítja az eredményből az összes trágár elemet, vagy az `raw` eredménybe beletartozik a káromkodás is. Az alapértelmezett beállítás: `masked`. | Választható |
-| `cid` | Ha egyéni modelleket hoz létre a [Custom Speech-portálon](how-to-custom-speech.md) , egyéni modelleket használhat a **telepítési** oldalon található **végpont-azonosítón** keresztül. Használja a **VÉGPONT azonosítóját** a `cid` lekérdezési karakterlánc paraméter argumentumaként. | Választható |
+| `cid` | Ha egyéni modelleket hoz létre a [Custom Speech-portálon](./custom-speech-overview.md) , egyéni modelleket használhat a **telepítési** oldalon található **végpont-azonosítón** keresztül. Használja a **VÉGPONT azonosítóját** a `cid` lekérdezési karakterlánc paraméter argumentumaként. | Választható |
 
 ## <a name="request-headers"></a>Kérésfejlécek
 
@@ -304,7 +304,7 @@ Egy tipikus válasz az elismeréshez a kiejtés értékelésével:
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 - [Akusztikai modellek testreszabása](./how-to-custom-speech-train-model.md)

@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8c037d35c2df4572800d2519347aa113a86cde36
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 7258b37c9d92f25227eac678dde77963e644e64b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434838"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483317"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Oktatóanyag: kereskedelmi használatra kész Azure Remote rendering-alkalmazás létrehozása
 
@@ -54,7 +54,7 @@ Ennek eléréséhez az Azure egy erőforrás-címkézés nevű szolgáltatást k
 
 Az erőforrás-elnevezéssel és a címkézéssel kapcsolatos további információkért érdemes elindulni:
 
-* [Erőforrás-elnevezési és címkézési döntési útmutató](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
+* [Erőforrás-elnevezési és címkézési döntési útmutató](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 ### <a name="diagnostics"></a>Diagnosztika
 
@@ -248,7 +248,7 @@ A vegyes valóság egyik meggyőző használati esete a CAD-munkafolyamatok terv
 
 A sokkal egyszerűbb, de valamivel kevésbé áramvonalas megközelítés automatizálhatja a 3D modell helyi merevlemezre mentésének folyamatát, majd kezdeményezheti a mentett fájlnak a SAS bemeneti tárolóba való továbbításának folyamatát.
 
-### <a name="azure-marketplace"></a>Azure Marketplace
+### <a name="azure-marketplace"></a>Azure Piactér
 
 Számos nagyvállalati ügyfél azt adja meg, hogy a Azure Stack a saját Azure-fiókjaik és a hitelesítő adataik biztonsági okokból történő üzembe helyezésére is szükség van. Ennek elvégzéséhez érdemes megfontolnia az Azure által felügyelt alkalmazások csomagolását úgy, hogy az Azure Marketplace-en is közzétehető legyen az Azure piactéren.
 

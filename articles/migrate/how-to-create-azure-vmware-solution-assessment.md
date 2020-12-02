@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 834fd32d17c4a5ff112dd11a331a59336d7cbcb7
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f9fdff54cbd795c6aeda1708dcae8d00022a6a43
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315254"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483504"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Azure VMware-megoldás (AVS) értékelésének létrehozása
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan hozható létre Azure VMware-megoldás (AVS) fel
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
+- Győződjön meg arról, hogy [létrehozott](./create-manage-projects.md) egy Azure Migrate projektet.
 - Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
 - Az értékelés létrehozásához létre kell hoznia egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md)-hez, amely felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld a kiszolgálónak Azure Migrate: Server Assessment. [További információk](migrate-appliance.md).
 - [A kiszolgálói metaadatokat](./tutorial-discover-import.md) vesszővel tagolt (CSV) formátumban is importálhatja.
@@ -54,11 +54,11 @@ Futtassa az Azure VMware-megoldás (AVS) értékelését az alábbiak szerint:
 
 1. Tekintse át az értékelések létrehozásának [ajánlott eljárásait](best-practices-assessment.md).
 
-2. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson az **értékelés**elemre.
+2. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson az **értékelés** elemre.
 
     ![A képernyőképen Azure Migrate-kiszolgálók láthatók a kiértékelési eszközök területen.](./media/how-to-create-assessment/assess.png)
 
-3. A **kiszolgálók értékelése**területen válassza ki az értékelés típusát "Azure VMware Solution (AVS)" néven, válassza ki a felderítés forrását, és adja meg az értékelés nevét.
+3. A **kiszolgálók értékelése** területen válassza ki az értékelés típusát "Azure VMware Solution (AVS)" néven, válassza ki a felderítés forrását, és adja meg az értékelés nevét.
 
     ![A kiértékelés alapjai](./media/how-to-create-avs-assessment/assess-servers-avs.png)
 
@@ -68,7 +68,7 @@ Futtassa az Azure VMware-megoldás (AVS) értékelését az alábbiak szerint:
 
 5. Kattintson a **Tovább** gombra az **értékelni kívánt gépek kiválasztásához**. A **Csoport kiválasztása vagy létrehozása** területen válassza az **Új létrehozása** lehetőséget, majd adja meg a csoport nevét. A csoport egy vagy több virtuális gépet foglal magába a kiértékeléshez.
 
-6. A **számítógépek hozzáadása a csoporthoz**területen válassza ki a csoportba felvenni kívánt virtuális gépeket.
+6. A **számítógépek hozzáadása a csoporthoz** területen válassza ki a csoportba felvenni kívánt virtuális gépeket.
 
 7. Kattintson a **Tovább** gombra a **Felülvizsgálat + létrehozás** területre lépéshez, a kiértékelés részleteinek áttekintéséhez.
 
@@ -93,15 +93,15 @@ Az Azure VMware-megoldás (AVS) értékelése a következőket ismerteti:
 
 ### <a name="view-an-assessment"></a>Kiértékelés megtekintése
 
-1. Az **áttelepítési célok**  >   **kiszolgálóin**kattintson az **értékelések** **Azure Migrate: kiszolgáló értékelése**elemre.
+1. Az **áttelepítési célok**  >   **kiszolgálóin** kattintson az **értékelések** **Azure Migrate: kiszolgáló értékelése** elemre.
 
-2. Az **értékelésekben**kattintson egy értékelésre a megnyitásához.
+2. Az **értékelésekben** kattintson egy értékelésre a megnyitásához.
 
     ![AVS Assessment – összefoglalás](./media/how-to-create-avs-assessment/avs-assessment-summary.png)
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>Az Azure VMware-megoldás (AVS) készültségének áttekintése
 
-1. Az **Azure készültségi**területén ellenőrizze, hogy a virtuális gépek készen állnak-e az AVS-re való áttelepítésre.
+1. Az **Azure készültségi** területén ellenőrizze, hogy a virtuális gépek készen állnak-e az AVS-re való áttelepítésre.
 
 2. A virtuális gép állapotának áttekintése:
     - **AVS-re kész**: a gép áttelepíthető az Azure-ba (AVS) módosítás nélkül. A teljes AVS-támogatással indul az AVS-ben.
@@ -158,7 +158,7 @@ Az értékelés megbízhatósági minősítése a következő.
 [További](concepts-azure-vmware-solution-assessment-calculation.md) információ a teljesítményadatok szolgáltatásról 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan hozhat létre nagy megbízhatóságú csoportokat a [függőségi leképezés](how-to-create-group-machine-dependencies.md) használatával.
 - [További](concepts-azure-vmware-solution-assessment-calculation.md) információ az AVS-értékelések kiszámításáról.

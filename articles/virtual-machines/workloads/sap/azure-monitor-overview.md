@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 5bb40ec930731b58d457500d83b66c7a187b44d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bcb912a24dfb2a5e78719cf9010fd23afe0df185
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957435"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484396"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP-megoldások Azure monitorja (előzetes verzió)
 
@@ -35,7 +35,7 @@ Támogatott adatbázisok:
 - SAP HANA-adatbázis
 - Microsoft SQL Server
 
-Az SAP-megoldások Azure Monitor a meglévő [Azure monitor](../../../azure-monitor/overview.md) képességek, például a log Analytics és a [munkafüzetek](../../../azure-monitor/platform/workbooks-overview.md) hatékonyságát is lehetővé teszi a további figyelési képességek biztosításához. Az ügyfelek [Egyéni vizualizációkat](../../../azure-monitor/platform/workbooks-overview.md#getting-started) hozhatnak létre az SAP-megoldások Azure monitor által biztosított alapértelmezett munkafüzetek szerkesztésével, [Egyéni lekérdezések](../../../azure-monitor/log-query/get-started-portal.md) írásához és [egyéni riasztások](../../../azure-monitor/learn/tutorial-response.md) létrehozásához az Azure log Analytics-munkaterületen, kihasználva a [rugalmas megőrzési időt](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) , és összekapcsolhatók a megfigyelési adatokkal a jegyrendszer használatával.
+Az SAP-megoldások Azure Monitor a meglévő [Azure monitor](../../../azure-monitor/overview.md) képességek, például a log Analytics és a [munkafüzetek](../../../azure-monitor/platform/workbooks-overview.md) hatékonyságát is lehetővé teszi a további figyelési képességek biztosításához. Az ügyfelek [Egyéni vizualizációkat](../../../azure-monitor/platform/workbooks-overview.md#getting-started) hozhatnak létre az SAP-megoldások Azure monitor által biztosított alapértelmezett munkafüzetek szerkesztésével, [Egyéni lekérdezések](../../../azure-monitor/log-query/log-analytics-tutorial.md) írásához és [egyéni riasztások](../../../azure-monitor/learn/tutorial-response.md) létrehozásához az Azure log Analytics-munkaterületen, kihasználva a [rugalmas megőrzési időt](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) , és összekapcsolhatók a megfigyelési adatokkal a jegyrendszer használatával.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>Az SAP-megoldások Azure Monitor milyen adatokat gyűjtenek?
 
@@ -103,7 +103,7 @@ Az architektúra legfontosabb főbb jellemzői a következők:
 ## <a name="pricing"></a>Díjszabás
 Az SAP-megoldások Azure Monitor egy ingyenes termék (nincs licenc díj). Az ügyfelek feladata, hogy kifizessék a felügyelt erőforráscsoport mögöttes összetevőinek költségeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg a szolgáltatókat, és hozza létre az első Azure Monitor az SAP Solutions-erőforráshoz.
  - További információ a [szolgáltatókról](./azure-monitor-providers.md)

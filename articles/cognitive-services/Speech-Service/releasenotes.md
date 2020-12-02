@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: e786c4caae13ffaa541697d083158e17d42383fb
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122566"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483954"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
@@ -40,14 +40,13 @@ ms.locfileid: "96122566"
 
 **Új funkciók**
 - **Linux**: támogatás hozzáadva a Debian 10 és az Ubuntu 20,04 LTS rendszerhez.
-- **Python/Objective-C**: támogatás hozzáadva az `KeywordRecognizer` API-hoz. A dokumentációt [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-basics)találja.
+- **Python/Objective-C**: támogatás hozzáadva az `KeywordRecognizer` API-hoz. A dokumentációt [itt](./custom-keyword-basics.md)találja.
 - **C++/Java/C #**: további támogatás a `HttpHeader` kulcs/érték beállításához a használatával `ServicePropertyChannel::HttpHeader` .
-- **JavaScript**: támogatás hozzáadva az `ConversationTranscriber` API-hoz. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript)olvashatja el a dokumentációt. 
-- **C++/c #**: új metódus hozzáadva `AudioDataStream FromWavFileInput` (olvasáshoz). WAV-fájlok) [itt (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/audiodatastream) és [itt (C#)](
-https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet).
--  **C++/c #/Java/Python/Objective-C/Swift**: a `stopSpeakingAsync()` szöveg-beszéd szintézis leállítására szolgáló metódust adott hozzá. Olvassa el itt a dokumentációt ( [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)), itt ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), itt [(Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech), [itt (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)és [itt (Objective-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
-- **C#, C++, Java**: felvett egy `FromDialogServiceConnector()` függvényt a `Connection` osztályhoz, amely a kapcsolatok és a leválasztási események figyelésére használható `DialogServiceConnector` . Olvassa el itt a dokumentációt ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [itt (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)és [itt (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection).
-- **C++/c #/Java/Python/Objective-C/Swift**: hozzáadva a kiejtés értékelésének támogatása, amely kiértékeli a beszédfelismerési kiejtést, és visszajelzést ad a beszélők pontosságáról és a beszélt hangról. Olvassa el [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment)a dokumentációt.
+- **JavaScript**: támogatás hozzáadva az `ConversationTranscriber` API-hoz. [Itt](./how-to-use-conversation-transcription.md?pivots=programming-language-javascript)olvashatja el a dokumentációt. 
+- **C++/c #**: új metódus hozzáadva `AudioDataStream FromWavFileInput` (olvasáshoz). WAV-fájlok) [itt (C++)](/cpp/cognitive-services/speech/audiodatastream) és [itt (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet).
+-  **C++/c #/Java/Python/Objective-C/Swift**: a `stopSpeakingAsync()` szöveg-beszéd szintézis leállítására szolgáló metódust adott hozzá. Olvassa el itt a dokumentációt ( [C++](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)), itt ( [C#)](/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), itt [(Java)](/java/api/com.microsoft.cognitiveservices.speech), [itt (Python)](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)és [itt (Objective-C/Swift)](/objectivec/cognitive-services/speech/).
+- **C#, C++, Java**: felvett egy `FromDialogServiceConnector()` függvényt a `Connection` osztályhoz, amely a kapcsolatok és a leválasztási események figyelésére használható `DialogServiceConnector` . Olvassa el itt a dokumentációt ( [C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [itt (C++)](/cpp/cognitive-services/speech/connection)és [itt (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection).
+- **C++/c #/Java/Python/Objective-C/Swift**: hozzáadva a kiejtés értékelésének támogatása, amely kiértékeli a beszédfelismerési kiejtést, és visszajelzést ad a beszélők pontosságáról és a beszélt hangról. Olvassa el [itt](how-to-pronunciation-assessment.md)a dokumentációt.
 
 **Változás megszakítása**
 - **JavaScript**: a PullAudioOutputStream. Read () visszatérési típusa egy belső ígéretből egy natív JavaScript-ígéretre vált.
@@ -83,7 +82,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 Egészségesek maradjanak!
 
 ## <a name="speech-cli-also-known-as-spx-2020-october-release"></a>Speech CLI (más néven SPX): 2020 – októberi kiadás
-Az SPX a parancssori felület, amellyel a kód írása nélkül használhatja az Azure Speech szolgáltatást. Töltse le a legújabb [verziót.](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics) <br>
+Az SPX a parancssori felület, amellyel a kód írása nélkül használhatja az Azure Speech szolgáltatást. Töltse le a legújabb [verziót.](./spx-basics.md) <br>
 
 **Új funkciók**
 - `spx csr dataset upload --kind audio|language|acoustic` – adatkészleteket hozhat létre a helyi adatokból, nem csak az URL-címekről.
@@ -262,7 +261,7 @@ Egészségesek maradjanak!
 * Pénznem olvasása
     * Kijavítottuk a és a pénznem beolvasásával kapcsolatos problémát `es-ES``es-MX`
      
-    | Nyelv | Bevitel | Fejlesztés utáni kiolvasás |
+    | Nyelv | Input (Bemenet) | Fejlesztés utáni kiolvasás |
     |---|---|---|
     | `es-MX` | $1,58 | un peso cincuenta y Ocho centavos |
     | `es-ES` | $1,58 | un dólar cincuenta y Ocho centavos |

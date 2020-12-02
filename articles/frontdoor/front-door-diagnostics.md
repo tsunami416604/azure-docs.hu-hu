@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
-ms.author: duau
-ms.openlocfilehash: d533b8fed47b1790cc35429613179f440f1fac51
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/23/2020
+ms.author: yuajia
+ms.openlocfilehash: cd99be40700ab1c34176f2bf7497e4debf5cd424
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961748"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483797"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Metrikák és naplók figyelése az Azure-beli bejárati ajtón
 
@@ -50,26 +50,26 @@ A Tevékenységnaplók a bejárati ajtókon végzett műveletekről nyújtanak i
 A hozzáférési tevékenység naplóit a bejárati ajtón vagy az Azure-erőforrások összes naplóján Azure Monitor. A tevékenységnaplók megtekintése:
 
 1. Válassza ki az előtérben lévő példányt.
-2. Válassza a **műveletnapló**lehetőséget.
+2. Válassza a **műveletnapló** lehetőséget.
 
-    :::image type="content" source="./media/front-door-diagnostics/activity-log.png" alt-text="Műveletnapló":::
+    :::image type="content" source="./media/front-door-diagnostics/activity-log.png" alt-text="Tevékenységnapló":::
 
-3. Válasszon egy szűrési hatókört, majd kattintson az **alkalmaz**gombra.
+3. Válasszon egy szűrési hatókört, majd kattintson az **alkalmaz** gombra.
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>Diagnosztikai naplók
 A diagnosztikai naplók részletes információkat biztosítanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. A diagnosztikai naplók eltérnek a tevékenység naplóitól.
 
 A Tevékenységnaplók betekintést nyújtanak az Azure-erőforrásokon végzett műveletekre. A diagnosztikai naplók betekintést nyújtanak az erőforrás által végzett műveletekre. További információ: [Azure monitor diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md).
 
-:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Műveletnapló":::
+:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Diagnosztikai naplók":::
 
 Diagnosztikai naplók konfigurálása a bejárati ajtóhoz:
 
 1. Válassza ki az Azure-bejárati ajtót.
 
-2. Válassza a **diagnosztikai beállítások**lehetőséget.
+2. Válassza a **diagnosztikai beállítások** lehetőséget.
 
-3. Kattintson **a diagnosztika bekapcsolása**elemre. Archiválja a diagnosztikai naplókat, valamint mérőszámokat egy Storage-fiókba, továbbíthatja őket egy Event hubhoz, vagy elküldheti azokat Azure Monitor naplókba.
+3. Kattintson **a diagnosztika bekapcsolása** elemre. Archiválja a diagnosztikai naplókat, valamint mérőszámokat egy Storage-fiókba, továbbíthatja őket egy Event hubhoz, vagy elküldheti azokat Azure Monitor naplókba.
 
 A bejárati ajtó jelenleg biztosít diagnosztikai naplókat (óránként kötegelt feldolgozással). A diagnosztikai naplók egyedi API-kérelmeket biztosítanak minden egyes bejegyzéshez a következő sémával:
 
@@ -91,13 +91,14 @@ A bejárati ajtó jelenleg biztosít diagnosztikai naplókat (óránként köteg
 | RulesEngineMatchNames | A kérelemnek megfelelő szabályok nevei. |
 | SecurityProtocol | A kérelem által használt TLS/SSL protokoll verziója vagy Null, ha nincs titkosítás. |
 | SentToOriginShield </br> (elavult) * **tekintse meg a következő szakaszban szereplő, az elavult megjegyzések című szakaszt.**| Ha az értéke igaz, az azt jelenti, hogy a rendszer a lekérést a peremhálózati pop helyett a forrás pajzs gyorsítótárából választta. A Origin Shield egy szülő gyorsítótár, amely a gyorsítótár találati arányának növelésére szolgál. |
-| isReceivedFromClient | Ha az értéke igaz, az azt jelenti, hogy a kérelem az ügyféltől érkezett. Ha false (hamis) értékű, a kérelem a szélén (gyermek POP) található, és a forrás pajzstól (szülő POP) válaszol. 
+| isReceivedFromClient | Ha az értéke igaz, az azt jelenti, hogy a kérelem az ügyféltől érkezett. Ha false (hamis) értékű, a kérelem a szélén (gyermek POP) található, és a forrás pajzstól (szülő POP) válaszol. |
 | Eltelt idő | A kérelem első bájtjában eltelt idő (másodpercben) a válasz utolsó bájtjában. |
 | TrackingReference | A bejárati ajtó által kiszolgált kérést azonosító egyedi hivatkozási sztring, amely az ügyfélnek X-Azure-ref fejlécként is elküldve. Egy adott kérelem hozzáférési naplóiban található adatok kereséséhez szükséges. |
 | UserAgent | Az ügyfél által használt böngésző típusa. |
+| ErrorInfo | Ez a mező a további hibaelhárítási hibák adott típusát tartalmazza. </br> A lehetséges értékek a következők: </br> Nincs **hiba**: azt jelzi, hogy nem található hiba. </br> **CertificateError**: általános SSL-tanúsítvány hiba.</br> **CertificateNameCheckFailed**: az SSL-tanúsítványban található állomásnév érvénytelen vagy nem egyezik. </br> **ClientDisconnected**: az ügyfél hálózati kapcsolatai miatt sikertelen volt a kérelem. </br> **UnspecifiedClientError**: általános ügyfél-hiba. </br> **InvalidRequest**: érvénytelen kérelem. Előfordulhat, hogy helytelen formátumú fejléc, törzs és URL-cím miatt fordul elő. </br> **DNSFailure**: DNS-hiba. </br> **DNSNameNotResolved**: a kiszolgáló neve vagy címe nem oldható fel. </br> **OriginConnectionAborted**: a forrással létesített kapcsolatok váratlanul leálltak. </br> **OriginConnectionError**: általános forrással kapcsolatos hiba történt. </br> **OriginConnectionRefused**: a forrással létesített kapcsolódás nem sikerült. </br> **OriginError**: általános eredetű hiba. </br> **OriginInvalidResponse**: a forrás érvénytelen vagy ismeretlen választ adott vissza. </br> **OriginTimeout**: a forrás kérelemre vonatkozó időtúllépési időszak lejárt. </br> **ResponseHeaderTooBig**: a forrás túl nagy értéket adott vissza a válasz fejlécében. </br> **RestrictedIP**: a kérést a rendszer a korlátozott IP-cím miatt blokkolta. </br> **SSLHandshakeError**: nem sikerült kapcsolatot létesíteni a forrással az SSL-Shake-hiba miatt. </br> **UnspecifiedError**: hiba történt, amely nem felelt meg a tábla egyik hibájának sem. |
 
 ### <a name="sent-to-origin-shield-deprecation"></a>Elküldve a Origin Shield elavulttá
-A RAW log tulajdonság **isSentToOriginShield** elavult, és egy új mező **isReceivedFromClient**vált. Ha már használja az elavult mezőt, használja az új mezőt. 
+A RAW log tulajdonság **isSentToOriginShield** elavult, és egy új mező **isReceivedFromClient** vált. Ha már használja az elavult mezőt, használja az új mezőt. 
 
 A nyers naplók közé tartoznak a CDN Edge (Child POP) és a Origin Shield által létrehozott naplók. A Origin Shield olyan szülő csomópontokra utal, amelyek stratégiailag a világ minden részén találhatók. Ezek a csomópontok a forrás-kiszolgálókkal kommunikálnak, és csökkentik a forgalom terhelését a forrásnál. 
 
@@ -122,10 +123,10 @@ Ha az érték hamis, akkor az azt jelenti, hogy a kérést a rendszer a forrás 
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Útválasztási szabály engedélyezve gyorsítótárazás nélkül | 1 | Edge POP-kód | A kérés továbbítására szolgáló háttér | Igaz | CONFIG_NOCACHE |
 | Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-találat a peremhálózati POP-on | 1 | Edge POP-kód | Üres | Igaz | HIT |
-| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-kihagyás az Edge POP-ban, de a gyorsítótár a szülő gyorsítótár POP-ban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. szülő gyorsítótár POP-állomásnév</br>2. üres | 1. igaz</br>2. hamis | 1. MISS</br>2. TALÁLAT |
-| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-kihagyás az Edge POP-ban, de részleges gyorsítótár-találat a szülő gyorsítótár POP-ban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. szülő gyorsítótár POP-állomásnév</br>2. a gyorsítótár feltöltését segítő háttérrendszer | 1. igaz</br>2. hamis | 1. MISS</br>2. PARTIAL_HIT |
+| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-lemaradás az Edge POP-ban, de a gyorsítótár a szülő gyorsítótár POP-ban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. szülő gyorsítótár POP-állomásnév</br>2. üres | 1. igaz</br>2. hamis | 1. MISS</br>2. TALÁLAT |
+| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótárak kihagyása az Edge POP-ban, de részleges gyorsítótár-találat a szülő gyorsítótár POP-ban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. szülő gyorsítótár POP-állomásnév</br>2. a gyorsítótár feltöltését segítő háttérrendszer | 1. igaz</br>2. hamis | 1. MISS</br>2. PARTIAL_HIT |
 | Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár PARTIAL_HIT az Edge-POP-ban, de a gyorsítótár a szülő gyorsítótár POP-ra ütközött | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. igaz</br>2. hamis | 1. PARTIAL_HIT</br>2. TALÁLAT |
-| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-kihagyás az Edge és a szülő gyorsítótárban – POPPING | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. igaz</br>2. hamis | 1. MISS</br>2. MISS |
+| Útválasztási szabály engedélyezve gyorsítótárazással. Gyorsítótár-lemaradás az Edge és a szülő gyorsítótárban | 2 | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. Edge POP-kód</br>2. szülő gyorsítótár POP-kódja | 1. igaz</br>2. hamis | 1. MISS</br>2. MISS |
 
 > [!NOTE]
 > Gyorsítótárazási forgatókönyvek esetén a gyorsítótár állapotának értéke partial_hit, ha egy kérelemhez tartozó bájtok egy része a bejárati peremhálózati vagy a Origin Shield cache szolgáltatásból származik, míg a bájtok némelyike a nagy objektumok forrásaként szolgál.
@@ -134,7 +135,7 @@ A bejárati ajtó egy objektum-darabolás nevű technikát használ. Nagyméret�
 
 Miután az adathalmaz megérkezik a bejárati ajtó szélén, a gyorsítótárba kerül, és azonnal kézbesítve van a felhasználó számára. A bejárati ajtó ezután párhuzamosan lekéri a következő adathalmazt. Ez a kilépés biztosítja, hogy a tartalom a felhasználó előtt egy darabban maradjon, ami csökkenti a késést. Ez a folyamat addig folytatódik, amíg a teljes fájl le nem töltődik (ha szükséges), az összes bájtos tartomány elérhető (ha szükséges), vagy az ügyfél lezárja a csatlakozást. A byte-Range kérelemmel kapcsolatos további információkért lásd: RFC 7233. A bejárati ajtó gyorsítótárba helyezi a kapott adattömböket. A teljes fájlt nem kell gyorsítótárazni a bejárati ajtó gyorsítótárában. A fájl-vagy byte-tartományokra vonatkozó kérelmeket a rendszer a bejárati ajtó gyorsítótárából kézbesíti. Ha nem az összes adathalmaz gyorsítótárazva van a bejárati ajtón, a rendszer kikéri a kiindulási pontokra vonatkozó adattömböket. Ez az optimalizálás arra támaszkodik, hogy a forráskiszolgáló képes támogatni a bájtos tartományokra vonatkozó kérelmeket. Ha a forráskiszolgáló nem támogatja a bájtok közötti kérelmeket, ez az optimalizálás nem érvényes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Bejárati ajtó profiljának létrehozása](quickstart-create-front-door.md)
 - [Az előtérben működik](front-door-routing-architecture.md)

@@ -3,12 +3,12 @@ title: Alkalmazások, szerepkörök és szolgáltatások felderítése helyszín
 description: Ismerje meg, hogyan derítheti fel az alkalmazásokat, szerepköröket és szolgáltatásokat a helyszíni kiszolgálókon Azure Migrate Server Assessment használatával.
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 960877ac4eab4d8f23b5616dc04628142964b46a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315198"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483453"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Gépi alkalmazások, szerepkörök és szolgáltatások felderítése
 
@@ -23,14 +23,14 @@ A helyszíni gépeken futó alkalmazások, szerepkörök és szolgáltatások le
 ## <a name="before-you-start"></a>Előkészületek
 
 - Győződjön meg az alábbiakról:
-    - [Létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
+    - [Létrehozott](./create-manage-projects.md) egy Azure Migrate projektet.
     - [Hozzáadta](how-to-assess.md) a Azure Migrate: kiszolgáló-értékelési eszközt egy projekthez.
 - Tekintse át [az alkalmazás-felderítési támogatást és a követelményeket](migrate-support-matrix-vmware.md#vmware-requirements).
 - Győződjön meg arról, hogy az App-Discovery alkalmazást futtató virtuális gépeken telepítve van a PowerShell 2,0-es vagy újabb verziója, és a VMware-eszközök (a 10.2.0-nél későbbiek) telepítve vannak.
 - Az Azure Migrate berendezés telepítésére [vonatkozó követelmények](migrate-appliance.md) megtekintése.
 
 
-## <a name="deploy-the-azure-migrate-appliance"></a>A Azure Migrate berendezés üzembe helyezése
+## <a name="deploy-the-azure-migrate-appliance"></a>Az Azure Migrate-berendezés üzembe helyezése
 
 1. [Tekintse át](migrate-appliance.md#appliance---vmware) az Azure Migrate berendezés üzembe helyezésének követelményeit.
 2. Tekintse át azokat az Azure URL-címeket, amelyekhez a készüléknek hozzá kell férnie a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati felhőkben](migrate-appliance.md#government-cloud-urls).
@@ -54,7 +54,7 @@ Adja hozzá a felhasználói fiókot a következő módon:
 
 1. Nyissa meg a berendezés-kezelő alkalmazást. 
 2. Navigáljon az **adja meg a vCenter részletei** panelt.
-3. Az **alkalmazás és a virtuális gépek függőségeinek felderítése**területen kattintson a **hitelesítő adatok hozzáadása** lehetőségre.
+3. Az **alkalmazás és a virtuális gépek függőségeinek felderítése** területen kattintson a **hitelesítő adatok hozzáadása** lehetőségre.
 3. Válassza ki az **operációs rendszert**, adjon meg egy felhasználóbarát nevet a fiókhoz, és a **Felhasználónév** / **jelszava**
 6. Kattintson a **Mentés** gombra.
 7. Kattintson **a Mentés gombra, és indítsa el a felderítést**.
@@ -66,18 +66,18 @@ Adja hozzá a felhasználói fiókot a következő módon:
 
 Ha a felderítést követően megadták a hitelesítő adatokat az alkalmazás felderítéséhez, tekintse át és exportálja az alkalmazás leltárát a Azure Portal.
 
-1. A **Azure Migrate-** Servers  >  **Azure Migrate: kiszolgáló értékelése**lapon kattintson a megjelenített darabszámra a **felderített kiszolgálók** lap megnyitásához.
+1. A **Azure Migrate-** Servers  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson a megjelenített darabszámra a **felderített kiszolgálók** lap megnyitásához.
 
     > [!NOTE]
     > Ezen a ponton lehetőség van a függőségi elemzések megadására is a felderített gépeken, így a függőségek megjeleníthetők a felmérni kívánt gépek között. [További](concepts-dependency-visualization.md) információ a függőségek elemzéséről.
 
-2. A **felderített alkalmazásokban**kattintson a megjelenített darabszámra.
-3. Az **alkalmazás leltárában**megtekintheti a felderített alkalmazásokat, szerepköröket és szolgáltatásokat.
-4. A leltár exportálásához a **felderített kiszolgálók**területen kattintson az **alkalmazás leltározásának exportálása**lehetőségre.
+2. A **felderített alkalmazásokban** kattintson a megjelenített darabszámra.
+3. Az **alkalmazás leltárában** megtekintheti a felderített alkalmazásokat, szerepköröket és szolgáltatásokat.
+4. A leltár exportálásához a **felderített kiszolgálók** területen kattintson az **alkalmazás leltározásának exportálása** lehetőségre.
 
 Az alkalmazás leltára Excel-formátumban van exportálva és letöltve. Az **alkalmazás leltározási** lapja az összes gépen felderített alkalmazást jeleníti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felmérés létrehozása](how-to-create-assessment.md) a felderített kiszolgálókhoz.
 - SQL Server adatbázisok értékelése [Azure Migrate használatával: adatbázis-értékelés](/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017).
