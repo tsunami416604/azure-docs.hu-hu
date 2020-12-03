@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 774c829b3f9c36cef33f8f334825440b92582f4e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b3cb6bf56820da84d17f0b981f461a545bbe5ab6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097311"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549259"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Oktatóanyag: Java-Webalkalmazás létrehozása Azure Cosmos DB és az SQL API használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -66,17 +66,17 @@ Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókka
 
 JSP-alkalmazás létrehozása:
 
-1. Először egy Java-projekt létrehozásával kezdjük. Indítsa el az Eclipse-t, kattintson a **File** (Fájl), **New** (Új), majd a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőségre. Ha nem jelenik meg a **dinamikus webes projekt** elérhető projektként való felsorolása, tegye a következőket: kattintson a **fájl** menü **új** elemére, majd a **projekt** ..., a **web** elemre, végül a **dinamikus webes projekt** elemre, és kattintson a **tovább** gombra.
+1. Először egy Java-projekt létrehozásával kezdjük. Indítsa el az Eclipse-t, kattintson a **File** (Fájl), **New** (Új), majd a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőségre. Ha nem jelenik meg a **dinamikus webes projekt** elérhető projektként való felsorolása, tegye a következőket: kattintson a **fájl** menü **új** elemére, majd a **projekt**..., a **web** elemre, végül a **dinamikus webes projekt** elemre, és kattintson a **tovább** gombra.
    
-    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="Saját teendőlista Java-alkalmazása":::
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="JSP Java-alkalmazások fejlesztése":::
 
 1. Adja meg a projekt nevét a **Project name** (Projekt neve) mezőben, majd a **Target Runtime** (Tervezett futásidő) legördülő menüben válasszon ki egy értéket (pl. Apache Tomcat v7.0) (nem kötelező), és kattintson a **Finish** (Befejezés) gombra. A tervezett futásidő megadása lehetővé teszi, hogy helyileg, az Eclipse-ben is futtathassa projektjét.
 
 1. Az Eclipse Project Explorer (Projektböngésző) nézetében bontsa ki a projektet. Kattintson a jobb gombbal a **WebContent** (Webes tartalom), majd a **New** (Új) elemre, és végül a **JSP File** (JSP-fájl) elemre.
 
-1. A **New JSP File** (Új JSP-fájl) párbeszédablakban nevezze el a fájlt az alábbi módon: **index.jsp** . A szülőmappa neve maradjon **WebContent** , ahogy azt az alábbi ábra is mutatja, majd kattintson a **Next** (Tovább) lehetőségre.
+1. A **New JSP File** (Új JSP-fájl) párbeszédablakban nevezze el a fájlt az alábbi módon: **index.jsp**. A szülőmappa neve maradjon **WebContent**, ahogy azt az alábbi ábra is mutatja, majd kattintson a **Next** (Tovább) lehetőségre.
    
-    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Saját teendőlista Java-alkalmazása":::
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Új JSP-fájl létrehozása – Java-alkalmazásokra vonatkozó oktatóanyag":::
 
 1. A **Select JSP Template** (JSP-sablon kiválasztása) párbeszédablakban, a jelen oktatóanyag céljából válassza a **New JSP File (html)** (Új JSP-fájl (html)) lehetőséget, majd kattintson a **Finish** (Befejezés) lehetőségre.
 
@@ -92,7 +92,7 @@ JSP-alkalmazás létrehozása:
 
 1. Ha megadta a tervezett futásidőt a 2. lépésben, most rákattinthat a **Project** (Projekt), majd a **Run** (Futtatás) elemre a JSP-alkalmazás helyileg történő futtatásához.
 
-   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Saját teendőlista Java-alkalmazása":::
+   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Hello World – Java-alkalmazásokra vonatkozó oktatóanyag":::
 
 ## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>Az SQL Java SDK telepítése
 
@@ -212,13 +212,13 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 
 1. Az Eclipse **File** (Fájl) menüjében kattintson az **Import** (Importálás) elemre.
 
-1. Az **Import** (Importálás) ablakban kattintson a **Git** , majd a **Projects from Git** (Git-projektek), és végül a **Next** (Tovább) lehetőségre.
+1. Az **Import** (Importálás) ablakban kattintson a **Git**, majd a **Projects from Git** (Git-projektek), és végül a **Next** (Tovább) lehetőségre.
 
 1. A **Select Repository Source** (Tárház forrásának kiválasztása) képernyőn kattintson a **Clone URI** (URI klónozása) lehetőségre.
 
 1. A **Source Git Repository** (Forrás Git-adattár) képernyő **URI** mezőjében adja meg a https://github.com/Azure-Samples/documentdb-java-todo-app.git címet, majd kattintson a **Next** (Tovább) gombra.
 
-1. A **Branch Selection** (Ág kiválasztása) képernyőn válassza a **master** (fő) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
+1. A **ág kiválasztása** képernyőn győződjön meg arról, hogy a **Main** van kiválasztva, majd kattintson a **tovább** gombra.
 
 1. A **Local Destination** (Helyi cél) képernyőn kattintson a **Browse** (Tallózás) lehetőségre, válassza ki a mappát, ahova a tárházat másolni szeretné, majd kattintson a **Next** (Tovább) gombra.
 

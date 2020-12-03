@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 87ff11c33c909c7398ebced54ec81907dab2d991
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0b48b8d954b132caab96e5978c90687899ea04c2
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080532"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549225"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK for SQL API: kibocsátási megjegyzések és erőforrások
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "93080532"
 Ez az eredeti Azure Cosmos DB Sync Java SDK v2 az SQL API-hoz, amely támogatja a szinkron műveleteket.
 
 > [!IMPORTANT]  
-> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Vegye fontolóra [Azure Cosmos db Java SDK v4](sql-api-sdk-java-v4.md) használatát a projekthez. A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) útmutató utasításait. 
+> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Vegye fontolóra [Azure Cosmos db Java SDK v4](sql-api-sdk-java-v4.md) használatát a projekthez. A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) útmutató utasításait. 
 >
 
 | |  |
@@ -175,7 +175,7 @@ Ez az eredeti Azure Cosmos DB Sync Java SDK v2 az SQL API-hoz, amely támogatja 
 * A munkamenet-tárolóban kijavított néhány hiba, amely miatt előfordulhat, hogy a "tulajdonosi erőforrás nem található" kivételt a rendszer a gyűjtemény létrehozása után azonnal kéri.
 
 ### <a name="195"></a><a name="1.9.5"></a>1.9.5
-* Összesítő lekérdezések támogatása (DARABSZÁM, MIN., MAX., SUM és AVG). Lásd: [összesítési támogatás](sql-query-aggregates.md).
+* Összesítő lekérdezések támogatása (DARABSZÁM, MIN., MAX., SUM és AVG). Lásd: [összesítési támogatás](sql-query-aggregate-functions.md).
 * A módosítási hírcsatorna támogatása.
 * A gyűjtési kvóta adatainak támogatása a RequestOptions. setPopulateQuotaInfo használatával.
 * A tárolt eljárás parancsfájl-naplózásának támogatása a RequestOptions. setScriptLoggingEnabled használatával.

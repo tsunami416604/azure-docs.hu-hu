@@ -1,0 +1,71 @@
+---
+title: Bevezetés az Azure hatáskörébe (előzetes verzió)
+description: Ez a cikk áttekintést nyújt az Azure hatáskörébe, beleértve a funkcióit és az általa felmerülő problémákat. Az Azure hatáskörébe minden felhasználó regisztrálhatja, felderítheti, értelmezheti és felhasználhatja az adatforrásokat.
+author: hophan
+ms.author: hophan
+ms.service: purview
+ms.subservice: purview-data-catalog
+ms.topic: overview
+ms.date: 11/30/2020
+ms.openlocfilehash: e7ad561cf9ce9983f41fa166eb744c90f126e01e
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96555953"
+---
+# <a name="what-is-azure-purview"></a>Mi az az Azure hatáskörébe?
+
+> [!IMPORTANT]
+> Az Azure-beli hatáskörébe jelenleg előzetes verzió érhető el. A [Microsoft Azure előzetes verzióinak kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) közé tartoznak azok a további jogi feltételek, amelyek az Azure olyan szolgáltatásaira vonatkoznak, amelyek béta-, előzetes verziójú vagy egyéb módon még nem lettek nyilvánosan elérhetők.
+
+Az Azure hatáskörébe egy új felhőalapú szolgáltatás, amelyet az adatfelhasználók használhatnak. Az Azure hatáskörébe tartozik, hogy központilag kezelje az adatkezelést az adatközpontban, és a Felhőbeli és a helyszíni környezeteket is felhasználja. Ez a szolgáltatás lehetővé teszi az üzleti elemzők számára, hogy értelmes üzleti feltételek alapján keressenek releváns adatokat.
+
+A hatáskörébe tartozó felhasználói felületen vagy az Apache Atlas API-val a technikai felhasználók megtekinthetik a központi katalógusban található adategységek metaadatait és vonalait.
+
+A tulajdonosi szakértők, az adattulajdonosok és a biztonsági rendszergazdák megjegyzésekkel láthatják el az adategységeket a közös ismereteik megosztásához. Ezt a felhasználói felülettel vagy a méretezéssel, a metaadatok és a tartalom ellenőrzése alapján automatizált osztályozási és automatikus címkézési szabályzatokkal teszik meg.
+
+## <a name="discovery-challenges-for-data-consumers"></a>Az adatok felfedezésének kihívásai az adatfelhasználók számára
+
+A vállalati adatforrások felfedezése hagyományosan a közösségi ismereteken alapuló szerves folyamat volt. Ez a megközelítés számos kihívást jelent a vállalatok számára, akik a legtöbb értéket szeretnék kiszolgálni az adateszközökből:
+
+* Mivel nincs központi hely az adatforrások regisztrálásához, a felhasználók nem tudnak az adatforrásokról, kivéve, ha egy másik folyamat részeként kapcsolatba lépnek a szolgáltatással.
+* Ha a felhasználók nem ismerik az adatforrás helyét, nem tudnak csatlakozni az adatforráshoz egy ügyfélalkalmazás használatával. A hagyományos adatfelhasználási folyamatok során a felhasználóknak tudniuk kell a megfelelő kapcsolati sztringet, vagy az elérési utat.
+* Az adatforrások rendeltetésszerű használata rejtve marad a felhasználók számára, kivéve, ha ismeri az adatforrás dokumentációjának helyét. Az adatforrások és a dokumentációk több helyen is előfordulhatnak, és többféle módon is felhasználható.
+* Ha a felhasználóknak kérdése van egy adott információval kapcsolatban, személyesen kell megkeresniük az adatokért felelős szakembert vagy csapatot. Nincs explicit kapcsolat az adatközpontok és a használati perspektívákkal rendelkező szakértők között.
+* Ha a felhasználók nem értik az adatforráshoz való hozzáférés kérelmezésének folyamatát, az adatforrás és a hozzá tartozó dokumentáció felfedése nem segít nekik elérni az adatokat.
+
+## <a name="discovery-challenges-for-data-producers"></a>Az adatok felfedezésének kihívásai az adatalkotók számára
+
+Miközben az adatfelhasználók mindezekkel az említett kihívásokkal néznek szembe, az információs adategységek létrehozásáért és fenntartásáért felelős felhasználóknak szintén megvannak a saját kihívásaik:
+
+* Az adatforrások felcímkézése tájékoztató jellegű metaadatokkal gyakran hiábavalónak bizonyul. Az ügyfélalkalmazások általában figyelmen kívül hagyják az adatforrásban tárolt tájékoztatókat.
+* Az adatforrások dokumentációjának létrehozása bonyolult lehet, és folyamatos felelőssége, hogy az adatforrásokkal szinkronban tartsa a dokumentációt. Előfordulhat, hogy a felhasználók nem bíznak az elavultnak tartott dokumentációban.
+* Az adatforrásokhoz tartozó dokumentációk létrehozása és fenntartása összetett és időigényes feladat. A dokumentációkat az adatforrás minden felhasználója számára elérhetővé tenni pedig gyakran még inkább az.
+* Állandó kihívás az adatforrásokhoz való hozzáférés korlátozása, és annak biztosítása, hogy az adatfelhasználók ismerjék a hozzáférések kérelmezésének menetét.
+
+Az ilyen kihívások összevonásakor jelentős akadályt jelentenek azok a vállalatok, akik támogatni kívánják a vállalati adatok felhasználását és megismerését.
+
+## <a name="discovery-challenges-for-security-administrators"></a>Felderítési kihívások a biztonsági rendszergazdák számára
+
+Azok a felhasználók, akik felelősek a szervezeti adatok biztonságának biztosításáért, a fent felsorolt kihívásokkal rendelkezhetnek az adatfogyasztók és a termelők számára, valamint a következő további kihívásokkal:
+
+* A szervezeti adatmennyiségek folyamatosan bővülnek, tárolódnak és új irányokban vannak megosztva. A bizalmas adatok feltárása, védelme és szabályozása olyan feladat, amely soha nem ér véget. Gondoskodni szeretne arról, hogy a szervezet tartalma a megfelelő személyekkel, alkalmazásokkal és a megfelelő engedélyekkel legyen megosztva.
+* A szervezet adataiban felmerülő kockázati szintek megismeréséhez a tartalomnak részletesen meg kell keresnie a kulcsszavakat, a RegEx-mintákat és/vagy a bizalmas adattípusokat. A bizalmas adattípusok közé tartozhatnak a hitelkártya-számok, a társadalombiztosítási számok vagy a bankszámla-számok is. Folyamatosan figyelnie kell az összes adatforrást a bizalmas tartalomhoz, mivel a legkisebb adatvesztés is kritikus fontosságú lehet a szervezet számára.
+* Annak biztosítása, hogy a szervezet továbbra is megfeleljen a vállalati biztonsági házirendeknek, kihívást jelentő feladat a tartalom növekedésével és változásaival kapcsolatban, valamint a követelmények és szabályzatok frissítése a digitális realitások módosítására. A biztonsági rendszergazdákat gyakran a lehető legrövidebb időn belül az adatok biztonságának biztosításával kell feldolgozni.
+
+## <a name="azure-purview-advantages"></a>Az Azure hatáskörébe tartozó előnyök
+
+Az Azure-beli hatáskörébe az előző szakaszban említett problémák megoldása, valamint a vállalatoknak a meglévő információs eszközökből való lehető legjobb kiszolgálása. A katalógus könnyen felderíthetővé és érthetővé teszi az adatforrásokat az azokat kezelő felhasználók számára.
+
+Az Azure-beli hatáskörébe tartozik egy felhőalapú szolgáltatás, amelybe regisztrálhatja az adatforrásokat. A regisztráció során az adatok a meglévő helyükön maradnak, de a metaadatok másolatát hozzáadja az Azure hatáskörébe, valamint az adatforrás helyére mutató hivatkozást is tartalmaz. A metaadatok indexelésének köszönhetően az adatforrások egy egyszerű keresés által felfedezhetővé és könnyen értelmezhetővé válnak a felhasználók számára.
+
+Az adatforrások regisztrálását követően bővítheti a metaadatokat. Vagy az a felhasználó, aki regisztrálta az adatforrást vagy egy másik felhasználót a vállalatnál, hozzáadja a metaadatokat. Bármely felhasználó megjegyzéseket fűzhet az adatforráshoz, ha leírást, címkéket vagy egyéb metaadatokat biztosít az adatforrás-hozzáféréshez. Ez a leíró metaadatok kiegészítik az adatforrásból regisztrált szerkezeti metaadatokat, például az oszlopnevek és az adattípusokat.
+
+Az adatforrások regisztrálásának elsődleges célja, hogy a források felfedezhetők, értelmezhetők és felhasználhatók legyenek. A vállalati felhasználóknak adatokra lehet szükségük az üzleti intelligencia, az alkalmazásfejlesztés, az adattudomány és minden más olyan tevékenység terén, ahol fontos a megfelelő adatok használata. A adatkatalógus-felderítési élményt használva gyorsan megtalálják az igényeiknek megfelelő adatmennyiségeket, megismerhetik az adatmennyiséget, és az adatforrást a választott eszközön nyitják meg.
+
+Ezzel egy időben a regisztrált adatforrások címkézésével, dokumentáció, illetve jegyzetek készítésével a felhasználók közre is tudnak működni a katalógus készítésében. Emellett új adatforrásokat is regisztrálhatnak, amelyeket a katalógus felhasználói közössége felderít, megértett és felhasználhat.
+
+## <a name="next-steps"></a>Következő lépések
+
+Az Azure-beli hatáskörébe való ismerkedéshez tekintse meg [Az Azure-beli hatáskörébe tartozó fiók létrehozása](create-catalog-portal.md)című témakört.
