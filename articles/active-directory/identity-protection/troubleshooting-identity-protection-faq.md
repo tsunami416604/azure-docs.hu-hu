@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba22745923f1b157c477dce0b5704c7e278e748e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96176001"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558929"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Gyakori kérdések az identitások védelméről Azure Active Directory
 
@@ -82,9 +82,11 @@ Az összes kockázati észlelésről szóló cikkben a [Mi a kockázat](concept-
 
 - A visszajelzés kézhezvétele után a bejelentkezés (nem a felhasználó) kockázati állapotát a **Biztonság megerősítésére** és a kockázati szintre helyezi át **-** .
 
-- Ezen felül a kockázatkezelési rendszerek jövőbeli fejlesztései esetében is biztosítjuk az információkat a gépi tanulási rendszerekhez.
+- Ezen felül a kockázatkezelési rendszerek jövőbeli fejlesztései esetében is biztosítjuk az információkat a gépi tanulási rendszerekhez. 
 
     > [!NOTE]
+    >Ma a bejelentkezés biztonságának megerősítése jelölőnégyzet bejelölésével önmagában nem akadályozza meg, hogy az azonos tulajdonságokkal rendelkező jövőbeli bejelentkezések kockázatos jelöléssel legyenek megjelölve. A rendszer betanításának legjobb módja a felhasználó tulajdonságainak megismerése, ha a kockázatos bejelentkezési szabályzatot az MFA-val használja. Ha a rendszer egy kockázatos bejelentkezést kér az MFA számára, és a felhasználó sikeresen válaszol a kérésre, a bejelentkezés sikeres lehet, és segít a rendszer betanításában a legitim felhasználó viselkedésére.
+    >
     > Ha úgy véli, hogy a felhasználó nem sérül, a felhasználói szinten utasítsa el a **felhasználói kockázatot** , nem pedig a **megerősített széf** használatát a bejelentkezési szinten. A felhasználói szintű felhasználói **kockázat elvetése** bezárja a felhasználói kockázatot és az összes múltbeli kockázatos bejelentkezést és kockázati észlelést.
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Miért jelenik meg egy alacsony (vagy magasabb) kockázati pontszámmal rendelkező felhasználó, még akkor is, ha nincsenek kockázatos bejelentkezések vagy kockázati észlelések az Identity Protectionben?

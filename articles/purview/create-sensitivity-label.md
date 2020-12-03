@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/22/2020
-ms.openlocfilehash: b286533da90565429f96c5701aaa72dab0fb21d0
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 12/03/2020
+ms.openlocfilehash: 195ddfcc3c781c1866a7751f989c9460463edbb9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553275"
+ms.locfileid: "96558164"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adatfeliratok automatikus címkézése
 
@@ -36,13 +36,7 @@ A hatáskörébe ugyanazokat a besorolásokat (más néven bizalmas adattípusok
 > Míg a besorolások közvetlenül vannak összehasonlítva (a társadalombiztosítási szám besorolása **társadalombiztosítási számot** tartalmaz), az érzékenységi címkék akkor lesznek alkalmazva, ha egy vagy több besorolás és forgatókönyv együtt található. 
 > 
 
-Az Azure hatáskörébe tartozó érzékenységi címkék a következőket vehetik fel:
-
-- **Címkék automatikus alkalmazása** fájlokra és adatbázis-oszlopokra
-
-- **Szabályozhatja** , hogy ki férhet hozzá az adataihoz
-
-- **Védelmi beállítások**(például titkosítás) betartatása a címkézett adatelemeken
+Az Azure hatáskörébe tartozó érzékenységi címkék használatával automatikusan alkalmazhat címkéket a fájlokra és az adatbázis-oszlopokra.
 
 További információ:
 

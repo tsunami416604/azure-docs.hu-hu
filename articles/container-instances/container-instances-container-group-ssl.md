@@ -3,12 +3,12 @@ title: A TLS engedélyezése oldalkocsi-tárolóval
 description: Hozzon létre egy SSL-vagy TLS-végpontot egy Azure Container Instanceson futó Container Group számára egy oldalkocsi-tárolóban való futtatásával
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: f7f5d8e8136f4357067888f5a39fa0c3635122d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86169850"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558079"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>TLS-végpont engedélyezése oldalkocsi-tárolóban
 
@@ -22,9 +22,9 @@ Ebben a példában a Container Group csak a 443-es portot teszi elérhetővé az
 
 Tekintse meg a [következő lépéseket](#next-steps) a TLS-t tároló csoportban való engedélyezésének egyéb módszereivel kapcsolatban.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-A cikk végrehajtásához használhatja az Azure CLI Azure Cloud Shell vagy helyi telepítését is. Ha helyileg szeretné használni, a 2.0.55 vagy újabb verzió használata javasolt. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+- Ehhez a cikkhez az Azure CLI 2.0.55 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 

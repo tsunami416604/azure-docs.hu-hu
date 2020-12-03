@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan frissíti Azure App Service az operációs rend
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 31b2d39f5d0d125d2bf23ac72718d9b386b48923
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8b52223aea0f0bdfecf58906ac192e893da3b47d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833486"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558487"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operációs rendszer és futtatókörnyezet javítása Azure App Service
 
@@ -51,7 +51,7 @@ A futtatókörnyezet frissítései és az elavulás itt jelent meg:
 
 ### <a name="new-patch-updates"></a>Új javítási frissítések
 
-A .NET, a PHP, a Java SDK vagy a Tomcat/Jetty verzióhoz tartozó javítások frissítései automatikusan érvénybe lépnek, ha felülírja a meglévő telepítést az új verzióval. Node.js a javítások frissítései a meglévő verziókkal együtt települnek (a következő szakaszban a fő-és alverzióhoz hasonlóan). Az új Python-javítási verziók manuálisan is telepíthetők a [site Extensions](https://azure.microsoft.com/blog/azure-web-sites-extensions/)használatával, a beépített Python-telepítésekkel párhuzamosan.
+A .NET, a PHP, a Java SDK vagy a Tomcat verzió frissítései automatikusan érvénybe lépnek, ha felülírja a meglévő telepítést a legújabb verzióval. Node.js a javítások frissítései a meglévő verziókkal együtt települnek (a következő szakaszban a fő-és alverzióhoz hasonlóan). Az új Python-javítási verziók manuálisan is telepíthetők a [site Extensions](https://azure.microsoft.com/blog/azure-web-sites-extensions/)használatával, a beépített Python-telepítésekkel párhuzamosan.
 
 ### <a name="new-major-and-minor-versions"></a>Új fő-és alverziók
 

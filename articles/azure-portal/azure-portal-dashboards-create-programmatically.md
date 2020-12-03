@@ -3,21 +3,21 @@ title: Azure-irányítópultok programozott létrehozása
 description: Az Azure-irányítópultok programozott létrehozásához használja a Azure Portalban található irányítópultot sablonként. JSON-hivatkozást tartalmaz.
 services: azure-portal
 documentationcenter: ''
-author: adamabmsft
+author: mgblythe
 manager: mtillman
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 03/23/2020
+ms.date: 12/4/2020
 ms.author: mblythe
-ms.openlocfilehash: 7f52bd94a0286ea50d09ab7c77dce339e8a3ebf3
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7e6819b01af3fc9357417a838fefce7f2c73dcce
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089366"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558216"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Azure-irányítópultok programozott létrehozása
 
@@ -37,7 +37,7 @@ A JSON-dokumentum felépítésének leghatékonyabb módja a Azure Portal haszn�
 
 ## <a name="create-a-dashboard"></a>Irányítópult létrehozása
 
-Irányítópult létrehozásához válassza az **irányítópult** lehetőséget a [Azure Portal](https://portal.azure.com) menüben, majd válassza az **új irányítópult**lehetőséget.
+Irányítópult létrehozásához válassza az **irányítópult** lehetőséget a [Azure Portal](https://portal.azure.com) menüben, majd válassza az **új irányítópult** lehetőséget.
 
 ![új irányítópult-parancs](./media/azure-portal-dashboards-create-programmatically/new-dashboard-command.png)
 
@@ -658,3 +658,49 @@ Ez a példa egy irányítópultot helyez üzembe önmagával, de a sablon nyelve
 ```
 
 Most, hogy megismerte az irányítópult üzembe helyezésére szolgáló paraméteres sablon használatát, megpróbálkozhat a sablon üzembe helyezésével a [Azure Resource Manager REST API](/rest/api/)-k, az [Azure CLI](/cli/azure)vagy a [Azure PowerShell parancsok](/powershell/azure/get-started-azureps)használatával.
+
+## <a name="programmatically-create-a-dashboard-by-using-azure-cli"></a>Irányítópult programozott létrehozása az Azure CLI használatával
+
+Készítse elő a környezetet az Azure CLI-hez.
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- Ezek a példák a következő irányítópultot használják: [portal-dashboard-template-testvm.json](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json). Cserélje le a tartalmat a szögletes zárójelben lévő értékekre.
+
+Irányítópult létrehozásához futtassa az az [Portal irányítópult Create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) parancsot:
+
+```azurecli
+az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+   --input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+Az irányítópultot az az [Portal Dashboard Update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) paranccsal frissítheti:
+
+```azurecli
+az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+--input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+Tekintse meg az irányítópult részleteit az az [Portal irányítópult show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) parancs futtatásával:
+
+```azurecli
+az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
+```
+
+Az aktuális előfizetés összes irányítópultjának megjelenítéséhez használja az [az Portal Dashboard List](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list):
+
+```azurecli
+az portal dashboard list
+```
+
+Az erőforráscsoport összes irányítópultját is megtekintheti:
+
+```azurecli
+az portal dashboard list --resource-group myResourceGroup
+```
+
+## <a name="next-steps"></a>További lépések
+
+További információ az asztali számítógépekről: [Azure Portal beállítások és beállítások kezelése](set-preferences.md).
+
+További információ az irányítópultok Azure CLI-támogatásáról: [az portál irányítópultja](/cli/azure/ext/portal/portal/dashboard).

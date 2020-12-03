@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e6b8c7d54cf24d810a1f32082d816c908966f63c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 204e087908ff978880966332b4619935dc6f0458
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739683"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559116"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Azure App Service PremiumV3-szintjeinek konfigurálása
 
@@ -19,7 +19,7 @@ Az új **PremiumV3** díjszabása gyorsabb processzorokkal, SSD-tárolóval és 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy alkalmazás **PremiumV3** való felskálázásához rendelkeznie kell egy olyan Azure app Service alkalmazással, amely alacsonyabb, mint a **PremiumV3** , és az alkalmazásnak egy olyan app Service-telepítésben kell futnia, amely támogatja a PremiumV3-t.
+Egy alkalmazás **PremiumV3** való felskálázásához rendelkeznie kell egy olyan Azure app Service alkalmazással, amely alacsonyabb, mint a **PremiumV3**, és az alkalmazásnak egy olyan app Service-telepítésben kell futnia, amely támogatja a PremiumV3-t.
 
 <a name="availability"></a>
 
@@ -42,14 +42,14 @@ az appservice list-locations --sku P1V3
 
 Az App Service alkalmazás díjszabási szintje a [app Service](overview-hosting-plans.md) -csomagban van definiálva. Létrehozhat egy App Service tervet saját maga vagy az alkalmazás létrehozása részeként is.
 
-Ha a App Service csomagot a <a href="https://portal.azure.com" target="_blank">Azure Portalban</a>konfigurálja, válassza az **árképzési szintet** . 
+Ha a App Service csomagot a <a href="https://portal.azure.com" target="_blank">Azure Portalban</a>konfigurálja, válassza az **árképzési szintet**. 
 
-Válassza az **éles környezet** , majd az **P1V3** , a **P2V3** vagy a **P3V3** lehetőséget, majd kattintson az **alkalmaz** gombra.
+Válassza az **éles környezet**, majd az **P1V3**, a **P2V3** vagy a **P3V3** lehetőséget, majd kattintson az **alkalmaz** gombra.
 
 ![Képernyőkép az alkalmazás ajánlott díjszabási szintjeiről.](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> Ha nem látja a **P1V3** , a **P2V3** és a **P3V3** lehetőséget, vagy ha a beállítások szürkén jelennek meg, akkor a **PremiumV3** valószínűleg nem érhető el a app Service csomagot tartalmazó mögöttes app Service-telepítésben. További részletekért tekintse meg a nem [támogatott erőforráscsoport és régió kombinációjának skálázása](#unsupported) című témakört.
+> Ha nem látja a **P1V3**, a **P2V3** és a **P3V3** lehetőséget, vagy ha a beállítások szürkén jelennek meg, akkor a **PremiumV3** valószínűleg nem érhető el a app Service csomagot tartalmazó mögöttes app Service-telepítésben. További részletekért tekintse meg a nem [támogatott erőforráscsoport és régió kombinációjának skálázása](#unsupported) című témakört.
 
 ## <a name="scale-up-an-existing-app-to-premiumv3-tier"></a>Meglévő alkalmazás vertikális felskálázása PremiumV3-szintűre
 
@@ -63,7 +63,7 @@ A App Service alkalmazás lap bal oldali navigációs sávján válassza a verti
 
 ![Az App Service-csomag vertikális felskálázását bemutató képernyőkép.](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-Válassza az **éles környezet** , majd az **P1V3** , a **P2V3** vagy a **P3V3** lehetőséget, majd kattintson az **alkalmaz** gombra.
+Válassza az **éles környezet**, majd az **P1V3**, a **P2V3** vagy a **P3V3** lehetőséget, majd kattintson az **alkalmaz** gombra.
 
 ![Képernyőkép az alkalmazás ajánlott díjszabási szintjeiről.](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
@@ -79,7 +79,7 @@ Egyes App Service csomagok nem méretezhetők a PremiumV3 szintjére, ha a mög�
 
 ## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>Vertikális felskálázás egy nem támogatott erőforráscsoporthoz és régió-kombinációból
 
-Ha az alkalmazás olyan App Service üzemelő példányban fut, ahol a **PremiumV3** nem érhető el, vagy ha az alkalmazás olyan régióban fut, amely jelenleg nem támogatja a **PremiumV3** -et, akkor a **PremiumV3** kihasználásához újra kell telepítenie az alkalmazást.  Erre két lehetősége van:
+Ha az alkalmazás olyan App Service üzemelő példányban fut, ahol a **PremiumV3** nem érhető el, vagy ha az alkalmazás olyan régióban fut, amely jelenleg nem támogatja a **PremiumV3**-et, akkor a **PremiumV3** kihasználásához újra kell telepítenie az alkalmazást.  Erre két lehetősége van:
 
 - Hozzon létre egy alkalmazást egy új erőforráscsoporthoz, és egy új App Service-csomaggal. A App Service terv létrehozásakor válasszon ki egy **PremiumV3** -szintet. Ez a lépés biztosítja, hogy a App Servicei terv a **PremiumV3** támogató központi telepítési egységbe legyen telepítve. Ezután telepítse újra az alkalmazás kódját az újonnan létrehozott alkalmazásba. Még akkor is, ha a App Service-csomagot alacsonyabb szinten méretezi a költségek megtakarítása érdekében, bármikor **PremiumV3** a biztonsági mentést, mert az üzembe helyezési egység támogatja azt.
 - Ha az alkalmazás már egy meglévő **prémium** szinten fut, akkor az alkalmazás a **PremiumV3** használó új App Service-csomagba az alkalmazás összes beállításával, a kapcsolódási karakterláncokkal és a telepítési konfigurációval is klónozott.
@@ -90,7 +90,7 @@ Ha az alkalmazás olyan App Service üzemelő példányban fut, ahol a **Premium
 
 ## <a name="moving-from-premium-container-to-premium-v3-sku"></a>Áttérés prémium szintű tárolóról prémium v3 SKU-ra
 
-Ha van olyan alkalmazás, amely a Premium Container SKU-t használja, és az új prémium v3 SKU-ra szeretne áttérni, újra kell telepítenie az alkalmazást, hogy kihasználhassa a **PremiumV3** . Ennek elvégzéséhez tekintse meg a vertikálisan nem [támogatott erőforráscsoport és a régió kombinációjának](#scale-up-from-an-unsupported-resource-group-and-region-combination) első lehetőségét.
+Ha van olyan alkalmazás, amely a Premium Container SKU-t használja, és az új prémium v3 SKU-ra szeretne áttérni, újra kell telepítenie az alkalmazást, hogy kihasználhassa a **PremiumV3**. Ennek elvégzéséhez tekintse meg a vertikálisan nem [támogatott erőforráscsoport és a régió kombinációjának](#scale-up-from-an-unsupported-resource-group-and-region-combination) első lehetőségét.
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
@@ -98,7 +98,7 @@ Az **PremiumV3** szinten automatizálhatja az alkalmazások létrehozását az [
 
 ### <a name="azure-cli"></a>Azure CLI
 
-A következő parancs egy App Service tervet hoz létre a _P1V2_ -ben. A Cloud Shell futtathatja. A következő lehetőségei: `--sku` P1V3, _P2V3_ és _P3V3_ .
+A következő parancs egy App Service tervet hoz létre a _P1V3_-ben. A Cloud Shell futtathatja. A következő lehetőségei: `--sku` P1V3, _P2V3_ és _P3V3_.
 
 ```azurecli-interactive
 az appservice plan create \
@@ -111,7 +111,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A következő parancs egy App Service tervet hoz létre a _P1V3_ -ben. A `-WorkerSize` _kis_ , _közepes_ és _nagyméretű_ beállítások.
+A következő parancs egy App Service tervet hoz létre a _P1V3_-ben. A `-WorkerSize` _kis_, _közepes_ és _nagyméretű_ beállítások.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `

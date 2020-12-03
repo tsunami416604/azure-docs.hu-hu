@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure app Service, webalkalmazás, Linux, Windows, Docker, tároló
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: b5682275a9e5f3993de715ab5f23a708d5df47ae
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 68fe49ff201ead89d846a0676e81dda9fc9b75b9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130119"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558606"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Egyéni szoftver migrálása Azure App Service egyéni tároló használatával
 
@@ -64,7 +64,7 @@ Az alkalmazás nem futtatható az App Service tesztkörnyezetben, mert egy telep
 
 A Megoldáskezelőben kattintson jobb gombbal a **CustomFontSample** projektre, és válassza az **Add** > **Container Orchestration Support** (Hozzáadás > Container Orchestration Support) lehetőséget.
 
-:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Az alapértelmezett böngészőben megjelenített alkalmazást ábrázoló képernyőkép.":::
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Képernyőkép a Megoldáskezelő ablakról, amely a CustomFontSample projektet, a hozzáadást és a tároló Orchestrator támogató menüelemeket mutatja.":::
 
 Válassza a **Docker-összeállítás**  >  **OK** elemet.
 
@@ -98,13 +98,13 @@ Az [Azure Container Registry](../container-registry/index.yml) képes tárolni a
 
 A Megoldáskezelőben kattintson jobb gombbal a **CustomFontSample** projektre, majd válassza a **Publish** (Közzététel) lehetőséget.
 
-:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Az alapértelmezett böngészőben megjelenített alkalmazást ábrázoló képernyőkép.":::
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Képernyőfelvétel a CustomFontSample-projektről és a közzétenni kívánt Megoldáskezelőról.":::
 
 ### <a name="create-registry-and-publish"></a>Beállításjegyzék létrehozása és közzététele
 
 A Közzétételi varázslóban válassza a **Container Registry**  >  **új Azure Container Registry**  >  **Közzététel** lehetőséget.
 
-:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Az alapértelmezett böngészőben megjelenített alkalmazást ábrázoló képernyőkép.":::
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="A közzétételi varázsló képernyőképe, amelyen Container Registry, új Azure Container Registry létrehozása és a közzététel gomb van kiválasztva.":::
 
 ### <a name="sign-in-with-azure-account"></a>Bejelentkezés az Azure-fiók használatával
 
@@ -120,7 +120,7 @@ Konfigurálja az új Container Registryt a következő táblázatban javasolt é
 | ----------------- | ------------ | ----|
 |**DNS-előtag**| Megtarthatja a beállításjegyzék létrehozott nevét, vagy módosíthatja egy másik egyedi névre. |  |
 |**Erőforráscsoport**| Kattintson a **New** (Új) lehetőségre, írja be a **myResourceGroup** kifejezést, majd kattintson az **OK** gombra. |  |
-|**Termékváltozat**| Alapszintű | [Tarifacsomagok](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**Termékváltozat**| Alapszintű | [Árképzési szintek](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Beállításjegyzékbeli hely**| Nyugat-Európa | |
 
 ![Az Azure Container Registry konfigurálása](./media/tutorial-custom-container/configure-registry.png)
@@ -137,17 +137,17 @@ A bal oldali menüben válassza az **erőforrás létrehozása**  >  **webes**  
 
 ### <a name="configure-app-basics"></a>Alkalmazás alapalapjainak konfigurálása
 
-Az **alapvető** beállítások lapon konfigurálja a beállításokat az alábbi táblázat szerint, majd kattintson a Tovább gombra **: Docker** .
+Az **alapvető** beállítások lapon konfigurálja a beállításokat az alábbi táblázat szerint, majd kattintson a Tovább gombra **: Docker**.
 
 | Beállítás  | Ajánlott érték | További tudnivalók |
 | ----------------- | ------------ | ----|
 |**Előfizetés**| Győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva. |  |
-|**Erőforráscsoport**| Válassza az **új létrehozása** elemet, írja be a **myResourceGroup** , majd kattintson **az OK** gombra. |  |
+|**Erőforráscsoport**| Válassza az **új létrehozása** elemet, írja be a **myResourceGroup**, majd kattintson **az OK** gombra. |  |
 |**Név**| Írjon be egy egyedi nevet. | A webalkalmazás URL-címe `http://<app-name>.azurewebsites.net`, amelyben az `<app-name>` az alkalmazás neve. |
 |**Közzététel**| Docker-tároló | |
 |**Operációs rendszer**| Windows | |
 |**Régió**| Nyugat-Európa | |
-|**Windows-csomag**| Válassza az **új létrehozása** elemet, írja be a **myAppServicePlan** , majd kattintson **az OK** gombra. | |
+|**Windows-csomag**| Válassza az **új létrehozása** elemet, írja be a **myAppServicePlan**, majd kattintson **az OK** gombra. | |
 
 Az **alapvető beállítások** lap így néz ki:
 
@@ -228,31 +228,16 @@ Az oktatóanyag elvégzésével kis díjat számítunk fel az Azure-fiókjában 
 
 ## <a name="set-up-your-initial-environment"></a>A kezdeti környezet beállítása
 
-* Rendelkeznie kell aktív előfizetéssel rendelkező Azure-fiókkal. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Telepítse a [Docker](https://docs.docker.com/get-started/#setup)-t, amelyet Docker-rendszerképek létrehozásához használ. A Docker telepítéséhez szükség lehet a számítógép újraindítására.
-* Telepítse az <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> -2.0.80 vagy újabb verzióját, amellyel az Azure-erőforrások kiépítéséhez és konfigurálásához bármilyen rendszerhéjban parancsokat futtathat.
+- Rendelkeznie kell aktív előfizetéssel rendelkező Azure-fiókkal. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Telepítse a [Docker](https://docs.docker.com/get-started/#setup)-t, amelyet Docker-rendszerképek létrehozásához használ. A Docker telepítéséhez szükség lehet a számítógép újraindítására.
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- Az oktatóanyaghoz az Azure CLI 2.0.80 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-A Docker és az Azure CLI telepítése után nyisson meg egy terminál ablakot, és ellenőrizze, hogy telepítve van-e a Docker:
+A Docker telepítése vagy a Azure Cloud Shell futtatása után nyisson meg egy terminál ablakot, és ellenőrizze, hogy telepítve van-e a Docker:
 
 ```bash
 docker --version
 ```
-
-Győződjön meg arról is, hogy az Azure CLI verziója 2.0.80 vagy magasabb:
-
-```azurecli
-az --version
-```
-
-Ezután jelentkezzen be az Azure-ba a CLI használatával:
-
-```azurecli
-az login
-```
-
-A `az login` parancs megnyit egy böngészőt a hitelesítő adatok összegyűjtéséhez. Ha a parancs befejeződik, az megjeleníti a JSON-kimenetet, amely az előfizetésekkel kapcsolatos információkat tartalmaz.
-
-Miután bejelentkezett, futtathatja az Azure-parancsokat az Azure CLI-vel, hogy az előfizetésében lévő erőforrásokkal működjön.
 
 ## <a name="clone-or-download-the-sample-app"></a>A minta alkalmazás klónozása vagy letöltése
 
@@ -320,7 +305,7 @@ ENTRYPOINT ["init.sh"]
 ## <a name="build-and-test-the-image-locally"></a>A rendszerkép helyi létrehozása és tesztelése
 
 > [!NOTE]
-> A Docker hub [kvótákat használ az IP-címekhez tartozó névtelen lekérések számával és az ingyenes felhasználók által hitelesített lekérések számával (lásd az **adatátvitelt** )](https://www.docker.com/pricing). Ha azt tapasztalja, hogy a Docker hub-ból való lekérések korlátozottak, próbálja meg, `docker login` Ha még nincs bejelentkezve.
+> A Docker hub [kvótákat használ az IP-címekhez tartozó névtelen lekérések számával és az ingyenes felhasználók által hitelesített lekérések számával (lásd az **adatátvitelt**)](https://www.docker.com/pricing). Ha azt tapasztalja, hogy a Docker hub-ból való lekérések korlátozottak, próbálja meg, `docker login` Ha még nincs bejelentkezve.
 > 
 
 1. A rendszerkép létrehozásához futtassa a következő parancsot:
@@ -338,15 +323,13 @@ ENTRYPOINT ["init.sh"]
     Ez [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) a parancs az argumentumot tartalmazó portot adja meg, `-p` amelyet a rendszerkép neve követ. 
     
     > [!TIP]
-    > Ha Windows rendszeren fut, és megtekinti a hibát, *standard_init_linux. go: 211: az exec felhasználói folyamata "nincs ilyen fájl vagy könyvtár"* , a *init.sh* -fájl a várt LF végződés helyett a CR-LF sorok végét tartalmazza. Ez a hiba akkor fordul elő, ha a git használatával klónozott a minta tárházat, de kihagyta a `--config core.autocrlf=input` paramétert. Ebben az esetben a tárházat a "--config" argumentummal újra klónozással. A hiba akkor is megjelenhet, ha szerkesztette a *init.sh* , és CRLF-végződésekkel mentette. Ebben az esetben mentse újra a fájlt csak LF végződéssel.
+    > Ha Windows rendszeren fut, és megtekinti a hibát, *standard_init_linux. go: 211: az exec felhasználói folyamata "nincs ilyen fájl vagy könyvtár"*, a *init.sh* -fájl a várt LF végződés helyett a CR-LF sorok végét tartalmazza. Ez a hiba akkor fordul elő, ha a git használatával klónozott a minta tárházat, de kihagyta a `--config core.autocrlf=input` paramétert. Ebben az esetben a tárházat a "--config" argumentummal újra klónozással. A hiba akkor is megjelenhet, ha szerkesztette a *init.sh* , és CRLF-végződésekkel mentette. Ebben az esetben mentse újra a fájlt csak LF végződéssel.
 
 1. `http://localhost:8000`A webalkalmazás és a tároló megfelelő működésének ellenőrzéséhez keresse fel a következőt:.
 
     ![Webalkalmazás helyi tesztelése](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
 
-[!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
-
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Ebben a szakaszban és a következő lépésekben olyan erőforrásokat kell kiépíteni az Azure-ban, amelyeken leküldi a lemezképet, majd üzembe helyezi a tárolót Azure App Service. Először hozzon létre egy erőforráscsoportot, amelyben az összes erőforrást össze szeretné gyűjteni.
 
@@ -565,7 +548,7 @@ Ebben a szakaszban módosítja a webalkalmazás kódját, újraépíti a tárol�
 
     A naplófájlokat a böngészőből is megtekintheti a következő címen: `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
 
-1. Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CTRL C billentyűt** + **C** .
+1. Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CTRL C billentyűt** + **C**.
 
 ## <a name="connect-to-the-container-using-ssh"></a>Csatlakozás a tárolóhoz SSH használatával
 
@@ -573,7 +556,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
 ### <a name="configure-the-container-for-ssh"></a>Az SSH-tároló konfigurálása
 
-Az oktatóanyagban használt minta alkalmazás már rendelkezik a szükséges konfigurációval a *Docker* , amely telepíti az SSH-kiszolgálót, és beállítja a bejelentkezési hitelesítő adatokat is. Ez a szakasz csak tájékoztató információkat tartalmaz. A tárolóhoz való kapcsolódáshoz ugorjon a következő szakaszra
+Az oktatóanyagban használt minta alkalmazás már rendelkezik a szükséges konfigurációval a *Docker*, amely telepíti az SSH-kiszolgálót, és beállítja a bejelentkezési hitelesítő adatokat is. Ez a szakasz csak tájékoztató információkat tartalmaz. A tárolóhoz való kapcsolódáshoz ugorjon a következő szakaszra
 
 ```Dockerfile
 ENV SSH_PASSWD "root:Docker!"
@@ -599,7 +582,7 @@ EXPOSE 8000 2222
 
 Az 2222-es port egy belső port, amely csak a privát virtuális hálózathoz tartozó Bridge hálózaton lévő tárolók számára érhető el. 
 
-Végül, a *init.sh* , elindítja az SSH-kiszolgálót.
+Végül, a *init.sh*, elindítja az SSH-kiszolgálót.
 
 ```bash
 #!/bin/bash
@@ -614,7 +597,7 @@ service ssh start
 
     Megvizsgálhatja például a-ben futó folyamatokat a parancs használatával `top` .
     
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az ebben a cikkben létrehozott erőforrások folyamatos költségeket okozhatnak. az erőforrások törléséhez csak az azokat tartalmazó erőforráscsoportot kell törölnie:
 
@@ -624,7 +607,7 @@ az group delete --name AppSvc-DockerTutorial-rg
 
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiak elvégzését ismerte meg:
 

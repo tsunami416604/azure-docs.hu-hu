@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ebadaf51a7dfbb286dac0bbdb0c3c8437ae2356f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5793e2958edce0a4c97660a75d0ecefa914c12d2
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022224"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559082"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Oktatóanyag: felületek és egyéni modellek
 
@@ -30,18 +30,18 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="get-started-with-the-mixed-reality-toolkit-mrtk"></a>Ismerkedés a Mixed Reality Toolkit (MRTK) használatával
 
-A Mixed Reality Toolkit (MRTK) egy többplatformos eszközkészlet, amely vegyes valóságú tapasztalatokat épít ki. A MRTK 2,3-et az interakciós és vizualizációs funkciókhoz fogjuk használni.
+A Mixed Reality Toolkit (MRTK) egy többplatformos eszközkészlet, amely vegyes valóságú tapasztalatokat épít ki. A MRTK 2.5.1-t fogjuk használni az interakciós és vizualizációs funkciókhoz.
 
-MRTK hozzáadásához kövesse az [első lépések a MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html)-ben című [témakörben felsorolt szükséges lépéseket](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#required) .
+MRTK hozzáadásához kövesse a [MRTK telepítési útmutatójában](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html)felsorolt [szükséges lépéseket](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#required) .
 
 Ezek a lépések a következők:
- - [A legújabb MRTK Unity-csomagok beszerzése](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#get-the-latest-mrtk-unity-packages)
-     - Annak ellenére, hogy a "legújabb", a 2,3-es verzióra van lemondva.
-     - Ebben az oktatóanyagban csak az *Foundation* -csomagot használjuk. A *bővítmények*, *eszközök*és *példák* nem szükségesek.
- - [MRTK-csomagok importálása az Unity-projektbe](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#import-mrtk-packages-into-your-unity-project)
- - [Az Unity-projekt átváltása a célként megadott platformra](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#switch-your-unity-project-to-the-target-platform)
+ - [A legújabb MRTK Unity-csomagok beszerzése](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#1-get-the-latest-mrtk-unity-packages)
+     - Annak ellenére, hogy a "legutóbbi" kifejezést adja meg, használja a 2.5.1-es verziót a MRTK kiadási oldaláról.
+     - Ebben az oktatóanyagban csak az *Foundation* -csomagot használjuk. A *bővítmények*, *eszközök* és *példák* nem szükségesek.
+ - [MRTK-csomagok importálása az Unity-projektbe](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#2-import-mrtk-packages-into-your-unity-project)
+ - [Az Unity-projekt átváltása a célként megadott platformra](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#3-switch-your-unity-project-to-the-target-platform)
      - Ezt a lépést már az első fejezetben kell megtennie, de most már jó idő van a kettős vizsgálatra!
- - [MRTK hozzáadása új jelenethez vagy új projekthez](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#add-mrtk-to-a-new-scene-or-new-project)
+ - [MRTK hozzáadása új jelenethez vagy új projekthez](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#4-add-and-configure-mrtk-with-a-new-scene)
      - Hozzáadhat MRTK új jelenetekhez, és újból hozzáadhatja a koordinátort és a Model Objects/szkripteket, vagy hozzáadhat MRTK a meglévő jelenethez a *vegyes valóság Toolkit – > Hozzáadás a jelenethez és* a menü konfigurálása parancs használatával.
 
 ## <a name="import-assets-used-by-this-tutorial"></a>Az oktatóanyag által használt eszközök importálása
@@ -51,7 +51,7 @@ Ebből a fejezetből megtudhatja, hogyan valósítható meg egy egyszerű [model
 A MRTK bevezetésével számos olyan parancsfájlt, panelt és eszközt használhat, amely most már hozzáadható a projekthez az interakciók és a vizuális visszajelzések támogatásához. Ezek az eszközök, mint az **oktatóanyagi eszközök**, egy [Unity Asset-csomagba](https://docs.unity3d.com/Manual/AssetPackages.html)vannak csomagolva, amely a "\Unity\TutorialAssets\TutorialAssets.unitypackage" [Azure távoli renderelési GitHub](https://github.com/Azure/azure-remote-rendering) részét képezi.
 
 1. A git-tárház [Azure távoli renderelésének](https://github.com/Azure/azure-remote-rendering)klónozása vagy letöltése, ha a letöltés kibontja a zip-fájlt egy ismert helyre.
-1. Az Unity-projektben válassza az *eszközök – > csomag importálása – > egyéni csomag*elemet.
+1. Az Unity-projektben válassza az *eszközök – > csomag importálása – > egyéni csomag* elemet.
 1. A Fájlkezelőben keresse meg azt a könyvtárat, ahová klónozott vagy kicsomagolta az Azure távoli renderelési tárházát, majd válassza ki az **Unity-> TutorialAssets-> TutorialAssets. unitypackage** mappában található. unitypackage
 1. Válassza az **Importálás** gombot a csomag tartalmának a projektbe való importálásához.
 1. Az Unity Editorban válassza a *vegyes valóság eszközkészlet – > segédprogramok – > a MRTK Standard shader frissítése a Lightweight renderelési folyamathoz* lehetőséget a felső menüsorban, és kövesse az utasításokat a shader frissítéséhez.
@@ -59,7 +59,7 @@ A MRTK bevezetésével számos olyan parancsfájlt, panelt és eszközt használ
 A MRTK és az oktatóanyag-eszközök projektbe való felvételét követően a MRTK-profilt az oktatóanyaghoz alkalmasabbnak fogjuk váltani.
 
 1. Válassza ki a **MixedRealityToolkit** GameObject a jelenet hierarchiában.
-1. Az Ellenőrben a **MixedRealityToolkit** összetevő alatt állítsa át a konfigurációs profilt a *ARRMixedRealityToolkitConfigurationProfile*értékre.
+1. Az Ellenőrben a **MixedRealityToolkit** összetevő alatt állítsa át a konfigurációs profilt a *ARRMixedRealityToolkitConfigurationProfile* értékre.
 1. Nyomja le a *CTRL + S* billentyűkombinációt a módosítások mentéséhez.
 
 Ezzel a beállítással a MRTK-t, elsősorban az alapértelmezett HoloLens 2 profillal konfigurálja. A megadott profilok a következő módokon vannak előre konfigurálva:
@@ -75,14 +75,14 @@ Most hozzáadhatja a panel **AppMenu** a jelenethez az aktuális munkamenet-áll
 
 1. Keresse meg a **AppMenu** panelt az *eszközök/RemoteRenderingTutorial/előregyártott/AppMenu*
 1. Húzza a **AppMenu** panelt a jelenetbe.
-1. Valószínűleg megjelenik egy párbeszédpanel a tmp- **importőr**számára, mivel ez az első alkalom, hogy a jelenetben a *text Mesh Pro* -eszközök is szerepelnek. Kövesse az utasításokat a **tmp Essentials importálásához**. Ezután az importáló párbeszédpanel bezárásához a példák és az extrák nem szükségesek.
+1. Valószínűleg megjelenik egy párbeszédpanel a tmp- **importőr** számára, mivel ez az első alkalom, hogy a jelenetben a *text Mesh Pro* -eszközök is szerepelnek. Kövesse az utasításokat a **tmp Essentials importálásához**. Ezután az importáló párbeszédpanel bezárásához a példák és az extrák nem szükségesek.
 1. A **AppMenu** úgy van konfigurálva, hogy automatikusan összekapcsoljon, és biztosítson egy munkamenethez való csatlakozáshoz szükséges modális lehetőséget, így törölheti a korábban megkerülő megkerülő beállítást. A **RemoteRenderingCoordinator** -GameObject távolítsa el a korábban megvalósított engedélyezés mellőzését az **engedélyezést kérő** esemény "-" gombjának megnyomásával.
  ![A Mellőzés eltávolítása ](./media/remove-bypass-event.png) .
 1. Tesztelje a nézet vezérlőjét a **Play (lejátszás** ) megnyomásával az Unity Editorban.
 1. A szerkesztőben most, hogy a MRTK konfigurálva van, a WASD billentyűk használatával módosíthatja a nézet pozícióját, és a jobb oldali egérgomb + az egér mozgatásával módosíthatja a nézet irányát. Próbálja ki a "vezetést" a jelenet körül egy kicsit, hogy kedve legyen a vezérlők számára.
 1. Az eszközön felveheti a tenyerét, hogy meghívja a **AppMenu**, az Unity Editorban használja a gyorsbillentyűt.
 1. Ha elvesztette a menüt, nyomja le az 'M billentyűt a menü megidézéséhez. Az egyszerű interakcióhoz a menü a kamera közelében lesz elhelyezve.
-1. Az engedélyezés mostantól a **AppMenu**jobb oldalán megjelenő kérelemként fog megjelenni, ezzel engedélyezi az alkalmazás számára a távoli renderelési munkamenetek kezelését.
+1. Az engedélyezés mostantól a **AppMenu** jobb oldalán megjelenő kérelemként fog megjelenni, ezzel engedélyezi az alkalmazás számára a távoli renderelési munkamenetek kezelését.
  ![Felhasználói felület engedélyezése](./media/authorize-request-ui.png)
 1. Állítsa le az egységet a lejátszásból, és folytassa az oktatóanyagot.
 
@@ -90,7 +90,7 @@ Most hozzáadhatja a panel **AppMenu** a jelenethez az aktuális munkamenet-áll
 
 Most egy új szkriptet fogunk megvalósítani, amely a **RemoteRenderedModel** , az eseményekre, az égetési eseményekre és a konfigurációra reagál. A **RemoteRenderedModel** lényegében a modellben tárolt adattípusok távoli elérési útját tárolja `modelPath` . A **RemoteRenderingCoordinator** megfigyelheti az állapotváltozás állapotát, hogy ellenőrizze, automatikusan be kell-e töltenie vagy eltávolítania az általa definiált modellt. A **RemoteRenderedModel** csatolt GameObject a távoli tartalom helyi szülője lesz.
 
-Figyelje meg, hogy a **RemoteRenderedModel** -szkript implementálja az **oktatóanyag eszközeinek**részét képező **BaseRemoteRenderedModel**. Ez lehetővé teszi, hogy a távoli modell nézet vezérlője kötést hozzon létre a parancsfájlhoz.
+Figyelje meg, hogy a **RemoteRenderedModel** -szkript implementálja az **oktatóanyag eszközeinek** részét képező **BaseRemoteRenderedModel**. Ez lehetővé teszi, hogy a távoli modell nézet vezérlője kötést hozzon létre a parancsfájlhoz.
 
 1. Hozzon létre egy **RemoteRenderedModel** nevű új parancsfájlt ugyanabban a mappában, mint a **RemoteRenderingCoordinator**. Cserélje le a teljes tartalmat a következő kódra:
 
@@ -264,7 +264,7 @@ Tesztelje az új szkriptet a test Model ismételt betöltésével. Hozzunk létr
 ![RemoteRenderedModel-összetevő hozzáadása](./media/add-remote-rendered-model-script.png)
 1. Töltse ki a `Model Display Name` és a kifejezést az `Model Path` "*TestModel*" és a "*Builtin://Engine*" értékkel.
 ![Modell részleteinek megadása](./media/add-model-script.png)
-1. Helyezze a **TestModel** objektumot a kamera elé, az **x = 0, y = 0, z = 3**pozícióban.
+1. Helyezze a **TestModel** objektumot a kamera elé, az **x = 0, y = 0, z = 3** pozícióban.
 ![Objektum elhelyezése](./media/test-model-position.png)
 1. Győződjön meg arról, hogy a **AutomaticallyLoad** be van kapcsolva.
 1. Az alkalmazás teszteléséhez kattintson a **Play (lejátszás** ) gombra az Unity Editorban.

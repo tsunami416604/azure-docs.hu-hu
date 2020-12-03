@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a6aa4ad009d037e6ea0d1ade3cc9735351bd634a
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532706"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558861"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés 8x8 konfigurálása
 
-Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a 8x8 Configuration Manager és az Azure Active Directory (Azure AD) szolgáltatásban kell végrehajtania az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat az Azure AD kiépítési szolgáltatás [8x8](https://www.8x8.com) . A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md). 
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a 8x8 felügyeleti konzolon és Azure Active Directoryon (Azure AD) is el kell végeznie az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat az Azure AD kiépítési szolgáltatás [8x8](https://www.8x8.com) . A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md). 
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 * [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md) 
 * Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](../roles/permissions-reference.md) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda).
 * Bármely szint 8x8 X sorozatának előfizetése.
-* Egy rendszergazdai engedéllyel rendelkező 8x8 felhasználói fiók [Configuration Managerban](https://vo-cm.8x8.com).
+* Egy rendszergazdai engedéllyel rendelkező 8x8 felhasználói fiók a [felügyeleti konzolon](https://vo-cm.8x8.com).
 * [Az Azure ad-vel](./8x8virtualoffice-tutorial.md) már konfigurálva van egy Sign-On.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
@@ -48,7 +48,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 Ez a szakasz végigvezeti a 8x8 konfigurálásának lépésein az Azure AD-vel való kiépítés támogatásához.
 
-### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>A felhasználó kiépítési hozzáférési jogkivonatának konfigurálása a 8x8-Configuration Managerban:
+### <a name="to-configure-a-user-provisioning-access-token-in-8x8-admin-console"></a>A felhasználó kiépítési hozzáférési jogkivonatának konfigurálása a 8x8 felügyeleti konzolon:
 
 1. Jelentkezzen be a [felügyeleti konzolra](https://admin.8x8.com). Válassza az **Identitáskezelés** lehetőséget.
 
@@ -64,7 +64,7 @@ Ez a szakasz végigvezeti a 8x8 konfigurálásának lépésein az Azure AD-vel v
 
 ## <a name="step-3-add-8x8-from-the-azure-ad-application-gallery"></a>3. lépés 8x8 hozzáadása az Azure AD Application Galleryből
 
-Vegyen fel 8x8 az Azure AD-alkalmazás-katalógusból a 8x8 való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a 8x8 az SSO-hoz, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](../manage-apps/add-application-portal.md) tudhat meg többet.
+Vegyen fel 8x8 az Azure AD-alkalmazás-katalógusból a 8x8 való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a 8x8-t az egyszeri bejelentkezéshez, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](../manage-apps/add-application-portal.md) tudhat meg többet.
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása
 
@@ -102,7 +102,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban másolja a **8x8 URL-címét** a Configuration Manager a **bérlői URL-címre**. Másolja a **8X8 API-tokent** Configuration Managerről **titkos jogkivonatba**. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a 8x8. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a 8x8-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban másolja a **8X8 URL-címét** a felügyeleti konzolról a **bérlői URL-címre**. Másolja a **8X8 API-tokent** a felügyeleti konzolról **titkos jogkivonatba**. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a 8x8. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a 8x8-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Képernyőfelvétel: a rendszergazdai hitelesítő adatok párbeszédpanel, ahol megadhatja a bérlő U R L-t és a titkos jogkivonatot.](./media/8x8-provisioning-tutorial/provisioning.png)
 
@@ -155,7 +155,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 2. Tekintse meg a [folyamatjelző sáv](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) állapotát a kiépítési ciklus állapotának megtekintéséhez és a befejezéshez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

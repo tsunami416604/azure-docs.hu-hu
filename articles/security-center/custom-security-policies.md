@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/22/2020
+ms.date: 12/03/2020
 ms.author: memildin
-ms.openlocfilehash: ab9be4b14ca51b56ec0a52147b409a56f87cf302
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8d2b43ab57ea7a3b1dc1d13bcdea9932ccecb9dc
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341889"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559031"
 ---
 # <a name="using-custom-security-policies"></a>Egyéni biztonsági szabályzatok használata
 
@@ -36,7 +36,7 @@ Amint azt [a Azure Policy dokumentációban](../governance/policy/concepts/defin
     >
     > Egyéni szabvány hozzáadásakor egy *kezdeményezést* rendel hozzá ehhez a hatókörhöz. Ezért javasoljuk, hogy válassza ki az adott hozzárendeléshez szükséges legszélesebb hatókört.
 
-1. A biztonsági szabályzat lap egyéni kezdeményezések területén kattintson az **Egyéni kezdeményezés hozzáadása**lehetőségre.
+1. A biztonsági szabályzat lap egyéni kezdeményezések területén kattintson az **Egyéni kezdeményezés hozzáadása** lehetőségre.
 
     [![Kattintson az egyéni kezdeményezés hozzáadása lehetőségre.](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
@@ -44,13 +44,13 @@ Amint azt [a Azure Policy dokumentációban](../governance/policy/concepts/defin
 
     ![Szabályzat létrehozása vagy hozzáadása](media/custom-security-policies/create-or-add-custom-policy.png)
 
-1. Az egyéni kezdeményezések hozzáadása oldalon tekintse át a szervezetében már létrehozott egyéni szabályzatok listáját. Ha megjelenik az előfizetéshez hozzárendelni kívánt fiók, kattintson a **Hozzáadás**gombra. Ha nincs olyan kezdeményezés a listában, amely megfelel az igényeinek, hagyja ki ezt a lépést.
+1. Az egyéni kezdeményezések hozzáadása oldalon tekintse át a szervezetében már létrehozott egyéni szabályzatok listáját. Ha megjelenik az előfizetéshez hozzárendelni kívánt fiók, kattintson a **Hozzáadás** gombra. Ha nincs olyan kezdeményezés a listában, amely megfelel az igényeinek, hagyja ki ezt a lépést.
 
 1. Új egyéni kezdeményezés létrehozása:
 
-    1. Kattintson az **új létrehozása**gombra.
+    1. Kattintson az **új létrehozása** gombra.
     1. Adja meg a definíció helyét és nevét.
-    1. Válassza ki a felvenni kívánt házirendeket, majd kattintson a **Hozzáadás**gombra.
+    1. Válassza ki a felvenni kívánt házirendeket, majd kattintson a **Hozzáadás** gombra.
     1. Adja meg a kívánt paramétereket.
     1. Kattintson a **Mentés** gombra.
     1. Az egyéni kezdeményezések hozzáadása lapon kattintson a frissítés elemre. Az új kezdeményezés elérhetőként jelenik meg.
@@ -61,7 +61,7 @@ Amint azt [a Azure Policy dokumentációban](../governance/policy/concepts/defin
 
     Az új kezdeményezés érvénybe lép, és a következő két módon láthatja a hatást:
 
-    * A Security Center oldalsávon a szabályzat & megfelelőség területen válassza a **jogszabályi megfelelőség**lehetőséget. Megnyílik a megfelelőségi irányítópult, amely megjeleníti az új egyéni kezdeményezést a beépített kezdeményezésekkel együtt.
+    * A Security Center oldalsávon a szabályzat & megfelelőség területen válassza a **jogszabályi megfelelőség** lehetőséget. Megnyílik a megfelelőségi irányítópult, amely megjeleníti az új egyéni kezdeményezést a beépített kezdeményezésekkel együtt.
     
     * Ha a környezet nem követi a definiált szabályzatokat, megkezdheti a javaslatok fogadását.
 
@@ -84,7 +84,7 @@ A metaadatokat fel kell venni az egyéni kezdeményezés részét képező szab�
  "metadata": {
     "securityCenter": {
         "RemediationDescription": "Custom description goes here",
-        "Severity": "High",
+        "Severity": "High"
     },
 ```
 
@@ -99,8 +99,8 @@ Az alábbi példa egy egyéni házirendre mutat példát, beleértve a metaadato
     "description": "Audit required resource groups lock",
     "metadata": {
         "securityCenter": {
-            "remediationDescription": "Resource Group locks can be set via Azure Portal -> Resource Group -> Locks",
-            "severity": "High"
+            "RemediationDescription": "Resource Group locks can be set via Azure Portal -> Resource Group -> Locks",
+            "Severity": "High"
         }
     },
     "parameters": {
@@ -139,7 +139,7 @@ Az alábbi példa egy egyéni házirendre mutat példát, beleértve a metaadato
 A securityCenter tulajdonság használatának egy másik példáját a [REST API dokumentációjának ezen szakasza](/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)tartalmazza.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre egyéni biztonsági házirendeket. 
 

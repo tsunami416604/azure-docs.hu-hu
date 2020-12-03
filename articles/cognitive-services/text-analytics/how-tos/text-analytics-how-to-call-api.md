@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 90a4da2aadbbdf07d851e4407d2d417fc76d32af
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 5985c30973f703b897fa2eedc2be3b939d97900b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512324"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558997"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
@@ -52,9 +52,9 @@ Az alábbi táblázatból megtudhatja, hogy mely szolgáltatásokat lehet aszink
 
 
 > [!NOTE]
-> Ha a (z) vagy a végpontot szeretné használni, szüksége lesz egy Text Analytics-erőforrásra a standard (k) [árképzési szint](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) használatával `/analyze` `/health` .
+> * Ha a (z) vagy a végpontot szeretné használni, szüksége lesz egy Text Analytics-erőforrásra a standard (k) [árképzési szint](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) használatával `/analyze` `/health` .
 
-1.  Először nyissa meg a [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) , és hozzon létre egy új Text Analytics-erőforrást, ha még nem rendelkezik ilyennel. Ha a vagy a végpontot szeretné használni, válassza a **Standard (S) árképzési szintet** `/analyze` `/health` .
+1.  Először nyissa meg a [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) , és hozzon létre egy új Text Analytics-erőforrást, ha még nem rendelkezik ilyennel. Ha a vagy a végpontot szeretné használni, válassza a **Standard (S) árképzési szintet** `/analyze` `/health` . A `/analyze` végpontot a [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)tartalmazza.
 
 2.  Válassza ki a végponthoz használni kívánt régiót.  Vegye figyelembe, hogy a `/analyze` és a `/health` végpontok csak a következő régiókban érhetők el: USA 2. nyugati régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa és Nyugat-Európa.
 
@@ -339,7 +339,7 @@ A Text Analytics for Health aszinkron API-válaszról a következő cikkben tal�
 
 --- 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>

@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy A
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 32b4dbe2563731664030dbc32c2b570ccc3e1d12
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 342f7fc37edb3a1623b72c57e8766b1a484d0e8d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030645"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559150"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: a tároló rendszerképének automatizálása, amikor egy alaprendszerkép frissül egy Azure Container registryben 
 
@@ -32,10 +32,10 @@ Ebben az oktatóanyagban:
 
 Ez az oktatóanyag feltételezi, hogy már konfigurálta a környezetét, és befejezte a sorozat első két oktatóanyagának lépéseit:
 
-* Azure Container Registry létrehozása
-* Mintaadattár leágaztatása
-* Mintaadattár klónozása
-* Személyes hozzáférési jogkivonat létrehozása a GitHubban
+- Azure Container Registry létrehozása
+- Mintaadattár leágaztatása
+- Mintaadattár klónozása
+- Személyes hozzáférési jogkivonat létrehozása a GitHubban
 
 Ha még nem tette meg, a folytatás előtt végezze el a következő oktatóanyagokat:
 
@@ -44,6 +44,9 @@ Ha még nem tette meg, a folytatás előtt végezze el a következő oktatóanya
 [Tárolórendszerképek összeállításának automatizálása az Azure Container Registry Tasks használatával](container-registry-tutorial-build-task.md)
 
 ### <a name="configure-the-environment"></a>A környezet konfigurálása
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- Ehhez a cikkhez az Azure CLI 2.0.46 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
 Láss el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha nem tölti fel ezeket a környezeti változókat, manuálisan kell lecserélnie az egyes értékeket, bárhol is megjelenjenek a példában szereplő parancsokban.
 

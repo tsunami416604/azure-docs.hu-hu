@@ -1,20 +1,20 @@
 ---
-title: Hitelesítő adatok kezelése Azure Automationban
+title: Hitelesítő adatok kezelése az Azure Automationben
 description: Ez a cikk azt ismerteti, hogyan hozhatók létre hitelesítőadat-eszközök, és hogyan használhatók runbook vagy DSC-konfigurációban.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 12/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4fbcf74c2c70d3dffd86728132d58430472271b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004664"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558835"
 ---
-# <a name="manage-credentials-in-azure-automation"></a>Hitelesítő adatok kezelése Azure Automationban
+# <a name="manage-credentials-in-azure-automation"></a>Hitelesítő adatok kezelése az Azure Automationben
 
-Az Automation hitelesítőadat-adategység olyan objektumot tartalmaz, amely biztonsági hitelesítő adatokat tartalmaz, például egy felhasználónevet és egy jelszót. A runbookok és a DSC-konfigurációk olyan parancsmagokat használnak, amelyek elfogadnak egy [PSCredential](/dotnet/api/system.management.automation.pscredential) objektumot a hitelesítéshez. Azt is megteheti, hogy kinyeri az objektum felhasználónevét és jelszavát `PSCredential` , hogy a hitelesítést igénylő alkalmazások vagy szolgáltatások számára biztosítson. 
+Az Automation hitelesítőadat-adategység olyan objektumot tartalmaz, amely biztonsági hitelesítő adatokat tartalmaz, például egy felhasználónevet és egy jelszót. A runbookok és a DSC-konfigurációk olyan parancsmagokat használnak, amelyek elfogadnak egy [PSCredential](/dotnet/api/system.management.automation.pscredential) objektumot a hitelesítéshez. Azt is megteheti, hogy kinyeri az objektum felhasználónevét és jelszavát `PSCredential` , hogy a hitelesítést igénylő alkalmazások vagy szolgáltatások számára biztosítson.
 
 >[!NOTE]
 >Azure Automation a biztonságos adategységek közé tartoznak a hitelesítő adatok, a tanúsítványok, a kapcsolatok és a titkosított változók. Ezeket az eszközöket a rendszer titkosítja és tárolja Azure Automation az egyes Automation-fiókokhoz generált egyedi kulcs használatával. Azure Automation a kulcsot a rendszerfelügyelt Key Vault tárolja. A biztonságos eszköz tárolása előtt az Automation betölti a kulcsot Key Vault, majd a használatával titkosítja az eszközt. 
@@ -44,7 +44,7 @@ A következő táblázatban található parancsmagok a runbookok és a DSC-konfi
 
 Ha objektumokat szeretne beolvasni `PSCredential` a kódban, importálnia kell a `Orchestrator.AssetManagement.Cmdlets` modult. További információkért lásd: [modulok kezelése Azure Automationban](modules.md).
 
-```azurepowershell
+```powershell
 Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 ```
 
@@ -68,16 +68,16 @@ Létrehozhat egy új hitelesítőadat-eszközt a Azure Portal vagy a Windows Pow
 
 ### <a name="create-a-new-credential-asset-with-the-azure-portal"></a>Új hitelesítőadat-eszköz létrehozása a Azure Portal
 
-1. Az Automation-fiókban a bal oldali ablaktáblán válassza a **hitelesítő adatok** lehetőséget a **megosztott erőforrások**területen.
-1. A **hitelesítő adatok** lapon válassza a **hitelesítő adatok hozzáadása**elemet.
-2. Az új hitelesítő adatok ablaktáblán adjon meg egy megfelelő hitelesítő nevet az elnevezési szabványoknak megfelelően.
-3. Írja be a hozzáférési azonosítót a **Felhasználónév** mezőbe.
-4. A jelszó mezőben adja meg a titkos kulcs elérési kulcsát.
+1. Az Automation-fiókban a bal oldali ablaktáblán válassza a **hitelesítő adatok** lehetőséget a **megosztott erőforrások** területen.
+2. A **hitelesítő adatok** lapon válassza a **hitelesítő adatok hozzáadása** elemet.
+3. Az új hitelesítő adatok ablaktáblán adjon meg egy megfelelő hitelesítő nevet az elnevezési szabványoknak megfelelően.
+4. Írja be a hozzáférési azonosítót a **Felhasználónév** mezőbe.
+5. A jelszó mezőben adja meg a titkos kulcs elérési kulcsát.
 
     ![Új hitelesítő adat létrehozása](../media/credentials/credential-create.png)
 
-5. Ha a multi-Factor Authentication jelölőnégyzet be van jelölve, törölje azt.
-6. Kattintson a **Létrehozás** gombra az új hitelesítőadat-eszköz mentéséhez.
+6. Ha a multi-Factor Authentication jelölőnégyzet be van jelölve, törölje azt.
+7. Kattintson a **Létrehozás** gombra az új hitelesítőadat-eszköz mentéséhez.
 
 > [!NOTE]
 > A Azure Automation nem támogatja a többtényezős hitelesítést használó felhasználói fiókokat.
@@ -106,8 +106,7 @@ Azt is megteheti, hogy a [GetNetworkCredential](/dotnet/api/system.management.au
 
 Az alábbi példa bemutatja, hogyan használhatók PowerShell-hitelesítő adatok egy runbook. Lekéri a hitelesítő adatokat, és hozzárendeli a felhasználónevet és a jelszót a változókhoz.
 
-
-```azurepowershell
+```powershell
 $myCredential = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCredential.UserName
 $securePassword = $myCredential.Password
@@ -116,21 +115,20 @@ $password = $myCredential.GetNetworkCredential().Password
 
 Az Azure-ban való hitelesítéshez hitelesítő adatokat is használhat a [AzAccount](/powershell/module/az.accounts/connect-azaccount)használatával. A legtöbb esetben a [futtató fiókot](../manage-runas-account.md) kell használnia, és a [Get-AzAutomationConnection](../automation-connections.md)használatával kell lekérnie a kapcsolatokat.
 
-
-```azurepowershell
+```powershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password
 
-$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$password)
+$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$securePassword)
 
 Connect-AzAccount -Credential $myPsCred
 ```
 
 ### <a name="graphical-runbook-example"></a>Példa grafikus runbook
 
-Hozzáadhat egy tevékenységet a belső `Get-AutomationPSCredential` parancsmaghoz egy grafikus runbook. ehhez kattintson a jobb gombbal a hitelesítő adatokra a grafikus szerkesztő könyvtár paneljén, és válassza a **Hozzáadás a vászonhoz**lehetőséget.
+Hozzáadhat egy tevékenységet a belső `Get-AutomationPSCredential` parancsmaghoz egy grafikus runbook. ehhez kattintson a jobb gombbal a hitelesítő adatokra a grafikus szerkesztő könyvtár paneljén, és válassza a **Hozzáadás a vászonhoz** lehetőséget.
 
 ![Hitelesítőadat-parancsmag hozzáadása a vászonhoz](../media/credentials/credential-add-canvas.png)
 
@@ -146,7 +144,6 @@ Habár a Azure Automation DSC-konfigurációja a hitelesítő adatokkal is műk�
 
 Az alábbi példa egy példát mutat be a hitelesítő adatok elérésére a Python 2 runbookok.
 
-
 ```python
 import automationassets
 from automationassets import AutomationAssetNotFound
@@ -157,7 +154,7 @@ print cred["username"]
 print cred["password"]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a tanúsítványok eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](modules.md)című témakört.
 * A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](../automation-runbook-execution.md).

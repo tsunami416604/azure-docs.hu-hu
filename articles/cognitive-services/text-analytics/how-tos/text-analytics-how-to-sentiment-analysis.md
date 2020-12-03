@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 2c592a959dfb9d4e93f97488a9ac1b1f6683c23e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968271"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558759"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Útmutató: az érzelmek elemzése és a vélemények bányászata
 
-A Text Analytics API Hangulatelemzés szolgáltatása két módszert biztosít a pozitív és negatív érzelmek észlelésére. Ha Hangulatelemzés kérelmet küld, az API az érzelmeket tartalmazó címkéket (például "negatív", "semleges" és "pozitív") és megbízhatósági pontszámokat ad vissza a mondat és a dokumentum szintjén. A Hangulatelemzés végpont használatával is küldhet vélemény-adatbányászati kérelmeket, amely részletes információkat biztosít a (például a termékek vagy szolgáltatások attribútumai) szöveggel kapcsolatos véleményekről.
+A Text Analytics API Hangulatelemzés szolgáltatása két módszert biztosít a pozitív és negatív érzelmek észlelésére. Ha Hangulatelemzés kérelmet küld, az API az érzelmeket tartalmazó címkéket (például "negatív", "semleges" és "pozitív") és megbízhatósági pontszámokat ad vissza a mondat és a dokumentum szintjén. A Hangulatelemzés végpont használatával is küldhet vélemény-adatbányászati kérelmeket, amely részletes információkat biztosít a (például a termékek vagy szolgáltatások attribútumai) szöveggel kapcsolatos véleményekről. 
 
 Az API által használt AI-modelleket a szolgáltatás nyújtja, csak tartalmat kell elküldeni az elemzéshez.
 
@@ -51,13 +51,14 @@ A megbízhatósági pontszámok 1-től 0-ig terjedhetnek. Az 1-nél közelebbi p
 
 ## <a name="opinion-mining"></a>Vélemény bányászata
 
-A kivonás a Hangulatelemzés egyik funkciója, amely a 3,1-es verziótól kezdődően érhető el. 1. Ez a funkció a természetes nyelvi feldolgozásban (például a termékek vagy szolgáltatások attribútumaiban) lévő véleményekkel kapcsolatos részletesebb információkat tartalmaz a szövegben található, aspektusokon alapuló Hangulatelemzésként is.
+A kivonás a Hangulatelemzés egyik funkciója, amely a 3,1-es verziótól kezdődően érhető el. 1. Ez a funkció a természetes nyelvi feldolgozásban (például a termékek vagy szolgáltatások attribútumaiban) lévő véleményekkel kapcsolatos részletesebb információkat tartalmaz a szövegben található, aspektusokon alapuló Hangulatelemzésként is. 
 
 Ha például egy ügyfél visszajelzést küld egy olyan szállodáról, mint például a "The Room nagyszerű volt, de a személyzet nem volt barátja.", a kisegítő adatbányászat megkeresi a szövegben szereplő szempontokat, valamint a hozzájuk kapcsolódó véleményeket és érzelmeit. Hangulatelemzés lehet, hogy csak negatív véleményét jelentse.
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="A vélemény bányászati példájának ábrája" lightbox="../media/how-tos/opinion-mining.png":::
 
-Ha szeretné kivonni a kiértékelést az eredmények között, a megjelölést is fel kell vennie az `opinionMining=true` érzelmek elemzésére vonatkozó kérelembe. A vélemény adatbányászati eredményei szerepelni fognak az érzelmi elemzésre adott válaszban.
+Ha szeretné kivonni a kiértékelést az eredmények között, a megjelölést is fel kell vennie az `opinionMining=true` érzelmek elemzésére vonatkozó kérelembe. A vélemény adatbányászati eredményei szerepelni fognak az érzelmi elemzésre adott válaszban. A vélemény bányászata Hangulatelemzés kiterjesztése, és a jelenlegi [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)szinten szerepel.
+
 
 ## <a name="sending-a-rest-api-request"></a>REST API kérelem küldése 
 
@@ -288,7 +289,7 @@ Hangulatelemzés v3 válaszai az egyes elemzett mondatokra és dokumentumokra vo
 
 ---
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben a Text Analytics API segítségével megtanulta az érzelmek elemzéséhez szükséges fogalmakat és munkafolyamatokat. Összegezve:
 

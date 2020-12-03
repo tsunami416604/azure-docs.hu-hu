@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 804d739efa5ac96c0b2d7228573f031f324e590e
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957095"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558980"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -31,7 +31,7 @@ Az elnevezett entitások felismerése lehetővé teszi a különböző entitáso
 
 ## <a name="personally-identifiable-information-pii"></a>Személyazonosításra alkalmas adatok
 
-A személyre szabott funkció az egyoldalas szolgáltatás része, és képes azonosítani és kivonni a bizalmas entitásokat egy olyan szövegben, amely egy személyhez van társítva, például: telefonszám, e-mail-cím, levelezési cím, Passport-szám.  
+A személyre szabott funkció az egyoldalas szolgáltatás része, és képes azonosítani és kivonni a bizalmas entitásokat egy olyan szövegben, amely egy személyhez van társítva, például: telefonszám, e-mail-cím, levelezési cím, Passport-szám.
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Elnevezett entitás-felismerési funkciók és verziók
 
@@ -298,7 +298,7 @@ Példa az általános célú válaszra:
 ---
 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
 
@@ -306,7 +306,7 @@ Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogal
 * A POST kéréseket egy vagy több végpontra küldi a rendszer, egy személyre szabott [hozzáférési kulccsal és egy](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , az előfizetéséhez érvényes végpontot használva.
 * Bármely alkalmazásban használhatók olyan válaszok, amelyek összekapcsolt entitásokból (beleértve a megbízhatósági pontszámokat, az eltolásokat és a webes hivatkozásokat) tartalmazzák
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/text-analytics-sdk.md)

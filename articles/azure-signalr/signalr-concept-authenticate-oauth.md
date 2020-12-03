@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 03b112466ef094a578d47586a44ab383a5da1a9b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8dd3c60c3d1b714ab75b496a94ba4bd5aec4e43d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744895"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558470"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR szolgáltatás – hitelesítés
 
@@ -45,11 +45,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
-* Egy [GitHubon](https://github.com/) létrehozott fiók
-* [Git](https://git-scm.com/)
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows)
-* [Konfigurált Azure Cloud Shell](../cloud-shell/quickstart.md)
-* Töltse le vagy klónozott [AzureSignalR – minta GitHub-](https://github.com/aspnet/AzureSignalR-samples) tárházat.
+- Egy [GitHubon](https://github.com/) létrehozott fiók
+- [Git](https://git-scm.com/)
+- [.NET Core SDK](https://www.microsoft.com/net/download/windows)
+- A bash-környezethez konfigurált [Azure Cloud Shell](/azure/cloud-shell/quickstart) .
+- Töltse le vagy klónozott [AzureSignalR – minta GitHub-](https://github.com/aspnet/AzureSignalR-samples) tárházat.
 
 ## <a name="create-an-oauth-app"></a>OAuth-alkalmazás létrehozása
 
@@ -59,12 +59,12 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
 3. Adja meg a következő beállításokat az új OAuth-alkalmazás számára, majd kattintson a **Register application (Alkalmazás regisztrálása)** lehetőségre:
 
-    | Beállítás neve | Ajánlott érték | Leírás |
+    | Beállítás neve | Ajánlott érték | Description |
     | ------------ | --------------- | ----------- |
     | Alkalmazásnév | *Azure SignalR Chat* | A GitHub-felhasználónak képesnek kell lennie a hitelesítéssel rendelkező alkalmazás felismerésére és megbízhatóságára.   |
     | Kezdőlap URL-címe | `http://localhost:5000/home` | |
     | Alkalmazás leírása | *Egy chat room-minta, amely az Azure Signaler szolgáltatást használja GitHub-hitelesítéssel* | Az alkalmazás hasznos leírása, amely információkat nyújt az alkalmazás felhasználóinak az alkalmazott hitelesítés környezetéről. |
-    | Az engedélyezési visszahívás URL-címe | `http://localhost:5000/signin-github` | Ez az OAuth-alkalmazás legfontosabb beállítása. Ez az a visszahívási URL-cím, amelyet a GitHub a sikeres hitelesítés után visszaad a felhasználónak. Ebben az oktatóanyagban az *AspNet.Security.OAuth.GitHub* csomag alapértelmezett visszahívási URL-címét kell használnia: */signin-github* .  |
+    | Az engedélyezési visszahívás URL-címe | `http://localhost:5000/signin-github` | Ez az OAuth-alkalmazás legfontosabb beállítása. Ez az a visszahívási URL-cím, amelyet a GitHub a sikeres hitelesítés után visszaad a felhasználónak. Ebben az oktatóanyagban az *AspNet.Security.OAuth.GitHub* csomag alapértelmezett visszahívási URL-címét kell használnia: */signin-github*.  |
 
 4. Az új OAuth-alkalmazás regisztrálását követően adja hozzá az *Ügyfél-azonosítót* és a *Titkos ügyfélkulcsot* a Secret Managerhez az alábbi parancsokkal. Cserélje le a *Your_GitHub_Client_Id* és a *Your_GitHub_Client_Secret* elemeket az OAuth-alkalmazás értékeire.
 
@@ -384,17 +384,13 @@ Ebben a szakaszban be fogja kapcsolni a valódi hitelesítést azáltal, hogy ho
 
     Most, hogy a csevegőalkalmazás hitelesítést végez a GitHubbal és cookie-ként tárolja a hitelesítési adatokat, üzembe helyezheti azt az Azure-ban, hogy más felhasználók is hitelesítést végezhessenek a fiókjaikkal, illetve kommunikálhassanak más munkaállomásokról.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="deploy-the-app-to-azure"></a>Az alkalmazás üzembe helyezése az Azure-ban
 
-Ebben a szakaszban az Azure parancssori felületét (CLI) fogja használni a Azure Cloud Shell egy új webalkalmazás létrehozásához [Azure app Service](../app-service/index.yml) a ASP.NET-alkalmazás Azure-ban való üzemeltetéséhez. A webalkalmazás a Git helyi üzemelő példányának használatára lesz konfigurálva. A webalkalmazás emellett a SignalR kapcsolati sztringgel, GitHub OAuth titkos alkalmazáskulcsokkal és egy üzembe helyező felhasználóval is konfigurálva lesz.
+A környezet előkészítése az Azure CLI-hez:
 
-A jelen szakaszban ismertetett lépések az Azure CLI *signalr* bővítményét használják. Hajtsa végre az alábbi parancsot a *signalr* bővítmény az Azure CLI-hez való telepítéséhez:
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-```azurecli-interactive
-az extension add -n signalr
-```
+Ebben a szakaszban az Azure parancssori felületének (CLI) használatával hozzon létre egy új webalkalmazást [Azure app Service](../app-service/index.yml) a ASP.NET-alkalmazás Azure-ban való üzemeltetéséhez. A webalkalmazás a Git helyi üzemelő példányának használatára lesz konfigurálva. A webalkalmazás emellett a SignalR kapcsolati sztringgel, GitHub OAuth titkos alkalmazáskulcsokkal és egy üzembe helyező felhasználóval is konfigurálva lesz.
 
 Az alábbi erőforrások létrehozásakor ügyeljen arra, hogy ugyanazt az erőforráscsoportot használja, mint amelyben a SignalR Service-erőforrás is található. Ha ezt a megközelítést alkalmazza, sokkal könnyebb dolga lesz később, amikor el akarja távolítani az erőforrásokat. A példák feltételezik, hogy a korábbi oktatóanyagokban javasolt *SignalRTestResources* csoportnevet használta.
 
@@ -541,7 +537,7 @@ A kód üzembe helyezéséhez hajtsa végre az alábbi parancsokat egy Git-rends
 4. Helyezze üzembe a kódot az Azure-webalkalmazásban.
 
     ```bash
-    git push Azure master
+    git push Azure main
     ```
 
     A rendszer fel fogja kérni, hogy végezzen hitelesítést a kód Azure-ban való üzembe helyezéséhez. Adja meg a fent létrehozott üzembe helyező felhasználó felhasználónevét és jelszavát.
@@ -550,7 +546,7 @@ A kód üzembe helyezéséhez hajtsa végre az alábbi parancsokat egy Git-rends
 
 A legutolsó dolog, amit el kell végeznie, az a GitHub OAuth-alkalmazás **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságának frissítését, hogy azok az új üzemeltetett alkalmazásra mutassanak.
 
-1. Nyisson meg [https://github.com](https://github.com) egy böngészőben, és navigáljon a fiókja **Beállítások**  >  **fejlesztői beállítások**  >  **OAuth-alkalmazásokhoz** .
+1. Nyisson meg [https://github.com](https://github.com) egy böngészőben, és navigáljon a fiókja **Beállítások**  >  **fejlesztői beállítások**  >  **OAuth-alkalmazásokhoz**.
 
 2. Kattintson a hitelesítő alkalmazásra, és a frissítse a **Homepage URL** (Kezdőlap URL-címe) és **Authorization callback URL** (Engedélyezés-visszahívási URL-cím) tulajdonságát a lent látható módon:
 
@@ -563,7 +559,7 @@ A legutolsó dolog, amit el kell végeznie, az a GitHub OAuth-alkalmazás **Home
 
     ![Azure-ban üzemeltetett teljes OAuth-hitelesítés](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és a következő oktatóanyagban újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
@@ -582,7 +578,7 @@ A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban OAuth-hitelesítést adott hozzá az alkalmazáshoz, hogy jobb hitelesítési megoldást biztosítson az Azure SignalR Service szolgáltatással. Ha többet szeretne megtudni az Azure SignalR Server használatáról, lépjen tovább a SignalR Service Azure CLI-mintáira.
 

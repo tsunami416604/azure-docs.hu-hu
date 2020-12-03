@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: dd4586128bf2ce657352c0a1d4608637ecf9dba9
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 69fda41249ced8518e430af8305c0cb10822b214
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531224"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559065"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Monitor-naplók – áttekintés
 Azure Monitor naplók a Azure Monitor szolgáltatása, amely összegyűjti és rendszerezi a napló-és teljesítményadatokat a [figyelt erőforrásokból](../monitor-reference.md). A különböző forrásokból származó adatok, például az Azure-szolgáltatásokból származó [platformok naplói](platform-logs-overview.md) , a [Virtual Machines-ügynökökből](agents-overview.md)származó naplók és teljesítményadatok, valamint az [alkalmazásokból](../app/app-insights-overview.md) származó használati és teljesítményadatokat összevonható egyetlen munkaterületre, így az elemzésük olyan kifinomult lekérdezési nyelv használatával végezhető el, amely képes több millió rekord elemzésére. Egy egyszerű lekérdezést is végrehajthat, amely csak egy adott rekordhalmazt kér le, vagy kifinomult adatelemzést végez a megfigyelési adatokban található kritikus minták azonosításához. A naplózási lekérdezésekkel és azok eredményeivel interaktív módon, Log Analytics használatával dolgozhat, a riasztási szabályok segítségével proaktívan értesítheti a problémákat, vagy megjelenítheti az eredményeket egy munkafüzetben vagy irányítópulton.
@@ -42,7 +42,7 @@ Log Analytics munkaterület létrehozása után különböző forrásokat kell k
 
 
 ## <a name="log-analytics-workspaces"></a>Log Analytics-munkaterületek
-Azure Monitor naplók által gyűjtött adatokat egy [log Analytics munkaterületen](./design-logs-deployment.md)tárolja a rendszer. A munkaterület meghatározza az adatok földrajzi helyét, a hozzáférési jogokat, amelyek meghatározzák, hogy mely felhasználók férhetnek hozzá az adatokhoz, valamint a konfigurációs beállításokat, például a díjszabási szintet és az adatmegőrzést.  
+Azure Monitor naplók által gyűjtött adatokat egy vagy több [log Analytics-munkaterületen](./design-logs-deployment.md)tárolja a rendszer. A munkaterület meghatározza az adatok földrajzi helyét, a hozzáférési jogokat, amelyek meghatározzák, hogy mely felhasználók férhetnek hozzá az adatokhoz, valamint a konfigurációs beállításokat, például a díjszabási szintet és az adatmegőrzést.  
 
 Azure Monitor naplók használatához legalább egy munkaterületet létre kell hoznia. Egy munkaterület elegendő lehet az összes megfigyelési adathoz, vagy dönthet úgy, hogy a követelményektől függően több munkaterületet is létrehoz. Előfordulhat például, hogy rendelkezik egy munkaterülettel a termelési adataihoz, és egy másikat a teszteléshez. 
 

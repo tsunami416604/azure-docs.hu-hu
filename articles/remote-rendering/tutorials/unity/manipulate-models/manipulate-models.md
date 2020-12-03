@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 003203ef1a25102f9fd3c50001603dbd5d33ce5a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 48c835070329b5cb0892b10760d37708e46bfa1d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565970"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559133"
 ---
 # <a name="tutorial-manipulating-models"></a>Oktatóanyag: modellek módosítása
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -109,9 +109,9 @@ A modell határait a teljes modellt tartalmazó mező határozza meg – akárcs
     ```
 
     > [!NOTE]
-    > Ha a Visual Studio-jogcím *"X" funkciója nem érhető el a C# 6-ban, akkor hibaüzenet jelenik meg. Használja a 7,0-es vagy újabb verziójú nyelvi verziót* , így a hiba nyugodtan figyelmen kívül hagyható. Ez az egység megoldásával és a projekt létrehozásával kapcsolatos.
+    > Ha a Visual Studio-jogcím *"X" funkciója nem érhető el a C# 6-ban, akkor hibaüzenet jelenik meg. Használja a 7,0-es vagy újabb verziójú nyelvi verziót*, így a hiba nyugodtan figyelmen kívül hagyható. Ez az egység megoldásával és a projekt létrehozásával kapcsolatos.
 
-    Ezt a szkriptet hozzá kell adni ugyanahhoz a GameObject, mint a  **BaseRemoteRenderedModel** -t megvalósító szkriptet. Ebben az esetben ez azt jelenti, hogy a **RemoteRenderedModel**. Az előző szkriptekhez hasonlóan ez a kezdeti kód fogja kezelni a távoli korlátokkal kapcsolatos összes állapotot, eseményt és adatmennyiséget.
+    Ezt a szkriptet hozzá kell adni ugyanahhoz a GameObject, mint a  **BaseRemoteRenderedModel**-t megvalósító szkriptet. Ebben az esetben ez azt jelenti, hogy a **RemoteRenderedModel**. Az előző szkriptekhez hasonlóan ez a kezdeti kód fogja kezelni a távoli korlátokkal kapcsolatos összes állapotot, eseményt és adatmennyiséget.
 
     Két módszer van hátra a megvalósításhoz: **QueryBounds** és **ProcessQueryResult**. A **QueryBounds** beolvassa a határokat, és **ProcessQueryResult** a lekérdezés eredményét, és alkalmazza azt a helyi **BoxCollider**.
 
@@ -169,14 +169,14 @@ Most már van egy helyi **BoxCollider** , amely pontos határokkal van konfigur�
 
 A távolról megjelenített objektumok áthelyezése, elforgatása és skálázása ugyanúgy működik, mint bármely más Unity objektum. A **RemoteRenderingCoordinator** a `LateUpdate` metódusában a `Update` jelenleg aktív munkamenetet hívja meg. A mi a `Update` szinkronizálása a helyi modellel, a távoli ügyfelekkel való átalakítás része. Távolról renderelt modell áthelyezéséhez, forgatásához vagy méretezéséhez csak a távoli modellt jelképező GameObject kell áthelyeznie, elforgatni vagy méreteznie. Itt módosítani fogjuk annak a szülő-GameObject az átalakítását, amelyhez a **RemoteRenderedModel** -szkript csatolva van.
 
-Ez az oktatóanyag az MRTK for Object interakciót használja. Az egyes objektumok áthelyezésére, elforgatására és skálázására szolgáló MRTK nagy része az oktatóanyag hatókörén kívül esik. Az **AppMenu** -ben előre konfigurált modell-nézet vezérlő a **modell eszközei** menüben található.
+Ez az oktatóanyag az MRTK for Object interakciót használja. Az egyes objektumok áthelyezésére, elforgatására és skálázására szolgáló MRTK nagy része az oktatóanyag hatókörén kívül esik. Az **AppMenu**-ben előre konfigurált modell-nézet vezérlő a **modell eszközei** menüben található.
 
 1. Győződjön meg arról, hogy a korábban létrehozott **TestModel** -GameObject a jelenetben van.
 1. Győződjön meg arról, hogy a **AppMenu** panel a jelenetben van.
 1. Nyomja meg az egység lejátszás gombját a jelenet lejátszásához, majd nyissa meg a **modell eszközei** menüt a **AppMenu** belül.
 ![Vezérlő megtekintése](./media/model-with-view-controller.png)
 
-A **AppMenu** olyan almenü- **modell eszközöket** tartalmaz, amelyek a modellhez kötést biztosító nézet-vezérlőt implementálnak. Ha a GameObject tartalmaz egy **RemoteBounds** -összetevőt, akkor a vezérlő egy [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) -összetevőt ad hozzá, amely egy MRTK-összetevő, amely egy **BoxCollider** rendelkező objektum körüli határoló mezőt jelenít meg. Egy [**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator), amely a kéz-interakcióért felelős. Ezek a szkriptek együttesen lehetővé teszik a távolról renderelt modell áthelyezését, elforgatását és méretezését.
+A **AppMenu** olyan almenü- **modell eszközöket** tartalmaz, amelyek a modellhez kötést biztosító nézet-vezérlőt implementálnak. Ha a GameObject tartalmaz egy **RemoteBounds** -összetevőt, akkor a vezérlő egy [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) -összetevőt ad hozzá, amely egy MRTK-összetevő, amely egy **BoxCollider** rendelkező objektum körüli határoló mezőt jelenít meg. Egy [**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/api/Microsoft.MixedReality.Toolkit.UI.ObjectManipulator.html), amely a kéz-interakcióért felelős. Ezek a szkriptek együttesen lehetővé teszik a távolról renderelt modell áthelyezését, elforgatását és méretezését.
 
 1. Vigye az egérmutatót a játék panelre, és kattintson rá, hogy a fókuszt adja.
 1. A [MRTK 's Hand szimulációjának](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation)használatával nyomja le és tartsa nyomva a bal oldali SHIFT billentyűt.
@@ -382,7 +382,7 @@ Ugyanez a folyamat programozott módon is elvégezhető, és az adott távoli en
 
 Egy helyi példány létrehozása és az automatikus szinkronizálás beállítása az alentitások manipulálása első lépése. Ugyanazokat a technikákat használjuk, amelyekkel a modell teljes egészében kezelhető az alentitásokon is. Például egy entitás szinkronizált helyi példányának létrehozása után lekérdezheti a határait, és felveheti a manipulációs kezelőket, hogy az a felhasználó által áthelyezhető legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már kezelhet és kezelhet távolról renderelt modelleket! A következő oktatóanyagban az anyagok módosítására, a világítás módosítására és a hatások a távolról renderelt modellekre való alkalmazására fogunk vonatkozni.
 

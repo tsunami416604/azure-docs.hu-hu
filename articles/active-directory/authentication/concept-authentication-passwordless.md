@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbe22a1af8fbf61629fa9df1267416ca3822884b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2cef20f38c751bb81194559aaad7994c270d1e8c
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840083"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558181"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
@@ -135,7 +135,11 @@ A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amely
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 | Gemalto (Thales csoport) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
 | OneSpan Inc. | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
-| IDmelon Technologies Inc. | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) | 
+| IDmelon Technologies Inc. | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) |
+| Hypersecu | [https://www.hypersecu.com/hyperfido](https://www.hypersecu.com/hyperfido) |
+| VinCSS | [https://passwordless.vincss.net](https://passwordless.vincss.net) |
+| KONA I | [https://konai.com/business/security/fido](https://konai.com/business/security/fido) |
+| Excelsecu | [https://www.excelsecu.com/productdetail/esecufido2secu.html](https://www.excelsecu.com/productdetail/esecufido2secu.html) |
 
 > [!NOTE]
 > Ha NFC-alapú biztonsági kulcsok megvásárlását és megtervezését tervezi, akkor a biztonsági kulcshoz támogatott NFC-olvasóra van szükség. Az NFC-olvasó nem Azure-követelmény vagy-korlátozás. A támogatott NFC-olvasók listáját az NFC-alapú biztonsági kulcs gyártójánál találja.
@@ -174,7 +178,7 @@ A három jelszóval nem rendelkező lehetőség közül választhat, hogy a vál
 
 A következő táblázat segítségével kiválaszthatja, hogy melyik módszer fogja támogatni a követelményeket és a felhasználókat.
 
-|Persona|Használati eset|Környezet|Jelszóval nem rendelkező technológia|
+|Persona|Használati példa|Környezet|Jelszóval nem rendelkező technológia|
 |:-|:-|:-|:-|
 |**Felügyelet**|Biztonságos hozzáférés egy eszközhöz felügyeleti feladatokhoz|Hozzárendelt Windows 10-es eszköz|Vállalati Windows Hello és/vagy FIDO2 biztonsági kulcs|
 |**Felügyelet**|Felügyeleti feladatok nem Windows rendszerű eszközökön| Mobil-vagy nem Windows-eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|
@@ -182,7 +186,7 @@ A következő táblázat segítségével kiválaszthatja, hogy melyik módszer f
 |**Információkkal dolgozó feldolgozó**|Termelékenységi munka| Mobil-vagy nem Windows-eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|
 |**Frontline Worker**|Kioszkok gyárban, üzemben, kiskereskedelemben vagy adatbevitelben|Megosztott Windows 10-es eszközök|FIDO2 biztonsági kulcsok|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD-ben való jelszavas használat megkezdéséhez kövesse az alábbi útmutatók egyikét:
 

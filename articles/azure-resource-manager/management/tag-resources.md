@@ -2,14 +2,14 @@
 title: Erőforrások, erőforráscsoportok és előfizetések címkézése a logikai szervezet számára
 description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és felügyelethez való rendszerezéséhez.
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e9ef96a712e5ac2ba483170fb8ef9c89115b4f8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e47d3acf15ce5e4f5cb70444419b76beb21ae98b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972562"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558147"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Címkék használata az Azure-erőforrások és a felügyeleti hierarchia rendszerezéséhez
 
@@ -26,9 +26,11 @@ A címkézési stratégia megvalósításával kapcsolatos javaslatokért lásd:
 
 ## <a name="required-access"></a>Szükséges hozzáférés
 
-Ha címkéket szeretne alkalmazni egy erőforrásra, írási hozzáféréssel kell rendelkeznie a **Microsoft. Resources/Tags** erőforrástípus-típushoz. A [címke közreműködői](../../role-based-access-control/built-in-roles.md#tag-contributor) szerepkör lehetővé teszi, hogy címkéket alkalmazzon egy entitásra anélkül, hogy az entitáshoz hozzá kellene férnie. Jelenleg a tag közreműködői szerepkör nem alkalmazhat címkéket az erőforrásokra vagy az erőforráscsoportok a portálon keresztül. Címkéket is alkalmazhat az előfizetésekhez a portálon keresztül. Támogatja az összes címkézési műveletet a PowerShell és a REST API használatával.  
+Két módon kérheti le a szükséges hozzáférést az erőforrások címkézéséhez.
 
-A [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör emellett biztosítja a szükséges hozzáférést a címkék bármely entitásra való alkalmazásához. Ha csak egy erőforrás-típusra kíván címkéket alkalmazni, használja az adott erőforrás közreműködői szerepkörét. Ha például címkéket szeretne alkalmazni a virtuális gépekre, használja a [virtuális gép közreműködőjét](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+- Írási jogosultsággal rendelkezhet a **Microsoft. Resources/Tags** erőforrástípus. Ez a hozzáférés lehetővé teszi, hogy bármilyen erőforrást címkével lássa el, még akkor is, ha nem rendelkezik hozzáféréssel az erőforráshoz. A [címke közreműködői](../../role-based-access-control/built-in-roles.md#tag-contributor) szerepköre engedélyezi ezt a hozzáférést. Jelenleg a tag közreműködői szerepkör nem alkalmazhat címkéket az erőforrásokra vagy az erőforráscsoportok a portálon keresztül. Címkéket is alkalmazhat az előfizetésekhez a portálon keresztül. Támogatja az összes címkézési műveletet a PowerShell és a REST API használatával.  
+
+- Az erőforráshoz írási hozzáféréssel is rendelkezhet. A [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör biztosítja a szükséges hozzáférést a címkék bármely entitásra való alkalmazásához. Ha csak egy erőforrás-típusra kíván címkéket alkalmazni, használja az adott erőforrás közreműködői szerepkörét. Ha például címkéket szeretne alkalmazni a virtuális gépekre, használja a [virtuális gép közreműködőjét](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -277,7 +279,7 @@ az tag create --resource-id $resource --tags Team=Compliance Environment=Product
 },
 ```
 
-Ha címkéket szeretne felvenni egy olyan erőforráshoz, amely már rendelkezik címkékkel, használja **az az tag Update** lehetőséget. Állítsa be a **--Operation** paramétert az **egyesítéshez**.
+Ha címkéket szeretne felvenni egy olyan erőforráshoz, amely már rendelkezik címkékkel, használja a következőt: `az tag update` . Állítsa a paramétert a következőre: `--operation` `Merge` .
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
@@ -313,7 +315,7 @@ az tag update --resource-id $resource --operation Merge --tags Status=Green
 },
 ```
 
-Ha a **--Operation** paramétert **lecseréli**, a meglévő címkéket a címkék új készlete váltja fel.
+Ha a paramétert a értékre állítja `--operation` `Replace` , a meglévő címkéket a címkék új készlete váltja fel.
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
@@ -406,7 +408,7 @@ az group list --tag Dept=Finance
 
 ### <a name="remove-tags"></a>Címkék eltávolítása
 
-Adott címkék eltávolításához használja az **az tag Update** és a set **--Operation** parancsot a **törléshez**. Adja meg a törölni kívánt címkéket.
+Adott címkék eltávolításához használja a parancsot, `az tag update` és állítsa a következőre: `--operation` `Delete` . Adja meg a törölni kívánt címkéket.
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web

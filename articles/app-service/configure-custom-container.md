@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat egyéni tárolókat a Azure App 
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2aece0550d7b78ac4312e71b2671de4a64e4b86b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787057"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96557926"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Egyéni tároló konfigurálása az Azure App Service-hez
 
@@ -139,7 +139,17 @@ Az alkalmazás fájlrendszerében a *C:\home* Directory használatával megtarth
 
 Ha az állandó tárterület le van tiltva, a rendszer nem őrzi meg az írásokat a `C:\home` könyvtárba. A [Docker-gazdagép naplófájljai és a tároló-naplók](#access-diagnostic-logs) egy alapértelmezett állandó megosztott tárolóba kerülnek, amely nincs a tárolóhoz csatolva. Ha az állandó tárterület engedélyezve van, a címtárba való összes írás megmarad, és a kibővített `C:\home` alkalmazás összes példánya elérhető, és a napló a következő címen érhető el: `C:\home\LogFiles` .
 
-Alapértelmezés szerint az állandó tárterület *le van tiltva* , és a beállítás nem érhető el az alkalmazás beállításaiban. Ennek engedélyezéséhez állítsa be az `WEBSITES_ENABLE_APP_SERVICE_STORAGE` alkalmazás beállításait a [Cloud Shellon](https://shell.azure.com)keresztül. A Bashben:
+::: zone-end
+
+::: zone pivot="container-linux"
+
+Az alkalmazás fájlrendszerében a */Home* Directory használatával megtarthatja a fájlokat az újraindítások között, és megoszthatja azokat a példányok között. Az `/home` alkalmazásban elérhetővé teszi a tároló alkalmazás számára az állandó tárterület elérését.
+
+Ha az állandó tárterület le van tiltva, akkor a rendszer a címtárba való írást `/home` nem őrzi meg az alkalmazások újraindítása vagy több példánya között. Az egyetlen kivétel az a `/home/LogFiles` könyvtár, amely a Docker és a tároló naplóinak tárolására szolgál. Ha az állandó tárterület engedélyezve van, a címtárba való összes írás megmarad, és a kibővített `/home` alkalmazás összes példánya elérhetővé válik.
+
+::: zone-end
+
+Alapértelmezés szerint az állandó tárterület le van tiltva, és a beállítás nem érhető el az alkalmazás beállításaiban. Ennek engedélyezéséhez állítsa be az `WEBSITES_ENABLE_APP_SERVICE_STORAGE` alkalmazás beállításait a [Cloud Shellon](https://shell.azure.com)keresztül. A Bashben:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
@@ -150,28 +160,6 @@ A PowerShellben:
 ```azurepowershell-interactive
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=true}
 ```
-
-::: zone-end
-
-::: zone pivot="container-linux"
-
-Az alkalmazás fájlrendszerében a */Home* Directory használatával megtarthatja a fájlokat az újraindítások között, és megoszthatja azokat a példányok között. Az `/home` alkalmazásban elérhetővé teszi a tároló alkalmazás számára az állandó tárterület elérését.
-
-Ha az állandó tárterület le van tiltva, akkor a rendszer a címtárba való írást `/home` nem őrzi meg az alkalmazások újraindítása vagy több példánya között. Az egyetlen kivétel az a `/home/LogFiles` könyvtár, amely a Docker és a tároló naplóinak tárolására szolgál. Ha az állandó tárterület engedélyezve van, a címtárba való összes írás megmarad, és a kibővített `/home` alkalmazás összes példánya elérhetővé válik.
-
-Alapértelmezés szerint az állandó tárterület *engedélyezve* van, és a beállítás nem érhető el az alkalmazás beállításaiban. A letiltásához állítsa be az `WEBSITES_ENABLE_APP_SERVICE_STORAGE` alkalmazás beállításait a [Cloud Shellon](https://shell.azure.com)keresztül. A Bashben:
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
-```
-
-A PowerShellben:
-
-```azurepowershell-interactive
-Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=false}
-```
-
-::: zone-end
 
 > [!NOTE]
 > [Saját állandó tárterületet is beállíthat](configure-connect-to-azure-storage.md).
@@ -414,7 +402,7 @@ Az alábbi listában a támogatott és nem támogatott Docker-összeállítási 
 
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: egyéni szoftver átmigrálása Azure App Servicere egyéni tároló használatával](tutorial-custom-container.md)

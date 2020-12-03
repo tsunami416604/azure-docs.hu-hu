@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 1b23d6c7952e60ee693bb481fec04d358654632c
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 3f2cbd7afe206866ae4d5b7c0925c8f3be9ab785
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530493"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558810"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Válasszon árképzési szintet az Azure Cognitive Search
 
@@ -21,7 +21,7 @@ ms.locfileid: "96530493"
 
 + Indexek és egyéb objektumok mennyisége (maximális korlát)
 + Partíciók mérete és sebessége (fizikai tárterület)
-+ Számlázható arány, rögzített ár, amely a használatban lévő partíciók és replikák számával is kábeleket.
++ Számlázható arány, rögzített havi költség, valamint növekményes költség, ha partíciókat vagy replikákat ad hozzá
 
 Emellett a prémium szintű [funkciók](#premium-features) is megtalálhatók a szint követelményeivel.
 
