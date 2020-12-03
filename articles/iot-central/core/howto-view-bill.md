@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8f46c402c8c25a144cd4c12137aeabfdfa31e096
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 50d0119b08d2c76a5f6111e485408ebcdace83c6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463137"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549021"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>Számla kezelése IoT Central alkalmazásban
 
@@ -34,11 +34,11 @@ Az önkiszolgáló folyamat végrehajtásához kövesse az alábbi lépéseket:
 
 1. Lépjen az **Adminisztráció** szakasz **díjszabás** lapjára.
 
-    ![Próbaverzió állapota](media/howto-view-bill/freetrialbilling.png)
+    :::image type="content" source="media/howto-view-bill/freetrialbilling.png" alt-text="Próbaverzió állapota":::
 
 1. Válassza **a konvertálás fizetős csomagra** lehetőséget.
 
-    ![Próbaverzió konvertálása](media/howto-view-bill/convert.png)
+    :::image type="content" source="media/howto-view-bill/convert.png" alt-text="Próbaverzió konvertálása":::
 
 1. Válassza ki a megfelelő Azure Active Directory, majd a fizetős csomagot használó alkalmazáshoz használni kívánt Azure-előfizetést.
 
@@ -55,7 +55,7 @@ A díjszabás szakaszban bármikor frissítheti vagy visszaállíthatja az Azure
 
 1. Lépjen az **Adminisztráció** szakasz **díjszabás** lapjára.
 
-    ![Prcing csomag frissítése](media/howto-view-bill/pricing.png)
+    :::image type="content" source="media/howto-view-bill/pricing.png" alt-text="Frissítési díjszabási csomag":::
 
 1. Válassza ki a **csomagot** , majd kattintson a **Mentés** gombra a frissítéshez vagy a visszalépéshez.
 
@@ -68,6 +68,6 @@ A díjszabás szakaszban bármikor frissítheti vagy visszaállíthatja az Azure
 > [!Note]
 > Alapértelmezés szerint a *Standard 2* díjszabási csomagra vált.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan kezelheti a számláját az Azure IoT Central alkalmazásban, a javasolt következő lépés az [alkalmazás felhasználói felületének testreszabása](howto-customize-ui.md) az Azure IoT Central-ban című témakörben olvashat.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: rkarlin
-ms.openlocfilehash: 4189cb8628db58343c816535836af82825014b7e
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: a8697094a3366e3b82ca65f1b962101243b22f84
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096317"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548919"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender a IoT architektúrához
 
@@ -69,7 +69,7 @@ A gépi tanulás segítségével a szabályzat megsértése észlelési motor ri
 Az ipari kártevő-észlelési motor az ismert kártevők, például a Conficker, a Black Energy, a Havex, a WannaCry, a NotPetya és a Triton jelenlétét jelző viselkedéseket azonosítja. 
 
 #### <a name="anomaly-detection-engine"></a>Rendellenesség-észlelési motor
-Az anomáliák észlelési motorja észleli a gépek közötti szokatlan kommunikációt és viselkedést. Az ICS-hálózatok az állapotok és átmenetek determinisztikus való modellezésével a platform rövidebb tanulási időszakot igényel, mint az általános matematikai megközelítések vagy az eredetileg az OT-nál nem használt elemzések. Emellett a hibák gyors észlelését is észleli, minimális téves pozitív értékekkel. A rendellenességek észlelésével kapcsolatos riasztások közé tartoznak a túlzott SMB-bejelentkezési kísérletek, és a PLC-vizsgálat riasztásokat észlelt.
+Az anomáliák észlelési motorja észleli a gépek közötti szokatlan kommunikációt és viselkedést. Az ICS-hálózatok az állapotok és átmenetek determinisztikus való modellezésével a platform rövidebb tanulási időszakot igényel, mint az általános matematikai megközelítések vagy az eredetileg az OT-nál nem használt elemzések. Emellett a hibák gyors észlelését is észleli, minimális téves pozitív értékekkel. A rendellenesség-észlelési motor riasztásai közé tartozik a túlzott SMB-bejelentkezési kísérletek száma, és a PLC-vizsgálat riasztásokat észlelt.
 
 #### <a name="operational-incident-detection"></a>Működési incidensek észlelése
 A működési incidensek észlelése olyan működési problémákat észlel, mint például az átmeneti kapcsolat, amely jelzi a berendezések meghibásodásának korai jeleit. Előfordulhat például, hogy az eszköz le van választva (nem válaszol), és a Siemens S7 stop PLC parancs riasztásokat küld.
@@ -82,7 +82,7 @@ Az Azure Defender a hibrid környezetekben való IoT két felügyeleti portálon
 - Azure Portal
 
 #### <a name="sensor-console"></a>Érzékelő konzol
-Az érzékelők észlelései az érzékelő konzolján jelennek meg, ahol megtekinthetők, megtekinthetők és elemezhetők egy hálózati Térkép, az eszközök leltára, valamint a jelentések széles köre, például a kockázatértékelési jelentések, az adatbányászati lekérdezések és a támadási vektorok. A-konzol segítségével megtekintheti és kezelheti az érzékelő-motorok által észlelt fenyegetéseket, továbbíthatja az adatokat harmadik féltől származó rendszereknek, kezelheti a felhasználókat és egyebeket.
+Az érzékelők észlelései az érzékelő konzolján jelennek meg, ahol megtekinthetők, megtekinthetők és elemezhetők egy hálózati Térkép, az eszközök leltára, valamint a jelentések széles köre, például a kockázatértékelési jelentések, az adatbányászati lekérdezések és a támadási vektorok. A-konzol segítségével megtekintheti és kezelheti az érzékelő-motorok által észlelt fenyegetéseket, továbbíthatja az információkat a harmadik féltől származó rendszerekre, kezelheti a felhasználókat és egyebeket.
 
 ![Defender a IoT-érzékelő konzolján](./media/architecture/sensor-console.png)
 
@@ -117,7 +117,7 @@ Az elemzési folyamat használatával a Defender for IoT az összes adatfolyamot
 
 A IoT ajánlásai és értesítései (analitikai folyamat kimenete) az egyes ügyfelek Log Analytics munkaterületére íródnak. A munkaterületen található nyers események, valamint a riasztások és javaslatok segítségével a gyanús tevékenységek pontos részleteivel részletesen elmerülhetnek a felderítéssel kapcsolatos vizsgálatok és lekérdezések.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan hozhatja ki a Defender IoT-megoldás alapszintű architektúráját és munkafolyamatát. Ha többet szeretne megtudni az előfeltételekről, az első lépésekről és a biztonsági megoldás engedélyezéséről IoT Hubban, tekintse meg a következő cikkeket:
 

@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: a30ae2d78d682427cf53c8f98b0ca70b441d72e1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bf8c4d2040445fa3417fce02fb4b66216b21f3b5
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636809"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548868"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -28,7 +28,7 @@ A Visual Studióban állítsa a `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` kö
 
 A CLI-ben további információkat adhat meg a parancs végrehajtása során a kapcsoló használatával `--verbose` . További részletes naplókat is megkereshet a alkalmazásban `%TEMP%\Azure Dev Spaces` . Mac gépen a *temp* könyvtár `echo $TMPDIR` egy terminál-ablakból futtatható. Linux rendszerű számítógépeken általában a *temp* könyvtár `/tmp` . Továbbá ellenőrizze, hogy a naplózás engedélyezve van-e az [Azure CLI konfigurációs fájljában](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables).
 
-Az Azure dev Spaces is működik a legjobban, ha egyetlen példányt vagy Pod-t tesz elérhetővé. A `azds.yaml` fájl tartalmaz egy *replicaCount* -beállítást, amely megadja, hogy a Kubernetes hány hüvelyt futtat a szolgáltatásban. Ha úgy módosítja a *replicaCount* , hogy úgy konfigurálja az alkalmazást, hogy több hüvelyt futtasson egy adott szolgáltatáshoz, akkor a hibakereső az első hüvelyhez csatlakozik, amikor betűrendbe van sorolva. A hibakereső egy másik Pod-hoz csatlakozik, amikor az eredeti Pod újrahasznosítja, ami valószínűleg váratlan viselkedést eredményez.
+Az Azure dev Spaces is működik a legjobban, ha egyetlen példányt vagy Pod-t tesz elérhetővé. A `azds.yaml` fájl tartalmaz egy *replicaCount*-beállítást, amely megadja, hogy a Kubernetes hány hüvelyt futtat a szolgáltatásban. Ha úgy módosítja a *replicaCount* , hogy úgy konfigurálja az alkalmazást, hogy több hüvelyt futtasson egy adott szolgáltatáshoz, akkor a hibakereső az első hüvelyhez csatlakozik, amikor betűrendbe van sorolva. A hibakereső egy másik Pod-hoz csatlakozik, amikor az eredeti Pod újrahasznosítja, ami valószínűleg váratlan viselkedést eredményez.
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Az Azure dev Spaces engedélyezésekor felmerülő gyakori problémák
 
@@ -261,7 +261,7 @@ Ez a hiba azért fordul elő, mert az Azure dev Spaces jelenleg nem támogatja a
 
 Ha [Az Azure dev Spaces használatával csatlakozik az AK-fürthöz a fejlesztői géphez](https://code.visualstudio.com/docs/containers/bridge-to-kubernetes), előfordulhat, hogy olyan problémába ütközik, amelyben a hálózati forgalom nem továbbítódik a fejlesztési gép és az AK-fürt között.
 
-Ha a fejlesztési gépet az AK-fürthöz csatlakoztatja, az Azure dev Spaces a fejlesztési gép fájljának módosításával továbbítja a hálózati forgalmat az AK-fürt és a fejlesztői számítógép között `hosts` . Az Azure dev Spaces egy bejegyzést hoz létre a (z) és a (z `hosts` ) Kubernetes-szolgáltatás neveként, amelyet állomásnévként cserél. Ez a bejegyzés a port továbbításával használható a fejlesztői gép és az AK-fürt közötti közvetlen hálózati forgalomhoz. Ha a fejlesztési gépen lévő szolgáltatás ütközik a cserélni kívánt Kubernetes szolgáltatás portjával, az Azure dev Spaces nem tudja továbbítani a Kubernetes szolgáltatás hálózati forgalmát. Például a *Windows BranchCache* szolgáltatás általában *0.0.0.0:80* -ra van kötve, amely ütközést okoz a 80-es port összes helyi IP-címeinél.
+Ha a fejlesztési gépet az AK-fürthöz csatlakoztatja, az Azure dev Spaces a fejlesztési gép fájljának módosításával továbbítja a hálózati forgalmat az AK-fürt és a fejlesztői számítógép között `hosts` . Az Azure dev Spaces egy bejegyzést hoz létre a (z) és a (z `hosts` ) Kubernetes-szolgáltatás neveként, amelyet állomásnévként cserél. Ez a bejegyzés a port továbbításával használható a fejlesztői gép és az AK-fürt közötti közvetlen hálózati forgalomhoz. Ha a fejlesztési gépen lévő szolgáltatás ütközik a cserélni kívánt Kubernetes szolgáltatás portjával, az Azure dev Spaces nem tudja továbbítani a Kubernetes szolgáltatás hálózati forgalmát. Például a *Windows BranchCache* szolgáltatás általában *0.0.0.0:80*-ra van kötve, amely ütközést okoz a 80-es port összes helyi IP-címeinél.
 
 A probléma megoldásához le kell állítania minden olyan szolgáltatást vagy folyamatot, amely ütközik a cserélni kívánt Kubernetes szolgáltatás portjával. Az eszközök, például a *netstat* segítségével megvizsgálhatja, hogy a fejlesztői gépen milyen szolgáltatások és folyamatok ütköznek.
 
@@ -378,6 +378,17 @@ spec:
     spec:
       [...]
 ```
+
+### <a name="error-cannot-get-connection-details-for-azure-dev-spaces-controller-abc-because-it-is-in-the-failed-state-something-wrong-might-have-happened-with-your-controller"></a>Hiba: nem lehet lekérni a kapcsolat adatait az Azure dev Spaces Controller "ABC" vezérlőhöz, mert a "sikertelen" állapotban van. Hiba történt a vezérlővel kapcsolatban. "
+
+A probléma megoldásához próbálja meg törölni az Azure dev Spaces-vezérlőt a fürtből, és telepítse újra:
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
+```
+
+Továbbá, mivel az Azure dev Spaces szolgáltatás kivonás alatt áll, érdemes lehet [áttelepíteni a Bridge-be a Kubernetes](migrate-to-bridge-to-kubernetes.md) , amely jobb élményt nyújt.
 
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>A Visual Studio és a Visual Studio Code együttes használata az Azure dev Spaces használatával – gyakori problémák
 
@@ -503,7 +514,7 @@ A felhasználó Azure-szerepkörének frissítése a vezérlőhöz:
 1. Kattintson a *Hozzáadás* , majd a *szerepkör-hozzárendelés hozzáadása* lehetőségre.
     * A *szerepkör* területen válassza a *közreműködő* vagy a *tulajdonos* lehetőséget.
     * A *hozzáférésének hozzárendeléséhez* válassza az *Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév* lehetőséget.
-    * A *Select (kiválasztás* ) lehetőségnél keresse meg azt a felhasználót, akinek engedélyeket szeretne adni.
+    * A *Select (kiválasztás*) lehetőségnél keresse meg azt a felhasználót, akinek engedélyeket szeretne adni.
 1. Kattintson a *Mentés* gombra.
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>A DNS-névfeloldás sikertelen a dev Spaces szolgáltatáshoz társított nyilvános URL-cím esetén
@@ -530,7 +541,7 @@ A probléma megoldása:
 Ez a hiba akkor jelenhet meg, amikor megpróbál hozzáférni a szolgáltatáshoz. Ha például egy böngészőben a szolgáltatás URL-címét nyitja meg. Ez a hiba azt jelenti, hogy a tároló portja nem érhető el. Ez a következő okok miatt lehetséges:
 
 * A tároló még mindig a kiépítés és üzembe helyezés folyamata alatt áll. Ez a probléma akkor merülhet fel, ha futtatja `azds up` vagy elindítja a hibakeresőt, majd megpróbál hozzáférni a tárolóhoz a sikeres üzembe helyezése előtt.
-* A port konfigurációja nem konzisztens a _Docker_ , a Helm diagramon és bármely olyan kiszolgáló kódján, amely egy portot nyit meg.
+* A port konfigurációja nem konzisztens a _Docker_, a Helm diagramon és bármely olyan kiszolgáló kódján, amely egy portot nyit meg.
 
 A probléma megoldása:
 

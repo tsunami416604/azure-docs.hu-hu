@@ -7,13 +7,13 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: troubleshooting
-ms.date: 11/27/2020
-ms.openlocfilehash: e0b4b31a1d732cbd5cbfaa9b6e5e021caa3adf01
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/03/2020
+ms.openlocfilehash: d5cf39cf91b69574fc1423cfe0942b567cf9a278
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301954"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548205"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>A CI-CD-k, az Azure DevOps és a GitHub-problémák hibaelhárítása Az ADF-ben 
 
@@ -107,7 +107,7 @@ Amikor a Data Factory módosításokat próbál közzétenni, a következő hiba
 
 Leválasztotta a git-konfigurációt, és ismét beállította az "erőforrások importálása" jelzőt, amely a Data Factory "szinkron" értékre állítja. Ez azt jelenti, hogy a közzététel nem módosul.
 
-**Resolution** (Osztás)
+#### <a name="resolution"></a>Feloldás
 
 Válassza le a git-konfigurációt, és állítsa be újra, és ügyeljen rá, hogy ne jelölje be a "meglévő erőforrások importálása" jelölőnégyzetet.
 
@@ -151,7 +151,7 @@ Felhasználóként létrehozott egy felhasználói szerepkört, és nem rendelke
 
 A probléma megoldásához hozzá kell adnia a következő engedélyeket a szerepkörhöz: *Microsoft. DataFactory/Factorys/queryFeaturesValue/Action*. Ezt az engedélyt alapértelmezés szerint a "Data Factory közreműködő" szerepkörbe kell foglalni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hibaelhárítással kapcsolatos további segítségért próbálkozzon a következő erőforrásokkal:
 

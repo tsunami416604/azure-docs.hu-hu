@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: a156150c2cd28964658fa8529181a70ef546b78f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a2d48a6f4e451e2a9b4140618c7c590293cb5ef5
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457333"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548528"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Rövid útmutató – Azure IoT Central-alkalmazás létrehozása
 
@@ -29,7 +29,7 @@ Hozzon létre egy új alkalmazást az iparághoz kapcsolódó IoT Central sablon
 
 1. Navigáljon a **Build** oldalra:
 
-    ![A IoT-alkalmazás oldalának összeállítása](media/quick-deploy-iot-central/iotcentralcreate-new-application.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-new-application.png" alt-text="A IoT-alkalmazás oldalának összeállítása":::
 
 1. Válassza az **egyéni alkalmazások** lehetőséget, és győződjön meg arról, hogy az **egyéni alkalmazás** sablon van kiválasztva.
 
@@ -37,9 +37,9 @@ Hozzon létre egy új alkalmazást az iparághoz kapcsolódó IoT Central sablon
 
 1. Az Azure IoT Central az alkalmazás neve alapján egyedi **URL-** előtagot is létrehoz az Ön számára. Ezt az URL-címet használja az alkalmazás eléréséhez. Módosítsa ezt az URL-előtagot valami emlékezetre, ha szeretné.
 
-    ![Azure IoT Central alkalmazás létrehozása lap](media/quick-deploy-iot-central/iotcentralcreate-custom.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-custom.png" alt-text="Azure IoT Central alkalmazás létrehozása lap":::
 
-    ![Azure IoT Central számlázási adatok](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png" alt-text="Azure IoT Central számlázási adatok":::
 
     > [!NOTE]
     > Ha az előző oldalon az **egyéni alkalmazás** lehetőséget választotta, megjelenik egy alkalmazás- **sablon** legördülő lista. Előfordulhat, hogy a legördülő menü más sablonokat is tartalmaz, amelyeket a szervezete számára elérhetővé tettek.
@@ -57,9 +57,9 @@ Hozzon létre egy új alkalmazást az iparághoz kapcsolódó IoT Central sablon
 
 1. Tekintse át a használati feltételeket, majd válassza a **Létrehozás** elemet az oldal alján. Néhány perc elteltével IoT Central alkalmazás készen áll a használatra:
 
-    ![Azure IoT Central-alkalmazás](media/quick-deploy-iot-central/iotcentral-application.png)
+    :::image type="content" source="media/quick-deploy-iot-central/iotcentral-application.png" alt-text="Azure IoT Central-alkalmazás":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Central-alkalmazást. A következő lépés a IoT Central megismerésének folytatása:
 

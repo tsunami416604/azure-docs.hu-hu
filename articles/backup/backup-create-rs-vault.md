@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurál
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ef3d464c051f15d656a4a60937bb05ac496ee52d
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019293"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548426"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása és konfigurálása
 
@@ -65,7 +65,7 @@ Mivel ez a folyamat tárolási szinten van, [díjszabási vonzatok](https://azur
 >Előkészületek:
 >
 >- A támogatott felügyelt típusok és régiók listáját a [támogatási mátrixban](backup-support-matrix.md#cross-region-restore) tekintheti meg.
->- A régió-visszaállítási (CRR) szolgáltatás most már az összes Azure-beli nyilvános régióban és szuverén felhőkben is elérhető.
+>- A régión belüli visszaállítás (CRR) szolgáltatás most már az összes Azure-beli nyilvános régióban meg van jelenítve.
 >- A CRR bármely GRS-tárolóhoz engedélyezhető a tár szintjén (alapértelmezés szerint kikapcsolva).
 >- A választás után akár 48 órát is igénybe vehet, hogy a biztonsági mentési elemek elérhetők legyenek a másodlagos régiókban.
 >- Az Azure-beli virtuális gépekhez jelenleg CRR csak az Azure Resource Manger Azure-beli virtuális gépek esetében támogatott. A klasszikus Azure-beli virtuális gépek nem támogatottak.  Ha a további felügyeleti típusok támogatják a CRR-t, akkor a **rendszer automatikusan** regisztrálja őket.
@@ -160,7 +160,7 @@ Ha meg kell őriznie a védett adatok védelmét a GRS-tárolóban, és egy új 
   - Szükség esetén visszaállíthatja a virtuális gépet a GRS-tárból.
   - Az új erőforrásban található virtuális gép LRS-tárolójának első biztonsági mentése kezdeti replika lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](backup-azure-recovery-services-vault-overview.md) információ Recovery Services-tárolók.
 [További](backup-azure-delete-vault.md) információ Recovery Services tárolók törlése.

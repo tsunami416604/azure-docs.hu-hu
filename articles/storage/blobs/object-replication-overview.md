@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 11/13/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4105698198e6fb7f4e3d3526ff9590ebca4898f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612166"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549089"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objektum-replikálás blokk-blobokhoz
 
@@ -43,14 +43,36 @@ Az objektum-replikációhoz a következő Azure Storage-funkciók is engedélyez
 
 A módosítási hírcsatorna és a blob verziószámozásának engedélyezése további költségeket eredményezhet. További részletekért tekintse meg az [Azure Storage díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/storage/).
 
+## <a name="how-object-replication-works"></a>Az objektum-replikáció működése
+
+Az objektum-replikáció aszinkron módon másolja a tárolóban lévő blobokat a konfigurált szabályoknak megfelelően. A blob tartalmát, a blobhoz társított bármely verziót, valamint a blob metaadatait és tulajdonságait a rendszer a forrás tárolójából a cél tárolóba másolja.
+
+> [!IMPORTANT]
+> Mivel a blob-adatblokkokat a rendszer aszinkron módon replikálja, a forrás-és a célcím nem azonnal szinkronizálva van. Jelenleg nincs SLA arra vonatkozóan, hogy mennyi időt vesz igénybe az adatreplikálás a célkiszolgálóra. Megtekintheti a replikálás állapotát a forrás blobon annak megállapításához, hogy a replikáció befejeződött-e. További információ: [blob replikálási állapotának megkeresése](object-replication-configure.md#check-the-replication-status-of-a-blob).
+
+### <a name="blob-versioning"></a>BLOB verziószámozása
+
+Az objektum-replikációhoz a blob verziószámozásának engedélyezése szükséges a forrás-és a célhelyen is. Ha a forrás fiókban egy replikált blob módosul, a rendszer a blob egy új verzióját hozza létre a forrás fiókban, amely a blob előző állapotát tükrözi a módosítás előtt. A forrás fiók aktuális verziója (vagy az alap blob) a legújabb frissítéseket tükrözi. A rendszer a frissített aktuális verziót és az új korábbi verziót is replikálja a cél fiókba. További információ arról, hogy az írási műveletek hogyan érintik a Blobok verzióját: [verziószámozás az írási műveletekben](versioning-overview.md#versioning-on-write-operations).
+
+Ha törli a forrás fiókban található blobot, a rendszer a blob aktuális verzióját egy korábbi verzióban rögzíti, majd törli. A blob összes korábbi verziója még az aktuális verzió törlése után is megmarad. Ezt az állapotot a rendszer replikálja a cél fiókba. További információ arról, hogy a törlési műveletek milyen hatással vannak a blob-verziókra: [verziószámozás a törlési műveletekben](versioning-overview.md#versioning-on-delete-operations).
+
+### <a name="snapshots"></a>Pillanatképek
+
+Az objektum-replikáció nem támogatja a blob-pillanatképeket. A rendszer nem replikálja a forrás fiókban található Blobok pillanatképeit a célhelyre.
+
+### <a name="blob-tiering"></a>BLOB-rétegek
+
+Az objektum-replikáció akkor támogatott, ha a forrás-és a cél fiók a gyakori vagy a ritka elérésű szinten van. Előfordulhat, hogy a forrás-és a cél fiók különböző szinten van. Az objektumok replikációja azonban sikertelen lesz, ha a forrás-vagy a célcím egyik blobja át lett helyezve az archiválási szintre. A blob rétegekkel kapcsolatos további információkért lásd: [hozzáférési szintek az Azure Blob Storage – gyakori, ritka elérésű és archív](storage-blob-storage-tiers.md).
+
+### <a name="immutable-blobs"></a>Nem módosítható blobok
+
+Az objektum-replikáció nem támogatja a nem módosítható blobokat. Ha a forrás vagy a cél tároló időalapú adatmegőrzési szabályzattal vagy jogi megtartással rendelkezik, akkor az objektum replikációja sikertelen lesz. A nem módosítható Blobokkal kapcsolatos további információkért lásd: [az üzleti szempontból kritikus blob-adatok tárolása a](storage-blob-immutable-storage.md)nem módosítható tárolóval.
+
 ## <a name="object-replication-policies-and-rules"></a>Objektum-replikációs házirendek és szabályok
 
 Az objektumok replikálásának konfigurálásakor létre kell hoznia egy replikációs házirendet, amely megadja a forrás Storage-fiókot és a célként megadott fiókot. A replikációs házirend egy vagy több olyan szabályt tartalmaz, amely a forrás tárolót és a célhelyet adja meg, és jelzi, hogy a rendszer melyik blokk blobokat replikálja a forrás tárolóban.
 
 Az objektumok replikálásának konfigurálása után az Azure Storage rendszeresen ellenőrzi a forrás fiók változási csatornáját, és aszinkron módon replikálja az írási vagy törlési műveleteket a célhelyre. A replikációs késés a replikált blokk blob méretétől függ.
-
-> [!IMPORTANT]
-> Mivel a blob-adatblokkokat a rendszer aszinkron módon replikálja, a forrás-és a célcím nem azonnal szinkronizálva van. Jelenleg nincs SLA arra vonatkozóan, hogy mennyi időt vesz igénybe az adatreplikálás a célkiszolgálóra.
 
 ### <a name="replication-policies"></a>Replikációs házirendek
 

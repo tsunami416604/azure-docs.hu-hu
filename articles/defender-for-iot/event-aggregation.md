@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 12/03/2020
 ms.author: mlottner
-ms.openlocfilehash: aec750d246ce99fa65431e23ef68e70418db0017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f7575697706363c082a4e6374b3df7a49e65cdf
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940941"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548851"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>Defender a IoT esemény összesítéséhez
 
@@ -36,7 +36,7 @@ Az Összesítés jelenleg a következő típusú eseményekhez érhető el:
 
 ## <a name="how-does-event-aggregation-work"></a>Hogyan működik az események összesítése?
 
-Ha az esemény összesítése **továbbra**is fennáll, a Defender a IoT-ügynökök összesített eseményeket az intervallum vagy az idő ablakban.
+Ha az esemény összesítése **továbbra** is fennáll, a Defender a IoT-ügynökök összesített eseményeket az intervallum vagy az idő ablakban.
 Az intervallum lejárta után az ügynök további elemzés céljából elküldi az összesített eseményeket az Azure-felhőbe.
 Az összesített eseményeket a rendszer a memóriában tárolja, amíg el nem érkezik az Azure-felhőbe.
 
@@ -44,7 +44,7 @@ Az ügynök memória-lábnyomának csökkentése érdekében, ha az ügynök egy
 
 Az események csak akkor tekinthetők azonosnak, ha teljesülnek a következő feltételek:
 
-* ProcessCreate-események – ha a **parancssor**, a **végrehajtható fájl**, a **Felhasználónév**és a **userid** megegyezik
+* ProcessCreate-események – ha a **parancssor**, a **végrehajtható fájl**, a **Felhasználónév** és a **userid** megegyezik
 * ConnectionCreate események – ha a **commandLine**, a **userId**, az **Direction**, a **Local címet**, a **távoli címet**, a * * protokollt és a **célport** azonos
 * ProcessTerminate események – ha a **végrehajtható fájl** és a **kilépési állapot** megegyezik
 
@@ -52,8 +52,8 @@ Az események csak akkor tekinthetők azonosnak, ha teljesülnek a következő f
 
 Az összesítés során a rendszer elveti a nem összesített esemény-tulajdonságokat, és a log Analyticsben 0 értékkel jelenik meg.
 
-* ProcessCreate-események – a **folyamatazonosító**és a **parentProcessId** értéke 0
-* ConnectionCreate-események – a **folyamatazonosító**és a **forrásport** értéke 0
+* ProcessCreate-események – a **folyamatazonosító** és a **parentProcessId** értéke 0
+* ConnectionCreate-események – a **folyamatazonosító** és a **forrásport** értéke 0
 
 ## <a name="event-aggregation-based-alerts"></a>Esemény-összesítési alapú riasztások
 

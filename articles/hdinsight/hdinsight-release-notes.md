@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d4983ecd1b8afe1ec6bd3cc31df8b711cebaddf1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350262"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549004"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
 Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos információkat tartalmaz. A korábbi kiadásokkal kapcsolatos információkért lásd: [HDInsight kibocsátási megjegyzések archívuma](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében az Azure-beli nyílt forráskódú elemzésekhez.
 
@@ -46,8 +46,9 @@ A HDInsight 3,6 ML Services-fürt típusa a támogatás végére kerül a 31 202
 ### <a name="disabled-vm-sizes"></a>Letiltott virtuálisgép-méretek
 A HDInsight november 16 2020-től kezdődően megakadályozza, hogy az új ügyfelek standand_A8, standand_A9, standand_A10 és standand_A11 virtuálisgép-méretekkel hozzanak létre fürtöket. Az elmúlt három hónapban ezeket a virtuálisgép-méreteket használó meglévő ügyfeleket nem érinti a rendszer. A HDInsight január 9 2021-től kezdődően a standand_A8, standand_A9, standand_A10 és standand_A11 virtuálisgép-méretek használatával letiltja a fürtöket létrehozó összes ügyfelet. A meglévő fürtök futtatása a következőképpen történik:. Vegye fontolóra a HDInsight 4,0-re való áttérést, hogy elkerülje a lehetséges rendszer/támogatás megszakadását.
 
-### <a name="behavior-changes"></a>Viselkedési változások
-Ebben a kiadásban nem változik a viselkedés.
+## <a name="behavior-changes"></a>Viselkedési változások
+### <a name="add-nsg-rule-checking-before-scaling-operation"></a>NSG-szabály-ellenőrzés hozzáadása a skálázási művelet előtt
+A HDInsight hozzáadta a hálózati biztonsági csoportokat (NSG) és a felhasználó által megadott útvonalakat (UDR) a skálázási művelettel. Ugyanez az érvényesítés történik a fürt létrehozásakor a fürtök skálázása mellett. Ez az ellenőrzés segít megakadályozni a kiszámíthatatlan hibákat. Ha az érvényesítés nem történik meg, a skálázás sikertelen lesz. További információ a NSG és a UDR helyes konfigurálásáról: [HDInsight-felügyeleti IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
 
 ## <a name="upcoming-changes"></a>Közelgő változások
 A következő módosítások a közelgő kiadásokban fognak történni.

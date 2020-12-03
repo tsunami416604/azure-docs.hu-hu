@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 89c13566c3710e56a4cd737d9aa03c6fb57edc93
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 73fea1e1928cf4e1bd5342aa0a4c885ccb5cf137
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542728"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548171"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>A Microsoft. ApplicationInsights. Snapshotcollector nugetcsomag kibocsátási megjegyzései
 
@@ -22,6 +22,11 @@ Hibajelentések és visszajelzések esetén nyisson meg egy problémát a GitHub
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
+## <a name="1374"></a>[1.3.7.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.4)
+Egy pont kiadása, amely a Azure App Service kódolású csatolási forgatókönyvének tesztelése során felderített problémák megoldására mutat.
+### <a name="changes"></a>Módosítások
+- A netcoreapp 3.0 célja most a Microsoft. ApplicationInsights. AspNetCore >= 2.1.1 (korábban >= 2.1.2) függvénytől függ.
+
 ## <a name="1373"></a>[1.3.7.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.3)
 Egy pont kiadása, amely néhány nagy hatású problémát érint.
 ### <a name="bug-fixes"></a>Hibajavítások
@@ -30,9 +35,9 @@ Egy pont kiadása, amely néhány nagy hatású problémát érint.
 
 ## <a name="137"></a>[1.3.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7)
 ### <a name="changes"></a>Módosítások
-A Snapshotcollector nugetcsomag netcoreapp 2.0-s célja a Microsoft. ApplicationInsights. AspNetCore >= 2.1.1 (Again) függvénytől függ. Ez a viselkedést a 1.3.5 előtti állapotra vált. Megpróbáljuk frissíteni a 1.3.6-ben, de kitört néhány Azure App Service forgatókönyvet.
+- A Snapshotcollector nugetcsomag netcoreapp 2.0-s célja a Microsoft. ApplicationInsights. AspNetCore >= 2.1.1 (Again) függvénytől függ. Ez a viselkedést a 1.3.5 előtti állapotra vált. Megpróbáljuk frissíteni a 1.3.6-ben, de kitört néhány Azure App Service forgatókönyvet.
 ### <a name="new-features"></a>Új funkciók
-Snapshot Collector beolvassa és elemzi a ConnectionString-t a APPLICATIONINSIGHTS_CONNECTION_STRING környezeti változóból vagy a TelemetryConfiguration. Ez elsősorban arra szolgál, hogy a végpontot állítsa be a pillanatkép-szolgáltatáshoz való csatlakozáshoz. További információ a [kapcsolatok karakterláncait ismertető dokumentációban](./sdk-connection-string.md)található.
+- Snapshot Collector beolvassa és elemzi a ConnectionString-t a APPLICATIONINSIGHTS_CONNECTION_STRING környezeti változóból vagy a TelemetryConfiguration. Ez elsősorban arra szolgál, hogy a végpontot állítsa be a pillanatkép-szolgáltatáshoz való csatlakozáshoz. További információ a [kapcsolatok karakterláncait ismertető dokumentációban](./sdk-connection-string.md)található.
 ### <a name="bug-fixes"></a>Hibajavítások
 - Átváltva a HttpClient használatára az összes cél esetében, kivéve a Net45, mert egy nem kompatibilis SecurityProtocol miatt sikertelen volt a webkérelmek végrehajtása (TLS 1,2 szükséges).
 
@@ -60,20 +65,20 @@ Snapshot Collector beolvassa és elemzi a ConnectionString-t a APPLICATIONINSIGH
 - A AddSnapshotCollector () használatával megkönnyíti a pillanatkép-gyűjtő hozzáadását. További információt [itt](./snapshot-debugger-appservice.md)találhat.
 - A FISMA MD5-beállítás használatával ellenőrizheti a blob-blokkokat. Ezzel elkerülhető az alapértelmezett .NET MD5 titkosítási algoritmus, amely nem érhető el, ha az operációs rendszer FIPS-kompatibilis módra van beállítva.
 - A .NET-keretrendszerbeli keretek figyelmen kívül hagyása a függvények meghívásakor. Ezt a viselkedést a DeoptimizeIgnoredModules konfigurációs beállítása szabályozhatja.
-- Adjon hozzá `DeoptimizeMethodCount` olyan konfigurációs beállítást, amely több függvényhívás deoptimalizálását teszi lehetővé. További információ itt
+- Adjon hozzá `DeoptimizeMethodCount` olyan konfigurációs beállítást, amely több függvényhívás deoptimalizálását teszi lehetővé. További információt itt talál.
 
 ## <a name="134"></a>[1.3.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.4)
 - Strukturált rendszerállapot-kulcsok engedélyezése.
 - Növelje a SnapshotUploader megbízhatóságát – akkor is folytassa az indítást, ha a régi feltöltő naplókat nem lehet áthelyezni.
 - További telemetria újbóli engedélyezése, ha a SnapshotUploader.exe azonnal kilép (az 1.3.3-ben le lett tiltva).
 - Egyszerűsítse a belső telemetria.
-- _Kísérleti funkció_ : Snappoint-gyűjtési csomagok: add "snapshotOnFirstOccurence". További információk [itt](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)érhetők el.
+- _Kísérleti funkció_: Snappoint-gyűjtési csomagok: add "snapshotOnFirstOccurence". További információk [itt](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)érhetők el.
 
 ## <a name="133"></a>[1.3.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.3)
 - Kijavítva a hiba, amely miatt a SnapshotUploader.exe nem válaszol, és nem tölthet fel pillanatképeket a .NET Core-alkalmazásokhoz.
 
 ## <a name="132"></a>[1.3.2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.2)
-- _Kísérleti funkció_ : Snappoint-gyűjtési csomagok. További információk [itt](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)érhetők el.
+- _Kísérleti funkció_: Snappoint-gyűjtési csomagok. További információk [itt](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)érhetők el.
 - A SnapshotUploader.exe kilép, amikor a futtatókörnyezet kitölti a alkalmazástartomány, amelyből a Snapshotcollector nugetcsomag betöltődik, ahelyett, hogy a folyamat kilépését kellene várnia. Ez javítja a gyűjtő megbízhatóságát az IIS-ben üzemeltetett környezetben.
 - A konfiguráció hozzáadásával engedélyezheti, hogy több Snapshotcollector nugetcsomag-példány ugyanazt a kialakítási kulcsot használja a SnapshotUploader-folyamat megosztásához: ShareUploaderProcess (alapértelmezett érték `true` ).
 - További telemetria jelent, amikor a SnapshotUploader.exe azonnal kilép.

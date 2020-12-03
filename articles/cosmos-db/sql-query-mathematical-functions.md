@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9dc3631b738da78df83113d89d23051033674d11
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 63d349c8cfff52932d51ce7143aba33521c43890
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93338370"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549189"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>Matematikai függvények (Azure Cosmos DB)  
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -32,7 +32,7 @@ Az eredmény a következőket eredményezi:
     [4]
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Függvények
 
 A következő támogatott beépített matematikai függvények számításokat hajtanak végre, általában bemeneti argumentumok alapján, és numerikus kifejezést adnak vissza:
  
@@ -64,9 +64,9 @@ A következő támogatott beépített matematikai függvények számításokat h
   
 A RAND kivételével minden matematikai függvény determinisztikus függvény. Ez azt jelenti, hogy a rendszer minden alkalommal ugyanazt az eredményt adja vissza, amikor meghívja őket egy adott bemeneti értékkel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
 - [Az Azure Cosmos DB bemutatása](introduction.md)
 - [Felhasználó által definiált függvények](sql-query-udfs.md)
-- [Összesítések](sql-query-aggregates.md)
+- [Összesítések](sql-query-aggregate-functions.md)

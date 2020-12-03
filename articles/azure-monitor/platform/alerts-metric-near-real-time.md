@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 9/30/2020
+ms.date: 12/3/2020
 ms.subservice: alerts
-ms.openlocfilehash: d1a1a31d5894338e0deeed27fabcde9fdbf6f588
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: dfcc1f15ebec1337cfa7d484319c7b942ff052b2
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566486"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548239"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>A metrikus riasztások által támogatott erőforrások Azure Monitor
 
@@ -85,7 +85,8 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. Network/applicationGateways | Igen | Nem | [Application Gateway átjárók](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft. Network/azurefirewalls | Igen | Nem | [Tűzfalak](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft. Network/dnsZones | Nem | Nem | [DNS-zónák](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/expressRouteCircuits | N/A | Nem |[Express Route-kapcsolatcsoportok](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/expressRouteCircuits | Igen | Nem |[ExpressRoute-áramkörök](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/expressRoutePorts | Igen | Nem |[ExpressRoute Direct](./metrics-supported.md#microsoftnetworkexpressrouteports) |
 |Microsoft. Network/loadBalancers (csak standard SKU-hoz)| Igen| Nem | [Terheléselosztó](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft. Network/natGateways| Nem | Nem | |
 |Microsoft. Network/privateEndpoints| Nem | Nem | |
@@ -107,6 +108,9 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. StorageCache/gyorsítótárak | Igen | Nem | |
 |Microsoft. StorageSync/storageSyncServices | Igen | Nem | [Storage Sync Services](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
 |Microsoft. StreamAnalytics/streamingjobs | Igen | Nem | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
+|Microsoft. szinapszis/munkaterületek | Igen | Nem | [Synapse Analytics](./metrics-supported.md#microsoftsynapseworkspaces) |
+|Microsoft. szinapszis/munkaterületek/bigDataPools | Igen | Nem | [Szinapszis Analitika Apache Spark készletek](./metrics-supported.md#microsoftsynapseworkspacesbigdatapools) |
+|Microsoft. szinapszis/munkaterületek/sqlPools | Igen | Nem | [Szinapszis Analytics SQL-készletek](./metrics-supported.md#microsoftsynapseworkspacessqlpools) |
 |Microsoft. VMWareCloudSimple/virtualMachines | Igen | Nem | [CloudSimple-virtuálisgépek](./metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
 |Microsoft. Web/hostingEnvironments/multiRolePools | Igen | Nem | [Több szerepkört használó készletek App Service Environment](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft. Web/hostingEnvironments/workerPools | Igen | Nem | [Munkavégző készletek App Service Environment](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|

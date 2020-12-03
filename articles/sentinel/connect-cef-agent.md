@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 5374871a51586a573e9ab41121f3f2dd95baf876
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ead878daaab977c77b3ab36f42ccfe4d01d7bc03
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695248"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548630"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. lépés: a naplózási továbbító üzembe helyezése
 
@@ -57,6 +57,9 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
 1. A szkript futtatása közben ellenőrizze, hogy nem kap-e hibaüzenetet vagy figyelmeztető üzenetet.
     - Előfordulhat, hogy egy olyan üzenetet kap, amely egy parancs futtatásával kijavít egy problémát a *számítógép* mező leképezésével. A részletekért tekintse [meg a telepítési parancsfájl magyarázatát](#mapping-command) .
 
+1. Folytassa a [2. lépéssel: a biztonsági megoldás konfigurálása a CEF-üzenetek továbbítására](connect-cef-solution-config.md) .
+
+
 > [!NOTE]
 > **Ugyanazzal a géppel az egyszerű syslog *és* a CEF üzenetek továbbítása**
 >
@@ -67,7 +70,16 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
 > 1. A következő parancs futtatásával le kell tiltania az ügynök szinkronizálását az Azure Sentinel syslog-konfigurációjával. Ez biztosítja, hogy az előző lépésben végrehajtott konfigurációs módosítás ne legyen felülírva.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
-Folytassa a [2. lépéssel: a biztonsági megoldás konfigurálása a CEF-üzenetek továbbítására](connect-cef-solution-config.md) .
+> [!NOTE]
+> **A TimeGenerated mező forrásának módosítása**
+>
+> - Alapértelmezés szerint a Log Analytics ügynök tölti fel a séma *TimeGenerated* mezőjét abban az időpontig, amikor az ügynök az eseményt a syslog démontól kapta. Ennek eredményeképpen az eseménynek a forrásoldali rendszeren való generálásának ideje nincs rögzítve az Azure Sentinelben.
+>
+> - A következő parancs futtatásával azonban letöltheti és futtathatja a `TimeGenerated.py` szkriptet. Ez a szkript úgy konfigurálja a Log Analytics ügynököt, hogy az ügynöktől kapott idő helyett feltöltse a *TimeGenerated* mezőt az esemény eredeti időpontjával.
+>
+>    ```bash
+>    wget -O TimeGenerated.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/TimeGenerated.py && python TimeGenerated.py {ws_id}
+>    ```
 
 ## <a name="deployment-script-explained"></a>Üzembe helyezési parancsfájl ismertetése
 

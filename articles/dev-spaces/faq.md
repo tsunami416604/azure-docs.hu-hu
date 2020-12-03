@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Válaszok az Azure dev Spaces használatával kapcsolatos gyakori kérdésekre
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: a25ebd88d022ff278b3e3d9cc9cbf4d8b9b670cd
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: e83bed86714e4b92c63f4e7b7eb55df7a2a7eaff
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636095"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548834"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Gyakran ismételt kérdések az Azure dev Spaces-ről
 
@@ -20,7 +20,7 @@ Ez az Azure dev Spaces-re vonatkozó gyakori kérdéseket tárgyalja.
 
 ## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Milyen verziójú Kubernetes támogatottak az Azure dev Spaces szolgáltatásban?
 
-Az Azure dev Spaces a [Kubernetes összes jelenleg támogatott általánosan elérhető verzióját támogatja az AK-ban][aks-supported-k8s].
+Az Azure dev Spaces a [Kubernetes jelenleg támogatott általánosan elérhető (GA) verzióit támogatja az AK-ban, akár 1,18-ig][aks-supported-k8s]. Az Kubernetes 1,19-es és újabb verziók tároló-futtatókörnyezetként tárolóként használják, amely nem működik az Azure dev Spaces szolgáltatással.
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Mely Azure-régiók biztosítanak Azure dev Spaces-helyeket?
 

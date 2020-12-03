@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 79ef46eef4da1beeea1c177ce39a09eea133f545
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9e0c5ae119b734f91e8cfa1e7afb11a96e13035c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089661"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549072"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -174,7 +174,7 @@ Az SQL API-fiókok által támogatott SQL-lekérdezési nyelv a SQL Server álta
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Támogatja az SQL API az SQL aggregációs funkciókat?
 
-Az SQL API a nagy késleltetésű összesítést az összesítő függvények `COUNT` , a,, `MIN` `MAX` `AVG` és `SUM` az SQL-nyelvtan használatával bármilyen méretben támogatja. További információ: [összesítő függvények](sql-query-aggregates.md).
+Az SQL API a nagy késleltetésű összesítést az összesítő függvények `COUNT` , a,, `MIN` `MAX` `AVG` és `SUM` az SQL-nyelvtan használatával bármilyen méretben támogatja. További információ: [összesítő függvények](sql-query-aggregate-functions.md).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Hogyan biztosítja az SQL API az egyidejűséget?
 

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: b105c4c9ee0bd27af11fe09a0fd756467e30bb35
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a1fbc6eede6c82020b765185602c672c1162fdf8
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466807"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548188"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>A szinapszis munkaterület funkcióinak engedélyezése dedikált SQL-készlethez (korábban SQL DW)
 
@@ -23,8 +23,8 @@ Az összes SQL-adattárház-felhasználó mostantól hozzáférhet és használh
 
 ## <a name="prerequisites"></a>Előfeltételek
 A szinapszis munkaterület funkcióinak az adattárházban való engedélyezése előtt meg kell győződnie arról, hogy a következőkkel rendelkezik
-- Az SQL logikai kiszolgálón tárolt SQL-erőforrások létrehozásához és kezeléséhez szükséges jogosultságok.
-- A szinapszis-erőforrások létrehozásához szükséges jogosultságok.
+- Az SQL logikai kiszolgálón futtatott SQL-erőforrások létrehozásához és kezeléséhez szükséges jogosultságok.
+- Az Azure szinapszis-erőforrások létrehozásához szükséges jogosultságok.
 - A logikai kiszolgálón azonosított Azure Active Directory-rendszergazda
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
@@ -58,5 +58,5 @@ A következő lépések végrehajtásával biztosíthatja, hogy a meglévő dedi
 
 5. Nyissa meg az **adatközpontot** , és bontsa ki a dedikált SQL-készletet az Object Explorerben, és győződjön meg arról, hogy a hozzáférése és a lekérdezése az adattárházat
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Bevezetés a [szinapszis munkaterülettel és a Studióval](../get-started.md).

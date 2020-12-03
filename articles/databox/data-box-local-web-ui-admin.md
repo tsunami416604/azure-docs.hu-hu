@@ -6,34 +6,28 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/23/2020
+ms.date: 12/01/2020
 ms.author: alkohli
-ms.openlocfilehash: f5bcb5c42661c375372d4d0b17571d784152dd5f
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 751ac870996fa1a2805bb018c991f85525fd797d
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337287"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548952"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A helyi webes felhasználói felület használata a Data Box és Data Box Heavy felügyeletéhez
 
 Ez a cikk a Data Box és Data Box Heavy eszközökön végrehajtott konfigurációs és felügyeleti feladatokat ismerteti. A Data Box és Data Box Heavy eszközöket a Azure Portal felhasználói felületen és az eszköz helyi webes FELÜLETén keresztül kezelheti. Ez a cikk a helyi webes felhasználói felület használatával végrehajtott feladatokat ismerteti.
 
-A Data Box és a Data Box Heavy helyi webes FELÜLETe az eszköz kezdeti konfigurálására szolgál. A helyi webes felhasználói felület segítségével leállíthatja vagy újraindíthatja az eszközt, diagnosztikai teszteket futtathat, szoftvereket frissíthet, megtekintheti a naplók másolását, és létrehozhat egy naplófájlt Microsoft ügyfélszolgálatahoz. Két független csomóponttal rendelkező Data Box Heavy eszközön két különálló helyi webes felület érhető el, amely az eszköz egyes csomópontjainak felel meg.
-
-A cikk az alábbi oktatóanyagokat tartalmazza:
-
-- Támogatási csomag létrehozása
-- Az eszköz leállítása és újraindítása
-- ANYAGJEGYZÉK-vagy manifest-fájlok letöltése
-- Az eszköz rendelkezésre álló kapacitásának megtekintése
-- Ellenőrzőösszeg-érvényesítés kihagyása
+A Data Box és a Data Box Heavy helyi webes FELÜLETe az eszköz kezdeti konfigurálására szolgál. A helyi webes felhasználói felület segítségével leállíthatja vagy újraindíthatja az eszközt, diagnosztikai teszteket futtathat, szoftvereket frissíthet, megtekintheti a másolási naplókat, törölheti a helyi adatait az eszközről, és létrehozhat egy támogatási csomagot a Microsoft ügyfélszolgálatahoz. Két független csomóponttal rendelkező Data Box Heavy eszközön két különálló helyi webes felület érhető el, amely az eszköz egyes csomópontjainak felel meg.
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>Támogatási csomag létrehozása
 
-Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rendszernaplókból. A Microsoft támogatási szolgálata a csomag segítségével hárítja el a problémát. Támogatási csomag létrehozásához hajtsa végre a következő lépéseket:
+Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rendszernaplókból. A Microsoft támogatási szolgálata a csomag segítségével hárítja el a problémát.
+
+Támogatási csomag létrehozásához hajtsa végre a következő lépéseket:
 
 1. A helyi webes KEZELŐFELÜLETen lépjen a **Kapcsolatfelvétel az ügyfélszolgálattal** lehetőségre, és válassza a **támogatási csomag létrehozása** lehetőséget.
 
@@ -51,9 +45,29 @@ Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rend
 
     ![Támogatási csomag létrehozása – 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
 
+## <a name="erase-local-data-from-your-device"></a>Helyi adatok törlése az eszközről
+
+A helyi webes felhasználói felület használatával törölheti az eszköz helyi adatait, mielőtt visszaadná azt az Azure-adatközpontba.
+
+> [!IMPORTANT]
+> Az adattörlés nem vonható vissza. Mielőtt törli az eszközről a helyi adatok törlését, készítsen biztonsági mentést a fájlokról.
+
+Az eszközön található helyi adatok törléséhez hajtsa végre az alábbi lépéseket:
+
+1. A helyi webes KEZELŐFELÜLETen lépjen az **adattörlés elemre**.
+2. Adja meg az eszköz jelszavát, és válassza az **adattörlés** lehetőséget.
+
+    ![Eszköz adattörlési beállítása](media/data-box-local-web-ui-admin/erase-local-data-1.png)
+
+3. A megerősítő üzenetben kattintson az **Igen** gombra a folytatáshoz. Az adattörlés 50 percnél hosszabb időt is igénybe vehet.
+
+   Mielőtt törli az eszközről, készítsen biztonsági másolatot a helyi adatokról. Az adattörlés nem vonható vissza.
+
+    ![Adat-törlés megerősítésének kérése](media/data-box-local-web-ui-admin/erase-local-data-2.png)
+
 ## <a name="shut-down-or-restart-your-device"></a>Az eszköz leállítása és újraindítása
 
-Az eszközt a helyi webes felhasználói felület használatával állíthatja le vagy indíthatja újra. Az újraindítás előtt ajánlott offline állapotba állítani a gazdagépen található megosztásokat, majd magát az eszközt is. Így a lehető legkisebbre csökkentheti az adatsérülés lehetőségét. Az eszköz leállításakor ügyeljen arra, hogy az Adatmásolás ne legyen folyamatban.
+Az eszközt a helyi webes felhasználói felület használatával állíthatja le vagy indíthatja újra. Azt javasoljuk, hogy az újraindítás előtt a megosztások offline állapotba kerülnek a gazdagépen, majd az eszközön. Így a lehető legkisebbre csökkentheti az adatsérülés lehetőségét. Az eszköz leállításakor ügyeljen arra, hogy az Adatmásolás ne legyen folyamatban.
 
 Az eszköz leállításához hajtsa végre az alábbi lépéseket.
 
@@ -168,7 +182,7 @@ Az eszköz irányítópultján tekintheti meg az eszköz rendelkezésre álló �
 
 A szállításra való felkészüléskor a rendszer alapértelmezés szerint ellenőrzőösszegeket hoz létre az adataihoz. Bizonyos ritka esetekben az adattípustól (kis fájlmérettől függően) a teljesítmény lassú lehet. Ilyen esetben kihagyhatja az ellenőrzőösszeg létrehozását.
 
-Az ellenőrzőösszeg kiszámítása a szállítás előkészítése során csak importálási rendelésekhez, és nem exportálási rendelésekhez történik. 
+Az ellenőrzőösszeg kiszámítása a szállítás előkészítése során csak importálási rendelésekhez, és nem exportálási rendelésekhez történik.
 
 Határozottan javasoljuk, hogy csak akkor tiltsa le az ellenőrző létrehozását, ha komoly hatással lenne a teljesítményre.
 
@@ -177,7 +191,7 @@ Határozottan javasoljuk, hogy csak akkor tiltsa le az ellenőrző létrehozás�
     ![Ellenőrzőösszeg letiltása](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. Tiltsa le az ellenőrzőösszeg-érvényesítést a **Disable** (Letiltás) paranccsal.
-3. Válassza az **Alkalmaz** lehetőséget.
+3. Kattintson az **Alkalmaz** gombra.
 
 > [!NOTE]
 > Az ellenőrzőösszeg-számítás kihagyása beállítás csak akkor érhető el, ha a Azure Data Box fel van oldva. Ez a beállítás nem jelenik meg, ha az eszköz zárolva van.
@@ -198,7 +212,7 @@ Az SMB-aláírás engedélyezése az Azure-eszközön:
 
     ![SMB-aláírás engedélyezése](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
 
-3. Válassza az **Alkalmaz** lehetőséget.
+3. Kattintson az **Alkalmaz** gombra.
 4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
 5. Válassza az **Újraindítás** lehetőséget.
 
@@ -241,7 +255,7 @@ Az ACL-ek átvitelének engedélyezése az Azure Files szolgáltatásban:
 
      ![ACL-ek engedélyezése az Azure Files szolgáltatáshoz](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
   
-3. Válassza az **Alkalmaz** lehetőséget.
+3. Kattintson az **Alkalmaz** gombra.
 4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
 5. Válassza az **Újraindítás** lehetőséget.
 
@@ -261,10 +275,10 @@ A TLS 1,1 engedélyezése az Azure-eszközön:
 
     ![TLS 1,1 engedélyezése](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
 
-3. Válassza az **Alkalmaz** lehetőséget.
+3. Kattintson az **Alkalmaz** gombra.
 4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
 5. Válassza az **Újraindítás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [kezelheti a Data Box és Data Box Heavy a Azure Portalon keresztül](data-box-portal-admin.md).
