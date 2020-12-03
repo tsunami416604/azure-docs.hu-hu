@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: c77001707eda7c208ad19a014a1f0cff2b85b25d
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: b23b5a81fdff8a05742092f517128e08723103fc
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736476"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531139"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 
@@ -58,15 +58,13 @@ Az adatszinkronizálás olyan esetekben hasznos, amikor a Azure SQL Database vag
 
 Az adatszinkronizálás nem az előnyben részesített megoldás a következő esetekben:
 
-| Használati eset | Néhány ajánlott megoldás |
+| Használati példa | Néhány ajánlott megoldás |
 |----------|----------------------------|
 | Vészhelyreállítás | [Azure geo-redundáns biztonsági mentések](automated-backups-overview.md) |
 | Olvasási skála | [Csak olvasható replikák használata az írásvédett lekérdezési feladatok terheléselosztásához (előzetes verzió)](read-scale-out.md) |
 | ETL (OLTP – OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) vagy [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
-| Áttelepítés SQL Serverról Azure SQL Databasera | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+| Áttelepítés SQL Serverról Azure SQL Databasera. SQL-adatszinkronizálás azonban az áttelepítés befejeződése után is használható, hogy a forrás és a cél szinkronban legyen tárolva.  | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
-
-
 
 ## <a name="how-it-works"></a>Működés
 
@@ -83,7 +81,7 @@ Az adatszinkronizálás nem az előnyben részesített megoldás a következő e
 | **Előnyök** | – Aktív-aktív támogatás<br/>– A helyszíni és a Azure SQL Database közötti kétirányú irányítás | – Alacsonyabb késés<br/>– Tranzakciós konzisztencia<br/>-Meglévő topológia újrafelhasználása az áttelepítés után <br/>– Az Azure SQL felügyelt példányának támogatása |
 | **Hátrányok** | – Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
 
-## <a name="get-started"></a>Bevezetés 
+## <a name="get-started"></a>Első lépések 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Adatszinkronizálás beállítása a Azure Portal
 
@@ -241,7 +239,7 @@ Az összevonási gyökér adatbázisa korlátozás nélkül használható a SQL-
 
 A Dynamics 365 saját adatbázis-funkciója lehetővé teszi, hogy a rendszergazdák a saját Microsoft Azure SQL Database-be exportálják az alkalmazásból az adatentitásokat. Az adatszinkronizálás használatával más adatbázisokba is szinkronizálhatja ezeket az adatfájlokat, ha az adatexportálás **növekményes leküldéses** használatával történik (a teljes leküldéses funkció nem támogatott), és az **Eseményindítók engedélyezése a célként megadott adatbázisban** **Igen** értékre van állítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="update-the-schema-of-a-synced-database"></a>Szinkronizált adatbázis sémájának frissítése
 

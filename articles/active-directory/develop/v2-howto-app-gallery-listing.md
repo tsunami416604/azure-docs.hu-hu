@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 12/02/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 396d6f69673f8758d8d1302f8d10b8a92e5f50b4
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173379"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530750"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Az alkalmazás közzététele az Azure AD App Galleryben
 
@@ -168,14 +168,25 @@ Ha többet szeretne megtudni a ASP.NET Core WS-Fedről, tekintse meg a [felhaszn
 
 Hozzon létre egy webalkalmazást, amely tartalmaz egy HTML-bejelentkezési oldalt. Győződjön meg arról, hogy az alkalmazás támogatja az űrlapos hitelesítést, így a jelszó-tárolót úgy is megteheti, hogy a várt módon működjön az egyszeri bejelentkezéssel.
 
+## <a name="step-3---implement-scim-user-provisioning-in-your-app"></a>3. lépés – a SCIM-felhasználó üzembe helyezésének megvalósítása az alkalmazásban
+A [scim](https://aka.ms/scimoverview) -létesítés támogatása nem kötelező, de kifejezetten ajánlott, az alkalmazás kiépítése. A SCIM standard támogatása egyszerűen elvégezhető, és lehetővé teszi, hogy az ügyfelek automatikusan hozzanak létre és frissítsenek felhasználói fiókokat az alkalmazásban anélkül, hogy manuális folyamatokra kellene hagyatkozni, például CSV-fájlok feltöltésével. Emellett az ügyfelek automatizálják a felhasználók eltávolítását és a csoporttagságok szinkronizálását, ami nem hajtható végre olyan megoldással, mint például az SAML JIT. 
 
-## <a name="step-3---create-your-azure-tenant-and-test-your-app"></a>3. lépés – az Azure-bérlő létrehozása és az alkalmazás tesztelése
+### <a name="learn-about-scim"></a>Tudnivalók a SCIM
+Ha többet szeretne megtudni az ügyfelek SCIM szabványainak és előnyeiről, tekintse meg a [kiépítés a scim – első lépések](https://aka.ms/scimoverview)című témakört.
+
+### <a name="understand-the-azure-ad-scim-implementation"></a>Az Azure AD SCIM implementációjának ismertetése
+Az Azure AD SCIM megvalósításával kapcsolatos további tudnivalókért lásd: [scim-végpont létrehozása és a felhasználók üzembe helyezésének beállítása az Azure ad-vel](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups).
+
+### <a name="implement-scim"></a>SCIM megvalósítása
+Az Azure AD olyan [hivatkozási kódot](https://aka.ms/scimoverview) biztosít, amely segítséget nyújt egy scim-végpont létrehozásához. A githubon számos harmadik féltől származó kódtár és hivatkozás is megtalálható.  
+
+## <a name="step-4---create-your-azure-tenant-and-test-your-app"></a>4. lépés – az Azure-bérlő létrehozása és az alkalmazás tesztelése
 
 Az alkalmazás teszteléséhez szüksége lesz egy Azure AD-bérlőre. A fejlesztési környezet beállításához tekintse meg [a rövid útmutató: bérlő beállítása](quickstart-create-new-tenant.md)című témakört.
 
 Alternatív megoldásként az Azure AD-bérlő minden Microsoft 365-előfizetéssel rendelkezik. Az ingyenes Microsoft 365 fejlesztési környezet létrehozásához tekintse meg [a Microsoft 365 fejlesztői program csatlakoztatása](/office/developer-program/microsoft-365-developer-program)című témakört.
 
-Ha bérlője van, engedélyeznie kell és tesztelni kell az egyszeri bejelentkezéses hozzáférést. 
+Ha bérlője van, tesztelni kell az egyszeri bejelentkezést és a [kiépítés](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)folyamatát. 
 
 **OIDC vagy esküt használó alkalmazások** esetén [regisztrálja alkalmazását](quickstart-register-app.md) több-bérlős alkalmazásként. A támogatott fióktípus területen válassza ki a szervezeti címtár és a személyes Microsoft-fiókok lehetőséget.
 
@@ -184,7 +195,7 @@ Ha bérlője van, engedélyeznie kell és tesztelni kell az egyszeri bejelentkez
 Ha szükséges, [egyetlen bérlős alkalmazást is át lehet alakítani több-bérlőre](howto-convert-app-to-be-multi-tenant.md) .
 
 
-## <a name="step-4---create-and-publish-documentation"></a>4. lépés – dokumentáció létrehozása és közzététele
+## <a name="step-5---create-and-publish-documentation"></a>5. lépés – a dokumentáció létrehozása és közzététele
 
 ### <a name="documentation-on-your-site"></a>A webhelyen található dokumentáció
 
@@ -206,13 +217,14 @@ Javasoljuk, hogy a webhelyen legalább a következő elemeket tartalmazza a doku
 * Tesztelési lépések a próbaüzem felhasználói számára
 * Hibaelhárítási információk, például hibakódok és üzenetek
 * Támogatási mechanizmusok ügyfelek számára
+* A SCIM-végpont részletei, beleértve a támogatott erőforrásokat és attribútumokat
 
 ### <a name="documentation-on-the-microsoft-site"></a>Dokumentáció a Microsoft webhelyén
 
 Ha az alkalmazást az Azure Active Directory alkalmazás-katalógussal sorolja fel, amely az Azure piactéren is közzéteszi az alkalmazást, a Microsoft dokumentációt készít a kölcsönös ügyfeleinknek a lépésenkénti folyamatról. [Itt](../saas-apps/tutorial-list.md)láthat egy példát. Ezt a dokumentációt a katalógusba való beküldésük alapján hozza létre, és egyszerűen frissítheti, ha az alkalmazást a GitHub-fiók használatával módosítja.
 
 
-## <a name="step-5---submit-your-app"></a>5. lépés – az alkalmazás elküldése
+## <a name="step-6---submit-your-app"></a>6. lépés – az alkalmazás elküldése
 
 Miután tesztelte, hogy az alkalmazás-integráció az Azure AD-vel működik, küldje el kérelmét a [Microsoft Application Network portálon](https://microsoft.sharepoint.com/teams/apponboarding/Apps).
 
@@ -262,7 +274,7 @@ Ha hozzá szeretné adni az alkalmazást a katalógusban a jelszó SSO használa
 
 ![Jelszó-SSO-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/passwordsso.png)
 
-Ha [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0-végpontot hoz létre a felhasználók üzembe helyezéséhez, válassza a látható lehetőséget. 
+Ha [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0-végpontot hoz létre a felhasználók üzembe helyezéséhez, válassza a látható lehetőséget. Ha a sémát a bevezetési kérelemben adja meg, kövesse az [itt](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration) található utasításokat a séma letöltéséhez. Az Ön által konfigurált sémát fogjuk használni a katalógusbeli alkalmazás létrehozásához a nem Gallery-alkalmazás teszteléséhez. 
 
    ![A felhasználó kiépítési kérelme](./media/howto-app-gallery-listing/user-provisioning.png)
 
@@ -301,10 +313,10 @@ A katalógusban található OpenID Connect-alkalmazás listázási folyamatának
 Bármilyen eszkaláció esetén küldjön e-mailt az [Azure ad SSO integrációs csapatának](mailto:SaaSApplicationIntegrations@service.microsoft.com), és a lehető leghamarabb válaszolunk.
 
 
-## <a name="step-6---join-the-microsoft-partner-network"></a>6. lépés – csatlakozás a Microsoft partner networkhez
+## <a name="step-7---join-the-microsoft-partner-network"></a>7. lépés – csatlakozás a Microsoft partner networkhez
 A Microsoft Partner Network azonnali hozzáférést biztosít az exkluzív erőforrásokhoz, programokhoz, eszközökhöz és kapcsolatokhoz. A hálózathoz való csatlakozáshoz és a piacra jutási terv létrehozásához tekintse meg a [kereskedelmi ügyfelek elérhetőségét](https://partner.microsoft.com/explore/commercial#gtm)ismertető témakört.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Hitelesítési forgatókönyvek az Azure AD-hez](authentication-flows-app-scenarios.md)

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan frissíthet egy Azure Kubernetes-szolgáltatás
 services: container-service
 ms.topic: article
 ms.date: 11/17/2020
-ms.openlocfilehash: 262905c9f840850795ba9555912e81eca61369d1
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 30ad80727c238ae7e415039adf3e4eb75dbbc1b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683233"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531343"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service- (AKS-) fürt frissítése
 
@@ -121,7 +121,65 @@ Name          Location    ResourceGroup    KubernetesVersion    ProvisioningStat
 myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="set-auto-upgrade-channel-preview"></a>Az automatikus frissítési csatorna beállítása (előzetes verzió)
+
+A fürt manuális frissítése mellett beállíthat egy automatikus frissítési csatornát a fürtön. A következő frissítési csatornák érhetők el:
+
+* *nincs*, ami letiltja az automatikus frissítést, és a fürt a Kubernetes jelenlegi verziójában tartja a fürtöt. Ez az alapértelmezett érték, és akkor használható, ha nincs megadva beállítás.
+* a *javítást*, amely automatikusan frissíti a fürtöt a legújabb támogatott javítócsomag-verzióra, amikor elérhetővé válik, miközben az alverzió megtartja ugyanezt. Ha például egy fürt *1.17.7* verziót futtat, és a *1.17.9*, a *1.18.4*, a *1.18.6* és a *1.19.1* verzió érhető el, a fürt a *1.17.9*-re frissül.
+* *stabil*, amely automatikusan frissíti a fürtöt az *n-1* alverzióban található legújabb támogatott patch kiadásra, ahol *n* a legújabb támogatott alverzió. Ha például egy fürt *1.17.7* verziót futtat, és a *1.17.9*, a *1.18.4*, a *1.18.6* és a *1.19.1* verzió érhető el, a fürt a *1.18.6*-re frissül.
+* *gyors*, amely automatikusan frissíti a fürtöt a legújabb támogatott alverzióban támogatott patch kiadásra. Azokban az esetekben, amikor a fürt a Kubernetes olyan verziójával rendelkezik, amely *n-2* alverzión van, ahol *n* a legújabb támogatott alverzió, a fürt először a legújabb támogatott javítási verziót frissíti az *n-1* alverzióban. Ha például egy fürt a *1.17.7* verziót és a *1.17.9*, a *1.18.4*, a *1.18.6* és a *1.19.1* verzióját futtatja, akkor a fürt először a *1.18.6*-re frissül, majd a *1.19.1*-re frissül.
+
+> [!NOTE]
+> A fürt automatikusan frissíti a Kubernetes verziójának frissítéseit, és nem frissíti az előzetes verziókat.
+
+A fürt automatikus frissítése ugyanazokat a lépéseket követi, mint a fürt manuális frissítése. További részletek: [AK-fürtök frissítése][upgrade-cluster].
+
+A fürt automatikus frissítése az AK-fürtökhöz előzetes verziójú funkció.
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+Regisztrálja a `AutoUpgradePreview` szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal, az alábbi példában látható módon:
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview
+```
+
+Néhány percet vesz igénybe, amíg az állapot *regisztrálva* jelenik meg. Ellenőrizze a regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AutoUpgradePreview')].{Name:name,State:properties.state}"
+```
+
+Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] parancs használatával:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+Az az [Extension Add][az-extension-add] paranccsal telepítse az *AK-előnézet* bővítményt, majd keresse meg a rendelkezésre álló frissítéseket az az [Extension Update][az-extension-update] paranccsal:
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+Ha a fürt létrehozásakor az automatikus frissítési csatornát szeretné beállítani, használja az *automatikus frissítési csatorna* paramétert, az alábbi példához hasonlóan.
+
+```azurecli-interactive
+az aks create --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable --generate-ssh-keys
+```
+
+Az automatikus frissítési csatorna meglévő fürtön való beállításához frissítse az *automatikus frissítési csatorna* paramétert, az alábbi példához hasonlóan.
+
+```azurecli-interactive
+az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable
+```
+
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk bemutatta, hogyan frissíthet egy meglévő AK-fürtöt. Az AK-fürtök üzembe helyezésével és kezelésével kapcsolatos további információkért tekintse meg az oktatóanyagokat.
 
@@ -137,6 +195,10 @@ Ez a cikk bemutatta, hogyan frissíthet egy meglévő AK-fürtöt. Az AK-fürtö
 [az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
 [az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
 [az-aks-show]: /cli/azure/aks#az-aks-show
-[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[upgrade-cluster]:  #upgrade-an-aks-cluster

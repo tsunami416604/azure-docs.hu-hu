@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6da80ec4c9c3c4e6c95eb1c9001596ffe3dd5711
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c69df88828a179cf1dce7bd35ac19c518b07903d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447853"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530714"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Dedikált SQL-készlet (korábban SQL DW) hibaelhárítása Az Azure szinapszis Analyticsben
 
@@ -45,6 +45,7 @@ Ez a cikk az Azure szinapszis Analytics dedikált SQL-készletének (korábban S
 | Probléma                                                        | Feloldás                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Az üres karakterláncok CETAS használatával történő exportálása NULL értéket eredményez a parketta-és az ork-fájlokban. Megjegyzés: Ha nem NULL értékű korlátozásokkal rendelkező oszlopokból exportál üres karakterláncokat, a CETAS visszautasította a rekordokat, és az Exportálás sikertelen lehet. | Távolítsa el az üres karakterláncokat vagy a jogsértő oszlopot a CETAS SELECT utasításában. |
+| A 0-127-tartományon kívüli értéknek a parketta és az ork fájlformátum tinyint oszlopba való betöltése nem támogatott. | Adjon meg nagyobb adattípust a cél oszlophoz.           |
 
 ## <a name="performance"></a>Teljesítmény
 

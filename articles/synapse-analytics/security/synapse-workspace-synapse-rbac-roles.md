@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55a1255ffa82aec8ea7b9e1ec2bbc6746b9b0636
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: bae214fb8eff9747bf3f79323d8eb9ce1cb6cdb7
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523506"
+ms.locfileid: "96531598"
 ---
 # <a name="synapse-rbac-roles"></a>Szinapszis RBAC szerepkörei
 
@@ -28,12 +28,11 @@ Az előzetes verzióban elérhető szinapszis RBAC-szerepkörökkel rendelkező 
 - A rendszer **új alacsonyabb szintű hatóköröket** vezet be több szerepkörhöz.  Ezek a hatókörök lehetővé teszik a szerepkörök meghatározott erőforrásokra vagy objektumokra való korlátozását.
 
 >[!Note]
->- Az új szerepkörök és alsó szintű hatókörök jelenleg előzetes verzióban érhetők el.  
->- A Apache Spark rendszergazdai és SQL-rendszergazdai szerepkörök egy későbbi kiadásban elavulttá válik az új szinapszis RBAC-szerepkörök javára.  Javasoljuk, hogy fogadja el az új előzetes verziójú szerepköröket, amelyek teljes mértékben támogatottak, és visszajelzést nyújtson a használatáról.
+>- Az **Új szerepkörök és alsó szintű hatókörök jelenleg előzetes verzióban érhetők el**.  Javasoljuk, hogy használja ezeket az új szerepköröket és hatóköröket, amelyek teljes mértékben támogatottak, és visszajelzéseket biztosítanak a használatáról.
 
 ## <a name="built-in-synapse-rbac-roles-and-scopes"></a>Beépített szinapszis RBAC-szerepkörök és-hatókörök
 
-A következő táblázat ismerteti az egyes beépített szerepköröket és azokat a hatóköröket, amelyeken ezek a szerepkörök használhatók.
+A következő táblázat ismerteti azokat a beépített szerepköröket és hatóköröket, amelyeken használhatók.
 
 >[!Note]
 > A bármely hatókörben található szinapszis RBAC szerepkörrel rendelkező felhasználók automatikusan a szinapszis felhasználói szerepkörrel rendelkeznek a munkaterület hatókörében. 

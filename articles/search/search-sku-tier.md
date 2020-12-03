@@ -7,25 +7,49 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 0acd0d1d463280cddc8c1f4bb389a056d474ea38
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/01/2020
+ms.openlocfilehash: 1b23d6c7952e60ee693bb481fec04d358654632c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101273"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530493"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Válasszon árképzési szintet az Azure Cognitive Search
 
-Azure Cognitive Search szolgáltatás létrehozásakor a rendszer egy [erőforrást hoz létre](search-create-service-portal.md) a szolgáltatás élettartamára rögzített díjszabási szinten. A rétegek közé tartoznak az ingyenes, az alapszintű, a standard és a Storage optimalizált funkciók. A standard és a Storage optimalizált szolgáltatás számos konfigurációval és kapacitással érhető el.
+[Keresési szolgáltatás létrehozásakor](search-create-service-portal.md)ki kell választania a szolgáltatás élettartamára rögzített díjszabási szintet. A kiválasztott rétegek a következőket határozzák meg:
 
-A legtöbb ügyfél az ingyenes szintjével kezdődik, így kiértékelheti a szolgáltatást. Az értékelés után a rendszer közösen létrehoz egy második szolgáltatást a magasabb szintű fejlesztési és éles környezetekben való üzembe helyezéshez.
++ Indexek és egyéb objektumok mennyisége (maximális korlát)
++ Partíciók mérete és sebessége (fizikai tárterület)
++ Számlázható arány, rögzített ár, amely a használatban lévő partíciók és replikák számával is kábeleket.
+
+Emellett a prémium szintű [funkciók](#premium-features) is megtalálhatók a szint követelményeivel.
+
+## <a name="tier-descriptions"></a>Szintek leírása
+
+A rétegek közé tartoznak az **ingyenes**, az **alapszintű**, a **standard** és a **Storage optimalizált** funkciók. A standard és a Storage optimalizált szolgáltatás számos konfigurációval és kapacitással érhető el.
+
+A következő képernyőkép a Azure Portal megjeleníti az elérhető csomagokat, mínusz a díjszabás (amely a Portálon és a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/)található. 
+
+![Az Azure Cognitive Search díjszabási szintjei](media/search-sku-tier/tiers.png "Az Azure Cognitive Search díjszabási szintjei")
+
+Az **ingyenes** szolgáltatás korlátozott keresési szolgáltatást hoz létre kisebb projektekhez, például oktatóanyagokat és mintakód-mintákat futtat. Belsőleg a replikák és partíciók megosztása több előfizető között történik. Az ingyenes szolgáltatás nem méretezhető, és nem futtathat jelentős számítási feladatokat.
+
+Az **alapszintű és a** **standard** a leggyakrabban használt számlázó rétegek, amelyek alapértelmezett értéke a **standard** . A vezérlőhöz tartozó dedikált erőforrásokkal nagyobb projekteket helyezhet üzembe, optimalizálhatja a teljesítményt, és növelheti a kapacitást.
+
+Egyes rétegek bizonyos típusú munkákra vannak optimalizálva. Például a **Standard 3 nagy sűrűségű (S3 HD)** az S3 *üzemeltetési módja* , ahol a mögöttes hardver nagy számú kisebb indexre van optimalizálva, és bérlős forgatókönyvekhez készült. Az S3 HD azonos egységenkénti díjszabással rendelkezik, de a hardver nagy számú kisebb index esetén a gyors fájlokra van optimalizálva.
+
+A **tárolásra optimalizált** csomagok nagyobb tárolókapacitást biztosítanak, mint a standard szinteken a TB-onként alacsonyabb áron. Az elsődleges kompromisszum nagyobb lekérdezési késés, amelyet az adott alkalmazásra vonatkozó követelmények érvényesítéséhez kell érvényesíteni. Ha többet szeretne megtudni a rétegek teljesítményével kapcsolatos megfontolásokról, tekintse meg a [teljesítmény-és optimalizálási szempontokat](search-performance-optimization.md).
+
+További információt a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/), a [szolgáltatási korlátok az Azure Cognitive Search](search-limits-quotas-capacity.md) cikkben, valamint a portál lapon talál, amikor egy szolgáltatást kiépít.
+
+<a name="premium-features"></a>
 
 ## <a name="feature-availability-by-tier"></a>A szolgáltatás rendelkezésre állása rétegek szerint
 
 Az alábbi táblázat a réteggel kapcsolatos szolgáltatások megkötéseit ismerteti.
 
-| Szolgáltatás | Korlátozások |
+| Funkció | Korlátozások |
 |---------|-------------|
 | [indexelők](search-indexer-overview.md) | Az indexelő nem érhető el az S3 HD-ben.  |
 | [MI-bővítés](search-security-manage-encryption-keys.md) | Az ingyenes szinten fut, de nem ajánlott. |
@@ -35,34 +59,13 @@ Az alábbi táblázat a réteggel kapcsolatos szolgáltatások megkötéseit ism
 
 A legtöbb funkció minden szinten elérhető, beleértve az ingyenes, de az erőforrás-igényes funkciók nem működnek megfelelően, kivéve, ha elegendő kapacitást biztosít. Például az [AI-dúsítás](cognitive-search-concept-intro.md) olyan hosszan futó képességekkel rendelkezik, amelyek egy ingyenes szolgáltatás esetében időtúllépést mutatnak, kivéve, ha az adatkészlet kicsi.
 
-## <a name="tiers"></a>Szolgáltatási szintek
-
-A rétegek a következők szerint különböztethetők meg:
-
-+ Indexek és indexelő mennyisége (maximális korlát)
-+ Partíciók mérete és sebessége (fizikai tárterület)
-
-A kiválasztott rétegek határozzák meg a számlázható sebességet. A következő képernyőkép a Azure Portal megjeleníti az elérhető csomagokat, mínusz a díjszabás (amely a Portálon és a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/)található. Az **ingyenes**, az **alapszintű**és a **standard** a leggyakoribb szintek.
-
-Az **ingyenes** szolgáltatás korlátozott keresési szolgáltatást hoz létre kisebb projektekhez, beleértve a gyors útmutatót és az oktatóanyagokat. Belsőleg a replikák és partíciók megosztása több előfizető között történik. Az ingyenes szolgáltatás nem méretezhető, és nem futtathat jelentős számítási feladatokat.
-
-Az **alapszintű és a** **standard** a leggyakrabban használt számlázó rétegek, amelyek alapértelmezett értéke a **standard** . A vezérlőhöz tartozó dedikált erőforrásokkal nagyobb projekteket telepíthet, optimalizálhatja a teljesítményt, és beállíthatja a kapacitást.
-
-![Az Azure Cognitive Search díjszabási szintjei](media/search-sku-tier/tiers.png "Az Azure Cognitive Search díjszabási szintjei")
-
-Egyes rétegek bizonyos típusú munkákra vannak optimalizálva. Például a **Standard 3 nagy sűrűségű (S3 HD)** az S3 *üzemeltetési módja* , ahol a mögöttes hardver nagy számú kisebb indexre van optimalizálva, és bérlős forgatókönyvekhez készült. Az S3 HD azonos egységenkénti díjszabással rendelkezik, de a hardver nagy számú kisebb index esetén a gyors fájlokra van optimalizálva.
-
-A **tárolásra optimalizált** csomagok nagyobb tárolókapacitást biztosítanak, mint a standard szinteken a TB-onként alacsonyabb áron. Az elsődleges kompromisszum nagyobb lekérdezési késés, amelyet az adott alkalmazásra vonatkozó követelmények érvényesítéséhez kell érvényesíteni.  Ha többet szeretne megtudni a rétegek teljesítményével kapcsolatos megfontolásokról, tekintse meg a [teljesítmény-és optimalizálási szempontokat](search-performance-optimization.md).
-
-További információt a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/), a [szolgáltatási korlátok az Azure Cognitive Search](search-limits-quotas-capacity.md) cikkben, valamint a portál lapon talál, amikor egy szolgáltatást kiépít.
-
 ## <a name="billable-events"></a>Számlázható események
 
 Az Azure Cognitive Search-ra épülő megoldások a következő módokon vehetik igénybe a költségeket:
 
-+ Magának a szolgáltatásnak a díja, nonstop futtatása, minimális konfiguráció esetén (egy partíció és egy replika)
++ Magának [a szolgáltatásnak a díja](#service-costs) , nonstop futtatása, minimális konfiguráció (egy partíció és replika) alapján, az alaparányban
 
-+ Kapacitás (replikák vagy partíciók) hozzáadása
++ Kapacitás (replikák vagy partíciók) hozzáadása, ahol a költségek a számlázható arány növekményei szerint növekednek
 
 + Sávszélességgel kapcsolatos díjak (kimenő adatforgalom)
 
@@ -87,7 +90,7 @@ Ha megbecsüli egy keresési megoldás költségét, ne feledje, hogy a díjszab
 Az [Indexelő](search-indexer-overview.md) használata a szolgáltatások helyétől függően a számlázásra is hatással lehet. Ha az Azure Cognitive Search szolgáltatást ugyanabban a régióban hozza létre, mint az adatait, teljes mértékben kiküszöbölheti az adatforgalom díját. Íme néhány információ a sávszélesség- [díjszabási lapról](https://azure.microsoft.com/pricing/details/bandwidth/):
 
 + A Microsoft nem számít fel semmilyen beérkező adatforgalmat az Azure egyik szolgáltatására sem, sem az Azure-Cognitive Search kimenő adatait.
-+ A többszolgáltatásos megoldásokban nem számítunk fel díjat a vezeték nélküli adatforgalomért, ha az összes szolgáltatás ugyanabban a régióban található.
++ A többszolgáltatásos megoldásokban nem számítunk fel díjat a vezeték nélküli adatátvitel során, ha az összes szolgáltatás ugyanabban a régióban található.
 
 A kimenő adatokra akkor számítunk fel díjat, ha a szolgáltatások különböző régiókban találhatók. Ezek a díjak valójában nem részei az Azure Cognitive Search-számlájának. Itt említik, mert ha adatok vagy mesterséges intelligenciával rendelkező indexelő használatával kéri le az adatok különböző régiókban való lekérését, akkor a teljes számlán látható költségeket fogja látni.
 
@@ -138,7 +141,7 @@ A szolgáltatás szempontjából a számla csökkentése egyetlen módja annak, 
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>A kapacitásra vonatkozó követelmények kiértékelése
 
-Az Azure Cognitive Search a kapacitást *replikák* és *partíciók*strukturálják.
+Az Azure Cognitive Search a kapacitást *replikák* és *partíciók* strukturálják.
 
 + A replikák a keresési szolgáltatás példányai. Mindegyik replika egyetlen elosztott terhelésű másolatot üzemeltet az indexből. Egy hat replikával rendelkező szolgáltatás például hat másolatot tartalmaz a szolgáltatásba betöltött összes indexről.
 
@@ -149,7 +152,7 @@ Az Azure Cognitive Search a kapacitást *replikák* és *partíciók*strukturál
 
 ### <a name="evaluating-capacity"></a>Kapacitás kiértékelése
 
-A szolgáltatás üzemeltetésének kapacitása és költségei. A rétegek két szintre korlátozzák a korlátozásokat: a tárolást és az erőforrásokat. Érdemes meggondolni, mivel a határértékek közül az első a hatályos korlát.
+A szolgáltatás üzemeltetésének kapacitása és költségei. A szintek két szintre korlátozzák a korlátozásokat: tárolás és tartalom (például indexek száma). Érdemes meggondolni, mivel a határértékek közül az első a hatályos korlát.
 
 Az üzleti követelmények általában a szükséges indexek számát írják elő. Előfordulhat például, hogy globális indexre van szüksége a dokumentumok nagyméretű tárházához. Vagy előfordulhat, hogy több indexre van szüksége a régió, az alkalmazás vagy az üzleti Niche alapján.
 

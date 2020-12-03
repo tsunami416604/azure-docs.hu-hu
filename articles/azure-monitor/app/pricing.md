@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: b695205c08f9039fbf91eaeddb7622b784d81d12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ac1e82c267dee521143c4ed5f6c2be4d32e2ea
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400587"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531326"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights szolgáltatásban
 
@@ -74,7 +74,7 @@ Application Insights díjak hozzáadódnak az Azure-számlához. Az Azure-száml
 ### <a name="using-data-volume-metrics"></a>Adatmennyiség metrikáinak használata
 <a id="understanding-ingested-data-volume"></a>
 
-Ha többet szeretne megtudni az adatkötetekről, válassza ki a Application Insights erőforrás **metrikáit** , és adjon hozzá egy új diagramot. A diagram metrikájának **log-alapú metrikák**területén válassza az **adatpont kötet**lehetőséget. Kattintson a **felosztás alkalmazása**elemre, és válassza a csoportosítás ** `Telemetryitem` típus**szerint lehetőséget.
+Ha többet szeretne megtudni az adatkötetekről, válassza ki a Application Insights erőforrás **metrikáit** , és adjon hozzá egy új diagramot. A diagram metrikájának **log-alapú metrikák** területén válassza az **adatpont kötet** lehetőséget. Kattintson a **felosztás alkalmazása** elemre, és válassza a csoportosítás **`Telemetryitem` típus** szerint lehetőséget.
 
 ![Mérőszámok használata az adatmennyiség megkereséséhez](./media/pricing/10-billing.png)
 
@@ -148,7 +148,7 @@ union (AppAvailabilityResults),
       (AppRequests),
       (AppSystemEvents),
       (AppTraces)
-| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now())
 | summarize sum(_BilledSize) by _ResourceId, bin(TimeGenerated, 1d)
 | render areachart
 ```
@@ -167,7 +167,7 @@ union (AppAvailabilityResults),
       (AppRequests),
       (AppSystemEvents),
       (AppTraces)
-| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now())
 | where _ResourceId contains "<myAppInsightsResourceName>"
 | summarize sum(_BilledSize) by Type, bin(TimeGenerated, 1d)
 | render areachart
@@ -188,7 +188,7 @@ A küldött adatmennyiség a következő módszerekkel kezelhető:
 
 * **Ajax-hívások korlátozása**: [korlátozhatja az összes oldal nézetben jelentett Ajax-hívások számát](./javascript.md#configuration) , vagy kikapcsolhatja az Ajax-jelentéskészítést.
 
-* **Szükségtelen modulok letiltása**: [ApplicationInsights.configszerkesztésével ](./configuration-with-applicationinsights-config.md) kikapcsolhatja a nem szükséges gyűjteményi modulokat. Dönthet például úgy, hogy a teljesítményszámlálók vagy a függőségi adat nem elengedhetetlen.
+* **Szükségtelen modulok letiltása**: [ApplicationInsights.configszerkesztésével](./configuration-with-applicationinsights-config.md) kikapcsolhatja a nem szükséges gyűjteményi modulokat. Dönthet például úgy, hogy a teljesítményszámlálók vagy a függőségi adat nem elengedhetetlen.
 
 * **Előre összevont mérőszámok**: Ha a TrackMetric-hívásokat az alkalmazásban helyezi el, csökkentheti a forgalmat a mérések egy kötegének átlagos és szórásos kiszámítását elfogadó túlterhelés használatával. Vagy használhatja az [Összesítés előtti csomagot](https://www.myget.org/gallery/applicationinsights-sdk-labs)is.
  
@@ -216,7 +216,7 @@ Tekintse át Application Insights használati és becsült költségét, és Ism
 
 ### <a name="set-the-daily-cap"></a>A napi korlát beállítása
 
-A napi korlát módosításához a Application Insights erőforrás **Konfigurálás** szakaszában a **használat és a becsült költségek** lapon válassza a  **napi korlát**lehetőséget.
+A napi korlát módosításához a Application Insights erőforrás **Konfigurálás** szakaszában a **használat és a becsült költségek** lapon válassza a  **napi korlát** lehetőséget.
 
 ![A napi telemetria mennyiségi korlátjának módosítása](./media/pricing/pricing-003.png)
 
@@ -280,14 +280,14 @@ Az adatok Application Insights való küldése adatsávszélességi díjat eredm
 
 ## <a name="disable-daily-cap-e-mails"></a>Napi Cap-beli e-mailek letiltása
 
-A napi mennyiségi korláttal rendelkező e-mailek letiltásához a Application Insights erőforrásának **Konfigurálás** szakaszában, a **használat és a becsült költségek** panelen válassza a  **napi korlát**lehetőséget. A rendszer elküldi az e-mailek küldését, amikor eléri a korlátot, valamint ha elérte az állítható figyelmeztetési szintet. Ha le szeretné tiltani az összes napi korlátot a kötethez kapcsolódó e-maileket, törölje mindkét négyzet jelölését.
+A napi mennyiségi korláttal rendelkező e-mailek letiltásához a Application Insights erőforrásának **Konfigurálás** szakaszában, a **használat és a becsült költségek** panelen válassza a  **napi korlát** lehetőséget. A rendszer elküldi az e-mailek küldését, amikor eléri a korlátot, valamint ha elérte az állítható figyelmeztetési szintet. Ha le szeretné tiltani az összes napi korlátot a kötethez kapcsolódó e-maileket, törölje mindkét négyzet jelölését.
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>Örökölt nagyvállalati (node) árképzési csomag
 
 Az Azure Application Insights korai alkalmazói számára még két lehetséges árképzési szint létezik: alapszintű és vállalati. Az alapszintű díjszabás megegyezik a fentiekben leírtak szerint, és az alapértelmezett szint. Minden nagyvállalati szintű szolgáltatást magában foglal, díjmentesen. Az alapszintű csomag elsősorban a betöltött adatok mennyiségét számlázza.
 
 > [!NOTE]
-> Ezek az örökölt árképzési szintek át lettek nevezve. A nagyvállalati díjszabási szint mostantól **csomópontként** van meghívva, és az alapszintű díjszabás mostantól **GB-ra**van meghívva. A rendszer ezeket az új neveket használja a Azure Portal.  
+> Ezek az örökölt árképzési szintek át lettek nevezve. A nagyvállalati díjszabási szint mostantól **csomópontként** van meghívva, és az alapszintű díjszabás mostantól **GB-ra** van meghívva. A rendszer ezeket az új neveket használja a Azure Portal.  
 
 A per node (korábban nagyvállalati) szinten egy csomópontos díjat számítunk fel, és minden egyes csomópont napi adatmennyiséget kap. A per Node díjszabási szinten a befoglalt mennyiség fölött betöltött adatért kell fizetnie. Ha az Operations Management Suite-t használja, válassza ki a csomópontok közötti szintet.
 
@@ -320,7 +320,7 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Példák a különböző csomópontok számának meghatározására
 
-| Forgatókönyv                               | Csomópontok napi száma összesen |
+| Használati példa                               | Csomópontok napi száma összesen |
 |:---------------------------------------|:----------------:|
 | 1 alkalmazás 3 Azure App Service példány és 1 virtuális kiszolgáló használatával | 4 |
 | 3 alkalmazás 2 virtuális gépen; az alkalmazások Application Insights erőforrásai ugyanahhoz az előfizetéshez tartoznak, és a csomóponti szinten | 2 | 
@@ -338,7 +338,7 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
 
 Írhat egy parancsfájlt az árképzési csomag beállításához az Azure Erőforrás-kezelés használatával. [Ismerje meg, hogyan](powershell.md#price).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [mintavételi](./sampling.md)
 

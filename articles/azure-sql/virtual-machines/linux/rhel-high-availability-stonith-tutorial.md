@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: ef3f9f8d75049051ad568abf1163014a78b0cda3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 9a6faec2542337eedbe4aafb69f1061582f92cc7
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324737"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531564"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépek RHEL SQL Server 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -1132,6 +1132,34 @@ Annak biztosítása érdekében, hogy a konfiguráció eddig sikeres volt, teszt
     sudo pcs resource move ag_cluster-clone <VM2> --master
     ```
 
+   További lehetőséget is megadhat, hogy az erőforrás egy kívánt csomópontra való áthelyezéséhez létrehozott ideiglenes korlátozás automatikusan le legyen tiltva, és nem kell végrehajtania az alábbi 2. és 3. lépést.
+
+   **7. RHEL**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master lifetime=30S
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master lifetime=30S
+    ```
+
+   Egy másik alternatíva a 2. és 3. lépés automatizálására, amelyből az erőforrás-áthelyezési parancs ideiglenes megkötése önmagában egyetlen sorban több parancs kombinálásával van. 
+
+   **7. RHEL**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master && sleep 30 && pcs resource clear ag_cluster-master
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master && sleep 30 && pcs resource clear ag_cluster-clone
+    ```
+    
 2. Ha újra megtekinti a korlátozásokat, a manuális feladatátvétel miatt egy másik korlátozás lett hozzáadva:
     
     **7. RHEL**

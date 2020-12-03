@@ -1,19 +1,19 @@
 ---
-title: Szimbólum-réteg hozzáadása az Android Maps-hez | Microsoft Azure térképek
-description: Megtudhatja, hogyan adhat hozzá egy jelölőt egy térképhez. Egy olyan példát láthat, amely a Azure Maps Android SDK-t használja egy adatforrásból származó, pont-alapú adatokból álló szimbólum réteg hozzáadásához.
+title: Szimbólum-réteg hozzáadása térképhez Azure Maps Android SDK használatával
+description: Megtudhatja, hogyan adhat hozzá egy jelölőt egy térképhez. A Microsoft Azure Maps Android SDK-t használó példa olyan szimbólum-réteget ad hozzá, amely egy adatforrásból származó pont-alapú adatokból áll.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/26/2019
+ms.date: 11/24/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: acd5f06a5383308ce736f2860810ebee7e5bce28
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 300a7968b2072459d6d7709e4d89388e1bcf59f3
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897109"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531207"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Szimbólum-réteg hozzáadása térképhez Azure Maps Android SDK használatával
 
@@ -21,7 +21,9 @@ Ebből a cikkből megtudhatja, hogyan jelenítheti meg a pontok adatait egy adat
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő lépések teljes körű követéséhez telepítenie kell [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) -t egy Térkép betöltéséhez.
+1. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
+3. Töltse le és telepítse a [Azure Maps Android SDK](./how-to-use-android-map-control-library.md)-t.
 
 ## <a name="add-a-symbol-layer"></a>Szimbólumréteg hozzáadása
 
@@ -62,7 +64,7 @@ Ha a szimbólum réteg használatával szeretne jelölőt hozzáadni a térképh
         //Create a point feature and add it to the data source.
         dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
     
-        //Add a custom image icon to the map resources.
+        //Add a red custom image icon to the map resources.
         map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
     
         //Create a symbol layer and add it to the map.
@@ -71,8 +73,6 @@ Ha a szimbólum réteg használatával szeretne jelölőt hozzáadni a térképh
         });
     
     ```
-    
-    A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy adatforrás-objektumot a **DataSource** osztály használatával, és hozzáadja azt a térképhez. Ezután hozzáadja a pont geometriáját tartalmazó **funkciót** . Ezután egy piros jelölő képe ikonként van beállítva a szimbólumhoz. A **szimbólum-réteg** szöveggel vagy ikonokkal jeleníti meg az adatforrásban lévő pont-alapú adatfeliratokat a térképen. Ekkor létrejön egy szimbólum-réteg, és a rendszer átadja az adatforrást a rendereléshez, majd hozzáadja a Térkép rétegeihez.
     
     Miután hozzáadta a fenti kódrészletet, a `MainActivity.java` következőhöz hasonlóan kell kinéznie:
     
@@ -165,19 +165,17 @@ Ha a szimbólum réteg használatával szeretne jelölőt hozzáadni a térképh
         }
     }
     ```
-    
-Ezen a ponton, ha futtatja az alkalmazást, látnia kell egy jelölőt a térképen, ahogy az itt látható:
 
-<center>
+Az alkalmazás futtatásakor egy jelölőt kell látnia a térképen, ahogy az itt látható:
 
-![Androidos Térkép PIN-kódja](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
+![Androidos Térkép PIN-kódja](./media/how-to-add-symbol-to-android-map/android-map-pin.png)
 
 > [!TIP]
 > Alapértelmezés szerint a szimbólum-rétegek az átfedésben lévő szimbólumok elrejtésével optimalizálja a szimbólumok megjelenítését. A nagyításhoz a rejtett szimbólumok láthatóvá válnak. A funkció letiltásához és az összes szimbólum megjelenítéséhez állítsa be a beállítást a következőre: `iconAllowOverlap` `true` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha további dolgokat szeretne hozzáadni a térképhez, tekintse meg a következőt:
+További információk a térképen való hozzáadásával kapcsolatban:
 
 > [!div class="nextstepaction"]
 > [Alakzatok hozzáadása Android-térképhez](./how-to-add-shapes-to-android-map.md)

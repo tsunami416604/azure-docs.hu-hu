@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
-ms.openlocfilehash: f0295c27f1d193b0dcd7829a11b4aabe0edb659b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4bab8def514df21d948d67f3cfba846c43917be2
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286339"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530935"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Titkosított Blobok indexelése blob-indexelő és szakértelmével használatával az Azure-ban Cognitive Search
 
@@ -36,7 +36,7 @@ Ez a példa feltételezi, hogy már feltöltötte a fájljait az Azure Blob Stor
 
 + [Azure Storage](https://azure.microsoft.com/services/storage/)
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) ugyanabban az előfizetésben, mint az Azure Cognitive Search. A Key vaultnak engedélyezve kell lennie a helyreállítható **törlési** és **kiürítési védelemmel** .
-+ [Azure-Cognitive Search](search-create-service-portal.md) egy [számlázható](search-sku-tier.md#tiers) szinten (bármely régióban)
++ [Azure-Cognitive Search](search-create-service-portal.md) egy [számlázható](search-sku-tier.md#tier-descriptions) szinten (bármely régióban)
 + [Azure-függvény](https://azure.microsoft.com/services/functions/)
 + [Postman asztali alkalmazás](https://www.getpostman.com/)
 
@@ -128,29 +128,28 @@ Az érték beszerzéséhez `admin-key` használja a korábban feljegyzett Azure 
 
 ![Poster-alkalmazás változók lapja](media/indexing-encrypted-blob-files/postman-variables-window.jpg "A Poster változói ablaka")
 
-
 | Változó    | Honnan szerezhető be? |
 |-------------|-----------------|
 | `admin-key` | Az Azure Cognitive Search szolgáltatás **Keys (kulcsok** ) lapján.  |
-| `search-service-name` | Az Azure Cognitive Search szolgáltatás neve. Az URL-cím: `https://{{search-service-name}}.search.windows.net` . | 
-| `storage-connection-string` | A Storage-fiók **hozzáférési kulcsok** lapján válassza a **key1**  >  **kapcsolati karakterlánc** lehetőséget. | 
-| `storage-container-name` | Annak a blob-tárolónak a neve, amelybe az indexelni kívánt titkosított fájlok vannak. | 
-| `function-uri` |  Az Azure-függvény főoldalának **alapok** területén. | 
-| `function-code` | Az Azure-függvényben navigáljon az **alkalmazás kulcsaihoz** , és kattintson az **alapértelmezett** kulcs megjelenítéséhez és az érték másolásához. | 
-| `api-version` | **2020-06-30** -ig marad. |
-| `datasource-name` | Maradjon **titkosítva – Blobok – DS**. | 
-| `index-name` | Maradjon **titkosítatlan Blobok-idx-** ként. | 
-| `skillset-name` | Maradjon **titkosítva – Blobok – SS**. | 
-| `indexer-name` | Maradjon **titkosítva – Blobok – IXR**. | 
+| `search-service-name` | Az Azure Cognitive Search szolgáltatás neve. Az URL-cím: `https://{{search-service-name}}.search.windows.net` . |
+| `storage-connection-string` | A Storage-fiók **hozzáférési kulcsok** lapján válassza a **key1**  >  **kapcsolati karakterlánc** lehetőséget. |
+| `storage-container-name` | Annak a blob-tárolónak a neve, amelybe az indexelni kívánt titkosított fájlok vannak. |
+| `function-uri` |  Az Azure-függvény főoldalának **alapok** területén. |
+| `function-code` | Az Azure-függvényben navigáljon az **alkalmazás kulcsaihoz**, és kattintson az **alapértelmezett** kulcs megjelenítéséhez és az érték másolásához. |
+| `api-version` | **2020-06-30**-ig marad. |
+| `datasource-name` | Maradjon **titkosítva – Blobok – DS**. |
+| `index-name` | Maradjon **titkosítatlan Blobok-idx-** ként. |
+| `skillset-name` | Maradjon **titkosítva – Blobok – SS**. |
+| `indexer-name` | Maradjon **titkosítva – Blobok – IXR**. |
 
 ### <a name="review-the-request-collection-in-postman"></a>Tekintse át a Poster kérelem-gyűjteményét
 
-Az útmutató futtatásakor négy HTTP-kérelmet kell kiadnia: 
+Az útmutató futtatásakor négy HTTP-kérelmet kell kiadnia:
 
-- **Az index létrehozásának kérése** : ez az index az Azure Cognitive Search által használt és visszaadott adatok tárolására szolgál.
-- **Az adatforrás létrehozásához szükséges post** : ez az adatforrás összekapcsolja az Azure Cognitive Search szolgáltatást a Storage-fiókkal, ezért a titkosított blob-fájlokat. 
-- **Kérelem létrehozása a készségkészlet létrehozásához** : a készségkészlet megadja az Azure-függvény egyéni képességének definícióját, amely visszafejti a blob-fájl adatait, valamint egy [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) , amely a visszafejtés után Kinyeri a szöveget az egyes dokumentumokból.
-- **Put-kérelem az indexelő létrehozásához** : az indexelő beolvassa az adatokat, alkalmazza a készségkészlet, és az eredményeket tárolja. Ezt a kérést utoljára kell futtatnia.
+- **Az index létrehozásának kérése**: ez az index az Azure Cognitive Search által használt és visszaadott adatok tárolására szolgál.
+- **Az adatforrás létrehozásához szükséges post**: ez az adatforrás összekapcsolja az Azure Cognitive Search szolgáltatást a Storage-fiókkal, ezért a titkosított blob-fájlokat. 
+- **Kérelem létrehozása a készségkészlet létrehozásához**: a készségkészlet megadja az Azure-függvény egyéni képességének definícióját, amely visszafejti a blob-fájl adatait, valamint egy [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) , amely a visszafejtés után Kinyeri a szöveget az egyes dokumentumokból.
+- **Put-kérelem az indexelő létrehozásához**: az indexelő beolvassa az adatokat, alkalmazza a készségkészlet, és az eredményeket tárolja. Ezt a kérést utoljára kell futtatnia.
 
 A [forráskód](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json) tartalmaz egy Poster-gyűjteményt, amely a négy kérelemmel rendelkezik, valamint néhány hasznos utólagos kérelmet is. A kérések kiadásához a Poster lapon válassza a kérelmek fület, és válassza a **Küldés** lehetőséget.
 
@@ -164,7 +163,7 @@ Ha az ingyenes szintet használja, a következő üzenet várható: `"Could not 
 
 Az indexelő végrehajtásának befejeződése után néhány lekérdezés futtatásával ellenőrizheti, hogy az adatgyűjtés sikeresen visszafejtve és indexelve lett-e. Navigáljon az Azure Cognitive Search szolgáltatásra a portálon, és a [keresési ablak](search-explorer.md) használatával futtasson lekérdezéseket az indexelt adaton.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy sikeresen indexelte a titkosított fájlokat, [megismételheti ezt a folyamatot további kognitív képességek hozzáadásával](cognitive-search-defining-skillset.md). Ez lehetővé teszi, hogy bővítse az adatait, és további elemzéseket nyerjen.
 

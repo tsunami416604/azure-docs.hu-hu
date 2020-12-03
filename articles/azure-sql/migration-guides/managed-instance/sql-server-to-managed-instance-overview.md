@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2241049e5c3cb5039a73c0f7637f7e3553d2e227
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 878d59445dde839ca9e702ac0c49af676e48a42f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326873"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531190"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Áttelepítési Áttekintés: SQL Server a felügyelt SQL-példányhoz
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ Néhány általános útmutató, amely segítséget nyújt az SQL felügyelt pé
 Az üzembe helyezés során kiválaszthatja a számítási és tárolási erőforrásokat, majd a [Azure Portal](../../database/scale-resources.md) használata után megváltoztathatja azokat anélkül, hogy állásidőt kellene használni az alkalmazáshoz. 
 
 > [!IMPORTANT]
-> A [felügyelt példányok virtuális hálózati követelményeinek](../../managed-instance/connectivity-architecture-overview.md#network-requirements) bármilyen eltérése megakadályozhatja, hogy új példányokat hozzon létre vagy meglévőket használjon. További információ a meglévő hálózatok [létrehozásáról](../../managed-instance/virtual-network-subnet-create-arm-template.md?branch=release-ignite-arc-data)   és [konfigurálásáról](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)   . 
+> A [felügyelt példányok virtuális hálózati követelményeinek](../../managed-instance/connectivity-architecture-overview.md#network-requirements) bármilyen eltérése megakadályozhatja, hogy új példányokat hozzon létre vagy meglévőket használjon. További információ a meglévő hálózatok [létrehozásáról](../../managed-instance/virtual-network-subnet-create-arm-template.md)   és [konfigurálásáról](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)   . 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM alternatív megoldás
 
