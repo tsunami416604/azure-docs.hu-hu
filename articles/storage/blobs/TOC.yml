@@ -205,8 +205,6 @@
                   href: scalability-targets-premium-page-blobs.md
                 - name: Tárolásierőforrás-szolgáltató
                   href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Egyidejűség
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Blobadatok keresése és értelmezése
           items:
             - name: Blobindex-címkék használata a blobadatok kezeléséhez és kereséséhez
@@ -457,6 +455,8 @@
               href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Fiók feladatátvételének indítása
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Egyidejűség kezelése
+          href: concurrency-manage.md
         - name: A Storage Emulator használata
           items:
             - name: A nyílt forráskódú Azurite emulátor használata

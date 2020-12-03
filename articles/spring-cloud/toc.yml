@@ -25,10 +25,6 @@
           href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: Oktatóanyagok
   items:
-    - name: Alkalmazás manuális skálázása
-      href: spring-cloud-tutorial-scale-manual.md
-    - name: Alkalmazások automatikus skálázása
-      href: spring-cloud-tutorial-setup-autoscale.md
     - name: Riasztások és műveletcsoportok
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: A Circuit Breaker irányítópultja
@@ -83,6 +79,12 @@
           href: spring-cloud-howto-start-stop-delete.md
         - name: Állandó tárolók használata
           href: spring-cloud-howto-persistent-storage.md
+    - name: Méretezés
+      items:
+        - name: Alkalmazás manuális skálázása
+          href: spring-cloud-tutorial-scale-manual.md
+        - name: Alkalmazások automatikus skálázása
+          href: spring-cloud-tutorial-setup-autoscale.md
         - name: Nyilvános kimenő IP-címek azonosítása
           href: spring-cloud-howto-outbound-public-ip.md
     - name: Figyelés
@@ -132,7 +134,19 @@
         - name: Spring Boot
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
-          href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
+          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud'
+- name: DevOps-telepítés
+  items:
+    - name: CI/CD az Azure DevOps használatával
+      href: spring-cloud-howto-cicd.md
+    - name: CI/CD GitHub-műveletekkel
+      href: spring-cloud-howto-github-actions.md
+    - name: Hitelesítés a Key Vaulttal a GitHub Actionsben
+      href: spring-cloud-github-actions-key-vault.md
+- name: Hibaelhárítás
+  items:
+    - name: Hibaelhárítási útmutató
+      href: spring-cloud-troubleshoot.md
 - name: Referencia
   items:
     - name: Azure CLI beépülő modul

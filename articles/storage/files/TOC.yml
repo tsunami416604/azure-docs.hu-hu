@@ -39,8 +39,6 @@
           href: storage-snapshots-files.md
         - name: Fejlesztés
           items:
-            - name: Egyidejűség kezelése
-              href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
             - name: Megosztott kulcsos hitelesítés
               href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
             - name: Közös hozzáférésű jogosultságkódok (SAS)
