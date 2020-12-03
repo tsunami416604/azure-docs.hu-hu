@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ed56d200c2b5a472dbf93d45ad25156ea02a884
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181152"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532706"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés 8x8 konfigurálása
 
@@ -50,17 +50,17 @@ Ez a szakasz végigvezeti a 8x8 konfigurálásának lépésein az Azure AD-vel v
 
 ### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>A felhasználó kiépítési hozzáférési jogkivonatának konfigurálása a 8x8-Configuration Managerban:
 
-1. Jelentkezzen be [Configuration Managerba](https://vo-cm.8x8.com). Válassza az **Identitáskezelés** lehetőséget.
+1. Jelentkezzen be a [felügyeleti konzolra](https://admin.8x8.com). Válassza az **Identitáskezelés** lehetőséget.
 
-   ![Identitáskezelés](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
+   ![Rendszergazda](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
 
 2. Kattintson a **felhasználó kiépítési információinak megjelenítése** hivatkozásra a jogkivonat létrehozásához.
 
-   ![Felhasználó kiépítés megjelenítése](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
+   ![Megjelenítés](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
 
 3. Másolja a **8x8 URL-címét** és a **8X8 API-jogkivonat** értékeit. Ezek az értékek a **bérlői URL-cím** és a **titkos jogkivonat** mezőiben lesznek megadva a 8x8 alkalmazás kiépítés lapján a Azure Portalban.
 
-   ![URL-cím és jogkivonat másolása](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
+   ![Jogkivonat](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
 
 ## <a name="step-3-add-8x8-from-the-azure-ad-application-gallery"></a>3. lépés 8x8 hozzáadása az Azure AD Application Galleryből
 
@@ -116,7 +116,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő 8x8. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a 8x8 felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy a 8x8 API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-   |Attribútum|Típus|Megjegyzések|
+   |Attribútum|Típus|Jegyzetek|
    |---|---|---|
    |userName (Felhasználónév)|Sztring|A Felhasználónév és az összevonási azonosító beállítása|
    |externalId|Sztring||
@@ -155,7 +155,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 2. Tekintse meg a [folyamatjelző sáv](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) állapotát a kiépítési ciklus állapotának megtekintéséhez és a befejezéshez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

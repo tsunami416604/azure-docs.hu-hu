@@ -1,6 +1,6 @@
 ---
-title: Csempe réteg hozzáadása Android-térképekhez | Microsoft Azure térképek
-description: Megtudhatja, hogyan adhat hozzá egy csempe réteget egy térképhez. Egy olyan példát láthat, amely a Azure Maps Android SDK-t használja egy időjárási radar átfedésének egy térképhez való hozzáadásához.
+title: Csempe réteg hozzáadása térképhez a Azure Maps Android SDK használatával
+description: Megtudhatja, hogyan adhat hozzá egy csempe réteget egy térképhez. Egy olyan példát láthat, amely a Microsoft Azure Maps Android SDK-t használja az időjárási radar átfedések térképhez való hozzáadásához.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: faa5e3e3177e18787a73c6b4c43aa04b6bc760b7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 22618a28f1a87e68c19467aedf639e96ec2fb91e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897092"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532676"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Csempe réteg hozzáadása térképhez a Azure Maps Android SDK használatával
 
@@ -174,7 +174,7 @@ Ha most futtatja az alkalmazást, látnia kell egy vonalat a térképen az aláb
 
 ![Androidos Térkép sora](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Térkép stílusainak beállításával kapcsolatos további tudnivalókért tekintse meg a következő cikket.
 

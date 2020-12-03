@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7deee88210acf700916961be7c4ccaf9477accf8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 100871ab2188aa638c4c9f2b058021706c7741bb
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353442"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531904"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure biztonsági alapkonfiguráció az Azure Cloud Services
 
@@ -36,7 +36,7 @@ Microsoft Azure Cloud Services (klasszikus) nem helyezhető el Azure Resource Ma
 
 - [Hálózati biztonsági csoport áttekintése](../virtual-network/network-security-groups-overview.md)
 
-- [Társviszony létesítése virtuális hálózatok között](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [Társviszony létesítése virtuális hálózatok között](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -58,7 +58,7 @@ Engedélyezze a hálózati biztonsági csoport adatfolyam-naplóit, és küldje 
 
 - [Cloud Services konfigurációs fájl](schema-cscfg-file.md)
 
-- [Azure Policy által támogatott szolgáltatások listája](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
+- [Azure Policy által támogatott szolgáltatások listája](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -89,9 +89,9 @@ A bejövő adatforgalom megakadályozása a Cloud Services alapértelmezett URL-
 
 Megtagadási szabály konfigurálása a klasszikus előfizetés-rendszergazdai hozzárendelések esetében. Alapértelmezés szerint a belső végpontok meghatározása után a kommunikáció bármely szerepkörről a szerepkör belső végpontja számára korlátozás nélkül elvégezhető. A kommunikáció korlátozásához hozzá kell adnia egy NetworkTrafficRules elemet a ServiceDefinition elemhez a szolgáltatás definíciós fájljában.
 
-- [Hogyan lehet letiltani vagy letiltani a bejövő forgalmat a felhőalapú szolgáltatás alapértelmezett URL-címére](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [Hogyan lehet letiltani vagy letiltani a bejövő forgalmat a felhőalapú szolgáltatás alapértelmezett URL-címére](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS Protection](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS Protection](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
 - [Adott IP-cím blokkolása](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
@@ -107,7 +107,7 @@ A folyamat naplózásának konfigurálása hálózati biztonsági csoportban. Te
 
 - [A folyamat naplózásának konfigurálása hálózati biztonsági csoporton](../virtual-machines/extensions/network-watcher-linux.md)
 
-- [A flow-naplók konfigurálásával kapcsolatos további információkért látogasson el ide:](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
+- [A flow-naplók konfigurálásával kapcsolatos további információkért látogasson el ide:](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -231,13 +231,13 @@ Megtekintheti a tevékenység naplójában lévő egyes események változási e
 
 Az Azure Cloud Services a rendelkezésre állás, a teljesítmény, a hibák és a használat Application Insights figyelésére használható. Az egyéni diagramok hozzáadhatók a Application Insightshoz, így a leginkább fontos információk láthatók. A szerepkör-példány adatait az Azure Cloud Services projektben található Application Insights SDK-val lehet gyűjteni. 
 
-- [A diagnosztika bekapcsolása a Visual Studióban az üzembe helyezés előtt](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=#to-turn-on-diagnostics-in-visual-studio-before-deployment)
+- [A diagnosztika bekapcsolása a Visual Studióban az üzembe helyezés előtt](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
 - [Változási előzmények megtekintése](../azure-monitor/platform/activity-log.md#view-change-history)
 
 - [Azure Cloud Service Application Insights (klasszikus)](../azure-monitor/app/cloudservices.md)
 
-- [Diagnosztika beállítása az Azure Cloud Service (klasszikus) és a Virtual Machines szolgáltatáshoz](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
+- [Diagnosztika beállítása az Azure Cloud Service (klasszikus) és a Virtual Machines szolgáltatáshoz](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -289,7 +289,7 @@ Az Azure diagnosztikai bővítmény egy Azure Storage-fiókban gyűjti és táro
 
 **Útmutató**: az Azure-hoz készült Microsoft antimalware védi az azure-Cloud Servicesokat és a virtuális gépeket. Lehetősége van harmadik féltől származó biztonsági megoldások üzembe helyezésére is, például a webalkalmazási tűzoltó falakra, a hálózati tűzfalakra, az antimalware-ra, a behatolás észlelésére és megelőzésére szolgáló rendszerekre (AZONOSÍTÓk vagy IP-címek) és egyebekre.
 
-- [Mik azok a funkciók és képességek, amelyeket az Azure alapszintű IP-címei/azonosítója és a DDOS biztosít](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Mik azok a funkciók és képességek, amelyeket az Azure alapszintű IP-címei/azonosítója és a DDOS biztosít](./cloud-services-configuration-and-management-faq.md?preserve-view=true#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -840,7 +840,7 @@ Engedélyezze a antimalware bővítményt egy PowerShell-parancsfájllal az Azur
 
 Válassza ki az adaptív alkalmazás-vezérlés funkciót Azure Security Center, egy intelligens, automatizált, teljes körű megoldás. Segít megerősíteni a gépeket a kártevők ellen, és lehetővé teszi a kártékony alkalmazások futtatására tett kísérletek letiltását vagy riasztását, beleértve azokat is, amelyeket antimalware-megoldások okozhatnak.
 
-- [Hogyan adhatok hozzá antimalware-bővítményt az Azure-Cloud Services automatizált módon](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Hogyan adhatok hozzá antimalware-bővítményt az Azure-Cloud Services automatizált módon](./cloud-services-configuration-and-management-faq.md?preserve-view=true#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
 - [Kártevő szoftverek üzembe helyezésének forgatókönyvei](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 

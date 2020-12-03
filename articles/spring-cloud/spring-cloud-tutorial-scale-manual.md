@@ -1,24 +1,24 @@
 ---
-title: 'Oktatóanyag: alkalmazások méretezése az Azure Spring Cloud-ban | Microsoft Docs'
+title: Alkalmazások méretezése az Azure Spring Cloud-ban | Microsoft Docs
 description: Ismerje meg, hogyan méretezheti az alkalmazásokat az Azure Spring Cloudtel a Azure Portal
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 33d25edafa9249300406365699930ded1c8ec75b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5632f9a6126615255306cc89425bd08a9ffa9753
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906843"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531802"
 ---
-# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Oktatóanyag: alkalmazások méretezése az Azure Spring Cloud-ban
+# <a name="scale-an-application-in-azure-spring-cloud"></a>Alkalmazások méretezése az Azure Spring Cloud-ban
 
 **Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
-Ez az oktatóanyag bemutatja, hogyan méretezheti a Service-alkalmazásokat a Azure Portal Azure Spring Cloud irányítópultján.
+Ez a dokumentáció bemutatja, hogyan méretezheti a Service-alkalmazásokat a Azure Portal Azure Spring Cloud irányítópultján.
 
 A virtuális processzorok (vCPU) számának és a memória mennyiségének módosításával felfelé és lefelé méretezheti az alkalmazást. Az alkalmazás-példányok számának módosításával méretezheti az alkalmazást a és a szolgáltatásban.
 
@@ -28,7 +28,7 @@ A befejezést követően tudni fogja, hogyan végezheti el a gyors manuális mó
 
 Az alábbi eljárások követéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd. 
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 * Egy üzembe helyezett Azure Spring Cloud Service-példány.  Az első lépésekhez kövesse az [alkalmazások Azure CLI-n keresztüli üzembe helyezésével](spring-cloud-quickstart.md) foglalkozó rövid útmutatót.
 * Legalább egy alkalmazás már létre van hozva a szolgáltatási példányban.
 
@@ -42,7 +42,7 @@ Az alábbi eljárások követéséhez a következőkre lesz szüksége:
 
 1. Válassza az **alkalmazások** fület a lap bal oldalán található menü **Beállítások** területén.
 
-1. Válassza ki a méretezni kívánt alkalmazást. Ebben a példában válassza ki a **Account-Service**nevű alkalmazást. Ekkor megjelenik az alkalmazás **Áttekintés** lapja.
+1. Válassza ki a méretezni kívánt alkalmazást. Ebben a példában válassza ki a **Account-Service** nevű alkalmazást. Ekkor megjelenik az alkalmazás **Áttekintés** lapja.
 
 1. Lépjen a **skála** lapra a lap bal oldalán lévő menü **Beállítások** területén. A következő szakaszban látható attribútumok méretezéséhez meg kell jelennie a beállításoknak.
 
@@ -67,7 +67,7 @@ Ha az alapszintű csomaggal rendelkezik, és egy vagy több ilyen [korláttal](s
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan lehet manuálisan méretezni egy Azure Spring Cloud-alkalmazást. Ha meg szeretné tudni, hogyan figyelheti az alkalmazást riasztások beállításával, folytassa a következő oktatóanyaggal.
+Ez a példa azt ismerteti, hogyan lehet manuálisan méretezni egy Azure Spring Cloud-alkalmazást. Az alkalmazások riasztások beállításával történő figyeléséről további információt az [autoscale beállítása](spring-cloud-tutorial-setup-autoscale.md)című témakörben talál.
 
 > [!div class="nextstepaction"]
 > [Tudnivalók a riasztások beállításáról](spring-cloud-tutorial-alerts-action-groups.md)

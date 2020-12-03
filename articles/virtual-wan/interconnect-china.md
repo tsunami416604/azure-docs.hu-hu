@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: sukishen
-ms.openlocfilehash: a92dafe6237d0f061f837f07c5dcf2686b1a8a7e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 169477ffdf6fd593f1b6f01469c7303f8bd3a488
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510734"
+ms.locfileid: "96531837"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Interconnect Kínával az Azure Virtual WAN és a Secure hub használatával
 
@@ -20,7 +20,7 @@ A közös autóipari, gyártási, logisztikai vagy egyéb intézmények, példá
 
 A legtöbb esetben az ügyfelek nagy késéssel, alacsony sávszélességgel, instabil kapcsolattal és a Kínával (például Európa vagy a Egyesült Államok) való kapcsolódás magas költségeivel küzdenek.
 
-Ezen küzdelmek egyik oka a "kínai nagy tűzfal", amely megvédi az Internet kínai részét, és szűri a forgalmat Kínában. A kínai kontinensről a Kínából kívülre irányuló forgalom csaknem minden, a különleges adminisztrációs zónák, például Hongkong és Makaó esetében, a nagyszerű tűzfalon halad át. A Hongkongon és Makaón futó forgalom nem éri el a nagy tűzfalat a teljes körű működésben, hanem a nagy tűzfal egy részhalmaza kezeli.
+Ezen küzdelmek egyik oka a "kínai nagy tűzfal", amely megvédi az Internet kínai részét, és szűri a forgalmat Kínában. Szinte minden, a Kínai Népköztársaságból származó, Kínában kívüli forgalom, kivéve a különleges adminisztrációs zónákat, például Hongkongot és Makaót, átadja a nagyszerű tűzfalat. A Hongkongon és Makaón futó forgalom nem éri el a nagy tűzfalat a teljes körű működésben, hanem a nagy tűzfal egy részhalmaza kezeli.
 
 :::image type="content" source="./media/interconnect-china/provider.png" alt-text="A diagram megjeleníti a szolgáltatói összekötőt.":::
 
@@ -71,13 +71,13 @@ A következő lista a Hongkongban lehetséges internetes cseréket mutatja be:
 
 Ha ezt a kapcsolatot használja, a Microsoft-szolgáltatásokhoz tartozó következő BGP-ugrásnak a Microsoft autonóm rendszer számának kell lennie (AS #) 8075. Ha egyetlen helyet vagy SDWAN-megoldást használ, az a választás lenne.
 
-A szárazföldi Kína és Hongkong közötti kapcsolatokra vonatkozó jelenlegi változások miatt a legtöbb ilyen hálózati szolgáltató létrehoz egy MPLS-hidat a kínai anyaország és Hongkong között.
+A kínai és Hongkong KKT közötti kapcsolatokkal kapcsolatos jelenlegi változások miatt a legtöbb ilyen hálózati szolgáltató létrehoz egy MPLS hidat Kína és Hongkong KKT között.
 
 Láthatja, hogy a helyek közötti VPN-kapcsolatok Kínában engedélyezettek, és többnyire stabilak. Ugyanez vonatkozik a helyek közötti, a világ többi részén található ágak közötti kapcsolatokra. A szolgáltatók most létrehoznak egy VPN/SDWAN összesítést mindkét oldalon és a hídon a MPLS keresztül.
 
 :::image type="content" source="./media/interconnect-china/china-mpls-bridge.png" alt-text="A diagramon a China MPLS Bridge látható.":::
 
-Akárhogy is, javasoljuk, hogy a kínai anyaországban egy második és egy hagyományos internetes kitörés is rendelkezésre áll. Ezt a forgalmat a nagyvállalati forgalom és a felhőalapú szolgáltatások, például a Microsoft 365 és az Azure közötti forgalom, valamint a törvény által szabályozott internetes forgalom felosztására kell osztani.
+Mindkét esetben javasoljuk, hogy egy második és egy hagyományos internetes kitörést is telepítsen Kínában. Ezt a forgalmat a nagyvállalati forgalom és a felhőalapú szolgáltatások, például a Microsoft 365 és az Azure közötti forgalom, valamint a törvény által szabályozott internetes forgalom felosztására kell osztani.
 
 Kínában a megfelelő hálózati architektúra a következő példához hasonlóan néz ki:
 

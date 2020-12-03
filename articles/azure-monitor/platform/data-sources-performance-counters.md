@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 54e7a781ba9ed3cd4b53e1028c4a3bb79c256aed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 533d4a83ea73b98e26a57febc077a607bcb25465
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012612"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532302"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Windows-és Linux-teljesítményű adatforrások gyűjtése Log Analytics-ügynökkel
 A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítmény-és a hosszú távú elemzéshez és jelentéskészítéshez kapcsolódóan rendszeres időközönként gyűjthetik be a Log Analytics ügynököktől származó teljesítményszámlálókat a közel valós idejű (vizsgálja) elemzéshez.
@@ -50,15 +50,14 @@ Kövesse ezt az eljárást egy új Windows-teljesítményszámláló hozzáadás
 
 ### <a name="linux-performance-counters"></a>Linux-teljesítményszámlálók
 
-![Linux-teljesítményszámlálók konfigurálása](media/data-sources-performance-counters/configure-linux.png)
+![Linux-teljesítményszámlálók konfigurálása](media/data-sources-performance-counters/configure-linux-1.png)
 
 Kövesse ezt az eljárást egy új Linux-teljesítményszámláló hozzáadásához a gyűjtéshez.
 
-1. Alapértelmezés szerint a rendszer az összes konfigurációs módosítást automatikusan leküldi az összes ügynöknek.  Linux-ügynökök esetében a rendszer egy konfigurációs fájlt küld a Fluent-adatgyűjtőnek.  Ha ezt a fájlt manuálisan kívánja módosítani minden Linux-ügynökön, törölje a jelet az *alábbi konfiguráció alkalmazása a Linux rendszerű gépekre* lehetőségre, és kövesse az alábbi útmutatást.
-2. Írja be a számláló nevét a Format *objektum (példány) \ számláló* szövegmezőbe.  A gépelés megkezdése után a rendszer a gyakori számlálók megfelelő listáját mutatja be.  Kiválaszthat egy számlálót a listából, vagy megadhatja a kívánt értéket.  
-3. Kattintson **+** vagy nyomja le az **ENTER** billentyűt a számláló az objektumhoz tartozó egyéb számlálók listájához való hozzáadásához.
-4. Egy objektum összes számlálója ugyanazt a **mintavételi időközt** használja.  Az alapértelmezett érték 10 másodperc.  Ezt magasabb értékre kell módosítani, amely legfeljebb 1800 másodperc (30 perc) lehet, ha csökkenteni szeretné az összegyűjtött teljesítményadatok tárolási követelményeit.
-5. Ha elkészült a számlálók hozzáadásával, kattintson a képernyő felső részén található **Mentés** gombra a konfiguráció mentéséhez.
+1. Írja be a számláló nevét a Format *objektum (példány) \ számláló* szövegmezőbe.  A gépelés megkezdése után a rendszer a gyakori számlálók megfelelő listáját mutatja be.  Kiválaszthat egy számlálót a listából, vagy megadhatja a kívánt értéket.  
+1. Kattintson **+** vagy nyomja le az **ENTER** billentyűt a számláló az objektumhoz tartozó egyéb számlálók listájához való hozzáadásához.
+1. Egy objektum összes számlálója ugyanazt a **mintavételi időközt** használja.  Az alapértelmezett érték 10 másodperc.  Ezt magasabb értékre kell módosítani, amely legfeljebb 1800 másodperc (30 perc) lehet, ha csökkenteni szeretné az összegyűjtött teljesítményadatok tárolási követelményeit.
+1. Ha elkészült a számlálók hozzáadásával, kattintson a képernyő felső részén található **Mentés** gombra a konfiguráció mentéséhez.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Linux-teljesítményszámlálók konfigurálása a konfigurációs fájlban
 A Linux-teljesítményszámlálók a Azure Portal használatával történő konfigurálása helyett lehetősége van a konfigurációs fájlok szerkesztésére a Linux-ügynökön.  A gyűjteni kívánt teljesítmény-mérőszámokat a **/etc/opt/Microsoft/omsagent/ \<workspace id\> /conf/omsagent.conf** konfigurációja vezérli.

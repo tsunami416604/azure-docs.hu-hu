@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 691bb538ea0f46e26c318a68e9f66a9a986eb5d4
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 94ab7e235f0796277d65aebb33d9011fc76b74ce
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301835"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532788"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service Azure biztonsági alapterve
 
@@ -184,7 +184,7 @@ A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait,
 
 - [Virtuális hálózati szolgáltatás címkéi](../virtual-network/service-tags-overview.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -201,13 +201,13 @@ Beépített szabályzat-definíciókat használhat a App Servicehoz, például:
 
 További információkért tekintse át a hivatkozott hivatkozásokat.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 - [Végpontok közötti TLS konfigurálása Application Gateway használatával a portálon](../application-gateway/end-to-end-ssl-portal.md)
 
 - [A következő témakörben leírtak szerint biztosítsa a beApp Serviceának zárolását:](/azure/app-service/environment/firewall-integration)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -223,7 +223,7 @@ Alkalmazza a címkézési hatásokkal kapcsolatos beépített Azure Policy defin
 
 - [Hozzáférési korlátozások Azure App Service](/azure/app-service/app-service-ip-restrictions)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -295,7 +295,7 @@ Emellett a Azure Key Vault központosított titkos felügyeletet biztosít a hoz
 **Útmutató**: a Azure monitor a szervezet megfelelőségi előírásai szerint állítsa be a app Service erőforrásokhoz társított log Analytics munkaterületek naplózási megőrzési időtartamát.
 - [Napló-megőrzési paraméterek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -317,7 +317,7 @@ Az Azure Sentinel, a skálázható és a Felhőbeli natív biztonsági informác
 
 - [A fedélzeti Azure Sentinel ismertetése](../sentinel/quickstart-onboard.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -343,7 +343,7 @@ A valós idejű webalkalmazási tűzfal naplójának egy üzembe helyezett Azure
 
 **Útmutató**: a Azure Active Directory (Azure ad) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni és lekérdezni. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [Felügyelt identitások használata App Service és Azure Functions](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
 
@@ -365,7 +365,7 @@ Tiltsa le a névtelen hozzáférést, kivéve, ha támogatni kell azt.
 
 - [Hitelesítés és engedélyezés Azure App Service és Azure Functions](overview-authentication-authorization.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -412,7 +412,7 @@ Ha engedélyezi a hitelesítést és az engedélyezést ezen szolgáltatók egyi
 
 - [Tudnivalók a hitelesítésről és az engedélyezésről Azure App Service](overview-authentication-authorization.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -424,7 +424,7 @@ Többtényezős hitelesítés implementálása az Azure AD-ben. A rendszergazdá
 
 - [Azure biztonsági MFA](/previous-versions/azure/security/develop/secure-aad-app)
 
-- [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
+- [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
 
@@ -438,9 +438,9 @@ Többtényezős hitelesítés implementálása az Azure AD-ben. A rendszergazdá
 
 - [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
+- [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -468,7 +468,7 @@ A Security Center veszélyforrások elleni védelem átfogó védelmet biztosít
 
 - [Elnevezett helyszínek konfigurálása az Azure-ban](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -534,7 +534,7 @@ A Azure AD Identity Protection használatával konfigurálhatja a felhasználói
 
 - [Ügyfélszéf által támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -570,7 +570,7 @@ A több-bérlős App Service (egy, az elkülönített rétegben nem szereplő al
 
 - [Belső beszerzési útmutató létrehozása](environment/create-ilb-ase.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -632,7 +632,7 @@ Vegye figyelembe, hogy míg a helyileg csatlakoztatott lemezeket a webhelyek ide
 
 - [Az Azure Storage titkosításának megismerése nyugalmi állapotban](../storage/common/storage-service-encryption.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -656,11 +656,11 @@ Vegye figyelembe, hogy míg a helyileg csatlakoztatott lemezeket a webhelyek ide
 
 Tekintse át és kövesse Security Center a App Service-alkalmazások biztonságossá tételéhez szükséges javaslatokat.
 
-- [Folyamatos biztonsági ellenőrzés hozzáadása a CI/CD-folyamathoz](/azure/devops/migrate/security-validation-cicd-pipeline?amp;preserve-view=true&view=azure-devops)
+- [Folyamatos biztonsági ellenőrzés hozzáadása a CI/CD-folyamathoz](/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
 
 - [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/deploy-vulnerability-assessment-vm.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -670,7 +670,7 @@ Tekintse át és kövesse Security Center a App Service-alkalmazások biztonság
 
 - [Biztonsági javaslatok hivatkozási útmutatója](../security-center/recommendations-reference.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Megosztott
 
@@ -686,11 +686,11 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -700,7 +700,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -721,7 +721,7 @@ További információkért tekintse át a hivatkozott hivatkozásokat.
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -729,7 +729,7 @@ További információkért tekintse át a hivatkozott hivatkozásokat.
 
 **Útmutató**: jóváhagyott Azure-erőforrások és jóváhagyott szoftverek leltárának létrehozása a számítási erőforrások számára a szervezeti igények alapján.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -739,11 +739,11 @@ További információkért tekintse át a hivatkozott hivatkozásokat.
 
 Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésen belüli erőforrásokat.  Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva. 
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md) 
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md) 
 
 - [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -759,7 +759,7 @@ A App Service webjobs szolgáltatással figyelheti a számítási erőforrásoko
 
 - [Rövid útmutató – az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -773,7 +773,7 @@ A App Service webjobs szolgáltatással figyelheti a számítási erőforrásoko
 
 - [Rövid útmutató – az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -787,7 +787,7 @@ A App Service webjobs szolgáltatással figyelheti a számítási erőforrásoko
 
 - [Rövid útmutató – az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -805,13 +805,13 @@ A következő beépített szabályzat-definíciók segítségével konfigurálja
 
 A App Service webjobs szolgáltatással figyelheti a nem jóváhagyott szoftveralkalmazások számítógép-erőforrásokon belüli telepítését. A webjobs használatával futtathat egy programot vagy parancsfájlt ugyanabban a példányban, mint egy webalkalmazás, egy API-alkalmazás vagy egy mobil alkalmazás. Határozza meg a Webjobs konfigurációit és a figyelést a naplókkal. A Webjobs-Futtatás részletei lapon a kimenet váltása elemre kattintva jelenítse meg a napló tartalmának szövegét. Vegye figyelembe, hogy a webjobs-feladatok még nem támogatottak a Linux rendszeren való App Service.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 - [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 - [Háttérben futó feladatok futtatása webjobs-feladatokkal Azure App Service](webjobs-create.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -829,11 +829,11 @@ Konfigurálja a Azure Policyt az ügyfél-előfizetésekben létrehozható erőf
 
 Ehhez hasonlóan a App Service webjobs szolgáltatásban is használhatja a nem jóváhagyott, számítógép-erőforrásokon belül telepített szoftveralkalmazások leltározását. Határozza meg a konfigurációt és a figyelést a naplókkal. A Webjobs-Futtatás részletei lapon a kimenet váltása elemre kattintva jelenítse meg a napló tartalmának szövegét. Vegye figyelembe, hogy a webjobs-feladatok még nem támogatottak a Linux rendszeren való App Service.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 - [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -843,7 +843,7 @@ Ehhez hasonlóan a App Service webjobs szolgáltatásban is használhatja a nem 
 
 - [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -853,7 +853,7 @@ Ehhez hasonlóan a App Service webjobs szolgáltatásban is használhatja a nem 
 
 - [Háttérben futó feladatok futtatása webjobs-feladatokkal Azure App Service](webjobs-create.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -869,7 +869,7 @@ Az Application Service-környezetnek két típusa van, a külső Application Ser
 
 - [Belső Load Balancer létrehozása és használata App Service Environment](environment/create-ilb-ase.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -891,11 +891,11 @@ Beépített szabályzat-definíciók alkalmazása, például:
 
 Azt javasoljuk, hogy a beépített szabályzat-definíciók alkalmazásával dokumentálja a szabványos használatot.   
 
-- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -903,11 +903,11 @@ Azt javasoljuk, hogy a beépített szabályzat-definíciók alkalmazásával dok
 
 **Útmutató**: a Azure Policy [megtagadás] és a [telepítés, ha nem létezik] hatással van a Azure app Service alkalmazások biztonságos beállításainak betartatására.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -917,11 +917,11 @@ Azt javasoljuk, hogy a beépített szabályzat-definíciók alkalmazásával dok
 
 A meglévő folyamatos integrációs (CI) és folyamatos továbbítási (CD) folyamat használatával egy ismert, biztonságos konfigurációt telepíthet.
 
-- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Az Azure Repos dokumentációja](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -929,9 +929,9 @@ A meglévő folyamatos integrációs (CI) és folyamatos továbbítási (CD) fol
 
 **Útmutató**: beépített Azure Policy definíciók és Azure Policy aliasok használata a "Microsoft. Web" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszerkonfigurációk kényszerítéséhez. Dolgozzon ki egy folyamatot és folyamatot a házirend-kivételek kezeléséhez.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -941,9 +941,9 @@ A meglévő folyamatos integrációs (CI) és folyamatos továbbítási (CD) fol
 
 Alkalmazza a Azure Policy [audit], [megtagadás] és [üzembe helyezés, ha nem létezik], az effektusok az Azure-erőforrások konfigurációinak automatikus érvényesítéséhez.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -975,11 +975,11 @@ Alkalmazza a Azure Policy [audit], [megtagadás] és [üzembe helyezés, ha nem 
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
-**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
+**Útmutató**: hitelesítő adatok beolvasása a programkódon belül a hitelesítő adatok azonosításához. A Credential Scanner a felfedezett hitelesítő adatok biztonságosabb helyre, például az Azure Key Vaultba való áthelyezésére is javaslatot tesz.
 
 - [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1002,7 +1002,7 @@ Győződjön meg arról, hogy a rendszeres és automatizált biztonsági másola
 
 - [Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz](../storage/common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1027,7 +1027,7 @@ További információ a hivatkozott hivatkozásokon érhető el.
 
 - [Inaktív adatok titkosítása az ügyfél által felügyelt kulcsok használatával](configure-encrypt-at-rest-using-cmk.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1039,7 +1039,7 @@ További információ a hivatkozott hivatkozásokon érhető el.
 
 - [Azure App Service webalkalmazás visszaállítása](web-sites-restore.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1065,7 +1065,7 @@ Alapértelmezés szerint a Storage-fiókokban lévő adatforgalom a Microsoft á
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
-**Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig.
+**Útmutató**: Alakítson ki incidenskezelési útmutatót a vállalat számára. Gondoskodjon írásos incidenskezelési tervekről, amelyek definiálják az összes résztvevő szerepkörét, valamint az incidenskezelés fázisait az észleléstől az incidens utáni értékelésig.
 
 - [Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül](../security-center/security-center-planning-and-operations-guide.md)
 
@@ -1075,7 +1075,7 @@ Alapértelmezés szerint a Storage-fiókokban lévő adatforgalom a Microsoft á
 
 - [Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásával kapcsolatos támogatáshoz](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1091,11 +1091,11 @@ Emellett egyértelműen megjelölheti az előfizetéseket (például éles körn
 
 ### <a name="103-test-security-response-procedures"></a>10,3: biztonsági reagálási eljárások tesztelése
 
-**Útmutató**: gyakorlatok végrehajtása a rendszer incidens-reagálási képességeinek teszteléséhez egy normál ütemben. Azonosítsa a gyenge pontokat és a réseket, és szükség szerint módosítsa a tervet.
+**Útmutató**: gyakorlatok végrehajtása a rendszer incidens-reagálási képességeinek teszteléséhez egy normál ütemben. Azonosítsa a gyenge pontokat és réseket, és szükség esetén dolgozza át a tervet.
 
 - [Tekintse meg a NIST kiadványát, amely az IT-csomagokhoz és-képességekhez kapcsolódó programok tesztelését, betanítását és gyakorlatát ismerteti](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1141,13 +1141,13 @@ Emellett egyértelműen megjelölheti az előfizetéseket (például éles körn
 
 A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal és-alkalmazásokkal kapcsolatos további információkért tekintse meg a Microsoft stratégiáját és a Red Teaming és a Live site penetráció tesztelését ismertető témakört.
 
-- [Microsoft Cloud – támadásszimuláció](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Riasztási tesztek a Microsoft-felhőben](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Megosztott
 
 ## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
-- További tudnivalók az [Azure biztonsági alapkonfigurációiról](../security/benchmarks/security-baselines-overview.md)
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

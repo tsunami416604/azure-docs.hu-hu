@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a1159da782a8cb822bf726173ad0d0bcd9da844a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9cbce00e2c2743aec57cd857b6f38d20bce33698
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460887"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532907"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati szolgáltatás végpontjai Azure Key Vault
 
@@ -80,7 +80,7 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 |Azure Event Hubs|[Key Vault hozzáférésének engedélyezése az ügyfél által felügyelt kulcsok esetén](../../event-hubs/configure-customer-managed-key.md)|
 |Azure Service Bus|[Key Vault hozzáférésének engedélyezése az ügyfél által felügyelt kulcsok esetén](../../service-bus-messaging/configure-customer-managed-key.md)|
 |Azure Import/Export| [Az ügyfél által felügyelt kulcsok használata Azure Key Vault importálási/exportálási szolgáltatáshoz](../../storage/common/storage-import-export-encryption-key-portal.md)
-|Azure Container Registry|[Beállításjegyzék-titkosítás az ügyfél által felügyelt kulcsokkal](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[Összetevők átvitele másik beállításjegyzékbe](../../container-registry/container-registry-transfer-images.md)
+|Azure Container Registry|[Beállításjegyzék-titkosítás az ügyfél által felügyelt kulcsokkal](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]
 > Be kell állítania a megfelelő Key Vault hozzáférési szabályzatokat, hogy a megfelelő szolgáltatások hozzáférjenek a Key Vaulthoz.

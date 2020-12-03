@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: ca8a36584c09d850ed1daab8cba301b244f76526
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a9bf03fd59e6088ce1c1b09a41b2bf55d1f45455
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447024"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532958"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Hitelesítés beállítása az Azure Machine Learning-erőforrásokhoz és -munkafolyamatokhoz
 
@@ -27,7 +27,7 @@ Megtudhatja, hogyan állíthatja be a hitelesítést a Azure Machine Learning mu
 
 * __Egyszerű szolgáltatásnév__: egyszerű szolgáltatásnév-fiókot hoz létre a Azure Active Directoryban, és a hitelesítéshez vagy a jogkivonat lekéréséhez használja azt. Az egyszerű szolgáltatásnév akkor használatos, ha automatikus folyamatra van szükség a szolgáltatásban _való hitelesítéshez_ anélkül, hogy felhasználói beavatkozásra lenne szükség. Például egy folyamatos integrációs és üzembe helyezési parancsfájl, amely a modell minden egyes változásakor betanítja és teszteli a modellt.
 
-* __Felügyelt identitás__: ha az Azure Machine learning SDK-t _egy Azure-beli virtuális gépen_ használja, felügyelt identitást biztosíthat az Azure-hoz. Ez a munkafolyamat lehetővé teszi, hogy a virtuális gép a felügyelt identitás használatával kapcsolódjon a munkaterülethez a hitelesítő adatoknak a Python-kódban való tárolása, illetve a felhasználó hitelesítésének megkérdezése nélkül. A Azure Machine Learning számítási fürtök úgy is konfigurálhatók, hogy felügyelt identitást használjanak a munkaterülethez való hozzáféréshez a _modellek betanításakor_.
+* __Felügyelt identitás__: ha az Azure Machine learning SDK-t _egy Azure-beli virtuális gépen_ használja, felügyelt identitást használhat az Azure-hoz. Ez a munkafolyamat lehetővé teszi, hogy a virtuális gép a felügyelt identitás használatával kapcsolódjon a munkaterülethez a hitelesítő adatoknak a Python-kódban való tárolása, illetve a felhasználó hitelesítésének megkérdezése nélkül. A Azure Machine Learning számítási fürtök úgy is konfigurálhatók, hogy felügyelt identitást használjanak a munkaterülethez való hozzáféréshez a _modellek betanításakor_.
 
 > [!IMPORTANT]
 > A használt hitelesítési munkafolyamattól függetlenül az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) az erőforrások számára engedélyezett hozzáférési szint (Engedélyezés) hatókörére szolgál. Előfordulhat például, hogy egy rendszergazda vagy automatizálási folyamat hozzáfér egy számítási példány létrehozásához, de nem használja azt, míg egy adattudós felhasználhatja, de nem törölheti vagy létrehozhatja. További információt a [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md)című témakörben talál.

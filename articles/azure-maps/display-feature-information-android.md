@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 44c5f9f1a7c0d014d101ad45a80e1e53c42f69a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fabb4cd1e555a7a67a53bf2f5a99d93c87df436c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009035"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532805"
 ---
 # <a name="display-feature-information"></a>Funkcióinformációk megjelenítése
 
@@ -63,9 +63,7 @@ map.events.add((OnFeatureClick) (features) -> {
 }, symbolLayer.getId());    //Limit this event to the symbol layer.
 ```
 
-<center>
-
-![A kihasznált szolgáltatás és a megjelenő Toast-üzenet animációja](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
+![A kihasznált szolgáltatás és a megjelenő Toast-üzenet animációja](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)
 
 A pirítós üzenetein kívül számos más módon is bemutathatja egy szolgáltatás metaadat-tulajdonságait, például:
 
@@ -74,7 +72,7 @@ A pirítós üzenetein kívül számos más módon is bemutathatja egy szolgált
 - Adjon hozzá egy [töredéket](https://developer.android.com/guide/components/fragments) az aktuális tevékenységhez.
 - Navigáljon egy másik tevékenységhez vagy nézethez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ hozzáadása a térképhez:
 

@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 3bd4d328c6b0b73a51f325adde988c8f0988ea8a
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: fcaf8f62dcdc43a48ff2ae7ff790ac14ab42e8b6
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873811"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532890"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Dedukciós Azure Machine Learning-környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -252,7 +252,9 @@ aks_target.wait_for_completion(show_output = True)
 A Azure Container Instances a modell telepítésekor dinamikusan jönnek létre. Annak engedélyezéséhez, hogy a Azure Machine Learning az ACI-t a virtuális hálózaton belül hozza létre, engedélyeznie kell az alhálózati __delegálást__ az üzemelő példány által használt alhálózathoz.
 
 > [!WARNING]
-> Ha a virtuális hálózatban Azure Container Instancest használ, a virtuális hálózatnak ugyanabban az erőforráscsoporthoz kell tartoznia, mint a Azure Machine Learning-munkaterületnek.
+> Ha a virtuális hálózatban Azure Container Instancest használ, a virtuális hálózatnak a következőket kell tennie:
+> * Ugyanabban az erőforráscsoporthoz, mint a Azure Machine Learning munkaterülete.
+> * Ha a munkaterület __privát végponttal__ rendelkezik, a Azure Container instances használt virtuális hálózatnak meg kell egyeznie a munkaterület privát végpontja által használttal.
 >
 > Ha a virtuális hálózaton belül Azure Container Instancest használ, a munkaterület Azure Container Registry (ACR) nem lehet a virtuális hálózatban is.
 
@@ -265,11 +267,11 @@ Ha egy virtuális hálózatban szeretné használni az ACI-t a munkaterületére
 
 2. Telepítse a modellt [AciWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true)használatával, használja a `vnet_name` és a `subnet_name` paramétereket. Állítsa be ezeket a paramétereket a virtuális hálózat nevére és az alhálózatra, ahol engedélyezte a delegálást.
 
-## <a name="limit-outbound-connectivity-from-the-virtual-network"></a>A virtuális hálózat kimenő kapcsolatának korlátozása
+## <a name="limit-outbound-connectivity-from-the-virtual-network"></a>A virtuális hálózat kimenő kapcsolatainak korlátozása
 
 Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlátozni szeretné a virtuális hálózat kimenő hozzáférését, engedélyeznie kell a Azure Container Registryhoz való hozzáférést. Győződjön meg például arról, hogy a hálózati biztonsági csoportok (NSG) olyan szabályt tartalmaznak, amely lehetővé teszi a __AzureContainerRegistry. RegionName__ szolgáltatáshoz való hozzáférést, ahol a (z) {RegionName} egy Azure-régió neve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat harmadik része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

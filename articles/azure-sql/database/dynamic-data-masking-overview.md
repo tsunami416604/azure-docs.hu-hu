@@ -12,17 +12,17 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/04/2020
 tags: azure-synpase
-ms.openlocfilehash: 5442ddab5b4925e40250e63833a634006db7aead
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f8d352dac98f953f7f6d8033d0d9e1376c4da313
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781447"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532244"
 ---
 # <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-A Azure SQL Database, az Azure SQL felügyelt példánya és az Azure szinapszis Analytics támogatja a dinamikus adatmaszkolást. A dinamikus adatmaszkolás korlátozza a bizalmas adatokkal való érintkezést azáltal, hogy a nem Kiemelt felhasználók számára maszkolást végez. 
+A Azure SQL Database, az Azure SQL felügyelt példánya és az Azure szinapszis Analytics támogatja a dinamikus adatmaszkolást. A dinamikus adatmaszkolás csökkenti a bizalmas adatok kitettségét azzal, hogy nem jogosult felhasználókhoz maszkolja őket. 
 
 A dinamikus adatmaszkolás azzal segít megelőzni a bizalmas adatokhoz való jogosulatlan hozzáférést, hogy az ügyfél által meghatározhatóvá teszi az alkalmazásrétegre gyakorolt minimális következményekkel felfedhető bizalmas adatok menyiségét. Ez a szabályzatalapú biztonsági funkció elrejti a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja.
 
@@ -30,7 +30,7 @@ Előfordulhat például, hogy a Call Center egyik szolgáltatása a hívókat a 
 
 ## <a name="dynamic-data-masking-basics"></a>Dinamikus adatmaszkolás alapjai
 
-A dinamikus adatmaszkolási házirend beállításához a Azure Portal a **dinamikus adatmaszkolás** panelt a **Biztonság** elemre kattintva a SQL Database konfigurációs ablaktáblán. Ez a funkció nem állítható be az Azure szinapszis portál használatával (PowerShell vagy REST API használata) vagy az SQL felügyelt példányával. További információ: [dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking).
+A dinamikus adatmaszkolási házirend beállításához a Azure Portal a **dinamikus adatmaszkolás** panelt a **Biztonság** elemre kattintva a SQL Database konfigurációs ablaktáblán. Ez a funkció nem állítható be a portálon a felügyelt SQL-példányhoz (PowerShell vagy REST API használata). További információ: [dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking).
 
 ### <a name="dynamic-data-masking-permissions"></a>Dinamikus adatmaszkolási engedélyek
 

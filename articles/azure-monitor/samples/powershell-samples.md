@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 74211df6f925aaa09a4c87a518056e8ef3206b87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f7ddf94bbd077912cf0d7c2adef2eac548274ca
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078401"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532278"
 ---
 # <a name="azure-monitor-powershell-samples"></a>PowerShell-minták Azure Monitor
 Ebből a cikkből megtudhatja, hogyan érheti el Azure Monitor szolgáltatásait a PowerShell-parancsok segítségével.
@@ -54,7 +54,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log"></a>Tevékenység naplójának beolvasása
-Használja a [Get-AzLog](/powershell/module/az.monitor/get-azlog) parancsmagot.  Az alábbiakban néhány gyakori példát talál. A tevékenység naplójában a műveletek utolsó 90 napja szerepel. Az idő előtti dátumok használata hibaüzenetet eredményez.  
+Használja a [Get-AzLog](/powershell/module/az.monitor/get-azlog) parancsmagot.  Az alábbiakban néhány gyakori példát talál. A Tevékenységnapló az elmúlt 90 nap műveleteit tárolja. Az idő előtti dátumok használata hibaüzenetet eredményez.  
 
 Az alábbi parancsokban megtekintheti, hogy az aktuális dátum/idő milyen időpontot használjon:
 ```powershell
@@ -94,13 +94,13 @@ Get-AzLog -Caller 'myname@company.com'
 A következő parancs lekéri az utolsó 1000 eseményt a tevékenység naplójából:
 
 ```powershell
-Get-AzLog -MaxRecord 10
+Get-AzLog -MaxRecord 1000
 ```
 
 `Get-AzLog` számos más paramétert is támogat. `Get-AzLog`További információért tekintse meg a referenciát.
 
 > [!NOTE]
-> `Get-AzLog` csak 15 napos előzményt biztosít. A **-MaxRecords** paraméter használata lehetővé teszi az utolsó N esemény lekérdezését 15 nap után. A 15 napnál régebbi események eléréséhez használja a REST API vagy az SDK-t (C#-minta az SDK használatával). Ha **nem tartalmazza az**időpontot, az alapértelmezett érték a **befejezési időpont** mínusz egy óra. Ha nem tartalmazza a **befejezési**időt, az alapértelmezett érték az aktuális idő. Minden alkalommal UTC-ben van.
+> `Get-AzLog` csak 15 napos előzményt biztosít. 15 napon túl a **-MaxRecords** paraméterrel kérdezheti le az utolsó N eseményt. A 15 napnál régebbi események eléréséhez használja a REST API-t vagy az SDK-t (C#-példa az SDK-t használva). Ha nem adja meg a **StartTime** értékét, akkor az alapértelmezett érték az **EndTime** értéke mínusz egy óra. Ha nem adja meg az **EndTime** értékét, akkor az alapértelmezett érték az aktuális időpont. Minden időpont a UTC időzónában van megadva.
 > 
 > 
 
@@ -149,7 +149,7 @@ E-mailek és webhook-tulajdonságok a és a használatával is létrehozhatók  
 
 A következő táblázat a riasztások metrika használatával történő létrehozásához használt paramétereket és értékeket ismerteti.
 
-| parameter | érték |
+| parameter | value |
 | --- | --- |
 | Név |simpletestdiskwrite |
 | A riasztási szabály helye |USA keleti régiója |
@@ -187,7 +187,7 @@ A riasztási szabály beolvasása
 Get-AzAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 ```
 
-A riasztás hozzáadása parancsmag szintén frissíti a szabályt, ha már létezik riasztási szabály a megadott tulajdonságokhoz. A riasztási szabályok letiltásához adja meg a **-DisableRule**paramétert.
+A riasztás hozzáadása parancsmag szintén frissíti a szabályt, ha már létezik riasztási szabály a megadott tulajdonságokhoz. A riasztási szabályok letiltásához adja meg a **-DisableRule** paramétert.
 
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>A riasztásokhoz elérhető metrikák listájának beolvasása
 A `Get-AzMetricDefinition` parancsmag segítségével megtekintheti az adott erőforráshoz tartozó összes metrika listáját.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6623693a7079056cfe107fc8246e0fd43e2c0b8c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6d2ed00f3fc6f5b52a9a13a96f1e1659e30f02d5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538190"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532601"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>Rendszerképek típusának észlelése Computer Vision
 
@@ -26,7 +26,7 @@ A [kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/servic
 
 Computer Vision elemez egy rendszerképet, és az alábbi táblázatban leírtak szerint a képfájlnak azt a valószínűségét határozza meg, hogy a kép egy 0 és 3 közötti skálán legyen.
 
-| Érték | Értelmezés |
+| Érték | Jelentés |
 |-------|---------|
 | 0 | Nem ClipArt |
 | 1 | Nem egyértelmű |
@@ -117,5 +117,4 @@ A következő JSON-válaszok azt szemléltetik, hogy milyen Computer Vision ad v
 
 A rendszerkép típusú észlelési funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `ImageType` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a szakasz tartalmának karakterláncát `"imageType"` .
 
-* [Gyors útmutató: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [Gyors útmutató: rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)
+* [Rövid útmutató: Computer Vision REST API vagy ügyféloldali kódtárak](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

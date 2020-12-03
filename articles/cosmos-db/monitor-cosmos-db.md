@@ -5,15 +5,15 @@ author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 9410a38f7bc7a787fc439b5ad51f4a49f76771f8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f7cc9d4062ad9a49ff84db6ac035ff53934ae0a0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488782"
+ms.locfileid: "96532057"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Az Azure Cosmos DB monitorozása
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -90,7 +90,7 @@ Az Azure Cosmos DB összes mérőszáma a névtérben **Cosmos dB standard mér�
 * CollectionName
 * DatabaseName
 * OperationType
-* Régió
+* Region
 * StatusCode
 
 A hivatkozásokat a [Azure monitor által támogatott összes erőforrás-metrika](../azure-monitor/platform/metrics-supported.md)listáját láthatja.
@@ -176,7 +176,7 @@ Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek ta
 
 Az alábbi táblázat például az erőforrásokra vonatkozó riasztási szabályokat sorolja fel. A riasztási szabályok részletes listáját a Azure Portalban találja. További információt a [riasztások konfigurálása](create-alerts.md) című cikkben talál.  
 
-| Riasztástípus | Feltétel | Description  |
+| Riasztástípus | Feltétel | Leírás  |
 |:---|:---|:---|
 |Kérelmek egységeinek korlátozása (metrikus riasztás) |Dimenzió neve: StatusCode, operátor: egyenlő, dimenzió értékei: 429  | Riasztás, ha a tároló vagy az adatbázis túllépte a kiosztott átviteli sebességet. |
 |A régió feladatátvétele megtörtént |Operátor: nagyobb, mint, összesítés típusa: darabszám, küszöbérték: 1 | Egyetlen régió feladatátvétele esetén. Ez a riasztás akkor hasznos, ha nem engedélyezte az automatikus feladatátvételt. |

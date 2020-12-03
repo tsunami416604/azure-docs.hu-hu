@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 12/02/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: fbc24db21ee43e3c2aef3d0164e8510a79508fd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57cde2c5c0a1caf7ad5182cad8db72ab8aa7c908
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658582"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531783"
 ---
-# <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
+# <a name="azure-storage-redundancy"></a>Redundancia az Azure Storage szolgáltatásban
 
-Az Azure Storage mindig több példányban tárolja az adatait, így védve van a tervezett és nem tervezett eseményektől, beleértve az átmeneti hardver meghibásodását, a hálózati vagy áramkimaradást, valamint a súlyos természeti katasztrófákat. A redundancia biztosítja, hogy a Storage-fiókja a meghibásodások előtt is teljesítse az [Azure Storage szolgáltatói szerződését (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) .
+Az Azure Storage mindig több példányban tárolja az adatait, így védve van a tervezett és nem tervezett eseményektől, beleértve az átmeneti hardver meghibásodását, a hálózati vagy áramkimaradást, valamint a súlyos természeti katasztrófákat. A redundancia biztosítja, hogy a Storage-fiók a meghibásodások előtt is kielégítse a rendelkezésre állási és tartóssági célokat.
 
-Ha eldönti, hogy melyik redundancia-lehetőség a legmegfelelőbb a forgatókönyvéhez, vegye figyelembe az alacsonyabb költségek és a magasabb rendelkezésre állás és a tartósság közötti kompromisszumokat. Az alábbi tényezők segítenek meghatározni, hogy melyik redundancia-beállítást kell választania:  
+Annak eldöntéséhez, hogy melyik redundancia-lehetőség a legmegfelelőbb a forgatókönyvhöz, vegye figyelembe az alacsonyabb költségek és a magasabb rendelkezésre állás közötti kompromisszumokat. Az alábbi tényezők segítenek meghatározni, hogy melyik redundancia-beállítást kell választania:  
 
 - Hogyan replikálódnak az adatai az elsődleges régióban
 - Azt jelzi, hogy a rendszer replikálja-e az adatait egy második régióba, amely földrajzilag távol van az elsődleges régiótól, hogy védelmet nyújtson a regionális katasztrófák ellen
@@ -51,7 +51,7 @@ A LRS jó választás a következő esetekben:
 
 A Zone-redundáns tárolás (ZRS) az Azure Storage-adatait szinkron módon replikálja az elsődleges régió három Azure-beli rendelkezésre állási zónáján belül. Minden rendelkezésreállási zóna egy fizikailag elkülönített, független áramforrással, hűtéssel és hálózatkezelési megoldással rendelkező hely. A ZRS az Azure Storage-adatobjektumok tartósságát kínálja legalább 99,9999999999%-ban (12 9) az adott évben.
 
-A ZRS esetében az adatok továbbra is elérhetők olvasási és írási műveletekhez, még akkor is, ha egy zóna elérhetetlenné válik. Ha egy zóna elérhetetlenné válik, az Azure hálózati frissítéseket végez, például a DNS-átkapcsolást. Ezek a frissítések hatással lehetnek az alkalmazásra, ha a frissítések befejeződése előtt hozzáférnek az adataihoz. A ZRS alkalmazások tervezésekor kövesse az átmeneti hibák kezelésének eljárásait, beleértve az újrapróbálkozási szabályzatok az exponenciális visszatartással történő megvalósítását.
+A ZRS esetében az adatok továbbra is elérhetők olvasási és írási műveletekhez, még akkor is, ha egy zóna elérhetetlenné válik. Ha egy zóna elérhetetlenné válik, az Azure hálózati frissítéseket végez, például a DNS-re. Ezek a frissítések hatással lehetnek az alkalmazásra, ha a frissítések befejeződése előtt hozzáférnek az adataihoz. A ZRS alkalmazások tervezésekor kövesse az átmeneti hibák kezelésének eljárásait, beleértve az újrapróbálkozási szabályzatok az exponenciális visszatartással történő megvalósítását.
 
 A ZRS-t használó Storage-fiókra vonatkozó írási kérelem szinkron módon történik. Az írási művelet csak akkor ad eredményül, ha az adatok a három rendelkezésre állási zónában lévő összes replikára íródnak.
 
@@ -153,11 +153,9 @@ Az alábbi táblázat az egyes redundancia-beállítások főbb paramétereit is
 
 | Paraméter | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
-| Objektumok tartóssága az adott évben<sup>1</sup> | legalább 99,999999999% (11 9) | legalább 99,9999999999% (12 9) | legalább 99.99999999999999% (16 9) | legalább 99.99999999999999% (16 9) |
-| Rendelkezésre állási SLA az olvasási kérelmekhez<sup>1</sup> | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) a GRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GRS | Legalább 99,9% (99% a lassú elérési szinthez) a GZRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GZRS |
-| Az írási kérelmek rendelkezésre állási SLA-ja<sup>1</sup> | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) |
-
-<sup>1</sup> az Azure Storage szolgáltatás tartósságának és rendelkezésre állásának garantálása érdekében az [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/)-ban talál további információt.
+| Objektumok tartóssága az adott évben | legalább 99,999999999% (11 9) | legalább 99,9999999999% (12 9) | legalább 99.99999999999999% (16 9) | legalább 99.99999999999999% (16 9) |
+| Olvasási kérelmek rendelkezésre állása | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) a GRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GRS | Legalább 99,9% (99% a lassú elérési szinthez) a GZRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GZRS |
+| Írási kérelmek rendelkezésre állása | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>Tartósság és rendelkezésre állás leállás esetén
 

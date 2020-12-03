@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 57e01683cb8027c2a1f79e58bce03b3bb7dedadb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 4e7774d2cd100931f92ff80066ebea4463c6f65c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538384"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532652"
 ---
 # <a name="detect-color-schemes-in-images"></a>Képek színsémáinak észlelése
 
@@ -54,7 +54,7 @@ Az alábbi példa a Computer Vision által visszaadott JSON-választ mutatja be,
 
 A következő táblázat az egyes mintaképek előtérbeli, háttérszínét és képének színét mutatja be.
 
-| Kép | Domináns színek |
+| Rendszerkép | Domináns színek |
 |-------|-----------------|
 |![Fehér virág Zöld háttérrel](./Images/flower.png)| Előtér: fekete<br/>Háttér: fehér<br/>Színek: fekete, fehér, zöld|
 ![Állomáson futó vonat](./Images/train_station.png) | Előtér: fekete<br/>Háttér: fekete<br/>Színek: fekete |
@@ -63,7 +63,7 @@ A következő táblázat az egyes mintaképek előtérbeli, háttérszínét és
 
  A következő táblázat a visszaadott hangsúlyozási színt jeleníti meg hexadecimális HTML színértékként az egyes képképeknél.
 
-| Kép | Kiegészítő szín |
+| Rendszerkép | Kiegészítő szín |
 |-------|--------------|
 |![A napnyugtakor egy hegyi sziklán álló személy](./Images/mountain_vista.png) | #BB6D10 |
 |![Fehér virág Zöld háttérrel](./Images/flower.png) | #C6A205 |
@@ -73,7 +73,7 @@ A következő táblázat az egyes mintaképek előtérbeli, háttérszínét és
 
 A következő táblázat Computer Vision fekete-fehér kiértékelését mutatja a minta lemezképekben.
 
-| Kép | Fekete & fehér? |
+| Rendszerkép | Fekete & fehér? |
 |-------|----------------|
 |![A Manhattanben található épületek fekete-fehér képe](./Images/bw_buildings.png) | true |
 |![Egy kék ház és az első udvar](./Images/house_yard.png) | hamis |
@@ -82,5 +82,4 @@ A következő táblázat Computer Vision fekete-fehér kiértékelését mutatja
 
 A színséma-észlelési funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `Color` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a szakasz tartalmának karakterláncát `"color"` .
 
-* [Gyors útmutató: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [Gyors útmutató: rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)
+* [Rövid útmutató: Computer Vision REST API vagy ügyféloldali kódtárak](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

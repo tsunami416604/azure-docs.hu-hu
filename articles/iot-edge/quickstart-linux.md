@@ -4,17 +4,17 @@ description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Io
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/30/2020
+ms.date: 12/02/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 720a4d14a73350d98b3f9054f748b93d296be11b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: ce8d014f7ec9ae0a915b69cff033e929f139acc0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579283"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532091"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön
 
@@ -69,7 +69,7 @@ A következő kód egy ingyenes **F1** -hubot hoz létre az erőforráscsoport *
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
-   Ha hibaüzenetet kap, mert az előfizetése már tartalmaz egy ingyenes központot, akkor módosítsa az SKU-t **S1** -re. Mindegyik előfizetés csak egy ingyenes IoT-központtal rendelkezhet. Ha hibaüzenet jelenik meg, hogy a IoT Hub neve nem érhető el, az azt jelenti, hogy valaki más már rendelkezik az adott névvel rendelkező hubhoz. Próbálkozzon új névvel.
+   Ha hibaüzenetet kap, mert az előfizetése már tartalmaz egy ingyenes központot, akkor módosítsa az SKU-t **S1**-re. Mindegyik előfizetés csak egy ingyenes IoT-központtal rendelkezhet. Ha hibaüzenet jelenik meg, hogy a IoT Hub neve nem érhető el, az azt jelenti, hogy valaki más már rendelkezik az adott névvel rendelkező hubhoz. Próbálkozzon új névvel.
 
 ## <a name="register-an-iot-edge-device"></a>IoT Edge-eszköz regisztrálása
 
@@ -119,11 +119,11 @@ A következő CLI-paranccsal hozhatja létre IoT Edge eszközét az előre elké
    az deployment group create \
    --resource-group IoTEdgeResources \
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
-   --parameters dnsLabelPrefix='my-edge-vm' \
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
    --parameters adminUsername='azureUser' \
    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name
    <REPLACE_WITH_HUB_NAME> -o tsv) \
-   --parameters authenticationType='password'
+   --parameters authenticationType='password' \
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
@@ -133,7 +133,7 @@ A következő CLI-paranccsal hozhatja létre IoT Edge eszközét az előre elké
    az deployment group create `
    --resource-group IoTEdgeResources `
    --template-uri "https://aka.ms/iotedge-vm-deploy" `
-   --parameters dnsLabelPrefix='my-edge-vm1' `
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' `
    --parameters adminUsername='azureUser' `
    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
    --parameters authenticationType='password' `
@@ -146,7 +146,7 @@ A sablon a következő paramétereket veszi figyelembe:
 | --------- | ----------- |
 | **erőforrás-csoport** | Az az erőforráscsoport, amelyben az erőforrások létre lesznek hozva. Használja az ebben a cikkben használt alapértelmezett **IoTEdgeResources** , vagy adja meg egy meglévő erőforráscsoport nevét az előfizetésében. |
 | **sablon – URI** | A használt Resource Manager-sablonra mutató hivatkozás. |
-| **dnsLabelPrefix** | Egy karakterlánc, amely a virtuális gép állomásneve létrehozásához lesz felhasználva. Használja például a **My-Edge-VM-** et, vagy adjon meg egy új karakterláncot. |
+| **dnsLabelPrefix** | Egy karakterlánc, amely a virtuális gép állomásneve létrehozásához lesz felhasználva. Cserélje le a helyőrző szöveget a virtuális gép nevére. |
 | **adminUsername** | A virtuális gép rendszergazdai fiókjához tartozó Felhasználónév. Használja a példa **azureuser** -t, vagy adjon meg egy új felhasználónevet. |
 | **deviceConnectionString** | A IoT Hub eszköz identitásának kapcsolódási karakterlánca, amely a IoT Edge futtatókörnyezetnek a virtuális gépen való konfigurálására szolgál. A paraméteren belüli CLI-parancs megkeresi a kapcsolatok karakterláncát. Cserélje le a helyőrző szövegét az IoT hub nevére. |
 | **authenticationType** | A rendszergazdai fiók hitelesítési módszere. Ez a rövid útmutató **jelszavas** hitelesítést használ, de ezt a paramétert **sshPublicKey** is beállíthatja. |
@@ -249,7 +249,7 @@ Az erőforráscsoport törlését az erőforráscsoportok listájának megtekint
 az group list
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Edge eszközt, és a Azure IoT Edge Cloud Interface használatával helyezi üzembe a kódot az eszközön. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
 
