@@ -3,17 +3,17 @@ title: A Windows rendszerű virtuális asztal újdonságai – Azure
 description: Új szolgáltatások és Termékfrissítések a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: overview
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: c82312b40955b392243bf616ee991c0108a13fb5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e267de136271991446444a47a470dd52789b3613
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537390"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533961"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
 
@@ -25,6 +25,31 @@ A Windows rendszerű virtuális asztali frissítések rendszeres időközönkén
 - Hibajavítások
 
 Ez a cikk havonta frissül. Ügyeljen arra, hogy az új frissítések megtartása érdekében gyakran térjen vissza ide.
+
+## <a name="november-2020"></a>2020. november
+
+### <a name="azure-portal-experience"></a>Azure Portali élmény
+
+Két hibát javítottunk a Azure Portal felhasználói élményben:
+
+- Az asztali alkalmazás rövid neve már nem íródik felül a "virtuális gép hozzáadása" munkafolyamatban.
+- A munkamenet-gazdagép lap ekkor betöltődik, ha a munkamenet-gazdagépek a méretezési csoportok részét képezik.
+
+### <a name="fslogix-client-version-2009"></a>FSLogix-ügyfél, 2009-es verzió 
+
+Megjelent a FSLogix-ügyfél új verziója számos javítással és javítással. További információt a [blogbejegyzésben](https://social.msdn.microsoft.com/Forums/en-US/defe5828-fba4-4715-a68c-0e4d83eefa6b/release-notes-for-fslogix-apps-release-2009-29762130127?forum=FSLogix)talál.
+
+### <a name="rdp-shortpath-public-preview"></a>RDP Shortpath nyilvános előzetes verziója
+
+Az RDP-Shortpath pont – hely és helyek közötti VPN-EK és ExpressRoute segítségével közvetlen kapcsolatot vezet be a Windows rendszerű virtuális asztali munkamenetgazda-munkamenethez. Emellett bemutatja a URCP átviteli protokollt is. Az RDP-Shortpath célja, hogy csökkentse a késést és a hálózati ugrásokat a felhasználói élmény javítása érdekében. További információ: [Windows Virtual Desktop RDP Shortpath](shortpath.md).
+
+### <a name="azdesktopvirtualization-version-201"></a>Az az. DesktopVirtualization, 2.0.1-es verzió
+
+Megjelent a Windows rendszerű virtuális asztali parancsmagok 2.0.1-es verziója. Ez a frissítés olyan parancsmagokat tartalmaz, amelyek lehetővé teszik a MSIX-alkalmazás csatolásának kezelését. Az új verziót [a PowerShell-galériában](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/2.0.1)töltheti le.
+
+### <a name="azure-advisor-updates"></a>Azure Advisor frissítések
+
+Azure Advisor most már rendelkezik egy új javaslattal a Windows rendszerű virtuális asztali környezethez való közelségi útmutatóhoz. További információ [Az Azure-webhelyről](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/).
 
 ## <a name="october-2020"></a>2020. október
 
@@ -175,7 +200,6 @@ Ezt a változást a következőképpen teheti meg:
 
 - A Windows virtuális asztal használatához már nem szükséges Azure Active Directory (Azure AD) beleegyeznie. Ebben a frissítésben az Azure AD-bérlő az Azure-előfizetésében hitelesíti a felhasználókat, és biztosítja az Azure RBAC-vezérlőket a rendszergazdák számára.
 
-
 ### <a name="powershell-support"></a>PowerShell-támogatás
 
 Új AzWvd-parancsmagokat adtunk hozzá a Azure PowerShell az modulhoz ezzel a frissítéssel. Ez az új modul támogatott a PowerShell Core-ban, amely a .NET Core-on fut.
@@ -206,6 +230,6 @@ Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távo
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg a jövőbeli tervekkel a [Microsoft 365 Windows rendszerű virtuális asztali menetrendben](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).

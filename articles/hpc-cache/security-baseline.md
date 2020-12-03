@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e7f6cf905613866041e72433328ea742706a8c49
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 036cab033e5b70a8940a488c07374e9092d52b33
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453868"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533655"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Azure Security alapkonfiguráció az Azure HPC cache-hez
 
@@ -814,7 +814,7 @@ A biztonsági másolatok és az ügyfél által felügyelt kulcsok kezeléséhez
 
 - [Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal](../backup/encryption-at-rest-with-cmk.md)  
 
-- [Key Vault kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-5.1.0)
+- [Key Vault kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-5.1.0)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -824,7 +824,7 @@ A biztonsági másolatok és az ügyfél által felügyelt kulcsok kezeléséhez
 
 **Útmutató**: az ügyfél által felügyelt kulcsok biztonsági mentésének rendszeres ellenőrzése.
 
-- [Key Vault kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-5.1.0)
+- [Key Vault kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-5.1.0)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -867,11 +867,11 @@ Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és a
 -   A megfelelő titkosítási szabványok
 
 További információkat az alábbi hivatkozásokon találhat:
-- [Az Azure Security architektúrára vonatkozó ajánlásai – Tárolás, adatok és titkosítás](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
+- [Az Azure Security architektúrára vonatkozó ajánlásai – Tárolás, adatok és titkosítás](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Az Azure Security alapjai – Azure-beli adatbiztonság, titkosítás és tárolás](../security/fundamentals/encryption-overview.md)
 
-- [Felhőadaptálási keretrendszer – Az Azure-beli adatbiztonsághoz és titkosításhoz ajánlott eljárások](../security/fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
+- [Felhőadaptálási keretrendszer – Az Azure-beli adatbiztonsághoz és titkosításhoz ajánlott eljárások](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
 - [Azure Security Benchmark – Eszközkezelés](/azure/security/benchmarks/security-controls-v2-asset-management)
 

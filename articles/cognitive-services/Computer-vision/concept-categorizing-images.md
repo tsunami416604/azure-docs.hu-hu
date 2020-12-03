@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 43359c47b4d2c1b8895938271c74dab03f7731f7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9721ffa807c9adbeb50839113bc64fd23d8eb13f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541776"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533723"
 ---
 # <a name="categorize-images-by-subject-matter"></a>Képek kategorizálása tárgy szerint
 
@@ -53,7 +53,7 @@ A következő JSON-válasz azt szemlélteti, hogy milyen Computer Vision ad viss
 
 Az alábbi táblázat egy jellemző képkészletet és Computer Vision által visszaadott kategóriát mutat be minden egyes képhez.
 
-| Kép | Kategória |
+| Rendszerkép | Kategória |
 |-------|----------|
 | ![Négy személy jelent együtt családként](./Images/family_photo.png) | people_group |
 | ![Egy kiskutya ült egy füves mezőben](./Images/cute_dog.png) | animal_dog |
@@ -64,9 +64,8 @@ Az alábbi táblázat egy jellemző képkészletet és Computer Vision által vi
 
 A kategorizálási funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `Categories` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a szakasz tartalmának karakterláncát `"categories"` .
 
-* [Gyors útmutató: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [Gyors útmutató: rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)
+* [Rövid útmutató: Computer Vision REST API vagy ügyféloldali kódtárak](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg a [képek címkézésével](concept-tagging-images.md) és a [képek leírásával](concept-describing-images.md)kapcsolatos fogalmakat.

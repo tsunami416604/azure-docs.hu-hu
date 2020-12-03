@@ -10,14 +10,19 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 4f82665afbf3cd83041e59a8b10ef2a731566fc0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 32970846a4ab102522531b1a46fb38693da7a0e0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95095048"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533270"
 ---
 <a name="HOLTop"></a>
+
+Az Computer Vision ügyféloldali kódtár használata a következőhöz:
+
+* Elemezheti a címkéket, a szöveges leírást, az arcokat, a felnőtt tartalmakat és egyebeket.
+* Nyomtatott és kézzel írt szöveg olvasása az olvasási API-val.
 
 [Dokumentáció](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision)  |  [Példák](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -246,7 +251,7 @@ Ezután adja meg a segítő függvényt `printRecText` , amely kiírja az olvas�
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást a gyors üzembe helyezési `node` fájlban található paranccsal.
 
@@ -254,14 +259,14 @@ Futtassa az alkalmazást a gyors üzembe helyezési `node` fájlban található 
 node index.js
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 >[Computer Vision API referenciája (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)

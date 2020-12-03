@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: 0a538deb3b7da19261e1bc2b7c0d29f35315f786
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 255cfe11f8601abc89a1d96f702f453c2af1ccbd
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015413"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533060"
 ---
 # <a name="long-audio-api-preview"></a>Long audio API (előzetes verzió)
 
@@ -287,15 +287,11 @@ A hosszú hang API több régióban is elérhető egyedi végpontokkal.
 
 | Region | Végpont |
 |--------|----------|
-| Kelet-Ausztrália | `https://australiaeast.customvoice.api.speech.microsoft.com` |
-| Közép-Kanada | `https://canadacentral.customvoice.api.speech.microsoft.com` |
 | USA keleti régiója | `https://eastus.customvoice.api.speech.microsoft.com` |
 | Közép-India | `https://centralindia.customvoice.api.speech.microsoft.com` |
-| USA déli középső régiója | `https://southcentralus.customvoice.api.speech.microsoft.com` |
 | Délkelet-Ázsia | `https://southeastasia.customvoice.api.speech.microsoft.com` |
 | Az Egyesült Királyság déli régiója | `https://uksouth.customvoice.api.speech.microsoft.com` |
 | Nyugat-Európa | `https://westeurope.customvoice.api.speech.microsoft.com` |
-| USA 2. nyugati régiója | `https://westus2.customvoice.api.speech.microsoft.com` |
 
 ## <a name="audio-output-formats"></a>Hangkimeneti formátumok
 

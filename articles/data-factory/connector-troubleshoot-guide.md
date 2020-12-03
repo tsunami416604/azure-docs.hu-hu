@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/25/2020
+ms.date: 12/02/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: dcc84dc252001721a3848a008a3db80dcc7822d2
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: c90b7ce86e06669696a4b9f7e0b2f5287e9dd97e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301272"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533196"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory-összekötők hibaelhárítása
 
@@ -205,7 +205,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 - **Megoldás**: több perc elteltével futtassa újra a másolási tevékenységet.
                   
 
-## <a name="azure-synapse-analytics-formerly-sql-data-warehouseazure-sql-databasesql-server"></a>Azure szinapszis Analytics (korábban SQL Data Warehouse)/Azure SQL Database/SQL Server
+## <a name="azure-synapse-analyticsazure-sql-databasesql-server"></a>Azure szinapszis Analitika/Azure SQL Database/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>Hibakód: SqlFailedToConnect
 
@@ -488,7 +488,28 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **Javaslat**: futtassa újra a folyamatot. Ha nem sikerül, próbálja meg csökkenteni a párhuzamosságot. Ha továbbra sem sikerül, forduljon a Dynamics ügyfélszolgálatához.
 
+## <a name="excel-format"></a>Excel-formátum
 
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Időtúllépés vagy lassú teljesítmény a nagyméretű Excel-fájlok elemzésekor
+
+- **Tünetek**:
+
+    1. Amikor létrehoz egy Excel-adatkészletet, és importálja a sémát a kapcsolatból/tárból, előnézeti adatokat, listát vagy frissítési munkalapokat, akkor időtúllépési hiba léphet fel, ha az Excel-fájl mérete nagyméretű.
+    2. Ha a másolási tevékenységgel nagy méretű Excel-fájlból (>= 100MB) másol Adatmásolást más adattárba, a lassú teljesítmény vagy a bácsi probléma merülhet fel.
+
+- **OK**: 
+
+    1. Az olyan műveletek esetében, mint például a séma importálása, az adatok megtekintése és az Excel-adatkészletek listázása, az időtúllépés a 100s és a statikus. Nagyméretű Excel-fájl esetén előfordulhat, hogy ezek a műveletek nem fejeződik be az időtúllépési értéken belül.
+
+    2. Az ADF másolási tevékenység beolvassa a teljes Excel-fájlt a memóriába, majd megkeresi a megadott munkalapot és cellákat az adatolvasáshoz. Ezt a viselkedést a mögöttes SDK ADF használja.
+
+- **Megoldás**: 
+
+    1. A séma importálásához létrehozhat egy kisebb mintát, amely az eredeti fájl egy részhalmaza, és a "séma importálása a fájlból" lehetőséget választja a "séma importálása a hálózatról/áruházból" lehetőség helyett.
+
+    2. A workseet listázásához a munkalap legördülő menüben kattintson a "szerkesztés" lehetőségre, és adja meg a lap nevét/indexét.
+
+    3. Nagyméretű Excel-fájl (>100MB) más tárolóba való másolásához használhatja az adatfolyamok Excel-forrását, amelynél a sport streaming olvas és jobb teljesítményt nyújt.
 
 ## <a name="json-format"></a>JSON-formátum
 

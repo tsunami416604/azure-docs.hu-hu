@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: a808a6bb0d4dc75f02147bbfdd74d17b34e96f6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: feac7b890c973b1541c5362f860432687082953f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313986"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533876"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Névtelen nyilvános olvasási hozzáférés konfigurálása a tárolók és a Blobok számára
 
@@ -53,7 +53,7 @@ A Storage-fiókhoz való nyilvános hozzáférés letiltása megakadályozza a f
 
 A Storage-fiókok nyilvános hozzáférésének engedélyezéséhez vagy letiltásához konfigurálja a fiók **AllowBlobPublicAccess** tulajdonságát. Ez a tulajdonság minden olyan Storage-fiókhoz elérhető, amely a Azure Resource Manager telepítési modellel lett létrehozva. További információ: a [Storage-fiók áttekintése](../common/storage-account-overview.md).
 
-A **AllowBlobPublicAccess** tulajdonság alapértelmezés szerint nincs beállítva, és nem ad vissza értéket, amíg explicit módon be nem állítja azt. A Storage-fiók engedélyezi a nyilvános hozzáférést, ha a tulajdonság értéke **Null** vagy **igaz**.
+A **AllowBlobPublicAccess** tulajdonság alapértelmezés szerint nincs beállítva a Storage-fiókhoz, és nem ad vissza értéket, amíg explicit módon be nem állítja azt. A Storage-fiók engedélyezi a nyilvános hozzáférést, ha a tulajdonság értéke **Null** vagy **igaz**.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -133,7 +133,7 @@ Egy sablonhoz tartozó Storage-fiók nyilvános hozzáférésének engedélyezé
 
 1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget.
 1. A **Keresés a piactéren** mezőbe írja be a **sablon központi telepítése** kifejezést, majd nyomja le az **ENTER** billentyűt.
-1. Válassza **template Deployment (üzembe helyezés egyéni sablonok használatával) (előzetes verzió)** , válassza a **Létrehozás** lehetőséget, majd **a szerkesztőben válassza a saját sablon** létrehozása lehetőséget.
+1. Válassza **template Deployment (üzembe helyezés egyéni sablonok használatával) (előzetes verzió)**, válassza a **Létrehozás** lehetőséget, majd **a szerkesztőben válassza a saját sablon** létrehozása lehetőséget.
 1. A sablon szerkesztőjében illessze be a következő JSON-t egy új fiók létrehozásához, és állítsa a **AllowBlobPublicAccess** tulajdonságot **true** vagy **false** értékre. Ne felejtse el lecserélni a helyőrzőket a saját értékeire a szögletes zárójelben.
 
     ```json
@@ -296,7 +296,7 @@ $ctx = $storageAccount.Context
 Get-AzStorageContainer -Context $ctx | Select Name, PublicAccess
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tárolók és Blobok névtelen nyilvános olvasási hozzáférésének tiltása](anonymous-read-access-prevent.md)
 - [Nyilvános tárolók és Blobok elérése névtelenül a .NET-tel](anonymous-read-access-client.md)

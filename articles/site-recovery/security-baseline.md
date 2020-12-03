@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6d17b007fcccd87aed17a9ec3ca039b9559ab6d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492233"
+ms.locfileid: "96533859"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery Azure biztonsági alapterve
 
@@ -164,9 +164,9 @@ Megjelenítheti és lekérdezheti a napló eredményeit, és konfigurálhatja a 
 
 **Útmutató**: alapértelmezés szerint egyetlen szerepkör sincs hozzárendelve. Az üzleti igények alapján explicit módon kell hozzárendelni őket. A szerepkör-hozzárendelések a PowerShell CLI-vel vagy Azure Active Directory (Azure AD) ellenőrizhetők a felügyeleti csoportok tagjainak fiókjainak felderítéséhez.
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -224,7 +224,7 @@ Hozzon létre egy folyamatot, amely nyomon követheti a rendszergazdai fiókok i
 
 - [Emelt hozzáférési szintű munkaállomások](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Felhőalapú Azure AD-Multi-Factor Authentication üzembe helyezésének megtervezése](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Felhőalapú Azure AD Multi-Factor Authentication-telepítés megtervezése](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -431,7 +431,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -530,7 +530,7 @@ Fontos megismernie, hogy hogyan hozhat létre és kezelhet szabályzatokat az Az
 **Útmutató**: a Recovery Services-tár szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. 
 
 A "Microsoft. Recoveryservices szolgáltatónál" névtérben Azure Policy Aliasok használatával egyéni szabályzatokat hozhat létre az Site Recovery szolgáltatás Recovery Services tár erőforrásainak naplózásához, illetve a konfiguráció érvényesítéséhez.
-- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -553,9 +553,9 @@ A "Microsoft. Recoveryservices szolgáltatónál" névtérben Azure Policy Alias
 
 **Útmutató**: válassza az Azure reposs elemet a kód biztonságos tárolásához és kezeléséhez, ha egyéni Azure Policy-definíciókat használ a Recovery Services-tárolók és a kapcsolódó erőforrások számára.
 
-- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Az Azure Repos dokumentációja](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -656,7 +656,7 @@ A Site Recovery Services metaadatainak által használt összes tárolási erőf
 
 Ez az ügyfél hatókörén kívül esik, és a Site Recovery csapata belsőleg gondoskodik róla. Az ügyfél biztonsági mentést készíthet Key Vault kulcsokról az Azure-ban.
 
-- [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -666,7 +666,7 @@ Ez az ügyfél hatókörén kívül esik, és a Site Recovery csapata belsőleg 
 
 **Útmutató**: az ügyfél által felügyelt kulcsok visszatárolásának rendszeres tesztelése.
 
-- [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 

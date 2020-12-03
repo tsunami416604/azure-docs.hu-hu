@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 12/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90fc356929a9ea5713a8d359dfaa83286017b8f8
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 260df85f3e380e40d153fc17ce77bd56ca068982
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445438"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532822"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Frissítés az Azure Cognitive Search .NET SDK 11-es verziójára
 
-Ha a [.net SDK](/dotnet/api/overview/azure/search)10,0-es vagy újabb verzióját használja, ez a cikk segítséget nyújt a 11-es verzióra való frissítéshez.
+Ha a [.net SDK](/dotnet/api/overview/azure/search)10,0-es vagy régebbi verzióját használja, ez a cikk segítséget nyújt a 11-es verzióra és a **Azure.Search.Documents** -ra való frissítésre.
 
 A 11-es verzió egy teljes mértékben újratervezett ügyféloldali kódtár, amelyet az Azure SDK Fejlesztői csapata szabadít fel (az előző verziókat az Azure Cognitive Search fejlesztői csapat hozta létre). A rendszer újratervezte a kódtárat a többi Azure-ügyfélszoftverrel való nagyobb konzisztencia érdekében, az [Azure. Core](/dotnet/api/azure.core) és [ aSystem.Text.Js](/dotnet/api/system.text.json), valamint a gyakori feladatokra vonatkozó ismerős megközelítések megvalósításával.
 
@@ -49,7 +49,7 @@ Ha lehetséges, az alábbi táblázat a két verzió közötti ügyféloldali k�
 |---------------------|------------------------------|------------------------------|
 | A lekérdezésekhez és az indexek feltöltéséhez használt ügyfél. | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
 | Indexekhez, elemzőekhez, szinonimák megfeleltetéséhez használt ügyfél | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
-| Az indexelő, az adatforrások és a szakértelmével által használt ügyfél | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient ( **új** )](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
+| Az indexelő, az adatforrások és a szakértelmével által használt ügyfél | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**új**)](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
 > `SearchIndexClient` mindkét verzióban létezik, de különböző dolgokat támogat. A 10-es verzióban `SearchIndexClient` Indexek és egyéb objektumok hozhatók létre. A 11-es verzióban a `SearchIndexClient` meglévő indexekkel működik. A kód frissítésekor a félreértések elkerülése érdekében figyelembe kell venni, hogy milyen sorrendben frissülnek az ügyfelek hivatkozásai. A [frissítéshez szükséges lépések](#UpgradeSteps) végrehajtásával csökkentheti a karakterlánc-helyettesítési problémákat.
@@ -170,7 +170,7 @@ A következő lépések végrehajtásával kezdheti meg a kód áttelepítését
 
 1. Új ügyfél-referenciák hozzáadása az indexelő szolgáltatással kapcsolatos objektumokhoz. Ha indexelő, adatforrásokat vagy szakértelmével használ, módosítsa az ügyfél [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)mutató hivatkozásait. Ez az ügyfél a 11-es verzióban új, és nincs előzménye.
 
-1. Gyűjtemények újralátogatása. Az új SDK-ban az összes lista csak olvasható, hogy elkerülje az alsóbb rétegbeli problémákat, ha a lista null értékeket tartalmaz. A kód módosításával elemeket adhat hozzá egy listához. Ha például karakterláncokat szeretne hozzárendelni egy Select tulajdonsághoz, ezeket a következőképpen adja hozzá:
+1. A gyűjtemények és a felsorolások áttekintése. Az új SDK-ban az összes lista csak olvasható, hogy elkerülje az alsóbb rétegbeli problémákat, ha a lista null értékeket tartalmaz. A kód módosításával elemeket adhat hozzá egy listához. Ha például karakterláncokat szeretne hozzárendelni egy Select tulajdonsághoz, ezeket a következőképpen adja hozzá:
 
    ```csharp
    var options = new SearchOptions
@@ -188,11 +188,13 @@ A következő lépések végrehajtásával kezdheti meg a kód áttelepítését
     options.Select.Add("LastRenovationDate");
    ```
 
+   A Select, a Faces, a SearchFields, a SourceFields, a ScoringParameters és a OrderBy minden olyan listát, amelyet most újra kell építeni.
+
 1. A lekérdezésekhez és az adatimportáláshoz tartozó ügyfél-referenciák frissítése. A [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) példányait [SearchClient](/dotnet/api/azure.search.documents.searchclient)értékre kell módosítani. A félreértések elkerülése érdekében győződjön meg arról, hogy a következő lépéshez való továbblépés előtt minden példányt elkapjon.
 
-1. Az ügyfél-referenciák frissítése index, indexelő, szinonimák leképezése és elemző objektumok számára. A [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) példányait [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient)értékre kell módosítani. 
+1. Az ügyfél-referenciák frissítése az index, a szinonimák leképezése és az elemző objektumok számára. A [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) példányait [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient)értékre kell módosítani. 
 
-1. A lehető legnagyobb mértékben frissítse az osztályokat, a metódusokat és a tulajdonságokat az új könyvtár API-jai használatához. Az [elnevezési különbségek](#naming-differences) szakasz elindítható, de a [módosítási naplót](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)is áttekintheti.
+1. A kód hátralévő részében frissítse az osztályokat, a metódusokat és a tulajdonságokat az új könyvtár API-jai használatához. Az [elnevezési különbségek](#naming-differences) szakasz elindítható, de a [módosítási naplót](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)is áttekintheti.
 
    Ha nem találja az egyenértékű API-kat, javasoljuk, hogy naplózza a problémát, [https://github.com/MicrosoftDocs/azure-docs/issues](https://github.com/MicrosoftDocs/azure-docs/issues) hogy javítsa a dokumentációt, vagy vizsgálja meg a problémát.
 

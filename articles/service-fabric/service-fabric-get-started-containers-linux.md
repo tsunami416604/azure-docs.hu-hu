@@ -4,12 +4,12 @@ description: Hozza létre első saját, Linux-alapú tárolóalkalmazását az A
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: d085f8704850cdbb03e21b15b3cca7c8998b96fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0481cc2d36f7882bbd8eea9b984c3dc388de5dee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004228"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534080"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Linux rendszeren
 > [!div class="op_single_selector"]
@@ -87,10 +87,17 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
-## <a name="build-the-image"></a>Rendszerkép létrehozása
-Futtassa a(z) `docker build` parancsot a webalkalmazást futtató rendszerkép létrehozásához. Nyisson meg egy PowerShell-ablakot, és lépjen a *c:\temp\helloworldapp* mappára. Futtassa az alábbi parancsot:
+## <a name="login-to-docker-and-build-the-image"></a>Bejelentkezés a Docker-be és a rendszerkép összeállítása
 
-```bash
+A következő lépésben létrehozjuk a webalkalmazást futtató rendszerképet. Ha nyilvános rendszerképeket húz a Docker-ből (például a `python:2.7-slim` Docker), ajánlott a Docker hub-fiókkal hitelesíteni a névtelen lekéréses kérelem helyett.
+
+> [!NOTE]
+> Gyakori névtelen lekéréses kérelmek esetében előfordulhat, hogy a hibák elkerülése érdekében a Docker-hubhoz hasonló, vagy az ahhoz való hitelesítéshez szükséges Docker-hibák jelennek meg `ERROR: toomanyrequests: Too Many Requests.` `You have reached your pull rate limit.` . További információért lásd: [nyilvános tartalom kezelése Azure Container Registryokkal](../container-registry/buffer-gate-public-content.md) .
+
+Nyisson meg egy PowerShell-ablakot, és lépjen a Docker-fájlt tartalmazó könyvtárra. Ezután futtassa le a következő parancsokat:
+
+```
+docker login
 docker build -t helloworldapp .
 ```
 

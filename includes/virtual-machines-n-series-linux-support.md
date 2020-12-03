@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 86f687bd4fd8be93efbf77c883c723046c2c96d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bfe077a99a3e89efe5fe4257a646484fb3810da
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016129"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96537056"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Támogatott disztribúciók és illesztőprogramok
 
@@ -31,9 +31,11 @@ A Microsoft a virtuális munkaállomásként vagy virtuális alkalmazásként ha
 
 Az Azure által újraterjesztett GRID-illesztőprogramok nem működnek a nem NV sorozatú virtuális gépeken, például az NC, a NCv2, a NCv3, az ND és a NDv2 sorozatú virtuális gépeken.
 
-| Disztribúció | Illesztő |
+|Disztribúció|Illesztő|
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,6 – 7,8, 8,0, 8,1<br/><br/>CentOS-alapú 7,6, 7,7, 8,0, 8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11,1, illesztőprogram-ág [R450](https://go.microsoft.com/fwlink/?linkid=874272)(. exe)|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,6 – 7,8, 8,0, 8,1<br/><br/>CentOS-alapú 7,6, 7,7, 8,0, 8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 11,2, illesztőprogram-ág [R450](https://go.microsoft.com/fwlink/?linkid=874272)(. exe)|
+
+Az összes korábbi NVIDIA GRID-illesztőprogram-hivatkozás teljes listájáért látogasson el a [githubra](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json) .
 
 > [!WARNING] 
 > A külső gyártótól származó szoftverek Red Hat termékekre történő telepítése befolyásolhatja a Red Hat támogatási feltételeit. Tekintse meg a vonatkozó [cikket a Red Hat tudásbázisában](https://access.redhat.com/articles/1067).

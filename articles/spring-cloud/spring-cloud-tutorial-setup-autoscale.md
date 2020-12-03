@@ -1,20 +1,20 @@
 ---
-title: Oktatóanyag – a Service-alkalmazások autoskálázásának beállítása
+title: Automatikus skálázás beállítása mikroszolgáltatás-alkalmazásokhoz
 description: Ez a cikk azt ismerteti, hogyan állíthatja be az alkalmazásaihoz az Microsoft Azure Portal vagy az Azure CLI használatával az alkalmazások autoskálázási beállításait.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 6023d1ebd27ebaccacfce85ce0f49b7ef87e17ad
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d59d5de0d98380be215747c7daa33721fcebf33c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742672"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533825"
 ---
-# <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Oktatóanyag: a Service-alkalmazások autoskálázásának beállítása
+# <a name="set-up-autoscale-for-microservice-applications"></a>Automatikus skálázás beállítása mikroszolgáltatás-alkalmazásokhoz
 
 **Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
@@ -30,7 +30,7 @@ Az alábbi eljárások követéséhez a következőkre lesz szüksége:
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Navigáljon a Azure Portal
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg az Azure Spring Cloud **Áttekintés** oldalát.
 3. Válassza ki a szolgáltatást tartalmazó erőforráscsoportot.
 4. Válassza az **alkalmazások** fület a bal oldali navigációs ablaktábla menü **Beállítások** területén.
@@ -68,7 +68,7 @@ Az Azure CLI használatával is beállíthatja az autoskálázási módokat.  Az
 
 Ha az alapszintű csomaggal rendelkezik, és egy vagy több ilyen korláttal van korlátozva, a standard szintre válthat. Ehhez nyissa meg az **árképzési** szint menüt úgy, hogy először kiválasztja a *standard* szintű oszlopot, és a **frissítés** gombra kattint.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az autoskálázás áttekintése Microsoft Azure](../azure-monitor/platform/autoscale-overview.md)
 * [Az Azure CLI figyelésének autoskálázása](/cli/azure/monitor/autoscale?preserve-view=true&view=azure-cli-latest)

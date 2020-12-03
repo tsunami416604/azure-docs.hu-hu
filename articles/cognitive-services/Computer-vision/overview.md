@@ -14,12 +14,12 @@ ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: Computer vízió, Computer víziós alkalmazások, számítógépes jövőkép szolgáltatás
-ms.openlocfilehash: 1b4768781c45733590639b4a382fecfdb02adf48
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 566424f9344d1eeff258a0391fa3635d5a12aae6
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95532290"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533112"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -110,8 +110,8 @@ A Computer Vision a következő követelményeknek megfelelő képeket képes el
 
 Akárcsak az összes Cognitive Services esetében, a Computer Vision szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Computer Vision használatának első lépései a következő útmutatóban olvashatók az előnyben részesített fejlesztői nyelven:
 
-- [Gyors útmutató: Computer Vision ügyféloldali kódtár](./quickstarts-sdk/client-library.md)
+- [Rövid útmutató: Computer Vision REST API vagy ügyféloldali kódtárak](./quickstarts-sdk/client-library.md)

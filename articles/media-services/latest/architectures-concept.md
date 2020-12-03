@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
-ms.openlocfilehash: e00079190371b3ae0e318aaadd8cf724d9d339d0
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: c14dbe4253696e01e99111a24319e455c1d551e9
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512621"
+ms.locfileid: "96533995"
 ---
 # <a name="media-services-architectures"></a>Media Services architektúrák
 
@@ -30,12 +30,6 @@ Az élő adatfolyam-megoldás lehetővé teszi a videók valós idejű rögzít�
 Ez a megoldás az Azure által felügyelt szolgáltatásokra épül: Media Services és Content Delivery Network. Ezek a szolgáltatások magas rendelkezésre állású, javított és támogatott környezetekben futnak, ami lehetővé teszi, hogy a környezetben futtatott környezet helyett a megoldásra koncentráljon.
 
 Lásd: [élő streaming digitális médiatartalmak](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-live-stream) az Azure Architecture Centerben.
-
-## <a name="instant-broadcasting-on-serverless-architecture"></a>Azonnali műsorszórás kiszolgáló nélküli architektúrán
-
-A kiszolgáló nélküli kóddal egyszerűsítheti az egy-a-többhöz valós idejű kommunikációt és frissítést. Ez az architektúra a Azure Functions, a Signaler szolgáltatást, a Storage-fiókot és egy SQL-adatbázist használ.
-
-Lásd: [azonnali szórás a kiszolgáló nélküli architektúrában](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/instant-broadcasting-on-serverless-architecture) az Azure Architecture Centerben.
 
 ## <a name="video-on-demand-digital-media"></a>Igény szerinti videó, digitális média
 
@@ -51,6 +45,6 @@ A Gridwich rendszer az Azure-beli multimédia-eszközök feldolgozására és to
 
 Lásd: [Gridwich Media Processing System](https://docs.microsoft.com/azure/architecture/reference-architectures/media-services/gridwich-architecture) in the Azure Architecture Center.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [Az Azure Media Services áttekintése](media-services-overview.md)

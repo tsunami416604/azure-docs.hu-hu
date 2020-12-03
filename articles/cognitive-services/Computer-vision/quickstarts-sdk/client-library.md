@@ -15,27 +15,30 @@ ms.custom:
 - devx-track-js
 - devx-track-csharp
 - cog-serv-seo-aug-2020
-zone_pivot_groups: programming-languages-set-one
+zone_pivot_groups: programming-languages-computer-vision
 keywords: Computer vízió, Computer vízió szolgáltatás
-ms.openlocfilehash: c0ed1d534ce76f870b34c626b1b21f7745aa3247
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 20378eff09abed0eb4d7587211f576de6313ea1d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91309820"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533309"
 ---
 # <a name="quickstart-use-the-computer-vision-client-library"></a>Gyors útmutató: az Computer Vision ügyféloldali kódtár használata
 
-Ismerkedjen meg az Computer Vision ügyféloldali kódtár használatába. A Computer Vision szolgáltatás AI-algoritmusokat biztosít a rendszerképek feldolgozásához és a vizualizációs funkciókkal kapcsolatos információk visszaküldéséhez. Az alábbi lépéseket követve telepíthet csomagot az alkalmazásba, és kipróbálhatja az alapszintű feladatokhoz tartozó kódot.
+Ismerkedjen meg a Computer Vision REST API vagy az ügyféloldali kódtárakkal. A Computer Vision szolgáltatás AI-algoritmusokat biztosít a rendszerképek feldolgozásához és a vizualizációs funkciókkal kapcsolatos információk visszaküldéséhez. Az alábbi lépéseket követve telepíthet csomagot az alkalmazásba, és kipróbálhatja az alapszintű feladatokhoz tartozó kódot.
 
-Az Computer Vision ügyféloldali kódtár használata a következőhöz:
 
-* Elemezheti a címkéket, a szöveges leírást, az arcokat, a felnőtt tartalmakat és egyebeket.
-* Nyomtatott és kézzel írt szöveg olvasása az olvasási API-val.
 
 ::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [C# SDK quickstart](../includes/quickstarts-sdk/csharp-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+[!INCLUDE [Python SDK quickstart](../includes/quickstarts-sdk/python-sdk.md)]
 
 ::: zone-end
 
@@ -51,14 +54,14 @@ Az Computer Vision ügyféloldali kódtár használata a következőhöz:
 
 ::: zone-end
 
-::: zone pivot="programming-language-python"
-
-[!INCLUDE [Python SDK quickstart](../includes/quickstarts-sdk/python-sdk.md)]
-
-::: zone-end
-
 ::: zone pivot="programming-language-go"
 
 [!INCLUDE [Go SDK quickstart](../includes/quickstarts-sdk/go-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-rest-api"
+
+[!INCLUDE [REST API quickstart](../includes/curl-quickstart.md)]
 
 ::: zone-end

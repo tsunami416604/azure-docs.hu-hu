@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 5/11/2020
-ms.openlocfilehash: 3a08b73a74d30a99ba3c360f012d5917f1d0c8bf
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 12/2/2020
+ms.openlocfilehash: 2cfd391daa13a100a56bb10b79b27eda80902374
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129728"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533607"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics-keresések hivatkozási adatainak használata
 
@@ -37,7 +37,7 @@ A hivatkozási adatok a Blobok nevében megadott dátum/idő növekvő sorrendj�
 
 ### <a name="configure-blob-reference-data"></a>BLOB-hivatkozási adatértékek konfigurálása
 
-A hivatkozási adatok konfigurálásához először létre kell hoznia egy olyan bemenetet, amely **hivatkozási adatokat tartalmaz** . Az alábbi táblázat bemutatja, hogy milyen tulajdonságokat kell megadnia a hivatkozási adatok bemenetének a leírásával való létrehozásakor:
+A hivatkozási adatok konfigurálásához először létre kell hoznia egy olyan bemenetet, amely **hivatkozási adatokat tartalmaz**. Az alábbi táblázat bemutatja, hogy milyen tulajdonságokat kell megadnia a hivatkozási adatok bemenetének a leírásával való létrehozásakor:
 
 |**Tulajdonság neve**  |**Leírás**  |
 |---------|---------|
@@ -111,13 +111,13 @@ Az [Azure SQL felügyelt példánya](../azure-sql/managed-instance/sql-managed-i
 
 ## <a name="size-limitation"></a>Méret korlátozása
 
-A legjobb teljesítmény érdekében ajánlott a 300 MB-nál kisebb méretű hivatkozási adatkészleteket használni. A 300 MB-nál nagyobb hivatkozási adatok használata 6 SUs vagy újabb feladatok esetén támogatott. Ez a funkció előzetes verzióban érhető el, és nem használható éles környezetben. A nagyon nagy referenciák használata hatással lehet a feladatok teljesítményére. Mivel a lekérdezések összetettsége az állapot-nyilvántartó feldolgozást is magában foglalja, például ablakos összesítéseket, időbeli illesztéseket és időbeli elemzési függvényeket, a rendszer várhatóan csökkenti a hivatkozási adatok maximális támogatott méretét. Ha Azure Stream Analytics nem tudja betölteni a hivatkozási adatok betöltését, és összetett műveleteket hajt végre, a feladat elfogy a memóriában, és sikertelen lesz. Ilyen esetekben a SU% kihasználtsági metrika eléri a 100%-ot.    
+A legjobb teljesítmény érdekében ajánlott a 300 MB-nál kisebb méretű hivatkozási adatkészleteket használni. Az 5 GB-os vagy alacsonyabb szintű hivatkozási adatkészletek támogatottak a 6 SUs vagy újabb feladatokban. A nagyon nagy referenciák használata hatással lehet a feladatok végpontok közötti késésére. Mivel a lekérdezések összetettsége az állapot-nyilvántartó feldolgozást is magában foglalja, például ablakos összesítéseket, időbeli illesztéseket és időbeli elemzési függvényeket, a rendszer várhatóan csökkenti a hivatkozási adatok maximális támogatott méretét. Ha Azure Stream Analytics nem tudja betölteni a hivatkozási adatok betöltését, és összetett műveleteket hajt végre, a feladat elfogy a memóriában, és sikertelen lesz. Ilyen esetekben a SU% kihasználtsági metrika eléri a 100%-ot.    
 
 |**Folyamatos átviteli egységek száma**  |**Ajánlott méret**  |
 |---------|---------|
 |1   |50 MB vagy kevesebb   |
 |3   |150 MB vagy kevesebb   |
-|6 és azon túl   |300 MB vagy kevesebb. Az 300 MB-nál nagyobb hivatkozási adatok előzetes verzióban támogatottak, és befolyásolhatják a feladatok teljesítményét.    |
+|6 és azon túl   |5 GB vagy alacsonyabb.    |
 
 A tömörítés támogatása nem érhető el a hivatkozási értékekhez.
 
@@ -138,7 +138,7 @@ FROM    Step1
 JOIN    refData2 ON refData2.Desc = Step1.Desc 
 ``` 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 

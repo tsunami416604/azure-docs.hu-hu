@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2020
 ms.author: memildin
-ms.openlocfilehash: 304604b649381daa887b4d313ffd0f773f015a0b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: bbc36dbb2a17d379d31a9a235898500aea36247d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122214"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533910"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Oktatóanyag: Jogszabályi megfelelés javítása
 
@@ -34,7 +34,10 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban szereplő funkciók átlépéséhez engedélyezni kell az [Azure Defendert](azure-defender.md) . 30 napig ingyenesen kipróbálhatja az Azure Defendert.
+Az oktatóanyagban tárgyalt funkciók átlépéséhez:
+
+- Az [Azure Defender](azure-defender.md) szolgáltatást engedélyezni kell. 30 napig ingyenesen kipróbálhatja az Azure Defendert.
+- Be kell jelentkeznie egy olyan fiókkal, amely rendelkezik olvasói hozzáféréssel a szabályzat megfelelőségi információhoz (a **biztonsági olvasó** nem elegendő). Az előfizetés **globális olvasójának** szerepe fog működni. Legalább az **erőforrás-házirend közreműködői** és a **biztonsági rendszergazdai** szerepkörök hozzárendelésére van szükség.
 
 ##  <a name="assess-your-regulatory-compliance"></a>A szabályozás megfelelőségének felmérése
 

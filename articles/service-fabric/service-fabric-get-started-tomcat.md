@@ -4,12 +4,12 @@ description: Hozzon létre Linux-tárolót az Apache Tomcat Serveren futó alkal
 ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3de97bc277195dff2daf5868c0eb9aec5d6e27c0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75614417"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534029"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Apache Tomcat Servert futtató Service Fabric tároló létrehozása Linux rendszeren
 Az Apache Tomcat a Java servlet és a Java Server technológiák népszerű, nyílt forráskódú implementációja. Ez a cikk bemutatja, hogyan hozhat létre egy olyan tárolót az Apache Tomcat használatával és egy egyszerű webalkalmazással, hogyan helyezheti üzembe a tárolót egy Linux rendszerű Service Fabric-fürtön, és hogyan csatlakozhat a webalkalmazáshoz.  
@@ -52,9 +52,10 @@ Az ebben a szakaszban ismertetett lépésekkel egy Apache Tomcat-rendszerkép é
    További információért tekintse meg a [Docker-referenciát](https://docs.docker.com/engine/reference/builder/) .
 
 
-4. A `docker build` következő parancs futtatásával hozza létre a webalkalmazást futtató rendszerképet:
+4. Jelentkezzen be a Docker szolgáltatásba, és futtassa a `docker build` parancsot a webalkalmazást futtató rendszerkép létrehozásához:
 
    ```bash
+   docker login
    docker build . -t tomcattest
    ```
 
@@ -99,7 +100,7 @@ Az ebben a szakaszban ismertetett lépésekkel egy Apache Tomcat-rendszerkép é
    ```
 
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>A Tomcat-rendszerkép leküldése a tároló-beállításjegyzékbe
-Most, hogy ellenőrizte, hogy a Tomcat-rendszerkép egy tárolóban fut a fejlesztői számítógépen, leküldheti azt egy tároló-beállításjegyzékben lévő adattárba. Ez a cikk a rendszerkép tárolására Azure Container Registry használ, de a lépések némelyikének módosításával bármely kiválasztott tároló-beállításjegyzéket használhat. Ebben a cikkben a rendszer feltételezi, hogy a beállításjegyzék neve *myregistry* , és a teljes beállításjegyzék neve myregistry.azurecr.IO. Módosítsa ezeket megfelelően a forgatókönyvhöz. 
+Most, hogy ellenőrizte, hogy a Tomcat-rendszerkép a fejlesztői számítógép egyik tárolójában fut, leküldi egy adattárba egy tároló-beállításjegyzékben, hogy csökkentse a rendszerkép-fejlesztési és üzembe helyezési munkafolyamatok [megszakadását](../container-registry/buffer-gate-public-content.md) . Ez a cikk a rendszerkép tárolására Azure Container Registry használ, de a lépések némelyikének módosításával bármely kiválasztott tároló-beállításjegyzéket használhat. Ebben a cikkben a rendszer feltételezi, hogy a beállításjegyzék neve *myregistry* , és a teljes beállításjegyzék neve myregistry.azurecr.IO. Módosítsa ezeket megfelelően a forgatókönyvhöz. 
 
 1. A futtatásával `docker login` Jelentkezzen be a tároló-beállításjegyzékbe a [beállításjegyzékbeli hitelesítő adataival](../container-registry/container-registry-authentication.md).
 
@@ -204,7 +205,7 @@ Most, hogy leküldte a Tomcat-lemezképet egy tároló-beállításjegyzékbe, l
    * Helyi fürtön használja a `http://localhost:19080/Explorer` ( *localhost* a virtuális gép magánhálózati IP-címére), ha Mac OS X-ben a Csavargót használja.
    * Biztonságos Azure-fürtön használja a következőt: `https://PublicIPorFQDN:19080/Explorer` . 
     
-   Bontsa ki az **alkalmazások** csomópontot, és figyelje meg, hogy most már van egy bejegyzés az alkalmazás típusához, a **ServiceFabricTomcatType**és egy másikhoz az adott típus első példányához. Az alkalmazás teljes körű üzembe helyezése eltarthat néhány percig, tehát türelmesnek kell lennie.
+   Bontsa ki az **alkalmazások** csomópontot, és figyelje meg, hogy most már van egy bejegyzés az alkalmazás típusához, a **ServiceFabricTomcatType** és egy másikhoz az adott típus első példányához. Az alkalmazás teljes körű üzembe helyezése eltarthat néhány percig, tehát türelmesnek kell lennie.
 
    ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
 
@@ -215,7 +216,7 @@ Most, hogy leküldte a Tomcat-lemezképet egy tároló-beállításjegyzékbe, l
    * http://PublicIPorFQDN:8080/hello/sayhello
    * http://PublicIPorFQDN:8080/hello/sayhi
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 A sablonban megadott eltávolítási parancsfájl használatával törölje az alkalmazás példányát a fürtből, és törölje az alkalmazás típusának regisztrációját.
 
 ```bash

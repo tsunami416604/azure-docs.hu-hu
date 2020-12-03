@@ -4,12 +4,12 @@ description: Hozza létre első saját, Windows-alapú tárolóalkalmazását az
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 96a9eda23268bc06029292c3c5f10502216e3658
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 197423670ffe05f15fdc5bfd351efdfba33b53cd
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087060"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533774"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 
@@ -36,20 +36,15 @@ A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban
 
   Ebben a cikkben a fürt csomópontjain futó Windows Server verziójának (buildének) meg kell egyeznie a fejlesztői gépen. Ennek az az oka, hogy a Docker-rendszerképet a fejlesztői gépen hozza létre, és kompatibilitási korlátok vannak a tároló operációs rendszer és a gazdagép operációs rendszerének verziói között. További információ: a [Windows Server Container operációs rendszer és a gazdagép operációs rendszerének kompatibilitása](#windows-server-container-os-and-host-os-compatibility). 
   
-A Windows Server-verziónak a fürthöz szükséges tárolókkal való meghatározásához futtassa a `ver` parancsot egy Windows-parancssorból a fejlesztői gépen:
-
-* Ha a verzió *x. x. 14323. x* verziót tartalmaz, válassza a *windowsserver 2016-Datacenter-with-containers* elemet az operációs rendszer számára a [fürt létrehozásakor](service-fabric-cluster-creation-via-portal.md).
-  * Ha a verzió *x. x. 16299. x* verziót tartalmaz, válassza a *WindowsServerSemiAnnual Datacenter-Core-1709-with-containers* elemet az operációs rendszerhez a [fürt létrehozásakor](service-fabric-cluster-creation-via-portal.md).
+    A Windows Server-verziónak a fürthöz szükséges tárolókkal való meghatározásához futtassa a `ver` parancsot egy Windows-parancssorból a fejlesztői gépen. [Fürt létrehozása](service-fabric-cluster-creation-via-portal.md)előtt tekintse meg a [Windows Server Container operációs rendszer és az operációs rendszer kompatibilitása](#windows-server-container-os-and-host-os-compatibility) című témakört.
 
 * Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében.
 
 > [!NOTE]
 > A tárolók üzembe helyezése a Windows 10 rendszerű Service Fabric-fürtökön támogatott.  [Ebből a cikkből](service-fabric-how-to-debug-windows-containers.md) megtudhatja, hogyan konfigurálhatja a Windows 10 rendszert Windows-tárolók futtatására.
->   
 
 > [!NOTE]
-> Service Fabric 6,2-es és újabb verziók támogatják a tárolók üzembe helyezését a Windows Server 1709-es verzióján futó fürtökön.  
-> 
+> Service Fabric 6,2-es és újabb verziók támogatják a tárolók üzembe helyezését a Windows Server 1709-es verzióján futó fürtökön.
 
 ## <a name="define-the-docker-container"></a>A Docker-tároló definiálása
 
@@ -57,7 +52,7 @@ A Windows Server-verziónak a fürthöz szükséges tárolókkal való meghatár
 
 Adja meg a Docker-tárolót egy Docker-fájlban. A Docker-fájl a környezet tárolón belüli beállítására, a futtatni kívánt alkalmazás betöltésére és a portok hozzárendelésére vonatkozó utasításokat tartalmazza. A Docker-fájl a `docker build` parancs bemenete, amely a rendszerképet létrehozza.
 
-Hozzon létre egy üres könyvtárat és a *Docker-fájlt* (fájlkiterjesztés nélkül). Adja hozzá a következőket a *Docker-fájlhoz* , és mentse a módosításokat:
+Hozzon létre egy üres könyvtárat és a *Docker-fájlt* (fájlkiterjesztés nélkül). Adja hozzá a következőket a *Docker-fájlhoz*, és mentse a módosításokat:
 
 ```
 # Use an official Python runtime as a base image
@@ -109,10 +104,18 @@ if __name__ == "__main__":
 ```
 
 <a id="Build-Containers"></a>
-## <a name="build-the-image"></a>Rendszerkép létrehozása
-Futtassa a(z) `docker build` parancsot a webalkalmazást futtató rendszerkép létrehozásához. Nyisson meg egy PowerShell-ablakot, és lépjen a Docker-fájlt tartalmazó könyvtárra. Futtassa az alábbi parancsot:
+
+## <a name="login-to-docker-and-build-the-image"></a>Bejelentkezés a Docker-be és a rendszerkép összeállítása
+
+A következő lépésben létrehozjuk a webalkalmazást futtató rendszerképet. Ha nyilvános rendszerképeket húz a Docker-ből (például a `python:2.7-windowsservercore` Docker), ajánlott a Docker hub-fiókkal hitelesíteni a névtelen lekéréses kérelem helyett.
+
+> [!NOTE]
+> Gyakori névtelen lekéréses kérelmek esetében előfordulhat, hogy a hibák elkerülése érdekében a Docker-hubhoz hasonló, vagy az ahhoz való hitelesítéshez szükséges Docker-hibák jelennek meg `ERROR: toomanyrequests: Too Many Requests.` `You have reached your pull rate limit.` . További információért lásd: [nyilvános tartalom kezelése Azure Container Registryokkal](../container-registry/buffer-gate-public-content.md) .
+
+Nyisson meg egy PowerShell-ablakot, és lépjen a Docker-fájlt tartalmazó könyvtárra. Ezután futtassa le a következő parancsokat:
 
 ```
+docker login
 docker build -t helloworldapp .
 ```
 
@@ -284,9 +287,9 @@ Az [erőforrás-szabályozás](service-fabric-resource-governance.md) korlátozz
 ```
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK konfigurálása 
 
-A 6.1-es verzióval kezdődően a Service Fabric automatikusan integrálja a [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) eseményeket a rendszerállapot-jelentésbe. Ez azt jelenti, hogy ha a tárolón engedélyezett a **HEALTHCHECK** , a Service Fabric jelenti az állapotát, valahányszor a tároló állapota módosul a Docker jelentése szerint. Egy **OK** állapotjelentés jelenik meg a [Service Fabric Explorerben](service-fabric-visualizing-your-cluster.md), amikor a *health_status* értéke *healthy* (megfelelő), és egy **WARNING** jelenik meg, ha a *health_status* értéke *unhealthy* (nem megfelelő). 
+A 6.1-es verzióval kezdődően a Service Fabric automatikusan integrálja a [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) eseményeket a rendszerállapot-jelentésbe. Ez azt jelenti, hogy ha a tárolón engedélyezett a **HEALTHCHECK**, a Service Fabric jelenti az állapotát, valahányszor a tároló állapota módosul a Docker jelentése szerint. Egy **OK** állapotjelentés jelenik meg a [Service Fabric Explorerben](service-fabric-visualizing-your-cluster.md), amikor a *health_status* értéke *healthy* (megfelelő), és egy **WARNING** jelenik meg, ha a *health_status* értéke *unhealthy* (nem megfelelő). 
 
-A v 6.4 legújabb frissítésének megkezdése után lehetősége van megadnia, hogy a Docker HEALTHCHECK-értékelések hibát jelentsenek. Ha ez a beállítás engedélyezve van, akkor megjelenik egy **OK** állapot jelentés, ha *health_status* *kifogástalan* , és a **hiba** akkor jelenik meg, ha *health_status* *sérült* .
+A v 6.4 legújabb frissítésének megkezdése után lehetősége van megadnia, hogy a Docker HEALTHCHECK-értékelések hibát jelentsenek. Ha ez a beállítás engedélyezve van, akkor megjelenik egy **OK** állapot jelentés, ha *health_status* *kifogástalan* , és a **hiba** akkor jelenik meg, ha *health_status* *sérült*.
 
 A **HEALTHCHECK** ellenőrzéséhez használt tényleges ellenőrzésre mutató utasításnak jelen kell lennie a tároló rendszerképének létrehozásakor használt Docker.
 
@@ -310,11 +313,11 @@ A **HEALTHCHECK** viselkedését konfigurálhatja az egyes tárolókhoz, ha mega
     </Policies>
 </ServiceManifestImport>
 ```
-Alapértelmezés szerint a *IncludeDockerHealthStatusInSystemHealthReport* értéke **true (igaz** ), a *RestartContainerOnUnhealthyDockerHealthStatus* értéke false ( **hamis** ), a *TreatContainerUnhealthyStatusAsError* pedig **false (hamis** ) értékre van állítva. 
+Alapértelmezés szerint a *IncludeDockerHealthStatusInSystemHealthReport* értéke **true (igaz**), a *RestartContainerOnUnhealthyDockerHealthStatus* értéke false ( **hamis**), a *TreatContainerUnhealthyStatusAsError* pedig **false (hamis**) értékre van állítva. 
 
-Ha a *RestartContainerOnUnhealthyDockerHealthStatus* beállítása **true** , egy újra és újra nem megfelelő állapotúnak jelentett tároló újraindul (lehetőleg más csomópontokon).
+Ha a *RestartContainerOnUnhealthyDockerHealthStatus* beállítása **true**, egy újra és újra nem megfelelő állapotúnak jelentett tároló újraindul (lehetőleg más csomópontokon).
 
-Ha a *TreatContainerUnhealthyStatusAsError* értéke **true (igaz** ), akkor a **hiba** állapotáról szóló jelentések akkor jelennek meg, ha a tároló *health_status* *állapota* nem kifogástalan.
+Ha a *TreatContainerUnhealthyStatusAsError* értéke **true (igaz**), akkor a **hiba** állapotáról szóló jelentések akkor jelennek meg, ha a tároló *health_status* *állapota* nem kifogástalan.
 
 Ha az egész Service Fabric-fürthöz le szeretné tiltani a **HEALTHCHECK** integrációját, az [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) elemet **false** értékre kell állítania.
 
@@ -596,7 +599,7 @@ A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-dém
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
 * Tekintse meg a [.NET-alkalmazás üzembe helyezését](service-fabric-host-app-in-a-container.md) ismertető oktatóanyagot.
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

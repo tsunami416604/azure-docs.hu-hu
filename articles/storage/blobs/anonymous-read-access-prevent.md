@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 12/02/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 01a5c696a41b9361c35e7af90f68088acea2944b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f12a899d3b6daa3b233e6a799871afca1e24d046
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913776"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533747"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Tárolók és Blobok névtelen nyilvános olvasási hozzáférésének tiltása
 
@@ -166,6 +166,8 @@ New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 
 Ha szeretné, hogy az optimális teljesítmény érdekében a Storage-fiókok egy csoportján belül ellenőrizzék a nyilvános hozzáférési beállításokat, használhatja az Azure Resource Graph Explorert a Azure Portal. Ha többet szeretne megtudni az Erőforrásgrafikon Explorer használatáról, tekintse meg a gyors útmutató [: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerben](../../governance/resource-graph/first-query-portal.md).
 
+A **AllowBlobPublicAccess** tulajdonság alapértelmezés szerint nincs beállítva a Storage-fiókhoz, és nem ad vissza értéket, amíg explicit módon be nem állítja azt. A Storage-fiók engedélyezi a nyilvános hozzáférést, ha a tulajdonság értéke **Null** vagy **igaz**.
+
 A következő lekérdezés futtatása az Erőforrásgrafikon Explorerben a Storage-fiókok listáját adja vissza, és megjeleníti az egyes fiókok nyilvános hozzáférési beállításait:
 
 ```kusto
@@ -174,6 +176,10 @@ resources
 | extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
 | project subscriptionId, resourceGroup, name, allowBlobPublicAccess
 ```
+
+Az alábbi képen egy előfizetésen belüli lekérdezés eredményei láthatók. Vegye figyelembe, hogy azoknál a tárolási fiókoknál, amelyeknél a **AllowBlobPublicAccess** tulajdonság explicit módon be van állítva, **igaz** vagy **hamis értékként** jelenik meg az eredményben. Ha a **AllowBlobPublicAccess** tulajdonság nincs beállítva egy Storage-fiókhoz, akkor a lekérdezés eredményeiben üresként (vagy nullként) jelenik meg.
+
+:::image type="content" source="media/anonymous-read-access-prevent/check-public-access-setting-accounts.png" alt-text="Képernyőfelvétel a nyilvános hozzáférési beállítások lekérdezési eredményeiről a Storage-fiókok között":::
 
 ## <a name="use-azure-policy-to-audit-for-compliance"></a>A megfelelőség naplózása Azure Policy használata
 

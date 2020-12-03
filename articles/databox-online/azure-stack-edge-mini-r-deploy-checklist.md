@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: alkohli
-ms.openlocfilehash: c34240f55c091583cfed8c8fe966ae272d1fb453
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8bb07827d26efce3ab3454f370afb116ba13eb19
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466893"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533808"
 ---
 # <a name="deployment-checklist-for-your-azure-stack-edge-mini-r-device"></a>Üzembe helyezési ellenőrzőlista az Azure Stack Edge mini R-eszközhöz  
 
@@ -41,7 +41,7 @@ Az alábbi ellenőrzőlista segítségével gondoskodhat róla, hogy a Azure Sta
 | Aktiválás  | Aktiválási kulcs megkövetelése az Azure Stack Edge-erőforrásból.    | A generált kulcs 3 nap múlva lejár. |
 
 <!--
-| (Optional) MAC Address            | If MAC address needs to be whitelisted, get the address of the connected port from local UI of the device. |                                                                                                                   |
+| (Optional) MAC Address            | If MAC address needs to be approved, get the address of the connected port from local UI of the device. |                                                                                                                   |
 | (Optional) Network switch port    | Device hosts Hyper-V VMs for compute. Some network switch port configurations don’t accommodate these setups by default.                                                                                                        |                                                                                                                   |-->
 
 

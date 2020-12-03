@@ -1,27 +1,27 @@
 ---
-title: Oktatóanyag – Azure Spring Cloud-példány kiépítése a Terraform
+title: Azure Spring Cloud-példány üzembe helyezése a Terraform használatával
 description: Azure Spring Cloud-példány kiépítése a Terraform-mel.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ed66da991df4dbe89c327a9a28ee28527c3da87b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 060ef2d08b849706b47b24748142c608292971b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091644"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533791"
 ---
-# <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Oktatóanyag: Azure Spring Cloud-példány kiépítése a Terraform
+# <a name="provision-an-azure-spring-cloud-instance-with-terraform"></a>Azure Spring Cloud-példány kiépítése a Terraform
 
 **Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
-Ez az oktatóanyag egy Azure Spring Cloud-példányt hoz létre a Terraform használatával. Az eljárások végigvezetik a következő erőforrások létrehozásán:
+Ez a példa egy Azure Spring Cloud-példányt hoz létre a Terraform használatával. Az eljárások végigvezetik a következő erőforrások létrehozásán:
 
 > [!div class="checklist"]
-> * Resource Group
+> * Erőforráscsoport
 > * Azure Spring Cloud-példány
 > * Azure Storage Log Analytics
 
@@ -72,7 +72,7 @@ Ez az oktatóanyag egy Azure Spring Cloud-példányt hoz létre a Terraform hasz
     }
     ```
 
-1. Mentse a fájlt (** &lt; CTRL>S**), és lépjen ki a szerkesztőből (** &lt; CTRL>Q**).
+1. Mentse a fájlt (**&lt; CTRL>S**), és lépjen ki a szerkesztőből (**&lt; CTRL>Q**).
 
 ## <a name="apply-the-configuration"></a>A konfiguráció alkalmazása
 
@@ -143,7 +143,7 @@ Ebből a szakaszból megtudhatja, hogyan frissítheti a konfigurációt, hogy az
     }
     ```
 
-1. Mentse a fájlt (** &lt; CTRL>S**), és lépjen ki a szerkesztőből (** &lt; CTRL>Q**).
+1. Mentse a fájlt (**&lt; CTRL>S**), és lépjen ki a szerkesztőből (**&lt; CTRL>Q**).
 
 1. Ahogy az előző szakaszban is, futtassa a következő parancsot a módosítások elvégzéséhez:
 
@@ -161,13 +161,13 @@ Ebből a szakaszból megtudhatja, hogyan frissítheti a konfigurációt, hogy az
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat.
 
-Futtassa az [Terraform Destroy](https://www.terraform.io/docs/commands/destroy.html) parancsot az oktatóanyagban létrehozott Azure-erőforrások eltávolításához:
+Futtassa az [Terraform Destroy](https://www.terraform.io/docs/commands/destroy.html) parancsot az ebben a gyakorlatban létrehozott Azure-erőforrások eltávolításához:
 
 ```bash
 terraform destroy -auto-approve
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Terraform telepítése és konfigurálása Azure-erőforrások](/azure/developer/terraform/getting-started-cloud-shell)kiépítéséhez.

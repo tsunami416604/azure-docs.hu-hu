@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 73887515eea344e920455e3c24f3eae3d5ad515a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 50cce15d14561bb1c8ebfdbbeeedd99dc8efcda1
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95013748"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532992"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
@@ -133,7 +133,7 @@ Tekintse meg a sikeres JSON-válasz következő példáját:
 ### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>A 3,2-es olvasási előnézet szöveg sortörést tesz elérhetővé (csak latin nyelveket)
 Az [olvasási 3,2 előzetes verzió API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) kimenete egy **megjelenési** objektum, amely azt sorolja fel, hogy az egyes szövegfájlok nyomtatási vagy kézírási stílussal, valamint megbízhatósági pontszámmal rendelkeznek-e. Ez a funkció csak latin nyelveken támogatott.
 
-Ismerkedjen meg a [Computer Vision Read OCR SDK](./quickstarts-sdk/client-library.md) -gyors útmutatókkal és az [olvasási REST API](./QuickStarts/CSharp-hand-text.md) rövid útmutatókkal, amelyekkel MEGkezdheti az OCR-képességek integrálását az alkalmazásokba.
+Ismerkedjen meg a [Computer Vision REST API vagy az ügyféloldali kódtár](./quickstarts-sdk/client-library.md) gyors üzembe helyezésével, hogy megkezdje az OCR-képességek integrálását az alkalmazásokba.
 
 ## <a name="supported-languages-for-print-text"></a>A nyomtatási szöveghez támogatott nyelvek
 Az [OLVASÁSI API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) támogatja a nyomtatott szövegek angol, spanyol, német, francia, olasz, portugál és holland nyelvű kinyerését.
@@ -197,7 +197,6 @@ Akárcsak az összes kognitív szolgáltatás esetében, az olvasási/OCR szolg�
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerkedjen meg a [Computer Vision Read SDK](./quickstarts-sdk/client-library.md) -gyors útmutatóval C#, Java, JavaScript vagy Python nyelven.
-- A REST API-k használatával megtudhatja, hogyan használhatja a [Beolvasás REST API](./QuickStarts/CSharp-hand-text.md) a C#, a Java, a JavaScript vagy a Python használatával.
+- Ismerkedjen meg a [Computer Vision REST API vagy az ügyféloldali kódtár](./quickstarts-sdk/client-library.md)gyors üzembe helyezésével.
 - Az [olvasási REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)megismerése.
 - Ismerkedjen meg az [olvasási 3,2 nyilvános előzetes](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) verziójával REST API az egyszerűsített kínai és Japán támogatással kiegészítve.
