@@ -49,7 +49,105 @@
               href: azure-stack-edge-gpu-technical-specifications-compliance.md
             - name: Tápkábel-specifikációk
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
-        - name: A Kubernetes ismertetése (előzetes verzió)
+- name: Azure Stack Edge Pro R
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi az Azure Stack Edge Pro R?
+          href: azure-stack-edge-j-series-overview.md
+    - name: Alapelvek
+      items:
+        - name: Kész biztonság
+          href: azure-stack-edge-pro-r-safety.md
+        - name: Követelmények áttekintése
+          href: azure-stack-edge-pro-r-system-requirements.md
+        - name: A korlátozások ismertetése
+          href: azure-stack-edge-pro-r-limits.md
+        - name: Biztonsági áttekintés
+          href: azure-stack-edge-pro-r-security.md
+        - name: Specifikációk áttekintése
+          href: azure-stack-edge-pro-r-technical-specifications-compliance.md
+    - name: Oktatóanyagok
+      items:
+        - name: 0 – Ellenőrzőlista lekérése
+          href: azure-stack-edge-pro-r-deploy-checklist.md
+        - name: '1 – Rendelés, előkészítés'
+          href: azure-stack-edge-pro-r-deploy-prep.md
+        - name: 2 – Telepítés
+          href: azure-stack-edge-pro-r-deploy-install.md
+        - name: 3 – Csatlakozás
+          href: azure-stack-edge-pro-r-deploy-connect.md
+        - name: 4 – Hálózat beállítása
+          href: azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy.md
+        - name: 5 – Eszköz konfigurálása
+          href: azure-stack-edge-pro-r-deploy-set-up-device-update-time.md
+        - name: 6 – Biztonság konfigurálása
+          href: azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md
+        - name: 7 – Aktiválás
+          href: azure-stack-edge-pro-r-deploy-activate.md
+        - name: 8 – Számítás konfigurálása
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+    - name: Útmutató
+      items:
+        - name: VPN konfigurálása (előzetes verzió)
+          items:
+            - name: Konfigurálás az Azure PowerShell használatával
+              href: azure-stack-edge-mini-r-configure-vpn-powershell.md
+            - name: Konfigurálás a BCDR-hez
+              href: azure-stack-edge-pro-r-configure-vpn-bcdr.md
+- name: Azure Stack Edge Mini R
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi az Azure Stack Edge Mini R?
+          href: azure-stack-edge-k-series-overview.md
+    - name: Alapelvek
+      items:
+        - name: Kész biztonság
+          href: azure-stack-edge-mini-r-safety.md
+        - name: Követelmények áttekintése
+          href: azure-stack-edge-mini-r-system-requirements.md
+        - name: A korlátozások ismertetése
+          href: azure-stack-edge-mini-r-limits.md
+        - name: Biztonsági áttekintés
+          href: azure-stack-edge-pro-r-security.md
+        - name: Specifikációk áttekintése
+          href: azure-stack-edge-mini-r-technical-specifications-compliance.md
+    - name: Oktatóanyagok
+      items:
+        - name: 0 – Ellenőrzőlista lekérése
+          href: azure-stack-edge-mini-r-deploy-checklist.md
+        - name: '1 – Rendelés, előkészítés'
+          href: azure-stack-edge-mini-r-deploy-prep.md
+        - name: 2 – Telepítés
+          href: azure-stack-edge-mini-r-deploy-install.md
+        - name: 3 – Csatlakozás
+          href: azure-stack-edge-mini-r-deploy-connect.md
+        - name: 4 – Hálózat beállítása
+          href: azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy.md
+        - name: 5 – Eszköz konfigurálása
+          href: azure-stack-edge-mini-r-deploy-set-up-device-update-time.md
+        - name: 6 – Biztonság konfigurálása
+          href: azure-stack-edge-mini-r-deploy-configure-certificates-vpn-encryption.md
+        - name: 7 – Aktiválás
+          href: azure-stack-edge-mini-r-deploy-activate.md
+        - name: 8 – Számítás konfigurálása
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+    - name: Útmutató
+      items:
+        - name: VPN konfigurálása (előzetes verzió)
+          items:
+            - name: Konfigurálás az Azure PowerShell használatával
+              href: azure-stack-edge-mini-r-configure-vpn-powershell.md
+            - name: Konfigurálás a BCDR-hez
+              href: azure-stack-edge-pro-r-configure-vpn-bcdr.md
+        - name: Wi-Fi kezelése
+          href: azure-stack-edge-mini-r-manage-wifi.md
+- name: 'Közös Pro GPU, Pro R, mini R'
+  items:
+    - name: Közös alapelvek
+      items:
+        - name: A Kubernetes ismertetése
           items:
             - name: Mi az a Kubernetes?
               href: azure-stack-edge-gpu-kubernetes-overview.md
@@ -63,7 +161,9 @@
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
         - name: Key Vault-integráció megtekintése
           href: azure-stack-edge-gpu-activation-key-vault.md
-    - name: Útmutató
+        - name: Proaktív naplózás engedélyezése
+          href: azure-stack-edge-gpu-proactive-log-collection.md
+    - name: Közös útmutatók
       items:
         - name: IoT Edge-minták üzembe helyezése
           items:
@@ -73,12 +173,14 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: GPU-modul a piactéren keresztül
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-        - name: A Kubernetes számítási feladatainak üzembe helyezése (előzetes verzió)
+        - name: A Kubernetes számítási feladatainak üzembe helyezése
           items:
             - name: Kubectl használata
               items:
                 - name: Kubernetes-fürt elérése
                   href: azure-stack-edge-gpu-create-kubernetes-cluster.md
+                - name: Számításgyorsítás
+                  href: azure-stack-edge-gpu-deploy-compute-acceleration.md
                 - name: Állapot nélküli alkalmazás
                   href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
                 - name: Statikusan kiépített állapotalapú alkalmazás
@@ -107,6 +209,8 @@
               href: azure-stack-edge-j-series-configure-tls-settings.md
         - name: Azure-beli virtuális gépek üzembe helyezése (előzetes verzió)
           items:
+            - name: Virtuális gépek üzembe helyezése – Azure Portal
+              href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
             - name: Virtuális gépek üzembe helyezése – sablonok
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
             - name: Virtuális gépek üzembe helyezése – Azure PowerShell-parancsmagok
@@ -129,6 +233,8 @@
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
         - name: Peremhálózati számítás felügyelete
           href: azure-stack-edge-j-series-manage-compute.md
+        - name: A peremhálózati tárolóregisztrációs adatbázis kezelése
+          href: azure-stack-edge-gpu-edge-container-registry.md
         - name: Tárhelyátjáró felügyelete
           items:
             - name: 'Hozzáadás, csatlakozás a megosztáshoz'
@@ -165,6 +271,8 @@
               href: azure-stack-edge-monitor.md
             - name: Kubernetes-irányítópult használata
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
+            - name: Az Azure Monitor használata
+              href: azure-stack-edge-gpu-enable-azure-monitor.md
         - name: Hibaelhárítás
           items:
             - name: Eszközzel kapcsolatos problémák
@@ -175,13 +283,15 @@
               href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
               href: azure-stack-edge-contact-microsoft-support.md
-    - name: Kibocsátási megjegyzések
+    - name: Megosztott kibocsátási megjegyzések
       items:
-        - name: 2009 – GA
+        - name: 2011 – Aktuális
+          href: azure-stack-edge-gpu-2011-release-notes.md
+        - name: 2010
           href: azure-stack-edge-gpu-2009-release-notes.md
-        - name: 2008 – előzetes verzió
+        - name: 2008
           href: azure-stack-edge-gpu-2008-release-notes.md
-    - name: Referencia
+    - name: Megosztott referencia
       items:
         - name: 'IoT Edge-szerepkör API-n, SDK-n és PowerShellen keresztül'
           href: azure-stack-edge-gpu-iot-edge-api-update.md
@@ -279,18 +389,6 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet
-- name: Azure Stack Edge Pro R
-  items:
-    - name: Áttekintés
-      items:
-        - name: Mi az Azure Stack Edge Pro R?
-          href: azure-stack-edge-j-series-overview.md
-- name: Azure Stack Edge Mini R
-  items:
-    - name: Áttekintés
-      items:
-        - name: Mi az Azure Stack Edge Mini R?
-          href: azure-stack-edge-k-series-overview.md
 - name: Data Box Gateway
   items:
     - name: Áttekintés

@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 96fea7cb53c89c02583a6dba8434cd33641d6a09
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2becc9216d847dfe26d8fd3a433993112fff7980
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341501"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546352"
 ---
 # <a name="type-checking-functions-azure-cosmos-db"></a>Type Check functions (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A típus-ellenőrzési függvények lehetővé teszik egy kifejezés típusának ellenőrzését egy SQL-lekérdezésen belül. A Type-Check függvények segítségével meghatározhatja, hogy milyen típusú tulajdonságok vannak a menet közben, ha változó vagy ismeretlen. 
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Függvények
 
 Az alábbi táblázat a támogatott beépített típus-ellenőrzési funkciókat tartalmazza:
 
@@ -35,9 +35,9 @@ A következő függvények támogatják a bemeneti értékek típusának ellenő
 * [IS_PRIMITIVE](sql-query-is-primitive.md)
 * [IS_STRING](sql-query-is-string.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
 - [Az Azure Cosmos DB bemutatása](introduction.md)
 - [Felhasználó által definiált függvények](sql-query-udfs.md)
-- [Összesítések](sql-query-aggregates.md)
+- [Összesítések](sql-query-aggregate-functions.md)

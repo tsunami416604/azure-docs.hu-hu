@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 4d12a7ec76f3390aabc7b45aeb0cd8cedcc6febd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3f6342fcb658611c754a16399ec05f5fa76c79b8
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186473"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546114"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Az Azure és a ITSM-eszközök összekapcsolhatók a biztonságos exportálás használatával
 
@@ -72,7 +72,7 @@ Az alábbi lépéseket követve regisztrálja az alkalmazást az Azure AD-ben:
 3. Adja **meg** az **alkalmazás azonosítójának URI** azonosítóját.
 
    [![Képernyőkép az I D-alkalmazás U R I értékének beállításáról.](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox)
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 ## <a name="create-a-secure-webhook-action-group"></a>Biztonságos webhook-műveleti csoport létrehozása
 
@@ -122,6 +122,7 @@ Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
 2. Kövesse az utasításokat a verziónak megfelelően:
    * [Párizs](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
    * [Orlando](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
+   * [New York](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
 
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>A BMC Helix összekapcsolása Azure Monitor
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 6f80d41001d11c52a00454ea2a593f3f1fce32db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: da88b8554d6c3214da9a386613538c237a318f73
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028102"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546903"
 ---
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
@@ -53,15 +53,19 @@ A következő lépésekkel telepítheti a Speech CLI-t Linux rendszeren egy x64-
 
 `spx`A SPEECH parancssori felület súgójának megjelenítéséhez írja be a következőt:.
 
-#### <a name="docker-install"></a>[Docker-telepítés](#tab/dockerinstall)
-
-> [!NOTE]
-> <a href="https://www.docker.com/get-started" target="_blank">Docker Desktop a platformhoz <span class="docon docon-navigate-external x-hidden-focus"></span> </a> telepítve kell lennie.
+#### <a name="docker-install-windows-linux-macos"></a>[Docker-telepítés (Windows, Linux, macOS)](#tab/dockerinstall)
 
 A következő lépésekkel telepítheti a Speech CLI-t egy Docker-tárolóba:
 
-1. Írja be a következő parancsot egy új parancssorba vagy terminálba:  `docker pull msftspeech/spx`
-2. Írja be ezt a parancsot. A Speech CLI-vel kapcsolatos súgóban talál: `docker run -it --rm msftspeech/spx help`
+1. A <a href="https://www.docker.com/get-started" target="_blank">Docker Desktop <span class="docon docon-navigate-external x-hidden-focus"></span> telepítése</a> a platformon, ha még nincs telepítve.
+2. Írja be a következő parancsot egy új parancssorba vagy terminálba:
+   ```shell   
+   docker pull msftspeech/spx
+   ```
+3. Írja be ezt a parancsot. A Speech CLI-vel kapcsolatos súgóban talál:
+   ```shell 
+   docker run -it --rm msftspeech/spx help
+   ```
 
 ### <a name="mount-a-directory-in-the-container"></a>Könyvtár csatlakoztatása a tárolóhoz
 
@@ -72,7 +76,7 @@ Windows rendszeren írja be ezt a parancsot egy helyi címtár-beszédfelismeré
 
 `mkdir c:\spx-data`
 
-Vagy Linux vagy Mac rendszeren írja be ezt a parancsot egy terminálba egy könyvtár létrehozásához, és tekintse meg az abszolút elérési útját:
+Vagy Linux vagy macOS rendszeren írja be ezt a parancsot egy terminálba egy könyvtár létrehozásához, és tekintse meg az abszolút elérési útját:
 
 ```bash
 mkdir ~/spx-data
@@ -86,13 +90,17 @@ Az abszolút elérési utat fogja használni a Speech CLI hívásakor.
 
 Ez a dokumentáció a `spx` nem Docker-telepítésekben használt SPEECH CLI-parancsot mutatja be.
 Amikor a `spx` parancsot egy Docker-tárolóban hívja meg, csatlakoztatnia kell egy könyvtárat a tárolóban a fájlrendszerhez, ahol a SPEECH CLI képes tárolni és megtalálni a konfigurációs értékeket, valamint a fájlok olvasását és írását.
+
 Windows rendszeren a parancsok a következőképpen fognak kezdődni:
 
-`docker run -it -v c:\spx-data:/data --rm msftspeech/spx`
+```shell
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx
+```
 
-Linux vagy Mac rendszeren a parancsok a következőhöz hasonlóak lesznek:
-
-`sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx`
+Linux vagy macOS rendszeren a parancsok a következőhöz hasonlóak lesznek:
+```shell   
+sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
+```
 
 > [!NOTE]
 > Cserélje le a `/ABSOLUTE_PATH` parancsot a fenti szakaszban szereplő parancs által megjelenített abszolút elérési útra `pwd` .
@@ -100,12 +108,43 @@ Linux vagy Mac rendszeren a parancsok a következőhöz hasonlóak lesznek:
 A `spx` tárolóban telepített parancs használatához mindig adja meg a fent látható teljes parancsot, majd a kérés paramétereit.
 Windows rendszeren például a következő parancs állítja be a kulcsot:
 
-`docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY`
+```shell
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
+```
 
-> [!NOTE]
-> A számítógép mikrofonját vagy hangszóróját nem használhatja, ha a Speech CLI-t egy Docker-tárolón belül futtatja.
-> Ha ezeket az eszközöket szeretné használni, adja át a hangfájlokat a és a Speech CLI-ből a Docker-tárolón kívüli rögzítéshez/lejátszáshoz.
-> A Speech CLI-eszköz elérheti a fenti lépésekben beállított helyi könyvtárat.
+> [!WARNING]
+> A számítógép mikrofonját nem használhatja, ha a Speech CLI-t a Docker-tárolón belül futtatja. A helyi csatlakoztatott címtárban azonban elolvashatja és mentheti a hangfájlokat. 
+
+### <a name="optional-create-a-command-line-shortcut"></a>Nem kötelező: parancssori parancsikon létrehozása
+
+Ha Linux vagy macOS rendszerű Docker-tárolóból futtatja a Speech CLI-t, létrehozhat egy parancsikont. 
+
+Parancsikon létrehozásához kövesse az alábbi utasításokat:
+1. Nyissa meg `.bash_profile` kedvenc szövegszerkesztőjét. Például:
+   ```shell
+   nano ~/.bash_profile
+   ```
+2. Ezután adja hozzá ezt a függvényt a következőhöz: `.bash_profile` . Győződjön meg arról, hogy a függvényt a csatlakoztatott könyvtár megfelelő elérési útjával frissíti:
+   ```shell   
+   spx(){
+       sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
+   }
+   ```
+3. A profil forrása:
+   ```shell
+   source ~/.bash_profile
+   ```
+4. A futtatása helyett most `sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx` írja be a következőt `spx` : argumentumok. Például: 
+   ```shell
+   // Get some help
+   spx help recognize
+
+   // Recognize speech from an audio file 
+   spx recognize --file /mounted/directory/file.wav
+   ```
+
+> [!WARNING]
+> Ha módosítja azt a csatlakoztatott könyvtárat, amelyre a Docker hivatkozik, frissítenie kell a függvényt a alkalmazásban `.bash_profile` .
 
 ***
 

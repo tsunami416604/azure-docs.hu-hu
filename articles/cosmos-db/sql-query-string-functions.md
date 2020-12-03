@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4516bb9c426355de1fa2ce19befddef896a2de3e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5e84a679f0bc26b701dc1d51db3605c452675ea3
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93338101"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545281"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>Karakterlánc-függvények (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A karakterlánc-függvények lehetővé teszik a Azure Cosmos DB sztringeken végzett műveletek végrehajtását.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Függvények
 
 A következő skaláris függvények egy sztring típusú bemeneti értéken hajtanak végre műveletet, és karakterláncot, numerikus vagy logikai értéket adnak vissza:
   
@@ -34,7 +34,7 @@ A következő skaláris függvények egy sztring típusú bemeneti értéken haj
 * [LTRIM](sql-query-ltrim.md)
 * [REGEXMATCH](sql-query-regexmatch.md)
 * [REPLACE](sql-query-replace.md)
-* [REPLIKÁLÁS](sql-query-replicate.md)
+* [REPLIKÁLÁSA](sql-query-replicate.md)
 * [FORDÍTOTT](sql-query-reverse.md)
 * [RIGHT](sql-query-right.md)
 * [RTRIM](sql-query-rtrim.md)
@@ -49,9 +49,9 @@ A következő skaláris függvények egy sztring típusú bemeneti értéken haj
 * [TRIM](sql-query-trim.md)
 * [UPPER](sql-query-upper.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
 - [Az Azure Cosmos DB bemutatása](introduction.md)
 - [Felhasználó által definiált függvények](sql-query-udfs.md)
-- [Összesítések](sql-query-aggregates.md)
+- [Összesítések](sql-query-aggregate-functions.md)

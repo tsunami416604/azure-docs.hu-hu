@@ -11,12 +11,12 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5b8888a29d7dda94e4fc9c35b27056036bc6c463
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 097a3132208eee98b3f95291e414263e637bc265
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449775"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545587"
 ---
 # <a name="user-defined-restore-points-for-a-dedicated-sql-pool-formerly-sql-dw"></a>Felhasználó által definiált visszaállítási pontok egy dedikált SQL-készlethez (korábban SQL DW)
 
@@ -53,7 +53,7 @@ New-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName 
 
 ```Powershell
 # List all restore points
-Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
+Get-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 ```
 
 ## <a name="create-user-defined-restore-points-through-the-azure-portal"></a>Felhasználó által definiált visszaállítási pontok létrehozása a Azure Portal
@@ -72,7 +72,7 @@ A felhasználó által definiált visszaállítási pontok a Azure Portal haszn�
 
     ![A visszaállítási pont neve](./media/sql-data-warehouse-restore-points/creating-restore-point-11.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő dedikált SQL-készlet visszaállítása (korábban SQL DW)](sql-data-warehouse-restore-active-paused-dw.md)
 - [Törölt dedikált SQL-készlet visszaállítása (korábban SQL DW)](sql-data-warehouse-restore-deleted-dw.md)

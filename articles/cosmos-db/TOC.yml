@@ -1315,7 +1315,7 @@
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Lekérdezés az Azure Synapse Sparkkal
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-        - name: Lekérdezés kiszolgáló nélküli Synapse SQL-lel
+        - name: Lekérdezés kiszolgáló nélküli SQL-készlettel
           href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: A Power BI használata a Synapse Linkkel
           href: synapse-link-power-bi.md

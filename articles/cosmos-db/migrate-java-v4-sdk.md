@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b33524acd09cbf565127dc81ef2b5bfa16b4504d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 6bbf87689b577eda7de491744156e63eaa3b440c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339764"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546879"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Az alkalmazás migrálása a Azure Cosmos DB Java SDK v4 használatára
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -33,7 +33,7 @@ Ez a cikk azt ismerteti, hogyan frissítheti a régebbi Azure Cosmos DB Java SDK
 
 A következő táblázat felsorolja a különböző Azure Cosmos DB Java SDK-kat, a csomag nevét és a kiadási információkat:
 
-| Java SDK| Kiadás dátuma | Köteg API-k   | Maven jar  | Java-csomag neve  |API-referencia   | Kibocsátási megjegyzések  |
+| Java SDK| Kiadás dátuma | Köteg API-k   | Maven jar  | Java-csomag neve  |API-hivatkozás   | Kibocsátási megjegyzések  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
 | Aszinkron 2. x. x  | 2018. június    | Aszinkron (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Kibocsátási megjegyzések](sql-api-sdk-async-java.md) |
 | 2. x. x szinkronizálása     | Szeptember 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Kibocsátási megjegyzések](sql-api-sdk-java.md)  |
@@ -46,9 +46,9 @@ A különböző SDK-k között a legfontosabb implementációs különbségek a 
 
 ### <a name="rxjava-is-replaced-with-reactor-in-azure-cosmos-db-java-sdk-versions-3xx-and-40"></a>A RxJava helyére a reaktor szerepel a Azure Cosmos DB Java SDK 3. x. x és 4,0 verziójában.
 
-Ha nem ismeri az aszinkron programozási vagy reaktív programozást, tekintse meg a következőt: a [reaktor mintájának útmutatója](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) az aszinkron programozás és a projekt-visszavezető bevezetéséhez. Ez az útmutató akkor lehet hasznos, ha Azure Cosmos DB Sync Java SDK 2. x. x vagy Azure Cosmos DB Java SDK 3. x. x szinkronizációs API-t korábban használta.
+Ha nem ismeri az aszinkron programozási vagy reaktív programozást, tekintse meg a következőt: a [reaktor mintájának útmutatója](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) az aszinkron programozás és a projekt-visszavezető bevezetéséhez. Ez az útmutató akkor lehet hasznos, ha Azure Cosmos DB Sync Java SDK 2. x. x vagy Azure Cosmos DB Java SDK 3. x. x szinkronizációs API-t korábban használta.
 
-Ha Azure Cosmos DB aszinkron Java SDK 2. x. x verzióját használja, és az 4,0 SDK-ra való áttérést tervezi, tekintse meg a [reaktor vs RxJava útmutatót](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) , amely útmutatást nyújt a RxJava-kód a reaktor használatára való átalakításához.
+Ha Azure Cosmos DB aszinkron Java SDK 2. x. x verzióját használja, és az 4,0 SDK-ra való áttérést tervezi, tekintse meg a [reaktor vs RxJava útmutatót](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) , amely útmutatást nyújt a RxJava-kód a reaktor használatára való átalakításához.
 
 ### <a name="azure-cosmos-db-java-sdk-v4-has-direct-connectivity-mode-in-both-async-and-sync-apis"></a>Azure Cosmos DB Java SDK v4 közvetlen kapcsolati móddal rendelkezik az aszinkron és a Sync API-kkal
 
@@ -66,9 +66,9 @@ A következő API-szint módosul Azure Cosmos DB Java SDK 4. x. x verzióban az 
 
   * **Java SDK 4,0** : az összes osztály a szinkronizálási API-hoz tartozik, kivéve, ha az osztály nevét a következővel fűzi hozzá `Async` `Cosmos` .
 
-  * **Java SDK 3. x. x** : az összes osztály az aszinkron API-hoz tartozik, kivéve, ha az osztály nevét a következővel fűzi hozzá `Async` `Cosmos` .
+  * **Java SDK 3. x. x**: az összes osztály az aszinkron API-hoz tartozik, kivéve, ha az osztály nevét a következővel fűzi hozzá `Async` `Cosmos` .
 
-  * **Aszinkron Java SDK 2. x. x** : az osztályok neve hasonló a Java SDK 2. x. x verziójának szinkronizálásához, a név azonban *aszinkron* módon kezdődik.
+  * **Aszinkron Java SDK 2. x. x**: az osztályok neve hasonló a Java SDK 2. x. x verziójának szinkronizálásához, a név azonban *aszinkron* módon kezdődik.
 
 ### <a name="hierarchical-api-structure"></a>Hierarchikus API-struktúra
 
@@ -373,8 +373,8 @@ SalesOrder salesOrder = new SalesOrder(
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Java-alkalmazás létrehozása](create-sql-api-java.md) Azure Cosmos db SQL API-alapú adatkezeléshez a v4 SDK használatával
-* Tudnivalók a [reaktor-alapú Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) -k használatáról
-* Ismerje meg, hogyan konvertálhatja a RxJava aszinkron kódot a reaktorra és az aszinkron kódra a reaktor [vs RxJava útmutató](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) segítségével
+* Tudnivalók a [reaktor-alapú Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) -k használatáról
+* Ismerje meg, hogyan konvertálhatja a RxJava aszinkron kódot a reaktorra és az aszinkron kódra a reaktor [vs RxJava útmutató](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) segítségével

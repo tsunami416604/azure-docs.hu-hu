@@ -3,12 +3,12 @@ title: Titkosított Azure-beli virtuális gépek biztonsági mentése és vissza
 description: A titkosított Azure-beli virtuális gépek biztonsági mentését és visszaállítását ismerteti a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: c4760a54d0200e48b2d6a38c963e9fc23925f7ff
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ee7fedffd58ffb9e98f8c412833d151eb1a95530
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324924"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547151"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Titkosított Azure-beli virtuális gépek biztonsági mentése és visszaállítása
 
@@ -22,7 +22,11 @@ Alapértelmezés szerint a virtuális gépek összes lemeze automatikusan titkos
 
 ## <a name="encryption-using-customer-managed-keys"></a>Titkosítás az ügyfelek által felügyelt kulcsokkal
 
-Ha egyéni felügyelt kulcsokkal (CMK) titkosítja a lemezeket, a lemezek titkosításához használt kulcsot a rendszer a Azure Key Vault tárolja, és Ön felügyeli. Storage Service Encryption (SSE) a CMK használatával eltér a Azure Disk Encryption (ADE) titkosítástól. Az ADE az operációs rendszer titkosítási eszközeit használja. Az SSE titkosítja az adatait a Storage szolgáltatásban, lehetővé téve a virtuális gépekhez tartozó operációs rendszerek vagy rendszerképek használatát. A felügyelt lemezek ügyfél által felügyelt kulcsokkal történő titkosításával kapcsolatos további információkért tekintse meg [ezt a cikket](../virtual-machines/disk-encryption.md#customer-managed-keys).
+Ha ügyfél által felügyelt kulcsokkal (CMK) titkosítja a lemezeket, a lemezek titkosításához használt kulcsot a rendszer a Azure Key Vault tárolja és felügyeli. Storage Service Encryption (SSE) a CMK használatával eltér a Azure Disk Encryption (ADE) titkosítástól. Az ADE az operációs rendszer titkosítási eszközeit használja. Az SSE titkosítja az adatait a Storage szolgáltatásban, lehetővé téve a virtuális gépekhez tartozó operációs rendszerek vagy rendszerképek használatát.
+
+Az ügyfél által felügyelt kulcsokat használó virtuális gépek biztonsági mentéséhez és visszaállításához nem kell explicit műveleteket végrehajtania a lemezek titkosításához. A tárolóban tárolt ezen virtuális gépek biztonsági mentési adatfájljai ugyanazokkal a módszerekkel lesznek titkosítva, mint a tárban [használt titkosítás](encryption-at-rest-with-cmk.md).
+
+A felügyelt lemezek ügyfél által felügyelt kulcsokkal történő titkosításával kapcsolatos további információkért tekintse meg [ezt a cikket](../virtual-machines/disk-encryption.md#customer-managed-keys).
 
 ## <a name="encryption-support-using-ade"></a>Titkosítási támogatás az ADE használatával
 
@@ -149,7 +153,7 @@ A titkosított virtuális gépeket a következőképpen állíthatja vissza:
     2. Hozzon létre egy új virtuális gépet a helyreállított lemezekről a PowerShell használatával. [További információk](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 3. Linux rendszerű virtuális gépek esetén telepítse újra az ADE bővítményt, hogy az adatlemezek nyitva és csatlakoztatva legyenek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha bármilyen problémába ütközik, tekintse át a következő cikkeket:
 

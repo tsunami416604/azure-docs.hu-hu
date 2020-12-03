@@ -10,12 +10,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 4ec2deaf3149e174cce201d0bbad8a55d156d30f
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: b39a74bd06f942cf21d201c8cef48bc6dfc57d46
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95998335"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548086"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>A Azure Cosmos DB aszinkron Java SDK v2 és az SQL API-fiókok használata esetén felmerülő problémák elhárítása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "95998335"
 > 
 
 > [!IMPORTANT]
-> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Frissítse a projektet [Azure Cosmos db Java SDK v4](sql-api-sdk-java-v4.md) -re, majd olvassa el a Azure Cosmos db Java SDK v4 [hibaelhárítási útmutatót](troubleshoot-java-sdk-v4-sql.md). A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) útmutató című témakör utasításait. 
+> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Frissítse a projektet [Azure Cosmos db Java SDK v4](sql-api-sdk-java-v4.md) -re, majd olvassa el a Azure Cosmos db Java SDK v4 [hibaelhárítási útmutatót](troubleshoot-java-sdk-v4-sql.md). A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) útmutató című témakör utasításait. 
 >
 > Ez a cikk csak Azure Cosmos DB aszinkron Java SDK v2-re vonatkozó hibaelhárítást ismerteti. További információért tekintse meg a Azure Cosmos DB aszinkron Java SDK v2 [kibocsátási megjegyzéseit](sql-api-sdk-async-java.md), a [Maven-tárházat](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) és a [teljesítménnyel kapcsolatos tippeket](performance-tips-async-java.md) .
 >
@@ -55,7 +55,7 @@ A kapcsolatok szabályozása akkor fordulhat elő, ha a gazdagép vagy az [Azure
 
 ##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>A gazdagépre vonatkozó kapcsolatonként
 Bizonyos linuxos rendszerek (például a Red Hat) felső korláttal rendelkeznek a megnyitott fájlok teljes számánál. A Linux rendszerű szoftvercsatornák fájlokként vannak megvalósítva, így ez a szám a kapcsolatok teljes számát is korlátozza.
-Futtassa az alábbi parancsot:
+Futtassa az alábbi parancsot.
 
 ```bash
 ulimit -a

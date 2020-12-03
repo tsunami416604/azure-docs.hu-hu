@@ -3,12 +3,12 @@ title: Azure-előfizetési korlátok és kvóták
 description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, kvótáinak és megkötéseinek listáját jeleníti meg. Ez a cikk a korlátok növelésével és a maximális értékekkel kapcsolatos tudnivalókat tartalmazza.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 810d503f1abdc14ad2d255a89aebe7c10954a889
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4d56c5c3fd33d1cda05e23d5bc53e7540428671b
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186201"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547848"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései
 
@@ -311,6 +311,10 @@ A következő táblázat a v1, v2, standard és WAF SKU-ra vonatkozik, hacsak m�
 ### <a name="private-link-limits"></a>A privát kapcsolat korlátai
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
+
+## <a name="purview-limits"></a>A hatáskörébe korlátai
+
+Az Azure-beli hatáskörébe tartozó kvóták legújabb értékei az [Azure hatáskörébe tartozó kvóta oldalon](../../purview/how-to-manage-quotas.md) találhatók.
 
 ### <a name="traffic-manager-limits"></a>Traffic Manager korlátok
 

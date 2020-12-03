@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 8ae1e2ade5d8a942779fe31e324cd23756ee39ae
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 68d9a64e388d24f2067f47282945b9561d807535
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079210"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545927"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -116,7 +116,7 @@ Ha a következő hibába ütközik: `Unable to load DLL 'Microsoft.Azure.Cosmos.
 ## <a name="next-steps"></a>Következő lépések
 
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md) teljesítményével kapcsolatos irányelvek ismertetése
-* Tudnivalók a [reaktor-alapú Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) -k használatáról
+* Tudnivalók a [reaktor-alapú Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) -k használatáról
 
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds

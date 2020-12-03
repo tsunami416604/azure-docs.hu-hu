@@ -1,0 +1,113 @@
+### YamlMime:Landing
+title: Azure Synapse Analytics
+summary: Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben.
+metadata:
+  title: Azure Synapse Analytics
+  description: Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben.
+  services: synapse-analytics
+  ms.service: synapse-analytics
+  ms.subservice: overview
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 12/01/2020
+  ms.openlocfilehash: 6de11d0830c332d19a133592b060caca1382b667
+  ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/01/2020
+  ms.locfileid: "96463346"
+landingContent:
+- title: Az Azure Synapse Analytics ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Synapse?
+      url: overview-what-is.md
+    - text: Tippek és ajánlott eljárások
+      url: overview-cheat-sheet.md
+    - text: GYIK
+      url: overview-faq.md
+- title: Synapse SQL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Az Azure Synapse SQL architektúrája
+      url: ./sql/overview-architecture.md
+  - linkListType: quickstart
+    links:
+    - text: Kiszolgáló nélküli SQL-készlet használata
+      url: quickstart-sql-on-demand.md
+    - text: Dedikált SQL-készlet létrehozása a Synapse Studióval
+      url: quickstart-create-sql-pool-studio.md
+- title: Az Azure Synapse Analytics első lépései
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Részletes útmutató az első lépésekhez
+      url: get-started.md
+    - text: '1. LÉPÉS: Synapse-munkaterület létrehozása és beállítása'
+      url: get-started-create-workspace.md
+    - text: '2. LÉPÉS: Elemzés dedikált SQL-készlettel'
+      url: get-started-analyze-sql-pool.md
+    - text: '3. LÉPÉS: Elemzés az Apache Spark használatával'
+      url: get-started-analyze-spark.md
+    - text: '4. LÉPÉS: Elemzés kiszolgáló nélküli SQL-készlettel'
+      url: get-started-analyze-sql-on-demand.md
+    - text: '5. LÉPÉS: Tárfiók adatainak elemzése'
+      url: get-started-analyze-storage.md
+    - text: '6. LÉPÉS: Vezénylés folyamatokkal'
+      url: get-started-pipelines.md
+    - text: '7. LÉPÉS: Adatok megjelenítése a Power BI használatával'
+      url: get-started-visualize-power-bi.md
+    - text: '8. LÉPÉS: Tevékenységek monitorozása'
+      url: get-started-monitor.md
+    - text: '9. LÉPÉS: Az Információs központ felfedezése'
+      url: get-started-knowledge-center.md
+- title: Apache Spark
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Apache Spark az Azure Synapse Analyticsben
+      url: ./spark/apache-spark-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Kiszolgáló nélküli Apache Spark-készlet létrehozása a Synapse Studióval
+      url: quickstart-create-apache-spark-pool-studio.md
+- title: Synapse Link
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Cosmos DB-hez készült Azure Synapse Link
+      url: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+  - linkListType: quickstart
+    links:
+    - text: Csatlakozás az Azure Cosmos DB-hez készült Azure Synapse Linkhez
+      url: quickstart-connect-synapse-link-cosmos-db.md
+- title: Machine Learning
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Gépi tanulás az Azure Synapse-ben
+      url: ./machine-learning/what-is-machine-learning.md
+  - linkListType: quickstart
+    links:
+    - text: Új Azure Machine Learning társított szolgáltatás létrehozása
+      url: ./machine-learning/quickstart-integrate-azure-machine-learning.md
+  - linkListType: tutorial
+    links:
+    - text: SQL-készletek modellpontozási varázslója
+      url: ./machine-learning/tutorial-sql-pool-model-scoring-wizard.md
+- title: Folyamat és adatfolyam
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Folyamatok és tevékenységek
+      url: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+  - linkListType: quickstart
+    links:
+    - text: Adatok átalakítása
+      url: quickstart-data-flow.md
+    - text: Adatok betöltése SQL-készletbe
+      url: quickstart-copy-activity-load-sql-pool.md

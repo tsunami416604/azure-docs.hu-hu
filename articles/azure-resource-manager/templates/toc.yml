@@ -48,11 +48,11 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Stream Analytics
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Synapse Analytics SQL-készlet
+            - name: Dedikált SQL-készlet (korábban SQL DW)
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blokklánc
           items:
-            - name: Blockchain
+            - name: Blokklánc
               href: ../../blockchain/service/create-member-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Compute
           items:

@@ -20,11 +20,11 @@
       href: tutorial-track-usage.md
 - name: Alapelvek
   items:
-    - name: Osztályterem-tesztkörnyezetek – áttekintés
+    - name: Tesztkörnyezetek – áttekintés
       href: classroom-labs-overview.md
-    - name: Osztályterem-tesztkörnyezetek alapelvei
+    - name: Tesztkörnyezetekhez kapcsolódó fogalmak
       href: classroom-labs-concepts.md
-    - name: Az osztályterem-tesztkörnyezetek architekturális alapjai
+    - name: A tesztkörnyezetek architekturális alapjai
       href: classroom-labs-fundamentals.md
     - name: Kapacitási korlátok
       href: capacity-limits.md
@@ -36,7 +36,7 @@
           href: classroom-labs-scenarios.md
         - name: Lab Services használata hackathonokhoz
           href: hackathon-labs.md
-        - name: Osztályterem-tesztkörnyezetek – osztálytípusok
+        - name: tesztkörnyezetek – osztálytípusok
           items:
             - name: Osztálytípusok áttekintése
               href: class-types.md
@@ -112,9 +112,9 @@
           href: lab-account-owner-support-information.md
         - name: Egyéni rendszerkép feltöltése a Shared Image Gallerybe
           href: upload-custom-image-shared-image-gallery.md
-    - name: Osztályterem-tesztkörnyezetek létrehozása és konfigurálása (oktató)
+    - name: Tesztkörnyezetek létrehozása és konfigurálása (oktató)
       items:
-        - name: Osztálytermi tesztkörnyezetek létrehozása és kezelése
+        - name: Tesztkörnyezetek létrehozása és kezelése
           href: how-to-manage-classroom-labs.md
         - name: Irányítópult használata
           href: use-dashboard.md
@@ -150,9 +150,9 @@
           href: lab-creator-support-information.md
         - name: Diákok virtuális gépeinek elérése az oktatói nézetből
           href: instructor-access-virtual-machines.md
-    - name: Csatlakozás virtuális gépekhez osztályterem-tesztkörnyezetekben (tanuló)
+    - name: Csatlakozás virtuális gépekhez tesztkörnyezetekben (tanuló)
       items:
-        - name: Osztályterem-tesztkörnyezetek elérése
+        - name: Tesztkörnyezetek elérése
           href: how-to-use-classroom-lab.md
         - name: Kapcsolódás Linux rendszerű virtuális gépekhez
           href: how-to-use-remote-desktop-linux-student.md

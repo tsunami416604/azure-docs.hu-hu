@@ -10,16 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bead348e64fcee4cc5b790f975c9da5200ee796b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422399"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546904"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>A Speech CLI alapjai
 
-Ebből a cikkből megtudhatja, hogyan használhatja a beszédfelismerési parancssori felületet a beszédfelismerési szolgáltatás alapszintű felhasználási mintái, kód írása nélkül. A beszédfelismerési szolgáltatás fő funkcióit gyorsan kipróbálhatja fejlesztési környezetek létrehozása vagy kód írása nélkül, így ellenőrizheti, hogy a használati esetek megfelelően teljesíthetők-e. Emellett a Speech CLI éles környezetben is készen áll, és az egyszerű munkafolyamatok automatizálására használható a Speech szolgáltatásban, a `.bat` vagy a rendszerhéj parancsfájljainak használatával.
+Ebből a cikkből megtudhatja, hogyan használhatja a beszédfelismerési parancssori felületet a beszédfelismerési szolgáltatás alapszintű felhasználási mintái, kód írása nélkül. A beszédfelismerési szolgáltatás fő funkcióit gyorsan kipróbálhatja fejlesztési környezetek létrehozása vagy kód írása nélkül, így ellenőrizheti, hogy a használati esetek megfelelően teljesíthetők-e. A Speech CLI éles használatra kész, és felhasználható az egyszerű munkafolyamatok automatizálására a Speech szolgáltatásban, a `.bat` vagy a rendszerhéj parancsfájljainak használatával.
+
+Ez a cikk azt feltételezi, hogy a parancssor, a terminál vagy a PowerShell használatával dolgozik.
 
 [!INCLUDE [](includes/spx-setup.md)]
 
@@ -45,11 +47,24 @@ A következő parancs megadásával tekintheti meg a felismerési parancs beáll
 spx help recognize
 ```
 
-A beszédfelismerési szolgáltatással a következő parancs futtatásával elvégezheti a beszédfelismerést az alapértelmezett mikrofon használatával.
+Most a Speech CLI használatával végezze el a beszédfelismerést a rendszer alapértelmezett mikrofonjának használatával. 
+
+>[!WARNING]
+> Ha Docker-tárolót használ, a parancs nem fog működni.
+
+Futtassa ezt a parancsot:
 
 ```shell
 spx recognize --microphone
 ```
+
+A Speech CLI használatával hangfájlból is felismerheti a beszédet.
+
+```shell
+spx recognize --file /path/to/file.wav
+```
+> [!TIP]
+> Ha egy Docker-tárolóban lévő hangfájlból készít beszédet, győződjön meg arról, hogy a hangfájl az előző lépésben csatlakoztatott könyvtárban található.
 
 A parancs beírása után az SPX megkezdi a hang figyelését az aktuális aktív bemeneti eszközön, és a megnyomása után leáll `ENTER` . A rendszer ezután felismeri és átalakítja a rögzített beszédet a konzol kimenetében lévő szövegre. A beszédfelismerési parancssori felület használatával egyszerűen elvégezhető a szöveg és a beszéd szintézise is. 
 
@@ -192,6 +207,6 @@ Ezeket a mezőneveket a megfelelő argumentumokra írhatja felül a hívás köv
 spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.tsv
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Fejezze be a beszédfelismerési vagy [beszédfelismerési](get-started-text-to-speech.md?pivots=programmer-tool-spx) útmutatókat [a Speech CLI](get-started-speech-to-text.md?pivots=programmer-tool-spx) használatával.

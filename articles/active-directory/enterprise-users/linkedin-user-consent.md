@@ -5,19 +5,20 @@ services: active-directory
 author: curtand
 manager: daveba
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffbbc78f185138f39da6a32c42e1db2910735092
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 8d13ae1e5198666e115507fd91bb0fedb1c5fa64
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95974058"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545910"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>A LinkedIn-fiókok kapcsolatainak megosztása és beleegyezett hozzáférése
 
@@ -79,6 +80,6 @@ A Microsofttól elért adatok nem tárolódnak véglegesen a LinkedIn-mel, kivé
 
 A LinkedIn személyes adatainak használatával kapcsolatos további információkért tekintse meg a [LinkedIn adatvédelmi szabályzatát](https://www.linkedin.com/legal/privacy-policy). A LinkedIn-szolgáltatások, az adatforgalom és a tárolás esetében az adatok az Európai Unióból a Egyesült Államokba és vissza is áramlanak, és az adatvédelem védelme az [Európai Unió adatátviteli](https://www.linkedin.com/help/linkedin/answer/62533)szolgáltatásában leírtaknak megfelelően történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A LinkedIn a munkahelyi vagy iskolai fiókkal rendelkező Microsoft-alkalmazásokban](https://www.linkedin.com/help/linkedin/answer/84077)

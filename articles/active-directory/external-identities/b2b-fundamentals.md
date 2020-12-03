@@ -5,31 +5,32 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 11/30/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b87881ad5533724f08de3b2f348d1487f763ab04
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0f9ea8b1c1346deee9fed591493607270f18ad5b
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442167"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547763"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B – ajánlott eljárások
 Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz a vállalatok közötti (B2B) együttműködéshez Azure Active Directory (Azure AD).
 
    > [!IMPORTANT]
-   > **2021. március 31-ig**a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
+   > **Március 2021**-én a Microsoft nem támogatja a meghívások beváltását úgy, hogy nem felügyelt ("vírus" vagy "igény szerinti") Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvekhez. Ekkor az egyszer használatos egyszeri jelszó funkció bekapcsol minden meglévő bérlőre, és alapértelmezés szerint engedélyezve lesz az új bérlők számára. Engedélyezjük az e-mailek egyszeri jelszavas szolgáltatását, mivel zökkenőmentes tartalék hitelesítési módszert biztosít a vendég felhasználói számára. Azonban lehetősége van letiltani ezt a funkciót, ha úgy dönt, hogy nem használja. Részletekért lásd az [e-mailek egyszeri jelszavas hitelesítését](one-time-passcode.md) ismertető témakört.
+
 
 ## <a name="b2b-recommendations"></a>B2B-javaslatok
 | Ajánlás | Megjegyzések |
 | --- | --- |
 | Az összevonása való optimális bejelentkezési élmény érdekében | Amikor csak lehetséges, a összevonása közvetlenül az Identity Providers használatával engedélyezheti a meghívott felhasználóknak, hogy Microsoft-fiókok (MSAs) vagy Azure AD-fiókok létrehozása nélkül jelentkezzenek be a megosztott alkalmazásokba és az erőforrásokra. A [Google összevonási szolgáltatással](google-federation.md) engedélyezheti a B2B vendég felhasználói számára a Google-fiókkal való bejelentkezést. Vagy használhatja a [közvetlen összevonás (előzetes verzió) szolgáltatást](direct-federation.md) úgy, hogy közvetlen összevonást állítson be bármely olyan szervezettel, amelynek az identitás-szolgáltatója (identitásszolgáltató) támogatja az SAML 2,0 vagy WS-Fed protokollt. |
-| Az e-mailes egyszeri jelszó (előzetes verzió) funkció használata a B2B-vendégek számára, akik nem tudnak más módon hitelesíteni magukat | Az [egyszer használatos e-mail-jelszó (előzetes verzió)](one-time-passcode.md) funkció hitelesíti a B2B vendég felhasználókat, ha nem hitelesíthetők más módon, például az Azure ad-vel, a Microsoft-fiók (MSA) vagy a Google Federation szolgáltatással. Ha a vendég felhasználó bevált egy meghívót, vagy egy megosztott erőforráshoz fér hozzá, ideiglenes kódot kérhet, amelyet a rendszer elküld az e-mail-címére. Ezután a kód beírásával folytathatja a bejelentkezést. |
+| Az e-mailes egyszeri jelszó funkció használata olyan B2B-vendégekhez, akik nem tudnak más módon hitelesíteni magukat | Az [egyszeri e-mail-jelszó](one-time-passcode.md) funkció hitelesíti a B2B vendég felhasználóit, ha nem hitelesíthetők más módon, például az Azure ad-vel, a Microsoft-fiók (MSA) vagy a Google Federation szolgáltatással. Ha a vendég felhasználó bevált egy meghívót, vagy egy megosztott erőforráshoz fér hozzá, ideiglenes kódot kérhet, amelyet a rendszer elküld az e-mail-címére. Ezután a kód beírásával folytathatja a bejelentkezést. |
 | Vállalati arculat megjelenítése a bejelentkezési oldalon | Testreszabhatja a bejelentkezési oldalát, így az jobban használható a B2B vendég felhasználói számára. Lásd: [vállalati arculat hozzáadása a bejelentkezéshez és a hozzáférési panel oldalaihoz](../fundamentals/customize-branding.md). |
 | Adatvédelmi nyilatkozat hozzáadása a B2B vendég felhasználói beváltási felületéhez | Felveheti a szervezete adatvédelmi nyilatkozatának URL-címét az első alkalommal meghívó beváltási folyamatba, hogy a meghívott felhasználónak el kell fogadnia az adatvédelmi feltételeit a folytatáshoz. További információ [: a szervezet adatvédelmi adatainak hozzáadása Azure Active Directoryban](../fundamentals/active-directory-properties-area.md). |
 | A tömeges meghívó (előzetes verzió) szolgáltatással egyszerre több B2B vendég-felhasználót hívhat meg | Egyszerre több vendég felhasználót is meghívhat a szervezete számára a Azure Portalban található tömeges Meghívási Előnézet funkció használatával. Ez a funkció lehetővé teszi egy CSV-fájl feltöltését a B2B vendég felhasználók létrehozására és a meghívások tömeges küldésére. Lásd: [oktatóanyag a B2B-felhasználók tömeges meghívásához](tutorial-bulk-invite.md). |
@@ -39,6 +40,6 @@ Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz a vállalatok köz
 | Alkalmazás fejlesztésekor a UserType használatával határozza meg a vendég felhasználói élményt  | Ha alkalmazást fejleszt, és különböző élményeket szeretne biztosítani a bérlői felhasználók és a vendég felhasználók számára, használja a UserType tulajdonságot. A UserType jogcím jelenleg nem szerepel a jogkivonatban. Az alkalmazásoknak a Microsoft Graph API-t kell használniuk ahhoz, hogy lekérdezzek a felhasználó címtárát, hogy megkapják a UserType. |
 | A UserType tulajdonság *csak* akkor módosítható, ha a felhasználó kapcsolata a szervezet változásával | Habár lehetséges, hogy a PowerShell használatával a tag UserType tulajdonságát a vendégnek (és fordítva) is át lehet alakítani, ezt a tulajdonságot csak akkor kell módosítania, ha a felhasználó a szervezethez való viszonya megváltozik. Tekintse meg [a B2B vendég felhasználó tulajdonságait](user-properties.md).|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [B2B-megosztás kezelése](delegate-invitations.md)

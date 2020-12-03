@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b52bfc14906d8e47c804ae15ee898f6ca00784af
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8642f4284770df54704a4e7066054d3bb4640486
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503844"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545869"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C-mintakódok
 
@@ -68,15 +68,25 @@ Az alábbi táblázatok a felhasználói folyamatokban lévő webes API-k [API-�
 | [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | Ez a Node.js Azure Function minta azt mutatja be, hogyan lehet korlátozni a regisztrációt adott e-mail tartományokra, és érvényesíteni a felhasználó által megadott adatokat.  |
 | [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | Ez a Python Azure Function minta azt mutatja be, hogyan lehet korlátozni a regisztrációkat adott e-mail tartományokra, és érvényesíteni a felhasználó által megadott adatokat.    |
 
-### <a name="identity-verification-with-api-connectors"></a>Identitás-ellenőrzés API-összekötővel
+
+### <a name="automated-fraud-protection-services--captcha"></a>Automatizált csalások elleni védelmi szolgáltatások & CAPTCHA
+| Sample                                                                                                            | Leírás                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [Arkóz Labs – csalások és visszaélések elleni védelem](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) | Ez a minta bemutatja, hogyan védhető meg a felhasználói regisztráció a Arkóz Labs-csalások és a visszaélések elleni védelmi szolgáltatás használatával. |
+| [reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) | Ez a minta bemutatja, hogyan védhető meg a felhasználói regisztrációk a reCAPTCHA-kihívás használatával, hogy megakadályozza az automatikus visszaélést. |
+
+
+### <a name="identity-verification"></a>Személyazonosság ellenőrzése
 
 | Sample                                                                                                            | Leírás                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | Ez a minta bemutatja, hogyan ellenőrizhető egy felhasználói identitás az önkiszolgáló regisztráció részeként egy API-összekötővel a IDology-vel való integrációhoz. |
-| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | Ez a minta bemutatja, hogyan ellenőrizhető egy felhasználói identitás az önkiszolgáló regisztráció részeként egy API-összekötővel a Experian-vel való integrációhoz. |
+| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | Ez a minta bemutatja, hogyan ellenőrizhető a felhasználói identitás a regisztrációs folyamat részeként egy API-összekötővel a IDology-vel való integrációhoz. |
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | Ez a minta bemutatja, hogyan ellenőrizhető a felhasználói identitás a regisztrációs folyamat részeként egy API-összekötővel a Experian-vel való integrációhoz. |
 
-### <a name="community-samples"></a>Közösségi minták
+
+### <a name="other"></a>Egyéb
 
 | Sample                                                                                                            | Leírás                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [Meghívás kódja](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-invitation-code) | Ez a minta azt mutatja be, hogyan lehet korlátozni a regisztrációt meghatározott célközönségekre a Meghívási kódok használatával.|
 | [API-összekötő közösségi minták](https://github.com/azure-ad-b2c/api-connector-samples) | Ez a tárház az API-összekötők által engedélyezett forgatókönyvek Közösség által kezelt mintáit ismerteti.|

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: b5ae48e5dab6b56ea2b22d99e9126238be4d5b78
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: adca35567499452cf35b9541d3a7caac27b45a0a
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098620"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545485"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB aszinkron Java SDK az SQL API-hoz: kibocsátási megjegyzések és erőforrások
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "93098620"
 Az SQL API aszinkron Java SDK eltér az SQL API Java SDK-val, mivel aszinkron műveleteket biztosít a [nettó könyvtár](https://netty.io/)támogatásával. A korábban létező [SQL API Java SDK](sql-api-sdk-java.md) nem támogatja az aszinkron műveleteket. 
 
 > [!IMPORTANT]  
-> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Vegye fontolóra [Azure Cosmos db Java SDK v4](sql-api-sdk-java-v4.md) használatát a projekthez. A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) útmutató utasításait. 
+> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Vegye fontolóra [Azure Cosmos db Java SDK v4](sql-api-sdk-java-v4.md) használatát a projekthez. A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) útmutató utasításait. 
 >
 
 | |  |

@@ -2,8 +2,10 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Azure AD-szerepkörök
+    - name: Mi az Azure AD RBAC?
       href: custom-overview.md
+    - name: Az Azure AD-szerepkörök ismertetése
+      href: concept-understand-roles.md
 - name: Rövid útmutatók
   items:
     - name: Korlátlan számú alkalmazásregisztráció létrehozása
@@ -50,8 +52,6 @@
     - name: Egyéni szerepkörök
       expanded: true
       items:
-        - name: Egyéni szerepkörök áttekintése
-          href: custom-overview.md
         - name: Egyéni szerepkör létrehozása
           href: custom-create.md
         - name: Egyéni szerepkör-hozzárendelések megtekintése

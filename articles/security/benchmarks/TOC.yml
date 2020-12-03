@@ -129,6 +129,8 @@
       href: ../../load-balancer/security-baseline.md
     - name: Az Azure Machine Learning biztonsági alapkonfigurációja
       href: ../../machine-learning/security-baseline.md
+    - name: Az Azure Managed Applications biztonsági alapkonfigurációja
+      href: ../../azure-resource-manager/managed-applications/security-baseline.md
     - name: Az Azure Monitor biztonsági alapkonfigurációja
       href: ../../azure-monitor/security-baseline.md
     - name: Az Azure Migrate Learning biztonsági alapkonfigurációja
@@ -201,7 +203,7 @@
       href: ../../site-recovery/security-baseline.md
     - name: A Stream Analytics alapkonfigurációja
       href: ../../stream-analytics/security-baseline.md
-    - name: A Synapse Analytics biztonsági alapkonfigurációja
+    - name: Az Azure Synapse Analytics biztonsági alapkonfigurációja
       href: ../../synapse-analytics/security-baseline.md
     - name: A Traffic Manager biztonsági alapkonfigurációja
       href: ../../traffic-manager/security-baseline.md

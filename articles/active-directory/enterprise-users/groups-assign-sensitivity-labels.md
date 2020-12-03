@@ -6,19 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8680c1d24fe3c1ed840def40c1c3abdd2fdaf24
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 4931006ba690ff7e059da5de8b0bc816271af30c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121784"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547899"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Érzékenységi címkék kiosztása Microsoft 365 csoportokhoz Azure Active Directory
 
@@ -135,7 +136,7 @@ A címkék bármikor felcserélhetők, ha ugyanazokat a lépéseket használják
 1. Válassza a **csoportok** lehetőséget.
 1. A **minden csoport** lapon válassza ki a címkézni kívánt csoportot.
 1. A kiválasztott csoport lapon válassza a **Tulajdonságok** lehetőséget, és válasszon egy új érzékenységi címkét a listából.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>A csoportok a közzétett címkékre vonatkozó módosításait nem frissítik a csoportokon
 
@@ -143,7 +144,7 @@ Ajánlott eljárásként Azt javasoljuk, hogy a címke beállításait a csoport
 
 Ha módosítania kell a módosításokat, az [Azure ad PowerShell-parancsfájllal](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) manuálisan alkalmazhatja az érintett csoportok frissítéseit. Ezzel a módszerrel gondoskodhat arról, hogy minden meglévő csoport érvényesítse az új beállítást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Microsoft Teams, a Microsoft 365 csoportok és a SharePoint-webhelyek érzékenységi feliratainak használata](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
 - [Csoportok frissítése a címkézési házirend módosítása után manuálisan az Azure AD PowerShell-parancsfájllal](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)

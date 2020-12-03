@@ -7,19 +7,20 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.topic: overview
 ms.workload: identity
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01de8ab86ff5f511fd5e45c4a6e88febdb4fbb15
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cf46de59fe6c7e5b985a23f80d9b5a30f56903db
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340866"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547253"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Mi a Azure Active Directory önkiszolgáló regisztrációja?
 
@@ -84,7 +85,7 @@ A beállítás részleteit a Get-MsolCompanyInformation következő PowerShell-p
 
 További információt és példákat a paraméterek használatáról a [set-msolcompanysettings parancsmagjával](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Egyéni tartománynév hozzáadása az Azure AD-hez](../fundamentals/add-custom-domain.md)
 * [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/)

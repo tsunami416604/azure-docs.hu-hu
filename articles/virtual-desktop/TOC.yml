@@ -106,6 +106,8 @@
       href: azure-advisor.md
     - name: Megoldási javaslatok
       href: azure-advisor-recommendations.md
+    - name: A Windows Virtual Desktophoz készült Azure Monitor használata
+      href: azure-monitor.md
     - name: Vészhelyreállítási terv beállítása
       href: disaster-recovery.md
 - name: Alapelvek
@@ -150,6 +152,8 @@
           href: app-attach-glossary.md
         - name: GYIK
           href: app-attach-faq.md
+    - name: Azure Monitor – szószedet
+      href: azure-monitor-glossary.md
     - name: Adatok helye
       href: data-locations.md
 - name: Hibaelhárítás
@@ -170,6 +174,8 @@
       href: troubleshoot-powershell.md
     - name: Grafikai teljesítményproblémák diagnosztizálása
       href: remotefx-graphics-performance-counters.md
+    - name: Azure Monitor
+      href: troubleshoot-azure-monitor.md
 - name: Referencia
   items:
     - name: Ajánlott biztonsági eljárások

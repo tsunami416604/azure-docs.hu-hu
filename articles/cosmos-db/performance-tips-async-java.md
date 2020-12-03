@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: 1f57e14893e6f43b98b0e45cc2bd2d49e31271d0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bfbf764aaf1061808d128d16e8a96b08e75fcfe6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350347"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545570"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB aszinkron Java SDK v2-hez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "96350347"
 
 
 > [!IMPORTANT]  
-> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Frissítse a projektet [Azure Cosmos db Java SDK v4](sql-api-sdk-java-v4.md) -re, majd olvassa el a Azure Cosmos db Java SDK v4 [Performance tippek útmutatót](performance-tips-java-sdk-v4-sql.md). A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) útmutató című témakör utasításait. 
+> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Frissítse a projektet [Azure Cosmos db Java SDK v4](sql-api-sdk-java-v4.md) -re, majd olvassa el a Azure Cosmos db Java SDK v4 [Performance tippek útmutatót](performance-tips-java-sdk-v4-sql.md). A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) útmutató című témakör utasításait. 
 > 
 > A jelen cikkben található teljesítménnyel kapcsolatos tippek csak Azure Cosmos DB aszinkron Java SDK v2-re vonatkoznak. További információkért tekintse meg a Azure Cosmos DB aszinkron Java SDK v2 [kibocsátási megjegyzéseit](sql-api-sdk-async-java.md), a [Maven-tárházat](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)és a Azure Cosmos db aszinkron Java SDK v2 [hibaelhárítási útmutatót](troubleshoot-java-async-sdk.md) .
 >
@@ -262,7 +262,7 @@ _ **A leállítási megvalósítása getRetryAfterInMilliseconds időközönkén
 
     További információ: [Azure Cosmos db indexelési házirendek](./index-policy.md).
 
-## <a name="throughput"></a><a id="measure-rus"></a>Teljesítmény
+## <a name="throughput"></a><a id="measure-rus"></a>Átviteli sebesség
 
 * **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**
 
@@ -304,6 +304,6 @@ _ **A leállítási megvalósítása getRetryAfterInMilliseconds időközönkén
 
     Egy adott műveletre vonatkozó kérelem díja (a kérelmek feldolgozási díja) közvetlenül összefügg a dokumentum méretével. A nagyméretű dokumentumokon végzett műveletek többek között a kis méretű dokumentumok műveleteinél nagyobb mértékben járnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partitioning-overview.md)című témakört.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 982f4a9cdf3984bae79cd11dad2bd637a1772f05
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 58a907a2ae17966f50a037f49a807ac0a3ad6867
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348500"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545828"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el
 
@@ -40,16 +40,15 @@ A következő táblázat azt mutatja be, hogy az egyes Blobok tárolási funkci�
 |Életciklus-kezelési szabályzatok (rétegek)|Általánosan elérhető|Még nem támogatott|[Az Azure Blob Storage-életciklus felügyelete](storage-lifecycle-management-concepts.md)|
 |Életciklus-kezelési szabályzatok (blob törlése)|Általánosan elérhető|Általánosan elérhető|[Az Azure Blob Storage-életciklus felügyelete](storage-lifecycle-management-concepts.md)|
 |Bejelentkezés Azure Monitor|Előnézet |Előnézet|[Az Azure Storage figyelése](./monitor-blob-storage.md)|
-|Pillanatképek|Előnézet|Előnézet|[BLOB-Pillanatképek](snapshots-overview.md)|
-|Statikus webhelyek|Előnézet|Előnézet|[Statikus webhely üzemeltetés az Azure Storage-ban](storage-blob-static-website.md)|
-|Megváltoztathatatlan tároló|Előnézet|Előnézet|[Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](storage-blob-immutable-storage.md)|
+|Pillanatképek|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[BLOB-Pillanatképek](snapshots-overview.md)|
+|Statikus webhelyek|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Statikus webhely üzemeltetés az Azure Storage-ban](storage-blob-static-website.md)|
+|Megváltoztathatatlan tároló|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](storage-blob-immutable-storage.md)|
 |Tároló – Soft delete|Előnézet|Előnézet|[Tárolók törlése (előzetes verzió)](soft-delete-container-overview.md)|
 |Azure Storage-leltár|Előnézet|Előnézet|[Az Azure Storage-leltár használata a blob-adatkezeléshez (előzetes verzió)](blob-inventory.md)|
 |Blobos törlés|Még nem támogatott|Még nem támogatott|[Blobok helyreállítható törlése](storage-blob-soft-delete.md)|
-|Blobos törlés|Még nem támogatott|Még nem támogatott|[Blobok helyreállítható törlése](./soft-delete-blob-overview.md)|
 |Blobfuse|Általánosan elérhető|Általánosan elérhető|[BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel](storage-how-to-mount-container-linux.md)|
+|Névtelen nyilvános hozzáférés |Általánosan elérhető|Általánosan elérhető| Lásd: [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok számára](anonymous-read-access-configure.md).|
 |Ügyfél által felügyelt fiók feladatátvétele|Még nem támogatott|Még nem támogatott|[Vész-helyreállítási és-fiók feladatátvétele](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|BLOB Container ACL|Nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|Nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Tekintse meg a táblázat alatti kapcsolódó megjegyzést.|
 |Ügyfél által biztosított kulcsok|Még nem támogatott|Még nem támogatott|[Titkosítási kulcs megadása a blob Storage-kérelemben](encryption-customer-provided-keys.md)|
 |Egyéni tartományok|Még nem támogatott|Még nem támogatott|[Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)|
 |Titkosítási hatókörök|Még nem támogatott|Még nem támogatott|[Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](encryption-scope-manage.md)|
@@ -57,9 +56,7 @@ A következő táblázat azt mutatja be, hogy az egyes Blobok tárolási funkci�
 |Objektumreplikáció|Még nem támogatott|Még nem támogatott|[Objektumok replikálásának konfigurálása a blokkos blobokhoz](object-replication-configure.md)|
 |BLOB verziószámozása|Még nem támogatott|Még nem támogatott|[BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)|
 
-<div id="blob-container-ACL"><sup>1</sup> a tároló gyökérkönyvtárában állíthatja be az ACL-eket, a tárolót azonban nem.</div><br>
-
-<div id="preview-form"><sup>2</sup> Ha a pillanatképeket, a nem módosítható tárolókat vagy a statikus webhelyeket Data Lake Storage Gen2 használatával szeretné használni, regisztrálnia kell az előzetes verzióban az <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>űrlap</a>kitöltésével.  </div>
+<div id="preview-form"><sup>1</sup> Ha a pillanatképeket, a nem módosítható tárolókat vagy a statikus webhelyeket Data Lake Storage Gen2 használatával szeretné használni, regisztrálnia kell az előzetes verzióban az <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>űrlap</a>kitöltésével.  </div>
 
 ## <a name="see-also"></a>Lásd még
 

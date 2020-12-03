@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: a77ee3c4301d278f98b571402514663dcfc9ca52
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 47d14c5ee7f6c4816bf15351e9cb28a2aaa72b4c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657924"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546845"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>A titkosítási követelmények és az Azure VPN-átjárók
 
@@ -29,6 +29,8 @@ Ha a IKEv1-és IKEv2-kapcsolatok ugyanarra a VPN-átjáróra vannak alkalmazva, 
 ## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>Tudnivalók az Azure VPN-átjárók IPsec-és IKE-szabályzati paramétereinek használatáról
 
 Az IPsec és az IKE protokoll standard verziója számos titkosítási algoritmust támogat különböző kombinációkban. Ha nem igényel titkosítási algoritmusok és paraméterek adott kombinációját, az Azure VPN Gateway az alapértelmezett javaslatok készletét használja. Az alapértelmezett szabályzatok úgy lettek kiválasztva, hogy maximalizálják az együttműködési képességet számos külső VPN-eszköz esetében az alapértelmezett konfigurációkban. Ennek eredményeképpen a szabályzatok és a javaslatok száma nem fedi le a rendelkezésre álló titkosítási algoritmusok és a kulcsfontosságú erősségek összes lehetséges kombinációját.
+
+### <a name="default-policy"></a>Alapértelmezett házirend
 
 Az Azure VPN Gateway alapértelmezett házirendjének beállítása: [Tudnivalók a VPN-eszközökről és az IPSec/IKE-paraméterekről helyek közötti VPN Gateway kapcsolatok](vpn-gateway-about-vpn-devices.md)esetén.
 

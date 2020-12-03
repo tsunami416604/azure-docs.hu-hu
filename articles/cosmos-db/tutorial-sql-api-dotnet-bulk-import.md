@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e50fe1f5b1658458a2d561f8157f04d1cbceb41
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 6cf0e77657175449b126eeca02a12c164478e568
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341239"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548069"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Az Azure Cosmos DB SQL API-fiókba való tömeges importálás a .NET SDK használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -175,7 +175,7 @@ A minta futtatásához egyszerűen a következő paranccsal teheti meg `dotnet` 
 
 Ha nincs ideje az oktatóanyag lépéseinek végrehajtására, vagy csak szeretné letölteni a mintakódokat, a [GitHubon](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer) beszerezhetőek.
 
-A projekt klónozása után frissítse a szükséges hitelesítő adatokat a [program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/master/src/Program.cs#L25)-on belül.
+A projekt klónozása után frissítse a szükséges hitelesítő adatokat a [program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25)-on belül.
 
 A minta futtatásához váltson az adattár könyvtárába, és használja a következőt `dotnet` :
 
@@ -184,7 +184,7 @@ A minta futtatásához váltson az adattár könyvtárába, és használja a kö
    dotnet run
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő lépéseket hajtotta végre:
 

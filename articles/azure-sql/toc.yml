@@ -617,7 +617,7 @@
                           items:
                             - name: SQL Database-szel
                               href: database/saas-tenancy-tenant-analytics.md
-                            - name: Azure Synapse Analytics (korábban SQL Data Warehouse)
+                            - name: Az Azure Synapse Analytics használatával
                               href: database/saas-tenancy-tenant-analytics-adf.md
                     - name: Vészhelyreállítás georedundáns visszaállítással
                       href: database/saas-dbpertenant-dr-geo-restore.md

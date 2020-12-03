@@ -1,6 +1,6 @@
-- name: Azure Synapse (munkaterületek előzetes verziója)
-  href: overview-what-is.md
-- name: Váltás az Azure Synapse-re (korábban SQL DW)
+- name: Azure Synapse Analytics
+  href: index.yml
+- name: Váltás dedikált SQL-készletre (korábban SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: Áttekintés
   items:
@@ -9,8 +9,8 @@
       displayName: overview
     - name: Terminológia
       href: overview-terminology.md
-    - name: Kibocsátási megjegyzések
-      href: release-notes.md
+    - name: GYIK
+      href: overview-faq.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -125,17 +125,12 @@
                   displayname: 'access, control'
                 - name: Synapse-munkaterület által felügyelt identitás
                   href: ./security/synapse-workspace-managed-identity.md
-        - name: 'Eszközök integrációja (AI, ETL, BI)'
-          items:
-            - name: A Synapse Studio hibaelhárítása
-              href: troubleshoot/troubleshoot-synapse-studio.md
-            - name: A Synapse Studio kapcsolati problémáinak hibaelhárítása
-              href: troubleshoot/troubleshoot-synapse-studio-powershell.md
-              displayname: powershell
-            - name: A Synapse Studio és a tároló csatlakoztatásának hibaelhárítása
-              href: troubleshoot/troubleshoot-synapse-studio-and-storage-connectivity.md
     - name: Útmutatók
       items:
+        - name: Kezelés és monitorozás
+          items:
+            - name: 'Azure Monitor-metrikák, -riasztások és -naplók'
+              href: monitoring/how-to-monitor-using-azure-monitor.md
         - name: Biztonságos
           items:
             - name: A hozzáférés-vezérlés kezelése
@@ -156,6 +151,19 @@
                   href: ./data-integration/linked-service.md
                 - name: Csatlakozás Synapse-munkaterülethez korlátozott hálózatból
                   href: security/how-to-connect-to-workspace-from-restricted-network.md
+        - name: Hibaelhárítás
+          items:
+            - name: A Synapse Studio hibaelhárítása
+              href: troubleshoot/troubleshoot-synapse-studio.md
+            - name: A Synapse Studio kapcsolati problémáinak hibaelhárítása
+              href: troubleshoot/troubleshoot-synapse-studio-powershell.md
+              displayname: powershell
+            - name: A Synapse Studio és a tároló csatlakoztatásának hibaelhárítása
+              href: troubleshoot/troubleshoot-synapse-studio-and-storage-connectivity.md
+            - name: SDK-val létrehozott munkaterületek hibaelhárítása
+              href: troubleshoot/workspaces-created-by-sdk.md
+            - name: UTF-8 szöveg olvasásának hibaelhárítása
+              href: troubleshoot/reading-utf8-text.md
 - name: Synapse SQL
   items:
     - name: Áttekintés
@@ -175,6 +183,8 @@
           href: sql/overview-features.md
         - name: Erőforrás-felhasználási modellek
           href: sql/resource-consumption-models.md
+        - name: Kapacitási korlátok
+          href: ./sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Kiszolgáló nélküli SQL-készlet költségkezelése
           href: sql/data-processed.md
         - name: A kiszolgáló nélküli SQL-készletek használatára vonatkozó ajánlott eljárások
@@ -183,10 +193,14 @@
           href: sql/best-practices-sql-pool.md
     - name: Rövid útmutatók
       items:
+        - name: Kiszolgáló nélküli SQL-készlet használata
+          href: quickstart-sql-on-demand.md
         - name: Dedikált SQL-készlet létrehozása a Synapse Studióval
           href: quickstart-create-sql-pool-studio.md
         - name: Dedikált SQL-készlet létrehozása az Azure Portallal
           href: quickstart-create-sql-pool-portal.md
+        - name: Szüneteltetés és folytatás az Azure Portal használatával
+          href: ./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Adatok betöltése dedikált SQL-készletekkel
           items:
             - name: COPY utasítás
@@ -198,8 +212,20 @@
             - name: Synapse Studio
               href: quickstart-load-studio-sql-pool.md
               displayname: sql pool
-        - name: Kiszolgáló nélküli SQL-készlet használata
-          href: quickstart-sql-on-demand.md
+        - name: Számítási feladatok kezelése
+          items:
+            - name: Számításifeladat-osztályozó létrehozása
+              items:
+                - name: Portál
+                  href: ./sql-data-warehouse/quickstart-create-a-workload-classifier-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: T-SQL
+                  href: ./sql-data-warehouse/quickstart-create-a-workload-classifier-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Számításifeladat-elkülönítés létrehozása
+              items:
+                - name: Portál
+                  href: ./sql-data-warehouse/quickstart-configure-workload-isolation-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: T-SQL
+                  href: ./sql-data-warehouse/quickstart-configure-workload-isolation-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Oktatóanyagok
       items:
         - name: Kiszolgáló nélküli SQL-készlet használata adatok elemzéséhez
@@ -229,6 +255,7 @@
             - name: Tényleges táblán alapuló nézet
               items:
                 - name: Teljesítmény-finomhangolási útmutató
+                  displayname: 'materialized, view,'
                   href: sql/develop-materialized-view-performance-tuning.md
                 - name: Létrehozás
                   href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -236,8 +263,23 @@
                 - name: Módosítás
                   href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                   displayname: 'materialized, view'
+            - name: Rendezett fürtözött oszlopcentrikus index
+              items:
+                - name: Teljesítmény-finomhangolási útmutató
+                  displayname: 'CCI, clustered, column, store'
+                  href: ./sql-data-warehouse/performance-tuning-ordered-CCI.md
             - name: Eredményhalmaz gyorsítótárazása
-              href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              items:
+                - name: Teljesítmény-finomhangolási útmutató
+                  href: ./sql-data-warehouse/performance-tuning-result-set-caching.md
+                - name: Beállítás adatbázishoz
+                  href: /sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest
+                - name: Beállítás munkamenethez
+                  href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest
+                - name: Gyorsítótár méretének ellenőrzése
+                  href: /sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest
+                - name: Gyorsítótár törlése
+                  href: /sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: Machine Learning-előrejelzések
               href: ./sql-data-warehouse/sql-data-warehouse-predict.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Táblák
@@ -252,6 +294,8 @@
                   href: sql/develop-tables-data-types.md
                 - name: Elosztott táblák
                   href: ./sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Táblakorlátozások
+                  href: ./sql-data-warehouse/sql-data-warehouse-table-constraints.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Külső táblák
                   href: sql/develop-tables-external-tables.md
                 - name: Indexek
@@ -276,8 +320,14 @@
                   href: sql/develop-stored-procedures.md
                 - name: Tranzakciók
                   href: sql/develop-transactions.md
-                - name: Tranzakciók ajánlott eljárásai
-                  href: sql/develop-transaction-best-practices.md
+                - name: Tranzakciók
+                  items:
+                    - name: Kiszolgáló nélküli SQL-készlet
+                      displayname: 'Transaction, best, practices'
+                      href: sql/develop-transaction-best-practices.md
+                    - name: Dedikált SQL-készlet
+                      displayname: 'Transactions, best, practices'
+                      href: ./sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Felhasználó által definiált sémák
                   href: sql/develop-user-defined-schemas.md
                 - name: Változó-hozzárendelés
@@ -306,6 +356,8 @@
               href: ./sql-data-warehouse/sql-data-warehouse-overview-manageability-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Erőforrás-használat és lekérdezési tevékenységek
               href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Javaslatok
+              href: ./sql-data-warehouse/sql-data-warehouse-concept-recommendations.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Biztonsági őr
           items:
             - name: Adatbázisok hozzáférés-vezérlése
@@ -352,6 +404,10 @@
               href: ./backuprestore/restore-sql-pool.md
         - name: Kezelés és monitorozás
           items:
+            - name: SQL-kérelmek – Synapse Studio
+              href: monitoring/how-to-monitor-sql-requests.md
+            - name: SQL-készletek – Synapse Studio
+              href: monitoring/how-to-monitor-sql-pools.md
             - name: A 2. generációs gyorsítótár monitorozása
               href: ./sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: A számítási feladatok monitorozása – DMV-k
@@ -366,8 +422,8 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-configure-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: A számítási feladat fontosságának kezelése és figyelése
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Frissítés 2. generációs verzióra
-              href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Erőforrásosztályok konvertálása számításifeladat-csoportokká
+                  href: ./sql-data-warehouse/sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Adatok betöltése és előkészítése
           items:
             - name: Az adattárházba
@@ -395,46 +451,58 @@
               items:
                 - name: A másolási tevékenységgel
                   href: data-integration/data-integration-data-lake.md
+        - name: Változáskezelés és üzembe helyezés
+          items:
+            - name: A Visual Studio SSDT telepítése
+              href: ./sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Folyamatos integráció és üzembe helyezés
+              href: ./sql-data-warehouse/sql-data-warehouse-continuous-integration-and-deployment.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Külső adatok lekérdezése
           items:
             - name: Áttekintés
-              href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-data-storage.md
               displayname: query
             - name: CSV-fájlok lekérdezése
-              href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-single-csv-file.md
             - name: Parquet-fájlok lekérdezése
-              href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-parquet-files.md
             - name: JSON-fájlok lekérdezése
-              href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-json-files.md
             - name: Beágyazott típusok lekérdezése
-              href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-parquet-nested-types.md
             - name: Mappák és több fájl lekérdezése
-              href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-folders-multiple-csv-files.md
               displayname: csv
             - name: Particionált fájlok lekérdezése a fájlok metaadatainak használatával
-              href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/query-specific-files.md
             - name: Nézetek létrehozása és használata
-              href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/create-use-views.md
             - name: Külső táblák létrehozása és használata
               href: sql/create-use-external-tables.md
             - name: Lekérdezés eredményeinek tárolása a tárterületen
               href: sql/create-external-table-as-select.md
-        - name: Eszközök csatlakoztatása Synapse-munkaterületekhez
+        - name: Integrálás
+          items:
+            - name: Adatfolyamatok létrehozása
+              items:
+                - name: Azure Stream Analytics-feladat hozzáadása
+                  href: ./sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Eszközök a Synapse-munkaterületekhez való csatlakozáshoz
           items:
             - name: Áttekintés
-              href: sql/connect-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/connect-overview.md
             - name: Lekérdezés az Azure Data Studióval
-              href: sql/get-started-azure-data-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/get-started-azure-data-studio.md
             - name: Kapcsolati sztringek
               href: sql/connection-strings.md
             - name: Lekérdezés az sqlcmd használatával
               href: sql/get-started-connect-sqlcmd.md
             - name: Lekérdezés az SSMS használatával
-              href: sql/get-started-ssms.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/get-started-ssms.md
             - name: Query with Visual Studio
-              href: sql/get-started-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/get-started-visual-studio.md
             - name: Csatlakozás a Power BI Desktophoz
-              href: sql/get-started-power-bi-professional.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: sql/get-started-power-bi-professional.md
 - name: Apache Spark
   items:
     - name: Áttekintés
@@ -511,6 +579,10 @@
               href: ./spark/apache-spark-history-server.md
             - name: Spark-alkalmazások monitorozása
               href: monitoring/apache-spark-applications.md
+            - name: Apache Spark-készletek
+              href: monitoring/how-to-monitor-spark-pools.md
+            - name: JSON elemzése az Apache Sparkkal
+              href: how-to-analyze-complex-schema.md
         - name: Adatok betöltése és előkészítése
           items:
             - name: SQL Data Warehouse
@@ -639,9 +711,9 @@
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL Database
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Felügyelt Azure SQL-példány
+            - name: Felügyelt Azure SQL-példányok
               href: ../data-factory/connector-azure-sql-database-managed-instance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure Synapse Analytics (korábban SQL Data Warehouse)
+            - name: Azure Synapse Analytics
               href: ../data-factory/connector-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure Table Storage
               href: ../data-factory/connector-azure-table-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -1003,15 +1075,23 @@
         - name: Adatvizualizáció az Apache Spark használatával
           href: ./spark/apache-spark-data-visualization-tutorial.md
           displayname: machine learning
-        - name: SQL-készletek modellpontozási varázslója
+        - name: A pontozási varázsló használata a dedikált SQL-készletekhez
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
-        - name: Regressziós kísérlet futtatása Azure AutoML használatával
+        - name: Modell kódolás nélküli betanítása az Azure AutoML-lel
+          href: ./machine-learning/tutorial-automl.md
+        - name: Modell Pythonban történő betanítása az Azure AutoML-lel
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
-        - name: Gépi tanulási modell létrehozása az Apache Spark MLlib használatával
+        - name: Modell létrehozása az Apache Spark MLlib használatával
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
+        - name: Hangulatelemzés a Cognitive Services használatával
+          href: ./machine-learning/tutorial-cognitive-services-sentiment.md
+        - name: Rendellenességek észlelése a Cognitive Services használatával
+          href: ./machine-learning/tutorial-cognitive-services-anomaly.md
+        - name: A Cognitive Services konfigurálása az Azure Synapse-hez
+          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
 - name: Referencia
   items:
     - name: Azure CLI

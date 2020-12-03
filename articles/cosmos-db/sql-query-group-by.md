@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: 71314e6999031f52ebbfc582b43684ab5a17a261
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d9cafc100ddd4b553577c447e82334e6ee7d1b6d
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93338798"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545451"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>GROUP BY záradék Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,7 +41,7 @@ A GROUP BY záradék a lekérdezés eredményét egy vagy több megadott tulajdo
 
 ## <a name="remarks"></a>Megjegyzések
   
-  Ha egy lekérdezés GROUP BY záradékot használ, a SELECT záradék csak a GROUP BY záradékban szereplő tulajdonságok és rendszerfüggvények részhalmazát tartalmazza. Az egyetlen kivétel a [rendszerfüggvények összesítése](sql-query-aggregates.md), amely a Select záradékban megjelenhet a Group By záradékba való felvétel nélkül. A SELECT záradékban mindig szerepelhetnek literál értékeket is.
+  Ha egy lekérdezés GROUP BY záradékot használ, a SELECT záradék csak a GROUP BY záradékban szereplő tulajdonságok és rendszerfüggvények részhalmazát tartalmazza. Az egyik kivétel az [összesítő függvények](sql-query-aggregate-functions.md), amelyek a Select záradékban megjelenhetnek a Group By záradék használata nélkül. A SELECT záradékban mindig szerepelhetnek literál értékeket is.
 
   A GROUP BY záradéknak a SELECT, a FROM, a WHERE záradék és az ELTOLÁSi korlát záradéka után kell szerepelnie. A GROUP BY utasítás nem használható ORDER BY záradékkal, de ez tervezett.
 
@@ -188,8 +188,8 @@ Az eredmény a következő:
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bevezetés](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)
-- [Összesítő függvények](sql-query-aggregates.md)
+- [Összesítő függvények](sql-query-aggregate-functions.md)

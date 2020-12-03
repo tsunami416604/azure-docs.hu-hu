@@ -45,7 +45,7 @@
       items:
         - name: Megosztás az Azure Storage-ból
           href: how-to-share-from-storage.md
-        - name: Megosztás az Azure SQL Database-ből vagy a Synapse Analyticsből
+        - name: Megosztás az Azure SQL Database-ből vagy az Azure Synapse Analyticsből
           href: how-to-share-from-sql.md
         - name: Megosztás az Azure Data Explorerből
           href: /azure/data-explorer/data-share

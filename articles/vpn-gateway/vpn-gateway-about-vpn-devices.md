@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/01/2020
+ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 92f589e6a587febc10a4b407fe3616aca42d27d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae498b39a421db19f0d4e0a8daca58730321b58c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318947"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546811"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeinek IPsec/IKE-paramétereiről
 
@@ -59,7 +59,7 @@ A VPN-eszköz konfigurálásának megkönnyítéséhez tekintse meg a megfelelő
 | Juniper |SSG |ScreenOS 6.2 |Támogatott |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOs 12. x|Támogatott |[Konfigurációs parancsfájl](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |Útválasztás és távelérés szolgáltatás |Windows Server 2012 |Nem kompatibilis |Támogatott |
-| Open Systems AG |Mission Control biztonsági átjáró |N/A |[Konfigurációs útmutató](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |Nem kompatibilis |
+| Open Systems AG |Mission Control biztonsági átjáró |N.A. |[Konfigurációs útmutató](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |Nem kompatibilis |
 | Palo Alto Networks |Az összes PAN-OS rendszert futtató eszköz |PAN-OS<br>Házirendalapú: 6.1.5 vagy újabb<br>Útvonalalapú: 7.1.4 |Támogatott |[Konfigurációs útmutató](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium (fejlesztői) | VyOS | VyOS 1.2.2 | (nincs tesztelve) | [Konfigurációs útmutató ](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | Következő generációs UTM (NU sorozat) | 9.0.1.3 | Nem kompatibilis | [Konfigurációs útmutató](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
@@ -112,13 +112,11 @@ A megadott VPN-eszközkonfigurációs minta letöltését követően egyes ért�
 | &lt;SP_AzureGatewayIpAddress&gt; |Ez az információ kifejezetten az Ön virtuális hálózatára vonatkozik, és a felügyeleti portálon az **átjáró IP-címe** név alatt található meg. |
 | &lt;SP_PresharedKey&gt; |Ez az információ kifejezetten az Ön virtuális hálózatára vonatkozik, és a felügyeleti portálon a Kulcskezelés cím alatt található meg. |
 
-## <a name="ipsecike-parameters"></a><a name="ipsec"></a>IPsec/IKE-paraméterek
+## <a name="default-ipsecike-parameters"></a><a name="ipsec"></a>Alapértelmezett IPsec/IKE-paraméterek
 
-> [!IMPORTANT]
-> 1. Az alábbi táblázat tartalmazza azon algoritmusok és paraméterek kombinációit, amelyeket az Azure VPN-átjárók alapértelmezés szerint használnak. Az Azure Resource Management üzembehelyezési modelljének használatával létrehozott, útvonalalapú VPN-átjárók esetében minden egyes kapcsolathoz külön egyéni szabályzatok adhatók meg. Részletes útmutatás: [IPsec/Internetes kulcscsere házirendje](vpn-gateway-ipsecikepolicy-rm-powershell.md).
->
-> 2. Ezenfelül a TCP **MSS** korlátozását **1350-re** kell állítani. Ha a VPN-eszköze nem támogatja az MSS korlátozását, akkor ehelyett beállíthatja az alagútkapcsolaton az **MTU**-t **1400** bájtra.
->
+Az alábbi táblázatok az alapértelmezett konfigurációban használt algoritmusok és paraméterek kombinációit tartalmazzák (**alapértelmezett házirendek**). Az Azure Resource Management üzembehelyezési modelljének használatával létrehozott, útvonalalapú VPN-átjárók esetében minden egyes kapcsolathoz külön egyéni szabályzatok adhatók meg. Részletes útmutatás: [IPsec/Internetes kulcscsere házirendje](vpn-gateway-ipsecikepolicy-rm-powershell.md).
+
+Emellett a TCP **MSS** -t a **1350**-es időpontban kell megfognia. Ha a VPN-eszköze nem támogatja az MSS korlátozását, akkor ehelyett beállíthatja az alagútkapcsolaton az **MTU**-t **1400** bájtra.
 
 A következő táblázatokban:
 
@@ -156,24 +154,24 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 
 |-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Nincs         |
-| 2 |AES256        |SHA1              |Nincs         |
-| 3 |3DES          |SHA1              |Nincs         |
-| 4 |AES256        |SHA256            |Nincs         |
-| 5 |AES128        |SHA1              |Nincs         |
-| 6 |3DES          |SHA256            |Nincs         |
+| 1 |GCM AES256    |GCM (AES256)      |Nincsenek         |
+| 2 |AES256        |SHA1              |Nincsenek         |
+| 3 |3DES          |SHA1              |Nincsenek         |
+| 4 |AES256        |SHA256            |Nincsenek         |
+| 5 |AES128        |SHA1              |Nincsenek         |
+| 6 |3DES          |SHA256            |Nincsenek         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure-átjáró, mint válaszadó
 
 |-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Nincs         |
-| 2 |AES256        |SHA1              |Nincs         |
-| 3 |3DES          |SHA1              |Nincs         |
-| 4 |AES256        |SHA256            |Nincs         |
-| 5 |AES128        |SHA1              |Nincs         |
-| 6 |3DES          |SHA256            |Nincs         |
-| 7 |DES           |SHA1              |Nincs         |
+| 1 |GCM AES256    |GCM (AES256)      |Nincsenek         |
+| 2 |AES256        |SHA1              |Nincsenek         |
+| 3 |3DES          |SHA1              |Nincsenek         |
+| 4 |AES256        |SHA256            |Nincsenek         |
+| 5 |AES128        |SHA1              |Nincsenek         |
+| 6 |3DES          |SHA256            |Nincsenek         |
+| 7 |DES           |SHA1              |Nincsenek         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
@@ -188,7 +186,7 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |Nincs         |
+| 22|AES128        |SHA256            |Nincsenek         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |

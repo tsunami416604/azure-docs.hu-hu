@@ -4,48 +4,44 @@ description: Webtesztek hibakeresése az Azure Application Insightsban. Riasztá
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 04/28/2020
+ms.date: 11/19/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 368c45433247c441631bdf79bfc9caa28a41f1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015332"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546750"
 ---
 # <a name="troubleshooting"></a>Hibaelhárítás
 
 Ez a cikk segítséget nyújt a rendelkezésre állás figyelése során esetlegesen előforduló gyakori hibák elhárításához.
 
-## <a name="ssltls-errors"></a>SSL/TLS-hibák
+## <a name="troubleshooting-report-steps-for-ping-tests"></a>A ping tesztek hibaelhárítási jelentésének lépései
 
-|Tünet/hibaüzenet| Lehetséges okok|
-|--------|------|
-|Nem hozható létre SSL/TLS biztonságos csatorna  | Az SSL verziója. Csak a TLS 1,0, 1,1 és 1,2 támogatottak. **A SSLv3 nem támogatott.**
-|TLS 1.2 rekord rétege: riasztás (szint: végzetes, leírás: hibás rekord MAC)| [További információért](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)lásd a StackExchange szálat.
-|A sikertelen URL-cím egy CDN (Content Delivery Network) | Ezt a CDN helytelen konfigurációja okozhatja |  
+A hibaelhárítási jelentés segítségével egyszerűen diagnosztizálhatja a **ping teszteket** okozó gyakori problémákat.
 
-### <a name="possible-workaround"></a>Lehetséges Áthidaló megoldás
+![A rendelkezésre állás lapról való navigáláshoz szükséges animáció, ha kijelöl egy hibát a végpontok közötti tranzakció részletei közül a hibaelhárítási jelentés megtekintéséhez.](./media/troubleshoot-availability/availability-to-troubleshooter.gif)
 
-* Ha a problémát tapasztaló URL-címek mindig függő erőforrások, ajánlott letiltani a webes teszthez tartozó **függő kérelmek elemzését** .
-
-## <a name="test-fails-only-from-certain-locations"></a>A teszt csak bizonyos helyekről sikertelen
-
-|Tünet/hibaüzenet| Lehetséges okok|
-|----|---------|
-|A kapcsolódási kísérlet sikertelen volt, mert a csatlakoztatott fél egy adott idő elteltével nem válaszolt megfelelően.  | Bizonyos helyszíneken lévő tesztelési ügynököket tűzfal blokkolja.|
-|    |Bizonyos IP-címek átirányítása a (terheléselosztó, Geo Traffic Manager, Azure Express Route) használatával történik. 
-|    |Ha az Azure ExpressRoute-t használja, vannak olyan helyzetek, amikor a csomagokat el lehet dobni azokban az esetekben, amikor [aszimmetrikus útválasztás történik](../../expressroute/expressroute-asymmetric-routing.md).|
-
-## <a name="test-failure-with-a-protocol-violation-error"></a>Sikertelen tesztelés protokoll-megsértési hiba esetén
-
-|Tünet/hibaüzenet| Lehetséges okok| Lehetséges megoldások |
-|----|---------|-----|
-|A kiszolgáló protokoll megsértését véglegesítette. Szakasz = ResponseHeader details = CR után az LF utasításnak kell lennie | Ez akkor fordul elő, ha a rendszer hibásan formázott fejléceket észlel. Előfordulhat, hogy egyes fejlécek nem használják a CRLF a sor végére, ami sérti a HTTP-specifikációt. Application Insights érvényesíti ezt a HTTP-specifikációt, és a helytelen formátumú fejlécekkel nem tud válaszokat.| a. A hibás kiszolgálók kijavításához vegye fel a kapcsolatot a webhely gazdagépének szolgáltatójával/CDN-szolgáltatóval. <br> b. Ha a sikertelen kérelmek erőforrások (például a stíluslapok, a képek, a parancsfájlok), akkor érdemes lehet letiltani a függő kérelmek elemzését. Ne feledje, hogy ha ezt megteszi, elveszíti a fájlok rendelkezésre állásának figyelését).
+1. A Application Insights erőforrás rendelkezésre állás lapján válassza az általános lehetőséget, vagy az egyik rendelkezésre állási tesztet.
+2. Válassza a **nem sikerült** lehetőséget, majd a bal oldalon a "részletezés" alatt egy tesztet, vagy válassza ki az egyik pontot a scatter parcellán.
+3. A végpontok közötti tranzakció részletei lapon válasszon ki egy eseményt, majd a "hibaelhárítási jelentés összefoglalása" területen válassza a **[ugrás lépésre]** lehetőséget a hibaelhárítási jelentés megtekintéséhez.
 
 > [!NOTE]
-> Előfordulhat, hogy az URL-cím nem sikerül a HTTP-fejlécek nyugodt érvényesítését biztosító böngészőkön. A hiba részletes leírását a következő blogbejegyzésben találja: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+>  Ha a kapcsolatok újrafelhasználásának lépése megtalálható, akkor a DNS-feloldás, a kapcsolatok létrehozása és a TLS-átviteli lépések nem lesznek jelen.
 
+|Lépés | Hibaüzenet | Lehetséges ok |
+|-----|---------------|----------------|
+| Kapcsolatok újrafelhasználása | n/a | Általában egy korábban létesített kapcsolattól függ, hogy a webes teszt lépés függ-e. Így nincs szükség DNS-, kapcsolat-vagy SSL-lépésre. |
+| DNS feloldása | A távoli név nem oldható fel: "az URL-cím" | A DNS-feloldási folyamat sikertelen volt, valószínűleg helytelenül konfigurált DNS-rekordok vagy ideiglenes DNS-kiszolgáló meghibásodása miatt. |
+| Kapcsolatok létrehozása | A kapcsolódási kísérlet sikertelen volt, mert a csatlakoztatott fél egy adott idő elteltével nem válaszolt megfelelően. | Általánosságban azt jelenti, hogy a kiszolgáló nem válaszol a HTTP-kérelemre. Gyakori ok, hogy a tesztelési ügynököket a kiszolgálón lévő tűzfal blokkolja. Ha egy Azure-Virtual Networkon belül szeretne tesztelni, vegye fel a rendelkezésre állási szolgáltatás címkéjét a környezetbe.|
+| TLS-átvitel  | Az ügyfél és a kiszolgáló nem tud kommunikálni, mert nem rendelkeznek közös algoritmussal.| Csak a TLS 1,0, 1,1 és 1,2 támogatottak. Az SSL nem támogatott. Ez a lépés nem ellenőrzi az SSL-tanúsítványokat, és csak biztonságos kapcsolatot létesít. Ez a lépés csak akkor jelenik meg, ha hiba történik. |
+| Válasz fejlécének fogadása | Nem olvashatók be az adatok a szállítási kapcsolatban. A csatlakoztatás bezárult. | A kiszolgáló protokollhiba hibát jelzett a válasz fejlécében. Például a kiszolgáló lezárta a csatlakozást, ha a válasz nem teljes. |
+| Válasz törzsének fogadása | Nem olvashatók be az adatok a szállítási kapcsolatban: a kapcsolódás bezárult. | A kiszolgáló protokollhiba hibát jelzett a válasz törzsében. Például a kiszolgáló lezárta a csatlakozást, ha a válasz nem teljesen olvasható, vagy az adathalmaz mérete helytelen a darabolásos válasz törzsében. |
+| Átirányítási korlát ellenőrzése | A weblap túl sok átirányítással rendelkezik. Ez a hurok itt lesz megszakítva, mivel ez a kérelem túllépte az automatikus átirányítások korlátját. | A tesztekhez legfeljebb 10 átirányításra van lehetőség. |
+| Állapotkód ellenőrzése | `200 - OK` nem felel meg a várt állapotnak `400 - BadRequest` . | A visszaadott állapotkód, amely sikeresnek számít. A 200-as kód jelzi, hogy normál weblap lett visszaküldve. |
+| Tartalom érvényesítése | A válaszban nem szerepelt a kötelező "Hello" szöveg. | A karakterlánc nem pontos kis-és nagybetűket megkülönböztető egyezés a válaszban, például a "Welcome!" karakterlánc. Egyszerű sztringnek kell lennie, helyettesítő karakterek nélkül (például csillag). Ha a lap tartalma megváltozik, előfordulhat, hogy frissítenie kell a karakterláncot. A tartalmi egyezés csak az angol karaktereket támogatja. |
+  
 ## <a name="common-troubleshooting-questions"></a>Gyakori hibaelhárítási kérdések
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>A webhely megfelelőnek tűnik, de tesztelési hibák láthatók? Miért Application Insights a riasztás?
@@ -54,7 +50,7 @@ Ez a cikk segítséget nyújt a rendelkezésre állás figyelése során esetleg
 
    * Annak érdekében, hogy csökkentse a zaj esélyét az átmeneti hálózati visszavertség stb. esetében, ellenőrizze, hogy be van-e jelölve az újrapróbálkozások tesztelési hibákhoz beállítás Azt is megteheti, hogy több helyről is teszteli, és ennek megfelelően kezeli a riasztási szabály küszöbértékét, hogy megakadályozza az indokolatlan riasztásokat okozó helyadatok
 
-   * Kattintson bármelyik piros pontra a rendelkezésre állási élményben, vagy a keresési Explorer bármely rendelkezésre állási hibája alapján, és tekintse meg, hogy miért jelentettük be a hibát. A teszt eredménye, valamint a korrelált kiszolgálóoldali telemetria (ha engedélyezve van) segít megérteni, miért nem sikerült a teszt. Az átmeneti problémák gyakori okai a hálózati vagy a kapcsolatok problémái.
+   * Kattintson bármelyik piros pontra a rendelkezésre állási Scatter ábrázolási élményben, vagy a keresési ablak bármely rendelkezésre állási hibája alapján, és tekintse meg, hogy miért jelentettük be a hibát. A teszt eredménye, valamint a korrelált kiszolgálóoldali telemetria (ha engedélyezve van) segít megérteni, miért nem sikerült a teszt. Az átmeneti problémák gyakori okai a hálózati vagy a kapcsolatok problémái.
 
    * A teszt időkorlátja? 2 perc múlva megszakítjuk a teszteket. Ha a ping vagy a többlépéses teszt 2 percnél hosszabb időt vesz igénybe, a rendszer hibát jelez. Érdemes lehet többre feltörni a tesztet, amely rövidebb időtartamokban is elvégezhető.
 
@@ -130,8 +126,7 @@ Ez a szakasz csak a klasszikus riasztásokra vonatkozik, és segít optimalizál
 
 Ha a felhasználókat a szerepköreik alapján kell értesítenie, használja az új riasztási élmény/közel valós idejű riasztásokat. A [műveleti csoportokkal](../platform/action-groups.md)e-mailes értesítéseket állíthat be a felhasználók számára a közreműködő/tulajdonos/olvasó szerepkörök bármelyikével (egyetlen lehetőségként nem kombinálva).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Többlépéses webes tesztelés](availability-multistep.md)
 * [URL-ping tesztek](monitor-web-app-availability.md)
-

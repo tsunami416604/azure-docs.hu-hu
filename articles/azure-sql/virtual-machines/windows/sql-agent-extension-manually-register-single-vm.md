@@ -14,12 +14,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c82ea3328938b42a26df03c7e83776e1a1a69b20
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 48c996b6c7d0024b256908565c57032fe3e18514
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557641"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545638"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL Server VM regisztrálása az SQL IaaS-ügynök bővítménnyel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,7 +59,7 @@ Ha regisztrálni szeretné a SQL Server VM az SQL IaaS-ügynök bővítménnyel,
 1. Lépjen az **előfizetések** elemre, és válassza ki a kamat előfizetését.  
 1. Az **előfizetések** lapon válassza a **bővítmények** lehetőséget. 
 1. Adja **meg az SQL-** t a szűrőben az SQL-hez kapcsolódó bővítmények létrehozásához. 
-1. Válassza a **Microsoft. SqlVirtualMachine** -szolgáltató **regisztrálása** , **újbóli regisztrálása** vagy **regisztrációjának** törlése lehetőséget a kívánt művelettől függően. 
+1. Válassza a **Microsoft. SqlVirtualMachine** -szolgáltató **regisztrálása**, **újbóli regisztrálása** vagy **regisztrációjának** törlése lehetőséget a kívánt művelettől függően. 
 
    ![A szolgáltató módosítása](./media/sql-agent-extension-manually-register-single-vm/select-resource-provider-sql.png)
 
@@ -104,7 +104,7 @@ SQL Server VM regisztrálása könnyűsúlyú módban az Azure CLI-vel:
 
   ```azurecli-interactive
   # Register Enterprise or Standard self-installed VM in Lightweight mode
-  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type PAYG 
+  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type <license_type> 
   ```
 
 
@@ -119,7 +119,7 @@ SQL Server VM regisztrálása egyszerűsített módban Azure PowerShell:
           
   # Register SQL VM with 'Lightweight' SQL IaaS agent
   New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-    -LicenseType PAYG -SqlManagementType LightWeight  
+    -LicenseType <license_type>  -SqlManagementType LightWeight  
   ```
 
 ---
@@ -140,7 +140,7 @@ Ha a SQL Server VMt közvetlenül teljes módban szeretné regisztrálni (és va
 
 ### <a name="noagent-management-mode"></a>Ügynök-felügyeleti mód 
 
-A Windows Server 2008 ( _nem R2_ ) rendszerre telepített 2008-es és 2008 R2-es SQL Server a nem [ügynök módban](sql-server-iaas-agent-extension-automate-management.md#management-modes)lehet regisztrálni az SQL IaaS-ügynök bővítménnyel. Ez a beállítás biztosítja a megfelelőséget, és lehetővé teszi a SQL Server VM figyelését a Azure Portal korlátozott funkcionalitással.
+A Windows Server 2008 (_nem R2_) rendszerre telepített 2008-es és 2008 R2-es SQL Server a nem [ügynök módban](sql-server-iaas-agent-extension-automate-management.md#management-modes)lehet regisztrálni az SQL IaaS-ügynök bővítménnyel. Ez a beállítás biztosítja a megfelelőséget, és lehetővé teszi a SQL Server VM figyelését a Azure Portal korlátozott funkcionalitással.
 
 
 A **licenc típusa** mezőben adja meg a következőt: `AHUB` , `PAYG` , vagy `DR` . A **rendszerkép-ajánlathoz** adjon meg `SQL2008-WS2008` vagy `SQL2008R2-WS2008`
@@ -186,7 +186,7 @@ $sqlvm.SqlManagementType
 
 ## <a name="upgrade-to-full"></a>Frissítés teljesre  
 
-SQL Server *egyszerűsített* módban regisztrált virtuális gépek a Azure Portal, az Azure CLI vagy a Azure PowerShell használatával _teljes mértékben_ frissíthetők. SQL Server a nem _ügynök_ módban lévő virtuális gépek az operációs rendszer Windows 2008 R2 vagy újabb verzióra való frissítése után _teljes egészében_ frissíthetnek. Nem lehetséges a visszalépés – ehhez meg kell [szüntetnie a SQL Server VM regisztrációját](#unregister-from-extension) az SQL IaaS-ügynök bővítménnyel. Ezzel a művelettel eltávolítja az SQL-alapú **virtuális gép** _erőforrását_ , de nem törli a tényleges virtuális gépet. 
+SQL Server *egyszerűsített* módban regisztrált virtuális gépek a Azure Portal, az Azure CLI vagy a Azure PowerShell használatával _teljes mértékben_ frissíthetők. SQL Server a nem _ügynök_ módban lévő virtuális gépek az operációs rendszer Windows 2008 R2 vagy újabb verzióra való frissítése után _teljes egészében_ frissíthetnek. Nem lehetséges a visszalépés – ehhez meg kell [szüntetnie a SQL Server VM regisztrációját](#unregister-from-extension) az SQL IaaS-ügynök bővítménnyel. Ezzel a művelettel eltávolítja az SQL-alapú **virtuális gép** _erőforrását_, de nem törli a tényleges virtuális gépet. 
 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -239,7 +239,7 @@ A regisztrációs állapot a Azure Portal használatával történő ellenőrzé
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 1. Nyissa meg a [SQL Server virtuális gépeket](manage-sql-vm-portal.md).
 1. Válassza ki a SQL Server VM a listából. Ha a SQL Server VM nem szerepel a listán, valószínűleg nincs regisztrálva az SQL IaaS-ügynök bővítményében. 
-1. Tekintse meg az **állapot** alatt lévő értéket. Ha **Status** az állapot **sikeres** , akkor a SQL Server VM sikeresen regisztrálva lett az SQL IaaS-ügynök bővítményében. 
+1. Tekintse meg az **állapot** alatt lévő értéket. Ha **Status** az állapot **sikeres**, akkor a SQL Server VM sikeresen regisztrálva lett az SQL IaaS-ügynök bővítményében. 
 
    ![SQL RP-regisztrációval rendelkező állapot ellenőrzése](./media/sql-agent-extension-manually-register-single-vm/verify-registration-status.png)
 
@@ -323,7 +323,7 @@ Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkat az következő cikkekben talál: 
+További információért tekintse át a következő cikkeket: 
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)  

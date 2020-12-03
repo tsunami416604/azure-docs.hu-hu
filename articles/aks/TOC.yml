@@ -9,7 +9,7 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: AKS-fürt létrehozása
+    - name: AKS-fürt telepítése
       expanded: true
       items:
         - name: Az Azure parancssori felületének használata
@@ -59,7 +59,7 @@
           href: ./security-controls-policy.md
     - name: Hálózat
       href: concepts-network.md
-    - name: Tárolás
+    - name: Storage
       href: concepts-storage.md
     - name: Méretezés
       href: concepts-scale.md
@@ -252,6 +252,8 @@
           href: kubernetes-service-principal.md
         - name: Felügyelt identitások használata
           href: use-managed-identity.md
+        - name: AAD-podidentitás használata (előzetes verzió)
+          href: use-azure-ad-pod-identity.md
         - name: A fürtkonfigurációs fájl elérésének korlátozása
           href: control-kubeconfig-access.md
         - name: Podforgalom biztonságossá tétele hálózati szabályzatokkal

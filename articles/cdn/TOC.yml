@@ -111,8 +111,8 @@
     - name: Elemzés
       href: cdn-log-analysis.md
       items:
-        - name: Nyers HTTP-naplók
-          href: enable-raw-logs.md
+        - name: 'Monitorozás, metrikák és hozzáférési naplók'
+          href: monitoring-and-access-log.md
         - name: Azure-beli diagnosztikai naplók
           href: cdn-azure-diagnostic-logs.md
         - name: Elemzési eszközök az Azure CDN-hez a Verizontól

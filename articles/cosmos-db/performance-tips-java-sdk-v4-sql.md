@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: 6b87a06620a6e20ff67bde6fde9ed01aaef7fc9e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1359d01136067b6a939efd1cc0cd7db36f4dc2d6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339716"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545468"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB Java SDK v4-hez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 * **Csatlakoztatási mód: közvetlen mód használata**
 <a id="direct-connection"></a>
     
-    A Java SDK alapértelmezett csatlakoztatási módja a közvetlen. A *directMode ()* vagy a *gatewayMode ()* metódussal konfigurálhatja a csatlakoztatási módot az ügyfél-építőben az alább látható módon. Mindkét mód alapértelmezett beállításokkal való konfigurálásához a metódus argumentum nélkül hívható meg. Ellenkező esetben adja át a konfigurációs beállítások osztály példányát argumentumként ( *DirectConnectionConfig* a *directMode ()* ,  *GatewayConnectionConfig* for *gatewayMode (* ).). Ha többet szeretne megtudni a különböző csatlakozási lehetőségekről, tekintse meg a [kapcsolódási módokat](sql-sdk-connection-modes.md) ismertető cikket.
+    A Java SDK alapértelmezett csatlakoztatási módja a közvetlen. A *directMode ()* vagy a *gatewayMode ()* metódussal konfigurálhatja a csatlakoztatási módot az ügyfél-építőben az alább látható módon. Mindkét mód alapértelmezett beállításokkal való konfigurálásához a metódus argumentum nélkül hívható meg. Ellenkező esetben adja át a konfigurációs beállítások osztály példányát argumentumként (*DirectConnectionConfig* a *directMode ()*,  *GatewayConnectionConfig* for *gatewayMode (*).). Ha többet szeretne megtudni a különböző csatlakozási lehetőségekről, tekintse meg a [kapcsolódási módokat](sql-sdk-connection-modes.md) ismertető cikket.
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK
 
@@ -124,7 +124,7 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
     
     A földrajzi létrehozásakor közös elhelyezés nagyobb és konzisztens átviteli sebességet biztosíthat a szinkronizálási API használatakor (lásd: [azonos Azure-régióban lévő rézvezetékes végezhet-ügyfelek teljesítménye](#collocate-clients)), de még nem várható, hogy túllépi az aszinkron API-k számára elérhető átviteli sebességet.
 
-    Előfordulhat, hogy egyes felhasználók nem ismerik a [Project reaktort](https://projectreactor.io/), az Azure Cosmos db Java SDK v4 aszinkron API megvalósításához használt reaktív Streams keretrendszert. Ha ez aggodalomra ad okot, javasoljuk, hogy olvassa el a bevezető [reaktor minta útmutatóját](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) , és tekintse meg a [reaktív programozás bevezetését](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) , hogy megismerkedjen. Ha már használta a Azure Cosmos DBT egy aszinkron felülettel, és a használt SDK Azure Cosmos db aszinkron Java SDK v2-ben, akkor lehet, hogy már ismeri az [újraactivex-](http://reactivex.io/) / [RxJava](https://github.com/ReactiveX/RxJava) , de nem biztos benne, hogy mi változott a projekt-reaktorban. Ebben az esetben tekintse át a [Reactor vs. RxJava útmutatót](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) , és ismerkedjen meg a következővel:.
+    Előfordulhat, hogy egyes felhasználók nem ismerik a [Project reaktort](https://projectreactor.io/), az Azure Cosmos db Java SDK v4 aszinkron API megvalósításához használt reaktív Streams keretrendszert. Ha ez aggodalomra ad okot, javasoljuk, hogy olvassa el a bevezető [reaktor minta útmutatóját](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) , és tekintse meg a [reaktív programozás bevezetését](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) , hogy megismerkedjen. Ha már használta a Azure Cosmos DBT egy aszinkron felülettel, és a használt SDK Azure Cosmos db aszinkron Java SDK v2-ben, akkor lehet, hogy már ismeri az [újraactivex-](http://reactivex.io/) / [RxJava](https://github.com/ReactiveX/RxJava) , de nem biztos benne, hogy mi változott a projekt-reaktorban. Ebben az esetben tekintse át a [Reactor vs. RxJava útmutatót](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) , és ismerkedjen meg a következővel:.
 
     A következő kódrészletek bemutatják, hogyan inicializálhatja Azure Cosmos DB ügyfelet az aszinkron API-vagy szinkronizálási API-művelethez:
 
@@ -182,7 +182,7 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
 
         Fontos megjegyezni, hogy a párhuzamos lekérdezések a legjobb előnyöket nyújtják, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény úgy van particionálva, hogy a lekérdezés által visszaadott összes adat többsége néhány partíción (egy partíció a legrosszabb esetben) van, akkor a lekérdezés teljesítményét a partíciók szűk keresztmetszete okozhatja.
 
-    _ * **Hangolás setMaxBufferedItemCount \:** _
+    _ ***Hangolás setMaxBufferedItemCount \:** _
     
         Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
@@ -198,7 +198,7 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
 
 * **A jobb teljesítmény érdekében a lekérdezések/olvasási hírcsatornák méretének finomhangolása**
 
-    A dokumentumok tömeges beolvasása a hírcsatornák olvasási funkciójának használatával (például *readItems* ) vagy SQL-lekérdezés ( *queryItems* ) kiadása esetén az eredmények szegmentált módon lesznek visszaadva, ha az eredményhalmaz túl nagy. Alapértelmezés szerint a rendszer az eredményeket 100 elemből vagy 1 MB-ra adja vissza, amely a határértékek közül az első.
+    A dokumentumok tömeges beolvasása a hírcsatornák olvasási funkciójának használatával (például *readItems*) vagy SQL-lekérdezés (*queryItems*) kiadása esetén az eredmények szegmentált módon lesznek visszaadva, ha az eredményhalmaz túl nagy. Alapértelmezés szerint a rendszer az eredményeket 100 elemből vagy 1 MB-ra adja vissza, amely a határértékek közül az első.
 
     Tegyük fel, hogy az alkalmazás lekérdezi a Azure Cosmos DB, és azt feltételezi, hogy az alkalmazás a lekérdezés összes eredményét igényli a feladat elvégzéséhez. Ha csökkenteni szeretné az összes vonatkozó eredmény beolvasásához szükséges hálózati kör-átutazások számát, az [x-MS-Max-Item-Count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) kérelem fejlécének beállításával növelheti az oldalméret értékét. 
 
@@ -237,7 +237,7 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
 
         A szinkron naplózó késése szükségszerűen a kérés-előállító szál teljes késésének számítása. A nagy teljesítményű alkalmazási szálakból való kilépéshez olyan aszinkron naplózó használata javasolt, mint például a [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) .
 
-    _ * **A nettó naplózás letiltása** _
+    _ ***A nettó naplózás letiltása** _
 
         Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 
@@ -315,7 +315,7 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
 
     További információ: [Azure Cosmos db indexelési házirendek](index-policy.md).
 
-## <a name="throughput"></a>Átviteli sebesség
+## <a name="throughput"></a>Teljesítmény
 <a id="measure-rus"></a>
 
 * **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**
@@ -365,6 +365,6 @@ További részletekért tekintse meg a Windows és a [Linux](../virtual-network/
 
     Egy adott műveletre vonatkozó kérelem díja (a kérelmek feldolgozási díja) közvetlenül összefügg a dokumentum méretével. A nagyméretű dokumentumokon végzett műveletek többek között a kis méretű dokumentumok műveleteinél nagyobb mértékben járnak. Ideális esetben az alkalmazás és a munkafolyamatok tervezője, hogy az elem mérete ~ 1KB vagy hasonló sorrend vagy magnitúdó legyen. A késésre érzékeny alkalmazások esetén a nagyméretű elemeket el kell kerülni – a több MB méretű dokumentumok lelassítják az alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partitioning-overview.md)című témakört.
