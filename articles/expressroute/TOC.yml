@@ -145,7 +145,11 @@
     - name: Társviszonyok kezelése
       items:
         - name: Társviszonyok engedélyezése és letiltása
-          href: expressroute-howto-reset-peering.md
+          items:
+            - name: Azure Portal
+              href: expressroute-howto-reset-peering-portal.md
+            - name: Azure PowerShell
+              href: expressroute-howto-reset-peering.md
         - name: Váltás nyilvános társviszony-létesítésről Microsoft társviszony-létesítésre
           href: how-to-move-peering.md
     - name: Kapcsolatcsoportok forgalmának titkosítása
