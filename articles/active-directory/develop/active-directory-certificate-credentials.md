@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 77e34e4a18012f15b9e907e3b9efc1965b98f824
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3222c790ccd0cee936b246253a16b5c434c61c8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612120"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602206"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity platform-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
 
@@ -36,7 +36,7 @@ Az állítás kiszámításához használhatja a számos JWT-függvénytár egyi
 | --- | --- |
 | `alg` | **RS256** kell lennie |
 | `typ` | **JWT** kell lennie |
-| `x5t` | Az X. 509 tanúsítvány kivonatának (más néven a CERT SHA-1 *ujjlenyomata*) hexadecimális ábrázolása Base64 karakterlánc-értékként kódolva. Például egy X. 509 tanúsítvány kivonata `84E05C1D98BCE3A5421D225B140B36E86A3D5534` (hexadecimális) esetén a `x5t` jogcím a következő: `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64). |
+| `x5t` | Az X. 509 tanúsítvány kivonatának (más néven a CERT SHA-1 *ujjlenyomata*) hexadecimális ábrázolása Base64url. Például egy X. 509 tanúsítvány kivonata `84E05C1D98BCE3A5421D225B140B36E86A3D5534` (hexadecimális) esetén a `x5t` jogcím a következő: `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64url). |
 
 ### <a name="claims-payload"></a>Jogcímek (hasznos adatok)
 
@@ -94,7 +94,7 @@ A tanúsítvány hitelesítő adatait a Microsoft Identity platformon találhat�
 ### <a name="uploading-the-certificate-file"></a>A tanúsítványfájl feltöltése
 
 Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
-1. Válassza ki a **tanúsítványok & Secrets**elemet.
+1. Válassza ki a **tanúsítványok & Secrets** elemet.
 2. Kattintson a **tanúsítvány feltöltése** elemre, és válassza ki a feltölteni kívánt tanúsítványt.
 3. Kattintson a **Hozzáadás** parancsra.
   A tanúsítvány feltöltése után a rendszer megjeleníti az ujjlenyomatot, a kezdési dátumot és a lejárati értékeket.
@@ -136,7 +136,7 @@ Az ügyfél-kijelentések bárhol használhatók, ha az ügyfél titkos kulcsát
 |`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| Ez egy rögzített érték, amely azt jelzi, hogy a tanúsítvány hitelesítő adatait használja. |
 |`client_assertion`| JWT |Ez a fent létrehozott JWT. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [MSAL.net-függvénytár ezt a forgatókönyvet](msal-net-client-assertions.md) egyetlen sorban kezeli.
 

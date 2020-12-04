@@ -10,14 +10,14 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: 1d2e25f76d9a68eeb01a45c34651fe1537297980
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 71f393897dff266f1b0922a19eefd70cffea133d
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510573"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600353"
 ---
-# <a name="deploy-on-your-local-machines-models-trained-with-azure-machine-learning"></a>Üzembe helyezheti a Azure Machine Learning-mel betanított helyi gépek modelljeit
+# <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Helyi gépeken Azure Machine Learning betanított modellek üzembe helyezése 
 
 Ez a cikk azt ismerteti, hogyan használható a helyi számítógép a Azure Machine Learning-ben létrehozott modellek betanításához vagy üzembe helyezéséhez célként. A Azure Machine Learning a legtöbb Python Machine learning-keretrendszerrel való együttműködéshez elég rugalmas. A gépi tanulási megoldások általában olyan összetett függőségekkel rendelkeznek, amelyeket nehéz lehet duplikálni. Ebből a cikkből megtudhatja, hogyan kiegyensúlyozhatja a teljes irányítást egyszerű használattal.
 

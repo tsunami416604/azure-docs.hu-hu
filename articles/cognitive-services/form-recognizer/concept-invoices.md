@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: eb1be4c78be0eb7fb943700b168fa82ede4d3861
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a3a6bd6489baea90ed4143b42a09e7d697bbc50
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458395"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602444"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Űrlap-felismerő előre összeépített számlázási modellje
 
@@ -74,7 +74,7 @@ A JSON-kimenet 3 részből áll:
 
 A számlázási szolgáltatás kibontja a szöveget, a táblákat és a 26 számla mezőt. Az alábbiakban láthatók a JSON-kimenetre adott számlán kinyert mezők (az alábbi kimenet ezt a [mintát](./media/sample-invoice.jpg)használja)  
 
-|Név| Típus | Description | Szöveg | Érték (szabványosított kimenet) |
+|Név| Típus | Leírás | Szöveg | Érték (szabványosított kimenet) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | sztring | Az ügyfél számlázása folyamatban van | Microsoft Corp |  |
 | CustomerId | sztring | Az ügyfél hivatkozási azonosítója | CID-12345 |  |
@@ -101,7 +101,7 @@ A számlázási szolgáltatás kibontja a szöveget, a táblákat és a 26 szám
 | RemittanceAddressRecipient | sztring | A RemittanceAddress társított név | Contoso-számlázás |  |
 | ServiceStartDate | dátum | A szolgáltatási időszak első dátuma (például egy segédprogram számlázási szolgáltatásának időtartama) | 2019. 10. 14. | 2019-10-14 |
 | ServiceEndDate | dátum | A szolgáltatási időszak záró dátuma (például egy segédprogram számlázási szolgáltatásának időtartama) | 11/14/2019 | 2019-11-14 |
-| PreviousUnpaidBalance | szám | Explicit, korábban nem fizetett egyenleg | 500 USD | 500 |
+| PreviousUnpaidBalance | szám | Explicit, korábban nem fizetett egyenleg | $500,00 | 500 |
 
 
 ## <a name="next-steps"></a>További lépések
@@ -109,7 +109,7 @@ A számlázási szolgáltatás kibontja a szöveget, a táblákat és a 26 szám
 - Próbálja ki saját számláit és mintáit az [űrlap-felismerő minta felhasználói felületén](https://fott-preview.azurewebsites.net/).
 - Töltse ki az [űrlap-felismerő ügyféloldali függvénytárának](quickstarts/client-library.md) rövid útmutatóját, hogy megkezdje a számla-feldolgozó alkalmazás írását az űrlap felismerővel az Ön által választott nyelven.
 - Vagy kövesse a [Számlázási adatok kinyerése](./quickstarts/python-invoices.md) lehetőséget a számlázási adatok kinyerésének a Python és a REST API használatával történő megvalósításához.
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Mi a Form Recognizer?](./overview.md)
-* [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)
+* [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)

@@ -1,5 +1,5 @@
 ---
-title: Poster-kérelmek készítése
+title: Kérelem küldése a Postman használatával
 titleSuffix: Azure Digital Twins
 description: Ismerje meg, hogyan konfigurálhatja és használhatja a Poster-t az Azure digitális Twins API-k teszteléséhez.
 ms.author: baanders
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: f9be9dd94aad8c206b562f2c984ec944f70d3957
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5dbe161af172b65919328fca0b272f3b658f1b32
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188052"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600489"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>A Poster használata a kérelmek Azure digitális Twins API-khoz való küldéséhez
 
@@ -130,7 +130,7 @@ Ahhoz, hogy egy Poster-kérést küldjön az egyik Azure digitális Twins API-na
 
 Egy példa lekérdezés folytatásához ez a cikk a lekérdezési API-t (és annak [hivatkozási dokumentációját](/rest/api/digital-twins/dataplane/query/querytwins)) fogja használni egy példányban lévő összes digitális ikrek lekérdezéséhez.
 
-1. Kérje le a kérelem URL-címét és típusát a hivatkozási dokumentációból. A lekérdezési API esetében ez a *post https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31*.
+1. Kérje le a kérelem URL-címét és típusát a hivatkozási dokumentációból. A lekérdezési API esetében ez a *post `https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31`*.
 1. A Poster mezőben állítsa be a kérelem típusát, és írja be a kérelem URL-címét, majd adja meg a helyőrzőket az URL-címben a szükséges módon. Itt fogja használni a példány **állomásneve** az [*Előfeltételek*](#prerequisites) szakaszban.
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="Az új kérelem részleteiben a hivatkozási dokumentációban található lekérdezési URL-cím be lett töltve a kérelem URL-címe mezőbe." lightbox="media/how-to-use-postman/postman-request-url.png":::
@@ -154,6 +154,6 @@ A kérelem elküldése után a válasz részletei a kérelem alatt, a Poster abl
 
 Összehasonlíthatja a dokumentációban megadott, várt válaszokra adott választ is, hogy ellenőrizze az eredményt, vagy többet tudjon meg az esetlegesen felmerülő hibákról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a digitális Twins API-król, olvassa el a következő [*témakört: útmutató: az Azure Digital Twins API-k és SDK*](how-to-use-apis-sdks.md)-k használata, illetve a [REST API-k dokumentációjának](/rest/api/azure-digitaltwins/)megtekintése.

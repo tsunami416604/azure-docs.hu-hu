@@ -39,6 +39,8 @@
       href: restart-resize-error-troubleshooting.md
     - name: Szolgáltatások újraindítása vagy leállítása
       href: boot-error-troubleshoot-windows.md
+    - name: Megtelt operációsrendszer-lemezzel kapcsolatos problémák Linux rendszerű virtuális gépen
+      href: os-disk-full-linux.md
 - name: Váratlan újraindulás
   items:
     - name: Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása

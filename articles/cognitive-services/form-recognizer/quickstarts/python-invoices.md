@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/12/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 7c6b5406728817c3dd700ec285d9af77c9d3cf60
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 2ed8bdd167814ea21fced89042bdcf80fd3a73df
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96009313"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602648"
 ---
 # <a name="quickstart-extract-invoice-data-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: számlázási adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -30,7 +30,7 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 - Egy számlázási dokumentum. Ehhez a rövid útmutatóhoz a [minta számlát](../media/sample-invoice.jpg) is használhatja.
 
 > [!NOTE]
-> Ez a rövid útmutató egy helyi fájlt használ. Az URL-cím alapján elérhető számlázási dokumentum használatához tekintse meg a [dokumentációt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeInvoiceAsync).
+> Ez a rövid útmutató egy helyi fájlt használ. Az URL-cím alapján elérhető számlázási dokumentum használatához tekintse meg a [dokumentációt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync).
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
@@ -290,6 +290,6 @@ if __name__ == '__main__':
 Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával a tartalom kinyeréséhez a számlákon. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 
 > [!div class="nextstepaction"]
-> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeInvoiceAsync)
+> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)
 
    

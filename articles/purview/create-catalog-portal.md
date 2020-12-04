@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 00b504c7bcf51a69d03fb1294de4f52ef35ed163
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c9e0b155a4cf34373bb6d851241dc62ddd661045
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555974"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602370"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása a Azure Portal
 
@@ -26,6 +26,62 @@ Ebben a rövid útmutatóban létrehoz egy Azure-beli hatáskörébe tartozó fi
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Saját [Azure Active Directory bérlője](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+
+* A fióknak engedéllyel kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre az előfizetésben
+
+* Ha **Azure Policy** blokkolja az összes alkalmazást a Storage- **fiók** és a **EventHub-névtér** létrehozásához, akkor a címkével kell megadnia a szabályzatot, amely a hatáskörébe tartozó fiók létrehozásának folyamata során megadható. Ennek fő oka, hogy minden létrehozott felügyeleti fiókhoz létre kell hoznia egy felügyelt erőforráscsoportot, és ezen az erőforráscsoport, egy Storage-fiók és egy EventHub-névtér között.
+    1. Navigáljon a Azure Portalre, és keressen rá **a szabályzat** kifejezésre.
+    1. Kövesse az [egyéni házirend-definíció létrehozása](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition) vagy a meglévő szabályzat módosítása lehetőséget két kivétel hozzáadásához az `not` operátorral és a `resourceBypass` címkével:
+
+        ```json
+        {
+          "mode": "All",
+          "policyRule": {
+            "if": {
+              "anyOf": [
+              {
+                "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.Storage/storageAccounts"
+                },
+                {
+                  "not": {
+                    "field": "tags['<resourceBypass>']",
+                    "exists": true
+                  }
+                }]
+              },
+              {
+                "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.EventHub/namespaces"
+                },
+                {
+                  "not": {
+                    "field": "tags['<resourceBypass>']",
+                    "exists": true
+                  }
+                }]
+              }]
+            },
+            "then": {
+              "effect": "deny"
+            }
+          },
+          "parameters": {}
+        }
+        ```
+        
+        > [!Note]
+        > A címke bármi lehet a mellett, `resourceBypass` és akár Ön is meghatározhatja az értéket, amikor az utóbbi lépésekben létrehozza a hatáskörébe tartozó teendőket, feltéve, hogy a szabályzat képes azonosítani a címkét.
+
+        :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="A házirend-definíció létrehozását bemutató képernyőkép.":::
+
+    1. [Hozzon létre egy szabályzat-hozzárendelést](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) a létrehozott egyéni szabályzat használatával.
+
+        [![A szabályzat-hozzárendelés létrehozását bemutató képernyőkép](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -61,9 +117,17 @@ Ha szükséges, kövesse az alábbi lépéseket az előfizetés konfigurálásá
     1. Adja meg a katalógushoz a **hatáskörébe tartozó fiók nevét** . Szóközök és szimbólumok használata nem engedélyezett.
     1. Válasszon egy  **helyet**, majd válassza a **Next (Konfigurálás**) lehetőséget.
 1. A **konfiguráció** lapon válassza ki a kívánt **platform méretét** – az engedélyezett értékek: 4 kapacitási egység (CU) és 16 cu. Kattintson a **Tovább gombra: címkék**.
-1. A **címkék** lapon opcionálisan hozzáadhat egy vagy több címkét is. Ezek a címkék csak a Azure Portal használhatók, nem az Azure hatáskörébe.
+1. A **címkék** lapon opcionálisan hozzáadhat egy vagy több címkét is. Ezek a címkék csak a Azure Portal használhatók, nem az Azure hatáskörébe. 
+
+    > [!Note] 
+    > Ha **Azure Policy** van, és kivételt kell hozzáadnia az **előfeltételekhez**, hozzá kell adnia a megfelelő címkét. Hozzáadhat például egy címkét `resourceBypass` : :::image type="content" source="./media/create-catalog-portal/add-purview-tag.png" alt-text="címke hozzáadása a hatáskörébe fiókhoz.":::
+
 1. Válassza a **felülvizsgálat & létrehozás** lehetőséget, majd válassza a **Létrehozás** lehetőséget. A létrehozás elvégzése néhány percet vesz igénybe. Az újonnan létrehozott Azure hatáskörébe tartozó fiók példánya megjelenik a hatáskörébe tartozó **fiókok** lapjának listájában.
 1. Ha az új fiók üzembe helyezése befejeződött, válassza az **erőforrás** megnyitása lehetőséget.
+
+    > [!Note]
+    > Ha a kiépítés állapota nem sikerült `Conflict` , az azt jelenti, hogy egy Azure-házirend blokkolja a szabályzatot a **Storage-fiók** és a EventHub- **névtér** létrehozásához. A kivételek hozzáadásához el kell végeznie az **Előfeltételek** lépéseit.
+    > :::image type="content" source="./media/create-catalog-portal/purview-conflict-error.png" alt-text="A hatáskörébe ütköző hibaüzenet üzenete":::
 
 1. Válassza a **hatáskörébe tartozó fiók elindítása** lehetőséget.
 
@@ -103,7 +167,7 @@ Ha már nincs szüksége erre az Azure-beli hatáskörébe fiókra, törölje a 
 
 2. Válassza ki a rövid útmutató elején létrehozott Azure-beli hatáskörébe tartozó fiókot. Válassza a **Törlés** lehetőséget, adja meg a fiók nevét, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure-beli hatáskörébe tartozó fiókot.
 

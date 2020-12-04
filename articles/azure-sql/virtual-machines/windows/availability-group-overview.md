@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 8573e45270dfd1ff984eae3dc5fbf1dc5f2fc6da
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504390"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600863"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On rendelkezésre állási csoport SQL Server Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,12 +37,14 @@ Az alábbi ábra az Azure-beli virtuális gépeken SQL Server rendelkezésre ál
 
 ## <a name="vm-redundancy"></a>VM-redundancia 
 
-A redundancia és a magas rendelkezésre állás növeléséhez a SQL Server virtuális gépeknek ugyanahhoz a [rendelkezésre állási csoporthoz](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)vagy különböző [rendelkezésre állási zónákhoz](../../../availability-zones/az-overview.md)kell tartoznia.
+A redundancia és a magas rendelkezésre állás növeléséhez SQL Server virtuális gépeknek ugyanahhoz a [rendelkezésre állási csoporthoz](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)vagy különböző [rendelkezésre állási zónákhoz](../../../availability-zones/az-overview.md)kell tartoznia.
 
-A rendelkezésre állási csoport olyan erőforrások csoportosítása, amelyek úgy vannak konfigurálva, hogy ne legyenek két tartomány ugyanabban a rendelkezésre állási zónában. Ezzel megelőzhető, hogy a csoportba tartozó erőforrások több erőforrásra is hatással legyenek az üzembe helyezés során. 
+Ha a virtuális gépek egy készletét ugyanabban a rendelkezésre állási csoportba helyezi, a berendezés meghibásodása által okozott kimaradás (a rendelkezésre állási csoportba tartozó virtuális gépek nem osztják meg az erőforrásokat) vagy a frissítések (a rendelkezésre állási csoportba tartozó virtuális gépek nem frissülnek egyszerre). Availability Zones a teljes adatközpont meghibásodása elleni védelmet, és minden olyan zónát, amely egy adott régióban található adatközpontok készletét jelképezi.  Azáltal, hogy az erőforrások különböző Availability Zonesba vannak helyezve, az adatközpont-szintű leállás nélkül az összes virtuális gép offline állapotba kerülhet.
+
+Az Azure-beli virtuális gépek létrehozásakor választania kell a rendelkezésre állási készletek és a Availability Zones konfigurálása között.  Az Azure-beli virtuális gépek adatbázismotor is részt vesznek.
 
 
-## <a name="connectivity"></a>Kapcsolat 
+## <a name="connectivity"></a>Kapcsolatok 
 
 A hagyományos helyszíni telepítés során az ügyfelek a virtuális hálózat neve (VNN) használatával csatlakoznak a rendelkezésre állási csoport figyelője számára, és a figyelő a rendelkezésre állási csoportban lévő megfelelő SQL Server replikához irányítja a forgalmat. Azonban további követelmény, hogy az Azure-hálózaton keresztül irányítsa a forgalmat. 
 
@@ -85,9 +87,9 @@ Az alábbi táblázat az elérhető lehetőségek összehasonlítását tartalma
 |**Lehetséges DNN-figyelőt létrehozni ezzel a módszerrel?**|Nem|Nem|Nem|Igen|
 |**WSFC kvórum konfigurálása**|Felhőbeli tanúsító|Felhőbeli tanúsító|Felhőbeli tanúsító|Mind|
 |**DR több régióban** |Nem|Nem|Nem|Igen|
-|**Többalhálózat támogatása** |Igen|Igen|Igen|Yes|
-|**Meglévő AD támogatása**|Igen|Igen|Igen|Yes|
-|**DR többzónás, ugyanabban a régióban**|Igen|Igen|Igen|Yes|
+|**Többalhálózat támogatása** |Igen|Igen|Igen|Igen|
+|**Meglévő AD támogatása**|Igen|Igen|Igen|Igen|
+|**DR többzónás, ugyanabban a régióban**|Igen|Igen|Igen|Igen|
 |**AD-t nem tartalmazó elosztott AG**|Nem|Nem|Nem|Igen|
 |**Fürt nélküli elosztott AG** |Nem|Nem|Nem|Igen|
 
@@ -97,7 +99,7 @@ További információ: [Azure Portal](availability-group-azure-portal-configure.
 
 Azure IaaS virtuális gépek vendég feladatátvevő fürtjein kiszolgálónként (fürtcsomópontonként) egyetlen hálózati adapter és egyetlen alhálózat használatát javasoljuk. Az Azure-hálózatkezelés fizikai redundanciával rendelkezik, ami felesleges hálózati adaptereket és alhálózatokat tesz lehetővé az Azure IaaS VM-vendég fürtön. Bár a fürtellenőrzési jelentés figyelmeztetést küld, amely szerint a csomópontok csak egyetlen hálózaton érhetők el, ez a figyelmeztetés nyugodtan figyelmen kívül hagyható az Azure IaaS virtuális gépek vendég feladatátvevő fürtjein. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a [HADR ajánlott eljárásait](hadr-cluster-best-practices.md) , és ismerkedjen meg a rendelkezésre állási csoport üzembe helyezésével a [Azure Portal](availability-group-azure-portal-configure.md), az [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), a [Gyorsindítás sablonok](availability-group-quickstart-template-configure.md) vagy a [manuális](availability-group-manually-configure-prerequisites-tutorial.md)használatával.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: ff64d5c17174f8e1e67111ebca9ccf050deb2f26
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2488a476fe40c2bf1f3e290b462babceff30a9b0
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409654"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601390"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Kódtesztelési stratégiák az Azure Functions szolgáltatásban
 
@@ -28,7 +28,7 @@ A minta tárház a [githubon](https://github.com/Azure-Samples/azure-functions-t
 
 ## <a name="c-in-visual-studio"></a>C# a Visual Studióban
 
-Az alábbi példa azt ismerteti, hogyan hozhat létre C# Function alkalmazást a Visual Studióban, és hogyan futtathat és tesztelheti a [xUnit](https://xunit.github.io).
+Az alábbi példa azt ismerteti, hogyan hozhat létre C# Function alkalmazást a Visual Studióban, és hogyan futtathat és tesztelheti a [xUnit](https://github.com/xunit/xunit).
 
 ![Azure Functions tesztelése a C# használatával a Visual Studióban](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
@@ -39,7 +39,7 @@ A környezet beállításához hozzon létre egy Function és test alkalmazást.
 1. [Hozzon létre egy új functions-alkalmazást](./functions-create-first-azure-function.md) , és nevezze el a **függvényeket**
 2. [Hozzon létre egy http-függvényt a sablonból](./functions-create-first-azure-function.md) , és nevezze el **MyHttpTrigger**.
 3. [Hozzon létre egy időzítő függvényt a sablonból](./functions-create-scheduled-function.md) , és nevezze el **MyTimerTrigger**.
-4. [Hozzon létre egy XUnit teszt alkalmazást](https://xunit.github.io/docs/getting-started-dotnet-core) a megoldásban, és nevezze el a **functions.** tests nevet.
+4. [Hozzon létre egy XUnit teszt alkalmazást](https://xunit.net/docs/getting-started/netcore/cmdline) a megoldásban, és nevezze el a **functions.** tests nevet.
 5. A NuGet használata a tesztelési alkalmazásból a [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) -re mutató hivatkozás hozzáadásához
 6. [Hivatkozzon a *functions* alkalmazásra](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *functions. tesztek* alkalmazásban.
 
@@ -107,11 +107,11 @@ namespace Functions.Tests
 
 Az `ListLogger` osztály a következő tagokat valósítja meg, mint az `ILogger` illesztőfelület:
 
-- **BeginScope** : a hatókörök kontextust adhatnak a naplózáshoz. Ebben az esetben a teszt csak a osztály statikus példányára mutat, `NullScope` hogy lehetővé tegye a teszt működését.
+- **BeginScope**: a hatókörök kontextust adhatnak a naplózáshoz. Ebben az esetben a teszt csak a osztály statikus példányára mutat, `NullScope` hogy lehetővé tegye a teszt működését.
 
-- **IsEnabled** : az alapértelmezett érték `false` van megadva.
+- **IsEnabled**: az alapértelmezett érték `false` van megadva.
 
-- **Napló** : Ez a metódus a megadott `formatter` függvényt használja az üzenet formázásához, majd hozzáadja az eredményül kapott szöveget a `Logs` gyűjteményhez.
+- **Napló**: Ez a metódus a megadott `formatter` függvényt használja az üzenet formázásához, majd hozzáadja az eredményül kapott szöveget a `Logs` gyűjteményhez.
 
 A `Logs` gyűjtemény egy példánya, amely a `List<string>` konstruktorban van inicializálva.
 
@@ -193,13 +193,13 @@ namespace Functions.Tests
 
 Az `TestFactory` osztály a következő tagokat valósítja meg:
 
-- **Adatok** : Ez a tulajdonság a mintaadatok [IEnumerable](/dotnet/api/system.collections.ienumerable) gyűjteményét adja vissza. A kulcs érték párok a lekérdezési karakterláncba átadott értékeket jelölik.
+- **Adatok**: Ez a tulajdonság a mintaadatok [IEnumerable](/dotnet/api/system.collections.ienumerable) gyűjteményét adja vissza. A kulcs érték párok a lekérdezési karakterláncba átadott értékeket jelölik.
 
-- **CreateDictionary** : Ez a metódus fogadja a kulcs/érték párokat argumentumként, és visszaadja a `Dictionary` `QueryCollection` lekérdezési karakterlánc értékeit jelölő új létrehozáshoz használt újat.
+- **CreateDictionary**: Ez a metódus fogadja a kulcs/érték párokat argumentumként, és visszaadja a `Dictionary` `QueryCollection` lekérdezési karakterlánc értékeit jelölő új létrehozáshoz használt újat.
 
-- **CreateHttpRequest** : Ez a METÓDUS egy HTTP-kérést hoz létre, amely a megadott lekérdezési karakterlánc-paraméterekkel inicializálva van.
+- **CreateHttpRequest**: Ez a METÓDUS egy HTTP-kérést hoz létre, amely a megadott lekérdezési karakterlánc-paraméterekkel inicializálva van.
 
-- **CreateLogger** : a naplózó típus alapján ez a metódus a teszteléshez használt naplózó osztályt adja vissza. A `ListLogger` nyomon követi a naplózott üzeneteket a tesztek kiértékeléséhez.
+- **CreateLogger**: a naplózó típus alapján ez a metódus a teszteléshez használt naplózó osztályt adja vissza. A `ListLogger` nyomon követi a naplózott üzeneteket a tesztek kiértékeléséhez.
 
 Végül hozzon létre egy új osztályt a *functions. tesztek* **FunctionsTests.cs** nevű projektben, és adja meg a következő kódot:
 
@@ -245,11 +245,11 @@ namespace Functions.Tests
 
 Az ebben az osztályban megvalósított tagok a következők:
 
-- **Http_trigger_should_return_known_string** : Ez a teszt egy http-függvény lekérdezési karakterlánc-értékeivel rendelkező kérelmet hoz létre, `name=Bill` és ellenőrzi, hogy a rendszer visszaadja-e a várt választ.
+- **Http_trigger_should_return_known_string**: Ez a teszt egy http-függvény lekérdezési karakterlánc-értékeivel rendelkező kérelmet hoz létre, `name=Bill` és ellenőrzi, hogy a rendszer visszaadja-e a várt választ.
 
-- **Http_trigger_should_return_string_from_member_data** : Ez a teszt xUnit-attribútumokat használ a http-függvényhez tartozó mintaadatok biztosításához.
+- **Http_trigger_should_return_string_from_member_data**: Ez a teszt xUnit-attribútumokat használ a http-függvényhez tartozó mintaadatok biztosításához.
 
-- **Timer_should_log_message** : Ez a teszt létrehoz egy példányt, `ListLogger` és átadja egy időzítő függvénynek. A függvény futtatása után a rendszer ellenőrzi, hogy a napló be van-e jelölve, hogy a várt üzenet megtalálható legyen.
+- **Timer_should_log_message**: Ez a teszt létrehoz egy példányt, `ListLogger` és átadja egy időzítő függvénynek. A függvény futtatása után a rendszer ellenőrzi, hogy a napló be van-e jelölve, hogy a várt üzenet megtalálható legyen.
 
 Ha a tesztek során szeretné elérni az alkalmazás beállításait, a függvénybe [beillesztheti egy](./functions-dotnet-dependency-injection.md) `IConfiguration` példány kigúnyolt környezeti változó értékeit.
 
@@ -305,7 +305,7 @@ module.exports = {
 
 Ez a modul kigúnyolja a *log* függvényt, amely az alapértelmezett végrehajtási környezetet jelöli.
 
-Ezután adjon hozzá egy új fájlt, nevezze el **defaultTimer.js** , majd adja hozzá a következő kódot:
+Ezután adjon hozzá egy új fájlt, nevezze el **defaultTimer.js**, majd adja hozzá a következő kódot:
 
 ```javascript
 module.exports = {

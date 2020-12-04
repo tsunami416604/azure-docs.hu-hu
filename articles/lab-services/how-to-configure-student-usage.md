@@ -2,39 +2,74 @@
 title: A Azure Lab Services Labs használati beállításainak konfigurálása
 description: Megtudhatja, hogyan konfigurálhatja a tanulók számát a laborban, regisztrálhatja őket a laborban, meghatározhatja, hogy hány órát használhatnak a virtuális gép, és így tovább.
 ms.topic: article
-ms.date: 11/11/2020
-ms.openlocfilehash: e768c74d338cf21eb56660fe3790fc1f0f3ec80d
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 12/01/2020
+ms.openlocfilehash: 3b05246445aea708312891ec631a35da3bc1eb8e
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434549"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602631"
 ---
 # <a name="add-and-manage-lab-users"></a>Tesztkörnyezeti felhasználók létrehozása és felügyelete
 
 Ez a cikk azt ismerteti, hogyan lehet tanuló felhasználókat felvenni egy laborba, regisztrálni őket a laborban, szabályozni a virtuális gépet (VM) használó további órák számát, és így tovább. 
 
-## <a name="add-users-to-a-lab"></a>Felhasználók hozzáadása laborhoz
+Amikor felhasználókat ad hozzá, alapértelmezés szerint a **hozzáférés korlátozása** beállítás be van kapcsolva, és ha a felhasználók listáján szerepelnek, a tanulók nem regisztrálhatnak a laborba, még akkor sem, ha regisztrációs hivatkozással rendelkeznek. Csak a felsorolt felhasználók regisztrálhatnak a laborba az Ön által küldött regisztrációs hivatkozás használatával. Kikapcsolhatja a **hozzáférés korlátozása** lehetőséget, amely lehetővé teszi a tanulók számára, hogy regisztráljanak a laborban, amennyiben rendelkeznek a regisztrációs hivatkozással. 
 
-Ebben a szakaszban a tanulókat manuálisan vagy egy CSV-fájl feltöltésével adja hozzá a laborhoz. Tegye a következőket:
+Ez a cikk bemutatja, hogyan adhat hozzá felhasználókat a laborhoz.
+
+## <a name="add-users-from-an-azure-ad-group"></a>Felhasználók hozzáadása egy Azure AD-csoportból
+
+### <a name="overview"></a>Áttekintés
+
+Most már meglévő Azure Active Directory (Azure AD) csoportba szinkronizálhatja a tesztkörnyezet felhasználói listáját, így nem kell manuálisan hozzáadnia vagy törölnie a felhasználókat. 
+
+A szervezeti erőforrásokhoz és a felhőalapú alkalmazásokhoz való hozzáférés kezeléséhez egy Azure AD-csoport hozható létre a szervezet Azure Active Directory belül. További információ: [Azure ad-csoportok](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Ha a szervezete Microsoft Office 365-es vagy Azure-szolgáltatásokat használ, a szervezete már rendelkezik a Azure Active Directoryt kezelő rendszergazdákkal. 
+
+### <a name="sync-users-with-azure-ad-group"></a>Felhasználók szinkronizálása az Azure AD-csoporttal
+
+> [!IMPORTANT]
+> Győződjön meg arról, hogy a felhasználói lista üres. Ha a laborban meglévő felhasználók manuálisan vagy CSV-fájl importálásával lettek létrehozva, akkor a tesztkörnyezet meglévő csoportba való szinkronizálásának lehetősége nem jelenik meg. 
+
+1. Jelentkezzen be a [Azure Lab Services webhelyére](https://labs.azure.com/).
+1. Válassza ki a labort, amellyel dolgozni szeretne.
+1. A bal oldali ablaktáblán válassza a **felhasználók** lehetőséget. 
+1. Kattintson **a csoport szinkronizálása** elemre. 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-sync-group.png" alt-text="Felhasználók hozzáadása egy Azure AD-csoport szinkronizálásával":::
+    
+1. A rendszer kérni fogja, hogy válasszon ki egy meglévő Azure AD-csoportot, hogy szinkronizálja a labort a következővel:. 
+    
+    Ha nem látja az Azure AD-csoportot a listában, az a következő okok miatt lehet:
+
+    -   Ha Ön egy Azure Active Directory vendég felhasználója (általában az Azure AD-t birtokló szervezeten kívüli), és nem tud az Azure AD-n belüli csoportokat keresni. Ebben az esetben nem fog tudni Azure AD-csoportot hozzáadni a laborhoz ebben az esetben. 
+    -   A csapatokon keresztül létrehozott Azure AD-csoportok nem jelennek meg a listában. A csapatokon belüli Azure Lab Services alkalmazás hozzáadásával és felügyeletével közvetlenül is létrehozhatja és kezelheti a laborokat. A [laborok felhasználói listájának a csapatokból való kezelésével](how-to-manage-user-lists-within-teams.md)kapcsolatos további információkért tekintse meg a következőt:. 
+1. Miután kiválasztotta az Azure AD-csoportot, hogy szinkronizálja a labort, kattintson a **Hozzáadás** gombra.
+1. Miután a labor szinkronizálva lett, az Azure AD-csoporton belül mindenkit lehívhat a laborba felhasználóként, és megtekintheti a felhasználók listáját. Csak az ebben az Azure AD-csoportban lévő személyek férhetnek hozzá a laborhoz. A felhasználói lista 24 óránként frissül, hogy az megfeleljen az Azure AD-csoport legújabb tagságának. A felhasználók lap szinkronizálás gombjára kattintva manuálisan is szinkronizálhatja az Azure AD-csoport legújabb módosításait.
+1. Hívja meg a felhasználókat a laborba úgy, hogy az **összes meghívása** gombra kattint, amely e-mailt küld az összes felhasználónak a laborhoz tartozó regisztrációs hivatkozással. 
+
+### <a name="automatic-management-of-virtual-machines-based-on-changes-to-the-azure-ad-group"></a>Virtuális gépek automatikus felügyelete az Azure AD-csoport változásai alapján 
+
+Miután a labor szinkronizálva lett egy Azure AD-csoporttal, a laborban lévő virtuális gépek száma automatikusan megegyezik a csoportban lévő felhasználók számával. Többé nem fogja tudni manuálisan frissíteni a labor kapacitását. Ha hozzáad egy felhasználót az Azure AD-csoporthoz, a labor automatikusan hozzáadja az adott felhasználóhoz tartozó virtuális gépet. Ha töröl egy felhasználót az Azure AD-csoportból, a labor automatikusan törli a felhasználó virtuális gépét a laborból. 
+
+## <a name="add-users-manually-from-emails-or-csv-file"></a>Felhasználók manuális hozzáadása e-mail-vagy CSV-fájlból
+
+Ebben a szakaszban manuálisan adja hozzá a tanulókat (e-mail-cím vagy CSV-fájl feltöltésével). 
+
+### <a name="add-users-by-email-address"></a>Felhasználók hozzáadása e-mail-cím alapján
 
 1. A bal oldali ablaktáblán válassza a **felhasználók** lehetőséget. 
+1. Kattintson a **felhasználók manuális hozzáadása** lehetőségre. 
 
-    Alapértelmezés szerint a **hozzáférés korlátozása** beállítás be van kapcsolva, és ha a felhasználók listáján szerepelnek, a tanulók nem regisztrálhatnak a laborba, még akkor sem, ha regisztrációs hivatkozással rendelkeznek. Csak a felsorolt felhasználók regisztrálhatnak a laborba az Ön által küldött regisztrációs hivatkozás használatával. Ebben az eljárásban felhasználókat vesz fel a listára. Azt is megteheti, hogy kikapcsolja a **hozzáférés korlátozása** lehetőséget, amely lehetővé teszi a tanulók számára, hogy regisztráljanak a laborban, amennyiben rendelkeznek a regisztrációs hivatkozással. 
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-manually.png" alt-text="Felhasználók manuális hozzáadása":::
+1. Válassza a **Hozzáadás e-mail-cím szerint** (alapértelmezett) lehetőséget, adja meg a tanulók e-mail-címeit külön vonalakon, vagy egyetlen sorban pontosvesszővel elválasztva. 
 
-1. A **felhasználók** ablaktábla tetején válassza a **felhasználók hozzáadása** lehetőséget, majd válassza a **Hozzáadás e-mail-cím alapján** lehetőséget. 
-
-    ![A "felhasználók hozzáadása" gomb](./media/how-to-configure-student-usage/add-users-button.png)
-
-1. A **felhasználók hozzáadása** panelen adja meg a tanulók e-mail-címeit külön vonalakon, vagy egyetlen sorban pontosvesszővel elválasztva. 
-
-    ![Felhasználók e-mail címeinek hozzáadása](./media/how-to-configure-student-usage/add-users-email-addresses.png)
-
-1. Kattintson a **Mentés** gombra. 
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-email-addresses.png" alt-text="Felhasználók e-mail címeinek hozzáadása":::
+1. Válassza a **Mentés** lehetőséget. 
 
     A lista megjeleníti az aktuális felhasználók e-mail-címeit és állapotát, függetlenül attól, hogy regisztrálva vannak-e a laborban. 
 
-    ![Felhasználók listája](./media/how-to-configure-student-usage/list-of-added-users.png)
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="Felhasználók listája":::
 
     > [!NOTE]
     > Miután a tanulók regisztrálva lettek a laborban, a lista megjeleníti a nevüket. A listában megjelenő név a Azure Active Directory tanulóinak vezetékneve és vezetékneve alapján jön létre. 
@@ -47,23 +82,15 @@ A CSV-szövegfájlok vesszővel tagolt (CSV) táblázatos adatok (számok és sz
 
 1. A Microsoft Excelben hozzon létre egy CSV-fájlt, amely egy oszlopban a tanulók e-mail-címeit listázza.
 
-    ![CSV-fájlban lévő felhasználók listája](./media/how-to-configure-student-usage/csv-file-with-users.png)
-
+    :::image type="content" source="./media/how-to-configure-student-usage/csv-file-with-users.png" alt-text="CSV-fájlban lévő felhasználók listája":::
 1. A **felhasználók** ablaktábla tetején válassza a **felhasználók hozzáadása** lehetőséget, majd válassza a CSV-fájl **feltöltése** lehetőséget.
-
-    ![A "CSV feltöltése" gomb](./media/how-to-configure-student-usage/upload-csv-button.png)
-
 1. Válassza ki a diákok e-mail-címeit tartalmazó CSV-fájlt, majd kattintson a **Megnyitás** gombra.
 
     A **felhasználók hozzáadása** ablakban megjelenik az e-mail-címek listája a csv-fájlból. 
-
-    ![A "felhasználók hozzáadása" ablak a CSV-fájlból származó e-mail-címekkel](./media/how-to-configure-student-usage/add-users-window.png)
-
-1. Kattintson a **Mentés** gombra. 
-
+1. Válassza a **Mentés** lehetőséget. 
 1. A **felhasználók** ablaktáblán tekintse meg a felvett diákok listáját. 
 
-    ![A "felhasználók" ablaktáblán felvett felhasználók listája](./media/how-to-configure-student-usage/list-of-added-users.png)
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="A hozzáadott felhasználók listája a felhasználók ablaktáblán":::
 
 ## <a name="send-invitations-to-users"></a>Meghívók küldése a felhasználóknak
 
@@ -210,7 +237,6 @@ Ha még nem csatolták GitHub-fiókját egy Microsoft-fiókhoz, a következőket
 1. Az eszköztáron válassza a három pontot (**..**.), majd válassza a **CSV exportálása** lehetőséget. 
 
     ![A "CSV exportálása" gomb](./media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
-
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,12 +3,12 @@ title: Azure Lab Services használata a Hackathon
 description: Ez a cikk azt ismerteti, hogyan használhatók a Azure Lab Services a ötletbörzékhez futtatásához használható laborok létrehozásához.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 561351636a37c2cd5c3070dbfef2a3122e5c29b0
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a0917ede4502dcbb59d1a30b7985b06c06975599
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434260"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602580"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Azure Lab Services használata a következő Hackathon
 A Azure Lab Services könnyű és könnyen használható, így gyorsan üzembe helyezhet egy új, virtuális gépeket (VM) a Hackathon számára.  A következő ellenőrzőlista használatával biztosíthatja, hogy a Hackathon a lehető legzökkenőmentesebb legyen. Ezt az ellenőrzőlistát az informatikai részlegnek vagy a Hackathon-labor létrehozásával és felügyeletével megbízott szakoktatóknak kell elvégeznie. 
@@ -39,7 +39,7 @@ Ha labor-szolgáltatásokat szeretne használni a Hackathon, győződjön meg ar
 
 - **Döntse el, hogy szeretné-e korlátozni a tesztkörnyezet hozzáférését** 
 
-    Amikor felhasználókat ad hozzá a laborhoz, a hozzáférés korlátozása beállítás alapértelmezés szerint engedélyezve van. Ehhez a funkcióhoz hozzá kell adnia az összes Hackathon-résztvevő e-mail-címét a listához, mielőtt a regisztrációs hivatkozás használatával regisztrálja és hozzáférhessen a laborhoz. Ha olyan Hackathon rendelkezik, amelyben nem tudja, kik a résztvevők az esemény előtt, letilthatja a hozzáférés korlátozása lehetőséget, amely lehetővé teszi, hogy bárki regisztrálhat a laborba a regisztrációs hivatkozás használatával. További információ: [útmutató a felhasználók hozzáadásához](how-to-configure-student-usage.md#add-users-to-a-lab).
+    Amikor felhasználókat ad hozzá a laborhoz, a hozzáférés korlátozása beállítás alapértelmezés szerint engedélyezve van. Ehhez a funkcióhoz hozzá kell adnia az összes Hackathon-résztvevő e-mail-címét a listához, mielőtt a regisztrációs hivatkozás használatával regisztrálja és hozzáférhessen a laborhoz. Ha olyan Hackathon rendelkezik, amelyben nem tudja, kik a résztvevők az esemény előtt, letilthatja a hozzáférés korlátozása lehetőséget, amely lehetővé teszi, hogy bárki regisztrálhat a laborba a regisztrációs hivatkozás használatával. További információ: [útmutató a felhasználók hozzáadásához](how-to-configure-student-usage.md).
 
 - Az **ütemterv, a kvóta és az automatikus leállítás beállításainak ellenőrzése**. 
 

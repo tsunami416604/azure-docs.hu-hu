@@ -240,6 +240,9 @@
         - name: Igény szerinti videó
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
+    - name: Media Services-architektúrák
+      displayName: architectures
+      href: architectures-concept.md
     - name: Hibaelhárítás
       items:
         - name: Gyakori kérdések
@@ -405,7 +408,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Indítás
+        - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.media/allversions

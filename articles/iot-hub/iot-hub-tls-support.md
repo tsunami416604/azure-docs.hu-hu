@@ -1,24 +1,42 @@
 ---
 title: Azure IoT Hub TLS-támogatás
-description: Ajánlott eljárások a biztonságos TLS-kapcsolatok használatához a IoT Hub kommunikáló eszközökhöz és szolgáltatásokhoz
+description: Tudnivalók a biztonságos TLS-kapcsolatok használatáról az IoT Hub kommunikáló eszközökhöz és szolgáltatásokhoz
 services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 11/25/2020
 ms.author: jlian
-ms.openlocfilehash: c9dd66fe9d71f0a857e4b0821190bceb5d6d4680
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: ddb89f60c9fe380012c299afaafb6046bf6849c9
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628798"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602750"
 ---
-# <a name="tls-support-in-iot-hub"></a>TLS-támogatás a IoT Hub
+# <a name="transport-layer-security-tls-support-in-iot-hub"></a>Transport Layer Security (TLS) támogatása IoT Hub
 
 A IoT Hub Transport Layer Security (TLS) protokollt használ a IoT-eszközök és-szolgáltatások közötti kapcsolatok biztonságossá tételéhez. A TLS protokoll három verziója jelenleg támogatott, azaz a 1,0, 1,1 és 1,2 verziókat.
 
-A TLS 1,0 és a 1,1 örökölt, és elavultnak számít. További információ: [a TLS 1,0 és a 1,1 elavult a IoT hub](iot-hub-tls-deprecating-1-0-and-1-1.md). Javasoljuk, hogy a TLS 1,2-et használja elsődleges TLS-verzióként IoT Hubhoz való csatlakozáskor.
+A TLS 1,0 és a 1,1 örökölt, és elavultnak számít. További információ: [a TLS 1,0 és a 1,1 elavult a IoT hub](iot-hub-tls-deprecating-1-0-and-1-1.md). A jövőbeli problémák elkerüléséhez használja a TLS 1,2-et az egyetlen TLS-verzióként a IoT Hubhoz való csatlakozáskor.
+
+## <a name="iot-hubs-server-tls-certificate"></a>IoT Hub kiszolgáló TLS-tanúsítványa
+
+A TLS-kézfogás során a IoT Hub RSA-kulcsokkal rendelkező kiszolgálói tanúsítványokat jelenít meg az ügyfelek csatlakoztatásához. A gyökér a Baltimore CyberTrust legfelső szintű HITELESÍTÉSSZOLGÁLTATÓja. A közelmúltban módosult a kibocsátók új köztes hitelesítésszolgáltatók (nemzetközi árumegállapodások vagy). További információ: [IOT hub TLS-tanúsítvány frissítése](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/)
+
+### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>Elliptikus görbe titkosítási (ECC-) kiszolgáló TLS-tanúsítványa (előzetes verzió)
+
+IoT Hub ECC-kiszolgáló TLS-tanúsítványa elérhető nyilvános előzetes verzióra. Az RSA-tanúsítványok hasonló biztonsága mellett az ECC-tanúsítvány ellenőrzése (csak ECC-csomagokkal) akár 40%-kal kevesebb számítási, memória-és sávszélességet használ. Ezek a megtakarítások a kisebb profilok és a memória miatt fontosak az eszközök IoT, valamint a hálózati sávszélesség korlátozott környezetekben történő használati esetek támogatásához. 
+
+IoT Hub ECC-kiszolgálói tanúsítványának előnézete:
+
+1. [Hozzon létre egy új IoT hubot előzetes módban](iot-hub-preview-mode.md).
+1. [Konfigurálja úgy az ügyfelet](#tls-configuration-for-sdk-and-iot-edge) , hogy *csak* ECDSA titkosítási csomagokat tartalmazzon, és *kizárjon* minden RSA-t. Ezek az ECC-tanúsítvány nyilvános előzetes verziójának titkosítási csomagjai:
+    - `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
+    - `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
+    - `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`
+    - `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384`
+1. Kapcsolja össze az ügyfelet az előzetes verziójú IoT hubhoz.
 
 ## <a name="tls-12-enforcement-available-in-select-regions"></a>A TLS 1,2 kényszerítés a kiválasztott régiókban érhető el
 
@@ -88,23 +106,37 @@ A TLS 1,2-kényszerítéshez nem konfigurált IoT-hubok esetében a TLS 1,2 tov�
 
 Az ügyfél javasolhatja, hogy a rendszer milyen magasabb titkosítási csomagokat használjon `ClientHello` . Előfordulhat azonban, hogy néhányat IoT Hub nem támogat (például: `ECDHE-ECDSA-AES256-GCM-SHA384` ). Ebben az esetben a IoT Hub megpróbálja követni az ügyfél beállításait, de végül egyezteti a titkosító csomagot a használatával `ServerHello` .
 
-## <a name="use-tls-12-in-your-iot-hub-sdks"></a>A TLS 1,2 használata a IoT Hub SDK-ban
+## <a name="tls-configuration-for-sdk-and-iot-edge"></a>Az SDK és a IoT Edge TLS-konfigurációja
 
 Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett titkosítási algoritmusokat IoT Hub ügyféloldali SDK-k használatával.
 
 | Nyelv | A TLS 1,2-et támogató verziók | Dokumentáció |
 |----------|------------------------------------|---------------|
-| M        | 2019-12-11 vagy újabb címke            | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
+| C        | 2019-12-11 vagy újabb címke            | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
 | Python   | 2.0.0 vagy újabb verzió             | [Hivatkozás](https://aka.ms/Tls_Python_SDK_IoT) |
 | C#       | 1.21.4 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_CSharp_SDK_IoT) |
 | Java     | 1.19.0 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Java_SDK_IoT) |
 | NodeJS   | 1.12.2 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Node_SDK_IoT) |
-
-
-## <a name="use-tls-12-in-your-iot-edge-setup"></a>A TLS 1,2 használata a IoT Edge-telepítőben
 
 A IoT Edge-eszközök úgy konfigurálhatók, hogy a TLS 1,2-et használják a IoT Hubval való kommunikáció során. Erre a célra használja a [IoT Edge dokumentációs oldalát](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).
 
 ## <a name="device-authentication"></a>Eszköz hitelesítése
 
 A sikeres TLS-kézfogás után a IoT Hub szimmetrikus kulccsal vagy X. 509 tanúsítvánnyal tud hitelesíteni egy eszközt. Tanúsítványalapú hitelesítés esetén ez lehet bármilyen X. 509 tanúsítvány, beleértve az ECC-t is. IoT Hub érvényesíti a tanúsítványt az Ön által megadott ujjlenyomat vagy hitelesítésszolgáltató (CA) ellen. További információ: [támogatott X. 509 tanúsítványok](iot-hub-devguide-security.md#supported-x509-certificates).
+
+## <a name="tls-maximum-fragment-length-negotiation-preview"></a>TLS-adattöredékek maximális hosszának egyeztetése (előzetes verzió)
+
+A IoT Hub támogatja a TLS maximális töredékes egyeztetését is, ami más néven a TLS-keret méretének egyeztetése. Ez a funkció nyilvános előzetes verzióban érhető el. 
+
+Ezzel a szolgáltatással adhatja meg, hogy a rendszer legfeljebb az alapértelmezett 2 ^ 14 bájtnál kisebb értéket válasszon az egyszerű szöveges töredék hosszának. Az egyeztetést követően a IoT Hub és az ügyfél megkezdi az üzenetek töredezettségének megkezdését, hogy az összes töredék kisebb legyen, mint az egyeztetett hossz. Ez a viselkedés hasznos a számítási és a memóriában korlátozott eszközök esetében. További információ: a [hivatalos TLS-bővítmény specifikációja](https://tools.ietf.org/html/rfc6066#section-4).
+
+A nyilvános előzetes verzióhoz tartozó hivatalos SDK-támogatás még nem érhető el. Első lépések
+
+1. [Hozzon létre egy új IoT hubot előzetes módban](iot-hub-preview-mode.md).
+1. Konfigurálja úgy az ügyfelet, hogy az `SSL_CTX_set_tlsext_max_fragment_length` alábbi értékek egyikére legyen beállítva: 2 ^ 9, 2 ^ 10, 2 ^ 11 és 2 ^ 12.
+1. Kapcsolja össze az ügyfelet az előzetes verzió IoT Hubával.
+
+## <a name="next-steps"></a>További lépések
+
+- A IoT Hub biztonsági és hozzáférés-vezérléssel kapcsolatos további tudnivalókért tekintse meg a [IoT hub hozzáférésének szabályozása](iot-hub-devguide-security.md)című témakört.
+- További információ az X509-tanúsítvány használatáról az eszközök hitelesítéséhez: [eszközök hitelesítése X. 509 hitelesítésszolgáltatói tanúsítványokkal](iot-hub-x509ca-overview.md)

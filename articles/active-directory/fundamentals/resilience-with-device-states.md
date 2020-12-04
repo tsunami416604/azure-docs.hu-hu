@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4075cb71cb4dae7ac506c16e3987070cfa10bb09
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: faa334c21e23ecddad287846d34aaf0d72af66cc
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919554"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602184"
 ---
 # <a name="build-resilience-with-device-states"></a>Rugalmasság kiépítése az eszközök állapotával
 
@@ -44,7 +44,7 @@ Ha egy PRT-t használ az alkalmazáshoz való hozzáférés kérelmezéséhez, a
 
 * A személyes vagy vállalati tulajdonú iOS-és Android-eszközök esetében telepítse a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-overview.md). A többtényezős hitelesítés és a jelszó nélküli bejelentkezési képességek mellett a Microsoft Authenticator alkalmazás lehetővé teszi az egyszeri bejelentkezést a natív alkalmazáson keresztül, felügyelt [hitelesítéssel](../develop/brokered-auth.md) , kevesebb hitelesítési kéréssel a végfelhasználók számára.
 
-* A személyes vagy vállalati tulajdonú iOS-és Android-eszközökön a [mobileszközök kezelése](https://docs.microsoft.com/mem/intune/apps/app-management.md) szolgáltatással kevesebb hitelesítési kérelemmel férhet hozzá a vállalati erőforrásokhoz. 
+* A személyes vagy vállalati tulajdonú iOS-és Android-eszközökön a [mobileszközök kezelése](https://docs.microsoft.com/mem/intune/apps/app-management) szolgáltatással kevesebb hitelesítési kérelemmel férhet hozzá a vállalati erőforrásokhoz. 
 
 * [Használja az Apple-eszközökhöz készült Microsoft Enterprise SSO beépülő modult (előzetes verzió)](../develop/apple-sso-plugin.md). Ez regisztrálja az eszközt, és egyszeri bejelentkezést biztosít a böngészőben és a natív Azure AD-alkalmazásokban. 
 

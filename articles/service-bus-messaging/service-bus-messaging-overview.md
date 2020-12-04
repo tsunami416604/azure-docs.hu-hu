@@ -3,12 +3,12 @@ title: Az Azure Service Bus-üzenetkezelés áttekintése | Microsoft Docs
 description: Ez a cikk átfogó áttekintést nyújt a Azure Service Busről, amely egy teljes körűen felügyelt Enterprise Integration Message Broker.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: ca04b4a41489fba61e7c0ee2bb3f4f7f0b8b80f4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b795d0c5b429a812d90e0759fbcde3d348b86e22
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489479"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602716"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 A Microsoft Azure Service Bus egy teljes körűen felügyelt Enterprise Message Broker Üzenetsor-kezeléssel és nyilvános előfizetési témakörökkel. Service Bus az alkalmazások és szolgáltatások egymástól való elválasztására szolgálnak, a következő előnyöket biztosítva:
@@ -32,7 +32,7 @@ Néhány gyakori üzenetküldési forgatókönyv:
     2. Egy vagy több várólistára történő feldolgozás eredményeinek közzététele.
     3. Helyezze át a bemeneti üzenetet az eredeti várólistából. 
     
-    Az eredmények az alsóbb rétegbeli fogyasztók számára csak a siker után válnak láthatóvá, beleértve a bemeneti üzenet sikeres rendezését is, amely lehetővé teszi a csak egyszer feldolgozható szemantikai műveletek elvégzését. Ez a tranzakciós modell robusztus alap a [kompenzáló tranzakciók](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction.md) mintája számára a nagyobb megoldási környezetben. 
+    Az eredmények az alsóbb rétegbeli fogyasztók számára csak a siker után válnak láthatóvá, beleértve a bemeneti üzenet sikeres rendezését is, amely lehetővé teszi a csak egyszer feldolgozható szemantikai műveletek elvégzését. Ez a tranzakciós modell robusztus alap a [kompenzáló tranzakciók](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction) mintája számára a nagyobb megoldási környezetben. 
 * *Üzenet-munkamenetek*. Nagy léptékű koordinációt valósíthat meg a munkafolyamatok és a többszintű, a szigorú üzenetek rendezését vagy az üzenetek késleltetését igénylő átvitelek esetében.
 
 Ha már ismeri a más üzenet-közvetítőket, például az Apache ActiveMQ-t, Service Bus fogalmak hasonlóak ahhoz, amit tud. Mivel a Service Bus a szolgáltatásként nyújtott platform ("a"), a fő különbség az, hogy nem kell aggódnia a következő műveletekkel kapcsolatban. Az Azure gondoskodik az Ön számára. 

@@ -3,12 +3,15 @@ title: Telemetria processzorok (előzetes verzió) – Azure Monitor Application
 description: Telemetria processzorok Azure Monitor Application Insights Javához
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: e3c41a7a9968a7de743f0c513b1f2b194501d0df
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 316243e130345ce1b009e065cf9d8250c501ee84
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425796"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601033"
 ---
 # <a name="telemetry-processors-preview-for-azure-monitor-application-insights-java"></a>Telemetria processzorok (előzetes verzió) Azure Monitor Application Insights Javához
 
@@ -56,10 +59,10 @@ Hozzon létre egy nevű konfigurációs fájlt `applicationinsights.json` , és 
 
 Az attribútum processzora és a tartományon kívüli processzor lehetővé teszi, hogy a megfelelő tartományhoz tartozó tulajdonságok készletét adja meg, hogy meghatározza, hogy a rendszer belefoglalja-e a span-t, vagy kizárják a processzorból. A beállítás konfigurálásához a `include` és/vagy a (z) és/vagy legalább egy, illetve az `exclude` `matchType` egyik `spanNames` `attributes` szükséges. A belefoglalási/kizárási konfiguráció több megadott feltételt is támogat. Az összes megadott feltételnek igaz értékűnek kell lennie, ha egyezés történik. 
 
-**Kötelező mező** : 
+**Kötelező mező**: 
 * `matchType` meghatározza, hogy a `spanNames` rendszer hogyan értelmezze az elemeket és a `attributes` tömböket. A lehetséges értékek: `regexp` és `strict`. 
 
-Nem **kötelező mezők** : 
+Nem **kötelező mezők**: 
 * `spanNames` legalább egy elemnek meg kell egyeznie. 
 * `attributes` meghatározza az egyeztetni kívánt attribútumok listáját. Ezeknek az attribútumoknak pontosan egyezniük kell egymással.
 

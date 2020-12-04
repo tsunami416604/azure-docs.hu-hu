@@ -4,18 +4,18 @@ description: Az Azure Storage Inventory egy olyan eszköz, amely a Storage-fiók
 services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.date: 11/04/2020
+ms.date: 12/03/2020
 ms.topic: conceptual
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 149fb9c888c54ea45d273890f3fe2cd59730fa01
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 86ded3dea819702631b1fa04dbc56f727566fc98
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355009"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602682"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>A blob-adatkészletek kezelése az Azure Storage blob Inventory szolgáltatással (előzetes verzió)
 
@@ -23,7 +23,7 @@ Az Azure Storage blob Inventory funkció áttekintést nyújt a blob-adatairól 
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-A blob Inventory az általános célú 2-es verzió (GPv2), a prémium blokk blob Storage és az Azure DataLake Storage Gen2 (ADLS Gen2) fiókok esetében támogatott.
+A blob Inventory az általános célú 2-es verzió (GPv2) és a prémium szintű blokk blob Storage-fiókok esetében is támogatott. Ez a funkció a [hierarchikus névtér](data-lake-storage-namespace.md) funkció engedélyezésével vagy anélkül támogatott.
 
 ### <a name="preview-regions"></a>Előnézeti régiók
 
@@ -88,7 +88,7 @@ A leltározási szabályzat JSON-fájljának megtekintéséhez válassza a Azure
 | Paraméter neve | Paraméter típusa        | Jegyzetek | Kötelező? |
 |----------------|-----------------------|-------|-----------|
 | destination    | Sztring                | Az a cél tároló, amelyben a rendszer az összes leltározási fájlt létrehozza. A célként megadott tárolónak már léteznie kell. | Igen |
-| engedélyezve        | Logikai               | A teljes szabályzat letiltására szolgál. Ha **igaz** értékre van állítva, akkor a szabály szintje engedélyezve mező felülbírálja ezt a paramétert. Ha le van tiltva, az összes szabály leltára le lesz tiltva. | Igen |
+| engedélyezve        | Logikai érték               | A teljes szabályzat letiltására szolgál. Ha **igaz** értékre van állítva, akkor a szabály szintje engedélyezve mező felülbírálja ezt a paramétert. Ha le van tiltva, az összes szabály leltára le lesz tiltva. | Igen |
 | szabályok          | Szabály objektumainak tömbje | Egy házirendben legalább egy szabályra van szükség. Legfeljebb 10 szabály támogatott. | Igen |
 
 ## <a name="inventory-rules"></a>Leltári szabályok
@@ -100,7 +100,7 @@ A szabályzaton belüli szabályok több paraméterrel rendelkeznek:
 | Paraméter neve | Paraméter típusa                 | Jegyzetek | Kötelező? |
 |----------------|--------------------------------|-------|-----------|
 | name           | Sztring                         | A szabály neve legfeljebb 256 kis-és nagybetűket megkülönböztető alfanumerikus karaktereket tartalmazhat. A névnek egyedinek kell lennie a szabályzaton belül. | Igen |
-| engedélyezve        | Logikai                        | Olyan jelző, amely lehetővé teszi egy szabály engedélyezését vagy letiltását. Az alapértelmezett érték **true (igaz**). | Igen |
+| engedélyezve        | Logikai érték                        | Olyan jelző, amely lehetővé teszi egy szabály engedélyezését vagy letiltását. Az alapértelmezett érték **true (igaz**). | Igen |
 | definíció     | JSON-leltározási szabály definíciója | Az egyes definíciók egy szabálykészlet-készletből állnak. | Igen |
 
 A globális **blob-leltár engedélyezve** jelzője elsőbbséget élvez a szabályban *engedélyezett* paraméterrel szemben.
@@ -113,8 +113,8 @@ Több szűrő is elérhető a blob-leltári jelentések testreszabásához:
 |---------------------|---------------------------------|-------|-----------|
 | blobTypes           | Előre definiált enumerálási értékek tömbje | Az érvényes értékek `blockBlob` `appendBlob` : és a hierarchikus névtérben engedélyezett fiókok, és, `blockBlob` `appendBlob` és `pageBlob` más fiókok esetében. | Igen |
 | prefixMatch         | Legfeljebb 10 sztringből álló tömb az előtagok megfeleltetéséhez. Az előtagnak a tároló nevével kell kezdődnie, például: "container1/foo" | Ha nem határoz meg *prefixMatch* , vagy üres előtagot ad meg, a szabály a Storage-fiókban lévő összes blobra vonatkozik. | Nem |
-| includeSnapshots    | Logikai                         | Meghatározza, hogy a leltár tartalmazzon-e pillanatképeket. Az alapértelmezett érték a **false**. | Nem |
-| includeBlobVersions | Logikai                         | Meghatározza, hogy a leltár tartalmazzon-e blob-verziókat. Az alapértelmezett érték a **false**. | Nem |
+| includeSnapshots    | Logikai érték                         | Meghatározza, hogy a leltár tartalmazzon-e pillanatképeket. Az alapértelmezett érték a **false**. | Nem |
+| includeBlobVersions | Logikai érték                         | Meghatározza, hogy a leltár tartalmazzon-e blob-verziókat. Az alapértelmezett érték a **false**. | Nem |
 
 A leltári szabályok JSON-fájljának megtekintéséhez válassza a Azure Portal **blob Inventory** szakaszának **kód nézet** lapját. A szűrők a szabály definíciójában vannak megadva.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: e5593d530891e39404e0b9760861f2f22ae333d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6f0b58374ae3eb972993b544117d8cbb98371ce5
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999994"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602614"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Az Oracle ASM beállítása Azure Linux rendszerű virtuális gépen  
 
@@ -33,7 +33,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az erőforráscsoport létrehozásához használja az [az group create](/cli/azure/group) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése történik. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban.
+Erőforráscsoport létrehozásához használja az az [Group Create](/cli/azure/group) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése történik. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -345,7 +345,7 @@ Ebben az oktatóanyagban az alapértelmezett felhasználó a *Grid* , és az ala
 
 Az Oracle Grid Infrastructure szoftver letöltéséhez és előkészítéséhez végezze el a következő lépéseket:
 
-1. Töltse le az Oracle Grid-infrastruktúrát az [Oracle ASM letöltési oldaláról](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html). 
+1. Töltse le az Oracle Grid-infrastruktúrát az [Oracle ASM letöltési oldaláról](https://www.oracle.com/database/technologies/oracle19c-linux-downloads.html). 
 
    Töltse le a két. zip fájlt a következő címen **: Oracle Database 12C Release 1 Grid Infrastructure (12.1.0.2.0) a Linux x86-64-hez**.
 

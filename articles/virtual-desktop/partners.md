@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bf314510a8569a825ccd309ec855e3ff186bba86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7a1b178450a1aa06db07d7b1ef525f7f781db9ef
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023377"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602818"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -114,7 +114,7 @@ a deviceTRUST egy Windows rendszerű virtuális asztali értéknövelt szolgált
 
 a deviceTRUST kiterjeszti a Windows rendszerű virtuális asztal értékét a környezetfüggő biztonsági technológiával. a deviceTRUST lehetővé teszi a feltételes hozzáférést a biztonságos Windows virtuális asztali hozzáféréshez, a Windows rendszerű virtuális asztal feltételes alkalmazásokhoz való hozzáféréséhez, valamint a feltételes Windowsos virtuális asztali házirendek további infrastruktúra nélküli alkalmazásához. A deviceTRUST használata lehetővé teszi a mobil, rugalmas munkaterület használatát, amely megfelel az összes biztonsági, megfelelőségi és szabályozási követelménynek.
 
-- [Lépjen a partner webhelyére](https://devicetrust.com/wvd).
+- [Lépjen a partner webhelyére](https://devicetrust.com/).
 
 ## <a name="ekran-system"></a>Ekran-rendszeren
 
@@ -406,7 +406,7 @@ A Workspot kiterjeszti a Windows virtuális asztal értékét a Cloud Desktop-in
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
 - [Lépjen a partner webhelyére](https://www.workspot.com/wvd).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ a Windows rendszerű virtuális asztali környezetről](overview.md).
 - [Hozzon létre egy bérlőt a Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).

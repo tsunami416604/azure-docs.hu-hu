@@ -68,7 +68,7 @@
             - name: Alapvető beállítások
               href: data-lake-analytics-u-sql-get-started.md
             - name: Nyelvi referencia
-              href: /u-sql/
+              href: 'https://docs.microsoft.com/u-sql'
             - name: Katalógus
               href: data-lake-analytics-u-sql-catalog.md
             - name: Felhasználó által definiált operátorok
@@ -79,8 +79,6 @@
               href: data-lake-analytics-u-sql-r-extensions.md
             - name: Cognitive-bővítmények
               href: data-lake-analytics-u-sql-cognitive.md
-            - name: Programozhatósági útmutató
-              href: data-lake-analytics-u-sql-programmability-guide.md
         - name: Visual Studio
           items:
             - name: Telepítés
@@ -115,6 +113,28 @@
               href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
             - name: Helyi futtatás és hibakeresés
               href: data-lake-tools-for-vscode-local-run-and-debug.md
+        - name: Programozhatósági útmutató
+          items:
+            - name: Programozhatósági útmutató áttekintése
+              href: data-lake-analytics-u-sql-programmability-guide.md
+            - name: Programozhatósági útmutató – UDT és UDAGG
+              href: data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md
+            - name: Programozhatósági útmutató – UDO
+              items:
+                - name: Felhasználó által definiált objektumok áttekintése
+                  href: data-lake-analytics-u-sql-programmability-guide-UDO.md
+                - name: Felhasználó által definiált kinyerő használata
+                  href: data-lake-analytics-u-sql-programmability-guide-extractor.md
+                - name: Felhasználó által definiált kiíró használata
+                  href: data-lake-analytics-u-sql-programmability-guide-outputter.md
+                - name: Felhasználó által definiált feldolgozó használata
+                  href: data-lake-analytics-u-sql-programmability-guide-processor.md
+                - name: Felhasználó által definiált alkalmazó használata
+                  href: data-lake-analytics-u-sql-programmability-guide-applier.md
+                - name: Felhasználó által definiált kombináló használata
+                  href: data-lake-analytics-u-sql-programmability-guide-combiner.md
+                - name: Felhasználó által definiált csökkentő használata
+                  href: data-lake-analytics-u-sql-programmability-guide-reducer.md
     - name: U-SQL-feladatok ütemezése
       items:
         - name: Feladatok üzemelése az SSIS használatával

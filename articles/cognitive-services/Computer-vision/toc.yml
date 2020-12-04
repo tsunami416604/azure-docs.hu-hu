@@ -9,14 +9,12 @@
       href: whats-new.md
 - name: Rövid útmutatók
   items:
-    - name: Az ügyfélkódtár használata
+    - name: Az ügyfélkódtárak használata
       href: quickstarts-sdk/client-library.md
     - name: A REST API használata
       items:
         - name: Távoli rendszerkép elemzése
           items:
-            - name: cURL
-              href: QuickStarts/curl-analyze.md
             - name: Indítás
               href: QuickStarts/go-analyze.md
             - name: Java
@@ -37,8 +35,6 @@
           items:
             - name: C#
               href: QuickStarts/CSharp-thumb.md
-            - name: cURL
-              href: QuickStarts/curl-thumb.md
             - name: Indítás
               href: QuickStarts/go-thumb.md
             - name: Java
@@ -63,8 +59,6 @@
           items:
             - name: C#
               href: QuickStarts/CSharp-print-text.md
-            - name: cURL
-              href: QuickStarts/curl-print-text.md
             - name: Indítás
               href: QuickStarts/go-print-text.md
             - name: Java

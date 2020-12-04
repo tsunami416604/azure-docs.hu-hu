@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706fa1666dc327955294fb350b673aed40d6bf48
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 8e21bac5dd78cb9c9f40e6b91ff80fedabb9bc75
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520662"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602257"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -28,7 +28,7 @@ A Szabályzat megsértésével vagy biztonsági problémákkal kapcsolatos időb
 
 A folyamatos hozzáférés kiértékelésének kezdeti megvalósítása az Exchange, a Teams és a SharePoint Online rendszerre összpontosít.
 
-Az alkalmazások a CAE használatára való előkészítésével kapcsolatban lásd: a [folyamatos hozzáférés kiértékelése engedélyezett API-k használata az alkalmazásokban](/develop/app-resilience-continuous-access-evaluation.md).
+Az alkalmazások a CAE használatára való előkészítésével kapcsolatban lásd: a [folyamatos hozzáférés kiértékelése engedélyezett API-k használata az alkalmazásokban](/azure/active-directory/develop/app-resilience-continuous-access-evaluation).
 
 ### <a name="key-benefits"></a>Főbb előnyök
 
@@ -185,6 +185,6 @@ Ha a felhasználót a letiltást követően engedélyezi. A fiók engedélyezés
 
 A bejelentkezések gyakorisága a CAE-vel vagy anélkül is megbecsülhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A folyamatos hozzáférés kiértékelésének bejelentése](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

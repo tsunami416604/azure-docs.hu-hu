@@ -2,15 +2,15 @@
 title: Tesztelési eszközkészlet tesztelése
 description: Az ARM template test Toolkit által futtatott tesztek leírása.
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9ad659e15a88725e4c3905ab6c623fda7610fd
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378117"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600904"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Az ARM-sablon tesztelési eszközkészletének alapértelmezett tesztelési esetei
 
@@ -137,9 +137,11 @@ A következő példa **átadja** ezt a tesztet.
 
 Teszt neve: **a hely nem lehet hardcoded**
 
-Előfordulhat, hogy a sablon felhasználói korlátozott számú régióval rendelkeznek. Ha az erőforrás helyét a értékre állítja `"[resourceGroup().location]"` , előfordulhat, hogy az erőforráscsoport olyan régióban lett létrehozva, amelyhez más felhasználók nem férhetnek hozzá. Ezek a felhasználók le vannak tiltva a sablon használatával.
+A sablonoknak egy Location nevű paraméterrel kell rendelkezniük. Ezzel a paraméterrel állíthatja be az erőforrások helyét a sablonban. A fősablonban (azuredeploy.json vagy mainTemplate.js) Ez a paraméter alapértelmezés szerint az erőforráscsoport helyére kerül. A csatolt vagy beágyazott sablonokban a Location paraméternek nem lehet alapértelmezett helye.
 
-Az egyes erőforrások helyének meghatározásakor használjon egy olyan paramétert, amely alapértelmezés szerint az erőforráscsoport helyét használja. Ennek a paraméternek a megadásával a felhasználók az alapértelmezett értéket is használhatják, ha kényelmesek, de más helyet is megadhatnak.
+Előfordulhat, hogy a sablon felhasználói korlátozott számú régióval rendelkeznek. Az erőforrás helyének megadását követően előfordulhat, hogy a felhasználók nem tudnak erőforrásokat létrehozni az adott régióban. A felhasználók akkor is blokkolva lehetnek, ha az erőforrás helyét az értékre állítja `"[resourceGroup().location]"` . Előfordulhat, hogy az erőforráscsoport olyan régióban lett létrehozva, amelyhez más felhasználók nem férhetnek hozzá. Ezek a felhasználók le vannak tiltva a sablon használatával.
+
+Egy olyan Location paraméter megadásával, amely alapértelmezés szerint az erőforráscsoport helyét használja, a felhasználók az alapértelmezett értéket használhatják, ha kényelmesek, de más helyet is megadhatnak.
 
 A következő példa **nem tudja végrehajtani** ezt a tesztet, mert az erőforráshoz tartozó hely a értékre van állítva `resourceGroup().location` .
 
@@ -195,7 +197,7 @@ A következő példa egy Location paramétert használ, de ez a teszt **sikertel
 }
 ```
 
-Ehelyett hozzon létre egy olyan paramétert, amely Alapértelmezésben az erőforráscsoport helyére kerül, de lehetővé teszi a felhasználók számára, hogy más értéket adjanak meg. A következő példa **átadja** ezt a tesztet.
+Ehelyett hozzon létre egy olyan paramétert, amely Alapértelmezésben az erőforráscsoport helyére kerül, de lehetővé teszi a felhasználók számára, hogy más értéket adjanak meg. A következő példa **átadja** ezt a tesztet, ha a sablon a fő sablonként van használatban.
 
 ```json
 {
@@ -227,6 +229,8 @@ Ehelyett hozzon létre egy olyan paramétert, amely Alapértelmezésben az erőf
     "outputs": {}
 }
 ```
+
+Ha azonban az előző példában csatolt sablonként van használatban, a teszt **sikertelen lesz**. Csatolt sablonként való használata esetén távolítsa el az alapértelmezett értéket.
 
 ## <a name="resources-should-have-location"></a>Az erőforrásoknak helyet kell tartalmaznia
 
@@ -687,6 +691,6 @@ A következő példa **meghiúsul** , mert a kimenetben egy [List *](template-fu
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A tesztelési eszközkészlet futtatásáról további információt a [ARM-sablon tesztelési eszközkészletének használata](test-toolkit.md)című témakörben talál.

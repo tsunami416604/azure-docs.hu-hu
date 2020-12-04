@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: joflore
-ms.openlocfilehash: 0576fdaa9bdcc90636c3cd2bc90ba2818f1e69e7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 916615808bc1e28b9794b57e08960520e3abd835
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962666"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602274"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Az önállóan felügyelt Active Directory tartományi szolgáltatások, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása
 
@@ -62,7 +62,7 @@ Közös üzembe helyezési modellek olyan önfelügyelt AD DS környezetekhez, a
 
 Az alábbi táblázat néhány olyan funkciót vázol fel, amelyek a szervezet számára szükségesek, valamint a felügyelt Azure AD DS tartomány vagy egy önállóan felügyelt AD DS tartomány közötti különbségek:
 
-| **Szolgáltatás** | **Azure AD DS** | **Önállóan felügyelt AD DS** |
+| **Jellemző** | **Azure AD DS** | **Önállóan felügyelt AD DS** |
 | ----------- |:---------------:|:----------------------:|
 | **Felügyelt szolgáltatás**                               | **&#x2713;** | **&#x2715;** |
 | **Biztonságos központi telepítések**                            | **&#x2713;** | A rendszergazda gondoskodik az üzemelő példányról |
@@ -112,10 +112,13 @@ Az Azure AD DS csatlakoztatott eszközeivel az alkalmazások a Kerberos és az N
 | Képviselet a címtárban | Eszközök objektumai az Azure AD-címtárban            | Számítógép-objektumok az Azure AD DS felügyelt tartományban                        |
 | Hitelesítés                  | OAuth/OpenID Connect-alapú protokollok              | Kerberos és NTLM protokollok                                               |
 | Kezelés                      | Mobileszköz-felügyeleti (MDM) szoftverek, például az Intune | Csoportházirend                                                              |
-| Hálózatkezelés                      | Az interneten működik                             | Csatlakoznia kell ahhoz a virtuális hálózathoz, amelyhez a felügyelt tartományt telepíteni kell |
+| Hálózat                      | Az interneten működik                             | Csatlakoznia kell ahhoz a virtuális hálózathoz, amelyhez a felügyelt tartományt telepíteni kell |
 | Nagyszerű...                    | Végfelhasználói mobil-vagy asztali eszközök                  | Az Azure-ban üzembe helyezett kiszolgálói virtuális gépek                                              |
 
-## <a name="next-steps"></a>Következő lépések
+
+Ha a helyszíni AD DS és az Azure AD az ADFS használatával összevont hitelesítésre van konfigurálva, akkor az Azure DS-ben nem érhető el (aktuális/érvényes) jelszó-kivonat. A Fed-hitelesítés végrehajtása előtt létrehozott Azure AD-felhasználói fiókok esetében előfordulhat, hogy régi jelszó kivonata van, de ez valószínűleg nem egyezik meg a helyszíni jelszavuk kivonatával. Ezért az Azure AD DS nem fogja tudni érvényesíteni a felhasználók hitelesítő adatait
+
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD DS használatának megkezdéséhez [hozzon létre egy azure AD DS felügyelt tartományt a Azure Portal használatával][tutorial-create].
 

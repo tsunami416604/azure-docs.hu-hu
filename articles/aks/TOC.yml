@@ -59,7 +59,7 @@
           href: ./security-controls-policy.md
     - name: Hálózat
       href: concepts-network.md
-    - name: Storage
+    - name: Tárolás
       href: concepts-storage.md
     - name: Méretezés
       href: concepts-scale.md
@@ -146,6 +146,8 @@
           href: reduce-latency-ppg.md
         - name: Csomópont rendszerképének frissítése
           href: node-image-upgrade.md
+        - name: A csomópont rendszerképének automatikus frissítése a GitHub Actions segítségével
+          href: node-upgrade-github-actions.md
         - name: Folyamatcsomópont operációsrendszer-frissítései
           href: node-updates-kured.md
         - name: AKS-fürt konfigurálása

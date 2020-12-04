@@ -7,12 +7,12 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ad5c6f205fc832eb125e52b4135990fc58742e62
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e1eeb85980430e33446329b5f25ff963ab1c8027
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453242"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600829"
 ---
 # <a name="preview-tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>Oktatóanyag: Time Series Insights Gen2 létrehozása és csatlakoztatása a IoT Plug and Play eszköz telemetria tárolásához, megjelenítéséhez és elemzéséhez
 
@@ -124,7 +124,7 @@ Megkezdheti az adatbevitelt Azure Time Series Insights Gen2 anélkül, hogy elő
 * A típus neve lehet a modell neve vagy a megjelenített név.
 * A modell leírása lesz a típus leírása.
 * Minden telemetria esetében legalább egy Type változó jön létre numerikus sémával.
-  * Változókhoz csak numerikus adattípusok használhatók, de ha egy értéket egy másik típusként küld el, amely átalakítható, például `"0"` használhat [konverziós](/rest/api/time-series-insights/reference-time-series-expression-syntax.md#conversion-functions) függvényt is `toDouble` .
+  * Változókhoz csak numerikus adattípusok használhatók, de ha egy értéket egy másik típusként küld el, amely átalakítható, például `"0"` használhat [konverziós](/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions) függvényt is `toDouble` .
 * A változó neve lehet a telemetria neve vagy a megjelenített név.
 * A változó idősorozat kifejezésének meghatározásakor tekintse meg a telemetria nevét a dróton, és adja meg az adattípust.
 
@@ -138,7 +138,7 @@ Megkezdheti az adatbevitelt Azure Time Series Insights Gen2 anélkül, hogy elő
 ![DTDL idősorozat-modell típusa](./media/tutorial-configure-tsi/DTDL-to-TSM-Type.png)
 
 > [!NOTE]
-> Ez a példa három változót mutat be, de mindegyik típus legfeljebb 100 lehet. A különböző változók hivatkozhatnak ugyanarra a telemetria-értékre, hogy szükség esetén különböző számításokat végezzenek. A szűrők, összesítések és skaláris függvények teljes listájáért tekintse meg [Time Series Insights Gen2 Time Series kifejezés szintaxisát](/rest/api/time-series-insights/reference-time-series-expression-syntax.md).
+> Ez a példa három változót mutat be, de mindegyik típus legfeljebb 100 lehet. A különböző változók hivatkozhatnak ugyanarra a telemetria-értékre, hogy szükség esetén különböző számításokat végezzenek. A szűrők, összesítések és skaláris függvények teljes listájáért tekintse meg [Time Series Insights Gen2 Time Series kifejezés szintaxisát](/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 Nyisson meg egy szövegszerkesztőt, és mentse a következő JSON-t a helyi meghajtóra:
 
@@ -226,4 +226,4 @@ Váltson vissza a diagram panelre, és bontsa ki az eszköz **flottáját > az e
 
 * A környezet idősorozat-modelljének részletes áttekintését lásd: [Time Series Model in Azure Time Series Insights Gen2](../time-series-insights/concepts-model-overview.md) cikk.
 
-* A lekérdezési API-k és az idősorozat-kifejezés szintaxisának betekintéséhez tekintse meg [Azure Time Series Insights Gen2 lekérdezési API-kat](/rest/api/time-series-insights/reference-query-apis.md).
+* A lekérdezési API-k és az idősorozat-kifejezés szintaxisának betekintéséhez tekintse meg [Azure Time Series Insights Gen2 lekérdezési API-kat](/rest/api/time-series-insights/reference-query-apis).

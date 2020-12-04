@@ -1305,7 +1305,7 @@
           href: tutorial-setup-ci-cd.md
         - name: Az Azure Storage Explorer használata
           href: storage-explorer.md
-        - name: Az Azure Cosmos Explorer használata
+        - name: Az Azure Cosmos DB Explorer használata
           href: data-explorer.md
     - name: Elemzés és BI az Azure Synapse Linkkel
       items:

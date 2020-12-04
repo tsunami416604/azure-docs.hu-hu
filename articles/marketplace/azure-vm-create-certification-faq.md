@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: eb290b8c154c40388bfb3e7f9cbac7b645aa9609
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bc1ae4bc2cf64c3e2f996709c086eb23cb8b8385
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452678"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602597"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Virtuális gépek minősítésének hibáinak megoldása
 
@@ -91,7 +91,7 @@ A VHD-formázott Blobok 512 bájtos lábléctel rendelkeznek ebben a formátumba
 |Merevlemez láblécének mezői|Méret (bájt)|
 |---|---|
 Cookie|8
-Funkciók|4
+Szolgáltatások|4
 Fájlformátum verziója|4
 Adateltolás|8
 Időbélyegző|4
@@ -203,7 +203,7 @@ Az operációsrendszer-lemez méretére vonatkozó korlátozásokkal kapcsolatba
 
 |Operációs rendszer|Ajánlott VHD-méret|
 |---|---|
-|Linux|30 GB – 1023 GB|
+|Linux|1 GB – 1023 GB|
 |Windows|30 GB – 250 GB|
 
 Mivel a virtuális gépek engedélyezik a hozzáférést az alapul szolgáló operációs rendszerhez, győződjön meg arról, hogy a VHD-méret elég nagy a VHD-hez. A lemezek leállás nélkül nem bővíthetők. A lemez mérete 30 GB és 50 GB között legyen.

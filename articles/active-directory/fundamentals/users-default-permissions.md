@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29580564ffa2fed579065e6a8551a6f44597e41a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: d8825dcb2d8dbcf4a1296d8bace84b3d2716687f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433257"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602030"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Melyek a Azure Active Directory alapértelmezett felhasználói engedélyei?
 Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználók hozzáférése a felhasználó típusától, a [szerepkörük hozzárendeléseitől](active-directory-users-assign-role-azure-portal.md), valamint az egyes objektumok tulajdonosainak. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait. Az alapértelmezett felhasználói engedélyeket csak az Azure AD felhasználói beállításaiban lehet módosítani.
@@ -32,14 +32,14 @@ Az alapértelmezett engedélyek készlete attól függ, hogy a felhasználó a b
 
 **Terület** | **Tagfelhasználók engedélyei** | **Alapértelmezett vendég felhasználói engedélyek** | **Korlátozott vendég felhasználói engedélyek (előzetes verzió)**
 ------------ | --------- | ---------- | ----------
-Felhasználók és kapcsolatok | <ul><li>Az összes felhasználó és névjegy listájának enumerálása<li>Felhasználók és kapcsolatok összes nyilvános tulajdonságának olvasása</li><li>Vendégek meghívása<li>Saját jelszó módosítása<li>Saját mobiltelefonszám kezelése<li>Saját fénykép kezelése<li>Saját frissítési jogkivonatok érvénytelenítése</li></ul> | <ul><li>Saját tulajdonságok olvasása<li>A megjelenítendő név, az e-mail cím, a bejelentkezési név, a fénykép, a felhasználó egyszerű neve és a felhasználói típus tulajdonságainak olvasása más felhasználók és névjegyek számára<li>Saját jelszó módosítása<li>Másik felhasználó keresése megjelenítendő név, egyszerű felhasználónév vagy ObjectId szerint (ha engedélyezve van)<li>A kezelő és a közvetlen jelentési információk beolvasása más felhasználók számára</li></ul> | <ul><li>Saját tulajdonságok olvasása<li>Saját jelszó módosítása</li></ul>
+Felhasználók és kapcsolatok | <ul><li>Az összes felhasználó és névjegy listájának enumerálása<li>Felhasználók és kapcsolatok összes nyilvános tulajdonságának olvasása</li><li>Vendégek meghívása<li>Saját jelszó módosítása<li>Saját mobiltelefonszám kezelése<li>Saját fénykép kezelése<li>Saját frissítési jogkivonatok érvénytelenítése</li></ul> | <ul><li>Saját tulajdonságok olvasása<li>A megjelenítendő név, az e-mail cím, a bejelentkezési név, a fénykép, a felhasználó egyszerű neve és a felhasználói típus tulajdonságainak olvasása más felhasználók és névjegyek számára<li>Saját jelszó módosítása<li>Másik felhasználó keresése ObjectId szerint (ha engedélyezve van)<li>A kezelő és a közvetlen jelentési információk beolvasása más felhasználók számára</li></ul> | <ul><li>Saját tulajdonságok olvasása<li>Saját jelszó módosítása</li></ul>
 Csoportok | <ul><li>Biztonsági csoportok létrehozása<li>Microsoft 365 csoportok létrehozása<li>Az összes csoport felsorolása<li>Minden csoporttulajdonság olvasása<li>Nem rejtett csoporttagságok olvasása<li>Rejtett Microsoft 365 csoporttagságok olvasása az összekapcsolt csoportokhoz<li>A felhasználó tulajdonában lévő csoportok tulajdonságainak, tulajdonosának és tagságának kezelése<li>Vendégek hozzáadása saját csoportokhoz<li>Dinamikus tagsági beállítások kezelése<li>Saját csoportok törlése<li>Tulajdonosi Microsoft 365 csoportok visszaállítása</li></ul> | <ul><li>Nem rejtett csoportok tulajdonságainak olvasása, beleértve a tagságot és a tulajdonjogot (még nem csatlakoztatott csoportok)<li>Rejtett Microsoft 365 csoporttagság beolvasása az összekapcsolt csoportokhoz<li>Csoportok keresése megjelenítendő név vagy ObjectId szerint (ha engedélyezve van)</li></ul> | <ul><li>Objektum azonosítójának olvasása az összekapcsolt csoportokhoz<li>Az összekapcsolt csoportok tagságának és tulajdonosának olvasása néhány Microsoft 365 alkalmazásban (ha engedélyezve van)</li></ul>
 Alkalmazások | <ul><li>Új alkalmazás regisztrálása (létrehozása)<li>Az összes alkalmazás felsorolása<li>Regisztrált és vállalati alkalmazások tulajdonságainak olvasása<li>Saját alkalmazások tulajdonságainak, hozzárendeléseinek és hitelesítő adatainak kezelése<li>Felhasználó alkalmazásjelszavának létrehozása vagy törlése<li>Saját alkalmazások törlése<li>Saját alkalmazások visszaállítása</li></ul> | <ul><li>Regisztrált és vállalati alkalmazások tulajdonságainak olvasása</li></ul> | <ul><li>Regisztrált és vállalati alkalmazások tulajdonságainak olvasása
 Eszközök</li></ul> | <ul><li>Az összes eszköz listájának enumerálása<li>Minden eszköztulajdonság olvasása<li>Saját eszközök minden tulajdonságának olvasása</li></ul> | Nincs engedély | Nincs engedély
 Címtár | <ul><li>Minden vállalati adat olvasása<li>Minden tartomány olvasása<li>Minden partnerszerződés olvasása</li></ul> | <ul><li>Cég megjelenítendő nevének olvasása<li>Minden tartomány olvasása</li></ul> | <ul><li>Cég megjelenítendő nevének olvasása<li>Minden tartomány olvasása</li></ul>
 Szerepkörök és hatókörök | <ul><li>Minden rendszergazdai szerepkör és tagság olvasása<li>Felügyeleti egységek minden tulajdonságának és tagságának olvasása</li></ul> | Nincs engedély | Nincs engedély
 Előfizetések | <ul><li>Minden előfizetés olvasása<li>Szolgáltatáscsomag-tag engedélyezése</li></ul> | Nincs engedély | Nincs engedély
-Szabályzatok | <ul><li>Szabályzatok minden tulajdonságának olvasása<li>Saját szabályzat minden tulajdonságának kezelése</li></ul> | Nincs engedély | Nincs engedély
+Házirendek | <ul><li>Szabályzatok minden tulajdonságának olvasása<li>Saját szabályzat minden tulajdonságának kezelése</li></ul> | Nincs engedély | Nincs engedély
 
 ## <a name="restrict-member-users-default-permissions"></a>A tag felhasználói alapértelmezett engedélyeinek korlátozása 
 

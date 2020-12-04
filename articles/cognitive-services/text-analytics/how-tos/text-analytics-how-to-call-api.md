@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 5985c30973f703b897fa2eedc2be3b939d97900b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558997"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602784"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
@@ -31,7 +31,7 @@ A 3.1-es verziótól kezdődően a Text Analytics API két aszinkron végpontot 
 
 Az alábbi táblázatból megtudhatja, hogy mely szolgáltatásokat lehet aszinkron módon használni. Vegye figyelembe, hogy csak néhány funkció hívható meg a `/analyze` végpontról. 
 
-| Funkció | Szinkron | Aszinkron |
+| Jellemző | Szinkron | Aszinkron |
 |--|--|--|
 | Nyelvfelismerés | ✔ |  |
 | Hangulatelemzés | ✔ |  |
@@ -194,7 +194,7 @@ A poster (vagy egy másik webes API-tesztelési eszköz) területen adja hozzá 
 
 #### <a name="synchronous"></a>[Szinkron](#tab/synchronous)
 
-| Funkció | Kérelemtípus | Erőforrás-végpontok |
+| Jellemző | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
 | Nyelvfelismerés | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
 | Hangulatelemzés | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
@@ -206,14 +206,14 @@ A poster (vagy egy másik webes API-tesztelési eszköz) területen adja hozzá 
 
 #### <a name="analyze"></a>[Elemzés](#tab/analyze)
 
-| Funkció | Kérelemtípus | Erőforrás-végpontok |
+| Jellemző | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
 | Elemzési feladatok elküldése | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | Elemzési állapot és eredmények beolvasása | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
 #### <a name="text-analytics-for-health"></a>[Egészségügyi Text Analytics](#tab/health)
 
-| Funkció | Kérelemtípus | Erőforrás-végpontok |
+| Jellemző | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
 | Text Analytics beküldése a Health-feladatokhoz  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
 | Feladatok állapotának és eredményeinek beolvasása | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
@@ -260,6 +260,8 @@ Ha kezdeményezte az aszinkron `/analyze` vagy a `/health` végpontok hívását
 3. Adja hozzá a `Operation-Location` -t a kérelemhez.
 
 4. A válasz egyetlen JSON-dokumentum lesz, amely a kérelemben megadott összes dokumentum-AZONOSÍTÓhoz tartalmaz egy elemmel.
+
+Vegye figyelembe, hogy a `/analyze` `/health` fenti 2. lépésben az aszinkron vagy a műveletekhez tartozó eredmények a feladatok létrehozásának idejétől számított 24 órán belül elérhetők.  Ezt az időt a `expirationDateTime` Get válaszban szereplő érték jelzi.  Az adott időszak után a rendszer kiüríti az eredményeket, és már nem érhető el a lekéréshez.    
 
 ## <a name="example-api-responses"></a>API-válaszok – példa
  

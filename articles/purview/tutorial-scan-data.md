@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 711b3399d865899770567583a1425faeb9e408ec
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 083d820c989870b2a73217eeebf192f0d540ba36
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555706"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602546"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Oktatóanyag: az adatvizsgálat az Azure hatáskörébe (előzetes verzió)
 
@@ -146,11 +146,14 @@ A katalógus-konfiguráció befejezése után futtassa a következő parancsfáj
 
    A parancs futtatásakor megjelenik egy előugró ablak, amely a Azure Active Directory hitelesítő adataival jelentkezhet be.
 
-1. Futtassa az alábbi parancsot a Starter Kit futtatásához. Cserélje le a,,,, `CatalogName` `TenantID` `SubscriptionID` `NewResourceGroupName` és `CatalogResourceGroupName` helyőrzőket. A (z) esetében `NewResourceGroupName` használja az erőforráscsoport egyedi nevét, amely az adatbirtokot fogja tartalmazni.
+1. Futtassa az alábbi parancsot a Starter Kit futtatásához. Cserélje le a,,,, `CatalogName` `TenantID` `SubscriptionID` `newresourcegroupname` és `CatalogResourceGroupName` helyőrzőket. A (z) esetében `newresourcegroupname` használja az erőforráscsoport egyedi nevét, amely az adatbirtokot fogja tartalmazni.
+
+> [!IMPORTANT]
+> A **newresourcegroupname** csak alfanumerikus karakterekből és számokból állhat. **A nagybetűk és a speciális karakterek nem engedélyezettek.**
 
    ```powershell
    .\RunStarterKit.ps1 -CatalogName <CatalogName> -TenantId <TenantID>`
-   -ResourceGroup <NewResourceGroupName> `
+   -ResourceGroup <newresourcegroupname> `
    -SubscriptionId <SubscriptionID> `
    -CatalogResourceGroup <CatalogResourceGroupName>
    ```
@@ -158,6 +161,9 @@ A katalógus-konfiguráció befejezése után futtassa a következő parancsfáj
 A környezet beállítása akár 10 percet is igénybe vehet. Ebben az időszakban a különböző előugró ablakok jelenhetnek meg, amelyeket figyelmen kívül hagyhat. Ne zárjuk be a **BlobDataCreator.exe** ablakot; a befejezés után automatikusan bezáródik.
 
 Amikor megjelenik az üzenet `Executing Copy pipeline xxxxxxxxxx-487e-4fc4-9628-92dd8c2c732b` , várjon, amíg a **BlobDataCreator.exe** egy másik példánya elindul, és fejezze be a futtatást.
+
+> [!IMPORTANT]
+> Ha a "aktív feladatok száma" leáll, akkor kilép a blob Creator ablakból, és megnyomhatja a ENTER billentyűt a PowerShell-ablakban.
 
 A folyamat befejezése után létrejön egy erőforráscsoport a megadott névvel. Az Azure Data Factory, az Azure Blob Storage és a Azure Data Lake Storage Gen2 fiókok mind szerepelnek ebben az erőforráscsoportban. Az erőforráscsoport a megadott előfizetésben található.
 

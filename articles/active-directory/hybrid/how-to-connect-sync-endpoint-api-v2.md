@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect Sync v2-végpont nyilvános előzetes verziója | Microsoft Docs
+title: Azure AD Connect Sync v2-végpont | Microsoft Docs
 description: Ez a dokumentum az Azure AD összekapcsolási szinkronizálási v2-végpontok API frissítéseit ismerteti.
 services: active-directory
 author: billmath
@@ -12,34 +12,24 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b9b73e30094ed7d07e19f4b93f2fe8ab8f6af3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ffb298bca53a06bd1ef14a750648fe6e76fd45ee
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339421"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602104"
 ---
-# <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (nyilvános előzetes verzió) 
+# <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect Sync v2 végpont API 
 A Microsoft új végpontot (API-t) helyezett üzembe a Azure AD Connect számára, amely javítja a szinkronizálási szolgáltatás műveleteinek teljesítményét Azure Active Directory. Az új v2-végpont kihasználása az Azure AD-ba való exportálás és importálás során észrevehető teljesítménybeli nyereséget tapasztal. Ez az új végpont a következőket támogatja:
     
- -  csoportok szinkronizálása legfeljebb 250k taggal
+ - csoportok szinkronizálása legfeljebb 250k taggal
  - teljesítménybeli nyereség az Azure AD-ba való exportálás és importálás során
  
 > [!NOTE]
 > Jelenleg az új végpont nem rendelkezik konfigurált csoport mérettel a visszaállított Microsoft 365 csoportokhoz. Ez hatással lehet a Active Directoryra és a szinkronizálási ciklus késésére. A csoportok méretének növekményes növelését javasoljuk.  
 
-
 ## <a name="pre-requisites"></a>Előfeltételek  
 Az új v2-végpont használatához [Azure ad Connect 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) vagy újabb verziót kell használnia, és az alábbi üzembe helyezési lépések végrehajtásával engedélyezheti a v2-végpontot a Azure ad Connect-kiszolgálóhoz.   
-
->[!NOTE]
->Ez a nyilvános előzetes verzió jelenleg csak az Azure globális felhőben érhető el, és nem érhető el az [országos felhők](../develop/authentication-national-cloud.md)számára.
-
-### <a name="public-preview-limitations"></a>A nyilvános előzetes verzió korlátozásai  
-Habár ez a kiadás kiterjedt tesztelésen esett át, még problémák merülhetnek fel. A nyilvános előzetes kiadás egyik célja, hogy megkeresse és javítsa ki az ilyen problémákat.  
-
->[!IMPORTANT]
-> A nyilvános előzetes kiadáshoz nyújtott támogatás mellett a Microsoft nem mindig tudja elhárítani az összes olyan problémát, amely azonnal felmerülhet. Ezért ajánlott a legjobb ítéletet használni, mielőtt üzembe helyezné a kiadást az éles környezetben. 
 
 ## <a name="deployment-guidance"></a>Üzembe helyezési útmutató 
 A v2-végpont használatához telepítenie kell [Azure ad Connect 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) -es vagy újabb verzióját. Használja a letöltéshez megadott hivatkozást. 
@@ -184,17 +174,9 @@ Ha engedélyezte a v2-végpontot, és vissza kell állítania a visszaállítás
 > Ha a v2-ből v1-es végpontokra vált vissza, a rendszer a teljes szinkronizálás futtatása után törli a több mint 50 000 taggal szinkronizált csoportokat, valamint az Azure AD-hez kiosztott és az AD-hez kiépített egyesített csoportok Microsoft 365. 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések  
-**K: az ügyfél használhatja ezt a szolgáltatást éles környezetben?**  
-</br>Igen, ez éles környezetben is használható, a korábban említett kikötéssel.
  
-**K: ki tud kapcsolatba lépni az ügyféllel, ha a dolgok helytelenek?**  
-</br>Ha a funkció használatakor támogatásra van szüksége, nyisson meg egy támogatási esetet. 
- 
-**K: várhatok gyakori frissítéseket a nyilvános előzetes verzióra?**  
-</br>A nyilvános előzetes verzióban korlátozott mértékű folyamatos változások történtek.A nyilvános előzetes verziójú szolgáltatások éles üzembe helyezése során érdemes felmérni ezt a kockázatot.  
- 
-**K: a következő mérföldkőre való idő?**  
-</br>A nyilvános előzetes verzió funkcióit a további mérföldkövek elérése előtt lehet visszavonni és valószínűleg újratervezni.  
+**Mikor lesz az új végpont a frissítések és az új telepítések alapértelmezett értéke?**  
+</br>A AADConnect új kiadását tervezzük a 2021-es januári letöltéshez. Ez a kiadás alapértelmezés szerint a v2 végpontot fogja használni, és lehetővé teszi az 50 000-nél nagyobb withuot-csoportok további konfigurálását. Ezt a kiadást később közzé fogjuk tenni a jogosult kiszolgálókra való automatikus verziófrissítéshez.
  
 ## <a name="next-steps"></a>További lépések
 

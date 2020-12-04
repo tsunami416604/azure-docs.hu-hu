@@ -3,12 +3,12 @@ title: Azure Durable Functions-egység tesztelése
 description: Ismerje meg, hogyan lehet a test Durable Functions.
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7786a0a2e2d31086e1938b70e63fe2374e16fe7f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74231225"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601356"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions egység tesztelése
 
@@ -25,7 +25,7 @@ A cikkben szereplő példák a következő fogalmakat és keretrendszerek ismere
 
 * Tartós függvények
 
-* [xUnit](https://xunit.github.io/) – tesztelési keretrendszer
+* [xUnit](https://github.com/xunit/xunit) – tesztelési keretrendszer
 
 * [MOQ](https://github.com/moq/moq4) -modellezési keretrendszer
 
@@ -179,6 +179,6 @@ Az egység tesztek pedig ellenőrzik a kimenet formátumát. Az egység tesztek 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)
+> [További információ a xUnit](https://xunit.net/docs/getting-started/netcore/cmdline)
 > 
 > [További információ a MOQ](https://github.com/Moq/moq4/wiki/Quickstart)

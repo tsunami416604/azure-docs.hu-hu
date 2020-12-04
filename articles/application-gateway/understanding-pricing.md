@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/01/2020
 ms.author: azhussai
-ms.openlocfilehash: 1d88379726cfb6c4218c38b9ccc87005609a9aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ba6b7a69c95951a083628f23be68d811c7768c
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460745"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601611"
 ---
 # <a name="understanding-pricing-for-azure-application-gateway-and-web-application-firewall"></a>Az Azure Application Gateway és a webalkalmazási tűzfal díjszabásának ismertetése
 
@@ -254,9 +254,19 @@ Ha a kapacitás 10 további ke-val egyenértékű, a 3 fenntartott példányon b
 
 Rögzített ár = $0,246 * 730 (óra) = $179,58
 
-Változó költségek = $0,008 * (3 (példány egység) * 10 (kapacitási egység) + 5 (további kapacitási egységek)) * 730 (óra) = $204,4
+Változó költségek = $0,008 * (3 (példány egység) * 10 (kapacitási egység) + 10 (további kapacitási egységek)) * 730 (óra) = $233,6
 
-Teljes költség = $179,58 + $204,4 = $383,98
+Teljes költség = $179,58 + $233,6 = $413,18
+
+Ha azonban a kapacitás csak azt jelenti, hogy a 3 fenntartott példányban csak 7 további ke-t használtak fel.
+Ebben a forgatókönyvben a Application Gateway erőforrás méretezés alatt áll, és lehetséges, hogy a késés vagy a kérések eldobásának növekedéséhez vezethet.
+
+Rögzített ár = $0,246 * 730 (óra) = $179,58
+
+Változó költségek = $0,008 * (3 (példány egység) * 10 (kapacitási egység) + 7 (további kapacitási egységek)) * 730 (óra) = $216,08
+
+Teljes költség = $179,58 + $216,08 = $395,66
+
 
 ![A 2. manuális méretezés diagramja](./media/pricing/manual-scale-2.png)
 
@@ -377,7 +387,7 @@ További mérőszámok, például az átviteli sebesség, a jelenlegi kapcsolato
 
 Megfigyelt kapacitási egységek a mérőszámokban = 49,23
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi cikkekből megtudhatja, hogyan működik a díjszabás az Azure Application Gatewayban:
 

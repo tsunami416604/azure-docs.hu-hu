@@ -3,12 +3,12 @@ title: Proxyk használata Azure Functions
 description: A Azure Functions-proxyk használatának áttekintése
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb263239f99bcb4ec4c893b700d5c1cce078659f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020398"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601373"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions-proxyk használata
 
@@ -28,7 +28,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre proxyt a functions portá
 3. Adja meg a proxy nevét.
 4. Konfigurálja a függvény alkalmazásban elérhető végpontot az **útválasztási sablon** és a **http-metódusok** megadásával. Ezek a paraméterek a [http-eseményindítók]szabályainak megfelelően viselkednek.
 5. Állítsa be a **háttérbeli URL-címet** egy másik végpontra. Ez a végpont lehet függvény egy másik Function alkalmazásban, vagy bármely más API lehet. Az értéknek nem kell statikusnak lennie, és az [alkalmazás beállításait] és [paramétereit is hivatkozhat az eredeti ügyfél-kérelemből].
-6. Kattintson a **Létrehozás** gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
 A proxy már létezik új végpontként a Function alkalmazásban. Az ügyfél szemszögéből a Azure Functions egy HttpTrigger egyenértékű. Az új proxy kipróbálható úgy, hogy átmásolja a proxy URL-címét, és teszteli a kedvenc HTTP-ügyfelével.
 
@@ -55,11 +55,11 @@ A proxy konfigurációjának nem kell statikusnak lennie. Felkérheti, hogy az e
 ### <a name="reference-local-functions"></a><a name="reference-localhost"></a>Hivatkozás helyi függvények
 `localhost`A használatával közvetlenül is hivatkozhat egy függvényre ugyanazon a Function alkalmazáson belül, egy oda-és visszaúti kérelem nélkül.
 
-`"backendurl": "https://localhost/api/httptriggerC#1"` egy helyi HTTP által aktivált függvényre hivatkozik az útvonalon `/api/httptriggerC#1`
+`"backendUri": "https://localhost/api/httptriggerC#1"` egy helyi HTTP által aktivált függvényre hivatkozik az útvonalon `/api/httptriggerC#1`
 
  
 >[!Note]  
->Ha a függvény *függvény-, rendszergazdai vagy sys* -engedélyezési szinteket használ, meg kell adnia a kódot és a clientId az eredeti függvény URL-címének megfelelően. Ebben az esetben a hivatkozás a következőképpen néz ki: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` javasoljuk, hogy ezeket a kulcsokat az [Alkalmazásbeállítások] között tárolja, és hivatkozni lehessen rájuk a proxyn. Ezzel elkerülhető a forráskódban tárolt titkos kódok tárolása. 
+>Ha a függvény *függvény-, rendszergazdai vagy sys* -engedélyezési szinteket használ, meg kell adnia a kódot és a clientId az eredeti függvény URL-címének megfelelően. Ebben az esetben a hivatkozás a következőképpen néz ki: `"backendUri": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` javasoljuk, hogy ezeket a kulcsokat az [Alkalmazásbeállítások] között tárolja, és hivatkozni lehessen rájuk a proxyn. Ezzel elkerülhető a forráskódban tárolt titkos kódok tárolása. 
 
 ### <a name="reference-request-parameters"></a><a name="request-parameters"></a>Hivatkozási kérelem paraméterei
 

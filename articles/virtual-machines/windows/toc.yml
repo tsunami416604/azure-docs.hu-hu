@@ -51,98 +51,6 @@
       href: tutorial-iis-sql.md
     - name: 16 – Webkiszolgáló védelme SSL-lel
       href: tutorial-secure-web-server.md
-- name: Példák
-  items:
-    - name: PowerShell-index
-      href: powershell-samples.md
-    - name: PowerShell
-      items:
-        - name: Létrehozás
-          items:
-            - name: Gyors
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md
-            - name: Teljesen konfigurált virtuális gép
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm.md
-            - name: Magas rendelkezésre állású virtuális gép
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md
-            - name: Példa egyéni szkriptre
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md
-            - name: DSC használata
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-iis-using-dsc.md
-            - name: Virtuális gép VHD-feltöltésből
-              href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
-            - name: Operációsrendszer-lemez csatolása
-              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md
-            - name: Virtuális gép pillanatképből
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
-        - name: Tárhely kezelése
-          items:
-            - name: Felügyelt lemez létrehozása VHD-ből
-              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
-            - name: Felügyelt lemez létrehozása pillanatképből
-              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
-            - name: Felügyelt lemez másolása
-              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
-            - name: Pillanatkép exportálása VHD-ként egy tárfiókba
-              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
-            - name: Felügyelt lemez VHD-jének exportálása egy tárfiókba
-              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md
-            - name: Pillanatkép létrehozása VHD-ből
-              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
-            - name: Pillanatkép másolása
-              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
-        - name: Biztonságos
-          items:
-            - name: Virtuális gép és adatlemezeinek titkosítása
-              href: ./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?
-        - name: Figyelés
-          items:
-            - name: Azure Monitor
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md
-            - name: Az előfizetésben található összes virtuális gép adatainak összegyűjtése
-              href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md
-    - name: Azure CLI-index
-      href: cli-samples.md
-    - name: parancssori felület
-      items:
-        - name: Létrehozás
-          items:
-            - name: Gyors
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md
-            - name: Teljesen konfigurált virtuális gép
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm.md
-            - name: Magas rendelkezésre állású virtuális gép
-              href: ./../scripts/virtual-machines-windows-cli-sample-nlb.md
-            - name: Példa egyéni szkriptre
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-iis.md
-            - name: A DSC-konfiguráció használata
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-iis-using-dsc.md
-        - name: Tárhely kezelése
-          items:
-            - name: Felügyelt lemez létrehozása VHD-ből
-              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md
-            - name: Felügyelt lemez létrehozása pillanatképből
-              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md
-            - name: Felügyelt lemez másolása
-              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
-            - name: Pillanatkép exportálása VHD-ként egy tárfiókba
-              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
-            - name: Felügyelt lemez VHD-jének exportálása egy tárfiókba
-              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md
-            - name: Pillanatkép másolása
-              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md
-        - name: Network (Hálózat)
-          items:
-            - name: Virtuális gépek közötti hálózati adatforgalom védelme
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md
-        - name: Biztonságos
-          items:
-            - name: Virtuális gép és adatlemezeinek titkosítása
-              href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
-        - name: Figyelés
-          items:
-            - name: Azure Monitor
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: Alapelvek
   items:
     - name: Képek
@@ -672,9 +580,6 @@
           href: change-drive-letter.md
         - name: Rendelkezésre állási csoport módosítása
           href: change-availability-set.md
-        - name: ARM-sablon exportálása
-          displayName: Azure Resource Manager
-          href: download-template.md
         - name: Azure virtuálisgép-ügynök
           href: ../extensions/agent-windows.md
         - name: Spekulatív végrehajtás kockázatának csökkentése
@@ -951,6 +856,8 @@
           href: find-unattached-disks.md
         - name: Nem csatlakoztatott lemezek keresése – portál
           href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure-lemezek leképezése vendég lemezekre
+          href: azure-to-guest-disk-mapping.md
         - name: Lemezek – Gyakori kérdések
           href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Hálózatkezelés felügyelete

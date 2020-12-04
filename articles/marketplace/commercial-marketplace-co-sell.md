@@ -1,22 +1,22 @@
 ---
-title: Közös értékesítés lehetősége a partner Centerben | Azure piactér
-description: Az ajánlat közös értékesítés lapján megjelenő információkat a Microsoft értékesítési csapatai fogják használni, hogy az ügyfelek igényeinek megfelelő kiértékelése során többet tudjanak megtudni az ajánlatról.
+title: Közös értékesítés lehetősége a kereskedelmi piactéren | Azure piactér
+description: Az ajánlat Microsoft lapján megjelenő információkat a Microsoft értékesítési csapatai fogják használni, hogy az ügyfelek igényeinek megfelelő kiértékelése során többet tudjanak megtudni az ajánlatról.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 12/03/2020
-ms.openlocfilehash: f424cd85e26511f8fe3d863b1f2c77bc1e5e7537
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/04/2020
+ms.openlocfilehash: baa99518498b05b0a658627d9908298eb58f7775
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96582317"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602733"
 ---
-# <a name="co-sell-option-in-partner-center"></a>Együttes értékesítési lehetőség a Partnerközpontban
+# <a name="co-sell-option-in-the-commercial-marketplace"></a>Közös értékesítés lehetősége a kereskedelmi piactéren
 
-A közös értékesítés lapon található információk megadása teljes mértékben nem kötelező. A [közös értékesítésre kész és az IP-incentivized állapot](/legal/marketplace/certification-policies.md#3000-requirements-for-co-sell-status)eléréséhez szükséges. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy az Ön ajánlatával kapcsolatos további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Nem érhető el közvetlenül az ügyfeleknek. További információ: [közös értékesítés a Microsofttal](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+A **Microsoft Tab együttes értékesítésével** kapcsolatos információk megadása teljesen opcionális. A [közös értékesítésre kész és az IP-incentivized állapot](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)eléréséhez szükséges. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy az Ön ajánlatával kapcsolatos további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Nem érhető el közvetlenül az ügyfeleknek. További információ: [közös értékesítés a Microsofttal](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 A partner Centerben a közös értékesítés lehetősége jelenleg a következő ajánlat-típusoknál érhető el.
 

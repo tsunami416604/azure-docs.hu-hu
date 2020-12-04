@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 11/20/2020
 ms.author: jeedes
-ms.openlocfilehash: ccf945f8bfec85a18493d515dce48f4cb3e3b612
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182353"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602019"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Software AG Cloud-nal
 
@@ -77,9 +77,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://*.softwareag.cloud/auth/realms/TENANT-NAME`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Vegye fel a kapcsolatot a [Software AG felhőalapú](mailto:support@softwareag.com) ügyfélszolgálatával az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -121,19 +121,19 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1.  Kattintson a **felügyelet** elemre
 
-    ![A Software AG Cloud1 konfigurálása](./media/software-ag-cloud-tutorial/admin.png)
+    ![A Software AG felhőalapú felügyeletének konfigurálása](./media/software-ag-cloud-tutorial/admin.png)
 
 1. Ugrás az **egyszeri bejelentkezés > identitás-szolgáltató hozzáadása**
 
-    ![A Software AG Cloud2 konfigurálása](./media/software-ag-cloud-tutorial/add-identity-provider.png)
+    ![A Software AG felhőalapú identitás-szolgáltató konfigurálása](./media/software-ag-cloud-tutorial/add-identity-provider.png)
 
 1. Hajtsa végre a következő lépéseket a következő lapon.
 
-    ![A Software AG Cloud3 konfigurálása](./media/software-ag-cloud-tutorial/saml-1.png)
+    ![A Software AG Cloud konfigurálása – kövesse a lépéseket](./media/software-ag-cloud-tutorial/saml-1.png)
 
     a. Az **Identitáskezelő megjelenítendő neve** szövegmezőben adja meg a nevet (például `azure ad` ).
 
-    b. A **Software AG Felhőbeli átirányítási URI szövegmezőben használandó Identity Provider egyedi azonosítójában** illessze be azt az **entitás-azonosító** értéket, amelyet a Azure Portal másolt.
+    b. A **Software AG felhőalapú átirányítási URI-szövegmezőben használt Identity Provider egyedi azonosítójában** adjon meg egy egyedi nevet az identitás-szolgáltató számára. A **szoftveres AG felhőalapú átirányítási URI** mezője frissülni fog, és az URI azonosítóval lesz feltöltve. Másolja ezt az URI-t, és használja az **entitás azonosítójának** és egyéb információinak a Azure Portal a definiált minták alapján történő konfigurálásához.
 
     c. Importálja az **összevonási metaadatok XML-** fájlját az **Identity Provider konfigurációjában** , és kattintson a **tovább** gombra.
 
@@ -147,12 +147,13 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Software A
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-1. Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a Software AG Felhőbeli bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
+* Feltételezve, hogy a Microsoft Azure szolgáltatóként van konfigurálva a Software AG-felhőben, navigáljon, `www.softwareag.cloud` és kattintson a Bejelentkezés gombra, és adja meg a környezet nevét. A következő képernyőn kattintson a "bejelentkezés <IDP NAME> " hivatkozásra, és adja meg a hitelesítő adatokat. A hitelesítés után a rendszer bejelentkezik, és átveszi a Software AG Cloud kezdőlapjára.
 
-2. Lépjen közvetlenül a Software AG Felhőbeli bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
+* Lépjen közvetlenül a Software AG Felhőbeli bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-3. Használhatja a Microsoft Access panelt. Ha a hozzáférési panelen a Software AG Cloud csempére kattint, a rendszer átirányítja a Software AG Cloud bejelentkezési URL-címére. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelbe](../user-help/my-apps-portal-end-user-access.md)
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Software AG Cloud csempére kattint, a rendszer átirányítja a Software AG Felhőbeli bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) használatába
 
-## <a name="next-steps"></a>Következő lépések
+
+## <a name="next-steps"></a>További lépések
 
 A Software AG Cloud konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

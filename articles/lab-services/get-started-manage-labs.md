@@ -3,12 +3,12 @@ title: Ismerkedés a Azure Lab Services
 description: Ez a cikk bemutatja, hogyan kezdheti meg a Azure Lab Services használatát.
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: 6fb0da7f91e0eecdeefecdb6635b657245fda9af
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434430"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602665"
 ---
 # <a name="get-started-with-lab-services"></a>Ismerkedés a labor Services szolgáltatással 
 
@@ -115,12 +115,8 @@ A tanárok hozzáadhatnak tanuló felhasználókat a laborhoz, és megfigyelheti
 
 1. Az [Azure Lab Services webhelyén](https://labs.azure.com/) kattintson a **felhasználók** elemre az ablak bal oldali részén.
 1. Az ablak tetején kattintson a **felhasználók hozzáadása** elemre, majd válassza a **Hozzáadás e-mail-cím alapján** lehetőséget. 
-
-    :::image type="content" source="./media/how-to-configure-student-usage/add-users-button.png" alt-text="A &quot;felhasználók hozzáadása&quot; gomb":::
 1. A jobb oldalon megjelenő **felhasználók hozzáadása** panelen adja meg a tanulók e-mail-címeit külön vonalakon vagy egyetlen sorban, pontosvesszővel elválasztva.
 1. Kattintson a **Mentés** gombra.
-
-    :::image type="content" source="./media/get-started-manage-labs/add-students.png" alt-text="Tanulók felvétele a laborba":::
 1. A felhasználók listája mostantól az e-mailekkel, az állapottal, a meghívóval és a kvóta órájával frissül.
 
     Ha a tanulók egy laborhoz vannak regisztrálva, a nevüket a rendszer az első és az utolsó névvel frissíti Azure Active Directory.

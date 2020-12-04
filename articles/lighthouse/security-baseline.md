@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 10ad0b83f3c85b48f9d066e1feec8d8aac4dd057
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a6a1b41dd4ede055ba81c069c2164bb36da99876
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533672"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602308"
 ---
 # <a name="azure-security-baseline-for-azure-lighthouse"></a>Azure-beli biztonsági alaptervek az Azure Lighthouse-hoz
 
@@ -306,7 +306,7 @@ Ha egy szolgáltató lehetővé szeretné tenni, hogy a biztonsági csapata átt
 
 ## <a name="logging-and-threat-detection"></a>Naplózás és fenyegetésészlelés
 
-*További információ: [Azure Security Benchmark: Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
+*További információ: [Azure Security Benchmark: Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: az Azure-erőforrások fenyegetés-észlelésének engedélyezése
 
@@ -676,7 +676,7 @@ Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és a
 
 -   Szervizelési stratégia különböző fenyegetési és támadási helyzetekre
 
--   Az Internet Edge és a bejövő és kimenő stratégia/Azure/Security/benchmarks/Security-Controls-v2-Logging-Threat-Protection
+-   Az Internet Edge és a bejövő és kimenő stratégia/Azure/Security/benchmarks/Security-Controls-v2-Logging-Threat-Detection
 -   Hibrid felhős és helyszíni kapcsolódási stratégia
 
 -   Naprakész hálózati biztonsági összetevők (pl. hálózati diagramok, hálózati referencia-architektúra)
@@ -748,7 +748,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 - [Azure Security Benchmark – Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure Security Benchmark – Incidenskezelés](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure Security Benchmark – Incidenskezelés](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Ajánlott Azure-biztonsági eljárások 4 – Folyamat. Incidensválasz-folyamat frissítése a felhőhöz](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

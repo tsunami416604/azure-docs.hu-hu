@@ -11,18 +11,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 683a6c9f31947355a5415a5b8b57b621f717af91
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 92d440d019942219b322ef084b45317983d04fbe
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967664"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602240"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Az objektumok és a hitelesítő adatok szinkronizálása egy Azure Active Directory Domain Services felügyelt tartományban
 
 Egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományban lévő objektumok és hitelesítő adatok a tartományon belül helyileg hozhatók létre, vagy egy Azure Active Directory (Azure AD) bérlőről is szinkronizálhatók. Amikor először telepíti az Azure AD DS-t, az automatikus egyirányú szinkronizálás be van állítva, és elindult az objektumok replikálása az Azure AD-ből. Ez az egyirányú szinkronizálás továbbra is fut a háttérben, hogy az Azure AD DS felügyelt tartomány naprakész állapotú legyen az Azure AD-val végzett bármilyen változással. Nem történik szinkronizálás az Azure AD DS vissza az Azure AD-be.
 
 Hibrid környezetben a helyszíni AD DS tartományból származó objektumok és hitelesítő adatok szinkronizálhatók az Azure AD-vel Azure AD Connect használatával. Miután az objektumok sikeresen szinkronizálva lettek az Azure AD-be, az automatikus háttér-szinkronizálás ezután a felügyelt tartományt használó alkalmazások számára elérhetővé teszi az objektumokat és a hitelesítő adatokat.
+
+Ha a helyszíni AD DS és az Azure AD az ADFS használatával összevont hitelesítésre van konfigurálva, akkor az Azure DS-ben nem érhető el (aktuális/érvényes) jelszó-kivonat. A Fed-hitelesítés végrehajtása előtt létrehozott Azure AD-felhasználói fiókok esetében előfordulhat, hogy régi jelszó kivonata van, de ez valószínűleg nem egyezik meg a helyszíni jelszavuk kivonatával. Ezért az Azure AD DS nem fogja tudni érvényesíteni a felhasználók hitelesítő adatait.
 
 Az alábbi ábra azt szemlélteti, hogyan működik a szinkronizálás az Azure AD DS, az Azure AD és egy opcionális helyszíni AD DS-környezet között:
 
@@ -67,7 +69,7 @@ Az alábbi táblázat azt szemlélteti, hogy az Azure AD-beli felhasználói obj
 | employeedId |Alkalmazottkód |
 | Érték facsimiletelephonenumber |Érték facsimiletelephonenumber |
 | givenName |givenName |
-| Beosztás |cím |
+| jobTitle |cím |
 | Levelezés |Levelezés |
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName (esetenként automatikusan létrehozott) |
@@ -77,7 +79,7 @@ Az alábbi táblázat azt szemlélteti, hogy az Azure AD-beli felhasználói obj
 | onPremiseSecurityIdentifier |sidHistory |
 | passwordPolicies |userAccountControl (beállítja vagy törli a DONT_EXPIRE_PASSWORD bit) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
-| Irányítószám |Irányítószám |
+| postalCode |postalCode |
 | preferredLanguage |preferredLanguage |
 | proxyAddresses | proxyAddresses |
 | állapot |st |
@@ -144,7 +146,7 @@ Kizárólag felhőalapú Azure AD-környezetek esetén a [felhasználóknak alap
 
 A helyszíni AD DS környezetből Azure AD Connect használatával szinkronizált hibrid felhasználói fiókok esetében [konfigurálnia kell Azure ad Connect a jelszó-kivonatok szinkronizálását az NTLM és a Kerberos-kompatibilis formátumokban](tutorial-configure-password-hash-sync.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A jelszó-szinkronizálási adatokkal kapcsolatos további információkért lásd: a [jelszó-kivonatolási szinkronizálás működése a Azure ad Connect](../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context).
 

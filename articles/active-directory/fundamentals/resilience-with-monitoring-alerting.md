@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb63931f883c6061ded996621a09aacbacd14af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 766fd80ae5f7450c8e45d10afa4612a788a8d5fc
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919548"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602156"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>Rugalmasság a monitorozás és az elemzés révén
 
@@ -41,7 +41,7 @@ Például nyomon követheti a következő mérőszámokat, mivel a hirtelen csö
 
   - **Sikerességi arány (%)**: sikeres kérések/a kérelmek teljes száma.
 
-  A [legfontosabb mutatók](https://docs.microsoft.com/azure/active-directory-b2c/view-audit-logs) az [Application ininsightben](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights) érhetők [el, ahol](https://docs.microsoft.coms/azure/active-directory-b2c/analytics-with-application-insights)Azure ad B2C házirend-alapú naplókat, naplókat és bejelentkezési naplókat tárol.  
+  A [legfontosabb mutatók](https://docs.microsoft.com/azure/active-directory-b2c/view-audit-logs) az [Application ininsightben](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights) érhetők [el, ahol](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights)Azure ad B2C házirend-alapú naplókat, naplókat és bejelentkezési naplókat tárol.  
 
    - **Vizualizációk**: a log Analytics-Build irányítópultok használatával vizuálisan figyelheti a fő kijelzőket.
 

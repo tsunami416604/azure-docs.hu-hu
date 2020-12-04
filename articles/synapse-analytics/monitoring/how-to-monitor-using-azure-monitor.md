@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: f495de13c20aa2953f55e2837fab15a6c62e1083
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9032fcaf35265c791913f5b69fb0972bada6885f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466831"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602461"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Monitor használata az Azure szinapszis Analytics-munkaterülettel
 
@@ -103,17 +103,16 @@ Jelentkezzen be a Azure Portalba, és válassza a riasztások **figyelése** leh
 
 Az Azure szinapszis Analytics-munkaterületek által kibocsátott naplók a következők:
 
-| Log Analytics tábla neve | Naplózási kategória neve                 | Description |
+| Log Analytics tábla neve | Naplózási kategória neve                 | Leírás |
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | Azure szinapszis Gateway API-kérelmek. |
 | SynapseRbacOperations         | SynapseRbacOperations          | Azure szinapszis szerepköralapú hozzáférés-vezérlési (SRBAC) műveletek. |
-| SynapseBuiltinSqlPoolRequestsEnded   | BuiltInSqlReqsEnded    | Véget ért az Azure szinapszis beépített kiszolgáló nélküli SQL-kéréseinek. |
 
 ### <a name="dedicated-sql-pool-logs"></a>Dedikált SQL Pool-naplók
 
 A dedikált SQL-készletek által kibocsátott naplók a következők:
 
-| Log Analytics tábla neve        | Naplózási kategória neve             | Description |
+| Log Analytics tábla neve        | Naplózási kategória neve             | Leírás |
 |----------------------|--------------------------------------|-------------|
 | SynapseSqlPoolExecRequests  | ExecRequests | Információk az Azure szinapszis dedikált SQL-készletében található SQL-kérelmekről/lekérdezésekről.
 | SynapseSqlPoolDmsWorkers    | DmsWorkers   | Információ arról, hogy a feldolgozók hogyan fejezik be a DMS lépéseit az Azure szinapszis dedikált SQL-készletéből.
@@ -132,7 +131,7 @@ A naplókról további információt a következő információkban talál:
 
 Apache Spark készletek által kibocsátott napló:
 
-| Log Analytics tábla neve               | Naplózási kategória neve              | Description                 |
+| Log Analytics tábla neve               | Naplózási kategória neve              | Leírás                 |
 |-----------------------------|---------------------------------------|-----------------------------|
 | SynapseBigDataPoolApplicationsEnded | BigDataPoolAppsEnded | A befejezett Apache Spark alkalmazásokkal kapcsolatos információk |
 
