@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9db4328ce6519bef05017ba697d8f0f029f2096a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 26615b82bb9dcbc1247bec9b7a06b579dfa1eb2b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967414"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571640"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Egyéni kiosztási szabályzatok használata
 
@@ -44,11 +44,11 @@ A cikk a következő lépéseket hajtja végre:
 
 A következő előfeltételek a Windows fejlesztési környezetéhez szükségesek. Linux vagy macOS esetén tekintse meg a [fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) az SDK-ban című dokumentáció megfelelő szakaszát.
 
-* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
+- A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
 
-* A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
+- A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>A kiépítési szolgáltatás és két IoT hub létrehozása
 
@@ -133,7 +133,7 @@ Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egy
 
 7. A következő lapon a **függvény létrehozása** lépésnél válassza ki a **webhook + API** csempét, majd kattintson a **Létrehozás** elemre. Létrejön egy **HttpTrigger1** nevű függvény, és a portál megjeleníti a **Run. CSX** fájl tartalmát.
 
-8. A szükséges Nuget-csomagok hivatkozása. A kezdeti eszköz Twin csomag létrehozásához az egyéni foglalási függvény két Nuget-csomagban definiált osztályokat használ, amelyeket be kell töltenie az üzemeltetési környezetbe. A Azure Functions a Nuget-csomagokat egy *function. Host* fájl hivatkozik. Ebben a lépésben egy *function. Host* fájlt ment és tölt fel.
+8. A szükséges NuGet-csomagok hivatkozása. A kezdeti eszköz Twin csomag létrehozásához az egyéni foglalási függvény két NuGet-csomagban definiált osztályokat használ, amelyeket be kell töltenie az üzemeltetési környezetbe. A Azure Functions a NuGet-csomagokat egy *function. Host* fájl hivatkozik. Ebben a lépésben egy *function. Host* fájlt ment és tölt fel.
 
     1. Másolja a következő sorokat a kedvenc szerkesztőjébe, és mentse a fájlt a számítógépre a *function. Host* néven.
 
@@ -559,7 +559,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
 
 Az alábbi táblázat a várt forgatókönyveket és az eredményül kapott hibakódokat mutatja. Ez a táblázat segítséget nyújt az egyéni kiosztási házirendekkel kapcsolatos hibák elhárításához a Azure Functions.
 
-| Használati eset | Regisztrációs eredmény a kiépítési szolgáltatástól | Az SDK-eredmények kiépítés |
+| Használati példa | Regisztrációs eredmény a kiépítési szolgáltatástól | Az SDK-eredmények kiépítés |
 | -------- | --------------------------------------------- | ------------------------ |
 | A webhook a 200 OK értéket adja vissza a "iotHubHostName" értékkel egy érvényes IoT hub-állomásnévre. | Eredmény állapota: hozzárendelve  | Az SDK visszaadja a PROV_DEVICE_RESULT_OK a hub információi mellett |
 | A webhook 200 OK értéket ad vissza a válaszban szereplő "iotHubHostName" értékkel, de üres sztringre vagy NULL értékre van állítva. | Eredmény állapota: sikertelen<br><br> Hibakód: CustomAllocationIotHubNotSpecified (400208) | Az SDK visszaadja PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
@@ -588,7 +588,7 @@ Az erőforráscsoport törlése név szerint:
 
 4. A rendszer kérni fogja, hogy erősítse meg az erőforráscsoport törlését. A megerősítéshez írja be ismét az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
 * További részletekért lásd: [az előzőleg](how-to-unprovision-devices.md) kiépített eszközök kiépítése.

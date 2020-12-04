@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan méretezheti az Azure-ban az erőforrás-webalk
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: dbfffd98cd05e3ab2efbbe33e05da208fdc05600
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 364309301b403234936da1bac6e1b74af24c2fdb
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518702"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573306"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-beli autoskálázással
 Ez a cikk azt ismerteti, hogyan állíthatja be az erőforráshoz tartozó autoskálázási beállításokat a Microsoft Azure Portalban.
@@ -131,10 +131,10 @@ A nagyvállalati fejlesztési csapatoknak gyakran kell megfelelniük a kitett AP
 
 ### <a name="behavior"></a>Viselkedés
 
-Az állapot-ellenőrzési útvonal megadásakor App Service fogja pingelni az elérési utat az összes példányon. Ha a sikeres válasz kódja 5 pingelés után nem érkezik meg, akkor a példány "nem megfelelő" állapotnak minősül. A nem kifogástalan állapotú példányok kimaradnak a terheléselosztó forgása alól. Megadhatja, hogy a sikertelen pingelések száma az `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` alkalmazás beállításával történjen. Ez az Alkalmazásbeállítások 2 és 10 közötti egész számra állítható be. Ha például ezt a értékre állítja `2` , a rendszer a példányokat két sikertelen pingelés után eltávolítja a terheléselosztó közül. Emellett, ha a vertikális felskálázást végzi, App Service az állapot-ellenőrzési útvonal pingelésével biztosítja, hogy az új példányok készen álljanak a kérelmekre a terheléselosztó hozzáadása előtt.
+Az állapot-ellenőrzési útvonal megadásakor App Service fogja pingelni az elérési utat az összes példányon. Ha a sikeres válasz kódja 5 pingelés után nem érkezik meg, akkor a példány "nem megfelelő" állapotnak minősül. A nem kifogástalan állapotú példányok kimaradnak a terheléselosztó forgása alól, ha 2 vagy több példányra van kibővítve, és [alapszintű](../../app-service/overview-hosting-plans.md) vagy magasabb. Megadhatja, hogy a sikertelen pingelések száma az `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` alkalmazás beállításával történjen. Ez az Alkalmazásbeállítások 2 és 10 közötti egész számra állítható be. Ha például ezt a értékre állítja `2` , a rendszer a példányokat két sikertelen pingelés után eltávolítja a terheléselosztó közül. Emellett, ha a vertikális felskálázást végzi, App Service az állapot-ellenőrzési útvonal pingelésével biztosítja, hogy az új példányok készen álljanak a kérelmekre a terheléselosztó hozzáadása előtt.
 
 > [!NOTE]
-> Ne feledje, hogy a terheléselosztó kizárása érdekében a App Service-tervet 2 vagy több példányra kell méretezni. Ha csak 1 példánya van, akkor nem lesz eltávolítva a terheléselosztó közül, még akkor sem, ha az állapota nem megfelelő. 
+> Ne feledje, hogy az App Service-tervet 2 vagy több példányra kell méretezni, és **alapszintű vagy magasabbnak** kell lennie ahhoz, hogy a terheléselosztó kizárása megtörténjen. Ha csak 1 példánya van, akkor nem lesz eltávolítva a terheléselosztó közül, még akkor sem, ha az állapota nem megfelelő. 
 
 A fennmaradó kifogástalan állapotú példányok nagyobb terhelést tapasztalhatnak. A fennmaradó példányok túlnyomó számának elkerülése érdekében a példányok több mint fele ki lesz zárva. Ha például egy App Service csomag 4 példányra van kibővítve, és 3 nem kifogástalan állapotú, legfeljebb 2 lesz kizárva a terheléselosztó forgásból. A másik 2 példány (1 kifogástalan és 1 sérült) továbbra is fogadja a kéréseket. Abban a legrosszabb esetben, ha az összes példány állapota nem kifogástalan, a rendszer nem zárja ki az egyiket sem. Ha szeretné felülbírálni ezt a viselkedést, a `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` és a közötti értékre állíthatja az alkalmazás beállítását `0` `100` . Ha magasabb értékre állítja ezt a beállítást, a rendszer eltávolítja a nem megfelelő állapotú példányokat (az alapértelmezett érték 50).
 

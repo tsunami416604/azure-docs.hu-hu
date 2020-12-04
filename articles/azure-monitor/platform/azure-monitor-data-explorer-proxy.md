@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 8884fd56cfc1e18a0a358d6902f7f8bcbfc1f5d3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 5cb2f7b3b07c20e09d61e97412bc35f03b15cb3b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552643"
+ms.locfileid: "96572150"
 ---
 # <a name="cross-resource-query-azure-data-explorer-using-azure-monitor"></a>Több erőforrás lekérdezése az Azure Adatkezelő használatával Azure Monitor
 Azure Monitor támogatja az Azure Adatkezelő, a [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)és a [log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs)közötti több szolgáltatás lekérdezését. Ezután lekérdezheti az Azure Adatkezelő-fürtöt Log Analytics/Application Insights eszközök használatával, és megtekintheti azt egy több szolgáltatásból álló lekérdezésben. A cikk bemutatja, hogyan végezheti el a több szolgáltatás lekérdezését.
@@ -20,7 +20,7 @@ Azure Monitor támogatja az Azure Adatkezelő, a [Application Insights (AI)](/az
 A Azure Monitor Cross Service flow: az :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="Azure monitor és az azure adatkezelő a szolgáltatások közötti folyamat.":::
 
 >[!NOTE]
->* Azure Monitor proxy privát előzetes verzióban érhető el – a AllowListing megadása kötelező.
+>* Azure Monitor a több szolgáltatás lekérdezése privát előzetes verzióban érhető el – a AllowListing megadása kötelező.
 >* Forduljon a [szolgáltatásért felelős csapathoz](mailto:ADXProxy@microsoft.com) bármilyen kérdéssel.
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Több lekérdezés Log Analytics vagy Application Insights erőforrások és az Azure Adatkezelő
 
@@ -62,13 +62,7 @@ Ha az Azure Adatkezelő erőforrás az "A" Bérlőben található, és Log Analy
 
 A Kusto Explorer automatikusan aláírja azt a bérlőt, amelyhez a felhasználói fiók eredetileg tartozik. Ha a többi bérlő erőforrásait ugyanazzal a felhasználói fiókkal szeretné elérni, `tenantId` explicit módon meg kell adni azt a kapcsolati karakterláncban: `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=` **TenantId**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Írási lekérdezések](https://docs.microsoft.com/azure/data-explorer/write-queries)
 * [Azure Monitor lekérdezése az Azure-Adatkezelő használatával](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
 * [Erőforrás-naplózási lekérdezések végrehajtása Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
-
-
-
-
-
-

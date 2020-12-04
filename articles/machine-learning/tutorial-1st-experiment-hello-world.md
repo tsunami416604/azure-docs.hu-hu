@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393218"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96570960"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Oktatóanyag: a "Helló világ!" futtatása Python-szkript (2. rész/4)
 
@@ -61,7 +61,8 @@ tutorial
 └──02-create-compute.py
 ```
 
-### <a name="test-your-script-locally"></a>Parancsfájl helyi tesztelése
+
+### <a name="test-your-script-locally"></a><a name="test"></a>Parancsfájl helyi tesztelése
 
 A kódot helyileg is futtathatja kedvenc IDE vagy egy terminál használatával. A kód helyi futtatásának előnye a kód interaktív hibakeresése.
 
@@ -70,7 +71,10 @@ cd <path/to/tutorial>
 python ./src/hello.py
 ```
 
-## <a name="create-a-control-script"></a>Vezérlő parancsfájl létrehozása
+> [!div class="nextstepaction"]
+> [A szkriptet helyileg futtattam](?success=run-local#control-script) [egy probléma](https://www.research.net/r/7C2NTH7?issue=run-local)
+
+## <a name="create-a-control-script"></a><a name="control-script"></a> Vezérlő parancsfájl létrehozása
 
 A *vezérlési parancsfájlok* lehetővé teszik a szkript futtatását `hello.py` a felhőben. A vezérlő parancsfájl segítségével szabályozhatja, hogy a gépi tanulási kód hogyan és hol fusson.  
 
@@ -89,6 +93,8 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
+
+
 
 ### <a name="understand-the-code"></a>A kód értelmezése
 
@@ -135,7 +141,10 @@ Itt látható a vezérlő parancsfájl működésének leírása:
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-and-run-your-code-in-the-cloud"></a>A kód elküldése és futtatása a felhőben
+> [!div class="nextstepaction"]
+> [Létrehoztam a vezérlési parancsfájlt](?success=create-control-script#submit) [, amely egy hibába ütközött](https://www.research.net/r/7C2NTH7?issue=create-control-script)
+
+## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> A kód elküldése és futtatása a felhőben
 
 Futtassa a vezérlési parancsfájlt, amely viszont a `hello.py` [telepítési oktatóanyagban](tutorial-1st-experiment-sdk-setup-local.md)létrehozott számítási fürtön fut.
 
@@ -154,7 +163,10 @@ python 03-run-hello.py
 > [!TIP]
 > Ha ezt a kódot futtatja, akkor a hitelesítési beállításokkal kapcsolatos információkért tekintse meg a [Kapcsolódás munkaterülethez](how-to-manage-workspace.md?tab=python#connect-multi-tenant) című témakört.
 
-## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>A kód figyelése a felhőben a Studio használatával
+> [!div class="nextstepaction"]
+> Beküldöttem [egy problémát](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud) [a felhőben](?success=submit-to-cloud#monitor) .
+
+## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>A kód figyelése a felhőben a Studio használatával
 
 A kimenet tartalmazni fog egy hivatkozást a studióhoz, amely a következőhöz hasonlóan néz ki: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
 
@@ -185,6 +197,9 @@ Kövesse a hivatkozást, és lépjen a **kimenetek és naplók** lapra. Itt lát
 A 8. sorban a "Helló világ!" kifejezés látható kimeneti.
 
 A `70_driver_log.txt` fájl egy futtatásból származó standard kimenetet tartalmaz. Ez a fájl akkor lehet hasznos, ha távoli futtatásokat végez a felhőben.
+
+> [!div class="nextstepaction"]
+> [Megláttam a naplót a Studióban](?success=monitor-in-studio#next-steps) , [amely egy hibába ütközött](https://www.research.net/r/7C2NTH7?issue=monitor-in-studio)
 
 ## <a name="next-steps"></a>További lépések
 

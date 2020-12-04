@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 1f8cb98ea36fdad9a67eca26c6fbea7ede1f811a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 96a1eebbdcbf269b06d2ece77987ce7813f1d5f5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94627880"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571062"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
@@ -105,23 +105,35 @@ Végül kapjon hitelesítő adatokat a fürt eléréséhez:
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
-## <a name="update-an-existing-service-principal-based-aks-cluster-to-managed-identities"></a>Meglévő egyszerű szolgáltatásnév-fürt frissítése felügyelt identitásokra
+## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>AK-fürt frissítése felügyelt identitásokra (előzetes verzió)
 
-Mostantól a következő CLI-parancsokkal frissítheti a felügyelt identitásokkal rendelkező AK-fürtöket.
+Most már frissítheti az egyszerű szolgáltatásnév használatával működő AK-fürtöt a felügyelt identitásokkal való együttműködéshez a következő CLI-parancsokkal.
 
-Először frissítse a rendszerhez rendelt identitást:
+Először regisztrálja a szolgáltatás jelölőjét a rendszer által hozzárendelt identitáshoz:
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview
+```
+
+A rendszer által hozzárendelt identitás frissítése:
 
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 
-Ezután frissítse a felhasználóhoz rendelt identitást:
+A felhasználó által hozzárendelt identitás frissítése:
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
+```
+
+A felhasználó által hozzárendelt identitás frissítése:
 
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
-> Miután a rendszer hozzárendelte vagy a felhasználóhoz rendelt identitásokat frissítette a felügyelt identitáshoz, hajtson végre egy műveletet a `az nodepool upgrade --node-image-only` csomópontokon a felügyelt identitás frissítésének befejezéséhez.
+> Miután a rendszer által hozzárendelt vagy felhasználó által hozzárendelt identitásokat frissítette a felügyelt identitásra, hajtson végre egy műveletet a `az nodepool upgrade --node-image-only` csomópontokon a felügyelt identitás frissítésének befejezéséhez.
 
 ## <a name="bring-your-own-control-plane-mi-preview"></a>Saját vezérlési sík használata (előzetes verzió)
 Az egyéni vezérlő sík identitása lehetővé teszi, hogy a fürt létrehozása előtt hozzáférést biztosítson a meglévő identitáshoz. Ez olyan forgatókönyveket tesz lehetővé, mint például egy egyéni VNET vagy egy felügyelt identitással rendelkező UDR outboundType használata.

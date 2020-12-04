@@ -1,17 +1,15 @@
 ---
 title: Az Azure Service Fabric állapotának kezelése
 description: Ismerje meg, hogyan érheti el, mentheti és távolíthatja el az Azure Service Fabric megbízható színész állapotát, valamint az alkalmazások tervezésekor megfontolandó szempontokat.
-author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e97fadb374fc45110f5071aab48da0a57eef4284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e796232719342883efc2aa5dd377d586f3039ad
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012789"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571317"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors állapotának elérése, mentése és eltávolítása
 A [Reliable Actors](service-fabric-reliable-actors-introduction.md) olyan egyszálas objektumok, amelyek képesek a logika és az állapot beágyazására, valamint megbízható állapot fenntartására. Minden színészi példány saját [State Managerrel](service-fabric-reliable-actors-state-management.md)rendelkezik: egy olyan szótárhoz hasonló adatstruktúra, amely megbízhatóan tárolja a kulcs/érték párokat. A State Manager egy állami szolgáltató körüli burkoló. Az [adatmegőrzési beállítástól](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) függetlenül is tárolhatja az adattárolást.
@@ -107,7 +105,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 ## <a name="save-state"></a>Állapot mentése
 A State Manager lekérési metódusok egy helyi memóriában lévő objektumra mutató hivatkozást adnak vissza. Ha csak a helyi memóriában módosítja ezt az objektumot, a rendszer nem okoz tartósan mentést. Ha egy objektum beolvasása a State managerből történik, és módosul, akkor azt újra be kell szúrni a tartósan.
 
-Az állapotot egy feltétel nélküli *készlet*használatával szúrhatja be, amely a `dictionary["key"] = value` szintaxisnak megfelelő:
+Az állapotot egy feltétel nélküli *készlet* használatával szúrhatja be, amely a `dictionary["key"] = value` szintaxisnak megfelelő:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -316,7 +314,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Reliable Actorsban tárolt állapotot szerializálni kell a lemezre írás előtt, és a magas rendelkezésre állás érdekében replikálni kell őket. További információ a [Actor típusú szerializálásról](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 

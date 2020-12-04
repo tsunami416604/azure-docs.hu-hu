@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: d2d890db3c246ad7f3d0a56a3df264d5f78bd54d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917545"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571130"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>SaaS-ajánlat tervezése a kereskedelmi piactéren
 
@@ -149,8 +149,8 @@ Amikor [új SaaS-ajánlatot hoz létre](create-new-saas-offer.md) a partner Cent
 5. Használati feltételek
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
-8. Összegzés
-9. Leírás
+8. Összefoglalás
+9. Description
 10. Képernyőképek/videók
 11. Dokumentumok
 
@@ -258,9 +258,9 @@ Dönthet úgy, hogy a Microsoft által támogatott marketing-és értékesítés
 
 - **Viszonteladás a CSP**-n keresztül: ezzel a beállítással engedélyezheti, hogy a Microsoft Cloud-szolgáltatói (CSP) partnerek egy csomagban lévő ajánlat részeként eladják a megoldást. További információért lásd a [Cloud Solution Provider programot](cloud-solution-providers.md) .
 
-- **Közös értékesítés a Microsofttal**: Ez a beállítás lehetővé teszi, hogy a Microsoft értékesítési csapatai az ügyfelek igényeinek kiértékelése során fontolják meg az Ön IP-címének közös értékesítését. Az ajánlat értékelésre való előkészítésével kapcsolatos részletes információkért lásd: [közös értékesítés lehetőség a partner Centerben](./partner-center-portal/commercial-marketplace-co-sell.md) .
+- **Közös értékesítés a Microsofttal**: Ez a beállítás lehetővé teszi, hogy a Microsoft értékesítési csapatai az ügyfelek igényeinek kiértékelése során fontolják meg az Ön IP-címének közös értékesítését. Az ajánlat értékelésre való előkészítésével kapcsolatos részletes információkért lásd: [közös értékesítés lehetőség a partner Centerben](commercial-marketplace-co-sell.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [SaaS-ajánlat létrehozása a kereskedelmi piactéren](create-new-saas-offer.md)
 - [Ajánlatlistákra vonatkozó ajánlott eljárások](gtm-offer-listing-best-practices.md)

@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 2d041782e8df795acb120ba1357cec5ef204dc28
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9032e4c04279d87bf4422d3a87d19fdbecec1a64
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656327"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571793"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -168,6 +168,9 @@ Az összekötők kapcsolódási problémáinak azonosítására és elhárítás
 
 Az Ön által választott figyelési eszközt használhatja. A cikk értelmében a Microsoft Message Analyzert használtuk.
 
+> [!NOTE]
+> A [Microsoft Message Analyzer (MMA) szolgáltatást a rendszer kivonta](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) , és a letöltési csomagjait a Microsoft.com-webhelyekről eltávolította a 25 2019. novemberre.  Jelenleg nem érhető el a Microsoft Message Analyzer Microsoft-beli cseréje a fejlesztés során.  Hasonló funkciók esetén vegye fontolóra a külső hálózati protokollok elemző eszközét, például a Wireshark.
+
 Az alábbi példák az üzenetsor-kezelőre vonatkoznak, de az alapelvek bármely Analysis Tool eszközre alkalmazhatók.
 
 ### <a name="take-a-capture-of-connector-traffic"></a>Összekötő-forgalom rögzítésének elvégzése
@@ -205,7 +208,7 @@ Az előző szűrő csak a HTTPs-kérelmeket és a proxy portra küldött válasz
 
 Ha más válasz kódokat (például 407 vagy 502) lát, ez azt jelenti, hogy a proxy hitelesítést igényel, vagy más okból nem engedélyezi a forgalmat. Ezen a ponton a proxykiszolgálót támogató csapatot kell felvennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
 * Ha problémája van az összekötők kapcsolódási problémáinak megoldásával, kérdezze meg a [Microsoft Q&a kérdéses oldalt Azure Active Directory](/answers/topics/azure-active-directory.html) vagy hozzon létre egy jegyet a támogatási csapatával.

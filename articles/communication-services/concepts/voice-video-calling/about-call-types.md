@@ -9,18 +9,18 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 97a90284ad8d195751eb5dd90675822d00243ea8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 11c20f3f79a4fceafaca9b1a948f1b4a425dad87
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665208"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572711"
 ---
 # <a name="voice-and-video-concepts"></a>A hang- és videóhívással kapcsolatos alapfogalmak
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Az Azure kommunikációs szolgáltatásokkal hang-és videohívásokat indíthat és fogadhat, elemezheti a hívási metaadatokat, hívásokat rögzíthet, és akár a hívási fákat is felépítheti. A hívások más internethez csatlakoztatott eszközökre és a régi telefonokra is felhasználhatók. A kommunikációs szolgáltatások JavaScript-, Android-vagy iOS-alapú ügyféloldali kódtárai segítségével olyan alkalmazásokat hozhat létre, amelyek lehetővé teszik a felhasználók számára, hogy privát beszélgetésekben vagy csoportos megbeszéléseken beszéljenek egymással. Az Azure kommunikációs szolgáltatások támogatják a szolgáltatásokból vagy a robotoktól érkező hívásokat.
+Az Azure kommunikációs szolgáltatásaival egy vagy több hang-és videohívásokat indíthat és fogadhat. A hívások más internethez csatlakoztatott eszközökre és a régi telefonokra is felhasználhatók. A kommunikációs szolgáltatások JavaScript-, Android-vagy iOS-alapú ügyféloldali kódtárai segítségével olyan alkalmazásokat hozhat létre, amelyek lehetővé teszik a felhasználók számára, hogy privát beszélgetésekben vagy csoportos megbeszéléseken beszéljenek egymással. Az Azure kommunikációs szolgáltatások támogatják a szolgáltatásokból vagy a robotoktól érkező hívásokat.
 
 ## <a name="call-types-in-azure-communication-services"></a>Hívások típusai az Azure kommunikációs szolgáltatásokban
 
@@ -57,7 +57,7 @@ Az előzetes verzió ideje alatt a csoport azonosítója segítségével csatlak
 > [!div class="nextstepaction"]
 > [Ismerkedés a hívással](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 - Ismerkedjen meg az általános [hívási folyamatokkal](../call-flows.md)
 - [A PSTN-megoldás megtervezése](../telephony-sms/plan-solution.md)
 - További információ az [ügyféloldali kódtár funkcióinak meghívásáról](../voice-video-calling/calling-sdk-features.md)

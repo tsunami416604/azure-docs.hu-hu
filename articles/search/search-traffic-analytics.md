@@ -7,20 +7,20 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 12/03/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: eddab12e8ecf2e4757998bbd1e6e07c4c4d85f3c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "91333732"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573862"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Telemetria-adatok gyűjtése a keresési forgalom elemzéséhez
 
 A Search Traffic Analytics olyan minta, amellyel telemetria gyűjthet a felhasználói interakciókkal kapcsolatban az Azure Cognitive Search-alkalmazással, például a felhasználó által kezdeményezett Click Events és Keyboard Inputs szolgáltatással. Ezen információk alapján meghatározhatja a keresési megoldás hatékonyságát, beleértve a népszerű keresési kifejezéseket, az átkattintási arányt, valamint azt, hogy mely lekérdezési bemenetek nulla eredményt adnak.
 
-Ez a minta a felhasználói adatok gyűjtéséhez [Application Insights](../azure-monitor/app/app-insights-overview.md) ( [Azure monitor](../azure-monitor/index.yml)) függőségét veszi igénybe. Ehhez a jelen cikkben leírtak szerint hozzá kell adnia a rendszerállapotot az ügyfél kódjához. Végezetül szüksége lesz egy jelentéskészítési mechanizmusra az adatelemzéshez. Javasoljuk, hogy Power BI de használhatja az alkalmazás irányítópultját vagy bármely olyan eszközt, amely kapcsolódik Application Insightshoz.
+Ez a minta a felhasználói adatok gyűjtéséhez [Application Insights](../azure-monitor/app/app-insights-overview.md) ( [Azure monitor](../azure-monitor/index.yml)) függőségét veszi igénybe. Ehhez a jelen cikkben leírtak szerint hozzá kell adnia a rendszerállapotot az ügyfél kódjához. Végezetül szüksége lesz egy jelentéskészítési mechanizmusra az adatelemzéshez. Javasoljuk, hogy Power BI, de használhatja az alkalmazás irányítópultját vagy bármely olyan eszközt, amely a Application Insightshoz csatlakozik.
 
 > [!NOTE]
 > A cikkben ismertetett minta speciális forgatókönyvekre és az ügyfélhez hozzáadott kód által generált kattintássorozat-adatokra vonatkozik. Ezzel szemben a szolgáltatási naplók egyszerűen állíthatók be, számos mérőszámot biztosítanak, és a portálon a kód nélkül is elvégezhető. A naplózás engedélyezése minden esetben ajánlott. További információ: a [naplófájlok adatainak összegyűjtése és elemzése](search-monitor-logs.md).
@@ -29,7 +29,7 @@ Ez a minta a felhasználói adatok gyűjtéséhez [Application Insights](../azur
 
 Ha hasznos mérőszámokra van szüksége a forgalmi elemzések kereséséhez, néhány jelet be kell jelentkeznie a keresési alkalmazás felhasználóival. Ezek a jelek azokat a tartalmakat jelentik, amelyeket a felhasználók érdeklik, és amelyeket fontosnak tartanak. A Search Traffic Analytics esetében ezek a következők:
 
-+ Felhasználó által generált keresési események: csak a felhasználó által kezdeményezett keresési lekérdezések érdeklik. Az aspektusok, a további tartalmak vagy a belső információk kitöltéséhez használt keresési kérelmek nem fontosak, és az eredmények eldöntésére és torzítására szolgálnak.
++ Felhasználó által generált keresési események: csak a felhasználó által kezdeményezett keresési lekérdezések érdeklik. A többi keresési kérelem, például az aspektusok feltöltésére vagy a belső információk beolvasására használt adatok nem fontosak. Ügyeljen arra, hogy csak a felhasználó által kezdeményezett események legyenek elérhetők az eredményekben a döntés és a torzítás elkerülése érdekében.
 
 + Felhasználó által generált kattintási események: a keresési eredmények oldalon Egy kattintásos esemény általában azt jelenti, hogy egy dokumentum egy adott keresési lekérdezéshez tartozó eredmény.
 
@@ -37,7 +37,7 @@ Ha összekapcsolja a keresést, és a korrelációs AZONOSÍTÓval rendelkező e
 
 ## <a name="add-search-traffic-analytics"></a>Keresési forgalom elemzésének hozzáadása
 
-Az Azure Cognitive Search szolgáltatásának [portál](https://portal.azure.com) lapján a keresés Traffic Analytics oldal tartalmaz egy Cheat lapot a következő telemetria-minta követéséhez. Ezen a lapon kiválaszthat vagy létrehozhat egy Application Insights erőforrást, lekérheti a kialakítási kulcsot, átmásolhatja a megoldáshoz alkalmazkodó kódrészleteket, és letöltheti a sémában a séma alapján felépített Power BI jelentést is.
+Az Azure Cognitive Search-szolgáltatás [portál](https://portal.azure.com) lapján nyissa meg a keresés Traffic Analytics lapot, hogy hozzáférjen egy Cheat laphoz a telemetria-minta követéséhez. Ezen a lapon kiválaszthat vagy létrehozhat egy Application Insights erőforrást, lekérheti a kialakítási kulcsot, átmásolhatja a megoldáshoz alkalmazkodó kódrészleteket, és letöltheti a sémában a séma alapján felépített Power BI jelentést is.
 
 ![Keresés a portálon Traffic Analytics oldalon](media/search-traffic-analytics/azuresearch-trafficanalytics.png "Keresés a portálon Traffic Analytics oldalon")
 
@@ -71,7 +71,7 @@ Előfordulhat, hogy az ügyfélen további kód szerepel, amely a lekérdezések
 
 **A C# használata**
 
-A C# esetében a **InstrumentationKey** az alkalmazás konfigurációjában található, például appsettings.js, ha a projekt ASP.net. Ha nem biztos benne, hogy a kulcs helyét használja, tekintse át a regisztrációs utasításokat.
+A C# esetében a **InstrumentationKey** meg kell határozni az alkalmazás konfigurációjában, például appsettings.js, ha a projekt ASP.net. Ha nem biztos benne, hogy a kulcs helyét használja, tekintse át a regisztrációs utasításokat.
 
 ```csharp
 private static TelemetryClient _telemetryClient;
@@ -98,9 +98,26 @@ window.appInsights=appInsights;
 
 Ha a keresési kérelmeket a kattintásokkal szeretné összekapcsolni, olyan korrelációs AZONOSÍTÓra van szükség, amely a két különböző eseményt érinti. Az Azure Cognitive Search keresési azonosítót biztosít, ha HTTP-fejlécet kér.
 
-Ha a keresési azonosító lehetővé teszi, hogy az Azure Cognitive Search által kibocsátott mérőszámok korrelációban legyenek a kéréshez, a Application Insights bejelentkezett egyéni metrikákkal.  
+Ha a keresési azonosító lehetővé teszi, hogy az Azure Cognitive Search által kibocsátott mérőszámok korrelációban legyenek a kéréshez, a Application Insights bejelentkezett egyéni metrikákkal.
 
-**A C# használata**
+**C# használata (újabb v11 SDK)**
+
+```csharp
+// This sample uses the .NET SDK https://www.nuget.org/packages/Azure.Search.Documents
+
+var client = new SearchClient(<SearchServiceName>, <IndexName>, new AzureKeyCredentials(<QueryKey>)
+
+// Use HTTP headers so that you can get the search ID from the response
+var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
+var response = await client.searchasync(searchText: searchText, searchOptions: options, customHeaders: headers);
+string searchId = string.Empty;
+if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out IEnumerable<string> headerValues))
+{
+    searchId = headerValues.FirstOrDefault();
+}
+```
+
+**C# (régebbi v10 SDK) használata**
 
 ```csharp
 // This sample uses the .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
@@ -129,12 +146,12 @@ var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
 Minden alkalommal, amikor egy felhasználó egy keresési kérelmet ad ki, a következő sémával rendelkező keresési eseményként kell bejelentkeznie egy Application Insights egyéni eseményre. Ne feledje, hogy csak a felhasználó által létrehozott keresési lekérdezéseket naplózza.
 
-+ **SearchServiceName** : (karakterlánc) keresési szolgáltatás neve
-+ **SearchId** : (GUID) – a keresési lekérdezés egyedi azonosítója (a keresési válaszban érkezik)
-+ **IndexName** : (karakterlánc) keresési szolgáltatási index lekérdezése
-+ **QueryTerms** : (karakterlánc) a felhasználó által megadott keresési kifejezések
-+ **ResultCount** : (int) a visszaadott dokumentumok száma (a keresési válaszban érkezik)
-+ **ScoringProfile** : (karakterlánc) a használt pontozási profil neve, ha van ilyen
++ **SearchServiceName**: (karakterlánc) keresési szolgáltatás neve
++ **SearchId**: (GUID) – a keresési lekérdezés egyedi azonosítója (a keresési válaszban érkezik)
++ **IndexName**: (karakterlánc) keresési szolgáltatási index lekérdezése
++ **QueryTerms**: (karakterlánc) a felhasználó által megadott keresési kifejezések
++ **ResultCount**: (int) a visszaadott dokumentumok száma (a keresési válaszban érkezik)
++ **ScoringProfile**: (karakterlánc) a használt pontozási profil neve, ha van ilyen
 
 > [!NOTE]
 > Adja meg a felhasználó által generált lekérdezések számát $count = True hozzáadásával a keresési lekérdezéshez. További információ: [dokumentumok keresése (REST)](/rest/api/searchservice/search-documents#counttrue--false).
@@ -172,10 +189,10 @@ appInsights.trackEvent("Search", {
 
 Minden alkalommal, amikor egy felhasználó egy dokumentumra kattint, ez egy olyan jel, amelyet a keresési elemzési célokra kell naplózni. Ezeket az eseményeket a következő sémával naplózhatja Application Insights egyéni események használatával:
 
-+ **Szolgáltatásnév** : (karakterlánc) keresési szolgáltatás neve
-+ **SearchId** : (GUID) a kapcsolódó keresési lekérdezés egyedi azonosítója
-+ **Dokumentumazonosító** : (karakterlánc) dokumentum azonosítója
-+ **Pozíció** : (int) Range a dokumentumnak a keresési eredmények oldalon
++ **Szolgáltatásnév**: (karakterlánc) keresési szolgáltatás neve
++ **SearchId**: (GUID) a kapcsolódó keresési lekérdezés egyedi azonosítója
++ **Dokumentumazonosító**: (karakterlánc) dokumentum azonosítója
++ **Pozíció**: (int) Range a dokumentumnak a keresési eredmények oldalon
 
 > [!NOTE]
 > A pozíció a kardinális sorrendre hivatkozik az alkalmazásban. Az összehasonlításhoz szabadon állíthatja be ezt a számot, amennyiben az mindig ugyanaz.
@@ -234,7 +251,7 @@ Az alábbi képernyőfelvételen látható, hogy a beépített jelentések hogya
 
 ![Power BI irányítópult az Azure Cognitive Search](./media/search-traffic-analytics/azuresearch-powerbi-dashboard.png "Power BI irányítópult az Azure Cognitive Search")
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A keresési alkalmazás hatékony és átgondolt adatainak beszerzése a keresési szolgáltatással.
 

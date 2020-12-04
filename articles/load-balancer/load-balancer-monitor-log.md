@@ -1,7 +1,7 @@
 ---
 title: A nyilvános alapszintű Load Balancerhoz tartozó műveletek, események és számlálók figyelése
 titleSuffix: Azure Load Balancer
-description: Megtudhatja, hogyan engedélyezheti a riasztási eseményeket és a nyilvános alapszintű Load Balancer a mintavétel állapotát.
+description: Útmutató a Azure Load Balancer naplózásának engedélyezéséhez
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,23 +13,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: f24ab2c646757f0241748336243b0d5f977d081c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6742723e24df83ac8112e224f1999f116ab82c94
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698325"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572779"
 ---
-# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Az Azure Monitor naplózza a nyilvános Alapszintű Load Balancert
+# <a name="azure-monitor-logs-for-the-standard-azure-load-balancer"></a>A standard Azure Load Balancer Azure Monitor naplófájljai
 
-Az Azure-ban különböző típusú naplókat használhat az alapszintű Load Balancerek felügyeletéhez és hibakereséséhez. Ezek a naplók a portálon keresztül érhetők el. A naplók továbbíthatók egy Event hub-vagy Log Analytics-munkaterületre. Az összes napló kinyerhető az Azure Blob Storage-ból, és különböző eszközökön, például Excelben és Power BI is megtekinthető.  Az alábbi listából további információkat talál a naplók különböző típusairól.
+Az Azure-ban különféle típusú naplókat használhat a standard Load Balancerek felügyeletére és hibakeresésére. A naplók továbbíthatók egy Event hub-vagy Log Analytics-munkaterületre. Az összes napló kinyerhető az Azure Blob Storage-ból, és különböző eszközökön, például Excelben és Power BI is megtekinthető.  Az alábbi listából további információkat talál a naplók különböző típusairól.
 
-* **Tevékenységek naplói:** A [megtekintési tevékenység naplói segítségével figyelheti az erőforrásokon végrehajtott műveleteket](../azure-resource-manager/management/view-activity-logs.md) , és megtekintheti az Azure-előfizetések és azok állapotát. A Tevékenységnaplók alapértelmezés szerint engedélyezve vannak, és a Azure Portal megtekinthetők.
-* **Riasztási eseménynaplók:** Ez a napló a terheléselosztó által kiváltott riasztások megtekintésére használható. A terheléselosztó állapotát öt percenként gyűjti a rendszer. Ez a napló csak akkor íródik, ha a terheléselosztó riasztási eseménye bekövetkezik.
-* **Állapot-mintavételi naplók:** Ezzel a naplóval megtekintheti az állapot-mintavétel által észlelt problémákat, például a háttérben található példányok számát, amelyek nem kapják meg a terheléselosztó kéréseit az állapot-mintavételi hibák miatt. Ez a napló akkor íródik le, amikor módosul az állapot-mintavételi állapot.
+* **Tevékenységek naplói:** A [megtekintési tevékenység naplói segítségével figyelheti az erőforrásokon végrehajtott műveleteket](../azure-resource-manager/management/view-activity-logs.md) , és megtekintheti az Azure-előfizetések és azok állapotát. A Tevékenységnaplók alapértelmezés szerint engedélyezve vannak, és a Azure Portal megtekinthetők. Ezek a naplók az alapszintű és a standard Load Balancerhez is elérhetők.
+* **Standard Load Balancer metrikák:** Ezzel a naplóval lekérdezheti a standard Azure Load Balancer naplóiként exportált metrikákat. Ezek a naplók csak a standard terheléselosztó esetében érhetők el.
 
 > [!IMPORTANT]
-> **Az állapot-mintavételi események naplófájljai jelenleg nem működőképesek, és a [Azure Load Balancer ismert problémái](whats-new.md#known-issues)szerepelnek.** A naplók csak a Resource Manager-alapú üzemi modellben üzembe helyezett erőforrások esetében érhetők el. A klasszikus üzemi modell erőforrásaihoz nem használhat naplókat. További információ az üzembe helyezési modellekről: a [Resource Manager telepítésének ismertetése és a klasszikus üzembe helyezés](../azure-resource-manager/management/deployment-models.md).
+> **Az állapot-mintavételi és Load Balancer riasztási eseménynaplók jelenleg nem működőképesek, és a [Azure Load Balancer ismert problémái](whats-new.md#known-issues)vannak felsorolva.** 
+
+> [!IMPORTANT]
+> A naplók csak a Resource Manager-alapú üzemi modellben üzembe helyezett erőforrások esetében érhetők el. A klasszikus üzemi modell erőforrásaihoz nem használhat naplókat. További információ az üzembe helyezési modellekről: a [Resource Manager telepítésének ismertetése és a klasszikus üzembe helyezés](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="enable-logging"></a>Naplózás engedélyezése
 
@@ -75,94 +77,30 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nem rende
     3. Válassza ki a **log Analytics munkaterületet** a legördülő listából.
 
 
-8. A **diagnosztika beállításai** ablaktábla **napló** szakasza alatt jelölje be a mindkettő melletti jelölőnégyzetet:
-   * **LoadBalancerAlertEvent**
-   * **LoadBalancerProbeHealthStatus**
+8.  A **diagnosztika beállításai** ablaktábla **metrika** szakasza alatt jelölje be a jelölőnégyzetet a következő mellett: **AllMetrics**
 
-9.  A **diagnosztika beállításai** ablaktábla **metrika** szakasza alatt jelölje be a jelölőnégyzetet a következő mellett:
-   * **AllMetrics**
-
-11. Győződjön meg arról, hogy minden helyes, és kattintson a **Mentés** gombra a **diagnosztikai beállítások** létrehozása ablaktábla tetején.
+9. Győződjön meg arról, hogy minden helyes, és kattintson a **Mentés** gombra a **diagnosztikai beállítások** létrehozása ablaktábla tetején.
 
 ## <a name="activity-log"></a>Tevékenységnapló
 
-A rendszer alapértelmezés szerint létrehozza a tevékenység naplóját. A naplók 90 napig őrződnek meg az Azure Eseménynapló-tárolójában. További információ ezekről a naplókról: a [tevékenység naplóinak megtekintése az erőforrásokkal kapcsolatos műveletek figyelése](../azure-resource-manager/management/view-activity-logs.md) című cikkben.
-
-## <a name="archive-to-storage-account-logs"></a>Archiválás tárfióknaplókba
-
-### <a name="alert-event-log"></a>Riasztási Eseménynapló
-
-Ez a napló csak akkor jön létre, ha a terheléselosztó alapján engedélyezte. Az események JSON formátumban vannak naplózva, és a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. Az alábbi példa egy eseményt mutat be.
-
-```json
-{
-    "time": "2016-01-26T10:37:46.6024215Z",
-    "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-    "category": "LoadBalancerAlertEvent",
-    "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-    "operationName": "LoadBalancerProbeHealthStatus",
-    "properties": {
-        "eventName": "Resource Limits Hit",
-        "eventDescription": "Ports exhausted",
-        "eventProperties": {
-            "public ip address": "40.117.227.32"
-        }
-    }
-}
-```
-
-A JSON-kimenet a *EventName* tulajdonságot jeleníti meg, amely leírja, hogy a terheléselosztó miért hozta létre a riasztást. Ebben az esetben a generált riasztás a forrás IP NAT-korlátok (SNAT) által okozott TCP-portok kimerülése miatt lett létrehozva.
-
-### <a name="health-probe-log"></a>Állapot mintavételi naplója
-
-Ez a napló csak akkor jön létre, ha a fentiekben részletezett módon engedélyezte a terheléselosztást. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. Létrejön egy "elemzések – naplók-loadbalancerprobehealthstatus" nevű tároló, amely a következő adatnaplókat rögzíti:
-
-```json
-{
-    "records":[
-    {
-        "time": "2016-01-26T10:37:46.6024215Z",
-        "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-        "category": "LoadBalancerProbeHealthStatus",
-        "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-        "operationName": "LoadBalancerProbeHealthStatus",
-        "properties": {
-            "publicIpAddress": "40.83.190.158",
-            "port": "81",
-            "totalDipCount": 2,
-            "dipDownCount": 1,
-            "healthPercentage": 50.000000
-        }
-    },
-    {
-        "time": "2016-01-26T10:37:46.6024215Z",
-        "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-        "category": "LoadBalancerProbeHealthStatus",
-        "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-        "operationName": "LoadBalancerProbeHealthStatus",
-        "properties": {
-            "publicIpAddress": "40.83.190.158",
-            "port": "81",
-            "totalDipCount": 2,
-            "dipDownCount": 0,
-            "healthPercentage": 100.000000
-        }
-    }]
-}
-```
-
-A JSON-kimenet a tulajdonságok mezőben a mintavételi állapot állapotának alapvető információit jeleníti meg. A *dipDownCount* tulajdonság a háttérbeli példányok teljes számát jeleníti meg, amelyek a sikertelen mintavételi válaszok miatt nem kapják meg a hálózati forgalmat.
+A rendszer alapértelmezés szerint létrehozza a tevékenység naplóját. Konfigurálható úgy, hogy a [jelen cikk utasításait követve](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log)exportálható legyen az előfizetés szintjén. További információ ezekről a naplókról: a [tevékenység naplóinak megtekintése az erőforrásokkal kapcsolatos műveletek figyelése](../azure-resource-manager/management/view-activity-logs.md) című cikkben.
 
 ### <a name="view-and-analyze-the-activity-log"></a>A tevékenységnapló megtekintése és elemzése
 
 A következő módszerek bármelyikével megtekintheti és elemezheti a tevékenység-naplózási adataikat:
 
 * **Azure-eszközök:** A Azure PowerShellon, az Azure parancssori felületen (CLI), az Azure REST API vagy a Azure Portalon keresztül kérhet le adatokat a tevékenység naplóból. Az egyes módszerek részletes utasításait a [Resource Managerrel kapcsolatos naplózási műveletek](../azure-resource-manager/management/view-activity-logs.md) című cikkben találja.
-* **Power bi:** Ha még nem rendelkezik [Power bi](https:// .microsoft.com/pricing) -fiókkal, ingyenes kipróbáláshoz is kipróbálhatja. Az [Azure-naplók a Power BIhez készült tartalomkezelő csomag](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)használatával az adatokat előre konfigurált irányítópultokkal elemezheti, vagy testre szabhatja a nézeteket, hogy megfeleljenek a követelményeinek.
+* **Power bi:** Ha még nem rendelkezik [Power bi](https://powerbi.microsoft.com/pricing) -fiókkal, ingyenes kipróbáláshoz is kipróbálhatja. Az [Azure-naplók Power bi integrációját](https://powerbi.microsoft.com/integrations/azure-audit-logs/)használva az adatait előre konfigurált irányítópultokkal elemezheti, vagy testre szabhatja a nézeteket, hogy megfeleljenek a követelményeinek.
 
-### <a name="view-and-analyze-the-health-probe-and-event-log"></a>Az állapot-mintavétel és az Eseménynapló megtekintése és elemzése
+## <a name="metrics-as-logs"></a>Metrikák Naplókként
+Ha metrikákat használ a Azure Monitor által biztosított exportálási funkciók naplózására, akkor exportálhatja Load Balancer metrikáit. Ezek a metrikák egy percenkénti mintavételi időközhöz tartozó naplóbejegyzést hoznak.
 
-Kapcsolódjon a Storage-fiókhoz, és kérje le az Event és Health mintavételi naplók JSON-naplófájljait. A JSON-fájlok letöltése után konvertálhatja őket CSV formátumba, és megtekintheti az Excelben, Power BI vagy bármely más adatvizualizációs eszközön.
+A naplók exportálásának mérőszáma erőforrás-szinten engedélyezve van. Ezeket a naplókat a diagnosztikai beállítások panelen, az erőforráscsoport alapján történő szűrés és a metrikák exportálásának engedélyezése Load Balancer kiválasztásával engedélyezheti. Ha a Load Balancer diagnosztikai beállítások oldal fel van választva, válassza a AllMetrics lehetőséget a jogosult metrikák naplókként való exportálásához.
+
+Tekintse meg a jelen cikk [korlátozások](#limitations) című szakaszát a metrikus exportálási korlátozásokhoz.
+
+### <a name="view-and-analyze-metrics-as-logs"></a>Metrikák megtekintése és elemzése naplókként
+Miután engedélyezte a AllMetrics a standard Load Balancer diagnosztikai beállításaiban, ha az Event hub vagy Log Analytics munkaterületet használja, ezek a naplók a AzureMonitor táblában lesznek feltöltve. Ha tárolóba exportál, kapcsolódjon a Storage-fiókjához, és kérje le az esemény-és állapot-mintavételi naplók JSON-naplófájljait. A JSON-fájlok letöltése után konvertálhatja őket CSV formátumba, és megtekintheti az Excelben, Power BI vagy bármely más adatvizualizációs eszközön. 
 
 > [!TIP]
 > Ha ismeri a Visual Studiót, illetve C#-állandók és -változók módosításának alapfogalmait, használja a GitHubról elérhető [naplókonvertáló eszközöket](https://github.com/Azure-Samples/networking-dotnet-log-converter).
@@ -173,6 +111,13 @@ Ha a diagnosztikai adatokat egy esemény központba továbbítják, akkor a köz
 ## <a name="send-to-log-analytics"></a>Küldés a Log Analyticsnek
 Az Azure-beli erőforrásokhoz közvetlenül egy Log Analytics munkaterületre küldhetnek diagnosztikai adatokat, ahol az összetett lekérdezéseket a hibaelhárítás és az elemzés érdekében az információk alapján lehet futtatni.  További információ: az [Azure-erőforrás-naplók gyűjtése log Analytics munkaterületen Azure monitor](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="limitations"></a>Korlátozások
+Jelenleg a következő korlátozások vonatkoznak a metrikák exportálási funkciójának naplózására a terheléselosztó esetén:
+* A metrikák jelenleg belső nevek használatával jelennek meg a naplókba való exportáláskor, a leképezést az alábbi táblázatban találja.
+* A metrikák dimenzióját nem őrződnek meg. Például az olyan metrikákkal, mint a DipAvailability (állapot-mintavételi állapot), a háttérbeli IP-cím alapján nem lehet megosztani vagy megtekinteni
+* A használt SNAT-portok és a lefoglalt SNAT-portok metrikái jelenleg nem érhetők el naplókként való exportáláshoz
 
-[A Load Balancer vizsgálatok ismertetése](load-balancer-custom-probe-overview.md)
+## <a name="next-steps"></a>Következő lépések
+* [Tekintse át a Load Balancer elérhető mérőszámait](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)
+* [Lekérdezések létrehozása és tesztelése a Azure Monitor utasításokat követve](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+* Küldjön visszajelzést erről a cikkről, vagy Load Balancer funkciót az alábbi hivatkozások használatával

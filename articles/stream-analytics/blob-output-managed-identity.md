@@ -6,22 +6,22 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/11/2020
-ms.openlocfilehash: f14ded89ad294abbfaf9861e5f4caf17dd82fb98
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: f1aad2464e4979ecbf35deceaad4de70e05b3004
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490712"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573663"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Felügyelt identitás használata az Azure Stream Analytics-feladatok hitelesítéséhez az Azure Blob Storage kimenetében
+# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Felügyelt identitás (előzetes verzió) használata az Azure Stream Analytics-feladatok hitelesítéséhez az Azure Blob Storage output szolgáltatásban
 
-Az Azure Blob Storage-hoz való kimenet [felügyelt identitás-hitelesítése](../active-directory/managed-identities-azure-resources/overview.md) lehetővé teszi, hogy stream Analytics feladatok közvetlen hozzáférést biztosítanak a Storage-fiókhoz a kapcsolati karakterláncok használata helyett. A fokozott biztonság mellett ez a funkció lehetővé teszi, hogy az Azure-ban egy Virtual Network (VNET) lévő Storage-fiókba írja az adatok.
+Az Azure Blob Storage-hoz való kimenet [felügyelt identitás-hitelesítése](../active-directory/managed-identities-azure-resources/overview.md) (előzetes verzió) lehetővé teszi, hogy a stream Analytics feladatok közvetlen hozzáférést biztosítanak egy Storage-fiókhoz a kapcsolati karakterlánc használata helyett. A fokozott biztonság mellett ez a funkció lehetővé teszi, hogy az Azure-ban egy Virtual Network (VNET) lévő Storage-fiókba írja az adatok.
 
 Ez a cikk bemutatja, hogyan engedélyezheti a felügyelt identitást egy Stream Analytics-feladatokhoz tartozó blob-kimenet (ek) számára a Azure Portal és egy Azure Resource Manager központi telepítés használatával.
 
 ## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>Hozza létre a Stream Analytics feladatot a Azure Portal használatával
 
-1. Hozzon létre egy új Stream Analytics feladatot, vagy nyisson meg egy meglévő feladatot a Azure Portalban. A képernyő bal oldalán található menüsávban válassza a **configure (Konfigurálás** ) alatt található **felügyelt identitás** elemet. Győződjön meg arról, hogy a "rendszer által hozzárendelt felügyelt identitás használata" lehetőség van kiválasztva, majd kattintson a képernyő alján található **Save (Mentés** ) gombra.
+1. Hozzon létre egy új Stream Analytics feladatot, vagy nyisson meg egy meglévő feladatot a Azure Portalban. A képernyő bal oldalán található menüsávban válassza a **configure (Konfigurálás**) alatt található **felügyelt identitás** elemet. Győződjön meg arról, hogy a "rendszer által hozzárendelt felügyelt identitás használata" lehetőség van kiválasztva, majd kattintson a képernyő alján található **Save (Mentés** ) gombra.
 
    ![Stream Analytics felügyelt identitás konfigurálása](./media/common/stream-analytics-enable-managed-identity.png)
 

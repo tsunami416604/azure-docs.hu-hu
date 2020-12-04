@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: a4016751944e5b7ec5d32dc586e9034db99c9d73
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: f26b54a18ff137575cac208d70e4693c0b9914a8
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523557"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572286"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>A szinapszis RBAC szerepkör-hozzárendeléseinek kezelése a szinapszis Studióban
 
@@ -23,12 +23,13 @@ Ez a cikk bemutatja, hogyan adhat hozzá és törölhet szinapszis RBAC szerepk�
 
 >[!Note]
 >- A szinapszis RBAC szerepkör-hozzárendelések kezeléséhez rendelkeznie kell a szinapszis rendszergazdai szerepkörrel a munkaterületen, vagy egy alacsonyabb szintű hatókörben, amely tartalmazza a kezelni kívánt objektumokat. Ha a munkaterületen a szinapszis-rendszergazda, a munkaterület összes objektumához hozzáférést biztosíthat. 
->- Annak érdekében, hogy a munkaterülethez ne lehessen hozzáférni, ha a szinapszis-rendszergazdákat nem rendeli hozzá vagy nem teszi elérhetővé, a munkaterületen lévő **Azure RBAC** szerepkör-hozzárendelések kezelésére jogosult felhasználók a **szinapszis-RBAC** szerepkör-hozzárendeléseket is kezelhetik, így a szinapszis-rendszergazda vagy más szerepkör-hozzárendelések is kezelhetők a szinapszis RBAC.
+>- Egy másik AD-bérlő **vendég felhasználói** nem láthatják vagy kezelhetik a szerepkör-hozzárendeléseket, még akkor is, ha a szinapszis rendszergazdai szerepkört rendelték hozzájuk.
+>- Annak érdekében, hogy a munkaterülethez ne lehessen hozzáférni, ha nem rendel hozzá és nem érhető el a szinapszis-rendszergazdák, a munkaterületen lévő **Azure RBAC** szerepkör-hozzárendelések kezeléséhez szükséges engedélyekkel rendelkező felhasználók is kezelhetik a szinapszis **RBAC** szerepkör-hozzárendeléseket, így a szinapszis-rendszergazda vagy más szinapszis szerepkör-hozzárendelések hozzáadásával is rendelkezhetnek.
 >- Az SQL-készletek elérését az SQL-engedélyek segítségével kezelheti.  A szinapszis-rendszergazda és a szinapszis SQL-rendszergazdai szerepkörök kivételével a szinapszis RBAC szerepkörei nem biztosítanak hozzáférést az SQL-készletekhez.
 
 >[!important]
 >- A szinapszis RBAC szerepkör-hozzárendelésein végrehajtott módosítások 2-5 percet is igénybe vehetnek. 
->- Ha a biztonsági csoportok tagságának módosításával a szinapszis RBAC-engedélyeket kezeli, a tagságot a Azure Active Directory használatával felügyeli.  A csoporttagság módosítása több percet is igénybe vehet.
+>- Ha a biztonsági csoportok tagságának módosításával a szinapszis RBAC-engedélyeket kezeli, a tagságot a Azure Active Directory használatával felügyeli.  A csoporttagságok módosítása 10-15 percet vagy hosszabb időt is igénybe vehet.
 
 ## <a name="open-synapse-studio"></a>A szinapszis Studio megnyitása  
 
@@ -64,7 +65,7 @@ Ha egy szerepkört finomabb hatókörben szeretne hozzárendelni, válassza ki a
 
 ![Munkaterület-elem szerepkör-hozzárendelésének hozzáadása – elem típusának kiválasztása](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-item-type.png) 
 
-Válassza ki a hatókörként használni kívánt adott **elemet** , majd válassza ki a legördülő listából azt a **szerepkört** , amelyet hozzá szeretne rendelni.  A legördülő lista csak azokat a szerepköröket sorolja fel, amelyek a kiválasztott elemtípus esetében érvényesek. [További információk](https://go.microsoft.com/fwlink/?linkid=2148306).  
+Válassza ki a hatókörként használni kívánt adott **elemet** , majd válassza ki a legördülő listából azt a **szerepkört** , amelyet hozzá szeretne rendelni.  A legördülő lista csak azokat a szerepköröket sorolja fel, amelyek a kiválasztott elemtípus esetében érvényesek. [További információ](https://go.microsoft.com/fwlink/?linkid=2148306).  
 
 ![Munkaterület-elem szerepkör-hozzárendelésének hozzáadása – szerepkör kiválasztása](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-role.png) 
  

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 41955475f32fe674bcb3ef2d1b6e59c71a008b6b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5c49a6ee25429ab324cea573425ea8b3dd56fdb2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656445"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573612"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
@@ -87,6 +87,9 @@ A TLS 1,2 engedélyezése:
 
 1. Indítsa újra a kiszolgálót.
 
+> [!Note]
+> A Microsoft frissíti az Azure-szolgáltatásokat, hogy TLS-tanúsítványokat használjanak egy másik legfelső szintű hitelesítésszolgáltatóktól (CA). Ez a változás azért történik, mert az aktuális HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok nem felelnek meg a HITELESÍTÉSSZOLGÁLTATÓ/böngésző alapkonfigurációjának egyik követelményének. További információért lásd az [Azure TLS-tanúsítvány módosításait](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes) ismertető témakört.
+
 ## <a name="prepare-your-on-premises-environment"></a>A helyszíni környezet előkészítése
 
 Először is engedélyezze az Azure-adatközpontok kommunikációját, hogy előkészítse a környezetet az Azure AD Application Proxy számára. Ha van tűzfal az elérési úton, győződjön meg róla, hogy meg van nyitva. A nyílt tűzfal lehetővé teszi, hogy az összekötő HTTPS-(TCP-) kéréseket hozzon az alkalmazásproxy számára.
@@ -113,7 +116,7 @@ A következő URL-címek elérésének engedélyezése:
 | --- | --- | --- |
 | &ast;. msappproxy.net<br>&ast;. servicebus.windows.net | 443/HTTPS | Kommunikáció az összekötő és az alkalmazásproxy Cloud Service között |
 | crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP |Az összekötő ezeket az URL-címeket használja a tanúsítványok ellenőrzéséhez. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;. microsoftonline-p.com<br>&ast;. msauth.net<br>&ast;. msauthimages.net<br>&ast;. msecnd.net<br>&ast;. msftauth.net<br>&ast;. msftauthimages.net<br>&ast;. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS |Az összekötő ezeket az URL-címeket használja a regisztrációs folyamat során. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;. microsoftonline-p.com<br>&ast;. msauth.net<br>&ast;. msauthimages.net<br>&ast;. msecnd.net<br>&ast;. msftauth.net<br>&ast;. msftauthimages.net<br>&ast;. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |Az összekötő ezeket az URL-címeket használja a regisztrációs folyamat során. |
 | ctldl.windowsupdate.com | 80/HTTP |Az összekötő ezt az URL-címet használja a regisztrációs folyamat során. |
 
 Engedélyezheti a &ast; . msappproxy.net, &ast; . servicebus.Windows.net és más URL-címek kapcsolatait, ha a tűzfal vagy a proxy lehetővé teszi a DNS-engedélyezési listák konfigurálását. Ha nem, engedélyeznie kell az [Azure IP-címtartományok és a szolgáltatás-címkék nyilvános felhőhöz](https://www.microsoft.com/download/details.aspx?id=56519)való hozzáférését. Az IP-címtartományok hetente frissülnek.
@@ -239,7 +242,7 @@ Hibaelhárítás: az [alkalmazásproxy problémáinak elhárítása és a hibaü
 
 Ha már nincs rá szükség, törölje az ebben az oktatóanyagban létrehozott erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban előkészítette a helyszíni környezetet, hogy működjön az Application proxyval, majd telepítse és regisztrálja az alkalmazásproxy-összekötőt. Ezután hozzáadott egy alkalmazást az Azure AD-bérlőhöz. Ellenőrizte, hogy egy felhasználó Azure AD-fiókkal tud-e bejelentkezni az alkalmazásba.
 

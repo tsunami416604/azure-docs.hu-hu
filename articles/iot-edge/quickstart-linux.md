@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ce8d014f7ec9ae0a915b69cff033e929f139acc0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 1feabdfa5b4715427b63e0d419b62d4c41bd1ee5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532091"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572388"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön
 
@@ -33,23 +33,17 @@ Ez a rövid útmutató végigvezeti a IoT Edge eszközként konfigurált Linux r
 
 Ha nem rendelkezik aktív Azure-előfizetéssel, kezdetnek hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-A rövid útmutató számos lépésében az Azure CLI használatára van szükség, és az Azure IoT egyik bővítményével további funkciókhoz férhet hozzá.
-
-Adja hozzá az Azure IoT bővítményt az Cloud Shell-példányhoz.
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+Készítse elő a környezetet az Azure CLI-hez.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
 Felhőerőforrások:
 
-* Egy erőforráscsoport a rövid útmutató során létrehozott összes erőforrás kezelésére. Ebben a rövid útmutatóban a példa nevű erőforráscsoport-nevet használjuk, és a következő oktatóanyagokat **IoTEdgeResources** .
+- Egy erőforráscsoport a rövid útmutató során létrehozott összes erőforrás kezelésére. Ebben a rövid útmutatóban a példa nevű erőforráscsoport-nevet használjuk, és a következő oktatóanyagokat **IoTEdgeResources** .
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2

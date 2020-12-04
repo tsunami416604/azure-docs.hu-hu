@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: e6f5bb1c2716acbbac8d3e776eb9beda045fd881
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f2de6dbba2548f0c281df35edf2883d0c00af667
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968740"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571913"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>A StorSimple összehasonlítása az Azure File Synckel és a Data Box Edge adatátviteli lehetőségeivel 
 
@@ -33,11 +33,11 @@ Ez a dokumentum áttekintést nyújt a helyszíni adatátviteli lehetőségekrő
 |**Peremhálózati számítás** |Nem érhető el |Nem érhető el |Támogatja a futó tárolókat Azure IoT Edge    |
 |**Űrlap tényező**  |Fizikai eszköz   |A Windows Serverre telepített ügynök |Fizikai eszköz   |
 |**Hardver**     |A Microsoft által a szolgáltatás részeként biztosított fizikai eszköz | Ügyfél által megadott |A Microsoft által a szolgáltatás részeként biztosított fizikai eszköz  |
-|**Adatformátum**  |Egyéni formátum   |Files         |Blobok vagy fájlok    |
+|**Adatformátum**  |Egyéni formátum   |Fájlok         |Blobok vagy fájlok    |
 |**Protokolltámogatás** |iSCSI          |SMB, NFS    | SMB vagy NFS      |
 |**Díjszabás**      |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure File Sync](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md) és a [Azure Data Box Gateway](../databox-online/data-box-gateway-overview.md) ismertetése
 - Tudnivalók a [Azure file Sync](../storage/files/storage-sync-files-deployment-guide.md)

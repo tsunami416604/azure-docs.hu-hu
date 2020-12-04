@@ -1,7 +1,7 @@
 ---
 title: Az Azure Active Directory-alkalmazások kezelésének újdonságai
 description: Új és frissített dokumentáció a Azure Active Directory-alkalmazások kezeléséhez.
-ms.date: 11/05/2020
+ms.date: 12/03/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,26 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 10861438334bc804d1b1e4b9a669280f7e09ffde
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 38602482f1a25f212829342fe691d7bb75666d31
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654009"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571011"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
 Üdvözli a Azure Active Directory Application Management dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. Az Application Management szolgáltatással kapcsolatos újdonságok megismeréséhez tekintse [meg a Azure Active Directory újdonságait](../fundamentals/whats-new.md)ismertető témakört.
+
+## <a name="november-2020"></a>2020. november
+
+### <a name="new-articles"></a>Új cikkek
+- [Fejléc-alapú egyszeri bejelentkezés Azure AD alkalmazás proxyval rendelkező helyszíni alkalmazásokhoz (előzetes verzió)](application-proxy-configure-single-sign-on-with-headers.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+- [Azure Active Directory Application Management: Újdonságok](whats-new-docs.md)
+- [Problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokba való bejelentkezés során](application-sign-in-problem-federated-sso-gallery.md)
+
 
 ## <a name="october-2020"></a>2020. október
 
@@ -32,9 +42,9 @@ ms.locfileid: "94654009"
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Problémák az SAML-alapú egyszeri bejelentkezés konfigurált alkalmazásaiba való bejelentkezéskor](application-sign-in-problem-federated-sso-gallery.md)
+- [Problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokba való bejelentkezés során](application-sign-in-problem-federated-sso-gallery.md)
 - [Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor](application-proxy-connector-installation-problem.md)
-- [Alkalmazás-hitelesítés áthelyezése Active Directory összevonási szolgáltatások (AD FS)ról Azure Active Directoryra](migrate-adfs-apps-to-azure.md)
+- [Alkalmazáshitelesítés áthelyezése az Active Directory Federation Servicesből az Azure Active Directoryba](migrate-adfs-apps-to-azure.md)
 - [A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása](configure-user-consent.md)
 
 
@@ -52,7 +62,7 @@ ms.locfileid: "94654009"
 - [Az alkalmazások beleegyezett az alkalmazásokkal és az engedélyezési kérelmek kiértékelésével](manage-consent-requests.md)
 - [Alkalmazások megtekintése az Azure AD-Bérlővel az Identitáskezelés kezeléséhez](application-types.md)
 - [A felhasználók Azure Active Directory alkalmazásokhoz való hozzárendelésének ismertetése](ways-users-get-assigned-to-applications.md)
-- [Alkalmazás felhasználó-hozzárendelésének kezelése Azure Active Directory](assign-user-or-group-access-portal.md)
+- [Alkalmazás felhasználó-hozzárendelésének kezelése az Azure Active Directoryban](assign-user-or-group-access-portal.md)
 
 
 ## <a name="august-2020"></a>2020. augusztus
@@ -65,7 +75,7 @@ ms.locfileid: "94654009"
 - [A Azure Active Directory alkalmazások végfelhasználói élményei](end-user-experiences.md)
 - [Önkiszolgáló alkalmazás-hozzáférés használata](access-panel-manage-self-service-access.md)
 - [Az Azure AD saját alkalmazásaiból alkalmazásba való bejelentkezéssel kapcsolatos problémák elhárítása](application-sign-in-other-problem-access-panel.md)
-- [Jelszó alapú egyszeri bejelentkezés hibáinak megoldása az Azure AD-ben](troubleshoot-password-based-sso.md)
+- [Jelszóalapú egyszeri bejelentkezés hibaelhárítása az Azure AD-ben](troubleshoot-password-based-sso.md)
 - [Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése](access-panel-deployment-plan.md)
 - [Mi az az egyszeri bejelentkezés (SSO)?](what-is-single-sign-on.md)
 - [A Azure Active Directoryban lévő, nem megfelelő jogosultságokkal rendelkező vagy gyanús alkalmazásokra vonatkozó teendők](manage-application-permissions.md)

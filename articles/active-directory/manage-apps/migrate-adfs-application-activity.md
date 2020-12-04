@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1245010ae0b21c5bb8e3ebd93a9fe851d48c858b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 77a43d5bd5f2b228d5ed4384fc1efdca76f8ea0b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835509"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573884"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Alkalmazások áttelepíthetők az Azure AD-be a AD FS alkalmazás-tevékenységi jelentés (előzetes verzió) használatával
 
@@ -26,9 +26,10 @@ Számos szervezet Active Directory összevonási szolgáltatások (AD FS) (AD FS
 
 A Azure Portal AD FS alkalmazás-tevékenység jelentés (előzetes verzió) segítségével gyorsan azonosíthatja, hogy mely alkalmazások képesek áttelepíteni az Azure AD-be. Az Azure AD-vel való kompatibilitás érdekében az összes AD FS alkalmazást értékeli, ellenőrzi a problémákat, és útmutatást ad az egyes alkalmazások áttelepítésre való előkészítéséhez. A AD FS alkalmazás-tevékenység jelentéssel a következőket teheti:
 
-* **Fedezze fel AD FS alkalmazásait és hatókörét az áttelepítés során.** A AD FS alkalmazás tevékenység jelentés felsorolja a szervezet összes AD FS alkalmazását, és jelzi az Azure AD-ba való Migrálás készültségét.
+* **Fedezze fel AD FS alkalmazásait és hatókörét az áttelepítés során.** A AD FS alkalmazás-tevékenység jelentés felsorolja a szervezetben lévő összes olyan AD FS alkalmazást, amelynek az elmúlt 30 napban aktív felhasználói bejelentkezés volt. A jelentés az Azure AD-be való áttelepítésre felkészültséget jelző alkalmazások. A jelentés nem jeleníti meg a Microsoft kapcsolódó függő entitásait AD FS például az Office 365-ben. Például a "urn: Federation: MicrosoftOnline" nevű függő entitások.
+
 * **Alkalmazások rangsorolása az áttelepítéshez.** Azon egyedi felhasználók számának lekérése, akik az elmúlt 1, 7 vagy 30 napban bejelentkezett az alkalmazásba az alkalmazás áttelepítésének sikeressége vagy kockázata alapján.
-* **Futtassa az áttelepítési teszteket és javítsa ki a problémákat.** A Reporting szolgáltatás automatikusan futtatja a teszteket annak megállapítására, hogy az alkalmazás készen áll-e az áttelepítés Az eredmények áttelepítési állapotként jelennek meg az AD FS alkalmazás tevékenység jelentésében. Ha azonosítják a lehetséges áttelepítési problémákat, konkrét útmutatást kap a problémák megoldásához.
+* **Futtassa az áttelepítési teszteket és javítsa ki a problémákat.** A Reporting szolgáltatás automatikusan futtatja a teszteket annak megállapítására, hogy az alkalmazás készen áll-e az áttelepítés Az eredmények áttelepítési állapotként jelennek meg az AD FS alkalmazás tevékenység jelentésében. Ha az AD FS konfigurációja nem kompatibilis az Azure AD-konfigurációval, a konfiguráció az Azure AD-ben való kezelésével kapcsolatos útmutatást kap.
 
 A AD FS alkalmazás tevékenységi adatai a következő rendszergazdai szerepkörökhöz rendelt felhasználók számára érhetők el: globális rendszergazda, jelentéskészítő olvasó, biztonsági olvasó, alkalmazás-rendszergazda vagy Felhőbeli alkalmazás rendszergazdája.
 
@@ -39,6 +40,9 @@ A AD FS alkalmazás tevékenységi adatai a következő rendszergazdai szerepkö
 * A AD FS-ügynök Azure AD Connect Health telepíteni kell.
    * [További információ a Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md)
    * [Ismerkedés a Azure AD Connect Health beállításával és a AD FS-ügynök telepítésével](../hybrid/how-to-connect-health-agent-install.md)
+
+>[!IMPORTANT] 
+>A Azure AD Connect Health telepítése után a várt alkalmazások közül néhányat nem láthat. A AD FS alkalmazási tevékenység jelentés csak AD FS függő entitásokat jelenít meg az elmúlt 30 napban felhasználói bejelentkezéssel. Emellett a jelentés nem jeleníti meg a Microsoft kapcsolódó függő entitásait, például az Office 365-et.
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>Az áttelepíthető AD FS alkalmazások felderítése 
 
@@ -74,7 +78,7 @@ A AD FS alkalmazás tevékenységéről szóló jelentés az Azure AD- **haszná
 
 A következő táblázat felsorolja a AD FS alkalmazásokon végrehajtott összes konfigurációs tesztet.
 
-|Eredmény  |Továbbítás/figyelmeztetés/sikertelen  |Leírás  |
+|Result  |Továbbítás/figyelmeztetés/sikertelen  |Description  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> A AdditionalAuthentication legalább egy nem áttelepíthető szabályt észlelt a rendszer.       | Továbbítás/figyelmeztetés          | A függő entitásnak szabályokkal kell megkérnie a többtényezős hitelesítést (MFA). Az Azure AD-ba való áttéréshez ezeket a szabályokat feltételes hozzáférési házirendekbe kell lefordítani. Ha helyszíni MFA-t használ, javasoljuk, hogy váltson át az Azure AD MFA-re. [További információ a feltételes hozzáférésről](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> A függő entitás AdditionalWSFedEndpoint értéke TRUE (igaz).       | Sikeres/sikertelen          | A AD FS függő entitása több WS-Fed kiállítási végpontot is lehetővé tesz.Az Azure AD jelenleg csak egyet támogat.Ha van olyan forgatókönyv, ahol ez az eredmény blokkolja az áttelepítést, [tudassa velünk](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
@@ -122,8 +126,19 @@ A következő táblázat felsorolja a AD FS alkalmazásokon végrehajtott össze
 |UNSUPPORTED_ISSUANCE_CLASS      | A kiállítási utasítás a Hozzáadás elem használatával adja hozzá a jogcímeket a bejövő jogcímek készletéhez. Az Azure AD-ben ez több jogcím-átalakításként is konfigurálható.További információ: [az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz](../develop/active-directory-claims-mapping.md).         |
 |UNSUPPORTED_ISSUANCE_TRANSFORMATION      | A kiállítási utasítás reguláris kifejezéseket használ a kibocsátott jogcím értékének átalakításához.Ahhoz, hogy hasonló funkciókat lehessen elérni az Azure AD-ben, használhatja az előre definiált transzformációt, például a Extract (), a Trim (), a ToLower, a többit is. További információ: [az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz](../develop/active-directory-saml-claims-customization.md).          |
 
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="cant-see-all-my-ad-fs-applications-in-the-report"></a>A jelentésben nem látható az összes AD FS alkalmazás
+
+ Ha telepítette Azure AD Connect állapotát, de továbbra is megjelenik a telepítésre vonatkozó kérés, vagy ha nem látja az összes AD FS alkalmazást a jelentésben, előfordulhat, hogy nem rendelkezik aktív AD FS alkalmazásokkal, vagy a AD FS alkalmazásai Microsoft-alkalmazás.
+ 
+ A AD FS alkalmazás tevékenység jelentés felsorolja az aktív felhasználók által az elmúlt 30 napban bejelentkező összes AD FS alkalmazást. Emellett a jelentés nem jeleníti meg a Microsoft kapcsolódó függő entitásait AD FS például az Office 365-ben. Például az "urn: Federation: MicrosoftOnline", a "microsoftonline", a "Microsoft: winhello: CERT: prov: Server" nevű függő entitások nem jelennek meg a listában.
+
+
+
+
+
+## <a name="next-steps"></a>További lépések
 
 - [Videó: az alkalmazások áttelepítésére szolgáló AD FS tevékenység jelentés használata](https://www.youtube.com/watch?v=OThlTA239lU)
 - [Alkalmazások kezelése az Azure Active Directoryval](what-is-application-management.md)

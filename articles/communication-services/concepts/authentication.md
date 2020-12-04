@@ -9,12 +9,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 96e10bc19d59b60824a908c67816a21ca80326d0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d6e02852dcd2d30a764417a4b5e0e012a1d2ab5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832806"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571096"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Hitelesítés az Azure kommunikációs szolgáltatásokban
 
@@ -58,9 +58,9 @@ Ha nem használ ügyféloldali kódtárat az Azure kommunikációs szolgáltatá
     URLPathAndQuery + "\n"
     DateHeaderValue + ";" + HostHeaderValue + ";" + ContentHashHeaderValue
     ```
-1. Hozzon létre egy HMAC-256 aláírást az előző lépésben létrehozott UTF-8 kódolású karakterláncból. Ezután kódolja az eredményeket Base64-ként. Vegye figyelembe, hogy a Storage-fiók kulcsának Base64-dekódolására is szüksége van. A következő formátumot használja (pszeudo-kódként jelenik meg):
+1. Hozzon létre egy HMAC-256 aláírást az előző lépésben létrehozott UTF-8 kódolású karakterláncból. Ezután kódolja az eredményeket Base64-ként. Vegye figyelembe, hogy a hozzáférési kulcs Base64-dekódolására is szükség van. A következő formátumot használja (pszeudo-kódként jelenik meg):
     ```
-    Signature=Base64(HMAC-SHA256(UTF8(StringToSign), Base64.decode(<your_azure_storage_account_shared_key>)))
+    Signature=Base64(HMAC-SHA256(UTF8(StringToSign), Base64.decode(<your_access_key>)))
     ```
 1. A következő módon adhatja meg az engedélyezési fejlécet:
     ```
@@ -187,7 +187,7 @@ CommunicationUserCredential credential = new CommunicationUserCredential(tokenRe
 
 A `refreshProactively` beállítással eldöntheti, hogyan fogja kezelni a jogkivonat életciklusát. Alapértelmezés szerint, ha egy jogkivonat elavult, a visszahívás letiltja az API-kérelmeket, és megkísérli a frissítését. Ha a `refreshProactively` visszahívásra van beállítva, a `true` jogkivonat lejárata előtt aszinkron módon van ütemezve és végrehajtva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Felhasználói hozzáférési tokenek létrehozása](../quickstarts/access-tokens.md)

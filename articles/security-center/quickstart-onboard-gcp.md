@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bbaa44fb64becee85b29cd44bee44e593ec55bf6
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 1095222f332e7a66f684feddf1fdab17704ca658
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372642"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573544"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>A GCP-fiókok összekapcsolásának Azure Security Center
 
@@ -44,6 +44,8 @@ Az alábbi képernyőképen megtekintheti az Security Center áttekintési irán
 
 ## <a name="connect-your-gcp-account"></a>A GCP-fiók csatlakoztatása
 
+A GCP Cloud Connector létrehozásához kövesse az alábbi lépéseket. 
+
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>1. lépés A GCP Security Command Center beállítása a biztonsági állapot elemzésével
 
 A szervezet összes GCP-projektje esetén a következőket kell tennie:
@@ -60,7 +62,7 @@ A biztonsági állapot elemzésének első engedélyezésekor több óráig is e
 ### <a name="step-2-enable-gcp-security-command-center-api"></a>2. lépés A GCP Security Command Center API engedélyezése
 
 1. A Google **Cloud Console API könyvtárából** válassza ki azt a projektet, amelyhez csatlakozni szeretne Azure Security Centerhoz.
-1. Az API-függvénytárban keresse meg és válassza ki a **Security Command Center API** -t.
+1. Az API-függvénytárban keresse meg és válassza ki a **Security Command Center API**-t.
 1. Az API lapon válassza az **Engedélyezés** lehetőséget.
 
 További információ a [Security Command Center API](https://cloud.google.com/security-command-center/docs/reference/rest/)-ról.
@@ -72,7 +74,7 @@ További információ a [Security Command Center API](https://cloud.google.com/s
 1. A **navigációs menü** **iam & felügyeleti** beállítások területén válassza a **szolgáltatásfiókok** elemet.
 1. Válassza a **szolgáltatásfiók létrehozása** lehetőséget.
 1. Adja meg a fiók nevét, majd válassza a **Létrehozás** lehetőséget.
-1. Adja meg a **szerepkört** **Security Center felügyeleti megjelenítőként** , és válassza a **Folytatás** lehetőséget.
+1. Adja meg a **szerepkört** **Security Center felügyeleti megjelenítőként**, és válassza a **Folytatás** lehetőséget.
 1. A **szolgáltatásfiók-hozzáférés engedélyezése a felhasználóknak** nem kötelező. Válassza a **Kész** lehetőséget.
 1. Másolja a létrehozott szolgáltatásfiók **e-mail-értékét** , és mentse későbbi használatra.
 1. A **navigációs menü** **iam & felügyeleti** beállítások területén válassza a **iam** lehetőséget.

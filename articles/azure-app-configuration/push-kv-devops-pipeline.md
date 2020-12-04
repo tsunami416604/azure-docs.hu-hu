@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
-ms.openlocfilehash: 936be917d5b494c9d71386440c711ef6c29ffb45
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7c0f886f23bc24eeed54043e9a7ee5fb1f645172
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183498"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572507"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Beállítások leküldése az alkalmazás konfigurációjához az Azure-folyamatokkal
 
@@ -27,7 +27,7 @@ Az [Azure-alkalmazás konfigurálása leküldéses](https://marketplace.visualst
 
 ## <a name="create-a-service-connection"></a>Szolgáltatási kapcsolatok létrehozása
 
-A szolgáltatási kapcsolatok lehetővé teszik az Azure-előfizetéshez tartozó erőforrások elérését az Azure DevOps-projektből.
+A [szolgáltatási kapcsolatok](/azure/devops/pipelines/library/service-endpoints) lehetővé teszik az Azure-előfizetéshez tartozó erőforrások elérését az Azure DevOps-projektből.
 
 1. Az Azure DevOps nyissa meg a cél folyamatot tartalmazó projektet, és a bal alsó sarokban nyissa meg a **projekt beállításait** .
 1. A **folyamatok** területen válassza a **szolgáltatás kapcsolatai** lehetőséget, majd a jobb felső sarokban válassza az **új szolgáltatás-kapcsolat** lehetőséget.

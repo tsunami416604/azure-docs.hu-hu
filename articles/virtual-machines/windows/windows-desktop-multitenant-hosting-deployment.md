@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 5bd41396cf075f83fd37a4276f7a30223ec8c1f3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 101f2cfe57624502764d145351a6343cfdd2a334
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96482943"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572864"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 üzembe helyezése az Azure-ban több-bérlős üzemeltetési jogosultságokkal 
 A Windows 10 Enterprise E3/E5 felhasználónkénti vagy a Windows virtuális asztali hozzáférés felhasználónként (felhasználói előfizetési licencek vagy kiegészítő felhasználói előfizetési licencek) rendelkező ügyfelei számára a Windows 10 rendszerhez készült több-bérlős üzemeltetési jogosultság lehetővé teszi a Windows 10-es licencek felhőbe való bevezetését, valamint a Windows 10 Virtual Machines Azure-beli futtatását anélkül, hogy más licenccel kellene fizetnie. További információ: több- [bérlős üzemeltetés a Windows 10 rendszerhez](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -112,7 +112,7 @@ LicenseType              :
 
 ## <a name="additional-information-about-joining-azure-ad"></a>További információ az Azure AD-hez való csatlakozásról
 >[!NOTE]
->Az Azure minden olyan Windowsos virtuális gépet kiépít, amely beépített rendszergazdai fiókkal rendelkezik, ezért nem használható a HRE való csatlakozáshoz. Például a *beállítások > a fiók > hozzáférés munkahelyi vagy iskolai > + kapcsolódás* nem fog működni. Az Azure AD-hez való csatlakozáshoz második rendszergazdai fiókot kell létrehoznia és bejelentkeznie. Az Azure AD-t egy kiépítési csomaggal is konfigurálhatja, ha további információra van szüksége, használja a *következő lépések* szakaszt.
+>Az Azure minden olyan Windowsos virtuális gépet kiépít, amely beépített rendszergazdai fiókkal rendelkezik, ezért nem használható a HRE való csatlakozáshoz. Például a *beállítások > a fiók > hozzáférés munkahelyi vagy iskolai > + kapcsolódás* nem fog működni. Az Azure AD-hez való csatlakozáshoz második rendszergazdai fiókot kell létrehoznia és bejelentkeznie. Az Azure AD-t egy kiépítési csomaggal is konfigurálhatja, ha további információkat szeretne megtudni, használja a *következő lépések* szakaszban található hivatkozást.
 >
 >
 

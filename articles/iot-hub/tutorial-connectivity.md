@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: cf1c558474cfde85dd2c9ba8c85dc553fe5d9b56
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1eead9bb93fe8b753ace518cde18b240ab1a3cd4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547503"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572677"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez
 
@@ -36,15 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A felhőből az eszközre irányuló kapcsolat ellenőrzése
 > * Ikereszköz-szinkronizálás ellenőrzése
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>Előfeltételek
-
-Az oktatóanyag során futtatott parancssori felületi szkriptek az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) használják. A bővítmény telepítéséhez futtassa a következő parancssori felületi parancsot:
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -80,7 +72,7 @@ Jelentkezzen be a portálra, és keresse meg az IoT Hubot. Ezt követően nyissa
 
 ![Új eszköz hozzáadása](media/tutorial-connectivity/add-device.png)
 
-A **MyTestDevice** kapcsolati sztringjének lekéréséhez kattintson rá az eszközlistán, majd másolja a **Kapcsolati sztring – elsődleges kulcs** értékét. A kapcsolati sztring tartalmazza az eszköz *megosztott hozzáférési kulcsát* .
+A **MyTestDevice** kapcsolati sztringjének lekéréséhez kattintson rá az eszközlistán, majd másolja a **Kapcsolati sztring – elsődleges kulcs** értékét. A kapcsolati sztring tartalmazza az eszköz *megosztott hozzáférési kulcsát*.
 
 ![Az eszköz kapcsolati sztringjének lekérése](media/tutorial-connectivity/copy-connection-string.png)
 
@@ -228,11 +220,11 @@ A szimulált eszköz a következő üzenetet jeleníti meg a konzolon, amikor eg
 
 Ha a szimulált eszköz sikeresen fogadja a közvetlenmetódus-hívást, nyugtázást küld vissza a hubra:
 
-![Közvetlen metódus nyugtázásának fogadása](media/tutorial-connectivity/method-acknowledgement.png)
+![Közvetlen metódus-visszaigazolás fogadása](media/tutorial-connectivity/method-acknowledgement.png)
 
 ## <a name="check-twin-synchronization"></a>Ikerszinkronizálás ellenőrzése
 
-Az eszközök ikreket használnak, hogy szinkronizálják az eszköz és a hub állapotát. Ebben a szakaszban parancssori felületi parancsok használatával küld _kívánt tulajdonságokat_ egy eszközre, és elolvassa az eszköz által küldött _jelentett tulajdonságokat_ .
+Az eszközök ikreket használnak, hogy szinkronizálják az eszköz és a hub állapotát. Ebben a szakaszban parancssori felületi parancsok használatával küld _kívánt tulajdonságokat_ egy eszközre, és elolvassa az eszköz által küldött _jelentett tulajdonságokat_.
 
 A szakaszban használt szimulált eszköz minden indításkor elküldi a jelentett tulajdonságokat a hubnak, és a kívánt tulajdonságokat a fogadáskor minden alkalommal megjeleníti a konzolon.
 
@@ -264,13 +256,13 @@ A szimulált eszköz minden alkalommal megjelenít egy üzenetet, amikor egy kí
 
 Amellett, hogy folyamatosan fogadja a kívánt tulajdonságok módosításait, a szimulált eszköz indításakor automatikusan ellenőrzi a kívánt tulajdonságokat is.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az IoT Hubra, az erőforráscsoporttal együtt törölje a Portalon. Ehhez válassza ki az IoT Hubot tartalmazó **tutorials-iot-hub-rg** erőforráscsoportot, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtudhatta, hogyan ellenőrizhet eszközkulcsokat, az eszközről a felhőbe irányuló kapcsolatot, a felhőből az eszközre irányuló kapcsolatot, valamint az ikereszköz-szinkronizálást. Az IoT hub monitorozásával kapcsolatos további információkért tekintse meg az IoT Hub monitorozását ismertető útmutatót.
 
 > [!div class="nextstepaction"]
-> [Figyelő IoT Hub](monitor-iot-hub.md)
+> [Az IoT Hub monitorozása](monitor-iot-hub.md)

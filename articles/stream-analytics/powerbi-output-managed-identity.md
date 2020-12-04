@@ -6,14 +6,14 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 469610d7195835a4b68e4d887c5be57a8926ba37
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: dd667202a329148e498d0e25ee15110de5d7448a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489505"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573408"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI (előzetes verzió)
 
 A Power BI kimenetének [felügyelt identitás-hitelesítése](../active-directory/managed-identities-azure-resources/overview.md) stream Analytics feladatok közvetlen elérését teszi lehetővé Power bi fiókjában lévő munkaterülethez. Ez a funkció lehetővé teszi Stream Analytics feladatok teljes körű automatizálását, mivel már nem szükséges, hogy a felhasználó interaktív módon jelentkezzen be a Power BIba a Azure Portal használatával. Emellett a hosszú ideig futó, Power BI írást végző feladatok már jobban támogatottak, mivel nem kell rendszeresen újraengedélyezni a feladatot.
 
@@ -29,7 +29,7 @@ A funkció használatához a következők szükségesek:
 
 ## <a name="create-a-stream-analytics-job-using-the-azure-portal"></a>Stream Analytics-feladatok létrehozása a Azure Portal használatával
 
-1. Hozzon létre egy új Stream Analytics feladatot, vagy nyisson meg egy meglévő feladatot a Azure Portalban. A képernyő bal oldalán található menüsávban válassza a **configure (Konfigurálás** ) alatt található **felügyelt identitás** elemet. Győződjön meg arról, hogy a "rendszerhez rendelt felügyelt identitás használata" beállítás ki van választva, majd kattintson a képernyő alján található **Save (Mentés** ) gombra.
+1. Hozzon létre egy új Stream Analytics feladatot, vagy nyisson meg egy meglévő feladatot a Azure Portalban. A képernyő bal oldalán található menüsávban válassza a **configure (Konfigurálás**) alatt található **felügyelt identitás** elemet. Győződjön meg arról, hogy a "rendszerhez rendelt felügyelt identitás használata" beállítás ki van választva, majd kattintson a képernyő alján található **Save (Mentés** ) gombra.
 
    ![Stream Analytics felügyelt identitás konfigurálása](./media/common/stream-analytics-enable-managed-identity.png)
 

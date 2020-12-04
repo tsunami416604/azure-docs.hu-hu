@@ -1,17 +1,15 @@
 ---
 title: A Actor-alapú Azure Service Fabric Actors eseményei
 description: Ismerje meg Service Fabric Reliable Actors eseményeit, amelyek hatékony módszert biztosítanak a szereplők és az ügyfelek közötti kommunikációhoz.
-author: vturecek
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.author: amanbha
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f5634a33dccb06437f2e5f095e7880221dba9d6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 591e3539715ba0873e44f56a93d05df6552bb1ef
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89007910"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571368"
 ---
 # <a name="actor-events"></a>Színészi események
 A színészi események lehetővé teszik a legjobb erőfeszítést jelző értesítések küldését a színésztől az ügyfeleknek. A Actors-események a színészek közötti kommunikációhoz készültek, és nem használhatók a színészek közötti kommunikációhoz.
@@ -100,7 +98,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Actor újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
 * [Színészi diagnosztika és Teljesítményfigyelés](service-fabric-reliable-actors-diagnostics.md)
 * [A Actor API-referenciájának dokumentációja](/previous-versions/azure/dn971626(v=azure.100))

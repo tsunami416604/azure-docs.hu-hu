@@ -2,16 +2,16 @@
 title: Fürtkonfiguráció az Azure Kubernetes Servicesben (ak)
 description: Megtudhatja, hogyan konfigurálhat fürtöt az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
-ms.topic: conceptual
+ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: dcd9ec52992da8037bb498dc09701879c4c94667
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736532"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572575"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS-fürt konfigurálása
 
@@ -300,9 +300,9 @@ A csomópont-erőforráscsoport használata során ne feledje, hogy a következ�
 - A csomópont erőforráscsoporthoz tartozó felügyelt erőforrások nevének megadása.
 - Módosíthatja vagy törölheti az Azure-ban létrehozott, felügyelt erőforrások címkéit a csomópont-erőforráscsoporton belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan `Kured` [alkalmazhatja a biztonsági és a kernel-frissítéseket a fürt Linux-csomópontjaira](node-updates-kured.md) .
+- Megtudhatja, hogyan frissítheti a fürtben található [csomópont-lemezképeket](node-image-upgrade.md) .
 - Lásd: [Azure Kubernetes Service-(ak-) fürt frissítése](upgrade-cluster.md) , amelyből megtudhatja, hogyan frissítheti a fürtöt a Kubernetes legújabb verziójára.
 - További információ [ `containerd` és Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/)
 - Tekintse meg az [AK-val kapcsolatos gyakori kérdések](faq.md) listáját, ahol válaszokat talál a gyakori AK-kérdésekre.

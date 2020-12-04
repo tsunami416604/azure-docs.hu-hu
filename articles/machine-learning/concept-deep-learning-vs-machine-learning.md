@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 43b03abb2aac13358a2187a0a5dc570c1e45934e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c612e2a95e2596b2732ed8282037c8ded908a0a0
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458496"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571385"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Mélyreható tanulás és gépi tanulás a Azure Machine Learning
 
@@ -93,8 +93,6 @@ A mélyreható tanulási módszereken alapuló szöveges elemzések nagy mennyis
 
 A vállalatok mély tanulással végeznek szöveges elemzést a bennfentes kereskedelem és a kormányzati szabályozásoknak való megfelelés észlelése érdekében. Egy másik gyakori példa a biztosítási csalás: a szöveges elemzés gyakran a nagy mennyiségű dokumentum elemzésére szolgál, hogy felismerje a biztosítási követelések csalásának esélyét. 
 
-Ismerje meg, hogyan használhat TensorFlow modellt a Azure Machine Learningban: [kézzel írt számjegyek osztályozása TensorFlow-modell használatával](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
-
 ## <a name="artificial-neural-networks"></a>Mesterséges neurális hálózatok
 
 A mesterséges neurális hálózatokat összekapcsolt csomópontok rétegei alkotják. A Deep learning-modellek nagy mennyiségű réteget használó neurális hálózatokat használnak. 
@@ -107,7 +105,7 @@ A feedforward neurális hálózat a mesterséges neurális hálózat legegyszer�
 
 ### <a name="recurrent-neural-network"></a>Visszatérő neurális hálózat
 
-Az ismétlődő neurális hálózatok széles körben használják a mesterséges neurális hálózatot. Ezek a hálózatok elmentik egy réteg kimenetét, és visszaküldik a bemeneti rétegnek a réteg eredményének előrejelzéséhez. Az ismétlődő neurális hálózatok nagy tanulási képességekkel rendelkeznek. Ezek széles körben használatosak olyan összetett feladatokhoz, mint például az idősorozat-előrejelzés, a tanulás és a nyelv felismerése.
+Az ismétlődő neurális hálózatok széles körben használják a mesterséges neurális hálózatot. Ezek a hálózatok elmentik egy réteg kimenetét, és visszaküldik a bemeneti rétegnek a réteg eredményének előrejelzéséhez. Az ismétlődő neurális hálózatok nagy tanulási képességekkel rendelkeznek. Ezek széles körben használatosak olyan összetett feladatokhoz, mint például az idősorozat-előrejelzés, a tanulási kézírás és a nyelv felismerése.
 
 ### <a name="convolutional-neural-networks"></a>Összetartozó neurális hálózatok
 
@@ -118,6 +116,9 @@ A többszintű neurális hálózatok olyan területeken lettek felhasználva, mi
 ## <a name="next-steps"></a>További lépések
 
 A következő cikkek további lehetőségeket mutatnak be a nyílt forráskódú mély tanulási modellek [Azure Machine Learningban](./index.yml?WT.mc_id=docs-article-lazzeri)való használatára:
+
+
+- [Kézzel írt számjegyek osztályozása TensorFlow-modell használatával](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri) 
 
 - [Kézzel írt számjegyek osztályozása TensorFlow-kalkulátor és kerasz használatával](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 

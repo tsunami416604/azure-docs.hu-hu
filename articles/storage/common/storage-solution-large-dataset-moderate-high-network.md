@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 962bb7a4484f28d52ffd4f0cae985140ec2f0d28
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f1ded1ce87df1cb57960bbc99cd950ed7b3f97ee
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006030"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573935"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Nagy méretű adathalmazok átvitele közepes vagy nagy hálózati sávszélességen
  
@@ -68,8 +68,8 @@ Ha kapcsolat nélküli adatátvitelt használ, a következő táblázat segíts�
 |    **Adattípus**                    |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
 |    **Űrlap tényező**                  |    5 SSD/megrendelés             |    1 X 50 – lbs. asztali méretű eszköz/megrendelés    |    1 X ~ 500 – lbs. nagyméretű eszköz/megrendelés    |    Akár 10 HDD/SSD/megrendelés        |
 |    **Kezdeti telepítési idő**               |    Alacsony <br>(15 perc)            |    Alacsony – mérsékelt <br> (<30 perc)               |    Mérsékelt<br>(1-2 óra)               |    Mérsékelt – nehéz<br>változó |
-|    **Adatküldés az Azure-ba**           |    Igen                          |    Igen                                           |    Igen                                   |    Yes                                 |
-|    **Adatok exportálása az Azure-ból**           |    Nem                           |    Nem                                            |    Nem                                    |    Igen                                 |
+|    **Adatküldés az Azure-ba**           |    Igen                          |    Igen                                           |    Igen                                   |    Igen                                 |
+|    **Adatexportálás az Azure-ból**           |    Nem                           |    Nem                                            |    Nem                                    |    Igen                                 |
 |    **Titkosítás**                   |    AES 128 bites                  |    AES 256 bites                                   |    AES 256 bites                           |    AES 128 bites                         |
 |    **Hardver**                     |     Microsoft által megadott          |    Microsoft által megadott                            |    Microsoft által megadott                    |    Ügyfél által megadott                   |
 |    **Hálózati adapter**            |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
@@ -88,7 +88,7 @@ Ha online adatátvitelt használ, használja a következő szakaszban találhat�
 |    **Adattípus**              |    Azure-Blobok, Azure Files, Azure-táblák    |    Azure-Blobok, Azure Files, Azure-táblák    |    Azure-Blobok, Azure Files                           |   70 + adatösszekötőt támogat az adattárakhoz és a formátumokhoz    |
 |    **Űrlap tényező**            |    Parancssori eszközök                        |    Programozott felület                    |    A Microsoft biztosítja a virtuális <br>vagy fizikai eszköz     |    Szolgáltatás Azure Portal                                            |
 |    **Kezdeti egyszeri telepítés** |    Könnyen               |    Mérsékelt                       |    Easy (<30 perc) – mérsékelt (1-2 óra)            |    Kiterjedt                                                          |
-|    **Adatfeldolgozás előtti**          |    Nem                                        |    Nem                                        |    Igen (az Edge számítási feladatokkal)                               |    Yes                                                                |
+|    **Adatfeldolgozás előtti**          |    Nem                                        |    Nem                                        |    Igen (az Edge számítási feladatokkal)                               |    Igen                                                                |
 |    **Átvitel más felhőkből**   |    Nem                                        |    Nem                                        |    Nem                                                    |    Igen                                                                |
 |    **Felhasználó típusa**                    |    IT Pro vagy dev                                       |    Dev                                       |    IT-szakértő                                                |    IT-szakértő                                                             |
 |    **Díjszabás**                      |    Ingyenes, a kimenő adatforgalomra vonatkozó díjak érvényesek         |    Ingyenes, a kimenő adatforgalomra vonatkozó díjak érvényesek         |    [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Díjszabás](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
@@ -102,7 +102,7 @@ Ha online adatátvitelt használ, használja a következő szakaszban találhat�
     - [Adatok átvitele Data Boxsal](../../databox/data-box-quickstart-portal.md).
 - [Adatok átvitele a AzCopy](./storage-use-azcopy-v10.md).
 - Ismerje meg a következőket:
-    - [Adatok átvitele Data Box Gatewaysal](../../databox-online/data-box-gateway-deploy-add-shares.md).
+    - [Adatok átvitele Data Box Gatewaysal](../../databox-gateway/data-box-gateway-deploy-add-shares.md).
     - [Adatok átalakítása Data Box Edge az Azure-ba való küldés előtt](../../databox-online/azure-stack-edge-deploy-configure-compute.md).
 - [Megtudhatja, hogyan viheti át az adatátvitelt Azure Data Factory használatával](../../data-factory/quickstart-create-data-factory-portal.md).
 - Adatok átvitele a REST API-k használatával

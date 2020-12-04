@@ -1,17 +1,15 @@
 ---
 title: Azure Service Fabric Actors törlése
 description: Megtudhatja, hogyan lehet manuálisan és teljes mértékben törölni Reliable Actors és azok állapotát egy Azure Service Fabric-alkalmazásban.
-author: amanbha
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: amanbha
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 80192aef564317e36fba56025aa31c787676d974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16d4ab6a3c155f897cf9212fb1cd6c34d977b9ec
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006856"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574020"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Reliable Actors-szereplők és állapotuk törlése
 A deaktivált szereplők szemét-gyűjteménye csak a Actor objektumot törli, de nem távolítja el a szereplő állapot-kezelőjében tárolt adatmennyiséget. A színész újraaktiválásakor a rendszer ismét elérhetővé teszi az adatforrást az állami kezelőn keresztül. Azokban az esetekben, amikor a szereplők az állapot-kezelőben tárolják az adattárolást, és inaktiválva vannak, de soha nem aktiválják őket, szükség lehet az Adattisztításra.

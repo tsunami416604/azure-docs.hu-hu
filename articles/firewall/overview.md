@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 11/10/2020
+ms.date: 12/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: e714e88e47ec20adec44a104c659d03e62d8010a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fc68170a89a3d9a359ae9cb2c0d5543af301e738
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658383"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573034"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -26,7 +26,7 @@ Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltat�
 
 Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan. Az Azure Firewall statikus nyilvános IP-címet használ a virtuális hálózat erőforrásaihoz, így a külső tűzfalak azonosíthatják a virtuális hálózatból érkező forgalmat.  A szolgáltatás teljesen integrálva van az Azure Monitorral a naplózás és az elemzés érdekében.
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 Azure Firewall szolgáltatásokkal kapcsolatos további tudnivalókért lásd: [Azure Firewall szolgáltatások](features.md).
 
@@ -45,7 +45,7 @@ Az Azure Firewall újdonságait az [Azure Updates](https://azure.microsoft.com/u
 
 Az Azure Firewall az alábbi ismert hibákkal rendelkezik:
 
-|Probléma  |Leírás  |Kockázatcsökkentés  |
+|Probléma  |Description  |Kockázatcsökkentés  |
 |---------|---------|---------|
 A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési szabályok nem működnek az internetre irányuló forgalom esetében|A nem TCP/UDP protokollok hálózati szűrési szabályai nem működnek a SNAT a nyilvános IP-címével. A nem TCP/UDP-protokollok a küllők alhálózatai és a virtuális hálózatok között támogatottak.|Az Azure Firewall a Standard Load Balancert használja, [amely jelenleg nem támogatja a forráshálózati címfordítást az IP-protokollokon](../load-balancer/load-balancer-overview.md). A forgatókönyv egy későbbi kiadásban való támogatásának lehetőségeit vizsgálja.|
 |A PowerShell és a CLI nem támogatja az ICMP-t|A Azure PowerShell és a CLI nem támogatja az ICMP-t érvényes protokollként a hálózati szabályokban.|Az ICMP protokollt a Portálon és a REST API is használhatja protokollként. Hamarosan felvesszük az ICMP-t a PowerShellben és a CLI-ben.|
@@ -70,10 +70,11 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |Az egyéni DNS nem működik a kényszerített bújtatással|Ha a kényszerített bújtatás engedélyezve van, az egyéni DNS nem működik.|A rendszer kivizsgálja a javítást.|
 |Új nyilvános IP-cím támogatása több Availability Zones|Ha két rendelkezésre állási zónával (1 és 2, 2 és 3, vagy 1 és 3) rendelkező tűzfalat telepít, nem adhat hozzá új nyilvános IP-címet.|Ez egy nyilvános IP-cím-erőforrásra vonatkozó korlátozás.|
 |A Start/Stop nem működik kényszerített bújtatási módban konfigurált tűzfallal|Az indítás/leállítás nem működik a kényszerített bújtatási módban konfigurált Azure tűzfalon. A kényszerített bújtatással konfigurált Azure Firewall indítására tett kísérlet a következő hibát eredményezi:<br><br>*Set-AzFirewall: AzureFirewall FW-XX felügyeleti IP-konfiguráció nem adható hozzá meglévő tűzfalhoz. Ha kényszerített bújtatási támogatást szeretne használni, telepítse újra a felügyeleti IP-konfigurációt. <br> StatusCode: 400 <br> ReasonPhrase: hibás kérelem*|A vizsgálat alatt.<br><br>Megkerülő megoldásként törölheti a meglévő tűzfalat, és létrehozhat egy újat ugyanazzal a paraméterekkel.|
-|Nem lehet felvenni a tűzfalszabályok címkéit a portál használatával|Azure Firewall a szabályzat egy javítással kapcsolatos korlátozást tartalmaz, amely megakadályozza a címkék hozzáadását a Azure Portal használatával. A következő hiba jön létre: *nem sikerült menteni az erőforrás címkéit*.|A rendszer kivizsgálja a javítást. Azt is megteheti, hogy a Azure PowerShell parancsmagot használja a `Set-AzFirewallPolicy` címkék frissítéséhez.
+|Nem lehet felvenni a tűzfalszabályok címkéit a portál használatával|Azure Firewall a szabályzat egy javítással kapcsolatos korlátozást tartalmaz, amely megakadályozza a címkék hozzáadását a Azure Portal használatával. A következő hiba jön létre: *nem sikerült menteni az erőforrás címkéit*.|A rendszer kivizsgálja a javítást. Azt is megteheti, hogy a Azure PowerShell parancsmagot használja a `Set-AzFirewallPolicy` címkék frissítéséhez.|
+|Az IPv6 még nem támogatott|Ha IPv6-címeket ad hozzá egy szabályhoz, a tűzfal meghibásodik.|Csak IPv4-címeket használjon. Az IPv6-támogatás vizsgálat alatt áll.|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](tutorial-firewall-deploy-portal.md)
 - [Azure Firewall üzembe helyezése sablon használatával](deploy-template.md)

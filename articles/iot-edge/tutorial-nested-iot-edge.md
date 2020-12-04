@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 28b34ecaf51406b35c67d3838714691390f5adf7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2f59feb83149042781b624aeb0df73fe3ab32587
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453061"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574224"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Oktatóanyag: IoT Edge-eszközök hierarchiájának létrehozása (előzetes verzió)
 
@@ -53,7 +53,7 @@ IoT Edge eszközök hierarchiájának létrehozásához a következőkre lesz sz
 * Két linuxos eszköz IoT Edge eszközként való konfiguráláshoz. Ha nincs elérhető eszköze, használhatja az Azure-beli [virtuális gépeket](../virtual-machines/linux/index.yml).
 * Egy érvényes előfizetéssel rendelkező Azure-fiók. Ha nem rendelkezik Azure- [előfizetéssel](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 * Ingyenes vagy standard szintű [IoT hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* Azure CLI v 2.3.1 Az Azure IoT Extension v 0.10.6 vagy újabb verziójával. Ez az oktatóanyag a [Azure Cloud Shell](../cloud-shell/overview.md)használja. Ha nem ismeri a Azure Cloud Shell, a [részletekért tekintse meg a](./quickstart-linux.md#use-azure-cloud-shell)rövid útmutatót.
+* Azure CLI v 2.3.1 Az Azure IoT Extension v 0.10.6 vagy újabb verziójával. Ez az oktatóanyag a [Azure Cloud Shell](../cloud-shell/overview.md)használja. Ha nem ismeri a Azure Cloud Shell, a [részletekért tekintse meg a](./quickstart-linux.md#prerequisites)rövid útmutatót.
 
 Ezt a forgatókönyvet úgy is kipróbálhatja, hogy a megírt [Azure IoT Edge az ipari IoT minta](https://aka.ms/iotedge-nested-sample)alapján, amely az Azure-beli virtuális gépeket előre konfigurált eszközökként helyezi üzembe a gyári környezet szimulálása érdekében.
 

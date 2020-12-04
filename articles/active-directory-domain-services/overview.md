@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/14/2020
+ms.date: 12/03/2020
 ms.author: joflore
 ms.custom: contperfq1
-ms.openlocfilehash: 988119c34ab0a8ef0e20ec86a7552fb7b4643cd1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d8d709590345982479301f25601fae25fa6f4fae
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967987"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571861"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Mi az Azure Active Directory Domain Services?
 
@@ -33,7 +33,7 @@ Az Azure AD DS integrálható a meglévő Azure AD-Bérlővel. Ez az integráci�
 
 Azure AD DS felügyelt tartomány létrehozásakor egyedi névteret határozhat meg. Ez a névtér a tartomány neve, például *aaddscontoso.com*. Ezután két Windows Server-tartományvezérlőt (DCs) telepítünk a kiválasztott Azure-régióba. A tartományvezérlők ezt a központi telepítését replikakészlet néven nevezzük.
 
-Ezeket a tartományvezérlőket nem kell kezelnie, konfigurálnia vagy frissítenie. Az Azure platform kezeli a tartományvezérlőket a felügyelt tartomány részeként, beleértve a biztonsági mentéseket is.
+Ezeket a tartományvezérlőket nem kell kezelnie, konfigurálnia vagy frissítenie. Az Azure platform kezeli a tartományvezérlőket a felügyelt tartomány részeként, beleértve a biztonsági mentéseket és a titkosítást a Azure Disk Encryption használatával.
 
 A felügyelt tartomány úgy van konfigurálva, hogy egyirányú szinkronizálást végezzen az Azure AD-ből, hogy hozzáférést biztosítson a felhasználók, csoportok és hitelesítő adatok központi készletéhez. Erőforrásokat közvetlenül a felügyelt tartományban hozhat létre, de nem szinkronizálja őket az Azure AD-vel. Az Azure-ban a felügyelt tartományhoz csatlakozó alkalmazások, szolgáltatások és virtuális gépek olyan általános AD DS szolgáltatásokat használhatnak, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP és a Kerberos/NTLM hitelesítés.
 
@@ -84,7 +84,7 @@ A felügyelt tartomány néhány kulcsfontosságú aspektusa a következőket fo
 
 A helyszíni AD DSt futtató hibrid környezetek esetében nem szükséges az AD-replikáció kezelése a felügyelt tartományhoz. A helyszíni címtárból származó felhasználói fiókok, csoporttagság és hitelesítő adatok az Azure AD-vel [Azure ad Connecton][azure-ad-connect]keresztül szinkronizálhatók. Ezek a felhasználói fiókok, csoporttagság és hitelesítő adatok automatikusan elérhetők a felügyelt tartományon belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az Azure AD DS más identitási megoldásokkal való összehasonlításáról és a szinkronizálás működéséről, tekintse meg a következő cikkeket:
 

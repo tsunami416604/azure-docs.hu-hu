@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/23/2020
+ms.date: 12/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 29033cbabfcfa00c9f8458cbc161af67df5806cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21b1004a347dec3a7f2a6460d8b853350bf36ff0
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325963"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571045"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Nagy teljesítményű számítástechnikai VM-méretek
 
@@ -40,7 +40,7 @@ A HPC VM-méretek többsége (HBv2, HB, HC, H16r, H16mr, A8 és A9) egy hálóza
 Ez az interfész lehetővé teszi, hogy a RDMA-kompatibilis példányok InfiniBand-(IB-) hálózaton keresztül kommunikáljanak, a HBv2 HDR-díjszabása, a HB, az HC, a NDv2, a FDR díjszabása pedig a H16r, a H16mr és más RDMA-kompatibilis N sorozatú virtuális gépek esetében, valamint az A8-as és A9-es VM-EK QDR-díja. Ezek a RDMA-képességek növelhetik bizonyos Message Passing Interface-(MPI-) alkalmazások méretezhetőségét és teljesítményét.
 
 > [!NOTE]
-> Az Azure HPC-ben a virtuális gépek két osztálya van attól függően, hogy az SR-IOV engedélyezve van-e a InfiniBand. Jelenleg a InfiniBand-kompatibilis virtuális gépek SR-IOV a következők: HBv2, HB, HC, NCv3 és NDv2. A InfiniBand-kompatibilis virtuális gépek többi része jelenleg nincs engedélyezve az SR-IOV.
+> Az Azure HPC-ben a virtuális gépek két osztálya van attól függően, hogy az SR-IOV engedélyezve van-e a InfiniBand. Jelenleg szinte minden újabb generációs, RDMA-kompatibilis vagy InfiniBand-kompatibilis virtuális gép az Azure-ban az SR-IOV engedélyezve van, kivéve a H16r, a H16mr, a NC24r, az A8 és az A9-es verzióját.
 > A RDMA csak a InfiniBand (IB) hálózaton keresztül engedélyezett, és minden RDMA-kompatibilis virtuális gép esetében támogatott.
 > Az IB protokollon keresztüli IP-cím csak az SR-IOV-kompatibilis virtuális gépeken támogatott.
 > A RDMA nincs engedélyezve az Ethernet-hálózaton keresztül.
@@ -55,7 +55,7 @@ Ez az interfész lehetővé teszi, hogy a RDMA-kompatibilis példányok InfiniBa
 
    A virtuálisgép-bővítmény virtuális géphez való hozzáadásához [Azure PowerShell](/powershell/azure/) parancsmagokat használhat. További információ: [virtuálisgép-bővítmények és-szolgáltatások](./extensions/overview.md). A [klasszikus üzemi modellben](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)üzembe helyezett virtuális gépek bővítményei is használhatók.
 
-- **MPI** – az SR-IOV engedélyezett virtuálisgép-méretek az Azure-ban (HBV2, HB, HC, NCv3, NDv2) lehetővé teszik szinte bármely MPI-íz használatát a Mellanox OFED. A nem SR-IOV-kompatibilis virtuális gépeken támogatott MPI-implementációk a Microsoft Network Direct (ND) felületet használják a virtuális gépek közötti kommunikációhoz. Ezért csak a Microsoft MPI (MS-MPI) 2012 R2 vagy újabb, illetve az Intel MPI 5. x verziói támogatottak. Az Intel MPI runtime library újabb verziói (2017, 2018) vagy esetleg nem kompatibilisek az Azure RDMA-illesztőprogramokkal. További részletekért lásd: az [MPI](./workloads/hpc/setup-mpi.md) beállítása a HPC-hez az Azure-beli HPC-alapú virtuális gépeken.
+- **MPI** – az SR-IOV-kompatibilis virtuálisgép-méretek az Azure-ban szinte bármely, az MPI-hez tartozó MELLANOX-OFED használható. A nem SR-IOV-kompatibilis virtuális gépeken támogatott MPI-implementációk a Microsoft Network Direct (ND) felületet használják a virtuális gépek közötti kommunikációhoz. Ezért csak a Microsoft MPI (MS-MPI) 2012 R2 vagy újabb, illetve az Intel MPI 5. x verziói támogatottak. Az Intel MPI runtime library újabb verziói (2017, 2018) vagy esetleg nem kompatibilisek az Azure RDMA-illesztőprogramokkal. További részletekért lásd: az [MPI](./workloads/hpc/setup-mpi.md) beállítása a HPC-hez az Azure-beli HPC-alapú virtuális gépeken.
 
 - **RDMA hálózati címtartomány** – az Azure RDMA-hálózata fenntartja a 172.16.0.0/16 címtartomány méretét. Ha az MPI-alkalmazásokat egy Azure-beli virtuális hálózaton üzembe helyezett példányokon szeretné futtatni, győződjön meg arról, hogy a virtuális hálózati címtartomány nem fedi át a RDMA-hálózatot.
 
@@ -100,7 +100,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 - [GPU-optimalizált](sizes-gpu.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [virtuális gépek konfigurálásáról, a](./workloads/hpc/configure.md) [InfiniBand engedélyezéséről](./workloads/hpc/enable-infiniband.md), az [MPI beállításáról](./workloads/hpc/setup-mpi.md) és az Azure-hoz készült HPC-alkalmazások optimalizálásáról a [HPC-munkaterhelések](./workloads/hpc/overview.md)esetében.
 - Olvassa el a legújabb bejelentéseket és néhány HPC-példát, valamint az eredményeket az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).

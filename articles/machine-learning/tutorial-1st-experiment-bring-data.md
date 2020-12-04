@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 123e55202de8a33bca88afcfd1f0dc0c7edeae77
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 52b46d67d745017237a8c648abed66e2693d9d6a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320091"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573017"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Oktatóanyag: saját adatai használata (4. rész)
 
@@ -45,6 +45,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 * Python (3,5-3,7-es verzió).
 
 ## <a name="adjust-the-training-script"></a>A betanítási parancsfájl módosítása
+
 Mostantól a Azure Machine Learning futó betanítási szkriptet (oktatóanyag/src/Train. Másolás) futtatja, és nyomon követheti a modell teljesítményét. Parametrizálja a betanítási szkriptet argumentumok bevezetésével. Az argumentumok használata lehetővé teszi a különböző hiperparaméterek beállítása egyszerű összehasonlítását.
 
 A betanítási szkript most úgy van beállítva, hogy a CIFAR10-adatkészletet minden futtatáskor letöltse. A következő Python-kód lett kialakítva, hogy beolvassa a címtárból származó adatok olvasását.
@@ -52,81 +53,7 @@ A betanítási szkript most úgy van beállítva, hogy a CIFAR10-adatkészletet 
 >[!NOTE] 
 > A `argparse` szkript felparaméterezi használata.
 
-```python
-# tutorial/src/train.py
-import os
-import argparse
-import torch
-import torch.optim as optim
-import torchvision
-import torchvision.transforms as transforms
-
-from model import Net
-from azureml.core import Run
-
-run = Run.get_context()
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--data_path', type=str, help='Path to the training data')
-    parser.add_argument('--learning_rate', type=float, default=0.001, help='Learning rate for SGD')
-    parser.add_argument('--momentum', type=float, default=0.9, help='Momentum for SGD')
-    args = parser.parse_args()
-    
-    print("===== DATA =====")
-    print("DATA PATH: " + args.data_path)
-    print("LIST FILES IN DATA PATH...")
-    print(os.listdir(args.data_path))
-    print("================")
-    
-    # prepare DataLoader for CIFAR10 data
-    transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
-    trainset = torchvision.datasets.CIFAR10(
-        root=args.data_path,
-        train=True,
-        download=False,
-        transform=transform,
-    )
-    trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
-
-    # define convolutional network
-    net = Net()
-
-    # set up pytorch loss /  optimizer
-    criterion = torch.nn.CrossEntropyLoss()
-    optimizer = optim.SGD(
-        net.parameters(),
-        lr=args.learning_rate,
-        momentum=args.momentum,
-    )
-
-    # train the network
-    for epoch in range(2):
-
-        running_loss = 0.0
-        for i, data in enumerate(trainloader, 0):
-            # unpack the data
-            inputs, labels = data
-
-            # zero the parameter gradients
-            optimizer.zero_grad()
-
-            # forward + backward + optimize
-            outputs = net(inputs)
-            loss = criterion(outputs, labels)
-            loss.backward()
-            optimizer.step()
-
-            # print statistics
-            running_loss += loss.item()
-            if i % 2000 == 1999:
-                loss = running_loss / 2000
-                run.log('loss', loss) # log loss metric to AML
-                print(f'epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}')
-                running_loss = 0.0
-
-    print('Finished Training')
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/code/pytorch-cifar10-your-data/train.py":::
 
 ### <a name="understanding-the-code-changes"></a>A kód módosításainak megismerése
 
@@ -151,8 +78,10 @@ optimizer = optim.SGD(
     momentum=args.momentum,    # get momentum from command-line argument
 )
 ```
+> [!div class="nextstepaction"]
+> [Kiigazítottam a betanítási szkriptet](?success=adjust-training-script#test-locally) [egy hibába ütközött](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script)
 
-## <a name="test-the-script-locally"></a>A parancsfájl helyi tesztelése
+## <a name="test-the-script-locally"></a><a name="test-locally"></a> A parancsfájl helyi tesztelése
 
 A szkript mostantól argumentumként fogadja az _adatelérési utat_ . A-től kezdődően tesztelje helyileg. Adja hozzá az oktatóanyag-címtár struktúrához egy nevű mappát `data` . A címtár struktúrájának a következőhöz hasonlóan kell kinéznie:
 
@@ -182,7 +111,10 @@ python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
 
 Nem kell letöltenie a CIFAR10-adatkészletet az adat helyi elérési útjának átadásával. A _tanulási sebesség_ és a _lendület_ hiperparaméterek beállítása különböző értékeivel is kísérletezhet, anélkül, hogy a betanítási szkriptben kellene őket feldolgoznia.
 
-## <a name="upload-the-data-to-azure"></a>Adatok feltöltése az Azure-ba
+> [!div class="nextstepaction"]
+> [A szkriptet helyileg teszteltem](?success=test-locally#upload) [egy probléma](https://www.research.net/r/7C6W7BQ?issue=test-locally)
+
+## <a name="upload-the-data-to-azure"></a><a name="upload"></a> Adatok feltöltése az Azure-ba
 
 A szkript Azure Machine Learning-ben való futtatásához a betanítási adatait elérhetővé kell tenni az Azure-ban. Az Azure Machine Learning-munkaterület _alapértelmezett_ adattárral van ellátva. Ez egy Azure Blob Storage-fiók, ahol elvégezheti a betanítási adatai tárolását.
 
@@ -191,13 +123,7 @@ A szkript Azure Machine Learning-ben való futtatásához a betanítási adatait
 
 Hozzon létre egy új `05-upload-data.py` , a címtárban nevű Python-vezérlő parancsfájlt `tutorial` :
 
-```python
-# tutorial/05-upload-data.py
-from azureml.core import Workspace
-ws = Workspace.from_config()
-datastore = ws.get_default_datastore()
-datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=True)
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/05-upload-data.py":::
 
 Az `target_path` érték határozza meg az adattároló azon elérési útját, ahol a CIFAR10-adatfeltöltés történik.
 
@@ -209,7 +135,9 @@ Az adatok feltöltéséhez futtassa a Python-fájlt. (A feltöltésnek gyorsnak,
 ```bash
 python 05-upload-data.py
 ```
+
 A következő standard kimenetnek kell megjelennie:
+
 ```txt
 Uploading ./data\cifar-10-batches-py\data_batch_2
 Uploaded ./data\cifar-10-batches-py\data_batch_2, 4 files out of an estimated total of 9
@@ -220,47 +148,14 @@ Uploaded ./data\cifar-10-batches-py\data_batch_5, 9 files out of an estimated to
 Uploaded 9 files
 ```
 
+> [!div class="nextstepaction"]
+> [Feltöltöttem a](?success=upload-data#control-script) [problémákba ütközött](https://www.research.net/r/7C6W7BQ?issue=upload-data)
 
-## <a name="create-a-control-script"></a>Vezérlő parancsfájl létrehozása
+## <a name="create-a-control-script"></a><a name="control-script"></a> Vezérlő parancsfájl létrehozása
 
 Ahogy korábban végzett, hozzon létre egy új, nevű Python-vezérlő parancsfájlt `06-run-pytorch-data.py` :
 
-```python
-# tutorial/06-run-pytorch-data.py
-from azureml.core import Workspace
-from azureml.core import Experiment
-from azureml.core import Environment
-from azureml.core import ScriptRunConfig
-from azureml.core import Dataset
-
-if __name__ == "__main__":
-    ws = Workspace.from_config()
-    
-    datastore = ws.get_default_datastore()
-    dataset = Dataset.File.from_files(path=(datastore, 'datasets/cifar10'))
-
-    experiment = Experiment(workspace=ws, name='day1-experiment-data')
-
-    config = ScriptRunConfig(
-        source_directory='./src',
-        script='train.py',
-        compute_target='cpu-cluster',
-        arguments=[
-            '--data_path', dataset.as_named_input('input').as_mount(),
-            '--learning_rate', 0.003,
-            '--momentum', 0.92],
-        )
-    
-    # set up pytorch environment
-    env = Environment.from_conda_specification(name='pytorch-env',file_path='.azureml/pytorch-env.yml')
-    config.run_config.environment = env
-
-    run = experiment.submit(config)
-    aml_url = run.get_portal_url()
-    print("Submitted to an Azure Machine Learning compute cluster. Click on the link below")
-    print("")
-    print(aml_url)
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/06-run-pytorch-data.py":::
 
 ### <a name="understand-the-code-changes"></a>A kód módosításainak megismerése
 
@@ -283,7 +178,10 @@ A vezérlő parancsfájl hasonló a [sorozat 3. részéből](tutorial-1st-experi
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-the-run-to-azure-machine-learning"></a>A Futtatás beküldése Azure Machine Learningre
+> [!div class="nextstepaction"]
+> [Létrehoztam a vezérlési parancsfájlt](?success=control-script#submit-to-cloud) [, amely egy hibába ütközött](https://www.research.net/r/7C6W7BQ?issue=control-script)
+
+## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-to-cloud"></a> A Futtatás beküldése Azure Machine Learningre
 
 Most küldje el újra a futtatást az új konfiguráció használatára:
 
@@ -293,7 +191,10 @@ python 06-run-pytorch-data.py
 
 Ez a kód egy URL-címet fog kinyomtatni a kísérlethez a Azure Machine Learning Studióban. Ha erre a hivatkozásra kattint, megtekintheti a kód futását.
 
-### <a name="inspect-the-log-file"></a>A naplófájl vizsgálata
+> [!div class="nextstepaction"]
+> [Újraküldöttem a futtatást](?success=submit-to-cloud#inspect-log) [egy hibába](https://www.research.net/r/7C6W7BQ?issue=submit-to-cloud)
+
+### <a name="inspect-the-log-file"></a><a name="inspect-log"></a> A naplófájl vizsgálata
 
 A Studióban nyissa meg a kísérlet futtatását (az előző URL-kimenet kiválasztásával), majd a **kimenetek + naplók** elemet. Válassza ki a `70_driver_log.txt` fájlt. A következő kimenetnek kell megjelennie:
 
@@ -334,13 +235,16 @@ Megjegyzčs
 - A Azure Machine Learning automatikusan csatlakoztatta Blob Storage a számítási fürthöz.
 - A ``dataset.as_named_input('input').as_mount()`` vezérlő parancsfájlban használt érték a csatlakoztatási pontra lesz feloldva.
 
+> [!div class="nextstepaction"]
+> [Megvizsgáltam a naplófájlt](?success=inspect-log#clean-up-resources) [, amely egy hibába ütközött](https://www.research.net/r/7C6W7BQ?issue=inspect-log)
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban láttuk, hogyan tölthetők fel adatok az Azure-ba a használatával `Datastore` . Az adattár Felhőbeli tárolóként szolgál a munkaterülethez, így megőrizheti az adatok megőrzésének állandó és rugalmas helyét.
 

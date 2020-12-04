@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: 4179b06759802025f97bd32a355b788c96c9eddb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a32491453812d74d4bd93f3f97b7e6a32036f65f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123320"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573374"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>A Azure Stream Analytics előzetes verziójának funkciói
 
@@ -22,7 +22,7 @@ Ez a cikk az összes olyan funkciót összegzi, amely jelenleg előzetes verzió
 
 A következő funkciók nyilvános előzetes verzióban érhetők el. Ezeket a funkciókat még ma is kihasználhatja, de nem használhatja azokat az éles környezetben.
 
-### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Hitelesítés SQL Database a kimenet felügyelt identitásokkal
+### <a name="authenticate-to-sql-database-output-with-managed-identities-preview"></a>Hitelesítés SQL Database a kimenet felügyelt identitásokkal (előzetes verzió)
 
 Azure Stream Analytics támogatja a [felügyelt identitások hitelesítését](../active-directory/managed-identities-azure-resources/overview.md) Azure SQL Database kimeneti mosogatók esetében. A felügyelt identitások megszüntetik a felhasználó-alapú hitelesítési módszerek korlátozásait, például a jelszó módosítása miatti újrahitelesítés szükségességét. 
 

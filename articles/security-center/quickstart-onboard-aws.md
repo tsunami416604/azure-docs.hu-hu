@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 7aa65cb8e37ce48a59c276fdf2631f75397d3236
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 23609613cace2f9be90ad5c88d4d51bb1c2f1a9b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122508"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573510"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS-fiókok összekötése Azure Security Center
 
@@ -48,6 +48,8 @@ Az alábbi képernyőképen megtekintheti az AWS-fiókokat Security Center átte
 
 
 ## <a name="connect-your-aws-account"></a>Az AWS-fiók csatlakoztatása
+
+Az AWS Cloud Connector létrehozásához kövesse az alábbi lépéseket. 
 
 ### <a name="step-1-set-up-aws-security-hub"></a>1. lépés Az AWS biztonsági központ beállítása:
 
@@ -160,7 +162,7 @@ Az AWS Systems Manager szükséges a feladatok AWS-erőforrásokon keresztüli a
 
         További információ az Azure-címkék [használatáról címkék használatával az Azure-erőforrások és a felügyeleti hierarchia rendszerezéséhez](../azure-resource-manager/management/tag-resources.md).
 
-### <a name="step-7-confirmation"></a>7. lépés Visszaigazolás
+### <a name="step-6-confirmation"></a>6. lépés Visszaigazolás
 
 Ha az összekötő létrehozása sikeres volt, és az AWS biztonsági központ megfelelően van konfigurálva:
 

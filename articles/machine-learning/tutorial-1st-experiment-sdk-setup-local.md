@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1b4ee9f06e8ed8bd47be1075070dea71b42b1cef
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 05ac0f78345e1c1d7643f24410d53b209ab7c375
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349069"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574156"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Oktatóanyag: a Azure Machine Learning első lépései a fejlesztési környezetben (4. rész)
 
@@ -52,7 +52,10 @@ A leggyakrabban használt eszközöket (például Conda és pip) a jelen oktató
 pip install azureml-sdk
 ```
 
-## <a name="create-a-directory-structure-for-code"></a>Könyvtár-struktúra létrehozása kód számára
+> [!div class="nextstepaction"]
+> [Telepítettem az SDK](?success=install-sdk#dir) - [t egy hibába ütközött](https://www.research.net/r/7C8Z3DN?issue=install-sdk)
+
+## <a name="create-a-directory-structure-for-code"></a><a name="dir"></a>Könyvtár-struktúra létrehozása kód számára
 Javasoljuk, hogy az oktatóanyaghoz az alábbi egyszerű címtár-struktúrát állítsa be:
 
 ```markdown
@@ -63,7 +66,11 @@ tutorial
 - `tutorial`: A projekt legfelső szintű könyvtára.
 - `.azureml`: Rejtett alkönyvtár a Azure Machine Learning konfigurációs fájljainak tárolásához.
 
-## <a name="create-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterület létrehozása
+
+> [!div class="nextstepaction"]
+> [Létrehoztam egy könyvtárat](?success=create-dir#workspace) , amely egy [hibába ütközött](https://www.research.net/r/7C8Z3DN?issue=create-dir)
+
+## <a name="create-an-azure-machine-learning-workspace"></a><a name="workspace"></a>Azure Machine Learning-munkaterület létrehozása
 
 A munkaterület a Azure Machine Learning legfelső szintű erőforrása, és központi hely a következőhöz:
 
@@ -119,7 +126,10 @@ A fájl `.azureml/config.json` tartalmazza a Azure Machine learning-munkaterüle
 >
 > A Azure Machine Learning-munkaterülettel való interakcióhoz továbbra is szükséges a hitelesítés.
 
-## <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning számítási fürt létrehozása
+> [!div class="nextstepaction"]
+> [Egy olyan munkaterületet hoztam létre](?success=create-workspace#cluster) [, amely egy hibába ütközött](https://www.research.net/r/7C8Z3DN?issue=create-workspace)
+
+## <a name="create-an-azure-machine-learning-compute-cluster"></a><a name="cluster"></a> Azure Machine Learning számítási fürt létrehozása
 
 Hozzon létre egy Python-szkriptet a `tutorial` legfelső szintű címtárban `02-create-compute.py` . Töltse fel a következő kóddal, hogy létrehozzon egy Azure Machine Learning számítási fürtöt, amely a nulla és négy csomópont között automatikusan méretezhető:
 
@@ -168,7 +178,10 @@ tutorial
 └──02-create-compute.py
 ```
 
-## <a name="next-steps"></a>Következő lépések
+> [!div class="nextstepaction"]
+> [Létrehoztam egy számítási fürtöt](?success=create-compute-cluster#next-steps) [, amely egy hibába ütközött](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
+
+## <a name="next-steps"></a>További lépések
 
 Ebben a beállítási oktatóanyagban a következőket teheti:
 

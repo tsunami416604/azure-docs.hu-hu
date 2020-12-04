@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: bcb8cc6da3d2fc631058386103575549e376a32c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4e256d97d055b56df8c917c841416e5c7eb52465
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452151"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573527"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Azure-alkalmazás ajánlatának megtervezése a kereskedelmi piactéren
 
@@ -120,7 +120,7 @@ Amikor új Azure-alkalmazást hoz létre a partner Centerben, szöveget, képet,
 4. Használati feltételek
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Összegzés
+7. Összefoglalás
 8. Description
 9. Képernyőképek/videók
 
@@ -210,7 +210,7 @@ Erre a konfigurációra akkor van szükség, ha a [Batch-használati eseményt](
 Dönthet úgy, hogy a Microsoft által támogatott marketing-és értékesítési csatornákat is bekapcsolja. Ha az ajánlatot a partner Centerben hozza létre, két lap jelenik meg a folyamat vége felé:
 
 - **Viszonteladás a CSP**-n keresztül: ezzel a beállítással engedélyezheti, hogy a Microsoft Cloud-szolgáltatói (CSP) partnerek egy csomagban lévő ajánlat részeként eladják a megoldást. További információért lásd a [Cloud Solution Provider programot](./cloud-solution-providers.md) .
-- **Közös értékesítés a Microsofttal**: Ez a beállítás lehetővé teszi, hogy a Microsoft értékesítési csapatai az ügyfelek igényeinek kiértékelése során fontolják meg az Ön IP-címének közös értékesítését. Az ajánlat értékelésre való előkészítésével kapcsolatos részletes információkért lásd: [közös értékesítés lehetőség a partner Centerben](partner-center-portal/commercial-marketplace-co-sell.md) . Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](cloud-solution-providers.md)című témakört.
+- **Közös értékesítés a Microsofttal**: Ez a beállítás lehetővé teszi, hogy a Microsoft értékesítési csapatai az ügyfelek igényeinek kiértékelése során fontolják meg az Ön IP-címének közös értékesítését. Az ajánlat értékelésre való előkészítésével kapcsolatos részletes információkért lásd: [közös értékesítés lehetőség a partner Centerben](commercial-marketplace-co-sell.md) . Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](cloud-solution-providers.md)című témakört.
 
 További információ: [a felhőalapú üzleti növekedés az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

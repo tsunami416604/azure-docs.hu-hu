@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 12/03/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 21f16a0b9c8b3b603735520d5dcdbf61601e1480
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 89a5838524daa1959ecf6b4fe3c17d6175ca8553
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994825"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571776"
 ---
 # <a name="no-users-are-being-provisioned"></a>Egyetlen felhasználó létrehozása sem történt meg 
 >[!NOTE]
@@ -24,7 +24,7 @@ ms.locfileid: "95994825"
 >
 Miután az automatikus kiépítés konfigurálva lett egy alkalmazáshoz (beleértve annak ellenőrzését, hogy az Azure AD-hoz az alkalmazáshoz való kapcsolódáshoz megadott hitelesítő adatok érvényesek-e), a felhasználók és/vagy csoportok pedig az alkalmazáshoz vannak kiépítve. Az üzembe helyezést a következő dolgok határozzák meg:
 
--   Mely felhasználók és csoportok lettek **hozzárendelve** az alkalmazáshoz. Vegye figyelembe, hogy a beágyazott csoportok vagy Microsoft 365 csoportok kiépítés nem támogatott. További információ a hozzárendelésről: [felhasználó vagy csoport hozzárendelése vállalati alkalmazásokhoz Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md).
+-   Mely felhasználók és csoportok lettek **hozzárendelve** az alkalmazáshoz. Vegye figyelembe, hogy a beágyazott csoportok kiépítés nem támogatott. További információ a hozzárendelésről: [felhasználó vagy csoport hozzárendelése vállalati alkalmazásokhoz Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md).
 -   Az attribútum- **hozzárendelések** engedélyezve vannak-e, és úgy vannak konfigurálva, hogy az Azure ad-ből az alkalmazáshoz való érvényes attribútumokat szinkronizálják. Az attribútumok hozzárendelésével kapcsolatos további információkért lásd: a [felhasználói kiépítési attribútumok leképezésének testreszabása az SaaS-alkalmazásokhoz Azure Active Directoryban](customize-application-attributes.md).
 -   Azt határozza meg, hogy van-e olyan **hatóköri szűrő** , amely adott attribútumérték alapján szűri a felhasználókat. A szűrők hatókörével kapcsolatos további információkért lásd: [attribútum-alapú alkalmazás kiépítés hatókör-szűrőkkel](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
   

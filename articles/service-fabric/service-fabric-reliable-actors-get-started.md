@@ -1,17 +1,15 @@
 ---
 title: Actor-alapú szolgáltatás létrehozása az Azure Service Fabric
 description: Megtudhatja, hogyan hozhat létre, kereshet és helyezhet üzembe első Actor-alapú szolgáltatást a C#-ban Service Fabric Reliable Actors használatával.
-author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f775608c6c349c93a43ef4aef26ad50707cd39b7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 225ccb67153a33ed47af68ebb1549dce37426278
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023618"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573461"
 ---
 # <a name="getting-started-with-reliable-actors"></a>A Reliable Actors első lépései
 > [!div class="op_single_selector"]

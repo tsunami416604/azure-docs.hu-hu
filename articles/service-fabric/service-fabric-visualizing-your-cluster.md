@@ -1,16 +1,14 @@
 ---
 title: A fürt megjelenítése az Azure Service Fabric Explorer használatával
 description: Service Fabric Explorer egy Microsoft Azure Service Fabric-fürtön futó felhőalapú alkalmazások és csomópontok vizsgálatára és felügyeletére szolgáló alkalmazás.
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: mikhegn
-ms.openlocfilehash: 5627aa614a7e2819b6f3cc1401c8458552e57219
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a45aff305f97610cb2660c2e3f4b4427b905d7d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085173"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574055"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
 
@@ -133,7 +131,7 @@ A következő műveletek lehetségesek:
 * Egy partíció aktiválását és nyomon követését.
 
 A biztonsági mentési és visszaállítási szolgáltatással kapcsolatos további információkért tekintse meg a [REST API referenciát](/rest/api/servicefabric/sfclient-index-backuprestore).
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)
 * [Service Fabric alkalmazás központi telepítése a PowerShell használatával](service-fabric-deploy-remove-applications.md)
 

@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 3a20b69189226486de8cfceb95e2fa79a976cb12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a30a42e8a8c4049b53274da512089dd29965e775
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841033"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573153"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>A Azure Load Balancer újdonságai
 
@@ -29,23 +29,23 @@ Itt megtalálhatja a legújabb Azure Load Balancer frissítéseket, és feliratk
 
 | Típus |Név |Leírás  |Hozzáadás dátuma  |
 | ------ |---------|---------|---------|
-| Szolgáltatás | Az erőforrás-csoportok közötti áthelyezés támogatása | A standard Load Balancer és a standard szintű nyilvános IP-cím támogatása az [erőforráscsoport áthelyezéséhez](https://azure.microsoft.com/updates/standard-resource-group-move/). | Október 2020 |
-| Szolgáltatás | Az IP-alapú háttér-készlet felügyeletének támogatása (előzetes verzió) | Azure Load Balancer támogatja az erőforrások hozzáadását és eltávolítását egy háttérbeli készletből IPv4-vagy IPv6-címek használatával. Ez lehetővé teszi a tárolók, a virtuális gépek és a Load Balancerhoz társított virtuálisgép-méretezési csoportok egyszerű kezelését. Azt is lehetővé teszi, hogy az IP-címek a háttérbeli készlet részeként legyenek fenntartva a társított erőforrások létrehozása előtt. További információt [itt](backend-pool-management.md) talál|2020. július |
-| Szolgáltatás| A Azure Monitor használatával Azure Load Balancer a bepillantást | A hálózatok Azure Monitorának részeként az ügyfelek mostantól rendelkeznek topológiai térképekkel az összes Load Balancer-konfigurációhoz és az állapot irányítópulthoz az Azure Portal metrikákkal előre konfigurált standard Load Balancerekhez. [Első lépések és további információ](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | 2020. június |
+| Funkció | Az erőforrás-csoportok közötti áthelyezés támogatása | A standard Load Balancer és a standard szintű nyilvános IP-cím támogatása az [erőforráscsoport áthelyezéséhez](https://azure.microsoft.com/updates/standard-resource-group-move/). | 2020. október |
+| Funkció | Az IP-alapú háttér-készlet felügyeletének támogatása (előzetes verzió) | Azure Load Balancer támogatja az erőforrások hozzáadását és eltávolítását egy háttérbeli készletből IPv4-vagy IPv6-címek használatával. Ez lehetővé teszi a tárolók, a virtuális gépek és a Load Balancerhoz társított virtuálisgép-méretezési csoportok egyszerű kezelését. Azt is lehetővé teszi, hogy az IP-címek a háttérbeli készlet részeként legyenek fenntartva a társított erőforrások létrehozása előtt. További információt [itt](backend-pool-management.md) talál|2020. július |
+| Funkció| A Azure Monitor használatával Azure Load Balancer a bepillantást | A hálózatok Azure Monitorának részeként az ügyfelek mostantól rendelkeznek topológiai térképekkel az összes Load Balancer-konfigurációhoz és az állapot irányítópulthoz az Azure Portal metrikákkal előre konfigurált standard Load Balancerekhez. [Első lépések és további információ](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | 2020. június |
 | Érvényesítés | A HA-portok érvényesítésének hozzáadása | Az érvényesítés hozzá lett adva annak biztosításához, hogy ha a lebegőpontos IP-cím engedélyezve van, akkor a HA portra vonatkozó szabályok és a nem szükséges portszabályok nem konfigurálhatók. Korábban ez a konfiguráció áthalad, de nem a kívánt módon működik. Nem történt változás a funkcionalitásban. További információt [itt](load-balancer-ha-ports-overview.md#limitations) talál| 2020. június |
-| Szolgáltatás| IPv6-támogatás a Azure Load Balancerhoz (általánosan elérhető) | Az Azure Load Balancer előtérben az IPv6-címek is megadhatók. Itt megtudhatja, hogyan [hozhat létre Dual stack-alkalmazást](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |2020. április|
-| Szolgáltatás| A TCP alaphelyzetbe állítása üresjárati időkorláton (általánosan elérhető)| A TCP-visszaállítók használatával kiszámítható alkalmazások viselkedése hozható létre. [További információ](load-balancer-tcp-reset.md)| 2020. február |
+| Funkció| IPv6-támogatás a Azure Load Balancerhoz (általánosan elérhető) | Az Azure Load Balancer előtérben az IPv6-címek is megadhatók. Itt megtudhatja, hogyan [hozhat létre Dual stack-alkalmazást](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |2020. április|
+| Funkció| A TCP alaphelyzetbe állítása üresjárati időkorláton (általánosan elérhető)| A TCP-visszaállítók használatával kiszámítható alkalmazások viselkedése hozható létre. [További információ](load-balancer-tcp-reset.md)| 2020. február |
 
 ## <a name="known-issues"></a>Ismert problémák
 
 A termékcsoport aktívan dolgozik a következő ismert problémák megoldásán:
 
-|Probléma |Leírás  |Kockázatcsökkentés  |
+|Probléma |Description  |Kockázatcsökkentés  |
 | ---------- |---------|---------|
-| Log Analytics exportálás | Log Analytics nem exportálhatja a standard Load Balancer metrikáit és az alapszintű Load Balancerhoz tartozó állapot-mintavételi eseménynaplókat.  | [Használja Azure monitor a többdimenziós metrikák számára a standard Load Balancer](load-balancer-standard-diagnostics.md). Habár nem tudja használni a Log Analytics a figyeléshez, Azure Monitor a többdimenziós metrikák gazdag készletének vizualizációját biztosítja. Az előre konfigurált mérőszámok irányítópultot a Load Balancer elemzések alpaneljén keresztül is kihasználhatja. Ha az alapszintű Load Balancer az üzemi szintű mérőszámok figyelése standard szintre való [frissítését](upgrade-basic-standard.md) használja.
+| Load Balancer a riasztási esemény és az állapot-mintavételi állapot naplófájljai | A naplózás nem működik Load Balancer riasztási eseményekre az alapszintű és a standard Load Balancer, illetve az alapszintű Load Balancer állapotának eseménynaplói esetében.  | [Használja Azure monitor a többdimenziós metrikák számára a standard Load Balancer](load-balancer-standard-diagnostics.md). Azure Monitor a többdimenziós metrikák olyan gazdag készletét biztosítja, amely naplóként is exportálható. Az előre konfigurált mérőszámok irányítópultot a Load Balancer elemzések alpaneljén keresztül is kihasználhatja. Ha az alapszintű Load Balancer az üzemi szintű mérőszámok figyelése standard szintre való [frissítését](upgrade-basic-standard.md) használja.
 
   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Load Balancerről: [Mi az Azure Load Balancer?](load-balancer-overview.md) és [Gyakori kérdések](load-balancer-faqs.md).

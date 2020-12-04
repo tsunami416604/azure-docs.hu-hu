@@ -1,7 +1,7 @@
 ---
 title: A Azure Active Directory külső identitások újdonságai
 description: Új és frissített dokumentáció a Azure Active Directory külső identitások számára.
-ms.date: 11/10/2020
+ms.date: 12/03/2020
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: f7c296b4a5bed0c3e599f59e9f0461295b86f197
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 35fa6909160ca707035ee9fc599e4035c2ae7981
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550094"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573901"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory külső identitások: Újdonságok
 
 Üdvözli a Azure Active Directory külső identitások dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. A külső identitások szolgáltatás újdonságait itt tekintheti meg: a [Azure Active Directory újdonságai](../fundamentals/whats-new.md).
+
+## <a name="november-2020"></a>2020. november
+
+### <a name="updated-articles"></a>Frissített cikkek
+- [Microsoft 365 külső megosztási és Azure Active Directory (Azure AD) B2B együttműködés](o365-external-user.md)
+- [Hozzáférés biztosítása helyben kezelt partnerfiókoknak felhőbeli erőforrásokhoz az Azure AD vállalatközi együttműködéssel](hybrid-on-premises-to-cloud.md)
+- [Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai](user-properties.md)
+
 
 ## <a name="october-2020"></a>2020. október
 

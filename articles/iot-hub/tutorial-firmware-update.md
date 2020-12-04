@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 432cc733ee31bdaa18d555d9a6aeb6aee9879a44
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748526"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572337"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Oktatóanyag: Eszközök belsővezérlőprogram-frissítési folyamatának implementálása
 
@@ -38,11 +38,9 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > * Szimulálja a belsővezérlőprogram-frissítési folyamatot egy eszközön.
 > * Állapotfrissítéseket fogad az eszközről a belsővezérlőprogram-frissítés előrehaladtával.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 A rövid útmutatóban futtatott két mintaalkalmazás a Node.js használatával készült. A fejlesztői gépen Node.js v10. x. x vagy újabb verzió szükséges.
 
@@ -195,7 +193,7 @@ Mivel az automatikus eszköz-konfigurációk a létrehozáskor futnak, majd öt 
 
 ![A konfiguráció megtekintése a portálon](./media/tutorial-firmware-update/portalview.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a következő oktatóanyagot is el kívánja végezni, ne távolítsa el az erőforráscsoportot és az IoT-központot, mert ezeket később újból használhatja.
 
@@ -208,7 +206,7 @@ Ha szeretné, a CLI-t is használhatja:
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan implementálható a csatlakoztatott eszközök belsővezérlőprogram-frissítési folyamata. Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan használható az Azure IoT Hub Portal-eszközök és az Azure CLI-parancsok az eszközök kapcsolatának teszteléséhez.
 
