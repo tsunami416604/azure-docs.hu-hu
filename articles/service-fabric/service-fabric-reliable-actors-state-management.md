@@ -1,17 +1,15 @@
 ---
 title: Reliable Actors állapot kezelése
 description: Leírja, hogy Reliable Actors állapot felügyelt, megőrzött és replikálható a magas rendelkezésre állás érdekében.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d5859886dbd1211f929be1031237f7e7d9b1fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: badfc490f26b71881e7970c2c0be3472abfec25a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89611712"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575601"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors állapot kezelése
 A Reliable Actors egyszálas objektumok, amelyek logika és állapot beágyazására is képesek. Mivel a szereplők Reliable Services futnak, megbízhatóan kezelhetik az állapotot ugyanazon megőrzési és replikációs mechanizmusok használatával. Így a szereplők nem veszítik el az állapotukat a meghibásodások után, az újraaktiválást követően, vagy a fürt csomópontjai között, erőforrás-kiegyensúlyozás vagy-verziófrissítés miatt.
@@ -23,7 +21,7 @@ Bár a szereplők állapot-nyilvántartónak minősülnek, ez nem jelenti azt, h
 
 * Megőrzött **állapot**: a rendszer megőrzi az állapotot a lemezen, és három vagy több replikára replikálja. A megőrzött állapot a legtartós állapotú tárolási lehetőség, ahol az állapot a teljes fürt kimaradásán keresztül maradhat.
 * **Illékony állapot**: az állapot három vagy több replikára replikálódik, és csak a memóriában marad. A felejtő állapot rugalmasságot biztosít a csomópont-meghibásodások és a színészi hibák, valamint a frissítések és az erőforrások kiegyensúlyozása során. Azonban az állapot nem marad a lemezen. Tehát ha az összes replika elvész egyszerre, az állapot is elvész.
-* **Nincs**megőrzött állapot: az állapot nem replikálódik, vagy nincs lemezre írva, csak azokra a résztvevőkre használja, amelyeknek nem kell megbízható állapotot fenntartaniuk.
+* **Nincs** megőrzött állapot: az állapot nem replikálódik, vagy nincs lemezre írva, csak azokra a résztvevőkre használja, amelyeknek nem kell megbízható állapotot fenntartaniuk.
 
 Az adatmegőrzés minden szintje egyszerűen egy másik *szolgáltató* és a szolgáltatás *replikációs* konfigurációja. Azt határozza meg, hogy az állapot a lemezre van-e írva, az állami szolgáltatótól függ – ez az összetevő egy megbízható szolgáltatás, amely az állapotot tárolja. A replikáció attól függ, hogy a szolgáltatás hány replikát telepít. A Reliable Serviceshoz hasonlóan az állami szolgáltató és a replika száma is könnyen beállítható manuálisan. A Actors Framework olyan attribútumot biztosít, amely egy szereplő esetében automatikusan kiválasztja az alapértelmezett állapot-szolgáltatót, és automatikusan létrehozza a replikák számának beállításait, hogy az a következő három adatmegőrzési beállítás egyikét érjen el. A származtatott osztály nem örökli a StatePersistence attribútumot, minden egyes Actor típusnak meg kell adnia a StatePersistence szintjét.
 
@@ -73,7 +71,7 @@ class MyActorImpl extends FabricActor implements MyActor
 Ez a beállítás a memóriában tárolt állapot-szolgáltatót használja, és a replika darabszámát 1-re állítja.
 
 ### <a name="defaults-and-generated-settings"></a>Alapértékek és generált beállítások
-Az attribútum használatakor a `StatePersistence` rendszer automatikusan kijelöli az állami szolgáltatót a futtatáskor, amikor a Actor szolgáltatás elindul. A replika száma azonban a Visual Studio Actor Build eszközeinek fordítási ideje szerint van beállítva. A build-eszközök automatikusan létrehozzák a Actors szolgáltatás *alapértelmezett szolgáltatását* ApplicationManifest.xmlban. A paramétereket a rendszer a **minimális replika méretének** és a **célként megadott replika méretének**beállítására hozza létre.
+Az attribútum használatakor a `StatePersistence` rendszer automatikusan kijelöli az állami szolgáltatót a futtatáskor, amikor a Actor szolgáltatás elindul. A replika száma azonban a Visual Studio Actor Build eszközeinek fordítási ideje szerint van beállítva. A build-eszközök automatikusan létrehozzák a Actors szolgáltatás *alapértelmezett szolgáltatását* ApplicationManifest.xmlban. A paramétereket a rendszer a **minimális replika méretének** és a **célként megadott replika méretének** beállítására hozza létre.
 
 Ezeket a paramétereket manuálisan is módosíthatja. Az `StatePersistence` attribútum minden módosításakor azonban a paraméterek a kiválasztott attribútum alapértelmezett replikakészlet-méret értékeire vannak beállítva `StatePersistence` , felülbírálva a korábbi értékeket. Más szóval a ServiceManifest.xmlban megadott értékek *csak* a létrehozáskor vannak felülbírálva, amikor megváltoztatja az `StatePersistence` attribútumérték értékét.
 
@@ -117,7 +115,7 @@ Egyértelmű szabályzattal kell rendelkeznie az állapot méretének kezelésé
  
 Ha azt tapasztalja, hogy egy Actor szolgáltatás adatbázis-fájljának mérete meghaladja a várt méretet, ügyeljen arra, hogy a fenti irányelveket követi. Ha követi ezeket az irányelveket, és továbbra is az adatbázis fájlméretével kapcsolatos problémákat tapasztal, [egy támogatási jegyet kell megnyitnia](service-fabric-support.md) a termék csapatával, hogy segítséget kapjon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Reliable Actorsban tárolt állapotot szerializálni kell a lemezre írás előtt, és a magas rendelkezésre állás érdekében replikálni kell őket. További információ a [Actor típusú szerializálásról](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 

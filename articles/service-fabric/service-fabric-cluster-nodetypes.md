@@ -4,13 +4,12 @@ description: Ismerje meg, hogyan kapcsolódnak az Azure Service Fabric Node-típ
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.custom: sfrev
-ms.openlocfilehash: 870467760a2baaa887b06fb8e01335f225f04d6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7df7ed9fa1f872cd9554dcf4c8880b7c9d5e53c4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561890"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576400"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric Node-típusok és virtuálisgép-méretezési csoportok
 
@@ -18,7 +17,7 @@ A [virtuálisgép-méretezési](../virtual-machine-scale-sets/index.yml) csoport
 
 A Service Fabric Runtime a *Microsoft. Azure. ServiceFabric* virtuálisgép-bővítmény által a méretezési csoportba tartozó egyes virtuális gépekre van telepítve. Az egyes csomópont-típusok egymástól függetlenül méretezhetők, az egyes fürtcsomópontokon futó operációs rendszerbeli SKU-t módosíthatja, különböző portokat nyithat meg, és különböző kapacitási metrikákat használhat.
 
-Az alábbi ábra egy olyan fürtöt mutat be, amely két csomópontos típust tartalmaz: *előtér és* *háttér*neve. Mindegyik csomópont típusa öt csomóponttal rendelkezik.
+Az alábbi ábra egy olyan fürtöt mutat be, amely két csomópontos típust tartalmaz: *előtér és* *háttér* neve. Mindegyik csomópont típusa öt csomóponttal rendelkezik.
 
 ![Két csomóponttal rendelkező fürt][NodeTypes]
 
@@ -30,7 +29,7 @@ Méretezési csoport skálázásakor létrejön egy új példány. Az új méret
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Méretezési készlet terheléselosztása a csomópontok típusaihoz és a méretezési csoportokhoz
 
-Ha központilag telepítette a fürtöt a Azure Portal vagy használta a minta Azure Resource Manager sablont, a rendszer az erőforráscsoport összes erőforrását listázza. Az egyes méretezési csoportokhoz vagy csomópont-típusokhoz tartozó terheléselosztó megtekinthető. A terheléselosztó neve a következő formátumot használja: **LB- &lt; Node Type name &gt; **. Ilyen például az LB-sfcluster4doc-0, ahogy az a következő ábrán látható:
+Ha központilag telepítette a fürtöt a Azure Portal vagy használta a minta Azure Resource Manager sablont, a rendszer az erőforráscsoport összes erőforrását listázza. Az egyes méretezési csoportokhoz vagy csomópont-típusokhoz tartozó terheléselosztó megtekinthető. A terheléselosztó neve a következő formátumot használja: **LB- &lt; Node Type name &gt;**. Ilyen például az LB-sfcluster4doc-0, ahogy az a következő ábrán látható:
 
 ![A képernyőképen egy olyan erőforráscsoport látható, amelyben két terheléselosztó van kiemelve.][Resources]
 
@@ -88,7 +87,7 @@ A tulajdonságok leírása a következő:
 | typeHandlerVersion | 1,1 | A bővítmény verziója. 1,0 a bővítmény klasszikus verziója javasolt a 1,1-es verzióra való frissítésre |
 | dataPath | sztring | Az Service Fabric rendszerszolgáltatások és alkalmazásadatok állapotának mentéséhez használt meghajtó elérési útja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse meg a ["bárhonnan üzembe helyezhető" funkció áttekintését, valamint az Azure által felügyelt fürtökkel való összehasonlítást](service-fabric-deploy-anywhere.md).
 * További információ a [fürt biztonságáról](service-fabric-cluster-security.md).

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: beaa231eddd57e29578a1d69ee30af05ce7c8d0f
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 74f4391fcd071ac510fc66b2f8bc36ec4549dc47
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552889"
+ms.locfileid: "96575754"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adataival kapcsolatos adatelemzések
 
@@ -66,7 +66,7 @@ A hatáskörébe ugyanazokat a besorolásokat (más néven bizalmas adattípusok
 
    A fő **érzékenység címkézése** lap a következő területeket jeleníti meg:
 
-   |Terület  |Leírás  |
+   |Terület  |Description  |
    |---------|---------|
    |**Az érzékenységi címkékkel rendelkező források áttekintése**     |A következőket biztosító csempéket jeleníti meg: <br>– Az adataiban található előfizetések száma. <br>– Az adatain alkalmazott egyedi érzékenységi címkék száma <br>– Az érzékenységi címkékkel rendelkező források száma <br>– Az érzékenységi címkékkel megtalált fájlok és táblák száma|
    |**Legfelső szintű források címkézett adattal (utolsó 30 nap)**     | Megjeleníti az elmúlt 30 napban fellépő trendeket, amelyek az érzékenységi címkékkel rendelkező források számát mutatják.       |
@@ -75,6 +75,7 @@ A hatáskörébe ugyanazokat a besorolásokat (más néven bizalmas adattípusok
    |**Táblákon alkalmazott leggyakoribb feliratok**     | Megjeleníti az adatbázis tábláira alkalmazott legfontosabb érzékenységi címkéket az adataiban. |   
    |  **Címkézési tevékenység**  |  Külön gráfokat jelenít meg a fájlokhoz és táblákhoz, amelyek mindegyike a kiválasztott időkereten megjelenő fájlok vagy táblák számát mutatja. <br>**Alapértelmezett**: 30 nap<br>Válassza ki az **időszűrőt a** gráfok felett, és válasszon egy másik időkeretet.    |
    |    |    |
+
 ## <a name="sensitivity-labeling-insights-drilldown"></a>Érzékenység címkézési részletezés
 
 A további részletekért **tekintse** meg a további részleteket a részletes elemzések **a következővel** :
@@ -98,6 +99,7 @@ További információért tegye a következők valamelyikét:
 |**További részletezés**     | Egy adott címkére való részletezéshez jelöljön ki egy nevet az **érzékenységi címke** oszlopban, és tekintse meg a **címkét a forrás jelentés alapján** . <br><br>Ez a jelentés a kiválasztott címke adatait jeleníti meg, beleértve a forrás nevét, a forrás típusát, az előfizetés AZONOSÍTÓját, valamint a minősített fájlok és táblák számát.      |
 |**Eszközök tallózása**     |  Ha egy adott címkével vagy forrással rendelkező eszközöket szeretne böngészni, jelöljön ki egy vagy több címkét vagy forrást az Ön által megtekintett jelentéstől függően, majd válassza a szűrők alatt található **eszközök tallózása** lehetőséget :::image type="icon" source="media/insights/ico-browse-assets.png" border="false"::: . <br><br>A keresési eredmények megjelenítik a kiválasztott szűrőhöz talált összes címkézett eszközt.  További információ: [Search The Azure hatáskörébe Data Catalog](how-to-search-catalog.md).       |
 | | |
+
 ## <a name="sensitivity-label-integration-with-microsoft-365-compliance"></a>Érzékenységi címke integrációja Microsoft 365 megfelelőséggel
 
 A Microsoft 365 által kínált [Microsoft Information Protection](/microsoft-365/compliance/information-protection) integrációjának lezárása azt jelenti, hogy a hatáskörébe lehetővé teszi, hogy közvetlen módon terjessze ki az adattárházba a láthatóságot, és osztályozza és címkézze fel az adatait.
@@ -106,17 +108,11 @@ Ahhoz, hogy a Microsoft 365 érzékenységi címkét ki lehessen terjeszteni az 
 
 További információ: [az adatok automatikus címkézése az Azure hatáskörébe](create-sensitivity-label.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure-beli hatáskörébe Insight-jelentésekről
-> [!div class="nextstepaction"]
-> [Szószedet-áttekintés](glossary-insights.md)
+További információ ezekről az Azure-beli betekintési jelentésekről:
 
-> [!div class="nextstepaction"]
-> [Az észlelések vizsgálata](scan-insights.md)
-
-> [!div class="nextstepaction"]
-> [Besorolási ismeretek](./classification-insights.md)
-
-> [!div class="nextstepaction"]
-> [Fájlkiterjesztés-felismerések](file-extension-insights.md)
+- [Szószedet-áttekintés](glossary-insights.md)
+- [Az észlelések vizsgálata](scan-insights.md)
+- [Besorolási ismeretek](./classification-insights.md)
+- [Fájlkiterjesztés-felismerések](file-extension-insights.md)

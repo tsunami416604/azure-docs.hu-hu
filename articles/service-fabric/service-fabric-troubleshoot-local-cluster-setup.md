@@ -1,16 +1,14 @@
 ---
 title: A helyi Azure Service Fabric-fürt telepítésének hibáinak megoldása
 description: Ez a cikk a helyi fejlesztési fürttel kapcsolatos hibaelhárítási javaslatok körét ismerteti
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: mikhegn
-ms.openlocfilehash: 76ca0bb7b81b3896538f08ff2ef52ed1ac6b363f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20948cd1626c02d73fb6e9ef096b552bbab627fb
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091606"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575907"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>Helyi fejlesztői fürtkonfiguráció hibaelhárítása
 Ha problémába ütközne a helyi Azure Service Fabric fejlesztői fürttel való interakció során, tekintse át a következő javaslatokat a lehetséges megoldásokról.
@@ -70,7 +68,7 @@ Győződjön meg arról, hogy nem rendelkezik indítási projektként beállíto
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A fürt megismerése és hibakeresése rendszerállapot-jelentésekkel](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 * [A fürt megjelenítése a Service Fabric Explorerrel](service-fabric-visualizing-your-cluster.md)
 

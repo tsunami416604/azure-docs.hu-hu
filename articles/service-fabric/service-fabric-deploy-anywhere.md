@@ -3,13 +3,12 @@ title: Az Azure és az önálló Service Fabric-fürtök áttekintése
 description: Service Fabric-fürtöket a Windows Servert vagy Linuxot futtató virtuális gépeken és számítógépeken is létrehozhat. Ez azt jelenti, hogy minden olyan környezetben telepítheti és futtathatja Service Fabric alkalmazást, ahol a Windows Server vagy Linux rendszerű számítógépek, amelyek egymáshoz kapcsolódnak – helyszíni, Microsoft Azure vagy bármilyen felhőalapú szolgáltatóval.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.custom: sfrev
-ms.openlocfilehash: 8313d75bb6398bbe614c6f56b494079548c99954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d83ec139c367d9a539db173a42ae909f57d5d71a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842597"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576128"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Az Azure és az önálló Service Fabric-fürtök összehasonlítása Windows Serveren és Linuxon
 
@@ -37,7 +36,7 @@ Az Azure-ban integrációt biztosítunk más Azure-funkciókkal és-szolgáltat�
 * A széles körű ügyfél-elérhetőséget az üzemeltetési környezet megkötései kötik.
 * Egy további megbízhatósági réteg és a széleskörű leállások elleni védelem is létezik, mivel a szolgáltatásokat áthelyezheti egy másik központi telepítési környezetbe, ha egy adatközpont vagy egy felhőalapú szolgáltató áramszünet miatt megtalálhatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át az [Azure](service-fabric-azure-clusters-overview.md) -beli Service Fabric-fürtök áttekintését
 * Tekintse át [Service Fabric önálló fürtök](service-fabric-standalone-clusters-overview.md) áttekintését

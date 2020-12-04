@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 27cf5fef027b1e4786c0ff77f9f673bafea15f98
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9ef585d83c0606bedaf4c0a05c6c87fd52423b9a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487269"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575533"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -41,12 +41,14 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |Arab (Bahrein), modern standard  |`ar-BH` | Nyelvi modell                                   |
 |Arab (Egyiptom)                     |`ar-EG` | Nyelvi modell                                   |
 |Arab (Irak)                      |`ar-IQ` | Nyelvi modell                                   |
+|Arab (Izrael)                              |`ar-IL` | Nyelvi modell                                                   |
 |Arab (Jordánia)                    |`ar-JO` | Nyelvi modell                                   |
 |Arab (Kuvait)                    |`ar-KW` | Nyelvi modell                                   |
 |Arab (Libanon)                   |`ar-LB` | Nyelvi modell                                   |
 |Arab (Omán)                      |`ar-OM` | Nyelvi modell                                   |
 |Arab (Katar)                     |`ar-QA` | Nyelvi modell                                   |
 |Arab (Szaúd-Arábia)              |`ar-SA` | Nyelvi modell                                   |
+|Arab (palesztin állam)            |`ar-PS` | Nyelvi modell                                   |
 |Arab (Szíria)                     |`ar-SY` | Nyelvi modell                                   |
 |Arab (Egyesült Arab Emírségek)      |`ar-AE` | Nyelvi modell                                   |
 |Bolgár (Bulgária)               |`bg-BG` | Nyelvi modell                                   |
@@ -64,6 +66,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |Angol (India)                    |`en-IN` | Akusztikai modell<br>Nyelvi modell                 |
 |Angol (Írország)                  |`en-IE` | Nyelvi modell                                   |
 |Angol (Új-Zéland)              |`en-NZ` | Akusztikai modell<br>Nyelvi modell                 |
+|Angol (Nigéria)                          |`en-NG` | Nyelvi modell                                                     |
 |Angol (Fülöp-szigetek)              |`en-PH` | Nyelvi modell                                   |
 |Angol (Szingapúr)                |`en-SG` | Nyelvi modell                                   |
 |Angol (Dél-Afrika)             |`en-ZA` | Nyelvi modell                                   |
@@ -103,6 +106,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |Spanyol (Dominikai Köztársaság)       |`es-DO` | Nyelvi modell                                   |
 |Spanyol (Ecuador)                  |`es-EC` | Nyelvi modell                                   |
 |Spanyol (Salvador)              |`es-SV` | Nyelvi modell                                   |
+|Spanyol (Egyenlítői-Guinea)            |`es-GQ` | Nyelvi modell                                   |
 |Spanyol (Guatemala)                |`es-GT` | Nyelvi modell                                   |
 |Spanyol (Honduras)                 |`es-HN` | Nyelvi modell                                   |
 |Spanyol (Mexikó)                   |`es-MX` | Akusztikai modell<br>Nyelvi modell                 |

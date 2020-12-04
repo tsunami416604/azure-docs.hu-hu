@@ -7,19 +7,20 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/03/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8684b2af99eda00fbba47db444fcf6ee19117a1e
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 296679135063e2c7e1b7f0e3ffd193c8f18c3acf
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488521"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576264"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Felhasználói felügyeleti fejlesztések (előzetes verzió) Azure Active Directory
 
@@ -141,7 +142,7 @@ Mi történik a felhasználók és a vendégek tömeges képességeivel? | A tö
 Mi történt a forrás oszloppal? | A **forrás** oszlopot lecserélték más oszlopokra, amelyek hasonló információt biztosítanak, miközben lehetővé teszi az értékek egymástól független szűrését. Ilyenek például a **Létrehozás típusa**, a **címtárral szinkronizált** és az **identitás kiállítója**.
 Mi történt a Felhasználónév oszloppal? | A **Felhasználónév** oszlop még mindig létezik, de az **egyszerű felhasználónévre** lett átnevezve. Ez jobban megfelel az adott oszlopban található információknak. Azt is láthatja, hogy a teljes egyszerű felhasználónév mostantól megjelenik a B2B vendégek számára. Ez megegyezik azzal, amit az MS Graph-ban fog kapni.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Felhasználói műveletek
 

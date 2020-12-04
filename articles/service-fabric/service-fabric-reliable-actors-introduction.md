@@ -1,17 +1,15 @@
 ---
 title: Service Fabric Reliable Actors áttekintése
 description: Bevezetés a Service Fabric Reliable Actors programozási modellbe a virtuális színész mintája alapján.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: adb15d995cd2a9fd604aa6b91360adc88a2804e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8a7003a69deaf6b74d6fbb8a3cf84b0a78eecf
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89007927"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576383"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors bemutatása
 A Reliable Actors a [virtuális színész](https://research.microsoft.com/en-us/projects/orleans/) mintáján alapuló Service Fabric alkalmazás-keretrendszer. A Reliable Actors API egy egyszálas programozási modellt biztosít, amely a Service Fabric által biztosított méretezhetőségi és megbízhatósági garanciára épül.
@@ -43,7 +41,7 @@ A virtuális színészek élettartamának absztrakciója bizonyos kikötéseket 
 * Bár a Reliable Actors implicit módon hozzon létre Actor objektumokat; lehetősége van arra, hogy explicit módon törölje a szereplőt és annak állapotát.
 
 ## <a name="distribution-and-failover"></a>Terjesztés és feladatátvétel
-A méretezhetőség és a megbízhatóság biztosítása érdekében a Service Fabric a fürtön keresztül osztja el a résztvevőket, és a szükséges módon automatikusan áttelepíti azokat a meghibásodott csomópontokból. Ez egy [particionált, állapot-nyilvántartó megbízható szolgáltatáson](service-fabric-concepts-partitioning.md)alapuló absztrakció. A terjesztést, a méretezhetőséget, a megbízhatóságot és az automatikus feladatátvételt mind az a tény biztosítja, hogy a szereplők egy, a *Actors szolgáltatásnak*nevezett, állapot-nyilvántartó megbízható szolgáltatáson belül futnak.
+A méretezhetőség és a megbízhatóság biztosítása érdekében a Service Fabric a fürtön keresztül osztja el a résztvevőket, és a szükséges módon automatikusan áttelepíti azokat a meghibásodott csomópontokból. Ez egy [particionált, állapot-nyilvántartó megbízható szolgáltatáson](service-fabric-concepts-partitioning.md)alapuló absztrakció. A terjesztést, a méretezhetőséget, a megbízhatóságot és az automatikus feladatátvételt mind az a tény biztosítja, hogy a szereplők egy, a *Actors szolgáltatásnak* nevezett, állapot-nyilvántartó megbízható szolgáltatáson belül futnak.
 
 A szereplők a Actors szolgáltatás partíciói között oszlanak el, és ezek a partíciók a Service Fabric-fürt csomópontjai között oszlanak meg. Minden szolgáltatás-partíció tartalmaz egy készletet. Service Fabric kezeli a szolgáltatási partíciók eloszlását és feladatátvételét.
 
@@ -111,7 +109,7 @@ A turn egy Actor metódus teljes végrehajtását jelenti, amely a többi részt
 
 A szereplők futtatókörnyezete kikényszeríti a Turn-alapú párhuzamosságot azáltal, hogy egy fordulat elején beszerezz egy színészi zárolást, és a turn végén kiszabadítja a zárolást. Ennek megfelelően a turn-based Egyidejűség kikényszeríthető egy színészi alapon, és nem a szereplők között. A színészi metódusok és az időzítő/emlékeztető visszahívásai a különböző szereplők nevében egyidejűleg hajthatók végre.
 
-Az alábbi példa szemlélteti a fenti fogalmakat. Vegyünk egy olyan színészi típust, amely két aszinkron módszert valósít meg (mondjuk, *Method1* és *Method2*), egy időzítőt és egy emlékeztetőt. Az alábbi ábrán egy példa látható a metódusok végrehajtásához és a visszahívásokhoz két, a*ActorId1* és a *ActorId2*tartozó résztvevő nevében.
+Az alábbi példa szemlélteti a fenti fogalmakat. Vegyünk egy olyan színészi típust, amely két aszinkron módszert valósít meg (mondjuk, *Method1* és *Method2*), egy időzítőt és egy emlékeztetőt. Az alábbi ábrán egy példa látható a metódusok végrehajtásához és a visszahívásokhoz két, a *ActorId1* és a *ActorId2* tartozó résztvevő nevében.
 
 ![Reliable Actors Runtime turn-based Egyidejűség és hozzáférés][1]
 
@@ -124,9 +122,9 @@ Ez az ábra a következő konvenciókat követi:
 
 Néhány fontos szempontot figyelembe kell venni:
 
-* Míg a *Method1* a *ActorId2* nevében hajtja végre az ügyfél kérésére *xyz789*, egy másik ügyfél-kérelem (*abc123*) érkezik, amely megköveteli, hogy *a Method1 is*végrehajtsa a *ActorId2* . A *Method1* második végrehajtása azonban addig nem kezdődik meg, amíg az előző végrehajtás nem fejeződött be. Hasonlóképpen, a *ActorId2* által regisztrált emlékeztető, miközben a *Method1* az ügyfél-kérelem *xyz789*válaszol. Az emlékeztető visszahívása csak a *Method1* végrehajtásának befejeződése után hajtható végre. Ennek az az oka, hogy a *ActorId2*esetében a turn-based Egyidejűség kényszerített.
-* Ehhez hasonlóan a *ActorId1*is kényszeríteni kell a párhuzamos párhuzamosságot, ahogy azt a *Method1*, a *Method2*és a *ActorId1* nevében az időzítő visszahívása is mutatja, soros módon történik.
-* A *Method1* a *ActorId1* nevében való végrehajtása átfedésben van a *ActorId2*nevében végrehajtott végrehajtással. Ennek az az oka, hogy a turn-based Egyidejűség csak egy színészen belül, és nem a különböző szereplőkön van érvényben.
+* Míg a *Method1* a *ActorId2* nevében hajtja végre az ügyfél kérésére *xyz789*, egy másik ügyfél-kérelem (*abc123*) érkezik, amely megköveteli, hogy *a Method1 is* végrehajtsa a *ActorId2* . A *Method1* második végrehajtása azonban addig nem kezdődik meg, amíg az előző végrehajtás nem fejeződött be. Hasonlóképpen, a *ActorId2* által regisztrált emlékeztető, miközben a *Method1* az ügyfél-kérelem *xyz789* válaszol. Az emlékeztető visszahívása csak a *Method1* végrehajtásának befejeződése után hajtható végre. Ennek az az oka, hogy a *ActorId2* esetében a turn-based Egyidejűség kényszerített.
+* Ehhez hasonlóan a *ActorId1* is kényszeríteni kell a párhuzamos párhuzamosságot, ahogy azt a *Method1*, a *Method2* és a *ActorId1* nevében az időzítő visszahívása is mutatja, soros módon történik.
+* A *Method1* a *ActorId1* nevében való végrehajtása átfedésben van a *ActorId2* nevében végrehajtott végrehajtással. Ennek az az oka, hogy a turn-based Egyidejűség csak egy színészen belül, és nem a különböző szereplőkön van érvényben.
 * Néhány módszer/visszahívás végrehajtás esetén a metódus `Task` `CompletableFuture` /visszahívás által visszaadott (C#)/(Java)/(Java) a metódus visszatérése után fejeződik be. Másokban az aszinkron művelet már befejeződött a metódus/visszahívás visszatérési ideje szerint. Mindkét esetben a rendszer csak a metódus/visszahívás visszaadása és az aszinkron művelet befejezése után szabadítja fel a per-Actor zárolást.
 
 ### <a name="reentrancy"></a>Újbóli belépés
@@ -135,7 +133,7 @@ A Actors futtatókörnyezet alapértelmezés szerint engedélyezi a újbóli bel
 ### <a name="scope-of-concurrency-guarantees"></a>Egyidejűségi garanciák hatóköre
 A szereplők futtatókörnyezete biztosítja ezeket a párhuzamossági garanciákat olyan helyzetekben, amikor a módszerek meghívását vezérli. Ezek a garanciák például az ügyfélre vonatkozó kérelemre adott válaszként, valamint az időzítő és az emlékeztető visszahívásai esetén is. Ha azonban a színészi kód közvetlenül az Actors Runtime által biztosított mechanizmusokon kívül hívja meg ezeket a metódusokat, akkor a futtatókörnyezet nem tud egyidejűségi garanciákat biztosítani. Ha például a metódust egy olyan feladat kontextusában hívja meg, amely nincs társítva a Actor metódusok által visszaadott feladathoz, akkor a futtatókörnyezet nem tud egyidejűségi garanciákat biztosítani. Ha a metódust olyan szálon hívja meg, amelyet a színész saját maga hoz létre, akkor a futtatókörnyezet nem tud egyidejűségi garanciákat biztosítani. Ezért a háttérbeli műveletek végrehajtásához a szereplőknek olyan [színészi időzítőket és színészi emlékeztetőket](service-fabric-reliable-actors-timers-reminders.md) kell használniuk, amelyek figyelembe veszik a párhuzamos párhuzamosságot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerkedjen meg az első Reliable Actors szolgáltatás létrehozásával:
    * [Első lépések a Reliable Actors a .NET-keretrendszerben](service-fabric-reliable-actors-get-started.md)
    * [Első lépések a Reliable Actors Javával](./service-fabric-create-your-first-linux-application-with-java.md)

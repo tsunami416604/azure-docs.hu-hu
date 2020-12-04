@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 24d2418cc571e1cbb3feff8aab5eee70ab08a97a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ded15b45dd859b18180bd396067360ae6585ef97
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555793"
+ms.locfileid: "96575873"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány regisztrálása és bevizsgálása
 
@@ -101,6 +101,20 @@ Az egyszerű szolgáltatás alkalmazás-azonosítójának és titkos kódjának 
 1. Ha a kulcstartó még nem csatlakozik a hatáskörébe, [létre kell hoznia egy új Key Vault-kapcsolatot](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
 1. Végül [hozzon létre egy új hitelesítő adatot](manage-credentials.md#create-a-new-credential) az egyszerű szolgáltatásnév használatával a vizsgálat beállításához
 
+### <a name="firewall-settings"></a>Tűzfalbeállítások
+
+Az adatbázis-kiszolgálónak engedélyeznie kell az Azure-kapcsolatokat. Ez lehetővé teszi az Azure hatáskörébe, hogy elérje és csatlakozhasson a kiszolgálóhoz. Az Azure-on [belüli kapcsolatok](../azure-sql/database/firewall-configure.md#connections-from-inside-azure)útmutatója a következő témakörben található:.
+
+1. Navigáljon az adatbázis-fiókjához
+1. Válassza ki a kiszolgáló nevét az **Áttekintés** oldalon
+1. **Biztonsági > tűzfalak és virtuális hálózatok** kiválasztása
+1. Válassza az **Igen** lehetőséget az **Azure-szolgáltatások és-erőforrások elérésének engedélyezéséhez ehhez a kiszolgálóhoz**
+
+    :::image type="content" source="media/register-scan-azure-sql-database/sql-firewall.png" alt-text="források regisztrálása – beállítások" border="true":::
+    
+> [!Note]
+> Az Azure-beli hatáskörébe jelenleg nem használható a VNET-konfiguráció. Ezért nem végezheti el az IP-alapú tűzfalszabályok beállításait.
+
 ## <a name="register-an-azure-sql-database-managed-instance-data-source"></a>Azure SQL Database felügyelt példány adatforrásának regisztrálása
 
 1. Navigáljon a hatáskörébe-fiókjába
@@ -126,7 +140,7 @@ Az egyszerű szolgáltatás alkalmazás-azonosítójának és titkos kódjának 
 > [!NOTE]
 > A vizsgálat törlése nem törli a korábbi Azure SQL Database felügyelt példányok vizsgálatainak eszközeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
 - [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)

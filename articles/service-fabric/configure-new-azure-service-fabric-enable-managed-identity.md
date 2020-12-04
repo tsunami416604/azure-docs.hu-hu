@@ -3,20 +3,19 @@ title: Felügyelt identitás támogatásának konfigurálása új Service Fabric
 description: A következőképpen engedélyezheti a felügyelt identitások támogatását egy új Azure Service Fabric-fürtben
 ms.topic: article
 ms.date: 12/09/2019
-ms.custom: sfrev
-ms.openlocfilehash: dd0cbd3251185a7831852ead47ca0b120126cf55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae4fec452a2342a68843d874ba955b594014c46d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415674"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574666"
 ---
 # <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster"></a>Felügyelt identitás támogatásának konfigurálása új Service Fabric-fürthöz
 
 Ha a Service Fabric-alkalmazásokban [felügyelt identitásokat](../active-directory/managed-identities-azure-resources/overview.md) szeretne használni az Azure-erőforrásokhoz, először engedélyezze a *felügyelt Identity token szolgáltatást* a fürtön. Ez a szolgáltatás felelős a felügyelt identitások használatával Service Fabric alkalmazások hitelesítéséhez, valamint a hozzáférési jogkivonatok nevében való beszerzéséhez. Ha a szolgáltatás engedélyezve van, a bal oldali ablaktábla **System (rendszer** ) szakaszának Service Fabric Explorer alatt láthatja, hogy az egyéb rendszerszolgáltatások mellett a **háló:/System/ManagedIdentityTokenService** néven fut.
 
 > [!NOTE]
-> A **felügyelt Identity token szolgáltatás**engedélyezéséhez Service Fabric futtatókörnyezet 6.5.658.9590 vagy újabb verziója szükséges.  
+> A **felügyelt Identity token szolgáltatás** engedélyezéséhez Service Fabric futtatókörnyezet 6.5.658.9590 vagy újabb verziója szükséges.  
 
 ## <a name="enable-the-managed-identity-token-service"></a>Felügyelt Identity token szolgáltatás engedélyezése
 

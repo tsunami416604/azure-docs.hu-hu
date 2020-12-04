@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: fdfaef554e4e641656abd3fd2b4a5d3bbc519ccd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6398d23aeb0e26fbc336c0c1066078f327fa2f73
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325422"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576570"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -43,7 +43,7 @@ Ebben a szakaszban megtudhatja, hogyan történik a közös hálózati forgatók
 
 Az alábbi táblázat összehasonlítja, hogyan fér hozzá a szolgáltatások a Azure Machine Learning hálózat különböző részeihez egy VNet és VNet nélkül.
 
-| Használati eset | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
+| Használati példa | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
 |-|-|-|-|-|-|
 |**Nincs virtuális hálózat**| Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím |
 |**Virtuális hálózatok erőforrásainak védelme**| Magánhálózati IP-cím (privát végpont) | Nyilvános IP-cím (szolgáltatási végpont) <br> **vagy** <br> Magánhálózati IP-cím (privát végpont) | Magánhálózati IP-cím | Magánhálózati IP-cím  | 
@@ -145,10 +145,11 @@ Ha a tároló egy VNet van, először további konfigurációs lépéseket kell 
 
 * A Studióban tárolt előzetes verzió.
 * Jelenítse meg a tervezőben tárolt adatmegjelenítést.
+* Modell üzembe helyezése a tervezőben.
 * AutoML-kísérlet küldése.
 * Címkéző projekt elindítása.
 
-Ha egy VNet belül szeretné engedélyezni a teljes Studio-funkciókat, tekintse meg a [Azure Machine learning Studio használata virtuális hálózatban](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)című témakört. A Studio a szolgáltatási végpontok vagy a magánhálózati végpontok használatával támogatja a Storage-fiókokat.
+Ha egy VNet belül szeretné engedélyezni a teljes Studio-funkciókat, tekintse meg a [Azure Machine learning Studio használata virtuális hálózatban](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio)című témakört. A Studio a szolgáltatási végpontok vagy a magánhálózati végpontok használatával támogatja a Storage-fiókokat.
 
 ### <a name="limitations"></a>Korlátozások
 - A [ml által támogatott adatfeliratok](how-to-create-labeling-projects.md#use-ml-assisted-labeling) nem támogatják a virtuális hálózat mögött biztonságossá tett alapértelmezett Storage-fiókokat. A ML által támogatott adatfeliratokhoz nem alapértelmezett Storage-fiókot kell használnia. Vegye figyelembe, hogy a nem alapértelmezett Storage-fiók biztonságossá tétele a virtuális hálózat mögött végezhető el. 
@@ -165,7 +166,7 @@ Ha egyéni DNS-megoldást kell használnia a virtuális hálózatához, hozzá k
 
 További információ a szükséges tartománynévekről és IP-címekről: [munkaterület használata egyéni DNS-kiszolgálóval](how-to-custom-dns.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat első része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

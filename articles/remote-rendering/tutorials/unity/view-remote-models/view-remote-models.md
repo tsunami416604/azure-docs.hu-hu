@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 834df29597abaaadad98b232ce75b32a6431cfc2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653672"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574734"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Oktatóanyag: távolról renderelt modell megtekintése
 
@@ -49,7 +49,7 @@ Ahhoz, hogy hozzáférjen az Azure távoli renderelési szolgáltatáshoz, elős
 > Az [ARR Samples adattár](https://github.com/Azure/azure-remote-rendering) tartalmaz egy projektet, amely az összes oktatóanyagot befejezte, hivatkozásként használható. A teljes Unity projekthez tekintse meg a *Unity\Tutorial-Complete* .
 
 Hozzon létre egy új projektet az Unity hub-ból.
-Ebben a példában feltételezzük, hogy a projekt létrehozása egy **RemoteRendering**nevű mappában történik.
+Ebben a példában feltételezzük, hogy a projekt létrehozása egy **RemoteRendering** nevű mappában történik.
 
 :::image type="content" source="./media/unity-new-project.PNG" alt-text="Új Unity-projekt":::
 
@@ -76,7 +76,7 @@ Módosítania kell a `Packages/manifest.json` Unity Project mappában találhat�
 
 Miután módosította és mentette a jegyzékfájlt, az Unity automatikusan frissülni fog. Erősítse meg a csomagok betöltését a *projekt* ablakban:
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="Új Unity-projekt":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="csomagok importálásának megerősítése":::
 
 Ha a csomagok nem töltődnek be, ellenőrizze az Unity-konzolt a hibákért. Ha nem rendelkezik hibákkal, és még mindig nem lát csomagokat a **csomagok** mappában, ellenőrizze a csomag láthatóságának váltógomb. \
 ![Képernyőfelvétel a csomag láthatóságának váltógomb mutató nyilat ábrázoló nyílra.](./media/unity-package-visibility.png)
@@ -106,7 +106,7 @@ A következő lépésekkel biztosíthatja, hogy a projekt a távoli renderelési
 
     ![Színkerék](./media/color-wheel-black.png)
 
-1. A **kivágási síkok** a *közel = 0,3* és a *Far = 20*értékre állíthatók be. Ez azt jelenti, hogy a renderelés a 30 cm-nél közelebbi vagy 20 méternél nagyobb méretű klipet ábrázol.
+1. A **kivágási síkok** a *közel = 0,3* és a *Far = 20* értékre állíthatók be. Ez azt jelenti, hogy a renderelés a 30 cm-nél közelebbi vagy 20 méternél nagyobb méretű klipet ábrázol.
 
     ![Unity kamera tulajdonságai](./media/camera-properties.png)
 
@@ -138,14 +138,14 @@ A következő lépésekkel biztosíthatja, hogy a projekt a távoli renderelési
 
     ![lejátszó beállításai](./media/xr-player-settings.png)
 
-1. Ugyanebben az ablakban, az **XR beállításai**felett bontsa ki a **közzétételi beállítások** elemet.
+1. Ugyanebben az ablakban, az **XR beállításai** felett bontsa ki a **közzétételi beállítások** elemet.
 1. Görgessen le a **képességek** menüponthoz, és válassza a következőket:
     * **InternetClient**
     * **InternetClientServer**
     * **SpatialPerception**
-    * **PrivateNetworkClientServer** (nem*kötelező*). Válassza ezt a lehetőséget, ha az Unity távoli hibakeresőt az eszközhöz szeretné kapcsolni.
+    * **PrivateNetworkClientServer** (nem *kötelező*). Válassza ezt a lehetőséget, ha az Unity távoli hibakeresőt az eszközhöz szeretné kapcsolni.
 
-1. A **támogatott eszközökhöz tartozó családok**területen engedélyezze a **holografikus** és **asztali**
+1. A **támogatott eszközökhöz tartozó családok** területen engedélyezze a **holografikus** és **asztali**
 1. A **Project Settings** panel lezárása vagy dokkolása
 1. A *fájl->Build beállításainak* megnyitása
 1. **Univerzális Windows-platform** kiválasztása
@@ -169,9 +169,9 @@ Az alábbi folyamatábrában négy alapvető szakasz mutatja be a távolról ren
 
 ![ARR verem 0](./media/remote-render-stack-0.png)
 
-1. A *projekt* ablaktábla **eszközök**területén hozzon létre egy új, *RemoteRenderingCore*nevű mappát. Ezután a *RemoteRenderingCore*belül hozzon létre egy másik, *parancsfájl*nevű mappát.
+1. A *projekt* ablaktábla **eszközök** területén hozzon létre egy új, *RemoteRenderingCore* nevű mappát. Ezután a *RemoteRenderingCore* belül hozzon létre egy másik, *parancsfájl* nevű mappát.
 
-1. Hozzon létre egy új, **RemoteRenderingCoordinator**nevű [C#-szkriptet](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) .
+1. Hozzon létre egy új, **RemoteRenderingCoordinator** nevű [C#-szkriptet](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) .
 A projektnek így kell kinéznie:
 
     ![Projekt-hierarchia](./media/project-structure.png)
@@ -220,7 +220,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     public static RemoteRenderingCoordinator instance;
 
     // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
-    // For most people '<region>' is either 'westus2' or 'westeurope'
+    // The list of regions is available at https://docs.microsoft.com/azure/remote-rendering/reference/regions
     [SerializeField]
     private string accountDomain = "westus2.mixedreality.azure.com";
     public string AccountDomain
@@ -549,9 +549,9 @@ Most, hogy már rendelkezünk a koordinátori keretrendszerrel, a négy fázist 
 
 ![ARR verem 1](./media/remote-render-stack-1.png)
 
-Az **inicializálás** azt mutatja be, hogy az Azure távoli renderelés melyik kamera-objektumot használja az állapot megjelenítéséhez és a **NotAuthorized**való előrehaladáshoz. Ez azt jelenti, hogy inicializálva van, de még nem rendelkezik jogosultsággal a munkamenethez való kapcsolódáshoz. Mivel az ARR-munkamenetek megkezdése költségekkel jár, meg kell erősítenie a felhasználót a folytatáshoz.
+Az **inicializálás** azt mutatja be, hogy az Azure távoli renderelés melyik kamera-objektumot használja az állapot megjelenítéséhez és a **NotAuthorized** való előrehaladáshoz. Ez azt jelenti, hogy inicializálva van, de még nem rendelkezik jogosultsággal a munkamenethez való kapcsolódáshoz. Mivel az ARR-munkamenetek megkezdése költségekkel jár, meg kell erősítenie a felhasználót a folytatáshoz.
 
-A **NotAuthorized** állapotának megadásakor a rendszer meghívja a **CheckAuthorization** , amely meghívja a **RequestingAuthorization** eseményt, és meghatározza, hogy melyik fiók hitelesítő adatait szeretné használni (a**AccountInfo** az osztály felső részén van meghatározva, és a fenti lépésben a Unity Inspector segítségével megadott hitelesítő adatokat használja.)
+A **NotAuthorized** állapotának megadásakor a rendszer meghívja a **CheckAuthorization** , amely meghívja a **RequestingAuthorization** eseményt, és meghatározza, hogy melyik fiók hitelesítő adatait szeretné használni (a **AccountInfo** az osztály felső részén van meghatározva, és a fenti lépésben a Unity Inspector segítségével megadott hitelesítő adatokat használja.)
 
    > [!NOTE]
    > Az ARR nem támogatja a futtatókörnyezet újrafordítását. Ha módosítja a szkriptet, és menti azt, miközben a lejátszási mód aktív, az Unity befagyasztást eredményezhet, és kényszeríteni kell a feladat-kezelőn keresztüli leállítást. A parancsfájlok szerkesztése előtt mindig győződjön meg arról, hogy leállította a lejátszási módot.
@@ -589,7 +589,7 @@ public async void InitializeSessionService()
 }
 ```
 
-Ahhoz, hogy a **NotAuthorized** -ről a további **munkamenetre**lehessen jutni, általában egy modális párbeszédpanelt mutatunk be a felhasználónak, hogy kiválasszák (és ezt egy másik fejezetben tesszük). Egyelőre a **ByPassAuthentication** meghívásával automatikusan kikerüljük az engedélyezési ellenőrzéseket, amint a **RequestingAuthorization** esemény elindul.
+Ahhoz, hogy a **NotAuthorized** -ről a további **munkamenetre** lehessen jutni, általában egy modális párbeszédpanelt mutatunk be a felhasználónak, hogy kiválasszák (és ezt egy másik fejezetben tesszük). Egyelőre a **ByPassAuthentication** meghívásával automatikusan kikerüljük az engedélyezési ellenőrzéseket, amint a **RequestingAuthorization** esemény elindul.
 
 1. Válassza ki a **RemoteRenderingCoordinator** GameObject, és keresse meg a **RemoteRenderingCoordinator** összetevő Ellenőrében elérhető **OnRequestingAuthorization** Unity eseményt.
 
@@ -612,7 +612,7 @@ Ha nem áll rendelkezésre munkamenet, új munkamenet jön létre. Egy új munka
 > [!TIP]
 > A **StopRemoteSession ()** befejezi az aktív munkamenetet. A szükségtelen költségek elkerülése érdekében mindig le kell állítania a munkameneteket, ha már nincs rájuk szükség.
 
-Az állapotú gép mostantól a rendelkezésre álló munkamenetek függvényében a **ConnectingToNewRemoteSession** vagy a **ConnectingToExistingRemoteSession**folyamatba kerül. Ha egy meglévő munkamenetet nyit meg, vagy új munkamenetet hoz létre, a rendszer elindítja a **ARRSessionService. OnSessionStatusChanged** eseményt, és végrehajtja a **OnRemoteSessionStatusChanged** metódust. Ideális esetben ez azt eredményezi, hogy az állapotot a gép **RemoteSessionReady**.
+Az állapotú gép mostantól a rendelkezésre álló munkamenetek függvényében a **ConnectingToNewRemoteSession** vagy a **ConnectingToExistingRemoteSession** folyamatba kerül. Ha egy meglévő munkamenetet nyit meg, vagy új munkamenetet hoz létre, a rendszer elindítja a **ARRSessionService. OnSessionStatusChanged** eseményt, és végrehajtja a **OnRemoteSessionStatusChanged** metódust. Ideális esetben ez azt eredményezi, hogy az állapotot a gép **RemoteSessionReady**.
 
 1. Új munkamenethez való csatlakozáshoz módosítsa a kódot a **JoinRemoteSession ()** és a **StopRemoteSession ()** metódus cseréjére az alábbi befejezett példákkal:
 
@@ -658,7 +658,7 @@ public void StopRemoteSession()
 }
 ```
 
-Ha időt szeretne megtakarítani a munkamenetek újbóli használatával, ügyeljen arra, hogy inaktiválja az **automatikus leállítási munkamenetet** a *ARRServiceUnity* összetevőben. Ne feledje, hogy ez a munkamenetek futását is elhagyja, még akkor is, ha senki sem csatlakozik hozzájuk. A munkamenet addig futhat mindaddig, amíg a *MaxLeaseTime* a kiszolgáló leállása előtt (a *MaxLeaseTime* értéke módosítható a távoli renderelési Koordinátorban az *új munkamenet alapértelmezései*között). Ha azonban a kapcsolat bontásakor automatikusan leállítja az összes munkamenetet, meg kell várnia, hogy az új munkamenet minden alkalommal induljon el, ami valamivel hosszadalmas folyamat lehet.
+Ha időt szeretne megtakarítani a munkamenetek újbóli használatával, ügyeljen arra, hogy inaktiválja az **automatikus leállítási munkamenetet** a *ARRServiceUnity* összetevőben. Ne feledje, hogy ez a munkamenetek futását is elhagyja, még akkor is, ha senki sem csatlakozik hozzájuk. A munkamenet addig futhat mindaddig, amíg a *MaxLeaseTime* a kiszolgáló leállása előtt (a *MaxLeaseTime* értéke módosítható a távoli renderelési Koordinátorban az *új munkamenet alapértelmezései* között). Ha azonban a kapcsolat bontásakor automatikusan leállítja az összes munkamenetet, meg kell várnia, hogy az új munkamenet minden alkalommal induljon el, ami valamivel hosszadalmas folyamat lehet.
 
 > [!NOTE]
 > A munkamenet leállítása azonnal érvénybe lép, és nem vonható vissza. Ha leállt, létre kell hoznia egy új munkamenetet ugyanazzal az indítási terheléssel.
@@ -669,7 +669,7 @@ Ezután az alkalmazásnak kapcsolódnia kell a helyi futtatókörnyezethez a tá
 
 ![ARR verem 3](./media/remote-render-stack-3.png)
 
-Az alkalmazásnak a futtatókörnyezet és az aktuális munkamenet közötti kapcsolat eseményeiről is figyelnie kell. ezeket az állapot-változásokat a rendszer a **OnLocalRuntimeStatusChanged**kezeli. Ez a kód a **ConnectingToRuntime**állapotát fogja előre megtenni. A **OnLocalRuntimeStatusChanged**-ben való csatlakozás után az állapot továbbra is **RuntimeConnected**. A futtatókörnyezethez való csatlakozás utolsó olyan állapotban van, amely a koordinátorra vonatkozik, ami azt jelenti, hogy az alkalmazás az összes közös konfigurációval elkészült, és készen áll a betöltési és renderelési modellek munkamenet-specifikus működésének megkezdésére.
+Az alkalmazásnak a futtatókörnyezet és az aktuális munkamenet közötti kapcsolat eseményeiről is figyelnie kell. ezeket az állapot-változásokat a rendszer a **OnLocalRuntimeStatusChanged** kezeli. Ez a kód a **ConnectingToRuntime** állapotát fogja előre megtenni. A **OnLocalRuntimeStatusChanged**-ben való csatlakozás után az állapot továbbra is **RuntimeConnected**. A futtatókörnyezethez való csatlakozás utolsó olyan állapotban van, amely a koordinátorra vonatkozik, ami azt jelenti, hogy az alkalmazás az összes közös konfigurációval elkészült, és készen áll a betöltési és renderelési modellek munkamenet-specifikus működésének megkezdésére.
 
  1. Cserélje le a **ConnectRuntimeToRemoteSession ()** és a **DisconnectRuntimeFromRemoteSession ()** metódust az alábbi befejezett verzióra.
  1. Fontos megjegyezni az **LateUpdate** Unity metódust, valamint azt, hogy az aktuális aktív munkamenetet frissíti. Ez lehetővé teszi az aktuális munkamenet számára üzenetek küldését/fogadását és a keret pufferének frissítését a távoli munkamenetből fogadott keretekkel. Fontos, hogy az ARR megfelelően működjön.

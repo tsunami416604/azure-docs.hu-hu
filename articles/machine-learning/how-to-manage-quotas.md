@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 10/13/2020
+ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: d82cbafbbdeb379c8eb97494ca8d3243f356b7a1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 18eb952d06d83b4604625a795be3c8512c3f90d7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542116"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576587"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kvótáinak kezelése és növelése Azure Machine Learning
 
@@ -45,25 +45,29 @@ A kvóták kezelése mellett megismerheti a [Azure Machine learning költségein
 
 Ebben a szakaszban az alábbi erőforrásokra vonatkozó alapértelmezett és maximális kvóta-korlátozásokat ismerheti meg:
 
++ Eszközök Azure Machine Learning
+  + Azure Machine Learning számítás
+  + Azure Machine Learning folyamatok
 + Virtuális gépek
-+ Azure Machine Learning számítás
-+ Azure Machine Learning folyamatok
 + Azure Container Instances
 + Azure Storage
 
 > [!IMPORTANT]
 > A korlátozások változhatnak. A legfrissebb információkért tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](../azure-resource-manager/management/azure-subscription-service-limits.md) az Azure-ban.
 
-### <a name="virtual-machines"></a>Virtuális gépek
-Minden Azure-előfizetés korlátozza a virtuális gépek számát az összes szolgáltatáson belül. A virtuálisgép-magok méretének regionális korlátja és a regionális korlátok száma. Mindkét korlátot külön kényszeríti a rendszer.
+### <a name="azure-machine-learning-assets"></a>Eszközök Azure Machine Learning
+Az eszközökön a következő korlátozások vonatkoznak a munkaterület alapján. 
 
-Például tegyük fel, hogy egy előfizetés az USA keleti régiójára vonatkozó teljes magkorlátja 30, az A sorozatú magkorlátja 30, és a D sorozatú magkorlátja is 30. Ez az előfizetés 30 a1-es virtuális gép vagy 30 D1 virtuális gép üzembe helyezését, illetve a kettő olyan kombinációját teszi lehetővé, amely nem haladja meg az összesen 30 magot.
+| **Erőforrás** | **Maximális korlát** |
+| --- | --- |
+| Adathalmazok | 10 millió |
+| Futtatás | 10 millió |
+| Modellek | 10 millió|
+| Artifacts | 10 millió |
 
-A virtuális gépekre vonatkozó korlátok az alábbi táblázatban látható értékek fölé nem állíthatók be.
+Emellett a maximális **Futási idő** 30 nap, a **futtatási naplók** maximális száma pedig 1 000 000.
 
-[!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
-
-### <a name="azure-machine-learning-compute"></a>Azure Machine Learning számítás
+#### <a name="azure-machine-learning-compute"></a>Azure Machine Learning számítás
 [Azure Machine learning a számítás](concept-compute-target.md#azure-machine-learning-compute-managed) alapértelmezett kvótája a magok száma, valamint az előfizetésben régiónként engedélyezett egyedi számítási erőforrások száma. Ez a kvóta elkülönül az előző szakasz VM Core-kvótájának.
 
 Az ebben a szakaszban megjelenő korlátokat a táblázatban megjelenő maximális korlátra vonatkozóan a [kvóta növelésére kéri](#request-quota-increases) fel.
@@ -90,7 +94,7 @@ A következő táblázat további korlátozásokat mutat be, amelyeket nem lehet
 <sup>1</sup> a maximális élettartam az időtartam, amikor a Futtatás elindul, és amikor a folyamat befejeződik. A befejezett futtatások határozatlan ideig maradnak. Nem érhető el a maximális élettartamon belül nem befejezett futtatások adatkészletei.
 <sup>2</sup> az alacsony prioritású csomóponton lévő feladatok akkor előzik, ha van kapacitási korlátozás. Javasoljuk, hogy az ellenőrzőpontokat a feladatokban implementálja.
 
-### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning folyamatok
+#### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning folyamatok
 [Azure Machine learning folyamatok](concept-ml-pipelines.md) a következő korlátokkal rendelkeznek.
 
 | **Erőforrás** | **Korlát** |
@@ -98,11 +102,20 @@ A következő táblázat további korlátozásokat mutat be, amelyeket nem lehet
 | A folyamat lépései | 30 000 |
 | Munkaterületek erőforráscsoport szerint | 800 |
 
+### <a name="virtual-machines"></a>Virtuális gépek
+Minden Azure-előfizetés korlátozza a virtuális gépek számát az összes szolgáltatáson belül. A virtuálisgép-magok méretének regionális korlátja és a regionális korlátok száma. Mindkét korlátot külön kényszeríti a rendszer.
+
+Például tegyük fel, hogy egy előfizetés az USA keleti régiójára vonatkozó teljes magkorlátja 30, az A sorozatú magkorlátja 30, és a D sorozatú magkorlátja is 30. Ez az előfizetés 30 a1-es virtuális gép vagy 30 D1 virtuális gép üzembe helyezését, illetve a kettő olyan kombinációját teszi lehetővé, amely nem haladja meg az összesen 30 magot.
+
+A virtuális gépekre vonatkozó korlátok az alábbi táblázatban látható értékek fölé nem állíthatók be.
+
+[!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
+
 ### <a name="container-instances"></a>Container Instances
 
 További információ: [Container instances korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits).
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 Az Azure Storage-ban legfeljebb 250 Storage-fiók lehet, előfizetése pedig régiónként. Ez a korlát a standard és a Premium Storage-fiókokat is tartalmazza.
 
 A korlát növeléséhez kérjen egy kérést az [Azure-támogatáson](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)keresztül. Az Azure Storage csapata áttekinti az esetet, és legfeljebb 250 Storage-fiókot tud jóváhagyni egy adott régióban.
@@ -187,6 +200,6 @@ Ezen forgatókönyvek esetében a következő lépések végrehajtásával igén
 
 :::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="Képernyőkép a privát végpontról és a saját DNS-kvóta növeléséről.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [A Azure Machine Learning költségeinek megtervezése és kezelése](concept-plan-manage-cost.md)

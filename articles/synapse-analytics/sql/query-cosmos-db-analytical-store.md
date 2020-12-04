@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 439337233e24dfcae2c8c911a9224fd3394d6846
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a7e9cdb18d109abeef7d7d7237444ac55f9e7da1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462698"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576349"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Az Azure szinapszis link Preview-ban található kiszolgáló nélküli SQL-készlettel rendelkező lekérdezés Azure Cosmos DB
 
@@ -33,6 +33,12 @@ Ebből a cikkből megtudhatja, hogyan írhat lekérdezést olyan kiszolgáló n�
 
 ## <a name="overview"></a>Áttekintés
 
+A kiszolgáló nélküli SQL-készlet lehetővé teszi Azure Cosmos DB analitikai tár lekérdezését a `OPENROWSET` függvény használatával. 
+- `OPENROWSET` beágyazott kulccsal. Ez a szintaxis Azure Cosmos DB gyűjtemények lekérdezésére használható a hitelesítő adatok előkészítése nélkül.
+- `OPENROWSET` az Cosmos DB-fiók kulcsát tartalmazó hivatkozott hitelesítő adat. Ez a szintaxis Azure Cosmos DB gyűjtemények nézeteinek létrehozására használható.
+
+### <a name="openrowset-with-key"></a>[OPENROWSET kulccsal](#tab/openrowset-key)
+
 Egy Azure Cosmos DB analitikus tárolóban lévő adatok lekérdezéséhez és elemzéséhez a kiszolgáló nélküli SQL-készlet a következő `OPENROWSET` szintaxist használja:
 
 ```sql
@@ -45,17 +51,39 @@ OPENROWSET(
 
 A Azure Cosmos DB kapcsolódási karakterlánc megadja az Azure Cosmos DB fiók nevét, az adatbázis nevét, az adatbázis-fiók főkulcsát, valamint a függvény választható régiójának nevét `OPENROWSET` .
 
-> [!IMPORTANT]
-> Győződjön meg arról, hogy UTF-8 adatbázis-rendezést használ, például mert a `Latin1_General_100_CI_AS_SC_UTF8` Azure Cosmos db analitikus tárolóban lévő karakterlánc-értékek UTF-8 szövegként vannak kódolva.
-> A fájl és a rendezés szöveges kódolása nem egyezik meg a szöveges konvertálás során fellépő hibák miatt.
-> A T-SQL-utasítás használatával egyszerűen módosíthatja az aktuális adatbázis alapértelmezett rendezését `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` .
-
 A kapcsolatok karakterláncának formátuma a következő:
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
 
 A Azure Cosmos DB tároló neve idézőjelek nélkül van megadva a `OPENROWSET` szintaxisban. Ha a tároló neve speciális karaktereket tartalmaz, például egy kötőjelet (-), a nevet szögletes zárójelbe () kell becsomagolni `[]` a `OPENROWSET` szintaxisban.
+
+### <a name="openrowset-with-credential"></a>[OPENROWSET hitelesítő adatokkal](#tab/openrowset-credential)
+
+Használhatja `OPENROWSET` a hitelesítő adatokra hivatkozó szintaxist:
+
+```sql
+OPENROWSET( 
+       PROVIDER = 'CosmosDB',
+       CONNECTION = '<Azure Cosmos DB connection string without account key>',
+       OBJECT = '<Container name>',
+       [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential name>'
+    )  [ < with clause > ] AS alias
+```
+
+A Azure Cosmos DB-kapcsolatok karakterlánca ebben az esetben nem tartalmaz kulcsot. A kapcsolatok karakterláncának formátuma a következő:
+```sql
+'account=<database account name>;database=<database name>;region=<region name>'
+```
+
+Az adatbázis-fiók főkulcsa kiszolgálói szintű hitelesítő adatok vagy adatbázis-hatókörű hitelesítő adatokba kerül. 
+
+---
+
+> [!IMPORTANT]
+> Győződjön meg arról, hogy UTF-8 adatbázis-rendezést használ, például mert a `Latin1_General_100_CI_AS_SC_UTF8` Azure Cosmos db analitikus tárolóban lévő karakterlánc-értékek UTF-8 szövegként vannak kódolva.
+> A fájl és a rendezés szöveges kódolása nem egyezik meg a szöveges konvertálás során fellépő hibák miatt.
+> A T-SQL-utasítás használatával egyszerűen módosíthatja az aktuális adatbázis alapértelmezett rendezését `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` .
 
 > [!NOTE]
 > Egy kiszolgáló nélküli SQL-készlet nem támogatja Azure Cosmos DB tranzakciós tárolók lekérdezését.
@@ -76,6 +104,9 @@ Ahhoz, hogy követni tudja, hogyan lehet lekérdezni Azure Cosmos DB-adatbáziso
 
 A Azure Cosmos DBban lévő adatvizsgálatok legegyszerűbb módja az automatikus séma-következtetési lehetőség használata. Ha kihagyja a `WITH` záradékot az `OPENROWSET` utasításból, utasíthatja a kiszolgáló nélküli SQL-készletet a Azure Cosmos db tároló analitikai tárolójának sémájának automatikus észlelésére (következtetésre).
 
+
+### <a name="openrowset-with-key"></a>[OPENROWSET kulccsal](#tab/openrowset-key)
+
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET( 
@@ -83,6 +114,25 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
+
+### <a name="openrowset-with-credential"></a>[OPENROWSET hitelesítő adatokkal](#tab/openrowset-credential)
+
+```sql
+/*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
+    CREATE CREDENTIAL MyCosmosDbAccountCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+*/
+SELECT TOP 10 *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+---
+
 Az előző példában arra utasította a kiszolgáló nélküli SQL-készletet, hogy a `covid` Azure Cosmos db kulccsal hitelesített Azure Cosmos db fiókban található adatbázishoz kapcsolódjon `MyCosmosDbAccount` (az előző példában szereplő dummy). Ezután elérjük a `EcdcCases` tároló analitikus tárolóját a `West US 2` régióban. Mivel a tulajdonságok nem rendelkeznek kivetítéssel, a `OPENROWSET` függvény a Azure Cosmos db elemek összes tulajdonságát visszaküldi.
 
 Feltételezve, hogy a Azure Cosmos DB tárolóban található elemek a `date_rep` `cases` , a és a `geo_id` tulajdonsággal rendelkeznek, a lekérdezés eredményei a következő táblázatban láthatók:
@@ -119,6 +169,7 @@ Tegyük fel, hogy az [ECDC COVID adatkészletből](https://azure.microsoft.com/s
 
 Ezek a Azure Cosmos DBban található, a szinapszis SQL-ben található, sorok és oszlopok halmaza használható, egyszerű JSON-dokumentumok. A `OPENROWSET` függvény lehetővé teszi, hogy megadhatja az elolvasni kívánt tulajdonságok egy részhalmazát, valamint a záradékban szereplő pontos oszlop típusait `WITH` :
 
+### <a name="openrowset-with-key"></a>[OPENROWSET kulccsal](#tab/openrowset-key)
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET(
@@ -127,7 +178,21 @@ FROM OPENROWSET(
        EcdcCases
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
-
+### <a name="openrowset-with-credential"></a>[OPENROWSET hitelesítő adatokkal](#tab/openrowset-credential)
+```sql
+/*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
+    CREATE CREDENTIAL MyCosmosDbAccountCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+*/
+SELECT TOP 10 *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+---
 A lekérdezés eredménye a következő táblázathoz hasonló lehet:
 
 | date_rep | esetekben | geo_id |
@@ -137,6 +202,26 @@ A lekérdezés eredménye a következő táblázathoz hasonló lehet:
 | 2020-08-11 | 163 | RS |
 
 A Azure Cosmos DB értékekhez használandó SQL-típusokkal kapcsolatos további információkért tekintse meg a cikk végén található [SQL Type-hozzárendelések szabályait](#azure-cosmos-db-to-sql-type-mappings) .
+
+## <a name="create-view"></a>Nézet létrehozása
+
+Miután azonosította a sémát, előkészítheti a nézetet a Azure Cosmos DB adatain felül. A Azure Cosmos DB-fiók kulcsát külön hitelesítő adatban kell elhelyeznie, és hivatkozni kell erre a hitelesítő adatra a `OPENROWSET` függvényből. Ne tartsa meg a fiók kulcsát a nézet definíciójában.
+
+```sql
+CREATE CREDENTIAL MyCosmosDbAccountCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+GO
+CREATE OR ALTER VIEW EcdcCases
+AS SELECT *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+Ne használjon `OPENROWSET` explicit módon definiált sémát, mert ez hatással lehet a teljesítményre. Ügyeljen arra, hogy az oszlopok legkisebb lehetséges méretét használja (például VARCHAR (100) az alapértelmezett VARCHAR (8000) helyett). Az UTF [-8 átalakítási probléma](/troubleshoot/reading-utf8-text)elkerülése érdekében használjon néhány UTF-8 rendezést alapértelmezett adatbázis-rendezésként, vagy állítsa explicit oszlop rendezésként. A rendezés `Latin1_General_100_BIN2_UTF8` a legjobb teljesítményt nyújtja, ha a Yu bizonyos karakterlánc-oszlopokkal szűri az adataikat.
 
 ## <a name="query-nested-objects-and-arrays"></a>Beágyazott objektumok és tömbök lekérdezése
 

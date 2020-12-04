@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 57948cf705d2a58b4f8e19e56121115ba33362ad
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518634"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576026"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure szinapszis Analytics – gyakori kérdések
 
@@ -71,7 +71,7 @@ A: a Apache Spark szinapszis hivatkozása a GA. A kiszolgáló nélküli SQL-ké
 
 Válasz: igen! A folyamat összes összetevője, jegyzetfüzete, SQL-szkriptje és Spark-feladatának definíciója a GIT-ben fog megjelenni. Az összes készlet-definíciót a GIT as ARM-sablonokban tárolja a rendszer. A dedikált SQL Pool-objektumokat (sémákat, táblákat, nézeteket stb.) a CI/CD-támogatással rendelkező adatbázis-projektekkel felügyeli a rendszer.
 
-## <a name="pipelines"></a>Pipelines
+## <a name="pipelines"></a>Folyamatok
 
 ### <a name="q-how-do-i-ensure-i-know-what-credential-is-being-used-to-run-a-pipeline"></a>K: Hogyan arról, hogy tudom, milyen hitelesítő adatokat használ a folyamat futtatásához? 
 
@@ -83,7 +83,7 @@ A: jelenleg nem.
 
 ### <a name="q-how-do-i-migrate-existing-pipelines-from-azure-data-factory-to-an-azure-synapse-workspace"></a>K: Hogyan áttelepíteni a meglévő folyamatokat Azure Data Factoryról egy Azure-beli szinapszis-munkaterületre?
 
-A: jelenleg manuálisan újra létre kell hoznia Azure Data Factory-folyamatokat és a kapcsolódó összetevőket. 
+A: jelenleg manuálisan újra létre kell hoznia a Azure Data Factory-folyamatokat és a kapcsolódó összetevőket. ehhez exportálnia kell a JSON-t az eredeti folyamatból, és importálnia kell a szinapszis-munkaterületre.
 
 ## <a name="apache-spark"></a>Apache Spark
 
@@ -146,6 +146,6 @@ A: teljes listát talál a [T-SQL szolgáltatásbeli különbségekről a SZINAP
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ismerkedés az Azure szinapszis Analytics szolgáltatással](get-started.md)
+* [Az Azure Synapse Analytics első lépései](get-started.md)
 * [Munkaterület létrehozása](quickstart-create-workspace.md)
 * [Kiszolgáló nélküli SQL-készlet használata](quickstart-sql-on-demand.md)

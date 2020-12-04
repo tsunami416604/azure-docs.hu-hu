@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f261db8d40e1a1cc1737ff6a3f5c50da661b73e6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: f9471b6b465b63f48feb3bda82e7827308aae945
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433472"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575398"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Oktatóanyag: környezet beállítása a gépi tanuláshoz IoT Edge
 
@@ -209,6 +209,10 @@ Az IoT hub létrehozásának részeként az előző szakaszban futtatott szkript
 1. Tekintse meg az **útválasztási lekérdezést**, amely **igaz** értékre van beállítva. Ez a beállítás azt jelenti, hogy az összes eszköz telemetria-üzeneteinek egyezniük kell ezzel az útvonallal; Ezért minden üzenet el lesz küldve a **turbofanDeviceStorage** -végpontnak.
 
 1. Mivel nem történt módosítás, csak zárjuk be ezt a lapot.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ez az oktatóanyag egy olyan készlet része, amelyben az egyes cikkek az előzőekben végzett munkára épülnek. Várjon, amíg az összes erőforrást el nem végezte, amíg el nem végzi a végleges oktatóanyagot.
 
 ## <a name="next-steps"></a>További lépések
 

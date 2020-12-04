@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 1e263886d0cc199bb30fd28877be32209ab32a22
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 09a4dc8467b9b3c11c8daeb5ca8c62a0e26e79de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462382"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575006"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Adatelemzés Windows Data Science Virtual Machine
 
@@ -25,7 +25,7 @@ A DSVM szorosan együttműködik az Azure-szolgáltatásokkal. Képes olvasni é
 
 Ebből a cikkből megtudhatja, hogyan használhatja a DSVM az adatelemzési feladatok elvégzésére és más Azure-szolgáltatásokkal való interakcióra. Íme néhány dolog, amit elvégezhet a DSVM:
 
-- A Jupyter notebook használatával kísérletezhet a böngészőben tárolt adataival a Python 2, a Python 3 és a Microsoft R használatával. (a Microsoft R az R nagyvállalati használatra kész, teljesítményre tervezett verziója.)
+- A Python 2, Jupyter Notebook a Python 3 és a Microsoft R használatával kísérletezhet a böngészőben tárolt adataival. (a Microsoft R az R nagyvállalati használatra kész, teljesítményre tervezett verziója.)
 - Microsoft Machine Learning Server és Python használatával megismerheti az adatelemzést és a modellek helyi fejlesztését a DSVM.
 - Az Azure-erőforrások felügyelete a Azure Portal vagy a PowerShell használatával.
 - Kiterjesztheti tárhelyét, és megoszthatja a nagyméretű adatkészleteket/kódokat a teljes csapaton belül, ha létrehoz egy Azure Files-megosztást csatlakoztatott meghajtóként a DSVM.
@@ -49,8 +49,8 @@ Ebből a cikkből megtudhatja, hogyan használhatja a DSVM az adatelemzési fela
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 
-## <a name="use-jupyter-notebooks"></a>A Jupyter notebookok használata
-A Jupyter Notebook egy böngészőalapú IDE-t biztosít az adatelemzéshez és a modellezéshez. A Jupyter-jegyzetfüzetekben a Python 2, a Python 3 vagy az R (nyílt forráskódú és Microsoft R Server) is használható.
+## <a name="use-jupyter-notebooks"></a>A Jupyter-notebookok használata
+A Jupyter Notebook egy böngészőalapú IDE-t biztosít az adatelemzéshez és a modellezéshez. Egy Jupyter Notebook a Python 2, a Python 3 vagy az R (nyílt forráskódú és Microsoft R Server) is használható.
 
 A Jupyter Notebook elindításához kattintson a **Start** menüben vagy az asztalon található **Jupyter notebook** ikonra. A DSVM-parancssorban futtathatja azt a könyvtárat is, ```jupyter notebook``` ahol meglévő jegyzetfüzetekkel rendelkezik, vagy új jegyzetfüzeteket kíván létrehozni.  
 
@@ -201,7 +201,7 @@ Az adatok a virtuális gépen lévő helyi fájlból is tölthetők fel Azure St
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Adatok beolvasása egy Azure-blobból: Python ODBC
 
-Az adatok közvetlenül egy Jupyter-jegyzetfüzetben vagy egy Python-programban való beolvasásához használhatja a BlobService-függvénytárat.
+Az adatok közvetlenül egy Jupyter Notebook vagy egy Python-programban lévő blobból való beolvasásához használhatja a BlobService könyvtárat.
 
 Először importálja a szükséges csomagokat:
 
@@ -330,5 +330,5 @@ A keretrendszeren alapuló mintákon kívül olyan átfogó útmutatók is besze
 
 - [Szöveges dokumentumok besorolása](https://github.com/anargyri/lstm_han): Ez a bemutató azt mutatja be, hogyan lehet két neurális hálózati architektúrát létrehozni és betanítani: hierarchikus figyelmet a hálózatra és a hosszú távú memória-(LSTM-) hálózatra. Ezek a neurális hálózatok a kerasz API-t használják a mélyreható tanuláshoz a szöveges dokumentumok besorolásához. 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ez a cikk néhány olyan dolgot ismertetett, amelyet a Microsoft Data Science Virtual Machine végezhet el. Számos további dolgot tehet a DSVM hatékony elemzési környezetének elvégzéséhez.

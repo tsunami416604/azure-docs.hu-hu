@@ -1,17 +1,15 @@
 ---
 title: Az Azure Service Fabric Actors életciklusának áttekintése
 description: Ismerteti Service Fabric megbízható szereplők életciklusát, a szemétek gyűjtését, valamint a résztvevők és állapotuk manuális törlését
-author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.author: amanbha
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3cea6213b2c6f2797d46f865afe1e13cbf4aaff6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88db4bb2376cbc418d6954e274a18a6c18a280d1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016699"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576043"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Színészi életciklus, automatikus Garbage-gyűjtés és manuális törlés
 A színész akkor aktiválódik, amikor az első alkalommal hívást kezdeményeztek valamelyik metódusára. Egy szereplő inaktiválva van (a Actors Runtime által összegyűjtött szemetet), ha nem használják konfigurálható időtartamra. Egy színész és az állapota manuálisan is törölhető bármikor.
@@ -108,7 +106,7 @@ Egy színész soha nem kerül begyűjtésre, amíg az egyik módszert futtatja, 
 ## <a name="manually-deleting-actors-and-their-state"></a>A szereplők és állapotuk manuális törlése
 A deaktivált szereplők szemét-gyűjteménye csak a Actor objektumot törli, de nem távolítja el a szereplő állapot-kezelőjében tárolt adatmennyiséget. Ha egy szereplő újra aktiválódik, a rendszer ismét elérhetővé teszi az adatforrást az állami kezelőn keresztül. Azokban az esetekben, amikor a szereplők az állapot-kezelőben tárolják az adattárolást, és inaktiválva vannak, de soha nem aktiválják őket, szükség lehet az Adattisztításra.  Példák a szereplők törlésére, a [szereplők törlésére és azok állapotára](service-fabric-reliable-actors-delete-actors.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Színészi időzítők és emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
 * [Színészi események](service-fabric-reliable-actors-events.md)
 * [Actor újbóli belépés](service-fabric-reliable-actors-reentrancy.md)

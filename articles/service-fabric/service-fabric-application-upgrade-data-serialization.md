@@ -1,15 +1,14 @@
 ---
 title: 'Az alkalmazás frissítése: adatszerializálás'
 description: Ajánlott eljárások az adatszerializáláshoz, valamint a működés közbeni alkalmazások frissítésének módjáról.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: d502e74139c543d4183a75faa6bea1948d9f3e56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9474a0bf8041ac541389f782f60bf1220d690cde
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247982"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575635"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Az adatszerializálás hatása az alkalmazás frissítésére
 Egy [működés közbeni alkalmazás frissítése](service-fabric-application-upgrade.md)esetén a frissítés a csomópontok egy részhalmazára lesz alkalmazva, egyszerre egy frissítési tartomány. A folyamat során egyes frissítési tartományok az alkalmazás újabb verziójára vonatkoznak, és néhány frissítési tartomány az alkalmazás régebbi verziójára mutat. A bevezetés során az alkalmazás új verziójának képesnek kell lennie az adatai régi verziójának olvasására, és az alkalmazás régi verziójának képesnek kell lennie az adatai új verziójának olvasására. Ha az adatformátum nem továbbítható, és visszafelé nem kompatibilis, a frissítés meghiúsulhat, vagy rosszabb lehet, az adat elveszhet vagy sérült lehet. Ez a cikk azt ismerteti, hogy mit jelent az adatformátuma, és ajánlott eljárásokat biztosít az adattovábbítás és a visszamenőleges kompatibilitás biztosításához.

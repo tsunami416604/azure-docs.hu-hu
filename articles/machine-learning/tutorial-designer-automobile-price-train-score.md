@@ -10,14 +10,14 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 0475e7a7b9bb40e77fe23362ff098350037bdd30
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555268"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575975"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Oktatóanyag: Autó árának előrejelzése a tervezővel
 
 
 Ebben a kétrészes oktatóanyagban megtudhatja, hogyan használhatja a Azure Machine Learning designert a gépi tanulási modellek betanítására és üzembe helyezésére, ami előre jelezheti a személygépkocsik árát. A Designer egy húzással elválasztó eszköz, amely lehetővé teszi, hogy a gépi tanulási modellek egyetlen soros kód nélkül legyenek létrehozva.
@@ -48,7 +48,10 @@ Azure Machine Learning folyamat létrehozásához Azure Machine Learning munkate
 
 ### <a name="create-a-new-workspace"></a>Új munkaterület létrehozása
 
-A tervező használatához először Azure Machine Learning munkaterületre van szükség. A munkaterület a Azure Machine Learning legfelső szintű erőforrása, amely központi helyet biztosít a Azure Machine Learningban létrehozott összes összetevővel való együttműködéshez.
+A tervező használatához Azure Machine Learning munkaterületre van szükség. A munkaterület a Azure Machine Learning legfelső szintű erőforrása, amely központi helyet biztosít a Azure Machine Learningban létrehozott összes összetevővel való együttműködéshez. A munkaterület létrehozásával kapcsolatos útmutatásért lásd: [Azure Machine learning munkaterületek létrehozása és kezelése](how-to-manage-workspace.md).
+
+> [!NOTE]
+> Ha a munkaterület virtuális hálózatot használ, további konfigurációs lépéseket kell használnia a tervező használatához. További információ: [Azure Machine learning Studio használata Azure-beli virtuális hálózaton](how-to-enable-studio-virtual-network.md)
 
 ### <a name="create-the-pipeline"></a>A folyamat létrehozása
 
@@ -79,7 +82,7 @@ Beállíthatja a teljes folyamat **alapértelmezett számítási célját** , am
 
 1. Adja meg a számítási erőforrás nevét.
 
-1. Válassza a **Save** (Mentés) lehetőséget.
+1. Válassza a **Mentés** lehetőséget.
 
     > [!NOTE]
     > Számítási erőforrás létrehozása körülbelül öt percet vesz igénybe. Az erőforrás létrehozása után újra felhasználhatja azt, és kihagyhatja ezt a várakozási időt a jövőbeli futtatásokhoz.
@@ -92,7 +95,7 @@ A tervezőben több minta adatkészletet is megadhat a kipróbáláshoz. Ebben a
 
 1. Az adatkészletek és modulok palettájának bal oldalán található. Válassza ki a **minta adatkészleteket** az elérhető minta adatkészletek megtekintéséhez.
 
-1. Válassza ki az adatkészlet **Automobile Price (nyers) adatokat** , és húzza rá a vászonra.
+1. Válassza ki az adatkészlet **Automobile Price (nyers) adatokat**, és húzza rá a vászonra.
 
    ![Az adathúzás vászonra](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
 
@@ -165,7 +168,7 @@ A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet tov
 
 1. A megjelenő **oszlopok** területen bontsa ki a **Belefoglalás** elem melletti legördülő menüt. Kijelölés, **minden oszlop**
 
-1. Válassza a **Mentés** lehetőséget.
+1. Válassza a **Mentés** lehetőséget
 
 1. A vászontól jobbra található modul részletei ablaktáblán válassza a **teljes sor eltávolítása** a **tisztítási mód** alatt lehetőséget.
 
@@ -275,7 +278,7 @@ Most, hogy elvégezte a folyamat minden beállítását, elküldheti a folyamat 
     
     A futtatási állapot és a részletek a vászon jobb felső sarkában tekinthetők meg.
     
-    Ha az első fut, akár 20 percet is igénybe vehet, amíg a folyamat befejezi a futást. Az alapértelmezett számítási beállításokhoz a csomópont minimális mérete 0, ami azt jelenti, hogy a tervezőnek üresjárat után le kell foglalnia az erőforrásokat. Az ismétlődő folyamat-futtatások kevesebb időt vesznek igénybe, mivel a számítási erőforrások már le vannak foglalva. Emellett a tervező az egyes modulok gyorsítótárazott eredményeit használja a hatékonyság növelése érdekében.
+    Ha ez az első futtatás, akár 20 percet is igénybe vehet, amíg a folyamat befejezi a futását. Az alapértelmezett számítási beállításokhoz a csomópont minimális mérete 0, ami azt jelenti, hogy a tervezőnek üresjárat után le kell foglalnia az erőforrásokat. Az ismétlődő folyamat-futtatások kevesebb időt vesznek igénybe, mivel a számítási erőforrások már le vannak foglalva. Emellett a tervező az egyes modulok gyorsítótárazott eredményeit használja a hatékonyság növelése érdekében.
 
 ### <a name="view-scored-labels"></a>Pontozásos címkék megtekintése
 
@@ -295,11 +298,11 @@ A **kiértékelési modell** használatával megtekintheti, hogy a betanított m
 
 A modellhez a következő statisztikák láthatók:
 
-* Átlagos **abszolút hiba (Mae)** : az abszolút hibák átlaga. Hiba a várt érték és a tényleges érték közötti különbség.
-* **Legfelső szintű, négyzetes hiba (gyökátlagos)** : a tesztelési adatkészleten végrehajtott jóslatok átlagának négyzetes gyökere.
+* Átlagos **abszolút hiba (Mae)**: az abszolút hibák átlaga. Hiba a várt érték és a tényleges érték közötti különbség.
+* **Legfelső szintű, négyzetes hiba (gyökátlagos)**: a tesztelési adatkészleten végrehajtott jóslatok átlagának négyzetes gyökere.
 * **Relative Absolute Error** (relatív abszolút eltérés): a tényleges értékek és az összes tényleges értékek átlaga közötti különbségek abszolút eltérésének átlaga.
 * **Relative Squared Error** (relatív négyzetes eltérés): a négyzetes eltérések átlaga a tényleges értékek és az összes tényleges érték átlaga közötti különbség négyzetes értékéhez viszonyítva.
-* **Meghatározási együttható** : az R négyzetes értékként is ismert, ez a statisztikai metrika azt jelzi, hogy milyen jól illeszkedik a modell az adatokhoz.
+* **Meghatározási együttható**: az R négyzetes értékként is ismert, ez a statisztikai metrika azt jelzi, hogy milyen jól illeszkedik a modell az adatokhoz.
 
 Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a modell. A kisebb érték azt jelzi, hogy a jóslatok közelebb vannak a tényleges értékekhez. A meghatározási együttható esetében minél közelebb van az értéke egy (1,0), annál jobb az előrejelzések.
 
@@ -309,7 +312,7 @@ Ugorja át ezt a szakaszt, ha folytatni szeretné az oktatóanyag 2. részét, �
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f705150f927a08b5ca2f91b702ee0853766ac23a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: cfd7b5ac981fcb87d0fc929d944205dec9432b74
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511117"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575822"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
@@ -81,7 +81,7 @@ A Windows 10 2004 Update-től kezdődően az Azure AD-csoportok használatával 
 
 Jelenleg nincs felhasználói felület az Intune-ban a házirendek kezeléséhez, és [Egyéni OMA-URI-beállításokkal](/mem/intune/configuration/custom-settings-windows-10)kell konfigurálni őket. Néhány megfontolandó szempont a következő házirendek valamelyikének használatához: 
 
-- Az Azure AD-csoportok szabályzaton keresztüli hozzáadásához a csoport biztonsági azonosítóját a csoportok API végrehajtásával lehet megszerezni. A SID-t a groups API tulajdonsága határozza meg `securityIdentifier` .
+- Az Azure AD-csoportok házirenden keresztüli hozzáadásához a csoport SID-je szükséges a [Microsoft Graph API csoportok számára](/graph/api/resources/group?view=graph-rest-beta)történő végrehajtásával. A SID-t az API-válasz tulajdonsága határozza meg `securityIdentifier` .
 - A korlátozott csoportok házirendjének betartatásakor a rendszer a tagok listáján nem szereplő összes aktuális tagot eltávolítja. Ennek a szabályzatnak az új tagokkal vagy csoportokkal való érvényesítése eltávolítja a meglévő rendszergazdákat, azaz az eszközhöz csatlakozó felhasználót, az eszköz rendszergazdai szerepkörét és a globális rendszergazdai szerepkört az eszközről. A meglévő tagok eltávolításának elkerüléséhez konfigurálnia kell őket a korlátozott csoportok házirendjének tagok listájának részeként. Ez a korlátozás akkor fordul elő, ha a helyi felhasználók és csoportok házirendet használja, amely engedélyezi a növekményes frissítéseket a csoporttagság számára
 - A két házirendet használó rendszergazdai jogosultságokat a rendszer csak a következő jól ismert csoportok esetében értékeli ki egy Windows 10-es eszközön: rendszergazdák, felhasználók, vendégek, Kiemelt felhasználók, Távoli asztal felhasználók és távfelügyeleti felhasználók. 
 - A helyi rendszergazdák Azure AD-csoportokkal való kezelése nem alkalmazható a hibrid Azure AD-hez csatlakoztatott vagy az Azure AD által regisztrált eszközökre.
@@ -113,7 +113,7 @@ Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhö
 
 Ha eltávolítja a felhasználókat az eszköz rendszergazdai szerepkörből, akkor továbbra is a helyi rendszergazdai jogosultsággal rendelkezik az eszközön, amíg be van jelentkezve. A rendszer visszavonja a jogosultságot a következő bejelentkezéskor, amikor új elsődleges frissítési jogkivonatot állít ki. Ez a visszavonás a jogosultság megemeléséhez hasonlóan akár 4 órát is igénybe vehet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure Portalon](device-management-azure-portal.md).
 - Ha többet szeretne megtudni az eszközökön alapuló feltételes hozzáférésről, tekintse meg [Azure Active Directory eszközön alapuló feltételes hozzáférési szabályzatok konfigurálása](../conditional-access/require-managed-devices.md)című témakört.

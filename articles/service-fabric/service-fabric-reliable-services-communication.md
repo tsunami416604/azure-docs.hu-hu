@@ -1,17 +1,15 @@
 ---
 title: Reliable Services kommunikáció áttekintése
 description: A Reliable Services kommunikációs modell áttekintése, beleértve a figyelők megnyitását, a végpontok feloldását és a szolgáltatások közötti kommunikációt.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b45ceaed9f0d3d64a0fc6890549542acc6b1c21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7dc10055633c8e6dd2c645f28b774d5d5f3ac3f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018637"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574326"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>A Reliable Services kommunikációs API-k használata
 Az Azure Service Fabric platformként teljes mértékben független a szolgáltatások közötti kommunikációtól. Minden protokoll és verem elfogadható, UDP-ről HTTP-re. A szolgáltatás fejlesztője dönti el, hogyan kommunikálnak a szolgáltatások. A Reliable Services alkalmazás-keretrendszer beépített kommunikációs veremeket és API-kat biztosít, amelyeket az egyéni kommunikációs összetevők kiépítéséhez használhat.
@@ -197,7 +195,7 @@ A Service Fabric olyan API-kat biztosít, amelyek lehetővé teszik az ügyfelek
 A Reliable Services API a következő könyvtárakat biztosítja a szolgáltatásokkal kommunikáló ügyfelek írásához.
 
 ### <a name="service-endpoint-resolution"></a>Szolgáltatás végpontjának feloldása
-A szolgáltatással folytatott kommunikáció első lépéseként meg kell oldani annak a szolgáltatásnak a végponti címeit, amelynek a használatával szeretne kommunikálni. A `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` segédprogram osztály egy alapszintű primitív, amely segít az ügyfeleknek a szolgáltatás végpontjának meghatározásában futásidőben. Service Fabric terminológiában a szolgáltatás végpontjának meghatározásának folyamatát a *szolgáltatási végpont feloldásának*nevezzük.
+A szolgáltatással folytatott kommunikáció első lépéseként meg kell oldani annak a szolgáltatásnak a végponti címeit, amelynek a használatával szeretne kommunikálni. A `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)` segédprogram osztály egy alapszintű primitív, amely segít az ügyfeleknek a szolgáltatás végpontjának meghatározásában futásidőben. Service Fabric terminológiában a szolgáltatás végpontjának meghatározásának folyamatát a *szolgáltatási végpont feloldásának* nevezzük.
 
 A fürtön belüli szolgáltatásokhoz való kapcsolódáshoz a ServicePartitionResolver az alapértelmezett beállításokkal hozhatók létre. A legtöbb esetben ez az ajánlott használat:
 
@@ -333,14 +331,14 @@ public class MyCommunicationClientFactory extends CommunicationClientFactoryBase
 }
 ```
 
-Végezetül, egy kivétel kezelője feladata annak megállapítása, hogy milyen műveletet kell végrehajtani a kivétel bekövetkezésekor. A kivételek az **újrapróbálható** és **nem újrapróbálható**értékekre vannak kategorizálva.
+Végezetül, egy kivétel kezelője feladata annak megállapítása, hogy milyen műveletet kell végrehajtani a kivétel bekövetkezésekor. A kivételek az **újrapróbálható** és **nem újrapróbálható** értékekre vannak kategorizálva.
 
 * A **nem újrapróbálható** kivételek egyszerűen visszakerülnek a hívóba.
-* az **újrapróbálkozást** lehetővé tevő kivételek további kategorizálva **átmeneti** és **nem átmeneti**jellegűek.
+* az **újrapróbálkozást** lehetővé tevő kivételek további kategorizálva **átmeneti** és **nem átmeneti** jellegűek.
   * Az **átmeneti** kivételek azok, amelyek egyszerűen újra feloldhatók a szolgáltatási végponti cím feloldása nélkül. Ezek közé tartoznak az átmeneti hálózati problémák vagy a szolgáltatás-végpontot jelző, nem létező szolgáltatási hibák.
   * A **nem átmeneti** kivételek azok, amelyekhez a szolgáltatás-végponti címnek újbóli feloldására van szükség. Ezek közé tartoznak azok a kivételek, amelyek jelzik, hogy a szolgáltatási végpont nem érhető el, jelezve, hogy a szolgáltatás egy másik csomópontra került.
 
-Az egy `TryHandleException` adott kivételre vonatkozó döntést tesz. Ha **nem tudja** , hogy milyen döntéseket kell hoznia egy kivételről, **Hamis értéket**kell visszaadnia. Ha **tudja** , hogy milyen döntést kell hoznia, az eredményt ennek megfelelően kell beállítania, és **igaz**értéket kell visszaadnia.
+Az egy `TryHandleException` adott kivételre vonatkozó döntést tesz. Ha **nem tudja** , hogy milyen döntéseket kell hoznia egy kivételről, **Hamis értéket** kell visszaadnia. Ha **tudja** , hogy milyen döntést kell hoznia, az eredményt ennek megfelelően kell beállítania, és **igaz** értéket kell visszaadnia.
 
 ```csharp
 class MyExceptionHandler : IExceptionHandler
@@ -422,7 +420,7 @@ CompletableFuture<?> result = myServicePartitionClient.invokeWithRetryAsync(clie
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [ASP.NET Core a Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md)
 * [Távoli eljáráshívás Reliable Services táveléréssel](service-fabric-reliable-services-communication-remoting.md)
 * [WCF-kommunikáció Reliable Services használatával](service-fabric-reliable-services-communication-wcf.md)

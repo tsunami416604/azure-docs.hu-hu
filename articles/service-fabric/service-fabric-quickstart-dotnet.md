@@ -1,17 +1,15 @@
 ---
 title: .NET-alkalmazás gyors létrehozása Service Fabric az Azure-ban
 description: Ez a rövid útmutató azt ismerteti, hogyan lehet .NET-alkalmazást létrehozni az Azure-ban a Service Fabric Reliable Services mintaalkalmazásának használatával.
-author: mikkelhegn
 ms.topic: quickstart
 ms.date: 06/26/2019
-ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: b88dfedd5454d708386afa6912a26dac41c6d6b4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 15e2180e44acaa5ebefb403b2da3755396a45ba4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86258562"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575890"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rövid útmutató: .NET Reliable Services-alkalmazás üzembe helyezése a Service Fabricben
 
@@ -161,8 +159,8 @@ Az alkalmazás frissítéséhez tegye a következőket:
 
     ![Verzió módosítása párbeszédpanel](./media/service-fabric-quickstart-dotnet/change-version.png)
 7. Az **Service Fabric alkalmazás közzététele** párbeszédpanelen jelölje be az **alkalmazás frissítése jelölőnégyzetet**.
-8.  Módosítsa a **cél profilt** **PublishProfiles\Local.5Node.xmlre ** , és győződjön meg arról, hogy a **kapcsolódási végpont** **helyi fürtre**van beállítva. 
-9. Válassza **az alkalmazás frissítése**lehetőséget.
+8.  Módosítsa a **cél profilt** **PublishProfiles\Local.5Node.xmlre** , és győződjön meg arról, hogy a **kapcsolódási végpont** **helyi fürtre** van beállítva. 
+9. Válassza **az alkalmazás frissítése** lehetőséget.
 
     ![A Közzététel párbeszédpanel frissítési beállításai](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 

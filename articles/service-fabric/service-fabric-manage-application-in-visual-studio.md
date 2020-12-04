@@ -1,16 +1,14 @@
 ---
 title: Alkalmazások kezelése a Visual Studióban
 description: Az Azure Service Fabric-alkalmazások és-szolgáltatások létrehozásához, fejlesztéséhez, csomagolásához, üzembe helyezéséhez és hibakereséséhez használja a Visual studiót.
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: mikhegn
-ms.openlocfilehash: d6734f5da0fb7e5c9052b26b55b2d90b068bdbbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fd9295a0dead180767febcc5339ef0a25cb1e48
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75614332"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574547"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>A Visual Studio használata a Service Fabric-alkalmazások írásának és kezelésének egyszerűbbé tételéhez
 Azure Service Fabric-alkalmazásait és szolgáltatásait a Visual Studióban kezelheti. [A fejlesztési környezet beállítása](service-fabric-get-started.md)után a Visual Studio használatával Service Fabric alkalmazásokat hozhat létre, szolgáltatásokat vehet fel, illetve csomagokat telepíthet, regisztrálhat és telepíthet alkalmazásokat a helyi fejlesztési fürtben.
@@ -27,7 +25,7 @@ Alapértelmezés szerint az alkalmazások központi telepítése egyetlen egysze
 A Visual Studióban nyomja le az **F5** billentyűt az alkalmazás üzembe helyezéséhez, és csatolja a hibakeresőt az összes alkalmazás-példányhoz. A **CTRL + F5 billentyűkombinációval** hibakeresés nélkül telepítheti az alkalmazásokat, vagy közzéteheti a helyi vagy távoli fürtön a közzétételi profil használatával.
 
 ### <a name="application-debug-mode"></a>Alkalmazás hibakeresési módja
-A Visual Studio egy **Application Debug Mode**nevű tulajdonságot biztosít, amely azt szabályozza, hogy a Visual studiók hogyan kezelhetik az alkalmazások telepítését a hibakeresés részeként.
+A Visual Studio egy **Application Debug Mode** nevű tulajdonságot biztosít, amely azt szabályozza, hogy a Visual studiók hogyan kezelhetik az alkalmazások telepítését a hibakeresés részeként.
 
 #### <a name="to-set-the-application-debug-mode-property"></a>Az alkalmazás hibakeresési módjának tulajdonságának beállítása
 1. A Service Fabric alkalmazás projekt (*. sfproj) helyi menüjében válassza a **Tulajdonságok** lehetőséget (vagy nyomja le az **F4** billentyűt).

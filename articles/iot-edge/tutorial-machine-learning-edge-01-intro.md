@@ -8,18 +8,36 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d603e5d03480b99eb3d6adb72a3440198fda2e47
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74106503"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575465"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Oktatóanyag: teljes körű megoldás Azure Machine Learning és IoT Edge használatával
 
 A IoT-alkalmazások gyakran szeretnék kihasználni az intelligens felhő és az intelligens peremhálózat előnyeit. Ebben az oktatóanyagban bemutatjuk a gépi tanulási modellek betanítását a felhőben lévő IoT-eszközökről gyűjtött adatokkal, a modell üzembe helyezésével IoT Edge, valamint a modell karbantartásával és finomításával rendszeresen.
 
 Az oktatóanyag elsődleges célja, hogy bevezesse a IoT-adatfeldolgozást a gépi tanulással, különösen a szélén. Habár az általános gépi tanulási munkafolyamatok számos aspektusát érintik, ez az oktatóanyag nem a gépi tanulás részletes bevezetését célozza. Ebben az esetben a használati esethez nem próbálunk meg kiválóan optimalizált modellt létrehozni – csak annyit teszünk, hogy egy életképes modell létrehozására és használatára vonatkozó folyamatot IoT az adatfeldolgozáshoz.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Az oktatóanyag elvégzéséhez hozzá kell férnie egy Azure-előfizetéshez, amelyben jogosultságokkal rendelkezik az erőforrások létrehozásához. Az oktatóanyagban használt szolgáltatások közül több Azure-díjat számol fel. Ha még nem rendelkezik Azure-előfizetéssel, akkor lehet, hogy megkezdheti az [ingyenes Azure-fiók](https://azure.microsoft.com/offers/ms-azr-0044p/)megkezdését.
+
+Szükség van egy olyan gépre is, amelyen telepítve van a PowerShell, ahol parancsfájlokat futtathat egy Azure-beli virtuális gép fejlesztői számítógépként való beállításához.
+
+Ebben a dokumentumban a következő eszközkészleteket használjuk:
+
+* Azure IoT hub adatrögzítéshez
+
+* Az adatelőkészítés és a gépi tanulási kísérletezés fő kezelőfelületének Azure Notebooks. A Python-kód a mintaadatok egy részhalmazán való futtatása nagyszerű módja annak, hogy gyors iterációs és interaktív fordulatot kapjon az adat-előkészítés során. A Jupyter-jegyzetfüzetek felhasználhatók a parancsfájlok futtatására is a számítási háttérbeli méretezési műveletekben.
+
+* Azure Machine Learning háttérként a gépi tanuláshoz a nagy léptékű és a gépi tanulási rendszerkép generálásához. A Azure Machine Learning hátteret a Jupyter-jegyzetfüzetekben előkészített és tesztelt parancsfájlok használatával hajtjuk.
+
+* Azure IoT Edge gépi tanulási rendszerkép nem felhőalapú alkalmazásához
+
+Természetesen vannak más elérhető lehetőségek is. Bizonyos helyzetekben például a IoT Central a IoT-eszközökből származó kezdeti betanítási adatok rögzítésére szolgáló, kód nélküli Alternatív megoldásként használható.
 
 ## <a name="target-audience-and-roles"></a>Célközönség és szerepkörök
 
@@ -40,9 +58,9 @@ Az oktatóanyagban használt adatok a [Turbofan motor degradációs szimuláció
 
 A readme fájlból:
 
-***Kísérleti forgatókönyv***
+***Kísérleti forgatókönyv** _
 
-*Az adatkészletek több többváltozós idősorozatból állnak. Az egyes adatkészletek tovább vannak osztva a betanítási és tesztelési részhalmazokra. Az egyes idősorozatok egy másik motortól származnak, azaz az adatok ugyanabba a típusba tartozó hajtóművekből származnak. Az egyes motorok a kezdeti kopás és a gyártási variáció különböző mértékével kezdődnek, ami ismeretlen a felhasználó számára. Ez a kopás és a változás normálisnak számít, azaz nem minősül hibás feltételnek. Három működési beállítás van, amelyek jelentős hatással vannak a motor teljesítményére. Ezeket a beállításokat az adatközpont is tartalmazza. Az adatsérülést érzékelő zaj okozta.*
+_Data a készletek több többváltozós idősorozatból állnak. Az egyes adatkészletek tovább vannak osztva a betanítási és tesztelési részhalmazokra. Az egyes idősorozatok egy másik motortól származnak, azaz az adatok ugyanabba a típusba tartozó hajtóművekből származnak. Az egyes motorok a kezdeti kopás és a gyártási variáció különböző mértékével kezdődnek, ami ismeretlen a felhasználó számára. Ez a kopás és a változás normálisnak számít, azaz nem minősül hibás feltételnek. Három működési beállítás van, amelyek jelentős hatással vannak a motor teljesítményére. Ezeket a beállításokat az adatközpont is tartalmazza. Az adatfertőzés az érzékelő zaja szerint történik. *
 
 *A motor általában az egyes idősorok elején működik, és az adatsorozat során egy bizonyos ponton hibát dolgoz fel. A betanítási készletben a hiba a rendszerhibaig növekszik. A tesztelési készletben az idősorozat a rendszerhiba előtt némi időt ér el. A verseny célja, hogy előre megjósolja a hátralévő működési ciklusok számát a tesztelési csoport meghibásodása előtt, azaz a motor utolsó ciklusa utáni működési ciklusok számát. A tesztelési adatok valódi hátralévő hasznos élettartamának (RUL) a vektorát is biztosította.*
 
@@ -74,23 +92,9 @@ Az alábbi képen láthatók az oktatóanyagban követett durva lépések:
 
 1. **A modell karbantartása és pontosítása**. A modell üzembe helyezése után nem végezünk munkát. Sok esetben szeretnénk folytatni az adatok gyűjtését és az adatok felhőbe való rendszeres feltöltését. Ezután ezeket az adattípusokat felhasználhatjuk a modell újratanításához és pontosításához, amelyet aztán újra üzembe helyezhetünk IoT Edge.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyag elvégzéséhez hozzá kell férnie egy Azure-előfizetéshez, amelyben jogosultságokkal rendelkezik az erőforrások létrehozásához. Az oktatóanyagban használt szolgáltatások közül több Azure-díjat számol fel. Ha még nem rendelkezik Azure-előfizetéssel, akkor lehet, hogy megkezdheti az [ingyenes Azure-fiók](https://azure.microsoft.com/offers/ms-azr-0044p/)megkezdését.
-
-Szükség van egy olyan gépre is, amelyen telepítve van a PowerShell, ahol parancsfájlokat futtathat egy Azure-beli virtuális gép fejlesztői számítógépként való beállításához.
-
-Ebben a dokumentumban a következő eszközkészleteket használjuk:
-
-* Azure IoT hub adatrögzítéshez
-
-* Az adatelőkészítés és a gépi tanulási kísérletezés fő kezelőfelületének Azure Notebooks. A Python-kód a mintaadatok egy részhalmazán való futtatása nagyszerű módja annak, hogy gyors iterációs és interaktív fordulatot kapjon az adat-előkészítés során. A Jupyter-jegyzetfüzetek felhasználhatók a parancsfájlok futtatására is a számítási háttérbeli méretezési műveletekben.
-
-* Azure Machine Learning háttérként a gépi tanuláshoz a nagy léptékű és a gépi tanulási rendszerkép generálásához. A Azure Machine Learning hátteret a Jupyter-jegyzetfüzetekben előkészített és tesztelt parancsfájlok használatával hajtjuk.
-
-* Azure IoT Edge gépi tanulási rendszerkép nem felhőalapú alkalmazásához
-
-Természetesen vannak más elérhető lehetőségek is. Bizonyos helyzetekben például a IoT Central a IoT-eszközökből származó kezdeti betanítási adatok rögzítésére szolgáló, kód nélküli Alternatív megoldásként használható.
+Ez az oktatóanyag egy olyan készlet része, amelyben az egyes cikkek az előzőekben végzett munkára épülnek. Várjon, amíg az összes erőforrást el nem végezte, amíg el nem végzi a végleges oktatóanyagot.
 
 ## <a name="next-steps"></a>További lépések
 

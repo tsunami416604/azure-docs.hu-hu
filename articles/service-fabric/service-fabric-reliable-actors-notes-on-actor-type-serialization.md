@@ -1,17 +1,15 @@
 ---
 title: Reliable Actors a szereplők típusának szerializálására vonatkozó megjegyzések
 description: A Service Fabric Reliable Actors állapotok és felületek definiálásához használható szerializálható osztályok definiálásának alapvető követelményeit tárgyalja
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 33a15b3c6f570d3b4d36a205f91bce7b042f3bb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a1118e394046b217a288663659a2c910098e992
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016580"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576009"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Megjegyzések Service Fabric Reliable Actors típus szerializálásához
 Az összes metódus argumentumai, a színészi felületen az egyes metódusok által visszaadott tevékenységek eredményei, valamint a színészek állapot-kezelőjében tárolt objektumok esetében a [szerializálható adategyezménynek](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)kell szerepelnie. Ez a [színészi esemény-illesztőfelületekben](service-fabric-reliable-actors-events.md)definiált metódusok argumentumait is érinti. (A színészi esemény felületi módszerei mindig semmisnek térnek vissza.)
@@ -137,7 +135,7 @@ public class VoicemailBox implements Serializable
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Actor életciklusa és a szemét gyűjtése](service-fabric-reliable-actors-lifecycle.md)
 * [Színészi időzítők és emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
 * [Színészi események](service-fabric-reliable-actors-events.md)

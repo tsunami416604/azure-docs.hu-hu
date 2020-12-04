@@ -1,17 +1,15 @@
 ---
 title: Az alkalmazás hibakeresése a Visual Studióban
 description: A szolgáltatások megbízhatóságának és teljesítményének javítása a Visual Studióban a helyi fejlesztési fürtön való fejlesztéssel és hibakereséssel.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 35c4875ca9bf3165fff84164eb3bb7ebe44cf932
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0b7d08d610c883240abedc66c55abba64a74c8e3
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093395"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576315"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Service Fabric-alkalmazás hibakeresése a Visual Studióval
 > [!div class="op_single_selector"]
@@ -24,7 +22,7 @@ ms.locfileid: "92093395"
 Időt és pénzt takaríthat meg az Azure Service Fabric-alkalmazás üzembe helyezésével és hibakeresésével egy helyi számítógép-fejlesztési fürtben. A Visual Studio 2019 vagy a 2015 képes telepíteni az alkalmazást a helyi fürtre, és automatikusan összekapcsolja a hibakeresőt az alkalmazás összes példányával. A hibakeresőhöz a Visual studiót rendszergazdaként kell futtatni.
 
 1. Indítsa el a helyi fejlesztési fürtöt a [Service Fabric fejlesztői környezet beállítása](service-fabric-get-started.md)című témakör lépéseit követve.
-2. Nyomja le az **F5** billentyűt, **vagy kattintson a hibakeresés**  >  **indítása**gombra.
+2. Nyomja le az **F5** billentyűt, **vagy kattintson a hibakeresés**  >  **indítása** gombra.
    
     ![A hibakeresés menüt megjelenítő képernyőkép.][startdebugging]
 3. A **hibakeresés** menüben a parancsok elemre kattintva adja meg a töréspontokat a kódban, és lépjen az alkalmazásba.
@@ -36,7 +34,7 @@ Időt és pénzt takaríthat meg az Azure Service Fabric-alkalmazás üzembe hel
 4. A **diagnosztikai események** ablak automatikusan megnyílik, így valós időben megtekintheti a diagnosztikai eseményeket.
    
     ![Diagnosztikai események megtekintése valós időben][diagnosticevents]
-5. A **diagnosztikai események** ablak a Cloud Explorerben is megnyitható.  A **Service Fabric**alatt kattintson a jobb gombbal bármelyik csomópontra, és válassza a **folyamatos átviteli Nyomkövetések megtekintése**lehetőséget.
+5. A **diagnosztikai események** ablak a Cloud Explorerben is megnyitható.  A **Service Fabric** alatt kattintson a jobb gombbal bármelyik csomópontra, és válassza a **folyamatos átviteli Nyomkövetések megtekintése** lehetőséget.
    
     ![A diagnosztikai események ablak megnyitása][viewdiagnosticevents]
    
@@ -134,7 +132,7 @@ A nyomkövetéseket közvetlenül egy távoli fürtcsomóponton is képes továb
    
     ![Távoli folyamatos átvitel nyomkövetésének letiltása][disablestreamingtraces]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Service Fabric szolgáltatás tesztelése](service-fabric-testability-overview.md).
 * [Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md).
 

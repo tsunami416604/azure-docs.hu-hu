@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 44365dec247b9f3135a090cee397cad32598fd29
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f621d11553101c2c0bcfce804b26c218ae58670c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977867"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576468"
 ---
 # <a name="calling-client-library-overview"></a>Hívási ügyfélkódtár áttekintése
 
@@ -71,7 +71,27 @@ A következő táblázat a jelenleg elérhető támogatott böngészők és verz
 
 * * Vegye figyelembe, hogy a Safari 13.1 + verziója támogatott. A Safari macOS-hez készült kimenő videó még nem támogatott, de iOS rendszeren támogatott. A kimenő képernyő megosztása csak asztali iOS rendszeren támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="calling-client---browser-security-model"></a>Ügyfél-böngésző biztonsági modell meghívása
+
+### <a name="user-webrtc-over-https"></a>Felhasználói WebRTC HTTPS-kapcsolaton keresztül
+
+WebRTC API-k `getUserMedia` , például a szükséges, hogy az API-kat meghívó alkalmazás HTTPS-en keresztül legyen kézbesítve.
+
+A helyi fejlesztéshez használhatja a következőt: `http://localhost` .
+
+### <a name="embed-the-communication-services-calling-sdk-in-an-iframe"></a>Az SDK-t hívó kommunikációs szolgáltatások beágyazása iframe-ben
+
+A különböző böngészők elfogadják az új [engedélyek házirendjét (más néven szolgáltatási szabályzatot)](https://www.w3.org/TR/permissions-policy-1/#iframe-allow-attribute) . Ez a házirend hatással van a hívási forgatókönyvekre azáltal, hogy azt szabályozza, hogyan érhetik el az alkalmazások az eszköz kameráját és mikrofonját egy kereszthivatkozásos iframe-elem használatával.
+
+Ha iframe-t szeretne használni az alkalmazás egy másik tartományból való tárolásához, az `allow` attribútumot a megfelelő értékkel kell hozzáadnia az IFRAME-hez.
+
+Ez az IFRAME például a kamera és a mikrofon elérését is lehetővé teszi:
+
+```html
+<iframe allow="camera *; microphone *">
+```
+
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a hívással](../../quickstarts/voice-video-calling/getting-started-with-calling.md)

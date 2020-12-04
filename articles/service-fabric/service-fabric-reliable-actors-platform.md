@@ -1,20 +1,18 @@
 ---
 title: Reliable Actors on Service Fabric
 description: Leírja, hogy a Reliable Actors hogyan vannak rétegben Reliable Services és hogyan használják a Service Fabric platform funkcióit.
-author: vturecek
 ms.topic: conceptual
 ms.date: 3/9/2018
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1cd90d4567bde6cd2c4f2a29e2d516b51b79e2af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3bd67e0f71e20a8b5a74b4b38e5b423a14dc08d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016614"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575618"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Hogyan Reliable Actors használni a Service Fabric platformot?
-Ez a cikk azt ismerteti, hogy Reliable Actors hogyan működik az Azure Service Fabric platformon. A Reliable Actors egy olyan keretrendszerben fut, amely egy, a *Actors szolgáltatásnak*nevezett, állapot-nyilvántartó megbízható szolgáltatás implementációjában található. A Actors szolgáltatás tartalmazza az életciklus és az üzenetek a szereplőkkel való elküldésének kezeléséhez szükséges összes összetevőt:
+Ez a cikk azt ismerteti, hogy Reliable Actors hogyan működik az Azure Service Fabric platformon. A Reliable Actors egy olyan keretrendszerben fut, amely egy, a *Actors szolgáltatásnak* nevezett, állapot-nyilvántartó megbízható szolgáltatás implementációjában található. A Actors szolgáltatás tartalmazza az életciklus és az üzenetek a szereplőkkel való elküldésének kezeléséhez szükséges összes összetevőt:
 
 * A színész futtatókörnyezete kezeli az életciklusokat, a Garbage gyűjteményt, és kikényszeríti az egyszálas hozzáférést.
 * A Actors szolgáltatás távelérési figyelője fogadja a résztvevők számára a távelérési hívásokat, és elküldi őket egy diszpécsernek a megfelelő Actor-példányra való átirányításhoz.
@@ -88,7 +86,7 @@ ActorProxyBase.create(MyActor.class, new ActorId(1234));
 GUID-azonosítók/UUID-kódok és karakterláncok használatakor az értékek kivonatolása egy Int64 történik. Ha azonban explicit módon ad meg egy Int64 `ActorId` , a Int64 további kivonatolás nélkül leképezi közvetlenül a partícióra. Ezzel a technikával szabályozhatja, hogy a szereplők milyen partíciót helyeznek el.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Színészi állapot kezelése](service-fabric-reliable-actors-state-management.md)
 * [A Actor életciklusa és a szemét gyűjtése](service-fabric-reliable-actors-lifecycle.md)
 * [A Actors API-dokumentációja](/dotnet/api/microsoft.servicefabric.actors?view=azure-dotnet)

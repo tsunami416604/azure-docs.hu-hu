@@ -3,21 +3,22 @@ title: A felhasználói hozzáférés visszavonása vészhelyzetben Azure Active
 description: Felhasználók összes hozzáférésének visszavonása Azure Active Directory
 services: active-directory
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
 author: curtand
 ms.author: curtand
 manager: daveba
 ms.reviewer: krbain
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 491e4f996d91fe267593e36b7ff06200c91b93f8
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: d808b920ddc6ff6f1d44252c27d67edd9c0dc353
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95490697"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575516"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Felhasználói hozzáférés visszavonása Azure Active Directory
 
@@ -116,7 +117,7 @@ Miután a rendszergazdák elvégezték a fenti lépéseket, a felhasználó nem 
 
 - A **munkamenet-jogkivonatokat használó alkalmazások** esetében a meglévő munkamenetek a jogkivonat lejárta után azonnal véget tartanak. Ha a felhasználó letiltott állapota szinkronizálva van az alkalmazással, akkor az alkalmazás automatikusan visszavonhatja a felhasználó meglévő munkameneteit, ha erre van konfigurálva.  A szükséges idő az alkalmazás és az Azure AD közötti szinkronizálás gyakoriságának függvénye.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Biztonságos hozzáférési eljárások az Azure AD-rendszergazdák számára](../roles/security-planning.md)
 - [Felhasználói profil adatainak hozzáadása vagy frissítése](../fundamentals/active-directory-users-profile-azure-portal.md)

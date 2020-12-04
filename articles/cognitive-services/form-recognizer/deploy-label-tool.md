@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 543e6115be30963600d867bb9c2a03dfbb54e9f1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913109"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576553"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>A mintacímkézési eszköz üzembe helyezése
 
@@ -34,7 +34,7 @@ Az adatfelirat megkezdésének leggyorsabb módja a minta feliratozási eszköz 
 
 Mielőtt elkezdenénk, fontos megjegyezni, hogy kétféleképpen lehet üzembe helyezni a minta-címkézési eszközt az Azure Container instance (ACI) szolgáltatásban. Mindkét lehetőség a minta feliratozási eszközének az ACI-val való futtatására szolgál. 
 
-* [Az Azure Portal használata](#azure-portal)
+* [A Azure Portal használata](#azure-portal)
 * [Az Azure CLI-vel](#azure-cli)
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -95,7 +95,7 @@ Az alábbi lépéseket követve hozzon létre egy új erőforrást a Azure Porta
    > [!div class="mx-imgBorder"]
    > ![A Docker konfigurálása](./media/quickstarts/formre-configure-docker.png)
 
-7. Ennyi az egész. Ezután válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget a webalkalmazás üzembe helyezéséhez. Ha elkészült, elérheti a webalkalmazást az erőforrás **áttekintésében** megadott URL-címen.
+7. Ennyi az egész. Ezután válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget a webalkalmazás üzembe helyezéséhez. Ha elkészült, elérheti a webalkalmazást az erőforrás **áttekintésében** megadott URL-címen.
 
 > [!NOTE]
 > A webalkalmazás létrehozásakor konfigurálhatja az engedélyezést és a hitelesítést is. Ez nem szükséges a kezdéshez. 
@@ -136,7 +136,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
@@ -155,6 +155,6 @@ Javasoljuk, hogy a webalkalmazást Azure Active Directoryhoz kapcsolja. Ez bizto
 
 Az OCR űrlap címkéző eszköze nyílt forráskódú projektként is elérhető a GitHubon. Az eszköz egy reakciós + Redux használatával létrehozott webalkalmazás, amely írógéppel van írva. További részletekért lásd: [OCR űrlap címkézése eszköz](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A betanítási](./quickstarts/label-tool.md) útmutató segítségével megtudhatja, hogyan használhatja az eszközt a betanítási adatok manuális címkézéséhez és a felügyelt tanulás végrehajtásához.

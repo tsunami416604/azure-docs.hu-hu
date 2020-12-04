@@ -1,16 +1,14 @@
 ---
 title: 'Tesztelés: szolgáltatások közötti kommunikáció'
 description: A szolgáltatások közötti kommunikáció egy Service Fabric alkalmazás kritikus integrációs pontja. Ez a cikk a tervezési szempontokat és a tesztelési technikákat ismerteti.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fbf889422d69d031d777acd80cf3becfb3184568
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007120"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575924"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric tesztelési forgatókönyvek: szolgáltatás-kommunikáció
 Az Azure Service Fabricban természetesen a szolgáltatások és a szolgáltatás-orientált építészeti stílusok is felszínre kerülnek. Ezekben az elosztott architektúrákban az összetevő-szolgáltatási alkalmazások jellemzően több olyan szolgáltatásból állnak, amelyeknek egymással kell kommunikálni. A legegyszerűbb esetekben általában legalább egy állapot nélküli webszolgáltatás és egy állapot-nyilvántartó adattároló szolgáltatásnak kell kommunikálnia.

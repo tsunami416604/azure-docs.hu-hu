@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 09/23/2020
-ms.openlocfilehash: 72566987068729efef4310ce145c30584c4895b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/03/2020
+ms.openlocfilehash: 4436289d544de057acef132117346ac53c20b5a7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011404"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576500"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Adatvédelem a Azure Stream Analyticsban 
 
@@ -41,7 +41,7 @@ Emellett dönthet úgy is, hogy a stream Analytics-feladathoz kapcsolódó össz
 
 A Stream Analytics automatikusan alkalmazza a legjobb színvonalú titkosítási szabványokat az infrastruktúrájában, hogy titkosítsa és védje az adatait. Egyszerűen megbízhat Stream Analytics az összes adatainak biztonságos tárolásához, így nem kell aggódnia az infrastruktúra kezelésével kapcsolatban.
 
-Ha ügyfél által felügyelt kulcsokat (CMK) kíván használni az adatok titkosításához, használhatja a saját Storage-fiókját (általános célú v1 vagy v2) a Stream Analytics futtatókörnyezet által igényelt személyes adategységek tárolásához. A Storage-fiók igény szerint titkosítható. A privát adategységek egyikét sem tárolja véglegesen a Stream Analytics-infrastruktúra. 
+Ha ügyfél által felügyelt kulcsokat kíván használni az adatok titkosításához, használhatja a saját Storage-fiókját (általános célú v1 vagy v2) a Stream Analytics futtatókörnyezet által igényelt személyes adategységek tárolásához. A Storage-fiók igény szerint titkosítható. A privát adategységek egyikét sem tárolja véglegesen a Stream Analytics-infrastruktúra. 
 
 Ezt a beállítást a Stream Analytics feladatok létrehozásának időpontjában kell konfigurálni, és nem módosítható a feladatok életciklusa során. A Stream Analytics által használt tárterület módosítása vagy törlése nem ajánlott. Ha törli a Storage-fiókját, akkor véglegesen törli az összes magánjellegű adategységet, ami miatt a feladat sikertelen lesz. 
 
@@ -50,12 +50,9 @@ A Storage-fiók kulcsainak frissítése vagy elforgatása nem lehetséges a Stre
 
 ### <a name="configure-storage-account-for-private-data"></a>A Storage-fiók konfigurálása magánjellegű adatként 
 
-
 Titkosítsa a Storage-fiókját, hogy biztosítsa az összes adatait, és explicit módon válassza ki a személyes adatai helyét. 
 
 A megfelelőségi kötelezettségeinek bármely szabályozott iparágban vagy környezetben való kielégítése érdekében további információkat olvashat a [Microsoft megfelelőségi ajánlatáról](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942). 
-
-
 
 A következő lépésekkel konfigurálhatja a Storage-fiókot a privát adategységekhez. Ez a konfiguráció a Stream Analyticsi feladatokból, és nem a Storage-fiókból történik.
 
@@ -69,9 +66,15 @@ A következő lépésekkel konfigurálhatja a Storage-fiókot a privát adategys
 
 1. Jelölje be a jelölőnégyzetet, amely azt adja meg, hogy a *jelen feladatokban a saját Storage-fiókomban szükséges összes privát adategység biztonságos* legyen.
 
-1. Válasszon egy Storage-fiókot az előfizetésből. Vegye figyelembe, hogy ez a beállítás a feladatok életciklusa során nem módosítható. 
+1. Válasszon egy Storage-fiókot az előfizetésből. Vegye figyelembe, hogy ez a beállítás a feladatok életciklusa során nem módosítható. Ezt a beállítást a feladatok létrehozása után is nem lehet hozzáadni.
+
+1. A kapcsolódási karakterlánccal való hitelesítéshez válassza a **kapcsolódási karakterlánc** lehetőséget a hitelesítési mód legördülő listából. A rendszer automatikusan kitölti a Storage-fiók kulcsát az előfizetésből.
 
    ![Magánjellegű adattárolási fiók beállításai](./media/data-protection/storage-account-create.png)
+
+1. A felügyelt identitás (előzetes verzió) használatával történő hitelesítéshez válassza a **felügyelt identitás** lehetőséget a hitelesítési mód legördülő listából. Ha a felügyelt identitást választja, hozzá kell adnia a Stream Analytics feladatot a Storage-fiók hozzáférés-vezérlési listájához. Ha nem adja meg a feladathoz való hozzáférést, a feladatnak nem lesz lehetősége semmilyen művelet végrehajtására. További információ a hozzáférés engedélyezéséről: az [Azure RBAC használata egy felügyelt identitáshoz való hozzáférés másik erőforráshoz való hozzárendeléséhez](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource).
+
+   :::image type="content" source="media/data-protection/storage-account-create-msi.png" alt-text="Személyes adattárolási fiókok beállításai felügyelt identitásos hitelesítéssel":::
 
 ## <a name="private-data-assets-that-are-stored-by-stream-analytics"></a>A Stream Analytics által tárolt privát adategységek
 

@@ -2,13 +2,13 @@
 title: Azure Event Grid eseményeinek szűrése
 description: Ismerteti, hogyan szűrhetők az események Azure Event Grid előfizetés létrehozásakor.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/03/2020
+ms.openlocfilehash: bc3e84037693fcd909961ba409871d947ef1de7d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120092"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574906"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid-előfizetések esemény-szűrésének ismertetése
 
@@ -72,7 +72,7 @@ Ha több értékkel rendelkező egyetlen szűrőt ad meg, a rendszer egy **vagy*
 ]
 ```
 
-Ha több különböző szűrőt is megad, a **és** a műveletet hajtja végre, így minden szűrési feltételnek teljesülnie kell. Alább bemutatunk egy példát: 
+Ha több különböző szűrőt ad meg, a **és** a művelet befejeződött, így minden szűrési feltételnek teljesülnie kell. Bemutatunk egy példát: 
 
 ```json
 "advancedFilters": [
@@ -117,6 +117,23 @@ A **karakterláncok** elérhető operátorai a következők:
 
 Az összes karakterlánc-összehasonlítás **nem** megkülönbözteti a kis-és nagybetűket.
 
+> [!NOTE]
+> Ha a JSON-esemény nem tartalmazza a speciális szűrő kulcsát, a szűrő evaulated, mivel a következő operátorok **nem egyeznek** : 
+> - NumberGreaterThan
+> - NumberGreaterThanOrEquals
+> - NumberLessThan
+> - NumberLessThanOrEquals
+> - NumberIn
+> - BoolEquals
+> - StringContains
+> - StringBeginsWith
+> - StringEndsWith
+> - StringIn
+> 
+>A szűrő a következő operátoroknak **megfelelően** evaulated:
+> - NumberNotIn
+> - StringNotIn
+
 ### <a name="key"></a>Kulcs
 
 A Event Grid sémában lévő eseményekhez használja a következő értékeket a kulcshoz:
@@ -154,7 +171,7 @@ A speciális szűrés a következő korlátozásokkal rendelkezik:
 * 5 speciális szűrő és 25 szűrő érték az összes szűrő/Event Grid-előfizetés alapján
 * 512 karakter/karakterlánc érték
 * Öt érték a **-ben** és **nem az** operátorokban
-* Kulcsok ** `.` (pont)** karakterrel. Például: `http://schemas.microsoft.com/claims/authnclassreference` vagy `john.doe@contoso.com` . Jelenleg a kulcsok nem támogatják a Escape-karakterek használatát. 
+* Kulcsok **`.` (pont)** karakterrel. Például: `http://schemas.microsoft.com/claims/authnclassreference` vagy `john.doe@contoso.com` . Jelenleg nem támogatottak az Escape-karakterek a kulcsokban. 
 
 Ugyanaz a kulcs több szűrőben is használható.
 

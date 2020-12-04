@@ -1,17 +1,15 @@
 ---
 title: Kapcsolódjon és kommunikáljon az Azure-beli szolgáltatásokkal Service Fabric
 description: Megtudhatja, hogyan oldható fel, csatlakozhat és kommunikálhat a szolgáltatásokkal Service Fabric.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 715089d40f584fbbaf23f674e4243c92c718e9d1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 11f525eba89dc963deee0ba9a86566361ef644de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093327"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576298"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>A Service Fabric-szolgáltatásokkal való kapcsolattartás és kommunikáció
 Service Fabric a szolgáltatás egy Service Fabric fürtön fut valahol, általában több virtuális gépen elosztva. Áthelyezhető az egyik helyről a másikra, akár a szolgáltatás tulajdonosa, akár a Service Fabric automatikusan. A szolgáltatások nem statikusan vannak társítva egy adott géphez vagy címhez.
@@ -62,7 +60,7 @@ További információ a fordított proxy szolgáltatás használatáról: [ford�
 A fürtön belül egymáshoz csatlakozó szolgáltatások általában közvetlenül hozzáférhetnek más szolgáltatások végpontjait, mert a fürt csomópontjai ugyanazon a helyi hálózaton találhatók. Bizonyos környezetekben azonban előfordulhat, hogy egy fürt egy olyan terheléselosztó mögött található, amely egy korlátozott számú porton keresztül irányítja át a forgalmat. Ezekben az esetekben a szolgáltatások továbbra is kommunikálhatnak egymással, és a elnevezési szolgáltatás használatával oldják fel a címeket, de további lépéseket kell végrehajtani ahhoz, hogy a külső ügyfelek csatlakozhassanak a szolgáltatásokhoz.
 
 ## <a name="service-fabric-in-azure"></a>Service Fabric az Azure-ban
-Az Azure-beli Service Fabric-fürt egy Azure Load Balancer mögé kerül. A fürtön lévő összes külső forgalomnak át kell haladnia a terheléselosztó használatával. A terheléselosztó automatikusan továbbítja a bejövő forgalmat egy adott porton egy véletlenszerű *csomópontra* , amelynek a portja meg van nyitva. A Azure Load Balancer csak a *csomópontokon*megnyitott portokat ismeri, nem ismeri az egyes *szolgáltatások*által megnyitott portokat.
+Az Azure-beli Service Fabric-fürt egy Azure Load Balancer mögé kerül. A fürtön lévő összes külső forgalomnak át kell haladnia a terheléselosztó használatával. A terheléselosztó automatikusan továbbítja a bejövő forgalmat egy adott porton egy véletlenszerű *csomópontra* , amelynek a portja meg van nyitva. A Azure Load Balancer csak a *csomópontokon* megnyitott portokat ismeri, nem ismeri az egyes *szolgáltatások* által megnyitott portokat.
 
 ![Azure Load Balancer és Service Fabric topológia][3]
 
@@ -158,7 +156,7 @@ Ha például a **80**-es porton el szeretné fogadni a külső forgalmat, a köv
 
     ![Forgalom továbbítása a Azure Load Balancerban][8]
 
-Fontos megjegyezni, hogy a Azure Load Balancer és a mintavétel csak a *csomópontokon*található, nem pedig a csomópontokon futó *szolgáltatásokkal* kapcsolatos. A Azure Load Balancer mindig forgalmat küld a mintavételre válaszoló csomópontoknak, ezért ügyelni kell arra, hogy a szolgáltatások elérhetők legyenek azokon a csomópontokon, amelyek képesek válaszolni a mintavételre.
+Fontos megjegyezni, hogy a Azure Load Balancer és a mintavétel csak a *csomópontokon* található, nem pedig a csomópontokon futó *szolgáltatásokkal* kapcsolatos. A Azure Load Balancer mindig forgalmat küld a mintavételre válaszoló csomópontoknak, ezért ügyelni kell arra, hogy a szolgáltatások elérhetők legyenek azokon a csomópontokon, amelyek képesek válaszolni a mintavételre.
 
 ## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: beépített kommunikációs API-beállítások
 A Reliable Services-keretrendszer számos előre elkészített kommunikációs lehetőséggel rendelkezik. Arról, hogy melyik az Ön számára legmegfelelőbb, a programozási modell, a kommunikációs keretrendszer, valamint a szolgáltatások által írt programozási nyelv típusától függ.
@@ -170,7 +168,7 @@ A Reliable Services-keretrendszer számos előre elkészített kommunikációs l
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Egyéni protokollok és egyéb kommunikációs keretrendszerek használata
 A szolgáltatások bármilyen protokollt vagy keretrendszert használhatnak a kommunikációhoz, függetlenül attól, hogy ez egy egyéni bináris protokoll TCP-szoftvercsatornán keresztül, vagy az [azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) vagy az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub/)használatával folyó események. A Service Fabric kommunikációs API-kat biztosít, amelyekkel összekapcsolhatja a kommunikációt. További részletekért tekintse meg ezt a cikket a [megbízható szolgáltatásokkal kapcsolatos kommunikációs modellről](service-fabric-reliable-services-communication.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tudjon meg többet a [Reliable Services kommunikációs modellben](service-fabric-reliable-services-communication.md)elérhető fogalmakról és API-król, majd a [szolgáltatás távelérésének](service-fabric-reliable-services-communication-remoting.md) gyors kezdéséhez, vagy részletesen megtudhatja, hogyan írhat egy kommunikációs figyelőt a [webes API-val a OWIN-alapú](./service-fabric-reliable-services-communication-aspnetcore.md)önkiszolgáló használatával.
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png

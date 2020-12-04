@@ -1,16 +1,14 @@
 ---
 title: Cloud Services és Service Fabric közötti különbségek
 description: Elméleti áttekintés az alkalmazások Cloud Servicesról Service Fabricba való áttelepítéséről.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 763b9977f756075789b826c2f1e01cd41ac60a73
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c7e7d346b5a39a262d1d55265becadb1c718cc04
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091168"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575771"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Ismerkedjen meg Cloud Services és Service Fabric közötti különbségekkel az alkalmazások áttelepítése előtt.
 A Microsoft Azure Service Fabric a felhőalapú alkalmazások következő platformja, amely rugalmasan méretezhető, megbízható elosztott alkalmazások számára készült. Számos új funkciót vezet be az elosztott felhőalapú alkalmazások csomagolásához, üzembe helyezéséhez, frissítéséhez és felügyeletéhez. 

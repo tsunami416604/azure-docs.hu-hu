@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 514f2e9a82a50f95f9c054c6a54e7b5af3c0af15
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a312c0ff255df4545181755ae6accd0d7dfb13a2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167777"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574853"
 ---
 # <a name="introduction-to-azure-functions"></a>Az Azure Functions bemutatása
 
@@ -43,7 +43,7 @@ Az alábbiakban gyakoriak, _de nem teljes körűen_ a Azure functions forgatók�
 | **Ütemezett feladatok futtatása** | Kód végrehajtása a [beállított időpontokban](./functions-bindings-timer.md) |
 | **Megbízható üzenetsor-rendszerek létrehozása** | Üzenetek várólistáinak feldolgozása [Queue Storage](./functions-bindings-storage-queue.md), [Service Bus](./functions-bindings-service-bus.md)vagy [Event Hubs](./functions-bindings-event-hubs.md) használatával |
 | **IoT adatfolyamok elemzése** | [IoT-eszközök adatainak](./functions-bindings-event-iot.md) összegyűjtése és feldolgozása |
-| **Az adatfeldolgozás valós időben** | A [functions és a Signal R](./functions-bindings-signalr-service.md) használatával válaszolhat az adatokra a pillanatban |
+| **Az adatfeldolgozás valós időben** | A [függvények és a jelző](./functions-bindings-signalr-service.md) használata az adatokra adott pillanatban való válaszadáshoz |
 
 A függvények összeállításakor a következő lehetőségek és erőforrások érhetők el:
 

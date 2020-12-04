@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric környezeti változók
 description: Ismerje meg az Azure Service Fabric környezeti változóit. A változók és azok felhasználási feladatait tartalmazó teljes lista hivatkozását tartalmazza.
-author: mikkelhegn
 ms.topic: reference
 ms.date: 12/07/2017
-ms.author: mikhegn
-ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b70249daa439b5a631b5a84b10c47f082ce75985
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75645684"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574581"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric környezeti változók
 
@@ -19,7 +17,7 @@ Service Fabric beépített környezeti változók vannak beállítva az egyes sz
 | Környezeti változó                         | Leírás                                                            | Példa                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | Az alkalmazás háló URI-neve                                 | háló:/MyApplication                                                |
-| Fabric_CodePackageName                       | Annak a kódnak a neve, amelyhez a folyamat tartozik              | Code                                                                 |
+| Fabric_CodePackageName                       | Annak a kódnak a neve, amelyhez a folyamat tartozik              | Kód                                                                 |
 | Fabric_Endpoint \_ IPOrFQDN \_ *ServiceEndpointName*     | A végpont IP-címe vagy teljes tartományneve                                 | 10.0.0.1                                                     |
 | Háló \_ végpontjának \_ *ServiceEndpointName*              | A végpont portszáma                                  | 8234                                                                 |
 | Fabric_Folder_App_Log                        | Napló mappája                                                             | C: \\ \\ \\ \\ adat_App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ napló      |

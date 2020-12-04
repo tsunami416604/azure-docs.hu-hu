@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 5c5be9089992104d27af3db84eb2c9a165f779f2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6432cc9affd34c0fa9b832aea91932a2b9e7540f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552883"
+ms.locfileid: "96576672"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Támogatott adatforrások és fájltípusok az Azure hatáskörébe
 
@@ -32,7 +32,7 @@ Az Azure-beli hatáskörébe a következő források támogatottak:
 | Azure Data Explorer                      | Szolgáltatásnév                              | UX            |
 | Azure Data Lake Storage Gen1 (ADLS Gen1) | Szolgáltatásnév, MSI                              | UX            |
 | Azure Data Lake Storage Gen2 (ADLS Gen2) | Fiók kulcsa, szolgáltatásnév, MSI            | UX            |
-| Cosmos DB                                 | Fiók kulcsa                                    | UX            |
+| Azure Cosmos DB                          | Fiók kulcsa                                    | UX            |
 
 
 > [!Note]
@@ -75,7 +75,7 @@ A fájlok mintavételezése fájltípusok szerinti erőforrás-készletek eseté
 
 Az összes 105 rendszerbesorolási szabály a strukturált fájlformátumokra vonatkozik. Csak az MCE besorolási szabályok érvényesek a dokumentumok fájltípusára (nem az adatvizsgálati natív regex-mintákra, a Bloom Filter-alapú észlelésre). A támogatott besorolásokkal kapcsolatos további információkért lásd: [támogatott besorolások az Azure hatáskörébe](supported-classifications.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: a Starter Kit futtatása és az adatvizsgálat](tutorial-scan-data.md)
 - [Adatforrások kezelése az Azure hatáskörébe (előzetes verzió)](manage-data-sources.md)

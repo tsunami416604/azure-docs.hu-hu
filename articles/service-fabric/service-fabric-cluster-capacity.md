@@ -4,13 +4,12 @@ description: A csomópontok típusai, tartóssága, megbízhatósága és egyéb
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.custom: sfrev
-ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817742"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576332"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric a fürt kapacitásának tervezési szempontjait
 
@@ -30,7 +29,7 @@ A *csomópont típusa* a fürtben lévő csomópontok (virtuális gépek) méret
 
 Mivel az egyes csomópont-típusok külön méretezési csoportok, az egymástól függetlenül méretezhető, a portok különböző készletei nyitottak, és különböző kapacitási metrikákkal rendelkeznek. További információ a csomópontok típusai és a virtuálisgép-méretezési csoportok közötti kapcsolatról: [Service Fabric fürtcsomópontok típusai](service-fabric-cluster-nodetypes.md).
 
-Minden fürthöz egy **elsődleges csomópont-típus**szükséges, amely Service Fabric platform-képességeket biztosító kritikus rendszerszolgáltatásokat futtat. Bár az alkalmazások futtatására is lehetséges az elsődleges csomópont-típusok használata, ajánlott kizárólag a rendszerszolgáltatások futtatására használni őket.
+Minden fürthöz egy **elsődleges csomópont-típus** szükséges, amely Service Fabric platform-képességeket biztosító kritikus rendszerszolgáltatásokat futtat. Bár az alkalmazások futtatására is lehetséges az elsődleges csomópont-típusok használata, ajánlott kizárólag a rendszerszolgáltatások futtatására használni őket.
 
 A **nem elsődleges csomópontok típusai** az alkalmazás szerepköreinek (például *előtér-* és *háttér-* szolgáltatások) meghatározására és a fürtön belüli szolgáltatások fizikai elkülönítésére használhatók. Service Fabric fürtökhöz nulla vagy több nem elsődleges csomópont típusú típus tartozhat.
 
@@ -40,21 +39,21 @@ Az elsődleges csomópont típusa a `isPrimary` Azure Resource Manager telepít�
 
 A kezdeti csomópontok típusának száma a fürt, valamint a rajta futó alkalmazások és szolgáltatások alapján függ. A következő kérdéseket kell figyelembe venni:
 
-* ***Az alkalmazása több szolgáltatással rendelkezik, és ezek közül bármelyiknek nyilvánosnak vagy internetkapcsolatnak kell lennie?***
+* ***Az alkalmazása több szolgáltatással rendelkezik, és ezek közül bármelyiknek nyilvánosnak vagy internetkapcsolatnak kell lennie?** _
 
     A tipikus alkalmazások olyan előtér-átjáró szolgáltatást tartalmaznak, amely egy ügyféltől érkező adatokat fogad, valamint egy vagy több háttér-szolgáltatást, amelyek az előtér-szolgáltatásokkal kommunikálnak, és amelyek az előtér-és a háttér-szolgáltatások közötti külön hálózatkezeléssel rendelkeznek. Ezek az esetek általában három csomópont-típust igényelnek: egy elsődleges csomópont-típust és két nem elsődleges csomópont-típust (egyet az előtér-és háttér-szolgáltatáshoz).
 
-* ***Az alkalmazást alkotó szolgáltatások eltérő infrastrukturális igényekkel rendelkeznek, például nagyobb RAM-mal vagy magasabb CPU-ciklusokkal?***
+_ ***Az alkalmazást alkotó szolgáltatások eltérő infrastrukturális igényekkel rendelkeznek, például nagyobb RAM-mal vagy magasabb CPU-ciklusokkal?** _
 
-    Az előtér-szolgáltatás gyakran kisebb virtuális gépeken (például D2) is futhat, amelyeken a portok nyitva vannak az interneten.  Előfordulhat, hogy a számítási célból intenzív háttér-szolgáltatásokat nagyobb virtuális gépeken kell futtatni (olyan virtuálisgép-méretekkel, mint a D4, a D6, a D15), amelyek nem internetre néznek. Ezeknek a szolgáltatásoknak a különböző csomópontjainak meghatározása lehetővé teszi az alapul szolgáló Service Fabric virtuális gépek hatékonyabb és biztonságos használatát, és lehetővé teszi, hogy egymástól függetlenül méretezhetők legyenek. Ha többet szeretne megtudni a szükséges erőforrások mennyiségének becsléséről, tekintse meg az [Service Fabric alkalmazások kapacitásának megtervezése](service-fabric-capacity-planning.md) című témakört.
+    Often, front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet.  Computationally intensive back-end services might need to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet-facing. Defining different node types for these services allow you to make more efficient and secure use of underlying Service Fabric VMs, and enables them to scale them independently. For more on estimating the amount of resources you'll need, see [Capacity planning for Service Fabric applications](service-fabric-capacity-planning.md)
 
-* ***Szükség van-e az alkalmazás szolgáltatásainak az 100 csomóponton túli skálázásra?***
+_ ***Minden alkalmazási szolgáltatásnak az 100 csomóponton túli skálázásra van szüksége?** _
 
-    Az egycsomópontos típusok nem tudják megbízhatóan méretezni a virtuálisgép-méretezési csoporton túli 100-csomópontot Service Fabric alkalmazásokhoz. A több mint 100 csomópont futtatásához további virtuálisgép-méretezési csoportok szükségesek (és így további csomópont-típusok is).
+    A single node type can't reliably scale beyond 100 nodes per virtual machine scale set for Service Fabric applications. Running more than 100 nodes requires additional virtual machine scale sets (and therefore additional node types).
 
-* ***A fürt a Availability Zones között fog terjedni?***
+_ ***A fürt a Availability Zones között fog terjedni?** _
 
-    Service Fabric támogatja a különböző [Availability Zonesokra](../availability-zones/az-overview.md) kiterjedő fürtöket, ha olyan csomópont-típusokat telepít, amelyek meghatározott zónákra vannak rögzítve, így biztosítva az alkalmazások magas rendelkezésre állását. Availability Zones további típusú csomópont-tervezési és minimális követelményeket kell megkövetelni. Részletekért lásd: [ajánlott topológia a Availability Zones-ra kiterjedő Service Fabric fürtök elsődleges csomópont-típusaihoz](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
+    Service Fabric supports clusters that span across [Availability Zones](../availability-zones/az-overview.md) by deploying node types that are pinned to specific zones, ensuring high-availability of your applications. Availability Zones require additional node type planning and minimum requirements. For details, see [Recommended topology for primary node type of Service Fabric clusters spanning across Availability Zones](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
 A fürt kezdeti létrehozásához szükséges csomópontok számának és tulajdonságainak meghatározásakor vegye figyelembe, hogy a fürt üzembe helyezésekor bármikor hozzáadhat, módosíthat vagy eltávolíthat (nem elsődleges) csomópont-típusokat. Az [elsődleges csomópontok típusa](service-fabric-scale-up-primary-node-type.md) a futó fürtökben is módosítható (bár az ilyen műveletek nagy mennyiségű tervezést és óvatosságot igényelnek az éles környezetekben).
 
@@ -62,7 +61,7 @@ A csomópont típusú tulajdonságok további megfontolása tartóssági szint, 
 
 ## <a name="durability-characteristics-of-the-cluster"></a>A fürt tartóssági jellemzői
 
-A *tartóssági szint* kijelöli a Service Fabric virtuális gépekhez tartozó jogosultságokat az alapul szolgáló Azure-infrastruktúrával. Ez a jogosultság lehetővé teszi, hogy a Service Fabric felfüggessze a rendszerszolgáltatások és az állapot-nyilvántartó szolgáltatások Kvórumának Service Fabric követelményeit érintő virtuálisgép-szintű infrastruktúra-kérelmeket (például újraindítás, rendszerkép vagy áttelepítés).
+A _durability szint * meghatározza, hogy a Service Fabric virtuális gépek milyen jogosultságokkal rendelkeznek az alapul szolgáló Azure-infrastruktúrával. Ez a jogosultság lehetővé teszi, hogy a Service Fabric felfüggessze a rendszerszolgáltatások és az állapot-nyilvántartó szolgáltatások Kvórumának Service Fabric követelményeit érintő virtuálisgép-szintű infrastruktúra-kérelmeket (például újraindítás, rendszerkép vagy áttelepítés).
 
 > [!IMPORTANT]
 > A tartóssági szint a csomópont típusa szerint van beállítva. Ha nincs megadva, a rendszer a *bronz* szintet fogja használni, azonban nem biztosít automatikus operációsrendszer-frissítéseket. Éles számítási feladatokhoz az *ezüst* vagy az *arany* tartóssága ajánlott.
@@ -182,7 +181,7 @@ Service Fabric [megbízható gyűjtemények vagy megbízható szereplők](servic
 
 Az állapot nélküli éles számítási feladatokhoz a minimálisan támogatott nem elsődleges csomópont típusának háromnak kell lennie a kvórum megőrzése érdekében, azonban a csomópont típusának mérete öt ajánlott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fürt konfigurálása előtt tekintse át a `Not Allowed` [fürt frissítési szabályzatait](service-fabric-cluster-fabric-settings.md) , hogy csökkentse a fürt ismételt létrehozását, mert a rendszer nem módosítható a rendszerkonfigurációs beállítások miatt.
 

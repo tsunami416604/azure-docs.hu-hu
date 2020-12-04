@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9a29e890553d15d19853ec836f8c4296869e143
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8efc0301296f64abfe9b827e943882e930929086
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959628"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575329"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Azure Machine Learning modell betanítása és üzembe helyezése
 
@@ -158,7 +158,7 @@ Annak ellenőrzéséhez, hogy a jegyzetfüzetek sikeresen befejeződtek-e, ellen
 
 1. Ellenőrizze, hogy a következő fájlok lettek-e létrehozva:
 
-    | Fájl | Leírás |
+    | Fájl | Description |
     | --- | --- |
     | ./aml_config/.azureml/config.jsbekapcsolva | A Azure Machine Learning-munkaterület létrehozásához használt konfigurációs fájl. |
     | ./aml_config/model_config.jsbekapcsolva | Konfigurációs fájl, amelyre telepíteni kell a modellt a **turbofanDemo** Machine learning munkaterületen az Azure-ban. |
@@ -166,13 +166,13 @@ Annak ellenőrzéséhez, hogy a jegyzetfüzetek sikeresen befejeződtek-e, ellen
 
 1. Ellenőrizze, hogy létrejöttek-e az alábbi Azure-erőforrások. Néhány erőforrás neve véletlenszerű karakterekkel van hozzáfűzve.
 
-    | Azure-erőforrás | Name |
+    | Azure-erőforrás | Név |
     | --- | --- |
     | Machine Learning munkaterület | turborfanDemo |
     | Container Registry | turbofandemoxxxxxxxx |
     | Applications-ismeretek | turbofaninsightxxxxxxxx |
     | Key Vault | turbofankeyvaultbxxxxxxxx |
-    | Storage | turbofanstoragexxxxxxxxx |
+    | Tárolás | turbofanstoragexxxxxxxxx |
 
 ### <a name="debugging"></a>Hibakeresés
 
@@ -180,7 +180,11 @@ A jegyzetfüzetbe beillesztheti a hibakereséshez használható Python-utasítá
 
 Előfordulhat, hogy törölnie kell a korábban létrehozott fájlokat és az Azure-erőforrásokat, ha újra meg kell ismételni a jegyzetfüzeteket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ez az oktatóanyag egy olyan készlet része, amelyben az egyes cikkek az előzőekben végzett munkára épülnek. Várjon, amíg az összes erőforrást el nem végezte, amíg el nem végzi a végleges oktatóanyagot.
+
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben két, Azure Notebooks futó Jupyter-jegyzetfüzetet használtunk a turbofan-eszközökről a hátralévő hasznos élettartam (RUL) osztályozó, az osztályozó modellként való mentéséhez, a tároló lemezképének létrehozásához, valamint a lemezkép webszolgáltatásként való üzembe helyezéséhez és teszteléséhez.
 

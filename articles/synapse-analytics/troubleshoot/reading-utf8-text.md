@@ -6,13 +6,13 @@ ms.author: jrasnick
 ms.topic: troubleshooting
 ms.service: synapse-analytics
 ms.subservice: sql
-ms.date: 11/24/2020
-ms.openlocfilehash: 238880cb3f3628df7591e8d08e3057ebfd885900
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/03/2020
+ms.openlocfilehash: 70ce3c82790db0296d5359b5db2e6a323306c309
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466424"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576417"
 ---
 # <a name="troubleshoot-reading-utf-8-text-from-csv-or-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Az UTF-8 szövegnek az Azure szinapszis Analyticsben kiszolgáló nélküli SQL-készlettel való olvasásával kapcsolatban felmerülő hibák
 
@@ -24,11 +24,30 @@ Ha az UTF-8 szöveget egy CSV-vagy Parque-fájlból olvassa be a kiszolgáló n�
 
 A probléma megoldása az, hogy mindig UTF-8 rendezést használjon az UTF-8 szöveg CSV-vagy Parque-fájlokból való olvasásakor.
 
--   Sok esetben csak be kell állítania az UTF8-rendezést az adatbázison (metaadat-művelet).
--   Ha az UTF8-adatokat olvasó külső táblákon nem adta meg az UTF8-rendezést, akkor újra létre kell hoznia az érintett külső táblákat, és az UTF8-oszlopokon (metaadat-művelet) kell beállítania az UTF8-rendezést.
+- Sok esetben csak be kell állítania az UTF8-rendezést az adatbázison (metaadat-művelet).
+
+   ```sql
+   alter database MyDB
+         COLLATE Latin1_General_100_BIN2_UTF8;
+   ```
+
+- Explicit módon megadhatja a rendezést a VARCHAR oszlopban a OPENROWSET vagy a külső táblában:
+
+   ```sql
+   select geo_id, cases = sum(cases)
+   from openrowset(
+           bulk 'latest/ecdc_cases.parquet', data_source = 'covid', format = 'parquet'
+       ) with ( cases int,
+                geo_id VARCHAR(6) COLLATE Latin1_General_100_BIN2_UTF8 ) as rows
+   group by geo_id
+   ```
+ 
+- Ha az UTF8-adatokat olvasó külső táblákon nem adta meg az UTF8-rendezést, akkor újra létre kell hoznia az érintett külső táblákat, és az UTF8-oszlopokon (metaadat-művelet) kell beállítania az UTF8-rendezést.
 
 
 ## <a name="next-steps"></a>További lépések
 
+* [Parketta-fájlok lekérdezése a szinapszis SQL-sel](../sql/query-parquet-files.md)
+* [CSV-fájlok lekérdezése a szinapszis SQL-sel](../sql/query-single-csv-file.md)
 * [CETAS a szinapszis SQL-sel](../sql/develop-tables-cetas.md)
 * [Gyors útmutató: kiszolgáló nélküli SQL-készlet használata](../quickstart-sql-on-demand.md)

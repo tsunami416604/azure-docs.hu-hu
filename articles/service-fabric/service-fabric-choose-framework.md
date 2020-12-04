@@ -1,16 +1,15 @@
 ---
 title: A Service Fabric programozási modelljének áttekintése
 description: 'Service Fabric két keretrendszert kínál a szolgáltatások létrehozásához: a Actor Framework és a Services Framework. Az egyszerűség és a szabályozás terén különböző kompromisszumokat biztosítanak.'
-author: vturecek
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 8e1c96d0b04140f8c1121cfb74b43969b49cfdda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 523c9e0064d8b78698f1a0dd3544bda58436800c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260522"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575720"
 ---
 # <a name="service-fabric-programming-model-overview"></a>A Service Fabric programozási modelljének áttekintése
 
@@ -46,7 +45,7 @@ A ASP.NET Core egy nyílt forráskódú, többplatformos keretrendszer a modern,
 
 ## <a name="reliable-actors"></a>Reliable Actors
 
-A Reliable Servicesra épülő megbízható Actor Framework egy alkalmazás-keretrendszer, amely a számítási [modell](https://en.wikipedia.org/wiki/Actor_model)alapján implementálja a [virtuális színész](https://research.microsoft.com/en-us/projects/orleans/) mintáját. A *megbízható szereplők keretrendszere*a számítási és az állapot-független egységeket használja az egyszálas végrehajtással. A megbízható Actors keretrendszer beépített kommunikációt biztosít a szereplők számára, és előre beállított állapot-megőrzést és kibővíthető konfigurációkat tartalmaz.
+A Reliable Servicesra épülő megbízható Actor Framework egy alkalmazás-keretrendszer, amely a számítási [modell](https://en.wikipedia.org/wiki/Actor_model)alapján implementálja a [virtuális színész](https://research.microsoft.com/en-us/projects/orleans/) mintáját. A *megbízható szereplők keretrendszere* a számítási és az állapot-független egységeket használja az egyszálas végrehajtással. A megbízható Actors keretrendszer beépített kommunikációt biztosít a szereplők számára, és előre beállított állapot-megőrzést és kibővíthető konfigurációkat tartalmaz.
 
 Mivel a Reliable Actors Reliable Servicesre épülő alkalmazás-keretrendszer, teljes mértékben integrálva van a Service Fabric platformmal, és a platform által kínált összes funkció előnyeit élvezheti.
 
