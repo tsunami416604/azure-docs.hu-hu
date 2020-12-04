@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: baanders
 ms.openlocfilehash: 8ea371e25f149c52412153aa0b9c3b7475dc77fd
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 12/04/2020
 ms.locfileid: "96303595"
 ---
 Ha az Azure Digital Twins-t szeretné használni ebben a cikkben, először **be kell állítania egy Azure digitális Twins-példányt** és a használatához szükséges engedélyeket. Ha már rendelkezik egy Azure Digital Twins-példánnyal, amely az előző munkafolyamatból lett beállítva, akkor ezt a példányt használhatja.
