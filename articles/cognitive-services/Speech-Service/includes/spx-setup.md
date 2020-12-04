@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: da88b8554d6c3214da9a386613538c237a318f73
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6011bf90d5a97dcc027f8a9a0916c28226c5c354
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546903"
+ms.locfileid: "96584462"
 ---
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
@@ -97,13 +97,12 @@ Windows rendszeren a parancsok a következőképpen fognak kezdődni:
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
-Linux vagy macOS rendszeren a parancsok a következőhöz hasonlóak lesznek:
-```shell   
-sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
-```
+Linux vagy macOS rendszeren a parancsok az alábbi példához hasonlóan jelennek meg. Cserélje le a `ABSOLUTE_PATH` értéket a csatlakoztatott könyvtár abszolút elérési útjára. Ezt az elérési utat az `pwd` előző szakaszban szereplő parancs adta vissza. 
 
-> [!NOTE]
-> Cserélje le a `/ABSOLUTE_PATH` parancsot a fenti szakaszban szereplő parancs által megjelenített abszolút elérési útra `pwd` .
+Ha a kulcs és a régió beállítása előtt futtatja ezt a parancsot, hibaüzenet jelenik meg a kulcs és a régió beállításakor:
+```shell   
+sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
+```
 
 A `spx` tárolóban telepített parancs használatához mindig adja meg a fent látható teljes parancsot, majd a kérés paramétereit.
 Windows rendszeren például a következő parancs állítja be a kulcsot:
@@ -115,26 +114,28 @@ docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCR
 > [!WARNING]
 > A számítógép mikrofonját nem használhatja, ha a Speech CLI-t a Docker-tárolón belül futtatja. A helyi csatlakoztatott címtárban azonban elolvashatja és mentheti a hangfájlokat. 
 
-### <a name="optional-create-a-command-line-shortcut"></a>Nem kötelező: parancssori parancsikon létrehozása
+<!-- Need to troubleshoot issues with docker pull image
 
-Ha Linux vagy macOS rendszerű Docker-tárolóból futtatja a Speech CLI-t, létrehozhat egy parancsikont. 
+### Optional: Create a command line shortcut
 
-Parancsikon létrehozásához kövesse az alábbi utasításokat:
-1. Nyissa meg `.bash_profile` kedvenc szövegszerkesztőjét. Például:
+If you're running the the Speech CLI from a Docker container on Linux or macOS you can create a shortcut. 
+
+Follow these instructions to create a shortcut:
+1. Open `.bash_profile` with your favorite text editor. For example:
    ```shell
    nano ~/.bash_profile
    ```
-2. Ezután adja hozzá ezt a függvényt a következőhöz: `.bash_profile` . Győződjön meg arról, hogy a függvényt a csatlakoztatott könyvtár megfelelő elérési útjával frissíti:
+2. Next, add this function to your `.bash_profile`. Make sure you update this function with the correct path to your mounted directory:
    ```shell   
    spx(){
-       sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
+       sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
    }
    ```
-3. A profil forrása:
+3. Source your profile:
    ```shell
    source ~/.bash_profile
    ```
-4. A futtatása helyett most `sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx` írja be a következőt `spx` : argumentumok. Például: 
+4. Now instead of running `sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx`, you can just type `spx` followed by arguments. For example: 
    ```shell
    // Get some help
    spx help recognize
@@ -144,8 +145,8 @@ Parancsikon létrehozásához kövesse az alábbi utasításokat:
    ```
 
 > [!WARNING]
-> Ha módosítja azt a csatlakoztatott könyvtárat, amelyre a Docker hivatkozik, frissítenie kell a függvényt a alkalmazásban `.bash_profile` .
-
+> If you change the mounted directory that Docker is referencing, you need to update the function in `.bash_profile`.
+--->
 ***
 
 ## <a name="create-subscription-config"></a>Előfizetés konfigurációjának létrehozása

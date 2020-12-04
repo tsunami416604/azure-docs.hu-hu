@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/01/2020
+ms.date: 12/03/2020
 ms.author: alkohli
-ms.openlocfilehash: 751ac870996fa1a2805bb018c991f85525fd797d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 90869af032a381cecd3e65f5d5b367156dd047c5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548952"
+ms.locfileid: "96576853"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A helyi webes felhasználói felület használata a Data Box és Data Box Heavy felügyeletéhez
 
-Ez a cikk a Data Box és Data Box Heavy eszközökön végrehajtott konfigurációs és felügyeleti feladatokat ismerteti. A Data Box és Data Box Heavy eszközöket a Azure Portal felhasználói felületen és az eszköz helyi webes FELÜLETén keresztül kezelheti. Ez a cikk a helyi webes felhasználói felület használatával végrehajtott feladatokat ismerteti.
+Ez a cikk a Data Box és Data Box Heavy eszközökön végrehajtott konfigurációs és felügyeleti feladatokat ismerteti. A Data Box és Data Box Heavy eszközöket a Azure Portal felhasználói felületen és az eszköz helyi webes FELÜLETén keresztül kezelheti. Ez a cikk a helyi webes felhasználói felület használatával végrehajtott feladatokra összpontosít.
 
 A Data Box és a Data Box Heavy helyi webes FELÜLETe az eszköz kezdeti konfigurálására szolgál. A helyi webes felhasználói felület segítségével leállíthatja vagy újraindíthatja az eszközt, diagnosztikai teszteket futtathat, szoftvereket frissíthet, megtekintheti a másolási naplókat, törölheti a helyi adatait az eszközről, és létrehozhat egy támogatási csomagot a Microsoft ügyfélszolgálatahoz. Két független csomóponttal rendelkező Data Box Heavy eszközön két különálló helyi webes felület érhető el, amely az eszköz egyes csomópontjainak felel meg.
 
@@ -29,21 +29,25 @@ Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rend
 
 Támogatási csomag létrehozásához hajtsa végre a következő lépéseket:
 
-1. A helyi webes KEZELŐFELÜLETen lépjen a **Kapcsolatfelvétel az ügyfélszolgálattal** lehetőségre, és válassza a **támogatási csomag létrehozása** lehetőséget.
+1. A helyi webes KEZELŐFELÜLETen lépjen a **Kapcsolatfelvétel a támogatási szolgálatba**. Ha szeretné, jelölje be a memóriakép **belefoglalása** jelölőnégyzetet. Ezután válassza a **támogatási csomag létrehozása** lehetőséget.
+
+    A memóriakép az eszköz memóriájának tartalma, rendszerhiba után mentve.
+
+    Ha nem kér támogatást, ne jelölje be a **memóriakép belefoglalása** beállítást. Hosszú időt vesz igénybe a memóriaképet tartalmazó támogatási csomag összegyűjtése, és a bizalmas adatok is szerepelnek benne.
 
     ![Támogatási csomag létrehozása – 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
-2. A rendszer összeállítja a támogatási csomagot. A művelet pár percet vesz igénybe.
+    A rendszer összeállítja a támogatási csomagot. A művelet eltarthat néhány percig, ha csak rendszernaplókat tartalmaz. Ha befoglalja a memóriaképet, a rendszer sok időt vesz igénybe.
 
     ![Támogatási csomag létrehozása – 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. A támogatási csomag létrehozásának befejezése után válassza a **támogatási csomag letöltése** lehetőséget.
+2. Ha a támogatási csomag létrehozása befejeződött, válassza a **támogatási csomag letöltése** lehetőséget.
+
+    ![3. támogatási csomag létrehozása](media/data-box-local-web-ui-admin/create-support-package-3.png)
+
+3. Tallózással válassza ki a letöltés helyét. Nyissa meg a mappát a tartalmak megtekintéséhez.
 
     ![Támogatási csomag létrehozása – 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
-
-4. Tallózással válassza ki a letöltés helyét. Nyissa meg a mappát a tartalmak megtekintéséhez.
-
-    ![Támogatási csomag létrehozása – 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
 
 ## <a name="erase-local-data-from-your-device"></a>Helyi adatok törlése az eszközről
 
@@ -72,6 +76,7 @@ Az eszközt a helyi webes felhasználói felület használatával állíthatja l
 Az eszköz leállításához hajtsa végre az alábbi lépéseket.
 
 1. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
+
 2. Válassza a **Leállítás** lehetőséget.
 
     ![A Data Box leállítása – 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
@@ -107,7 +112,7 @@ Mielőtt elkezdené, kövesse az alábbi lépéseket az importálási sorrendhez
 
     <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
-3. A Fájlkezelőben láthatja, hogy az eszközhöz való kapcsolódáshoz használt protokolltól és a használt Azure Storage-típustól függően a fájlok külön listája jön létre.
+3. A Fájlkezelőben a rendszer az eszközhöz való kapcsolódáshoz használt protokolltól és a használt Azure Storage-típustól függően külön listát hoz létre a fájlokról.
 
     <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
     ![Tárolási típus és kapcsolati protokoll fájljai](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
@@ -184,7 +189,7 @@ A szállításra való felkészüléskor a rendszer alapértelmezés szerint ell
 
 Az ellenőrzőösszeg kiszámítása a szállítás előkészítése során csak importálási rendelésekhez, és nem exportálási rendelésekhez történik.
 
-Határozottan javasoljuk, hogy csak akkor tiltsa le az ellenőrző létrehozását, ha komoly hatással lenne a teljesítményre.
+Azt javasoljuk, hogy ne tiltsa le az ellenőrzőösszeget, kivéve, ha a teljesítmény súlyosan érintett.
 
 1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások lehetőséget**.
 
@@ -261,9 +266,9 @@ Az ACL-ek átvitelének engedélyezése az Azure Files szolgáltatásban:
 
 ## <a name="enable-tls-11"></a>TLS 1,1 engedélyezése
 
-Alapértelmezés szerint a Azure Data Box Transport Layer Security (TLS) 1,2 titkosítást használ, mivel az biztonságosabb, mint a TSL 1,1. Ha azonban Ön vagy az ügyfelei böngészőt használnak a TLS 1,2-et nem támogató adateléréshez, akkor engedélyezheti a TLS 1,1-et.
+Alapértelmezés szerint a Azure Data Box a Transport Layer Security (TLS) 1,2-et használja a titkosításhoz, mert az biztonságosabb, mint a TSL 1,1. Ha azonban Ön vagy az ügyfelei egy böngészővel férnek hozzá a TLS 1,2-et nem támogató adataihoz, akkor engedélyezheti a TLS 1,1 használatát.
 
-A TLS-vel kapcsolatos további információkért lásd: [Azure Data Box Gateway biztonság](../databox-online/data-box-gateway-security.md).
+A TLS-vel kapcsolatos további információkért lásd: [Azure Data Box Gateway biztonság](../databox-gateway/data-box-gateway-security.md).
 
 A TLS 1,1 engedélyezése az Azure-eszközön:
 
@@ -279,6 +284,6 @@ A TLS 1,1 engedélyezése az Azure-eszközön:
 4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
 5. Válassza az **Újraindítás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [kezelheti a Data Box és Data Box Heavy a Azure Portalon keresztül](data-box-portal-admin.md).

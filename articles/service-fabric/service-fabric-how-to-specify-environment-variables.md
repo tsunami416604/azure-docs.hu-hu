@@ -1,16 +1,14 @@
 ---
 title: Környezeti változók megadása a szolgáltatásokhoz
 description: Bemutatja, hogyan használhatók környezeti változók a Service Fabric lévő alkalmazásokhoz
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.author: mikhegn
-ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 610e44ac98b8b8a2ce5a91fdbcfda145ae36a94b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75614315"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576740"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Környezeti változók megadása a Service Fabric szolgáltatásaihoz
 

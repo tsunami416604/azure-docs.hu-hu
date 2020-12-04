@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: 9f7d81423c75c3e1a51f5b5d5f37c54307488eb3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: f61d99a61cb50886d70489b586d948bfa751e196
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552751"
+ms.locfileid: "96576774"
 ---
 # <a name="glossary-insights-on-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adataival kapcsolatos Szószedet
 
@@ -20,6 +20,7 @@ Ez a útmutató ismerteti, hogyan lehet hozzáférni, megtekinteni és szűrni a
 
 Ebben a útmutatóban megismerheti a következőket:
 
+> [!div class="checklist"]
 > - Keresse meg a hatáskörébe tartozó fiókját
 > - A madár szem nézetének beolvasása az adatairól
 
@@ -66,6 +67,6 @@ A **Glosszárium** -információk oldal a következő területeket jeleníti meg
 
    :::image type="content" source="./media/glossary-insights/glossary-insights1.png" alt-text="Szószedet-áttekintések megtekintése":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure-beli felügyeleti jelentésekről az [Asset](./asset-insights.md) -elemzések segítségével
