@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/11/2020
-ms.openlocfilehash: 2cfd498f73646b0021d5fbb3e982dc82871ef35c
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 12/04/2020
+ms.openlocfilehash: 87465ff381c62343a11c54130378b48580ca40e2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026989"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621644"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Adatfolyam-hibakeresési mód leképezése
 
@@ -25,9 +25,9 @@ Azure Data Factory a leképezési adatfolyam hibakeresési módja lehetővé tes
 
 ![Hibakeresési csúszka](media/data-flow/debugbutton.png "Hibakeresési csúszka")
 
-A csúszka bekapcsolását követően meg kell adnia, hogy melyik Integration Runtime-konfigurációt kívánja használni. Ha a AutoResolveIntegrationRuntime van kiválasztva, akkor a rendszer egy, a 60 perces élettartammal rendelkező, nyolc maggal rendelkező fürtöt hoz létre. Az adatfolyam-integrációs modulokkal kapcsolatos további információkért lásd: [adatáramlási teljesítmény](concepts-data-flow-performance.md#ir).
+A csúszka bekapcsolását követően meg kell adnia, hogy melyik Integration Runtime-konfigurációt kívánja használni. Ha a AutoResolveIntegrationRuntime van kiválasztva, akkor a fürt nyolc maggal rendelkező általános számítási feladatokkal, az alapértelmezett 60 perces élettartammal megpördült. Ha több tétlen csapatot szeretne engedélyezni a munkamenet időkorlátja előtt, akkor magasabb TTL-beállítást választhat. Az adatfolyam-integrációs modulokkal kapcsolatos további információkért lásd: [adatáramlási teljesítmény](concepts-data-flow-performance.md#ir).
 
-![IR-kijelölés hibakeresése](media/data-flow/debugbutton2.png "IR-kijelölés hibakeresése")
+![IR-kijelölés hibakeresése](media/data-flow/debug-new-1.png "IR-kijelölés hibakeresése")
 
 Ha a hibakeresési mód be van kapcsolva, interaktív módon felépítheti az adatfolyamot egy aktív Spark-fürttel. A munkamenet akkor zárul le, ha a Azure Data Factoryban bekapcsolja a hibakeresést. Tisztában kell lennie azzal, hogy a hibakeresési munkamenet bekapcsolásának ideje alatt a Azure Databricks óradíjat számol fel.
 
@@ -36,7 +36,7 @@ A legtöbb esetben célszerű hibakeresési módban felépíteni az adatfolyamat
 ![Adatfolyam-hibakeresési munkamenetek megtekintése](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
 
 > [!NOTE]
-> Minden olyan hibakeresési munkamenet, amelyet a felhasználó az ADF böngésző felhasználói felületéről indít, egy új munkamenet a saját Spark-fürttel. A fenti hibakeresési munkamenetek figyelés nézetével megtekintheti és kezelheti a gyári hibakeresési munkameneteket.
+> Minden olyan hibakeresési munkamenet, amelyet a felhasználó az ADF böngésző felhasználói felületéről indít, egy új munkamenet a saját Spark-fürttel. A fenti hibakeresési munkamenetek figyelés nézetével megtekintheti és kezelheti a gyári hibakeresési munkameneteket. Az egyes hibakeresési munkamenetek esetében minden órában díjat kell fizetni, beleértve a TTL-időt is.
 
 ## <a name="cluster-status"></a>Fürt állapota
 
@@ -96,7 +96,7 @@ Ha kijelöl egy oszlopot az adatelőnézet lapon, és a **statisztikák** elemre
 
 ![Oszlop statisztikái](media/data-flow/stats.png "Oszlop statisztikái")
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Miután befejezte az adatfolyamok létrehozását és hibakeresését, [hajtsa végre a folyamatot egy folyamatból.](control-flow-execute-data-flow-activity.md)
 * Amikor adatfolyamként teszteli a folyamatot, használja a folyamat [hibakeresési futtatásának futtatása beállítást.](iterative-development-debugging.md)

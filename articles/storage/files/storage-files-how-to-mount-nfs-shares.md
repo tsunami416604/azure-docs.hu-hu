@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan csatlakoztathat hálózati fájlrendszer-megosz
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 530ae82720e6b4eb6a3e4d1021c0b37b9f4dbf5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a993d9c1de35132198de5e3becc4f16d6a2a437
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707441"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621297"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>NFS-fájlmegosztás csatlakoztatása
 
@@ -43,23 +43,27 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 ## <a name="disable-secure-transfer"></a>Biztonságos átvitel letiltása
 
 1. Jelentkezzen be a Azure Portalba, és nyissa meg a létrehozott NFS-megosztást tartalmazó Storage-fiókot.
-1. Válassza a **konfiguráció**lehetőséget.
-1. Válassza a **Letiltva** a **biztonságos átvitelhez szükséges**lehetőséget.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Konfiguráció** lehetőséget.
+1. Válassza a **Letiltva** a **biztonságos átvitelhez szükséges** lehetőséget.
+1. Válassza a **Save** (Mentés) lehetőséget.
 
     :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Képernyőfelvétel a Storage-fiók konfigurációs képernyőjéről a biztonságos átvitel letiltásával.":::
 
 ## <a name="mount-an-nfs-share"></a>NFS-megosztás csatlakoztatása
 
-1. A fájlmegosztás létrehozása után válassza ki a megosztást, és válassza a **kapcsolat Linuxon**lehetőséget.
+1. A fájlmegosztás létrehozása után válassza ki a megosztást, és válassza a **kapcsolat Linuxon** lehetőséget.
 1. Adja meg a használni kívánt csatlakoztatási útvonalat, majd másolja a szkriptet.
 1. Kapcsolódjon az ügyfélhez, és használja a megadott csatlakoztatási parancsfájlt.
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="Képernyőfelvétel a Storage-fiók konfigurációs képernyőjéről a biztonságos átvitel letiltásával.":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="Képernyőfelvétel a fájlmegosztás összekapcsolási paneljéről":::
 
 Ezzel csatlakoztatta az NFS-megosztást.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
+
+Ha a csatlakoztatás sikertelen volt, lehetséges, hogy a saját végpontja nem lett megfelelően beállítva, vagy nem érhető el. A kapcsolat megerősítéséről a hálózatkezelési végpontok című cikk [kapcsolat ellenőrzése](storage-files-networking-endpoints.md#verify-connectivity) című szakaszában talál további információt.
+
+## <a name="next-steps"></a>További lépések
 
 - További információ a Azure Filesről a cikkhez, [Azure Files központi telepítés megtervezéséhez](storage-files-planning.md).
 - Ha problémákat tapasztal, tekintse meg az [Azure NFS-fájlmegosztás hibaelhárítása](storage-troubleshooting-files-nfs.md)című témakört.

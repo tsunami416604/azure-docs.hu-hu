@@ -3,15 +3,15 @@ title: A Windows rendszerű virtuális asztali hibaelhárítás áttekintése �
 description: Áttekintés a Windows rendszerű virtuális asztali környezet beállítása során felmerülő problémák elhárításához.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/05/2020
+ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 171322fbec099aa9fafc36c4f951213b33007976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d051594572f742b290867d12e0fb148f2abbf370
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009358"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621314"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Hibaelhárítás – áttekintés, visszajelzés és a Windows rendszerű virtuális asztalok támogatása
 
@@ -45,11 +45,11 @@ A következő táblázat segítségével azonosíthatja és megoldhatja a körny
 | Ügyfelek csatlakoztatása                                                                    | Tekintse meg a [Windows rendszerű virtuális asztali szolgáltatások kapcsolatait](troubleshoot-service-connection.md) , és ha ez nem oldja meg a problémát, tekintse meg a [munkamenet-gazdagép virtuális gép konfigurációját](troubleshoot-vm-configuration.md) |
 | A távoli alkalmazások vagy az asztal rugalmassága                                      | Ha a problémák egy adott alkalmazáshoz vagy termékhez vannak kötve, forduljon a termékért felelős csapathoz. |
 | Licencelési üzenetek vagy hibák                                                          | Ha a problémák egy adott alkalmazáshoz vagy termékhez vannak kötve, forduljon a termékért felelős csapathoz. |
-| Harmadik féltől származó hitelesítési módszerekkel kapcsolatos problémák | Győződjön meg arról, hogy a harmadik féltől származó szolgáltató támogatja a Windows rendszerű virtuális asztali környezeteket, és az ismert problémákkal kapcsolatban megközelíti őket. |
+| Harmadik féltől származó hitelesítési módszerekkel vagy eszközökkel kapcsolatos problémák | Győződjön meg arról, hogy a harmadik féltől származó szolgáltató támogatja a Windows rendszerű virtuális asztali környezeteket, és az ismert problémákkal kapcsolatban megközelíti őket. |
 | Problémák a Windows rendszerű virtuális asztali Log Analytics használatával | A diagnosztikai sémával kapcsolatos problémák esetén [Nyisson meg egy Azure-támogatási kérelmet](https://azure.microsoft.com/support/create-ticket/).<br><br>A Log Analytics lekérdezések, vizualizációk vagy egyéb problémák esetén válassza ki a megfelelő problémát a Log Analytics alatt. |
 | M365-alkalmazásokat használó problémák | Forduljon a M365 felügyeleti központhoz a [M365 felügyeleti központ súgójának](/microsoft-365/admin/contact-support-for-business-products/)egyikével. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg az [alkalmazáskészlet létrehozása](troubleshoot-set-up-issues.md)című témakört.
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).

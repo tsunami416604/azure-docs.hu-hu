@@ -1,5 +1,5 @@
 ---
-title: Az Azure-alkalmazás ajánlatának piacra jutása
+title: Az Azure-alkalmazás ajánlatának értékesítése
 description: Ismerkedjen meg a Microsofttal való közös értékesítéssel és a Microsoft kereskedelmi piactéren a Cloud Solution Providers (CSP) program lehetőségeivel.
 author: aarathin
 ms.author: aarathin
@@ -8,22 +8,22 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: d559496996d1cdc9052542977b26f5bd1925eefb
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 6ba49ebc593e67e1168f6427ade38b7d80bf7edf
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576077"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621433"
 ---
-# <a name="how-to-market-your-azure-application-offer"></a>Az Azure-alkalmazás ajánlatának piacra jutása
+# <a name="how-to-sell-your-azure-application-offer"></a>Az Azure-alkalmazás ajánlatának értékesítése
 
-Ez a cikk további marketing-lehetőségeket is tartalmaz, amelyekkel kiválaszthatja, hogy az Azure-alkalmazás ajánlatát a Microsofton keresztül értékesíti. Az ajánlatot a Microsofttal együtt értékesítheti, a [felhőalapú megoldás-szolgáltatók (CSP) programon](cloud-solution-providers.md)keresztül, vagy mindkettőn keresztül értékesítheti.
+Ez a cikk azokat a további lehetőségeket ismerteti, amelyeket kiválaszthat, ha az Azure-alkalmazás ajánlatát a Microsofton keresztül értékesíti. Az ajánlatot a Microsofttal együtt értékesítheti, a [felhőalapú megoldás-szolgáltatók (CSP) programon](cloud-solution-providers.md)keresztül, vagy mindkettőn keresztül értékesítheti.
 
 ## <a name="co-sell-with-microsoft"></a>Együttes értékesítés a Microsofttal
 
 A **Microsoft Tab együttes értékesítésével** kapcsolatos információk megadása teljesen opcionális. Azonban a _közös értékesítésre kész_ és az _IP közös értékesítésre kész_ állapot elérésére van szükség. A Microsoft értékesítési csapatai ezeket az információkat használják a megoldással kapcsolatos további információkra, amikor kiértékelik az igényeinek megfelelő megoldást. Az ezen a lapon megadott információk nem érhetők el közvetlenül az ügyfeleknek.
 
-A **közös értékesítés a Microsoft** lapon való konfigurálásával kapcsolatos részletekért és útmutatásért lásd: [közös értékesítés lehetőség a partner Centerben](commercial-marketplace-co-sell.md).
+A **közös értékesítés a Microsoft** lapon való konfigurálásával kapcsolatos részletekért és útmutatásért lásd: [közös értékesítés lehetőség a kereskedelmi piactéren](commercial-marketplace-co-sell.md).
 
 ## <a name="resell-through-csps"></a>Viszonteladás CSP-ken keresztül
 

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: jlian
-ms.openlocfilehash: 5299a049ab2cc2246a861dd3fb81f466b56afad3
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 864870c4392b12477c321c86afd9da848120490c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603298"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621705"
 ---
 # <a name="turn-on-preview-mode-for-iot-hub-to-try-select-new-features"></a>Az előnézeti mód bekapcsolása IoT Hub az új funkciók kiválasztásához
 
@@ -66,7 +66,7 @@ A létrehozást követően az előnézeti módban lévő IoT Hub mindig ezt a sz
 
 Az előnézeti módban *ne* használjon IoT hubot éles környezetben. Az előnézeti mód *csak* a lap tetején felsorolt szolgáltatások kiválasztására szolgál. Az előnézeti mód IoT Hub egyéb korlátozásai
 
-- Bizonyos meglévő IoT Hub-funkciók, például a magánhálózati kapcsolatok, a felügyelt identitások, az adatfolyamok és a feladatátvétel váratlanul működhetnek, vagy egyáltalán nem.
+- Bizonyos meglévő IoT Hub szolgáltatások, például az IP-szűrők, a magánhálózati kapcsolatok, a felügyelt identitások, az eszköz-adatfolyamok és a feladatátvétel nem várt módon működhetnek, vagy egyáltalán nem.
 - Az IoT hub előnézeti módban nem módosítható és nem frissíthető normál IoT-hubhoz.
 - Nem tudjuk garantálni, hogy a normál [IOT hub SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/v1_2/) – nem használható éles környezetben.
 

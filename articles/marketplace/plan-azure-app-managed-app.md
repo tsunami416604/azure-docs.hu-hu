@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: a915b5a348e3167d2cf81906b19abd9850584ce9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 694f501efc565ed498c1c8d8e2e38326277e8605
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460970"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621416"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Azure-beli felügyelt alkalmazás megtervezése Azure-alkalmazási ajánlathoz
 
@@ -90,7 +90,7 @@ Az árak USD-ben (USD = Egyesült Államok dollár) lesznek átalakítva az öss
 A JIT-hozzáférés lehetővé teszi, hogy a hibaelhárítás és a karbantartás érdekében emelt szintű hozzáférést kérjen egy felügyelt alkalmazás erőforrásaihoz. Mindig csak olvasási hozzáférése van az erőforrásokhoz, de egy adott időszakra vonatkozóan nagyobb hozzáférés érhető el. További információ: a [Azure Managed Applications igény szerinti hozzáférésének engedélyezése és kérése](../azure-resource-manager/managed-applications/request-just-in-time-access.md).
 
 > [!NOTE]
-> A felhasználó értesítése akkor is, ha a funkció támogatásához a skimmingBe biztos, hogy frissíti a `createUiDefinition.json` fájlt.
+> Ügyeljen rá, hogy a `createUiDefinition.json` szolgáltatás támogatásához frissítse a fájlt.
 
 ## <a name="deployment-mode"></a>Üzembe helyezési mód
 

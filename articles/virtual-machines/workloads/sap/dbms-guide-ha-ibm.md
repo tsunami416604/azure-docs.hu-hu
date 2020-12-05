@@ -8,17 +8,20 @@ ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 01f02efd36c51f3969ee53e9efc78fbe1664b187
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 54bde8c9dd47e88ffdc831ccb9f7833720583238
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486538"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621382"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Az IBM DB2-LUW magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server a pacemakerrel
 
 Az IBM DB2 for Linux, UNIX és Windows (LUW) a [magas rendelkezésre állású és vész-helyreállítási (HADR) konfigurációban](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html) egy olyan csomópontból áll, amely egy elsődleges adatbázis-példányt és legalább egy olyan csomópontot futtat, amely egy másodlagos adatbázis-példányt futtat. Az elsődleges adatbázis példányának módosításait a rendszer a konfigurációtól függően szinkron vagy aszinkron módon replikálja egy másodlagos adatbázis-példányba. 
 
+> [!NOTE]
+> Ez a cikk a " *Master* " és a " *Slave*" kifejezésekre mutató hivatkozásokat tartalmaz, amelyeket a Microsoft már nem használ. Ha eltávolítja ezeket a feltételeket a szoftverből, a rendszer eltávolítja őket ebből a cikkből.
+   
 Ez a cikk az Azure Virtual Machines (VM) üzembe helyezését és konfigurálását, a fürt keretrendszerének telepítését, valamint az IBM DB2-LUW HADR-konfigurációval való telepítését ismerteti. 
 
 A cikk nem foglalkozik az IBM DB2-LUW telepítésével és konfigurálásával a HADR vagy az SAP szoftver telepítésével. Ezeknek a feladatoknak a megvalósításához az SAP és az IBM telepítési kézikönyvek hivatkozásaira mutató hivatkozásokat biztosítunk. Ez a cikk az Azure-környezetre jellemző részekre összpontosít. 
@@ -27,7 +30,7 @@ A támogatott IBM DB2-verziók 10,5-es és újabb verziójúak, az SAP Note [192
 
 A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket és dokumentációt:
 
-| SAP-Megjegyzés | Description |
+| SAP-Megjegyzés | Leírás |
 | --- | --- |
 | [1928533] | SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] | SAP az Azure-on: támogatási előfeltételek |
@@ -406,7 +409,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    c. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
 
-   d. Válassza az **OK** lehetőséget.
+   d. Kattintson az **OK** gombra.
 
    e. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
 
@@ -422,7 +425,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    e. Válassza ki az IBM DB2-fürthöz tartozó virtuális gépeket.
 
-   f. Válassza az **OK** lehetőséget.
+   f. Kattintson az **OK** gombra.
 
 1. Állapot mintavételének létrehozása:
 
@@ -432,7 +435,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    c. Válassza a **TCP** lehetőséget a protokoll és a **62500**-es port közül. Tartsa meg az **intervallum** értékét **5** értékre, és tartsa meg a nem kifogástalan **állapot küszöbértékét** **2** értékre.
 
-   d. Válassza az **OK** lehetőséget.
+   d. Kattintson az **OK** gombra.
 
 1. Hozza létre a terheléselosztási szabályokat:
 
@@ -448,7 +451,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    f. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
 
-   : Válassza az **OK** lehetőséget.
+   : Kattintson az **OK** gombra.
 
 
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Az SAP-profilok módosítása virtuális IP-cím használatára a kapcsolódáshoz

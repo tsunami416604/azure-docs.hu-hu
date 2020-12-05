@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 7cf18e2d375d7a45c3641876b8a3ed5974882927
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87758100299eb170a7950a1a7a2c6bd2029b27fb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010027"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621552"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>A kibővíthető magas rendelkezésre állású telepítés ellenőrzése és SAP HANA megoldása a SLES 12 SP3 rendszeren 
 
@@ -45,6 +45,9 @@ A SAP HANA SAP HANA rendszer-replikációval és a pacemakerrel együtt végzett
 A SUSE közzétette a [teljesítményre optimalizált telepítő részletes leírását][sles-hana-scale-out-ha-paper].
 
 SAP HANA kibővíthető virtuálisgép-típusok esetén tekintse meg a [SAP HANA Certified IaaS könyvtárat][sap-hana-iaas-list].
+
+> [!NOTE]
+> Ez a cikk a " *Master* " és a " *Slave*" kifejezésekre mutató hivatkozásokat tartalmaz, amelyeket a Microsoft már nem használ. Ha eltávolítja ezeket a feltételeket a szoftverből, a rendszer eltávolítja őket ebből a cikkből.
 
 Technikai probléma merült fel SAP HANA több alhálózattal és Vnic, valamint a HSR beállításával együttesen felskálázással. A probléma javításához a legújabb SAP HANA 2,0-es javításokat kell használni. A következő SAP HANA verziók támogatottak: 
 

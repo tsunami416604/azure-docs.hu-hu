@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 45f990e5426516db5537319d07c11aa705e462e7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5b5d60a014cf63bd28f3097ac3131ad4c7018208
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534840"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621246"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Oktatóanyag: Azure Functions üzembe helyezése IoT Edge modulként
 
@@ -68,7 +68,7 @@ Hozzon létre egy C#-függvény megoldási sablont, amelyet testreszabhat saját
    | Mező | Érték |
    | ----- | ----- |
    | Mappa kiválasztása | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
-   | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, például **FunctionSolution** , vagy fogadja el az alapértelmezett értéket. |
+   | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, például **FunctionSolution**, vagy fogadja el az alapértelmezett értéket. |
    | Select module template (Modulsablon kiválasztása) | Válassza a **Azure functions – C#** elemet. |
    | Provide a module name (Modulnév megadása) | A modulnak adja a **CSharpFunction** nevet. |
    | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tárolórendszerkép előre fel van töltve az előző lépésből. Cserélje le a **localhost: 5000** értéket a **bejelentkezési kiszolgáló** értékére az Azure Container registryben. A bejelentkezési kiszolgálót a tároló beállításjegyzékének áttekintés lapjáról kérheti le a Azure Portal. A végső karakterlánc a következőhöz hasonlít: \<registry name\> . azurecr.IO/CSharpFunction. |
@@ -89,9 +89,9 @@ A IoT Edge bővítmény megpróbálja lekérni a tároló beállításjegyzékbe
 
 A Visual Studio Code jelenleg Linux AMD64 és Linux rendszerű ARM32v7-eszközökhöz is fejleszt C modulokat. Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldásokkal, mivel a tárolót az egyes architektúrák típusainál eltérően építették és futtatják. Az alapértelmezett érték a Linux AMD64.
 
-1. Nyissa meg a parancssort, és keressen rá **Azure IoT Edge: állítsa be az alapértelmezett cél platformot az Edge megoldáshoz** , vagy válassza a parancsikon ikont az ablak alján található oldalsó sávban.
+1. Nyissa meg a parancssort, és keressen rá **Azure IoT Edge: állítsa be az alapértelmezett cél platformot az Edge megoldáshoz**, vagy válassza a parancsikon ikont az ablak alján található oldalsó sávban.
 
-2. A parancs palettáján válassza ki a cél architektúrát a lehetőségek listájából. Ebben az oktatóanyagban egy Ubuntu rendszerű virtuális gépet használunk IoT Edge eszközként, így megtarthatja az alapértelmezett **amd64** -t.
+2. A parancs palettáján válassza ki a cél architektúrát a lehetőségek listájából. Ebben az oktatóanyagban egy Ubuntu rendszerű virtuális gépet használunk IoT Edge eszközként, így megtarthatja az alapértelmezett **amd64**-t.
 
 ### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 
@@ -227,7 +227,7 @@ A nézetet szűrheti is, hogy csak a megjelölt eszközről az IoT Hub-központr
 
 Az üzenetek figyelésének leállításához futtassa az Azure IoT Hub parancsot: a parancssorban **állítsa le a beépített esemény végpontjának figyelését** .
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként.
 
@@ -235,9 +235,9 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy Azure Function modult hozott létre kóddal a IoT Edge-eszköz által generált nyers adat szűréséhez. Ha készen áll a saját moduljainak létrehozására, többet is megtudhat a [Visual Studio Code-hoz való Azure IoT Edge fejlesztéséről](how-to-vs-code-develop-module.md).
+Ebben az oktatóanyagban egy Azure Function modult hozott létre kóddal a IoT Edge-eszköz által generált nyers adat szűréséhez.
 
 Továbbléphet a következő oktatóanyagokra, és megtudhatja, milyen más módokon alakíthatja üzleti megállapításokká ezeket az adatokat a peremhálózaton az Azure IoT Edge segítségével.
 

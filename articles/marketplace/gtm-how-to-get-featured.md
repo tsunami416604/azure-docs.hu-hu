@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/16/2020
-ms.openlocfilehash: 09f5d61984d5802184d70867f94815fac8fe2b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a3d0ef3c112da87e73f83c6c87de8f3fce1fea0
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103568"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621365"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>A Kiemelt funkciók beszerzése a AppSource-ben és az Azure Marketplace-en
 
@@ -29,8 +29,8 @@ A pontszám növeléséhez a következő műveleteket hajthatja végre:
 
 1. *Győződjön meg arról, hogy az alkalmazás vagy szolgáltatás megfelelően van kategorizálva*: válasszon három kategóriát, amelyek az alkalmazást vagy a szolgáltatás képességeit képviselik.
 2. *Azure Marketplace-alkalmazások: növelje az Azure-fogyasztás hónapját.* Ha havonta 1 000 órányi Azure-használatot tud elérni, nagy mértékben növelheti a funkcionalitását.
-3. *AppSource-alkalmazások: növelje az ajánlathoz közeledő beszerzéseket.* Ha havonta 10 beszerzést tud elérni, nagy mértékben növelheti a funkcionalitását. 
-4. *Co-Sell Üzemkész állapot elérése*: végezze el a közös értékesítésre való felkészülés követelményeit.
+3. *AppSource-alkalmazások: növelje az ajánlathoz közeledő beszerzéseket.* Ha havonta 10 beszerzést tud elérni, nagy mértékben növelheti a funkcionalitását.
+4. *Co-Sell Üzemkész állapot elérése*: végezze el a [közös értékesítésre való felkészülés követelményeit](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
 5. *Az ajánlat minőségének javítása*: az ajánlat módosításával kapcsolatos információkért tekintse meg a  [tartalom listázására vonatkozó irányelveket](marketplace-criteria-content-validation.md) .
 6. Több ajánlat közzététele a piactéren: a felsorolt alapvető alkalmazások és szolgáltatások? Van próbaverziója?
 7. Ösztönözze ügyfeleit az értékelések írásához.

@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0fda0b659dd2500e811fac1f53c99a9987276185
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ef284661d44f700cf0b5282efcd2e6f7b94fa3b6
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537473"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621518"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure cache a Redis hálózati elkülönítési lehetőségeihez 
 Ebből a cikkből megtudhatja, hogyan határozhatja meg az igényeinek legmegfelelőbb hálózati elkülönítési megoldást. Elsajátítjuk az Azure Private link, az Azure Virtual Network (VNet) injekciójának alapjait, és Azure Firewall szabályokat az előnyökkel és korlátozásokkal.  
@@ -22,7 +22,7 @@ Az Azure Private link privát kapcsolatot biztosít egy virtuális hálózatról
 ### <a name="advantages"></a>Előnyök
 * A Redis-példányok alapszintű, standard és prémium szintű Azure gyorsítótárában támogatott. 
 * Az [Azure Private link](../private-link/private-link-overview.md)használatával egy privát végponton keresztül csatlakozhat egy Azure cache-példányhoz a virtuális hálózatból, amely egy magánhálózati IP-címet kap a virtuális hálózaton belüli alhálózatban. Ezzel a gyorsítótár-példányok mind a VNet, mind a nyilvánosan elérhetők.  
-* Miután létrehozta a privát végpontot, a nyilvános hálózathoz való hozzáférés a jelzőn keresztül korlátozható `publicNetworkAccess` . Ez a jelző alapértelmezés szerint be van állítva `Enabled` , így lehetővé teszi a nyilvános és a privát kapcsolat elérését a gyorsítótárhoz. Ha a értékre `Disabled` van állítva, akkor csak a privát kapcsolatok elérését engedélyezi. Az értéket megadhatja `Disabled` egy patch kéréssel. További információ: [Azure cache for Redis with Azure Private link (előzetes verzió)](cache-private-link.md). 
+* Miután létrehozta a privát végpontot, a nyilvános hálózathoz való hozzáférés a jelzőn keresztül korlátozható `publicNetworkAccess` . Ez a jelző alapértelmezés szerint be van állítva `Disabled` , ami csak a privát hivatkozások elérését engedélyezi. Megadhatja az értéket a vagy a értékre `Enabled` `Disabled` egy patch kéréssel. További információ: [Azure cache for Redis with Azure Private link (előzetes verzió)](cache-private-link.md). 
 * Az összes külső gyorsítótár-függőség nem befolyásolja a VNet NSG-szabályait.
 
 ### <a name="limitations"></a>Korlátozások 
@@ -60,7 +60,7 @@ A [Azure Firewall](../firewall/overview.md) felügyelt, felhőalapú hálózati 
 * A tűzfalszabályok VNet Beinjektált gyorsítótárral együtt használhatók, de jelenleg nem találhatók privát végpontok. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan konfigurálhat [VNet befecskendezett gyorsítótárat a prémium szintű Azure cache](cache-how-to-premium-vnet.md)-hez a Redis-példányhoz.  
 * Megtudhatja, hogyan konfigurálhat [tűzfalszabályokat az összes Azure cache-hez a Redis szintjein](cache-configure.md#firewall). 
 * Megtudhatja, hogyan [konfigurálhat privát végpontokat az összes Azure cache-hez a Redis szintjein](cache-private-link.md).

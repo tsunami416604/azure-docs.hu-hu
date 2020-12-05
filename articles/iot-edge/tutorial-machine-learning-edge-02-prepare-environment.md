@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f9471b6b465b63f48feb3bda82e7827308aae945
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b62790fd8f01b7ffb2df4d242b97e8464c11399b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575398"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621127"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Oktatóanyag: környezet beállítása a gépi tanuláshoz IoT Edge
 
@@ -217,12 +217,6 @@ Ez az oktatóanyag egy olyan készlet része, amelyben az egyes cikkek az előz�
 ## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben létrehoztunk egy IoT Hub, és konfiguráltunk egy útvonalat egy Azure Storage-fiókhoz. A következő lépésben szimulált eszközökből származó adatok lesznek elküldve a IoT Hub a Storage-fiókba. Az oktatóanyag későbbi részében, miután konfiguráltuk IoT Edge eszközt és modulokat, újra felkeresjük az útvonalakat, és egy kicsit többet is megvizsgálunk az útválasztási lekérdezésben.
-
-A IoT Edge oktatóanyag Machine Learning ezen részében ismertetett lépésekkel kapcsolatos további információkért lásd:
-
-* [Azure IoT – alapok](../iot-fundamentals/index.yml)
-* [Üzenet-útválasztás konfigurálása IoT Hub](../iot-hub/tutorial-routing.md)
-* [IoT hub létrehozása a Azure Portal használatával](../iot-hub/iot-hub-create-through-portal.md)
 
 Folytassa a következő cikkel a figyeléshez szimulált eszköz létrehozásához.
 

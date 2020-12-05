@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 705b0f02682b6aa41cb5c8e77d8da39faa5edb1f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 70dfccb32389d2f1fb492669c9f84a3e6ae77bbb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450130"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621348"
 ---
 # <a name="publish-an-integrated-solution"></a>Integrált megoldás közzététele
 
@@ -32,18 +32,17 @@ Az integrált megoldások programjának áttekintéséhez tekintse meg a [partne
 ## <a name="eligibility-criteria"></a>Megfelelőségi feltételek
 
 * A résztvevő partnereknek MPN-AZONOSÍTÓval kell rendelkezniük.
-* A résztvevő szolgáltatók számára készen kell lennie a közös értékesítésre.
-* A résztvevő szoftvergyártóknak az IP-címek közös értékesítésének kell lenniük.
+* A résztvevő szolgáltatók számára készen kell lennie a [közös értékesítésre](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
+* A résztvevő szoftvergyártóknak az [IP-címek közös értékesítésének](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)kell lenniük.
 * Legalább egy résztvevő partnernek a következő területek egyikében kell lennie a Gold kompetenciának:
-
-    * Alkalmazásfejlesztés
-    * Alkalmazásintegráció
-    * Alkalmazások életciklus-kezelése
-    * Felhőalapú platform
-    * Adatelemzés
-    * Adatközpont
-    * Adatplatform
-    * DevOps
+    - Alkalmazásfejlesztés
+    - Alkalmazásintegráció
+    - Alkalmazások életciklus-kezelése
+    - Felhőalapú platform
+    - Adatelemzés
+    - Adatközpont
+    - Adatplatform
+    - DevOps
 
 * A megoldásnak tartalmaznia kell legalább két partneri szervezetet, így az IP-címet és a szolgáltatásokat egy teljes körű felhasználói megoldáshoz és élményhez.
 * A partneri IP-címet az Azure-ra, a Dynamics 365-ra vagy a Power platformra kell felépíteni.

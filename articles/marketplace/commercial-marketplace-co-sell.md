@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 12/04/2020
-ms.openlocfilehash: baa99518498b05b0a658627d9908298eb58f7775
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7b335c3db5fb52c4323b797556d48e3ed9ae410a
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602733"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621620"
 ---
 # <a name="co-sell-option-in-the-commercial-marketplace"></a>Közös értékesítés lehetősége a kereskedelmi piactéren
 
-A **Microsoft Tab együttes értékesítésével** kapcsolatos információk megadása teljesen opcionális. A [közös értékesítésre kész és az IP-incentivized állapot](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)eléréséhez szükséges. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy az Ön ajánlatával kapcsolatos további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Nem érhető el közvetlenül az ügyfeleknek. További információ: [közös értékesítés a Microsofttal](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+A **Microsoft Tab együttes értékesítésével** kapcsolatos információk megadása teljesen opcionális. A [közös értékesítésre kész és az IP-incentivized állapot](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)eléréséhez szükséges. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy az Ön ajánlatával kapcsolatos további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Nem érhető el közvetlenül az ügyfeleknek. További információ: [közös értékesítés a Microsofttal](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 A partner Centerben a közös értékesítés lehetősége jelenleg a következő ajánlat-típusoknál érhető el.
 

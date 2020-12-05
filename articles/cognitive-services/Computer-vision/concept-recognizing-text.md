@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 50cce15d14561bb1c8ebfdbbeeedd99dc8efcda1
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 37a989082b63dc101bb519fea1cc4ef16c76ae49
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532992"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621535"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
@@ -147,7 +147,7 @@ A [Read 3,2 API nyilvános előzetes verziója](https://westus.dev.cognitive.mic
 Az olvasási művelet jelenleg kizárólag angol nyelven támogatja a kézzel írt szöveg kinyerését.
 
 ## <a name="use-the-rest-api-and-sdk"></a>A REST API és az SDK használata
-Az [olvasás 3. x REST API](./QuickStarts/CSharp-hand-text.md) az előnyben részesített lehetőség a legtöbb ügyfél számára, mivel a könnyű integráció és a gyors termelékenység a box-ban. Az Azure és a Computer Vision szolgáltatás kezeli a méretezést, a teljesítményt, az adatbiztonságot és a megfelelőségi igényeket, miközben az ügyfelek igényeinek kielégítésére koncentrál.
+Az [olvasás 3. x REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) az előnyben részesített lehetőség a legtöbb ügyfél számára, mivel a könnyű integráció és a gyors termelékenység a box-ban. Az Azure és a Computer Vision szolgáltatás kezeli a méretezést, a teljesítményt, az adatbiztonságot és a megfelelőségi igényeket, miközben az ügyfelek igényeinek kielégítésére koncentrál.
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>Helyszíni üzembe helyezés Docker-tárolókkal
 Az [olvasási Docker-tároló (előzetes verzió)](./computer-vision-how-to-install-containers.md) lehetővé teszi az új OCR-funkciók üzembe helyezését a saját helyi környezetében. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez.
