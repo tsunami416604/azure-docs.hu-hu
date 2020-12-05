@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294713"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608588"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Az MPIO konfigurálása a CentOS-t futtató StorSimple-gazdagépen
 Ez a cikk ismerteti a többutas i/o (MPIO) szolgáltatásnak a CentOS 6,6-es gazdagép-kiszolgálón való konfigurálásához szükséges lépéseket. Az iSCSI-kezdeményezők használatával a gazdagép-kiszolgáló a magas rendelkezésre állás érdekében csatlakozik a Microsoft Azure StorSimple eszközhöz. Részletesen ismerteti a Többutas eszközök automatikus észlelését és a StorSimple-kötetek adott beállítását.
@@ -21,6 +21,9 @@ Ez az eljárás az StorSimple 8000 Series-eszközök összes modelljére érvén
 
 > [!NOTE]
 > Ez az eljárás nem használható StorSimple Cloud Appliancehoz. További információ: a gazdagép-kiszolgálók konfigurálása a felhőalapú berendezéshez.
+
+> [!NOTE]
+> Ez a cikk a *feketelista* kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 
 ## <a name="about-multipathing"></a>Tudnivalók a többutas használatról
@@ -101,7 +104,7 @@ Ez a szakasz a CentOS-kiszolgáló és a StorSimple-eszköz konfigurációs elő
         collisions:0 txqueuelen:0
         RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
     ```
-1. Telepítse az *iSCSI-kezdeményező-utils* szolgáltatást a CentOS-kiszolgálóra. Az *iSCSI-kezdeményező-utils*telepítéséhez hajtsa végre az alábbi lépéseket.
+1. Telepítse az *iSCSI-kezdeményező-utils* szolgáltatást a CentOS-kiszolgálóra. Az *iSCSI-kezdeményező-utils* telepítéséhez hajtsa végre az alábbi lépéseket.
    
    1. Jelentkezzen be a `root` CentOS-gazdagépre.
    1. Telepítse az *iSCSI-kezdeményező-utils-* t. Típus:
@@ -147,7 +150,7 @@ A StorSimple-eszköznek a következőket kell tartalmaznia:
      
       A **configure (Konfigurálás** ) lapon
      
-     1. Győződjön meg arról, hogy mindkét hálózati adapter iSCSI-kompatibilis. Az **iSCSI-kompatibilis** mezőt **Igen**értékre kell állítani.
+     1. Győződjön meg arról, hogy mindkét hálózati adapter iSCSI-kompatibilis. Az **iSCSI-kompatibilis** mezőt **Igen** értékre kell állítani.
      1. Győződjön meg arról, hogy a hálózati adapterek azonos sebességgel rendelkeznek, mindkettőnek 1 GbE vagy 10 GbE kell lennie.
      1. Jegyezze fel az iSCSI-kompatibilis felületek IPv4-címeit, és mentse a szolgáltatást későbbi használatra a gazdagépen.
 * A StorSimple eszközön lévő iSCSI-felületeknek elérhetőnek kell lenniük a CentOS-kiszolgálóról.
@@ -438,13 +441,13 @@ További információ: [Hibaelhárítás a többutas eléréshez](https://access
 | **Többutas** |`service multipathd start` |Többutas démon indítása |
 | &nbsp; |`service multipathd stop` |Többutas démon leállítása |
 | &nbsp; |`service multipathd restart` |Többutas démon újraindítása |
-| &nbsp; |`chkconfig multipathd on` </br> VAGY </br> `mpathconf -with_chkconfig y` |A többutas démon indításának engedélyezése rendszerindítás közben |
+| &nbsp; |`chkconfig multipathd on` </br> OR </br> `mpathconf -with_chkconfig y` |A többutas démon indításának engedélyezése rendszerindítás közben |
 | &nbsp; |`multipathd -k` |Az interaktív konzol elindítása hibaelhárításhoz |
 | &nbsp; |`multipath -l` |Többutas kapcsolatok és eszközök listázása |
 | &nbsp; |`mpathconf --enable` |Hozzon létre egy minta mulitpath. conf fájlt a `/etc/mulitpath.conf` |
 |  | | |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az MPIO Linux-gazdagépen való konfigurálásakor előfordulhat, hogy a következő CentoS 6,6-dokumentumokra is szüksége lesz:
 
 * [Az MPIO beállítása a CentOS-ben](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)

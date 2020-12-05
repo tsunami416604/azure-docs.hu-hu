@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti Azure Functions a C# használatáv
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc08e378d68743ed7906f4dec7c8f31202959880
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002390"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608282"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# – fejlesztői dokumentáció
 
@@ -21,7 +21,7 @@ C#-fejlesztőként a következő cikkek egyike is érdekli:
 
 | Első lépések | Alapelvek| Interaktív tanulás/minták |
 | -- | -- | -- | 
-| <ul><li>[A Visual Studio használata](functions-create-your-first-function-visual-studio.md)</li><li>[A Visual Studio Code használata](create-first-function-vs-code-csharp.md)</li><li>[Parancssori eszközök használata](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li><li>[A Visual Studio fejlesztése](functions-develop-vs.md)</li><li>[Függőségi befecskendezés](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[C#-minták](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+| <ul><li>[A Visual Studio használata](functions-create-your-first-function-visual-studio.md)</li><li>[A Visual Studio Code használata](create-first-function-vs-code-csharp.md)</li><li>[Parancssori eszközök használata](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li><li>[A Visual Studio fejlesztése](functions-develop-vs.md)</li><li>[Függőséginjektálás](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[C#-minták](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions támogatja a C# és C# programozási nyelveket. Ha a C# használatával kapcsolatos útmutatást keres [a Azure Portalban](functions-create-function-app-portal.md), tekintse meg a [c# parancsfájl (. CSX) fejlesztői referenciáját](functions-reference-csharp.md).
 
@@ -327,6 +327,8 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 {
     logger.LogInformation("Request for item with key={itemKey}.", id);
 ```
+
+További információ a függvények megvalósításáról `ILogger` : [telemetria-adatok gyűjtése](functions-monitoring.md#collecting-telemetry-data). Az előre meghatározott kategóriák, amelyek `Function` feltételezik, hogy `ILogger` példányt használ. Ha úgy dönt, hogy ehelyett `ILogger<T>` a-t használja, a kategória neve Ehelyett a következő alapján lehet: `T` .  
 
 ### <a name="structured-logging"></a>Strukturált naplózás
 

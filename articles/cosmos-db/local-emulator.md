@@ -7,12 +7,12 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 6fb1ef45ff4e77ab21480a1013a3cec6bcc7cfa1
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: bfab099c3b81164e0d9ffaa009ea13f42aefb875
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030900"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608622"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>A Azure Cosmos DB Emulator telepítése és használata helyi fejlesztéshez és teszteléshez
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -60,7 +60,7 @@ Mivel a Azure Cosmos DB Emulator egy emulált környezetet biztosít, amely a he
 Az emulátor telepítése előtt győződjön meg arról, hogy rendelkezik az alábbi hardver-és szoftver-követelményekkel:
 
 * A szoftverre vonatkozó követelmények:
-  * Jelenleg a Windows Server 2012 R2, a Windows Server 2016, a 2019 vagy a Windows 8, 10 gazda operációs rendszer támogatott. A gazdagép operációs rendszerének Active Directory engedélyezése jelenleg nem támogatott.
+  * Jelenleg a Windows Server 2016, a 2019 vagy a Windows 10 gazdagép operációs rendszer támogatott. A gazdagép operációs rendszerének Active Directory engedélyezése jelenleg nem támogatott.
   * 64 bites operációs rendszer esetén:
 
 * Minimális hardverkövetelmények:

@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: a312c0ff255df4545181755ae6accd0d7dfb13a2
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8b836ac8bd2255abf9a94e532a0599994c3ede89
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574853"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608252"
 ---
 # <a name="introduction-to-azure-functions"></a>Az Azure Functions bemutatása
 
 Gyakran olyan rendszereket hozunk létre, amelyek kritikus események sorozatára reagálnak. Legyen szó webes API-k létrehozásáról, az adatbázis-változásokra való reagálásról, a IoT-adatfolyamok feldolgozásáról vagy az üzenetsor kezeléséről – minden alkalmazásnak szüksége van egy kód futtatására, mivel ezek az események történnek.
 
-Ennek a szükségletnek a kielégítése érdekében Azure Functions "igény szerinti számítást" biztosít – és két jelentős módon.
+Ennek a szükségletnek a kielégítése érdekében a Azure Functions két jelentős módon biztosítja a "számítás igény szerint" lehetőséget.
 
 Első lépésként a Azure Functions lehetővé teszi, hogy a rendszerek logikáját könnyen elérhető kódrészletbe implementálja. Ezeket a kódrészleteket "functions"-nek nevezzük. A különböző függvények bármikor futtathatók, ha a kritikus eseményekre kell válaszolnia.
 

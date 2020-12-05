@@ -3,16 +3,16 @@ title: Egyéni tároló CI/CD a GitHub-műveletekből
 description: Megtudhatja, hogyan helyezhet üzembe egyéni linuxos tárolót a GitHub-műveletek használatával App Service egy CI/CD-folyamatból.
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2020
+ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 068fc9dcb9a4f4a62c2dd879bf8144097452f1e0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 76d82695f0f43638e840589c52d6713ae36c1608
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099028"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607806"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Egyéni tároló üzembe helyezése a GitHub-műveletek használatával App Service
 
@@ -31,10 +31,10 @@ Azure App Service tároló munkafolyamathoz a fájl három szakaszt tartalmaz:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Egy GitHub-fiók. Ha még nem rendelkezik ilyennel, regisztráljon [ingyenesen](https://github.com/join).  
-- Egy működő tároló-beállításjegyzék és Azure App Service-alkalmazás tárolók számára. Ez a példa Azure Container Registry használ. 
+- Egy GitHub-fiók. Ha még nem rendelkezik ilyennel, regisztráljon [ingyenesen](https://github.com/join). A Azure App Service üzembe helyezéséhez programkódot kell létrehoznia egy GitHub-tárházban. 
+- Egy működő tároló-beállításjegyzék és Azure App Service-alkalmazás tárolók számára. Ez a példa Azure Container Registry használ. Győződjön meg arról, hogy a teljes telepítést a tárolók Azure App Serviceához hajtja végre. A hagyományos webalkalmazásokkal ellentétben a tárolók Web Apps szolgáltatás nem rendelkezik alapértelmezett kezdőlaptal. Tegye közzé a tárolót, hogy legyen egy működő példája.
     - [Megtudhatja, hogyan hozhat létre egy tárolóval Node.js alkalmazást a Docker használatával, leküldheti a tároló lemezképét egy beállításjegyzékbe, majd üzembe helyezheti a rendszerképet Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
-
+        
 ## <a name="generate-deployment-credentials"></a>Központi telepítési hitelesítő adatok előállítása
 
 Az Azure App Services a GitHub-műveletekhez való hitelesítésének ajánlott módja a közzétételi profil. A hitelesítést egy egyszerű szolgáltatással is elvégezheti, de a folyamat további lépéseket igényel. 
@@ -50,7 +50,7 @@ A közzétételi profil egy alkalmazás szintű hitelesítő adat. A közzétét
 1. Az **Áttekintés** lapon válassza a **közzétételi profil beolvasása** elemet.
 
     > [!NOTE]
-    > Október 2020 a linuxos webalkalmazások `WEBSITE_WEBDEPLOY_USE_SCM` számára a `true` **Fájl letöltése előtt** be kell állítani az Alkalmazásbeállítások beállítást. Ez a követelmény a jövőben el lesz távolítva.
+    > Október 2020 a linuxos webalkalmazások `WEBSITE_WEBDEPLOY_USE_SCM` számára a `true` **Fájl letöltése előtt** be kell állítani az Alkalmazásbeállítások beállítást. Ez a követelmény a jövőben el lesz távolítva. Lásd: [app Service alkalmazás konfigurálása a Azure Portalban](/azure/app-service/configure-common), hogy megtudja, hogyan konfigurálhatja a Common Web App-beállításokat.  
 
 1. Mentse a letöltött fájlt. A fájl tartalmát a GitHub-titok létrehozásához fogja használni.
 
@@ -80,21 +80,6 @@ A példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra, az erő
 > Mindig jó gyakorlat a minimális hozzáférés megadására. Az előző példában szereplő hatókör az adott App Service alkalmazásra korlátozódik, nem a teljes erőforráscsoporthoz.
 
 ---
-
-## <a name="configure-the-github-secret"></a>A GitHub-titok konfigurálása
-
-A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beállítások > titkok > új titok hozzáadása** lehetőséget.
-
-Illessze be a JSON-kimenet tartalmát a titkos változó értékeként. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
-
-Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Például:
-
-```yaml
-- uses: azure/login@v1
-  with:
-    creds: ${{ secrets.AZURE_CREDENTIALS }}
-```
-
 ## <a name="configure-the-github-secret-for-authentication"></a>A GitHub-titok konfigurálása a hitelesítéshez
 
 # <a name="publish-profile"></a>[Profil közzététele](#tab/publish-profile)
@@ -129,9 +114,9 @@ Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentk
 
 ## <a name="configure-github-secrets-for-your-registry"></a>GitHub-titkok konfigurálása a beállításjegyzékhez
 
-Adja meg a Docker bejelentkezési művelettel használni kívánt titkokat. 
+Adja meg a Docker bejelentkezési művelettel használni kívánt titkokat. A dokumentumban szereplő példa Azure Container Registryt használ a tároló-beállításjegyzékhez. 
 
-1. Nyissa meg a tárolót a Azure Portal vagy a Docker-ben, és másolja a felhasználónevet és a jelszót. 
+1. Nyissa meg a tárolót a Azure Portal vagy a Docker-ben, és másolja a felhasználónevet és a jelszót. A Azure Container Registry felhasználónevét és jelszavát a beállításjegyzék **Beállítások**  >  **hozzáférési kulcsok** területén található Azure Portalban találja. 
 
 2. Adjon meg egy új titkot a nevű beállításjegyzékbeli felhasználónévhez `REGISTRY_USERNAME` . 
 
@@ -163,7 +148,7 @@ jobs:
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
-A [Docker-bejelentkezés](https://github.com/azure/docker-login) használatával egyszerre több tároló-beállításjegyzékbe is bejelentkezhet. Ez a példa két új GitHub-titkot tartalmaz a docker.io-vel történő hitelesítéshez.
+A [Docker-bejelentkezés](https://github.com/azure/docker-login) használatával egyszerre több tároló-beállításjegyzékbe is bejelentkezhet. Ez a példa két új GitHub-titkot tartalmaz a docker.io-vel történő hitelesítéshez. A példa azt feltételezi, hogy a beállításjegyzék legfelső szintjén van egy Docker. 
 
 ```yml
 name: Linux Container Node Workflow
@@ -200,7 +185,7 @@ Ha a lemezképet a App Serviceban lévő egyéni tárolóba szeretné telepíten
 | **alkalmazás neve** | Szükséges A App Service alkalmazás neve | 
 | **közzétételi profil** | Választható A következőkre vonatkozik: Web Apps (Windows és Linux) és Web App containers (Linux). A multi-Container forgatókönyv nem támogatott. A profil ( \* . publishsettings) fájl tartalmának közzététele a web Deploy Secrets szolgáltatásban | 
 | **tárolóhely neve** | Választható Adja meg az üzemi tárolóhelytől eltérő meglévő tárolóhelyet |
-| **csomag** | Választható Csak a webalkalmazásra vonatkozik: csomag vagy mappa elérési útja. \*. zip, \* . War, \* . jar vagy egy telepítendő mappa |
+| **package** | Választható Csak a webalkalmazásra vonatkozik: csomag vagy mappa elérési útja. \*. zip, \* . War, \* . jar vagy egy telepítendő mappa |
 | **képek** | Szükséges Csak a webalkalmazás-tárolók esetében érvényes: adja meg a teljes tároló rendszerkép (ek) nevét. Például: "myregistry.azurecr.io/nginx:latest" vagy "Python: 3.7.2-Alpine/". Többtárolós alkalmazások esetén több tároló-rendszerkép is megadható (több sorba tagolt) |
 | **konfigurációs fájl** | Választható Csak a webalkalmazás-tárolók esetében érvényes: a Docker-Compose fájl elérési útja. Teljes elérési útnak kell lennie, vagy az alapértelmezett munkakönyvtárhoz viszonyítva kell lennie. Többtárolós alkalmazások esetén szükséges. |
 | **indítás – parancs** | Választható Adja meg az indítási parancsot. Pl.: DotNet-Futtatás vagy DotNet filename.dll |
@@ -248,7 +233,7 @@ jobs:
     steps:
     # checkout the repo
     - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
@@ -276,7 +261,7 @@ jobs:
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit, amelyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub használatához a CI/CD-hez, és az alkalmazások üzembe helyezését az Azure-ban.
 

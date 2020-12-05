@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 5976649ee396d897b76713b7863668d92279612e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6b0504f5e4199ee3cd8e86660b866fddf2568485
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484308"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608571"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken
 
@@ -53,6 +53,10 @@ ms.locfileid: "96484308"
 
 Ez a cikk leírja, hogyan telepítheti a virtuális gépeket, konfigurálhatja a virtuális gépeket, telepítheti a fürtöt, és telepíthet egy olyan, magasan rendelkezésre álló NFS-kiszolgálót, amely egy magasan elérhető SAP-rendszer megosztott adattárolására használható.
 Ez az útmutató bemutatja, hogyan állíthat be egy olyan, magasan elérhető NFS-kiszolgálót, amelyet két SAP-rendszer, a NW1 és a NW2 használ. A példában szereplő erőforrások nevei (például a virtuális gépek, a virtuális hálózatok) feltételezik, hogy az [SAP fájlkiszolgáló sablonját][template-file-server] használta a következő előtaggal: **Prod**.
+
+
+> [!NOTE]
+> Ez a cikk a *Slave* és a *Master* kifejezésre mutató hivatkozásokat tartalmaz, amelyeket a Microsoft már nem használ. Ha eltávolítja a feltételeket a szoftverből, a rendszer eltávolítja őket ebből a cikkből.
 
 Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat
 

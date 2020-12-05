@@ -1,14 +1,14 @@
 ---
 title: Delegáláshoz való hozzáférés eltávolítása
 description: Ismerje meg, hogyan távolíthatja el az Azure Lighthouse szolgáltatáshoz delegált erőforrásokhoz való hozzáférést.
-ms.date: 08/12/2020
+ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 72a2c49dde8cccfcc298d4128384a10bb7e8840f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3442bb9fd2f6e7423fd4bf28cace1f7fd91ad80
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167227"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608452"
 ---
 # <a name="remove-access-to-a-delegation"></a>Delegáláshoz való hozzáférés eltávolítása
 
@@ -48,7 +48,7 @@ Az ezzel az engedéllyel rendelkező felhasználók a következő módszerek egy
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Navigáljon a [saját ügyfelek oldalra](view-manage-customers.md).
-2. Válassza a **delegálások**lehetőséget.
+2. Válassza a **delegálások** lehetőséget.
 3. Keresse meg az eltávolítani kívánt delegálást, majd válassza ki a sorban megjelenő Kuka ikont.
 
 ### <a name="powershell"></a>PowerShell
@@ -99,3 +99,4 @@ az managedservices assignment delete --assignment <id or full resourceId>
 
 - Megismerheti az [Azure által delegált erőforrás-kezelés](../concepts/azure-delegated-resource-management.md) részleteit.
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .
+- Megtudhatja, hogyan [frissíthet egy korábbi delegálást](update-delegation.md).

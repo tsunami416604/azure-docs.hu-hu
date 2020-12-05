@@ -3,18 +3,18 @@ title: Egyéni tartománynév vásárlása
 description: Megtudhatja, hogyan vásárolhat egy App Service tartományt, és hogyan használhatja egyéni tartományként az alkalmazás Azure App Service.
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
-ms.date: 11/24/2017
+ms.date: 11/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: f09ef109be68dbdb6c82ce5fc89761b10bec85f3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6f0ff7a54c2ad1fa1af649c8082498b442783c7e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781685"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608077"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Egyéni tartománynév vásárlása az Azure App Service-hez
 
-App Service tartományok olyan legfelső szintű tartományok, amelyek közvetlenül az Azure-ban kezelhetők. Megkönnyítik [Azure app Service](overview.md)egyéni tartományának kezelését. Ez az oktatóanyag bemutatja, hogyan vásárolhat egy App Service tartományt, és hogyan rendelhet hozzá DNS-neveket Azure App Servicehoz.
+App Service tartományok olyan egyéni tartományok, amelyek közvetlenül az Azure-ban kezelhetők. Megkönnyítik [Azure app Service](overview.md)egyéni tartományának kezelését. Ez az oktatóanyag bemutatja, hogyan vásárolhat egy App Service tartományt, és hogyan rendelhet hozzá DNS-neveket Azure App Servicehoz.
 
 Azure-beli virtuális gép vagy Azure Storage esetében lásd: [app Service tartomány kiosztása Azure-beli virtuális géphez vagy Azure Storage-hoz](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage). Cloud Services esetében lásd: [Egyéni tartománynév konfigurálása Azure Cloud Service-hez](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
@@ -22,177 +22,163 @@ Azure-beli virtuális gép vagy Azure Storage esetében lásd: [app Service tart
 
 Az oktatóanyag elvégzéséhez:
 
-* [Hozzon létre egy App Service-alkalmazást](./index.yml), vagy használjon egy másik oktatóanyaghoz létrehozott alkalmazást.
+* [Hozzon létre egy App Service-alkalmazást](./index.yml), vagy használjon egy másik oktatóanyaghoz létrehozott alkalmazást. Az alkalmazásnak egy nyilvános Azure-régióban kell lennie. Jelenleg az Azure nemzeti felhők nem támogatottak.
 * [Távolítsa el az előfizetés](../cost-management-billing/manage/spending-limit.md#remove)költségkeretét. Ingyenes előfizetési Kredittel rendelkező App Service-tartományok nem vásárolhatók meg.
-* Egy App Service egy nyilvános Azure-régióban. Vegye figyelembe, hogy jelenleg az Azure nemzeti felhők nem támogatottak.
+
+## <a name="buy-an-app-service-domain"></a>App Service-tartomány vásárlása
+
+App Service tartományokra vonatkozó díjszabási információkért tekintse meg a [app Service díjszabási oldalát](https://azure.microsoft.com/pricing/details/app-service/windows/) , és görgessen le app Service tartományhoz.
+
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
+
+1. A keresési sávban keresse meg és válassza ki **app Service tartományokat**.
+
+    ![Navigálás a portálon Azure App Service tartományokhoz](./media/app-service-web-tutorial-custom-domain/view-app-service-domains.png)
+
+1. A **app Service tartományok** nézetben kattintson a **Hozzáadás** gombra.
+
+    ![Kattintson a Hozzáadás lehetőségre App Service tartományokban](./media/app-service-web-tutorial-custom-domain/add-app-service-domain.png)
+
+1. A **app Service tartományok újabb verziójának kipróbálásához kattintson a click (kattintás) lehetőségre**.
+
+    ![App Service tartomány létrehozása új felhasználói felülettel](./media/app-service-web-tutorial-custom-domain/select-new-create-experience.png)
+
+### <a name="basics-tab"></a>Alapbeállítások lap
+
+1. Az **alapvető** beállítások lapon konfigurálja a beállításokat a következő táblázat használatával:  
+
+   | Beállítás  | Leírás |
+   | -------- | ----------- |
+   | **Előfizetés** | A tartomány megvásárlásához használandó előfizetés. |
+   | **Erőforráscsoport** | Az az erőforráscsoport, amelybe a tartományt be kell állítani. Például az alkalmazáshoz tartozó erőforráscsoport. |
+   | **Tartomány** | Adja meg a kívánt tartományt. Például adja meg a **contoso.com** nevet. Ha a kívánt tartomány nem érhető el, választhat az elérhető tartományok javaslatai közül, vagy másik tartományt is kipróbálhat. |
+
+    > [!NOTE]
+    > App Service tartományok a következő [legfelső szintű tartományokat](https://wikipedia.org/wiki/Top-level_domain) támogatják: _com_, _net_, _Co.uk_, _org_, _nl_, _in_, _BIZ_, _org.uk_ és _Co.in_.
+    >
+    >
+    
+2. Ha elkészült, kattintson a **Tovább gombra: kapcsolattartási adatok**.
+
+### <a name="contact-information-tab"></a>Kapcsolattartási adatok lap
+
+1. Adja meg a tartományi regisztrációhoz az [ICANN](https://go.microsoft.com/fwlink/?linkid=2116641) által megkövetelt adatokat. 
+
+    Fontos, hogy az összes kötelező mezőt kitöltse a lehető legnagyobb pontossággal. A kapcsolattartási adatok helytelen adatai miatt nem lehet megvásárolni a tartományt.
+
+1. Ha elkészült, kattintson a **Tovább: speciális** lehetőségre.
+
+### <a name="advanced-tab"></a>Speciális lap
+
+1. A **speciális** lapon adja meg a választható beállításokat:  
+
+   | Beállítás  | Leírás |
+   | -------- | ----------- |
+   | **Automatikus megújítás** | Alapértelmezés szerint engedélyezett. A App Service tartománya egy éves növekményekben van regisztrálva. Az automatikus megújítás biztosítja, hogy a tartomány regisztrációja nem jár le, és hogy megőrizze a tartomány tulajdonjogát. Az Azure-előfizetése automatikusan felszámítja az éves tartományi regisztrációs díjat a megújítás időpontjában. A **letiltáshoz** válassza a Letiltás lehetőséget. Ha az automatikus megújítás le van tiltva, [manuálisan is megújíthatja](#renew-the-domain). |
+   | **Adatvédelem** | Alapértelmezés szerint engedélyezett. Az adatvédelmi védelem elrejti a tartomány regisztrációs kapcsolattartási adatait a WHOIS-adatbázisból. Az adatvédelem már része az éves tartományi regisztrációs díj. A **letiltáshoz** válassza a Letiltás lehetőséget. |
+
+2. Ha elkészült, kattintson a **Tovább gombra: címkék**.
+
+### <a name="finish"></a>Befejezés
+
+1. A **címkék** lapon állítsa be a app Service tartományhoz használni kívánt címkéket. A címkézés nem szükséges App Service tartományok használatához, de az Azure egyik [funkciója, amely segít az erőforrások kezelésében](../azure-resource-manager/management/tag-resources.md).
+
+1. Kattintson a **Tovább gombra: felülvizsgálat + létrehozás**.
+
+1. A **felülvizsgálat + létrehozás** lapon tekintse át a tartomány sorrendjét. Ha végzett, kattintson a **Létrehozás** gombra.
+
+    > [!NOTE]
+    > App Service tartományok a GoDaddy használatával tartományi regisztrációt használnak, és Azure DNS a tartományok üzemeltetéséhez. Az éves tartományi regisztrációs díj mellett a Azure DNS vonatkozó használati díjak is érvényesek. További információ: [Azure DNS díjszabása](https://azure.microsoft.com/pricing/details/dns/).
+    >
+    >
+
+1. Ha a tartomány regisztrálása befejeződött, megjelenik az **erőforrás** megnyitása gomb. Válassza ki, hogy megtekintse a felügyeleti lapját.
+
+    ![App Service tartomány létrehozva. Erőforrás megnyitása](./media/app-service-web-tutorial-custom-domain/deployment-complete.png)
+
+Most már készen áll egy App Service alkalmazás hozzárendelésére ehhez az egyéni tartományhoz.
 
 ## <a name="prepare-the-app"></a>Az alkalmazás előkészítése
 
+Ha egyéni DNS-nevet szeretne hozzárendelni egy webalkalmazáshoz, a webalkalmazás [app Service csomagjának](https://azure.microsoft.com/pricing/details/app-service/) fizetős szintnek kell lennie (közös, alapszintű, standard, prémium vagy Azure functions). Ebben a lépésben ellenőrzi, hogy az App Service-alkalmazás a támogatott tarifacsomagban van-e.
+
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
-
-Ha Azure App Service szeretné használni az egyéni tartományokat, az alkalmazás [app Service csomagjának](https://azure.microsoft.com/pricing/details/app-service/) fizetős szintnek kell lennie ( **közös** , **alapszintű** , **standard** vagy **prémium** ). Ebben a lépésben ellenőrizze, hogy az alkalmazás a támogatott díjszabási szinten van-e.
-
-### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-
-Nyissa meg az [Azure Portalt](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
 
 ### <a name="navigate-to-the-app-in-the-azure-portal"></a>Az alkalmazás megkeresése az Azure Portalon
 
-A bal oldali menüben válassza az **App Services** lehetőséget, majd válassza ki az alkalmazás nevét.
+1. A felső keresési sávban keresse meg és válassza ki **app Services**.
 
-![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/select-app.png)
+    ![App Services keresése](./media/app-service-web-tutorial-custom-domain/app-services.png)
 
-Megjelenik az App Service-alkalmazás felügyeleti oldala.  
+1. Válassza ki az alkalmazás nevét.
+
+    ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-tutorial-custom-domain/select-app.png)
+
+    Megjelenik az App Service-alkalmazás felügyeleti oldala.  
 
 ### <a name="check-the-pricing-tier"></a>A tarifacsomag ellenőrzése
 
-Az alkalmazás lapjának bal oldali navigációs sávján görgessen a **Beállítások** szakaszra, és válassza ki a **Vertikális felskálázás (App Service-csomag)** elemet.
+1. Az alkalmazás lapjának bal oldali navigációs sávján görgessen a **Beállítások** szakaszra, és válassza ki a **Vertikális felskálázás (App Service-csomag)** elemet.
 
-![Vertikális felskálázás menü](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
+    ![Vertikális felskálázás menü](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-Az alkalmazás jelenlegi tarifacsomagja kék szegéllyel van kiemelve. Győződjön meg arról, hogy az alkalmazás nem az **F1** szinten van. Az egyéni DNS nem támogatott az **F1** szinten. 
+1. Az alkalmazás jelenlegi tarifacsomagja kék szegéllyel van kiemelve. Győződjön meg arról, hogy az alkalmazás nem az **F1** szinten van. Az egyéni DNS nem támogatott az **F1** szinten. 
 
-:::image type="content" source="./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png" alt-text="Képernyőfelvétel: az alkalmazás oldalának bal oldali navigációs menüje, amely felskálázással (App Service terv) van kiválasztva.":::
+    :::image type="content" source="./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png" alt-text="Képernyőfelvétel: az alkalmazás oldalának bal oldali navigációs menüje, amely felskálázással (App Service terv) van kiválasztva.":::
 
-Ha az App Service-csomag nem az **F1** -es szinten található, akkor a vertikális **felskálázás** oldal bezárásával ugorjon [a tartomány megvásárlása](#buy-the-domain)elemre.
+1. Ha az App Service-csomag nem az **F1** -es szinten található, akkor a vertikális **felskálázás** oldal bezárásával ugorjon [a tartomány megvásárlása](#buy-an-app-service-domain)elemre.
 
 ### <a name="scale-up-the-app-service-plan"></a>Az App Service-csomag vertikális felskálázása
 
-Válassza ki bármelyik nem ingyenes szintet ( **D1** , **B1** , **B2** , **B3** , vagy a **Production** kategória bármelyik szintje). További beállításokhoz kattintson a **További lehetőségek megjelenítése** lehetőségre.
+1. Válassza ki bármelyik nem ingyenes szintet (**D1**, **B1**, **B2**, **B3**, vagy a **Production** kategória bármelyik szintje). További beállításokhoz kattintson a **További lehetőségek megjelenítése** lehetőségre.
 
-Kattintson az **Alkalmaz** gombra.
+1. Kattintson az **Alkalmaz** gombra.
 
-:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Képernyőfelvétel: az alkalmazás oldalának bal oldali navigációs menüje, amely felskálázással (App Service terv) van kiválasztva.":::
+    :::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Képernyőfelvétel: az éles kategóriába tartozó egyéni tartomány díjszabási szintjei az üzemi lapon, a B1-terv és az alkalmaz gomb kiemelve.":::
 
-Amikor megjelenik a következő értesítés, a skálázási művelet befejeződött.
+    Amikor megjelenik a következő értesítés, a skálázási művelet befejeződött.
 
-![Skálázási művelet megerősítése](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
+    ![Skálázási művelet megerősítése](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
-## <a name="buy-the-domain"></a>A tartomány megvásárlása
+## <a name="map-app-service-domain-to-your-app"></a>App Service tartomány hozzárendelése az alkalmazáshoz
 
-### <a name="pricing-information"></a>Díjszabási információk
-Azure App Service tartományokra vonatkozó díjszabási információkért tekintse meg a [app Service díjszabási oldalát](https://azure.microsoft.com/pricing/details/app-service/windows/) , és görgessen le app Service tartományhoz.
-
-### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-Nyissa meg az [Azure Portalt](https://portal.azure.com/), majd jelentkezzen be az Azure-fiókjával.
-
-### <a name="launch-buy-domains"></a>A Buy Domains elindítása
-A **app Services** lapon kattintson az alkalmazás nevére, válassza a **Beállítások** , majd az **Egyéni tartományok** elemet.
-   
-![Képernyőkép, amely a Kiemelt egyéni tartományokat jeleníti meg.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
-
-Az **Egyéni tartományok** lapon kattintson a **tartomány vásárlása** elemre.
-
-![A Buy domain kiemelését bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
+Egyszerűen leképezhető egy állomásnév a App Service tartományban egy App Service alkalmazásba, feltéve, hogy ugyanabban az előfizetésben található. A App Service tartományt vagy annak altartományát közvetlenül az alkalmazásában képezi le, az Azure pedig létrehozza a szükséges DNS-rekordokat.
 
 > [!NOTE]
-> Ha nem látja a **app Service tartományok** szakaszt, el kell távolítania az Azure-fiók költségkeretét (lásd: [Előfeltételek](#prerequisites)).
->
->
-
-### <a name="configure-the-domain-purchase"></a>A tartomány megvásárlásának konfigurálása
-
-A **app Service tartomány** lap **Keresés tartományba** mezőjébe írja be a megvásárolni kívánt tartománynevet, majd írja be a nevet `Enter` . A javasolt elérhető tartományok csak a szövegmező alatt jelennek meg. Válasszon ki egy vagy több megvásárolni kívánt tartományt.
-
-![Képernyőkép, amely megjeleníti a keresés a tartományon keresőmezőt.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
-
-> [!NOTE]
-> App Service tartományok a következő [legfelső szintű tartományokat](https://wikipedia.org/wiki/Top-level_domain) támogatják: _com_ , _net_ , _Co.uk_ , _org_ , _nl_ , _in_ , _BIZ_ , _org.uk_ és _Co.in_ .
->
+> Ha a tartomány és az alkalmazás különböző előfizetésekben található, akkor a App Service tartományt az alkalmazáshoz társítja, ugyanúgy, mint a [külsőleg megvásárolt tartományok leképezése](app-service-web-tutorial-custom-domain.md). Ebben az esetben Azure DNS a külső tartományi szolgáltató, és [manuálisan kell hozzáadnia a szükséges DNS-rekordokat](#manage-custom-dns-records).
 >
 
-Kattintson a **kapcsolattartási adatok** elemre, és töltse ki a tartomány kapcsolattartási adatai űrlapot. Ha elkészült, kattintson **az OK** gombra a app Service tartomány lapra való visszatéréshez.
+### <a name="map-the-domain"></a>A tartomány leképezése
 
-Fontos, hogy az összes kötelező mezőt kitöltse a lehető legnagyobb pontossággal. A kapcsolattartási adatok helytelen adatai miatt nem lehet megvásárolni a tartományokat.
+1. Az alkalmazás lap bal oldali navigációs sávján görgessen a **Beállítások** szakaszra, és válassza az **Egyéni tartományok** elemet.
 
-Ezután válassza ki a tartományhoz a kívánt beállításokat. A magyarázatokat a következő táblázat tartalmazza:
+    ![Az egyéni tartományok menüt megjelenítő képernyőkép.](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-| Beállítás | Ajánlott érték | Leírás |
-|-|-|-|
-|Adatvédelem | Engedélyezés | Ha az "Adatvédelem" lehetőséget választja, az _ingyenes_ vásárlási díj részét képezi. Néhány legfelső szintű tartományt a regisztrátorok felügyelnek, amelyek nem támogatják az adatvédelem védelmét, és az **Adatvédelem** lapon vannak felsorolva. |
-| Alapértelmezett állomásnevek kiosztása | **www** és **\@** | Szükség esetén válassza ki a kívánt állomásnév-kötéseket. A tartományi megvásárlási művelet befejezésekor az alkalmazás a kiválasztott gazdagépeken is elérhető. Ha az alkalmazás az [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)mögött van, nem jelenik meg a gyökértartomány (@) hozzárendelésének lehetősége, mert Traffic Manager nem támogatja a rekordokat. A tartománynév-hozzárendelések módosítása a tartomány megvásárlása után végezhető el. |
+1. Válassza az **egyéni tartomány hozzáadása** lehetőséget.
 
-### <a name="accept-terms-and-purchase"></a>Feltételek és vásárlás elfogadása
+    ![Képernyőkép az állomásnév hozzáadása elemről.](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-A feltételek és a díjak áttekintéséhez kattintson a **jogi feltételek** elemre, majd kattintson a **vásárlás** elemre.
+1. Írja be a App Service tartományt (például **contoso.com**) vagy altartományt (például **www.contoso.com**), és kattintson az **Érvényesítés** elemre.
 
-> [!NOTE]
-> App Service tartományok a GoDaddy használatával tartományi regisztrációt használnak, és Azure DNS a tartományok üzemeltetéséhez. A tartományi regisztrációs díj mellett a Azure DNS használati díjai is érvényesek. További információ: [Azure DNS díjszabása](https://azure.microsoft.com/pricing/details/dns/).
->
->
+    > [!NOTE]
+    > Ha elgépelte a App Service tartománynevet, a lap alján egy ellenőrző hiba jelenik meg, amelyből megtudhatja, hogy hiányzik néhány DNS-rekord. Ezeket a rekordokat nem kell manuálisan hozzáadnia egy App Service tartományhoz. Győződjön meg arról, hogy helyesen adta meg a tartománynevet, majd kattintson az **Érvényesítés** gombra.
+    >
+    > ![Az ellenőrzési hibát bemutató képernyőkép.](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
-Vissza a **app Service tartomány** lapon kattintson **az OK** gombra. Amíg a művelet folyamatban van, a következő értesítések jelennek meg:
+1. Fogadja el az **állomásnév bejegyzéstípust** , és kattintson az **egyéni tartomány hozzáadása** lehetőségre.
 
-![Képernyőkép, amely az érvényesítés folyamatban üzenetben jelenik meg.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
+    ![Képernyőkép, amely az egyéni tartomány hozzáadása gombot jeleníti meg.](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-![A vásárlás sikerességét bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
+1. Eltarthat egy ideig, amíg az új egyéni tartomány megjelennek az alkalmazás **Egyéni tartományok** lapján. Frissítse a böngészőt az adatfrissítéshez.
 
-### <a name="test-the-hostnames"></a>Az állomásnevek tesztelése
+    ![A CNAME rekord hozzáadását bemutató képernyőkép.](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-Ha az alkalmazáshoz az alapértelmezett állomásnevek vannak hozzárendelve, akkor az egyes kiválasztott állomásnévről is megjelenik egy sikeres értesítés.
+    > [!NOTE]
+    > Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nem kötődik TLS/SSL-tanúsítványhoz. A böngészőtől az egyéni tartományba érkező HTTPS-kérések a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. TLS-kötés hozzáadásával kapcsolatban lásd: [Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban](configure-ssl-bindings.md).
+    
+### <a name="test-the-custom-domain"></a>Az egyéni tartomány tesztelése
 
-![Képernyőkép, amely az egyes kiválasztott állomásnév sikeres értesítését jeleníti meg.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
-
-A kiválasztott állomásnevek a Custom **Domains** (egyéni tartományok) lapon, az **Egyéni állomásnevek** szakaszban is láthatók.
-
-![Képernyőfelvétel: a kiválasztott állomásnevek a Custom Domains (egyéni állomásnevek) szakaszban találhatók.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
-
-> [!NOTE]
-> Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nem kötődik TLS/SSL-tanúsítványhoz, és a böngészőtől az egyéni tartományba érkező HTTPS-kérések a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. A TLS-kötés konfigurálásával kapcsolatban lásd: [Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban](configure-ssl-bindings.md).
->
-
-A gazdagépek teszteléséhez navigáljon a felsorolt gazdagépekhez a böngészőben. Az előző képernyőképen található példában próbálja meg navigálni a _kontoso.net_ és a _www \. kontoso.net_ .
-
-## <a name="assign-hostnames-to-app"></a>Állomásnévk társítása az alkalmazáshoz
-
-Ha úgy dönt, hogy nem rendel hozzá egy vagy több alapértelmezett állomásnevet az alkalmazáshoz a vásárlási folyamat során, vagy ha nem a listához kell rendelnie egy állomásnevet, bármikor hozzárendelhet egy állomásnevet.
-
-A App Service tartományban lévő gazdagépeket más alkalmazásokhoz is hozzárendelheti. A lépések attól függnek, hogy a App Service tartomány és az alkalmazás ugyanahhoz az előfizetéshez tartozik-e.
-
-- Eltérő előfizetés: rendelje hozzá az egyéni DNS-rekordokat a App Service tartományból az alkalmazáshoz, például egy külsőleg megvásárolt tartományhoz. Az egyéni DNS-nevek App Service tartományhoz való hozzáadásával kapcsolatos információkért lásd: [Egyéni DNS-rekordok kezelése](#custom). Ha egy külső megvásárolt tartományt szeretne hozzárendelni egy alkalmazáshoz, tekintse [meg a meglévő egyéni DNS-név leképezése Azure app Service](app-service-web-tutorial-custom-domain.md). 
-- Azonos előfizetés: kövesse az alábbi lépéseket.
-
-### <a name="launch-add-hostname"></a>Az állomásnév hozzáadásának indítása
-A **app Services** lapon válassza ki annak az alkalmazásnak a nevét, amelyhez állomásnévket szeretne hozzárendelni, válassza a **Beállítások** , majd az **Egyéni tartományok** elemet.
-
-![Képernyőkép, amely a Kiemelt egyéni tartományokat jeleníti meg.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
-
-Győződjön meg arról, hogy a megvásárolt tartomány szerepel a **app Service tartományok** szakaszban, de ne jelölje ki. 
-
-![A megvásárolt tartományt bemutató képernyőkép a App Service tartományok szakaszban.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
-
-> [!NOTE]
-> Az adott előfizetésben lévő összes App Service tartomány megjelenik az alkalmazás **Egyéni tartományok** lapján. Ha a tartomány az alkalmazás előfizetésében szerepel, de nem jelenik meg az alkalmazás **Egyéni tartományok** lapján, próbálja meg újból megnyitni az **Egyéni tartományok** lapot, vagy frissítse a weblapot. Emellett tekintse meg az értesítési harangot a Azure Portal tetején a folyamatjelző vagy a létrehozási hibákért.
->
->
-
-Válassza a **Gazdagépnév hozzáadása** lehetőséget.
-
-### <a name="configure-hostname"></a>Állomásnév konfigurálása
-Az **állomásnév hozzáadása** párbeszédpanelen írja be a app Service tartomány vagy bármely altartomány teljes tartománynevét. Például:
-
-- kontoso.net
-- www- \. kontoso.net
-- abc.kontoso.net
-
-Ha elkészült, válassza az **Érvényesítés** lehetőséget. Az állomásnév bejegyzéstípus automatikusan ki lesz választva.
-
-Válassza a **Gazdagépnév hozzáadása** lehetőséget.
-
-Ha a művelet befejeződött, megjelenik egy sikeres értesítés a hozzárendelt állomásnévről.  
-
-![A hozzárendelt állomásnév sikeres értesítését bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
-
-### <a name="close-add-hostname"></a>Állomásnév hozzáadásának lezárása
-Az **állomásnév hozzáadása** lapon a kívánt módon rendeljen hozzá egy másik gazdagépet az alkalmazáshoz. Ha elkészült, az **Add hostname (állomásnév hozzáadása** ) oldal bezárásához.
-
-Ekkor az újonnan hozzárendelt állomásnév (eke) t kell látnia az alkalmazás **Egyéni tartományok** lapján.
-
-![Képernyőfelvétel: az újonnan hozzárendelt gazdagépek az alkalmazás egyéni tartományok lapján láthatók.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
-
-### <a name="test-the-hostnames"></a>Az állomásnevek tesztelése
-
-Navigáljon a felsorolt gazdagépekhez a böngészőben. Az előző képernyőképen található példában próbálja meg navigálni a _ABC.kontoso.net_ .
+Az egyéni tartomány teszteléséhez navigáljon a böngészőben.
 
 ## <a name="renew-the-domain"></a>A tartomány megújítása
 
@@ -200,17 +186,19 @@ A megvásárolt App Service tartomány a vásárlás időpontjában egy évig é
 
 Ha ki szeretné kapcsolni az automatikus megújítást, vagy ha manuálisan szeretné megújítani a tartományt, kövesse az alábbi lépéseket.
 
-A **app Services** lapon kattintson az alkalmazás nevére, válassza a **Beállítások** , majd az **Egyéni tartományok** elemet.
+1. A keresési sávban keresse meg és válassza ki **app Service tartományokat**.
 
-![Képernyőkép, amely a Kiemelt egyéni tartományokat jeleníti meg.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+    ![Navigálás a portálon Azure App Service tartományokhoz](./media/app-service-web-tutorial-custom-domain/view-app-service-domains.png)
 
-A **app Service tartományok** szakaszban válassza ki a konfigurálni kívánt tartományt.
+1. A **app Service tartományok** szakaszban válassza ki a konfigurálni kívánt tartományt.
 
-![A megvásárolt tartományt bemutató képernyőkép a App Service tartományok szakaszban.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+1. A tartomány bal oldali navigációs sávján válassza a **tartomány megújítása** lehetőséget. A tartomány automatikus megújításának leállításához válassza a **ki** lehetőséget. A beállítás azonnal érvénybe lép.
 
-A tartomány bal oldali navigációs sávján válassza a **tartomány megújítása** lehetőséget. Ha nem szeretné automatikusan megújítani a tartományt, válassza a **kikapcsolva** , majd a **Mentés** lehetőséget.
+    ![Képernyőfelvétel: a tartomány automatikus megújításának lehetősége.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
-![Képernyőfelvétel: a tartomány automatikus megújításának lehetősége.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
+    > [!NOTE]
+    > Ha az oldalról navigál, figyelmen kívül hagyhatja a "nem mentett módosítások elvetése" hibaüzenetet, ha az **OK** gombra kattint.
+    >
 
 A tartomány manuális megújításához válassza a **tartomány megújítása** lehetőséget. Ez a gomb azonban [a tartomány lejárata előtt 90 nappal](#when-domain-expires)nem aktív.
 
@@ -232,60 +220,55 @@ Az Azure a következő módon bánik a lejáró vagy lejárt App Service tartom�
 
 ## <a name="manage-custom-dns-records"></a>Egyéni DNS-rekordok kezelése
 
-Az Azure-ban a App Service tartomány DNS-rekordjait [Azure DNS](https://azure.microsoft.com/services/dns/)használatával felügyeli a rendszer. Hozzáadhat, eltávolíthat és frissíthet DNS-rekordokat, ugyanúgy, mint a külsőleg megvásárolt tartományhoz.
+Az Azure-ban a App Service tartomány DNS-rekordjait [Azure DNS](https://azure.microsoft.com/services/dns/)használatával felügyeli a rendszer. Hozzáadhat, eltávolíthat és frissíthet DNS-rekordokat, ugyanúgy, mint a külsőleg megvásárolt tartományhoz. Egyéni DNS-rekordok kezelése:
 
-### <a name="open-app-service-domain"></a>App Service tartomány megnyitása
+1. A keresési sávban keresse meg és válassza ki **app Service tartományokat**.
 
-A Azure Portal bal oldali menüjében válassza a **minden szolgáltatás**  >  **app Service tartományok** lehetőséget.
+    ![Navigálás a portálon Azure App Service tartományokhoz](./media/app-service-web-tutorial-custom-domain/view-app-service-domains.png)
 
-![Képernyőfelvétel: a App Service tartományok elérési helyének megjelenítése.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+1. A **app Service tartományok** szakaszban válassza ki a konfigurálni kívánt tartományt.
 
-Válassza ki a kezelni kívánt tartományt. 
+1. Az **Áttekintés** lapon válassza a **DNS-rekordok kezelése** lehetőséget.
 
-### <a name="access-dns-zone"></a>Hozzáférés a DNS-zónához
+    ![Képernyőfelvétel: a DNS-rekordok elérési helyének megjelenítése.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
-A tartomány bal oldali menüjében válassza a **DNS-zóna** lehetőséget.
-
-![A DNS-zóna kiválasztásának helyét bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
-
-Ez a művelet megnyitja a App Service tartományának [DNS-zóna](../dns/dns-zones-records.md) lapját Azure DNS. További információ a DNS-rekordok szerkesztéséről: [DNS-zónák kezelése a Azure Portalban](../dns/dns-operations-dnszones-portal.md).
+További információ a DNS-rekordok szerkesztéséről: [DNS-zónák kezelése a Azure Portalban](../dns/dns-operations-dnszones-portal.md).
 
 ## <a name="cancel-purchase-delete-domain"></a>Vásárlás megszakítása (tartomány törlése)
 
 Miután megvásárolta a App Service tartományt, öt napja van, hogy megszakítsa a vásárlást teljes visszatérítésre. Öt nap elteltével törölheti a App Service tartományt, de nem kaphat visszatérítést.
 
-### <a name="open-app-service-domain"></a>App Service tartomány megnyitása
+1. A keresési sávban keresse meg és válassza ki **app Service tartományokat**.
 
-A Azure Portal bal oldali menüjében válassza a **minden szolgáltatás**  >  **app Service tartományok** lehetőséget.
+    ![Navigálás a portálon Azure App Service tartományokhoz](./media/app-service-web-tutorial-custom-domain/view-app-service-domains.png)
 
-![Képernyőfelvétel: a App Service tartományok elérési helyének megjelenítése.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+1. A **app Service tartományok** szakaszban válassza ki a konfigurálni kívánt tartományt.
 
-Válassza ki a megszakítani vagy törölni kívánt tartományt. 
+1. A tartomány bal oldali navigációs sávján válassza a **hostname-kötések** lehetőséget. Az összes Azure-szolgáltatás állomásnév-kötéseit itt találja.
 
-### <a name="delete-hostname-bindings"></a>Állomásnév-kötések törlése
+    ![A hostname kötések lapot megjelenítő képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
 
-A tartomány bal oldali menüjében válassza az **állomásnév-kötések** lehetőséget. Az összes Azure-szolgáltatás állomásnév-kötéseit itt találja.
+1. Az egyes állomásnév-kötések törléséhez válassza a **...**  >  lehetőséget. **Törlés**. Az összes kötés törlése után válassza a **Mentés** lehetőséget.
 
-![A hostname kötések lapot megjelenítő képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
+    <!-- ![Screenshot that shows where to delete the hostname bindings.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png) -->
 
-A App Service tartományt csak akkor törölheti, ha az összes állomásnév-kötés törölve lett.
+1. A tartomány bal oldali navigációs sávján válassza az **Áttekintés** lehetőséget. 
 
-Az egyes állomásnév-kötések törléséhez válassza a **...**  >  lehetőséget. **Törlés** . Az összes kötés törlése után válassza a **Mentés** lehetőséget.
+1. Ha a megvásárolt tartomány megszakítási időszaka nem telt el, válassza a **vásárlás megszakítása** lehetőséget. Ellenkező esetben a Delete ( **Törlés** ) gomb jelenik meg. Ha a tartományt visszatérítés nélkül szeretné törölni, válassza a **Törlés** lehetőséget.
 
-![A gazdagép-kötések törlésének helyét bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
+    ![A megvásárolt tartomány törlésének vagy megszakításának helyét bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
-### <a name="cancel-or-delete"></a>Megszakítás vagy törlés
+1. Az **Igen gombra** kattintva erősítse meg a műveletet.
 
-A tartomány bal oldali menüjében válassza az **Áttekintés** lehetőséget. 
-
-Ha a megvásárolt tartomány megszakítási időszaka nem telt el, válassza a **vásárlás megszakítása** lehetőséget. Ellenkező esetben a Delete ( **Törlés** ) gomb jelenik meg. Ha a tartományt visszatérítés nélkül szeretné törölni, válassza a **Törlés** lehetőséget.
-
-![A megvásárolt tartomány törlésének vagy megszakításának helyét bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
-
-A művelet megerősítéséhez válassza az **Igen** lehetőséget.
-
-A művelet befejezése után a tartományt a rendszer az előfizetésből bocsátja ki, és bárki számára elérhetővé válik. 
+    A művelet befejezése után a tartományt a rendszer az előfizetésből bocsátja ki, és bárki számára elérhetővé válik. 
 
 ## <a name="direct-default-url-to-a-custom-directory"></a>Egyéni könyvtár közvetlen alapértelmezett URL-címe
 
-Az App Service alapértelmezés szerint az alkalmazáskód gyökérkönyvtárára irányítja a webes kérelmeket. Ha egy alkönyvtárba szeretné irányítani őket, például `public` : a [közvetlen alapértelmezett URL-cím beállítása egy egyéni könyvtárba](app-service-web-tutorial-custom-domain.md#virtualdir).
+Az App Service alapértelmezés szerint az alkalmazáskód gyökérkönyvtárára irányítja a webes kérelmeket. Ha egy alkönyvtárba szeretné irányítani őket (például `public` :), tekintse át [az átirányítás egyéni könyvtárba](app-service-web-tutorial-custom-domain.md#redirect-to-a-custom-directory)című témakört.
+
+## <a name="next-steps"></a>További lépések
+
+Útmutató egyéni TLS/SSL-tanúsítvány kötéséhez App Serviceához.
+
+> [!div class="nextstepaction"]
+> [Egyéni DNS-név biztonságossá tétele TLS-kötéssel Azure App Service](configure-ssl-bindings.md)

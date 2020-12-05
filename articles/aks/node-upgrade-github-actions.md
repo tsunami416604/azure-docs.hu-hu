@@ -5,12 +5,12 @@ description: Ismerje meg, hogyan frissítheti az AK-csomópontokat a GitHub-műv
 services: container-service
 ms.topic: article
 ms.date: 11/27/2020
-ms.openlocfilehash: 7a24911fd771663c7edbbdf0c8d2d763a74fc586
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 504c99a7305a5010f8dbe56a30b53d6fc3a13c5b
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96535214"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607840"
 ---
 # <a name="apply-security-updates-to-azure-kubernetes-service-aks-nodes-automatically-using-github-actions"></a>Biztonsági frissítések alkalmazása az Azure Kubernetes szolgáltatás (ak) csomópontjaira automatikusan GitHub-műveletek használatával
 
@@ -170,8 +170,8 @@ Miután létrehozta a végrehajtást, a rendszer menti a munkafolyamatot, és k�
 
 > [!NOTE]
 > Ha a fürt összes csomópontja helyett egyetlen csomópontos készletet szeretne frissíteni, adja hozzá a `--name` paramétert a `az aks nodepool upgrade` parancshoz a csomópont-készlet nevének megadásához. Például:
-> ```
-> inlineScript: az aks nodepool upgrade -g {resourceGroupName} --cluster-name {aksClusterName} --name {{nodePoolName}} --node-image-only
+> ```azurecli-interactive
+> az aks nodepool upgrade -g {resourceGroupName} --cluster-name {aksClusterName} --name {{nodePoolName}} --node-image-only
 > ```
 
 ## <a name="run-the-github-action-manually"></a>A GitHub-művelet manuális futtatása

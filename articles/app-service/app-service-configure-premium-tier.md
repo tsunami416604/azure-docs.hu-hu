@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 204e087908ff978880966332b4619935dc6f0458
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 7ade24b6478f78a51e0be68ae69ae0b076ecff1f
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559116"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607874"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Azure App Service PremiumV3-szintjeinek konfigurálása
 
@@ -82,7 +82,7 @@ Egyes App Service csomagok nem méretezhetők a PremiumV3 szintjére, ha a mög�
 Ha az alkalmazás olyan App Service üzemelő példányban fut, ahol a **PremiumV3** nem érhető el, vagy ha az alkalmazás olyan régióban fut, amely jelenleg nem támogatja a **PremiumV3**-et, akkor a **PremiumV3** kihasználásához újra kell telepítenie az alkalmazást.  Erre két lehetősége van:
 
 - Hozzon létre egy alkalmazást egy új erőforráscsoporthoz, és egy új App Service-csomaggal. A App Service terv létrehozásakor válasszon ki egy **PremiumV3** -szintet. Ez a lépés biztosítja, hogy a App Servicei terv a **PremiumV3** támogató központi telepítési egységbe legyen telepítve. Ezután telepítse újra az alkalmazás kódját az újonnan létrehozott alkalmazásba. Még akkor is, ha a App Service-csomagot alacsonyabb szinten méretezi a költségek megtakarítása érdekében, bármikor **PremiumV3** a biztonsági mentést, mert az üzembe helyezési egység támogatja azt.
-- Ha az alkalmazás már egy meglévő **prémium** szinten fut, akkor az alkalmazás a **PremiumV3** használó új App Service-csomagba az alkalmazás összes beállításával, a kapcsolódási karakterláncokkal és a telepítési konfigurációval is klónozott.
+- Ha az alkalmazás már egy meglévő **prémium** szinten fut, akkor az alkalmazást az alkalmazás összes beállításával, a kapcsolódási karakterláncokkal és az üzembe helyezési konfigurációval együtt egy új, a **PremiumV3**-t használó app Service-csomagból is elvégezheti.
 
     ![Az alkalmazás klónozását bemutató képernyőkép.](media/app-service-configure-premium-tier/clone-app.png)
 

@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a74a3b7542a8d683e9bbf16f99c9b2646d95e00d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b45e1fbaf912cc045ba51a79db434baecbabdf43
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95986543"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608265"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
 
@@ -20,7 +20,7 @@ Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító w
 
 ![Képernyőkép, amely megjeleníti az Azure-alkalmazások Azure Portal navigációját.](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Altartomány hozzárendelése (például `www.contoso.com` ) CNAME-rekord használatával.
@@ -83,7 +83,7 @@ Megjelenik az App Service-alkalmazás felügyeleti oldala.
 
 1. Válassza ki bármelyik nem ingyenes szintet (**D1**, **B1**, **B2**, **B3**, vagy a **Production** kategória bármelyik szintje). További beállításokért válassza a **További beállítások megjelenítése** lehetőséget.
 
-1. Kattintson az **Alkalmaz** elemre.
+1. Kattintson az **Alkalmaz** gombra.
 
    ![A díjszabási szintet bemutató képernyőkép.](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -127,7 +127,7 @@ Ha a-től eltérő altartománnyal rendelkezik `www` , cserélje le az `www` alt
 
 Altartomány hozzárendelése az alkalmazás alapértelmezett tartománynevéhez (ahol az az `<app-name>.azurewebsites.net` `<app-name>` alkalmazás neve). Ha CNAME leképezést szeretne létrehozni az `www` altartományhoz, hozzon létre két rekordot:
 
-| Rekordtípus | Gazdagép | Érték | Megjegyzések |
+| Rekordtípus | Gazda | Érték | Megjegyzések |
 | - | - | - |
 | CNAME | `www` | `<app-name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
 | TXT | `asuid.www` | [A korábban kapott ellenőrző azonosító](#get-a-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. |
@@ -195,7 +195,7 @@ A rekord leképezéséhez az alkalmazás külső IP-címére van szükség. Ezt 
 
 Ha egy rekordot egy alkalmazáshoz szeretne hozzárendelni, általában a legfelső szintű tartományhoz, hozzon létre két rekordot:
 
-| Rekordtípus | Gazdagép | Érték | Megjegyzések |
+| Rekordtípus | Gazda | Érték | Megjegyzések |
 | - | - | - |
 | A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím | Maga a tartomány-hozzárendelés ( `@` általában a legfelső szintű tartományt jelenti). |
 | TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#get-a-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. A gyökérszintű tartományhoz használja a következőt: `asuid` . |
@@ -203,10 +203,10 @@ Ha egy rekordot egy alkalmazáshoz szeretne hozzárendelni, általában a legfel
 > [!NOTE]
 > Egy altartomány (például) egy `www.contoso.com` , az ajánlott [CNAME-rekord](#map-a-cname-record)helyett egy rekord használatával való hozzáadásához a rekordnak és a txt-rekordnak a következő táblázathoz hasonlóan kell kinéznie:
 >
-> | Rekordtípus | Gazdagép | Érték |
+> | Rekordtípus | Gazda | Érték |
 > | - | - | - |
 > | A | `www` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
-> | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
+> | TXT | `asuid.www` | [A korábban kapott ellenőrző azonosító](#get-a-domain-verification-id) |
 >
 
 A rekordok hozzáadása után a DNS-rekordok oldal a következő példához hasonlóan néz ki:
@@ -256,7 +256,7 @@ Az oktatóanyag példájában egy [helyettesítő karaktert tartalmazó DNS-neve
 
 Rendelje hozzá a helyettesítő karaktert `*` az alkalmazás alapértelmezett tartománynevéhez ( `<app-name>.azurewebsites.net` ahol az az `<app-name>` alkalmazás neve). A helyettesítő karakter nevének leképezéséhez hozzon létre két rekordot:
 
-| Rekordtípus | Gazdagép | Érték | Megjegyzések |
+| Rekordtípus | Gazda | Érték | Megjegyzések |
 | - | - | - |
 | CNAME | `*` | `<app-name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
 | TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#get-a-domain-verification-id) | App Service hozzáfér a `asuid` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. |

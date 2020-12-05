@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bdea9239faa4ec66fffa236bea40afd5e628e62
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994629"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607143"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>A DNS-infrastruktúrával kapcsolatos információk gyűjtése a DNS Analytics előzetes verziójának megoldásával
 
@@ -35,10 +35,10 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 
 | **Csatlakoztatott forrás** | **Támogatás** | **Leírás** |
 | --- | --- | --- |
-| [Windows-ügynökök](../platform/agent-windows.md) | Yes | A megoldás DNS-információkat gyűjt a Windows-ügynököktől. |
-| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | No | A megoldás nem gyűjt DNS-adatokat a közvetlen Linux-ügynököktől. |
-| [System Center Operations Manage felügyeleti csoport](../platform/om-agents.md) | Yes | A megoldás a DNS-információkat a csatlakoztatott Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
-| [Azure Storage-fiók](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | A megoldás nem használja az Azure Storage-t. |
+| [Windows-ügynökök](../platform/agent-windows.md) | Igen | A megoldás DNS-információkat gyűjt a Windows-ügynököktől. |
+| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | A megoldás nem gyűjt DNS-adatokat a közvetlen Linux-ügynököktől. |
+| [System Center Operations Manage felügyeleti csoport](../platform/om-agents.md) | Igen | A megoldás a DNS-információkat a csatlakoztatott Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
+| [Azure Storage-fiók](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nem | A megoldás nem használja az Azure Storage-t. |
 
 ### <a name="data-collection-details"></a>Adatgyűjtés részletei
 
@@ -57,13 +57,13 @@ A megoldás további konfigurálás nélkül elindítja az adatok gyűjtését. 
 
 A megoldás Irányítópultján kattintson a **konfiguráció** elemre a DNS Analytics konfiguráció lap megnyitásához. A következő két típusú konfigurációs módosítást teheti:
 
-- **Engedélyezési tartomány neve**. A megoldás nem dolgozza fel az összes keresési lekérdezést. A tartománynév-utótagok engedélyezési listáját is fenntartja. A megoldás nem dolgozza fel azokat a keresési lekérdezéseket, amelyek az adott engedélyezési listán szereplő tartománynév-utótagoknak megfelelő tartományneveket oldják fel. Az engedélyezett tartománynevek feldolgozásának mellőzése segít optimalizálni a Azure Monitor elküldhető adatátvitelt. Az alapértelmezett engedélyezési lista népszerű nyilvános tartományneveket tartalmaz, például www.google.com és www.facebook.com. A teljes alapértelmezett listát görgetve tekintheti meg.
+- **Allowlisted tartománynevek**. A megoldás nem dolgozza fel az összes keresési lekérdezést. A tartománynév-utótagok engedélyezési tartja karban. A megoldás nem dolgozza fel azokat a keresési lekérdezéseket, amelyek az ebben a engedélyezési található tartománynév-utótagoknak megfelelő tartományneveket oldják fel. A allowlisted-tartománynevek feldolgozása nem segít optimalizálni a Azure Monitorba elküldett adatgyűjtést. Az alapértelmezett engedélyezési olyan népszerű nyilvános tartományneveket tartalmaz, mint például a www.google.com és a www.facebook.com. A teljes alapértelmezett listát görgetve tekintheti meg.
 
   A lista módosításával bármely olyan tartománynév-utótagot hozzáadhat, amelyben meg szeretné tekinteni a keresési elemzéseket. Eltávolíthat olyan tartománynév-utótagot is, amelyről nem kívánja megtekinteni a keresési elemzéseket.
 
 - **Beszédes ügyfél küszöbértéke**. Azok a DNS-ügyfelek, amelyek túllépik a keresési kérelmek számának küszöbértékét, a **DNS-ügyfelek** panelen vannak kiemelve. Az alapértelmezett küszöbérték 1 000. Módosíthatja a küszöbértéket.
 
-    ![Engedélyezési tartományok nevei](./media/dns-analytics/dns-config.png)
+    ![Allowlisted tartománynevek](./media/dns-analytics/dns-config.png)
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 
@@ -110,7 +110,7 @@ Az információ segítségével azonosíthatja a következőket:
 - Azok az IP-címek, amelyekre a tartománynév fel lett oldva.
 - Rosszindulatú IP-cím.
 - A probléma súlyossága.
-- A rosszindulatú IP-címek feketelistára helyezésének oka.
+- A kártékony IP-blocklisting oka.
 - Észlelési idő.
 
 **Lekérdezett tartományok**. A a leggyakoribb tartományneveket adja meg a környezetben lévő DNS-ügyfelek által lekérdezett lekérdezésekben. Megtekintheti a lekérdezett tartománynevek listáját. A naplóbeli keresés során megtekintheti egy adott tartománynév keresési kérelmének részleteit is.

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/15/2020
 ms.author: radeltch
-ms.openlocfilehash: f4693af9c29a36aad60b7b525fec024509a4d586
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d2cc8487f9864a27c1a2b02ef6e846bc43727e27
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958746"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608537"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával Red Hat Enterprise Linux 
 
@@ -59,6 +59,10 @@ ms.locfileid: "94958746"
 Ez a cikk azt ismerteti, hogyan helyezhető üzembe egy, az Azure Red Hat Enterprise Linux Virtual Machines (VM) szolgáltatással rendelkező, kibővített SAP HANA rendszer egy kibővített konfigurációban a megosztott tároló köteteinek [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) használatával.  
 
 A példában a konfigurációk, a telepítési parancsok és így tovább, a HANA-példány **03** , a HANA rendszer azonosítója pedig **HN1**. A példák a HANA 2,0 SP4 és az SAP 7,6 Red Hat Enterprise Linux alapján érhetők el. 
+
+> [!NOTE]
+> Ez a cikk a " *Master* " és a " *Slave*" kifejezésekre mutató hivatkozásokat tartalmaz, amelyeket a Microsoft már nem használ. Ha eltávolítja ezeket a feltételeket a szoftverből, a rendszer eltávolítja őket ebből a cikkből.
+
 
 Mielőtt elkezdené, tekintse meg a következő SAP-megjegyzéseket és dokumentumokat:
 
@@ -252,7 +256,7 @@ A következő utasítások feltételezik, hogy már létrehozta az erőforráscs
 
     d. Válassza a **hálózatkezelés** lehetőséget, majd csatlakoztassa a hálózati adaptert. A **hálózati adapter csatolása** legördülő listában válassza ki a már létrehozott hálózati adaptereket és az `storage` `hana` alhálózatokat.  
     
-    e. Kattintson a **Mentés** gombra. 
+    e. Válassza a **Save** (Mentés) lehetőséget. 
  
     f. Ismételje meg a b – e lépéseket a fennmaradó virtuális gépek esetében (példánkban a  **hanadb2** és a **hanadb3**).
  
@@ -924,7 +928,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     | hanadb3 | no     | ignore |          |        |         0 |         0 | default  | default  | master 3   | slave      | standby     | standby     | standby | standby | default | -       |
    </code></pre>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

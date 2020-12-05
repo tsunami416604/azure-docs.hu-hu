@@ -15,16 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: fcc247e9e3122515ebe9230f58860df8c6dd3948
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 85f268990ac9e0c04cba1b9c409a232a24ce0d61
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484328"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608634"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux Serveren
 
 Az IBM DB2 for Linux, UNIX és Windows (LUW) a [magas rendelkezésre állású és vész-helyreállítási (HADR) konfigurációban](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html) egy olyan csomópontból áll, amely egy elsődleges adatbázis-példányt és legalább egy olyan csomópontot futtat, amely egy másodlagos adatbázis-példányt futtat. Az elsődleges adatbázis példányának módosításait a rendszer a konfigurációtól függően szinkron vagy aszinkron módon replikálja egy másodlagos adatbázis-példányba. 
+
+> [!NOTE]
+> Ez a cikk a " *Master* " és a " *Slave*" kifejezésekre mutató hivatkozásokat tartalmaz, amelyeket a Microsoft már nem használ. Ha eltávolítja ezeket a feltételeket a szoftverből, a rendszer eltávolítja őket ebből a cikkből.
 
 Ez a cikk az Azure Virtual Machines (VM) üzembe helyezését és konfigurálását, a fürt keretrendszerének telepítését, valamint az IBM DB2-LUW HADR-konfigurációval való telepítését ismerteti. 
 
@@ -34,7 +37,7 @@ A támogatott IBM DB2-verziók 10,5-es és újabb verziójúak, az SAP Note [192
 
 A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket és dokumentációt:
 
-| SAP-Megjegyzés | Description |
+| SAP-Megjegyzés | Leírás |
 | --- | --- |
 | [1928533] | SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] | SAP az Azure-on: támogatási előfeltételek |
@@ -416,7 +419,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    c. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
 
-   d. Válassza az **OK** lehetőséget.
+   d. Kattintson az **OK** gombra.
 
    e. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
 
@@ -432,7 +435,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    e. Válassza ki az IBM DB2-fürthöz tartozó virtuális gépeket.
 
-   f. Válassza az **OK** lehetőséget.
+   f. Kattintson az **OK** gombra.
 
 1. Állapot mintavételének létrehozása:
 
@@ -442,7 +445,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    c. Válassza a **TCP** lehetőséget a protokoll és a **62500**-es port közül. Tartsa meg az **intervallum** értékét **5** értékre, és tartsa meg a nem kifogástalan **állapot küszöbértékét** **2** értékre.
 
-   d. Válassza az **OK** lehetőséget.
+   d. Kattintson az **OK** gombra.
 
 1. Hozza létre a terheléselosztási szabályokat:
 
@@ -458,7 +461,7 @@ Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load
 
    f. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
 
-   : Válassza az **OK** lehetőséget.
+   : Kattintson az **OK** gombra.
 
 **[A]** tűzfalszabály hozzáadása a mintavételi porthoz:
 <pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent

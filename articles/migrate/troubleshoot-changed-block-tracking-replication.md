@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: da1f7ce1474513fd9de286495f59aca63d8628b6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 04dcf8edbce7782e6d196271bfa85f2f8d1c5ba3
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377228"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608333"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Az ügynök nélküli VMware VM-áttelepítés replikálási hibáinak elhárítása
 
@@ -59,7 +59,7 @@ Amikor a portál létrehozza a Key vaultot, egy felhasználói hozzáférési sz
 
 - A másik eset, ha ez akkor fordulhat elő, amikor egy felhasználó (Felhasználó1) megpróbálta először beállítani a replikálást, és hibát észlelt, de a kulcstartó már létrejött (és a felhasználói hozzáférési házirend megfelelően van hozzárendelve ehhez a felhasználóhoz). Most egy későbbi időpontban egy másik felhasználó (Felhasználó2) megpróbálja beállítani a replikálást, de a felügyelt Storage-fiók konfigurálása vagy az SAS-definíció létrehozása művelet meghiúsul, mert nincs olyan felhasználói hozzáférési házirend, amely a kulcstartó Felhasználó2 tartozik.
 
-**Megoldás** : a probléma megoldásához hozzon létre egy felhasználói hozzáférési szabályzatot a Felhasználó2-hez a kulcstartó-engedélyezési Felhasználó2 engedéllyel a felügyelt Storage-fiók konfigurálásához és a sas-definíciók létrehozásához. A Felhasználó2 az alábbi parancsmagok használatával teheti ezt Azure PowerShell:
+**Megoldás**: a probléma megoldásához hozzon létre egy felhasználói hozzáférési szabályzatot a Felhasználó2-hez a kulcstartó-engedélyezési Felhasználó2 engedéllyel a felügyelt Storage-fiók konfigurálásához és a sas-definíciók létrehozásához. A Felhasználó2 az alábbi parancsmagok használatával teheti ezt Azure PowerShell:
 
 $userPrincipalId = $ (Get-AzureRmADUser-UserPrincipalName "user2_email_address"). ID
 
@@ -139,7 +139,7 @@ Az Azure-ba replikálni próbált összetevő vagy nem válaszol. A lehetséges 
     
     Ez a parancs megkísérli a TCP-kapcsolatokat, és kimenetet ad vissza.
     
-     - A kimenetben keresse meg a " _TcpTestSucceeded_ " mezőt. Ha az érték "true" ( _igaz_ ), nincs kapcsolati probléma a Azure Migrate berendezés és a Azure Key Vault között. Ha az érték "false" (hamis), akkor csatlakozási probléma van.
+     - A kimenetben keresse meg a "_TcpTestSucceeded_" mezőt. Ha az érték "true" (_igaz_), nincs kapcsolati probléma a Azure Migrate berendezés és a Azure Key Vault között. Ha az érték "false" (hamis), akkor csatlakozási probléma van.
     
     **Megoldás:** Ha ez a teszt sikertelen, a Azure Migrate berendezés és a Azure Key Vault között csatlakozási probléma lép fel. A kapcsolódási problémák ellenőrzése érdekében folytassa a helyi hálózati csapattal. Jellemzően előfordulhat, hogy bizonyos tűzfalbeállítások okoznak hibákat.
     
@@ -225,7 +225,7 @@ A lehetséges okok a következők:
     
     Ez a parancs megkísérli a TCP-kapcsolatokat, és kimenetet ad vissza.
     
-    1. A kimenetben keresse meg a " _TcpTestSucceeded_ " mezőt. Ha az érték "true" ( _igaz_ ), nincs kapcsolati probléma a Azure Migrate berendezés és a Azure Key Vault között. Ha az érték "false" (hamis), akkor csatlakozási probléma van.
+    1. A kimenetben keresse meg a "_TcpTestSucceeded_" mezőt. Ha az érték "true" (_igaz_), nincs kapcsolati probléma a Azure Migrate berendezés és a Azure Key Vault között. Ha az érték "false" (hamis), akkor csatlakozási probléma van.
     
     **Megoldás:** Ha ez a teszt sikertelen, a Azure Migrate berendezés és a Azure Key Vault között csatlakozási probléma lép fel. A kapcsolódási problémák ellenőrzése érdekében folytassa a helyi hálózati csapattal. Jellemzően előfordulhat, hogy bizonyos tűzfalbeállítások okoznak hibákat.
     
@@ -242,7 +242,7 @@ Ezt a hibát a következő két módon lehet feloldani:
 
 Egy ilyen ismert probléma, amely a virtuális gép CBT-visszaállítását okozhatja VMware vSphere 5,5-es verzióban a [VMware KB 2048201: a megváltozott blokk követése](https://go.microsoft.com/fwlink/?linkid=2138888) alaphelyzetbe áll a vSphere 5. x vMotion művelete után. Amennyiben a VMware vSphere 5.5-ös verzióját használja, győződjön meg arról, hogy telepítve vannak a tudásbáziscikkben leírt frissítések.
 
-Azt is megteheti, hogy [alaphelyzetbe állítja a VMware PowerCLI-t használó virtuális gépeken a VMware changed Block követését.
+Azt is megteheti, hogy a VMware PowerCLI használatával alaphelyzetbe állítja a VMware changed Block követését egy virtuális gépen.
 
 ## <a name="an-internal-error-occurred"></a>Belső hiba történt
 
@@ -276,7 +276,7 @@ Ha több lemezzel rendelkező virtuális géppel rendelkezik, akkor ez a hiba ak
 
 Ez a probléma akkor fordul elő, ha a pillanatkép-létrehozás nem válaszol. Ha ez a probléma bekövetkezik, a pillanatkép létrehozása feladat leáll a 95%-os vagy a 99%-nál. A probléma megoldása érdekében tekintse meg ezt a [VMware kb-ot](https://go.microsoft.com/fwlink/?linkid=2138969) .
 
-### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Hibaüzenet: belső hiba történt. [Nem sikerült összevonni a lemezeket a virtuális gépen _[ok]_ ]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Hibaüzenet: belső hiba történt. [Nem sikerült összevonni a lemezeket a virtuális gépen _[ok]_]
 
 Ha a replikálási ciklus végén összesíti a lemezeket, a művelet sikertelen lesz. Kövesse a [VMware kb](https://go.microsoft.com/fwlink/?linkid=2138970) utasításait a probléma megoldásához szükséges _OK_ kiválasztásával.
 

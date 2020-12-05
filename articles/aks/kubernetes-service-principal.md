@@ -4,12 +4,12 @@ description: Az Azure Kubernetes Service-ben található fürthöz tartozó Azur
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e95eae3ab8d992bc169e54700e7e31715e72102e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85298548"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607823"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ Azure AD szolgáltatásnév létrehozásához rendelkeznie kell alkalmazásregis
 
 Ha egy másik Azure AD-bérlőből származó szolgáltatásnevet használ, további szempontokat is figyelembe kell vennie a fürt telepítésekor elérhető engedélyek köré. Előfordulhat, hogy nem rendelkezik a megfelelő engedélyekkel a címtáradatok olvasásához és írásához. További információ: [Mi az alapértelmezett felhasználói engedély a Azure Active Directory-ben?][azure-ad-permissions]
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Szolgáltatásnév automatikus létrehozása és használata
 
@@ -105,7 +105,6 @@ Használhat olyan speciális hálózatkezelést, ahol a virtuális hálózat és
 - Hozzon létre egy [Egyéni szerepkört][rbac-custom-role] , és adja meg a következő szerepkör-engedélyeket:
   - *Microsoft. Network/virtualNetworks/alhálózatok/csatlakozás/művelet*
   - *Microsoft. Network/virtualNetworks/alhálózatok/olvasás*
-  - *Microsoft. Network/virtualNetworks/alhálózatok/írás*
   - *Microsoft. Network/nyilvános IP/csatlakozás/művelet*
   - *Microsoft. Network/nyilvános IP/READ*
   - *Microsoft. Network/nyilvános IP/Write*
@@ -114,7 +113,7 @@ Használhat olyan speciális hálózatkezelést, ahol a virtuális hálózat és
     - *Microsoft. Network/routeTables/READ*
 - Vagy rendelje hozzá a [hálózati közreműködő][rbac-network-contributor] beépített szerepkört a virtuális hálózaton belüli alhálózathoz.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
 Előfordulhat, hogy egy másik erőforráscsoport meglévő lemez-erőforrásaihoz is hozzá kell férnie. Rendelje hozzá a következő szerepkör-engedélyek egyikét:
 

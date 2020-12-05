@@ -3,15 +3,15 @@ title: Földrajzi katasztrófa-helyreállítás – Azure Event Hubs | Microsoft
 description: A földrajzi régiók használata a feladatátvételhez és a vész-helyreállítási műveletek végrehajtásához az Azure-ban Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1807c22645c3246f4cf18d723fc19da475e4d4f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd2385a6f6e61136a1284171532aedd70a9cc96
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934072"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608350"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geo-vész-helyreállítás 
-Ha a teljes Azure-régiók vagy-adatközpontok (ha nincsenek használatban [rendelkezésre állási zónák](../availability-zones/az-overview.md) ) a tapasztalatok leállását tapasztalják, kritikus fontosságú, hogy az adatfeldolgozás egy másik régióban vagy adatközpontban is működjön. Így a *geo-* vész-helyreállítás és a *geo-replikáció* minden vállalat számára fontos funkció. Az Azure Event Hubs a Geo-vész-helyreállítást és a Geo-replikációt is támogatja a névtér szintjén. 
+Ha a teljes Azure-régiók vagy-adatközpontok (ha nincsenek használatban [rendelkezésre állási zónák](../availability-zones/az-overview.md) ) a tapasztalatok leállását tapasztalják, kritikus fontosságú, hogy az adatfeldolgozás egy másik régióban vagy adatközpontban is működjön. Így a *geo-* vész-helyreállítás és a *geo-replikáció* minden vállalat számára fontos funkció. Az Azure Event Hubs a Geo-vész-helyreállítást és a Geo-replikációt is támogatja a névtér szintjén. 
 
 > [!NOTE]
 > A földrajzi katasztrófa utáni helyreállítási funkció csak a [standard és a dedikált SKU](https://azure.microsoft.com/pricing/details/event-hubs/)esetében érhető el.  
@@ -59,13 +59,13 @@ A következő szakasz áttekintést nyújt a feladatátvételi folyamatról, és
 
 ![1][]
 
-### <a name="setup"></a>Telepítés
+### <a name="setup"></a>Létrehozás
 
 Először hozzon létre vagy használjon egy meglévő elsődleges névteret, és egy új másodlagos névteret, és párosítsa a kettőt. Ez a párosítás egy aliast ad meg, amely a kapcsolódáshoz használható. Mivel aliast használ, nem kell módosítania a kapcsolódási karakterláncokat. Csak új névterek adhatók hozzá a feladatátvételi párosításhoz. Végezetül vegyen fel némi figyelést, hogy ellenőrizze, szükség van-e feladatátvételre. A legtöbb esetben a szolgáltatás egy nagyméretű ökoszisztéma egyik része, így az automatikus feladatátvétel ritkán lehetséges, mivel a feladatátvételt a többi alrendszerrel vagy infrastruktúrával szinkronizálva kell végrehajtani.
 
 ### <a name="example"></a>Példa
 
-Ebben a forgatókönyvben egy példa arra, hogy egy olyan pénztári (POS) megoldást vegyünk fel, amely üzeneteket vagy eseményeket bocsát ki. A Event Hubs átadja ezeket az eseményeket valamilyen leképezési vagy újraformázási megoldásnak, amely ezután a leképezett adatfeldolgozást egy másik rendszerbe továbbítja. Ezen rendszerek esetében előfordulhat, hogy az összes ilyen rendszer ugyanabban az Azure-régióban fut. Az, hogy mikor és milyen részben kell átadni a feladatátvételt, az infrastruktúra adatforgalmának függvénye. 
+Ebben a forgatókönyvben egy példa arra, hogy egy olyan pénztári (POS) megoldást vegyünk fel, amely üzeneteket vagy eseményeket bocsát ki. A Event Hubs átadja ezeket az eseményeket valamilyen leképezési vagy újraformázási megoldásnak, amely ezután a leképezett adatfeldolgozást egy másik rendszerbe továbbítja. Ezen rendszerek esetében előfordulhat, hogy az összes ilyen rendszer ugyanabban az Azure-régióban fut. Annak a döntése, hogy a rendszer mikor és milyen részben hajtja végre a feladatátvételt, az infrastruktúra adatforgalmával függ. 
 
 A feladatátvételt a figyelési rendszerekkel vagy a testreszabott figyelési megoldásokkal automatizálhatja. Az ilyen automatizálás azonban további tervezést és munkát is igénybe vesz, amely nem tartozik a jelen cikk hatálya alá.
 
@@ -96,7 +96,7 @@ A [githubon található minta](https://github.com/Azure/azure-event-hubs/tree/ma
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Vegye figyelembe a következő szempontokat, hogy ne feledje a jelen kiadást:
+Vegye figyelembe, hogy a következő szempontokat kell szem előtt tartani:
 
 1. A tervezés szerint Event Hubs geo-vész-helyreállítás nem replikálja az adatait, ezért nem használhatja fel az elsődleges Event hub régi eltolási értékét a másodlagos esemény központján. Javasoljuk, hogy a következő módszerek egyikével indítsa újra az esemény-fogadót:
 
@@ -106,7 +106,7 @@ Vegye figyelembe a következő szempontokat, hogy ne feledje a jelen kiadást:
 
 2. A feladatátvétel tervezése során az időtényezőt is figyelembe kell venni. Ha például megszakad a kapcsolat a 15 – 20 percnél hosszabb ideig, dönthet úgy, hogy kezdeményezi a feladatátvételt. 
  
-3. Az a tény, hogy nem replikálódnak az adathalmazok, a jelenleg aktív munkamenetek nem replikálódnak. Emellett előfordulhat, hogy a duplikált észlelés és az ütemezett üzenetek nem működnek. Az új munkamenetek, az ütemezett üzenetek és az új ismétlődések is működni fognak. 
+3. Az a tény, hogy a rendszer nem replikálja az adatreplikációt, az aktuális aktív munkamenetek nem replikálódnak. Emellett előfordulhat, hogy a duplikált észlelés és az ütemezett üzenetek nem működnek. Az új munkamenetek, az ütemezett üzenetek és az új ismétlődések is működni fognak. 
 
 4. Egy összetett elosztott infrastruktúra feladatátvétele legalább egyszer [kipróbálható](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) . 
 

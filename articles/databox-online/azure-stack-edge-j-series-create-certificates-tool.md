@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 11/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 5e5cb077868a224620d1a23e1ff1aac9c8d9f095
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: ab9559e1e8265b3adf08b36d1a8097a00297c61a
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874474"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96606990"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Tanúsítványok létrehozása a Azure Stack Edge Pro-hoz Azure Stack hub Readiness-ellenőrző eszköz használatával 
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre tanúsítványokat a Azure Stack E
 
 ## <a name="using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack hub Readiness-ellenőrző eszköz használata
 
-Az Azure Stack hub Readiness-ellenőrző eszköz használatával tanúsítvány-aláírási kérelmeket (munkatársakat) hozhat létre egy Azure Stack Edge Pro-eszköz telepítéséhez. Ezeket a kéréseket a Azure Stack Edge Pro-eszközre vonatkozó megrendelés elhelyezése után hozhatja létre, és megvárja, amíg az eszköz el nem érkezik. 
+Az Azure Stack hub Readiness-ellenőrző eszköz használatával tanúsítvány-aláírási kérelmeket (munkatársakat) hozhat létre egy Azure Stack Edge Pro-eszköz telepítéséhez. Ezeket a kéréseket a Azure Stack Edge Pro-eszköz megrendelése után hozhatja létre, és megvárhatja az eszköz érkezését.
 
 > [!NOTE]
 > Ezt az eszközt csak tesztelési vagy fejlesztési célokra, illetve éles eszközökre nem használhatja. 
@@ -59,21 +59,21 @@ Az alábbi lépések segítségével készítheti elő az Azure Stack Edge Pro-e
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
-    A telepített verzió ellenőrzéséhez írja be a következőt:  
+    A telepített verzió beszerzéséhez írja be a következőt:  
 
     ```azurepowershell
     Get-InstalledModule -Name Microsoft.AzureStack.ReadinessChecker  | ft Name, Version 
     ```
 
-3. Hozzon létre egy könyvtárat az összes tanúsítványhoz, ha az nem létezik. Típus: 
+3. Hozzon létre egy könyvtárat az összes tanúsítványhoz, ha még nem rendelkezik ilyennel. Típus: 
     
     ```azurepowershell
     New-Item "C:\certrequest" -ItemType Directory
     ``` 
     
-4. Tanúsítványkérelem létrehozásához adja meg a következő információkat. Ha VPN-tanúsítványt hoz létre, néhány ilyen bemenet nem érvényes. 
+4. Tanúsítványkérelem létrehozásához adja meg a következő információkat. Ha VPN-tanúsítványt hoz létre, néhány ilyen bemenet nem érvényes.
     
-    |Input (Bemenet) |Leírás  |
+    |Bevitel |Leírás  |
     |---------|---------|
     |`OutputRequestPath`|A fájl elérési útja a helyi ügyfélszámítógépen, amelyen létre szeretné hozni a tanúsítványokat.        |
     |`DeviceName`|Az eszköz helyi webes felhasználói felületének **eszközök** lapján található név. <br> Ez a mező nem szükséges a VPN-tanúsítványokhoz.         |
@@ -107,7 +107,7 @@ Az alábbi lépések segítségével készítheti elő az Azure Stack Edge Pro-e
     ```
 
     
-5. A tanúsítványkérelem fájljait a fenti OutputRequestPath paraméterben megadott könyvtárba fogja megtalálni. A paraméter használatakor `MultipleCSR` a rendszer 4 fájlt fog látni a `.req` kiterjesztéssel. A fájlok a következők:
+5. A tanúsítványkérelem fájljait a fenti OutputRequestPath paraméterben megadott könyvtárba fogja megtalálni. A paraméter használatakor `MultipleCSR` a következő négy fájl jelenik meg a `.req` kiterjesztéssel:
 
     
     |Fájlnevek  |Tanúsítványkérelem típusa  |
@@ -115,17 +115,17 @@ Az alábbi lépések segítségével készítheti elő az Azure Stack Edge Pro-e
     |Kezdve a `DeviceName`     |Helyi webes FELHASZNÁLÓIFELÜLET-tanúsítvány kérése      |
     |Kezdve a `NodeSerialNumber`     |Csomópont-tanúsítványkérelem         |
     |Kezdés `login`     |Azure Resource Manager Endpoint Certificate kérelem       |
-    |Kezdés `wildcard`     |BLOB Storage-tanúsítvány kérése; helyettesítő karaktert tartalmaz, mert az az eszközön létrehozott összes Storage-fiókot tartalmazza.          |
+    |Kezdés `wildcard`     |BLOB Storage-tanúsítvány kérése. Helyettesítő karaktert tartalmaz, mert az az eszközön létrehozott összes Storage-fiókot tartalmazza.          |
     |Kezdés `AzureStackEdgeVPNCertificate`     |VPN-ügyféltanúsítvány iránti kérelem.         |
 
     Megjelenik egy INF-mappa is. Ez egy felügyeleti. <Edge-DeviceName> információs fájlt tartalmaz a tanúsítvány részleteit magyarázó szövegben.  
 
 
-6. Küldje el ezeket a fájlokat a hitelesítésszolgáltatótól (belső vagy nyilvános). Győződjön meg arról, hogy a HITELESÍTÉSSZOLGÁLTATÓ olyan tanúsítványokat hoz létre a generált kérelem alapján, amelyek megfelelnek a [csomópont-tanúsítványok](azure-stack-edge-j-series-manage-certificates.md#node-certificates), a [végponti tanúsítványok](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)és a [helyi felhasználói felületi tanúsítványok](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)Azure stack Edge Pro tanúsítványára vonatkozó követelményeinek.
+6. Küldje el ezeket a fájlokat a hitelesítésszolgáltatótól (belső vagy nyilvános). Győződjön meg arról, hogy a HITELESÍTÉSSZOLGÁLTATÓ olyan tanúsítványokat hoz létre a generált kérelem alapján, amelyek megfelelnek a csomópont- [tanúsítványok](azure-stack-edge-j-series-manage-certificates.md#node-certificates), a [végponti tanúsítványok](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)és a [helyi felhasználói felületi tanúsítványok](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)Azure stack Edge Pro-tanúsítványra vonatkozó követelményeinek.
 
 ## <a name="prepare-certificates-for-deployment"></a>Tanúsítványok előkészítése központi telepítéshez
 
-A HITELESÍTÉSSZOLGÁLTATÓTÓL beszerzett tanúsítványfájl-fájlokat importálni és exportálni kell olyan tulajdonságokkal, amelyek megfelelnek Azure Stack Edge Pro-eszköz tanúsítványára vonatkozó követelményeknek. Hajtsa végre a következő lépéseket ugyanazon a rendszeren, amelyen a tanúsítvány-aláírási kéréseket létrehozta.
+A HITELESÍTÉSSZOLGÁLTATÓTÓL beolvasott tanúsítványfájl-fájlokat importálni és exportálni kell az Azure Stack Edge Pro-eszköz tanúsítványra vonatkozó követelményeinek megfelelő tulajdonságokkal. Hajtsa végre a következő lépéseket ugyanazon a rendszeren, amelyen a tanúsítvány-aláírási kéréseket létrehozta.
 
 - A tanúsítványok importálásához kövesse a [tanúsítványok importálása az Azure stack Edge Pro-eszközt elérő ügyfeleken](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)című témakör lépéseit.
 
@@ -150,6 +150,6 @@ Először létrehoz egy megfelelő mappastruktúrát, és elhelyezi a tanúsítv
 
     `Invoke-AzsCertificateValidation -CertificateType AzureStackEdge -DeviceName mytea1 -NodeSerialNumber VM1500-00025 -externalFQDN azurestackedge.contoso.com -CertificatePath $ENV:USERPROFILE\Documents\AzureStackCSR\AzureStackEdge -pfxPassword $pfxPassword`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure Stack Edge Pro-eszköz üzembe helyezése](azure-stack-edge-gpu-deploy-prep.md)

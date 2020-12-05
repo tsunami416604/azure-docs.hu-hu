@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cf503f374cd2fd1ca04aad6650b2c07abebbc46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a52188dc5058dbc74d3b03fba860b98540cd4a41
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519353"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608503"
 ---
 # <a name="communication-services-notifications"></a>Kommunikációs szolgáltatások értesítései
 
@@ -48,13 +48,10 @@ A kommunikációs szolgáltatások az Azure Notification hub-t áteresztő szolg
 Ha Notification Hubs használatával szeretne leküldéses értesítéseket küldeni az ügyféleszközök számára, [hozzon létre egy értesítési](../../notification-hubs/create-notification-hub-portal.md) központot a kommunikációs szolgáltatások erőforrásával megegyező előfizetésen belül. Az Azure Notification Hubs-t konfigurálni kell a használni kívánt platform Notifications szolgáltatáshoz. Ha meg szeretné tudni, hogyan kérhet le leküldéses értesítéseket az ügyfélalkalmazás Notification Hubsről, tekintse meg a [Notification Hubs első lépéseivel foglalkozó](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md) témakört, és válassza ki a cél ügyféloldali platformot a lap tetején található legördülő listából.
 
 > [!NOTE]
-> Jelenleg a APNs és az FCM platform támogatott.
+> Jelenleg a APNs és az FCM platform támogatott.  
+A APNs platformot jogkivonat-hitelesítési móddal kell konfigurálni. A tanúsítvány-hitelesítési mód jelenleg nem támogatott. 
 
 Miután konfigurálta az értesítési központot, hozzárendelheti a kommunikációs szolgáltatások erőforrásához úgy, hogy a Azure Resource Manager ügyfelet vagy a Azure Portalon keresztül a hub kapcsolati karakterláncát adja meg. A kapcsolatok karakterláncának "Send" engedélyeket kell tartalmaznia. Javasoljuk, hogy hozzon létre egy másik hozzáférési szabályzatot, és csak az Ön központjának megfelelő engedélyeket küldje el. További információ a [Notification Hubs biztonsági és hozzáférési szabályzatokról](../../notification-hubs/notification-hubs-push-notification-security.md)
-
-> [!IMPORTANT]
-> Ez csak a jogkivonat-hitelesítési módra vonatkozik. A tanúsítvány-hitelesítési mód jelenleg nem támogatott.  
-A APNS VOIP-értesítések engedélyezéséhez be kell állítania a köteg-azonosító értékét, amikor az értesítési központot úgy konfigurálja, hogy az a utótaggal rendelkező alkalmazáscsomag-azonosító legyen `.voip` . További részletekért tekintse meg a [APNS VoIP használata Notification Hubs használatával](../../notification-hubs/voip-apns.md) című témakört.
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Az értesítési központ konfigurálása a Azure Resource Manager ügyfél használatával
 
@@ -84,7 +81,7 @@ A hub összekapcsolásának minden változása az adatsíkon (azaz egy értesít
 
 Tekintse át a [hanghívási](../quickstarts/voice-video-calling/getting-started-with-calling.md) rövid útmutatót, amelyből megtudhatja, hogyan regisztrálja az eszközt a kommunikációs szolgáltatásokkal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](../../event-grid/overview.md)
 * Ha többet szeretne megtudni az Azure Notification hub-fogalmakról, tekintse meg az [azure Notification Hubs dokumentációját](../../notification-hubs/index.yml) .

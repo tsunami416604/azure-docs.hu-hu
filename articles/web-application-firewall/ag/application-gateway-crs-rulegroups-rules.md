@@ -8,16 +8,19 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 890e2b972818cf9805623d94709ce5631b50aaf5
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85052017"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608605"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Webalkalmazási tűzfal CRS-szabályok csoportjai és szabályai
 
 Application Gateway webalkalmazási tűzfal (WAF) megvédi a webalkalmazásokat a gyakori biztonsági rések és kiaknázások ellen. Ez az 3,1, 3,0 vagy 2.2.9 OWASP alapszabály-készletek alapján meghatározott szabályokon keresztül történik. Ezek a szabályok szabály-szabály alapján letilthatók. Ez a cikk a jelenleg elérhető szabályokat és szabálykészlet-készleteket tartalmazza.
+
+> [!NOTE]
+> Ez a cikk a *feketelista* kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ## <a name="core-rule-sets"></a>Alapvető szabálykészletek
 
@@ -45,7 +48,7 @@ A CRS 3,1 13 szabályt tartalmaz, ahogy az alábbi táblázatban is látható. M
 
 |Szabálycsoport|Leírás|
 |---|---|
-|**[Általános kérdések](#general-31)**|Általános csoport|
+|**[Általános](#general-31)**|Általános csoport|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|Zárolási módszerek (PUT, javítás)|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-31)**|Védelem a port-és környezeti képolvasók ellen|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-31)**|Védelem a protokollok és a kódolási problémák ellen|
@@ -65,7 +68,7 @@ A CRS 3,0 12 szabályt tartalmaz, ahogy az alábbi táblázatban is látható. M
 
 |Szabálycsoport|Leírás|
 |---|---|
-|**[Általános kérdések](#general-30)**|Általános csoport|
+|**[Általános](#general-30)**|Általános csoport|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|Zárolási módszerek (PUT, javítás)|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-30)**|Védelem a port-és környezeti képolvasók ellen|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-30)**|Védelem a protokollok és a kódolási problémák ellen|
@@ -101,7 +104,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ## <a name="rule-sets"></a><a name="owasp31"></a> Szabálykészlet
 
-### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-31"></a> <p x-ms-format-detection="none">Általános kérdések</p>
+### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-31"></a> <p x-ms-format-detection="none">Általános</p>
 
 |RuleId|Leírás|
 |---|---|
@@ -349,7 +352,7 @@ A következő szabálykészlet és szabályok érhetők el, ha Application Gatew
 
 ## <a name="rule-sets"></a><a name="owasp30"></a> Szabálykészlet
 
-### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-30"></a> <p x-ms-format-detection="none">Általános kérdések</p>
+### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-30"></a> <p x-ms-format-detection="none">Általános</p>
 
 |RuleId|Leírás|
 |---|---|

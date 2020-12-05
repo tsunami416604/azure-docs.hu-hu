@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan csatlakoztatható a Function app Application In
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: 0b8aae707f0fb055677af111f1e88c0a2e19b227
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 02d5ad2e9697c14818a985325267d7caea80f65e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175746"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607126"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>A Azure Functions figyelésének konfigurálása
 
@@ -38,6 +38,9 @@ A Azure Functions Logger minden naplóhoz tartalmaz *kategóriát* . A kategóri
 | **`Host.Results`** | **kérések** | Ezek a futtatókörnyezet által generált naplók a függvények sikerességét vagy hibáját jelzik. Ezen naplók mindegyike szinten van írva `Information` . Ha a `Warning` -t vagy a fentit szűri, akkor nem jelenik meg ezek az információk. |
 | **`Microsoft`** | **nyomok** | Teljesen minősített naplózási kategória, amely a gazdagép által meghívott .NET-futtatókörnyezeti összetevőt tükrözi.  |
 | **`Worker`** | **nyomok** | A non-.NET nyelveken a nyelv munkavégző folyamata által létrehozott naplók. A nyelvi feldolgozói naplók is bekerülhetnek egy `Microsoft.*` kategóriába, például: `Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcFunctionInvocationDispatcher` . Ezek a naplók szinten vannak írva `Information` .|
+
+> [!NOTE]
+> A .NET Class Library függvények esetében ezek a kategóriák feltételezik, hogy Ön a-t használja, `ILogger` és nem `ILogger<T>` . További információt a [functions ILogger dokumentációjában](functions-dotnet-class-library.md#ilogger)talál. 
 
 # <a name="v1x"></a>[v1. x](#tab/v1)
 
@@ -275,7 +278,7 @@ A Application Insights engedélyezésekor tiltsa le az Azure Storage-t használ�
 
 A beépített naplózás letiltásához törölje az `AzureWebJobsDashboard` alkalmazás beállítását. Az Alkalmazásbeállítások a Azure Portalban való törlésével kapcsolatos további információkért tekintse meg a [functions-alkalmazás kezelésével](functions-how-to-use-azure-function-app-settings.md#settings)foglalkozó témakör **Alkalmazásbeállítások** szakaszát. Az Alkalmazásbeállítások törlése előtt győződjön meg arról, hogy az azonos Function alkalmazásban lévő meglévő függvények nem használják az Azure Storage-eseményindítók és-kötések beállítását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A figyeléssel kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 

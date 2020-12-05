@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 42259b36f1a9bfe243df47cc08b33fe8c46d819d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5d105ad4c2aff03dae52b340037e4c193bf82ca1
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493066"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608435"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB Emulator – kibocsátási megjegyzések és letöltési információk
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,12 @@ Ez a cikk a Azure Cosmos DB Emulator kibocsátási megjegyzéseit mutatja be az 
 |**Első lépések**|[Helyi fejlesztés az Azure Cosmos Emulatorrel](local-emulator.md)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="2119-3-december-2020"></a>2.11.9 (2020. december 3.)
+
+ - Ez a kiadás a Azure Cosmos DB legújabb funkcióit és fejlesztéseit tükröző általános tartalom frissítésén kívül a Azure Cosmos DB Emulator funkcióival kapcsolatos problémákat is tárgyalja:
+ * Javítsa ki a problémát, ha a nagyméretű dokumentum-adattartalom kérése sikertelen a közvetlen és a Java-ügyfélalkalmazások használata esetén.
+ * Javítsa ki a MongoDB Endpoint 3,6-es verziójának kapcsolódási problémáját, ha a .NET-alapú alkalmazások célozzák meg.
 
 ### <a name="2118-6-november-2020"></a>2.11.8 (2020. november 6.)
 

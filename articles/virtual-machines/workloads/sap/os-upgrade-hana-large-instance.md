@@ -14,18 +14,21 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c1b09cdcf987c7ed0e489a8a67f77a4099e39a9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cdc6dd49fe98085edf3c6fb16606b9f540b5a3a0
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955463"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608690"
 ---
 # <a name="operating-system-upgrade"></a>Operációs rendszer frissítése
 Ez a dokumentum ismerteti az operációs rendszer frissítésének részleteit a HANA nagyméretű példányain.
 
 >[!NOTE]
 >Az operációs rendszer verziófrissítése az ügyfél felelőssége, a Microsoft üzemeltetési támogatási szolgálata végigvezeti Önt a frissítés során megtekinthető kulcsfontosságú területeken. A frissítés megtervezése előtt tekintse meg az operációs rendszer gyártóját is.
+
+> [!NOTE]
+> Ez a cikk a *feketelista* kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 A HLI egység kiépítés során a Microsoft Operations csapata telepíti az operációs rendszert.
 Az idő múlásával meg kell őriznie az operációs rendszert (például: javítás, hangolás, frissítés stb.) a HLI egységen.
@@ -148,6 +151,6 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 * Rendszer újraindítása.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tekintse át a [biztonsági mentést és a visszaállítást](hana-overview-high-availability-disaster-recovery.md) az operációs rendszer biztonsági mentése I SKU osztályban.
 - Tekintse át az [operációs rendszer biztonsági másolatát](os-backup-type-ii-skus.md) , amely a 2. típusú SKU osztályhoz tartozó 3. típusú bélyegzőket használja.
