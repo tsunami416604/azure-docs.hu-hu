@@ -2,7 +2,7 @@
 title: Azure Active Directory Domain Services hibaelhárítás | Microsoft Docs "
 description: A Azure Active Directory Domain Services létrehozásakor és kezelésekor előforduló gyakori hibák elhárítása
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 9593fe71fc4a29678d58d7c67699210a4a39f95e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 89b04f86d41f8e4828580f70a9aec8acea3e0053
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967375"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618450"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Gyakori hibák és hibaelhárítási lépések a Azure Active Directory Domain Services
 
@@ -58,8 +58,8 @@ Ezt a hibát az okozza, hogy a virtuális hálózaton lévő tartománynév ütk
 Ellenőrizze, hogy van-e *Azure ad Domain Services Sync* nevű alkalmazás az Azure ad-címtárban. Ha az alkalmazás létezik, törölje, majd próbálkozzon újra az Azure AD DS engedélyezéséhez. Ha egy meglévő alkalmazást szeretne megkeresni, és szükség esetén törölni szeretné, hajtsa végre a következő lépéseket:
 
 1. A Azure Portal válassza a bal oldali navigációs menü **Azure Active Directory** elemét.
-1. Válassza a **vállalati alkalmazások**lehetőséget. Válassza a *minden alkalmazás* lehetőséget az **alkalmazás típusa** legördülő menüben, majd válassza az **alkalmaz**lehetőséget.
-1. A keresőmezőbe írja be *Azure ad Domain Services Sync*kifejezést. Ha az alkalmazás létezik, válassza ki, majd válassza a **Törlés**lehetőséget.
+1. Válassza a **vállalati alkalmazások** lehetőséget. Válassza a *minden alkalmazás* lehetőséget az **alkalmazás típusa** legördülő menüben, majd válassza az **alkalmaz** lehetőséget.
+1. A keresőmezőbe írja be *Azure ad Domain Services Sync* kifejezést. Ha az alkalmazás létezik, válassza ki, majd válassza a **Törlés** lehetőséget.
 1. Miután törölte az alkalmazást, próbálja meg újból engedélyezni az Azure AD DS.
 
 ### <a name="invalid-configuration"></a>Érvénytelen konfiguráció
@@ -114,14 +114,14 @@ if ($sp -ne $null)
 
 **Resolution** (Osztás)
 
-Ellenőrizze, hogy a *00000002-0000-0000-C000-000000000000*azonosítójú alkalmazást letiltotta-e. Ez az alkalmazás a Microsoft Azure AD alkalmazás, és Graph API hozzáférést biztosít az Azure AD-bérlőhöz. Az Azure AD-bérlő szinkronizálásához engedélyezni kell az alkalmazást.
+Ellenőrizze, hogy a *00000002-0000-0000-C000-000000000000* azonosítójú alkalmazást letiltotta-e. Ez az alkalmazás a Microsoft Azure AD alkalmazás, és Graph API hozzáférést biztosít az Azure AD-bérlőhöz. Az Azure AD-bérlő szinkronizálásához engedélyezni kell az alkalmazást.
 
 Az alkalmazás állapotának vizsgálatához és szükség esetén történő engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. A Azure Portal válassza a bal oldali navigációs menü **Azure Active Directory** elemét.
-1. Válassza a **vállalati alkalmazások**lehetőséget. Válassza a *minden alkalmazás* lehetőséget az **alkalmazás típusa** legördülő menüben, majd válassza az **alkalmaz**lehetőséget.
-1. A keresőmezőbe írja be a *00000002-0000-0000-C000-00000000000*értéket. Válassza ki az alkalmazást, majd válassza a **Tulajdonságok**lehetőséget.
-1. Ha **engedélyezve van a felhasználók bejelentkezni** a *nem*értékre, állítsa az értéket *Igen*értékre, majd válassza a **Mentés**lehetőséget.
+1. Válassza a **vállalati alkalmazások** lehetőséget. Válassza a *minden alkalmazás* lehetőséget az **alkalmazás típusa** legördülő menüben, majd válassza az **alkalmaz** lehetőséget.
+1. A keresőmezőbe írja be a *00000002-0000-0000-C000-00000000000* értéket. Válassza ki az alkalmazást, majd válassza a **Tulajdonságok** lehetőséget.
+1. Ha **engedélyezve van a felhasználók bejelentkezni** a *nem* értékre, állítsa az értéket *Igen* értékre, majd válassza a **Mentés** lehetőséget.
 1. Ha engedélyezte az alkalmazást, próbálja meg újból engedélyezni az Azure AD DS.
 
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>A felhasználók nem tudnak bejelentkezni az Azure AD Domain Services által felügyelt tartományba
@@ -167,7 +167,7 @@ A felhasználói fiók a felügyelt tartomány letiltott állapotában marad, m�
 
 Ha egy felügyelt tartományból teljesen el szeretné távolítani a felhasználói fiókokat, törölje a felhasználót véglegesen az Azure AD-bérlőből a [Remove-MsolUser PowerShell-][Remove-MsolUser] parancsmaggal a (z `-RemoveFromRecycleBin` ) paraméterrel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 

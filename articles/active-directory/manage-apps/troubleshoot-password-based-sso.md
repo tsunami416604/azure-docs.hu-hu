@@ -10,14 +10,14 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 1823de88597756ba3db9aee0dc29501b1ba914a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646236"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618076"
 ---
-# <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Jelszó alapú egyszeri bejelentkezés hibáinak megoldása az Azure AD-ben
+# <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Jelszóalapú egyszeri bejelentkezés hibaelhárítása az Azure AD-ben
 
 Ha jelszó-alapú egyszeri bejelentkezést (SSO) szeretne használni az alkalmazásokban, telepítenie kell a böngésző kiterjesztését. A bővítmény automatikusan töltődik le, ha olyan alkalmazást választ, amely jelszó alapú egyszeri bejelentkezéshez van konfigurálva. Ha szeretne többet megtudni az alkalmazások végfelhasználói perspektívából való használatáról, tekintse meg [az alkalmazások portál súgóját](../user-help/my-apps-portal-end-user-access.md).
 
@@ -30,7 +30,7 @@ Győződjön meg arról, hogy a jelszó-alapú egyszeri bejelentkezés konfigur�
 ## <a name="users-not-assigned"></a>Nincs hozzárendelt felhasználó
 Győződjön meg arról, hogy a felhasználó hozzá van rendelve az alkalmazáshoz. További információ: [felhasználó vagy csoport társítása egy alkalmazáshoz](assign-user-or-group-access-portal.md).
 
-## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>A hitelesítő adatok ki vannak töltve, de a bővítmény nem küldi el őket
+## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Meg lettek adva a hitelesítő adatok, de a bővítmény nem küldi el őket
 
 Ez a probléma általában akkor fordul elő, ha az alkalmazás gyártója nemrég módosította a bejelentkezési lapját egy mező hozzáadásához, módosította a Felhasználónév és jelszó mezők észleléséhez használt azonosítót, vagy módosította, hogyan működik a bejelentkezési élmény az alkalmazáshoz. Szerencsére a Microsoft számos példányban képes együttműködni az alkalmazások forgalmazójával, hogy gyorsan megoldja ezeket a problémákat.
 
@@ -38,7 +38,7 @@ Habár a Microsoft olyan technológiákkal rendelkezik, amelyekkel automatikusan
 
 **Ha kapcsolatba lép ezzel az alkalmazás forgalmazójával,** küldje el őket, így a Microsoft dolgozhat velük, hogy natív módon integrálja alkalmazásait a Azure Active Directory használatával. A szállítót elküldheti az [alkalmazásnak a Azure Active Directory alkalmazás-katalógusban](../develop/v2-howto-app-gallery-listing.md) való megjelenítéséhez, és megkezdheti őket.
 
-## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>A hitelesítő adatokat a rendszer kitölti és elküldte, de az oldal jelzi, hogy a hitelesítő adatok helytelenek.
+## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Meg lettek adva és lettek küldve a hitelesítő adatok, de az oldal azt jelzi, hogy helytelenek
 
 A probléma megoldásához először próbálja meg ezeket a dolgokat:
 
@@ -98,7 +98,7 @@ Ha a jelszó-alapú egyszeri bejelentkezést az automatikus bejelentkezési mez�
 7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget a bal oldali navigációs ablaktáblán.
 8. Válassza a **jelszó alapú bejelentkezési** mód lehetőséget.
 9. Adja meg a **bejelentkezési URL-címet**, amely annak az oldalnak az URL-címe, ahol a felhasználók megadják a felhasználónevét és jelszavát a bejelentkezéshez. Győződjön *meg arról, hogy a bejelentkezési mezők láthatók az Ön által megadott URL-címen a lapon*.
-10. Válassza a **Mentés** lehetőséget.
+10. Válassza a **Save** (Mentés) lehetőséget.
     A rendszer automatikusan lekaparja a lapot a Felhasználónév és a jelszó beviteli mezőihez. Mostantól az Azure AD használatával biztonságosan továbbíthatja a jelszavakat az alkalmazásba a saját alkalmazások böngésző bővítménnyel.
 
 ### <a name="manually-capture-sign-in-fields-for-an-app"></a>Egy alkalmazás bejelentkezési mezőinek manuális rögzítése
@@ -120,7 +120,7 @@ Ha a jelszó-alapú egyszeri bejelentkezést szeretné beállítani egy alkalmaz
 10. Válassza **a *&lt; AppName &gt;* jelszavának egyszeri bejelentkezési beállításainak konfigurálása** lehetőséget.
 11. Jelölje be **a bejelentkezési mezők manuális észlelése** jelölőnégyzetet.
 14. Kattintson az **OK** gombra.
-15. Válassza a **Mentés** lehetőséget.
+15. Válassza a **Save** (Mentés) lehetőséget.
 16. Az alkalmazások használatához kövesse az utasításokat.
 
 
@@ -150,6 +150,13 @@ Ha ezeket a problémákat tapasztalja, tegye a következőket:
 - Győződjön meg arról, hogy a felhasználók nem próbálnak bejelentkezni az alkalmazásokba az alkalmazásból az *Incognito*, *InPrivate* vagy *Private módban*.
 - Próbálkozzon újra a manuális rögzítési folyamattal. Győződjön meg arról, hogy a piros jelölők a megfelelő mezőkön vannak.
 - Ha a manuális rögzítési folyamat úgy tűnik, hogy nem válaszol, vagy a bejelentkezési oldal nem válaszol, próbálkozzon újra a manuális rögzítési folyamattal. Ezúttal azonban a folyamat befejezése után nyomja le az F12 billentyűt a böngésző fejlesztői konzoljának megnyitásához. Válassza a **konzol** fület. írja be az **ablakot. location = "*&lt; az alkalmazás &gt; konfigurálásakor megadott bejelentkezési URL-címet***, majd nyomja le az ENTER billentyűt. Ez kényszeríti az átirányítást, amely befejezi a rögzítési folyamatot, és a rögzített mezőket tárolja.
+
+### <a name="i-cant-add-another-user-to-my-password-based-sso-app"></a>Nem tudok másik felhasználót felvenni a jelszó-alapú SSO-alkalmazásba
+
+A jelszó-alapú SSO-alkalmazás legfeljebb 48 felhasználóval rendelkezik. Így az alkalmazásban legfeljebb 48 kulcs adható meg a username/Password pár számára.
+Ha további felhasználókat szeretne hozzáadni, akkor a következők közül választhat:
+-   Az alkalmazás további példányának hozzáadása
+-   Távolítsa el azokat a felhasználókat, akik már nem használják az alkalmazást
 
 ## <a name="request-support"></a>Támogatás kérése 
 Ha az egyszeri bejelentkezés beállítása és a felhasználók kiosztása során hibaüzenet jelenik meg, nyisson meg egy támogatási jegyet. A lehető legtöbbet a következő információkból állhat:
@@ -238,6 +245,6 @@ Az alábbi információk ismertetik, hogy az egyes értesítési elemek mit jele
     Például   ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 * [Saját alkalmazások üzembe helyezésének megtervezése](access-panel-deployment-plan.md)

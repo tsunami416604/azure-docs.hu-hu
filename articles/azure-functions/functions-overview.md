@@ -1,20 +1,26 @@
 ---
 title: Az Azure Functions áttekintése
-description: Ismerje meg, hogyan segíthetnek a Azure Functions méretezhető kiszolgáló nélküli alkalmazások létrehozásában.
+description: Ismerje meg, hogyan hozhat létre Azure Functions robusztus, kiszolgáló nélküli alkalmazásokat.
 author: craigshoemaker
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 8b836ac8bd2255abf9a94e532a0599994c3ede89
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 269d911c13cbc59a054c5548e106780d630c8e2b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608252"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620868"
 ---
 # <a name="introduction-to-azure-functions"></a>Az Azure Functions bemutatása
+
+A Azure Functions kiszolgáló nélküli megoldás, amely lehetővé teszi kevesebb kód írására, kevesebb infrastruktúra fenntartására és költségek megtakarítására. Ahelyett, hogy a kiszolgálók üzembe helyezésével és karbantartásával kellene foglalkoznia, a felhőalapú infrastruktúra biztosítja az alkalmazások futtatásához szükséges összes naprakész kiszolgálót.
+
+Az Ön számára leginkább fontos kódrészletekre koncentrálhat, és Azure Functions kezeli a többiet.<br /><br />
+
+> [!VIDEO https://www.youtube.com/embed/8-jz5f_JyEQ]
 
 Gyakran olyan rendszereket hozunk létre, amelyek kritikus események sorozatára reagálnak. Legyen szó webes API-k létrehozásáról, az adatbázis-változásokra való reagálásról, a IoT-adatfolyamok feldolgozásáról vagy az üzenetsor kezeléséről – minden alkalmazásnak szüksége van egy kód futtatására, mivel ezek az események történnek.
 

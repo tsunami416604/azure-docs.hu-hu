@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure Machine Learning?
+title: Mi az az Azure Machine Learning?
 description: Az Azure Machine Learning egy integrált adatelemzési megoldás adatszakértőknek és MLops, amely a felhőalapú alkalmazások modellezésére és üzembe helyezésére használható.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: af38f68a9709b21989ba787fb5b2c623e07dc440
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541283"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620477"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
@@ -49,7 +49,7 @@ Azure Machine Learning biztosítja a gépi tanulási munkafolyamataihoz szüksé
 
 + + A [számos Modelles megoldás-gyorsító](https://aka.ms/many-models) (előzetes verzió) a Azure Machine Learningra épít, és lehetővé teszi több száz vagy akár több ezer gépi tanulási modell betanítását, üzemeltetését és felügyeletét.
 
-+ [Visual Studio Code-bővítmény](tutorial-setup-vscode-extension.md)
++ [Machine learning-bővítmény a Visual Studio Code-felhasználók számára](tutorial-setup-vscode-extension.md)
 
 + [Machine learning CLI](reference-azure-machine-learning-cli.md)
 
@@ -111,10 +111,10 @@ A Azure Machine Learning használatának megkezdéséhez tekintse meg a [követk
 
 A Azure Machine Learning együttműködik az Azure platform egyéb szolgáltatásaival, és olyan nyílt forráskódú eszközökkel is integrálható, mint a git és a MLFlow.
 
-+ Számítási célok, például __Azure Kubernetes szolgáltatás__ , __Azure Container instances__ , __Azure Databricks__ , __Azure Data Lake Analytics__ és az __Azure HDInsight__. A számítási célokkal kapcsolatos további információkért lásd: [Mik a számítási célok?](concept-compute-target.md).
++ Számítási célok, például __Azure Kubernetes szolgáltatás__, __Azure Container instances__, __Azure Databricks__, __Azure Data Lake Analytics__ és az __Azure HDInsight__. A számítási célokkal kapcsolatos további információkért lásd: [Mik a számítási célok?](concept-compute-target.md).
 + __Azure Event Grid__. További információ: [Azure Machine learning események felhasználása](./how-to-use-event-grid.md).
 + __Azure monitor__. További információ: [Monitoring Azure Machine learning](monitor-azure-machine-learning.md).
-+ Olyan adattárakat, mint például az __Azure Storage-fiókok__ , a __Azure Data Lake Storage__ , a __Azure SQL Database__ , a __Azure Database for PostgreSQL__ és az __Azure Open-adatkészletek__. További információ: az [Azure Storage szolgáltatásokban tárolt adatok elérése](how-to-access-data.md) és [adatkészletek létrehozása az Azure Open adatkészletekkel](how-to-create-register-datasets.md).
++ Olyan adattárakat, mint például az __Azure Storage-fiókok__, a __Azure Data Lake Storage__, a __Azure SQL Database__, a __Azure Database for PostgreSQL__ és az __Azure Open-adatkészletek__. További információ: az [Azure Storage szolgáltatásokban tárolt adatok elérése](how-to-access-data.md) és [adatkészletek létrehozása az Azure Open adatkészletekkel](how-to-create-register-datasets.md).
 + __Azure-beli virtuális hálózatok__. További információ: [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md).
 + __Azure-folyamatok__. További információ: a [gépi tanulási modellek betanítása és üzembe helyezése](/azure/devops/pipelines/targets/azure-machine-learning).
 + A __git-tárház naplói__. További információ: git- [integráció](concept-train-model-git-integration.md).
@@ -125,7 +125,7 @@ A Azure Machine Learning együttműködik az Azure platform egyéb szolgáltatá
 
 Az Azure Storage-fiók, a számítási célok és az egyéb erőforrások biztonságosan használhatók a virtuális hálózaton belül a modellek betanításához és következtetések teljesítéséhez. További információ: [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Hozza létre első kísérletét a kívánt módszerrel:
 - + [Ismerkedés a saját fejlesztési környezetével](tutorial-1st-experiment-sdk-setup-local.md)

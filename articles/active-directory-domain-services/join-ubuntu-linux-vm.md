@@ -2,7 +2,7 @@
 title: Ubuntu-alapú virtuális gép csatlakoztatása Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhat és csatlakoztathat egy Ubuntu Linux virtuális gépet egy Azure AD Domain Services felügyelt tartományhoz.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: joflore
+ms.author: justinha
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ac620ffa36bdeb35ef524ef2956db03c8edcb566
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8b6d022b9a1f3be70f69943a53754c9dd909ca99
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962088"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619487"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Ubuntu Linux virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -122,7 +122,7 @@ Ahhoz, hogy a tartományi kommunikáció megfelelően működjön, az Ubuntu-ala
 
 Most, hogy a szükséges csomagok telepítve vannak a virtuális gépen, és az NTP konfigurálva van, csatlakoztassa a virtuális gépet a felügyelt tartományhoz.
 
-1. A `realm discover` parancs használatával keresse meg a felügyelt tartományt. A következő példa felfedi a *AADDSCONTOSO.com*tartományát. Adja meg saját felügyelt tartománynevét az összes nagybetűvel:
+1. A `realm discover` parancs használatával keresse meg a felügyelt tartományt. A következő példa felfedi a *AADDSCONTOSO.com* tartományát. Adja meg saját felügyelt tartománynevét az összes nagybetűvel:
 
     ```console
     sudo realm discover AADDSCONTOSO.COM
@@ -200,7 +200,7 @@ Alapértelmezés szerint a felhasználók csak az SSH nyilvános kulcs-alapú hi
     sudo vi /etc/ssh/sshd_config
     ```
 
-1. A *PasswordAuthentication* vonalának frissítése *Igen*értékre:
+1. A *PasswordAuthentication* vonalának frissítése *Igen* értékre:
 
     ```console
     PasswordAuthentication yes
@@ -283,7 +283,7 @@ Annak ellenőrzéséhez, hogy a virtuális gép sikeresen csatlakozott-e a felü
     sudo apt-get update
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha problémába ütközik a virtuális gép a felügyelt tartományhoz való csatlakoztatásával vagy egy tartományi fiókkal való bejelentkezéssel, tekintse meg a [tartományhoz való csatlakozással kapcsolatos problémák elhárítása](join-windows-vm.md#troubleshoot-domain-join-issues)
 

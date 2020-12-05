@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan hozhat létre olyan Azure-fájlmegosztást, ame
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7680e251d8411ce154e1f7dfb8af1d66514dd579
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3cf22ee22c35b850aff33290a59a7043bb57c984
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629461"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620944"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS-megosztás létrehozása
 
@@ -64,7 +64,7 @@ az feature register --name AllowNfsFileShares \
 az provider register --namespace Microsoft.Storage
 ```
 
-## <a name="verify-that-the-feature-is-registered"></a>Annak ellenőrzése, hogy a szolgáltatás regisztrálva van-e
+## <a name="verify-feature-registration"></a>Szolgáltatás regisztrációjának ellenőrzése
 
 A regisztráció jóváhagyása akár egy órát is igénybe vehet. A regisztráció befejezésének ellenőrzéséhez használja a következő parancsokat:
 
@@ -80,6 +80,34 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNfs
 az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscription <yourSubscriptionIDHere>
 ```
 
+## <a name="verify-storage-account-kind"></a>A Storage-fiók típusának ellenőrzése
+
+Jelenleg csak a FileStorage-fiókok hozhatnak létre NFS-megosztásokat. 
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+
+Annak ellenőrzéséhez, hogy milyen típusú Storage-fiókkal rendelkezik, navigáljon a Azure Portal. Ezután a Storage-fiókjából válassza a **Tulajdonságok** lehetőséget. A Tulajdonságok panelen vizsgálja meg a **Fiók típusa** területen található értéket, az értéket pedig **FileStorage**.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Annak ellenőrzéséhez, hogy van-e FileStorage-fiókja, a következő parancsot használhatja:
+
+```azurepowershell
+$accountKind=Get-AzStorageAccount -ResourceGroupName "yourResourceGroup" -Name "yourStorageAccountName"
+$accountKind.Kind
+```
+
+A kimenetnek **FileStorage** kell lennie, ha nem, akkor a Storage-fiók típusa helytelen. **FileStorage** -fiók létrehozásával kapcsolatban tekintse meg [Az Azure Premium-fájlmegosztás létrehozása](storage-how-to-create-premium-fileshare.md)című témakört.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+Annak ellenőrzéséhez, hogy van-e FileStorage-fiókja, a következő parancsot használhatja:
+
+```azurecli
+az storage account show -g yourResourceGroup -n yourStorageAccountName
+```
+
+A kimenetnek **"Kind": "FileStorage"** értéket kell tartalmaznia, ha nem, akkor a Storage-fiókja helytelen típusú. **FileStorage** -fiók létrehozásával kapcsolatban tekintse meg [Az Azure Premium-fájlmegosztás létrehozása](storage-how-to-create-premium-fileshare.md)című témakört.
+
+---
 ## <a name="create-an-nfs-share"></a>NFS-megosztás létrehozása
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)

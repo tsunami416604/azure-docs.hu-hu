@@ -2,7 +2,7 @@
 title: Az Azure DS tartományi szolgáltatások engedélyezése a PowerShell használatával | Microsoft Docs
 description: Ismerje meg, hogyan konfigurálhatja és engedélyezheti Azure Active Directory Domain Services az Azure AD PowerShell és a Azure PowerShell használatával.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
 ms.date: 10/02/2020
-ms.author: joflore
+ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 46fdaed4a3e1dbbe5575cd573061a480bf330389
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 89061af04147d7cfaa0fdb3a6b1a8fb1cd8c8da7
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041947"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619147"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Azure Active Directory Domain Services engedélyezése a PowerShell használatával
 
@@ -109,7 +109,7 @@ New-AzResourceGroup `
   -Location $AzureLocation
 ```
 
-Hozza létre a virtuális hálózatot és az alhálózatokat a Azure AD Domain Serviceshoz. Két alhálózat jön létre – egy a *DomainServices* , egy pedig a számítási *feladatok* számára. Az Azure AD DS üzembe helyezése a dedikált *DomainServices* alhálózaton történik. Ne helyezzen üzembe más alkalmazásokat vagy munkaterheléseket ebbe az alhálózatba. A többi virtuális gép esetében használja a különálló *munkaterheléseket* vagy más alhálózatokat.
+Hozza létre a virtuális hálózatot és az alhálózatokat a Azure AD Domain Serviceshoz. Két alhálózat jön létre – egy a *DomainServices*, egy pedig a számítási *feladatok* számára. Az Azure AD DS üzembe helyezése a dedikált *DomainServices* alhálózaton történik. Ne helyezzen üzembe más alkalmazásokat vagy munkaterheléseket ebbe az alhálózatba. A többi virtuális gép esetében használja a különálló *munkaterheléseket* vagy más alhálózatokat.
 
 Hozza létre az alhálózatokat a [New-AzVirtualNetworkSubnetConfig][New-AzVirtualNetworkSubnetConfig] parancsmaggal, majd hozza létre a virtuális hálózatot a [New-AzVirtualNetwork][New-AzVirtualNetwork] parancsmag használatával.
 
@@ -200,7 +200,7 @@ $vnet | Set-AzVirtualNetwork
 
 ## <a name="create-a-managed-domain"></a>Felügyelt tartomány létrehozása
 
-Most hozzon létre egy felügyelt tartományt. Állítsa be az Azure-előfizetés AZONOSÍTÓját, majd adja meg a felügyelt tartomány nevét (például *aaddscontoso.com* ). Az előfizetés-azonosítót a [Get-AzSubscription][Get-AzSubscription] parancsmaggal kérheti le.
+Most hozzon létre egy felügyelt tartományt. Állítsa be az Azure-előfizetés AZONOSÍTÓját, majd adja meg a felügyelt tartomány nevét (például *aaddscontoso.com*). Az előfizetés-azonosítót a [Get-AzSubscription][Get-AzSubscription] parancsmaggal kérheti le.
 
 Ha olyan régiót választ, amely támogatja az Availability Zones-t, az Azure AD DS erőforrásai a további redundancia érdekében a zónák között oszlanak meg.
 
@@ -376,7 +376,7 @@ Ha a Azure Portal azt mutatja, hogy a felügyelt tartomány befejezte az üzembe
     * A DNS konfigurálásához válassza ki a felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
 * [Engedélyezze a jelszó-szinkronizálást az Azure AD DS](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) így a végfelhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyelt tartomány működés közbeni megtekintéséhez [tartományhoz csatlakoztathat egy Windows rendszerű virtuális gépet][windows-join], [konfigurálhatja a biztonságos LDAP][tutorial-ldaps]-t, és [konfigurálhatja a jelszó-kivonatok szinkronizálását][tutorial-phs].
 

@@ -9,17 +9,17 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 46119b9f7cdac47920d4bba8e00c3fc56b0edc78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 12/05/2020
 ms.locfileid: "87494519"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
 Az Azure-beli virtuális gépek (VM-ek) létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a virtuális gépek és a társított erőforrások létrehozásához. Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal egy virtuális gép (VM) üzembe helyezéséhez az Azure-ban, amely a Windows Server 2019-et futtatja. Ha látni szeretné a virtuális gépet feladatvégzés közben, hozzon létre RDP-kapcsolatot a virtuális géphez, és telepítse az IIS webkiszolgálót.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -28,13 +28,13 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
 1. Írja be a **virtuális gépeket** a keresésbe.
-1. A **szolgáltatások**területen válassza a **virtuális gépek**lehetőséget.
-1. A **virtuális gépek** lapon válassza a **Hozzáadás**lehetőséget. 
+1. A **szolgáltatások** területen válassza a **virtuális gépek** lehetőséget.
+1. A **virtuális gépek** lapon válassza a **Hozzáadás** lehetőséget. 
 1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. A név mezőbe írja be a *myResourceGroup* nevet. 
 
     ![A Project Details (projekt részletei) szakasz képernyőképe, amelyen kiválaszthatja az Azure-előfizetést és a virtuális géphez tartozó erőforráscsoportot.](./media/quick-create-portal/project-details.png)
 
-1. A **példány részletei**területen írja *myVM* be a myVM **nevet a virtuális GÉPNEK** , majd válassza az *USA keleti* **régiója**lehetőséget, majd a **rendszerképhez**válassza a *Windows Server 2019 Datacenter* lehetőséget. Hagyja meg a többi alapértelmezett értéket.
+1. A **példány részletei** területen írja *myVM* be a myVM **nevet a virtuális GÉPNEK** , majd válassza az *USA keleti* **régiója** lehetőséget, majd a **rendszerképhez** válassza a *Windows Server 2019 Datacenter* lehetőséget. Hagyja meg a többi alapértelmezett értéket.
 
     ![Képernyőkép a példány részleteiről szakaszról, ahol megadhatja a virtuális gép nevét, és kiválaszthatja annak régióját, képét és méretét](./media/quick-create-portal/instance-details.png)
 
@@ -42,7 +42,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
     ![Képernyőkép a rendszergazdai fiókról, ahol megadhatja a rendszergazda felhasználónevét és jelszavát](./media/quick-create-portal/administrator-account.png)
 
-1. A **bejövő portszabályok**területen válassza a **kijelölt portok engedélyezése** lehetőséget, majd válassza az **RDP (3389)** és a **http (80)** elemet a legördülő menüből.
+1. A **bejövő portszabályok** területen válassza a **kijelölt portok engedélyezése** lehetőséget, majd válassza az **RDP (3389)** és a **http (80)** elemet a legördülő menüből.
 
     ![Képernyőfelvétel a bejövő portszabályok szakaszról, ahol kiválaszthatja, hogy a bejövő kapcsolatok mely portokon engedélyezettek](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -59,11 +59,11 @@ Hozzon létre egy távoli asztali kapcsolatot a virtuális géppel. Ezek az utas
 
     ![Képernyőfelvétel a virtuális gép áttekintő oldaláról, amely a csatlakozási gomb helyét mutatja](./media/quick-create-portal/portal-quick-start-9.png)
     
-2. A **Csatlakozás virtuális géphez** lapon tartsa meg az alapértelmezett beállításokat az IP-cím, az 3389-as porton keresztül történő csatlakozáshoz, majd kattintson az **RDP-fájl letöltése**elemre.
+2. A **Csatlakozás virtuális géphez** lapon tartsa meg az alapértelmezett beállításokat az IP-cím, az 3389-as porton keresztül történő csatlakozáshoz, majd kattintson az **RDP-fájl letöltése** elemre.
 
 2. Nyissa meg a letöltött RDP-fájlt, és kattintson a **Csatlakozás** gombra, amikor a rendszer erre kéri. 
 
-3. A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Írja be a felhasználónevet **localhost** \\ *felhasználónévként*, adja meg a virtuális géphez létrehozott jelszót, majd kattintson **az OK**gombra.
+3. A **Windows rendszerbiztonság** ablakban válassza a **További lehetőségek**, majd a **Másik fiók használata** elemet. Írja be a felhasználónevet **localhost** \\ *felhasználónévként*, adja meg a virtuális géphez létrehozott jelszót, majd kattintson **az OK** gombra.
 
 4. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. A kapcsolódás létrehozásához kattintson az **Igen** vagy a **Folytatás** gombra.
 
@@ -88,7 +88,7 @@ A portálon válassza ki a virtuális gépet, és a virtuális gép áttekintés
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. 
 
-Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez.
+Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza a **Törlés** lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez.
 
 ## <a name="next-steps"></a>További lépések
 

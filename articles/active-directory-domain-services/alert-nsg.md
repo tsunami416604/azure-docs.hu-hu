@@ -2,7 +2,7 @@
 title: Hálózati biztonsági csoportra vonatkozó riasztások feloldása az Azure AD DSban | Microsoft Docs
 description: Útmutató a hálózati biztonsági csoport konfigurációs értesítéseinek hibaelhárításához és megoldásához Azure Active Directory Domain Services
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: f8917d7bd8fc1a4091607b9a405cfefbb51bc188
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: d8f2e77b7225306844cec85363a2971eaac4eebd
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962785"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620256"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: hálózati konfigurációval kapcsolatos riasztások Azure Active Directory Domain Services
 
@@ -38,25 +38,25 @@ A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szab�
 
 ### <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
 
-| Prioritás | Name | Port | Protokoll | Forrás | Cél | Művelet |
+| Prioritás | Név | Port | Protokoll | Forrás | Cél | Művelet |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Bármelyik | Engedélyezés |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | Bármelyik | Engedélyezés |
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Bármelyik | Engedélyezés |
 | 65000    | AllVnetInBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerInBound | Bármelyik | Bármelyik | AzureLoadBalancer | Bármelyik | Engedélyezés |
-| 65500    | DenyAllInBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Megtagadás |
+| 65500    | DenyAllInBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Deny (Megtagadás) |
 
 > [!NOTE]
 > A [biztonságos LDAP konfigurálása][configure-ldaps]esetén további szabályt is használhat, amely engedélyezi a bejövő forgalmat. Ez a további szabály a megfelelő LDAP-kommunikációhoz szükséges.
 
 ### <a name="outbound-security-rules"></a>Kimenő biztonsági szabályok
 
-| Prioritás | Name | Port | Protokoll | Forrás | Cél | Művelet |
+| Prioritás | Név | Port | Protokoll | Forrás | Cél | Művelet |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerOutBound | Bármelyik | Bármelyik |  Bármelyik | Internet | Engedélyezés |
-| 65500    | DenyAllOutBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Megtagadás |
+| 65500    | DenyAllOutBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Deny (Megtagadás) |
 
 >[!NOTE]
 > Az Azure AD DS a virtuális hálózat nem korlátozott kimenő hozzáférését igényli. Nem javasoljuk, hogy hozzon létre olyan további szabályokat, amelyek korlátozzák a kimenő hozzáférést a virtuális hálózat számára.
@@ -65,7 +65,7 @@ A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szab�
 
 A meglévő biztonsági szabályok ellenőrzéséhez és az alapértelmezett portok megnyitásához végezze el a következő lépéseket:
 
-1. A Azure Portal keresse meg és válassza ki a **hálózati biztonsági csoportok**elemet.
+1. A Azure Portal keresse meg és válassza ki a **hálózati biztonsági csoportok** elemet.
 1. Válassza ki a felügyelt tartományhoz társított hálózati biztonsági csoportot, például: *AADDS-contoso.com-NSG*.
 1. Az **Áttekintés** lapon megjelenik a meglévő bejövő és kimenő biztonsági szabályok.
 
@@ -77,14 +77,14 @@ A meglévő biztonsági szabályok ellenőrzéséhez és az alapértelmezett por
 
 Hiányzó biztonsági szabály hozzáadásához hajtsa végre a következő lépéseket:
 
-1. A Azure Portal keresse meg és válassza ki a **hálózati biztonsági csoportok**elemet.
+1. A Azure Portal keresse meg és válassza ki a **hálózati biztonsági csoportok** elemet.
 1. Válassza ki a felügyelt tartományhoz társított hálózati biztonsági csoportot, például: *AADDS-contoso.com-NSG*.
 1. A bal oldali panel **Beállítások** területén kattintson a *bejövő biztonsági szabályok* vagy a *kimenő biztonsági szabályok* elemre attól függően, hogy melyik szabályt kell felvennie.
-1. Válassza a **Hozzáadás**lehetőséget, majd hozza létre a szükséges szabályt a port, a protokoll, az irány stb. alapján. Ha elkészült, kattintson **az OK gombra**.
+1. Válassza a **Hozzáadás** lehetőséget, majd hozza létre a szükséges szabályt a port, a protokoll, az irány stb. alapján. Ha elkészült, kattintson **az OK gombra**.
 
 A biztonsági szabály hozzáadására és megjelenítésére néhány percet vesz igénybe a lista.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 

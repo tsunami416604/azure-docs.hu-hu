@@ -1,20 +1,20 @@
 ---
 title: Oktatóanyag – LDAP-beállítások konfigurálása a Azure Active Directory Domain Serviceshoz | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhatja a biztonságos Lightweight Directory Access Protocol (LDAPs) szolgáltatást egy Azure Active Directory Domain Services felügyelt tartományhoz.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: f5ebe594f1f50c7b7490e5ead8cb3fe7636f0ce7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.author: justinha
+ms.openlocfilehash: d5dbb7b71e2d67ed5b3f624c93c3c143d6c98e5d
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994026"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618535"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -24,7 +24,7 @@ Az Azure AD DS használatával a felügyelt tartományt biztonságos Lightweight
 
 Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat LDAPs-t egy Azure AD DS felügyelt tartományhoz.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Digitális tanúsítvány létrehozása az Azure AD DS használatával

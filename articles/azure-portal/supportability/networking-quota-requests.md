@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: acb05da0255445de31e08f2724dcb484a3e05b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 12/05/2020
 ms.locfileid: "84764265"
 ---
 # <a name="networking-limit-increase"></a>Hálózatkezelési korlát növelése
 
 A hálózati kvóta növeléséhez használja a [Azure Portal](https://portal.azure.com) .
 
-Ha meg szeretné tekinteni az aktuális hálózatkezelési használatot és kvótát Azure Portalban, nyissa meg az előfizetését, majd válassza a **kihasználtságok és kvóták**lehetőséget Az alábbi beállításokkal is megtekintheti a hálózat használatát és korlátozásait.
+Ha meg szeretné tekinteni az aktuális hálózatkezelési használatot és kvótát Azure Portalban, nyissa meg az előfizetését, majd válassza a **kihasználtságok és kvóták** lehetőséget Az alábbi beállításokkal is megtekintheti a hálózat használatát és korlátozásait.
 
 * [Használati CLI](/cli/azure/network#az-network-list-usages)
 * [PowerShell](/powershell/module/azurerm.network/get-azurermnetworkusage)
@@ -33,7 +33,7 @@ A portálon a **Súgó + támogatás** vagy a **használat + kvóták** használ
 
 Az alábbi útmutatást követve hozzon létre egy támogatási kérést a Azure Portal **Súgó és támogatás** szolgáltatásával.
 
-1. Jelentkezzen be [Azure Portalba](https://portal.azure.com), majd válassza a **Súgó + támogatás** lehetőséget a Azure Portal menüben, vagy keresse meg a **Súgó + támogatás**elemet.
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com), majd válassza a **Súgó + támogatás** lehetőséget a Azure Portal menüben, vagy keresse meg a **Súgó + támogatás** elemet.
 
     ![Súgó + támogatás](./media/networking-quota-request/help-plus-support.png)
 
@@ -41,7 +41,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést a Azure
 
     ![Új támogatási kérelem](./media/networking-quota-request/new-support-request.png)
 
-1. A **probléma típusa**beállításnál válassza a **szolgáltatás és előfizetés korlátai (kvóták)** lehetőséget.
+1. A **probléma típusa** beállításnál válassza a **szolgáltatás és előfizetés korlátai (kvóták)** lehetőséget.
 
     ![Válassza ki az előfizetési korlátok elemet a probléma típusa legördülő listából](./media/networking-quota-request/select-quota-issue-type.png)
 
@@ -49,11 +49,11 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést a Azure
 
     ![Előfizetés-hírolvasó kiválasztása](./media/networking-quota-request/select-subscription-support-request.png)
 
-1. A **kvóta típusa**területen válassza a **hálózatkezelés**lehetőséget. Válassza a Next (tovább) lehetőséget **: megoldások**.
+1. A **kvóta típusa** területen válassza a **hálózatkezelés** lehetőséget. Válassza a Next (tovább) lehetőséget **: megoldások**.
 
     ![Kvóta típusának kiválasztása](./media/networking-quota-request/select-quota-type-network.png)
 
-1. A **probléma részletei**lapon válassza a **részletek megadása** lehetőséget, és adja meg a kérés feldolgozásához szükséges további információkat.
+1. A **probléma részletei** lapon válassza a **részletek megadása** lehetőséget, és adja meg a kérés feldolgozásához szükséges további információkat.
 
     ![Részletek megadása](./media/networking-quota-request/provide-details-link.png)
 
@@ -81,7 +81,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést a Azure
 
     ![Használat és kvóták kiválasztása](./media/networking-quota-request/select-usage-plus-quotas.png)
 
-1. A jobb felső sarokban válassza a **kérelem növekedés**lehetőséget.
+1. A jobb felső sarokban válassza a **kérelem növekedés** lehetőséget.
 
     ![Kérések növekedése](./media/networking-quota-request/request-increase-from-subscription.png)
 

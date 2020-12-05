@@ -2,24 +2,24 @@
 title: A replika-készletek fogalmai a Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogy mely replikák vannak a Azure Active Directory Domain Servicesban, és hogyan biztosítanak redundanciát az Identity Services szolgáltatást igénylő alkalmazások számára.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.author: joflore
-ms.openlocfilehash: 499f4df303993d97ebb4eb38de98828b085aff00
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 5359a955ea97b559b7e3d244bfb6c4fb09e8681b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961068"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620035"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>A replika-készletek alapfogalmai és funkciói Azure Active Directory Domain Services (előzetes verzió)
 
-Azure Active Directory Domain Services (Azure AD DS) felügyelt tartomány létrehozásakor egyedi névteret határozhat meg. Ez a névtér a tartománynevet, például a *aaddscontoso.com*és két tartományvezérlőt (DCS) helyezi üzembe a kiválasztott Azure-régióban. A tartományvezérlők ezt a központi telepítését replikakészlet néven nevezzük.
+Azure Active Directory Domain Services (Azure AD DS) felügyelt tartomány létrehozásakor egyedi névteret határozhat meg. Ez a névtér a tartománynevet, például a *aaddscontoso.com* és két tartományvezérlőt (DCS) helyezi üzembe a kiválasztott Azure-régióban. A tartományvezérlők ezt a központi telepítését replikakészlet néven nevezzük.
 
 A felügyelt tartományokat kiterjesztheti úgy, hogy az Azure AD-bérlőn belüli több replikát is hozzon létre. A kópiakészlet bármely olyan Azure-régióban használható, amely támogatja az Azure AD DS-t. A különböző Azure-régiókban található további replikák földrajzi vész-helyreállítást biztosítanak az örökölt alkalmazásokhoz, ha egy Azure-régió offline állapotba kerül.
 
@@ -30,7 +30,7 @@ A kópiakészlet jelenleg előzetes verzióban érhető el.
 
 ## <a name="how-replica-sets-work"></a>A replika-készletek működése
 
-A felügyelt tartományok, például a *aaddscontoso.com*létrehozásakor létrejön egy kezdeti replikakészlet. A további replika-készletek ugyanazt a névteret és konfigurációt használják. Az Azure AD DS módosításai, beleértve a konfigurációt, a felhasználói identitást és a hitelesítő adatokat, a csoportokat, a csoportházirend-objektumokat, a számítógép-objektumokat és az egyéb módosításokat a felügyelt tartomány összes másodpéldányára alkalmazza AD DS replikáció használatával.
+A felügyelt tartományok, például a *aaddscontoso.com* létrehozásakor létrejön egy kezdeti replikakészlet. A további replika-készletek ugyanazt a névteret és konfigurációt használják. Az Azure AD DS módosításai, beleértve a konfigurációt, a felhasználói identitást és a hitelesítő adatokat, a csoportokat, a csoportházirend-objektumokat, a számítógép-objektumokat és az egyéb módosításokat a felügyelt tartomány összes másodpéldányára alkalmazza AD DS replikáció használatával.
 
 Az egyes replikákat egy virtuális hálózatban hozza létre. Minden virtuális hálózatot a felügyelt tartomány replikáját futtató összes többi virtuális hálózatnak meg kell adni. Ez a konfiguráció létrehoz egy háló hálózati topológiát, amely támogatja a címtár-replikációt. A virtuális hálózatok több replikát is támogatnak, ha mindegyik replikakészlet más virtuális alhálózatban található.
 
@@ -54,7 +54,7 @@ Az alábbi példa egy felügyelt tartományt mutat be három replikával a rugal
 
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
-A felügyelt tartományokhoz tartozó alapértelmezett SKU a *vállalati* SKU, amely több replikát is támogat. Ha a *standard* SKU-ra módosította a további replikákat, [frissítse a felügyelt tartományt](change-sku.md) *nagyvállalati* vagy *prémium*szintűre.
+A felügyelt tartományokhoz tartozó alapértelmezett SKU a *vállalati* SKU, amely több replikát is támogat. Ha a *standard* SKU-ra módosította a további replikákat, [frissítse a felügyelt tartományt](change-sku.md) *nagyvállalati* vagy *prémium* szintűre.
 
 Az előzetes verzióban támogatott másodpéldány-készletek maximális száma négy, beleértve a felügyelt tartomány létrehozásakor létrehozott első replikát is.
 
@@ -84,7 +84,7 @@ A helyszíni AD DShoz hasonlóan a kiterjesztett leválasztott állapot is zavar
 
 A felügyelt tartományon belüli változások ugyanúgy működnek, mint korábban. [Hozzon létre és használjon felügyeleti virtuális gépet a felügyelt tartományhoz csatlakoztatott RSAT-eszközökkel](tutorial-create-management-vm.md). A felügyelt tartományhoz tetszőleges számú felügyeleti virtuális gépet csatlakoztathat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A replikakészlet megkezdéséhez [hozzon létre és konfiguráljon egy Azure AD DS felügyelt tartományt][tutorial-create-advanced]. Üzembe helyezéskor [hozzon létre és használjon további replikákat][create-replica-set].
 

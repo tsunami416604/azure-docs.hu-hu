@@ -2,7 +2,7 @@
 title: Windows rendszerű virtuális gép csatlakoztatása az Azure AD DShoz – sablon használata | Microsoft Docs
 description: Ismerje meg, hogyan csatlakozhat Azure Resource Manager-sablonokkal új vagy meglévő Windows Server rendszerű virtuális géphez egy Azure Active Directory Domain Services felügyelt tartományhoz.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 988f009527f26a9f2be965b635d57f0bc38913c2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: e7245e8e468ea051ee095d97cc250ad303aa80a5
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960694"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619436"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Windows Server rendszerű virtuális gép csatlakoztatása egy Azure Active Directory Domain Services felügyelt tartományhoz Resource Manager-sablon használatával
 
@@ -81,7 +81,7 @@ Ha Windows Server rendszerű virtuális gépre van szüksége, hozzon létre és
 
 Ha Windows Server rendszerű virtuális gépet szeretne létrehozni, csatlakoztassa egy felügyelt tartományhoz, hajtsa végre a következő lépéseket:
 
-1. Keresse meg a gyors üzembe helyezési [sablont](https://azure.microsoft.com/resources/templates/201-vm-domain-join/). Válassza ki az **Azure-ba való üzembe helyezés**lehetőségét.
+1. Keresse meg a gyors üzembe helyezési [sablont](https://azure.microsoft.com/resources/templates/201-vm-domain-join/). Válassza ki az **Azure-ba való üzembe helyezés** lehetőségét.
 1. Az **Egyéni telepítés** lapon adja meg a következő adatokat egy Windows Server rendszerű virtuális gép a felügyelt tartományhoz való létrehozásához és csatlakoztatásához:
 
     | Beállítás                   | Érték |
@@ -100,7 +100,7 @@ Ha Windows Server rendszerű virtuális gépet szeretne létrehozni, csatlakozta
     | Virtuális gép rendszergazdai felhasználóneve         | A virtuális gépen létrehozandó helyi rendszergazdai fiókot kell megadnia. |
     | Virtuális gép rendszergazdai jelszava         | Helyi rendszergazdai jelszót kell megadni a virtuális géphez. Hozzon létre egy erős helyi rendszergazdai jelszót a jelszó-kényszerített támadásokkal szembeni védelem érdekében. |
 
-1. Tekintse át a használati feltételeket, majd jelölje be az Elfogadom **a fenti feltételeket és kikötéseket**jelölőnégyzetet. Ha elkészült, válassza a **vásárlás** lehetőséget a virtuális gép felügyelt tartományhoz való létrehozásához és csatlakoztatásához.
+1. Tekintse át a használati feltételeket, majd jelölje be az Elfogadom **a fenti feltételeket és kikötéseket** jelölőnégyzetet. Ha elkészült, válassza a **vásárlás** lehetőséget a virtuális gép felügyelt tartományhoz való létrehozásához és csatlakoztatásához.
 
 > [!WARNING]
 > **A jelszavakat körültekintően kezelheti.**
@@ -114,7 +114,7 @@ Ha rendelkezik egy meglévő virtuális géppel vagy virtuálisgép-csoporttal, 
 
 Ha meglévő Windows Server rendszerű virtuális gépet szeretne csatlakoztatni egy felügyelt tartományhoz, hajtsa végre a következő lépéseket:
 
-1. Keresse meg a gyors üzembe helyezési [sablont](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/). Válassza ki az **Azure-ba való üzembe helyezés**lehetőségét.
+1. Keresse meg a gyors üzembe helyezési [sablont](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/). Válassza ki az **Azure-ba való üzembe helyezés** lehetőségét.
 1. Az **Egyéni telepítés** lapon adja meg a következő adatokat a virtuális géphez a felügyelt tartományhoz való csatlakozáshoz:
 
     | Beállítás                   | Érték |
@@ -127,7 +127,7 @@ Ha meglévő Windows Server rendszerű virtuális gépet szeretne csatlakoztatni
     | Tartományhoz való csatlakozás felhasználói jelszava | Az előző beállításban megadott felhasználói fiók jelszava. |
     | Választható szervezeti egység elérési útja          | Az az egyéni szervezeti egység, amelyben hozzá szeretné adni a virtuális gépet. Ha nem ad meg értéket ehhez a paraméterhez, a rendszer hozzáadja a virtuális gépet az alapértelmezett *HRE DC számítógépek* szervezeti egységhez. |
 
-1. Tekintse át a használati feltételeket, majd jelölje be az Elfogadom **a fenti feltételeket és kikötéseket**jelölőnégyzetet. Ha elkészült, válassza a **vásárlás** lehetőséget a virtuális géphez a felügyelt tartományhoz való csatlakozáshoz.
+1. Tekintse át a használati feltételeket, majd jelölje be az Elfogadom **a fenti feltételeket és kikötéseket** jelölőnégyzetet. Ha elkészült, válassza a **vásárlás** lehetőséget a virtuális géphez a felügyelt tartományhoz való csatlakozáshoz.
 
 > [!WARNING]
 > **A jelszavakat körültekintően kezelheti.**
@@ -135,7 +135,7 @@ Ha meglévő Windows Server rendszerű virtuális gépet szeretne csatlakoztatni
 
 Néhány percet vesz igénybe, hogy a központi telepítés sikeresen befejeződjön. Ha elkészült, a megadott Windows rendszerű virtuális gépek csatlakoznak a felügyelt tartományhoz, és felügyelhetők vagy bejelentkezhetnek a tartományi fiókok használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a Azure Portal segítségével konfigurálta és telepítette az erőforrásokat sablonok használatával. Az erőforrásokat [Azure PowerShell][deploy-powershell] vagy az [Azure CLI][deploy-cli]használatával is üzembe helyezheti Resource Manager-sablonokkal.
 

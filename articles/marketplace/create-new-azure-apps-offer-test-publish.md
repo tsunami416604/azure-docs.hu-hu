@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: b54e965188be51ec54110bb85d8cda8f01256836
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 461f9354bb3a6eae0af186de8fe9f39c6b5fff2c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370227"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620919"
 ---
 # <a name="how-to-test-and-publish-an-azure-application-offer"></a>Azure-alkalmazások ajánlatának tesztelése és közzététele
 
@@ -72,4 +72,4 @@ Ha a közzétételi lépések közül egy vagy több hibát tartalmaz, javítsa 
 ## <a name="next-step"></a>Következő lépés
 
 - [A partner Center kereskedelmi piactérről származó analitikai jelentések elérése](partner-center-portal/analytics.md)
-- Ismerje meg [, hogyan forgalmazhatja Azure-alkalmazásait](create-new-azure-apps-offer-marketing.md) a Microsofttal való közös értékesítéssel és a CSP-programokkal való viszonteladással.
+- Ismerje meg [, hogyan értékesítheti Azure-alkalmazásait](create-new-azure-apps-offer-marketing.md) a Microsofttal való közös értékesítéssel és a CSP-programokkal való viszonteladással.

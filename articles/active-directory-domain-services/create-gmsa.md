@@ -2,7 +2,7 @@
 title: Csoportosan felügyelt szolgáltatásfiókok a Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre Azure Active Directory Domain Services felügyelt tartományokkal használható csoportosan felügyelt szolgáltatásfiókot (gMSA)
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: e6faeddd-ef9e-4e23-84d6-c9b3f7d16567
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: af1df1dd95d570038c44ea9052db88ae80586c32
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: f975d3e0e605b7c24b9fd31dc8fc78f0f37bb6b9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960983"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619984"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Csoportosan felügyelt szolgáltatásfiók (gMSA) létrehozása Azure Active Directory Domain Services
 
@@ -65,7 +65,7 @@ Először hozzon létre egy egyéni szervezeti egységet a [New-ADOrganizational
 > [!TIP]
 > A lépések gMSA létrehozásához [használja a felügyeleti virtuális gépet][tutorial-create-management-vm]. Ennek a felügyeleti virtuális gépnek már rendelkeznie kell a szükséges AD PowerShell-parancsmagokkal és a felügyelt tartományhoz való kapcsolódással.
 
-A következő példában létrehozunk egy *myNewOU* nevű egyéni szervezeti egységet a *aaddscontoso.com*nevű felügyelt tartományban. Saját szervezeti egység és felügyelt tartománynév használata:
+A következő példában létrehozunk egy *myNewOU* nevű egyéni szervezeti egységet a *aaddscontoso.com* nevű felügyelt tartományban. Saját szervezeti egység és felügyelt tartománynév használata:
 
 ```powershell
 New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
@@ -95,7 +95,7 @@ New-ADServiceAccount -Name WebFarmSvc `
 
 Az alkalmazások és a szolgáltatások mostantól úgy konfigurálhatók, hogy igény szerint használják a gMSA.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A csoportosan felügyelt szolgáltatásfiókokat kapcsolatos további információkért lásd: [Bevezetés a csoportosan felügyelt szolgáltatásfiókok][gmsa-start]használatába.
 

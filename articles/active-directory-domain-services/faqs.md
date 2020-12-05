@@ -2,7 +2,7 @@
 title: Gyakori kérdések a Azure AD Domain Servicesról | Microsoft Docs
 description: Olvassa el és Ismerje meg a konfigurációval, a felügyelettel és a rendelkezésre állással kapcsolatos gyakori kérdéseket Azure Active Directory Domain Services
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/30/2020
-ms.author: joflore
-ms.openlocfilehash: 07d2d71c13cd054dec46b6eaa9f07079c8cec63b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: e4e7a64b9f9d7283de728216934854f4ef8f8fd1
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962292"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619733"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Gyakori kérdések (GYIK) a Azure Active Directory (AD) tartományi szolgáltatásokkal kapcsolatban
 
@@ -122,7 +122,7 @@ Egy Azure AD Domain Services felügyelt tartomány alapértelmezett jelszójána
 
 Emellett a *DisablePasswordExpiration* Azure ad-beli jelszavas szabályzata szinkronizálva lett egy felügyelt tartományba. Ha a *DisablePasswordExpiration* az Azure ad-ben egy felhasználóra alkalmazza, a felügyelt tartományban lévő szinkronizált felhasználó *UserAccountControl* értékét *DONT_EXPIRE_PASSWORD* alkalmazta a rendszer.
 
-Amikor a felhasználók visszaállítják a jelszavukat az Azure AD-ben, a rendszer a *forceChangePasswordNextSignIn = True* attribútumot alkalmazza. A felügyelt tartomány szinkronizálja ezt az attribútumot az Azure AD-ből. Ha a felügyelt tartomány észleli a *forceChangePasswordNextSignIn* egy szinkronizált felhasználó számára az Azure ad-ből, a felügyelt tartomány *pwdLastSet* attribútuma *0*értékre van állítva, amely érvényteleníti a jelenleg beállított jelszót.
+Amikor a felhasználók visszaállítják a jelszavukat az Azure AD-ben, a rendszer a *forceChangePasswordNextSignIn = True* attribútumot alkalmazza. A felügyelt tartomány szinkronizálja ezt az attribútumot az Azure AD-ből. Ha a felügyelt tartomány észleli a *forceChangePasswordNextSignIn* egy szinkronizált felhasználó számára az Azure ad-ből, a felügyelt tartomány *pwdLastSet* attribútuma *0* értékre van állítva, amely érvényteleníti a jelenleg beállított jelszót.
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Biztosít Azure AD Domain Services AD-fiók zárolásának védelmét?
 Igen. A felügyelt tartomány 2 percen belül öt érvénytelen jelszóval próbálkozik, mert a felhasználói fiók 30 percig kizárja a felhasználót. 30 perc elteltével a felhasználói fiók automatikusan fel lesz oldva. A felügyelt tartomány jelszavas próbálkozásai érvénytelenek, az Azure AD-ben nem zárhatók ki a felhasználói fiókok. A felhasználói fiók csak a Azure AD Domain Services felügyelt tartományon belül van zárolva. További információ: [jelszó-és fiókzárolási házirendek a felügyelt tartományokon](password-policy.md).
@@ -164,7 +164,7 @@ Az Azure- [szolgáltatások régiónként](https://azure.microsoft.com/regions/#
 
 A Azure AD Domain Services konfigurálásával és felügyeletével kapcsolatos gyakori problémák megoldásához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Azure AD Domain Servicesről, tekintse meg a [Mi az a Azure Active Directory Domain Services?](overview.md)című témakört.
 

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: 63be912986542741359cd5e88227f06905d42647
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: da89d4fbc3f9e03e76d901c2215e4f16c5273013
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350874"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621110"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Fogadó átalakítás a leképezési adatfolyamban
 
@@ -103,6 +103,10 @@ Alapértelmezés szerint az determinált sorrendben több mosogatóba történik
 > A [gyorsítótárazott keresések](./concepts-data-flow-expression-builder.md#cached-lookup)használatakor győződjön meg arról, hogy a fogadó megrendelése a gyorsítótárazott tárolók értéke 1, a legalacsonyabb (vagy az első) a sorrend.
 
 ![Egyéni fogadó rendelés](media/data-flow/cache-2.png "Egyéni fogadó rendelés")
+
+### <a name="sink-groups"></a>Fogadó csoportok
+
+A mosogatók egymásba rendezéséhez ugyanazt a sorszámot kell alkalmazni egy adatsorozathoz. Az ADF ezeket a gyűjtőket olyan csoportoknak fogja kezelni, amelyek párhuzamosan hajthatók végre. A párhuzamos végrehajtás lehetőségei a folyamat adatforgalmának tevékenységében lesznek felszínre.
 
 ## <a name="error-row-handling"></a>Hibát tartalmazó sorok kezelése
 

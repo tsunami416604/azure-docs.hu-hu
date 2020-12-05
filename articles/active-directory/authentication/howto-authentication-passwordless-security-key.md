@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d9c4dff1e4a3ba7c7a2b11311e97eb5e66a1585
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8530b74a63f4e5e2c04ff95a0106b896102dda2c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994247"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618093"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ez a dokumentum a biztonsági kulcson alapuló jelszavas hitelesítés engedély
 
 ## <a name="requirements"></a>Követelmények
 
-- [Azure AD-Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md)
 - A [kombinált biztonsági információk regisztrációjának előzetes](concept-registration-mfa-sspr-combined.md) verziójának engedélyezése
 - Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys)
 - A WebAuthN a Windows 10 1903-es vagy újabb verzióját igényli * *
@@ -38,7 +38,7 @@ A webalkalmazásokhoz és szolgáltatásokhoz való bejelentkezéshez szüksége
 
 ## <a name="prepare-devices-for-preview"></a>Eszközök előkészítése az előzetes verzióra
 
-Az Azure AD-hez csatlakoztatott eszközökön a Windows 10 1909-es vagy újabb verziójának kell futnia. A legjobb élmény a Windows 10 1903-es vagy újabb verziója.
+Az Azure AD-hez csatlakoztatott eszközök esetében a legjobb megoldás a Windows 10 1903-es vagy újabb verziója.
 
 A hibrid Azure AD-hez csatlakoztatott eszközöknek a Windows 10 2004-es vagy újabb verzióját kell futtatniuk.
 

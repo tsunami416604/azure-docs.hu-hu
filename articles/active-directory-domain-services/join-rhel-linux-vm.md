@@ -2,7 +2,7 @@
 title: RHEL virtuális gép csatlakoztatása Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhat és csatlakoztathat egy Red Hat Enterprise Linux virtuális gépet egy Azure AD Domain Services felügyelt tartományhoz.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: joflore
-ms.openlocfilehash: ffde2317ea66a15936df75c4fe2455f627ea6e98
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 285a972936bfdf4b173e2a20223143883cd8b7d3
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962122"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619555"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Red Hat Enterprise Linux virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -96,7 +96,7 @@ Most, hogy a szükséges csomagok telepítve vannak a virtuális gépen, csatlak
 
 ### <a name="rhel-7"></a>7. RHEL
 
-1. A `realm discover` parancs használatával keresse meg a felügyelt tartományt. A következő példa felfedi a *AADDSCONTOSO.com*tartományát. Adja meg saját felügyelt tartománynevét az összes nagybetűvel:
+1. A `realm discover` parancs használatával keresse meg a felügyelt tartományt. A következő példa felfedi a *AADDSCONTOSO.com* tartományát. Adja meg saját felügyelt tartománynevét az összes nagybetűvel:
 
     ```console
     sudo realm discover AADDSCONTOSO.COM
@@ -130,7 +130,7 @@ Successfully enrolled machine in realm
 
 ### <a name="rhel-6"></a>6. RHEL
 
-1. A `adcli info` parancs használatával keresse meg a felügyelt tartományt. A következő példa felfedi a *ADDDSCONTOSO.com*tartományát. Adja meg saját felügyelt tartománynevét az összes nagybetűvel:
+1. A `adcli info` parancs használatával keresse meg a felügyelt tartományt. A következő példa felfedi a *ADDDSCONTOSO.com* tartományát. Adja meg saját felügyelt tartománynevét az összes nagybetűvel:
 
     ```console
     sudo adcli info aaddscontoso.com
@@ -241,7 +241,7 @@ Alapértelmezés szerint a felhasználók csak az SSH nyilvános kulcs-alapú hi
     sudo vi /etc/ssh/sshd_config
     ```
 
-1. A *PasswordAuthentication* vonalának frissítése *Igen*értékre:
+1. A *PasswordAuthentication* vonalának frissítése *Igen* értékre:
 
     ```console
     PasswordAuthentication yes
@@ -314,7 +314,7 @@ Annak ellenőrzéséhez, hogy a virtuális gép sikeresen csatlakozott-e a felü
     sudo yum update
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha problémába ütközik a virtuális gép a felügyelt tartományhoz való csatlakoztatásával vagy egy tartományi fiókkal való bejelentkezéssel, tekintse meg a [tartományhoz való csatlakozással kapcsolatos problémák elhárítása](join-windows-vm.md#troubleshoot-domain-join-issues)
 

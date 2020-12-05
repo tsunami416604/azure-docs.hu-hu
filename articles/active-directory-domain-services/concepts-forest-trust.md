@@ -2,20 +2,20 @@
 title: Hogyan működik a megbízhatóság a Azure AD Domain Servicesban? | Microsoft Docs
 description: További információ arról, hogyan működik az erdőszintű megbízhatóság a Azure AD Domain Services
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 50b400ffa047d3865a9df77912da187de1ce9cc9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 5c72ab7d085de558ee95f3c602ccc6be6160b322
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962615"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620205"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Hogyan működik a megbízhatósági kapcsolatok a Azure Active Directory Domain Services erőforrás-erdőkön
 
@@ -45,11 +45,11 @@ Az alábbi ábra azt mutatja, hogy az *1* . és *2* . fa összes tartománya ala
 
 A megbízhatósági kapcsolatok lehetővé teszik az erőforrásokhoz való hozzáférést, akár egyirányú, akár kétirányú is lehet.
 
-Az egyirányú megbízhatósági kapcsolat egy egyirányú hitelesítési útvonal, amely két tartomány között jön létre. Az *a tartomány és a* *b*tartomány közötti egyirányú megbízhatósági kapcsolaton keresztül az *a* tartományba tartozó felhasználók hozzáférhetnek a *b tartomány*erőforrásaihoz. A *B tartományban* lévő felhasználók azonban nem férhetnek hozzá az *a tartomány*erőforrásaihoz.
+Az egyirányú megbízhatósági kapcsolat egy egyirányú hitelesítési útvonal, amely két tartomány között jön létre. Az *a tartomány és a* *b* tartomány közötti egyirányú megbízhatósági kapcsolaton keresztül az *a* tartományba tartozó felhasználók hozzáférhetnek a *b tartomány* erőforrásaihoz. A *B tartományban* lévő felhasználók azonban nem férhetnek hozzá az *a tartomány* erőforrásaihoz.
 
 Néhány egyirányú megbízhatósági kapcsolat nem tranzitív vagy tranzitív lehet a létrehozandó megbízhatóság típusától függően.
 
-Kétirányú megbízhatósági kapcsolat esetén a *tartomány a* *b tartományba* , a *b tartomány* pedig az *a*tartományt bízik meg. Ez a konfiguráció azt jelenti, hogy a két tartomány közötti hitelesítési kérések mindkét irányban átadhatók. Néhány kétirányú kapcsolat nem tranzitív vagy tranzitív lehet a létrehozandó megbízhatóság típusától függően.
+Kétirányú megbízhatósági kapcsolat esetén a *tartomány a* *b tartományba* , a *b tartomány* pedig az *a* tartományt bízik meg. Ez a konfiguráció azt jelenti, hogy a két tartomány közötti hitelesítési kérések mindkét irányban átadhatók. Néhány kétirányú kapcsolat nem tranzitív vagy tranzitív lehet a létrehozandó megbízhatóság típusától függően.
 
 Egy AD DS erdőben lévő összes tartományi megbízhatóság kétirányú, tranzitív megbízhatósági kapcsolat. Új gyermektartomány létrehozásakor a rendszer automatikusan létrehoz egy kétirányú, tranzitív megbízhatósági kapcsolatot az új gyermektartomány és a szülő tartomány között.
 
@@ -88,7 +88,7 @@ Ha egyirányú erdőszintű megbízhatósági kapcsolat jön létre két erdő k
 
 Ha például egy egyirányú, erdőszintű megbízhatósági kapcsolat jön létre az *1. erdő* (a megbízható erdő) és a *2. erdő* (a megbízó erdő) között:
 
-* Az *1. erdő* tagjai hozzáférhetnek a *2. erdőben*található erőforrásokhoz.
+* Az *1. erdő* tagjai hozzáférhetnek a *2. erdőben* található erőforrásokhoz.
 * A *2. erdő* tagjai nem férnek hozzá az *1. erdőben* található erőforrásokhoz ugyanazzal a megbízhatósággal.
 
 > [!IMPORTANT]
@@ -178,7 +178,7 @@ A következő ábra és lépések részletes leírást nyújtanak a Kerberos hit
 
     Az útválasztási útmutatók segítik a közvetlen hitelesítési kérelmeket a cél erdő felé. A rendszer csak akkor használja a mutatókat, ha az összes hagyományos hitelesítési csatorna, például a helyi tartományvezérlő, majd a globális katalógus nem talál egyszerű szolgáltatásnevet.
 
-4. A *GyermekTV1* visszaküldi a *Munkaallomas1 nevű munkaállomásnak*a fölérendelt tartományra mutató hivatkozást.
+4. A *GyermekTV1* visszaküldi a *Munkaallomas1 nevű munkaállomásnak* a fölérendelt tartományra mutató hivatkozást.
 
 5. A *Munkaallomas1 nevű munkaállomásnak* a *ErdoGyokerTV1* (a szülőtartomány tartományában) lévő tartományvezérlővel csatlakozik egy, a *wingtiptoys.com* erdőben lévő erdő gyökértartományában lévő tartományvezérlőhöz (*ForestRootDC2*).
 
@@ -190,7 +190,7 @@ A következő ábra és lépések részletes leírást nyújtanak a Kerberos hit
 
 9. A *Munkaallomas1 nevű munkaállomásnak* kapcsolatba lép a KDC-val a *ChildDC2* -on, és egyezteti a *Fajlkiszolgalo1 nevű kiszolgálónak*-hez való hozzáférést a *Felhasználó1* -jegyet.
 
-10. Miután a *Munkaallomas1 nevű munkaállomásnak* rendelkezik, a *Fajlkiszolgalo1 nevű kiszolgálónak*küldi a szolgáltatási jegyet, amely beolvassa a *Felhasználó1*biztonsági hitelesítő adatait, és ennek megfelelően létrehozza a hozzáférési jogkivonatot.
+10. Miután a *Munkaallomas1 nevű munkaállomásnak* rendelkezik, a *Fajlkiszolgalo1 nevű kiszolgálónak* küldi a szolgáltatási jegyet, amely beolvassa a *Felhasználó1* biztonsági hitelesítő adatait, és ennek megfelelően létrehozza a hozzáférési jogkivonatot.
 
 ## <a name="trusted-domain-object"></a>Megbízható tartományi objektum
 
@@ -276,7 +276,7 @@ A rendszergazdák *Active Directory tartományokat és megbízhatóságokat*, *N
 * *Active Directory tartományok és megbízhatósági kapcsolatok* a Microsoft Management Console (MMC), amely a tartományi Megbízhatóságok, a tartomány és az erdő működési szintjeinek, valamint az egyszerű felhasználónevek utótagjának felügyeletére szolgál.
 * A *Netdom* és a *nltest* parancssori eszközöket a megbízhatósági kapcsolatok kereséséhez, megjelenítéséhez, létrehozásához és kezeléséhez használhatja. Ezek az eszközök közvetlenül kommunikálnak az LSA-szolgáltatóval egy tartományvezérlőn.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az erőforrás-erdőkről: [hogyan működnek az erdőszintű megbízhatósági kapcsolatok az Azure ad DSban?][concepts-trust]
 

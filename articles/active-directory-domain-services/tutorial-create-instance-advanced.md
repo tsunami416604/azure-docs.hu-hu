@@ -1,20 +1,20 @@
 ---
 title: Oktatóanyag – testreszabott Azure Active Directory Domain Services felügyelt tartomány létrehozása | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat testreszabott Azure Active Directory Domain Services felügyelt tartományt, és hogyan adhat meg speciális konfigurációs beállításokat a Azure Portal használatával.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 23c15bca8c3385a8e115cd0a85d2e5b4f1553007
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 4d03edac98329d7c47b8bfafbf4d30cfca18863c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967342"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618229"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Oktatóanyag: Azure Active Directory Domain Services felügyelt tartomány létrehozása és konfigurálása speciális konfigurációs beállításokkal
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartomány
 
 Felügyelt tartományt a Hálózatkezelés és a szinkronizálás [alapértelmezett konfigurációs beállításaival hozhat létre][tutorial-create-instance] , vagy manuálisan is megadhatja ezeket a beállításokat. Ez az oktatóanyag bemutatja, hogyan határozhatja meg ezeket a speciális konfigurációs beállításokat egy Azure AD DS felügyelt tartomány létrehozásához és konfigurálásához a Azure Portal használatával.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Felügyelt tartomány DNS-és virtuális hálózati beállításainak konfigurálása
@@ -58,7 +58,7 @@ A **Azure ad Domain Services engedélyezése** varázsló elindításához hajts
 
 1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 1. Adja meg a *tartományi szolgáltatásokat* a keresési sávban, majd válassza a *Azure ad Domain Services* lehetőséget a keresési javaslatok közül.
-1. A Azure AD Domain Services lapon válassza a **Létrehozás**lehetőséget. Elindul a **Azure ad Domain Services engedélyezése** varázsló.
+1. A Azure AD Domain Services lapon válassza a **Létrehozás** lehetőséget. Elindul a **Azure ad Domain Services engedélyezése** varázsló.
 1. Válassza ki azt az Azure- **előfizetést** , amelyben létre szeretné hozni a felügyelt tartományt.
 1. Válassza ki azt az **erőforráscsoportot** , amelyhez a felügyelt tartománynak tartoznia kell. Válassza az **új létrehozása** lehetőséget, vagy válasszon ki egy meglévő erőforráscsoportot.
 
@@ -66,12 +66,12 @@ Felügyelt tartomány létrehozásakor meg kell adnia egy DNS-nevet. A DNS-név 
 
 * **Beépített tartomány neve:** Alapértelmezés szerint a rendszer a könyvtár beépített tartománynevét használja (a *. onmicrosoft.com* utótagot). Ha engedélyezni szeretné a biztonságos LDAP-hozzáférést a felügyelt tartományhoz az interneten keresztül, nem hozhat létre digitális tanúsítványt a kapcsolat védelméhez ezzel az alapértelmezett tartománnyal. A Microsoft tulajdonosa a *. onmicrosoft.com* tartomány, így a hitelesítésszolgáltató (CA) nem bocsát ki tanúsítványt.
 * **Egyéni tartománynevek:** A leggyakoribb módszer egy egyéni tartománynév megadása, amely általában az egyik, amelyet már birtokol, és irányítható. Ha irányítható, egyéni tartományt használ, a forgalom az alkalmazások támogatásához szükséges módon képes megfelelően átáramlani.
-* **Nem irányítható tartomány utótagja:** Általában azt javasoljuk, hogy kerülje a nem átirányítható tartománynevek utótagját, például a *contoso. local*nevet. A *. local* utótag nem irányítható, és a DNS-feloldással kapcsolatos problémákat okozhat.
+* **Nem irányítható tartomány utótagja:** Általában azt javasoljuk, hogy kerülje a nem átirányítható tartománynevek utótagját, például a *contoso. local* nevet. A *. local* utótag nem irányítható, és a DNS-feloldással kapcsolatos problémákat okozhat.
 
 > [!TIP]
 > Ha egyéni tartománynevet hoz létre, gondoskodjon a meglévő DNS-névterekről. Azt javasoljuk, hogy a tartománynevet a meglévő Azure-beli vagy helyszíni DNS-névtértől elkülönítve használja.
 >
-> Ha például meglévő DNS- *contoso.com*rendelkezik, hozzon létre egy felügyelt tartományt a *aaddscontoso.com*egyéni tartománynevével. Ha biztonságos LDAP-t kell használnia, regisztrálnia kell az egyéni tartománynevet a szükséges tanúsítványok létrehozásához.
+> Ha például meglévő DNS- *contoso.com* rendelkezik, hozzon létre egy felügyelt tartományt a *aaddscontoso.com* egyéni tartománynevével. Ha biztonságos LDAP-t kell használnia, regisztrálnia kell az egyéni tartománynevet a szükséges tanúsítványok létrehozásához.
 >
 > Előfordulhat, hogy létre kell hoznia néhány további DNS-rekordot a környezetében lévő más szolgáltatásokhoz, vagy feltételes DNS-továbbítókat a környezet meglévő DNS-neve között. Ha például olyan webkiszolgálót futtat, amely a gyökér DNS-nevet használja, akkor olyan elnevezési ütközések lehetnek, amelyek további DNS-bejegyzéseket igényelnek.
 >
@@ -106,10 +106,10 @@ Felügyelt tartomány létrehozásához hajtsa végre a Azure Portal *alapismere
 
     ![Azure AD Domain Services felügyelt tartomány alapszintű beállításainak konfigurálása](./media/tutorial-create-instance-advanced/basics-window.png)
 
-1. További beállítások manuális konfigurálásához válassza a **következő hálózat**lehetőséget. Ellenkező esetben válassza a **felülvizsgálat + létrehozás** lehetőséget az alapértelmezett konfigurációs beállítások elfogadásához, majd ugorjon a [felügyelt tartomány üzembe helyezését](#deploy-the-managed-domain)ismertető szakaszra. A létrehozási lehetőség kiválasztása esetén a következő alapértelmezett beállítások vannak konfigurálva:
+1. További beállítások manuális konfigurálásához válassza a **következő hálózat** lehetőséget. Ellenkező esetben válassza a **felülvizsgálat + létrehozás** lehetőséget az alapértelmezett konfigurációs beállítások elfogadásához, majd ugorjon a [felügyelt tartomány üzembe helyezését](#deploy-the-managed-domain)ismertető szakaszra. A létrehozási lehetőség kiválasztása esetén a következő alapértelmezett beállítások vannak konfigurálva:
 
-    * Létrehoz egy *aadds-vnet* nevű virtuális hálózatot, amely a *10.0.1.0/24*IP-címtartományt használja.
-    * Létrehoz egy *aadds-alhálózat* nevű alhálózatot a *10.0.1.0/24*IP-címtartomány használatával.
+    * Létrehoz egy *aadds-vnet* nevű virtuális hálózatot, amely a *10.0.1.0/24* IP-címtartományt használja.
+    * Létrehoz egy *aadds-alhálózat* nevű alhálózatot a *10.0.1.0/24* IP-címtartomány használatával.
     * Szinkronizálja az Azure AD *összes* felhasználóját a felügyelt tartományba.
 
 ## <a name="create-and-configure-the-virtual-network"></a>A virtuális hálózat létrehozása és konfigurálása
@@ -127,7 +127,7 @@ A virtuális hálózat megtervezésével és konfigurálásával kapcsolatos tov
 
 A következő módon hajtsa végre a mezőket a *hálózat* ablakban:
 
-1. A **hálózat** lapon válassza ki a virtuális hálózatot az Azure-AD DS üzembe helyezéséhez a legördülő menüből, vagy válassza az **új létrehozása**lehetőséget.
+1. A **hálózat** lapon válassza ki a virtuális hálózatot az Azure-AD DS üzembe helyezéséhez a legördülő menüből, vagy válassza az **új létrehozása** lehetőséget.
     1. Ha úgy dönt, hogy létrehoz egy virtuális hálózatot, adjon meg egy nevet a virtuális hálózatnak (például *myVnet*), majd adjon meg egy címtartományt, például *10.0.1.0/24*.
     1. Hozzon létre egy dedikált alhálózatot egy tiszta névvel, például *DomainServices*. Adjon meg egy címtartományt, például *10.0.1.0/24*.
 
@@ -136,7 +136,7 @@ A következő módon hajtsa végre a mezőket a *hálózat* ablakban:
     Ügyeljen arra, hogy olyan címtartományt válasszon, amely a magánhálózati IP-címtartomány része. Azok az IP-címtartományok, amelyek nem a nyilvános címtartomány alá tartoznak, hibákat okozhatnak az Azure AD DSon belül.
 
 1. Válasszon ki egy virtuális hálózati alhálózatot, például *DomainServices*.
-1. Ha elkészült, válassza a **következő – felügyelet**lehetőséget.
+1. Ha elkészült, válassza a **következő – felügyelet** lehetőséget.
 
 ## <a name="configure-an-administrative-group"></a>Felügyeleti csoport konfigurálása
 
@@ -149,13 +149,13 @@ Az Azure AD DS-tartomány felügyeletéhez egy *HRE DC-rendszergazdák* nevű sp
 
 A varázsló automatikusan létrehozza az *HRE DC rendszergazdák* csoportot az Azure ad-címtárban. Ha már létezik ilyen nevű csoport az Azure AD-címtárban, a varázsló kiválasztja ezt a csoportot. A telepítési folyamat során további felhasználókat is hozzáadhat ehhez a *HRE DC-rendszergazdák* csoporthoz. Ezeket a lépéseket később is elvégezheti.
 
-1. Ha további felhasználókat szeretne hozzáadni ehhez a *HRE-tartományvezérlő rendszergazdák* csoportjához, válassza a **csoporttagság kezelése**lehetőséget.
+1. Ha további felhasználókat szeretne hozzáadni ehhez a *HRE-tartományvezérlő rendszergazdák* csoportjához, válassza a **csoporttagság kezelése** lehetőséget.
 
     ![A HRE DC-rendszergazdák csoport csoporttagság konfigurálása](./media/tutorial-create-instance-advanced/admin-group.png)
 
 1. Válassza a **Tagok hozzáadása** gombot, majd keresse meg és válassza ki a felhasználókat az Azure ad-címtárból. Például keresse meg a saját fiókját, és adja hozzá a *HRE DC-rendszergazdák* csoporthoz.
 1. Ha kívánja, módosítsa vagy vegyen fel további címzetteket az értesítésekhez, ha a felügyelt tartományba tartozó riasztások is figyelmet igényelnek.
-1. Ha elkészült, válassza a **következő szinkronizálás**lehetőséget.
+1. Ha elkészült, válassza a **következő szinkronizálás** lehetőséget.
 
 ## <a name="configure-synchronization"></a>A szinkronizálás konfigurálása
 
@@ -165,22 +165,22 @@ Az Azure AD DS lehetővé teszi az Azure AD-ben elérhető *összes* felhasznál
 
     ![A felhasználók és csoportok teljes szinkronizálásának végrehajtása az Azure AD-ből](./media/tutorial-create-instance-advanced/sync-all.png)
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
 ## <a name="deploy-the-managed-domain"></a>A felügyelt tartomány üzembe helyezése
 
-A varázsló **Összefoglalás** lapján tekintse át a felügyelt tartomány konfigurációs beállításait. A varázsló bármelyik lépésére visszatérhet a módosítások elvégzéséhez. Ha egy felügyelt tartományt egy másik Azure AD-bérlőre kíván áttelepíteni, és ezeket a konfigurációs beállításokat szeretné használni, **letöltheti az automatizáláshoz használható sablont**is.
+A varázsló **Összefoglalás** lapján tekintse át a felügyelt tartomány konfigurációs beállításait. A varázsló bármelyik lépésére visszatérhet a módosítások elvégzéséhez. Ha egy felügyelt tartományt egy másik Azure AD-bérlőre kíván áttelepíteni, és ezeket a konfigurációs beállításokat szeretné használni, **letöltheti az automatizáláshoz használható sablont** is.
 
-1. A felügyelt tartomány létrehozásához válassza a **Létrehozás**lehetőséget. Megjelenik egy megjegyzés, amely szerint bizonyos konfigurációs beállítások (például a DNS-név vagy a virtuális hálózat) nem módosíthatók, ha az Azure-AD DS felügyelve lett létrehozva. A folytatáshoz kattintson **az OK gombra**.
+1. A felügyelt tartomány létrehozásához válassza a **Létrehozás** lehetőséget. Megjelenik egy megjegyzés, amely szerint bizonyos konfigurációs beállítások (például a DNS-név vagy a virtuális hálózat) nem módosíthatók, ha az Azure-AD DS felügyelve lett létrehozva. A folytatáshoz kattintson **az OK gombra**.
 1. A felügyelt tartomány kiépítés folyamata akár egy órát is igénybe vehet. Egy értesítés jelenik meg a portálon, amely az Azure AD DS üzemelő példányának állapotát mutatja. Válassza ki az értesítést, és tekintse meg az üzembe helyezés részletes folyamatát.
 
     ![Értesítés a telepítés Azure Portal folyamatban](./media/tutorial-create-instance-advanced/deployment-in-progress.png)
 
-1. Válassza ki az erőforráscsoportot, például *myResourceGroup*, majd válassza ki a felügyelt tartományt az Azure-erőforrások listájából, például *aaddscontoso.com*. Az **Áttekintés** lapon látható, hogy a felügyelt tartomány jelenleg *telepítve*van. A felügyelt tartományt nem lehet a teljes kiépítés előtt konfigurálni.
+1. Válassza ki az erőforráscsoportot, például *myResourceGroup*, majd válassza ki a felügyelt tartományt az Azure-erőforrások listájából, például *aaddscontoso.com*. Az **Áttekintés** lapon látható, hogy a felügyelt tartomány jelenleg *telepítve* van. A felügyelt tartományt nem lehet a teljes kiépítés előtt konfigurálni.
 
     ![Tartományi szolgáltatások állapota a kiépítési állapotban](./media/tutorial-create-instance-advanced/provisioning-in-progress.png)
 
-1. Ha a felügyelt tartomány teljes mértékben kiépítve van, az **Áttekintés** lapon a tartomány állapota *fut*értékre látható.
+1. Ha a felügyelt tartomány teljes mértékben kiépítve van, az **Áttekintés** lapon a tartomány állapota *fut* értékre látható.
 
     ![Tartományi szolgáltatások állapota sikeres kiépítés után](./media/tutorial-create-instance-advanced/successfully-provisioned.png)
 
@@ -191,7 +191,7 @@ A varázsló **Összefoglalás** lapján tekintse át a felügyelt tartomány ko
 
 Az Azure AD DS sikeres üzembe helyezése után konfigurálja úgy a virtuális hálózatot, hogy engedélyezze más csatlakoztatott virtuális gépek és alkalmazások számára a felügyelt tartomány használatát. A kapcsolat megadásához frissítse a virtuális hálózat DNS-kiszolgálójának beállításait úgy, hogy azokra a két IP-címre mutasson, ahol a felügyelt tartomány telepítve van.
 
-1. A felügyelt tartomány **Áttekintés** lapján néhány **szükséges konfigurációs lépés**látható. Az első konfigurációs lépés a DNS-kiszolgáló beállításainak frissítése a virtuális hálózathoz. A DNS-beállítások megfelelő konfigurálása után ez a lépés már nem jelenik meg.
+1. A felügyelt tartomány **Áttekintés** lapján néhány **szükséges konfigurációs lépés** látható. Az első konfigurációs lépés a DNS-kiszolgáló beállításainak frissítése a virtuális hálózathoz. A DNS-beállítások megfelelő konfigurálása után ez a lépés már nem jelenik meg.
 
     A felsorolt címek a virtuális hálózatban használt tartományvezérlők. Ebben a példában ezek a címek a *10.0.1.4* és a *10.0.1.5*. Később megkeresheti ezeket az IP-címeket a **Tulajdonságok** lapon.
 
@@ -233,7 +233,7 @@ A csak felhőalapú felhasználók jelszavának módosításához a felhasznál�
 
     ![Profil kiválasztása](./media/tutorial-create-instance-advanced/select-profile.png)
 
-1. A **profil** lapon válassza a **jelszó módosítása**lehetőséget.
+1. A **profil** lapon válassza a **jelszó módosítása** lehetőséget.
 1. A **jelszó módosítása** lapon adja meg a meglévő (régi) jelszavát, majd írja be és erősítse meg az új jelszót.
 1. Válassza a **Küldés** lehetőséget.
 

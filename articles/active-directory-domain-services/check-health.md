@@ -2,7 +2,7 @@
 title: A Azure Active Directory Domain Services állapotának ellenõrzése | Microsoft Docs
 description: Megtudhatja, hogyan ellenőrizhető egy Azure Active Directory Domain Services (Azure AD DS) felügyelt tartomány állapota, és hogyan értelmezhető az állapotüzenetek a Azure Portal használatával.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: bf65657ea60e94f167bfbb6585026702b64e9658
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 92cc6157c590d3e05b4002e0f071c08e4ec23a16
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962734"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620324"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartomány állapotának ellenőrzését
 
@@ -28,9 +28,9 @@ Ez a cikk bemutatja, hogyan tekintheti meg az Azure AD DS állapotát, és megis
 
 A felügyelt tartomány állapotának megtekintése a Azure Portal használatával történik. A legutóbbi biztonsági mentési időpontra és az Azure AD-vel való szinkronizálásra vonatkozó információk láthatók a felügyelt tartomány állapotával kapcsolatos problémákat jelző riasztásokkal együtt. Egy felügyelt tartomány állapotának megtekintéséhez hajtsa végre a következő lépéseket:
 
-1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget.
+1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services** lehetőséget.
 1. Válassza ki a felügyelt tartományt, például *aaddscontoso.com*.
-1. Az Azure AD DS erőforrás ablak bal oldalán válassza az **állapot**lehetőséget. Az alábbi képernyőképen egy kifogástalanul felügyelt tartomány látható, valamint az utolsó biztonsági mentés és az Azure AD szinkronizálás állapota:
+1. Az Azure AD DS erőforrás ablak bal oldalán válassza az **állapot** lehetőséget. Az alábbi képernyőképen egy kifogástalanul felügyelt tartomány látható, valamint az utolsó biztonsági mentés és az Azure AD szinkronizálás állapota:
 
     ![A Azure Active Directory Domain Services állapotot megjelenítő Azure Portal állapot oldalának áttekintése](./media/check-health/health-page.png)
 
@@ -47,7 +47,7 @@ A jobb felső sarokban a felügyelt tartomány általános állapota látható. 
 
 ## <a name="understand-monitors-and-alerts"></a>A figyelők és a riasztások ismertetése
 
-A felügyelt tartomány állapota két típusú információt jelenít meg – *figyelők*és *riasztások*. A figyelők megjelenítik az alapvető háttér-feladatok befejezésének időpontját. A riasztások a felügyelt tartomány stabilitásának javításához nyújtanak információt vagy javaslatokat.
+A felügyelt tartomány állapota két típusú információt jelenít meg – *figyelők* és *riasztások*. A figyelők megjelenítik az alapvető háttér-feladatok befejezésének időpontját. A riasztások a felügyelt tartomány stabilitásának javításához nyújtanak információt vagy javaslatokat.
 
 ### <a name="monitors"></a>Monitorozások
 
@@ -80,7 +80,7 @@ Az állapot riasztásai a következő súlyossági szintekre vannak kategorizál
  * A **figyelmeztető riasztások** értesítik a felügyelt tartományi műveletekkel kapcsolatos problémákról, ha a probléma továbbra is fennáll. Ezek a riasztások a felügyelt tartomány biztonságossá tételére vonatkozó javaslatokat is kínálnak.
  * Az **tájékoztató riasztások** olyan értesítések, amelyek negatív hatással vannak a felügyelt tartományra. Az tájékoztató riasztások betekintést nyújtanak a felügyelt tartományba tartozó adatokra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az állapot lapon megjelenő riasztásokkal kapcsolatos további információkért lásd: [riasztások feloldása a felügyelt tartományon][troubleshoot-alerts]
 

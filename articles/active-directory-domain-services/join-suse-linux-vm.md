@@ -2,20 +2,20 @@
 title: SLE-es virtuális gép csatlakoztatása Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhat és csatlakozhat egy SUSE Linux Enterprise rendszerű virtuális géphez egy Azure AD Domain Services felügyelt tartományhoz.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.author: joflore
-ms.openlocfilehash: 607d3bc8eca3bd969f0f47ca95923040fb22591e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.author: justinha
+ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275867"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619606"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>SUSE Linux Enterprise rendszerű virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -87,23 +87,23 @@ A felügyelt tartomány **SSSD** és a YaST *felhasználói bejelentkezés kezel
 
 1. Ha később szeretné használni a DNS automatikus észlelését, konfigurálja a felügyelt tartomány IP-címeit (a *Active Directory-kiszolgálót*) az ügyfél neveként.
 
-    A YaST területen válassza a **System > hálózati beállítások**elemet.
+    A YaST területen válassza a **System > hálózati beállítások** elemet.
 
-1. Válassza ki a *hostname/DNS* fület, majd adja meg a felügyelt tartomány IP-címeit a (z) *1. kiszolgáló neve*mezőbe. Ezek az IP-címek a felügyelt tartomány Azure Portal *Tulajdonságok* ablakában jelennek meg, például a *10.0.2.4* és a *végpontjául szolgáló*.
+1. Válassza ki a *hostname/DNS* fület, majd adja meg a felügyelt tartomány IP-címeit a (z) *1. kiszolgáló neve* mezőbe. Ezek az IP-címek a felügyelt tartomány Azure Portal *Tulajdonságok* ablakában jelennek meg, például a *10.0.2.4* és a *végpontjául szolgáló*.
 
     Adja hozzá saját felügyelt tartománya IP-címeit, majd kattintson **az OK gombra**.
 
-1. A YaST főablakában válassza a *Network Services*  >  *felhasználói bejelentkezés kezelése*lehetőséget.
+1. A YaST főablakában válassza a *Network Services*  >  *felhasználói bejelentkezés kezelése* lehetőséget.
 
     A modul egy olyan áttekintéssel nyílik meg, amely a számítógép különböző hálózati tulajdonságait és a jelenleg használatban lévő hitelesítési módszert mutatja be, ahogyan az a következő képernyőképen látható:
 
     ![Példa a YaST felhasználói bejelentkezés kezelése ablakának képernyőképére](./media/join-suse-linux-vm/overview-window.png)
 
-    A Szerkesztés megkezdéséhez válassza a **beállítások módosítása**lehetőséget.
+    A Szerkesztés megkezdéséhez válassza a **beállítások módosítása** lehetőséget.
 
 Ha a virtuális gépet a felügyelt tartományhoz szeretné csatlakoztatni, hajtsa végre a következő lépéseket:
 
-1. A párbeszédpanelen válassza a **tartomány hozzáadása**elemet.
+1. A párbeszédpanelen válassza a **tartomány hozzáadása** elemet.
 
 1. Adja meg a helyes *tartománynevet*(például *aaddscontoso.com*), majd adja meg az identitási adatokhoz és a hitelesítéshez használandó szolgáltatásokat. Mindkettőhöz válassza a *Microsoft Active Directory* lehetőséget.
 
@@ -127,23 +127,23 @@ Ha a virtuális gépet a felügyelt tartományhoz szeretné csatlakoztatni, hajt
 
 1. Megjelenik egy üzenet, amely megerősíti, hogy sikeresen bejelentkezett. A befejezéshez kattintson **az OK gombra**.
 
-Miután a virtuális gépet regisztrálta a felügyelt tartományba, konfigurálja az ügyfelet a *tartomány felhasználói bejelentkezésének kezelése*paranccsal, ahogy az a következő példában látható:
+Miután a virtuális gépet regisztrálta a felügyelt tartományba, konfigurálja az ügyfelet a *tartomány felhasználói bejelentkezésének kezelése* paranccsal, ahogy az a következő példában látható:
 
 ![Példa a tartomány felhasználói bejelentkezési ablakának kezelése a YaST-ben – képernyőkép](./media/join-suse-linux-vm/manage-domain-user-logon-window.png)
 
-1. A felügyelt tartomány által biztosított adatokat használó bejelentkezések engedélyezéséhez jelölje be a *tartomány felhasználói bejelentkezésének engedélyezése*jelölőnégyzetet.
+1. A felügyelt tartomány által biztosított adatokat használó bejelentkezések engedélyezéséhez jelölje be a *tartomány felhasználói bejelentkezésének engedélyezése* jelölőnégyzetet.
 
-1. Igény szerint a *tartomány adatforrásának engedélyezése*területen szükség szerint további adatforrásokat is megadhat a környezetéhez. Ezekkel a lehetőségekkel megadhatja, hogy mely felhasználók használhatják a **sudo** -t, vagy hogy mely hálózati meghajtók érhetők el.
+1. Igény szerint a *tartomány adatforrásának engedélyezése* területen szükség szerint további adatforrásokat is megadhat a környezetéhez. Ezekkel a lehetőségekkel megadhatja, hogy mely felhasználók használhatják a **sudo** -t, vagy hogy mely hálózati meghajtók érhetők el.
 
-1. Ha engedélyezni szeretné, hogy a felügyelt tartomány felhasználói rendelkezzenek a virtuális gépen lévő otthoni könyvtárakkal, jelölje be a *Kezdőlap könyvtárak létrehozása*jelölőnégyzetet.
+1. Ha engedélyezni szeretné, hogy a felügyelt tartomány felhasználói rendelkezzenek a virtuális gépen lévő otthoni könyvtárakkal, jelölje be a *Kezdőlap könyvtárak létrehozása* jelölőnégyzetet.
 
-1. Az oldalsó sávban válassza a **szolgáltatási beállítások > név kapcsoló**, majd a *kiterjesztett beállítások*elemet. Ebből az ablakból válassza a *fallback_homedir* vagy a *override_homedir*lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+1. Az oldalsó sávban válassza a **szolgáltatási beállítások > név kapcsoló**, majd a *kiterjesztett beállítások* elemet. Ebből az ablakból válassza a *fallback_homedir* vagy a *override_homedir* lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
 1. A kezdőkönyvtár helyének értékét kell megadnia. Ha szeretné, hogy a kezdőkönyvtár */home/user_name*, használja a */Home/%u*. További információ a lehetséges változókról: sssd. conf Man Page ( `man 5 sssd.conf` ), szakasz *override_homedir*.
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
-1. A módosítások mentéséhez kattintson **az OK gombra**. Ezután győződjön meg arról, hogy a megjelenített értékek helyesek. A párbeszédpanel elhagyásához válassza a **Mégse**lehetőséget.
+1. A módosítások mentéséhez válassza az **OK** gombot. Ezután győződjön meg arról, hogy a megjelenített értékek helyesek. A párbeszédpanel elhagyásához válassza a **Mégse** lehetőséget.
 
 1. Ha a SSSD és a winbind párhuzamosan kívánja futtatni (például a SSSD-on keresztüli csatlakozáshoz, majd egy Samba-fájlkiszolgáló futtatásához), akkor a rendszer az SMB. conf-ban a "Samba" *Kerberos-módszert* kell beállítania az " *keytab kiterjesztésű* " értékre. Az SSSD *ad_update_samba_machine_account_password* kapcsolót a SSSD. conf fájlban is *igaz* értékre kell állítani. Ezekkel a beállításokkal megakadályozható, hogy a rendszer keytab kiterjesztésű a szinkronizálást.
 
@@ -151,21 +151,21 @@ Miután a virtuális gépet regisztrálta a felügyelt tartományba, konfigurál
 
 A felügyelt tartomány a **winbind** és a YaST *Windows-tartomány tagsági* moduljának használatával való csatlakoztatásához hajtsa végre a következő lépéseket:
 
-1. A YaST területen válassza a **Network Services > Windows-tartomány tagság**lehetőséget.
+1. A YaST területen válassza a **Network Services > Windows-tartomány tagság** lehetőséget.
 
-1. Adja meg a tartományhoz *vagy munkacsoporthoz* való csatlakozáshoz használandó tartományt a *Windows-tartomány tagsági* képernyőjén. Adja meg a felügyelt tartománynevet, például a *aaddscontoso.com*nevet.
+1. Adja meg a tartományhoz *vagy munkacsoporthoz* való csatlakozáshoz használandó tartományt a *Windows-tartomány tagsági* képernyőjén. Adja meg a felügyelt tartománynevet, például a *aaddscontoso.com* nevet.
 
     ![Példa a YaST Windows-tartomány tagsági ablakának képernyőképére](./media/join-suse-linux-vm/samba-client-window.png)
 
-1. Az SMB-forrás Linux-hitelesítéshez való használatához használja az *SMB-információk használata Linux-hitelesítéshez*beállítást.
+1. Az SMB-forrás Linux-hitelesítéshez való használatához használja az *SMB-információk használata Linux-hitelesítéshez* beállítást.
 
-1. A virtuális gépen lévő felügyelt tartományi felhasználók számára a helyi kezdőkönyvtár automatikus létrehozásához a *bejelentkezéshez a kezdőkönyvtár létrehozása*lehetőséget kell bejelölni.
+1. A virtuális gépen lévő felügyelt tartományi felhasználók számára a helyi kezdőkönyvtár automatikus létrehozásához a *bejelentkezéshez a kezdőkönyvtár létrehozása* lehetőséget kell bejelölni.
 
 1. Ha a felügyelt tartomány átmenetileg nem érhető el, akkor ellenőrizze az *offline hitelesítés* beállítását, hogy a tartomány felhasználói bejelentkezzenek-e.
 
-1. Ha módosítani szeretné a Samba-felhasználók és-csoportok UID-és GID-tartományait, válassza a *szakértői beállítások*lehetőséget.
+1. Ha módosítani szeretné a Samba-felhasználók és-csoportok UID-és GID-tartományait, válassza a *szakértői beállítások* lehetőséget.
 
-1. Konfigurálja a hálózati idő protokoll (NTP) időszinkronizálását a felügyelt tartományhoz az *NTP-konfiguráció*kiválasztásával. Adja meg a felügyelt tartomány IP-címeit. Ezek az IP-címek a felügyelt tartomány Azure Portal *Tulajdonságok* ablakában jelennek meg, például a *10.0.2.4* és a *végpontjául szolgáló*.
+1. Konfigurálja a hálózati idő protokoll (NTP) időszinkronizálását a felügyelt tartományhoz az *NTP-konfiguráció* kiválasztásával. Adja meg a felügyelt tartomány IP-címeit. Ezek az IP-címek a felügyelt tartomány Azure Portal *Tulajdonságok* ablakában jelennek meg, például a *10.0.2.4* és a *végpontjául szolgáló*.
 
 1. Kattintson az **OK gombra** , és erősítse meg a tartományhoz való csatlakozást, ha a rendszer erre kéri.
 
@@ -177,7 +177,7 @@ A felügyelt tartományhoz való csatlakozást követően bejelentkezhet a munka
 
 ## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-yast-command-line-interface"></a>Virtuális gép csatlakoztatása a felügyelt tartományhoz a winbind használatával a YaST parancssori felületéről
 
-A felügyelt tartomány csatlakoztatása a **winbind** és a *YaST parancssori felület*használatával:
+A felügyelt tartomány csatlakoztatása a **winbind** és a *YaST parancssori felület* használatával:
 
 * Csatlakozás a tartományhoz:
 
@@ -187,7 +187,7 @@ A felügyelt tartomány csatlakoztatása a **winbind** és a *YaST parancssori f
 
 ## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-terminal"></a>Virtuális gép csatlakoztatása a felügyelt tartományhoz a winbind használatával a terminálról
 
-A felügyelt tartomány csatlakoztatása a **winbind** és a * `samba net` parancs*használatával:
+A felügyelt tartomány csatlakoztatása a **winbind** és a *`samba net` parancs* használatával:
 
 1. A Kerberos-ügyfél és a Samba-winbind telepítése:
 
@@ -306,7 +306,7 @@ Alapértelmezés szerint a felhasználók csak az SSH nyilvános kulcs-alapú hi
     sudo vi /etc/ssh/sshd_config
     ```
 
-1. A *PasswordAuthentication* vonalának frissítése *Igen*értékre:
+1. A *PasswordAuthentication* vonalának frissítése *Igen* értékre:
 
     ```console
     PasswordAuthentication yes
@@ -371,7 +371,7 @@ Annak ellenőrzéséhez, hogy a virtuális gép sikeresen csatlakozott-e a felü
     sudo zypper update
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha problémába ütközik a virtuális gép a felügyelt tartományhoz való csatlakoztatásával vagy egy tartományi fiókkal való bejelentkezéssel, tekintse meg a [tartományhoz való csatlakozással kapcsolatos problémák elhárítása](join-windows-vm.md#troubleshoot-domain-join-issues)
 

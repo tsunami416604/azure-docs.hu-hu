@@ -2,7 +2,7 @@
 title: Szervezeti egység (OU) létrehozása a Azure AD Domain Servicesban | Microsoft Docs "
 description: Megtudhatja, hogyan hozhat létre és kezelhet egyéni szervezeti egységeket Azure AD Domain Services felügyelt tartományokban.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: df8d32fb38d9ea6750ef47651e4f660428fd1fbe
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: fbdfcc23553a27aaa4d7bbd4bff9c4f33cb8fd19
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961000"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620018"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>Szervezeti egység (OU) létrehozása Azure Active Directory Domain Services felügyelt tartományban
 
@@ -67,13 +67,13 @@ Egyéni szervezeti egység létrehozásához a Active Directory felügyeleti esz
 > Ha egyéni szervezeti egységet szeretne létrehozni egy felügyelt tartományban, be kell jelentkeznie egy olyan felhasználói fiókba, amely az *HRE DC-rendszergazdák* csoport tagja.
 
 1. Jelentkezzen be a felügyeleti virtuális gépre. A Azure Portal használatával történő kapcsolódás lépéseiért lásd: [Kapcsolódás Windows Server rendszerű virtuális géphez][connect-windows-server-vm].
-1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik a rendelkezésre álló felügyeleti eszközök listája, amely az oktatóanyagban a [felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm]lett telepítve.
+1. A kezdőképernyőn válassza a **felügyeleti eszközök** elemet. Megjelenik a rendelkezésre álló felügyeleti eszközök listája, amely az oktatóanyagban a [felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm]lett telepítve.
 1. A szervezeti egységek létrehozásához és kezeléséhez válassza ki a **Active Directory felügyeleti központ** elemet a felügyeleti eszközök listájából.
 1. A bal oldali ablaktáblán válassza ki a felügyelt tartományt, például *aaddscontoso.com*. Megjelenik a meglévő szervezeti egységek és erőforrások listája:
 
     ![Válassza ki a felügyelt tartományt a Active Directory felügyeleti központ](./media/create-ou/create-ou-adac-overview.png)
 
-1. A **feladatok** ablaktábla a Active Directory felügyeleti központ jobb oldalán jelenik meg. A tartomány alatt, például a *aaddscontoso.com*területen válassza az **új > szervezeti egység**lehetőséget.
+1. A **feladatok** ablaktábla a Active Directory felügyeleti központ jobb oldalán jelenik meg. A tartomány alatt, például a *aaddscontoso.com* területen válassza az **új > szervezeti egység** lehetőséget.
 
     ![Válassza ki az új szervezeti egység létrehozásához szükséges lehetőséget a Active Directory felügyeleti központ](./media/create-ou/create-ou-adac-new-ou.png)
 
@@ -85,7 +85,7 @@ Egyéni szervezeti egység létrehozásához a Active Directory felügyeleti esz
 
     ![A Active Directory felügyeleti központ használható egyéni szervezeti egység](./media/create-ou/create-ou-done.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyeleti eszközök használatával, illetve a szolgáltatásfiókok létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

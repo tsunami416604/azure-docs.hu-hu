@@ -2,20 +2,20 @@
 title: A virtuális gépek biztonságos elérésének biztosítása a Azure AD Domain Servicesban | Microsoft Docs
 description: Megtudhatja, hogyan biztonságossá teheti a virtuális gépek távoli elérését a hálózati házirend-kiszolgáló (NPS) és az Azure AD Multi-Factor Authentication használatával, egy Azure Active Directory Domain Services felügyelt tartományban lévő Távoli asztali szolgáltatások-telepítéssel.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: a08b5bf4fb575f0cd2098b3ef180860bb8fbd6e0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.author: justinha
+ms.openlocfilehash: f0605cbd81d8131014a1f6a6bf30e3db0ce9aa90
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840236"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618926"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Biztonságos távoli hozzáférés a Azure Active Directory Domain Services virtuális gépekhez
 
@@ -99,7 +99,7 @@ A felügyelt tartományhoz való integráláshoz a következő további konfigur
 
 A rendszer a bejelentkezéskor további hitelesítési tényezőt kér a felhasználóktól, például szöveges üzenetben vagy Rákérdezés a Microsoft Authenticator alkalmazásban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az üzembe helyezés rugalmasságának javításáról: [Távoli asztali szolgáltatások magas rendelkezésre állású][rds-high-availability].
 

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jlian
-ms.openlocfilehash: ddb89f60c9fe380012c299afaafb6046bf6849c9
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f4438aebcb81d665a19a595ac7ade4fea27fc43f
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602750"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621008"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Transport Layer Security (TLS) támogatása IoT Hub
 
@@ -22,7 +22,7 @@ A TLS 1,0 és a 1,1 örökölt, és elavultnak számít. További információ: 
 
 ## <a name="iot-hubs-server-tls-certificate"></a>IoT Hub kiszolgáló TLS-tanúsítványa
 
-A TLS-kézfogás során a IoT Hub RSA-kulcsokkal rendelkező kiszolgálói tanúsítványokat jelenít meg az ügyfelek csatlakoztatásához. A gyökér a Baltimore CyberTrust legfelső szintű HITELESÍTÉSSZOLGÁLTATÓja. A közelmúltban módosult a kibocsátók új köztes hitelesítésszolgáltatók (nemzetközi árumegállapodások vagy). További információ: [IOT hub TLS-tanúsítvány frissítése](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/)
+A TLS-kézfogás során a IoT Hub RSA-kulcsokkal rendelkező kiszolgálói tanúsítványokat jelenít meg az ügyfelek csatlakoztatásához. A gyökér a Baltimore CyberTrust legfelső szintű HITELESÍTÉSSZOLGÁLTATÓja. A közelmúltban a TLS-kiszolgáló tanúsítványának módosítását is bevezetjük, hogy az új köztes hitelesítésszolgáltatók (ICA) számára legyen kiállítva. További információ: [IOT hub TLS-tanúsítvány frissítése](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/).
 
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>Elliptikus görbe titkosítási (ECC-) kiszolgáló TLS-tanúsítványa (előzetes verzió)
 
@@ -31,7 +31,7 @@ IoT Hub ECC-kiszolgáló TLS-tanúsítványa elérhető nyilvános előzetes ver
 IoT Hub ECC-kiszolgálói tanúsítványának előnézete:
 
 1. [Hozzon létre egy új IoT hubot előzetes módban](iot-hub-preview-mode.md).
-1. [Konfigurálja úgy az ügyfelet](#tls-configuration-for-sdk-and-iot-edge) , hogy *csak* ECDSA titkosítási csomagokat tartalmazzon, és *kizárjon* minden RSA-t. Ezek az ECC-tanúsítvány nyilvános előzetes verziójának titkosítási csomagjai:
+1. [Konfigurálja úgy az ügyfelet](#tls-configuration-for-sdk-and-iot-edge) , hogy *csak* ECDSA titkosítási csomagokat tartalmazzon, és *kizárjon* minden RSA-t. Ezek a támogatott titkosítási csomagok az ECC-tanúsítvány nyilvános előzetes verziójához:
     - `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
     - `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
     - `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`
@@ -112,7 +112,7 @@ Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett tit
 
 | Nyelv | A TLS 1,2-et támogató verziók | Dokumentáció |
 |----------|------------------------------------|---------------|
-| C        | 2019-12-11 vagy újabb címke            | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
+| C#        | 2019-12-11 vagy újabb címke            | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
 | Python   | 2.0.0 vagy újabb verzió             | [Hivatkozás](https://aka.ms/Tls_Python_SDK_IoT) |
 | C#       | 1.21.4 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_CSharp_SDK_IoT) |
 | Java     | 1.19.0 vagy újabb verzió            | [Hivatkozás](https://aka.ms/Tls_Java_SDK_IoT) |
@@ -133,7 +133,7 @@ Ezzel a szolgáltatással adhatja meg, hogy a rendszer legfeljebb az alapértelm
 A nyilvános előzetes verzióhoz tartozó hivatalos SDK-támogatás még nem érhető el. Első lépések
 
 1. [Hozzon létre egy új IoT hubot előzetes módban](iot-hub-preview-mode.md).
-1. Konfigurálja úgy az ügyfelet, hogy az `SSL_CTX_set_tlsext_max_fragment_length` alábbi értékek egyikére legyen beállítva: 2 ^ 9, 2 ^ 10, 2 ^ 11 és 2 ^ 12.
+1. Az OpenSSL használatakor hívja meg a [SSL_CTX_set_tlsext_max_fragment_lengtht](https://manpages.debian.org/testing/libssl-doc/SSL_CTX_set_max_send_fragment.3ssl.en.html) a töredék méretének megadásához.
 1. Kapcsolja össze az ügyfelet az előzetes verzió IoT Hubával.
 
 ## <a name="next-steps"></a>További lépések

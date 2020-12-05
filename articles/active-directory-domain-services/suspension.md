@@ -2,7 +2,7 @@
 title: Felfüggesztett tartományok a Azure AD Domain Servicesban | Microsoft Docs
 description: Ismerkedjen meg az Azure AD DS felügyelt tartományának különböző állapotával és a felfüggesztett tartomány visszaállításával.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 9bcecdfaf3121ea024fee567dbe83544229373be
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: b0b48e7ad494386052e6d94c32d7215b3f4f0202
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967698"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618824"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Az állapot megismerése és a felfüggesztett tartományok feloldása Azure Active Directory Domain Services
 
@@ -54,7 +54,7 @@ Egy vagy több kijavítani kívánt problémával rendelkező felügyelt tartom�
 
 Egyes riasztások átmenetiek, és az Azure platform automatikusan feloldja őket. Más riasztások esetén a probléma megoldásához kövesse a megadott megoldási lépéseket. Kritikus riasztásra van lehetőség, és további hibaelhárítási segítségért [Nyisson meg egy Azure-támogatási kérést][azure-support] .
 
-A riasztások egyik példája, ha van egy korlátozó hálózati biztonsági csoport. Ebben a konfigurációban előfordulhat, hogy az Azure platform nem tudja frissíteni és figyelni a felügyelt tartományt. A rendszer riasztást hoz létre, és az állapotnak *figyelmet kell*fordítania.
+A riasztások egyik példája, ha van egy korlátozó hálózati biztonsági csoport. Ebben a konfigurációban előfordulhat, hogy az Azure platform nem tudja frissíteni és figyelni a felügyelt tartományt. A rendszer riasztást hoz létre, és az állapotnak *figyelmet kell* fordítania.
 
 További információ: Hogyan lehet [elhárítani a riasztásokat egy felügyelt tartományon][resolve-alerts].
 
@@ -91,14 +91,14 @@ Ha egy felügyelt tartomány *felfüggesztett* állapotban van, a következő vi
 
 ### <a name="how-do-you-know-if-your-managed-domain-is-suspended"></a>Honnan tudhatja, hogy a felügyelt tartomány fel van-e függesztve?
 
-A rendszer felfüggeszti a tartományt felfüggesztett Azure Portal Azure AD DS Health (állapot) lapján található [riasztást][resolve-alerts] . A tartomány állapota a *felfüggesztett*állapotot is megjeleníti.
+A rendszer felfüggeszti a tartományt felfüggesztett Azure Portal Azure AD DS Health (állapot) lapján található [riasztást][resolve-alerts] . A tartomány állapota a *felfüggesztett* állapotot is megjeleníti.
 
 ### <a name="restore-a-suspended-domain"></a>Felfüggesztett tartomány visszaállítása
 
 A *felfüggesztett* állapotú felügyelt tartomány állapotának visszaállításához hajtsa végre a következő lépéseket:
 
-1. A Azure Portal keresse meg és válassza ki a **tartományi szolgáltatások**elemet.
-1. Válassza ki a felügyelt tartományt a listából, például *aaddscontoso.com*, majd válassza az **állapot**lehetőséget.
+1. A Azure Portal keresse meg és válassza ki a **tartományi szolgáltatások** elemet.
+1. Válassza ki a felügyelt tartományt a listából, például *aaddscontoso.com*, majd válassza az **állapot** lehetőséget.
 1. Válassza ki a riasztást, például *AADDS503* vagy *AADDS504*, a felfüggesztés okának megfelelően.
 1. Válassza ki a riasztásban megadott feloldási hivatkozást, és kövesse a lépéseket a megoldásához.
 
@@ -118,7 +118,7 @@ Ha egy felügyelt tartomány belép a *törölt* állapotba, a következő visel
 * A felügyelt tartomány nem állítható vissza. Az Azure AD DS újrafelhasználásához létre kell hoznia egy helyettesítő felügyelt tartományt.
 * A törlése után a rendszer nem számláz a felügyelt tartományhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyelt tartomány Kifogástalan állapotba állításához és a felfüggesztése kockázatának csökkentéséhez Ismerje meg a [felügyelt tartományhoz tartozó riasztások feloldását][resolve-alerts].
 

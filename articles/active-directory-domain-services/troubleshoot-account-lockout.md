@@ -2,20 +2,20 @@
 title: A fiók zárolásának hibáinak megoldása a Azure AD Domain Servicesban | Microsoft Docs
 description: Megtudhatja, hogyan lehet elhárítani a felhasználói fiókokat a Azure Active Directory Domain Servicesban kizárni kívánt gyakori problémákat.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 340811ee1c518cdccb5bbb0ae9b5f215f5564cfa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 7967347fa63c657ba6211328bdd1d55512358521
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967613"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618773"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartománnyal kapcsolatos fiókzárolási problémák elhárítása
 
@@ -56,7 +56,7 @@ A fiókok zárolásának leggyakoribb okai a kártékony szándékok vagy ténye
 
 Az [Azure AD DS biztonsági naplózásának engedélyezésével][security-audit-events]elháríthatja a fiókzárolási események bekövetkezésekor felmerülő problémákat. A naplózási események csak a szolgáltatás engedélyezésének időpontjában vannak rögzítve. Ideális esetben a biztonsági naplózást is engedélyeznie kell, *mielőtt* probléma merül fel a hibakeresés során. Ha egy felhasználói fióknak többször is van zárolási problémája, akkor a következő esetekben engedélyezheti a biztonsági naplózást.
 
-A biztonsági naplózás engedélyezése után az alábbi példák bemutatják, hogyan tekintheti át a fiókzárolási *eseményeket*, a *4740*kódot.
+A biztonsági naplózás engedélyezése után az alábbi példák bemutatják, hogyan tekintheti át a fiókzárolási *eseményeket*, a *4740* kódot.
 
 Az összes fiókzárolási esemény megtekintése az elmúlt hét napban:
 
@@ -66,7 +66,7 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 ```
 
-A *driley*nevű fiók utolsó hét napjához tartozó összes fiókzárolási esemény megtekintése.
+A *driley* nevű fiók utolsó hét napjához tartozó összes fiókzárolási esemény megtekintése.
 
 ```Kusto
 AADDomainServicesAccountLogon
@@ -84,7 +84,7 @@ AADDomainServicesAccountManagement
 | sort by TimeGenerated asc
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fiókzárolási küszöbértékek beállítására szolgáló részletes jelszóházirendek részletes ismertetését lásd: [jelszó-és fiókzárolási házirendek konfigurálása][configure-fgpp].
 

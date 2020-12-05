@@ -2,7 +2,7 @@
 title: A Azure AD Domain Services biztonsági naplózásának engedélyezése | Microsoft Docs
 description: Megtudhatja, hogyan engedélyezheti a biztonsági naplózást az elemzési és riasztási események naplózásának központosításához Azure AD Domain Services
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: b4fb5c1dcb2bb34b472c2a3eda88ca4c219303d0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: 13bdc8797af8facaa73d3e43ecfbe504a6bd1dc2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175168"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618875"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése
 
@@ -36,7 +36,7 @@ Az alábbi táblázat az egyes forrásokhoz tartozó erőforrás-típusokra vona
 > [!IMPORTANT]
 > Az Azure AD DS biztonsági naplózás engedélyezése előtt létre kell hoznia a cél-erőforrást. Ezeket az erőforrásokat a Azure Portal, Azure PowerShell vagy az Azure CLI használatával hozhatja létre.
 
-| Cél erőforrás | Használati eset |
+| Cél erőforrás | Használati példa |
 |:---|:---|
 |Azure Storage| Ezt a célt akkor kell használni, ha elsődlegesen a biztonsági naplózási események archiválási célból történő tárolására van szükség. Más célok archiválási célokra is használhatók, azonban ezek a célok az archiválás elsődleges igényén felüli képességeket biztosítanak. <br /><br />Mielőtt engedélyezi az Azure AD DS biztonsági naplózási eseményeit, először [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md).|
 |Azure Event Hubs| Ezt a célt akkor érdemes használni, ha az elsődlegesen a biztonsági naplózási események megosztására van szükség további szoftverekkel, például az adatelemzési szoftverekkel vagy a biztonsági információkkal & az Event Management (SIEM) szoftverrel.<br /><br />Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy Event hub-t a Azure Portal használatával](../event-hubs/event-hubs-create.md)|
@@ -245,7 +245,7 @@ A következő naplózási események kategóriák érhetők el:
 |Biztonsági jogosultságok használata|4985|
 |Rendszerbiztonság|4612, 4621|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Kusto kapcsolatos konkrét információk a következő cikkekben találhatók:
 

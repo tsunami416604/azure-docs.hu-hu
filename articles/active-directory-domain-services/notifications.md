@@ -2,7 +2,7 @@
 title: E-mail-értesítések a Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhatja az e-mail-értesítéseket egy Azure Active Directory Domain Services felügyelt tartomány problémáinak riasztására
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: c273b1a6c497ec8dcb8c5bc5f50ccfccc9fce155
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 4242092af86f8bc06ef9c9eba068ce07725de01f
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968017"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619164"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>E-mail-értesítések konfigurálása a Azure Active Directory Domain Services kapcsolatos problémákhoz
 
@@ -57,9 +57,9 @@ Azt is megteheti, hogy az Azure AD-címtár minden *globális rendszergazdája* 
 
 A meglévő e-mailes értesítés címzettjeinek áttekintéséhez vagy további címzettek hozzáadásához hajtsa végre a következő lépéseket:
 
-1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services**lehetőséget.
+1. A Azure Portal keresse meg és válassza a **Azure ad Domain Services** lehetőséget.
 1. Válassza ki a felügyelt tartományt, például *aaddscontoso.com*.
-1. Az Azure AD DS erőforrás ablak bal oldalán válassza az **értesítési beállítások**lehetőséget. Az e-mail értesítések meglévő címzettjei jelennek meg.
+1. Az Azure AD DS erőforrás ablak bal oldalán válassza az **értesítési beállítások** lehetőséget. Az e-mail értesítések meglévő címzettjei jelennek meg.
 1. E-mail címzett hozzáadásához írja be az e-mail-címet a további címzettek táblába.
 1. Ha elkészült, válassza a **Mentés** lehetőséget a felső navigációs sávon.
 
@@ -80,7 +80,7 @@ Ha nem tud hozzáférni a Azure Portal értesítési beállítások lapjához, n
 
 Ellenőrizze az e-mailben küldött levélszemét-vagy Levélszemét-mappát az értesítéshez, és győződjön meg arról, hogy a küldője engedélyezte a következőt: `azure-noreply@microsoft.com` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A jelentett problémák némelyikével kapcsolatos további információkért lásd: [riasztások feloldása felügyelt tartományon][troubleshoot-alerts].
 

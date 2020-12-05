@@ -5,15 +5,15 @@ description: Ez a cikk áttekintést nyújt a webalkalmazási tűzfalról (WAF) 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 09/16/2020
+ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: f15a739904c28361a60210a0cc4606c7048d0f53
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 36f04b02774a01814811ea131388629de27e9f07
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518974"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621025"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Mi az Azure webalkalmazási tűzfal az Azure Application Gateway?
 
@@ -57,7 +57,7 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 
 * Egyéni szabályok létrehozása az alkalmazás igényeinek megfelelően
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 - SQL-befecskendezéses védelem.
 - Helyek közötti parancsfájlok elleni védelem.
@@ -143,7 +143,7 @@ A anomália pontozási módban a szabályoknak megfelelő forgalom nem lesz azon
 Az anomália pontszáma 5 küszöbértéket mutat a forgalom blokkolásához. Tehát egy *kritikus* szabály egyezése elegendő ahhoz, hogy a Application Gateway WAF egy kérést, még megelőzési módban is. Egy *Figyelmeztetési* szabály azonban csak az anomália pontszám 3 értékkel nő, ami önmagában nem elegendő a forgalom blokkolásához.
 
 > [!NOTE]
-> Az a naplózott üzenet, amikor egy WAF-szabály megfelel a forgalomnak, tartalmazza a "Letiltva" műveleti értéket. A forgalom azonban valójában csak 5 vagy magasabb anomália esetén van letiltva.  
+> Az a naplózott üzenet, amikor egy WAF-szabály megfelel a forgalomnak, tartalmazza a "Letiltva" műveleti értéket. A forgalom azonban valójában csak 5 vagy magasabb anomália esetén van letiltva. További információ: [Az Azure Application Gateway webalkalmazási tűzfal (WAF) hibáinak megoldása](web-application-firewall-troubleshoot.md#understanding-waf-logs). 
 
 ### <a name="waf-monitoring"></a>WAF-figyelés
 

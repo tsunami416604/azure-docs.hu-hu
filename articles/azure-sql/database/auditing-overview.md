@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b09eb03994098f8cb68033f3c42309a77e15f91c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372727"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620991"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>A Azure SQL Database és az Azure szinapszis Analytics naplózása
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -54,17 +54,29 @@ Egy naplózási szabályzat definiálható egy adott adatbázishoz, vagy az Azur
 
 - A kiszolgálói házirend a kiszolgálón lévő összes meglévő és újonnan létrehozott adatbázisra vonatkozik.
 
-- Ha a *kiszolgáló naplózása engedélyezve van* , az *mindig az adatbázisra vonatkozik*. A rendszer naplózza az adatbázist, az adatbázis naplózási beállításaitól függetlenül.
+- Ha a *kiszolgáló naplózása engedélyezve van*, az *mindig az adatbázisra vonatkozik*. A rendszer naplózza az adatbázist, az adatbázis naplózási beállításaitól függetlenül.
 
 - Az adatbázis naplózásának engedélyezése a kiszolgálón való engedélyezésen kívül a nem bírálja felül vagy *nem* módosítja a kiszolgáló naplózásának beállításait. Mindkét naplózás egymás mellett fog létezni. Ez azt jelenti, hogy az adatbázist párhuzamosan, kétszer kell naplózni. egyszer a kiszolgálói házirend és egyszer az adatbázis-házirend alapján.
 
    > [!NOTE]
    > Ne engedélyezze egyszerre a kiszolgáló naplózási és az adatbázis-blob naplózását, kivéve, ha:
     >
-    > - Egy adott adatbázishoz másik *Storage-fiókot* , *megőrzési időtartamot* vagy *log Analytics munkaterületet* szeretne használni.
+    > - Egy adott adatbázishoz másik *Storage-fiókot*, *megőrzési időtartamot* vagy *log Analytics munkaterületet* szeretne használni.
     > - Egy adott adatbázishoz tartozó eseménytípus vagy kategóriák naplózására van szükség, amely eltér a kiszolgálón lévő többi adatbázistól. Előfordulhat például, hogy olyan táblákat szúr be, amelyeket csak egy adott adatbázisra kell naplózni.
    >
    > Ellenkező esetben javasoljuk, hogy csak a kiszolgálói szintű naplózást engedélyezze, és hagyja letiltani az adatbázis-szintű naplózást minden adatbázis esetében.
+
+#### <a name="remarks"></a>Megjegyzések
+
+- A naplók egy Azure Blob-tárolóban lévő Blobok **hozzáfűzésére** szolgálnak az Azure-előfizetésben
+- A naplók. xel formátumúak, és [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)használatával nyithatók meg.
+- Ha egy nem módosítható napló-tárolót szeretne konfigurálni a kiszolgáló vagy az adatbázis szintű naplózási eseményekhez, kövesse az [Azure Storage által biztosított utasításokat](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes). Győződjön meg arról, hogy a nem módosítható blob-tároló konfigurálásakor a **további Hozzáfűzések engedélyezése** jelölőnégyzet be van jelölve.
+- A naplókat egy VNet vagy tűzfal mögötti Azure Storage-fiókba is írhatja. A konkrét utasításokért lásd: [a VNet és a tűzfal mögötti Storage-fiókba való írás naplózása](audit-write-storage-account-behind-vnet-firewall.md).
+- A naplózási formátumra, a tárolási mappa hierarchiájának és az elnevezési konvenciók részleteiért tekintse meg a [blob naplózási napló formátumának referenciáját](./audit-log-format.md).
+- Az [írásvédett replikák](read-scale-out.md) naplózása automatikusan engedélyezve van. A tárolási mappák hierarchiájának, az elnevezési konvencióknak és a napló formátumának további részleteiért tekintse meg a [SQL Database a naplózási napló formátumát](audit-log-format.md).
+- Az Azure AD-hitelesítés használatakor a sikertelen bejelentkezések rekordjai *nem* jelennek meg az SQL-naplóban. A sikertelen bejelentkezési naplózási rekordok megtekintéséhez látogasson el a [Azure Active Directory portálra](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), amely az események adatait naplózza.
+- A bejelentkezéseket az átjáró irányítja ahhoz a konkrét példányhoz, ahol az adatbázis található.  A HRE-bejelentkezések esetében a hitelesítő adatok ellenőrzése megtörténik, mielőtt a felhasználóval bejelentkeznek a kért adatbázisba.  Meghibásodás esetén a kért adatbázis soha nem érhető el, ezért nem történik naplózás.  SQL-bejelentkezések esetén a hitelesítő adatokat a rendszer ellenőrzi a kért adatokon, így ebben az esetben naplózni lehet őket.  A sikeres bejelentkezések, amelyek nyilvánvalóan elérik az adatbázist, mindkét esetben naplózásra kerülnek.
+- A naplózási beállítások konfigurálása után bekapcsolhatja az új veszélyforrások észlelése funkciót, és konfigurálhatja az e-maileket a biztonsági riasztások fogadására. A veszélyforrások észlelése esetén a rendellenes adatbázis-tevékenységekkel kapcsolatos proaktív riasztásokat kap, amelyek potenciális biztonsági fenyegetéseket jelezhetnek. További információkért lásd: [a fenyegetések észlelésének első lépései](threat-detection-overview.md).
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>A kiszolgáló naplózásának beállítása
 
@@ -120,17 +132,6 @@ A naplók a Storage-fiókba való írásának konfigurálásához válassza a **
   - Ha a megőrzési időszakot 0 (korlátlan megőrzés) értékre módosítja bármely más értékre, vegye figyelembe, hogy az adatmegőrzés csak a megőrzési érték módosítását követően írt naplókra vonatkozik
 
   ![tárfiók](./media/auditing-overview/auditing_select_storage.png)
-
-#### <a name="remarks"></a>Megjegyzések
-
-- A naplók egy Azure Blob-tárolóban lévő Blobok **hozzáfűzésére** szolgálnak az Azure-előfizetésben
-- A naplók. xel formátumúak, és [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)használatával nyithatók meg.
-- Ha egy nem módosítható napló-tárolót szeretne konfigurálni a kiszolgáló vagy az adatbázis szintű naplózási eseményekhez, kövesse az [Azure Storage által biztosított utasításokat](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes). Győződjön meg arról, hogy a nem módosítható blob-tároló konfigurálásakor a **további Hozzáfűzések engedélyezése** jelölőnégyzet be van jelölve.
-- A naplókat egy VNet vagy tűzfal mögötti Azure Storage-fiókba is írhatja. A konkrét utasításokért lásd: [a VNet és a tűzfal mögötti Storage-fiókba való írás naplózása](audit-write-storage-account-behind-vnet-firewall.md).
-- A naplózási beállítások konfigurálása után bekapcsolhatja az új veszélyforrások észlelése funkciót, és konfigurálhatja az e-maileket a biztonsági riasztások fogadására. A veszélyforrások észlelése esetén a rendellenes adatbázis-tevékenységekkel kapcsolatos proaktív riasztásokat kap, amelyek potenciális biztonsági fenyegetéseket jelezhetnek. További információkért lásd: [a fenyegetések észlelésének első lépései](threat-detection-overview.md).
-- A naplózási formátumra, a tárolási mappa hierarchiájának és az elnevezési konvenciók részleteiért tekintse meg a [blob naplózási napló formátumának referenciáját](./audit-log-format.md).
-- Az Azure AD-hitelesítés használatakor a sikertelen bejelentkezések rekordjai *nem* jelennek meg az SQL-naplóban. A sikertelen bejelentkezési naplózási rekordok megtekintéséhez látogasson el a [Azure Active Directory portálra](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), amely az események adatait naplózza.
-- Az [írásvédett replikák](read-scale-out.md) naplózása automatikusan engedélyezve van. A tárolási mappák hierarchiájának, az elnevezési konvencióknak és a napló formátumának további részleteiért tekintse meg a [SQL Database a naplózási napló formátumát](audit-log-format.md).
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Naplózás Log Analytics célhelyre
   
@@ -221,9 +222,9 @@ Ha úgy döntött, hogy naplózza a naplókat egy Azure Storage-fiókba, a napl�
 
 A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást az elsődleges adatbázison, a másodlagos adatbázis azonos naplózási házirenddel fog rendelkezni. A naplózás a másodlagos adatbázison is beállítható úgy, hogy az elsődleges adatbázistól függetlenül engedélyezi a naplózást a **másodlagos kiszolgálón**.
 
-- Kiszolgáló szintű ( **ajánlott** ): a naplózás bekapcsolása mind az **elsődleges** , mind a **másodlagos kiszolgálón** – az elsődleges és másodlagos adatbázisok egymástól függetlenül lesznek naplózva a megfelelő kiszolgálói szintű házirend alapján.
+- Kiszolgáló szintű (**ajánlott**): a naplózás bekapcsolása mind az **elsődleges** , mind a **másodlagos kiszolgálón** – az elsődleges és másodlagos adatbázisok egymástól függetlenül lesznek naplózva a megfelelő kiszolgálói szintű házirend alapján.
 - Adatbázis szintje: a másodlagos adatbázisok adatbázis-szintű naplózása csak az elsődleges adatbázis naplózási beállításaiból állítható be.
-  - A naplózást engedélyezni kell az *elsődleges adatbázison* , nem pedig a kiszolgálón.
+  - A naplózást engedélyezni kell az *elsődleges adatbázison*, nem pedig a kiszolgálón.
   - Miután az elsődleges adatbázison engedélyezte a naplózást, a másodlagos adatbázison is engedélyezve lesz.
 
     > [!IMPORTANT]
@@ -246,7 +247,7 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 
-**PowerShell-parancsmagok (beleértve a további szűrések where záradékának támogatását)** :
+**PowerShell-parancsmagok (beleértve a további szűrések where záradékának támogatását)**:
 
 - [Adatbázis-naplózási szabályzat létrehozása vagy frissítése (set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
 - [Kiszolgáló naplózási szabályzatának létrehozása vagy frissítése (set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
@@ -259,7 +260,7 @@ A parancsfájlokra példa: a [naplózás és a veszélyforrások észlelésének
 
 ### <a name="using-rest-api"></a>A REST API használata
 
-**REST API** :
+**REST API**:
 
 - [Adatbázis-naplózási házirend létrehozása vagy frissítése](/rest/api/sql/database%20auditing%20settings/createorupdate)
 - [Kiszolgáló naplózási szabályzatának létrehozása vagy frissítése](/rest/api/sql/server%20auditing%20settings/createorupdate)

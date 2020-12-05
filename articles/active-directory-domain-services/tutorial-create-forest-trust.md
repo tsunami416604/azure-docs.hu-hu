@@ -2,20 +2,20 @@
 title: Oktatóanyag – erdőszintű megbízhatósági kapcsolat létrehozása a Azure AD Domain Servicesban | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre egyirányú kimenő erdőt helyszíni AD DS tartományba a Azure Portalban Azure AD Domain Services
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: cbdcd170e6c6fb768172acfe3eb3c907714cd560
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 0231689acef3345fb2b0f25170522d59552171ba
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967256"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618331"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Oktatóanyag: kimenő erdőszintű megbízhatósági kapcsolat létrehozása helyi tartományhoz Azure Active Directory Domain Services
 
@@ -23,7 +23,7 @@ Olyan környezetekben, ahol nem lehet szinkronizálni a jelszavakat, vagy ha oly
 
 ![Az Azure AD DS és a helyszíni AD DS közötti erdőszintű megbízhatóság diagramja](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A DNS konfigurálása helyszíni AD DS környezetben az Azure AD DS-kapcsolat támogatásához
@@ -88,9 +88,9 @@ A helyi AD DS tartomány bejövő megbízhatóságának konfigurálásához hajt
 1. Kattintson a jobb gombbal a tartomány, például a *onprem.contoso.com*, majd a **Tulajdonságok** elemre.
 1. Válassza a **Megbízhatóságok** lapot, majd az **új megbízhatóság** elemet.
 1. Adja meg az Azure AD DS tartománynév nevét, például *aaddscontoso.com*, majd kattintson a **tovább** gombra.
-1. Válassza az **erdőszintű megbízhatóság**létrehozása lehetőséget, majd hozzon létre egy **módszert: bejövő** megbízhatóság.
-1. Válassza **ezt a tartományt csak**a megbízhatósági kapcsolat létrehozásához. A következő lépésben létrehozza a megbízhatóságot a felügyelt tartomány Azure Portalban.
-1. Válassza az **erdőszintű hitelesítés**használata lehetőséget, majd adja meg és erősítse meg a megbízhatósági jelszót. Ugyanezt a jelszót is megadta a Azure Portal a következő szakaszban.
+1. Válassza az **erdőszintű megbízhatóság** létrehozása lehetőséget, majd hozzon létre egy **módszert: bejövő** megbízhatóság.
+1. Válassza **ezt a tartományt csak** a megbízhatósági kapcsolat létrehozásához. A következő lépésben létrehozza a megbízhatóságot a felügyelt tartomány Azure Portalban.
+1. Válassza az **erdőszintű hitelesítés** használata lehetőséget, majd adja meg és erősítse meg a megbízhatósági jelszót. Ugyanezt a jelszót is megadta a Azure Portal a következő szakaszban.
 1. Lépjen be a következő néhány Windows alapértelmezett beállításokkal, majd válassza a nem lehetőséget **, ne erősítse meg a kimenő megbízhatóságot**.
 1. Válassza a **Befejezés** lehetőséget
 
@@ -100,8 +100,8 @@ A felügyelt tartomány feloldásához konfigurált helyszíni AD DS tartománny
 
 A Azure Portal felügyelt tartomány kimenő megbízhatóságának létrehozásához hajtsa végre a következő lépéseket:
 
-1. A Azure Portal keresse meg és válassza ki a **Azure ad Domain Services**elemet, majd válassza ki a felügyelt tartományt, például *aaddscontoso.com*
-1. A felügyelt tartomány bal oldali menüjében válassza a **Megbízhatóságok**lehetőséget, majd válassza a **+ megbízhatóság hozzáadása** lehetőséget.
+1. A Azure Portal keresse meg és válassza ki a **Azure ad Domain Services** elemet, majd válassza ki a felügyelt tartományt, például *aaddscontoso.com*
+1. A felügyelt tartomány bal oldali menüjében válassza a **Megbízhatóságok** lehetőséget, majd válassza a **+ megbízhatóság hozzáadása** lehetőséget.
 
    > [!NOTE]
    > Ha nem látja a **megbízhatósági kapcsolatok** menüt, ellenőrizze a **Tulajdonságok** területen az *erdő típusát*. Csak az *erőforrás* -erdők hozhatnak létre megbízhatósági kapcsolatokat. Ha az erdő típusa *felhasználó*, nem hozhat létre megbízhatósági kapcsolatot. Jelenleg nincs lehetőség a felügyelt tartomány erdő-típusának módosítására. Törölnie kell, majd újra létre kell hoznia a felügyelt tartományt erőforrás-erdőként.
@@ -154,17 +154,17 @@ Az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtu
 
 1. Nyissa meg a **Windows-beállításokat**, majd keresse meg és válassza ki a **hálózati és megosztási központot**.
 1. Válassza a **Speciális megosztási beállítások módosítása** lehetőséget.
-1. A **tartományi profil**területen válassza a **fájl-és nyomtatómegosztás bekapcsolása** , majd a **módosítások mentése**lehetőséget.
-1. **A hálózati és megosztási központ**bezárásához.
+1. A **tartományi profil** területen válassza a **fájl-és nyomtatómegosztás bekapcsolása** , majd a **módosítások mentése** lehetőséget.
+1. **A hálózati és megosztási központ** bezárásához.
 
 #### <a name="create-a-security-group-and-add-members"></a>Biztonsági csoport létrehozása és Tagok hozzáadása
 
 1. Nyissa meg az **Active Directory – felhasználók és számítógépek** beépülő modult.
-1. Kattintson a jobb gombbal a tartománynévre, válassza az **új**, majd a **szervezeti egység**elemet.
-1. A név mezőbe írja be a *LocalObjects*nevet, majd kattintson az **OK gombra**.
-1. Válassza ki, majd kattintson a jobb gombbal a **LocalObjects** elemre a navigációs ablaktáblán. Válassza az **új** , majd a **csoport**lehetőséget.
-1. Írja *FileServerAccess* be a FileServerAccess **nevet a csoport neve** mezőbe. A **Csoport hatóköre**területen válassza a **tartomány helyi**lehetőséget, majd kattintson **az OK gombra**.
-1. A tartalom ablaktáblán kattintson duplán a **FileServerAccess**elemre. Válassza a **tagok**lehetőséget, válassza a **Hozzáadás**, majd a **helyszínek**lehetőséget.
+1. Kattintson a jobb gombbal a tartománynévre, válassza az **új**, majd a **szervezeti egység** elemet.
+1. A név mezőbe írja be a *LocalObjects* nevet, majd kattintson az **OK gombra**.
+1. Válassza ki, majd kattintson a jobb gombbal a **LocalObjects** elemre a navigációs ablaktáblán. Válassza az **új** , majd a **csoport** lehetőséget.
+1. Írja *FileServerAccess* be a FileServerAccess **nevet a csoport neve** mezőbe. A **Csoport hatóköre** területen válassza a **tartomány helyi** lehetőséget, majd kattintson **az OK gombra**.
+1. A tartalom ablaktáblán kattintson duplán a **FileServerAccess** elemre. Válassza a **tagok** lehetőséget, válassza a **Hozzáadás**, majd a **helyszínek** lehetőséget.
 1. Válassza ki a helyszíni Active Directory a **hely** nézetből, majd kattintson **az OK gombra**.
 1. Írja be a *tartományi felhasználók* értéket az **adja meg a kijelölendő objektumok nevét** mezőbe. Jelölje be a Névellenőrzés **jelölőnégyzetet**, adja meg a helyszíni Active Directory hitelesítő adatait, majd kattintson **az OK gombra**.
 
@@ -176,26 +176,26 @@ Az Azure AD DS erőforrás-erdőhöz csatlakozó Windows Server rendszerű virtu
 #### <a name="create-a-file-share-for-cross-forest-access"></a>Fájlmegosztás létrehozása erdők közötti hozzáféréshez
 
 1. A Windows Server rendszerű virtuális gépen, amely az Azure AD DS erőforrás-erdőhöz csatlakozik, hozzon létre egy mappát, és adja meg a nevet (például *CrossForestShare*).
-1. Kattintson a jobb gombbal a mappára, és válassza a **Tulajdonságok**lehetőséget.
-1. Válassza a **Biztonság** fület, majd kattintson a **Szerkesztés**elemre.
-1. A *CrossForestShare engedélyei* párbeszédpanelen válassza a **Hozzáadás**lehetőséget.
+1. Kattintson a jobb gombbal a mappára, és válassza a **Tulajdonságok** lehetőséget.
+1. Válassza a **Biztonság** fület, majd kattintson a **Szerkesztés** elemre.
+1. A *CrossForestShare engedélyei* párbeszédpanelen válassza a **Hozzáadás** lehetőséget.
 1. Írja be a *FileServerAccess* **nevet az írja be a kijelölendő objektumok nevét**, majd kattintson **az OK gombra**.
 1. A **csoportok vagy a felhasználónevek** listából válassza a *FileServerAccess* lehetőséget. A **FileServerAccess engedélyei** listán válassza az *Engedélyezés lehetőséget* a **módosítási** és **írási** engedélyekhez, majd kattintson **az OK gombra**.
 1. Válassza a **megosztás** fület, majd kattintson a speciális megosztás elemre. **..**
-1. Válassza a **mappa megosztása**lehetőséget, majd adjon meg egy emlékezetes nevet a fájlmegosztás számára a **megosztás nevében** , például *CrossForestShare*.
-1. Válassza az **engedélyek**lehetőséget. Az **engedélyek mindenki** számára listában válassza az **Engedélyezés lehetőséget** a **módosítási** engedélyhez.
-1. Kattintson kétszer **az OK** , majd a **Bezárás**gombra.
+1. Válassza a **mappa megosztása** lehetőséget, majd adjon meg egy emlékezetes nevet a fájlmegosztás számára a **megosztás nevében** , például *CrossForestShare*.
+1. Válassza az **Engedélyek** lehetőséget. Az **engedélyek mindenki** számára listában válassza az **Engedélyezés lehetőséget** a **módosítási** engedélyhez.
+1. Kattintson kétszer **az OK** , majd a **Bezárás** gombra.
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Erdők közötti hitelesítés ellenőrzése erőforráshoz
 
 1. Jelentkezzen be a helyszíni Active Directoryhoz csatlakoztatott Windows-számítógép használatával a helyszíni Active Directory felhasználói fiókjával.
-1. A **Windows Intéző**használatával kapcsolódjon a létrehozott megosztáshoz a teljes állomásnévvel és a megosztással, például: `\\fs1.aaddscontoso.com\CrossforestShare` .
-1. Az írási engedély ellenőrzéséhez kattintson a jobb gombbal a mappára, válassza az **új**, majd a **szöveges dokumentum**lehetőséget. Használja az alapértelmezett név **új szöveges dokumentumot**.
+1. A **Windows Intéző** használatával kapcsolódjon a létrehozott megosztáshoz a teljes állomásnévvel és a megosztással, például: `\\fs1.aaddscontoso.com\CrossforestShare` .
+1. Az írási engedély ellenőrzéséhez kattintson a jobb gombbal a mappára, válassza az **új**, majd a **szöveges dokumentum** lehetőséget. Használja az alapértelmezett név **új szöveges dokumentumot**.
 
     Ha az írási engedélyek helyesen vannak beállítva, létrejön egy új szöveges dokumentum. A következő lépésekkel megnyithatja, szerkesztheti és szükség szerint törölheti a fájlt.
 1. Az olvasási engedély ellenőrzéséhez nyissa meg az **új szöveges dokumentumot**.
-1. A módosítási engedély érvényességének ellenőrzéséhez adjon hozzá szöveget a fájlhoz, és lépjen be a **Jegyzettömbbe**. Amikor a rendszer kéri a módosítások mentését, válassza a **Mentés**lehetőséget.
-1. A törlési engedély ellenőrzéséhez kattintson a jobb gombbal az **új szöveges dokumentum** elemre, és válassza a **Törlés**lehetőséget. A fájl törlésének megerősítéséhez válassza az **Igen** lehetőséget.
+1. A módosítási engedély érvényességének ellenőrzéséhez adjon hozzá szöveget a fájlhoz, és lépjen be a **Jegyzettömbbe**. Amikor a rendszer kéri a módosítások mentését, válassza a **Mentés** lehetőséget.
+1. A törlési engedély ellenőrzéséhez kattintson a jobb gombbal az **új szöveges dokumentum** elemre, és válassza a **Törlés** lehetőséget. A fájl törlésének megerősítéséhez válassza az **Igen** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

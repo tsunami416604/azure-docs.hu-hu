@@ -1,7 +1,7 @@
 ---
 title: Csoportházirend létrehozása és kezelése Azure AD Domain Servicesban | Microsoft Docs
 description: Megtudhatja, hogyan szerkesztheti a beépített csoportházirend-objektumokat (GPO-kat), és hogyan hozhat létre saját egyéni házirendeket egy Azure Active Directory Domain Services felügyelt tartományban.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -9,13 +9,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: deefcb66e05199896e8997d707a06e45f397adec
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: f1f2499c49c4adf16b632bc75c246a28330ad27b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963737"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619385"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Csoportházirend felügyelete Azure Active Directory Domain Services felügyelt tartományban
 
@@ -51,17 +51,17 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 Csoportházirend objektum (GPO-k) létrehozásához és konfigurálásához telepítenie kell a Csoportházirend felügyeleti eszközöket. Ezek az eszközök a Windows Server szolgáltatásként is telepíthetők. A felügyeleti eszközök Windows-ügyfélre történő telepítésével kapcsolatos további információkért lásd: install [Távoli kiszolgálófelügyelet eszközei (RSAT)][install-rsat].
 
 1. Jelentkezzen be a felügyeleti virtuális gépre. A Azure Portal használatával történő kapcsolódás lépéseiért lásd: [Kapcsolódás Windows Server rendszerű virtuális géphez][connect-windows-server-vm].
-1. A **Kiszolgálókezelő** alapértelmezés szerint meg van nyitva, amikor bejelentkezik a virtuális gépre. Ha nem, a **Start** menüben válassza a **Kiszolgálókezelő**lehetőséget.
-1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
-1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek **lapján kattintson a** **Tovább gombra**.
-1. A *telepítés típusa*beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
-1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.aaddscontoso.com*, majd kattintson a **tovább**gombra.
-1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább**gombra.
+1. A **Kiszolgálókezelő** alapértelmezés szerint meg van nyitva, amikor bejelentkezik a virtuális gépre. Ha nem, a **Start** menüben válassza a **Kiszolgálókezelő** lehetőséget.
+1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása** lehetőséget.
+1. A *szerepkörök és szolgáltatások hozzáadása varázsló* alapismeretek **lapján kattintson a** **Tovább gombra**.
+1. A *telepítés típusa* beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
+1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.aaddscontoso.com*, majd kattintson a **tovább** gombra.
+1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább** gombra.
 1. A **szolgáltatások** lapon válassza ki a **csoportházirend felügyeleti** funkciót.
 
     ![A "Csoportházirend felügyelet" telepítése a szolgáltatások lapról](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
 
-1. A **jóváhagyás** lapon válassza a **telepítés**lehetőséget. A Csoportházirend felügyeleti eszközök telepítése egy-két percet is igénybe vehet.
+1. A **jóváhagyás** lapon válassza a **telepítés** lehetőséget. A Csoportházirend felügyeleti eszközök telepítése egy-két percet is igénybe vehet.
 1. A szolgáltatás telepítésének befejezése után a **Bezárás** gombra kattintva lépjen ki a **szerepkörök és szolgáltatások hozzáadása** varázslóból.
 
 ## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>A Csoportházirend-kezelő konzol megnyitása és objektum szerkesztése
@@ -71,8 +71,8 @@ Az alapértelmezett csoportházirend-objektumok (GPO-k) léteznek a felügyelt t
 > [!NOTE]
 > Ha felügyelt tartományban szeretné felügyelni a csoportházirendet, be kell jelentkeznie egy olyan felhasználói fiókba, amely tagja az *HRE DC-rendszergazdák* csoportnak.
 
-1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik az elérhető felügyeleti eszközök listája, beleértve az előző szakaszban telepített **csoportházirend felügyeletet** is.
-1. A Csoportházirend-kezelő konzol (GPMC) megnyitásához válassza a **csoportházirend felügyelet**lehetőséget.
+1. A kezdőképernyőn válassza a **felügyeleti eszközök** elemet. Megjelenik az elérhető felügyeleti eszközök listája, beleértve az előző szakaszban telepített **csoportházirend felügyeletet** is.
+1. A Csoportházirend-kezelő konzol (GPMC) megnyitásához válassza a **csoportházirend felügyelet** lehetőséget.
 
     ![A Csoportházirend-kezelő konzol készen áll a csoportházirend-objektumok szerkesztésére](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
@@ -80,7 +80,7 @@ A felügyelt tartományokban két beépített Csoportházirend objektum (GPO) ta
 
 1. A **csoportházirend felügyeleti** konzolon bontsa ki az **erdő: aaddscontoso.com** csomópontot. Ezután bontsa ki a **tartományok** csomópontokat.
 
-    Két beépített tároló létezik a *AADDC számítógépek* és a *AADDC-felhasználók*számára. Ezen tárolók mindegyike alapértelmezett GPO-t alkalmaz.
+    Két beépített tároló létezik a *AADDC számítógépek* és a *AADDC-felhasználók* számára. Ezen tárolók mindegyike alapértelmezett GPO-t alkalmaz.
 
     ![Az alapértelmezett "AADDC Computers" és "AADDC Users" tárolók esetében alkalmazott beépített csoportházirend-objektumok](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
@@ -116,7 +116,7 @@ A hasonló házirend-beállítások csoportosításához gyakran további csopor
 
     Ha elkészült, válassza a **fájl > mentés** lehetőséget a szabályzat mentéséhez. A számítógépek alapértelmezés szerint 90 percenként frissülnek, és az elvégzett módosítások alkalmazásával Csoportházirend.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Csoportházirend-kezelő konzol használatával konfigurálható elérhető Csoportházirend beállításokról: [csoportházirend beállításelemek][group-policy-console]használata.
 

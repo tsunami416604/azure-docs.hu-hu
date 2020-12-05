@@ -1,20 +1,20 @@
 ---
 title: Azure Monitor munkafüzetek használata Azure AD Domain Services használatával | Microsoft Docs
 description: Megtudhatja, hogyan használhatja Azure Monitor munkafüzeteket a biztonsági naplózás áttekintéséhez és a Azure Active Directory Domain Services felügyelt tartományok problémáinak megismeréséhez.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 5d19cddc82d9fb092887c5cdeba36b8ab7127f94
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: 3067388265fb69b916fe0e179cb896401b7c2dc4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175134"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618161"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Biztonsági naplózási események áttekintése Azure Active Directory Domain Services Azure Monitor munkafüzetek használatával
 
@@ -108,7 +108,7 @@ Az Azure AD DS által biztosított két sablonos munkafüzet jó kiindulópont a
 
 Azure Monitor munkafüzetek összes diagramja és táblázata Kusto lekérdezések használatával jön létre. A saját lekérdezések létrehozásával kapcsolatos további információkért lásd: [Azure monitor log-lekérdezések][azure-monitor-queries] és [Kusto-lekérdezések oktatóanyaga][kusto-queries].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha módosítania kell a jelszó-és a zárolási házirendeket, tekintse [meg a felügyelt tartományokra vonatkozó jelszó-és fiókzárolási házirendeket][password-policy].
 

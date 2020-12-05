@@ -2,20 +2,20 @@
 title: A klasszikus üzembe helyezés előnyei a Azure AD Domain Servicesban | Microsoft Docs
 description: További információ a Azure Active Directory Domain Services klasszikus üzembe helyezésének előnyeiről a Resource Manager-alapú üzemi modellre
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: joflore
-ms.openlocfilehash: 35224e6c9a28b1555303c1ae11b6700c1bf419bf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 8cc5f5ebf389d35df02474d0561dc7827cde4d0b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962496"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620086"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>A Klasszikusról Resource Manager-alapú üzemi modellre való Migrálás előnyei Azure Active Directory Domain Services
 
@@ -48,7 +48,7 @@ Az áttelepítés után az Azure AD DS számos olyan funkciót biztosít, amelye
 
 A Resource Manager-alapú üzemi modellt használó felügyelt tartományok a legújabb új funkciókkal naprakészek maradnak. A klasszikus üzemi modellt használó felügyelt tartományok esetében nem érhetők el új funkciók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Első lépésként tekintse [meg a Azure ad Domain Services áttelepítését a klasszikus virtuális hálózati modellből a Resource Managerbe][howto-migrate]című témakört.
 

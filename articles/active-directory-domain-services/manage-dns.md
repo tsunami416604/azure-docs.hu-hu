@@ -1,7 +1,7 @@
 ---
 title: DNS kezelése Azure AD Domain Serviceshoz | Microsoft Docs
 description: Ismerje meg, hogyan telepítheti a DNS-kiszolgálói eszközöket a DNS kezelésére, és hogyan hozhat létre feltételes továbbítókat egy Azure Active Directory Domain Services felügyelt tartományhoz.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -9,13 +9,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: b347f8043216d4347099d68ff1c62156410582a3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: afa6920a36a5a7218571239b36815004d8f2d450
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963176"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619351"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>DNS felügyelete és feltételes továbbítók létrehozása Azure Active Directory Domain Services felügyelt tartományban
 
@@ -48,17 +48,17 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 A felügyelt tartományokban lévő DNS-rekordok létrehozásához és módosításához telepítenie kell a DNS-kiszolgáló eszközeit. Ezek az eszközök a Windows Server szolgáltatásként is telepíthetők. A felügyeleti eszközök Windows-ügyfélre történő telepítésével kapcsolatos további információkért lásd: install [Távoli kiszolgálófelügyelet eszközei (RSAT)][install-rsat].
 
 1. Jelentkezzen be a felügyeleti virtuális gépre. A Azure Portal használatával történő kapcsolódás lépéseiért lásd: [Kapcsolódás Windows Server rendszerű virtuális géphez][connect-windows-server-vm].
-1. Ha a **Kiszolgálókezelő** alapértelmezés szerint nem nyílik meg, amikor bejelentkezik a virtuális gépre, válassza a **Start** menüt, majd a **Kiszolgálókezelő**elemet.
-1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
-1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek **lapján kattintson a** **Tovább gombra**.
-1. A *telepítés típusa*beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
-1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.aaddscontoso.com*, majd kattintson a **tovább**gombra.
-1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább**gombra.
+1. Ha a **Kiszolgálókezelő** alapértelmezés szerint nem nyílik meg, amikor bejelentkezik a virtuális gépre, válassza a **Start** menüt, majd a **Kiszolgálókezelő** elemet.
+1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása** lehetőséget.
+1. A *szerepkörök és szolgáltatások hozzáadása varázsló* alapismeretek **lapján kattintson a** **Tovább gombra**.
+1. A *telepítés típusa* beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
+1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.aaddscontoso.com*, majd kattintson a **tovább** gombra.
+1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább** gombra.
 1. A **szolgáltatások** lapon bontsa ki a **Távoli kiszolgálófelügyelet eszközei** csomópontot, majd bontsa ki a **szerepkör-felügyeleti eszközök** csomópontot. A szerepkör-felügyeleti eszközök listájából válassza a **DNS-kiszolgálói eszközök** lehetőséget.
 
     ![Válassza a DNS-kiszolgáló eszközeinek telepítését az elérhető szerepkör-felügyeleti eszközök listájáról](./media/manage-dns/install-dns-tools.png)
 
-1. A **jóváhagyás** lapon válassza a **telepítés**lehetőséget. A DNS-kiszolgálói eszközök telepítéséhez egy-két percet is igénybe vehet.
+1. A **jóváhagyás** lapon válassza a **telepítés** lehetőséget. A DNS-kiszolgálói eszközök telepítéséhez egy-két percet is igénybe vehet.
 1. A szolgáltatás telepítésének befejezése után a **Bezárás** gombra kattintva lépjen ki a **szerepkörök és szolgáltatások hozzáadása** varázslóból.
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>A DNS-kezelő konzol megnyitása a DNS felügyeletéhez
@@ -68,7 +68,7 @@ A DNS-kiszolgálói eszközök telepítése után a felügyelt tartományon fel�
 > [!NOTE]
 > Ha felügyelt tartományban szeretné felügyelni a DNS-t, be kell jelentkeznie egy olyan felhasználói fiókba, amely tagja az *HRE DC-rendszergazdák* csoportnak.
 
-1. A kezdőképernyőn válassza a **felügyeleti eszközök**elemet. Megjelenik az elérhető felügyeleti eszközök listája, beleértve az előző szakaszban telepített **DNS-t** is. Válassza a **DNS** lehetőséget a DNS-kezelő konzol elindításához.
+1. A kezdőképernyőn válassza a **felügyeleti eszközök** elemet. Megjelenik az elérhető felügyeleti eszközök listája, beleértve az előző szakaszban telepített **DNS-t** is. Válassza a **DNS** lehetőséget a DNS-kezelő konzol elindításához.
 1. A **Kapcsolódás a DNS-kiszolgálóhoz** párbeszédpanelen válassza ki **a következő számítógépet**, majd adja meg a felügyelt tartomány DNS-tartománynevét, például *aaddscontoso.com*:
 
     ![Kapcsolódás a felügyelt tartományhoz a DNS-konzolon](./media/manage-dns/connect-dns-server.png)
@@ -84,7 +84,7 @@ A DNS-kiszolgálói eszközök telepítése után a felügyelt tartományon fel�
 
 Az Azure AD DS DNS-zónának csak a felügyelt tartomány zónáját és rekordjait kell tartalmaznia. Ne hozzon létre további zónákat a felügyelt tartományban a más DNS-névterekben található nevesített erőforrások feloldásához. Ehelyett a felügyelt tartomány feltételes továbbítói segítségével adja meg, hogy a DNS-kiszolgáló hová szeretné feloldani az adott erőforráshoz tartozó címeket.
 
-A feltételes továbbító egy olyan konfigurációs lehetőség a DNS-kiszolgálón, amely lehetővé teszi egy DNS-tartomány, például a *contoso.com*megadását a lekérdezések továbbításához. Ahelyett, hogy a helyi DNS-kiszolgáló megpróbálja feloldani az adott tartományban lévő rekordok lekérdezéseit, a DNS-lekérdezések továbbítása az adott tartományhoz beállított DNS-re történik. Ez a konfiguráció biztosítja a megfelelő DNS-rekordok visszaadását, mivel nem hoz létre olyan helyi DNS-zónát, amely duplikált rekordokkal rendelkezik a felügyelt tartományban, hogy azok tükrözzék ezeket az erőforrásokat.
+A feltételes továbbító egy olyan konfigurációs lehetőség a DNS-kiszolgálón, amely lehetővé teszi egy DNS-tartomány, például a *contoso.com* megadását a lekérdezések továbbításához. Ahelyett, hogy a helyi DNS-kiszolgáló megpróbálja feloldani az adott tartományban lévő rekordok lekérdezéseit, a DNS-lekérdezések továbbítása az adott tartományhoz beállított DNS-re történik. Ez a konfiguráció biztosítja a megfelelő DNS-rekordok visszaadását, mivel nem hoz létre olyan helyi DNS-zónát, amely duplikált rekordokkal rendelkezik a felügyelt tartományban, hogy azok tükrözzék ezeket az erőforrásokat.
 
 Ha feltételes továbbítót szeretne létrehozni a felügyelt tartományban, hajtsa végre a következő lépéseket:
 
@@ -94,18 +94,18 @@ Ha feltételes továbbítót szeretne létrehozni a felügyelt tartományban, ha
 
     ![Feltételes továbbító hozzáadása és konfigurálása a DNS-kiszolgálóhoz](./media/manage-dns/create-conditional-forwarder.png)
 
-1. Jelölje be a **feltételes továbbító tárolása Active Directoryban**jelölőnégyzetet, majd a következőképpen replikálja azt, majd válassza ki a *tartomány összes DNS-kiszolgálójára*vonatkozó beállítást, az alábbi példában látható módon:
+1. Jelölje be a **feltételes továbbító tárolása Active Directoryban** jelölőnégyzetet, majd a következőképpen replikálja azt, majd válassza ki a *tartomány összes DNS-kiszolgálójára* vonatkozó beállítást, az alábbi példában látható módon:
 
     ![DNS-konzol – a tartomány összes DNS-kiszolgálójának kijelölése](./media/manage-dns/store-in-domain.png)
 
     > [!IMPORTANT]
-    > Ha a feltételes továbbítót az *erdőben* tárolja a *tartomány*helyett, a feltételes továbbító meghibásodik.
+    > Ha a feltételes továbbítót az *erdőben* tárolja a *tartomány* helyett, a feltételes továbbító meghibásodik.
 
 1. A feltételes továbbító létrehozásához kattintson **az OK gombra**.
 
 A felügyelt tartományhoz csatlakoztatott virtuális gépekről származó más névterekben lévő erőforrások névfeloldását mostantól megfelelően fel kell oldani. A feltételes továbbítóban konfigurált DNS-tartomány lekérdezéseit a rendszer a megfelelő DNS-kiszolgálókhoz továbbítja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A DNS kezelésével kapcsolatos további információkért tekintse meg a következő témakört: [DNS-eszközök cikk a TechNeten](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753579(v=ws.11)).
 

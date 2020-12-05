@@ -2,14 +2,14 @@
 title: Beállításjegyzék titkosítása ügyfél által felügyelt kulccsal
 description: Ismerje meg az Azure Container Registry titkosítását, valamint azt, hogyan titkosíthatja a prémium szintű beállításjegyzéket a Azure Key Vaultban tárolt ügyfél által felügyelt kulccsal.
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: 6dac2239f223b5dee6ec728833caa01562873210
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 708a42a4f965f484060d42d89ea4f535c4365a10
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255020"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620442"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Beállításjegyzék titkosítása az ügyfél által felügyelt kulccsal
 
@@ -45,9 +45,6 @@ Ha az ügyfél által felügyelt kulccsal konfigurálja a beállításjegyzék t
 * **A kulcs verziójának automatikus** frissítése – az ügyfél által felügyelt kulcs automatikus frissítéséhez, ha a Azure Key Vaultben új verzió érhető el, hagyja ki a kulcs verzióját, ha az ügyfél által felügyelt kulccsal engedélyezi a beállításjegyzék titkosítását. Ha egy beállításjegyzék nem verziószámú kulccsal van titkosítva, Azure Container Registry rendszeresen ellenőrzi a kulcstartót egy új kulcs verziójában, és 1 órán belül frissíti az ügyfél által felügyelt kulcsot. A Azure Container Registry automatikusan a kulcs legújabb verzióját használja.
 
 * **A kulcs verziójának manuális frissítése** – ha egy kulcs adott verzióját szeretné használni a beállításjegyzék-titkosításhoz, akkor a kulcs verzióját kell megadnia, ha az ügyfél által felügyelt kulccsal engedélyezi a beállításjegyzék titkosítását. Ha egy beállításjegyzék egy adott verziójú kulccsal van titkosítva, akkor a Azure Container Registry az adott verziót használja a titkosításhoz, amíg az ügyfél által felügyelt kulcs manuális elforgatása megtörténik.
-
-> [!NOTE]
-> Jelenleg csak az Azure CLI használatával konfigurálhatja a beállításjegyzéket úgy, hogy automatikusan frissítse az ügyfél által felügyelt kulcs verzióját. Ha a portál használatával engedélyezi a titkosítást, manuálisan kell frissítenie a kulcs verzióját.
 
 Részletekért lásd a jelen cikk későbbi, a kulcs [azonosítójának és a](#choose-key-id-with-or-without-key-version) kulcs verziószámának megadása és a [kulcs verziójának frissítése](#update-key-version)című témakört.
 
@@ -112,7 +109,7 @@ az keyvault create --name <key-vault-name> \
   --enable-purge-protection
 ```
 
-A későbbi lépésekben való használathoz szerezze be a Key Vault erőforrás-azonosítóját:
+A későbbi lépésekben való használathoz szerezze be a Key Vault erőforrás-AZONOSÍTÓját:
 
 ```azurecli
 keyvaultID=$(az keyvault show --resource-group <resource-group-name> --name <key-vault-name> --query 'id' --output tsv)
@@ -252,7 +249,7 @@ Az identitás nevét a későbbi lépésekben használhatja.
 
 ### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-A Key Vault létrehozásának lépéseiért lásd: gyors útmutató [: Azure Key Vault létrehozása a Azure Portal](../key-vault/general/quick-create-portal.md).
+A kulcstartó létrehozásának lépéseiért lásd: gyors útmutató [: kulcstartó létrehozása a Azure Portal használatával](../key-vault/general/quick-create-portal.md).
 
 Az ügyfél által felügyelt kulcs kulcstárolójának létrehozásakor az **alapok** lapon engedélyezze a **védelem kiürítése** beállítást. Ez a beállítás segít megakadályozni az adatvesztést a véletlen kulcs vagy a kulcstartó törlése miatt.
 
@@ -279,13 +276,15 @@ Azt is megteheti, hogy az [Azure RBAC Key Vault](../key-vault/general/rbac-guide
     1. Hozzáférés hozzárendelése a **felhasználóhoz rendelt felügyelt identitáshoz**.
     1. Válassza ki a felhasználó által hozzárendelt felügyelt identitás erőforrásának nevét, majd válassza a **Mentés** lehetőséget.
 
-### <a name="create-key"></a>Kulcs létrehozása
+### <a name="create-key-optional"></a>Kulcs létrehozása (nem kötelező)
+
+Opcionálisan létrehozhat egy kulcsot a Key vaultban a beállításjegyzék titkosításához. Kövesse az alábbi lépéseket, ha egy adott verziót szeretne ügyfél által felügyelt kulcsként kijelölni. 
 
 1. Navigáljon a kulcstartóhoz.
 1. Válassza a **Beállítások**  >  **kulcsok** elemet.
 1. Válassza a **+ Létrehozás/importálás** lehetőséget, és adjon meg egy egyedi nevet a kulcshoz.
 1. Fogadja el a többi alapértelmezett értéket, és válassza a **Létrehozás** lehetőséget.
-1. A létrehozás után válassza ki a kulcsot, és jegyezze fel az aktuális kulcs verzióját.
+1. A létrehozás után válassza ki a kulcsot, majd válassza ki az aktuális verziót. Másolja a **kulcs** verziószámát.
 
 ### <a name="create-azure-container-registry"></a>Azure Container Registry létrehozása
 
@@ -293,10 +292,11 @@ Azt is megteheti, hogy az [Azure RBAC Key Vault](../key-vault/general/rbac-guide
 1. Az **alapvető beállítások** lapon válasszon ki vagy hozzon létre egy erőforráscsoportot, és adjon meg egy beállításjegyzék-nevet. Az **SKU** területen válassza a **prémium** lehetőséget.
 1. A **titkosítás** lap **ügyfél által felügyelt kulcs** területén válassza az **engedélyezve** lehetőséget.
 1. Az **identitás** területen válassza ki a létrehozott felügyelt identitást.
-1. A **titkosítás** területen válassza **a kiválasztás a Key Vault lehetőséget**.
-1. A **válasszon kulcsot Azure Key Vault** ablakban válassza ki az előző szakaszban létrehozott kulcstárolót, kulcsot és verziót.
+1. A **titkosítás** területen válassza a következők egyikét:
+    * Válassza **a kiválasztás Key Vault** lehetőséget, majd válasszon ki egy meglévő kulcstartót és kulcsot, vagy **hozzon létre újat**. A kiválasztott kulcs nem verziószámú, és lehetővé teszi az automatikus kulcs elforgatását.
+    * Jelölje be a **kulcs URI**-azonosítójának megadása jelölőnégyzetet, és adjon meg közvetlenül egy kulcsot. Megadhat egy verziószámmal ellátott kulcs URI-JÁT (olyan kulcshoz, amelyet manuálisan kell elforgatni) vagy egy nem verziószámú kulcs URI-JÁT (ami lehetővé teszi az automatikus kulcs elforgatását). 
 1. A **titkosítás** lapon válassza a **felülvizsgálat + létrehozás** elemet.
-1. Válassza a **Létrehozás** lehetőséget a beállításjegyzék-példány létrehozásához.
+1. Válassza a **Létrehozás** lehetőséget a beállításjegyzék-példány telepítéséhez.
 
 :::image type="content" source="media/container-registry-customer-managed-keys/create-encrypted-registry.png" alt-text="Titkosított beállításjegyzék létrehozása a Azure Portalban":::
 
@@ -498,11 +498,11 @@ Például egy új kulcs konfigurálásához:
 
 1. A portálon navigáljon a beállításjegyzékhez.
 1. A **Beállítások** területen válassza a **titkosítási**  >  **kulcs módosítása** elemet.
-1. Válassza a **kulcs kiválasztása** lehetőséget.
 
     :::image type="content" source="media/container-registry-customer-managed-keys/rotate-key.png" alt-text="Kulcs elforgatása a Azure Portalban":::
-1. A **válasszon kulcsot Azure Key Vault** ablakban válassza ki a korábban konfigurált kulcstartót és kulcsot, majd a **verzió** területen válassza az **új létrehozása** lehetőséget.
-1. A **kulcs létrehozása** **ablakban válassza a létrehozás,** majd a **Létrehozás** lehetőséget.
+1. A **titkosítás** területen válasszon a következők közül:
+    * Válassza **a kiválasztás Key Vault** lehetőséget, majd válasszon ki egy meglévő kulcstartót és kulcsot, vagy **hozzon létre újat**. A kiválasztott kulcs nem verziószámú, és lehetővé teszi az automatikus kulcs elforgatását.
+    * Jelölje be a **kulcs URI**-azonosítójának megadása jelölőnégyzetet, és adjon meg közvetlenül egy kulcsot. Megadhat egy verziószámmal ellátott kulcs URI-JÁT (olyan kulcshoz, amelyet manuálisan kell elforgatni) vagy egy nem verziószámú kulcs URI-JÁT (ami lehetővé teszi az automatikus kulcs elforgatását).
 1. Fejezze be a kulcs kijelölését, és válassza a **Mentés** lehetőséget.
 
 ## <a name="revoke-key"></a>Kulcs visszavonása
@@ -534,7 +534,7 @@ A beállításjegyzék rendszerhez rendelt identitásának engedélyezése a por
 
 1. A portálon navigáljon a beállításjegyzékhez.
 1. Válassza a **Beállítások**  >   **identitás** lehetőséget.
-1. A **rendszer által hozzárendelve** beállításnál állítsa be **a** következőt: **állapot** . Kattintson a **Mentés** gombra.
+1. A **rendszer által hozzárendelve** beállításnál állítsa be **a** következőt: **állapot** . Válassza a **Save** (Mentés) lehetőséget.
 1. Másolja az identitás **objektum-azonosítóját** .
 
 Az identitás hozzáférésének biztosítása a kulcstartóhoz:
@@ -582,7 +582,7 @@ az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxx
         
 Ezután a kulcs módosítása és egy másik identitás hozzárendelése után eltávolíthatja az eredeti, felhasználó által hozzárendelt identitást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ [Az Azure-](../security/fundamentals/encryption-atrest.md)beli inaktív adatok titkosításáról.
 * További információ a hozzáférési házirendekről és a [kulcstartóhoz való hozzáférés biztonságossá](../key-vault/general/secure-your-key-vault.md)tételéről.

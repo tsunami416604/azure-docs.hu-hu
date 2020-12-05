@@ -2,20 +2,20 @@
 title: A Azure AD Domain Services hálózati tervezése és kapcsolatai | Microsoft Docs
 description: Ismerkedjen meg a virtuális hálózat kialakításával kapcsolatos szempontokkal és a Azure Active Directory Domain Services futtatásakor a kapcsolathoz használt erőforrásokkal.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 43731f84066943b991b566ff5936e4288aa669eb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: 246da3a35396430bbda86e5a5e927a456618ac05
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175219"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619283"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>A virtuális hálózat kialakításával kapcsolatos szempontok és a Azure Active Directory Domain Services konfigurációs beállításai
 
@@ -62,10 +62,10 @@ Ahogy az előző szakaszban is említettük, csak egyetlen virtuális hálózatb
 
 A következő módszerek egyikével kapcsolódhat más Azure-beli virtuális hálózatokban üzemeltetett alkalmazás-munkaterhelésekhez:
 
-* Virtuális hálózati társviszony
+* Társviszony létesítése virtuális hálózatok között
 * Virtuális magánhálózat (VPN)
 
-### <a name="virtual-network-peering"></a>Virtuális hálózati társviszony
+### <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
 A virtuális hálózat társítása egy olyan mechanizmus, amely két virtuális hálózatot csatlakoztat az adott régióban az Azure gerinc hálózatán keresztül. A globális virtuális hálózati társítás az Azure-régiók közötti virtuális hálózat összekapcsolására is képes. A két virtuális hálózat a társítást követően lehetővé teszi, hogy az erőforrások (például a virtuális gépek) közvetlenül a magánhálózati IP-címek használatával kommunikáljanak egymással. A virtuális hálózati kapcsolatok használata lehetővé teszi, hogy felügyelt tartományt helyezzen üzembe más virtuális hálózatokban üzembe helyezett alkalmazás-munkaterhelésekkel.
 
@@ -170,7 +170,7 @@ A bejövő forgalmat a megfelelő Azure-szolgáltatási címkékben található 
 > [!CAUTION]
 > Ezek az Azure-adatközpontok IP-tartományai értesítés nélkül megváltoztathatók. Győződjön meg arról, hogy rendelkezik olyan folyamatokkal, amelyekkel ellenőrizheti a legújabb IP-címeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure AD DS által használt hálózati erőforrásokról és a kapcsolatok lehetőségeiről:
 

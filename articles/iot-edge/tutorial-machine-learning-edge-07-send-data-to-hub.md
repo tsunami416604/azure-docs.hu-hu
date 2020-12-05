@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0695af6922182aa8be7acfb4b0a931bed35ef7d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1927ec00df67522563fb063f2cb127fee4c0bcbf
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959305"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621042"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Oktatóanyag: az adatküldés transzparens átjárón keresztül
 
@@ -233,14 +233,11 @@ Ha azt tervezi, hogy vizsgálja meg a teljes körű oktatóanyag által használ
 
 1. Ha helyileg hozott létre tanúsítványokat, törölje a c: \\ edgeCertificates mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben azt használtuk, hogy fejlesztési virtuális gépe szimulálja az érzékelőt és a működési adatokat a IoT Edge eszközre küldött levélben. A rendszer ellenőrizte, hogy az eszköz moduljai a peremhálózati eszköz valós idejű működésének vizsgálatával és a Storage-fiókba feltöltött fájlok megtekintésével irányították, besorolták, megtartották és feltöltötték az adatforrásokat.
 
-További információt a következő lapokon talál:
+A IoT Edge képességeinek megismeréséhez próbálkozzon a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Lefelé irányuló eszköz csatlakoztatása Azure IoT Edge-átjáróhoz](how-to-connect-downstream-device.md)
-
-> [!div class="nextstepaction"]
-> [Az Azure Blob Storage IoT Edge (előzetes verzió) szolgáltatásban tárolhatja az adattárolást](how-to-store-data-blob.md)
+> [IoT Edge-eszközök hierarchiájának létrehozása (előzetes verzió)](tutorial-nested-iot-edge.md?view=iotedge-2020-11&preserve-view=true)

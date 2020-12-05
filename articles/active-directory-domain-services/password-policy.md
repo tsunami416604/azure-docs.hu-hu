@@ -2,7 +2,7 @@
 title: Jelszavas szabályzatok létrehozása és használata a Azure AD Domain Servicesban | Microsoft Docs
 description: Ebből a témakörből megtudhatja, hogyan és miért érdemes részletes jelszóházirendek használatával védeni és vezérelni a fiókok jelszavait egy Azure AD DS felügyelt tartományban.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 2dbc75ac4f143089db778b260bb2c4bee5b49f6a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.author: justinha
+ms.openlocfilehash: df132af1675b3f373fe1eab5685c5d2f07813445
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393166"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619232"
 ---
 # <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Jelszó-és fiókzárolási házirendek Azure Active Directory Domain Services felügyelt tartományokban
 
@@ -100,7 +100,7 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
     ![Jelszavas szabályzat létrehozása a Active Directory felügyeleti központban](./media/password-policy/create-password-policy-adac.png)
 
 1. A jobb oldali **feladatok** panelen válassza az **új > a jelszó beállításai** lehetőséget.
-1. A **jelszó-beállítások létrehozása** párbeszédpanelen adja meg a szabályzat nevét (például *MyCustomFGPP* ).
+1. A **jelszó-beállítások létrehozása** párbeszédpanelen adja meg a szabályzat nevét (például *MyCustomFGPP*).
 1. Ha több jelszóházirend létezik, a rendszer egy felhasználóra alkalmazza a legmagasabb prioritású házirendet vagy prioritást. Minél kisebb a szám, annál magasabb a prioritás. Az alapértelmezett jelszóházirend prioritása *200*.
 
     Állítsa be az egyéni jelszóházirend elsőbbségét az alapértelmezett érték felülbírálásához, például: *1*.
@@ -117,7 +117,7 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
 
     ![Válassza ki azokat a felhasználókat és csoportokat, amelyekre alkalmazni szeretné a jelszóházirend alkalmazását](./media/password-policy/fgpp-applies-to.png)
 
-1. A jelszóházirend csak csoportokra alkalmazható. A **helyszínek** párbeszédpanelen bontsa ki a tartománynevet (például *aaddscontoso.com* ), majd válasszon ki egy szervezeti egységet, például a **AADDC-felhasználók** elemet. Ha olyan egyéni szervezeti egységtel rendelkezik, amely az alkalmazni kívánt felhasználói csoportot tartalmazza, válassza ki azt a szervezeti egységet.
+1. A jelszóházirend csak csoportokra alkalmazható. A **helyszínek** párbeszédpanelen bontsa ki a tartománynevet (például *aaddscontoso.com*), majd válasszon ki egy szervezeti egységet, például a **AADDC-felhasználók** elemet. Ha olyan egyéni szervezeti egységtel rendelkezik, amely az alkalmazni kívánt felhasználói csoportot tartalmazza, válassza ki azt a szervezeti egységet.
 
     ![Válassza ki azt a szervezeti egységet, amelyhez a csoport tartozik](./media/password-policy/fgpp-container.png)
 

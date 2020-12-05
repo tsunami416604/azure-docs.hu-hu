@@ -2,20 +2,20 @@
 title: Egy Azure AD Domain Services SKU-jának módosítása | Microsoft Docs
 description: Megtudhatja, hogyan módosítható a Azure AD Domain Services felügyelt tartomány SKU-szintje, ha az üzleti követelmények megváltoznak
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: c85a3f3262da6002e9604b1506552b9188a64460
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 320bd87aa78d26cee44c48f27365febd1dd426ff
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962751"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620290"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>Meglévő Azure Active Directory Domain Services felügyelt tartomány SKU-jának módosítása
 
@@ -51,20 +51,20 @@ További információ ezekről a korlátokról: [Azure AD DS SKU-funkciók és k
 
 Felügyelt tartomány SKU-jának a Azure Portal használatával történő módosításához hajtsa végre a következő lépéseket:
 
-1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt a listából, például *aaddscontoso.com*.
-1. Az Azure AD DS lap bal oldali menüjében válassza a **beállítások > SKU**lehetőséget.
+1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services** lehetőséget. Válassza ki a felügyelt tartományt a listából, például *aaddscontoso.com*.
+1. Az Azure AD DS lap bal oldali menüjében válassza a **beállítások > SKU** lehetőséget.
 
     ![Válassza ki az SKU menüpontot az Azure AD DS felügyelt tartományhoz a Azure Portal](media/change-sku/overview-change-sku.png)
 
 1. A legördülő menüben válassza ki a felügyelt tartományhoz használni kívánt SKU-t. Ha rendelkezik erőforrás-erdővel, a *szabványos* SKU-t nem választhatja erdőszintű megbízhatóságként, csak a *vállalati* SKU-ban vagy annál újabb verzióban.
 
-    Válassza ki a kívánt SKU-t a legördülő menüből, majd válassza a **Mentés**lehetőséget.
+    Válassza ki a kívánt SKU-t a legördülő menüből, majd válassza a **Mentés** lehetőséget.
 
     ![Válassza ki a szükséges SKU-t a Azure Portal legördülő menüjében.](media/change-sku/change-sku-selection.png)
 
 Az SKU típusának módosításához egy-két percet is igénybe vehet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha rendelkezik erőforrás-erdővel, és további megbízhatósági kapcsolatokat szeretne létrehozni az SKU módosítása után, tekintse [meg a kimenő erdő megbízhatóságának létrehozása helyszíni tartományhoz az Azure AD DS-ban][create-trust]című témakört.
 

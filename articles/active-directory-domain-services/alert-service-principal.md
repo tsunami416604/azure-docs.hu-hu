@@ -2,7 +2,7 @@
 title: Egyszerű szolgáltatásokkal kapcsolatos riasztások feloldása Azure AD Domain Servicesban | Microsoft Docs
 description: Megtudhatja, hogyan lehet elhárítani a Azure Active Directory Domain Services egyszerű szolgáltatásnév konfigurációs riasztásait
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: fc980d18a05b18706bb7eeecd907769b80e1b18f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 00ab5c85a477c9c4080acf252cbbde9d4ce816a9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962717"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620239"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: az egyszerű szolgáltatások riasztásai a Azure Active Directory Domain Services
 
@@ -37,7 +37,7 @@ Ha egy szükséges szolgáltatásnevet töröl, az Azure platform nem képes aut
 Az alábbi lépések végrehajtásával ellenőrizheti, hogy melyik egyszerű szolgáltatásnév hiányzik, és hogy újra létre kell-e hozni.
 
 1. A Azure Portal válassza a bal oldali navigációs menü **Azure Active Directory** elemét.
-1. Válassza a **vállalati alkalmazások**lehetőséget. Válassza a *minden alkalmazás* lehetőséget az **alkalmazás típusa** legördülő menüben, majd válassza az **alkalmaz**lehetőséget.
+1. Válassza a **vállalati alkalmazások** lehetőséget. Válassza a *minden alkalmazás* lehetőséget az **alkalmazás típusa** legördülő menüben, majd válassza az **alkalmaz** lehetőséget.
 1. Keresse meg a következő alkalmazás-azonosítókat. Ha nem található meglévő alkalmazás, kövesse a *megoldás* lépéseit az egyszerű szolgáltatásnév létrehozásához, vagy regisztrálja újra a névteret.
 
     | Alkalmazásazonosító | Feloldás |
@@ -68,12 +68,12 @@ A felügyelt tartomány állapota két órán belül automatikusan frissül, és
 
 ### <a name="re-register-the-microsoft-aad-namespace"></a>Regisztrálja újra a Microsoft HRE-névteret
 
-Ha az alkalmazás-azonosító *443155a6-77f3-45e3-882b-22b3a8d431fb*, *abba844e-bc0e-44b0-947a-dc74e5d09022*vagy *d87dcbc6-a371-462e-88e3-28ad15ec4e64* hiányzik az Azure ad-címtárból, hajtsa végre a következő lépéseket a *Microsoft. HRE* erőforrás-szolgáltató újbóli regisztrálásához:
+Ha az alkalmazás-azonosító *443155a6-77f3-45e3-882b-22b3a8d431fb*, *abba844e-bc0e-44b0-947a-dc74e5d09022* vagy *d87dcbc6-a371-462e-88e3-28ad15ec4e64* hiányzik az Azure ad-címtárból, hajtsa végre a következő lépéseket a *Microsoft. HRE* erőforrás-szolgáltató újbóli regisztrálásához:
 
-1. A Azure Portal keresse meg és válassza ki az **előfizetések**elemet.
+1. A Azure Portal keresse meg és válassza ki az **előfizetések** elemet.
 1. Válassza ki a felügyelt tartományhoz társított előfizetést.
-1. A bal oldali navigációs sávon válassza az **erőforrás-szolgáltatók**lehetőséget.
-1. Keressen rá a *Microsoft. HRE*kifejezésre, majd válassza az **újbóli regisztráció**lehetőséget.
+1. A bal oldali navigációs sávon válassza az **erőforrás-szolgáltatók** lehetőséget.
+1. Keressen rá a *Microsoft. HRE* kifejezésre, majd válassza az **újbóli regisztráció** lehetőséget.
 
 A felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
 
@@ -99,15 +99,15 @@ A hitelesítő adatok szinkronizálásához használt Azure AD-alkalmazás újb�
 2. Most törölje a régi alkalmazást és objektumot a következő PowerShell-parancsmagok használatával:
 
     ```powershell
-    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
-    Remove-AzureADApplication -ObjectId $app.ObjectId
+    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
+    Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $spObject
     ```
 
 Miután mindkét alkalmazást törölte, az Azure platform automatikusan újra létrehozza őket, és megkísérli a jelszó-szinkronizálást. A felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 

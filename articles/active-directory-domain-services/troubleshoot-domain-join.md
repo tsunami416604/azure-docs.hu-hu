@@ -2,20 +2,20 @@
 title: A tartományhoz való csatlakozás hibáinak megoldása – Azure AD Domain Services | Microsoft Docs
 description: Ismerje meg, hogy miként lehet elhárítani a gyakori problémákat, amikor egy virtuális géphez próbál csatlakozni, vagy egy alkalmazást csatlakoztat Azure Active Directory Domain Serviceshoz, és nem tud csatlakozni a felügyelt tartományhoz, illetve nem végezheti el a hitelesítést.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: ee60b684d64ef49fbb669de8c98203e2df5268bf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 86d6ca79a12e4706f558e92c3c83c5bddaa99b3c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967511"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618603"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartományhoz való csatlakozással kapcsolatos problémák elhárítása
 
@@ -43,7 +43,7 @@ Felügyelt tartomány létrehozásakor a rendszer a sikeres tartományi művelet
 
 Ha továbbra is fennáll a kapcsolódási problémák, tekintse át a következő hibaelhárítási lépéseket:
 
-1. A felügyelt tartomány állapotának ellenőrzését a Azure Portal. Ha a *AADDS001*riasztása van, a hálózati biztonsági csoport szabálya blokkolja a hozzáférést.
+1. A felügyelt tartomány állapotának ellenőrzését a Azure Portal. Ha a *AADDS001* riasztása van, a hálózati biztonsági csoport szabálya blokkolja a hozzáférést.
 1. Tekintse át a [szükséges portokat és a hálózati biztonsági csoportra vonatkozó szabályokat][network-ports]. Győződjön meg arról, hogy a virtuális GÉPRE vagy a hálózati portok blokkolásához használt virtuális hálózatra nem vonatkoznak hálózati biztonsági csoportra vonatkozó szabályok.
 1. A hálózati biztonsági csoport konfigurációs problémáinak elhárítása után a *AADDS001* riasztás eltűnik az állapot lapról körülbelül 2 órával. A hálózati kapcsolat már elérhető, próbálja meg újra tartományhoz csatlakoztatni a virtuális gépet.
 
@@ -58,7 +58,7 @@ A hitelesítő adatokkal kapcsolatos problémák elhárításához tekintse át 
 1. Próbáljon meg egy olyan felhasználói fiók hitelesítő adatait használni, amely a felügyelt tartomány részét képezi, hogy a virtuális gépeket a felügyelt tartományhoz csatlakoztassa.
 1. Győződjön meg arról, hogy [engedélyezte a jelszó-szinkronizálást][enable-password-sync] , és elég sokáig várt a jelszó-szinkronizálás kezdeti befejezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A tartományhoz való csatlakozás művelet részeként a Active Directory folyamatok mélyebb megismeréséhez tekintse meg a [csatlakoztatási és hitelesítési problémák][join-authentication-issues]című témakört.
 

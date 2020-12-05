@@ -2,7 +2,7 @@
 title: Kerberos által korlátozott delegálás a Azure AD Domain Serviceshoz | Microsoft Docs
 description: Megtudhatja, hogyan engedélyezheti az erőforrás-alapú Kerberos által korlátozott delegálást (KCD) egy Azure Active Directory Domain Services felügyelt tartományban.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 949dbfd4cc2e4ac05cddf035e22119bfb16e306f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 138b90a33ff1dbc4b014f17fa0098112e1da66e4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960711"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619776"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Kerberos által korlátozott delegálás (KCD) konfigurálása Azure Active Directory Domain Services
 
@@ -58,7 +58,7 @@ Az erőforrás-alapú KCD a PowerShell használatával van konfigurálva. A [set
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Erőforrás-alapú KCD konfigurálása számítógépfiók számára
 
-Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely a *contoso-WebApp.aaddscontoso.com*nevű számítógépen fut.
+Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely a *contoso-WebApp.aaddscontoso.com* nevű számítógépen fut.
 
 A webalkalmazásnak hozzá kell férnie egy webes API-hoz, amely a *contoso-API.aaddscontoso.com* nevű számítógépen fut a tartományi felhasználók környezetében.
 
@@ -81,7 +81,7 @@ A forgatókönyv konfigurálásához hajtsa végre a következő lépéseket:
 
 ## <a name="configure-resource-based-kcd-for-a-user-account"></a>Erőforrás-alapú KCD konfigurálása felhasználói fiókhoz
 
-Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely egy *appsvc*nevű szolgáltatásfiókot futtat. A webalkalmazásnak hozzá kell férnie egy webes API-hoz, amely a *backendsvc* nevű szolgáltatási fiókként fut a tartományi felhasználók környezetében. A forgatókönyv konfigurálásához hajtsa végre a következő lépéseket:
+Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely egy *appsvc* nevű szolgáltatásfiókot futtat. A webalkalmazásnak hozzá kell férnie egy webes API-hoz, amely a *backendsvc* nevű szolgáltatási fiókként fut a tartományi felhasználók környezetében. A forgatókönyv konfigurálásához hajtsa végre a következő lépéseket:
 
 1. [Hozzon létre egy egyéni szervezeti egységet](create-ou.md). Az egyéni szervezeti egység felügyelt tartományba tartozó felhasználók számára történő felügyeletéhez engedélyeket delegálhat.
 1. [Tartomány – csatlakoztassa a][create-join-windows-vm] háttérbeli webes API-t/erőforrást futtató virtuális gépeket a felügyelt tartományhoz. Hozza létre a számítógép-fiókját az egyéni szervezeti egységen belül.
@@ -99,7 +99,7 @@ Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely egy *appsvc*ne
     Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni arról, hogyan működik a delegálás a Active Directory tartományi szolgáltatásokban, tekintse meg a [Kerberos által korlátozott delegálás – áttekintés][kcd-technet]című témakört.
 

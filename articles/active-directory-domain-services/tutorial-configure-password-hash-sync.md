@@ -1,20 +1,20 @@
 ---
 title: Jelszó-kivonatolási szinkronizálás engedélyezése a Azure AD Domain Serviceshoz | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan engedélyezheti a jelszó-kivonatok szinkronizálását a Azure AD Connect használatával egy Azure Active Directory Domain Services felügyelt tartományhoz.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 4daad0d0739bb3407be13f717572c8aa99947d1a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: e83d8941d1be7fd36f53a881a21716252ad01954
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967290"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618348"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Oktatóanyag: a jelszó-szinkronizálás engedélyezése Azure Active Directory Domain Services hibrid környezetekben
 
@@ -22,7 +22,7 @@ Hibrid környezetek esetén egy Azure Active Directory (Azure AD) bérlő konfig
 
 Ha az Azure AD DSt a helyszíni AD DS-környezetből szinkronizált fiókokkal szeretné használni, konfigurálnia kell Azure AD Connect az NTLM-és Kerberos-hitelesítéshez szükséges jelszavak kivonatok szinkronizálásához. Azure AD Connect konfigurálása után a helyszíni fiók létrehozása vagy a jelszó módosítása esemény is szinkronizálja az örökölt jelszó-kivonatokat az Azure AD-be.
 
-Ezeket a lépéseket nem kell végrehajtania, ha csak felhőalapú fiókokat használ helyszíni AD DS környezet nélkül, vagy ha *erőforrás-erdőt*használ. Az erőforrás-erdőt használó felügyelt tartományok esetében a helyszíni jelszó-kivonatok soha nem szinkronizálhatók. A helyszíni fiókok hitelesítése az erdőszintű megbízhatóság (ok) t használja a saját AD DS tartományvezérlőkre.
+Ezeket a lépéseket nem kell végrehajtania, ha csak felhőalapú fiókokat használ helyszíni AD DS környezet nélkül, vagy ha *erőforrás-erdőt* használ. Az erőforrás-erdőt használó felügyelt tartományok esetében a helyszíni jelszó-kivonatok soha nem szinkronizálhatók. A helyszíni fiókok hitelesítése az erdőszintű megbízhatóság (ok) t használja a saját AD DS tartományvezérlőkre.
 
 Ez az oktatóanyag a következőket ismerteti:
 
@@ -99,7 +99,7 @@ A Azure AD Connect az Azure AD-vel való szinkronizálásra van telepítve és k
 
     A címtár méretétől függően a fiókok és csoportok száma alapján a régi jelszó-kivonatok Azure AD-ba való szinkronizálása hosszabb időt is igénybe vehet. A rendszer ezután szinkronizálja a jelszavakat a felügyelt tartományba az Azure AD-vel való szinkronizálás után.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta a következőket:
 

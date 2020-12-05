@@ -3,19 +3,22 @@ title: Windows rendszerű virtuális asztali kötelező URL-címek listája – 
 description: A feloldani kívánt URL-címek listája, amely biztosítja, hogy a Windows rendszerű virtuális asztali környezet a kívánt módon működjön.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6b3fdc18a04dadf4bf1cf380c7bb51d21f826633
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 70b7042e4006cc59419d0ea6798fe7626a82c086
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512341"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621076"
 ---
 # <a name="required-url-list"></a>Szükséges URL-címek listája
 
-A Windows rendszerű virtuális asztalok üzembe helyezéséhez és használatához fel kell oldania bizonyos URL-címek blokkolását, hogy a virtuális gépek (VM-EK) bármikor hozzáférhessenek hozzájuk. Ez a cikk felsorolja a tiltás feloldásához szükséges URL-címeket.
+A Windows rendszerű virtuális asztalok üzembe helyezéséhez és használatához fel kell oldania bizonyos URL-címek blokkolását, hogy a virtuális gépek (VM-EK) bármikor hozzáférhessenek hozzájuk. Ez a cikk felsorolja azokat a szükséges URL-címeket, amelyeknek meg kell szüntetnie a tiltást ahhoz, hogy a Windows virtuális asztal megfelelően működjön. 
+
+>[!IMPORTANT]
+>A Windows virtuális asztal nem támogatja az ebben a cikkben felsorolt URL-címeket blokkoló központi telepítéseket.
 
 ## <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
@@ -63,14 +66,14 @@ A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekh
 |Cím|Kimenő TCP-port|Cél|Azure gov|
 |---|---|---|---|
 |*.microsoftonline.com|443|Hitelesítés a Microsoft Online Services szolgáltatásban|login.microsoftonline.us|
-|*. events.data.microsoft.com|443|Telemetriai szolgáltatás|Nincsenek|
-|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincsenek|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincsenek|
+|*. events.data.microsoft.com|443|Telemetriai szolgáltatás|Nincs|
+|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincs|
+|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincs|
 |login.windows.net|443|Bejelentkezés a Microsoft Online Servicesbe, Microsoft 365|login.microsoftonline.us|
 |*. sfx.ms|443|OneDrive-ügyfélszoftver frissítései|oneclient.sfx.ms|
-|*. digicert.com|443|Tanúsítvány visszavonási állapotának ellenőrzése|Nincsenek|
-|*. azure-dns.com|443|Azure DNS felbontás|Nincsenek|
-|*. azure-dns.net|443|Azure DNS felbontás|Nincsenek|
+|*. digicert.com|443|Tanúsítvány visszavonási állapotának ellenőrzése|Nincs|
+|*. azure-dns.com|443|Azure DNS felbontás|Nincs|
+|*. azure-dns.net|443|Azure DNS felbontás|Nincs|
 
 >[!NOTE]
 >A Windows virtuális asztal jelenleg nem tartalmaz olyan IP-címtartományok listáját, amelyekkel engedélyezhető a hálózati forgalom. Jelenleg csak bizonyos URL-címek blokkolását támogatjuk.
@@ -93,11 +96,11 @@ A használt Távoli asztal ügyfeleknek hozzáféréssel kell rendelkezniük a k
 |---|---|---|---|---|
 |*. wvd.microsoft.com|443|Szolgáltatás forgalma|Mind|*. wvd.microsoft.us|
 |*.servicebus.windows.net|443|Hibaelhárítási hibák|Mind|*. servicebus.usgovcloudapi.net|
-|go.microsoft.com|443|Microsoft-Fwlinkek|Mind|Nincsenek|
-|aka.ms|443|Microsoft URL-rövidített|Mind|Nincsenek|
-|docs.microsoft.com|443|Dokumentáció|Mind|Nincsenek|
-|privacy.microsoft.com|443|Adatvédelem|Mind|Nincsenek|
-|query.prod.cms.rt.microsoft.com|443|Ügyfelek frissítései|Windows asztali rendszer|Nincsenek|
+|go.microsoft.com|443|Microsoft-Fwlinkek|Mind|Nincs|
+|aka.ms|443|Microsoft URL-rövidített|Mind|Nincs|
+|docs.microsoft.com|443|Dokumentáció|Mind|Nincs|
+|privacy.microsoft.com|443|Adatvédelem|Mind|Nincs|
+|query.prod.cms.rt.microsoft.com|443|Ügyfelek frissítései|Windows asztali rendszer|Nincs|
 
 >[!IMPORTANT]
 >Az URL-címek megnyitása elengedhetetlen a megbízható ügyfél-élményhez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja.
