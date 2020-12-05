@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 11/30/2020
+ms.date: 12/02/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: db33a4c7ef80efecccdec9de48f52e864ace02df
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: bfd062da44e32061e191361011c0001373488cde
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533316"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96739205"
 ---
 Használja a Computer Vision REST APIt a következőre:
 
@@ -24,7 +24,8 @@ Használja a Computer Vision REST APIt a következőre:
 * Nyomtatott és kézzel írt szöveg olvasása az olvasási API-val.
 * Miniatűr létrehozása intelligens levágással
 
-
+> [!NOTE]
+> Ez a rövid útmutató cURL-parancsokat használ a REST API meghívásához. A REST API a programozási nyelv használatával is meghívhatja. A GitHub-mintákat a [C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/ComputerVision/REST), a [Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/ComputerVision/REST), a [Java](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/java/ComputerVision/REST), a [JavaScript](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/ComputerVision/REST)és a [Go](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/go/ComputerVision/REST)című példákban tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
