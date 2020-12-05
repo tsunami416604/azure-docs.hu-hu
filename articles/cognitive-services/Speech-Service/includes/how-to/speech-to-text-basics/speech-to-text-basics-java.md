@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 4a06d40c3052fef9a484dc98220a0ad7cccd33bb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a039bfb84cae202f62c8e9c98278dd0a3f0e502b
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509342"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96615817"
 ---
 A beszédfelismerési szolgáltatás egyik fő funkciója az emberi beszéd (más néven beszéd – szöveg) felismerése és átírása. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Speech SDK-t az alkalmazásaiban és termékeiben a kiváló minőségű beszéd-szöveg átalakítás elvégzéséhez.
 
@@ -114,7 +114,7 @@ public class Program {
 
 ## <a name="error-handling"></a>Hibakezelés
 
-Az előző példákban egyszerűen lekérheti a felismert szöveget a használatával `result.getText()` , de a hibák és más válaszok kezeléséhez meg kell írnia egy kódot az eredmény kezeléséhez. A következő példa a és a következőket értékeli ki [`result.getReason()`](/java/api/com.microsoft.cognitiveservices.speech.resultreason&preserve-view=true) :
+Az előző példákban egyszerűen lekérheti a felismert szöveget a használatával `result.getText()` , de a hibák és más válaszok kezeléséhez meg kell írnia egy kódot az eredmény kezeléséhez. A következő példa a és a következőket értékeli ki [`result.getReason()`](/java/api/com.microsoft.cognitiveservices.speech.recognitionresult.getreason) :
 
 * Kinyomtatja az eredmények felismerésének eredményét: `ResultReason.RecognizedSpeech`
 * Ha nincs felismerési egyezés, tájékoztassa a felhasználót: `ResultReason.NoMatch`

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: a0ed1ef796412211d1d0871d3e09aed4f7346ae5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 35d5940fbc001d1806711afb14aa4a549bcb1826
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978425"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96615912"
 ---
 <a name="HOLTop"></a>
 
@@ -28,7 +28,7 @@ a [v3-referenciák dokumentációja](/dotnet/api/azure.ai.textanalytics)  |  [v3
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-[v2 dokumentáció](/dotnet/api/overview/azure/cognitiveservices/client/textanalytics)  |  [v2 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  [v2 csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [v2 minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[v2 dokumentáció](/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet)  |  [v2 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  [v2 csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [v2 minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
@@ -179,7 +179,7 @@ Ha a szolgáltatás verzióját használja `3.x` , egy opcionális példánnyal 
 * [Nyelvfelismerés](#language-detection)
 * [Elnevezett entitások felismerése](#named-entity-recognition-ner)
 * [Entitás összekapcsolása](#entity-linking)
-* [Fő kifejezés kibontása](#key-phrase-extraction)
+* [Kulcskifejezések kinyerése](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 

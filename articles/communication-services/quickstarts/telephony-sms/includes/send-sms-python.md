@@ -10,12 +10,12 @@ ms.date: 09/03/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dadoolab
-ms.openlocfilehash: 9265caa3054cde6af311e655db2b2496524e8d24
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: a24d9531b7b2d2d2f31eec275da7db7e48b9c74a
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757140"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96615832"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Python SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
 
@@ -67,7 +67,7 @@ except Exception as ex:
 Még az alkalmazás könyvtára alatt telepítse az Azure kommunikációs szolgáltatások SMS-ügyféloldali kódtárat a Python-csomaghoz a `pip install` parancs használatával.
 
 ```console
-pip install azure-communication-sms
+pip install azure-communication-sms --pre
 ```
 
 ## <a name="object-model"></a>Objektummodell
