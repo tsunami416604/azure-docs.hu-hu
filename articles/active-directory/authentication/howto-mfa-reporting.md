@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 05/15/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6a103f1f518a838e0746d363ee613dd1625b0bd4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e2a02ae7bd89e99dc2eee013394a1f85139c1c00
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838978"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742776"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>A bejelentkezések jelentés használata az Azure AD Multi-Factor Authentication eseményeinek áttekintéséhez
 
@@ -178,6 +178,6 @@ A következő további információk és jelentések érhetők el az MFA-esemén
 | Megkerülő felhasználói előzmények | Azure AD > Security > MFA > egyszeri Mellőzés | Az MFA-kiszolgálói kérelmek előzményeit jeleníti meg a felhasználók számára az MFA megkerülése érdekében. |
 | Kiszolgáló állapota | Azure AD > Security > MFA > kiszolgáló állapota | Megjeleníti a fiókjához társított MFA-kiszolgálók állapotát. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk áttekintést nyújt a bejelentkezési tevékenységek jelentéséről. További információ arról, hogy a jelentés mit tartalmaz és hogyan értelmezi az adatokat, lásd: [bejelentkezési tevékenységek jelentései az Azure ad-ben](../reports-monitoring/concept-sign-ins.md).

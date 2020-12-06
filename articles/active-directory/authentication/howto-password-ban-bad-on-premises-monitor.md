@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6efcadf85816bb6aa014893bb9b20476a0701990
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886753"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741762"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>A helyszíni Azure AD-beli jelszavas védelmi környezetek naplófájljainak figyelése és áttekintése
 
@@ -387,7 +387,7 @@ A fenti esemény nem határozza meg az újabb szoftver verzióját. Az adott inf
 
 Ezt az eseményt akkor is kibocsátja a rendszer, ha a proxykiszolgáló engedélyezve van az automatikus frissítés beállítással.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hibaelhárítás az Azure AD jelszavas védelméhez](howto-password-ban-bad-on-premises-troubleshoot.md)
 

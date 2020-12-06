@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/11/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9da0c00bd8498e3f43d5f8258308fbc010a6a274
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 35eff46a0470d429c8ec6f364ffa836501c65f47
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839522"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743598"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
 
@@ -135,7 +135,7 @@ Az eszközök jelenleg csak egyetlen bérlőben regisztrálhatók. Ez a korlát 
 > [!NOTE]
 > Az eszköz regisztrálása nem ugyanaz, mint az eszközkezelés vagy a mobileszköz-kezelés (MDM). Az eszközök regisztrálása csak az eszköz AZONOSÍTÓját és a felhasználói azonosítót társítja az Azure AD-címtárban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD-hitelesítéssel és a jelszóval nem rendelkező módszerekkel kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

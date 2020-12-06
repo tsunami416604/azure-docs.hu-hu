@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 267a543e771f33f0cfe1fac7abe225e3db2a8e3f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b23cf7abeb0aaf8bc3939296a307edb07ce5fcf0
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838740"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742476"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Az Azure Multi-Factor Authentication-kiszolgáló konfigurálása a magas rendelkezésre állás érdekében
 
@@ -76,6 +76,6 @@ Jegyezze fel a következő elemeket az előző diagram megfelelő számú terül
    ![Azure MFA-kiszolgáló – felhasználói portál és mobil App Service HA](./media/howto-mfaserver-deploy-ha/mfaportal.png)
 3. Az ADFS-kiszolgálófarm elosztott terhelésű, és a peremhálózaton elosztott terhelésű ADFS-proxyk használatával történik az interneten való közzététele. Minden ADFS-kiszolgáló az ADFS-ügynököt használja az Azure MFA-kiszolgálókkal való kommunikációhoz egyetlen terheléselosztási URL-cím (mfaapp.contoso.com) használatával a 443-as TCP-porton keresztül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure MFA-kiszolgáló telepítése és konfigurálása](howto-mfaserver-deploy.md)

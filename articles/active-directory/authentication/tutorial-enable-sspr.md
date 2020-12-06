@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59de3123dc991d0314cd9046d83712d17da53d9f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 924ff6091e7eb6633d36f75fd6d53745139454d7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837821"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741065"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Oktatóanyag: a felhasználók számára lehetővé teszi a fiók zárolásának feloldását vagy a jelszavak alaphelyzetbe állítását Azure Active Directory önkiszolgáló jelszó-visszaállítás használatával
 
@@ -75,7 +75,7 @@ Ha a felhasználóknak fel kell oldaniuk a fiókját, vagy alaphelyzetbe kell á
 
 1. Válassza ki **azokat a módszereket,** amelyeket a szervezetnek engedélyezni kíván a felhasználók számára. Ebben az oktatóanyagban a következő módszerekkel engedélyezheti a jelölőnégyzeteket:
 
-    * *Mobilalkalmazás-értesítés*
+    * *Mobile apps – értesítés*
     * *Mobilalkalmazás-kód*
     * *E-mail*
     * *Mobiltelefon*
@@ -139,7 +139,7 @@ Ha már nem szeretné használni az oktatóanyag részeként konfigurált SSPR f
 1. A **Tulajdonságok** lapon, az *önkiszolgáló jelszó-visszaállítás engedélyezése* lehetőségnél válassza a **nincs** lehetőséget.
 1. A SSPR módosításának alkalmazásához válassza a **Mentés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure AD önkiszolgáló jelszó-visszaállítását egy kiválasztott felhasználói csoport számára. Megtanulta végrehajtani az alábbi műveleteket:
 
@@ -149,4 +149,4 @@ Ebben az oktatóanyagban engedélyezte az Azure AD önkiszolgáló jelszó-vissz
 > * A SSPR folyamat tesztelése felhasználóként
 
 > [!div class="nextstepaction"]
-> [Azure AD-Multi-Factor Authentication engedélyezése](./tutorial-enable-azure-mfa.md)
+> [Az Azure AD többtényezős hitelesítés engedélyezése](./tutorial-enable-azure-mfa.md)

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4802c4faf245819f57f9885129fa876110407dd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f5df1cb158821fb0cd85d90f9ba3b79d80adf45
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965233"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743921"
 ---
 # <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>A helyszíni Azure AD-beli jelszavas védelem betartatása Active Directory tartományi szolgáltatások
 
@@ -51,7 +51,7 @@ Az Azure AD jelszavas védelem helyszíni AD DS környezetben való üzembe hely
 
 * Az Azure AD jelszavas védelem proxy szolgáltatása az aktuális AD DS erdőben található bármely tartományhoz csatlakoztatott gépen fut. A szolgáltatás elsődleges célja, hogy továbbítsa a szabályzatok letöltési kérelmeit a DCs-ből az Azure AD-be, majd visszaadja az Azure AD válaszait a TARTOMÁNYVEZÉRLŐnek.
 * A DC-ügynök jelszavas szűrő DLL-je fogadja a felhasználói jelszó-érvényesítési kérelmeket az operációs rendszertől. A szűrő továbbítja azokat a DC Agent szolgáltatásnak, amely helyileg fut a TARTOMÁNYVEZÉRLŐn.
-* Az Azure AD jelszavas védelem DC Agent szolgáltatása a DC-ügynök jelszavas szűrő DLL-fájljának jelszavas ellenőrzési kérelmeit fogadja. A DC Agent szolgáltatás az aktuális (helyileg elérhető) jelszóházirend használatával dolgozza fel azokat, és visszaadja az *pass* vagy a *Fail*eredményét.
+* Az Azure AD jelszavas védelem DC Agent szolgáltatása a DC-ügynök jelszavas szűrő DLL-fájljának jelszavas ellenőrzési kérelmeit fogadja. A DC Agent szolgáltatás az aktuális (helyileg elérhető) jelszóházirend használatával dolgozza fel azokat, és visszaadja az *pass* vagy a *Fail* eredményét.
 
 ## <a name="how-azure-ad-password-protection-works"></a>Az Azure AD jelszavas védelem működése
 
@@ -95,7 +95,7 @@ Az erdőben lévő AD DS erdőt és az összes telepített proxy szolgáltatást
 
 Az Azure AD jelszavas védelem két szükséges ügynök-telepítője a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=57071)érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A helyszíni Azure AD jelszavas védelem használatának megkezdéséhez kövesse az alábbi útmutatókat:
 

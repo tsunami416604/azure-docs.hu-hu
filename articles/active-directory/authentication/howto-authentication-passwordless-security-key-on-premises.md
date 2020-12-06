@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/09/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88cdad5b2b92d9b7449d93e1abeb09c08df89e7b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e1459442f7d99d1de88a685eed34493da530c1a4
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964757"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743479"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a helyszíni erőforrásokhoz Azure Active Directory használatával (előzetes verzió)
 
@@ -115,7 +115,7 @@ Ez a parancs kiírja az Azure AD Kerberos-kiszolgáló tulajdonságait. A tulajd
 | DomainDnsName | A Active Directory-tartomány DNS-tartományneve. |
 | ComputerAccount | Az Azure AD Kerberos-kiszolgáló objektum számítógépfiók-objektuma (a tartományvezérlő). |
 | Felhasználóifiók | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsát birtokló letiltott felhasználói fiók objektum. Ennek a fióknak a megkülönböztető neve `CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
-| Verziószám | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsának verziószáma. A verzió a kulcs létrehozásakor lesz hozzárendelve. Ekkor a rendszer a kulcs elforgatásakor minden alkalommal megnöveli a verziót. A növekmények a replikálási metaadatokon alapulnak, és valószínűleg nagyobbak. A kezdeti *verzió* például *192272*lehet. A kulcs első elforgatásakor a verzió a *212621*-as értékre léphet. A legfontosabb, hogy ellenőrizze, hogy a helyszíni objektum és a *CloudKeyVersion* a Felhőbeli objektumhoz tartozó *verziószáma* azonos-e. |
+| Verziószám | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsának verziószáma. A verzió a kulcs létrehozásakor lesz hozzárendelve. Ekkor a rendszer a kulcs elforgatásakor minden alkalommal megnöveli a verziót. A növekmények a replikálási metaadatokon alapulnak, és valószínűleg nagyobbak. A kezdeti *verzió* például *192272* lehet. A kulcs első elforgatásakor a verzió a *212621*-as értékre léphet. A legfontosabb, hogy ellenőrizze, hogy a helyszíni objektum és a *CloudKeyVersion* a Felhőbeli objektumhoz tartozó *verziószáma* azonos-e. |
 | KeyUpdatedOn | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsának dátuma és időpontja. |
 | KeyUpdatedFrom | Az a tartományvezérlő, ahol az Azure AD Kerberos-kiszolgáló TGT-titkosítási kulcsa utoljára frissült. |
 | CloudId | Az Azure AD-objektumból származó azonosító. Meg kell egyeznie a fenti AZONOSÍTÓval. |
@@ -190,13 +190,13 @@ A kulcsokat a Azure Portalból távolíthatja el, ha a **biztonsági adatok** la
 
 Ha a hibrid Azure AD-hez csatlakoztatott gép tiszta telepítését végzi, a tartományhoz való csatlakozás és az újraindítási folyamat után be kell jelentkeznie egy jelszóval, és meg kell várnia a házirend szinkronizálását, mielőtt használni tudná a bejelentkezést.
 
-- Az aktuális állapot ellenőrzéséhez írja `dsregcmd /status` be a parancsot egy parancssorablakba, és győződjön meg arról, hogy mind a *AzureAdJoined* , mind a *DomainJoined* *Igen értéket*jelenít meg.
+- Az aktuális állapot ellenőrzéséhez írja `dsregcmd /status` be a parancsot egy parancssorablakba, és győződjön meg arról, hogy mind a *AzureAdJoined* , mind a *DomainJoined* *Igen értéket* jelenít meg.
 - Ez a késés a tartományhoz csatlakoztatott eszközök ismert korlátozása, és nem a rendszer-specifikus.
 
 ### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>Nem tudom beolvasni az SSO-t az NTLM hálózati erőforráshoz a parancssori felülettel való bejelentkezés után, és hitelesítő adatok kérése
 
 Győződjön meg arról, hogy elegendő tartományvezérlő van, hogy az erőforrás-kérelem kiszolgálásához időben válaszoljon. Annak ellenőrzéséhez, hogy látható-e a szolgáltatást futtató tartományvezérlő, tekintse át a kimenetét `nltest /dsgetdc:contoso /keylist /kdc` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ a jelszóval nem rendelkező](concept-authentication-passwordless.md)

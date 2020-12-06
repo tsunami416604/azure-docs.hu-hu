@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27075af51c8deb886a060c81927f30bb70b5f638
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6d5517afe7407da7428d4a83f3d2de67836280c7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077659"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741898"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Azure AD jelszavas védelem a helyszínen – gyakori kérdések
 
@@ -103,7 +103,7 @@ Ezt a követelményt az alapvető Windows-viselkedés okozza.
 
 **K: van mód arra, hogy a tartományvezérlő-ügynököt egy adott proxykiszolgáló használatára konfigurálja?**
 
-Nincs. Mivel a proxykiszolgáló állapota nem megfelelő, nem fontos, hogy a rendszer mely konkrét proxykiszolgálót használja.
+Nem. Mivel a proxykiszolgáló állapota nem megfelelő, nem fontos, hogy a rendszer mely konkrét proxykiszolgálót használja.
 
 **K: rendben van az Azure AD-beli jelszavas védelem proxy szolgáltatásának üzembe helyezése más szolgáltatásokkal, például Azure AD Connectokkal?**
 
@@ -125,13 +125,13 @@ Ha azonban az aktuális tartományvezérlők már csak teljesítmény-korlátozo
 
 **K: szeretném tesztelni az Azure AD jelszavas védelmet a saját tartományában található néhány tartományvezérlőn. Lehetséges a felhasználói jelszó módosításának kényszerítése az adott tartományvezérlők használatára?**
 
-Nincs. A Windows ügyfél operációs rendszere határozza meg, hogy melyik tartományvezérlőt használja a rendszer, amikor a felhasználó megváltoztatja a jelszavát. A tartományvezérlő kiválasztására olyan tényezők alapján van kiválasztva, mint például a Active Directory hely és az alhálózati hozzárendelések, a környezet-specifikus hálózati konfiguráció stb. Az Azure AD jelszavas védelme nem szabályozza ezeket a tényezőket, és nem befolyásolhatja, hogy melyik tartományvezérlő van kiválasztva a felhasználó jelszavának módosításához.
+Nem. A Windows ügyfél operációs rendszere határozza meg, hogy melyik tartományvezérlőt használja a rendszer, amikor a felhasználó megváltoztatja a jelszavát. A tartományvezérlő kiválasztására olyan tényezők alapján van kiválasztva, mint például a Active Directory hely és az alhálózati hozzárendelések, a környezet-specifikus hálózati konfiguráció stb. Az Azure AD jelszavas védelme nem szabályozza ezeket a tényezőket, és nem befolyásolhatja, hogy melyik tartományvezérlő van kiválasztva a felhasználó jelszavának módosításához.
 
 A cél részleges elérésének egyik módja az Azure AD jelszavas védelem üzembe helyezése az adott Active Directory-hely összes tartományvezérlőjén. Ez a módszer ésszerű lefedettséget biztosít a helyhez hozzárendelt Windows-ügyfelek számára, ezért az ügyfeleknek bejelentkezett felhasználókra és a jelszavuk módosítására is érvényes lesz.
 
 **K: Ha az Azure AD jelszavas védelem DC Agent szolgáltatást csak az elsődleges tartományvezérlőn (PDC) telepíti, a rendszer a tartomány összes többi tartományvezérlőjén is védeni fogja?**
 
-Nincs. Ha egy felhasználó jelszava megváltozik egy adott nem PDC-alapú tartományvezérlőn, a rendszer soha nem továbbítja a tiszta szöveges jelszót az elsődleges tartományvezérlőnek (ez az ötlet egy gyakori helytelen érzékelés). Miután elfogadták az új jelszót egy adott TARTOMÁNYVEZÉRLŐn, a tartományvezérlő ezt a jelszót használja az adott jelszó különböző hitelesítési protokoll-specifikus kivonatának létrehozásához, majd megőrzi ezeket a kivonatokat a címtárban. A tiszta szöveges jelszó nem marad meg. A frissített kivonatok ezután replikálódnak az elsődleges tartományvezérlőre. Bizonyos esetekben előfordulhat, hogy a felhasználói jelszavakat közvetlenül az elsődleges tartományvezérlőn változtatják meg, a különböző tényezőktől, például a hálózati topológiától és a Active Directory hely kialakítástól függően. (Lásd az előző kérdést.)
+Nem. Ha egy felhasználó jelszava megváltozik egy adott nem PDC-alapú tartományvezérlőn, a rendszer soha nem továbbítja a tiszta szöveges jelszót az elsődleges tartományvezérlőnek (ez az ötlet egy gyakori helytelen érzékelés). Miután elfogadták az új jelszót egy adott TARTOMÁNYVEZÉRLŐn, a tartományvezérlő ezt a jelszót használja az adott jelszó különböző hitelesítési protokoll-specifikus kivonatának létrehozásához, majd megőrzi ezeket a kivonatokat a címtárban. A tiszta szöveges jelszó nem marad meg. A frissített kivonatok ezután replikálódnak az elsődleges tartományvezérlőre. Bizonyos esetekben előfordulhat, hogy a felhasználói jelszavakat közvetlenül az elsődleges tartományvezérlőn változtatják meg, a különböző tényezőktől, például a hálózati topológiától és a Active Directory hely kialakítástól függően. (Lásd az előző kérdést.)
 
 Összefoglalva, az Azure AD jelszavas védelem DC Agent szolgáltatásának az elsődleges tartományvezérlőn való üzembe helyezéséhez szükség van a szolgáltatás 100%-os biztonsági lefedettségének elérésére a tartományon belül. A szolgáltatás csak az elsődleges tartományvezérlőn való telepítése nem biztosít Azure AD jelszavas védelmet a tartomány bármely más tartományvezérlőjén.
 
@@ -141,7 +141,7 @@ Az egyéni intelligens zárolás csak az Azure AD-ben támogatott. Az Azure AD-p
 
 **K: System Center Operations Manager felügyeleti csomag elérhető az Azure AD jelszavas védelméhez?**
 
-Nincs.
+Nem.
 
 **K: az Azure AD továbbra is elutasítja a gyenge jelszavakat, bár úgy konfiguráltam, hogy a házirend naplózási módban legyen?**
 
@@ -149,7 +149,7 @@ A naplózási mód csak a helyszíni Active Directory környezetekben támogatot
 
 **K: a felhasználók a hagyományos Windows-hibaüzenetet látják, ha az Azure AD jelszavas védelme visszautasítja a jelszót. Lehet testreszabni ezt a hibaüzenetet, hogy a felhasználók tudják, mi történt valójában?**
 
-Nincs. A felhasználók által a tartományvezérlő által a jelszó elutasításakor megjelenő hibaüzenetet az ügyfélszámítógép nem a tartományvezérlő vezérli. Ez a viselkedés megtörténik, hogy a rendszer elutasítja-e a jelszót az alapértelmezett Active Directory jelszóházirend vagy egy jelszó-szűrő alapú megoldás, például az Azure AD jelszavas védelme.
+Nem. A felhasználók által a tartományvezérlő által a jelszó elutasításakor megjelenő hibaüzenetet az ügyfélszámítógép nem a tartományvezérlő vezérli. Ez a viselkedés megtörténik, hogy a rendszer elutasítja-e a jelszót az alapértelmezett Active Directory jelszóházirend vagy egy jelszó-szűrő alapú megoldás, például az Azure AD jelszavas védelme.
 
 ## <a name="additional-content"></a>További tartalom
 
@@ -165,7 +165,7 @@ Az alábbi hivatkozások nem részei az Azure AD jelszavas védelem alapszintű 
 
 Ha többet szeretne megtudni az Azure AD jelszavas védelméről, és üzembe helyezi azt a környezetében, kihasználhatja a Microsoft proaktív szolgáltatásának előnyeit a Premier vagy Unified támogatási szerződéssel rendelkező ügyfelek számára. A szolgáltatás neve Azure Active Directory: jelszavas védelem. További információért forduljon a technikai fiók kezelőjéhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha van olyan helyszíni Azure AD-beli jelszavas védelem kérdése, amely itt nem válaszol, küldje el az alábbi visszajelzési elemeket – Köszönjük!
 

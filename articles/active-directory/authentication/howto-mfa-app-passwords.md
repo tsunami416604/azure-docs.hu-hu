@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 282bf6a30d8ff70440999ff3763c0d5544ef428d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dfb38f9fcdba6898b690d0af68b715fea07e80bb
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839267"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743105"
 ---
 # <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Az Azure AD Multi-Factor Authentication engedélyezése és használata az alkalmazás jelszavait használó örökölt alkalmazásokkal
 
@@ -103,6 +103,6 @@ Amikor a felhasználók befejezik az Azure AD-Multi-Factor Authentication kezdet
 
 A felhasználók a regisztráció után is létrehozhatnak alkalmazás-jelszavakat. További információk és részletes lépések a felhasználók számára: Mik az [alkalmazások jelszavai az Azure ad-ben multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogyan engedélyezhető a felhasználók számára az Azure AD-Multi-Factor Authentication gyors regisztrálása: a [kombinált biztonsági információk regisztrációjának áttekintése](concept-registration-mfa-sspr-combined.md).

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2c5b37c713b69df56e938fdaa2a9134402d765
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6a764538ebc73927b1d274b2538e123ec90ce60e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173902"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741558"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Az Azure AD-jelszókezelés jelentéskészítési lehetőségei
 
@@ -43,7 +43,7 @@ A következő kérdéseket választhatja ki a [Azure Portalban](https://portal.a
 
 A Azure Portal-élményben továbbfejlesztettük a jelszavak alaphelyzetbe állítása és a jelszó-visszaállítás regisztrációs tevékenység megtekintésének módját. Az alábbi lépések segítségével megkeresheti a jelszó-visszaállítási és a jelszó-visszaállítási regisztrációs eseményeket:
 
-1. Keresse fel az [Azure Portalt](https://portal.azure.com).
+1. Tallózással keresse meg a [Azure Portal](https://portal.azure.com).
 2. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget.
 3. Keresse meg **Azure Active Directory** a szolgáltatások listájában, és válassza ki.
 4. Válassza a **felhasználók** lehetőséget a kezelés szakaszban.
@@ -169,7 +169,7 @@ A következő lista részletesen ismerteti ezt a tevékenységet:
      >[!NOTE]
      >A hiba nem jelenti azt, hogy a felhasználó nem tudja visszaállítani a saját jelszavát. Ez azt jelenti, hogy nem fejezték be a regisztrációs folyamatot. Ha a fiókjában nem ellenőrzött adatok szerepelnek, például a telefonszámot, amely nincs érvényesítve, még akkor is, ha nem ellenőrizte ezt a telefonszámot, továbbra is használhatja a jelszavát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [SSPR és MFA-használati és-bejelentési jelentések](howto-authentication-methods-usage-insights.md)
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)

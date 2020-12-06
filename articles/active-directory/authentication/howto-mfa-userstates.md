@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 08/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 240fb04068f255128f33e79748762305e4d6b704
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 749829f641119273813d3c8ca826daf8b4dc4d11
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838774"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742663"
 ---
 # <a name="enable-per-user-azure-ad-multi-factor-authentication-to-secure-sign-in-events"></a>Felhasználónkénti Azure AD-Multi-Factor Authentication engedélyezése a bejelentkezési események biztonságossá tételéhez
 
@@ -182,7 +182,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 > [!NOTE]
 > Ha a többtényezős hitelesítés engedélyezve van egy felhasználón, és a felhasználó nem regisztrálja újra, az MFA-állapota nem *válik lehetővé* , hogy az MFA felügyeleti felhasználói felületén *érvénybe* lépjen. Ebben az esetben a rendszergazdának közvetlenül kell áthelyeznie a felhasználót a *kényszerített* értékre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD Multi-Factor Authentication beállításainak konfigurálásával kapcsolatban lásd: az  [Azure ad multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md).
 

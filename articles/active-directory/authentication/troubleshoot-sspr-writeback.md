@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/26/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9664518a7e8ec505a2823cdd5f17d6fa8a7db8b
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 6a3044127aacb5910a270d40d94d3255031a71a2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925798"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741303"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Az önkiszolgáló jelszó-visszaállítási visszaírási hibáinak megoldása Azure Active Directory
 
@@ -66,15 +66,15 @@ Ha a Azure AD Connect Sync szolgáltatás újraindítása nem oldja meg a probl�
 
 A problémák elhárításához végezze el a következő lépéseket a jelszó visszaírási szolgáltatás letiltásához és újbóli engedélyezéséhez:
 
-1. A Azure AD Connectt futtató kiszolgáló rendszergazdája nyissa meg a **Azure ad Connect konfigurációs varázslót** .
+1. A Azure AD Connectt futtató kiszolgáló rendszergazdája nyissa meg a **Azure ad Connect konfigurációs varázslót**.
 1. A **Kapcsolódás az Azure ad-hoz** mezőbe írja be az Azure ad globális rendszergazdai hitelesítő adatait.
 1. A **kapcsolódás ad DShoz** mezőben adja meg a helyszíni Active Directory tartományi szolgáltatások rendszergazdai hitelesítő adatait.
 1. A **felhasználók egyedi azonosításához** kattintson a **tovább** gombra.
 1. A **választható funkciók** területen törölje a **jelszó visszaírási** jelölőnégyzet jelölését.
 1. Kattintson a **tovább** gombra a fennmaradó párbeszédpaneleken, anélkül, hogy bármit módosítaná, amíg be nem fejeződik a **konfigurálásra kész** lapra.
-1. Győződjön meg arról, hogy a **konfigurálásra kész lapon** a *jelszó visszaírási* beállítás *le van tiltva* . A módosítások elvégzéséhez kattintson a zöld **beállítás** gombra.
+1. Győződjön meg arról, hogy a **konfigurálásra kész lapon** a *jelszó visszaírási* beállítás *le van tiltva*. A módosítások elvégzéséhez kattintson a zöld **beállítás** gombra.
 1. A **kész** területen törölje a **szinkronizálás most** lehetőséget, majd kattintson a **Befejezés** gombra a varázsló bezárásához.
-1. Nyissa meg újra a **Azure ad Connect konfigurációs varázslót** .
+1. Nyissa meg újra a **Azure ad Connect konfigurációs varázslót**.
 1. Ismételje meg a 2-8 lépést, ezúttal a **választható szolgáltatások** lapon a *jelszó visszaírási* lehetőség kiválasztásával engedélyezze újra a szolgáltatást.
 
 Ezek a lépések újra létrehozza a kapcsolatot az Azure AD-vel, és fel kell oldania a kapcsolódási problémákat.
@@ -104,29 +104,29 @@ A Azure AD Connect megköveteli a jelszó- **visszaállítási** engedély AD DS
 1. Jelentkezzen be a Azure ad Connect-kiszolgálóra, és indítsa el a **synchronization Service Manager** a **Start**  >  **szinkronizációs szolgáltatás** elindítása lehetőség kiválasztásával.
 1. Az **Összekötők** lapon válassza ki a helyszíni **Active Directory tartományi szolgáltatások** -összekötőt, majd válassza a **Tulajdonságok** lehetőséget.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="A Azure AD-szinkronizáló szolgáltatás újraindítása a grafikus felhasználói felület használatával" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="A tulajdonságok szerkesztését bemutató Synchronization Service Manager" border="false":::
   
 1. Az előugró ablakban válassza a **kapcsolódás Active Directory erdőhöz** lehetőséget, és jegyezze fel a **Felhasználónév** tulajdonságot. Ez a tulajdonság a Azure AD Connect által a címtár-szinkronizálás végrehajtásához használt AD DS fiók.
 
     A jelszó-visszaírási elvégzéséhez a AD DS fióknak új jelszó kérése engedéllyel kell rendelkeznie. Azure AD Connect A következő lépésekben ellenőrizheti a felhasználói fiók engedélyeit.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="A Azure AD-szinkronizáló szolgáltatás újraindítása a grafikus felhasználói felület használatával" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="A szinkronizálási szolgáltatás megkeresése Active Directory felhasználói fiókkal" border="false":::
   
 1. Jelentkezzen be egy helyszíni tartományvezérlőre, és indítsa el a **Active Directory felhasználók és számítógépek** alkalmazást.
 1. Válassza a nézet lehetőséget, és győződjön **meg** arról, hogy a **speciális szolgáltatások** beállítás engedélyezve van.  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="A Azure AD-szinkronizáló szolgáltatás újraindítása a grafikus felhasználói felület használatával" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="Active Directory felhasználók és számítógépek speciális funkciókat mutatnak be" border="false":::
   
 1. Keresse meg az ellenőrizni kívánt AD DS felhasználói fiókot. Kattintson a jobb gombbal a fiók nevére, és válassza a **Tulajdonságok** lehetőséget.  
 1. Az előugró ablakban lépjen a **Biztonság** lapra, és válassza a **speciális** lehetőséget.  
 1. A rendszergazda előugró ablak **speciális biztonsági beállításai** lapján lépjen a **hatályos hozzáférés** lapra.
 1. Válassza a **felhasználó kiválasztása** lehetőséget, válassza ki a Azure ad Connect által használt AD DS fiókot, majd válassza a **hatályos hozzáférés megtekintése** lehetőséget.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="A Azure AD-szinkronizáló szolgáltatás újraindítása a grafikus felhasználói felület használatával" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="A szinkronizálási fiókot megjelenítő hatályos hozzáférés lap" border="false":::
   
-1. Görgessen lefelé, és keresse meg a **jelszó alaphelyzetbe állítása** . Ha a bejegyzésben pipa szerepel, a AD DS fiók jogosult a kiválasztott Active Directory felhasználói fiók jelszavának alaphelyzetbe állítására.  
+1. Görgessen lefelé, és keresse meg a **jelszó alaphelyzetbe állítása**. Ha a bejegyzésben pipa szerepel, a AD DS fiók jogosult a kiválasztott Active Directory felhasználói fiók jelszavának alaphelyzetbe állítására.  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="A Azure AD-szinkronizáló szolgáltatás újraindítása a grafikus felhasználói felület használatával" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="Annak ellenőrzése, hogy a szinkronizálási fiók a jelszó alaphelyzetbe állítása engedéllyel rendelkezik-e" border="false":::
 
 ## <a name="common-password-writeback-errors"></a>Gyakori jelszó-visszaírási hibák
 
@@ -135,7 +135,7 @@ A jelszó visszaírási a következő konkrétabb problémák merülhetnek fel. 
 | Hiba | Megoldás |
 | --- | --- |
 | A jelszó-visszaállítási szolgáltatás nem indul el a helyszínen. 6800-es hiba jelenik meg az Azure AD Connect gép alkalmazás-eseménynaplójában. <br> <br> A bevezetést, az összevont, az átmenő hitelesítést, vagy a jelszó-kivonattal szinkronizált felhasználók nem állíthatják alaphelyzetbe a jelszavukat. | Ha a jelszó visszaírási engedélyezve van, a Szinkronizáló motor meghívja a visszaírási-könyvtárat a konfiguráció (Bevezetés) elvégzéséhez a felhőalapú bevezetési szolgáltatással való kommunikációval. Az előkészítés során felmerülő hibák, illetve a jelszó-visszaírási Windows Communication Foundation-(WCF-) végpontjának elindítása a Azure AD Connect gép eseménynaplójában hibákat eredményez. <br> <br> A Azure AD-szinkronizáló (ADSync) szolgáltatás újraindításakor, ha a visszaírási konfigurálva lett, a WCF-végpont elindul. Ha azonban a végpont indítása sikertelen, akkor a 6800-es eseményt naplózza, és a szinkronizálási szolgáltatás indítását is lehetővé teszi. Ennek az eseménynek a jelenléte azt jelenti, hogy a jelszó visszaírási végpontja nem indult el. A 6800-es esemény eseménynaplójának adatai, valamint az PasswordResetService összetevő által generált Eseménynapló-bejegyzések, azt jelzi, hogy miért nem indítható el a végpont. Tekintse át ezeket az Eseménynapló-hibákat, és próbálja meg újraindítani a Azure AD Connect, ha a jelszó visszaírási továbbra sem működik. Ha a probléma továbbra is fennáll, próbálja meg letiltani, majd ismét engedélyezni a jelszó-visszaírási.
-| Ha a felhasználó egy jelszó alaphelyzetbe állítását vagy egy olyan fiók zárolásának feloldását kísérli meg, amelyen engedélyezve van a jelszó visszaírási, a művelet sikertelen lesz. <br> <br> Emellett megjelenik egy olyan esemény a Azure AD Connect eseménynaplóban, amely tartalmazza a következőt: "a szinkronizációs motor hibát jelzett, HR = 800700CE, üzenet = a fájlnév vagy a kiterjesztés túl hosszú" a feloldási művelet után. | Keresse meg a Azure AD Connect Active Directory fiókját, és állítsa alaphelyzetbe a jelszót, hogy ne tartalmazzon több mint 256 karaktert. Ezután nyissa meg a **szinkronizálási szolgáltatást** a **Start** menüből. Tallózással keresse meg az **összekötőket** , és keresse meg az **Active Directory-összekötőt** . Jelölje ki, majd válassza a **Tulajdonságok** lehetőséget. Keresse meg a **hitelesítő adatok** lapot, és adja meg az új jelszót. A lap bezárásához kattintson **az OK gombra** . |
+| Ha a felhasználó egy jelszó alaphelyzetbe állítását vagy egy olyan fiók zárolásának feloldását kísérli meg, amelyen engedélyezve van a jelszó visszaírási, a művelet sikertelen lesz. <br> <br> Emellett megjelenik egy olyan esemény a Azure AD Connect eseménynaplóban, amely tartalmazza a következőt: "a szinkronizációs motor hibát jelzett, HR = 800700CE, üzenet = a fájlnév vagy a kiterjesztés túl hosszú" a feloldási művelet után. | Keresse meg a Azure AD Connect Active Directory fiókját, és állítsa alaphelyzetbe a jelszót, hogy ne tartalmazzon több mint 256 karaktert. Ezután nyissa meg a **szinkronizálási szolgáltatást** a **Start** menüből. Tallózással keresse meg az **összekötőket** , és keresse meg az **Active Directory-összekötőt**. Jelölje ki, majd válassza a **Tulajdonságok** lehetőséget. Keresse meg a **hitelesítő adatok** lapot, és adja meg az új jelszót. A lap bezárásához kattintson **az OK gombra** . |
 | A Azure AD Connect telepítési folyamatának utolsó lépéseként megjelenik egy hibaüzenet, amely azt jelzi, hogy a jelszó visszaírási nem konfigurálható. <br> <br> A Azure AD Connect alkalmazás eseménynaplójában a "hiba történt az Auth-token beszerzése" hibaüzenet szövege 32009 szerepel. | Ez a hiba a következő két esetben fordul elő: <br><ul><li>Helytelen jelszót adott meg a Azure AD Connect telepítési folyamat elején megadott globális rendszergazdai fiókhoz.</li><li>Egy összevont felhasználót próbált használni a Azure AD Connect telepítési folyamatának elején megadott globális rendszergazdai fiókhoz.</li></ul> A probléma megoldásához ellenőrizze, hogy nem használ-e összevont fiókot a telepítési folyamat elején megadott globális rendszergazda számára, és hogy a megadott jelszó helyes-e. |
 | A Azure AD Connect Machine eseménynaplója a PasswordResetService futtatásával eldobott 32002-es hibát tartalmaz. <br> <br> A hiba szövege: "hiba történt a ServiceBus való csatlakozáskor. A jogkivonat-szolgáltató nem tudott biztonsági jogkivonatot biztosítani. " | A helyszíni környezet nem tud csatlakozni a felhőben lévő Azure Service Bus végponthoz. Ezt a hibát általában egy tűzfalszabály okozta, amely blokkolja a kimenő kapcsolatokat egy adott porton vagy webcímen. További információért lásd a [kapcsolat előfeltételeit](../hybrid/how-to-connect-install-prerequisites.md) . A szabályok frissítése után indítsa újra a Azure AD Connect-kiszolgálót, és a jelszó visszaírási újra kell kezdenie a munkát. |
 | Néhány alkalommal, összevont, átmenő hitelesítés vagy jelszó-kivonatoló szinkronizált felhasználó használata után nem állíthatja alaphelyzetbe a jelszavukat. | Bizonyos ritka esetekben előfordulhat, hogy a jelszó-visszaírási szolgáltatás nem tud újraindulni, amikor a Azure AD Connect újraindul. Ezekben az esetekben először ellenőrizze, hogy a jelszó visszaírási engedélyezve van-e a helyszínen. A Azure AD Connect varázsló vagy a PowerShell használatával is megtekintheti. Ha úgy tűnik, hogy a funkció engedélyezve van, próbálkozzon újra a szolgáltatás engedélyezésével vagy letiltásával. Ha ez a hibaelhárítási lépés nem működik, próbálkozzon a Azure AD Connect teljes eltávolításával és újratelepítésével. |
@@ -150,7 +150,7 @@ Az ajánlott eljárás, ha a jelszó visszaírási kapcsolatos problémák elhá
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Ha az esemény forrása ADSync
 
-| Code | Név vagy üzenet | Leírás |
+| Kód | Név vagy üzenet | Leírás |
 | --- | --- | --- |
 | 6329 | ÓVADÉK: MMS (4924) 0x80230619: "A korlátozás megakadályozza a jelszó módosítását az aktuálisan megadott értékre." | Ez az esemény akkor fordul elő, ha a Password visszaírási szolgáltatás olyan jelszót próbál meg beállítani a helyi címtárban, amely nem felel meg a tartomány jelszavának életkora, előzményei, összetettsége vagy szűrési követelményeinek. <br> <br> Ha a jelszó minimális kora, és a közelmúltban módosította a jelszót az adott időkereten belül, nem tudja újra módosítani a jelszót, amíg el nem éri a megadott kort a tartományban. Tesztelési célból a minimális korhatárt 0-ra kell állítani. <br> <br> Ha engedélyezve van a jelszó-előzményekre vonatkozó követelmények, ki kell választania az utolsó *N* -időpontban nem használt jelszót, ahol *N* a korábbi jelszavakat tartalmazó beállítás. Ha olyan jelszót választ, amelyet az utolsó *N* alkalommal használt, akkor ebben az esetben hiba jelenik meg. Tesztelési célból a korábbi jelszavakat 0-ra kell állítani. <br> <br> Ha a jelszó bonyolultságára vonatkozó követelményekkel rendelkezik, mindegyiket kényszeríti a rendszer, amikor a felhasználó megpróbál változtatni vagy alaphelyzetbe állítani egy jelszót. <br> <br> Ha engedélyezve vannak a jelszavas szűrők, és a felhasználó olyan jelszót választ, amely nem felel meg a szűrési feltételeknek, akkor az Alaphelyzetbe állítás vagy a módosítás művelet meghiúsul. |
 | 6329 | MMS (3040): admaexport. cpp (2837): a kiszolgáló nem tartalmazza az LDAP-jelszó házirendjének vezérlőjét. | Ez a probléma akkor fordul elő, ha LDAP_SERVER_POLICY_HINTS_OID vezérlő (1.2.840.113556.1.4.2066) nincs engedélyezve a tartományvezérlőn. A jelszó-visszaírási funkció használatához engedélyeznie kell a vezérlőt. Ehhez a tartományvezérlőknek Windows Server 2008R2 vagy újabb rendszeren kell lenniük. |
@@ -158,7 +158,7 @@ Az ajánlott eljárás, ha a jelszó visszaírási kapcsolatos problémák elhá
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Ha az esemény forrása PasswordResetService
 
-| Code | Név vagy üzenet | Leírás |
+| Kód | Név vagy üzenet | Leírás |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | Ez az esemény azt jelzi, hogy a helyszíni szolgáltatás új jelszó kérését észlelte egy összevont, átmenő hitelesítés vagy jelszó-kivonatoló szinkronizált felhasználó számára, amely a felhőből származik. Ez az esemény az első esemény minden jelszó-visszaállítási visszaírási művelet során. |
 | 31002 | PasswordResetSuccess | Ez az esemény azt jelzi, hogy a felhasználó új jelszót adott meg a jelszó-visszaállítási művelet során. Megállapítottuk, hogy ez a Jelszó megfelel a vállalati jelszó követelményeinek. A jelszót sikerült visszaírni a helyi Active Directory környezetbe. |
@@ -213,23 +213,23 @@ Ha nem találja a választ a problémára, a támogatási csapatunk mindig szív
 
 A megfelelő segítség érdekében kérjük, hogy az esetek megnyitásakor a lehető legrészletesebben adja meg az adatokat. Ezek az adatok a következőket tartalmazzák:
 
-* **A hiba általános leírása** : mi a hiba? Mi volt az észlelt viselkedés? Hogyan lehet reprodukálni a hibát? A lehető legrészletesebben adja meg az adatokat.
-* **Page** : milyen oldalon voltál a hiba? Adja meg az URL-címet, ha tudja, és képernyőképet is tartalmaz az oldalról.
-* **Támogatási kód** : mi volt a támogatási kód, amely akkor jött létre, amikor a felhasználó meglátta a hibát?
+* **A hiba általános leírása**: mi a hiba? Mi volt az észlelt viselkedés? Hogyan lehet reprodukálni a hibát? A lehető legrészletesebben adja meg az adatokat.
+* **Page**: milyen oldalon voltál a hiba? Adja meg az URL-címet, ha tudja, és képernyőképet is tartalmaz az oldalról.
+* **Támogatási kód**: mi volt a támogatási kód, amely akkor jött létre, amikor a felhasználó meglátta a hibát?
    * A kód megkereséséhez reprodukálja a hibát, majd válassza a képernyő alján található **támogatási kód** hivatkozást, majd küldje el az eredményeket tartalmazó GUID-t a támogatási szakembernek.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="A Azure AD-szinkronizáló szolgáltatás újraindítása a grafikus felhasználói felület használatával":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="A támogatási kód a webböngésző ablakának jobb alsó sarkában található.":::
 
   * Ha egy oldalon nem található támogatási kód, válassza az F12 lehetőséget, és keresse meg a SID és a CID kifejezést, és küldje el a két eredményt a támogatási szakembernek.
-* **Dátum, idő és időzóna** : adja meg a pontos dátumot és időt a hiba előfordulási *időzónájában* .
-* **Felhasználói azonosító** : ki volt a felhasználó, aki látta a hibát? Ilyen például a *felhasználói \@ contoso.com* .
+* **Dátum, idő és időzóna**: adja meg a pontos dátumot és időt a hiba előfordulási *időzónájában* .
+* **Felhasználói azonosító**: ki volt a felhasználó, aki látta a hibát? Ilyen például a *felhasználói \@ contoso.com*.
    * Ez egy összevont felhasználó?
    * Ez egy áteresztő hitelesítési felhasználó?
    * Ez egy jelszó-kivonattal szinkronizált felhasználó?
    * Ez egy csak felhőalapú felhasználó?
-* **Licencelés** : van-e hozzárendelve a felhasználó Azure ad-licenccel?
-* **Alkalmazás-eseménynapló** : ha jelszó-visszaírási használ, és a hiba a helyszíni infrastruktúrában található, az alkalmazás eseménynaplójának tömörített másolatát adja meg az Azure ad Connect-kiszolgálóról.
+* **Licencelés**: van-e hozzárendelve a felhasználó Azure ad-licenccel?
+* **Alkalmazás-eseménynapló**: ha jelszó-visszaírási használ, és a hiba a helyszíni infrastruktúrában található, az alkalmazás eseménynaplójának tömörített másolatát adja meg az Azure ad Connect-kiszolgálóról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a SSPR-ről [: Hogyan működik az Azure ad önkiszolgáló jelszó-visszaállítás](concept-sspr-howitworks.md) , vagy [Hogyan működik az önkiszolgáló jelszó-visszaállítási VISSZAÍRÁSI az Azure ad-ben?](concept-sspr-writeback.md).

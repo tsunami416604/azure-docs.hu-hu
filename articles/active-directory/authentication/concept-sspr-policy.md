@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b1583307771dd58053128d71cb0ae5dd7e709f68
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 344fee9482cd935375d25fab80b1f365d72586f8
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174381"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743666"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Jelszóházirend és a fiókra vonatkozó korlátozások a Azure Active Directoryban
 
@@ -176,7 +176,7 @@ A modul telepítése után a következő lépésekkel hajtsa végre az egyes fel
    > [!WARNING]
    > `-PasswordPolicies DisablePasswordExpiration`A jelszavak az attribútum alapján még mindig korra vannak állítva `pwdLastSet` . `pwdLastSet`Ha az attribútum alapján módosítja a lejárati `-PasswordPolicies None` időt, a `pwdLastSet` 90 napnál régebbi jelszavakhoz a felhasználónak a következő bejelentkezéskor módosítania kell a felhasználókat. Ez a változás nagy mennyiségű felhasználót érinthet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A SSPR használatának megkezdéséhez tekintse meg az [oktatóanyag: a felhasználók számára a fiók zárolásának feloldását vagy a jelszavak visszaállítását Azure Active Directory önkiszolgáló jelszó-visszaállítással](tutorial-enable-sspr.md).
 

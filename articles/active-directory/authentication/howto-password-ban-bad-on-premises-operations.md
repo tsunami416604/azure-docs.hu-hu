@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d72aa65f18896ebbecf651da32558059ba782cc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f2e11fa1bb9f1d3a3986a19da8ed44229829ec81
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968395"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741779"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem engedélyezése
 
@@ -33,12 +33,12 @@ Ez a cikk bemutatja, hogyan engedélyezheti az Azure AD jelszavas védelmet a he
 ## <a name="enable-on-premises-password-protection"></a>Helyszíni jelszavas védelem engedélyezése
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg **Azure Active Directory**  >  **biztonsági**  >  **hitelesítési módszerek**  >  **jelszavas védelmét**.
-1. Állítsa be a **jelszavas védelem engedélyezésének lehetőségét a Windows Server Active Directory** az *Igen*értékre.
+1. Állítsa be a **jelszavas védelem engedélyezésének lehetőségét a Windows Server Active Directory** az *Igen* értékre.
 
-    Ha ez a beállítás a *nem*értékre van állítva, az összes telepített Azure ad-beli jelszavas védelmi tartományvezérlő-ügynök nyugalmi módba kerül, ahol az összes jelszó elfogadva van. Nem végeznek érvényesítési tevékenységet, és nem jönnek létre naplózási események.
+    Ha ez a beállítás a *nem* értékre van állítva, az összes telepített Azure ad-beli jelszavas védelmi tartományvezérlő-ügynök nyugalmi módba kerül, ahol az összes jelszó elfogadva van. Nem végeznek érvényesítési tevékenységet, és nem jönnek létre naplózási események.
 
 1. Azt javasoljuk, hogy először állítsa be a **módot** a *naplózásra*. A funkció és a szervezet felhasználóira gyakorolt hatása után a mód *kényszerített* **állapotra** vált. További információkért lásd a következő szakaszt a [működésének módjáról](#modes-of-operation).
-1. Ha elkészült, válassza a **Mentés**lehetőséget.
+1. Ha elkészült, válassza a **Mentés** lehetőséget.
 
     [![Helyszíni jelszavas védelem engedélyezése a Azure Portal hitelesítési módszereiben](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png)](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 
@@ -67,7 +67,7 @@ Előfordulhat, hogy az érintett végfelhasználóknak az informatikai személyz
 > [!NOTE]
 > Az Azure AD jelszavas védelme nem szabályozza az ügyfélszámítógép által a gyenge jelszavak elutasításakor megjelenő hibaüzenetet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha testre szeretné szabni a tiltott jelszavak listáját a szervezet számára, tekintse meg [Az Azure ad jelszavas védelem egyéni tiltott jelszavak listájának konfigurálása](tutorial-configure-custom-password-protection.md)című témakört.
 

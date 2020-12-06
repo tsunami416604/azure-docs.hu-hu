@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd9b07f1f7aed479e94e77a5641130cb784dd69e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74847849"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741966"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Az Azure AD jelszavas védelmi ügynök korábbi verziói
 
@@ -44,7 +44,7 @@ Kiadás dátuma: 3/13/2019
 * Az automatikus frissítés a Set-AzureADPasswordProtectionProxyConfiguration parancsmag használatával engedélyezhető vagy letiltható. Az aktuális beállítás a Get-AzureADPasswordProtectionProxyConfiguration parancsmag használatával kérdezhető le.
 * A DC Agent szolgáltatáshoz tartozó bináris fájl átnevezve lett AzureADPasswordProtectionDCAgent.exera.
 * A proxy szolgáltatáshoz tartozó bináris fájl át lett nevezve AzureADPasswordProtectionProxy.exera. Előfordulhat, hogy a tűzfalszabályok módosítására van szükség, ha egy külső gyártótól származó tűzfal van használatban.
-  * Megjegyzés: Ha egy http-proxy konfigurációs fájlját egy korábbi proxy telepítésekor használták, akkor a frissítés után átnevezni kell ( *proxyservice.exe.configról * *AzureADPasswordProtectionProxy.exe.config*).
+  * Megjegyzés: Ha egy http-proxy konfigurációs fájlját egy korábbi proxy telepítésekor használták, akkor a frissítés után átnevezni kell ( *proxyservice.exe.configról* *AzureADPasswordProtectionProxy.exe.config*).
 * Az összes időkorlátos funkció-ellenőrzés el lett távolítva a DC-ügynökből.
 * A kisebb hibák javításai és naplózási funkciói.
 

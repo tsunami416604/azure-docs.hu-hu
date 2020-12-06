@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 08/31/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: abdfbc92af3617a7a13a2e4f603de9c1cc3959af
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8340712e10721374bb2f0a35ac2e2e9a6abf181c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174330"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743037"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló (NPS) infrastruktúrájának integrálása az Azure AD-vel Multi-Factor Authentication
 
@@ -392,7 +392,7 @@ Javasoljuk, hogy a régebbi és gyengébb titkosítási csomagokat tiltsa le, va
 
 További hibaelhárítási útmutatást és lehetséges megoldásokat a cikkben talál, az [Azure AD multi-Factor Authentication hálózati házirend-kiszolgáló bővítményével kapcsolatos hibaüzenetek megoldásához](howto-mfa-nps-extension-errors.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A hálózati házirend-kiszolgáló áttekintése és konfigurálása a Windows Server rendszerben](/windows-server/networking/technologies/nps/nps-top)
 

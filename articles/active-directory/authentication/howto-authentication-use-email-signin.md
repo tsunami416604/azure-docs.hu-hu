@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 10/01/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: c3fcff5673f4498e92f5d66fe96d806a08527197
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: ff6ae6ea6812397e737deb4b97bf1cd15e022c03
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576019"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743173"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Bejelentkezés Azure Active Directory az e-mail-cím használata másodlagos bejelentkezési AZONOSÍTÓként (előzetes verzió)
 
@@ -30,7 +30,7 @@ Néhány szervezet nem helyezte át a hibrid hitelesítést a következő okok m
 * Az Azure AD UPN módosítása helytelen egyezést hoz létre az olyan helyszíni és Azure AD-környezetek között, amelyek bizonyos alkalmazásokkal és szolgáltatásokkal kapcsolatos problémákat okozhatnak.
 * Az üzleti vagy megfelelőségi okok miatt a szervezet nem szeretné a helyszíni UPN-t használni az Azure AD-be való bejelentkezéshez.
 
-Ha segítségre van szüksége a hibrid hitelesítésre való áttéréshez, beállíthatja az Azure AD-t, hogy a felhasználók a hitelesített tartományba tartozó e-mailben jelentkezzenek be egy másik bejelentkezési AZONOSÍTÓként. Ha például a *contoso* a *Fabrikam* -re lett átnevezve, és nem kívánja tovább használni az örökölt `balas@contoso.com` UPN-t, a rendszer mostantól másodlagos Bejelentkezési azonosítóként is használhatja az e-mailt. Egy alkalmazáshoz vagy szolgáltatáshoz való hozzáféréshez a felhasználók a hozzárendelt e-mail-cím használatával bejelentkeznek az Azure AD-be, például: `balas@fabrikam.com` .
+Ha segítségre van szüksége a hibrid hitelesítésre való áttéréshez, beállíthatja az Azure AD-t, hogy a felhasználók a hitelesített tartományba tartozó e-mailben jelentkezzenek be egy másik bejelentkezési AZONOSÍTÓként. Ha például a *contoso* a *Fabrikam*-re lett átnevezve, és nem kívánja tovább használni az örökölt `balas@contoso.com` UPN-t, a rendszer mostantól másodlagos Bejelentkezési azonosítóként is használhatja az e-mailt. Egy alkalmazáshoz vagy szolgáltatáshoz való hozzáféréshez a felhasználók a hozzárendelt e-mail-cím használatával bejelentkeznek az Azure AD-be, például: `balas@fabrikam.com` .
 
 Ez a cikk bemutatja, hogyan engedélyezheti és használhatja az e-maileket alternatív bejelentkezési AZONOSÍTÓként. Ez a funkció a ingyenes Azure AD Edition és újabb verziókban érhető el.
 
@@ -250,7 +250,7 @@ Ha a felhasználók az e-mail-címükkel ütköznek a bejelentkezési események
     Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a hibrid identitásról, például a Azure AD alkalmazás proxyról vagy Azure AD Domain Servicesról, tekintse [meg az Azure ad hibrid identitást a helyszíni számítási feladatok eléréséhez és kezeléséhez][hybrid-overview].
 

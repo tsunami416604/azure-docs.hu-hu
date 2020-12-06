@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25c6ccb4661fde1efb088cd8535bf2759f2057b3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 04a46a691b2f629b64cfe09c22813b05c593af1c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95902760"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743462"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a Windows 10-es eszközökre Azure Active Directory (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek 
 
 | Eszköz típusa | Azure AD-hez csatlakoztatva | csatlakozik a Hibrid Azure AD-hez |
 | --- | --- | --- |
-| [Azure AD-Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
+| [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
 | [A kombinált biztonsági információk regisztrációjának előzetes verziója](concept-registration-mfa-sspr-combined.md) | X | X |
 | Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | A WebAuthN a Windows 10 1903-es vagy újabb verzióját igényli | X | X |
@@ -113,7 +113,7 @@ Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telep
 1. Adjon nevet a projektnek, és jegyezze fel a projekt létrehozási útját, majd kattintson a **tovább** gombra.
 1. Hagyja kiválasztva a *kiépítési csomagot* a **kiválasztott projekt-munkafolyamatként** , és válassza a **tovább** lehetőséget.
 1. Válassza ki az *összes Windows asztali kiadás* elemet a **válassza ki a megtekinteni és konfigurálni kívánt beállításokat**, majd kattintson a **tovább** gombra.
-1. Válassza a **Befejezés** lehetőséget.
+1. Válassza a **Befejezés** gombot.
 1. Az újonnan létrehozott projektben keresse meg a **Futásidejű beállítások**  >  **WindowsHelloForBusiness**  >  **SecurityKeys**  >  **UseSecurityKeyForSignIn**.
 1. Állítsa be a **UseSecurityKeyForSignIn** beállítást *engedélyezve* értékre.
 1. Válassza **Export** ki a  >  **kiépítési csomag** exportálása lehetőséget

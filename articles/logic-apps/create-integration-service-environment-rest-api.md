@@ -5,30 +5,39 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 427b488fe6673bef505fccdaa7185d69437bceaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/05/2020
+ms.openlocfilehash: 783431c4888a68e24cf3d2603c541c4797ea65d8
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231316"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741099"
 ---
-# <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Integrációs szolgáltatási környezet (ISE) létrehozása a Logic Apps használatával REST API
+# <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Integrációs szolgáltatási környezet (ISE) létrehozása a Logic Apps REST API-val
 
-Ez a cikk bemutatja, hogyan hozhat létre [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a Logic apps REST API olyan helyzetekben, ahol a logikai alkalmazások és az integrációs fiókok hozzáférést igényelnek egy Azure-beli [virtuális hálózathoz](../virtual-network/virtual-networks-overview.md). Az ISE egy dedikált környezet, amely dedikált tárterületet és egyéb, a „globális”, több-bérlős Logic Apps-szolgáltatástól elkülönített erőforrásokat használ. Ez a elkülönítés azt is csökkenti, hogy más Azure-bérlők milyen hatással lehetnek az alkalmazások teljesítményére. Egy ISE saját statikus IP-címeket is biztosít. Ezek az IP-címek a nyilvános, több-bérlős szolgáltatásban a logikai alkalmazások által megosztott statikus IP-címektől eltérnek.
+Olyan esetekben, amikor a Logic apps és az integrációs fiókok hozzáférést igényelnek egy Azure-beli [virtuális hálózathoz](../virtual-network/virtual-networks-overview.md), létrehozhat egy [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a Logic apps REST API használatával. További információ a ISEs: [Azure Virtual Network-erőforrások elérése Azure Logic Appsból](connect-virtual-network-vnet-isolated-environment-overview.md).
 
-Az ISE-t a [minta Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) gyors üzembe helyezési sablonnal vagy az [Azure Portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)használatával is létrehozhatja.
+Ez a cikk bemutatja, hogyan hozhat létre egy ISE-t a Logic Apps REST API általános használatával. Szükség esetén engedélyezheti a [rendszerhez rendelt vagy felhasználó által hozzárendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) is az ISE-ben, de csak az Logic apps REST API használatával. Ez az identitás lehetővé teszi, hogy az ISE hitelesítse a biztonságos erőforrásokhoz, például a virtuális gépekhez és más rendszerekhez vagy szolgáltatásokhoz való hozzáférést, amelyek egy Azure-beli virtuális hálózathoz tartoznak vagy kapcsolódnak. Így nem kell bejelentkeznie a hitelesítő adataival.
 
-> [!IMPORTANT]
-> A Logic apps, a beépített triggerek, a beépített műveletek és az ISE-ben futó összekötők a fogyasztáson alapuló díjszabási csomagtól eltérő díjszabási csomagot használnak. A ISEs díjszabásának és számlázásának megismeréséhez tekintse meg a [Logic apps díjszabási modelljét](../logic-apps/logic-apps-pricing.md#fixed-pricing). A díjszabással kapcsolatban lásd: [Logic apps díjszabása](../logic-apps/logic-apps-pricing.md).
+Az ISE további létrehozási módjaival kapcsolatos további információkért tekintse meg a következő cikkeket:
+
+* [ISE létrehozása a Azure Portal használatával](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+* [ISE létrehozása a minta Azure Resource Manager rövid útmutató sablon használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
+* [Hozzon létre egy olyan ISE-t, amely támogatja az ügyfél által felügyelt kulcsokat a REST-adatok titkosításához](customer-managed-keys-integration-service-environment.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ugyanazok az [Előfeltételek](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) és [követelmények, amelyek lehetővé teszik az ISE hozzáférését](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) , mint amikor egy ISE-t hoz létre a Azure Portal
+* Ugyanazokat az [előfeltételeket](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) és [hozzáférési követelményeket](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) kell meghoznia, mint amikor egy ISE-t hoz létre a Azure Portal
+
+* Az ISE-ben használni kívánt további erőforrások, hogy az ISE-definícióban is szerepeljenek az adatai, például: 
+
+  * Az önaláírt tanúsítványok támogatásának engedélyezéséhez meg kell adnia a tanúsítványra vonatkozó információkat az ISE-definícióban.
+
+  * A felhasználó által hozzárendelt felügyelt identitás engedélyezéséhez előbb létre kell hoznia ezt az identitást, és tartalmaznia kell a és a `objectId` `principalId` `clientId` tulajdonságokat és azok ÉRTÉKeit az ISE-definícióban. További információ: [felhasználó által hozzárendelt felügyelt identitás létrehozása a Azure Portalban](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity).
 
 * Egy eszköz, amellyel létrehozhatja az ISE-t úgy, hogy meghívja a Logic Apps REST API egy HTTPS PUT-kéréssel. Használhatja például a [Poster](https://www.getpostman.com/downloads/)-t, vagy létrehozhat egy logikai alkalmazást, amely elvégzi ezt a feladatot.
 
-## <a name="send-the-request"></a>A kérelem elküldése
+## <a name="create-the-ise"></a>Az ISE létrehozása
 
 Az ISE létrehozásához a Logic Apps REST API meghívásával végezze el ezt a HTTPS PUT-kérelmet:
 
@@ -58,17 +67,40 @@ A kérelem fejlécében adja meg a következő tulajdonságokat:
 
 ## <a name="request-body"></a>A kérés törzse
 
-Itt látható a kérelem törzsének szintaxisa, amely az ISE létrehozásakor használandó tulajdonságokat ismerteti. Egy olyan ISE létrehozásához, amely lehetővé teszi egy olyan önaláírt tanúsítvány használatát, amely a helyen van telepítve `TrustedRoot` , adja `certificates` meg az OBJEKTUMOT az ISE-definíció `properties` szakaszán belül. Egy meglévő ISE esetében csak az objektumra vonatkozó javítási kérelmet küldhet `certificates` . További információ az önaláírt tanúsítványok használatáról: [biztonságos hozzáférés és adathozzáférés a kimenő hívások számára más szolgáltatásokhoz és rendszerekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
+A kérelem törzsében adja meg az ISE létrehozásához használandó erőforrás-definíciót, beleértve az ISE-ben engedélyezni kívánt további funkciókra vonatkozó információkat is, például:
+
+* Ha olyan ISE-t szeretne létrehozni, amely lehetővé teszi egy olyan önaláírt tanúsítvány használatát, amely a helyen van telepítve `TrustedRoot` , foglalja bele az `certificates` OBJEKTUMOT az ISE definíciójának `properties` szakaszában, ahogy ezt a cikket később ismertetjük.
+
+  Ha ezt a funkciót egy meglévő ISE-re szeretné engedélyezni, csak az objektumra vonatkozó javítási kérelmet küldhet `certificates` . További információ az önaláírt tanúsítványok használatáról: [biztonságos hozzáférés és adathozzáférés a kimenő hívások számára más szolgáltatásokhoz és rendszerekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
+
+* A rendszer által hozzárendelt vagy felhasználó által hozzárendelt felügyelt identitást használó ISE létrehozásához adja `identity` meg az objektumot a felügyelt identitás típusával és az egyéb szükséges információkkal az ISE-definícióban, ahogy ezt a cikket később ismertetjük.
+
+* Az ügyfél által felügyelt kulcsokat és Azure Key Vaultokat használó ISE az inaktív adatok titkosításához való létrehozásához adja meg az [ügyfél által felügyelt kulcs támogatását lehetővé tevő adatokat](customer-managed-keys-integration-service-environment.md). Az ügyfél által felügyelt kulcsokat *csak a létrehozáskor* állíthatja be, később nem.
+
+### <a name="request-body-syntax"></a>Kérelem törzsének szintaxisa
+
+Itt látható a kérelem törzsének szintaxisa, amely leírja az ISE létrehozásakor használandó tulajdonságokat:
 
 ```json
 {
-   "id": "/subscriptions/{Azure-subscription-ID/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
    "name": "{ISE-name}",
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "{Azure-region}",
    "sku": {
       "name": "Premium",
       "capacity": 1
+   },
+   // Include the `identity` object to enable the system-assigned identity or user-assigned identity
+   "identity": {
+      "type": <"SystemAssigned" | "UserAssigned">,
+      // When type is "UserAssigned", include the following "userAssignedIdentities" object:
+      "userAssignedIdentities": {
+         "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{user-assigned-managed-identity-object-ID}": {
+            "principalId": "{principal-ID}",
+            "clientId": "{client-ID}"
+         }
+      }
    },
    "properties": {
       "networkConfiguration": {
@@ -112,6 +144,15 @@ A példaként szolgáló kérelem törzse a következő minta értékeket jelen�
    "name": "Fabrikam-ISE",
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "WestUS2",
+   "identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+         "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/*********************************": {
+            "principalId": "*********************************",
+            "clientId": "*********************************"
+         }
+      }
+   },
    "sku": {
       "name": "Premium",
       "capacity": 1
@@ -146,8 +187,7 @@ A példaként szolgáló kérelem törzse a következő minta értékeket jelen�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Erőforrás hozzáadása integrációs szolgáltatási környezetekhez](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 * [Integrációs szolgáltatási környezetek kezelése](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)
-

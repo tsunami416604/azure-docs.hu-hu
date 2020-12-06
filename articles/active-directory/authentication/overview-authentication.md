@@ -6,24 +6,24 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92ac495381f63e01d64c9a3d02777dca37ebb343
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f85b78480e7258780f8dd396431edeb968189e4c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837991"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741252"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Mi az Azure Active Directory hitelesítés?
 
 Az Identity platform egyik fő funkciója a hitelesítő adatok ellenőrzése vagy *hitelesítése*, amikor a felhasználó bejelentkezik egy eszközre, alkalmazásba vagy szolgáltatásba. Azure Active Directory (Azure AD) esetében a hitelesítés több, mint a Felhasználónév és a jelszó ellenőrzése. Az Azure AD-hitelesítés a következő összetevőket tartalmazza, így javíthatja a biztonságot, és csökkentheti az ügyfélszolgálati segítség szükségességét:
 
 * Új jelszó önkiszolgáló kérése
-* Azure AD-Multi-Factor Authentication
+* Azure AD többtényezős hitelesítés
 * Hibrid integráció a jelszó-változtatások helyi környezetbe való visszaírásához
 * Hibrid integráció egy helyi környezet jelszavas védelmi házirendjeinek betartatásához
 * Jelszó nélküli hitelesítés
@@ -50,7 +50,7 @@ Az önkiszolgáló jelszó-visszaállítás a következő esetekben működik:
 
 Amikor egy felhasználó az önkiszolgáló jelszó-visszaállítási szolgáltatással frissíti vagy visszaállítja a jelszavát, a jelszó a helyszíni Active Directory környezetbe is visszaírható. A jelszó visszaírási gondoskodik arról, hogy a felhasználók azonnal használhassák a frissített hitelesítő adataikat a helyszíni eszközök és alkalmazások segítségével.
 
-## <a name="azure-ad-multi-factor-authentication"></a>Azure AD-Multi-Factor Authentication
+## <a name="azure-ad-multi-factor-authentication"></a>Azure AD többtényezős hitelesítés
 
 A többtényezős hitelesítés egy olyan folyamat, amelyben a rendszer a bejelentkezési folyamat során felkéri a felhasználót egy másodlagos azonosításra, például hogy adjon meg egy kódot a mobiltelefonján, vagy végezzen ujjlenyomat-vizsgálatot.
 
@@ -84,7 +84,7 @@ Ha jelszó nélküli metódussal jelentkezik be, a hitelesítő adatok a biometr
 
 Az Azure AD lehetővé teszi, hogy natív módon hitelesítse a jelszavak nélküli módszerekkel, így egyszerűbbé téve a felhasználók bejelentkezési élményét, és csökkentheti a támadások kockázatát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az első lépésekhez tekintse meg az [önkiszolgáló jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure ad multi-Factor Authentication][tutorial-azure-mfa]oktatóanyagát.
 

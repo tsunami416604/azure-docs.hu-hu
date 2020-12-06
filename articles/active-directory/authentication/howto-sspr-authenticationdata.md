@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 10/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ed2366884f53eafe89800e7ae60a6a560dc292b4
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6b51fe1349b2ece89b97cf9436ad3374374ad309
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164999"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741575"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Felhasználói hitelesítési kapcsolattartási adatok előzetes feltöltése Azure Active Directory önkiszolgáló jelszó-visszaállításhoz (SSPR)
 
@@ -28,7 +28,7 @@ Ha megfelel a következő követelményeknek, előre feltöltheti a hitelesíté
 * Megfelelően formázotta az adatait a helyszíni címtárban.
 * Konfigurálta [Azure ad Connect](../hybrid/how-to-connect-install-express.md) az Azure ad-bérlőhöz.
 
-A telefonszámokat a *+ országhívószám telefonszám*formátumban kell megadni, például: *+ 1 4251234567*.
+A telefonszámokat a *+ országhívószám telefonszám* formátumban kell megadni, például: *+ 1 4251234567*.
 
 > [!NOTE]
 > Az országkód és a telefonszám között szóköznek kell lennie.
@@ -69,7 +69,7 @@ Amikor egy felhasználó regisztrál, a regisztrációs oldal a következő mez�
 * **Hitelesítési E-mail**
 * **Biztonsági kérdések és válaszok**
 
-Ha a *mobiltelefon* vagy a *másodlagos e-mail*esetében értéket adott meg, a felhasználók azonnal felhasználhatják ezeket az értékeket a jelszavuk visszaállítására, még akkor is, ha nincsenek regisztrálva a szolgáltatáshoz.
+Ha a *mobiltelefon* vagy a *másodlagos e-mail* esetében értéket adott meg, a felhasználók azonnal felhasználhatják ezeket az értékeket a jelszavuk visszaállítására, még akkor is, ha nincsenek regisztrálva a szolgáltatáshoz.
 
 A felhasználók akkor is láthatják ezeket az értékeket, amikor első alkalommal regisztrálják magukat, és ha szeretné, módosíthatja azokat. A sikeres regisztrációt követően ezek az értékek megmaradnak a *hitelesítési telefonos* és a *hitelesítő e-mailek* mezőiben.
 

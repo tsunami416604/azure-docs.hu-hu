@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baffe307a560f2668c2d93e36939a695cf963e89
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b8a57e77ea572f899bf540714e8ac9968988f028
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968378"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741728"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Felhasználói fiókok elleni védelem Azure Active Directory intelligens zárolással
 
@@ -57,8 +57,8 @@ Ha például azt szeretné, hogy az Azure AD-számlálója nagyobb legyen, mint 
 A helyszíni AD DS fiókzárolási házirend ellenőrzéséhez hajtsa végre a következő lépéseket egy tartományhoz csatlakoztatott rendszerből rendszergazdai jogosultságokkal:
 
 1. Nyissa meg a Csoportházirend felügyeleti eszközt.
-2. Szerkessze a szervezet fiókzárolási házirendjét, például az **alapértelmezett tartományi házirendet**tartalmazó csoportházirendet.
-3. Tallózással keresse meg a **számítógép-konfigurációs**  >  **házirendek**  >  **Windows-beállítások**  >  **biztonsági beállítások**  >  **fiók házirendek**fiókzárolási  >  **házirendet**.
+2. Szerkessze a szervezet fiókzárolási házirendjét, például az **alapértelmezett tartományi házirendet** tartalmazó csoportházirendet.
+3. Tallózással keresse meg a **számítógép-konfigurációs**  >  **házirendek**  >  **Windows-beállítások**  >  **biztonsági beállítások**  >  **fiók házirendek** fiókzárolási  >  **házirendet**.
 4. Ellenőrizze a fiókzárolás **küszöbértékét** , és **állítsa alaphelyzetbe a fiókzárolás számlálóját** az értékek után.
 
 ![A helyszíni Active Directory fiókzárolási házirend módosítása](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
@@ -70,8 +70,8 @@ A szervezeti követelmények alapján testreszabhatja az Azure AD intelligens z�
 A szervezet intelligens zárolási értékeinek vizsgálatához vagy módosításához hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg és válassza ki *Azure Active Directory*, majd válassza a **biztonsági**  >  **hitelesítési módszerek**  >  **jelszavas védelem**lehetőséget.
-1. Állítsa be a **zárolási küszöbértéket**attól függően, hogy az első zárolás előtt hány sikertelen bejelentkezés engedélyezett a fiókon.
+1. Keresse meg és válassza ki *Azure Active Directory*, majd válassza a **biztonsági**  >  **hitelesítési módszerek**  >  **jelszavas védelem** lehetőséget.
+1. Állítsa be a **zárolási küszöbértéket** attól függően, hogy az első zárolás előtt hány sikertelen bejelentkezés engedélyezett a fiókon.
 
     Az alapértelmezett érték 10.
 
@@ -90,7 +90,7 @@ Az intelligens zárolási küszöbérték kiváltása esetén a következő üze
 
 *A fiók átmenetileg zárolva van, hogy megakadályozza a jogosulatlan használatot. Próbálkozzon újra később, és ha még mindig problémája van, forduljon a rendszergazdához.*
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az [Azure ad jelszavas védelme érdekében egyéni tiltott jelszavakat is konfigurálhat](tutorial-configure-custom-password-protection.md)a további tapasztalatok testreszabásához.
 

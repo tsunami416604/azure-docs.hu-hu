@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87b30b12e75a583ccee9780f97a6492961365cca
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 14a65b83195bff48934668ff029f925e13884bad
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839675"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743700"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Újrahitelesítéssel kapcsolatos kérések optimalizálása és az Azure AD-munkamenet élettartamának megértése Multi-Factor Authentication
 
@@ -134,6 +134,6 @@ A következő táblázat a licenceken alapuló ajánlásokat foglalja össze:
 | **SSO**                      | [Azure ad JOIN](../devices/concept-azure-ad-join.md) vagy [Hybrid Azure ad JOIN](../devices/concept-azure-ad-join-hybrid.md)vagy [zökkenőmentes SSO](../hybrid/how-to-connect-sso.md) a nem felügyelt eszközökhöz. | Azure AD-csatlakozás<br />Hibrid Azure AD-csatlakozás |
 | **Újrahitelesítés beállításai** | Továbbra is bejelentkezett                  | Feltételes hozzáférési szabályzatok használata a bejelentkezés gyakoriságához és az állandó böngésző-munkamenethez |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az első lépésekhez fejezze be az oktatóanyagot a [felhasználói bejelentkezési események biztonságossá tételéhez az Azure ad multi-Factor Authentication](tutorial-enable-azure-mfa.md) , vagy [használjon kockázati észleléseket felhasználói bejelentkezésekhez az azure ad-multi-Factor Authentication](tutorial-risk-based-sspr-mfa.md)kiváltásához.

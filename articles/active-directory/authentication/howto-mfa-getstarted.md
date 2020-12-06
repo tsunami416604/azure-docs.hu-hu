@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa093411e40b2fc60c52c2a22434658bab78e59
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 978f404aa9b99819460e46ea89df19d27431b8b8
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839250"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743139"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Azure AD Multi-Factor Authentication üzemelő példány megtervezése
 
@@ -29,13 +29,13 @@ Ez az üzembe helyezési útmutató bemutatja, hogyan tervezheti meg és tesztel
 Az Azure AD Multi-Factor Authentication működés közbeni gyors megjelenítéséhez, majd térjen vissza a további üzembe helyezési megfontolások megismeréséhez:
 
 > [!div class="nextstepaction"]
-> [Azure AD-Multi-Factor Authentication engedélyezése](tutorial-enable-azure-mfa.md)
+> [Az Azure AD többtényezős hitelesítés engedélyezése](tutorial-enable-azure-mfa.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD Multi-Factor Authentication üzembe helyezésének megkezdése előtt meg kell fontolnia az előfeltételként szükséges elemeket.
 
-| Használati eset | Előfeltétel |
+| Használati példa | Előfeltétel |
 | --- | --- |
 | **Csak felhőalapú** identitás-környezet modern hitelesítéssel | **Nincsenek további előfeltétel-feladatok** |
 | **Hibrid** identitási forgatókönyvek | [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) települ, és a felhasználói identitások szinkronizálása vagy összevonása a helyszíni Active Directory tartományi szolgáltatások a Azure Active Directory. |
@@ -247,10 +247,10 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
    * OPCIONÁLISan: ha megbízható telephelyeket vagy elnevezett helyeket konfigurált, megadhatja, hogy a rendszer belefoglalja vagy kizárja ezeket a helyeket a szabályzatból.
 1. Győződjön meg **arról, hogy** a **hozzáférés** engedélyezése választógomb be van jelölve.
     * Jelölje be a **többtényezős hitelesítés megkövetelése** jelölőnégyzetet.
-    * Kattintson a **Kiválasztás** elemre.
+    * Válassza a **Kiválasztás** lehetőséget.
 1. Ugorja át a **munkamenet** szakaszt.
 1. Állítsa be a **házirend engedélyezése** kapcsolót **be értékre.**
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>A helyszíni rendszerekkel való integráció megtervezése
 
@@ -365,9 +365,9 @@ Az Azure AD Multi-Factor Authentication jelentéseket biztosít a Azure Portalon
 
 Az Azure AD MFA gyakori problémáinak megoldásait az [Azure ad multi-Factor Authentication hibaelhárítási cikkében](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) találja a Microsoft ügyfélszolgálata központban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD Multi-Factor Authentication működés közbeni megtekintéséhez hajtsa végre a következő oktatóanyagot:
 
 > [!div class="nextstepaction"]
-> [Azure AD-Multi-Factor Authentication engedélyezése](tutorial-enable-azure-mfa.md)
+> [Az Azure AD többtényezős hitelesítés engedélyezése](tutorial-enable-azure-mfa.md)

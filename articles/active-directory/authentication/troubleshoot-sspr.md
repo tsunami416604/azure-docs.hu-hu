@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/26/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e661bd24acbb15ced9f5bb0a0fba7eec51eae06
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7099de23b825fa7af203dff9696bb53e23a099c8
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363538"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741116"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Az önkiszolgáló jelszó-visszaállítás hibáinak megoldása Azure Active Directory
 
@@ -68,7 +68,7 @@ Ha a felhasználók nem sikerül regisztrálni a SSPR, tekintse át a következ�
 
 Engedélyezheti a SSPR az összes felhasználó, a felhasználók és a felhasználók kiválasztott csoportjai számára. Jelenleg csak egy Azure AD-csoport engedélyezhető a SSPR a Azure Portal használatával. A SSPR szélesebb körű üzembe helyezésének részeként beágyazott csoportok is támogatottak. Győződjön meg arról, hogy a kiválasztott csoport (ok) hoz tartozó felhasználók rendelkeznek a megfelelő licencekkel.
 
-A Azure Portalban módosítsa az **önkiszolgáló jelszó-visszaállítás engedélyezett** konfigurációját a *kiválasztott* vagy *az összes* értékre, majd válassza a **Mentés**lehetőséget.
+A Azure Portalban módosítsa az **önkiszolgáló jelszó-visszaállítás engedélyezett** konfigurációját a *kiválasztott* vagy *az összes* értékre, majd válassza a **Mentés** lehetőséget.
 
 ### <a name="the-user-doesnt-have-an-azure-ad-license-assigned-the-user-may-see-an-error-that-reports-your-administrator-has-not-enabled-you-to-use-this-feature"></a>A felhasználónak nincs hozzárendelt Azure AD-licence. A felhasználó a következő hibaüzenetet kaphatja: "a rendszergazda nem engedélyezte a funkció használatát."
 
@@ -86,7 +86,7 @@ Ha Ön vagy a felhasználók problémákat tapasztalnak a SSPR használatával, 
 
 | Hiba | Megoldás |
 | --- | --- |
-| A könyvtár nincs engedélyezve a jelszó-visszaállításhoz. | A Azure Portalban módosítsa az **önkiszolgáló jelszó-visszaállítás engedélyezett** konfigurációját a *kiválasztott* vagy *az összes* értékre, majd válassza a **Mentés**lehetőséget. |
+| A könyvtár nincs engedélyezve a jelszó-visszaállításhoz. | A Azure Portalban módosítsa az **önkiszolgáló jelszó-visszaállítás engedélyezett** konfigurációját a *kiválasztott* vagy *az összes* értékre, majd válassza a **Mentés** lehetőséget. |
 | A felhasználónak nincs hozzárendelt Azure AD-licence. | Ez akkor fordulhat elő, ha nem rendelkezik a kívánt felhasználóhoz hozzárendelt Azure AD-licenccel. Ha a szóban forgó rendszergazdai fiókhoz szeretne licencet rendelni, kövesse a [licencekkel kapcsolatos problémák hozzárendelésének, ellenőrzésének és megoldásának](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)lépéseit. |
 | A könyvtár engedélyezve van a jelszó-visszaállításhoz, de a felhasználó hiányzó vagy helytelenül formázott hitelesítési adatokat tartalmaz. | Győződjön meg arról, hogy a felhasználó a címtárban megfelelően alakította ki a kapcsolattartási adatfájlokat. További információ: az [Azure ad önkiszolgáló jelszó-visszaállítási szolgáltatás által használt adatok](howto-sspr-authenticationdata.md). |
 | A könyvtár engedélyezve van a jelszó-visszaállításhoz, de a felhasználónak csak egy adatkapcsolati adata van a fájlon, ha a házirend úgy van beállítva, hogy két ellenőrzési módszert igényeljen. | Győződjön meg arról, hogy a felhasználó legalább két megfelelően konfigurált kapcsolattartási módszerrel rendelkezik. Ilyen például a mobiltelefon *-szám és* az Office-telefonszám is. |
@@ -144,6 +144,6 @@ A megfelelő segítség érdekében kérjük, hogy az esetek megnyitásakor a le
 * **Licencelés**: van-e hozzárendelve a felhasználó Azure ad-licenccel?
 * **Alkalmazás-eseménynapló**: ha jelszó-visszaírási használ, és a hiba a helyszíni infrastruktúrában található, az alkalmazás eseménynaplójának tömörített másolatát adja meg az Azure ad Connect-kiszolgálóról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a SSPR-ről [: Hogyan működik az Azure ad önkiszolgáló jelszó-visszaállítás](concept-sspr-howitworks.md) , vagy [Hogyan működik az önkiszolgáló jelszó-visszaállítási VISSZAÍRÁSI az Azure ad-ben?](concept-sspr-writeback.md).

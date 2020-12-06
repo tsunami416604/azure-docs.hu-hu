@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/04/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 12/04/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22f43c5f9848670b9df4b061c5abb6cc30912172
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c8dce284c0fffe10fe077fcb6c6713ba65c45751
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839794"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743904"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Összevont biztonsági információk regisztrálása Azure Active Directory – áttekintés
 
 A kombinált regisztráció előtt a felhasználók az Azure AD-Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszereit külön-külön regisztrálták. Az emberek zavarosak voltak, hogy hasonló módszerek voltak használatban Multi-Factor Authentication és SSPR, de mindkét szolgáltatáshoz regisztrálniuk kellett őket. A kombinált regisztráció révén a felhasználók egyszer regisztrálhatnak, és a Multi-Factor Authentication és a SSPR előnyeit is igénybe vehetik.
 
 > [!NOTE]
-> Az Azure AD-bérlők augusztus 2020 15-én kezdődően automatikusan engedélyezve lesznek a kombinált regisztrációhoz.
+> Az Azure AD-bérlők augusztus 2020 15-én kezdődően automatikusan engedélyezve lesznek a kombinált regisztrációhoz. December 2020 14-én kezdődően az egyetlen felhasználóval rendelkező Azure AD-bérlők automatikusan engedélyezve lesznek a kombinált regisztrációhoz.
 
 Ez a cikk a kombinált biztonsági regisztrációt ismerteti. A kombinált biztonsági regisztráció megkezdéséhez tekintse meg a következő cikket:
 
@@ -51,7 +51,7 @@ Ha egy adott nyelvet szeretne kényszeríteni, hozzáadhat az `?lng=<language>` 
 
 A kombinált regisztráció a következő hitelesítési módszereket és műveleteket támogatja:
 
-| Metódus | Regisztráció | Módosítás | Törlés |
+| Módszer | Regisztráció | Módosítás | Törlés |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
 | Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | Nem | Igen |
@@ -140,7 +140,7 @@ Az a felhasználó, aki korábban beállított legalább egy metódust, navigál
 
 Az a felhasználó, aki korábban beállított legalább egy olyan metódust, amelyet Multi-Factor Authentication használhat a alkalmazásban [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . A felhasználó az aktuális alapértelmezett metódust egy másik alapértelmezett metódusra módosítja. Ha elkészült, a felhasználó az új alapértelmezett metódust látja a biztonsági adatok lapon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Első lépésként tekintse meg az oktatóanyagokat az [önkiszolgáló jelszó-visszaállítás engedélyezéséhez](tutorial-enable-sspr.md) és az [Azure ad-multi-Factor Authentication engedélyezéséhez](tutorial-enable-azure-mfa.md).
 

@@ -1,21 +1,21 @@
 ---
-title: Azure AD-Multi-Factor Authentication engedélyezése
+title: Az Azure AD többtényezős hitelesítés engedélyezése
 description: Ebből az oktatóanyagból megtudhatja, hogyan engedélyezheti az Azure AD-Multi-Factor Authentication egy felhasználói csoport számára, és hogyan tesztelheti a másodlagos tényezőt a bejelentkezési esemény során.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62818ae5be079dc154e6d6faef4a8ebaae8fcd9d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 32228e90e3cfc064cd5be9cd0655f321ab3e2809
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837872"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741150"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>Oktatóanyag: a felhasználói bejelentkezési események biztonságossá tétele az Azure AD-vel Multi-Factor Authentication
 
@@ -123,7 +123,7 @@ Ha nem szeretné, hogy a feltételes hozzáférési szabályzattal engedélyezze
 1. Válassza a **feltételes hozzáférés** lehetőséget, majd válassza ki a létrehozott szabályzatot, például *MFA Pilot*
 1. Válassza a **Törlés** lehetőséget, majd erősítse meg, hogy törölni kívánja a szabályzatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure AD Multi-Factor Authentication feltételes hozzáférési szabályzatok használatával a felhasználók egy kiválasztott csoportjára vonatkozóan. Megtanulta végrehajtani az alábbi műveleteket:
 

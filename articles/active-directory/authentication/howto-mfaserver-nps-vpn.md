@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ba0d359079a8999b3c4f2a41f4beadb835ccacc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 88fe09199cb50d2a3796c3b638dca1a723016dc4
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838229"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742017"
 ---
 # <a name="advanced-scenarios-with-azure-mfa-server-and-third-party-vpn-solutions"></a>Speciális forgatókönyvek az Azure MFA-kiszolgálóval és a harmadik féltől származó VPN-megoldásokkal
 
@@ -55,7 +55,7 @@ Az Azure MFA-kiszolgáló integrálható a Juniper/Pulse Secure SSL VPN-berendez
 | [Juniper/Pulse Secure SSL VPN és Azure MFA-konfiguráció LDAP-hez](https://download.microsoft.com/download/6/5/8/6587B418-75B1-4FCB-84D4-984BC479309E/JuniperPulse_Azure_MFA_LDAP.docx) | A Juniper/Pulse Secure SSL VPN integrálása az Azure MFA-berendezéssel az LDAP használatával |
 | [Juniper/Pulse Secure SSL VPN és Azure MFA-konfiguráció a RADIUS-hez](https://download.microsoft.com/download/7/9/A/79AB3DAD-4799-4379-B1DA-B95ABDF231DC/JuniperPulse_Azure_MFA_RADIUS.docx) | A Juniper/Pulse Secure SSL VPN-berendezés integrálása az Azure MFA-val a RADIUS használatával |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Bővítse meglévő hitelesítési infrastruktúráját az Azure NPS-bővítményével Multi-Factor Authentication](howto-mfa-nps-extension.md)
 

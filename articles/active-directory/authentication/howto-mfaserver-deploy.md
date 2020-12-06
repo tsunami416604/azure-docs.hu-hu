@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 611107ed02aeb4dc75302f519681c932980f612e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d7bd9913cccbe077a4deed9a7c5bfdc601f3dd5e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174170"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742340"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
@@ -222,7 +222,7 @@ Az új kiszolgáló ezzel használatra kész az eredeti biztonsági másolatban 
 
 Miután az MFA Server 8.x vagy újabb változatára frissített, érdemes eltávolítani minden régebbi vagy gyengébb titkosítócsomagot, hacsak vállalata nem követeli meg azok használatát. A tennivalókat az [AD FS által használt SSL/TLS-protokollok és titkosítócsomagok kezelését](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ismertető rész tartalmazza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [felhasználói portál](howto-mfaserver-deploy-userportal.md) telepítése és konfigurálása a felhasználói önkiszolgáló funkciókhoz.
 - Az Azure MFA-kiszolgáló telepítése és konfigurálása [Active Directory összevonási szolgáltatásokkal](multi-factor-authentication-get-started-adfs.md), [RADIUS-hitelesítéssel](howto-mfaserver-dir-radius.md) vagy [LDAP-hitelesítéssel](howto-mfaserver-dir-ldap.md).

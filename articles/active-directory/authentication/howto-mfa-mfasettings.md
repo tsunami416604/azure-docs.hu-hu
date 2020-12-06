@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: adca22b3a8d9b93dfbc62202106127a5833a4c38
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 964cd77a24a7a73bf1151ba9e6ab43509e664b9f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839199"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743071"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Az Azure AD Multi-Factor Authentication beállításainak konfigurálása
 
@@ -25,7 +25,7 @@ Az Azure AD Multi-Factor Authentication végfelhasználói élményének testres
 
 A Azure Portal a következő Azure AD Multi-Factor Authentication beállítások érhetők el:
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 | ------- | ----------- |
 | [Fiókzárolási](#account-lockout) | A fiókok ideiglenes zárolása az Azure AD-Multi-Factor Authentication használatával, ha túl sok megtagadott hitelesítési kísérlet van egy sorban. Ez a funkció csak azokra a felhasználókra vonatkozik, akik hitelesítő PIN-kódot ad meg. (MFA-kiszolgáló) |
 | [Felhasználók blokkolása/feloldása](#block-and-unblock-users) | Az Azure AD Multi-Factor Authentication kérések fogadásának letiltása adott felhasználók számára. A letiltott felhasználók összes hitelesítési kísérlete automatikusan el lesz utasítva. A felhasználók a blokkolt időponttól számítva 90 napig, vagy manuálisan feloldják a zárolást. |
@@ -287,7 +287,7 @@ A megbízható IP-címek feltételes hozzáférési házirendek használatával 
       * Egyetlen IP-cím esetén használjon olyan jelölést, mint a **xxx.xxx.xxx.xxx/32**.
       * Akár 50 IP-címtartományt is megadhat. Azok a felhasználók, akik ezen IP-címekről jelentkeznek be, megkerülik a többtényezős hitelesítést.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Válassza a **Save** (Mentés) lehetőséget.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>A megbízható IP-címek funkció engedélyezése a szolgáltatás beállításai alapján
 
@@ -307,7 +307,7 @@ Ha nem kíván feltételes hozzáférési szabályzatokat használni a megbízha
       * Egyetlen IP-cím esetén használjon olyan jelölést, mint a **xxx.xxx.xxx.xxx/32**.
       * Akár 50 IP-címtartományt is megadhat. Azok a felhasználók, akik ezen IP-címekről jelentkeznek be, megkerülik a többtényezős hitelesítést.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Válassza a **Save** (Mentés) lehetőséget.
 
 ## <a name="verification-methods"></a>Ellenőrzési módszerek
 
@@ -315,7 +315,7 @@ A Service Settings portálon megadhatja a felhasználók számára elérhető el
 
 A következő ellenőrzési módszerek érhetők el:
 
-| Metódus | Leírás |
+| Módszer | Leírás |
 |:--- |:--- |
 | Telefonos hívás |Automatikus hanghívást helyez el. A felhasználó fogadja a hívást, majd a hitelesítéshez lenyomja a telefon billentyűzetén a # gombot.  A telefonszám nincs szinkronizálva a helyszíni Active Directory. |
 | SMS-üzenet a telefonra |Egy ellenőrző kódot tartalmazó szöveges üzenetet küld. A rendszer felszólítja a felhasználót, hogy adja meg az ellenőrző kódot a bejelentkezési felületen. Ezt a folyamatot egy egyirányú SMS-nek nevezzük. A kétirányú SMS azt jelenti, hogy a felhasználónak egy adott kódot kell visszaadnia. A kétirányú SMS elavult, és 2018 november 14. után nem támogatott. A rendszergazdáknak engedélyezniük kell egy másik módszert azon felhasználók számára, akik korábban a kétirányú SMS-t használták.|
@@ -368,12 +368,12 @@ A következő lépések végrehajtásával engedélyezheti és konfigurálhatja,
 1. A Multi-Factor Authentication területen válassza a **szolgáltatás beállításai** elemet.
 1. A **Szolgáltatásbeállítások** lapon, a **többtényezős hitelesítés megjegyzése** területen jelölje be a **többtényezős hitelesítés megadásának engedélyezése a felhasználóknak a megbízható eszközökön** jelölőnégyzetet.
 1. Állítsa be, hogy a rendszer hány napig engedélyezze a megbízható eszközök számára a többtényezős hitelesítés megkerülését. Az optimális felhasználói élmény érdekében az időtartamot *90* vagy több napra kell kiterjeszteni.
-1. Válassza a **Mentés** lehetőséget.
+1. Válassza a **Save** (Mentés) lehetőséget.
 
 ### <a name="mark-a-device-as-trusted"></a>Eszköz megjelölése megbízhatóként
 
 Miután engedélyezte a Megjegyzés Multi-Factor Authentication funkciót, a felhasználók a bejelentkezéskor megbízhatóként jelölhetik meg az eszközöket, ha bejelöli a **ne Kérdezzen rá újra** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az Azure AD-Multi-Factor Authentication használható módszerekről, tekintse meg a [Azure Active Directory-ben elérhető hitelesítési és ellenőrzési módszereket?](concept-authentication-methods.md)

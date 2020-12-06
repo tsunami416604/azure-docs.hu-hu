@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b0b34ce55a0896fb804a48779c9c1007c8c340f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: deb1f74902fe28d53a5180e4f341547f339a83ac
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838212"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741984"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem tervezése és üzembe helyezése
 
@@ -419,6 +419,6 @@ Előfordulhat, hogy a szoftverfrissítés szabványos MSI-eljárásokat használ
 
 A `Get-AzureADPasswordProtectionDCAgent` parancsmag segítségével lekérdezhető az összes jelenleg telepített Azure ad Password Protection DC-ügynök szoftveres verziója egy erdőben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy telepítette az Azure AD jelszavas védelemhez szükséges szolgáltatásokat a helyszíni kiszolgálókon, [engedélyezze az Azure ad jelszavas védelmet a Azure Portal](howto-password-ban-bad-on-premises-operations.md) az üzembe helyezés befejezéséhez.

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 06/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da7c3afa6b414e3d7df3bb58766d1ab7657dbc4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 53763e62e8d7aa5b77ae451ef6427c1e09bff9f0
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838961"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742697"
 ---
 # <a name="configure-mfa-server-settings"></a>MFA-kiszolgáló beállításainak konfigurálása
 
@@ -27,7 +27,7 @@ Ez a cikk segítséget nyújt az Azure MFA-kiszolgáló beállításainak kezel�
 
 A következő MFA-kiszolgáló beállításai érhetők el:
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 | ------- | ----------- |
 | Kiszolgáló beállításai | Az MFA-kiszolgáló letöltése és az aktiválási hitelesítő adatok előállítása a környezet inicializálásához |
 | [Egyszeri Mellőzés](#one-time-bypass) | Lehetővé teszi a felhasználók számára a hitelesítést a többtényezős hitelesítés végrehajtása nélkül korlátozott ideig. |
@@ -66,6 +66,6 @@ A gyorsítótárazás beállításához hajtsa végre a következő lépéseket:
 1. Ha szükséges, válasszon ki egy hitelesítési típust, és adjon meg egy alkalmazást.
 1. Válassza a **Hozzáadás** elemet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az MFA-kiszolgáló további konfigurációs lehetőségei az MFA-kiszolgáló webkonzolján is elérhetők. [A magas rendelkezésre állás érdekében az Azure MFA-kiszolgálót is konfigurálhatja](howto-mfaserver-deploy-ha.md).

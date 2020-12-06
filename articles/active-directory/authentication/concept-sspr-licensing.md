@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 06/02/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 239e49d287ebf6ad98d1a155219f0d59f6469292
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8f8f270f740951b95b0d4c00cbcf9b08e20a8e0c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366513"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743724"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Licencelési követelmények Azure Active Directory önkiszolgáló jelszó-visszaállításhoz
 
@@ -30,7 +30,7 @@ A SSPR felhasználónként licenccel rendelkezik. A megfelelőség fenntartása 
 
 Az alábbi táblázat a jelszó módosítására, alaphelyzetbe állítására vagy helyszíni visszaírási vonatkozó különböző SSPR-forgatókönyveket ismerteti, amelyek a szolgáltatást biztosítják.
 
-| Szolgáltatás | Azure AD Free | Microsoft 365 Vállalati verzió standard | Prémium Microsoft 365 Vállalati verzió | prémium szintű Azure AD P1 vagy P2 |
+| Jellemző | Azure AD Free | Microsoft 365 Vállalati verzió standard | Prémium Microsoft 365 Vállalati verzió | Prémium szintű Azure AD P1 vagy P2 |
 | --- |:---:|:---:|:---:|:---:|
 | **Csak felhőalapú felhasználói jelszó módosítása**<br />Ha a felhasználó az Azure AD-ban ismeri a jelszavát, és módosítani szeretné azt valami újat. | ● | ● | ● | ● |
 | **Csak felhőalapú felhasználói jelszó alaphelyzetbe állítása**<br />Ha egy Azure AD-felhasználó elfelejtette a jelszavát, és vissza kell állítania azt. | | ● | ● | ● |
@@ -53,7 +53,7 @@ Az Azure AD támogatja a csoport alapú licencelést. A rendszergazdák tömeges
 
 Néhány Microsoft-szolgáltatás nem érhető el minden helyen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy felhasználóhoz, a rendszergazdának meg kell adnia a **használat helye** tulajdonságot a felhasználónál. A licencek hozzárendelése a Azure Portal **felhasználói**  >  **profil**  >  **beállításai** szakaszában végezhető el. *Ha a csoport licenc-hozzárendelését használja, a megadott használati hely nélküli felhasználók öröklik a címtár helyét.*
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A SSPR megkezdéséhez kövesse az alábbi oktatóanyagot:
 

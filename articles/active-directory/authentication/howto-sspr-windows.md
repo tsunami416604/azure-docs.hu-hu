@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cd40b8df0251aee7692df24e9bc3f7186c155d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 478ae6146caeb8a27cdaf13b7f33e421b8121afc
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966508"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741490"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítás engedélyezése a Windows bejelentkezési képernyőjén
 
@@ -74,27 +74,27 @@ A konfigurációs módosítás üzembe helyezésével engedélyezheti a SSPR a b
 
 #### <a name="create-a-device-configuration-policy-in-intune"></a>Eszközkonfigurációs szabályzat létrehozása az Intune-ban
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **Intune**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **Intune** lehetőséget.
 1. Hozzon létre egy új eszköz-konfigurációs profilt az **eszköz konfigurációs**  >  **profiljaiban**, majd válassza a **+ profil létrehozása** lehetőséget.
    - A **platform** esetében válassza a *Windows 10 és újabb*
-   - A **Profil típusa**beállításnál válassza az *Egyéni* lehetőséget.
-1. Válassza a **Létrehozás**lehetőséget, majd adjon meg egy értelmes nevet a profilhoz, például *: Windows 10 bejelentkezési képernyő SSPR*
+   - A **Profil típusa** beállításnál válassza az *Egyéni* lehetőséget.
+1. Válassza a **Létrehozás** lehetőséget, majd adjon meg egy értelmes nevet a profilhoz, például *: Windows 10 bejelentkezési képernyő SSPR*
 
-    Szükség esetén adjon meg egy értelmes leírást a profilról, majd kattintson a **tovább**gombra.
-1. A *konfigurációs beállítások*területen válassza a **Hozzáadás** lehetőséget, és adja meg a következő OMA-URI beállítást a jelszó alaphelyzetbe állításához.
+    Szükség esetén adjon meg egy értelmes leírást a profilról, majd kattintson a **tovább** gombra.
+1. A *konfigurációs beállítások* területen válassza a **Hozzáadás** lehetőséget, és adja meg a következő OMA-URI beállítást a jelszó alaphelyzetbe állításához.
       - Adjon meg egy értelmes nevet a beállítás elmagyarázása érdekében, például *adja hozzá a SSPR hivatkozást*.
       - Opcionálisan megadhatja a beállítás kifejező leírását.
       - Állítsa az **OMA-URI** beállítást `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset` értékre
-      - Állítsa az **Adattípus**beállítást **Egész szám** értékre
+      - Állítsa az **Adattípus** beállítást **Egész szám** értékre
       - Állítsa az **Érték** beállítást **1** értékre
 
-    Válassza a **Hozzáadás**, majd a **tovább**lehetőséget.
-1. A szabályzat meghatározott felhasználókhoz, eszközökhöz vagy csoportokhoz rendelhető hozzá. Rendelje hozzá a profilt igény szerint a környezetéhez, ideális esetben az eszközök tesztelési csoportjához, majd válassza a **tovább**lehetőséget.
+    Válassza a **Hozzáadás**, majd a **tovább** lehetőséget.
+1. A szabályzat meghatározott felhasználókhoz, eszközökhöz vagy csoportokhoz rendelhető hozzá. Rendelje hozzá a profilt igény szerint a környezetéhez, ideális esetben az eszközök tesztelési csoportjához, majd válassza a **tovább** lehetőséget.
 
     További információ: [felhasználói és eszköz profilok társítása Microsoft Intuneban](/mem/intune/configuration/device-profile-assign).
 
-1. Szükség szerint konfigurálja az alkalmazhatósági szabályokat a környezet számára, például *Ha a Windows 10 Enterprise operációsrendszer-kiadás*, majd válassza a **tovább**lehetőséget.
-1. Tekintse át a profilt, majd válassza a **Létrehozás**lehetőséget.
+1. Szükség szerint konfigurálja az alkalmazhatósági szabályokat a környezet számára, például *Ha a Windows 10 Enterprise operációsrendszer-kiadás*, majd válassza a **tovább** lehetőséget.
+1. Tekintse át a profilt, majd válassza a **Létrehozás** lehetőséget.
 
 ### <a name="enable-for-windows-10-using-the-registry"></a>Windows 10 engedélyezése a beállításjegyzék használatával
 
@@ -183,6 +183,6 @@ Amikor a felhasználók megpróbálnak bejelentkezni, megjelenik egy **új jelsz
 
 A szolgáltatás használatával kapcsolatos további információkért tekintse meg a [munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása](../user-help/active-directory-passwords-update-your-own-password.md) című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználói regisztrációs élmény egyszerűbbé tétele érdekében [előre feltöltheti a felhasználói hitelesítési kapcsolattartási adatokat a SSPR](howto-sspr-authenticationdata.md).

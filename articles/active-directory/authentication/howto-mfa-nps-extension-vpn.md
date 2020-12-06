@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73fa82c3f162b546517ce40ef1447c002351d5b4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c4c5c4e632943ebbe68003f663aebbeaab9ebaf
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994468"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743445"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-ad-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure AD MFA-val az Azure-hoz készült hálózati házirend-kiszolgáló bővítménnyel
 
@@ -249,7 +249,7 @@ Ebben a szakaszban a VPN-kiszolgálót a RADIUS-hitelesítés használatára kon
 
     ![RADIUS-kiszolgáló ablakának hozzáadása az időtúllépés konfigurálásához](./media/howto-mfa-nps-extension-vpn/image16.png) 
 
-8. Válassza az **OK** lehetőséget.
+8. Kattintson az **OK** gombra.
 
 ### <a name="test-vpn-connectivity"></a>VPN-kapcsolat tesztelése
 

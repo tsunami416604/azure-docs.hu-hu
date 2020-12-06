@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/14/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 909f4b71e07a20abf4af76fecaaf93bb08e4d6b4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1dfe99a2ed57ecc953c69d1bad89e2b2c8816ca3
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837906"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741449"
 ---
 # <a name="frequently-asked-questions-about-azure-ad-multi-factor-authentication"></a>Gyakran ismételt kérdések az Azure AD-vel kapcsolatban Multi-Factor Authentication
 
@@ -30,7 +30,7 @@ Ez a gyakori kérdések az Azure AD Multi-Factor Authentication és az Multi-Fac
 > A fogyasztáson alapuló licencelés az új ügyfelek számára már nem érhető el, 2018. szeptember 1-től érvényes.
 > Az új hitelesítési szolgáltatók már nem hozhatók létre. szeptember 1., 2018. A meglévő hitelesítési szolgáltatók továbbra is használhatók és frissíthetők. A többtényezős hitelesítés továbbra is elérhető lesz prémium szintű Azure AD licencekben.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 * [Hogyan kezeli az Azure Multi-Factor Authentication-kiszolgáló a felhasználói adatkezelést?](#how-does-azure-multi-factor-authentication-server-handle-user-data)
 * [Milyen SMS rövid kódokat használ SMS-üzenetek küldésére a felhasználóknak?](#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)
@@ -254,7 +254,7 @@ A *0x800434D4L* hiba akkor fordul elő, ha egy helyi számítógépen telepítet
 
 Ennek a hibának a megkerülő megoldás, ha külön felhasználói fiókkal rendelkezik a rendszergazdai és a nem rendszergazdai műveletekhez. Később a rendszergazdai fiók és a nem rendszergazdai fiók között is csatolhat postaládákat, így a nem rendszergazdai fiókkal is bejelentkezhet az Outlookba. A megoldással kapcsolatos további információkért tekintse meg, hogy a [rendszergazda hogyan nyithatja meg és tekintheti meg a felhasználó postaládájának tartalmát](https://help.outlook.com/141/gg709759.aspx?sl=1).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a kérdés itt nem válaszol, a következő támogatási lehetőségek érhetők el:
 

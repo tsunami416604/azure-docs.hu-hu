@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/19/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5cc6847332765419001eadc5944905f55a425ef
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 98cb990ede7c4d6e261bba05b0b8c97d758e6c32
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964791"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743530"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Gyakori kérdések (GYIK) a hibrid FIDO2 biztonsági kulcsokról az Azure AD-ben (előzetes verzió)
 
@@ -111,7 +111,7 @@ A következő parancs futtatásával ellenőrizze, hogy a Windows 10-ügyfél es
 Dsregcmd/status
 ```
 
-A következő minta kimenet azt mutatja, hogy az eszköz az Azure AD-hez csatlakozik, mivel a *AzureADJoined* *Igen*értékre van állítva:
+A következő minta kimenet azt mutatja, hogy az eszköz az Azure AD-hez csatlakozik, mivel a *AzureADJoined* *Igen* értékre van állítva:
 
 ```output
 +---------------------+
@@ -123,7 +123,7 @@ EnterpriseJoined: NO
 DomainedJoined: NO
 ```
 
-A következő minta kimenet azt mutatja be, hogy az eszköz hibrid Azure AD-hez csatlakozik, mivel a *DomainedJoined* is *Igen*értékre van állítva. A *tartománynév* is megjelenik:
+A következő minta kimenet azt mutatja be, hogy az eszköz hibrid Azure AD-hez csatlakozik, mivel a *DomainedJoined* is *Igen* értékre van állítva. A *tartománynév* is megjelenik:
 
 ```output
 +---------------------+
@@ -234,13 +234,13 @@ A HTTP-kérelem egy szabványos elsődleges frissítési jogkivonat-(PRT-) kére
 
 Az Azure AD a titkosított ügyfél kulcsát és az üzenet pufferét a PRT-válaszban további tulajdonságokként ötvözi. Az adattartalom titkosítása az Azure AD-eszköz munkamenet-kulcsa alapján történik.
 
-| Mező              | Típus   | Description  |
+| Mező              | Típus   | Leírás  |
 |--------------------|--------|--------------|
 | tgt_client_key     | sztring | Base64 kódolású ügyfél kulcsa (titkos kulcs). Ez a kulcs a TGT elleni védelemhez használt ügyfél titka. Ebben a jelszó nélküli forgatókönyvben az ügyfél titkos kulcsát a kiszolgáló hozza létre az egyes TGT-kérések részeként, majd visszaküldi az ügyfélnek a válaszban. |
 | tgt_key_type       | int    | A helyszíni AD DS a KERB_MESSAGE_BUFFERban található ügyfél-kulcshoz és Kerberos-munkamenethez használt kulcs típusa. |
 | tgt_message_buffer | sztring | Base64 kódolású KERB_MESSAGE_BUFFER. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A FIDO2 biztonsági kulcsainak és a helyszíni erőforrások hibrid elérésének megkezdéséhez tekintse meg a következő cikkeket:
 

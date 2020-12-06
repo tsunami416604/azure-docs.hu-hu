@@ -6,23 +6,23 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 04/15/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7ac03ff017f8beefe7cc487cdc32741ac1c5a35
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5ba1e280e3c14a24e33246799ca0d7ef8221294f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838178"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741694"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>A kombinált biztonsági információk regisztrációjának hibaelhárítása
 
 A cikkben található információk arra szolgálnak, hogy miként lehet a felhasználók által a kombinált regisztrációs élményben jelentett problémákkal kapcsolatos hibaelhárítást végző rendszergazdákat irányítani.
 
-## <a name="audit-logs"></a>Auditnaplók
+## <a name="audit-logs"></a>Naplók
 
 A kombinált regisztrációhoz naplózott események az Azure AD-naplók hitelesítési módszerek kategóriájában találhatók.
 
@@ -139,7 +139,7 @@ Az alábbi lépések segítséget nyújtanak a felhasználók vagy felhasználó
    }
    ```
 
-#### <a name="rollback"></a>Visszaállítási
+#### <a name="rollback"></a>Visszaállítás
 
 A PowerShell-ablakban futtassa a következő parancsot, amely biztosítja a parancsfájl-és a felhasználói fájlok helyét. Ha a rendszer kéri, adja meg a globális rendszergazdai hitelesítő adatokat. A parancsfájl az egyes felhasználói frissítési műveletek eredményét fogja kiadni.
 
@@ -155,6 +155,6 @@ A frissített felhasználói élmény letiltásához hajtsa végre az alábbi l�
 
 A rendszer a továbbiakban nem fogja tudni regisztrálni a felhasználókat a frissített felhasználói élmény használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További információ az önkiszolgáló jelszó-visszaállítás és az Azure AD-Multi-Factor Authentication együttes regisztrálásáról](concept-registration-mfa-sspr-combined.md)

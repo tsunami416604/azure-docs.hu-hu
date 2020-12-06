@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f08bf985c4d1a5d85cd82cd03e19f5b2f310f4d5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 808109e00decf5c4084be5be550b49e2e7d4628c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838569"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742357"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
 
@@ -77,7 +77,7 @@ A rendszer a telepítési útvonalat a korábbi PhoneFactor ügynök telepítés
 > [!NOTE]
 > Ha az Azure MFA-kiszolgáló 8.0-s verziójánál régebbiről frissít 8.0-nál újabb verzióra, a mobilalkalmazás webszolgáltatását eltávolíthatja a frissítés után
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Telepítse a felhasználói portált](howto-mfaserver-deploy-userportal.md) az Azure Multi-Factor Authentication-kiszolgálóhoz.
 

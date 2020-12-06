@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae9872593b48355d4ad3711e8e5092481b16213
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: eaa8b586b7d1ae073d0746569d61de837eec3b7d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174530"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743870"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszóátállítás
 
@@ -135,7 +135,7 @@ Ha mobil alkalmazást használ a jelszó-visszaállítási módszerként, péld�
 
 | Az alaphelyzetbe állításhoz szükséges módszerek száma | Eggyel | Kettővel |
 | :---: | :---: | :---: |
-| Elérhető a Mobile App szolgáltatásai | Code | Kód vagy értesítés |
+| Elérhető a Mobile App szolgáltatásai | Kód | Kód vagy értesítés |
 
 A felhasználók nem regisztrálhatják a mobileszköz regisztrációját az önkiszolgáló jelszó-visszaállításhoz való regisztráció során [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . A felhasználók a következő címen regisztrálhatják a mobil alkalmazást: [https://aka.ms/mfasetup](https://aka.ms/mfasetup) vagy a kombinált biztonsági adatok regisztrációjában [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
@@ -152,7 +152,7 @@ A felhasználók nem regisztrálhatják a mobileszköz regisztrációját az ön
 
 Ha olyan házirenddel indul, amely csak egy szükséges hitelesítési módszert tartalmaz a regisztrációhoz vagy a zárolás feloldásához, és ezt két módszerre módosítja, mi történik?
 
-| Regisztrált metódusok száma | Szükséges metódusok száma | Eredmény |
+| Regisztrált metódusok száma | Szükséges metódusok száma | Result |
 | :---: | :---: | :---: |
 | 1 vagy több | 1 | **Able** Alaphelyzetbe állítás vagy zárolás feloldása |
 | 1 | 2 | **Nem lehet** alaphelyzetbe állítani vagy feloldani |
@@ -235,7 +235,7 @@ A forgatókönyv teszteléséhez lépjen a https://passwordreset.microsoftonline
 > [!NOTE]
 > Az Azure AD-bérlőhöz (például Hotmail.com, Outlook.com vagy más személyes e-mail-címekhez) hozzáférést biztosító Microsoft-fiókok nem tudják használni az Azure AD-SSPR. A jelszó alaphelyzetbe állításához a következő információkat kell használnia, [Ha nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A SSPR megkezdéséhez kövesse az alábbi oktatóanyagot:
 
