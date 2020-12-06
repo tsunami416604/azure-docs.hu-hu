@@ -1,29 +1,23 @@
 ---
-title: Kedvencek hozzáadása, eltávolítása és rendezése Azure Portalban | Microsoft Docs
+title: Kedvencek hozzáadása, eltávolítása és rendezése Azure Portal
 description: Megtudhatja, hogyan adhat hozzá vagy távolíthat el elemeket a Kedvencek listából, és hogyan rendezheti át az elemek sorrendjét
-services: azure-portal
 keywords: Kedvencek, portál
-author: mgblythe
-ms.author: mblythe
 ms.date: 12/20/2019
 ms.topic: how-to
-ms.service: azure-portal
-ms.custom: ''
-manager: mtillman
-ms.openlocfilehash: 359a544df906a277a89333e3aee2f6203a707f8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01ed34c2e72890c6aeeef9371312825273722ac6
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764128"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745791"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>Kedvencek hozzáadása, eltávolítása és átrendezése
 
-Hozzáadhat vagy eltávolíthat elemeket a **Kedvencek** listájából, így gyorsan elérheti a leggyakrabban használt szolgáltatásokat. Már hozzáadott néhány gyakori szolgáltatást a **Kedvencek** listájához, de valószínűleg testre szeretné szabni. Ön az egyetlen, aki látja a **kedvenceken**végzett módosításokat.
+Hozzáadhat vagy eltávolíthat elemeket a **Kedvencek** listájából, így gyorsan elérheti a leggyakrabban használt szolgáltatásokat. Már hozzáadott néhány gyakori szolgáltatást a **Kedvencek** listájához, de valószínűleg testre szeretné szabni. Ön az egyetlen, aki látja a **kedvenceken** végzett módosításokat.
 
 ## <a name="add-a-favorite"></a>Kedvenc hozzáadása
 
-A **Kedvencek** területen felsorolt elemek az **összes szolgáltatás**közül vannak kiválasztva. A szolgáltatáshoz kapcsolódó információk és erőforrások megjelenítéséhez vigye a kurzort a szolgáltatás nevére. A kitöltött csillag ikon ![ kitöltött csillag ikon ](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) a szolgáltatás neve mellett azt jelzi, hogy az elem megjelenik a **Kedvencek** listán. A csillag ikont választva hozzáadhat egy szolgáltatást a **Kedvencek** listájához.
+A **Kedvencek** területen felsorolt elemek az **összes szolgáltatás** közül vannak kiválasztva. A szolgáltatáshoz kapcsolódó információk és erőforrások megjelenítéséhez vigye a kurzort a szolgáltatás nevére. A kitöltött csillag ikon ![ kitöltött csillag ikon ](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) a szolgáltatás neve mellett azt jelzi, hogy az elem megjelenik a **Kedvencek** listán. A csillag ikont választva hozzáadhat egy szolgáltatást a **Kedvencek** listájához.
 
 ### <a name="add-cost-management--billing-to-favorites"></a>Cost Management + számlázás hozzáadása a kedvencekhez
 
@@ -53,7 +47,7 @@ Mostantól közvetlenül a **Kedvencek** listából is eltávolíthat egy elemet
 
 ## <a name="rearrange-favorites"></a>Kedvencek átrendezése
 
-Módosíthatja a kedvenc szolgáltatásainak sorrendjét. Egyszerűen húzza át a menüelemet egy másik helyre a **Kedvencek**alatt.
+Módosíthatja a kedvenc szolgáltatásainak sorrendjét. Egyszerűen húzza át a menüelemet egy másik helyre a **Kedvencek** alatt.
 
 ### <a name="move-cost-management--billing-to-the-top-of-favorites"></a>Cost Management + számlázás áthelyezése a Kedvencek tetejére
 

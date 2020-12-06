@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 8d28a1f2040cfec7b81081754a6abd3bc3e14439
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 5d13a6a77ede6277eebc7fdab7cd42165cb602fa
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511474"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746351"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure-beli privát hivatkozás Azure Data Factory
 
@@ -96,22 +96,28 @@ A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konf
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Privát hivatkozás beállítása Azure Data Factoryhoz
 [A Azure Portal](../private-link/create-private-endpoint-portal.md)használatával saját végpontokat is létrehozhat.
 
+Kiválaszthatja, hogy a saját üzemeltetésű integrációs modult nyilvános végponton vagy privát végponton keresztül Azure Data Factoryhoz kívánja-e kapcsolni. 
+
+![Képernyőkép a saját üzemeltetésű Integration Runtime nyilvános elérésének blokkolásáról.](./media/data-factory-private-link/disable-public-access-shir.png)
+
+
 Az Azure-beli adatgyárat a Azure Portalban is megtekintheti, és létrehozhat egy privát végpontot, ahogy az itt látható:
 
 ![Képernyőkép a "Private Endpoint connections" panelről privát végpont létrehozásához.](./media/data-factory-private-link/create-private-endpoint.png)
 
+Az **erőforrás** lépésében válassza a **Microsoft. DataFactory/gyárak** **Erőforrás típusa** lehetőséget. Ha a saját üzemeltetésű integrációs modul és a Azure Data Factory szolgáltatás közötti kommunikációhoz szeretne privát végpontot létrehozni, válassza a **DataFactory** **célként alerőforrásként** lehetőséget.
 
-Ha le szeretné tiltani az Azure-beli adatgyárhoz való nyilvános hozzáférést, és csak privát kapcsolaton keresztül engedélyezi a hozzáférést, tiltsa le a hálózati hozzáférést a Azure Portal Azure Data Factoryhoz az itt látható módon:
-
-![A "hálózati hozzáférés" panel képernyőképe privát végpont létrehozásához.](./media/data-factory-private-link/disable-network-access.png)
+![Képernyőkép a "Private Endpoint connections" panelről az erőforrás kiválasztásához.](./media/data-factory-private-link/private-endpoint-resource.png)
 
 > [!NOTE]
 > A nyilvános hálózati hozzáférés letiltása csak a saját üzemeltetésű integrációs modulra érvényes, nem Azure Integration Runtime és SQL Server Integration Services (SSIS) Integration Runtime.
 
-> [!NOTE]
-> A nyilvános hálózati hozzáférés letiltása után továbbra is elérheti a Azure Data Factory portált nyilvános hálózaton keresztül.
+Ha privát végpontot szeretne létrehozni a virtuális hálózatban található adatfeldolgozó létrehozásához és figyeléséhez, válassza **portal** a portál **célként alerőforrásként** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+> [!NOTE]
+> Továbbra is elérheti a Azure Data Factory portált egy nyilvános hálózaton keresztül, miután létrehozta a portálon a privát végpontot.
+
+## <a name="next-steps"></a>További lépések
 
 - [Adat-előállító létrehozása az Azure Data Factory felhasználói felületén](quickstart-create-data-factory-portal.md)
 - [Az Azure Data Factory bemutatása](introduction.md)

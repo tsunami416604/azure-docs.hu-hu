@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: d84e1508dec4d4a5802f7a2ac8c0e6ada5a8044c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 28c0be40387f411286230f94c19fa23a80e650af
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128691"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746403"
 ---
 # <a name="how-to-add-technical-details-for-your-saas-offer"></a>Technikai részletek hozzáadása SaaS-ajánlathoz
 
@@ -42,6 +42,6 @@ A **technikai konfiguráció** lapon megadhatja azokat a műszaki adatokat, amel
 
 A következő lapra való továbblépés előtt válassza a **Piszkozat mentése** lehetőséget: terv áttekintése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Csomagok létrehozása SaaS-ajánlathoz](create-new-saas-offer-plans.md).

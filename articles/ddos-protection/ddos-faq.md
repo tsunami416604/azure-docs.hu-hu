@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 6c475971f604c951280d0351d593cd5d96879d31
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c09f8c5ae4a742e6caa489ee29043f500617bb24
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992403"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746488"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection standard gyakori kérdések
 
@@ -29,7 +29,7 @@ Az elosztott szolgáltatásmegtagadás vagy a DDoS olyan típusú támadás, ame
 A standard szintű, az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva a DDoS-támadások elleni védelem érdekében fejlett DDoS-elhárítási funkciókat biztosít. Azure DDoS Protection A rendszer automatikusan hangolja az adott Azure-erőforrások védelmére egy virtuális hálózaton. A védelem egyszerűen engedélyezhető bármely új vagy meglévő virtuális hálózaton, és nem igényel alkalmazás-vagy erőforrás-módosítást. Az alapszintű szolgáltatás számos előnnyel jár, beleértve a naplózást, a riasztásokat és a telemetria is. További részletekért tekintse meg [Azure DDoS Protection standard áttekintést](ddos-protection-overview.md) . 
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Mi a védelem a szolgáltatási rétegben (7. réteg)?
-Az ügyfelek [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md) -val együtt használhatják a Azure DDoS Protection szolgáltatást a védelemre a hálózati rétegben (3. és 4. réteg, Azure DDoS Protection szolgáltatás által kínált) és az alkalmazási rétegben (7. réteg, Application Gateway WAF SKU által felkínálva).
+Az ügyfelek a webalkalmazási tűzfallal (WAF) együtt használhatják a Azure DDoS Protection szolgáltatást a hálózati rétegben (3. és 4. réteg, Azure DDoS Protection standard által kínált) és az alkalmazási rétegben (7. réteg, WAF által felkínált). A WAF-ajánlatok közé tartoznak az Azure [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , valamint az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)elérhető, harmadik féltől származó webalkalmazási tűzfalak is.
 
 ## <a name="are-services-unsafe-in-azure-without-the-service"></a>A szolgáltatások nem biztonságosak az Azure-ban a szolgáltatás nélkül?
 Az Azure-on futó szolgáltatásokat Azure DDoS Protection alapszintű védelemmel látja el, amely az Azure infrastruktúrájának védelmére van érvényben. Azonban az infrastruktúrát védő védelem jóval magasabb, mint a legtöbb alkalmazás kapacitása, és nem biztosít telemetria vagy riasztást, így ha a platform ártalmatlannak tekinti a forgalmi kötetet, akkor az azt fogadó alkalmazás számára is pusztító lehet. 
@@ -41,6 +41,9 @@ Az ARM-alapú virtuális hálózatok lévő nyilvános IP-címek jelenleg az egy
 
 ## <a name="are-classicrdfe-protected-resources-supported"></a>Támogatottak-e a klasszikus/RDFE védett erőforrások?
 Előzetes verzióban csak az ARM-alapú védett erőforrások támogatottak. A klasszikus/RDFE üzemelő példányokban nem támogatottak a virtuális gépek. A támogatás jelenleg nem tervezett a klasszikus/RDFE-erőforrásokhoz. További részletekért tekintse meg [Azure DDoS Protection szabványos hivatkozási architektúrákat](ddos-protection-reference-architectures.md) .
+
+## <a name="can-i-protect-my-paas-resources-using-ddos-protection"></a>Biztosíthatom a saját Pásti-erőforrásait a DDoS Protection?
+A több-bérlős rendszerhez csatolt nyilvános IP-címek jelenleg nem támogatottak. Nem támogatott erőforrások például a Storage VIP-címek, az Event hub VIP-címei és az alkalmazás-és Cloud Services alkalmazások. További részletekért tekintse meg [Azure DDoS Protection szabványos hivatkozási architektúrákat](ddos-protection-reference-architectures.md) .
 
 ## <a name="can-i-protect-my-on-premise-resources-using-ddos-protection"></a>Használhatom a helyszíni erőforrásokat a DDoS Protection használatával?
 A DDoS-védelem engedélyezéséhez az Azure egyik VNet tartozó nyilvános végpontokat kell használnia a szolgáltatáshoz. A minták például a következők:

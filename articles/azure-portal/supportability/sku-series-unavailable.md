@@ -1,18 +1,16 @@
 ---
-title: A régió vagy SKU sorozata nem érhető el – Azure
+title: A régió vagy SKU sorozata nem érhető el
 description: Egyes SKU-sorozatok nem érhetők el a kiválasztott előfizetéshez ehhez a régióhoz, ami előfizetés-kezelési támogatási kérést igényelhet.
-services: Azure Supportability
 author: stevendotwang
-ms.service: azure-supportability
 ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: fccde344a06d39bd4bb8e3178444ec20677e2f50
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 2bbe1dff6bbf8fed481300db95482c46b0e8a7b7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078510"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745281"
 ---
 # <a name="region-or-sku-unavailable"></a>Nem elérhető régió vagy termékváltozat
 
@@ -58,17 +56,17 @@ Először azt javasoljuk, hogy vegye fontolóra egy olyan alternatív régiót v
 
 Ha nem talál megfelelő régiót vagy SKU-t, hozzon létre egy **előfizetés-kezelési** [támogatási kérelmet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) a következő lépésekkel:
 
-1. A [Azure Portal](https://portal.azure.com) menüben válassza a **Súgó + támogatás**lehetőséget. Ezután válassza az **új támogatási kérés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com) menüben válassza a **Súgó + támogatás** lehetőséget. Ezután válassza az **új támogatási kérés** lehetőséget.
 
-1. Az **alapok**területen a **probléma típusa**beállításnál válassza az **előfizetés-kezelés**lehetőséget.
+1. Az **alapok** területen a **probléma típusa** beállításnál válassza az **előfizetés-kezelés** lehetőséget.
 
 1. Válasszon ki egy **előfizetést** , és adjon meg egy rövid leírást az **összegzésben**.
 
    ![Az új támogatási kérelem alapjai lap](./media/SKU-series-unavailable/support-request-basics.png)
 
-1. A **probléma típusa**beállításnál válassza a **probléma típusának kiválasztása**lehetőséget.
+1. A **probléma típusa** beállításnál válassza a **probléma típusának kiválasztása** lehetőséget.
 
-1. A **probléma típusának kiválasztásához**válasszon egy beállítást, például nem **tud hozzáférni az előfizetéshez vagy az erőforráshoz**,  >  **a probléma nem szerepel a fenti listában**. Kattintson a **Mentés** gombra.
+1. A **probléma típusának kiválasztásához** válasszon egy beállítást, például nem **tud hozzáférni az előfizetéshez vagy az erőforráshoz**,  >  **a probléma nem szerepel a fenti listában**. Válassza a **Save** (Mentés) lehetőséget.
 
    ![Probléma megadása a kérelemhez](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
@@ -76,12 +74,12 @@ Ha nem talál megfelelő régiót vagy SKU-t, hozzon létre egy **előfizetés-k
 
 1. Adja meg a megadható további információkat, valamint a kapcsolattartási adatait.
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az adatok ellenőrzése után válassza a **Létrehozás** lehetőséget a kérelem létrehozásához.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az adatok ellenőrzése után válassza a **Létrehozás** lehetőséget a kérelem létrehozásához.
 
 ## <a name="send-us-your-suggestions"></a>Küldje el nekünk javaslatait
 
 Mindig nyitottak vagyunk visszajelzésre és javaslatokra! Küldje el nekünk [javaslatait](https://feedback.azure.com/forums/266794-support-feedback). Emellett a [Twitteren](https://twitter.com/azuresupport) vagy a [Microsoft Q&egy kérdés oldalon](/answers/products/azure)is felveheti velünk a kapcsolatot.
 
-## <a name="learn-more"></a>További információk
+## <a name="learn-more"></a>Tudjon meg többet
 
 [Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq)

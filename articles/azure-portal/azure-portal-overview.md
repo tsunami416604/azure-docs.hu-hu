@@ -1,20 +1,15 @@
 ---
-title: Az Azure Portal áttekintése | Microsoft Docs
+title: Az Azure Portal áttekintése
 description: Az Azure Portal egy grafikus felhasználói felület, amelyet az Azure-szolgáltatások kezeléséhez használhat. Megtudhatja, hogyan navigálhat és kereshet erőforrásokat a Azure Portalban.
-services: azure-portal
 keywords: portál
-author: mgblythe
-ms.author: mblythe
 ms.date: 12/20/2019
 ms.topic: overview
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 4a00c1dcf973098895e80d5e3d656efd4a35d0d0
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 1e9cf1a9609b9d4f30e51094f1d0542335ead0e2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147045"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745927"
 ---
 # <a name="azure-portal-overview"></a>Az Azure Portal áttekintése
 
@@ -40,7 +35,7 @@ Ha a portál menü dokkolt mód elemét választja, mindig látható lesz. A men
 
 ## <a name="azure-home"></a>Azure Kezdőlap
 
-Az Azure-szolgáltatások új előfizetői a [portálra való bejelentkezés](https://portal.azure.com) után elsőként láthatják az **Azure kezdőlapját** . Ez az oldal olyan erőforrásokat fordít le, amelyek segítenek az Azure-előfizetések legtöbbje számára. Az ingyenes online tanfolyamokra, dokumentációra, alapszolgáltatásokra és hasznos webhelyekre mutató hivatkozásokat tartalmaz, amelyekkel naprakészen maradhat, és kezelheti a szervezete változásait. A munkához való gyors és könnyű hozzáférés érdekében a legutóbb felkeresett erőforrások listáját is megjeleníti. Ezt a lapot nem szabhatja testre, de kiválaszthatja, hogy az **Azure Home** vagy az **Azure irányítópultot** szeretné-e látni alapértelmezett nézetként. Amikor először jelentkezik be, az oldal tetején megjelenik egy üzenet, amelyen mentheti a beállításokat.
+Az Azure-szolgáltatások új előfizetői a [portálra való bejelentkezés](https://portal.azure.com) után elsőként láthatják az **Azure kezdőlapját**. Ez az oldal olyan erőforrásokat fordít le, amelyek segítenek az Azure-előfizetések legtöbbje számára. Az ingyenes online tanfolyamokra, dokumentációra, alapszolgáltatásokra és hasznos webhelyekre mutató hivatkozásokat tartalmaz, amelyekkel naprakészen maradhat, és kezelheti a szervezete változásait. A munkához való gyors és könnyű hozzáférés érdekében a legutóbb felkeresett erőforrások listáját is megjeleníti. Ezt a lapot nem szabhatja testre, de kiválaszthatja, hogy az **Azure Home** vagy az **Azure irányítópultot** szeretné-e látni alapértelmezett nézetként. Amikor először jelentkezik be, az oldal tetején megjelenik egy üzenet, amelyen mentheti a beállításokat.
 
 ![Képernyőfelvétel: a beállítások mentésének helye.](./media/azure-portal-overview/azure-portal-default-view.png)
 
@@ -70,12 +65,12 @@ Az alábbi ábra a Azure Portal alapvető elemeit címkézi, amelyek mindegyike 
 |2| Globális keresés. A keresősáv használatával gyorsan megtalálhatja az adott erőforrást, szolgáltatást vagy dokumentációt.|
 |3|Globális vezérlők. Az összes globális elemhez hasonlóan ezek a funkciók is megmaradnak a portálon, így többek között a következők: Cloud Shell, előfizetési szűrő, értesítések, portál beállításai, Súgó és támogatás, valamint visszajelzés küldése.|
 |4|Az Ön fiókja. Megtekintheti a fiókjával kapcsolatos információkat, átválthatja a címtárakat, kijelentkezhet vagy bejelentkezhet egy másik fiókkal.|
-|5|Portál menü. A portál menü egy globális elem, amely segít a szolgáltatások közötti váltásban. Más néven az oldalsáv, a portál menü mód módosítható a **portál beállításaiban** .|
+|5|Portál menü. A portál menü egy globális elem, amely segít a szolgáltatások közötti váltásban. Más néven az oldalsáv, a portál menü mód módosítható a **portál beállításaiban**.|
 |6|Erőforrás menü. Számos szolgáltatás tartalmaz egy erőforrás menüt, amely segít a szolgáltatás kezelésében. Ezt az elemet a bal oldali ablaktábla néven láthatja.|
 |7|Parancssáv. A parancssáv vezérlői az aktuális fókusz kontextusában jelennek meg.|
 |8|Munkaablakban.  A jelenleg fókuszban lévő erőforrás részleteit jeleníti meg.|
 |9|Morzsa. A navigációs hivatkozások segítségével egy szint visszahelyezhető a munkafolyamatba.|
-|10|A fő vezérlővel új erőforrás hozható létre a jelenlegi előfizetésben. Bontsa ki vagy nyissa meg a portál menüt a **+ erőforrás létrehozásához** . Keresse meg vagy tallózással keresse meg az Azure piactéren a létrehozni kívánt erőforrás típusát.|
+|10|A fő vezérlővel új erőforrás hozható létre a jelenlegi előfizetésben. Bontsa ki vagy nyissa meg a portál menüt a **+ erőforrás létrehozásához**. Keresse meg vagy tallózással keresse meg az Azure piactéren a létrehozni kívánt erőforrás típusát.|
 |11|A Kedvencek listája. Tekintse meg a [Kedvencek hozzáadásával, eltávolításával és rendezésével](../azure-portal/azure-portal-add-remove-sort-favorites.md) kapcsolatos információkat a lista testreszabásával kapcsolatban.|
 
 ## <a name="get-started-with-services"></a>Ismerkedés a szolgáltatásokkal
@@ -94,7 +89,7 @@ Tekintse meg ezt a videót, amely bemutatja, hogyan használható a globális ke
 
 [A globális keresés használata a Azure Portalban](https://www.youtube.com/watch?v=nZ7WwTZcQbo)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a Azure Portal futtatásáról a [támogatott böngészőkben és eszközökön](../azure-portal/azure-portal-supported-browsers-devices.md)
 * Útközben is kapcsolódhat [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/)

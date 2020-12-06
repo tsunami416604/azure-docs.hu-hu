@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan hozhat létre dinamikusan állandó kötetet Az
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 08752f8aaa76d83e13eeea86db3048a6d29a4d99
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2ad2affee34348e8c2fc7b734c8b49d0aec8db40
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126396"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744909"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure Files az Azure Kubernetes szolgáltatásban (ak)
 
@@ -26,7 +26,7 @@ Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a tele
 
 ## <a name="create-a-storage-class"></a>Tárolási osztály létrehozása
 
-A tárolási osztály segítségével határozható meg az Azure-fájlmegosztás létrehozása. A rendszer automatikusan létrehoz egy Storage-fiókot a [csomópont-erőforráscsoport][node-resource-group] számára, hogy az Azure-fájlmegosztás tárolására használja a Storage osztályt. Válasszon a következő [Azure Storage-redundancia][storage-skus] *skuName* :
+A tárolási osztály segítségével határozható meg az Azure-fájlmegosztás létrehozása. A rendszer automatikusan létrehoz egy Storage-fiókot a [csomópont-erőforráscsoport][node-resource-group] számára, hogy az Azure-fájlmegosztás tárolására használja a Storage osztályt. Válasszon a következő [Azure Storage-redundancia][storage-skus] *skuName*:
 
 * *Standard_LRS* – standard, helyileg redundáns tárolás (LRS)
 * *Standard_GRS* – szabványos geo-redundáns tárolás (GRS)
@@ -40,7 +40,7 @@ A tárolási osztály segítségével határozható meg az Azure-fájlmegosztás
 
 A Azure Files Kubernetes tárolási osztályaival kapcsolatos további információkért lásd: [Kubernetes tárolási][kubernetes-storage-classes]osztályok.
 
-Hozzon létre egy nevű fájlt `azure-file-sc.yaml` , és másolja a következő példában szereplő jegyzékfájlba. További információ a *mountOptions* : [csatlakoztatási beállítások][mount-options] szakasz.
+Hozzon létre egy nevű fájlt `azure-file-sc.yaml` , és másolja a következő példában szereplő jegyzékfájlba. További információ a *mountOptions*: [csatlakoztatási beállítások][mount-options] szakasz.
 
 ```yaml
 kind: StorageClass
@@ -55,6 +55,7 @@ mountOptions:
   - gid=0
   - mfsymlinks
   - cache=strict
+  - actimeo=30
 parameters:
   skuName: Standard_LRS
 ```
@@ -105,7 +106,7 @@ my-azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        R
 
 ## <a name="use-the-persistent-volume"></a>Az állandó kötet használata
 
-A következő YAML létrehoz egy Pod-t, amely a *saját azurefile* állandó mennyiségi jogcím használatával csatlakoztatja az Azure-fájlmegosztást a */mnt/Azure* útvonalon. Windows Server-tárolók esetén a Windows PATH Convention (például *'d:* ) használatával válasszon egy *mountPath* .
+A következő YAML létrehoz egy Pod-t, amely a *saját azurefile* állandó mennyiségi jogcím használatával csatlakoztatja az Azure-fájlmegosztást a */mnt/Azure* útvonalon. Windows Server-tárolók esetén a Windows PATH Convention (például *'d:*) használatával válasszon egy *mountPath* .
 
 Hozzon létre egy nevű fájlt `azure-pvc-files.yaml` , és másolja a következő YAML. Győződjön meg arról, hogy a *claimName* megegyezik az utolsó lépésben létrehozott PVC-vel.
 
@@ -165,7 +166,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Csatlakoztatási beállítások
 
-A *fileMode* és a *dirMode* alapértelmezett értéke *0777* a Kubernetes 1.13.0-es vagy újabb verziójához. Ha egy tárolási osztállyal dinamikusan hozza létre az állandó kötetet, a tárolási osztály objektumon meg lehet adni a csatlakoztatási beállításokat. A következő példa a *0777* -es készletet állítja be:
+A *fileMode* és a *dirMode* alapértelmezett értéke *0777* a Kubernetes 1.13.0-es vagy újabb verziójához. Ha egy tárolási osztállyal dinamikusan hozza létre az állandó kötetet, a tárolási osztály objektumon meg lehet adni a csatlakoztatási beállításokat. A következő példa a *0777*-es készletet állítja be:
 
 ```yaml
 kind: StorageClass
@@ -180,11 +181,12 @@ mountOptions:
   - gid=0
   - mfsymlinks
   - cache=strict
+  - actimeo=30
 parameters:
   skuName: Standard_LRS
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 

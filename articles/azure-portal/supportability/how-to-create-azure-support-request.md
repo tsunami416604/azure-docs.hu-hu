@@ -1,20 +1,15 @@
 ---
-title: Azure-támogatási kérelem létrehozása | Microsoft Docs
+title: Azure-támogatáskérések létrehozása
 description: Azok az ügyfelek, akiknek segítségre van szükségük, a Azure Portal használhatják az önkiszolgáló megoldásokat, valamint a támogatási kérések létrehozását és kezelését.
-services: Azure Supportability
-author: mgblythe
-manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
-ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
-ms.author: mblythe
-ms.openlocfilehash: f937b03b2f838f69f56a4b132d0ea7a7e298b532
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 11ca7925ce1664b5586ab8ec0fb523a2d562ee80
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372123"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745587"
 ---
 # <a name="create-an-azure-support-request"></a>Azure-támogatáskérés létrehozása
 
@@ -47,7 +42,7 @@ Támogatási kérelem létrehozásához [tulajdonosnak](../../role-based-access-
 
 Támogatási kérelem elindítása bárhonnan a Azure Portalban:
 
-1. Jelölje be a **?** a globális fejlécben. Ezután válassza a **Súgó + támogatás**lehetőséget.
+1. Jelölje be a **?** a globális fejlécben. Ezután válassza a **Súgó + támogatás** lehetőséget.
 
    ![Súgó és támogatás](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -59,7 +54,7 @@ Támogatási kérelem elindítása bárhonnan a Azure Portalban:
 
 Ha támogatási kérést szeretne elindítani az erőforrás kontextusában, jelenleg a következővel dolgozik:
 
-1. Az erőforrás menüben, a **támogatás + hibaelhárítás** szakaszban válassza az **új támogatási kérelem**lehetőséget.
+1. Az erőforrás menüben, a **támogatás + hibaelhárítás** szakaszban válassza az **új támogatási kérelem** lehetőséget.
 
    ![Kontextusban](./media/how-to-create-azure-support-request/incontext2lower.png)
 
@@ -87,7 +82,7 @@ A következő lépés a problémával kapcsolatos további részletek begyűjté
 
 1. Ha lehetséges, mondja el nekünk, hogy mikor indította el a problémát, és hogy milyen lépéseket kell újból létrehoznia. Feltölthet egy fájlt, például egy naplófájlt vagy egy kimenetet a diagnosztika szolgáltatásból. További információ a fájlfeltöltés szolgáltatásról: [fájlfeltöltés irányelvek](how-to-manage-azure-support-request.md#file-upload-guidelines).
 
-1. Miután megtörtént a problémával kapcsolatos összes információ, válassza ki, hogyan kérhet támogatást. A **részletek**a **támogatási módszer** szakaszban válassza ki a hatás súlyosságát. A maximális súlyossági szint a [támogatási csomagtól](https://azure.microsoft.com/support/plans)függ.
+1. Miután megtörtént a problémával kapcsolatos összes információ, válassza ki, hogyan kérhet támogatást. A **részletek** a **támogatási módszer** szakaszban válassza ki a hatás súlyosságát. A maximális súlyossági szint a [támogatási csomagtól](https://azure.microsoft.com/support/plans)függ.
 
     Alapértelmezés szerint a **megosztás diagnosztikai információi** beállítás van kiválasztva. Ez lehetővé teszi, hogy az Azure-támogatás [diagnosztikai adatokat](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) gyűjtsön az Azure-erőforrásokból. Bizonyos esetekben van egy második kérdés, amely nincs alapértelmezés szerint kiválasztva, például a virtuális gép memóriájához való hozzáférés kérelmezése.
 
@@ -97,12 +92,12 @@ A következő lépés a problémával kapcsolatos további részletek begyűjté
 
 ### <a name="review--create"></a>Ellenőrzés és létrehozás
 
-Fejezze be az összes szükséges információt az egyes lapokon, majd válassza a **felülvizsgálat + létrehozás**elemet. Tekintse át a támogatáshoz küldendő adatokat. Ha szükséges, lépjen vissza bármelyik lapra, és végezze el a módosítást. Ha meggyőződött arról, hogy a támogatási kérelem elkészült, válassza a **Létrehozás**lehetőséget.
+Fejezze be az összes szükséges információt az egyes lapokon, majd válassza a **felülvizsgálat + létrehozás** elemet. Tekintse át a támogatáshoz küldendő adatokat. Ha szükséges, lépjen vissza bármelyik lapra, és végezze el a módosítást. Ha meggyőződött arról, hogy a támogatási kérelem elkészült, válassza a **Létrehozás** lehetőséget.
 
 A támogatási szakember felveszi Önnel a kapcsolatot a megadott módszer használatával. További információ a kezdeti válaszidőt: [támogatás hatóköre és reagálási](https://azure.microsoft.com/support/plans/response/)idő.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az Azure önsegítő támogatási lehetőségeiről, tekintse meg ezt a videót:
 

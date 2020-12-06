@@ -1,20 +1,14 @@
 ---
-title: Böngésző nyomkövetésének rögzítése hibaelhárításhoz | Microsoft Docs
+title: Böngésző-nyomkövetés rögzítése hibaelhárításhoz
 description: Hálózati információk rögzítése böngésző-nyomkövetésből a Azure Portal problémáinak elhárítása érdekében.
-services: azure-portal
-keywords: ''
-author: mgblythe
-ms.author: mblythe
 ms.date: 05/11/2020
 ms.topic: troubleshooting
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: aac7357939ab2d14949c967630840ed6d267d251
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145735"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745995"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Böngésző-nyomkövetés rögzítése hibaelhárításhoz
 
@@ -30,7 +24,7 @@ A Google Chrome és a Microsoft Edge (Chromium) egyaránt a [Chromium nyílt for
 
 1. A portálon Navigáljon arra a lépésre, ahol a probléma bekövetkezik.
 
-1. Nyomja meg az F12 billentyűt, vagy válassza ki ![ a böngésző beállításai ikont megjelenítő képernyőképet.](media/capture-browser-trace/chromium-icon-settings.png) > **További eszközök**  >  **Fejlesztői eszközök** .
+1. Nyomja meg az F12 billentyűt, vagy válassza ki ![ a böngésző beállításai ikont megjelenítő képernyőképet.](media/capture-browser-trace/chromium-icon-settings.png) > **További eszközök**  >  **Fejlesztői eszközök**.
 
 1. Alapértelmezés szerint a böngésző csak az aktuálisan betöltött oldal nyomkövetési adatait őrzi meg. Állítsa be a következő beállításokat, hogy a böngésző megtartsa az összes nyomkövetési információt, még akkor is, ha a Reprodukálási több oldalra is szüksége lesz:
 
@@ -76,7 +70,7 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
 1. A portálon Navigáljon arra a lépésre, ahol a probléma bekövetkezik.
 
-1. Nyomja meg az F12 billentyűt, vagy válassza ![ a böngésző beállításai ikon képernyőképét.](media/capture-browser-trace/edge-icon-settings.png) > **További eszközök**  >  **Fejlesztői eszközök** .
+1. Nyomja meg az F12 billentyűt, vagy válassza ![ a böngésző beállításai ikon képernyőképét.](media/capture-browser-trace/edge-icon-settings.png) > **További eszközök**  >  **Fejlesztői eszközök**.
 
 1. Alapértelmezés szerint a böngésző csak az aktuálisan betöltött oldal nyomkövetési adatait őrzi meg. Állítsa be a következő beállításokat, hogy a böngésző megtartsa az összes nyomkövetési információt, még akkor is, ha a Reprodukálási több oldalra is szüksége lesz:
 
@@ -118,7 +112,7 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
 1. A fejlesztői eszközök engedélyezése az Apple Safariban:
 
-    1. Válassza a **Safari** , majd a **Beállítások** lehetőséget.
+    1. Válassza a **Safari**, majd a **Beállítások** lehetőséget.
 
         ![A Safari beállításainak képernyőképe](media/capture-browser-trace/safari-preferences.png)
 
@@ -132,7 +126,7 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
 1. A portálon Navigáljon arra a lépésre, ahol a probléma bekövetkezik.
 
-1. Válassza a **fejlesztés** , majd a **webes ellenőr megjelenítése** lehetőséget.
+1. Válassza a **fejlesztés**, majd a **webes ellenőr megjelenítése** lehetőséget.
 
     ![Képernyőkép a "webes ellenőr megjelenítése"](media/capture-browser-trace/safari-show-web-inspector.png)
 
@@ -176,7 +170,7 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
 1. A portálon Navigáljon arra a lépésre, ahol a probléma bekövetkezik.
 
-1. Nyomja meg az F12 billentyűt, vagy válassza ![ a böngésző beállításai ikon ](media/capture-browser-trace/firefox-icon-settings.png)  >  **webfejlesztő**  >  **váltógomb bekapcsolása eszközét** .
+1. Nyomja meg az F12 billentyűt, vagy válassza ![ a böngésző beállításai ikon ](media/capture-browser-trace/firefox-icon-settings.png)  >  **webfejlesztő**  >  **váltógomb bekapcsolása eszközét**.
 
 1. Alapértelmezés szerint a böngésző csak az aktuálisan betöltött oldal nyomkövetési adatait őrzi meg. Állítsa be a következő beállításokat, hogy a böngésző megtartsa az összes nyomkövetési információt, még akkor is, ha a Reprodukálási több oldalra is szüksége lesz:
 
@@ -208,6 +202,6 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
 1. Csomagolja ki a HAR-fájlt, a konzol kimenetét és a képernyő rögzítését tömörített formátumban (például. zip), és ossza meg a Microsoft ügyfélszolgálatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure Portal áttekintése](azure-portal-overview.md)

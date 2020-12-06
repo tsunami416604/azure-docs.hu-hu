@@ -1,24 +1,15 @@
 ---
 title: Irányítópultok létrehozása és megosztása az Azure Portalon
 description: Ez a cikk a Azure Portal irányítópultok létrehozását, testreszabását, közzétételét és megosztását ismerteti.
-services: azure-portal
-documentationcenter: ''
-author: sewatson
-manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 03/23/2020
-ms.author: mblythe
-ms.openlocfilehash: b4241e51f186ea973702562ab27bb7f13a77de57
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 10c322c9d9d18f7b79a4419bd9efa2e366a5b7c3
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089485"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745825"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Irányítópultok létrehozása és megosztása az Azure Portalon
 
@@ -32,11 +23,11 @@ Ebben a példában egy új, privát irányítópultot hozunk létre, és hozzár
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A Azure Portal menüben válassza az **irányítópult**lehetőséget. Lehetséges, hogy az alapértelmezett nézet már be van állítva az irányítópultra.
+1. A Azure Portal menüben válassza az **irányítópult** lehetőséget. Lehetséges, hogy az alapértelmezett nézet már be van állítva az irányítópultra.
 
     ![Az irányítópult megnyitása](./media/azure-portal-dashboards/portal-menu-dashboard.png)
 
-1. Válassza az **új irányítópult**lehetőséget.
+1. Válassza az **új irányítópult** lehetőséget.
 
     ![Képernyőfelvétel az új irányítópultról](./media/azure-portal-dashboards/create-new-dashboard.png)
 
@@ -124,7 +115,7 @@ Az irányítópulton lévő adatműveletek automatikusan megjelenítik az elmúl
 
 Ha el szeretne távolítani egy csempét az irányítópultról, kövesse az alábbi lépéseket:
 
-* Válassza a helyi menüt a csempe jobb felső sarkában, majd válassza az **Eltávolítás az irányítópultról**lehetőséget. Vagy
+* Válassza a helyi menüt a csempe jobb felső sarkában, majd válassza az **Eltávolítás az irányítópultról** lehetőséget. Vagy
 
 * Válassza ki ![ a szerkesztési ikon ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **szerkesztése** lehetőséget a testreszabási mód megadásához. Vigye a kurzort a csempe jobb felső sarkában, majd válassza a törlés ![ ikon ](./media/azure-portal-dashboards/dashboard-delete-icon.png) Törlés ikont a csempe az irányítópultról való eltávolításához.
 
@@ -136,7 +127,7 @@ Ha egy meglévő irányítópultot sablonként szeretne használni egy új irán
 
 1. Győződjön meg arról, hogy az irányítópult nézet a másolni kívánt irányítópultot jeleníti meg.
 
-1. Az oldal fejlécében válassza a ![ klónozás ikon ](./media/azure-portal-dashboards/dashboard-clone.png) **klónozás**elemet.
+1. Az oldal fejlécében válassza a ![ klónozás ikon ](./media/azure-portal-dashboards/dashboard-clone.png) **klónozás** elemet.
 
 1. A rendszer szerkesztési módban nyitja meg az irányítópult nevét, az *irányítópult neve* **klón** néven. A cikk előző lépéseivel átnevezheti és testreszabhatja az irányítópultot.
 
@@ -152,11 +143,11 @@ Megosztott irányítópult megkereséséhez és megnyitásához kövesse az alá
 
 1. Válassza ki az irányítópultok megjelenített listáját. Ha a megnyitni kívánt irányítópult nem szerepel a felsorolásban:
 
-    1. válassza **a Tallózás minden irányítópult**lehetőséget.
+    1. válassza **a Tallózás minden irányítópult** lehetőséget.
 
         ![Az irányítópult kiválasztási menüjének képernyőképe](./media/azure-portal-dashboards/dashboard-browse.png)
 
-    1. A **típus** mezőben válassza a **megosztott irányítópultok**lehetőséget.
+    1. A **típus** mezőben válassza a **megosztott irányítópultok** lehetőséget.
 
         ![Képernyőkép az összes irányítópult kijelölési menüjéről](./media/azure-portal-dashboards/dashboard-browse-all.png)
 
@@ -172,11 +163,11 @@ Egy privát vagy megosztott irányítópult végleges törléséhez kövesse az 
 
 1. Válassza ![ a törlés ikon ](./media/azure-portal-dashboards/dashboard-delete-icon.png) **Törlés** lehetőséget az oldal fejlécében.
 
-1. Privát irányítópult esetén a megerősítő párbeszédpanelen kattintson az **OK gombra** az irányítópult eltávolításához. Megosztott irányítópult esetén a megerősítő párbeszédpanelen jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy a közzétett irányítópultot mások nem fogják megtekinteni. Ezután kattintson **az OK gombra**.
+1. Privát irányítópult esetén a megerősítő párbeszédpanelen kattintson az **OK gombra** az irányítópult eltávolításához. Megosztott irányítópult esetén a megerősítő párbeszédpanelen jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy a közzétett irányítópultot mások nem fogják megtekinteni. Ez után válassza az **OK** gombot.
 
     ![Képernyőkép a törlés megerősítéséről](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure-irányítópultok megosztása az Azure szerepköralapú hozzáférés-vezérlés használatával](azure-portal-dashboard-share-access.md)
 * [Azure-irányítópultok létrehozása programozott módon](azure-portal-dashboards-create-programmatically.md)

@@ -6,15 +6,15 @@ author: jovanpop-msft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7e9cdb18d109abeef7d7d7237444ac55f9e7da1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 129534727248ff05b5d38da60dead7903d9a5815
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576349"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744465"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Az Azure szinapszis link Preview-ban található kiszolgáló nélküli SQL-készlettel rendelkező lekérdezés Azure Cosmos DB
 
@@ -98,12 +98,13 @@ Ahhoz, hogy követni tudja, hogyan lehet lekérdezni Azure Cosmos DB-adatbáziso
 
 * Egy Azure Cosmos DB adatbázis-fiók, amelyen [engedélyezve van az Azure szinapszis-hivatkozás](../../cosmos-db/configure-synapse-link.md).
 * Egy nevű Azure Cosmos DB adatbázis `covid` .
-* Két Azure Cosmos DB tároló, `EcdcCases` `Cord19` amely az előző minta adatkészletekkel együtt lett megnevezve és betöltve.
+* Két Azure Cosmos DB tároló, `Ecdc` `Cord19` amely az előző minta adatkészletekkel együtt lett megnevezve és betöltve.
+
+Tesztelési célra a következő kapcsolatok karakterláncot használhatja: `Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==` . Vegye figyelembe, hogy ez a kapcsolódás nem garantálja a teljesítményt, mivel ez a fiók a szinapszis SQL-végponthoz képest a távoli régióban található.
 
 ## <a name="explore-azure-cosmos-db-data-with-automatic-schema-inference"></a>Ismerkedjen meg Azure Cosmos DBával az automatikus séma-következtetéssel
 
 A Azure Cosmos DBban lévő adatvizsgálatok legegyszerűbb módja az automatikus séma-következtetési lehetőség használata. Ha kihagyja a `WITH` záradékot az `OPENROWSET` utasításból, utasíthatja a kiszolgáló nélküli SQL-készletet a Azure Cosmos db tároló analitikai tárolójának sémájának automatikus észlelésére (következtetésre).
-
 
 ### <a name="openrowset-with-key"></a>[OPENROWSET kulccsal](#tab/openrowset-key)
 
@@ -111,8 +112,8 @@ A Azure Cosmos DBban lévő adatvizsgálatok legegyszerűbb módja az automatiku
 SELECT TOP 10 *
 FROM OPENROWSET( 
        'CosmosDB',
-       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases) as documents
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Ecdc) as documents
 ```
 
 ### <a name="openrowset-with-credential"></a>[OPENROWSET hitelesítő adatokkal](#tab/openrowset-credential)
@@ -120,20 +121,20 @@ FROM OPENROWSET(
 ```sql
 /*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
     CREATE CREDENTIAL MyCosmosDbAccountCredential
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 */
 SELECT TOP 10 *
 FROM OPENROWSET(
       PROVIDER = 'CosmosDB',
-      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
-      OBJECT = 'EcdcCases',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
 ---
 
-Az előző példában arra utasította a kiszolgáló nélküli SQL-készletet, hogy a `covid` Azure Cosmos db kulccsal hitelesített Azure Cosmos db fiókban található adatbázishoz kapcsolódjon `MyCosmosDbAccount` (az előző példában szereplő dummy). Ezután elérjük a `EcdcCases` tároló analitikus tárolóját a `West US 2` régióban. Mivel a tulajdonságok nem rendelkeznek kivetítéssel, a `OPENROWSET` függvény a Azure Cosmos db elemek összes tulajdonságát visszaküldi.
+Az előző példában arra utasította a kiszolgáló nélküli SQL-készletet, hogy a `covid` Azure Cosmos db kulccsal hitelesített Azure Cosmos db fiókban található adatbázishoz kapcsolódjon `MyCosmosDbAccount` (az előző példában szereplő dummy). Ezután elérjük a `Ecdc` tároló analitikus tárolóját a `West US 2` régióban. Mivel a tulajdonságok nem rendelkeznek kivetítéssel, a `OPENROWSET` függvény a Azure Cosmos db elemek összes tulajdonságát visszaküldi.
 
 Feltételezve, hogy a Azure Cosmos DB tárolóban található elemek a `date_rep` `cases` , a és a `geo_id` tulajdonsággal rendelkeznek, a lekérdezés eredményei a következő táblázatban láthatók:
 
@@ -149,7 +150,7 @@ Ha más tárolóból származó adatokkal kell megvizsgálnia ugyanabban a Azure
 SELECT TOP 10 *
 FROM OPENROWSET( 
        'CosmosDB',
-       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
        Cord19) as cord19
 ```
 
@@ -174,21 +175,21 @@ Ezek a Azure Cosmos DBban található, a szinapszis SQL-ben található, sorok �
 SELECT TOP 10 *
 FROM OPENROWSET(
       'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+      'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Ecdc
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 ### <a name="openrowset-with-credential"></a>[OPENROWSET hitelesítő adatokkal](#tab/openrowset-credential)
 ```sql
 /*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
     CREATE CREDENTIAL MyCosmosDbAccountCredential
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 */
 SELECT TOP 10 *
 FROM OPENROWSET(
       PROVIDER = 'CosmosDB',
-      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
-      OBJECT = 'EcdcCases',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
@@ -209,14 +210,14 @@ Miután azonosította a sémát, előkészítheti a nézetet a Azure Cosmos DB a
 
 ```sql
 CREATE CREDENTIAL MyCosmosDbAccountCredential
-WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 GO
-CREATE OR ALTER VIEW EcdcCases
+CREATE OR ALTER VIEW Ecdc
 AS SELECT *
 FROM OPENROWSET(
       PROVIDER = 'CosmosDB',
-      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
-      OBJECT = 'EcdcCases',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
@@ -241,41 +242,28 @@ A [kábel-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-1
 }
 ```
 
-A Azure Cosmos DB beágyazott objektumai és tömbök JSON-karakterláncként jelennek meg a lekérdezés eredményében, amikor a `OPENROWSET` függvény beolvassa őket. Az alábbi összetett típusok értékeinek az SQL-oszlopokban való beolvasására szolgáló lehetőség az SQL JSON-függvények használata:
+A Azure Cosmos DB beágyazott objektumai és tömbök JSON-karakterláncként jelennek meg a lekérdezés eredményében, amikor a `OPENROWSET` függvény beolvassa őket. Az objektumok beágyazott értékeinek elérési útját a záradék használatakor adhatja meg `WITH` :
 
 ```sql
-SELECT
-    title = JSON_VALUE(metadata, '$.title'),
-    authors = JSON_QUERY(metadata, '$.authors'),
-    first_author_name = JSON_VALUE(metadata, '$.authors[0].first')
-FROM
-    OPENROWSET(
-      'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       Cord19
-    WITH ( metadata varchar(MAX) ) AS docs;
+SELECT TOP 10 *
+FROM OPENROWSET( 
+       'CosmosDB',
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Cord19)
+WITH (  paper_id    varchar(8000),
+        title        varchar(1000) '$.metadata.title',
+        metadata     varchar(max),
+        authors      varchar(max) '$.metadata.authors'
+) AS docs;
 ```
 
 A lekérdezés eredménye a következő táblázathoz hasonló lehet:
 
-| cím | szerzők | first_autor_name |
+| paper_id | cím | metaadatok | szerzők |
 | --- | --- | --- |
-| Kiegészítő információk öko-epidemi... |   `[{"first":"Julien","last":"Mélade","suffix":"","affiliation":{"laboratory":"Centre de Recher…` | Julien |  
-
-Alternatív megoldásként megadhatja az objektumok beágyazott értékeinek elérési útját is, ha a `WITH` záradékot használja:
-
-```sql
-SELECT
-    *
-FROM
-    OPENROWSET(
-      'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       Cord19
-    WITH ( title varchar(1000) '$.metadata.title',
-           authors varchar(max) '$.metadata.authors'
-    ) AS docs;
-```
+| bb11206963e831f... | Kiegészítő információk öko-epidemi... | `{"title":"Supplementary Informati…` | `[{"first":"Julien","last":"Mélade","suffix":"","af…`| 
+| bb1206963e831f1... | Lábadozó-szérumok használata az immun-E... | `{"title":"The Use of Convalescent…` | `[{"first":"Antonio","last":"Lavazza","suffix":"", …` |
+| bb378eca9aac649... | Tylosema esculentum (György) gumó és B... | `{"title":"Tylosema esculentum (Ma…` | `[{"first":"Walter","last":"Chingwaru","suffix":"",…` | 
 
 További információ az [összetett adattípusok elemzéséről az Azure szinapszis-hivatkozásokban](../how-to-analyze-complex-schema.md) és a [beágyazott struktúrákban egy kiszolgáló nélküli SQL-készletben](query-parquet-nested-types.md).
 
@@ -315,7 +303,7 @@ SELECT
 FROM
     OPENROWSET(
       'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+      'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
        Cord19
     ) WITH ( title varchar(1000) '$.metadata.title',
              authors varchar(max) '$.metadata.authors' ) AS docs
@@ -365,7 +353,7 @@ SELECT *
 FROM OPENROWSET(
       'CosmosDB',
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) as rows
 ```
 
@@ -400,7 +388,7 @@ SELECT geo_id, cases = SUM(cases)
 FROM OPENROWSET(
       'CosmosDB'
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) WITH ( geo_id VARCHAR(50) '$.geo_id.string',
              cases INT '$.cases.int32'
     ) as rows
@@ -416,7 +404,7 @@ SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
 FROM OPENROWSET(
       'CosmosDB',
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) WITH ( geo_id VARCHAR(50) '$.geo_id.string', 
              cases_int INT '$.cases.int32',
              cases_bigint BIGINT '$.cases.int64',
@@ -430,18 +418,18 @@ Ebben a példában az esetek száma a következőképpen van tárolva: `int32` ,
 ## <a name="known-issues"></a>Ismert problémák
 
 - A kiszolgáló nélküli SQL-készlet lekérdezési élménye [Azure Cosmos db teljes hűségű sémához](#full-fidelity-schema) olyan ideiglenes viselkedés, amely az előzetes visszajelzések alapján módosul. Ne használja azt a sémát, amelyet a `OPENROWSET` záradék nélküli függvény biztosít a nyilvános előzetes verzióban, `WITH` mert a lekérdezési élmény a felhasználói visszajelzések alapján jól definiált sémával van igazítva. A visszajelzések megadásához forduljon az [Azure szinapszis link Product csapatához](mailto:cosmosdbsynapselink@microsoft.com).
-- A kiszolgáló nélküli SQL-készlet nem ad vissza fordítási idejű hibát, ha az `OPENROWSET` oszlop rendezése nem rendelkezik UTF-8 kódolással. A `OPENROWSET` T-SQL-utasítás használatával egyszerűen módosíthatja az aktuális adatbázisban futó összes függvény alapértelmezett rendezését `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` .
+- A kiszolgáló nélküli SQL-készlet egy fordítási idő figyelmeztetést ad vissza, ha az `OPENROWSET` oszlop rendezése nem rendelkezik UTF-8 kódolással. A `OPENROWSET` T-SQL-utasítás használatával egyszerűen módosíthatja az aktuális adatbázisban futó összes függvény alapértelmezett rendezését `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` .
 
 A lehetséges hibák és hibaelhárítási műveletek az alábbi táblázatban láthatók.
 
 | Hiba | Gyökérok |
 | --- | --- |
-| Szintaktikai hibák:<br/> -Helytelen szintaxis a "OpenRowset" közelében<br/> - `...` a nem egy felismert TÖMEGES OPENROWSET-szolgáltatói beállítás.<br/> -Helytelen szintaxis közel `...` | Lehetséges kiváltó okok:<br/> – A CosmosDB nem használja az első paraméterként.<br/> – A harmadik paraméterben szereplő azonosító helyett literális karakterláncot használjon.<br/> -Nem adja meg a harmadik paramétert (tároló neve). |
+| Szintaktikai hibák:<br/> -Helytelen szintaxis közel `Openrowset`<br/> - `...` nem ismerhető fel `BULK OPENROWSET` szolgáltatói beállítás.<br/> -Helytelen szintaxis közel `...` | Lehetséges kiváltó okok:<br/> – A CosmosDB nem használja az első paraméterként.<br/> – A harmadik paraméterben szereplő azonosító helyett literális karakterláncot használjon.<br/> -Nem adja meg a harmadik paramétert (tároló neve). |
 | Hiba történt a CosmosDB-kapcsolatok karakterláncában. | – Nincs megadva a fiók, az adatbázis vagy a kulcs. <br/> – A rendszer nem ismeri fel a kapcsolatok sztringjét.<br/> – A rendszer egy pontosvesszőt ( `;` ) helyez el a kapcsolatok karakterláncának végére. |
 | A CosmosDB elérési útjának feloldása meghiúsult a következő hibával: "helytelen fióknév" vagy "helytelen adatbázisnév". | Nem található a megadott fióknév, adatbázisnév vagy tároló, vagy az analitikai tár nem lett engedélyezve a megadott gyűjteményben.|
 | A CosmosDB elérési útjának feloldása meghiúsult a "helytelen titkos érték" vagy a "Secret null értékű vagy üres" hiba miatt. | A fiók kulcsa érvénytelen vagy hiányzik. |
 | `column name`A típus oszlopa `type name` nem kompatibilis a külső adattípussal `type name` . | A záradékban megadott oszlop típusa `WITH` nem egyezik a Azure Cosmos db tárolóban szereplő típussal. Próbálja meg módosítani az oszlop típusát, ahogy az az [SQL-típusú hozzárendelések Azure Cosmos db](#azure-cosmos-db-to-sql-type-mappings)szakaszában szerepel, vagy használja a `VARCHAR` típust. |
-| Az oszlop az `NULL` összes cellában található értékeket tartalmaz. | Valószínűleg helytelen oszlopnév vagy elérésiút-kifejezés szerepel a `WITH` záradékban. A záradékban szereplő oszlopnév (vagy az oszlop típusa után a Path kifejezés) `WITH` meg kell egyeznie a Azure Cosmos db gyűjtemény egyes tulajdonságainak nevével. Az összehasonlítás *megkülönbözteti a kis*-és nagybetűket. Például a `productCode` és `ProductCode` a különböző tulajdonságok. |
+| Az oszlop az `NULL` összes cellában található értékeket tartalmaz. | Valószínűleg helytelen oszlopnév vagy elérésiút-kifejezés szerepel a `WITH` záradékban. A záradékban szereplő oszlopnév (vagy az oszlop típusa után a Path kifejezés) `WITH` meg kell egyeznie a Azure Cosmos db gyűjtemény egyes tulajdonságainak nevével. Az összehasonlítás *megkülönbözteti a kis-és* nagybetűket. Például a `productCode` és `ProductCode` a különböző tulajdonságok. |
 
 A javaslatok és a problémák jelentését az [Azure szinapszis Analytics visszajelzési oldalán](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)teheti meg.
 

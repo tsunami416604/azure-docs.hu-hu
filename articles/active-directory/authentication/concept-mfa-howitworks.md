@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9563ed283229eb6f43d036629cfe8b84fcde25fc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1cc5227cb4b5de02cba65a60dd469da93d3767e5
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839879"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744057"
 ---
 # <a name="how-it-works-azure-ad-multi-factor-authentication"></a>A működés módja: Azure AD Multi-Factor Authentication
 
@@ -59,11 +59,11 @@ Részletesebb szabályozáshoz a [feltételes hozzáférési](../conditional-acc
 
 ![Áttekintő diagram a feltételes hozzáférés működéséről a bejelentkezési folyamat biztonságossá tételéhez](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A licenceléssel kapcsolatos további tudnivalókért tekintse meg [Az Azure AD multi-Factor Authentication funkcióit és licenceit](concept-mfa-licensing.md).
 
 Az MFA működés közbeni megjelenítéséhez engedélyezze az Azure AD Multi-Factor Authentication a következő oktatóanyagban a tesztelési felhasználók csoportjának:
 
 > [!div class="nextstepaction"]
-> [Azure AD-Multi-Factor Authentication engedélyezése](./tutorial-enable-azure-mfa.md)
+> [Az Azure AD többtényezős hitelesítés engedélyezése](./tutorial-enable-azure-mfa.md)

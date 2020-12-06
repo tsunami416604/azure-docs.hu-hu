@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 09/02/2020
-ms.openlocfilehash: 44f06773eec965fad610da1a4286bdf224e3a88b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 688fabb7138ad71a978051e742dd8397042ffcf1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96582376"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744669"
 ---
 # <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Állami és tartományi kódok közös értékesítése az Azure Marketplace-en
 
@@ -115,4 +115,4 @@ Ez a cikk felsorolja a rendelkezésre álló állam-és tartományi kódokat, am
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [partneri központ közös értékesítéssel kapcsolatos lehetőségéről](./commercial-marketplace-co-sell.md).
+- Ismerje meg a [kereskedelmi piactéren a közös értékesítés lehetőségét](./commercial-marketplace-co-sell.md).

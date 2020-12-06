@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 8a8b04501bf81f41fb87de8fc0ce42eb4e7fda93
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8469cad02009d054bd8ba97fb4aabfdae84ef842
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370239"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744618"
 ---
 # <a name="configure-a-solution-template-plan"></a>Megoldási sablon konfigurálása
 
@@ -28,7 +28,7 @@ Beállíthatja, hogy az egyes tervek mindenki számára láthatók legyenek, vag
 
 A **rendelkezésre állás** lapon, a **terv láthatósága** területen tegye a következők egyikét:
 
-- A csomag nyilvános beállításához válassza a **nyilvános** választógombot (más néven _választógombot_ ).
+- A csomag nyilvános beállításához válassza a **nyilvános** választógombot (más néven _választógombot_).
 - A csomag magánjellegűvé tételéhez válassza a **privát** beállítás gombot, és adja hozzá manuálisan vagy CSV-fájllal az Azure-előfizetési azonosítókat.
 
     > [!NOTE]
@@ -89,11 +89,11 @@ Egy vagy több csomag létrehozása után megtekintheti a csomag nevét, a terv 
 
 A **terv áttekintés** lapjának **művelet** oszlopában elérhető műveletek a csomag állapotától függően változhatnak, és a következőket foglalhatják magukban:
 
-- Ha a terv állapota **Piszkozat** , a **művelet** oszlopban szereplő hivatkozás a **delete piszkozatot** fogja mondani.
-- Ha a terv állapota **élő** , a **művelet** oszlopban található hivatkozás nem fogja **megszüntetni a terv értékesítését** vagy a **privát célközönség szinkronizálását**. A **privát célközönség szinkronizálása** hivatkozás csak a privát célközönségek módosításait teszi közzé anélkül, hogy közzé kellene tenni az ajánlatban esetlegesen végrehajtott egyéb frissítéseket.
+- Ha a terv állapota **Piszkozat**, a **művelet** oszlopban szereplő hivatkozás a **delete piszkozatot** fogja mondani.
+- Ha a terv állapota **élő**, a **művelet** oszlopban található hivatkozás nem fogja **megszüntetni a terv értékesítését** vagy a **privát célközönség szinkronizálását**. A **privát célközönség szinkronizálása** hivatkozás csak a privát célközönségek módosításait teszi közzé anélkül, hogy közzé kellene tenni az ajánlatban esetlegesen végrehajtott egyéb frissítéseket.
 - Ha egy másik csomagot szeretne létrehozni ehhez az ajánlathoz, a **terv áttekintése** lap tetején válassza az **+ új terv létrehozása** lehetőséget. Ezután ismételje meg az [Azure-alkalmazási ajánlathoz tartozó csomagok létrehozása](create-new-azure-apps-offer-plans.md)című témakör lépéseit. Ellenkező esetben, ha elkészült a csomagok létrehozásával, ugorjon a következő szakaszra: további lépések.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure-alkalmazás ajánlatának tesztelése és közzététele](create-new-azure-apps-offer-test-publish.md).
-- Ismerje meg [, hogyan forgalmazhatja Azure-alkalmazásait](create-new-azure-apps-offer-marketing.md) a Microsofttal való közös értékesítéssel és a CSP-programokkal való viszonteladással.
+- Ismerje meg [, hogyan értékesítheti Azure-alkalmazásait](create-new-azure-apps-offer-marketing.md) a Microsofttal való közös értékesítéssel és a CSP-programokkal való viszonteladással.

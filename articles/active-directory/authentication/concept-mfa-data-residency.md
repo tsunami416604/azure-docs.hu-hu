@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3854bb410aba8da65b47a335bf13f1dcc51a0180
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 40751b7864cc62d17836ab6d57cd106f6904f64a
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839896"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744108"
 ---
 # <a name="data-residency-and-customer-data-for-azure-ad-multi-factor-authentication"></a>Adattárolási és ügyféladatok az Azure AD Multi-Factor Authentication
 
@@ -45,7 +45,7 @@ Ezeket az információkat 90 napig őrzi meg a rendszer.
 
 Az Azure AD Multi-Factor Authentication nem naplózza a személyes adatait, például a felhasználónevet, a telefonszámot vagy az IP-címet, de van egy *UserObjectId* , amely azonosítja a felhasználók multi-Factor Authentication kísérleteit. A naplófájlok tárolása 30 napig történik.
 
-### <a name="azure-ad-multi-factor-authentication"></a>Azure AD-Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD többtényezős hitelesítés
 
 Az Azure nyilvános felhők esetében, az Azure B2C hitelesítés, az NPS-bővítmény és a Windows Server 2016 vagy a 2019 AD FS adapter kivételével a következő személyes adattárolók tárolódnak:
 
@@ -104,6 +104,6 @@ A naplófájlok tárolási helyétől függ, hogy a rendszer melyik régióból 
 
 Néhány alapszintű hitelesítési naplót csak a Egyesült Államok tárol. A 21Vianet által üzemeltetett Microsoft Azure Germany és Microsoft Azure mindig a saját felhőben tárolódnak. A Microsoft Government Cloud log-adatkészleteket a rendszer mindig a Egyesült Államok tárolja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy a felhőalapú Azure AD-Multi-Factor Authentication és az Azure-Multi-Factor Authentication-kiszolgáló milyen felhasználói adatokat gyűjtenek, lásd: [Azure ad-multi-Factor Authentication felhasználói adatok gyűjtése](howto-mfa-reporting-datacollection.md).

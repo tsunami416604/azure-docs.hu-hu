@@ -1,36 +1,85 @@
 ---
-title: Rövid útmutató – Azure-IoT Hub Device Provisioning beállítása Azure Resource Manager sablon használatával
-description: Azure rövid útmutató – az Azure IoT Hub Device Provisioning Service (DPS) beállítása sablon használatával
+title: Rövid útmutató – Azure-IoT Hub Device Provisioning Service (DPS) létrehozása Azure Resource Manager sablon használatával (ARM-sablon)
+description: Azure rövid útmutató – megtudhatja, hogyan hozhat létre Azure-IoT Hub Device Provisioning Service (DPS) Azure Resource Manager sablonnal (ARM-sablon).
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 12/03/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 59b68730710de189d690c367e2c04e3a433c9af2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.custom: mvc, subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 73beed4e4262d911f68c2b4b33bc0c1ee24164f8
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964745"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746206"
 ---
-# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Rövid útmutató: a IoT Hub Device Provisioning Service beállítása Azure Resource Manager sablonnal
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>Rövid útmutató: a IoT Hub Device Provisioning Service (DPS) beállítása ARM-sablonnal
 
-Az [Azure Resource Managerrel](../azure-resource-manager/management/overview.md) programozott módon üzembe helyezheti az eszközök regisztrációjához szükséges Azure felhőbeli erőforrásokat. Ezek a lépések bemutatják, hogyan hozhat létre egy IoT hubot és egy új IoT Hub Device Provisioning Service, és hogyan kapcsolhatja össze a két szolgáltatást egy Azure Resource Manager sablon használatával. Ez a rövid útmutató az [Azure CLI](../azure-resource-manager/templates/deploy-cli.md) használatával hajtja végre az erőforráscsoport létrehozásához és a sablon üzembe helyezéséhez szükséges programozási lépéseket, azonban a [Azure Portal](../azure-resource-manager/templates/deploy-portal.md), a [PowerShell](../azure-resource-manager/templates/deploy-powershell.md), a .net, a Ruby vagy más programozási nyelvek használatával egyszerűen elvégezheti ezeket a lépéseket, és üzembe helyezheti a sablont. 
+Az eszközök üzembe helyezéséhez szükséges Azure Cloud-erőforrások programozott beállításához használhat egy [Azure Resource Manager](../azure-resource-manager/management/overview.md) SABLONT (ARM-sablont). Ezek a lépések bemutatják, hogyan hozhat létre egy IoT hubot és egy új IoT Hub Device Provisioning Service ARM-sablonnal. Az IOT hub a DPS-erőforráshoz is kapcsolódik a sablon használatával. Ez a hivatkozás lehetővé teszi a DPS-erőforrás számára, hogy az Ön által konfigurált foglalási szabályzatok alapján rendeljen eszközöket a hubhoz.
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ez a rövid útmutató a [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)és az [Azure CLI](../azure-resource-manager/templates/deploy-cli.md) használatával hajtja végre az erőforráscsoport létrehozásához és a sablon üzembe helyezéséhez szükséges programozási lépéseket, azonban a [PowerShell](../azure-resource-manager/templates/deploy-powershell.md), a .net, a Ruby vagy más programozási nyelvek használatával egyszerűen elvégezheti ezeket a lépéseket, és üzembe helyezheti a sablont. 
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, akkor az alábbi **üzembe helyezés az Azure** -ban gombra kattintva megnyílik a sablon az üzembe helyezéshez a Azure Portal.
+
+[![Üzembe helyezés az Azure-ban – áttekintés](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-iothub-device-provisioning%2fazuredeploy.json)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="review-the-template"></a>A sablon áttekintése
 
-- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-- Ehhez a rövid útmutatóhoz helyileg kell futtatnia az Azure CLI-t. Az Azure CLI 2.0-s vagy újabb verzióját kell telepíteni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető témakört.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-iothub-device-provisioning/) közül származik.
+
+:::code language="json" source="~/quickstart-templates/101-iothub-device-provisioning/azuredeploy.json":::
+
+Két Azure-erőforrás van definiálva a fenti sablonban:
+
+* [**Microsoft. Devices/iothubs**](/azure/templates/microsoft.devices/iothubs): új Azure-IoT hub hoz létre.
+* [**Microsoft. Devices/provisioningservices**](/azure/templates/microsoft.devices/provisioningservices): új Azure-IoT hub Device Provisioning Service hoz létre, és az új IoT hub már csatolva van hozzá.
 
 
-## <a name="sign-in-to-azure-and-create-a-resource-group"></a>Bejelentkezés az Azure-ba és erőforráscsoport létrehozása
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
+
+#### <a name="deploy-with-the-portal"></a>Üzembe helyezés a Portallal
+
+1. Válassza ki az alábbi rendszerképet az Azure-ba való bejelentkezéshez, majd nyissa meg a sablont az üzembe helyezéshez. A sablon egy új IOT hubot és DPS-erőforrást hoz létre. A központ a DPS erőforrásban lesz csatolva.
+
+    [![Üzembe helyezés az Azure-ban a portálon – lépések](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-iothub-device-provisioning%2fazuredeploy.json)
+
+2. Válassza ki vagy adja meg a következő értékeket, majd kattintson a **felülvizsgálat + létrehozás** gombra.
+
+    ![ARM-sablon telepítési paraméterei a portálon](./media/quick-setup-auto-provision-rm/arm-template-deployment-parameters-portal.png)    
+
+    Hacsak nem az alábbiakban van megadva, az alapértelmezett érték használatával hozza létre az IOT hub és a DPS erőforrást.
+
+    | Mező | Leírás |
+    | :---- | :---------- |
+    | **Előfizetés** | Válassza ki Azure-előfizetését. |
+    | **Erőforráscsoport** | Kattintson az **új létrehozása** elemre, és adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra. |
+    | **Régió** | Válasszon régiót az erőforrások számára. Például az **USA keleti** régiója. |
+    | **IOT hub neve** | Adja meg annak a IoT Hubnek a nevét, amelynek globálisan egyedinek kell lennie a *. Azure-Devices.net* névtérben. A központi telepítés ellenőrzésekor a következő szakaszban kell megadnia a hub nevét. |
+    | **Kiépítési szolgáltatás neve** | Adja meg az új eszköz-kiépítési szolgáltatás (DPS) erőforrásának nevét. A névnek globálisan egyedinek kell lennie a *. Azure-Devices-Provisioning.net* névtérben. A telepítés ellenőrzésekor a következő szakaszban a DPS neve szükséges. |
+    
+3. A következő képernyőn olvassa el a feltételeket. Ha elfogadja az összes feltételt, kattintson a **Létrehozás** gombra. 
+
+    Az üzembe helyezés néhány percet is igénybe vehet. 
+
+    A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md).
+
+
+#### <a name="deploy-with-the-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+
+Az Azure CLI használatához a 2,6-es vagy újabb verzió szükséges. Ha helyileg futtatja az Azure CLI-t, ellenőrizze, hogy fut-e a verzió: `az --version`
 
 Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
 
-1. A parancssorban futtassa a [login parancsot][lnk-login-command]:
+1. Ha helyileg futtatja az Azure CLI-t a portálon való futtatás helyett, be kell jelentkeznie. A parancssorba való bejelentkezéshez futtassa a [login parancsot](/cli/azure/get-started-with-az-cli2):
     
     ```azurecli
     az login
@@ -38,326 +87,85 @@ Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
 
     Kövesse az utasításokat a kóddal történő hitelesítéshez, és jelentkezzen be az Azure-fiókjába webböngészőből.
 
-2. Ha több Azure-előfizetéssel rendelkezik, az Azure-ba történő bejelentkezéssel hozzáfér a hitelesítő adatokhoz tartozó összes Azure-fiókhoz. Az alábbi [paranccsal jelenítheti meg az elérhető Azure-fiókokat][lnk-az-account-command]:
+2. Ha több Azure-előfizetéssel rendelkezik, az Azure-ba történő bejelentkezéssel hozzáfér a hitelesítő adatokhoz tartozó összes Azure-fiókhoz. Az alábbi [paranccsal jelenítheti meg az elérhető Azure-fiókokat](/cli/azure/account):
     
     ```azurecli
-    az account list 
+    az account list -o table
     ```
 
-    Az alábbi parancs segítségével válassza ki azt az előfizetést, amelyet az IoT Hub létrehozásához szükséges parancsok futtatásához kíván használni. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
+    A következő parancs használatával válassza ki az IoT hub és a DPS-erőforrások létrehozásához használni kívánt előfizetést. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
 
     ```azurecli
     az account set --subscription {your subscription name or id}
     ```
 
-3. Amikor Azure felhőbeli erőforrásokat, például IoT Hubokat és regisztrációs szolgáltatásokat hoz létre, azokat egy erőforráscsoportban kell létrehozni. Használhat meglévő erőforráscsoportot, vagy futtathatja a következő [parancsot erőforráscsoport létrehozásához][lnk-az-resource-command]:
-    
-    ```azurecli
-     az group create --name {your resource group name} --location westus
-    ```
-
-    > [!TIP]
-    > Az előző példában az erőforráscsoport az USA nyugati régiójában jön létre. Az `az account list-locations -o table` parancs futtatásával megtekintheti az elérhető helyek listáját.
-    >
-    >
-
-## <a name="create-a-resource-manager-template"></a>Resource Manager-sablon létrehozása
-
-JSON-sablon használatával létrehozhat egy regisztrációs szolgáltatást és egy ahhoz kapcsolt IoT Hubot az erőforráscsoportban. Az Azure Resource Manager-sablonok segítségével módosíthatja a meglévő regisztrációs szolgáltatásokat vagy IoT Hubot.
-
-1. Szövegszerkesztőben hozzon létre egy **template.json** nevű Azure Resource Manager-sablont a következő váztartalommal. 
-
-   ```json
-   {
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {},
-       "variables": {},
-       "resources": []
-   }
-   ```
-
-2. Cserélje le a **parameters** szakaszt a következő tartalomra. A parameters (paraméterek) szakasz azokat a paramétereket határozza meg, amelyek értékeit egy másik fájlból lehet átadni. Ez a szakasz a létrehozandó IoT hub és kiépítési szolgáltatás nevét határozza meg. Meghatározza továbbá az IoT hub és a kiépítési szolgáltatás helyét is. Az értékek az IoT-hubokat és a kiépítési szolgáltatásokat támogató Azure-régiókra korlátozódnak. A Device Provisioning Service által támogatott helyek listáját az `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` parancs segítségével kérheti le, vagy az [Azure állapotlapján](https://azure.microsoft.com/status/) kereshet a „Device Provisioning Service” kifejezésre.
-
-   ```json
-    "parameters": {
-        "iotHubName": {
-            "type": "string"
-        },
-        "provisioningServiceName": {
-            "type": "string"
-        },
-        "hubLocation": {
-            "type": "string",
-            "allowedValues": [
-                "eastus",
-                "westus",
-                "westeurope",
-                "northeurope",
-                "southeastasia",
-                "eastasia"
-            ]
-        }
-    },
-
-   ```
-
-3. Cserélje le a **variables** szakaszt a következő tartalomra. Ez a szakasz az IoT Hub kapcsolati sztringjének későbbi létrehozásához szükséges értékeket határozza meg, amely a regisztrációs szolgáltatás és az IoT Hub összekapcsolásához szükséges. 
- 
-   ```json
-    "variables": {        
-        "iotHubResourceId": "[resourceId('Microsoft.Devices/Iothubs', parameters('iotHubName'))]",
-        "iotHubKeyName": "iothubowner",
-        "iotHubKeyResource": "[resourceId('Microsoft.Devices/Iothubs/Iothubkeys', parameters('iotHubName'), variables('iotHubKeyName'))]"
-    },
-
-   ```
-
-4. IoT Hub létrehozásához adja hozzá a következő sorokat a **resources** gyűjteményéhez. A JSON meghatározza az IoT hub létrehozásához szükséges minimális tulajdonságokat. A **név** és a **hely** értékei más fájlból származó paraméterekként lesznek átadva. Ha többet szeretne megtudni a sablonban található IoT hub által megadható tulajdonságokról, tekintse meg a [Microsoft. Devices/IotHubs sablon-referenciát](/azure/templates/microsoft.devices/iothubs).
-
-   ```json
-        {
-            "apiVersion": "2017-07-01",
-            "type": "Microsoft.Devices/IotHubs",
-            "name": "[parameters('iotHubName')]",
-            "location": "[parameters('hubLocation')]",
-            "sku": {
-                "name": "S1",
-                "capacity": 1
-            },
-            "tags": {
-            },
-            "properties": {
-            }            
-        },
-
-   ``` 
-
-5. A regisztrációs szolgáltatás létrehozásához adja hozzá a következő sorokat a **resources** gyűjteményben az IoT Hub specifikációja után. A kiépítési szolgáltatás **nevét** és **helyét** paraméterként adja át a rendszer. A **iotHubs** -gyűjtemény meghatározza a kiépítési szolgáltatáshoz kapcsolni kívánt IoT hubokat. Meg kell adnia legalább az összekapcsolni kívánt IoT Hubok **connectionString** és **location** tulajdonságát. Ezenkívül az egyes IoT Hubokon beállíthat olyan tulajdonságokat, mint az **allocationWeight** és az **applyAllocationPolicy**, a regisztrációs szolgáltatáson pedig olyan tulajdonságokat, mint az **allocationPolicy** vagy az **authorizationPolicies**. További tudnivalókért lásd a [Microsoft.Devices/provisioningServices sablonreferenciát](/azure/templates/microsoft.devices/provisioningservices).
-
-   A **dependsOn** tulajdonsággal biztosítható, hogy a Resource Manager a regisztrációs szolgáltatás létrehozása előtt hozza létre az IoT Hubot. A sablonhoz az IoT Hub kapcsolati sztringjében meg kell adni a regisztrációs szolgáltatással való kapcsolatot, ezért elsőként a hubot és annak kulcsait kell létrehozni. A sablon olyan függvényeket használ, mint a **concat** és a **listkeys műveletének beolvasása** , hogy létrehozza a kapcsolódási karakterláncot a paraméteres változókból. További tudnivalókért tekintse meg [az Azure Resource Manager-sablonok függvényeiről](../azure-resource-manager/templates/template-functions.md) szóló cikket.
-
-   ```json
-        {
-            "type": "Microsoft.Devices/provisioningServices",
-            "sku": {
-                "name": "S1",
-                "capacity": 1
-            },
-            "name": "[parameters('provisioningServiceName')]",
-            "apiVersion": "2017-11-15",
-            "location": "[parameters('hubLocation')]",
-            "tags": {},
-            "properties": {
-                "iotHubs": [
-                    {
-                        "connectionString": "[concat('HostName=', reference(variables('iotHubResourceId')).hostName, ';SharedAccessKeyName=', variables('iotHubKeyName'), ';SharedAccessKey=', listkeys(variables('iotHubKeyResource'), '2017-07-01').primaryKey)]",
-                        "location": "[parameters('hubLocation')]",
-                        "name": "[concat(parameters('iotHubName'),'.azure-devices.net')]"
-                    }
-                ]
-            },
-            "dependsOn": ["[parameters('iotHubName')]"]
-        }
-
-   ```
-
-6. Mentse a sablonfájlt. Az elkészült sablonnak a következőhöz kell hasonlítania:
-
-   ```json
-   {
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-           "iotHubName": {
-               "type": "string"
-           },
-           "provisioningServiceName": {
-               "type": "string"
-           },
-           "hubLocation": {
-               "type": "string",
-               "allowedValues": [
-                   "eastus",
-                   "westus",
-                   "westeurope",
-                   "northeurope",
-                   "southeastasia",
-                   "eastasia"
-               ]
-           }
-       },
-       "variables": {        
-           "iotHubResourceId": "[resourceId('Microsoft.Devices/Iothubs', parameters('iotHubName'))]",
-           "iotHubKeyName": "iothubowner",
-           "iotHubKeyResource": "[resourceId('Microsoft.Devices/Iothubs/Iothubkeys', parameters('iotHubName'), variables('iotHubKeyName'))]"
-       },
-       "resources": [
-           {
-               "apiVersion": "2017-07-01",
-               "type": "Microsoft.Devices/IotHubs",
-               "name": "[parameters('iotHubName')]",
-               "location": "[parameters('hubLocation')]",
-               "sku": {
-                   "name": "S1",
-                   "capacity": 1
-               },
-               "tags": {
-               },
-               "properties": {
-               }            
-           },
-           {
-               "type": "Microsoft.Devices/provisioningServices",
-               "sku": {
-                   "name": "S1",
-                   "capacity": 1
-               },
-               "name": "[parameters('provisioningServiceName')]",
-               "apiVersion": "2017-11-15",
-               "location": "[parameters('hubLocation')]",
-               "tags": {},
-               "properties": {
-                   "iotHubs": [
-                       {
-                           "connectionString": "[concat('HostName=', reference(variables('iotHubResourceId')).hostName, ';SharedAccessKeyName=', variables('iotHubKeyName'), ';SharedAccessKey=', listkeys(variables('iotHubKeyResource'), '2017-07-01').primaryKey)]",
-                           "location": "[parameters('hubLocation')]",
-                           "name": "[concat(parameters('iotHubName'),'.azure-devices.net')]"
-                       }
-                   ]
-               },
-               "dependsOn": ["[parameters('iotHubName')]"]
-           }
-       ]
-   }
-   ```
-
-## <a name="create-a-resource-manager-parameter-file"></a>Resource Manager-paraméterfájl létrehozása
-
-Az utolsó lépésben megadott sablon paraméterek használatával adja meg az IoT hub nevét, a kiépítési szolgáltatás nevét, valamint a létrehozandó helyet (Azure Region). Ezeket a paramétereket egy külön fájlból kell átadnia a sablonba. Ez lehetővé teszi, hogy ugyanazt a sablont több telepítéshez is felhasználhassa. A paraméterfájl létrehozásához kövesse az alábbi lépéseket:
-
-1. Szövegszerkesztőben hozzon létre egy **parameters.json** nevű Azure Resource Manager-paraméterfájlt a következő váztartalommal: 
-
-   ```json
-   {
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {}
-       }
-   }
-   ```
-
-2. Adja hozzá az **iotHubName** értéket a paraméterek szakaszához.  Az IoT hub nevének globálisan egyedinek kell lennie az Azure-ban, ezért érdemes lehet egyedi előtagot vagy utótagot hozzáadni a példában szereplő névhez, vagy teljesen új nevet választani. Győződjön meg arról, hogy a neve megfelel az IoT hub megfelelő elnevezési konvencióinak: 3-50 karakter hosszúnak kell lennie, és csak kis-és nagybetűket (alfanumerikus karaktereket vagy kötőjeleket) tartalmazhat ("-"). 
-
-   ```json
-    "parameters": {
-        "iotHubName": {
-            "value": "my-sample-iot-hub"
-        },
-    }
+3. Másolja és illessze be a következő parancsokat a CLI-parancssorba. Ezután hajtsa végre a parancsokat az **ENTER** billentyű lenyomásával.
    
-   ```
-
-3. Adja hozzá a **provisioningServiceName** értéket a paraméterek szakaszához. Emellett a kiépítési szolgáltatás globálisan egyedi nevét is ki kell választania. Győződjön meg arról, hogy az egy IoT Hub Device Provisioning Service megfelelő elnevezési konvenciókat használ: 3-64 karakter hosszúnak kell lennie, és csak kis-és nagybetűket, alfanumerikus karaktereket és kötőjeleket (-) tartalmazhat.
-
-   ```json
-    "parameters": {
-        "iotHubName": {
-            "value": "my-sample-iot-hub"
-        },
-        "provisioningServiceName": {
-            "value": "my-sample-provisioning-service"
-        },
-    }
-
-   ```
-
-4. Adja hozzá a **hubLocation** értéket a paraméterek szakaszához. Ez az érték határozza meg az IoT Hub és a regisztrációs szolgáltatás helyét. Az értéknek egyeznie kell a sablonfájl paraméterdefinícióiban szereplő **allowedValues** gyűjteményben megadott helyek egyikével. Ebben a gyűjteményben az értékek azon Azure-helyekre korlátozódnak, amelyek támogatják az IoT Hubok és a regisztrációs szolgáltatások használatát. Az eszközök kiépítési szolgáltatásának támogatott helyeinek listáját futtathatja a parancs futtatásával, vagy megtekintheti `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` az [Azure állapot](https://azure.microsoft.com/status/) lapot, és megkeresheti a "Device kiépítési szolgáltatás" kifejezést.
-
-   ```json
-    "parameters": {
-        "iotHubName": {
-            "value": "my-sample-iot-hub"
-        },
-        "provisioningServiceName": {
-            "value": "my-sample-provisioning-service"
-        },
-        "hubLocation": {
-            "value": "westus"
-        }
-    }
-
-   ```
-
-5. Mentse a fájlt. 
-
-
-> [!IMPORTANT]
-> Az IoT Hub és a regisztrációs szolgáltatás is DNS-végpontként nyilvánosan észlelhető lesz, ezért ügyeljen arra, hogy az elnevezésükkor ne adjon meg bizalmas adatokat.
->
-
-## <a name="deploy-the-template"></a>A sablon üzembe helyezése
-
-A következő Azure CLI-parancsokkal helyezheti üzembe a sablonokat és ellenőrizheti az üzembe helyezést.
-
-1. A sablon üzembe helyezéséhez navigáljon a sablon és a paraméter fájljait tartalmazó mappához, és futtassa a következő [parancsot egy központi telepítés elindításához](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create&preserve-view=true):
+    > [!TIP]
+    > A parancsok az erőforráscsoport helyét fogják kérni. Az elérhető helyszínek listáját a parancs első futtatásával tekintheti meg:
+    >
+    > `az account list-locations -o table`
+    >
+    >
     
-    ```azurecli
-     az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
+    ```azurecli-interactive
+    read -p "Enter a project name that is used for generating resource names:" projectName &&
+    read -p "Enter the location (i.e. centralus):" location &&
+    templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-iothub-device-provisioning/azuredeploy.json" &&
+    resourceGroupName="${projectName}rg" &&
+    az group create --name $resourceGroupName --location "$location" &&
+    az deployment group create --resource-group $resourceGroupName --template-uri  $templateUri &&
+    echo "Press [ENTER] to continue ..." &&
+    read
     ```
 
-   A művelet végrehajtása több percet is igénybe vehet. Ha elkészült, keresse meg a **provisioningState** tulajdonságot, amely a kimenetben "sikeres" értékre mutat. 
+4. A parancsok a következő információk megadását kérik. Adja meg az értékeket, és nyomja le az **ENTER** billentyűt.
 
-   ![Regisztrációs kimenet](./media/quick-setup-auto-provision-rm/output.png) 
+    | Paraméter | Leírás |
+    | :-------- | :---------- |
+    | **Projektnév** | Ennek a paraméternek az értékét fogja használni a rendszer az összes erőforrás tárolására szolgáló erőforráscsoport létrehozásához. A rendszer hozzáadja a karakterláncot az `rg` erőforráscsoport neve értékének végéhez. |
+    | **helyen** | Ez az érték az a régió, ahol az összes erőforrást tárolni fogja. |
+    | **iotHubName** | Adja meg annak a IoT Hubnek a nevét, amelynek globálisan egyedinek kell lennie a *. Azure-Devices.net* névtérben. A központi telepítés ellenőrzésekor a következő szakaszban kell megadnia a hub nevét. |
+    | **provisioningServiceName** | Adja meg az új eszköz-kiépítési szolgáltatás (DPS) erőforrásának nevét. A névnek globálisan egyedinek kell lennie a *. Azure-Devices-Provisioning.net* névtérben. A telepítés ellenőrzésekor a következő szakaszban a DPS neve szükséges. |
+
+    A AzureCLI a sablon üzembe helyezéséhez használható. Az Azure CLI mellett a Azure PowerShell, a Azure Portal és a REST API is használható. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-powershell.md).
 
 
-2. Az üzembe helyezés ellenőrzéséhez futtassa az alábbi [parancsot az erőforrások megjelenítéséhez](/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true), és a kimenetben keresse meg az új regisztrációs szolgáltatást és az IoT Hubot:
+## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
+
+1. A központi telepítés ellenőrzéséhez futtassa az alábbi [parancsot az erőforrások listázásához](/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true) , és keresse meg az új kiépítési szolgáltatást és az IoT hubot a kimenetben:
 
     ```azurecli
-     az resource list -g {your resource group name}
+     az resource list -g "${projectName}rg"
     ```
+
+2. Annak ellenőrzéséhez, hogy a hub már csatolva van-e a DPS-erőforráshoz, futtassa a következő [DPS Extension show parancsot](/cli/azure/iot/dps?view=azure-cli-latest#az_iot_dps_show&preserve-view=true).
+
+    ```azurecli
+     az iot dps show --name <Your provisioningServiceName>
+    ```
+
+    Figyelje meg a tag-hez csatolt hubokat `iotHubs` .
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a folytatást, az Azure CLI-vel [törölhet egy adott erőforrást][lnk-az-resource-command], például egy IoT hubot vagy egy kiépítési szolgáltatást, vagy törölhet egy erőforráscsoportot és annak összes erőforrását.
+Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a folytatást, a Azure Portal vagy az Azure CLI használatával törölheti az erőforráscsoportot és annak összes erőforrását.
 
-A regisztrációs szolgáltatás törléséhez futtassa a következő parancsot:
+Ha törölni szeretne egy erőforráscsoportot és a Azure Portal összes erőforrását, egyszerűen nyissa meg az erőforráscsoportot, és kattintson az erőforráscsoport és a felső **törlése** elemre.
 
-```azurecli
-az iot hub delete --name {your provisioning service name} --resource-group {your resource group name}
-```
-IoT Hub törléséhez futtassa a következő parancsot:
+Az Azure CLI használatával üzembe helyezett erőforráscsoport törlése:
 
 ```azurecli
-az iot hub delete --name {your iot hub name} --resource-group {your resource group name}
-```
-
-Erőforráscsoport és az ahhoz tartozó összes erőforrás törléséhez futtassa a következő parancsot:
-
-```azurecli
-az group delete --name {your resource group name}
+az group delete --name "${projectName}rg"
 ```
 
 A Azure Portal, a PowerShell vagy a REST API-k használatával is törölhet erőforráscsoportokat és egyedi erőforrásokat, valamint a Azure Resource Managerhoz vagy IoT Hub Device Provisioning Servicehoz közzétett támogatott Platform SDK-kat is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban üzembe helyezett egy IoT hubot és egy eszköz kiépítési szolgáltatási példányát, és összekapcsolta a két erőforrást. Ha szeretné megtudni, hogyan lehet szimulált eszközt kiépíteni a telepítővel, folytassa a szimulált eszköz létrehozására szolgáló rövid útmutatóval.
+Ebben a rövid útmutatóban üzembe helyezett egy IoT hubot és egy eszköz kiépítési szolgáltatási példányát, és összekapcsolta a két erőforrást. Ha szeretné megtudni, hogyan használhatja ezt a telepítőt egy eszköz kiépítéséhez, folytassa a gyors üzembe helyezési útmutatóval az eszköz létrehozásához.
 
 > [!div class="nextstepaction"]
-> [Szimulált eszköz létrehozásának rövid útmutatója](./quick-create-simulated-device.md)
+> [Eszköz üzembe helyezésének rövid útmutatója](./quick-create-simulated-device-symm-key.md)
 
-
-<!-- Links -->
-[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[lnk-CLI-install]: /cli/azure/install-az-cli2
-[lnk-login-command]: /cli/azure/get-started-with-az-cli2
-[lnk-az-account-command]: /cli/azure/account
-[lnk-az-register-command]: /cli/azure/provider
-[lnk-az-addcomponent-command]: /cli/azure/component
-[lnk-az-resource-command]: /cli/azure/resource
-[lnk-az-iot-command]: /cli/azure/iot
-[lnk-iot-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-portal]: iot-hub-create-through-portal.md

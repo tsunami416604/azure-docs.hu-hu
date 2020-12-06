@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 74f4391fcd071ac510fc66b2f8bc36ec4549dc47
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e6a92282d2bcd316a771742048dacd9a7181de4f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575754"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746182"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adataival kapcsolatos adatelemzések
 
@@ -49,6 +49,9 @@ Míg a besorolások közvetlenül vannak összehasonlítva (a társadalombiztos�
 
 A hatáskörébe ugyanazokat a besorolásokat (más néven bizalmas adattípusokat) használja, mint a Microsoft 365. Ez lehetővé teszi a meglévő érzékenységi címkék kiterjesztését az Azure hatáskörébe tartozó eszközökre.
 
+> [!NOTE]
+> Miután beolvasta a forrás típusait, az új eszközök megjelenítéséhez **adjon meg** néhány órát az adatoknak.
+
 **Az adatfelismerések címkézésének megtekintése:**
 
 1. Nyissa meg az Azure-beli **hatáskörébe** tartozó kezdőlapot.
@@ -66,7 +69,7 @@ A hatáskörébe ugyanazokat a besorolásokat (más néven bizalmas adattípusok
 
    A fő **érzékenység címkézése** lap a következő területeket jeleníti meg:
 
-   |Terület  |Description  |
+   |Terület  |Leírás  |
    |---------|---------|
    |**Az érzékenységi címkékkel rendelkező források áttekintése**     |A következőket biztosító csempéket jeleníti meg: <br>– Az adataiban található előfizetések száma. <br>– Az adatain alkalmazott egyedi érzékenységi címkék száma <br>– Az érzékenységi címkékkel rendelkező források száma <br>– Az érzékenységi címkékkel megtalált fájlok és táblák száma|
    |**Legfelső szintű források címkézett adattal (utolsó 30 nap)**     | Megjeleníti az elmúlt 30 napban fellépő trendeket, amelyek az érzékenységi címkékkel rendelkező források számát mutatják.       |

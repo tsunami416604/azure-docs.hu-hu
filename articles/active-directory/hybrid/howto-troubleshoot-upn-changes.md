@@ -11,16 +11,16 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46ecc2cba96b07d9105020e69ae3198a3765be7c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 59b304505c29f424d85d5b1e16dc83c060ac2ac1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172231"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744598"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Az egyszerű felhasználónevek változásának megtervezése és megoldása Azure Active Directory
 
-Az egyszerű felhasználónév (UPN) egy olyan attribútum, amely a felhasználói fiókok internetes kommunikációs szabványa. Az egyszerű felhasználónév egy UPN-előtagot (a felhasználói fiók nevét) és egy UPN-utótagot (DNS-tartománynevet) tartalmaz. Az előtag a "@" szimbólum használatával csatlakozik az utótaghoz. Például: someone@example.com. Az egyszerű felhasználónévnek egyedinek kell lennie az összes rendszerbiztonsági tag objektum között egy címtár-erdőben. 
+Az egyszerű felhasználónév (UPN) egy olyan attribútum, amely a felhasználói fiókok internetes kommunikációs szabványa. Az egyszerű felhasználónév egy UPN-előtagot (a felhasználói fiók nevét) és egy UPN-utótagot (DNS-tartománynevet) tartalmaz. Az előtag a "" szimbólum használatával csatlakozik az utótaghoz \@ . Például: someone@example.com. Az egyszerű felhasználónévnek egyedinek kell lennie az összes rendszerbiztonsági tag objektum között egy címtár-erdőben. 
 
 **Ez a cikk azt feltételezi, hogy az UPN-t használja felhasználói azonosítóként. Az egyszerű felhasználónév megtervezése és az UPN-változások okozta problémák helyreállítása.**
 
@@ -246,7 +246,7 @@ A régi UPN-re mutató hivatkozások eltávolításához [a felhasználóknak al
 
 A OneDrive-felhasználók számára ismert, hogy az UPN módosítása után problémákat tapasztalnak. További információ: [az UPN-változások hatása a OneDrive URL-címére és a OneDrive szolgáltatásaira](/onedrive/upn-changes).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg ezeket az erőforrásokat:
 * [Azure AD Connect: tervezési fogalmak](./plan-connect-design-concepts.md)

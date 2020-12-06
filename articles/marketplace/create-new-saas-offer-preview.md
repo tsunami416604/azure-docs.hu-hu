@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: ed0c7ef98e70774350c9a3ff12b0cc3f4186e1bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 041df9b77e85f09d2cf680773edc995c6288acaa
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380983"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746420"
 ---
 # <a name="how-to-add-a-preview-audience-for-your-saas-offer"></a>Előzetes verzió célközönségének hozzáadása SaaS-ajánlathoz
 
@@ -45,10 +45,10 @@ Az **előzetes verzió célközönsége** lapon meghatározhatja, hogy egy korl�
 1. A **Type (típus** ) oszlopban adja hozzá a **MixedAadMsaId** minden olyan sorhoz, amelyhez e-mail-cím tartozik.
 1. Mentse a fájlt. CSV-fájl.
 1. A **célközönség előnézete** lapon válassza ki a **célközönség importálása (CSV)** hivatkozást.
-1. A **megerősítés** párbeszédpanelen válassza az **Igen**lehetőséget.
-1. Válassza a elemet. CSV-fájl, majd válassza a **Megnyitás**lehetőséget.
+1. A **megerősítés** párbeszédpanelen válassza az **Igen** lehetőséget.
+1. Válassza a elemet. CSV-fájl, majd válassza a **Megnyitás** lehetőséget.
 1. A következő lapra történő továbblépés előtt válassza a **Piszkozat mentése** lehetőséget: **technikai konfiguráció**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Technikai részletek hozzáadása SaaS-ajánlathoz](create-new-saas-offer-technical.md)

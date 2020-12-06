@@ -1,18 +1,15 @@
 ---
 title: Azure Portal irányítópult létrehozása Azure Resource Manager sablon használatával
 description: Megtudhatja, hogyan hozhat létre Azure Portal irányítópultot egy Azure Resource Manager sablon használatával.
-author: mgblythe
-ms.service: azure-portal
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 06/15/2020
-ms.openlocfilehash: fd2d7006e0c13f7e652b4edd973a36f94f2e2265
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 55ac24e48c1c976eca1e6e8e51cf6e88361ec630
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85560495"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745723"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Rövid útmutató: irányítópult létrehozása a Azure Portal ARM-sablon használatával
 
@@ -68,19 +65,19 @@ Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://
 
     [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-portal-dashboard%2Fazuredeploy.json)
 
-1. Válassza ki vagy adja meg a következő értékeket, majd válassza a **felülvizsgálat + létrehozás**elemet.
+1. Válassza ki vagy adja meg a következő értékeket, majd válassza a **felülvizsgálat + létrehozás** elemet.
 
     ![ARM-sablon, irányítópult létrehozása, portál üzembe helyezése](media/quick-create-template/create-dashboard-using-template-portal.png)
 
     Ha nincs megadva, az alapértelmezett értékeket használja az irányítópult létrehozásához.
 
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: válassza a **SimpleWinVmResourceGroup**lehetőséget.
+    * **Erőforráscsoport**: válassza a **SimpleWinVmResourceGroup** lehetőséget.
     * Hely: válassza az **USA keleti** **régióját**.
     * **Virtuális gép neve**: adja meg a **SimpleWinVm**.
     * **Virtuális gép erőforráscsoport**: adja meg a **SimpleWinVmResourceGroup**.
 
-1. Válassza a **Létrehozás** vagy a **vásárlás**lehetőséget. Az irányítópult sikeres üzembe helyezését követően értesítést kap:
+1. Válassza a **Létrehozás** vagy a **vásárlás** lehetőséget. Az irányítópult sikeres üzembe helyezését követően értesítést kap:
 
     ![ARM-sablon, irányítópult létrehozása, portál üzembe helyezése – értesítés](media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
@@ -94,7 +91,7 @@ Ellenőrizze, hogy az irányítópult létrehozása sikeres volt-e, és hogy lá
 
     ![Navigálás az irányítópulton Azure Portal](media/quick-create-template/navigate-to-dashboards.png)
 
-1. Az irányítópult lapon válassza az **egyszerű VM-irányítópult**lehetőséget.
+1. Az irányítópult lapon válassza az **egyszerű VM-irányítópult** lehetőséget.
 
     ![Navigáljon az egyszerű VM-irányítópultra](media/quick-create-template/select-simple-vm-dashboard.png)
 
@@ -108,7 +105,7 @@ Ha el szeretné távolítani a virtuális gépet és a hozzá tartozó irányít
 
 1. A Azure Portal keresse meg a **SimpleWinVmResourceGroup**, majd válassza ki a keresési eredmények között.
 
-1. A **SimpleWinVmResourceGroup** lapon válassza az **erőforráscsoport törlése**elemet, írja be az erőforráscsoport nevét a megerősítéshez, majd válassza a **Törlés**lehetőséget.
+1. A **SimpleWinVmResourceGroup** lapon válassza az **erőforráscsoport törlése** elemet, írja be az erőforráscsoport nevét a megerősítéshez, majd válassza a **Törlés** lehetőséget.
 
     ![Erőforráscsoport törlése](media/quick-create-template/delete-resource-group.png)
 

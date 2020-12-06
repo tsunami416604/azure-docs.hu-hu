@@ -12,18 +12,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: b01ade25c6592e68e34eeb542a90cdd0124a0446
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4a6cd529511d4a2e71e1a31c1600f8a51f455a37
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96738008"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746131"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Azure-szolgáltatások integrálása virtuális hálózatokkal hálózati elkülönítéshez
 
-Virtual Network Azure-szolgáltatásokkal való integrációja lehetővé teszi, hogy a szolgáltatáshoz való hozzáférést csak a virtuális hálózati infrastruktúrához lehessen lezárni. A VNet-infrastruktúra többek között a virtuális hálózatokat és a helyszíni hálózatokat is tartalmazza.
+A Virtual Network (VNet) Azure-szolgáltatásokhoz való integrációja lehetővé teszi, hogy a szolgáltatáshoz való hozzáférést csak a virtuális hálózati infrastruktúrához lehessen lezárni. A VNet-infrastruktúra többek között a virtuális hálózatokat és a helyszíni hálózatokat is tartalmazza.
 
-Az Azure-szolgáltatások a következő módszerek közül egy vagy több használatával érik el a hálózat elkülönítését:
+A VNet-integráció biztosítja az Azure-szolgáltatásokat a hálózat elkülönítésének előnyeivel, és az alábbi módszerek közül egyet vagy többet is végrehajthat:
 - [A szolgáltatás dedikált példányainak üzembe helyezése virtuális hálózatban](virtual-network-service-endpoints-overview.md). A szolgáltatások ezután a virtuális hálózaton és a helyszíni hálózatokon is elérhetők.
 - Privát [végpont](../private-link/private-endpoint-overview.md) használata, amely az [Azure Private-kapcsolaton](../private-link/private-link-overview.md)keresztül kapcsolódik a szolgáltatáshoz, és biztonságosan csatlakozik az Ön számára. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a virtuális hálózatba.
 - A szolgáltatás elérése nyilvános végpontokkal a virtuális hálózatnak a szolgáltatáshoz való kiterjesztésével, [szolgáltatási végpontokon](virtual-network-service-endpoints-overview.md)keresztül. A szolgáltatási végpontok lehetővé teszik a szolgáltatási erőforrások védelmét a virtuális hálózattal.

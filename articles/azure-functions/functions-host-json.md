@@ -3,12 +3,12 @@ title: host.jsAzure Functions 2. x esetén
 description: A v2 futtatókörnyezettel rendelkező fájl Azure Functions host.jsdokumentációja.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: c12a9244cdc1a76f678578e281532c73bc9385ba
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 96d6b884e9e2c835316af01140c6fc7208ee5ab9
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917239"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746080"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x és újabb verziók – host.json referencia 
 
@@ -219,6 +219,28 @@ A pillanatképekkel kapcsolatos további információkért tekintse meg a [.NET-
 
 A konfigurációs beállítás [Cosmos db eseményindítókban és kötésekben](functions-bindings-cosmosdb-v2-output.md#host-json)található.
 
+## <a name="customhandler"></a>customHandler
+
+Egyéni kezelő konfigurációs beállításai. További információ: [Azure functions egyéni kezelők](functions-custom-handlers.md#configuration).
+
+```json
+"customHandler": {
+  "description": {
+    "defaultExecutablePath": "server",
+    "workingDirectory": "handler",
+    "arguments": [ "--port", "%FUNCTIONS_CUSTOMHANDLER_PORT%" ]
+  },
+  "enableForwardingHttpRequest": false
+}
+```
+
+|Tulajdonság | Alapértelmezett | Leírás |
+| --------- | --------- | --------- |
+| defaultExecutablePath | n/a | A végrehajtható fájl, amely az egyéni kezelői folyamatként indul el. Az egyéni kezelők használata kötelező beállítás, és az értéke a Function alkalmazás gyökeréhez képest relatív. |
+| workingDirectory | *function alkalmazás gyökere* | Az a munkakönyvtár, amelyben el kell indítani az egyéni kezelő folyamatát. Ez egy opcionális beállítás, amely értéke a Function alkalmazás gyökeréhez képest relatív. |
+| argumentumok | n/a | Az egyéni kezelői folyamatnak átadandó parancssori argumentumok tömbje. |
+| enableForwardingHttpRequest | hamis | Ha be van állítva, az összes olyan függvény, amely csak HTTP-triggerből és HTTP-kimenetből áll, a rendszer az egyéni kezelő [kérelmének adattartalma](functions-custom-handlers.md#request-payload)helyett az eredeti http-kérelmet továbbítja. |
+
 ## <a name="durabletask"></a>durableTask
 
 A konfigurációs beállítás a [Durable functions kötéseiben](durable/durable-functions-bindings.md#host-json)található.
@@ -253,7 +275,7 @@ Az összes függvény időtúllépési időtartamát jelzi. A TimeSpan karakterl
 
 | Csomag típusa | Alapértelmezett (min.) | Maximum (min.) |
 | -- | -- | -- |
-| Használatalapú | 5 | 10 |
+| Használat | 5 | 10 |
 | <sup>1</sup> . prémium | 30 | -1 (nem kötött)<sup>2</sup> |
 | Dedikált (App Service) | 30 | -1 (nem kötött)<sup>2</sup> |
 
@@ -442,7 +464,7 @@ Tegyük fel például, hogy helyileg futtatta az alkalmazás-betekintési mintav
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató a host.jsfájl frissítéséhez](functions-reference.md#fileupdate)

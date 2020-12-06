@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: b6b3cac51ffd4ccd138994ac65b4f96b07816970
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3a47ba2025bcaba542d2dbec0c89643e0900f233
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368695"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746148"
 ---
 # <a name="how-to-configure-your-saas-offer-listing-details"></a>Az SaaS-ajánlat részleteinek konfigurálása
 
@@ -30,7 +30,7 @@ Az **ajánlati lista** lapon, a **piactér részletei** területen hajtsa végre
 1. A **találatok összegzése** mezőben adja meg a legfeljebb 50 karakter hosszúságú szöveget. Ezt az összegzést a piactér keresési eredményei között lehet használni.
 1. A **Leírás** mezőben adja meg az ajánlat leírását. Ez a szövegmező olyan Rich Text Editor-vezérlőkkel rendelkezik, amelyekkel a Leírás még vonzóbbá teheti a leírást. A leírást a HTML-címkék használatával is formázhatja. Ebben a mezőben legfeljebb 3 000 karaktert adhat meg, amely HTML-jelölést és szóközöket tartalmaz. További információ a HTML-formázásról: [a kereskedelmi piactér ajánlatának leírásában támogatott HTML-címkék](supported-html-tags.md).
 1. Az **első lépések utasítások** mezőben adja meg az ügyfelek SaaS-ajánlathoz való kapcsolódásának segítségét ismertető útmutatót. Akár 3 000 karakterből álló szöveget is hozzáadhat, és a részletesebb online dokumentációra mutató hivatkozásokat is megadhat.
-1. Választható A **keresési kulcsszavak** mezőben adjon meg legfeljebb három olyan keresési kulcsszót, amelyet az ügyfelek a kereskedelmi piactéren találhatnak. Nem kell megadnia az ajánlat **nevét** és **leírását** : a program automatikusan belefoglalja a szöveget a keresésbe.
+1. Választható A **keresési kulcsszavak** mezőben adjon meg legfeljebb három olyan keresési kulcsszót, amelyet az ügyfelek a kereskedelmi piactéren találhatnak. Nem kell megadnia az ajánlat **nevét** és **leírását**: a program automatikusan belefoglalja a szöveget a keresésbe.
 1. Az **adatvédelmi szabályzat hivatkozása** mezőbe írjon be egy hivatkozást (a https-vel kezdődően) a szervezete adatvédelmi szabályzatához. Ön felelős azért, hogy az alkalmazás megfeleljen az adatvédelmi törvényeknek és előírásoknak, valamint érvényes adatvédelmi szabályzatot biztosítson.
 
 ## <a name="add-supplemental-links-optional"></a>Kiegészítő hivatkozások hozzáadása (nem kötelező)
@@ -105,4 +105,4 @@ A következő lapra való továbblépés előtt válassza a **Piszkozat mentése
 ## <a name="next-steps"></a>További lépések
 
 - Ha a Microsofton keresztül értékesíti az ajánlatot, [tekintse meg az előzetes verziójú célközönség hozzáadása az SaaS-ajánlathoz című témakört](create-new-saas-offer-preview.md). 
-- Ellenkező esetben lépjen az [SaaS-ajánlat piacra](create-new-saas-offer-marketing.md)lépéséhez.
+- Ellenkező esetben lépjen az [SaaS-ajánlat értékesítésének módjára](create-new-saas-offer-marketing.md).

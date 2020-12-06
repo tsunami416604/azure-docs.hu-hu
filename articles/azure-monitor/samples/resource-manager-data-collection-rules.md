@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 1c059edb1422a572011f167f7f1c02d5e87e5da2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 12e6aa85f7d8c2c4aebe80efc92f771917e6a1d5
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324873"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746012"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Resource Manager-sablonok minták a Azure Monitor adatgyűjtési szabályaihoz
 Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz a [log Analytics-ügynök](../platform/log-analytics-agent.md) és a [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) üzembe helyezéséhez és konfigurálásához a Azure monitor-ben. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
@@ -19,7 +19,7 @@ Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
-## <a name="create-association-between-azure-vm-and-rule"></a>Társítás létrehozása az Azure-beli virtuális gép és a szabály között
+## <a name="create-association-with-azure-vm"></a>Társítás létrehozása az Azure-beli virtuális géppel
 
 A következő minta telepíti a Azure Monitor ügynököt egy Windows Azure-beli virtuális gépre. Az Azure-beli virtuális gépek és az adatgyűjtési szabályok között társítás jön létre.
 
@@ -80,7 +80,7 @@ A következő minta telepíti a Azure Monitor ügynököt egy Windows Azure-beli
 }
 ```
 
-## <a name="create-association-between-azure-arc-and-rule"></a>Társítás létrehozása az Azure arc és a szabály között
+## <a name="create-association-ith-azure-arc"></a>Egyesület létrehozása – Azure arc
 
 A következő minta telepíti a Azure Monitor ügynököt egy Windows Azure-beli virtuális gépre. A társítás egy Azure arc-kompatibilis kiszolgáló-számítógép és egy adatgyűjtési szabály között jön létre.
 
@@ -142,7 +142,7 @@ A következő minta telepíti a Azure Monitor ügynököt egy Windows Azure-beli
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További Azure monitor-sablonok beszerzése](resource-manager-samples.md).
 * [További információ a log Analytics-ügynökről](../platform/log-analytics-agent.md).

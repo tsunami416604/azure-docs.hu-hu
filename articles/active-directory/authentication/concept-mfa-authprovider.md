@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d69ba7b4393a815c9f9685d2e2679c6423ac65a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2c8454d2ca83d4f406149e7eb73feb19ce59554f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965250"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744125"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Mikor kell Azure Multi-Factor Authentication szolgáltatót használni
 
@@ -48,11 +48,11 @@ Ha az MFA szolgáltató nincs Azure AD-bérlőhöz kapcsolva, vagy új MFA szolg
 > [!CAUTION]
 > A hitelesítési szolgáltató törlésekor nincs megerősítés. A **Törlés** lehetőség kiválasztásával állandó folyamat van.
 
-A hitelesítő szolgáltatók a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**  >  **MFA**-  >  **szolgáltatók**között találhatók. Kattintson a felsorolt szolgáltatók lehetőségre, hogy megtekintse a szolgáltatóhoz társított részleteket és konfigurációkat.
+A hitelesítő szolgáltatók a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**  >  **MFA**-  >  **szolgáltatók** között találhatók. Kattintson a felsorolt szolgáltatók lehetőségre, hogy megtekintse a szolgáltatóhoz társított részleteket és konfigurációkat.
 
 A hitelesítési szolgáltató eltávolítása előtt jegyezze fel a szolgáltatóban konfigurált testreszabott beállításokat. Döntse el, hogy mely beállításokat kell áttelepíteni a szolgáltató általános MFA-beállításaiba, és el kell végeznie ezeknek a beállításoknak az áttelepítését. 
 
-A szolgáltatóknak kapcsolódó Azure MFA-kiszolgálókat újra kell aktiválni a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**  >  **MFA**-  >  **kiszolgáló beállításai**között létrehozott hitelesítő adatokkal. Az újraaktiválás előtt a következő fájlokat törölni kell a `\Program Files\Multi-Factor Authentication Server\Data\` címtárból az Azure MFA-kiszolgálókon a környezetben:
+A szolgáltatóknak kapcsolódó Azure MFA-kiszolgálókat újra kell aktiválni a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**  >  **MFA**-  >  **kiszolgáló beállításai** között létrehozott hitelesítő adatokkal. Az újraaktiválás előtt a következő fájlokat törölni kell a `\Program Files\Multi-Factor Authentication Server\Data\` címtárból az Azure MFA-kiszolgálókon a környezetben:
 
 - caCert
 - tanúsítvány
@@ -64,7 +64,7 @@ A szolgáltatóknak kapcsolódó Azure MFA-kiszolgálókat újra kell aktiválni
 
 ![Hitelesítési szolgáltató törlése a Azure Portal](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-Ha meggyőződött arról, hogy az összes beállítás át lett telepítve, tallózással keresse meg a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  -**szolgáltatót** , és válassza a három pontot **...** és válassza a **Törlés**lehetőséget.
+Ha meggyőződött arról, hogy az összes beállítás át lett telepítve, tallózással keresse meg a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  -**szolgáltatót** , és válassza a három pontot **...** és válassza a **Törlés** lehetőséget.
 
 > [!WARNING]
 > A hitelesítésszolgáltató törlése törli a szolgáltatóhoz társított összes jelentési információt. Előfordulhat, hogy a szolgáltató törlése előtt el szeretné menteni a tevékenységek jelentéseit.
@@ -72,6 +72,6 @@ Ha meggyőződött arról, hogy az összes beállítás át lett telepítve, tal
 > [!NOTE]
 > Előfordulhat, hogy a Microsoft Authenticator alkalmazás és az Azure MFA-kiszolgáló régebbi verzióit használó felhasználóknak újra regisztrálniuk kell az alkalmazást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A Multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md)

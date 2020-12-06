@@ -1,20 +1,15 @@
 ---
-title: Azure Portal beállítások és beállítások kezelése | Microsoft Docs
+title: Az Azure Portal beállításainak kezelése
 description: Módosíthatja Azure Portal alapértelmezett beállításait, hogy megfeleljen a saját preferenciáinak. A beállítások közé tartozik az inaktív munkamenet időkorlátja, az alapértelmezett nézet, a menü mód, a kontraszt, a téma, az értesítések és a nyelv és a területi
-services: azure-portal
 keywords: beállítások, időtúllépés, nyelv, regionális
-author: mgblythe
-ms.author: mblythe
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 0f94f694163ba836091e522a29f73cabd64e22b5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145939"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745638"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Az Azure Portal beállításainak kezelése
 
@@ -33,7 +28,7 @@ A Azure Portalba való bejelentkezéskor alapértelmezés szerint megnyithatja a
 
 1. A portál indításakor válassza ki az alapértelmezett előfizetésként használni kívánt előfizetéseket. 
 
-    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Erőforrások listájának szűrése előfizetés alapján."::: 
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="A portál indításakor válassza ki az alapértelmezett előfizetésként használni kívánt előfizetéseket."::: 
 
 
 ## <a name="choose-your-default-view"></a>Válassza ki az alapértelmezett nézetet 
@@ -44,7 +39,7 @@ A Azure Portalba való bejelentkezéskor alapértelmezés szerint a megnyíló l
 
 - A **Kezdőlap** nem szabható testre.  Megjeleníti a népszerű Azure-szolgáltatásokra mutató parancsikonokat, és felsorolja a legutóbb használt erőforrásokat. Hasznos hivatkozásokat is biztosítunk az olyan erőforrásokhoz, mint a Microsoft Learn és az Azure-útiterv.
 
-- Az irányítópultok testreszabhatók úgy, hogy csak Ön számára kialakított munkaterületet hozzanak létre. Létrehozhat például egy projekt, feladat vagy szerepkör fókuszban lévő irányítópultot. Ha kijelöli az **irányítópultot** , az alapértelmezett nézet a legutóbb használt irányítópultra lép. További információ: [irányítópultok létrehozása és megosztása a Azure Portalban](azure-portal-dashboards.md).
+- Az irányítópultok testreszabhatók úgy, hogy csak Ön számára kialakított munkaterületet hozzanak létre. Létrehozhat például egy projekt, feladat vagy szerepkör fókuszban lévő irányítópultot. Ha kijelöli az **irányítópultot**, az alapértelmezett nézet a legutóbb használt irányítópultra lép. További információ: [irányítópultok létrehozása és megosztása a Azure Portalban](azure-portal-dashboards.md).
 
 ## <a name="choose-a-portal-menu-mode"></a>Portál menü mód kiválasztása
 
@@ -100,7 +95,7 @@ A [globális rendszergazdai szerepkör rendszergazdái](../active-directory/role
 
 Ha Ön globális rendszergazda, és a Azure Portal összes felhasználójának üresjárati időtúllépési beállítását szeretné kényszeríteni, kövesse az alábbi lépéseket:
 
-1. Válassza ki a hivatkozás szövegét a **könyvtár szintjének időtúllépése beállításnál** .
+1. Válassza ki a hivatkozás szövegét a **könyvtár szintjének időtúllépése beállításnál**.
 
     ![A portál beállításainak megjelenítése a hivatkozás szövegének kiemelésével](./media/set-preferences/settings-admin.png)
 
@@ -108,7 +103,7 @@ Ha Ön globális rendszergazda, és a Azure Portal összes felhasználójának �
 
 1. Ezután adja meg az **órákat** és a **perceket** azon maximális időtartamig, ameddig a felhasználó tétlen lehet, mielőtt a munkamenet automatikusan kijelentkezett.
 
-1. Válassza az **Alkalmaz** lehetőséget.
+1. Kattintson az **Alkalmaz** gombra.
 
     ![A címtár-szintű inaktivitás időtúllépésének beállítására szolgáló lap képernyőképe](./media/set-preferences/configure.png)
 
@@ -175,7 +170,7 @@ Az **alkalmaz** gombra kattintva frissítheti a nyelvi és a területi formátum
 >Ezek a nyelvi és területi beállítások csak a Azure Portal érintik. Az új lapon vagy ablakban megnyitott dokumentációs hivatkozások a böngésző nyelvi beállításai segítségével határozzák meg a megjelenítendő nyelvet.
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Billentyűparancsok a Azure Portal](azure-portal-keyboard-shortcuts.md)
 - [Támogatott böngészők és eszközök](azure-portal-supported-browsers-devices.md)

@@ -1,18 +1,18 @@
 ---
-title: Azure Functions egyéni kezelők (előzetes verzió)
+title: Egyéni kezelők Azure Functions
 description: Megtudhatja, hogyan használhatja a Azure Functionst bármilyen nyelvi vagy futtatókörnyezeti verzióval.
 author: anthonychu
 ms.author: antchu
-ms.date: 8/18/2020
+ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 402ce1e9e92ab87689abe9c18a503a479d7421f9
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164550"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746029"
 ---
-# <a name="azure-functions-custom-handlers-preview"></a>Azure Functions egyéni kezelők (előzetes verzió)
+# <a name="azure-functions-custom-handlers"></a>Egyéni kezelők Azure Functions
 
 Minden functions alkalmazást egy nyelvspecifikus kezelő hajt végre. Habár a Azure Functions alapértelmezés szerint számos [nyelvi kezelőt](./supported-languages.md) támogat, vannak olyan esetek, amikor más nyelveket vagy futtatókörnyezeteket szeretne használni.
 
@@ -20,10 +20,12 @@ Az egyéni kezelők olyan egyszerű webkiszolgálók, amelyek eseményeket fogad
 
 Az egyéni kezelők a legmegfelelőbbek olyan helyzetekben, amikor a következőket kívánja használni:
 
-- Olyan nyelven implementálhat egy függvényt, amely jelenleg nem támogatott, például Go és Rust.
+- Olyan nyelven implementálhat Function alkalmazást, amely jelenleg nem támogatott, például Go vagy Rust.
 - Egy olyan futtatókörnyezet implementálása, amely jelenleg nem támogatott, például DENO.
 
 Az egyéni kezelők esetében az [Eseményindítók és a bemeneti és kimeneti kötések](./functions-triggers-bindings.md) is használhatók [bővítmények](./functions-bindings-register.md)segítségével.
+
+Ismerkedjen meg Azure Functions egyéni kezelővel a [Go-ban és a Rustban](create-first-function-vs-code-other.md).
 
 ## <a name="overview"></a>Áttekintés
 
@@ -36,7 +38,7 @@ Az alábbi ábrán a functions gazdagép és egy egyéni kezelőként megvalós�
 1. A webkiszolgáló végrehajtja az egyes függvényeket, és visszaküldi a functions gazdagépnek a [Válasz adattartalmát](#response-payload) .
 1. A functions-gazdagép adatokat továbbít a függvénynek a művelet kimeneti kötéseire való választól a feldolgozáshoz.
 
-Az egyéni kezelőként megvalósított Azure Functions-alkalmazásoknak néhány konvenciónak megfelelően be kell állítaniuk a *host.jst*, *local.settings.js*és *function.jsa* fájlokon.
+Az egyéni kezelőként megvalósított Azure Functions-alkalmazásoknak néhány konvenciónak megfelelően be kell állítaniuk a *host.jst*, *local.settings.js* és *function.jsa* fájlokon.
 
 ## <a name="application-structure"></a>Alkalmazás szerkezete
 
@@ -47,7 +49,7 @@ Az egyéni kezelők megvalósításához a következő szempontokat kell figyele
 - Az egyes függvényekhez tartozó fájl *function.js* (a függvény nevével egyező mappában)
 - Egy webkiszolgálót futtató parancs, parancsfájl vagy végrehajtható fájl
 
-Az alábbi ábrán látható, hogyan jelennek meg a fájlok a "MyQueueFunction" nevű függvény fájlrendszerében, valamint egy *handler.exe*nevű egyéni kezelő végrehajtható fájl.
+Az alábbi ábrán látható, hogyan jelennek meg a fájlok a "MyQueueFunction" nevű függvény fájlrendszerében, valamint egy *handler.exe* nevű egyéni kezelő végrehajtható fájl.
 
 ```bash
 | /MyQueueFunction
@@ -107,9 +109,9 @@ A standard triggerek és a bemeneti és kimeneti kötések is elérhetők a *hos
 
 #### <a name="localsettingsjson"></a>local.settings.json
 
-* Alocal.settings.json* a Function app helyi futtatásakor használt Alkalmazásbeállítások meghatározása. Mivel a titkos kulcsokat tartalmazhatnak, * alocal.settings.jsbe* kell zárni a forrás-vezérlőelemből. Az Azure-ban Ehelyett használja az Alkalmazásbeállítások beállítást.
+*Alocal.settings.json* a Function app helyi futtatásakor használt Alkalmazásbeállítások meghatározása. Mivel a titkos kulcsokat tartalmazhatnak, *alocal.settings.jsbe* kell zárni a forrás-vezérlőelemből. Az Azure-ban Ehelyett használja az Alkalmazásbeállítások beállítást.
 
-Egyéni kezelők esetén a értékeként `FUNCTIONS_WORKER_RUNTIME` `Custom` *local.settings.json*értékre kell állítani.
+Egyéni kezelők esetén a értékeként `FUNCTIONS_WORKER_RUNTIME` `Custom` *local.settings.json* értékre kell állítani.
 
 ```json
 {
@@ -127,7 +129,7 @@ Egyéni kezelők esetén a értékeként `FUNCTIONS_WORKER_RUNTIME` `Custom` *lo
 
 Egyéni kezelővel való használat esetén a tartalom *function.jsa* nem különbözik attól, hogy a függvényt Hogyan határozná meg más környezetekben. Az egyetlen követelmény, hogy a fájlokon *function.jsnak* egy nevű mappában kell lennie, hogy egyezzen a függvény nevével.
 
-A következő *function.js* konfigurál egy olyan függvényt, amely üzenetsor-triggerrel és várólista-kimeneti kötéssel rendelkezik. Mivel ez egy *MyQueueFunction*nevű mappában található, egy *MyQueueFunction*nevű függvényt határoz meg.
+A következő *function.js* konfigurál egy olyan függvényt, amely üzenetsor-triggerrel és várólista-kimeneti kötéssel rendelkezik. Mivel ez egy *MyQueueFunction* nevű mappában található, egy *MyQueueFunction* nevű függvényt határoz meg.
 
 **MyQueueFunction/function.jsbekapcsolva**
 
@@ -189,7 +191,7 @@ Az egyezmény szerint a függvények válaszai kulcs/érték párokként vannak 
 
 | <nobr>Hasznos adatok kulcsa</nobr>   | Adattípus | Megjegyzések                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | object    | A (z `bindings` ) *function.jsban*található tömb által meghatározott válasz értékeket tartalmazza.<br /><br />Ha például egy függvény egy "myQueueOutput" nevű üzenetsor-kimeneti kötéssel van konfigurálva, akkor `Outputs` egy nevű kulcsot tartalmaz `myQueueOutput` , amelyet az egyéni kezelő állít be a várólistára küldött üzenetekhez. |
+| `Outputs`     | object    | A (z `bindings` ) *function.jsban* található tömb által meghatározott válasz értékeket tartalmazza.<br /><br />Ha például egy függvény egy "myQueueOutput" nevű üzenetsor-kimeneti kötéssel van konfigurálva, akkor `Outputs` egy nevű kulcsot tartalmaz `myQueueOutput` , amelyet az egyéni kezelő állít be a várólistára küldött üzenetekhez. |
 | `Logs`        | array     | Az üzenetek megjelennek a függvények hívási naplóiban.<br /><br />Az Azure-ban futtatott üzenetek Application Insightsban jelennek meg. |
 | `ReturnValue` | sztring    | Olyan válasz megadására szolgál, amikor a kimenet `$return` a fájl *function.js* van konfigurálva. |
 
@@ -226,7 +228,7 @@ Az ebben a példában megvalósított forgatókönyv egy nevű függvényt tarta
 
 #### <a name="implementation"></a>Implementálás
 
-A *sorrend*nevű mappában a *function.js* fájl konfigurálja a http által aktivált függvényt.
+A *sorrend* nevű mappában a *function.js* fájl konfigurálja a http által aktivált függvényt.
 
 **megrendelés/function.jsbekapcsolva**
 
@@ -415,7 +417,7 @@ Az alábbi példa bemutatja, hogyan konfigurálhat egy HTTP által aktivált fü
 
 #### <a name="implementation"></a>Implementálás
 
-A *Hello*nevű mappában a *function.js* fájl konfigurálja a http által aktivált függvényt.
+A *Hello* nevű mappában a *function.js* fájl konfigurálja a http által aktivált függvényt.
 
 **Hello/function.js**
 
@@ -544,7 +546,7 @@ Tekintse át az [Egyéni kezelő a GitHub](https://github.com/Azure-Samples/func
 
 Ha az egyéni kezelői folyamat nem indul el, vagy ha problémái vannak a functions gazdagépkel való kommunikációval, növelheti a Function alkalmazás naplózási szintjét, hogy `Trace` több diagnosztikai üzenetet tudjon látni a gazdagépről.
 
-A Function alkalmazás alapértelmezett naplózási szintjének módosításához konfigurálja a (z `logLevel` `logging` ) *host.js*szakaszának beállítását.
+A Function alkalmazás alapértelmezett naplózási szintjének módosításához konfigurálja a (z `logLevel` `logging` ) *host.js* szakaszának beállítását.
 
 ```json
 {
@@ -583,3 +585,7 @@ Az egyéni kezelők ugyanabban a környezetben futnak, mint egy tipikus Azure Fu
 Ha segítségre van szüksége egy egyéni kezelővel rendelkező Function alkalmazáshoz, akkor a kérést rendszeres támogatási csatornákon keresztül küldheti el. Azonban az egyéni kezelői alkalmazások létrehozásához használt lehetséges nyelvek széles választéka miatt a támogatás nem korlátlan.
 
 A támogatás akkor érhető el, ha a functions gazdagép problémákba ütközne az egyéni kezelő folyamatával. Az egyéni kezelői folyamat belső működésével kapcsolatos problémák, például a választott nyelven vagy keretrendszerrel kapcsolatos problémák esetén a támogatási csapatunk nem tud segítséget nyújtani ebben a kontextusban.
+
+## <a name="next-steps"></a>További lépések
+
+Ismerkedjen meg egy Azure Functions alkalmazás létrehozásával a Go-ban vagy a Rustban az [Egyéni kezelők](create-first-function-vs-code-other.md)gyors üzembe helyezésével.

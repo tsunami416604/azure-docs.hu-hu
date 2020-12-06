@@ -2,14 +2,14 @@
 title: Erőforrás-szolgáltatók és-erőforrástípusok
 description: A Azure Resource Managert támogató erőforrás-szolgáltatókat ismerteti. Ismerteti a sémákat, az elérhető API-verziókat, valamint azokat a régiókat, amelyek tárolhatják az erőforrásokat.
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/04/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6413a1279c9c7a995bb144097e3db55d5f3a90d2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6d114fdfae12dd9ee96a23e4dafc3847c6429d0c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452111"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745116"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-beli erőforrás-szolgáltatók és -típusok
 
@@ -45,20 +45,28 @@ Nem törölheti az erőforrás-szolgáltató regisztrációját, ha továbbra is
 
 ## <a name="azure-portal"></a>Azure Portal
 
+### <a name="register-resource-provider"></a>Erőforrás-szolgáltató regisztrálása
+
 Az összes erőforrás-szolgáltató megjelenítéséhez és az előfizetés regisztrációs állapotának megtekintéséhez:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Az Azure Portal menüjében válassza a **Minden szolgáltatás** lehetőséget.
+1. A Azure Portal menüben keressen **előfizetéseket**. Válassza ki az elérhető lehetőségek közül.
 
-    ![előfizetések kiválasztása](./media/resource-providers-and-types/select-all-services.png)
+   :::image type="content" source="./media/resource-providers-and-types/search-subscriptions.png" alt-text="előfizetések keresése":::
 
-3. A **minden szolgáltatás** mezőben adja meg az **előfizetés** elemet, majd válassza az **előfizetések** lehetőséget.
-4. Válassza ki az előfizetést az előfizetés listából a megtekintéshez.
-5. Válassza az **erőforrás-szolgáltatók** lehetőséget, és tekintse meg az elérhető erőforrás-szolgáltatók listáját.
+1. Válassza ki a megtekinteni kívánt előfizetést.
 
-    ![erőforrás-szolgáltatók megjelenítése](./media/resource-providers-and-types/show-resource-providers.png)
+   :::image type="content" source="./media/resource-providers-and-types/select-subscription.png" alt-text="előfizetések kiválasztása":::
 
-6. Erőforrás-szolgáltató regisztrálásához válassza a **regisztráció** lehetőséget. Az előző képernyőképen a **regisztráció** hivatkozás ki van emelve a **Microsoft. Blueprint** számára. Az előfizetéshez tartozó legalacsonyabb jogosultságok fenntartásához csak azokat az erőforrás-szolgáltatókat regisztrálja, amelyeket készen áll a használatra.
+1. A bal oldali menüben, a **Beállítások** területen válassza az **erőforrás-szolgáltatók** elemet.
+
+   :::image type="content" source="./media/resource-providers-and-types/select-resource-providers.png" alt-text="erőforrás-szolgáltatók kiválasztása":::
+
+6. Keresse meg a regisztrálni kívánt erőforrás-szolgáltatót, és válassza a **regisztráció** lehetőséget. Az előfizetéshez tartozó legalacsonyabb jogosultságok fenntartásához csak azokat az erőforrás-szolgáltatókat regisztrálja, amelyeket készen áll a használatra.
+
+   :::image type="content" source="./media/resource-providers-and-types/register-resource-provider.png" alt-text="erőforrás-szolgáltatók regisztrálása":::
+
+### <a name="view-resource-provider"></a>Erőforrás-szolgáltató megtekintése
 
 Egy adott erőforrás-szolgáltató információinak megtekintéséhez:
 

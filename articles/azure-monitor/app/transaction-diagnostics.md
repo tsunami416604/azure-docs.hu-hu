@@ -4,12 +4,12 @@ description: Application Insights végpontok közötti tranzakciós diagnosztika
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7623b7131e6344a67c468d0436884ebfef9b0058
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002051"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746097"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Egyesített ágazatközi tranzakciós diagnosztika
 
@@ -80,9 +80,7 @@ Lehetséges okok:
 
 * A többi összetevő a Application Insights?
 * A legújabb STABLE Application Insights SDK-t használják?
-* Ha ezek az összetevők külön Application Insights erőforrások, szükséges a telemetria való hozzáférés?
-
-Ha rendelkezik hozzáféréssel, és az összetevők a legújabb Application Insights SDK-val vannak ellátva, tudassa velünk a jobb felső visszajelzési csatornán keresztül.
+* Ha ezek az összetevők külön Application Insights erőforrások, szükséges a [hozzáférés](resources-roles-access-control.md) , ha rendelkezik hozzáféréssel, és az összetevők a legújabb Application Insights SDK-val vannak ellátva, tudassa velünk a jobb felső visszajelzési csatornán keresztül.
 
 *Ismétlődő sorok jelennek meg a függőségekhez. Ez várható?*
 

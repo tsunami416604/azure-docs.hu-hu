@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 63bb235dcebc67b753e01dd8b193ef1a2b66787d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 222106f5838a1eb237987afaa93924f1efe4a1f4
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553262"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746284"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Fájlkiterjesztés-elemzések az Azure hatáskörébe tartozó adatokról 
 
@@ -39,6 +39,9 @@ További információ: [adatforrások kezelése az Azure hatáskörébe (előzet
 ## <a name="use-purview-file-extension-insights"></a>A hatáskörébe tartozó fájlkiterjesztés-felismerések használata
 
 Az eszközök vizsgálata során az Azure-beli alkalmazás képes észlelni az adatbirtokban található fájltípusokat, és további részleteket biztosít az egyes fájltípusokról. A részletekből megtudhatja, hogy az egyes típusok hány fájlból állnak, hol vannak a fájlok, és hogy bizalmas adatok leolvasható-e.
+
+> [!NOTE]
+> Miután beolvasta a forrás típusait, **adjon meg** néhány órát a fájlkiterjesztés alapján, hogy tükrözze az új eszközöket.
 
 **A fájlkiterjesztés-felismerések megtekintéséhez:**
 
@@ -91,7 +94,7 @@ A rács feletti szűrők használatával szűrheti a megjelenített adatmezőket
 A szűrők felett válassza az **Oszlopok szerkesztése** lehetőséget a :::image type="icon" source="media/insights/ico-columns.png" border="false"::: rácsban található több vagy kevesebb oszlop megjelenítéséhez, vagy a sorrend megváltoztatásához. 
 
 A rács rendezéséhez válasszon ki egy oszlopfejlécet az oszlop szerinti rendezéshez.
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure-beli hatáskörébe Insight-jelentésekről
 > [!div class="nextstepaction"]

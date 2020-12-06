@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: a166a451c405c2321453e02751baad91c2a14c60
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c5b2003a290152533a0a8c0f88fe8eb1a410ccf9
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840017"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744329"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
@@ -58,7 +58,7 @@ Egyes hitelesítési módszerek elsődleges tényezőként használhatók egy al
 
 A következő táblázat azt ismerteti, hogy mikor lehet hitelesítési módszert használni a bejelentkezési esemény során:
 
-| Metódus                         | Elsődleges hitelesítés | Másodlagos hitelesítés  |
+| Módszer                         | Elsődleges hitelesítés | Másodlagos hitelesítés  |
 |--------------------------------|:----------------------:|:-------------------------:|
 | Vállalati Windows Hello     | Igen                    | MFA                       |
 | A Microsoft Authenticator alkalmazás    | Igen (előzetes verzió)          | MFA és SSPR              |
@@ -91,7 +91,7 @@ A következő további ellenőrzési módszerek használhatók bizonyos helyzete
 * [Biztonsági kérdések](concept-authentication-security-questions.md) – csak a SSPR esetében használatos
 * [E-mail-cím](concept-sspr-howitworks.md#authentication-methods) – csak a SSPR esetében használatos
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az első lépésekhez tekintse meg az [önkiszolgáló jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure ad multi-Factor Authentication][tutorial-azure-mfa]oktatóanyagát.
 

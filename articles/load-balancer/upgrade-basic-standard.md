@@ -7,37 +7,54 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: dd0617536147787f436e5817f3f2367a19ba6aa4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f97facd8d184be05cbfd79af92dbcaab3a022ebd
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009279"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746301"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure nyilvános Load Balancer frissítése
 Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](./skus.md#skus).
 
-A frissítés három szakaszból áll:
+A frissítés két szakaszból áll:
 
-1. A konfiguráció áttelepíteni
-2. Virtuális gépek hozzáadása standard Load Balancer backend-készletéhez
-
-Ez a cikk a konfiguráció áttelepítését ismerteti. A virtuális gépeknek a háttérbeli készletekbe való felvétele az adott környezettől függően változhat. Bizonyos magas szintű általános javaslatok azonban [megtalálhatók](#add-vms-to-backend-pools-of-standard-load-balancer).
+1. Módosítsa az IP-kiosztási módszert Dinamikusról statikusra.
+2. Futtassa a PowerShell-parancsfájlt a frissítés és a forgalom áttelepítésének befejezéséhez.
 
 ## <a name="upgrade-overview"></a>Frissítés áttekintése
 
 Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteket végzi el:
 
 * Létrehoz egy szabványos SKU-Load Balancer az erőforráscsoport és a megadott helyen.
+* Frissíti a nyilvános IP-címet az alapszintű SKU-ból a standard SKU-ra.
 * Zökkenőmentesen másolja az alapszintű SKU Load Balancer konfigurációit az újonnan létrehozott standard Load Balancerra.
 * Egy alapértelmezett kimenő szabályt hoz létre, amely lehetővé teszi a kimenő kapcsolat használatát.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
 * A parancsfájl csak a nyilvános Load Balancer frissítését támogatja. A belső alapszintű Load Balancer frissítéséhez tekintse meg [ezt az oldalt](./upgrade-basicinternal-standard.md) .
-* A standard Load Balancer új nyilvános címnek kell lennie. A meglévő alapszintű Load Balancerekhez kapcsolódó IP-címeket nem lehet zökkenőmentesen áthelyezni, mivel azok eltérő SKU-k használatával standard Load Balancer.
-* Ha a standard Load Balancer egy másik régióban lett létrehozva, akkor a régi régióban meglévő virtuális gépeket nem lehet az újonnan létrehozott standard Load Balancerhoz rendelni. A korlátozás megkerüléséhez hozzon létre egy új virtuális gépet az új régióban.
+* A nyilvános IP-cím kiosztási módszerét a parancsfájl futtatása előtt "Static" értékre kell módosítani. 
 * Ha a Load Balancer nem rendelkezik előtér-IP-konfigurációval vagy háttér-készlettel, valószínűleg a parancsfájl futtatásakor hiba lépett fel. Ügyeljen arra, hogy ne legyenek üresek.
+
+### <a name="change-allocation-method-of-the-public-ip-address-to-static"></a>Nyilvános IP-cím kiosztási módszerének módosítása statikusra
+
+* * * A javasolt lépések:
+
+    1. A rövid útmutatóban szereplő feladatok végrehajtásához jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+ 
+    1. A bal oldali menüben válassza az **összes erőforrás** lehetőséget, majd válassza ki az alapszintű **Load Balancerhoz társított alapszintű nyilvános IP-címet** az erőforrás-listából.
+   
+    1. A **Beállítások** területen válassza a **konfigurációk** lehetőséget.
+   
+    1. A **hozzárendelés** területen válassza a **statikus** lehetőséget.
+    1. Válassza a **Save** (Mentés) lehetőséget.
+    >[!NOTE]
+    >A nyilvános IP-címmel rendelkező virtuális gépek esetében először a szabványos IP-címeket kell létrehoznia, ahol az IP-cím nem garantált. A virtuális gépeket az alapszintű IP-címekről társíthatja, és társíthatja őket az újonnan létrehozott szabványos IP-címekkel. Ezt követően az utasításokat követve hozzáadhat virtuális gépeket standard Load Balancer háttérbeli készletéből. 
+
+* **Új virtuális gépek létrehozása az újonnan létrehozott Standard nyilvános Load Balancer háttér-készletekhez való hozzáadásához**.
+    * További információ a virtuális gép létrehozásával és a standard Load Balancerhoz való hozzárendelésével kapcsolatban [itt](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines)található.
+
 
 ## <a name="download-the-script"></a>A parancsfájl letöltése
 
@@ -76,39 +93,14 @@ A szkript futtatása:
    * **oldRgName: [string]: kötelező** – ez a meglévő alapszintű Load Balancerhez tartozó erőforráscsoport, amelyet frissíteni kíván. A karakterlánc értékének megkereséséhez navigáljon Azure Portal, válassza ki az alapszintű Load Balancer forrását, és kattintson a terheléselosztó **áttekintésére** . Az erőforráscsoport ezen az oldalon található.
    * **oldLBName: [string]: kötelező** – ez a meglévő alapszintű, frissíteni kívánt alapbalancer neve. 
    * **newrgName: [string]: kötelező** – ez az az erőforráscsoport, amelyben a rendszer létrehozza a standard Load Balancer. Ez lehet egy új erőforráscsoport vagy egy meglévő. Ha kiválaszt egy meglévő erőforráscsoportot, vegye figyelembe, hogy a Load Balancer nevének egyedinek kell lennie az erőforráscsoport belül. 
-   * **newlocation: [string]: kötelező** – ez az a hely, ahol a standard Load Balancer létre lesz hozva. Javasoljuk, hogy a kiválasztott alapszintű Load Balancer ugyanazon helyét örökli a standard Load Balancer a többi meglévő erőforrással való jobb együttműködés érdekében.
    * **newLBName: [string]: kötelező** – ez a létrehozandó standard Load Balancer neve.
 1. Futtassa a szkriptet a megfelelő paraméterek használatával. A befejezéshez öt – hét percet is igénybe vehet.
 
     **Példa**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newLbName "LBForUpgrade"
    ```
-
-### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Virtuális gépek hozzáadása standard Load Balancer backend-készletéhez
-
-Először ellenőrizze, hogy a parancsfájl sikeresen létrehozott-e egy új standard nyilvános Load Balancer az alapszintű nyilvános Load Balancer áttelepített pontos konfigurációval. Ezt a Azure Portal ellenőrizheti.
-
-Ügyeljen arra, hogy kis mennyiségű forgalmat küldjön a standard Load Balancer manuális tesztként.
-  
-Íme néhány forgatókönyv, amely azt ismerteti, hogyan adhat hozzá virtuális gépeket az újonnan létrehozott Standard nyilvános Load Balancer backend-készletéhez, valamint a javaslataikat a következőkhöz:
-
-* **Meglévő virtuális gépek áthelyezése a régi alapszintű nyilvános Load Balancer háttér-készletekből az újonnan létrehozott Standard nyilvános Load Balancer háttér-készletei** között.
-    1. A rövid útmutatóban szereplő feladatok végrehajtásához jelentkezzen be a [Azure Portalba](https://portal.azure.com).
- 
-    1. A bal oldali menüben válassza az **összes erőforrás** lehetőséget, majd válassza ki az **újonnan létrehozott Standard Load Balancer** az erőforrás-listából.
-   
-    1. A **Beállítások** területen válassza a **háttér-készletek** elemet.
-   
-    1. Válassza ki azt a háttér-készletet, amely megfelel az alapszintű Load Balancer háttér-készletének, válassza ki a következő értéket: 
-      - **Virtuális gép**: a legördülő listából válassza ki a virtuális gépeket az alapszintű Load Balancer megfelelő háttérbeli készletéből.
-    1. Kattintson a **Mentés** gombra.
-    >[!NOTE]
-    >A nyilvános IP-címmel rendelkező virtuális gépek esetében először a szabványos IP-címeket kell létrehoznia, ahol az IP-cím nem garantált. A virtuális gépeket az alapszintű IP-címekről társíthatja, és társíthatja őket az újonnan létrehozott szabványos IP-címekkel. Ezt követően az utasításokat követve hozzáadhat virtuális gépeket standard Load Balancer háttérbeli készletéből. 
-
-* **Új virtuális gépek létrehozása az újonnan létrehozott Standard nyilvános Load Balancer háttér-készletekhez való hozzáadásához**.
-    * További információ a virtuális gép létrehozásával és a standard Load Balancerhoz való hozzárendelésével kapcsolatban [itt](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines)található.
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>Kimenő szabály létrehozása a kimenő kapcsolatok számára
 
@@ -122,9 +114,13 @@ Kövesse az [utasításokat](./quickstart-load-balancer-standard-public-powershe
 
 Igen. Lásd a [figyelmeztetéseket és korlátozásokat](#caveatslimitations).
 
+### <a name="how-long-does-the-upgrade-take"></a>Mennyi ideig tart a frissítés?
+
+Általában körülbelül 5-10 percet vesz igénybe, amíg a szkript befejeződik, és a Load Balancer konfigurációjának összetettsége miatt hosszabb időt vehet igénybe. Ezért szükség esetén tartsa szem előtt az állásidőt, és tervezze meg a feladatátvételt.
+
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>A Azure PowerShell szkript az alapszintű Load Balancerról az újonnan létrehozott standard Load Balancerra is átváltja a forgalmat?
 
-Nem. A Azure PowerShell szkript csak a konfigurációt telepíti át. A tényleges forgalom áttelepítése az Ön felelőssége és a vezérlése.
+Igen. A Azure PowerShell parancsfájl nem csak a nyilvános IP-címet frissíti, a konfigurációt alapszintről standard Load Balancerre másolja, de a virtuális gépet az újonnan létrehozott Standard nyilvános Load Balancer is telepíti. 
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Néhány probléma merült fel a szkript használatával. Hogyan Kérhetek segítséget?
   

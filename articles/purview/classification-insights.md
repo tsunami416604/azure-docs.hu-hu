@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 34accbf218a782b79579d2f9857c101cc8147ab8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 553c33b3d5ea2e3f1ee81503cb69fe15db387af6
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552550"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745026"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Az Azure hatáskörébe tartozó adatok besorolása
 
@@ -42,6 +42,9 @@ További információ: [adatforrások kezelése az Azure hatáskörébe (előzet
 Az Azure-ban a besorolások hasonlók a tulajdonosi címkékhez, és az adatkészletben található, a vizsgálat során talált adott típusú adattípusok azonosítására szolgálnak.
 
 A hatáskörébe ugyanazok a bizalmas adattípusok tartoznak, mint a Microsoft 365, így a meglévő biztonsági szabályzatokat és a teljes adategység védelmét is kiterjesztheti.
+
+> [!NOTE]
+> Miután beolvasta a forrás típusait, az új eszközök megjelenítéséhez adjon meg néhány órát az **osztályozás címkézéséhez** .
 
 **A besorolási eredmények megtekintéséhez:**
 
@@ -91,7 +94,7 @@ További információért tegye a következők valamelyikét:
 |**Eszközök tallózása**     |  Ha egy adott besorolással vagy forrással rendelkező eszközöket szeretne böngészni, válasszon ki egy besorolást vagy forrást a megtekintett jelentéstől függően, majd válassza a szűrők alatt található **eszközök tallózása** lehetőséget :::image type="icon" source="media/insights/ico-browse-assets.png" border="false"::: . <br><br>A keresési eredmények megjelenítik a kiválasztott szűrőhöz talált összes besorolt eszközt.  További információ: [Search The Azure hatáskörébe Data Catalog](how-to-search-catalog.md).       |
 | | |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure-beli hatáskörébe Insight-jelentésekről
 > [!div class="nextstepaction"]

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204a656194af9473defc8cf983526dd2b8266021
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63d880146a0b068a5d097c452c14b28db4907098
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839811"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743955"
 ---
 # <a name="features-and-licenses-for-azure-ad-multi-factor-authentication"></a>Az Azure AD Multi-Factor Authentication szolgáltatásai és licencei
 
@@ -78,7 +78,7 @@ Ha nem szeretné engedélyezni az Azure AD-Multi-Factor Authentication az össze
 * Ha Microsoft-fiókot használ, [regisztráljon a multi-Factor Authentication szolgáltatásra](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
 * Ha nem Microsoft-fiókot használ, [kapcsolja be a többtényezős hitelesítést egy felhasználó vagy csoport számára az Azure ad-ben](howto-mfa-userstates.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A költségekkel kapcsolatos további információkért lásd: az [Azure AD multi-Factor Authentication díjszabása](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
 * [Mi a feltételes hozzáférés?](../conditional-access/overview.md)
