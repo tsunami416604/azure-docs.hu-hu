@@ -3,12 +3,12 @@ title: Application Insights és Log Analytics által használt IP-címek | Micro
 description: A Application Insights által igényelt kiszolgálói tűzfal-kivételek
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: c1ccb40a9b8d8080da416aeb920ed016a231f697
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 10328efa9b8b9cdbe1e57e1e982653aea7e39574
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547933"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748875"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Az Application Insights és a Log Analytics által használt IP-címek
 Az [Azure Application Insights](./app-insights-overview.md) szolgáltatás számos IP-címet használ. Előfordulhat, hogy ismernie kell ezeket a címeket, ha a figyelt alkalmazás tűzfal mögött található.
@@ -46,6 +46,10 @@ Meg kell nyitnia néhány kimenő portot a kiszolgálója tűzfalán, hogy a App
 
 ## <a name="availability-tests"></a>Rendelkezésre állási tesztek
 Azon címek listája, amelyekről a [rendelkezésre állási webes tesztek](./monitor-web-app-availability.md) futnak. Ha webteszteket szeretne futtatni az alkalmazáson, de a webkiszolgálója meghatározott ügyfelek kiszolgálására korlátozódik, akkor engedélyeznie kell a rendelkezésre állási tesztelési kiszolgálókról érkező bejövő forgalmat.
+
+
+> [!NOTE]
+> A privát virtuális hálózatokon belül található, a nyilvános Azure-beli rendelkezésre állási tesztekkel nem rendelkező közvetlen bejövő kommunikációt nem engedélyező erőforrások esetében az egyetlen lehetőség a [saját, egyéni rendelkezésre állási tesztek létrehozása és üzemeltetése](availability-azure-functions.md).
 
 ### <a name="service-tag"></a>Szolgáltatáscímke
 
@@ -230,7 +234,7 @@ Megjegyzés: a *. loganalytics.io tartomány tulajdonosa a Log Analytics csapata
 | --- | --- | --- | --- |
 | Ügynök | agent.azureserviceprofiler.net<br/>*. agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portál | gateway.azureserviceprofiler.net | dinamikus | 443
-| Storage | *.core.windows.net | dinamikus | 443
+| Tárolás | *.core.windows.net | dinamikus | 443
 
 ## <a name="snapshot-debugger"></a>Pillanatkép-hibakereső
 
@@ -241,5 +245,5 @@ Megjegyzés: a *. loganalytics.io tartomány tulajdonosa a Log Analytics csapata
 | --- | --- | --- | --- |
 | Ügynök | agent.azureserviceprofiler.net<br/>*. agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | Portál | gateway.azureserviceprofiler.net | dinamikus | 443
-| Storage | *.core.windows.net | dinamikus | 443
+| Tárolás | *.core.windows.net | dinamikus | 443
 

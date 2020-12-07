@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 2ee906b406f5fd09fc870626f1905541a4270c66
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6a587ecbe7ff67908b22d4f2429cfdd0c511e07d
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670525"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748773"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (előzetes verzió)
 
-Microsoft Azure igazolás (előzetes verzió) a megbízható végrehajtási környezetek (pólók) igazolására szolgáló megoldás, mint például az [Intel® Software Guard Extensions](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX enklávéhoz) enklávék és a [virtualizálás-alapú biztonsági](/windows-hardware/design/device-experiences/oem-vbs) (vbs) enklávék. Az enklávé igazolása olyan folyamat, amely ellenőrzi, hogy az enklávé biztonságos és megbízható-e.
+A Microsoft Azure igazolás (előzetes verzió) egy egységes megoldás, amellyel távolról ellenőrizhető a platform megbízhatósága és a benne futó bináris fájlok integritása. A szolgáltatás támogatja a platformmegbízhatósági modulok (TPM-EK) által támogatott platformok igazolását, és lehetővé teszi a megbízható végrehajtási környezetek (pólók) állapotának igazolását, mint például az [Intel® Software Guard Extensions](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX enklávéhoz) enklávék és a [virtualizálás-alapú biztonsági](/windows-hardware/design/device-experiences/oem-vbs) (vbs) enklávék. 
 
 Az igazolás egy folyamat, amely azt mutatja be, hogy a szoftver bináris fájljai megfelelően lettek-e létrehozva egy megbízható platformon. A távoli függő entitások így biztosak lehetnek abban, hogy csak az ilyen jellegű szoftverek megbízható hardveren futnak. Az Azure-igazolás egy egységesített ügyfél-szolgáltatás és keretrendszer az igazoláshoz.
 
@@ -34,12 +34,6 @@ Az Azure igazolása átfogó igazolási szolgáltatásokat nyújt több környez
 A SGX ENKLÁVÉHOZ olyan hardveres elkülönítésre utal, amely bizonyos Intel CPU-modellekben támogatott. A SGX ENKLÁVÉHOZ lehetővé teszi, hogy a kód a SGX ENKLÁVÉHOZ enklávés néven ismert, megtisztított rekeszekben fusson. A hozzáférés-és a memória-engedélyeket a hardver kezeli, így biztosítva a megfelelő elkülönítést biztosító minimális támadási felületet.
 
 Az ügyfélalkalmazások úgy is kiállíthatók, hogy kihasználják a SGX ENKLÁVÉHOZ enklávék előnyeit azáltal, hogy a biztonság szempontjából kényes feladatokat delegálnak az adott enklávékban. Az ilyen alkalmazások ezt követően az Azure-igazolás használatával rutinszerűen hozhatnak létre megbízhatóságot az enklávéban, és képesek hozzáférni a bizalmas adatokhoz.
-
-### <a name="vbs-attestation"></a>VBS-igazolás
-
-A VBS egy szoftveres architektúra az enklávé memória-védelméhez a Hyper-V alapján. Megakadályozza a gazdagépek rendszergazdai kódját, valamint a helyi és a Felhőbeli szolgáltatás-rendszergazdák számára az adatok elérését egy VBS enklávéban, vagy annak végrehajtását.
-
-A SGX ENKLÁVÉHOZ technológiához hasonlóan az Azure-igazolás is támogatja a VBS enklávék érvényesítését a konfigurált szabályzatok alapján, valamint az érvényesség igazolására szolgáló minősítési nyilatkozat kiállítását.
 
 ### <a name="open-enclave"></a>Nyitott enklávé
 Az [Open enklávé](https://openenclave.io/sdk/) (OE) olyan kódtárak gyűjteménye, amelyek egyetlen egységes enclaving absztrakciót hoznak létre a fejlesztők számára a Tee-alapú alkalmazások létrehozásához. Univerzális biztonságos alkalmazás-modellt kínál, amely a platform sajátosságait is lekicsinyíti. A Microsoft fontos lépésként tekinti át a demokratizálása-alapú enklávé-technológiákat, például a SGX ENKLÁVÉHOZ, és növeli az Azure-ban való felvételét.
@@ -65,19 +59,15 @@ Az Azure igazolási ügyfelei kifejezték azt a követelményt, hogy a Microsoft
 
 Az Azure-igazolás a legjobb választás a pólók igazolására, mivel az a következő előnyöket kínálja: 
 
-- Egységes keretrendszer több pólók, például a SGX ENKLÁVÉHOZ enklávék és a VBS enklávék igazolásához
+- Egységes keretrendszer több környezet (például TPM, SGX ENKLÁVÉHOZ enklávés és VBS enklávé) igazolásához 
 - Több-bérlős szolgáltatás, amely lehetővé teszi az egyéni igazolási szolgáltatók és házirendek konfigurálását a jogkivonat-generálás korlátozására
 - Olyan alapértelmezett szolgáltatót kínál, amely a felhasználóktól való konfiguráció nélkül képes tanúsítani
 - A SGX ENKLÁVÉHOZ enklávéban való használat közben védi az adatvédelmet
-- Olyan, magasan elérhető szolgáltatás, amely szolgáltatói szerződés kínál (SLA)
+- Kiválóan elérhető szolgáltatás 
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>Üzletmenet-folytonosság és vész-helyreállítási (BCDR) támogatás
 
 Az [üzletmenet folytonossága és](../best-practices-availability-paired-regions.md) a vész-helyreállítási szolgáltatás (BCDR) lehetővé teszi az Azure-igazolást, hogy enyhítse a jelentős rendelkezésre állási problémákkal vagy egy adott régióban észlelt katasztrófákkal kapcsolatos szolgáltatások megszakadását.
-
-A BCDR által jelenleg támogatott régiók alább találhatók
-- USA 2. keleti régiója – az USA középső régiója> párosítva.
-- USA középső régiója => az USA 2. keleti régiójában.
 
 A két régióban üzembe helyezett fürtök normál körülmények között egymástól függetlenül működnek. Az egyik régió hibája vagy kimaradása esetén a következő történik:
 
@@ -87,7 +77,7 @@ A két régióban üzembe helyezett fürtök normál körülmények között egy
 - A vezérlési sík összes művelete le lesz tiltva. Az ügyfelek nem tudnak tanúsítvány-előállítók létrehozására és a szabályzatok frissítésére az elsődleges régióban
 - Az összes adatsík művelet, beleértve a tanúsító hívásokat, továbbra is az elsődleges régióban fog működni
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ismerje meg az [Azure igazolásának alapfogalmait](basic-concepts.md)
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)

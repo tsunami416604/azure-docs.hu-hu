@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 87e33940d927fc9116c03345011e21398384d484
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3ec9718d313e7e8d757eb41c230225bdcf9ebd49
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024415"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749045"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -33,11 +33,11 @@ A következő táblázat összefoglalja az egyes SDK-típusokhoz és az alkalmaz
 | Application Insights SDK | Adaptív mintavételezés támogatott | Rögzített arányú mintavételezés támogatott | A betöltési mintavételezés támogatott |
 |-|-|-|-|
 | ASP.NET | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-aspnet-applications) | [Igen](#configuring-fixed-rate-sampling-for-aspnet-applications) | Csak akkor, ha nincs más mintavételezés |
-| ASP.NET Core | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Igen](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Csak akkor, ha nincs más mintavételezés |
-| Azure Functions | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-azure-functions) | No | Csak akkor, ha nincs más mintavételezés |
-| Java | No | [Igen](#configuring-fixed-rate-sampling-for-java-applications) | Csak akkor, ha nincs más mintavételezés |
-| Node.JS | No | [Igen](./nodejs.md#sampling) | Csak akkor, ha nincs más mintavételezés
-| Python | No | [Igen](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Csak akkor, ha nincs más mintavételezés |
+| ASP.NET-mag | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Igen](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Csak akkor, ha nincs más mintavételezés |
+| Azure Functions | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-azure-functions) | Nem | Csak akkor, ha nincs más mintavételezés |
+| Java | Nem | [Igen](#configuring-fixed-rate-sampling-for-java-applications) | Csak akkor, ha nincs más mintavételezés |
+| Node.JS | Nem | [Igen](./nodejs.md#sampling) | Csak akkor, ha nincs más mintavételezés
+| Python | Nem | [Igen](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Csak akkor, ha nincs más mintavételezés |
 | Minden más | Nem | Nem | [Igen](#ingestion-sampling) |
 
 > [!NOTE]
@@ -54,7 +54,7 @@ Három különböző mintavételi módszer létezik:
 * A betöltési **mintavételezés** a Application Insights szolgáltatási végponton történik. A rendszer elveti az alkalmazásból érkező egyes telemetria a beállított mintavételi sebességgel. Nem csökkenti az alkalmazásból eljuttatott telemetria forgalmat, de segít megőrizni a havi kvótán belül. A betöltési mintavételezés legfőbb előnye, hogy az alkalmazás újbóli üzembe helyezése nélkül állíthatja be a mintavételezési sebességet. A betöltési mintavételezés egységesen működik az összes kiszolgáló és ügyfél esetében, de nem alkalmazható, ha bármilyen más típusú mintavétel működik.
 
 > [!IMPORTANT]
-> Ha az adaptív vagy rögzített arányú mintavételi módszerek működésben vannak, a betöltési mintavételezés le van tiltva.
+> Ha az adaptív vagy rögzített arányú mintavételi módszerek engedélyezve vannak a telemetria, a betöltési mintavételezés le van tiltva az adott telemetria. Az SDK-szinten a mintavételezésből kizárt telemetria-típusok azonban továbbra is a portálon beállított díjszabás szerint lesznek betöltési mintavételezések.
 
 ## <a name="adaptive-sampling"></a>Adaptív mintavételezés
 
@@ -586,7 +586,7 @@ A fix sebességű mintavételezés az SDK egyik funkciója, amely a 2.0.0 és a 
 
 A v 2.5.0 előtt – a ASP.NET SDK Beta2, valamint a ASP.NET Core SDK-hoz készült v 2.2.0-beta3 a mintavételi döntés alapjául a felhasználói azonosító kivonata a "user" (azaz a leggyakoribb webalkalmazások) definiáló alkalmazásokhoz. Azon alkalmazások típusai esetében, amelyek nem határoznak meg felhasználókat (például webszolgáltatásokat), a mintavételi döntés a kérelem műveleti AZONOSÍTÓján alapul. A ASP.NET és ASP.NET Core SDK-k legújabb verziói a mintavételi döntés műveleti AZONOSÍTÓját használják.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [szűréssel](./api-filtering-sampling.md) szigorúbban VEZÉRELHETI az SDK által küldött adatokat.
 * Olvassa el a fejlesztői hálózat című cikket a [telemetria optimalizálása Application Insightsával](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights).

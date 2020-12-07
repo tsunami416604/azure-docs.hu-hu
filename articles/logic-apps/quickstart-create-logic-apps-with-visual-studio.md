@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/27/2020
-ms.openlocfilehash: 1301af3bd17ce44720d77aa1b812b78bbe57ffc9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ff195f7a0071c06d5309f95f77e32ae75f584f82
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101391"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749164"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rövid útmutató: Automatizált feladatok, folyamatok és munkafolyamatok létrehozása az Azure Logic Apps használatával – Visual Studio
 
@@ -37,7 +37,7 @@ Ebben a rövid útmutatóban ugyanazt a logikai alkalmazást hozza létre a Visu
     > [!IMPORTANT]
     > A Visual Studio 2019-es vagy 2017-es vagy-es telepítésekor ügyeljen arra, hogy kiválassza az **Azure-fejlesztési** számítási feladatot.
 
-  * [Microsoft Azure SDK for .net (2.9.1 vagy újabb)](https://azure.microsoft.com/downloads/). További információ az [Azure SDK for .NET](/dotnet/azure/dotnet-tools?tabs=vs) készlettel kapcsolatban.
+  * [Microsoft Azure SDK for .net (2.9.1 vagy újabb)](https://azure.microsoft.com/downloads/). További információ az [Azure SDK for .NET](/dotnet/azure/intro) készlettel kapcsolatban.
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
@@ -70,7 +70,7 @@ Használhatja az [Azure Environment választó Visual Studio bővítményt](http
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-A Azure Logic Apps Azure Government-előfizetésekkel való együttműködéshez [hozzá kell adnia egy felderítési végpontot a Azure Government Cloud a Visual studióhoz](../azure-government/documentation-government-connect-vs.md). Mielőtt azonban *bejelentkezne a Visual studióba a Azure Government-fiókjával* , át kell neveznie a felderítési végpont hozzáadása után generált JSON-fájlt a következő lépések végrehajtásával:
+A Azure Logic Apps Azure Government-előfizetésekkel való együttműködéshez [hozzá kell adnia egy felderítési végpontot a Azure Government Cloud a Visual studióhoz](../azure-government/documentation-government-connect-vs.md). Mielőtt azonban *bejelentkezne a Visual studióba a Azure Government-fiókjával*, át kell neveznie a felderítési végpont hozzáadása után generált JSON-fájlt a következő lépések végrehajtásával:
 
 1. Zárjuk be a Visual studiót.
 
@@ -100,7 +100,7 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
    ![Az Új > Projekt menüpont kiválasztása a Fájl menüben](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
-1. A **Telepítve** területen válassza a **Visual C#** vagy a **Visual Basic** elemet. Válassza ki a **Cloud**  >  **Azure-erőforráscsoportot** . Adjon nevet a projektnek, például a következőt:
+1. A **Telepítve** területen válassza a **Visual C#** vagy a **Visual Basic** elemet. Válassza ki a **Cloud**  >  **Azure-erőforráscsoportot**. Adjon nevet a projektnek, például a következőt:
 
    ![Azure erőforráscsoport-projekt létrehozása](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
@@ -111,11 +111,11 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
    Ha a Visual Studio 2019-et használja, kövesse az alábbi lépéseket:
 
-   1. Az **új projekt létrehozása** mezőben válassza ki a Visual C# vagy a Visual Basic **Azure erőforráscsoport** -projektjét. Válassza a **Tovább** gombot.
+   1. Az **új projekt létrehozása** mezőben válassza ki a Visual C# vagy a Visual Basic **Azure erőforráscsoport** -projektjét. Kattintson a **Tovább** gombra.
 
-   1. Adja meg a használni kívánt Azure-erőforráscsoport nevét és a projekt egyéb információit. Válassza a **Létrehozás** lehetőséget.
+   1. Adja meg a használni kívánt Azure-erőforráscsoport nevét és a projekt egyéb információit. Kattintson a **Létrehozás** gombra.
 
-1. A sablon listából válassza ki a **logikai alkalmazás** sablonját. Válassza az **OK** lehetőséget.
+1. A sablon listából válassza ki a **logikai alkalmazás** sablonját. Kattintson az **OK** gombra.
 
    ![Logikaialkalmazás-sablon kiválasztása](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
@@ -127,7 +127,7 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
 Ha rendelkezik az Azure erőforráscsoport-projekttel, hozzon létre egy logikai alkalmazást az **üres logikai alkalmazás** sablonnal.
 
-1. A Megoldáskezelőban nyissa meg a **LogicApp.jsa** fájl helyi menüjében. Válassza a lehetőséget az elem **megnyitására a Logikaialkalmazás-tervezővel** . (Billentyűzet: CTRL + L)
+1. A Megoldáskezelőban nyissa meg a **LogicApp.jsa** fájl helyi menüjében. Válassza a lehetőséget az elem **megnyitására a Logikaialkalmazás-tervezővel**. (Billentyűzet: CTRL + L)
 
    ![A logikai alkalmazás .json-fájljának megnyitása a Logikaialkalmazás-tervezővel](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -145,7 +145,7 @@ Ha rendelkezik az Azure erőforráscsoport-projekttel, hozzon létre egy logikai
    | Felhasználói fiók | Fabrikam <br> sophia-owen@fabrikam.com | A fiók, amelyet a Visual studióba való bejelentkezéskor használt |
    | **Előfizetés** | Utólagos, használatalapú fizetés <br> (sophia-owen@fabrikam.com) | Az Azure-előfizetés és a társított fiók neve |
    | **Erőforráscsoport** | MyLogicApp-RG <br> (USA nyugati régiója) | A logikai alkalmazás erőforrásainak tárolásához és üzembe helyezéséhez használt Azure-erőforráscsoport és-hely |
-   | **Hely** | **Ugyanaz, mint az erőforráscsoport** | A logikai alkalmazás üzembe helyezéséhez használt hely típusa és adott hely. A hely típusa egy Azure-régió vagy egy meglévő [integrációs szolgáltatási környezet (ISE)](connect-virtual-network-vnet-isolated-environment.md). <p>Ebben a rövid útmutatóban tartsa meg a hely típusát **régióra** , és a helyet állítsa az **erőforráscsoport** értékre. <p>**Megjegyzés** : az erőforráscsoport-projekt létrehozása után [módosíthatja a hely típusát és helyét](manage-logic-apps-with-visual-studio.md#change-location), de a különböző típusú helyek különböző módokon érintik a logikai alkalmazást. |
+   | **Hely** | **Ugyanaz, mint az erőforráscsoport** | A logikai alkalmazás üzembe helyezéséhez használt hely típusa és adott hely. A hely típusa egy Azure-régió vagy egy meglévő [integrációs szolgáltatási környezet (ISE)](connect-virtual-network-vnet-isolated-environment.md). <p>Ebben a rövid útmutatóban tartsa meg a hely típusát **régióra** , és a helyet állítsa az **erőforráscsoport** értékre. <p>**Megjegyzés**: az erőforráscsoport-projekt létrehozása után [módosíthatja a hely típusát és helyét](manage-logic-apps-with-visual-studio.md#change-location), de a különböző típusú helyek különböző módokon érintik a logikai alkalmazást. |
    ||||
 
 1. A Logic Apps Designer egy olyan oldalt nyit meg, amely bemutatja a bemutató videót és a gyakran használt eseményindítókat. Görgessen le a videó **és az eseményindítók között, és** válassza az **üres logikai alkalmazás** lehetőséget.
@@ -216,7 +216,7 @@ Ha rendelkezik egy meglévő Azure-erőforráscsoport-projekttel, a JSON-vázlat
 
    ![Erőforrás hozzáadása](./media/quickstart-create-logic-apps-with-visual-studio/add-logic-app-resource.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a logikai alkalmazással, törölje a logikai alkalmazást és a kapcsolódó erőforrásokat tartalmazó erőforráscsoportot.
 
@@ -230,7 +230,7 @@ Ha elkészült a logikai alkalmazással, törölje a logikai alkalmazást és a 
 
 1. Törölje a Visual Studio-megoldást a helyi számítógépről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy logikai alkalmazást állított össze, helyezett üzembe és futtatott a Visual Studióval. A Logic apps és a Visual Studio használatával végzett speciális üzembe helyezés kezelésével és végrehajtásával kapcsolatos információkért tekintse meg a következő cikkeket:
 

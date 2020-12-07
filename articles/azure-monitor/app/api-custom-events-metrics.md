@@ -4,12 +4,12 @@ description: A használat és a problémák diagnosztizálásához helyezzen be 
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d1ed05cd7337a7e82a02b25a2f29d54567b9f9a3
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011344"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748892"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
 
@@ -19,7 +19,7 @@ Szúrjon be néhány sornyi kódot az alkalmazásban, hogy megtudja, mit csinál
 
 Az alapszintű API minden platformon egységes, többek között a `GetMetric` (csak .net-es) változatokon kívül.
 
-| Metódus | Alkalmazási cél |
+| Módszer | Alkalmazási cél |
 | --- | --- |
 | [`TrackPageView`](#page-views) |Lapok, képernyők, pengék vagy űrlapok. |
 | [`TrackEvent`](#trackevent) |Felhasználói műveletek és egyéb események. A felhasználói viselkedés nyomon követésére vagy a teljesítmény figyelésére szolgál. |
@@ -531,6 +531,9 @@ Ha a [mintavételezés](./sampling.md) folyamatban van, a ItemCount tulajdonság
 
 A TrackDependency hívásával követheti a külső kódrészletre irányuló hívások válaszideje és sikerességi arányát. Az eredmények a portál függőségi diagramjaiban jelennek meg. Az alábbi kódrészletet fel kell venni, ahol függőségi hívás történik.
 
+> [!NOTE]
+> A .NET és a .NET Core esetében használhatja a `TelemetryClient.StartOperation` (kiterjesztés) metódust is, amely kitölti a `DependencyTelemetry` korrelációhoz és más tulajdonságokhoz szükséges tulajdonságokat, például a kezdési időt és az időtartamot, így nem kell egyéni időzítőt létrehoznia az alábbi példákkal. További információért olvassa el a jelen cikk [a kimenő függőségek nyomon követéséről szóló szakaszát](https://docs.microsoft.com/azure/azure-monitor/app/custom-operations-tracking#outgoing-dependencies-tracking).
+
 *C#*
 
 ```csharp
@@ -932,7 +935,7 @@ A [szűrés](./api-filtering-sampling.md#filtering) módosíthatja vagy elvethet
 
 A [mintavétel](./api-filtering-sampling.md) egy csomagolt megoldás, amely csökkenti az alkalmazásból a portálra továbbított adatok mennyiségét. Ez nem befolyásolja a megjelenített metrikákat. Ez azonban nem befolyásolja a problémák diagnosztizálását a kapcsolódó elemek, például a kivételek, a kérelmek és az oldalletöltések közötti navigálás során.
 
-[További információk](./api-filtering-sampling.md).
+[További információ](./api-filtering-sampling.md).
 
 ## <a name="disabling-telemetry"></a>Telemetria letiltása
 

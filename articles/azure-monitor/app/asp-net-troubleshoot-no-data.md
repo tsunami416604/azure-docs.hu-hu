@@ -4,12 +4,12 @@ description: Nem látja az Azure Application Insightsban tárolt adatmegjelenít
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 9c053796dd887722d1d767229621c0a1ae004b5c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c3f0350152ece32829291012d583be87a90227cf
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083167"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748935"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>A .NET/.NET Core rendszerhez nem szükséges adatApplication Insightsek hibaelhárítása
 
@@ -39,12 +39,40 @@ ms.locfileid: "93083167"
 
 * Lásd: [hibaelhárítás Állapotmonitor](./monitor-performance-live-website-now.md#troubleshoot).
 
+## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException: nem tölthető be a (z) "Microsoft. AspNet TelemetryCorrelation" fájl vagy szerelvény.
+
+További információ erről a hibáról: [GitHub-probléma 1610] ( https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) .
+
+Ha a (2,4)-nál régebbi SDK-ból frissít, meg kell győződnie arról, hogy a következő módosításokat alkalmazza a `web.config` és `ApplicationInsights.config` :
+
+1. Egy helyett két http-modul. A-ben `web.config` két http-modulnak kell lennie. A sorrend fontos bizonyos helyzetekben:
+
+    ``` xml
+    <system.webServer>
+      <modules>
+          <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" preCondition="integratedMode,managedHandler" />
+          <add name="ApplicationInsightsHttpModule" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" preCondition="managedHandler" />
+      </modules>
+    </system.webServer>
+    ```
+
+2. A (z) `ApplicationInsights.config` mellett a `RequestTrackingTelemetryModule` következő telemetria-modult kell használnia:
+
+    ``` xml
+    <TelemetryModules>
+      <Add Type="Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule, Microsoft.AI.Web"/>
+    </TelemetryModules>
+    ```
+
+***A frissítés nem megfelelő lehet, ha váratlan kivételeket vagy telemetria nem gyűjt.** _
+
+
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Nincs "Application Insights hozzáadása" lehetőség a Visual Studióban
-*Ha a jobb gombbal egy meglévő projektre kattintok Megoldáskezelő, nem látok semmilyen Application Insights lehetőséget.*
+_When a jobb gombbal egy meglévő projektre kattintok Megoldáskezelő, nem látok semmilyen Application Insights lehetőséget. *
 
 * Az eszközök nem támogatják az összes típusú .NET-projektet. A web-és WCF-projektek támogatottak. Más projekttípus, például asztali vagy szolgáltatási alkalmazások esetén [manuálisan is hozzáadhat egy Application INSIGHTS SDK-t a projekthez](./windows-desktop.md).
 * Győződjön meg arról, hogy a [Visual Studio 2013 Update 3 vagy újabb verzió](/visualstudio/releasenotes/vs2013-update3-rtm-vs)van. A fejlesztői elemzési eszközökkel előre telepítve van, amelyek biztosítják a Application Insights SDK-t.
-* Válassza az **eszközök** , **bővítmények és frissítések** lehetőséget, és győződjön meg arról, hogy a **fejlesztői elemzési eszközök** telepítve és engedélyezve vannak. Ha igen, kattintson a **frissítések** lehetőségre, és ellenőrizze, hogy van-e elérhető frissítés.
+* Válassza az **eszközök**, **bővítmények és frissítések** lehetőséget, és győződjön meg arról, hogy a **fejlesztői elemzési eszközök** telepítve és engedélyezve vannak. Ha igen, kattintson a **frissítések** lehetőségre, és ellenőrizze, hogy van-e elérhető frissítés.
 * Nyissa meg az új projekt párbeszédpanelt, és válassza a ASP.NET webalkalmazás lehetőséget. Ha megjelenik a Application Insights lehetőség, akkor a rendszer telepíti az eszközöket. Ha nem, próbálja meg eltávolítani, majd telepítse újra a fejlesztői elemzési eszközöket.
 
 ## <a name="adding-application-insights-failed"></a><a name="q02"></a>Nem sikerült hozzáadni a Application Insights
@@ -84,8 +112,8 @@ Valószínű okok:
 Javítsa ki
 
 * Győződjön meg arról, hogy a Visual Studio verziója 2013 3. vagy újabb verziójú.
-* Válassza az **eszközök** , **bővítmények és frissítések** lehetőséget, és győződjön meg arról, hogy a **fejlesztői elemzési eszközök** telepítve és engedélyezve vannak. Ha igen, kattintson a **frissítések** lehetőségre, és ellenőrizze, hogy van-e elérhető frissítés.
-* Kattintson a jobb gombbal a projektre Megoldáskezelő. Ha a parancsot **Application Insights > konfigurálja Application Insights** , akkor a projektnek a Application Insights szolgáltatásban lévő erőforráshoz való összekapcsolásához használja.
+* Válassza az **eszközök**, **bővítmények és frissítések** lehetőséget, és győződjön meg arról, hogy a **fejlesztői elemzési eszközök** telepítve és engedélyezve vannak. Ha igen, kattintson a **frissítések** lehetőségre, és ellenőrizze, hogy van-e elérhető frissítés.
+* Kattintson a jobb gombbal a projektre Megoldáskezelő. Ha a parancsot **Application Insights > konfigurálja Application Insights**, akkor a projektnek a Application Insights szolgáltatásban lévő erőforráshoz való összekapcsolásához használja.
 
 Ellenkező esetben a projekt típusát nem támogatja közvetlenül a fejlesztői elemzési eszközök. A telemetria megtekintéséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com), válassza ki a Application Insights a bal oldali navigációs sávon, és válassza ki az alkalmazást.
 
@@ -128,7 +156,7 @@ Javítsa ki
   ![Képernyőkép, amely az alkalmazás hibakeresési módban történő futtatását mutatja be a Visual Studióban.](./media/asp-net-troubleshoot-no-data/output-window.png)
 * A Application Insights portálon nyissa meg a [diagnosztikai keresést](./diagnostic-search.md). Az adatgyűjtés általában itt jelenik meg.
 * Kattintson a frissítés gombra. A panel rendszeresen frissíti magát, de manuálisan is elvégezheti. A frissítési időköz hosszabb a nagyobb időtartományok esetében.
-* Győződjön meg arról, hogy a rendszerállapot-kulcsok egyeznek. Az alkalmazás fő paneljén, a Application Insights-portálon, az **alapvető** erőforrások legördülő menüben tekintse meg a rendszerállapot- **kulcsot** . Ezután a Visual Studióban a projektben nyissa meg ApplicationInsights.config és keresse meg a t `<instrumentationkey>` . Győződjön meg arról, hogy a két kulcs egyenlő. Ha nem:  
+* Győződjön meg arról, hogy a rendszerállapot-kulcsok egyeznek. Az alkalmazás fő paneljén, a Application Insights-portálon, az **alapvető** erőforrások legördülő menüben tekintse meg a rendszerállapot- **kulcsot**. Ezután a Visual Studióban a projektben nyissa meg ApplicationInsights.config és keresse meg a t `<instrumentationkey>` . Győződjön meg arról, hogy a két kulcs egyenlő. Ha nem:  
   * A portálon kattintson a Application Insights elemre, és keresse meg az alkalmazás-erőforrást a megfelelő kulccsal; vagy
   * A Visual Studio Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a Application Insights, majd a Konfigurálás lehetőséget. Állítsa vissza az alkalmazást, hogy telemetria küldjön a megfelelő erőforrásnak.
   * Ha nem találja a megfelelő kulcsokat, ellenőrizze, hogy a Visual Studióban ugyanazokat a bejelentkezési hitelesítő adatokat használja-e, mint a portálon.
@@ -239,9 +267,9 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 ```
 
 Ezeket a paramétereket igény szerint módosíthatja:
-- **MaxCollectSec** . A paraméter beállításával megakadályozhatja, hogy a Perfview eszköz határozatlan ideig fusson, és hatással legyen a kiszolgáló teljesítményére.
-- **OnlyProviders** . Ezt a paramétert úgy állítsa be, hogy csak a naplókat gyűjtsön az SDK-ból. A listát az adott vizsgálatok alapján testreszabhatja. 
-- **NoGui** . Állítsa be ezt a paramétert a naplók a grafikus felhasználói felület nélküli összegyűjtéséhez.
+- **MaxCollectSec**. A paraméter beállításával megakadályozhatja, hogy a Perfview eszköz határozatlan ideig fusson, és hatással legyen a kiszolgáló teljesítményére.
+- **OnlyProviders**. Ezt a paramétert úgy állítsa be, hogy csak a naplókat gyűjtsön az SDK-ból. A listát az adott vizsgálatok alapján testreszabhatja. 
+- **NoGui**. Állítsa be ezt a paramétert a naplók a grafikus felhasználói felület nélküli összegyűjtéséhez.
 
 
 További információk:

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 66401e048413163af0d96da80a0415ee8f9cbb19
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 95f59b73682e461a350410b38e3a021226cd7db6
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601526"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748688"
 ---
 # <a name="basic-concepts"></a>Alapfogalmak
 
@@ -36,7 +36,7 @@ Az igazoló szolgáltatók minden egyes TEE-típushoz alapértelmezett szabályz
 
 Az Azure-igazolás minden régióban alapértelmezett szolgáltatót biztosít. Az ügyfelek dönthetnek úgy, hogy az alapértelmezett szolgáltatót használják az igazoláshoz, vagy egyéni szabályzatokkal hoznak létre saját szolgáltatókat. Az alapértelmezett szolgáltatók bármely Azure AD-felhasználó számára elérhetők, és az alapértelmezett szolgáltatóhoz tartozó szabályzat nem módosítható.
 
-| Region | Tanúsító URI | 
+| Régió | Tanúsító URI | 
 |--|--|
 | Az Egyesült Királyság déli régiója | `https://shareduks.uks.attest.azure.net` | 
 | USA 2. keleti régiója | `https://sharedeus2.eus2.attest.azure.net` | 
@@ -99,6 +99,15 @@ SGX ENKLÁVÉHOZ enklávéhoz generált JWT-példa:
 }.[Signature]
 ```
 Az olyan jogcímeket, mint az "exp", a "IAT", az "ISS", a "NBF", a [JWT RFC](https://tools.ietf.org/html/rfc7517) által definiált, és a fennmaradó értéket az Azure-igazolás hozza létre. További információkért lásd: [Az Azure-igazolás által kiállított jogcímek](claim-sets.md) .
+
+## <a name="encryption-of-data-at-rest"></a>Inaktív adatok titkosítása
+
+Az ügyféladatok védelme érdekében az Azure-tanúsítványok megőrzik az Azure Storage-ban tárolt adattárolási szolgáltatásait. Az Azure Storage az adatközpontokban tárolt adatok titkosítását biztosítja, és visszafejti az ügyfelek számára az elérését. Ez a titkosítás egy Microsoft által felügyelt titkosítási kulcs használatával történik. 
+
+Az Azure Storage-ban tárolt adatok védelme mellett az Azure igazolása Azure Disk Encryption (ADE) szolgáltatást is használ a szolgáltatásbeli virtuális gépek titkosításához. Az olyan Azure-igazolások esetében, amelyek az Azure-beli bizalmas számítástechnikai környezetekben üzemelő enklávéban futnak, az ADE-bővítmény jelenleg nem támogatott. Ilyen esetekben az adatok memóriában való tárolásának megakadályozása érdekében a lapozófájl le van tiltva. 
+
+Az Azure igazolási példány helyi merevlemez-meghajtóján nem maradnak meg ügyféladatok.
+
 
 ## <a name="next-steps"></a>További lépések
 

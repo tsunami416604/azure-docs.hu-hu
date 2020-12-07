@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 86ee81f3802b7ec7f8189123192c20143a08cf3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1758cca902eb77ffc66824cb56b8add9446fabf9
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090246"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749147"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Az első kiszolgáló nélküli alkalmazás létrehozása a Visual Studióban Azure Logic Apps és Azure Functions használatával
 
@@ -32,7 +32,7 @@ Ha kiszolgáló nélküli alkalmazást szeretne létrehozni a Visual Studióban,
     > A Visual Studio 2019-es vagy 2017-es vagy-es telepítésekor ügyeljen arra, hogy kiválassza az **Azure-fejlesztési** számítási feladatot.
 
   * [Microsoft Azure SDK for .net (2.9.1 vagy újabb verzió)](https://azure.microsoft.com/downloads/). 
-  További információ az [Azure SDK for .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet) készlettel kapcsolatban.
+  További információ az [Azure SDK for .NET](/dotnet/azure/intro) készlettel kapcsolatban.
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation).
 
@@ -56,7 +56,7 @@ Ha kiszolgáló nélküli alkalmazást szeretne létrehozni a Visual Studióban,
 
 ## <a name="create-a-resource-group-project"></a>Erőforráscsoport-projekt létrehozása
 
-Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) a kiszolgáló nélküli alkalmazáshoz. Az Azure-ban erőforrás- *csoporton*belül hozhat létre erőforrásokat, amely egy olyan logikai gyűjtemény, amelyet egy teljes alkalmazás erőforrásainak rendszerezéséhez, kezeléséhez és üzembe helyezéséhez használhat egyetlen eszközként. Az Azure-beli kiszolgáló nélküli alkalmazások esetében az erőforráscsoport Azure Logic Apps és Azure Functions egyaránt tartalmaz erőforrásokat. További információk az [Azure-erőforráscsoportokról és -erőforrásokról](../azure-resource-manager/management/overview.md).
+Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) a kiszolgáló nélküli alkalmazáshoz. Az Azure-ban erőforrás- *csoporton* belül hozhat létre erőforrásokat, amely egy olyan logikai gyűjtemény, amelyet egy teljes alkalmazás erőforrásainak rendszerezéséhez, kezeléséhez és üzembe helyezéséhez használhat egyetlen eszközként. Az Azure-beli kiszolgáló nélküli alkalmazások esetében az erőforráscsoport Azure Logic Apps és Azure Functions egyaránt tartalmaz erőforrásokat. További információk az [Azure-erőforráscsoportokról és -erőforrásokról](../azure-resource-manager/management/overview.md).
 
 1. Indítsa el a Visual studiót, és jelentkezzen be az Azure-fiókjával.
 
@@ -64,14 +64,14 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
    ![Új projekt létrehozása a Visual Studióban](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
-1. A **Telepítve** területen válassza a **Visual C#** vagy a **Visual Basic** elemet. Ezután válassza a **Cloud**  >  **Azure-erőforráscsoport**lehetőséget.
+1. A **Telepítve** területen válassza a **Visual C#** vagy a **Visual Basic** elemet. Ezután válassza a **Cloud**  >  **Azure-erőforráscsoport** lehetőséget.
 
    > [!NOTE]
    > Ha a **felhő** vagy az **Azure erőforráscsoport** -projekt nem létezik, győződjön meg arról, hogy telepítette a Visual STUDIÓhoz készült Azure SDK-t.
 
    Ha a Visual Studio 2019-et használja, kövesse az alábbi lépéseket:
 
-   1. Az **új projekt létrehozása** mezőben válassza ki a Visual C# vagy a Visual Basic **Azure erőforráscsoport** -sablonját, majd válassza a **tovább**lehetőséget.
+   1. Az **új projekt létrehozása** mezőben válassza ki a Visual C# vagy a Visual Basic **Azure erőforráscsoport** -sablonját, majd válassza a **tovább** lehetőséget.
 
    1. Adja meg az Azure-erőforráscsoport számára használni kívánt nevet és egyéb Project-információkat. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
@@ -100,11 +100,11 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
 Mielőtt megnyithatja a logikai alkalmazást a Logic app Designerben a Visual Studióban, rendelkeznie kell egy, az Azure-ban már üzembe helyezett Azure-erőforráscsoport használatával. A tervező ezután létrehozhat kapcsolatokat a logikai alkalmazás erőforrásaihoz és szolgáltatásaihoz. Ehhez a feladathoz kövesse az alábbi lépéseket a megoldás Visual studióból a Azure Portalba való üzembe helyezéséhez:
 
-1. Megoldáskezelő az erőforrás-projekt helyi menüjéből válassza az **Deploy**  >  **új**telepítése lehetőséget.
+1. Megoldáskezelő az erőforrás-projekt helyi menüjéből válassza az **Deploy**  >  **új** telepítése lehetőséget.
 
    ![Új központi telepítés létrehozása erőforráscsoport számára](./media/logic-apps-serverless-get-started-vs/deploy.png)
 
-1. Ha még nincsenek kijelölve, válassza ki az Azure-előfizetését és azt az erőforráscsoportot, amelyre telepíteni kívánja. Ezután válassza a **telepítés**lehetőséget.
+1. Ha még nincsenek kijelölve, válassza ki az Azure-előfizetését és azt az erőforráscsoportot, amelyre telepíteni kívánja. Ezután válassza a **telepítés** lehetőséget.
 
    ![Központi telepítési beállítások](./media/logic-apps-serverless-get-started-vs/deploy-to-resource-group.png)
 
@@ -119,14 +119,14 @@ Mielőtt megnyithatja a logikai alkalmazást a Logic app Designerben a Visual St
 
 Ha az üzembe helyezés után szeretné szerkeszteni a logikai alkalmazást, nyissa meg a logikai alkalmazást a Visual Studióban a Logic app Designer használatával.
 
-1. Megoldáskezelő a fájl azuredeploy.jshelyi menüjében válassza a **Megnyitás a Logic app Designerben**lehetőséget.
+1. Megoldáskezelő a fájl azuredeploy.jshelyi menüjében válassza a **Megnyitás a Logic app Designerben** lehetőséget.
 
    ![azuredeploy.jsmegnyitása a Logic app Designerben](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
 
    > [!TIP]
    > Ha nem rendelkezik ezzel a paranccsal a Visual Studio 2019-ben, ellenőrizze, hogy rendelkezik-e a legújabb Visual Studio-frissítésekkel.
 
-1. Miután a **Logic app tulajdonságok** mező megjelenik, az **előfizetés**területen válassza ki az Azure-előfizetését, ha még nincs kiválasztva. Az **erőforráscsoport**területen válassza ki azt az erőforráscsoportot és helyet, ahová a megoldást telepítette, majd kattintson **az OK gombra**.
+1. Miután a **Logic app tulajdonságok** mező megjelenik, az **előfizetés** területen válassza ki az Azure-előfizetését, ha még nincs kiválasztva. Az **erőforráscsoport** területen válassza ki azt az erőforráscsoportot és helyet, ahová a megoldást telepítette, majd kattintson **az OK gombra**.
 
    ![Logikai alkalmazás tulajdonságai](./media/logic-apps-serverless-get-started-vs/logic-app-properties.png)
 
@@ -148,9 +148,9 @@ Az Azure-ban már üzembe helyezett Logic apps esetében továbbra is szerkeszth
 
 1. A Visual Studio **nézet** menüjében nyissa meg a **Cloud Explorert**.
 
-1. A **minden előfizetés**területen válassza ki a kezelni kívánt logikai alkalmazásokhoz társított Azure-előfizetést, majd kattintson az **alkalmaz**gombra.
+1. A **minden előfizetés** területen válassza ki a kezelni kívánt logikai alkalmazásokhoz társított Azure-előfizetést, majd kattintson az **alkalmaz** gombra.
 
-1. A **Logic apps**alatt válassza ki a logikai alkalmazást. Az alkalmazás helyi menüjében válassza **a Megnyitás a Logic app Editor**használatával lehetőséget.
+1. A **Logic apps** alatt válassza ki a logikai alkalmazást. Az alkalmazás helyi menüjében válassza **a Megnyitás a Logic app Editor** használatával lehetőséget.
 
    > [!TIP]
    > Ha nem rendelkezik ezzel a paranccsal a Visual Studio 2019-ben, ellenőrizze, hogy rendelkezik-e a legújabb Visual Studio-frissítésekkel.
