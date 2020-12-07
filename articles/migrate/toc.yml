@@ -74,7 +74,9 @@
       items:
         - name: Az Azure Migrate támogatása
           href: migrate-support-matrix.md
-        - name: Biztonsági alapkonfiguráció az Azure Migrate-hez
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
     - name: Felderítés
       items:

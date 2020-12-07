@@ -37,8 +37,10 @@
       href: workflow.md
     - name: Auditnaplók megtekintése
       href: audit-logs.md
-- name: Referencia
+- name: Hivatkozások
   items:
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
     - name: GYIK
       href: faq.md
     - name: REST
