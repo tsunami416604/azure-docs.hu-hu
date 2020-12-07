@@ -4,12 +4,12 @@ description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata sor�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: aefb33325c1a5bf8e94d47106147d4c7c4f0f1ca
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d157dd6b3347c8fbfd8712fa20d52cedb425f47f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684168"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751478"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -24,41 +24,36 @@ A Microsoft Engineering által kiadott [hibaelhárítási útmutató](https://gi
 
  [További magok igénylése](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
-## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Mekkora a hüvelyek maximális száma az AK-ban?
-
-A hüvelyek maximális száma alapértelmezés szerint 30, ha AK-fürtöt helyez üzembe a Azure Portalban.
-Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben helyez üzembe egy AK-fürtöt. (Ügyeljen arra, hogy az Azure CLI legújabb verzióját használja). Ez a beállítás a `–-max-pods` parancsban található jelzővel módosítható `az aks create` .
-
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>InsufficientSubnetSize hibaüzenetet kapok egy AK-fürt speciális hálózatkezeléssel való üzembe helyezése során. Mit tegyek?
 
 Ez a hiba azt jelzi, hogy a fürtben lévő alhálózatok már nem rendelkeznek a CIDR belüli elérhető IP-címekkel a sikeres erőforrás-hozzárendeléshez. A Kubenet-fürtök esetében a követelmény elegendő IP-terület a fürt minden csomópontja számára. Az Azure CNI-fürtök esetében a követelmény elegendő IP-terület a fürt minden egyes csomópontja és Pod számára.
 További információk az [Azure-CNI kialakításáról az IP-címek a hüvelyekhez való hozzárendeléséhez](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-Ezeket a hibákat az [AK-diagnosztika](./concepts-diagnostics.md) is felveszi, amely proaktív módon olyan problémákat okoz, mint például a nem megfelelő alhálózat mérete.
+Ezeket a hibákat az [AK-diagnosztika](concepts-diagnostics.md)is felveszi, amely proaktívan felfedi a felmerülő problémákat, például nem elegendő alhálózat-méretet.
 
 A következő három (3) eset nem megfelelő alhálózati méretet okoz:
 
-1. AK Scale vagy AK Nodepool skálázás
-   1. Ha Kubenet használ, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of new nodes requested` .
-   1. Ha az Azure CNI-t használja, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of nodes requested times (*) the node pool's --max-pod value` .
+1. AK méretezési vagy AK-csomóponti készletének méretezése
+   1. Ha a Kubenet használata esetén a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of new nodes requested` .
+   1. Ha az Azure CNI használata esetén a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of nodes requested times (*) the node pool's --max-pod value` .
 
-1. AK-frissítés vagy AK-Nodepool frissítése
-   1. Kubenet használata esetén ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb** , mint a `number of buffer nodes needed to upgrade` .
-   1. Ha az Azure CNI-t használja, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
+1. AK-frissítési vagy AK-beli csomópont-készlet frissítése
+   1. Ha a Kubenet használata esetén a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of buffer nodes needed to upgrade` .
+   1. Ha az Azure CNI használata esetén a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
    
-   Alapértelmezés szerint az AK-fürtök egy (1) maximális túllépési értéket állítanak be, de ez a frissítési viselkedés testreszabható úgy, hogy [egy csomópont-készlet maximális](upgrade-cluster.md#customize-node-surge-upgrade) túllépését állítja be, ami növeli a frissítés befejezéséhez szükséges elérhető IP-címek számát.
+   Alapértelmezés szerint az AK-fürtök egy (1) maximális túllépési értéket állítanak be, de ez a frissítési viselkedés testreszabható a [csomópontok maximális túllépésének beállítása alapján, ami növeli a frissítés befejezéséhez szükséges elérhető IP-címek számát.
 
-1. AK létrehozása vagy AK-Nodepool hozzáadása
-   1. Kubenet használata esetén ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb** , mint a `number of nodes requested for the node pool` .
-   1. Ha az Azure CNI-t használja, akkor ez akkor fordul elő, ha a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of nodes requested times (*) the node pool's --max-pod value` .
+1. AK Create vagy AK Node-készlet hozzáadása
+   1. Ha a Kubenet használata esetén a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of nodes requested for the node pool` .
+   1. Ha az Azure CNI használata esetén a `number of free IPs in the subnet` értéke **kisebb, mint** a `number of nodes requested times (*) the node pool's --max-pod value` .
 
 Az új alhálózatok létrehozásával a következő enyhítést lehet elvégezni. Az új alhálózat létrehozásához szükséges engedély a meglévő alhálózat CIDR-tartományának frissítése miatti nem lehetséges.
 
 1. Egy olyan új alhálózat újraépítése, amely a műveleti célokhoz elegendő CIDR-tartománnyal rendelkezik:
    1. Hozzon létre egy új alhálózatot egy új kívánt, nem átfedésben lévő tartománnyal.
-   1. Hozzon létre egy új nodepool az új alhálózaton.
-   1. A lecserélni kívánt régi alhálózatban lévő régi nodepool kiüríti a hüvelyeket.
-   1. Törölje a régi alhálózatot és a régi nodepool.
+   1. Hozzon létre egy új csomópont-készletet az új alhálózaton.
+   1. A lecserélni kívánt régi alhálózatban lévő régi csomópont-készletből kiürítheti a hüvelyeket.
+   1. Törölje a régi alhálózatot és a régi csomópont-készletet.
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>A My Pod CrashLoopBackOff módban ragadt. Mit tegyek?
 
@@ -89,10 +84,6 @@ Ezek az időtúllépések a letiltott csomópontok közötti belső forgalomhoz 
 ## <a name="im-trying-to-enable-kubernetes-role-based-access-control-kubernetes-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Megpróbálom engedélyezni a Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC) egy meglévő fürtön. Hogyan tehetem meg?
 
 A Kubernetes szerepköralapú hozzáférés-vezérlésének (Kubernetes RBAC) a meglévő fürtökön való engedélyezése jelenleg nem támogatott, ezért az új fürtök létrehozásakor be kell állítani. A Kubernetes RBAC alapértelmezés szerint engedélyezve van, ha a parancssori felületet, a portált vagy egy API-verziót használ `2020-03-01` .
-
-## <a name="i-created-a-cluster-with-kubernetes-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Létrehoztam egy fürtöt, amelyen engedélyezve van a Kubernetes RBAC, és most már sok figyelmeztetés jelenik meg a Kubernetes-irányítópulton. A figyelmeztetés nélküli működéshez használt irányítópult. Mit tegyek?
-
-A figyelmeztetések oka, hogy a fürtön engedélyezve van a Kubernetes RBAC, és az irányítópulthoz való hozzáférés alapértelmezés szerint korlátozva van. Általánosságban véve ez a megközelítés jó gyakorlat, mert az irányítópultnak a fürt összes felhasználójára vonatkozó alapértelmezett expozíciója biztonsági fenyegetésekhez vezethet. Ha továbbra is engedélyezni szeretné az irányítópultot, kövesse az [ebben a blogbejegyzésben](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)leírt lépéseket.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nem tudok naplókat beolvasni a kubectl-naplók használatával, vagy nem tudok csatlakozni az API-kiszolgálóhoz. "Hiba a kiszolgálóról: hiba a háttérrendszer tárcsázásakor: telefonos TCP...". Mit tegyek?
 
@@ -182,11 +173,11 @@ A probléma a következő megkerülő megoldásokkal használható:
 
 ## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>`"AADSTS7000215: Invalid client secret is provided."`Az AK API használatakor kapok. Mit tegyek?
 
-Ez általában az egyszerű szolgáltatásnév hitelesítő adatainak lejárta miatt fordul elő. [Egy AK-fürt hitelesítő adatainak frissítése.](update-credentials.md)
+Ezt a problémát az egyszerű szolgáltatásnév hitelesítő adatainak lejárta okozza. [Egy AK-fürt hitelesítő adatainak frissítése.](update-credentials.md)
 
 ## <a name="i-cant-access-my-cluster-api-from-my-automationdev-machinetooling-when-using-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>Nem tudom elérni a fürt API-ját az Automation/dev számítógép/eszköz használatával az API-kiszolgáló által jogosult IP-címtartományok használata esetén. Hogyan kijavítani ezt a problémát?
 
-Ehhez `--api-server-authorized-ip-ranges` meg kell adni a használt Automation/dev/szerszámozási rendszerek IP-címét vagy IP-tartományát. A jogosult IP-címtartományok használatával kapcsolatban tekintse meg az [API-kiszolgáló biztonságos elérésével](api-server-authorized-ip-ranges.md)foglalkozó témakör "az IP-cím megkeresése" című szakaszát.
+A probléma megoldásához adja meg `--api-server-authorized-ip-ranges` a használt Automation/dev/szerszámozási rendszerek IP-címeit vagy IP-tartományát (ke) t. A jogosult IP-címtartományok használatával kapcsolatban tekintse meg az [API-kiszolgáló biztonságos elérésével](api-server-authorized-ip-ranges.md)foglalkozó témakör "az IP-cím megkeresése" című szakaszát.
 
 ## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>Nem tudom megtekinteni a Kubernetes erőforrás-megjelenítőben lévő erőforrásokat az API-kiszolgáló által jóváhagyott IP-tartományokkal konfigurált fürt Azure Portaljában. Hogyan kijavítani ezt a problémát?
 
@@ -208,11 +199,11 @@ Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The
 
 Ezek a szabályozási hibák részletes leírása [itt](../azure-resource-manager/management/request-limits-and-throttling.md) és [itt](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md) található.
 
-Az AK mérnöki csapatának átirányításával gondoskodhat arról, hogy legalább 1,18. x verziót futtasson, amely számos fejlesztést tartalmaz. További részleteket [itt](https://github.com/Azure/AKS/issues/1413) és [itt](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)találhat.
+Az AK mérnöki csapatának ajánlása annak biztosítására, hogy legalább 1,18. x verziót futtasson, amely számos fejlesztést tartalmaz. További részleteket [itt](https://github.com/Azure/AKS/issues/1413) és [itt](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)találhat.
 
 Ezek a szabályozási hibák az előfizetés szintjén mérhetők, de a következő esetben is előfordulhatnak:
-- Harmadik féltől származó alkalmazások kapnak kérelmeket (például alkalmazások figyelése stb...). Az ajánlott megoldás a hívások gyakoriságának csökkentése.
-- A VMSS sok AK-alapú fürt/nodepools létezik. A szokásos javaslat az, hogy egy adott előfizetésben kevesebb mint 20-30 fürttel rendelkezzen.
+- Külső gyártótól származó alkalmazások (például monitorozási alkalmazások stb.) teszik elérhetővé a kérelmeket. Az ajánlott megoldás a hívások gyakoriságának csökkentése.
+- A virtuálisgép-méretezési csoportok használatával számos AK-fürt/csomópont-készlet található. Próbálja meg felosztani a fürtök számát különböző előfizetésekre, különösen akkor, ha azt várta, hogy nagyon aktívak (például egy aktív fürthöz tartozó automéretező), vagy több ügyfelet (például farmert, Terraform stb.).
 
 ## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>A fürt kiépítési állapota úgy módosult, hogy nem sikerült a művelet végrehajtása, vagy anélkül. Mit tegyek?
 
@@ -220,46 +211,13 @@ Ha a fürt kiépítési állapota *készről* *sikertelenre* vált, vagy anélk�
 
 Ha a fürt kiépítési állapota sikertelen, vagy a fürtön futó alkalmazások *nem* működnek, [küldjön be egy támogatási kérést](https://azure.microsoft.com/support/options/#submit).
 
+## <a name="my-watch-is-stale-or-azure-ad-pod-identity-nmi-is-returning-status-500"></a>A saját óra elavult vagy az Azure AD Pod Identity NMI a 500-as állapotot adja vissza.
+
+Ha ezt a [példát](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)használja Azure Firewall például ezt a problémát tapasztalhatja, mivel a tűzfalon keresztüli hosszú ÉLETTARTAMú TCP-kapcsolatok alkalmazás-szabályokkal való használata jelenleg hibát tartalmaz (a Q1CY21-ben való feloldáshoz), ami miatt a `keepalives` tűzfalon leáll a ugrás. Amíg ez a probléma nem oldódik meg, enyhítheti egy hálózati szabály (az alkalmazási szabály helyett) az AK API-kiszolgáló IP-címéhez való hozzáadásával.
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure Storage-és AK-hibaelhárítás
 
-### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>Mik az Azure Disk Kubernetes ajánlott stabil verziói? 
-
-| Kubernetes verziója | Ajánlott verzió |
-|--|:--:|
-| 1.12 | 1.12.9 vagy újabb |
-| 1.13 | 1.13.6 vagy újabb |
-| 1,14 | 1.14.2 vagy újabb |
-
-
-### <a name="waitforattach-failed-for-azure-disk-parsing-devdiskazurescsi1lun1-invalid-syntax"></a>A WaitForAttach nem sikerült az Azure Disk esetében: "/dev/disk/Azure/scsi1/lun1" elemzése: érvénytelen szintaxis
-
-A Kubernetes 1,10-es verziójában a MountVolume. WaitForAttach egy Azure-lemez újracsatlakoztatásával meghiúsulhat.
-
-Linux rendszeren helytelen DevicePath formátumú hiba jelenhet meg. Például:
-
-```console
-MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
-  Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
-```
-
-A Windows rendszerben hibás DevicePath (LUN) hiba jelenhet meg. Például:
-
-```console
-Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
-1102-dynamic-pvc-6c526c51-4a18-11e8-ab5c-000d3af7b38e) lun:(4)
-```
-
-Ezt a problémát a Kubernetes következő verzióiban rögzítették:
-
-| Kubernetes verziója | Rögzített verzió |
-|--|:--:|
-| 1.10 | 1.10.2 vagy újabb |
-| 1,11 | 1.11.0 vagy újabb |
-| 1,12 és újabb verziók | N/A |
-
-
-### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Hiba történt az UID és a GID beállításakor az Azure Disk mountOptions esetében
+### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Hiba történt a UID és `GID` a mountOptions for Azure Disk beállításakor
 
 Az Azure Disk alapértelmezés szerint az ext4, a XFS fájlrendszert és a mountOptions (például UID = x, GID = x) nem állítható be a csatlakoztatási időpontban. Ha például megpróbálta beállítani a mountOptions UID = 999, GID = 999, a következőhöz hasonló hibaüzenetet fog látni:
 
@@ -290,7 +248,7 @@ spec:
   >[!NOTE]
   > Mivel a GID és az UID alapértelmezés szerint root-ként vagy 0-ként van csatlakoztatva. Ha a GID vagy az UID nem legfelső szintűként van beállítva, például 1000, a Kubernetes az `chown` adott lemezen lévő összes könyvtárat és fájlt módosítani fogja. Ez a művelet időt vehet igénybe, és nagyon lassú lehet a lemez csatlakoztatása.
 
-* `chown`A initContainers használata a GID és az UID beállításához. Például:
+* `chown`A és a beállításához használja a initContainers `GID` `UID` . Például:
 
 ```yaml
 initContainers:
@@ -313,7 +271,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.9 vagy újabb |
 | 1.13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
-| 1,15 és újabb verziók | N/A |
+| 1,15 és újabb verziók | N.A. |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont elavult lemezzel rendelkezik, enyhítheti a virtuális gépről a nem létező lemezek tömeges műveletként való leválasztásával. **A nem létező lemezek különálló leválasztása sikertelen lehet.**
 
@@ -332,7 +290,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.10 vagy újabb |
 | 1.13 | 1.13.8 vagy újabb |
 | 1,14 | 1.14.4 vagy újabb |
-| 1,15 és újabb verziók | N/A |
+| 1,15 és újabb verziók | N.A. |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont meghibásodott állapotban van, a virtuális gép állapotának manuális frissítésével csökkentheti a következő lépések egyikét:
 
@@ -387,8 +345,8 @@ parameters:
 
 Néhány további hasznos *mountOptions* -beállítás:
 
-* a *mfsymlinks* Azure Files csatlakoztatási (CIFS) támogatást nyújt a szimbolikus hivatkozások támogatásához
-* a *nobrl* megakadályozza a bájtos tartomány zárolási kérelmeinek küldését a kiszolgálónak. Erre a beállításra akkor van szükség, ha a CIFS-stílusú kötelező bájtos tartományba tartozó zárolásokkal rendelkező alkalmazások számára szükséges. A legtöbb CIFS-kiszolgáló még nem támogatja a tanácsadói bájtok tartományában lévő zárolások igénylését. Ha nem használ *nobrl*-t, akkor a CIFS-stílusú kötelező bájt-tartomány zárolásával megszakított alkalmazások a következőhöz hasonló hibaüzeneteket eredményezhetnek:
+* `mfsymlinks` a Azure Files Mount (CIFS) támogatja a szimbolikus hivatkozások használatát
+* `nobrl` megakadályozza, hogy a rendszer a bájtos tartomány zárolási kérelmeit a kiszolgálónak küldje. Erre a beállításra akkor van szükség, ha a CIFS-stílusú kötelező bájtos tartományba tartozó zárolásokkal rendelkező alkalmazások számára szükséges. A legtöbb CIFS-kiszolgáló még nem támogatja a tanácsadói bájtok tartományában lévő zárolások igénylését. Ha nem használ *nobrl*-t, akkor a CIFS-stílusú kötelező bájt-tartomány zárolásával megszakított alkalmazások a következőhöz hasonló hibaüzeneteket eredményezhetnek:
     ```console
     Error: SQLITE_BUSY: database is locked
     ```
@@ -404,7 +362,7 @@ fixing permissions on existing directory /var/lib/postgresql/data
 
 Ezt a hibát a CIFS/SMB protokollt használó Azure Files beépülő modul okozza. A CIFS/SMB protokoll használatakor a fájl és a könyvtár engedélyei nem módosíthatók a csatlakoztatás után.
 
-A probléma megoldásához használja az *Alútvonalat* az Azure Disk beépülő modullal együtt. 
+A probléma megoldásához használja `subPath` együtt az Azure Disk beépülő modullal. 
 
 > [!NOTE] 
 > Az ext3/4 lemez típusa esetén a lemez formázása után egy elveszett és talált könyvtár található.
@@ -441,7 +399,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.12 | 1.12.6 vagy újabb |
 | 1.13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | N/A |
+| 1,14 és újabb verziók | N.A. |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure Files csatlakoztatás sikertelen, mert a Storage-fiók kulcsa módosult
 
@@ -474,7 +432,7 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 
 Ennek a hibának az az oka, hogy egy felsőbb rétegbeli fürthöz tartozó autoskálázási versenyhelyzet van. Ebben az esetben a fürt autoskálázása egy másik értékkel végződik, mint a fürtben ténylegesen. Az állapotból való kilépéshez tiltsa le és engedélyezze újra a [fürt automéretezőjét][cluster-autoscaler].
 
-### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Lassú lemez-melléklet, a GetAzureDiskLun 10 – 15 percet vesz igénybe, és hibaüzenetet kap
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>A lassú lemez melléklete `GetAzureDiskLun` 10 – 15 percet vesz igénybe, és hibaüzenetet kap
 
 A 1.15.0- **nál régebbi** Kubernetes-verziók esetén hibaüzenet jelenhet meg, például a **WaitForAttach nem találja a lemez LUN** elemét.  A probléma megkerülő megoldásához várjon körülbelül 15 percet, majd próbálkozzon újra.
 
@@ -483,13 +441,13 @@ A 1.15.0- **nál régebbi** Kubernetes-verziók esetén hibaüzenet jelenhet meg
 
 A Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) -as verzióban a kubelet [csak a kubernetes.IO előtaggal rendelkező címkék meghatározott részhalmazát](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal) alkalmazhatja a csomópontok számára. Az AK nem tudja eltávolítani az aktív címkéket az Ön nevében beleegyező módon, mivel az állásidőt befolyásoló számítási feladatokhoz vezethet.
 
-Ennek eredményeképpen a következők enyhítésére van lehetőség:
+Ennek eredményeképpen a probléma enyhítése érdekében a következőket teheti:
 
 1. A fürt vezérlőelem-síkja 1,16 vagy újabb verzióra való frissítése
 2. Új nodepoool hozzáadása a 1,16-es vagy újabb verzióhoz a nem támogatott kubernetes.io-címkék nélkül
-3. A régebbi nodepool törlése
+3. A régi csomópont-készlet törlése
 
-Az AK vizsgálja a képességet, hogy az aktív címkéket nodepool a megoldás tökéletesítése érdekében.
+Az AK azt vizsgálja, hogy képes-e az aktív címkék mutációja a csomópont-készleten, hogy javítsa ezt a megoldást.
 
 
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: f9a7623fd27178e8b9c213a1759bb09863d16c72
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7063452d23d2975cf0c26a89e7a08a422de54942
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030696"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751937"
 ---
 # <a name="train-model-module"></a>Betanítási modell modul
 
@@ -63,7 +63,9 @@ Azure Machine Learning a Machine learning-modellek létrehozása és használata
 1.  A folyamat elküldése. Ha sok adattal rendelkezik, ez hosszabb időt is igénybe vehet.
 
     > [!IMPORTANT] 
-    > Ha van olyan azonosító oszlopa, amely az egyes sorok AZONOSÍTÓját jelöli, a **betanítási modell** a következőhöz hasonló hibát jelez: "a (z)" {column_name} "oszlop egyedi értékeinek száma nagyobb, mint engedélyezett." Ennek az az oka, hogy az ID oszlop megnyomja az egyedi értékek küszöbértékét, és a memóriából is okozhat. Az azonosító oszlopok általában a betanítás során értelmetlenek. A [metaadatok szerkesztése](edit-metadata.md) lehetőséggel megadhatja, hogy az oszlop **egyértelmű szolgáltatásként** legyen felhasználva, és nem lesz használatban a képzésben. További részletekért tekintse meg a [Designer hibakódot](././designer-error-codes.md) .
+    > Ha van olyan azonosító oszlopa, amely az egyes sorok azonosítója, vagy egy olyan szöveges oszlop, amely túl sok egyedi értéket tartalmaz, a **betanítási modell** hibát eredményezhet, például: "a (z)" {column_name} "oszlop egyedi értékeinek száma nagyobb, mint az engedélyezett.
+    >
+    > Ennek az az oka, hogy az oszlop megnyomja az egyedi értékek küszöbértékét, és a memóriából is okozhat. A [metaadatok szerkesztése](edit-metadata.md) lehetőséggel megadhatja, hogy az oszlop **egyértelmű szolgáltatásként** legyen felhasználva, és nem használható a betanításban, vagy az [N-Gram funkciók kinyerése a szöveges modulból](extract-n-gram-features-from-text.md) a Text (szöveg) oszlop előfeldolgozásához További részletekért tekintse meg a [Designer hibakódot](././designer-error-codes.md) .
 
 ## <a name="results"></a>Results (Eredmények)
 

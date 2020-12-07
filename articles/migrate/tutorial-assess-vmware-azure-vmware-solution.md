@@ -1,15 +1,18 @@
 ---
 title: A VMware virtuális gépek felmérése az Azure VMware-megoldásba (AVS) való Migrálás Azure Migrate
 description: Ismerje meg, hogyan értékelheti a VMware virtuális gépeket az AVS-re való áttelepítéshez Azure Migrate Server Assessment használatával.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 29f7f824d96aedd80e490ba84c390be4d9493683
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d3c6f77b062939a88e7277cb7f0ab6ecff9fcb
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604240"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753076"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Oktatóanyag: VMware virtuális gépek felmérése az AVS-re való áttelepítéshez
 
@@ -25,7 +28,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb útvonalát mutatják be, és az alapértelmezett beállításokat használják, ahol lehetséges. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 
 
@@ -51,17 +54,17 @@ Döntse el, hogy szeretne-e értékelést használni a méretezési feltételek 
 
 Az értékelést a következőképpen futtathatja:
 
-1. A **kiszolgálók** lapon > **Windows-és Linux-kiszolgálók**területen kattintson a **kiszolgálók felmérése és migrálása**elemre.
+1. A **kiszolgálók** lapon > **Windows-és Linux-kiszolgálók** területen kattintson a **kiszolgálók felmérése és migrálása** elemre.
 
    ![Az értékelés és a kiszolgálók áttelepítése gomb helye](./media/tutorial-assess-vmware-azure-vmware-solution/assess.png)
 
-2. **Azure Migrate: kiszolgáló értékelése**, kattintson az **értékelés**elemre.
+2. **Azure Migrate: kiszolgáló értékelése**, kattintson az **értékelés** elemre.
 
-3. A **kiszolgálók**  >  **értékelési típusának**értékelése lapon válassza az **Azure VMware-megoldás (AVS) (előzetes verzió)** lehetőséget.
+3. A **kiszolgálók**  >  **értékelési típusának** értékelése lapon válassza az **Azure VMware-megoldás (AVS) (előzetes verzió)** lehetőséget.
 4. A **felderítés forrása**:
 
-    - Ha a berendezést használó gépeket észlelt, válassza a **Azure Migrate készülékről felderített gépek**lehetőséget.
-    - Ha egy importált CSV-fájlt használó gépeket észlelt, válassza az **importált gépek**lehetőséget. 
+    - Ha a berendezést használó gépeket észlelt, válassza a **Azure Migrate készülékről felderített gépek** lehetőséget.
+    - Ha egy importált CSV-fájlt használó gépeket észlelt, válassza az **importált gépek** lehetőséget. 
     
 5. Adja meg az értékelés nevét. 
 6. Kattintson az **Összes megtekintése** elemre az értékelési tulajdonságok áttekintéséhez.
@@ -71,42 +74,42 @@ Az értékelést a következőképpen futtathatja:
 
 7. a 1N **Assessment tulajdonságok**  >  **céljának tulajdonságai**:
 
-    - A **célhely**mezőben válassza ki azt az Azure-régiót, amelyre az áttelepítést szeretné végezni.
+    - A **célhely** mezőben válassza ki azt az Azure-régiót, amelyre az áttelepítést szeretné végezni.
        - A méretre és a díjakra vonatkozó javaslatok a megadott helyen alapulnak.
        - Jelenleg három régióra becsülhető (USA keleti régiója, USA nyugati régiója, Nyugat-Európa)
-   - A **tárolás típusa mezőben**hagyja meg a **vSAN**. Ez az AVS Private Cloud alapértelmezett tárolási típusa.
+   - A **tárolás típusa mezőben** hagyja meg a **vSAN**. Ez az AVS Private Cloud alapértelmezett tárolási típusa.
    - A **fenntartott példányok** jelenleg nem támogatottak az AVS-csomópontok esetében.
 8. **Virtuális gép mérete**:
-    - A **csomópont típusa**területen válasszon ki egy csomópont-típust a helyszíni virtuális gépeken futó munkaterhelések alapján.
+    - A **csomópont típusa** területen válasszon ki egy csomópont-típust a helyszíni virtuális gépeken futó munkaterhelések alapján.
         - Azure Migrate a virtuális gépek AVS-re való áttelepítéséhez szükséges csomópontok csomópontját javasolja.
         - Az alapértelmezett csomópont típusa AV36.
     - **Tranzakciós beállítás, RAID-szint**, válassza ki a nem tolerálható és a RAID-kombinációt.  A kiválasztott TRANZAKCIÓs lehetőség a helyszíni virtuálisgép-lemezre vonatkozó követelményével együtt meghatározza az AVS-ben szükséges teljes vSAN-tárolót.
-    - A **CPU-előfizetésben**határozza meg az AVS-csomópont egyik fizikai magját társított virtuális magok arányát. Az 4:1-nál nagyobb túllépés a teljesítmény romlását okozhatja, de a webkiszolgáló típusú számítási feladatokhoz is használható.
+    - A **CPU-előfizetésben** határozza meg az AVS-csomópont egyik fizikai magját társított virtuális magok arányát. Az 4:1-nál nagyobb túllépés a teljesítmény romlását okozhatja, de a webkiszolgáló típusú számítási feladatokhoz is használható.
 
 9. **Csomópont mérete**: 
-    - A **méretezési feltétel**területen válassza ki, hogy az értékelést statikus metaadatokon vagy a teljesítményen alapuló adatokon szeretné-e alapozni. Ha teljesítményadatokat használ:
-        - A **teljesítmény előzményeiben**adja meg az adatok időtartamát, amely alapján az értékelést alapozni szeretné
-        - A **percentilis kihasználtsága**mezőben határozza meg a teljesítmény mintához használni kívánt százalékos értéket. 
+    - A **méretezési feltétel** területen válassza ki, hogy az értékelést statikus metaadatokon vagy a teljesítményen alapuló adatokon szeretné-e alapozni. Ha teljesítményadatokat használ:
+        - A **teljesítmény előzményeiben** adja meg az adatok időtartamát, amely alapján az értékelést alapozni szeretné
+        - A **percentilis kihasználtsága** mezőben határozza meg a teljesítmény mintához használni kívánt százalékos értéket. 
     - A **Comfort Factor (kényelmi tényező**) mezőben adja meg az értékelés során használni kívánt puffert. Ez olyan problémákhoz vezetett, mint például a szezonális használat, a rövid teljesítménybeli előzmények és a jövőbeli használat várható növekedése. Ha például két kényelmi tényezőt használ:
     
         **Összetevő** | **Hatékony kihasználtság** | **Komfort tényező hozzáadása (2,0)**
         --- | --- | ---  
         Cores | 2 | 4
-        Memória | 8 GB | 16 GB     
+        Memory (Memória) | 8 GB | 16 GB     
 
 10. A **díjszabásban**:
-    - A **Offer**szolgáltatásban regisztrált [Azure-ajánlat](https://azure.microsoft.com/support/legal/offer-details/) a kiszolgáló értékelése alapján megbecsüli az ajánlat költségeit.
-    - A **Pénznem**területen válassza ki a fiókja számlázási pénznemét.
+    - A **Offer** szolgáltatásban regisztrált [Azure-ajánlat](https://azure.microsoft.com/support/legal/offer-details/) a kiszolgáló értékelése alapján megbecsüli az ajánlat költségeit.
+    - A **Pénznem** területen válassza ki a fiókja számlázási pénznemét.
     - A **kedvezmény (%)** területen adja meg az Azure-ajánlaton keresztül kapott előfizetés-specifikus kedvezményeket. Az alapértelmezett beállítás 0%.
 
 11. Ha módosítja a módosításokat, kattintson a **Save (Mentés** ) gombra.
 
     ![Kiértékelés tulajdonságai](./media/tutorial-assess-vmware-azure-vmware-solution/view-all.png)
 
-12. A **kiszolgálók értékelése**területen kattintson a **tovább**gombra.
-13. A **kiszolgálók felmérése**  >  **lapon válassza ki a gépeket az**értékeléshez, majd a kiszolgálók új csoportjának létrehozásához válassza az **új létrehozása**lehetőséget, és adja meg a csoport nevét. 
+12. A **kiszolgálók értékelése** területen kattintson a **tovább** gombra.
+13. A **kiszolgálók felmérése**  >  **lapon válassza ki a gépeket az** értékeléshez, majd a kiszolgálók új csoportjának létrehozásához válassza az **új létrehozása** lehetőséget, és adja meg a csoport nevét. 
 14. Válassza ki a készüléket, és válassza ki a csoportba felvenni kívánt virtuális gépeket. Ezután kattintson a **Tovább** gombra.
-15. A **felülvizsgálat**és Értékelés létrehozása lapon tekintse át az értékelés részleteit, majd kattintson az **Értékelés létrehozása** elemre a csoport létrehozásához és az értékelés futtatásához.
+15. A **felülvizsgálat** és Értékelés létrehozása lapon tekintse át az értékelés részleteit, majd kattintson az **Értékelés létrehozása** elemre a csoport létrehozásához és az értékelés futtatásához.
 
     > [!NOTE]
     > A teljesítmény-alapú felmérések esetében javasoljuk, hogy várjon legalább egy napot a felderítés megkezdése után a felmérés létrehozása előtt. Ezzel a teljesítménnyel kapcsolatos adatok nagyobb megbízhatósággal gyűjthetők. Ideális esetben a felderítés megkezdése után várjon a megadott teljesítménybeli időtartamra (nap/hét/hónap) a magas megbízhatóságú minősítéshez.
@@ -124,15 +127,15 @@ Egy AVS-értékelés leírja:
 
 Értékelés megtekintése:
 
-1. A **kiszolgálók**  >  **Azure Migrate: kiszolgáló értékelése**területen kattintson az **értékelések**melletti számra.
+1. A **kiszolgálók**  >  **Azure Migrate: kiszolgáló értékelése** területen kattintson az **értékelések** melletti számra.
 2. Az **Értékelések** területen válasszon ki egy kiértékelést a megnyitáshoz. 
 3. Tekintse át az értékelés összegzését. Szerkesztheti az értékelési tulajdonságokat is, vagy újraszámíthatja az értékelést.
  
 
 ### <a name="review-readiness"></a>Készültség áttekintése
 
-1. Kattintson az **Azure-készültség**elemre.
-2. Az **Azure készültségi**területén tekintse át a virtuális gép állapotát.
+1. Kattintson az **Azure-készültség** elemre.
+2. Az **Azure készültségi** területén tekintse át a virtuális gép állapotát.
 
     - **AVS-re kész**: a gép áttelepíthető az Azure AVS-be, bármilyen módosítás nélkül. A gép AVS-ben indul el, teljes AVS-támogatással.
     - **Feltételekkel kész**: a gép kompatibilitási problémákba ütközhet a jelenlegi vSphere-verzióval. Előfordulhat, hogy a telepített VMware-eszközökre vagy egyéb beállításokra van szükség, mielőtt az AVS-ben teljes funkcionalitással rendelkezik.

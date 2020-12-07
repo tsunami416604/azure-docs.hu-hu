@@ -1,15 +1,18 @@
 ---
 title: AWS-példányok felderítése Azure Migrate Server Assessment szolgáltatással
 description: Ismerje meg, hogyan derítheti fel az AWS-példányokat Azure Migrate Server Assessment használatával.
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: b837ae89831024b169782fe9ae1a062677a4b45b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dda6f6e37a42d4ee55a32fc8e1c05916c6be4367
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311281"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753127"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Oktatóanyag: AWS-példányok felderítése kiszolgáló-értékeléssel
 
@@ -29,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb elérési útját mutatják be, és az alapértelmezett beállításokat használják.  
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,23 +52,23 @@ Azure Migrate projekt létrehozásához és a Azure Migrate berendezés regisztr
 
 Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
 
-1. A Azure Portal keressen rá az "előfizetések" kifejezésre, és a **szolgáltatások**területen válassza az **előfizetések**lehetőséget.
+1. A Azure Portal keressen rá az "előfizetések" kifejezésre, és a **szolgáltatások** területen válassza az **előfizetések** lehetőséget.
 
     ![Az Azure-előfizetés kereséséhez használt keresőmező](./media/tutorial-discover-aws/search-subscription.png)
 
 2. Az **előfizetések** lapon válassza ki azt az előfizetést, amelyben Azure Migrate projektet kíván létrehozni. 
 3. Az előfizetésben válassza a hozzáférés- **vezérlés (iam)**  >  **jelölőnégyzetet**.
-4. A **hozzáférés-ellenőrzési**területen keresse meg a megfelelő felhasználói fiókot.
-5. A **szerepkör-hozzárendelés hozzáadása**párbeszédpanelen kattintson a **Hozzáadás**gombra.
+4. A **hozzáférés-ellenőrzési** területen keresse meg a megfelelő felhasználói fiókot.
+5. A **szerepkör-hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzáadás** gombra.
 
     ![Felhasználói fiók keresése a hozzáférés ellenőrzését és a szerepkör hozzárendelését](./media/tutorial-discover-aws/azure-account-access.png)
 
-6. A **szerepkör-hozzárendelés hozzáadása**lapon válassza ki a közreműködő vagy a tulajdonos szerepkört, és válassza ki a fiókot (azmigrateuser a példánkban). Ezután kattintson a **Mentés** gombra.
+6. A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a közreműködő vagy a tulajdonos szerepkört, és válassza ki a fiókot (azmigrateuser a példánkban). Ezután kattintson a **Mentés** gombra.
 
     ![A szerepkör-hozzárendelés hozzáadása lap megnyitása a szerepkör a fiókhoz való hozzárendeléséhez](./media/tutorial-discover-aws/assign-role.png)
 
-7. A portálon keressen felhasználókat, és a **szolgáltatások**területen válassza a **felhasználók**lehetőséget.
-8. A **felhasználói beállítások**területen ellenőrizze, hogy az Azure ad-felhasználók regisztrálhatják-e az alkalmazásokat (alapértelmezés szerint az **Igen** értékre van állítva).
+7. A portálon keressen felhasználókat, és a **szolgáltatások** területen válassza a **felhasználók** lehetőséget.
+8. A **felhasználói beállítások** területen ellenőrizze, hogy az Azure ad-felhasználók regisztrálhatják-e az alkalmazásokat (alapértelmezés szerint az **Igen** értékre van állítva).
 
     ![A felhasználók által Active Directory alkalmazások regisztrálásához használt felhasználói beállítások ellenőrzése](./media/tutorial-discover-aws/register-apps.png)
 
@@ -81,12 +84,12 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
     - Linux rendszerű gépek esetén:
         1. Jelentkezzen be az egyes Linux-gépekre.
         2. Nyissa meg a sshd_config fájlt: VI/etc/ssh/sshd_config
-        3. A fájlban keresse meg a **PasswordAuthentication** sort, és módosítsa az értéket **Igen**értékre.
+        3. A fájlban keresse meg a **PasswordAuthentication** sort, és módosítsa az értéket **Igen** értékre.
         4. Mentse a fájlt, és a bezáráshoz. Indítsa újra az SSH-szolgáltatást.
     - Ha a Linux rendszerű virtuális gépek felderítéséhez root felhasználót használ, győződjön meg arról, hogy a virtuális gépeken engedélyezve van a rendszergazdai bejelentkezés.
         1. Bejelentkezés az egyes Linux rendszerű gépekre
         2. Nyissa meg a sshd_config fájlt: VI/etc/ssh/sshd_config
-        3. A fájlban keresse meg a **PermitRootLogin** sort, és módosítsa az értéket **Igen**értékre.
+        3. A fájlban keresse meg a **PermitRootLogin** sort, és módosítsa az értéket **Igen** értékre.
         4. Mentse a fájlt, és a bezáráshoz. Indítsa újra az SSH-szolgáltatást.
 
 ## <a name="set-up-a-project"></a>Projekt beállítása
@@ -95,8 +98,8 @@ Hozzon létre egy új Azure Migrate projektet.
 
 1. Az Azure Portal > **Minden szolgáltatás** területén keressen az **Azure Migrate** szolgáltatásra.
 2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
-3. Az **Áttekintés**területen válassza a **projekt létrehozása**lehetőséget.
-5. A **projekt létrehozása**lapon válassza ki az Azure-előfizetést és az erőforráscsoportot. Ha nem rendelkezik ilyennel, hozzon létre egy erőforráscsoportot.
+3. Az **Áttekintés** területen válassza a **projekt létrehozása** lehetőséget.
+5. A **projekt létrehozása** lapon válassza ki az Azure-előfizetést és az erőforráscsoportot. Ha nem rendelkezik ilyennel, hozzon létre egy erőforráscsoportot.
 6. A **Project details**(projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet. Tekintse át a nyilvános és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)támogatott földrajzi [területeit](migrate-support-matrix.md#supported-geographies-public-cloud) .
 
    ![A projekt neve és a régió mezői](./media/tutorial-discover-aws/new-project.png)
@@ -130,15 +133,15 @@ A készülék beállítása:
 ### <a name="generate-the-azure-migrate-project-key"></a>A Azure Migrate projekt kulcsának előállítása
 
 1. A **Migrálási célok** > **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** területen válassza a **Felderítés** lehetőséget.
-2. A **Discover Machines**szolgáltatásban  >  **a gépek virtualizáltak?**, válassza a **fizikai vagy egyéb (AWS, GCP, Xen stb.)** lehetőséget.
-3. **1.: Azure Migrate Project-kulcs létrehozásakor**adja meg a fizikai vagy virtuális kiszolgálók felderítéséhez beállítani kívánt Azure Migrate berendezés nevét. A névnek legfeljebb 14 karakterből kell állnia.
+2. A **Discover Machines** szolgáltatásban  >  **a gépek virtualizáltak?**, válassza a **fizikai vagy egyéb (AWS, GCP, Xen stb.)** lehetőséget.
+3. **1.: Azure Migrate Project-kulcs létrehozásakor** adja meg a fizikai vagy virtuális kiszolgálók felderítéséhez beállítani kívánt Azure Migrate berendezés nevét. A névnek legfeljebb 14 karakterből kell állnia.
 1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Az erőforrások létrehozásakor ne zárja be a gépek felderítése lapot.
 1. Az Azure-erőforrások sikeres létrehozása után létrejön egy **Azure Migrate projekt kulcsa** .
 1. Másolja a kulcsot, mert szüksége lesz rá, hogy elvégezze a berendezés regisztrációját a konfiguráció során.
 
 ### <a name="download-the-installer-script"></a>A telepítő parancsfájl letöltése
 
-**2.: töltse le Azure Migrate készüléket**, és kattintson a **Letöltés**gombra.
+**2.: töltse le Azure Migrate készüléket**, és kattintson a **Letöltés** gombra.
 
 
 ### <a name="verify-security"></a>Biztonság ellenőrzése
@@ -153,13 +156,13 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 3.  Ellenőrizze a készülék legújabb verzióit és a kivonatoló értékeket:
     - Nyilvános felhő esetén:
 
-        **Forgatókönyv** | **Letöltés*** | **Kivonat értéke**
+        **Forgatókönyv** | **Letöltés** _ | _ *Kivonatoló érték**
         --- | --- | ---
         Fizikai (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140334) | 207157bab39303dca1c2b93562d6f1deaa05aa7c992f480138e17977641163fb
 
     - Azure Government esetén:
 
-        **Forgatókönyv** | **Letöltés*** | **Kivonat értéke**
+        **Forgatókönyv** | **Letöltés** _ | _ *Kivonatoló érték**
         --- | --- | ---
         Fizikai (85 MB) | [Legújabb verzió](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
  
@@ -169,7 +172,7 @@ A telepítő parancsfájl a következő műveleteket végzi el:
 
 - Ügynököket és webalkalmazásokat telepít a fizikai kiszolgálók felderítéséhez és értékeléséhez.
 - Telepítse a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Töltse le és telepítse az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
+- Töltse le és telepítse az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
 - Frissíti a (HKLM) beállításkulcsot a Azure Migrate állandó beállítási részleteivel.
 - A következő fájlokat hozza létre az elérési út alatt:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
@@ -207,7 +210,7 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 
    Másik lehetőségként megnyithatja az alkalmazást az asztalról az alkalmazás parancsikonra kattintva.
 2. Fogadja el a **licencfeltételeket**, és olvassa el a harmadik féltől származó információkat.
-1. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
+1. A webalkalmazás-> **Előfeltételek beállítása** lapon tegye a következőket:
     - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a kiszolgáló rendelkezik-e internet-hozzáféréssel. Ha a kiszolgáló proxyt használ:
         - Kattintson a **proxy beállítása** elemre, és adja meg a proxy címe (az űrlapon http://ProxyIPAddress vagy a http://ProxyFQDN) figyelési porton.
         - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
@@ -218,35 +221,35 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
 
-1. Illessze be a portálról másolt **Azure Migrate Project kulcsot** . Ha nem rendelkezik a kulccsal, lépjen a **kiszolgáló értékelése> felderítés> a meglévő berendezések kezelése**lehetőségre, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
-1. Kattintson a **Bejelentkezés**elemre. Egy új böngésző lapon nyit meg egy Azure-beli bejelentkezési kérést. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
+1. Illessze be a portálról másolt **Azure Migrate Project kulcsot** . Ha nem rendelkezik a kulccsal, lépjen a **kiszolgáló értékelése> felderítés> a meglévő berendezések kezelése** lehetőségre, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
+1. Kattintson a **Bejelentkezés** elemre. Egy új böngésző lapon nyit meg egy Azure-beli bejelentkezési kérést. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
 1. Az új lapon jelentkezzen be az Azure-beli felhasználónevével és jelszavával.
    
    A PIN-kóddal való bejelentkezés nem támogatott.
 3. A sikeres bejelentkezést követően térjen vissza a webalkalmazáshoz. 
 4. Ha a naplózáshoz használt Azure-beli felhasználói fiók rendelkezik a megfelelő [engedélyekkel](./tutorial-discover-physical.md) a kulcs létrehozása során létrehozott Azure-erőforrásokhoz, a készülék regisztrációja kezdeményezve lesz.
-1. A készülék sikeres regisztrálása után a **részletek megtekintése**lehetőségre kattintva megtekintheti a regisztráció részleteit.
+1. A készülék sikeres regisztrálása után a **részletek megtekintése** lehetőségre kattintva megtekintheti a regisztráció részleteit.
 
 
 ## <a name="start-continuous-discovery"></a>Folyamatos felderítés indítása
 
 Most kapcsolódjon a készülékről a felderíteni kívánt fizikai kiszolgálókhoz, és indítsa el a felderítést.
 
-1. Az **1. lépés: hitelesítő adatok megadása a Windows-és Linux-alapú fizikai vagy virtuális kiszolgálók felderítéséhez**kattintson a **hitelesítő adatok hozzáadása** lehetőségre a hitelesítő adatok rövid nevének megadásához, adja hozzá a **felhasználónevet** és a **jelszót** egy Windows-vagy Linux-kiszolgálóhoz. Kattintson a **Save (Mentés**) gombra.
+1. Az **1. lépés: hitelesítő adatok megadása a Windows-és Linux-alapú fizikai vagy virtuális kiszolgálók felderítéséhez** kattintson a **hitelesítő adatok hozzáadása** lehetőségre a hitelesítő adatok rövid nevének megadásához, adja hozzá a **felhasználónevet** és a **jelszót** egy Windows-vagy Linux-kiszolgálóhoz. Kattintson a **Save (Mentés**) gombra.
 1. Ha egyszerre több hitelesítő adatot szeretne felvenni, kattintson a **továbbiak hozzáadása** elemre, és adjon hozzá további hitelesítő adatokat. A fizikai kiszolgálók felderítéséhez több hitelesítő adat is támogatott.
-1. A **2. lépés: fizikai vagy virtuális kiszolgáló adatainak**megadása elemnél kattintson a **felderítési forrás hozzáadása** lehetőségre a kiszolgáló **IP-címének/teljes tartománynevének** és a kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítő adatok rövid nevének megadásához.
-1. Egyszerre **egyetlen elemet is hozzáadhat** , vagy egy menetben **több elemet is hozzáadhat** . Lehetőség van arra is, hogy a kiszolgáló adatait a **CSV importálásával**adja meg.
+1. A **2. lépés: fizikai vagy virtuális kiszolgáló adatainak** megadása elemnél kattintson a **felderítési forrás hozzáadása** lehetőségre a kiszolgáló **IP-címének/teljes tartománynevének** és a kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítő adatok rövid nevének megadásához.
+1. Egyszerre **egyetlen elemet is hozzáadhat** , vagy egy menetben **több elemet is hozzáadhat** . Lehetőség van arra is, hogy a kiszolgáló adatait a **CSV importálásával** adja meg.
 
 
-    - Ha az **egyetlen elem hozzáadása**lehetőséget választja, kiválaszthatja az operációs rendszer típusát, megadhatja a hitelesítő adatok rövid nevét, a kiszolgáló **IP-címét vagy teljes tartománynevét** , majd kattintson a **Mentés**gombra.
+    - Ha az **egyetlen elem hozzáadása** lehetőséget választja, kiválaszthatja az operációs rendszer típusát, megadhatja a hitelesítő adatok rövid nevét, a kiszolgáló **IP-címét vagy teljes tartománynevét** , majd kattintson a **Mentés** gombra.
     - Ha úgy dönt, hogy **több elemet ad hozzá**, egyszerre több rekordot is hozzáadhat, ha a szövegmezőben a hitelesítő adatok rövid nevét adja meg a kiszolgáló **IP-címe/teljes tartományneve** mezőben. **Ellenőrizze** a hozzáadott rekordokat, és kattintson a **Save (Mentés**) gombra.
-    - Ha a **CSV importálása** _(alapértelmezés szerint kiválasztva)_ lehetőséget választja, letöltheti a CSV-sablonfájl fájlját, feltöltheti a fájlt a kiszolgáló **IP-címével/teljes tartománynevével** , valamint a hitelesítő adatok rövid nevét. Ezután importálja a fájlt a készülékbe, **ellenőrizze** a fájlban szereplő rekordokat, és kattintson a **Mentés**gombra.
+    - Ha a **CSV importálása** _(alapértelmezés szerint kiválasztva)_ lehetőséget választja, letöltheti a CSV-sablonfájl fájlját, feltöltheti a fájlt a kiszolgáló **IP-címével/teljes tartománynevével** , valamint a hitelesítő adatok rövid nevét. Ezután importálja a fájlt a készülékbe, **ellenőrizze** a fájlban szereplő rekordokat, és kattintson a **Mentés** gombra.
 
 1. A Save (Mentés) gombra kattintva a készülék megpróbálhatja érvényesíteni a hozzáadott kiszolgálókhoz való kapcsolódást, és megjeleníti az **ellenőrzési állapotot** a táblában az egyes kiszolgálókon.
     - Ha egy kiszolgáló érvényesítése meghiúsul, tekintse át a hibát, ha a tábla állapot oszlopában a **sikertelen érvényesítés** gombra kattint. Javítsa ki a problémát, és ismételje meg az érvényesítést.
-    - Kiszolgáló eltávolításához kattintson a **Törlés**gombra.
+    - Kiszolgáló eltávolításához kattintson a **Törlés** gombra.
 1. A felderítés megkezdése előtt bármikor **újraérvényesítheti** a kiszolgálókkal való kapcsolatot.
-1. Kattintson a **felderítés indítása**gombra a sikeresen érvényesített kiszolgálók felderítésének elindításához. A felderítés sikeres elindítása után megtekintheti a felderítési állapotot a tábla minden egyes kiszolgálóján.
+1. Kattintson a **felderítés indítása** gombra a sikeresen érvényesített kiszolgálók felderítésének elindításához. A felderítés sikeres elindítása után megtekintheti a felderítési állapotot a tábla minden egyes kiszolgálóján.
 
 
 Ez elindítja a felderítést. Kiszolgálónként körülbelül 2 percet vesz igénybe, hogy a felderített kiszolgáló metaadatai megjelenjenek a Azure Portalban.
@@ -256,9 +259,9 @@ Ez elindítja a felderítést. Kiszolgálónként körülbelül 2 percet vesz ig
 A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjelennek-e a portálon.
 
 1. Nyissa meg az Azure Migrate irányítópultját.
-2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
+2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók** darabszámát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure-beli virtuális gépekre való Migrálás [fizikai kiszolgálóinak felmérése](tutorial-migrate-aws-virtual-machines.md) .
 - [Tekintse át a](migrate-appliance.md#collected-data---physical) berendezés által a felderítés során gyűjtött adatokat.

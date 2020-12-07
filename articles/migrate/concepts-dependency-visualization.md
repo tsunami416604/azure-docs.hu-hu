@@ -2,13 +2,16 @@
 title: Függőségek elemzése Azure Migrate kiszolgáló értékelése során
 description: Ismerteti, hogyan használható a függőségi elemzés az értékeléshez Azure Migrate Server Assessment használatával.
 ms.topic: conceptual
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.date: 09/15/2020
-ms.openlocfilehash: a284d549f13595e0ce8a5d06cc017602e559b648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f198d47191e7893e74b072ae8fd10546e3a6ee7
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530250"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752209"
 ---
 # <a name="dependency-analysis"></a>Függőségek elemzése
 
@@ -83,7 +86,7 @@ Adatexportálás | Az elmúlt 30 nap során az adatletöltés CSV formátumban i
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ügynök-alapú függőségi vizualizáció [beállítása](how-to-create-group-machine-dependencies.md) .
 - [Próbálja ki](how-to-create-group-machine-dependencies-agentless.md) az ügynök nélküli függőségi vizualizációt a VMWare virtuális gépekhez.

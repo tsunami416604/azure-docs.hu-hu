@@ -167,6 +167,12 @@
           href: iot-hub-devguide-sdks.md
         - name: MQTT-támogatás
           href: iot-hub-mqtt-support.md
+        - name: MQTT 5-támogatás (előzetes verzió)
+          items:
+            - name: MQTT 5 – áttekintés
+              href: iot-hub-mqtt-5.md
+            - name: MQTT 5 – API-referencia
+              href: iot-hub-mqtt-5-reference.md
         - name: AMQP-támogatás
           href: iot-hub-amqp-support.md
         - name: Szószedet

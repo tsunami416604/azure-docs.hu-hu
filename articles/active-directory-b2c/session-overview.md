@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0004c874a2011a78bb5cfe67ff0a840224d47bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e02323df3a12c4a74de1fb62b36762fc739e9e5
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258965"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750441"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C-munkamenet
 
@@ -96,8 +96,12 @@ Kijelentkezési kérelem esetén Azure AD B2C:
 1. A Azure AD B2C cookie-alapú munkamenet érvénytelenítése.
 1. Kísérlet az összevont identitás-szolgáltatókból való kijelentkezésre:
    - OpenId Connect – ha az identitás-szolgáltató jól ismert konfigurációs végpontja megad egy `end_session_endpoint` helyet.
-   - SAML – ha az Identity Provider metaadatai tartalmazzák a `SingleLogoutService` helyet.
+   - OAuth2 – ha az [Identity Provider metaadatai](oauth2-technical-profile.md#metadata) tartalmazzák a `end_session_endpoint` helyet.
+   - SAML – ha az [Identity Provider metaadatai](saml-identity-provider-technical-profile.md#metadata) tartalmazzák a `SingleLogoutService` helyet.
 1. Opcionálisan kijelentkezhet más alkalmazásokból is. További információ: az [egyszeri kijelentkezési](#single-sign-out) szakasz.
+
+> [!NOTE]
+> [Egyéni szabályzatok](custom-policy-overview.md)használatával letilthatja az összevont identitás-szolgáltatókból való kijelentkezést, ha az identitás-szolgáltató technikai profiljának metaadatait a értékre állítja `SingleLogoutEnabled` `false` .
 
 A kijelentkezési szolgáltatás törli a felhasználó egyszeri bejelentkezési állapotát Azure AD B2C, de előfordulhat, hogy nem írja alá a felhasználót a közösségi identitás-szolgáltatói munkamenetből. Ha a felhasználó ugyanazt az identitás-szolgáltatót választja egy későbbi bejelentkezés során, akkor a hitelesítő adatok megadása nélkül is újrahitelesíthetők. Ha a felhasználó ki szeretne jelentkezni az alkalmazásból, nem feltétlenül jelenti azt, hogy ki szeretné jelentkezni a Facebook-fiókjából. Ha azonban helyi fiókokat használ, a felhasználó munkamenete megfelelően végződik.
 
@@ -112,7 +116,7 @@ Amikor átirányítja a felhasználót a Azure AD B2C kijelentkezési végpontra
 
 Az alkalmazásoknak válaszolnia kell erre a kérelemre a felhasználót azonosító munkamenetek törlésével és a válasz visszaadásával `200` . Ha az alkalmazásban szeretné támogatni az egyszeri kijelentkezést, az alkalmazás kódjában végre kell hajtania egy `LogoutUrl` alkalmazást. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [konfigurálhatja a munkamenet viselkedését a felhasználói folyamatokban](session-behavior.md).
 - Megtudhatja, hogyan [konfigurálhatja a munkamenet viselkedését az egyéni házirendekben](session-behavior-custom-policy.md).

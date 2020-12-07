@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc262e133f6e91271d7e9848bdca9d3a6062fc66
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95975632"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751699"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -466,12 +466,9 @@ Olyan Resource Manager-sablont is használhat, amely a népszerű [GoAccess](htt
 
 Általában ismeretlen állapot jelenik meg, ha a háttérhez való hozzáférést egy hálózati biztonsági csoport (NSG), egyéni DNS vagy felhasználó által definiált útválasztás (UDR) blokkolja az Application Gateway alhálózaton. További információ: [a háttér állapota, a diagnosztika naplózása és a Application Gateway mérőszámai](application-gateway-diagnostics.md).
 
-### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>Van olyan eset, amikor a NSG-naplók nem jelenítik meg az engedélyezett forgalmat?
+### <a name="are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet"></a>Támogatottak-e a NSG flow-naplók Application Gateway v2-alhálózathoz társított NSG?
 
-Igen. Ha a konfiguráció megfelel a következő forgatókönyvnek, nem jelenik meg az engedélyezett forgalom a NSG flow naplóiban:
-- Telepítette Application Gateway v2-t
-- Rendelkezik egy NSG az Application Gateway alhálózaton
-- Engedélyezte a NSG folyamat naplóit az adott NSG
+A platform jelenlegi korlátai miatt, ha a Application Gateway v2 (Standard_v2, WAF_v2) alhálózaton van egy NSG, és ha engedélyezte a NSG flow-naplókat, akkor a determinált viselkedést láthatja, és ez a forgatókönyv jelenleg nem támogatott.
 
 ### <a name="does-application-gateway-store-customer-data"></a>A Application Gateway tárolja az ügyféladatokat?
 

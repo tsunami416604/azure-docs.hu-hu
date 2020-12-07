@@ -3,12 +3,12 @@ title: Milyen Azure Backup Server v3 RTM biztonsági mentést készíthet
 description: Ez a cikk egy védelmi mátrixot tartalmaz, amely felsorolja az összes olyan munkaterhelést, adattípust és telepítést, amely Azure Backup a v3 RTM védelmét szolgálja.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 21c5fbcdf8aa3454a9af968509cb4cbf76b31f9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1a1a876a9249a32c87c50d7f320a62b9c478caf
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88763609"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752379"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server v3 RTM védelmi mátrix
 
@@ -19,7 +19,7 @@ A következő mátrix felsorolja, hogy mit lehet védeni a Azure Backup Server v
 |Számítási feladat|Verzió|Azure Backup Server</br> installation|Támogatott Azure Backup Server|Védelem és helyreállítás|
 |------------|-----------|---------------|--------------|--------------|
 |Ügyfélszámítógépek (64 bites és 32 bites)|Windows 10|Fizikai kiszolgáló<br /><br />Hyper-V virtuális gép<br /><br />VMware virtuális gép|V3, V2|Kötet, megosztás, mappa, fájlok, deduplikált kötetek<br /><br />A védett köteteknek NTFS fájlrendszerűeknek kell lenniük. A FAT és FAT32 nem támogatottak.<br /><br />A köteteknek legalább 1 GB méretűnek kell lenniük. A Azure Backup Server a Kötet árnyékmásolata szolgáltatás (VSS) segítségével készíti el az adatok pillanatképét, és a pillanatkép csak akkor működik, ha a kötet legalább 1 GB.|
-|Ügyfélszámítógépek (64 bites és 32 bites)|Windows 8.1|Fizikai kiszolgáló<br /><br />Hyper-V virtuális gép|V3, V2|Files<br /><br />A védett köteteknek NTFS fájlrendszerűeknek kell lenniük. A FAT és FAT32 nem támogatottak.<br /><br />A köteteknek legalább 1 GB méretűnek kell lenniük. A Azure Backup Server a Kötet árnyékmásolata szolgáltatás (VSS) segítségével készíti el az adatok pillanatképét, és a pillanatkép csak akkor működik, ha a kötet legalább 1 GB.|
+|Ügyfélszámítógépek (64 bites és 32 bites)|Windows 8.1|Fizikai kiszolgáló<br /><br />Hyper-V virtuális gép|V3, V2|Fájlok<br /><br />A védett köteteknek NTFS fájlrendszerűeknek kell lenniük. A FAT és FAT32 nem támogatottak.<br /><br />A köteteknek legalább 1 GB méretűnek kell lenniük. A Azure Backup Server a Kötet árnyékmásolata szolgáltatás (VSS) segítségével készíti el az adatok pillanatképét, és a pillanatkép csak akkor működik, ha a kötet legalább 1 GB.|
 |Ügyfélszámítógépek (64 bites és 32 bites)|Windows 8.1|Windows rendszerű virtuális gép VMware-ben (a VMware-ben futó Windows virtuális gépen futó munkaterhelések védelme)|V3, V2|Kötet, megosztás, mappa, fájlok, deduplikált kötetek<br /><br />A védett köteteknek NTFS fájlrendszerűeknek kell lenniük. A FAT és FAT32 nem támogatottak.<br /><br />A köteteknek legalább 1 GB méretűnek kell lenniük. A Azure Backup Server a Kötet árnyékmásolata szolgáltatás (VSS) segítségével készíti el az adatok pillanatképét, és a pillanatkép csak akkor működik, ha a kötet legalább 1 GB.|
 |Ügyfélszámítógépek (64 bites és 32 bites)|Windows 8|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép|V3, V2|Kötet, megosztás, mappa, fájlok, deduplikált kötetek<br /><br />A védett köteteknek NTFS fájlrendszerűeknek kell lenniük. A FAT és FAT32 nem támogatottak.<br /><br />A köteteknek legalább 1 GB méretűnek kell lenniük. A Azure Backup Server a Kötet árnyékmásolata szolgáltatás (VSS) segítségével készíti el az adatok pillanatképét, és a pillanatkép csak akkor működik, ha a kötet legalább 1 GB.|
 |Ügyfélszámítógépek (64 bites és 32 bites)|Windows 8|Windows rendszerű virtuális gép VMware-ben (a VMware-ben futó Windows virtuális gépen futó munkaterhelések védelme)|V3, V2|Kötet, megosztás, mappa, fájlok, deduplikált kötetek<br /><br />A védett köteteknek NTFS fájlrendszerűeknek kell lenniük. A FAT és FAT32 nem támogatottak.<br /><br />A köteteknek legalább 1 GB méretűnek kell lenniük. A Azure Backup Server a Kötet árnyékmásolata szolgáltatás (VSS) segítségével készíti el az adatok pillanatképét, és a pillanatkép csak akkor működik, ha a kötet legalább 1 GB.|
@@ -78,7 +78,7 @@ A következő mátrix felsorolja, hogy mit lehet védeni a Azure Backup Server v
 |Hyper-V gazdagép – MABS védelmi ügynök a Hyper-V-gazdagépen, a fürtön vagy a virtuális gépen|Windows Server 2008 SP2|Fizikai kiszolgáló<br /><br />Helyszíni Hyper-V virtuális gép|Nem támogatott|Védelem: Hyper-V számítógépek, megosztott fürtkötetek (CSV-k)<br /><br />Helyreállítás: virtuális gép, fájlok, mappák, kötetek és virtuális merevlemezek elemszintű helyreállítása|
 |VMware virtuális gépek|VMware vCenter/vSphere ESX/ESXi licencelt verzió 5.5/6.0/6.5 |Fizikai kiszolgáló, <br/>Helyszíni Hyper-V virtuális gép, <br/> Windows rendszerű virtuális gép VMware-ben|V3, V2|VMware virtuális gépek a fürt megosztott kötetei (CSV), az NFS és a SAN Storage szolgáltatásban<br /> A fájlok és mappák elemszintű helyreállítása csak Windows rendszerű virtuális gépek esetén érhető el, a VMware Vapp nem támogatottak.|
 |VMware virtuális gépek|[VMware vSphere licenccel rendelkező 6,7-es verzió](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Fizikai kiszolgáló, <br/>Helyszíni Hyper-V virtuális gép, <br/> Windows rendszerű virtuális gép VMware-ben|V3|VMware virtuális gépek a fürt megosztott kötetei (CSV), az NFS és a SAN Storage szolgáltatásban<br /> A fájlok és mappák elemszintű helyreállítása csak Windows rendszerű virtuális gépek esetén érhető el, a VMware Vapp nem támogatottak.|
-|Linux|Hyper-V vagy VMware vendégként futó Linux|Fizikai kiszolgáló, <br/>Helyszíni Hyper-V virtuális gép, <br/> Windows rendszerű virtuális gép VMware-ben|V3, V2|A Hyper-V-nek Windows Server 2012 R2-n vagy Windows Server 2016-on kell futnia. Védelem: az egész virtuális gép<br /><br />Helyreállítás: az egész virtuális gép <br/><br/> Csak a fájlkonzisztens pillanatképek támogatottak. <br/><br/> A támogatott Linux-disztribúciók és-verziók teljes listájáért tekintse meg a [Linux az Azure által támogatott disztribúciókkal foglalkozó](../virtual-machines/linux/endorsed-distros.md)cikket.|
+|Linux|[Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) vagy [VMware](backup-azure-backup-server-vmware.md) vendégként futó Linux|Fizikai kiszolgáló, <br/>Helyszíni Hyper-V virtuális gép, <br/> Windows rendszerű virtuális gép VMware-ben|V3, V2|A Hyper-V-nek Windows Server 2012 R2-n vagy Windows Server 2016-on kell futnia. Védelem: az egész virtuális gép<br /><br />Helyreállítás: az egész virtuális gép <br/><br/> Csak a fájlkonzisztens pillanatképek támogatottak. <br/><br/> A támogatott Linux-disztribúciók és-verziók teljes listájáért tekintse meg a [Linux az Azure által támogatott disztribúciókkal foglalkozó](../virtual-machines/linux/endorsed-distros.md)cikket.|
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute-támogatás
 

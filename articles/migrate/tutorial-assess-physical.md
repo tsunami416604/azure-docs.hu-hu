@@ -1,15 +1,18 @@
 ---
 title: Fizikai kiszolgálók felmérése az Azure-ba való Migrálás Azure Migrate Server Assessment használatával
 description: Ismerteti, hogyan értékelheti a helyszíni fizikai kiszolgálókat az Azure-ba való áttelepítéshez Azure Migrate Server Assessment használatával.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 3669658100681d08e754c19377b82faff5bce1ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca50f41f1f0eadbc9cfb916a7f68a90712bef52e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090445"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753195"
 ---
 # <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>Oktatóanyag: fizikai kiszolgálók értékelése az Azure-ba való áttelepítéshez
 
@@ -26,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb útvonalát mutatják be, és az alapértelmezett beállításokat használják, ahol lehetséges. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -51,19 +54,19 @@ Döntse el, hogy szeretne-e értékelést használni a méretezési feltételek 
 
 Az értékelést a következőképpen futtathatja:
 
-1. A **kiszolgálók** lapon > **Windows-és Linux-kiszolgálók**területen kattintson a **kiszolgálók felmérése és migrálása**elemre.
+1. A **kiszolgálók** lapon > **Windows-és Linux-kiszolgálók** területen kattintson a **kiszolgálók felmérése és migrálása** elemre.
 
    ![Az értékelés és a kiszolgálók áttelepítése gomb helye](./media/tutorial-assess-physical/assess.png)
 
-2. **Azure Migrate: kiszolgáló értékelése**, kattintson az **értékelés**elemre.
+2. **Azure Migrate: kiszolgáló értékelése**, kattintson az **értékelés** elemre.
 
     ![Az értékelés gomb helye](./media/tutorial-assess-physical/assess-servers.png)
 
-3. A **kiszolgálók**  >  **felmérési típusának**értékelése területen válassza az **Azure virtuális gép**lehetőséget.
+3. A **kiszolgálók**  >  **felmérési típusának** értékelése területen válassza az **Azure virtuális gép** lehetőséget.
 4. A **felderítés forrása**:
 
-    - Ha a berendezést használó gépeket észlelt, válassza a **Azure Migrate készülékről felderített gépek**lehetőséget.
-    - Ha egy importált CSV-fájlt használó gépeket észlelt, válassza az **importált gépek**lehetőséget. 
+    - Ha a berendezést használó gépeket észlelt, válassza a **Azure Migrate készülékről felderített gépek** lehetőséget.
+    - Ha egy importált CSV-fájlt használó gépeket észlelt, válassza az **importált gépek** lehetőséget. 
     
 5. Adja meg az értékelés nevét. 
 6. Kattintson az **Összes megtekintése** elemre az értékelési tulajdonságok áttekintéséhez.
@@ -71,43 +74,43 @@ Az értékelést a következőképpen futtathatja:
     ![Az összes megtekintése gomb helye az értékelési tulajdonságok áttekintéséhez](./media/tutorial-assess-physical/assessment-name.png)
 
 7. Az **értékelés tulajdonságai**  >  **cél tulajdonságai**:
-    - A **célhely**mezőben válassza ki azt az Azure-régiót, amelyre az áttelepítést szeretné végezni.
+    - A **célhely** mezőben válassza ki azt az Azure-régiót, amelyre az áttelepítést szeretné végezni.
         - A méretre és a díjakra vonatkozó javaslatok a megadott helyen alapulnak.
         - Azure Government Az értékeléseket az [alábbi régiókban](migrate-support-matrix.md#supported-geographies-azure-government) lehet megcélozni
     - A **tárolási típus mezőben**
         - Ha teljesítmény-alapú adatmennyiséget szeretne használni az értékelésben, válassza az **automatikus** lehetőséget Azure MIGRATE a IOPS és az átviteli sebesség alapján a tárolási típust ajánljuk.
         - Másik lehetőségként válassza ki azt a tárolási típust, amelyet a virtuális géphez szeretne használni a Migrálás során.
-    - A **fenntartott példányok**területen válassza ki, hogy a virtuális gép tartalék példányait szeretné-e használni az áttelepítéskor.
-        - Ha fenntartott példány használatát választja, a "**kedvezmény (%)** vagy a **virtuális gép üzemidő**nem adható meg. 
-        - [További információk](https://aka.ms/azurereservedinstances).
+    - A **fenntartott példányok** területen válassza ki, hogy a virtuális gép tartalék példányait szeretné-e használni az áttelepítéskor.
+        - Ha fenntartott példány használatát választja, a "**kedvezmény (%)** vagy a **virtuális gép üzemidő** nem adható meg. 
+        - [További információ](https://aka.ms/azurereservedinstances).
 8. **Virtuális gép mérete**:
  
-    - A **méretezési feltétel**területen válassza ki, hogy szeretné-e alapozni az értékelést a számítógép konfigurációs adatai/metaadatai vagy a teljesítmény-alapú adatok alapján. Ha teljesítményadatokat használ:
-        - A **teljesítmény előzményeiben**adja meg az adatok időtartamát, amely alapján az értékelést alapozni szeretné
-        - A **percentilis kihasználtsága**mezőben határozza meg a teljesítmény mintához használni kívánt százalékos értéket. 
-    - A virtuálisgép- **sorozat**mezőben határozza meg, hogy milyen Azure-beli virtuálisgép-sorozatot szeretne figyelembe venni.
+    - A **méretezési feltétel** területen válassza ki, hogy szeretné-e alapozni az értékelést a számítógép konfigurációs adatai/metaadatai vagy a teljesítmény-alapú adatok alapján. Ha teljesítményadatokat használ:
+        - A **teljesítmény előzményeiben** adja meg az adatok időtartamát, amely alapján az értékelést alapozni szeretné
+        - A **percentilis kihasználtsága** mezőben határozza meg a teljesítmény mintához használni kívánt százalékos értéket. 
+    - A virtuálisgép- **sorozat** mezőben határozza meg, hogy milyen Azure-beli virtuálisgép-sorozatot szeretne figyelembe venni.
         - Ha teljesítmény-alapú értékelést használ, a Azure Migrate egy értéket javasol Önnek.
         - Szükség szerint módosítsa a beállításokat. Ha például nem rendelkezik olyan éles környezettel, amely az Azure-beli sorozatú virtuális gépeket igényli, kizárhatja a sorozatot a sorozatok listájáról.
-    - A **Comfort Factor (kényelmi tényező**) mezőben adja meg az értékelés során használni kívánt puffert. Ez olyan problémákhoz vezetett, mint például a szezonális használat, a rövid teljesítménybeli előzmények és a jövőbeli használat várható növekedése. Ha például két kényelmi tényezőt használ: az **összetevő**  |  **tényleges kihasználtsága**a  |  **Comfort Factor (2,0) magok hozzáadása** | 2 | 4 memória | 8 GB | 16 GB    
+    - A **Comfort Factor (kényelmi tényező**) mezőben adja meg az értékelés során használni kívánt puffert. Ez olyan problémákhoz vezetett, mint például a szezonális használat, a rövid teljesítménybeli előzmények és a jövőbeli használat várható növekedése. Ha például két kényelmi tényezőt használ: az **összetevő**  |  **tényleges kihasználtsága** a  |  **Comfort Factor (2,0) magok hozzáadása** | 2 | 4 memória | 8 GB | 16 GB    
    
 9. A **díjszabásban**:
-    - Az **ajánlat**mezőben válassza ki az [Azure-ajánlatot](https://azure.microsoft.com/support/legal/offer-details/) , ha regisztrálva van. A kiszolgáló értékelése alapján megbecsülhető az ajánlat díja.
-    - A **Pénznem**területen válassza ki a fiókja számlázási pénznemét.
+    - Az **ajánlat** mezőben válassza ki az [Azure-ajánlatot](https://azure.microsoft.com/support/legal/offer-details/) , ha regisztrálva van. A kiszolgáló értékelése alapján megbecsülhető az ajánlat díja.
+    - A **Pénznem** területen válassza ki a fiókja számlázási pénznemét.
     - A **kedvezmény (%)** területen adja meg az Azure-ajánlaton keresztül kapott előfizetés-specifikus kedvezményeket. Az alapértelmezett beállítás 0%.
-    - A **virtuális gép üzemidő**területen adja meg a virtuális gépek által futtatandó időtartamot (naponta, havonta/órában).
+    - A **virtuális gép üzemidő** területen adja meg a virtuális gépek által futtatandó időtartamot (naponta, havonta/órában).
         - Ez olyan Azure-beli virtuális gépek esetében hasznos, amelyek nem futnak folyamatosan.
         - A becsült érték a megadott időtartamon alapul.
         - Az alapértelmezett érték havi 31 nap/napi 24 óra.
 
-    - Az **EA-előfizetés**területen határozza meg, hogy szeretné-e a NAGYVÁLLALATI szerződés (EA) előfizetési kedvezményt figyelembe venni a költségbecslés során. 
-    - A **Azure Hybrid Benefit**területen válassza ki, hogy már rendelkezik-e Windows Server-licenccel. Ha így tesz, és a Windows Server-előfizetések aktív frissítési garanciával rendelkezik, akkor az Azure-ba való licencek esetén a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/) is alkalmazható.
+    - Az **EA-előfizetés** területen határozza meg, hogy szeretné-e a NAGYVÁLLALATI szerződés (EA) előfizetési kedvezményt figyelembe venni a költségbecslés során. 
+    - A **Azure Hybrid Benefit** területen válassza ki, hogy már rendelkezik-e Windows Server-licenccel. Ha így tesz, és a Windows Server-előfizetések aktív frissítési garanciával rendelkezik, akkor az Azure-ba való licencek esetén a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/) is alkalmazható.
 
 10. Ha módosítja a módosításokat, kattintson a **Save (Mentés** ) gombra.
 
     ![Kiértékelés tulajdonságai](./media/tutorial-assess-physical/assessment-properties.png)
 
-11. A **kiszolgálók értékelése**területen kattintson a **tovább**gombra.
-12. Az **értékelendő gépek kiválasztása**területen válassza az **új létrehozása**elemet, és adja meg a csoportnév nevet. 
+11. A **kiszolgálók értékelése** területen kattintson a **tovább** gombra.
+12. Az **értékelendő gépek kiválasztása** területen válassza az **új létrehozása** elemet, és adja meg a csoportnév nevet. 
 13. Válassza ki a készüléket, és válassza ki a csoportba felvenni kívánt virtuális gépeket. Ezután kattintson a **Tovább** gombra.
 14. A * * felülvizsgálat + értékelés létrehozása lapon tekintse át az értékelés részleteit, majd kattintson az **Értékelés létrehozása** elemre a csoport létrehozásához és az értékelés futtatásához.
 
@@ -125,7 +128,7 @@ Az értékelés a következőket írja le:
 
 Értékelés megtekintése:
 
-1. A **kiszolgálók**  >  **Azure Migrate: kiszolgáló értékelése**területen kattintson az **értékelések**melletti számra.
+1. A **kiszolgálók**  >  **Azure Migrate: kiszolgáló értékelése** területen kattintson az **értékelések** melletti számra.
 2. Az **Értékelések** területen válasszon ki egy kiértékelést a megnyitáshoz. Példa (csak becslések és költségek például): 
 
     ![Kiértékelés összegzése](./media/tutorial-assess-physical/assessment-summary.png)
@@ -135,11 +138,11 @@ Az értékelés a következőket írja le:
  
 ### <a name="review-readiness"></a>Készültség áttekintése
 
-1. Kattintson az **Azure-készültség**elemre.
-2. Az **Azure készültségi**területén tekintse át a virtuális gép állapotát:
+1. Kattintson az **Azure-készültség** elemre.
+2. Az **Azure készültségi** területén tekintse át a virtuális gép állapotát:
     - **Készen áll az Azure-ra**: használatban van, ha a Azure MIGRATE a virtuális gépek méretét és a költséghatékonyságot javasolja az értékelésben szereplő virtuális gépek esetében.
     - **Feltételekkel kész**: megjeleníti a problémákat és a javasolt szervizelést.
-    - **Nem áll készen az Azure-ra: a**problémákat és a javasolt szervizelést jeleníti meg.
+    - **Nem áll készen az Azure-ra: a** problémákat és a javasolt szervizelést jeleníti meg.
     - **Felkészültségi ismeretlen**: akkor használatos, ha az adatelérhetőségi problémák miatt Azure Migrate nem tudja felmérni a készültséget.
 
 3. Válasszon ki egy **Azure-kompatibilitási** állapotot. Megtekintheti a VM-készültség részleteit. A virtuális gép részleteit is megtekintheti, beleértve a számítási, tárolási és hálózati beállításokat.

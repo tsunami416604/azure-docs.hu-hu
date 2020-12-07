@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 18979ba8cbc4e68bf79275059c6c1c976578c407
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3e3245053fcc9943814268835fa5ac0f40a6f94c
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953372"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750509"
 ---
 # <a name="secure-your-restful-services"></a>A REST-szolgáltatások biztonságossá tétele 
 
@@ -365,6 +365,69 @@ A következő példa egy olyan REST-alapú műszaki profilt mutat be, amely a tu
 </ClaimsProvider>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="api-key-authentication"></a>API-kulcs hitelesítése
+
+Az API-kulcs egy olyan egyedi azonosító, amely egy felhasználó hitelesítésére szolgál REST API végpont eléréséhez. A kulcsot egy egyéni HTTP-fejlécben kell elküldeni. A [Azure FUNCTIONS http-trigger](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) például a `x-functions-key` http-fejlécet használja a kérelmező azonosítására.  
+
+### <a name="add-api-key-policy-keys"></a>API-kulcsokra vonatkozó házirend-kulcsok hozzáadása
+
+REST API műszaki profil API-kulcsos hitelesítéssel való konfigurálásához hozza létre a következő titkosítási kulcsot az API-kulcs tárolásához:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a Azure ad B2C könyvtárat.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
+1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
+1. A **Beállítások** lapon válassza a **manuális** lehetőséget.
+1. A **név** mezőbe írja be a következőt: **RestApiKey**.
+    Lehet, hogy az előtag *B2C_1A_* automatikusan hozzá lesz adva.
+1. A **titok** mezőbe írja be a REST API kulcsot.
+1. A **kulcshasználat** beállításnál válassza a **titkosítás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
+
+
+### <a name="configure-your-rest-api-technical-profile-to-use-api-key-authentication"></a>Az REST API műszaki profil konfigurálása az API-kulcsos hitelesítés használatára
+
+A szükséges kulcs létrehozása után konfigurálja a REST API technikai profil metaadatait a hitelesítő adatokra való hivatkozáshoz.
+
+1. A munkakönyvtárában nyissa meg a kiterjesztési házirend fájlját (TrustFrameworkExtensions.xml).
+1. Keresse meg a REST API technikai profilt. Például: `REST-ValidateProfile` vagy `REST-GetProfile` .
+1. Keresse meg az `<Metadata>` elemet.
+1. Módosítsa a *AuthenticationType* a következőre: `ApiKeyHeader` .
+1. Módosítsa a *AllowInsecureAuthInProduction* a következőre: `false` .
+1. Közvetlenül a záró `</Metadata>` elem után adja hozzá a következő XML-kódrészletet:
+    ```xml
+    <CryptographicKeys>
+        <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
+    </CryptographicKeys>
+    ```
+
+A titkosítási kulcs **azonosítója** a HTTP-fejlécet határozza meg. Ebben a példában az API-kulcsot **x-functions-Key-** ként küldjük el.
+
+Az alábbi példa egy olyan REST-alapú műszaki profilt mutat be, amely az API-kulcsos hitelesítéssel rendelkező Azure-függvény meghívására van konfigurálva:
+
+```xml
+<ClaimsProvider>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="REST-GetProfile">
+      <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
+        <Item Key="SendClaimsIn">Body</Item>
+        <Item Key="AuthenticationType">ApiKeyHeader</Item>
+        <Item Key="AllowInsecureAuthInProduction">false</Item>
+      </Metadata>
+      <CryptographicKeys>
+        <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
+      </CryptographicKeys>
+      ...
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
+## <a name="next-steps"></a>További lépések
 
 - További információ az IEF-referenciában található [Rest technikai profil](restful-technical-profile.md) elemről.

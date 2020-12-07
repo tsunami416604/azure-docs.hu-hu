@@ -1,14 +1,17 @@
 ---
-title: Alkalmazások, szerepkörök és szolgáltatások felderítése helyszíni kiszolgálókon Azure Migrate
+title: Alkalmazások felderítése helyszíni kiszolgálókon Azure Migrate
 description: Ismerje meg, hogyan derítheti fel az alkalmazásokat, szerepköröket és szolgáltatásokat a helyszíni kiszolgálókon Azure Migrate Server Assessment használatával.
-ms.topic: article
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: 960877ac4eab4d8f23b5616dc04628142964b46a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: eb589c08122cd47747c005c13d12b336319fd558
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483453"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752005"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Gépi alkalmazások, szerepkörök és szolgáltatások felderítése
 

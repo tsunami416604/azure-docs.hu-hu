@@ -1,14 +1,17 @@
 ---
 title: A felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos kérdések Azure Migrate
 description: Választ kaphat a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre Azure Migrateban.
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: cb1696c521f436280177f0263abd66aa2bfed7dc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4531d68c2fbd0698c33d70a75bb82ac9c7f52f49
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312921"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752243"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Felderítés, értékelés és függőségek elemzése – gyakori kérdések
 
@@ -44,7 +47,7 @@ Akár 10 000 VMware virtuális gépet, akár 5 000 Hyper-V virtuális gépet és
 
 - A virtuális gépek be vannak kapcsolva abban az időtartamban, amelyre az értékelést létrehozta
 - Ha csak a memóriaszámlálók hiányoznak, és Hyper-V virtuális gépeket próbál meg értékelni, ellenőrizze, hogy a dinamikus memória engedélyezve van-e ezeken a virtuális gépeken. Jelenleg fennáll egy ismert probléma, amely miatt az Azure Migrate-berendezés nem tudja gyűjteni a memóriahasználati adatokat ilyen virtuális gépek esetében.
-- Ha az összes teljesítményszámláló hiányzik, győződjön meg arról, hogy a 443-as (HTTPS-) portokon engedélyezettek a kimenő kapcsolatok.
+- Ha az összes teljesítményszámláló hiányzik, győződjön meg arról, hogy a 443-as (HTTPS) portok kimenő kapcsolatai engedélyezve vannak.
 
 Megjegyezés – Ha bármely teljesítményszámláló hiányzik, az Azure Migrate: Server Assessment áttér a helyszíni lefoglalt magokra/memóriára és ennek megfelelően javasol virtuálisgép-méretet.
 
@@ -54,7 +57,7 @@ A megbízhatósági minősítés az értékelés kiszámításához szükséges 
 
 - Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például egyhetes teljesítmény-időtartamú értékelést hoz létre, akkor a felderítés indítását követően legalább egy hetet várnia kell az összes adatpont összegyűjtésére. Ha nem tudja megvárni az időtartam végét, módosítsa a teljesítmény időtartamát egy kisebb időszakra, és számítsa újra az értékelést.
  
-- A Server Assessment nem fog tudni teljesítményadatokat gyűjteni az értékelési időszakban néhány virtuális gépről vagy egyik virtuális gépről sem. Ellenőrizze, hogy a virtuális gépek be vannak-e kapcsolva az értékelés idejére, és hogy engedélyezve vannak-e a kimenő kapcsolatok a 443-as portokon. Ha Hyper-V virtuális gépek esetén engedélyezett a dinamikus memória, hiányozni fognak a memóriaszámlálók, ami alacsony megbízhatósági minősítést eredményez. Számítsa újra az értékelést, hogy tükrözze a megbízhatósági minősítés legújabb módosításait. 
+- A kiszolgáló értékelése nem tudja összegyűjteni az értékelési időszakban egy vagy több virtuális gép teljesítményadatait. Ellenőrizze, hogy a virtuális gépek be vannak-e kapcsolva az értékelés idejére, és hogy engedélyezve vannak-e a kimenő kapcsolatok a 443-as portokon. Ha Hyper-V virtuális gépek esetén engedélyezett a dinamikus memória, hiányozni fognak a memóriaszámlálók, ami alacsony megbízhatósági minősítést eredményez. Számítsa újra az értékelést, hogy tükrözze a megbízhatósági minősítés legújabb módosításait. 
 
 - Kevés virtuális gép lett létrehozva a felderítés indítását követően a Server Assessmentben. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépek teljesítményadatai a teljes időtartamra vonatkozóan nem lesznek elérhetőek, és a megbízhatósági minősítés alacsony lesz.
 
@@ -119,7 +122,7 @@ A 95. percentilis értékének használata biztosítja, hogy a rendszer figyelme
 ## <a name="how-are-import-based-assessments-different-from-assessments-with-discovery-source-as-appliance"></a>Miben különböznek az importálási alapú értékelések a felderítési forrásokkal, mint a készülék?
 
 Az importálási alapú Azure-beli VM-értékelések olyan, a Azure Migrateba importált gépekkel létrehozott értékelések, amelyek CSV-fájl használatával lettek importálva. Csak négy mező importálására van kötelező: kiszolgálónév, magok, memória és operációs rendszer. Néhány Tudnivaló: 
- - A készültségi feltételek kevésbé szigorúak a rendszerindítási típus paraméterének importálási alapú értékelésében. Ha a rendszerindítás típusa nincs megadva, a rendszer feltételezi, hogy a gép BIOS-rendszerindítási típussal rendelkezik, és a gép nem **feltételesen készként**van megjelölve. A felderítési forrásként készülékként végzett értékelésekben a készenléti **állapot feltételként** van megjelölve, ha hiányzik a rendszerindítási típus. Ez a készültségi számításban szereplő különbség azért van, mert a felhasználók nem rendelkezhetnek az áttelepítés megtervezésének korai szakaszaiban lévő összes információval az importálási felmérések elvégzése során. 
+ - A készültségi feltételek kevésbé szigorúak a rendszerindítási típus paraméterének importálási alapú értékelésében. Ha a rendszerindítás típusa nincs megadva, a rendszer feltételezi, hogy a gép BIOS-rendszerindítási típussal rendelkezik, és a gép nem **feltételesen készként** van megjelölve. A felderítési forrásként készülékként végzett értékelésekben a készenléti **állapot feltételként** van megjelölve, ha hiányzik a rendszerindítási típus. Ez a készültségi számításban szereplő különbség azért van, mert a felhasználók nem rendelkezhetnek az áttelepítés megtervezésének korai szakaszaiban lévő összes információval az importálási felmérések elvégzése során. 
  - A teljesítmény-alapú importálási felmérések a felhasználó által megadott kihasználtsági értéket használják a jobb méretezési számításokhoz. Mivel a felhasználó a kihasználtság értékét megadja, a **teljesítmény** -és a percentilis- **kihasználtsági** beállítások le vannak tiltva az értékelés tulajdonságaiban. A felderítési forrásként készülékként elvégzett értékelésekben a kiválasztott percentilis-érték a készülék által gyűjtött teljesítményadatok közül lesz kiválasztva.
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Miért van a javasolt áttelepítési eszköz az importálási alapú AVS-felmérésben ismeretlenként megjelölve?
@@ -129,7 +132,7 @@ CSV-fájlon keresztül importált gépek esetén az AVS-felmérésben az alapér
 
 ## <a name="what-is-dependency-visualization"></a>Mi a függőségi vizualizáció?
 
-A függőségi vizualizáció segíthet felmérni a virtuális gépek csoportjait, hogy nagyobb megbízhatósággal legyenek áttelepítve. A függőségi vizualizációk átvizsgálják a számítógép függőségeit az értékelés futtatása előtt. Így biztosítható, hogy semmi sincs hátra, és segít elkerülni a váratlan kimaradásokat az Azure-ba való Migrálás során. Azure Migrate a függőségi vizualizáció engedélyezéséhez a Azure Monitor Service Map megoldását használja. [További információk](concepts-dependency-visualization.md).
+A függőségi vizualizáció segíthet felmérni a virtuális gépek csoportjait, hogy nagyobb megbízhatósággal legyenek áttelepítve. A függőségi vizualizációk átvizsgálják a számítógép függőségeit az értékelés futtatása előtt. Így biztosítható, hogy semmi sincs hátra, és segít elkerülni a váratlan kimaradásokat az Azure-ba való Migrálás során. Azure Migrate a függőségi vizualizáció engedélyezéséhez a Azure Monitor Service Map megoldását használja. [További információ](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Az ügynök-alapú függőség elemzése nem érhető el Azure Governmentban. Az ügynök nélküli függőségek elemzését is használhatja
@@ -143,7 +146,7 @@ Az ügynök nélküli vizualizáció és az ügynök-alapú vizualizáció köz�
 Támogatás | Ez a beállítás jelenleg előzetes verzióban érhető el, és csak a VMware virtuális gépekhez használható. [Tekintse át](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) a támogatott operációs rendszereket. | Általánosan elérhető (GA).
 Ügynök | Nem kell telepítenie az ügynököket az áttekinteni kívánt gépekre. | Az elemezni kívánt helyszíni gépekre telepítendő ügynökök: a [Microsoft monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)és a [függőségi ügynök](../azure-monitor/platform/agents-overview.md#dependency-agent). 
 Előfeltételek | [Tekintse át](concepts-dependency-visualization.md#agentless-analysis) az előfeltételeket és az üzembe helyezésre vonatkozó követelményeket. | [Tekintse át](concepts-dependency-visualization.md#agent-based-analysis) az előfeltételeket és az üzembe helyezésre vonatkozó követelményeket.
-Log Analytics | Nem kötelező. | A Azure Migrate a [Service Map](../azure-monitor/insights/service-map.md) megoldást használja [Azure monitor naplókban](../azure-monitor/log-query/log-query-overview.md) a függőségi vizualizációhoz. [További információk](concepts-dependency-visualization.md#agent-based-analysis).
+Log Analytics | Nem kötelező. | A Azure Migrate a [Service Map](../azure-monitor/insights/service-map.md) megoldást használja [Azure monitor naplókban](../azure-monitor/log-query/log-query-overview.md) a függőségi vizualizációhoz. [További információ](concepts-dependency-visualization.md#agent-based-analysis).
 Működés | Rögzíti a TCP-kapcsolatok mennyiségét a függőségi vizualizációhoz engedélyezett gépeken. A felderítést követően öt percen belül gyűjti az adatokat. | A gépen telepített Service Map ügynökök gyűjtenek adatokat a TCP-folyamatokról és a bejövő/kimenő kapcsolatokról az egyes folyamatokhoz.
 Adatok | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port. | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port.<br/><br/> A kapcsolatok száma, a késés és az adatátviteli adatok összegyűjtése és Log Analytics lekérdezések számára elérhetők. 
 Vizualizáció | Az önálló kiszolgálók függőségi térképe egy óra és 30 nap közötti időtartamon belül megtekinthető. | Egyetlen kiszolgáló függőségi térképe.<br/><br/> A Térkép csak egy órán át jeleníthető meg.<br/><br/> Kiszolgálók egy csoportjának függőségi térképe.<br/><br/> Kiszolgálók hozzáadása és eltávolítása a Térkép nézetből.
@@ -199,6 +202,6 @@ Az ügynök nélküli vizualizációk esetében egy adott kiszolgáló függős�
 
 Megjelenítheti a [függőségeket](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) a legfeljebb 10 virtuális géppel rendelkező csoportok esetében. Ha több mint 10 virtuális géppel rendelkező csoporttal rendelkezik, javasoljuk, hogy ossza szét a csoportot kisebb csoportokba, majd jelenítse meg a függőségeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

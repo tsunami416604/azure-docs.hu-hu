@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 992fb4422974dad7a48e5fea953ac4530bb52d5c
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: a517f7a796b6543c8d60f0d1ebdba16afa0bc4b7
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122590"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751427"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Tulajdonságok használata Azure IoT Central-megoldásokban
 
@@ -35,7 +35,7 @@ A következő táblázat a tulajdonságok funkciójának konfigurációs beáll�
 | Mező           | Leírás                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Megjelenített név    | Az irányítópultokon és űrlapokon használt tulajdonságérték megjelenítendő neve.                                                                                                                                                              |
-| Name (Név)            | A tulajdonság neve. Az Azure IoT Central a megjelenítendő név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie.                                                 |
+| Név            | A tulajdonság neve. Az Azure IoT Central a megjelenítendő név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie.                                                 |
 | Képesség típusa | Tulajdonság.                                                                                                                                                                                                                          |
 | Szemantikai típus   | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el.                                                                       |
 | Séma          | A tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. A séma nem érhető el az esemény és az állapot szemantikai típusaihoz.                                               |
@@ -79,7 +79,7 @@ Ez a példa két tulajdonságot mutat be. Ezek a tulajdonságok a felhasználói
 
 * `@type` a képesség típusát adja meg: `Property` . Az előző példa a szemantikai típust is megjeleníti `Temperature` mindkét tulajdonsághoz.
 * `name` a tulajdonsághoz.
-* `schema` Megadja a tulajdonság adattípusát. Ez az érték egyszerű típus lehet, például dupla, Integer, Boolean vagy string. Az összetett objektumtípusok, tömbök és leképezések is támogatottak.
+* `schema` Megadja a tulajdonság adattípusát. Ez az érték egyszerű típus lehet, például dupla, Integer, Boolean vagy string. Az összetett objektumtípusok és leképezések is támogatottak.
 * `writable` Alapértelmezés szerint a tulajdonságok csak olvashatók. A tulajdonságot írhatóként jelölheti meg a mező használatával.
 
 Az opcionális mezők, például a megjelenítendő név és a Leírás lehetővé teszik, hogy további részleteket adjon hozzá az interfészhez és a képességekhez.
@@ -212,7 +212,7 @@ A válaszüzenetnek tartalmaznia kell a `ac` és a `av` mezőket. A `ad` mező k
 
 | Érték | Címke | Leírás |
 | ----- | ----- | ----------- |
-| `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
+| `'ac': 200` | Befejezve | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202` vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben vagy folyamatban van. |
 | `'ac': 4xx` | Hiba | A kért tulajdonság módosítása nem volt érvényes, vagy hiba történt. |
 | `'ac': 5xx` | Hiba | Az eszköz váratlan hibát észlelt a kért módosítás feldolgozása során. |

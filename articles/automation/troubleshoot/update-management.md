@@ -2,15 +2,15 @@
 title: Azure Automation Update Management problémák elhárítása
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation Update Managementekkel kapcsolatos problémákat.
 services: automation
-ms.date: 10/14/2020
+ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 8818047dd4fef9c495c46b353e68841f83e9677c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e8fc2a840ce019282625f286a6d54b132a1806c8
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217218"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751257"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Az Update Management hibáinak elhárítása
 
@@ -18,6 +18,40 @@ Ez a cikk azokat a problémákat ismerteti, amelyekkel a Update Management funkc
 
 >[!NOTE]
 >Ha a Update Management Windows rendszerű gépen való telepítésekor problémákba lép, nyissa meg a Windows Eseménynaplót, és ellenőrizze az **Operations Manager** eseménynaplót a helyi számítógép **alkalmazás-és szolgáltatások naplói** területén. Keresse meg a 4502-as AZONOSÍTÓJÚ eseményt és a benne található esemény részleteit `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
+
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a>Forgatókönyv: a függőben lévő és a telepített Linux-frissítések nem változnak
+
+### <a name="issue"></a>Probléma
+
+A Linux rendszerű gépek esetében Update Management a besorolási **Biztonság** és **egyebek** területen elérhető konkrét frissítéseket jeleníti meg. Ha azonban egy frissítési ütemterv fut a gépen, például csak a **biztonsági** besorolásnak megfelelő frissítéseket telepíti, a telepített frissítések eltérnek, vagy az adott besoroláshoz korábban megjelenő frissítések egy részhalmaza.
+
+### <a name="cause"></a>Ok
+
+Ha a linuxos gépen függőben lévő operációsrendszer-frissítések értékelését végzi, a rendszer a Linux-disztribúciós gyártó által biztosított [biztonsági réseket és Assessment Language](https://oval.mitre.org/) (ovális) fájlokat használja Update Management besorolásra. A kategorizálás **a biztonsági problémák** vagy sebezhetőségek kezelése érdekében **Others** a frissítéseket tartalmazó ovális fájlok alapján történik. A frissítési ütemterv futtatásakor azonban a megfelelő csomagkezelő, például a YUM, az APT vagy a ZYPPER használatával hajtja végre a telepítést a Linux gépen. A Linux-disztribúcióhoz tartozó csomagkezelő rendelkezhet egy másik módszerrel a frissítések besorolásához, ahol az eredmények eltérhetnek az OVÁLIS fájlokból beszerzett Update Management alapján.
+
+### <a name="resolution"></a>Feloldás
+
+Manuálisan is megtekintheti a Linux-gépet, a megfelelő frissítéseket és azok besorolását a distro Package Managerben. A következő parancsok futtatásával megismerheti, hogy mely frissítések vannak besorolva **biztonságban** a csomagkezelő számára.
+
+A YUM esetében a következő parancs a Red Hat által **biztonságként** kategorizált frissítések nem nulla listáját adja vissza. Ne feledje, hogy a CentOS esetében mindig üres listát ad vissza, és nem kerül sor biztonsági besorolásra.
+
+```bash
+sudo yum -q --security check-update
+```
+
+A ZYPPER esetében a következő parancs a SUSE által **biztonságként** kategorizált frissítések nem nulla listáját adja vissza.
+
+```bash
+sudo LANG=en_US.UTF8 zypper --non-interactive patch --category security --dry-run
+```
+
+Az APT esetében a következő parancs egy nem nulla számú frissítést ad vissza **, amelyet a** Canonical a Ubuntu Linux disztribúciók számára biztosít.
+
+```bash
+sudo grep security /etc/apt/sources.list > /tmp/oms-update-security.list LANG=en_US.UTF8 sudo apt-get -s dist-upgrade -oDir::Etc::Sourcelist=/tmp/oms-update-security.list
+```
+
+Ebből a listából ezután futtathatja a parancsot az `grep ^Inst` összes függőben lévő biztonsági frissítés beszerzéséhez.
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>Forgatókönyv: a "nem sikerült engedélyezni a frissítési megoldást" hibaüzenet jelenik meg
 
@@ -87,7 +121,7 @@ A gépek a következő tünetekkel rendelkeznek:
 
 * A gépek hiányoznak a Azure Automation fiókjának Update Management nézetéről.
 
-* Vannak olyan gépek, amelyek a `Not assessed` **megfelelőség**alatt jelennek meg. Azonban a Szívveréses adatAzure Monitor naplókban láthatja a hibrid Runbook-feldolgozót, de nem Update Management.
+* Vannak olyan gépek, amelyek a `Not assessed` **megfelelőség** alatt jelennek meg. Azonban a Szívveréses adatAzure Monitor naplókban láthatja a hibrid Runbook-feldolgozót, de nem Update Management.
 
 ### <a name="cause"></a>Ok
 
@@ -101,7 +135,7 @@ Ezt a problémát a helyi konfigurációs problémák vagy a nem megfelelően ko
 
 1. Futtassa a [Windows](update-agent-issues.md#troubleshoot-offline) vagy [Linux](update-agent-issues-linux.md#troubleshoot-offline)rendszerhez készült hibakeresőt az operációs rendszertől függően.
 
-2. Győződjön meg arról, hogy a számítógép a megfelelő munkaterületre küld jelentést. Az adott aspektus ellenőrzésével kapcsolatos útmutatásért lásd: az [ügynök kapcsolatának ellenőrzése Azure monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Győződjön meg arról is, hogy ez a munkaterület a Azure Automation-fiókjához van csatolva. A megerősítéshez nyissa meg az Automation-fiókját, és a **kapcsolódó erőforrások**területen válassza a **csatolt munkaterület** lehetőséget.
+2. Győződjön meg arról, hogy a számítógép a megfelelő munkaterületre küld jelentést. Az adott aspektus ellenőrzésével kapcsolatos útmutatásért lásd: az [ügynök kapcsolatának ellenőrzése Azure monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Győződjön meg arról is, hogy ez a munkaterület a Azure Automation-fiókjához van csatolva. A megerősítéshez nyissa meg az Automation-fiókját, és a **kapcsolódó erőforrások** területen válassza a **csatolt munkaterület** lehetőséget.
 
 3. Győződjön meg arról, hogy a gépek megjelennek az Automation-fiókhoz társított Log Analytics munkaterületen. Futtassa a következő lekérdezést a Log Analytics munkaterületen.
 
@@ -124,7 +158,7 @@ Ezt a problémát a helyi konfigurációs problémák vagy a nem megfelelően ko
    | sort by TimeGenerated desc
    ```
 
-8. Ha ezt `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` az eredményt kapja, elérte a munkaterületen definiált kvótát, amely leállította az adatok mentését. A munkaterületen válassza az **adatmennyiség-kezelés** a **használat és a becsült költségek**lehetőséget, majd módosítsa vagy távolítsa el a kvótát.
+8. Ha ezt `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` az eredményt kapja, elérte a munkaterületen definiált kvótát, amely leállította az adatok mentését. A munkaterületen válassza az **adatmennyiség-kezelés** a **használat és a becsült költségek** lehetőséget, majd módosítsa vagy távolítsa el a kvótát.
 
 9. Ha a probléma továbbra is megoldatlan, kövesse a [Windows Hybrid Runbook Worker telepítése](../automation-windows-hrw-install.md) a hibrid feldolgozó Windows rendszerre való újratelepítésének lépéseit. Linux esetén kövesse a [Linux Hybrid Runbook Worker üzembe helyezése](../automation-linux-hrw-install.md)című témakör lépéseit.
 
@@ -146,11 +180,11 @@ Az Automation erőforrás-szolgáltató nincs regisztrálva az előfizetésben.
 
 Az Automation erőforrás-szolgáltató regisztrálásához hajtsa végre az alábbi lépéseket a Azure Portal.
 
-1. A portál alján található Azure-szolgáltatások listájában válassza a **minden szolgáltatás**lehetőséget, majd válassza az **előfizetések** lehetőséget az általános szolgáltatás csoportban.
+1. A portál alján található Azure-szolgáltatások listájában válassza a **minden szolgáltatás** lehetőséget, majd válassza az **előfizetések** lehetőséget az általános szolgáltatás csoportban.
 
 2. Válassza ki előfizetését.
 
-3. A **Beállítások**területen válassza az **erőforrás-szolgáltatók**elemet.
+3. A **Beállítások** területen válassza az **erőforrás-szolgáltatók** elemet.
 
 4. Az erőforrás-szolgáltatók listájában ellenőrizze, hogy a Microsoft. Automation erőforrás-szolgáltató regisztrálva van-e.
 
@@ -178,11 +212,11 @@ Ha az előfizetése nincs konfigurálva az Automation erőforrás-szolgáltatóh
 
 1. A [Azure Portalban](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)nyissa meg az Azure-szolgáltatások listáját.
 
-2. Válassza a **minden szolgáltatás**lehetőséget, majd az általános szolgáltatási csoportban válassza az **előfizetések** lehetőséget.
+2. Válassza a **minden szolgáltatás** lehetőséget, majd az általános szolgáltatási csoportban válassza az **előfizetések** lehetőséget.
 
 3. Keresse meg az üzemelő példány hatókörében meghatározott előfizetést.
 
-4. A **Beállítások**területen válassza az **erőforrás-szolgáltatók**lehetőséget.
+4. A **Beállítások** területen válassza az **erőforrás-szolgáltatók** lehetőséget.
 
 5. Ellenőrizze, hogy a Microsoft. Automation erőforrás-szolgáltató regisztrálva van-e.
 
@@ -192,7 +226,7 @@ Ha az előfizetése nincs konfigurálva az Automation erőforrás-szolgáltatóh
 
 Ha az előfizetése az Automation erőforrás-szolgáltatóhoz van konfigurálva, az alábbi eljárást követve, de a frissítési ütemterv futtatása a megadott [dinamikus csoportokkal](../update-management/configure-groups.md) kimaradt néhány gépen.
 
-1. A Azure Portal nyissa meg az Automation-fiókot, és válassza a **Update Management**lehetőséget.
+1. A Azure Portal nyissa meg az Automation-fiókot, és válassza a **Update Management** lehetőséget.
 
 2. Tekintse meg [Update Management előzményeket](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment) , és határozza meg a frissítés központi telepítésének pontos idejét.
 
@@ -259,7 +293,7 @@ A gépek az ARG-lekérdezés eredményeiben jelennek meg, de még mindig nem jel
 
 1. A Azure Portal lépjen egy olyan gép Automation-fiókjára, amely nem megfelelően jelenik meg.
 
-2. Válassza a **hibrid munkavégző csoportok** lehetőséget a **folyamat automatizálása**alatt.
+2. Válassza a **hibrid munkavégző csoportok** lehetőséget a **folyamat automatizálása** alatt.
 
 3. Válassza ki a **System Hybrid Worker groups** fület.
 
@@ -497,7 +531,7 @@ További információ a karbantartási időszakokról: [Install Updates (frissí
 
 ### <a name="issue"></a>Probléma
 
-* Vannak olyan gépek, amelyek a `Not assessed` **megfelelőség**alatt jelennek meg, és egy kivételt jelző üzenet jelenik meg.
+* Vannak olyan gépek, amelyek a `Not assessed` **megfelelőség** alatt jelennek meg, és egy kivételt jelző üzenet jelenik meg.
 * Megjelenik egy HRESULT-hibakód a portálon.
 
 ### <a name="cause"></a>Ok
@@ -594,10 +628,10 @@ Ha Linuxon dolgozik, a frissítések besorolás szerinti („kritikus és bizton
 
 A KB2267602 a [Windows Defender definíciófrissítése](https://www.microsoft.com/wdsi/definitions). Naponta frissül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem látja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz.
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
 * A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport) a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében.
-* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.

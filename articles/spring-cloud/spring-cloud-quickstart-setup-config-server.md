@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 0802f09cfb03f837fb7080620da776e79b37c9ed
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7400aeeba80ce168a9dea0d81e1ad0f2fbe24c95
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845084"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750843"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Gyors útmutató: az Azure Spring Cloud konfigurációs kiszolgáló beállítása
 
@@ -83,6 +83,9 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 ---
 ::: zone-end
 
+> [!TIP]
+> Ha privát tárházat használ a konfigurációs kiszolgálóhoz, tekintse [meg a hitelesítés beállításával foglalkozó oktatóanyagot](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server).
+
 ## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Az Azure Spring Cloud config Server hibaelhárítása
 
 Az alábbi eljárás a konfigurációs kiszolgáló beállításainak hibakeresését ismerteti.
@@ -108,7 +111,7 @@ Az alábbi eljárás a konfigurációs kiszolgáló beállításainak hibakeres�
 
     [![Asc-portál állapotának állapota ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban olyan Azure-erőforrásokat hozott létre, amelyek továbbra is felhalmozzák a díjakat, ha az előfizetésben maradnak. Ha nem szeretne továbblépni a következő rövid útmutatóra, tekintse meg az [erőforrások tisztítása](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)című témakört. Ellenkező esetben folytassa a következő rövid útmutatóval:
 

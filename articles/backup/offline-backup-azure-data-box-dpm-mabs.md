@@ -3,12 +3,12 @@ title: Offline biztonsági mentés a DPM és a MABS Azure Data Box
 description: A Azure Data Box használatával a kezdeti biztonsági mentési adatok a DPM és a MABS offline állapotba helyezhetők.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 80b3977a9fb886b90c3d48d54f4cda1abfd77df9
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172223"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752549"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline előkészítés a DPM és a MABS Azure Data Box használatával (előzetes verzió)
 
@@ -93,7 +93,7 @@ A DPM/MABS-kiszolgáló a rendszerkörnyezetben működik, ezért ugyanazt a jog
 1. Engedélyezze az NFS-ügyfélszolgáltatás funkcióját a DPM/MABS-kiszolgálón.
 Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
 2. Töltse le a **PSExec** -t a rendszerből [https://download.sysinternals.com/files/PSTools.zip](https://download.sysinternals.com/files/PSTools.zip) a DPM/MABS-kiszolgálóra.
-3. Nyisson meg egy rendszergazda jogú parancssort, és hajtsa végre a következő parancsot az *PSExec.exet * tartalmazó könyvtárral az aktuális könyvtárként.
+3. Nyisson meg egy rendszergazda jogú parancssort, és hajtsa végre a következő parancsot az *PSExec.exet* tartalmazó könyvtárral az aktuális könyvtárként.
 
    ```cmd
    psexec.exe  -s  -i  cmd.exe
@@ -126,7 +126,7 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
 
 9. Az **online biztonsági mentési ütemezés megadása** oldalon határozza meg, hogy milyen gyakran történjen növekményes biztonsági mentés az Azure-ba.
 10. Az **online adatmegőrzési szabály meghatározása** oldalon megtudhatja, hogyan őrizze meg a napi/heti/havi/éves biztonsági másolatokből létrehozott helyreállítási pontokat az Azure-ban.
-11. A varázsló **online replikáció kiválasztása** képernyőjén válassza az **átvitel a Microsoft tulajdonában lévő lemezek használatával** lehetőséget, majd kattintson a **tovább**gombra.
+11. A varázsló **online replikáció kiválasztása** képernyőjén válassza az **átvitel a Microsoft tulajdonában lévő lemezek használatával** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![A kezdeti online replikáció kiválasztása](./media/offline-backup-azure-data-box-dpm-mabs/choose-initial-online-replication.png)
 
@@ -147,13 +147,13 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
           -AzureRM. Resources   *6.7.3*<br>
           -AzureRM. Storage     *5.2.0*<br>
           – Azure. Storage       *4.6.1*<br>
-     >  - Az Azure AD-alkalmazás *AzureOfflineBackup_ként \<object GUID of the user> *van regisztrálva.
+     >  - Az Azure AD-alkalmazás *AzureOfflineBackup_ként \<object GUID of the user>* van regisztrálva.
 
 13. Válassza ki a megfelelő adatmező-sorrendet, amelyhez kicsomagolta, csatlakoztatta és zárolta Data Box lemezét. Kattintson a **Tovább** gombra.
 
     ![Válassza ki a databox](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 
-14. A **DataBox észlelése** képernyőn adja meg Data Box eszközének elérési útját, majd válassza az **eszköz észlelése**elemet.
+14. A **DataBox észlelése** képernyőn adja meg Data Box eszközének elérési útját, majd válassza az **eszköz észlelése** elemet.
 
     ![Hálózati elérési út megadása](./media/offline-backup-azure-data-box-dpm-mabs/enter-network-path.png)
 
@@ -162,10 +162,10 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
     >
     > ![USB-meghajtó](./media/offline-backup-azure-data-box-dpm-mabs/usb-drive.png)
     >
-    > Ha például a lemez elérési útja, a `\\mydomain\myserver\disk1\` *Disk1* pedig a *PageBlob*nevű KÖNYVTÁRAT tartalmazza, akkor a DPM/MABS-kiszolgáló varázslóban meg kell adni az elérési utat `\\mydomain\myserver\disk1\` .
+    > Ha például a lemez elérési útja, a `\\mydomain\myserver\disk1\` *Disk1* pedig a *PageBlob* nevű KÖNYVTÁRAT tartalmazza, akkor a DPM/MABS-kiszolgáló varázslóban meg kell adni az elérési utat `\\mydomain\myserver\disk1\` .
     > Ha [Azure Data Box 100 TB-os eszközt állít](./offline-backup-azure-data-box.md#set-up-azure-data-box)be, adja meg a következőt az eszköz hálózati elérési útjaként `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
 
-15. Kattintson a **Tovább** gombra. Az **Összefoglalás** lapon tekintse át a beállításokat, majd válassza a **csoport létrehozása**lehetőséget.
+15. Kattintson a **Tovább** gombra. Az **Összefoglalás** lapon tekintse át a beállításokat, majd válassza a **csoport létrehozása** lehetőséget.
 
     ![Databox észlelése](./media/offline-backup-azure-data-box-dpm-mabs/detect-databox.png)
 
@@ -194,7 +194,7 @@ Alternatív forrás meghatározása: *wim: D: \Sources\Install.wim: 4*
 Az Azure Data Box Disk sikeres biztonsági mentése után kövesse az alábbi lépéseket.
 
 - A Azure Data Box lemez Azure-ba való szállításához kövesse az [ebben a cikkben](../databox/data-box-disk-deploy-picked-up.md) ismertetett lépéseket. Ha Azure Data Box 100-TB eszközt használt, kövesse az [alábbi lépéseket](../databox/data-box-deploy-picked-up.md) a Azure Data Box Azure-ba való szállításához.
-- [Figyelje a Data Box feladatot](../databox/data-box-disk-deploy-upload-verify.md) a Azure Portalban. A Azure Data Box-feladatok *befejezése*után a DPM/MABS-kiszolgáló automatikusan áthelyezi az adatait a Storage-fiókból a Recovery Services-tárolóba a következő ütemezett biztonsági mentés időpontjában. Ezután megjelöli a biztonsági mentési feladatot, *Ha a* helyreállítási pont létrehozása sikeresen megtörtént.
+- [Figyelje a Data Box feladatot](../databox/data-box-disk-deploy-upload-verify.md) a Azure Portalban. A Azure Data Box-feladatok *befejezése* után a DPM/MABS-kiszolgáló automatikusan áthelyezi az adatait a Storage-fiókból a Recovery Services-tárolóba a következő ütemezett biztonsági mentés időpontjában. Ezután megjelöli a biztonsági mentési feladatot, *Ha a* helyreállítási pont létrehozása sikeresen megtörtént.
 
   > [!NOTE]
   > A DPM/MABS-kiszolgáló elindítja a biztonsági mentést a védelmi csoport létrehozásakor ütemezett időpontokban. Ezek a feladatok azonban *arra várnak, hogy Azure Data Box feladat befejeződjön* , amíg a feladat befejeződik.
@@ -230,7 +230,7 @@ Ellenőrizze, hogy a következő hibaüzenet jelenik-e meg a DPM/MABS-konzolon a
 
 A probléma megoldásához végezze el a következő lépéseket, majd próbálja megismételni a házirend-konfigurációt.
 
-1. Jelentkezzen be az Azure bejelentkezési oldalára, amely a DPM/MABS-kiszolgáló felhasználói felületén jelenik meg egy olyan fiókkal, amely rendszergazdai hozzáféréssel rendelkezik azon az előfizetésen, amely az importálási exportálási feladatot létrehozta.
+1. Jelentkezzen be az Azure bejelentkezési oldalára, amely a DPM/MABS-kiszolgáló felhasználói felületén jelenik meg egy olyan fiókkal, amely rendszergazdai hozzáféréssel rendelkezik az előfizetéshez, amelyhez a Data Box-feladatot létrehozta.
 2. Ha egy másik kiszolgáló nem rendelkezik kapcsolat nélküli előkészítéssel, és nem függ az `AzureOfflineBackup_<Azure User Id>` alkalmazástól, akkor törölje az alkalmazást **Azure Portal > Azure Active Directory > Alkalmazásregisztrációk**.
 
    > [!NOTE]
@@ -244,7 +244,7 @@ A DPM/MABS-kiszolgálóról, amelyen az offline biztonsági mentést kívánja k
 
 1. Nyissa meg a **számítógép-tanúsítvány alkalmazása**  >  **személyes** kezelése lapot, és keresse meg a nevet tartalmazó tanúsítványt `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
 2. Válassza ki a fenti tanúsítványt, kattintson a jobb gombbal a **minden feladat** elemre, és exportálja a titkos kulcs nélküli **exportálást** . cer formátumban.
-3. Nyissa meg a **2. pontban**említett Azure offline Backup alkalmazást. A **Beállítások**  >  **kulcsban**  >  **töltse fel a nyilvános kulcsot,** töltse fel a fenti lépésben exportált tanúsítványt.
+3. Nyissa meg a **2. pontban** említett Azure offline Backup alkalmazást. A **Beállítások**  >  **kulcsban**  >  **töltse fel a nyilvános kulcsot,** töltse fel a fenti lépésben exportált tanúsítványt.
 
    ![Nyilvános kulcsok feltöltése](./media/offline-backup-azure-data-box-dpm-mabs/upload-public-keys.png)
 
@@ -257,11 +257,11 @@ A DPM/MABS-kiszolgálóról, amelyen az offline biztonsági mentést kívánja k
     >- Az Azure-hoz csatlakoztatott PowerShellben futtassa a `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` parancsot.
     > - Navigáljon az CurrentUserId nevű beállításjegyzékbeli elérési útra `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` . *CurrentUserId*
 
-6. Kattintson a jobb gombbal a fenti lépésben hozzáadott sztringre, majd válassza a **módosítás**lehetőséget. Az érték mezőben adja meg a **2. pontban** exportált tanúsítvány ujjlenyomatát, és kattintson az **OK gombra**.
+6. Kattintson a jobb gombbal a fenti lépésben hozzáadott sztringre, majd válassza a **módosítás** lehetőséget. Az érték mezőben adja meg a **2. pontban** exportált tanúsítvány ujjlenyomatát, és kattintson az **OK gombra**.
 7. Az ujjlenyomat értékének lekéréséhez kattintson duplán a tanúsítványra, majd válassza a **részletek**  elemet, és görgessen lefelé, amíg meg nem jelenik az ujjlenyomat mező. Válassza ki az **ujjlenyomatot** , és másolja az értéket.
 
    ![Ujjlenyomat értéke](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Offline előkészítés saját lemez használatával (az Azure import/export szolgáltatás használatával)](backup-azure-backup-server-import-export.md)

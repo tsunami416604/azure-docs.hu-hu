@@ -8,18 +8,18 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a8180088e5a0db613d5f04106fe102f58594bf72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 268862d6e868342a252ca9d5eb08b9753142e8b1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655051"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750747"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
 Ez a cikk az Azure Spring Cloud szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="why-azure-spring-cloud"></a>Az Azure Spring Cloud bemutatása
 
@@ -69,6 +69,23 @@ Az Azure Spring Cloud első lépéseinek megkezdéséhez kövesse a rövid útmu
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Milyen Java-futtatókörnyezetet támogat az Azure Spring Cloud?
 
 Az Azure Spring Cloud támogatja a Java 8 és a 11 platformot. Lásd: [Java-futtatókörnyezet és operációsrendszer-verziók](#java-runtime-and-os-versions)
+
+### <a name="is-spring-boot-24x-supported"></a>A Spring boot 2.4. x támogatott?
+A Spring boot 2,4-as számú, és jelenleg a Spring-Közösséggel dolgozik a megoldásban. Addig is vegye fel ezt a két függőséget, hogy engedélyezze a TLS-hitelesítést az alkalmazások és az Eureka között.
+
+```xml
+<dependency> 
+    <groupId>com.sun.jersey</groupId>
+    <artifactId>jersey-client</artifactId>
+    <version>1.19.4</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.jersey.contribs</groupId>
+    <artifactId>jersey-apache-client4</artifactId>
+    <version>1.19.4</version>
+</dependency>
+```
+
 ::: zone-end
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Hol tekinthetem meg a Spring Cloud Application-naplókat és-metrikákat?
@@ -224,6 +241,6 @@ Nincs hatással a felhasználói élményre, az Eureka-ügyfél szívverési és
 Ennek a résznek a tökéletesítését fogjuk kijavítani, és ezt a hibát a felhasználói alkalmazások rövid időn belül el kell kerülniük.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további kérdései vannak, tekintse meg az [Azure Spring Cloud hibaelhárítási útmutatóját](spring-cloud-troubleshoot.md).

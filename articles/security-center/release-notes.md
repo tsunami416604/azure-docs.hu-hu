@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbd208cea64a3b2dc22f7603f654127e5b46294
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8b690201ea4349f9577377ff24c91bd75ecd58b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511763"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751869"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -31,12 +31,13 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 > Ha hat hónapnál régebbi elemeket keres, az archívumban találhatja meg a [Azure Security Center újdonságait](release-notes-archive.md).
 
 
-## <a name="december-2020"></a>December 2020
+## <a name="december-2020"></a>2020. december
 
 A decemberi frissítések a következők:
 
 - [Általánosan elérhető az Azure Defender az SQL-kiszolgálókhoz a gépeken](#azure-defender-for-sql-servers-on-machines-is-generally-available)
 - [Általánosan elérhető az Azure Defender for SQL-támogatás az Azure szinapszis Analytics dedikált SQL-készletéhez](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
+- [Két új Azure Defender-csomag: az Azure Defender for DNS és az Azure Defender for Resource Manager (előzetes verzió)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Általánosan elérhető az Azure Defender az SQL-kiszolgálókhoz a gépeken
 
@@ -68,6 +69,24 @@ Az SQL-hez készült Azure Defender az alábbiakkal védi a dedikált SQL-készl
 Az Azure Defender for SQL az Azure szinapszis Analytics SQL-készletekhez való támogatását automatikusan hozzáadja az Azure SQL Databases csomaghoz Azure Security Center. A Azure Portal a szinapszis munkaterület lapján egy új "Azure Defender for SQL" lapot talál.
 
 További információ [Az Azure Defender for SQL szolgáltatásról](defender-for-sql-introduction.md).
+
+
+### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>Két új Azure Defender-csomag: az Azure Defender for DNS és az Azure Defender for Resource Manager (előzetes verzió)
+
+Az Azure-környezethez két új, felhőben natív, széles körű veszélyforrások elleni védelmi képességgel bővült.
+
+Ezek az új védelem nagy mértékben fokozza rugalmasságát a veszélyforrások elleni támadásokkal szemben, és jelentősen növeli az Azure Defender által védett Azure-erőforrások számát.
+
+- **Azure Defender for Resource Manager** – a szervezeten belül végrehajtott összes erőforrás-kezelési művelet automatikus figyelése. További információ:
+    - [A Resource Managerhez készült Azure Defender bemutatása](defender-for-resource-manager-introduction.md)
+    - [Válasz az Azure Defender for Resource Manager-riasztásokra](defender-for-resource-manager-usage.md)
+    - [Az Azure Defender for Resource Manager által biztosított riasztások listája](alerts-reference.md#alerts-resourcemanager)
+
+- **Azure Defender DNS-ben** – folyamatosan figyeli az Azure-erőforrások összes DNS-lekérdezését. További információ:
+    - [A DNS-hez készült Azure Defender bemutatása](defender-for-dns-introduction.md)
+    - [Válaszadás az Azure Defender DNS-riasztásokra](defender-for-dns-usage.md)
+    - [Az Azure Defender által a DNS-hez biztosított riasztások listája](alerts-reference.md#alerts-dns)
+
 
 ## <a name="november-2020"></a>2020. november
 
@@ -226,7 +245,7 @@ További információ a [Azure Firewallról](https://azure.microsoft.com/service
 
 Az ajánlott **IP-címtartományok meghatározása a Kubernetes Services szolgáltatásban** most már rendelkezik egy gyors javítási lehetőséggel.
 
-A javaslatról és az egyéb Security Center javaslatokról további részleteket a [biztonsági javaslatok – útmutató](recommendations-reference.md)című témakörben talál.
+További információ erről a javaslatról és az összes többi Security Center javaslatról: [biztonsági javaslatok – útmutató](recommendations-reference.md).
 
 :::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="A hitelesítő IP-tartományokat a Kubernetes Services javaslatban kell meghatározni a gyors javítás lehetőséggel":::
 

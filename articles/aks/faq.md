@@ -3,12 +3,12 @@ title: Gyakran ismételt kérdések az Azure Kubernetes szolgáltatásról (ak)
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: bbe4d43fde3746e6c992b7f03927f081d3814597
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1ca342c1ea4134f4d9d8f1dbcae4e61bf2a75eaf
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745758"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751390"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes Service-szel (AKS) kapcsolatban
 
@@ -43,9 +43,7 @@ Az Azure automatikusan a fürt Linux-csomópontjaira alkalmazza a biztonsági ja
 
 - Manuálisan, a Azure Portalon vagy az Azure CLI-n keresztül.
 - Az AK-fürt frissítésével. A fürt automatikusan frissíti a [Cordon lévő és a kiürítési csomópontokat][cordon-drain] , majd egy új csomópontot online állapotba helyez a legújabb Ubuntu-lemezképpel és egy új patch-verzióval vagy egy kisebb Kubernetes-verzióval. További információ: AK- [fürt frissítése][aks-upgrade].
-- A [Kured](https://github.com/weaveworks/kured)egy nyílt forráskódú újraindítási démont használ a Kubernetes. A Kured [daemonset elemet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) fut, és figyeli az egyes csomópontokat egy olyan fájl jelenléte esetén, amely azt jelzi, hogy újraindítás szükséges. A fürtben az operációs rendszer újraindítását a fürt frissítésével megegyező [Kordon-és kiürítési folyamat][cordon-drain] kezeli.
-
-További információ a kured használatáról: [biztonsági és kernel-frissítések alkalmazása a csomópontokra az AK-ban][node-updates-kured].
+- A [csomópontok rendszerképének frissítésével](node-image-upgrade.md).
 
 ### <a name="windows-server-nodes"></a>Windows Server-csomópontok
 
@@ -57,14 +55,14 @@ Az AK számos Azure-infrastruktúra-erőforrásra épül, beleértve a virtuáli
 
 Az architektúra engedélyezéséhez minden AK-beli telepítés két erőforráscsoportot ölel fel:
 
-1. Hozza létre az első erőforráscsoportot. Ez a csoport csak a Kubernetes szolgáltatás erőforrását tartalmazza. Az AK erőforrás-szolgáltatója automatikusan létrehozza a második erőforráscsoportot az üzembe helyezés során. A második erőforráscsoport példája *MC_myResourceGroup_myAKSCluster_eastus* . A második erőforráscsoport nevének megadásával kapcsolatos információkért tekintse meg a következő szakaszt.
-1. A második erőforráscsoport, azaz a csomópont- *erőforráscsoport* a fürthöz társított összes infrastruktúra-erőforrást tartalmazza. Ezek az erőforrások magukban foglalják a Kubernetes csomópontos virtuális gépeket, a virtuális hálózatkezelést és a tárterületet. Alapértelmezés szerint a csomópont-erőforráscsoport neve például *MC_myResourceGroup_myAKSCluster_eastus* . Az AK automatikusan törli a csomópont-erőforrást, amikor a fürt törlődik, ezért csak olyan erőforrásokhoz használható, amelyek osztoznak a fürt életciklusán.
+1. Hozza létre az első erőforráscsoportot. Ez a csoport csak a Kubernetes szolgáltatás erőforrását tartalmazza. Az AK erőforrás-szolgáltatója automatikusan létrehozza a második erőforráscsoportot az üzembe helyezés során. A második erőforráscsoport példája *MC_myResourceGroup_myAKSCluster_eastus*. A második erőforráscsoport nevének megadásával kapcsolatos információkért tekintse meg a következő szakaszt.
+1. A második erőforráscsoport, azaz a csomópont- *erőforráscsoport* a fürthöz társított összes infrastruktúra-erőforrást tartalmazza. Ezek az erőforrások magukban foglalják a Kubernetes csomópontos virtuális gépeket, a virtuális hálózatkezelést és a tárterületet. Alapértelmezés szerint a csomópont-erőforráscsoport neve például *MC_myResourceGroup_myAKSCluster_eastus*. Az AK automatikusan törli a csomópont-erőforrást, amikor a fürt törlődik, ezért csak olyan erőforrásokhoz használható, amelyek osztoznak a fürt életciklusán.
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Megadhatom a saját nevet az AK-csomópont erőforráscsoporthoz?
 
 Igen. Alapértelmezés szerint a (z) *MC_resourcegroupname_clustername_location* csomópont-erőforráscsoport neve lesz, de a saját nevét is megadhatja.
 
-A saját erőforráscsoport-név megadásához telepítse az [AK – előzetes][aks-preview-cli] VERZIÓJÚ Azure CLI-bővítmény *0.3.2* vagy újabb verzióját. Ha az az [AK Create][az-aks-create] paranccsal hoz létre egy AK-fürtöt, használja a *--Node-Resource-Group* paramétert, és adja meg az erőforráscsoport nevét. Ha [Azure Resource Manager sablont használ][aks-rm-template] egy AK-fürt üzembe helyezéséhez, megadhatja az erőforráscsoport nevét a *nodeResourceGroup* tulajdonság használatával.
+A saját erőforráscsoport-név megadásához telepítse az [AK – előzetes][aks-preview-cli] VERZIÓJÚ Azure CLI-bővítmény *0.3.2* vagy újabb verzióját. Amikor egy AK-fürtöt hoz létre az az [AK Create][az-aks-create] paranccsal, használja a `--node-resource-group` paramétert, és adja meg az erőforráscsoport nevét. Ha [Azure Resource Manager sablont használ][aks-rm-template] egy AK-fürt üzembe helyezéséhez, megadhatja az erőforráscsoport nevét a *nodeResourceGroup* tulajdonság használatával.
 
 * Az Azure erőforrás-szolgáltató automatikusan létrehozza a másodlagos erőforráscsoportot a saját előfizetésében.
 * Egyéni erőforráscsoport-nevet csak a fürt létrehozásakor adhat meg.
@@ -79,9 +77,9 @@ A csomópont-erőforráscsoport használata során ne feledje, hogy a következ�
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Módosíthatom a csomóponti erőforráscsoporthoz tartozó AK-erőforrások címkéit és egyéb tulajdonságait?
 
-Ha módosítja vagy törli az Azure által létrehozott címkéket és az egyéb erőforrás-tulajdonságokat a csomópont-erőforráscsoport esetében, váratlan eredményekhez juthat, például a skálázási és a frissítési hibákhoz. Az AK lehetővé teszi a végfelhasználók által létrehozott egyéni címkék létrehozását és módosítását, valamint a címkék hozzáadását [egy csomópont-készlet létrehozásakor](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool). Előfordulhat, hogy egyéni címkéket kíván létrehozni vagy módosítani, például egy üzleti egység vagy költséghely hozzárendeléséhez. Ezt úgy is megteheti, hogy az Azure-szabályzatokat a felügyelt erőforráscsoport hatókörével hozza létre.
+Ha módosítja vagy törli az Azure által létrehozott címkéket és az egyéb erőforrás-tulajdonságokat a csomópont-erőforráscsoport esetében, váratlan eredményekhez juthat, például a skálázási és a frissítési hibákhoz. Az AK lehetővé teszi a végfelhasználók által létrehozott egyéni címkék létrehozását és módosítását, és ezeket a címkéket felveheti [a csomópont-készlet létrehozásakor](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool). Előfordulhat, hogy egyéni címkéket kíván létrehozni vagy módosítani, például egy üzleti egység vagy költséghely hozzárendeléséhez. Ezt úgy is megteheti, hogy az Azure-szabályzatokat a felügyelt erőforráscsoport hatókörével hozza létre.
 
-Ha azonban az AK-fürt csomópont-erőforráscsoport területén lévő erőforrásokra vonatkozó összes **Azure-beli címkét** módosítja, egy nem támogatott művelet, amely megszakítja a szolgáltatási szintű célkitűzést (SLO). További információkért lásd: az [AK-t kínáló szolgáltatás szintű szerződés?](#does-aks-offer-a-service-level-agreement)
+Ha azonban az AK-fürt csomópont-erőforráscsoport területén lévő erőforrásokhoz tartozó összes **Azure-beli címkét** módosítja, nem támogatott művelet, amely megtöri a szolgáltatási szint célkitűzését (SLO). További információkért lásd: az [AK-t kínáló szolgáltatás szintű szerződés?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Milyen Kubernetes-beléptetési vezérlőket támogat az AK? Hozzáadhatók vagy eltávolíthatók a beléptetési vezérlők?
 
@@ -112,11 +110,11 @@ namespaceSelector:
       operator: DoesNotExist
 ```
 
-Az AK tűzfalakkal védi az API-kiszolgáló kimenő adatait, így a beléptetési vezérlő webhookoknak elérhetőknek kell lenniük a fürtön belülről.
+Az AK tűzfalakkal védi az API-kiszolgáló kimenő adatait, így a belépésvezérlés webhookoknak elérhetőknek kell lenniük a fürtön belülről.
 
 ## <a name="can-admission-controller-webhooks-impact-kube-system-and-internal-aks-namespaces"></a>A beléptetési vezérlő webhookok hatással vannak a Kube-rendszerek és a belső AK-beli névterekre?
 
-A rendszer stabilitásának biztosítása és az egyéni belépésvezérlés megakadályozása a Kube-rendszer belső szolgáltatásainak befolyásolása érdekében a névtér AK-ban van egy **beléptetési végrehajtó** , amely automatikusan kizárja a Kube-rendszer és az AK belső névtereit. Ez a szolgáltatás biztosítja, hogy az egyéni belépésvezérlés ne befolyásolja a Kube-rendszeren futó szolgáltatásokat.
+A rendszer stabilitásának biztosítása és az egyéni belépésvezérlés megakadályozása a Kube-rendszer belső szolgáltatásainak befolyásolása érdekében a névtér AK-ban van egy **beléptetési végrehajtó**, amely automatikusan kizárja a Kube-rendszer és az AK belső névtereit. Ez a szolgáltatás biztosítja, hogy az egyéni belépésvezérlés ne befolyásolja a Kube-rendszeren futó szolgáltatásokat.
 
 Ha olyan kritikus használati esettel rendelkezik, amely a Kube-rendszeren (nem ajánlott) van telepítve, amelyet az egyéni beléptetési webhooknak kell megadnia, akkor az alábbi címkét vagy jegyzetet is hozzáadhatja, hogy a felvételi kényszerítő figyelmen kívül hagyja azt.
 
@@ -134,7 +132,7 @@ A Windows Server rendszerhez készült csomópont-támogatás olyan korlátozás
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Biztosít-e az AK szolgáltatás szintű szerződést?
 
-Az AK SLA-garanciákat biztosít a választható szolgáltatásokhoz, és a [rendelkezésre állási SLA][uptime-sla]-t is igénybe veheti.
+Az AK SLA-garanciákat biztosít opcionális kiegészítő szolgáltatásként, amely a [rendelkezésre állási SLA][uptime-sla]-t tartalmazza.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Alkalmazhatom az Azure-beli foglalási kedvezményeket az AK-ügynökök csomópontjaira?
 
@@ -158,15 +156,15 @@ Az AK-fürt és a hozzá tartozó erőforrások áthelyezése vagy átnevezése 
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>Miért törli a fürtem a munkaidőt? 
 
-A rendszer a legtöbb fürtöt törli a felhasználói kérelem után; bizonyos esetekben – különösen abban az esetben, ha az ügyfelek a saját erőforráscsoportot használják, vagy ha a több-RG feladatok törlésével – további időt vagy hibát okozhatnak. Ha problémák merülnek fel a törléssel kapcsolatban, ellenőrizze, hogy nincsenek-e zárolások a RG-on, hogy a RG-on kívüli összes erőforrás társítva van-e a RG-hoz stb.
+A rendszer a legtöbb fürtöt törli a felhasználói kérelem után; bizonyos esetekben – különösen abban az esetben, ha az ügyfelek a saját erőforráscsoportot használják, vagy ha a több-RG feladatok törlésével – további időt vagy hibát okozhatnak. Ha probléma merül fel a törléssel kapcsolatban, ellenőrizze, hogy nincsenek-e zárolások a RG-on, hogy a RG-on kívüli összes erőforrás társítva van-e a RG-ból, és így tovább.
 
 ## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>Ha a "NodeLost" vagy az "Unknown" állapotú Pod/üzemelő példányok továbbra is frissíthetem a fürtöt?
 
-De az AK nem javasolja ezt. A frissítéseket ideális esetben kell végrehajtani, ha a fürt állapota ismert és kifogástalan.
+De az AK nem javasolja ezt. A frissítéseket akkor kell elvégezni, ha a fürt állapota ismert és kifogástalan állapotú.
 
 ## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>Ha egy vagy több csomóponttal rendelkező fürt nem kifogástalan állapotú vagy leáll, frissíthetem a frissítést?
 
-Nem, törölje vagy távolítsa el a meghibásodott állapotú csomópontokat, vagy távolítsa el a fürtöt a frissítés előtt.
+Nem, a frissítés előtt törölje vagy távolítsa el a meghibásodott állapotú csomópontokat, vagy más módon távolítsa el azokat a fürtből.
 
 ## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Futtattam egy fürtöt, de a következő hibaüzenet jelenik meg: `[Errno 11001] getaddrinfo failed` 
 
@@ -174,31 +172,31 @@ Ezt általában az okozza, hogy a felhasználók egy vagy több hálózati bizto
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Futtattam egy frissítést, de most a hüvelyem összeomlott hurkokban van, és a készültségi mintavétel meghiúsul?
 
-Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: az [AK](./kubernetes-service-principal.md) -beli szolgáltatásnév és az AK-beli [frissítési hitelesítő adatok](./update-credentials.md).
+Erősítse meg, hogy a szolgáltatásnév nem járt le.  Lásd: az AK-beli [szolgáltatásnév](./kubernetes-service-principal.md) és az AK-s [frissítési hitelesítő adatai](./update-credentials.md).
 
-## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>A fürtem működik, de hirtelen nem lehet kiépíteni a LoadBalancers, a csatlakoztatási és a PVC-ket? 
+## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>A fürtem működik, de hirtelen nem lehet kiépíteni a LoadBalancers, a csatlakoztatási és a PVC-ket? 
 
-Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: az [AK](./kubernetes-service-principal.md)  -beli szolgáltatásnév és az AK-beli [frissítési hitelesítő adatok](./update-credentials.md).
+Erősítse meg, hogy a szolgáltatásnév nem járt le.  Lásd: az AK-beli [szolgáltatásnév](./kubernetes-service-principal.md)  és az AK-s [frissítési hitelesítő adatai](./update-credentials.md).
 
 ## <a name="can-i-scale-my-aks-cluster-to-zero"></a>Lehet nullára méretezni az AK-fürtöt?
-A [futó AK-fürtök teljes mértékben leállíthatók](start-stop-cluster.md), így a megfelelő számítási költségek is megtekinthetők. Emellett dönthet úgy is, hogy az [összes vagy adott `User` csomópont-készletet 0-ra méretezi vagy automatikusan kiméretezi](scale-cluster.md#scale-user-node-pools-to-0) , csak a szükséges fürtkonfiguráció fenntartásával.
-A [rendszercsomópont-készletek](use-system-pools.md) nem méretezhetők közvetlenül a 0 értékre.
+A [futó AK-fürtök teljes mértékben leállíthatók](start-stop-cluster.md), így a megfelelő számítási költségek is megtekinthetők. Emellett dönthet úgy is, hogy az [összes vagy adott `User` csomópont-készletet 0-ra méretezi vagy Automatikus méretezéssel](scale-cluster.md#scale-user-node-pools-to-0) , csak a szükséges fürtkonfiguráció fenntartásával.
+A [rendszercsomópont-készletek](use-system-pools.md) nem méretezhetők közvetlenül a nullára.
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Használhatom a virtuálisgép-méretezési csoport API-jait a manuális méretezéshez?
 
 Nem, a virtuálisgép-méretezési csoport API-jai nem támogatják a méretezési műveleteket. Használja az AK API-kat ( `az aks scale` ).
 
-## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Használhatom a virtuálisgép-méretezési csoportokat a 0 csomópontra való manuális méretezéshez?
+## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-zero-nodes"></a>Használhatom a virtuálisgép-méretezési csoportokat a nulla csomópontokra való manuális méretezéshez?
 
-Nem, a virtuálisgép-méretezési csoport API-jai nem támogatják a méretezési műveleteket.
+Nem, a virtuálisgép-méretezési csoport API-jai nem támogatják a méretezési műveleteket. Az AK API-val a nem rendszerszintű, illetve a [fürt leállítása](start-stop-cluster.md) nem végezhető el.
 
 ## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>Leállíthatom vagy Lefoglalhatom az összes virtuális gépet?
 
-Míg az AK rugalmassági mechanizmusokkal rendelkezik, amelyek egy ilyen konfigurációt és helyreállítást biztosítanak, ez nem ajánlott.
+Míg az AK rugalmassági mechanizmusokkal rendelkezik, amelyek egy ilyen konfigurációt és helyreállítást végeznek, ez nem támogatott. Ehelyett [állítsa le a fürtöt](start-stop-cluster.md) .
 
 ## <a name="can-i-use-custom-vm-extensions"></a>Használhatok egyéni virtuálisgép-bővítményeket?
 
-A Log Analytics ügynök támogatott, mert a Microsoft által felügyelt bővítmény. Ellenkező esetben nem, az AK felügyelt szolgáltatás, és a IaaS-erőforrások kezelése nem támogatott. Az egyéni összetevők (stb.) telepítéséhez használja a Kubernetes API-kat és mechanizmusokat. Például a DaemonSets használatával telepítse a szükséges összetevőket.
+A Log Analytics ügynök támogatott, mert a Microsoft által felügyelt bővítmény. Ellenkező esetben nem, az AK felügyelt szolgáltatás, és a IaaS-erőforrások kezelése nem támogatott. Egyéni összetevők telepítéséhez használja a Kubernetes API-kat és mechanizmusokat. Például a DaemonSets használatával telepítse a szükséges összetevőket.
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Az AK a fürt régióján kívül tárolja a vásárlói adatmennyiséget?
 
@@ -210,6 +208,52 @@ A következő két kép kivételével az AK-lemezképek nem szükségesek root-k
 
 - *mcr.microsoft.com/oss/kubernetes/coredns*
 - *mcr.microsoft.com/azuremonitor/containerinsights/ciprod*
+
+## <a name="what-is-azure-cni-transparent-mode-vs-bridge-mode"></a>Mi az az Azure CNI transzparens mód vagy a Bridge mód?
+
+A v 1.2.0 az Azure CNI az egyszeri bérletű linuxos CNI-környezetek esetében az alapértelmezett transzparens mód lesz. Az átlátszó mód a híd üzemmódot váltja fel. Ebben a szakaszban a két mód különbségeit tárgyaljuk, valamint a transzparens üzemmód Azure CNI való használatának előnyeit és korlátozásait.
+
+### <a name="bridge-mode"></a>Híd mód
+
+Ahogy a neve is sugallja, az Azure CNI-híd üzemmód "just in Time" módban létrehoz egy "azure0" nevű L2 hidat. A rendszer az összes gazdagép oldali Pod `veth` pár csatolót csatlakoztatja ehhez a hídhoz. Így Pod-Pod a virtuális gépeken belüli kommunikáció ezen a hídon keresztül történik. A szóban forgó híd egy 2. rétegbeli virtuális eszköz, amely a saját tulajdonában nem tud semmit fogadni vagy továbbítani, kivéve, ha egy vagy több valós eszközt köt hozzá. Emiatt a linuxos virtuális gép ETH0-át át kell alakítani egy alárendeltre a "azure0"-hídra. Ez egy összetett hálózati topológiát hoz létre a Linux rendszerű virtuális gépen, és a CNI is gondoskodnia kell más hálózati funkciókról, például a DNS-kiszolgáló frissítéséről és így tovább.
+
+:::image type="content" source="media/faq/bridge-mode.png" alt-text="Híd üzemmód topológiája":::
+
+Az alábbi példa azt szemlélteti, hogyan néz ki az IP-útvonal beállítása a Bridge módban. Függetlenül attól, hogy hány hüvely van a csomóponton, csak két útvonal lesz. Az első, ami azt jelzi, hogy az azure0-n kívüli összes forgalom az alhálózat alapértelmezett átjáróján keresztül az IP "src 10.240.0.4" (amely a csomópont elsődleges IP-címe), a másik pedig "10.20. x. x" Pod tér a rendszermagba, hogy eldöntse.
+
+```bash
+default via 10.240.0.1 dev azure0 proto dhcp src 10.240.0.4 metric 100
+10.240.0.0/12 dev azure0 proto kernel scope link src 10.240.0.4
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
+root@k8s-agentpool1-20465682-1:/#
+```
+
+### <a name="transparent-mode"></a>Transzparens mód
+Az átlátszó mód a Linux hálózatkezelés beállításához szükséges egyszerű megközelítést veszi igénybe. Ebben a módban az Azure CNI nem változtatja meg a Linux rendszerű virtuális gépen elérhető ETH0-interfészek tulajdonságait. A Linux hálózati tulajdonságok megváltoztatásának minimális megközelítése segít csökkenteni a komplex sarki problémák mennyiségét, amelyekkel a fürtök a híd móddal szembesülnek. Transzparens módban az Azure CNI létrehoz és hozzáad egy gazdagép-oldali Pod `veth` pair-felületet, amelyet a rendszer hozzáad a gazdagéphez. A virtuális gépen belüli Pod-Pod kommunikáció a CNI által hozzáadott IP-útvonalakon keresztül történik. Lényegében a pod-to-Pod-alapú virtuális gép alacsonyabb rétegbeli 3 hálózati forgalom.
+
+:::image type="content" source="media/faq/transparent-mode.png" alt-text="Transzparens üzemmódú topológia":::
+
+Az alábbi példa egy transzparens üzemmódú IP-útvonal beállítását mutatja be, az egyes Pod-interfészek egy statikus útvonalat kapnak, hogy a megjelenő IP-címmel ellátott forgalom közvetlenül a pod Host Side pair-felületén legyen elküldve `veth` .
+
+### <a name="benefits-of-transparent-mode"></a>Az átlátszó mód előnyei
+
+- A `conntrack` DNS párhuzamos versenyhelyzet mérséklését és az 5 mp-es DNS-késési problémák elkerülését teszi lehetővé anélkül, hogy a csomópont helyi DNS-t kellene beállítani (a csomópont helyi DNS-t továbbra is használhatja teljesítménybeli okokból).
+- Kiküszöböli a kezdeti 5 mp-es DNS-késés CNI híd üzemmódját a mai napon, a híd beállítása miatt.
+- A Bridge Mode egyik sarki esete az, hogy az Azure-CNI nem tudja megőrizni a felhasználók által a VNET vagy a NIC-be való hozzáadáshoz hozzáadott egyéni DNS-kiszolgáló frissítését. Ez azt eredményezi, hogy a CNI csak a DNS-kiszolgálók listájának első példányát vette fel. Transzparens módban megoldott, mivel a CNI nem változtatja meg a ETH0-tulajdonságokat. [Itt](https://github.com/Azure/azure-container-networking/issues/713)is látszik.
+- Az UDP-forgalom hatékonyabb kezelését és az UDP-beli adatváltozások enyhítését teszi lehetővé az ARP időtúllépése esetén. A Bridge módban, ha a híd nem ismeri a cél pod MAC-címeit a virtuális gépen belüli Pod-Pod kommunikációban, a terv szerint ez a csomag minden portra kiterjed. Transzparens módban megoldott, mert az elérési útban nem találhatók L2-eszközök. [Itt](https://github.com/Azure/azure-container-networking/issues/704)talál további információt.
+- Az átlátszó mód jobb teljesítményt nyújt a virtuális gépen belüli Pod-to-Pod kommunikációban az átviteli sebesség és a késés tekintetében a híd üzemmódhoz képest.
+
+```bash
+10.240.0.216 dev azv79d05038592 proto static
+10.240.0.218 dev azv8184320e2bf proto static
+10.240.0.219 dev azvc0339d223b9 proto static
+10.240.0.222 dev azv722a6b28449 proto static
+10.240.0.223 dev azve7f326f1507 proto static
+10.240.0.224 dev azvb3bfccdd75a proto static
+168.63.129.16 via 10.240.0.1 dev eth0 proto dhcp src 10.240.0.4 metric 100
+169.254.169.254 via 10.240.0.1 dev eth0 proto dhcp src 10.240.0.4 metric 100
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
+```
 
 <!-- LINKS - internal -->
 

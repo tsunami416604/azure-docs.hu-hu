@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/08/2020
+ms.date: 11/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 172824a2215e8a102ad4c284c847072960344549
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5aca04a649dfa5228d12737b21ef2ee2b14013b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88041527"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750439"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>REST-technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -39,7 +39,7 @@ Az alábbi példa egy REST-technikai profilt mutat be:
 
 ## <a name="input-claims"></a>Bemeneti jogcímek
 
-A **szabályzattípushoz** elem tartalmazza a REST API küldendő jogcímek listáját. A jogcím nevét a REST APIban definiált névre is leképezheti. A következő példa a házirend és a REST API közötti leképezést mutatja be. A rendszer a **givenName** -jogcímet **firstName**-ként elküldi a REST APInak, míg a **vezetéknevet** **utónévként**küldjük el. Az **e-mail-** jogcím a következőképpen van beállítva:.
+A **szabályzattípushoz** elem tartalmazza a REST API küldendő jogcímek listáját. A jogcím nevét a REST APIban definiált névre is leképezheti. A következő példa a házirend és a REST API közötti leképezést mutatja be. A rendszer a **givenName** -jogcímet **firstName**-ként elküldi a REST APInak, míg a **vezetéknevet** **utónévként** küldjük el. Az **e-mail-** jogcím a következőképpen van beállítva:.
 
 ```xml
 <InputClaims>
@@ -115,13 +115,13 @@ A technikai profil a jogcímeket is visszaadja, amelyeket az identitás-szolgál
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ServiceUrl | Igen | Az REST API végpont URL-címe |
-| AuthenticationType | Igen | A REST-alapú jogcím-szolgáltató által végrehajtott hitelesítés típusa. Lehetséges értékek: `None` ,,, `Basic` `Bearer` vagy `ClientCertificate` . Az `None` érték azt jelzi, hogy a REST API névtelen. Az `Basic` érték azt jelzi, hogy a REST API a http alapszintű hitelesítéssel védett. Csak ellenőrzött felhasználók férhetnek hozzá az API-hoz, beleértve a Azure AD B2C is. A `ClientCertificate` (javasolt) érték azt jelzi, hogy a REST API ügyféltanúsítvány-alapú hitelesítés használatával korlátozza a hozzáférést. Csak a megfelelő tanúsítvánnyal rendelkező szolgáltatások férhetnek hozzá az API-hoz (például Azure AD B2C). Az `Bearer` érték azt jelzi, hogy a REST API az ügyfél OAuth2 tulajdonosi jogkivonatát használva korlátozza a hozzáférést. |
+| AuthenticationType | Igen | A REST-alapú jogcím-szolgáltató által végrehajtott hitelesítés típusa. Lehetséges értékek: `None` ,,, `Basic` `Bearer`  `ClientCertificate` , vagy `ApiKeyHeader` . <br /><ul><li>Az `None` érték azt jelzi, hogy a REST API névtelen. </li><li>Az `Basic` érték azt jelzi, hogy a REST API a http alapszintű hitelesítéssel védett. Csak ellenőrzött felhasználók férhetnek hozzá az API-hoz, beleértve a Azure AD B2C is. </li><li>A `ClientCertificate` (javasolt) érték azt jelzi, hogy a REST API ügyféltanúsítvány-alapú hitelesítés használatával korlátozza a hozzáférést. Csak a megfelelő tanúsítvánnyal rendelkező szolgáltatások férhetnek hozzá az API-hoz (például Azure AD B2C). </li><li>Az `Bearer` érték azt jelzi, hogy a REST API az ügyfél OAuth2 tulajdonosi jogkivonatát használva korlátozza a hozzáférést. </li><li>Az `ApiKeyHeader` érték azt jelzi, hogy a REST API biztosítva van az API-kulcs http-fejléce, például az *x-functions-Key*. </li></ul> |
 | AllowInsecureAuthInProduction| Nem| Azt jelzi, hogy a beállítható `AuthenticationType` `none` -e éles környezetben ( `DeploymentMode` a [TrustFrameworkPolicy](trustframeworkpolicy.md) beállítása `Production` , vagy nincs megadva). Lehetséges értékek: true vagy FALSE (alapértelmezett). |
 | SendClaimsIn | Nem | Megadja, hogy a rendszer hogyan küldje el a bemeneti jogcímeket a REST-jogcím-szolgáltatónak. Lehetséges értékek: `Body` (alapértelmezett), `Form` , `Header` , `Url` vagy `QueryString` . Az `Body` érték a kérelem törzsében a JSON formátumban elküldett bemeneti jogcím. Az `Form` érték az a bemeneti jogcím, amelyet a rendszer a kérés törzsében küld el egy "&" tagolt kulcs értékének formátumában. Az `Header` érték a kérelem fejlécében elküldhető bemeneti jogcím. Az `Url` érték az URL-címben eljuttatott bemeneti jogcím, például https://{claim1}. example. com/{claim2}/{claim3}? { claim4} = {claim5}. Az `QueryString` érték a kérelem lekérdezési karakterláncában elküldhető bemeneti jogcím. Az egyesek által meghívott HTTP-műveletek a következők:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`Url`: GET</li><li>`QueryString`: GET</li></ul> |
 | ClaimsFormat | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható. |
 | ClaimUsedForRequestPayload| Nem | Egy olyan karakterlánc-jogcím neve, amely a REST API küldendő adattartalmat tartalmazza. |
 | DebugMode | Nem | A technikai profilt hibakeresési módban futtatja. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Hibakeresési módban a REST API további információkat adhat vissza. Lásd a [visszatérési hibaüzenet](#returning-validation-error-message) szakaszt. |
-| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
+| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 | ResolveJsonPathsInJsonTokens  | Nem | Azt jelzi, hogy a technikai profil feloldja-e a JSON-útvonalakat. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). A metaadatok használatával beolvashatja az adatokat egy beágyazott JSON-elemből. A [OutputClaim](technicalprofiles.md#outputclaims)állítsa be a `PartnerClaimType` elemet a kimenetként használni kívánt JSON-útvonal elemre. Például: `firstName.localized` , vagy `data.0.to.0.email` .|
 | UseClaimAsBearerToken| Nem| A tulajdonosi jogkivonatot tartalmazó jogcím neve.|
 
@@ -219,6 +219,27 @@ Ha a hitelesítés típusa értékre van állítva `Bearer` , a **CryptographicK
 </TechnicalProfile>
 ```
 
+Ha a hitelesítés típusa értékre van állítva `ApiKeyHeader` , a **CryptographicKeys** elem a következő attribútumot tartalmazza:
+
+| Attribútum | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| A HTTP-fejléc neve, például `x-functions-key` , vagy `x-api-key` . | Igen | A hitelesítéshez használt kulcs. |
+
+```xml
+<TechnicalProfile Id="REST-API-SignUp">
+  <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
+    <Item Key="AuthenticationType">ApiKeyHeader</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
+  </CryptographicKeys>
+</TechnicalProfile>
+```
+
 ## <a name="returning-validation-error-message"></a>Érvényesítési hibaüzenet visszaadása
 
 Előfordulhat, hogy a REST API hibaüzenetet kell visszaadnia, például "a felhasználó nem található a CRM rendszerben". Ha hiba történik, a REST API egy HTTP-4xx hibaüzenetet ad vissza, például: 400 (hibás kérelem) vagy 409 (ütközés) Response állapotkód. A válasz törzse a JSON-ban formázott hibaüzenetet tartalmaz:
@@ -261,7 +282,7 @@ public class ResponseContent
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a következő cikkeket a REST-technikai profil használatának példáit illetően:
 

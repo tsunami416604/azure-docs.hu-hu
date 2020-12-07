@@ -2,16 +2,16 @@
 title: AVS-Értékelés létrehozása Azure Migrate Server Assessment szolgáltatással | Microsoft Docs
 description: Leírja, hogyan lehet AVS-értékelést létrehozni a Azure Migrate Server Assessment Tool eszközzel
 author: rashi-ms
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: f9fdff54cbd795c6aeda1708dcae8d00022a6a43
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.manager: abhemraj
+ms.topic: how-to
+ms.date: 06/26/2020
+ms.openlocfilehash: 93d17ec2a4fb5c191ce02c73a7a3532e9c854b00
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483504"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752073"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Azure VMware-megoldás (AVS) értékelésének létrehozása
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan hozható létre Azure VMware-megoldás (AVS) fel
 
 - Győződjön meg arról, hogy [létrehozott](./create-manage-projects.md) egy Azure Migrate projektet.
 - Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
-- Az értékelés létrehozásához létre kell hoznia egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md)-hez, amely felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld a kiszolgálónak Azure Migrate: Server Assessment. [További információk](migrate-appliance.md).
+- Az értékelés létrehozásához létre kell hoznia egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md)-hez, amely felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld a kiszolgálónak Azure Migrate: Server Assessment. [További információ](migrate-appliance.md).
 - [A kiszolgálói metaadatokat](./tutorial-discover-import.md) vesszővel tagolt (CSV) formátumban is importálhatja.
 
 

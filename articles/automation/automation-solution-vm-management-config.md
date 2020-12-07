@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182801"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751291"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours konfigurálása
 
@@ -48,7 +48,7 @@ Engedélyezheti a műveletet egy előfizetéshez és az erőforráscsoporthoz, v
 
 2. Adja hozzá a virtuális gépek vesszővel tagolt listáját (szóközök nélkül) a **VMList** paraméter mezőben. Egy példa a listára `vm1,vm2,vm3` .
 
-3. Állítsa a **WHATIF** paramétert True (igaz) értékre.
+3. A módosítások megtekintéséhez állítsa a **WHATIF** paramétert True (igaz) értékre.
 
 4. Konfigurálja a `External_ExcludeVMNames` változót a virtuális gépek vesszővel tagolt listájával (VM1, VM2, VM3), és ne legyen szóköz a vesszővel tagolt értékek között.
 
@@ -79,7 +79,7 @@ Egy olyan környezetben, amely több, elosztott munkaterhelést támogató virtu
 
 3. Adja hozzá a virtuális gépek vesszővel tagolt listáját (szóközök nélkül) a **VMList** paraméter mezőben. Egy példa a listára `vm1,vm2,vm3` .
 
-4. Állítsa a **WHATIF** igaz értékre. 
+4. Állítsa a **WHATIF** True (igaz) értékre a módosítások megtekintéséhez. 
 
 5. Konfigurálja a `External_ExcludeVMNames` változót a virtuális gépek vesszővel tagolt listájával, a vesszővel tagolt értékek közötti szóközök nélkül.
 
@@ -183,7 +183,7 @@ A szolgáltatás konfigurálása a virtuális gépek leállítására egy adott 
 
 5. A módosítások mentéséhez kattintson az **OK** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A szolgáltatás működés közbeni figyeléséhez tekintse meg a [Start/Stop VMS During off-hours lekérdezési naplóit](automation-solution-vm-management-logs.md).
 * A virtuális gépek kezelése során felmerülő problémák kezeléséhez tekintse meg [Start/Stop VMS During off-hours problémák elhárítása](troubleshoot/start-stop-vm.md)című témakört.

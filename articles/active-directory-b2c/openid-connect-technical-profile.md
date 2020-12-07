@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/03/2020
+ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8273d4bbb0b58a256521cf11cacf6d1fed67e10d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2010f55a28d393086aad544cbec3f5c009801872
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345116"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750492"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OpenID Connect műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -80,6 +80,7 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 | IdTokenAudience | Nem | A id_token célközönsége. Ha meg van adva, Azure AD B2C ellenőrzi, hogy az `aud` identitás-szolgáltató által visszaadott jogkivonatban szereplő jogcím egyenlő-e a IdTokenAudience-metaadatokban megadott értékkel.  |
 | METAADATOK | Igen | Egy olyan URL-cím, amely az OpenID Connect Identity Provider konfigurációs dokumentumra mutat, amely az OpenID Well-known Configuration Endpoint néven is ismert. Az URL-cím tartalmazhatja a `{tenant}` kifejezést, amelyet a rendszer a bérlő nevével cserél le.  |
 | authorization_endpoint | Nem | Egy olyan URL-cím, amely egy OpenID Connect Identity Provider konfigurációs engedélyezési végpontra mutat. Authorization_endpoint metaadatok értéke elsőbbséget élvez az `authorization_endpoint` OpenID jól ismert konfigurációs végpontjában megadott értékkel. Az URL-cím tartalmazhatja a `{tenant}` kifejezést, amelyet a rendszer a bérlő nevével cserél le. |
+| end_session_endpoint | Nem | A végponti munkamenet végpontjának URL-címe Authorization_endpoint metaadatok értéke elsőbbséget élvez az `end_session_endpoint` OpenID jól ismert konfigurációs végpontjában megadott értékkel. |
 | kiállító | Nem | Az OpenID Connect-identitás szolgáltatójának egyedi azonosítója. A kiállítói metaadatok értéke elsőbbséget élvez az `issuer` OpenID jól ismert konfigurációs végpontjában megadott értékkel.  Ha meg van adva, Azure AD B2C ellenőrzi, hogy az `iss` identitás-szolgáltató által visszaadott jogkivonatban szereplő jogcím egyenlő-e a kiállítói metaadatokban megadott értékkel. |
 | ProviderName | Nem | Az identitás-szolgáltató neve.  |
 | response_types | Nem | A válasz típusa az OpenID Connect Core 1,0 specifikációnak megfelelően. Lehetséges értékek: `id_token` , `code` , vagy `token` . |
@@ -92,7 +93,7 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 | DiscoverMetadataByTokenIssuer | Nem | Azt jelzi, hogy a OIDC metaadatait fel kell-e deríteni a JWT jogkivonat kiállítójának használatával. |
 | IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 |token_endpoint_auth_method| Nem| Meghatározza, hogy a Azure AD B2C hogyan küldi el a hitelesítési fejlécet a jogkivonat-végpontnak. Lehetséges értékek: `client_secret_post` (alapértelmezett) és `client_secret_basic` (nyilvános előzetes verzió). További információ: [OpenID Connect ügyfél-hitelesítés szakasz](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
-
+|SingleLogoutEnabled| Nem| Azt jelzi, hogy a technikai profilba való bejelentkezés során a rendszer megpróbál-e kijelentkezni az összevont identitás-szolgáltatókról. További információ: Azure AD B2C- [munkamenet](session-overview.md#sign-out)kijelentkezése.  Lehetséges értékek: `true` (alapértelmezett) vagy `false` .|
 
 ```xml
 <Metadata>

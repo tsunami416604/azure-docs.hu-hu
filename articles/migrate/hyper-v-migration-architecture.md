@@ -1,17 +1,17 @@
 ---
 title: Hogyan működik a Hyper-V áttelepítés Azure Migrate?
 description: A Hyper-V áttelepítésének ismertetése Azure Migrate
-author: rayne-wiselman
-ms.service: azure-migrate
+author: bsiva
+ms.author: bsiva
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 239918cc19eefbef9e3c3f12d5ddd3bb5434b490
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013615"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751019"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hogyan működik a Hyper-V replikáció?
 
@@ -34,7 +34,7 @@ A Azure Migrate kiszolgáló áttelepítése egy eszköz a helyszíni számítá
 
 
 
-**Összetevő** | **Környezet** | 
+**Összetevő** | **Üzembe helyezés** | 
 --- | --- 
 **Replikációs szolgáltató** | A Microsoft Azure Site Recovery-szolgáltató a Hyper-V-gazdagépekre van telepítve, és regisztrálva van az Azure Migration Server áttelepítésével.<br/> A szolgáltató a Hyper-V virtuális gépek replikálását koordinálja.
 **Recovery Services ügynök** | A Microsoft Azure Recovery szolgáltatás ügynöke kezeli az adatreplikációt. Együttműködik a szolgáltatóval, hogy a Hyper-V virtuális gépekről az Azure-ba replikálja az adatait.<br/> A replikált adatait a rendszer feltölti az Azure-előfizetésében lévő Storage-fiókba. A kiszolgáló áttelepítési eszköze a replikált adatfeldolgozást végez, és az előfizetésben lévő replika lemezekre alkalmazza. A replika lemezek az áttelepítés során az Azure-beli virtuális gépek létrehozásához használatosak.

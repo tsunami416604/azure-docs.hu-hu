@@ -4,12 +4,12 @@ description: ASP.NET Core webalkalmazások figyelése a rendelkezésre állás, 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 825cd451120f06597922c142dfc6bf8c10f5c700
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 404e820168c64bd47b6e94598ad5bb13faf32a86
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875121"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751342"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
@@ -43,19 +43,19 @@ Visual Studio for Mac használja a [manuális útmutatót](#enable-application-i
 1. Nyissa meg a projektjét a Visual Studióban.
 
     > [!TIP]
-    > Ha szeretné, beállíthatja a projekthez tartozó verziókövetés beállítását, hogy nyomon követhesse a Application Insights által végrehajtott összes módosítást. A verziókövetés engedélyezéséhez válassza a **fájl**  >  **Hozzáadás a forrás vezérlőelemhez**lehetőséget.
+    > Ha szeretné, beállíthatja a projekthez tartozó verziókövetés beállítását, hogy nyomon követhesse a Application Insights által végrehajtott összes módosítást. A verziókövetés engedélyezéséhez válassza a **fájl**  >  **Hozzáadás a forrás vezérlőelemhez** lehetőséget.
 
-2. Válassza a **projekt**  >  **Hozzáadás Application Insights telemetria**elemet.
+2. Válassza a **projekt**  >  **Hozzáadás Application Insights telemetria** elemet.
 
-3. Válassza az első **lépések**lehetőséget. A kiválasztott szöveg változhat a Visual Studio verziójától függően. Egyes korábbi verziók esetén az **ingyenes indítás** gomb használható.
+3. Válassza az első **lépések** lehetőséget. A kiválasztott szöveg változhat a Visual Studio verziójától függően. Egyes korábbi verziók esetén az **ingyenes indítás** gomb használható.
 
-4. Válassza ki előfizetését. Ezután válassza az **erőforrás**-  >  **regisztráció**lehetőséget.
+4. Válassza ki előfizetését. Ezután válassza az **erőforrás**-  >  **regisztráció** lehetőséget.
 
-5. Miután hozzáadta Application Insights a projekthez, ellenőrizze, hogy az SDK legújabb stabil kiadását használja-e. Ugrás a **Project**  >  **NuGet-csomagok kezelése**  >  **Microsoft. ApplicationInsights. AspNetCore**. Ha szükséges, válassza a **frissítés**lehetőséget.
+5. Miután hozzáadta Application Insights a projekthez, ellenőrizze, hogy az SDK legújabb stabil kiadását használja-e. Ugrás a **Project**  >  **NuGet-csomagok kezelése**  >  **Microsoft. ApplicationInsights. AspNetCore**. Ha szükséges, válassza a **frissítés** lehetőséget.
 
      ![Képernyőfelvétel: a Application Insights csomag kiválasztása a frissítéshez](./media/asp-net-core/update-nuget-package.png)
 
-6. Ha követte a választható tippet, és hozzáadta a projektet a forrás vezérlőelemhez, lépjen a **View**  >  **Team Explorer**  >  **változások**megtekintése elemre. Ezután válassza ki az egyes fájlokat, és tekintse meg a Application Insights telemetria által végzett módosítások különbségeit.
+6. Ha követte a választható tippet, és hozzáadta a projektet a forrás vezérlőelemhez, lépjen a **View**  >  **Team Explorer**  >  **változások** megtekintése elemre. Ezután válassza ki az egyes fájlokat, és tekintse meg a Application Insights telemetria által végzett módosítások különbségeit.
 
 ## <a name="enable-application-insights-server-side-telemetry-no-visual-studio"></a>Application Insights kiszolgálóoldali telemetria engedélyezése (nincs Visual Studio)
 
@@ -106,7 +106,7 @@ Visual Studio for Mac használja a [manuális útmutatót](#enable-application-i
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Példa:
+    Például:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -261,6 +261,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+> [!NOTE]
+> `services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();` egyszerű inicializálók esetén működik. Mások számára a következők szükségesek: `services.AddSingleton(new MyCustomTelemetryInitializer() { fieldName = "myfieldName" });`
+    
 ### <a name="removing-telemetryinitializers"></a>TelemetryInitializers eltávolítása
 
 A telemetria inicializálók alapértelmezés szerint jelennek meg. Az összes vagy adott telemetria-inicializáló eltávolításához használja a következő mintát a hívása *után* `AddApplicationInsightsTelemetry()` .
@@ -515,7 +518,7 @@ Ehhez az SDK `HttpContext` -hoz szükséges, ezért nem működik semmilyen nem 
 
 A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjegyzéseket](./release-notes.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Fedezze fel a felhasználói folyamatokat](./usage-flows.md) , hogy megtudja, hogyan navigálnak a felhasználók az alkalmazáson keresztül.
 * [Egy pillanatkép-gyűjtemény konfigurálásával](./snapshot-debugger.md) megtekintheti a forráskód és a változók állapotát a kivétel pillanatában.

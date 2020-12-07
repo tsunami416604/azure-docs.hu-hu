@@ -369,6 +369,8 @@
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Hitelesítés OpenID Connect-szolgáltatóval (előzetes verzió)
               href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: Hitelesítés a Bejelentkezés az Apple-lel funkcióval (előzetes verzió)
+              href: ../app-service/configure-authentication-provider-apple.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Speciális hitelesítés
           href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: IP-címek korlátozása

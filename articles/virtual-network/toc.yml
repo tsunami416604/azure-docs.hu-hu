@@ -71,12 +71,18 @@
           href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
         - name: Társviszony-létesítés
           href: virtual-network-peering-overview.md
-    - name: Integráció az Azure-szolgáltatásokhoz
+    - name: Azure-szolgáltatások integrálása
       items:
-        - name: Szolgáltatásvégpontok
-          href: virtual-network-service-endpoints-overview.md
+        - name: Áttekintés
+          href: vnet-integration-for-azure-services.md
         - name: Dedikált szolgáltatás üzembe helyezése
           href: virtual-network-for-azure-services.md
+        - name: Privát kapcsolat
+          href: ../private-link/private-link-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Szolgáltatásvégpontok
+          href: virtual-network-service-endpoints-overview.md
+        - name: Szolgáltatáscímkék
+          href: service-tags-overview.md
     - name: IP-szolgáltatások
       items:
         - name: Nyilvános IP-címek
@@ -99,6 +105,8 @@
           href: security-baseline.md
         - name: A virtuális hálózatok NAT-biztonsági alapkonfigurációja
           href: nat-security-baseline.md
+        - name: Azure-szolgáltatások hálózati elkülönítése
+          href: vnet-integration-for-azure-services.md
         - name: Network security groups (Hálózati biztonsági csoportok)
           items:
             - name: Áttekintés

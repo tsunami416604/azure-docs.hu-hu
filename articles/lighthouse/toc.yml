@@ -54,12 +54,18 @@
     - name: A partnerazonosító összekapcsolása
       displayName: 'partner earned credit, pec, mpn'
       href: ./how-to/partner-earned-credit.md
+    - name: Delegálás frissítése
+      displayName: upgrade
+      href: ./how-to/update-delegation.md
     - name: Delegáláshoz való hozzáférés eltávolítása
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md
     - name: Azure Arc integrálása
       displayName: 'server, kubernetes, hybrid, infrastructure'
       href: ./how-to/manage-hybrid-infrastructure-arc.md
+    - name: Azure Migrate-integráció
+      displayName: 'migration, project, on-prem'
+      href: ./how-to/migration-at-scale.md
     - name: Azure Monitor-integráció
       items:
         - name: Az Azure Monitor-naplók nagy léptékű használata

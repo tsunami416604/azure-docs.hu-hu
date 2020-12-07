@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 48f223a55e4a1e4db4ac7057065d67ae64fa0f2c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 58616b647affd33e96357e556ab61f85d1c62129
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288468"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752277"
 ---
 # <a name="authentication-requests-and-responses"></a>Hitelesítés, kérelmek és válaszok
 
@@ -32,7 +32,7 @@ Az egyes típusú objektumok eléréséhez használt URL-utótagok
 |--|--|
 |Szoftveres védelemmel ellátott kulcsok| /keys |
 |HSM-védett kulcsok| /keys |
-|Titkos kulcsok|/secrets|
+|Titkos kódok|/secrets|
 |Tanúsítványok| /certificates|
 |Tárfiókkulcsok|/storageaccounts
 ||
@@ -134,3 +134,6 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 -   engedélyezés: a OAuth2-engedélyezési szolgáltatás címe, amely a kérelem hozzáférési jogkivonatának beszerzésére használható.  
 
 -   erőforrás: az `https://vault.azure.net` engedélyezési kérelemben használni kívánt erőforrás () neve.
+
+> [!NOTE]
+> Key Vault SDK-ügyfelek a titkokhoz, tanúsítványokhoz és kulcsokhoz az első hívásban, Key Vault nem biztosítanak hozzáférési jogkivonatot a bérlői adatok lekéréséhez. A rendszer a HTTP 401-et fogja használni Key Vault SDK-ügyfél használatával, ahol a Key Vault megjeleníti az alkalmazást, amely az erőforrást és a bérlőt tartalmazó WWW-Authenticate fejlécet tartalmazza, ahol a tokent el kell érnie. Ha minden megfelelően van konfigurálva, akkor az alkalmazás második hívása Key Vault tartalmaz egy érvényes jogkivonatot, és sikeres lesz. 

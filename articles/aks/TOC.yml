@@ -152,6 +152,8 @@
           href: node-updates-kured.md
         - name: AKS-fürt konfigurálása
           href: cluster-configuration.md
+        - name: Egyéni csomópont-konfiguráció (előzetes verzió)
+          href: custom-node-configuration.md
         - name: ACR integrálása AKS-fürttel
           href: cluster-container-registry-integration.md
         - name: Virtuális csomópontok létrehozása

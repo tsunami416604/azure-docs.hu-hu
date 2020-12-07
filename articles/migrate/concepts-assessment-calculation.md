@@ -1,14 +1,17 @@
 ---
 title: Azure VM-értékelések Azure Migrate Server Assessment-ben
 description: Tudnivalók a Azure Migrate Server Assessment értékeléséről
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: d08e3c1c0035ee2bb56ee54f1ffb7ffb439d61b6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f8a4f29114f7e0a2ed7868f01e05e25c8a0d0ce1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319317"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752226"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>A kiszolgáló értékelésének áttekintése (Migrálás az Azure-beli virtuális gépekre)
 
@@ -52,7 +55,7 @@ Ha Azure Migrate berendezést helyez üzembe a helyszíni kiszolgálók felderí
 1. Az első értékeléshez hozzon létre egy Azure-projektet, és adja hozzá a kiszolgáló-értékelési eszközt.
 1. Egyszerűsített Azure Migrate berendezés üzembe helyezése. A készülék folyamatosan felfedi a helyszíni gépeket, és számítógép-metaadatokat és teljesítményadatokat küld Azure Migrate. Telepítse a készüléket virtuális gépre vagy fizikai gépre. Semmit nem kell telepítenie az értékelni kívánt gépekre.
 
-Miután a készülék megkezdte a számítógép-felderítést, összegyűjtheti azokat a gépeket, amelyeket fel szeretne mérni egy csoportba, és értékelést kell futtatnia a csoportnak az **Azure VM**értékelési típussal.
+Miután a készülék megkezdte a számítógép-felderítést, összegyűjtheti azokat a gépeket, amelyeket fel szeretne mérni egy csoportba, és értékelést kell futtatnia a csoportnak az **Azure VM** értékelési típussal.
 
 Kövesse a [VMware](./tutorial-discover-vmware.md), a [Hyper-V](./tutorial-discover-hyper-v.md)vagy a [fizikai kiszolgálók](./tutorial-discover-physical.md) oktatóanyagait, hogy kipróbálja ezeket a lépéseket.
 
@@ -64,7 +67,7 @@ Ha egy CSV-fájl használatával értékeli a kiszolgálókat, nincs szüksége 
 1. Az első értékeléshez hozzon létre egy Azure-projektet, és adja hozzá a kiszolgáló-értékelési eszközt.
 1. Töltsön le egy CSV-sablont, és adja hozzá a kiszolgálói adatfájlokat.
 1. Importálja a sablont a kiszolgálói felmérésbe.
-1. Az importálással hozzáadott kiszolgálók felderítése, összegyűjtése egy csoportba, és értékelés futtatása a csoportnak az **Azure VM**értékelési típussal.
+1. Az importálással hozzáadott kiszolgálók felderítése, összegyűjtése egy csoportba, és értékelés futtatása a csoportnak az **Azure VM** értékelési típussal.
 
 ## <a name="what-data-does-the-appliance-collect"></a>Milyen adatokat gyűjt a készülék?
 
@@ -82,7 +85,7 @@ Ha a készüléket a felderítéshez használja, a következő lépésekkel gyű
 
 1. A készülék egyesíti a mintavételi pontokat úgy, hogy a VMware és a Hyper-V kiszolgálók esetében 10 percenként hozzon létre egyetlen adatpontot, és hogy a fizikai kiszolgálók 5 percenként legyenek. Az adatpont létrehozásához a készülék kiválasztja az összes minta csúcsérték-értékeit. Ezután elküldi az adatpontot az Azure-nak.
 1. A kiszolgáló értékelése az elmúlt hónapban az összes 10 perces adatpontot tárolja.
-1. Értékelés létrehozásakor a kiszolgáló értékelése azonosítja a megadásában használandó megfelelő adatpontot. Az azonosítás a *teljesítmény előzményeinek* és a *percentilis kihasználtságának*százalékos értékein alapul.
+1. Értékelés létrehozásakor a kiszolgáló értékelése azonosítja a megadásában használandó megfelelő adatpontot. Az azonosítás a *teljesítmény előzményeinek* és a *percentilis kihasználtságának* százalékos értékein alapul.
 
     - Ha például a teljesítmény előzményei egy hét, a percentilis kihasználtsága pedig a 95. percentilis, a kiszolgáló értékelése az elmúlt hét 10 perces mintavételi pontjait rendezi. Növekvő sorrendben rendezi őket, és kiválasztja a 95. percentilis értékét a megadásában.
     - A 95. percentilis értéke biztosítja, hogy figyelmen kívül hagyja a kiugró adatokat, amelyek akkor szerepelhetnek, ha kiválasztotta a esetek 99% percentilis értékét.
@@ -152,7 +155,7 @@ Tulajdonság | Részletek | Azure-készültségi állapot
 --- | --- | ---
 **Rendszerindítás típusa** | Az Azure a BIOS rendszerindítási típusával támogatja a virtuális gépeket, nem az UEFI-t. | Feltételesen üzemkész, ha a rendszerindítás UEFI típusú.
 **Cores** | Minden gépnek legfeljebb 128 maggal kell rendelkeznie, amely az Azure-beli virtuális gépek által támogatott maximális szám.<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate az összehasonlításhoz a felhasznált magokat veszi figyelembe. Ha az értékelési beállítások egy kényelmi tényezőt határoznak meg, a kihasználatlan magok száma megszorozza a komfort tényezővel.<br/><br/> Ha nincsenek teljesítménybeli előzmények, a Azure Migrate a lefoglalt magok használatával alkalmazza a komfort tényezőt. | Készen áll, ha a magok száma a határértéken belül van
-**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információk](../virtual-machines/sizes.md).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a rendszer a lefoglalt RAM-ot használja a komfort tényező alkalmazásához.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
+**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információ](../virtual-machines/sizes.md).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a rendszer a lefoglalt RAM-ot használja a komfort tényező alkalmazásához.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
 **Storage-lemez** | A lemez lefoglalt mérete nem haladhatja meg a 32 TB-ot. Bár az Azure támogatja az 64 TB-os lemezeket az Azure ultra SSD Disks szolgáltatással, Azure Migrate: a Server Assessment jelenleg a 32 TB-ot ellenőrzi a lemez mérete miatt, mert még nem támogatja ultra SSD. <br/><br/> A géphez csatolt lemezek számának, beleértve az operációsrendszer-lemezt, 65 vagy kevesebbnek kell lennie. | Készen áll, ha a lemez mérete és száma a határértékeken belül van
 **Hálózat** | A gépekhez nem tartozhat több, mint 32 hálózati adapter (NIC). | Készen áll, ha a hálózati adapterek száma a korláton belül van
 
@@ -293,7 +296,7 @@ A méretezési javaslatok befejezése után az Azure-beli virtuális gépek felm
 
 A költségek az értékelési beállításokban megadott pénznemben jelennek meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Tekintse át](best-practices-assessment.md) az értékelések létrehozásával kapcsolatos ajánlott eljárásokat. 
 

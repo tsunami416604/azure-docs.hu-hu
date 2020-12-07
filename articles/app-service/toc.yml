@@ -223,6 +223,8 @@
               href: configure-authentication-provider-twitter.md
             - name: Hitelesítés OpenID Connect-szolgáltatóval (előzetes verzió)
               href: configure-authentication-provider-openid-connect.md
+            - name: Hitelesítés a Bejelentkezés az Apple-lel funkcióval (előzetes verzió)
+              href: configure-authentication-provider-apple.md
         - name: Speciális hitelesítés
           href: app-service-authentication-how-to.md
         - name: Hozzáférés korlátozása

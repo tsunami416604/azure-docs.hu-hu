@@ -1,17 +1,17 @@
 ---
 title: Gépek csoportosítása az értékeléshez Azure Migrate | Microsoft Docs
 description: Útmutatást nyújt a gépek csoportosításához, mielőtt az értékelést a Azure Migrate szolgáltatással futtatja.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/17/2019
-ms.author: hamusa
-ms.openlocfilehash: 420259929afc50b2884bf075212402d80b6b52f4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 364b5949e944a4317aa25f1f1b12545122881cec
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483538"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752107"
 ---
 # <a name="create-a-group-for-assessment"></a>Csoport létrehozása az értékeléshez
 
@@ -36,7 +36,7 @@ Létrehozhat egy csoportot is, ha létrehoz egy [értékelést](how-to-create-as
 Ha manuálisan szeretne létrehozni egy csoportot az értékelés létrehozásán kívül, tegye a következőket:
 
 1. A Azure Migrate projekt > **áttekintése** területen kattintson a **kiszolgálók felmérése és migrálása** elemre. **Azure Migrate: kiszolgáló értékelése**, kattintson a **csoportok** elemre.
-    - Ha még nem adta hozzá a Azure Migrate: Server Assessment eszközt, kattintson ide a hozzáadásához. [További információk](how-to-assess.md).
+    - Ha még nem adta hozzá a Azure Migrate: Server Assessment eszközt, kattintson ide a hozzáadásához. [További információ](how-to-assess.md).
     - Ha még nem hozott létre Azure Migrate projektet, [További információt itt](./create-manage-projects.md)olvashat.
 
     ![Csoportok kiválasztása](./media/how-to-create-a-group/select-groups.png)
@@ -60,7 +60,7 @@ Ha már [beállította a függőségi leképezést](how-to-create-group-machine-
 
 1. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson a **csoportok** elemre.
 2. Kattintson arra a csoportra, amelyet szeretne pontosítani.
-    - Ha még nem állította be a függőségi leképezést, akkor a **függőségek** oszlopban a **szükséges telepítési** állapot jelenik meg. Minden olyan virtuális géphez, amelynek függőségeit szeretné megjeleníteni, kattintson a **telepítés szükséges** elemre. Telepítsen néhány ügynököt az egyes virtuális gépekre, mielőtt le tudja képezni a számítógép-függőségeket. [További információk](how-to-create-group-machine-dependencies.md).
+    - Ha még nem állította be a függőségi leképezést, akkor a **függőségek** oszlopban a **szükséges telepítési** állapot jelenik meg. Minden olyan virtuális géphez, amelynek függőségeit szeretné megjeleníteni, kattintson a **telepítés szükséges** elemre. Telepítsen néhány ügynököt az egyes virtuális gépekre, mielőtt le tudja képezni a számítógép-függőségeket. [További információ](how-to-create-group-machine-dependencies.md).
 
         ![Függőségi leképezés hozzáadása](./media/how-to-create-a-group/add-dependency-mapping.png)
 

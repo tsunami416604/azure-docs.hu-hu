@@ -145,6 +145,10 @@
           href: tutorial-deploy-ssis-packages-azure-powershell.md
         - name: Csatlakozás virtuális hálózathoz
           href: tutorial-deploy-ssis-virtual-network.md
+    - name: Lineage
+      items:
+        - name: Data Factory-életútadatok leküldése az Azure Purview-ba
+          href: turorial-push-lineage-to-purview.md
     - name: Teljes funkcionalitású tesztkörnyezetek
       items:
         - name: Adatintegráció adat-előállító és adatmegosztás használatával
@@ -688,6 +692,10 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Függőség létrehozása átfedésmentes ablak eseményindítójához
           href: tumbling-window-trigger-dependency.md
+    - name: Lineage
+      items:
+        - name: Data Factory csatlakozása az Azure Purview-hoz
+          href: connect-data-factory-to-azure-purview.md
     - name: Forgatókönyvek
       items:
         - name: Data Lake- és EDW-adatmigrálás

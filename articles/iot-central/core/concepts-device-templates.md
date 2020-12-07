@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: e82a377d62184c8ae1d2e8f076b228e36005887a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1a352849cb5bb8563a7e09500f081139a24e97ea
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992675"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750696"
 ---
 # <a name="what-are-device-templates"></a>Mik azok az eszközsablonok?
 
@@ -225,7 +225,7 @@ Ez a példa két tulajdonságot (egy írásvédett és egy írható), egy teleme
 
 - `@type` a képesség típusának megadása: `Telemetry` , `Property` , vagy `Command` .  Bizonyos esetekben a típus egy szemantikai típust tartalmaz, amely lehetővé teszi, hogy IoT Central az érték kezelésével kapcsolatos feltételezések elvégzéséhez.
 - `name` a telemetria értékhez.
-- `schema` a telemetria vagy a tulajdonság adattípusának megadása. Ez az érték egyszerű típus lehet, például dupla, Integer, Boolean vagy string. Az összetett objektumtípusok, tömbök és leképezések is támogatottak.
+- `schema` a telemetria vagy a tulajdonság adattípusának megadása. Ez az érték egyszerű típus lehet, például dupla, Integer, Boolean vagy string. Az összetett objektumtípusok és leképezések is támogatottak.
 
 Az opcionális mezők, például a megjelenítendő név és a Leírás lehetővé teszik, hogy további részleteket adjon hozzá az interfészhez és a képességekhez.
 
@@ -287,7 +287,7 @@ A megoldás fejlesztői olyan nézeteket hoznak létre, amelyek lehetővé teszi
 
 A nézetekhez hozzáadható telemetria, tulajdonságokat és parancsokat az eszköz modellje, a felhő tulajdonságai és a testreszabások határozzák meg az eszköz sablonjában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az eszközök sablonjait, a következő lépés a [telemetria, a Property és a Command hasznos](./concepts-telemetry-properties-commands.md) adatok beolvasása, amelyekkel részletesebben tájékozódhat az eszközök IoT Centralsal való cseréjéről.
 

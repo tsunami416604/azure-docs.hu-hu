@@ -3,14 +3,13 @@ title: Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 description: Ismerje meg, hogyan használhatók a felügyelt identitások az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.author: thomasge
-ms.openlocfilehash: 96a1eebbdcbf269b06d2ece77987ce7813f1d5f5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/06/2020
+ms.openlocfilehash: e2a80ea869e17665e8a6d4fbd6960c3ccc8c1042
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571062"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751274"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
@@ -22,14 +21,13 @@ A *felügyelt identitások* lényegében burkolók az egyszerű szolgáltatások
 
 A következő erőforrást kell telepítenie:
 
-- Az Azure CLI, a 2.8.0 vagy újabb verzió
+- Az Azure CLI, 2.15.1 vagy újabb verzió
 
 ## <a name="limitations"></a>Korlátozások
 
-* A felügyelt identitásokkal rendelkező AK-fürtök csak a fürt létrehozásakor engedélyezhetők.
 * A fürt **frissítési** műveletei során a felügyelt identitás átmenetileg nem érhető el.
 * A felügyelt identitást engedélyező fürtök áthelyezési/áttelepíti a bérlők nem támogatottak.
-* Ha a fürt `aad-pod-identity` engedélyezve van, a csomópont által felügyelt identitás (NMI)-hüvelyek módosítja a csomópontok iptables-et az Azure-példány metaadatainak végpontjának lehallgatására. Ez a konfiguráció azt jelenti, hogy a metaadat-végpontra irányuló kéréseket a NMI akkor is elfogja, ha a pod nem használja `aad-pod-identity` . A AzurePodIdentityException CRD konfigurálható úgy, hogy tájékoztassa `aad-pod-identity` , hogy a tőkekövetelmény-ből származó, a CRD-ban definiált címkével rendelkező, a NMI-ben való feldolgozás nélkül proxyra irányuló kérelmeket. A `kubernetes.azure.com/managedby: aks` _Kube-_ rendszernévtérben címkével ellátott rendszerhüvelyeket ki kell ZÁRNI a `aad-pod-identity` AzurePodIdentityException CRD konfigurálásával. További információ: [a HRE-Pod-Identity letiltása egy adott Pod vagy alkalmazáshoz](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
+* Ha a fürt `aad-pod-identity` engedélyezve van, Node-Managed Identity (NMI) hüvely módosítja a csomópontok iptables-t az Azure-példány metaadatainak végpontjának hívására. Ez a konfiguráció azt jelenti, hogy a metaadat-végpontra irányuló kéréseket a NMI akkor is elfogja, ha a pod nem használja `aad-pod-identity` . A AzurePodIdentityException CRD konfigurálható úgy, hogy tájékoztassa `aad-pod-identity` , hogy a tőkekövetelmény-ből származó, a CRD-ban definiált címkével rendelkező, a NMI-ben való feldolgozás nélkül proxyra irányuló kérelmeket. A `kubernetes.azure.com/managedby: aks` _Kube-_ rendszernévtérben címkével ellátott rendszerhüvelyeket ki kell ZÁRNI a `aad-pod-identity` AzurePodIdentityException CRD konfigurálásával. További információ: [a HRE-Pod-Identity letiltása egy adott Pod vagy alkalmazáshoz](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
   Kivétel konfigurálásához telepítse a [MIC-Exception YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
 
 ## <a name="summary-of-managed-identities"></a>Felügyelt identitások összefoglalása
@@ -38,12 +36,12 @@ Az AK számos felügyelt identitást használ a beépített szolgáltatásokhoz 
 
 | Identitás                       | Név    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
 |----------------------------|-----------|----------|
-| Vezérlősík | nem látható | Az AK által használt felügyelt hálózati erőforrások, beleértve a bejövő terheléselosztó és az AK által felügyelt nyilvános IP-címek | A csomópont-erőforráscsoport közreműködői szerepköre | Előnézet
+| Vezérlősík | nem látható | Az AK-vezérlési sík összetevői használják a fürt erőforrásainak kezelésére, beleértve a bejövő terheléselosztást és az AK által felügyelt nyilvános IP-címeket, valamint a fürt automatikus méretezési műveleteit | A csomópont-erőforráscsoport közreműködői szerepköre | Előnézet
 | Kubelet | AK-fürt neve – agentpool | Hitelesítés Azure Container Registry (ACR) | NA (kubernetes v 1.15 +) | Egyelőre nem támogatott
 | Bővítmény | AzureNPM | Nincs szükség identitásra | NA | Nem
 | Bővítmény | AzureCNI-hálózat figyelése | Nincs szükség identitásra | NA | Nem
-| Bővítmény | azurepolicy (forgalomirányító) | Nincs szükség identitásra | NA | Nem
-| Bővítmény | azurepolicy | Nincs szükség identitásra | NA | Nem
+| Bővítmény | Azure-Policy (forgalomirányító) | Nincs szükség identitásra | NA | Nem
+| Bővítmény | Azure-szabályzat | Nincs szükség identitásra | NA | Nem
 | Bővítmény | Calico | Nincs szükség identitásra | NA | Nem
 | Bővítmény | Irányítópult | Nincs szükség identitásra | NA | Nem
 | Bővítmény | HTTPApplicationRouting | A szükséges hálózati erőforrások kezelése | A DNS-zónához tartozó csomópont-erőforráscsoport, közreműködői szerepkör olvasói szerepköre | Nem
@@ -135,44 +133,14 @@ az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identi
 > [!NOTE]
 > Miután a rendszer által hozzárendelt vagy felhasználó által hozzárendelt identitásokat frissítette a felügyelt identitásra, hajtson végre egy műveletet a `az nodepool upgrade --node-image-only` csomópontokon a felügyelt identitás frissítésének befejezéséhez.
 
-## <a name="bring-your-own-control-plane-mi-preview"></a>Saját vezérlési sík használata (előzetes verzió)
-Az egyéni vezérlő sík identitása lehetővé teszi, hogy a fürt létrehozása előtt hozzáférést biztosítson a meglévő identitáshoz. Ez olyan forgatókönyveket tesz lehetővé, mint például egy egyéni VNET vagy egy felügyelt identitással rendelkező UDR outboundType használata.
+## <a name="bring-your-own-control-plane-mi"></a>Saját vezérlő síkja
+Az egyéni vezérlő sík identitása lehetővé teszi, hogy a fürt létrehozása előtt hozzáférést biztosítson a meglévő identitáshoz. Ez a funkció olyan forgatókönyveket tesz lehetővé, mint például az egyéni VNET vagy a UDR outboundType egy előre létrehozott felügyelt identitás használatával.
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+Telepítenie kell az Azure CLI, a 2.15.1 vagy a újabb verzióját.
 
-A következő erőforrásokat kell telepítenie:
-- Az Azure CLI, 2.9.0 vagy újabb verzió
-- Az AK – előzetes verziójú 0.4.57 bővítmény
-
-A saját vezérlő síkja (előzetes verzió) használatának korlátai:
+### <a name="limitations"></a>Korlátozások
 * A Azure Government jelenleg nem támogatott.
 * Az Azure China 21Vianet jelenleg nem támogatott.
-
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-
-```azurecli-interactive
-az extension update --name aks-preview
-az extension list
-```
-
-```azurecli-interactive
-az feature register --name UserAssignedIdentityPreview --namespace Microsoft.ContainerService
-```
-
-Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UserAssignedIdentityPreview')].{Name:name,State:properties.state}"
-```
-
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) paranccsal:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 Ha még nem rendelkezik felügyelt identitással, folytassa a következő lépéssel, és hozzon létre egyet például az [az Identity CLI][az-identity-create]használatával.
 

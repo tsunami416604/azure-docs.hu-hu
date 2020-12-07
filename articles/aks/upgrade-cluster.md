@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan frissíthet egy Azure Kubernetes-szolgáltatás
 services: container-service
 ms.topic: article
 ms.date: 11/17/2020
-ms.openlocfilehash: 30ad80727c238ae7e415039adf3e4eb75dbbc1b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c5de1a02a077ccb5f46b685572c6c43f5951b224
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531343"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751495"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service- (AKS-) fürt frissítése
 
@@ -93,7 +93,7 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS-fürt frissítése
 
-Az AK-fürt elérhető verzióinak listájával frissítse a frissítést az az [AK upgrade][az-aks-upgrade] paranccsal. A frissítési folyamat során az AK egy új puffer-csomópontot (vagy a [maximálisan](#customize-node-surge-upgrade)megjelenő legtöbb csomópontot) ad hozzá a megadott Kubernetes-verziót futtató fürthöz. Ezután a rendszer a régi csomópontok egyikét [kiüríti, és][kubernetes-drain] leállítja az alkalmazások futtatásának megszakadását (ha a maximális túlfeszültséget használja, és a megadott puffer-csomópontok számával egyszerre több csomópontot is [kiüríti][kubernetes-drain] ). A régi csomópont teljes kiürítése után a rendszer visszaállítja az új verzió megadását, és a következő csomóponthoz tartozó puffer csomópont lesz a frissítésre. Ez a folyamat addig ismétlődik, amíg a fürt összes csomópontja nem frissült. A folyamat végén a rendszer törli az utolsó lecsepegtetett csomópontot, és megtartja a meglévő ügynök-csomópontok számát.
+Az AK-fürt elérhető verzióinak listájával frissítse a frissítést az az [AK upgrade][az-aks-upgrade] paranccsal. A frissítési folyamat során az AK egy új puffer-csomópontot (vagy a [maximálisan](#customize-node-surge-upgrade)megjelenő legtöbb csomópontot) ad hozzá a megadott Kubernetes-verziót futtató fürthöz. Ezután a rendszer a régi csomópontok egyikét [kiüríti, és][kubernetes-drain] leállítja az alkalmazások futtatásának megszakadását (ha a maximális túlfeszültséget használja, és a megadott puffer-csomópontok számával egyszerre több csomópontot is [kiüríti][kubernetes-drain] ). A régi csomópont teljes kiürítése után a rendszer visszaállítja az új verzió megadását, és a következő csomóponthoz tartozó puffer csomópont lesz a frissítésre. Ez a folyamat addig ismétlődik, amíg a fürt összes csomópontja nem frissült. A folyamat végén a rendszer törli az utolsó puffer csomópontot, és megtartja a meglévő ügynök-csomópontok számát és a zóna egyenlegét.
 
 ```azurecli-interactive
 az aks upgrade \
@@ -104,8 +104,9 @@ az aks upgrade \
 
 A fürt frissítése néhány percet vesz igénybe, attól függően, hogy hány csomóponttal rendelkezik.
 
-> [!NOTE]
-> A fürt frissítésének befejezéséhez teljes megengedett idő szükséges. Ezt az időt a termékének kiszámításával számítjuk ki `10 minutes * total number of nodes in the cluster` . Egy 20 csomópontos fürtben például a frissítési műveleteknek 200 percen belül sikeresnek kell lenniük, vagy az AK-ban sikertelen lesz a művelet, hogy elkerülje a nem helyreállítható fürt állapotát. A frissítési hiba helyreállításához próbálkozzon újra a frissítési művelettel az időkorlát lejárta után.
+> [!IMPORTANT]
+> Győződjön meg arról, hogy minden `PodDisruptionBudgets` (PDBs) legalább 1 Pod replika áthelyezését engedélyezi, ellenkező esetben a kiürítési/kizárási művelet sikertelen lesz.
+> Ha a kiürítési művelet meghiúsul, a tervezési művelet sikertelen lesz, így biztosítva, hogy az alkalmazások ne legyenek megszakítva. Javítsa ki, hogy mi okozta a művelet leállítását (helytelen PDBs, kvóta hiánya stb.), majd próbálkozzon újra a művelettel.
 
 A frissítés sikerességének ellenőrzéséhez használja az az [AK show][az-aks-show] parancsot:
 

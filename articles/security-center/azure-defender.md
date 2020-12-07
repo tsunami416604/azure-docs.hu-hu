@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 41d98750f3c869eff5abf7482a9bb04435407318
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8bf3959651048a7a568df1d94aa07aa206663d50
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436759"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750985"
 ---
 # <a name="introduction-to-azure-defender"></a>Az Azure Defender bemutatása
 
@@ -39,6 +39,8 @@ Amikor engedélyezi az Azure Defender számára a Azure Security Center **díjsz
 - [Azure Defender Kuberneteshez](defender-for-kubernetes-introduction.md)
 - [Azure Defender tárolóregisztrációs adatbázisokhoz](defender-for-container-registries-introduction.md)
 - [Azure Defender Key Vaulthoz](defender-for-key-vault-introduction.md)
+- [Azure Defender a Resource Managerhez](defender-for-resource-manager-introduction.md)
+- [Azure Defender DNS-hez](defender-for-dns-introduction.md)
 
 Ezeket a csomagokat a Security Center dokumentációjában külön ismertetjük.
 
@@ -61,9 +63,9 @@ A virtuális gépek és a más Felhőbeli vagy helyszíni SQL-adatbázisok véde
 
 
 
-## <a name="security-alerts"></a>Biztonsági riasztások 
+## <a name="azure-defender-security-alerts"></a>Azure Defender biztonsági riasztások 
 
-Ha az Azure Defender fenyegetést észlel a környezet bármely területén, riasztást hoz létre. Ezek a riasztások ismertetik az érintett erőforrások részleteit, a javasolt szervizelési lépéseket, valamint bizonyos esetekben a logikai alkalmazások válaszként való aktiválásának lehetőségét.
+Ha az Azure Defender fenyegetést észlel a környezet bármely területén, biztonsági riasztást hoz létre. Ezek a riasztások ismertetik az érintett erőforrások részleteit, a javasolt szervizelési lépéseket, valamint bizonyos esetekben a logikai alkalmazások válaszként való aktiválásának lehetőségét.
 
 Azt jelzi, hogy a riasztást egy Security Center hozza-e létre, vagy a Security Center egy integrált biztonsági terméktől fogadta-e, exportálhatja. Ha a riasztásokat az Azure Sentinelbe, a harmadik féltől származó SIEM-re vagy más külső eszközre szeretné exportálni, kövesse a [stream-riasztások a Siem, a SOAR vagy az IT Service Management megoldásban](export-to-siem.md)című témakör utasításait.
 
