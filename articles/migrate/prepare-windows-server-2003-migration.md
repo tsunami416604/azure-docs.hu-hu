@@ -1,14 +1,17 @@
 ---
 title: A Windows Server 2003-kiszolgálók előkészítése a Azure Migrate való áttelepítéshez
 description: Megtudhatja, hogyan készítheti elő a Windows Server 2003-kiszolgálókat Azure Migrate használatával történő áttelepítésre.
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 350eab98a2b40d5ca1382bbfc24245e7cb47b48e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f8d3dea970d07d951467a44661e12000ba413f72
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146841"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753747"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Windows Server 2003 rendszerű gépek előkészítése áttelepítésre
 
@@ -42,14 +45,14 @@ Az áttelepítés előtt ellenőrizze, hogy telepítve van-e a Hyper-V integrác
 2. Navigáljon a telepítési fájlhoz a **C:\Windows\System32\vmguest.ISO** címen, és csatlakoztassa a fájlt.
 3. Másolja a telepítési mappát a VMware virtuális gépre.
 4. Futtassa a parancsot a virtuális gép parancssorából ```gpedit.msc``` .
-5. Nyissa meg a **Számítógép konfigurációja**  >  **Windows**  >  **-Beállítások parancsfájlokat (indítás/leállítás)** .
+5. Nyissa meg a **Számítógép konfigurációja**  >  **Windows**  >  **-Beállítások parancsfájlokat (indítás/leállítás)**.
 6. Az **indításkor**  >  **adja** meg  >  a **parancsfájl nevét** mezőbe írja be a setup.exe-címeket.
 7. Az Azure-ba való Migrálás után a szkript az Azure-beli virtuális gép első indításakor fut le.
 8. Manuálisan indítsa újra az Azure-beli virtuális gépet. A rendszerindítási diagnosztika előugró ablaka jelzi, hogy újraindítás szükséges.
 9. A szkript futtatása és a Hyper-V integrációs szolgáltatások az Azure-beli virtuális gépen való telepítése után eltávolíthatja a parancsfájlt az indításból.
 10. A telepítést követően meghagyhatja az alapértelmezett beállításokat az integrációs szolgáltatásokban. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a [VMware](migrate-support-matrix-vmware-migration.md) és a [Hyper-V](migrate-support-matrix-hyper-v-migration.md) virtuális gépek áttelepítési követelményeit.
 - Telepítse át a [VMware](server-migrate-overview.md) és a [Hyper-V](tutorial-migrate-hyper-v.md) virtuális gépeket.

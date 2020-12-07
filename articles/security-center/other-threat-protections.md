@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 7d59c0e751054522f4c54fe059f19aa0a941464e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5b9e9f5cc5184a083f45999eaeb031eb83b17c58
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490001"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754334"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>További veszélyforrások elleni védelem Azure Security Center
 A beépített [Azure Defender-védelem](azure-defender.md)mellett a Azure Security Center a következő veszélyforrások elleni védelmi képességeket is biztosítja.
@@ -41,7 +41,7 @@ A Azure Resource Manager alapján Security Center védelmi réteg jelenleg előz
 
 A Security Center egy további védelmi réteget biztosít Azure Resource Manager események használatával, amely az Azure-beli vezérlési síkon tekinthető. A Azure Resource Manager rekordok elemzésével Security Center észleli a szokatlan vagy potenciálisan ártalmas műveleteket az Azure-előfizetési környezetben.
 
-A Azure Resource Manager (előzetes verzió) riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-azureresourceman)tekintheti meg.
+A Resource Managerrel kapcsolatos Azure Defender-riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-resourcemanager)tekintheti meg.
 
 
 >[!NOTE]

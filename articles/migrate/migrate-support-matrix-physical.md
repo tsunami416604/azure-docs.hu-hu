@@ -1,14 +1,17 @@
 ---
 title: A fizikai kiszolgáló értékelésének támogatása Azure Migrate
 description: Tudnivalók a fizikai kiszolgálók értékelésének támogatásáról Azure Migrate Server Assessment szolgáltatással
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 58ecba6bcedc036e31046aef292e482085ad7cc6
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: cfbbc1d218f590241fab804e389acd689c009dac
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148405"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754011"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>A fizikai kiszolgáló értékelésének támogatási mátrixa 
 
@@ -39,7 +42,7 @@ A fizikai kiszolgálók értékeléséhez létre kell hoznia egy Azure Migrate p
 - Windows-kiszolgálók esetében tartományi fiókot használjon a tartományhoz csatlakoztatott gépekhez, valamint egy helyi fiókot a tartományhoz nem csatlakoztatott gépekhez. A felhasználói fiókot ezekhez a csoportokhoz kell hozzáadni: távfelügyeleti felhasználók, teljesítményfigyelő felhasználók és teljesítménynapló-felhasználók.
 - Linux-kiszolgálók esetén rendszergazdai fiókra van szüksége a felderíteni kívánt Linux-kiszolgálókon. Másik lehetőségként az alábbi parancsokkal állíthatja be a nem gyökérszintű fiókot a szükséges képességekkel:
 
-**Parancs** | **Rendeltetés**
+**Parancs** | **Cél**
 --- | --- |
 setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/fdisk <br></br> setcap CAP_DAC_READ_SEARCH + EIP/sbin/fdisk _(ha a/usr/sbin/fdisk nincs jelen)_ | A lemez konfigurációs adatainak összegyűjtése
 setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid,<br>cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin,<br>cap_sys_resource, cap_audit_control, cap_setfcap = + EIP "/sbin/LVM | A lemez teljesítményadatait tartalmazó adatok gyűjtése
@@ -82,6 +85,6 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 **Internetkapcsolat** | Ha a gépek nem kapcsolódnak az internethez, akkor telepítenie kell a Log Analytics átjárót.
 **Azure Government** | Az ügynök-alapú függőség elemzése nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Felkészülés a fizikai kiszolgáló értékelésére](./tutorial-discover-physical.md).

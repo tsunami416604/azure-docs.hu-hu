@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: a304628e05054124fde6ffe5c2b63177991d8cfd
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345397"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754164"
 ---
 # <a name="speech-services-quotas-and-limits"></a>A Speech Services kvótái és korlátai
 
@@ -37,12 +37,12 @@ Az alábbi táblázatokban az "állítható" sor nélkül **nem** állítható b
 | Kvóta | Ingyenes (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
 | REST API korlát | A Batch-átírás nem érhető el a F0 | 300 kérelem percenként |
-| Hangbeviteli fájl maximális mérete | N/A | 1 GB |
-| A bemeneti Blobok maximális mérete (több fájlt is tartalmazhat, például egy ZIP-archívumban), ügyeljen arra, hogy a fenti fájlméretre vonatkozó korlátot jegyezze fel. | N/A | 2,5 GB |
-| BLOB-tároló maximális mérete | N/A | 5 GB |
-| Blobok maximális száma egy tárolóban | N/A | 10000 |
-| Fájlok maximális száma átírási kérelem esetén (több tartalom URL-címének bemenetként való használata esetén) | N/A | 1000  |
-| Egyszerre futó feladatok maximális száma | N/A | 2000  |
+| Hangbeviteli fájl maximális mérete | N.A. | 1 GB |
+| A bemeneti Blobok maximális mérete (több fájlt is tartalmazhat, például egy ZIP-archívumban), ügyeljen arra, hogy a fenti fájlméretre vonatkozó korlátot jegyezze fel. | N.A. | 2,5 GB |
+| BLOB-tároló maximális mérete | N.A. | 5 GB |
+| Blobok maximális száma egy tárolóban | N.A. | 10000 |
+| Fájlok maximális száma átírási kérelem esetén (több tartalom URL-címének bemenetként való használata esetén) | N.A. | 1000  |
+| Egyszerre futó feladatok maximális száma | N.A. | 2000  |
 
 #### <a name="model-customization"></a>Modell testreszabása
 | Kvóta | Ingyenes (F0)<sup>1</sup> | Standard (S0) |
@@ -104,7 +104,7 @@ Az **Alap** -és **Egyéni** modellek egyidejű kérelmi korlátait **külön** 
 Az egyidejű kérelmek korlátja paraméter meglévő értéke **nem** látható Azure Portalon, Command-Line eszközökön vagy API-kérelmeken keresztül. A meglévő érték ellenőrzéséhez hozzon létre egy Azure-támogatási kérelmet.
 
 >[!NOTE]
->A [beszédfelismerési tárolók](speech-container-howto.md) nem igénylik az egyidejű kérelmek korlátjának növelését, mivel a tárolókat csak az általuk üzemeltetett hardver processzorai korlátozzák.
+>A [beszédfelismerési tárolók](speech-container-howto.md) nem igénylik az egyidejű kérelmek korlátjának növelését, mivel a tárolókat csak az általuk üzemeltetett hardver processzorai korlátozzák. A beszédfelismerési tárolók azonban saját kapacitásbeli korlátozásokkal rendelkeznek, amelyeket figyelembe kell venni. Tekintse meg a "hasznos lehet a *kapacitás megtervezése és a költséghatékony tárolók becsült díja?"* című kérdést. a [Speech containers GYIK](speech-container-faq.md)-ból.
 
 #### <a name="have-the-required-information-ready"></a>Készítse elő a szükséges információkat:
 - **Alapmodell** esetén:
@@ -114,15 +114,15 @@ Az egyidejű kérelmek korlátja paraméter meglévő értéke **nem** látható
   - Régió
   - Egyéni végpont azonosítója
 
-- **Információk beszerzése (alapmodell)** :  
+- **Információk beszerzése (alapmodell)**:  
   - Ugrás a [Azure Portal](https://portal.azure.com/)
   - Válassza ki azt a Speech-erőforrást, amelyhez meg szeretné emelni a párhuzamossági kérelmek korlátját
-  - *Tulajdonságok* kiválasztása ( *erőforrás-felügyeleti* csoport) 
+  - *Tulajdonságok* kiválasztása (*erőforrás-felügyeleti* csoport) 
   - Másolja ki és mentse a következő mezők értékeit:
     - **Erőforrás-azonosító**
     - **Hely** (a végpont régiója)
 
-- **Információk beszerzése (egyéni modell)** :
+- **Információk beszerzése (egyéni modell)**:
   - Ugrás a [Speech Studio](https://speech.microsoft.com/) portálra
   - Szükség esetén jelentkezzen be
   - Ugrás a Custom Speech
@@ -139,7 +139,7 @@ Kezdeményezheti az erőforrás egyidejű kérelmi korlátjának növelését, v
 - Győződjön meg arról, hogy rendelkezik a [szükséges adatokkal](#have-the-required-information-ready)
 - Ugrás a [Azure Portal](https://portal.azure.com/)
 - Válassza ki azt a Speech-erőforrást, amelyhez meg szeretné emelni (vagy ellenőriznie kell) a párhuzamossági kérelmek korlátját
-- *Új támogatási kérelem* kiválasztása ( *támogatás + hibaelhárítási* csoport) 
+- *Új támogatási kérelem* kiválasztása (*támogatás + hibaelhárítási* csoport) 
 - Megjelenik egy új ablak az Azure-előfizetéssel és az Azure-erőforrással kapcsolatos automatikusan feltöltött adatokkal
 - Adja meg az *összegzést* (például "a STT párhuzamossági kérelmi korlátjának emelése")
 - A *probléma típusa* területen válassza a "kvóta-vagy előfizetési problémák" lehetőséget.
@@ -191,7 +191,7 @@ Kezdeményezheti az erőforrás egyidejű kérelmi korlátjának növelését, v
 - Győződjön meg arról, hogy rendelkezik a [szükséges adatokkal](#prepare-the-required-information)
 - Ugrás a [Azure Portal](https://portal.azure.com/)
 - Válassza ki azt a Speech-erőforrást, amelyhez meg szeretné emelni (vagy ellenőriznie kell) a párhuzamossági kérelmek korlátját
-- *Új támogatási kérelem* kiválasztása ( *támogatás + hibaelhárítási* csoport) 
+- *Új támogatási kérelem* kiválasztása (*támogatás + hibaelhárítási* csoport) 
 - Megjelenik egy új ablak az Azure-előfizetéssel és az Azure-erőforrással kapcsolatos automatikusan feltöltött adatokkal
 - Adja meg az *összegzést* (például "a TTS egyéni végpont párhuzamossági kérelmének korlátozása")
 - A *probléma típusa* területen válassza a "kvóta-vagy előfizetési problémák" lehetőséget.

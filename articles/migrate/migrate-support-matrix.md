@@ -1,15 +1,17 @@
 ---
 title: Azure Migrate támogatási mátrix
 description: Összefoglalja a Azure Migrate szolgáltatás támogatási beállításait és korlátozásait.
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.author: raynew
-ms.openlocfilehash: 2aab8e9caeaf61c2c8dd1bf29894b13a887e44de
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d9a18173403cd95e0abf6b9e495f3d948ac6ac61
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424804"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753960"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
 
@@ -34,7 +36,7 @@ A táblázat összefoglalja a támogatott felderítési, felmérési és áttele
 
 Az eszközök adott támogatását a táblázat foglalja össze.
 
-**Eszköz** | **Kiértékelés** | **Migrate** 
+**Eszköz** | **Kiértékelés** | **Migrate (Áttelepítés)** 
 --- | --- | ---
 Azure Migrate kiszolgáló értékelése | A [VMWare virtuális gépek](./tutorial-discover-vmware.md), a [Hyper-V virtuális gépek](./tutorial-discover-hyper-v.md)és a [fizikai kiszolgálók](./tutorial-discover-physical.md)értékelése. |  Nem érhető el (NA)
 Azure Migrate Server Migration | NA | Telepítse át a [VMWare virtuális gépeket](tutorial-migrate-vmware.md), a [Hyper-V virtuális gépeket](tutorial-migrate-hyper-v.md)és a [fizikai kiszolgálókat](tutorial-migrate-physical-virtual-machines.md).
@@ -122,7 +124,7 @@ Cél replikációja | Egyesült Államok | Célcsoportok: US DoD – középső 
 
 A Azure Migrate szolgáltatásnak két verziója van:
 
-- **Aktuális verzió**: ezzel a verzióval új Azure Migrate projekteket hozhat létre, felderítheti a helyszíni értékeléseket, és összehangolhatja az értékeléseket és áttelepítéseket. [További információk](whats-new.md).
+- **Aktuális verzió**: ezzel a verzióval új Azure Migrate projekteket hozhat létre, felderítheti a helyszíni értékeléseket, és összehangolhatja az értékeléseket és áttelepítéseket. [További információ](whats-new.md).
 - **Előző verzió**: a Azure Migrate korábbi verzióját használó ügyfelek esetében (csak a helyszíni VMWare virtuális gépek felmérése támogatott), most az aktuális verziót kell használnia. Az előző verzióban nem hozhat létre új Azure Migrate projekteket, és nem végezhet új felfedezéseket.
 
 ## <a name="next-steps"></a>További lépések

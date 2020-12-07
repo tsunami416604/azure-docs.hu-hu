@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate replikációs berendezés
 description: Ismerje meg az ügynök-alapú VMWare-áttelepítés Azure Migrate replikációs berendezését.
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec277bcc3e361561f54e72c54526d65487c113b4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532120"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754096"
 ---
 # <a name="replication-appliance"></a>Replikációs berendezés
 
@@ -73,7 +76,7 @@ A MySQL-t telepíteni kell a replikációs berendezést futtató gépre. Ezt a m
 --- | ---
 Manuális letöltés és telepítés | Töltse le a MySQL-alkalmazást & helyezze a mappába a C:\Temp\ASRSetup, majd telepítse manuálisan.<br/> A készülék a MySQL beállítása után már telepítve lesz.
 Online letöltés nélkül | Helyezze a MySQL Installer alkalmazást a C:\Temp\ASRSetup. mappába. Ha telepíti a készüléket, és rákattint a MySQL letöltésére és telepítésére, a telepítő a hozzáadott telepítőt fogja használni.
-Letöltés és telepítés Azure Migrate | Ha telepíti a készüléket, és a rendszer kéri a MySQL-t, válassza a **letöltés és telepítés**lehetőséget.
+Letöltés és telepítés Azure Migrate | Ha telepíti a készüléket, és a rendszer kéri a MySQL-t, válassza a **letöltés és telepítés** lehetőséget.
 
 ## <a name="url-access"></a>URL-hozzáférés
 
@@ -135,11 +138,11 @@ Folyamatkiszolgáló | A Process Server replikációs adatokat fogad, optimaliz�
 
 A készüléket manuálisan frissítheti az Azure Migrate hub-ból. Javasoljuk, hogy mindig futtassa a legújabb verziót.
 
-1. Azure Migrate > kiszolgálók > Azure Migrate: kiszolgáló-értékelés, infrastruktúra-kiszolgálók, kattintson a **konfigurációs kiszolgálók**elemre.
-2. A **konfigurációs kiszolgálók**területen megjelenik egy hivatkozás az **ügynök verziójában** , ha a replikációs berendezés új verziója érhető el. 
+1. Azure Migrate > kiszolgálók > Azure Migrate: kiszolgáló-értékelés, infrastruktúra-kiszolgálók, kattintson a **konfigurációs kiszolgálók** elemre.
+2. A **konfigurációs kiszolgálók** területen megjelenik egy hivatkozás az **ügynök verziójában** , ha a replikációs berendezés új verziója érhető el. 
 3. Töltse le a telepítőt a replikációs berendezést végző gépre, és telepítse a frissítést. A telepítő észleli a készüléken futó aktuális verziót.
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ismerje meg, hogyan](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance) állíthatja be a replikációs berendezést az ügynök-alapú VMWare virtuális gépek áttelepítéséhez.
 - [Ismerje meg, hogyan](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance) állíthatja be a replikációs berendezést a fizikai kiszolgálók számára.

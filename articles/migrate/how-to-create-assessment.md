@@ -1,17 +1,17 @@
 ---
 title: Azure-beli virtuális gép értékelésének létrehozása Azure Migrate Server Assessment szolgáltatással | Microsoft Docs
 description: Útmutató Azure-beli virtuális gépek értékelésének létrehozásához a Azure Migrate Server Assessment Tool eszközzel
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/15/2019
-ms.author: raynew
-ms.openlocfilehash: 534619ace09b4e11934062a591adf8d9ab6f77ad
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cc7101c61db8f0863c3a16b1c17f04188f9bee4e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500801"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754300"
 ---
 # <a name="create-an-azure-vm-assessment"></a>Azure-beli virtuális gép felmérésének létrehozása
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan hozhat létre Azure-beli virtuálisgép-értékelés
 
 - Győződjön meg arról, hogy [létrehozott](./create-manage-projects.md) egy Azure Migrate projektet.
 - Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
-- Értékelés létrehozásához be kell állítania egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)rendszerhez. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. [További információk](migrate-appliance.md).
+- Értékelés létrehozásához be kell állítania egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)rendszerhez. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. [További információ](migrate-appliance.md).
 
 
 ## <a name="azure-vm-assessment-overview"></a>Az Azure VM Assessment áttekintése

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/24/2020
+ms.date: 12/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6c0e92c566dd69cdea14c9c7d346a5ec65f892bf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d92047a5b24f04ee7e0d08454867ec9e1a52a8b1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487949"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754375"
 ---
 # <a name="pricing-of-azure-security-center"></a>A Azure Security Center díjszabása
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Lehetővé teszi a hibrid Felhőbeli számítási feladatok, az aktív védelem és a fenyegetések kialakulásának csökkentését, valamint az intelligens észlelést, amely megkönnyíti a gyors fejlődést jelentő számítógépes kockázatok megtartását.
@@ -37,7 +37,9 @@ Security Center két üzemmódban érhető el:
     - **Hibrid biztonság** – az összes helyszíni és Felhőbeli számítási feladatra kiterjedő egységes biztonsági nézet. Alkalmazza a biztonsági házirendeket, és folyamatosan mérje fel a hibrid Felhőbeli számítási feladatok biztonságát a biztonsági normáknak való megfelelés biztosítása érdekében. Több forrásból származó biztonsági adatok gyűjtése, keresése és elemzése, beleértve a tűzfalakat és más partneri megoldásokat.
     - **Veszélyforrások elleni védelem – riasztások** – a fejlett viselkedési elemzések és a Microsoft intelligens biztonsági gráf a fejlődő Cyber-támadásokat biztosítanak. A beépített viselkedési elemzések és gépi tanulás képes azonosítani a támadásokat és a napi kihasználat. Figyelheti a hálózatokat, a gépeket és a Felhőbeli szolgáltatásokat a beérkező támadásokhoz és a szabálysértés utáni tevékenységekhez. Egyszerűsítse a nyomozást az interaktív eszközökkel és a kontextusbeli fenyegetések intelligenciával.
     - **Hozzáférés és alkalmazás-vezérlőelemek** (AAC) – a kártevők és más nemkívánatos alkalmazások blokkolása gépi tanulásra alkalmas, az engedélyezési és letiltási listát létrehozó munkaterhelésekhez igazított gépi tanulási javaslatokat alkalmazva. Csökkentse a hálózati támadási felületet az Azure-beli virtuális gépeken található felügyeleti portokra vonatkozó, igény szerinti, vezérelt hozzáféréssel. Az AAC drasztikusan csökkenti a találgatásos támadásokat és más hálózati támadások kockázatát.
-    - **Tároló-biztonsági funkciók** – a biztonsági rések kezelése és a valós idejű veszélyforrások elleni védelem kihasználása a tároló környezetekben. Ha engedélyezi az **Azure Defender számára a tároló**-beállításjegyzékek használatát, akár 12 óráig is eltarthat, amíg az összes funkció be nem fejeződik. A díjak a csatlakoztatott beállításjegyzékbe leküldett egyedi tároló-lemezképek számától függenek. Ha egyszer már megvizsgálta a képet, a rendszer nem számítja fel újra, hacsak nem módosítják, és még egyszer leküldik. 
+    - **Tároló-biztonsági funkciók** – a biztonsági rések kezelése és a valós idejű veszélyforrások elleni védelem kihasználása a tároló környezetekben. Ha engedélyezi az **Azure Defender számára a tároló**-beállításjegyzékek használatát, akár 12 óráig is eltarthat, amíg az összes funkció be nem fejeződik. A díjak a csatlakoztatott beállításjegyzékbe leküldett egyedi tároló-lemezképek számától függenek. Ha egyszer már megvizsgálta a képet, a rendszer nem számítja fel újra, hacsak nem módosítják, és még egyszer leküldik.
+    - **A veszélyforrások védelme az Azure-környezethez kapcsolódó erőforrások esetében** – az Azure Defender az Azure-beli natív, az Azure-szolgáltatások általános fenyegetés elleni védelmét is biztosítja az összes erőforráshoz: Azure Resource Manager, Azure DNS, Azure hálózati réteg és Azure Key Vault. Az Azure Defender egyedi láthatósággal rendelkezik az Azure felügyeleti rétegében és a Azure DNS rétegben, és így biztosíthatja a rétegekhez kapcsolódó Felhőbeli erőforrások védelméhez.
+
 
 ## <a name="try-azure-defender-free-for-30-days"></a>Próbálja ki az Azure Defendert ingyen 30 napig
 Az Azure Defender az első 30 napon belül díjmentes. 30 nap elteltével a szolgáltatás használatának folytatásához automatikusan elindul a használati díj.
@@ -50,7 +52,7 @@ Az Azure Defender engedélyezése:
 1. A Security Center főmenüjében válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki a frissíteni kívánt előfizetést.
 1. A frissítéshez válassza az **Azure Defender** lehetőséget.
-1. Válassza a **Mentés** lehetőséget.
+1. Válassza a **Save** (Mentés) lehetőséget.
 
 Az alábbi példa egy előfizetésre vonatkozó díjszabási oldalt mutat be. Megfigyelheti, hogy az Azure Defender minden csomagja külön díjszabású, és egyénileg be-és kikapcsolható.
 
@@ -83,7 +85,7 @@ Security Center két ajánlattal rendelkezik:
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>Hogyan engedélyezhetem az Azure Defendert az előfizetéshez? 
 Az előfizetéshez az alábbi módokon engedélyezheti az Azure Defender használatát: 
 
-|Metódus  |Utasítások  |
+|Módszer  |Utasítások  |
 |---------|---------|
 |A Azure Portal Azure Security Center lapja|[Az Azure Defender engedélyezése](#enable-azure-defender)|
 |REST API|[Díjszabási API](/rest/api/securitycenter/pricings)|

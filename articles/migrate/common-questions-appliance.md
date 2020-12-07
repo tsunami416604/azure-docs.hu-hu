@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate készülék – gyakori kérdések
 description: Választ kaphat a Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre.
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7be6260a7d3eb25ce2854f6949554e2c66019980
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9badbfe6cfe12d67e07f0889d175ed32bc455321
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337591"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753875"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -66,9 +69,9 @@ A készüléknek hozzá kell férnie az Azure URL-címeihez. [Tekintse át](migr
 
 A következő cikkekben talál információt arról, hogy az Azure Migrate készülék milyen adatokat gyűjt a virtuális gépeken:
 
-- **VMWare virtuális gép** : [tekintse át](migrate-appliance.md#collected-data---vmware) az összegyűjtött adatokat.
-- **Hyper-V virtuális gép** : [tekintse át](migrate-appliance.md#collected-data---hyper-v) az összegyűjtött adatokat.
-- **Fizikai vagy virtuális kiszolgálók** : az összegyűjtött adatok [áttekintése](migrate-appliance.md#collected-data---physical) .
+- **VMWare virtuális gép**: [tekintse át](migrate-appliance.md#collected-data---vmware) az összegyűjtött adatokat.
+- **Hyper-V virtuális gép**: [tekintse át](migrate-appliance.md#collected-data---hyper-v) az összegyűjtött adatokat.
+- **Fizikai vagy virtuális kiszolgálók**: az összegyűjtött adatok [áttekintése](migrate-appliance.md#collected-data---physical) .
 
 ## <a name="how-is-data-stored"></a>Hogyan történik az adatok tárolása?
 

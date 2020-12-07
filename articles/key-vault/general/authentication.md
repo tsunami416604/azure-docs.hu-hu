@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 7423114d2da23207dfcc1a329675b8c902b1f320
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 455caf0b80d82b03f8d00929addeab15a1af6d7e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445540"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754215"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Hitelesítés az Azure Key Vaulttal
 
@@ -102,6 +102,9 @@ További információ: [hozzáférés Azure Key Vault tűzfal mögött](./access
 A következő ábra egy olyan alkalmazás folyamatát szemlélteti, amely egy Key Vault "titkos kulcs beszerzése" API-t hív meg:
 
 ![A Azure Key Vault hitelesítési folyamat](../media/authentication/authentication-flow.png)
+
+> [!NOTE]
+> Key Vault a titkokhoz, tanúsítványokhoz és kulcsokhoz tartozó SDK-ügyfelek további hívást biztosítanak Key Vault hozzáférési jogkivonat nélkül, ami 401 választ kér a bérlői adatok lekérésére. További információ: [hitelesítés, kérések és válaszok](authentication-requests-and-responses.md)
 
 ## <a name="code-examples"></a>Kódpéldák
 

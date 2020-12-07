@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: af7ac49fd6c1a31a8363c4ba0bf925787613ecc2
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030407"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753909"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>A tervezőhöz tartozó kivételek és hibakódok
 
@@ -279,7 +279,7 @@ Ha a modellt a speciális képzési modulok bármelyikével betanítják, a beta
 ## <a name="error-0014"></a>0014 hiba  
  Kivétel történik, ha az oszlop egyedi értékeinek száma nagyobb az engedélyezettnél.  
 
- Ez a hiba akkor fordul elő, ha egy oszlop túl sok egyedi értéket tartalmaz.  Előfordulhat például, hogy ez a hiba akkor jelenik meg, ha azt adja meg, hogy egy oszlop kategorikus adatként legyen kezelve, de túl sok egyedi érték van az oszlopban a feldolgozás befejezésének engedélyezéséhez. Ez a hiba akkor is megjelenhet, ha a két bemenetben lévő egyedi értékek száma nem egyezik.   
+ Ez a hiba akkor fordul elő, ha egy oszlop túl sok egyedi értéket tartalmaz, például egy azonosító oszlopot vagy egy szöveges oszlopot. Ez a hiba akkor fordulhat elő, ha azt adja meg, hogy egy oszlop kategorikus adatként legyen kezelve, de túl sok egyedi érték szerepel az oszlopban a feldolgozás befejezésének engedélyezéséhez. Ez a hiba akkor is megjelenhet, ha a két bemenetben lévő egyedi értékek száma nem egyezik.   
 
 Az egyedi értékek hibája nagyobb az engedélyezettnél, ha **a következő** feltételekkel találkozik:
 
@@ -292,7 +292,9 @@ Nyissa meg a hibát generáló modult, és azonosítsa a bemenetként használt 
 
 A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok esetében hajtsa végre a lépéseket az oszlopok egyedi értékei számának csökkentése érdekében. Az oszlop adattípusától függően a különböző módokon is csökkentheti az adattípust. 
 
-Általában ebben az esetben a hibát jelző oszlop értelmetlen a modellek betanítására szolgáló szolgáltatásként. Ezért használhatja a [metaadatok szerkesztése](../algorithm-module-reference/edit-metadata.md) lehetőséget az oszlop **törlési funkcióként** való megjelölésére, és a modell betanítása során nem lesz használatban. 
+Olyan azonosító oszlopok esetében, amelyek nem értelmezhető funkciók a modellek betanítása során, a [metaadatok szerkesztése](../algorithm-module-reference/edit-metadata.md) lehetőséggel megjelölheti az oszlopot **egyértelmű szolgáltatásként** , és a modell betanítása során nem lesz használatban. 
+
+A szöveges oszlopok esetében használhatja a [funkció kivonatolását](../algorithm-module-reference/feature-hashing.md) , vagy [kinyerheti az N-Gram funkciókat a szöveges modulból](../algorithm-module-reference/extract-n-gram-features-from-text.md) a szöveges oszlopok előfeldolgozásához.
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  

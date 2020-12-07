@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate-projekt eltávolítása
 description: Ebből a cikkből megtudhatja, hogyan törölhet egy Azure Migrate projektet a Azure Portal használatával.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 10/22/2019
-ms.author: raynew
-ms.openlocfilehash: c58081e7cf88ac4820aa7d4f367b7344f3340a77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: face3d02ee72d1e05c6c08330dae4fffc2fd0e0b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307874"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754249"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Azure Migrate-projekt eltávolítása
 
@@ -34,7 +34,7 @@ Projekt törlése előtt:
 
 
 1. A Azure Portal nyissa meg azt az erőforráscsoportot, amelyben a projekt létrejött.
-2. Az erőforráscsoport lapon válassza a **rejtett típusok megjelenítése**elemet.
+2. Az erőforráscsoport lapon válassza a **rejtett típusok megjelenítése** elemet.
 3. Válassza ki a projektet és a törölni kívánt erőforrásokat.
     - Azure Migrate projektek erőforrástípus a **Microsoft. migrálása/migrateprojects**.
     - A következő szakaszban tekintse át a felderítéshez, az értékeléshez és az áttelepítéshez létrehozott erőforrásokat egy Azure Migrate projektben.
@@ -76,6 +76,6 @@ HyperV * hely | Microsoft. OffAzure/HyperVSites
 "Projektnév"-MigrateVault-* | Recovery Services-tároló
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan adhat hozzá további [értékelési](how-to-assess.md) és [áttelepítési](how-to-migrate.md) eszközöket. 

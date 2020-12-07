@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgá
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: cd73c07b139aec3b7079c2b042581e26560ed1bc
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 0dd0979b4dcc7c3828d88c594c02addaf00813c4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309613"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754198"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -50,7 +50,6 @@ Havi/éves biztonsági mentés| Nem támogatott az Azure virtuálisgép-bővítm
 Automatikus órajel-beállítás | Nem támogatott.<br/><br/> A Azure Backup nem módosítja automatikusan a nyári időmegtakarítást a virtuális gép biztonsági mentésekor.<br/><br/>  Szükség szerint módosítsa manuálisan a szabályzatot.
 [Biztonsági funkciók a hibrid biztonsági mentéshez](./backup-azure-security-feature.md) |A biztonsági funkciók letiltása nem támogatott.
 Biztonsági másolat készítése arra a virtuális gépre, amelynek a gépi ideje módosult | Nem támogatott.<br/><br/> Ha a gép ideje a virtuális gép biztonsági mentésének engedélyezése után egy későbbi dátumra változik, akkor is, ha az idő változása visszaállt, a sikeres biztonsági mentés nem garantált.
-Azure-beli [virtuális gépek a virtuálisgép-méretezési csoportokban](../virtual-machine-scale-sets/overview.md) |A rendelkezésre állási készletek nem támogatottak.
 
 ## <a name="operating-system-support-windows"></a>Operációs rendszer támogatása (Windows)
 
@@ -140,7 +139,6 @@ Virtuális gép visszaállítása eltérő virtuális hálózatban |Támogatott.
 Virtuális gép mérete |Bármely Azure-beli virtuálisgép-méret legalább 2 CPU-maggal és 1 GB RAM-mal.<br/><br/> [Részletek](../virtual-machines/sizes.md)
 Virtuális gépek biztonsági mentése a [rendelkezésre állási csoportokban](../virtual-machines/availability.md#availability-sets) | Támogatott.<br/><br/> Az elérhető készletekben lévő virtuális gépeket nem állíthatja helyre a virtuális gép gyors létrehozásához szükséges lehetőség használatával. Ehelyett a virtuális gép visszaállításakor állítsa vissza a lemezt, és használja egy virtuális gép üzembe helyezéséhez, vagy egy lemez visszaállításához, és használja egy meglévő lemez cseréjéhez.
 A [Hybrid use Benefit (hub) használatával](../virtual-machines/windows/hybrid-use-benefit-licensing.md) üzembe helyezett virtuális gépek biztonsági mentése | Támogatott.
-[Méretezési csoportokban](../virtual-machine-scale-sets/overview.md) üzembe helyezett virtuális gépek biztonsági mentése |Támogatott. A rendelkezésre állási csoport nem támogatott.
 Az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) -ről üzembe helyezett virtuális gépek biztonsági mentése<br/><br/> (Közzétette: Microsoft, harmadik fél) |Támogatott.<br/><br/> A virtuális gépnek támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gépen lévő fájlok helyreállításakor csak kompatibilis operációs rendszerre (nem egy korábbi vagy újabb operációs rendszerre) lehet visszaállítani. Nem állítunk vissza virtuális gépekként működő Azure piactér-beli virtuális gépeket, mivel ezek vásárlási információkra van szükségük. Csak lemezként vannak visszaállítva.
 Egyéni rendszerképből (külső féltől) üzembe helyezett virtuális gépek biztonsági mentése |Támogatott.<br/><br/> A virtuális gépnek támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gépen lévő fájlok helyreállításakor csak kompatibilis operációs rendszerre (nem egy korábbi vagy újabb operációs rendszerre) lehet visszaállítani.
 Az Azure-ba migrált virtuális gépek biztonsági mentése| Támogatott.<br/><br/> A virtuális gép biztonsági mentéséhez telepíteni kell a virtuálisgép-ügynököt az áttelepített gépre.

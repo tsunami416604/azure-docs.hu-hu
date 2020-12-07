@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate GYIK
 description: Választ kaphat a Azure Migrate szolgáltatással kapcsolatos gyakori kérdésekre.
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: d0877ad0d36e131525a227050cf44321e39e8b30
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b36a4089a15118499b0ce57500f221b74af82242
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494613"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753746"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: gyakori kérdések
 
@@ -19,7 +22,7 @@ Ez a cikk a Azure Migrateával kapcsolatos gyakori kérdésekre ad választ. Ha 
 
 ## <a name="what-is-azure-migrate"></a>Mi az az Azure Migrate?
 
-Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követésére az Azure-ban. A hub Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a külső gyártóktól származó ISV-ajánlatokhoz. [További információk](migrate-services-overview.md).
+Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követésére az Azure-ban. A hub Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a külső gyártóktól származó ISV-ajánlatokhoz. [További információ](migrate-services-overview.md).
 
 ## <a name="what-can-i-do-with-azure-migrate"></a>Mire használhatom a Azure Migrate?
 

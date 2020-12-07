@@ -1,17 +1,17 @@
 ---
 title: Az Azure Migrate Server Assessment bevált eljárásainak értékelése
 description: Tippek az értékelések létrehozásához Azure Migrate Server Assessment alapján.
-author: rayne-wiselman
-ms.service: azure-migrate
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: e007f0272a693f5117b0182dad82de2f4a6e252a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1fff5b5b7f6450ad8d1977e55a1f6b255f3d668
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576880"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754317"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Ajánlott eljárások az értékelések létrehozásához
 
@@ -102,11 +102,11 @@ Az értékeléseket érintő gyakori környezeti problémák megoldásához.
 
 ###  <a name="out-of-sync-assessments"></a>Nem szinkronizált értékelések
 
-Ha gépeket ad hozzá vagy távolít el egy csoportból egy Értékelés létrehozása után, a létrehozott értékelést a rendszer **szinkronként**jelöli meg. Futtassa újra az értékelést (**újraszámítva**), hogy tükrözze a csoport módosításait.
+Ha gépeket ad hozzá vagy távolít el egy csoportból egy Értékelés létrehozása után, a létrehozott értékelést a rendszer **szinkronként** jelöli meg. Futtassa újra az értékelést (**újraszámítva**), hogy tükrözze a csoport módosításait.
 
 ### <a name="outdated-assessments"></a>Elavult értékelések
 
-Ha olyan helyszíni módosításokat végeznek a virtuális gépeken, amelyek egy értékelt csoportban vannak, az értékelés **elavultként**van megjelölve. Az alábbi tulajdonságok egy vagy több módosítása miatt az értékelés "elavultként" jelölhető meg:
+Ha olyan helyszíni módosításokat végeznek a virtuális gépeken, amelyek egy értékelt csoportban vannak, az értékelés **elavultként** van megjelölve. Az alábbi tulajdonságok egy vagy több módosítása miatt az értékelés "elavultként" jelölhető meg:
 
 - Processzor-magok száma
 - Lefoglalt memória
@@ -136,7 +136,7 @@ Az Azure VMware Solution- (AVS-) értékelés Azure-kompatibilitási jelentésé
 - **Ismeretlen**: A CSV-fájllal importált gépek esetében az alapértelmezett migrálási eszköz ismeretlen. A VMware-gépek esetében azonban ajánlott a VMware Hybrid Cloud Extension (HCX) megoldás használata.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ](concepts-assessment-calculation.md) az értékelések kiszámításáról.
 - [Megtudhatja](how-to-modify-assessment.md) , hogyan szabhatja testre az értékeléseket.

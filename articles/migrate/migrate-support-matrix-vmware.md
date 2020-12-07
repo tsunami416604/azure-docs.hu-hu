@@ -1,14 +1,17 @@
 ---
 title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg a VMware virtuális gépek felmérésének támogatásával Azure Migrate kiszolgáló értékelésével.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 6e033bdf0f1492d6cbb4c41192cca8206816917d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e6582443ddc56b315c1c666c81a596fa71b1d54f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444945"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753977"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -70,7 +73,7 @@ A gépek felderítése mellett a kiszolgálók értékelése a gépeken futó al
 **Operációs rendszerek** | Az összes Windows-és Linux-verziót futtató virtuális gépek támogatása.
 **VIRTUÁLIS gépekre vonatkozó követelmények** | A VMware-eszközöket olyan virtuális gépeken kell telepíteni és futtatni, amelyeken alkalmazásokat kíván felderíteni. <br/><br/> A VMware-eszközök verziójának későbbinek kell lennie, mint 10.2.0.<br/><br/> A virtuális gépeknek telepítve kell lennie a PowerShell 2,0-es vagy újabb verziójával.
 **Felderítés** | A virtuális gépen telepített alkalmazásokkal kapcsolatos információkat a rendszer a virtuális gépre telepített VMware-eszközök használatával gyűjti össze a vCenter Server. A készülék az vSphere API-k használatával gyűjti össze az alkalmazás adatait a vCenter Serverból. Az alkalmazás felderítése ügynök nélkül történik. Semmi nincs telepítve a virtuális gépekre, és a készülék nem csatlakozik közvetlenül a virtuális gépekhez. A WMI/SSH engedélyezése és elérhetőnek kell lennie a virtuális gépeken.
-**vCenter** | Az értékeléshez használt vCenter Server írásvédett fióknak **Virtual Machines** vendég műveletekhez szükséges jogosultságokat kell biztosítania  >  **Guest Operations** , hogy együttműködjön a virtuális géppel az alkalmazások felderítése érdekében.
+**vCenter** | Az értékeléshez használt vCenter Server írásvédett fióknak **Virtual Machines** vendég műveletekhez szükséges jogosultságokat kell biztosítania  >  **Guest Operations**, hogy együttműködjön a virtuális géppel az alkalmazások felderítése érdekében.
 **VM-hozzáférés** | Az alkalmazás-felderítésnek helyi felhasználói fiókra van szüksége a virtuális gépen az alkalmazások felderítéséhez.<br/><br/> Azure Migrate jelenleg egyetlen hitelesítő adat használatát támogatja az összes Windows-kiszolgálón, és egy hitelesítő adatot az összes Linux-kiszolgáló számára.<br/><br/> Létrehoz egy vendég felhasználói fiókot a Windows rendszerű virtuális gépekhez, valamint egy normál/normál felhasználói fiókot (nem sudo hozzáférés) az összes Linux rendszerű virtuális géphez.
 **Port-hozzáférés** | Az Azure Migrate készüléknek képesnek kell lennie csatlakozni az 443-es TCP-porthoz az ESXi-gazdagépeken futó, a virtuális gépeket futtató, és az alkalmazásokat felderítő A vCenter Server ESXI gazdagép-kapcsolódást ad vissza, amely az alkalmazás adatait tartalmazó fájlt tölti le.
 

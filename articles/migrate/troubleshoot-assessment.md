@@ -1,18 +1,17 @@
 ---
 title: Az értékelés és a függőség vizualizációjának hibakeresése Azure Migrate
-description: Segítség kérése az értékelés és a függőségi vizualizáció hibaelhárításához Azure Migrateban.
-ms.service: azure-migrate
-ms.topic: troubleshooting
-author: musa-57
+description: Segítség kérése az értékeléshez és a függőségi vizualizációhoz Azure Migrateban.
+author: rashi-ms
+ms.author: rajosh
 ms.manager: abhemraj
-ms.author: hamusa
+ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 4da0f40c25d322953fea968396ef33924877c2e1
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: cefcd4ce287eecfe2c764d88d5d2233cc8ac0a5c
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505223"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753445"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
@@ -23,7 +22,7 @@ Ez a cikk segítséget nyújt az értékeléssel és a függőségi vizualizáci
 
 Javítsa ki az értékelés készültségi problémáit az alábbiak szerint:
 
-**Probléma** | **Javítsa ki**
+**Probléma** | **Javítás**
 --- | ---
 Nem támogatott rendszerindítási típus | Az Azure nem támogatja az EFI rendszerindítási típussal rendelkező virtuális gépeket. Javasoljuk, hogy az áttelepítés futtatása előtt alakítsa át a rendszerindítási típust BIOS-ra. <br/><br/>Az ilyen virtuális gépek áttelepítésének kezeléséhez Azure Migrate kiszolgáló áttelepítését használhatja. Az áttelepítés során a rendszer a virtuális gép rendszerindítási típusát a BIOS-ba konvertálja.
 Feltételesen támogatott Windows operációs rendszer | Az operációs rendszer elérte a támogatás befejezési dátumát, és az [Azure-támogatáshoz](/troubleshoot/azure/virtual-machines/server-software-support)egyéni támogatási szerződés (CSA) szükséges. Az Azure-ba való Migrálás előtt érdemes lehet frissíteni. [Tekintse át]() az Azure-ba való áttelepítéshez [Windows Server 2003 rendszerű gépek előkészítésével](prepare-windows-server-2003-migration.md) kapcsolatos információkat.
@@ -91,8 +90,8 @@ A helyszíni virtuális gép négy maggal és nyolc GB memóriával rendelkezik,
 
 Azure Migrate kiszolgáló értékelése az értékelés típusától függően nagyobb lemezt javasolhat.
 - A kiszolgáló értékelése során a lemez méretezése két értékelési tulajdonságtól függ: a méretezési feltételektől és a tárolási típustól.
-- Ha a méretezési feltételek **teljesítmény-alapúak** , és a tároló típusa **automatikus** , a rendszer a lemez IOPS és átviteli értékeit veszi figyelembe a céllemez típusának (standard HDD, standard SSD vagy prémium) azonosításakor. Ezt követően a lemezből származó SKU-t ajánlott használni, és a javaslat a helyszíni lemez méretére vonatkozó követelményeket is figyelembe veszi.
-- Ha a méretezési feltétel **teljesítmény-alapú** , és a tárolási típus **prémium** , az Azure-ban prémium szintű lemezes SKU-t ajánlott használni a helyszíni lemez IOPS, átviteli sebessége és mérete alapján. Ugyanazt a logikát kell használni a lemez méretezéséhez, ha a méretezési feltételek **a helyszínen** vannak, és a tárolási típus **standard HDD** , **standard SSD** vagy **prémium**.
+- Ha a méretezési feltételek **teljesítmény-alapúak**, és a tároló típusa **automatikus**, a rendszer a lemez IOPS és átviteli értékeit veszi figyelembe a céllemez típusának (standard HDD, standard SSD vagy prémium) azonosításakor. Ezt követően a lemezből származó SKU-t ajánlott használni, és a javaslat a helyszíni lemez méretére vonatkozó követelményeket is figyelembe veszi.
+- Ha a méretezési feltétel **teljesítmény-alapú**, és a tárolási típus **prémium**, az Azure-ban prémium szintű lemezes SKU-t ajánlott használni a helyszíni lemez IOPS, átviteli sebessége és mérete alapján. Ugyanazt a logikát kell használni a lemez méretezéséhez, ha a méretezési feltételek **a helyszínen** vannak, és a tárolási típus **standard HDD**, **standard SSD** vagy **prémium**.
 
 Ha például egy helyszíni lemez 32 GB memóriával rendelkezik, de a lemez összesített olvasási és írási IOPS értéke 800 IOPS, a Server Assessment a prémium szintű lemezt javasolja (a magasabb IOPS-követelmények miatt), majd javaslatot tesz a szükséges IOPS és-méretet támogató lemezes SKU-ra. Ebben a példában a legjobb megoldást a P15-ös változat (256 GB, 1100 IOPS) adja. Bár a helyszíni lemez által igényelt méret 32 GB volt, a Server Assessment a helyszíni lemez magas IOPS követelménye miatt nagyobb lemezt javasol.
 
@@ -165,8 +164,8 @@ Linux rendszerű virtuális gépek esetén győződjön meg arról, hogy az MMA 
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-- **MMS-ügynök** : Tekintse át a támogatott [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)és [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) operációs rendszereket.
-- **Függőségi ügynök** : a támogatott [Windows-és Linux-](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) operációs rendszerek.
+- **MMS-ügynök**: Tekintse át a támogatott [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)és [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) operációs rendszereket.
+- **Függőségi ügynök**: a támogatott [Windows-és Linux-](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) operációs rendszerek.
 
 ## <a name="visualize-dependencies-for--hour"></a>> óra függőségeinek megjelenítése
 
@@ -222,6 +221,6 @@ Gyűjtsön hálózati forgalmi naplókat a következőképpen:
 - Hyper-V virtuális gépek esetén az operációs rendszer adatait a Hyper-V gazdagépről gyűjti a rendszer.
 - Fizikai kiszolgálók esetében a rendszer beolvassa a kiszolgálót a kiszolgálóról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Értékelés [létrehozása](how-to-create-assessment.md) vagy [testreszabása](how-to-modify-assessment.md) .

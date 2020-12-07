@@ -1,14 +1,17 @@
 ---
 title: Nagy számú VMware virtuális gép értékelése az Azure-ba való Migrálás Azure Migrate
-description: Ismerteti, hogyan lehet kiértékelni az Azure-ba való áttelepítéshez szükséges nagy számú VMware virtuális gépet az Azure Migrate szolgáltatás használatával. e
+description: Ismerteti, hogyan lehet kiértékelni az Azure-ba való áttelepítéshez szükséges nagy számú VMware virtuális gépet a Azure Migrate szolgáltatás használatával.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 0be7a7ea4afc400787456533689fe00b1db1c116
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 206df399736dbd3b5d1d52531a249bbd37646514
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492930"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753671"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Nagy számú VMware virtuális gép értékelése az Azure-ba való áttelepítéshez
 
@@ -68,7 +71,7 @@ Ha több-bérlős környezetet szeretne tervezni, a felderítést a vCenter Serv
 
 - A berendezés felderítési hatókörét beállíthatja egy vCenter Server adatközpontra, fürtökre vagy a fürtök, a gazdagépek vagy az egyes virtuális gépek mappájára vagy mappára.
 - Ha a környezet a bérlők között van megosztva, és az egyes bérlőket külön szeretné felderíteni, akkor a hatókörhöz való hozzáférést a berendezés által a felderítéshez használt vCenter-fiókhoz is elérheti. 
-    - Előfordulhat, hogy a virtuális gépek mappáinak hatókörét szeretné használni, ha a bérlők megosztják a gazdagépeket. Azure Migrate nem tudja felderíteni a virtuális gépeket, ha a vCenter-fiókhoz hozzáférés van megadva a vCenter VM-mappa szintjén. Ha a virtuális gép mappáiban szeretné kiterjeszteni a felderítést, a vCenter-fióknak csak olvasási hozzáférése van hozzárendelve a virtuális gép szintjén. [További információk](set-discovery-scope.md).
+    - Előfordulhat, hogy a virtuális gépek mappáinak hatókörét szeretné használni, ha a bérlők megosztják a gazdagépeket. Azure Migrate nem tudja felderíteni a virtuális gépeket, ha a vCenter-fiókhoz hozzáférés van megadva a vCenter VM-mappa szintjén. Ha a virtuális gép mappáiban szeretné kiterjeszteni a felderítést, a vCenter-fióknak csak olvasási hozzáférése van hozzárendelve a virtuális gép szintjén. [További információ](set-discovery-scope.md).
 
 ## <a name="prepare-for-assessment"></a>Felkészülés az értékelésre
 

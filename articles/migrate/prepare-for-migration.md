@@ -1,15 +1,17 @@
 ---
 title: Gépek előkészítése a Azure Migrate való áttelepítéshez
 description: Megtudhatja, hogyan készítheti elő a helyszíni gépeket a Azure Migrate való áttelepítéshez.
-ms.topic: tutorial
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 06/08/2020
-ms.custom: MVC
-ms.openlocfilehash: ed5a1b6dc47c91815cc88200ddd1b1246603f806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979f40e13aab71f02a316e4ddf60306170166845
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275404"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753926"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
 
@@ -100,7 +102,7 @@ Konfigurálja a beállítást manuálisan a következőképpen:
 
 1. Nyisson meg egy rendszergazda jogú parancssort a helyszíni gépen (nem a gazdagépen).
 2. Adja meg a **diskpartt**.
-3. Adja meg a **San**értéket. Ha a vendég operációs rendszer meghajtóbetűjele nincs karbantartva, a rendszer **offline állapotba** helyezi az összes vagy **Offline megosztást** .
+3. Adja meg a **San** értéket. Ha a vendég operációs rendszer meghajtóbetűjele nincs karbantartva, a rendszer **offline állapotba** helyezi az összes vagy **Offline megosztást** .
 4. A **DiskPart** parancssorába írja be a következőt: **San Policy = OnlineAll**. Ez a beállítás biztosítja, hogy a lemezek online állapotba kerüljenek, és lehetővé teszi a lemezek olvasását és írását is.
 5. A teszt áttelepítése során ellenőrizheti, hogy a meghajtóbetűjelek megmaradnak-e.
 
@@ -181,7 +183,7 @@ Helyszíni Linux rendszerű gépeken:
 
 Az áttelepítés után hajtsa végre a következő lépéseket a létrehozott Azure-beli virtuális gépeken:
 
-1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Az Azure-beli virtuális gép számára eltérő nyilvános IP-címet kell használnia, mint amelyet a helyszíni géphez használt. [További információk](../virtual-network/virtual-network-public-ip-address.md).
+1. Ha az interneten keresztül szeretne csatlakozni a virtuális géphez, rendeljen egy nyilvános IP-címet a virtuális géphez. Az Azure-beli virtuális gép számára eltérő nyilvános IP-címet kell használnia, mint amelyet a helyszíni géphez használt. [További információ](../virtual-network/virtual-network-public-ip-address.md).
 2. Győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoport (NSG) szabályai engedélyezik a bejövő kapcsolatokat az RDP-vagy SSH-porton.
 3. A virtuális gép megtekintéséhez tekintse meg a [rendszerindítási diagnosztikát](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) .
 

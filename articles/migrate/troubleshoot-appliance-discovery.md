@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate berendezés üzembe helyezésének és felderítésének hibáinak megoldása
-description: Segítség kérése a Azure Migrate berendezés üzembe helyezéséhez és a gépek felfedéséhez.
-author: musa-57
+description: Segítség kérése a berendezések üzembe helyezéséhez és a gépi felderítéshez.
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
-ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 0d4630cad94a30e0dd53785c512e452d7b4a7d38
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 26bb61e0c5a473a56c57391b53009419453956fd
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494443"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753416"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -27,7 +27,7 @@ Ez a cikk segítséget nyújt a [Azure Migrate](migrate-services-overview.md) be
 
 Ha "a megadott jegyzékfájl érvénytelen: érvénytelen OVF manifest-bejegyzés" hibaüzenet jelenik meg, tegye a következőket:
 
-1. Ellenőrizze, hogy a Azure Migrate készülék PETESEJTJEInek fájlja helyesen van-e letöltve a kivonatoló értékének ellenőrzésével. [További információk](./tutorial-discover-vmware.md). Ha a kivonatoló érték nem egyezik, töltse le újra a PETESEJT-fájlt, majd próbálja megismételni a telepítést.
+1. Ellenőrizze, hogy a Azure Migrate készülék PETESEJTJEInek fájlja helyesen van-e letöltve a kivonatoló értékének ellenőrzésével. [További információ](./tutorial-discover-vmware.md). Ha a kivonatoló érték nem egyezik, töltse le újra a PETESEJT-fájlt, majd próbálja megismételni a telepítést.
 2. Ha a telepítés továbbra is meghiúsul, és a VMware vSphere ügyfél használatával telepíti a OVF-fájlt, próbálja meg telepíteni a vSphere webes ügyfelén keresztül. Ha az üzembe helyezés továbbra is sikertelen, próbálkozzon más böngészővel.
 3. Ha a vSphere webes ügyfélprogramot használja, és vCenter Server 6,5-es vagy 6,7-es számítógépen szeretné telepíteni, próbálja meg közvetlenül telepíteni a PETESEJTeket az ESXi-gazdagépre:
    - Kapcsolódjon közvetlenül az ESXi-gazdagéphez (vCenter Server helyett) a webes ügyféllel (https://<*gazdagép IP-címe*>/UI).

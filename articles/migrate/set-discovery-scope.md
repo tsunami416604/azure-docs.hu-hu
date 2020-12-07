@@ -1,14 +1,17 @@
 ---
 title: A VMware virtuális gép felderítési hatókörének beállítása Azure Migrate
 description: Ismerteti, hogyan állítható be a felderítési hatókör a VMware virtuális gépek felméréséhez és a Azure Migrate-re való áttelepítéshez.
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 8c61f544e3222dba83123aa1be5e53a19e671035
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dc5bd178c837deea7a22fb3be5ba438085c0e748
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314031"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753552"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>Felderítési hatókör beállítása a VMware virtuális gépekhez
 
@@ -58,6 +61,6 @@ A kiszolgáló-értékelési eszköz jelenleg nem tudja felderíteni a virtuáli
 A szerepköralapú hozzáférés-vezérlés beállítása biztosítja, hogy a megfelelő vCenter-felhasználói fiók csak a bérlők által meghatározott virtuális gépekhez férhessen hozzá.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A készülék beállítása](how-to-set-up-appliance-vmware.md)

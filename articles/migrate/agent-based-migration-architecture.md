@@ -1,17 +1,17 @@
 ---
 title: Ügynök-alapú áttelepítés Azure Migrate kiszolgáló áttelepítésekor
 description: Áttekintést nyújt az ügynök alapú VMware VM-Migrálás Azure Migrate-ben való áttelepítéséről.
-author: rayne-wiselman
-ms.service: azure-migrate
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: raynew
-ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1389b03d87beb24cba50fec0a782de8b7f935557
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357165"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753892"
 ---
 # <a name="agent-based-migration-architecture"></a>Ügynökalapú migrálási architektúra
 
@@ -119,10 +119,10 @@ Az Azure-ba replikált VMware-forgalom egy adott folyamat-kiszolgálón halad á
 - Emellett a következő módon szabályozhatja a sávszélességet a Process Server-gépen:
 
     1. A Process Server gépen nyissa meg az Azure Backup MMC beépülő modult. Parancsikon található az asztalon vagy a következő mappában: C:\Program Files\Microsoft Azure Recovery Services Agent\bin. 
-    2. A beépülő modulban válassza a **Tulajdonságok módosítása**lehetőséget.
-    3. A **szabályozás**alatt jelölje be a **biztonsági mentési műveletek internetes sávszélesség-szabályozásának engedélyezése**jelölőnégyzetet. A munkamennyiség és a munkaidőn kívüli munkaidő korlátozásának beállítása. Az érvényes tartományok 512 kbps és 1 023 Mbps között vannak.
+    2. A beépülő modulban válassza a **Tulajdonságok módosítása** lehetőséget.
+    3. A **szabályozás** alatt jelölje be a **biztonsági mentési műveletek internetes sávszélesség-szabályozásának engedélyezése** jelölőnégyzetet. A munkamennyiség és a munkaidőn kívüli munkaidő korlátozásának beállítása. Az érvényes tartományok 512 kbps és 1 023 Mbps között vannak.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki a [VMware](tutorial-migrate-vmware-agent.md) vagy a [fizikai kiszolgálók](tutorial-migrate-physical-virtual-machines.md) [ügynök-alapú áttelepítését](tutorial-migrate-vmware-agent.md) .

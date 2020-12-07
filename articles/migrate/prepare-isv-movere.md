@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate előkészítése ISV-eszközzel vagy-mozgatóval való együttműködéshez
 description: Ez a cikk azt ismerteti, hogyan lehet előkészíteni a Azure Migratet egy ISV-eszközzel vagy-mozgatóval való együttműködésre, majd az eszköz használatának megkezdésére.
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: 885e64536e516e4fd96233c37a68f6e77fb84e33
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1716db0476169e12822b3f47f7199bf6e2c4ee92
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369148"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753773"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Felkészülés az ISV-eszköz vagy a mozgató tevékenységre
 
@@ -25,7 +28,7 @@ Az Azure-beli felhasználói fióknak a következő engedélyekkel kell rendelke
 ### <a name="set-permissions-to-register-an-azure-ad-app"></a>Engedélyek beállítása Azure AD-alkalmazás regisztrálásához
 
 1. Az Azure AD-ben keresse meg a fiókja szerepkört.
-2. Ha rendelkezik a felhasználói szerepkörrel, válassza a bal oldali **felhasználói beállítások** elemet, és ellenőrizze, hogy a felhasználók regisztrálhatnak-e alkalmazásokat. Ha az **Igen**értékre van állítva, akkor az Azure ad-bérlő bármely felhasználója regisztrálhat egy alkalmazást. Ha a **nem**értékre van állítva, akkor csak a rendszergazda felhasználók regisztrálhatják az alkalmazásokat.   
+2. Ha rendelkezik a felhasználói szerepkörrel, válassza a bal oldali **felhasználói beállítások** elemet, és ellenőrizze, hogy a felhasználók regisztrálhatnak-e alkalmazásokat. Ha az **Igen** értékre van állítva, akkor az Azure ad-bérlő bármely felhasználója regisztrálhat egy alkalmazást. Ha a **nem** értékre van állítva, akkor csak a rendszergazda felhasználók regisztrálhatják az alkalmazásokat.   
 3. Ha nincs engedélye, a rendszergazda felhasználó megadhatja a felhasználói fiókját az [alkalmazás-rendszergazdai](../active-directory/roles/permissions-reference.md#application-administrator) szerepkörrel, így regisztrálhatja az alkalmazást.
 4. Az eszköz Azure Migratehoz való csatolása után a rendszergazda el tudja távolítani a szerepkört a fiókból.
 
@@ -35,8 +38,8 @@ Az Azure-előfizetésében a fióknak **Microsoft. Authorization/*/Write** hozz�
 
 1. Az Azure Portalon nyissa meg az **Előfizetések** oldalt.
 2. Válassza ki az adott előfizetést. Ha nem látja, válassza a **globális előfizetések szűrőt**. 
-3. Válassza **a saját engedélyek**lehetőséget. Ezután **kattintson ide az előfizetés teljes hozzáférés részleteinek megtekintéséhez**.
-4. A **szerepkör-hozzárendelések**  >  **nézetben**tekintse át az engedélyeket. Ha a fiókja nem rendelkezik jogosultságokkal, kérje meg az előfizetés rendszergazdáját, hogy vegye fel a [felhasználót a felhasználói hozzáférés rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkörbe vagy a [tulajdonos](../role-based-access-control/built-in-roles.md#owner) szerepkörbe.
+3. Válassza **a saját engedélyek** lehetőséget. Ezután **kattintson ide az előfizetés teljes hozzáférés részleteinek megtekintéséhez**.
+4. A **szerepkör-hozzárendelések**  >  **nézetben** tekintse át az engedélyeket. Ha a fiókja nem rendelkezik jogosultságokkal, kérje meg az előfizetés rendszergazdáját, hogy vegye fel a [felhasználót a felhasználói hozzáférés rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkörbe vagy a [tulajdonos](../role-based-access-control/built-in-roles.md#owner) szerepkörbe.
 
 ## <a name="allow-access-to-urls"></a>URL-címek elérésének engedélyezése
 
@@ -53,10 +56,10 @@ management.azure.com | Azure Resource Manager hívásokat kezdeményez a Azure M
 
 ## <a name="start-using-the-tool"></a>Az eszköz használatának megkezdése
 
-1. Ha még nem rendelkezik licenccel vagy ingyenes próbaverzióval az eszközhöz, a Azure Migrate eszköz bejegyzésében, a **regisztráció**területen válassza a **továbbiak**lehetőséget.
+1. Ha még nem rendelkezik licenccel vagy ingyenes próbaverzióval az eszközhöz, a Azure Migrate eszköz bejegyzésében, a **regisztráció** területen válassza a **továbbiak** lehetőséget.
 2. Az eszközben kövesse az utasításokat az eszközről a Azure Migrate projekthez való hivatkozáshoz, és az adatok Azure Migrateba való küldéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kövesse az ISV vagy a mozgató utasításait az adatok Azure Migrate való elküldéséhez.
 

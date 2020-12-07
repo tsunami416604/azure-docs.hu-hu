@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate berendezés beállítása parancsfájlokkal
 description: Megtudhatja, hogyan állíthat be egy Azure Migrate készüléket parancsfájl használatával
-ms.topic: article
+ms.topic: how-to
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.date: 04/16/2020
-ms.openlocfilehash: c4f92d787ea2a72dd534e514e27fa1a5defef39c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 38db1e68adde21d0e566256e9393f6fa4fc58824
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317332"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753790"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Berendezés beállítása parancsfájlsal
 
@@ -26,7 +29,7 @@ A szkript beállítja a Azure Migrate készüléket egy meglévő fizikai gépre
 
 - A készülékként működni kívánó gépnek meg kell felelnie az alábbi hardver-és operációsrendszer-követelményeknek:
 
-Használati eset | Követelmények
+Használati példa | Követelmények
 --- | ---
 VMware | Windows Server 2016, 32 GB memóriával, nyolc vCPU, körülbelül 80 GB lemezes tárolással
 Hyper-V | Windows Server 2016, 16 GB memóriával, nyolc vCPU, körülbelül 80 GB lemezes tárolással
@@ -61,7 +64,7 @@ A szkript a következőket teszi:
 
 - Ügynököket és webalkalmazásokat telepít.
 - Telepíti a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Letölti és telepíti az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
+- Letölti és telepíti az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
 - Egy beállításkulcs (HKLM) frissítése a Azure Migrate állandó beállításaival.
 - A a következőképpen hozza létre a naplófájlokat és a konfigurációs fájlokat:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
@@ -72,7 +75,7 @@ A szkript futtatása:
 1. Bontsa ki a tömörített fájlt egy olyan mappába a gépen, amely a készüléket fogja üzemeltetni. Győződjön meg arról, hogy nem futtatja a parancsfájlt egy meglévő Azure Migrate berendezésen lévő gépen.
 2. Indítsa el a PowerShellt a gépen, rendszergazdai (emelt szintű) jogosultságokkal.
 3. Módosítsa a PowerShell-könyvtárat arra a mappára, amely a letöltött tömörített fájlból kinyert tartalmat tartalmazza.
-4. Futtassa **AzureMigrateInstaller.ps1**szkriptet a következő módon:
+4. Futtassa **AzureMigrateInstaller.ps1** szkriptet a következő módon:
 
     ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario VMware ```
    
@@ -108,7 +111,7 @@ A szkript a következőket teszi:
 
 - Ügynököket és webalkalmazásokat telepít.
 - Telepíti a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Letölti és telepíti az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
+- Letölti és telepíti az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
 - Egy beállításkulcs (HKLM) frissítése a Azure Migrate állandó beállításaival.
 - A a következőképpen hozza létre a naplófájlokat és a konfigurációs fájlokat:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
@@ -119,7 +122,7 @@ A szkript futtatása:
 1. Bontsa ki a tömörített fájlt egy olyan mappába a gépen, amely a készüléket fogja üzemeltetni. Győződjön meg arról, hogy nem futtatja a parancsfájlt egy meglévő Azure Migrate berendezésen lévő gépen.
 2. Indítsa el a PowerShellt a gépen, rendszergazdai (emelt szintű) jogosultságokkal.
 3. Módosítsa a PowerShell-könyvtárat arra a mappára, amely a letöltött tömörített fájlból kinyert tartalmat tartalmazza.
-4. Futtassa **AzureMigrateInstaller.ps1**szkriptet a következő módon: 
+4. Futtassa **AzureMigrateInstaller.ps1** szkriptet a következő módon: 
 
     ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario Hyperv ```
    
@@ -129,7 +132,7 @@ A szkript futtatása:
 
 Győződjön meg arról, hogy a készülék képes csatlakozni a [nyilvános](migrate-appliance.md#public-cloud-urls) felhőhöz tartozó Azure URL-címekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A készülék üzembe helyezése után először be kell állítania, majd regisztrálnia kell a Azure Migrate projektben.
 

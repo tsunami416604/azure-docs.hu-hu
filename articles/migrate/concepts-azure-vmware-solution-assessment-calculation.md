@@ -2,16 +2,16 @@
 title: AVS Assessment-számítások a Azure Migrateban | Microsoft Docs
 description: Áttekintést nyújt az AVS Assessment számításokról a Azure Migrate szolgáltatásban.
 author: rashi-ms
-ms.service: azure-migrate
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.author: mahain
-ms.openlocfilehash: 400c2d91383b5f21fcd40fdbbe279bd83fcef51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67d4137a21753b221e17a1effde35bc1b89600d3
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576540"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753807"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>A kiszolgáló értékelésének áttekintése (Migrálás az Azure VMware-megoldásba)
 
@@ -81,7 +81,7 @@ Ha a készüléket a felderítéshez használja, a következő lépésekkel gyű
 
 2. A készülék 10 percenként egyesíti a mintavételi pontokat, hogy egyetlen adatpontot hozzon létre. Az adatpont létrehozásához a készülék kiválasztja az összes minta csúcsérték-értékeit. Ezután elküldi az adatpontot az Azure-nak.
 3. A kiszolgáló értékelése az elmúlt hónapban az összes 10 perces adatpontot tárolja.
-4. Értékelés létrehozásakor a kiszolgáló értékelése azonosítja a megadásában használandó megfelelő adatpontot. Az azonosítás a *teljesítmény előzményeinek* és a *percentilis kihasználtságának*százalékos értékein alapul.
+4. Értékelés létrehozásakor a kiszolgáló értékelése azonosítja a megadásában használandó megfelelő adatpontot. Az azonosítás a *teljesítmény előzményeinek* és a *percentilis kihasználtságának* százalékos értékein alapul.
 
     - Ha például a teljesítmény előzményei egy hét, a percentilis kihasználtsága pedig a 95. percentilis, a kiszolgáló értékelése az elmúlt hét 10 perces mintavételi pontjait rendezi. Növekvő sorrendben rendezi őket, és kiválasztja a 95. percentilis értékét a megadásában.
     - A 95. percentilis értéke biztosítja, hogy figyelmen kívül hagyja a kiugró adatokat, amelyek akkor szerepelhetnek, ha kiválasztotta a esetek 99% percentilis értékét.
@@ -166,7 +166,7 @@ A virtuális gép tulajdonságaival együtt a kiszolgáló értékelése a gépe
 
 Miután egy gép az AVS-re készként van megjelölve, a kiszolgáló értékelése során az AVS Assessment a csomópontok méretezésére vonatkozó javaslatokat tartalmaz, amely magában foglalja a megfelelő helyszíni virtuálisgép-követelmények azonosítását és a szükséges AVS-csomópontok teljes számának megállapítását. Ezek az ajánlások a megadott értékelési tulajdonságokkal függően változnak.
 
-- Ha az értékelés *teljesítmény-alapú méretezést*használ, Azure Migrate figyelembe veszi a gép teljesítmény-előzményeit, hogy az AVS-re vonatkozó megfelelő méretezési javaslatok legyenek. Ez a módszer különösen akkor hasznos, ha túlterhelte a helyszíni virtuális gépet, de a kihasználtság alacsony, és a virtuális gépet az AVS-ben szeretné megtakarítani a költségek megtakarítása érdekében. Ez a módszer segít optimalizálni a méreteket az áttelepítés során.
+- Ha az értékelés *teljesítmény-alapú méretezést* használ, Azure Migrate figyelembe veszi a gép teljesítmény-előzményeit, hogy az AVS-re vonatkozó megfelelő méretezési javaslatok legyenek. Ez a módszer különösen akkor hasznos, ha túlterhelte a helyszíni virtuális gépet, de a kihasználtság alacsony, és a virtuális gépet az AVS-ben szeretné megtakarítani a költségek megtakarítása érdekében. Ez a módszer segít optimalizálni a méreteket az áttelepítés során.
 - Ha nem szeretné figyelembe venni a virtuális gép méretezésére szolgáló teljesítményadatokat, és a helyszíni gépeket az AVS-re szeretné használni, beállíthatja a méretezési feltételeket *a helyszíni értékre.* Ezt követően a kiszolgáló értékelése a helyszíni konfiguráció alapján méretezi a virtuális gépeket a kihasználtsági adatmennyiség figyelembevétele nélkül. 
 
 
@@ -190,7 +190,7 @@ A teljesítmény-alapú méretezés érdekében a kiszolgáló értékelése a v
 
 1. A VMware virtuális gépek esetében a Azure Migrate készülék minden 20 másodperces intervallumban gyűjt valós idejű mintavételi pontot. 
 2. A készülék 10 percenként gyűjti össze a mintavételi pontokat, és az elmúlt 10 percben a kiszolgáló értékeléséhez elküldi a maximális értéket.
-3. A kiszolgáló értékelése az elmúlt egy hónapban az összes 10 perces mintavételi pontot tárolja. Ezután a *teljesítmény előzményeihez* és a *percentilis kihasználtságához*megadott értékelési tulajdonságoktól függően azonosítja a megfelelő adatpontot, amelyet a jobb méretezés érdekében használ. Ha például a teljesítmény-előzmények értéke 1 nap, a percentilis kihasználtsága pedig a 95. percentilis, a Server Assessment az elmúlt egy nap 10 perces mintavételi pontját használja, növekvő sorrendbe rendezi őket, és kiválasztja a 95. percentilis értékét a jobb méretezés érdekében.
+3. A kiszolgáló értékelése az elmúlt egy hónapban az összes 10 perces mintavételi pontot tárolja. Ezután a *teljesítmény előzményeihez* és a *percentilis kihasználtságához* megadott értékelési tulajdonságoktól függően azonosítja a megfelelő adatpontot, amelyet a jobb méretezés érdekében használ. Ha például a teljesítmény-előzmények értéke 1 nap, a percentilis kihasználtsága pedig a 95. percentilis, a Server Assessment az elmúlt egy nap 10 perces mintavételi pontját használja, növekvő sorrendbe rendezi őket, és kiválasztja a 95. percentilis értékét a jobb méretezés érdekében.
 4. Ennek az értéknek a megszorozza a komforttal, hogy az egyes mérőszámok teljesítménybeli kihasználtsági adatait (CPU-kihasználtság, memória kihasználtsága, lemez IOPS (olvasás és írás), a lemez átviteli sebességét (olvasási és írási), valamint a készülék által gyűjtött hálózati átviteli sebességet (be és ki) kell beolvasni.
 
 A tényleges kihasználtsági érték meghatározása után a tároló, a hálózat és a számítási méret a következőképpen lesz kezelve.
@@ -205,7 +205,7 @@ A tényleges kihasználtsági érték meghatározása után a tároló, a háló
 
 ### <a name="as-on-premises-sizing"></a>Helyszíni méretezés
 
-Ha helyszíni *méretezést*használ, a kiszolgáló értékelése nem veszi figyelembe a virtuális gépek és lemezek teljesítményének előzményeit. Ehelyett az AVS-csomópontokat a helyszínen lefoglalt méret alapján foglalja le. Az alapértelmezett tárolási típus a vSAN az AVS-ben.
+Ha helyszíni *méretezést* használ, a kiszolgáló értékelése nem veszi figyelembe a virtuális gépek és lemezek teljesítményének előzményeit. Ehelyett az AVS-csomópontokat a helyszínen lefoglalt méret alapján foglalja le. Az alapértelmezett tárolási típus a vSAN az AVS-ben.
 
 ## <a name="confidence-ratings"></a>Megbízhatósági minősítések
 
@@ -259,6 +259,6 @@ Az Azure VMware Solution- (AVS-) értékelés Azure-kompatibilitási jelentésé
 - **VMware HCX vagy Enterprise**: VMware-es gépek esetén a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. [További információk](../azure-vmware/tutorial-deploy-vmware-hcx.md).
 - **Ismeretlen**: A CSV-fájllal importált gépek esetében az alapértelmezett migrálási eszköz ismeretlen. A VMware-es gépek esetében azonban ajánlott a VMware Hybrid Cloud Extension (HCX) megoldás használata.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozzon létre egy értékelést az [AVS VMWare virtuális gépekhez](how-to-create-azure-vmware-solution-assessment.md).
