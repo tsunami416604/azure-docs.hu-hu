@@ -1,0 +1,75 @@
+### YamlMime:Landing
+title: Azure Data Box Gateway-dokumentáció – Online adatátvitel
+summary: Az Azure Data Box Gateway-eszközöket hálózaton keresztüli adatátvitelre használhatja felhőben történő archiváláshoz, vészhelyreállításhoz vagy felhőszintű feldolgozáshoz.
+metadata:
+  title: Azure Data Box Gateway-dokumentáció – Online adatátvitel
+  description: A Data Box Gateway dokumentációja az Azure-ba történő nagy teljesítményű, hálózaton keresztüli adatátvitelhez.
+  services: databox
+  ms.service: databox
+  ms.subservice: gateway
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 10/29/2020
+  ms.openlocfilehash: 811d0555e6fd39f372b4742501a3114bbc9a25b4
+  ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/03/2020
+  ms.locfileid: "96579953"
+landingContent:
+- title: A Data Box Gateway bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi a Data Box Gateway?
+      url: data-box-gateway-overview.md
+  - linkListType: architecture
+    links:
+    - text: Adatátviteli lehetőségek kiválasztása
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: Hálózati vagy offline átvitel használata
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+  - linkListType: whats-new
+    links:
+    - text: 2007-es kibocsátási megjegyzések – Aktuális
+      url: data-box-gateway-2007-release-notes.md
+- title: Követelmények és korlátok
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Követelmények
+      url: data-box-gateway-system-requirements.md
+    - text: Korlátok
+      url: data-box-gateway-limits.md
+- title: Üzembe helyezés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Az üzembe helyezés előkészítése
+      url: data-box-gateway-deploy-prep.md
+    - text: Üzembe helyezés Hyper-V rendszerben
+      url: data-box-gateway-deploy-provision-hyperv.md
+    - text: Csatlakoztatás, beállítás és aktiválás
+      url: data-box-gateway-deploy-connect-setup-activate.md
+    - text: Adatátvitel
+      url: data-box-gateway-deploy-add-shares.md
+- title: Kezelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Megosztások kezelése
+      url: data-box-gateway-manage-shares.md
+    - text: Kezelés a PowerShell használatával
+      url: data-box-gateway-connect-powershell-interface.md
+- title: Hibaelhárítás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Hibaelhárítás
+      url: data-box-gateway-troubleshoot.md
+    - text: Figyelés
+      url: data-box-gateway-monitor.md
+    - text: Támogatási jegy megnyitása
+      url: ../databox-online/azure-stack-edge-contact-microsoft-support.md

@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 2aae71836a4eaba845e4752edf708607977763fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8c3ab3f4f9bc56e9651a98e5c011cad65f21fd9d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014286"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348984"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Azure-előfizetések számlázási tulajdonjogának beszerzése más fiókoktól
 
@@ -28,7 +28,7 @@ Számlázási tulajdonjogot csak a **számlaszakaszok tulajdonosai** és a **sz�
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy Microsoft-ügyfélszerződéses számlázási fiók számlaszakaszának tulajdonosaként vagy közreműködőjeként.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
     ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-1. A számlázási hatókörök lapon válassza ki azt a számlázási fiókot, amellyel fizetni kívánja az előfizetés használatát. A számlázási fióknak **Microsoft-ügyfélszerződés** típusú lesz.  
+1. A számlázási hatókörök lapon válassza a **Számlázási hatókörök** lehetőséget, majd válassza ki azt a számlázási fiókot, amellyel fizetni kívánja az előfizetés használatát. A számlázási fióknak **Microsoft-ügyfélszerződés** típusú lesz.  
     [![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)
     > [!NOTE]
     > Az Azure Portal megjegyzi az utoljára használt számlázási hatókört, és megjeleníti a Költségkezelés + Számlázás lap következő megnyitásakor. A számlázási hatókörök lap nem jelenik meg, ha már korábban meglátogatta a Költségkezelés + Számlázás lapot. Ebben az esetben ellenőrizze, hogy a [megfelelő hatókörben](#check-for-access) van-e. Ha nem, [váltson hatókört](view-all-accounts.md#switch-billing-scope-in-the-azure-portal), és válassza ki a Microsoft-ügyfélszerződéshez kapcsolódó számlázási fiókot.

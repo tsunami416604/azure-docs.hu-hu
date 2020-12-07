@@ -61,7 +61,7 @@
           href: load-balancer-insights.md
         - name: A Standard Load Balancer metrikái és diagnosztikai eszközei
           href: load-balancer-standard-diagnostics.md
-        - name: Azure Monitor-naplók az alapszintű Load Balancerhez
+        - name: Azure Monitor-naplók a Load Balancerhez
           href: load-balancer-monitor-log.md
         - name: Load Balancer-metrikák lekérése a REST használatával
           href: load-balancer-query-metrics-rest-api.md

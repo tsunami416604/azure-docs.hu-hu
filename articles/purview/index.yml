@@ -1,0 +1,116 @@
+### YamlMime:Landing
+title: Azure Purview-dokumentáció
+summary: Ismerje meg, hogyan használhatja az Azure Purview-t, hogy a szervezete megtalálhasson, megismerhessen és felhasználhasson adatforrásokat.
+metadata:
+  title: Azure Purview-dokumentáció
+  description: Ismerje meg, hogyan használhatja az Azure Purview-t, ahol a szervezete megtalálhat, megismerhet és felhasználhat adatforrásokat. Az oktatóanyagok, REST API-leírás és egyéb dokumentáció bemutatják, hogyan tervezheti meg és konfigurálhatja az adattárat, ahol az adatfelhasználók hozzájuthatnak az elérhető adatforrásokhoz, és szakértők által közzétett tudást sajátíthatnak el.
+  ms.service: purview
+  ms.topic: landing-page
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 11/29/2020
+  ms.openlocfilehash: 378a335653acf31275c312bcf4fa53b36bfa614e
+  ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/03/2020
+  ms.locfileid: "96549436"
+landingContent:
+- title: Az Azure Purview bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Purview?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Ajánlott üzembe helyezési eljárások
+      url: deployment-best-practices.md
+    - text: Adatkatalógus-engedélyek
+      url: catalog-permissions.md
+    - text: Támogatott adatforrások és fájltípusok
+      url: sources-and-scans.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Purview-fiók létrehozása – Portál
+      url: create-catalog-portal.md
+    - text: Purview-fiók létrehozása – PowerShell/parancssori felület
+      url: create-catalog-powershell.md
+  - linkListType: tutorial
+    links:
+    - text: Kezdőcsomag letöltése
+      url: https://download.microsoft.com/download/9/7/9/979db3b1-0916-4997-a7fb-24e3d8f83174/PurviewStarterKitV4.zip
+    - text: A kezdőcsomag futtatása és az adatok vizsgálata
+      url: tutorial-scan-data.md
+    - text: Keresés a Purview kezdőlapján
+      url: tutorial-asset-search.md
+    - text: Eszközök tallózása és az életút megtekintése
+      url: tutorial-browse-and-view-lineage.md
+    - text: Erőforráskészletek, eszközök, sémák és besorolások böngészése
+      url: tutorial-schemas-and-classifications.md
+    - text: Szószedet-kifejezések létrehozása
+      url: tutorial-import-create-glossary-terms.md
+- title: Azure-adatforrások vizsgálata
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: A kezdőcsomag futtatása és az adatok vizsgálata
+      url: tutorial-scan-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure SQL Database vizsgálata
+      url: register-scan-azure-sql-database.md
+    - text: Az Azure Data Lake Storage Gen 2 vizsgálata
+      url: register-scan-adls-gen2.md
+    - text: Az Azure Cosmos DB vizsgálata
+      url: register-scan-azure-cosmos-database.md
+    - text: Power BI-bérlő
+      url: register-scan-power-bi-tenant.md
+    - text: Az Azure Blob Storage regisztrálása és vizsgálata
+      url: register-scan-azure-blob-storage-source.md
+- title: Nem Azure-beli adatforrások vizsgálata
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Helyszíni SQL Server vizsgálata
+      url: register-scan-on-premises-sql-server.md
+- title: Adattulajdon értelmezése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Eszközzel kapcsolatos megállapítások megtekintése
+      url: asset-insights.md
+    - text: Szószedettel kapcsolatos megállapítások megtekintése
+      url: glossary-insights.md
+    - text: Vizsgálattal kapcsolatos megállapítások megtekintése
+      url: scan-insights.md
+    - text: Besorolással kapcsolatos megállapítások megtekintése
+      url: classification-insights.md
+- title: Adatok összeválogatása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erőforráskészletek, eszközök, sémák, besorolások
+      url: tutorial-schemas-and-classifications.md
+    - text: Szószedet kifejezései
+      url: tutorial-import-create-glossary-terms.md
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni besorolások és szabályok létrehozása, szerkesztése és törlése
+      url: create-a-custom-classification-and-classification-rule.md
+    - text: Szószedet létrehozása, importálása és exportálása
+      url: how-to-create-import-export-glossary.md
+- title: Adatok felderítése
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Tallózás és életút
+      url: tutorial-browse-and-view-lineage.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tallózás eszköztípus szerint
+      url: how-to-browse-catalog.md
+    - text: Eszközök, fogalmak, jegyzetek és kapcsolattartók keresése
+      url: how-to-search-catalog.md

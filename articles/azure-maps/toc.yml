@@ -134,6 +134,8 @@
           href: how-to-request-real-time-data.md
         - name: Valós idejű és előre jelzett időjárási adatok kérése
           href: how-to-request-weather-data.md
+        - name: Elevation-adatok kérése
+          href: how-to-request-elevation-data.md
     - name: Fejlesztés a webes SDK-val
       items:
         - name: Térképvezérlő

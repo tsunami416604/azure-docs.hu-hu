@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 0049efda603532099cc9bf24dc9d9411b5aaa389
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 3df6b694f3a40cef17c6e0114464ad4aa2fa30ce
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132125"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344334"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Számlázási fiókok és hatókörök az Azure Portalon
 
@@ -33,6 +33,12 @@ A számlázási fiók típusának meghatározásával kapcsolatban lásd [a szá
 
 ## <a name="scopes-for-billing-accounts"></a>A számlázási fiókok hatóköre
 A hatókör egy csomópont a számlázási fiókon belül. Ennek használatával lehet megtekinteni és kezelni a számlázást. Itt lehet kezelni a számlázási adatokat, a fizetéseket, a számlákat, és itt történik az általános fiókkezelés.
+
+Ha nincs hozzáférése a számlázási fiókok megtekintéséhez vagy kezeléséhez, valószínűleg nem rendelkezik hozzáférési engedéllyel. Megkérheti a számlázási fiók adminisztrátorát, hogy adjon Önnek hozzáférést. További információért tekintse át a következő cikkeket:
+
+- [Microsoft Online Services Program-hozzáférés](manage-billing-access.md)
+- [Microsoft Ügyfélszerződés-hozzáférés](understand-mca-roles.md)
+- [Nagyvállalati szerződés-hozzáférés](understand-ea-roles.md)
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services Program
 
@@ -72,7 +78,7 @@ A hatókör egy csomópont a számlázási fiókon belül. Ennek használatával
 |Számlázási fiók     |   Olyan partnerszerződést jelöl, amely az ügyfelek Microsoft-termékeinek és -szolgáltatásainak az új kereskedelmi felületen való kezeléséhez szükséges. Egy vagy több számlázási profilt és ügyfelet tartalmaz.   |
 |Számlázási profil     |   Egy adott pénznem szerinti számlát jelöl.     |
 |Ügyfél    |   Felhőszolgáltató (CSP-) partnerek ügyfelét jelöli.  Az Azure-előfizetések és más vásárlások, például az Azure Marketplace-en vagy az AppSource-on beszerzett termékek ehhez a hatókörhöz vannak társítva.  |
-|Viszonteladó    |   Az a viszonteladó, aki szolgáltatásokat nyújt az ügyfélnek. Ez egy nem kötelezően kitöltendő mező, és csak a közvetett szolgáltatókra vonatkozik a CSP kétrétegű modelljében.     |
+|Viszonteladó    |   Az a viszonteladó, aki szolgáltatásokat nyújt az ügyfélnek. Ez egy nem kötelezően kitöltendő előfizetési mező, és csak a közvetett szolgáltatókra vonatkozik a CSP kétrétegű modelljében.     |
 
 ## <a name="switch-billing-scope-in-the-azure-portal"></a>A számlázás hatókörének módosítása az Azure Portalon
 
