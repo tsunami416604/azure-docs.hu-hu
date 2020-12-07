@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 12/07/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaa8b586b7d1ae073d0746569d61de837eec3b7d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 620b696be0b9a06cf0d68145b06e3cacf2bedff2
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743870"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762550"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszóátállítás
 
@@ -69,11 +69,8 @@ A SSPR megkezdéséhez kövesse az alábbi oktatóanyagot:
 > [!div class="nextstepaction"]
 > [Oktatóanyag: az önkiszolgáló jelszó-visszaállítás engedélyezése (SSPR)](tutorial-enable-sspr.md)
 
-## <a name="registration-options"></a>Regisztrációs beállítások
 
-Mielőtt a felhasználók visszaállíthatják vagy megváltoztathatják a jelszavukat a SSPR használatával, regisztrálniuk kell magukat és a használni kívánt hitelesítési módszereket. Ahogy az előző szakaszban is említettük, a felhasználónak regisztrálnia kell a SSPR, és rendelkeznie kell egy megfelelő licenccel.
-
-### <a name="require-users-to-register-when-they-sign-in"></a>A felhasználók regisztrálásának megkövetelése a bejelentkezéskor
+## <a name="require-users-to-register-when-they-sign-in"></a>A felhasználók regisztrálásának megkövetelése a bejelentkezéskor
 
 Engedélyezheti, hogy a felhasználó megkövetelje a SSPR regisztrációját, ha az Azure AD-t használó alkalmazásokba jelentkeznek be. A munkafolyamat a következő alkalmazásokat tartalmazza:
 
@@ -92,7 +89,7 @@ Ha nem igényel regisztrációt, a rendszer nem kéri a felhasználókat a bejel
 >
 > Ez a SSPR való regisztrálási megszakítás nem bontja a felhasználó kapcsolódását, ha már be van jelentkezve.
 
-### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Azon napok száma, amely után a felhasználóknak meg kell adniuk a hitelesítési adataik ismételt megerősítését
+## <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Azon napok száma, amely után a felhasználóknak meg kell adniuk a hitelesítési adataik ismételt megerősítését
 
 Annak érdekében, hogy a hitelesítési módszerek helyesek legyenek, amikor szükség van a jelszó alaphelyzetbe állítására vagy módosítására, megkövetelheti a felhasználók számára, hogy bizonyos idő elteltével erősítse meg az adataikat a regisztrált információk alapján. Ez a beállítás csak akkor érhető el, ha engedélyezi a **felhasználók regisztrációját a bejelentkezéskor** lehetőségre.
 

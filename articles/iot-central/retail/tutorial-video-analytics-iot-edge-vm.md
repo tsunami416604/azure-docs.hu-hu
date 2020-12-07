@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 23173432db9364f25901e6e9b285d390c6a63a34
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: f798e65b1517430bc67af793ebb517c586d5d58f
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426545"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763876"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Oktatóanyag: IoT Edge-példány létrehozása videó-elemzéshez (linuxos virtuális gép)
 
@@ -51,20 +51,20 @@ A következő táblázatban található információk segítségével fejezze be
 | Előfizetés | Válassza ki Azure-előfizetését. |
 | Erőforráscsoport | *LVA – RG* – az előző oktatóanyagban létrehozott erőforráscsoport. |
 | Régió       | *USA keleti régiója* |
-| DNS-címke előtagja | Válasszon egyedi DNS-előtagot a virtuális géphez. |
+| DNS-címke előtagja | Válasszon egyedi DNS-előtagot a virtuális géphez. Csak betűkből és betűkből állhat, és nem tartalmazhat számjegyeket vagy speciális karaktereket. |
 | Rendszergazdai Felhasználónév | *AzureUser* |
 | Rendszergazdai jelszó | Adjon meg egy jelszót. Jegyezze fel a jelszót a *scratchpad.txt* fájlban, amelyet később használni fog. |
 | Hatókör-azonosító | A **Hatókör-azonosító** , amelyet az előző oktatóanyag *scratchpad.txt* fájljában adott meg, az átjáró-eszköz hozzáadásakor. |
 | Eszközazonosító | *Gateway-001* – az előző oktatóanyagban létrehozott átjáró eszköz. |
-| Eszköz kulcsa | Az eszköz elsődleges kulcsa az átjáró eszköz hozzáadásakor az előző oktatóanyag *scratchpad.txt* fájljában található. |
+| Eszköz kulcsa | Az **eszköz elsődleges kulcsa** az átjáró eszköz hozzáadásakor az előző oktatóanyag *scratchpad.txt* fájljában található. |
 | IOT központi alkalmazás-gazdagép | Az **alkalmazás URL-címe** , amelyet az előző oktatóanyag *scratchpad.txt* fájljában jegyzett készített. Például: *Traders.azureiotcentral.com*. |
-| IOT központi alkalmazás API-tokenje | Az operátor API-tokenje az előző oktatóanyagban feljegyzést készített. |
-| IOT központi eszköz kiépítési kulcsa | Az elsődleges csoport közös hozzáférésű aláírási tokenje az előző oktatóanyag *scratchpad.txt* fájljában jegyzetet készített. |
+| IOT központi alkalmazás API-tokenje | A **kezelő API-tokent** , amelyet az előző oktatóanyag *scratchpad.txt* fájljában jegyzett készített. |
+| IOT központi eszköz kiépítési kulcsa | Az **sas-IoT-Devices csoport elsődleges kulcsát** az előző oktatóanyag *scratchpad.txt* fájljában jegyezze fel. |
 | Virtuális gép mérete | *Standard_DS1_v2* |
 | Ubuntu operációs rendszer verziója | *18,04 – LTS* |
 | Hely | *[resourceGroup (). location]* |
 
-Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az ellenőrzés befejezésekor válassza a **Létrehozás** lehetőséget. A telepítés befejezéséhez általában három percet vesz igénybe. Az üzembe helyezés befejezésekor navigáljon a Azure Portal **LVA-RG** erőforráscsoporthoz.
+Válassza az **Áttekintés + létrehozás** lehetőséget. Az ellenőrzés befejezésekor válassza a **Létrehozás** lehetőséget. A telepítés befejezéséhez általában három percet vesz igénybe. Az üzembe helyezés befejezésekor navigáljon a Azure Portal **LVA-RG** erőforráscsoporthoz.
 
 ## <a name="ensure-the-iot-edge-runtime-loads-the-modules"></a>Győződjön meg arról, hogy a IoT Edge futtatókörnyezet betölti a modulokat
 
@@ -119,7 +119,7 @@ sudo docker ps
 
 A lista egy **LIVE555** nevű tárolót tartalmaz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most telepítette a IoT Edge futtatókörnyezetet, a LVA modulokat és a Live555 szimulációs streamet egy Azure-on futó linuxos virtuális gépen.
 

@@ -7,18 +7,18 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 11/24/2020
-ms.openlocfilehash: fe335b00df23ff132ad61b27efd733d195ee3bfb
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7ee203595a796529ae0aefe8b0c52a689ac29968
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031472"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762329"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Oktatóanyag: régiók közötti Azure Load Balancer létrehozása a Azure Portal használatával
 
 A régiók közötti terheléselosztó biztosítja, hogy a szolgáltatások globálisan elérhetők legyenek több Azure-régió között. Ha az egyik régió meghibásodik, a rendszer átirányítja a forgalmat a legközelebbi, legközelebb egészséges regionális Load balancerbe.  
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozza létre a régiók közötti Load balancert.
@@ -27,6 +27,10 @@ Az oktatóanyag a következőket ismerteti:
 > * A terheléselosztó tesztelése.
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+
+> [!IMPORTANT]
+> A régiók közötti Azure Load Balancer jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,8 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
-> [!IMPORTANT]
-> A régiók közötti terheléselosztó jelenleg előzetes verzióban érhető el, és a betekintő portálon rejtett.  **https://preview.portal.azure.com/?feature.globallb=true** A szolgáltatás megtekintéséhez és üzembe helyezéséhez jelentkezzen be.
+[Jelentkezzen](https://preview.portal.azure.com) be az Azure betekintő portálra.
 
 ## <a name="create-cross-region-load-balancer"></a>Régiók közötti Load Balancer létrehozása
 
@@ -52,8 +55,8 @@ Ebben a szakaszban egy régiók közötti terheléselosztó és egy nyilvános I
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** elemet, és írja be a **CreateCRLBTutorial-RG** karakterláncot a szövegmezőbe.|
-    | Név                   | Adja meg a **myLoadBalancer-CR** értéket                                   |
-    | Region         | Válassza az **USA nyugati** régiója lehetőséget.                                        |
+    | Name                   | Adja meg a **myLoadBalancer-CR** értéket                                   |
+    | Régió         | Válassza az **USA nyugati** régiója lehetőséget.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
     | Termékváltozat           | **Standard** kiválasztása |
     | Szint           | **Globális** kiválasztása |
@@ -125,7 +128,7 @@ Ebben a szakaszban egy állapot-mintavételt hoz létre a terheléselosztási sz
     | Időköz | Adja meg az **5** értéket. |
     | Nem kifogástalan állapot küszöbértéke | Adja meg a **2** értéket. |
 
-4. Válassza az **OK** lehetőséget.
+4. Kattintson az **OK** gombra.
 
     > [!NOTE]
     > A több régióból álló Load Balancer beépített állapotú mintavételt tartalmaz. Ez a mintavétel a terheléselosztási szabály létrehozásához használható helyőrző.  További információ: **[a régiók közötti Load Balancer korlátai](cross-region-overview.md#limitations)**.

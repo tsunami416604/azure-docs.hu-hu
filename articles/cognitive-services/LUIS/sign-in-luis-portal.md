@@ -9,95 +9,51 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: nitinme
 author: nitinme
-ms.openlocfilehash: ae51dca466a9aaf489ba4628e13a5e13de25b9bc
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3235f6285edb99776b42014678cd2b6c60d17f62
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546862"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763839"
 ---
 # <a name="sign-in-to-luis-portal"></a>Bejelentkezés a LUIS portálra
 
-Ha Ön egy új felhasználó, aki bejelentkezik a LUIS portálra, a bejelentkezési élmény kis mértékben eltérhet az aktuális felhasználói fióktól:
-  * Azure-előfizetéshez társítva
-  * Nincs Azure-előfizetéshez társítva
+Ebből a cikkből megtudhatja, hogyan kezdheti el a LUIS-portált, és hogyan hozhat létre szerzői erőforrásokat. A cikkben ismertetett lépések elvégzése után LUIS-alkalmazásokat hozhat létre és tehet közzé.
 
-## <a name="determine-account-type"></a>Fiók típusának meghatározása
-
-Amikor először jelentkezik be a LUIS-portálra, a következő vizualizációs mutatók segítségével határozza meg a fiók típusát.
-
-### <a name="account-without-azure-subscription"></a>Fiók Azure-előfizetés nélkül
-
-Egy olyan fiók, amely nincs Azure-előfizetéshez társítva, az Azure ikon jelenik meg a jobb felső navigációs sávon. Miután áttelepítette a társított fiók típusát, az ikon már nem jelenik meg.
-
-:::image type="content" source="media/sign-in/sign-in-with-account-without-azure-subscription.png" alt-text="A LUIS navigációs sávjának részleges képernyőképe az Azure Icon ikonnal.":::
-
-### <a name="account-with-azure-subscription"></a>Fiók Azure-előfizetéssel
-
-Az Azure-előfizetéshez társított fiók lehetővé teszi, hogy kiválassza a használni kívánt előfizetést és erőforrást.
-
-:::image type="content" source="media/sign-in/resource-selection.png" alt-text="A LUIS-portál részleges képernyőfelvétele az előfizetés és a szerzői erőforrás kiválasztása legördülő listával.":::
-
-## <a name="sign-in-with-account-associated-with-an-azure-subscription"></a>Bejelentkezés az Azure-előfizetéshez társított fiókkal
-
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai) , és fogadja el a használati feltételeket.
-
-1. Két lehetőség regisztrálása:
-
-    * Folytassa az Azure-erőforrások használatát, amely az ajánlott elérési út, és hamarosan az egyetlen elérhető útvonal lesz. Ez az elérési út lehetővé teszi, hogy a LUIS-fiókot egy Azure authoring-erőforrással társítsa, vagy egy meglévő erőforrás kiválasztásával az előfizetésben, vagy egy új erőforrást hoz létre. Ez egyenértékű az áttelepített Migrálás nélkül, anélkül, hogy az [áttelepítési folyamat](luis-migration-authoring.md#what-is-migration) későbbi szakaszában kellene lennie. Az összes felhasználónak 2020 november 2-án kell áttérnie.
-
-    * Folytassa a kezdő vagy a próbaverziós kulcs használatát. Ez az elérési út lehetővé teszi, hogy bejelentkezzen a LUIS-be a kezdő vagy a próbaverziós erőforrással, amelyet anélkül kell létrehoznia, hogy erőforrásokat kellene létrehoznia. Ha ezt az elérési utat választja, végül [át kell telepítenie a fiókját](luis-migration-authoring.md#migration-steps) , és csatolnia kell az alkalmazásait egy authoring-erőforráshoz. Ezért érdemes kiválasztani az elérési utat, ahol az Azure-erőforrást folytatja.
-
-    [További információ a szerzői műveletek és a kezdő kulcsok használatáról](luis-how-to-azure-subscription.md#luis-resources). Mindkét erőforrás 1 000 000 ingyenes szerzői tranzakciókat és 1000 ingyenes előrejelzési végponti tranzakciókat biztosít.
-
-    :::image type="content" source="media/sign-in/signup-landing-page.png" alt-text="Részleges képernyőfelvétel a Language Understanding authoring Resource típusának kiválasztásához.":::
-
-1. Meglévő authoring-erőforrás használata
-
-    :::image type="content" source="media/sign-in/signup-choose-resource.png" alt-text="Szerzői erőforrás kiválasztása":::
-
-    Ha már rendelkezik az előfizetésben található LUIS authoring-erőforrásokkal, és a bejelentkezés során társít egyet a LUIS-fiókjához, válassza a **meglévő szerzői erőforrás használata** lehetőséget, és adja meg a következő információkat:
-
-    * **Bérlő** – az a bérlő, amelyhez az Azure-előfizetés társítva van. A bérlőket nem lehet átváltani a meglévő ablakból. A bérlőket átválthatja a jobb szélső ikon kiválasztásával, amely a felső sávon lévő monogramot tartalmazza.
-    * **Előfizetés neve** – az erőforráshoz társítandó előfizetés. Ha egynél több előfizetéssel rendelkezik, amely a bérlőhöz tartozik, válassza ki a kívánt elemet a legördülő listából.
-    * **Erőforrás neve** – az a szerzői erőforrás, amelyhez társítani szeretné a fiókot.
-
-    > [!Note]
-    > Ha a keresett authoring-erőforrás szürkén jelenik meg a legördülő listában, ez azt jelenti, hogy bejelentkezett egy másik regionális portálra. [Ismerje meg a regionális portálok koncepcióját](luis-reference-regions.md#luis-authoring-regions).
-
-1. Új authoring-erőforrás létrehozása
-
-    :::image type="content" source="media/sign-in/signup-create-resource.png" alt-text="Szerzői erőforrás létrehozása":::
-
-    **Új authoring-erőforrás létrehozásakor** adja meg a következő információkat:
-
-    * **Bérlő** – az a bérlő, amelyhez az Azure-előfizetés társítva van. A bérlőket nem lehet átváltani a meglévő ablakból. A bérlőket átválthatja a jobb szélső ikon kiválasztásával, amely a felső sávon lévő monogramot tartalmazza.
-    * **Erőforrás neve** – az Ön által választott egyéni név, amelyet a szerzői műveletek URL-címének részeként használ a rendszer. Az erőforrás neve csak alfanumerikus karaktereket és "-" karaktert tartalmazhat, és nem kezdődhet vagy végződhet "-" karakterrel. Ha bármilyen más szimbólum szerepel a névben, az erőforrás létrehozása sikertelen lesz.
-    * **Előfizetés neve** – az erőforráshoz társítandó előfizetés. Ha egynél több előfizetéssel rendelkezik, amely a bérlőhöz tartozik, válassza ki a kívánt elemet a legördülő listából.
-    * **Erőforráscsoport** – az előfizetésben kiválasztott egyéni erőforráscsoport-név. Az erőforráscsoportok lehetővé teszik az Azure-erőforrások csoportosítását a hozzáféréshez és a felügyelethez. Ha jelenleg nincs erőforráscsoport az előfizetésben, nem lehet létrehozni egyet a LUIS portálon. A bejelentkezési folyamat folytatásához lépjen a [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup) , és hozzon létre egyet a Luis-ben.
-
-1. Az elérési út kiválasztása után eltarthat néhány másodpercig, amíg meg nem jelenik a "fiókja sikeres migrálása. Fejezze be a **Continue (folytatás**) lehetőséget.
-
-    :::image type="content" source="media/sign-in/signup-confirm-2.png" alt-text="Erőforrás-létrehozás megerősítése":::
-
-    > [!Note]
-    > Ha van előfizetése, és legalább egy szerzői erőforrás abban a régióban, ahol a portálon regisztrál, akkor előfordulhat, hogy a rendszer automatikusan bejelentkezik a LUIS-ba, és hozzárendelte az erőforráshoz, és nem kell kiválasztania, hogy melyik elérési utat kell megadnia.
+## <a name="access-the-portal"></a>Hozzáférés a portálhoz
 
 
-## <a name="sign-in-with-user-account-not-associated-with-an-azure-subscription"></a>Bejelentkezés olyan felhasználói fiókkal, amely nincs Azure-előfizetéshez társítva
+1. A LUIS megkezdéséhez nyissa meg a [Luis portált](https://www.luis.ai). Ha még nem rendelkezik előfizetéssel, a rendszer kérni fogja, hogy hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com//free/cognitive-services/) , és térjen vissza a portálra.
+2. Frissítse a lapot az újonnan létrehozott előfizetéssel való frissítéshez
+3. Válassza ki az előfizetését a legördülő listából
 
-1. Jelentkezzen be a [Luis portálra](https://www.luis.ai) , és győződjön meg arról, hogy elfogadja a használati feltételeket.
+    > [!div class="mx-imgBorder"]
+    > ![előfizetések kiválasztása](./media/migrate-authoring-key/select-subscription-sign-in-2.png)
 
-1. Fejezze be a **Continue (folytatás**) lehetőséget. A rendszer automatikusan bejelentkezik egy próbaverziós/Starter-kulccsal. Ez azt jelenti, hogy végül [át kell telepítenie a fiókját](luis-migration-authoring.md#migration-steps) , és csatolnia kell az alkalmazásait egy authoring-erőforráshoz. Az áttelepítési folyamat elvégzéséhez be kell jelentkeznie egy [Azure ingyenes próbaverzióra](https://azure.microsoft.com/free/).
+4. Ha az előfizetése egy másik bérlőn belül lakik, nem fogja tudni váltani a bérlőket a meglévő ablakból. A bérlők átváltásához zárja be ezt az ablakot, és válassza a felső sávon a monogramját tartalmazó jobb oldali ikont. Kattintson a **másik szerzői erőforrás kiválasztása** elemre az ablak újbóli megnyitásához.
 
-    :::image type="content" source="media/sign-in/signup-no-subscription.png" alt-text="Nincs előfizetési forgatókönyv":::
+    > [!div class="mx-imgBorder"]
+    > ![könyvtárak váltása](./media/migrate-authoring-key/switch-directories.png)
+
+5. Ha az előfizetéshez tartozó meglévő LUIS authoring-erőforrással rendelkezik, válassza ki a legördülő listából. Megtekintheti az ebben a szerzői erőforrásban létrehozott összes alkalmazást.
+6. Ha nem, akkor kattintson az **új authoring-erőforrás létrehozása** elemre a modális alján.
+7.  Új authoring-erőforrás létrehozásakor adja meg a következő információkat:
+
+    > [!div class="mx-imgBorder"]
+    > ![Új erőforrás létrehozása](./media/migrate-authoring-key/create-new-authoring-resource-2.png)
+
+    * **Bérlő neve** – az a bérlő, amelyhez az Azure-előfizetés társítva van. A bérlőket nem lehet átváltani a meglévő ablakból. A bérlőket úgy válthat, hogy bezárja ezt az ablakot, és kiválasztja az ikont a képernyő jobb felső sarkában, amely tartalmazza a monogramját. Válassza a felül **egy másik szerzői erőforrás kiválasztása** lehetőséget az ablak újbóli megnyitásához.
+    * **Azure-erőforráscsoport neve** – az előfizetésében kiválasztott egyéni erőforráscsoport-név. Az erőforráscsoportok lehetővé teszik az Azure-erőforrások csoportosítását a hozzáféréshez és a felügyelethez. Ha jelenleg nincs erőforráscsoport az előfizetésben, nem lehet létrehozni egyet a LUIS portálon. A bejelentkezési folyamat folytatásához lépjen a [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup) , és hozzon létre egyet a Luis-ben.
+    * **Azure-Erőforrás neve** – az Ön által választott egyéni név, amelyet a szerzői műveletek URL-címének részeként használ a rendszer. Az erőforrás neve csak alfanumerikus karaktereket tartalmazhat, `-` és nem kezdődhet vagy végződhet `-` . Ha bármilyen más szimbólum szerepel a névben, az erőforrás létrehozása sikertelen lesz.
+    * **Hely** – válassza ki, hogy a Luis által jelenleg támogatott [három szerzői hely](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions) egyikében adja meg az alkalmazásait, beleértve a következőket: USA nyugati régiója, Nyugat-Európa és Kelet-Ausztrália
+    * **Díjszabási** csomag – alapértelmezés szerint a F0 authoring díjszabási szintje van kiválasztva, mivel az ajánlott. Hozzon létre egy [ügyfél által felügyelt kulcsot](https://docs.microsoft.com/azure/cognitive-services/luis/luis-encryption-of-data-at-rest#customer-managed-keys-for-language-understanding) a Azure Portal, ha további biztonsági réteget keres.
+8. Most sikeresen bejelentkezett a LUIS-ba. Most már megkezdheti az alkalmazások létrehozását.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-* Ha egy szerzői erőforrást hoz létre a Azure Portal egy másik régióban, mint a portálon, amelybe bejelentkezik, a szerzői erőforrás szürkén jelenik meg.
 * Új erőforrás létrehozásakor győződjön meg arról, hogy az erőforrás neve csak alfanumerikus karaktereket, "-" karaktert tartalmaz, és nem kezdődhet vagy végződhet "-" karakterrel. Ellenkező esetben a művelet sikertelen lesz.
 * Győződjön meg arról, hogy rendelkezik a [megfelelő engedélyekkel az előfizetéséhez egy Azure-erőforrás létrehozásához](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles). Ha nem rendelkezik a megfelelő engedélyekkel, lépjen kapcsolatba az előfizetés rendszergazdájával, és adja meg a megfelelő engedélyeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [indíthat el új alkalmazást](luis-how-to-start-new-app.md)

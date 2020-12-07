@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: e2432ca4cecb3c36d2fae19907c1ad17d9ef2505
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 16a21acabfd199ba16068e507919b564f01a76d5
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833503"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763910"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Üzembe helyezés a App Service GitHub-műveletek használatával
 
@@ -55,7 +55,7 @@ Gyorsan megkezdheti a GitHub-műveleteket a App Service Deployment Center haszn�
 
 Ezzel véglegesíti a munkafolyamat-fájlt a tárházban. Az alkalmazás létrehozásához és üzembe helyezéséhez szükséges munkafolyamat azonnal elindul.
 
-## <a name="set-up-a-work-manually"></a>Munka kézi beállítása
+## <a name="set-up-a-workflow-manually"></a>Munkafolyamat manuális beállítása
 
 A munkafolyamatokat a központi telepítési központ használata nélkül is üzembe helyezheti. Ehhez először a központi telepítési hitelesítő adatokat kell létrehoznia. 
 
@@ -279,7 +279,7 @@ A kód App Service alkalmazásba való üzembe helyezéséhez használja a `azur
 |---------|---------|
 | **alkalmazás neve** | Szükséges A App Service alkalmazás neve | 
 | **közzétételi profil** | Választható Profil fájl tartalmának közzététele a web Deploy Secrets szolgáltatásban |
-| **csomag** | Választható Csomag vagy mappa elérési útja. Az elérési út tartalmazhatja a *. zip, *. War, *. jar vagy a telepítendő mappát |
+| **package** | Választható Csomag vagy mappa elérési útja. Az elérési út tartalmazhatja a *. zip, *. War, *. jar vagy a telepítendő mappát |
 | **tárolóhely neve** | Választható Adja meg az üzemi [tárolóhelytől](deploy-staging-slots.md) eltérő meglévő tárolóhelyet |
 
 
@@ -732,7 +732,7 @@ jobs:
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit, amelyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub használatához a CI/CD-hez, és az alkalmazások üzembe helyezését az Azure-ban.
 

@@ -4,12 +4,12 @@ description: Application Insights az alkalmazás telemetria intelligens elemzés
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 28a32c714618a3b6b0c3126d8060295f134ddc7c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ead71a5ac6e2cfa0df6654c7ba9aa7b5b9238d04
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186235"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763774"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelés – teljesítménybeli rendellenességek
 
@@ -99,7 +99,7 @@ Hol található a probléma? Lassú a kiszolgáló válasza, a lap nagyon hossz�
 
 Nyissa meg a böngészők metrika paneljét. A böngésző oldal betöltési idejének szegmentált megjelenítése megmutatja, hogy az idő hol zajlik. 
 
-* Ha a **küldési kérelem ideje** magas, vagy a kiszolgáló lassan válaszol, vagy ha a kérelem sok adattal rendelkező bejegyzés. A válaszidő vizsgálatához tekintse meg a [teljesítmény mérőszámait](./web-monitor-performance.md#metrics) .
+* Ha a **küldési kérelem ideje** magas, vagy a kiszolgáló lassan válaszol, vagy ha a kérelem sok adattal rendelkező bejegyzés. A válaszidő vizsgálatához tekintse meg a [teljesítmény mérőszámait](./performance-counters.md) .
 * Állítsa be a [függőségek nyomon követését](./asp-net-dependencies.md) , hogy megtekintse, hogy a lassúság oka a külső szolgáltatások vagy az adatbázis.
 * Ha a **Válasz fogadása** túlsúlyban van, a lap és a hozzá tartozó részek – JavaScript, CSS, képek és így tovább (de aszinkron módon nem tölthetők be). Állítson be egy [rendelkezésre állási tesztet](./monitor-web-app-availability.md), és győződjön meg arról, hogy a függő részek betöltésére vonatkozó beállítás be van állítva. Ha némi eredményt kap, nyissa meg az eredmény részleteit, és bontsa ki a különböző fájlok betöltési idejének megjelenítéséhez.
 * A nagy **ügyfél-feldolgozási idő** azt sugallja, hogy a parancsfájlok lassan futnak. Ha az ok nem nyilvánvaló, vegyen fel némi időzítési kódot, és küldje el az időpontokat a trackMetric-hívásokban.
@@ -170,7 +170,7 @@ Kattintson a hivatkozásokra a metrika-kezelő megnyitásához és a megfelelő 
 
 Módosítsa az időtartományt és a szűrőket a telemetria megismeréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezek a diagnosztikai eszközök segítenek megvizsgálni a telemetria az alkalmazásból:
 
 * [Profilkészítő](profiler.md) 

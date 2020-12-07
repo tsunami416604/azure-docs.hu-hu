@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 5dbe161af172b65919328fca0b272f3b658f1b32
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: fe79797aeef2b0c148aece0319d6b340b663b184
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600489"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763723"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>A Poster használata a kérelmek Azure digitális Twins API-khoz való küldéséhez
 
@@ -130,7 +130,7 @@ Ahhoz, hogy egy Poster-kérést küldjön az egyik Azure digitális Twins API-na
 
 Egy példa lekérdezés folytatásához ez a cikk a lekérdezési API-t (és annak [hivatkozási dokumentációját](/rest/api/digital-twins/dataplane/query/querytwins)) fogja használni egy példányban lévő összes digitális ikrek lekérdezéséhez.
 
-1. Kérje le a kérelem URL-címét és típusát a hivatkozási dokumentációból. A lekérdezési API esetében ez a *post `https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31`*.
+1. Kérje le a kérelem URL-címét és típusát a hivatkozási dokumentációból. A lekérdezési API esetében ez jelenleg *post `https://digitaltwins-hostname/query?api-version=2020-10-31`*.
 1. A Poster mezőben állítsa be a kérelem típusát, és írja be a kérelem URL-címét, majd adja meg a helyőrzőket az URL-címben a szükséges módon. Itt fogja használni a példány **állomásneve** az [*Előfeltételek*](#prerequisites) szakaszban.
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="Az új kérelem részleteiben a hivatkozási dokumentációban található lekérdezési URL-cím be lett töltve a kérelem URL-címe mezőbe." lightbox="media/how-to-use-postman/postman-request-url.png":::

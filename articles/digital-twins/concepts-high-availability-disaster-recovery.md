@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 85fd5a4246e891ef6640438b07e12a9c32ad12fa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ac75a5b0b59a06855b7ee88d971c269ca915e429
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094438"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763164"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure digitális Twins – magas rendelkezésre állás és vész-helyreállítás
 
@@ -28,7 +28,7 @@ Az általános Azure-útmutatóhoz a HA/DR megtervezése című témakör [*ajá
 
 ## <a name="intra-region-ha"></a>Régión belüli HA
  
-Az Azure digitális Twins a szolgáltatáson belüli redundancia megvalósításán keresztül biztosít a régión belüli területet. **Egy Azure digitális Twins-megoldás fejlesztőinek nincs további teendője, hogy kihasználhassa ezeket a HA funkciókat.** Bár az Azure Digital Twins ésszerűen magas szintű üzemidőt biztosít, az átmeneti hibák várhatóak, ugyanúgy, mint bármely elosztott számítástechnikai platform esetében. A megfelelő újrapróbálkozási házirendeket be kell építeni a Felhőbeli alkalmazásokkal kommunikáló összetevőkbe az átmeneti hibák kezeléséhez.
+Az Azure digitális Twins a szolgáltatáson belüli redundancia megvalósításán keresztül biztosít a régión belüli területet. Ezt a [szolgáltatás SLA](https://azure.microsoft.com/support/legal/sla/digital-twins) -ja mutatja a rendelkezésre álláshoz. **Egy Azure digitális Twins-megoldás fejlesztőinek nincs további teendője, hogy kihasználhassa ezeket a HA funkciókat.** Bár az Azure Digital Twins ésszerűen magas szintű üzemidőt biztosít, az átmeneti hibák várhatóak, ugyanúgy, mint bármely elosztott számítástechnikai platform esetében. A megfelelő újrapróbálkozási házirendeket be kell építeni a Felhőbeli alkalmazásokkal kommunikáló összetevőkbe az átmeneti hibák kezeléséhez.
 
 ## <a name="cross-region-dr"></a>Több régió – DR
 
@@ -37,7 +37,7 @@ Előfordulhat, hogy az adatközpont bizonyos ritkán fordul elő, ha áramkimara
 A Microsoft **által kezdeményezett feladatátvételt** ritka helyzetekben a Microsoft gyakorolja az érintett régióból származó összes Azure digitális Twins-példány feladatátvételére a megfelelő földrajzi helyzetű régióba. Ez a folyamat egy alapértelmezett beállítás (a felhasználók kizárása nélkül), és nem igényel beavatkozást a felhasználótól. A Microsoft fenntartja a jogot arra, hogy meghatározza, hogy a rendszer mikor gyakorolja ezt a lehetőséget. Ez a mechanizmus nem tartalmaz felhasználói beleegyező engedélyt a felhasználó példányának feladatátvétele előtt.
 
 >[!NOTE]
-> Bizonyos Azure-szolgáltatások egy, az **ügyfél által kezdeményezett feladatátvétel**nevű további lehetőséget is biztosítanak, amely lehetővé teszi az ügyfeleknek, hogy csak a példányuk számára kezdeményezzenek feladatátvételt, például egy Dr-részletezés futtatására. Az Azure Digital Twins jelenleg **nem támogatja** ezt a mechanizmust. 
+> Bizonyos Azure-szolgáltatások egy, az **ügyfél által kezdeményezett feladatátvétel** nevű további lehetőséget is biztosítanak, amely lehetővé teszi az ügyfeleknek, hogy csak a példányuk számára kezdeményezzenek feladatátvételt, például egy Dr-részletezés futtatására. Az Azure Digital Twins jelenleg **nem támogatja** ezt a mechanizmust. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
@@ -45,7 +45,7 @@ A HA/DR-vel kapcsolatos ajánlott eljárásokért tekintse meg az alábbi Azure-
 * Az [*Azure üzletmenet-folytonossági műszaki útmutatója*](/azure/architecture/framework/resiliency/overview) egy általános keretrendszert ismertet, amely segít az üzletmenet folytonosságának és a vész-helyreállításnak. 
 * Az [*Azure-alkalmazások vész-helyreállítási és magas rendelkezésre állása*](/azure/architecture/framework/resiliency/backup-and-recovery) az Azure-alkalmazások magas rendelkezésre állást (ha) és a vész-helyreállítást (Dr) biztosító stratégiákra vonatkozó architektúrával kapcsolatos útmutatást nyújt.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 További információ az Azure Digital Twins-megoldások használatáról:
  

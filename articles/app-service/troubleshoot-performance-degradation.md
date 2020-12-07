@@ -7,17 +7,17 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 82373dcd9e1d55e0c4a5867ddaff6875ee57da5a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cf8b0e1fda03a74d30ec77c911d705bf12cf0126
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147515"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763808"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>A lassú alkalmazások teljesítményével kapcsolatos hibák elhárítása Azure App Service
 Ez a cikk segítséget nyújt a lassú alkalmazások teljesítményével kapcsolatos hibák elhárításában [Azure app Service](./overview.md).
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és kattintson a **támogatás kérése**lehetőségre.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és kattintson a **támogatás kérése** lehetőségre.
 
 ## <a name="symptom"></a>Hibajelenség
 Amikor megkeresi az alkalmazást, az oldalak lassan és időnként időtúllépéssel töltődnek be.
@@ -58,7 +58,7 @@ Előfordulhat, hogy az alkalmazáshoz figyelni kívánt metrikák némelyike
 
 ![alkalmazás teljesítményének figyelése](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
-További információkért lásd:
+További információ:
 
 * [Alkalmazások figyelése Azure App Service](web-sites-monitor.md)
 * [Riasztási értesítések fogadása](../azure-monitor/platform/alerts-overview.md)
@@ -75,14 +75,14 @@ A beállításához lásd: [alkalmazások figyelése Azure app Serviceban](web-s
 Lásd még: az [Azure-webhelyek és a végpontok figyelése – Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) a végpontok figyelésével kapcsolatos videókhoz.
 
 #### <a name="application-performance-monitoring-using-extensions"></a>Alkalmazások teljesítményének monitorozása bővítmények használatával
-Az alkalmazások teljesítményét a *hely bővítményének*használatával is nyomon követheti.
+Az alkalmazások teljesítményét a *hely bővítményének* használatával is nyomon követheti.
 
 Az egyes App Service alkalmazások egy bővíthető felügyeleti végpontot biztosítanak, amely lehetővé teszi, hogy a helyi bővítményként telepített eszközök hatékony készletét használja. A bővítmények a következők: 
 
 - Forráskód-szerkesztők, például az [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
 - A csatlakoztatott erőforrások, például egy alkalmazáshoz csatlakoztatott MySQL-adatbázis felügyeleti eszközei.
 
-Az [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) egy teljesítmény-figyelési hely kiterjesztése, amely szintén elérhető. Application Insights használatához újra kell építenie a kódot egy SDK-val. Olyan bővítményt is telepíthet, amely hozzáférést biztosít a további információkhoz. Az SDK lehetővé teszi, hogy kódot írjon az alkalmazás használatának és teljesítményének figyelésére részletesebben. További információ: [a teljesítmény figyelése a webalkalmazásokban](../azure-monitor/app/web-monitor-performance.md).
+Az [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) egy teljesítmény-figyelési hely kiterjesztése, amely szintén elérhető. Application Insights használatához újra kell építenie a kódot egy SDK-val. Olyan bővítményt is telepíthet, amely hozzáférést biztosít a további információkhoz. Az SDK lehetővé teszi, hogy kódot írjon az alkalmazás használatának és teljesítményének figyelésére részletesebben. További információ: [a teljesítmény figyelése a webalkalmazásokban](../azure-monitor/app/app-insights-overview.md).
 
 <a name="collect"></a>
 
@@ -121,7 +121,7 @@ Az alkalmazás naplózáshoz való konfigurálásának részletes ismertetését
 #### <a name="use-the-diagnostics-tool"></a>A diagnosztikai eszköz használata
 A App Service egy intelligens és interaktív élményt nyújt, amely segít a szükséges konfigurációval kapcsolatos hibák megoldásában. Ha az alkalmazással kapcsolatos problémákba ütközik, a diagnosztikai eszköz kimutatja, hogy mi a baj, hogy a probléma megoldásához könnyebben és gyorsan javítsa a megfelelő információkat.
 
-App Service diagnosztika eléréséhez nyissa meg a App Service alkalmazást vagy App Service Environment a [Azure Portalban](https://portal.azure.com). A bal oldali navigációs sávon kattintson a **problémák diagnosztizálása és megoldása**elemre.
+App Service diagnosztika eléréséhez nyissa meg a App Service alkalmazást vagy App Service Environment a [Azure Portalban](https://portal.azure.com). A bal oldali navigációs sávon kattintson a **problémák diagnosztizálása és megoldása** elemre.
 
 #### <a name="use-the-kudu-debug-console"></a>A kudu hibakeresési konzoljának használata
 A App Service egy hibakeresési konzolt tartalmaz, amellyel hibakeresést végezhet, megvizsgálhatja, feltöltheti és feltölthet fájlokat, valamint JSON-végpontokat a környezettel kapcsolatos információk beszerzéséhez. Ezt a konzolt az alkalmazás *kudu-konzoljának* vagy *SCM-irányítópultjának* nevezzük.
@@ -161,4 +161,4 @@ Az újraindítás gyakran a legegyszerűbb módszer az egyszeri problémák elh�
 
  ![az alkalmazás újraindítása a teljesítménnyel kapcsolatos problémák megoldásához](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-Az alkalmazást az Azure PowerShell használatával is kezelheti. További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](../azure-resource-manager/management/manage-resources-powershell.md).
+Az alkalmazást Azure PowerShell használatával is kezelheti. További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](../azure-resource-manager/management/manage-resources-powershell.md).

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: de916fcbe0623185821e2f5da15a8f9cf71dfd4e
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 0b3ccc31c9159b5d7b1615add89e8fdc308bf8df
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426777"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763467"
 ---
 ### <a name="publish-the-device-template"></a>Az eszközsablon közzététele
 
@@ -41,6 +41,12 @@ Az **átjáró-001** eszköz áttelepíthető:
 
 Néhány másodperc elteltével az áttelepítés befejeződik. Az eszköz mostantól az **LVA Edge Gateway v2** -eszköz sablonját használja a testreszabott telepítési jegyzékfájl használatával.
 
+Mostantól nem használhatók az eredeti **LVA Edge Gateway** -eszközök sablonja. Az eszköz sablonjának törlése:
+
+1. Navigáljon az **eszközbeállítások** lapra, és válassza ki az **LVA Edge Gateway** -eszköz sablonját.
+
+1. Válassza a **Törlés** lehetőséget az eszköz sablonjának törléséhez.
+
 ### <a name="get-the-device-credentials"></a>Az eszköz hitelesítő adatainak beolvasása
 
 Szüksége lesz a hitelesítő adatokra, amelyek lehetővé teszik az eszköz számára a IoT Central alkalmazáshoz való kapcsolódást. Az eszköz hitelesítő adatainak lekérése:
@@ -53,9 +59,9 @@ Szüksége lesz a hitelesítő adatokra, amelyek lehetővé teszik az eszköz sz
 
 1. Győződjön meg arról, hogy a kapcsolati módszer a **közös hozzáférési aláírásra** van beállítva.
 
-1. Válassza a **Bezárás** lehetőséget.
+1. Válassza a **Bezárás** gombot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezzel létrehozott egy IoT Central alkalmazást a **video Analytics-Object és a mozgásérzékelő** alkalmazás sablonnal, létrehozott egy eszköz sablont az átjáró eszközhöz, és hozzáadta az átjáró-eszközt az alkalmazáshoz.
 

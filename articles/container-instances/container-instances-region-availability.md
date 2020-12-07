@@ -4,12 +4,12 @@ description: A Azure Container Instances szolgáltatás számítási és memóri
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2a833c93c80d932305f47b6e292e5e5df4d0cb95
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8651a1cc2c2ba41e2c28e9f63dc78c091a6af61d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576614"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763893"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Erőforrások rendelkezésre állása Azure Container Instances Azure-régiókban
 
@@ -31,26 +31,26 @@ A következő régiók és maximális erőforrások elérhetők a Linux-tároló
 
 | Régió | Max CPU (Max. CPU) | Maximális memória (GB) | VNET Max CPU | VNET maximális mérete (GB) | Tárterület (GB) | GPU SKU-i (előzetes verzió) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
-| Kelet-Ausztrália | 4 | 16 | 4 | 16 | 50 | N/A |
-| Dél-Brazília | 4 | 16 | 2 | 8 | 50 | N/A |
-| Közép-Kanada | 4 | 16 | 4 | 16 | 50 | N/A |
+| Kelet-Ausztrália | 4 | 16 | 4 | 16 | 50 | N.A. |
+| Dél-Brazília | 4 | 16 | 2 | 8 | 50 | N.A. |
+| Közép-Kanada | 4 | 16 | 4 | 16 | 50 | N.A. |
 | Közép-India | 4 | 16 | N.A. | N.A. | 50 | V100 |
-| USA középső régiója | 4 | 16 | 4 | 16 | 50 | N/A |
-| Kelet-Ázsia | 4 | 16 | 4 | 16 | 50 | N/A |
+| USA középső régiója | 4 | 16 | 4 | 16 | 50 | N.A. |
+| Kelet-Ázsia | 4 | 16 | 4 | 16 | 50 | N.A. |
 | USA keleti régiója | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
-| USA 2. keleti régiója | 4 | 16 | 4 | 16 | 50 | N/A |
-| Közép-Franciaország | 4 | 16 | 4 | 16 | 50 | N/A |
-| Kelet-Japán | 2 | 8 | 4 | 16 | 50 | N/A |
-| Dél-Korea középső régiója | 4 | 16 | N.A. | N.A. | 50 | N/A |
+| USA 2. keleti régiója | 4 | 16 | 4 | 16 | 50 | N.A. |
+| Közép-Franciaország | 4 | 16 | 4 | 16 | 50 | N.A. |
+| Kelet-Japán | 2 | 8 | 4 | 16 | 50 | N.A. |
+| Dél-Korea középső régiója | 4 | 16 | N.A. | N.A. | 50 | N.A. |
 | USA északi középső régiója | 2 | 3.5 | 4 | 16 | 50 | K80, P100, V100 |
 | Észak-Európa | 4 | 16 | 4 | 16 | 50 | K80 |
-| USA déli középső régiója | 4 | 16 | 4 | 16 | 50 | N/A |
+| USA déli középső régiója | 4 | 16 | 4 | 16 | 50 | N.A. |
 | Délkelet-Ázsia | 4 | 16 | 4 | 16 | 50 | P100, V100 |
-| Dél-India | 4 | 16 | N.A. | N.A. | 50 | N/A |
-| Az Egyesült Királyság déli régiója | 4 | 16 | 4 | 16 | 50 | N/A |
-| USA nyugati középső régiója| 4 | 16 | 4 | 16 | 50 | N/A |
+| Dél-India | 4 | 16 | N.A. | N.A. | 50 | N.A. |
+| Az Egyesült Királyság déli régiója | 4 | 16 | 4 | 16 | 50 | N.A. |
+| USA nyugati középső régiója| 4 | 16 | 4 | 16 | 50 | N.A. |
 | Nyugat-Európa | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
-| USA nyugati régiója | 4 | 16 | 4 | 16 | 50 | N/A |
+| USA nyugati régiója | 4 | 16 | 4 | 16 | 50 | N.A. |
 | USA 2. nyugati régiója | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 
 A következő maximális erőforrások érhetők el egy [GPU-erőforrásokkal](container-instances-gpu.md) (előzetes verzió) üzembe helyezett tároló csoport számára.
@@ -81,9 +81,9 @@ A következő régiók és maximális erőforrások elérhetők a [támogatott �
 
 | Régió | 1B/2B maximális CPU | 1B/2B maximális memória (GB) |3B Max CPU | 3B maximális memória (GB) | Tárterület (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
-| Kelet-Ausztrália | 2 | 8 | 2 | 3.5 | 20 |
+| Kelet-Ausztrália | 2 | 8 | 2 | 8 | 20 |
 | Dél-Brazília | 4 | 16 | 4 | 16 | 20 |
-| Közép-Kanada | 2 | 3.5 | 2 | 3.5 | 20 |
+| Közép-Kanada | 2 | 8 | 2 | 3.5 | 20 |
 | Közép-India | 2 | 3.5 | 2 | 3.5 | 20 |
 | USA középső régiója | 2 | 3.5 | 2 | 3.5 | 20 |
 | Kelet-Ázsia | 2 | 3.5 | 2 | 3.5 | 20 |
@@ -92,15 +92,15 @@ A következő régiók és maximális erőforrások elérhetők a [támogatott �
 | Kelet-Japán | 4 | 16 | 4 | 16 | 20 |
 | Dél-Korea középső régiója | 4 | 16 | 4 | 16 | 20 |
 | USA északi középső régiója | 4 | 16 | 4 | 16 | 20 |
-| Észak-Európa | 2 | 3.5 | 2 | 8 | 20 |
-| USA déli középső régiója | 2 | 3.5 | 2 | 3.5 | 20 |
+| Észak-Európa | 2 | 8 | 2 | 8 | 20 |
+| USA déli középső régiója | 2 | 3.5 | 2 | 8 | 20 |
 | Délkelet-Ázsia | N.A. | N.A. | 2 | 3.5 | 20 |
 | Dél-India | 2 | 3.5 | 2 | 3.5 | 20 |
 | Az Egyesült Királyság déli régiója | 2 | 8 | 2 | 3.5 | 20 |
-| USA nyugati középső régiója | 4 | 16 | 4 | 16 | 20 |
+| USA nyugati középső régiója | 4 | 16 | 2 | 8 | 20 |
 | Nyugat-Európa | 4 | 16 | 4 | 16 | 20 |
 | USA nyugati régiója | 4 | 16 | 2 | 8 | 20 |
-| USA 2. nyugati régiója | 2 | 3.5 | 2 | 3.5 | 20 |
+| USA 2. nyugati régiója | 2 | 8 | 2 | 3.5 | 20 |
 
 
 ### <a name="windows-server-2019-ltsc"></a>Windows Server 2019 LTSC
@@ -132,7 +132,7 @@ A következő régiók és maximális erőforrások elérhetők a [támogatott �
 | USA nyugati régiója | 4 | 16 | 4 | 16 | 20 |
 | USA 2. nyugati régiója | 2 | 8 | 4 | 16 | 20 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tájékoztassa a csapatot, ha további régiókat szeretne látni, vagy megnövelt erőforrás-elérhetőséget a [aka.MS/ACI/feedback](https://aka.ms/aci/feedback)címen.
 

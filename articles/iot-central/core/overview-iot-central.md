@@ -7,13 +7,13 @@ ms.date: 11/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
-ms.openlocfilehash: 55f187781a0f11417b0c918034dcfe3362be4468
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: mvc, contperfq2
+ms.openlocfilehash: 847fc5345708dc313f706fcb0d370b0d1761aa41
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457667"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763706"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
@@ -34,7 +34,7 @@ Ez a cikk IoT Central:
 
 Az IoT Central dokumentációja négy olyan személyre utal, akik IoT Central alkalmazással működnek:
 
-- A _megoldás-szerkesztő_ feladata, hogy meghatározza az alkalmazáshoz kapcsolódó [eszközök típusát](howto-set-up-template.md) , és testreszabja az alkalmazást az operátor számára.
+- A _megoldás-szerkesztő_ feladata egy [alkalmazás létrehozása](quick-deploy-iot-central.md), [szabályok és műveletek konfigurálása](quick-configure-rules.md), [integrációk definiálása más szolgáltatásokkal](howto-export-data.md), valamint az alkalmazások további testreszabása a kezelők és az eszközök fejlesztői számára.
 - A _kezelő_ [felügyeli az](howto-manage-devices.md) alkalmazáshoz csatlakoztatott eszközöket.
 - A _rendszergazdák_ felelősek az olyan felügyeleti feladatokért, mint például a [felhasználói szerepkörök és engedélyek](howto-administer.md) kezelése az alkalmazáson belül.
 - Az _eszközök fejlesztői_ [létrehozzák az](concepts-telemetry-properties-commands.md) alkalmazáshoz csatlakoztatott eszközön vagy [IoT Edge modulon](concepts-iot-edge.md) futó kódot.

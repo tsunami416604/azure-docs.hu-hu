@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 87e7f959dd932c874604df43fa61112d181ac581
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 53324709e2d3dd11160ee0b7837d86d9e9594571
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531700"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763927"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure biztonsági alapkonfiguráció Azure-beli bejárati ajtóhoz
 
@@ -206,7 +206,7 @@ Azt javasoljuk, hogy az ügyfél hozzon létre egy folyamatot az attribútum és
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Naplózás engedélyezése Azure-beli hálózati tevékenységekhez
 
-**Útmutató**: az Azure beosztott ajtaja nem a virtuális hálózatokon való üzembe helyezéshez készült. Ennek az ügyfélnek a használata miatt nem lehet engedélyezni a hálózati biztonsági csoport folyamatának naplózását, tűzfalon keresztül irányítani a forgalmat, vagy elvégzi a csomagok rögzítését.
+**Útmutató**: az Azure bejárati ajtaja nem telepíthető virtuális hálózatokra; Ennek az ügyfélnek a használata miatt nem lehet engedélyezni a hálózati biztonsági csoport folyamatának naplózását, tűzfalon keresztül irányítani a forgalmat, vagy elvégzi a csomagok rögzítését.
 
 Az Azure bejárati ajtaja minden olyan hálózati forgalmat naplóz, amelyet az ügyfél-hozzáféréshez feldolgoz. Engedélyezze a hálózati folyamatok naplói szolgáltatást, és konfigurálja ezeket a naplókat, hogy a hosszú távú megőrzés és a naplózás érdekében a Storage-fiókba küldjék.
 

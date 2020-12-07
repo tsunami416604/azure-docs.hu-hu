@@ -1,17 +1,17 @@
 ---
 title: Intelligens szerződések létrehozása, készítése, & üzembe helyezése oktatóanyag – Azure Blockchain szolgáltatás
 description: Útmutató a Visual Studio Code-ban az Azure Blockchain Development Kit for Ethereum bővítmény használatáról az Azure Blockchain Service-ben intelligens szerződések létrehozásához, összeállításához és üzembe helyezéséhez.
-ms.date: 04/22/2020
+ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
-ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7605a0c118a40e52210582d2411569795fb25ee
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82086657"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763689"
 ---
-# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Oktatóanyag: intelligens szerződések létrehozása, készítése és üzembe helyezése az Azure Blockchain Service-ben
+# <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>Oktatóanyag: intelligens szerződések létrehozása, készítése és üzembe helyezése az Azure Blockchain Service-ben
 
 Ebben az oktatóanyagban a Visual Studio Code-ban az Azure Blockchain Development Kit for Ethereum bővítmény használatával hozhat létre, építhet és helyezhet üzembe intelligens szerződést az Azure Blockchain Service-ben. A fejlesztői készlettel egy intelligens szerződési funkciót is végrehajthat tranzakción keresztül.
 
@@ -31,7 +31,6 @@ A Ethereum készült Azure Blockchain Development Kit a következő célokra has
 * [Az Azure Blockchain Development Kit for Ethereum bővítmény](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js 10.15. x vagy újabb](https://nodejs.org/download)
 * [Git 2.10. x vagy újabb](https://git-scm.com)
-* [Python-2.7.15](https://www.python.org/downloads/release/python-2715/) python.exe hozzáadása az elérési úthoz. Az Azure Blockchain Development Kit 2.7.15 Python-verzióra van szükség az elérési úton.
 * [Szarvasgomba 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLI-6.0.0](https://github.com/trufflesuite/ganache-cli)
 
@@ -47,8 +46,8 @@ További információ a Node-GYP-ről: [Node-GYP adattár a githubon](https://gi
 
 A Ethereum készült Azure Blockchain Development Kit a Project templates és a szarvasgomba eszközt használja a szerződések készítéséhez, elkészítéséhez és üzembe helyezéséhez. Mielőtt elkezdené, hajtsa végre az előfeltételként szükséges útmutatót [: a Visual Studio Code használatával csatlakozhat egy Azure Blockchain Service Consortium-hálózathoz](connect-vscode.md). A rövid útmutató végigvezeti a Ethereum készült Azure Blockchain Development Kit telepítésének és konfigurálásának lépésein.
 
-1. A VS Code parancs palettáján válassza az **Azure Blockchain: új szilárdtest-projekt**lehetőséget.
-1. Válassza az **alapszintű projekt létrehozása**lehetőséget.
+1. A VS Code parancs palettáján válassza a **Blockchain: új szilárdtest-projekt** elemet.
+1. Válassza az **alapszintű projekt létrehozása** lehetőséget.
 1. Hozzon létre egy nevű új mappát `HelloBlockchain` , és **válassza az új projekt elérési útja lehetőséget**.
 
 Az Azure Blockchain Development Kit létrehoz és inicializál egy új szilárdtest-projektet. Az alapszintű projekt tartalmaz egy minta **HelloBlockchain** intelligens szerződést, valamint az összes szükséges fájlt, amely az Azure Blockchain szolgáltatásban a konzorciumi tag felépítésére és üzembe helyezésére szolgál. A projekt létrehozása több percet is igénybe vehet. Az Azure Blockchain kimenetének kiválasztásával nyomon követheti a VS Code termináljának előrehaladását.
@@ -76,7 +75,7 @@ A szarvasgomba áttelepítési parancsfájlok használatával helyezi üzembe a 
 
 1. Az intelligens szerződés üzembe helyezéséhez kattintson a jobb gombbal a **HelloBlockchain. Sol** elemre, és válassza a menü **szerződések telepítése** menüpontját.
 1. Válassza ki az Azure Blockchain Consortium-hálózatot a parancs palettáján. A projekt létrehozásakor a konzorcium blockchain-hálózata hozzá lett adva a projekt szarvasgomba konfigurációs fájljához.
-1. Válassza a **hívóbetűje előállítása**lehetőséget. Válasszon egy fájlnevet, és mentse a hívóbetűje fájlt a projekt mappájába. Például: `myblockchainmember.env`. A hívóbetűje-fájl egy Ethereum titkos kulcs létrehozásához használható a blockchain-tag számára.
+1. Válassza a **hívóbetűje előállítása** lehetőséget. Válasszon egy fájlnevet, és mentse a hívóbetűje fájlt a projekt mappájába. Például: `myblockchainmember.env`. A hívóbetűje-fájl egy Ethereum titkos kulcs létrehozásához használható a blockchain-tag számára.
 
 Az Azure Blockchain Development Kit a szarvasgomba használatával hajtja végre az áttelepítési parancsfájlt a szerződések a Blockchain való üzembe helyezéséhez.
 
@@ -102,7 +101,7 @@ A tranzakció feldolgozása után a interakció szakasz az állapot változásai
 
 ![Szerződések állapotának változásai](./media/send-transaction/contract-state.png)
 
-A SendRequest hívás függvény a **RequestMessage** és az **állapot** mezőket állítja be. A **RequestMessage** aktuális állapota a **Hello, Blockchain**argumentum. Az **állapot** mező értéke továbbra is **kérés**.
+A SendRequest hívás függvény a **RequestMessage** és az **állapot** mezőket állítja be. A **RequestMessage** aktuális állapota a **Hello, Blockchain** argumentum. Az **állapot** mező értéke továbbra is **kérés**.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -111,7 +110,7 @@ Ha már nincs rá szükség, törölheti az erőforrásokat úgy, hogy törli a 
 Az erőforráscsoport törlése:
 
 1. A Azure Portalban navigáljon az **erőforráscsoporthoz** a bal oldali navigációs ablaktáblán, és válassza ki a törölni kívánt erőforráscsoportot.
-1. Válassza az **Erőforráscsoport törlése** elemet. A törlés ellenőrzéséhez írja be az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget.
+1. Válassza az **Erőforráscsoport törlése** elemet. A törlés ellenőrzéséhez írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

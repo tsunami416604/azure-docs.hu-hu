@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: af967c58cdeb2c750178141193a711a66af7477c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: fbe1e84525eed47127a08abc9fb7ec5d1144d02f
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426741"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763611"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>Oktatóanyag: video Analytics-objektumok és mozgásészlelési alkalmazások létrehozása az Azure IoT Centralban (OpenVINO &trade; )
 
@@ -24,10 +24,10 @@ Megoldás-szerkesztőként megtudhatja, hogyan hozhat létre video Analytics-alk
 
 [!INCLUDE [iot-central-video-analytics-part1](../../../includes/iot-central-video-analytics-part1.md)]
 
-- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt)
+- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt) – ez a fájl segítséget nyújt a szükséges különböző konfigurációs beállítások rögzítésében az oktatóanyagokon végzett munka során.
 - [deployment.openvino.amd64.jsbekapcsolva](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/deployment.openvino.amd64.json)
 - [LvaEdgeGatewayDcm.jsbekapcsolva](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/LvaEdgeGatewayDcm.json)
-- [state.jsbekapcsolva](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json)
+- [state.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json) – csak akkor kell letöltenie ezt a fájlt, ha azt tervezi, hogy az Intel NUC eszközt használja a második oktatóanyagban.
 
 [!INCLUDE [iot-central-video-analytics-part2](../../../includes/iot-central-video-analytics-part2.md)]
 
@@ -39,7 +39,7 @@ Az üzembe helyezési jegyzék előkészítése:
 
 1. Nyissa meg a *deployment.openvino.amd64.js* fájlt, amelyet a *LVA-konfigurációs* mappában mentett a szövegszerkesztő használatával.
 
-1. Keresse meg a `LvaEdgeGatewayModule` beállításokat, és módosítsa a rendszerkép nevét az alábbi kódrészletben látható módon:
+1. Keresse meg a `LvaEdgeGatewayModule` beállításokat, és győződjön meg arról, hogy a rendszerkép neve az alábbi kódrészletben látható:
 
     ```json
     "LvaEdgeGatewayModule": {
@@ -47,7 +47,7 @@ Az üzembe helyezési jegyzék előkészítése:
             "image": "mcr.microsoft.com/lva-utilities/lva-edge-iotc-gateway:1.0-amd64",
     ```
 
-1. Adja hozzá a Media Services fiók nevét a `env` szakasz csomópontjában `LvaEdgeGatewayModule` . A fiók nevét a *scratchpad.txt* fájlban jegyezze fel:
+1. Adja hozzá a Media Services fiók nevét a `env` szakasz csomópontjában `LvaEdgeGatewayModule` . A *scratchpad.txt* fájlban a Media Services fiók nevét is megjegyezte:
 
     ```json
     "env": {
@@ -55,7 +55,7 @@ Az üzembe helyezési jegyzék előkészítése:
             "value": "lvaEdge"
         },
         "amsAccountName": {
-            "value": "<YOUR_AZURE_MEDIA_ACCOUNT_NAME>"
+            "value": "<YOUR_AZURE_MEDIA_SERVICES_ACCOUNT_NAME>"
         }
     }
     ```
@@ -64,7 +64,16 @@ Az üzembe helyezési jegyzék előkészítése:
 
     Az az `azureMediaServicesArmId` **erőforrás-azonosító** , amelyet a Media Services fiók létrehozásakor a *scratchpad.txt* fájlban jegyzett készített.
 
-    A `aadTenantId` `aadServicePrincipalAppId` (z),, és ascratchpad.txtfájlban jegyezze fel a Media Services- `aadServicePrincipalSecret` fiókhoz tartozó egyszerű szolgáltatásnév létrehozásakor: *scratchpad.txt*
+    A következő táblázat a telepítési jegyzékfájlban használni kívánt *scratchpad.txt* fájlban található **Kapcsolódás Media Services API (JSON)** értékeit mutatja be:
+
+    | Üzembehelyezési jegyzék       | Firkatömb  |
+    | ------------------------- | ----------- |
+    | aadTenantId               | AadTenantId |
+    | aadServicePrincipalAppId  | AadClientId |
+    | aadServicePrincipalSecret | AadSecret   |
+
+    > [!CAUTION]
+    > Az előző táblázat használatával győződjön meg arról, hogy a megfelelő értékeket adja hozzá a központi telepítési jegyzékfájlhoz, ellenkező esetben az eszköz nem fog működni.
 
     ```json
     {
@@ -113,6 +122,6 @@ Az **LVA Edge Gateway v2** lapon válassza a **+ jegyzékfájl cseréje** lehet�
 
 :::image type="content" source="./media/tutorial-video-analytics-create-app-openvino/replace-manifest.png" alt-text="Jegyzékfájl cseréje":::
 
-Navigáljon a *LVA* mappára, és válassza ki a korábban szerkesztett *deployment.openvino.amd64.jsa* jegyzékfájlban. Válassza a **Feltöltés** lehetőséget. Az ellenőrzés befejezésekor válassza a **replace (csere** ) lehetőséget.
+Navigáljon a *LVA* mappára, és válassza ki a korábban szerkesztett *deployment.openvino.amd64.jsa* jegyzékfájlban. Válassza a **Feltöltés** lehetőséget. Az ellenőrzés befejezésekor válassza a **replace (csere**) lehetőséget.
 
 [!INCLUDE [iot-central-video-analytics-part4](../../../includes/iot-central-video-analytics-part4.md)]

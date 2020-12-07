@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 383cd286f89bde13f5e557792e980f0455e00917
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 472c1770e2793d8da4e8fc76fafbf3b9073b746d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877196"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763426"
 ---
 ## <a name="deploy-and-configure-azure-media-services"></a>Azure Media Services üzembe helyezése és konfigurálása
 
@@ -34,13 +34,21 @@ Hozza létre a [Media Services fiókot a Azure Portalban](https://portal.azure.c
 
 Jegyezze fel **Media Services** fiókjának nevét a *scratchpad.txt* fájlban.
 
-Az üzembe helyezés befejezésekor navigáljon a **Media Services** fiók **tulajdonságlapján** . Jegyezze fel az erőforrás- **azonosítót** a *scratchpad.txt* fájlban, ezt az értéket később a IoT Edge modul konfigurálásakor kell használni.
+Ha a telepítés befejeződött, nyisson meg egy Cloud Shell, és futtassa a következő parancsot a Media Service-fiók **erőforrás-azonosítójának** lekéréséhez:
 
-Ezután konfiguráljon egy Azure Active Directory egyszerű szolgáltatásnevet a Media Services erőforráshoz. Válassza az **API-hozzáférés** , majd az **egyszerű szolgáltatás hitelesítés**lehetőséget. Hozzon létre egy új Azure Active Directory alkalmazást a Media Services-erőforrás nevével megegyező névvel, és hozzon létre egy titkos kulcsot a Leírás *IoT Edge a hozzáférés*.
+```azurecli
+az resource list --resource-group lva-rg --resource-type microsoft.media/mediaservices --output table --query "[].{ResourceID:id}"
+```
+
+:::image type="content" source="media/iot-central-video-analytics-part2/get-resource-id.png" alt-text="A Cloud Shell használata az erőforrás-azonosító lekéréséhez":::
+
+Jegyezze fel az erőforrás- **azonosítót** a *scratchpad.txt* fájlban, ezt az értéket később a IoT Edge modul konfigurálásakor kell használni.
+
+Ezután konfiguráljon egy Azure Active Directory egyszerű szolgáltatásnevet a Media Services erőforráshoz. Válassza az **API-hozzáférés** , majd az **egyszerű szolgáltatás hitelesítés** lehetőséget. Hozzon létre egy új Azure Active Directory alkalmazást a Media Services-erőforrás nevével megegyező névvel, és hozzon létre egy titkos kulcsot a Leírás *IoT Edge a hozzáférés*.
 
 :::image type="content" source="./media/iot-central-video-analytics-part2/media-service-authentication.png" alt-text="Azure A D alkalmazás konfigurálása Azure Media Serviceshoz":::
 
-A titkos kód létrehozásakor görgessen le a **hitelesítő adatok másolása az egyszerű szolgáltatásnév alkalmazásához** szakaszhoz. Ezután válassza a **JSON**elemet. A hitelesítő adatokat innen másolhatja egy menetben. Jegyezze fel ezt az információt a *scratchpad.txt* fájlban, amelyet később a IoT Edge eszköz konfigurálásakor fog használni.
+A titkos kód létrehozásakor görgessen le a **hitelesítő adatok másolása az egyszerű szolgáltatásnév alkalmazásához** szakaszhoz. Ezután válassza a **JSON** elemet. A hitelesítő adatokat innen másolhatja egy menetben. Jegyezze fel ezt az információt a *scratchpad.txt* fájlban, amelyet később a IoT Edge eszköz konfigurálásakor fog használni.
 
 > [!WARNING]
 > Ez az egyetlen lehetőség a titok megtekintésére és mentésére. Ha elveszíti, egy újabb titkot kell kiállítania.
@@ -57,7 +65,7 @@ Ebben a szakaszban új Azure IoT Central alkalmazást hoz létre egy sablonból.
 
 1. Új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassza az **új alkalmazás** lehetőséget a **Build** lapon.
 
-1. Válassza a **kereskedelmi**lehetőséget. A kiskereskedelmi oldalon számos kereskedelmi alkalmazás-sablon látható.
+1. Válassza a **kereskedelmi** lehetőséget. A kiskereskedelmi oldalon számos kereskedelmi alkalmazás-sablon látható.
 
 Új video Analytics-alkalmazás létrehozása:
 
@@ -66,15 +74,15 @@ Ebben a szakaszban új Azure IoT Central alkalmazást hoz létre egy sablonból.
 1. Igény szerint válasszon egy felhasználóbarát **nevet**. Ez az alkalmazás a Northwind Traders nevű kitalált kereskedelmi áruházon alapul. Az oktatóanyag a *Northwind Traders video Analytics* **alkalmazás nevét** használja.
 
     > [!NOTE]
-    > Ha felhasználóbarát **alkalmazást**használ, továbbra is egyedi értéket kell használnia az alkalmazás **URL-címéhez**.
+    > Ha felhasználóbarát **alkalmazást** használ, továbbra is egyedi értéket kell használnia az alkalmazás **URL-címéhez**.
 
-1. Ha rendelkezik Azure-előfizetéssel, válassza ki a **címtárat**, az **Azure-előfizetést**és a **Egyesült Államok** **helyét**. Ha nem rendelkezik előfizetéssel, engedélyezheti a **7 napos ingyenes próbaidőszakot** , és elvégezheti a szükséges kapcsolattartási adatokat. Ez az oktatóanyag három eszközt használ – két kamerát és egy IoT Edge eszközt – ha nem használja az ingyenes próbaverziót, a használatért kell fizetnie.
+1. Ha rendelkezik Azure-előfizetéssel, válassza ki a **címtárat**, az **Azure-előfizetést** és a **Egyesült Államok** **helyét**. Ha nem rendelkezik előfizetéssel, engedélyezheti a **7 napos ingyenes próbaidőszakot** , és elvégezheti a szükséges kapcsolattartási adatokat. Ez az oktatóanyag három eszközt használ – két kamerát és egy IoT Edge eszközt – ha nem használja az ingyenes próbaverziót, a használatért kell fizetnie.
 
     További információ a címtárakról, előfizetésekről és helyszínekről: [alkalmazás létrehozása](../articles/iot-central/core/quick-deploy-iot-central.md)– rövid útmutató.
 
 1. Kattintson a **Létrehozás** gombra.
 
-    :::image type="content" source="./media/iot-central-video-analytics-part2/new-application.png" alt-text="Azure A D alkalmazás konfigurálása Azure Media Serviceshoz":::
+    :::image type="content" source="./media/iot-central-video-analytics-part2/new-application.png" alt-text="Azure IoT Central Alkalmazás létrehozása oldal":::
 
 ### <a name="retrieve-the-configuration-data"></a>Konfigurációs adatlekérdezés
 
@@ -82,14 +90,14 @@ Az oktatóanyag későbbi részében a IoT Edge-átjáró konfigurálásakor sz�
 
 Az **Adminisztráció** szakaszban válassza ki az **alkalmazást** , és jegyezze fel az **alkalmazás URL-címét** és az **alkalmazás azonosítóját** a *scratchpad.txt* fájlban:
 
-:::image type="content" source="./media/iot-central-video-analytics-part2/administration.png" alt-text="Azure A D alkalmazás konfigurálása Azure Media Serviceshoz":::
+:::image type="content" source="./media/iot-central-video-analytics-part2/administration.png" alt-text="Képernyőfelvétel: az U R L-t és az alkalmazás I D-t tartalmazó video Analytics-oldal adminisztrációs paneljét jeleníti meg.":::
 
 Válassza ki az **API-jogkivonatokat** , és állítson elő egy **LVAEdgeToken** nevű új jogkivonatot az **operátori** szerepkörhöz:
 
-:::image type="content" source="./media/iot-central-video-analytics-part2/token.png" alt-text="Azure A D alkalmazás konfigurálása Azure Media Serviceshoz":::
+:::image type="content" source="./media/iot-central-video-analytics-part2/token.png" alt-text="Jogkivonat előállítása":::
 
 Jegyezze fel a tokent a *scratchpad.txt* fájlban később. A párbeszédpanel bezárása után a tokent nem lehet újból megtekinteni.
 
-Az **Adminisztráció** szakaszban válassza az **eszköz csatlakoztatása**lehetőséget, majd válassza az **sas-IoT-Devices**elemet.
+Az **Adminisztráció** szakaszban válassza az **eszköz csatlakoztatása** lehetőséget, majd válassza az **sas-IoT-Devices** elemet.
 
 Jegyezze fel az eszközök **elsődleges kulcsát** a *scratchpad.txt* fájlban. Ezt az *elsődleges csoport megosztott hozzáférési aláírási tokenjét* később, az IoT Edge eszköz konfigurálásakor kell használni.
