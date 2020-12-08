@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 42e7f2ced0de00b088e3344c914fc71da84e4e8f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: adc08e978be699ea6ea3dd00beae1762d48644c0
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750730"
+ms.locfileid: "96781062"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -70,7 +70,7 @@ Az Azure Private link a következő előnyöket biztosítja:
 | Azure Monitor <br/>(Log Analytics & Application Insights) | Összes nyilvános régió      |  | FE   <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Monitorhoz.](../azure-monitor/platform/private-link-security.md)   | 
 | Azure Batch | Az összes nyilvános régió kivételével: Közép-Németország, Északkelet-Németország <br/> Minden kormányzati régió  | | FE <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Batchhoz.](../batch/private-connectivity.md) |
 |Azure Data Factory | Összes nyilvános régió<br/> Minden kormányzati régió<br/>Minden kínai régió    | A hitelesítő adatokat egy Azure Key vaultban kell tárolni| FE   <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Data Factoryhoz.](../data-factory/data-factory-private-link.md)   |
-|Azure Managed Disks | Összes nyilvános régió<br/> Minden kormányzati régió<br/>Minden kínai régió    | [Kattintson ide az ismert korlátozásokhoz](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal#limitations) | FE   <br/> [Megtudhatja, hogyan hozhat létre saját végpontot a Azure Data Factoryhoz.](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal)   |
+|Azure Managed Disks | Összes nyilvános régió<br/> Minden kormányzati régió<br/>Minden kínai régió    | [Kattintson ide az ismert korlátozásokhoz](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal#limitations) | FE   <br/> [Ismerje meg, hogyan hozhat létre privát végpontot az Azure Managed Diskshoz.](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal)   |
 
 
 

@@ -9,18 +9,82 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 03825e0f091df01b98355dd6789eb5c9cb2897b0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4998469fa353fef9e8a91d078349150d9f739ac2
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444540"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779413"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referenciát tartalmazó oldalt.
 
 Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az ismert problémák listáját](resource-known-issues.md) .
+
+## <a name="2020-12-07"></a>2020-12-07
+
+### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Azure Machine Learning SDK a Python v 1.19.0
++ **Hibajavítások és javítások**
+  + **azureml-automl-core**
+    + Kísérleti támogatás hozzáadva a AutoMLStep teszteléséhez.
+    + Hozzáadta a test set betöltési funkciójának kezdeti alapvető implementációját.
+    + Áthelyezte a sklearn. externals. joblib mutató hivatkozásokat, amelyek közvetlenül a joblib függenek.
+    + vezessen be egy új AutoML-feladattípust a "rendszerkép-példány-szegmentálás" elemre.
+  + **azureml-automl-runtime**
+    + Hozzáadta a test set betöltési funkciójának kezdeti alapvető implementációját.
+    + Ha egy szöveges oszlop összes karakterlánca pontosan 1 karakterből áll, a TfIdf Word-Gram Képtulajdonság nem fog működni, mert a tokenizer figyelmen kívül hagyja a 2 karakternél rövidebb karakterláncokat. A kód jelenlegi módosítása lehetővé teszi, hogy a AutoML kezelje ezt a használati esetet.
+    + vezessen be egy új AutoML-feladattípust a "rendszerkép-példány-szegmentálás" elemre.
+  + **azureml-automl-DNN-NLP**
+    + Kezdeti PR az új DNN-NLP-csomaghoz
+  + **azureml-automl-DNN-vízió**
+    + vezessen be egy új AutoML-feladattípust a "rendszerkép-példány-szegmentálás" elemre.
+  + **azureml – automl-pipeline – lépések**
+    + Ez az új csomag felelős a számos modell-betanítási/következtetési forgatókönyvhöz szükséges lépések létrehozásához. – A betanítási/következtetési kódot a azureml. Train. automl. Runtime csomagba helyezi át, így minden jövőbeli javítás automatikusan elérhetővé válik a kurátori környezet kiadásain keresztül.
+  + **azureml-contrib-dataset**
+    + vezessen be egy új AutoML-feladattípust a "rendszerkép-példány-szegmentálás" elemre.
+  + **azureml-core**
+    + Hozzáadta a test set betöltési funkciójának kezdeti alapvető implementációját.
+    + Az azureml-Core csomagban található dokumentációhoz tartozó xref-figyelmeztetések kijavítása
+    + Doc-karakterlánc-javítások a parancs-támogatási szolgáltatáshoz az SDK-ban
+    + A Command tulajdonság hozzáadása a RunConfiguration. A szolgáltatás lehetővé teszi a felhasználók számára, hogy a AzureML SDK használatával futtassanak tényleges parancsokat vagy végrehajtható fájlokat a számításokhoz.
+    + A felhasználók törölhetnek egy üres kísérletet az adott kísérlet azonosítója alapján.
+  + **azureml-dataprep**
+    + Új adatkészlet-támogatás a Scala 2,12-vel készített Sparkhoz. Ez hozzáadja a meglévő 2,11-támogatáshoz.
+  + **azureml-mlflow**
+    + AzureML-MLflow biztonságos védelmet nyújt a távoli parancsfájlokban az elküldött futtatások korai megszakításának elkerülése érdekében.
+  + **azureml-pipeline-core**
+    + Kijavítva egy hiba a felhasználói felület használatával létrehozott folyamat végpontjának alapértelmezett folyamatának beállításakor
+  + **azureml-pipeline-steps**
+    + Kísérleti támogatás hozzáadva a AutoMLStep teszteléséhez.
+  + **azureml-tensorboard**
+    + Az azureml-Core csomagban található dokumentációhoz tartozó xref-figyelmeztetések kijavítása
+  + **azureml-train-automl-client**
+    + Kísérleti támogatás hozzáadva a AutoMLStep teszteléséhez.
+    + Hozzáadta a test set betöltési funkciójának kezdeti alapvető implementációját.
+    + vezessen be egy új AutoML-feladattípust a "rendszerkép-példány-szegmentálás" elemre.
+  + **azureml-train-automl-runtime**
+    + Hozzáadta a test set betöltési funkciójának kezdeti alapvető implementációját.
+    + Javítsa ki a legjobb AutoML-modellhez tartozó nyers magyarázatok számítását, ha a AutoML-modelleket validation_size beállítással tanítják ki.
+    + Áthelyezte a sklearn. externals. joblib mutató hivatkozásokat, amelyek közvetlenül a joblib függenek.
+  + **azureml-train-core**
+    + A HyperDriveRun.get_children_sorted_by_primary_metric () gyorsabb befejezést tesz elérhetővé
+    + Továbbfejlesztett hibakezelés a HyperDrive SDK-ban.
+    +  Az összes kalkulátor-osztály elavult az ScriptRunConfig használatával a kísérlet futtatásának konfigurálásához. Az elavult osztályok a következők:
+        + MMLBaseEstimator
+        + Estimator
+        + PyTorch 
+        + TensorFlow 
+        + Chainer 
+        + SKLearn
+    + A Nccl és a gloo használata érvényes bemeneti típusokként a kalkulátor-osztályokhoz a PyTorchConfiguration és a ScriptRunConfig használatával.
+    + A MpiConfiguration és a ScriptRunConfig használatával az MPI használata érvényes bemeneti típusként elavult a kalkulátor-osztályokhoz.
+    + A Command tulajdonság hozzáadása a runconfiguration. A szolgáltatás lehetővé teszi a felhasználók számára, hogy a AzureML SDK használatával futtassanak tényleges parancsokat vagy végrehajtható fájlokat a számításokhoz.
+
+    +  Az összes kalkulátor-osztály elavult az ScriptRunConfig használatával a kísérlet futtatásának konfigurálásához. Az elavult osztályok a következők: + MMLBaseEstimator + kalkulátor + PyTorch + TensorFlow + Chainer + SKLearn
+    + A Nccl és a gloo a PyTorchConfiguration és a ScriptRunConfig használatával való használata helyett a kalkulátor-osztályok érvényes típusú bemenetének elavulttá vált. 
+    + A MpiConfiguration és a ScriptRunConfig használatával az MPI használata a kalkulátor-osztályok érvényes bemeneti típusaként elavult.
+
 
 
 ## <a name="2020-11-09"></a>2020-11-09
@@ -47,12 +111,6 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + A társított szolgáltatás API-ját finomították. Erőforrás-azonosító megadása helyett 3 külön paraméter van megadva a konfigurációban sub_id, RG és név.
     + Annak érdekében, hogy az ügyfelek a jogkivonat-meghibásodási problémák megoldására is feloldják, engedélyezze a munkaterület-jogkivonat szinkronizálását nyilvános metódusként.
     + Ez a módosítás lehetővé teszi, hogy egy script_param értékének üres karakterláncot lehessen használni
-  + **azureml-pipeline-core**
-    + SDK a SynapseCompute-típus és a SynapseSparkStep támogatásához. Az ügyfelek a szinapszis Spark-készleten futtathatnak kísérleteket és folyamatokat.
-  + **azureml-pipeline-steps**
-    + SDK a SynapseCompute-típus és a SynapseSparkStep támogatásához. Az ügyfelek a szinapszis Spark-készleten futtathatnak kísérleteket és folyamatokat.
-  + **azureml – szinapszis**
-    + A szinapszis Magic és SparkMonitor hozzáadásával engedélyezheti a felhasználó által küldött Syanpse feladatot, és megtekintheti a feladatok előrehaladását a jegyzetfüzetben.
   + **azureml-train-automl-client**
     +  A rövid idősorozat jobb kezelését a Gauss-zajjal való kitöltés lehetővé tételével végezheti el.
   + **azureml-train-automl-runtime**
@@ -90,7 +148,6 @@ További információ a [rendszerkép-példányok szegmentálásának címkézé
     + Kijavítva a hiba, ahol a VotingRegressor előrejelzések pontatlanok lehetnek a modell újraillesztése után.
   + **azureml-core**
     + További részletek az AK-beli telepítési konfiguráció és az Azure Kubernetes szolgáltatással kapcsolatos fogalmak közötti kapcsolatról.
-    + Az ügyfél a társított Service SDK-val összekapcsolhatja a szinapszis munkaterületet a pénzmosás-munkaterületre. A szifilisz támogatott.
     + A környezeti ügyfelek címkéjének támogatása. A felhasználók címkével láthatják el a környezeteket, és hivatkozhatnak rájuk.
   + **azureml-dataprep**
     + Jobb hibaüzenet jelenik meg, ha jelenleg nem támogatott Sparkot használ a Scala 2,12-mel.
@@ -797,7 +854,7 @@ Mostantól közvetlenül a Azure Machine Learning Studio webes felületén belü
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
     
-| Webalapú eszköz  |     Description  |
+| Webalapú eszköz  |     Leírás  |
 |---|---|
 | Azure ML Studio notebookok   |     A notebook-fájlok első, osztályon belüli létrehozása és az Azure ML Python SDK-ban elérhető összes művelet támogatása. | 
 
@@ -1309,7 +1366,7 @@ A studióból betaníthatja, tesztelheti, üzembe helyezheti és kezelheti Azure
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
 
-| Webalapú eszköz | Description | 
+| Webalapú eszköz | Leírás | 
 |-|-|-|
 | Notebook VM (előzetes verzió) | Teljes körűen felügyelt felhőalapú munkaállomás | 
 | [Automatikus gépi tanulás](tutorial-first-experiment-automated-ml.md) (előzetes verzió) | Nincs programkód a gépi tanulási modellek fejlesztésének automatizálásához | 

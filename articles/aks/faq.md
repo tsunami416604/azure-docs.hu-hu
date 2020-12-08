@@ -3,12 +3,12 @@ title: Gyakran ismételt kérdések az Azure Kubernetes szolgáltatásról (ak)
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 1ca342c1ea4134f4d9d8f1dbcae4e61bf2a75eaf
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 94cbaf417413b3e11071fb8c7237cbb3ac7b9a37
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751390"
+ms.locfileid: "96780348"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes Service-szel (AKS) kapcsolatban
 
@@ -215,7 +215,7 @@ A v 1.2.0 az Azure CNI az egyszeri bérletű linuxos CNI-környezetek esetében 
 
 ### <a name="bridge-mode"></a>Híd mód
 
-Ahogy a neve is sugallja, az Azure CNI-híd üzemmód "just in Time" módban létrehoz egy "azure0" nevű L2 hidat. A rendszer az összes gazdagép oldali Pod `veth` pár csatolót csatlakoztatja ehhez a hídhoz. Így Pod-Pod a virtuális gépeken belüli kommunikáció ezen a hídon keresztül történik. A szóban forgó híd egy 2. rétegbeli virtuális eszköz, amely a saját tulajdonában nem tud semmit fogadni vagy továbbítani, kivéve, ha egy vagy több valós eszközt köt hozzá. Emiatt a linuxos virtuális gép ETH0-át át kell alakítani egy alárendeltre a "azure0"-hídra. Ez egy összetett hálózati topológiát hoz létre a Linux rendszerű virtuális gépen, és a CNI is gondoskodnia kell más hálózati funkciókról, például a DNS-kiszolgáló frissítéséről és így tovább.
+Ahogy a neve is sugallja, az Azure CNI-híd üzemmód "just in Time" módban létrehoz egy "azure0" nevű L2 hidat. A rendszer az összes gazdagép oldali Pod `veth` pár csatolót csatlakoztatja ehhez a hídhoz. Így Pod-Pod a virtuális gépeken belüli kommunikáció és a fennmaradó forgalom ezen a hídon halad át. A szóban forgó híd egy 2. rétegbeli virtuális eszköz, amely a saját tulajdonában nem tud semmit fogadni vagy továbbítani, kivéve, ha egy vagy több valós eszközt köt hozzá. Emiatt a linuxos virtuális gép ETH0-át át kell alakítani egy alárendeltre a "azure0"-hídra. Ez egy összetett hálózati topológiát hoz létre a Linux rendszerű virtuális gépen, és a CNI is gondoskodnia kell más hálózati funkciókról, például a DNS-kiszolgáló frissítéséről és így tovább.
 
 :::image type="content" source="media/faq/bridge-mode.png" alt-text="Híd üzemmód topológiája":::
 
@@ -229,19 +229,11 @@ root@k8s-agentpool1-20465682-1:/#
 ```
 
 ### <a name="transparent-mode"></a>Transzparens mód
-Az átlátszó mód a Linux hálózatkezelés beállításához szükséges egyszerű megközelítést veszi igénybe. Ebben a módban az Azure CNI nem változtatja meg a Linux rendszerű virtuális gépen elérhető ETH0-interfészek tulajdonságait. A Linux hálózati tulajdonságok megváltoztatásának minimális megközelítése segít csökkenteni a komplex sarki problémák mennyiségét, amelyekkel a fürtök a híd móddal szembesülnek. Transzparens módban az Azure CNI létrehoz és hozzáad egy gazdagép-oldali Pod `veth` pair-felületet, amelyet a rendszer hozzáad a gazdagéphez. A virtuális gépen belüli Pod-Pod kommunikáció a CNI által hozzáadott IP-útvonalakon keresztül történik. Lényegében a pod-to-Pod-alapú virtuális gép alacsonyabb rétegbeli 3 hálózati forgalom.
+Az átlátszó mód a Linux hálózatkezelés beállításához szükséges egyszerű megközelítést veszi igénybe. Ebben a módban az Azure CNI nem változtatja meg a Linux rendszerű virtuális gépen elérhető ETH0-interfészek tulajdonságait. A Linux hálózati tulajdonságok megváltoztatásának minimális megközelítése segít csökkenteni a komplex sarki problémák mennyiségét, amelyekkel a fürtök a híd móddal szembesülnek. Transzparens módban az Azure CNI létrehoz és hozzáad egy gazdagép-oldali Pod `veth` pair-felületet, amelyet a rendszer hozzáad a gazdagéphez. A virtuális gépen belüli Pod-Pod kommunikáció a CNI által hozzáadott IP-útvonalakon keresztül történik. Lényegében a pod-Pod kommunikáció a 3. rétegbeli és a pod-forgalmat az L3-útválasztási szabályok irányítják.
 
 :::image type="content" source="media/faq/transparent-mode.png" alt-text="Transzparens üzemmódú topológia":::
 
 Az alábbi példa egy transzparens üzemmódú IP-útvonal beállítását mutatja be, az egyes Pod-interfészek egy statikus útvonalat kapnak, hogy a megjelenő IP-címmel ellátott forgalom közvetlenül a pod Host Side pair-felületén legyen elküldve `veth` .
-
-### <a name="benefits-of-transparent-mode"></a>Az átlátszó mód előnyei
-
-- A `conntrack` DNS párhuzamos versenyhelyzet mérséklését és az 5 mp-es DNS-késési problémák elkerülését teszi lehetővé anélkül, hogy a csomópont helyi DNS-t kellene beállítani (a csomópont helyi DNS-t továbbra is használhatja teljesítménybeli okokból).
-- Kiküszöböli a kezdeti 5 mp-es DNS-késés CNI híd üzemmódját a mai napon, a híd beállítása miatt.
-- A Bridge Mode egyik sarki esete az, hogy az Azure-CNI nem tudja megőrizni a felhasználók által a VNET vagy a NIC-be való hozzáadáshoz hozzáadott egyéni DNS-kiszolgáló frissítését. Ez azt eredményezi, hogy a CNI csak a DNS-kiszolgálók listájának első példányát vette fel. Transzparens módban megoldott, mivel a CNI nem változtatja meg a ETH0-tulajdonságokat. [Itt](https://github.com/Azure/azure-container-networking/issues/713)is látszik.
-- Az UDP-forgalom hatékonyabb kezelését és az UDP-beli adatváltozások enyhítését teszi lehetővé az ARP időtúllépése esetén. A Bridge módban, ha a híd nem ismeri a cél pod MAC-címeit a virtuális gépen belüli Pod-Pod kommunikációban, a terv szerint ez a csomag minden portra kiterjed. Transzparens módban megoldott, mert az elérési útban nem találhatók L2-eszközök. [Itt](https://github.com/Azure/azure-container-networking/issues/704)talál további információt.
-- Az átlátszó mód jobb teljesítményt nyújt a virtuális gépen belüli Pod-to-Pod kommunikációban az átviteli sebesség és a késés tekintetében a híd üzemmódhoz képest.
 
 ```bash
 10.240.0.216 dev azv79d05038592 proto static
@@ -254,6 +246,15 @@ Az alábbi példa egy transzparens üzemmódú IP-útvonal beállítását mutat
 169.254.169.254 via 10.240.0.1 dev eth0 proto dhcp src 10.240.0.4 metric 100
 172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
 ```
+
+### <a name="benefits-of-transparent-mode"></a>Az átlátszó mód előnyei
+
+- A `conntrack` DNS párhuzamos versenyhelyzet mérséklését és az 5 mp-es DNS-késési problémák elkerülését teszi lehetővé anélkül, hogy a csomópont helyi DNS-t kellene beállítani (a csomópont helyi DNS-t továbbra is használhatja teljesítménybeli okokból).
+- Kiküszöböli a kezdeti 5 mp-es DNS-késés CNI híd üzemmódját a mai napon, a híd beállítása miatt.
+- A Bridge Mode egyik sarki esete az, hogy az Azure-CNI nem tudja megőrizni a felhasználók által a VNET vagy a NIC-be való hozzáadáshoz hozzáadott egyéni DNS-kiszolgáló frissítését. Ez azt eredményezi, hogy a CNI csak a DNS-kiszolgálók listájának első példányát vette fel. Transzparens módban megoldott, mivel a CNI nem változtatja meg a ETH0-tulajdonságokat. [Itt](https://github.com/Azure/azure-container-networking/issues/713)talál további információt.
+- Az UDP-forgalom hatékonyabb kezelését és az UDP-beli adatváltozások enyhítését teszi lehetővé az ARP időtúllépése esetén. A Bridge módban, ha a híd nem ismeri a cél pod MAC-címeit a virtuális gépen belüli Pod-Pod kommunikációban, a terv szerint ez a csomag minden portra kiterjed. Transzparens módban megoldott, mert az elérési útban nem találhatók L2-eszközök. [Itt](https://github.com/Azure/azure-container-networking/issues/704)talál további információt.
+- Az átlátszó mód jobb teljesítményt nyújt a virtuális gépen belüli Pod-to-Pod kommunikációban az átviteli sebesség és a késés tekintetében a híd üzemmódhoz képest.
+
 
 <!-- LINKS - internal -->
 

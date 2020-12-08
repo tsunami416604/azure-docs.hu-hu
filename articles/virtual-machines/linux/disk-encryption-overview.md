@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7079f0b1060be1a260b41e07b9d9299bab57127f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 91ef5ca35cc96aa2028522d370ffbade45ecc2de
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016301"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779770"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
@@ -67,7 +67,7 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 | Canonical | Ubuntu-14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | 14.04.5 – NAPI – LTS | Canonical: UbuntuServer: 14.04.5-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
 | RedHat | RHEL 7,8 | 7,8 | RedHat: RHEL: 7,8: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,7 | 7.7 | RedHat: RHEL: 7.7: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RedHat | RHEL 7,7 | 7 – LVM | RedHat: RHEL: 7 – LVM: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 7 – LVM | 7 – LVM | RedHat: RHEL: 7 – LVM: 7.8.2020111201 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,6 | 7.6 | RedHat: RHEL: 7.6: legutóbbi | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7.5 | 7,5 | RedHat: RHEL: 7.5: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RedHat | RHEL 7,4 | 7,4 | RedHat: RHEL: 7.4: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
@@ -77,7 +77,7 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 | RedHat | RHEL 6,7 | 6.7 | RedHat: RHEL: 6.7: legújabb | Adatlemez (lásd az alábbi megjegyzést) |
 | OpenLogic | CentOS 7,8 | 7,8 | OpenLogic: CentOS: 7_8: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7,7 | 7.7 | OpenLogic: CentOS: 7.7: legújabb | Operációs rendszer és az adatlemez |
-| OpenLogic | CentOS 7,7 | 7 – LVM | OpenLogic: CentOS: 7-LVM: legújabb | Operációs rendszer és az adatlemez |
+| OpenLogic | CentOS 7 – LVM | 7 – LVM | OpenLogic: CentOS-LVM: 7-LVM: 7.8.2020111100 | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7,6 | 7.6 | OpenLogic: CentOS: 7.6: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7.5 | 7,5 | OpenLogic: CentOS: 7.5: legújabb | Operációs rendszer és az adatlemez |
 | OpenLogic | CentOS 7.4 | 7,4 | OpenLogic: CentOS: 7.4: legújabb | Operációs rendszer és az adatlemez |

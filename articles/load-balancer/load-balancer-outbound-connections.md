@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 3f4791c5cbcf731e118bac4bf692adcad7e9ff44
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d0fad3a257b6d1b3723cdf337179573b4667b054
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483589"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780110"
 ---
 # <a name="using-snat-for-outbound-connections"></a>SNAT használata a kimenő kapcsolatokhoz
 
@@ -43,7 +43,7 @@ Az öt rekord a következőkből áll:
 
 Ha a bejövő kapcsolatokhoz portot használ, akkor a bejövő kapcsolatokra vonatkozó kérelmeket **figyelő** a porton, és nem használható kimenő kapcsolatokhoz. A kimenő kapcsolatok létrehozásához egy **ideiglenes portot** kell használni, amely lehetővé teszi, hogy a cél egy olyan porton keresztül legyen elérhető, amelyen keresztül kommunikálni és karbantartani kell a különböző forgalmi folyamatokat. Ha ezek az ideiglenes portok a SNAT elvégzéséhez használatosak, **SNAT-portok** 
 
-Definíció szerint minden IP-címnek 65 535-as portja van. Minden port használható a TCP (Transmission Control Protocol) és az UDP (User Datagram Protocol) bejövő vagy kimenő kapcsolataihoz. Ha nyilvános IP-címet ad hozzá a terheléselosztó IP-címéhez, az Azure a 64 000-as SNAT-portok használatára jogosult. 
+Definíció szerint minden IP-címnek 65 535-as portja van. Minden port használható a TCP (Transmission Control Protocol) és az UDP (User Datagram Protocol) bejövő vagy kimenő kapcsolataihoz. Ha nyilvános IP-címet adnak hozzá a betöltési IP-címhez egy terheléselosztó számára, az Azure 64 000-as SNAT-portként való használatát teszi lehetővé. 
 
 >[!NOTE]
 > Az egyes terheléselosztási vagy bejövő NAT-szabályokhoz használt portok a 64 000-es portokból származó nyolc portból állnak, így csökkentve a SNAT jogosult portok számát. Ha egy terhelési > terheléselosztási vagy NAT-szabály ugyanabban a nyolc tartományban van, mint egy másik, akkor nem fog további portokat használni. 
@@ -61,12 +61,12 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
  ### <a name="scenario-1-virtual-machine-with-public-ip"></a><a name="scenario1"></a> 1. forgatókönyv: virtuális gép nyilvános IP-címmel
 
 
- | Szövetségek | Metódus | IP-protokollok |
+ | Szövetségek | Módszer | IP-protokollok |
  | ---------- | ------ | ------------ |
  | Nyilvános Load Balancer vagy önálló | [SNAT (forrás hálózati címfordítás)](#snat) </br> nincs használatban. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (biztonsági tartalom beágyazása) |
 
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Leírás
 
 
  Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja az összes kimenő folyamathoz. A példányhoz minden elérhető ideiglenes port tartozik. Nem számít, hogy a virtuális gép terheléselosztás alatt áll-e. Ez a forgatókönyv elsőbbséget élvez a többiekkel szemben. 
@@ -78,12 +78,12 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
  ### <a name="scenario-2-virtual-machine-without-public-ip-and-behind-standard-public-load-balancer"></a><a name="scenario2"></a>2. forgatókönyv: virtuális gép nyilvános IP-cím nélkül és standard nyilvános Load Balancer mögött
 
 
- | Szövetségek | Metódus | IP-protokollok |
+ | Szövetségek | Módszer | IP-protokollok |
  | ------------ | ------ | ------------ |
  | Nyilvános Load Balancer | A terheléselosztó felületi IP-címeinek használata a [SNAT](#snat).| TCP </br> UDP |
 
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Leírás
 
 
  A terheléselosztó erőforrás egy kimenő szabállyal vagy egy terheléselosztási szabállyal van konfigurálva, amely engedélyezi az alapértelmezett SNAT. Ez a szabály a nyilvános IP-frontend és a háttér-készlet közötti kapcsolat létrehozására szolgál. 
@@ -107,11 +107,11 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
  ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>3. forgatókönyv: nyilvános IP nélküli virtuális gép és alapszintű Load Balancer
 
 
- | Szövetségek | Metódus | IP-protokollok |
+ | Szövetségek | Módszer | IP-protokollok |
  | ------------ | ------ | ------------ |
  |Nincsenek </br> Alapszintű Load Balancer | [SNAT](#snat) a példány-szintű dinamikus IP-címmel| TCP </br> UDP | 
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Leírás
 
 
  Amikor a virtuális gép létrehoz egy kimenő folyamatot, az Azure lefordítja a forrás IP-címet egy dinamikusan lefoglalt nyilvános forrás IP-címére. Ez a nyilvános IP-cím **nem konfigurálható** , és nem foglalható le. Ez a cím nem számít az előfizetés nyilvános IP-erőforrásának korlátja alapján. 

@@ -6,12 +6,12 @@ ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: b32977ac1c8cfe0c461bcd1628c08a0ca215ba93
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 7eebbe5605c0b4d70ea15c1605cff5416965e535
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506192"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780773"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -74,23 +74,11 @@ A következő parancs használatával klónozott a minta tárházat, és navigá
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
-
-Ezután navigáljon a mappába:
-
-```terminal
-cd python-docs-hello-world
-```
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-django
-```
-
-Ezután navigáljon a mappába:
-
-```terminal
-cd python-docs-hello-django
 ```
 ::: zone-end
 
@@ -101,7 +89,11 @@ Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp
 ## <a name="run-the-sample"></a>Minta futtatása
 
 ::: zone pivot="python-framework-flask"
-1. Győződjön meg arról, hogy a *Python-docs-Hello-World* mappában van. 
+1. Navigáljon a *Python-docs-Hello-World* mappába:
+
+    ```terminal
+    cd python-docs-hello-world
+    ```
 
 1. Virtuális környezet létrehozása és függőségek telepítése:
 
@@ -115,7 +107,11 @@ Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp
     flask run
     ```
     
-    Alapértelmezés szerint a kiszolgáló azt feltételezi, hogy az alkalmazás beléptetési modulja a *app.py* található, a mintában használt módon. (Ha más nevű modult használ, állítsa a `FLASK_APP` környezeti változót erre a névre.)
+    Alapértelmezés szerint a kiszolgáló azt feltételezi, hogy az alkalmazás beléptetési modulja a *app.py* található, a mintában használt módon.
+
+    Ha más nevű modult használ, állítsa a `FLASK_APP` környezeti változót erre a névre.
+
+    Ha a következő hibaüzenet jelenik meg: "nem található a lombik-alkalmazás. Nem adta meg a "FLASK_APP" környezeti változót, és egy "wsgi.py" vagy "app.py" modul nem található az aktuális könyvtárban. "Ellenőrizze, hogy a `python-docs-hello-world` mintát tartalmazó mappában van-e.
 
 1. Nyisson meg egy webböngészőt, és nyissa meg a minta alkalmazást a következő címen: `http://localhost:5000/` . Az alkalmazás megjeleníti a **Hello, World!** üzenetet.
 
@@ -125,7 +121,11 @@ Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
-1. Győződjön meg arról, hogy a *Python-docs-Hello-Django* mappában van. 
+1. Navigáljon a *Python-docs-Hello-Django* mappájába:
+
+    ```terminal
+    cd python-docs-hello-django
+    ```
 
 1. Virtuális környezet létrehozása és függőségek telepítése:
 
@@ -150,7 +150,7 @@ Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp
 
 ## <a name="deploy-the-sample"></a>A minta üzembe helyezése
 
-Telepítse a kódot a helyi mappájába ( *Python-docs-Hello-World* ) a következő `az webapp up` parancs használatával:
+Telepítse a kódot a helyi mappájába (*Python-docs-Hello-World*) a következő `az webapp up` parancs használatával:
 
 ```azurecli
 az webapp up --sku F1 --name <app-name>
@@ -158,7 +158,7 @@ az webapp up --sku F1 --name <app-name>
 
 - Ha a `az` parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI telepítve van a [kezdeti környezet beállítása](#set-up-your-initial-environment)című témakörben leírtak szerint.
 - Ha a `webapp` parancs nem ismerhető fel, mert az Azure CLI verziója 2.0.80 vagy magasabb. Ha nem, [telepítse a legújabb verziót](/cli/azure/install-azure-cli).
-- Cserélje le a `<app_name>` karaktert az összes Azure-beli egyedi névre ( *érvényes karakterek: `a-z` , `0-9` és `-`* ). Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
+- Cserélje le a `<app_name>` karaktert az összes Azure-beli egyedi névre (*érvényes karakterek: `a-z` , `0-9` és `-`*). Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
 - Az `--sku F1` argumentum a webalkalmazást az ingyenes díjszabási szinten hozza létre. Hagyja ki ezt az argumentumot a gyorsabb prémium szint használatához, amely óradíjat eredményez.
 - Igény szerint megadhatja az argumentumot `--location <location-name>` , ahol az `<location_name>` egy elérhető Azure-régió. Az Azure-fiók számára engedélyezett régiók listáját a parancs futtatásával kérheti le [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
 - Ha a következő hibaüzenet jelenik meg: "nem sikerült automatikusan észlelni az alkalmazás futásidejű veremét", győződjön meg arról, hogy a parancsot a *Python-docs-Hello-World* mappában (lombik) vagy a *Python-docs-Hello-Django* mappában (Django) futtatja, amely tartalmazza a *requirements.txt* fájlt. (Lásd: [az WebApp up (GitHub) szolgáltatással kapcsolatos automatikus észlelési hibák elhárítása](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) .)
@@ -277,7 +277,7 @@ Az `--no-wait` argumentum lehetővé teszi, hogy a parancs visszaadja a művelet
 
 Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python (Django) webalkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)

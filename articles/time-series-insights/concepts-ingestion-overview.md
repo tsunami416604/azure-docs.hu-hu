@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 12/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 57c23ba4acdbde1a5dfac39d89a09dfcef6b25a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b76490ab23cb14755f6f90a27ec8b176bb30a11
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460900"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780025"
 ---
 # <a name="azure-time-series-insights-gen2-data-ingestion-overview"></a>Azure Time Series Insights Gen2 adatfeldolgozás áttekintése
 
@@ -35,6 +35,6 @@ Az alábbi cikkek részletesen ismertetik az adatfeldolgozást, beleértve az al
 
 * Tekintse át a környezet [átviteli sebességének korlátozásait](./concepts-streaming-ingress-throughput-limits.md) a méretezési igények megtervezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Folytassa tovább, ha többet szeretne megtudni az Azure Time Series Insights Gen2-környezethez tartozó [eseményforrás-forrásokról](./concepts-streaming-ingestion-event-sources.md) .

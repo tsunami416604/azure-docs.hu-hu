@@ -4,12 +4,12 @@ description: Ismerje meg, hogy miként lehet elhárítani a gyakori problémáka
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ac75fff3b088a7d595de2b27c92126ce592aff47
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d8e7fb85e369f5f278436370944eafeb1fb6a50e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746919"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779515"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Az Azure Container Instances gyakori hibáinak elhárítása
 
@@ -187,7 +187,7 @@ Egy másik lehetőség, hogy csökkentse a rendszerkép hatását a tároló ind
 
 #### <a name="cached-images"></a>Gyorsítótárazott lemezképek
 
-A Azure Container Instances egy gyorsítótárazási mechanizmust használ a [Windows alaplemezképekre](container-instances-faq.md#what-windows-base-os-images-are-supported)épülő rendszerképekhez `nanoserver:1809` , például `servercore:ltsc2019` `servercore:1809` Gyakran használt Linux-rendszerképek, például a `ubuntu:1604` és `alpine:3.6` a gyorsítótárazva is. A gyorsítótárazott képek és címkék naprakész listája a [gyorsítótárazott lemezképek listája][list-cached-images] API-t használja.
+A Azure Container Instances egy gyorsítótárazási mechanizmust használ a [Windows alaplemezképekre](container-instances-faq.md#what-windows-base-os-images-are-supported)épülő rendszerképekhez `nanoserver:1809` , például `servercore:ltsc2019` `servercore:1809` Gyakran használt Linux-rendszerképek, például a `ubuntu:1604` és `alpine:3.6` a gyorsítótárazva is. A Windows-és Linux-lemezképek esetében ne használja a `latest` címkét. Tekintse át Container Registry [képcímkét az ajánlott eljárásokkal](../container-registry/container-registry-image-tag-version.md) kapcsolatos útmutatásért. A gyorsítótárazott képek és címkék naprakész listája a [gyorsítótárazott lemezképek listája][list-cached-images] API-t használja.
 
 > [!NOTE]
 > A Windows Server 2019-alapú rendszerképek használata a Azure Container Instances előzetes verzióban érhető el.
@@ -223,7 +223,7 @@ Ha szeretné ellenőrizni, hogy Azure Container Instances tud-e figyelni a táro
     az container delete --resource-group myResourceGroup --name mycontainer
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [kérhet le tároló naplókat és eseményeket](container-instances-get-logs.md) a tárolók hibakereséséhez.
 

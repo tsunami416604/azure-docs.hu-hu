@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f6026680dd566bf7a13c83b37883341bff8b4570
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355166"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780093"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Oktatóanyag: több X. 509 eszköz kiépítése beléptetési csoportok használatával
 
@@ -26,7 +26,7 @@ Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt tám
 
 Ez az oktatóanyag hasonló a korábbi oktatóanyagokhoz, amelyek bemutatják, hogyan használhatók a beléptetési csoportok az eszközök készletének kiépítéséhez. Ebben az oktatóanyagban azonban a szimmetrikus kulcsok helyett X. 509 tanúsítványokat fogunk használni. Tekintse át az ebben a szakaszban található korábbi oktatóanyagokat a [szimmetrikus kulcsok](./concepts-symmetric-key-attestation.md)használatával történő egyszerű megközelítéshez.
 
-Ez az oktatóanyag bemutatja az [Egyéni HSM-mintát](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example) , amely a hardveres biztonságos tárolással való együttműködésre szolgáló helyettes implementációt biztosít. A [hardveres biztonsági modul (HSM)](./concepts-service.md#hardware-security-module) a biztonságos, hardveres tárolásra szolgál az eszközök titkaihoz. A HSM használható szimmetrikus kulccsal, X. 509 tanúsítvánnyal vagy TPM-igazolással, hogy biztonságos tárhelyet biztosítson a titkok számára. Erősen ajánlott az eszközön tárolt titkos kódok hardveres tárolása.
+Ez az oktatóanyag bemutatja az [Egyéni HSM-mintát](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example) , amely a hardveres biztonságos tárolással való együttműködésre szolgáló helyettes implementációt biztosít. A [hardveres biztonsági modul (HSM)](./concepts-service.md#hardware-security-module) a biztonságos, hardveres tárolásra szolgál az eszközök titkaihoz. A HSM használható szimmetrikus kulccsal, X. 509 tanúsítvánnyal vagy TPM-igazolással, hogy biztonságos tárhelyet biztosítson a titkok számára. Az eszköz titkos kulcsainak hardveres tárolása nem kötelező, de erősen ajánlott a bizalmas adatok, például az eszköz tanúsítványa titkos kulcsának védelmére.
 
 Ha nem ismeri az kiépítés folyamatát, tekintse át a [kiépítés](about-iot-dps.md#provisioning-process) áttekintését. Győződjön meg arról is, hogy végrehajtotta a [IoT hub Device Provisioning Service beállítása a Azure Portal az](quick-setup-auto-provision.md) oktatóanyag folytatása előtt című témakör lépéseit. 
 
@@ -225,7 +225,9 @@ A tanúsítványlánc létrehozása:
 
 ## <a name="configure-the-custom-hsm-stub-code"></a>Egyéni HSM-helyettes kód konfigurálása
 
-A tényleges biztonságos hardver-alapú tárolással való interakció sajátosságai a hardvertől függően változnak. Ennek eredményeképpen az eszköz által az oktatóanyagban használt tanúsítványlánc az egyéni HSM-hardcoded lesz. A valós forgatókönyvekben a tanúsítványlánc a tényleges HSM-hardveren lesz tárolva, hogy jobb biztonságot nyújtson a bizalmas adatok számára. Az ebben a mintában látható helyettes metódusokhoz hasonló metódusokat a rendszer úgy valósítja meg, hogy beolvassa a hardveres tárterület titkait.
+A tényleges biztonságos hardver-alapú tárolással való interakció sajátosságai a hardvertől függően változnak. Ennek eredményeképpen az eszköz által az oktatóanyagban használt tanúsítványlánc az egyéni HSM-hardcoded lesz. A valós forgatókönyvekben a tanúsítványlánc a tényleges HSM-hardveren lesz tárolva, hogy jobb biztonságot nyújtson a bizalmas adatok számára. Az ebben a mintában látható helyettes metódusokhoz hasonló metódusokat a rendszer úgy valósítja meg, hogy beolvassa a hardveres tárterület titkait. 
+
+Amíg a HSM hardver nem szükséges, nem ajánlott bizalmas adatokat, például a tanúsítvány titkos kulcsát, a forráskódba bejelölve. Ez a kulcs mindenki számára elérhetővé teszi, aki megtekintheti a kódot. Ez a cikk csak a tanuláshoz nyújt segítséget.
 
 A következő oktatóanyaghoz tartozó egyéni HSM-helyettes kód frissítése:
 
@@ -287,7 +289,7 @@ A következő oktatóanyaghoz tartozó egyéni HSM-helyettes kód frissítése:
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>A főtanúsítvány tulajdonjogának ellenőrzése
 
-1. Az [X. 509 tanúsítvány nyilvános részének regisztrálása és az ellenőrző kód beszerzése](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code), a főtanúsítvány feltöltése és a DPS ellenőrző kód beszerzése.
+1. Az [X. 509 tanúsítvány nyilvános részének regisztrálása és az ellenőrző kód beszerzése](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code), a főtanúsítvány feltöltése ( `./certs/azure-iot-test-only.root.ca.cert.pem` ) és a DPS ellenőrző kód beszerzése.
 
 2. Miután a főtanúsítványhoz a DPS ellenőrző kódot kapott, futtassa a következő parancsot a tanúsítvány parancsfájl munkakönyvtárában egy ellenőrző tanúsítvány létrehozásához.
  
@@ -297,7 +299,7 @@ A következő oktatóanyaghoz tartozó egyéni HSM-helyettes kód frissítése:
     ./certGen.sh create_verification_certificate 1B1F84DE79B9BD5F16D71E92709917C2A1CA19D5A156CB9F    
     ```    
 
-    Ez a szkript létrehoz egy tanúsítványt, amelyet a főtanúsítvány aláírt a tulajdonos neve beállításnál az ellenőrző kódra. Ez a tanúsítvány lehetővé teszi, hogy a DPS ellenőrizze, hogy van-e hozzáférése a főtanúsítvány titkos kulcsához. Figyelje meg az ellenőrző tanúsítvány helyét a parancsfájl kimenetében.
+    Ez a szkript létrehoz egy tanúsítványt, amelyet a főtanúsítvány aláírt a tulajdonos neve beállításnál az ellenőrző kódra. Ez a tanúsítvány lehetővé teszi, hogy a DPS ellenőrizze, hogy van-e hozzáférése a főtanúsítvány titkos kulcsához. Figyelje meg az ellenőrző tanúsítvány helyét a parancsfájl kimenetében. Ez a tanúsítvány `.pfx` formátummal jön létre.
 
     ```output
     Leaf Device PFX Certificate Generated At:

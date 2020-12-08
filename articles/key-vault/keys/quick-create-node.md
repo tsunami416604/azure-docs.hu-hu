@@ -1,31 +1,31 @@
 ---
-title: Gyors útmutató – Azure Key Vault titkos ügyféloldali kódtár JavaScripthez (4-es verzió)
-description: Megtudhatja, hogyan hozhat létre, kérhet le és törölhet titkos kódokat egy Azure Key vaultból a JavaScript ügyféloldali kódtár használatával
+title: Gyors útmutató – Azure Key Vault fő ügyféloldali kódtár a JavaScripthez (4-es verzió)
+description: Megtudhatja, hogyan hozhat létre, kérhet le és törölhet kulcsokat egy Azure Key vaultból a JavaScript ügyféloldali kódtár használatával
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 12/6/2020
 ms.service: key-vault
-ms.subservice: secrets
+ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8e04fcea53869fe15ebbeb3c7709cff842893931
+ms.openlocfilehash: 1d842a4eaf0ff4afbc61ca58847747c3da57b1da
 ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780790"
+ms.locfileid: "96841916"
 ---
-# <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>Gyors útmutató: Azure Key Vault titkos ügyféloldali kódtár a JavaScripthez (4-es verzió)
+# <a name="quickstart-azure-key-vault-key-client-library-for-javascript-version-4"></a>Gyors útmutató: Azure Key Vault fő ügyféloldali kódtár a JavaScripthez (4-es verzió)
 
-Ismerkedjen meg a JavaScript Azure Key Vault Secret ügyféloldali függvénytárával. A [Azure Key Vault](../general/overview.md) egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a titkok számára. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre, kérhet le és törölhet titkos kódokat egy Azure Key vaultból a JavaScript ügyféloldali kódtár használatával
+Ismerkedjen meg a JavaScript Azure Key Vault Key ügyféloldali függvénytárával. A [Azure Key Vault](../general/overview.md) egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a titkosítási kulcsokhoz. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre, kérhet le és törölhet kulcsokat egy Azure Key vaultból a JavaScript-kulcs ügyféloldali kódtár használatával
 
 Key Vault ügyféloldali kódtár erőforrásai:
 
-[API-referenciák dokumentációja](/javascript/api/overview/azure/key-vault-index)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[API-referenciák dokumentációja](/javascript/api/overview/azure/key-vault-index)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/keyvault-keys)
 
-A Key Vault és a titkokkal kapcsolatos további információkért lásd:
+A Key Vault és a kulcsokkal kapcsolatos további információkért lásd:
 - [Key Vault áttekintése](../general/overview.md)
-- A [titkok áttekintése](about-secrets.md).
+- [Kulcsok áttekintése](about-keys.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,10 +69,10 @@ npm init -y
 
 ## <a name="install-key-vault-packages"></a>Key Vault csomagok telepítése
 
-A konzol ablakban telepítse a Node.js Azure Key Vault [Secrets könyvtárát](https://www.npmjs.com/package/@azure/keyvault-secrets) .
+A konzol ablakban telepítse a Node.js Azure Key Vault [kulcsok könyvtárát](https://www.npmjs.com/package/@azure/keyvault-keys) .
 
 ```azurecli
-npm install @azure/keyvault-secrets
+npm install @azure/keyvault-keys
 ```
 
 Az [Azure. Identity](https://www.npmjs.com/package/@azure/identity) csomag telepítése Key Vault hitelesítéséhez
@@ -101,15 +101,15 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="grant-access-to-your-key-vault"></a>Hozzáférés biztosítása a kulcstartóhoz
 
-Hozzon létre egy hozzáférési szabályzatot a kulcstartó számára, amely titkos engedélyeket biztosít a felhasználói fióknak
+Hozzon létre egy hozzáférési szabályzatot a kulcstartó számára, amely a felhasználói fiók számára biztosít kulcsfontosságú engedélyeket
 
 ```azurecli
-az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set purge
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --key-permissions delete get list create purge
 ```
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Az alábbi kódrészletek megmutatják, hogyan hozhat létre egy ügyfelet, hogyan állíthat be titkos kulcsot, beolvashat egy titkos kulcsot, és törölhet egy titkos kulcsot. 
+Az alábbi kódrészletek bemutatják, hogyan hozhat létre egy ügyfelet, beállíthat egy kulcsot, lekérhet egy kulcsot, és törölhet egy kulcsot. 
 
 ### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása
 
@@ -147,7 +147,7 @@ Adja hozzá a következő irányelveket a kód elejéhez:
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");
-const { SecretClient } = require("@azure/keyvault-secrets");
+const { KeyClient } = require("@azure/keyvault-keys");
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
@@ -163,42 +163,40 @@ const keyVaultName = process.env["KEY_VAULT_NAME"];
 const KVUri = "https://" + keyVaultName + ".vault.azure.net";
 
 const credential = new DefaultAzureCredential();
-const client = new SecretClient(KVUri, credential);
+const client = new KeyClient(KVUri, credential);
 ```
 
-### <a name="save-a-secret"></a>Titkos kód mentése
+### <a name="save-a-key"></a>Kulcs mentése
 
-Most, hogy az alkalmazás hitelesítése megtörtént, a [setSecret metódussal](/javascript/api/@azure/keyvault-secrets/secretclient?#setsecret-string--string--setsecretoptions-) a kulcstartóba helyezheti a titkos kulcsot – ebben a példában a "keresési kifejezésként" nevet kell használnia.  
+Most, hogy az alkalmazás hitelesítése megtörtént, elhelyezheti a kulcstartót a [createKey metódus](/javascript/api/@azure/keyvault-keys/keyclient?#createKey_string__KeyType__CreateKeyOptions_) használatával, a metódus paraméterei elfogadják a kulcs nevét és a [kulcs típusát](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keytype) .
 
 ```javascript
-await client.setSecret(secretName, secretValue);
+await client.createKey(keyName, keyType);
 ```
 
-### <a name="retrieve-a-secret"></a>Titkos kód beolvasása
+### <a name="retrieve-a-key"></a>Kulcs lekérése
 
-Most már lekérheti a korábban beállított értéket a [getSecret metódussal](/javascript/api/@azure/keyvault-secrets/secretclient?#getsecret-string--getsecretoptions-).
+Most már lekérheti a korábban beállított értéket a [getKey metódussal](/javascript/api/@azure/keyvault-keys/keyclient?#getKey_string__GetKeyOptions_).
 
 ```javascript
-const retrievedSecret = await client.getSecret(secretName);
+const retrievedKey = await client.getKey(keyName);
  ```
 
-A titkos kód most már mentve van `retrievedSecret.value` .
+### <a name="delete-a-key"></a>Kulcs törlése
 
-### <a name="delete-a-secret"></a>Titkos kulcs törlése
-
-Végül törölje és ürítse ki a titkos kulcsot a Key vaultból a [beginDeleteSecret](https://docs.microsoft.com/javascript/api/@azure/keyvault-secrets/secretclient?#beginDeleteSecret_string__BeginDeleteSecretOptions_) és a [purgeDeletedSecret](https://docs.microsoft.com/javascript/api/@azure/keyvault-secrets/secretclient?#purgeDeletedSecret_string__PurgeDeletedSecretOptions_) metódussal.
+Végül törölje és ürítse ki a kulcsot a Key vaultból a [beginDeleteKey](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keyclient?#beginDeleteKey_string__BeginDeleteKeyOptions_) és a [purgeDeletedKey](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keyclient?#purgeDeletedKey_string__PurgeDeletedKeyOptions_) metódussal.
 
 ```javascript
-const deletePoller = await client.beginDeleteSecret(secretName);
+const deletePoller = await client.beginDeleteKey(keyName);
 await deletePoller.pollUntilDone();
-await client.purgeDeletedSecret(secretName);
+await client.purgeDeletedKey(keyName);
 ```
 
 ## <a name="sample-code"></a>Mintakód
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");
-const { SecretClient } = require("@azure/keyvault-secrets");
+const { KeyClient } = require("@azure/keyvault-keys");
 
 const readline = require('readline');
 
@@ -220,33 +218,28 @@ async function main() {
   const KVUri = "https://" + keyVaultName + ".vault.azure.net";
 
   const credential = new DefaultAzureCredential();
-  const client = new SecretClient(KVUri, credential);
+  const client = new KeyClient(KVUri, credential);
 
-  const secretName = "mySecret";
-  var secretValue = await askQuestion("Input the value of your secret > ");
-
-  console.log("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
-  await client.setSecret(secretName, secretValue);
+  const keyName = "myKey";
+  
+  console.log("Creating a key in " + keyVaultName + " called '" + keyName + "` ...");
+  await client.createKey(keyName, "RSA");
 
   console.log("Done.");
 
-  console.log("Forgetting your secret.");
-  secretValue = "";
-  console.log("Your secret is '" + secretValue + "'.");
+  console.log("Retrieving your key from " + keyVaultName + ".");
 
-  console.log("Retrieving your secret from " + keyVaultName + ".");
+  const retrievedKey = await client.getKey(keyName);
 
-  const retrievedSecret = await client.getSecret(secretName);
+  console.log("Your key version is '" + retrievedKey.properties.version + "'.");
 
-  console.log("Your secret is '" + retrievedSecret.value + "'.");
-
-  console.log("Deleting your secret from " + keyVaultName + " ...");
-  const deletePoller = await client.beginDeleteSecret(secretName);
+  console.log("Deleting your key from " + keyVaultName + " ...");
+  const deletePoller = await client.beginDeleteKey(keyName);
   await deletePoller.pollUntilDone();
   console.log("Done.");
   
-  console.log("Purging your secret from {keyVaultName} ...");
-  await client.purgeDeletedSecret(secretName);
+  console.log("Purging your key from {keyVaultName} ...");
+  await client.purgeDeletedKey(keyName);
   
 }
 
@@ -256,35 +249,29 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 ## <a name="test-and-verify"></a>Tesztelés és ellenőrzés
 
-1. Az alkalmazás futtatásához hajtsa végre a következő parancsokat.
+Az alkalmazás futtatásához hajtsa végre a következő parancsokat.
 
-    ```azurecli
-    npm install
-    npm index.js
-    ```
+```azurecli
+npm install
+npm index.js
+```
 
-1. Ha a rendszer kéri, adjon meg egy titkos értéket. Például: mySecretPassword.
+Megjelenik a következő kimenet egy változata:
 
-    Megjelenik a következő kimenet egy változata:
-
-    ```azurecli
-    Input the value of your secret > mySecretPassword
-    Creating a secret in <your-unique-keyvault-name> called 'mySecret' with the value 'mySecretPassword' ... done.
-    Forgetting your secret.
-    Your secret is ''.
-    Retrieving your secret from <your-unique-keyvault-name>.
-    Your secret is 'mySecretPassword'.
-    Deleting your secret from <your-unique-keyvault-name> ... done.  
-    Purging your secret from <your-unique-keyvault-name> ... done.   
-    ```
-
+```azurecli
+Creating a key in <your-unique-keyvault-name> called 'myKey' ... done.
+Retrieving your key from mykeyvault.
+Your key version is '8532359bced24e4bb2525f2d2050738a'.
+Deleting your key from <your-unique-keyvault-name> ... done.  
+Purging your key from <your-unique-keyvault-name> ... done.   
+```
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy kulcstartót, egy titkos kulcsot, és beolvasta ezt a titkot. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy Key vaultot, tárolt egy kulcsot, és lekérte a kulcsot. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
 - [A Azure Key Vault áttekintése](../general/overview.md)
-- [Azure Key Vault titkok áttekintése](about-secrets.md)
+- [Azure Key Vault kulcsok áttekintésének](about-keys.md) beolvasása
 - [A Key vaulthoz való hozzáférés biztonságossá tétele](../general/secure-your-key-vault.md)
 - Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](../general/developers-guide.md)
 - [Azure Key Vault ajánlott eljárások](../general/best-practices.md) áttekintése

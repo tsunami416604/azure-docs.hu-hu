@@ -8,23 +8,23 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: aac85fdab157d581285af91c4c818258a5f1790b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124781"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780841"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált JavaScript-függvények Azure Stream Analytics
  
-Az Azure Stream Analytics támogatja a JavaScript nyelven írt felhasználói függvényeket. A JavaScript által biztosított **karakterlánc** -, **regexp** -, **matematikai** , **Array** és **Date** metódusok gazdag készletével könnyebben hozhatók létre összetett adatátalakítások stream Analytics feladatokkal.
+Az Azure Stream Analytics támogatja a JavaScript nyelven írt felhasználói függvényeket. A JavaScript által biztosított **karakterlánc**-, **regexp**-, **matematikai**, **Array** és **Date** metódusok gazdag készletével könnyebben hozhatók létre összetett adatátalakítások stream Analytics feladatokkal.
 
 ## <a name="overview"></a>Áttekintés
 
 A felhasználó által definiált JavaScript-függvények olyan állapot nélküli, csak számítási skaláris függvényeket támogatnak, amelyek nem igényelnek külső kapcsolatot. Egy függvény visszaadott értéke csak skaláris (egyetlen) érték lehet. Miután hozzáadott egy felhasználói JavaScript-függvényt egy feladathoz, bárhol használhatja a függvényt a lekérdezésben, egy beépített skaláris függvényhez hasonlóan.
 
 Az alábbiakban bemutatunk néhány forgatókönyvet, amelyekben hasznosnak találhatja a felhasználói JavaScript-függvényeket:
-* Reguláriskifejezés-függvényeket (például: **Regexp_Replace()** és **Regexp_Extract()** ) tartalmazó sztringek elemzése és módosítása.
+* Reguláriskifejezés-függvényeket (például: **Regexp_Replace()** és **Regexp_Extract()**) tartalmazó sztringek elemzése és módosítása.
 * Adatok dekódolása és kódolása, például bináris adatok átalakítása hexadecimális adatokká.
 * Matematikai-számítások végrehajtása JavaScript **matematikai** függvényekkel
 * Tömbbeli műveletek, például a rendezés, a csatlakozás, a keresés és a kitöltés
@@ -186,7 +186,36 @@ FROM
     input A
 ```
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="tolocalestring"></a>toLocaleString()
+A JavaScript **toLocaleString** metódusa használható olyan nyelvre érzékeny karakterlánc visszaadására, amely a metódus hívásának dátumát és időpontját jelöli.
+Annak ellenére, hogy az Azure stream-Analytics csak az UTC időpontot fogadja el a rendszer időbélyegzője, ezzel a módszerrel a rendszer időbélyegét más területi beállításokra és időzónára is használhatja.
+Ez a módszer ugyanazt a megvalósítási viselkedést követi, mint az Internet Explorerben.
+
+**Felhasználói JavaScript-függvény definíciója:**
+
+```javascript
+function main(datetime){
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return event.toLocaleDateString('de-DE', options);
+}
+```
+
+**Minta lekérdezés: dátum és idő beírása bemeneti értékként**
+```SQL
+SELECT
+    udf.toLocaleString(input.datetime) as localeString
+INTO
+    output
+FROM
+    input
+```
+
+A lekérdezés kimenete a megadott beállításokkal megjelenő, **de-de** dátum és idő közötti dátumot fogja tartalmazni.
+```
+Samstag, 28. Dezember 2019
+```
+
+## <a name="next-steps"></a>További lépések
 
 * [UDF Machine Learning](./machine-learning-udf.md)
 * [C# UDF](./stream-analytics-edge-csharp-udf-methods.md)

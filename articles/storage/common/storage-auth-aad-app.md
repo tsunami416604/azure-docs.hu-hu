@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/21/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6dacb1cd910c6569d94f365b34a15494dde70a4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6d6a152096ce4e16849542c26d1c7a675a972b89
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787686"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779073"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Jogkivonat beszerzése az Azure AD-ből az ügyfélalkalmazástól érkező kérések engedélyezéséhez
 
@@ -35,18 +35,18 @@ Egy rendszerbiztonsági tag Azure Storage-alkalmazásból történő hitelesít�
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Alkalmazás regisztrálása Azure AD-Bérlővel
 
-Az Azure AD-nek a tárolási erőforrásokhoz való hozzáférés engedélyezésére való használatának első lépéseként regisztrálja az ügyfélalkalmazás egy Azure AD-Bérlővel a [Azure Portal](https://portal.azure.com). Az ügyfélalkalmazás regisztrálása során információkat nyújt az alkalmazásról az Azure AD-hez. Az Azure AD egy ügyfél-azonosítót (más néven *alkalmazás-azonosítót* ) biztosít, amelyet az alkalmazás az Azure ad-vel való hozzárendeléséhez használ futásidőben. Az ügyfél-AZONOSÍTÓval kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directoryban](../../active-directory/develop/app-objects-and-service-principals.md). Az Azure Storage-alkalmazás regisztrálásához kövesse a rövid útmutató [: alkalmazás regisztrálása a Microsoft Identity platformon](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)című témakörben ismertetett lépéseket. 
+Az Azure AD-nek a tárolási erőforrásokhoz való hozzáférés engedélyezésére való használatának első lépéseként regisztrálja az ügyfélalkalmazás egy Azure AD-Bérlővel a [Azure Portal](https://portal.azure.com). Az ügyfélalkalmazás regisztrálása során információkat nyújt az alkalmazásról az Azure AD-hez. Az Azure AD egy ügyfél-azonosítót (más néven *alkalmazás-azonosítót*) biztosít, amelyet az alkalmazás az Azure ad-vel való hozzárendeléséhez használ futásidőben. Az ügyfél-AZONOSÍTÓval kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directoryban](../../active-directory/develop/app-objects-and-service-principals.md). Az Azure Storage-alkalmazás regisztrálásához kövesse a rövid útmutató [: alkalmazás regisztrálása a Microsoft Identity platformon](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)című témakörben ismertetett lépéseket. 
 
 Az alábbi képen a webalkalmazások regisztrálásának általános beállításai láthatók. Vegye figyelembe, hogy ebben a példában az átirányítási URI úgy van beállítva, hogy `http://localhost:5000/signin-oidc` tesztelje a minta alkalmazást a fejlesztési környezetben. Ezt a beállítást később is módosíthatja a regisztrált alkalmazás **hitelesítési** beállítása alatt a Azure Portalban:
 
 :::image type="content" source="media/storage-auth-aad-app/app-registration.png" alt-text="A Storage-alkalmazás Azure AD-vel való regisztrálását bemutató képernyőkép":::
 
 > [!NOTE]
-> Ha natív alkalmazásként regisztrálja az alkalmazást, megadhat bármely érvényes URI-t az **átirányítási URI** -hoz. Natív alkalmazások esetén ennek az értéknek nem kell valódi URL-címnek lennie. Webalkalmazások esetén az átirányítási URI azonosítónak érvényes URI-nak kell lennie, mert meghatározza azt az URL-címet, amelyhez a tokenek meg vannak határozva.
+> Ha natív alkalmazásként regisztrálja az alkalmazást, megadhat bármely érvényes URI-t az **átirányítási URI**-hoz. Natív alkalmazások esetén ennek az értéknek nem kell valódi URL-címnek lennie. Webalkalmazások esetén az átirányítási URI azonosítónak érvényes URI-nak kell lennie, mert meghatározza azt az URL-címet, amelyhez a tokenek meg vannak határozva.
 
 Az alkalmazás regisztrálását követően az alkalmazás-azonosító (vagy ügyfél-azonosító) a **Beállítások** területen jelenik meg:
 
-:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="A Storage-alkalmazás Azure AD-vel való regisztrálását bemutató képernyőkép":::
+:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="Az ügyfél-azonosítót ábrázoló képernyőkép":::
 
 Az alkalmazások Azure AD-vel való regisztrálásával kapcsolatos további információkért lásd: [alkalmazások integrálása a Azure Active Directorysal](../../active-directory/develop/quickstart-register-app.md).
 
@@ -56,16 +56,16 @@ Ezután adja meg az alkalmazás engedélyeit az Azure Storage API-k meghívásá
 
 1. A regisztrált alkalmazás **API-engedélyei** lapon válassza az **engedély hozzáadása** elemet.
 1. A **Microsoft API** -k lapon válassza az **Azure Storage** lehetőséget.
-1. A **kérelem API-engedélyei** ablaktáblán, hogy **milyen típusú engedélyek szükségesek az alkalmazáshoz?** , figyelje meg, hogy a rendelkezésre álló engedélyek típusa **delegált engedély** . Ez a beállítás alapértelmezés szerint be van jelölve.
+1. A **kérelem API-engedélyei** ablaktáblán, hogy **milyen típusú engedélyek szükségesek az alkalmazáshoz?**, figyelje meg, hogy a rendelkezésre álló engedélyek típusa **delegált engedély**. Ez a beállítás alapértelmezés szerint be van jelölve.
 1. Az **engedélyek** területen jelölje be a **user_impersonation** melletti jelölőnégyzetet, majd kattintson az **engedélyek hozzáadása** gombra.
 
-    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="A Storage-alkalmazás Azure AD-vel való regisztrálását bemutató képernyőkép":::
+    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="A Storage API engedélyeit ábrázoló képernyőkép":::
 
 1. Ezután adja meg a rendszergazdai jóváhagyást ezekhez az engedélyekhez a **rendszergazdai jóváhagyás megadása az alapértelmezett címtárhoz** lehetőségre kattintva.
 
 Az **API-engedélyek** ablaktábla mostantól azt mutatja, hogy a regisztrált Azure ad-alkalmazás rendelkezik hozzáféréssel a Microsoft Graph és az Azure Storage API-khoz, és ez a beleegyező engedély az alapértelmezett címtárhoz van megadva. Az Azure AD-vel való első regisztráláskor az engedélyek Microsoft Graph automatikusan megadhatók.
 
-:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="A Storage-alkalmazás Azure AD-vel való regisztrálását bemutató képernyőkép":::
+:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="A regisztrált alkalmazás API-engedélyeinek megjelenítését bemutató képernyőkép":::
 
 ### <a name="create-a-client-secret"></a>Ügyfél titkos kulcsának létrehozása
 
@@ -87,7 +87,7 @@ Következő lépésként konfigurálja az alkalmazás implicit engedélyezési f
 1. A **kezelés** szakaszban válassza ki a **hitelesítési** beállítást.
 1. Az **implicit támogatás** szakaszban jelölje be a jelölőnégyzetet az azonosító tokenek engedélyezéséhez, ahogy az az alábbi képen is látható:
 
-    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="A Storage-alkalmazás Azure AD-vel való regisztrálását bemutató képernyőkép":::
+    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="Az implicit engedélyezési folyamat beállításainak engedélyezését bemutató képernyőkép":::
 
 ## <a name="client-libraries-for-token-acquisition"></a>Az ügyfél kódtárai a tokenek beszerzéséhez
 
@@ -131,6 +131,8 @@ Ezután explicit módon rendelje hozzá a **Storage blob-adatközreműködői** 
 
 > [!NOTE]
 > Azure Storage-fiók létrehozásakor nem rendel automatikusan engedélyeket az Azure AD-n keresztüli adateléréshez. Explicit módon hozzá kell rendelnie egy Azure-szerepkört az Azure Storage-hoz. Az előfizetés, az erőforráscsoport, a Storage-fiók, a tároló vagy a várólista szintjén rendelhető hozzá.
+>
+> Az adathozzáféréshez szükséges szerepkör kiosztása előtt a Storage-fiókban lévő adataihoz a Azure Portal keresztül férhet hozzá, mivel a Azure Portal az adathozzáféréshez is használhatja a fiók kulcsát. További információ: [a blob-adatokhoz való hozzáférés engedélyezésének kiválasztása a Azure Portalban](../blobs/authorize-data-operations-portal.md).
 
 ### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>Webalkalmazás létrehozása, amely engedélyezi a blob Storage-hoz való hozzáférést az Azure AD-vel
 
@@ -288,7 +290,7 @@ A *HomeController.cs* fájlban frissítse a blokk blobra hivatkozó URI-t a Stor
 https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Microsoft-identitásplatform](../../active-directory/develop/index.yml)
 - [A tárolási és a hozzáférési jogosultságok kezelése az Azure RBAC](./storage-auth-aad-rbac-portal.md)

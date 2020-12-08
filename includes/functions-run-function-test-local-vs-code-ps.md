@@ -4,18 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: ca8da227c97a44abe14354a5c530d508ce357884
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a5c113849296275432acf1f5603377a1909a2c04
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88703906"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842368"
 ---
 ## <a name="run-the-function-locally"></a>A függvény helyi futtatása
 
 A Azure Functions Core Tools a Visual Studio Code-ban integrálva lehetővé teszi egy Azure Functions-projekt helyi futtatását és hibakeresését. A Visual Studio Code-ban való hibakereséssel kapcsolatos részletekért lásd: a [PowerShell Azure functions helyi hibakeresése](../articles/azure-functions/functions-debug-powershell-local.md). 
-
-1. Nyomja le az F5 billentyűt a Function app projekt elindításához. A Core Tools kimenete a **Terminal** (Terminál) panelen jelenik meg.
+1. A függvény meghívásához nyomja le az <kbd>F5</kbd> billentyűt a Function app projekt elindításához. A Core Tools kimenete a **Terminal** (Terminál) panelen jelenik meg. Ha a Windowsban nem fut a probléma, győződjön meg arról, hogy a Visual Studio Code alapértelmezett terminálja nem **WSL bash**.
 
 1. A **Terminal** (Terminál) panelen másolja a vágólapra a HTTP által indított függvény URL-végpontját.
 

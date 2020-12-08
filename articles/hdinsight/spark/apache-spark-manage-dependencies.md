@@ -8,27 +8,27 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: dafb4485ae9b10d89fa36bd790dcf3a799054de3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2cd50b1b35b87b1a11301ddc36ac355bef20dc4
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90064135"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780616"
 ---
 # <a name="manage-spark-application-dependencies"></a>Spark-alkalmazások függőségeinek kezelése
 
 Ebből a cikkből megtudhatja, hogyan kezelheti a HDInsight-on futó Spark-alkalmazások függőségeit. A PySpark a Spark-alkalmazás és a fürt hatóköre is kiterjed.
 
 A rövid hivatkozások használatával ugorjon a szakaszra a felhasználói eset alapján:
-* [A Spark Job jar függőségeinek beállítása a Jupyter notebook használatával](#use-jupyter-notebook)
+* [Spark-feladatok jar-függőségeinek beállítása Jupyter Notebook használatával](#use-jupyter-notebook)
 * [Spark-feladatok jar-függőségeinek beállítása a use Azure Toolkit for IntelliJ használatával](#use-azure-toolkit-for-intellij)
 * [Jar-függőségek konfigurálása a Spark-fürthöz](#jar-libs-for-cluster)
 * [Jar-függőségek biztonságos kezelése](#safely-manage-jar-dependencies)
-* [A Spark-feladatok Python-csomagjainak beállítása a Jupyter notebook használatával](#use-jupyter-notebook-1)
+* [A Spark-feladatok Python-csomagjainak beállítása Jupyter Notebook használatával](#use-jupyter-notebook-1)
 * [Python-csomagok biztonságos kezelése a Spark-fürthöz](#python-packages-for-cluster)
 
 ## <a name="jar-libs-for-one-spark-job"></a>Jar könyvtárak egy Spark-feladatokhoz
-### <a name="use-jupyter-notebook"></a>Jupyter notebook használata
+### <a name="use-jupyter-notebook"></a>Jupyter Notebook használata
 Ha egy Spark-munkamenet a Scala-ben Jupyter Notebook a Spark kernelen, a következő csomagokat állíthatja be:
 
 * [Maven-tárház](https://search.maven.org/)vagy Közösség által készített csomagok a [Spark-csomagokban](https://spark-packages.org/).
@@ -42,7 +42,7 @@ A Magic használatával úgy `%%configure` konfigurálhatja a jegyzetfüzetet, h
 
 **Minta a Maven adattárból vagy Spark-csomagokból származó csomagokhoz**
 
-Miután megtalálta a csomagot a Maven adattárból, Gyűjtse össze a **GroupID**, a **ArtifactId**és a **verzió**értékeit. Összefűzi a három értéket kettősponttal elválasztva (**:**).
+Miután megtalálta a csomagot a Maven adattárból, Gyűjtse össze a **GroupID**, a **ArtifactId** és a **verzió** értékeit. Összefűzi a három értéket kettősponttal elválasztva (**:**).
 
    ![Csomag sémájának összefűzése](./media/apache-spark-manage-dependencies/spark-package-schema.png "Csomag sémájának összefűzése")
 
@@ -102,8 +102,8 @@ A lépéseket [parancsfájl-műveletek](../hdinsight-hadoop-customize-cluster-li
 A HDInsight-fürt beépített jar-függőségekkel rendelkezik, és ezek a jar-verziók frissítései időről időre megtörténnek. Ha el szeretné kerülni a verziók ütközését a beépített tégelyek és a hivatkozott tégelyek között, érdemes megfontolnia [az alkalmazás függőségeinek árnyékolását](./safely-manage-jar-dependency.md).
 
 ## <a name="python-packages-for-one-spark-job"></a>Python-csomagok egy Spark-feladatokhoz
-### <a name="use-jupyter-notebook"></a>Jupyter notebook használata
-A HDInsight Jupyter notebook PySpark kernele nem támogatja a Python-csomagok telepítését közvetlenül a PyPi vagy az anaconda Package adattárból. Ha rendelkezik `.zip` , `.egg` vagy függőségekkel rendelkezik, `.py` és egy Spark-munkamenetre szeretne hivatkozni, kövesse az alábbi lépéseket:
+### <a name="use-jupyter-notebook"></a>Jupyter Notebook használata
+A HDInsight Jupyter Notebook PySpark kernel nem támogatja a Python-csomagok telepítését közvetlenül a PyPi vagy az anaconda Package adattárból. Ha rendelkezik `.zip` , `.egg` vagy függőségekkel rendelkezik, `.py` és egy Spark-munkamenetre szeretne hivatkozni, kövesse az alábbi lépéseket:
 
 1. Futtassa az alábbi minta parancsfájl-műveleteket a másoláshoz `.zip` , `.egg` illetve `.py` az elsődleges tárolóból `wasb://mycontainer@mystorageaccount.blob.core.windows.net/libs/*` a fürt helyi fájlrendszerbe való `/usr/libs/pylibs` másolásához. Erre a lépésre azért van szükség, mert a Linux `:` a keresési útvonalak listáját választja, de a HDInsight csak olyan sémákat támogatnak, mint például a tárolási útvonalak `wasb://` . A távoli tároló elérési útja nem fog megfelelően működni a használatakor `sys.path.insert` .
 

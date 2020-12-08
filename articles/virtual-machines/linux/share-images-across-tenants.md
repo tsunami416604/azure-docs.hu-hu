@@ -1,6 +1,6 @@
 ---
 title: Katalógusbeli rendszerképek megosztása a bérlők között
-description: Ismerje meg, hogyan oszthatja meg a virtuálisgép-rendszerképeket az Azure-bérlők között a megosztott képtárak használatával Linux-példákkal.
+description: Ismerje meg, hogyan oszthatja meg a virtuálisgép-lemezképeket az Azure-bérlők között megosztott képtárakkal az Azure CLI használatával.
 author: axayjo
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -10,14 +10,14 @@ ms.date: 05/04/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5e71f09179d414be84896a49a66480f19a0665d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f0192a6eb60c72c9f7ac605db492f4e5f97b76ed
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843587"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779260"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants---linux-examples"></a>Katalógusbeli virtuálisgép-rendszerképek megosztása Azure-bérlők között – linuxos példák
+# <a name="share-gallery-vm-images-across-azure-tenants-using-the-azure-cli"></a>Katalógusbeli virtuálisgép-lemezképek megosztása Azure-bérlők között az Azure CLI használatával
 
 A megosztott képtárak lehetővé teszik a képek megosztását az Azure RBAC használatával. Az Azure RBAC segítségével megoszthatja a bérlőn belüli képeket, és akár a bérlőn kívüli személyeket is. További információ erről az egyszerű megosztási lehetőségről: a [gyűjtemény megosztása](./shared-images-portal.md#share-the-gallery).
 
@@ -54,6 +54,6 @@ az vm create \
   --generate-ssh-keys
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha bármilyen problémába ütközik, a [megosztott képtárakat is elháríthatja](../troubleshooting-shared-images.md).

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa4b625afb641209d3920c8663ed810ee27e1ad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 427cf2614f81a086dcb174db06cd636df4876c7e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89228647"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778495"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Mit jelent az Azure Active Directory monitorozása?
 
@@ -39,6 +39,22 @@ A naplókat jelenleg a következő helyekre irányíthatja:
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Az Azure AD jelentéskészítési és figyelési licencelése és előfeltételei
+
+Az Azure AD bejelentkezési naplóihoz való hozzáféréshez szüksége lesz egy prémium szintű Azure AD-licencre.
+
+Részletes funkció-és licencelési információk a [Azure Active Directory díjszabási útmutatójában](https://azure.microsoft.com/pricing/details/active-directory/).
+
+Az Azure AD-figyelés és-jelentéskészítés üzembe helyezéséhez szüksége lesz egy olyan felhasználóra, aki az Azure AD-bérlő globális rendszergazdai vagy biztonsági rendszergazdája.
+
+A naplózási adatai végső céljától függően a következők egyikére lesz szüksége:
+
+* Egy Azure Storage-fiók, amelyen ListKeys jogosultsággal rendelkezik. Azt javasoljuk, hogy általános tárfiókot használjon, ne Blob Storage-fiókot. A tárolás díjszabásával kapcsolatban lásd az [Azure Storage-díjkalkulátort](https://azure.microsoft.com/pricing/calculator/?service=storage).
+
+* Egy Azure Event Hubs névtér, amely integrálható a harmadik féltől származó SIEM-megoldásokkal.
+
+* Egy Azure Log Analytics-munkaterület, amely naplókat küld Azure Monitor naplókba.
 
 ## <a name="diagnostic-settings-configuration"></a>Diagnosztikai beállítások konfigurálása
 

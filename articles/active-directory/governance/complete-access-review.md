@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/07/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23266043d5efd65a4e6e79dd515a54a2c321b077
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6491de18e65c5071ac0972e7ff49d1253cbd402
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87798834"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779546"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>A csoportok és alkalmazások hozzáférési felülvizsgálatának befejezése az Azure AD hozzáférési felülvizsgálatokban
 
@@ -42,15 +42,23 @@ Nyomon követheti a folyamat előrehaladását, mivel a véleményezők befejezi
 
 1. Jelentkezzen be a Azure Portalba, és nyissa meg az [Identity irányításáért lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-1. A bal oldali menüben kattintson a **hozzáférési felülvizsgálatok**elemre.
+1. A bal oldali menüben kattintson a **hozzáférési felülvizsgálatok** elemre.
 
 1. A listában kattintson a hozzáférési felülvizsgálatra.
 
-    A hozzáférési felülvizsgálatok egy sorozatának megtekintéséhez navigáljon a hozzáférési felülvizsgálathoz, és megtekintheti az ütemezett felülvizsgálatok közelgő eseményeit.
+    A hozzáférési felülvizsgálatok jövőbeli példányainak megtekintéséhez navigáljon a hozzáférési felülvizsgálathoz, és válassza az ütemezett felülvizsgálatok lehetőséget.
 
     Az **Áttekintés** oldalon láthatja a folyamatot. A címtárban nem módosulnak hozzáférési jogosultságok, amíg a felülvizsgálat be nem fejeződik.
 
     ![Hozzáférési felülvizsgálatok állapota](./media/complete-access-review/overview-progress.png)
+    
+    Ha olyan hozzáférési felülvizsgálatot tekint meg, amely Microsoft 365 csoportokban (előzetes verzió) keresztül ellenőrzi a vendég hozzáférését, az áttekintő panel felsorolja az egyes csoportokat a felülvizsgálatban.  
+
+   ![vendég hozzáférésének áttekintése Microsoft 365 csoportok között](./media/complete-access-review/review-guest-access-across-365-groups.png)
+
+    Kattintson egy csoportra, hogy megtekintse a csoport véleményezésének előrehaladását.
+
+   ![a vendég hozzáférésének áttekintése Microsoft 365-csoportok között részletesen](./media/complete-access-review/progress-group-review.png)
 
 1. Ha le szeretné állítani egy hozzáférési felülvizsgálatot, mielőtt elérte az ütemezett befejezési dátumot, kattintson a **Leállítás** gombra.
 
@@ -60,13 +68,13 @@ Nyomon követheti a folyamat előrehaladását, mivel a véleményezők befejezi
 
 ## <a name="apply-the-changes"></a>A módosítások alkalmazása
 
-Ha az **eredmények az erőforráshoz való automatikus alkalmazása** engedélyezve lett, és a **befejezési beállításokban**megadott beállítások alapján, az automatikus alkalmazás a felülvizsgálat befejezési dátuma vagy a felülvizsgálat manuális leállítása után lesz végrehajtva.
+Ha az **eredmények az erőforráshoz való automatikus alkalmazása** engedélyezve lett, és a **befejezési beállításokban** megadott beállítások alapján, az automatikus alkalmazás a felülvizsgálat befejezési dátuma vagy a felülvizsgálat manuális leállítása után lesz végrehajtva.
 
-Ha az **eredmények az erőforráshoz való automatikus alkalmazása** nincs engedélyezve a felülvizsgálathoz, kattintson az **alkalmaz** gombra a módosítások manuális alkalmazásához. Ha a felülvizsgálat során a felhasználó hozzáférése megtagadva, az **alkalmaz**gombra kattintva az Azure ad eltávolítja a tagságot vagy az alkalmazás-hozzárendelést.
+Ha az **eredmények az erőforráshoz való automatikus alkalmazása** nincs engedélyezve a felülvizsgálathoz, kattintson az **alkalmaz** gombra a módosítások manuális alkalmazásához. Ha a felülvizsgálat során a felhasználó hozzáférése megtagadva, az **alkalmaz** gombra kattintva az Azure ad eltávolítja a tagságot vagy az alkalmazás-hozzárendelést.
 
 ![Hozzáférés-felülvizsgálati módosítások alkalmazása](./media/complete-access-review/apply-changes.png)
 
-A felülvizsgálat állapota a **befejezéstől** kezdve a **közbenső állapotok**szerint változik, például az **alkalmazás** és végül az állapot érvényesítése. A megtagadott felhasználókat, ha vannak ilyenek, a csoporttagság vagy az alkalmazás-hozzárendelésből néhány perc múlva el kell távolítani.
+A felülvizsgálat állapota a **befejezéstől** kezdve a **közbenső állapotok** szerint változik, például az **alkalmazás** és végül az állapot érvényesítése. A megtagadott felhasználókat, ha vannak ilyenek, a csoporttagság vagy az alkalmazás-hozzárendelésből néhány perc múlva el kell távolítani.
 
 A konfigurált automatikus alkalmazás-ellenőrzés vagy az **alkalmazás** kiválasztása nem befolyásolja a helyszíni címtárból vagy dinamikus csoportból származó csoportra vonatkozó hatást. Ha módosítani kíván egy olyan csoportot, amely a helyszínen található, töltse le az eredményeket, és alkalmazza ezeket a módosításokat a csoportnak a címtárban való megjelenítésére.
 
@@ -74,11 +82,11 @@ A konfigurált automatikus alkalmazás-ellenőrzés vagy az **alkalmazás** kiv�
 
 Egy egyszeri hozzáférési felülvizsgálat eredményeinek megtekintéséhez kattintson a **Results (eredmények** ) lapra. Ha csak egy felhasználó hozzáférését szeretné megtekinteni, a keresőmezőbe írja be annak a felhasználónak a megjelenítendő nevét vagy egyszerű felhasználónevét, amelynek a hozzáférését felülvizsgálták.
 
-![Hozzáférési felülvizsgálat eredményeinek beolvasása](./media/complete-access-review/retrieve-results.png)
+![Hozzáférési felülvizsgálat eredményeinek beolvasása](./media/complete-access-review/retrieve-results.png) 
 
 Az ismétlődő aktív hozzáférési felülvizsgálat előrehaladásának megtekintéséhez kattintson az **eredmények** lapra.
 
-Ha meg szeretné tekinteni az ismétlődő hozzáférési felülvizsgálat befejezett példányának eredményeit, kattintson az **Előzmények**megtekintése elemre, majd válassza ki az adott példányt a befejezett hozzáférés-felülvizsgálati példányok listájáról a példány kezdő és befejező dátuma alapján. A példány eredményei az **eredmények** lapról szerezhetők be.
+Ha meg szeretné tekinteni az ismétlődő hozzáférési felülvizsgálat befejezett példányának eredményeit, kattintson az **Előzmények** megtekintése elemre, majd válassza ki az adott példányt a befejezett hozzáférés-felülvizsgálati példányok listájáról a példány kezdő és befejező dátuma alapján. A példány eredményei az **eredmények** lapról szerezhetők be.
 
 A hozzáférési felülvizsgálat összes eredményének lekéréséhez kattintson a **Letöltés** gombra. Az eredményül kapott CSV-fájlt az Excelben vagy más, UTF-8 kódolású CSV-fájlokat megnyitó programokban lehet megtekinteni.
 
@@ -86,7 +94,7 @@ A hozzáférési felülvizsgálat összes eredményének lekéréséhez kattints
 
  Alapértelmezés szerint a törölt felhasználók 30 napig töröltek maradnak az Azure AD-ban, amely idő alatt szükség esetén egy rendszergazda visszaállíthatja őket.  A felhasználók 30 nap után véglegesen törlődnek.  Emellett a Azure Active Directory portál használatával a globális rendszergazda explicit módon [véglegesen törölheti a nemrég törölt felhasználókat](../fundamentals/active-directory-users-restore.md) az adott időszak elérésekor.  Egy felhasználó végleges törlése után a felhasználó későbbi adatai el lesznek távolítva az aktív hozzáférési felülvizsgálatokból.  A törölt felhasználókkal kapcsolatos naplózási információk az auditnaplóban maradnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal](manage-user-access-with-access-reviews.md)
 - [Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal](manage-guest-access-with-access-reviews.md)

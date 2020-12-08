@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 12/07/2020
 ms.custom: dpalled
-ms.openlocfilehash: 3460cd8a88733ede041f6c0635ba40797675ed03
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0f7ac9844bfe7eac7094d3b7fdf653e07f236599
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025327"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780824"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Hosszú adattípusok támogatásának hozzáadása a Azure Time Series Insights Gen2
 
@@ -240,6 +240,6 @@ Ha az 1 – 3. eset által érintett és egyéni alkalmazásokat készít, friss
 
 Ha nagy mennyiségű tulajdonsággal rendelkező meleg áruházbeli felhasználó, és úgy gondolja, hogy ez a változás az 1 000-es meleg áruházbeli tulajdonság-név korlátot fogja leküldeni a környezetbe, küldjön támogatási jegyet a Azure Portal és megemlítjük ezt a kommunikációt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [támogatott adattípusok](concepts-supported-data-types.md)teljes listájának megtekintése.

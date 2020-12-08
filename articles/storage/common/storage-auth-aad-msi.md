@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 8e9013db93f5cd67448b5af8c415db0862e5d332
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ccc545b15f16879582c671b082cab40f6b11aa08
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842719"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778971"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával
 
@@ -50,6 +50,11 @@ A .NET-hez készült Azure Identity ügyféloldali kódtáraval kapcsolatos tov�
 
 Ha egy Azure AD rendszerbiztonsági tag megpróbál hozzáférni a blob-vagy üzenetsor-adatszolgáltatáshoz, akkor a rendszerbiztonsági tag engedélyekkel kell rendelkeznie az erőforráshoz. Azt jelzi, hogy a rendszerbiztonsági tag felügyelt identitás-e az Azure-ban vagy egy olyan Azure AD-felhasználói fiókban, amely kódot futtat a fejlesztési környezetben, a rendszerbiztonsági tag számára olyan Azure-szerepkört kell hozzárendelni, amely hozzáférést biztosít az Azure Storage-beli blob vagy üzenetsor Az engedélyek Azure RBAC való hozzárendelésével kapcsolatos információkért tekintse meg az Azure [-blobok és-várólisták hozzáférésének engedélyezése az Azure-beli blobokhoz és-várólistákhoz Azure Active Directory használatával](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)című szakaszt. **Assign Azure roles for access rights**
 
+> [!NOTE]
+> Azure Storage-fiók létrehozásakor nem rendel automatikusan engedélyeket az Azure AD-n keresztüli adateléréshez. Explicit módon hozzá kell rendelnie egy Azure-szerepkört az Azure Storage-hoz. Az előfizetés, az erőforráscsoport, a Storage-fiók, a tároló vagy a várólista szintjén rendelhető hozzá.
+>
+> Az adathozzáféréshez szükséges szerepkör kiosztása előtt a Storage-fiókban lévő adataihoz a Azure Portal keresztül férhet hozzá, mivel a Azure Portal az adathozzáféréshez is használhatja a fiók kulcsát. További információ: [a blob-adatokhoz való hozzáférés engedélyezésének kiválasztása a Azure Portalban](../blobs/authorize-data-operations-portal.md).
+
 ### <a name="authenticate-the-user-in-the-development-environment"></a>A felhasználó hitelesítése a fejlesztői környezetben
 
 Ha a kód a fejlesztési környezetben fut, a hitelesítés automatikusan kezelhető, vagy szükség lehet egy böngészőbeli bejelentkezésre, attól függően, hogy melyik eszközt használja. A Microsoft Visual Studio például támogatja az egyszeri bejelentkezést (SSO), így az aktív Azure AD-felhasználói fiók automatikusan használatos a hitelesítéshez. További információ az egyszeri bejelentkezésről: [egyszeri bejelentkezés az alkalmazásokba](../../active-directory/manage-apps/what-is-single-sign-on.md).
@@ -71,7 +76,7 @@ Az alábbi példa az Azure CLI-t használja egy új egyszerű szolgáltatásnév
 ```azurecli-interactive
 az ad sp create-for-rbac \
     --name <service-principal> \
-    --role "Storage Blob Data Reader" \
+    --role "Storage Blob Data Contributor" \
     --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
@@ -161,7 +166,7 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 > [!NOTE]
 > Az Azure AD-vel a blob-vagy üzenetsor-adatkérések engedélyezéséhez HTTPS protokollt kell használnia a kérelmekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A tárolási és az Azure RBAC hozzáférési jogosultságának kezelése](./storage-auth-aad-rbac-portal.md).
 - [Használja az Azure ad-t a Storage-alkalmazásokhoz](storage-auth-aad-app.md).

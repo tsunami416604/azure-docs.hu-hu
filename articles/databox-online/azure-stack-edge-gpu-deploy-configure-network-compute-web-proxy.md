@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/03/2020
+ms.date: 12/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: a6b72c9e6cc366d04937598f653f8ba887ce1b85
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
-ms.translationtype: HT
+ms.openlocfilehash: 640098e118db87214d7364132a5119e35cb94c0a
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952182"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778716"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: a Network for Azure Stack Edge Pro konfigurálása GPU-val
 
@@ -48,7 +48,7 @@ Az eszközhöz tartozó hálózat konfigurálásához kövesse az alábbi lépé
 
 1. Az eszköz helyi webes FELÜLETén nyissa meg az **első lépések** lapot. 
 
-2. A **hálózat** csempén válassza a **Konfigurálás**lehetőséget.  
+2. A **hálózat** csempén válassza a **Konfigurálás** lehetőséget.  
     
     ![Helyi webes felhasználói felület "hálózati beállítások" csempe](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-1.png)
 
@@ -100,7 +100,7 @@ Az alábbi lépéseket követve engedélyezheti a számítást és konfigurálha
 
     ![Számítási oldal a helyi felhasználói felületen 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
 
-1. A **hálózati beállítások** párbeszédpanelen válassza az **Engedélyezés**lehetőséget. Ha engedélyezi a számítást, a rendszer létrehoz egy virtuális kapcsolót az eszközön az adott hálózati adapteren. A virtuális kapcsolót a számítási infrastruktúra használja az eszközön. 
+1. A **hálózati beállítások** párbeszédpanelen válassza az **Engedélyezés** lehetőséget. Ha engedélyezi a számítást, a rendszer létrehoz egy virtuális kapcsolót az eszközön az adott hálózati adapteren. A virtuális kapcsolót a számítási infrastruktúra használja az eszközön. 
     
 1. **Kubernetes-csomópontok IP**-címeinek kiosztása. Ezek a statikus IP-címek a számítási virtuális géphez tartoznak.  
 
@@ -131,7 +131,7 @@ Az alábbi lépéseket követve engedélyezheti a számítást és konfigurálha
 Ez egy opcionális konfiguráció.
 
 > [!IMPORTANT]
-> * Ha engedélyezi a számítást, és IoT Edge modult használ a Azure Stack Edge Pro-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne a **none**értékre állítsa be. Az NTLM nem támogatott.
+> * Ha engedélyezi a számítást, és IoT Edge modult használ a Azure Stack Edge Pro-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne a **none** értékre állítsa be. Az NTLM nem támogatott.
 >* A proxy-Auto config (PAC) fájlok nem támogatottak. A PAC-fájlok azt határozzák meg, hogy a böngészők és más felhasználói ügynökök hogyan tudják automatikusan kiválasztani a megfelelő proxykiszolgálót (hozzáférési módszer) egy adott URL beolvasásához. Azok a proxyk, amelyek megpróbálják feltartóztatni és beolvasni az összes forgalmat (majd újra aláírni a saját tanúsítvánnyal), nem kompatibilisek, mert a proxy tanúsítványa nem megbízható. Általában az átlátszó proxyk jól működnek Azure Stack Edge Pro-val. Nem transzparens webes proxyk nem támogatottak.
 
 <!--1. Go to the **Get started** page in the local web UI of your device.
@@ -143,11 +143,11 @@ Ez egy opcionális konfiguráció.
 
     1. A **webproxy URL-címe** mezőbe írja be az URL-címet a következő formátumban: `http://host-IP address or FQDN:Port number` . A HTTPS URL-címek nem támogatottak.
 
-    2. A **hitelesítés**területen válassza a **nincs** vagy az **NTLM**lehetőséget. Ha engedélyezi a számítást, és IoT Edge modult használ a Azure Stack Edge Pro-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne állítsa be a **none**értékre. Az **NTLM** nem támogatott.
+    2. A **hitelesítés** területen válassza a **nincs** vagy az **NTLM** lehetőséget. Ha engedélyezi a számítást, és IoT Edge modult használ a Azure Stack Edge Pro-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne állítsa be a **none** értékre. Az **NTLM** nem támogatott.
 
     3. Ha hitelesítést használ, adjon meg egy felhasználónevet és egy jelszót.
 
-    4. A konfigurált Webproxy-beállítások érvényesítéséhez és alkalmazásához kattintson az **alkalmaz**gombra.
+    4. A konfigurált Webproxy-beállítások érvényesítéséhez és alkalmazásához kattintson az **alkalmaz** gombra.
     
    ![Helyi webes felhasználói felület "webproxy beállításai" 2. oldal](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
 

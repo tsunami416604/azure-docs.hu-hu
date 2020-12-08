@@ -10,16 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 9ea4ec748ca37f93e9711970b10746a009543d00
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c0253dc3c9dc029cd964fb32b148be1405e7fbad
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656598"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780178"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: OIDC-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben
 
 A Azure Active Directory (Azure AD) bérlőhöz hozzáadott alkalmazás egyszeri bejelentkezésének (SSO) beállításával megkezdheti az egyszerűsített felhasználói bejelentkezések használatát. Miután beállította az egyszeri bejelentkezést, a felhasználók Azure AD-beli hitelesítő adataikkal jelentkezhetnek be egy alkalmazásba. Az egyszeri bejelentkezést az Azure AD ingyenes kiadása tartalmazza.
+
+További információ a OIDC-alapú egyszeri bejelentkezésről: a [OIDC-alapú egyszeri bejelentkezés megismerése](configure-oidc-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,7 +54,7 @@ Egyszeri bejelentkezés beállítása egy alkalmazáshoz:
    > [!IMPORTANT]
     > Ha már rendelkezik előfizetéssel az alkalmazáshoz, akkor a felhasználói adatok érvényesítése és a bérlő/könyvtár adatai történnek. Ha az alkalmazás nem tudja ellenőrizni a felhasználót, akkor a rendszer átirányítja Önt az Application Service vagy a hiba oldalára.
 
-3. A sikeres hitelesítés után egy párbeszédpanel jelenik meg, amely a rendszergazdai jóváhagyást kéri. Válassza **a jóváhagyva lehetőséget a szervezet nevében** , majd válassza az **elfogadás** lehetőséget. 
+3. A sikeres hitelesítés után egy párbeszédpanel jelenik meg, amely a rendszergazdai jóváhagyást kéri. Válassza **a jóváhagyva lehetőséget a szervezet nevében** , majd válassza az **elfogadás** lehetőséget. A felhasználói és rendszergazdai engedélyekkel kapcsolatos további információkért lásd: [felhasználói és rendszergazdai jogosultságok megismerése](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent).
 
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Képernyőfelvétel: az alkalmazás beleegyezési képernyője." lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
@@ -62,12 +64,17 @@ Egyszeri bejelentkezés beállítása egy alkalmazáshoz:
 > [!TIP]
 > Az Graph API segítségével automatizálhatja az alkalmazások felügyeletét: az [alkalmazások kezelésének automatizálása Microsoft Graph API-val](/graph/application-saml-sso-configure-api).
 
+Itt talál egy videót a OIDC-alapú alkalmazások Azure AD-hez való hozzáadásával kapcsolatos további részletekért.
+
+OIDC-alapú alkalmazás hozzáadása Azure Active Directory
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a rövid útmutatóval, érdemes lehet törölni az alkalmazást a tesztelési bérlő tisztításához. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan törölhet egy alkalmazást.
 > [!div class="nextstepaction"]

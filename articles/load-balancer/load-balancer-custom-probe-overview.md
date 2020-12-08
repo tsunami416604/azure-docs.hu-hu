@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 605692d15a08246dd574b0724a550b4543a237a3
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: a008d7b26738b9552a7a43ab026391bd9afe0aa8
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695520"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780943"
 ---
 # <a name="load-balancer-health-probes"></a>A Load Balancer állapotmintái
 
@@ -66,7 +66,7 @@ A megadott időkorlát-és intervallum-értékek határozzák meg, hogy egy pél
 
 A viselkedést egy példával is illusztráljuk. Ha a mintavételi válaszok számát a 2 értékre, az intervallum pedig 5 másodpercre állította be, akkor ez azt jelenti, hogy a mintavételi időtúllépési hibákat 10 másodpercen belül meg kell figyelni.  Mivel a mintavétel elküldésének időpontja nincs szinkronizálva az alkalmazás állapotának megváltozásakor, a következő két forgatókönyv szerint lehet megkötni az időt:
 
-1. Ha az alkalmazás az első mintavétel előtt elindít egy időtúllépési mintavételi választ, az események észlelése 10 másodpercet vesz igénybe (2 x 5 másodpercenként), valamint az alkalmazás időtartamát, amely az első mintavétel megérkezése után időtúllépést jelez.  Feltételezzük, hogy az észlelés valamivel több mint 10 másodpercet vesz igénybe.
+1. Ha az alkalmazás az első mintavétel előtt elindít egy időtúllépési mintavételi választ, az események észlelése 10 másodpercet vesz igénybe (2 x 5 másodperc), valamint az alkalmazás időtartamát, amely az első mintavétel megérkezése után időtúllépést jelez.  Feltételezzük, hogy az észlelés valamivel több mint 10 másodpercet vesz igénybe.
 2. Ha az alkalmazás elindít egy időtúllépési mintavételi választ az első mintavétel megérkezése után, az események észlelése nem kezdődik el, amíg a következő mintavétel megérkezik (és időtúllépés esetén), plusz egy 10 másodpercet (2 x 5 másodperces intervallum).  Feltételezheti, hogy ez az észlelés 15 másodpercen belül eltarthat.
 
 Ebben a példában az észlelést követően a platform némi időt vesz igénybe, hogy reagáljon erre a változásra.  Ez a következőtől függ: 
@@ -260,7 +260,7 @@ Az alapszintű nyilvános Load Balancer a háttér-készletek alapján összesí
 - A HTTPS-mintavételek nem támogatják az ügyféltanúsítvány-alapú kölcsönös hitelesítést.
 - Ha a TCP-időbélyegek engedélyezve vannak, az állapot-mintavételek sikertelenek lesznek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További tudnivalók a [Standard Load Balancerről](./load-balancer-overview.md)
 - [Ismerkedés a nyilvános Load Balancer létrehozásával a Resource Managerben a PowerShell használatával](quickstart-load-balancer-standard-public-powershell.md)

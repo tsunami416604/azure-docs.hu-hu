@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: ef54c40715c874364beb188d8850a9ce953aa112
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 382c79cf77cb22d3cad1af41d6daa662fb00df4c
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552993"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781164"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>Adatforrások kezelése az Azure hatáskörébe (előzetes verzió)
 
@@ -28,6 +28,7 @@ Ebből a cikkből megtudhatja, hogyan regisztrálhat új adatforrásokat, hogyan
 * Azure Synapse Analytics (korábban SQL DW)
 * Azure Cosmos DB
 * Power BI
+* Teradata (előzetes verzió)
 
 ## <a name="register-a-new-source"></a>Új forrás regisztrálása
 
@@ -75,10 +76,10 @@ Gyűjtemények hierarchiájának létrehozásához rendeljen magasabb szintű gy
 
 A hierarchiában lévő források eltávolításához válassza a *nincs lehetőséget* a szülő számára. A nem fölérendelt források a Térkép nézet pontozott mezőjébe vannak csoportosítva, és a nyilak nem kapcsolódnak a szülőhöz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan regisztrálhat és vizsgálhat különféle adatforrásokat:
 
 * [Azure Data Lake Storage Gen 2](register-scan-adls-gen2.md)
-* [Power BI-bérlő](register-scan-power-bi-tenant.md)
+* [Power BI bérlő](register-scan-power-bi-tenant.md)
 * [Azure SQL Database](register-scan-azure-sql-database.md)

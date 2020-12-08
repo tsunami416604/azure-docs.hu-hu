@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 0c5b06fd14f526ca90b1b922be281af55ba00116
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 22d6cacc36363b17f9bc32d354982eb71974b31d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995216"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779753"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
@@ -116,6 +116,8 @@ Ezt a beleegyező felhasználói élményt az alkalmazás által kért engedély
 * Az alkalmazás csak az alkalmazás identitására jogosult. Például engedélyezheti az alkalmazásnak, hogy a bérlőben lévő felhasználók listáját olvassa el, függetlenül attól, hogy ki jelentkezett be az alkalmazásba.
 
 Bizonyos engedélyeket egy normál felhasználó is jóváhagyhat, míg mások a bérlői rendszergazda beleegyezését igénylik.
+
+Ha többet szeretne megtudni a felhasználói és rendszergazdai jogosultságokról, tekintse meg [a rendszergazdai beleegyező munkafolyamat konfigurálása](../manage-apps/configure-admin-consent-workflow.md)című témakört.
 
 ### <a name="admin-consent"></a>Rendszergazdai jóváhagyás
 

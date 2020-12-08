@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan telepítheti át a OCP GTM közös értékesít
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: keferna
-ms.author: keferna
-ms.date: 12/04/2020
-ms.openlocfilehash: 6af7095dbb57c5ceb17989b2d6106a42e1d23fb9
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+author: vamahtan
+ms.author: vamahtan
+ms.date: 12/07/2020
+ms.openlocfilehash: 6ad58283ad9078088f241a67426657eb7a538e10
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96772022"
+ms.locfileid: "96781130"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>A OCP GTM közös értékesítési megoldásainak áttelepítése a kereskedelmi piactérre
 
@@ -79,7 +79,8 @@ Akkor válassza ezt a lehetőséget, ha a megoldás már közzé van téve a ker
 1. Azonosítsa a meglévő ajánlatot.
     1. Válassza **ezt a megoldást szeretném egyesíteni a kereskedelmi piactér hasonló ajánlatával** (lásd a [fenti](#beginmigration) **művelethez szükséges műveletet** ).
     1. Az **1. művelet** lapon az élő kereskedelmi piactéren elérhető ajánlatok láthatók, hogy a OCP GTM-megoldás társítható. Ha rendelkezik ilyennel, válassza ki az élő ajánlatot a listából. Ha nem áll rendelkezésre a választható ajánlatok listája, adja meg Microsoft AppSource vagy az Azure Marketplace-ről az ügyfél felé irányuló címet (URL-címet).
-        [![Az egyesítési folyamat 1. művelet lapja.](media/co-sell-migrate/action-1-merge.png)](media/co-sell-migrate/action-1-merge.png#lightbox)    1. Válassza a **Folytatás** lehetőséget.
+        [![Az egyesítési folyamat 1. művelet lapja.](media/co-sell-migrate/action-1-merge.png)](media/co-sell-migrate/action-1-merge.png#lightbox)
+    1. Válassza a **Folytatás** lehetőséget.
 1. Az egyesítés igénylése.
     1. A **2. művelet** lapon megtekintheti, hogy az Ön által azonosított OCP-GTM megoldás egyesítését szeretné-e kérni. Az egyesítés igényléséhez válassza a **mentés & Kapcsolatfelvétel az ügyfélszolgálattal** lehetőséget, amely megnyitja a partner támogatási lapját a böngészőben.
     1. Válassza a **probléma részleteinek** megadása lehetőséget, és adja meg a következőt: az [ ![ egyesítési folyamat 2. művelet lapja.](media/co-sell-migrate/action-2-merge.png)](media/co-sell-migrate/action-2-merge.png#lightbox)
@@ -93,7 +94,7 @@ Akkor válassza ezt a lehetőséget, ha olyan OCP GTM-megoldásra van szüksége
 1. Válassza **ezt a megoldást szeretném áttelepíteni a OCP GTM-ről a kereskedelmi piactérre** (lásd a [fenti](#beginmigration) **művelethez szükséges lépéseket** ), majd **folytassa** a műveletet.
 1. Az **1. művelet** lapon válassza ki az [ajánlat típusát](publisher-guide-by-offer-type.md), majd **folytassa** a műveletet.
 
-    [![Az áttelepítési folyamat 1. művelet lapja.](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)    1. Válassza a **Folytatás** lehetőséget.
+    [![Az áttelepítési folyamat 1. művelet lapja.](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)
 
 1. A **2. művelet** lapon válassza ki a [közzétevői profilt](partner-center-portal/create-account.md) a megadott listából. Ha nem rendelkezik közzétevői fiókkal, hozzon létre egyet a [partner Centerben](https://partner.microsoft.com/solutions/migration), és válassza ki itt.
 

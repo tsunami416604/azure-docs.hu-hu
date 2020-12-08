@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: c56d83e551265f3fb4de106cb8fa77efd6dcbabc
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452117"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780705"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Tanácsadási szolgáltatás ajánlatának megtervezése a kereskedelmi piactéren
 
@@ -27,10 +27,24 @@ A tanácsadási szolgáltatás ajánlatait a rendszer a **kapcsolatfelvételi** 
 
 ## <a name="primary-products-and-online-stores"></a>Elsődleges termékek és online áruházak
 
-Minden tanácsadási szolgáltatási ajánlatnak egy **elsődleges termék** nevű Microsoft-termékre kell összpontosítania. A partner Centerben kiválasztott elsődleges termék meghatározza, hogy az ajánlat közzé lesz-e téve Microsoft AppSource vagy az Azure Marketplace-en.
+Minden tanácsadási szolgáltatásnak az alábbi Microsoft-termékek egyikére kell összpontosítania, amelyet az ajánlat **elsődleges termékének** nevezünk:
 
-* Ha a tanácsadási szolgáltatás elsődleges terméke az Azure, az ajánlat az Azure Marketplace-en fog szerepelni.
-* Ha az elsődleges termék nem az Azure, az ajánlat a AppSource-ben jelenik meg.
+|Elsődleges termék                               |                   |
+|-------------------------------|-------------------|
+|Azure                          |Dynamics 365 Project szolgáltatás automatizálása |
+|Dynamics 365 Business Central  |Dynamics 365 Sales |
+|Dynamics 365 kereskedelmi          |Dynamics 365 ellátási lánc kezelése |
+|Dynamics 365 Customer Insights |Microsoft 365 |
+|Dynamics 365 Customer szolgáltatás  |Power Apps |
+|Dynamics 365 mező szolgáltatás     |Power Automate |
+|Dynamics 365 – Pénzügy           |Power BI |
+|Dynamics 365 marketing         |Power Virtual Agents |
+|    |    |
+
+A partner Centerben kiválasztott elsődleges termék meghatározza, hogy az ajánlat közzé lesz-e téve Microsoft AppSource vagy az Azure Marketplace-en.
+
+* Ha a tanácsadási szolgáltatás elsődleges terméke az Azure, az ajánlat az Azure Marketplace-en jelenik meg.
+* Ha az elsődleges termék nem az Azure, az ajánlat a AppSource webhelyen jelenik meg.
 
 Ha többet szeretne megtudni a AppSource és az Azure Marketplace közötti különbségekről, tekintse meg a [kereskedelmi piactér online áruházait](./overview.md#commercial-marketplace-online-stores).
 
@@ -75,7 +89,7 @@ Amikor a partner Centerben hozza létre a tanácsadási szolgáltatás ajánlat�
 6. Ország/régió
 7. Ajánlat neve
 8. Keresési eredmények összegzése
-9. Description
+9. Leírás
 10. Képernyőképek/videók
 11. Támogató dokumentumok
 
@@ -91,6 +105,7 @@ Ha könnyebben létre szeretné hozni az ajánlatot, készítse elő ezeket az e
 |Első lépések az Azure IoT a gyártásban |Gyártási IoT: 2 napos Értékelés |
 |Workshop az intelligens kenyérpirítók számára |Intelligens kenyérpirítók: 1 hetes workshop |
 |SQL Server áttelepítési PoC a contoso által |SQL-Migrálás: 3 – hét a koncepció igazolása |
+| | |
 
 **Keresési eredmények összegzése**: az ajánlat célját vagy célját 200 vagy kevesebb karakterből írja le. Ezt az összegzést a kereskedelmi piactéren a keresési eredmények listájában lehet használni. Nem lehet azonos a címmel. Érdemes megfontolni a legnépszerűbb SEO-kulcsszavakat is.
 
@@ -105,6 +120,7 @@ A Leírás írásakor kövesse az alábbi feltételeket a szolgáltatás típusa
 |Implementálás |Több mint egy nap alatt részletes menetrendet adhat meg a megvalósításokhoz, és leírhatja, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők számíthatnak az ügyfél az engagement eredményeire. |
 |Megvalósíthatósági vizsgálat |Írja le, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők várhatók az ügyfelek számára az engagement eredményeinek megfelelően. |
 |Workshop |Az ajánlat időtartamától függően részletes napi, heti vagy havi rendszerességgel is megadható. A workshop tanulási céljainak és egyéb termékeinek tagolása. |
+| | |
 
 Íme néhány tipp a Leírás írásához:
 
@@ -142,6 +158,11 @@ Kövesse az alábbi irányelveket a logókhoz:
 **Piactéri média – képernyőképek**: vegyen fel legalább egy és legfeljebb öt képet, amely bemutatja az ajánlatot. Az összes képnek 1280 x 720 képpont méretűnek és a-ben kell lennie. PNG-formátum.
 
 **Marketplace Media – videók** (nem kötelező): legfeljebb négy olyan videót adhat hozzá, amely bemutatja az ajánlatát. A videókat a YouTube vagy a Vimeo szolgáltatásban kell tárolni, és egy miniatűrnek kell lennie (1280 x 720 PNG-fájl).
+
+## <a name="pricing-and-availability"></a>Díjszabás és rendelkezésre állás
+
+A tanácsadási szolgáltatás ajánlatát egy vagy több országban vagy régióban lehet elérhetővé tenni. A partner Centerben eldöntheti, hogy minden egyes kiválasztott piacon milyen árat kell megállapítania. A támogatott piacok és pénznemek teljes listájáért tekintse meg [a kereskedelmi piactér földrajzi elérhetőségét és a pénznemek támogatását](./marketplace-geo-availability-currencies.md)ismertető témakört.
+
 
 ## <a name="next-steps"></a>További lépések
 

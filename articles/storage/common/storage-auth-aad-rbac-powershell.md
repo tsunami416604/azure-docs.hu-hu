@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 19262441df87b96bbb43a010ca47861ec2b236d3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 852375cc7948fc7f6bd106380b3194f2dc84b8ca
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488758"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778920"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>A PowerShell használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-adateléréshez
 
@@ -60,6 +60,9 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 Ha Azure-szerepkört szeretne hozzárendelni egy rendszerbiztonsági tag számára, használja a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) parancsot. A parancs formátuma eltérő lehet a hozzárendelés hatóköre alapján. A parancs futtatásához hozzá kell rendelnie a tulajdonosi vagy közreműködői szerepkört a megfelelő hatókörhöz. Az alábbi példák bemutatják, hogyan rendeljen hozzá egy szerepkört egy felhasználóhoz különböző hatókörökben, de ugyanazt a parancsot használhatja egy szerepkör hozzárendelésére bármely rendszerbiztonsági tag számára.
 
+> [!NOTE]
+> Azure Storage-fiók létrehozásakor nem rendel automatikusan engedélyeket az Azure AD-n keresztüli adateléréshez. Explicit módon hozzá kell rendelnie egy Azure-szerepkört az Azure Storage-hoz. Az előfizetés, az erőforráscsoport, a Storage-fiók, a tároló vagy a várólista szintjén rendelhető hozzá.
+
 ### <a name="container-scope"></a>Tároló hatóköre
 
 Egy tárolóhoz hatókörrel rendelkező szerepkör hozzárendeléséhez adjon meg egy karakterláncot, amely a paraméterhez tartozó tároló hatókörét tartalmazza `--scope` . A tároló hatóköre a következő formában van:
@@ -68,7 +71,7 @@ Egy tárolóhoz hatókörrel rendelkező szerepkör hozzárendeléséhez adjon m
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-Az alábbi példa a **Storage blob-adatközreműködői** szerepkört rendeli hozzá egy felhasználóhoz, amely egy *minta-tároló*nevű tárolóra terjed ki. Ügyeljen rá, hogy a minták értékeit és a zárójelben lévő helyőrző értékeket a saját értékeire cserélje le: 
+Az alábbi példa a **Storage blob-adatközreműködői** szerepkört rendeli hozzá egy felhasználóhoz, amely egy *minta-tároló* nevű tárolóra terjed ki. Ügyeljen rá, hogy a minták értékeit és a zárójelben lévő helyőrző értékeket a saját értékeire cserélje le: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -84,7 +87,7 @@ Ha egy szerepkör hatókörét szeretné hozzárendelni egy várólistához, adj
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
 ```
 
-Az alábbi példa a **Storage üzenetsor-adatközreműködői** szerepkört rendeli hozzá egy felhasználóhoz, hatókörét egy *minta-várólista*nevű várólistára. Ügyeljen rá, hogy a minták értékeit és a zárójelben lévő helyőrző értékeket a saját értékeire cserélje le: 
+Az alábbi példa a **Storage üzenetsor-adatközreműködői** szerepkört rendeli hozzá egy felhasználóhoz, hatókörét egy *minta-várólista* nevű várólistára. Ügyeljen rá, hogy a minták értékeit és a zárójelben lévő helyőrző értékeket a saját értékeire cserélje le: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -134,7 +137,7 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure PowerShell modul használatával](../../role-based-access-control/role-assignments-powershell.md)
 - [Az Azure CLI-vel hozzárendelhet egy Azure-szerepkört a blob-és üzenetsor-adat eléréséhez](storage-auth-aad-rbac-cli.md)

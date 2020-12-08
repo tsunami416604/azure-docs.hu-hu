@@ -2,13 +2,13 @@
 title: Művelet támogatásának áthelyezése erőforrástípus szerint
 description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 5b71c991136533096604c8a35af7989a227b6d2a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 12/07/2020
+ms.openlocfilehash: 226686e51c8b59b6963609a95a2cb3c2cc03d621
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364229"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780994"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet-támogatás áthelyezése az erőforrásokhoz
 
@@ -1026,7 +1026,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | hanainstances | Nem | Nem |
-> | sapmonitors | Igen | Igen |
+> | sapmonitors | Nem | Nem |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft. HardwareSecurityModules
 

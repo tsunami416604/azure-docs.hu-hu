@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: 0bb0c22227946cba6790b536b3cb8db24af3ccbc
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 11d426016cfe1a8a9ff843da518f57c08881be5d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422863"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842396"
 ---
 ## <a name="run-the-function-locally"></a>A függvény helyi futtatása
 
@@ -35,7 +35,7 @@ ms.locfileid: "93422863"
     </pre>
     
     >[!NOTE]  
-    > Ha a HttpExample nem jelenik meg az alább látható módon, valószínűleg elindította a gazdagépet a projekt gyökérkönyvtárán kívülről. Ebben az esetben a **CTRL** + **C** billentyűkombinációval állítsa le a gazdagépet, navigáljon a projekt gyökérmappa mappájához, és futtassa újra az előző parancsot.
+    > Ha a HttpExample nem jelenik meg a fentiekben látható módon, valószínűleg elindította a gazdagépet a projekt gyökérkönyvtárán kívülről. Ebben az esetben a **CTRL** + **C** billentyűkombinációval állítsa le a gazdagépet, navigáljon a projekt gyökérmappa mappájához, és futtassa újra az előző parancsot.
 
 1. Másolja a függvény URL-címét `HttpExample` ebből a kimenetből egy böngészőbe, és fűzze hozzá a lekérdezési karakterláncot `?name=<YOUR_NAME>` , így a teljes URL-címet, például: `http://localhost:7071/api/HttpExample?name=Functions` . A böngészőben a következőhöz hasonló üzenetnek kell megjelennie `Hello Functions` :
 
@@ -43,4 +43,4 @@ ms.locfileid: "93422863"
 
 1. A terminál, amelyben elindította a projektet, a naplók kimenetét is megjeleníti a kérések elkészítésekor.
 
-1. Ha elkészült, használja a **CTRL C billentyűt** , + **C** és válassza `y` a functions gazdagép leállítását.
+1. Ha elkészült, használja a **CTRL C billentyűt**, + **C** és válassza `y` a functions gazdagép leállítását.

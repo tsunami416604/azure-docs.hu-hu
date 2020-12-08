@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 12/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 86b465d0b3c28c50a8aa85247a14e189d4586a47
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 84b973dfa016b069b18fda47a4336fe952f73b3c
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016275"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780858"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Az adathozzáférés biztosítása egy környezethez
 
@@ -120,7 +120,7 @@ Kövesse az alábbi lépéseket, ha vendég hozzáférést szeretne biztosítani
 
     [![A vendég felhasználó kiválasztja az Azure-bérlőt a legördülő menüből](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Olvasási [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md) Azure Active Directory alkalmazás regisztrációs lépéseihez.
 

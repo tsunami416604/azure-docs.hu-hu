@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 620b696be0b9a06cf0d68145b06e3cacf2bedff2
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762550"
+ms.locfileid: "96779362"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Működés: Azure AD önkiszolgáló jelszóátállítás
 
@@ -89,7 +89,7 @@ Ha nem igényel regisztrációt, a rendszer nem kéri a felhasználókat a bejel
 >
 > Ez a SSPR való regisztrálási megszakítás nem bontja a felhasználó kapcsolódását, ha már be van jelentkezve.
 
-## <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Azon napok száma, amely után a felhasználóknak meg kell adniuk a hitelesítési adataik ismételt megerősítését
+## <a name="reconfirm-authentication-information"></a>Hitelesítési adatok újbóli megerősítése
 
 Annak érdekében, hogy a hitelesítési módszerek helyesek legyenek, amikor szükség van a jelszó alaphelyzetbe állítására vagy módosítására, megkövetelheti a felhasználók számára, hogy bizonyos idő elteltével erősítse meg az adataikat a regisztrált információk alapján. Ez a beállítás csak akkor érhető el, ha engedélyezi a **felhasználók regisztrációját a bejelentkezéskor** lehetőségre.
 

@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17bdae658c7095c44a7ae9f30fd85a6c45bf1546
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285383"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779974"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Több feldolgozó csomópont hozzáadásával bővítheti az Azure arc-alapú PostgreSQL nagy kapacitású-kiszolgáló csoportját
 Ez a dokumentum azt ismerteti, hogyan lehet felskálázást végezni egy Azure arc-kompatibilis PostgreSQL-nagy kapacitású-kiszolgálócsoport használatával. Ezt a forgatókönyvek átvételével végezheti el. **Ha nem kívánja futtatni a forgatókönyvet, és szeretné megtekinteni a vertikális felskálázást, ugorjon a bekezdés [felskálázása](#scale-out)lehetőségre**.
@@ -33,7 +33,7 @@ Ha már ismeri az Azure arc engedélyezése PostgreSQL nagy kapacitású vagy Az
 
 > \* A fenti dokumentumokban hagyja ki a **bejelentkezett szakaszt a Azure Portalba**, & **hozzon létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus)**. Implementálja az Azure arc üzembe helyezésének hátralévő lépéseit. Ezek a részek Azure Database for PostgreSQL az Azure-felhőben nagy kapacitású (Citus) jellemzőek, de a dokumentumok egyéb részei közvetlenül alkalmazhatók az Azure arc-kompatibilis PostgreSQL-nagy kapacitású.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati példa
 Ez a forgatókönyv a PostgreSQL nagy kapacitású-kiszolgáló csoportra hivatkozik, amely az [Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport](create-postgresql-hyperscale-server-group.md) dokumentációjának létrehozása című témakörben példaként jött létre.
 
 ### <a name="load-test-data"></a>Tesztadatok betöltése
@@ -46,7 +46,7 @@ Kapcsolódjon az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgál�
 ```console
 azdata arc postgres endpoint list -n <server name>
 ```
-Példa:
+Például:
 ```console
 azdata arc postgres endpoint list -n postgres01
 ```
@@ -160,7 +160,7 @@ Ebben a példában a következő parancs futtatásával növeljük a munkavégz�
 azdata arc postgres server edit -n postgres01 -w 4
 ```
 
-Csomópontok hozzáadásakor a rendszer függő állapotot lát a kiszolgálócsoport számára. Példa:
+Csomópontok hozzáadásakor a rendszer függő állapotot lát a kiszolgálócsoport számára. Például:
 ```console
 azdata arc postgres server list
 ```
@@ -182,7 +182,7 @@ Futtassa a következő parancsot:
 azdata arc postgres server list
 ```
 
-Visszaadja a névtérben létrehozott kiszolgálócsoportok listáját, és jelzi a munkavégző csomópontok számát. Példa:
+Visszaadja a névtérben létrehozott kiszolgálócsoportok listáját, és jelzi a munkavégző csomópontok számát. Például:
 ```console
 Name        State    Workers
 ----------  -------  ---------
@@ -195,7 +195,7 @@ Futtassa a következő parancsot:
 kubectl get postgresql-12
 ```
 
-Visszaadja a névtérben létrehozott kiszolgálócsoportok listáját, és jelzi a munkavégző csomópontok számát. Példa:
+Visszaadja a névtérben létrehozott kiszolgálócsoportok listáját, és jelzi a munkavégző csomópontok számát. Például:
 ```console
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   4/4          10.0.0.4:31066      4d20h
@@ -236,7 +236,7 @@ Jegyezze fel a végrehajtási időt.
 >* [HTAP-alkalmazások fejlesztése a Python & Azure PostgreSQL nagy kapacitású (Citus) használatával](https://www.youtube.com/watch?v=YDT8_riLLs0)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Olvassa el, hogyan [méretezhető fel és le (memória, virtuális mag) az Azure arc engedélyezve PostgreSQL nagy kapacitású Server Group](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)
 - Olvassa el, hogyan állíthatja be a kiszolgálói paramétereket az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálói csoportban
@@ -252,5 +252,4 @@ Jegyezze fel a végrehajtási időt.
  > \* A fenti dokumentumokban hagyja ki a **bejelentkezett szakaszt a Azure Portalba**, & **hozzon létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus)**. Implementálja az Azure arc üzembe helyezésének hátralévő lépéseit. Ezek a részek Azure Database for PostgreSQL az Azure-felhőben nagy kapacitású (Citus) jellemzőek, de a dokumentumok egyéb részei közvetlenül alkalmazhatók az Azure arc-kompatibilis PostgreSQL-nagy kapacitású.
 
 - [Tárolási konfiguráció és Kubernetes-tárolási fogalmak](storage-configuration.md)
-- [Állandó mennyiségi jogcímek kiterjesztése](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes erőforrás-modell](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

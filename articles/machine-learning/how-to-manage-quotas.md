@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 18eb952d06d83b4604625a795be3c8512c3f90d7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 30859593e240c4143dc298cff446ce8bc116a993
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576587"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780586"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kvótáinak kezelése és növelése Azure Machine Learning
 
@@ -48,7 +48,7 @@ Ebben a szakaszban az alábbi erőforrásokra vonatkozó alapértelmezett és ma
 + Eszközök Azure Machine Learning
   + Azure Machine Learning számítás
   + Azure Machine Learning folyamatok
-+ Virtuális gépek
++ Virtual machines (Virtuális gépek)
 + Azure Container Instances
 + Azure Storage
 
@@ -67,10 +67,10 @@ Az eszközökön a következő korlátozások vonatkoznak a munkaterület alapj�
 
 Emellett a maximális **Futási idő** 30 nap, a **futtatási naplók** maximális száma pedig 1 000 000.
 
-#### <a name="azure-machine-learning-compute"></a>Azure Machine Learning számítás
-[Azure Machine learning a számítás](concept-compute-target.md#azure-machine-learning-compute-managed) alapértelmezett kvótája a magok száma, valamint az előfizetésben régiónként engedélyezett egyedi számítási erőforrások száma. Ez a kvóta elkülönül az előző szakasz VM Core-kvótájának.
+### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
+[Azure Machine learning a számítás](concept-compute-target.md#azure-machine-learning-compute-managed) alapértelmezett kvótája a magok számának (az egyes virtuálisgép-családoknak és a kumulatív összesített magoknak a felosztása), valamint az előfizetésben régiónként engedélyezett egyedi számítási erőforrások száma. Ez a kvóta eltér az előző szakaszban felsorolt virtuálisgép-mag kvótától, mivel az csak az Azure Machine Learning felügyelt számítási erőforrásaira vonatkozik.
 
-Az ebben a szakaszban megjelenő korlátokat a táblázatban megjelenő maximális korlátra vonatkozóan a [kvóta növelésére kéri](#request-quota-increases) fel.
+A [kvóta növelésével növelje](#request-quota-increases) a különböző virtuálisgép-család alapkvótáinak korlátait, az összes előfizetéshez tartozó alapvető kvótát és erőforrást ebben a szakaszban.
 
 Rendelkezésre álló erőforrások:
 + A **dedikált magok régiónként** alapértelmezett korlátja 24 – 300, az előfizetési ajánlat típusától függően. A dedikált magok száma minden egyes virtuálisgép-család esetében növelhető. A speciális virtuálisgép-családok (például a NCv2, a NCv3 vagy az ND sorozat) alapértelmezés szerint nullával kezdődnek.
@@ -79,12 +79,19 @@ Rendelkezésre álló erőforrások:
 
 + A **fürtök régiónként** alapértelmezett korlátja 200. Ezek egy képzési fürt és egy számítási példány között vannak megosztva. (A számítási példányok egy egycsomópontos fürtnek számítanak kvóta szempontjából.)
 
-A következő táblázat további korlátozásokat mutat be, amelyeket nem lehet túllépni.
+> [!TIP]
+> Ha többet szeretne megtudni arról, hogy melyik virtuálisgép-családtól kell kvótát megemelni, tekintse meg a [virtuális gépek méretét az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/sizes). A GPU virtuálisgép-családok például egy "N" névvel kezdődnek a családjuk nevükben (például NCv3 sorozat)
 
-| **Erőforrás** | **Maximális korlát** |
+A következő táblázat a platform további korlátozásait mutatja be. Ha kivételt szeretne kérni, lépjen kapcsolatba a AzureML termék csapatával egy **technikai** támogatási jegyen keresztül.
+
+| **Erőforrás vagy művelet** | **Maximális korlát** |
 | --- | --- |
 | Munkaterületek erőforráscsoport szerint | 800 |
-| Egyetlen Azure Machine Learning számítási (AmlCompute) erőforrás csomópontjai | 100 csomópont |
+| Egyetlen Azure Machine Learning számítási (AmlCompute-) **fürtben** lévő csomópontok, amelyek nem kommunikációra alkalmas készletként vannak beállítva (azaz nem futtathatnak MPI-feladatokat) | 100 csomópont, de legfeljebb 65000 csomópontra konfigurálható |
+| Egyetlen párhuzamos futtatási lépés csomópontjai egy Azure Machine Learning számítási (AmlCompute-) fürtön **futnak** | 100 csomópont, de legfeljebb 65000 csomópontra konfigurálható, ha a fürt a fentiek szerint méretezésre van beállítva |
+| Egyetlen Azure Machine Learning számítási (AmlCompute-) **fürtben** lévő csomópontok, amelyek kommunikációs célú készletként vannak beállítva | 300 csomópont, de legfeljebb 4000 csomópontra konfigurálható |
+| Egyetlen Azure Machine Learning számítási (AmlCompute-) **fürt** CSOMÓPONTJAI egy RDMA-kompatibilis virtuálisgép-családon belüli, kommunikációs képességgel rendelkező készletként | 100 csomópont |
+| Egy adott MPI csomópontjai egy Azure Machine Learning számítási (AmlCompute-) fürtön **futnak** | 100 csomópontok, de növelhető 300-csomópontok esetén |
 | GPU MPI folyamatok/csomópont | 1-4 |
 | GPU-feldolgozók/csomópont | 1-4 |
 | Feladatok élettartama | 21 nap<sup>1</sup> |
@@ -102,7 +109,7 @@ A következő táblázat további korlátozásokat mutat be, amelyeket nem lehet
 | A folyamat lépései | 30 000 |
 | Munkaterületek erőforráscsoport szerint | 800 |
 
-### <a name="virtual-machines"></a>Virtuális gépek
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 Minden Azure-előfizetés korlátozza a virtuális gépek számát az összes szolgáltatáson belül. A virtuálisgép-magok méretének regionális korlátja és a regionális korlátok száma. Mindkét korlátot külön kényszeríti a rendszer.
 
 Például tegyük fel, hogy egy előfizetés az USA keleti régiójára vonatkozó teljes magkorlátja 30, az A sorozatú magkorlátja 30, és a D sorozatú magkorlátja is 30. Ez az előfizetés 30 a1-es virtuális gép vagy 30 D1 virtuális gép üzembe helyezését, illetve a kettő olyan kombinációját teszi lehetővé, amely nem haladja meg az összesen 30 magot.
@@ -111,7 +118,7 @@ A virtuális gépekre vonatkozó korlátok az alábbi táblázatban látható é
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-### <a name="container-instances"></a>Container Instances
+### <a name="container-instances"></a>Tárolópéldányok
 
 További információ: [Container instances korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits).
 
