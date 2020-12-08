@@ -15,8 +15,6 @@
           items:
             - name: C#
               href: QuickStarts/CSharp.md
-            - name: cURL
-              href: QuickStarts/curl.md
             - name: Indítás
               href: QuickStarts/go.md
             - name: Java
@@ -95,7 +93,7 @@
           href: /java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
         - name: Node.js
           href: /javascript/api/@azure/cognitiveservices-face
-        - name: Go
+        - name: Indítás
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
 - name: További források
   items:

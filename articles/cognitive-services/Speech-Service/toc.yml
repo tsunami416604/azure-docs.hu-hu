@@ -38,7 +38,7 @@
         - name: Kötegelt átírási API használata
           href: batch-transcription.md
         - name: Migrálás a 2.0-s verzióról a 3.0-s verzióra
-          url: migrate-v2-to-v3.md
+          href: migrate-v2-to-v3.md
         - name: Kiejtés kiértékelése
           href: how-to-pronunciation-assessment.md
     - name: Oktatóanyagok

@@ -54,7 +54,7 @@
 - name: Alapelvek
   items:
     - name: Képek
-      href: shared-image-galleries.md
+      href: ../shared-image-galleries.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
       items:
@@ -419,7 +419,7 @@
         - name: Rendszerképkészítő (előzetes verzió)
           items:
             - name: Áttekintés
-              href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+              href: ../image-builder-overview.md
             - name: Az Image Builder használata
               items:
                 - name: parancssori felület

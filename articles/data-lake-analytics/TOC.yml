@@ -111,6 +111,8 @@
               href: data-lake-analytics-data-lake-tools-for-vscode.md
             - name: Egyéni kód
               href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+            - name: Erőforrások elérése
+              href: data-lake-analytics-data-lake-tools-for-vscode-access-resource.md
             - name: Helyi futtatás és hibakeresés
               href: data-lake-tools-for-vscode-local-run-and-debug.md
         - name: Programozhatósági útmutató
