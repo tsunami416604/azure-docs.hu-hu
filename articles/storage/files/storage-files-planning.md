@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 650ee1fc9e0e1941a7a3655bca1c75950ab878dd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 98cc72f85499481ba3841ce82fe307740d5e9fab
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492114"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842706"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Azure Files](storage-files-introduction.md) kétféleképpen helyezhető üzembe: a kiszolgáló nélküli Azure-fájlmegosztás közvetlen csatlakoztatásával vagy az Azure-fájlmegosztás helyszíni gyorsítótárazásával Azure file Sync használatával. Az üzembe helyezési lehetőségek közül válassza ki azokat a beállításokat, amelyeket figyelembe kell vennie az üzemelő példány tervezésekor. 
@@ -114,23 +114,6 @@ További információ: [Az Azure Storage komplex veszélyforrások elleni védel
 
 ## <a name="storage-tiers"></a>Tárolási szintek
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-Általánosságban elmondható, hogy Azure Files szolgáltatások és a más szolgáltatásokkal való együttműködés azonos a prémium fájlmegosztás és a szabványos fájlmegosztás (beleértve az optimalizált, a gyors és a lassú fájlmegosztást) közötti különbségeket, azonban néhány fontos eltérés van:
-- **Számlázási modell**
-    - A prémium szintű fájlmegosztás számlázása egy kiosztott számlázási modellel történik, ami azt jelenti, hogy fix árat kell fizetnie, hogy mekkora tárterületet kell kiépíteni, és nem a felhasznált tárterületet. A REST-alapú tranzakciók és metaadatok esetében nem számítunk fel további költségeket.
-    - A standard fájlmegosztás számlázása az utólagos elszámolású modell használatával történik, amely a tárterület alapdíjait tartalmazza a ténylegesen felhasznált tárterülethez, majd a megosztás használati módjától függően további tranzakciós költségeket is tartalmaz. A standard fájlmegosztás esetén a számla akkor is növekedni fog, ha az Azure-fájlmegosztás használatát (olvasás/írás/csatlakoztatás) is növeli.
-- **Redundancia-beállítások**
-    - A prémium fájlmegosztás csak a helyileg redundáns (LRS) és a Zone redundáns (ZRS) tárolók esetében érhető el.
-    - A standard fájlmegosztás a helyileg redundáns, a zónák redundáns, a Geo-redundáns (GRS) és a Geo-zóna redundáns (GZRS) tárolók számára érhető el.
-- **Fájlmegosztás maximális mérete**
-    - A prémium fájlmegosztást akár 100 TiB-ra is kiépítheti további munka nélkül.
-    - Alapértelmezés szerint a standard fájlmegosztás legfeljebb 5 TiB-ra terjedhet ki, bár a megosztási korlát a 100 TiB-ra is növelhető, ha a *nagyméretű fájlmegosztás* Storage-fiók funkciójának jelzőjét választotta. A standard fájlmegosztás csak a 100 TiB-ra terjedhet a helyileg redundáns vagy zónában lévő redundáns Storage-fiókok esetében. További információ a fájlmegosztás méretének növeléséről: [nagyméretű fájlmegosztás engedélyezése és létrehozása](./storage-files-how-to-create-large-file-share.md).
-- **Regionális elérhetőség**
-    - A prémium fájlmegosztás a legtöbb Azure-régióban elérhető, néhány régió kivételével. A zóna redundáns támogatása a régiók egy részhalmazában érhető el. Annak megállapításához, hogy a prémium fájlmegosztás jelenleg elérhető-e az Ön régiójában, tekintse meg az Azure-ban [elérhető termékek területét](https://azure.microsoft.com/global-infrastructure/services/?products=storage) . Annak megállapításához, hogy mely régiók támogatják a ZRS, tekintse meg a [zóna – redundáns tárolás](../common/storage-redundancy.md#zone-redundant-storage)című témakört. Kérjük, töltse ki ezt a [kérdőívet](https://aka.ms/pfsfeedback)az új régiók és prémium szintű funkciók rangsorolásához.
-    - A standard fájlmegosztás minden Azure-régióban elérhető.
-- Az Azure Kubernetes Service (ak) prémium szintű fájlmegosztás használatát támogatja a 1,13-es és újabb verziókban.
-
-Ha egy fájlmegosztás prémium vagy standard fájlmegosztásként lett létrehozva, akkor nem alakíthatja át automatikusan a másik szintre. Ha a másik szintjére szeretne váltani, új fájlmegosztást kell létrehoznia az adott szinten, és manuálisan át kell másolnia az eredeti megosztás adatait az újonnan létrehozott megosztásra. Azt javasoljuk `robocopy` , hogy a Windowshoz vagy MacOS és Linux rendszerhez használja a `rsync` másolást.
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>A prémium fájlmegosztás kiépítés ismertetése
 A prémium fájlmegosztást rögzített GiB/IOPS/átviteli sebesség alapján kell kiépíteni. Az összes megosztási méret a minimális alapkonfigurációt/átviteli sebességet, és a burst számára engedélyezett. Minden egyes GiB-kiosztás esetén a megosztás minimális IOPS/átviteli sebességre, valamint egy IOPS és 0,1 MiB/s átviteli sebességre lesz kiállítva a maximálisan megengedettnél. A minimálisan engedélyezett kiépítés 100 GiB minimális IOPS/átviteli sebességgel. 
