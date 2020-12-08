@@ -890,8 +890,6 @@
               items:
                 - name: Webalkalmazások és szolgáltatások részletes diagnosztikája
                   href: app/devops.md
-                - name: Webalkalmazások teljesítményének monitorozása
-                  href: app/web-monitor-performance.md
                 - name: 'A fejlesztési, tesztelési és éles környezetek elkülönítése'
                   href: app/separate-resources.md
                 - name: Hogyan tegyem... az Application Insights szolgáltatásban?
