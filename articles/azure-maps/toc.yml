@@ -87,10 +87,12 @@
       href: supported-map-styles.md
     - name: Nagyítási szintek és csemperács
       href: zoom-levels-and-tile-grid.md
-    - name: Mobilitási szolgáltatás adatstruktúrája
+    - name: Mobilitási szolgáltatások
       href: mobility-service-data-structure.md
-    - name: Az időjárási szolgáltatással kapcsolatos fogalmak
+    - name: A Weather szolgáltatásokkal kapcsolatos fogalmak
       href: weather-services-concepts.md
+    - name: Weather szolgáltatások – GYIK
+      href: weather-services-faq.md
 - name: Útmutatók
   items:
     - name: Maps-fiókok kezelése

@@ -274,6 +274,8 @@
                   href: log-query/resource-expression.md
                 - name: Alkalmazás adatforrásainak egységesítése
                   href: log-query/unify-app-resource-data.md
+                - name: Szolgáltatásközi lekérdezés az Azure Monitor és az Azure Data Explorer között – áttekintés
+                  href: platform/azure-data-explorer-monitor-cross-service-query.md
                 - name: Az Azure Data Explorer lekérdezése az Azure Monitorból
                   href: platform/azure-monitor-data-explorer-proxy.md
         - name: Adatexportálás
