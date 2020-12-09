@@ -1,21 +1,27 @@
 ---
-title: Beltéri térképek használata Azure Maps Creatorben
-description: Ez a cikk a Azure Maps Creator-szolgáltatásokra vonatkozó fogalmakat ismerteti
+title: Beltéri térképek használata Azure Maps Creatorben (előzetes verzió)
+description: Ez a cikk bemutatja a Azure Maps Creator Services (előzetes verzió) alkalmazásával kapcsolatos fogalmakat
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 558903ead572363c5545a4a3121f7cf61f549df6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4ab00317e71f832bb677c4c7587e2356a37cb7a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895902"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903564"
 ---
-# <a name="creator-for-indoor-maps"></a>A beltéri térképek létrehozója
+# <a name="creator-preview-for-indoor-maps"></a>Creator (előzetes verzió) beltéri térképekhez
+
+
+> [!IMPORTANT]
+> A Azure Maps Creator Services jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Ez a cikk bemutatja a Azure Maps létrehozója által alkalmazott fogalmakat és eszközöket. Javasoljuk, hogy olvassa el ezt a cikket, mielőtt elkezdi használni a Azure Maps Creator API-t és az SDK-t.
 
@@ -23,15 +29,15 @@ A Creator használatával a térképi funkciókkal rendelkező alkalmazásokat h
 
 ![Létrehozó Térkép munkafolyamata](./media/creator-indoor-maps/workflow.png)
 
-## <a name="create-azure-maps-creator"></a>Azure Maps létrehozó létrehozása
+## <a name="create-azure-maps-creator-preview"></a>Azure Maps létrehozó létrehozása (előzetes verzió) 
 
-A Creator Services használatához Azure Maps létrehozót egy Azure Maps-fiókban kell létrehozni. Azure Maps létrehozójának Azure Maps-ben való létrehozásával kapcsolatos információkért lásd: a [Azure Maps létrehozójának kezelése](how-to-manage-creator.md).
+A Creator Services (előzetes verzió) használatához Azure Maps létrehozót egy Azure Maps-fiókban kell létrehozni. Azure Maps létrehozójának Azure Maps-ben való létrehozásával kapcsolatos információkért lásd: a [Azure Maps létrehozójának kezelése](how-to-manage-creator.md).
 
 ## <a name="upload-a-drawing-package"></a>Rajzfájl feltöltése
 
-A létrehozó a feltöltött rajzfájl konvertálásával gyűjti a beltéri térképi adatokat. A rajzolási csomag egy felépített vagy átalakított létesítményt jelöl. A csomagra vonatkozó követelményekkel kapcsolatos információkért lásd: [rajzi csomag követelményei](drawing-requirements.md).
+A Creator (előzetes verzió) egy feltöltött rajzfájl konvertálásával gyűjti a beltéri leképezési adatokat. A rajzolási csomag egy felépített vagy átalakított létesítményt jelöl. A csomagra vonatkozó követelményekkel kapcsolatos információkért lásd: [rajzi csomag követelményei](drawing-requirements.md).
 
-Egy rajzfájl feltöltéséhez használja a [Azure Maps Adatfeltöltő API](/rest/api/maps/data/uploadpreview) -t.  A sikeres feltöltés után az adatfeltöltő API egy felhasználói adatazonosítót () ad vissza `udid` . A `udid` következő lépésben a feltöltött csomag belső leképezési adatként való átalakítására lesz szükség.
+Egy rajzfájl feltöltéséhez használja a [Azure Maps adatok (előzetes verzió) feltöltési API](/rest/api/maps/data/uploadpreview) -ját.  A sikeres feltöltés után az adatfeltöltő API egy felhasználói adatazonosítót () ad vissza `udid` . A `udid` következő lépésben a feltöltött csomag belső leképezési adatként való átalakítására lesz szükség.
 
 ## <a name="convert-a-drawing-package"></a>Rajzfájl konvertálása
 
@@ -41,7 +47,7 @@ Ha hiba történik, az átalakítási szolgáltatás hivatkozást biztosít a [A
 
 ## <a name="create-indoor-map-data"></a>Beltéri térképi adatkészletek létrehozása
 
-Azure Maps Creator három szolgáltatást biztosít:
+A Azure Maps Creator (előzetes verzió) három szolgáltatást biztosít:
 
 * [Adatkészlet szolgáltatás](/rest/api/maps/dataset/createpreview).
 Az adatkészlet szolgáltatással hozzon létre egy adatkészletet egy konvertált rajz-csomag adatainak használatával.
@@ -72,7 +78,7 @@ Ha egy tileset elavulttá válik, és már nem hasznos, törölheti a tileset. A
 
 ### <a name="feature-statesets"></a>Szolgáltatás statesets
 
-A statesets olyan dinamikus tulajdonságok ( *állapotok* ) gyűjteményei, amelyek adatkészlet-funkciókhoz, például helyiségekhez vagy berendezésekhez vannak rendelve. Az *állapot* például lehet hőmérséklet vagy kihasználtság. Minden *állapot* egy kulcs/érték pár, amely tartalmazza a tulajdonság nevét, az értéket és az utolsó frissítés időbélyegét.
+A statesets olyan dinamikus tulajdonságok (*állapotok*) gyűjteményei, amelyek adatkészlet-funkciókhoz, például helyiségekhez vagy berendezésekhez vannak rendelve. Az *állapot* például lehet hőmérséklet vagy kihasználtság. Minden *állapot* egy kulcs/érték pár, amely tartalmazza a tulajdonság nevét, az értéket és az utolsó frissítés időbélyegét.
 
 A szolgáltatás [állapotának szolgáltatása](/rest/api/maps/featurestate/createstatesetpreview) lehetővé teszi az adatkészlet szolgáltatás stateset létrehozását és kezelését. A stateset egy vagy több *állapota* határozza meg. Az egyes szolgáltatások, például a szobák rendelkezhetnek egy *állapottal* .
 
@@ -87,9 +93,9 @@ Az alkalmazások a funkciók stateset használatával dinamikusan tehetik elérh
 
 ### <a name="render-v2-service"></a>Render V2 szolgáltatás
 
-A Azure Maps [Render V2 szolgáltatás-Get Map csempe API](/rest/api/maps/renderv2/getmaptilepreview) kiterjeszthető a Creator tilesets támogatására.
+A Azure Maps [Render v2 Service-Get Map csempe API (előzetes verzió)](/rest/api/maps/renderv2/getmaptilepreview) kiterjeszthető a support Creator (előzetes verzió) tilesets.
 
-[Render V2 szolgáltatás – Térkép állapota csempe API](/rest/api/maps/renderv2/getmaptilepreview) lehetővé teszi az alkalmazások számára a tilesets kérését. A tilesets ezután integrálható egy Térkép vezérlőelembe vagy SDK-ba. A render v2 szolgáltatást használó Térkép vezérlőelemre például a [beltéri térképek modulban](#indoor-maps-module)talál példát.
+Render V2 szolgáltatás – Térkép állapota csempe API lehetővé teszi az alkalmazások számára a tilesets kérését. A tilesets ezután integrálható egy Térkép vezérlőelembe vagy SDK-ba. A render v2 szolgáltatást használó Térkép vezérlőelemre például a [beltéri térképek modulban](#indoor-maps-module)talál példát.
 
 ### <a name="web-feature-service-api"></a>Web Feature Service API
 
@@ -97,7 +103,7 @@ Az adatkészleteket a [web Feature Service (WFS) API](/rest/api/maps/wfs)haszná
 
 ### <a name="indoor-maps-module"></a>Beltéri térképek modul
 
-A [Azure Maps web SDK](./index.yml) a beltéri térképek modult is tartalmazza. Ez a modul kiterjesztett funkciókat biztosít a Azure Maps *térképkezelés* Library-hez. A beltéri térképek modul a Creatorben létrehozott beltéri térképeket jeleníti meg. Integrálja a widgeteket, például a *padló választóját* , ami segít a felhasználóknak megjeleníteni a különböző szinteket.
+A [Azure Maps web SDK](./index.yml) a beltéri térképek modult is tartalmazza. Ez a modul kiterjesztett funkciókat biztosít a Azure Maps *térképkezelés* Library-hez. A beltéri térképek modul a Creator (előzetes verzió) szolgáltatásban létrehozott beltéri térképeket jeleníti meg. Integrálja a widgeteket, például a *padló választóját*, ami segít a felhasználóknak megjeleníteni a különböző szinteket.
 
 A beltéri térképek modul lehetővé teszi, hogy olyan webalkalmazásokat hozzon létre, amelyek integrálják a beltéri leképezési [szolgáltatásokat más Azure Maps szolgáltatásokkal](./index.yml). Az alkalmazás leggyakoribb beállításai közé tartozhatnak az ismeretek hozzáadása a beltéri térképekhez más térképekről, például az úthálózatról, a képekről, az időjárásról és az átvitelről.
 
@@ -109,7 +115,7 @@ A beltéri térképekhez kapcsolódó megoldások fejlesztése során megtudhatj
 
 ### <a name="data-maintenance"></a>Adatkarbantartás
 
- Azure Maps létrehozói lista, frissítés és törlés API lehetővé teszi az adatkészletek, a tilesets és a szolgáltatás statesets listázását, frissítését és törlését.
+ Azure Maps Creator (előzetes verzió) lista, frissítés és törlés API lehetővé teszi az adatkészletek, a tilesets és a szolgáltatás statesets listázását, frissítését és törlését.
 
 >[!NOTE]
 >Amikor áttekinti az elemek listáját, és úgy dönt, hogy törli őket, figyelembe kell vennie a törlés hatását az összes függő API-ra vagy alkalmazásra vonatkozóan. Ha például olyan tileset szeretne törölni, amelyet egy alkalmazás jelenleg használ a [Render v2 – Map csempe-kinyerő API-](/rest/api/maps/renderv2/getmaptilepreview)val, a tileset törlésével az alkalmazás nem fogja megjeleníteni a tileset.
@@ -129,4 +135,4 @@ Az alábbi példa bemutatja, hogyan frissítheti az adatkészleteket, hogyan hoz
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: létrehozói beltéri Térkép létrehozása](tutorial-creator-indoor-maps.md)
+> [Oktatóanyag: Creator (előzetes verzió) – beltéri Térkép létrehozása](tutorial-creator-indoor-maps.md)

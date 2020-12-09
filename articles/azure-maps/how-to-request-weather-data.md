@@ -1,24 +1,28 @@
 ---
-title: A valós idejű és az előre jelzett időjárási idő lekérése Azure Maps időjárási szolgáltatásokkal
-description: Megtudhatja, hogyan kérhet valós idejű (aktuális) és előre jelzett (percenkénti, óránkénti, napi) időjárási információkat Microsoft Azure Maps időjárási szolgáltatásainak használatával
+title: A valós idejű és az előre jelzett időjárási idő kérése Azure Maps időjárási szolgáltatásokkal (előzetes verzió)
+description: Megtudhatja, hogyan kérhet valós idejű (aktuális) és előre jelzett (percenkénti, óránkénti, napi) időjárási információkat Microsoft Azure Maps időjárási szolgáltatások (előzetes verzió) használatával
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/27/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: c11f20286c514056d14b8faa941315345fea71f2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a5ae262d2882bd76e31666f058fa9a7a703a9e1e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186337"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906012"
 ---
-# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>A valós idejű és az előre jelzett időjárási idő lekérése Azure Maps időjárási szolgáltatásokkal
+# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services-preview"></a>A valós idejű és az előre jelzett időjárási idő kérése Azure Maps időjárási szolgáltatásokkal (előzetes verzió) 
 
-A Azure Maps [időjárási szolgáltatás](/rest/api/maps/weather) REST API-k készlete, amely lehetővé teszi a fejlesztők számára, hogy a nagy dinamikus történelmi, valós idejű és előre jelzett időjárási adatok és vizualizációk integrálását a megoldásba. Ebben a cikkben bemutatjuk, hogyan kérheti le a valós idejű és az előre jelzett időjárási adatgyűjtést.
+> [!IMPORTANT]
+> Azure Maps időjárási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Maps az [időjárási szolgáltatások](/rest/api/maps/weather) olyan REST API-k, amelyek lehetővé teszik a fejlesztők számára, hogy a nagy dinamikus történelmi, valós idejű és előre jelzett időjárási adatok és vizualizációk integrálását a megoldásba. Ebben a cikkben bemutatjuk, hogyan kérheti le a valós idejű és az előre jelzett időjárási adatgyűjtést.
 
 Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
@@ -28,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 * Óránkénti előrejelzést kérhet a [Get óránkénti előrejelzési API](/rest/api/maps/weather/gethourlyforecastpreview)használatával.
 * Kérelmek percenkénti előrejelzése a [Get minute előrejelzési API](/rest/api/maps/weather/getminuteforecastpreview)használatával.
 
-Ez a videó áttekintést nyújt a Azure Maps időjárási szolgáltatásairól a REST hívási példákkal.
+Ez a videó példákat tartalmaz a Azure Maps időjárási szolgáltatásokhoz való REST-hívások kezdeményezésére.
 
 <br/>
 
@@ -751,8 +755,7 @@ Ebben a példában a [Get minute előrejelzés API](/rest/api/maps/weather/getmi
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [A Azure Maps időjárási szolgáltatásával kapcsolatos fogalmak](./weather-services-concepts.md)
+> [Azure Maps időjárási szolgáltatások (előzetes verzió) – fogalmak](./weather-services-concepts.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps időjárási szolgáltatás REST API](/rest/api/maps/weather
-)
+> [Azure Maps időjárási szolgáltatások (előzetes verzió) REST API](/rest/api/maps/weather)

@@ -3,20 +3,24 @@ title: Azure Maps Long-Running Operation API
 description: Tudnivalók a hosszú ideig futó aszinkron feldolgozásról Azure Maps
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 69c5b9d15c0ba3c7c8b6b01643beac1905c404ad
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f5fb7c8059c8b98e8ec514a4159e96f48db7b1ad
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895868"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906199"
 ---
-# <a name="creator-long-running-operation-api"></a>Creator Long-Running Operation API
+# <a name="creator-preview-long-running-operation-api"></a>Creator (előzetes verzió) Long-Running Operation API
+
+> [!IMPORTANT]
+> A Azure Maps Creator Services jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Maps egyes API-k [aszinkron Request-Reply mintát](/azure/architecture/patterns/async-request-reply)használnak. Ez a minta lehetővé teszi, hogy a Azure Maps a rendelkezésre álló és a rugalmas szolgáltatásokat biztosítson. Ez a cikk ismerteti az Azure Map adott implementációját a hosszú ideig futó aszinkron háttér-feldolgozáshoz.
 

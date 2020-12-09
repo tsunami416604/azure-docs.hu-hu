@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffddac13009b84aa8253955d265f11aefe2ce5dd
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a5f9b96fe9ee0781803bbbd86316e8783b60a6f1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744414"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861323"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Tanúsítvány alapú hitelesítés Azure Active Directory iOS rendszeren
 
@@ -75,7 +75,7 @@ További információ: [AD FS bejelentkezési oldalának testreszabása](/previo
 
 A modern hitelesítéssel rendelkező Office-alkalmazások az Azure AD-be való küldésük `prompt=login` kérelmében vannak engedélyezve. Alapértelmezés szerint az Azure AD `prompt=login` az ADFS-re irányuló kérésben `wauth=usernamepassworduri` (az U/P hitelesítésének megadását kéri) és (az ADFS megkeresése az `wfresh=0` SSO-állapot mellőzése és új hitelesítés elvégzése). Ha engedélyezni szeretné a tanúsítványalapú hitelesítést ezekhez az alkalmazásokhoz, módosítsa az alapértelmezett Azure AD-viselkedést.
 
-Az alapértelmezett viselkedés frissítéséhez állítsa le a "*PromptLoginBehavior*" értéket az összevont tartomány beállításaiban a *letiltáshoz*. Ezt a feladatot a [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) parancsmaggal hajthatja végre, ahogy az az alábbi példában is látható:
+Az alapértelmezett viselkedés frissítéséhez állítsa le a "*PromptLoginBehavior*" értéket az összevont tartomány beállításaiban a *letiltáshoz*. Ezt a feladatot a [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings) parancsmaggal hajthatja végre, ahogy az az alábbi példában is látható:
 
 ```powershell
 Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled
@@ -85,7 +85,7 @@ Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disab
 
 Az iOS 9-es vagy újabb verzióiban a natív iOS levelezési ügyfélprogram támogatott. Annak megállapításához, hogy ez a funkció támogatott-e az összes többi Exchange ActiveSync-alkalmazás esetében, forduljon az alkalmazás-fejlesztőhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tanúsítványalapú hitelesítés konfigurálásához a környezetben tekintse meg a következő témakört: a [tanúsítványalapú hitelesítés](active-directory-certificate-based-authentication-get-started.md) első lépései.
 

@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 2ff8f6134f74e0eda355342a7282e8be81a3d8df
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c5839589c35ea5a9c52303801a8767fc598434fc
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450227"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905876"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuális hálózati szolgáltatási végpontok és szabályok használata a Azure SQL Database-kiszolgálókon
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -95,7 +95,7 @@ Ha Azure SQL Database szolgáltatási végpontokat használ, tekintse át a köv
 ### <a name="expressroute"></a>ExpressRoute
 
 Ha a [ExpressRoute](../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -t használja a telephelyéről, a nyilvános és a Microsoft-partnerek számára, meg kell határoznia a használt NAT IP-címeket. Nyilvános társviszony-létesítés esetén alapértelmezés szerint minden ExpressRoute-kapcsolatcsoport két NAT IP-címet használ, amelyeket akkor alkalmaz az Azure-szolgáltatások forgalmára, amikor a forgalom belép a Microsoft Azure gerinchálózatába. Microsoft-társviszony-létesítés esetén a használt NAT IP-cím(ek)et vagy az ügyfél vagy a szolgáltató adja meg. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezeket a nyilvános IP-címeket az erőforrás IP-tűzfalának beállításai között. A nyilvános társviszony-létesítési ExpressRoute-kapcsolatcsoport IP-címeinek megkereséséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon. További információk az [ExpressRoute NAT nyilvános és Microsoft-társviszony-létesítéséről](../../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
-  
+
 Ha engedélyezni szeretné az áramkörről a Azure SQL Database felé irányuló kommunikációt, létre kell hoznia az IP-hálózati szabályokat a NAT nyilvános IP-címeihez.
 
 <!--
@@ -122,7 +122,7 @@ A Base és a COPY utasítást általában arra használják, hogy az Azure szina
 
 #### <a name="steps"></a>Lépések
 
-1. A PowerShellben **regisztrálja az** Azure szinapszist üzemeltető kiszolgálót Azure Active Directory (HRE) használatával:
+1. Ha önálló dedikált SQL-készlettel rendelkezik, regisztrálja az SQL Servert Azure Active Directory (HRE) a PowerShell használatával: 
 
    ```powershell
    Connect-AzAccount
@@ -130,6 +130,14 @@ A Base és a COPY utasítást általában arra használják, hogy az Azure szina
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
+   Ez a lépés nem szükséges egy szinapszis-munkaterületen található dedikált SQL-készletekhez.
+
+1. Ha van egy szinapszis-munkaterülete, regisztrálja a munkaterület rendszer által felügyelt identitását:
+
+   1. Nyissa meg a szinapszis munkaterületet a Azure Portal
+   2. Ugrás a felügyelt identitások panelre 
+   3. Győződjön meg arról, hogy a "folyamatok engedélyezése" beállítás engedélyezve van
+   
 1. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](../../storage/common/storage-account-create.md)segítségével.
 
    > [!NOTE]
@@ -137,7 +145,7 @@ A Base és a COPY utasítást általában arra használják, hogy az Azure szina
    > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](../../storage/common/storage-account-upgrade.md)segítségével.
    > - Azure Data Lake Storage Gen2 kapcsolatos ismert problémák esetén tekintse meg ezt az [útmutatót](../../storage/blobs/data-lake-storage-known-issues.md).
 
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása** elemet. Rendelje hozzá a **Storage blob-adatközreműködő** Azure-szerepkört az Azure szinapszis Analytics szolgáltatást futtató kiszolgálóhoz, amelyet a következő #1 lépésben regisztrált: Azure Active Directory (HRE).
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása** elemet. Rendeljen **Storage blob-adatközreműködő** Azure-szerepkört a dedikált SQL-készletet futtató kiszolgálóhoz vagy munkaterülethez, amelyet a Azure Active Directory (HRE) regisztrált.
 
    > [!NOTE]
    > Ezt a lépést csak a Storage-fiók tulajdonosi jogosultsággal rendelkező tagjai hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md).
@@ -281,7 +289,7 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 - [Azure Virtual Network szolgáltatásbeli végpontok][vm-virtual-network-service-endpoints-overview-649d]
 - [Kiszolgálói szintű és adatbázis-szintű tűzfalszabályok][sql-db-firewall-rules-config-715d]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A PowerShell használatával hozzon létre egy virtuális hálózati szolgáltatási végpontot, majd egy virtuális hálózati szabályt a Azure SQL Databasehoz.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [Virtual Network szabályok:][rest-api-virtual-network-rules-operations-862r] a REST API-kkal végzett műveletek

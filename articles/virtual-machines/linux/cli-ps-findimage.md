@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 34f43d51bf0df488e04605f7f7c77e9c6dcfe9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56d2aa9f7aa36808774876ac0f5cfc596887ff26
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374082"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906386"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Linux virtuálisgép-rendszerképek keresése az Azure Marketplace-en az Azure CLI-vel
 
@@ -22,6 +22,45 @@ Az elérhető lemezképeket és ajánlatokat az [Azure Marketplace](https://azur
 Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](/cli/azure/install-azure-cli) -t, és bejelentkezett egy Azure-fiókba ( `az login` ).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
+
+
+## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>Üzembe helyezés virtuális merevlemezről a vásárlási terv paramétereinek használatával
+
+Ha van egy meglévő virtuális merevlemeze, amelyet egy fizetős Azure Marketplace-rendszerkép használatával hoztak létre, előfordulhat, hogy meg kell adnia a vásárlási terv adatait, amikor új virtuális gépet hoz létre a virtuális merevlemezről. 
+
+Ha továbbra is az eredeti virtuális gép vagy egy másik virtuális gép jön létre ugyanazzal a Piactéri képpel, a csomag nevét, közzétevőjét és termékének adatait az [az VM Get-instance-View](/cli/azure/vm#az_vm_get_instance_view)paranccsal kérheti le. Ez a példa egy *myVM* nevű virtuális gépet olvas be a *myResourceGroup* -erőforráscsoporthoz, majd megjeleníti a vásárlási terv információit.
+
+```azurepowershell-interactive
+az vm get-instance-view -g myResourceGroup -n myVM --query plan
+```
+
+Ha nem kapta meg a csomag információit az eredeti virtuális gép törlése előtt, akkor egy [támogatási kérést](https://ms.portal.azure.com/#create/Microsoft.Support)is megadhat. Szükségük lesz a virtuális gép nevére, az előfizetés azonosítójára és a törlési művelet időbélyegzőre.
+
+A csomaggal kapcsolatos információk megadásával létrehozhatja az új virtuális gépet a (z `--attach-os-disk` ) paraméterrel, és megadhatja a VHD-t.
+
+```azurecli-interactive
+az vm create \
+   --resource-group myResourceGroup \
+  --name myNewVM \
+  --nics myNic \
+  --size Standard_DS1_v2 --os-type Linux \
+  --attach-os-disk myVHD \
+  --plan-name planName \
+  --plan-publisher planPublisher \
+  --plan-product planProduct 
+```
+
+## <a name="deploy-a-new-vm-using-purchase-plan-parameters"></a>Új virtuális gép üzembe helyezése a vásárlási terv paramétereinek használatával
+
+Ha már rendelkezik információkkal a lemezképről, a parancs használatával telepítheti `az vm create` . Ebben a példában egy virtuális gépet helyezünk üzembe a Bitnami-lemezkép által hitelesített RabbitMQ:
+
+```azurecli
+az group create --name myResourceGroupVM --location westus
+
+az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
+```
+
+Ha a rendszerképek elfogadásával kapcsolatos üzenet jelenik meg, tekintse meg a jelen cikk későbbi részében található [feltételek elfogadása](#accept-the-terms) című szakaszt.
 
 ## <a name="list-popular-images"></a>Népszerű lemezképek listázása
 
@@ -325,9 +364,9 @@ Kimenet:
 }
 ```
 
-### <a name="accept-the-terms"></a>A feltételek elfogadása
+## <a name="accept-the-terms"></a>A feltételek elfogadása
 
-A licencfeltételek megtekintéséhez és elfogadásához használja az az [VM rendszerkép Accept-terms](/cli/azure/vm/image?) parancsot. Ha elfogadja a feltételeket, az előfizetésében engedélyezheti a programozott üzembe helyezést. A rendszerképhez csak egyszer kell elfogadnia a feltételeket. Példa:
+A licencfeltételek megtekintéséhez és elfogadásához használja az az [VM rendszerkép Accept-terms](/cli/azure/vm/image?) parancsot. Ha elfogadja a feltételeket, az előfizetésében engedélyezheti a programozott üzembe helyezést. A rendszerképhez csak egyszer kell elfogadnia a feltételeket. Például:
 
 ```azurecli
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
@@ -350,16 +389,6 @@ A kimenet tartalmazza a `licenseTextLink` licencfeltételeket, és azt jelzi, ho
   "signature": "XXXXXXLAZIK7ZL2YRV5JYQXONPV76NQJW3FKMKDZYCRGXZYVDGX6BVY45JO3BXVMNA2COBOEYG2NO76ONORU7ITTRHGZDYNJNXXXXXX",
   "type": "Microsoft.MarketplaceOrdering/offertypes"
 }
-```
-
-### <a name="deploy-using-purchase-plan-parameters"></a>Üzembe helyezés a vásárlási terv paramétereinek használatával
-
-A rendszerkép feltételeinek elfogadása után üzembe helyezhet egy virtuális gépet az előfizetésben. A rendszerképnek a paranccsal történő üzembe helyezéséhez `az vm create` adja meg a vásárlási terv paramétereit a lemezképhez tartozó urn mellett. Ha például egy virtuális gépet szeretne üzembe helyezni a Bitnami-lemezkép által hitelesített RabbitMQ:
-
-```azurecli
-az group create --name myResourceGroupVM --location westus
-
-az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
 ```
 
 ## <a name="next-steps"></a>Következő lépések

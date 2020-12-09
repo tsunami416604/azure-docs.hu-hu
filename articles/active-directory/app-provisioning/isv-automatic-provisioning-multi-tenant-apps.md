@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 9cb3d8f39d83e27755b1e8982dfe3b807c431413
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d4c6c5b51e00f7f2ed7e29c27aa8e8bb88a2ea94
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069721"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861357"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatikus felhasználó-kiépítés engedélyezése a több-bérlős alkalmazáshoz
 
@@ -89,7 +89,7 @@ Az Azure AD kiépítési szolgáltatás felhasználói SCIM kapcsolatos további
 
 ## <a name="microsoft-graph-for-provisioning"></a>Kiépítés Microsoft Graph
 
-Ha Microsoft Grapht használ a kiépítés során, akkor a Graph-ban elérhető összes gazdag felhasználói adattal hozzáférhet. A felhasználók és csoportok részletein kívül további információkat is beolvashat, például a felhasználó szerepköreit, felettesét és közvetlen jelentéseit, a tulajdonában lévő és regisztrált eszközöket, valamint a [Microsoft Graphban](/graph/api/overview?view=graph-rest-1.0)elérhető több száz más adatmennyiséget. 
+Ha Microsoft Grapht használ a kiépítés során, akkor a Graph-ban elérhető összes gazdag felhasználói adattal hozzáférhet. A felhasználók és csoportok részletein kívül további információkat is beolvashat, például a felhasználó szerepköreit, felettesét és közvetlen jelentéseit, a tulajdonában lévő és regisztrált eszközöket, valamint a [Microsoft Graphban](/graph/api/overview)elérhető több száz más adatmennyiséget. 
 
 Több mint 15 000 000 szervezet és 90% of Fortune 500 vállalat használja az Azure AD-t a Microsoft Cloud Services, például a Microsoft 365, a Microsoft Azure vagy a nagyvállalati mobilitási csomagra való feliratkozáskor. A Microsoft Graph használatával integrálhatja az alkalmazást a felügyeleti munkafolyamatokkal, például az alkalmazottak bevezetésével (és megszüntetésével), a profil karbantartásával és egyéb lehetőségekkel. 
 

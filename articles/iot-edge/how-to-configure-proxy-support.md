@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c39ce2bed63b6efb6224e0e27fdb1104ef7a5ec8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045958"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862394"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge-eszköz konfigurálása proxykiszolgálón keresztüli kommunikációra
 
@@ -270,6 +270,12 @@ Ha a **UpstreamProtocol** környezeti változót a IoT Edge eszköz config. YAML
     }
 }
 ```
+
+## <a name="working-with-traffic-inspecting-proxies"></a>A forgalom kezelése – proxyk vizsgálata
+
+Ha a használni kívánt proxy TLS-védelemmel ellátott kapcsolatokon végzi a forgalom ellenőrzését, fontos megjegyezni, hogy az X. 509 tanúsítvánnyal történő hitelesítés nem működik. IoT Edge egy TLS-csatornát hoz létre, amelyet a rendszer a megadott tanúsítvánnyal és kulccsal végződik titkosított. Ha a csatorna megszakadt a forgalom ellenőrzésekor, a proxy nem tudja újra létrehozni a megfelelő hitelesítő adatokkal rendelkező csatornát, IoT Hub és a IoT Hub Device kiépítési szolgáltatás `Unauthorized` hibát ad vissza.
+
+Ha olyan proxyt szeretne használni, amely forgalom-ellenőrzést hajt végre, akkor a vizsgálat elkerülése érdekében használja a közös hozzáférésű aláírások hitelesítését, vagy IoT Hub és az IoT Hub Device kiépítési szolgáltatás egy engedélyezési való hozzáadását.
 
 ## <a name="next-steps"></a>Következő lépések
 

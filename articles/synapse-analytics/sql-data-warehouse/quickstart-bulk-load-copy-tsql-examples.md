@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9ed3a4b0827e81b3f779d95a6eab1dc341e69bb1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de446209104c113b10346645f79b461239c3efab
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019378"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901274"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Adattárolás biztonságos betöltése a szinapszis SQL használatával
 
@@ -23,11 +23,14 @@ Ez a cikk a [copy utasítás](https://docs.microsoft.com/sql/t-sql/statements/co
 
 A következő mátrix ismerteti az egyes fájltípusok és a Storage-fiókok támogatott hitelesítési módszereit. Ez a forrás tárolási helyére és a hiba fájljának helyére vonatkozik.
 
-|                          |                CSV                |              Parquet               |                ORC                 |
-| :----------------------: | :-------------------------------: | :-------------------------------:  | :-------------------------------:  |
-|  **Azure Blob Storage**  | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE |              SAS/KULCS               |              SAS/KULCS               |
-| **Azure Data Lake Gen2** | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE | SAS (blob Endpoint)/MSI (elosztott fájlrendszerbeli végpont)/SERVICE elsődleges/kulcs/HRE | SAS (blob Endpoint)/MSI (elosztott fájlrendszerbeli végpont)/SERVICE elsődleges/kulcs/HRE |
+|                          |                CSV                |                      Parquet                       |                        ORC                         |
+| :----------------------: | :-------------------------------: | :------------------------------------------------: | :------------------------------------------------: |
+|  **Azure Blob Storage**  | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE |                      SAS/KULCS                       |                      SAS/KULCS                       |
+| **Azure Data Lake Gen2** | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE | SAS (blob<sup>1</sup>)/MSI (DFS<sup>2</sup>)/Service elsődleges/kulcs/HRE | SAS (blob<sup>1</sup>)/MSI (DFS<sup>2</sup>)/Service elsődleges/kulcs/HRE |
 
+1: a hitelesítési módszerhez a külső hely elérési útjában lévő. blob-végpontot (**. blob**. Core.Windows.net) kell megadni.
+
+2: a hitelesítési módszerhez a külső hely elérési útjában található. DFS-végpontot (**. DFS**. Core.Windows.net) kötelező megadni.
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. Storage-fiók kulcsa a LF-rel a lezáró sor (Unix stílusú új sor)
 
@@ -74,22 +77,35 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 1. Telepítse az Azure PowerShellt a kapcsolódó [útmutató](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) alapján.
 2. Ha általános célú v1 vagy Blob Storage-fiókja van, először frissítenie kell az általános célú v2 fiókra az [itt található útmutatások](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) szerint.
 3. Engedélyeznie kell, **hogy a megbízható Microsoft-szolgáltatások hozzáférjenek ehhez a Storage-fiókhoz** az Azure Storage **-fiók tűzfala és a virtuális hálózatok** beállítások menüjében. További információt ebben az [útmutatóban](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) talál.
+
 #### <a name="steps"></a>Lépések
 
-1. A PowerShellben **regisztrálja az SQL servert** Azure Active Directory:
+1. Ha önálló dedikált SQL-készlettel rendelkezik, regisztrálja az SQL Servert Azure Active Directory (HRE) a PowerShell használatával: 
 
    ```powershell
    Connect-AzAccount
-   Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   Select-AzSubscription -SubscriptionId <subscriptionId>
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-2. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)segítségével.
+   Ez a lépés nem szükséges egy szinapszis-munkaterületen található dedikált SQL-készletekhez.
+
+1. Ha van egy szinapszis-munkaterülete, regisztrálja a munkaterület rendszer által felügyelt identitását:
+
+   1. Nyissa meg a szinapszis munkaterületet a Azure Portal
+   2. Ugrás a felügyelt identitások panelre 
+   3. Győződjön meg arról, hogy a "folyamatok engedélyezése" beállítás engedélyezve van
+   
+   ![Munkaterület-rendszermsi-fájl regisztrálása](./media/quickstart-bulk-load-copy-tsql-examples/msi-register-example.png)
+
+1. Hozzon létre egy **általános célú v2 Storage-fiókot** az [útmutató](../../storage/common/storage-account-create.md)segítségével.
 
    > [!NOTE]
-   > Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)segítségével.
+   >
+   > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](../../storage/common/storage-account-upgrade.md)segítségével.
+   > - Azure Data Lake Storage Gen2 kapcsolatos ismert problémák esetén tekintse meg ezt az [útmutatót](../../storage/blobs/data-lake-storage-known-issues.md).
 
-3. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása** elemet. Rendeljen **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** Azure-szerepkört az SQL Serverhez.
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása** elemet. Rendeljen **Storage blob-adatközreműködő** Azure-szerepkört a dedikált SQL-készletet futtató kiszolgálóhoz vagy munkaterülethez, amelyet a Azure Active Directory (HRE) regisztrált.
 
    > [!NOTE]
    > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
@@ -158,7 +174,7 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 >
 > - Az OAuth 2,0 token végpont **v1** -es verziójának használata
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A részletes szintaxissal kapcsolatban olvassa el a [copy utasítással](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) kapcsolatos cikket.
 - Az ajánlott eljárások betöltéséhez tekintse meg az [adatgyűjtés áttekintése című](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt) cikket

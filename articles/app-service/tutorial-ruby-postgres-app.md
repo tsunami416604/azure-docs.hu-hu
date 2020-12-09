@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b3c172584c42e1ed1d7ca94b6cd51bedd4e49dae
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997921"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862292"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Ruby-és postgres-alkalmazás létrehozása Linuxon Azure App Service
 
@@ -18,7 +18,7 @@ Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító w
 
 :::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Képernyőkép a Ruby on Rails-alkalmazásról – példa a feladatokra.":::
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * PostgreSQL-adatbázis létrehozása az Azure-ban
@@ -34,10 +34,11 @@ Az oktatóanyag a következőket ismerteti:
 
 Az oktatóanyag elvégzéséhez:
 
-* [A Git telepítése](https://git-scm.com/)
-* [A Ruby 2,6 telepítése](https://www.ruby-lang.org/en/documentation/installation/)
-* [Telepítse a Ruby on Rails 5.1-es verzióját](https://guides.rubyonrails.org/v5.1/getting_started.html)
-* [A PostgreSQL telepítése és futtatása](https://www.postgresql.org/download/)
+- [A Git telepítése](https://git-scm.com/)
+- [A Ruby 2,6 telepítése](https://www.ruby-lang.org/en/documentation/installation/)
+- [Telepítse a Ruby on Rails 5.1-es verzióját](https://guides.rubyonrails.org/v5.1/getting_started.html)
+- [A PostgreSQL telepítése és futtatása](https://www.postgresql.org/download/)
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="prepare-local-postgres"></a>A helyi Postgres előkészítése
 
@@ -103,8 +104,6 @@ Egy böngészőben nyissa meg a `http://localhost:3000` oldalt. Vegyen fel néh�
 ![A Ruby on Rails sikeresen csatlakozik a Postgreshez](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
 
 A Rails-kiszolgáló leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-postgres-in-azure"></a>Postgres létrehozása az Azure-ban
 
@@ -292,7 +291,7 @@ git remote add azure <paste-copied-url-here>
 A távoli Azure-mappához történő küldéssel helyezze üzembe a Ruby on Rails-alkalmazást. Az üzembe helyező felhasználó létrehozásának részeként a rendszer felkéri a korábban megadott jelszó megadására.
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 Az üzembe helyezés során az Azure App Service közli előrehaladási állapotát a Gittel.
@@ -303,7 +302,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -422,7 +421,7 @@ Véglegesítse az összes módosítást a Gitben, majd továbbítsa a kód módo
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 A `git push` befejezését követően navigáljon az Azure-alkalmazáshoz, és tesztelje az új funkciókat.

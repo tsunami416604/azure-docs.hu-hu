@@ -1,26 +1,26 @@
 ---
 title: Resource Manager-sablonok üzembe helyezése GitHub-műveletek használatával
-description: Leírja, hogyan lehet Azure Resource Manager sablonokat a GitHub-műveletek használatával telepíteni.
+description: Útmutatás Azure Resource Manager sablonok (ARM-sablonok) a GitHub-műveletek használatával történő üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: cf705f68544c4c4e0db55d4a375e1e50530c8957
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4cda8307d417880469e6043b84c3ac55ed30071c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185708"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905842"
 ---
-# <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Azure Resource Manager sablonok üzembe helyezése GitHub-műveletek használatával
+# <a name="deploy-arm-templates-by-using-github-actions"></a>ARM-sablonok üzembe helyezése GitHub-műveletek használatával
 
 A [GitHub-műveletek](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) a GitHub szolgáltatásainak egyik csomagja, amellyel automatizálható a szoftverfejlesztői munkafolyamatok ugyanazon a helyen, mint a kód tárolása és a lekéréses kérelmek és problémák közös használata.
 
-A Resource Manager-sablonok Azure-ba való telepítésének automatizálásához használja a [Azure Resource Manager sablon telepítése műveletet](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) . 
+A [Azure Resource Manager sablon központi telepítése művelettel](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) automatizálhatja Azure Resource Manager-sablon (ARM-sablon) Azure-ba való telepítését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Egy GitHub-fiók. Ha még nem rendelkezik ilyennel, regisztráljon [ingyenesen](https://github.com/join).  
+- Egy GitHub-fiók. Ha még nem rendelkezik ilyennel, regisztráljon [ingyenesen](https://github.com/join).
     - Egy GitHub-tárház, amely a Resource Manager-sablonokat és a munkafolyamat-fájlokat tárolja. A létrehozáshoz tekintse meg az [új Tárház létrehozása](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository)című témakört.
 
 
@@ -40,21 +40,21 @@ A fájl két részből áll:
 
 Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
 
-Hozzon létre egy erőforráscsoportot, ha még nem rendelkezik ilyennel. 
+Hozzon létre egy erőforráscsoportot, ha még nem rendelkezik ilyennel.
 
 ```azurecli-interactive
     az group create -n {MyResourceGroup}
 ```
 
-Cserélje le a helyőrzőt az `myApp` alkalmazás nevére. 
+Cserélje le a helyőrzőt az `myApp` alkalmazás nevére.
 
 ```azurecli-interactive
    az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra és az erőforráscsoport nevére. A kimenet egy JSON-objektum, amely a szerepkör-hozzárendelés hitelesítő adatait tartalmazza, amelyek hozzáférést biztosítanak a App Service alkalmazáshoz az alábbihoz hasonló módon. A JSON-objektum másolása később. Csak a `clientId` , `clientSecret` , `subscriptionId` és `tenantId` értékekkel rendelkező szakaszt kell megadnia. 
+A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra és az erőforráscsoport nevére. A kimenet egy JSON-objektum, amely a szerepkör-hozzárendelés hitelesítő adatait tartalmazza, amelyek hozzáférést biztosítanak a App Service alkalmazáshoz az alábbihoz hasonló módon. A JSON-objektum másolása később. Csak a `clientId` , `clientSecret` , `subscriptionId` és `tenantId` értékekkel rendelkező szakaszt kell megadnia.
 
-```output 
+```output
   {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -71,7 +71,7 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
 
 ## <a name="configure-the-github-secrets"></a>A GitHub-titkok konfigurálása
 
-Létre kell hoznia egy titkos kulcsot az Azure-beli hitelesítő adataihoz, erőforráscsoporthoz és előfizetéséhez. 
+Létre kell hoznia egy titkos kulcsot az Azure-beli hitelesítő adataihoz, erőforráscsoporthoz és előfizetéséhez.
 
 1. A [githubon](https://github.com/)tallózzon a tárházban.
 
@@ -79,9 +79,9 @@ Létre kell hoznia egy titkos kulcsot az Azure-beli hitelesítő adataihoz, erő
 
 1. Illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titok érték mezőjébe. Adja meg a titkot a nevet `AZURE_CREDENTIALS` .
 
-1. Hozzon létre egy másik nevű titkot `AZURE_RG` . Adja hozzá az erőforráscsoport nevét a titkos kulcs értéke mezőhöz (például: `myResourceGroup` ). 
+1. Hozzon létre egy másik nevű titkot `AZURE_RG` . Adja hozzá az erőforráscsoport nevét a titkos kulcs értéke mezőhöz (például: `myResourceGroup` ).
 
-1. Hozzon létre egy nevű további titkos kulcsot `AZURE_SUBSCRIPTION` . Adja hozzá az előfizetés-azonosítót a titkos kulcs értéke mezőhöz (például: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ). 
+1. Hozzon létre egy nevű további titkos kulcsot `AZURE_SUBSCRIPTION` . Adja hozzá az előfizetés-azonosítót a titkos kulcs értéke mezőhöz (például: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ).
 
 ## <a name="add-resource-manager-template"></a>Resource Manager-sablon hozzáadása
 
@@ -118,7 +118,7 @@ A munkafolyamat-fájlt a tárház gyökerében található **. GitHub/munkafolya
         - uses: azure/login@v1
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
-     
+
           # Deploy ARM template
         - name: Run ARM deploy
           uses: azure/arm-deploy@v1
@@ -126,13 +126,13 @@ A munkafolyamat-fájlt a tárház gyökerében található **. GitHub/munkafolya
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             resourceGroupName: ${{ secrets.AZURE_RG }}
             template: ./azuredeploy.json
-            parameters: storageAccountType=Standard_LRS 
-        
+            parameters: storageAccountType=Standard_LRS
+
           # output containerName variable from template
         - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
     > [!NOTE]
-    > Az ARM üzembe helyezési műveletben megadhat egy JSON formátumú paramétereket (például: `.azuredeploy.parameters.json` ).  
+    > Az ARM üzembe helyezési műveletben megadhat egy JSON formátumú paramétereket (például: `.azuredeploy.parameters.json` ).
 
     A munkafolyamat-fájl első szakasza a következőket tartalmazza:
 
@@ -152,7 +152,7 @@ Mivel a munkafolyamatot úgy konfigurálták, hogy a munkafolyamat-fájl vagy a 
 1. Az üzembe helyezés ellenőrzéséhez válassza az **ARM-telepítés futtatása** lehetőséget a menüből.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha az erőforráscsoport és a tárház már nem szükséges, a telepített erőforrások tisztításához törölje az erőforráscsoportot és a GitHub-tárházat. 
+Ha az erőforráscsoport és a tárház már nem szükséges, a telepített erőforrások tisztításához törölje az erőforráscsoportot és a GitHub-tárházat.
 
 ## <a name="next-steps"></a>Következő lépések
 

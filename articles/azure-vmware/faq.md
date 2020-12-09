@@ -4,12 +4,12 @@ description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérd�
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: dikamath
-ms.openlocfilehash: 0bc3e0ab5b3017c2d051113a57d79214ffce0836
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3033df2021a8d1780caf9b0b7cd4dbe8de2a6050
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967346"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861408"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -188,7 +188,7 @@ A Azure Portalban engedélyezze az internetkapcsolatot egy privát felhőben. A 
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>Korlátozni kell az internetről a virtuális gépekre való hozzáférést a privát felhőben található logikai hálózatokon?
 
-Nem. Az internetről közvetlenül a privát felhőkbe bejövő hálózati forgalom nem engedélyezett.
+Nem. Alapértelmezés szerint az internetről közvetlenül a privát felhőkbe bejövő hálózati forgalom nem engedélyezett.  Az Azure VMware-megoldás virtuális gépei azonban elérhetők az interneten keresztül a Azure Portal [nyilvános IP-címe](public-ip-usage.md) lehetőséggel az Azure VMware-megoldás saját felhője számára.
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>Korlátozni kell az internetről a virtuális gépekről a logikai hálózatokon az internetre való hozzáférést?
 

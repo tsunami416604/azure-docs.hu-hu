@@ -3,21 +3,25 @@ title: StylesObject séma-útmutató a dinamikus Azure Maps
 description: Útmutató a dinamikus Azure Maps StylesObject sémájának és szintaxisának áttekintéséhez.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2020
+ms.date: 12/07/2020
 ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f6bc4c62febf24dee790ac6136b1661426d4d619
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 08379e66c97d34eea53410190475e90e156a58e2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536948"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903343"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>StylesObject-séma – útmutató dinamikus térképekhez
 
- A a `StylesObject` `StyleObject` stateset-stílusokat jelképező tömb. A Azure Maps Creator [szolgáltatás állapotának szolgáltatásával](/rest/api/maps/featurestate) alkalmazhatja a stateset stílusait a beltéri Térkép adatszolgáltatásaira. Miután létrehozta a stateset stílusait, és hozzárendelte őket a beltéri térképi funkciókhoz, használhatja őket dinamikus beltéri térképek létrehozásához. A dinamikus beltéri térképek létrehozásával kapcsolatos további információkért lásd: [dinamikus stílus implementálása a Creator beltéri térképekhez](indoor-map-dynamic-styling.md).
+> [!IMPORTANT]
+> A Azure Maps Creator Services jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+ A a `StylesObject` `StyleObject` stateset-stílusokat jelképező tömb. Használja a Azure Maps Creator (előzetes verzió) [szolgáltatás állapot szolgáltatását](/rest/api/maps/featurestate) , hogy a stateset stílusait a beltéri Térkép adatszolgáltatásaira alkalmazza. Miután létrehozta a stateset stílusait, és hozzárendelte őket a beltéri térképi funkciókhoz, használhatja őket dinamikus beltéri térképek létrehozásához. A dinamikus beltéri térképek létrehozásával kapcsolatos további információkért lásd: [dinamikus stílus implementálása a Creator beltéri térképekhez](indoor-map-dynamic-styling.md).
 
 ## <a name="styleobject"></a>StyleObject
 

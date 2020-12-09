@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 951dbb6c1a44e3c081f682db49458be165e9e930
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f102a5dd5b7dccba6643176d06d17a2a65171c90
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556159"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904072"
 ---
 ## <a name="configure-your-local-environment"></a>A helyi környezet konfigurálása
 
@@ -17,15 +17,15 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 + Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java"  
-+ A [Azure functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) verziója 2.7.1846 vagy újabb 2. x verzió.
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-java,programming-language-other"  
++ A [Azure functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) verziója 2.7.1846 vagy újabb verzió.
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 + Az Azure Functions Core Tools verziója, amely megfelel a telepített Python-verziónak:
 
    | Python-verzió | A Core Tools verziója |
    | -------------- | ------------------ |
-   | Python 3,8     | [3. x verzió](../articles/azure-functions/functions-run-local.md#v2) |
+   | Python 3.8     | [3. x verzió](../articles/azure-functions/functions-run-local.md#v2) |
    | Python 3,6<br/>Python 3.7 | [2.7.1846 vagy újabb verzió](../articles/azure-functions/functions-run-local.md#v2) |
   
 ::: zone-end
@@ -46,4 +46,7 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 + [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió.
 
+::: zone-end
+::: zone pivot="programming-language-other"
++ Fejlesztői eszközök a használt nyelvhez. Ez az oktatóanyag az [R programozási nyelvet](https://www.r-project.org/) használja példaként.
 ::: zone-end

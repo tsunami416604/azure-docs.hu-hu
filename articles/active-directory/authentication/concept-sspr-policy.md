@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 344fee9482cd935375d25fab80b1f365d72586f8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a53b193d16a2cefbde7877fd930e5fa73b0c6a36
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743666"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861272"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Jelszóházirend és a fiókra vonatkozó korlátozások a Azure Active Directoryban
 
@@ -95,7 +95,7 @@ A kétkapus szabályzathoz két hitelesítési adat szükséges, például e-mai
 * Egyéni tartomány lett konfigurálva az Azure AD-bérlőhöz, például *contoso.com*; vagy
 * Azure AD Connect az identitások szinkronizálása a helyszíni címtárból
 
-A [set-msolcompanysettings parancsmagjával PowerShell-](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) parancsmag használatával letilthatja a SSPR használatát a rendszergazdai fiókokhoz. A `-SelfServePasswordResetEnabled $False` paraméter letiltja a SSPR a rendszergazdák számára.
+A [set-msolcompanysettings parancsmagjával PowerShell-](/powershell/module/msonline/set-msolcompanysettings) parancsmag használatával letilthatja a SSPR használatát a rendszergazdai fiókokhoz. A `-SelfServePasswordResetEnabled $False` paraméter letiltja a SSPR a rendszergazdák számára.
 
 ### <a name="exceptions"></a>Kivételek
 
@@ -107,7 +107,7 @@ Az egy-kapus szabályzathoz egy hitelesítő adat szükséges, például egy e-m
 
 ## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>Jelszó-elévülési szabályzatok
 
-A *globális rendszergazda* vagy a *felhasználó rendszergazdája* a [Windows PowerShell Microsoft Azure ad moduljának](/powershell/module/Azuread/?view=azureadps-2.0) használatával állíthatja be, hogy a felhasználói jelszavak ne járjanak le.
+A *globális rendszergazda* vagy a *felhasználó rendszergazdája* a [Windows PowerShell Microsoft Azure ad moduljának](/powershell/module/Azuread/) használatával állíthatja be, hogy a felhasználói jelszavak ne járjanak le.
 
 PowerShell-parancsmagokkal is eltávolíthatja a soha nem lejáró konfigurációt, vagy megtekintheti, hogy a rendszer mely felhasználói jelszavakat állítsa le soha nem jár le.
 
@@ -118,13 +118,13 @@ Ez az útmutató más szolgáltatókra is vonatkozik, például az Intune-ra és
 
 ### <a name="set-or-check-the-password-policies-by-using-powershell"></a>Jelszószabályzatok beállítása vagy ellenőrzése a PowerShell-lel
 
-Első lépésként [töltse le és telepítse az Azure ad PowerShell-modult](/powershell/module/Azuread/?view=azureadps-2.0) , és [kapcsolja össze az Azure ad-Bérlővel](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples).
+Első lépésként [töltse le és telepítse az Azure ad PowerShell-modult](/powershell/module/Azuread/) , és [kapcsolja össze az Azure ad-Bérlővel](/powershell/module/azuread/connect-azuread#examples).
 
 A modul telepítése után a következő lépésekkel hajtsa végre az egyes feladatokat szükség szerint.
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>A jelszó elévülési szabályzatának keresése
 
-1. Nyisson meg egy PowerShell-parancssort, és [kapcsolódjon az Azure ad-bérlőhöz](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) egy *globális rendszergazdai* vagy *felhasználói rendszergazdai* fiók használatával.
+1. Nyisson meg egy PowerShell-parancssort, és [kapcsolódjon az Azure ad-bérlőhöz](/powershell/module/azuread/connect-azuread#examples) egy *globális rendszergazdai* vagy *felhasználói rendszergazdai* fiók használatával.
 1. Futtassa a következő parancsok egyikét egy adott felhasználóhoz vagy az összes felhasználóhoz:
 
    * A következő parancsmag futtatásával megtekintheti, hogy egy adott felhasználó jelszava úgy van-e beállítva, hogy soha ne járjon le. Cserélje le az `<user ID>` azonosítót az ellenőriznie kívánt felhasználó felhasználónevére, például *driley \@ contoso.onmicrosoft.com*:
@@ -141,7 +141,7 @@ A modul telepítése után a következő lépésekkel hajtsa végre az egyes fel
 
 ### <a name="set-a-password-to-expire"></a>A lejárati jelszó beállítása
 
-1. Nyisson meg egy PowerShell-parancssort, és [kapcsolódjon az Azure ad-bérlőhöz](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) egy *globális rendszergazdai* vagy *felhasználói rendszergazdai* fiók használatával.
+1. Nyisson meg egy PowerShell-parancssort, és [kapcsolódjon az Azure ad-bérlőhöz](/powershell/module/azuread/connect-azuread#examples) egy *globális rendszergazdai* vagy *felhasználói rendszergazdai* fiók használatával.
 1. Futtassa a következő parancsok egyikét egy adott felhasználóhoz vagy az összes felhasználóhoz:
 
    * Az alábbi parancsmag futtatásával állíthatja be egy felhasználó jelszavát, hogy a jelszó lejárjon. Cserélje le az-t az `<user ID>` ellenőriznie kívánt felhasználó felhasználói azonosítójával, például *driley \@ contoso.onmicrosoft.com*
@@ -158,7 +158,7 @@ A modul telepítése után a következő lépésekkel hajtsa végre az egyes fel
 
 ### <a name="set-a-password-to-never-expire"></a>Jelszó beállítása soha nem jár le
 
-1. Nyisson meg egy PowerShell-parancssort, és [kapcsolódjon az Azure ad-bérlőhöz](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) egy *globális rendszergazdai* vagy *felhasználói rendszergazdai* fiók használatával.
+1. Nyisson meg egy PowerShell-parancssort, és [kapcsolódjon az Azure ad-bérlőhöz](/powershell/module/azuread/connect-azuread#examples) egy *globális rendszergazdai* vagy *felhasználói rendszergazdai* fiók használatával.
 1. Futtassa a következő parancsok egyikét egy adott felhasználóhoz vagy az összes felhasználóhoz:
 
    * Az alábbi parancsmag futtatásával állíthatja be az egyik felhasználó jelszavát, hogy soha ne járjon le. Cserélje le az-t az `<user ID>` ellenőriznie kívánt felhasználó felhasználói azonosítójával, például *driley \@ contoso.onmicrosoft.com*
@@ -176,7 +176,7 @@ A modul telepítése után a következő lépésekkel hajtsa végre az egyes fel
    > [!WARNING]
    > `-PasswordPolicies DisablePasswordExpiration`A jelszavak az attribútum alapján még mindig korra vannak állítva `pwdLastSet` . `pwdLastSet`Ha az attribútum alapján módosítja a lejárati `-PasswordPolicies None` időt, a `pwdLastSet` 90 napnál régebbi jelszavakhoz a felhasználónak a következő bejelentkezéskor módosítania kell a felhasználókat. Ez a változás nagy mennyiségű felhasználót érinthet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SSPR használatának megkezdéséhez tekintse meg az [oktatóanyag: a felhasználók számára a fiók zárolásának feloldását vagy a jelszavak visszaállítását Azure Active Directory önkiszolgáló jelszó-visszaállítással](tutorial-enable-sspr.md).
 

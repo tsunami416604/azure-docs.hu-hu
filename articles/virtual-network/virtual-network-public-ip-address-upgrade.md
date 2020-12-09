@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/07/2020
+ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 0c248149694c2bf66b8c94e9c0a29a8f7da9f4e4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9ea29c47349fd7ccee469188f8929a864cf7bbef
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843740"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905791"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Nyilvános IP-címek frissítése
 
@@ -159,6 +159,7 @@ Kelet-Kína 2<br>
 
 * Egy alapszintű nyilvános IP-cím frissítéséhez nem társítható egyetlen Azure-erőforráshoz sem.  A nyilvános IP-címek hozzárendelésével kapcsolatos további információkért tekintse át [ezt a lapot](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) .  Hasonlóképpen, a Fenntartott IP átmigrálása nem rendelhető hozzá semmilyen felhőalapú szolgáltatáshoz.  A fenntartott IP-címek hozzárendelésével kapcsolatos további információkért tekintse át [ezt a lapot](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) .  
 * Az alapszintről standard SKU-ra frissített nyilvános IP-címek továbbra is nem rendelkeznek [rendelkezésre állási zónákkal](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) , ezért nem társíthatók olyan Azure-erőforrásokkal, amelyek akár zónában redundáns, akár nem.  Vegye figyelembe, hogy ez csak a rendelkezésre állási zónákat tartalmazó régiókra vonatkozik.
+* A standard és az alapszintű érték között nem lehetséges a visszalépés.
 
 ## <a name="next-steps"></a>Következő lépések
 

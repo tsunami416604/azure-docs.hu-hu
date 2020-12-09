@@ -3,14 +3,14 @@ title: A tárolók Azure Monitorának figyelési díja | Microsoft Docs
 description: Ez a cikk ismerteti a metrikák figyelési költségeit, & a Azure Monitor által gyűjtött leltározási adatokat, amelyek segítenek az ügyfeleknek a használat és a kapcsolódó költségek kezelésében.
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a20f564af68c3da6d63394e4cffe7caed91b46
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84204650"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903221"
 ---
-# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>A tárolók Azure Monitor figyelési költségeinek megismerése
+# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Az Azure Monitor tárolók monitorozásával kapcsolatos költségeinek ismertetése
 
 Ez a cikk a tárolók Azure Monitorának díjszabását ismerteti a következők megismerése érdekében:
 
@@ -37,7 +37,7 @@ A következő összefoglalja, hogy milyen típusú adatokat gyűjt a rendszer a 
 
 - A Prometheus-metrikák aktív selejtezése
 
-- A Kubernetes fő csomópontjának naplóinak [diagnosztikai naplója](../../aks/view-master-logs.md) az AK-fürtben a fő összetevők, például a *Kube-apiserver* és a *Kube-Controller-Manager*által generált naplózási adatok elemzéséhez.
+- A Kubernetes fő csomópontjának naplóinak [diagnosztikai naplója](../../aks/view-master-logs.md) az AK-fürtben a fő összetevők, például a *Kube-apiserver* és a *Kube-Controller-Manager* által generált naplózási adatok elemzéséhez.
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>A Kubernetes-fürtökből gyűjtött adatok
 
@@ -110,7 +110,7 @@ Ha engedélyezte a következőképpen konfigurált AK-fürtök figyelését,
 
 A hozzárendelt Log Analytics munkaterületen megtekintheti az óránként generált táblákat és adatmennyiséget. További információ ezekről a táblákról: [tároló rekordjai](container-insights-log-search.md#container-records).
 
-|Táblázat | Becsült méret (MB/óra) |
+|Tábla | Becsült méret (MB/óra) |
 |------|---------------|
 |Teljesítmény | 12.9 |
 |InsightsMetrics | 11,3 |
@@ -127,19 +127,21 @@ Az utólagos elszámolású modellhez Log Analytics alapértelmezett [díjszabá
 
 ## <a name="controlling-ingestion-to-reduce-cost"></a>A lenyelés szabályozása a költségek csökkentése érdekében
 
-Vegyünk egy olyan forgatókönyvet, amelyben a szervezete különböző üzleti egységei megosztják a Kubernetes infrastruktúráját és egy Log Analytics munkaterületet. Minden üzleti egység Kubernetes-névtérrel elválasztva. Megtekintheti, hogy az egyes munkaterületeken milyen mennyiségű adatot tölt be a rendszer egy nemrégiben kiadott munkafüzet használatával. A [munkafüzetek](../platform/workbooks-overview.md#getting-started)katalógusában található **Container bepillantások használatának** munkafüzete segít az adatok forrásának megjelenítésében anélkül, hogy a dokumentációban megjelenő lekérdezésekből saját könyvtárat kellene létrehoznia. Ebben a munkafüzetben vannak olyan diagramok, amelyekkel megtekintheti a számlázható adatait az alábbi szempontok szerint:
+Vegyünk egy olyan forgatókönyvet, amelyben a szervezete különböző üzleti egységei megosztják a Kubernetes infrastruktúráját és egy Log Analytics munkaterületet. Minden üzleti egység Kubernetes-névtérrel elválasztva. Megjelenítheti, hogy mennyi adatot tölt be az egyes munkaterületeken az **adatfelhasználás** runbook, amely a **munkafüzetek megtekintése** legördülő menüből érhető el.
+
+[![Munkafüzetek megjelenítése legördülő lista](media/container-insights-cost/workbooks-dropdown.png)](media/container-insights-cost/workbooks-dropdown.png#lightbox)
+
+
+Ez a munkafüzet segíti az adatok forrásának megjelenítését anélkül, hogy saját, a dokumentációban megosztható lekérdezéseket kellene létrehoznia. Ebben a munkafüzetben vannak olyan diagramok, amelyekkel megtekintheti a számlázható adatait az alábbi szempontok szerint:
 
 - A GB-ban betöltött számlázható összes adat a megoldás szerint
-
 - Tároló-naplók által betöltött számlázható adatmennyiség (alkalmazás-naplók)
-
 - A számlázható tároló a Kubernetes-névtér által betöltött adatot naplózza
-
 - Számlázható tároló naplózza a fürt neve szerint elkülönítve tárolt adatmennyiségeket
-
 - Logsource-bejegyzés által betöltött számlázható tároló naplózási adata
-
 - Diagnosztikai főcsomóponti naplók által betöltött számlázható diagnosztikai adatok
+
+[![Adathasználati munkafüzet](media/container-insights-cost/data-usage-workbook.png)](media/container-insights-cost/data-usage-workbook.png#lightbox)
 
 Ha szeretné megtudni, hogyan kezelhetők a munkafüzetek jogai és engedélyei, tekintse át a [hozzáférés-vezérlés](../platform/workbooks-access-control.md)című témakört.
 
@@ -196,6 +198,6 @@ Ha a Prometheus- [metrikai selejtet](container-insights-prometheus-integration.m
 
 - A pod-megjegyzéseken keresztüli adatkaparás során győződjön meg arról, hogy a névtér alapján szűri, hogy kizárhatja a nem használt névterekről származó Pod-metrikák (például a **fejlesztői és tesztelési** névterek) selejtét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan állapítható meg, hogy milyen költségek várhatók a legutóbbi használati mintákon a tárolók Azure Monitor gyűjtött adatok alapján. lásd: [a használat kezelése és a becsült költségek](../platform/manage-cost-storage.md).

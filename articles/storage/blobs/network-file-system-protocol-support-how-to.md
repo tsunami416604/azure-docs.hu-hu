@@ -9,19 +9,16 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 7419e8667f07eec03e860634c7b3fddcac0e186b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97b52159684eca9be59ccc711f6d2f19b5eb8d49
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95901553"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906114"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>BLOB Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával
 
 A blob Storage-tárolók egy Windows-vagy Linux-alapú Azure-beli virtuális gépről (VM) vagy olyan Windows-vagy Linux-rendszerből is csatlakoztathatók, amely a helyszínen fut az NFS 3,0 protokoll használatával. Ez a cikk lépésről lépésre haladó útmutatót tartalmaz. Ha többet szeretne megtudni az NFS 3,0 protokoll támogatásáról a blob Storage-ban, tekintse meg a következőt: [hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)](network-file-system-protocol-support.md).
-
-> [!NOTE]
-> Az NFS 3,0 protokoll támogatása az Azure Blob Storage-ban nyilvános előzetes verzióban érhető el, és a következő régiókban érhető el: USA keleti régiója, USA középső régiója, USA nyugati középső régiója, Délkelet-Ausztrália, Észak-Európa, Egyesült Királyság nyugati régiója, Korea középső régiója, Dél-Korea és Közép-Kanada
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>1. lépés: az NFS 3,0 protokoll szolgáltatás regisztrálása az előfizetéssel
 
@@ -48,13 +45,7 @@ A blob Storage-tárolók egy Windows-vagy Linux-alapú Azure-beli virtuális gé
    Register-AzProviderFeature -FeatureName AllowNFSV3 -ProviderNamespace Microsoft.Storage 
    ```
 
-5. Regisztrálja a `PremiumHns` szolgáltatást a következő parancs használatával is.
-
-   ```powershell
-   Register-AzProviderFeature -FeatureName PremiumHns -ProviderNamespace Microsoft.Storage  
-   ```
-
-6. Regisztrálja az erőforrás-szolgáltatót a következő parancs használatával.
+5. Regisztrálja az erőforrás-szolgáltatót a következő parancs használatával.
     
    ```powershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.Storage   
@@ -66,7 +57,6 @@ A regisztráció jóváhagyása akár egy órát is igénybe vehet. A regisztrá
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFSV3
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumHns  
 ```
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>3. lépés: Azure-Virtual Network létrehozása (VNet)
@@ -86,20 +76,20 @@ A fiókban lévő információk védelme érdekében tekintse meg a következő 
 
 Ha az NFS 3,0 használatával szeretne tárolót csatlakoztatni, létre kell hoznia egy Storage-fiókot, **miután** regisztrálta a szolgáltatást az előfizetésében. A szolgáltatás regisztrálása előtt már nem engedélyezheti a fiókokat. 
 
-A szolgáltatás előzetes kiadásában az NFS 3,0 protokoll csak [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) -fiókokban támogatott.
+A szolgáltatás előzetes kiadásában az NFS 3,0 protokoll támogatott a [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) és az [általános célú v2-](../common/storage-account-overview.md#general-purpose-v2-accounts) fiókok esetében.
 
 A fiók konfigurálásakor válassza ki a következő értékeket:
 
-|Beállítás | Érték|
-|----|---|
-|Hely|A következő régiók egyike: USA keleti régiója, USA középső régiója, USA nyugati középső régiója, Délkelet-Ausztrália, Észak-Európa, Egyesült Királyság nyugati régiója, Korea középső régiója, Dél-Korea és Közép-Kanada |
-|Teljesítmény|Prémium|
-|Fiók altípusa|BlockBlobStorage|
-|Replikáció|Helyileg redundáns tárolás (LRS)|
-|Kapcsolati mód|Nyilvános végpont (kiválasztott hálózatok) vagy magánhálózati végpont|
-|Biztonságos átvitelre van szükség|Disabled (Letiltva)|
-|Hierarchikus névtér|Engedélyezve|
-|NFS V3|Engedélyezve|
+|Beállítás | Prémium szintű teljesítmény | Standard teljesítmény  
+|----|---|---|
+|Hely|Az összes elérhető régió |A következő régiók egyike: Kelet-Ausztrália, Korea középső régiója és az USA déli középső régiója   
+|Teljesítmény|Prémium| Standard
+|Fiók altípusa|BlockBlobStorage| Általános célú v2
+|Replikáció|Helyileg redundáns tárolás (LRS)| Helyileg redundáns tárolás (LRS)
+|Kapcsolati mód|Nyilvános végpont (kiválasztott hálózatok) vagy magánhálózati végpont |Nyilvános végpont (kiválasztott hálózatok) vagy magánhálózati végpont
+|Biztonságos átvitelre van szükség|Disabled (Letiltva)|Disabled (Letiltva)
+|Hierarchikus névtér|Engedélyezve|Engedélyezve
+|NFS V3|Engedélyezve |Engedélyezve 
 
 Elfogadhatja az összes többi beállítás alapértelmezett értékeit is. 
 

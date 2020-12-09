@@ -1,24 +1,28 @@
 ---
-title: 'Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával | Microsoft Azure térképek'
-description: A Azure Notebooks (Python) használatával Microsoft Azure Maps időjárási szolgáltatásból származó időjárás-előrejelzési adatokkal való csatlakoztatásának útmutatója.
+title: 'Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) és Microsoft Azure Maps használatával'
+description: A Azure Notebooks (Python) használatával Microsoft Azure Maps időjárási szolgáltatásokból származó időjárás-előrejelzési adatokkal való összekapcsolásáról szóló oktatóanyag.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/29/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f020f3d9e23b9f834fd203f6d030656581fb4416
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6d2ede8ab49b22a22d8959ce296182a2210640d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896599"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905468"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 
-A szélenergia egy alternatív energiaforrás a fosszilis tüzelőanyagok számára a klímaváltozás elleni küzdelem érdekében. Mivel a szél nem felel meg a természetnek, a szélenergia-kezelőknek gépi tanulási (ML) modelleket kell létrehozniuk a szélenergia kapacitásának előrejelzéséhez. Ez az előrejelzés szükséges a villamosenergia-kereslet kielégítéséhez, valamint a hálózat stabilitásának biztosításához. Ebben az oktatóanyagban bemutatjuk, hogyan történik a Azure Maps időjárási előrejelzési információk összevonása a bemutatóval az időjárási olvasmányok esetében. A Azure Maps időjárási szolgáltatás meghívásával az időjárás-előrejelzési adatkérést kéri a rendszer.
+> [!IMPORTANT]
+> Azure Maps időjárási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+A szélenergia egy alternatív energiaforrás a fosszilis tüzelőanyagok számára a klímaváltozás elleni küzdelem érdekében. Mivel a szél nem felel meg a természetnek, a szélenergia-kezelőknek gépi tanulási (ML) modelleket kell létrehozniuk a szélenergia kapacitásának előrejelzéséhez. Ez az előrejelzés szükséges a villamosenergia-kereslet kielégítéséhez, valamint a hálózat stabilitásának biztosításához. Ebben az oktatóanyagban bemutatjuk, hogyan történik a Azure Maps időjárási előrejelzési információk összevonása a bemutatóval az időjárási olvasmányok esetében. A Azure Maps időjárási szolgáltatások (előzetes verzió) meghívásával a rendszer az időjárás-előrejelzési adatkérést kéri.
 
 Az oktatóanyagban a következőket végezheti el:
 
@@ -68,7 +72,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Napi előrejelzési adatgyűjtés kérése
 
-Ebben az esetben napi előrejelzést szeretnénk kérni az egyes érzékelők helyéről. Az alábbi szkript meghívja a Azure Maps időjárási szolgáltatás [napi előrejelzési API](/rest/api/maps/weather/getdailyforecastpreview) -ját. Ez az API az aktuális dátumtól számított 15 napra visszaadja az egyes szélturbinák időjárási előrejelzéseit.
+Ebben az esetben napi előrejelzést szeretnénk kérni az egyes érzékelők helyéről. Az alábbi szkript meghívja a Azure Maps Weather Services (előzetes [verzió) napi előrejelzési API](/rest/api/maps/weather/getdailyforecastpreview) -ját. Ez az API az aktuális dátumtól számított 15 napra visszaadja az egyes szélturbinák időjárási előrejelzéseit.
 
 
 ```python
@@ -82,7 +86,7 @@ years,months,days = [],[],[]
 dates_check=set()
 wind_speeds, wind_direction = [], []
 
-# Call azure maps weather service to get daily forecast data for 15 days from current date
+# Call azure maps Weather services (Preview) to get daily forecast data for 15 days from current date
 session = aiohttp.ClientSession()
 j=-1
 for i in range(0, len(coords), 2):

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0769366ad56e1b7431dbfa7c95f1256c509d24fa
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: bed64df921326ad4d219f934f7a7bc6860bfc7d8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358167"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861901"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Egy Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata hozzáférési jogkivonat beszerzéséhez 
 
@@ -64,7 +64,7 @@ Az ügyfélalkalmazások felügyelt identitásokat igényelhetnek az Azure-erőf
 
 A hozzáférési token beszerzésének alapvető felülete a REST-alapú, így elérhetővé válik bármely, a virtuális gépen futó ügyfélalkalmazás számára, amely HTTP REST-hívásokat tesz lehetővé. Ez hasonló az Azure AD programozási modellhez, kivéve, ha az ügyfél egy végpontot használ a virtuális gépen (vs egy Azure AD-végpont).
 
-Példa az Azure Instance Metadata Service (IMDS) végpontjának használatával történő kérelemre *(ajánlott)* :
+Példa az Azure Instance Metadata Service (IMDS) végpontjának használatával történő kérelemre *(ajánlott)*:
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -81,7 +81,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `client_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a client_idét jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van.|
 | `mi_res_id` | Választható Egy lekérdezési karakterlánc paraméter, amely annak a felügyelt identitásnak a mi_res_idét (Azure Resource ID) jelzi, amelyhez a tokent szeretné. Kötelező, ha a virtuális gépnek több felhasználó által hozzárendelt felügyelt identitása van. |
 
-Mintául szolgáló kérelem az Azure-erőforrások virtuálisgép-bővítmény végpontjának felügyelt identitások használatával (a 2019 januári verzióban való *használatra tervezett)* :
+Mintául szolgáló kérelem az Azure-erőforrások virtuálisgép-bővítmény végpontjának felügyelt identitások használatával (a 2019 januári verzióban való *használatra tervezett)*:
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Jogkivonat beszerzése a .NET-hez készült Microsoft. Azure. Services. AppAuthentication kódtár használatával
 
-A .NET-alkalmazások és-függvények esetében az Azure-erőforrások felügyelt identitásával való együttműködés legegyszerűbb módja a Microsoft. Azure. Services. AppAuthentication csomag. Ez a kódtár lehetővé teszi a kód helyi tesztelését a fejlesztői gépen, a Visual studióból, az [Azure CLI](/cli/azure?view=azure-cli-latest)-ből vagy Active Directory integrált hitelesítésből származó felhasználói fiók használatával. A könyvtár helyi fejlesztési lehetőségeiről további információt a [Microsoft. Azure. Services. AppAuthentication dokumentációjában](../../key-vault/general/service-to-service-authentication.md)talál. Ez a szakasz bemutatja, hogyan kezdheti meg a kódtárat a kódban.
+A .NET-alkalmazások és-függvények esetében az Azure-erőforrások felügyelt identitásával való együttműködés legegyszerűbb módja a Microsoft. Azure. Services. AppAuthentication csomag. Ez a kódtár lehetővé teszi a kód helyi tesztelését a fejlesztői gépen, a Visual studióból, az [Azure CLI](/cli/azure)-ből vagy Active Directory integrált hitelesítésből származó felhasználói fiók használatával. A könyvtár helyi fejlesztési lehetőségeiről további információt a [Microsoft. Azure. Services. AppAuthentication dokumentációjában](../../key-vault/general/service-to-service-authentication.md)talál. Ez a szakasz bemutatja, hogyan kezdheti meg a kódtárat a kódban.
 
 1. Adjon hozzá hivatkozásokat a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és a [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) kulcstartó NuGet-csomagjaihoz az alkalmazáshoz.
 
@@ -391,7 +391,7 @@ A szabályozás korlátozásai az IMDS-végponton végrehajtott hívások szám�
 
 Az újrapróbálkozáshoz a következő stratégiát javasoljuk: 
 
-| **Újrapróbálkozási stratégia** | **Beállítások** | **Értékek** | **Működés** |
+| **Újrapróbálkozási stratégia** | **Beállítások** | **Értékek** | **A működési elv** |
 | --- | --- | --- | --- |
 |ExponentialBackoff |Ismétlések száma<br />Visszatartás (min.)<br />Visszatartás (max.)<br />Visszatartás (változás)<br />Első gyors újrapróbálkozás |5<br />0 másodperc<br />60 másodperc<br />2 másodperc<br />hamis |1. kísérlet – 0 mp. késleltetés<br />2. kísérlet – kb. 2 mp. késleltetés<br />3. kísérlet – kb. 6 mp. késleltetés<br />4. kísérlet – kb. 14 mp. késleltetés<br />5. kísérlet – kb. 30 mp. késleltetés |
 

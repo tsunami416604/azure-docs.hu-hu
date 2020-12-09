@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: c77f0e93e9f0084f335df39d2878871d66af0aac
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2da0407f848b0795414b071b9e082c7ed60a633d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498030"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861884"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások
 
@@ -39,14 +39,14 @@ Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális
 
 Tekintse át az alábbi listát az Azure API Management felügyelt identitásának konfigurálásához (az elérhető régiókban):
 
-- [Azure Resource Manager sablon](../../api-management/api-management-howto-use-managed-service-identity.md)
+- [Azure Resource Manager-sablon](../../api-management/api-management-howto-use-managed-service-identity.md)
 
 ### <a name="azure-app-configuration"></a>Azure App Configuration
 
 | Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | Nem érhető el |
-| Felhasználó által hozzárendelt | ![Elérhető][check] | ![Elérhető][check]  | Nem érhető el  | Nem érhető el |
+| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | ![Elérhető][check] |
+| Felhasználó által hozzárendelt | ![Elérhető][check] | ![Elérhető][check]  | Nem érhető el  | ![Elérhető][check] |
 
 Tekintse át az alábbi listát az Azure-alkalmazások konfigurációjának felügyelt identitásának konfigurálásához (az elérhető régiókban):
 
@@ -64,7 +64,7 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 - [Azure Portal](../../app-service/overview-managed-identity.md#using-the-azure-portal)
 - [Azure CLI](../../app-service/overview-managed-identity.md#using-the-azure-cli)
 - [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
-- [Azure Resource Manager sablon](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
+- [Azure Resource Manager-sablon](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc-kompatibilis Kubernetes
 
@@ -123,7 +123,7 @@ Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális
 Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azure Container Instances (a régiókban, ahol elérhető):
 
 - [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
-- [Azure Resource Manager sablon](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [Azure Resource Manager-sablon](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
 - [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
 
@@ -188,7 +188,7 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 - [Azure Portal](../../app-service/overview-managed-identity.md#using-the-azure-portal)
 - [Azure CLI](../../app-service/overview-managed-identity.md#using-the-azure-cli)
 - [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
-- [Azure Resource Manager sablon](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
+- [Azure Resource Manager-sablon](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-iot-hub"></a>Azure IoT Hub
 
@@ -230,7 +230,7 @@ Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális
 Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azure Logic Apps (a régiókban, ahol elérhető):
 
 - [Azure Portal](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
-- [Azure Resource Manager sablon](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+- [Azure Resource Manager-sablon](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 
@@ -252,7 +252,7 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 
 - [Azure Portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
-- [Azure CLI](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
+- [Azure CLI](/cli/azure/policy/assignment#az-policy-assignment-create)
 - [Azure Resource Manager-sablonok](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/resources/policyassignments/create)
 
@@ -268,13 +268,13 @@ Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális
 
 A következő listában megtekintheti az Azure Service Fabric-alkalmazások felügyelt identitásának konfigurálását az összes régióban:
 
-- [Azure Resource Manager sablon](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
+- [Azure Resource Manager-sablon](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
 
 ### <a name="azure-spring-cloud"></a>Azure Spring Cloud
 
 | Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Rendszer által hozzárendelt | ![Elérhető][check] | Nem érhető el | Nem érhető el | Nem érhető el |
+| Rendszer által hozzárendelt | ![Elérhető][check] | Nem érhető el | Nem érhető el | ![Elérhető][check] |
 | Felhasználó által hozzárendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
 
 
@@ -338,7 +338,7 @@ Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális
 
 Tekintse át az alábbi listát az Azure Signaler szolgáltatás felügyelt identitásának konfigurálásához (az elérhető régiókban):
 
-- [Azure Resource Manager sablon](../../azure-signalr/howto-use-managed-identity.md)
+- [Azure Resource Manager-sablon](../../azure-signalr/howto-use-managed-identity.md)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure AD-hitelesítést támogató Azure-szolgáltatások
 
@@ -353,7 +353,7 @@ A Azure Resource Manager elérésének konfigurálásához tekintse meg a követ
 - [Hozzáférés kiosztása az Azure CLI-n keresztül](howto-assign-access-CLI.md)
 - [Hozzáférés kiosztása Azure Resource Manager sablonon keresztül](../../role-based-access-control/role-assignments-template.md)
 
-| Felhőbeli | Erőforrás-azonosító | Állapot |
+| Felhőbeli | Erőforrás-azonosító | status |
 |--------|------------|:-:|
 | Azure globális | `https://management.azure.com/`| ![Elérhető][check] |
 | Azure Government | `https://management.usgovcloudapi.net/` | ![Elérhető][check] |
@@ -362,7 +362,7 @@ A Azure Resource Manager elérésének konfigurálásához tekintse meg a követ
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
-| Felhőbeli | Erőforrás-azonosító | Állapot |
+| Felhőbeli | Erőforrás-azonosító | status |
 |--------|------------|:-:|
 | Azure globális | `https://vault.azure.net`| ![Elérhető][check] |
 | Azure Government | `https://vault.usgovcloudapi.net` | ![Elérhető][check] |
@@ -371,7 +371,7 @@ A Azure Resource Manager elérésének konfigurálásához tekintse meg a követ
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
 
-| Felhőbeli | Erőforrás-azonosító | Állapot |
+| Felhőbeli | Erőforrás-azonosító | status |
 |--------|------------|:-:|
 | Azure globális | `https://datalake.azure.net/` | ![Elérhető][check] |
 | Azure Government |  | Nem érhető el |
@@ -380,7 +380,7 @@ A Azure Resource Manager elérésének konfigurálásához tekintse meg a követ
 
 ### <a name="azure-sql"></a>Azure SQL
 
-| Felhőbeli | Erőforrás-azonosító | Állapot |
+| Felhőbeli | Erőforrás-azonosító | status |
 |--------|------------|:-:|
 | Azure globális | `https://database.windows.net/` | ![Elérhető][check] |
 | Azure Government | `https://database.usgovcloudapi.net/` | ![Elérhető][check] |
@@ -389,7 +389,7 @@ A Azure Resource Manager elérésének konfigurálásához tekintse meg a követ
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-| Felhőbeli | Erőforrás-azonosító | Állapot |
+| Felhőbeli | Erőforrás-azonosító | status |
 |--------|------------|:-:|
 | Azure globális | `https://eventhubs.azure.net` | ![Elérhető][check] |
 | Azure Government |  | Nem érhető el |
@@ -398,7 +398,7 @@ A Azure Resource Manager elérésének konfigurálásához tekintse meg a követ
 
 ### <a name="azure-service-bus"></a>Azure Service Bus
 
-| Felhőbeli | Erőforrás-azonosító | Állapot |
+| Felhőbeli | Erőforrás-azonosító | status |
 |--------|------------|:-:|
 | Azure globális | `https://servicebus.azure.net`  | ![Elérhető][check] |
 | Azure Government |  | ![Elérhető][check] |
@@ -415,7 +415,7 @@ A Azure Resource Manager elérésének konfigurálásához tekintse meg a követ
 
 ### <a name="azure-storage-blobs-and-queues"></a>Azure Storage-blobok és-várólisták
 
-| Felhőbeli | Erőforrás-azonosító | Állapot |
+| Felhőbeli | Erőforrás-azonosító | status |
 |--------|------------|:-:|
 | Azure globális | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | ![Elérhető][check] |
 | Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | ![Elérhető][check] |
@@ -424,7 +424,7 @@ A Azure Resource Manager elérésének konfigurálásához tekintse meg a követ
 
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 
-| Felhőbeli | Erőforrás-azonosító | Állapot |
+| Felhőbeli | Erőforrás-azonosító | status |
 |--------|------------|:-:|
 | Azure globális | `https://*.asazure.windows.net` | ![Elérhető][check] |
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | ![Elérhető][check] |

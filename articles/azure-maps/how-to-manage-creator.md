@@ -1,27 +1,31 @@
 ---
-title: Azure Maps létrehozójának kezelése
-description: Ebből a cikkből megtudhatja, hogyan kezelheti Azure Maps létrehozóját.
+title: Microsoft Azure Maps Creator kezelése (előzetes verzió)
+description: Ebből a cikkből megtudhatja, hogyan kezelheti Microsoft Azure Maps Creatort (előzetes verzió).
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e6d8a2bfe20d0e7b52dcd60127b3666f0c21a792
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 1ed3a9033f9be39774e1c52982f63259cc477d29
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895800"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906097"
 ---
-# <a name="manage-azure-maps-creator"></a>Azure Maps létrehozójának kezelése
+# <a name="manage-azure-maps-creator-preview"></a>Azure Maps létrehozójának kezelése (előzetes verzió) 
+
+> [!IMPORTANT]
+> A Azure Maps Creator Services jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Maps létrehozója lehetővé teszi, hogy saját beltéri térképi adatkészletet hozzon létre. A Azure Maps API és a beltéri térképek modul használatával interaktív és dinamikus beltéri térképes webalkalmazásokat fejleszthet. Jelenleg a Creator csak az S1 árképzési szinten érhető el a Egyesült Államok.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és törölhet egy létrehozói erőforrást egy Azure Maps fiókban.
 
-## <a name="create-creator-resource"></a>Létrehozó erőforrás létrehozása
+## <a name="create-creator-preview-resource"></a>Létrehozó (előzetes) erőforrás létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 
@@ -52,7 +56,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és törölhet egy létrehoz
    >[!NOTE]
    >A létrehozó erőforrás lapon visszatérhet a Azure Maps fiókhoz, amelyhez a Azure Maps fiókra kattint.
 
-## <a name="delete-creator-resource"></a>Létrehozó erőforrás törlése
+## <a name="delete-creator-preview-resource"></a>Létrehozó (előzetes) erőforrás törlése
 
 A létrehozó erőforrás törléséhez navigáljon a Azure Maps-fiókjához. Válassza az **Áttekintés** lehetőséget a **létrehozó** területen. Kattintson a **Törlés** gombra.
 
@@ -67,19 +71,19 @@ Kattintson a **Törlés** gombra, és írja be a létrehozó nevét a törlés m
 
 ## <a name="authentication"></a>Hitelesítés
 
-A létrehozó örökli a Azure Maps Access Control (IAM) beállításait. Az adathozzáféréshez szükséges API-hívásokat hitelesítési és engedélyezési szabályokkal kell elküldeni.
+A Creator (előzetes verzió) a Azure Maps Access Control (IAM) beállításait örökli. Az adathozzáféréshez szükséges API-hívásokat hitelesítési és engedélyezési szabályokkal kell elküldeni.
 
 A létrehozói használati adatok a Azure Maps használati diagramokban és a tevékenység naplójában vannak beépítve.  További információ: [a hitelesítés kezelése Azure Mapsban](./how-to-manage-authentication.md).
 
 ## <a name="access-to-creator-services"></a>Hozzáférés a Creator szolgáltatásaihoz
 
-A Creator Services csak a létrehozás során kiválasztott helyről érhető el. Ha a rendszer a kiválasztott helyen kívülről kezdeményezi a létrehozói szolgáltatásokat, a rendszer egy felhasználói hibaüzenetet küld vissza. Ha a kiválasztott helyen kívülről szeretne hívásokat kezdeményezni, a szolgáltatás URL-címének tartalmaznia kell a földrajzi előtagot a kiválasztott helyekhez. Ha például a létrehozót a Egyesült Államok hozza létre, a konverziós szolgáltatásnak küldött összes hívást el kell küldenie a következőnek: `us.atlas.microsoft.com/conversion/convert` .
+A Creator Services (előzetes verzió) csak a létrehozáskor kiválasztott helyről érhető el. Ha a rendszer a kiválasztott helyen kívülről kezdeményezi a létrehozói szolgáltatásokat, a rendszer egy felhasználói hibaüzenetet küld vissza. Ha a kiválasztott helyen kívülről szeretne hívásokat kezdeményezni, a szolgáltatás URL-címének tartalmaznia kell a földrajzi előtagot a kiválasztott helyekhez. Ha például a létrehozót a Egyesült Államok hozza létre, a konverziós szolgáltatásnak küldött összes hívást el kell küldenie a következőnek: `us.atlas.microsoft.com/conversion/convert` .
 
 Emellett a Creatorbe importált összes adathalmazt a létrehozó erőforrással megegyező földrajzi helyre kell feltölteni. Ha például az Creator ki van töltve az Egyesült-ban, az összes nyers adattal fel kell tölteni a-on keresztül `us.atlas.microsoft.com/mapData/upload` .
 
 ## <a name="next-steps"></a>Következő lépések
 
-Bevezetés a beltéri leképezés létrehozója számára:
+Bevezetés a Creator Services (előzetes verzió) szolgáltatásba a beltéri leképezéshez:
 
 > [!div class="nextstepaction"]
 > [Adatok feltöltése](creator-indoor-maps.md#upload-a-drawing-package)
@@ -88,7 +92,7 @@ Bevezetés a beltéri leképezés létrehozója számára:
 > [Adatátalakítás](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Adatkészlet](creator-indoor-maps.md#datasets)
+> [Adathalmaz](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tileset](creator-indoor-maps.md#tilesets)
@@ -96,7 +100,7 @@ Bevezetés a beltéri leképezés létrehozója számára:
 > [!div class="nextstepaction"]
 > [Szolgáltatás állapotának beállítása](creator-indoor-maps.md#feature-statesets)
 
-Megtudhatja, hogyan teheti elérhetővé a belső térképeket az alkalmazásban a Creator használatával:
+Ismerje meg, hogyan használhatja a Creator Services (előzetes verzió) szolgáltatást beltéri térképek megjelenítéséhez az alkalmazásban:
 
 > [!div class="nextstepaction"]
 > [Azure Maps Creator oktatóanyag](tutorial-creator-indoor-maps.md)

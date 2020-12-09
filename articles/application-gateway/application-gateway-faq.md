@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: dc262e133f6e91271d7e9848bdca9d3a6062fc66
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d46c1d8efb5234d47c80ca4256c2f56d56ccf805
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751699"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862173"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -21,7 +21,7 @@ ms.locfileid: "96751699"
 
 Az alábbi gyakori kérdések az Azure Application Gateway.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-application-gateway"></a>Mi az Application Gateway?
 
@@ -133,7 +133,7 @@ Igen. A Application Gateway v1 SKU továbbra is támogatott lesz. Javasoljuk azo
 
 ### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>Támogatja az Application Gateway v2 az NTLM-hitelesítéssel történő proxy-kérelmeket?
 
-Nem. A Application Gateway v2 még nem támogatja az NTLM-hitelesítéssel rendelkező proxy-kérelmeket.
+Nem. A Application Gateway v2 nem támogatja az NTLM-hitelesítéssel történő proxy-kérelmeket.
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>A Application Gateway affinitás cookie támogatja a SameSite attribútumot?
 Igen, a [Chromium böngésző](https://www.chromium.org/Home) [V80 frissítése](https://chromiumdash.appspot.com/schedule) a SameSite attribútum nélküli http-cookie-kra vonatkozó mandátumot vezetett be SameSite = LAX néven. Ez azt jelenti, hogy a böngésző nem fogja elküldeni a Application Gateway affinitási cookie-t harmadik féltől származó környezetben. 
@@ -474,6 +474,6 @@ A platform jelenlegi korlátai miatt, ha a Application Gateway v2 (Standard_v2, 
 
 Nem, Application Gateway nem tárolja az ügyféladatokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

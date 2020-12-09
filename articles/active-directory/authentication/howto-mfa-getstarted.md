@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 978f404aa9b99819460e46ea89df19d27431b8b8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743139"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861306"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Azure AD Multi-Factor Authentication üzemelő példány megtervezése
 
@@ -165,7 +165,7 @@ A következő lépések végrehajtásával kényszerítheti a felhasználókat, 
 2. A feltételes hozzáférés használatával kikényszerítheti a többtényezős hitelesítést a csoport számára az összes erőforráshoz való hozzáféréshez.
 3. Rendszeresen ellenőrizze a csoporttagság újraértékelését, és távolítsa el a csoportból regisztrált felhasználókat.
 
-Azonosíthatja a regisztrált és nem regisztrált Azure AD MFA-felhasználókat olyan PowerShell-parancsokkal, amelyek a [MSOnline PowerShell-modulra](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)támaszkodnak.
+Azonosíthatja a regisztrált és nem regisztrált Azure AD MFA-felhasználókat olyan PowerShell-parancsokkal, amelyek a [MSOnline PowerShell-modulra](/powershell/azure/active-directory/install-msonlinev1)támaszkodnak.
 
 #### <a name="identify-registered-users"></a>Regisztrált felhasználók azonosítása
 
@@ -250,7 +250,7 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
     * Válassza a **Kiválasztás** lehetőséget.
 1. Ugorja át a **munkamenet** szakaszt.
 1. Állítsa be a **házirend engedélyezése** kapcsolót **be értékre.**
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Létrehozás** gombra.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>A helyszíni rendszerekkel való integráció megtervezése
 
@@ -365,7 +365,7 @@ Az Azure AD Multi-Factor Authentication jelentéseket biztosít a Azure Portalon
 
 Az Azure AD MFA gyakori problémáinak megoldásait az [Azure ad multi-Factor Authentication hibaelhárítási cikkében](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) találja a Microsoft ügyfélszolgálata központban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD Multi-Factor Authentication működés közbeni megtekintéséhez hajtsa végre a következő oktatóanyagot:
 

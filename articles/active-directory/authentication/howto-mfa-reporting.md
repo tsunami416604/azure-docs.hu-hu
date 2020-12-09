@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2a02ae7bd89e99dc2eee013394a1f85139c1c00
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 5f78b70599d6d0ae8825accf4cc55cdc1c01d9ce
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742776"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861238"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>A bejelentkezések jelentés használata az Azure AD Multi-Factor Authentication eseményeinek áttekintéséhez
 
@@ -91,7 +91,7 @@ A következő részleteket a *hitelesítő adatok* ablakban tekintheti meg, amel
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>PowerShell-jelentéskészítés az MFA-hoz regisztrált felhasználókkal
 
-Először győződjön meg arról, hogy telepítve van a [MSOnline v1 PowerShell-modulja](/powershell/azure/active-directory/overview?view=azureadps-1.0) .
+Először győződjön meg arról, hogy telepítve van a [MSOnline v1 PowerShell-modulja](/powershell/azure/active-directory/overview) .
 
 Azonosítsa az MFA-val regisztrált felhasználókat az alábbi PowerShell-lel. Ezek a parancsok kizárják a letiltott felhasználókat, mivel ezek a fiókok nem tudják hitelesíteni az Azure AD-t:
 
@@ -178,6 +178,6 @@ A következő további információk és jelentések érhetők el az MFA-esemén
 | Megkerülő felhasználói előzmények | Azure AD > Security > MFA > egyszeri Mellőzés | Az MFA-kiszolgálói kérelmek előzményeit jeleníti meg a felhasználók számára az MFA megkerülése érdekében. |
 | Kiszolgáló állapota | Azure AD > Security > MFA > kiszolgáló állapota | Megjeleníti a fiókjához társított MFA-kiszolgálók állapotát. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk áttekintést nyújt a bejelentkezési tevékenységek jelentéséről. További információ arról, hogy a jelentés mit tartalmaz és hogyan értelmezi az adatokat, lásd: [bejelentkezési tevékenységek jelentései az Azure ad-ben](../reports-monitoring/concept-sign-ins.md).

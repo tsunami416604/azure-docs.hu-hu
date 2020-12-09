@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 78455659d76d259c626745c93770428c25042b2d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b4146f11804dd11f7dd0f5536bc040cb30e25b03
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908812"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902731"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)
 
 A blob Storage mostantól támogatja a Network File System (NFS) 3,0 protokollt. Ez a támogatás lehetővé teszi, hogy a Windows-vagy Linux-ügyfelek egy Azure-beli virtuális gépről (VM) vagy egy helyszíni számítógépről csatlakoztassanak egy tárolót a blob Storage-ban. 
 
 > [!NOTE]
-> Az NFS 3,0 protokoll támogatása az Azure Blob Storage-ban nyilvános előzetes verzióban érhető el, és a következő régiókban érhető el: USA keleti régiója, USA középső régiója, USA nyugati középső régiója, Délkelet-Ausztrália, Észak-Európa, Egyesült Királyság nyugati régiója, Korea középső régiója, Dél-Korea és Közép-Kanada
+> Az NFS 3,0 protokoll támogatása az Azure Blob Storage-ban nyilvános előzetes verzióban érhető el. A standard szintű teljesítményű GPV2 a következő régiókban támogatja: Kelet-Ausztrália, Korea középső régiója és az USA déli középső régiója. Az előzetes verzió az összes nyilvános régióban a prémium szintű támogatja is blokkolja.
 
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>Általános munkafolyamat: Storage-fiók tárolójának csatlakoztatása
 
@@ -111,6 +111,6 @@ Az előzetes verzió ideje alatt a Storage-fiókban tárolt adatokra ugyanazon a
 
 Az előzetes verzióban nem számítunk fel tranzakciót. A tranzakciók díjszabása változhat, és akkor lesz meghatározva, ha általánosan elérhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként tekintse meg [a blob Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával](network-file-system-protocol-support-how-to.md)című témakört.

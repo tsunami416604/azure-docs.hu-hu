@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a62aafd8073b5f1a35ba340c48c80f498be2c2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3a7304ffbb7718205ead48e27989d4a169375997
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834455"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861986"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -93,7 +93,7 @@ Azure AD Privileged Identity Management bekapcsolását követően tekintse meg 
 * Exchange-rendszergazda
 * SharePoint-rendszergazda
 
-Ha nem rendelkezik Azure AD Privileged Identity Management a szervezetében, használhatja a [POWERSHELL API](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)-t. Kezdje a globális rendszergazdai szerepkörrel, mert a globális rendszergazda ugyanazokkal az engedélyekkel rendelkezik az összes olyan felhőalapú szolgáltatáshoz, amelyhez a szervezet előfizetett. Ezek az engedélyek a hozzárendelésük helyétől függetlenül megadhatók: a Microsoft 365 felügyeleti központban, a Azure Portalban vagy a Microsoft PowerShellhez készült Azure AD-modulban.
+Ha nem rendelkezik Azure AD Privileged Identity Management a szervezetében, használhatja a [POWERSHELL API](/powershell/module/azuread/get-azureaddirectoryrolemember)-t. Kezdje a globális rendszergazdai szerepkörrel, mert a globális rendszergazda ugyanazokkal az engedélyekkel rendelkezik az összes olyan felhőalapú szolgáltatáshoz, amelyhez a szervezet előfizetett. Ezek az engedélyek a hozzárendelésük helyétől függetlenül megadhatók: a Microsoft 365 felügyeleti központban, a Azure Portalban vagy a Microsoft PowerShellhez készült Azure AD-modulban.
 
 Távolítsa el azokat a fiókokat, amelyekre már nincs szükség ezekben a szerepkörökben. Ezután kategorizálja a rendszergazdai szerepkörökhöz rendelt többi fiókot:
 
@@ -359,7 +359,7 @@ Az ütemterv 4. fázisát hat hónapon belül és azt meghaladóan kell megvaló
 Az emelt szintű hozzáférés biztonságossá tétele fontos, hogy biztonsági garanciákat hozzon létre üzleti eszközei számára. Azonban egy teljes biztonsági program részeként kell szerepelnie, amely folyamatos biztonsági garanciákat biztosít. A programnak olyan elemeket kell tartalmaznia, mint például a következők:
 
 * Szabályzat
-* Műveletek
+* Üzemeltetés
 * Információbiztonság
 * Kiszolgálók
 * Alkalmazások

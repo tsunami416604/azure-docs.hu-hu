@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20088ccc79abe978eb5b3f1c98e958f6c26bcb86
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295038"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861799"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez
 
@@ -250,7 +250,7 @@ Ahhoz, hogy a felhasználók hitelesítése Microsoft 365, az Azure AD-t olyan f
 
 A Azure AD Connect segítségével az Azure AD-címtárban szereplő tartományokhoz rendszerbiztonsági tag is kiépíthető a helyszíni Active Directory használatával. További információ: a [helyszíni címtárak integrálása a Azure Active Directorysal](whatis-hybrid-identity.md).
 
-A Windows PowerShell használatával automatizálható az új felhasználók hozzáadása az Azure AD-hez, valamint a változások szinkronizálása a helyszíni címtárból. A Windows PowerShell-parancsmagok használatához le kell töltenie a [Azure Active Directory modulokat](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
+A Windows PowerShell használatával automatizálható az új felhasználók hozzáadása az Azure AD-hez, valamint a változások szinkronizálása a helyszíni címtárból. A Windows PowerShell-parancsmagok használatához le kell töltenie a [Azure Active Directory modulokat](/powershell/azure/active-directory/install-adv2).
 
 Ez az eljárás bemutatja, hogyan adhat hozzá egyetlen felhasználót az Azure AD-hez.
 

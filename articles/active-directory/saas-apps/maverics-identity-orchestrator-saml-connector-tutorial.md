@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: f4fe368e9a56e5ac4c9dfa2648ce4af15a1b5ac0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a4bfe2b87f3f2242189a78d9a31a89d82720fd37
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684423"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862071"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés integrálása a Maverics Identity Orchestrator SAML-összekötővel
 
@@ -165,7 +165,7 @@ Az Azure Key Vault a Azure Portal vagy az Azure CLI használatával állítható
 
 **Az Azure parancssori felületének használata**
 
-1. Nyissa meg az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t, majd írja be a következő parancsot:
+1. Nyissa meg az [Azure CLI](/cli/azure/install-azure-cli)-t, majd írja be a következő parancsot:
 
     ```shell
     az login
@@ -217,7 +217,7 @@ Az Azure Key Vault a Azure Portal vagy az Azure CLI használatával állítható
 
 1. Adja meg a **bejelentkezési URL-címet** a következő formátumban: `https://<AZURE-COMPANY.COM>/<MY_APP>/<LOGIN PAGE>` . 
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. Az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** gombot az **alkalmazás-összevonás metaadat-URL-címének** másolásához, majd mentse azt a számítógépre.
 

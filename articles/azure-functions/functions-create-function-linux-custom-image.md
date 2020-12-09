@@ -1,20 +1,24 @@
 ---
 title: Azure Functions létrehozása Linuxon egyéni rendszerkép használatával
 description: Megismerheti, hogyan hozhat létre egyéni Linux-rendszerképeken futó Azure Functions-függvényeket.
-ms.date: 03/30/2020
+ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: af63eb68ec82a0725befed723298c079e82bdfdb
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+zone_pivot_groups: programming-languages-set-functions-full
+ms.openlocfilehash: 2ee26bdc713cb2b5b2a158797e3ae7ace31c97b8
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327100"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904073"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszerben egyéni tárolóval
 
 Ebben az oktatóanyagban létrehozhatja és üzembe helyezheti a kódot úgy, hogy az egyéni Docker-tárolóként Azure Functions egy Linux-alapú alaprendszerkép használatával. Általában egyéni rendszerképeket használ, ha a függvények egy adott nyelvi verziót igényelnek, vagy olyan függőséget vagy konfigurációt használnak, amelyet a beépített rendszerkép nem biztosít.
+
+::: zone pivot="programming-language-other"
+A Azure Functions [Egyéni kezelők](functions-custom-handlers.md)használatával támogatja az összes nyelvet vagy futtatókörnyezetet. Bizonyos nyelvekhez, például az oktatóanyagban használt R programozási nyelvhez telepítenie kell a futtatókörnyezetet vagy a további kódtárakat olyan függőségként, amely az egyéni tároló használatát igényli.
+::: zone-end
 
 A függvény kódjának egyéni Linux-tárolóban való üzembe helyezéséhez [Prémium csomag](functions-premium-plan.md#features) vagy [dedikált (App Service) csomag](functions-scale.md#app-service-plan) szükséges. Ennek az oktatóanyagnak az elvégzésével az Azure-fiókban néhány USA-dollárért járó költséget számolunk fel, amelyet a befejezéskor a [takarítási erőforrások](#clean-up-resources) minimalizálásával csökkentheti.
 
@@ -22,6 +26,7 @@ Az alapértelmezett Azure App Service tárolót a [Linuxon üzemeltetett első f
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 > [!div class="checklist"]
 > * Hozzon létre egy Function alkalmazást és egy Docker a Azure Functions Core Tools használatával.
 > * Egyéni rendszerkép készítése a Docker használatával.
@@ -32,6 +37,18 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Folyamatos üzembe helyezés engedélyezése.
 > * Engedélyezze az SSH-kapcsolatokat a tárolóhoz.
 > * Adja hozzá a várólista-tároló kimeneti kötését. 
+::: zone-end
+::: zone pivot="programming-language-other"
+> [!div class="checklist"]
+> * Hozzon létre egy Function alkalmazást és egy Docker a Azure Functions Core Tools használatával.
+> * Egyéni rendszerkép készítése a Docker használatával.
+> * Egyéni rendszerkép közzététele egy tárolójegyzékben.
+> * Támogatási erőforrások létrehozása az Azure-ban a Function alkalmazáshoz
+> * Függvényalkalmazás üzembe helyezése a Docker Hubból.
+> * Alkalmazásbeállítások hozzáadása a függvényalkalmazáshoz.
+> * Folyamatos üzembe helyezés engedélyezése.
+> * Engedélyezze az SSH-kapcsolatokat a tárolóhoz.
+::: zone-end
 
 Ezt az oktatóanyagot követheti Windows, macOS vagy Linux rendszerű számítógépeken is. 
 
@@ -114,10 +131,17 @@ Ha a rendszer kéri, adja meg a következő értékeket:
 
 A Maven létrehoz egy új, _artifactId_ nevű mappában található projektfájlt, amely ebben a példában a `fabrikam-functions` . 
 ::: zone-end
+
+::: zone pivot="programming-language-other"  
+```console
+func init LocalFunctionsProject --worker-runtime custom --docker
+```
+::: zone-end
+
 A `--docker` beállítás létrehoz egy `Dockerfile` projektet a projekthez, amely egy megfelelő egyéni tárolót határoz meg a Azure functions és a kiválasztott futtatókörnyezettel való használatra.
 
 Navigáljon a projekt mappájába:
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
 ```console
 cd LocalFunctionsProject
 ```
@@ -128,12 +152,95 @@ cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol az `--name` argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new` hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének, valamint egy *function.js* nevű konfigurációs fájlnak.
+Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol az `--name` argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new` egy olyan almappát hoz létre, amely megfelel a projekt választott nyelvének és a *function.json* nevű konfigurációs fájlnak.
 
 ```console
 func new --name HttpExample --template "HTTP trigger"
 ```
-::: zone-end  
+::: zone-end
+
+::: zone pivot="programming-language-other" 
+Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol az `--name` argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new` létrehoz egy almappát, amely megfelel a *function.json* nevű konfigurációs fájlt tartalmazó nevű almappának.
+
+```console
+func new --name HttpExample --template "HTTP trigger"
+```
+
+Egy szövegszerkesztőben hozzon létre egy fájlt a kezelő nevű Project mappában *. R*. Adja hozzá a következőt a tartalomhoz.
+
+```r
+library(httpuv)
+
+PORTEnv <- Sys.getenv("FUNCTIONS_CUSTOMHANDLER_PORT")
+PORT = strtoi(PORTEnv , base = 0L)
+
+http_not_found <- list(
+  status=404,
+  body='404 Not Found'
+)
+http_method_not_allowed <- list(
+  status=405,
+  body='405 Method Not Allowed'
+)
+
+hello_handler <- list(
+  GET = function (request) list(body="Hello world")
+)
+
+routes <- list(
+  '/api/HttpExample' = hello_handler
+)
+
+router <- function (routes, request) {
+  if (!request$PATH_INFO %in% names(routes)) {
+    return(http_not_found)
+  }
+  path_handler <- routes[[request$PATH_INFO]]
+
+  if (!request$REQUEST_METHOD %in% names(path_handler)) {
+    return(http_method_not_allowed)
+  }
+  method_handler <- path_handler[[request$REQUEST_METHOD]]
+
+  return(method_handler(request))
+}
+
+app <- list(
+  call = function (request) {
+    response <- router(routes, request)
+    if (!'status' %in% names(response)) {
+      response$status <- 200
+    }
+    if (!'headers' %in% names(response)) {
+      response$headers <- list()
+    }
+    if (!'Content-Type' %in% names(response$headers)) {
+      response$headers[['Content-Type']] <- 'text/plain'
+    }
+
+    return(response)
+  }
+)
+
+cat(paste0("Server listening on :", PORT, "...\n"))
+runServer("0.0.0.0", PORT, app)
+```
+
+A *host.json* elemnél módosítsa a `customHandler` szakaszt az egyéni kezelő indítási parancsának konfigurálásához.
+
+```json
+"customHandler": {
+  "description": {
+      "defaultExecutablePath": "Rscript",
+      "arguments": [
+      "handler.R"
+    ]
+  },
+  "enableForwardingHttpRequest": true
+}
+```
+::: zone-end
+
 A függvény helyi teszteléséhez indítsa el a helyi Azure Functions futásidejű gazdagépet a projekt mappájának gyökerében: 
 ::: zone pivot="programming-language-csharp"  
 ```console
@@ -157,14 +264,44 @@ mvn clean package
 mvn azure-functions:run
 ```
 ::: zone-end
+::: zone pivot="programming-language-other"
+```console
+R -e "install.packages('httpuv', repos='http://cran.rstudio.com/')"
+func start
+```
+::: zone-end 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-powershell,programming-language-python,programming-language-java,programming-language-typescript"
 Ha a `HttpExample` végpont megjelenik a kimenetben, keresse meg a következőt: `http://localhost:7071/api/HttpExample?name=Functions` . A böngészőnek egy "Hello" üzenetet kell megjelenítenie, amely visszaismétli a `Functions` `name` lekérdezési paraméternek megadott értéket.
-
+::: zone-end
+::: zone pivot="programming-language-other"
+Ha a `HttpExample` végpont megjelenik a kimenetben, keresse meg a következőt: `http://localhost:7071/api/HttpExample` . A böngészőnek egy "Hello World" üzenetet kell megjelenítenie.
+::: zone-end
 **Ctrl** - A gazdagép leállításához használja a CTRL **C** billentyűt.
 
 ## <a name="build-the-container-image-and-test-locally"></a>A tároló rendszerképének létrehozása és helyi tesztelése
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-powershell,programming-language-python,programming-language-java,programming-language-typescript"
 Választható Vizsgálja meg a *Docker* gyökerében. A Docker leírja a szükséges környezetet a Function alkalmazás Linux rendszeren való futtatásához.  A Azure Functions által támogatott alaplemezképek teljes listája megtalálható a [Azure functions alap lemezképe lapon](https://hub.docker.com/_/microsoft-azure-functions-base).
-    
+::: zone-end
+
+::: zone pivot="programming-language-other"
+Vizsgálja meg a *Docker* gyökerében. A Docker leírja a szükséges környezetet a Function alkalmazás Linux rendszeren való futtatásához. Az egyéni kezelő alkalmazások `mcr.microsoft.com/azure-functions/dotnet:3.0-appservice` alapértékként használják a rendszerképet.
+
+Módosítsa a *Docker* az R telepítéséhez. cserélje le a *Docker* tartalmát az alábbira.
+
+```dockerfile
+FROM mcr.microsoft.com/azure-functions/dotnet:3.0-appservice 
+ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+    AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+
+RUN apt update && \
+    apt install -y r-base && \
+    R -e "install.packages('httpuv', repos='http://cran.rstudio.com/')"
+
+COPY . /home/site/wwwroot
+```
+::: zone-end
+
 A legfelső szintű projekt mappában futtassa a [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, és adjon meg egy nevet, `azurefunctionsimage` és egy címkét `v1.0.0` . A `<DOCKER_ID>` helyére a Docker Hub-fiók azonosítóját írja. Ez a parancs létrehozza a tároló Docker-rendszerképét.
 
 ```console
@@ -179,7 +316,7 @@ A Build teszteléséhez futtassa a rendszerképet egy helyi tárolóban a [Docke
 docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
 Miután a rendszerkép egy helyi tárolóban fut, nyisson meg egy böngészőt `http://localhost:8080` , amely megjeleníti az alább látható helyőrző képet. A rendszerkép ekkor jelenik meg, mivel a függvény a helyi tárolóban fut, ahogy az az Azure-ban lenne, ami azt jelenti, hogy egy hozzáférési kulcs védi, ahogy az a (z) *function.json* tulajdonsággal van meghatározva `"authLevel": "function"` . A tároló még nem lett közzétéve egy Azure-beli Function alkalmazásban, így a kulcs még nem érhető el. Ha tesztelni szeretné a helyi tárolót, állítsa le a Docker-t, módosítsa az engedélyezési tulajdonságot a értékre, hozza `"authLevel": "anonymous"` létre újra a rendszerképet, és indítsa újra a Docker-t. Ezután állítsa alaphelyzetbe a `"authLevel": "function"` *function.js*. További információ: [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
 ![Helyőrző képe, amely azt jelzi, hogy a tároló helyileg fut](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
@@ -258,13 +395,20 @@ Az Azure-beli Function-alkalmazás kezeli a függvények végrehajtását a üze
 
 1. Hozza létre a functions alkalmazást az az [functionapp Create](/cli/azure/functionapp#az-functionapp-create) parancs használatával. A következő példában cserélje le a `<storage_name>` nevet az előző szakaszban használt névre a Storage-fiókhoz. Cserélje le `<app_name>` egy globálisan egyedi névre is, és a `<docker_id>` Docker-azonosítójával.
 
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
     ```azurecli
     az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime <functions runtime stack> --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
     ```
+    ::: zone-end
+    ::: zone pivot="programming-language-other"
+    ```azurecli
+    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime custom --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+    ```
+    ::: zone-end
     
     Az *üzembe helyezés-Container-rendszerkép-Name* paraméter megadja a Function alkalmazáshoz használandó rendszerképet. Az az [functionapp config Container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) parancs használatával megtekintheti az üzembe helyezéshez használt rendszerképpel kapcsolatos információkat. Egy másik rendszerképből is üzembe helyezheti az az [functionapp config Container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) parancsot.
 
-1. Kérje le a létrehozott Storage-fiókhoz tartozó kapcsolati karakterláncot az az [Storage Account show-kapcsolat-string](/cli/azure/storage/account) paranccsal, és rendelje hozzá egy rendszerhéj-változóhoz `storageConnectionString` :
+1. Jelenítse meg a létrehozott Storage-fiókhoz tartozó kapcsolati karakterláncot az az [Storage Account show-kapcsolat-string](/cli/azure/storage/account) parancs használatával. Cserélje le a `<storage-name>` nevet a fent létrehozott Storage-fiók nevére:
 
     ```azurecli
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
@@ -275,8 +419,6 @@ Az Azure-beli Function-alkalmazás kezeli a függvények végrehajtását a üze
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
     ```
-
-1. A függvény mostantól használhatja ezt a kapcsolati karakterláncot a Storage-fiók eléréséhez.
 
     > [!TIP]
     > A bash-ben egy rendszerhéj-változó használatával rögzítheti a kapcsolódási karakterláncot a vágólap használata helyett. Először a következő parancs használatával hozzon létre egy változót a kapcsolódási karakterlánccal:
@@ -290,6 +432,8 @@ Az Azure-beli Function-alkalmazás kezeli a függvények végrehajtását a üze
     > ```azurecli
     > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
     > ```
+
+1. A függvény mostantól használhatja ezt a kapcsolati karakterláncot a Storage-fiók eléréséhez.
 
 > [!NOTE]    
 > Ha egyéni rendszerképet tesz közzé egy privát Container-fiókban, ehelyett környezeti változókat kell használnia a Docker a kapcsolódási karakterlánchoz. További információ: [env utasítás](https://docs.docker.com/engine/reference/builder/#env). A változókat és a értéket is be kell állítania `DOCKER_REGISTRY_SERVER_USERNAME` `DOCKER_REGISTRY_SERVER_PASSWORD` . Az értékek használatához újra kell építenie a rendszerképet, le kell küldenie a rendszerképet a beállításjegyzékbe, majd újra kell indítania a Function alkalmazást az Azure-ban.
@@ -439,6 +583,8 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
     ![SSH-munkamenetben futó Linux-alapú leggyakoribb parancs](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
+
 ## <a name="write-to-an-azure-storage-queue"></a>Írás Azure Storage-várólistába
 
 Azure Functions lehetővé teszi a függvények más Azure-szolgáltatásokhoz és-erőforrásokhoz való összekapcsolását anélkül, hogy saját integrációs kódot kellene írnia. Ezek a *kötések*, amelyek a bemeneti és a kimeneti adatokat jelölik, a függvény definíciójában vannak deklarálva. A kötések adatai a függvények számára paraméterekként vannak megadva. Az *trigger* egy speciális típusú bemeneti kötés. Bár a függvénynek csak egy triggere van, több bemeneti és kimeneti kötés is lehet. További információ: [Azure functions triggerek és kötések fogalmai](functions-triggers-bindings.md).
@@ -446,6 +592,7 @@ Azure Functions lehetővé teszi a függvények más Azure-szolgáltatásokhoz �
 Ez a szakasz bemutatja, hogyan integrálhatja a függvényt egy Azure Storage-üzenetsor használatával. Az ehhez a függvényhez hozzáadott kimeneti kötés egy HTTP-kérelemből adatokat ír a várólistában lévő üzenetbe.
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
+::: zone-end
 
 [!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
@@ -458,9 +605,12 @@ Ez a szakasz bemutatja, hogyan integrálhatja a függvényt egy Azure Storage-ü
 [!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
 ::: zone-end  
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
+
 ## <a name="add-code-to-use-the-output-binding"></a>Kód hozzáadása a kimeneti kötés használatához
 
 Ha a várólista-kötés definiálva van, most frissítheti a függvényt, hogy megkapja a `msg` kimeneti paramétert, és üzeneteket írjon a várólistába.
+::: zone-end
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -488,6 +638,7 @@ Ha a várólista-kötés definiálva van, most frissítheti a függvényt, hogy 
 [!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 ### <a name="update-the-image-in-the-registry"></a>A rendszerkép frissítése a beállításjegyzékben
 
 1. A gyökérkönyvtárban futtassa újra a parancsot, `docker build` és ezúttal frissítse a címkében szereplő verziót `v1.0.1` . Ahogy korábban is, cserélje le a `<docker_id>` Docker hub-fiók azonosítóját:
@@ -510,6 +661,8 @@ A böngészőben a függvény meghívásához ugyanazt az URL-címet használja.
 
 [!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
+::: zone-end
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az oktatóanyagban létrehozott erőforrásokkal szeretné tovább használni az Azure-függvényt, akkor az összes erőforrást helyben hagyhatja. Mivel prémium szintű csomagot hozott létre a Azure Functionshoz, a folyamatos költségek napi egy vagy két USD-t foglalnak magukban.
@@ -520,7 +673,7 @@ A folyamatos költségek elkerülése érdekében törölje az `AzureFunctionsCo
 az group delete --name AzureFunctionsContainer-rg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Figyelési függvények](functions-monitoring.md)
 + [Méretezési és üzemeltetési lehetőségek](functions-scale.md)

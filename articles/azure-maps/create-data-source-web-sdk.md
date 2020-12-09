@@ -1,27 +1,27 @@
 ---
-title: Adatforrás létrehozása térképhez | Microsoft Azure térképek
+title: Adatforrások létrehozása térképhez Microsoft Azure térképeken
 description: 'Ismerje meg, hogyan hozhat létre egy adatforrást térképekhez. Ismerkedjen meg a Azure Maps web SDK által használt adatforrásokkal: GeoJSON-források és vektoros csempék.'
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/08/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9c82b74ffdc8672dc3d84a98a036c6083bc6c309
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d09dddbceed773cd723897cc9730198b68be0ff7
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895919"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903615"
 ---
 # <a name="create-a-data-source"></a>Adatforrás létrehozása
 
 A Azure Maps web SDK adatforrásokban tárolja az adatforrásokat. Az adatforrások használata optimalizálja az adatműveleteket a lekérdezéshez és a megjelenítéshez. Jelenleg két típusú adatforrás létezik:
 
-- **GeoJSON forrás** : a nyers helyadatok helyi kezelése GeoJSON formátumban. A kis-és közepes adatkészletek esetében is jó (több százezer alakzat).
-- **Vektoros csempe forrása** : a térképes mozaikrendszer alapján betölti az aktuális leképezési nézethez tartozó vektorgrafikus csempéket. Ideális nagy-és nagyméretű adatkészletekhez (millió vagy több milliárd alakzat).
+- **GeoJSON forrás**: a nyers helyadatok helyi kezelése GeoJSON formátumban. A kis-és közepes adatkészletek esetében is jó (több százezer alakzat).
+- **Vektoros csempe forrása**: a térképes mozaikrendszer alapján betölti az aktuális leképezési nézethez tartozó vektorgrafikus csempéket. Ideális nagy-és nagyméretű adatkészletekhez (millió vagy több milliárd alakzat).
 
 ## <a name="geojson-data-source"></a>GeoJSON-adatforrás
 
@@ -86,7 +86,7 @@ Azure Maps betartja a [Mapbox Vector csempe specifikációját](https://github.c
 - A Road csempe [dokumentációjának](/rest/api/maps/renderv2/getmaptilepreview)  |  [adatformátuma – részletek](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
 - Forgalmi incidensek [dokumentációjának](/rest/api/maps/traffic/gettrafficincidenttile)  |  [adatformátuma – részletek](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
 - A forgalmi folyamat [dokumentációjának](/rest/api/maps/traffic/gettrafficflowtile)  |  [adatformátumának részletei](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- A Azure Maps Creator Emellett lehetővé teszi az egyéni vektoros csempék létrehozását és elérését a [csempe renderelése v2](/rest/api/maps/renderv2/getmaptilepreview) használatával.
+- A Azure Maps Creator (előzetes verzió) lehetővé teszi az egyéni vektoros csempék létrehozását és elérését a [csempe Render v2](/rest/api/maps/renderv2/getmaptilepreview) használatával.
 
 > [!TIP]
 > Ha vektoros vagy raszteres képcsempéket használ a Azure Maps Render szolgáltatásból a web SDK-val, a `atlas.microsoft.com` helyőrzőre cserélheti `{azMapsDomain}` . Ezt a helyőrzőt a Térkép ugyanazokkal a tartománnyal helyettesíti, és a rendszer automatikusan hozzáfűzi ugyanazokat a hitelesítési adatokat is. Ez nagymértékben leegyszerűsíti a Azure Active Directory hitelesítés használatakor a renderelési szolgáltatással történő hitelesítést.

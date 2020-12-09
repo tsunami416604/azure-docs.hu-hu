@@ -3,16 +3,16 @@ title: Új Azure Application Insights-erőforrás létrehozása | Microsoft Docs
 description: Application Insights figyelésének manuális beállítása egy új élő alkalmazáshoz.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d2e367e84aed7abac70d803f28d26070f7b0a85e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fd05e6bd68be89b964fe1ad32029bf44f3352ea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323128"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906369"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 
-Az Azure Application Insights Microsoft Azure *erőforrásban*jeleníti meg az alkalmazással kapcsolatos információkat. Egy új erőforrás létrehozása ezért a [Application Insights beállításának része, amely egy új alkalmazás figyelésére][start]szolgál. Miután létrehozta az új erőforrást, megszerezheti a kialakítási kulcsát, és használhatja azt az Application Insights SDK konfigurálásához. A kialakítási kulcs a telemetria az erőforráshoz csatolja.
+Az Azure Application Insights Microsoft Azure *erőforrásban* jeleníti meg az alkalmazással kapcsolatos információkat. Egy új erőforrás létrehozása ezért a [Application Insights beállításának része, amely egy új alkalmazás figyelésére][start]szolgál. Miután létrehozta az új erőforrást, megszerezheti a kialakítási kulcsát, és használhatja azt az Application Insights SDK konfigurálásához. A kialakítási kulcs a telemetria az erőforráshoz csatolja.
 
 ## <a name="sign-in-to-microsoft-azure"></a>Bejelentkezés Microsoft Azure
 
@@ -34,7 +34,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre 
 > [!NOTE]
 > Habár ugyanazt az erőforrást használhatja a különböző erőforráscsoportok között, hasznos lehet globálisan egyedi nevet használni. Ez akkor lehet hasznos, ha [több erőforrás-lekérdezést kell végrehajtania](../log-query/cross-workspace-query.md#identifying-an-application) , mivel leegyszerűsíti a szükséges szintaxist.
 
-Adja meg a megfelelő értékeket a kötelező mezőkben, majd válassza a **felülvizsgálat + létrehozás**elemet.
+Adja meg a megfelelő értékeket a kötelező mezőkben, majd válassza a **felülvizsgálat + létrehozás** elemet.
 
 ![Adja meg az értékeket a kötelező mezők mezőben, majd válassza a "felülvizsgálat + létrehozás" lehetőséget.](./media/create-new-resource/review-create.png)
 
@@ -44,7 +44,8 @@ Az alkalmazás létrehozása után megnyílik egy új panel. Ebben az ablaktábl
 
 A kialakítási kulcs azonosítja azt az erőforrást, amelyhez a telemetria-adatait társítja. A kialakítási kulcsot át kell másolnia, és hozzá kell adnia az alkalmazás kódjához.
 
-![Kattintson és másolja a kialakítási kulcsot](./media/create-new-resource/instrumentation-key.png)
+> [!IMPORTANT]
+> Az új Azure-régiókban a rendszerállapot-kulcsok helyett a kapcsolatok sztringjét **kell** használnia. A [kapcsolódási karakterlánc](./sdk-connection-string.md?tabs=net) azonosítja azt az erőforrást, amelyhez hozzá szeretné rendelni a telemetria-adatait. Azt is lehetővé teszi, hogy módosítsa az erőforrás által a telemetria célként használt végpontokat. A kapcsolódási karakterláncot át kell másolnia, és hozzá kell adnia az alkalmazás kódjához vagy egy környezeti változóhoz.
 
 ## <a name="install-the-sdk-in-your-app"></a>Az SDK telepítése az alkalmazásban
 
@@ -152,7 +153,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 A parancs teljes Azure CLI-dokumentációja, valamint a rendszerállapot-kulcs beolvasásának megismeréséhez tekintse meg az [Azure CLI dokumentációját](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Diagnosztikai keresés](./diagnostic-search.md)
 * [Metrikák böngészése](../platform/metrics-charts.md)
 * [Analytics-lekérdezések](../log-query/log-query-overview.md)

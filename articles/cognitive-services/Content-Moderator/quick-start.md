@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: tartalom moderátora, tartalom moderálása
-ms.openlocfilehash: d1d9315986f7a6c57c1da012b9034e4f1a3730bc
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c026c42fe3c7a7f3f0d6b80e3123904077c104cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143693"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905213"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Gyors útmutató: Content Moderator kipróbálása a weben
 
@@ -34,7 +34,7 @@ A Content Moderator felülvizsgálati eszköz egy webalapú eszköz, amely lehet
 
 ## <a name="create-a-review-team"></a>Felülvizsgálati csapat létrehozása
 
-Ezután hozzon létre egy felülvizsgálati csapatot. A munkahelyen ez a csapat lesz azoknak a felhasználóknak a csoportja, akik manuálisan áttekintik a szolgáltatás moderálási döntéseit. Csapat létrehozásához ki kell választania egy **régiót** , és meg kell adnia a **csoport nevét** és a **csoport azonosítóját** . Ha meg szeretné hívni a munkatársakat a csapatnak, az e-mail-címei Itt megadhatók.
+Ezután hozzon létre egy felülvizsgálati csapatot. A munkahelyen ez a csapat lesz azoknak a felhasználóknak a csoportja, akik manuálisan áttekintik a szolgáltatás moderálási döntéseit. Csapat létrehozásához ki kell választania egy **régiót**, és meg kell adnia a **csoport nevét** és a **csoport azonosítóját**. Ha meg szeretné hívni a munkatársakat a csapatnak, az e-mail-címei Itt megadhatók.
 
 > [!NOTE]
 > A **csapat neve** a felülvizsgálati csapat rövid neve. Ez a név jelenik meg a Azure Portalban. A **csapat azonosítója** a felülvizsgálati csapat programozott módon azonosítására szolgál.
@@ -49,7 +49,7 @@ Ha ügyfél által felügyelt kulcs (CMK) használatával titkosítja az adattit
 
 ## <a name="upload-sample-content"></a>Minta tartalmának feltöltése
 
-Most már készen áll a minta tartalmának feltöltésére. Válassza ki a **kipróbálás > a rendszerkép** lehetőséget, **próbálkozzon > szöveggel** , vagy **próbálja meg > videót** .
+Most már készen áll a minta tartalmának feltöltésére. Válassza ki a **kipróbálás > a rendszerkép** lehetőséget, **próbálkozzon > szöveggel**, vagy **próbálja meg > videót**.
 
 > [!div class="mx-imgBorder"]
 > ![Képek vagy szöveges moderálás kipróbálása](images/tryimagesortext.png)
@@ -88,6 +88,6 @@ Vagy folytassa a következő lépésekkel a kód moderálási API-jai használat
 ## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan használhatja saját maga a moderálási API-kat az alkalmazásban.
-- Rendszerkép-moderálás implementálása. Az [API-konzollal](try-image-api.md) vagy az [ügyféloldali kódtár](client-libraries.md) gyors üzembe helyezésével ellenőrizheti a képeket, és felderítheti a potenciális felnőtt és a zamatos tartalmakat címkék, megbízhatósági pontszámok és egyéb kinyert adatok használatával.
-- Szöveges moderálás implementálása. Az [API-konzollal](try-text-api.md) vagy az [ügyféloldali kódtár](client-libraries.md) rövid útmutatójának használatával vizsgálja meg a szöveges tartalmat a lehetséges trágárság, a gépi támogatással nem rendelkező szöveges besorolás (előzetes verzió) és a személyes adatokat.
+- Rendszerkép-moderálás implementálása. Az [API-konzollal](try-image-api.md) vagy az ügyféloldali kódtár követésével [vagy REST API](client-libraries.md) rövid útmutatóval képeket kereshet, és felderítheti a lehetséges felnőtteket és a zamatos tartalmakat címkék, megbízhatósági pontszámok és más kinyert adatok használatával.
+- Szöveges moderálás implementálása. Használja az [API-konzolt](try-text-api.md) , vagy kövessen egy [ügyféloldali kódtárat, vagy REST API](client-libraries.md) rövid útmutatóban a szöveges tartalom vizsgálatához a lehetséges trágárság, a gépi támogatású nemkívánatos szöveg besorolása (előzetes verzió) és a személyes adatokat.
 - Videó-moderálás implementálása. Kövesse a [videó moderálásának útmutatóját a C#-](video-moderation-api.md) hoz a videók vizsgálatához és a potenciális felnőtt és a zamatos tartalmak észleléséhez. 

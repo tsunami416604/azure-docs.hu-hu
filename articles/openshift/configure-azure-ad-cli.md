@@ -8,12 +8,12 @@ author: sabbour
 ms.author: asabbour
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 03ecd0e11df5fa20f134b6fd87baf788078a2203
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0d69fa10408618fb188b42e1dd8f7b9d02820cc3
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748032"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862411"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Active Directory hitelesítés konfigurálása Azure Red Hat OpenShift 4 fürthöz (CLI)
 
@@ -21,47 +21,67 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 A Azure Active Directory alkalmazás konfigurálásához használni kívánt fürtözött URL-címek beolvasása.
 
-Hozza létre a fürt OAuth visszahívási URL-címét, és tárolja egy változó **oauthCallbackURL** . Ügyeljen arra, hogy a fürt nevével cserélje le az **ARO-RG** nevét és az **ARO-fürtöt** .
+Adja meg az erőforráscsoport és a fürt nevének változóit.
+
+Cserélje le az **\<resource_group>** csoportot az erőforráscsoport nevére, és a **\<aro_cluster>** fürt nevére.
+
+```azurecli-interactive
+resource_group=<resource_group>
+aro_cluster=<aro_cluster>
+```
+
+Hozza létre a fürt OAuth visszahívási URL-címét, és tárolja egy változó **oauthCallbackURL**. 
 
 > [!NOTE]
 > A `AAD` OAuth visszahívási URL-címében szereplő szakasznak meg kell egyeznie a OAuth-identitás szolgáltatójának nevével.
 
+
 ```azurecli-interactive
-domain=$(az aro show -g aro-rg -n aro-cluster --query clusterProfile.domain -o tsv)
-location=$(az aro show -g aro-rg -n aro-cluster --query location -o tsv)
-apiServer=$(az aro show -g aro-rg -n aro-cluster --query apiserverProfile.url -o tsv)
-webConsole=$(az aro show -g aro-rg -n aro-cluster --query consoleProfile.url -o tsv)
-oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2callback/AAD
+domain=$(az aro show -g $resource_group -n $aro_cluster --query clusterProfile.domain -o tsv)
+location=$(az aro show -g $resource_group -n $aro_cluster --query location -o tsv)
+apiServer=$(az aro show -g $resource_group -n $aro_cluster --query apiserverProfile.url -o tsv)
+webConsole=$(az aro show -g $resource_group -n $aro_cluster --query consoleProfile.url -o tsv)
 ```
+
+A oauthCallbackURL formátuma némileg eltér az egyéni tartományokkal:
+
+* Ha egyéni tartományt használ, futtassa a következő parancsot, például `contoso.com` :. 
+
+    ```azurecli-interactive
+    oauthCallbackURL=https://oauth-openshift.apps.$domain/oauth2callback/AAD
+    ```
+
+* Ha nem egyéni tartományt használ, akkor a `$domain` lesz egy nyolc karakteres alnum karakterlánc, amelyet a kiterjeszt `$location.aroapp.io` .
+
+    ```azurecli-interactive
+    oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2callback/AAD
+    ```
+
+> [!NOTE]
+> A `AAD` OAuth visszahívási URL-címében szereplő szakasznak meg kell egyeznie a OAuth-identitás szolgáltatójának nevével.
 
 ## <a name="create-an-azure-active-directory-application-for-authentication"></a>Azure Active Directory alkalmazás létrehozása hitelesítéshez
 
-Hozzon létre egy Azure Active Directory alkalmazást, és kérje le a létrehozott alkalmazás azonosítóját. Cserélje le a **\<ClientSecret>** t biztonságos jelszóval.
+Cserélje le az **\<client_secret>** alkalmazást egy biztonságos jelszóra az alkalmazáshoz.
 
 ```azurecli-interactive
-az ad app create \
+client_secret=<client_secret>
+```
+
+Hozzon létre egy Azure Active Directory alkalmazást, és kérje le a létrehozott alkalmazás azonosítóját.
+
+```azurecli-interactive
+app_id=$(az ad app create \
   --query appId -o tsv \
   --display-name aro-auth \
   --reply-urls $oauthCallbackURL \
-  --password '<ClientSecret>'
-```
-
-Ehhez ehhez hasonlót kell kapnia. Jegyezze fel, mert ez a **AppID** , amelyre szüksége lesz a későbbi lépésekben.
-
-```output
-6a4cb4b2-f102-4125-b5f5-9ad6689f7224
+  --password $client_secret)
 ```
 
 Kérje le az alkalmazást birtokló előfizetés bérlői AZONOSÍTÓját.
 
 ```azure
-az account show --query tenantId -o tsv
-```
-
-Ehhez ehhez hasonlót kell kapnia. Jegyezze fel, mert ez a **TenantId** , amelyre szüksége lesz a későbbi lépésekben.
-
-```output
-72f999sx-8sk1-8snc-js82-2d7cj902db47
+tenant_id=$(az account show --query tenantId -o tsv)
 ```
 
 ## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>Jegyzékfájl létrehozása az azonosító jogkivonatban szerepeltetni kívánt választható jogcímek meghatározásához
@@ -97,19 +117,15 @@ EOF
 
 ## <a name="update-the-azure-active-directory-applications-optionalclaims-with-a-manifest"></a>A Azure Active Directory alkalmazás optionalClaims frissítése jegyzékkel
 
-Cserélje le **\<AppID>** a elemet a korábban kapott azonosítóra.
-
 ```azurecli-interactive
 az ad app update \
   --set optionalClaims.idToken=@manifest.json \
-  --id <AppId>
+  --id $app_id
 ```
 
 ## <a name="update-the-azure-active-directory-application-scope-permissions"></a>A Azure Active Directory alkalmazás-hatókör engedélyeinek frissítése
 
 Ahhoz, hogy el tudja olvasni a felhasználói adatokat Azure Active Directoryból, meg kell határoznia a megfelelő hatóköröket.
-
-Cserélje le **\<AppID>** a elemet a korábban kapott azonosítóra.
 
 Adjon hozzá engedélyt a **Azure Active Directory Graph. user. Read** hatókörhöz a bejelentkezés engedélyezéséhez és a felhasználói profil olvasásához.
 
@@ -117,11 +133,11 @@ Adjon hozzá engedélyt a **Azure Active Directory Graph. user. Read** hatókör
 az ad app permission add \
  --api 00000002-0000-0000-c000-000000000000 \
  --api-permissions 311a71cc-e848-46a1-bdf8-97ff7156d8e6=Scope \
- --id <AppId>
+ --id $app_id
 ```
 
 > [!NOTE]
-> Ha ezt a Azure Active Directory globális rendszergazdaként hitelesíti, figyelmen kívül hagyhatja az üzenetet a jóváhagyás megadásához, mert a saját fiókjába való bejelentkezés után a rendszer erre kéri.
+> Az üzenetet nyugodtan figyelmen kívül hagyhatja a jóváhagyás megadásához, ha a Azure Active Directory globális rendszergazdájaként hitelesíti. A standard szintű tartományi felhasználókat a rendszer arra kéri, hogy adja meg a jóváhagyást, amikor először bejelentkeznek a fürtbe a HRE hitelesítő adataik használatával.
 
 ## <a name="assign-users-and-groups-to-the-cluster-optional"></a>Felhasználók és csoportok társítása a fürthöz (nem kötelező)
 
@@ -134,35 +150,27 @@ A [felhasználók és csoportok alkalmazáshoz való hozzárendeléséhez](../ac
 A `kubeadmin` hitelesítő adatok beolvasása. Futtassa a következő parancsot a felhasználó jelszavának megkereséséhez `kubeadmin` .
 
 ```azurecli-interactive
-az aro list-credentials \
-  --name aro-cluster \
-  --resource-group aro-rg
+kubeadmin_password=$(az aro list-credentials \
+  --name $aro_cluster \
+  --resource-group $resource_group \
+  --query kubeadminPassword --output tsv)
 ```
 
-Az alábbi példa kimenetében látható, hogy a jelszó a következő lesz: `kubeadminPassword` .
-
-```json
-{
-  "kubeadminPassword": "<generated password>",
-  "kubeadminUsername": "kubeadmin"
-}
-```
-
-Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs használatával. A `$apiServer` változó [korábban]()lett beállítva. Cserélje le **\<kubeadmin password>** a t a beolvasott jelszóra.
+Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs használatával. 
 
 ```azurecli-interactive
-oc login $apiServer -u kubeadmin -p <kubeadmin password>
+oc login $apiServer -u kubeadmin -p $kubeadmin_password
 ```
 
-Hozzon létre egy titkos OpenShift a Azure Active Directory alkalmazás titkos kódjának tárolásához, és cserélje le **\<ClientSecret>** a korábban beolvasott titkos kulcsra.
+Hozzon létre egy titkos OpenShift a Azure Active Directory alkalmazás titkos kódjának tárolásához.
 
 ```azurecli-interactive
 oc create secret generic openid-client-secret-azuread \
   --namespace openshift-config \
-  --from-literal=clientSecret=<ClientSecret>
+  --from-literal=clientSecret=$client_secret
 ```
 
-Hozzon létre egy **oidc. YAML** fájlt a OpenShift OpenID-hitelesítés konfigurálásához Azure Active Directoryon. Cserélje **\<AppID>** le **\<TenantId>** a és a értéket a korábban lekért értékekre.
+Hozzon létre egy **oidc. YAML** fájlt a OpenShift OpenID-hitelesítés konfigurálásához Azure Active Directoryon. 
 
 ```bash
 cat > oidc.yaml<< EOF
@@ -176,7 +184,7 @@ spec:
     mappingMethod: claim
     type: OpenID
     openID:
-      clientID: <AppId>
+      clientID: $app_id
       clientSecret:
         name: openid-client-secret-azuread
       extraScopes:
@@ -192,7 +200,7 @@ spec:
         - name
         email:
         - email
-      issuer: https://login.microsoftonline.com/<TenantId>
+      issuer: https://login.microsoftonline.com/$tenant_id
 EOF
 ```
 

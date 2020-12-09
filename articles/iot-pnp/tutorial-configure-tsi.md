@@ -1,5 +1,5 @@
 ---
-title: Az Azure-IoT Plug and Play eszköz telemetria tárolásához és elemzéséhez használja a Time Series Insightst | Microsoft Docs
+title: Azure Time Series Insights használata az Azure-IoT Plug and Play eszköz telemetria tárolásához és elemzéséhez
 description: Time Series Insights környezet beállítása és az IoT hub csatlakoztatása a IoT Plug and Play eszközök telemetria megtekintéséhez és elemzéséhez.
 author: lyrana
 ms.author: lyhughes
@@ -7,21 +7,21 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e1eeb85980430e33446329b5f25ff963ab1c8027
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 5491df61a1198e8eee4ba4701ccfc56154ec75eb
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600829"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905085"
 ---
-# <a name="preview-tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>Oktatóanyag: Time Series Insights Gen2 létrehozása és csatlakoztatása a IoT Plug and Play eszköz telemetria tárolásához, megjelenítéséhez és elemzéséhez
+# <a name="preview-tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Előzetes oktatóanyag: Time Series Insights Gen2-környezet létrehozása és konfigurálása
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat megfelelően egy [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) (ÁME) környezetet a IoT Plug and Play megoldással való integrációhoz. Használja az ÁME-t az idősoros adatok gyűjtésére, feldolgozására, tárolására, lekérdezésére és megjelenítésére eszközök internetes hálózata (IoT) skálán.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat egy [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) -környezetet a IoT Plug and Play megoldással való integrációhoz. A Time Series Insights az idősoros adatok gyűjtésére, feldolgozására, tárolására, lekérdezésére és megjelenítésére használható eszközök internetes hálózata (IoT) skálán.
 
-Először is üzembe kell helyeznie egy ÁME-környezetet, és csatlakoztatnia kell az IoT hub-t adatfolyam-eseményforrásként. Ezt követően a modell szinkronizálásával elkészítheti az [Idősorozat-modellt](../time-series-insights/concepts-model-overview.md) a hőmérséklet-vezérlő és a termosztátos eszközökhöz használt [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) minta alapján.
+Először is üzembe kell helyeznie egy Time Series Insights-környezetet, és csatlakoztatnia kell az IoT hub-t adatfolyam-eseményforrásként. Ezután a modell szinkronizálásával dolgozhat az [idősorozat-modell](../time-series-insights/concepts-model-overview.md)létrehozásához. A hőmérséklet-vezérlőhöz és a termosztátos eszközökhöz használt [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) minta típusú fájlokat használja.
 
 > [!NOTE]
-> Ez az integráció előzetes verzióban érhető el. A DTDL-eszközök modelljeinek az idősorozat-modellhez való leképezése változhat.
+> A Time Series Insights és a IoT közötti integráció előzetes verzióban érhető el Plug and Play. Előfordulhat, hogy a DTDL-eszköz modelljeinek a Time Series Insights idősorozat-modellhez való leképezése változhat. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,8 +30,8 @@ Először is üzembe kell helyeznie egy ÁME-környezetet, és csatlakoztatnia k
 Ezen a ponton a következőket teheti:
 
 * Egy Azure IoT hub.
-* Az IoT hub-hoz csatlakoztatott DPS-példány, amely a IoT Plug and Play eszközre vonatkozó egyéni eszközök regisztrálását.
-* Egy vagy több összetevőből álló eszközről való kapcsolódás szimulált adatok továbbítása az IoT hubhoz.
+* Az IoT hub-hoz csatolt eszköz-kiépítési szolgáltatás (DPS) példánya. A DPS-példánynak rendelkeznie kell egy, a IoT Plug and Play eszközhöz tartozó egyéni eszköz regisztrálásával.
+* Az IoT hub-hoz való kapcsolódás egyetlen összetevőből álló eszközről vagy több összetevőből álló, szimulált adatok továbbítására szolgáló eszközről.
 
 Ha el szeretné kerülni az Azure CLI helyi telepítésének követelményét, használhatja a Azure Cloud Shell a Cloud Services beállításához.
 
@@ -39,40 +39,40 @@ Ha el szeretné kerülni az Azure CLI helyi telepítésének követelményét, h
 
 ## <a name="prepare-your-event-source"></a>Az eseményforrás előkészítése
 
-A korábban létrehozott IoT hub az ÁME-környezet [eseményének forrása](../time-series-insights/concepts-streaming-ingestion-event-sources.md)lesz.
+A korábban létrehozott IoT hub lesz a Time Series Insights-környezete [eseményének forrása](../time-series-insights/concepts-streaming-ingestion-event-sources.md).
 
 > [!IMPORTANT]
-> Tiltsa le a meglévő IoT Hub útvonalakat. Ismert probléma van, ha az IoT hub-t az ÁME-esemény forrásaként konfigurálta az [útválasztással](../iot-hub/iot-hub-devguide-messages-d2c.md#routing-endpoints) . Ideiglenesen tiltsa le az útválasztási végpontokat, és ha az IoT hub az ÁME-hez van csatlakoztatva, akkor újra engedélyezheti őket.
+> Tiltsa le a meglévő IoT Hub útvonalakat. Ismert probléma van egy olyan IoT hub használatával, amelynek [útválasztása](../iot-hub/iot-hub-devguide-messages-d2c.md#routing-endpoints) konfigurálva van. Ideiglenesen tiltsa le az útválasztási végpontokat. Ha az IoT hub csatlakozik a Time Series Insightshoz, akkor ismét engedélyezheti az útválasztási végpontokat.
 
-Hozzon létre egy egyedi fogyasztói csoportot az IoT hub-ban az ÁME felhasználásához. Cserélje le a `my-pnp-hub` nevet a korábban használt IoT hub nevére:
+Az IoT hub-ban hozzon létre egy egyedi fogyasztói csoportot, amely a Time Series Insightst használja. A következő példában a helyére írja be a `my-pnp-hub` korábban használt IoT hub nevét.
 
 ```azurecli-interactive
 az iot hub consumer-group create --hub-name my-pnp-hub --name tsi-consumer-group
 ```
 
-## <a name="choose-your-time-series-id"></a>Idősorozat-azonosító kiválasztása
+## <a name="choose-a-time-series-id"></a>Time Series-azonosító kiválasztása
 
-Az ÁME-környezet kiépítésekor ki kell választania egy *idősorozat-azonosítót*. Fontos, hogy kiválassza a megfelelő idősorozat-azonosítót, mert ez a tulajdonság nem módosítható, és a beállítása után nem módosítható. Az idősorozat-azonosító például egy adatbázis-partíciós kulcs. Az idősorozat-azonosító a Time Series-modell elsődleges kulcsaként működik. További információ: [ajánlott eljárások az Idősorozat-azonosító kiválasztásához](../time-series-insights/how-to-select-tsid.md).
+A Time Series Insights-környezet kiépítésekor ki kell választania egy *idősorozat-azonosítót*. Fontos, hogy kiválassza a megfelelő idősorozat-azonosítót. Ez a tulajdonság nem módosítható, és a beállítása után nem módosítható. Az idősorozat-azonosító például egy adatbázis-partíciós kulcs. Az idősorozat-azonosító a Time Series-modell elsődleges kulcsaként működik. További információ: [ajánlott eljárások az idősorozat-azonosító kiválasztásához](../time-series-insights/how-to-select-tsid.md).
 
-IoT Plug and Play felhasználóként olyan _összetett kulcsot_ kell megadnia, amely a `iothub-connection-device-id` és az `dt-subject` idősorozat-azonosítóból áll. IoT Hub hozzáadja ezeket a rendszertulajdonságokat, amelyek tartalmazzák a IoT Plug and Play eszköz AZONOSÍTÓját, illetve az eszköz összetevőinek nevét.
+IoT Plug and Play felhasználóként az idősorozat-AZONOSÍTÓhoz adja meg a és a elemekből álló _összetett kulcsot_ `iothub-connection-device-id` `dt-subject` . Az IoT hub hozzáadja ezeket a rendszertulajdonságokat, amelyek tartalmazzák a IoT Plug and Play eszköz AZONOSÍTÓját és az eszköz összetevőinek nevét.
 
-Ha a IoT Plug and Play eszköz modelljei jelenleg nem használnak összetevőket, akkor `dt-subject` egy összetett kulcs részeként is szerepelnie kell, hogy később is használhassa őket. Mivel az idősorozat-azonosító nem módosítható, a Microsoft javasolja a beállítás engedélyezését abban az esetben, ha a későbbiekben szüksége van rá.
+Ha a IoT Plug and Play eszköz modelljei jelenleg nem használnak összetevőket, akkor `dt-subject` egy összetett kulcs részeként is szerepelnie kell, hogy később is használhassa az összetevőket. Mivel az idősorozat-azonosító nem módosítható, a Microsoft javasolja a beállítás engedélyezését abban az esetben, ha a későbbiekben szüksége van rá.
 
 > [!NOTE]
-> Az alábbi példák a multi-Component **TemperatureController** -eszközre vonatkoznak, de a nem összetevős **termosztátos** eszközhöz tartozó fogalmak is megegyeznek.
+> A cikkben szereplő példák a több összetevőt tartalmazó `TemperatureController` eszközre vonatkoznak. A nem összetevővel rendelkező eszközökhöz azonban ugyanazok a fogalmak tartoznak `Thermostat` .
 
-## <a name="provision-your-tsi-environment"></a>Az ÁME-környezet kiépítése
+## <a name="provision-your-time-series-insights-environment"></a>A Time Series Insights-környezet kiépítése
 
 Ez a szakasz azt ismerteti, hogyan lehet kiépíteni a Azure Time Series Insights Gen2-környezetét.
 
-A következő parancs:
+Futtassa az alábbi parancsot a következőhöz:
 
-* Létrehoz egy Azure Storage-fiókot a környezete [hűtőházi tárolójához](../time-series-insights/concepts-storage.md#cold-store), amely hosszú távú adatmegőrzésre és a múltbeli adatok elemzésére szolgál.
-  * Cserélje le a változót `mytsicoldstore` egy egyedi névre a hűtőházi Storage-fiókhoz.
-* Egy Azure Time Series Insights Gen2-környezetet hoz létre, amely tartalmazza a meleg tárolást a hét napos megőrzési időtartammal, valamint a hideg tárolást a végtelen megőrzés érdekében.
-  * A helyére írja be az `my-tsi-env` ÁME-környezet egyedi nevét.
-  * A helyére írja be annak az `my-pnp-resourcegroup` erőforráscsoportnak a nevét, amelyet a beállítás során használt.
-  * `iothub-connection-device-id, dt-subject` az idősorozat-azonosító tulajdonsága.
+* Hozzon létre egy Azure Storage-fiókot a környezete [hűtőházi tárolójához](../time-series-insights/concepts-storage.md#cold-store). Ez a fiók a régi adatok hosszú távú megőrzésére és elemzésére szolgál.
+  * A kódban cserélje le a `mytsicoldstore` nevet a hűtőházi Storage-fiókjához tartozó egyedi névre.
+* Hozzon létre egy Azure Time Series Insights Gen2-környezetet. A környezet a hét napos megőrzési időtartammal rendelkező, meleg tárolóval jön létre. A rendszer a hűtőházi tárolási fiókot fogja csatolni a végtelen megőrzéshez.
+  * A kódban cserélje le a `my-tsi-env` Time Series Insights-környezet egyedi nevét.
+  * A kódban cserélje le a helyére a `my-pnp-resourcegroup` telepítés során használt erőforráscsoport nevét.
+  * Az idősorozat-azonosító tulajdonsága: `iothub-connection-device-id, dt-subject` .
 
 ```azurecli-interactive
 storage=mytsicoldstore
@@ -82,7 +82,7 @@ key=$(az storage account keys list -g $rg -n $storage --query [0].value --output
 az timeseriesinsights environment longterm create --name my-tsi-env --resource-group $rg --time-series-id-properties iothub-connection-device-id, dt-subject --sku-name L1 --sku-capacity 1 --data-retention 7 --storage-account-name $storage --storage-management-key $key --location eastus2
 ```
 
-IoT Hub-eseményforrás összekapcsolásához. Cserélje `my-pnp-resourcegroup` le `my-pnp-hub` a, a és a `my-tsi-env` értéket a kiválasztott értékekre. A következő parancs a korábban létrehozott ÁME fogyasztói csoportjára hivatkozik:
+IoT Hub-eseményforrás összekapcsolásához. Cserélje `my-pnp-resourcegroup` le `my-pnp-hub` a, a és a `my-tsi-env` értéket a kiválasztott értékekre. A következő parancs a korábban létrehozott Time Series Insights felhasználói csoportra hivatkozik:
 
 ```azurecli-interactive
 rg=my-pnp-resourcegroup
@@ -93,9 +93,9 @@ shared_access_key=$(az iot hub policy list -g $rg --hub-name $iothub --query "[?
 az timeseriesinsights event-source iothub create -g $rg --environment-name $env -n iot-hub-event-source --consumer-group-name tsi-consumer-group  --key-name iothubowner --shared-access-key $shared_access_key --event-source-resource-id $es_resource_id
 ```
 
-Navigáljon az erőforráscsoporthoz a [Azure Portalon](https://portal.azure.com) , és válassza ki az új Time Series Insights-környezetet. Látogasson el a példány áttekintésében látható *Time Series Insights Explorer URL-címére* :
+A [Azure Portal](https://portal.azure.com)nyissa meg az erőforráscsoportot, majd válassza ki az új Time Series Insights-környezetet. Lépjen a példány áttekintése **Time Series Insights Explorer URL-címére** :
 
-![A portál áttekintő oldala](./media/tutorial-configure-tsi/view-environment.png)
+![Képernyőkép a portál áttekintése oldalon.](./media/tutorial-configure-tsi/view-environment.png)
 
 Az Explorerben három példány jelenik meg:
 
@@ -104,43 +104,45 @@ Az Explorerben három példány jelenik meg:
 * &lt;a PnP-eszköz azonosítója &gt; , `null`
 
 > [!NOTE]
-> A harmadik címke a saját **TemperatureController** származó telemetria jelöli, például az eszköz memóriájának munkakészletét. Mivel ez egy legfelső szintű tulajdonság, az összetevő nevének értéke null. Egy későbbi lépésben frissíti ezt egy további felhasználóbarát névre.
+> A harmadik címke magától a telemetria jelöli `TemperatureController` , például az eszköz memóriájának munkakészletét. Mivel ez egy legfelső szintű tulajdonság, az összetevő nevének értéke null. Egy későbbi lépésben ezt a nevet jobban felhasználóbarátvé teszi.
 
-![Explorer – 1. nézet](./media/tutorial-configure-tsi/tsi-env-first-view.png)
+![Képernyőfelvétel: az Explorer három példányát mutatja.](./media/tutorial-configure-tsi/tsi-env-first-view.png)
 
 ## <a name="configure-model-translation"></a>Modell fordításának konfigurálása
 
-Ezután lefordítja a DTDL az Azure Time Series Insights (ÁME) eszköz modelljére. Az ÁME idősorozat-modellje egy szemantikai modellezési eszköz az ÁME-n belüli contextualization. A Time Series-modell három alapvető összetevőből áll:
+Ezután lefordítja a DTDL-eszköz modelljét a Azure Time Series Insights eszköz modelljére. Time Series Insights a Time Series modell egy szemantikai modellezési eszköz az adatcontextualizationhoz. A modell három alapvető összetevőből áll:
 
-* [Idősorozat-modell példányai](../time-series-insights/concepts-model-overview.md#time-series-model-instances). A példányok magukban foglalhatják magukban az idősorozatok virtuális ábrázolását. A példányokat az idősorozat-azonosító egyedi módon azonosítja.
-* [Idősorozat-modell hierarchiák](../time-series-insights/concepts-model-overview.md#time-series-model-hierarchies). A hierarchiák a tulajdonságok nevét és a kapcsolataik megadásával rendezik a példányokat.
-* [Idősorozat-modell típusa](../time-series-insights/concepts-model-overview.md#time-series-model-types). A típusok segítségével [változók](../time-series-insights/concepts-variables.md) vagy képletek definiálhatók a számításokhoz. A típusok egy adott példánnyal vannak társítva.
+* Az [Idősorozat-modell példányai](../time-series-insights/concepts-model-overview.md#time-series-model-instances) magukban foglalhatják magukban az idősorozatok virtuális ábrázolását. A példányokat az idősorozat-azonosító egyedi módon azonosítja.
+* Az [idősorozat-modell hierarchiái](../time-series-insights/concepts-model-overview.md#time-series-model-hierarchies) megszervezik a példányokat a tulajdonságok neveinek és kapcsolataiknak a megadásával.
+* Az [idősorozat-modellek](../time-series-insights/concepts-model-overview.md#time-series-model-types) segítségével [változók](../time-series-insights/concepts-variables.md) vagy képletek definiálhatók a számításokhoz. A típusok egy adott példánnyal vannak társítva.
 
 ### <a name="define-your-types"></a>A típusok meghatározása
 
-Megkezdheti az adatbevitelt Azure Time Series Insights Gen2 anélkül, hogy előre definiált egy modellt. Amikor a telemetria megérkezik, az ÁME megkísérli az idősorozat-példányok újrafeloldását az idősorozat-azonosító tulajdonság értéke (i) alapján. Az összes példány az *alapértelmezett típushoz* van rendelve. A példányok megfelelő kategorizálásához manuálisan kell létrehoznia egy új típust. Az alábbi részletekből megtudhatja, hogy a legegyszerűbb módszer az eszköz DTDL-modelljeinek szinkronizálása az idősorozat-modellel:
+Megkezdheti az adatbevitelt Azure Time Series Insights Gen2 anélkül, hogy előre definiált egy modellt. Amikor a telemetria megérkezik, Time Series Insights megkísérli az idősorozat-példányok automatikus feloldását az idősorozat-azonosító tulajdonság értékei alapján. Az összes példány az *alapértelmezett típushoz* van rendelve. A példányok megfelelő kategorizálásához manuálisan kell létrehoznia egy új típust. 
+
+A következő részletek ismertetik a legegyszerűbb módszert az eszköz DTDL-modelljeinek az idősorozat-modellel való szinkronizálásához:
 
 * A digitális kettős modell azonosítója a típusazonosító lesz.
 * A típus neve lehet a modell neve vagy a megjelenített név.
 * A modell leírása lesz a típus leírása.
-* Minden telemetria esetében legalább egy Type változó jön létre numerikus sémával.
+* Minden olyan telemetria létre kell hozni legalább egy típus változót, amely numerikus sémával rendelkezik.
   * Változókhoz csak numerikus adattípusok használhatók, de ha egy értéket egy másik típusként küld el, amely átalakítható, például `"0"` használhat [konverziós](/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions) függvényt is `toDouble` .
 * A változó neve lehet a telemetria neve vagy a megjelenített név.
-* A változó idősorozat kifejezésének meghatározásakor tekintse meg a telemetria nevét a dróton, és adja meg az adattípust.
+* Az idősorozat-kifejezés változó meghatározásakor tekintse meg a telemetria nevét a dróton és a telemetria adattípusát.
 
 | DTDL JSON | Time Series-modell JSON-típusa | Példaérték |
 |-----------|------------------|-------------|
 | `@id` | `id` | `dtmi:com:example:TemperatureController;1` |
 | `displayName`    | `name`   |   `Temperature Controller`  |
 | `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |  
-|`contents` tömb| `variables` objektum  | Az alábbi példa megtekintése
+|`contents` tömb| `variables` objektum  | Tekintse meg a következő példát.
 
-![DTDL idősorozat-modell típusa](./media/tutorial-configure-tsi/DTDL-to-TSM-Type.png)
+![Képernyőfelvétel: D T D L – idősorozat-modell típusa.](./media/tutorial-configure-tsi/DTDL-to-TSM-Type.png)
 
 > [!NOTE]
-> Ez a példa három változót mutat be, de mindegyik típus legfeljebb 100 lehet. A különböző változók hivatkozhatnak ugyanarra a telemetria-értékre, hogy szükség esetén különböző számításokat végezzenek. A szűrők, összesítések és skaláris függvények teljes listájáért tekintse meg [Time Series Insights Gen2 Time Series kifejezés szintaxisát](/rest/api/time-series-insights/reference-time-series-expression-syntax).
+> Ez a példa három változót mutat be, de az egyes típusok legfeljebb 100 változót tartalmazhatnak. A különböző változók hivatkozhatnak ugyanarra a telemetria-értékre, hogy szükség esetén eltérő számításokat végezzenek. A szűrők, összesítések és skaláris függvények teljes listáját itt tekintheti meg: [Time Series Insights Gen2 Time Series kifejezés szintaxisa](/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
-Nyisson meg egy szövegszerkesztőt, és mentse a következő JSON-t a helyi meghajtóra:
+Nyisson meg egy szövegszerkesztőt, és mentse a következő JSON-t a helyi meghajtóra.
 
 ```JSON
 {
@@ -180,9 +182,9 @@ Nyisson meg egy szövegszerkesztőt, és mentse a következő JSON-t a helyi meg
 }
 ```
 
-A Time Series Insights Explorerben navigáljon a **modell** lapra a bal oldali modell ikonra kattintva. Válassza a **típusok** lehetőséget, majd válassza a **JSON feltöltése** elemet:
+A Time Series Insights Explorerben kattintson a bal oldali modell ikonra a **modell** lap megnyitásához. Válassza a **típusok** lehetőséget, majd válassza a **JSON feltöltése** elemet:
 
-![Feltöltés](./media/tutorial-configure-tsi/upload-type.png)
+![A JSON feltöltését bemutató képernyőkép.](./media/tutorial-configure-tsi/upload-type.png)
 
 Válassza a **fájl kiválasztása** lehetőséget, válassza ki a korábban mentett JSON-t, majd válassza a **feltöltés** lehetőséget.
 
@@ -190,40 +192,40 @@ Megjelenik az újonnan definiált **hőmérséklet-vezérlő** típusa.
 
 ### <a name="create-a-hierarchy"></a>Hierarchia létrehozása
 
-Hozzon létre egy hierarchiát a címkék a **TemperatureController** szülővel való rendszerezéséhez. A következő egyszerű példa egyetlen szinttel rendelkezik, de a IoT-megoldások gyakran több beágyazási szinttel rendelkeznek, hogy a contextualize a címkéket a szervezeten belüli fizikai és szemantikai helyükön belül.
+Hozzon létre egy hierarchiát a címkék a `TemperatureController` szülőn belüli rendszerezéséhez. A következő egyszerű példa egyetlen szinttel rendelkezik, de a IoT-megoldások gyakran több beágyazási szinttel rendelkeznek, hogy a contextualize a címkéket a szervezeten belüli fizikai és szemantikai helyükön belül.
 
-Válassza a **hierarchiák** lehetőséget, majd válassza a **hierarchia hozzáadása** lehetőséget. A név mezőben adja meg az *eszköz-flotta* nevet, és hozzon létre egy, az *eszköz neve* nevű szintet. Kattintson a **Mentés** gombra.
+Válassza a **hierarchiák** lehetőséget, majd válassza a **hierarchia hozzáadása** elemet. A név mezőbe írja be az *eszköz flottáját*. Hozzon létre egy, az *eszköz neve* nevű szintet. Kattintson a **Mentés** gombra.
 
-![Hierarchia hozzáadása](./media/tutorial-configure-tsi/add-hierarchy.png)
+![A hierarchia hozzáadását bemutató képernyőkép.](./media/tutorial-configure-tsi/add-hierarchy.png)
 
 ### <a name="assign-your-instances-to-the-correct-type"></a>A példányok helyes típushoz rendelése
 
 Ezután módosítsa a példányok típusát, és helyezze őket a hierarchiába.
 
-Válassza a **példányok** lapot, keresse meg az eszköz munkakészletét jelképező példányt, majd a jobb szélen kattintson a **Szerkesztés** ikonra:
+Válassza a **példányok** fület. Keresse meg az eszköz munkakészletét jelképező példányt, majd a jobb szélen kattintson a **Szerkesztés** ikonra.
 
-![Példányok szerkesztése](./media/tutorial-configure-tsi/edit-instance.png)
+![A példányok szerkesztését bemutató képernyőkép.](./media/tutorial-configure-tsi/edit-instance.png)
 
-Válassza a **típus** legördülő menüt, és válassza a **hőmérséklet-vezérlő** elemet. Adja meg a *defaultComponent, <your device name>* hogy frissítse a példány nevét, amely az eszközhöz társított összes legfelső szintű címkét jelképezi.
+Nyissa meg a **típus** legördülő menüt, majd válassza a **hőmérséklet-vezérlő** elemet. Adja meg a *defaultComponent, <your device name>* hogy frissítse a példány nevét, amely az eszközhöz társított összes legfelső szintű címkét jelképezi.
 
-![Példány típusának módosítása](./media/tutorial-configure-tsi/change-type.png)
+![A példány típusának módosítását bemutató képernyőkép.](./media/tutorial-configure-tsi/change-type.png)
 
-A Mentés gombra kattintva válassza ki a **példány mezői** lapot, és jelölje be az **eszköz flotta** mezőjét. Adja meg `<your device name> - Temp Controller` a telemetria csoportosítását, majd kattintson a **Mentés** gombra.
+A Save ( **Mentés**) gombra kattintva válassza ki a **példány mezői** lapot, majd válassza az **eszköz flotta** elemet. A telemetria együttes csoportosításához írja be a *\<your device name> -temp vezérlőt*. Kattintson a **Mentés** gombra.
 
-![Hozzárendelés hierarchia](./media/tutorial-configure-tsi/assign-to-hierarchy.png)
+![A példányok hierarchiához rendelését bemutató képernyőkép](./media/tutorial-configure-tsi/assign-to-hierarchy.png)
 
 Az előző lépések megismétlésével rendelje hozzá a termosztát címkéit a megfelelő típushoz és hierarchiához.
 
 ## <a name="view-your-data"></a>Adatok megtekintése
 
-Váltson vissza a diagram panelre, és bontsa ki az eszköz **flottáját > az eszközt**. Válassza a **thermostat1** lehetőséget, válassza ki a **hőmérséklet** változót, majd kattintson a **Hozzáadás** elemre az érték ábrázolásához. Végezze el ugyanezt a **thermostat2** és a **defaultComponent** **munkakészlet** értéknél.
+Lépjen vissza a diagram panelre, és bontsa ki az eszköz **flottáját** > az eszközt. Válassza a **thermostat1** lehetőséget, válassza ki a **hőmérséklet** változót, majd kattintson a **Hozzáadás** elemre az érték ábrázolásához. Végezze el ugyanezt a **thermostat2** és a **defaultComponent** **munkakészlet** értéknél.
 
-![Thermostat2-példány típusának módosítása](./media/tutorial-configure-tsi/charting-values.png)
+![A thermostat2 példány típusának módosítását bemutató képernyőkép.](./media/tutorial-configure-tsi/charting-values.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ha többet szeretne megtudni a különböző diagram-beállítási lehetőségekről, beleértve az intervallumok méretezését és az Y tengely vezérlőelemeket, tekintse meg a [Azure Time Series Insights Explorert](../time-series-insights/concepts-ux-panels.md).
+* Ha többet szeretne megtudni a különböző diagram-beállítási lehetőségekről, beleértve az intervallumok méretezését és az y tengely vezérlőelemeket, tekintse meg a [Azure Time Series Insights Explorert](../time-series-insights/concepts-ux-panels.md).
 
-* A környezet idősorozat-modelljének részletes áttekintését lásd: [Time Series Model in Azure Time Series Insights Gen2](../time-series-insights/concepts-model-overview.md) cikk.
+* A környezet idősorozat-modelljének részletes áttekintését lásd: [Time Series Model in Azure Time Series Insights Gen2](../time-series-insights/concepts-model-overview.md).
 
 * A lekérdezési API-k és az idősorozat-kifejezés szintaxisának betekintéséhez tekintse meg [Azure Time Series Insights Gen2 lekérdezési API-kat](/rest/api/time-series-insights/reference-query-apis).

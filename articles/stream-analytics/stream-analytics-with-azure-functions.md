@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 291586bc2e34784a7bbf29016ea1da35d51e844b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: bb2eb36e4116c17efb20946b0da4586678838f3b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489947"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862003"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Oktatóanyag: Azure Functions futtatása Azure Stream Analytics feladatokból 
 
@@ -155,7 +155,7 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
    |Maximális kötegszám|A függvénybe küldött egyes kötegekben lévő események maximális számának megadására szolgál. Az alapértelmezett érték 100. Ez a tulajdonság nem kötelező.|
    |Kulcs|Más előfizetésből származó függvény használatát teszi lehetővé. A függvény eléréséhez adja meg a kulcs értékét. Ez a tulajdonság nem kötelező.|
 
-3. Adja meg a kimeneti alias nevét. Ebben az oktatóanyagban a neve **saop1** , de bármilyen nevet használhat. Adja meg az egyéb adatokat.
+3. Adja meg a kimeneti alias nevét. Ebben az oktatóanyagban a neve **saop1**, de bármilyen nevet használhat. Adja meg az egyéb adatokat.
 
 4. Nyissa meg a Stream Analytics-feladatot, és frissítse a lekérdezést az alábbiakra. Ha nem a kimeneti fogadó **saop1** nevet adta, ne felejtse el módosítani a lekérdezésben.  
 
@@ -195,7 +195,9 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
 Ha hiba történik az események Azure Functionsba való küldésekor, Stream Analytics újrapróbálkozik a legtöbb művelettel. A rendszer minden http-kivételt újrapróbálkozik, amíg a 413-es HTTP-hiba (az entitás túl nagy) kivételével sikertelen lesz. Az entitás túl nagy hibája olyan Adathiba, amely az [újrapróbálkozási vagy a eldobási szabályzat](stream-analytics-output-error-policy.md)hatálya alá esik.
 
 > [!NOTE]
-> A Stream Analytics és Azure Functions közötti HTTP-kérések időtúllépése 100 másodpercre van állítva. Ha a Azure Functions alkalmazás több mint 100 másodpercet vesz igénybe egy köteg feldolgozásához, Stream Analytics a hibák.
+> A Stream Analytics és Azure Functions közötti HTTP-kérések időtúllépése 100 másodpercre van állítva. Ha a Azure Functions-alkalmazás több mint 100 másodpercet vesz igénybe egy köteg feldolgozásához, Stream Analytics a hibák, és a köteg rety válik.
+
+Az időtúllépések újrapróbálása ismétlődő eseményeket eredményezhet a kimeneti fogadóba. Ha Stream Analytics újrapróbálkozik egy sikertelen kötegtel, a kötegben lévő összes esemény újrapróbálkozik. Vegyünk például egy 20 eseményből álló köteget, amelyet a rendszer a Stream Analytics Azure Functions eljuttat. Tegyük fel, hogy a köteg első 10 eseményének feldolgozásához a Azure Functions 100 másodpercet vesz igénybe. Az 100 másodperces átadást követően Stream Analytics felfüggeszti a kérelmet, mert nem kapott pozitív választ a Azure Functionstól, és egy másik kérelmet küld ugyanarra a kötegre. A köteg első 10 eseményét Azure Functions újra feldolgozzák, ami ismétlődést okoz. 
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -205,14 +207,14 @@ Az Stream Analytics jelenleg nem támogatja a [http-útválasztás](/sandbox/fun
 
 A virtuális hálózatban üzemeltetett Azure Functionshoz való kapcsolódás támogatása nincs engedélyezve.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az útmutatóban létrehozott összes erőforrást törölheti:
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére.  
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy egyszerű Stream Analytics feladatot, amely egy Azure-függvényt futtat. A Stream Analytics-feladatokról a következő oktatóanyagban talál további információt:
 

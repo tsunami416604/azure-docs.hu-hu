@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6db7037cbcad335db77784ecfa624f08e88b1e83
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 3ba84bb3ee38981217e72f8372a836b03647083d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744431"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861340"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>A tanúsítványalapú hitelesítés első lépései az Azure Active Directoryban
 
@@ -93,7 +93,7 @@ A hitelesítésszolgáltató sémája a következőképpen néz ki:
     }
 ```
 
-A konfigurációhoz használhatja a [Azure Active Directory PowerShell 2-es verzióját](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0):
+A konfigurációhoz használhatja a [Azure Active Directory PowerShell 2-es verzióját](/powershell/azure/active-directory/install-adv2):
 
 1. Indítsa el a Windows PowerShellt rendszergazdai jogosultságokkal.
 2. Telepítse az Azure AD-modul [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) vagy újabb verzióját.
@@ -106,7 +106,7 @@ Első konfigurálási lépésként létre kell hoznia egy kapcsolatot a Bérlőv
 
 ### <a name="connect"></a>Kapcsolódás
 
-Ha kapcsolatot szeretne létesíteni a Bérlővel, használja a [AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) parancsmagot:
+Ha kapcsolatot szeretne létesíteni a Bérlővel, használja a [AzureAD](/powershell/module/azuread/connect-azuread) parancsmagot:
 
 ```azurepowershell
     Connect-AzureAD
@@ -114,7 +114,7 @@ Ha kapcsolatot szeretne létesíteni a Bérlővel, használja a [AzureAD](/power
 
 ### <a name="retrieve"></a>Beolvasni
 
-A címtárban definiált megbízható hitelesítésszolgáltatók beolvasásához használja a [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot.
+A címtárban definiált megbízható hitelesítésszolgáltatók beolvasásához használja a [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority) parancsmagot.
 
 ```azurepowershell
     Get-AzureADTrustedCertificateAuthority
@@ -122,7 +122,7 @@ A címtárban definiált megbízható hitelesítésszolgáltatók beolvasásáho
 
 ### <a name="add"></a>Hozzáadás
 
-Megbízható hitelesítésszolgáltató létrehozásához használja a [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot, és állítsa be a **vlelérésihelye** attribútumot helyes értékre:
+Megbízható hitelesítésszolgáltató létrehozásához használja a [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority) parancsmagot, és állítsa be a **vlelérésihelye** attribútumot helyes értékre:
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
@@ -135,7 +135,7 @@ Megbízható hitelesítésszolgáltató létrehozásához használja a [New-Azur
 
 ### <a name="remove"></a>Eltávolítás
 
-Megbízható hitelesítésszolgáltató eltávolításához használja a [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot:
+Megbízható hitelesítésszolgáltató eltávolításához használja a [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority) parancsmagot:
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
@@ -144,7 +144,7 @@ Megbízható hitelesítésszolgáltató eltávolításához használja a [Remove
 
 ### <a name="modify"></a>Módosítás
 
-Egy megbízható hitelesítésszolgáltató módosításához használja a [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot:
+Egy megbízható hitelesítésszolgáltató módosításához használja a [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority) parancsmagot:
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
@@ -226,7 +226,7 @@ Az EAS-profilok a mobileszköz-felügyelet (MDM), például az Intune használat
 1. Konfiguráljon egy EAS-profilt az alkalmazásban, amely megfelel az előző szakaszban foglalt követelményeknek.
 2. Nyissa meg az alkalmazást, és ellenőrizze, hogy a levelek szinkronizálása folyamatban van-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a tanúsítványalapú hitelesítésről Android-eszközökön.](active-directory-certificate-based-authentication-android.md)
 

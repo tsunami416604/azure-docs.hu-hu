@@ -1,20 +1,20 @@
 ---
-title: Oktatóanyag – webalkalmazás migrálása a Google Maps szolgáltatásból | Microsoft Azure térképek
+title: Oktatóanyag – webalkalmazás migrálása a Google Maps szolgáltatásból Microsoft Azure Maps-be
 description: Útmutató a webalkalmazások Google Mapsből Microsoft Azure Maps-be történő áttelepítéséhez
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/18/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: b95800bea4bceffabad56aa29b68a57b310c5518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4dee8de8f42b78ecdab9d9e15bb277d58fa8ba70
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896446"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905060"
 ---
 # <a name="tutorial---migrate-a-web-app-from-google-maps"></a>Oktatóanyag – webalkalmazás migrálása a Google Maps szolgáltatásból
 
@@ -75,7 +75,7 @@ A táblázat a Google Maps v3 JavaScript SDK legfontosabb API-funkcióit és a A
 | Geocoder szolgáltatás        | ✓                          |
 | Directions szolgáltatás      | ✓                          |
 | Távolsági mátrix szolgáltatás | ✓                          |
-| Jogosultságszint-emelési szolgáltatás       | Tervezve                     |
+| Jogosultságszint-emelési szolgáltatás       | ✓                          |
 
 ## <a name="notable-differences-in-the-web-sdks"></a>Jelentős különbségek a webes SDK-k között
 
@@ -1041,7 +1041,7 @@ Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem f�
 
 Az `DataSource` osztály a következő segítő függvényt használja a fürttel kapcsolatos további információk eléréséhez a használatával `cluster_id` .
 
-| Módszer | Visszatérési típus | Leírás |
+| Metódus | Visszatérési típus | Leírás |
 |--------|-------------|-------------|
 | `getClusterChildren(clusterId: number)` | &lt;A tömb &lt; funkcióinak &lt; geometriája, bármilyen &gt; \| alakzat&gt;&gt; | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyerekek az alakzatok és alfürtek kombinációja lehet. Az alfürtek a ClusteredProperties megfelelő tulajdonságokkal rendelkező funkciók lesznek. |
 | `getClusterExpansionZoom(clusterId: number)` | Ígéret &lt; száma&gt; | Kiszámítja azt a nagyítási szintet, amelynél a fürt megkezdi a kibővítését vagy szétbontását. |

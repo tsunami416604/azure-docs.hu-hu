@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 012e155737b9251827c668b3a9cacbbe8d59ae77
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411354"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905111"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Az Azure Cosmos DB használatakor felmerülő lekérdezési hibák elhárítása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -51,7 +51,7 @@ Ha Azure Cosmos DB-lekérdezését optimalizálja, az első lépés mindig a lek
 
 A lekérdezési metrikák lekérése után hasonlítsa össze a **lekért dokumentumok darabszámát** a lekérdezés **kimeneti dokumentumainak számával** . Ezt az összehasonlítást használva azonosíthatja a cikkben áttekinthető releváns részeket.
 
-A **beolvasott dokumentumok** száma érték a lekérdezési motor betöltéséhez szükséges dokumentumok számát adja meg. A **kimeneti dokumentumok** száma érték a lekérdezés eredményeihez szükséges dokumentumok számát adja meg. Ha a **beolvasott dokumentumok száma** jelentősen meghaladja a **kimeneti dokumentumok számát** , akkor a lekérdezésnek legalább egy része nem tudta használni az indexet, és nem volt szükség a vizsgálatra.
+A **beolvasott dokumentumok** száma érték a lekérdezési motor betöltéséhez szükséges dokumentumok számát adja meg. A **kimeneti dokumentumok** száma érték a lekérdezés eredményeihez szükséges dokumentumok számát adja meg. Ha a **beolvasott dokumentumok száma** jelentősen meghaladja a **kimeneti dokumentumok számát**, akkor a lekérdezésnek legalább egy része nem tudta használni az indexet, és nem volt szükség a vizsgálatra.
 
 A forgatókönyvhöz kapcsolódó lekérdezési optimalizálások megismeréséhez tekintse meg a következő szakaszt.
 
@@ -93,7 +93,7 @@ A forgatókönyvhöz kapcsolódó lekérdezési optimalizálások megismeréséh
 
 ## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Lekérdezések, amelyekben a lekérdezett dokumentumok száma meghaladja a kimeneti dokumentumok darabszámát
 
- A **beolvasott dokumentumok** száma érték a lekérdezési motor betöltéséhez szükséges dokumentumok számát adja meg. A **kimeneti dokumentum** száma a lekérdezés által visszaadott dokumentumok száma. Ha a **beolvasott dokumentumok száma** jelentősen meghaladja a **kimeneti dokumentumok számát** , akkor a lekérdezésnek legalább egy része nem tudta használni az indexet, és nem volt szükség a vizsgálatra.
+ A **beolvasott dokumentumok** száma érték a lekérdezési motor betöltéséhez szükséges dokumentumok számát adja meg. A **kimeneti dokumentum** száma a lekérdezés által visszaadott dokumentumok száma. Ha a **beolvasott dokumentumok száma** jelentősen meghaladja a **kimeneti dokumentumok számát**, akkor a lekérdezésnek legalább egy része nem tudta használni az indexet, és nem volt szükség a vizsgálatra.
 
 Az alábbi példa olyan vizsgálati lekérdezést mutat be, amelyet az index nem teljes egészében kiszolgált:
 
@@ -196,9 +196,7 @@ Az indexelési házirendhez bármikor hozzáadhat tulajdonságokat, és nincs ha
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Az indexet használó rendszerfunkciók ismertetése
 
-Ha egy kifejezés több karakterlánc-értékre is fordítható, használhatja az indexet. Ellenkező esetben nem.
-
-Az alábbi lista néhány olyan gyakori karakterlánc-függvényt mutat be, amelyek az indexet használhatják:
+A legtöbb rendszerfüggvény indexeket használ. Az alábbi lista néhány olyan gyakori karakterlánc-függvényt mutat be, amely indexeket használ:
 
 - STARTSWITH (str_expr1, str_expr2, bool_expr)  
 - TARTALMAZZA (str_expr, str_expr, bool_expr)
@@ -214,7 +212,26 @@ Az alábbiakban néhány olyan gyakori rendszerfüggvényt ismertetünk, amely n
 
 ------
 
-A lekérdezés többi része továbbra is használhatja az indexet annak ellenére, hogy a System functions nem.
+Ha egy rendszerfüggvény indexeket használ, és továbbra is magas RU-díjat tartalmaz, akkor próbáljon hozzá hozzáadni `ORDER BY` a lekérdezéshez. Bizonyos esetekben a Hozzáadás `ORDER BY` növelheti a rendszerfunkciók indexelésének kihasználtságát, különösen akkor, ha a lekérdezés hosszú ideig fut, vagy több oldalra is átnyúlik.
+
+Vegyük például az alábbi lekérdezést a következővel: `CONTAINS` . `CONTAINS` egy indexet kell használnia, de tegyük fel, hogy a megfelelő index hozzáadása után az alábbi lekérdezés futtatásakor továbbra is rendkívül magas RU-díjat számítunk fel:
+
+Eredeti lekérdezés:
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+```
+
+Frissített lekérdezés `ORDER BY` :
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+ORDER BY c.town
+```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>Az indexet használó összesített lekérdezések ismertetése
 
@@ -385,7 +402,7 @@ Tegyük fel, hogy a címkék tömbben csak egy elem egyezik a szűrővel, és ho
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Lekérdezések, amelyekben a lekérdezett dokumentumok száma megegyezik a kimeneti dokumentumok számával
 
-Ha a **beolvasott dokumentumok száma** nagyjából megegyezik a **kimeneti dokumentumok számával** , a lekérdezési motornak nem kell sok felesleges dokumentumot beolvasnia. Számos lekérdezéshez, például a kulcsszót használó alkalmazásokhoz `TOP` , a **lekéréses dokumentumok száma** meghaladhatja a **kimeneti dokumentumok számát** 1 értékkel. Erről nem kell foglalkoznia.
+Ha a **beolvasott dokumentumok száma** nagyjából megegyezik a **kimeneti dokumentumok számával**, a lekérdezési motornak nem kell sok felesleges dokumentumot beolvasnia. Számos lekérdezéshez, például a kulcsszót használó alkalmazásokhoz `TOP` , a **lekéréses dokumentumok száma** meghaladhatja a **kimeneti dokumentumok számát** 1 értékkel. Erről nem kell foglalkoznia.
 
 ### <a name="minimize-cross-partition-queries"></a>Több partíciós lekérdezés csökkentése
 
@@ -488,7 +505,7 @@ A párhuzamos lekérdezések több partíció párhuzamos lekérdezésével műk
 
 A lekérdezések az eredmények előzetes beolvasására lettek kialakítva, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javítására nyújt segítséget. A MaxBufferedItemCount beállítása korlátozza az előre beolvasott eredmények számát. Ha ezt az értéket a visszaadott várt számú eredmény (vagy egy magasabb szám) értékre állítja, a lekérdezés a lehető legtöbb előnyt érheti el az előzetes beolvasáskor. Ha a-1 értéket adja meg, a rendszer automatikusan meghatározza a pufferbe kerülő elemek számát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan méri a lekérdezéseket, és hogyan végezhet végrehajtási statisztikát a lekérdezések finomhangolásához, és így tovább:
 
 * [SQL-lekérdezés végrehajtási metrikáinak lekérése a .NET SDK használatával](profile-sql-api-query.md)

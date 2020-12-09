@@ -5,15 +5,15 @@ description: Megtudhatja, hogyan konfigurálhat egy webalkalmazási tűzfal-ház
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 09/16/2020
+ms.date: 12/08/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: fc15c8deb7aea3256cc0077fbdc3ce1a2492b1b2
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.topic: how-to
+ms.openlocfilehash: f282cfa6347dd6e6d591ac5cd8b1785e405c6c02
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519025"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905978"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Helyi WAF házirendek konfigurálása Azure PowerShell használatával
 
@@ -442,6 +442,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Applicat
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Webalkalmazási tűzfalszabályok testreszabása](application-gateway-customize-waf-rules-portal.md)

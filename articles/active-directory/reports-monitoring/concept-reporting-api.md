@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2e3f98bd96c09fe741a24a1332443c876e2e61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af448d5d28c5add39176500b988824b17f85b9fb
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225910"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861969"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Ismerkedés a Azure Active Directory Reporting API-val
 
@@ -39,7 +39,7 @@ Ha problémákba ütközik, tekintse meg a [Azure Active Directory támogatásá
 Ha a jelentéskészítési API-t felhasználói beavatkozás nélkül vagy anélkül szeretné elérni, a következőket kell tennie:
 
 1. Szerepkörök kiosztása (biztonsági olvasó, biztonsági rendszergazda, globális rendszergazda)
-2. Egy alkalmazás regisztrálása
+2. Alkalmazás regisztrálása
 3. Engedélyek megadása
 4. Konfigurációs beállítások összegyűjtése
 
@@ -47,7 +47,7 @@ Részletes útmutatást a [Azure Active Directory jelentési API elérésének e
 
 ## <a name="api-endpoints"></a>API-végpontok 
 
-A naplók Microsoft Graph API-végpontja, `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits` valamint a bejelentkezések Microsoft Graph API-végpontja `https://graph.microsoft.com/v1.0/auditLogs/signIns` . További információkért tekintse meg a [naplózási API-referenciát](/graph/api/resources/directoryaudit?view=graph-rest-1.0) és a [bejelentkezési API-referenciát](/graph/api/resources/signIn?view=graph-rest-1.0).
+A naplók Microsoft Graph API-végpontja, `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits` valamint a bejelentkezések Microsoft Graph API-végpontja `https://graph.microsoft.com/v1.0/auditLogs/signIns` . További információkért tekintse meg a [naplózási API-referenciát](/graph/api/resources/directoryaudit) és a [bejelentkezési API-referenciát](/graph/api/resources/signIn).
 
 Emellett az [Identity Protection kockázati észlelések API](/graph/api/resources/identityriskevent?view=graph-rest-beta) -val programozási hozzáférést nyerhet a biztonsági észlelésekhez Microsoft Graph használatával. További információ: Ismerkedés [a Azure Active Directory Identity Protection és Microsoft Graphával](../identity-protection/howto-identity-protection-graph-api.md). 
   

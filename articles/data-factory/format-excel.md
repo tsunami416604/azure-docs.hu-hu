@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: b1f95cf0a62aa68fe86f37cea137251553458a1d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8f19ccc90c44ef90cee7bb1ae881086321e863b6
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348874"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902034"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-formátum Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,7 +33,8 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 | ---------------- | ------------------------------------------------------------ | -------- |
 | típus             | Az adatkészlet Type tulajdonságát az **Excel** értékre kell beállítani.   | Igen      |
 | location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . | Igen      |
-| SheetName tulajdonságbeállító        | Az Excel-munkalap neve az adatolvasáshoz.                       | Igen      |
+| SheetName tulajdonságbeállító        | Az Excel-munkalap neve az adatolvasáshoz.                       | Itt adhatja meg `sheetName` vagy `sheetIndex` |
+| sheetIndex | Az Excel-munkalap indexe az adatok olvasására, 0-tól kezdődően. | Itt adhatja meg `sheetName` vagy `sheetIndex` |
 | tartomány            | Az adott munkalapon lévő cellatartomány a szelektív adat megtalálásához, például:<br>-Nincs megadva: beolvassa a teljes munkalapot táblaként az első nem üres sorból és oszlopból.<br>- `A3`: az adott cellától kezdődő táblázat beolvasása, amely dinamikusan észleli az alábbi sorokat és az összes oszlopot a jobb oldalon.<br>- `A3:H5`: a rögzített tartomány beolvasása táblázatként<br>- `A3:A3`: az egyetlen cella beolvasása | Nem       |
 | firstRowAsHeader | Meghatározza, hogy az adott munkalap vagy tartomány első sorát fejlécként kell-e kezelni az oszlopok neveivel.<br>Az engedélyezett értékek: **true** és **false** (alapértelmezett). | Nem       |
 | nullValue        | Megadja a null értékű karakterlánc-ábrázolást. <br>Az alapértelmezett érték **üres karakterlánc**. | Nem       |
@@ -149,7 +150,7 @@ source(allowSchemaDrift: true,
     firstRowAsHeader: true) ~> ExcelSourceInlineDataset
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)

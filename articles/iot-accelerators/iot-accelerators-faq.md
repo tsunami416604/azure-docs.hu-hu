@@ -8,39 +8,48 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 40c1fb314a2dea653740e7f87b5caa14c759fffb
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1fd2b8461bd66c826dc4890c331b740c4703f896
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078221"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903989"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Gyakran ismételt kérdések az IoT-megoldásgyorsítókról
 
-Lásd még: a [csatlakoztatott gyárra vonatkozó gyakori kérdések](iot-accelerators-faq-cf.md) és a [távoli FIGYELÉSRE vonatkozó gyakori kérdések](iot-accelerators-faq-rm-v2.md) .
+Lásd még: a [csatlakoztatott gyárra vonatkozó gyakori kérdések](iot-accelerators-faq-cf.md).
 
 ### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>Hol találom a megoldási gyorssegédek forráskódját?
 
 A forráskód a következő GitHub-adattárakban tárolódik:
 
-* [Távoli figyelési megoldás gyorsítása (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [Távoli figyelési megoldás gyorsítása (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
-* [Prediktív karbantartási megoldás gyorsítása](https://github.com/Azure/azure-iot-predictive-maintenance)
 * [Csatlakoztatott gyári megoldás gyorsítása](https://github.com/Azure/azure-iot-connected-factory)
+* [Eszköz-szimulációs megoldás gyorsítása](https://github.com/Azure/device-simulation-dotnet)
+
+### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>Hol találhatom meg a távoli figyelés és a prediktív karbantartási megoldás gyorssegédeit?
+
+December 10 2020-én a távoli figyelés és a prediktív karbantartási gyorssegédek el lettek távolítva az [Azure IoT megoldás-gyorsító](https://www.azureiotsolutions.com/Accelerators) webhelyről, és már nem érhetők el az új üzemelő példányok számára. A gyorssegédekhez tartozó GitHub-Tárházak archiválása is megtörtént. A kód még mindenki számára elérhető, de a Tárházak nem vesznek fel új hozzájárulásokat.
+
+### <a name="what-happens-to-my-existing-remote-monitoring-and-predictive-maintenance-deployments"></a>Mi történik a meglévő távoli figyelési és prediktív karbantartási üzembe helyezésekkel?
+
+A meglévő központi telepítések nem érintik a távoli figyelés és a prediktív karbantartási megoldási gyorssegédek eltávolítását, és továbbra is működni fognak. Az elágazó adattárak szintén nem érintettek. A GitHubon található fő Tárházak archiválása megtörtént.
+
+### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>Hogyan eszköz-szimulációs megoldás-gyorsító üzembe helyezése?
+
+Az eszköz-szimulációs megoldás-gyorsító üzembe helyezéséhez tekintse meg az [eszköz szimulációs](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) GitHub-tárházát.
+
+### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>Hol találhatok információt az eltávolított megoldási gyorssegédekről?
+
+Tekintse meg a következő lapokat a korábbi verziók webhelyén:
+
+* [Távoli figyelés](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
+* [Prediktív karbantartás](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Milyen SDK-kat használhatok az eszközök ügyfeleinek fejlesztéséhez a megoldás-gyorssegédekhez?
 
 A különböző nyelvekre (C, .NET, Java, Node.js, Python) mutató hivatkozásokat a [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub-adattárakban található IoT.
 
 Ha a fejlesztői készlet eszközt használja, a [IoT fejlesztői készlet SDK](https://github.com/Microsoft/devkit-sdk) GitHub-tárházban találhat erőforrásokat és mintákat.
-
-### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>Elérhető-e az új Service-architektúra a három megoldási gyorssegédhez?
-
-Jelenleg csak a távoli figyelési megoldás használja a Services architektúrát, mivel az a legszélesebb forgatókönyvet fedi le.
-
-### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Milyen előnyökkel jár az új, nyílt forráskódú Service-alapú architektúrák az új frissítésben?
-
-Az elmúlt két évben a Felhőbeli architektúra nagy mértékben fejlődött. A szolgáltatások nagy léptékben és rugalmasan, a fejlesztési sebesség feláldozása nélkül váltak elérhetővé. Ez az építészeti minta számos Microsoft-szolgáltatásban használatos, nagy megbízhatósági és méretezhetőségi eredményekkel. A Microsoft ezeket a lépéseket a megoldás-gyorsítók között helyezi üzembe, így az ügyfelek hasznát vehetik.
 
 ### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>Szolgáltatás-rendszergazda vagyok, és szeretném módosítani a címtár-hozzárendelést az előfizetésem és egy adott Azure AD-bérlő között. Hogyan elvégezte ezt a feladatot?
 
@@ -63,14 +72,6 @@ Tekintse meg az alábbi ábrát, amely útmutatást nyújt:
 
 Ha biztos benne, hogy rendelkezik Azure-előfizetéssel, érvényesítse az előfizetés bérlői leképezését, és ellenőrizze, hogy a megfelelő bérlő van-e kiválasztva a legördülő menüben. Ha ellenőrizte a bérlő helyességét, kövesse az előző ábrát, és ellenőrizze az előfizetés és az Azure AD-bérlő hozzárendelését.
 
-### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Hol találhatok információt a távoli figyelési megoldás előző verziójáról?
-
-A távoli figyelési megoldáshoz tartozó gyorssegéd előző verzióját a IoT Suite távoli figyelési előre konfigurált megoldásnak hívták. Az archivált dokumentációt itt találja: [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) .
-
-### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Elérhető-e az új megoldás-gyorsító ugyanabban a földrajzi régióban, mint a meglévő megoldás?
-
-Igen, az új távoli figyelés ugyanabban a földrajzi régióban érhető el.
-
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Mi a különbség az erőforráscsoport törlése között a Azure Portalban, majd a azureiotsolutions.com a megoldás-gyorsító elemre kattintva?
 
 * Ha törli a megoldás-gyorsító a [azureiotsolutions.com](https://www.azureiotsolutions.com/)-ben, a megoldás-gyorsító létrehozásakor telepített összes erőforrást törli. Ha további erőforrásokat adott hozzá az erőforráscsoporthoz, ezek az erőforrások is törlődnek.
@@ -88,10 +89,6 @@ Alapértelmezés szerint [előfizetéssel 10 IoT hub-t](../azure-resource-manage
 
 50. Létrehozhat egy Azure- [támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a korlát növeléséhez, de alapértelmezés szerint csak 50 Cosmos db példányokat lehet kiépíteni előfizetésre.
 
-### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Hány ingyenes Bing Térképek API-t adhatok meg egy előfizetésben?
-
-Kettőt. Azure-előfizetésben csak két belső tranzakciós 1. szintű Bing Maps-t hozhat létre nagyvállalati csomagokhoz. A távoli figyelési megoldás alapértelmezés szerint a belső Transactions 1 csomaggal lett kiépítve. Ennek eredményeképpen legfeljebb két távoli figyelési megoldást állíthat be egy előfizetésben, módosítás nélkül.
-
 ### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>Létrehozhatok-e megoldás-gyorsító megoldást, ha Microsoft Azureem a DreamSpark?
 
 > [!NOTE]
@@ -107,7 +104,5 @@ Az [Azure ad-bérlő törlésével](/archive/blogs/ericgolpe/walkthrough-of-dele
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 
-* [A távoli figyelési megoldás gyorsító képességeinek megismerése](quickstart-remote-monitoring-deploy.md)
-* [A prediktív karbantartási megoldásgyorsító áttekintése](./iot-accelerators-predictive-walkthrough.md)
 * [Csatlakoztatott gyári megoldás-gyorsító üzembe helyezése](quickstart-connected-factory-deploy.md)
 * [IoT-biztonság létrehozása az alapoktól](../iot-fundamentals/iot-security-ground-up.md)

@@ -1,5 +1,5 @@
 ---
-title: Folyamatos integráció és kézbesítés Azure Data Factory
+title: Folyamatos integráció és teljesítés az Azure Data Factoryben
 description: Megtudhatja, hogyan használhatja a folyamatos integrációt és a szállítást, hogy Data Factory folyamatokat helyezzen át egy környezetből (fejlesztés, tesztelés, termelés) egy másikra.
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: a7d392412aa481d9541cd4987cfb4c18d04dafa0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500155"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902308"
 ---
-# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
+# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és teljesítés az Azure Data Factoryben
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -235,7 +235,7 @@ Az alábbi útmutatást követve az egyéni paraméterek fájljának létrehozá
       * `-` azt jelenti, hogy nem tartja meg a paraméter alapértelmezett értékét.
       * `|` a Azure Key Vault titkos kódokhoz vagy kulcsokhoz tartozó titkok esetében különleges eset.
    * `<name>` a paraméter neve. Ha üres, akkor a tulajdonság nevét veszi fel. Ha az érték egy `-` karakterrel kezdődik, a név lerövidítve lesz. Például `AzureStorage1_properties_typeProperties_connectionString` lerövidítheti a következőt: `AzureStorage1_connectionString` .
-   * `<stype>` a paraméter típusa. Ha a `<stype>` értéke üres, az alapértelmezett típus: `string` . Támogatott értékek: `string` ,,, `bool` `number` `object` és `securestring` .
+   * `<stype>` a paraméter típusa. Ha a `<stype>` értéke üres, az alapértelmezett típus: `string` . Támogatott értékek:,,,, `string` `securestring` `int` `bool` `object` `secureobject` és `array` .
 * Egy tömb megadása a definíciós fájlban azt jelzi, hogy a sablonban szereplő egyező tulajdonság egy tömb. Data Factory a tömbben lévő összes objektumon megismétli a tömböt az Integration Runtime objektumában megadott definíció használatával. A második objektum, egy karakterlánc, a tulajdonság neve lesz, amely az egyes iterációk paraméterének neveként szerepel.
 * Egy definíció nem lehet egy adott erőforrás-példányra jellemző. Bármely definíció az adott típusú összes erőforrásra vonatkozik.
 * Alapértelmezés szerint az összes biztonságos karakterlánc, például a Key Vault titkos kódok, valamint a biztonságos karakterláncok, például a kapcsolati karakterláncok, kulcsok és tokenek paraméterei.
@@ -250,7 +250,7 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
         "properties": {
             "activities": [{
                 "typeProperties": {
-                    "waitTimeInSeconds": "-::number",
+                    "waitTimeInSeconds": "-::int",
                     "headers": "=::object"
                 }
             }]
@@ -268,7 +268,7 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
             "typeProperties": {
                 "recurrence": {
                     "*": "=",
-                    "interval": "=:triggerSuffix:number",
+                    "interval": "=:triggerSuffix:int",
                     "frequency": "=:-freq"
                 },
                 "maxConcurrency": "="
@@ -314,10 +314,10 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
 
 * Az elérési út alatti összes tulajdonság a `typeProperties` megfelelő alapértelmezett értékekkel van ellátva. Például két tulajdonság van a `IntegrationRuntimes` típus tulajdonságainál: `computeProperties` és `ssisProperties` . Mindkét tulajdonság típusa a megfelelő alapértelmezett értékekkel és típusokkal (objektummal) jön létre.
 
-#### <a name="triggers"></a>Eseményindítók
+#### <a name="triggers"></a>Triggerek
 
 * A `typeProperties` rendszerben a két tulajdonság paraméteres. Az első a `maxConcurrency` , amely az alapértelmezett értékkel van megadva, és típusa `string` . Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency` .
-* A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képez a `interval` tulajdonság, amely típusként van paraméterként `number` . A paraméter neve utótaggal van ellátva `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterként. A tulajdonság azonban `freq` alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
+* A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képez a `interval` tulajdonság, amely típusként van paraméterként `int` . A paraméter neve utótaggal van ellátva `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterként. A tulajdonság azonban `freq` alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
@@ -668,7 +668,7 @@ Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD
     - A adatfeldolgozó-entitások egymástól függenek. Az eseményindítók például a folyamatoktól függenek, és az adatkészletek és az egyéb folyamatok függenek egymástól. Az erőforrások egy részhalmazának szelektív közzététele váratlan viselkedést és hibákat eredményezhet.
     - Ritka esetekben, amikor szelektív közzétételre van szüksége, érdemes lehet gyorsjavítást használni. További információ: [gyorsjavítások éles környezete](#hotfix-production-environment).
 
-- Az Azure Data Factory csapat nem javasolja, hogy az Azure RBAC-vezérlőket az egyes entitásokhoz (adatcsatornákhoz, adatkészletekhez stb.) rendeljen egy adat-előállítóban. Ha például egy fejlesztő hozzáfér egy folyamathoz vagy egy adatkészlethez, el kell tudnia érni az adat-előállító összes folyamatát vagy adatkészletét. Ha úgy érzi, hogy számos Azure-szerepkört kell megvalósítani egy adat-előállítón belül, tekintse meg a második adat-előállító üzembe helyezését ismertetőt.
+- Az Azure Data Factory csapat nem javasolja, hogy az Azure RBAC-vezérlőket az egyes entitásokhoz (adatcsatornákhoz, adatkészletekhez stb.) rendeljen egy adat-előállítóban. Ha például egy fejlesztő hozzáfér egy folyamathoz vagy adathalmazhoz, akkor hozzá kell férnie az adat-előállítóban lévő összes folyamathoz vagy adathalmazhoz. Ha úgy érzi, hogy számos Azure-szerepkört kell megvalósítani egy adat-előállítón belül, tekintse meg a második adat-előállító üzembe helyezését ismertetőt.
 
 -   Privát ágakból nem lehet közzétenni.
 

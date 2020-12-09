@@ -6,27 +6,31 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 12/04/2020
-ms.openlocfilehash: 7b335c3db5fb52c4323b797556d48e3ed9ae410a
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.date: 12/08/2020
+ms.openlocfilehash: b5001898fa18834ce7c04403de70879084df85f1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621620"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904908"
 ---
-# <a name="co-sell-option-in-the-commercial-marketplace"></a>Közös értékesítés lehetősége a kereskedelmi piactéren
+# <a name="co-sell-option-in-the-commercial-marketplace"></a>Együttes értékesítési lehetőség a kereskedelmi piactéren
 
 A **Microsoft Tab együttes értékesítésével** kapcsolatos információk megadása teljesen opcionális. A [közös értékesítésre kész és az IP-incentivized állapot](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)eléréséhez szükséges. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy az Ön ajánlatával kapcsolatos további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Nem érhető el közvetlenül az ügyfeleknek. További információ: [közös értékesítés a Microsofttal](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
-A partner Centerben a közös értékesítés lehetősége jelenleg a következő ajánlat-típusoknál érhető el.
+A partner Center közös értékesítés lehetősége a következő típusú ajánlatokhoz érhető el.
 
 - Azure-alkalmazás
+- Azure-tároló
+- Azure-beli virtuális gép
+- Tanácsadási szolgáltatás
 - Dynamics 365 a Customer engagement & PowerApps
-- Dynamics 365 for Operations
+- A Dynamics 365 for Operations
 - Dynamics 365 Business Central
+- IoT Edge modul
+- Felügyelt szolgáltatás
+- Power BI alkalmazás
 - Szolgáltatott szoftver (SaaS)
-
-A további ajánlat-típusok támogatása az idő múlásával elérhetővé válik.
 
 ## <a name="listing"></a>Listázás
 
@@ -117,6 +121,6 @@ A hivatkozási architektúra diagramjainak kiépítéséhez hasznos kiindulópon
 
 (A fenti példában szereplő hivatkozási architektúra diagramja egy vertikális iparági Csevegőrobot, amely integrálható az intranetes webhelyekkel, így a különböző ERP-rendszerek ellátási láncával és gyártási ütemezési adataival Machine Learning algoritmussal lehet elősegíteni az előrejelzési igény forgatókönyveit. A robot úgy van kialakítva, hogy kérdéseket tegyen fel, ha egy értékesítési személy véglegesítheti a megrendelés lehetséges kézbesítési dátumát.)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ: [értékesítés a Microsofttal](https://partner.microsoft.com/membership/sell-with-microsoft).

@@ -3,17 +3,17 @@ title: Válassza ki a megfelelő díjszabási szintet Microsoft Azure térképek
 description: További információ a Azure Maps díjszabási szintjeiről. Itt megtekintheti, hogy mely funkciók érhetők el, és hogyan tekintheti meg az árképzési szintek kiválasztásának legfontosabb szempontjait.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3603a4f5d103987b25bd5f976b89f943f98565a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cb57e424642141e73588a61d026d1ff2f1a8b096
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003684"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905298"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Válassza ki a megfelelő díjszabási szintet Azure Maps
 
@@ -48,6 +48,7 @@ Ha az alapszintű Térinformatikai API-k megfelelnek a szolgáltatás követelm�
 | Mobilitás (előzetes verzió)                       |                     | ✓        |
 | Időjárás (előzetes verzió)                        |✓                    |✓        |
 |  Létrehozó (előzetes verzió)                         |                   |✓        |
+|  Jogosultságszint-emelés (előzetes verzió)                        |                   |✓        |
 
 Vegye figyelembe ezeket a további pontokat:
 
@@ -63,7 +64,7 @@ Tekintse meg a **díjszabási szinten megcélozott ügyfelek** táblázatát, ho
 | S0            |    A S0 díjszabási szintje az éles környezetben futó alkalmazások számára is működik: a megvalósíthatósági fejlesztéstől és a korai teszteléstől az alkalmazások gyártásához és üzembe helyezéséhez. Ez a réteg azonban kisméretű fejlesztésre, vagy alacsony egyidejű felhasználókkal rendelkező ügyfelekre, vagy mindkettőre lett tervezve. 
 | S1            |    Az S1 díjszabási szintje olyan ügyfelek számára készült, akik nagyméretű nagyvállalati alkalmazásokat, kritikus fontosságú alkalmazásokat vagy nagy mennyiségű egyidejű felhasználót foglalnak magukban. Azok az ügyfelek is, akik speciális térinformatikai szolgáltatásokat igényelnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a díjszabási szintek megtekintéséről és módosításáról:
 

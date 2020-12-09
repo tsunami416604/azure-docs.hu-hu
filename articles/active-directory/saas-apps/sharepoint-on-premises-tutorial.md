@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 1a52fc28d99e0f072323e5042257baec9bf98ecb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a693b22c609829f3bf6e76637eac5793d73703e6
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518382"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862309"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a helyi SharePoint-környezettel
 
@@ -43,26 +43,26 @@ A helyi SharePoint-környezet Azure AD-be való integrálásának konfigurálás
 
 A SharePoint helyszíni hozzáadása a gyűjteményből:
 
-1. A Azure Portal bal szélső paneljén válassza a **Azure Active Directory**lehetőséget.
+1. A Azure Portal bal szélső paneljén válassza a **Azure Active Directory** lehetőséget.
 
    > [!NOTE]
    > Ha az elem nem érhető el, a bal oldali ablaktábla tetején található **minden szolgáltatás** hivatkozáson keresztül is megnyithatja. Az alábbi áttekintésben a **Azure Active Directory** hivatkozás az **identitás** szakaszban található. A szűrőt a szűrő mező használatával is megkeresheti.
 
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
 1. Új alkalmazás hozzáadásához válassza a párbeszédpanel tetején található **új alkalmazás** lehetőséget.
 
-1. A keresőmezőbe írja be a **helyszíni SharePoint**kifejezést. Válassza a **helyszíni SharePoint** lehetőséget az eredmények ablaktáblán.
+1. A keresőmezőbe írja be a **helyszíni SharePoint** kifejezést. Válassza a **helyszíni SharePoint** lehetőséget az eredmények ablaktáblán.
 
     <kbd>![Helyszíni SharePoint a találatok listájában](./media/sharepoint-on-premises-tutorial/search-new-app.png)</kbd>
 
 1. Adja meg a SharePoint helyszíni példányának nevét, és válassza a **Hozzáadás** lehetőséget az alkalmazás hozzáadásához.
 
-1. Az új vállalati alkalmazásban válassza a **Tulajdonságok**lehetőséget, és jelölje be a **szükséges értéket a felhasználói hozzárendeléshez?**.
+1. Az új vállalati alkalmazásban válassza a **Tulajdonságok** lehetőséget, és jelölje be a **szükséges értéket a felhasználói hozzárendeléshez?**.
 
    <kbd>![Felhasználói hozzárendelés szükséges? váltás](./media/sharepoint-on-premises-tutorial/user-assignment-required.png)</kbd>
 
-   Ebben az esetben az érték a **nem**értékre van állítva.
+   Ebben az esetben az érték a **nem** értékre van állítva.
 
 ## <a name="configure-and-test-azure-ad"></a>Az Azure AD konfigurálása és tesztelése
 
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD SSO-t a Azure Portalban.
 
 Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
 
-1. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés** lehetőséget.
 
 1. Az **egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza ki az **SAML** -módot az egyszeri bejelentkezés engedélyezéséhez.
  
@@ -100,7 +100,7 @@ Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
     1. A **Válasz URL-címe** mezőbe írja be az URL-címet a következő minta használatával: `https://<YourSharePointSiteURL>/_trust/` .
 
     1. A **bejelentkezési URL** -cím mezőbe írja be az URL-címet a következő minta használatával: `https://<YourSharePointSiteURL>/` .
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel.
@@ -133,7 +133,7 @@ Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
     Futtassa az alábbi parancsokat egy új megbízható identitás-szolgáltató konfigurálásához.
 
     > [!TIP]
-    > Ha most ismerkedik a PowerShell használatával, vagy szeretne többet megtudni a PowerShell működéséről, tekintse meg a [SharePoint PowerShellt](/powershell/sharepoint/overview?view=sharepoint-ps).
+    > Ha most ismerkedik a PowerShell használatával, vagy szeretne többet megtudni a PowerShell működéséről, tekintse meg a [SharePoint PowerShellt](/powershell/sharepoint/overview).
 
 
     ```
@@ -148,13 +148,13 @@ Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
     ```
 1. Engedélyezze az alkalmazás megbízható identitás-szolgáltatóját.
 
-    1. A **központi felügyelet**területen lépjen a **webalkalmazás kezelése lapra** , és válassza ki azt a webalkalmazást, amelyet az Azure ad-vel szeretne védeni.
+    1. A **központi felügyelet** területen lépjen a **webalkalmazás kezelése lapra** , és válassza ki azt a webalkalmazást, amelyet az Azure ad-vel szeretne védeni.
 
     1. A menüszalagon válassza a **hitelesítésszolgáltatók** lehetőséget, majd válassza ki a használni kívánt zónát.
 
-    1. Válassza a **megbízható identitás-szolgáltató**lehetőséget, majd válassza ki az imént regisztrált szolgáltatót a *AzureAD*.
+    1. Válassza a **megbízható identitás-szolgáltató** lehetőséget, majd válassza ki az imént regisztrált szolgáltatót a *AzureAD*.
 
-    1. Válassza az **OK** lehetőséget.
+    1. Kattintson az **OK** gombra.
 
     ![A hitelesítési szolgáltató konfigurálása](./media/sharepoint-on-premises-tutorial/config-auth-provider.png)
 
@@ -162,13 +162,13 @@ Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Azure Portalban.
 
-1. A Azure Portal bal szélső paneljén válassza a **Azure Active Directory**lehetőséget. A **kezelés** ablaktáblán válassza a **felhasználók**lehetőséget.
+1. A Azure Portal bal szélső paneljén válassza a **Azure Active Directory** lehetőséget. A **kezelés** ablaktáblán válassza a **felhasználók** lehetőséget.
 
 1. Válassza a **minden felhasználó**  >  **új felhasználó** lehetőséget a képernyő tetején.
 
-1. Válassza a **felhasználó létrehozása**lehetőséget, majd a felhasználó tulajdonságainál kövesse az alábbi lépéseket. Előfordulhat, hogy a bérlői utótag vagy bármely ellenőrzött tartomány használatával létrehozhat felhasználókat az Azure AD-ben. 
+1. Válassza a **felhasználó létrehozása** lehetőséget, majd a felhasználó tulajdonságainál kövesse az alábbi lépéseket. Előfordulhat, hogy a bérlői utótag vagy bármely ellenőrzött tartomány használatával létrehozhat felhasználókat az Azure AD-ben. 
 
-    1. A **név** mezőbe írja be a felhasználónevet. A **tesztfelhasználó**használtuk.
+    1. A **név** mezőbe írja be a felhasználónevet. A **tesztfelhasználó** használtuk.
   
     1. A **Felhasználónév** mezőben adja meg a következőt: `TestUser@yourcompanydomain.extension`. Ez a példa a következőt mutatja: `TestUser@contoso.com` .
 
@@ -184,9 +184,9 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Azure
 
 1. Válassza ki **Azure Active Directory**  >  **csoportokat**.
 
-1. Válassza az **új csoport**lehetőséget.
+1. Válassza az **új csoport** lehetőséget.
 
-1. Adja meg a **csoport típusát**, a **csoport nevét**, a **csoport leírását**és a **tagság típusa** mezőket. Kattintson a nyilakra a tagok kiválasztásához, majd keresse meg vagy válassza ki a csoportba felvenni kívánt tagokat. A kijelölt tagok hozzáadásához válassza a **kijelölés** lehetőséget, majd válassza a **Létrehozás**lehetőséget.
+1. Adja meg a **csoport típusát**, a **csoport nevét**, a **csoport leírását** és a **tagság típusa** mezőket. Kattintson a nyilakra a tagok kiválasztásához, majd keresse meg vagy válassza ki a csoportba felvenni kívánt tagokat. A kijelölt tagok hozzáadásához válassza a **kijelölés** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
 
 ![Azure AD-biztonsági csoport létrehozása](./media/sharepoint-on-premises-tutorial/new-group.png)
 
@@ -214,19 +214,19 @@ Ahhoz, hogy Azure AD-alapú biztonsági csoportokat rendeljen a SharePointhoz a 
 
 1. Konfigurálja a AzureCP a helyszíni SharePoint-farmon vagy egy alternatív egyéni jogcím-szolgáltatói megoldáson. A AzureCP konfigurálásához tekintse meg ezt a [AzureCP](https://yvand.github.io/AzureCP/Register-App-In-AAD.html) webhelyét.
 
-1. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés** lehetőséget.
 
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon szerkessze a **felhasználói attribútumok & jogcímek** szakaszt.
 
-1. Válassza **a csoport hozzáadása**lehetőséget.
+1. Válassza **a csoport hozzáadása** lehetőséget.
 
-1. Válassza ki a felhasználóhoz társított csoportokat a jogcímben. Ebben az esetben válassza a **minden csoport**elemet. A **forrás attribútum** szakaszban válassza a **csoport azonosítója** elemet, majd válassza a **Mentés**lehetőséget.
+1. Válassza ki a felhasználóhoz társított csoportokat a jogcímben. Ebben az esetben válassza a **minden csoport** elemet. A **forrás attribútum** szakaszban válassza a **csoport azonosítója** elemet, majd válassza a **Mentés** lehetőséget.
 
 Ha hozzáférést szeretne biztosítani az Azure AD biztonsági csoporthoz a helyszíni SharePointban, ossza meg a webhelycsoportot, vagy adja hozzá az Azure AD biztonsági csoportot a webhelycsoport egyik csoportjához.
 
-1. Tallózással keresse meg a **SharePoint-webhelycsoportot**. A hely gyűjteményének **hely beállításai** területén válassza a **személyek és csoportok**lehetőséget. 
+1. Tallózással keresse meg a **SharePoint-webhelycsoportot**. A hely gyűjteményének **hely beállításai** területén válassza a **személyek és csoportok** lehetőséget. 
 
-1. Válassza ki a SharePoint-csoportot, majd válassza az **új**  >  **felhasználók hozzáadása ehhez a csoporthoz**lehetőséget. A csoport nevének beírásakor a személyek választó megjeleníti az Azure AD biztonsági csoportot.
+1. Válassza ki a SharePoint-csoportot, majd válassza az **új**  >  **felhasználók hozzáadása ehhez a csoporthoz** lehetőséget. A csoport nevének beírásakor a személyek választó megjeleníti az Azure AD biztonsági csoportot.
 
     ![Azure AD-csoport hozzáadása egy SharePoint-csoporthoz](./media/sharepoint-on-premises-tutorial/permission-azure-ad-group.png)
 
@@ -234,13 +234,13 @@ Ha hozzáférést szeretne biztosítani az Azure AD biztonsági csoporthoz a hel
 
 A SharePoint-webhelyét konzisztens módon is megadhatja a vendég fiókhoz, mivel az egyszerű felhasználónév már módosítva lesz. A felhasználó például a következőt `jdoe@outlook.com` jeleníti meg: `jdoe_outlook.com#ext#@TENANT.onmicrosoft.com` . A hely külső felhasználókkal való megosztásához hozzá kell adnia néhány módosítást a Azure Portal a **felhasználói attribútumok & jogcímek** szakaszban.
 
-1. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés** lehetőséget.
 
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon szerkessze a **felhasználói attribútumok & jogcímek** szakaszt.
 
 1. A **szükséges jogcím** zónában válassza az **egyedi felhasználói azonosító (név azonosítója)** elemet.
 
-1. Módosítsa a **forrás attribútum** tulajdonságot a **User. localuserprincipalname**értékre, majd válassza a **Mentés**lehetőséget.
+1. Módosítsa a **forrás attribútum** tulajdonságot a **User. localuserprincipalname** értékre, majd válassza a **Mentés** lehetőséget.
 
     ![Felhasználói attribútumok & jogcímek kezdeti forrás attribútuma](./media/sharepoint-on-premises-tutorial/manage-claim.png)
 
@@ -251,11 +251,11 @@ A SharePoint-webhelyét konzisztens módon is megadhatja a vendég fiókhoz, miv
     > [!NOTE]
     > Ebben a beállításban nem szükséges a vezetékneve és a megadott név.
 
-1. A Azure Portal bal szélső paneljén válassza a **Azure Active Directory** , majd a **felhasználók**lehetőséget.
+1. A Azure Portal bal szélső paneljén válassza a **Azure Active Directory** , majd a **felhasználók** lehetőséget.
 
-1. Válassza az **új vendég felhasználó**lehetőséget.
+1. Válassza az **új vendég felhasználó** lehetőséget.
 
-1. Válassza a **felhasználó meghívása** lehetőséget. Adja meg a felhasználó tulajdonságait, és válassza a **meghívás**lehetőséget.
+1. Válassza a **felhasználó meghívása** lehetőséget. Adja meg a felhasználó tulajdonságait, és válassza a **meghívás** lehetőséget.
 
 1. Most már megoszthatja a webhelyet, MyGuestAccount@outlook.com és engedélyezheti, hogy ez a felhasználó hozzáférjen.
 
@@ -265,13 +265,13 @@ A SharePoint-webhelyét konzisztens módon is megadhatja a vendég fiókhoz, miv
 
 A konfiguráció egyetlen webalkalmazás esetében működik, de további konfigurálásra van szükség, ha ugyanazt a megbízható identitás-szolgáltatót szeretné használni több webalkalmazáshoz. Tegyük fel például, hogy kibővített egy webalkalmazást az URL-cím használatára, `https://sales.contoso.com` és most hitelesíteni szeretné a felhasználókat a szolgáltatásban `https://marketing.contoso.com` . Ehhez frissítse az WReply paramétert, és frissítse az alkalmazás regisztrációját az Azure AD-ben a válasz URL-címének hozzáadásához.
 
-1. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés** lehetőséget.
 
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon szerkessze az **alapszintű SAML-konfigurációt**.
 
     ![Alapszintű SAML-konfiguráció](./media/sharepoint-on-premises-tutorial/add-reply-url.png)
 
-1. A **Válasz URL-címére (a fogyasztói szolgáltatás URL-címére)** adja hozzá a további webalkalmazások URL-címét, majd válassza a **Mentés**lehetőséget.
+1. A **Válasz URL-címére (a fogyasztói szolgáltatás URL-címére)** adja hozzá a további webalkalmazások URL-címét, majd válassza a **Mentés** lehetőséget.
 
     ![Az alapszintű SAML-konfiguráció szerkesztése](./media/sharepoint-on-premises-tutorial/reply-url-for-web-application.png)
 
@@ -281,7 +281,7 @@ A konfiguráció egyetlen webalkalmazás esetében működik, de további konfig
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
-1. A **központi felügyelet**lapon nyissa meg a webalkalmazást, és engedélyezze a meglévő megbízható identitás-szolgáltatót.
+1. A **központi felügyelet** lapon nyissa meg a webalkalmazást, és engedélyezze a meglévő megbízható identitás-szolgáltatót.
 
 Előfordulhat, hogy más forgatókönyvek is vannak, amelyekben a belső felhasználók számára hozzáférést kíván biztosítani a SharePoint helyszíni példányához. Ebben az esetben telepítenie kell Microsoft Azure Active Directory Connect a helyszíni felhasználók Azure AD-vel való szinkronizálásának engedélyezéséhez. Ezt a telepítést egy másik cikkben tárgyaljuk.
 

@@ -1,39 +1,39 @@
 ---
 title: ARM-sablon – gyakori kérdések
-description: Gyakori kérdések (GYIK) Azure Resource Manager-sablonokról.
+description: Gyakori kérdések (GYIK) Azure Resource Manager-sablonokról (ARM-sablonok).
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: af6a46e16cd888e3ff6a382be2b1a4264fcc2941
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184008"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903003"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Az ARM-sablonokkal kapcsolatos gyakori kérdések
 
-Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérdésekre ad választ.
+Ez a cikk a Azure Resource Manager-sablonokkal (ARM-sablonokkal) kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="getting-started"></a>Első lépések
 
 * **Mik azok az ARM-sablonok, és miért érdemes használni?**
 
   Az ARM-sablonok JSON-fájlok, ahol meghatározhatja, hogy mit szeretne az Azure-ba telepíteni. A sablonok segítséget nyújtanak az Azure-hoz készült infrastruktúra-kód megoldás megvalósításában. A szervezet ismételten és megbízhatóan helyezheti üzembe a szükséges infrastruktúrát különböző környezetekben.
-  
+
   Ha többet szeretne megtudni arról, hogy az ARM-sablonok hogyan segítik az Azure-infrastruktúra kezelését, tekintse meg a [Mi az ARM-sablonok?](overview.md)
 
 * **Hogyan a sablonokkal való ismerkedést?**
 
-  Az ARM-sablonok egyszerűbb létrehozásához a megfelelő eszközökre van szükség. Javasoljuk, hogy telepítse a [Visual Studio Code](https://code.visualstudio.com/) -ot és a [Azure Resource Manager Tools bővítményt](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools). Az eszközök gyors bevezetéséhez tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása a Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)használatával című témakört.
+  Az ARM-sablonok egyszerűbb létrehozásához a megfelelő eszközökre van szükség. Javasoljuk, hogy telepítse a [Visual Studio Code](https://code.visualstudio.com/) -ot és a [Azure Resource Manager Tools bővítményt](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools). Az eszközök gyors bevezetését a rövid útmutató [: ARM-sablonok létrehozása a Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)használatával című témakörben tekintheti meg.
 
   Ha készen áll az ARM-sablonok létrehozásával kapcsolatos információk megismerésére, indítsa el a [kezdő oktatóanyag-sorozatot az ARM-sablonokban](template-tutorial-create-first-template.md). Ezek az oktatóanyagok részletesen ismertetik az ARM-sablonok összeállításának folyamatát. Megismerheti a sablon különböző részeit és azok közös működését. Ez a tartalom [Microsoft Learn modulként](/learn/modules/authoring-arm-templates/)is elérhető.
 
 * **ARM-sablonokat vagy Terraform kell használni az Azure-ban való üzembe helyezéshez?**
 
   Használja a legmegfelelőbb lehetőséget. Mindkét szolgáltatás segítséget nyújt az üzembe helyezések automatizálásában az Azure-ban.
-  
+
   Hiszünk abban, hogy az ARM-sablonokat más infrastruktúra-kódú szolgáltatásokhoz is használják. További információ ezekről az előnyökről: [Miért érdemes az ARM-sablonokat választani?](overview.md#why-choose-arm-templates)
 
 ## <a name="build-2020"></a>Build 2020
@@ -59,7 +59,7 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 * **Beállítottam a környezetet a portálon. Van valamilyen mód a sablon meglévő erőforráscsoporthoz való beolvasására?**
 
   Igen, [exportálhatja a sablont](export-template-portal.md) egy erőforráscsoport használatával. Az exportált sablon jó kiindulási pont a sablonok megismeréséhez, de érdemes módosítania, mielőtt éles környezetben használja.
-  
+
   A sablon exportálásakor kiválaszthatja, hogy mely erőforrásokat szeretné felvenni a sablonba.
 
 * **Létrehozhatok egy erőforráscsoportot egy ARM-sablonban, és erőforrásokat telepíthetek rá?**
@@ -182,11 +182,11 @@ Ez a cikk a Azure Resource Manager-(ARM-) sablonokkal kapcsolatos gyakori kérd�
 
 * **Integrálható az ARM-sablonok az Azure-folyamatokba?**
 
-  Igen. A sablon és a folyamatok használatáról az [oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal](deployment-tutorial-pipeline.md) és az ARM- [sablonok integrálása az Azure-folyamatokkal](add-template-to-azure-pipelines.md)című témakörben talál útmutatást.
+  Igen. A sablon és a folyamatok használatáról az [oktatóanyag: ARM-sablonok folyamatos integrálása az Azure-folyamatokkal](deployment-tutorial-pipeline.md) és az ARM- [sablonok integrálása az Azure-folyamatokkal](add-template-to-azure-pipelines.md)című cikkből tájékozódhat.
 
 * **Használhatok GitHub-műveleteket egy sablon üzembe helyezéséhez?**
 
-  Igen, lásd: [Azure Resource Manager-sablonok telepítése GitHub-műveletek használatával](deploy-github-actions.md).
+  Igen, lásd: [ARM-sablonok telepítése GitHub-műveletek használatával](deploy-github-actions.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

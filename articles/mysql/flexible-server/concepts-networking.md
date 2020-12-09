@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: eaccd0559439ce228325205f5845151f0e76bcae
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a8e2d77ff3c7cb2e4352b21cd87d630331e28660
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484525"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906148"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Kapcsolati és hálózatkezelési fogalmak a Azure Database for MySQL rugalmas kiszolgálóhoz (előzetes verzió)
 
@@ -33,7 +33,7 @@ A Azure Database for MySQL rugalmas kiszolgálójának két hálózati lehetős�
    * A VPN vagy a ExpressRoute használatával csatlakozhat a nem Azure-erőforrásokról a rugalmas kiszolgálóhoz
    * A rugalmas kiszolgálónak nincs nyilvános végpontja
 
-* **Nyilvános hozzáférés (engedélyezett IP-címek)** – a rugalmas kiszolgáló nyilvános végponton keresztül érhető el. A nyilvános végpont egy nyilvánosan feloldható DNS-címe. Az "engedélyezett IP-címek" kifejezés számos olyan IP-címet jelöl, amelyet a kiszolgáló eléréséhez engedélyt ad. Ezeket az engedélyeket **Tűzfalszabályok**nevezzük. 
+* **Nyilvános hozzáférés (engedélyezett IP-címek)** – a rugalmas kiszolgáló nyilvános végponton keresztül érhető el. A nyilvános végpont egy nyilvánosan feloldható DNS-címe. Az "engedélyezett IP-címek" kifejezés számos olyan IP-címet jelöl, amelyet a kiszolgáló eléréséhez engedélyt ad. Ezeket az engedélyeket **Tűzfalszabályok** nevezzük. 
 
    Válassza ki a nyilvános hozzáférési módszert, ha a következő képességeket szeretné használni:
    * A virtuális hálózatokat nem támogató Azure-erőforrásokkal való kapcsolat
@@ -107,6 +107,8 @@ Vegye figyelembe a következő szempontokat, amikor a MySQL-kiszolgáló szolgá
 
    * Kérje meg az internetszolgáltatót (ISP) a Azure Database for MySQL-kiszolgálót elérő ügyfélszámítógépekhez hozzárendelt IP-címtartomány számára, majd adja hozzá az IP-címtartományt tűzfalszabályként.
    * Szerezze be a statikus IP-címzést az ügyfélszámítógépek helyett, majd adja hozzá a statikus IP-címet tűzfalszabályként.
+  
+* **A tűzfalszabály IPv6 formátum esetén nem érhető el:** A tűzfalszabályok IPv4-formátumúnak kell lenniük. Ha a tűzfalszabályok IPv6-formátumban vannak megadva, az érvényesítési hiba jelenik meg.
 
 
 ## <a name="hostname"></a>Hostname (Gazdanév)

@@ -1,5 +1,5 @@
 ---
-title: A Azure Maps Indoor Maps modul használata
+title: A Azure Maps Indoor Maps modul használata a Microsoft Creator Services (előzetes verzió) szolgáltatással
 description: Megtudhatja, hogyan használhatja az Microsoft Azure Maps beltéri térképek modult a térképek megjelenítéséhez a modul JavaScript-kódtárainak beágyazásával.
 author: anastasia-ms
 ms.author: v-stharr
@@ -9,21 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: d852d17bdf11ea45f833e3d59cacb435166827fe
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bc80b7dfd433911ef13906db38f59a76827db258
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895460"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905281"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>A Azure Maps Indoor Maps modul használata
 
-A Azure Maps web SDK tartalmazza a *Azure Maps beltéri* modult. A  *Azure Maps beltéri* modul lehetővé teszi a Azure Maps creatorben létrehozott beltéri leképezések megjelenítését.
+> [!IMPORTANT]
+> A Azure Maps Creator Services jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+A Azure Maps web SDK tartalmazza a *Azure Maps beltéri* modult. A  *Azure Maps beltéri* modul lehetővé teszi a Azure Maps Creator Services (előzetes verzió) szolgáltatásban létrehozott beltéri térképek megjelenítését 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 1. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Létrehozó erőforrás létrehozása](how-to-manage-creator.md)
+2. [Létrehozó (előzetes) erőforrás létrehozása](how-to-manage-creator.md)
 3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
 4. A `tilesetId` és a a beszerzése `statesetId` a [beltéri térképek létrehozásával foglalkozó oktatóanyag](tutorial-creator-indoor-maps.md)elvégzésével.
  Ezeket az azonosítókat kell használnia a beltéri leképezések megjelenítéséhez a Azure Maps Indoor Maps modullal.
@@ -56,7 +60,7 @@ Ha a *Azure Maps beltéri* modul globálisan üzemeltetett Azure Content Deliver
 
 ## <a name="instantiate-the-map-object"></a>A Térkép objektumának példánya
 
-Először hozzon létre egy *Térkép objektumot* . A *map objektum* a következő lépésben lesz használva a *Indoor Manager* -objektum létrehozásához.  Az alábbi kód bemutatja, hogyan hozhatja létre a *Térkép objektumot* :
+Először hozzon létre egy *Térkép objektumot*. A *map objektum* a következő lépésben lesz használva a *Indoor Manager* -objektum létrehozásához.  Az alábbi kód bemutatja, hogyan hozhatja létre a *Térkép objektumot*:
 
 ```javascript
 const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
@@ -89,7 +93,7 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 });
 ```
 
-Az Ön által megadott állapotadatok lekérdezésének engedélyezéséhez meg kell adnia a `statesetId` és a hívást `indoorManager.setDynamicStyling(true)` . Az állapotadatok lekérdezése lehetővé teszi dinamikus tulajdonságok *vagy állapotok* állapotának dinamikus frissítését. Például egy olyan szolgáltatás, mint a szoba, a dinamikus tulajdonság ( *állapot* ) nevű lehet `occupancy` . Előfordulhat, hogy az alkalmazás a vizualizáción belüli változást tükröző *állapotra* vonatkozó módosításokat kíván lekérdezni. Az alábbi kód bemutatja, hogyan engedélyezheti az állapot-lekérdezéseket:
+Az Ön által megadott állapotadatok lekérdezésének engedélyezéséhez meg kell adnia a `statesetId` és a hívást `indoorManager.setDynamicStyling(true)` . Az állapotadatok lekérdezése lehetővé teszi dinamikus tulajdonságok *vagy állapotok* állapotának dinamikus frissítését. Például egy olyan szolgáltatás, mint a szoba, a dinamikus tulajdonság (*állapot*) nevű lehet `occupancy` . Előfordulhat, hogy az alkalmazás a vizualizáción belüli változást tükröző *állapotra* vonatkozó módosításokat kíván lekérdezni. Az alábbi kód bemutatja, hogyan engedélyezheti az állapot-lekérdezéseket:
 
 ```javascript
 const tilesetId = "";
@@ -116,7 +120,7 @@ indoorManager.setOptions({ levelControl });
 
 ## <a name="indoor-events"></a>Beltéri események
 
- A *Azure Maps beltéri* modul támogatja az objektum-események *leképezését* . A *Térkép objektum* eseményeinek figyelői meghívásakor megtörténik a szint vagy a létesítmény megváltozása. Ha egy szint vagy egy létesítmény megváltozásakor kódot szeretne futtatni, helyezze a kódot az esemény-figyelőbe. Az alábbi kód azt mutatja be, hogyan adhatók hozzá esemény-figyelők a *Térkép objektumhoz* .
+ A *Azure Maps beltéri* modul támogatja az objektum-események *leképezését* . A *Térkép objektum* eseményeinek figyelői meghívásakor megtörténik a szint vagy a létesítmény megváltozása. Ha egy szint vagy egy létesítmény megváltozásakor kódot szeretne futtatni, helyezze a kódot az esemény-figyelőbe. Az alábbi kód azt mutatja be, hogyan adhatók hozzá esemény-figyelők a *Térkép objektumhoz*.
 
 ```javascript
 map.events.add("levelchanged", indoorManager, (eventData) => {
@@ -249,7 +253,7 @@ Olvassa el a *Azure Maps beltéri* modulhoz kapcsolódó API-kat:
 > [Rajzolási csomag követelményei](drawing-requirements.md)
 
 >[!div class="nextstepaction"]
-> [A beltéri térképek létrehozója](creator-indoor-maps.md)
+> [Creator (előzetes verzió) beltéri térképekhez](creator-indoor-maps.md)
 
 További információ a térképhez tartozó további információk hozzáadásáról:
 

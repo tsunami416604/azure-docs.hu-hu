@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd9f59dd75620f3a7b5c9142a4b8f73f75c5ee7b
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 1001d5524fe99783cda4d5b77bdaceacc6791848
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744482"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861373"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Tanúsítványalapú hitelesítés Azure Active Directory az Androidon
 
@@ -67,7 +67,7 @@ Ajánlott eljárásként frissítenie kell a szervezet ADFS-hibájának lapjait 
 További információ: [AD FS bejelentkezési lapok testreszabása](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11)).
 
 Egyes Office-alkalmazások (amelyeken engedélyezve van a modern hitelesítés) a kérésben a "*prompt = login*" üzenetet küldik az Azure ad-nek. Alapértelmezés szerint az Azure AD az ADFS-kérelemben *az "**wauth = usernamepassworduri*" (az U/P hitelesítésének megkövetelése) és a "*wfresh = 0*" (az ADFS-t az SSO-állapot mellőzése és a friss hitelesítés elvégzése érdekében kéri). Ha engedélyezni szeretné a tanúsítványalapú hitelesítést ezekhez az alkalmazásokhoz, módosítania kell az Azure AD alapértelmezett viselkedését. Állítsa a "*PromptLoginBehavior*" beállítást az összevont tartomány beállításai között a "*Letiltva*" értékre.
-A feladat végrehajtásához a [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) parancsmagot használhatja:
+A feladat végrehajtásához a [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings) parancsmagot használhatja:
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 
@@ -75,7 +75,7 @@ A feladat végrehajtásához a [MSOLDomainFederationSettings](/powershell/module
 
 Bizonyos Exchange ActiveSync-alkalmazások az Android 5,0 (nyalóka) vagy újabb verziókban támogatottak. Annak megállapításához, hogy az e-mail-alkalmazás támogatja-e ezt a funkciót, forduljon az alkalmazás-fejlesztőhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha tanúsítványalapú hitelesítést szeretne konfigurálni a környezetében, olvassa el a következő témakört: a [tanúsítványalapú hitelesítés első lépései Androidon](active-directory-certificate-based-authentication-get-started.md) .
 

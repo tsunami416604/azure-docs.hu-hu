@@ -3,12 +3,12 @@ title: Üzemi készültség és ajánlott eljárások – Azure
 description: Ez a cikk útmutatást nyújt az éles környezetekben IoT Edge modul élő videós elemzésének konfigurálásához és üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87071940"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906335"
 ---
 # <a name="production-readiness-and-best-practices"></a>Termelési készenlét és ajánlott eljárások
 
@@ -62,7 +62,7 @@ Ezután az üzembe helyezési jegyzékben beállíthatja a LOCAL_USER_ID és LOC
 
 Az élő videó Analytics IoT Edge moduljában a következő esetekben képes fájlokat írni a helyi fájlrendszerbe:
 
-* A (z) [[applicationDataDirectory](module-twin-configuration-schema.md#module-twin-properties)] modul Twin tulajdonságának használatával meg kell adnia egy könyvtárat a helyi fájlrendszerben a konfigurációs adatai tárolásához.
+* A modul Twin tulajdonságának használatával [`applicationDataDirectory`](module-twin-configuration-schema.md#module-twin-properties) , ahol meg kell adnia egy könyvtárat a helyi fájlrendszerben a konfigurációs adatai tárolásához.
 * Ha egy Media Graph segítségével szeretne videót felvenni a felhőbe, a modulnak egy könyvtárat kell használnia a peremhálózati eszközön a gyorsítótárban (további információt a [folyamatos videofelvételek](continuous-video-recording-concept.md) című cikkben talál).
 * [Rögzítés helyi fájlba](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources), ahol meg kell adnia a rögzített videó elérési útját.
 
@@ -124,7 +124,7 @@ Az esemény-alapú videók rögzítésére létrehozott eszközök esetében az 
 Ha ugyanannak a gráfnak több példányát futtatja, a diagram topológiájának nevét és a példánynév megkülönböztetni a különbséget. Például a következő módon állíthatja be a assetNamePattern az eszköz fogadóján:
 
 ```
-"assetNamePattern": "sampleAssetFromEVR-${System.GraphTopologyName}-${System.GraphInstanceName} -${System.DateTime}"
+"assetNamePattern": "sampleAssetFromEVR-${System.GraphTopologyName}-${System.GraphInstanceName}-${System.DateTime}"
 ```
 
 Az esemény-alapú videók rögzítésére létrehozott MP4 videoklipek esetében az ajánlott elnevezési mintában a DateTime értéknek kell szerepelnie, az azonos gráf több példánya pedig a GraphTopologyName és a GraphInstanceName rendszerváltozókat használja. Például a következő módon állíthatja be a filePathPattern a file mosogatón: 
@@ -160,6 +160,6 @@ A peremhálózati eszközként használt linuxos virtuális gép nem válaszol, 
 
     Ahogy a frissítések történnek a peremhálózati modulban, a Docker még mindig tartalmazhatja a peremhálózati modul régebbi verzióit. Ebben az esetben célszerű a Docker RMI paranccsal eltávolítani a lemezkép verziója címkével azonosított egyes lemezképeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyors útmutató: első lépések – élő videó-elemzés IoT Edge](get-started-detect-motion-emit-events-quickstart.md)

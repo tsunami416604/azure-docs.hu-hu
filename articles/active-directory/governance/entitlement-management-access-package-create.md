@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6c30dffbc8f97273ee59ce33ae3fe75ed730763
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b2ce3b362d02e7acb0a11e6d93b8e94ca8e4d04e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356637"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903530"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -67,7 +67,7 @@ Az alábbi lépésekkel hozhat létre új hozzáférési csomagot.
    
     ![Jogosultságok kezelése a Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
-## <a name="basics"></a>Alapbeállítások
+## <a name="basics"></a>Alapvető beállítások
 
 Az **alapvető beállítások** lapon adja meg a hozzáférési csomag nevét, és adja meg, hogy melyik katalógusban hozza létre a hozzáférési csomagot a alkalmazásban.
 
@@ -89,7 +89,7 @@ Az **alapvető beállítások** lapon adja meg a hozzáférési csomag nevét, �
 
 Az **erőforrás-szerepkörök** lapon válassza ki a hozzáférési csomagban szerepeltetni kívánt erőforrásokat. A hozzáférési csomagot kérő és fogadó felhasználók megkapják a hozzáférési csomagban található összes erőforrás-szerepkört.
 
-1. Kattintson a hozzáadni kívánt erőforrástípus ( **csoportok** , munkacsoportok, **alkalmazások** vagy SharePoint- **webhelyek** ) elemre.
+1. Kattintson a hozzáadni kívánt erőforrástípus (**csoportok**, munkacsoportok, **alkalmazások** vagy SharePoint- **webhelyek**) elemre.
 
 1. A megjelenő Select (kiválasztás) ablaktáblán válasszon ki egy vagy több erőforrást a listából.
 
@@ -106,6 +106,9 @@ Az **erőforrás-szerepkörök** lapon válassza ki a hozzáférési csomagban s
     ![Hozzáférési csomag – erőforrás-szerepkör kiválasztása](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
 1. Kattintson a **Tovább** gombra.
+
+>[!NOTE]
+>Dinamikus csoportokat adhat hozzá egy katalógushoz és egy hozzáférési csomaghoz. Azonban csak a tulajdonosi szerepkört lehet kijelölni egy dinamikus csoport erőforrásának egy hozzáférési csomagban való kezelésekor.
 
 ## <a name="requests"></a>Kérelmek
 
