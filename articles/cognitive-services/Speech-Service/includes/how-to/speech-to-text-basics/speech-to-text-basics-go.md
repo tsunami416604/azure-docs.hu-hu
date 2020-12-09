@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: f3a3d897d5cc5a22340dccf3aeeac8d52158a3a0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f87db54b43f0ece49b940521bea34737da676a31
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424767"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96912393"
 ---
 A beszédfelismerési szolgáltatás egyik fő funkciója az emberi beszéd (más néven beszéd – szöveg) felismerése és átírása. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Speech SDK-t az alkalmazásaiban és termékeiben a kiváló minőségű beszéd-szöveg átalakítás elvégzéséhez.
 
@@ -30,6 +30,8 @@ Mielőtt bármit elvégezhet, telepítenie kell a Go-hoz készült [SPEECH SDK](
 Az alábbi mintakód használatával futtathatja a beszédfelismerést az alapértelmezett eszköz mikrofonból. Cserélje le a változókat `subscription` és az `region` előfizetéssel és a régió kulcsaival. A szkript futtatásával elindít egy felismerési munkamenetet az alapértelmezett mikrofonon és a kimeneti szövegen.
 
 ```go
+package main
+
 import (
     "bufio"
     "fmt"
@@ -104,6 +106,8 @@ A [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-sp
 A következő minta használatával futtasson beszédfelismerést egy hangfájlból. Cserélje le a változókat `subscription` és az `region` előfizetéssel és a régió kulcsaival. Továbbá cserélje le a változót egy `file` . wav-fájl elérési útjára. A szkript futtatása felismeri a fájl beszédét, és kiírja a szöveg eredményét.
 
 ```go
+package main
+
 import (
     "fmt"
     "time"

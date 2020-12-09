@@ -8,14 +8,16 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 182296793b46f1900744bf629625906b2d6e9b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08e4fd82bea6bb1b510b127db8dee7803ee112f5
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377338"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912193"
 ---
 **Alkalmazássablonok**
+
+**IoT Central alkalmazás-sablonok**
 
 | Sablon                 | Név        | Leírás |
 | ------------------------ | ----------- | ----------- |
@@ -33,3 +35,7 @@ ms.locfileid: "91377338"
 | IOTC – minőség             | A víz minőségének monitorozása | Létrehoz egy alkalmazást a víz minőségének digitális monitorozásához. |
 | IOTC – áruház               | Áruházbeli elemzés – pénztár | Létrehoz egy alkalmazást, amellyel figyelheti és kezelheti a pénztári folyamatot a tárolón belül. |
 | IOTC – hulladék               | Csatlakoztatott hulladékgazdálkodás | Létrehoz egy alkalmazást a hulladéktároló tárolók és a küldő mezők kezelői figyeléséhez. |
+
+**Egyéni alkalmazás sablonja**
+
+Ha létrehozta saját alkalmazás sablonját, használhatja azt egy új alkalmazás létrehozásához. Amikor a rendszer megkérdezi az alkalmazás sablonját, adja meg az alkalmazás [sablon exportálása](../articles/iot-central/core/howto-use-app-templates.md#create-an-application-template) szakaszában az exportált alkalmazás URL-címének megosztható hivatkozását. 

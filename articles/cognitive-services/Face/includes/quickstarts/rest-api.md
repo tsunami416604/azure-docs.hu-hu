@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 12/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 0f668f3a9ec4e158dfddd15f9c5d744fb0a5a847
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: be942f73ee0a3d5a8850141c937754bad330db90
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763653"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96912396"
 ---
 Ismerkedjen meg az arc-felismeréssel a Face REST API használatával. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -22,6 +22,9 @@ Használja a Face REST APIt a következőre:
 
 * [Arcok felismerése a képeken](#detect-faces-in-an-image)
 * [Hasonló arcok keresése](#find-similar-faces)
+
+> [!NOTE]
+> Ez a rövid útmutató cURL-parancsokat használ a REST API meghívásához. A REST API a programozási nyelv használatával is meghívhatja. A GitHub-mintákat a [C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Face/rest), a [Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Face/rest), a [Java](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/java/Face/rest), a [JavaScript](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Face/rest)és a [Go](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/go/Face/rest)című példákban tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -221,7 +224,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Face REST APIt az alapszintű arc-felismerési feladatok elvégzésére. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
 

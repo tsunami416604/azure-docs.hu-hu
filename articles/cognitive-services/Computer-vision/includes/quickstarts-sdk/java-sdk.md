@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/13/2019
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: de00db2b8c2b6e0d293f4a9bb8206eba5227ca03
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 5661e0e3a1978735ae9e4313ac9aa78a88e81f19
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533295"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912141"
 ---
 <a name="HOLTop"></a>
 
@@ -104,6 +104,8 @@ Az alkalmazás **fő** metódusában adjon hozzá hívásokat az ebben a rövid 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_maincalls)]
 
+> [!div class="nextstepaction"]
+> [Megállítottam az ügyfelet](?success=set-up-client#object-model) , hogy [egy hibába ütközött](https://www.research.net/r/7QYZKHL?issue=set-up-client)
 
 ## <a name="object-model"></a>Objektummodell
 
@@ -125,11 +127,12 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-
 Egy új metódusban hozza létre a [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) objektumot a végponttal és a kulccsal.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_auth)]
 
+> [!div class="nextstepaction"]
+> [Hitelesítettem a-ügyfelet](?success=authenticate-client#analyze-an-image) [, hogy egy hibába ütközött](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
 
 ## <a name="analyze-an-image"></a>Rendszerkép elemzése
 
@@ -211,6 +214,9 @@ A következő kód a képtípussal kapcsolatos információkat jeleníti &mdash;
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 
+> [!div class="nextstepaction"]
+> [Elemeztem egy olyan képet](?success=analyze-image#read-printed-and-handwritten-text) [, amelyet egy hibába ütközött](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+
 ## <a name="read-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg olvasása
 
 A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a karakteres adatfolyamba. Ez a szakasz egy olyan metódust határoz meg, `ReadFromFile` amely egy helyi fájl elérési útját veszi át, és kiírja a rendszerkép szövegét a konzolra.
@@ -231,7 +237,6 @@ Ezután adja hozzá a következő metódus-definíciót a **ComputerVisionQuicks
 Ezután adja hozzá a következő kódot a **readInStreamWithServiceResponseAsync** metódus meghívásához az adott képhez.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
-
 
 A következő kódrészlet kibontja a művelet AZONOSÍTÓját az olvasási hívás válaszával. Ezt az azonosítót egy segítő metódussal használja a szöveg olvasási eredményeinek a konzolra való kinyomtatásához. 
 
@@ -255,6 +260,9 @@ Végül adja hozzá a fent használt másik segítő módszert, amely kibontja a
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_opid_extract)]
 
+> [!div class="nextstepaction"]
+> [Beolvastam](?success=read-printed-handwritten-text#run-the-application) a [problémát](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
+
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazást az alábbiakkal hozhatja létre:
@@ -269,6 +277,9 @@ Futtassa az alkalmazást a `gradle run` paranccsal:
 gradle run
 ```
 
+> [!div class="nextstepaction"]
+> [Futtattam az alkalmazást a](?success=run-the-application#clean-up-resources) [probléma megoldásához](https://www.research.net/r/7QYZKHL?issue=run-the-application)
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
@@ -276,12 +287,16 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+> [!div class="nextstepaction"]
+> [I cleaned up resources](?success=clean-up-resources#next-steps) [Egy hibába ütközött az](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) erőforrások
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Computer Vision Java-függvénytárat a feladatok elvégzésére. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
 
 > [!div class="nextstepaction"]
 >[Computer Vision referenciája (Java)](/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
+
 
 * [Mi a Computer Vision?](../../overview.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java)található.
