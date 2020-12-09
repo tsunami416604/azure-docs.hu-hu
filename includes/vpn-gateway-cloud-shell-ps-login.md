@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -17,7 +17,7 @@ ms.locfileid: "93061618"
 ---
 Ha a PowerShellt helyileg futtatja, nyissa meg emelt szintű jogosultságokkal a PowerShell-konzolt, és kapcsolódjon az Azure-fiókjához. A *AzAccount* parancsmag hitelesítő adatokat kér. A hitelesítés után letölti a fiók beállításait, hogy elérhetők legyenek Azure PowerShell számára.
 
-Ha a PowerShell helyi futtatása helyett Azure Cloud Shell használ, láthatja, hogy nem kell futtatnia a *AzAccount* . Ha a **kipróbálás** lehetőséget választja, a Azure Cloud Shell automatikusan csatlakozik az Azure-fiókjához.
+Ha a PowerShell helyi futtatása helyett Azure Cloud Shell használ, láthatja, hogy nem kell futtatnia a *AzAccount*. Ha a **kipróbálás** lehetőséget választja, a Azure Cloud Shell automatikusan csatlakozik az Azure-fiókjához.
 
 1. Ha helyileg futtatja a PowerShellt, jelentkezzen be.
 
