@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7a77c110c12fd6b42e8defbe43a40579b9c6588
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 681f5a6cecd43eb69adf24544c774cbd22da8a49
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168763"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860541"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B-együttműködés hibaelhárítása
 
@@ -52,7 +52,7 @@ Gyakori hibák a következők:
 
 ### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>A meghívó rendszergazdája nem engedélyezte, hogy a EmailVerified-felhasználók a bérlőn jöjjenek létre
 
-Ha olyan felhasználókat hívja meg, akik szervezete Azure Active Directory használ, de az adott felhasználó fiókja nem létezik (például a felhasználó nem létezik az Azure AD-contoso.com). Előfordulhat, hogy a contoso.com rendszergazdája olyan házirendet tartalmaz, amely megakadályozza a felhasználók létrehozását. A felhasználónak ellenőriznie kell a rendszergazdát annak megállapításához, hogy a külső felhasználók engedélyezettek-e. Előfordulhat, hogy a külső felhasználó rendszergazdájának engedélyeznie kell az e-mailek ellenőrzött felhasználóit a tartományban (lásd ezt a [cikket](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) az e-mailek ellenőrzött felhasználóinak engedélyezéséről).
+Ha olyan felhasználókat hívja meg, akik szervezete Azure Active Directory használ, de az adott felhasználó fiókja nem létezik (például a felhasználó nem létezik az Azure AD-contoso.com). Előfordulhat, hogy a contoso.com rendszergazdája olyan házirendet tartalmaz, amely megakadályozza a felhasználók létrehozását. A felhasználónak ellenőriznie kell a rendszergazdát annak megállapításához, hogy a külső felhasználók engedélyezettek-e. Előfordulhat, hogy a külső felhasználó rendszergazdájának engedélyeznie kell az e-mailek ellenőrzött felhasználóit a tartományban (lásd ezt a [cikket](/powershell/module/msonline/set-msolcompanysettings) az e-mailek ellenőrzött felhasználóinak engedélyezéséről).
 
 ![Hiba történt a bérlő nem engedélyezi az e-mailek ellenőrzött felhasználóinak használatát](media/troubleshoot/allow-email-verified-users.png)
 

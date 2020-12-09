@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c075e19422341ad7ccfd3ad951517876ab26a495
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273600"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858416"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
@@ -141,7 +141,7 @@ Emellett meg kell adni a szükséges engedélyeket is. A telepítővarázsló ne
 
 A szükséges engedélyek a választható funkcióktól függenek. Ha több tartománnyal rendelkezik, az engedélyeket az erdő összes tartományához meg kell adni. Ha nem engedélyezi ezen funkciók bármelyikét, az alapértelmezett **tartományi felhasználói** engedélyek elegendőek.
 
-| Szolgáltatás | Engedélyek |
+| Jellemző | Engedélyek |
 | --- | --- |
 | MS-DS-ConsistencyGuid funkció |Írási engedélyek a tervezési fogalmakban dokumentált ms-DS-ConsistencyGuid attribútumhoz [– MS-DS-ConsistencyGuid használata sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Jelszó kivonatának szinkronizálása |<li>Címtárbeli módosítások replikálása</li>  <li>A címtár összes módosításának replikálása |
@@ -158,7 +158,7 @@ Ha a Azure AD Connect egyik verziójáról egy új kiadásra frissít, a követk
 >A build 1.1.484 kezdve a Azure AD Connect egy regressziós hibát vezetett be, amelyhez rendszergazdai jogosultság szükséges az SQL-adatbázis frissítéséhez.  Ezt a hibát kijavítottuk a build 1.1.647.  Ha erre a buildre frissít, rendszergazdai jogosultságokra lesz szüksége.  A dbo engedélyei nem elegendőek.  Ha rendszergazdai jogosultságok nélkül kísérli meg Azure AD Connect frissítését, a frissítés sikertelen lesz, és a Azure AD Connect nem fog megfelelően működni.  A Microsoft tisztában van ezzel, és ezzel a megoldással működik.
 
 
-| Egyszerű | Szükséges engedélyek | Alkalmazási cél |
+| Rendszerbiztonsági tag | Szükséges engedélyek | Alkalmazási cél |
 | --- | --- | --- |
 | A telepítő varázslót futtató felhasználó |A helyi kiszolgáló rendszergazdája |Bináris fájlok frissítése. |
 | A telepítő varázslót futtató felhasználó |ADSyncAdmins tagja |Módosítsa a szinkronizálási szabályokat és az egyéb beállításokat. |
@@ -166,7 +166,7 @@ Ha a Azure AD Connect egyik verziójáról egy új kiadásra frissít, a követk
 
 ## <a name="more-about-the-created-accounts"></a>További információ a létrehozott fiókokról
 ### <a name="ad-ds-connector-account"></a>AD DS Connector-fiók
-Ha az expressz beállításokat használja, akkor a rendszer a szinkronizáláshoz használt Active Directory hozza létre a fiókot. A létrehozott fiók az erdő gyökértartományában található a felhasználók tárolóban, és a neve **MSOL_tel**előtaggal van ellátva. A fiók olyan hosszú, összetett jelszóval jön létre, amely nem jár le. Ha a tartományban jelszavas házirend van, ügyeljen arra, hogy a fiókhoz hosszú és összetett jelszavak legyenek engedélyezve.
+Ha az expressz beállításokat használja, akkor a rendszer a szinkronizáláshoz használt Active Directory hozza létre a fiókot. A létrehozott fiók az erdő gyökértartományában található a felhasználók tárolóban, és a neve **MSOL_tel** előtaggal van ellátva. A fiók olyan hosszú, összetett jelszóval jön létre, amely nem jár le. Ha a tartományban jelszavas házirend van, ügyeljen arra, hogy a fiókhoz hosszú és összetett jelszavak legyenek engedélyezve.
 
 ![AD-fiók](./media/reference-connect-accounts-permissions/adsyncserviceaccount.png)
 
@@ -215,9 +215,9 @@ A VSA olyan forgatókönyvekkel használható, amelyekben a Szinkronizáló moto
 Ehhez a szolgáltatáshoz Windows Server 2008 R2 vagy újabb rendszer szükséges. Ha a Azure AD Connect telepítését a Windows Server 2008-es verzióra telepíti, akkor a telepítés helyett egy [felhasználói fiók](#user-account) használatára kerül vissza.
 
 #### <a name="group-managed-service-account"></a>Csoportosan felügyelt szolgáltatásfiók
-Ha távoli SQL Servert használ, azt javasoljuk, hogy egy **csoportosan felügyelt szolgáltatásfiókot**használjon. A Active Directory csoportosan felügyelt szolgáltatásfiók előkészítésével kapcsolatos további információkért lásd: [csoportosan felügyelt szolgáltatásfiókok áttekintése](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)).
+Ha távoli SQL Servert használ, azt javasoljuk, hogy egy **csoportosan felügyelt szolgáltatásfiókot** használjon. A Active Directory csoportosan felügyelt szolgáltatásfiók előkészítésével kapcsolatos további információkért lásd: [csoportosan felügyelt szolgáltatásfiókok áttekintése](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)).
 
-Ha ezt a beállítást szeretné használni, a [szükséges összetevők telepítése](how-to-connect-install-custom.md#install-required-components) lapon jelölje be a **meglévő szolgáltatásfiók használata**jelölőnégyzetet, és válassza a **felügyelt szolgáltatásfiók**lehetőséget.  
+Ha ezt a beállítást szeretné használni, a [szükséges összetevők telepítése](how-to-connect-install-custom.md#install-required-components) lapon jelölje be a **meglévő szolgáltatásfiók használata** jelölőnégyzetet, és válassza a **felügyelt szolgáltatásfiók** lehetőséget.  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
 [Önálló felügyelt szolgáltatásfiók](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))használata is támogatott. Ezek azonban csak a helyi gépen használhatók, és nem használhatók fel az alapértelmezett Virtual Service-fiókra.
 
@@ -252,7 +252,7 @@ Az Azure AD-ben legfeljebb 20 szinkronizálási szolgáltatásfiók szerepel. Az
 A nem használt Azure AD-szolgáltatásfiókok eltávolításához futtassa a következő Azure AD PowerShell-parancsmagot: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->A fenti PowerShell-parancsok használata előtt telepítenie kell a [Graph modulhoz tartozó Azure Active Directory PowerShellt](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) , és csatlakoznia kell az Azure ad-példányához a [AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) használatával
+>A fenti PowerShell-parancsok használata előtt telepítenie kell a [Graph modulhoz tartozó Azure Active Directory PowerShellt](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module) , és csatlakoznia kell az Azure ad-példányához a [AzureAD](/powershell/module/azuread/connect-azuread) használatával
 
 Az Azure AD Connector-fiók jelszavának kezelésével és alaphelyzetbe állításával kapcsolatos további információkért lásd: [a Azure ad Connect fiók kezelése](how-to-connect-azureadaccount.md)
 

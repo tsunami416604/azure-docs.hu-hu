@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66b216e5e511d2d80378ee7e2d124dccbc7abcb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38754b9e349e27afcff58dac27a616e3e4fb5319
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85252712"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860932"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás szabályozott ellenőrzése
 
@@ -63,7 +63,7 @@ A következő példa segítségével hozzon létre egy Csoportházirend objektum
       1. Kulcs elérési útja: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Érték neve: **TenantId**
       1. Érték típusa: **REG_SZ**
-      1. Value (érték): az Azure ad-példány GUID- **azonosítója vagy könyvtára** (ez az érték a **Azure Portal**  >  **Azure Active Directory**  >  **Tulajdonságok**  >  **könyvtár-azonosítójában**található)
+      1. Value (érték): az Azure ad-példány GUID- **azonosítója vagy könyvtára** (ez az érték a **Azure Portal**  >  **Azure Active Directory**  >  **Tulajdonságok**  >  **könyvtár-azonosítójában** található)
    1. Kattintson **az OK** gombra
 1. Kattintson a jobb gombbal a beállításjegyzékre, és válassza az **új**  >  **beállításjegyzék elemet** .
    1. Az **általános** lapon konfigurálja a következőket
@@ -82,7 +82,7 @@ A következő példa segítségével hozzon létre egy Csoportházirend objektum
 Ha AD FS használ, először konfigurálnia kell az ügyféloldali SCP-t a fent említett utasítások alapján a csoportházirend-objektumnak a AD FS-kiszolgálókhoz való összekapcsolásával. Az SCP objektum határozza meg az eszköz-objektumok szolgáltatójának forrását. Helyszíni vagy Azure AD-t is használhat. Ha az ügyféloldali SZOLGÁLTATÁSKAPCSOLÓDÁSI pont AD FS van konfigurálva, az eszköz objektumainak forrása Azure AD-ként van kialakítva.
 
 > [!NOTE]
-> Ha nem tudta konfigurálni az ügyféloldali szolgáltatáskapcsolódási pontot a AD FS-kiszolgálókon, az eszköz identitásának forrása a helyszínen tekinthető. Az ADFS ezután megkezdi az eszközbeállítások törlését a helyszíni címtárból az ADFS-eszköz regisztrációjának "MaximumInactiveDays" attribútumában meghatározott meghatározott időtartam után. Az ADFS-eszköz regisztrációs objektumai a [Get-AdfsDeviceRegistration parancsmag](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)használatával találhatók meg.
+> Ha nem tudta konfigurálni az ügyféloldali szolgáltatáskapcsolódási pontot a AD FS-kiszolgálókon, az eszköz identitásának forrása a helyszínen tekinthető. Az ADFS ezután megkezdi az eszközbeállítások törlését a helyszíni címtárból az ADFS-eszköz regisztrációjának "MaximumInactiveDays" attribútumában meghatározott meghatározott időtartam után. Az ADFS-eszköz regisztrációs objektumai a [Get-AdfsDeviceRegistration parancsmag](/powershell/module/adfs/get-adfsdeviceregistration)használatával találhatók meg.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Hibrid Azure AD-csatlakozás ellenőrzött ellenőrzése Windows rendszerű eszközökön
 
@@ -100,6 +100,6 @@ Az eszköz regisztrációjának szabályozásához a Windows Installer csomagot 
 
 Miután meggyőződött róla, hogy minden a várt módon működik-e, automatikusan regisztrálhatja a Windows jelenlegi és régebbi verziójú eszközeit az Azure AD-vel az [SCP konfigurálásával Azure ad Connect használatával](hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A hibrid Azure Active Directory-csatlakozás megvalósításának megtervezése](hybrid-azuread-join-plan.md)

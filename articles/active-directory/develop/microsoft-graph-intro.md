@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 13cbeca909b445d75fcbcf7b3751183421479d42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a799d7c32ad632303931adf838ca8e2e715b2adc
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052562"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860184"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -34,7 +34,7 @@ Microsoft Graph jelenleg két verziót támogat: v 1.0 és Beta. A v 1.0 verzió
 
 A Beta API-k használatának megkezdéséhez lásd: [Microsoft Graph béta-végpont referenciája](/graph/api/overview?view=graph-rest-beta)
 
-A 1.0-s API-k használatának megkezdéséhez lásd a [Microsoft Graph REST API 1.0-s verziójának dokumentációját](/graph/api/overview?view=graph-rest-1.0) .
+A 1.0-s API-k használatának megkezdéséhez lásd a [Microsoft Graph REST API 1.0-s verziójának dokumentációját](/graph/api/overview) .
 
 ## <a name="get-started"></a>Bevezetés
 

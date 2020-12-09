@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9cd421224ad134b4df853b06b3bc34333a0613
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8a5b800e78448afcc970010535ba12b543d3cc74
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896106"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860507"
 ---
 # <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Önkiszolgáló Azure AD B2B együttműködési regisztrációhoz
 
@@ -28,7 +28,7 @@ Meghívó szervezetként előfordulhat, hogy nem tudja, hogy az egyes külső k�
 
 ## <a name="azure-active-directory-b2b-invitation-api"></a>Azure Active Directory B2B meghívó API
 
-A szervezetek használhatják a [Microsoft Graph meghívó Manager API](/graph/api/resources/invitation?view=graph-rest-1.0) -t, hogy saját bevezetési tapasztalatokat hozzanak létre a B2B vendég felhasználói számára. Ha önkiszolgáló B2B vendég felhasználói regisztrációt szeretne biztosítani, javasoljuk, hogy használja az [Azure ad-jogosultságok kezelését](../governance/entitlement-management-overview.md). Ha azonban saját felhasználói élményt szeretne létrehozni, a [meghívás API létrehozása](/graph/api/invitation-post?tabs=http&view=graph-rest-1.0) lehetőséggel automatikusan elküldheti a testreszabott meghívót a B2B-felhasználónak, például a következőt:. Vagy az alkalmazás használhatja a létrehozási válaszban visszaadott inviteRedeemUrl a saját meghívóját (a választott kommunikációs mechanizmuson keresztül) a meghívott felhasználó számára.
+A szervezetek használhatják a [Microsoft Graph meghívó Manager API](/graph/api/resources/invitation) -t, hogy saját bevezetési tapasztalatokat hozzanak létre a B2B vendég felhasználói számára. Ha önkiszolgáló B2B vendég felhasználói regisztrációt szeretne biztosítani, javasoljuk, hogy használja az [Azure ad-jogosultságok kezelését](../governance/entitlement-management-overview.md). Ha azonban saját felhasználói élményt szeretne létrehozni, a [meghívás API létrehozása](/graph/api/invitation-post?tabs=http) lehetőséggel automatikusan elküldheti a testreszabott meghívót a B2B-felhasználónak, például a következőt:. Vagy az alkalmazás használhatja a létrehozási válaszban visszaadott inviteRedeemUrl a saját meghívóját (a választott kommunikációs mechanizmuson keresztül) a meghívott felhasználó számára.
 
 ## <a name="next-steps"></a>Következő lépések
 

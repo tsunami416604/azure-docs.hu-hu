@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77ecc23e2969ce4ce26eef7b9a3a485389d08ce0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837107"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860949"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszközkezelés – gyakori kérdések
 
@@ -25,7 +25,7 @@ ms.locfileid: "94837107"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>K: nemrég regisztráltam az eszközt. Miért nem látom az eszközt a felhasználói adatok között a Azure Portal? Vagy a hibrid Azure Active Directory (Azure AD) csatlakoztatott eszközökhöz tartozó N/A-ként jelölt eszköz tulajdonosa
 
 **A:** A hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközök nem jelennek meg a **felhasználói eszközök** területen.
-Használja a Azure Portal **minden eszköz** nézetét. Használhat egy PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmagot is.
+Használja a Azure Portal **minden eszköz** nézetét. Használhat egy PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice) parancsmagot is.
 
 Csak a következő eszközök szerepelnek a **felhasználói eszközök** területen:
 

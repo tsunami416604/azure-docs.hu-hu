@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd0a2b44fd54eb716b5e1b8f9eabc923ccd7977f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4c97958add682a4c49d7832843c0b95ffd2663bf
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285859"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859631"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai
 
@@ -59,7 +59,7 @@ A 2. állapotú vendég felhasználók esetében a **forrás** a **Microsoft-fi�
 
 ![Állapot 2 vendég felhasználó az ajánlat megváltása után](media/user-properties/after-redemption-state2.png)
 
-A 3. állapotú és a 4. állapotú vendég felhasználók esetében a **forrás** tulajdonság értéke **Azure Active Directory** vagy a **Windows Server Active Directory** , a következő szakaszban leírtak szerint.
+A 3. állapotú és a 4. állapotú vendég felhasználók esetében a **forrás** tulajdonság értéke **Azure Active Directory** vagy a **Windows Server Active Directory**, a következő szakaszban leírtak szerint.
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Az Azure AD B2B csoportmunka-felhasználó legfontosabb tulajdonságai
 ### <a name="usertype"></a>UserType (Felhasználótípus)
@@ -110,7 +110,7 @@ Igen. Alapértelmezés szerint a vendég objektumok nem láthatók a szervezet g
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Frissíthetem a vendég felhasználó e-mail-címét?
 
-Ha a vendég felhasználói elfogadják a meghívót, és később módosítják az e-mail-címüket, az új e-mail nem szinkronizálódik automatikusan a címtár vendég felhasználói objektumával. A mail tulajdonságot [Microsoft Graph API](/graph/api/resources/user?view=graph-rest-1.0)-n keresztül hozza létre a rendszer. A mail tulajdonságot a Microsoft Graph API, az Exchange felügyeleti központ vagy az [Exchange Online PowerShell](/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)segítségével frissítheti. A módosítás az Azure AD vendég felhasználói objektumában jelenik meg.
+Ha a vendég felhasználói elfogadják a meghívót, és később módosítják az e-mail-címüket, az új e-mail nem szinkronizálódik automatikusan a címtár vendég felhasználói objektumával. A mail tulajdonságot [Microsoft Graph API](/graph/api/resources/user)-n keresztül hozza létre a rendszer. A mail tulajdonságot a Microsoft Graph API, az Exchange felügyeleti központ vagy az [Exchange Online PowerShell](/powershell/module/exchange/users-and-groups/set-mailuser)segítségével frissítheti. A módosítás az Azure AD vendég felhasználói objektumában jelenik meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

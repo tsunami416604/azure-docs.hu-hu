@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: d83b69ea7c2a4459d30c4ceb90f62ab6a1a10cc2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 49dd8b65db771a182138f13218adda2f0e7f7396
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648174"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858229"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Alkalmazások megtekintése az Azure AD-Bérlővel az Identitáskezelés kezeléséhez
 Az [alkalmazások felügyeletének](view-applications-portal.md) gyors üzembe helyezési sorozata az alapismereteket mutatja be. Ez azt mutatja be, hogyan tekintheti meg az összes alkalmazást az Azure AD-Bérlővel az Identitáskezelés kezeléséhez. Ez a cikk egy kicsit mélyebben ismerteti a megtalált alkalmazások típusait.
@@ -31,7 +31,7 @@ Ha az **összes alkalmazásra** szűri, a **minden alkalmazás** **lista** megje
 - Új alkalmazás regisztrációjának hozzáadásakor hozzon létre egy egyéni fejlesztésű alkalmazást az [alkalmazás-beállításjegyzék](../develop/quickstart-register-app.md) használatával
 - Új alkalmazás regisztrációjának hozzáadásakor hozzon létre egy egyéni fejlesztésű alkalmazást a [v 2.0 alkalmazás regisztrációs portálján](../develop/quickstart-register-app.md)
 - Alkalmazás hozzáadásakor a Visual Studio [ASP.net-hitelesítési módszereivel](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatásaival](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) fejleszt
-- Egyszerű szolgáltatás létrehozásakor az [Azure ad PowerShell-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) használatával
+- Egyszerű szolgáltatás létrehozásakor az [Azure ad PowerShell-modul](/powershell/azure/active-directory/install-adv2) használatával
 - Ha az [alkalmazáshoz való beleegyezett](../develop/howto-convert-app-to-be-multi-tenant.md) , hogy rendszergazdaként használja a bérlő adatait
 - Amikor egy [felhasználó beleegyezett az alkalmazásba](../develop/howto-convert-app-to-be-multi-tenant.md) , hogy a bérlőn lévő adatait használja
 - Ha olyan szolgáltatásokat engedélyez, amelyek a bérlőn tárolt adatait tárolják. Az egyik példa a jelszó alaphelyzetbe állítása, amelyet egyszerű szolgáltatásnévként kell tárolni a jelszó-visszaállítási házirend biztonságos tárolásához.

@@ -7,19 +7,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/24/2020
+ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c15b3a64b4a0017c5c352e08cebc796537255479
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5229175af618f897caeae7310338cbe51966a48d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447029"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859594"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Oktatóanyag: Azure Active Directory B2C-bérlő létrehozása
 
-Az alkalmazások Azure Active Directory B2C (Azure AD B2C) való interakció előtt regisztrálni kell őket egy Ön által kezelt bérlőben.
+Az alkalmazások Azure Active Directory B2C (Azure AD B2C) való interakció előtt regisztrálni kell őket egy Ön által kezelt bérlőben. 
+
+> [!NOTE]
+> Előfizetéshez legfeljebb 20 bérlőt hozhat létre. Ez a korlát segíti a fenyegetések elleni védelmet az erőforrásokon, például a szolgáltatásmegtagadási támadások ellen, és a Azure Portal és a mögöttes bérlői létrehozási API-ban is érvényben van. Ha több mint 20 bérlőt kell létrehoznia, vegye fel a kapcsolatot [Microsoft ügyfélszolgálata](support-options.md).
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -45,9 +48,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
     ![Előfizetés bérlője, könyvtár + előfizetés-szűrő és előfizetés-bérlő kiválasztva](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
+
+   ![Válassza az erőforrás létrehozása gombot](media/tutorial-create-tenant/create-a-resource.png)
+
 1. Keresse meg **Azure Active Directory B2C**, majd válassza a **Létrehozás** lehetőséget.
-1. Válassza az **Új Azure AD B2C-bérlő létrehozása** lehetőséget.
+2. Válassza az **Új Azure AD B2C-bérlő létrehozása** lehetőséget.
 
     ![Új Azure AD B2C bérlő létrehozása Azure Portal](media/tutorial-create-tenant/portal-02-create-tenant.png)
 
@@ -57,7 +63,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
    - **Kezdeti tartománynév** – adja meg a Azure ad B2C-bérlő tartománynevét.
    - **Ország vagy régió** – válassza ki az országot vagy régiót a listából. Ezt a kijelölést később nem lehet módosítani.
    - **Előfizetés** – válassza ki az előfizetését a listából.
-   - **Erőforráscsoport** – válasszon ki egy erőforráscsoportot, amely a bérlőt fogja tartalmazni. Vagy válassza az **új létrehozása** lehetőséget, adja meg az erőforráscsoport **nevét** , válassza ki az **erőforráscsoport helyét**, majd kattintson **az OK gombra**.
+   - **Erőforráscsoport** – válassza ki vagy keresse meg azt az erőforráscsoportot, amely a bérlőt fogja tartalmazni.
 
     ![Bérlői űrlap létrehozása a példákban szereplő értékekkel Azure Portal](media/tutorial-create-tenant/review-and-create-tenant.png)
 
@@ -91,7 +97,7 @@ Ezt a műveletet csak egyszer kell végrehajtania. Mielőtt elvégzi ezeket a l�
 
     ![Azure AD B2C, Kedvencek menü, Microsoft Azure Portal](media/tutorial-create-tenant/portal-08-b2c-favorite.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

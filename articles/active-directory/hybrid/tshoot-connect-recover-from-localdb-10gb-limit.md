@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4b45decd2f2cf9c99cffb0e08d4d6a5c5cfafc67
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997647"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858399"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Helyreállítás 10 GB-ra korlátozott LocalDB-adatbázisból
 Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Használhatja az Azure AD Connecttel együtt telepített alapértelmezett SQL Server 2012 Express LocalDB-t, vagy használhatja saját teljes SQL-kiszolgálóját. Az SQL Server Express 10 GB-os méretkorláttal rendelkezik. Ha a LocalDB-t használja és eléri a korlátot, az Azure AD Connect szinkronizálási szolgáltatása többé nem indul majd el, vagy nem végzi el megfelelően a szinkronizálást. Ez a cikk a helyreállítási lépéseket ismerteti.
@@ -55,7 +55,7 @@ Először is állapítsa meg, hogy a szinkronizálási szolgáltatás továbbra 
 5. Ha nem fut, próbálja meg elindítani a szolgáltatást. Ha a szolgáltatás sikeresen elindul, hagyja ki [az adatbázis lekicsinyítése](#shrink-the-database) lépést, és válassza a [futtatási előzmények törlése](#delete-run-history-data) lépést. Ellenkező esetben folytassa [az adatbázis lépésének Lekicsinyítésével](#shrink-the-database) .
 
 ### <a name="shrink-the-database"></a>Az adatbázis zsugorítása
-A Shrink művelettel szabadítson fel elegendő adatbázis-területet a szinkronizálási szolgáltatás elindításához. Üresen szabadít fel adatbázis-területet a szóközök eltávolításával az adatbázisban. Ez a lépés a legjobb megoldás, mivel nem garantált, hogy mindig helyre tudja állítani a helyet. Ha többet szeretne megtudni a zsugorodó műveletről, olvassa el ezt a cikket [egy adatbázis zsugorítása](/sql/relational-databases/databases/shrink-a-database?view=sql-server-ver15)című cikkben.
+A Shrink művelettel szabadítson fel elegendő adatbázis-területet a szinkronizálási szolgáltatás elindításához. Üresen szabadít fel adatbázis-területet a szóközök eltávolításával az adatbázisban. Ez a lépés a legjobb megoldás, mivel nem garantált, hogy mindig helyre tudja állítani a helyet. Ha többet szeretne megtudni a zsugorodó műveletről, olvassa el ezt a cikket [egy adatbázis zsugorítása](/sql/relational-databases/databases/shrink-a-database)című cikkben.
 
 > [!IMPORTANT]
 > Hagyja ki ezt a lépést, ha le szeretné kérni a szinkronizálási szolgáltatást. Az SQL-adatbázis zsugorodása nem ajánlott, mivel a töredezettség megnövekedése miatt gyenge teljesítményt eredményezhet.
@@ -103,5 +103,5 @@ Ennek a lépésnek a célja, hogy csökkentse a 10 GB-os korláttal való futás
 * A távoli SQL az Azure AD Connecttel történő konfigurálásáról tekintse meg a [Az Azure AD Connect egyéni telepítése](./how-to-connect-install-custom.md) című cikket.
 * Az Azure AD Connect frissítésének párhuzamos migrálásáról tekintse meg az [Azure AD Connect: Frissítés egy előző verzióról a legújabbra](./how-to-upgrade-previous-version.md#swing-migration) című cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

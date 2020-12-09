@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 5f529e6148463ae384791985659378cb9d0a5046
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 90e215ea445c8c700e351149e9c7a91d9a595252
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168865"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859521"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>A Azure Active Directory Authentication Management üzemeltetési útmutatója
 
@@ -258,7 +258,7 @@ A feltételes hozzáférés elengedhetetlen eszköz a szervezet biztonsági hely
 - [Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory](../conditional-access/overview.md)
 - [Identitás- és eszköz-hozzáférési konfigurációk](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory feltételes hozzáférési beállítások ismertetése](../conditional-access/concept-conditional-access-conditions.md)
-- [Gyakori feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)
+- [Általános feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)
 
 ## <a name="access-surface-area"></a>Elérési felület
 
@@ -288,7 +288,7 @@ Ha az örökölt hitelesítés széles körben használatos a környezetben, a l
 
 #### <a name="legacy-authentication-recommended-reading"></a>Örökölt hitelesítés ajánlott olvasmánya
 
-- [POP3-vagy IMAP4-hozzáférés engedélyezése vagy letiltása a postaládákhoz az Exchange Serveren](/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
+- [POP3-vagy IMAP4-hozzáférés engedélyezése vagy letiltása a postaládákhoz az Exchange Serveren](/exchange/clients/pop3-and-imap4/configure-mailbox-access)
 
 ### <a name="consent-grants"></a>Hozzájárulási támogatás
 
@@ -372,7 +372,7 @@ A bejelentkezési tevékenységhez való hozzáférés, az Azure AD naplózási 
 - [Office 365 felügyeleti tevékenység API-referenciája](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [Az Azure Active Directory Power BI-tartalomcsomag használata](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A biztonságos identitás-infrastruktúrának 12 aspektusa van. Ez a lista segítséget nyújt a hitelesítő adatok biztonságossá tételéhez és kezeléséhez, a hitelesítési élmény meghatározásához, a hozzárendelés delegálásához, a használat méréséhez és a hozzáférési házirendek definiálásához a vállalati biztonsági helyzet alapján.
 

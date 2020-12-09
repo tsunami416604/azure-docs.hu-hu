@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9298c5762e54faa7721973136408e14bd8d17d81
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1a46cc3f4a0f2fb25fc693103a64a319dcec0324
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547661"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860881"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Statikus csoporttagság módosítása a Azure Active Directory dinamikus értékre
 
@@ -57,7 +57,7 @@ A következő lépések a csoportok statikusról dinamikus tagságra történő 
 ## <a name="change-membership-type-for-a-group-powershell"></a>Csoport tagsági típusának módosítása (PowerShell)
 
 > [!NOTE]
-> A dinamikus csoport tulajdonságainak módosításához az [Azure ad PowerShell 2. verziójának](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) **előzetes verziójából** származó parancsmagokat kell használnia. Az előnézetet a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureADPreview)is telepítheti.
+> A dinamikus csoport tulajdonságainak módosításához az [Azure ad PowerShell 2. verziójának](/powershell/azure/active-directory/install-adv2) **előzetes verziójából** származó parancsmagokat kell használnia. Az előnézetet a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureADPreview)is telepítheti.
 
 Íme egy példa olyan függvényekre, amelyek átváltják a tagságok kezelését egy meglévő csoporton. Ebben a példában a GroupTypes tulajdonság megfelelő kezelését és a dinamikus tagsághoz nem kapcsolódó értékek megőrzését kell elvégezni.
 

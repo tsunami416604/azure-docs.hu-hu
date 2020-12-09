@@ -1,5 +1,5 @@
 ---
-title: Az Azure-beli felhasználói elv nevének (UPN) változásainak megtervezése és megoldása
+title: Az Azure egyszerű felhasználónevek (UPN) változásainak megtervezése és megoldása
 description: Az UPN-változások ismert problémáinak és enyhítésének megismerése
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b304505c29f424d85d5b1e16dc83c060ac2ac1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 19e40d135316c1c7cd270d2804fff1f487937685
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744598"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858535"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Az egyszerű felhasználónevek változásának megtervezése és megoldása Azure Active Directory
 
@@ -135,7 +135,7 @@ A felhasználók egyszeri bejelentkezéssel kapcsolatos problémákat tapasztalh
 Az ebben a szakaszban említett problémák a Windows 10 2020-es frissítésében (2004) is megoldódott.
 
 **Áthidaló megoldás** <br>
-Elég idő az egyszerű felhasználónév módosítására az Azure AD-vel való szinkronizáláshoz. Miután meggyőződött arról, hogy az új egyszerű felhasználónév megjelenik az Azure AD-portálon, kérje meg a felhasználót, hogy az új UPN-sel való bejelentkezéshez válassza az "egyéb felhasználó" csempét. A [PowerShell](/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)használatával is ellenőrizheti. Az új egyszerű felhasználónévvel való bejelentkezés után a régi UPN-re mutató hivatkozások továbbra is megjelennek a "hozzáférés munkahelyi vagy iskolai" Windows-beállításhoz.
+Elég idő az egyszerű felhasználónév módosítására az Azure AD-vel való szinkronizáláshoz. Miután meggyőződött arról, hogy az új egyszerű felhasználónév megjelenik az Azure AD-portálon, kérje meg a felhasználót, hogy az új UPN-sel való bejelentkezéshez válassza az "egyéb felhasználó" csempét. A [PowerShell](/powershell/module/azuread/get-azureaduser)használatával is ellenőrizheti. Az új egyszerű felhasználónévvel való bejelentkezés után a régi UPN-re mutató hivatkozások továbbra is megjelennek a "hozzáférés munkahelyi vagy iskolai" Windows-beállításhoz.
 
 ![Az ellenőrzött tartományok képernyőképe](./media/howto-troubleshoot-upn-changes/other-user.png)
 
@@ -246,7 +246,7 @@ A régi UPN-re mutató hivatkozások eltávolításához [a felhasználóknak al
 
 A OneDrive-felhasználók számára ismert, hogy az UPN módosítása után problémákat tapasztalnak. További információ: [az UPN-változások hatása a OneDrive URL-címére és a OneDrive szolgáltatásaira](/onedrive/upn-changes).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg ezeket az erőforrásokat:
 * [Azure AD Connect: tervezési fogalmak](./plan-connect-design-concepts.md)

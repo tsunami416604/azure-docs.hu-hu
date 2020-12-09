@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8a2aed6bf4a6b327ca7dd026f615a5d00af0bd8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: dfdc96df548a4a3df2b789759889b85835e1382a
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546267"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860728"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>Törölt Microsoft 365 csoport visszaállítása Azure Active Directory
 
@@ -50,7 +50,7 @@ Felhasználó | Visszaállíthatja az összes törölt Microsoft 365 csoportot.
 
 ## <a name="view-the-deleted-microsoft-365-groups-that-are-available-to-restore-using-powershell"></a>A PowerShell használatával történő visszaállításhoz elérhető törölt Microsoft 365 csoportok megtekintése
 
-Az alábbi parancsmagokkal tekintheti meg a törölt csoportokat annak ellenőrzéséhez, hogy a kívánt csoport vagy csoportok végleges törlése nem történt-e még meg. A parancsmagok az [Azure AD PowerShell-modul](https://www.powershellgallery.com/packages/AzureAD/) részét képezik. A modullal kapcsolatban az [Azure Active Directory PowerShell 2-es verzióját](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) ismertető cikkben tekinthet meg további információt.
+Az alábbi parancsmagokkal tekintheti meg a törölt csoportokat annak ellenőrzéséhez, hogy a kívánt csoport vagy csoportok végleges törlése nem történt-e még meg. A parancsmagok az [Azure AD PowerShell-modul](https://www.powershellgallery.com/packages/AzureAD/) részét képezik. A modullal kapcsolatban az [Azure Active Directory PowerShell 2-es verzióját](/powershell/azure/active-directory/install-adv2) ismertető cikkben tekinthet meg további információt.
 
 1.  Futtassa a következő parancsmagot az Azure AD-szervezetben lévő összes törölt Microsoft 365 csoport megjelenítéséhez, amelyek továbbra is elérhetők a visszaállításhoz.
    

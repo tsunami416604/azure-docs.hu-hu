@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a23056445331c82aded878a77d1e0e730e4e2ceb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5beae56a5d38c4620481c27c3f42c52602984e6b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339472"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860626"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
 
@@ -66,7 +66,7 @@ Ha például az _ * fabrikam. com * * közvetlen összevonását állítja be, a
 Ha a metaadatok URL-címét a személyazonosság-szolgáltató beállításaiban adta meg, az Azure AD automatikusan megújítja az aláíró tanúsítványt, amikor lejár. Ha azonban a rendszer a lejárati idő előtt bármilyen okból elforgatja a tanúsítványt, vagy ha nem ad meg metaadat-URL-címet, az Azure AD nem tudja megújítani. Ebben az esetben manuálisan kell frissítenie az aláíró tanúsítványt.
 
 ### <a name="limit-on-federation-relationships"></a>Összevonási kapcsolatok korlátozása
-Jelenleg legfeljebb 1 000 összevonási kapcsolat támogatott. Ez a korlát magában foglalja a [belső szövetségeket](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) és a közvetlen szövetségeket is.
+Jelenleg legfeljebb 1 000 összevonási kapcsolat támogatott. Ez a korlát magában foglalja a [belső szövetségeket](/powershell/module/msonline/set-msoldomainfederationsettings) és a közvetlen szövetségeket is.
 
 ### <a name="limit-on-multiple-domains"></a>Korlátozás több tartományra
 Jelenleg nem támogatottak a közvetlen összevonás ugyanahhoz a bérlőhöz tartozó több tartománnyal.
@@ -221,6 +221,6 @@ Az identitás-szolgáltatóval való közvetlen összevonás eltávolítása a P
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [meghívás beváltási élményéről](redemption-experience.md) , ha a külső felhasználók különböző identitás-szolgáltatókkal jelentkeznek be.

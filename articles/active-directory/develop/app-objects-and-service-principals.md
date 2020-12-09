@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 7fe48cf28ab3004087e2b022d7a9eca69a1e58e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e4325303f5a10fa1df670495dd6d8190167182e8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169630"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861102"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Alkalmazás- és szolgáltatásnév-objektumok az Azure Active Directoryban
 
@@ -49,7 +49,7 @@ Az Azure AD-bérlő által védett erőforrások eléréséhez a hozzáférést 
 
 Egy egyszerű szolgáltatásnév egy globális Application objektum helyi képviselete vagy alkalmazás-példánya egyetlen bérlőben vagy címtárban. Az egyszerű szolgáltatásnév az Application objektumból létrehozott konkrét példány, amely bizonyos tulajdonságokat örököl az alkalmazás-objektumtól.  A rendszer minden olyan bérlőn létrehoz egy szolgáltatásnevet, amelyben az alkalmazás használatban van, és hivatkozik a globálisan egyedi alkalmazás-objektumra.  Az egyszerű szolgáltatásnév objektum azt határozza meg, hogy az alkalmazás mit tud ténylegesen végrehajtani az adott bérlőn, ki férhet hozzá az alkalmazáshoz, és hogy milyen erőforrások férhetnek hozzá az alkalmazáshoz.
 
-Ha egy alkalmazás engedélyt kap a bérlő erőforrásainak elérésére (regisztráció vagy [beleegyezés](developer-glossary.md#consent)esetén), létrejön egy egyszerű szolgáltatásnév objektum. A [Azure PowerShell](howto-authenticate-service-principal-powershell.md), az [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest), a [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http), a [Azure Portal][AZURE-Portal]és más eszközök használatával is létrehozhat egyszerű szolgáltatásnév-objektumokat a bérlőn.  A portál használatakor a rendszer automatikusan létrehoz egy szolgáltatásnevet az alkalmazások regisztrálásakor.
+Ha egy alkalmazás engedélyt kap a bérlő erőforrásainak elérésére (regisztráció vagy [beleegyezés](developer-glossary.md#consent)esetén), létrejön egy egyszerű szolgáltatásnév objektum. A [Azure PowerShell](howto-authenticate-service-principal-powershell.md), az [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), a [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http), a [Azure Portal][AZURE-Portal]és más eszközök használatával is létrehozhat egyszerű szolgáltatásnév-objektumokat a bérlőn.  A portál használatakor a rendszer automatikusan létrehoz egy szolgáltatásnevet az alkalmazások regisztrálásakor.
 
 A portál **vállalati alkalmazások** paneljén az egyszerű szolgáltatások listázása és kezelése történik a bérlőben. Megtekintheti az egyszerű szolgáltatás engedélyeit, a felhasználó által megadott engedélyeket, amelyeket a felhasználók megtettek a beleegyezés, a bejelentkezési adatok és egyebek között.
 
@@ -91,8 +91,8 @@ Ebben a példában a következő forgatókönyvben:
 ## <a name="next-steps"></a>Következő lépések
 
 - Az alkalmazás és a szolgáltatás egyszerű objektumainak lekérdezéséhez használhatja a [Microsoft Graph Explorert](https://developer.microsoft.com/graph/graph-explorer) is.
-- Az alkalmazás alkalmazás-objektumát a Microsoft Graph API, a [Azure Portal][AZURE-Portal] Application manifest Editor vagy az [Azure ad PowerShell-parancsmagok](/powershell/azure/?view=azureadps-2.0)segítségével érheti el, ahogyan azt a OData [alkalmazási entitása][MS-Graph-App-Entity]képviseli.
-- A Microsoft Graph API-n vagy az [Azure ad PowerShell-parancsmagokon](/powershell/azure/?view=azureadps-2.0)keresztül elérheti egy alkalmazás egyszerű szolgáltatásának objektumát, amelyet a OData [ServicePrincipal-entitása][MS-Graph-Sp-Entity]is képvisel.
+- Az alkalmazás alkalmazás-objektumát a Microsoft Graph API, a [Azure Portal][AZURE-Portal] Application manifest Editor vagy az [Azure ad PowerShell-parancsmagok](/powershell/azure/)segítségével érheti el, ahogyan azt a OData [alkalmazási entitása][MS-Graph-App-Entity]képviseli.
+- A Microsoft Graph API-n vagy az [Azure ad PowerShell-parancsmagokon](/powershell/azure/)keresztül elérheti egy alkalmazás egyszerű szolgáltatásának objektumát, amelyet a OData [ServicePrincipal-entitása][MS-Graph-Sp-Entity]is képvisel.
 
 <!--Image references-->
 

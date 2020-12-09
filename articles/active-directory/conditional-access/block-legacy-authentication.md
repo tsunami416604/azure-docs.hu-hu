@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85f36f1b970a4848ee132fe37bd1b0f4f4fdc82
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d8bc1a96109eda9cc2ee1f86cec892cc5ce9308d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489522"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860320"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: az Azure AD-val való örökölt hitelesítés letiltása feltételes hozzáféréssel   
 
@@ -119,9 +119,9 @@ A **többi ügyfél** feltételéhez kiválaszthatja az összes elérhető enged
 
 ### <a name="sharepoint-online-and-b2b-guest-users"></a>A SharePoint Online és a B2B vendég felhasználói
 
-Ha az örökölt hitelesítéssel szeretné letiltani a B2B felhasználói hozzáférést a SharePoint Online-hoz, a szervezeteknek le kell tiltaniuk az örökölt hitelesítést a SharePointban a `Set-SPOTenant` PowerShell parancs használatával, és a `-LegacyAuthProtocolsEnabled` paraméter `$false` A paraméter beállításával kapcsolatos további információkért tekintse meg a következőt: [set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)
+Ha az örökölt hitelesítéssel szeretné letiltani a B2B felhasználói hozzáférést a SharePoint Online-hoz, a szervezeteknek le kell tiltaniuk az örökölt hitelesítést a SharePointban a `Set-SPOTenant` PowerShell parancs használatával, és a `-LegacyAuthProtocolsEnabled` paraméter `$false` A paraméter beállításával kapcsolatos további információkért tekintse meg a következőt: [set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A hatás meghatározása a feltételes hozzáférésről szóló jelentés módban](howto-conditional-access-insights-reporting.md)
 - Ha még nem ismeri a feltételes hozzáférési szabályzatok konfigurálását, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáférés](../authentication/tutorial-enable-azure-mfa.md) egy példához című témakört.

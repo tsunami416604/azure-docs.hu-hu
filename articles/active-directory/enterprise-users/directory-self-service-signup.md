@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf46de59fe6c7e5b985a23f80d9b5a30f56903db
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 95625886ed11256a40e5993540d7e545134d6dd6
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547253"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860864"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Mi a Azure Active Directory önkiszolgáló regisztrációja?
 
@@ -77,13 +77,13 @@ A következő folyamatábra ismerteti a paraméterek különböző kombinációi
 
 ![önkiszolgáló bejelentkezési vezérlők folyamatábrája](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
-A beállítás részleteit a Get-MsolCompanyInformation következő PowerShell-parancsmaggal kérheti le. További részletekért lásd: [Get-MsolCompanyInformation](/powershell/module/msonline/get-msolcompanyinformation?view=azureadps-1.0).
+A beállítás részleteit a Get-MsolCompanyInformation következő PowerShell-parancsmaggal kérheti le. További részletekért lásd: [Get-MsolCompanyInformation](/powershell/module/msonline/get-msolcompanyinformation).
 
 ```powershell
     Get-MsolCompanyInformation | Select AllowEmailVerifiedUsers, AllowAdHocSubscriptions
 ```
 
-További információt és példákat a paraméterek használatáról a [set-msolcompanysettings parancsmagjával](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)című témakörben talál.
+További információt és példákat a paraméterek használatáról a [set-msolcompanysettings parancsmagjával](/powershell/module/msonline/set-msolcompanysettings)című témakörben talál.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -91,5 +91,5 @@ További információt és példákat a paraméterek használatáról a [set-mso
 * [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/)
 * [Azure PowerShell](/powershell/azure/)
 * [Azure parancsmag-referencia](/powershell/azure/get-started-azureps)
-* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
+* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings)
 * [Munkahelyi vagy iskolai fiók lezárása nem felügyelt címtárban](users-close-account.md)

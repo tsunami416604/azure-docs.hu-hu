@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e4533334204a3a1cfd46ff27b04ff0c05350dfc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8198feca2956f81e397ddee447057c1a5af99a4a
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973915"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859504"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Hozzon létre egy alapszintű csoportot, és vegyen fel tagokat Azure Active Directory használatával
 Az Azure Active Directory (Azure AD) portálon létrehozhat alapszintű csoportot. A cikk céljaira az erőforrás tulajdonosa (rendszergazda) egy alapszintű csoportot ad az erőforráshoz, amely azokat a tagokat tartalmazza (alkalmazottak), akiknek az adott erőforrást el kell érniük. Az összetettebb eseteknél, beleértve a dinamikus csoporttagságot és szabályok létrehozását is, lásd az [Azure Active Directory felhasználókezelés dokumentációt](../enterprise-users/index.yml).
@@ -77,9 +77,9 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
 
 ## <a name="turn-on-or-off-group-welcome-email"></a>Csoport üdvözlő e-mail-címének be-és kikapcsolása
 
-Ha új Microsoft 365 csoportot hoz létre, akár dinamikus, akár statikus tagsággal rendelkezik, a rendszer a csoportba felvett összes felhasználóhoz üdvözlő értesítést küld. Ha a felhasználó vagy az eszköz bármely attribútuma megváltozik, a rendszer a szervezet összes dinamikus csoportjának szabályait feldolgozza a lehetséges tagsági változások miatt. A hozzáadott felhasználók megkapják az üdvözlő értesítést is. Ezt a viselkedést kikapcsolhatja az [Exchange PowerShellben](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
+Ha új Microsoft 365 csoportot hoz létre, akár dinamikus, akár statikus tagsággal rendelkezik, a rendszer a csoportba felvett összes felhasználóhoz üdvözlő értesítést küld. Ha a felhasználó vagy az eszköz bármely attribútuma megváltozik, a rendszer a szervezet összes dinamikus csoportjának szabályait feldolgozza a lehetséges tagsági változások miatt. A hozzáadott felhasználók megkapják az üdvözlő értesítést is. Ezt a viselkedést kikapcsolhatja az [Exchange PowerShellben](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az SaaS-alkalmazásokhoz való hozzáférés kezelése csoportokkal](../enterprise-users/groups-saasapps.md)
 - [Csoportok kezelése PowerShell-parancsokkal](../enterprise-users/groups-settings-v2-cmdlets.md)

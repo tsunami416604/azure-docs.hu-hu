@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 02a08cc0400b4d65577c13282ca4c23cac1d21dc
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5b4ed1e21c33a952b639009b619db4f497f2cfbf
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578926"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860065"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL-kivételek és-hibák kezelése
 
@@ -36,11 +36,11 @@ Az alkalmazás hibáinak kezelésével kapcsolatos további információkért te
 
 ## <a name="net"></a>[.NET](#tab/dotnet)
 
-A .NET-kivételek feldolgozásakor használhatja a kivétel típusát és a `ErrorCode` tagot a kivételek megkülönböztetésére. `ErrorCode` az értékek [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet)típusú állandók.
+A .NET-kivételek feldolgozásakor használhatja a kivétel típusát és a `ErrorCode` tagot a kivételek megkülönböztetésére. `ErrorCode` az értékek [MsalError](/dotnet/api/microsoft.identity.client.msalerror)típusú állandók.
 
-Tekintse meg a [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet), a [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet)és a [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet)mezőit is.
+Tekintse meg a [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception), a [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception)és a [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception)mezőit is.
 
-Ha a [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) eldobása megtörtént, próbálja meg a [hitelesítési és engedélyezési hibakódokat, és](reference-aadsts-error-codes.md) ellenőrizze, hogy a kód szerepel-e itt.
+Ha a [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception) eldobása megtörtént, próbálja meg a [hitelesítési és engedélyezési hibakódokat, és](reference-aadsts-error-codes.md) ellenőrizze, hogy a kód szerepel-e itt.
 
 ### <a name="common-net-exceptions"></a>Gyakori .NET-kivételek
 
@@ -48,12 +48,12 @@ Ha a [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexc
 
 | Kivétel | Hibakód | Kockázatcsökkentés|
 | --- | --- | --- |
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: a felhasználó vagy a rendszergazda nem egyezett bele a (z) {appName} nevű, {appId} AZONOSÍTÓJÚ alkalmazás használatára. Interaktív engedélyezési kérelem küldése ehhez a felhasználóhoz és erőforráshoz.| Először be kell szereznie a felhasználói beleegyező engedélyt. Ha nem használja a .NET Core-ot (amely nem rendelkezik webes felhasználói felülettel), hívja a (csak egyszer) hívást `AcquireTokeninteractive` . Ha a .NET Core-ot használja, vagy nem szeretné elvégezni `AcquireTokenInteractive` a használatát, a felhasználó megkeresheti az URL-címet a beleegyezés megadásához: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . hívás `AcquireTokenInteractive` : `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: a felhasználónak a [többtényezős hitelesítés (MFA)](../authentication/concept-mfa-howitworks.md)használatára van szüksége.| Nincs megoldás. Ha az MFA konfigurálva van a bérlőhöz, és Azure Active Directory (HRE) úgy dönt, hogy kikényszeríti azt, akkor egy interaktív folyamatra kell visszaesnie, például `AcquireTokenInteractive` vagy `AcquireTokenByDeviceCode` .|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: a Grant típus nem támogatott a */gyakori hibák* -vagy */consumers* -végpontokon. Használja a */Organizations* vagy a bérlő-specifikus végpontot. A */gyakori hibák* használta.| Ahogy az az Azure AD-ban is szerepel, a szolgáltatónak Bérlővel vagy egyéb */Organizations* kell rendelkeznie.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: a kérelem törzsének tartalmaznia kell a következő paramétert: `client_secret or client_assertion` .| Ez a kivétel akkor fordulhat elő, ha az alkalmazása nincs nyilvános ügyfélalkalmazásként regisztrálva az Azure AD-ben. A Azure Portal szerkessze az alkalmazás jegyzékfájlját, és állítsa a következőre: `allowPublicClient` `true` . |
-| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| `unknown_user Message`: Nem azonosítható a bejelentkezett felhasználó| A függvénytár nem tudta lekérdezni az aktuálisan bejelentkezett Windows-felhasználót, vagy a felhasználó nem AD vagy HRE csatlakozott (a munkahelyhez csatlakoztatott felhasználók nem támogatottak). 1. megoldás: a UWP győződjön meg arról, hogy az alkalmazás a következő képességekkel rendelkezik: vállalati hitelesítés, magánhálózat (ügyfél és kiszolgáló), felhasználói fiók adatai. 2. megoldás: saját logikát implementálhat a Felhasználónév lekéréséhez (például john@contoso.com ), és használhatja a `AcquireTokenByIntegratedWindowsAuth` felhasználónevet tartalmazó űrlapot.|
-| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| Ez a módszer Active Directory (AD) által közzétett protokollra támaszkodik. Ha a felhasználó a Azure Active Directory AD-biztonsági mentés nélkül lett létrehozva ("felügyelt" felhasználó), ez a metódus sikertelen lesz. Az AD-ben létrehozott és a HRE által támogatott felhasználók ("összevont" felhasználók) kihasználhatják ezt a nem interaktív hitelesítési módszert. Enyhítés: használjon interaktív hitelesítést.|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS65001: a felhasználó vagy a rendszergazda nem egyezett bele a (z) {appName} nevű, {appId} AZONOSÍTÓJÚ alkalmazás használatára. Interaktív engedélyezési kérelem küldése ehhez a felhasználóhoz és erőforráshoz.| Először be kell szereznie a felhasználói beleegyező engedélyt. Ha nem használja a .NET Core-ot (amely nem rendelkezik webes felhasználói felülettel), hívja a (csak egyszer) hívást `AcquireTokeninteractive` . Ha a .NET Core-ot használja, vagy nem szeretné elvégezni `AcquireTokenInteractive` a használatát, a felhasználó megkeresheti az URL-címet a beleegyezés megadásához: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read` . hívás `AcquireTokenInteractive` : `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS50079: a felhasználónak a [többtényezős hitelesítés (MFA)](../authentication/concept-mfa-howitworks.md)használatára van szüksége.| Nincs megoldás. Ha az MFA konfigurálva van a bérlőhöz, és Azure Active Directory (HRE) úgy dönt, hogy kikényszeríti azt, akkor egy interaktív folyamatra kell visszaesnie, például `AcquireTokenInteractive` vagy `AcquireTokenByDeviceCode` .|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception) |AADSTS90010: a Grant típus nem támogatott a */gyakori hibák* -vagy */consumers* -végpontokon. Használja a */Organizations* vagy a bérlő-specifikus végpontot. A */gyakori hibák* használta.| Ahogy az az Azure AD-ban is szerepel, a szolgáltatónak Bérlővel vagy egyéb */Organizations* kell rendelkeznie.|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception) | AADSTS70002: a kérelem törzsének tartalmaznia kell a következő paramétert: `client_secret or client_assertion` .| Ez a kivétel akkor fordulhat elő, ha az alkalmazása nincs nyilvános ügyfélalkalmazásként regisztrálva az Azure AD-ben. A Azure Portal szerkessze az alkalmazás jegyzékfájlját, és állítsa a következőre: `allowPublicClient` `true` . |
+| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception)| `unknown_user Message`: Nem azonosítható a bejelentkezett felhasználó| A függvénytár nem tudta lekérdezni az aktuálisan bejelentkezett Windows-felhasználót, vagy a felhasználó nem AD vagy HRE csatlakozott (a munkahelyhez csatlakoztatott felhasználók nem támogatottak). 1. megoldás: a UWP győződjön meg arról, hogy az alkalmazás a következő képességekkel rendelkezik: vállalati hitelesítés, magánhálózat (ügyfél és kiszolgáló), felhasználói fiók adatai. 2. megoldás: saját logikát implementálhat a Felhasználónév lekéréséhez (például john@contoso.com ), és használhatja a `AcquireTokenByIntegratedWindowsAuth` felhasználónevet tartalmazó űrlapot.|
+| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception)|integrated_windows_auth_not_supported_managed_user| Ez a módszer Active Directory (AD) által közzétett protokollra támaszkodik. Ha a felhasználó a Azure Active Directory AD-biztonsági mentés nélkül lett létrehozva ("felügyelt" felhasználó), ez a metódus sikertelen lesz. Az AD-ben létrehozott és a HRE által támogatott felhasználók ("összevont" felhasználók) kihasználhatják ezt a nem interaktív hitelesítési módszert. Enyhítés: használjon interaktív hitelesítést.|
 
 ### `MsalUiRequiredException`
 
@@ -67,7 +67,7 @@ A beavatkozás célja, hogy a felhasználó műveletet hajtson végre. Bizonyos 
 
 A MSAL egy olyan mezőt tesz elérhetővé, amely lehetővé teszi, `Classification` hogy jobb felhasználói élményt nyújtson, például hogy tájékoztassa a felhasználót arról, hogy a jelszava lejárt, vagy hogy bizonyos erőforrások használatához meg kell adnia az engedélyt. A támogatott értékek az enumerálás részét képezik `UiRequiredExceptionClassification` :
 
-| Osztályozás    | Értelmezés           | Ajánlott kezelési |
+| Osztályozás    | Jelentés           | Ajánlott kezelési |
 |-------------------|-------------------|----------------------|
 | BasicAction | A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | A AcquireTokenInteractively () hívása. |
 | AdditionalAction | A feltételt az interaktív hitelesítési folyamaton kívül további javító interakciók is feloldhatók a rendszerrel. | Hívja meg a AcquireTokenInteractively () egy olyan üzenet megjelenítéséhez, amely ismerteti a javító műveletet. A hívó alkalmazás dönthet úgy, hogy elrejti a additional_actiont igénylő folyamatokat, ha a felhasználó nem valószínű, hogy elvégzi a javító műveletet. |
@@ -262,7 +262,7 @@ A hibát okozó bizonyos feltételek egyszerűen feloldhatók a felhasználók s
 
 A MSAL egy mezőt tesz elérhetővé `reason` , amelynek segítségével jobb felhasználói élményt biztosíthat. Előfordulhat például, hogy a `reason` mező arra utasítja a felhasználót, hogy a jelszavuk lejárt, vagy hogy meg kell adnia az egyes erőforrások használatának beleegyezikét. A támogatott értékek az enumerálás részét képezik  `InteractionRequiredExceptionReason` :
 
-| Ok | Értelmezés | Ajánlott kezelési |
+| Ok | Jelentés | Ajánlott kezelési |
 |---------|-----------|-----------------------------|
 | `BasicAction` | A feltételt a felhasználói interakció feloldható az interaktív hitelesítési folyamat során. | Hívás `acquireToken` interaktív paraméterekkel |
 | `AdditionalAction` | A feltételt az interaktív hitelesítési folyamaton kívüli rendszerrel folytatott további javító interakciók is megoldhatók. | Az `acquireToken` interaktív paraméterek megadásával megjeleníthető egy üzenet, amely leírja, hogy milyen javító műveletet kell végrehajtania. A hívó alkalmazás dönthet úgy, hogy elrejti azokat a folyamatokat, amelyek további műveletet igényelnek, ha a felhasználó nem valószínű, hogy befejezi a javító műveletet. |
@@ -512,7 +512,7 @@ Bizonyos esetekben, amikor feltételes hozzáférést igénylő API-t hív meg, 
 
 ### <a name="net"></a>.NET
 
-Ha a MSAL.NET feltételes hozzáférést igénylő API-t hív meg, az alkalmazásnak kezelnie kell a jogcímek kivételeit. Ez olyan [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) fog megjelenni, ahol a [jogcím](/dotnet/api/microsoft.identity.client.msalserviceexception.claims?view=azure-dotnet) tulajdonság nem üres.
+Ha a MSAL.NET feltételes hozzáférést igénylő API-t hív meg, az alkalmazásnak kezelnie kell a jogcímek kivételeit. Ez olyan [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception) fog megjelenni, ahol a [jogcím](/dotnet/api/microsoft.identity.client.msalserviceexception.claims) tulajdonság nem üres.
 
 A jogcím-kihívás kezeléséhez az `.WithClaim()` osztály metódusát kell használnia `PublicClientApplicationBuilder` .
 
@@ -571,7 +571,7 @@ Ha a szolgáltatás-jogkivonat-kiszolgáló (STS) túl sok kéréssel túl van t
 
 ### <a name="net"></a>.NET
 
-[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) felületek `System.Net.Http.Headers.HttpResponseHeaders` tulajdonságként `namedHeaders` . A hibakód további információkat is használhat az alkalmazások megbízhatóságának növelése érdekében. A leírt esetben használhatja a `RetryAfterproperty` (típus `RetryConditionHeaderValue` ) és a számítást, ha újra próbálkozik.
+[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception) felületek `System.Net.Http.Headers.HttpResponseHeaders` tulajdonságként `namedHeaders` . A hibakód további információkat is használhat az alkalmazások megbízhatóságának növelése érdekében. A leírt esetben használhatja a `RetryAfterproperty` (típus `RetryConditionHeaderValue` ) és a számítást, ha újra próbálkozik.
 
 Íme egy példa egy Daemon-alkalmazásra, amely az ügyfél hitelesítő adatait használja. Ezt bármely, a jogkivonat beszerzésére szolgáló metódushoz igazíthatja.
 

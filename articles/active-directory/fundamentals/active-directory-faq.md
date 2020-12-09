@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8774d6868d55c7d040b1894c4a14d989cb2702
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4a8fcb14ac397791822c3a9065275dbfb2b3b7dd
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371868"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860422"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Gyakori kérdések a Azure Active Directory
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -32,7 +32,7 @@ További információkért lásd: [Mi az az Azure Active Directory?](active-dire
 **V:** Az Azure Portal eléréséhez mindegyik felhasználónak engedélyekre van szüksége egy Azure-előfizetés keretében. Ha nem rendelkezik fizetős Microsoft 365 vagy Azure AD-előfizetéssel, aktiválnia kell egy ingyenes [Azure-fiókot](https://azure.microsoft.com/free/
 ) vagy egy fizetős előfizetést.
 
-További információkért lásd:
+További információ:
 
 * [How Azure subscriptions are associated with Active Directory? (Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directory-hoz?)](active-directory-how-subscriptions-associated-directory.md)
 
@@ -60,7 +60,7 @@ Emellett az Azure AD fizetős szolgáltatásai, például a Enterprise Mobility 
 ---
 **K: Létezik olyan jelentés, amely megmutatja, hogy mikor járnak le az Azure AD-beli felhasználói licenceim?**
 
-**V.:** Nem.  Ez jelenleg nem érhető el.
+**A:** nem.  Ez jelenleg nem érhető el.
 
 ---
 
@@ -130,7 +130,7 @@ Microsoft 365 felhasználók esetében a rendszergazda alaphelyzetbe állíthatj
 Azure AD-felhasználók esetében a rendszergazdák a következő módszerek valamelyikével állíthatják alaphelyzetbe a jelszót:
 
 - [Fiókok alaphelyzetbe állítása az Azure Portalon](active-directory-users-reset-password-azure-portal.md)
-- [A PowerShell használata](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
+- [A PowerShell használata](/powershell/module/msonline/set-msoluserpassword)
 
 
 ---
@@ -160,7 +160,7 @@ Az előre integrált alkalmazások teljes listájáért lásd: [Active Directory
 
 **V:** Az Azure AD Premiumban bármely alkalmazást felveheti és konfigurálhatja. Az alkalmazás képességeitől és a beállításaitól függően beállíthatja az egyszeri bejelentkezést és az automatizált üzembe helyezést.  
 
-További információkért lásd:
+További információ:
 
 * [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](../manage-apps/configure-saml-single-sign-on.md)
 * [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](../app-provisioning/use-scim-to-provision-users-and-groups.md)
@@ -182,7 +182,7 @@ További információ: [végfelhasználói élmények az alkalmazásokhoz](../ma
 
 **V:** Az Azure AD számos szabványos protokollt támogat a hitelesítéshez és az engedélyezéshez, például ilyen a SAML 2.0, az OpenID Connect, az OAuth 2.0 és a WS-Federation. Az Azure AD a jelszótárolást és az automatikus bejelentkezési képességeket is támogatja olyan alkalmazásoknál, amelyek csak az űrlapalapú hitelesítést támogatják.  
 
-További információkért lásd:
+További információ:
 
 * [Hitelesítési forgatókönyvek az Azure AD-hez](../develop/authentication-vs-authorization.md)
 * [Hitelesítési protokollok Active Directory](/previous-versions/azure/dn151124(v=azure.100))

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4931006ba690ff7e059da5de8b0bc816271af30c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3b40171d87ccffa7c5c4fb72d2e79af015b1d16f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547899"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859963"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Érzékenységi címkék kiosztása Microsoft 365 csoportokhoz Azure Active Directory
 
@@ -68,7 +68,7 @@ A közzétett címkék csoportokba való alkalmazásához először engedélyezn
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-Az érzékenységi címkéket az Azure AD-be is szinkronizálnia kell. Útmutatásért lásd: [a tárolók érzékenységi címkéjének engedélyezése és a címkék szinkronizálása](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).
+Az érzékenységi címkéket az Azure AD-be is szinkronizálnia kell. Útmutatásért lásd: [a tárolók érzékenységi címkéjének engedélyezése és a címkék szinkronizálása](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Címke kiosztása egy új csoportba Azure Portal
 
@@ -136,7 +136,7 @@ A címkék bármikor felcserélhetők, ha ugyanazokat a lépéseket használják
 1. Válassza a **csoportok** lehetőséget.
 1. A **minden csoport** lapon válassza ki a címkézni kívánt csoportot.
 1. A kiválasztott csoport lapon válassza a **Tulajdonságok** lehetőséget, és válasszon egy új érzékenységi címkét a listából.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>A csoportok a közzétett címkékre vonatkozó módosításait nem frissítik a csoportokon
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da8fe904f71fdf6f01c926bf6fa3f050ba825309
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 70387717c15dade349a323e663ac0fd31935a15f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548137"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859878"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 
@@ -28,7 +28,7 @@ Ez a cikk a csoportok létrehozásához és frissítéséhez szükséges Azure A
 > [!IMPORTANT]
 > Egyes beállításokhoz prémium szintű Azure Active Directory P1 licenc szükséges. További információt a [sablon beállításai](#template-settings) táblázatban talál.
 
-A nem rendszergazda felhasználók biztonsági csoportok létrehozásáról a set `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` [-msolcompanysettings parancsmagjával](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)című témakörben leírtak szerint tájékozódhat bővebben.
+A nem rendszergazda felhasználók biztonsági csoportok létrehozásáról a set `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` [-msolcompanysettings parancsmagjával](/powershell/module/msonline/set-msolcompanysettings)című témakörben leírtak szerint tájékozódhat bővebben.
 
 Microsoft 365 a csoportok beállításait egy Setting objektummal és egy SettingsTemplate objektummal kell konfigurálni. Kezdetben a címtárban nem jelennek meg beállítások objektumok, mert a címtár az alapértelmezett beállításokkal van konfigurálva. Az alapértelmezett beállítások módosításához egy új beállítási objektumot kell létrehoznia egy beállítási sablonnal. A beállítások sablonjait a Microsoft határozza meg. Több különböző beállítási sablon is létezik. A címtár Microsoft 365-csoport beállításainak konfigurálásához használja a "Group. Unified" nevű sablont. Microsoft 365 csoport beállításainak egyetlen csoportra való konfigurálásához használja a "Group. Unified. Guest" nevű sablont. Ez a sablon a Microsoft 365 csoporthoz való vendég-hozzáférés kezelésére szolgál. 
 
@@ -319,7 +319,7 @@ Ezzel a lépéssel eltávolítja a beállításokat a címtár szintjén, amely 
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>Parancsmag szintaxisának referenciája
-[Azure Active Directory-parancsmagokkal](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)kapcsolatban további Azure Active Directory PowerShell-dokumentációt talál.
+[Azure Active Directory-parancsmagokkal](/powershell/azure/active-directory/install-adv2)kapcsolatban további Azure Active Directory PowerShell-dokumentációt talál.
 
 ## <a name="additional-reading"></a>További információ
 

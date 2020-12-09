@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd9d1dd62d5f1a5910bfc7db58dfa8e60cb254c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c60d54a905f460eb5c26c2f183cd22b175a5b3c4
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547542"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860813"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -103,7 +103,7 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | Alkalmazottkód |Bármely karakterlánc-érték |(User. Alkalmazottkód-EQ "value")<br>(User. Alkalmazottkód-ne *Null*) |
 | Érték facsimiletelephonenumber |Bármilyen sztring vagy *Null* érték |(User. érték facsimiletelephonenumber-EQ "value") |
 | givenName |Bármilyen sztring vagy *Null* érték |(User. givenName-EQ "value") |
-| Beosztás |Bármilyen sztring vagy *Null* érték |(User. beosztás-EQ "value") |
+| jobTitle |Bármilyen sztring vagy *Null* érték |(User. beosztás-EQ "value") |
 | Levelezés |Bármely karakterlánc-érték vagy *Null* (a felhasználó SMTP-címe) |(User. mail-EQ "érték") |
 | mailNickName |Bármely karakterlánc-érték (a felhasználó levelezési aliasa) |(User. mailNickName-EQ "value") |
 | mobil |Bármilyen sztring vagy *Null* érték |(User. Mobile-EQ "value") |
@@ -111,7 +111,7 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | onPremisesSecurityIdentifier | Helyszíni biztonsági azonosító (SID) azon felhasználók számára, akik a helyszínről a felhőbe szinkronizálva lettek. |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Nincs DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Bármilyen sztring vagy *Null* érték |(User. physicalDeliveryOfficeName-EQ "value") |
-| Irányítószám |Bármilyen sztring vagy *Null* érték |(User. irányítószám – EQ "érték") |
+| postalCode |Bármilyen sztring vagy *Null* érték |(User. irányítószám – EQ "érték") |
 | preferredLanguage |ISO 639-1 kód |(User. preferredLanguage – EQ "en-US") |
 | sipProxyAddress |Bármilyen sztring vagy *Null* érték |(User. sipProxyAddress-EQ "value") |
 | állapot |Bármilyen sztring vagy *Null* érték |(User. State-EQ "value") |
@@ -341,7 +341,7 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Bővítmény tulajdonságai és egyéni bővítmény tulajdonságai
 
-A bővítmény attribútumai és az egyéni bővítmény tulajdonságai a dinamikus tagsági szabályokban karakterlánc-tulajdonságokként használhatók. A [bővítmény attribútumai](/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) a helyszíni Windows Server ad-ből szinkronizálhatók, és a "ExtensionAttributeX" formátumot használják, ahol az X egyenlő 1-15. Íme egy példa egy olyan szabályra, amely egy Extension attribútumot használ tulajdonságként:
+A bővítmény attribútumai és az egyéni bővítmény tulajdonságai a dinamikus tagsági szabályokban karakterlánc-tulajdonságokként használhatók. A [bővítmény attribútumai](/graph/api/resources/onpremisesextensionattributes) a helyszíni Windows Server ad-ből szinkronizálhatók, és a "ExtensionAttributeX" formátumot használják, ahol az X egyenlő 1-15. Íme egy példa egy olyan szabályra, amely egy Extension attribútumot használ tulajdonságként:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")

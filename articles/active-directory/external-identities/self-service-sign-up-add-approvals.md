@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e46dabc665d383279a12fc6bd8eb67475d88a2ea
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 82f0408b7e46493f6c3ec62d48a992e87f196f78
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896072"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860609"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Egyéni jóváhagyási munkafolyamat hozzáadása az önkiszolgáló regisztrációhoz
 
@@ -34,7 +34,7 @@ Regisztrálnia kell a jóváhagyási rendszerét alkalmazásként az Azure AD-b�
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként.
 2. Az **Azure-szolgáltatások** területen válassza a **Azure Active Directory** lehetőséget.
 3. A bal oldali menüben válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza az **új regisztráció** lehetőséget.
-4. Adja meg az alkalmazás **nevét** (például: _regisztráció jóváhagyása_ ).
+4. Adja meg az alkalmazás **nevét** (például: _regisztráció jóváhagyása_).
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
@@ -50,7 +50,7 @@ Regisztrálnia kell a jóváhagyási rendszerét alkalmazásként az Azure AD-b�
 
 9. Az **API-engedélyek** lapon válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget, majd válassza az **Igen** lehetőséget.
 10. A bal oldali menü **kezelés** területén válassza a **tanúsítványok & titkok** lehetőséget, majd válassza az **új ügyfél titka** lehetőséget.
-11. Adja meg a titok **leírását** , például a _jóváhagyások ügyfél titkát_ , és válassza ki azt az időtartamot, ameddig az ügyfél titkos kulcsa **lejár** . Ezután válassza a **Hozzáadás** elemet.
+11. Adja meg a titok **leírását** , például a _jóváhagyások ügyfél titkát_, és válassza ki azt az időtartamot, ameddig az ügyfél titkos kulcsa **lejár**. Ezután válassza a **Hozzáadás** elemet.
 12. Másolja ki az ügyfél titkos kulcsának értékét.
 
     ![Az ügyfél titkos kulcsának másolása a jóváhagyási rendszerbe való használatra](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
@@ -61,7 +61,7 @@ Regisztrálnia kell a jóváhagyási rendszerét alkalmazásként az Azure AD-b�
 
 Ezután [létrehozza az API-összekötőket](self-service-sign-up-add-api-connector.md#create-an-api-connector) az önkiszolgáló bejelentkezési felhasználói folyamathoz. A jóváhagyási rendszerapi-nak két összekötőre és megfelelő végpontokra van szüksége, például az alább látható példákhoz. Ezek az API-összekötők a következőket végzik el:
 
-- **Jóváhagyás állapotának bejelölése** . Közvetlenül az identitás-szolgáltatóval való bejelentkezés után küldje el a jóváhagyási rendszer hívását, és ellenőrizze, hogy a felhasználó rendelkezik-e meglévő jóváhagyási kéréssel, vagy már meg lett tagadva. Ha a jóváhagyási rendszere csak automatikus jóváhagyási döntéseket tartalmaz, előfordulhat, hogy ez az API-összekötő nem szükséges. Példa a "jóváhagyás állapotának engedélyezése" API-összekötőre.
+- **Jóváhagyás állapotának bejelölése**. Közvetlenül az identitás-szolgáltatóval való bejelentkezés után küldje el a jóváhagyási rendszer hívását, és ellenőrizze, hogy a felhasználó rendelkezik-e meglévő jóváhagyási kéréssel, vagy már meg lett tagadva. Ha a jóváhagyási rendszere csak automatikus jóváhagyási döntéseket tartalmaz, előfordulhat, hogy ez az API-összekötő nem szükséges. Példa a "jóváhagyás állapotának engedélyezése" API-összekötőre.
 
   ![A jóváhagyási állapot API-összekötő konfigurációjának engedélyezése](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
@@ -81,12 +81,12 @@ Most adja hozzá az API-összekötőket önkiszolgáló bejelentkezési felhaszn
 4. Válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget, majd válassza ki azt a felhasználói folyamatot, amely számára engedélyezni kívánja az API-összekötőt.
 5. Válassza az **API-összekötők** lehetőséget, majd válassza ki azokat az API-végpontokat, amelyeket a felhasználói folyamat következő lépéseiben szeretne meghívni:
 
-   - Az **identitás-szolgáltatóval való bejelentkezés után** : válassza ki a jóváhagyási állapot API-összekötőt, például a _jóváhagyási állapot ellenőrzését_ .
-   - **A felhasználó létrehozása előtt** : válassza ki a jóváhagyási kérelem API-összekötőjét, például a _kérelem jóváhagyását_ .
+   - Az **identitás-szolgáltatóval való bejelentkezés után**: válassza ki a jóváhagyási állapot API-összekötőt, például a _jóváhagyási állapot ellenőrzését_.
+   - **A felhasználó létrehozása előtt**: válassza ki a jóváhagyási kérelem API-összekötőjét, például a _kérelem jóváhagyását_.
 
    ![API-k hozzáadása a felhasználói folyamathoz](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>A regisztrációs folyamat kezelése API-válaszokkal
 
@@ -207,7 +207,7 @@ Az API-nak küldött pontos jogcímek attól függnek, hogy milyen adatokat gyű
 
 A **kérelem-jóváhagyási** API-végpontnak a következőket kell visszaadnia, ha:
 
-- A felhasználó **_automatikusan jóváhagyható_** .
+- A felhasználó **_automatikusan jóváhagyható_**.
 
 A folytatási válasz példája:
 
@@ -270,7 +270,7 @@ A manuális jóváhagyás beszerzését követően az egyéni jóváhagyási ren
 > [!IMPORTANT]
 > A jóváhagyási rendszernek explicit módon ellenőriznie kell, hogy létezik-e, és a `identities` `identities[0]` `identities[0].issuer` `identities[0].issuer` "Facebook" vagy a "Google" értékkel egyenlő a metódus használatára.
 
-Ha a felhasználó Google-vagy Facebook-fiókkal jelentkezett be, használhatja a [felhasználói létrehozási API](/graph/api/user-post-users?tabs=http&view=graph-rest-1.0)-t.
+Ha a felhasználó Google-vagy Facebook-fiókkal jelentkezett be, használhatja a [felhasználói létrehozási API](/graph/api/user-post-users?tabs=http)-t.
 
 1. A jóváhagyási rendszer a felhasználói folyamattól fogadja a HTTP-kérést.
 
@@ -330,7 +330,7 @@ Content-type: application/json
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Összevont Azure Active Directory-felhasználó esetén
 
-Ha egy felhasználó összevont Azure Active Directory-fiókkal jelentkezik be, a [meghívót használó API](/graph/api/invitation-post?view=graph-rest-1.0) -val létre kell hoznia a felhasználót, majd opcionálisan a [felhasználó frissítési API](/graph/api/user-update?view=graph-rest-1.0) -ját, hogy további attribútumokat rendeljen a felhasználóhoz.
+Ha egy felhasználó összevont Azure Active Directory-fiókkal jelentkezik be, a [meghívót használó API](/graph/api/invitation-post) -val létre kell hoznia a felhasználót, majd opcionálisan a [felhasználó frissítési API](/graph/api/user-update) -ját, hogy további attribútumokat rendeljen a felhasználóhoz.
 
 1. A jóváhagyási rendszer a HTTP-kérést a felhasználói folyamattól kapja meg.
 

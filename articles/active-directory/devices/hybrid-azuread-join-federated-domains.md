@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a37353615e35cd75c126c268de71d10077a9071
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc2f7d3ce5f8329038fea4ecbb5242015fb3fd0d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268434"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860133"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz
 
@@ -40,7 +40,7 @@ Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltató
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Az **ADFS/Services/Trust/2005/windowstransport** és az **ADFS/Services/Trust/13/windowstransport** egyaránt engedélyezve kell lennie csak intranetes végpontok számára, és a webalkalmazás-proxyn keresztül nem szabad az extranetes végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg [a WS-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)című témakört. Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási**  >  **végpontok**alatt.
+> Az **ADFS/Services/Trust/2005/windowstransport** és az **ADFS/Services/Trust/13/windowstransport** egyaránt engedélyezve kell lennie csak intranetes végpontok számára, és a webalkalmazás-proxyn keresztül nem szabad az extranetes végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg [a WS-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)című témakört. Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási**  >  **végpontok** alatt.
 
 Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhatja a hibrid Azure AD Joint Active Directory tartományhoz csatlakoztatott számítógépek eszközeihez egy összevont környezetben AD FS használatával.
 
@@ -107,23 +107,23 @@ Ha Azure AD Connect használatával szeretne hibrid Azure AD-csatlakozást konfi
 
 **Hibrid Azure ad-csatlakozás konfigurálása Azure ad Connect használatával**:
 
-1. Indítsa el Azure AD Connect, majd válassza a **Konfigurálás**lehetőséget.
+1. Indítsa el Azure AD Connect, majd válassza a **Konfigurálás** lehetőséget.
 
    ![Üdvözlőképernyő](./media/hybrid-azuread-join-federated-domains/11.png)
 
-1. A **További feladatok** lapon válassza az **eszközbeállítások konfigurálása**lehetőséget, majd kattintson a **tovább**gombra.
+1. A **További feladatok** lapon válassza az **eszközbeállítások konfigurálása** lehetőséget, majd kattintson a **tovább** gombra.
 
    ![További feladatok](./media/hybrid-azuread-join-federated-domains/12.png)
 
-1. Az **Áttekintés** lapon válassza a **tovább**lehetőséget.
+1. Az **Áttekintés** lapon válassza a **tovább** lehetőséget.
 
    ![Áttekintés](./media/hybrid-azuread-join-federated-domains/13.png)
 
-1. A **Kapcsolódás az Azure ad-hoz** lapon adja meg az Azure ad-bérlő globális rendszergazdájának hitelesítő adatait, majd kattintson a **tovább**gombra.
+1. A **Kapcsolódás az Azure ad-hoz** lapon adja meg az Azure ad-bérlő globális rendszergazdájának hitelesítő adatait, majd kattintson a **tovább** gombra.
 
    ![Csatlakozás az Azure AD szolgáltatáshoz](./media/hybrid-azuread-join-federated-domains/14.png)
 
-1. Az **eszközbeállítások** lapon válassza a **hibrid Azure ad-csatlakozás konfigurálása**lehetőséget, majd kattintson a **tovább**gombra.
+1. Az **eszközbeállítások** lapon válassza a **hibrid Azure ad-csatlakozás konfigurálása** lehetőséget, majd kattintson a **tovább** gombra.
 
    ![Eszközbeállítások](./media/hybrid-azuread-join-federated-domains/15.png)
 
@@ -135,19 +135,19 @@ Ha Azure AD Connect használatával szeretne hibrid Azure AD-csatlakozást konfi
    1. Válassza ki a hitelesítési szolgáltatást. Ki kell választania **AD FS kiszolgálót** , kivéve, ha a szervezete kizárólag Windows 10-es ügyfeleket használ, és konfigurálta a számítógép/eszköz szinkronizálását, vagy ha a szervezete zökkenőmentes egyszeri bejelentkezést használ.
    1. Válassza a **Hozzáadás** lehetőséget a vállalati rendszergazda hitelesítő adatainak megadásához.
 
-1. Az **eszköz operációs rendszerek** lapján válassza ki azokat az operációs rendszereket, amelyeket az Active Directory környezetében lévő eszközök használnak, majd válassza a **tovább**lehetőséget.
+1. Az **eszköz operációs rendszerek** lapján válassza ki azokat az operációs rendszereket, amelyeket az Active Directory környezetében lévő eszközök használnak, majd válassza a **tovább** lehetőséget.
 
    ![Eszköz operációs rendszere](./media/hybrid-azuread-join-federated-domains/17.png)
 
-1. Az **összevonási konfiguráció** lapon adja meg a AD FS rendszergazdája hitelesítő adatait, majd kattintson a **tovább**gombra.
+1. Az **összevonási konfiguráció** lapon adja meg a AD FS rendszergazdája hitelesítő adatait, majd kattintson a **tovább** gombra.
 
    ![Összevonás konfigurálása](./media/hybrid-azuread-join-federated-domains/18.png)
 
-1. A **konfigurálásra kész** lapon válassza a **Konfigurálás**lehetőséget.
+1. A **konfigurálásra kész** lapon válassza a **Konfigurálás** lehetőséget.
 
    ![Ready to configure (Konfigurálásra kész)](./media/hybrid-azuread-join-federated-domains/19.png)
 
-1. A **konfiguráció kész** lapon válassza a **Kilépés**lehetőséget.
+1. A **konfiguráció kész** lapon válassza a **Kilépés** lehetőséget.
 
    ![A konfigurálás befejeződött](./media/hybrid-azuread-join-federated-domains/20.png)
 
@@ -187,19 +187,19 @@ Az eszköz állapotának megállapításához és ellenőrzéséhez az alábbi 3
 
 1. Nyissa meg a Windows PowerShellt.
 2. Írja be a következő szöveget: `dsregcmd /status`.
-3. Ellenőrizze, hogy a **AzureAdJoined** és a **DomainJoined** is **Igen**értékre van-e állítva.
+3. Ellenőrizze, hogy a **AzureAdJoined** és a **DomainJoined** is **Igen** értékre van-e állítva.
 4. Használhatja a **DeviceID** eszközt, és összehasonlíthatja a szolgáltatás állapotát a Azure Portal vagy a PowerShell használatával.
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
 1. Nyissa meg az eszközök lapot a [közvetlen hivatkozás](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)használatával.
 2. Az eszközök megkeresésének módjáról [az eszköz identitásának kezelése a Azure Portal segítségével](./device-management-azure-portal.md)című témakörben talál információt.
-3. Ha a **regisztrált** oszlop **függőben**van, akkor a hibrid Azure ad-csatlakozás nem fejeződött be. Összevont környezetekben ez csak akkor fordulhat elő, ha a regisztráció sikertelen volt, és a HRE-kapcsolat az eszközök szinkronizálására van konfigurálva.
-4. Ha a **regisztrált** oszlop egy **dátumot és időpontot**tartalmaz, akkor a hibrid Azure ad JOIN befejeződött.
+3. Ha a **regisztrált** oszlop **függőben** van, akkor a hibrid Azure ad-csatlakozás nem fejeződött be. Összevont környezetekben ez csak akkor fordulhat elő, ha a regisztráció sikertelen volt, és a HRE-kapcsolat az eszközök szinkronizálására van konfigurálva.
+4. Ha a **regisztrált** oszlop egy **dátumot és időpontot** tartalmaz, akkor a hibrid Azure ad JOIN befejeződött.
 
 ### <a name="using-powershell"></a>A PowerShell használata
 
-A **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** használatával ellenőrizze az eszköz regisztrációs állapotát az Azure-bérlőben. Ez a parancsmag a [Azure Active Directory PowerShell-modulban](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)található.
+A **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** használatával ellenőrizze az eszköz regisztrációs állapotát az Azure-bérlőben. Ez a parancsmag a [Azure Active Directory PowerShell-modulban](/powershell/azure/active-directory/install-msonlinev1)található.
 
 Ha a **Get-MSolDevice** parancsmagot használja a szolgáltatás részleteinek megtekintéséhez:
 
@@ -247,7 +247,7 @@ Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakoz�
 - [Hibrid Azure AD-csatlakozás a Windows aktuális eszközeihez – problémamegoldás](troubleshoot-hybrid-join-windows-current.md)
 - [A hibrid Azure AD JOIN használata a Windows régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [kezelheti az eszközök identitásait a Azure Portal használatával](device-management-azure-portal.md).
 

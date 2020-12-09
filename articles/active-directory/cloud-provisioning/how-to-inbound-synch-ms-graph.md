@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b797bf5c7e69990a29f0d14c31586d0e85b42426
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: f308f46fc021a1d08f4065d48558a6dd71786c7c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96737984"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860355"
 ---
 # <a name="inbound-synchronization-for-cloud-provisioning-using-ms-graph-api"></a>Bejövő szinkronizálás a felhőalapú kiépítés MS Graph API használatával
 
@@ -30,7 +30,7 @@ Ennek a folyamatnak a szerkezete a következő lépésekből áll.  Ezek a köve
 - [Szinkronizálási feladatok indítása](#start-sync-job)
 - [Felülvizsgálat állapota](#review-status)
 
-Ezekkel a [Microsoft Azure Active Directory modullal Windows PowerShell](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0) -parancsokkal engedélyezheti a szinkronizálást egy éles bérlő számára, amely az adott bérlő adminisztrációs webszolgáltatásának meghívásához szükséges előfeltételek egyike.
+Ezekkel a [Microsoft Azure Active Directory modullal Windows PowerShell](https://docs.microsoft.com/powershell/module/msonline/) -parancsokkal engedélyezheti a szinkronizálást egy éles bérlő számára, amely az adott bérlő adminisztrációs webszolgáltatásának meghívásához szükséges előfeltételek egyike.
 
 ## <a name="basic-setup"></a>Alapszintű beállítás
 
@@ -185,7 +185,7 @@ A feladatok állapotának lekérése a-on keresztül...
 
 A megfelelő részletekért tekintse meg a Return objektum "status" szakaszát.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)
 - [Átalakítások](how-to-transformation.md)

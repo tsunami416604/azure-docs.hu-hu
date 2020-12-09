@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b51fe1349b2ece89b97cf9436ad3374374ad309
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ed93944c2a94370250fb75a679c1ac37a2a8418c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741575"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861153"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Felhasználói hitelesítési kapcsolattartási adatok előzetes feltöltése Azure Active Directory önkiszolgáló jelszó-visszaállításhoz (SSPR)
 
@@ -125,7 +125,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>A PowerShell 2-es verziójának használata
 
-Első lépésként [töltse le és telepítse az Azure ad 2-es verziójú PowerShell-modulját](/powershell/module/azuread/?view=azureadps-2.0).
+Első lépésként [töltse le és telepítse az Azure ad 2-es verziójú PowerShell-modulját](/powershell/module/azuread/).
 
 Az alábbi parancsok futtatásával gyorsan telepítheti a PowerShell legújabb verzióit `Install-Module` . Az első sor ellenőrzi, hogy a modul már telepítve van-e:
 
@@ -161,7 +161,7 @@ Get-AzureADUser -ObjectID user@domain.com | select TelephoneNumber
 Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,TelephoneNumber | Format-Table
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután a hitelesítési kapcsolattartási adatok előre ki vannak töltve a felhasználók számára, végezze el a következő oktatóanyagot az önkiszolgáló jelszó-visszaállítás engedélyezéséhez:
 

@@ -4,12 +4,12 @@ description: Ismerteti, hogyan használható a CloudEvents séma a Azure Event G
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d794996a699bdd1bb63e7a894346128aa108e95c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: baac7311a23bb4de032a8ab8b2e99a5ad9cae786
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504373"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858280"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>CloudEvents v 1.0 séma használata Event Grid
 Az [alapértelmezett esemény sémáján](event-schema.md)kívül Azure Event Grid natív módon támogatja a [CloudEvents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) és a [http protokoll kötésének](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)JSON-implementációjában lévő eseményeket. A [CloudEvents](https://cloudevents.io/) egy [nyílt specifikáció](https://github.com/cloudevents/spec/blob/v1.0/spec.md) az események leírásához.
@@ -62,16 +62,20 @@ A CloudEvents-sémában és a Event Grid sémában leszállított események fej
 
 ## <a name="configure-event-grid-for-cloudevents"></a>A CloudEvents Event Grid konfigurálása
 
-A CloudEvents-sémában lévő események bemenetéhez és kimenetéhez Event Grid is használhatja. A CloudEvents-t használhatja rendszereseményekhez, például Blob Storage eseményekhez és IoT Hub eseményekhez és egyéni eseményekhez. Emellett átalakíthatja ezeket az eseményeket a huzalon oda-vissza.
+A CloudEvents sémában az események bemenetére és kimenetére Event Grid is használhatja. Az alábbi táblázat a lehetséges átalakításokat ismerteti:
+
+ Erőforrás Event Grid | Bemeneti séma       | Kézbesítési séma
+|---------------------|-------------------|---------------------
+| Rendszertémakörök       | Event Grid séma | Event Grid séma-vagy CloudEvent séma
+| Felhasználói témakörök/tartományok | Event Grid séma | Event Grid séma
+| Felhasználói témakörök/tartományok | CloudEvent séma | CloudEvent séma
+| Felhasználói témakörök/tartományok | Egyéni séma     | Egyéni séma vagy Event Grid séma vagy CloudEvent séma
+| PartnerTopics       | CloudEvent séma | CloudEvent séma
 
 
-| Bemeneti séma       | Kimeneti séma
-|--------------------|---------------------
-| CloudEvents formátuma | CloudEvents formátuma
-| Event Grid formátum  | CloudEvents formátuma
-| Event Grid formátum  | Event Grid formátum
+Az összes esemény sémája esetében a Event Grid érvényesítést igényel Event Grid témakörre való közzétételkor és esemény-előfizetés létrehozásakor.
 
-Az összes esemény sémája esetében a Event Grid érvényesítést igényel az Event Grid-témakörre való közzétételkor és az esemény-előfizetés létrehozásakor. További információ: [Event Grid biztonság és hitelesítés](security-authentication.md).
+További információ: [Event Grid biztonság és hitelesítés](security-authentication.md).
 
 ### <a name="input-schema"></a>Bemeneti séma
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e21bac5dd78cb9c9f40e6b91ff80fedabb9bc75
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602257"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860303"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -105,7 +105,7 @@ Ha nem használ CAE-kompatibilis ügyfeleket, akkor az alapértelmezett hozzáf�
 
 1. A CAE-kompatibilis ügyfelek bemutatják a hitelesítő adatokat vagy frissítési jogkivonatot az Azure AD-nek, amely bizonyos erőforrások hozzáférési jogkivonatát kéri.
 1. A rendszer a hozzáférési jogkivonatot más összetevőkkel együtt adja vissza az ügyfélnek.
-1. A rendszergazda explicit módon [visszavonja a felhasználó összes frissítési jogkivonatát](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). A rendszer visszavonási eseményt küld az erőforrás-szolgáltatónak az Azure AD-től.
+1. A rendszergazda explicit módon [visszavonja a felhasználó összes frissítési jogkivonatát](/powershell/module/azuread/revoke-azureaduserallrefreshtoken). A rendszer visszavonási eseményt küld az erőforrás-szolgáltatónak az Azure AD-től.
 1. Az erőforrás-szolgáltató hozzáférési tokent mutat be. Az erőforrás-szolgáltató kiértékeli a jogkivonat érvényességét, és ellenőrzi, hogy van-e visszavonási esemény a felhasználó számára. Az erőforrás-szolgáltató ezt az információt használja annak eldöntésére, hogy hozzáférést biztosítson az erőforráshoz, vagy sem.
 1. Ebben az esetben az erőforrás-szolgáltató megtagadja a hozzáférést, és egy 401 + jogcím-feladatot küld vissza az ügyfélnek.
 1. A CAE-kompatibilis ügyfél tisztában van a 401 + jogcím kihívással. Megkerüli a gyorsítótárat, és visszakerül az 1. lépésre, és visszaküldi a frissítési tokent az Azure AD-re vonatkozó jogcím-kihívással együtt. Az Azure AD ezután újraértékeli az összes feltételt, és megkéri a felhasználót, hogy végezze el az újrahitelesítést ebben az esetben.
@@ -185,6 +185,6 @@ Ha a felhasználót a letiltást követően engedélyezi. A fiók engedélyezés
 
 A bejelentkezések gyakorisága a CAE-vel vagy anélkül is megbecsülhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A folyamatos hozzáférés kiértékelésének bejelentése](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

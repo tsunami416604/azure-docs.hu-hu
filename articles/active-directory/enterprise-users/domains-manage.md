@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd77b1d82fc427f53a251ef66230b450c1060fd
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 7b8867a137e38e7400da877f4c239e517cbebe05
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547576"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859980"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Egyéni tartománynevek kezelése a Azure Active Directoryban
 
@@ -73,7 +73,7 @@ Az Egyéni tartománynév törlése előtt módosítania vagy törölnie kell az
 
 A **ForceDelete** az [Azure ad felügyeleti központban](https://aad.portal.azure.com) vagy [Microsoft Graph API](/graph/api/domain-forcedelete?view=graph-rest-beta&preserve-view=true)-val is felhasználhatja. Ezek a beállítások egy aszinkron műveletet használnak, és az egyéni tartománynévből származó összes referenciát (például " user@contoso.com ") a kezdeti alapértelmezett tartománynévre (például "") frissítik user@contoso.onmicrosoft.com .
 
-A **ForceDelete** meghívásához a Azure Portalban meg kell győződnie arról, hogy a tartománynévnek kevesebb, mint 1000 hivatkozása van, és az Exchange [felügyeleti központban](https://outlook.office365.com/ecp/)frissíteni vagy törölni kell a kiépítési szolgáltatást. Ide tartoznak az Exchange Mail-Enabled biztonsági csoportok és az elosztott listák; További információ: [levelezésre képes biztonsági csoportok eltávolítása](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups&preserve-view=true). Emellett a **ForceDelete** művelet nem fog sikerülni, ha a következők egyike igaz:
+A **ForceDelete** meghívásához a Azure Portalban meg kell győződnie arról, hogy a tartománynévnek kevesebb, mint 1000 hivatkozása van, és az Exchange [felügyeleti központban](https://outlook.office365.com/ecp/)frissíteni vagy törölni kell a kiépítési szolgáltatást. Ide tartoznak az Exchange Mail-Enabled biztonsági csoportok és az elosztott listák; További információ: [levelezésre képes biztonsági csoportok eltávolítása](/Exchange/recipients/mail-enabled-security-groups#Remove%20mail-enabled%20security%20groups&preserve-view=true). Emellett a **ForceDelete** művelet nem fog sikerülni, ha a következők egyike igaz:
 
 * A tartományt Microsoft 365 tartományi előfizetési szolgáltatásokon keresztül vásárolta
 * Ön egy másik ügyfél-szervezet nevében felügyelt partner
@@ -110,11 +110,11 @@ Ha úgy látja, hogy a feltételek bármelyike nem teljesült, manuálisan tör�
 
 Azure Active Directory a tartománynevek legtöbb felügyeleti feladata a Microsoft PowerShell használatával vagy programozott módon, a Microsoft Graph API használatával is elvégezhető.
 
-* [Tartománynevek kezelése a PowerShell használatával az Azure AD-ben](/powershell/module/azuread/?view=azureadps-2.0#domains&preserve-view=true)
+* [Tartománynevek kezelése a PowerShell használatával az Azure AD-ben](/powershell/module/azuread/#domains&preserve-view=true)
 * [Tartományi erőforrás típusa](/graph/api/resources/domain?view=graph-rest-1.0&preserve-view=true)
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Egyéni tartománynevek hozzáadása](../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)
-* [Exchange-levelezésre képes biztonsági csoportok eltávolítása az Exchange felügyeleti központban az Azure AD-beli egyéni tartománynévben](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups&preserve-view=true)
+* [Exchange-levelezésre képes biztonsági csoportok eltávolítása az Exchange felügyeleti központban az Azure AD-beli egyéni tartománynévben](/Exchange/recipients/mail-enabled-security-groups#Remove%20mail-enabled%20security%20groups&preserve-view=true)
 * [ForceDelete egy egyéni tartománynevet Microsoft Graph API-val](/graph/api/domain-forcedelete?view=graph-rest-beta&preserve-view=true)

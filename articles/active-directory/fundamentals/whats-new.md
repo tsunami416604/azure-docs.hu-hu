@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2999fb8b3c3687c68e7eb38a60f128e24028871f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: fed7123d916c1dc0facab3bd22e6b3f03d39684f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779702"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858960"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>A Azure Active Directory újdonságai
 
@@ -279,7 +279,7 @@ Az összes ügyfél-kiszolgáló és böngésző-kiszolgáló kombinációnak a 
 
 Az érintett környezetek a következők:
 - Azure-US Gov
-- [Office 365 GCC High & DoD](/microsoft-365/compliance/tls-1-2-in-office-365-gcc?view=o365-worldwide)
+- [Office 365 GCC High & DoD](/microsoft-365/compliance/tls-1-2-in-office-365-gcc)
  
 ---
 
@@ -354,7 +354,7 @@ A **termék képességei:** Access Control
 
 Most már megtekintheti az egyes Azure AD-szerepkörökhöz tartozó sablon AZONOSÍTÓját a Azure Portal. Az Azure AD-ben válassza a kiválasztott szerepkör  **leírását** . 
 
-Javasoljuk, hogy az ügyfelek a megjelenítendő név helyett a szerepkör-sablon azonosítóit használják a PowerShell-parancsfájlban és a kódban. A szerepkör-sablon azonosítója [directoryRoles](/graph/api/resources/directoryrole?view=graph-rest-1.0) és [definíciós](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) objektumokhoz használható. További információ a szerepkör-sablon azonosítói: [szerepkör-sablon azonosítói](../roles/permissions-reference.md#role-template-ids).
+Javasoljuk, hogy az ügyfelek a megjelenítendő név helyett a szerepkör-sablon azonosítóit használják a PowerShell-parancsfájlban és a kódban. A szerepkör-sablon azonosítója [directoryRoles](/graph/api/resources/directoryrole) és [definíciós](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) objektumokhoz használható. További információ a szerepkör-sablon azonosítói: [szerepkör-sablon azonosítói](../roles/permissions-reference.md#role-template-ids).
 
 ---
 
@@ -678,7 +678,7 @@ Ha a szervezetében kimenő tűzfalszabályok vannak, akkor frissítse a szabál
 **Írja be a következőt:** Tervezze meg a változást  
 **Szolgáltatás kategóriája:** Identity Protection- **termék funkció:** identity Security & Protection
 
-A Microsoft biztonságos pontszám [új kiadásában](/microsoft-365/security/mtp/microsoft-secure-score-whats-new?view=o365-worldwide)bevezetett változásokkal összhangban frissítjük az Identity Secure score portált. 
+A Microsoft biztonságos pontszám [új kiadásában](/microsoft-365/security/mtp/microsoft-secure-score-whats-new)bevezetett változásokkal összhangban frissítjük az Identity Secure score portált. 
 
 A módosítások a szeptember elején lesznek elérhetők. Az előzetes verzió változásai a következők:
 - A "személyazonosság biztonságos pontszáma" átnevezve a "Secure score for Identity" kifejezésre a Microsoft biztonságos pontszámának használatával
@@ -1057,7 +1057,7 @@ A B2B csoportmunka-szolgáltatásokat használó bérlők a Microsoft-vagy Googl
 A **termék képességei:** B2B/B2C
  
 
-A externalUserState és a externalUserStateChangedDateTime tulajdonsággal megkeresheti azokat a meghívott B2B vendégeket, akik még nem fogadták el a meghívókat, valamint olyan automatizálást is készíthetnek, mint például olyan felhasználók törlése, akik nem fogadták el a meghívókat néhány nap Ezek a tulajdonságok mostantól elérhetők az MS Graph v1-ben. A tulajdonságok használatával kapcsolatos útmutatásért tekintse meg a [felhasználói erőforrás típusát](/graph/api/resources/user?view=graph-rest-1.0).
+A externalUserState és a externalUserStateChangedDateTime tulajdonsággal megkeresheti azokat a meghívott B2B vendégeket, akik még nem fogadták el a meghívókat, valamint olyan automatizálást is készíthetnek, mint például olyan felhasználók törlése, akik nem fogadták el a meghívókat néhány nap Ezek a tulajdonságok mostantól elérhetők az MS Graph v1-ben. A tulajdonságok használatával kapcsolatos útmutatásért tekintse meg a [felhasználói erőforrás típusát](/graph/api/resources/user).
  
 ---
 
@@ -1131,7 +1131,7 @@ Egy új delegált engedély EntitlementManagement. Read. All már használható 
 **Szolgáltatás kategóriája:** Identity Protection  
 A **termék képességei:** Identitás-biztonsági & védelme
  
-A riskyUsers és a riskDetections Microsoft Graph API-k már általánosan elérhetők. Most, hogy elérhetők a 1.0-s végponton, meghívja Önt, hogy éles környezetben használja őket. További információkért tekintse meg a [Microsoft Graph dokumentációját](/graph/api/resources/identityprotectionroot?view=graph-rest-1.0).
+A riskyUsers és a riskDetections Microsoft Graph API-k már általánosan elérhetők. Most, hogy elérhetők a 1.0-s végponton, meghívja Önt, hogy éles környezetben használja őket. További információkért tekintse meg a [Microsoft Graph dokumentációját](/graph/api/resources/identityprotectionroot).
  
 ---
 
