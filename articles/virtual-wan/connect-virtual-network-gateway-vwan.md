@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 29f5b549bd5f5dbc421487739bb1eb8c7f120bb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb31bb09c1e09e4799715fc5a1cbca4b216b28a2
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441038"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922955"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (virtuális hálózati átjáró) összekötése virtuális WAN-kapcsolattal
 
@@ -45,7 +45,7 @@ A virtuális hálózati átjáró **konfigurációja** lapon engedélyezze az ak
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP-beállítás
 
-A virtuális hálózati átjáró **konfigurálása** lapon beállíthatja a **BGP ASN**-t. Módosítsa a BGP ASN-t. A BGP ASN nem lehet 65515. a 66515-et az Azure Virtual WAN fogja használni.
+A virtuális hálózati átjáró **konfigurálása** lapon beállíthatja a **BGP ASN**-t. Módosítsa a BGP ASN-t. A BGP ASN nem lehet 65515. a 65515-et az Azure Virtual WAN fogja használni.
 
 ![Képernyőfelvétel: a virtuális hálózati átjáró konfigurációs lapja, amelyen be van jelölve a BGP ASN konfigurálása.](./media/connect-virtual-network-gateway-vwan/bgp.png "BGP")
 
@@ -57,9 +57,9 @@ Az átjáró létrehozásakor navigáljon a **Tulajdonságok** lapra. A tulajdon
 
 ## <a name="2-create-virtual-wan-vpn-sites"></a><a name="vwansite"></a>2. virtuális WAN VPN-helyek létrehozása
 
-Virtuális WAN VPN-helyek létrehozásához navigáljon a virtuális WAN-hoz, és a **kapcsolat**területen válassza a **VPN-helyek**lehetőséget. Ebben a szakaszban két virtuális WAN VPN-helyet fog létrehozni, amelyek megfelelnek az előző szakaszban létrehozott virtuális hálózati átjáróknak.
+Virtuális WAN VPN-helyek létrehozásához navigáljon a virtuális WAN-hoz, és a **kapcsolat** területen válassza a **VPN-helyek** lehetőséget. Ebben a szakaszban két virtuális WAN VPN-helyet fog létrehozni, amelyek megfelelnek az előző szakaszban létrehozott virtuális hálózati átjáróknak.
 
-1. Válassza a **+ hely létrehozása**lehetőséget.
+1. Válassza a **+ hely létrehozása** lehetőséget.
 2. A **VPN-helyek létrehozása** lapon írja be a következő értékeket:
 
    * **Régió** – az Azure VPN Gateway Virtual Network átjáróval megegyező régió.
@@ -67,7 +67,7 @@ Virtuális WAN VPN-helyek létrehozásához navigáljon a virtuális WAN-hoz, é
    * **Magánhálózati címtartomány** – adjon meg egy értéket, vagy hagyja üresen, ha a BGP engedélyezve van.
    * **Border Gateway Protocol** – beállíthatja **, hogy** az Azure VPN Gateway virtuális hálózati átjárón engedélyezve van-e a BGP.
    * **Kapcsolódás hubokhoz** – a legördülő listából válassza ki az előfeltételekben létrehozott hubot. Ha nem lát hubot, ellenőrizze, hogy létrehozott-e helyek közötti VPN-átjárót a hubhoz.
-3. A **hivatkozások**területen adja meg a következő értékeket:
+3. A **hivatkozások** területen adja meg a következő értékeket:
 
    * **Szolgáltató neve** – adja meg a hivatkozás nevét és a szolgáltató nevét (bármilyen név).
    * **Sebesség** (tetszőleges szám).
@@ -81,7 +81,7 @@ Virtuális WAN VPN-helyek létrehozásához navigáljon a virtuális WAN-hoz, é
 
 Ebben a szakaszban az előző szakaszban létrehozott összes helyhez letölti a VPN-konfigurációs fájlt.
 
-1. A virtuális WAN **VPN-helyek** lap tetején válassza ki a **helyet**, majd válassza a **helyek közötti VPN-konfiguráció letöltése**lehetőséget. Az Azure konfigurációs fájlt hoz létre a beállításokkal.
+1. A virtuális WAN **VPN-helyek** lap tetején válassza ki a **helyet**, majd válassza a **helyek közötti VPN-konfiguráció letöltése** lehetőséget. Az Azure konfigurációs fájlt hoz létre a beállításokkal.
 
    ![Képernyőfelvétel: a "VPN-helyek" lap "a helyek közötti VPN-konfiguráció letöltése" művelet van kiválasztva.](./media/connect-virtual-network-gateway-vwan/download.png "letöltés")
 2. Töltse le és nyissa meg a konfigurációs fájlt.
@@ -107,7 +107,7 @@ Ebben a szakaszban két Azure VPN Gateway helyi hálózati átjárót hoz létre
 
 Ebben a szakaszban kapcsolatot hoz létre a VPN Gateway helyi hálózati átjárók és a virtuális hálózati átjáró között. VPN Gateway kapcsolatok létrehozásával kapcsolatos lépésekért lásd: [Kapcsolatok konfigurálása](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection).
 
-1. A portálon navigáljon a virtuális hálózati átjáróhoz, és kattintson a **kapcsolatok**elemre. A Kapcsolatok lapon kattintson a **+Hozzáadás** elemre a **Kapcsolat hozzáadása** lap megnyitásához.
+1. A portálon navigáljon a virtuális hálózati átjáróhoz, és kattintson a **kapcsolatok** elemre. A Kapcsolatok lapon kattintson a **+Hozzáadás** elemre a **Kapcsolat hozzáadása** lap megnyitásához.
 2. A **kapcsolatok hozzáadása** lapon adja meg a következő értékeket a kapcsolatban:
 
    * **Név:** Nevezze el a kapcsolatot.
@@ -121,7 +121,7 @@ Ebben a szakaszban kapcsolatot hoz létre a VPN Gateway helyi hálózati átjár
 
    ![Kapcsolat](./media/connect-virtual-network-gateway-vwan/connect.png "kapcsolat")
 5. Egy második kapcsolódás létrehozásához ismételje meg a fenti lépéseket. A második kapcsolatok esetében válassza ki a létrehozott másik helyi hálózati átjárót.
-6. Ha a kapcsolatok a BGP-kapcsolaton keresztül jönnek létre, a kapcsolatok létrehozása után navigáljon a kapcsolathoz, és válassza a **konfiguráció**lehetőséget. A **konfiguráció** lapon a **BGP**beállításnál válassza az **engedélyezve**lehetőséget. Ezután kattintson a **Mentés**gombra. Ismételje meg a műveletet a második kapcsolatban.
+6. Ha a kapcsolatok a BGP-kapcsolaton keresztül jönnek létre, a kapcsolatok létrehozása után navigáljon a kapcsolathoz, és válassza a **konfiguráció** lehetőséget. A **konfiguráció** lapon a **BGP** beállításnál válassza az **engedélyezve** lehetőséget. Ezután kattintson a **Mentés** gombra. Ismételje meg a műveletet a második kapcsolatban.
 
 ## <a name="6-test-connections"></a><a name="test"></a>6. a kapcsolatok tesztelése
 
@@ -129,7 +129,7 @@ A kapcsolat teszteléséhez hozzon létre két virtuális gépet, egyet a VPN Ga
 
 1. Hozzon létre egy virtuális gépet a virtuális hálózaton (Test1-VNet) az Azure VPN Gatewayhoz (Test1-VNG). Ne hozza létre a virtuális gépet a GatewaySubnet.
 2. Hozzon létre egy másik virtuális hálózatot a virtuális WAN-hoz való kapcsolódáshoz. Hozzon létre egy virtuális gépet a virtuális hálózat alhálózatában. Ez a virtuális hálózat nem tartalmazhat virtuális hálózati átjárókat. A [helyek közötti kapcsolat](virtual-wan-site-to-site-portal.md#vnet) cikkben található PowerShell-lépésekkel gyorsan létrehozhat egy virtuális hálózatot. Ügyeljen arra, hogy a parancsmagok futtatása előtt módosítsa az értékeket.
-3. Csatlakoztatja a VNet a virtuális WAN-hubhoz. A virtuális WAN lapján válassza a **virtuális hálózati kapcsolatok**, majd a **kapcsolat hozzáadása**elemet. A **Kapcsolat hozzáadása** lapon töltse ki a következő mezőket:
+3. Csatlakoztatja a VNet a virtuális WAN-hubhoz. A virtuális WAN lapján válassza a **virtuális hálózati kapcsolatok**, majd a **kapcsolat hozzáadása** elemet. A **Kapcsolat hozzáadása** lapon töltse ki a következő mezőket:
 
     * **Kapcsolat neve** – Nevezze el a kapcsolatot.
     * **Elosztók** – Válassza ki azt az elosztót, amelyet a kapcsolattal társítani kíván.

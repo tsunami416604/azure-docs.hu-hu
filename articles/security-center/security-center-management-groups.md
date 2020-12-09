@@ -11,107 +11,118 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: 7252a6ccd77212f75f5db54e5f3fcad7aa2df50a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d03177e3224bbd3f53320871efc6a0d6b3ea479d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013802"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922755"
 ---
-# <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>A Azure Security Center teljes bérlőre kiterjedő láthatóságának megszerzése
+# <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>Felügyeleti csoportok, előfizetések és bérlői szintű láthatóság rendszerezése
+
 Ez a cikk bemutatja, hogyan kezelheti a szervezete biztonsági állapotát a Azure Active Directory bérlőhöz kapcsolódó összes Azure-előfizetésre vonatkozó biztonsági szabályzatok alkalmazásával.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="management-groups"></a>Felügyeleti csoportok
-Az Azure felügyeleti csoportjai hatékonyan kezelhetik a hozzáférést, a szabályzatokat és a jelentéskészítést az előfizetések csoportjaira vonatkozóan, valamint hatékonyan kezelhetik a teljes Azure-birtokot a gyökérszintű felügyeleti csoport műveleteinek végrehajtásával. Minden egyes Azure AD-bérlő egyetlen legfelső szintű felügyeleti csoportot kap, amelynek neve a gyökérszintű felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a csoport lehetővé teszi, hogy a globális házirendek és az Azure-beli szerepkör-hozzárendelések a címtár szintjén legyenek alkalmazva. 
-
-A felügyeleti csoport automatikusan létrejön, ha az alábbi műveletek bármelyikét végrehajtja: 
-1. Az Azure felügyeleti csoportok használatának engedélyezése a [Azure Portal](https://portal.azure.com) **Management groups** való navigálással.
-2. Hozzon létre egy felügyeleti csoportot egy API-hívás használatával.
-3. Hozzon létre egy felügyeleti csoportot a PowerShell használatával.
-
-A felügyeleti csoportok részletes áttekintését az [erőforrások rendszerezése az Azure felügyeleti csoportokkal](../governance/management-groups/overview.md) című cikkben találja.
-
-## <a name="create-a-management-group-in-the-azure-portal"></a>Felügyeleti csoport létrehozása a Azure Portalban
-Az előfizetéseket felügyeleti csoportokba rendezheti, és az irányítási szabályzatokat alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott szabályzatokat. Amíg a felügyeleti csoportok nem szükségesek a Security Center bevezetéséhez, erősen ajánlott legalább egy felügyeleti csoportot létrehozni, hogy a rendszer létrehozza a gyökérszintű felügyeleti csoportot. A csoport létrehozása után az Azure AD-bérlő alá tartozó összes előfizetés hozzá lesz kapcsolva. A PowerShellre és további információkra vonatkozó utasításokért lásd: [felügyeleti csoportok létrehozása az erőforrás-és szervezeti felügyelethez](../governance/management-groups/create-management-group-portal.md).
-
- 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza **a minden szolgáltatás**  >  **felügyeleti csoportok** lehetőséget.
-3. A főoldalon válassza az **új felügyeleti csoport elemet.** 
-
-    ![Fő csoport](./media/security-center-management-groups/main.png) 
-4.  Töltse ki a felügyeleti csoport azonosítója mezőt. 
-    - A **felügyeleti csoport azonosítója** a címtár egyedi azonosítója, amely a parancsok ezen a felügyeleti csoporton való elküldésére szolgál. Ez az azonosító nem szerkeszthető a létrehozás után, mivel az egész Azure-rendszeren a csoport azonosítására szolgál. 
-    - A megjelenítendő név mező a Azure Portal belül megjelenő név. A felügyeleti csoport létrehozásakor egy külön megjelenítendő név nem választható mező, és bármikor módosítható.  
-
-      ![Létrehozás](./media/security-center-management-groups/create_context_menu.png)  
-5.  Válassza a **Mentés** lehetőséget
-
-### <a name="view-management-groups-in-the-azure-portal"></a>Felügyeleti csoportok megtekintése a Azure Portal
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A felügyeleti csoportok megtekintéséhez válassza a **minden szolgáltatás** lehetőséget az Azure főmenüjében.
-3. Az **általános** területen válassza a **Management groups** lehetőséget.
-
-    ![Felügyeleti csoport létrehozása](./media/security-center-management-groups/all-services.png)
-
-## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>A bérlői szintű láthatóság és a házirendek hozzárendelési képességének biztosítása
 
 Ha szeretné megtekinteni az Azure AD-bérlőben regisztrált összes előfizetés biztonsági állapotát, szükséges, hogy a legfelső szintű felügyeleti csoportban hozzá legyen rendelve egy megfelelő olvasási engedéllyel rendelkező Azure-szerepkör.
 
-### <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Globális rendszergazda hozzáférésének megemelése Azure Active Directory
-Egy Azure Active Directory bérlői rendszergazdának nincs közvetlen hozzáférése az Azure-előfizetésekhez. Címtár-rendszergazdaként azonban joguk van arra, hogy egy hozzáféréssel rendelkező szerepkörhöz emeljenek. Az Azure AD-bérlői rendszergazdának a felügyeleti csoport szintjén kell megadnia magát a felhasználói hozzáférési rendszergazdának, hogy hozzá lehessen rendelni az Azure-szerepköröket. PowerShell-utasítások és további információk: a [globális rendszergazda hozzáférésének Megemelése Azure Active Directoryban](../role-based-access-control/elevate-access-global-admin.md). 
+
+## <a name="organize-your-subscriptions-into-management-groups"></a>Előfizetések rendszerezése felügyeleti csoportokba
+
+### <a name="introduction-to-management-groups"></a>A felügyeleti csoportok bemutatása
+
+Az Azure felügyeleti csoportjai hatékonyan kezelhetik a hozzáférést, a szabályzatokat és a jelentéskészítést az előfizetések csoportjaira vonatkozóan, valamint hatékonyan kezelhetik a teljes Azure-birtokot a gyökérszintű felügyeleti csoport műveleteinek végrehajtásával. Az előfizetéseket felügyeleti csoportokba rendezheti, és az irányítási szabályzatokat alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott szabályzatokat. 
+
+Minden egyes Azure AD-bérlő egyetlen legfelső szintű felügyeleti csoportot kap, amelynek neve a **gyökérszintű felügyeleti csoport**. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a csoport lehetővé teszi, hogy a globális házirendek és az Azure-beli szerepkör-hozzárendelések a címtár szintjén legyenek alkalmazva. 
+
+A felügyeleti csoport automatikusan létrejön, ha az alábbi műveletek bármelyikét végrehajtja: 
+- Nyissa meg **Management groups** a [Azure Portalban](https://portal.azure.com).
+- Hozzon létre egy felügyeleti csoportot egy API-hívással.
+- Hozzon létre egy felügyeleti csoportot a PowerShell használatával. A PowerShell-utasításokért lásd: [felügyeleti csoportok létrehozása erőforrás-és szervezeti felügyelethez](../governance/management-groups/create-management-group-portal.md).
+
+A felügyeleti csoportoknak nincs szükségük Security Center bevezetésére, de javasoljuk, hogy hozzon létre legalább egyet, hogy a gyökérszintű felügyeleti csoport létre legyen hozva. A csoport létrehozása után az Azure AD-bérlő alá tartozó összes előfizetés hozzá lesz kapcsolva. 
 
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) vagy a [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com).
+A felügyeleti csoportok részletes áttekintését az [erőforrások rendszerezése az Azure felügyeleti csoportokkal](../governance/management-groups/overview.md) című cikkben találja.
 
-2. A navigációs listában kattintson a **Azure Active Directory** elemre, majd a **Tulajdonságok** elemre.
+### <a name="view-and-create-management-groups-in-the-azure-portal"></a>Felügyeleti csoportok megtekintése és létrehozása a Azure Portal
 
-   ![Azure AD-tulajdonságok – képernyőfelvétel](./media/security-center-management-groups/aad-properties.png)
+1. A [Azure Portal](https://portal.azure.com)a felső sávban található keresőmező használatával keresse meg és nyissa meg **Management groups**.
 
-3. Az **Azure-erőforrások hozzáférés-kezelés** területén állítsa a kapcsolót **Igen** értékre.
+    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="A felügyeleti csoportok elérése":::
 
-   ![Hozzáférés-kezelés az Azure-erőforrásokhoz – képernyőfelvétel](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
+    Megjelenik a felügyeleti csoportok listája.
 
-   - Ha az Igen értékre állítja a kapcsolót, a rendszer az Azure RBAC felhasználói hozzáférés rendszergazdai szerepkörét rendeli hozzá a gyökérszintű hatókörben (/). Ez lehetővé teszi, hogy az ehhez az Azure AD-címtárhoz társított összes Azure-előfizetéshez és felügyeleti csoporthoz rendeljen szerepköröket. Ez a kapcsoló csak olyan felhasználók számára érhető el, akik a globális rendszergazdai szerepkörhöz vannak rendelve az Azure AD-ben.
+1. Felügyeleti csoport létrehozásához válassza a **felügyeleti csoport hozzáadása** elemet, adja meg a megfelelő adatokat, majd kattintson a **Mentés** gombra.
 
-   - Ha a nem értékre állítja a kapcsolót, a rendszer eltávolítja az Azure RBAC felhasználói hozzáférés rendszergazdai szerepkörét a felhasználói fiókjából. Az ehhez az Azure AD-címtárhoz társított összes Azure-előfizetéshez és felügyeleti csoporthoz már nem lehet szerepköröket hozzárendelni. Csak azokat az Azure-előfizetéseket és felügyeleti csoportokat tekintheti meg és kezelheti, amelyekhez hozzáférést kapott.
+    :::image type="content" source="media/security-center-management-groups/add-management-group.png" alt-text="Felügyeleti csoport hozzáadása az Azure-hoz":::
 
-4. A beállítás mentéséhez kattintson a **Save (Mentés** ) gombra.
-
-    - Ez a beállítás nem globális tulajdonság, és csak az aktuálisan bejelentkezett felhasználóra vonatkozik.
-
-5. Hajtsa végre a emelt szintű hozzáféréshez szükséges feladatokat. Ha elkészült, állítsa vissza a kapcsolót a **nem** értékre.
+    - A **felügyeleti csoport azonosítója** a címtár egyedi azonosítója, amely a parancsok ezen a felügyeleti csoporton való elküldésére szolgál. Ez az azonosító nem szerkeszthető a létrehozás után, mivel az egész Azure-rendszeren a csoport azonosítására szolgál. 
+    - A megjelenítendő név mező a Azure Portal belül megjelenő név. A felügyeleti csoport létrehozásakor egy külön megjelenítendő név nem választható mező, és bármikor módosítható.  
 
 
-### <a name="assign-azure-roles-to-users"></a>Azure-szerepkörök kiosztása a felhasználók számára
-Az összes előfizetés láthatósága érdekében a bérlői rendszergazdáknak hozzá kell rendelniük a megfelelő Azure-szerepkört azokhoz a felhasználókhoz, akik a legfelső szintű felügyeleti csoport szintjén kívánják biztosítani a bérlői szintű láthatóságot. A hozzárendelni kívánt szerepkörök vagy **biztonsági rendszergazda** vagy biztonsági **olvasó**. Általában a biztonsági rendszergazdai szerepkör szükséges ahhoz, hogy a legfelső szintű házirendeket alkalmazzuk, míg a biztonsági olvasó elegendő lesz a bérlői szintű láthatóság biztosításához. A szerepkörök által biztosított engedélyekkel kapcsolatos további információkért tekintse meg a [biztonsági rendszergazda beépített szerepkörének leírását](../role-based-access-control/built-in-roles.md#security-admin) vagy a [biztonsági olvasó beépített szerepkörének leírását](../role-based-access-control/built-in-roles.md#security-reader).
+### <a name="add-subscriptions-to-a-management-group"></a>Előfizetés hozzáadása egy felügyeleti csoporthoz
+Előfizetéseket adhat hozzá a létrehozott felügyeleti csoporthoz.
+
+1. A **Management groups** alatt válassza ki az előfizetéséhez tartozó felügyeleti csoportot.
+
+    :::image type="content" source="./media/security-center-management-groups/management-group-subscriptions.png" alt-text="Válasszon ki egy felügyeleti csoportot az előfizetéséhez":::
+
+1. A csoport oldalának megnyitásakor válassza a **részletek** lehetőséget.
+
+    :::image type="content" source="./media/security-center-management-groups/management-group-details-page.png" alt-text="Felügyeleti csoport részleteket tartalmazó oldalának megnyitása":::
+
+1. A csoport részletei lapon válassza az **előfizetés hozzáadása** lehetőséget, majd válassza ki az előfizetéseket, és válassza a **Mentés** lehetőséget. Ismételje meg a műveletet, amíg hozzá nem adta az összes előfizetést a hatókörben.
+
+    :::image type="content" source="./media/security-center-management-groups/management-group-add-subscriptions.png" alt-text="Előfizetés hozzáadása egy felügyeleti csoporthoz":::
+   > [!IMPORTANT]
+   > A felügyeleti csoportok előfizetéseket és alárendelt felügyeleti csoportokat is tartalmazhatnak. Amikor egy felhasználóhoz egy Azure-szerepkört rendel a fölérendelt felügyeleti csoporthoz, a gyermek-felügyeleti csoport előfizetései öröklik a hozzáférést. A szülő felügyeleti csoportban beállított házirendeket a gyermekek is öröklik. 
 
 
-#### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Azure-szerepköröket rendelhet a felhasználókhoz a Azure Portalon keresztül: 
+## <a name="grant-tenant-wide-permissions-to-yourself"></a>A bérlői szintű engedélyek megadása saját magának
 
+A **globális rendszergazda** Azure Active Directory szerepkörrel rendelkező felhasználó bérlői szintű felelősséggel rendelkezhet, de nem rendelkezik az Azure-engedélyekkel a szervezetre vonatkozó információk megtekintésére a Azure Security Centerban. 
+
+> [!TIP]
+> Ha a szervezete [Azure ad Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)vagy bármely más PIM eszközzel felügyeli az erőforrás-hozzáférést, a globális rendszergazdai szerepkörnek aktívnak kell lennie ahhoz, hogy a felhasználó megváltoztassa ezeket a módosításokat.
+
+Bérlői szintű engedélyek kiosztása:
+
+1. A bérlő legfelső szintű felügyeleti csoportjához tartozó hozzárendelés nélküli globális rendszergazda felhasználóként nyissa meg Security Center **Áttekintés** lapját, és válassza ki a teljes **bérlőre kiterjedő láthatósági** hivatkozást a szalagcímben. 
+
+    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-banner.png" alt-text="Bérlői szintű engedélyek engedélyezése Azure Security Center":::
+
+1. Válassza ki a hozzárendelni kívánt új Azure-szerepkört. 
+
+    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-form.png" alt-text="A felhasználóhoz hozzárendelni kívánt bérlői szintű engedélyek definiálásának űrlapja":::
+
+    > [!TIP]
+    > Általában a biztonsági rendszergazdai szerepkör szükséges ahhoz, hogy a legfelső szintű házirendeket alkalmazzuk, míg a biztonsági olvasó elegendő lesz a bérlői szintű láthatóság biztosításához. A szerepkörök által biztosított engedélyekkel kapcsolatos további információkért tekintse meg a [biztonsági rendszergazda beépített szerepkörének leírását](../role-based-access-control/built-in-roles.md#security-admin) vagy a [biztonsági olvasó beépített szerepkörének leírását](../role-based-access-control/built-in-roles.md#security-reader).
+    >
+    > A Security Center-specifikus szerepkörök közötti különbségekért tekintse meg a [szerepkörök és az engedélyezett műveletek](security-center-permissions.md#roles-and-allowed-actions)táblázatát.
+
+    A szervezeti szintű nézetet úgy érheti el, hogy a bérlő legfelső szintű felügyeleti csoport szintjén adja meg a szerepköröket.  
+
+1. Jelentkezzen ki a Azure Portalból, majd jelentkezzen be újra.
+
+1. Ha emelt szintű hozzáférést, nyissa meg vagy frissítse Azure Security Center annak ellenőrzéséhez, hogy látható-e az Azure AD-bérlő összes előfizetése. 
+
+## <a name="assign-azure-roles-to-other-users"></a>Azure-szerepkörök kiosztása más felhasználóknak
+
+### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Azure-szerepköröket rendelhet a felhasználókhoz a Azure Portalon keresztül: 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 1. A felügyeleti csoportok megtekintéséhez válassza a **minden szolgáltatás** lehetőséget az Azure főmenüjében, majd válassza a **Management groups** lehetőséget.
-1.  Válasszon ki egy felügyeleti csoportot, és kattintson a **részletek** elemre.
+1.  Válasszon ki egy felügyeleti csoportot, és válassza a **részletek** lehetőséget.
 
-    ![Management Groups részletek képernyőképe](./media/security-center-management-groups/management-group-details.PNG)
- 
-1. Kattintson a **hozzáférés-vezérlés (iam)** , majd a **szerepkör-hozzárendelések** elemre.
+    :::image type="content" source="./media/security-center-management-groups/management-group-details.PNG" alt-text="Management Groups részletek képernyőképe":::
 
-1. Kattintson a **szerepkör-hozzárendelés hozzáadása** lehetőségre.
-
+1. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd a **szerepkör-hozzárendelések** elemet.
+1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
 1. Válassza ki a hozzárendelni kívánt szerepkört és a felhasználót, majd kattintson a **Mentés** gombra.  
    
    ![Biztonsági olvasó szerepkör hozzáadása képernyőkép](./media/security-center-management-groups/asc-security-reader.png)
 
-
-#### <a name="assign-azure-roles-to-users-with-powershell"></a>Azure-szerepkörök társítása a felhasználókhoz a PowerShell használatával: 
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
+### <a name="assign-azure-roles-to-users-with-powershell"></a>Azure-szerepkörök társítása a felhasználókhoz a PowerShell használatával: 
 1. Telepítse a [Azure PowerShell](/powershell/azure/install-az-ps).
 2. Futtassa az alábbi parancsot: 
 
@@ -137,59 +148,20 @@ Az összes előfizetés láthatósága érdekében a bérlői rendszergazdáknak
     Remove-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
     ```
 
-### <a name="open-or-refresh-security-center"></a>Security Center megnyitása vagy frissítése
-Ha emelt szintű hozzáférést, nyissa meg vagy frissítse Azure Security Center annak ellenőrzéséhez, hogy látható-e az Azure AD-bérlő összes előfizetése. 
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Győződjön meg arról, hogy az előfizetéshez tartozó összes előfizetést kijelöli, amelyet Security Center szeretne megtekinteni.
-
-    ![Előfizetés-választó képernyőképe](./media/security-center-management-groups/subscription-selector.png)
-
-1. Válassza a **minden szolgáltatás** lehetőséget az Azure főmenüjében, majd válassza a **Security Center** lehetőséget.
-2. Az **áttekintésben** van egy előfizetési lefedettségi diagram.
-
-    ![Előfizetés-lefedettségi diagram képernyőképe](./media/security-center-management-groups/security-center-subscription-coverage.png)
-
-3. Az előfizetések listájának megtekintéséhez kattintson a **lefedettség** elemre. 
-
-    ![Előfizetés-lefedettségi lista képernyőképe](./media/security-center-management-groups/security-center-coverage.png)
-
-### <a name="remove-elevated-access"></a>Emelt szintű hozzáférés eltávolítása 
+## <a name="remove-elevated-access"></a>Emelt szintű hozzáférés eltávolítása 
 Miután hozzárendelte az Azure-szerepköröket a felhasználókhoz, a bérlői rendszergazdának el kell távolítania magát a felhasználói hozzáférés rendszergazdai szerepkörből.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) vagy a [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com).
 
-2. A navigációs listában kattintson a **Azure Active Directory** elemre, majd a **Tulajdonságok** elemre.
+2. A navigációs listában válassza a **Azure Active Directory** lehetőséget, majd válassza a **Tulajdonságok** lehetőséget.
 
 3. Az **Azure-erőforrások hozzáférés-kezelés** területén állítsa a **nem** értékre a kapcsolót.
 
-4. A beállítás mentéséhez kattintson a **Save (Mentés** ) gombra.
+4. A beállítás mentéséhez válassza a **Mentés** lehetőséget.
 
 
 
-## <a name="adding-subscriptions-to-a-management-group"></a>Előfizetés hozzáadása egy felügyeleti csoporthoz
-Előfizetéseket adhat hozzá a létrehozott felügyeleti csoporthoz. Ezek a lépések nem kötelezőek a bérlői szintű láthatóság és a globális házirend-és hozzáférés-kezelés beszerzéséhez.
+## <a name="next-steps"></a>Következő lépések
+Ebből a cikkből megtudhatta, hogyan szerezhet Azure Security Center bérlői szintű láthatóságot. A kapcsolódó információk a következő témakörben találhatók:
 
-1. Az **Management groups** területen válassza ki azt a felügyeleti csoportot, amelyhez hozzá szeretné adni az előfizetést.
-
-    ![Válasszon ki egy felügyeleti csoportot az előfizetés hozzáadásához](./media/security-center-management-groups/management-group-subscriptions.png)
-
-2. Válassza a **meglévő hozzáadása** elemet.
-
-    ![Meglévő hozzáadása](./media/security-center-management-groups/add-existing.png)
-
-3. Adja meg az előfizetést a **meglévő erőforrás hozzáadása** területen, majd kattintson a **Mentés** gombra.
-
-4. Ismételje meg az 1 – 3. lépést, amíg hozzá nem adta az összes előfizetést a hatókörben.
-
-   > [!NOTE]
-   > A felügyeleti csoportok előfizetéseket és alárendelt felügyeleti csoportokat is tartalmazhatnak. Amikor egy felhasználóhoz egy Azure-szerepkört rendel a fölérendelt felügyeleti csoporthoz, a gyermek-felügyeleti csoport előfizetései öröklik a hozzáférést. A szülő felügyeleti csoportban beállított házirendeket a gyermekek is öröklik. 
-
-## <a name="next-steps"></a>További lépések
-Ebből a cikkből megtudhatta, hogyan szerezhet Azure Security Center bérlői szintű láthatóságot. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
-
-> [!div class="nextstepaction"]
-> [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md)
-
-> [!div class="nextstepaction"]
-> [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
+- [Engedélyek az Azure Security Centerben](security-center-permissions.md)

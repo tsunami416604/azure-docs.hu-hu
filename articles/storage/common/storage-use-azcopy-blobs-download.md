@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f09e30d6bf68cfb11d9bf808838f6cc029ed942a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 0a2490a104d18f77a0ec326933f463eb4ebb4339
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907565"
+ms.locfileid: "96923958"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>Blobok letöltése az Azure Blob Storage-ból az AzCopy v10 használatával
 
@@ -139,19 +139,24 @@ Először hozzon létre egy szövegfájlt, amely tartalmazza a [verzió-azonosí
 
 Ezután használja a [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--list-of-versions` kapcsolóval. Itt adhatja meg a verziók listáját tartalmazó szövegfájl helyét (például: `D:\\list-of-versions.txt` ).  
 
+#### <a name="download-a-blob-snapshot"></a>BLOB-pillanatkép letöltése
+
+A [blob-](/azure/storage/blobs/snapshots-overview.md) Pillanatképek a blob-pillanatkép **datetime** értékére hivatkozva tölthetők le. 
+
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-directory-path>' --list-of-versions '<list-of-versions-file>'`|
-| **Példa** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
-| **Példa** (hierarchikus névtér) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>?sharesnapshot=<DateTime-of-snapshot>' '<local-file-path>'` |
+| **Példa** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
+| **Példa** (hierarchikus névtér) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
 
-Az egyes letöltött fájlok neve a verzióazonosító nevével kezdődik. 
+> [!NOTE]
+> Ha SAS-tokent használ a blob-adatokhoz való hozzáférés engedélyezéséhez, akkor az SAS-tokent követően adja hozzá a Snapshot **datetime** értéket. Például: `'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`.
 
 ## <a name="download-with-optional-flags"></a>Letöltés opcionális jelzővel
 
 A letöltési műveletet opcionális jelzők használatával is megteheti. Íme néhány példa.
 
-|Használati példa|Jelölő|
+|Forgatókönyv|Jelölő|
 |---|---|
 |Fájlok automatikus kibontása.|**– Kibontás**|
 |Adja meg, hogy a másolással kapcsolatos naplóbejegyzések milyen részletesek legyenek.|**– naplózási szint** = \[ FIGYELMEZTETÉSi \| hiba – \| \| nincs\]|

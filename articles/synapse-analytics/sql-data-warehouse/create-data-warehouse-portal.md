@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: dedikált SQL-készlet létrehozása és lekérdezése (Azure Portal)'
-description: Dedikált SQL-készlet létrehozása és lekérdezése a Azure Portal használatával
+title: 'Rövid útmutató: dedikált SQL-készlet létrehozása és lekérdezése (korábbi nevén SQL DW) (Azure Portal)'
+description: Dedikált SQL-készlet (korábban SQL DW) létrehozása és lekérdezése a Azure Portal használatával
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3d4884fd64c773647f78a98dc7aeb1063d539edf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 78a0982081b8e34461fb2910cc7ce21be622cb6a
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456749"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922855"
 ---
-# <a name="quickstart-create-and-query-a-dedicated-sql-pool-in-azure-synapse-analytics-using-the-azure-portal"></a>Rövid útmutató: dedikált SQL-készlet létrehozása és lekérdezése az Azure szinapszis Analyticsben az Azure Portal használatával
+# <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>Rövid útmutató: dedikált SQL-készlet (korábban SQL DW) létrehozása és lekérdezése az Azure szinapszis Analyticsben az Azure Portal használatával
 
-A Azure Portal használatával gyorsan létrehozhat és lekérdezheti a szinapszis SQL-készletet (adattárházat) az Azure szinapszis Analyticsben.
+A Azure Portal használatával gyorsan létrehozhat és lekérdezheti a dedikált SQL-készletet (korábban SQL DW) az Azure szinapszis Analyticsben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 1. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
    > [!NOTE]
-   > Ha SQL-készletet hoz létre az Azure Szinapszisban, egy új számlázható szolgáltatást eredményezhet. További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/synapse-analytics/).
+   > Egy dedikált SQL-készlet (korábban SQL DW) létrehozása az Azure Szinapszisban egy új számlázható szolgáltatás lehet. További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
 2. Töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) legújabb verzióját.
 
@@ -37,25 +37,25 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>SQL-készlet létrehozása
 
-Az adattárházak létrehozása az SQL-készlet használatával történik az Azure szinapszis Analyticsben. A rendszer létrehoz egy SQL-készletet a [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével. Az adatbázis egy [Azure-erőforráscsoport](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) és egy [logikai SQL Server-kiszolgáló](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)között jön létre.
+Az adattárházak a dedikált SQL Pool (korábban SQL DW) használatával jönnek létre az Azure szinapszis Analyticsben. A dedikált SQL-készlet (korábban SQL DW) [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoport](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) és egy [logikai SQL Server-kiszolgáló](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)között jön létre.
 
-Az alábbi lépéseket követve létrehozhat egy SQL-készletet, amely tartalmazza a **AdventureWorksDW** .
+Kövesse az alábbi lépéseket egy dedikált SQL-készlet (korábban SQL DW) létrehozásához, amely tartalmazza a **AdventureWorksDW** .
 
-1. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában.
+1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
    ![erőforrás létrehozása Azure Portal](./media/create-data-warehouse-portal/create-a-resource.png)
 
-2. Az **új** oldalon válassza az **adatbázisok** lehetőséget, majd válassza ki az **Azure szinapszis Analytics (korábbi nevén SQL DW)** elemet a **Kiemelt** listában.
+2. A keresősáv "dedikált SQL-készlet" mezőjében válassza a dedikált SQL-készlet (korábban SQL DW) elemet. A megnyíló lapon válassza a **Létrehozás** lehetőséget.
 
    ![üres adattárház létrehozása](./media/create-data-warehouse-portal/create-a-data-warehouse.png)
 
-3. Az **alapismeretek** területen adja meg az előfizetését, az erőforráscsoportot, az SQL-készlet nevét és a kiszolgáló nevét:
+3. Az **alapismeretek** területen adja meg az előfizetését, az erőforráscsoportot, a dedikált SQL-készletet (korábbi NEVÉN SQL DW) és a kiszolgáló nevét:
 
    | Beállítás | Ajánlott érték | Leírás |
    | :------ | :-------------- | :---------- |
    | **Előfizetés** | Az Ön előfizetése | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
    | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ismertető cikket. |
-   | **SQL-készlet neve** | Bármely globálisan egyedi név (például *mySampleDataWarehouse*) | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket. Vegye figyelembe, hogy egy SQL-készlet egy adatbázis-típus. |
+   | **SQL-készlet neve** | Bármely globálisan egyedi név (például *mySampleDataWarehouse*) | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket.  |
    | **Kiszolgáló** | Bármely globálisan egyedi név | Válasszon ki egy meglévő kiszolgálót, vagy hozzon létre egy új kiszolgálónevet, és válassza az **új létrehozása** lehetőséget. Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ismertető cikket. |
 
    ![adatraktár alapszintű adatainak létrehozása](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
@@ -68,7 +68,7 @@ Az alábbi lépéseket követve létrehozhat egy SQL-készletet, amely tartalmaz
 
 5. Válassza a **További beállítások** lehetőséget, majd a **meglévő adat használata** területen válassza a **minta** lehetőséget, hogy a rendszer létrehozza a AdventureWorksDW.
 
-    ![meglévő adathasználat kiválasztása](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
+    ![meglévő adathasználat kiválasztása](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png)
 
 6. Most, hogy végrehajtotta az Azure szinapszis Analytics űrlapjának alapismeretek lapját, válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget az SQL-készlet létrehozásához. A kiépítés eltarthat néhány percig.
 
@@ -124,7 +124,7 @@ Szerezze be a kiszolgáló teljes nevét a Azure Portalban. Később ezt a telje
 
 3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes név sqlpoolservername.database.windows.net.
 
-    ![kapcsolatadatok](./media/create-data-warehouse-portal/find-server-name-copy.png)
+    ![kapcsolatadatok](./media/create-data-warehouse-portal/find-server-name.png)
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Csatlakozás a kiszolgálóhoz kiszolgáló-rendszergazdaként
 
@@ -180,21 +180,21 @@ Az Azure szinapszis Analytics a T-SQL-t használja a lekérdezési nyelvként. A
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az adatraktár-egységek és az SQL-készletben tárolt adatmennyiség után kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
+Az adatraktár-egységek és a dedikált SQL-készlet (korábbi nevén SQL DW) tárolt adataiért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
-- Ha meg szeretné őrizni az adatok tárolását, szüneteltetheti a számítást, ha nem használja az SQL-készletet. A számítás felfüggesztésével csak az adattárolás díját számítjuk fel. Bármikor folytathatja a számítást, amikor készen áll az adatokkal való együttműködésre.
+- Ha meg szeretné őrizni az adatok tárolását, szüneteltetheti a számítást, ha nem használja a dedikált SQL-készletet (korábbi nevén SQL DW). A számítás felfüggesztésével csak az adattárolás díját számítjuk fel. Bármikor folytathatja a számítást, amikor készen áll az adatokkal való együttműködésre.
 
-- Ha el szeretné távolítani a jövőbeli díjakat, törölheti az SQL-készletet.
+- Ha el szeretné távolítani a jövőbeli díjakat, törölheti a dedikált SQL-készletet (korábbi nevén SQL DW).
 
 Kövesse az alábbi lépéseket a már nem szükséges erőforrások törléséhez.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az SQL-készletet.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), válassza ki a dedikált SQL-készletét (korábban SQL DW).
 
    ![Az erőforrások eltávolítása](./media/create-data-warehouse-portal/clean-up-resources.png)
 
-2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az SQL-készlet fel van függesztve, a **Folytatás** gomb jelenik meg. A számítás folytatásához válassza a **Folytatás** lehetőséget.
+2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha a dedikált SQL-készlet (korábbi nevén SQL DW) szüneteltetve van, a **Folytatás** gomb jelenik meg. A számítás folytatásához válassza a **Folytatás** lehetőséget.
 
-3. Ha el szeretné távolítani az SQL-készletet, hogy a számítás vagy a tárolás ne legyen felszámítva, válassza a **Törlés** lehetőséget.
+3. Ha el szeretné távolítani a dedikált SQL-készletet (korábban az SQL DW-t), ezért nem számít a számítás vagy a tárterület esetében, válassza a **Törlés** lehetőséget.
 
 4. A létrehozott kiszolgáló eltávolításához válassza a **sqlpoolservername.database.Windows.net** lehetőséget az előző képen, majd válassza a **Törlés** lehetőséget. A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
 
@@ -204,6 +204,6 @@ Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni az SQL-készletbe való betöltésről, folytassa az [adatgyűjtés az SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md) című cikket.
+Ha többet szeretne megtudni arról, hogyan tölthetők be az adatai a dedikált SQL-készletbe (korábban SQL DW), folytassa a [betöltést egy DEDIKÁLT SQL-készletbe](load-data-from-azure-blob-storage-using-copy.md) .

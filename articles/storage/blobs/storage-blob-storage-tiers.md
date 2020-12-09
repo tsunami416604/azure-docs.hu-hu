@@ -3,17 +3,17 @@ title: Hozzáférési szintek Azure Blob Storage – gyakori, ritka elérésű �
 description: Az Azure Blob Storage gyakori, ritka elérésű és archív hozzáférési szintjeiről olvashat. Tekintse át a rétegek használatát támogató Storage-fiókokat. A blob tárolási beállításainak összehasonlítása.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/29/2020
+ms.date: 12/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 87106cce018a2b2663de2a9abbb43b31ab58c125
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 51998c159018b614ab519766c54fdddf7437e95b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007324"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96923985"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Hozzáférési szintek Azure Blob Storage – gyakori, ritka elérésű és archív
 
@@ -111,6 +111,11 @@ Ha egy blobot egy melegebb rétegbe helyez át (archivált >lassú elérésű, a
 ### <a name="cool-and-archive-early-deletion"></a>Korai törlés a ritka elérésű és az archív szinten
 
 A lassú rétegbe áthelyezett Blobok (csak a GPv2-fiókok esetében) egy 30 napos, korai törlési időszakra vonatkoznak. Az archiválási szintre áthelyezett Blobok egy 180 napos korai törlési időszakra vonatkoznak. A díj számlázása időarányosan történik. Ha például egy blobot az archívumba helyez át, majd 45 nap után törli vagy áthelyezi a gyors elérésű szintre, akkor a blobnak az archívumban való tárolásával megegyező korai törlési díjat kell fizetnie a 135 (180 mínusz 45) napon.
+
+A ritka elérésű és az archív rétegek közötti váltás néhány részletet mutat be:
+
+1. Ha egy blobot a Storage-fiók alapértelmezett hozzáférési szintje alapján, a blobot pedig archívumba helyezik el, a rendszer nem veszi figyelembe a korai törlés díját.
+1. Ha a blobot explicit módon áthelyezi a lassú szintre, majd áthelyezi az archívumba, a rendszer a korai törlési díjat alkalmazza.
 
 A korai törlést kiszámíthatja a blob tulajdonsággal, amelyet a **legutóbbi módosítással** lehet elvégezni, ha nem módosult a hozzáférési réteg. Ellenkező esetben akkor használhatja, ha a hozzáférési réteg utolsó módosításának ideje a következő: **hozzáférés-réteg-módosítási idő**. További információ a blob tulajdonságairól: [blob tulajdonságainak beolvasása](/rest/api/storageservices/get-blob-properties).
 
@@ -283,7 +288,7 @@ Az Azure Portal, a PowerShell, valamint a parancssori felület eszközei, illetv
 
 Az adattárolás és más korlátok a fiók szintjén vannak megadva, nem pedig hozzáférési szinten. Választhat, hogy az összes korlátot egy vagy mindhárom szinten használja-e. További információ: [a méretezhetőség és a teljesítményre vonatkozó célok a standard szintű Storage-fiókok esetében](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GPv2-és Blob Storage-fiókok gyors, ritka és archív állapotának kiértékelése
 

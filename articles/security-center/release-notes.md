@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: d8b690201ea4349f9577377ff24c91bd75ecd58b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 3272212a857f24916acce7da5a4ee31561ec0c5a
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751869"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922931"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -37,6 +37,7 @@ A decemberi frissítések a következők:
 
 - [Általánosan elérhető az Azure Defender az SQL-kiszolgálókhoz a gépeken](#azure-defender-for-sql-servers-on-machines-is-generally-available)
 - [Általánosan elérhető az Azure Defender for SQL-támogatás az Azure szinapszis Analytics dedikált SQL-készletéhez](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
+- [A globális rendszergazdák mostantól bérlői szintű engedélyeket is biztosíthatnak](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [Két új Azure Defender-csomag: az Azure Defender for DNS és az Azure Defender for Resource Manager (előzetes verzió)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Általánosan elérhető az Azure Defender az SQL-kiszolgálókhoz a gépeken
@@ -71,6 +72,13 @@ Az Azure Defender for SQL az Azure szinapszis Analytics SQL-készletekhez való 
 További információ [Az Azure Defender for SQL szolgáltatásról](defender-for-sql-introduction.md).
 
 
+### <a name="global-administrators-can-now-grant-themselves-tenant-level-permissions"></a>A globális rendszergazdák mostantól bérlői szintű engedélyeket is biztosíthatnak
+
+A **globális rendszergazda** Azure Active Directory szerepkörrel rendelkező felhasználó bérlői szintű felelősséggel rendelkezhet, de nem rendelkezik az Azure-engedélyekkel a szervezetre vonatkozó információk megtekintésére a Azure Security Centerban. 
+
+A bérlői szintű engedélyek kiosztásához kövesse a [bérlői szintű engedélyek megadása saját magának](security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself)című témakör utasításait.
+
+
 ### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>Két új Azure Defender-csomag: az Azure Defender for DNS és az Azure Defender for Resource Manager (előzetes verzió)
 
 Az Azure-környezethez két új, felhőben natív, széles körű veszélyforrások elleni védelmi képességgel bővült.
@@ -79,12 +87,12 @@ Ezek az új védelem nagy mértékben fokozza rugalmasságát a veszélyforráso
 
 - **Azure Defender for Resource Manager** – a szervezeten belül végrehajtott összes erőforrás-kezelési művelet automatikus figyelése. További információ:
     - [A Resource Managerhez készült Azure Defender bemutatása](defender-for-resource-manager-introduction.md)
-    - [Válasz az Azure Defender for Resource Manager-riasztásokra](defender-for-resource-manager-usage.md)
+    - [Válaszadás a Resource Managerhez készült Azure Defender-riasztásokra](defender-for-resource-manager-usage.md)
     - [Az Azure Defender for Resource Manager által biztosított riasztások listája](alerts-reference.md#alerts-resourcemanager)
 
 - **Azure Defender DNS-ben** – folyamatosan figyeli az Azure-erőforrások összes DNS-lekérdezését. További információ:
     - [A DNS-hez készült Azure Defender bemutatása](defender-for-dns-introduction.md)
-    - [Válaszadás az Azure Defender DNS-riasztásokra](defender-for-dns-usage.md)
+    - [Válaszadás a DNS-hez készült Azure Defender-riasztásokra](defender-for-dns-usage.md)
     - [Az Azure Defender által a DNS-hez biztosított riasztások listája](alerts-reference.md#alerts-dns)
 
 
