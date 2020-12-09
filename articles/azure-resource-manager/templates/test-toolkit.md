@@ -1,20 +1,20 @@
 ---
 title: ARM-sablon tesztelési eszközkészlete
-description: Útmutatás a ARM-sablon tesztelési eszközkészletének futtatásához a sablonban. Az eszközkészlet segítségével megtekintheti, hogy végrehajtotta-e a javasolt eljárásokat.
+description: Útmutatás a Azure Resource Manager sablon (ARM-sablon) tesztelési eszközkészletének futtatásához a sablonban. Az eszközkészlet segítségével megtekintheti, hogy végrehajtotta-e a javasolt eljárásokat.
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439560"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928188"
 ---
 # <a name="use-arm-template-test-toolkit"></a>ARM-sablon tesztelési eszközkészletének használata
 
-A [Azure Resource Manager (ARM) sablon tesztelési eszközkészlete](https://aka.ms/arm-ttk) ellenőrzi, hogy a sablon ajánlott eljárásokat használ-e. Ha a sablon nem felel meg az ajánlott eljárásoknak, a figyelmeztetések listáját adja vissza a javasolt módosításokkal. A test Toolkit használatával megtudhatja, hogyan kerülheti el a sablonok fejlesztésével kapcsolatos gyakori problémákat.
+A [Azure Resource Manager-sablon (ARM-sablon) tesztelési eszközkészlete](https://aka.ms/arm-ttk) ellenőrzi, hogy a sablon ajánlott eljárásokat használ-e. Ha a sablon nem felel meg az ajánlott eljárásoknak, a figyelmeztetések listáját adja vissza a javasolt módosításokkal. A test Toolkit használatával megtudhatja, hogyan kerülheti el a sablonok fejlesztésével kapcsolatos gyakori problémákat.
 
 A test Toolkit az [alapértelmezett tesztek készletét](test-cases.md)tartalmazza. Ezek a tesztek javaslatok, de nem szükségesek. Eldöntheti, hogy mely tesztek relevánsak a céljaihoz, és hogy milyen tesztek futnak.
 
@@ -120,7 +120,7 @@ Az eszközkészlet PowerShell-parancsfájlok egy készlete, amely a PowerShell v
    Test-AzTemplate -TemplatePath /path/to/template
    ```
 
-## <a name="result-format"></a>Eredmény formátuma
+## <a name="result-format"></a>Az eredmény formátuma
 
 Az átadott tesztek **zöld** színnel és a **[+]** előtaggal jelennek meg.
 
@@ -162,9 +162,9 @@ Test-AzTemplate -TemplatePath $TemplateFolder -Test "Resources Should Have Locat
 
 ## <a name="customize-tests"></a>Tesztek testreszabása
 
-ARM-sablonok esetében az eszközkészlet a **\arm-ttk\testcases\deploymentTemplate**mappában található összes tesztet futtatja. Ha végleg el szeretné távolítani a tesztet, törölje a fájlt a mappából.
+ARM-sablonok esetében az eszközkészlet a **\arm-ttk\testcases\deploymentTemplate** mappában található összes tesztet futtatja. Ha végleg el szeretné távolítani a tesztet, törölje a fájlt a mappából.
 
-A [CreateUiDefinition](../managed-applications/create-uidefinition-overview.md) -fájlok esetében a **\arm-ttk\testcases\CreateUiDefinition**mappában futtatja az összes tesztet.
+A [CreateUiDefinition](../managed-applications/create-uidefinition-overview.md) -fájlok esetében a **\arm-ttk\testcases\CreateUiDefinition** mappában futtatja az összes tesztet.
 
 Saját teszt hozzáadásához hozzon létre egy fájlt a következő elnevezési konvencióval: **Your-Custom-Test-Name.test.ps1**.
 
@@ -282,4 +282,4 @@ A következő példa bemutatja, hogyan futtathatja a teszteket.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az alapértelmezett tesztek megismeréséhez tekintse meg az [eszközkészlet tesztelési eseteivel foglalkozó](test-cases.md)témakört.
+Az alapértelmezett tesztek megismeréséhez tekintse meg az [ARM-sablon tesztelési eszközkészletének alapértelmezett tesztelési eseteit](test-cases.md).

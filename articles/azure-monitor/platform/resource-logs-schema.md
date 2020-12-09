@@ -4,12 +4,12 @@ description: Ismerje meg az Azure-erőforrás-naplók támogatott szolgáltatás
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 1f8754245e394ecdffbb045d7f4cc96ec8a3ff78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6a76d642863a0baac8021a3da196ad5a2db48126
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184501"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931163"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Az Azure-erőforrás naplóihoz tartozó általános és szolgáltatás-specifikus séma
 
@@ -38,7 +38,7 @@ Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category
 | callerIpAddress | Választható | A hívó IP-címe, ha a művelet olyan API-hívásnak felel meg, amely nyilvánosan elérhető IP-címmel rendelkező entitásból származik. |
 | correlationId | Választható | A kapcsolódó események halmazának csoportosítására szolgáló GUID. Általában, ha két esemény ugyanazzal a operationName, de két különböző állapottal rendelkezik (például "Elindítva" és "sikeres"), ugyanazt a korrelációs azonosítót használják. Ez az események közötti egyéb kapcsolatokat is jelenthet. |
 | identity | Választható | Egy JSON-blob, amely leírja a műveletet végrehajtó felhasználó vagy alkalmazás identitását. Ez a mező általában az Active Directoryból származó engedélyezési és jogcímek/JWT jogkivonatot tartalmazza. |
-| Szint | Választható | Az esemény súlyossági szintje. Az egyik tájékoztatási, figyelmeztetési, hiba vagy kritikus értéknek kell lennie. |
+| Level | Választható | Az esemény súlyossági szintje. Az egyik tájékoztatási, figyelmeztetési, hiba vagy kritikus értéknek kell lennie. |
 | location | Választható | Az eseményt kibocsátó erőforrás régiója, például "az USA keleti régiója" vagy "Dél-Franciaország" |
 | properties | Választható | Az adott kategóriába tartozó eseményekhez kapcsolódó további tulajdonságok. Minden egyéni/egyedi tulajdonságot a séma "B része" részévé kell tenni. |
 
@@ -51,6 +51,7 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 | Azure Active Directory | [Áttekintés](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [naplózási napló sémája](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) és [bejelentkezési sémája](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | [Azure Analysis Services – diagnosztikai naplózás beállítása](../../analysis-services/analysis-services-logging.md) |
 | API Management | [Erőforrás-naplók API Management](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
+| App Service | [Naplók App Service](../../app-service/troubleshoot-diagnostic-logs.md)
 | Application Gateway-átjárók |[Application Gateway naplózása](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Azure Automation log Analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch naplózás](../../batch/batch-diagnostics.md) |

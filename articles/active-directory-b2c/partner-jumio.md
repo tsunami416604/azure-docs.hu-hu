@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: f3a8881b9fe44727caf07b3cc0d5ee19f0444e98
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 66ec0d4b09dc983eb898d63d45b3dd7cab291c4c
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953661"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928664"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>Oktatóanyag a Jumio konfigurálásához a Azure Active Directory B2C
 
@@ -65,7 +65,7 @@ Miután létrehozta a Jumio-fiókot, a fiók használatával konfigurálja a Azu
 
 ### <a name="deploy-the-api"></a>Az API üzembe helyezése
 
-A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) üzembe helyezése egy Azure-szolgáltatásban. A kódot a Visual studióból teheti közzé a következő [utasítások](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követésével.
+A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) üzembe helyezése egy Azure-szolgáltatásban. A kódot a Visual studióból teheti közzé a következő [utasítások](/visualstudio/deployment/quickstart-deploy-to-azure)követésével.
 
 >[!NOTE]
 >Szüksége lesz az üzembe helyezett szolgáltatás URL-címére az Azure AD konfigurálásához a szükséges beállításokkal.
@@ -104,7 +104,7 @@ A karakterlánc létrehozásához használja a következő PowerShell-parancsfá
 
 Az Alkalmazásbeállítások megadható [a Azure app Serviceban](../app-service/configure-common.md#configure-app-settings). Ezzel a módszerrel biztonságos módon konfigurálhatja a beállításokat anélkül, hogy azokat egy adattárba kellene benéznie. A REST API-hoz a következő beállításokat kell megadnia:
 
-| Alkalmazásbeállítások | Forrás | Megjegyzések |
+| Alkalmazásbeállítások | Forrás | Jegyzetek |
 | :-------- | :------------| :-----------|
 |JumioSettings:AuthUsername | Jumio-fiók konfigurálása |     |
 |JumioSettings:AuthPassword | Jumio-fiók konfigurálása |     |

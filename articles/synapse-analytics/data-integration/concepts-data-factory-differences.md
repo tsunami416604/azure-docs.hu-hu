@@ -2,18 +2,18 @@
 title: Eltérések az Azure Data Factoryhoz képest
 description: Ismerje meg, hogyan különbözik az Azure szinapszis Analytics adatintegrációs képességei a Azure Data Factory
 services: synapse-analytics
-author: djpmsft
+author: shirleywangmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.author: daperlov
+ms.author: shwang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 10f5336dd4c8a02acf623b1b14226ca676006953
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: db5d05e1a211ce14926ee4031054669fff5110d9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357649"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930211"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Adatintegráció az Azure szinapszis Analyticsben és Azure Data Factory
 
@@ -42,12 +42,11 @@ A következő funkciók vagy eltérően viselkednek, vagy jelenleg nem léteznek
 
 * **Huzavona-adatfolyamatok:** A huzavona adatfolyam tevékenység jelenleg csak Azure Data Factoryban érhető el.
 * **A megoldás sablonjának gyűjteménye:** Azure Data Factory a felhasználók a megoldás sablonjának gyűjteményében megtalálják a folyamat sablonjait. A szinapszis-munkaterületeken a Tudásközpont különböző sablonokat tartalmaz, valamint további adatkészleteket és SQL-parancsfájlokat. 
-* **Git-integráció és egy NATÍV CI/CD-megoldás:** Jelenleg egy szinapszis-munkaterület nem tud csatlakozni a git-tárházhoz, és nem ugyanazt a folyamatos integrációt és kézbesítési folyamatot követi, mint Azure Data Factory.
 * **Integráció az Azure monitorral:** A szinapszis-munkaterületek nem integrálható a Azure Monitor, mert Azure Data Factory.
 * **Hibrid Integration Runtime-konfiguráció:** A szinapszis munkaterületen belül a felhasználók nem rendelkezhetnek felügyelt VNet IR-vel és Azure IRval. Ez a funkció Azure Data Factory támogatott.
 * **Integration Runtime megosztása:** A saját üzemeltetésű integrációs modulok nem oszthatók meg a szinapszis-munkaterületek között. Ez a funkció Azure Data Factory támogatott.
 * **Régiók közötti integrációs futtatókörnyezetek az adatforgalomhoz:** Az adatfolyamatok nem futhatnak az integrációs modulokon különböző régiókban, mint a szinapszis-munkaterületek. Ez a funkció Azure Data Factory támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az adatintegrációval a szinapszis munkaterületen azáltal, hogy megtanulja, hogyan kell beolvasni az [adatAzure Data Lake Storage Gen2-fiókba](data-integration-data-lake.md).

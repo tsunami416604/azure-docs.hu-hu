@@ -3,12 +3,12 @@ title: Azure Storage-üzenetsorok és Service Bus-üzenetsorok összehasonlítá
 description: Elemzi az Azure által kínált két típusú várólista közötti különbségeket és hasonlóságokat.
 ms.topic: article
 ms.date: 11/04/2020
-ms.openlocfilehash: 5c65cf5ef2d572417ea70d0e0259cf2c03ab590e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379570"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928307"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tárolási várólisták és Service Bus várólisták – összehasonlítás és kontrasztos
 Ez a cikk a Microsoft Azure: Storage Queues és Service Bus Queues által kínált két típusú várólista közötti különbségeket és hasonlóságokat elemzi. Ezen információk használatával tájékozott döntést hozhat arról, hogy melyik megoldás felel meg legjobban az igényeinek.
@@ -42,7 +42,7 @@ Megoldás-építészként/fejlesztőként érdemes **megfontolni Service Bus vá
 * Azt szeretné, hogy az alkalmazás párhuzamos, hosszan futó adatfolyamként dolgozza fel az üzeneteket (az üzenetek az üzenetben található [munkamenet](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) -tulajdonsággal vannak társítva). Ebben a modellben a felhasználó alkalmazás minden csomópontja verseng a streamek számára, az üzenetek helyett. Ha egy adatfolyamot egy felhasználó csomóponthoz adnak, a csomópont a tranzakciók használatával megvizsgálhatja az alkalmazás-adatfolyam állapotát.
 * A megoldás tranzakciós viselkedést és atomi kezelést igényel, ha több üzenetet küld vagy fogad egy várólistából.
 * Az alkalmazás a 64 KB-nál nagyobb méretű üzeneteket kezel, de valószínűleg nem fogja tudni megközelíteni az 256-KB korlátot.
-* A szerepkör-alapú hozzáférési modellnek a várólistákhoz való biztosításához, valamint a küldők és a fogadók számára a különböző jogokkal/engedélyekkel kell foglalkoznia. További információkat az következő cikkekben talál:
+* A szerepkör-alapú hozzáférési modellnek a várólistákhoz való biztosításához, valamint a küldők és a fogadók számára a különböző jogokkal/engedélyekkel kell foglalkoznia. További információért tekintse át a következő cikkeket:
     - [Hitelesítés felügyelt identitásokkal](service-bus-managed-service-identity.md)
     - [Hitelesítés egy alkalmazásból](authenticate-application.md)
 * A várólista mérete nem növekszik 80 GB-nál nagyobb mértékben.
@@ -131,7 +131,7 @@ Ez a szakasz a tárolási várólistákat és a Service Bus várólistákat a le
 | Üzenetek maximális mérete |**64 KB**<br/><br/>(48 KB **Base64** kódolás használatakor)<br/><br/>Az Azure a várólisták és a Blobok kombinálásával is támogatja a nagyméretű üzeneteket, ekkor akár 200 GB-ot is sorba helyezni egyetlen elemhez. |**256 kb** vagy **1 MB**<br/><br/>(beleértve a fejlécet és a törzset is, a fejléc maximális mérete: 64 KB).<br/><br/>A [szolgáltatási szinttől](service-bus-premium-messaging.md)függ. |
 | Üzenetek maximális élettartama (TTL) |**Infinite** (API-Version 2017-07-27 vagy újabb) |**TimeSpan. max** |
 | Várólisták maximális száma |**Korlátlan** |**10 000**<br/><br/>(szolgáltatási névtér esetében) |
-| Egyidejű ügyfelek maximális száma |**Korlátlan** |**Korlátlan**<br/><br/>(100 az egyidejű kapcsolati korlát csak a TCP protokoll alapú kommunikációra vonatkozik) |
+| Egyidejű ügyfelek maximális száma |**Korlátlan** |**5 000** |
 
 ### <a name="additional-information"></a>További információ
 * Service Bus kényszeríti a várólista méretének korlátozásait. Várólista létrehozásakor a várólista maximális mérete van megadva. 1 GB és 80 GB között lehet. Ha a várólista mérete eléri ezt a korlátot, a rendszer elutasítja a további bejövő üzeneteket, és a hívó kivételt kap. További információ a Service Bus kvótákkal kapcsolatban: [Service Bus kvóták](service-bus-quotas.md).

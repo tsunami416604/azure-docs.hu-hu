@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 29116d880a51444eb45a351e2118a07d13873043
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2058e5362a65b6cd5f3e5b7cb9c20ce32d020d30
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953848"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928698"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Oktatóanyag a Experian konfigurálásához a Azure Active Directory B2C
 
@@ -77,7 +77,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ### <a name="part-1---deploy-the-api"></a>1. rész – az API üzembe helyezése
 
-A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
+A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](/visualstudio/deployment/quickstart-deploy-to-azure)követve.
 
 >[!NOTE]
 >Szüksége lesz az üzembe helyezett szolgáltatás URL-címére az Azure AD konfigurálásához a szükséges beállításokkal.
@@ -94,7 +94,7 @@ A Experian API-hívást egy ügyféltanúsítvány védi. Ezt az ügyféltanús�
 
 [Az Alkalmazásbeállítások konfigurálhatók az Azure app Service-ben](../app-service/configure-common.md#configure-app-settings). Ezzel a módszerrel a beállítások biztonságosan konfigurálhatók egy adattárba való ellenőrzés nélkül. A REST API-hoz a következő beállításokat kell megadnia:
 
-| Alkalmazásbeállítások | Forrás | Megjegyzések |
+| Alkalmazásbeállítások | Forrás | Jegyzetek |
 | :-------- | :------------| :-----------|
 |CrossCoreConfig: TenantId | Experian-fiók konfigurálása |     |
 |CrossCoreConfig:OrgCode | Experian-fiók konfigurálása |     |

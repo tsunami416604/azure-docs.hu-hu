@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 413786cf8946c1ffbb76bd0e18eae7c7ba16a9c1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790746"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928800"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Gyors útmutató: adatbázis visszaállítása az Azure SQL felügyelt példányára a SSMS használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,6 +51,9 @@ A SQL Server Management Studio az alábbi lépéseket követve állítsa vissza 
 1. Nyissa meg a SSMS, és kapcsolódjon a felügyelt példányhoz.
 2. A **Object Explorerban** kattintson a jobb gombbal a felügyelt példányra, és válassza az **Új lekérdezés** lehetőséget egy új lekérdezési ablak megnyitásához.
 3. Futtassa a következő SQL-parancsfájlt, amely egy előre konfigurált Storage-fiókot és egy SAS-kulcsot használ [egy hitelesítő adat létrehozásához](/sql/t-sql/statements/create-credential-transact-sql) a felügyelt példányban.
+ 
+   > [!IMPORTANT]
+   > `CREDENTIAL` meg kell egyeznie a tároló elérési útjával, a kezdetével `https` , és nem tartalmazhat záró perjelet. `IDENTITY` kell lennie `SHARED ACCESS SIGNATURE` . `SECRET` a közös hozzáférésű aláírási tokennek kell lennie, és nem tartalmazhat vezetőt `?` .
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
@@ -92,7 +95,7 @@ A SQL Server Management Studio az alábbi lépéseket követve állítsa vissza 
 
 > [!NOTE]
 > Az adatbázis-visszaállítási művelet aszinkron és újrapróbálható. Előfordulhat, hogy a rendszer hibát jelez SQL Server Management Studio, ha a kapcsolatok megszakadnak, vagy lejár az időtúllépés. Azure SQL Database továbbra is megkísérli visszaállítani az adatbázist a háttérben, és a [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézetek használatával nyomon követheti a visszaállítás előrehaladását.
-> A visszaállítási folyamat egyes fázisaiban egyedi azonosítót fog látni a rendszernézetek tényleges neve helyett. Ismerje meg az `RESTORE` utasítások viselkedésével kapcsolatos [here](./transact-sql-tsql-differences-sql-server.md#restore-statement)eltéréseket.
+> A visszaállítási folyamat egyes fázisaiban egyedi azonosítót fog látni a rendszernézetek tényleges neve helyett. Ismerje meg az `RESTORE` utasítások viselkedésével kapcsolatos [](./transact-sql-tsql-differences-sql-server.md#restore-statement)eltéréseket.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -3,8 +3,7 @@ title: Oktatóanyag a Feature Flags használatáról egy .NET Core-alkalmazásba
 description: Ebből az oktatóanyagból megtudhatja, hogyan implementálhatja a szolgáltatás-jelzőket a .NET Core-alkalmazásokban.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +11,14 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 09/17/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 6da2aa645549920cce2f5c0cfe8a32c98dc04708
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746138"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929191"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: funkció-jelzők használata egy ASP.NET Core alkalmazásban
 
@@ -132,7 +131,7 @@ config.AddAzureAppConfiguration(options => {
 
 Minden egyes szolgáltatás jelölője két részből áll: egy vagy több szűrőből áll, amelyek segítségével kiértékelheti, hogy a szolgáltatás állapota be van-e *kapcsolva* (azaz ha értéke `True` ). A szűrők a használati esetet határozzák meg, ha egy szolgáltatás bekapcsolására van lehetőség.
 
-Ha egy szolgáltatás jelölője több szűrővel rendelkezik, a rendszer átadja a szűrőlisták sorrendjét, amíg az egyik szűrő nem határozza meg, hogy a szolgáltatást engedélyezni kell. Ekkor a funkció jelzője *be van kapcsolva* , és a rendszer kihagyja a többi szűrő eredményét. Ha nincs szűrő azt jelzi, hogy a funkciót engedélyezni kell, a szolgáltatás jelzője *ki van kapcsolva* .
+Ha egy szolgáltatás jelölője több szűrővel rendelkezik, a rendszer átadja a szűrőlisták sorrendjét, amíg az egyik szűrő nem határozza meg, hogy a szolgáltatást engedélyezni kell. Ekkor a funkció jelzője *be van kapcsolva*, és a rendszer kihagyja a többi szűrő eredményét. Ha nincs szűrő azt jelzi, hogy a funkciót engedélyezni kell, a szolgáltatás jelzője *ki van kapcsolva*.
 
 A Feature Manager a szolgáltatás-jelzők konfigurációs forrásaként támogatja a *appsettings.js* . Az alábbi példa bemutatja, hogyan állíthatja be a szolgáltatás jelzőit egy JSON-fájlban:
 
@@ -155,9 +154,9 @@ A Feature Manager a szolgáltatás-jelzők konfigurációs forrásaként támoga
 
 Az egyezmény szerint a `FeatureManagement` JSON-dokumentum szakasza a szolgáltatások jelző beállításaihoz használatos. Az előző példa három funkció jelzőjét mutatja a tulajdonságban definiált szűrőkkel `EnabledFor` :
 
-* `FeatureA`*be van kapcsolva* .
-* `FeatureB`*ki van kapcsolva* .
-* `FeatureC` egy tulajdonsággal megnevezett szűrőt ad meg `Percentage` `Parameters` . `Percentage` konfigurálható szűrő. Ebben a példában a `Percentage` jelző 50 százalékos valószínűségét adja `FeatureC` *meg* .
+* `FeatureA`*be van kapcsolva*.
+* `FeatureB`*ki van kapcsolva*.
+* `FeatureC` egy tulajdonsággal megnevezett szűrőt ad meg `Percentage` `Parameters` . `Percentage` konfigurálható szűrő. Ebben a példában a `Percentage` jelző 50 százalékos valószínűségét adja `FeatureC` *meg*.
 
 ## <a name="feature-flag-references"></a>Szolgáltatás jelölő hivatkozásai
 
@@ -215,7 +214,7 @@ public class HomeController : Controller
 }
 ```
 
-A következő `Index` művelet végrehajtása szükséges a `FeatureA` futtatásához: *on*
+A következő `Index` művelet végrehajtása szükséges a `FeatureA` futtatásához: 
 
 ```csharp
 using Microsoft.FeatureManagement.Mvc;
@@ -227,7 +226,7 @@ public IActionResult Index()
 }
 ```
 
-Ha egy MVC vezérlő vagy művelet le van tiltva, mert a vezérlő funkció jelzője *ki van kapcsolva* , a rendszer egy regisztrált `IDisabledFeaturesHandler` felületet hív meg. Az alapértelmezett `IDisabledFeaturesHandler` illesztőfelület 404 állapotkódot ad vissza az ügyfélnek a válasz törzse nélkül.
+Ha egy MVC vezérlő vagy művelet le van tiltva, mert a vezérlő funkció jelzője *ki van kapcsolva*, a rendszer egy regisztrált `IDisabledFeaturesHandler` felületet hív meg. Az alapértelmezett `IDisabledFeaturesHandler` illesztőfelület 404 állapotkódot ad vissza az ügyfélnek a válasz törzse nélkül.
 
 ## <a name="mvc-views"></a>MVC-nézetek
 

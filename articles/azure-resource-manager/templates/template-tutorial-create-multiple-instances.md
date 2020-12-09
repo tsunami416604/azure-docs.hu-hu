@@ -1,21 +1,21 @@
 ---
 title: Több erőforráspéldány létrehozása
-description: Ismerje meg, hogyan hozhat létre több Azure-erőforráspéldány létrehozására alkalmas Azure Resource Manager-sablont.
+description: Megtudhatja, hogyan hozhat létre Azure Resource Manager sablont (ARM-sablont) több Azure-beli erőforrás-példány létrehozásához.
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: dac1e9429965607aea1490f0ec3b540d7b441d09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94509ba209e95eb9199ddd760529d47eb48bda10
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614393"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930798"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Oktatóanyag: több erőforrás-példány létrehozása ARM-sablonokkal
 
-Megtudhatja, hogyan lehet megismételni a Azure Resource Manager (ARM-) sablonban egy Azure-erőforrás több példányának létrehozását. Ebben az oktatóanyagban egy sablon módosításával három tárfiókpéldányt hoz létre.
+Megtudhatja, hogyan lehet megismételni a Azure Resource Manager sablonjában (ARM-sablon) egy Azure-erőforrás több példányának létrehozását. Ebben az oktatóanyagban egy sablon módosításával három tárfiókpéldányt hoz létre.
 
 ![Azure Resource Manager több példány diagramot hoz létre](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
@@ -32,13 +32,13 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio CodeResource Manager Tools bővítménnyel. Tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
+* Visual Studio CodeResource Manager Tools bővítménnyel. Lásd [a gyors útmutató: ARM-sablonok létrehozása a Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
 Az [Azure Gyorsindítás sablonjai](https://azure.microsoft.com/resources/templates/) az ARM-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. Az ebben a rövid útmutatóban használt sablon neve a következő: [Standard szintű tárfiók létrehozása](https://azure.microsoft.com/resources/templates/101-storage-account-create/). A sablon egy Azure Storage-fiókhoz tartozó erőforrást határoz meg.
 
-1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott**fájl elemet.
+1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott** fájl elemet.
 2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
@@ -183,7 +183,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.  Az erőforráscsoport összesen három erőforrást fog látni.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre több tárfiókpéldány.  A következő oktatóanyagban egy több erőforrást és több erőforrástípust tartalmazó sablont fog fejleszteni. Egyes erőforrások függő erőforrásokkal rendelkeznek.
 

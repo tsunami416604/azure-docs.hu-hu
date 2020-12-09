@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e73ca9e485e6926c30a73ba56b24bcd4dc9a836
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87280222"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929735"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrálás az Azure Kubernetes szolgáltatásba (ak)
 
@@ -89,7 +89,7 @@ Mivel az áttelepítés során további virtuális gépek lesznek telepítve az 
 
 Előfordulhat, hogy a [hálózati kvóták](../azure-portal/supportability/networking-quota-requests.md) növelését kell megadnia, hogy ne legyenek kimerítve az IP-címek. További információért lásd: [hálózati és IP-címtartományok](./configure-kubenet.md) .
 
-További információ: Azure- [előfizetés és-szolgáltatási korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md). Az aktuális kvóták megtekintéséhez a Azure Portal lépjen az [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)panelre, válassza ki az előfizetését, majd válassza a **használat + kvóták**lehetőséget.
+További információ: Azure- [előfizetés és-szolgáltatási korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md). Az aktuális kvóták megtekintéséhez a Azure Portal lépjen az [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)panelre, válassza ki az előfizetését, majd válassza a **használat + kvóták** lehetőséget.
 
 ## <a name="high-availability-and-business-continuity"></a>Magas rendelkezésre állás és Üzletmenet-folytonosság
 
@@ -132,7 +132,7 @@ Ha az alkalmazás több replikát is képes tárolni, amelyek ugyanarra a megosz
 * Mutasson az élő adatforgalomra az új AK-fürtre.
 * Válassza le a régi fürtöt.
 
-Ha üres megosztással szeretne kezdeni, és másolatot készít a forrásadatokről, a [`az storage file copy`](/cli/azure/storage/file/copy?view=azure-cli-latest) parancsok segítségével áttelepítheti az adatait.
+Ha üres megosztással szeretne kezdeni, és másolatot készít a forrásadatokről, a [`az storage file copy`](/cli/azure/storage/file/copy) parancsok segítségével áttelepítheti az adatait.
 
 
 #### <a name="migrating-persistent-volumes"></a>Állandó kötetek áttelepítése
@@ -159,7 +159,7 @@ Egyes nyílt forráskódú eszközök segítségével felügyelt lemezeket hozha
 
 ### <a name="deployment-of-your-cluster-configuration"></a>A fürt konfigurációjának üzembe helyezése
 
-Javasoljuk, hogy a meglévő folyamatos integrációs (CI) és a folyamatos kézbesítés (CD) folyamat használatával helyezzen üzembe egy ismert, jó konfigurációt az AK-ban. Az Azure-folyamatok segítségével alkalmazásokat hozhat [létre és helyezhet üzembe az AK](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)-ban. A meglévő üzembe helyezési feladatok klónozásával ellenőrizze, hogy `kubeconfig` az új AK-fürtre mutat-e.
+Javasoljuk, hogy a meglévő folyamatos integrációs (CI) és a folyamatos kézbesítés (CD) folyamat használatával helyezzen üzembe egy ismert, jó konfigurációt az AK-ban. Az Azure-folyamatok segítségével alkalmazásokat hozhat [létre és helyezhet üzembe az AK](/azure/devops/pipelines/ecosystems/kubernetes/aks-template)-ban. A meglévő üzembe helyezési feladatok klónozásával ellenőrizze, hogy `kubeconfig` az új AK-fürtre mutat-e.
 
 Ha ez nem lehetséges, exportálja az erőforrás-definíciókat a meglévő Kubernetes-fürtből, majd alkalmazza őket az AK-ra. `kubectl`Az objektumok exportálására használható.
 

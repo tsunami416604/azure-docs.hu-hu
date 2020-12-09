@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c734c0ceb9c4d5418edc51a2c3ad3c052637ad31
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: fa99920c8e9d8cd532bb6230d6a337a038ee3e31
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696982"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929327"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -308,7 +308,7 @@ Egy alkalmazás a felügyelt identitásával lekérheti a jogkivonatokat az Azur
 Előfordulhat, hogy a cél erőforrást úgy kell konfigurálnia, hogy engedélyezze az alkalmazáshoz való hozzáférést. Ha például jogkivonatot kér Key Vaulthoz való hozzáféréshez, meg kell győződnie arról, hogy az alkalmazás identitását tartalmazó hozzáférési szabályzatot adott hozzá. Ellenkező esetben a rendszer elutasítja a Key Vault meghívásait, még akkor is, ha azok tartalmazzák a jogkivonatot. Ha többet szeretne megtudni arról, hogy mely erőforrások támogatják Azure Active Directory jogkivonatokat, tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 > [!IMPORTANT]
-> A felügyelt identitások háttér-szolgáltatásai az erőforrás-URI-n kívüli gyorsítótárat tartanak fenn körülbelül 8 órán keresztül. Ha frissíti egy adott cél erőforrás hozzáférési házirendjét, és azonnal lekéri az adott erőforráshoz tartozó jogkivonatot, a jogkivonat lejárta után továbbra is elavult engedélyekkel rendelkező gyorsítótárazott tokent kaphat. Jelenleg nincs mód kényszeríteni a tokenek frissítését.
+> A felügyelt identitások háttér-szolgáltatásai az erőforrás-URI-n keresztüli gyorsítótárat tartanak fenn körülbelül 24 óra alatt. Ha frissíti egy adott cél erőforrás hozzáférési házirendjét, és azonnal lekéri az adott erőforráshoz tartozó jogkivonatot, a jogkivonat lejárta után továbbra is elavult engedélyekkel rendelkező gyorsítótárazott tokent kaphat. Jelenleg nincs mód kényszeríteni a tokenek frissítését.
 
 Létezik egy egyszerű REST-protokoll a jogkivonat beszerzéséhez App Service és Azure Functions. Ezt minden alkalmazáshoz és nyelvhez használhatja. A .NET és a Java esetében az Azure SDK absztrakciót biztosít a protokollon keresztül, és megkönnyíti a helyi fejlesztési élményt.
 

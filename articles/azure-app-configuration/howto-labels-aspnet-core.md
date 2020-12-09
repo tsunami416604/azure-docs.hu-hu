@@ -3,17 +3,17 @@ title: Környezeti konfiguráció használata
 titleSuffix: Azure App Configuration
 description: A címkék használatával adja meg a környezet konfigurációs értékeit.
 ms.service: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 3/12/2020
-ms.author: lcozzens
-ms.openlocfilehash: 689fdbd444aa4b20f5bef225faa259788c47cf9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: alkemper
+ms.openlocfilehash: 84286df063994f3def15079cb9b190550d5bd977
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206670"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929616"
 ---
 # <a name="use-labels-to-enable-configurations-for-different-environments"></a>Címkék használata különböző környezetek konfigurációinak engedélyezéséhez
 
@@ -25,7 +25,7 @@ A funkció bemutatásához módosítania kell a rövid útmutatóban létrehozot
 
 ## <a name="specify-a-label-when-adding-a-configuration-value"></a>Címke megadása konfigurációs érték hozzáadásakor
 
-A Azure Portal lépjen a **Configuration Explorer** elemre, és keresse meg a *TestApp: Settings: FontColor* kulcsot, amelyet a rövid útmutatóban hozott létre. Válassza ki a helyi menüt, majd válassza az **érték hozzáadása**lehetőséget.
+A Azure Portal lépjen a **Configuration Explorer** elemre, és keresse meg a *TestApp: Settings: FontColor* kulcsot, amelyet a rövid útmutatóban hozott létre. Válassza ki a helyi menüt, majd válassza az **érték hozzáadása** lehetőséget.
 
 > [!div class="mx-imgBorder"]
 > ![Érték menüpont hozzáadása](media/labels-add-value.png)

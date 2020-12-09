@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c4e39ae664c89e4f6d49f2941115e5a7d44cf7b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006644"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929173"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Gyors útmutató: fejlesztés az Azure Kubernetes Service-ben (ak) a Helmtal
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Helm csomagot és futtatha
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free).
-* Az [Azure CLI telepítve van](/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Az [Azure CLI telepítve van](/cli/azure/install-azure-cli).
 * A [Helm v3 telepítve van][helm-install].
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry létrehozása
@@ -196,7 +196,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Helm használatával kapcsolatos további információkért tekintse meg a Helm dokumentációját.
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
-ms.openlocfilehash: a0f64b0d19dd3f65d883237e9ead2c9f1303adaf
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 716cf4f4bfaed31dcbd756ae9494e1ddc8e475ad
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95794789"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929880"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>A Kubernetes szolgáltatás üzembe helyezéséhez szükséges GitHub-műveletek
 
@@ -41,7 +41,7 @@ Az AK-t tartalmazó munkafolyamatok esetében a fájl három szakaszt tartalmaz:
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-[Egyszerű szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) létrehozásához használja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) parancsot az [Azure CLI](/cli/azure/)-ben. Ezt a parancsot a Azure Portal [Azure Cloud Shell](https://shell.azure.com/) használatával vagy a **kipróbálás** gombra kattintva futtathatja.
+[Egyszerű szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) létrehozásához használja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot az [Azure CLI](/cli/azure/)-ben. Ezt a parancsot a Azure Portal [Azure Cloud Shell](https://shell.azure.com/) használatával vagy a **kipróbálás** gombra kattintva futtathatja.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
@@ -215,7 +215,7 @@ jobs:
 
 Ha a Kubernetes-fürt, a tároló-beállításjegyzék és a tárház már nem szükséges, a telepített erőforrások tisztításához törölje az erőforráscsoportot és a GitHub-tárházat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure Kubernetes szolgáltatásról](/azure/architecture/reference-architectures/containers/aks-start-here)

@@ -1,23 +1,23 @@
 ---
 title: Sablonok újrafelhasználása felhők között
-description: A különböző felhőalapú környezetekben konzisztensen működő Azure Resource Manager-sablonok fejlesztése. Új létrehozása vagy meglévő sablonok frissítése Azure Stackhoz.
+description: Olyan Azure Resource Manager-sablonok (ARM-sablonok) fejlesztése, amelyek konzisztensen működnek a különböző felhőalapú környezetekben. Új létrehozása vagy meglévő sablonok frissítése Azure Stackhoz.
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 806556a8da97ec84fe8141b95198b4a7da95c062
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744752"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928358"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sablonok fejlesztése a felhő konzisztenciájához
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Az Azure egyik fő előnye a konzisztencia. Egy adott helyhez tartozó fejlesztési beruházások újrafelhasználhatók egy másik helyen. Egy Azure Resource Manager (ARM-) sablon egységes és megismételhető környezetet biztosít a környezetek között, beleértve a globális Azure-t, az Azure szuverén felhőket és a Azure Stack. A sablonok Felhőbeli újrafelhasználásához azonban a jelen útmutatóban ismertetett felhőalapú függőségeket kell figyelembe vennie.
+Az Azure egyik fő előnye a konzisztencia. Egy adott helyhez tartozó fejlesztési beruházások újrafelhasználhatók egy másik helyen. Egy Azure Resource Manager sablon (ARM-sablon) egységes és megismételhető a környezetekben, beleértve a globális Azure-t, az Azure szuverén felhőket és Azure Stackeket. A sablonok Felhőbeli újrafelhasználásához azonban a jelen útmutatóban ismertetett felhőalapú függőségeket kell figyelembe vennie.
 
 A Microsoft számos helyen kínál intelligens, nagyvállalati használatra kész felhőalapú szolgáltatásokat, többek között a következőket:
 
@@ -205,7 +205,7 @@ Egy összetevő abszolút URI-azonosítójának létrehozásához az előnyben r
 }
 ```
 
-Ezzel a módszerrel az összes üzembe helyezési összetevő, beleértve a konfigurációs parancsfájlokat is, ugyanazon a helyen tárolhatók, mint maga a sablon. Az összes hivatkozás helyének módosításához csak meg kell adnia egy másik alap URL-címet a _artifactsLocation paraméterekhez_ .
+Ezzel a módszerrel az összes üzembe helyezési összetevő, beleértve a konfigurációs parancsfájlokat is, ugyanazon a helyen tárolhatók, mint maga a sablon. Az összes hivatkozás helyének módosításához csak meg kell adnia egy másik alap URL-címet a _artifactsLocation paraméterekhez_.
 
 ## <a name="factor-in-differing-regional-capabilities"></a>Eltérő regionális képességekkel rendelkező faktor
 
@@ -443,8 +443,8 @@ A végponti névterek a sablon kimenetében is használhatók a felhasználó sz
 
 Általában Kerülje a hardcoded-végpontok egy sablonban való használatának elkerülését. Az ajánlott eljárás az, ha a hivatkozási sablon függvény használatával dinamikusan kéri le a végpontokat. Például a végpont leggyakrabban hardcoded a Storage-fiókok végponti névtere. Minden egyes Storage-fiókhoz tartozik egy egyedi FQDN, amely a Storage-fiók végpont névterével való összefűzésével jön létre. A mystorageaccount1 nevű blob Storage-fiók különböző teljes tartományneveket eredményez a felhőtől függően:
 
-* **mystorageaccount1.blob.Core.Windows.net** , amikor a globális Azure-felhőben jön létre.
-* **mystorageaccount1.blob.Core.chinacloudapi.cn** az Azure China 21Vianet-felhőben való létrehozásakor.
+* `mystorageaccount1.blob.core.windows.net` a globális Azure-felhőben való létrehozásakor.
+* `mystorageaccount1.blob.core.chinacloudapi.cn` Az Azure China 21Vianet-felhőben való létrehozásakor.
 
 A következő hivatkozási sablon függvény lekéri a végponti névteret a tárolási erőforrás-szolgáltatótól:
 
@@ -641,7 +641,7 @@ Az egyes bővítmények verziószáma is megtörténik. Ez a verzió a virtuáli
         ...
 ```
 
-Egy adott virtuálisgép-bővítmény elérhető verzióinak listájának lekéréséhez használja a [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) parancsmagot. A következő példa lekéri a PowerShell DSC (kívánt állapot konfiguráció) virtuálisgép-bővítményének elérhető verzióit a **myLocation** :
+Egy adott virtuálisgép-bővítmény elérhető verzióinak listájának lekéréséhez használja a [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) parancsmagot. A következő példa lekéri a PowerShell DSC (kívánt állapot konfiguráció) virtuálisgép-bővítményének elérhető verzióit a **myLocation**:
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT

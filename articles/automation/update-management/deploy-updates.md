@@ -3,14 +3,14 @@ title: Frissítési központi telepítések létrehozása Azure Automation Updat
 description: Ez a cikk a frissítések központi telepítésének ütemezett és állapotának áttekintését ismerteti.
 services: automation
 ms.subservice: update-management
-ms.date: 10/27/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41ccecfb844f11a0d234271bcddc1851d3c02fda
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ec0d6d618edad87b76861ea834adb2f29531e6f5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742295"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929667"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Frissítések központi telepítése és eredmények áttekintése
 
@@ -44,8 +44,8 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
 2. A kiválasztott erőforrástól függően navigáljon Update Management:
 
    * Ha az Automation-fiók lehetőséget választotta, lépjen **a frissítés kezelése** elemre az **Update Management** alatt, majd válassza a **frissítés központi telepítésének** megkezdése lehetőséget.
-   * Ha az Azure-beli virtuális gépet választotta, lépjen a **vendég + gazdagép frissítéseire** , majd válassza **a Update Management ugrás** lehetőséget.
-   * Ha kiválasztott egy arc-kompatibilis kiszolgálót, lépjen a **Update Managementra** , majd válassza a **frissítés központi telepítésének** megkezdése lehetőséget.
+   * Ha az Azure-beli virtuális gépet választotta, lépjen a **vendég + gazdagép frissítéseire**, majd válassza **a Update Management ugrás** lehetőséget.
+   * Ha kiválasztott egy arc-kompatibilis kiszolgálót, lépjen a **Update Managementra**, majd válassza a **frissítés központi telepítésének** megkezdése lehetőséget.
 
 3. Az **új frissítés telepítése** alatt, a **név** mezőben adjon meg egy egyedi nevet a telepítéshez.
 
@@ -81,7 +81,7 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
     > [!NOTE]
     > Ez a beállítás eltérő, ha egy arc-kompatibilis kiszolgálót jelölt ki. A **Frissítés most** lehetőségre kattintva 20 percet is igénybe vehet a jövőben.
 
-10. Az **ismétlődéssel** megadhatja, hogy a telepítés egyszer történjen-e, vagy ismétlődő ütemezéset használ, majd kattintson **az OK gombra** .
+10. Az **ismétlődéssel** megadhatja, hogy a telepítés egyszer történjen-e, vagy ismétlődő ütemezéset használ, majd kattintson **az OK gombra**.
 
 11. A **parancsfájlok előtti és utáni parancsfájlok** területen válassza ki az üzembe helyezés előtt és után futtatandó parancsfájlokat. További információ: a [parancsfájlok előtti és utáni parancsfájlok kezelése](pre-post-scripts.md).
 
@@ -102,7 +102,7 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](../shar
     * Csak újraindítás; Ez a beállítás nem telepíti a frissítéseket
 
     > [!NOTE]
-    > Az újraindítás [kezeléséhez használt beállításkulcsok](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) alatt felsorolt beállításkulcsok újraindítási eseményt okozhatnak, ha az újraindítási **Beállítások** úgy vannak beállítva, hogy **Soha ne induljon újra** .
+    > Az újraindítás [kezeléséhez használt beállításkulcsok](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) alatt felsorolt beállításkulcsok újraindítási eseményt okozhatnak, ha az újraindítási **Beállítások** úgy vannak beállítva, hogy **Soha ne induljon újra**.
 
 14. Amikor befejezte a központi telepítési ütemterv konfigurálását, válassza a **Létrehozás** lehetőséget.
 
@@ -121,7 +121,7 @@ A heti frissítések központi telepítésének létrehozásához minta-runbook 
 
 ## <a name="check-deployment-status"></a>Központi telepítés állapotának keresése
 
-Az ütemezett telepítés megkezdése után az állapotot az **Update Management** ( **Előzmények** ) lapon tekintheti meg. Ha a telepítés fut, az állapota **Folyamatban** lesz. Az üzembe helyezés sikeres befejeződése után az állapot **sikeresre** változik. Ha az üzemelő példány egy vagy több frissítésével hibát észlel, az állapot **sikertelen** lesz.
+Az ütemezett telepítés megkezdése után az állapotot az **Update Management**( **Előzmények** ) lapon tekintheti meg. Ha a telepítés fut, az állapota **Folyamatban** lesz. Az üzembe helyezés sikeres befejeződése után az állapot **sikeresre** változik. Ha az üzemelő példány egy vagy több frissítésével hibát észlel, az állapot **sikertelen** lesz.
 
 ## <a name="view-results-of-a-completed-update-deployment"></a>Befejezett frissítés telepítésének eredményeinek megtekintése
 

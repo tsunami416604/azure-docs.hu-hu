@@ -3,13 +3,13 @@ title: Azure Monitor erőforrás-naplók támogatott szolgáltatásai és kateg�
 description: Azure Monitor az Azure-erőforrás-naplók támogatott szolgáltatásainak és az esemény sémájának ismertetése.
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/03/2020
-ms.openlocfilehash: 463b1d9d9c3ed1d94728874ba814554deb4f97c6
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 12/09/2020
+ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920837"
+ms.locfileid: "96931228"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Az Azure erőforrás-naplók támogatott kategóriái
 
@@ -23,7 +23,7 @@ Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category
 
 ## <a name="costs"></a>Költségek
 
- Az adatok Log Analytics és/vagy Event hub-ba való küldésével és tárolásával kapcsolatos költségekkel jár. Az erőforrás-naplók egy adattípusok, amelyeket elküldhet a következő helyszínekre. Az [erőforrás-naplók bizonyos kategóriáinak exportálására külön díj vonatkozik](https://azure.microsoft.com/pricing/details/monitor/). Mások az exportálási költségek alól ingyenesek. Az alábbi táblázatban láthatók az egyes sajátosságok.
+Az adatok a Log Analyticsba, az Azure Storage-ba és/vagy az Event Hubbe való küldésével és tárolásával kapcsolatos költségek. Előfordulhat, hogy a költségeket az ilyen helyszínekre való beszerzéshez és a megtartásához kell fizetnie.  Az erőforrás-naplók egy adattípusok, amelyeket elküldhet a következő helyszínekre. Az [erőforrás-naplók egyes kategóriáinak exportálására további költségek vonatkoznak](https://azure.microsoft.com/pricing/details/monitor/) , míg mások az exportálási költségek nélkül. Az export Cost-specifikusak az alábbi táblázatban láthatók.
 
 ## <a name="supported-log-categories-per-resource-type"></a>Támogatott naplózási kategóriák/erőforrás típusok
 

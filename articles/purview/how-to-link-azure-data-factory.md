@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 55651b3201676ee5cddb5412e950791afaa4e87a
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852132"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928766"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>A Azure Data Factory és az Azure hatáskörébe való kapcsolódás
 
@@ -42,6 +42,13 @@ Több Azure-beli adat-előállító is csatlakozhat egyetlen Azure-beli hatásk�
 
 ## <a name="create-new-data-factory-connection"></a>Új Data Factory-kapcsolatok létrehozása
 
+>[!Note]
+>A Data Factory kapcsolatok hozzáadásához vagy eltávolításához hozzá kell rendelnie a hatáskörébe tartozó szerepkörök egyikét:
+>- Tulajdonos
+>- Felhasználói hozzáférés rendszergazdája
+>
+> Emellett megköveteli, hogy a felhasználók a "tulajdonos" vagy "közreműködő" legyenek. 
+
 Kövesse az alábbi lépéseket egy meglévő Data Factory fióknak a hatáskörébe Data Catalog való összekapcsolásához.
 
 1. Válassza a **felügyeleti központ** lehetőséget a bal oldali navigációs ablaktáblán.
@@ -70,11 +77,6 @@ Egy adatfeldolgozó-kapcsolatok eltávolításához tegye a következőket:
 1. Válassza a **megerősítés** lehetőséget az előugró ablakban a kiválasztott adatfeldolgozó-kapcsolatok törléséhez.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="A kapcsolatok eltávolítására szolgáló adatüzemek kiválasztását bemutató képernyőkép." lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
-
->[!Note]
->A Data Factory kapcsolatok hozzáadásához vagy eltávolításához hozzá kell rendelnie a hatáskörébe tartozó szerepkörök egyikét:
->- Tulajdonos
->- A felhasználói hozzáférés adminisztrátora emellett megköveteli, hogy a felhasználók a "tulajdonos", "közreműködő" vagy "Data Factory közreműködő" legyenek. 
 
 ## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>Saját üzemeltetésű integrációs modul konfigurálása a Lineage SQL-ből való adatgyűjtéshez
 

@@ -1,17 +1,17 @@
 ---
 title: A GitHub-tárház szinkronizálása az alkalmazás konfigurációjával
 description: A GitHub-műveletek használatával automatikusan frissítheti az alkalmazás konfigurációs példányát, amikor frissíti a GitHub-tárházat.
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/20/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b2b5f4bcbcc5af07a763ee4dff2d42413750fb7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371821"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930279"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>A GitHub-tárház szinkronizálása az alkalmazás konfigurációjával
 
@@ -25,7 +25,7 @@ A GitHub-műveletek [munkafolyamat](https://help.github.com/articles/about-githu
 A GitHub [dokumentációja](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) részletes áttekintést nyújt a GitHub-munkafolyamatokról és-műveletekről. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>GitHub-műveletek engedélyezése a tárházban
-A GitHub-művelet elindításához nyissa meg a tárházat, és válassza a **műveletek** lapot. Válassza az **Új munkafolyamat**lehetőséget, majd **állítson be egy munkafolyamatot**. Végül keresse meg a piactéren az "Azure app Configuration Sync" kifejezést.
+A GitHub-művelet elindításához nyissa meg a tárházat, és válassza a **műveletek** lapot. Válassza az **Új munkafolyamat** lehetőséget, majd **állítson be egy munkafolyamatot**. Végül keresse meg a piactéren az "Azure app Configuration Sync" kifejezést.
 > [!div class="mx-imgBorder"]
 > ![Válassza a művelet fület](media/find-github-action.png)
 
@@ -35,7 +35,7 @@ A GitHub-művelet elindításához nyissa meg a tárházat, és válassza a **m�
 ## <a name="sync-configuration-files-after-a-push"></a>Konfigurációs fájlok szinkronizálása leküldéses üzenet után
 Ez a művelet szinkronizálja az Azure-alkalmazás konfigurációs fájljait, amikor egy módosítást küld a rendszer `appsettings.json` . Amikor egy fejlesztő leküldi a módosítást `appsettings.json` , az alkalmazás konfigurációs szinkronizálási művelete frissíti az alkalmazás konfigurációs példányát az új értékekkel.
 
-A munkafolyamat első szakasza azt *határozza meg,* hogy a művelet a Master ágat tartalmazó *leküldéses* műveletet indítja `appsettings.json` el. *master* A második szakasz azokat a feladatokat sorolja fel, amelyek a művelet elindítása után futnak. A művelet megkeresi a kapcsolódó fájlokat, és frissíti az alkalmazás konfigurációs példányát az adattárban titkosként tárolt kapcsolati sztring használatával.  A GitHubon található titkok használatával kapcsolatos további információkért lásd a [githubról szóló cikket](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) a titkosított titkok létrehozásával és használatával kapcsolatban.
+A munkafolyamat első szakasza azt *határozza meg,* hogy a művelet a fő ágat tartalmazó *leküldéses* műveletet indít `appsettings.json` el.  A második szakasz azokat a feladatokat sorolja fel, amelyek a művelet elindítása után futnak. A művelet megkeresi a kapcsolódó fájlokat, és frissíti az alkalmazás konfigurációs példányát az adattárban titkosként tárolt kapcsolati sztring használatával.  A GitHubon található titkok használatával kapcsolatos további információkért lásd a [githubról szóló cikket](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) a titkosított titkok létrehozásával és használatával kapcsolatban.
 
 ```json
 on: 
@@ -177,7 +177,7 @@ jobs:
 ## <a name="use-a-dynamic-label-on-sync"></a>Dinamikus felirat használata szinkronizáláskor
 A következő művelet minden egyes szinkronizáláshoz beszúr egy dinamikus címkét, így biztosítva, hogy minden egyes szinkronizálás egyedi módon azonosítható legyen, és lehetővé tegye a kód módosításának hozzárendelését a konfiguráció módosításaira.
 
-A munkafolyamat első szakasza azt *határozza meg,* hogy a művelet a Master ágat tartalmazó *leküldéses* műveletet indítja `appsettings.json` el. *master* A második szakasz egy olyan feladatot futtat, amely egyedi címkét hoz létre a konfigurációs frissítéshez a véglegesítő kivonat alapján. Ekkor a rendszer frissíti az alkalmazás konfigurációs példányát az új értékekkel és a frissítés egyedi címkéjével.
+A munkafolyamat első szakasza azt *határozza meg,* hogy a művelet a fő ágat tartalmazó *leküldéses* műveletet indít `appsettings.json` el.  A második szakasz egy olyan feladatot futtat, amely egyedi címkét hoz létre a konfigurációs frissítéshez a véglegesítő kivonat alapján. Ekkor a rendszer frissíti az alkalmazás konfigurációs példányát az új értékekkel és a frissítés egyedi címkéjével.
 
 ```json
 on: 
@@ -318,6 +318,6 @@ A bemeneti paraméterek a művelet által a Futtatás során használt adatokat 
 | mélység | Nem | A konfigurációs fájl összeolvasztásának maximális mélysége.  A mélységnek pozitív számnak kell lennie.  Az alapértelmezett érték nem rendelkezik maximális mélységgel. |
 | tags | Nem | Megadja a kulcs-érték párokon beállított címkét.  A várt formátum a következő alakzat JSON-objektumának sztringesített formája: {[propertyName: string]: string;} Minden tulajdonságnév-érték címkévé válik. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan automatizálható az alkalmazás konfigurációjának szinkronizálása a GitHub művelettel, és hogyan használható az alkalmazás-konfigurációs példány frissítéseinek automatizálására. A következő [cikkből](./concept-app-configuration-event.md)megtudhatja, hogy az Azure-alkalmazások konfigurációjának hogyan működik a kulcs-érték párok változásaira.

@@ -4,23 +4,22 @@ titleSuffix: Azure App Configuration
 description: Ez az oktatóanyag azt ismerteti, hogyan lehet dinamikusan frissíteni a ASP.NET Core-alkalmazások konfigurációs információit
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 02/24/2019
-ms.author: lcozzens
+ms.date: 09/1/2020
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f98ec384876da1d30952d1c4edc1d00049e44682
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1fd495083f5f9be367dd0f125883b181e3bed27b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076997"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930551"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata egy ASP.NET Core alkalmazásban
 
@@ -34,7 +33,7 @@ Ez az oktatóanyag bemutatja, hogyan valósítható meg a dinamikus konfiguráci
 
 Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual Studio Code](https://code.visualstudio.com/) egy kiváló lehetőség, amely a Windows, MacOS és Linux platformokon érhető el.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Állítsa be úgy az alkalmazást, hogy frissítse a konfigurációját az alkalmazás konfigurációs tárolójában történt változásokra reagálva.
@@ -52,12 +51,12 @@ A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alka
 
 A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció megváltozásakor jelez. Az alkalmazás figyeli a Sentinel-kulcsot a változásokhoz. Ha változást észlel, az összes konfigurációs értéket frissíti. Ez a megközelítés csökkenti az alkalmazás által az alkalmazás konfigurálására irányuló kérések teljes számát, a változások összes kulcsának figyelésével szemben.
 
-1. A Azure Portal válassza a **Configuration Explorer > > kulcs-érték létrehozása**lehetőséget.
-1. A **Key (kulcs**) mezőbe írja be az *TestApp: Settings: Sentinel*értéket. Az **érték**mezőben adja meg az 1 értéket. Hagyja üresen a **címke** és a **tartalom típusát** .
+1. A Azure Portal válassza a **Configuration Explorer > > kulcs-érték létrehozása** lehetőséget.
+1. A **Key (kulcs**) mezőbe írja be az *TestApp: Settings: Sentinel* értéket. Az **érték** mezőben adja meg az 1 értéket. Hagyja üresen a **címke** és a **tartalom típusát** .
 1. Kattintson az **Alkalmaz** gombra.
 
 > [!NOTE]
-> Ha nem használ Sentinel-kulcsot, manuálisan kell regisztrálnia minden megtekinteni kívánt kulcsot.
+> Ha nem használ Sentinel-kulcsot, manuálisan kell regisztrálnia minden megtekinteni kívánt kulcsot.
 
 ## <a name="reload-data-from-app-configuration"></a>Adatok újratöltése az alkalmazás konfigurációjától
 
@@ -161,7 +160,7 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
     ```
     ---
     > [!Tip]
-    > Ha többet szeretne megtudni a konfigurációs értékek olvasásával kapcsolatos beállításokról, tekintse meg a [ASP.net Core a beállítások mintáit](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
+    > Ha többet szeretne megtudni a konfigurációs értékek olvasásával kapcsolatos beállításokról, tekintse meg a [ASP.net Core a beállítások mintáit](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
 
 4. Frissítse a `Configure` metódust, és adja hozzá a `UseAzureAppConfiguration` middleware-t, hogy a frissítéshez regisztrált konfigurációs beállítások frissüljenek, miközben a ASP.net Core webalkalmazás továbbra is fogadja a kéréseket.
 
@@ -221,6 +220,9 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
     ---
     
     A middleware a metódusában megadott frissítési konfigurációt használja az `AddAzureAppConfiguration` `Program.cs` ASP.net Core webalkalmazás által fogadott minden kérelem frissítésének elindításához. Minden kérelem esetében egy frissítési művelet aktiválódik, és az ügyféloldali kódtár ellenőrzi, hogy a regisztrált konfigurációs beállítás gyorsítótárazott értéke lejárt-e. Ha lejárt, frissül.
+
+    > [!NOTE]
+    > A konfiguráció frissítésének biztosításához adja hozzá a middleware-t a kérési folyamatnak megfelelően, hogy az alkalmazásban ne legyen rövid körben átkapcsolva egy másik middleware.
 
 ## <a name="use-the-latest-configuration-data"></a>A legújabb konfigurációs adatértékek használata
 
@@ -327,9 +329,9 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
 
     ![Gyorsindítás alkalmazás helyi indítása](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás** lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
 
-1. Válassza a **Configuration Explorer**lehetőséget, és frissítse a következő kulcsok értékeit:
+1. Válassza a **Configuration Explorer** lehetőséget, és frissítse a következő kulcsok értékeit:
 
     | Kulcs | Érték |
     |---|---|

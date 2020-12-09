@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29db2214ddabeb6df2aa937c4ccd1f9938143969
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fcc482e215e646fec20516f35641bd05398d2f2d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949445"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928715"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure AD B2C egyéni házirendek kezelése a Azure PowerShell
 
@@ -31,7 +31,7 @@ A Azure PowerShell számos parancsmagot biztosít a parancssori és parancsfájl
 
 * [Azure ad B2C bérlő](tutorial-create-tenant.md)és a címtárbeli felhasználó hitelesítő adatai a [B2C IEF házirend-rendszergazdai](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) szerepkörrel
 * A bérlőre feltöltött [Egyéni szabályzatok](custom-policy-get-started.md)
-* [Azure AD PowerShell a Graph **Preview modulhoz**](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+* [Azure AD PowerShell a Graph **Preview modulhoz**](/powershell/azure/active-directory/install-adv2)
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>PowerShell-munkamenet összekötése a B2C-Bérlővel
 

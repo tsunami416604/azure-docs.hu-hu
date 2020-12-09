@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4a71740c487896208a3da7bf35bb39899c56937
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b17706f908613336714bb7daf08fdf3bfd5eaf64
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952063"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928392"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Identity Protection és feltételes hozzáférés Azure AD B2C
 
@@ -60,7 +60,7 @@ Azure AD B2C a feltételes hozzáférési feltételeket a beépített felhaszná
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-A feltételes hozzáférési szabályzatokat a Azure AD B2C Microsoft Graph API-val is kezelheti. Részletekért tekintse meg a [feltételes hozzáférési dokumentációt](../active-directory/conditional-access/overview.md) és a [Microsoft Graph referenciát](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md).
+A feltételes hozzáférési szabályzatokat a Azure AD B2C Microsoft Graph API-val is kezelheti. Részletekért tekintse meg a [feltételes hozzáférési dokumentációt](../active-directory/conditional-access/overview.md) és a [Microsoft Graph referenciát](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Következő lépések
 

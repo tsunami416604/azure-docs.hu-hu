@@ -1,17 +1,17 @@
 ---
 title: Az Azure-alkalmazások konfigurációjának rugalmassága és a vész-helyreállítás
 description: A rugalmasság és a vész-helyreállítás megvalósítása az Azure-alkalmazások konfigurációjával.
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 07/09/2020
+ms.openlocfilehash: 7910e2092259081aade799fc662052e5a1375e25
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002425"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930483"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Rugalmasság és vészhelyreállítás
 
@@ -76,7 +76,7 @@ A Azure Portal az alábbi lépéseket követve elküldheti egy másik konfigurá
 
 1. A megnyíló új panelen adja meg a másodlagos tároló előfizetés, erőforráscsoport és erőforrás nevét, majd kattintson az **alkalmaz** gombra.
 
-1. A felhasználói felület frissül, így kiválaszthatja, hogy milyen konfigurációs adatait szeretné exportálni a másodlagos tárolóba. Meghagyhatja az alapértelmezett időértéket, és a **címkéből** és a **címkéből** is megadhatja ugyanazt az értéket. Kattintson az **Alkalmaz** elemre. Ismételje meg ezt az elsődleges tároló összes címkéjén.
+1. A felhasználói felület frissül, így kiválaszthatja, hogy milyen konfigurációs adatait szeretné exportálni a másodlagos tárolóba. Meghagyhatja az alapértelmezett időértéket, és a **címkéből** és a **címkéből** is megadhatja ugyanazt az értéket. Kattintson az **Alkalmaz** gombra. Ismételje meg ezt az elsődleges tároló összes címkéjén.
 
 1. Ha módosítja a konfigurációt, ismételje meg a fenti lépéseket.
 
@@ -90,6 +90,6 @@ Az exportálási folyamat az Azure CLI használatával is elérhető. A követke
 
 A biztonsági mentési folyamat Azure Functions használatával automatizálható. Az alkalmazás konfigurációjában Azure Event Grid integrációját használja. A beállítás után az alkalmazás konfigurációja közzéteszi az eseményeket, hogy Event Grid a konfigurációs tárolóban lévő kulcs-értékekben végrehajtott módosításokat. Így egy Azure Functions alkalmazás ennek megfelelően megfigyelheti ezeket az eseményeket, és biztonsági másolatot készíthet az adatbiztonsági mentésről. További részletekért tekintse meg az [alkalmazás-konfigurációs tárolók automatikus biztonsági mentését](./howto-backup-config-store.md)ismertető oktatóanyagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan növelhető az alkalmazás a földrajzi rugalmasság eléréséhez az alkalmazás konfigurálásakor. A konfigurációs adatok beágyazási vagy központi telepítési idő alatt is beágyazható az alkalmazás konfigurációjától. További információ: [integrálás CI/CD-folyamattal](./integrate-ci-cd-pipeline.md).

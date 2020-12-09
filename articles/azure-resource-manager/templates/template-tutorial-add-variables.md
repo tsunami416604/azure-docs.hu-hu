@@ -1,21 +1,21 @@
 ---
 title: Oktatóanyag – változó hozzáadása a sablonhoz
-description: Adja hozzá a változókat a Azure Resource Manager-sablonhoz a szintaxis egyszerűsítése érdekében.
+description: Adja hozzá a változókat a Azure Resource Manager-sablonhoz (ARM-sablon) a szintaxis egyszerűsítése érdekében.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 482608172ac9e6e2b9765f236a4b6d655e2455fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d259510d880cbfc60e9ae80b533af6792cc95536
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613152"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930728"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>Oktatóanyag: változók hozzáadása az ARM-sablonhoz
 
-Ebből az oktatóanyagból megtudhatja, hogyan adhat hozzá változót a Azure Resource Manager-(ARM-) sablonhoz. A változók leegyszerűsítik a sablonokat, mivel lehetővé teszi egy kifejezés egyszeri megírását, és az egész sablonban való felhasználását. Az oktatóanyag elvégzése **7 percet** vesz igénybe.
+Ebből az oktatóanyagból megtudhatja, hogyan adhat hozzá változót a Azure Resource Manager-sablonhoz (ARM-sablonhoz). A változók leegyszerűsítik a sablonokat, mivel lehetővé teszi egy kifejezés egyszeri megírását, és az egész sablonban való felhasználását. Az oktatóanyag elvégzése **7 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ A következő példa kiemeli azokat a módosításokat, amelyek segítségével 
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
-Figyelje meg, hogy tartalmaz egy **uniqueStorageName**nevű változót. Ez a változó négy függvényt használ egy karakterlánc-érték létrehozásához.
+Figyelje meg, hogy tartalmaz egy **uniqueStorageName** nevű változót. Ez a változó négy függvényt használ egy karakterlánc-érték létrehozásához.
 
 Már ismeri a [Parameters](template-functions-deployment.md#parameters) függvényt, ezért nem vizsgáljuk meg.
 
@@ -90,7 +90,7 @@ az deployment group create \
 A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+1. A bal oldali menüben válassza az **erőforráscsoportok** lehetőséget.
 1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
 1. Láthatja, hogy a Storage-fiók erőforrása telepítve van. A Storage-fiók **neve és egy** véletlenszerű karakterből álló karakterlánc.
 
@@ -105,7 +105,7 @@ Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőfo
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy olyan változót adott hozzá, amely egyedi nevet hoz létre egy Storage-fiókhoz. A következő oktatóanyagban egy értéket ad vissza a központilag telepített Storage-fiókból.
 

@@ -4,26 +4,26 @@ description: Az egyes erőforrástípusok számára elérhető metrikák listáj
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 10/01/2020
+ms.date: 12/09/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 3e5dd5c83468e867c746393642a1e40ff07763c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 04f6cdae8a7601f94251516cf5c3c1fab07994a6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921500"
+ms.locfileid: "96929106"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák Azure Monitor
 
 > [!NOTE]
-> A lista nagy mértékben automatikusan létrejön a Azure Monitor metrikák REST API. A listán a GitHubon keresztül végrehajtott módosítások figyelmeztetés nélkül is megírhatók. A végleges frissítések végrehajtásával kapcsolatban a cikk szerzője nyújt tájékoztatást.
+> Ez a lista nagyrészt automatikusan jön létre. A listán a GitHubon keresztül végrehajtott módosítások figyelmeztetés nélkül is megírhatók. A végleges frissítések végrehajtásával kapcsolatban a cikk szerzője nyújt tájékoztatást.
 
 A Azure Monitor számos lehetőséget kínál a metrikák használatára, például a portálon való ábrázolásra, a REST API való hozzáférésre, vagy a PowerShell vagy a parancssori felület használatával történő lekérdezésre. 
 
-Ez a cikk a Azure Monitor konszolidált metrikus folyamatával jelenleg elérhető összes platform (azaz automatikusan összegyűjtött) mérőszámok teljes listáját tartalmazza. A lista 2020. március 27-én Utoljára frissítve. Az ezen dátum után módosított vagy hozzáadott mérőszámok nem jelennek meg alább. A metrikák listájának programozott módon történő lekérdezéséhez és eléréséhez használja a [2018-01-01 API-Version](/rest/api/monitor/metricdefinitions). A listán nem szereplő egyéb mérőszámok a portálon vagy a régi API-k használatával is elérhetők.
+Ez a cikk a Azure Monitor konszolidált metrikus folyamatával jelenleg elérhető összes platform (azaz automatikusan összegyűjtött) mérőszámok teljes listáját tartalmazza. A cikk elején található dátum után módosított vagy hozzáadott mérőszámok nem jelennek meg alább. A metrikák listájának programozott módon történő lekérdezéséhez és eléréséhez használja a [2018-01-01 API-Version](/rest/api/monitor/metricdefinitions). A listán nem szereplő egyéb mérőszámok a portálon vagy a régi API-k használatával is elérhetők.
 
-A metrikák az erőforrás-szolgáltatók és az erőforrástípus szerint vannak rendezve. A szolgáltatások listáját és az azokhoz tartozó erőforrás-szolgáltatókat az Azure- [szolgáltatások erőforrás-szolgáltatói](../../azure-resource-manager/management/azure-services-resource-providers.md)című témakörben tekintheti meg. 
+A metrikák az erőforrás-szolgáltatók és az erőforrástípus szerint vannak rendezve. A szolgáltatások, valamint az azokhoz tartozó erőforrás-szolgáltatók és típusok listáját az Azure- [szolgáltatások erőforrás-szolgáltatói](../../azure-resource-manager/management/azure-services-resource-providers.md)című részében tekintheti meg.  
 
 ## <a name="exporting-platform-metrics-to-other-locations"></a>Platform metrikáinak exportálása más helyszínekre
 

@@ -2,17 +2,17 @@
 title: Azure-alkalmazás konfigurálása – gyakori kérdések
 description: Az Azure app Configuration szolgáltatással kapcsolatos gyakori kérdések (GYIK), például a Azure Key Vaulttól való különbségének megismerése.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.author: lcozzens
-ms.openlocfilehash: 5d74b17bdd9c264a983bfdd2e374001dd4a0e2c0
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.author: alkemper
+ms.openlocfilehash: 4e19574e5848d1ee86d13aa02a9cf583b92eff02
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242109"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929565"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure-alkalmazás konfigurálása – gyakori kérdések
 
@@ -86,16 +86,16 @@ Mindkét alkalmazás-konfigurációs szint alapvető funkciókat kínál, beleé
 
 A következő szempontok a rétegek kiválasztására vonatkoznak.
 
-- **Erőforrások/előfizetés** : az erőforrások egyetlen konfigurációs tárolóból állnak. Az egyes előfizetések az ingyenes szinten egyetlen konfigurációs tárolóra korlátozódnak. Az előfizetések korlátlan számú konfigurációs tárolót használhatnak a standard szinten.
-- **Tárterület/erőforrás** : az ingyenes szinten minden konfigurációs tároló 10 MB tárterületre korlátozódik. A standard szinten az egyes konfigurációs tárolók akár 1 GB tárterületet is használhatnak.
-- Kiadási **Előzmények** : az alkalmazás konfigurációja tárolja a kulcsokon végrehajtott összes módosítás előzményeit. Az ingyenes szinten az előzményeket hét napig tároljuk. A standard szinten az előzményeket 30 napig tároljuk.
-- **Kérelmek kvótája** : az ingyenes szintű áruházak napi 1 000 kérelemre korlátozódnak. Ha egy tároló eléri a 1 000-es kérelmeket, a 429-es HTTP-állapotkódot adja vissza az összes kérelemhez az éjféli UTC előtt.
+- **Erőforrások/előfizetés**: az erőforrások egyetlen konfigurációs tárolóból állnak. Az egyes előfizetések az ingyenes szinten egyetlen konfigurációs tárolóra korlátozódnak. Az előfizetések korlátlan számú konfigurációs tárolót használhatnak a standard szinten.
+- **Tárterület/erőforrás**: az ingyenes szinten minden konfigurációs tároló 10 MB tárterületre korlátozódik. A standard szinten az egyes konfigurációs tárolók akár 1 GB tárterületet is használhatnak.
+- Kiadási **Előzmények**: az alkalmazás konfigurációja tárolja a kulcsokon végrehajtott összes módosítás előzményeit. Az ingyenes szinten az előzményeket hét napig tároljuk. A standard szinten az előzményeket 30 napig tároljuk.
+- **Kérelmek kvótája**: az ingyenes szintű áruházak napi 1 000 kérelemre korlátozódnak. Ha egy tároló eléri a 1 000-es kérelmeket, a 429-es HTTP-állapotkódot adja vissza az összes kérelemhez az éjféli UTC előtt.
 
     A standard szintű tárolók óránként 20 000 kérelemre korlátozódnak. A kvóta kimerítése után a 429-as HTTP-állapotkód az óra végéig minden kérelemnél visszaadja.
 
-- **Szolgáltatói szerződés** : a standard szint 99,9%-os rendelkezésre állást biztosít. Az ingyenes szint nem rendelkezik SLA-val.
-- **Biztonsági funkciók** : mindkét réteg alapszintű biztonsági funkciókat tartalmaz, beleértve a Microsoft által felügyelt kulcsokkal való titkosítást, a HMAC vagy Azure Active Directory, az Azure RBAC-támogatását, a felügyelt identitást és a szolgáltatási címkéket. A standard szint fejlettebb biztonsági funkciókat kínál, többek között a privát kapcsolatok támogatását és a titkosítást az ügyfél által felügyelt kulcsokkal.
-- **Költség** : a standard szintű tárolók napi használati díjat számítanak fel. Az első 200 000-kérelmeket naponta felszámítjuk. A napi kiosztást megelőzően a kérések túlterhelését is felszámítjuk. Ingyenes szintű tároló használata díjmentes.
+- **Szolgáltatói szerződés**: a standard szint 99,9%-os rendelkezésre állást biztosít. Az ingyenes szint nem rendelkezik SLA-val.
+- **Biztonsági funkciók**: mindkét réteg alapszintű biztonsági funkciókat tartalmaz, beleértve a Microsoft által felügyelt kulcsokkal való titkosítást, a HMAC vagy Azure Active Directory, az Azure RBAC-támogatását, a felügyelt identitást és a szolgáltatási címkéket. A standard szint fejlettebb biztonsági funkciókat kínál, többek között a privát kapcsolatok támogatását és a titkosítást az ügyfél által felügyelt kulcsokkal.
+- **Költség**: a standard szintű tárolók napi használati díjat számítanak fel. Az első 200 000-kérelmeket naponta felszámítjuk. A napi kiosztást megelőzően a kérések túlterhelését is felszámítjuk. Ingyenes szintű tároló használata díjmentes.
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Frissíthetek áruházat az ingyenes szintről a standard szintre? Visszaválthatok egy áruházat a standard szintről az ingyenes szintre?
 

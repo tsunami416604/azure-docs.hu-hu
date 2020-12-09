@@ -1,15 +1,15 @@
 ---
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
-ms.openlocfilehash: 48bf5d5df3c54e8b2894ad28fa08553d5add0437
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c344d7e1aa1f6d45131295ba9aad1294c5ba548c
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182696"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930711"
 ---
 1. Új alkalmazás-konfigurációs tároló létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com). A Kezdőlap bal felső sarkában válassza az **erőforrás létrehozása** lehetőséget. A **Keresés a piactéren** mezőbe írja be az *alkalmazás konfigurációját* , és válassza az <kbd>ENTER billentyűt</kbd>.
 
@@ -31,6 +31,6 @@ ms.locfileid: "96182696"
 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások érvényesítéséhez.
 
-1. Kattintson a **Létrehozás** gombra. Az üzembe helyezés néhány percet is igénybe vehet.
+1. Válassza a **Létrehozás** lehetőséget. Az üzembe helyezés néhány percet is igénybe vehet.
 
 1. Az üzembe helyezés befejeződése után navigáljon az alkalmazás konfigurációs erőforrásához. Válassza a **Beállítások** > **Hozzáférési kulcsok** lehetőséget. Jegyezze fel az elsődleges írásvédett kulcs-összekapcsolási karakterláncot. Ezt a kapcsolódási karakterláncot később fogja használni az alkalmazás konfigurálásához az Ön által létrehozott alkalmazás-konfigurációs tárolóval való kommunikációhoz.

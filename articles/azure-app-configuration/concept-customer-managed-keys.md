@@ -1,17 +1,17 @@
 ---
 title: Az ügyfél által felügyelt kulcsok használata a konfigurációs adatai titkosításához
 description: A konfigurációs adatai titkosítása az ügyfél által felügyelt kulcsokkal
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/18/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46a1e99a7bc75efa85fcb5eff649c14af5abd17b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87384871"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930500"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Az alkalmazás konfigurációs adatai titkosítása az ügyfél által felügyelt kulcsok használatával
 Az Azure-alkalmazás konfigurációja [titkosítja a bizalmas adatokat a nyugalmi](../security/fundamentals/encryption-atrest.md)állapotban. Az ügyfél által felügyelt kulcsok használata fokozott adatvédelmet biztosít, mivel lehetővé teszi a titkosítási kulcsok kezelését.  A felügyelt kulcs titkosításának használatakor az alkalmazás konfigurációjában található összes bizalmas információ titkosítása egy felhasználó által megadott Azure Key Vault kulccsal történik.  Ez lehetővé teszi a titkosítási kulcs igény szerinti elforgatását.  Emellett lehetővé teszi az Azure-alkalmazások konfigurációjának bizalmas adatokhoz való hozzáférésének visszavonását azáltal, hogy visszavonja az alkalmazás konfigurációs példányának kulcshoz való hozzáférését.

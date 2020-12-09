@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: dcd9ec52992da8037bb498dc09701879c4c94667
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 439714f8fe4a6373f2ffce80e744802dd19b67f0
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572575"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928783"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS-fürt konfigurálása
 
@@ -46,13 +46,13 @@ Regisztrálja a `UseCustomizedUbuntuPreview` szolgáltatást:
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature#az-feature-list) parancs használatával tekintheti meg:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) paranccsal:
+Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider#az-provider-register) paranccsal:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -125,14 +125,14 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature#az-feature-list) parancs használatával tekintheti meg:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) paranccsal:
+Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider#az-provider-register) paranccsal:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -194,13 +194,13 @@ Regisztrálja a `Gen2VMPreview` szolgáltatást:
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature#az-feature-list) parancs használatával tekintheti meg:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) paranccsal:
+Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider#az-provider-register) paranccsal:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -300,7 +300,7 @@ A csomópont-erőforráscsoport használata során ne feledje, hogy a következ�
 - A csomópont erőforráscsoporthoz tartozó felügyelt erőforrások nevének megadása.
 - Módosíthatja vagy törölheti az Azure-ban létrehozott, felügyelt erőforrások címkéit a csomópont-erőforráscsoporton belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan frissítheti a fürtben található [csomópont-lemezképeket](node-image-upgrade.md) .
 - Lásd: [Azure Kubernetes Service-(ak-) fürt frissítése](upgrade-cluster.md) , amelyből megtudhatja, hogyan frissítheti a fürtöt a Kubernetes legújabb verziójára.

@@ -1,19 +1,19 @@
 ---
 title: Folyamatos üzletmenet és vészhelyreállítás
 services: azure-dev-spaces
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.date: 01/28/2019
 ms.topic: conceptual
 description: Ismerje meg, hogyan használható az Azure dev Spaces és az Azure Kubernetes Services az üzletmenet folytonosságának biztosításához és a vész-helyreállítás előkészítéséhez
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 824eb1e65e7da5736080e47509aa163a868d8ec9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77425d294dcea0546259b152b793cec291940c53
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023329"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929599"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Üzletmenet-folytonosság és vész-helyreállítás az Azure dev Spaces szolgáltatásban
 

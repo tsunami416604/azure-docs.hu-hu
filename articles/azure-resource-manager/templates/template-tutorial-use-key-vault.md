@@ -1,21 +1,21 @@
 ---
 title: Azure Key Vault használata a sablonokban
-description: Megtudhatja, hogyan használható az Azure Key Vault biztonságos paraméterértékek megadására a Resource Manager-sablon üzembe helyezése során
+description: Megtudhatja, hogyan használhatók a Azure Key Vault a biztonságos paraméterek értékének átadására Azure Resource Manager sablon (ARM-sablon) üzembe helyezése során.
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119276"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929316"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Oktatóanyag: Azure Key Vault integrálása az ARM-sablon üzembe helyezésével
+# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Oktatóanyag: Az Azure Key Vault integrálása ARM-sablonalapú telepítésbe
 
-Megtudhatja, hogyan kérhet le titkos kulcsokat egy Azure Key vaultból, és hogyan továbbíthatja a titkokat paraméterekként Azure Resource Manager (ARM) sablon telepítésekor. A paraméter értéke soha nem érhető el, mert csak a Key Vault-AZONOSÍTÓra hivatkozik. A Key Vault titkos kulcsát statikus azonosító vagy dinamikus azonosító használatával lehet hivatkozni. Ez az oktatóanyag egy statikus azonosítót használ. A statikus azonosító megközelítésével a kulcstároló a sablon paraméterének fájljában hivatkozik, nem a sablonfájl. További információ mindkét megközelítésről: a [Azure Key Vault használata a biztonságos paraméterek értékének](./key-vault-parameter.md)átadására az üzembe helyezés során.
+Megtudhatja, hogyan kérhet le titkos kulcsokat egy Azure Key vaultból, és hogyan továbbíthatja a titkokat paraméterekként Azure Resource Manager sablon (ARM-sablon) telepítésekor. A paraméter értéke soha nem érhető el, mert csak a Key Vault-AZONOSÍTÓra hivatkozik. A Key Vault titkos kulcsát statikus azonosító vagy dinamikus azonosító használatával lehet hivatkozni. Ez az oktatóanyag egy statikus azonosítót használ. A statikus azonosító megközelítésével a kulcstároló a sablon paraméterének fájljában hivatkozik, nem a sablonfájl. További információ mindkét megközelítésről: a [Azure Key Vault használata a biztonságos paraméterek értékének](./key-vault-parameter.md)átadására az üzembe helyezés során.
 
 Az [erőforrás-telepítési sorrend beállítása](./template-tutorial-create-templates-with-dependent-resources.md) oktatóanyagban hozzon létre egy virtuális GÉPET (VM). Meg kell adnia a virtuális gép rendszergazdájának felhasználónevét és jelszavát. A jelszó megadása helyett előre tárolhatja a jelszót egy Azure Key vaultban, majd testreszabhatja a sablont a Key vaultból a telepítés során való lekéréséhez.
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio CodeResource Manager Tools bővítménnyel. Tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
+* Visual Studio CodeResource Manager Tools bővítménnyel. Lásd [a gyors útmutató: ARM-sablonok létrehozása a Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 * A biztonság növeléséhez használjon generált jelszót a virtuális gép rendszergazdai fiókjához. Íme egy példa a jelszó létrehozására:
 
     ```console
@@ -55,7 +55,7 @@ Ebben a szakaszban létrehoz egy kulcstartót, és hozzáad egy titkos kulcsot a
 > [!NOTE]
 > Ha a virtuálisgép-sablont telepítő felhasználó nem a kulcstartó tulajdonosa vagy közreműködője, akkor a tulajdonosnak vagy a közreműködőnek hozzáférést kell adnia a Microsoft. kulcstartó/tárolók/ *üzembe helyezés/művelet* engedélyhez a kulcstartóhoz. További információ: a [Azure Key Vault használata biztonságos paraméterek értékének](./key-vault-parameter.md)átadására az üzembe helyezés során.
 
-A következő Azure PowerShell parancsfájl futtatásához válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablaktáblára, majd válassza a **Beillesztés**lehetőséget.
+A következő Azure PowerShell parancsfájl futtatásához válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablaktáblára, majd válassza a **Beillesztés** lehetőséget.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -79,7 +79,7 @@ Write-Host "Press [ENTER] to continue ..."
 > * A titok alapértelmezett neve **vmAdminPassword**. A sablon hardcoded.
 > * Ha engedélyezni szeretné a sablon számára a titkos kulcs lekérését, engedélyeznie kell egy hozzáférési szabályzatot, amelynek neve **: hozzáférés engedélyezése Azure Resource Manager** a Key vaulthoz való központi telepítéshez. Ez a szabályzat engedélyezve van a sablonban. A hozzáférési szabályzattal kapcsolatos további információkért lásd: [kulcstartók és titkos kulcsok üzembe helyezése](./key-vault-parameter.md#deploy-key-vaults-and-secrets).
 
-A sablon egy *keyVaultId*nevű kimeneti értékkel rendelkezik. Ezt az azonosítót és a titkos nevet is használni fogja a titkos érték lekéréséhez az oktatóanyag későbbi részében. Az erőforrás-azonosító formátuma:
+A sablon egy *keyVaultId* nevű kimeneti értékkel rendelkezik. Ezt az azonosítót és a titkos nevet is használni fogja a titkos érték lekéréséhez az oktatóanyag későbbi részében. Az erőforrás-azonosító formátuma:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -87,7 +87,7 @@ A sablon egy *keyVaultId*nevű kimeneti értékkel rendelkezik. Ezt az azonosít
 
 Az azonosító másolásakor és beillesztésekor előfordulhat, hogy több sorba van bontva. Egyesítse a sorokat, és vágja fel a felesleges szóközöket.
 
-A központi telepítés ellenőrzéséhez futtassa a következő PowerShell-parancsot ugyanazon a rendszerhéj-ablaktáblán a titkos kód egyszerű szövegként való lekéréséhez. A parancs csak ugyanabban a rendszerhéj-munkamenetben működik, mert a *$keyVaultName*változót használja, amely az előző PowerShell-parancsfájlban van meghatározva.
+A központi telepítés ellenőrzéséhez futtassa a következő PowerShell-parancsot ugyanazon a rendszerhéj-ablaktáblán a titkos kód egyszerű szövegként való lekéréséhez. A parancs csak ugyanabban a rendszerhéj-munkamenetben működik, mert a *$keyVaultName* változót használja, amely az előző PowerShell-parancsfájlban van meghatározva.
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
@@ -99,7 +99,7 @@ Most előkészített egy kulcstartót és egy titkos kulcsot. A következő rés
 
 Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. Az oktatóanyagban használt sablon [egy egyszerű Windows-alapú virtuális gép üzembe helyezését](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)hívja meg.
 
-1. A Visual Studio Code-ban válassza a **fájl**  >  **megnyitott**fájl elemet.
+1. A Visual Studio Code-ban válassza a **fájl**  >  **megnyitott** fájl elemet.
 
 1. Illessze be a következő URL-címet a **fájlnév** mezőbe:
 
@@ -119,7 +119,7 @@ Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon
 
    A Testreszabás előtt hasznos lehet a sablon alapvető ismerete.
 
-1. Válassza a **fájl**  >  **Mentés másként**lehetőséget, majd mentse a fájl egy másolatát a helyi számítógépre, amelynek a neve *azuredeploy.js*.
+1. Válassza a **fájl**  >  **Mentés másként** lehetőséget, majd mentse a fájl egy másolatát a helyi számítógépre, amelynek a neve *azuredeploy.js*.
 
 1. Ismételje meg a 1-3 lépést a következő URL-cím megnyitásához, majd mentse a fájlt *azuredeploy.parameters.jsként*.
 
@@ -131,7 +131,7 @@ Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon
 
 A statikus azonosító módszer használatával semmilyen módosítást nem kell végeznie a sablon fájljában. A titkos érték beolvasása a sablon-paraméter fájljának konfigurálásával végezhető el.
 
-1. A Visual Studio Code-ban nyissa meg * aazuredeploy.parameters.json* , ha még nincs megnyitva.
+1. A Visual Studio Code-ban nyissa meg *aazuredeploy.parameters.json* , ha még nincs megnyitva.
 1. A paraméter frissítése a következőre `adminPassword` :
 
     ```json
@@ -192,9 +192,9 @@ A virtuális gép sikeres üzembe helyezését követően tesztelje a bejelentke
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
-1. Válassza az **erőforráscsoportok**  >  **\<*YourResourceGroupName*>**  >  **simpleWinVM**elemet.
+1. Válassza az **erőforráscsoportok**  >  **\<*YourResourceGroupName*>**  >  **simpleWinVM** elemet.
 1. Kattintson a fent található **kapcsolat** lehetőségre.
-1. Válassza az **RDP-fájl letöltése**lehetőséget, majd kövesse az utasításokat a virtuális gépre való bejelentkezéshez a Key vaultban tárolt jelszó használatával.
+1. Válassza az **RDP-fájl letöltése** lehetőséget, majd kövesse az utasításokat a virtuális gépre való bejelentkezéshez a Key vaultban tárolt jelszó használatával.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -209,7 +209,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy titkos kulcsot adott vissza az Azure Key vaultból. Ezután használta a titkot a sablon üzembe helyezésében. Ha szeretné megtudni, hogyan használhatja a virtuálisgép-bővítményeket az üzembe helyezés utáni feladatok végrehajtásához, olvassa el a következő témakört:
 

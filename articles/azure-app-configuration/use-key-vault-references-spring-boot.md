@@ -3,23 +3,22 @@ title: Oktatóanyag az Azure-alkalmazások konfigurációjának használatára K
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure app Configuration Key Vault hivatkozásait egy Java Spring boot-alkalmazásból
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 12/16/2019
-ms.author: lcozzens
+ms.date: 08/11/2020
+ms.author: alkemper
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 921c3b8afdb6b196e001cdb7c190529e6238c1f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ede8203078a3d496975e208622ef61018997cf8d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014261"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929215"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Oktatóanyag: Key Vault-referenciák használata Java Spring-alkalmazásokban
 
@@ -35,7 +34,7 @@ Ez az oktatóanyag bemutatja, hogyan implementálhatja Key Vault hivatkozásait 
 
 Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual Studio Code](https://code.visualstudio.com/) például egy platformfüggetlen Kódszerkesztő, amely a Windows, MacOS és Linux operációs rendszerekhez érhető el.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy olyan alkalmazás-konfigurációs kulcsot, amely Key Vaultban tárolt értékre hivatkozik.
@@ -61,7 +60,7 @@ Az oktatóanyag a következőket ismerteti:
     * A **Key Vault neve mezőben** egyedi nevet kell megadni. Ebben az oktatóanyagban írja be a **contoso-vault2**.
     * A **régió** legördülő listából válassza ki a kívánt helyet.
 1. Hagyja meg a többi **create Key Vault** -beállítást az alapértelmezett értékekkel.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Ezen a ponton az Azure-fiókja az egyetlen jogosult az új tároló elérésére.
 
@@ -78,7 +77,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     * **Név**: írja be az **üzenetet**.
     * **Érték**: adja meg **a Hello értéket Key Vault**.
 1. Hagyja a másik **titkos** tulajdonságot az alapértelmezett értékekkel.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Key Vault-hivatkozás hozzáadása az alkalmazás konfigurációjához
 
@@ -264,7 +263,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy alkalmazás-konfigurációs kulcsot, amely a Key Vaultban tárolt értékre hivatkozik. Ha szeretné megtudni, hogyan használhatja a Feature Flags szolgáltatást a Java Spring-alkalmazásban, folytassa a következő oktatóanyaggal.
 

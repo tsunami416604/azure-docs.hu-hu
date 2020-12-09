@@ -3,16 +3,16 @@ title: A funkciók lépcsőzetes bevezetésének engedélyezése a megcélzott c
 titleSuffix: Azure App Configuration
 description: Megtudhatja, hogyan engedélyezheti a funkciók lépcsőzetes bevezetését a célközönségek számára
 ms.service: azure-app-configuration
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.topic: conceptual
-ms.date: 8/7/2020
-ms.openlocfilehash: d1574b8a3f8cda3341c0aaf355911e2e93a7bcab
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.date: 11/20/2020
+ms.openlocfilehash: c415eaeab2edd0a1b324bba4266266201cb50cbf
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557708"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929684"
 ---
 # <a name="enable-staged-rollout-of-features-for-targeted-audiences"></a>A funkciók lépcsőzetes bevezetésének engedélyezése a megcélzott célközönségek számára
 
@@ -91,7 +91,7 @@ Ezen a ponton a szolgáltatás jelzője segítségével engedélyezheti vagy let
     }
     ```
 
-1. A *Startup.cs* -ben adjon hozzá egy hivatkozást a *Microsoft. FeatureManagement. FeatureFilters* névtérhez:
+1. A *Startup.cs*-ben adjon hozzá egy hivatkozást a *Microsoft. FeatureManagement. FeatureFilters* névtérhez:
 
     ```csharp
     using Microsoft.FeatureManagement.FeatureFilters;
@@ -142,11 +142,11 @@ A teljes *ConfigureServices* metódus így fog kinézni:
 
 1. Válassza a **célzás** választógombot.
 
-1. Válassza ki a következő beállításokat:
+1. Válassza az alábbi lehetőségeket:
 
-    - **Alapértelmezett százalék** : 0
-    - **Csoportok** : adja meg a _contoso.com_ **nevét** és a _50_ **százalékos arányát**
-    - **Felhasználók** : `test@contoso.com`
+    - **Alapértelmezett százalék**: 0
+    - **Csoportok**: adja meg a _contoso.com_ **nevét** és a _50_ **százalékos arányát**
+    - **Felhasználók**: `test@contoso.com`
 
     A funkció szűrő képernyője a következőképpen fog kinézni:
 
@@ -156,7 +156,7 @@ A teljes *ConfigureServices* metódus így fog kinézni:
     Ezek a beállítások a következő viselkedést eredményezik:
 
     - A szolgáltatás jelzője mindig engedélyezve van a felhasználó számára `test@contoso.com` , mert `test@contoso.com` a a _felhasználók_ szakaszban szerepel.
-    - A szolgáltatás jelzője engedélyezve van a _contoso.com_ csoport többi felhasználójának 50%-ában, mert a _contoso.com_ a _groups (csoportok_ ) szakaszban szerepel a _50_ -es _százalékos arányban_ .
+    - A szolgáltatás jelzője engedélyezve van a _contoso.com_ csoport többi felhasználójának 50%-ában, mert a _contoso.com_ a _groups (csoportok_ ) szakaszban szerepel a _50_-es _százalékos arányban_ .
     - A szolgáltatás mindig le van tiltva az összes többi felhasználónál, mert az _alapértelmezett százalékos_ érték _0_.
 
 1. A beállítások mentéséhez és a **Feature Manager** képernyőhöz való visszatéréshez kattintson az **alkalmaz** gombra.

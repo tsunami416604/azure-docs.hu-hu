@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 819654ef88584cb91d6032e46256258aaed524fd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ea812df825288eae3822cce01b24ebc82534c541
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500308"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928817"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú virtuális gépek méretei
 
@@ -59,7 +59,7 @@ Alapterv: 270%
 
 ![Óránkénti forgalmi adatok diagramja](./media/b-series-burstable/office-workload.png)
 
-| Használati példa | Idő | CPU-használat (%) | Halmozott kreditek<sup>1</sup> | Rendelkezésre álló kreditek |
+| Forgatókönyv | Idő | CPU-használat (%) | Halmozott kreditek<sup>1</sup> | Rendelkezésre álló kreditek |
 | --- | --- | --- | --- | --- |
 | B16ms üzembe helyezése | Üzembe helyezés | Üzembe helyezés  | 480 (kezdeti kreditek) | 480 |
 | Nincs forgalom | 0:00 | 0 | 162 | 642 |
@@ -132,7 +132,7 @@ Válasz **: igen**, az összes B sorozatú méret támogatja Premium Storage ada
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>K: Miért van a fennmaradó kreditem 0-ra az újbóli üzembe helyezés vagy a Leállítás/indítás után?
 
-**A** : Ha egy virtuális gép "REDPLOYED", és a virtuális gép egy másik csomópontra kerül, a halmozott kredit elvész. Ha a virtuális gép le van állítva/elindult, de továbbra is ugyanazon a csomóponton marad, a virtuális gép megőrzi a halmozott kreditet. Ha a virtuális gép egy csomóponton kezdi meg a friss állapotot, a kezdeti jóváírást kap, Standard_B8ms 240.
+**A** : Ha egy virtuális gépet újra üzembe helyeznek, és a virtuális gép egy másik csomópontra kerül, a halmozott kredit elvész. Ha a virtuális gép le van állítva/elindult, de továbbra is ugyanazon a csomóponton marad, a virtuális gép megőrzi a halmozott kreditet. Ha a virtuális gép egy csomóponton kezdi meg a friss állapotot, a kezdeti jóváírást kap, Standard_B8ms 240.
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>K: mi történik, ha nem támogatott operációsrendszer-lemezképet telepítek a B1ls-on?
 
@@ -151,6 +151,6 @@ Válasz **: igen**, az összes B sorozatú méret támogatja Premium Storage ada
 
 További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

@@ -1,17 +1,17 @@
 ---
 title: Az Azure app Configuration kulcs-érték tárolójának ismertetése
 description: A kulcs-érték tároló ismertetése az Azure-alkalmazás konfigurációjában, amely kulcs-értékként tárolja a konfigurációs adatait. A Key-Values az Alkalmazásbeállítások ábrázolása.
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: b1998532c3d9e4272d91280d57d9ea2f6e7a262c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 08/04/2020
+ms.openlocfilehash: ad9e96433a7ee72476ae2251c684d17ec7a6d1ce
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88586392"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930245"
 ---
 # <a name="keys-and-values"></a>Kulcsok és értékek
 
@@ -28,7 +28,7 @@ A kulcsok azonosítóként szolgálnak a kulcs-értékekhez, és a megfelelő é
     AppName:Service2:ApiEndpoint
 ```
 
-A konfigurációs adatok alkalmazás-keretrendszereken belüli használata bizonyos elnevezési sémákat határozhat meg a kulcs-értékekhez. A Java Spring Cloud Framework például olyan erőforrásokat határoz meg, `Environment` amelyek a Spring Application beállításait adják meg.  Ezek az *alkalmazás nevét* és *profilját*tartalmazó változók paraméterei. A tavaszi felhőhöz kapcsolódó konfigurációs adatok kulcsai általában a két elem elválasztó karakterrel kezdődnek.
+A konfigurációs adatok alkalmazás-keretrendszereken belüli használata bizonyos elnevezési sémákat határozhat meg a kulcs-értékekhez. A Java Spring Cloud Framework például olyan erőforrásokat határoz meg, `Environment` amelyek a Spring Application beállításait adják meg.  Ezek az *alkalmazás nevét* és *profilját* tartalmazó változók paraméterei. A tavaszi felhőhöz kapcsolódó konfigurációs adatok kulcsai általában a két elem elválasztó karakterrel kezdődnek.
 
 Az alkalmazás konfigurációjában tárolt kulcsok kis-és nagybetűket megkülönböztető, Unicode-alapú karakterláncok. Az *App1* és a *App1* kulcsok eltérnek az alkalmazás konfigurációs tárolójában. Ne feledje, hogy ha a konfigurációs beállításokat egy alkalmazáson belül használja, mert egyes keretrendszerek kis-és nagybetűk nélkül kezelik a konfigurációs kulcsokat. A kulcsok megkülönböztetésére nem ajánlott a Case használata.
 
@@ -72,7 +72,7 @@ Minden kulcs-érték egyedileg azonosítható a kulcsa és a címkéje, amely le
 | `key` nincs megadva vagy `key=*` | Az összes kulcs egyezése |
 | `key=abc` | Pontosan megfelel az **ABC** -kulcs nevének |
 | `key=abc*` | Az **ABC** -vel kezdődő kulcsok neveinek felel meg |
-| `key=abc,xyz` | Az **ABC** vagy az **XYZ**kulcsnévnek felel meg. Legfeljebb öt CSV |
+| `key=abc,xyz` | Az **ABC** vagy az **XYZ** kulcsnévnek felel meg. Legfeljebb öt CSV |
 
 A következő címke mintákat is tartalmazhatja:
 

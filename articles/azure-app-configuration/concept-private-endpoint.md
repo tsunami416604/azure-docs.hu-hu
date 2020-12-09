@@ -2,17 +2,17 @@
 title: Privát végpontok használata az Azure app Configuration szolgáltatáshoz
 description: Az alkalmazás konfigurációs tárolójának védelme privát végpontok használatával
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 3/12/2020
-ms.author: lcozzens
-ms.openlocfilehash: a29c8c02093f47807ec71ffcc01e26514976ce79
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 07/15/2020
+ms.openlocfilehash: 6cadadfb3623d05dd3ae3851acd5eaca13860023
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071710"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929843"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Privát végpontok használata az Azure app Configuration szolgáltatáshoz
 
@@ -27,7 +27,7 @@ Az alkalmazás konfigurációs tárolójához saját végpontok használata lehe
 
 A privát végpontok egy speciális hálózati adapterek egy Azure-szolgáltatáshoz a [Virtual Networkban](../virtual-network/virtual-networks-overview.md) (VNet). Amikor létrehoz egy privát végpontot az alkalmazás konfigurációs tárolójához, biztonságos kapcsolatot biztosít a VNet és a konfigurációs tároló ügyfelei között. A magánhálózati végpont IP-címet kap a VNet IP-címének tartományához. A magánhálózati végpont és a konfigurációs tároló közötti kapcsolat biztonságos privát hivatkozást használ.
 
-A VNet lévő alkalmazások a privát végponton keresztül csatlakozhatnak a konfigurációs tárolóhoz **ugyanazon kapcsolati karakterláncok és engedélyezési mechanizmusok használatával, amelyeket egyébként használni**fognak. A magánhálózati végpontok az alkalmazás-konfigurációs tároló által támogatott összes protokollal használhatók.
+A VNet lévő alkalmazások a privát végponton keresztül csatlakozhatnak a konfigurációs tárolóhoz **ugyanazon kapcsolati karakterláncok és engedélyezési mechanizmusok használatával, amelyeket egyébként használni** fognak. A magánhálózati végpontok az alkalmazás-konfigurációs tároló által támogatott összes protokollal használhatók.
 
 Noha az alkalmazás konfigurációja nem támogatja a szolgáltatási végpontokat, a magánhálózati végpontok olyan alhálózatokban hozhatók létre, amelyek [szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md)használnak. Az alhálózatban lévő ügyfelek biztonságosan kapcsolódhatnak az alkalmazás konfigurációs tárolójához a privát végpont használatával, miközben a szolgáltatás-végpontokat használják mások eléréséhez.  
 
@@ -41,7 +41,7 @@ Privát végpont létrehozásakor meg kell adnia azt az alkalmazás-konfiguráci
 
 ### <a name="connecting-to-private-endpoints"></a>Csatlakozás privát végpontokhoz
 
-Az Azure DNS-feloldásra támaszkodik, hogy a VNet és a konfigurációs tároló közötti kapcsolatokat egy privát kapcsolaton keresztül irányítsa. A Azure Portal található kapcsolati karakterláncok gyorsan megtalálhatók az alkalmazás konfigurációs tárolójának kiválasztásával, majd a **Beállítások**  >  **hozzáférési kulcsok lehetőség**kiválasztásával.  
+Az Azure DNS-feloldásra támaszkodik, hogy a VNet és a konfigurációs tároló közötti kapcsolatokat egy privát kapcsolaton keresztül irányítsa. A Azure Portal található kapcsolati karakterláncok gyorsan megtalálhatók az alkalmazás konfigurációs tárolójának kiválasztásával, majd a **Beállítások**  >  **hozzáférési kulcsok lehetőség** kiválasztásával.  
 
 > [!IMPORTANT]
 > Ugyanazzal a kapcsolati karakterlánccal csatlakozhat az alkalmazás konfigurációs tárolójához privát végpontok használatával, ahogyan azt egy nyilvános végponthoz kívánja használni. Ne kapcsolódjon az áruházhoz az `privatelink` altartomány URL-címének használatával.

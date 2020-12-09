@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: a8cd6386ed6004935b0a1e45a53c01668166c0e4
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1b3ab569666ea413ba36da0dc00f6c37336c4443
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902255"
+ms.locfileid: "96931303"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Adatok másolása REST-végpontra a és a rendszerből a Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -295,7 +295,7 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 
 ### <a name="rest-as-sink"></a>REST as fogadó
 
-A másolási tevékenység fogadója szakasz a következő **sink** tulajdonságokat támogatja:
+A másolási tevékenység fogadója szakasz a következő  tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
@@ -303,12 +303,19 @@ A másolási tevékenység fogadója szakasz a következő **sink** tulajdonság
 | requestMethod | A HTTP-metódus. Az engedélyezett értékek: **post** (alapértelmezett), **put** és **patch**. | Nem |
 | additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
 | httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem az adatírás időkorlátja. Az alapértelmezett érték a **00:01:40**.  | Nem |
-| requestInterval | A milisecond különböző kérései közötti időközi idő. A kérelem intervallumának értékének egy [10, 60000] közötti számnak kell lennie. |  Nem |
+| requestInterval | A különböző kérelmek közötti időközi idő ezredmásodpercben. A kérelem intervallumának értékének egy [10, 60000] közötti számnak kell lennie. |  Nem |
 | httpCompressionType | A HTTP-tömörítési típus, amelyet az adatok optimális tömörítési szinttel történő küldésekor kell használni. Az engedélyezett értékek a **none** és a **gzip**. | Nem |
 | writeBatchSize | A REST-gyűjtőbe írandó rekordok száma kötegben. Az alapértelmezett érték a 10000. | Nem |
 
->[!NOTE]
->A REST-összekötő mint fogadó együttműködik a JSON-t elfogadó REST-végpontokkal. Az adatküldés csak a JSON-ban történik.
+A REST-összekötő mint fogadó együttműködik a JSON-t elfogadó REST API-kkal. Az adatküldés a JSON-ban a következő mintával történik. Szükség esetén a másolási tevékenység [sémájának leképezésével](copy-activity-schema-and-type-mapping.md#schema-mapping) átalakíthatja a forrásadatokat úgy, hogy azok megfeleljenek a REST API által várt adattartalomnak.
+
+```json
+[
+    { <data object> },
+    { <data object> },
+    ...
+]
+```
 
 **Példa**
 
@@ -348,7 +355,7 @@ A másolási tevékenység fogadója szakasz a következő **sink** tulajdonság
 
 ## <a name="pagination-support"></a>Tördelési támogatás
 
-A REST API általában egy ésszerű számú kérelemre korlátozza a válasz adattartalom-méretét. míg nagy mennyiségű adattal tér vissza, az eredmény több oldalra van bontva, és a hívóknak egymást követő kéréseket kell küldeniük az eredmény következő oldalának beolvasásához. Az egyik oldalra vonatkozó kérelem általában dinamikus, és az előző oldal válaszában visszaadott információkból áll.
+A REST API-k adatainak másolásakor a REST API egy ésszerű számú kérelemre korlátozza az egyes kérések válaszának hasznos méretét. míg nagy mennyiségű adattal tér vissza, az eredmény több oldalra van bontva, és a hívóknak egymást követő kéréseket kell küldeniük az eredmény következő oldalának beolvasásához. Az egyik oldalra vonatkozó kérelem általában dinamikus, és az előző oldal válaszában visszaadott információkból áll.
 
 Ez az általános REST-összekötő a következő tördelési mintákat támogatja: 
 

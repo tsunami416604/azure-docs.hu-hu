@@ -5,12 +5,12 @@ services: automation
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: e8fc2a840ce019282625f286a6d54b132a1806c8
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751257"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929276"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Az Update Management hibáinak elhárítása
 
@@ -19,7 +19,7 @@ Ez a cikk azokat a problémákat ismerteti, amelyekkel a Update Management funkc
 >[!NOTE]
 >Ha a Update Management Windows rendszerű gépen való telepítésekor problémákba lép, nyissa meg a Windows Eseménynaplót, és ellenőrizze az **Operations Manager** eseménynaplót a helyi számítógép **alkalmazás-és szolgáltatások naplói** területén. Keresse meg a 4502-as AZONOSÍTÓJÚ eseményt és a benne található esemény részleteit `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
 
-## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a>Forgatókönyv: a függőben lévő és a telepített Linux-frissítések nem változnak
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a><a name="updates-linux-installed-different"></a>Forgatókönyv: a függőben lévő és a telepített Linux-frissítések nem változnak
 
 ### <a name="issue"></a>Probléma
 
@@ -628,7 +628,7 @@ Ha Linuxon dolgozik, a frissítések besorolás szerinti („kritikus és bizton
 
 A KB2267602 a [Windows Defender definíciófrissítése](https://www.microsoft.com/wdsi/definitions). Naponta frissül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz.
 

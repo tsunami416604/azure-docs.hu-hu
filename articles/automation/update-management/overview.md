@@ -3,16 +3,16 @@ title: Azure Automation Update Management áttekintése
 description: Ez a cikk áttekintést nyújt a Windows és Linux rendszerű gépek frissítéseinek megvalósítására szolgáló Update Management szolgáltatásról.
 services: automation
 ms.subservice: update-management
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327491"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928426"
 ---
-# <a name="update-management-overview"></a>A frissítéskezelés áttekintése
+# <a name="update-management-overview"></a>Az Update Management áttekintése
 
 Az Azure-ban, a helyszíni környezetekben és más felhőalapú környezetekben lévő Windows-és Linux-alapú virtuális gépek operációsrendszer-frissítéseinek kezeléséhez Azure Automation Update Management is használhatja. Gyorsan felbecsülheti az összes ügynökön elérhető frissítések állapotát, és kezelheti a kiszolgálók szükséges frissítéseinek telepítésének folyamatát.
 
@@ -224,7 +224,7 @@ A következő táblázat a Linux-frissítések támogatott besorolásait határo
 >
 > a Linux-frissítések besorolása nem történik meg, és a **többi frissítés** kategóriába tartoznak. A Update Management a támogatott disztribúciók által közzétett, kifejezetten a kiadott [ovális](https://oval.mitre.org/) (biztonsági sebezhetőségi és értékelési nyelvi) fájlokat használja. Mivel az Internet-hozzáférés ezen országos felhőktől korlátozódik, Update Management nem fér hozzá és nem használhatja ezeket a fájlokat.
 
-A Linux rendszerben a Update Management a Felhőbeli adatgazdagítás miatt kiértékelheti a kritikus frissítések és a biztonsági frissítések közötti különbséget a felhőben. A javításhoz a Update Management a gépen elérhető besorolási értékekre támaszkodik. A többi disztribúciótól eltérően a CentOS nem rendelkezik ezekkel az információkkal az RTM verziójában. Ha olyan CentOS-számítógépekkel rendelkezik, amelyek a következő parancs biztonsági értékének visszaadására vannak konfigurálva, a Update Management a besorolások alapján javíthatja a javítást.
+A Linux rendszerben a Update Management a Felhőbeli adatgazdagítás miatt kiértékelheti a kritikus **frissítések és a** Felhőbeli biztonsági frissítések közötti különbséget. **Others** A javításhoz a Update Management a gépen elérhető besorolási értékekre támaszkodik. A többi disztribúciótól eltérően a CentOS nem rendelkezik ezekkel az információkkal az RTM verziójában. Ha olyan CentOS-számítógépekkel rendelkezik, amelyek a következő parancs biztonsági értékének visszaadására vannak konfigurálva, a Update Management a besorolások alapján javíthatja a javítást.
 
 ```bash
 sudo yum -q --security check-update
@@ -233,6 +233,10 @@ sudo yum -q --security check-update
 Jelenleg nem támogatott a natív besorolás engedélyezése – az adatelérhetőség a CentOS-ben. Jelenleg korlátozott támogatást biztosít azon ügyfelek számára, akik saját maguk engedélyezték ezt a szolgáltatást.
 
 A Red Hat Enterprise 6-os verziójának frissítéseinek besorolásához telepítenie kell a yum-Security beépülő modult. Red Hat Enterprise Linux 7-én a beépülő modul már maga is a yum része, és semmit nem kell telepítenie. További információkért lásd a Red Hat [Tudásbázis következő cikkét](https://access.redhat.com/solutions/10021).
+
+Ha egy Linux rendszerű gépen futtat egy frissítést, az például úgy van konfigurálva, hogy csak a **biztonsági** besorolásnak megfelelő frissítéseket telepítse, a telepített frissítések ettől eltérőek lehetnek, vagy a frissítések egy részhalmaza a besorolásnak. Ha a linuxos gépen függőben lévő operációsrendszer-frissítések értékelését végzi, a rendszer a Linux-disztribúciós gyártó által biztosított [biztonsági réseket és Assessment Language](https://oval.mitre.org/) (ovális) fájlokat használja Update Management besorolásra.
+
+A kategorizálás a Linux-frissítések **biztonsági** vagy **egyéb** , az ovális fájlokon alapuló frissítéseihez készült, beleértve a biztonsági problémákkal vagy biztonsági résekkal foglalkozó frissítéseket is. A frissítési ütemterv futtatásakor azonban a megfelelő csomagkezelő, például a YUM, az APT vagy a ZYPPER használatával hajtja végre a telepítést a Linux gépen. A Linux-disztribúcióhoz tartozó csomagkezelő rendelkezhet egy másik módszerrel a frissítések besorolásához, ahol az eredmények eltérhetnek az OVÁLIS fájlokból beszerzett Update Management alapján. A számítógép kézi ellenőrzéséhez és a csomagkezelő által érintett frissítések megismeréséhez tekintse meg a [Linux-frissítések központi telepítésének hibáit](../troubleshoot/update-management.md#updates-linux-installed-different)ismertető témakört.
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>Update Management integrálása Configuration Manager
 
@@ -259,7 +263,7 @@ Az alábbi módokon engedélyezheti Update Management és kiválaszthatja a fel�
 > [!NOTE]
 > A Update Management Log Analytics munkaterület összekapcsolását igényli az Automation-fiókhoz. A támogatott régiók végleges listáját az [Azure Workspace-hozzárendelések](../how-to/region-mappings.md)című témakörben tekintheti meg. A régió-hozzárendelések nem befolyásolják a virtuális gépek az Automation-fióktól eltérő régióban való felügyeletének képességét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Update Management használatáról a [virtuális gépek frissítéseinek kezelése](manage-updates-for-vm.md)című témakörben olvashat bővebben.
 

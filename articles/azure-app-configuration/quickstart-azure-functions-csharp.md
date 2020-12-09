@@ -2,18 +2,18 @@
 title: Gyors útmutató az Azure-alkalmazások konfigurálásához a Azure Functionskal | Microsoft Docs
 description: Ebben a rövid útmutatóban egy Azure Functions alkalmazást hoz végre az Azure app Configuration és a C# használatával. Hozzon létre és kapcsolódjon egy alkalmazás-konfigurációs tárolóhoz. A függvény helyi tesztelése.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: 24620351cdd831ec5079e1f37726b2aa65339205
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: 4197891949062123042736e578cfbcc5def4e1f9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075858"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930789"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Gyors útmutató: Azure Functions-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -45,7 +45,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet csomagot a projekthez. Ha nem találja, jelölje be az **előzetes verzió belefoglalása** jelölőnégyzetet.
+1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet csomagot a projekthez. Ha nem találja, jelölje be az **előzetes verzió belefoglalása** jelölőnégyzetet.
 
 2. Nyissa meg a *Function1.cs*, és adja hozzá a .net Core konfiguráció és az alkalmazás konfigurációs szolgáltatójának névtereit.
 
@@ -86,7 +86,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 ## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
 
-1. Állítson be egy **ConnectionString**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. Ha a Windows-parancssort használja, futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
+1. Állítson be egy **ConnectionString** nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. Ha a Windows-parancssort használja, futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
 
     ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"

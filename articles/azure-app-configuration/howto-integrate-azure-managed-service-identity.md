@@ -2,18 +2,18 @@
 title: Felügyelt identitások használata az App Configuration eléréséhez
 titleSuffix: Azure App Configuration
 description: Hitelesítés az Azure-alkalmazások konfigurációjában a felügyelt identitások használatával
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: f2d8c6e94638c01fb21e070a756c0c97c330fb26
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671598"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929752"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Felügyelt identitások használata az App Configuration eléréséhez
 
@@ -22,6 +22,9 @@ Azure Active Directory [felügyelt identitások](../active-directory/managed-ide
 Az Azure app Configuration és a .NET Core, a .NET Framework és a Java Spring-ügyfél kódtárai felügyelt identitás-támogatással rendelkeznek. Habár nem szükséges a használatához, a felügyelt identitás szükségtelenné teszi a titkos kulcsokat tartalmazó hozzáférési token használatát. A kód csak a szolgáltatási végpont használatával férhet hozzá az alkalmazás konfigurációs tárolójához. Ezt az URL-címet közvetlenül a kódban ágyazhatja be, és nem teheti közzé a titkos kódot.
 
 Ez a cikk bemutatja, hogyan veheti igénybe a felügyelt identitást az alkalmazások konfigurációjának eléréséhez. A szolgáltatás a gyors útmutatókban bemutatott webalkalmazásra épül. A folytatás előtt  [hozzon létre egy ASP.net Core alkalmazást az alkalmazás konfigurálásával](./quickstart-aspnet-core-app.md) először.
+
+> [!NOTE]
+> Ez a cikk a Azure App Service példaként használja, de ugyanez a fogalom vonatkozik a felügyelt identitást támogató egyéb Azure-szolgáltatásokra, például az [Azure Kubernetes szolgáltatásra](../aks/use-azure-ad-pod-identity.md), az Azure-beli [virtuális gépre](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)és a [Azure Container Instancesra](../container-instances/container-instances-managed-identity.md). Ha a munkaterhelést ezen szolgáltatások egyikén üzemelteti, használhatja a szolgáltatás felügyelt identitásának támogatását is.
 
 A cikk azt is bemutatja, hogyan használható a felügyelt identitás az alkalmazás konfigurációjának Key Vault hivatkozásaival együtt. Egyetlen felügyelt identitással zökkenőmentesen érheti el mindkét titkot Key Vault és konfigurációs értékektől az alkalmazás konfigurációjában. Ha szeretné felfedezni ezt a képességet, fejezze be [a Key Vault referenciák használatát a ASP.net Core](./use-key-vault-references-dotnet-core.md) először.
 
@@ -49,7 +52,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. A szokásos módon hozzon létre egy App Services példányt a [Azure Portalban](https://portal.azure.com) . Nyissa meg a portálon.
 
-1. Görgessen le a **Beállítások** csoportba a bal oldali ablaktáblán, és válassza az **Identity (identitás** ) lehetőséget.
+1. Görgessen le a **Beállítások** csoportba a bal oldali ablaktáblán, és válassza az **Identity (identitás**) lehetőséget.
 
 1. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva értékre, majd **válassza a** **Mentés** lehetőséget.
 
@@ -69,7 +72,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. Az **előfizetés** területen válassza ki az Azure-előfizetését. Válassza ki az alkalmazás App Service erőforrását.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     ![Felügyelt identitás hozzáadása](./media/add-managed-identity.png)
 
@@ -85,7 +88,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. Keresse meg az alkalmazás konfigurációs tárolójához tartozó végpontot. Ez az URL-cím a Azure Portal tárolójának **hozzáférési kulcsok** lapján jelenik meg.
 
-1. Nyissa meg *appsettings.jsa on* , és adja hozzá a következő szkriptet. Cserélje le *\<service_endpoint>* , beleértve a zárójeleket is, az alkalmazás konfigurációs tárolójának URL-címével.
+1. Nyissa meg *appsettings.jsa on*, és adja hozzá a következő szkriptet. Cserélje le *\<service_endpoint>* , beleértve a zárójeleket is, az alkalmazás konfigurációs tárolójának URL-címével.
 
     ```json
     "AppConfig": {
@@ -93,7 +96,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
     }
     ```
 
-1. Nyissa meg a *program.cs* , és adjon hozzá egy hivatkozást a `Azure.Identity` és a `Microsoft.Azure.Services.AppAuthentication` névterekhez:
+1. Nyissa meg a *program.cs*, és adjon hozzá egy hivatkozást a `Azure.Identity` és a `Microsoft.Azure.Services.AppAuthentication` névterekhez:
 
     ```csharp-interactive
     using Azure.Identity;
@@ -136,7 +139,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
     ```
     ---
 
-1. Ha az alkalmazás konfigurációs értékeit és Key Vault hivatkozásokat is szeretné használni, frissítse a *program.cs* az alább látható módon. Ez a kód létrehoz egy új `KeyVaultClient` t a használatával `AzureServiceTokenProvider` , és átadja ezt a hivatkozást a metódus hívására `UseAzureKeyVault` .
+1. Ha az alkalmazás konfigurációs értékeit és Key Vault hivatkozásokat is szeretné használni, frissítse a *program.cs* az alább látható módon. Ez a kód a (z `SetCredential` ) részeként meghívja `ConfigureKeyVault` a konfigurációs szolgáltatót, hogy milyen hitelesítő adatokat használjon a Key Vault hitelesítéshez.
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -151,10 +154,10 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
                    config.AddAzureAppConfiguration(options =>
                    {
                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                           .ConfigureKeyVault(kv =>
-                           {
-                              kv.SetCredential(credentials);
-                           });
+                              .ConfigureKeyVault(kv =>
+                              {
+                                 kv.SetCredential(credentials);
+                              });
                    });
                })
                .UseStartup<Startup>();
@@ -175,10 +178,10 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
                     config.AddAzureAppConfiguration(options =>
                     {
                         options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                            .ConfigureKeyVault(kv =>
-                            {
-                                kv.SetCredential(credentials);
-                            });
+                               .ConfigureKeyVault(kv =>
+                               {
+                                   kv.SetCredential(credentials);
+                               });
                     });
                 });
             })
@@ -186,10 +189,10 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
     ```
     ---
 
-    Mostantól ugyanúgy érheti el Key Vault hivatkozásokat, mint bármely más alkalmazás-konfigurációs kulcshoz. A konfigurációs szolgáltató a `KeyVaultClient` hitelesítést úgy konfigurálta, hogy Key Vault és beolvassa az értéket.
+    Mostantól ugyanúgy érheti el Key Vault hivatkozásokat, mint bármely más alkalmazás-konfigurációs kulcshoz. A konfigurációs szolgáltató a használatával `ManagedIdentityCredential` hitelesíti Key Vault és beolvassa az értéket.
 
-> [!NOTE]
-> `ManagedIdentityCredential` csak a felügyelt identitások hitelesítését támogatja. Helyi környezetekben nem működik. Ha helyileg szeretné futtatni a kódot, érdemes lehet a `DefaultAzureCredential` szolgáltatást használni, amely támogatja a szolgáltatás egyszerű hitelesítését is. A részletekért olvassa el a [hivatkozást](/dotnet/api/azure.identity.defaultazurecredential) .
+    > [!NOTE]
+    > A `ManagedIdentityCredential` csak a felügyelt identitások hitelesítését támogató szolgáltatások Azure-környezetekben működik. Nem működik a helyi környezetben. A [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) kód használata a helyi és az Azure-környezetekben egyaránt működik, mivel a szolgáltatás néhány hitelesítési lehetőségre visszaesik, beleértve a felügyelt identitást is.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -235,7 +238,7 @@ git remote add azure <url>
 A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Amikor a rendszer jelszót kér, adja meg az [üzembe helyezési felhasználó konfigurálása](#configure-a-deployment-user)területen létrehozott jelszót. Ne használja a Azure Portalba való bejelentkezéshez használt jelszót.
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 Előfordulhat, hogy a kimenetben futtatókörnyezet-specifikus automatizálás látható, például az MSBuild for ASP.NET, `npm install` a Node.js és `pip install` a Python.
@@ -272,7 +275,7 @@ Frissítheti például a gyors útmutatóban létrehozott .NET-keretrendszer kon
     </appSettings>
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 

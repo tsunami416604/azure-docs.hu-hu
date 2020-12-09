@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 48fc8533ee1fd206e69e16d4c03e4b4acf047135
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 46c6eac80ddbff73d99e05c070e66aa1700da174
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953686"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928630"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Oktatóanyag a Onfido konfigurálásához a Azure Active Directory B2C
 
@@ -74,7 +74,7 @@ További információ a Onfido: [ONFIDO API-dokumentáció](https://documentatio
 
 ### <a name="part-1---deploy-the-api"></a>1. rész – az API üzembe helyezése
 
-- A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
+- A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](/visualstudio/deployment/quickstart-deploy-to-azure)követve.
 - CORS beállítása, **engedélyezett forrás** hozzáadása https://{your_tenant_name}. b2clogin. com
 
 >[!NOTE]
@@ -84,7 +84,7 @@ További információ a Onfido: [ONFIDO API-dokumentáció](https://documentatio
 
 Az Alkalmazásbeállítások konfigurálhatók az [Azure app Service-ben](../app-service/configure-common.md#configure-app-settings). Az App Service lehetővé teszi a beállítások biztonságos konfigurálását anélkül, hogy azokat egy adattárba kellene bejelentkeznie. A REST API-nak a következő beállításokra van szüksége:
 
-| Alkalmazásbeállítás neve | Forrás | Megjegyzések |
+| Alkalmazásbeállítás neve | Forrás | Jegyzetek |
 |:-------------------------|:-------|:-------|
 |OnfidoSettings: aad| Onfido-fiók |
 

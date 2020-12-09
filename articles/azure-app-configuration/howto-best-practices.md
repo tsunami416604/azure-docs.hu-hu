@@ -3,21 +3,20 @@ title: Az Azure app Configuration – ajánlott eljárások | Microsoft Docs
 description: Ismerje meg az Azure-alkalmazások konfigurációjának használatakor ajánlott eljárásokat. A témakörök közé tartoznak a főbb csoportok, a kulcs-érték összetételek, az alkalmazások konfigurációjának indítása és egyebek.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: c45d1668ad39e9584a89921f46218ba243978a05
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078051"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929089"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Az Azure app Configuration ajánlott eljárásai
 
@@ -42,7 +41,7 @@ A *címkék* a kulcsok attribútumai. Egy kulcs változatának létrehozásához
 
 Az alkalmazás konfigurációja a vele együtt tárolt összes kulcsot független entitásként kezeli. Az alkalmazás konfigurációja nem kísérli meg a kulcsok közötti kapcsolat következtetését, illetve a kulcs értékének öröklését a hierarchiájuk alapján. A kulcsok több készletét is összesítheti, ha az alkalmazás kódjában a megfelelő konfiguráció halmozásával párosított címkéket használ.
 
-Lássunk erre egy példát. Tegyük fel, hogy van egy **Asset1**nevű beállítása, amelynek értéke változó lehet a fejlesztési környezettől függően. Hozzon létre egy "Asset1" nevű kulcsot egy üres címkével és egy "fejlesztés" nevű címkével. Az első címkében a **Asset1**alapértelmezett értékét helyezi el, és az utóbbiban egy adott értéket helyez el a "fejlesztés" értékre.
+Lássunk erre egy példát. Tegyük fel, hogy van egy **Asset1** nevű beállítása, amelynek értéke változó lehet a fejlesztési környezettől függően. Hozzon létre egy "Asset1" nevű kulcsot egy üres címkével és egy "fejlesztés" nevű címkével. Az első címkében a **Asset1** alapértelmezett értékét helyezi el, és az utóbbiban egy adott értéket helyez el a "fejlesztés" értékre.
 
 A kódban először le kell kérnie a kulcs értékeit címkék nélkül, majd a "fejlesztés" címkével megegyező számú kulcs-értéket kell lekérnie. Ha a második alkalommal kéri le az értékeket, a kulcsok korábbi értékei felül lesznek írva. A .NET Core konfigurációs rendszer lehetővé teszi, hogy az egymásra épülő konfigurációs adat több készletét "verem". Ha egy kulcs egynél több készletben található, az azt tartalmazó utolsó készletet használja. A modern programozási keretrendszer, például a .NET Core esetében ez a halmozási képesség ingyenesen elérhető, ha natív konfigurációs szolgáltatót használ az alkalmazás konfigurálásához. A következő kódrészlet azt mutatja be, hogyan valósítható meg a halmozás egy .NET Core-alkalmazásban:
 
@@ -79,7 +78,7 @@ Az alkalmazások konfigurálására irányuló túlzott kérelmek szabályozást
 
 * Növelje a frissítés időtúllépését, különösen akkor, ha a konfigurációs értékek gyakran nem változnak. A [ `SetCacheExpiration` metódus](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration)használatával új frissítési időtúllépés adható meg.
 
-* Egyetlen Sentinel- *kulcsot*tekinthet meg, és nem figyelheti az egyes kulcsokat. Az összes konfiguráció frissítése csak akkor, ha a Sentinel-kulcs módosul. Lásd: a [dinamikus konfiguráció használata egy ASP.net Core alkalmazásban](enable-dynamic-configuration-aspnet-core.md) példaként.
+* Egyetlen Sentinel- *kulcsot* tekinthet meg, és nem figyelheti az egyes kulcsokat. Az összes konfiguráció frissítése csak akkor, ha a Sentinel-kulcs módosul. Lásd: a [dinamikus konfiguráció használata egy ASP.net Core alkalmazásban](enable-dynamic-configuration-aspnet-core.md) példaként.
 
 * A Azure Event Grid használatával fogadhat értesítéseket, amikor a konfiguráció megváltozik, és nem mindig kérdezi le a módosításokat. További információ: az [Azure-alkalmazás konfigurációs eseményeinek átirányítása webes végpontra](./howto-app-configuration-event.md)
 

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/01/2020
+ms.date: 12/09/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512205"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928324"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -116,7 +116,7 @@ A Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalma
 
 **K**: az értesítések nem Microsoft-fiókokhoz működnek?
 
-**A**: nem, az értesítések csak a Microsoft-fiókokkal és a Azure Active Directory fiókokkal működnek. Ha a munkahelyi vagy iskolai Azure AD-fiókokat használ, kikapcsolhatja ezt a funkciót.
+**A**: nem, az értesítések csak a Microsoft-fiókokkal és a Azure Active Directory fiókokkal működnek. Ha a munkahelyi vagy iskolai Azure AD-fiókokat használ, ki tudják kapcsolni ezt a funkciót.
 
 ### <a name="backup-and-recovery"></a>Biztonsági másolat és helyreállítás
 
@@ -208,7 +208,75 @@ Válasz **: a** hitelesítő hozzáadása az új eszközhöz nem távolítja el 
 
 **A**: először is meg kell győződnie arról, hogy Ön úgy döntött, hogy megosztja az elemzést velünk. Ha Ön Testflighthoz-felhasználó, már regisztrálva van. Ellenkező esetben lépjen a **beállítások > adatvédelem > elemzés** lehetőségre, és válassza az **iPhone megosztása & az elemzés** és a **megosztás az alkalmazások fejlesztői** lehetőségeivel lehetőséget.<br>A regisztrációt követően megpróbálhatja reprodukálni az összeomlást, hogy a rendszer automatikusan elküldje az összeomlási naplókat a vizsgálathoz. Ha azonban nem tudja reprodukálni az összeomlást, manuálisan is átmásolhatja a naplófájlokat, és elküldheti azokat nekünk.<ol><li>Nyissa meg a Watch alkalmazást a telefonján, lépjen a **beállítások > általános** elemre, majd kattintson az **elemzés megtekintése** elemre.</li><li>Keresse meg a megfelelő összeomlást a **settings > Privacy > analytics > Analytics-adatok** területen, majd manuálisan másolja a teljes szöveget.</li><li>Nyissa meg a hitelesítő eszközt a telefonján, és illessze be a vágólapra a **megosztás az alkalmazás-fejlesztők** szövegmezőbe a **naplók küldése** oldalon.</li></ol>
 
-## <a name="next-steps"></a>További lépések
+## <a name="autofill-for-consumers"></a>Automatikus kitöltés a felhasználók számára
+
+**K**: mi a hitelesítő automatikus kitöltése?
+
+**A**: a hitelesítő alkalmazás mostantól biztonságosan tárolja és kitölti a jelszavakat a telefonon felkeresett alkalmazásokon és webhelyeken. Az automatikus kitöltés eszközzel szinkronizálhatja és kihasználhatja az iOS-és Android-eszközökön található jelszavait. Miután beállította a hitelesítő alkalmazást automatikus kitöltés-szolgáltatóként a telefonján, a jelszó mentését teszi elérhetővé, amikor beírja őket egy webhelyre vagy egy alkalmazás bejelentkezési oldalára. A jelszavak a [Microsoft-fiók](https://account.microsoft.com/account) részeként lesznek mentve, és akkor is elérhetők, amikor bejelentkezik a Microsoft Edge-be a Microsoft-fiók.
+
+**K**: milyen adatokat tud hitelesíteni a hitelesítő?
+
+**A**: a hitelesítő kihasználhatja a felhasználóneveket és a jelszavakat a telefonon felkeresett webhelyeken és alkalmazásokban.
+
+**K**: Hogyan bekapcsolja a jelszó automatikus kitöltését a hitelesítő eszközön a telefonon?
+
+**A**: kövesse az alábbi lépéseket:
+
+1. Nyissa meg a hitelesítő alkalmazást.
+1. A **Beta** alatt található **Beállítások** területen kapcsolja be az **Automatikus kitöltés funkciót**.
+1. A hitelesítő **jelszavak** lapján válassza a **Bejelentkezés Microsoft-fiókkal** lehetőséget, és jelentkezzen be a [Microsoft-fiók](https://account.microsoft.com/account)használatával. Ez a funkció jelenleg csak a Microsoft-fiókokat támogatja, és még nem támogatja a munkahelyi vagy iskolai fiókokat.
+
+**K**: hogyan a hitelesítő az alapértelmezett automatikus kitöltés szolgáltatót a telefonon?
+
+**A**: kövesse az alábbi lépéseket:
+
+1. Nyissa meg a hitelesítő beállításokat, majd a **Beta** bekapcsolása elemnél válassza az **Automatikus kitöltés** **beállítást**.
+1. Az alkalmazás **jelszavak** lapján jelentkezzen be [Microsoft-fiók](https://account.microsoft.com/account)használatával.
+1. Tegye a következők egyikét:
+
+   - Az iOS-es **Beállítások** részen válassza ki az automatikus kitöltés beállítás **bekapcsolása** beállítást az automatikus kitöltés beállításai szakaszban, hogy megtudja, hogyan állíthatja be a hitelesítő alapértelmezett automatikus kitöltés-szolgáltatóként.
+   - Az Androidban a **Beállítások** területen válassza az automatikus kitöltés- **szolgáltatóként** lehetőséget az automatikus kitöltés beállításai szakaszban a hitelesítő alapértelmezett automatikus kitöltés-szolgáltatóként való beállításához.
+
+**K**: mi történik, ha az **Automatikus kitöltés** kapcsoló szürkén jelenik meg a beállítások között?
+
+**A**: az automatikus kitöltés jelenleg bétaverzióban van, és még nincs engedélyezve minden szervezet vagy fióktípus esetében. Ha a **beállításokban** lévő **Automatikus kitöltés** kapcsoló szürkén jelenik meg, akkor valószínű, hogy a hitelesítő alkalmazást használja a munkahelyi fiókjával. Ezt a funkciót olyan eszközön használhatja, amelyen a munkahelyi fiók nincs hozzáadva. Ha a szervezete együttműködik a Microsofttal, az **Automatikus kitöltés** kapcsoló akkor is engedélyezve lesz, ha egy munkahelyi fiókot adnak a hitelesítő szolgáltatáshoz.
+
+**K**: hogyan a jelszavak szinkronizálásának leállítása?
+
+**A**: a hitelesítő alkalmazásban a jelszavak szinkronizálásának leállításához nyissa meg a **Beállítások** automatikus kiegészítési  >  **Beállítások**  >  **szinkronizálása fiókot**. A következő képernyőn kiválaszthatja a **szinkronizálás leállítása és az összes automatikus** kitöltési érték eltávolítása lehetőséget. Ezzel eltávolítja a jelszavakat és egyéb automatikus kitöltési adatok az eszközről. Az automatikus kitöltés nem befolyásolja a többtényezős hitelesítést.
+
+**K**: Hogyan védi a jelszavakat a hitelesítő alkalmazás?
+
+**A**: a hitelesítő alkalmazás már magas szintű biztonságot nyújt a többtényezős hitelesítéshez és a fiókok kezeléséhez, és ugyanez a magas biztonsági sáv is ki van bővítve a jelszavak kezelésére.
+
+- A **hitelesítő alkalmazásnak erős hitelesítésre van szüksége**: a hitelesítésbe való bejelentkezéshez második tényező szükséges. Ez azt jelenti, hogy a hitelesítő alkalmazás jelszavai nem érhetők el, még akkor sem, ha valaki rendelkezik a Microsoft-fiók jelszavával.
+- Az adatok automatikus kitöltése a **biometria és a PIN-kód használatával történik**: az alkalmazás vagy hely jelszavának automatikus kitöltéséhez a hitelesítő megköveteli a biometrikus vagy az eszköz PIN-kódját. Ezzel biztosíthatja, hogy még akkor is, ha valaki más fér hozzá az eszközhöz, nem tudja kitölteni vagy megtekinteni a jelszavát, mert nem tudta megadni a biometrikus vagy az eszköz PIN-kódját. Emellett a felhasználók nem tudják megnyitni a jelszavak lapot, hacsak nem biztosítanak biometrikus vagy PIN-kódot, még akkor sem, ha kikapcsolják az alkalmazás beállításaiban az alkalmazások zárolását.
+- **Titkosított jelszavak az eszközön: az** eszközön lévő jelszavak titkosítva vannak, és a titkosítási/visszafejtési kulcsok soha nem tárolódnak, és mindig menet közben jönnek létre. A jelszavak csak akkor lettek visszafejtve, ha a felhasználó az automatikus kitöltés vagy a felhasználó szeretné megtekinteni a jelszót, és mindkettő biometrikus vagy PIN-kódot igényel.
+- **Felhő-és hálózati biztonság**: a felhőben lévő jelszavak csak akkor lesznek titkosítva és visszafejtve, amikor elérik az eszközt. A jelszavak szinkronizálása SSL-védelemmel ellátott HTTPS-kapcsolaton keresztül történik, amely biztosítja, hogy a támadók ne hallgatózik a bizalmas adatokra a szinkronizálás során. Azt is javasoljuk, hogy ellenőrizze, hogy a hálózaton keresztül szinkronizált adatok a kriptográfiai kivonatos függvények (pontosabban a kivonatoló alapú üzenet-hitelesítési kód) használatával legyenek szinkronizálva.
+
+## <a name="autofill-for-it-admins"></a>Automatikus kitöltés a rendszergazdák számára
+
+**K**: az alkalmazottak vagy a tanulók a jelszó automatikus kitöltését használják a hitelesítő alkalmazásban?
+
+**A**: nem. Az automatikus kitöltés szolgáltatás jelenleg bétaverzióban van, és még nincs engedélyezve az összes szervezet vagy fióktípus esetében. Ha az alkalmazott vagy tanuló felvette a munkahelyi vagy iskolai fiókját Microsoft Authenticator alkalmazásba, a jelszavak automatikus kitöltése nem lesz elérhető. A korlátozás alól kivételt képez, ha az alkalmazott vagy a tanuló a munkahelyi vagy iskolai fiókját hozzáadja a Microsoft felhőalapú multi-Factor Authentication szolgáltatáshoz [külső vagy harmadik féltől származó fiókkal](user-help-auth-app-add-non-ms-account.md).
+
+**K**: elérhetővé tehetem az automatikus kitöltés funkciót az alkalmazottak (vagy diákok) számára?
+
+**A**: igen. Annak engedélyezéséhez, hogy a vállalat vagy az iskola egy engedélyezési listához is felvehető legyenek az alkalmazottak vagy a tanulók számára. Forduljon a támogatási szolgálathoz vagy a Microsoft-kapcsolattartóhoz az engedélyezési listához való hozzáadáshoz. Emellett, ha Ön a szervezete informatikai rendszergazdája, kitöltheti az űrlapot is, hogy kifejezze érdeklődését, hogy az a [hitelesítő az automatikus](https://aka.ms/RequestAutofillInAuthenticator)kitöltéshez való csatlakozást a vállalati engedélyezési listához.
+
+**K**: a felhasználók munkahelyi vagy iskolai fiókjának jelszava automatikusan szinkronizálva lesz?
+
+**A**: nem. A jelszó automatikus kitöltése nem fogja szinkronizálni a felhasználók munkahelyi vagy iskolai fiókjának jelszavát. Ha a felhasználók egy webhelyet vagy alkalmazást látogatnak meg, a hitelesítő felajánlja a webhely vagy alkalmazás jelszavának mentését, és a rendszer csak akkor menti a jelszót, ha a felhasználó kiválasztja.
+  
+**K**: engedélyezhető-e a-lista csak bizonyos felhasználóinak listázása az automatikus kitöltés érdekében?
+
+**A**: nem. A vállalatok jelenleg csak az összes felhasználó számára engedélyezhetik a jelszavak automatikus kitöltését. Ezeket a vezérlőket fokozatosan bővítjük.
+
+**K**: mit tegyek, ha az alkalmazottak vagy a tanulók több munkahelyi vagy iskolai fiókkal rendelkeznek? Az alkalmazottak például több vállalattól vagy iskolától származó fiókkal rendelkeznek a Microsoft Authenticatorban.
+
+**A**: a hitelesítő alkalmazásban hozzáadott összes vállalatot vagy iskolát engedélyezni kell – az alkalmazás tulajdonosának a hitelesítő szolgáltatásban történő automatikus kitöltéséhez. A korlátozás alól kivételt képez, ha az alkalmazott vagy a tanuló a munkahelyi vagy iskolai fiókját hozzáadja a Microsoft felhőalapú multi-Factor Authentication szolgáltatáshoz [külső vagy harmadik féltől származó fiókkal](user-help-auth-app-add-non-ms-account.md).
+
+## <a name="next-steps"></a>Következő lépések
 
 - Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző kód problémáinak elhárítása** című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
 

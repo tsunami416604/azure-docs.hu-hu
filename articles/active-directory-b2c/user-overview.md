@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f7a4d0852edded516b7fbe42f15abfe160e44cd3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0a8e08d0045d0520241341cc08fb800468ed6897
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952794"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928613"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói fiókjainak áttekintése
 
@@ -41,7 +41,7 @@ A munkahelyi fiókokat ugyanúgy hozza létre a rendszer az összes bérlő szá
 - **Csoportok** – olyan felügyeleti feladatok elvégzésére, mint például a licencek vagy az engedélyek több felhasználóhoz vagy eszközhöz való hozzárendelésének engedélyezése egy csoport használatával. Az új fiókot egy meglévő [csoportba](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) helyezheti a bérlőben.
 - **Directory-szerepkör** – meg kell adnia azt a hozzáférési szintet, amelyet a felhasználói fióknak a bérlő erőforrásaihoz kell használnia. A következő jogosultsági szintek érhetők el:
 
-    - **User** A felhasználók hozzáférhetnek a hozzárendelt erőforrásokhoz, de nem kezelhetik a legtöbb bérlői erőforrást.
+    -  A felhasználók hozzáférhetnek a hozzárendelt erőforrásokhoz, de nem kezelhetik a legtöbb bérlői erőforrást.
     - **Globális rendszergazda** – a globális rendszergazdák teljes hozzáféréssel rendelkeznek az összes bérlői erőforráshoz.
     - **Korlátozott rendszergazda** – válassza ki a felhasználó rendszergazdai szerepkörét vagy szerepköreit. További információ a kiválasztható szerepkörökről: [rendszergazdai szerepkörök kiosztása a Azure Active Directoryban](../active-directory/roles/permissions-reference.md).
 
@@ -50,21 +50,21 @@ A munkahelyi fiókokat ugyanúgy hozza létre a rendszer az összes bérlő szá
 Új munkahelyi fiók létrehozásához a következő információkat használhatja:
 
 - [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
-- [Microsoft Graph](/graph/api/user-post-users?view=graph-rest-1.0)
+- [Microsoft Graph](/graph/api/user-post-users)
 
 ### <a name="update-a-user-profile"></a>Felhasználói profil frissítése
 
 A következő információk segítségével frissítheti a felhasználó profilját:
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
-- [Microsoft Graph](/graph/api/user-update?view=graph-rest-1.0)
+- [Microsoft Graph](/graph/api/user-update)
 
 ### <a name="reset-a-password-for-a-user"></a>Felhasználó jelszavának alaphelyzetbe állítása
 
 A felhasználó jelszavának alaphelyzetbe állításához a következő információkat használhatja:
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
-- [Microsoft Graph](/graph/api/user-update?view=graph-rest-1.0)
+- [Microsoft Graph](/graph/api/user-update)
 
 ## <a name="guest-user"></a>Vendég felhasználó
 

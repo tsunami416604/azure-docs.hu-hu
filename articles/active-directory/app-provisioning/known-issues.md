@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: e0a77e1e4757c8951756c3e41479628c293dfd8f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b8bdb216cbe8d359f35c758ae89f4267ab223483
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174832"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928749"
 ---
 # <a name="known-issues-application-provisioning"></a>Ismert problémák: az alkalmazás kiépítés
 Ismert problémák az alkalmazások kiépítés közbeni használatáról. A UserVoice-on futó alkalmazás-kiépítési szolgáltatással kapcsolatban az [Azure ad Application UserVoice](https://aka.ms/appprovisioningfeaturerequest)című témakörben talál visszajelzést. Szorosan Figyeljük a UserVoice, így javíthatjuk a szolgáltatást. 
@@ -56,6 +56,10 @@ Az Azure AD jelenleg nem tud null attribútumokat kiépíteni. Ha egy attribútu
 **Attribútum-hozzárendelési kifejezések maximális száma**
 
 Az attribútum-hozzárendelési kifejezések legfeljebb 10 000 karakterből állhatnak. 
+
+**Nem támogatott hatóköri szűrők**
+
+A címtárszolgáltatások, a appRoleAssignments, a userType és a accountExpires nem támogatottak hatóköri szűrőként.
 
 
 ## <a name="service-issues"></a>Szolgáltatásproblémák 
