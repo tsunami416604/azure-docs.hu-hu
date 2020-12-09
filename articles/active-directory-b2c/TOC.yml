@@ -125,10 +125,12 @@
       items:
         - name: Folyamat létrehozása
           items:
-            - name: Regisztráció vagy bejelentkezés
-              href: tutorial-create-user-flows.md
+            - name: Felhasználói folyamatok létrehozása
+              href: create-user-flow.md
             - name: Erőforrás tulajdonosának jelszava
               href: configure-ropc.md
+            - name: Telefonos hitelesítés beállítása
+              href: phone-authentication-user-flows.md
             - name: Új jelszó önkiszolgáló kérésének beállítása
               href: user-flow-self-service-password-reset.md
         - name: Feltételes hozzáférés hozzáadása

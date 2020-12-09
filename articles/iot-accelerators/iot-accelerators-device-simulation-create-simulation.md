@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 09a6920e0d3a50da1bdacbf2bc7a80396c885897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0d7310c4863c8dd431b991a2c249f2d8e257aeb
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61448564"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852353"
 ---
 # <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Oktatóanyag: IoT-eszközszimuláció üzembe helyezése és futtatása
 
@@ -28,21 +28,13 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Szimuláció mérőszámainak megtekintése
 > * Szimuláció leállítása
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag követéséhez rendelkeznie kell az Eszközszimuláció üzembe helyezett példányával az Azure-előfizetésében.
 
-Ha még nem helyezte üzembe az Eszközszimulációt, végezze el az [Azure-beli IoT-eszközszimuláció üzembe helyezését és futtatását](quickstart-device-simulation-deploy.md) ismertető rövid útmutatóban leírt lépéseket.
-
-## <a name="open-device-simulation"></a>Eszközszimuláció megnyitása
-
-Az Eszközszimuláció böngészőben történő futtatásához először lépjen a [Microsoft Azure IoT-megoldásgyorsítók](https://www.azureiotsolutions.com) területre. 
-
-A rendszer arra kérheti, hogy lépjen be Azure-előfizetésének hitelesítő adataival.
-
-Ezután kattintson az **Indítás** elemre a [gyorskonfigurálás](quickstart-device-simulation-deploy.md) során üzembe helyezett Device Simulation csempéjén.
+Ha még nem telepítette az eszköz-szimulációt, tekintse meg a következőt: [eszköz-szimulációs telepítés](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) a githubon.
 
 ## <a name="view-simulations"></a>Szimulációk megtekintése
 
@@ -72,7 +64,7 @@ Egy szimuláció leállításához kattintson a **Szimuláció leállítása** e
 
 ![Szimuláció leállítása](media/iot-accelerators-device-simulation-create-simulation/simulationdetails.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte, hogyan hozhat létre, futtathat és állíthat le egy szimulációt. Emellett azt is megismerte, hogyan tekintheti meg egy szimuláció részleteit. A szimulációk futtatásával kapcsolatos további információkért folytassa a következő oktatóanyaggal:
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 7ddd1aa9865cb4061212ce77b31efc82ad339283
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1fe86aef832223a7485036343b4b12d8bb526e06
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165570"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852387"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Oktatóanyag: Egyéni szimulált eszköz létrehozása
 
@@ -28,21 +28,13 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Eszközmodell klónozása
 > * Eszközmodellek törlése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag követéséhez rendelkeznie kell az Eszközszimuláció egy üzembe helyezett példányával az Azure-előfizetésében.
 
-Ha még nem helyezte üzembe az Eszközszimulációt, végezze el az [Azure-beli IoT-eszközszimuláció üzembe helyezését és futtatását](quickstart-device-simulation-deploy.md) ismertető rövid útmutatóban leírt lépéseket.
-
-## <a name="open-device-simulation"></a>Eszközszimuláció megnyitása
-
-Az Eszközszimuláció böngészőben történő futtatásához először lépjen a [Microsoft Azure IoT-megoldásgyorsítók](https://www.azureiotsolutions.com) területre.
-
-A rendszer arra kérheti, hogy lépjen be Azure-előfizetésének hitelesítő adataival.
-
-Ezután kattintson az **Indítás** elemre az [Azure-beli IoT-eszközszimuláció üzembe helyezését és futtatását](quickstart-device-simulation-deploy.md) ismertető rövid útmutató során üzembe helyezett Eszközszimuláció csempéjén.
+Ha még nem telepítette az eszköz-szimulációt, tekintse meg a következőt: [eszköz-szimulációs telepítés](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) a githubon.
 
 ## <a name="view-your-device-models"></a>Eszközmodellek megtekintése
 
@@ -64,14 +56,14 @@ Adja meg az alábbi adatokat az űrlapon:
 | ------------------- | ---------------------------------------------------- |
 | Eszközmodell neve   | Hűtő                                         |
 | Modell leírása   | Hőmérséklet- és páratartalom-érzékelőkkel rendelkező hűtő |
-| Verzió             | 1.0                                                  |
+| Verzió             | 1,0                                                  |
 
 > [!NOTE]
 > Az eszközmodell nevének egyedinek kell lennie.
 
 Kattintson az **+ Adatpont hozzáadása** elemre a hőmérséklet- és páratartalom-adatpontok hozzáadásához az alábbi értékekkel:
 
-| Adatpont          | Működés        | Minimális érték | Maximális érték | Egység |
+| Adatpont          | Viselkedés        | Minimális érték | Maximális érték | Egység |
 | ------------------- | --------------- | --------- | --------- | ---- |
 | Hőmérséklet         | Véletlenszerű          | -50       | 100       | F    |
 | Páratartalom            | Véletlenszerű          | 0         | 100       | %    |
@@ -96,7 +88,7 @@ Bármelyik egyéni eszközmodellt törölheti. Egy eszközmodell törléséhez j
 
 ![Eszközmodell törlése](media/iot-accelerators-device-simulation-create-custom-device/deletedevice.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte, hogyan hozhat létre, klónozhat és törölhet egyéni eszközmodelleket. Az eszközmodellekkel kapcsolatos további információkért tekintse meg az alábbi útmutatót:
 

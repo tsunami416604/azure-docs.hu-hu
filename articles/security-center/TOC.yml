@@ -55,6 +55,12 @@
         - name: Azure Defender Key Vaulthoz
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
+        - name: Azure Defender a Resource Managerhez
+          displayName: ARM
+          href: defender-for-resource-manager-introduction.md
+        - name: Azure Defender DNS-hez
+          displayName: domain
+          href: defender-for-dns-introduction.md
         - name: Azure Defender Kuberneteshez
           displayName: 'clusters, k8s, aks'
           href: defender-for-kubernetes-introduction.md
@@ -253,6 +259,11 @@
         - name: Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
+        - name: Válaszadás a DNS-hez készült Azure Defender-riasztásokra
+          href: defender-for-dns-usage.md
+        - name: Válaszadás a Resource Managerhez készült Azure Defender-riasztásokra
+          displayName: arm
+          href: defender-for-resource-manager-usage.md
         - name: Biztonsági incidensek kezelése
           href: security-center-incident.md
         - name: Fenyegetésfelderítési jelentés előállítása

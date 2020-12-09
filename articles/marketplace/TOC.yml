@@ -51,6 +51,8 @@
           href: marketplace-co-sell.md
         - name: Együttes értékesítési lehetőség a Partnerközpontban
           href: commercial-marketplace-co-sell.md
+        - name: Együttes értékesítési megoldások migrálása az OCP GTM-ből
+          href: co-sell-solution-migration.md
         - name: Viszonteladás CSP-partnereken keresztül
           href: cloud-solution-providers.md
         - name: A Connect program regisztrálási útmutatója

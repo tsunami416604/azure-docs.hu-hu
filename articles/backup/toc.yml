@@ -66,6 +66,8 @@
           href: sap-hana-backup-support-matrix.md
         - name: Az Azure-fájlmegosztások biztonsági mentésének támogatási mátrixa
           href: azure-file-share-support-matrix.md
+        - name: Active Directory-tartományvezérlők
+          href: active-directory-backup-restore.md
         - name: Az Azure Policy támogatott virtuálisgép-termékváltozatai
           href: backup-azure-policy-supported-skus.md
     - name: Gyakori kérdések (GYIK)

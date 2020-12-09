@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 3295815be035544d27da52926e5271c2c5551f28
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 58891bdb4601744129c97454f43202d3ba07b709
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076045"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852557"
 ---
 # <a name="create-an-advanced-device-model"></a>Speciális eszközmodell létrehozása
 
@@ -30,15 +30,11 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 A jelen útmutató lépéseit követve az Azure-előfizetésében az eszköz-szimuláció üzembe helyezett példánya szükséges.
 
-Ha még nem helyezte üzembe az Eszközszimulációt, végezze el az [Azure-beli IoT-eszközszimuláció üzembe helyezését és futtatását](quickstart-device-simulation-deploy.md) ismertető rövid útmutatóban leírt lépéseket.
+Ha még nem telepítette az eszköz-szimulációt, tekintse meg a következőt: [eszköz-szimulációs telepítés](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) a githubon.
 
 ### <a name="open-device-simulation"></a>Eszközszimuláció megnyitása
 
-Az Eszközszimuláció böngészőben történő futtatásához először lépjen a [Microsoft Azure IoT-megoldásgyorsítók](https://www.azureiotsolutions.com) területre.
-
-A rendszer arra kérheti, hogy lépjen be Azure-előfizetésének hitelesítő adataival.
-
-Ezután kattintson a **Launch (indítás** ) elemre a IoT-eszköz szimulációjának üzembe helyezése [és futtatása az Azure-ban](quickstart-device-simulation-deploy.md) üzembe helyezett eszköz-szimulálás csempén.
+Ha még nem telepítette az eszköz-szimulációt, tekintse meg a következőt: [eszköz-szimulációs telepítés](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) a githubon.
 
 ## <a name="device-models"></a>Eszközmodellek
 
@@ -89,7 +85,7 @@ A következő tulajdonságok leírják az eszköz modelljét. Mindegyik típus e
 
 ### <a name="iot-protocol"></a>IoT protokoll
 
-A IoT-eszközök különböző protokollokkal csatlakozhatnak. A szimuláció a **AMQP**, a **MQTT**vagy a **http**használatát teszi lehetővé:
+A IoT-eszközök különböző protokollokkal csatlakozhatnak. A szimuláció a **AMQP**, a **MQTT** vagy a **http** használatát teszi lehetővé:
 
 ```json
 "Protocol": "AMQP"
@@ -166,7 +162,7 @@ A sémában felsorolt mezők a következő típusokból állhatnak:
 * Objektum – szerializált JSON használatával
 * Bináris – Base64 használatával szerializált
 * Szöveg
-* Logikai
+* Logikai érték
 * Egész szám
 * Dupla
 * DateTime
@@ -258,7 +254,7 @@ A viselkedési parancsfájlban található kód a dronet helyezi át. A szkript 
 A JavaScript-fájloknak rendelkeznie kell egy **fő** függvénnyel, amely két paramétert fogad el:
 
 * Három tulajdonságot tartalmazó **környezeti** objektum:
-    * a **currentTime** az **éééé-hh-dd'T'HH: PP: sszzz**karakterlánc formátumban kell megadni.
+    * a **currentTime** az **éééé-hh-dd'T'HH: PP: sszzz** karakterlánc formátumban kell megadni.
     * **deviceId**. Példa: **szimulált. lift. 123**.
     * **deviceModel**. Például: **lift**.
 * Egy **állapot** -objektum, amely az előző hívás függvényében visszaadott érték. Az eszköz állapotát a szimulációs szolgáltatás tartja karban, és telemetria-üzenetek létrehozásához használja.
@@ -278,7 +274,7 @@ function main(context, state) {
 
 ## <a name="create-a-behavior-script-file"></a>Viselkedési parancsfájl létrehozása
 
-Másolja a következő JavaScriptet egy szövegszerkesztőbe, és mentse **drone-state.jsként **.
+Másolja a következő JavaScriptet egy szövegszerkesztőbe, és mentse **drone-state.jsként**.
 
 ### <a name="device-model-javascript-simulation-example"></a>Példa az eszköz modell JavaScript-szimulációra
 
@@ -407,7 +403,7 @@ A metódus parancsfájljai hasonlók a viselkedési parancsfájlokhoz. Definiál
 
 A drone-visszahívás parancsfájl beállítja a drone koordinátáit egy rögzített pontra, hogy szimulálja a hazai hazatérést.
 
-Másolja a következő JavaScriptet egy szövegszerkesztőbe, és mentse **droneRecall-method.jsként **.
+Másolja a következő JavaScriptet egy szövegszerkesztőbe, és mentse **droneRecall-method.jsként**.
 
 ### <a name="device-model-javascript-simulation-example"></a>Példa az eszköz modell JavaScript-szimulációra
 

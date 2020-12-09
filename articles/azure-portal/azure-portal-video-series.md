@@ -4,12 +4,12 @@ description: Az Azure-szolgáltatások a portálon való használatáról szól�
 keywords: ''
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0762174a3207c0620d3b6413d14c817014fc49a0
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 131ec94e321388a3578cd2fd59fdb2fd75339c5e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745859"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852608"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Az Azure Portal útmutató videósorozata
 
@@ -17,22 +17,22 @@ A Azure Portal útmutató videó sorozat bemutatja, hogyan használható az Azur
 
 ## <a name="featured-video"></a>Kiemelt videó
 
-Ebben a Kiemelt videóban bemutatjuk, hogyan hozhat létre és kezelhet egy App Service tartományt.
+Ebben a Kiemelt videóban bemutatjuk, hogyan kezdheti el az Azure-t az Azure Gyorsindítás központjának használatával.
 
-> [!VIDEO https://www.youtube.com/embed/b1kDT8-6a3g]
+> [!VIDEO https://www.youtube.com/embed/mb5k9nXMtBM]
 
-[App Service tartomány létrehozása és kezelése](https://www.youtube.com/watch?v=b1kDT8-6a3g)
+[Ismerkedés az Azure-ban az Azure Gyorsindítás központjának használatával](https://www.youtube.com/watch?v=mb5k9nXMtBM)
 
 A legutóbbi videók felzárkóznak:
 
-| [Egyéni tartomány hozzáadása és biztonságossá tétele a App Service webalkalmazásban](https://www.youtube.com/watch?v=bXP6IvNYISw)  | [A Linux rendszerű virtuális gépek felületének fejlesztése](https://www.youtube.com/watch?v=obg6Fq2T898)  | [A blob verziószámozásának használata](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
+| [Alkalmazások kezelése az Azure Kubernetes Service-ben](https://www.youtube.com/watch?v=YfARHb52Bp4)  | [Azure-munkafüzetek létrehozása naplók és paraméterek használatával](https://www.youtube.com/watch?v=EC7n1Oo6D-o)  | [Egyéni tartomány hozzáadása és biztonságossá tétele a App Service webalkalmazásban](https://www.youtube.com/watch?v=bXP6IvNYISw) |
 | ------| ------ | ------ |
-| [![YouTube-videó képe arról, hogyan lehet egyéni tartományt felvenni és biztonságossá tenni a App Service webalkalmazásban](https://i.ytimg.com/vi/bXP6IvNYISw/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=bXP6IvNYISw) | [![YouTube-videó a linuxos virtuális gépek felületének tökéletesítéséről](https://i.ytimg.com/vi/obg6Fq2T898/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?obg6Fq2T898) | [![YouTube-videó képe a blob verziószámozásának használatáról](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) |
+| [![YouTube-videó képe az alkalmazások kezeléséről az Azure Kubernetes Service-ben](https://i.ytimg.com/vi/YfARHb52Bp4/hqdefault.jpg)](https://www.youtube.com/watch?YfARHb52Bp4) | [![YouTube-videó képe az Azure-munkafüzetek naplók és paraméterek használatával történő létrehozásáról](https://i.ytimg.com/vi/EC7n1Oo6D-o/hqdefault.jpg)](http://www.youtube.com/watch?v=EC7n1Oo6D-o) | [![YouTube-videó képe arról, hogyan lehet egyéni tartományt felvenni és biztonságossá tenni a App Service webalkalmazásban](https://i.ytimg.com/vi/bXP6IvNYISw/hqdefault.jpg)](http://www.youtube.com/watch?v=bXP6IvNYISw) |
 
 ## <a name="video-playlist"></a>Videó lejátszási lista
 
 Tekintse át a [Azure Portal útmutatók sorozatát](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR) néhány nagyszerű tippet arról, hogyan hozhatja ki a legtöbbet a Azure Portal. Fizessen elő a csatornára, hogy értesítést kapjon új videók hozzáadásakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg több száz videóval az Azure-szolgáltatásokhoz a [videó könyvtárában](https://azure.microsoft.com/resources/videos/index/?tag=microsoft-azure-portal).

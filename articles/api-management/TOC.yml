@@ -58,6 +58,8 @@
           href: api-management-howto-policies.md
         - name: Szabályzati segédlet indexe
           href: api-management-policies.md
+        - name: Hibakezelés
+          href: api-management-error-handling-policies.md
     - name: Biztonság
       items:
         - name: Biztonsági alapkonfiguráció
@@ -70,8 +72,6 @@
       href: api-management-revisions.md
     - name: Kezelés automatizálással
       href: automation-manage-api-management.md
-    - name: Hibakezelés
-      href: api-management-error-handling-policies.md
     - name: API-importálási korlátozások
       href: api-management-api-import-restrictions.md
     - name: Saját üzemeltetésű átjáró áttekintése
@@ -240,6 +240,8 @@
           href: api-management-howto-create-groups.md
         - name: IP-címek lekérése
           href: api-management-howto-ip-addresses.md
+        - name: API-elemzés beszerzése
+          href: howto-use-analytics.md
         - name: Eseménynaplózás az Azure Event Hubs segítségével
           href: api-management-howto-log-event-hubs.md
         - name: Kérések naplózása az Azure Application Insights segítségével
@@ -305,5 +307,9 @@
       href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API-implementálási segédlet
       href: /azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
-    - name: „A hibaelhárítás nem tudta frissíteni a gazdagépneveket” hiba
-      href: api-management-troubleshoot-cannot-add-custom-domain.md
+    - name: Hibaelhárítás
+      items:
+        - name: „A hibaelhárítás nem tudta frissíteni a gazdagépneveket” hiba
+          href: api-management-troubleshoot-cannot-add-custom-domain.md
+        - name: Válaszadási időtúllépések és hibák elhárítása
+          href: troubleshoot-response-timeout-and-errors.md

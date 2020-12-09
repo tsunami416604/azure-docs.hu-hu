@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 543e6115be30963600d867bb9c2a03dfbb54e9f1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576553"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852523"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>A mintacímkézési eszköz üzembe helyezése
 
@@ -100,6 +100,9 @@ Az alábbi lépéseket követve hozzon létre egy új erőforrást a Azure Porta
 > [!NOTE]
 > A webalkalmazás létrehozásakor konfigurálhatja az engedélyezést és a hitelesítést is. Ez nem szükséges a kezdéshez. 
 
+> [!IMPORTANT]
+> Előfordulhat, hogy engedélyeznie kell a TLS-t a webalkalmazáshoz, hogy megtekintse azt a `https` címben. Kövesse az alábbi utasításokat a [TLS-végpont](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl) beállítása egy oldalkocsi-tároló beállításához, mint a TLS/SSL engedélyezése a webalkalmazáshoz.
+
 ### <a name="azure-cli"></a>Azure CLI
 
 A Azure Portal használatának alternatívájaként az Azure CLI használatával is létrehozhat egy erőforrást. A folytatás előtt telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli)-t. Ezt a lépést kihagyhatja, ha már dolgozik az Azure CLI-vel. 
@@ -155,6 +158,6 @@ Javasoljuk, hogy a webalkalmazást Azure Active Directoryhoz kapcsolja. Ez bizto
 
 Az OCR űrlap címkéző eszköze nyílt forráskódú projektként is elérhető a GitHubon. Az eszköz egy reakciós + Redux használatával létrehozott webalkalmazás, amely írógéppel van írva. További részletekért lásd: [OCR űrlap címkézése eszköz](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A betanítási](./quickstarts/label-tool.md) útmutató segítségével megtudhatja, hogyan használhatja az eszközt a betanítási adatok manuális címkézéséhez és a felügyelt tanulás végrehajtásához.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d175ac75ce76836d012cdd04d4dbd7d81ffda584
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b6f4610887092b1dac5cdc85622739318d5921d7
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460699"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852234"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Oktatóanyag: a HSM üzembe helyezése meglévő virtuális hálózaton az Azure CLI használatával
 
@@ -233,14 +233,14 @@ A kimenetnek az alábbi képen látható módon kell kinéznie:
 
 ![A képernyőképen a PowerShell-ablak kimenete látható.](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
 
-Ezen a ponton az összes erőforrást lefoglalta egy nagy rendelkezésre állású, két HSM üzembe helyezési és érvényesített hozzáférés és működési állapot számára. Minden további konfiguráció vagy tesztelés több munkát is magában foglal a HSM-eszközzel. Ehhez kövesse a Gemalto Luna hálózati HSM 7 felügyeleti útmutató 7. fejezetének utasításait a HSM inicializálásához és a partíciók létrehozásához. Az összes dokumentáció és szoftver közvetlenül a Gemalto érhető el, ha a Gemalto ügyfélszolgálati portálon regisztrálva van, és rendelkezik ügyfél-AZONOSÍTÓval. Töltse le az ügyfélszoftver 7,2-es verzióját az összes szükséges összetevő lekéréséhez.
+Ezen a ponton az összes erőforrást lefoglalta egy nagy rendelkezésre állású, két HSM üzembe helyezési és érvényesített hozzáférés és működési állapot számára. Minden további konfiguráció vagy tesztelés több munkát is magában foglal a HSM-eszközzel. Ehhez kövesse a Thales Luna hálózati HSM 7 felügyeleti útmutató 7. fejezetének utasításait a HSM inicializálásához és a partíciók létrehozásához. Az összes dokumentáció és szoftver közvetlenül a Thales érhető el, ha a Thales ügyfélszolgálati portálon regisztrálva van, és rendelkezik ügyfél-AZONOSÍTÓval. Töltse le az ügyfélszoftver 7,2-es verzióját az összes szükséges összetevő lekéréséhez.
 
 ## <a name="delete-or-clean-up-resources"></a>Erőforrások törlése vagy eltávolítása
 
 Ha csak a HSM-eszközzel fejeződött be, akkor azt erőforrásként is törölheti, és visszaküldheti az ingyenes készletbe. Ha ezt a problémát tapasztalja, az eszközön található bizalmas vásárlói adatok is megtalálhatók. A legjobb módszer a "zeroize", hogy az eszköz a HSM-rendszergazda jelszavának rossz 3 alkalommal való beszerzését kéri (Megjegyzés: ez nem a berendezés rendszergazdája, hanem a tényleges HSM-rendszergazda). A kulcsfontosságú anyagok védelme érdekében az eszköz nem törölhető Azure-erőforrásként, amíg a nulla állapotba nem kerül.
 
 > [!NOTE]
-> Ha bármilyen Gemalto-eszköz konfigurációval kapcsolatos problémát tapasztal, vegye fel a kapcsolatot a [Gemalto ügyfélszolgálatával](https://safenet.gemalto.com/technical-support/).
+> Ha bármilyen Thales-eszköz konfigurációval kapcsolatos problémát tapasztal, vegye fel a kapcsolatot a [Thales ügyfélszolgálatával](https://safenet.gemalto.com/technical-support/).
 
 Ha befejezte az erőforráscsoport összes erőforrását, akkor a következő paranccsal távolíthatja el őket:
 
@@ -251,7 +251,7 @@ az group delete \
    --verbose
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag lépéseinek elvégzése után a dedikált HSM-erőforrások kiépítve vannak, és rendelkezik egy olyan virtuális hálózattal, amely a szükséges HSM és további hálózati összetevőkkel teszi lehetővé a kommunikációt a HSM használatával.  Most már olyan helyzetben van, hogy ezt az üzembe helyezést az előnyben részesített üzembe helyezési architektúrához szükséges további erőforrásokkal kiegészítse. Az üzembe helyezés megtervezésével kapcsolatos további információkért tekintse meg a fogalmakat ismertető dokumentumokat.
 Az elsődleges régió két HSM rendelkező kialakítás az állvány szintjén kezeli a rendelkezésre állást, a másodlagos régióban pedig két HSM ajánlott. 

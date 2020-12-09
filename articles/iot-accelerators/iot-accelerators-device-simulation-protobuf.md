@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77a795b8f704084b612a2dcbd364b8d5be0a3333
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018528"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852150"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Telemetria szerializálása protokoll-pufferek használatával
 
@@ -275,6 +275,6 @@ Ha már nincs szüksége a IoT Hubra és Cosmos DB példányokra, törölje azok
 
 Számos IoT Hub funkció nem támogatja natív módon a Protopuf vagy más bináris formátumot. Például nem lehet átirányítani az üzenet adattartalma alapján, mert IoT Hub nem fogja tudni feldolgozni az üzenet tartalmát. Az üzeneteket azonban az üzenetek fejlécei alapján is elvégezheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megtanulta, hogyan szabhatja testre az eszköz szimulációját, hogy Protopuf küldjön telemetria, a következő lépés az [Egyéni lemezkép felhőbe való üzembe helyezésének](iot-accelerators-device-simulation-deploy-image.md)megismerése.
+Most, hogy megtanulta, hogyan szabhatja testre az Protopuf a telemetria küldéséhez, a következő lépés a GitHub-tárházba kerül, ahol további [eszközök](https://github.com/Azure/device-simulation-dotnet)is elérhetők.

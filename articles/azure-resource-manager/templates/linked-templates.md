@@ -2,19 +2,19 @@
 title: Sablonok csatolása az üzembe helyezéshez
 description: Azt ismerteti, hogyan használhatók a Azure Resource Manager sablonban található csatolt sablonok a moduláris sablonok megoldásához. Bemutatja, hogyan adhatók át a paraméterek értékei, meghatározhatók egy paraméterérték és dinamikusan létrehozott URL-címek.
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 603445fdd96cc72a2d64bae21a47cfeabd6dd167
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 12/07/2020
+ms.openlocfilehash: 1e2ccc57b42f8072c9aa28612d534507b9a674ed
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366337"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852098"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok használata Azure-erőforrások üzembe helyezésekor
 
 Összetett megoldások üzembe helyezéséhez számos kapcsolódó sablonban megszakíthatja a sablont, majd egy fő sablonon keresztül is üzembe helyezheti azokat. A kapcsolódó sablonok a fő sablonba ágyazott fájlok vagy sablon-szintaxisok lehetnek. Ez a cikk a **társított sablon** kifejezését használja egy külön sablonfájl használatára, amelyre a fő sablon hivatkozásán keresztül hivatkozik. A **beágyazott sablon kifejezést használja** a beágyazott sablon szintaxisára a fő sablonon belül.
 
-Kis és közepes mérető megoldások esetében könnyebb egyetlen sablont megérteni és karbantartani. Így az összes erőforrás és értéke egyetlen fájlban látható. Speciális felhasználási helyzetekben a megoldás csatolt sablonokkal bontható fel a kívánt összetevőkre. Ezeket a sablonokat könnyedén újra felhasználhatja más forgatókönyvek esetében is.
+Kis és közepes mérető megoldások esetében könnyebb egyetlen sablont megérteni és karbantartani. Így az összes erőforrás és értéke egyetlen fájlban látható. Speciális felhasználási helyzetekben a megoldás csatolt sablonokkal bontható fel a kívánt összetevőkre. Az ilyen sablonok egyszerűen felhasználhatók újra más helyzetekben.
 
 Oktatóanyagért lásd [: csatolt Azure Resource Manager sablonok létrehozása](./deployment-tutorial-linked-template.md).
 
@@ -310,7 +310,7 @@ Sablon csatolásához vegyen fel egy [központi telepítési erőforrást](/azur
 }
 ```
 
-Csatolt sablonra való hivatkozás esetén a `uri` nem lehet helyi fájl vagy olyan fájl, amely csak a helyi hálózaton érhető el. A Azure Resource Managernak képesnek kell lennie a sablon elérésére. Olyan URI-értéket adjon meg, amely **http** -vagy **https** -fájlként letölthető. 
+Csatolt sablonra való hivatkozás esetén a `uri` nem lehet helyi fájl vagy olyan fájl, amely csak a helyi hálózaton érhető el. A Azure Resource Managernak képesnek kell lennie a sablon elérésére. Olyan URI-értéket adjon meg, amely **http** -vagy **https**-fájlként letölthető. 
 
 A sablonokat a **http** vagy **HTTPS protokollt** tartalmazó paraméterekkel lehet hivatkozni. Például egy általános minta a `_artifactsLocation` paraméter használata. A csatolt sablon a következőhöz hasonló kifejezéssel állítható be:
 
@@ -380,6 +380,12 @@ További információ:
 - [Oktatóanyag: spec sablon létrehozása csatolt sablonokkal](./template-specs-create-linked.md).
 - [Oktatóanyag: a sablon specifikációjának központi telepítése csatolt sablonként](./template-specs-deploy-linked-template.md).
 
+## <a name="dependencies"></a>Függőségek
+
+A többi erőforrástípus hasonlóan a társított sablonok közötti függőségek is megadhatók. Ha az egyik csatolt sablonban lévő erőforrásokat a második csatolt sablon erőforrásai előtt kell telepíteni, állítsa be a második sablont az elsőtől függően.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/linked-dependency.json" highlight="10,22,24":::
+
 ## <a name="contentversion"></a>contentVersion
 
 Nem kell megadnia a `contentVersion` tulajdonságot a `templateLink` vagy `parametersLink` tulajdonsághoz. Ha nem ad meg a `contentVersion` -t, a rendszer a sablon aktuális verzióját telepíti. Ha értéket ad meg a tartalom verziójához, akkor annak meg kell egyeznie a csatolt sablonban található verzióval. Ellenkező esetben a telepítés hibát jelez.
@@ -388,7 +394,7 @@ Nem kell megadnia a `contentVersion` tulajdonságot a `templateLink` vagy `param
 
 Az előző példák a sablon hivatkozásainak rögzített URL-értékeit mutatták. Ez a megközelítés egy egyszerű sablon esetében működhet, de a moduláris sablonok nagy készlete esetében nem működik megfelelően. Ehelyett létrehozhat egy statikus változót, amely alapszintű URL-címet tárol a fő sablon számára, majd dinamikusan létrehozza a csatolt sablonok URL-címeit az alap URL-címről. Ennek a megközelítésnek az az előnye, hogy könnyedén áthelyezheti vagy leképezheti a sablont, mert csak a fősablonban lévő statikus változót kell módosítania. A fő sablon a kibontott sablonban a megfelelő URI-ket adja át.
 
-Az alábbi példa bemutatja, hogyan használható egy alap URL-cím két URL-cím létrehozásához csatolt sablonokhoz ( **sharedTemplateUrl** és **vmTemplate** ).
+Az alábbi példa bemutatja, hogyan használható egy alap URL-cím két URL-cím létrehozásához csatolt sablonokhoz (**sharedTemplateUrl** és **vmTemplate**).
 
 ```json
 "variables": {
@@ -472,156 +478,19 @@ Ha egy kimeneti tulajdonságot egy csatolt sablonból olvas be, a tulajdonság n
 
 Az alábbi példák bemutatják, hogyan hivatkozhat egy csatolt sablonra, és hogyan kérhet le egy kimeneti értéket. A csatolt sablon egy egyszerű üzenetet ad vissza.  Először a csatolt sablon:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "greetingMessage": {
-      "value": "Hello World",
-      "type" : "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworld.json":::
 
 A fő sablon telepíti a csatolt sablont, és lekéri a visszaadott értéket. Figyelje meg, hogy név szerint hivatkozik a központi telepítési erőforrásra, és a társított sablon által visszaadott tulajdonság nevét használja.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
-      "name": "linkedTemplate",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(deployment().properties.templateLink.uri, 'helloworld.json')]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    }
-  ],
-  "outputs": {
-    "messageFromLinkedTemplate": {
-      "type": "string",
-      "value": "[reference('linkedTemplate').outputs.greetingMessage.value]"
-    }
-  }
-}
-```
-
-A többi erőforrástípus hasonlóan beállíthatja a társított sablon és az egyéb erőforrások közötti függőségeket is. Ha más erőforrásokhoz szükség van egy kimeneti értékre a csatolt sablonból, győződjön meg róla, hogy a csatolt sablon telepítve van. Vagy ha a csatolt sablon más erőforrásokra támaszkodik, győződjön meg arról, hogy a csatolt sablon előtt más erőforrások is telepítve vannak.
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworldparent.json" highlight="10,23":::
 
 A következő példa egy olyan sablont mutat be, amely nyilvános IP-címet telepít, és az adott nyilvános IP-címhez tartozó Azure-erőforrás erőforrás-AZONOSÍTÓját adja vissza:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "publicIPAddresses_name": {
-      "type": "string"
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Network/publicIPAddresses",
-      "apiVersion": "2018-11-01",
-      "name": "[parameters('publicIPAddresses_name')]",
-      "location": "eastus",
-      "properties": {
-        "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Dynamic",
-        "idleTimeoutInMinutes": 4
-      },
-      "dependsOn": []
-    }
-  ],
-  "outputs": {
-    "resourceID": {
-      "type": "string",
-      "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/public-ip.json" highlight="27":::
 
 Ha az előző sablonból a terheléselosztó telepítésekor a nyilvános IP-címet szeretné használni, csatolja a sablont, és állapítsa meg az erőforrás függőségét `Microsoft.Resources/deployments` . A terheléselosztó nyilvános IP-címe a kimeneti értékre van állítva a társított sablonban.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "loadBalancers_name": {
-      "defaultValue": "mylb",
-      "type": "string"
-    },
-    "publicIPAddresses_name": {
-      "defaultValue": "myip",
-      "type": "string"
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Network/loadBalancers",
-      "apiVersion": "2018-11-01",
-      "name": "[parameters('loadBalancers_name')]",
-      "location": "eastus",
-      "properties": {
-        "frontendIPConfigurations": [
-          {
-            "name": "LoadBalancerFrontEnd",
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                // this is where the output value from linkedTemplate is used
-                "id": "[reference('linkedTemplate').outputs.resourceID.value]"
-              }
-            }
-          }
-        ],
-        "backendAddressPools": [],
-        "loadBalancingRules": [],
-        "probes": [],
-        "inboundNatRules": [],
-        "outboundNatRules": [],
-        "inboundNatPools": []
-      },
-      // This is where the dependency is declared
-      "dependsOn": [
-        "linkedTemplate"
-      ]
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
-      "name": "linkedTemplate",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(deployment().properties.templateLink.uri, 'publicip.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters":{
-          "publicIPAddresses_name":{"value": "[parameters('publicIPAddresses_name')]"}
-        }
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json" highlight="28,41":::
 
 ## <a name="deployment-history"></a>Üzembe helyezési előzmények
 
@@ -809,7 +678,7 @@ Az alábbi példák a csatolt sablonok gyakori használatát mutatják be.
 |[Load Balancer nyilvános IP-címmel](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |A társított sablonból származó nyilvános IP-címet adja vissza, és beállítja a terheléselosztó értékét. |
 |[Több IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Több nyilvános IP-címet hoz létre a társított sablonban.  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az oktatóanyagot a következő témakörben tekintheti meg [: oktatóanyag: csatolt Azure Resource Manager-sablonok létrehozása](./deployment-tutorial-linked-template.md).
 * Az erőforrások telepítési sorrendjének definiálásával kapcsolatos további információkért lásd: [függőségek meghatározása Azure Resource Manager sablonokban](define-resource-dependency.md).

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7be0278fd8870395b8495168eb9723780eba4b26
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "65464866"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852370"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Az eszközszimulációs megoldásgyorsító áttekintése
 
@@ -36,7 +36,7 @@ Az eszköz szimulációja ingyenes. Az eszköz szimulációja azonban üzembe he
 
 ## <a name="sample-simulations"></a>Példa szimulációk
 
-Az eszköz-szimuláció üzembe helyezése során néhány példa szimulációt és minta-eszközt kap. Ezekkel a mintákkal megtudhatja, hogyan használhatja az eszköz-szimulációt. Első lépésként futtasson egy olyan [minta-szimulációt, amely 10 teherautót szimulál](quickstart-device-simulation-deploy.md). [Saját szimulációt is létrehozhat a számos megadott eszköz egyikének használatával](iot-accelerators-device-simulation-create-simulation.md).
+Az eszköz-szimuláció üzembe helyezése során néhány példa szimulációt és minta-eszközt kap. Ezekkel a mintákkal megtudhatja, hogyan használhatja az eszköz-szimulációt. Első lépésként futtasson egy [minta szimulációt](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md). [Saját szimulációt is létrehozhat a számos megadott eszköz egyikének használatával](iot-accelerators-device-simulation-create-simulation.md).
 
 ![Szimuláció konfigurálása](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
@@ -58,9 +58,9 @@ A speciális eszköz modelljei a következőket teszik lehetővé:
 * Egyéni parancsfájlok használatával olyan telemetria-értékeket hozhat elő, amelyek az eszköz állapotát az idő múlásával őrzik meg.
 * Egyéni parancsfájlok használata annak megadásához, hogy a szimulált eszköz hogyan válaszoljon a metódusokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta az eszköz-szimulációs megoldás-gyorsító és annak képességeit. A megoldás-gyorsító használatának megkezdéséhez folytassa a gyors üzembe helyezéssel:
+Ebben a cikkben megtanulta az eszköz-szimulációs megoldás-gyorsító és annak képességeit. A megoldás-gyorsító üzembe helyezéséhez látogasson el a GitHub-tárházba:
 
 > [!div class="nextstepaction"]
-> [IoT-eszköz szimulációjának üzembe helyezése és futtatása az Azure-ban](quickstart-device-simulation-deploy.md)
+> [IoT-eszköz szimulációjának üzembe helyezése és futtatása az Azure-ban](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)

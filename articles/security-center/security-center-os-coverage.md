@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 68cb738ae6e4689a0356ea56c1de2d383ea83ad6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31ff3620bcab6b10b59582daa255ff1f259ab0d3
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449935"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852642"
 ---
 # <a name="supported-platforms"></a>Támogatott platformok 
 
@@ -44,8 +44,10 @@ A Security Center a [log Analytics ügynöktől](../azure-monitor/platform/agent
 
 Győződjön meg arról is, hogy a Log Analytics ügynök [megfelelően van konfigurálva, hogy az adatküldés Security Center](security-center-enable-data-collection.md#manual-agent)
 
-> [!TIP]
-> Ha többet szeretne megtudni a Windows és Linux rendszerhez elérhető konkrét Security Center funkciókról, tekintse meg a [számítógépek szolgáltatás lefedettségét](security-center-services.md)ismertető témakört.
+Ha többet szeretne megtudni a Windows és Linux rendszerhez elérhető konkrét Security Center funkciókról, tekintse meg a [számítógépek szolgáltatás lefedettségét](security-center-services.md)ismertető témakört.
+
+> [!NOTE]
+> Bár az Azure Defender úgy van kialakítva, hogy megvédje a kiszolgálókat, a Windows 10 rendszerű gépek esetében az Azure Defender legtöbb funkciója támogatott a **kiszolgálókon** . Az egyik jelenleg nem támogatott funkció [Security Center integrált EDR megoldás: a Microsoft Defender for Endpoint](security-center-wdatp.md).
 
 ## <a name="managed-virtual-machine-services"></a>Felügyelt virtuális gépek szolgáltatásai <a name="virtual-machine"></a>
 

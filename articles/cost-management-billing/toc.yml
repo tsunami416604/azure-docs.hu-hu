@@ -188,15 +188,15 @@
               href: manage/pay-by-invoice.md
             - name: További előfizetések létrehozása
               href: manage/create-subscription.md
-            - name: Nagyvállalati előfizetések programozott létrehozása a legfrissebb API-val
+            - name: EA-előfizetések létrehozása – REST
               href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: MCA-előfizetések programozott létrehozása a legfrissebb API-val
+            - name: MCA-előfizetések létrehozása – REST
               href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: MPA-előfizetések programozott létrehozása a legfrissebb API-val
+            - name: MPA-előfizetések létrehozása – REST
               href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: Előfizetések programozott létrehozása ARM-sablon használatával
+            - name: Előfizetések létrehozása – ARM-sablon
               href: manage/create-subscription-template.md
-            - name: Előfizetések programozott létrehozása az API régi előzetes verziójával
+            - name: Előfizetések létrehozása – előzetes verziójú REST
               href: manage/programmatically-create-subscription-preview.md
             - name: Hozzáférés biztosítása EA-előfizetések létrehozásához
               href: manage/grant-access-to-create-subscription.md
