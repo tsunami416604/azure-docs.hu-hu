@@ -1,20 +1,20 @@
 ---
 title: Egy tulajdonság több példányának meghatározása
-description: A másolási művelettel egy Azure Resource Manager sablonban több alkalommal is megismételheti a tulajdonságok egy erőforráson való létrehozásakor.
+description: Egy Azure Resource Manager sablonban (ARM-sablonban) lévő másolási művelettel több alkalommal is megismételheti a tulajdonságok egy erőforráson való létrehozásakor.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: f199872d5bb8a0333bf7bedb9501a6ca1b884691
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 446a303104e6b538129cd22d1f1fbbba6282b2ee
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605243"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905927"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Tulajdonság-iteráció az ARM-sablonokban
 
-Ez a cikk bemutatja, hogyan hozhat létre egy tulajdonság több példányát a Azure Resource Manager-sablonban (ARM-sablon). Ha hozzáadja a **Másolás** elemet a sablon egyik erőforrásának Properties (Tulajdonságok) szakaszához, akkor dinamikusan állíthatja be a tulajdonság elemeinek számát a telepítés során. Emellett ne kelljen megismételni a sablon szintaxisát.
+Ez a cikk bemutatja, hogyan hozhat létre egy tulajdonság több példányát a Azure Resource Manager-sablonban (ARM-sablon). Az `copy` elemnek a sablonban lévő erőforrás tulajdonságok szakaszába való hozzáadásával dinamikusan állíthatja be egy tulajdonság elemeinek számát a telepítés során. Emellett ne kelljen megismételni a sablon szintaxisát.
 
-A másolást csak legfelső szintű erőforrásokkal használhatja, még akkor is, ha a másolást egy tulajdonságra alkalmazza. A gyermek-erőforrások legfelső szintű erőforrásra történő módosításával kapcsolatos tudnivalókat [az alárendelt erőforrás iterációjában](copy-resources.md#iteration-for-a-child-resource)talál.
+Csak `copy` a legfelső szintű erőforrásokkal használható, még akkor is, ha `copy` egy tulajdonságra alkalmaz. A gyermek-erőforrások legfelső szintű erőforrásra történő módosításával kapcsolatos tudnivalókat [az alárendelt erőforrás iterációjában](copy-resources.md#iteration-for-a-child-resource)talál.
 
 A másolás [erőforrásokat](copy-resources.md), [változókat](copy-variables.md)és [kimeneteket](copy-outputs.md)is használhat.
 
@@ -32,11 +32,11 @@ A másolási elem a következő általános formátumú:
 ]
 ```
 
-A **név mezőben**adja meg a létrehozni kívánt erőforrás-tulajdonság nevét.
+A (z) esetében `name` adja meg a létrehozni kívánt erőforrás-tulajdonság nevét.
 
-A **Count** tulajdonság megadja a tulajdonsághoz használni kívánt iterációk számát.
+A `count` tulajdonság megadja a tulajdonsághoz használni kívánt iterációk számát.
 
-A **bemeneti** tulajdonság határozza meg a megismételni kívánt tulajdonságokat. A **bemeneti** tulajdonság értékével létrehozott elemek tömbjét hozza létre.
+A `input` tulajdonság a megismételni kívánt tulajdonságokat adja meg. A tulajdonság értéke alapján létrehozott elemek tömbjét hozza létre `input` .
 
 ## <a name="copy-limits"></a>Másolási korlátok
 
@@ -53,7 +53,7 @@ A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla é
 
 ## <a name="property-iteration"></a>Tulajdonság iterációja
 
-Az alábbi példa bemutatja, hogyan alkalmazható a `copy` virtuális gép dataDisks tulajdonságára:
+Az alábbi példa azt szemlélteti, hogyan alkalmazható a `copy` `dataDisks` tulajdonság egy virtuális gépen:
 
 ```json
 {
@@ -97,7 +97,7 @@ Az alábbi példa bemutatja, hogyan alkalmazható a `copy` virtuális gép dataD
 }
 ```
 
-Figyelje meg, hogy ha `copyIndex` egy tulajdonság-iteráción belül használ, meg kell adnia az iteráció nevét. A tulajdonság iterációja egy eltolási argumentumot is támogat. Az eltolásnak az iteráció neve után kell érkeznie, például copyIndex (' dataDisks ', 1).
+Figyelje meg, hogy ha `copyIndex` egy tulajdonság-iteráción belül használ, meg kell adnia az iteráció nevét. A tulajdonság iterációja egy eltolási argumentumot is támogat. Az eltolásnak az iteráció neve után kell érkeznie, például: `copyIndex('dataDisks', 1)` .
 
 A Resource Manager kibontja a `copy` tömböt az üzembe helyezés során. A tömb neve lesz a tulajdonság neve. A bemeneti értékek az objektum tulajdonságai lesznek. A központilag telepített sablon a következőket válik:
 
@@ -188,7 +188,7 @@ A következő példa sablon létrehoz egy feladatátvételi csoportot a tömbké
 }
 ```
 
-A másolási elem egy tömb, így több tulajdonság is megadható az erőforráshoz.
+Az `copy` elem egy tömb, így több tulajdonság is megadható az erőforráshoz.
 
 ```json
 {
@@ -260,11 +260,10 @@ Az alábbi példa egy olyan általános forgatókönyvet mutat be, amely egy tul
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az oktatóanyag lépéseinek megismeréséhez tekintse meg az [oktatóanyag: több erőforrás-példány létrehozása ARM-sablonok használatával](template-tutorial-create-multiple-instances.md)című témakört.
+* Az oktatóanyag lépéseinek megismeréséhez tekintse meg [az oktatóanyag: több erőforrás-példány létrehozása ARM-sablonokkal](template-tutorial-create-multiple-instances.md)című témakört.
 * A másolási elem egyéb felhasználási módjaiért lásd:
   * [Erőforrás-iteráció az ARM-sablonokban](copy-resources.md)
   * [Változó iteráció az ARM-sablonokban](copy-variables.md)
   * [Kimeneti iteráció az ARM-sablonokban](copy-outputs.md)
-* Ha szeretne többet megtudni egy sablon fejezeteiről, tekintse meg a következő témakört: [ARM-sablonok készítése](template-syntax.md).
-* A sablon üzembe helyezésével kapcsolatos további információkért lásd: [alkalmazás üzembe helyezése ARM-sablonnal](deploy-powershell.md).
-
+* Ha szeretne többet megtudni a sablonok részeiről, tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című szakaszt.
+* A sablon üzembe helyezésének megismeréséhez tekintse meg az [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShellával](deploy-powershell.md)foglalkozó témakört.

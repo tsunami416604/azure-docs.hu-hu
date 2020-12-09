@@ -1,26 +1,26 @@
 ---
 title: Több erőforrás-példány üzembe helyezése
-description: A másolási művelet és tömbök használata Azure Resource Manager sablonban az erőforrástípus többszöri üzembe helyezéséhez.
+description: A másolási művelet és tömbök használata Azure Resource Manager sablonban (ARM-sablon) az erőforrástípus többszöri üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47f3d693b84347973889a6003360d7113c427f4d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293968"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905910"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Erőforrás-iteráció az ARM-sablonokban
 
-Ez a cikk bemutatja, hogyan hozhat létre egy erőforrás több példányát a Azure Resource Manager-(ARM-) sablonban. Ha hozzáadja a **Másolás** elemet a sablon erőforrások szakaszához, akkor dinamikusan beállíthatja a telepítendő erőforrások számát. Emellett ne kelljen megismételni a sablon szintaxisát.
+Ez a cikk bemutatja, hogyan hozhat létre egy erőforrás több példányát a Azure Resource Manager-sablonban (ARM-sablon). Ha hozzáadja az `copy` elemet a sablon erőforrások szakaszához, akkor dinamikusan beállíthatja a telepítendő erőforrások számát. Emellett ne kelljen megismételni a sablon szintaxisát.
 
-A másolást a [Tulajdonságok](copy-properties.md), a [változók](copy-variables.md)és a [kimenetek](copy-outputs.md)segítségével is használhatja.
+`copy`A [tulajdonságokat](copy-properties.md), a [változókat](copy-variables.md)és a [kimeneteket](copy-outputs.md)is használhatja.
 
 Ha meg kell adnia, hogy az erőforrás telepítve van-e, tekintse meg a [feltétel elemet](conditional-resource-deployment.md).
 
 ## <a name="syntax"></a>Syntax
 
-A másolási elem a következő általános formátumú:
+Az `copy` elem formátuma a következő:
 
 ```json
 "copy": {
@@ -31,9 +31,9 @@ A másolási elem a következő általános formátumú:
 }
 ```
 
-A **Name** tulajdonság bármely olyan érték, amely a hurok azonosítására szolgál. A **Count** tulajdonság határozza meg az erőforrástípus kívánt ismétlések számát.
+A `name` tulajdonság bármely olyan érték, amely a hurok azonosítására szolgál. A `count` tulajdonság határozza meg az erőforrástípus kívánt ismétlések számát.
 
-A **Mode** és a **batchSize** tulajdonsággal adhatja meg, hogy az erőforrások párhuzamosan vagy sorba vannak-e telepítve. Ezeket a tulajdonságokat a [soros vagy párhuzamosan](#serial-or-parallel)kell ismertetni.
+A `mode` és a `batchSize` Tulajdonságok használatával adhatja meg, hogy az erőforrások párhuzamosan vagy sorba vannak-e telepítve. Ezeket a tulajdonságokat a [soros vagy párhuzamosan](#serial-or-parallel)kell ismertetni.
 
 ## <a name="copy-limits"></a>Másolási korlátok
 
@@ -52,7 +52,7 @@ A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla é
 
 ## <a name="resource-iteration"></a>Erőforrás-iteráció
 
-A következő példa a **storageCount** paraméterben megadott Storage-fiókok számát hozza létre.
+A következő példa a paraméterben megadott Storage-fiókok számát hozza létre `storageCount` .
 
 ```json
 {
@@ -97,7 +97,7 @@ A következő neveket hozza létre:
 * storage1
 * storage2.
 
-Az indexérték eltolásához megadhat egy értéket a copyIndex() függvényben. Az ismétlések száma továbbra is meg van adva a másolási elemben, de a copyIndex értéke a megadott értékkel van ellensúlyozva. Tehát a következő példa:
+Az index értékének eltolásához átadhat egy értéket a `copyIndex()` függvényben. Az ismétlések száma továbbra is meg van adva a másolási elemben, de a értéke a `copyIndex` megadott értékkel van kiegyenlítve. Tehát a következő példa:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -187,7 +187,7 @@ Ha például a Storage-fiókokat egyszerre két sorba szeretné telepíteni, has
 }
 ```
 
-A Mode (mód) tulajdonság szintén **párhuzamosan**fogadja el az alapértelmezett értéket.
+A `mode` tulajdonság szintén **párhuzamosan** fogadja el az alapértelmezett értéket.
 
 ## <a name="depend-on-resources-in-a-loop"></a>Egy hurok erőforrásaitól függ
 
@@ -291,12 +291,11 @@ Az alábbi példák egy erőforrás vagy tulajdonság egynél több példányán
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az oktatóanyag lépéseinek megismeréséhez tekintse meg az [oktatóanyag: több erőforrás-példány létrehozása ARM-sablonok használatával](template-tutorial-create-multiple-instances.md)című témakört.
+* Az oktatóanyag lépéseinek megismeréséhez tekintse meg [az oktatóanyag: több erőforrás-példány létrehozása ARM-sablonokkal](template-tutorial-create-multiple-instances.md)című témakört.
 * A másolási elem egyéb felhasználási módjaiért lásd:
   * [Tulajdonság-iteráció az ARM-sablonokban](copy-properties.md)
   * [Változó iteráció az ARM-sablonokban](copy-variables.md)
   * [Kimeneti iteráció az ARM-sablonokban](copy-outputs.md)
 * További információ a másolás beágyazott sablonokkal történő használatáról: [a másolás használata](linked-templates.md#using-copy).
-* Ha szeretne többet megtudni egy sablon fejezeteiről, tekintse meg a következő témakört: [ARM-sablonok készítése](template-syntax.md).
-* A sablon üzembe helyezésével kapcsolatos további információkért lásd: [alkalmazás üzembe helyezése ARM-sablonnal](deploy-powershell.md).
-
+* Ha szeretne többet megtudni a sablonok részeiről, tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című szakaszt.
+* A sablon üzembe helyezésének megismeréséhez tekintse meg az [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShellával](deploy-powershell.md)foglalkozó témakört.
