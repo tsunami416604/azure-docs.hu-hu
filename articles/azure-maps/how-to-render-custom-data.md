@@ -3,18 +3,18 @@ title: Egyéni adathalmazok renderelése raszteres térképeken | Microsoft Azur
 description: Megtudhatja, hogyan adhat hozzá pushpins, címkéket és geometriai alakzatokat egy raszteres térképhez. Tekintse meg, hogyan használható a statikus rendszerkép szolgáltatás a Azure Maps erre a célra.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 88afb380f1aabf0c91e9d5abb0430972743eb6c2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5c70835c11bafb3fd06645ba51099b33d1eb6149
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895749"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906080"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adathalmazok renderelése egy raszteres térképen
 
@@ -223,4 +223,4 @@ Hasonlóképpen megváltoztathatja, hozzáadhatja és eltávolíthatja a többi 
 
 
 * Ismerkedjen meg a [Azure Maps Map RENDSZERKÉP API](/rest/api/maps/render/getmapimage) dokumentációjának használatával.
-* Ha többet szeretne megtudni a Azure Maps adatszolgáltatásról, tekintse meg a [szolgáltatás dokumentációját](/rest/api/maps/data).
+* Ha többet szeretne megtudni a Azure Maps adatszolgáltatásról (előzetes verzió), tekintse meg a [szolgáltatás dokumentációját](/rest/api/maps/data).

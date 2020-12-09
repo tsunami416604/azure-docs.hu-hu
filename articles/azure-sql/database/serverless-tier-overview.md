@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 9/17/2020
-ms.openlocfilehash: 1a51d2140528e3f6ed6da0ca699d7b71b91638ec
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 12/8/2020
+ms.openlocfilehash: bd8f5a28b709a45e99e846fb4e242f774aca80c5
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743166"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902510"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -128,7 +128,7 @@ Az autoszüneteltetés átmenetileg megakadályozható néhány olyan szolgálta
 
 Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltételek bármelyike teljesül:
 
-|Szolgáltatás|Trigger újraindítása|
+|Jellemző|Trigger újraindítása|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
 |Fenyegetések észlelése|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
@@ -136,8 +136,9 @@ Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltétel
 |Naplózás|Naplózási rekordok megtekintése.<br>Naplózási házirend frissítése vagy megtekintése.|
 |Adatmaszkolás|Az adatmaszkolási szabályok hozzáadása, módosítása, törlése vagy megtekintése|
 |Transzparens adattitkosítás|Transzparens adattitkosítás állapotának vagy állapotának megtekintése|
-|Biztonsági rések felmérése|Ad hoc vizsgálatok és rendszeres vizsgálatok, ha engedélyezve vannak|
+|Sebezhetőségi felmérés|Ad hoc vizsgálatok és rendszeres vizsgálatok, ha engedélyezve vannak|
 |Lekérdezés (teljesítmény) adattár|A lekérdezési tároló beállításainak módosítása vagy megtekintése|
+|Teljesítménnyel kapcsolatos javaslatok|Teljesítményre vonatkozó javaslatok megtekintése és alkalmazása|
 |Autotuning|Automatikus finomhangolási javaslatok alkalmazása és ellenőrzése, például automatikus indexelés|
 |Adatbázis másolása|Adatbázis létrehozása másolásként.<br>Exportálás BACPAC-fájlba.|
 |SQL-adatszinkronizálás|Az olyan központi és tag adatbázisok közötti szinkronizálás, amelyek konfigurálható ütemterv szerint futnak, vagy manuálisan végeznek műveleteket|
@@ -314,17 +315,17 @@ Az erőforrás-korlátokat lásd: [kiszolgáló nélküli számítási szintek](
 
 A számlázott számítások mennyisége a felhasznált CPU és a másodpercenként felhasznált memória maximális mennyisége. Ha a felhasznált CPU mennyisége és a felhasznált memória kevesebb, mint az egyesek számára kiépített minimális mennyiség, akkor a kiosztott mennyiség számlázásra kerül. Ha a CPU-t számlázási célokra szeretné összehasonlítani a memóriával, a memória a virtuális mag-egységekbe van normalizálva azáltal, hogy a memória mennyiségét GB-ban, virtuális mag 3 GB-onként átméretezni.
 
-- **Számlázott erőforrás** : CPU és memória
-- **Számlázott összeg** : virtuális mag egység ára * Max (min virtuális mag, virtuális mag felhasznált, minimális memória gb * 1/3, memória GB használatban * 1/3) 
-- **Számlázási gyakoriság** : másodpercenként
+- **Számlázott erőforrás**: CPU és memória
+- **Számlázott összeg**: virtuális mag egység ára * Max (min virtuális mag, virtuális mag felhasznált, minimális memória gb * 1/3, memória GB használatban * 1/3) 
+- **Számlázási gyakoriság**: másodpercenként
 
 A virtuális mag egység díja virtuális mag/másodperc. Egy adott régióban az adott egység áraira vonatkozó [Azure SQL Database díjszabási oldalán](https://azure.microsoft.com/pricing/details/sql-database/single/) talál további információt.
 
 A számlázott számítások mennyiségét a következő metrika teszi elérhetővé:
 
-- **Metrika** : App_cpu_billed (virtuális mag másodperc)
-- **Definíció** : Max (min. virtuális mag, felhasznált virtuális mag, minimális memória gb * 1/3, memória GB használatban * 1/3)
-- **Jelentéskészítés gyakorisága** : percenként
+- **Metrika**: App_cpu_billed (virtuális mag másodperc)
+- **Definíció**: Max (min. virtuális mag, felhasznált virtuális mag, minimális memória gb * 1/3, memória GB használatban * 1/3)
+- **Jelentéskészítés gyakorisága**: percenként
 
 Ezt a mennyiséget másodpercenként számítjuk ki, és 1 percenként összesítjük.
 

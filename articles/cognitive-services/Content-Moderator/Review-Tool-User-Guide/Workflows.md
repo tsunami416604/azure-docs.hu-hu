@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 0be77dc1ac249c37f9b59078451d8fbe35f17458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6eb2a2d2762b60a12bb9a24b92e2edae4b846cd1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72754256"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904142"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Moderálási munkafolyamatok definiálása és használata
 
@@ -23,11 +23,11 @@ Ebből az útmutatóból megtudhatja, hogyan állíthatja be és használhatja a
 
 ## <a name="create-a-new-workflow"></a>Új munkafolyamat létrehozása
 
-Lépjen a [Content moderator felülvizsgálati eszközre](https://contentmoderator.cognitive.microsoft.com/) , és jelentkezzen be. A **Beállítások** lapon válassza a **munkafolyamatok**lehetőséget.
+Lépjen a [Content moderator felülvizsgálati eszközre](https://contentmoderator.cognitive.microsoft.com/) , és jelentkezzen be. A **Beállítások** lapon válassza a **munkafolyamatok** lehetőséget.
 
 ![Munkafolyamatok beállítása](images/2-workflows-0.png)
 
-A következő képernyőn válassza a **munkafolyamat hozzáadása**elemet.
+A következő képernyőn válassza a **munkafolyamat hozzáadása** elemet.
 
 ![Munkafolyamat hozzáadása](images/2-workflows-1.png)
 
@@ -39,9 +39,9 @@ Nevezze el a munkafolyamatot, adjon meg egy leírást, és válassza ki, hogy a 
 
 ### <a name="define-evaluation-criteria"></a>Értékelési feltételek meghatározása
 
-A következő képernyőn lépjen az **IF** szakaszra. A felső legördülő menüben válassza a **feltétel**elemet. Ez lehetővé teszi a munkafolyamat által végrehajtandó feltétel konfigurálását. Ha több feltételt szeretne használni, válassza a **kombináció** helyet. 
+A következő képernyőn lépjen az **IF** szakaszra. A felső legördülő menüben válassza a **feltétel** elemet. Ez lehetővé teszi a munkafolyamat által végrehajtandó feltétel konfigurálását. Ha több feltételt szeretne használni, válassza a **kombináció** helyet. 
 
-Ezután válasszon egy összekötőt. Ez a példa **Content moderator**használ. A választott összekötőtől függően különböző beállításokat fog kapni az adatkimenethez. További összekötők beállításának megismeréséhez tekintse meg az eszközök áttekintése című útmutató [Összekötők](./configure.md#connectors) szakaszát.
+Ezután válasszon egy összekötőt. Ez a példa **Content moderator** használ. A választott összekötőtől függően különböző beállításokat fog kapni az adatkimenethez. További összekötők beállításának megismeréséhez tekintse meg az eszközök áttekintése című útmutató [Összekötők](./configure.md#connectors) szakaszát.
 
 ![Munkafolyamat-összekötő kiválasztása](images/image-workflow-connect-to.PNG)
 
@@ -81,6 +81,6 @@ Lépjen a **képek** lapra az **Áttekintés** területen, és ellenőrizze, hog
 
 ![Rendszerképek felülvizsgálata](images/image-workflow-review.PNG)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebből az útmutatóból megtudhatta, hogyan állíthatja be és használhatja a moderációs munkafolyamatokat a Content Moderator [felülvizsgálati eszközről](https://contentmoderator.cognitive.microsoft.com). Ezután tekintse meg a [REST API útmutatót](../try-review-api-workflow.md) , amelyből megtudhatja, hogyan hozhat létre programozott módon a munkafolyamatokat.
+Ebből az útmutatóból megtudhatta, hogyan állíthatja be és használhatja a moderációs munkafolyamatokat a Content Moderator [felülvizsgálati eszközről](https://contentmoderator.cognitive.microsoft.com). Következő lépésként tekintse meg az [API-konzol útmutatóját](../try-review-api-workflow.md) , amelyből megtudhatja, hogyan hozhat létre programozott módon a munkafolyamatokat.

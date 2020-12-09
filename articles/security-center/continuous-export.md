@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 12/08/2020
 ms.author: memildin
-ms.openlocfilehash: 43b66a59062a230aa2fba6909172deb5f1740b28
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: bdca5a753a49c26587db27892b54c2cb88910c83
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122324"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862462"
 ---
 # <a name="continuously-export-security-center-data"></a>Security Center-adatfeldolgozás folyamatos exportálása
 
@@ -72,6 +72,7 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
     - A biztonsági rések felmérésének eredményeit a gépeken lévő SQL-kiszolgálókon szervizelni kell (előzetes verzió)
     - A Azure Container Registry lemezképekben található biztonsági réseket szervizelni kell (Qualys-alapú)
     - A virtuális gépek biztonsági réseit szervizelni kell
+    - A rendszerfrissítéseket telepíteni kell a gépeken
 
     Ahhoz, hogy a megállapítások szerepeljenek a javaslatokban, engedélyezze a **biztonsági megállapítások belefoglalása** lehetőséget.
 
@@ -234,7 +235,7 @@ Igen! Vegye figyelembe, hogy sok Security Center riasztás csak akkor érhető e
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja a javaslatok és riasztások folyamatos exportálását. Azt is megtanulta, hogyan töltheti le a riasztási adatait CSV-fájlként. 
 

@@ -1,22 +1,27 @@
 ---
-title: Időjárási lefedettség Microsoft Azure térképeken
-description: A Microsoft Azure Maps időjárási lefedettségének megismerése.
+title: Microsoft Azure Maps időjárási szolgáltatások (előzetes verzió) lefedettsége
+description: További információ a Microsoft Azure Maps időjárási szolgáltatások (előzetes verzió) lefedettségéről
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 09/17/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 61e529e44f48343027457f18ba503e4bbb5930f1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6c4e9eb765a72b7a0b495f81a954b484ef6aa2b7
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896616"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905485"
 ---
-# <a name="azure-maps-weather-coverage"></a>Azure Maps időjárási lefedettség
+# <a name="azure-maps-weather-services-preview-coverage"></a>Azure Maps időjárási szolgáltatások (előzetes verzió) lefedettsége
+
+> [!IMPORTANT]
+> Azure Maps időjárási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Ez a cikk a Azure Maps [időjárási szolgáltatásokra](/rest/api/maps/weather)vonatkozó lefedettségi információkat tartalmaz. Azure Maps időjárási adatszolgáltatások olyan részleteket adnak vissza, mint például a radar csempéi, a jelenlegi időjárási feltételek, az időjárás-előrejelzés és az időjárás az útvonal mentén.
 
@@ -24,7 +29,7 @@ Azure Maps az összes ország és régió esetében nem rendelkezik azonos szint
 
 Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási információkról nyújt információt.
 
-| Szimbólum | Értelmezés |
+| Szimbólum | Jelentés |
 |--------|---------|
 |*       |A jelenlegi feltételekkel, óradíjas előrejelzéssel, negyedéves előrejelzéssel, napi előrejelzéssel, időjárással és napi indexekkel foglalkozik. |
 

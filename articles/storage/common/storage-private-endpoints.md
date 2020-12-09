@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 96e6b7a672e2967403626cb9ba7db87fc4dd795c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980201"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905553"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Privát végpontok használata az Azure Storage-hoz
 
@@ -125,10 +125,6 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 ## <a name="known-issues"></a>Ismert problémák
 
 Tartsa szem előtt az Azure Storage-hoz készült privát végpontok következő ismert problémáit.
-
-### <a name="copy-blob-support"></a>BLOB-támogatás másolása
-
-Ha a Storage-fiókot tűzfal védi, és a fiók privát végpontokon keresztül érhető el, akkor ez a fiók nem szolgálhat [másolási blob](/rest/api/storageservices/copy-blob) -művelet forrásaként.
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Tároló-hozzáférési megkötések a virtuális hálózatok-beli ügyfelek számára privát végpontokkal
 

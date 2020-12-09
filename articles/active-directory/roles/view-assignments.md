@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f7c6ec0917adbca5b44feee1ec285f4337ac4c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8546c2b50c78c7a24d07c75d2d730fd2566e8ba0
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579028"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862088"
 ---
 # <a name="view-custom-role-assignments-using-azure-active-directory"></a>Egyéni szerepkör-hozzárendelések megtekintése Azure Active Directory használatával
 
@@ -39,7 +39,7 @@ Ez az eljárás azt ismerteti, hogyan kell megtekinteni egy szerepkör hozzáren
 
 ## <a name="view-role-assignments-using-azure-ad-powershell"></a>Szerepkör-hozzárendelések megtekintése az Azure AD PowerShell-lel
 
-Ez a szakasz azt ismerteti, hogyan tekintheti meg egy szerepkör hozzárendeléseit a szervezetre kiterjedő hatókörrel. Ez a cikk a [Azure Active Directory PowerShell 2-es verziójának](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modulját használja. Ha az Egyalkalmazásos hatókör-hozzárendeléseket a PowerShell használatával szeretné megtekinteni, használja a parancsmagokat az [Egyéni szerepkörök hozzárendelése a PowerShell](custom-assign-powershell.md)-lel című részhez.
+Ez a szakasz azt ismerteti, hogyan tekintheti meg egy szerepkör hozzárendeléseit a szervezetre kiterjedő hatókörrel. Ez a cikk a [Azure Active Directory PowerShell 2-es verziójának](/powershell/module/azuread/#directory_roles) modulját használja. Ha az Egyalkalmazásos hatókör-hozzárendeléseket a PowerShell használatával szeretné megtekinteni, használja a parancsmagokat az [Egyéni szerepkörök hozzárendelése a PowerShell](custom-assign-powershell.md)-lel című részhez.
 
 ### <a name="prepare-powershell"></a>A PowerShell előkészítése
 

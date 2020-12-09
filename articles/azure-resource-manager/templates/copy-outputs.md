@@ -1,18 +1,18 @@
 ---
 title: Egy kimeneti érték több példányának meghatározása
-description: A másolási művelettel Azure Resource Manager sablonban több alkalommal is megismételhető, amikor értéket ad vissza egy központi telepítésből.
+description: A másolási műveletet egy Azure Resource Manager sablonban (ARM-sablon) használva többször is megismételheti, amikor egy központi telepítésből értéket ad vissza.
 ms.topic: conceptual
 ms.date: 04/17/2020
-ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ae20ed9ec3fdb3b76adbd370f5ba22f9386d613
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82583427"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905944"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Kimeneti iteráció az ARM-sablonokban
 
-Ez a cikk bemutatja, hogyan hozhat létre egynél több értéket egy kimenethez a Azure Resource Manager (ARM) sablonban. Ha hozzáadja a **Másolás** elemet a sablon outputs (kimenet) szakaszához, az üzembe helyezés során több elemet is dinamikusan visszaállíthat.
+Ez a cikk bemutatja, hogyan hozhat létre egynél több értéket egy kimenethez a Azure Resource Manager-sablonban (ARM-sablon). Ha hozzáadja az `copy` elemet a sablon outputs (kimenetek) szakaszához, akkor az üzembe helyezés során dinamikusan visszatérhet az elemek számával.
 
 A másolást [erőforrásokkal](copy-resources.md), [erőforrásokkal](copy-properties.md)és [változókkal](copy-variables.md)is elvégezheti.
 
@@ -27,9 +27,9 @@ A másolási elem a következő általános formátumú:
 }
 ```
 
-A **Count** tulajdonság megadja a kimeneti értékhez használni kívánt iterációk számát.
+A `count` tulajdonság megadja a kimeneti értékhez használni kívánt ismétlések számát.
 
-A **bemeneti** tulajdonság határozza meg a megismételni kívánt tulajdonságokat. A **bemeneti** tulajdonság értékével létrehozott elemek tömbjét hozza létre. Ez lehet egy tulajdonság (például egy karakterlánc) vagy egy olyan objektum, amely több tulajdonsággal rendelkezik.
+A `input` tulajdonság a megismételni kívánt tulajdonságokat adja meg. A tulajdonság értéke alapján létrehozott elemek tömbjét hozza létre `input` . Ez lehet egy tulajdonság (például egy karakterlánc) vagy egy olyan objektum, amely több tulajdonsággal rendelkezik.
 
 ## <a name="copy-limits"></a>Másolási korlátok
 
@@ -164,13 +164,12 @@ Az előző példa egy tömböt ad vissza a következő értékekkel:
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Az oktatóanyag lépéseinek megismeréséhez tekintse meg az [oktatóanyag: több erőforrás-példány létrehozása ARM-sablonok használatával](template-tutorial-create-multiple-instances.md)című témakört.
+* Az oktatóanyag lépéseinek megismeréséhez tekintse meg [az oktatóanyag: több erőforrás-példány létrehozása ARM-sablonokkal](template-tutorial-create-multiple-instances.md)című témakört.
 * A másolási elem egyéb felhasználási módjaiért lásd:
   * [Erőforrás-iteráció az ARM-sablonokban](copy-resources.md)
   * [Tulajdonság-iteráció az ARM-sablonokban](copy-properties.md)
   * [Változó iteráció az ARM-sablonokban](copy-variables.md)
-* Ha szeretne többet megtudni egy sablon fejezeteiről, tekintse meg a következő témakört: [ARM-sablonok készítése](template-syntax.md).
-* A sablon üzembe helyezésével kapcsolatos további információkért lásd: [alkalmazás üzembe helyezése ARM-sablonnal](deploy-powershell.md).
-
+* Ha szeretne többet megtudni a sablonok részeiről, tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című szakaszt.
+* A sablon üzembe helyezésének megismeréséhez tekintse meg az [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShellával](deploy-powershell.md)foglalkozó témakört.

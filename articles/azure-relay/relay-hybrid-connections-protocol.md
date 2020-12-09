@@ -3,12 +3,12 @@ title: Azure Relay Hibrid kapcsolatok Protocol-útmutató | Microsoft Docs
 description: Ez a cikk azokat az ügyféloldali interakciókat ismerteti, amelyekkel az Hibrid kapcsolatok Relay csatlakozik az ügyfelekhez a figyelő és a küldő szerepköreiben.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 893092124961ffa9df2535ca6de75def2930b797
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a812aa401077b81934d89ada99cf1dc312d8dbc
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531445"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862326"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hibrid kapcsolatok protokoll
 
@@ -137,7 +137,7 @@ A lekérdezési karakterlánc paraméterének beállításai a következők.
 | ---------------- | -------- | -------------------------------------------
 | `sb-hc-action`   | Igen      | A figyelő szerepkörhöz a paraméternek **SB-HC-Action = figyeljnek** kell lennie.
 | `{path}`         | Igen      | Az előre konfigurált hibrid kapcsolatok URL-kódolt névtérbeli elérési útja a figyelő regisztrálásához. A kifejezés a rögzített elérésiút-részhez lesz hozzáfűzve `$hc/` .
-| `sb-hc-token`    | igen\*    | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy hibrid kapcsolathoz, amely a **figyelési** jogosultságot biztosítja.
+| `sb-hc-token`    | Igen\*    | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy hibrid kapcsolathoz, amely a **figyelési** jogosultságot biztosítja.
 | `sb-hc-id`       | Nem       | Ez az ügyfél által megadott opcionális azonosító lehetővé teszi a végpontok közötti diagnosztikai nyomkövetést.
 
 Ha a WebSocket-kapcsolat sikertelen, mert a hibrid kapcsolati útvonal regisztrálása nem történik meg, vagy egy érvénytelen vagy hiányzó jogkivonat vagy valamilyen más hiba történt, a rendszer a hibaüzenetet a normál HTTP 1,1 állapot-visszajelzési modell használatával adja meg. Az állapot leírása olyan nyomkövetési azonosítót tartalmaz, amely az Azure-támogatási munkatársakkal is közölhető:
@@ -197,7 +197,7 @@ Az URL-címet a-ként kell használni az Accept szoftvercsatorna létrehozásáh
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | Igen      | A szoftvercsatorna elfogadásához a paraméternek a következőnek kell lennie: `sb-hc-action=accept`
 | `{path}`       | Igen      | (lásd a következő bekezdést)
-| `sb-hc-id`     | Nem       | Lásd az **azonosító**korábbi leírását.
+| `sb-hc-id`     | Nem       | Lásd az **azonosító** korábbi leírását.
 
 `{path}` az előre konfigurált hibrid kapcsolatok URL-kódolt névtérbeli elérési útja, amelyen regisztrálni kell a figyelőt. A kifejezés a rögzített elérésiút-részhez lesz hozzáfűzve `$hc/` .
 
@@ -414,7 +414,7 @@ A küldő protokoll lényegében azonos a figyelő létrehozási módjával.
 A cél a végpontok közötti WebSocket maximális átlátszósága. A figyelőhöz való kapcsolódáshoz használt címnek ugyanaz a címe, de a "művelet" különbözik, és a tokennek eltérő engedélyre van szüksége:
 
 ```
-wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=...
+wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sb-hc-token=...
 ```
 
 A _névtér-címnek_ a Azure Relay névtér teljes tartományneve, amely a hibrid kapcsolatokat tárolja, jellemzően az űrlapon `{myname}.servicebus.windows.net` .
@@ -427,13 +427,13 @@ A lekérdezési karakterlánc paraméterének beállításai a következők:
 | -------------- | --------- | -------------------------- |
 | `sb-hc-action` | Igen       | A küldő szerepkör esetében a paraméternek a következőnek kell lennie: `sb-hc-action=connect` .
 | `{path}`       | Igen       | (lásd a következő bekezdést)
-| `sb-hc-token`  | igen\*     | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy a hibrid kapcsolathoz, amely a **küldési** jogosultságot ruházza fel.
+| `sb-hc-token`  | Igen\*     | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy a hibrid kapcsolathoz, amely a **küldési** jogosultságot ruházza fel.
 | `sb-hc-id`     | Nem        | Egy opcionális azonosító, amely lehetővé teszi a végpontok közötti diagnosztikai nyomkövetést, és elérhetővé válik a figyelő számára az elfogadási kézfogás során.
 
  A az `{path}` előre konfigurált hibrid kapcsolatok URL-kódolt névtérbeli elérési útja, amelyen regisztrálni kell a figyelőt. A `path` kifejezés kiterjeszthető egy utótaggal és egy lekérdezési karakterlánc kifejezéssel a további kommunikációhoz. Ha a hibrid kapcsolatok az elérési úton vannak regisztrálva `hyco` , a `path` kifejezést `hyco/suffix?param=value&...` követheti az itt definiált lekérdezési karakterlánc paraméterei is. A teljes kifejezés a következő lehet:
 
 ```
-wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sbc-hc-token=...
+wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sb-hc-token=...
 ```
 
 A `path` kifejezés átkerül a figyelőbe az "elfogadás" vezérlő üzenetben található URL-címben.
@@ -462,7 +462,7 @@ A HTTP-kérelem protokollja tetszőleges HTTP-kérelmeket tesz lehetővé, a pro
 A HTTP-kérelmeket az entitás normál futtatókörnyezeti címe, a hibrid kapcsolatok WebSocket-ügyfelekhez használt $hc Infix nélkül kell megmutatni.
 
 ```
-https://{namespace-address}/{path}?sbc-hc-token=...
+https://{namespace-address}/{path}?sb-hc-token=...
 ```
 
 A _névtér-címnek_ a Azure Relay névtér teljes tartományneve, amely a hibrid kapcsolatokat tárolja, jellemzően az űrlapon `{myname}.servicebus.windows.net` .

@@ -1,24 +1,28 @@
 ---
-title: Jogosultságszint-emelési kérések igénylése a Azure Maps jogosultságszint-emelési szolgáltatás használatával
-description: Megtudhatja, hogyan kérheti le a jogosultságszint-emelési információkat a Azure Maps jogosultságszint-emelési szolgáltatás használatával.
+title: Jogosultságszint-emelési kérések igénylése a Azure Maps jogosultságszint-emelési szolgáltatással (előzetes verzió)
+description: Megtudhatja, hogyan igényelhet jogosultságszint-emelési információkat a Azure Maps jogosultságszint-emelési szolgáltatással (előzetes verzió).
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/02/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9937d72b44eb33df8027eddb9a9f500a372c9037
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552841"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906063"
 ---
-# <a name="request-elevation-data-using-the-azure-maps-elevation-service"></a>Jogosultságszint-emelési kérések igénylése a Azure Maps jogosultságszint-emelési szolgáltatás használatával
+# <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Jogosultságszint-emelési kérések igénylése a Azure Maps jogosultságszint-emelési szolgáltatással (előzetes verzió)
 
-A Azure Maps [jogosultságszint-emelési szolgáltatás](https://docs.microsoft.com/rest/api/maps/elevation) API-kat biztosít a jogosultságszint-emelési információ lekérdezéséhez a föld helyein. A mintavételes jogosultságszint-emelési adat az elérési utakon, egy meghatározott határolókereton vagy adott koordinátákon keresztül kérhető le. Azt is megteheti, hogy a [Render v2 – Get Map csempe API-](https://docs.microsoft.com/rest/api/maps/renderv2) val lekéri a jogosultságszint-emelési adatgyűjtési formátumot. A csempék GeoTIFF raszteres formátumban lesznek továbbítva. Ez a cikk bemutatja, hogyan használhatók a Azure Maps jogosultságszint-emelési szolgáltatás és a Map csempe API a jogosultságszint-emelési kérések igényléséhez. A jogosultságszint-emelési adatkérést GeoJSON és GeoTiff formátumban is kérheti.
+> [!IMPORTANT]
+> A Azure Maps jogosultságszint-emelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+A Azure Maps [jogosultságszint-emelési szolgáltatás](https://docs.microsoft.com/rest/api/maps/elevation) API-kat biztosít a jogosultságszint-emelési adatlekérdezéshez bárhol a Föld felszínén. A mintavételes jogosultságszint-emelési adat az elérési utakon, egy meghatározott határolókereton vagy adott koordinátákon keresztül kérhető le. Azt is megteheti, hogy a [Render v2 – Get Map csempe API-](https://docs.microsoft.com/rest/api/maps/renderv2) val lekéri a jogosultságszint-emelési adatgyűjtési formátumot. A csempék GeoTIFF raszteres formátumban lesznek továbbítva. Ez a cikk bemutatja, hogyan használhatók a Azure Maps jogosultságszint-emelési szolgáltatás és a Map csempe API a jogosultságszint-emelési kérések igényléséhez. A jogosultságszint-emelési adatkérést GeoJSON és GeoTiff formátumban is kérheti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,7 +54,7 @@ A jogosultságszint-emelési adattároló formátumában a [Render v2-Get Map cs
 
 ## <a name="request-elevation-data-in-geojson-format"></a>Jogosultságszint-emelési kérések GeoJSON formátumban
 
-A jogosultságszint-emelési szolgáltatás API-jai segítségével GeoJSON formátumban kérheti a jogosultságszint-emelési adatgyűjtést. Ez a szakasz a három API-t mutatja be:
+A jogosultságszint-emelési szolgáltatás (előzetes verzió) API-k segítségével GeoJSON formátumban kérheti a jogosultságszint-emelési kéréseket. Ez a szakasz a három API-t mutatja be:
 
 * [Pontok lekérdezése](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
 * [Pontok utáni adatposta](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
@@ -443,7 +447,7 @@ Ebben a példában a következő sorokat adjuk meg: 3 és Columns = 6. a válasz
     }
     ```
 
-## <a name="samples-use-elevation-service-apis-in-azure-maps-control"></a>Minták: jogosultságszint-emelési szolgáltatás API-k használata Azure Maps vezérlőben
+## <a name="samples-use-elevation-service-preview-apis-in-azure-maps-control"></a>Minták: jogosultságszint-emelési szolgáltatás (előzetes verzió) API-k használata Azure Maps vezérlőben
 
 ### <a name="get-elevation-data-by-coordinate-position"></a>Jogosultságszint-emelési állapot beolvasása koordináta-pozíció alapján
 
@@ -478,16 +482,16 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Azure Maps jogosultságszint-emelési API-k további megismeréséhez lásd:
+A Azure Maps jogosultságszint-emelési (előnézet) API-k további megismeréséhez lásd:
 
 > [!div class="nextstepaction"]
-> [Jogosultságszint-emelés – az adatlekérdezés a lat hosszú koordinátáihoz](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [Jogosultságszint-emelés (előzetes verzió) – az adatlekérdezés a lat hosszú koordinátáihoz](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
 
 > [!div class="nextstepaction"]
-> [Jogosultságszint-emelés – a határolókeret adatlekérdezése](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+> [Jogosultságszint-emelés (előzetes verzió) – a Határolókerethoz tartozó adat lekérése](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
 
 > [!div class="nextstepaction"]
-> [Jogosultságszint-emelés – a vonalláncra vonatkozó adatlekérdezés](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
+> [Jogosultságszint-emelés (előzetes verzió) – a vonalláncra vonatkozó adatlekérdezés](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 
 > [!div class="nextstepaction"]
 > [Render v2 – Térkép lekérése csempe](https://docs.microsoft.com/rest/api/maps/renderv2)

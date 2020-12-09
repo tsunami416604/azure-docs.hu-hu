@@ -4,16 +4,16 @@ description: A AzCopy egy parancssori segédprogram, amellyel az adatok átmáso
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperfq2
-ms.openlocfilehash: ad9b40b448b48500cd6882ac614611f91370ec9e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9379417fcb96dce8a59f7d81335cec44e1bb5e6a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410266"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901772"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AzCopy használatába
 
@@ -95,19 +95,20 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 Ha többet szeretne megtudni az SAS-jogkivonatokról és a beszerzéséről, tekintse meg a [közös hozzáférésű aláírások (SAS) használata](./storage-sas-overview.md)című témakört.
 
+<a id="transfer-data"></a>
+
 ## <a name="transfer-data"></a>Adatátvitel
 
 Miután engedélyezte a személyazonosságát, vagy SAS-tokent kapott, megkezdheti az adatok átvitelét.
 
 A parancsok megkereséséhez tekintse meg a cikkek bármelyikét.
 
-- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
-
-- [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
-
-- [Adatok átvitele a AzCopy és az Amazon S3 gyűjtővel](storage-use-azcopy-s3.md)
-
-- [Adatok átvitele a AzCopy és a Azure Stack Storage szolgáltatással](/azure-stack/user/azure-stack-storage-transfer#azcopy)
+| Szolgáltatás | Cikk |
+|--------|-----------|
+|Azure Blob Storage |[Fájlok feltöltése az Azure Blob Storage-ba](storage-use-azcopy-blobs-upload.md)<br><br>[Blobok letöltése az Azure Blob Storage-ból](storage-use-azcopy-blobs-download.md)<br><br>[Blobok másolása az Azure Storage-fiókok között](storage-use-azcopy-blobs-download.md)<br><br>[Szinkronizálás az Azure Blob Storage szolgáltatással](storage-use-azcopy-blobs-download.md)|
+|Azure Files |[Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)|
+|Amazon S3|[Adatok átvitele a AzCopy és az Amazon S3 gyűjtővel](storage-use-azcopy-s3.md)|
+|Azure Stack Storage|[Adatok átvitele a AzCopy és a Azure Stack Storage szolgáltatással](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
 
 ## <a name="use-in-a-script"></a>Használat parancsfájlokban
 
@@ -166,6 +167,6 @@ Ha a AzCopy előző verzióját kell használnia, tekintse meg az alábbi hivatk
 
 - [AzCopy Linux rendszeren (v7)](/previous-versions/azure/storage/storage-use-azcopy-linux)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha kérdése van, problémája vagy általános visszajelzése van, küldje el őket [a GitHub](https://github.com/Azure/azure-storage-azcopy) oldalon.

@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: f208752f13848f0f54648d934d1dfb518e2ea1fd
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 72541b8d8f8d8865c680c36f7f84cd91a4ce8ba2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95500340"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903326"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>A titkos kulcs elforgatásának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
@@ -158,7 +158,7 @@ A Storage-fiók kulcsainak egy meglévő függvényhez való hozzáadásához a 
 
 1. Válassza ki az Azure-sablon központi telepítési hivatkozását: 
 
-   [![Azure-sablonok üzembe helyezési hivatkozása.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json)
+   [![Azure-sablonok üzembe helyezési hivatkozása.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscriptions%2Fazuredeploy.json)
 
 1. Az **erőforráscsoport** listában válassza a **akvrotation** lehetőséget.
 1. A **Storage-fiók neve** mezőbe írja be annak a Storage-fióknak a nevét, amely a forgatni kívánt hozzáférési kulcsokat tartalmazza.

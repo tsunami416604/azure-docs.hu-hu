@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 88d004836d5311fc3a971df81a3dc6e6ab605ca9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993992"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861391"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
 Ennek a cikknek a célja annak ismertetése, hogyan használhatók a hatóköri szűrők olyan attribútum-alapú szabályok definiálásához, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
@@ -94,7 +94,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
    
    j. **Greater_Than_OR_EQUALS.** A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum értéke nagyobb vagy egyenlő, mint az érték. A hatóköri szűrőben megadott értéknek egész számnak kell lennie, és a felhasználó attribútumának egész számnak ([0, 1, 2,...]) kell lennie. 
    
-   k. **Tartalmazza.** A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum tartalmazza a sztringet (kis-és nagybetűk megkülönböztetése) az [itt](/dotnet/api/system.string.contains?view=netframework-4.8)leírt módon 
+   k. **Tartalmazza.** A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum tartalmazza a sztringet (kis-és nagybetűk megkülönböztetése) az [itt](/dotnet/api/system.string.contains)leírt módon 
 
 
 >[!IMPORTANT] 
@@ -105,7 +105,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 10. A **hatóköri szűrő címe** területen adja meg a hatókör-szűrő nevét.
 
-11. Válassza az **OK** lehetőséget.
+11. Kattintson az **OK** gombra.
 
 12. Kattintson ismét az **OK gombra** a **hatókör szűrők** képernyőjén. Szükség esetén ismételje meg a 6-11-es lépést egy másik hatókör-szűrő hozzáadásához.
 

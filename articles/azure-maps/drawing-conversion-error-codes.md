@@ -3,17 +3,17 @@ title: Azure Maps rajz-átalakítási hibák és figyelmeztetések
 description: Ismerje meg az átalakítási hibákat és a figyelmeztetéseket, amelyek a Azure Maps átalakítási szolgáltatás használata során esetlegesen teljesülnek. Néhány példa a hibák és a figyelmeztetések megoldásával kapcsolatos javaslatok elolvasására.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 04a43e3e2fa9ad77e11f82ff38a144a1de3add78
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cecc19f0984ce1801d50e5cbda73e98a01e2825b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895936"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906216"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Rajz átalakítási hibái és figyelmeztetései
 
@@ -159,7 +159,7 @@ A **redundantAttribution** figyelmeztetés akkor fordul elő, ha a jegyzékfájl
 
 #### <a name="how-to-fix-redundantattribution"></a>*A redundantAttribution javítása*
 
-A * *redundantAttribution* figyelmeztetés kijavításához távolítsa el a redundáns vagy ütköző objektum tulajdonságait.
+A **redundantAttribution* figyelmeztetés kijavításához távolítsa el a redundáns vagy ütköző objektum tulajdonságait.
 
 ### <a name="manifestwarning"></a>**manifestWarning**
 
@@ -330,7 +330,7 @@ Nem megfelelő paraméterrel próbált meg feltölteni egy rajzfájl-csomagot `u
 A **invalidUserData** hibáinak kijavításához ellenőrizze a következőket:
 
 * Megfelelőt adott meg `udid` a feltöltött csomaghoz.
-* A Azure Maps létrehozója engedélyezve lett a rajzfájl feltöltéséhez használt Azure Maps-fiókhoz.
+* A Azure Maps létrehozója (előzetes verzió) engedélyezve van a rajzfájl feltöltéséhez használt Azure Maps-fiókhoz.
 * Az átalakítási szolgáltatás API-kérelme tartalmazza az előfizetési kulcsot arra a Azure Maps fiókra, amelyet a rajzfájl feltöltéséhez használt.
 
 ### <a name="dwgerror"></a>**dwgError**
@@ -506,4 +506,4 @@ A **verticalPenetrationError** hibáinak kijavításához olvassa el a vertikál
 > [A Azure Maps Rajzolási hibák megjelenítésének használata](drawing-error-visualizer.md)
 
 > [!div class="nextstepaction"]
-> [A beltéri leképezés létrehozója](creator-indoor-maps.md)
+> [Creator (előzetes verzió) beltéri leképezéshez](creator-indoor-maps.md)

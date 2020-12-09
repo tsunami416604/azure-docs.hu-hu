@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79749533d636f4b73ff3bef6b12d9e842ac485ea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72754183"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905166"
 ---
-# <a name="define-and-use-moderation-workflows-rest"></a>Moderálási munkafolyamatok definiálása és használata (REST)
+# <a name="define-and-use-moderation-workflows-api-console"></a>Moderálási munkafolyamatok definiálása és használata (API-konzol)
 
 A munkafolyamatok olyan felhőalapú testreszabott szűrők, amelyek segítségével hatékonyabban kezelheti a tartalmakat. A munkafolyamatok számos szolgáltatáshoz kapcsolódhatnak, hogy különböző módokon szűrje a tartalmakat, majd a megfelelő műveletet hajtsa végre. Ez az útmutató bemutatja, hogyan használhatja a munkafolyamat REST API-ját az API-konzolon munkafolyamatok létrehozásához és használatához. Miután megértette az API-k szerkezetét, könnyedén elvégezheti ezeket a hívásokat a REST-kompatibilis platformokra.
 
@@ -27,24 +27,24 @@ A munkafolyamatok olyan felhőalapú testreszabott szűrők, amelyek segítség�
 
 ## <a name="create-a-workflow"></a>Munkafolyamat létrehozása
 
-Munkafolyamatok létrehozásához vagy frissítéséhez lépjen a **[munkafolyamat – létrehozás vagy frissítés API-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** hivatkozás lapra, és válassza ki a kulcs régiójához tartozó gombot (ezt a végpont URL-címében találja a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) **hitelesítő adatok** lapján). Ezzel elindítja az API-konzolt, ahol könnyedén hozhat létre és futtathat REST API hívásokat.
+Munkafolyamatok létrehozásához vagy frissítéséhez lépjen a **[munkafolyamat – létrehozás vagy frissítés API-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** hivatkozás lapra, és válassza ki a kulcsfontosságú régióhoz tartozó gombot. A régiót a végpont URL-címében találja a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) **hitelesítő adatok** lapján. Ezzel elindítja az API-konzolt, ahol könnyedén hozhat létre és futtathat REST API hívásokat.
 
 ![Munkafolyamat – oldal régiójának létrehozása vagy frissítése](images/test-drive-region.png)
 
 ### <a name="enter-rest-call-parameters"></a>Adja meg a REST-hívás paramétereit
 
-Adja meg a **Team**, a **Workflowname**és a **OCP-APIM-Subscription-Key**értékeket:
+Adja meg a **Team**, a **Workflowname** és a **OCP-APIM-Subscription-Key** értékeket:
 
 - **csapat**: a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) fiókjának beállításakor létrehozott csoport azonosítója (a felülvizsgálati eszköz hitelesítő adatai képernyő **azonosító** mezőjében található).
 - **workflowname**: a hozzáadandó új munkafolyamat neve (vagy egy meglévő név, ha frissíteni kíván egy meglévő munkafolyamatot).
-- **OCP-APIM-előfizetés-kulcs**: a Content moderator kulcsa. Ez a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) **Beállítások** lapján található.
+- **OCP-APIM-előfizetés-kulcs**: a Content moderator kulcsa. Ezt a kulcsot a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) **Beállítások** lapján találja.
 
 ![Munkafolyamat – konzol lekérdezési paramétereinek és fejlécének létrehozása vagy frissítése](images/workflow-console-parameters.PNG)
 
 ### <a name="enter-a-workflow-definition"></a>Munkafolyamat-definíció megadása
 
 1. A **kérelem törzse** mező szerkesztésével adja meg a JSON-kérést a **Leírás** és a **típus** részleteivel ( `Image` vagy `Text` ).
-2. A **kifejezés**mezőben másolja az alapértelmezett munkafolyamat JSON-kifejezését. A végső JSON-sztringnek így kell kinéznie:
+2. A **kifejezés** mezőben másolja az alapértelmezett munkafolyamat JSON-kifejezését. A végső JSON-sztringnek így kell kinéznie:
 
 ```json
 {
@@ -80,11 +80,11 @@ Adja meg a **Team**, a **Workflowname**és a **OCP-APIM-Subscription-Key**érté
 
 ### <a name="submit-your-request"></a>A kérés elküldése
   
-Válassza a **Küldés** lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **válasz tartalma** mező pedig megjelenik `true` .
+Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **válasz tartalma** mező pedig megjelenik `true` .
 
 ### <a name="examine-the-new-workflow"></a>Vizsgálja meg az új munkafolyamatot
 
-A [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com/)válassza a **Beállítások**  >  **munkafolyamatok**lehetőséget. Az új munkafolyamatnak meg kell jelennie a listában.
+A [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com/)válassza a **Beállítások**  >  **munkafolyamatok** lehetőséget. Az új munkafolyamatnak meg kell jelennie a listában.
 
 ![A munkafolyamatok listájának áttekintése](images/workflow-console-new-workflow.PNG)
 
@@ -102,7 +102,7 @@ Adja meg a REST-hívás paramétereit a fenti szakaszban leírtak szerint. Győz
 
 ![Lekérdezési paraméterek és fejlécek lekérése](images/workflow-get-default.PNG)
 
-Válassza a **Küldés** lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **Válasz tartalmának** mezője pedig JSON formátumban jeleníti meg a munkafolyamatot, a következőhöz hasonlóan:
+Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **válasz tartalma** pedig JSON formátumban jeleníti meg a munkafolyamatot, a következő példához hasonlóan:
 
 ```json
 {
@@ -137,6 +137,6 @@ Válassza a **Küldés** lehetőséget. Ha a művelet sikeres, a **Válasz álla
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan használhatja a [tartalmi moderálási feladatokkal](try-review-api-job.md)rendelkező munkafolyamatokat.

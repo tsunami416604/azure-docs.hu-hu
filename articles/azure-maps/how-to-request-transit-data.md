@@ -1,24 +1,29 @@
 ---
-title: Adatátviteli kérelmek továbbítása Microsoft Azure Maps mobilitási szolgáltatással
-description: Megtudhatja, hogyan használhatja a Azure Maps mobilitási szolgáltatást a nyilvános adatátviteli szolgáltatások, például a Metro-területi azonosítók, az átviteli leállások, az útvonalak és az útvonal-útvonalak igénylésére.
+title: Adatátviteli kérelmek továbbítása Microsoft Azure Maps mobilitási szolgáltatásokkal (előzetes verzió)
+description: Megtudhatja, hogyan használhatja a Azure Maps mobilitási szolgáltatásokat (előzetes verzió) a nyilvános árutovábbítási adatforgalom (például a Metro terület azonosítói, a továbbítási leállások, az útvonalak és az útvonal-útvonalak) igényléséhez.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/22/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3f6f50d0ffeb48b5f359221992cc9a51d2ebb056
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 740080d742f535f868b2ae194b24bebe5ac6ac24
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895664"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906029"
 ---
-# <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>A Azure Maps mobilitási szolgáltatással nyilvános árutovábbítási adatai igényelhetők
+# <a name="request-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>A Azure Maps mobilitási szolgáltatásokkal (előzetes verzió) kapcsolatos nyilvános adatátviteli kérelmek 
 
-Ez a cikk bemutatja, hogyan használhatja a Azure Maps [mobilitási szolgáltatást](/rest/api/maps/mobility) a nyilvános árutovábbítási adatforgalom igényléséhez. Az árutovábbítási adatok közé tartozik az átvitel leállítása, az útvonal-információ és az utazási idő becslése.
+> [!IMPORTANT]
+> Azure Maps mobilitási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+Ebből a cikkből megtudhatja, hogyan használhatja a Azure Maps [mobilitási szolgáltatásokat](/rest/api/maps/mobility) a nyilvános árutovábbítási adatforgalom igényléséhez. Az árutovábbítási adatok közé tartozik az átvitel leállítása, az útvonal-információ és az utazási idő becslése.
 
 Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
@@ -36,7 +41,7 @@ Ez az oktatóanyag a [Poster](https://www.postman.com/) alkalmazást használja,
 
 ## <a name="get-a-metro-area-id"></a>Metro-körzet AZONOSÍTÓjának beolvasása
 
-Ahhoz, hogy részletes információkat kérjen a tranzit-ügynökségekről és egy adott nagyvárosi terület támogatott továbbítási típusairól, `metroId` erre a területre szüksége lesz. A [Metro Area API beolvasása](/rest/api/maps/mobility/getmetroareapreview) lehetővé teszi, hogy olyan metró területeket kérjen, amelyekben elérhető a Azure Maps mobilitási szolgáltatás. A válasz olyan részleteket tartalmaz, mint a `metroId` , `metroName` és a Metro terület geometriájának ábrázolása GeoJSON formátumban.
+Ahhoz, hogy részletes információkat kérjen a tranzit-ügynökségekről és egy adott nagyvárosi terület támogatott továbbítási típusairól, `metroId` erre a területre szüksége lesz. A [Metro Area API beolvasása](/rest/api/maps/mobility/getmetroareapreview) lehetővé teszi, hogy olyan metró területeket kérjen, amelyekben elérhetők a Azure Maps mobilitási szolgáltatások. A válasz olyan részleteket tartalmaz, mint a `metroId` , `metroName` és a Metro terület geometriájának ábrázolása GeoJSON formátumban.
 
 Tegyük fel, hogy beolvassa a Metro területet a Seattle-Tacoma Metro területi AZONOSÍTÓhoz. A Metro-területek AZONOSÍTÓjának kéréséhez hajtsa végre a következő lépéseket:
 
@@ -115,7 +120,7 @@ A Azure Maps a [közeli tranzit](/rest/api/maps/mobility/getnearbytransitpreview
 
 Az alábbi lépések végrehajtásával teheti meg a lekéréses [továbbítást a közeli átvitelre](/rest/api/maps/mobility/getnearbytransitpreview):
 
-1. A Poster területen kattintson az **új kérelem**  |  **Get kérelem** és név lehetőségre, amely a **közeli leáll** .
+1. A Poster területen kattintson az **új kérelem**  |  **Get kérelem** és név lehetőségre, amely a **közeli leáll**.
 
 2. A Builder (szerkesztő) lapon válassza **a http lekérése** módszert, adja meg az API-végponthoz az alábbi kérelem URL-címét, majd kattintson a **Küldés** gombra.
 
@@ -224,7 +229,7 @@ A Space tű Tower hely koordinátáinak beszerzéséhez használjuk a Azure Maps
 
 Az alábbi lépések végrehajtásával teheti meg a kérést a fuzzy Search szolgáltatásnak:
 
-1. A Poster területen kattintson az **új kérelem**  |  **Get kérelem** elemre, és nevezze el a **hely koordinátáit** .
+1. A Poster területen kattintson az **új kérelem**  |  **Get kérelem** elemre, és nevezze el a **hely koordinátáit**.
 
 2. A Builder (szerkesztő) lapon válassza a http **beolvasása** metódust, adja meg a kérelem URL-címét, majd kattintson a **Küldés** gombra.
 
@@ -232,7 +237,7 @@ Az alábbi lépések végrehajtásával teheti meg a kérést a fuzzy Search szo
     https://atlas.microsoft.com/search/fuzzy/json?subscription-key={subscription-key}&api-version=1.0&query=space needle
     ```
 
-3. Ha alaposan megtekinti a választ, több helyet is tartalmaz az eredmények között a Space tű kereséséhez. Minden eredmény tartalmazza a hely koordinátáit a **pozícióban** . Másolja a `lat` és az `lon` első eredmény **pozícióját** .
+3. Ha alaposan megtekinti a választ, több helyet is tartalmaz az eredmények között a Space tű kereséséhez. Minden eredmény tartalmazza a hely koordinátáit a **pozícióban**. Másolja a `lat` és az `lon` első eredmény **pozícióját** .
 
    ```JSON
    {
@@ -331,11 +336,11 @@ Az alábbi lépések végrehajtásával teheti meg a kérést a fuzzy Search szo
 
 Egy útvonal-kérelem elvégzéséhez hajtsa végre az alábbi lépéseket:
 
-1. A Poster lapon kattintson az **új kérelem**  |  **Get kérelem** elemre, és nevezze el az **útválasztási adatokat** .
+1. A Poster lapon kattintson az **új kérelem**  |  **Get kérelem** elemre, és nevezze el az **útválasztási adatokat**.
 
 2. A Builder (szerkesztő) lapon válassza **a http lekérése** módszert, adja meg az API-végponthoz az alábbi kérelem URL-címét, majd kattintson a **Küldés** gombra.
 
-    A és a paraméterek megadásával egy buszra vonatkozó nyilvános átviteli útvonalakat fogunk kérni `modeType` `transitType` . A kérelem URL-címe tartalmazza az előző szakaszban lekért helyet. A esetében már `originType` van egy **stopId** . A esetében pedig `destionationType` a **pozíciónk** .
+    A és a paraméterek megadásával egy buszra vonatkozó nyilvános átviteli útvonalakat fogunk kérni `modeType` `transitType` . A kérelem URL-címe tartalmazza az előző szakaszban lekért helyet. A esetében már `originType` van egy **stopId**. A esetében pedig `destionationType` a **pozíciónk**.
 
     Tekintse meg a kérésben használható [URI-paraméterek listáját](/rest/api/maps/mobility/gettransitroutepreview#uri-parameters) a [Transit Routes API beszerzéséhez](/rest/api/maps/mobility/gettransitroutepreview).
   
@@ -526,7 +531,7 @@ Egy útvonal-kérelem elvégzéséhez hajtsa végre az alábbi lépéseket:
 
 A Azure Maps [Transit útvonal](/rest/api/maps/mobility/gettransititinerarypreview) -szolgáltatás lehetővé teszi, hogy egy adott útvonalra vonatkozó adatokat igényeljen az [átviteli útvonalak API](/rest/api/maps/mobility/gettransitroutepreview) szolgáltatása által visszaadott útvonal útvonal- **azonosítójának** használatával. A kérelem végrehajtásához hajtsa végre az alábbi lépéseket:
 
-1. A Poster lapon kattintson az **új kérelem**  |  **Get kérelem** elemre, és nevezze el az **átvitelhez szükséges adatokat** .
+1. A Poster lapon kattintson az **új kérelem**  |  **Get kérelem** elemre, és nevezze el az **átvitelhez szükséges adatokat**.
 
 2. A Builder (szerkesztő) lapon válassza a http **beolvasása** módszert. Adja meg az API-végponthoz a következő kérelem URL-címét, majd kattintson a **Küldés** gombra.
 
@@ -796,12 +801,12 @@ A Azure Maps [Transit útvonal](/rest/api/maps/mobility/gettransititineraryprevi
 
 ## <a name="next-steps"></a>Következő lépések
 
-Megtudhatja, hogyan kérhet valós idejű adatgyűjtést a mobilitási szolgáltatás használatával:
+Ismerje meg, hogyan kérhet valós idejű adatszolgáltatásokat a mobilitási szolgáltatások (előzetes verzió) használatával:
 
 > [!div class="nextstepaction"]
 > [Valós idejű adatkérések igénylése](how-to-request-real-time-data.md)
 
-A Azure Maps mobilitási szolgáltatás API dokumentációjának megismerése
+A Azure Maps mobilitási szolgáltatások (előzetes verzió) API dokumentációjának megismerése
 
 > [!div class="nextstepaction"]
-> [Mobilitási szolgáltatás dokumentációja](/rest/api/maps/mobility)
+> [A mobilitási szolgáltatások dokumentációja](/rest/api/maps/mobility)

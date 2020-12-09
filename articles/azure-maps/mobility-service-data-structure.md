@@ -1,27 +1,33 @@
 ---
-title: Mobilitási szolgáltatás adatstruktúrája Azure Mapsban | Microsoft Azure térképek
-description: Ismerje meg, Hogyan szerveződik az adatgyűjtés a Azure Maps mobilitási szolgáltatások Metro területein. Itt megtekintheti, hogy mely mezők tárolják a nyilvános tranzittal kapcsolatos információkat és sorokat.
+title: A mobilitási szolgáltatások (előzetes verzió) adatstruktúrája Microsoft Azure Maps-ben
+description: Ismerje meg, Hogyan szerveződik az adatgyűjtés a Azure Maps mobilitási szolgáltatások (előzetes verzió) területének Metro területein. Itt megtekintheti, hogy mely mezők tárolják a nyilvános tranzittal kapcsolatos információkat és sorokat.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/05/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 60d45febced2f2d678d41682f7f27bf668943de2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8ffedc18ba331733723a6293756b60b733cc32cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896310"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904720"
 ---
-# <a name="data-structures-in-azure-maps-mobility-service"></a>Adatstruktúrák a Azure Maps mobilitási szolgáltatásban
+# <a name="data-structures-in-azure-maps-mobility-services-preview"></a>Adatstruktúrák a Azure Maps mobilitási szolgáltatásokban (előzetes verzió) 
 
-Ez a cikk bemutatja a Metro terület koncepcióját [Azure Maps mobilitási szolgáltatásban](/rest/api/maps/mobility). Megbeszéljük azokat a gyakori mezőket, amelyeket a rendszer akkor ad vissza, ha a szolgáltatás lekérdezi a nyilvános tranzitot és a sorokat. Javasoljuk, hogy a mobilitási szolgáltatás API-jai fejlesztése előtt olvassa el ezt a cikket.
+> [!IMPORTANT]
+> Azure Maps mobilitási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+
+Ez a cikk a Metro terület koncepcióját mutatja be [Azure Maps mobilitási szolgáltatásokban](/rest/api/maps/mobility). Megbeszéljük azokat a gyakori mezőket, amelyeket a rendszer akkor ad vissza, ha a szolgáltatás lekérdezi a nyilvános tranzitot és a sorokat. Javasoljuk, hogy a mobilitási szolgáltatások API-kkal való fejlesztés előtt olvassa el ezt a cikket.
 
 ## <a name="metro-area"></a>Metro térség
 
-A mobilitási szolgáltatáshoz tartozó adatterületek támogatott Metro-területek szerint vannak csoportosítva. A Metro-területek nem követik a város határait. A Metro területén több város, sűrűn kitöltött város és Környező városok is szerepelhetnek. Valójában egy ország/régió lehet egy metró terület. 
+A mobilitási szolgáltatások (előzetes verzió) az egyes támogatott Metro területek szerint vannak csoportosítva. A Metro-területek nem követik a város határait. A Metro területén több város, sűrűn kitöltött város és Környező városok is szerepelhetnek. Valójában egy ország/régió lehet egy metró terület. 
 
 A `metroID` egy Metro-körzet azonosítója, amellyel hívható meg a [beolvasás Metro környék info API](/rest/api/maps/mobility/getmetroareainfopreview). Használja a "Metro beolvasása" API-t, hogy átAzure Maps tekintse az átviteli típusokat, az átléptető irodákat, az aktív riasztásokat és a kiválasztott Metro további részleteit. A támogatott Metro-területeket és metroIDs is kérheti. A Metro-területek azonosítói változhatnak.
 
@@ -37,7 +43,7 @@ Először is kérheti a közeli átvitelt a [közeli tranzit API](/rest/api/maps
 
 ## <a name="line-groups-and-lines"></a>Sorok és sorok
 
-A mobilitási szolgáltatás egy párhuzamos adatmodellt használ a vonalak és a sorok csoportjaihoz. Ez a modell a [GTFS](http://gtfs.org/) -útvonalakból és az utazások adatainak öröklésére szolgáló változások jobb kezelésére szolgál.
+A mobilitási szolgáltatások (előzetes verzió) párhuzamos adatmodellt használnak a vonalak és a sorok csoportjaihoz. Ez a modell a [GTFS](http://gtfs.org/) -útvonalakból és az utazások adatainak öröklésére szolgáló változások jobb kezelésére szolgál.
 
 
 ### <a name="line-groups"></a>Sorcsoportok
@@ -54,17 +60,17 @@ Első lépésként a [beolvasás vonal API](/rest/api/maps/mobility/gettransitli
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan kérhet továbbítási információkat a mobilitási szolgáltatással:
+Ismerje meg, hogyan kérhet továbbítási információkat a mobilitási szolgáltatások (előzetes verzió) használatával:
 
 > [!div class="nextstepaction"]
 > [Adatátviteli adatkérés](how-to-request-transit-data.md)
 
-Megtudhatja, hogyan kérhet valós idejű adatgyűjtést a mobilitási szolgáltatás használatával:
+Ismerje meg, hogyan kérhet valós idejű adatszolgáltatásokat a mobilitási szolgáltatások (előzetes verzió) használatával:
 
 > [!div class="nextstepaction"]
 > [Valós idejű adatkérések igénylése](how-to-request-real-time-data.md)
 
-A Azure Maps mobilitási szolgáltatás API dokumentációjának megismerése
+A Azure Maps mobilitási szolgáltatások (előzetes verzió) API dokumentációjának megismerése
 
 > [!div class="nextstepaction"]
-> [A mobilitási szolgáltatás API-dokumentációja](/rest/api/maps/mobility)
+> [A mobilitási szolgáltatások API dokumentációja](/rest/api/maps/mobility)

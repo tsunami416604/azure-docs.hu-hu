@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: gelecaro
-ms.openlocfilehash: 06e4eea32aefcb400c144be98c274e3e4bb4b121
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f674edd15b86f49d60450a53f5df5852b32f95a4
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188261"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906434"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a Linux rendszerhez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t
 
@@ -54,17 +54,19 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="configure-go-environment"></a>Go-környezet konfigurálása
 
+A következő lépések végrehajtásával állítsa be a go-környezetet a Speech SDK megkereséséhez. Mindkét lépésben cserélje le a processzort a `<architecture>` CPU-architektúrára. Ez a következő lesz:,, `x86` `x64` `arm32` vagy `arm64` .
+
 1. Mivel a kötések támaszkodnak `cgo` , meg kell adnia a környezeti változókat, hogy a go megtalálja az SDK-t:
 
    ```sh
    export CGO_CFLAGS="-I$SPEECHSDK_ROOT/include/c_api"
-   export CGO_LDFLAGS="-L$SPEECHSDK_ROOT/lib -lMicrosoft.CognitiveServices.Speech.core"
+   export CGO_LDFLAGS="-L$SPEECHSDK_ROOT/lib/<architecture> -lMicrosoft.CognitiveServices.Speech.core"
    ```
 
-1. Emellett az SDK-t is tartalmazó alkalmazások futtatásához tájékoztatni kell az operációs rendszert, ahol a következő könyvtárakat kell megkeresni:
+1. Az SDK-t is tartalmazó alkalmazások futtatásához meg kell adnia az operációs rendszer helyét, ahol a következő könyvtárak találhatók:
 
    ```sh
-   export LD_LIBRARY_PATH="$SPEECHSDK_ROOT/lib/<arch>:$LD_LIBRARY_PATH"
+   export LD_LIBRARY_PATH="$SPEECHSDK_ROOT/lib/<architecture>:$LD_LIBRARY_PATH"
    ```
 
 ## <a name="next-steps"></a>Következő lépések

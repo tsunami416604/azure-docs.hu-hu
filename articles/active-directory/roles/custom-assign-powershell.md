@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cd9148f1084727141f725d76f7ae756f44e210e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: d4695d0844ef8b707edce53a05de611c91223a46
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379519"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861952"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Egyéni szerepkörök társítása erőforrás-hatókörrel a PowerShell használatával Azure Active Directory
 
-Ez a cikk azt ismerteti, hogyan lehet szerepkör-hozzárendelést létrehozni a szervezeti szintű hatókörben Azure Active Directory (Azure AD). Az Azure AD-szervezeten belül az egész szervezetre kiterjedő hatókörrel rendelkező szerepkör kiosztása biztosít hozzáférést. Ha egy szerepkör-hozzárendelést egyetlen Azure AD-erőforrás hatókörével szeretne létrehozni, tekintse [meg az egyéni szerepkör létrehozása és hozzárendelése az erőforrás-hatókörben](custom-create.md)című témakört. Ez a cikk a [Azure Active Directory PowerShell 2-es verziójának](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modulját használja.
+Ez a cikk azt ismerteti, hogyan lehet szerepkör-hozzárendelést létrehozni a szervezeti szintű hatókörben Azure Active Directory (Azure AD). Az Azure AD-szervezeten belül az egész szervezetre kiterjedő hatókörrel rendelkező szerepkör kiosztása biztosít hozzáférést. Ha egy szerepkör-hozzárendelést egyetlen Azure AD-erőforrás hatókörével szeretne létrehozni, tekintse [meg az egyéni szerepkör létrehozása és hozzárendelése az erőforrás-hatókörben](custom-create.md)című témakört. Ez a cikk a [Azure Active Directory PowerShell 2-es verziójának](/powershell/module/azuread/#directory_roles) modulját használja.
 
 További információ az Azure AD rendszergazdai szerepköreiről: [rendszergazdai szerepkörök Kiosztása Azure Active Directoryban](permissions-reference.md).
 
@@ -69,7 +69,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-Ha a szerepkört felhasználó helyett egy egyszerű szolgáltatáshoz szeretné rendelni, használja a [Get-AzureADMSServicePrincipal parancsmagot](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0).
+Ha a szerepkört felhasználó helyett egy egyszerű szolgáltatáshoz szeretné rendelni, használja a [Get-AzureADMSServicePrincipal parancsmagot](/powershell/module/azuread/get-azureadserviceprincipal).
 
 ## <a name="operations-on-roledefinition"></a>Definíciós-műveletek
 

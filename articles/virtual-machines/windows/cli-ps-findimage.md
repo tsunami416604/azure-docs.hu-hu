@@ -1,48 +1,86 @@
 ---
-title: Azure Marketplace-rendszerképek keresése és használata
-description: A Azure PowerShell segítségével meghatározhatja a Piactéri virtuálisgép-rendszerképek közzétevőjét, ajánlatát, SKU-jának és verziószámát.
+title: Azure Marketplace-lemezképek és-csomagok keresése és használata
+description: A Azure PowerShell használatával megkeresheti és használhatja a Piactéri virtuálisgép-rendszerképek közzétevői, ajánlati, SKU-, verzió-és megtervezési információit.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 01/25/2019
+ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: 96b5e3770a3f5e08237d61eab05cfeafbc72a5db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45e6b157dba5ef7410d8a5c0223fd3ecb52f39d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288345"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906267"
 ---
-# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Virtuálisgép-lemezképek keresése és használata az Azure Marketplace-en Azure PowerShell
+# <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>Az Azure Marketplace virtuálisgép-rendszerképeinek megkeresése és használata Azure PowerShell     
 
-Ez a cikk azt ismerteti, hogyan használhatók a Azure PowerShell a virtuálisgép-rendszerképek megkereséséhez az Azure Marketplace-en. Ezt követően megadhatja a piactér rendszerképét a virtuális gép létrehozásakor.
+Ez a cikk azt ismerteti, hogyan használhatók a Azure PowerShell a virtuálisgép-rendszerképek megkereséséhez az Azure Marketplace-en. Ezután megadhatja a piactér rendszerképét, és megtervezheti a virtuális gépek létrehozásakor feladatait.
 
 Az elérhető lemezképek és ajánlatok az [Azure Marketplace](https://azuremarketplace.microsoft.com/) kirakat, a [Azure Portal](https://portal.azure.com)vagy az [Azure CLI](../linux/cli-ps-findimage.md)használatával is tallózhatók. 
 
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="table-of-commonly-used-windows-images"></a>A gyakran használt Windows-rendszerképek táblázata
 
-Ez a táblázat a jelzett közzétevők és ajánlatok számára elérhető SKU-ket mutatja.
+## <a name="create-a-vm-from-vhd-with-plan-information"></a>Virtuális gép létrehozása a csomaggal kapcsolatos információkkal
 
-| Publisher | Ajánlat | SKU |
-|:--- |:--- |:--- |
-| MicrosoftWindowsServer |WindowsServer |2019 – Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2019 – Datacenter-Core |
-| MicrosoftWindowsServer |WindowsServer |2019 – Datacenter – tárolók |
-| MicrosoftWindowsServer |WindowsServer |2016 – Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2016 – Datacenter – Server-Core |
-| MicrosoftWindowsServer |WindowsServer |2016 – Datacenter – tárolók |
-| MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
-| MicrosoftSharePoint |MicrosoftSharePointServer |sp2019 |
-| MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
-| MicrosoftRServer |RServer – WS2016 |Enterprise |
+Ha rendelkezik egy meglévő VHD-vel, amelyet egy Azure Marketplace-rendszerkép használatával hoztak létre, lehet, hogy meg kell adnia a vásárlási terv adatait, amikor új virtuális gépet hoz létre a virtuális merevlemezről.
 
-## <a name="navigate-the-images"></a>A képek navigálása
+Ha továbbra is az eredeti virtuális gép vagy egy másik, azonos rendszerképből létrehozott virtuális gép található, a Get-AzVM használatával beszerezheti a csomag nevét, közzétevőjét és termékét. Ez a példa egy *myVM* nevű virtuális gépet olvas be a *myResourceGroup* -erőforráscsoporthoz, majd megjeleníti a vásárlási terv információit.
+
+```azurepowershell-interactive
+$vm = Get-azvm `
+   -ResourceGroupName myResourceGroup `
+   -Name myVM
+$vm.Plan
+```
+
+Ha nem kapta meg a csomag információit az eredeti virtuális gép törlése előtt, akkor egy [támogatási kérést](https://ms.portal.azure.com/#create/Microsoft.Support)is megadhat. Szükségük lesz a virtuális gép nevére, az előfizetés azonosítójára és a törlési művelet időbélyegzőre.
+
+Virtuális gép virtuális merevlemez használatával történő létrehozásához tekintse meg a [virtuális gép létrehozása speciális virtuális merevlemezről](create-vm-specialized.md) című cikket, és adjon hozzá egy sort a terv adatainak a virtuálisgép-konfigurációhoz való hozzáadásához a [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) hasonló módon, a következőhöz hasonlóan:
+
+```azurepowershell-interactive
+$vmConfig = Set-AzVMPlan `
+   -VM $vmConfig `
+   -Publisher "publisherName" `
+   -Product "productName" `
+   -Name "planName"
+```
+
+## <a name="create-a-new-vm-from-a-marketplace-image"></a>Új virtuális gép létrehozása Piactéri rendszerképből
+
+Ha már rendelkezik a használni kívánt rendszerképekkel, akkor átadhatja ezeket az információkat a [set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) parancsmagban, hogy képet adjon a virtuálisgép-konfigurációhoz. A piactéren elérhető rendszerképek kereséséhez és listázásához tekintse meg a következő szakaszt.
+
+Egyes fizetős lemezképek esetében a [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan)használatával is meg kell adnia a vásárlási tervre vonatkozó információkat. 
+
+```powershell
+...
+
+$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
+
+# Set the Marketplace image
+$offerName = "windows-data-science-vm"
+$skuName = "windows2016"
+$version = "19.01.14"
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
+
+# Set the Marketplace plan information, if needed
+$publisherName = "microsoft-ads"
+$productName = "windows-data-science-vm"
+$planName = "windows2016"
+$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
+
+...
+```
+
+Ezután átadja a virtuális gép konfigurációját, valamint a többi konfigurációs objektumot a `New-AzVM` parancsmaghoz. A virtuális gépek PowerShell használatával történő konfigurálásával kapcsolatos részletes példákért tekintse meg ezt a [parancsfájlt](https://github.com/Azure/azure-docs-powershell-samples/blob/master/virtual-machine/create-vm-detailed/create-windows-vm-detailed.ps1).
+
+Ha a rendszerképek elfogadásával kapcsolatos üzenet jelenik meg, tekintse meg a jelen cikk későbbi részében található [feltételek elfogadása](#accept-the-terms) című szakaszt.
+
+## <a name="list-images"></a>Lemezképek listázása
 
 Az egyik lehetőség, hogy egy helyen található rendszerképet keres, a [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher), a [Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer)és a [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) parancsmagokat a következő sorrendben futtassa:
 
@@ -276,41 +314,7 @@ Accepted          : True
 Signdate          : 2/23/2018 7:49:31 PM
 ```
 
-### <a name="deploy-using-purchase-plan-parameters"></a>Üzembe helyezés a vásárlási terv paramétereinek használatával
 
-A rendszerkép feltételeinek elfogadása után üzembe helyezhet egy virtuális gépet az előfizetésben. Ahogy az az alábbi kódrészletben is látható, a [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) parancsmaggal állíthatja be a virtuálisgép-objektumhoz tartozó Piactéri terv adatait. A virtuális gép hálózati beállításainak létrehozásához és a telepítés befejezéséhez teljes parancsfájlt a PowerShell- [szkriptek példái](powershell-samples.md)című témakörben talál.
-
-```powershell
-...
-
-$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
-
-# Set the Marketplace plan information
-
-$publisherName = "microsoft-ads"
-
-$productName = "windows-data-science-vm"
-
-$planName = "windows2016"
-
-$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
-
-$cred=Get-Credential
-
-$vmConfig = Set-AzVMOperatingSystem -Windows -VM $vmConfig -ComputerName "myVM" -Credential $cred
-
-# Set the Marketplace image
-
-$offerName = "windows-data-science-vm"
-
-$skuName = "windows2016"
-
-$version = "19.01.14"
-
-$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
-...
-```
-Ezután továbbítja a virtuális gép konfigurációját a hálózati konfigurációs objektumokkal együtt a `New-AzVM` parancsmaghoz.
 
 ## <a name="next-steps"></a>Következő lépések
 

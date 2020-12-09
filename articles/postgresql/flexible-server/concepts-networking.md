@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 4280932787cfb2220dab1da84dca41ca0c40e302
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: cf7c5fa8563544add55a7fad5075848eb5116fe1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485256"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901932"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Hálózatkezelés – áttekintés – Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -33,7 +33,7 @@ A Azure Database for PostgreSQL rugalmas kiszolgálójának két hálózati lehe
    * A VPN vagy a ExpressRoute használatával csatlakozhat a nem Azure-erőforrásokról a rugalmas kiszolgálóhoz
    * A rugalmas kiszolgálónak nincs nyilvános végpontja
 
-* **Nyilvános hozzáférés (engedélyezett IP-címek)** – a rugalmas kiszolgáló nyilvános végponton keresztül érhető el. A nyilvános végpont egy nyilvánosan feloldható DNS-címe. Az "engedélyezett IP-címek" kifejezés számos olyan IP-címet jelöl, amelyet a kiszolgáló eléréséhez engedélyt ad. Ezeket az engedélyeket **Tűzfalszabályok**nevezzük. 
+* **Nyilvános hozzáférés (engedélyezett IP-címek)** – a rugalmas kiszolgáló nyilvános végponton keresztül érhető el. A nyilvános végpont egy nyilvánosan feloldható DNS-címe. Az "engedélyezett IP-címek" kifejezés számos olyan IP-címet jelöl, amelyet a kiszolgáló eléréséhez engedélyt ad. Ezeket az engedélyeket **Tűzfalszabályok** nevezzük. 
 
    Válassza ki a nyilvános hozzáférési módszert, ha a következő képességeket szeretné használni:
    * A virtuális hálózatokat nem támogató Azure-erőforrásokkal való kapcsolat
@@ -107,6 +107,7 @@ Vegye figyelembe a következő szempontokat, amikor a PostgreSQL-kiszolgáló Mi
    * Kérje meg az internetszolgáltatót (ISP) a Azure Database for PostgreSQL-kiszolgálót elérő ügyfélszámítógépekhez hozzárendelt IP-címtartomány számára, majd adja hozzá az IP-címtartományt tűzfalszabályként.
    * Szerezze be a statikus IP-címzést az ügyfélszámítógépek helyett, majd adja hozzá a statikus IP-címet tűzfalszabályként.
 
+* **A tűzfalszabály IPv6 formátum esetén nem érhető el:** A tűzfalszabályok IPv4-formátumúnak kell lenniük. Ha a tűzfalszabályok IPv6-formátumban vannak megadva, az érvényesítési hiba jelenik meg.
 
 ## <a name="hostname"></a>Hostname (Gazdanév)
 A választott hálózati beállítástól függetlenül ajánlott mindig teljes tartománynevet (FQDN) használni a rugalmas kiszolgálóhoz való csatlakozáskor. A kiszolgáló IP-címe nem garantált, hogy statikus maradjon. A teljes tartománynév használata segít elkerülni a kapcsolódási karakterlánc módosítását. 

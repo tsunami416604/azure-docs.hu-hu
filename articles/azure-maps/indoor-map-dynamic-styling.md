@@ -1,21 +1,25 @@
 ---
-title: Dinamikus stílus implementálása Azure Maps Creator beltéri térképeken
-description: Ismerje meg, hogyan valósítható meg a Creator beltéri térképek dinamikus stílusa
+title: Dinamikus stílus implementálása Azure Maps Creator (előzetes verzió) beltéri térképeken
+description: Ismerje meg, hogyan valósítható meg a dinamikus stílus a Creator (előzetes) beltéri térképeken
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 266dc5d62f6224495075546528ad71d806d415ac
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895375"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903445"
 ---
-# <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Dinamikus stílus implementálása a Creator beltéri térképeken
+# <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>Dinamikus stílus implementálása a Creator (előzetes) beltéri térképeken
+
+> [!IMPORTANT]
+> A Azure Maps Creator Services jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Maps Creator [szolgáltatás állapotának szolgáltatása](/rest/api/maps/featurestate) lehetővé teszi a stílusok alkalmazását a beltéri Térkép adatfunkcióinak dinamikus tulajdonságai alapján.  Például megjelenítheti a létesítmény-tárgyalókat egy adott színnel, hogy tükrözze a kihasználtsági állapotot. Ebben a cikkben bemutatjuk, hogyan lehet dinamikusan megjeleníteni a beltéri Térkép funkciókat a [szolgáltatás állapotának](/rest/api/maps/featurestate) és a [beltéri webes modulnak](how-to-use-indoor-module.md)a használatával.
 
@@ -23,7 +27,7 @@ Azure Maps Creator [szolgáltatás állapotának szolgáltatása](/rest/api/maps
 
 1. [Azure Maps-fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
-3. [Létrehozó erőforrás létrehozása](how-to-manage-creator.md)
+3. [Létrehozó (előzetes) erőforrás létrehozása](how-to-manage-creator.md)
 4. Töltse le a [minta rajzolási csomagot](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 5. [Hozzon létre egy fedett térképet](tutorial-creator-indoor-maps.md) a és a beszerzéséhez `tilesetId` `statesetId` .
 6. Hozzon létre egy webalkalmazást a [beltéri Térkép modul használatának](how-to-use-indoor-module.md)lépéseit követve.
@@ -66,7 +70,7 @@ A következő szakaszban az Office kihasználtsági *állapotát* állíthatja b
 
  Most frissítjük a két iroda állapotát, `UNIT26` és `UNIT27` :
 
-1. A Poster alkalmazásban válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra
+1. A Poster alkalmazásban válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a **kérelem nevét** , és válasszon ki egy gyűjteményt. Kattintson a **Mentés** gombra.
 
 2. Az állapot frissítéséhez használja a [Feature Update States API](/rest/api/maps/featurestate/updatestatespreview) -t. Adja át a stateset AZONOSÍTÓját és a `UNIT26` két egység egyikét. Fűzze hozzá Azure Maps előfizetési kulcsát. Itt látható az állapot frissítésére szolgáló **post** -kérelem URL-címe:
 
@@ -113,7 +117,7 @@ A böngészőben korábban megnyitott webalkalmazásnak most már tükröznie ke
 További információért olvassa el a következőket:
 
 > [!div class="nextstepaction"]
-> [A beltéri leképezés létrehozója](creator-indoor-maps.md)
+> [Creator (előzetes verzió) beltéri leképezéshez](creator-indoor-maps.md)
 
 Tekintse meg a cikkben említett API-kra mutató hivatkozásokat:
 
@@ -124,7 +128,7 @@ Tekintse meg a cikkben említett API-kra mutató hivatkozásokat:
 > [Adatátalakítás](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Adatkészlet](creator-indoor-maps.md#datasets)
+> [Adathalmaz](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tileset](creator-indoor-maps.md#tilesets)

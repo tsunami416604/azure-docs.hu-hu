@@ -3,12 +3,12 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: e941938fce09e8729856322a5b6572b46a3714be
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a956d5e8dcfa82f85020928e1427a08ac8fe7a69
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075484"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906250"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -62,7 +62,7 @@ A vendég-konfigurációs szabályzatok definíciói az új verziókhoz tartozna
 
 |Publisher|Név|Verziók|
 |-|-|-|
-|Canonical|Ubuntu Server|14,04 és újabb verziók|
+|Canonical|Ubuntu Server|14,04 – 18,04|
 |Credativ|Debian|8 és újabb verziók|
 |Microsoft|Windows Server|2012 és újabb verziók|
 |Microsoft|Windows-ügyfél|Windows 10|
@@ -120,7 +120,7 @@ Azure Policy a vendég konfigurációja erőforrás-szolgáltató **complianceSt
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Az operációs rendszer beállításainak naplózása az iparági alapkonfigurációkat követve
 
-A Azure Policyban az egyik kezdeményezés lehetővé teszi az operációs rendszer beállításainak naplózását az "alapkonfiguráció" érték után. Az előzetes verzió: az Azure-beli _ \[ \] biztonsági alapbeállításoknak meg nem felelő Windows-alapú virtuális gépek naplózása_ Active Directory csoportházirend alapján.
+A Azure Policyban az egyik kezdeményezés lehetővé teszi az operációs rendszer beállításainak naplózását az "alapkonfiguráció" érték után. Az előzetes verzió: az Azure-beli _\[ \] biztonsági alapbeállításoknak meg nem felelő Windows-alapú virtuális gépek naplózása_ Active Directory csoportházirend alapján.
 
 A beállítások többsége paraméterekként érhető el. A paraméterek lehetővé teszik a naplózott elemek testreszabását.
 A szabályzatot a követelményekkel igazíthatja, vagy a szabályzatot harmadik féltől származó információkra, például iparági szabályozási szabványokra is kiképezheti.
@@ -133,7 +133,7 @@ Ha a szabályzatot egy Azure Resource Manager sablon (ARM-sablon) használatáva
 
 Csak a _Windows rendszerű gépeken beállított időzónát_ definiáló definíció állítja be a gépet az időzóna konfigurálásával. A számítógépeken belüli beállítások konfigurálásának egyéni szabályzat-definíciói nem támogatottak.
 
-Ha a _konfigurálással_kezdődő definíciókat rendeli hozzá, akkor a definíciók _központi telepítésének előfeltételeit is hozzá kell rendelnie a Windows rendszerű virtuális gépeken a vendég-konfigurációs szabályzat engedélyezés_ Ezeket a definíciókat a választott kezdeményezéssel kombinálhatja.
+Ha a _konfigurálással_ kezdődő definíciókat rendeli hozzá, akkor a definíciók _központi telepítésének előfeltételeit is hozzá kell rendelnie a Windows rendszerű virtuális gépeken a vendég-konfigurációs szabályzat engedélyezés_ Ezeket a definíciókat a választott kezdeményezéssel kombinálhatja.
 
 > [!NOTE]
 > A beépített időzóna-házirend az egyetlen olyan definíció, amely támogatja a gépeken belüli beállítások konfigurálását, és az egyéni szabályzat-definíciókat, amelyek a gépek beállításait nem támogatják.

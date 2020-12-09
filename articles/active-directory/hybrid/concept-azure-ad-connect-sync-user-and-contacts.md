@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9470e9af38fdd814f5059538656e6a3dbb8e3a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e015f7937db6788aa4473a8a04434121299901e9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279312"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861782"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect szinkronizálás: a felhasználók, csoportok és névjegyek ismertetése
 Számos különböző okból kifolyólag több Active Directory erdő van, és több különböző üzembe helyezési topológiával is rendelkezhet. Az általános modellek közé tartozik a fiók-erőforrás üzembe helyezése és a GAL Sync ' ED erdők egyesítése & beszerzése után. De még ha vannak is tiszta modellek, a hibrid modellek is gyakoriak. Az Azure AD Connect Sync alapértelmezett konfigurációja nem feltételezi az adott modellt, de attól függően, hogy a felhasználói megfeleltetés hogyan lett kiválasztva a telepítési útmutatóban, a különböző viselkedések megfigyelhetők.
@@ -29,7 +29,7 @@ Ebben a témakörben bemutatjuk, hogyan viselkedik az alapértelmezett konfigur�
 
 Van néhány általános szabály, amelyet a konfiguráció feltételez:
 * Függetlenül attól, hogy milyen sorrendben importálunk a forrás aktív címtárakból, a végeredménynek mindig azonosnak kell lennie.
-* Egy aktív fiók mindig hozzájárul a bejelentkezési adatokhoz, beleértve a **userPrincipalName** és a **sourceAnchor**is.
+* Egy aktív fiók mindig hozzájárul a bejelentkezési adatokhoz, beleértve a **userPrincipalName** és a **sourceAnchor** is.
 * A letiltott fiókok hozzájárulnak a userPrincipalName és a sourceAnchor, kivéve, ha ez egy csatolt postaláda, ha nem található aktív fiók.
 * Egy csatolt postaládával rendelkező fiók soha nem lesz felhasználva a userPrincipalName és a sourceAnchor. Feltételezzük, hogy az aktív fiók később is megtalálható.
 * Lehet, hogy egy kapcsolattartási objektum az Azure AD-hez való kapcsolatként vagy felhasználóként van kiépítve. Nem igazán ismeri, amíg az összes forrás Active Directory erdő fel nem dolgozva.
@@ -41,7 +41,7 @@ Fontos tudnivalók a csoportok Active Directoryról Azure AD-re történő szink
 
 * A Azure AD Connect nem támogatja az [elsődleges](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771489(v=ws.11)) CSOPORTTAGSÁGOK Azure ad-beli szinkronizálását.
 
-* Azure AD Connect nem támogatja a [dinamikus terjesztési csoportok tagságának](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups?view=exchserver-2019) szinkronizálását az Azure ad-be.
+* Azure AD Connect nem támogatja a [dinamikus terjesztési csoportok tagságának](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups) szinkronizálását az Azure ad-be.
 
 * Active Directory csoport szinkronizálása az Azure AD-val levelezési csoportként:
 
@@ -56,9 +56,9 @@ Fontos tudnivalók a csoportok Active Directoryról Azure AD-re történő szink
       * Egy Active Directory csoport, amelynek proxyAddress attribútumának értéke *{"X500:/0 = contoso. com/ou = Users/CN = testgroup", "SMTP: johndoe \@ contoso.com"}* az Azure ad-ben is levelezésre engedélyezett lesz.
 
 ## <a name="contacts"></a>Kapcsolattartók
-Ha egy másik erdőben lévő felhasználót képviselő kapcsolattartók közösek, az egyesítés & a beszerzést követően, amelyben egy GALSync-megoldás két vagy több Exchange-erdőt is Áthidal. A Contact objektum mindig az összekötő területéről csatlakozik a metaverse-hez a mail attribútum használatával. Ha már van olyan Contact objektum vagy felhasználói objektum, amely ugyanazzal a levelezési névvel rendelkezik, akkor az objektumok együtt csatlakoznak egymáshoz. Ez az **ad – Contact JOIN**elemben található szabályban van konfigurálva. Létezik egy nevű szabály is az **ad-ben – a közös** kapcsolattal együtt, amely a metaverse attribútumhoz tartozó **sourceObjectType** és az állandó **Kapcsolatfelvétel**. Ez a szabály nagyon alacsony prioritású, így ha bármelyik felhasználói objektum ugyanahhoz a metaverse-objektumhoz van csatlakoztatva, akkor a **from ad – User Common** szabály a felhasználó értékével járul hozzá ehhez az attribútumhoz. Ebben a szabályban ez az attribútum akkor fog megjelenni az értéknél, ha nincs felhasználó csatlakoztatva, és az érték felhasználó, ha legalább egy felhasználó található.
+Ha egy másik erdőben lévő felhasználót képviselő kapcsolattartók közösek, az egyesítés & a beszerzést követően, amelyben egy GALSync-megoldás két vagy több Exchange-erdőt is Áthidal. A Contact objektum mindig az összekötő területéről csatlakozik a metaverse-hez a mail attribútum használatával. Ha már van olyan Contact objektum vagy felhasználói objektum, amely ugyanazzal a levelezési névvel rendelkezik, akkor az objektumok együtt csatlakoznak egymáshoz. Ez az **ad – Contact JOIN** elemben található szabályban van konfigurálva. Létezik egy nevű szabály is az **ad-ben – a közös** kapcsolattal együtt, amely a metaverse attribútumhoz tartozó **sourceObjectType** és az állandó **Kapcsolatfelvétel**. Ez a szabály nagyon alacsony prioritású, így ha bármelyik felhasználói objektum ugyanahhoz a metaverse-objektumhoz van csatlakoztatva, akkor a **from ad – User Common** szabály a felhasználó értékével járul hozzá ehhez az attribútumhoz. Ebben a szabályban ez az attribútum akkor fog megjelenni az értéknél, ha nincs felhasználó csatlakoztatva, és az érték felhasználó, ha legalább egy felhasználó található.
 
-Ha egy objektumot az Azure AD-be kíván kiépíteni, a Kimenő szabály a **HRE-hez – a Contact JOIN** egy Contact objektumot hoz létre, ha a metaverse attribútum **sourceObjectType** **kapcsolatra**van beállítva. Ha ez az attribútum a **felhasználó**értékre van állítva, akkor a szabály a **HRE – a felhasználó csatlakoztatása** helyett felhasználói objektumot fog létrehozni.
+Ha egy objektumot az Azure AD-be kíván kiépíteni, a Kimenő szabály a **HRE-hez – a Contact JOIN** egy Contact objektumot hoz létre, ha a metaverse attribútum **sourceObjectType** **kapcsolatra** van beállítva. Ha ez az attribútum a **felhasználó** értékre van állítva, akkor a szabály a **HRE – a felhasználó csatlakoztatása** helyett felhasználói objektumot fog létrehozni.
 Lehetséges, hogy egy objektumot a kapcsolatból a felhasználóhoz kell előléptetni, ha a rendszer a forrásként szolgáló Active könyvtárakat importálja és szinkronizálja.
 
 Például egy GALSync-topológiában a második erdőben található, mindenki számára elérhető kapcsolattartási objektumokat fogjuk megkeresni az első erdő importálásakor. Ez a HRE-összekötőben új kapcsolattartási objektumokat fog bevezetni. Amikor később importálja és szinkronizálja a második erdőt, megkeresjük a valódi felhasználókat, és csatlakoztatjuk őket a meglévő metaverse-objektumokhoz. Ezután töröljük a Contact objektumot a HRE-ben, és létrehozunk egy új felhasználói objektumot.

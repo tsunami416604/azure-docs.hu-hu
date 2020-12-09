@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 15e5d257259bb4dfc98528cb726dbd2cc1f9a903
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f55af61a061bf3a3897569058aace728f7465b64
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498727"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862122"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Üzenetek küldése és fogadása Azure Service Bus várólistákból (.NET)
 Ebben az oktatóanyagban egy .NET Core Console-alkalmazást hoz létre, amely az **Azure. Messaging. ServiceBus** csomag használatával üzeneteket küld és fogad üzeneteket egy Service Bus-várólistából. 
@@ -55,26 +55,9 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
         static string queueName = "<QUEUE NAME>";
     ```
 
-    Adja meg a névtérhez tartozó kapcsolatok karakterláncát `ServiceBusConnectionString` változóként. Adja meg a várólista nevét.
+    Adja meg a névtérhez tartozó kapcsolatok karakterláncát `connectionString` változóként. Adja meg a várólista nevét.
 
-1. Cserélje le a `Main()` metódust a következő **aszinkron** `Main` metódusra. Meghívja a `SendMessagesAsync()` metódust, amelyet a következő lépésben fog hozzáadni, hogy üzeneteket küldjön a várólistára. 
-
-    ```csharp
-    public static async Task Main(string[] args)
-    {    
-        const int numberOfMessages = 10;
-        
-        Console.WriteLine("======================================================");
-        Console.WriteLine("Press ENTER key to exit after sending all the messages.");
-        Console.WriteLine("======================================================");
-
-        // Send messages.
-        await SendMessagesAsync(numberOfMessages);
-
-        Console.ReadKey();
-    }
-    ```
-1. Közvetlenül a `Main()` metódus után adja hozzá a következő `SendMessagesAsync()` metódust, amely a által megadott számú üzenet küldését végzi `numberOfMessagesToSend` (jelenleg 10 értékre van állítva):
+1. Közvetlenül a `Main()` metódus után adja hozzá a következő `SendMessagesAsync()` metódust, amely az üzenet küldésének munkáját végzi el:
 
     ```csharp
         static async Task SendMessageAsync()
@@ -101,9 +84,9 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
         {
             // create a queue containing the messages and return it to the caller
             Queue<ServiceBusMessage> messages = new Queue<ServiceBusMessage>();
-            messages.Enqueue(new ServiceBusMessage("First message"));
-            messages.Enqueue(new ServiceBusMessage("Second message"));
-            messages.Enqueue(new ServiceBusMessage("Third message"));
+            messages.Enqueue(new ServiceBusMessage("First message in the batch"));
+            messages.Enqueue(new ServiceBusMessage("Second message in the batch"));
+            messages.Enqueue(new ServiceBusMessage("Third message in the batch"));
             return messages;
         }
     ```
@@ -284,7 +267,7 @@ Próbálkozzon újra a portálon.
 
     :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="Aktív üzenetek és méret a fogadás után" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő dokumentációt és mintákat:
 
 - [A .NET-hez készült ügyféloldali kódtár Azure Service Bus – readme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)

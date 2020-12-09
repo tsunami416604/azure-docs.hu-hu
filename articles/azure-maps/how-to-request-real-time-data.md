@@ -1,24 +1,29 @@
 ---
-title: Valós idejű nyilvános adatátviteli adatforgalom igénylése | Microsoft Azure térképek
-description: 'Megtudhatja, hogyan kérhet valós idejű nyilvános adatátviteli információkat, például a beérkezőket egy továbbítási leállásban. Lásd: a Azure Maps mobilitási szolgáltatás használata erre a célra.'
+title: A Microsoft Azure Maps mobilitási szolgáltatásokkal (előzetes verzió) kapcsolatos valós idejű nyilvános adatátviteli kérelmek igénylése
+description: 'Megtudhatja, hogyan kérhet valós idejű nyilvános adatátviteli információkat, például a beérkezőket egy továbbítási leállásban. További információ: a Azure Maps mobilitási szolgáltatások (előzetes verzió) használata erre a célra.'
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 09/06/2019
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e6f6d0738cb1673b752e35761a112f2ca22a409e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d3e3dc4b0e3bc64a38856da8344583b744ea62b6
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895715"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906046"
 ---
-# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>A Azure Maps mobilitási szolgáltatással valós idejű nyilvános továbbítási adatai igényelhetők
+# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>A Azure Maps mobilitási szolgáltatások (előzetes verzió) használatával valós idejű nyilvános adatátviteli kérelmeket igényelhet 
 
-Ebből a cikkből megtudhatja, hogyan használhatja a Azure Maps [mobilitási szolgáltatást](/rest/api/maps/mobility) valós idejű nyilvános adatátviteli kérelmek igényléséhez.
+> [!IMPORTANT]
+> Azure Maps mobilitási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+Ebből a cikkből megtudhatja, hogyan használhatja a Azure Maps [mobilitási szolgáltatásokat](/rest/api/maps/mobility) a valós idejű nyilvános adatforgalom igényléséhez.
 
 Ebből a cikkből megtudhatja, hogyan kérheti le a következő valós idejű beérkezést az adott leállítás során beérkező összes sorra
 
@@ -30,7 +35,7 @@ Ez a cikk a [Poster alkalmazást](https://www.getpostman.com/apps) használja a 
 
 ## <a name="request-real-time-arrivals-for-a-stop"></a>Valós idejű érkezések igénylése leállításhoz
 
-Egy adott nyilvános adatátviteli leálláshoz tartozó valós idejű beérkező adatok igényléséhez a Azure Maps [mobilitási szolgáltatás](/rest/api/maps/mobility) [valós idejű beérkezési API-](/rest/api/maps/mobility/getrealtimearrivalspreview) ját kell kérnie. A kérelem elvégzéséhez szüksége lesz a **metroID** és a **stopID** . Ha többet szeretne megtudni ezekről a paraméterekről, tekintse meg a [nyilvános átviteli útvonalak igénylését](./how-to-request-transit-data.md)ismertető útmutatót.
+Egy adott nyilvános továbbítási leálláshoz tartozó valós idejű beérkező adatok igényléséhez a Azure Maps [mobilitási szolgáltatás (előzetes verzió)](/rest/api/maps/mobility) [valós idejű beérkezési API-](/rest/api/maps/mobility/getrealtimearrivalspreview) ját kell kérnie. A kérelem elvégzéséhez szüksége lesz a **metroID** és a **stopID** . Ha többet szeretne megtudni ezekről a paraméterekről, tekintse meg a [nyilvános átviteli útvonalak igénylését](./how-to-request-transit-data.md)ismertető útmutatót.
 
 A "522" a Metro ID-ként használjuk, amely a "Seattle – Tacoma – Bellevue, WA" területen található Metro-azonosító. A "522---2060603" érték leállítási AZONOSÍTÓként való használata esetén ez a buszmegálló a következő címen érhető el: "ne 24 St & 162nd Ave ne, Bellevue WA". Ha a következő öt valós idejű beérkező adatbevitelt szeretné kérelmezni, az összes következő élő érkezésnél végezze el a következő lépéseket:
 
@@ -113,12 +118,12 @@ A "522" a Metro ID-ként használjuk, amely a "Seattle – Tacoma – Bellevue, 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan kérhet továbbítási információkat a mobilitási szolgáltatással:
+Ismerje meg, hogyan kérhet továbbítási információkat a mobilitási szolgáltatások (előzetes verzió) használatával:
 
 > [!div class="nextstepaction"]
 > [Adatátviteli adatkérés](how-to-request-transit-data.md)
 
-Ismerje meg a Azure Maps mobilitási szolgáltatás API-dokumentációját:
+Ismerje meg a Azure Maps mobilitási szolgáltatások (előzetes verzió) API dokumentációját:
 
 > [!div class="nextstepaction"]
-> [A mobilitási szolgáltatás API-dokumentációja](/rest/api/maps/mobility)
+> [A mobilitási szolgáltatások API dokumentációja](/rest/api/maps/mobility)

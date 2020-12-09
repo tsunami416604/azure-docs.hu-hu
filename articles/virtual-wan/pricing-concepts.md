@@ -6,15 +6,15 @@ services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 12/08/2020
 ms.author: reyandap
 ms.custom: references_pricing
-ms.openlocfilehash: b4025990a1a62351d3971d788558dea8ecb390ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ced9bb33be341d35904967092414676a6ffe3ac
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327957"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905536"
 ---
 # <a name="about-virtual-wan-pricing"></a>A Virtual WAN díjszabása
 
@@ -30,7 +30,7 @@ A virtuális WAN minden szolgáltatása díjszabás szerint történik. Ezért a
 
 ### <a name="what-is-a-scale-unit"></a><a name="scale-unit"></a>Mi az a méretezési egység?
 
-A **skálázási egység** biztosítja a helyek közötti (S2S), a pont – hely (P2S) és a EXPRESSROUTE (er) teljes kapacitásának egységét egy virtuális központban. Példa:
+A **skálázási egység** biztosítja a helyek közötti (S2S), a pont – hely (P2S) és a EXPRESSROUTE (er) teljes kapacitásának egységét egy virtuális központban. Például:
 
 * **1 a S2S VPN-méretezési egység** teljes kapacitást jelent a 500 Mbps-os VPN-átjáró számára (a kettős példányok a rugalmasság érdekében vannak üzembe helyezve) egy virtuális hub costing $0.361/óra.
 * **1 a skálázási egység** összesen 2 GB/s-os átjárót foglal magában a virtuális hub costing $0.42/HR-ben.
@@ -38,7 +38,7 @@ A **skálázási egység** biztosítja a helyek közötti (S2S), a pont – hely
 
 ### <a name="what-is-a-connection-unit"></a><a name="connection-unit"></a>Mi az a kapcsolatok egysége?
 
-A **kapcsolati egység** minden olyan helyszíni/nem Microsoft-végpontra vonatkozik, amely az Azure-átjáróhoz csatlakozik. Helyek közötti VPN esetén ez az ágakat jelenti. A felhasználói VPN (pont – hely) esetén ez a távoli felhasználókra vonatkozik. A ExpressRoute esetében ez ExpressRoute áramköri kapcsolatokra utal.<br>Példa:
+A **kapcsolati egység** minden olyan helyszíni/nem Microsoft-végpontra vonatkozik, amely az Azure-átjáróhoz csatlakozik. Helyek közötti VPN esetén ez az érték ágakat is magában foglalja. A felhasználói VPN (pont – hely) esetén ez az érték a távoli felhasználókat jelenti. A ExpressRoute esetében ez az érték a ExpressRoute áramköri kapcsolatait foglalja magában.<br>Például:
 
 * Egy fiókirodai kapcsolat, amely az Azure VPN-hez csatlakozik egy virtuális hubhoz, a $0,05/HR-költségekkel. 100 ezért az Azure-beli virtuális hubhoz csatlakozó fiókirodai kapcsolatok ára 0,05 * 100/óra.
 
@@ -50,32 +50,7 @@ A **kapcsolati egység** minden olyan helyszíni/nem Microsoft-végpontra vonatk
 
 * Az Azure-ba beérkező forgalomért nem számítunk fel díjat. Az Azure-t (VPN, ExpressRoute vagy pont – hely felhasználói VPN-kapcsolaton keresztül) elhagyó forgalomra a szabványos [Azure-adatátviteli díjak](https://azure.microsoft.com/pricing/details/bandwidth/)vonatkoznak.
 
-* A virtuális WAN-központ és a VNet közötti adatátviteli díjak esetén az adatátviteli díjak a hub-t elhagyó forgalomra érvényesek. Példa: az USA keleti régiójában elhagyott forgalomért az USA nyugati régiója felé haladva 0,02/GB lesz felszámítva. Az USA nyugati régiójában érkező forgalomért nem számítunk fel díjat. A következő táblázatok a díjakat mutatják be.
-
-Az alábbi táblázatok a következő rövidítéseket használják: {NAM: Észak-Amerika}, {EU: Europe}, {MEA: Közel-Kelet-Afrika}, {OC: Óceánia (Ausztrália középső és ausztráliai középső 2)}, {LATAM: Latin-Amerika} 
-
-**Kontinensen belüli díjszabás (*)**
-
-| Intra-Continent| Ár ($/GB)|
-|---|---|
-| NAM – NAM|0,02 dollár |
-| EU – EU |0,02 dollár |
-| Ázsia – Ázsia (kivéve Kína)|$0,10 |
-| MEA – MEA|$0,16 |
-| LATAM-LATAM |$0,16 |
-| OC – OC|$0,12 |
-
-**Inter-Continental díjszabása (*)**
-
-| Inter-Continental| Ár ($/GB)|
-|---|---|
-| NAM – EU vagy EU – NAM |$0,07 |
-| LATAM – bárhonnan |$0,17 |
-| A MEA-ből bárhonnan |$0,17 |
-| Óceánia és bárhonnan |$0,12 |
-| Ázsiából (Kína kivételével) bárhonnan |$0,12 |
-
-(*) Egyes díjak a 2020. augusztus 1-től érvényesek.
+* A virtuális WAN-központ és a VNet közötti adatátviteli díjak esetén az adatátviteli díjak a hub-t elhagyó forgalomra érvényesek. Példa: az USA keleti régiójában elhagyott forgalomért az USA nyugati régiója felé haladva 0,02/GB lesz felszámítva. Az USA nyugati régiójában érkező forgalomért nem számítunk fel díjat. Az összes hub-ra irányuló forgalom Inter-Region (a kontinensen belüli/kontinentális) díjköteles [Azure-adatátviteli díjat](https://azure.microsoft.com/pricing/details/bandwidth/)számítunk fel. 
 
 ### <a name="what-is-the-difference-between-a-standard-hub-fee-and-a-standard-hub-processing-fee"></a><a name="fee"></a>Mi a különbség a standard hub-díj és a standard hub-feldolgozási díj között?
 

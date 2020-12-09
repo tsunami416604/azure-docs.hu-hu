@@ -4,12 +4,12 @@ description: Konfigurálhatja a helyszíni vagy az Azure-ban üzemeltetett ASP.N
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 970971082e684ebcb6efce07bb707ffbb20ed228
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838942"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904176"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Application Insights konfigurálása a ASP.NET webhelye számára
 
@@ -26,19 +26,23 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 - Hozzon létre egy [Application Insights munkaterület-alapú erőforrást](create-workspace-resource.md).
 
+> [!IMPORTANT]
+> Az új Azure-régiókban a rendszerállapot-kulcsok helyett a kapcsolatok sztringjét **kell** használnia. A [kapcsolódási karakterlánc](./sdk-connection-string.md?tabs=net) azonosítja azt az erőforrást, amelyhez hozzá szeretné rendelni a telemetria-adatait. Azt is lehetővé teszi, hogy módosítsa az erőforrás által a telemetria célként használt végpontokat. A kapcsolódási karakterláncot át kell másolnia, és hozzá kell adnia az alkalmazás kódjához vagy egy környezeti változóhoz.
+
+
 ## <a name="create-a-basic-aspnet-web-app"></a>Alapszintű ASP.NET-Webalkalmazás létrehozása
 
 1. Indítsa el a Visual Studio 2019-es kiadását.
-2. Válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
+2. Válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
 3. Válassza a **ASP.net Web Application (. NET Framework) C#** elemet.
 4. Adja meg a projekt nevét > **válassza a létrehozás lehetőséget**.
-5. Válassza az **MVC**  >  **Létrehozás**elemet. 
+5. Válassza az **MVC**  >  **Létrehozás** elemet. 
 
 ## <a name="add-application-insights-automatically"></a>Application Insights automatikus hozzáadása
 
 Ez a szakasz végigvezeti a Application Insights sablonon alapuló ASP.NET-webalkalmazáshoz való automatikus hozzáadásának lépésein. A Visual Studióban a ASP.NET Web App-projektből:
 
-1. Válassza a **Hozzáadás Application Insights telemetria**  >  **Application Insights SDK (helyi)**  >  **következő**  >  **Befejezés**  >  **Bezárás**lehetőséget.
+1. Válassza a **Hozzáadás Application Insights telemetria**  >  **Application Insights SDK (helyi)**  >  **következő**  >  **Befejezés**  >  **Bezárás** lehetőséget.
 2. Nyissa meg az `ApplicationInsights.config` fájlt. 
 3. A záró `</ApplicationInsights>` címke előtt adjon hozzá egy sort, amely tartalmazza a Application Insights erőforrás kialakítási kulcsát.  A kialakítási kulcs az újonnan létrehozott Application Insights erőforrás áttekintés ablaktábláján található, amelyet a jelen cikk előfeltételeinek részeként hozott létre.
 
@@ -46,7 +50,7 @@ Ez a szakasz végigvezeti a Application Insights sablonon alapuló ASP.NET-webal
     <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
     ```
 4. Válassza a **projekt**  >  **NuGet-csomagok**  >  **frissítése** > frissítse `Microsoft.ApplicationInsights` az egyes NuGet-csomagokat a legújabb stabil kiadásra.   
-5. Futtassa az alkalmazást **IIS Express**kiválasztásával. Egy alapszintű ASP.NET alkalmazás elindul. A hely telemetria lévő lapokat a rendszer a Application Insightsba küldi el.
+5. Futtassa az alkalmazást **IIS Express** kiválasztásával. Egy alapszintű ASP.NET alkalmazás elindul. A hely telemetria lévő lapokat a rendszer a Application Insightsba küldi el.
 
 ## <a name="add-application-insights-manually"></a>Application Insights manuális hozzáadása
 
@@ -342,7 +346,7 @@ Sikeresen konfigurálta a kiszolgálóoldali alkalmazások figyelését. Ha futt
 
 Az előző fejezetek útmutatást nyújtanak a kiszolgálóoldali figyelés automatikus és manuális konfigurálására szolgáló módszerekhez. Ügyféloldali figyelés hozzáadásához az [ügyféloldali JavaScript SDK-](javascript.md)t kell használnia. A weblapok ügyféloldali tranzakcióinak figyeléséhez hozzáadhat egy [JavaScript-kódrészletet](javascript.md#snippet-based-setup) az oldal HTML-kódjának záró `</head>` címkéje előtt. 
 
-A kódrészletet manuálisan is hozzáadhatja az egyes HTML-lapok fejlécéhez, ezért azt javasoljuk, hogy vegye fel a kódrészletet egy elsődleges lapra, amely beírja a kódrészletet egy hely összes oldalára. A jelen cikk sablon alapú ASP.net MVC alkalmazásához a szerkeszteni kívánt fájl meghívása megtörténik, `_Layout.cshtml` és a **Views**  >  **megosztva**nézetek alatt található.
+A kódrészletet manuálisan is hozzáadhatja az egyes HTML-lapok fejlécéhez, ezért azt javasoljuk, hogy vegye fel a kódrészletet egy elsődleges lapra, amely beírja a kódrészletet egy hely összes oldalára. A jelen cikk sablon alapú ASP.net MVC alkalmazásához a szerkeszteni kívánt fájl meghívása megtörténik, `_Layout.cshtml` és a **Views**  >  **megosztva** nézetek alatt található.
 
 Ügyféloldali figyelés hozzáadásához nyissa meg a `_Layout.cshtml` fájlt, és kövesse az ügyféloldali JavaScript SDK konfigurációs cikkében található [kódrészlet-alapú beállítási útmutatót](javascript.md#snippet-based-setup) .
 

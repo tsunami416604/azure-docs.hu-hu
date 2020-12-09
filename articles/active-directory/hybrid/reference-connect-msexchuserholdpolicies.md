@@ -14,18 +14,18 @@ ms.date: 09/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24820949eb6762caf808c4420ede6f0f59184281
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0fbda588d99de44c77118586519055a8fc474104
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412595"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861765"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect – msExchUserHoldPolicies és cloudMsExchUserHoldPolicies
 Az alábbi dokumentum ismerteti ezeket az attribútumokat, amelyeket az Exchange használ, valamint az alapértelmezett szinkronizálási szabályok szerkesztésének megfelelő módját.
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Mi a msExchUserHoldPolicies és a cloudMsExchUserHoldPolicies?
-Az Exchange Serverhez két típusú [tároló érhető el: a peres](/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) eljárás megtartása és a In-Place. Ha a peres eljárás engedélyezve van, az összes postaláda minden elemet megtart.  Egy In-Place tároló csak azokat az elemeket őrzi meg, amelyek megfelelnek a In-Place elektronikus iratkezelési eszközzel megadott keresési lekérdezés feltételeinek.
+Az Exchange Serverhez két típusú [tároló érhető el: a peres](/Exchange/policy-and-compliance/holds/holds) eljárás megtartása és a In-Place. Ha a peres eljárás engedélyezve van, az összes postaláda minden elemet megtart.  Egy In-Place tároló csak azokat az elemeket őrzi meg, amelyek megfelelnek a In-Place elektronikus iratkezelési eszközzel megadott keresési lekérdezés feltételeinek.
 
 A MsExchUserHoldPolcies és a cloudMsExchUserHoldPolicies attribútumok lehetővé teszik a helyszíni AD és az Azure AD számára annak meghatározását, hogy mely felhasználók tartanak fenn, attól függően, hogy helyszíni Exchange-et vagy Exchange-et használnak-e.
 
@@ -70,5 +70,5 @@ Annak lehetővé tétele, hogy a felhasználók a felhőben lévő felhasználó
 
 Bizonyos körülmények között, például ha mindkettőt a helyszínen és az Azure-ban módosították egyszerre, akkor ez bizonyos problémákat okozhat.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

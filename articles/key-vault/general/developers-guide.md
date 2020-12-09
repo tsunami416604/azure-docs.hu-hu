@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6fa9f5d86d3640bf3ae0233e7d6d8a00752f5b6d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 895b8441f340d085932cade513c9f8929491b374
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460810"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904261"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -22,7 +22,7 @@ Key Vault lehetővé teszi a bizalmas adatok biztonságos elérését az alkalma
 - A kulcsok, titkos kódok és tanúsítványok védelme a kód írása nélkül történik, és az alkalmazások egyszerűen használhatók.
 - Lehetővé teszi, hogy az ügyfelek saját kulcsaikat, titkos kulcsokat és tanúsítványokat tudjanak kezelni, így az alapvető szoftver-funkciók biztosítására koncentrálhat. Így az alkalmazásai nem felelnek meg az ügyfeleknek a bérlői kulcsokkal, titkokkal és tanúsítványokkal kapcsolatos felelősségének vagy lehetséges felelősségének.
 - Az alkalmazás a kulcsokat az aláíráshoz és a titkosításhoz is használhatja, és az alkalmazásból külső kulcskezelő is megtartja. A kulcsokkal kapcsolatos további információkért lásd: [a kulcsok ismertetése](../keys/about-keys.md)
-- Kezelheti a hitelesítő adatokat, például a jelszavakat, a hozzáférési kulcsokat, az olyan sas-jogkivonatokat, amelyeket az Key Vault a titokként tárol, lásd [a titkok](../secrets/about-secrets.md)
+- A hitelesítő adatokat, például a jelszavakat, a hozzáférési kulcsokat és az SAS-jogkivonatokat úgy kezelheti, ha a Key Vault titkos kulcsként tárolja őket, lásd a [titkokat](../secrets/about-secrets.md)
 - Tanúsítványok kezelése. További információ: [a tanúsítványok ismertetése](../certificates/about-certificates.md)
 
 További általános információk a Azure Key Vaultről: [Mi az Key Vault](overview.md).

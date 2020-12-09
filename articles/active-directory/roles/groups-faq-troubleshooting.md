@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f80f67ac695c17cc760e0e87fb9b11384fb7585
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 8735a0d34b9fcf5b86b6592980ffc5c7c3e3073c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377734"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861935"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása
 
@@ -32,16 +32,16 @@ ms.locfileid: "93377734"
 
 **A:** Alapértelmezés szerint csak a Kiemelt szerepkörű rendszergazdák és a globális rendszergazdák kezelhetik a szerepkörhöz hozzárendelhető csoportok tagságát, de a szerepkörhöz hozzárendelhető csoportok felügyeletét a csoportok tulajdonosainak hozzáadásával is delegálhatja.
 
-**K** : a cégem ügyfélszolgálati rendszergazdája vagyok, de nem tudom frissíteni egy olyan felhasználó jelszavát, aki egy címtár-olvasó. Miért történik ez?
+**K**: a cégem ügyfélszolgálati rendszergazdája vagyok, de nem tudom frissíteni egy olyan felhasználó jelszavát, aki egy címtár-olvasó. Miért történik ez?
 
-**A** : Előfordulhat, hogy a felhasználó egy szerepkör-hozzárendelésre jogosult csoportból kapta meg a címtár-olvasót. A szerepkörhöz hozzárendelhető csoportok összes tagja és tulajdonosa védve van. A védett felhasználók hitelesítő adatainak alaphelyzetbe állításához csak a privilegizált hitelesítő rendszergazda vagy a globális rendszergazdai szerepkör felhasználói módosíthatnak.
+**A**: Előfordulhat, hogy a felhasználó egy szerepkör-hozzárendelésre jogosult csoportból kapta meg a címtár-olvasót. A szerepkörhöz hozzárendelhető csoportok összes tagja és tulajdonosa védve van. A védett felhasználók hitelesítő adatainak alaphelyzetbe állításához csak a privilegizált hitelesítő rendszergazda vagy a globális rendszergazdai szerepkör felhasználói módosíthatnak.
 
 **K:** Nem tudom frissíteni egy felhasználó jelszavát. Nincs hozzárendelve magasabb jogosultsági szintű szerepkör. Mi történik?
 
 **A:** A felhasználó a szerepkörhöz hozzárendelhető csoport tulajdonosa lehet. A jogosultság megemelésének elkerülése érdekében a szerepkörhöz hozzárendelhető csoportok tulajdonosait védik. Ilyen eset lehet például, ha egy csoport Contoso_Security_Admins van hozzárendelve a biztonsági rendszergazdai szerepkörhöz, ahol Bob a csoport tulajdonosa, és Alice a szervezet jelszavas rendszergazdája. Ha ez a védelem nem volt jelen, Alice visszaállíthatja a Bob hitelesítő adatait, és átveszi a személyazonosságát. Ezt követően Alice felveheti magát vagy bárkit a csoportba Contoso_Security_Admins csoportba, hogy a szervezet biztonsági rendszergazdája legyen. Annak megállapításához, hogy a felhasználó tagja-e a csoportnak, kérje le az adott felhasználó tulajdonában lévő objektumok listáját, és ellenőrizze, hogy a csoportok isAssignableToRole értéke TRUE (igaz) értékre van-e állítva. Ha igen, akkor a felhasználó védelme megtörténik, és a viselkedés a tervezés szerint történik. Tekintse meg ezeket a dokumentációkat a tulajdonosi objektumok beszerzéséhez:
 
-- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
-- [OwnedObjects listázása](/graph/api/user-list-ownedobjects?tabs=http&view=graph-rest-1.0)
+- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject)  
+- [OwnedObjects listázása](/graph/api/user-list-ownedobjects?tabs=http)
 
 **K:** Létrehozhatok hozzáférési felülvizsgálatot az Azure AD-szerepkörökhöz hozzárendelhető csoportokban (pontosabban a isAssignableToRole tulajdonsággal rendelkező csoportok értéke true)?  
 

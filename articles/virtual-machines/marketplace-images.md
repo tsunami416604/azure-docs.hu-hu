@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3de79e5cb3db2d0c52d13826900ec7160271edf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a971f6e56f441ab05a6a9b483eeef990d3ea31f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86225159"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903751"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>Adja meg az Azure Marketplace vásárlási terv információit képek létrehozásakor
 
@@ -24,15 +24,13 @@ A Piactéri rendszerképek keresésével és használatával kapcsolatos tovább
 
 
 ## <a name="get-the-source-vm-information"></a>A forrásként szolgáló virtuális gép adatainak beolvasása
-Ha még mindig rendelkezik az eredeti virtuális géppel, a Get-AzVM használatával lekérheti a csomagot, a közzétevőt és az SKU-t. Ez a példa egy *myVM* nevű virtuális gépet olvas be a *myResourceGroup* -erőforráscsoporthoz, majd megjeleníti a vásárlási terv információit.
+Ha még mindig rendelkezik az eredeti virtuális géppel, a Get-AzVM használatával lekérheti a terv nevét, a közzétevőt és a termék információit. Ez a példa egy *myVM* nevű virtuális gépet olvas be a *myResourceGroup* -erőforráscsoporthoz, majd megjeleníti a virtuális gép vásárlási tervének információit.
 
 ```azurepowershell-interactive
 $vm = Get-azvm `
    -ResourceGroupName myResourceGroup `
    -Name myVM
-$vm.Plan.Publisher
-$vm.Plan.Name
-$vm.Plan.Product
+$vm.Plan
 ```
 
 ## <a name="create-the-image-definition"></a>A rendszerkép definíciójának létrehozása
@@ -143,6 +141,6 @@ New-AzVM `
    -VM $vmConfig
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Piactéri rendszerképek keresésével és használatával kapcsolatos további információkért lásd: [Azure Marketplace-rendszerképek keresése és használata](./windows/cli-ps-findimage.md).

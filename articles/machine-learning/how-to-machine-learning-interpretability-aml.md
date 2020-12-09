@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ce068f1b43fcd6611d4abf65029cbcc5de3b7d30
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c9ee57baf63867e4dca4236d484321586cfb3b17
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311593"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862343"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Az adatelemzési csomag használata a Python (előzetes verzió) &i előrejelzésekben
 
@@ -47,7 +47,7 @@ Az alábbi példa azt mutatja be, hogyan használható a értelmező csomag a sz
     pip install azureml-interpret
     ```
 
-2. Egy minta modell betanítása egy helyi Jupyter jegyzetfüzetbe.
+2. Egy minta modell betanítása helyi Jupyter Notebookban.
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -242,7 +242,7 @@ Az alábbi példa bemutatja, hogyan használható az `ExplanationClient` osztál
     ```bash
     pip install azureml-interpret
     ```
-1. Hozzon létre egy képzési parancsfájlt egy helyi Jupyter jegyzetfüzetben. Például: `train_explain.py`.
+1. Hozzon létre egy képzési parancsfájlt egy helyi Jupyter Notebookban. Például: `train_explain.py`.
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -275,7 +275,7 @@ Az alábbi példa bemutatja, hogyan használható az `ExplanationClient` osztál
 
 1. Állítson be Azure Machine Learning számítást számítási célként, és küldje be a betanítási futtatást. Útmutatásért lásd: [Azure Machine learning számítási fürtök létrehozása és kezelése](how-to-create-attach-compute-cluster.md) . A [példaként használható jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) is hasznosak lehetnek.
 
-1. Töltse le a magyarázatot a helyi Jupyter notebookon.
+1. Töltse le a magyarázatot a helyi Jupyter Notebook.
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -296,7 +296,7 @@ Az alábbi példa bemutatja, hogyan használható az `ExplanationClient` osztál
 
 ## <a name="visualizations"></a>Vizualizációk
 
-Miután letöltötte a magyarázatokat a helyi Jupyter notebookon, a vizualizáció irányítópultján megismerheti és értelmezheti a modelljét.
+Miután letöltötte a magyarázatokat a helyi Jupyter Notebook, a vizualizáció irányítópultján megismerheti és értelmezheti a modelljét.
 
 ### <a name="understand-entire-model-behavior-global-explanation"></a>A teljes modell működésének megismerése (globális magyarázat) 
 

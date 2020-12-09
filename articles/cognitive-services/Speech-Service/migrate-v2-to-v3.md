@@ -1,7 +1,7 @@
 ---
 title: Migrálás v2-ről v3 REST API-Speech szolgáltatásra
 titleSuffix: Azure Cognitive Services
-description: A v2-höz képest az új, v3-as verziójú API-verzió kisebb megszakítási változásokat tartalmaz. Ez a dokumentum segítséget nyújt az új főverzióra való Migrálás időpontjának hiányában.
+description: Ez a dokumentum segít a fejlesztőknek, hogy a beszédfelismerési szolgáltatások beszéd – szöveg REST APIjában áttelepítse a kódot a v2-től a v3-ig.
 services: cognitive-services
 author: bexxx
 manager: nitinme
@@ -11,40 +11,36 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd1dae963781cc0caacc25938e700a4c70a1f51a
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: c5bc00ecf5e4c8ae440ce6610e9be8c8f77ed666
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96737992"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862207"
 ---
-# <a name="migration-from-v20-to-v30-of-speech-to-text-rest-api"></a>Migrálás v 2.0-ról v 3.0-ra szöveggé REST API
+# <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Telepítse át a 2.0-s és a v 3.0-s verzióját a REST API
 
-A Speech REST API v3 verziója a megbízhatóság és a könnyű használat érdekében a korábbi API-verzióval bővült. Az API-elrendezés szorosabban igazodik a többi Azure-hoz vagy Cognitive Services API-khoz. Ez segít a meglévő képességek alkalmazásában a beszédfelismerési API használatakor.
-
-Az API áttekintése [hencegő dokumentumként](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)érhető el. Ez ideális megoldás az API-k áttekintésére és az új API tesztelésére.
-
-A C# és a Python esetében mintákat biztosítunk. A Batch-átírások esetében a mintákat a [GitHub minta adattárában](https://aka.ms/csspeech/samples) találja meg az `samples/batch` alkönyvtáron belül.
+A v2-höz képest a beszédfelismerési REST API szolgáltatások v3-as verziója megbízhatóbb, könnyebben használható, és a hasonló szolgáltatásokhoz tartozó API-k jobban konzisztensek. A legtöbb csapat a v2-ről a v3-re migrálhat egy-két nap alatt.
 
 ## <a name="forward-compatibility"></a>Továbbítási kompatibilitás
 
-A v3-ra történő zökkenőmentes Migrálás érdekében a v2-től származó összes entitás a V3 API-ban is megtalálható ugyanazon identitás alatt. Ha egy eredményhalmaz-séma módosul (például átírások), az API-hoz tartozó GET in v3 verziójának válaszai a v3 sémában lesznek. Ha az API GET in v2 verzióját használja, az eredmény sémája v2 formátumú lesz. A v3-es újonnan létrehozott entitások **nem** érhetők el a v2-ben.
+A v2-ből származó összes entitást a V3 API-ban is megtalálhatja ugyanazzal az identitással. Ha az eredmény sémája megváltozott (például átírások), az API v3-as verziójának lekérésének eredménye a v3 sémát használja. Az API v2-es verziójának beolvasásának eredménye ugyanazt a v2-sémát használja. A v3-es újonnan létrehozott entitások **nem** érhetők el a v2 API-k eredményeiben.
 
 ## <a name="breaking-changes"></a>Kompatibilitástörő változások
 
-A feltörési változások listáját az alkalmazkodáshoz szükséges módosítások nagyságrendje alapján rendezi a lista. Csak néhány módosításra van szükség, amely nem triviális változást igényel a hívó kódban. A legtöbb módosításhoz egyszerű nevek szükségesek. A csapatoknak a v2-ről v3-re való átváltásához szükséges idő néhány óra és néhány nap között változhat. A megnövekedett stabilitás, az egyszerűbb kód és a gyorsabb reagálás előnye azonban gyorsan ellensúlyozza a befektetést. 
+A feltörési változások listáját az alkalmazkodáshoz szükséges módosítások nagyságrendje alapján rendezi a lista. Csak néhány módosítás nem triviális módosításokat igényel a hívó kódban. A legtöbb módosításhoz csak az elemek nevének módosítása szükséges.
 
 ### <a name="host-name-changes"></a>Állomásnév módosítása
 
-Az állomásnevek módosultak a (z) {Region}. Cris. AI és a (z) {Region}. API. kognitív. microsoft. com néven. Ebben a változásban az elérési utak már nem tartalmazzák az "API/" karaktert, mert az az állomásnév részét képezi. A régiók és elérési utak teljes leírását a [hencegő dokumentum](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) tartalmazza.
+A végpontok állomásneve módosultak a verzióról a verzióra `{region}.cris.ai` `{region}.api.cognitive.microsoft.com` . Az új végpontokhoz tartozó elérési utak már nem tartalmaznak, `api/` mert az állomásnév részét képezi. A [hencegő dokumentum](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) felsorolja az érvényes régiókat és elérési utakat.
 
 ### <a name="identity-of-an-entity"></a>Entitás identitása
 
-A tulajdonságot `id` lecserélték `self` . A v2-ben az API-felhasználóknak tudnia kellett, hogyan jönnek létre az API-k elérési útjai. Ez nem bővíthető és szükségtelen munkát igényelt a felhasználótól. A tulajdonságot ( `id` UUID) a `self` (karakterlánc) helyettesíti, amely az entitás (URL) helye. Az érték továbbra is egyedi az összes entitás között. Ha a a `id` kódban karakterláncként van tárolva, egy egyszerű Átnevezés elegendő az új séma támogatásához. Mostantól a `self` tartalmat URL-címként is használhatja az entitás összes Rest-hívásához (get, patch, DELETE).
+A tulajdonság `id` most `self` . A v2-ben az API-felhasználóknak tudnia kellett, hogyan jönnek létre az API-k elérési útjai. Ez nem bővíthető és szükségtelen munkát igényelt a felhasználótól. A tulajdonságot ( `id` UUID) a `self` (karakterlánc) helyettesíti, amely az entitás (URL) helye. Az érték továbbra is egyedi az összes entitás között. Ha a a `id` kódban karakterláncként van tárolva, az Átnevezés elegendő az új séma támogatásához. Mostantól használhatja a `self` tartalmat URL-címként az `GET` `PATCH` `DELETE` entitáshoz, és Rest-hívásokat is.
 
-Ha az entitás más elérési utakon elérhető további funkciókkal rendelkezik, a lista alatt találhatók `links` . Jó példa egy átírásra, amely külön módszert tartalmaz az `GET` átírás tartalmára.
+Ha az entitás további, más elérési utakon elérhető funkciókkal is rendelkezik, a lista alatt találhatók `links` . Az átíráshoz az alábbi példa egy külön módszert mutat be az `GET` átirat tartalmára:
 
-v2 átirat:
+**v2 átirat:**
 
 ```json
 {
@@ -57,7 +53,7 @@ v2 átirat:
 }
 ```
 
-v3 átirat:
+**v3 átirat:**
 
 ```json
 {
@@ -73,11 +69,11 @@ v3 átirat:
 }
 ```
 
-Az ügyfél-implementációtól függően előfordulhat, hogy nem elég a tulajdonság átnevezése. Javasoljuk, hogy használja ki a visszaadott értékek `self` és `links` a REST-hívások célként megadott URL-címeinek előnyeit, és ne adja meg az elérési utakat az ügyfélen. A visszaadott URL-címek használatával biztos lehet abban, hogy az elérési utakban a jövőbeli változások nem bontják le az ügyfélszoftvert.
+A kód implementációtól függően előfordulhat, hogy nem elég a tulajdonság átnevezése. Azt javasoljuk, hogy a visszaadott `self` és az `links` értékeket használja a REST-hívások célként megadott URL-címére ahelyett, hogy elérési utat kellene létrehoznia az ügyfélen. A visszaadott URL-címek használatával biztos lehet abban, hogy az elérési utakban a jövőbeli változások nem bontják le az ügyfélszoftvert.
 
 ### <a name="working-with-collections-of-entities"></a>Entitások gyűjteményének használata
 
-Korábban a v2 API a válasz összes elérhető entitását visszaadotta. Annak érdekében, hogy részletesebben szabályozható legyen a várt válaszok mérete, v3-ban a gyűjtemények összes válasza szerepel a tördelésen. Ön szabályozhatja a visszaadott entitások számát és az oldal eltolását. Ez a viselkedés megkönnyíti a válasz-feldolgozó futtatókörnyezetének előrejelzését, és a többi Azure API-val konzisztens.
+Korábban a v2 API az összes elérhető entitást visszaadott egy eredményben. Annak érdekében, hogy részletesebben szabályozható legyen a v3-as várt válasz mérete, az összes gyűjtési eredmény tördeléssel van elválasztva. Ön szabályozhatja a visszaadott entitások számát és a lap kezdő eltolását. Ez a viselkedés megkönnyíti a válaszfájl futtatókörnyezetének előrejelzését.
 
 A válasz alapszintű formája megegyezik az összes gyűjtemény esetében:
 
@@ -91,20 +87,20 @@ A válasz alapszintű formája megegyezik az összes gyűjtemény esetében:
 }
 ```
 
-A tulajdonság a `values` rendelkezésre álló gyűjtemény entitások egy részhalmazát tartalmazza. A darabszám és az eltolás a lekérdezési paraméterekkel és a használatával vezérelhető `skip` `top` . Ha a `@nextLink` értéke nem null, a Get on használatával több információ is elérhető, a következő adatköteg pedig lekérhető `$.@nextLink` .
+A `values` tulajdonság a rendelkezésre álló gyűjtemény entitások egy részhalmazát tartalmazza. A darabszám és az eltolás a `skip` és a `top` lekérdezési paraméterek használatával vezérelhető. Ha `@nextLink` nem `null` , több információ is rendelkezésre áll, és a beolvasás után a következő adatköteget kérheti le `$.@nextLink` .
 
 Ehhez a változáshoz az `GET` összes elem visszaadását követően egy hurokban kell meghívnia a gyűjteményt.
 
 ### <a name="creating-transcriptions"></a>Átiratok létrehozása
 
-Az átírás létrehozásával kapcsolatos részletes leírást a [Batch-átírási útmutatóban](./batch-transcription.md)találhat.
+Az átírások kötegek létrehozásával kapcsolatos részletes leírást a [Batch-átírási útmutatóban](./batch-transcription.md)találhat.
 
-Az átírások létrehozása a v3 verzióban megtörtént, hogy az adott átírási beállítások explicit módon legyenek beállítva. Az összes (opcionális) konfigurációs tulajdonság mostantól beállítható a `properties` tulajdonságban.
-A v3-as verzió mostantól több bemeneti fájlt is támogat, ezért az URL-címek listáját kell megadni, és nem egyetlen URL-címet, amelyet a v2 szükséges. A tulajdonság neve a következő helyről lett átnevezve: `recordingsUrl` `contentUrls` . A rendszer eltávolította a (z) és a (z) v3-es verziójában található érzelmek elemzésének funkcióit. Javasoljuk, hogy Ehelyett használja a Microsoft kognitív szolgáltatás [szöveges elemzését](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/) .
+A v3 átírási API lehetővé teszi, hogy explicit módon beállítsa a megadott átírási beállításokat. Az összes (opcionális) konfigurációs tulajdonság mostantól beállítható a `properties` tulajdonságban.
+A v3-as verzió több bemeneti fájlt is támogat, ezért az URL-címek listáját kell megadnia, nem pedig egyetlen URL-címet a v2-nek. A v2-tulajdonságnév `recordingsUrl` mostantól `contentUrls` v3. Az átírások elemzésének funkcionalitása el lett távolítva a v3-as verzióban. Lásd: a Microsoft kognitív szolgáltatás [szöveges elemzése](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/) az érzelmek elemzési lehetőségeiről.
 
-Az új tulajdonság `timeToLive` a `properties` -ban segíthet a meglévő befejezett entitások kimetszésében. A `timeToLive` meghatározza azt az időtartamot, amely után a rendszer automatikusan törli a befejezett entitást. Állítsa be magas értékre (például), `PT12H` Ha az entitásokat folyamatosan nyomon követik, felhasználják és törölik, és ezért általában hosszú ideig, 12 óra elteltével dolgozzák fel.
+Az új tulajdonsága `timeToLive` `properties` segít a meglévő befejezett entitások kimetszésében. A `timeToLive` meghatározza azt az időtartamot, amely után a befejezett entitást automatikusan törli a rendszer. Állítsa be magas értékre (például), `PT12H` Ha az entitásokat folyamatosan nyomon követik, felhasználják és törölik, és ezért általában hosszú ideig, 12 óra elteltével dolgozzák fel.
 
-v2 átirat utáni kérelem törzse:
+**v2 átirat utáni kérelem törzse:**
 
 ```json
 {
@@ -120,7 +116,7 @@ v2 átirat utáni kérelem törzse:
 }
 ```
 
-v3 átirat POST kérelem törzse:
+**v3 átirat POST kérelem törzse:**
 
 ```json
 {
@@ -141,9 +137,9 @@ v3 átirat POST kérelem törzse:
 
 ### <a name="format-of-v3-transcription-results"></a>V3 átirat eredményeinek formátuma
 
-Az átírási eredmények sémája némileg megváltozott a valós idejű végpontok által létrehozott átírásokhoz való igazításhoz. Az új formátum részletes leírása megtalálható a [Batch átírása című témakörben](./batch-transcription.md). Az eredmény sémáját a rendszer a GitHub- [minta adattárában](https://aka.ms/csspeech/samples) teszi közzé `samples/batch/transcriptionresult_v3.schema.json` .
+Az átírási eredmények sémája némileg megváltozott a valós idejű végpontok által létrehozott átírásokhoz való igazításhoz. Az új formátum részletes leírását a [Batch átírási útmutatójában](./batch-transcription.md)találja. Az eredmény sémáját a rendszer a GitHub- [minta adattárában](https://aka.ms/csspeech/samples) teszi közzé `samples/batch/transcriptionresult_v3.schema.json` .
 
-A tulajdonságok neve mostantól a Camel-tokozású, a csatorna és a beszélő értékei egész számokat használnak. Ha az időtartamok formátumát más Azure API-kkal szeretné igazítani, már formázva van az ISO 8601-ben leírtak szerint.
+A tulajdonságok nevei mostantól a Camel-tokozású, a `channel` és a és a most az `speaker` egész típusú értékek használata. Az időtartamok formátuma mostantól az ISO 8601-ben leírt struktúrát használja, amely a többi Azure API-ban használt időtartam-formázásnak felel meg.
 
 Egy v3 átírási eredmény mintája. A különbségeket a megjegyzések írják le.
 
@@ -208,11 +204,11 @@ Egy v3 átírási eredmény mintája. A különbségeket a megjegyzések írják
 
 ### <a name="getting-the-content-of-entities-and-the-results"></a>Az entitások és az eredmények tartalmának beolvasása
 
-A v2-ben a bemeneti vagy az eredmény-fájlokra mutató hivatkozások a többi entitás metaadataival vannak befoglalva. A v3 fejlesztése során egyértelmű elkülönítés van az entitás metaadatainak között, amelyet a beolvasás `$.self` és a részletek és a hitelesítő adatok az eredmény fájljainak eléréséhez ad vissza. Ez az elkülönítés segít az ügyféladatok védelmében, és lehetővé teszi a hitelesítő adatok érvényességi időtartamának részletes szabályozását.
+A v2-ben a bemeneti vagy az eredmény-fájlokra mutató hivatkozások a többi entitás metaadataival vannak befoglalva. A v3 fejlesztése során egyértelmű elkülönítés van az entitás metaadatainak között (amelyet a beolvasás ad vissza `$.self` ), valamint a részleteket és a hitelesítő adatokat az eredmény fájljainak eléréséhez. Ez az elkülönítés segít az ügyféladatok védelme terén, és lehetővé teszi a hitelesítő adatok érvényességi időtartamának részletes szabályozását.
 
-A v3-as verzióban van egy tulajdonság, amely a `files` hivatkozások területen található, ha az entitás adatokat (adatkészleteket, átírásokat, végpontokat, értékeléseket) tesz elérhetővé. A GET on (Beolvasás `$.links.files` ) a fájlok és Sas URL-címek listáját fogja visszaadni az egyes fájlok tartalmának eléréséhez. A SAS URL-címek érvényességi időtartamának szabályozásához a lekérdezési paraméter használható `sasValidityInSeconds` az élettartam megadásához.
+A v3-as verzióban `links` vegyen fel egy nevű altulajdonságot, `files` Ha az entitás adatokat (adatkészleteket, átírásokat, végpontokat vagy értékeléseket) tesz elérhetővé. A beolvasás a `$.links.files` fájlok listáját és egy sas URL-címet ad vissza az egyes fájlok tartalmának eléréséhez. A SAS URL-címek érvényességi időtartamának szabályozásához a lekérdezési paraméter használható `sasValidityInSeconds` az élettartam megadásához.
 
-v2 átirat:
+**v2 átirat:**
 
 ```json
 {
@@ -226,7 +222,7 @@ v2 átirat:
 }
 ```
 
-v3 átirat:
+**v3 átirat:**
 
 ```json
 {
@@ -237,7 +233,7 @@ v3 átirat:
 }
 ```
 
-Ezután a beszerzés a `$.links.files` következőt eredményezi:
+**A beszerzés a `$.links.files` következő eredményt eredményezi:**
 
 ```json
 {
@@ -271,27 +267,27 @@ Ezután a beszerzés a `$.links.files` következőt eredményezi:
 }
 ```
 
-A a `kind` fájl tartalmának formátumát jelzi. Az átírások esetében a fajta fájl `TranscriptionReport` összefoglalása a feladatoknak és a fajta fájloknak az `Transcription` eredménye.
+A `kind` tulajdonság a fájl tartalmának formátumát jelzi. Az átírások esetében a fajta fájl `TranscriptionReport` összefoglalása a feladatoknak és a fajta fájloknak az `Transcription` eredménye.
 
 ### <a name="customizing-models"></a>Modellek testreszabása
 
-A v3 előtt különbséget kapott egy "akusztikus modell" és egy "nyelvi modell" között a modell képzése során. Ez a különbség azt eredményezte, hogy a végpontok vagy átírások létrehozásakor több modellt kell megadnia. A hívó számára a folyamat leegyszerűsítése érdekében eltávolítjuk a különbségeket, és a modell betanításához használt adatkészletek tartalmától függünk. Ezzel a módosítással a modell létrehozása mostantól támogatja a vegyes adatkészleteket (a nyelvi adatokat és az akusztikai adatokat). A végpontoknak és az átírásoknak most csak egy modellre van szükségük.
+A v3 előtt az _akusztikus modell_ és a _nyelvi modell_ megkülönböztetése történt a modell betanítása előtt. Ez a különbség azt eredményezte, hogy a végpontok vagy átírások létrehozásakor több modellt kell megadnia. A hívó számára a folyamat leegyszerűsítése érdekében eltávolítjuk a különbségeket, és minden a modell betanításához használt adatkészletek tartalmától függ. Ezzel a módosítással a modell létrehozása mostantól támogatja a vegyes adatkészleteket (a nyelvi adatokat és az akusztikai adatokat). A végpontoknak és az átírásoknak már csak egy modellre van szükségük.
 
-Ezzel a módosítással a `kind` bejegyzést eltávolították a bejegyzésből, és a `datasets[]` mostantól több azonos vagy vegyes típusú adatkészletet is tartalmazhat.
+Ezzel a módosítással a `kind` `POST` művelethez szükséges egy műveletet eltávolították, és a `datasets[]` tömb már több azonos vagy vegyes típusú adatkészletet is tartalmazhat.
 
-A betanított modell eredményeinek javítása érdekében a rendszer automatikusan a nyelvi képzéshez használja a belső akusztikai adatmennyiséget. Általánosságban elmondható, hogy a V3 API-val létrehozott modellek pontosabb eredményeket biztosítanak, mint a v2 API-val létrehozott modellek.
+A betanított modell eredményeinek javításához a nyelvi képzés során a rendszer automatikusan használja az akusztikai adatmennyiséget. Általánosságban elmondható, hogy a V3 API-val létrehozott modellek pontosabb eredményeket biztosítanak, mint a v2 API-val létrehozott modellek.
 
 ### <a name="retrieving-base-and-custom-models"></a>Alapszintű és egyéni modellek beolvasása
 
 A rendelkezésre álló modellek leegyszerűsítése érdekében a v3 elválasztta a "alapmodellek" gyűjteményeit az ügyfél "testreszabott modelljei" alapján. A két útvonal most `GET /speechtotext/v3.0/models/base` és `GET /speechtotext/v3.0/models/` .
 
-Korábban az összes modell egyetlen válaszban lett visszaadva.
+A v2-ben az összes modell egyetlen válaszban lett visszaadva.
 
 ### <a name="name-of-an-entity"></a>Entitás neve
 
-A tulajdonság neve a következőre `name` lesz átnevezve: `displayName` . Ez más Azure API-khoz van igazítva, hogy ne jelezze az identitás tulajdonságait. Ennek a tulajdonságnak az értéke nem lehet egyedi, és az entitás létrehozása után módosítható `PATCH` .
+A `name` tulajdonság most `displayName` . Ez konzisztens más Azure API-kkal, hogy ne jelezze az identitás tulajdonságait. Ennek a tulajdonságnak az értéke nem lehet egyedi, és az entitásnak a művelettel való létrehozása után módosítható `PATCH` .
 
-v2 átirat:
+**v2 átirat:**
 
 ```json
 {
@@ -299,7 +295,7 @@ v2 átirat:
 }
 ```
 
-v3 átirat:
+**v3 átirat:**
 
 ```json
 {
@@ -309,9 +305,9 @@ v3 átirat:
 
 ### <a name="accessing-referenced-entities"></a>A hivatkozott entitások elérése
 
-A v2-ben hivatkozott entitások mindig beágyazottak voltak, például egy végpont használt modelljei. Az entitások beágyazásával nagy válaszokat okoztak, és a felhasználók ritkán használják fel a beágyazott tartalmat. A válasz méretének csökkentése és az összes API-felhasználó teljesítményének növelése érdekében a hivatkozott entitások már nem jelennek meg a válaszban. Ehelyett a rendszer a másik entitásra mutató hivatkozást használja, amely közvetlenül használható. Ez a hivatkozás a következőhöz használható `GET` (URL-cím is), amely a hivatkozással megegyező minta alapján érhető el `self` .
+A v2-ben a hivatkozott entitások mindig beágyazottak voltak, például egy végpont használt modelljei. Az entitások beágyazásával nagy válaszokat okoztak, és a felhasználók ritkán használják fel a beágyazott tartalmat. A válasz méretének csökkentése és a teljesítmény javítása érdekében a hivatkozott entitások már nem jelennek meg a válaszban. Ehelyett a másik entitásra mutató hivatkozás jelenik meg, és közvetlenül használható egy későbbi `GET` (URL-cím is), amely a hivatkozással megegyező mintát követve `self` .
 
-v2 átirat:
+**v2 átirat:**
 
 ```json
 {
@@ -335,7 +331,6 @@ v2 átirat:
           "createdDateTime": "2019-01-07T11:34:12Z",
           "locale": "en-US",
           "name": "Language dataset",
-          
         }
       ]
     },
@@ -343,7 +338,7 @@ v2 átirat:
 }
 ```
 
-v3 átirat:
+**v3 átirat:**
 
 ```json
 {
@@ -354,13 +349,13 @@ v3 átirat:
 }
 ```
 
-Ha a fenti példában látható módon kell felhasználnia egy hivatkozott modell részleteit, egyszerűbbé teheti a GET beszerzését `$.model.self` .
+Ha a fenti példában látható módon kell felhasználnia egy hivatkozott modell részleteit, egyszerűen adja meg a beolvasást `$.model.self` .
 
 ### <a name="retrieving-endpoint-logs"></a>Végponti naplók beolvasása
 
-A szolgáltatás v2-es verziója támogatott a végpontok válaszának naplózása. Ha egy végpont eredményét szeretné lekérni egy v2-vel, az egyiknek létre kellett hoznia egy "adatexportálást", amely az adott időtartomány által meghatározott eredmények pillanatképét jelképezi. Az adatkötegek exportálásának folyamata nem lesz rugalmas. A V3 API hozzáférést biztosít az egyes fájlokhoz, és lehetővé teszi a rajtuk való iterációt.
+A szolgáltatás által támogatott naplózási végpont eredményeinek v2-es verziója. A végpontok eredményeinek a v2-vel való lekéréséhez hozzon létre egy "adatexportálást", amely az adott időtartomány által meghatározott eredmények pillanatképét képviseli. A kötegek exportálásának folyamata nem volt rugalmas. A V3 API hozzáférést biztosít az egyes fájlokhoz, és lehetővé teszi a rajtuk való iterációt.
 
-A v3-végpont sikeres futtatása:
+**A v3-végpont sikeres futtatása:**
 
 ```json
 {
@@ -371,7 +366,7 @@ A v3-végpont sikeres futtatása:
 }
 ```
 
-Válasz a GET `$.links.logs` :
+**Válasz a GET `$.links.logs` :**
 
 ```json
 {
@@ -393,15 +388,15 @@ Válasz a GET `$.links.logs` :
 }
 ```
 
-A végponti naplók tördelése az összes többi gyűjteményhez hasonlóan működik, azzal a különbséggel, hogy nem lehet eltolást megadni. A nagy rendelkezésre álló adatmennyiség miatt a kiszolgáló által vezérelt tördelést kellett megvalósítani.
+A végponti naplók tördelése az összes többi gyűjteményhez hasonlóan működik, azzal a különbséggel, hogy nem lehet eltolást megadni. A nagy mennyiségű rendelkezésre álló érték miatt a tördelést a kiszolgáló határozza meg.
 
-A v3-as verzióban minden végponti napló egyenként törölhető egy fájl TÖRLÉSének kiadásával `self` , vagy a törlés használatával `$.links.logs` . A befejezési érték megadásához a lekérdezési paramétert `endDate` hozzá lehet adni a kérelemhez.
+A v3-as verzióban minden végponti napló egyenként törölhető, `DELETE` Ha egy műveletet ad ki egy `self` fájlon vagy `DELETE` a on használatával `$.links.logs` . A befejezési dátum megadásához a lekérdezési paramétert `endDate` hozzá lehet adni a kéréshez.
 
-### <a name="using-custom-properties"></a>Az "egyéni" tulajdonságok használata
+### <a name="using-custom-properties"></a>Egyéni tulajdonságok használata
 
-Ha az egyéni tulajdonságokat a választható konfigurációs tulajdonságok közül szeretné választani, az összes explicit módon elnevezett tulajdonság mostantól a `properties` tulajdonságban található, és a hívók által definiált összes tulajdonság már a `customProperties` tulajdonságban található.
+Ha az egyéni tulajdonságokat el szeretné különíteni a választható konfigurációs tulajdonságoktól, az összes explicit módon elnevezett tulajdonság mostantól a `properties` tulajdonságban található, és a hívók által meghatározott összes tulajdonság már a `customProperties` tulajdonságban található.
 
-v2 átirat entitás
+**v2 átirat entitás:**
 
 ```json
 {
@@ -413,7 +408,7 @@ v2 átirat entitás
 }
 ```
 
-v3 átirat entitás
+**v3 átirat entitás:**
 
 ```json
 {
@@ -427,14 +422,22 @@ v3 átirat entitás
 }
 ```
 
-Ez a módosítás azt is lehetővé teszi, hogy a megfelelő típusok használata az összes explicit módon megnevezett tulajdonság alatt `properties` (például a string helyett a bool) legyen.
+Ez a módosítás azt is lehetővé teszi, hogy a megfelelő típusokat használja az összes explicit módon megnevezett tulajdonsághoz `properties` (például string helyett Boolean).
 
 ### <a name="response-headers"></a>Válaszfejlécek
 
-a v3-as verzió már nem adja vissza a fejlécet a `Operation-Location` `Location` post kérések fejlécén kívül. Mindkét fejléc értéke pontosan ugyanaz. A rendszer most már csak `Location` a visszaadott értéket adja vissza.
+a (z) v3 már nem adja vissza a `Operation-Location` fejlécet a `Location` kérelmek fejlécén kívül `POST` . A v2-ben mindkét fejléc értéke azonos volt. Most már csak `Location` a visszaadott értéket adja vissza.
 
 Mivel az új API-verziót mostantól az Azure API Management (APIM) felügyeli, a szabályozáshoz kapcsolódó fejlécek, `X-RateLimit-Limit` `X-RateLimit-Remaining` és `X-RateLimit-Reset` nem szerepelnek a válasz fejlécében.
 
 ### <a name="accuracy-tests"></a>Pontossági tesztek
 
-A pontossági tesztek átnevezve lettek az értékelésre, mert az új név jobban leírja, hogy mit jelentenek. A hírek elérési útjai például a "https://{Region}. API. kognitív. microsoft. com/speechtotext/v 3.0/értékelések".
+A pontossági tesztek átnevezve lettek az értékelésre, mert az új név jobban leírja, hogy mit jelentenek. Az új elérési utak a következők: `https://{region}.api.cognitive.microsoft.com/speechtotext/v3.0/evaluations` .
+
+## <a name="next-steps"></a>Következő lépések
+
+Vizsgálja meg a Speech Services által biztosított gyakran használt REST API-k összes funkcióját:
+
+* [Diktálás REST API](rest-speech-to-text.md)
+* A REST API v3-as felvágási [dokumentuma](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
+* A Batch-átírások végrehajtásához a mintakód esetében tekintse meg a [GitHub-minta tárházat](https://aka.ms/csspeech/samples) az `samples/batch` alkönyvtárban.

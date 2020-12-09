@@ -1,6 +1,6 @@
 ---
-title: Időjárási szolgáltatások – fogalmak Microsoft Azure Maps-ben
-description: Ismerje meg a Microsoft Azure Maps időjárási szolgáltatásokra vonatkozó fogalmakat.
+title: Időjárási szolgáltatások (előzetes verzió) – fogalmak a Microsoft Azure Maps-ben
+description: Ismerje meg a Microsoft Azure Maps időjárási szolgáltatások (előzetes verzió) alkalmazásával kapcsolatos fogalmakat.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,20 +8,24 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea8698b7bf402850e506ec126cd2a7bb6ce05823
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 657cb6a86122d267b86e82b6f02eb58e968cddd3
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896727"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904737"
 ---
-# <a name="weather-services-in-azure-maps"></a>Időjárási szolgáltatások a Azure Maps
+# <a name="weather-services-preview-in-azure-maps"></a>Időjárási szolgáltatások (előzetes verzió) Azure Maps
 
-Ez a cikk a [Azure Maps időjárási szolgáltatásokra](/rest/api/maps/weather)alkalmazandó fogalmakat ismerteti. Javasoljuk, hogy az időjárási API-k megkezdése előtt végezze el ezt a cikket.
+> [!IMPORTANT]
+> Azure Maps időjárási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Ez a cikk a Azure Maps [időjárási szolgáltatásokra](/rest/api/maps/weather)alkalmazandó fogalmakat ismerteti. Javasoljuk, hogy az időjárási API-k megkezdése előtt végezze el ezt a cikket.
 
 ## <a name="unit-types"></a>Egységek típusai
 
-A Weather Service API-k némelyike lehetővé teszi a felhasználó számára, hogy az adatokat metrikus vagy angolszász egységekben adja vissza. Az API-k által visszaadott válaszok közé tartozik a unitType és egy numerikus érték, amely az egység fordításához használható. Az értékek értelmezéséhez tekintse meg az alábbi táblázatot.
+A Weather Service (előzetes verzió) API-k némelyike lehetővé teszi a felhasználó számára, hogy az adatokat metrikus vagy angolszász egységekben adja vissza. Az API-k által visszaadott válaszok közé tartozik a unitType és egy numerikus érték, amely az egység fordításához használható. Az értékek értelmezéséhez tekintse meg az alábbi táblázatot.
 
 |unitType|Leírás         |
 |--------|--------------------|
@@ -52,7 +56,7 @@ A Weather Service API-k némelyike lehetővé teszi a felhasználó számára, h
 
 ## <a name="weather-icons"></a>Időjárási ikonok
 
-Néhány időjárási szolgáltatás API a válaszban visszaküldi a értéket `iconCode` . A az `iconCode` ikon definiálásához használt numerikus érték. Ne hivatkozzon közvetlenül az alkalmazásokból származó képekre, az URL-címek és a módosítások is megváltoznak.
+Néhány időjárási szolgáltatás (előzetes verzió) API a válaszban visszaküldi a következőt `iconCode` :. A az `iconCode` ikon definiálásához használt numerikus érték. Ne hivatkozzon közvetlenül az alkalmazásokból származó képekre, az URL-címek és a módosítások is megváltoznak.
 
 | Ikon száma |Ikon| Nap | Éjszaka | Szöveg |
 |-------------|:----:|-----|-------|------|

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: e41fa9f9918f4f17bd89e80610ae608e83eb3402
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1892afde42ccbcf1c28b7d6a757875772ee3ac5d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996403"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905604"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés a Azure Monitor
 
@@ -28,7 +28,7 @@ Annak érdekében, hogy a teljes környezeten belül betekintést nyerjen, enged
 - [Azure DevOps projects](../devops-project/overview.md) a meglévő kód-és git-tárház egyszerűsített élményét nyújtja, vagy választhat az egyik példa közül, hogy egy folyamatos integrációs (CI) és folyamatos továbbítási (CD) folyamatot hozzon létre az Azure-ba.
 - A [DevOps kiadási folyamat folyamatos figyelése](./app/continuous-monitoring.md) lehetővé teszi, hogy a figyelési adatain alapuló üzembe helyezést vagy visszaállítást.
 - [Állapotmonitor](./app/monitor-performance-live-website-now.md)  lehetővé teszi egy élő .NET-alkalmazás üzembe helyezését a Windowsban az Azure Application Insights használatával anélkül, hogy módosítania vagy újra kellene telepítenie a kódot.
-- Ha rendelkezik hozzáféréssel az alkalmazás kódjához, akkor a Azure Monitor Application Insights SDK [.net](./learn/quick-monitor-portal.md)-, [Java](./app/java-get-started.md)-, [Node.js](./learn/nodejs-quick-start.md)-vagy [más programozási nyelvekre](./app/platforms.md)való telepítésével engedélyezze a [Application Insights](./app/app-insights-overview.md) teljes figyelését. Ez lehetővé teszi az alkalmazáshoz és a vállalathoz tartozó egyéni események, metrikák vagy oldalletöltések megadását.
+- Ha rendelkezik hozzáféréssel az alkalmazás kódjához, akkor a Azure Monitor Application Insights SDK [.net](./app/asp-net.md), [.net Core](./app/asp-net-core.md), [Java](./app/java-get-started.md), [Node.js](./learn/nodejs-quick-start.md)vagy [más programozási nyelvekre](./app/platforms.md)való telepítésével engedélyezze a teljes figyelést [Application Insights](./app/app-insights-overview.md) . Ez lehetővé teszi az alkalmazáshoz és a vállalathoz tartozó egyéni események, metrikák vagy oldalletöltések megadását.
 
 
 

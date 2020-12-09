@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 092981f9d74a3f9f18c491ca6cee539a29e73c83
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 342491178d55dacbdc68e6c9042623d381dff898
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782501"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861544"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Az Azure SQL felügyelt példányok kezelési műveleteinek megszakítása
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -61,7 +61,7 @@ A Azure Portal használatával történő felügyeleti műveletek megszakítás�
 
 1. Válassza a lap alján található **művelet megszakítása** lehetőséget. 
 
-   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="Kattintson a folyamatban lévő művelet mezőre a folyamatban lévő művelet lap megnyitásához.":::
+   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="A művelet megszakításához kattintson a Mégse gombra.":::
 
 1. Erősítse meg, hogy meg kívánja szakítani a műveletet. 
 
@@ -116,13 +116,12 @@ Részletes parancsok magyarázata: [az SQL mi op](/cli/azure/sql/mi/op).
 
 ## <a name="canceled-deployment-request"></a>Megszakított központi telepítési kérelem
 
-A 2020-02-02-es API-verzióval a példány-létrehozási kérelem elfogadása után a példány erőforrásként kezd megjelenni, függetlenül attól, hogy a telepítési folyamat állapota (felügyelt példány állapota **kiépítés** ). Ha megszakítja a példány központi telepítési kérését (az új példány létrehozása), a felügyelt példány a **kiépítési** állapotból a **FailedToCreate** -be kerül.
+A 2020-02-02-es API-verzióval a példány-létrehozási kérelem elfogadása után a példány erőforrásként kezd megjelenni, függetlenül attól, hogy a telepítési folyamat állapota (felügyelt példány állapota **kiépítés**). Ha megszakítja a példány központi telepítési kérését (az új példány létrehozása), a felügyelt példány a **kiépítési** állapotból a **FailedToCreate**-be kerül.
 
 A nem sikerült létrehozni kívánt példányok továbbra is erőforrásként jelennek meg, és: 
 
 - Nem számítunk fel díjat
 - Ne számítson bele az erőforrás-korlátokba (alhálózat vagy virtuális mag kvóta)
-- A példány nevének fenntartása – az azonos nevű példány üzembe helyezéséhez törölje a sikertelen példányt a név felszabadításához.
 
 
 > [!NOTE]

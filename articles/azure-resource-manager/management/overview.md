@@ -4,18 +4,18 @@ description: Ismerteti, hogyan használja az Azure Resource Manager eszközt er�
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
-ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 317d7cae9c0febcc99831b20525b9d9d2cc96651
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91372272"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903190"
 ---
 # <a name="what-is-azure-resource-manager"></a>Mi az Azure Resource Manager?
 
 Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Egy olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-fiókban lévő erőforrások létrehozását, frissítését és törlését. Az üzembe helyezés után az erőforrások biztonságossá tételéhez és rendszerezéséhez olyan felügyeleti funkciókat használhat, mint a hozzáférés-vezérlés, a zárolások és a címkék.
 
-Azure Resource Manager-sablonokkal kapcsolatos további tudnivalókért tekintse meg a [template Deployment áttekintése](../templates/overview.md)című témakört.
+Azure Resource Manager sablonokkal (ARM-sablonok) kapcsolatos további tudnivalókért tekintse meg a [sablonok üzembe helyezésének áttekintése](../templates/overview.md)című témakört.
 
 ## <a name="consistent-management-layer"></a>Konzisztens felügyeleti réteg
 
@@ -39,7 +39,7 @@ Ha új felhasználója az Azure Resource Managernek, találkozhat néhány olyan
 
 ## <a name="the-benefits-of-using-resource-manager"></a>A Resource Manager használatának előnyei
 
-A Resource Managerrel a következőket teheti:
+A Resource Managerrel a következő feladatokat végezheti el:
 
 * Az infrastruktúrát szkriptek helyett deklaratív sablonok segítségével kezelheti.
 
@@ -95,7 +95,7 @@ Néhány fontos tényezőt érdemes figyelembe venni az erőforráscsoport megha
 
 * Bizonyos erőforrások létezhetnek egy erőforráscsoporton kívül is. Ezeket az erőforrásokat az [előfizetés](../templates/deploy-to-subscription.md), a [felügyeleti csoport](../templates/deploy-to-management-group.md)vagy a [bérlő](../templates/deploy-to-tenant.md)telepíti. Ezen hatókörök esetében csak bizonyos erőforrástípusok támogatottak.
 
-* Erőforráscsoport létrehozásához használhatja a [portál](manage-resource-groups-portal.md#create-resource-groups), a [PowerShell](manage-resource-groups-powershell.md#create-resource-groups), az [Azure CLI](manage-resource-groups-cli.md#create-resource-groups)vagy egy [Azure Resource Manager (ARM) sablont](../templates/deploy-to-subscription.md#resource-groups).
+* Erőforráscsoport létrehozásához használhatja a [portált](manage-resource-groups-portal.md#create-resource-groups), a [PowerShellt](manage-resource-groups-powershell.md#create-resource-groups), az [Azure CLI](manage-resource-groups-cli.md#create-resource-groups)-t vagy egy [ARM-sablont](../templates/deploy-to-subscription.md#resource-groups).
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager rugalmassága
 
@@ -111,7 +111,7 @@ A Azure Resource Manager szolgáltatás a rugalmasság és a folyamatos rendelke
 
 Ez a rugalmasság olyan szolgáltatásokra vonatkozik, amelyek a Resource Manageren keresztül kapják meg a kérelmeket. Például Key Vault a rugalmasság előnyeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az erőforrások áthelyezéséről: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 

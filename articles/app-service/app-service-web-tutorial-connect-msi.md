@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 7b6f762dd04244f430f08894cc06991796a11229
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: e5587c4826fea780c1e379ee1599440b2865dd50
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004925"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862224"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az Azure SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
@@ -47,7 +47,9 @@ Ez a cikk az [oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure](app-serv
 
 Ha a háttérrendszer használatával szeretne hibakeresést végezni az alkalmazásban SQL Database, győződjön meg arról, hogy engedélyezte az ügyfélkapcsolatot a számítógépről. Ha nem, adja hozzá az ügyfél IP-címét a [kiszolgálói szintű IP-tűzfalszabályok kezelése a Azure Portal használatával](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)című témakör lépéseit követve.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Készítse elő a környezetet az Azure CLI-hez.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="grant-database-access-to-azure-ad-user"></a>Adatbázis-hozzáférés biztosítása az Azure AD-felhasználóhoz
 
@@ -87,7 +89,7 @@ Visual Studio for Mac nincs integrálva az Azure AD-hitelesítéssel. Azonban a 
 
 Miután telepítette az Azure CLI-t a helyi gépen, jelentkezzen be az Azure CLI-be az alábbi paranccsal az Azure AD-felhasználó használatával:
 
-```bash
+```azurecli
 az login --allow-no-subscriptions
 ```
 Most már készen áll az alkalmazás fejlesztésére és hibakeresésére SQL Database a háttérben, az Azure AD-hitelesítés használatával.
@@ -206,11 +208,11 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 
 A Cloud Shellben az SQLCMD parancsot használva jelentkezzen be az SQL Database-be. Cserélje le a _\<server-name>_ nevet a kiszolgáló nevére, _\<db-name>_ az alkalmazás által használt adatbázis nevére, valamint az _\<aad-user-name>_ _\<aad-password>_ Azure ad-felhasználó hitelesítő adataival.
 
-```azurecli-interactive
+```bash
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-A kívánt adatbázishoz tartozó SQL-parancssorban futtassa a következő parancsokat az alkalmazás igényeinek megfelelő engedélyek megadásához. Példa: 
+A kívánt adatbázishoz tartozó SQL-parancssorban futtassa a következő parancsokat az alkalmazás igényeinek megfelelő engedélyek megadásához. Például: 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;
@@ -249,7 +251,7 @@ A közzétételi oldalon kattintson a **Publish** (Közzététel) elemre.
 
 ```bash
 git commit -am "configure managed identity"
-git push azure master
+git push azure main
 ```
 
 Amikor az új weblapon megjelenik a feladatlista, az alkalmazása kapcsolódik az adatbázishoz a felügyelt identitás segítségével.
@@ -260,7 +262,7 @@ Most már ugyanúgy szerkesztheti a feladatlistát, mint korábban.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
 

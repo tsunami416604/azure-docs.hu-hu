@@ -3,24 +3,24 @@ title: Adatvisszajelzés biztosítása a Azure Maps számára | Microsoft Azure 
 description: Adatvisszajelzés nyújtása Microsoft Azure Maps feedback eszköz használatával.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/19/2019
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b53ea7cf3ec29d7bad7e65a535cd140877bcea09
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4be775d8a6a8c476bcc659a902c7f43c12a6d6d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895511"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905332"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Adatvisszajelzés biztosítása Azure Maps
 
 A Azure Maps a 2018. május óta elérhető. Azure Maps a friss térképi adatok, a könnyen használható REST API-k és a nagy teljesítményű SDK-k lehetővé teszik, hogy a nagyvállalati ügyfelek különböző üzleti célú használati eseteket használjanak. A valós világ minden másodpercen át változik, és fontos számunkra, hogy tényszerű digitális képviseletet nyújtson ügyfeleinknek. A létesítmények megnyitását vagy bezárását tervező ügyfeleinknek azonnal frissíteniük kell a térképeket. Így hatékonyan tudják tervezni a szállítást, a karbantartást vagy az ügyfélszolgálatot a megfelelő létesítményekben. Létrehoztuk a Azure Maps adatvisszajelzési webhelyet, amely lehetővé teszi ügyfeleink számára, hogy közvetlen adatvisszajelzéseket nyújtsanak. Az ügyfelek adatvisszajelzése közvetlenül az adatszolgáltatókba és a Térkép-szerkesztőkbe kerül. Gyorsan kiértékelik és beépíthetik a leképezési termékeinkre vonatkozó visszajelzéseket.  
 
-[Azure Maps adatvisszajelzési webhely](https://feedback.azuremaps.com) egyszerű módszert kínál ügyfeleinknek a térképes adatvisszajelzések megadására, különösen az üzleti pontokra és a lakossági címekre. Ez a cikk bemutatja, hogyan biztosíthat különböző visszajelzést a Azure Maps visszajelzési webhelyen.
+A [Azure Maps (előzetes verzió) visszajelzési webhely](https://feedback.azuremaps.com) egyszerű módszert kínál ügyfeleinknek a térképes adatvisszajelzések biztosítására, különösen az üzleti pontokra és a lakossági címekre. Ez a cikk bemutatja, hogyan biztosíthat különböző visszajelzést a Azure Maps visszajelzési webhelyen.
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>Üzleti hely vagy lakcím hozzáadása 
 

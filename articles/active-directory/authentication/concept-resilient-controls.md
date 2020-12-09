@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b5b83d75df734c667c365f20fad2e1f62f997d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994281"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861289"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory
 
@@ -266,7 +266,7 @@ Vonja vissza az aktivált készenléti terv részeként elvégzett módosításo
 3. Visszaállíthatja a megszakítás során elvégzett és dokumentált egyéb módosításokat.
 4. Ha vészhelyzeti hozzáférési fiókot használt, ne felejtse el újragenerált hitelesítő adatokat, és fizikailag biztonságossá tenni az új hitelesítő adatok részleteit a vészhelyzeti hozzáférési fiók eljárásainak részeként.
 5. Folytassa a gyanús tevékenységek megszakítása után [jelentett összes kockázati észlelés osztályozását](../reports-monitoring/concept-sign-ins.md) .
-6. Vonja vissza a [PowerShell használatával](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) kiadott összes frissítési jogkivonatot a felhasználók egy csoportjának célzásához. Az összes frissítési token visszavonása fontos a megszakadáskor használt privilegizált fiókok esetében, és ezzel kényszeríti őket a visszaállított szabályzatok ismételt hitelesítésére és ellenőrzésére.
+6. Vonja vissza a [PowerShell használatával](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) kiadott összes frissítési jogkivonatot a felhasználók egy csoportjának célzásához. Az összes frissítési token visszavonása fontos a megszakadáskor használt privilegizált fiókok esetében, és ezzel kényszeríti őket a visszaállított szabályzatok ismételt hitelesítésére és ellenőrzésére.
 
 ## <a name="emergency-options"></a>Vészhelyzeti beállítások
 
@@ -287,7 +287,7 @@ Ha a szervezet felhasználónkénti MFA örökölt házirendeket használ, akkor
 * [Az Azure AD-hitelesítés dokumentációja](./howto-mfaserver-iis.md)
 * [Vészhelyzeti hozzáférésű rendszergazdai fiókok kezelése az Azure AD-ben](../roles/security-emergency-access.md)
 * [Elnevezett helyszínek konfigurálása Azure Active Directory](../reports-monitoring/quickstart-configure-named-locations.md)
-  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings)
 * [Hibrid Azure Active Directory csatlakoztatott eszközök konfigurálása](../devices/hybrid-azuread-join-plan.md)
 * [Vállalati Windows Hello – Üzembehelyezési útmutató](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Jelszó-útmutató – Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)

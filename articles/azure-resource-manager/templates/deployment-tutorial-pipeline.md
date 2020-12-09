@@ -1,19 +1,19 @@
 ---
 title: Folyamatos integráció az Azure Pipelinesszal
-description: Megtudhatja, hogyan hozhat létre, tesztelheti és telepítheti Azure Resource Manager-sablonokat.
+description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe Azure Resource Manager sablonokat (ARM-sablonokat) folyamatosan.
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7688a4e4838cb591bcd3ac0045a5ed22180c063
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333237"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906352"
 ---
-# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal
+# <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Oktatóanyag: ARM-sablonok folyamatos integrálása az Azure-folyamatokkal
 
-Az [előző oktatóanyagban](./deployment-tutorial-linked-template.md)egy csatolt sablont helyez üzembe.  Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-folyamatokat Azure Resource Manager sablonok projektjeinek folyamatos létrehozására és üzembe helyezésére.
+Az [előző oktatóanyagban](./deployment-tutorial-linked-template.md)egy csatolt sablont helyez üzembe.  Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-folyamatokat Azure Resource Manager sablon (ARM-sablon) projektjeinek folyamatos létrehozására és üzembe helyezésére.
 
 Az Azure DevOps fejlesztői szolgáltatásokat biztosít a csapatok számára a munka megtervezéséhez, a programkódok fejlesztéséhez való együttműködéshez, valamint alkalmazások létrehozásához és üzembe helyezéséhez. A fejlesztők az Azure DevOps Services használatával dolgozhatnak a felhőben. Az Azure DevOps a webböngészőn vagy az IDE-ügyfélen keresztül elérő szolgáltatások integrált készletét nyújtja. Az Azure-folyamat ezen funkciók egyike. Az Azure-folyamatok egy teljes funkcionalitású folyamatos integrációs (CI) és folyamatos kézbesítési (CD) szolgáltatás. Az előnyben részesített git-szolgáltatóval működik, és a legtöbb jelentős felhőalapú szolgáltatásban üzembe helyezhető. Ezután automatizálhatja a kód kiépítését, tesztelését és üzembe helyezését Microsoft Azure, Google Cloud Platform vagy Amazon Web Services.
 
@@ -38,9 +38,9 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 * **Egy GitHub-fiók**, amelyben felhasználhatja a sablonok tárházának létrehozását. Ha még nem rendelkezik fiókkal, [ingyen létrehozhat egyet](https://github.com). További információ a GitHub-adattárak használatáról: [GitHub-adattárak létrehozása](/azure/devops/pipelines/repos/github).
-* **Telepítse a git**-t. Ez az oktatóanyag-utasítás a *git bash* vagy a *git Shell*használatát ismerteti. Útmutatásért lásd: a [git telepítése]( https://www.atlassian.com/git/tutorials/install-git).
+* **Telepítse a git**-t. Ez az oktatóanyag-utasítás a *git bash* vagy a *git Shell* használatát ismerteti. Útmutatásért lásd: a [git telepítése]( https://www.atlassian.com/git/tutorials/install-git).
 * **Egy Azure DevOps-szervezet**. Ha még nem rendelkezik fiókkal, ingyen létrehozhat egyet. Lásd: [szervezet vagy projekt gyűjtemény létrehozása](/azure/devops/organizations/accounts/create-organization?view=azure-devops).
-* választható **Visual Studio Code a Resource Manager-eszközök bővítménnyel**. Tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
+* választható **Visual Studio Code a Resource Manager-eszközök bővítménnyel**. Lásd [a gyors útmutató: ARM-sablonok létrehozása a Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 
 ## <a name="prepare-a-github-repository"></a>GitHub-adattár előkészítése
 
@@ -56,10 +56,10 @@ Ha nem rendelkezik GitHub-fiókkal, tekintse meg az [Előfeltételek](#prerequis
     ![Azure-DevOps Azure-folyamatok Azure Resource Manager létrehozása GitHub-tárház létrehozásához](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-github-repository.png)
 
 1. Válassza az **új**, zöld gomb lehetőséget.
-1. A **tárház neve**mezőbe írja be az adattár nevét.  Például: **AzureRmPipeline-repo**. Ne felejtse el lecserélni bármelyik **AzureRmPipeline** a projekt nevével. Az oktatóanyagban a **nyilvános** vagy a **magánjellegű** lehetőség közül választhat. Majd válassza a **Tárház létrehozása**lehetőséget.
+1. A **tárház neve** mezőbe írja be az adattár nevét.  Például: **AzureRmPipeline-repo**. Ne felejtse el lecserélni bármelyik **AzureRmPipeline** a projekt nevével. Az oktatóanyagban a **nyilvános** vagy a **magánjellegű** lehetőség közül választhat. Majd válassza a **Tárház létrehozása** lehetőséget.
 1. Írja le az URL-címet. Az adattár URL-címe a következő: **`https://github.com/[YourAccountName]/[YourRepositoryName]`** .
 
-Ezt a tárházat *távoli tárháznak*nevezzük. Ugyanannak a projektnek minden fejlesztője klónozott saját *helyi tárházát*, és egyesítheti a változtatásokat a távoli tárházban.
+Ezt a tárházat *távoli tárháznak* nevezzük. Ugyanannak a projektnek minden fejlesztője klónozott saját *helyi tárházát*, és egyesítheti a változtatásokat a távoli tárházban.
 
 ### <a name="clone-the-remote-repository"></a>A távoli tárház klónozása
 
@@ -92,7 +92,7 @@ A rendszer a mappa nevét és a fájlneveket is használja, mivel azok a folyama
 
 A azuredeploy.jsbekerült a helyi tárházba. Ezután töltse fel a sablont a távoli tárházba.
 
-1. Ha nincs megnyitva, nyissa meg a *git-rendszerhéj* vagy a *git bash*eszközt.
+1. Ha nincs megnyitva, nyissa meg a *git-rendszerhéj* vagy a *git bash* eszközt.
 1. Módosítsa a könyvtárat a helyi tárház CreateWebApp mappájába.
 1. Ellenőrizze, hogy a fájl **azuredeploy.js** a mappában van-e.
 1. Futtassa az alábbi parancsot:
@@ -105,7 +105,7 @@ A azuredeploy.jsbekerült a helyi tárházba. Ezután töltse fel a sablont a t�
 
     Előfordulhat, hogy figyelmeztetést kap a LF-ről. Figyelmen kívül hagyhatja a figyelmeztetést. a **Master** a Master ág.  Általában létre kell hoznia egy ágat az egyes frissítésekhez. Az oktatóanyag leegyszerűsítése érdekében közvetlenül a Master ágat használja.
 1. Tallózással keresse meg a GitHub-tárházat egy böngészőben.  Az URL-cím: **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** . Ekkor megjelenik a **CreateWebApp** mappa, valamint a mappában található három fájl.
-1. A sablon megnyitásához válassza ** alinkedStorageAccount.json** lehetőséget.
+1. A sablon megnyitásához válassza **alinkedStorageAccount.json** lehetőséget.
 1. Kattintson a **RAW** gombra. Az URL-cím a **RAW.githubusercontent.com**-vel kezdődik.
 1. Másolja az URL-címet.  Ezt az értéket kell megadnia, amikor az oktatóanyag későbbi részében konfigurálja a folyamatot.
 
@@ -124,7 +124,7 @@ A következő eljárás folytatásához szükség van egy DevOps-szervezetre.  H
 1. Írja be a következő értékeket:
 
     * **Projekt neve**: adja meg a projekt nevét. Az oktatóanyag legelején a projekt nevét is használhatja.
-    * **Verziókövetés**: válassza a **git**lehetőséget. Előfordulhat, hogy a **speciális** elemre kell bontania a **verziókövetés**megjelenítéséhez.
+    * **Verziókövetés**: válassza a **git** lehetőséget. Előfordulhat, hogy a **speciális** elemre kell bontania a **verziókövetés** megjelenítéséhez.
 
     Használja az alapértelmezett értéket a többi tulajdonsághoz.
 1. Kattintson a **Létrehozás** gombra.
@@ -132,12 +132,12 @@ A következő eljárás folytatásához szükség van egy DevOps-szervezetre.  H
 Hozzon létre egy olyan szolgáltatási kapcsolódást, amely a projektek Azure-ba való telepítésére szolgál.
 
 1. A bal oldali menü alján válassza a **projekt beállításai** lehetőséget.
-1. Válassza a **szolgáltatási kapcsolatok** lehetőséget a **folyamatok**alatt.
-1. Válassza az **új szolgáltatás-kapcsolatok**lehetőséget, válassza a **Azure Resource Manager**lehetőséget, majd kattintson a **tovább**gombra.
-1. Válassza ki az **egyszerű szolgáltatásnév**elemet, majd kattintson a **tovább**gombra.
+1. Válassza a **szolgáltatási kapcsolatok** lehetőséget a **folyamatok** alatt.
+1. Válassza az **új szolgáltatás-kapcsolatok** lehetőséget, válassza a **Azure Resource Manager** lehetőséget, majd kattintson a **tovább** gombra.
+1. Válassza ki az **egyszerű szolgáltatásnév** elemet, majd kattintson a **tovább** gombra.
 1. Írja be a következő értékeket:
 
-    * **Hatóköri szint**: válassza az **előfizetés**lehetőséget.
+    * **Hatóköri szint**: válassza az **előfizetés** lehetőséget.
     * **Előfizetés**: Válassza ki előfizetését.
     * **Erőforráscsoport**: hagyja üresen.
     * **Kapcsolatok neve**: adjon meg egy nevet. Például: **AzureRmPipeline-Conn**. Jegyezze fel ezt a nevet, a folyamat létrehozásakor szüksége lesz a névre.
@@ -154,17 +154,17 @@ Eddig a következő feladatokat végezte el.  Ha kihagyja az előző szakaszt, m
 Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
 
 1. Válassza ki a **folyamatokat** a bal oldali menüben.
-1. Válassza az **új folyamat**lehetőséget.
-1. Válassza a **GitHub** lehetőséget a **Connect** (Csatlakozás) lapon. Ha a rendszer kéri, adja meg a GitHub hitelesítő adatait, majd kövesse az utasításokat. Ha a következő képernyő jelenik meg, válassza a **csak adattárak lehetőséget**, és ellenőrizze, hogy az adattár szerepel-e a listában, mielőtt kiválasztja a **jóváhagyás & a telepítés**gombra.
+1. Válassza az **új folyamat** lehetőséget.
+1. Válassza a **GitHub** lehetőséget a **Connect** (Csatlakozás) lapon. Ha a rendszer kéri, adja meg a GitHub hitelesítő adatait, majd kövesse az utasításokat. Ha a következő képernyő jelenik meg, válassza a **csak adattárak lehetőséget**, és ellenőrizze, hogy az adattár szerepel-e a listában, mielőtt kiválasztja a **jóváhagyás & a telepítés** gombra.
 
     ![Azure Resource Manager Azure DevOps Azure-folyamatok csak adattárakat választanak](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-only-select-repositories.png)
 
 1. A **Select (kiválasztás** ) lapon válassza ki a tárházat.  Az alapértelmezett név: **[YourAccountName]/[YourGitHubRepositoryName]**.
-1. A **configure (Konfigurálás** ) lapon válassza a **kezdő folyamat**elemet. Megjeleníti a **Azure-pipelines. YML** folyamat fájlját két parancsfájl lépéssel.
+1. A **configure (Konfigurálás** ) lapon válassza a **kezdő folyamat** elemet. Megjeleníti a **Azure-pipelines. YML** folyamat fájlját két parancsfájl lépéssel.
 1. Törölje a két parancsfájl lépéseit a YML fájlból.
 1. Vigye a kurzort a sorba a **lépések után:**.
 1. Válassza a képernyő jobb oldalán található **Segéd megjelenítése** lehetőséget a **feladatok** ablaktábla megnyitásához.
-1. Válassza az **ARM-sablon központi telepítése**lehetőséget.
+1. Válassza az **ARM-sablon központi telepítése** lehetőséget.
 1. Írja be a következő értékeket:
 
     * **deploymentScope**: válasszon **erőforráscsoportot**.. További információ a hatókörökről: [telepítési hatókörök](deploy-rest.md#deployment-scope).
@@ -172,17 +172,17 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
     * **Előfizetés**: a cél ELŐfizetési azonosítójának meghatározása.
     * **Művelet**: válassza ki az **erőforráscsoport létrehozása vagy frissítése** műveletet 2 művelet – 1. hozzon létre egy erőforráscsoportot, ha új erőforráscsoport-nevet ad meg; 2. a megadott sablon üzembe helyezése.
     * **Erőforráscsoport**: adjon meg egy új erőforráscsoport-nevet. Például: **AzureRmPipeline-RG**.
-    * **Hely**: válassza ki az erőforráscsoport helyét, például az **USA középső**régióját.
-    * **Sablon helye**: válassza a **társított**összetevő elemet, ami azt jelenti, hogy a feladat közvetlenül a csatlakoztatott tárházból keresi a sablonfájlt.
-    * **Sablon**: írja be **a CreateWebApp/azuredeploy.js**értéket. Ha módosította a mappa nevét és a fájl nevét, módosítania kell ezt az értéket.
-    * **Sablon paraméterei**: hagyja üresen ezt a mezőt. A paraméter értékeit a **felülbírálási sablon paraméterei**között kell megadni.
+    * **Hely**: válassza ki az erőforráscsoport helyét, például az **USA középső** régióját.
+    * **Sablon helye**: válassza a **társított** összetevő elemet, ami azt jelenti, hogy a feladat közvetlenül a csatlakoztatott tárházból keresi a sablonfájlt.
+    * **Sablon**: írja be **a CreateWebApp/azuredeploy.js** értéket. Ha módosította a mappa nevét és a fájl nevét, módosítania kell ezt az értéket.
+    * **Sablon paraméterei**: hagyja üresen ezt a mezőt. A paraméter értékeit a **felülbírálási sablon paraméterei** között kell megadni.
     * **Felülbírálja a sablon paramétereit**: ENTER **-projektnév [EnterAProjectName]-linkedTemplateUri [EnterTheLinkedTemplateURL]**. Cserélje le a projekt nevét és a csatolt sablon URL-címét. A csatolt sablon URL-címe a [GitHub-Tárház létrehozása](#create-a-github-repository)végén írt leírás. Ezzel kezdődik **https://raw.githubusercontent.com** .
-    * **Üzembe helyezési mód**: válassza a **növekményes**lehetőséget.
-    * **Központi telepítés neve**: adja meg a **DeployPipelineTemplate**. A **központi telepítés nevének**megtekintéséhez válassza a **speciális** lehetőséget.
+    * **Üzembe helyezési mód**: válassza a **növekményes** lehetőséget.
+    * **Központi telepítés neve**: adja meg a **DeployPipelineTemplate**. A **központi telepítés nevének** megtekintéséhez válassza a **speciális** lehetőséget.
 
     ![Képernyőfelvétel: az ARM-sablon üzembe helyezési lapja, ahol a szükséges értékek szerepelnek.](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
     További információ a feladatról: az [Azure-erőforráscsoport üzembe helyezési feladata](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)és [Azure Resource Manager sablon központi telepítési feladata](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 
@@ -199,7 +199,7 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
 ## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Nyissa meg az erőforráscsoportot. A nevet a folyamat YAML fájlban megadott név határozza meg.  Ekkor létrejön egy Storage-fiók.  A Storage-fiók neve a **tárolóval**kezdődik.
+1. Nyissa meg az erőforráscsoportot. A nevet a folyamat YAML fájlban megadott név határozza meg.  Ekkor létrejön egy Storage-fiók.  A Storage-fiók neve a **tárolóval** kezdődik.
 1. Válassza ki a Storage-fiók nevét a megnyitásához.
 1. Válassza ki a **Tulajdonságok** elemet. Figyelje meg, hogy a **replikáció** **helyileg redundáns tárolást (LRS)**.
 
@@ -239,7 +239,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 Előfordulhat, hogy törölni szeretné a GitHub-tárházat és az Azure DevOps-projektet is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, befejezte ezt a Resource Manager-sablon üzembe helyezését ismertető oktatóanyagot. Tudassa velünk, ha megjegyzésekkel és javaslatokkal rendelkezik a visszajelzések szakaszban. Köszönjük!
 Készen áll a sablonokkal kapcsolatos speciális fogalmak beugrására. A következő oktatóanyag részletesen ismerteti a sablon-referenciák dokumentációjának használatát, amely segítséget nyújt a telepítendő erőforrások definiálásához.

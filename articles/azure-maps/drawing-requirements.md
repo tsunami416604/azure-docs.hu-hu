@@ -1,21 +1,26 @@
 ---
-title: A csomagra vonatkozó követelmények a Azure Maps Creatorban
+title: A csomagra vonatkozó követelmények a Microsoft Azure Maps Creatorben (előzetes verzió)
 description: Ismerje meg, hogy a rendszer hogyan konvertálja a konstrukciós fájlokat az adat-előkészítési csomag követelményeire
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 6/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013122"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903462"
 ---
 # <a name="drawing-package-requirements"></a>Rajzolási csomag követelményei
+
+
+> [!IMPORTANT]
+> A Azure Maps Creator Services jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A feltöltött rajzok leképezési adatai a [Azure Maps átalakítási szolgáltatás](/rest/api/maps/conversion)használatával alakíthatók át. Ez a cikk az átalakítási API-hoz tartozó rajzi csomagok követelményeit ismerteti. Egy minta csomag megtekintéséhez letöltheti a minta [rajzolási csomagot](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
@@ -31,12 +36,12 @@ A [Azure Maps átalakítási szolgáltatás](/rest/api/maps/conversion) átalak�
 
 Az egyszerű hivatkozáshoz itt talál néhány olyan kifejezést és definíciót, amelyek fontosak a cikk elolvasása során.
 
-| Kifejezés  | Definíció |
+| Időszak  | Definíció |
 |:-------|:------------|
 | Réteg | Egy AutoCAD DWG-réteg.|
-| Szint | Egy épület területe egy beállított jogosultságszint-emeléssel. Például egy épület padlója. |
+| Level | Egy épület területe egy beállított jogosultságszint-emeléssel. Például egy épület padlója. |
 | Xref  |Egy AutoCAD DWG fájlformátumban (. DWG) található fájl, amely külső hivatkozásként van csatolva az elsődleges rajzhoz.  |
-| Funkció | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
+| Jellemző | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
 | Szolgáltatási osztályok | A funkciók közös tervrajza. Egy *egység* például egy szolgáltatás osztály, az *Office* pedig egy szolgáltatás. |
 
 ## <a name="drawing-package-structure"></a>Rajzolási csomag szerkezete
@@ -79,7 +84,7 @@ Minden rétegbeli entitásnak a következő típusok egyikének kell lennie: von
 
 Az alábbi táblázat az egyes rétegekhez tartozó támogatott entitások típusait és támogatott funkcióit ismerteti. Ha egy réteg nem támogatott entitás-típusokat tartalmaz, akkor a [Azure Maps konverziós szolgáltatás](/rest/api/maps/conversion) figyelmen kívül hagyja ezeket az entitásokat.  
 
-| Réteg | Entitástípusok | Szolgáltatások |
+| Réteg | Entitástípusok | Funkciók |
 | :----- | :-------------------| :-------
 | [Külső](#exterior-layer) | Sokszög, vonallánc (lezárt), kör | Szintek
 | [Egység](#unit-layer) |  Sokszög, vonallánc (lezárt), kör | Vertikális behatolások, egységek
@@ -402,15 +407,15 @@ Az alábbi példa a minta rajzolási csomag mintáját tartalmazó jegyzékfájl
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a rajzfájl megfelel a követelményeknek, a [Azure Maps átalakítási szolgáltatással](/rest/api/maps/conversion) átalakíthatja a csomagot térképi adatkészletbe. Ezt követően használhatja az adatkészletet egy beltéri Térkép létrehozásához a beltéri térképek modul használatával.
 
 > [!div class="nextstepaction"]
->[A beltéri térképek létrehozója](creator-indoor-maps.md)
+>[Creator (előzetes verzió) beltéri térképekhez](creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: létrehozói beltéri Térkép létrehozása](tutorial-creator-indoor-maps.md)
+> [Oktatóanyag: Creator (előzetes verzió) – beltéri Térkép létrehozása](tutorial-creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [Beltéri térképek dinamikus stílusa](indoor-map-dynamic-styling.md)

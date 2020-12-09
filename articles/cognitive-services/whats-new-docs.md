@@ -1,86 +1,86 @@
 ---
 title: 'Cognitive Services: a docs újdonságai'
-description: 'A Cognitive Services docs újdonságai 2020. október 1-től, 2020. október 31-ig. '
+description: 'A Cognitive Services docs újdonságai a 2020. november 1-től, 2020. november 30-ig. '
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 11/03/2020
-ms.openlocfilehash: 239a93c58edd1f02e5e34d974fdc864f3e1cf90f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 12/07/2020
+ms.openlocfilehash: d07f01a17c2d784eed61ad7e7ef47c8f7eb5ac30
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369426"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862190"
 ---
-# <a name="cognitive-services-whats-new-in-docs-for-october-1-2020---october-31-2020"></a>Cognitive Services: Újdonságok a docs-ban október 1-től 2020 – október 31., 2020
+# <a name="cognitive-services-docs-whats-new-for-november-1-2020---november-30-2020"></a>Cognitive Services docs: Újdonságok november 1-től, 2020 – november 30., 2020
 
-Üdvözöljük a Cognitive Services docs újdonságait 2020. október 1-től 2020. október 31-ig. Ez a cikk felsorolja a docs ezen időszak alatt történt főbb változásait.
+Üdvözöljük a Cognitive Services docs újdonságait november 1-től 2020-én, 2020. november 30-án. Ez a cikk felsorolja a docs ezen időszak alatt történt főbb változásait.
 
 ## <a name="cognitive-services"></a>Cognitive Services
 
-### <a name="new-articles"></a>Új cikkek
-
-- [Cognitive Services – fejlesztési lehetőségek](cognitive-services-development-options.md)
-
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Mi az Azure Cognitive Services?](what-are-cognitive-services.md)
+- [Rövid útmutató: Cognitive Services-erőforrás létrehozása az Azure Command-Line Interface (CLI) használatával](cognitive-services-apis-create-account-cli.md)
+- [Cognitive Services – fejlesztési lehetőségek](cognitive-services-development-options.md)
 - [Azure Cognitive Services támogatás és Súgó lehetőségek](cognitive-services-support-options.md)
-- [Az Azure Cognitive Services virtuális hálózatainak konfigurálása](cognitive-services-virtual-networks.md)
+- [Diagnosztikai naplózás engedélyezése az Azure Cognitive Services](diagnostic-logging.md)
+- [Természetes nyelvi támogatás az Azure Cognitive Services](language-support.md)
+- [Cognitive Services Azure biztonsági alapterve](security-baseline.md)
 
 ## <a name="containers"></a>Containers
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [A Docker Compose használata több tároló üzembe helyezéséhez](./containers/docker-compose-recipe.md)
+- [Azure Cognitive Services Container képcímkék és kibocsátási megjegyzések](/azure/cognitive-services/containers/container-image-tags.md)
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
-### <a name="updated-articles"></a>Frissített cikkek
-
-- [A Form Recognizer újdonságai](./form-recognizer/whats-new.md)
-
-## <a name="immersive-reader"></a>Modern olvasó
-
 ### <a name="new-articles"></a>Új cikkek
 
-- [A lebilincselő olvasó JavaScript SDK kibocsátási megjegyzései](./immersive-reader/release-notes.md)
+- [Űrlap-felismerő előre összeépített számlázási modellje](/azure/cognitive-services/form-recognizer/concept-invoices.md)
+- [Űrlap-felismerő elrendezési szolgáltatás](/azure/cognitive-services/form-recognizer/concept-layout.md)
+- [Gyors útmutató: számlázási adatok kinyerése az űrlap-felismerő REST API és a Python használatával](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices.md)
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Felhasználói beállítások tárolása](./immersive-reader/how-to-store-user-preferences.md)
-- [Magával ragadó olvasó JavaScript SDK-referenciája (v 1.1)](./immersive-reader/reference.md)
+- [Nyugtákra vonatkozó fogalmak](/azure/cognitive-services/form-recognizer/concept-receipts.md)
+- [Mi a Form Recognizer?](/azure/cognitive-services/form-recognizer/overview.md)
+- [Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával](/azure/cognitive-services/form-recognizer/quickstarts/label-tool.md)
+- [Gyors útmutató: névjegykártya-adatok kinyerése az űrlap-felismerő REST API és a Python használatával](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards.md)
+- [A Form Recognizer újdonságai](/azure/cognitive-services/form-recognizer/whats-new.md)
 
 ## <a name="metrics-advisor"></a>Metrics Advisor
 
-### <a name="updated-articles"></a>Frissített cikkek
+### <a name="new-articles"></a>Új cikkek
 
-- [Adatcsatornák hozzáadása különböző adatforrásokból a metrikai TANÁCSADÓBA](./metrics-advisor/data-feeds-from-different-sources.md)
-- [Metrikák Advisor – gyakori kérdések](./metrics-advisor/faq.md)
-
-## <a name="text-analytics"></a>Szövegelemzés
+- [Metrikák Advisor: a docs újdonságai](/azure/cognitive-services/metrics-advisor/whats-new.md)
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Migrálás a Text Analytics API 3. x verziójára](./text-analytics/migration-guide.md)
-- [Elnevezett entitások felismerésének használata a Text Analyticsban](./text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [Útmutató: érzelmek észlelése a Text Analytics API használatával](./text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
+- [Anomália-visszajelzés megadása](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback.md)
+- [Metrikák Advisor – gyakori kérdések](/azure/cognitive-services/metrics-advisor/faq.md)
+- [Gyors útmutató: az ügyfél-kódtárak vagy a REST API-k használata a megoldás testreszabásához](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library.md)
 
-## <a name="community-contributors"></a>Közösségi közreműködők
+## <a name="qna-maker"></a>QnA Maker 
 
-A következő személyek járultak hozzá az Cognitive Services docs-hoz ebben az időszakban. Köszönöm! 
+### <a name="new-articles"></a>Új cikkek 
 
-- [hyoshioka0128](https://github.com/hyoshioka0128) – Hiroshi Yoshioka (2)
-- [Jarrad-OBrien](https://github.com/jarrad-obrien) -Jarrad O'Brien (2)
-- [nkgami](https://github.com/nkgami) -Hiroki Kendzsi (2)
-- [changeworld](https://github.com/changeworld) -Takashi Takebayashi (1)
-- [dem108](https://github.com/dem108) -SeokJin Han (1)
-- [iAmBipinPaul](https://github.com/iAmBipinPaul) – Dora Pál (1)
-- [JinyuID](https://github.com/JinyuID) -Jinyu (1)
-- [joelhulen](https://github.com/joelhulen) – Joel Hulen (1)
-- [jptarqu](https://github.com/jptarqu) (1)
-- [neibla](https://github.com/neibla) -Neil Blake (1)
+* [QnA Maker felügyelt nyilvános előzetes közlemény](https://techcommunity.microsoft.com/t5/azure-ai/introducing-qna-maker-managed-now-in-public-preview/ba-p/1845575)
+* [Új QnA Maker felügyelt szolgáltatás létrehozása](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure?tabs=v2)
+* [Meglévő Tudásbázis migrálása QnA Maker felügyelt eszközre](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/migrate-knowledge-base)
+
+## <a name="text-analytics"></a>Text Analytics
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [Az Text Analytics API vonatkozó adatforgalmi és díjszabási korlátok](/azure/cognitive-services/text-analytics/concepts/data-limits.md)
+- [Útmutató: a Text Analytics for Health használata (előzetes verzió)](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health.md)
+- [A Text Analytics meghívása REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api.md)
+- [Elnevezett entitások felismerésének használata a Text Analyticsban](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
+- [Útmutató: az érzelmek elemzése és a vélemények bányászata](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
+- [A Text Analytics API újdonságai.](/azure/cognitive-services/text-analytics/whats-new.md)
+- [Példa: nyelv felismerése Text Analytics](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

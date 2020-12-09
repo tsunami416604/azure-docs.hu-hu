@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
-ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 479c7c455f07d098edd327196803e85df24dfb6d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72757142"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905133"
 ---
-# <a name="create-human-reviews-rest"></a>Emberi értékelések létrehozása (REST)
+# <a name="create-human-reviews-api-console"></a>Emberi értékelések létrehozása (API-konzol)
 
 A [értékelések](./review-api.md#reviews) az emberi moderátorok számára az értékelés céljából tárolják és jelenítik meg a tartalmakat. Amikor a felhasználó elvégez egy felülvizsgálatot, az eredményeket egy megadott visszahívási végpontra küldi a rendszer. Ebből az útmutatóból megtudhatja, hogyan állíthat be felülvizsgálatokat a REST API-k segítségével az API-konzolon. Miután megértette az API-k szerkezetét, könnyedén elvégezheti ezeket a hívásokat a REST-kompatibilis platformokra.
 
@@ -33,7 +33,7 @@ A felülvizsgálat létrehozásához nyissa meg a **[felülvizsgálat – API-hi
 
 ### <a name="enter-rest-call-parameters"></a>Adja meg a REST-hívás paramétereit
 
-Adja meg a **csapatnév**és a **OCP-APIM-Subscription-Key**értékeket:
+Adja meg a **csapatnév** és a **OCP-APIM-Subscription-Key** értékeket:
 
 - **csapatnév**: a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) fiókjának beállításakor létrehozott csoport azonosítója (a felülvizsgálati eszköz hitelesítő adatai képernyő **azonosító** mezőjében található).
 - **OCP-APIM-előfizetés-kulcs**: a Content moderator kulcsa. Ez a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) **Beállítások** lapján található.
@@ -129,7 +129,7 @@ Az alapértelmezett kérelem törzse példákat mutat be a létrehozható külö
 
 ### <a name="submit-your-request"></a>A kérés elküldése
   
-Válassza a **Küldés** lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **válasz tartalma** mező pedig a felülvizsgálat azonosítóját jeleníti meg. Másolja ezt az azonosítót a következő lépésekben való használatra.
+Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **válasz tartalma** mező pedig a felülvizsgálat azonosítóját jeleníti meg. Másolja ezt az azonosítót a következő lépésekben való használatra.
 
 ![Felülvizsgálat – a konzol válaszának létrehozása mező megjeleníti a felülvizsgálati azonosítót](images/test-drive-review-2.PNG)
 
@@ -149,7 +149,7 @@ Adja meg a REST-hívás paramétereit a fenti szakaszban leírtak szerint. Ebben
 
 ![Ellenőrzés – a konzol létrehozási eredményeinek létrehozása](images/test-drive-review-3.PNG)
   
-Válassza a **Küldés** lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **válasz tartalma** pedig JSON formátumban jeleníti meg a felülvizsgálati adatokat, például a következőkhöz:
+Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **válasz tartalma** pedig JSON formátumban jeleníti meg a felülvizsgálati adatokat, például a következőkhöz:
 
 ```json
 {  
@@ -190,6 +190,6 @@ Jegyezze fel a válaszban a következő mezőket:
 - **reviewerResultTags**: Ez akkor jelenik meg, ha az emberi felülvizsgálati csapat manuálisan hozzáadta a címkéket (ez a **createdBy** mező látható).
 - **metaadatok**: Itt láthatók azok a címkék, amelyeket először a felülvizsgálatban adtak hozzá, mielőtt az emberi felülvizsgálati csapat megváltoztatta volna a módosításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan hozhat létre a tartalom-moderálási felülvizsgálatokat a REST API használatával. Ezután integrálja a felülvizsgálatokat egy végpontok közötti moderálási forgatókönyvbe, például az [E-kereskedelmi moderálási](./ecommerce-retail-catalog-moderation.md) oktatóanyagba.

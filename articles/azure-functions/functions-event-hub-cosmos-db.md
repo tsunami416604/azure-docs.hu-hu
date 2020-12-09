@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: aa9e7612a5b3b9655b0c1981fbba87645526b3a2
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 20792d58ab259f93d7725fbafda1507f9eddc740
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327202"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862156"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Oktatóanyag: függvény létrehozása javában Event hub-eseményindítóval és Azure Cosmos DB kimeneti kötéssel
 
@@ -30,17 +30,14 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
 Az oktatóanyag elvégzéséhez a következőket kell telepíteni:
 
-* A [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) 8-as verziója
-* Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója
-* Ha inkább nem kívánja használni az [Azure CLI](/cli/azure/install-azure-cli) -t Cloud Shell
-* [Azure functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) 2.6.666 vagy újabb verzió
+- A [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) 8-as verziója
+- Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója
+- [Azure functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) 2.6.666 vagy újabb verzió [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 > [!IMPORTANT]
 > Az `JAVA_HOME` oktatóanyag elvégzéséhez a környezeti változót a JDK telepítési helyére kell beállítani.
 
 Ha közvetlenül az oktatóanyag kódját szeretné használni, tekintse meg a következőt: [Java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) Sample repo.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-azure-resources"></a>Azure-erőforrások létrehozása
 
@@ -53,17 +50,13 @@ Ebben az oktatóanyagban szüksége lesz ezekre az erőforrásokra:
 
 Az alábbi szakaszban bemutatjuk, hogyan hozhatja létre ezeket az erőforrásokat az Azure CLI használatával.
 
-### <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-
-Ha nem Cloud Shell használ, az Azure CLI-t helyileg kell használnia a fiók eléréséhez. Futtassa a `az login` parancsot a bash parancssorból a böngészőalapú bejelentkezési élmény elindításához. Ha egynél több Azure-előfizetéshez fér hozzá, állítsa be az alapértelmezett értéket az `az account set --subscription` előfizetés-azonosító után.
-
 ### <a name="set-environment-variables"></a>Környezeti változók beállítása
 
 Ezután hozzon létre néhány környezeti változót a létrehozni kívánt erőforrások neveihez és helyéhez. Használja az alábbi parancsokat, és cserélje `<value>` le a helyőrzőket a választott értékekre. Az értékeknek meg kell felelniük az [Azure-erőforrások elnevezési szabályainak és korlátozásainak](/azure/architecture/best-practices/resource-naming). A `LOCATION` változóhoz használja a parancs által létrehozott értékek egyikét `az functionapp list-consumption-locations` .
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 RESOURCE_GROUP=<value>
 EVENT_HUB_NAMESPACE=<value>
 EVENT_HUB_NAME=<value>
@@ -350,7 +343,7 @@ Ha az erőforrások létrehozásához Cloud Shell használt, akkor nem fog helyi
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 RESOURCE_GROUP=<value>
 FUNCTION_APP=<value>
 ```
@@ -370,7 +363,7 @@ A következő Maven-paranccsal hozhat létre functions-projektet, és hozzáadha
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn archetype:generate --batch-mode \
     -DarchetypeGroupId=com.microsoft.azure \
     -DarchetypeArtifactId=azure-functions-archetype \
@@ -406,7 +399,7 @@ A fordítási hibák elkerülése érdekében törölnie kell a teszt fájlokat.
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 cd telemetry-functions
 rm -r src/test
 ```
@@ -426,7 +419,7 @@ Helyi teszteléshez a Function projektnek szüksége lesz az Azure-beli Function
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
 ```
 
@@ -584,7 +577,7 @@ A függvények létrehozásához és futtatásához használja a következő Mav
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn clean package
 mvn azure-functions:run
 ```
@@ -623,7 +616,7 @@ Telepítse a projektet az Azure-ba a következő paranccsal:
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn azure-functions:deploy
 ```
 
@@ -663,7 +656,7 @@ az group delete --name %RESOURCE_GROUP%
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Azure-függvényt, amely az Event hub-eseményeket kezeli, és frissíti a Cosmos DB. További információ: [Azure functions Java fejlesztői útmutató](./functions-reference-java.md). A használt megjegyzésekkel kapcsolatos információkért tekintse meg a következőt: [com. microsoft. Azure. functions. Megjegyzés](/java/api/com.microsoft.azure.functions.annotation) leírása.
 

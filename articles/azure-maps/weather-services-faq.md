@@ -1,23 +1,27 @@
 ---
-title: Microsoft Azure Maps időjárási szolgáltatások – gyakran ismételt kérdések (GYIK)
-description: Választ kaphat a Azure Maps időjárási szolgáltatások adatait és funkcióit érintő gyakori kérdésekre.
+title: Microsoft Azure Maps időjárási szolgáltatások (előzetes verzió) – gyakori kérdések (GYIK)
+description: Választ kaphat a Azure Maps időjárási szolgáltatások (előzetes verzió) adatait és funkcióit érintő gyakori kérdésekre.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/04/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2a5a58c1515c647bb76bf35f3a5eaade3d00588a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8b7726e4e8fee0044a7865c8c494ef6451425676
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747324"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903870"
 ---
-# <a name="azure-maps-weather-services-frequently-asked-questions-faq"></a>Azure Maps időjárási szolgáltatások – gyakran ismételt kérdések (GYIK)
+# <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Azure Maps időjárási szolgáltatások (előzetes verzió) – gyakori kérdések (GYIK)
 
-Ez a cikk a [Azure Maps időjárási szolgáltatások](https://docs.microsoft.com/rest/api/maps/weather) adatait és funkcióit érintő gyakori kérdésekre ad választ. A következő témákat tárgyalja:
+> [!IMPORTANT]
+> Azure Maps időjárási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Ez a cikk a Azure Maps [időjárási szolgáltatások](https://docs.microsoft.com/rest/api/maps/weather) adatait és funkcióit érintő gyakori kérdésekre ad választ. A következő témákat tárgyalja:
 
 * Adatforrások és adatmodellek
 * Időjárási szolgáltatások lefedettsége és rendelkezésre állása
@@ -51,7 +55,7 @@ Ezeket az adatkészleteket valós időben vizsgálják felül a digitális előr
 
 A globális előrejelzések megfogalmazásához számos időjárás-előrejelző útmutatást használó rendszer van használatban. Minden nap több mint 150 numerikus előrejelzési modellt használ a külső és belső adatkészletek esetében is. Ide tartoznak a kormányzati modellek, például az európai központ ECMWF és az Egyesült Államok globális előrejelzési rendszere (GFS). Emellett az AccuWeather olyan szabadalmaztatott, nagyfelbontású modelleket is tartalmaz, amelyek adott helyszínekre és stratégiai regionális tartományokra vonatkozó előrejelzéseket downscale, hogy az időjárás előrejelzése további pontossággal történjen. A AccuWeather egyedi keverési és súlyozási algoritmusai az elmúlt néhány évtizedben lettek kifejlesztve. Ezek az algoritmusok optimálisan kihasználják a számos előrejelzési bemenetet, így nagyon pontos előrejelzéseket biztosítanak.
 
-## <a name="weather-services-coverage-and-availability"></a>Időjárási szolgáltatások lefedettsége és rendelkezésre állása
+## <a name="weather-services-preview-coverage-and-availability"></a>Időjárási szolgáltatások (előzetes verzió) lefedettség és rendelkezésre állás
 
 **Milyen típusú lefedettség várható a különböző országokban/régiókban?**
 
@@ -73,11 +77,11 @@ Azure Maps előrejelzési API-k akár 30 percig is gyorsítótárazva vannak. Ha
 
 ## <a name="developing-with-azure-maps-sdks"></a>Fejlesztés Azure Maps SDK-val
 
-**A Azure Maps web SDK natív módon támogatja az időjárási szolgáltatások integrációját?**
+**A Azure Maps web SDK natív módon támogatja az időjárási szolgáltatások (előzetes verzió) integrációját?**
 
 A Azure Maps web SDK egy Services modult biztosít. A Services modul egy segítő könyvtár, amely megkönnyíti a Azure Maps REST-szolgáltatások használatát a webes vagy Node.js alkalmazásokban. JavaScript vagy írógéppel használatával. Első lépésként tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module).
 
-**A Azure Maps Android SDK natív módon támogatja az időjárási szolgáltatások integrációját?**
+**A Azure Maps Android SDK natív módon támogatja az időjárási szolgáltatások (előzetes verzió) integrációját?**
 
 A Azure Maps Android SDK-k támogatják a Mercator csempe-rétegeket, amelyek x/y/nagyítási jelöléssel, quad Key jelöléssel vagy EPSG 3857-alapú határolókeret-jelöléssel rendelkezhetnek.
 
@@ -99,9 +103,9 @@ Igen. A valós idejű radar-és műholdas csempén kívül Azure Maps ügyfelek 
 
 **Különböző időjárási feltételekhez tartozó ikonokat kínál?**
 
-Igen. [Itt](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#weather-icons)megtalálhatja a megfelelő ikonokat és a hozzájuk tartozó kódokat. Figyelje meg, hogy csak néhány az időjárási szolgáltatás API-jai, például a  [jelenlegi feltételek API beolvasása](https://aka.ms/azuremapsweathercurrentconditions), a válasz *iconCode* visszaadása. További információkért tekintse meg az aktuális WeatherConditions nyílt forráskódú [kódú mintát](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location).
+Igen. [Itt](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#weather-icons)megtalálhatja a megfelelő ikonokat és a hozzájuk tartozó kódokat. Figyelje meg, hogy az időjárási szolgáltatás (előzetes verzió) API-jai (például az  [aktuális feltételek beolvasása API](https://aka.ms/azuremapsweathercurrentconditions)) csak néhányat adnak vissza a válasz *iconCode* . További információkért tekintse meg az aktuális WeatherConditions nyílt forráskódú [kódú mintát](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha ez a GYIK nem válaszol a kérdésére, az alábbi csatornákon keresztül léphet velünk kapcsolatba:
 
@@ -110,15 +114,15 @@ Ha ez a GYIK nem válaszol a kérdésére, az alábbi csatornákon keresztül l�
 * Microsoft ügyfélszolgálata. Új támogatási kérelem létrehozásához a [Azure Portal](https://portal.azure.com/)Súgó lapján kattintson a **Súgó +** támogatás gombra, majd válassza az **új támogatási kérelem** lehetőséget.
 * [Azure Maps UserVoice](https://feedback.azure.com/forums/909172-azure-maps) küldéséhez.
 
-Ismerje meg, hogyan kérhet valós idejű és előre jelzett időjárási információkat Azure Maps időjárási szolgáltatások használatával:
+Ismerje meg, hogyan kérhet valós idejű és előre jelzett időjárási információkat Azure Maps időjárási szolgáltatások (előzetes verzió) használatával:
 > [!div class="nextstepaction"]
 > [Valós idejű időjárási adatgyűjtés kérése ](how-to-request-weather-data.md)
 
-Azure Maps Weather Services – fogalmakat ismertető cikk:
+Azure Maps időjárási szolgáltatások (előzetes verzió) – fogalmakat ismertető cikk:
 > [!div class="nextstepaction"]
-> [Időjárási szolgáltatások – fogalmak](weather-coverage.md)
+> [A Weather szolgáltatásokkal kapcsolatos fogalmak](weather-coverage.md)
 
-Ismerje meg a Azure Maps Weather Services API dokumentációját:
+Fedezze fel a Azure Maps Weather Services (előzetes verzió) API dokumentációját:
 
 > [!div class="nextstepaction"]
 > [Azure Maps időjárási szolgáltatások](/rest/api/maps/weather)

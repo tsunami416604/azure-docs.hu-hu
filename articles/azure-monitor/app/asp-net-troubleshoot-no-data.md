@@ -4,12 +4,12 @@ description: Nem látja az Azure Application Insightsban tárolt adatmegjelenít
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: c3f0350152ece32829291012d583be87a90227cf
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 26ba586715c7b76ff8972c6574c3c29b837713a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748935"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904465"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>A .NET/.NET Core rendszerhez nem szükséges adatApplication Insightsek hibaelhárítása
 
@@ -39,6 +39,10 @@ ms.locfileid: "96748935"
 
 * Lásd: [hibaelhárítás Állapotmonitor](./monitor-performance-live-website-now.md#troubleshoot).
 
+> [!IMPORTANT]
+> Az új Azure-régiókban a rendszerállapot-kulcsok helyett a kapcsolatok sztringjét **kell** használnia. A [kapcsolódási karakterlánc](./sdk-connection-string.md?tabs=net) azonosítja azt az erőforrást, amelyhez hozzá szeretné rendelni a telemetria-adatait. Azt is lehetővé teszi, hogy módosítsa az erőforrás által a telemetria célként használt végpontokat. A kapcsolódási karakterláncot át kell másolnia, és hozzá kell adnia az alkalmazás kódjához vagy egy környezeti változóhoz.
+
+
 ## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException: nem tölthető be a (z) "Microsoft. AspNet TelemetryCorrelation" fájl vagy szerelvény.
 
 További információ erről a hibáról: [GitHub-probléma 1610] ( https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) .
@@ -64,7 +68,7 @@ Ha a (2,4)-nál régebbi SDK-ból frissít, meg kell győződnie arról, hogy a 
     </TelemetryModules>
     ```
 
-***A frissítés nem megfelelő lehet, ha váratlan kivételeket vagy telemetria nem gyűjt.** _
+**_A frissítés nem megfelelő lehet, ha váratlan kivételeket vagy telemetria nem gyűjt._* _
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Nincs "Application Insights hozzáadása" lehetőség a Visual Studióban

@@ -3,16 +3,16 @@ title: GPU-figyelés konfigurálása a Azure Monitor for containers szolgáltat�
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a figyelési Kubernetes-fürtöket NVIDIA és AMD GPU-t használó csomópontokkal a Azure Monitor for containers használatával.
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 4c6044d407dc4abd0e69bac0190cc19c901022c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e391117ab57211aa5d178d11c27b934b4ccd37f8
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569696"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905587"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>A GPU-figyelés konfigurálása a Azure Monitor for containers szolgáltatással
 
-Az ügynök verziójának *ciprod03022019*kezdődően az Azure monitor for containers Integrated Agent mostantól támogatja a GPU-kompatibilis Kubernetes-fürt csomópontjain a monitoring GPU-t (grafikus feldolgozási egységek), valamint a GPU-erőforrásokat kérő és használó hüvelyek/tárolók figyelését.
+Az ügynök verziójának *ciprod03022019* kezdődően az Azure monitor for containers Integrated Agent mostantól támogatja a GPU-kompatibilis Kubernetes-fürt csomópontjain a monitoring GPU-t (grafikus feldolgozási egységek), valamint a GPU-erőforrásokat kérő és használó hüvelyek/tárolók figyelését.
 
 ## <a name="supported-gpu-vendors"></a>Támogatott GPU-szállítók
 
@@ -39,7 +39,7 @@ A tárolók Azure Monitor automatikusan elindítja a GPU-használat figyelését
 
 ## <a name="gpu-performance-charts"></a>GPU-teljesítményű diagramok 
 
-A tárolók Azure Monitor tartalmaz előre konfigurált diagramokat a táblázatban korábban felsorolt metrikák számára a minden fürthöz tartozó GPU-munkafüzetként. A GPU-munkafüzet **csomópontjának GPU** -t közvetlenül egy AK-fürtből is megtalálhatja, ha a bal oldali ablaktáblán a **munkafüzetek** elemre kattint, és az elemzés **munkafüzetek megtekintése** legördülő listájában található.
+A tárolók Azure Monitor tartalmaz előre konfigurált diagramokat a táblázatban korábban felsorolt metrikák számára a minden fürthöz tartozó GPU-munkafüzetként. A tárolók Azure Monitor számára elérhető munkafüzetek leírását a [tárolók Azure monitorban található munkafüzetek](container-insights-reports.md) című részben tekintheti meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

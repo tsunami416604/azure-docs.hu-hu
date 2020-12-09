@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 1053eb9772650dce040570bda04addf93df49178
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b321985bf7920934193723b60abb7bfb28482e6d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998025"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862241"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>Oktatóanyag: PHP-és MySQL-alkalmazás létrehozása Azure App Service
 
@@ -30,7 +30,7 @@ A [Azure app Service](overview.md) a Linux operációs rendszer használatával 
 
 :::image type="content" source="./media/tutorial-php-mysql-app/complete-checkbox-published.png" alt-text="Képernyőkép egy Feladatlista nevű PHP-alkalmazásról.":::
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * MySQL-adatbázis létrehozása az Azure-ban
@@ -46,11 +46,12 @@ Az oktatóanyag a következőket ismerteti:
 
 Az oktatóanyag elvégzéséhez:
 
-* [A Git telepítése](https://git-scm.com/)
-* [Telepítse a PHP 5.6.4-es vagy újabb verzióját](https://php.net/downloads.php)
-* [Telepítse a Composert](https://getcomposer.org/doc/00-intro.md)
-* Engedélyezze a következő PHP-bővítményeket, amelyre a Laravelnek szüksége van: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
-* [Telepítse és indítsa el a MySQL-t](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
+- [A Git telepítése](https://git-scm.com/)
+- [Telepítse a PHP 5.6.4-es vagy újabb verzióját](https://php.net/downloads.php)
+- [Telepítse a Composert](https://getcomposer.org/doc/00-intro.md)
+- Engedélyezze a következő PHP-bővítményeket, amelyre a Laravelnek szüksége van: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
+- [A MySQL telepítése és elindítása](https://dev.mysql.com/doc/refman/5.7/en/installing.html)
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)] 
 
 ## <a name="prepare-local-mysql"></a>A helyi MySQL előkészítése
 
@@ -148,8 +149,6 @@ Egy böngészőben nyissa meg a `http://localhost:8000` oldalt. Vegyen fel néh�
 ![A PHP sikeresen csatlakozik a MySQL-hez](./media/tutorial-php-mysql-app/mysql-connect-success.png)
 
 A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-mysql-in-azure"></a>MySQL létrehozása az Azure-ban
 
@@ -452,7 +451,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -483,7 +482,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -635,7 +634,7 @@ Véglegesítse az összes módosítást a Gitben, majd továbbítsa a kód módo
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 A `git push` befejezését követően navigáljon az Azure-alkalmazáshoz, és tesztelje az új funkciókat.

@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 62a71f484baab2a8a717535cec77f2629cc2fb08
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 5594e8225b615bf6e1af5077bd68422edbbeec19
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754914"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905451"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>A Resource Managerhez készült Azure Defender bemutatása
 
@@ -46,7 +46,7 @@ Az Azure Defender for Resource Manager által biztosított riasztások teljes li
 
  ## <a name="how-to-investigate-alerts-from-azure-defender-for-resource-manager"></a>Riasztások vizsgálata a Resource Managerhez készült Azure Defenderből
 
-A Resource Managerhez készült Azure Defender biztonsági riasztásai a figyelési Azure Resource Manager műveletek alapján észlelt fenyegetéseken alapulnak. Az Azure Defender a Azure Resource Manager belső naplózási forrásait, valamint az Azure Activity log-t, egy Azure-beli platform-naplót használ, amely betekintést nyújt az előfizetési szintű eseményekre.
+A Resource Managerhez készült Azure Defender biztonsági riasztásai a figyelési Azure Resource Manager műveletek alapján észlelt fenyegetéseken alapulnak. Az Azure Defender a Azure Resource Manager belső naplózási forrásait, valamint az Azure-beli platform-naplót használja az Azure-ban, amely betekintést nyújt az előfizetési szintű eseményekre.
 
 További információ az [Azure Activity log](../azure-monitor/platform/activity-log.md)-ről.
 
@@ -68,7 +68,7 @@ Az Azure Defender for Resource Manager biztonsági értesítéseinek vizsgálata
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan használható az Azure Defender a Resource Managerhez. Kapcsolódó anyagok esetében tekintse meg a következő cikket: 
 

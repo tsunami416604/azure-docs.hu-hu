@@ -1,19 +1,19 @@
 ---
-title: Honosítási támogatás | Microsoft Azure térképek
+title: Honosítási támogatás Microsoft Azure térképekkel
 description: Megtudhatja, hogy mely régiókat Azure Maps támogatja olyan szolgáltatásokkal, mint a Maps, a Search, az routing, az időjárási és a forgalmi incidensek. Megtudhatja, hogyan állíthatja be a View paramétert.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50e5d0721eb14d1fcdfad26aaf081bfa370e954e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037694"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904516"
 ---
 # <a name="localization-support-in-azure-maps"></a>Honosítási támogatás Azure Maps
 
@@ -22,10 +22,10 @@ A Azure Maps ország/régió alapján támogatja a különböző nyelveket és n
 
 ## <a name="azure-maps-supported-languages"></a>Azure Maps támogatott nyelvek
 
-Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai között. Az alábbi táblázat az egyes szolgáltatásokhoz támogatott nyelvi kódokat tartalmazza.  
+Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai között. Az alábbi táblázat az egyes szolgáltatásokhoz támogatott nyelvi kódokat tartalmazza.  
   
 
-| ID (Azonosító)         | Name (Név)                   |  Maps | Keresés | Útválasztás | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
+| ID (Azonosító)         | Név                   |  Maps | Keresés | Útválasztás | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | búr              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arab                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -39,8 +39,8 @@ Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai közö
 | zh-HanT    | Kínai (Hongkong KKT)  |  |   |    |    ZH-HK   |                   |           |
 | zh-HanT    | Kínai (Tajvan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Horvát               |       |    ✓   |         |    ✓      |                   |                |
-| cs-CZ      | Cseh                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
-| da-DK      | Dán                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| cs-CZ      | cseh                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
+| da-DK      | dán                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | nl-BE      | Holland (Belgium)        |       |    ✓   |         |      ✓    |                   |                |
 | nl-NL      | Holland (Hollandia)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | EN-AU      | Angol (Ausztrália)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
@@ -49,14 +49,14 @@ Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai közö
 | en-US      | Angol (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | Észt               |       |    ✓   |         |      ✓    |         ✓         |                |
 | Fil – PH     | Filipino               |       |       |         |     ✓    |                   |                |
-| fi-FI      | Finn                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| fi-FI      | finn                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-FR      | Francia                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr – CA      | Francia (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
 | gl-ES      | Gallego               |       |    ✓   |         |         |                   |                |
 | de-DE      | Német                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | Görög                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
 | Gu – a      | gudzsaráti                |       |       |         |     ✓    |                   |                |
-| he-IL      | Héber                 |       |    ✓   |         |     ✓    |         ✓         |                |
+| he-IL      | héber                 |       |    ✓   |         |     ✓    |         ✓         |                |
 | hi-IN      | Hindi                  |       |        |         |     ✓    |                   |                |
 | hu-HU      | Magyar              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | a ()      | Izlandi              |       |       |         |     ✓    |                   |                |
@@ -87,7 +87,7 @@ Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai közö
 | SL-SL      | Szlovén              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
 | es-ES      | Spanyol                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | es-MX      | Spanyol (Mexikó)       |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
-| sv-SE      | Svéd                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| sv-SE      | svéd                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | ta-be      | Tamil (India)                 |       |       |         |     ✓    |                   |                |
 | te-a      | Telugu (India)                 |       |       |         |     ✓    |                   |                |
 | th-TH      | Thai                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
@@ -129,10 +129,10 @@ Győződjön meg arról, hogy szükség szerint beállította a View paramétert
  * Fordított keresési címek lekérése
  * A keresési címek fordított kereszt utcájának beolvasása
  * Keresés közzététele a geometrián belül
- * A Search-címek batch-előnézetének közzététele
- * Keresési címe fordított batch előzetes verziójának közzététele
+ * Keresési csoport utáni batch
+ * Keresési címen fordított köteg közzététele
  * Keresés közzététele az útvonal mentén
- * A Search fuzzy batch előzetes verziójának közzététele
+ * Keresés a zavaros kötegben
 
  
 ### <a name="sdks"></a>SDK-k
@@ -142,7 +142,7 @@ Győződjön meg arról, hogy szükség szerint állította be a **View** param�
  * Azure Maps web SDK
  * Azure Maps Android SDK
 
-Alapértelmezés szerint a View paraméter **egyesített**értékre van állítva, még akkor is, ha még nem adta meg a kérésben. Határozza meg a felhasználók helyét. Ezután állítsa be helyesen a **View** paramétert az adott helyen. Másik lehetőségként megadhatja a "View = automatikus" értéket, amely a kérés IP-címe alapján visszaadja a térképi adatmennyiséget.  Azure Mapsban a **View** paramétert a vonatkozó törvényeknek megfelelően kell használni, beleértve azokat az országokat/régiókat, amelyekben a Maps, a images és más adatokat, valamint a harmadik féltől származó, a Azure Maps-on keresztül való hozzáférésre jogosult külső tartalmat is elérhetővé teszi.
+Alapértelmezés szerint a View paraméter **egyesített** értékre van állítva, még akkor is, ha még nem adta meg a kérésben. Határozza meg a felhasználók helyét. Ezután állítsa be helyesen a **View** paramétert az adott helyen. Másik lehetőségként megadhatja a "View = automatikus" értéket, amely a kérés IP-címe alapján visszaadja a térképi adatmennyiséget.  Azure Mapsban a **View** paramétert a vonatkozó törvényeknek megfelelően kell használni, beleértve azokat az országokat/régiókat, amelyekben a Maps, a images és más adatokat, valamint a harmadik féltől származó, a Azure Maps-on keresztül való hozzáférésre jogosult külső tartalmat is elérhetővé teszi.
 
 
 A következő táblázat a támogatott nézeteket tartalmazza.

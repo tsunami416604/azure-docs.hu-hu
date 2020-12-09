@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 9408aaa8fd5b677f012392ef4bd51c8826650eee
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 5b8dd911952a63ba8775f27a6128ff61e849e823
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395155"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861425"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>Adatmegőrzési szabályzatok engedélyezése és letiltása
 
@@ -88,11 +88,11 @@ where is_data_deletion_filter_column =1
 and object_id = object_id(N'dbo.data_retention_table', N'U')
 ```
 
-## <a name="corelating-db-and-table-data-retention-settings"></a>Az adatbázis és a tábla adatmegőrzési beállításai
+## <a name="correlating-db-and-table-data-retention-settings"></a>Az adatbázis és a tábla adatmegőrzési beállításainak korrelációja
 
 Az adatbázis és a tábla adatmegőrzési beállítása a (z) együtt használható annak megállapításához, hogy az elavult sorokhoz tartozó autorazzia a táblákon fut-e. 
 
-|Adatbázis-beállítás | Tábla lehetőség | Működés |
+|Adatbázis-beállítás | Tábla lehetőség | Viselkedés |
 |----------------|--------------|----------|
 | KI | KI | Az adatmegőrzési házirend le van tiltva, és az elavult rekordok automatikus és manuális tisztítása le van tiltva.|
 | KI | ON  | Az adatmegőrzési szabályzat engedélyezve van a táblához. Az elavult rekordok automatikus tisztítása le van tiltva, azonban az elavult rekordok törlésére a manuális törlési módszer használható. |
@@ -116,6 +116,6 @@ Az adatmegőrzés letiltható egy táblán az [Alter Database](/sql/t-sql/statem
 ALTER DATABASE <DatabaseName> SET DATA_RETENTION  OFF;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Adatmegőrzés és az automatikus Adattisztítás](data-retention-overview.md)
 - [Korábbi adatok kezelése adatmegőrzési házirenddel](data-retention-cleanup.md)

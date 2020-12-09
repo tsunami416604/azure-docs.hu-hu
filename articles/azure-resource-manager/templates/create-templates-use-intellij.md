@@ -1,20 +1,20 @@
 ---
 title: Sablon üzembe helyezése – IntelliJ IDEA
-description: Megtudhatja, hogyan hozhatja létre első Azure Resource Manager-sablonját a IntelliJ IDEA használatával, és hogyan helyezheti üzembe.
+description: Megtudhatja, hogyan hozhatja létre az első Azure Resource Manager-sablont (ARM-sablon) a IntelliJ IDEA használatával, és hogyan helyezheti üzembe.
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
-ms.openlocfilehash: 6a596eff70bfc20b5a6752ef47398bd14d527c97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0e007fe8930b30cee1c95159d7e964e3792449f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973337"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905961"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>ARM-sablonok létrehozása és üzembe helyezése a IntelliJ IDEA használatával
 
-Megtudhatja, hogyan helyezhet üzembe egy Azure Resource Manager (ARM) sablont az Azure-ban a IntelliJ IDEA használatával, valamint a sablon szerkesztésének és frissítésének folyamatát közvetlenül az IDE-ből. Az ARM-sablonok JSON-fájlok, amelyek meghatározzák azokat az erőforrásokat, amelyeket telepítenie kell a megoldásához. Az Azure-megoldások üzembe helyezésével és kezelésével kapcsolatos fogalmak megismeréséhez tekintse meg a [sablonok üzembe helyezésének áttekintése](overview.md)című témakört.
+Megtudhatja, hogyan helyezhet üzembe egy Azure Resource Manager-sablont (ARM-sablont) az Azure-ban a IntelliJ IDEA használatával, valamint a sablon szerkesztésének és frissítésének folyamatát közvetlenül az IDE-ből. Az ARM-sablonok JSON-fájlok, amelyek meghatározzák azokat az erőforrásokat, amelyeket telepítenie kell a megoldásához. Az Azure-megoldások üzembe helyezésével és kezelésével kapcsolatos fogalmak megismeréséhez tekintse meg a [sablonok üzembe helyezésének áttekintése](overview.md)című témakört.
 
 ![Resource Manager-sablonok portáljának diagramja](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -36,11 +36,11 @@ Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyors
 
 1. Kattintson a jobb gombbal, és mentse a [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) és a [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) helyi számítógépre.
 
-1. Ha az Azure-eszközkészlet megfelelően van telepítve és bejelentkezve, az Azure Explorer az IntelliJ IDEA oldalsávjában jelenik meg. Kattintson a jobb gombbal az **Erőforrás-kezelés** elemre, és válassza a **központi telepítés létrehozása**elemet.
+1. Ha az Azure-eszközkészlet megfelelően van telepítve és bejelentkezve, az Azure Explorer az IntelliJ IDEA oldalsávjában jelenik meg. Kattintson a jobb gombbal az **Erőforrás-kezelés** elemre, és válassza a **központi telepítés létrehozása** elemet.
 
     ![Resource Manager-sablon – kattintson a jobb gombbal az üzembe helyezés létrehozásához](./media/create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. Adja meg a **központi telepítési nevet**, az **előfizetést**, az **erőforráscsoportot**és a **régiót**. Itt telepítjük a sablont egy új erőforráscsoporthoz `testRG` . Ezután válassza ki a letöltött **erőforrás-sablon** elérési útját `azuredeploy.json` és az **erőforrás-paramétereket** `azuredeploy.parameters.json` .
+1. Adja meg a **központi telepítési nevet**, az **előfizetést**, az **erőforráscsoportot** és a **régiót**. Itt telepítjük a sablont egy új erőforráscsoporthoz `testRG` . Ezután válassza ki a letöltött **erőforrás-sablon** elérési útját `azuredeploy.json` és az **erőforrás-paramétereket** `azuredeploy.parameters.json` .
 
     ![Resource Manager-sablon a központi telepítés létrehozására szolgáló fájlok kiválasztása](./media/create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 
@@ -50,7 +50,7 @@ Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyors
 
 ## <a name="browse-an-existing-deployment"></a>Meglévő üzemelő példány tallózása
 
-1. Az üzembe helyezés után megtekintheti az új erőforráscsoportot, `testRG` és létrehozhatja az új központi telepítést. Kattintson a jobb gombbal a központi telepítésre, és megtekintheti a lehetséges műveletek listáját. Most válassza a **Tulajdonságok megjelenítése**lehetőséget.
+1. Az üzembe helyezés után megtekintheti az új erőforráscsoportot, `testRG` és létrehozhatja az új központi telepítést. Kattintson a jobb gombbal a központi telepítésre, és megtekintheti a lehetséges műveletek listáját. Most válassza a **Tulajdonságok megjelenítése** lehetőséget.
 
     ![Resource Manager-sablon – Tallózás központi telepítés](./media/create-templates-use-intellij/resource-manager-deployment-browse.png)
 
@@ -60,7 +60,7 @@ Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyors
 
 ## <a name="edit-and-update-an-existing-deployment"></a>Meglévő üzemelő példány szerkesztése és frissítése
 
-1. Válassza a **központi telepítés szerkesztése** lehetőséget a jobb gombbal, vagy a Tulajdonságok megjelenítése nézetet előtt. Megnyílik egy másik lap nézet, amely megjeleníti az Azure-beli üzembe helyezés sablonját és paramétereit. Ha a fájlokat a helyi fájlba szeretné menteni, kattintson a **sablonfájl exportálása**  vagy a **paraméterérték exportálása**lehetőségre.
+1. Válassza a **központi telepítés szerkesztése** lehetőséget a jobb gombbal, vagy a Tulajdonságok megjelenítése nézetet előtt. Megnyílik egy másik lap nézet, amely megjeleníti az Azure-beli üzembe helyezés sablonját és paramétereit. Ha a fájlokat a helyi fájlba szeretné menteni, kattintson a **sablonfájl exportálása**  vagy a **paraméterérték exportálása** lehetőségre.
 
     ![Resource Manager-sablon – telepítés szerkesztése](./media/create-templates-use-intellij/resource-manager-edit-deployment.png)
 

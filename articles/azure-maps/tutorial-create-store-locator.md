@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 981697211cf8ee0aff1ac0e3d0db6000c1089c00
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896849"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905774"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával
 
@@ -76,18 +76,18 @@ Az áruházbeli lokátor alkalmazás fejlesztése előtt létre kell hoznia egy 
 
 Az alábbi észrevételeket követve megtekintheti az adatképernyőképet:
 
-* A helyadatok tárolása a **AddressLine** , a **város** , az **önkormányzat** (megye), a **AdminDivision** (állam/tartomány), az **Irányítószám** (postai kód) és az **ország** oszlopai alapján történik.  
+* A helyadatok tárolása a **AddressLine**, a **város**, az **önkormányzat** (megye), a **AdminDivision** (állam/tartomány), az **Irányítószám** (postai kód) és az **ország** oszlopai alapján történik.  
 * A **szélesség** és **hosszúság** oszlop az egyes contoso Coffee Coffee Shop-helyek koordinátáit tartalmazza. Ha nem rendelkezik koordináta-információkkal, a Azure Maps keresési szolgáltatásaival meghatározhatja a hely koordinátáit.
 * Néhány további oszlop a kávézókkal kapcsolatos metaadatokat tartalmaz: egy telefonszámot, egy logikai oszlopot, valamint a nyitó és a záró időpontot 24 órás formátumban. A logikai oszlopok a Wi-Fi és a kerekesszékes kisegítő lehetőségek. Létrehozhat saját oszlopokat is, amelyek a tartózkodási hely adataihoz kapcsolódó metaadatokat tartalmaznak.
 
 > [!NOTE]
-> Azure Maps megjeleníti az adatokat a gömb Mercator-kivetítés "EPSG: 3857" elemben, de a WGS84 datumt használó "EPSG: 4325" adatokat olvas be.
+> Azure Maps megjeleníti az adatokat a gömb Mercator-kivetítés "EPSG: 3857" elemben, de a WGS84 datumt használó "EPSG: 4326" adatokat olvas be.
 
 Számos módon teheti elérhetővé az adatkészletet az alkalmazás számára. Az egyik módszer az, ha az adatbázist egy adatbázisba tölti be, és olyan webszolgáltatást tesz elérhetővé, amely lekérdezi az adatforrást Ezután elküldheti az eredményeket a felhasználó böngészőjébe. Ez a lehetőség nagy adathalmazok vagy gyakran frissített adatkészletek esetén ideális. Ez a lehetőség azonban nagyobb fejlesztési munkát igényel, és magasabb a díjszabása.
 
 Egy másik módszer az adatkészlet átalakítása egy egyszerű szövegfájlba, amelyet a böngésző könnyen elemez. Maga a fájl a többi alkalmazással is üzemeltethető. Ez a lehetőség egyszerűen megtartja a dolgokat, de ez a lehetőség csak kisebb adatkészletek esetében hasznos, mert a felhasználó letölti az összes adatát. Ehhez az adatkészlethez az egyszerű szövegfájlt használjuk, mert az adatfájl mérete kisebb, mint 1 MB.  
 
-Ha a munkafüzetet egy sima szövegfájlba szeretné átalakítani, mentse a munkafüzetet tabulátorral tagolt fájlként. Az egyes oszlopokat tabulátor karakterekkel tagoljuk, így az oszlopok könnyen elemezhetők a kódban. Vesszővel tagolt (CSV) formátumot használhat, de ez a beállítás több elemzési logikát igényel. A körülötte található vesszőt tartalmazó mezők idézőjelekkel lesznek becsomagolva. Ha ezeket az adatfájlokat tabulátorral tagolt fájlként szeretné exportálni az Excelben, válassza a **Mentés másként** lehetőséget. A fájltípus **legördülő listából** válassza a **szöveg (tabulátorral tagolt) (*. txt)** lehetőséget. Nevezze el a fájlt *ContosoCoffee.txt* .
+Ha a munkafüzetet egy sima szövegfájlba szeretné átalakítani, mentse a munkafüzetet tabulátorral tagolt fájlként. Az egyes oszlopokat tabulátor karakterekkel tagoljuk, így az oszlopok könnyen elemezhetők a kódban. Vesszővel tagolt (CSV) formátumot használhat, de ez a beállítás több elemzési logikát igényel. A körülötte található vesszőt tartalmazó mezők idézőjelekkel lesznek becsomagolva. Ha ezeket az adatfájlokat tabulátorral tagolt fájlként szeretné exportálni az Excelben, válassza a **Mentés másként** lehetőséget. A fájltípus **legördülő listából** válassza a **szöveg (tabulátorral tagolt) (*. txt)** lehetőséget. Nevezze el a fájlt *ContosoCoffee.txt*.
 
 ![Képernyőfelvétel a fájltípus párbeszédpanelről](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
@@ -97,15 +97,15 @@ Ha a Jegyzettömbben megnyitja a szövegfájlt, az a következő ábrához hason
 
 ## <a name="set-up-the-project"></a>A projekt előkészítése
 
-A projekt létrehozásához használhatja a [Visual studiót](https://visualstudio.microsoft.com) vagy az Ön által választott programkód-szerkesztőt. A Project mappában hozzon létre három fájlt: *index.html* , *index. css* és *index.js* . Ezek a fájlok határozzák meg az alkalmazás elrendezését, stílusát és logikáját. Hozzon létre egy *adatmappa nevű mappát* , és adja hozzá *ContosoCoffee.txt* a mappához. Hozzon létre egy másik mappát a *képek* nevű mappában. Ebben az alkalmazásban 10 lemezképet használunk a térképen látható ikonokhoz, gombokhoz és jelölőhöz. [Ezeket a lemezképeket letöltheti](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). A projekt mappájának ekkor az alábbi ábrához hasonlóan kell kinéznie:
+A projekt létrehozásához használhatja a [Visual studiót](https://visualstudio.microsoft.com) vagy az Ön által választott programkód-szerkesztőt. A Project mappában hozzon létre három fájlt: *index.html*, *index. css* és *index.js*. Ezek a fájlok határozzák meg az alkalmazás elrendezését, stílusát és logikáját. Hozzon létre egy *adatmappa nevű mappát* , és adja hozzá *ContosoCoffee.txt* a mappához. Hozzon létre egy másik mappát a *képek* nevű mappában. Ebben az alkalmazásban 10 lemezképet használunk a térképen látható ikonokhoz, gombokhoz és jelölőhöz. [Ezeket a lemezképeket letöltheti](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). A projekt mappájának ekkor az alábbi ábrához hasonlóan kell kinéznie:
 
 ![Az egyszerű tároló-lokátor projekt mappájának képernyőképe](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
 ## <a name="create-the-user-interface"></a>A felhasználói felület létrehozása
 
-A felhasználói felület létrehozásához adja hozzá a kódot *index.html* :
+A felhasználói felület létrehozásához adja hozzá a kódot *index.html*:
 
-1. Adja hozzá a következő `meta` címkéket a `head` *index.html* -hez. A `charset` címke határozza meg a karakterkészletet (UTF-8). Az érték `http-equiv` azt jelzi, hogy az Internet Explorer és a Microsoft Edge a legújabb böngésző-verziókat használja. Az utolsó címke pedig `meta` egy olyan nézőpontot határoz meg, amely jól működik a rugalmas elrendezések esetében.
+1. Adja hozzá a következő `meta` címkéket a `head` *index.html*-hez. A `charset` címke határozza meg a karakterkészletet (UTF-8). Az érték `http-equiv` azt jelzi, hogy az Internet Explorer és a Microsoft Edge a legújabb böngésző-verziókat használja. Az utolsó címke pedig `meta` egy olyan nézőpontot határoz meg, amely jól működik a rugalmas elrendezések esetében.
 
     ```HTML
     <meta charset="utf-8">
@@ -126,7 +126,7 @@ A felhasználói felület létrehozásához adja hozzá a kódot *index.html* :
     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
-1. Hivatkozások hozzáadása a *index.js* és az *index. css* -hez:
+1. Hivatkozások hozzáadása a *index.js* és az *index. css*-hez:
 
     ```HTML
     <link rel="stylesheet" href="index.css" type="text/css">
@@ -385,7 +385,7 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Kód hozzáadása a *index.jshoz* . Az alábbi kód inicializálja a térképet. Hozzáadunk egy [esemény-figyelőt](/javascript/api/azure-maps-control/atlas.map#events) , hogy megvárná, amíg az oldal be nem fejeződik. Ezután a rendszer bekapcsolta az eseményeket a Térkép betöltésének figyeléséhez, és a keresés és a saját hely gomb használatát is lehetővé teheti.
+1. Kód hozzáadása a *index.jshoz*. Az alábbi kód inicializálja a térképet. Hozzáadunk egy [esemény-figyelőt](/javascript/api/azure-maps-control/atlas.map#events) , hogy megvárná, amíg az oldal be nem fejeződik. Ezután a rendszer bekapcsolta az eseményeket a Térkép betöltésének figyeléséhez, és a keresés és a saját hely gomb használatát is lehetővé teheti.
 
    Amikor a felhasználó kiválasztja a Keresés gombot, vagy beír egy helyet a keresőmezőbe, megnyomja az ENTER billentyűt, a rendszer a felhasználó lekérdezésével kapcsolatos intelligens keresést kezdeményez. Adja át az ország/régió ISO 2 értékének egy tömbjét a `countrySet` keresési eredmények ezen országokban/régiókban való korlátozásához. Az országok és régiók keresésének korlátozása segít a visszaadott eredmények pontosságának növelésében. 
   
@@ -432,7 +432,7 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
             }
         };
 
-        //If the user selects the My Location button, use the Geolocation API to get the user's location. Center and zoom the map on that location.
+        //If the user selects the My Location button, use the Geolocation API (Preview) to get the user's location. Center and zoom the map on that location.
         document.getElementById('myLocationBtn').onclick = setMapToUserLocation;
 
         //Wait until the map resources are ready.
@@ -472,7 +472,7 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
     function setMapToUserLocation() {
         //Request the user's location.
         navigator.geolocation.getCurrentPosition(function(position) {
-            //Convert the Geolocation API position to a longitude and latitude position value that the map can interpret and center the map over it.
+            //Convert the Geolocation API (Preview) position to a longitude and latitude position value that the map can interpret and center the map over it.
             map.setCamera({
                 center: [position.coords.longitude, position.coords.latitude],
                 zoom: maxClusterZoomLevel + 1

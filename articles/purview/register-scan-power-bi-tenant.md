@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: af394b68a943f4c89358a719c155606c264b9dc4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ce23119e568347fff2ad270cfea7f8b563cae529
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552946"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904992"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI bérlő regisztrálása és bevizsgálása (előzetes verzió)
 
@@ -49,16 +49,12 @@ A hitelesítés beállításához hozzon létre egy biztonsági csoportot, és a
 
 ## <a name="associate-the-security-group-with-the-tenant"></a>A biztonsági csoport hozzárendelése a bérlőhöz
 
-1. Jelentkezzen be a [Power bi felügyeleti portálra](https://app.powerbi.com/admin-portal/tenantSettings?allowServicePrincipalsUseReadAdminAPIsUI=1). Fűzze hozzá a funkció jelzőjét az URI-hoz:  `allowServicePrincipalsUseReadAdminAPIsUI=1` . Ez a jelző lehetővé teszi a biztonsági csoport hozzárendelését lehetővé tevő funkció használatát. Példa:
-
-    ```http
-    https://app.powerbi.com/admin-portal/tenantSettings?allowServicePrincipalsUseReadAdminAPIsUI=1
-    ```
+1. Jelentkezzen be a [Power bi felügyeleti portálra](https://app.powerbi.com/admin-portal/tenantSettings).
 
     > [!Important]
     > A bérlői beállítások lap megtekintéséhez Power BI rendszergazdának kell lennie.
 
-1. A **fejlesztői beállítások** lehetőség kiválasztásával  >  **engedélyezheti az egyszerű szolgáltatásoknak az írásvédett Power bi API-k (előzetes verzió) használatát**.
+1. A **fejlesztői beállítások** lehetőség kiválasztásával  >  **engedélyezheti az egyszerű szolgáltatásoknak a csak olvasási jogosultsággal rendelkező Power bi felügyeleti API-k (előzetes verzió) használatát**.
 1. Válassza az **egyes biztonsági csoportok** lehetőséget.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Kép: az egyszerű Power BI felügyeleti API-engedélyek beolvasásának engedélyezése a szolgáltatásoknak":::

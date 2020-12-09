@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás felhasználó-hozzárendelésének kezelése Azure Active Directory
+title: Alkalmazás felhasználó-hozzárendelésének kezelése az Azure Active Directoryban
 description: Megtudhatja, hogyan rendelhet hozzá és rendelhet hozzá felhasználókat és csoportokat a Azure Active Directory for Identity Management alkalmazáshoz.
 services: active-directory
 author: kenwith
@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 55934e8c33b74740b7398be1ae18a3ef899aee74
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 22acfc5095b1ffcad382fa2b665a86d382645e7a
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651277"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861677"
 ---
-# <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Alkalmazás felhasználó-hozzárendelésének kezelése Azure Active Directory
+# <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Alkalmazás felhasználó-hozzárendelésének kezelése az Azure Active Directoryban
 
 Ebből a cikkből megtudhatja, hogyan rendelhet hozzá felhasználókat és csoportokat a Azure Active Directory (Azure AD) vállalati alkalmazásaihoz, akár a Azure Portal, akár a PowerShell használatával. Amikor felhasználót rendel hozzá egy alkalmazáshoz, az alkalmazás könnyen elérhetővé válik a felhasználó [saját alkalmazásaiban](https://myapps.microsoft.com/) . Ha az alkalmazás szerepköröket tesz elérhetővé, akkor egy adott szerepkört is hozzárendelhet a felhasználóhoz.
 
@@ -81,11 +81,11 @@ A Graph API a felhasználók és csoportok hozzárendelésére és hozzárendel�
     # Assign the user to the app role
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
-A felhasználók alkalmazás-szerepkörhöz való hozzárendelésével kapcsolatos további információkért tekintse meg a [New-AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)dokumentációját.
+A felhasználók alkalmazás-szerepkörhöz való hozzárendelésével kapcsolatos további információkért tekintse meg a [New-AzureADUserAppRoleAssignment](/powershell/module/azuread/new-azureaduserapproleassignment)dokumentációját.
 
 Ha vállalati alkalmazáshoz szeretne hozzárendelni egy csoportot, a és a helyére a következőt kell cserélnie: `Get-AzureADUser` `Get-AzureADGroup` `New-AzureADUserAppRoleAssignment` `New-AzureADGroupAppRoleAssignment` .
 
-A csoportok alkalmazás-szerepkörhöz való hozzárendelésével kapcsolatos további információkért tekintse meg a [New-AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0)dokumentációját.
+A csoportok alkalmazás-szerepkörhöz való hozzárendelésével kapcsolatos további információkért tekintse meg a [New-AzureADGroupAppRoleAssignment](/powershell/module/azuread/new-azureadgroupapproleassignment)dokumentációját.
 
 ### <a name="example"></a>Példa
 
@@ -149,7 +149,7 @@ Ez a példa a Britta-felhasználót a [Microsoft munkahelyi elemzési](https://p
 
 - [További információ az alkalmazásokhoz való végfelhasználói hozzáférésről](end-user-experiences.md)
 - [Azure AD-beli alkalmazások üzembe helyezésének megtervezése](access-panel-deployment-plan.md)
-- [Az alkalmazásokhoz való hozzáférés kezelése](what-is-access-management.md)
+- [Alkalmazásokhoz való hozzáférés kezelése](what-is-access-management.md)
  
 ## <a name="next-steps"></a>Következő lépések
 

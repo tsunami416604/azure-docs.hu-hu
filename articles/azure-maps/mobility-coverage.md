@@ -1,27 +1,32 @@
 ---
-title: Mobilitási (tranzit) lefedettség
-description: Ismerje meg, hogy az Azure Maps mobilitási szolgáltatás milyen szintű lefedettséggel rendelkezik, mely régiókban érhető el a nyilvános árutovábbítási funkciók, például az Útválasztás és a szolgáltatás riasztásai.
+title: Mobilitási (tranzit) lefedettség Microsoft Azure Maps mobilitási szolgáltatásokban (előzetes verzió)
+description: Ismerje meg, hogy a Azure Maps mobilitási szolgáltatások (előzetes verzió) milyen szintű lefedettséggel rendelkezik, mely régiókban érhetők el a nyilvános árutovábbítási funkciók, például az Útválasztás és a szolgáltatás riasztásai.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/23/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 10a0f9b1b21b060d7c33aeb52fb72f950cedf0e6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e902f313edf22d75f6b183575c3dc8d0dd94bc1f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779150"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904754"
 ---
-# <a name="azure-maps-mobility-coverage"></a>Azure Maps mobilitási lefedettség
+# <a name="azure-maps-mobility-services-preview-coverage"></a>Azure Maps mobilitási szolgáltatások (előzetes verzió) lefedettsége
 
-A Azure Maps [mobilitási szolgáltatás](/rest/api/maps/mobility) javítja a nyilvános átviteli funkciókkal rendelkező alkalmazások fejlesztési idejét, például a tranzit útválasztást és a közeli nyilvános átvitelek keresését. A felhasználók részletes információkat kérhetnek a továbbítási leállásokról, a sorokról és az ütemtervekről. A mobilitási szolgáltatás azt is lehetővé teszi, hogy a felhasználók leállítsák a leállítási és a vonalas geometriákat, a leállási, a soros és a szolgáltatási területekre vonatkozó riasztásokat, valamint a valós idejű, nyilvános tranzit Emellett a mobilitási szolgáltatás útválasztási funkciókat biztosít a multimodális utazási tervezési lehetőségekkel. A multimodális utazás megtervezése magában foglalja a gyaloglást, a kerékpározást és a nyilvános továbbítási lehetőségeket, mindezt egyetlen útra. A felhasználók a részletes multimodális lépésenkénti útvonalakat is használhatják. 
+> [!IMPORTANT]
+> Azure Maps mobilitási szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+A Azure Maps [mobilitási szolgáltatás](/rest/api/maps/mobility) javítja a nyilvános átviteli funkciókkal rendelkező alkalmazások fejlesztési idejét, például a tranzit útválasztást és a közeli nyilvános átvitelek keresését. A felhasználók részletes információkat kérhetnek a továbbítási leállásokról, a sorokról és az ütemtervekről. A mobilitási szolgáltatások azt is lehetővé teszik a felhasználóknak, hogy leállítsák a leállítási és a vonalas geometriákat, a leállási, a soros és a szolgáltatási területekre vonatkozó riasztásokat, valamint a valós idejű, nyilvános tranzit Emellett a mobilitási szolgáltatások útválasztási lehetőségeket biztosítanak a multimodális kirándulások megtervezéséhez. A multimodális utazás megtervezése magában foglalja a gyaloglást, a kerékpározást és a nyilvános továbbítási lehetőségeket, mindezt egyetlen útra. A felhasználók a részletes multimodális lépésenkénti útvonalakat is használhatják.
 
 Azure Maps nem biztosít azonos szintű információt és pontosságot az összes város és ország/régió számára. A nyilvános árutovábbítási adatok meghívásának lehetősége a Metro területtől függ. Emellett előfordulhat, hogy a térképi adatok nem tartalmazzák a metró területét kiszolgáló összes nyilvános átviteli lehetőséget és Ügynökséget.
 
-Az alábbi táblázat a Azure Maps mobilitási szolgáltatás lefedettségi információit tartalmazza.
+Az alábbi táblázat a Azure Maps mobilitási szolgáltatások lefedettségi információit tartalmazza.
 
 | Szimbólum | Jelentés |
 |--------|---------|
@@ -147,19 +152,19 @@ Az alábbi táblázat a Azure Maps mobilitási szolgáltatás lefedettségi info
 | Egyesült Arab Emírségek  | Abu Dhabi, Dubaj |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan kérhet továbbítási információkat a mobilitási szolgáltatással:
+Ismerje meg, hogyan kérhet továbbítási információkat a mobilitási szolgáltatások (előzetes verzió) használatával:
 
 > [!div class="nextstepaction"]
 > [Adatátviteli adatkérés](how-to-request-transit-data.md)
 
-Megtudhatja, hogyan kérhet valós idejű adatgyűjtést a mobilitási szolgáltatás használatával:
+Ismerje meg, hogyan kérhet valós idejű adatszolgáltatásokat a mobilitási szolgáltatások (előzetes verzió) használatával:
 
 > [!div class="nextstepaction"]
 > [Valós idejű adatkérések igénylése](how-to-request-real-time-data.md)
 
-A Azure Maps mobilitási szolgáltatás API dokumentációjának megismerése
+A Azure Maps mobilitási szolgáltatások (előzetes verzió) API dokumentációjának megismerése
 
 > [!div class="nextstepaction"]
-> [A mobilitási szolgáltatás API-dokumentációja](/rest/api/maps/mobility)
+> [A mobilitási szolgáltatások API dokumentációja](/rest/api/maps/mobility)
