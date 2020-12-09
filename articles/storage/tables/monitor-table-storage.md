@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d6dbba96160cad36d79c4641861161448f81a49a
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9b68ba9a19b02c754fdb4c2dfaed022095d4ed0e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781147"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852727"
 ---
 # <a name="monitoring-azure-table-storage"></a>Az Azure Table Storage figyelése
 
@@ -98,6 +98,8 @@ Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy e
 
 #### <a name="archive-logs-to-a-storage-account"></a>Naplók archiválása egy Storage-fiókba
 
+Ha úgy dönt, hogy archiválja a naplókat egy Storage-fiókba, akkor a Storage-fiókba küldendő naplók mennyiségét kell megfizetnie. A díjszabással kapcsolatos további információkért tekintse meg az [Azure monitor díjszabási](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) oldal **platform naplók** szakaszát.
+
 1. Jelölje ki az **archívumot egy Storage-fiók** jelölőnégyzetet, majd kattintson a **Konfigurálás** gombra.
 
    > [!div class="mx-imgBorder"]   
@@ -109,6 +111,8 @@ Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy e
    > Mielőtt az Exportálás célhelyként kiválasztja a Storage-fiókot, tekintse meg az [Azure-erőforrás-naplók archiválása](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) című témakört az előfeltételek a Storage-fiókban való megismeréséhez.
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Stream-naplók az Azure Event Hubs
+
+Ha úgy dönt, hogy a naplókat egy Event hub-ba továbbítja, akkor az Event hub számára küldött naplók mennyiségét kell megfizetnie. A díjszabással kapcsolatos további információkért tekintse meg az [Azure monitor díjszabási](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) oldal **platform naplók** szakaszát.
 
 1. Jelölje ki az **adatfolyamot az Event hub** jelölőnégyzetbe, majd kattintson a **Konfigurálás** gombra.
 
@@ -142,6 +146,8 @@ Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy e
 
 #### <a name="archive-logs-to-a-storage-account"></a>Naplók archiválása egy Storage-fiókba
 
+Ha úgy dönt, hogy archiválja a naplókat egy Storage-fiókba, akkor a Storage-fiókba küldendő naplók mennyiségét kell megfizetnie. A díjszabással kapcsolatos további információkért tekintse meg az [Azure monitor díjszabási](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) oldal **platform naplók** szakaszát.
+
 Engedélyezze a naplókat a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell-parancsmag használatával a `StorageAccountId` paraméterrel együtt.
 
 ```powershell
@@ -159,6 +165,8 @@ Bemutatunk egy példát:
 Az erőforrás-naplók Azure Storage-ba való archiválásával kapcsolatos további információkért lásd: [Azure-erőforrás-naplók](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Adatfolyam-naplók az Event hub-ba
+
+Ha úgy dönt, hogy a naplókat egy Event hub-ba továbbítja, akkor az Event hub számára küldött naplók mennyiségét kell megfizetnie. A díjszabással kapcsolatos további információkért tekintse meg az [Azure monitor díjszabási](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) oldal **platform naplók** szakaszát.
 
 Engedélyezze a naplókat a [set-AzDiagnosticSetting PowerShell-](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmag használatával a `EventHubAuthorizationRuleId` paraméterrel.
 
@@ -200,6 +208,8 @@ További információ: [stream Azure-erőforrás-naplók log Analytics munkater�
 
 #### <a name="archive-logs-to-a-storage-account"></a>Naplók archiválása egy Storage-fiókba
 
+Ha úgy dönt, hogy archiválja a naplókat egy Storage-fiókba, akkor a Storage-fiókba küldendő naplók mennyiségét kell megfizetnie. A díjszabással kapcsolatos további információkért tekintse meg az [Azure monitor díjszabási](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) oldal **platform naplók** szakaszát.
+
 Engedélyezze a naplókat az az [monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) paranccsal.
 
 ```azurecli-interactive
@@ -215,6 +225,8 @@ Bemutatunk egy példát:
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/tableServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
 #### <a name="stream-logs-to-an-event-hub"></a>Adatfolyam-naplók az Event hub-ba
+
+Ha úgy dönt, hogy a naplókat egy Event hub-ba továbbítja, akkor az Event hub számára küldött naplók mennyiségét kell megfizetnie. A díjszabással kapcsolatos további információkért tekintse meg az [Azure monitor díjszabási](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) oldal **platform naplók** szakaszát.
 
 Engedélyezze a naplókat az az [monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) paranccsal.
 
@@ -582,7 +594,7 @@ Az alábbi lekérdezések segítségével figyelheti az Azure Storage-fiókokat:
 
 Nem. Az Azure-beli számítási szolgáltatás támogatja a lemezek mérőszámait. További információ: [a felügyelt és nem felügyelt lemezek esetében a lemezre vonatkozó mérőszámok](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Table Storage által létrehozott naplók és mérőszámok ismertetését lásd: az [Azure Table Storage figyelési adatai referenciája](monitor-table-storage-reference.md).
 - Az Azure-erőforrások monitorozásával kapcsolatos további információkért lásd: [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md).

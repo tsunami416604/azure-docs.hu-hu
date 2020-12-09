@@ -7,20 +7,19 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 0678b2c36d341b2bc2bd9be755b9a6213acdd462
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0cd98705d2d6947ff766f528e4e92f1e51bcc42d
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206084"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852812"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>Milyen Azure-technológiákat és-szolgáltatásokat használhat a IoT-megoldások létrehozásához?
 
 Az Azure IoT-technológiák és-szolgáltatások számos olyan IoT-megoldás létrehozásához nyújtanak lehetőséget, amelyek lehetővé teszik a szervezet digitális átalakítását. Megteheti például a következőt:
 
-- A biztonságos, nagyvállalati szintű IoT-megoldás létrehozásához és üzembe helyezéséhez használja az [Azure IoT Central](https://apps.azureiotcentral.com), egy felügyelt IoT-alkalmazás platformját. A IoT Central a megoldás fejlesztési folyamatának felgyorsításához az iparági specifikus alkalmazás-sablonok, például a kiskereskedelmi és az egészségügyi szolgáltatások gyűjteményét.
-- Kiterjesztheti az Azure IoT [megoldás-gyorsító](https://www.azureiotsolutions.com) nyílt forráskódú forráskódját egy olyan általános IoT-forgatókönyv megvalósításához, mint például a távoli figyelés vagy a prediktív karbantartás.
-- Az Azure IoT platform szolgáltatásai (például az [azure IoT hub](../iot-hub/about-iot-hub.md) és az [Azure IoT Device SDK](../iot-hub/iot-hub-devguide-sdks.md) -k) segítségével teljesen új, egyéni IoT-megoldások hozhatók létre.
+* A biztonságos, nagyvállalati szintű IoT-megoldás létrehozásához és üzembe helyezéséhez használja az [Azure IoT Central](https://apps.azureiotcentral.com), egy felügyelt IoT-alkalmazás platformját. A IoT Central a megoldás fejlesztési folyamatának felgyorsításához az iparági specifikus alkalmazás-sablonok, például a kiskereskedelmi és az egészségügyi szolgáltatások gyűjteményét.
+* Az Azure IoT platform szolgáltatásai (például az [azure IoT hub](../iot-hub/about-iot-hub.md) és az [Azure IoT Device SDK](../iot-hub/iot-hub-devguide-sdks.md) -k) segítségével teljesen új, egyéni IoT-megoldások hozhatók létre.
 
 ![Azure IoT-technológiák,-szolgáltatások és-megoldások](./media/iot-services-and-technologies/iot-technologies-services.png)
 
@@ -40,10 +39,8 @@ Az [Azure IoT megoldás-gyorsítók](https://www.azureiotsolutions.com) testresz
 
 Az Azure IoT megoldás-gyorsítók magas szintű irányítást biztosítanak a IoT-megoldáshoz. A megoldás-gyorssegédek előre összeállított megoldásokat tartalmaznak olyan általános IoT-forgatókönyvekhez, amelyeket percek alatt üzembe helyezhet az Azure-előfizetésében. A forgatókönyvek a következők:
 
-  - Távoli figyelés
-  - Csatlakoztatott gyár
-  - Prediktív karbantartás
-  - Eszközszimuláció
+* Csatlakoztatott gyár
+* Eszközszimuláció
 
 Az összes megoldás-gyorssegédhez elérhető nyílt forráskódú kód a GitHubon érhető el. Töltse le a kódot egy megoldás-gyorsító testreszabásához, hogy megfeleljen az adott IoT követelményeinek.
 
@@ -92,4 +89,3 @@ Gyakorlati tapasztalatért próbálja ki az egyik rövid útmutatót:
 
 - [Azure IoT Central-alkalmazás létrehozása](../iot-central/core/quick-deploy-iot-central.md)
 - [Telemetria küldése egy eszközről egy IoT-hubhoz](../iot-hub/quickstart-send-telemetry-cli.md)
-- [Távoli felhőalapú monitorozási megoldás kipróbálása](../iot-accelerators/quickstart-remote-monitoring-deploy.md)

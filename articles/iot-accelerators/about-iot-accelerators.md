@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: f976bf4260e4a677aee5b5ccc4287db3d0b2e40d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 193ceab0b2df1ab833a86eb748c18271a8e33b71
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074294"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852914"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Mik az Azure IoT-megoldásgyorsítók?
 
 A felhőalapú IoT-megoldás általában egyéni kódot és felhőalapú szolgáltatásokat használ az eszközök kapcsolatának kezeléséhez, az adatfeldolgozáshoz és az elemzéshez, valamint a megjelenítéshez.
 
-Az IoT-megoldásgyorsítók teljes körű, üzembe helyezésre kész IoT-megoldások, amelyek gyakori IoT-forgatókönyveket implementálnak. A forgatókönyvek közé tartozik a távoli monitorozás, a csatlakoztatott gyár, a prediktív karbantartás és az eszközszimuláció. A megoldásgyorsítók üzembe helyezésekor az üzemelő példány magában foglalja az összes szükséges felhőalapú szolgáltatást és minden szükséges alkalmazáskódot.
+Az IoT-megoldásgyorsítók teljes körű, üzembe helyezésre kész IoT-megoldások, amelyek gyakori IoT-forgatókönyveket implementálnak. A forgatókönyvek közé tartozik a csatlakoztatott gyár és az eszköz szimulálása. A megoldásgyorsítók üzembe helyezésekor az üzemelő példány magában foglalja az összes szükséges felhőalapú szolgáltatást és minden szükséges alkalmazáskódot.
 
 A megoldásgyorsítók az Ön saját IoT-megoldásainak kiindulópontjaiként szolgálnak. Az összes megoldásgyorsító forráskódja nyílt, és elérhető a GitHubban. A megoldásgyorsítókat letöltheti és saját igényei szerint testre szabhatja.
 
@@ -28,17 +28,12 @@ A megoldásgyorsítókat tanulási eszközként is használhatja, mielőtt létr
 
 Az összes megoldásgyorsító alkalmazáskódja tartalmaz egy olyan webalkalmazást, amely lehetővé teszi az alkalmazásgyorsító kezelését.
 
+> [!NOTE]
+> A távoli figyelési és prediktív karbantartási megoldások el lettek távolítva az [Azure IoT megoldás-gyorsító](https://www.azureiotsolutions.com/Accelerators) webhelyről. További információ: [Mi az Azure IoT megoldás-gyorsító? (előző verzió)](/previous-versions/azure/iot-accelerators/about-iot-accelerators.md).
+
 ## <a name="supported-iot-scenarios"></a>Támogatott IoT-forgatókönyvek
 
-Jelenleg négy megoldásgyorsítót helyezhet üzembe:
-
-### <a name="remote-monitoring"></a>Távoli monitorozás
-
-A [távoli figyelési megoldás-gyorsító](iot-accelerators-remote-monitoring-sample-walkthrough.md) segítségével telemetria gyűjthet a távoli eszközökről, és szabályozhatja azokat. A példaeszközök közé tartoznak az ügyfelei telephelyein felszerelt hűtőrendszerek vagy a távoli szivattyútelepeken üzembe helyezett szelepek.
-
-A távoli monitorozási irányítópultot használhatja a csatlakoztatott eszközök telemetriájának megtekintéséhez, új eszközök létrehozásához vagy a csatlakoztatott eszközök belső vezérlőprogramjának frissítéséhez is:
-
-[![Távoli figyelési megoldás irányítópultja](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
+Jelenleg két megoldási gyorssegéd áll rendelkezésre az üzembe helyezéséhez:
 
 ### <a name="connected-factory"></a>Csatlakoztatott gyár
 
@@ -48,21 +43,13 @@ A csatlakoztatott gyár irányítópultjának használatával a következő ipar
 
 :::image type="content" source="./media/about-iot-accelerators/cf-dashboard-inline.png" alt-text="A csatlakoztatott gyári megoldás irányítópultját bemutató képernyőkép." lightbox="./media/about-iot-accelerators/cf-dashboard-expanded.png":::
 
-### <a name="predictive-maintenance"></a>Prediktív karbantartás
-
-A [prediktív karbantartási megoldás gyorsítása](iot-accelerators-predictive-walkthrough.md) segítségével előre jelezheti, ha egy távoli eszköz meghibásodása várható, hogy az eszköz meghibásodása előtt el tudja végezni a karbantartást. Ez a megoldásgyorsító gépi tanulási algoritmusokkal vizsgálja az eszköz telemetriai adatait, és előrejelzi a meghibásodást. A példaeszközök lehetnek például repülőgép-hajtóművek vagy liftek.
-
-A prediktív karbantartási irányítópult a következő prediktív karbantartási elemzések megtekintésére használható:
-
-:::image type="content" source="./media/about-iot-accelerators/pm-dashboard-inline.png" alt-text="A csatlakoztatott gyári megoldás irányítópultját bemutató képernyőkép." lightbox="./media/about-iot-accelerators/pm-dashboard-expanded.png":::
-
 ### <a name="device-simulation"></a>Eszközszimuláció
 
 Az [eszköz-szimulációs megoldás gyorsítása](iot-accelerators-device-simulation-overview.md) használatával reális telemetria létrehozó szimulált eszközöket futtathat. Ez a megoldásgyorsító más megoldásgyorsítók viselkedésének vagy saját IoT-megoldásainak tesztelésére is használható.
 
 Az eszközszimulációs webalkalmazás a következő szimulációk konfigurálására és futtatására használható:
 
-[![Csatlakoztatott gyári megoldás irányítópultja](./media/about-iot-accelerators/ds-dashboard-inline.png)](./media/about-iot-accelerators/ds-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/ds-dashboard-inline.png" alt-text="Képernyőkép, amely az eszköz-szimulációs megoldás irányítópultját mutatja." lightbox="./media/about-iot-accelerators/ds-dashboard-expanded.png":::
 
 ## <a name="design-principles"></a>Tervezési alapelvek
 
@@ -80,30 +67,17 @@ Az eredeti megoldásgyorsítók a .NET és model-view-controller (MVC) architekt
 
 | Megoldásgyorsító   | Architektúra  | Nyelvek     |
 | ---------------------- | ------------- | ------------- |
-| Távoli monitorozás      | Mikroszolgáltatások | [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) és [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) |
-| Prediktív karbantartás | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |
 | Csatlakoztatott gyár      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Eszközszimuláció      | Mikroszolgáltatások | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
 A Services architektúrával kapcsolatos további információkért lásd: [Bevezetés az Azure IoT Reference Architecture](/azure/architecture/reference-architectures/iot/).
 
-## <a name="deployment-options"></a>Üzembe helyezési lehetőségek
+## <a name="deployment-options"></a>Üzembe helyezési beállítások
 
 A megoldásgyorsítókat a [Microsoft Azure IoT-megoldásgyorsítók](https://www.azureiotsolutions.com/Accelerators#) webhelyéről vagy a parancssorból helyezheti üzembe.
-
-A távoli monitorozási megoldásgyorsítót a következő konfigurációkban helyezheti üzembe:
-
-* **Standard:** Bővített infrastruktúra üzembe helyezése éles környezet fejlesztéséhez. A Azure Container Service üzembe helyezi a szolgáltatásait több Azure-beli virtuális gépen. A Kubernetes koordinálja az egyes mikroszolgáltatásokat üzemeltető Docker-tárolókat.
-* **Alapszintű**: Csökkentett költségű verzió bemutató célokra vagy az üzembe helyezés teszteléséhez. Mindegyik mikroszolgáltatás üzembe helyezhető egy Azure-beli virtuális gépen.
-* **Helyi:** Helyi gépen történő üzembe helyezés tesztelés és fejlesztés céljából. Ez a módszer egy helyi Docker-tárolóban helyezi üzembe a mikroszolgáltatásokat, és csatlakozik az IoT Hub, Azure Cosmos DB és Azure Storage szolgáltatásokhoz a felhőben.
 
 A megoldás-gyorsító futtatásának díja a [mögöttes Azure-szolgáltatások futtatásának összesített díja](https://azure.microsoft.com/pricing). Az igénybe vett Azure-szolgáltatások részleteit az üzembehelyezési beállítások kiválasztásakor tekintheti meg.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az IoT-megoldásgyorsítók valamelyikének kipróbálásához tekintse meg a következő rövid útmutatókat:
-
-* [Távoli monitorozási megoldás kipróbálása](quickstart-remote-monitoring-deploy.md)
-* [Csatlakoztatottgyár-megoldás kipróbálása](quickstart-connected-factory-deploy.md)
-* [Prediktív karbantartási megoldás kipróbálása](quickstart-predictive-maintenance-deploy.md)
-* [Eszközszimulációs megoldás kipróbálása](quickstart-device-simulation-deploy.md)
+Ha szeretné kipróbálni az egyik IoT-megoldás-gyorssegédet, tekintse meg a gyors üzembe helyezési [megoldást a csatlakoztatott gyár megoldásban](quickstart-connected-factory-deploy.md).
