@@ -1,23 +1,21 @@
 ---
-title: Kubernetes-erőforrások elérése a Azure Portal (előzetes verzió)
+title: Kubernetes-erőforrások elérése a Azure Portal
 description: Ismerje meg, hogyan kezelheti a Kubernetes-erőforrásokkal az Azure Kubernetes szolgáltatás (ak) fürtjét a Azure Portal.
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
-ms.openlocfilehash: cfd09e469de68a1eee7440773347e9fe58bf8619
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/09/2020
+ms.openlocfilehash: 8e31c41573ced403a034999de71a5595a54281df
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571623"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921591"
 ---
-# <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Kubernetes-erőforrások elérése a Azure Portal (előzetes verzió)
+# <a name="access-kubernetes-resources-from-the-azure-portal"></a>Kubernetes-erőforrások elérése a Azure Portal
 
-A Azure Portal tartalmaz egy Kubernetes erőforrás-megjelenítőt (előzetes verzió), amely megkönnyíti az Azure Kubernetes szolgáltatás (ak) fürtjében található Kubernetes-erőforrások elérését. A Kubernetes-erőforrások megtekintése a Azure Portal csökkenti a Azure Portal és a parancssori eszköz közötti helyi váltást `kubectl` , így egyszerűsítve a Kubernetes-erőforrások megtekintésének és szerkesztésének élményét. Az erőforrás-megjelenítő jelenleg több erőforrástípust tartalmaz, például központi telepítéseket, hüvelyeket és replikákat.
+A Azure Portal tartalmaz egy Kubernetes-erőforrás nézetet, amely megkönnyíti az Azure Kubernetes szolgáltatás (ak) fürtjében található Kubernetes-erőforrások elérését. A Kubernetes-erőforrások megtekintése a Azure Portal csökkenti a Azure Portal és a parancssori eszköz közötti helyi váltást `kubectl` , így egyszerűsítve a Kubernetes-erőforrások megtekintésének és szerkesztésének élményét. Az erőforrás-megjelenítő jelenleg több erőforrástípust tartalmaz, például központi telepítéseket, hüvelyeket és replikákat.
 
 A Azure Portal Kubernetes-erőforrás nézete lecseréli az [AK-irányítópult bővítményt][kubernetes-dashboard], amely elavult.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -90,7 +88,7 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk bemutatja, hogyan érheti el a Kubernetes-erőforrásokat az AK-fürthöz. A YAML és a Kubernetes erőforrás-megjelenítővel elért YAML-fájlok mélyebb megismeréséhez tekintse meg a [központi telepítések és a jegyzékfájlok][deployments] című témakört.
 

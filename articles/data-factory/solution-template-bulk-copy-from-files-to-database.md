@@ -7,13 +7,13 @@ ms.author: jingwang
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: ecf3c3954bd77962e56ee289b623806efb352410
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: e1bd5852ca12ca03e7202cf9cfb89372d076bad9
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461274"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920436"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>Tömeges másolás fájlokból adatbázisba
 
@@ -55,7 +55,7 @@ A sablon a következő két paramétert definiálja:
     ![A folyamat áttekintése](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > Ha az **Azure szinapszis Analytics (korábbi nevén SQL DW)** lehetőséget választotta a fenti **2. lépésben** megadott adat célhelyként, meg kell adnia egy, az Azure-beli blob Storage-hoz való kapcsolódást az Azure szinapszis Analytics-alapú alapszintű verziójának megfelelően. A következő képernyőfelvételen látható, hogy a sablon automatikusan létrehozza a blob Storage *tárolási útvonalát* . Ellenőrizze, hogy létrejött-e a tároló a folyamat futtatása után.
+    > Ha úgy döntött, hogy az **Azure szinapszis Analytics** a fenti **2. lépésben** megadott adat célhelyként van kiválasztva, meg kell adnia egy kapcsolódást az Azure Blob Storage-hoz az átmeneti tároláshoz, az Azure szinapszis Analytics alapszintű verziójának megfelelően. A következő képernyőfelvételen látható, hogy a sablon automatikusan létrehozza a blob Storage *tárolási útvonalát* . Ellenőrizze, hogy létrejött-e a tároló a folyamat futtatása után.
         
     ![Alapszintű beállítás](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 
@@ -68,6 +68,6 @@ A sablon a következő két paramétert definiálja:
     ![Az eredmény áttekintése](media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png)
 
        
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Data Factory bemutatása](introduction.md)

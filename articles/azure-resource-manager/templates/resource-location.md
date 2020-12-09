@@ -1,19 +1,19 @@
 ---
 title: Sablon erőforrásának helye
-description: Útmutató az erőforrás helyének megadásához egy Azure Resource Manager sablonban.
+description: Útmutató az erőforrás helyének megadásához egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.custom: ''
-ms.openlocfilehash: e1310c81d7b726e9be2fe9f38a0bb8d701035ba4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a818109e6681b8d0e18de4d2d7969310582818
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613696"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922392"
 ---
 # <a name="set-resource-location-in-arm-template"></a>Erőforrás helyének beállítása az ARM-sablonban
 
-Azure Resource Manager-(ARM-) sablon telepítésekor meg kell adnia egy helyet az egyes erőforrásokhoz. A helynek nem kell ugyanazon a helyen lennie, mint az erőforráscsoport helye.
+Azure Resource Manager-sablon (ARM-sablon) telepítésekor meg kell adnia egy helyet az egyes erőforrásokhoz. A helynek nem kell ugyanazon a helyen lennie, mint az erőforráscsoport helye.
 
 ## <a name="get-available-locations"></a>Elérhető helyszínek beolvasása
 
@@ -96,5 +96,5 @@ A következő példa egy olyan Storage-fiókot mutat be, amely paraméterként m
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A sablon függvények teljes listájáért lásd: [Azure Resource Manager template functions](template-functions.md).
+* A sablon függvények teljes listájáért lásd: [ARM-sablon függvények](template-functions.md).
 * További információ a sablonfájlokat: [az ARM-sablonok struktúrájának és szintaxisának megismerése](template-syntax.md).

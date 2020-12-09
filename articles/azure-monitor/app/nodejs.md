@@ -4,12 +4,12 @@ description: Teljesítmény figyelése és problémák diagnosztizálása a Node
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 4c350cbfdf92d19a084940941351cf1f028c93d2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7aea6c03b0ce35fa0e74c39ff5f94f714447ad6f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186279"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920575"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
@@ -40,6 +40,9 @@ Mielőtt hozzákezd, győződjön meg róla, hogy rendelkezik Azure-előfizetés
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> A Node.js SDK beállítása
 
 Építse be az SDK-t az alkalmazásba, hogy az adatokat tudjon gyűjteni.
+
+> [!IMPORTANT]
+> Az új Azure-régiókban a rendszerállapot-kulcsok helyett a kapcsolatok sztringjét **kell** használnia. A [kapcsolódási karakterlánc](./sdk-connection-string.md?tabs=nodejs) azonosítja azt az erőforrást, amelyhez hozzá szeretné rendelni a telemetria-adatait. Azt is lehetővé teszi, hogy módosítsa az erőforrás által a telemetria célként használt végpontokat. A kapcsolódási karakterláncot át kell másolnia, és hozzá kell adnia az alkalmazás kódjához vagy egy környezeti változóhoz.
 
 1. Másolja az erőforrás rendszerállapot-kulcsát (más néven *rendszerállapotkulcsot*) az újonnan létrehozott erőforrásból. Az Application Insights a rendszerállapotkulcs segítségével rendeli hozzá az adatokat az Azure-erőforráshoz. Ahhoz, hogy az SDK használni tudja a rendszerállapotkulcsot, meg kell azt adni a programkód egy környezeti változójában.  
 

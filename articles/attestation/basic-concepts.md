@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 95f59b73682e461a350410b38e3a021226cd7db6
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748688"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921611"
 ---
 # <a name="basic-concepts"></a>Alapfogalmak
 
@@ -30,7 +30,7 @@ A [JSON webkulcs](https://tools.ietf.org/html/rfc7517) (JWK) egy olyan JSON-adat
 
 Az igazolási szolgáltató a Microsoft. igazolás nevű Azure-erőforrás-szolgáltatóhoz tartozik. Az erőforrás-szolgáltató egy olyan szolgáltatási végpont, amely Azure igazolási REST-szerződést biztosít, és [Azure Resource Manager](../azure-resource-manager/management/overview.md)használatával van üzembe helyezve. Minden igazolási szolgáltató egy konkrét, felderíthető házirendet tart fenn. 
 
-Az igazoló szolgáltatók minden egyes TEE-típushoz alapértelmezett szabályzattal jönnek létre (vegye figyelembe, hogy a VBS enklávé nem tartalmaz alapértelmezett szabályzatot). A SGX ENKLÁVÉHOZ vonatkozó alapértelmezett szabályzattal kapcsolatos további részletekért tekintse meg az [igazolási szabályzat példáit](policy-examples.md) .
+Az igazolási szolgáltatók minden egyes igazolási típushoz alapértelmezett szabályzattal jönnek létre (vegye figyelembe, hogy a VBS enklávé nem tartalmaz alapértelmezett szabályzatot). A SGX ENKLÁVÉHOZ vonatkozó alapértelmezett szabályzattal kapcsolatos további részletekért tekintse meg az [igazolási szabályzat példáit](policy-examples.md) .
 
 ### <a name="regional-default-provider"></a>Regionális alapértelmezett szolgáltató
 
@@ -50,13 +50,13 @@ Az igazolási kérelem az ügyfélalkalmazás által az igazolási szolgáltató
 - "Quota" – az "quote" tulajdonság értéke egy olyan karakterlánc, amely az igazolási idézet Base64URL kódolt ábrázolását tartalmazza.
 - "EnclaveHeldData" – a "EnclaveHeldData" tulajdonság értéke egy olyan karakterlánc, amely az enklávéban tárolt adat Base64URL-kódolású ábrázolását tartalmazza.
 
-Az Azure-igazolás ellenőrzi a megadott "quota" értéket a PÓLÓból, majd gondoskodik arról, hogy a megadott enklávéban tárolt adatok SHA256 kivonata a reportData mező első 32 bájtjában legyen kifejezve az idézőjelben. 
+Az Azure-igazolás érvényesíti a megadott "árajánlatot", majd gondoskodik arról, hogy a megadott enklávé SHA256-kivonata az idézet reportData mezőjének első 32 bájtjában legyen kifejezve. 
 
 ## <a name="attestation-policy"></a>Igazolási szabályzat
 
 Az igazolási szabályzat az igazolási tanúsítványok feldolgozására szolgál, és az ügyfelek által konfigurálható. Az Azure-igazolás középpontjában egy olyan házirend-motor található, amely a bizonyítékokat alkotó jogcímeket dolgozza fel. A szabályzatok segítségével megállapítható, hogy az Azure-igazolás igazoló jogkivonatot állít ki a bizonyítékok alapján (vagy nem), és ezáltal jóváhagyja az igazolást (vagy nem). Ennek megfelelően az összes házirend átadásának meghiúsulása esetén a rendszer nem ad ki JWT-jogkivonatot.
 
-Ha az igazolási szolgáltató alapértelmezett TEE-szabályzata nem felel meg az igényeknek, az ügyfelek az Azure-igazolás által támogatott összes régióban létrehozhatnak egyéni házirendeket. A házirend-kezelés az Azure-igazolás által az ügyfeleknek biztosított kulcsfontosságú szolgáltatás. A szabályzatok TEE-specifikusak lesznek, és felhasználhatók a enklávék azonosítására, illetve jogcímek hozzáadására a kimeneti jogkivonathoz, vagy a jogcímek módosítása kimeneti jogkivonatban. 
+Ha az igazolási szolgáltató alapértelmezett szabályzata nem felel meg az igényeknek, az ügyfelek az Azure-igazolás által támogatott bármely régióban létrehozhatnak egyéni házirendeket. A házirend-kezelés az Azure-igazolás által az ügyfeleknek biztosított kulcsfontosságú szolgáltatás. A szabályzatok az igazolási típusra vonatkoznak, és felhasználhatók a enklávék azonosítására, illetve jogcímek hozzáadására a kimeneti jogkivonathoz, vagy a jogcímek módosítása kimeneti jogkivonatban. 
 
 Tekintse meg az alapértelmezett házirend-tartalomra és-mintákra vonatkozó [igazolási szabályzat példáit](policy-examples.md) .
 
@@ -109,7 +109,7 @@ Az Azure Storage-ban tárolt adatok védelme mellett az Azure igazolása Azure D
 Az Azure igazolási példány helyi merevlemez-meghajtóján nem maradnak meg ügyféladatok.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)

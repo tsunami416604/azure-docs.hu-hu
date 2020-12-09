@@ -1,18 +1,18 @@
 ---
 title: Sablon functions – tömbök
-description: Ismerteti a Azure Resource Manager-sablonban a tömbök használatakor használandó függvényeket.
+description: Ismerteti a Azure Resource Manager-sablonban (ARM-sablonban) használt függvényeket a tömbökkel való munkához.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 85f910f6143fd16f996a200172d0efd852897d8c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 40a6815bb10ce9725405d68498b9a554706f3af8
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004619"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920540"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM-sablonok tömb függvények
 
-A Resource Manager számos funkciót biztosít a tömbök Azure Resource Manager (ARM) sablonban való használatához.
+A Resource Manager számos funkciót biztosít a tömbök Azure Resource Manager sablonban való használatához (ARM-sablon):
 
 * [array](#array)
 * [concat](#concat)
@@ -24,7 +24,7 @@ A Resource Manager számos funkciót biztosít a tömbök Azure Resource Manager
 * [utolsó](#last)
 * [length](#length) (hossz)
 * [Max](#max)
-* [p](#min)
+* [min](#min)
 * [tartomány](#range)
 * [kihagyása](#skip)
 * [take](#take)
@@ -44,7 +44,7 @@ Az értéket egy tömbre konvertálja.
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Yes |int, string, Array vagy Object |Egy tömbre konvertálandó érték. |
+| convertToArray |Igen |int, string, Array vagy Object |Egy tömbre konvertálandó érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -131,8 +131,8 @@ Több tömböt egyesít, és visszaadja az összefűzött tömböt, vagy kombin�
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tömb vagy karakterlánc |Az Összefűzés első tömbje vagy karakterlánca. |
-| További argumentumok |No |tömb vagy karakterlánc |További tömbök vagy karakterláncok egymást követő sorrendben az összefűzéshez. |
+| arg1 |Igen |tömb vagy karakterlánc |Az Összefűzés első tömbje vagy karakterlánca. |
+| További argumentumok |Nem |tömb vagy karakterlánc |További tömbök vagy karakterláncok egymást követő sorrendben az összefűzéshez. |
 
 Ez a függvény tetszőleges számú argumentumot igénybe vehet, és a paraméterekhez karakterláncokat vagy tömböket is elfogadhat. A paraméterekhez azonban nem lehet tömböt és karakterláncot megadni. A tömbök csak más tömbökkel vannak összefűzve.
 
@@ -254,8 +254,8 @@ Ellenőrzi, hogy egy tömb tartalmaz-e értéket, egy objektum tartalmaz-e kulcs
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| tároló |Yes |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
-| itemToFind |Yes |karakterlánc vagy int |A keresendő érték. |
+| tároló |Igen |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
+| itemToFind |Igen |karakterlánc vagy int |A keresendő érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -366,7 +366,7 @@ Létrehoz egy tömböt a paraméterekből. A `createArray` bicep nem támogatja 
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| args |No |Karakterlánc, egész szám, tömb vagy objektum |A tömb értékei. |
+| args |Nem |Karakterlánc, egész szám, tömb vagy objektum |A tömb értékei. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -450,7 +450,7 @@ Meghatározza, hogy egy tömb, objektum vagy karakterlánc üres-e.
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Yes |tömb, objektum vagy karakterlánc |Az az érték, amely alapján ellenőrizhető, hogy üres-e. |
+| itemToTest |Igen |tömb, objektum vagy karakterlánc |Az az érték, amely alapján ellenőrizhető, hogy üres-e. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -531,7 +531,7 @@ A tömb első elemét vagy a karakterlánc első karakterét adja vissza.
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tömb vagy karakterlánc |Az első elem vagy karakter beolvasására szolgáló érték. |
+| arg1 |Igen |tömb vagy karakterlánc |Az első elem vagy karakter beolvasására szolgáló érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -600,9 +600,9 @@ Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek közös elemei
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tömb vagy objektum |Az általános elemek kereséséhez használandó első érték. |
-| arg2 |Yes |tömb vagy objektum |A közös elemek kereséséhez használt második érték. |
-| További argumentumok |No |tömb vagy objektum |Az általános elemek kereséséhez használandó további értékek. |
+| arg1 |Igen |tömb vagy objektum |Az általános elemek kereséséhez használandó első érték. |
+| arg2 |Igen |tömb vagy objektum |A közös elemek kereséséhez használt második érték. |
+| További argumentumok |Nem |tömb vagy objektum |Az általános elemek kereséséhez használandó további értékek. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -708,7 +708,7 @@ A tömb utolsó elemét vagy a karakterlánc utolsó karakterét adja vissza.
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tömb vagy karakterlánc |Az utolsó elem vagy karakter beolvasására szolgáló érték. |
+| arg1 |Igen |tömb vagy karakterlánc |Az utolsó elem vagy karakter beolvasására szolgáló érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -777,7 +777,7 @@ Egy tömbben lévő elemek számát, egy karakterláncban szereplő karaktereket
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
+| arg1 |Igen |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -889,7 +889,7 @@ A függvényt egy tömb használatával adhatja meg az erőforrások létrehozá
 
 ---
 
-További információ a függvény tömbhöz való használatáról: [több erőforrás-példány létrehozása Azure Resource Managerban](copy-resources.md).
+A függvény tömbhöz való használatával kapcsolatos további információkért lásd: [erőforrás-iteráció az ARM-sablonokban](copy-resources.md).
 
 ## <a name="max"></a>max.
 
@@ -901,7 +901,7 @@ A maximális értéket adja vissza egész számok tömbje vagy az egész számok
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
+| arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -971,7 +971,7 @@ A minimális értéket adja vissza egész számok tömbje vagy az egész számok
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
+| arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -1041,8 +1041,8 @@ Egész számok tömbjét hozza létre egy kezdő egész számból, és több ele
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| startIndex |Yes |int |A tömb első egésze. A startIndex és a darabszám összege nem lehet nagyobb, mint 2147483647. |
-| count |Yes |int |A tömbben lévő egész számok száma. Legfeljebb 10000-ig nem negatív egész számnak kell lennie. |
+| startIndex |Igen |int |A tömb első egésze. A startIndex és a darabszám összege nem lehet nagyobb, mint 2147483647. |
+| count |Igen |int |A tömbben lévő egész számok száma. Legfeljebb 10000-ig nem negatív egész számnak kell lennie. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -1105,8 +1105,8 @@ Egy tömböt ad vissza az összes elemmel a tömbben megadott szám után, vagy 
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |tömb vagy karakterlánc |A kihagyáshoz használandó tömb vagy karakterlánc. |
-| numberToSkip |Yes |int |A kihagyni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, az értékben szereplő összes elemet vagy karaktert adja vissza a rendszer. Ha a tömb vagy a karakterlánc hossza nagyobb, akkor a rendszer üres tömböt vagy karakterláncot ad vissza. |
+| originalValue |Igen |tömb vagy karakterlánc |A kihagyáshoz használandó tömb vagy karakterlánc. |
+| numberToSkip |Igen |int |A kihagyni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, az értékben szereplő összes elemet vagy karaktert adja vissza a rendszer. Ha a tömb vagy a karakterlánc hossza nagyobb, akkor a rendszer üres tömböt vagy karakterláncot ad vissza. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -1193,8 +1193,8 @@ Egy tömböt ad vissza a megadott számú elemmel a tömb elejétől, vagy egy o
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |tömb vagy karakterlánc |Az elemeket tartalmazó tömb vagy karakterlánc. |
-| numberToTake |Yes |int |A felvenni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, üres tömböt vagy karakterláncot ad vissza. Ha az érték nagyobb, mint a megadott tömb vagy karakterlánc hossza, a rendszer a tömb vagy karakterlánc összes elemét adja vissza. |
+| originalValue |Igen |tömb vagy karakterlánc |Az elemeket tartalmazó tömb vagy karakterlánc. |
+| numberToTake |Igen |int |A felvenni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, üres tömböt vagy karakterláncot ad vissza. Ha az érték nagyobb, mint a megadott tömb vagy karakterlánc hossza, a rendszer a tömb vagy karakterlánc összes elemét adja vissza. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -1281,9 +1281,9 @@ Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek összes elemé
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tömb vagy objektum |Az elemek csatlakoztatásának első értéke. |
-| arg2 |Yes |tömb vagy objektum |Az elemek csatlakoztatásához használt második érték. |
-| További argumentumok |No |tömb vagy objektum |Az elemekhez való csatlakozáshoz használandó további értékek. |
+| arg1 |Igen |tömb vagy objektum |Az elemek csatlakoztatásának első értéke. |
+| arg2 |Igen |tömb vagy objektum |Az elemek csatlakoztatásához használt második érték. |
+| További argumentumok |Nem |tömb vagy objektum |Az elemekhez való csatlakozáshoz használandó további értékek. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -1379,6 +1379,6 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | objectOutput | Objektum | {"One": "a", "kettő": "b", "három": "C2", "Four": "d", "öt": "e"} |
 | arrayOutput | Tömb | ["egy", "kettő", "három", "négy"] |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.
+* Az ARM-sablon fejezeteinek leírását az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk tartalmazza.

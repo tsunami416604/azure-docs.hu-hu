@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: b8f95e7e173dd6d1ad43301aab8ff3ec7cf78018
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 4997853fea97d14491bd9e9101f79f324807a6a1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981000"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920814"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps
 
@@ -42,7 +42,7 @@ További információ a biztonságról: hitelesítés és titkosítás a logikai
 
 Ez a beépített trigger egy manuálisan hívható végpontot hoz létre, amely *csak* a bejövő kérelmeket képes kezelni HTTPS-en keresztül. Ha egy hívó kérelmet küld erre a végpontra, a [kérelem aktiválja](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a logikai alkalmazást, és futtatja azt. További információ az trigger meghívásáról: [munkafolyamatok hívása, elindítása vagy beágyazása HTTPS-végpontokkal a Azure Logic Appsban](../logic-apps/logic-apps-http-endpoint.md).
 
-A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-and-config.md#request-limits)tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás [válaszra vonatkozó műveletet](#add-response)tartalmaz, ha a logikai alkalmazás nem küld vissza választ a hívónak az idő múlásával, a logikai alkalmazás egy `504 GATEWAY TIMEOUT` állapotot ad vissza a hívónak. Ha a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja a `202 ACCEPTED` hívónak az állapotot.
+A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-and-config.md#http-limits)tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás [válaszra vonatkozó műveletet](#add-response)tartalmaz, ha a logikai alkalmazás nem küld vissza választ a hívónak az idő múlásával, a logikai alkalmazás egy `504 GATEWAY TIMEOUT` állapotot ad vissza a hívónak. Ha a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja a `202 ACCEPTED` hívónak az állapotot.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Üres logikai alkalmazás létrehozása.
 
@@ -179,7 +179,7 @@ A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-
 
    Választhatja például a kérést [egy válasz művelet hozzáadásával](#add-response), amelyet egy testreszabott válasz visszaadására használhat, és a jelen témakör későbbi részében is ismertetjük.
 
-   A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-and-config.md#request-limits)tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás munkafolyamata tartalmaz egy választ, ha a logikai alkalmazás nem ad vissza választ az adott idő elteltével, a logikai alkalmazás a `504 GATEWAY TIMEOUT` hívót adja vissza. Ellenkező esetben, ha a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja a `202 ACCEPTED` hívónak küldött választ.
+   A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-and-config.md#http-limits)tart nyitva a bejövő kérelemben. Feltételezve, hogy a logikai alkalmazás munkafolyamata tartalmaz egy választ, ha a logikai alkalmazás nem ad vissza választ az adott idő elteltével, a logikai alkalmazás a `504 GATEWAY TIMEOUT` hívót adja vissza. Ellenkező esetben, ha a logikai alkalmazás nem tartalmaz válasz műveletet, a logikai alkalmazás azonnal visszaadja a `202 ACCEPTED` hívónak küldött választ.
 
 1. Ha elkészült, mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** lehetőséget.
 

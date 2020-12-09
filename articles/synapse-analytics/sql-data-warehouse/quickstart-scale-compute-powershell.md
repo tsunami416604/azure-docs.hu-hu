@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: a kiszámítások méretezése a szinapszis SQL-készlethez (Azure PowerShell)'
-description: A szinapszis SQL-készlet (adattárház) számítási felskálázását Azure PowerShell használatával végezheti el.
+title: 'Gyors útmutató: számítások méretezése dedikált SQL-készlethez (korábban SQL DW) (Azure PowerShell)'
+description: A dedikált SQL-készlet (korábban SQL DW) számítási felskálázását Azure PowerShell használatával végezheti el.
 services: synapse-analytics
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 8077b1a52e44ce3a5160309c92288f756bed1014
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87e10740e6081431bad96daa930f61238ca495bd
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91566142"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921904"
 ---
-# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Gyors útmutató: a Azure PowerShell
+# <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Gyors útmutató: a kiszámítások méretezése dedikált SQL-készlethez (korábban SQL DW) Azure PowerShell
 
-A szinapszis SQL-készlet (adattárház) számítási felskálázását Azure PowerShell használatával végezheti el. [Felskálázással](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
+A dedikált SQL-készlet (korábban SQL DW) számítási felskálázását Azure PowerShell használatával végezheti el. [Felskálázással](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy méretezhető SQL-készlettel. Ha létre kell hoznia egyet, a [create és a összekapcsolás-Portal](create-data-warehouse-portal.md) használatával hozzon létre egy **mySampleDataWarehouse**nevű SQL-készletet.
+Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy olyan dedikált SQL-készlettel (korábban SQL DW), amelyet méretezhető. Ha létre kell hoznia egyet, a [create és a összekapcsolás-Portal](create-data-warehouse-portal.md) használatával hozzon létre egy **MYSAMPLEDATAWAREHOUSE** nevű dedikált SQL-készletet (korábban SQL DW).
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -67,9 +67,9 @@ Keresse meg adattárháza helyinformációit ezekkel lépésekkel.
 
 ## <a name="scale-compute"></a>Számítások méretezése
 
-Az SQL-készletben az adatraktár-egységek módosításával növelheti vagy csökkentheti a számítási erőforrásokat. A [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) gyorsútmutató létrehozta a **mySampleDataWarehouse** adattárházat, és inicializálta azt 400 adattárházegységgel. Az alábbi lépésekkel módosíthatja a **mySampleDataWarehouse** adattárházban az adattárházegységek számát.
+A dedikált SQL-készletben (korábban az SQL DW-ben) az adatraktár-egységek módosításával növelheti vagy csökkentheti a számítási erőforrásokat. A [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) gyorsútmutató létrehozta a **mySampleDataWarehouse** adattárházat, és inicializálta azt 400 adattárházegységgel. Az alábbi lépésekkel módosíthatja a **mySampleDataWarehouse** adattárházban az adattárházegységek számát.
 
-Az adatraktár-egységek módosításához használja a [set-AzSqlDatabase PowerShell-](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagot. A következő példa a DW300c adatraktár-egységeit állítja be az adatbázis- **mySampleDataWarehouse**, amely a kiszolgáló **sqlpoolservername**erőforráscsoport- **resourcegroupname** található.
+Az adatraktár-egységek módosításához használja a [set-AzSqlDatabase PowerShell-](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagot. A következő példa a DW300c adatraktár-egységeit állítja be az adatbázis- **mySampleDataWarehouse**, amely a kiszolgáló **sqlpoolservername** erőforráscsoport- **resourcegroupname** található.
 
 ```Powershell
 Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
@@ -119,9 +119,9 @@ Az állapot önmagában való megjelenítéséhez használja a következő paran
 $database | Select-Object DatabaseName,Status
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ezzel megtanulta, hogyan méretezheti a számítási lehetőséget az SQL-készlethez. Ha többet szeretne megtudni az SQL-készletről, folytassa a betöltési oktatóanyaggal.
+Megtanulta, hogyan méretezheti a kiszámítást a dedikált SQL-készlet (korábban SQL DW) számára. Ha többet szeretne megtudni a dedikált SQL-készletről (korábban SQL DW), folytassa a betöltési útmutatóval.
 
 > [!div class="nextstepaction"]
->[Adatgyűjtés SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md)
+>[Adat betöltése egy dedikált SQL-készletbe](load-data-from-azure-blob-storage-using-copy.md)

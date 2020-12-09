@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban az Azure-beli virtuális gépek vész-hely
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 90527ad39055e438e4970ad4686f204f72d20cd2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 6d07082b4a9c18461d5cc74de8844be803da7168
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394100"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922489"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>Oktatóanyag: vész-helyreállítás beállítása Azure-beli virtuális gépekhez
 
@@ -47,16 +47,16 @@ Az Azure-fióknak engedéllyel kell rendelkeznie Recovery Services-tároló lét
 
 - Ha most létrehozott egy ingyenes Azure-előfizetést, akkor Ön a fiók rendszergazdája, és nincs szükség további műveletre.
 - Ha nem Ön a rendszergazda, akkor a rendszergazdával együttműködve kapja meg a szükséges engedélyeket.
-    - Tár **létrehozása** : rendszergazdai vagy tulajdonosi engedélyek az előfizetéshez. 
+    - Tár **létrehozása**: rendszergazdai vagy tulajdonosi engedélyek az előfizetéshez. 
     - **Site Recovery műveletek kezelése a** tárolóban: a *site Recovery közreműködő* beépített Azure-szerepköre.
-    - **Azure-beli virtuális gépek létrehozása a célként megadott régióban** : vagy a beépített *virtuálisgép-közreműködő* szerepkör vagy a következőkre vonatkozó konkrét engedélyek:
+    - **Azure-beli virtuális gépek létrehozása a célként megadott régióban**: vagy a beépített *virtuálisgép-közreműködő* szerepkör vagy a következőkre vonatkozó konkrét engedélyek:
         - Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
         - Írás egy Azure Storage-fiókba.
         - Írás egy Azure által felügyelt lemezre.
 
 ### <a name="verify-target-settings"></a>Cél beállításainak ellenőrzése
 
-A felderítési helyreállítás során a rendszer a forrás régióból végez feladatátvételt, a virtuális gépeket a célként megadott régióban hozza létre a rendszer. 
+A vész-helyreállítási folyamat során a rendszer a forrás régiójából végez feladatátvételt, és a virtuális gépeket a célként megadott régióban hozza létre. 
 
 Győződjön meg arról, hogy az előfizetése elegendő erőforrással rendelkezik a célként megadott régióban. Létre kell hoznia olyan virtuális gépeket, amelyek mérete megegyezik a forrás régiójában lévő virtuális gépekkel. A vész-helyreállítás beállításakor Site Recovery a célként megadott virtuális gép méretének (vagy a legközelebbi lehetséges méretének) a megadására kerül sor.
 
@@ -79,7 +79,7 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 
 | **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
 | Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
@@ -102,24 +102,24 @@ GuestAndHybridManagement címke | Akkor használja, ha szeretné automatikusan f
 
 Győződjön meg arról, hogy a virtuális gépek rendelkeznek a legfelső szintű tanúsítvánnyal. Ellenkező esetben a virtuális gép nem regisztrálható Site Recovery biztonsági korlátozások miatt.
 
-- **Windows rendszerű virtuális gépek** : telepítse a virtuális gépre a legújabb Windows-frissítéseket, hogy az összes megbízható főtanúsítvány a gépen legyen. A leválasztott környezetekben kövesse a Windows Update és a tanúsítványok frissítéseinek szabványos folyamatait.
-- **Linuxos virtuális gépek** : kövesse a Linux-terjesztő által biztosított útmutatást a legújabb megbízható főtanúsítványok és a visszavont tanúsítványok listájának (CRL) beszerzéséhez.
+- **Windows rendszerű virtuális gépek**: telepítse a virtuális gépre a legújabb Windows-frissítéseket, hogy az összes megbízható főtanúsítvány a gépen legyen. A leválasztott környezetekben kövesse a Windows Update és a tanúsítványok frissítéseinek szabványos folyamatait.
+- **Linuxos virtuális gépek**: kövesse a Linux-terjesztő által biztosított útmutatást a legújabb megbízható főtanúsítványok és a visszavont tanúsítványok listájának (CRL) beszerzéséhez.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 Hozzon létre egy Recovery Services-tárolót bármely régióban, kivéve azt a forrás-régiót, amelyről a virtuális gépeket replikálni kívánja.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A keresőmezőbe írja be a *helyreállítás* kifejezést. A **szolgáltatások** területen válassza a **Recovery Services** -tárolók lehetőséget.
+2. A keresőmezőbe írja be a *helyreállítás* kifejezést. A **szolgáltatások** területen válassza a **Recovery Services**-tárolók lehetőséget.
 
     ![Recovery Services-tárolók keresése](./media/azure-to-azure-tutorial-enable-replication/search.png)
 
-3. **Recovery Services** -tárolókban válassza a **Hozzáadás** lehetőséget.
-4. Az **Recovery Services** -tároló  >  **alapjai** területen válassza ki azt az előfizetést, amelyben létre kívánja hozni a tárolót.
+3. **Recovery Services**-tárolókban válassza a **Hozzáadás** lehetőséget.
+4. Az **Recovery Services**-tároló  >  **alapjai** területen válassza ki azt az előfizetést, amelyben létre kívánja hozni a tárolót.
 5. Az **erőforráscsoport** területen válasszon ki egy meglévő erőforráscsoportot a tárolóhoz, vagy hozzon létre egy újat.
 6. A tár **neve** mezőben adjon meg egy rövid nevet a tároló azonosításához.
 7. A **régió** területen válassza ki azt az Azure-régiót, amelyben a tárolót helyezni kívánja. [Keresse meg a támogatott régiókat](https://azure.microsoft.com/pricing/details/site-recovery/).
-8. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+8. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
    ![Tároló beállításai a lapon új tár létrehozásához](./media/azure-to-azure-tutorial-enable-replication/vault-basics.png)
 
@@ -154,7 +154,7 @@ Válassza ki a forrás beállításait, és engedélyezze a virtuális gép repl
 
      ![A forrás beállítása](./media/azure-to-azure-tutorial-enable-replication/source.png)
 
-7. Válassza a **Tovább** gombot.
+7. Kattintson a **Tovább** gombra.
 
 ### <a name="select-the-vms"></a>A virtuális gépek kiválasztása
 
@@ -164,7 +164,7 @@ Site Recovery lekéri a kiválasztott előfizetéshez/erőforráscsoporthoz tár
 
      ![Virtuális gépek kiválasztása a replikáláshoz](./media/azure-to-azure-tutorial-enable-replication/select-vm.png)
 
-2. Válassza a **Tovább** gombot.
+2. Kattintson a **Tovább** gombra.
 
 ### <a name="review-replication-settings"></a>Replikációs beállítások áttekintése
 
@@ -182,7 +182,7 @@ Site Recovery lekéri a kiválasztott előfizetéshez/erőforráscsoporthoz tár
     ![Virtuális gép a replikált elemek oldalon](./media/azure-to-azure-tutorial-enable-replication/replicated-items.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezte a vész-helyreállítást egy Azure-beli virtuális gépen. Most futtasson egy részletezést, és győződjön meg róla, hogy a feladatátvétel a várt módon működik-e.
 

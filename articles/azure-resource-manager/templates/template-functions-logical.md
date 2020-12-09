@@ -1,18 +1,18 @@
 ---
 title: Sablon functions – logikai
-description: A Azure Resource Manager-sablonban a logikai értékek meghatározásához használandó függvények leírása.
+description: Leírja a logikai értékek meghatározásához Azure Resource Manager sablonban (ARM-sablonban) használandó függvényeket.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: b54c104c8af5bb742b2c82d8a075515b8696501b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004551"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920470"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Az ARM-sablonok logikai funkciói
 
-A Resource Manager számos funkciót biztosít a Azure Resource Manager-(ARM-) sablonokban való összehasonlításhoz.
+A Resource Manager számos funkciót biztosít az összehasonlítások megadásához a Azure Resource Manager-sablonban (ARM-sablon):
 
 * [and](#and)
 * [logikai](#bool)
@@ -34,9 +34,9 @@ Ellenőrzi, hogy az összes paraméter értéke igaz-e. A `and` függvény nem t
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| arg2 |Yes |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| További argumentumok |No |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
+| arg1 |Igen |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| arg2 |Igen |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| További argumentumok |Nem |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -98,7 +98,7 @@ A paramétert logikai értékre alakítja.
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
+| arg1 |Igen |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -217,9 +217,9 @@ Egy értéket ad vissza, attól függően, hogy a feltétel igaz vagy hamis. A `
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| feltétel |Yes |boolean |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
-| trueValue |Yes | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
-| falseValue |Yes | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
+| feltétel |Igen |boolean |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
+| trueValue |Igen | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
+| falseValue |Igen | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -227,7 +227,7 @@ A második paramétert adja vissza, ha az első paraméter **igaz**. Ellenkező 
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ha a feltétel **igaz**, csak a True érték lesz kiértékelve. Ha a feltétel **hamis**, csak a hamis értéket értékeli ki a rendszer. Az **IF** függvénnyel olyan kifejezéseket is tartalmazhat, amelyek csak feltételes érvényességgel rendelkeznek. Hivatkozhat például egy olyan erőforrásra, amely egy feltételben található, de nem a másik feltételben. A következő szakaszban látható egy példa a feltételes kiértékelésre kifejezésekre.
+Ha a feltétel **igaz**, csak a True érték lesz kiértékelve. Ha a feltétel **hamis**, csak a hamis értéket értékeli ki a rendszer. A `if` függvénnyel olyan kifejezéseket is megadhat, amelyek csak feltételes érvényességgel rendelkeznek. Hivatkozhat például egy olyan erőforrásra, amely egy feltételben található, de nem a másik feltételben. A következő szakaszban látható egy példa a feltételes kiértékelésre kifejezésekre.
 
 ### <a name="examples"></a>Példák
 
@@ -272,7 +272,7 @@ Az előző példa kimenete a következő:
 
 | Név | Típus | Érték |
 | ---- | ---- | ----- |
-| yesOutput | Sztring | yes |
+| yesOutput | Sztring | igen |
 | nincs kimenet | Sztring | nem |
 | objectOutput | Objektum | {"test": "érték1"} |
 
@@ -343,7 +343,7 @@ Logikai érték konvertálása az ellenkező értékre. A `not` függvény nem t
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |Az átalakítandó érték. |
+| arg1 |Igen |boolean |Az átalakítandó érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -438,9 +438,9 @@ Ellenőrzi, hogy a paraméter értéke igaz-e. A `or` függvény nem támogatott
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| arg2 |Yes |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| További argumentumok |No |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
+| arg1 |Igen |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| arg2 |Igen |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| További argumentumok |Nem |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -540,6 +540,6 @@ Az előző példa kimenete a következő:
 | ---- | ---- | ----- |
 | trueOutput | Logikai | Igaz |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.
+* Az ARM-sablon fejezeteinek leírását az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk tartalmazza.

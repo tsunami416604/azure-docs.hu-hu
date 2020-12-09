@@ -4,12 +4,12 @@ description: A nyomkövetés, a NLog vagy a Log4Net által létrehozott naplók 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: ab3b12bf0401c4060823c6ed1d20dd6385cc397f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90777da4d0b67587afebaa7111e3503af2afcb9a
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973837"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920345"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>A .NET/.NET Core és a Python nyomkövetési naplók megismerése Application Insights
 
@@ -46,7 +46,7 @@ Vagy kattintson a jobb gombbal a projektre Megoldáskezelő a **Application Insi
 Ezt a módszert akkor használja, ha a projekt típusát nem támogatja a Application Insights telepítője (például egy Windows asztali projekt).
 
 1. Ha a log4Net vagy a NLog használatát tervezi, telepítse azt a projektbe.
-2. Megoldáskezelő kattintson a jobb gombbal a projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+2. Megoldáskezelő kattintson a jobb gombbal a projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 3. Keressen rá a "Application Insights" kifejezésre.
 4. Válasszon egyet az alábbi csomagok közül:
 
@@ -97,7 +97,7 @@ Konfigurálhatja a [System. Diagnostics. Trace. EventSource](/dotnet/api/system.
 
 Az egyes forrásokhoz a következő paramétereket állíthatja be:
  * A **név** megadja a gyűjteni kívánt EventSource nevét.
- * A **szint** meghatározza a gyűjteni kívánt naplózási szintet: *kritikus*, *hiba*, *tájékoztató*, *LogAlways*, *részletes*vagy *Figyelmeztetés*.
+ * A **szint** meghatározza a gyűjteni kívánt naplózási szintet: *kritikus*, *hiba*, *tájékoztató*, *LogAlways*, *részletes* vagy *Figyelmeztetés*.
  * **Kulcsszavak** (nem kötelező) Itt adhatja meg a használni kívánt kulcsszó-kombinációk egész értékét.
 
 ## <a name="use-diagnosticsource-events"></a>DiagnosticSource-események használata
@@ -130,28 +130,30 @@ Windows esemény-nyomkövetés (ETW) eseményeket úgy is konfigurálhatja, hogy
 Az egyes forrásokhoz a következő paramétereket állíthatja be:
  * A **ProviderName** a gyűjteni kívánt ETW-szolgáltató neve.
  * A **ProviderGuid** meghatározza a gyűjteni kívánt ETW-szolgáltató GUID azonosítóját. A használata helyett használhatja `ProviderName` .
- * A **szint** beállítja a begyűjteni kívánt naplózási szintet. Ez lehet *kritikus*, *hiba*, *tájékoztató*, *LogAlways*, *részletes*vagy *Figyelmeztetés*.
+ * A **szint** beállítja a begyűjteni kívánt naplózási szintet. Ez lehet *kritikus*, *hiba*, *tájékoztató*, *LogAlways*, *részletes* vagy *Figyelmeztetés*.
  * **Kulcsszavak** (nem kötelező) a kulcsszó-kombinációk egész értékének megadására használható.
 
 ## <a name="use-the-trace-api-directly"></a>A nyomkövetési API közvetlen használata
 Közvetlenül is meghívhatja a Application Insights nyomkövetési API-t. A naplózási adapterek ezt az API-t használják.
 
-Példa:
+Például:
 
 ```csharp
-var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+var telemetryClient = new TelemetryClient(configuration);
 telemetry.TrackTrace("Slow response - database01");
 ```
 
 A TrackTrace előnye, hogy viszonylag hosszú adatmennyiséget helyezhet el az üzenetben. Például elvégezheti az adatposták küldését.
 
-Az üzenethez súlyossági szintet is hozzáadhat. A többi telemetria hasonlóan a különböző nyomkövetési csoportok szűréséhez és kereséséhez is hozzáadhat tulajdonságértékeket. Példa:
+Az üzenethez súlyossági szintet is hozzáadhat. A többi telemetria hasonlóan a különböző nyomkövetési csoportok szűréséhez és kereséséhez is hozzáadhat tulajdonságértékeket. Például:
 
   ```csharp
-  var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-  telemetry.TrackTrace("Slow database response",
-                 SeverityLevel.Warning,
-                 new Dictionary<string,string> { {"database", db.ID} });
+  TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+  var telemetryClient = new TelemetryClient(configuration);
+  telemetryClient.TrackTrace("Slow database response",
+                              SeverityLevel.Warning,
+                              new Dictionary<string, string> { { "database", "db.ID" } });
   ```
 
 Ez lehetővé [teszi, hogy][diagnostic] egyszerűen kiszűrje az adott adatbázishoz kapcsolódó adott súlyossági szint összes üzenetét.
@@ -196,16 +198,16 @@ A Java-kódok nélküli kialakításban (ajánlott) a naplókat a rendszer a [ja
 Ha a Java SDK-t használja, használja a [Java log-adaptereket](./java-trace-logs.md).
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Nincs Application Insights lehetőség a projekt helyi menüjében
-* Győződjön meg arról, hogy a fejlesztői elemzési eszközök telepítve vannak a fejlesztői gépen. A Visual Studio **Tools**  >  **Extensions és Updates**szolgáltatásban keresse meg a **fejlesztői elemzési eszközöket**. Ha nincs a **telepített** lapon, nyissa meg az **online** lapot, és telepítse.
+* Győződjön meg arról, hogy a fejlesztői elemzési eszközök telepítve vannak a fejlesztői gépen. A Visual Studio **Tools**  >  **Extensions és Updates** szolgáltatásban keresse meg a **fejlesztői elemzési eszközöket**. Ha nincs a **telepített** lapon, nyissa meg az **online** lapot, és telepítse.
 * Lehet, hogy a fejlesztői elemzési eszközök nem támogatják a projekt típusát. [Manuális telepítés](#manual-installation)használata.
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>A konfigurációs eszközben nincs naplózási adapter beállítás
 * Először telepítse a naplózási keretrendszert.
-* Ha System. Diagnostics. Tracet használ, győződjön meg arról, hogy [a *web.configban *van konfigurálva ](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1).
-* Győződjön meg arról, hogy rendelkezik a Application Insights legújabb verziójával. A Visual Studióban válassza az **eszközök**  >  **bővítmények és frissítések**menüpontot, és nyissa meg a **frissítések** lapot. Ha a **fejlesztői Analitika eszközei** vannak, válassza ki azt a frissítéshez.
+* Ha System. Diagnostics. Tracet használ, győződjön meg arról, hogy [a *web.configban* van konfigurálva](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1).
+* Győződjön meg arról, hogy rendelkezik a Application Insights legújabb verziójával. A Visual Studióban válassza az **eszközök**  >  **bővítmények és frissítések** menüpontot, és nyissa meg a **frissítések** lapot. Ha a **fejlesztői Analitika eszközei** vannak, válassza ki azt a frissítéshez.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>A "rendszerállapot-kulcs nem lehet üres" hibaüzenet jelenik meg
-Valószínűleg telepítette a naplózási adapter NuGet-csomagját Application Insights telepítése nélkül. A Megoldáskezelő kattintson a jobb gombbal a *ApplicationInsights.config*elemre, majd válassza az **Application Insights frissítése**elemet. A rendszer felszólítja, hogy jelentkezzen be az Azure-ba, és hozzon létre egy Application Insights-erőforrást, vagy egy meglévőt újra. Ezt a problémát ki kell javítani.
+Valószínűleg telepítette a naplózási adapter NuGet-csomagját Application Insights telepítése nélkül. A Megoldáskezelő kattintson a jobb gombbal a *ApplicationInsights.config* elemre, majd válassza az **Application Insights frissítése** elemet. A rendszer felszólítja, hogy jelentkezzen be az Azure-ba, és hozzon létre egy Application Insights-erőforrást, vagy egy meglévőt újra. Ezt a problémát ki kell javítani.
 
 ### <a name="i-can-see-traces-but-not-other-events-in-diagnostic-search"></a>Nyomon követhetem a nyomkövetéseket, de nem más eseményeket a diagnosztikai keresésben
 Eltarthat egy ideig, amíg az összes esemény és kérelem át nem kerül a folyamaton.

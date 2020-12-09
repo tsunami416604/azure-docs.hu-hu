@@ -1,20 +1,20 @@
 ---
-title: A vállalati integrációval kapcsolatos feladatok automatizálása
-description: Ismerje meg, hogyan automatizálhat olyan munkafolyamatokat, amelyek az alkalmazásokat, az információkat, a szolgáltatásokat és a rendszereket integrálják minimális kóddal a vállalati integrációhoz Azure Logic Apps használatával.
+title: A Azure Logic Apps áttekintése
+description: A Azure Logic Apps felhőalapú megoldás olyan automatizált munkafolyamatok létrehozásához és előkészítéséhez, amelyek az alkalmazásokat, az adatok, a szolgáltatások és a rendszerek integrálását teszik ki a nagyvállalati szintű forgatókönyvek minimális kódjával.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 3496dfd7813818ced8963175d73ec0f8ef6892d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c4e8c8f809452286fee493e20dbef2cc538c8bd
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86536232"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921541"
 ---
-# <a name="overview---what-is-azure-logic-apps"></a>Áttekintés – mi az Azure Logic Apps?
+# <a name="what-is-azure-logic-apps"></a>Mi az Azure Logic Apps?
 
 A [Azure Logic apps](https://azure.microsoft.com/services/logic-apps) egy felhőalapú szolgáltatás, amellyel a feladatok, az üzleti folyamatok és a [munkafolyamatok](#logic-app-concepts) ütemezhetők, automatizálható és hangolható össze, ha az alkalmazások, adatok, rendszerek és szolgáltatások integrálására van szükség a vállalatok és a szervezetek között. Logic Apps leegyszerűsíti az alkalmazások [integrálására](https://azure.microsoft.com/product-categories/integration/), az adatintegrációra, a rendszer-integrációra, a vállalati alkalmazások integrálására (EAI) és a VÁLLALATKÖZI (B2B) kommunikációra szolgáló méretezhető megoldások tervezését és kialakítását, akár a felhőben, akár a helyszínen, akár mindkettőn.
 
@@ -150,7 +150,7 @@ A Logic Apps a Microsoft Azure-ban üzemeltetett számos szolgáltatás egyike. 
 
 Ha már van Azure-előfizetése, próbálja ki ezt a rövid útmutatót [az első logikai alkalmazása létrehozásához](../logic-apps/quickstart-create-first-logic-app-workflow.md), amely egy RSS-hírfolyamon keresztül monitoroz egy adott weboldalt, és az új tartalmak megjelenésekor e-mailes értesítést küld.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Forgalom ellenőrzése ütemezésalapú logikai alkalmazás használatával](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 * További információk [az Azure kiszolgáló nélküli megoldásairól](../logic-apps/logic-apps-serverless-overview.md)

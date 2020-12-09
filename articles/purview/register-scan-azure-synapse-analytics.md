@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: a0b0dc8c29bcdb51f7b348dd62e3d27796819a7d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e0a1d8dba9ea284322584de3b4be2ae390d15fdf
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552974"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920253"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Az Azure szinapszis Analytics regisztrálása és vizsgálata
 
@@ -21,6 +21,10 @@ Ez a cikk azt ismerteti, hogyan lehet regisztrálni és beolvasni az Azure szina
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 Az Azure szinapszis Analytics (korábbi nevén SQL DW) teljes és növekményes vizsgálatokat támogat a metaadatok és a séma rögzítéséhez. A vizsgálatok a rendszer és az egyéni besorolási szabályok alapján automatikusan is kategorizálják az adathalmazt.
+
+### <a name="known-limitations"></a>Ismert korlátozások
+
+Az Azure-beli hatáskörébe nem támogatott a [nézetek](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) vizsgálata az Azure szinapszis Analyticsben
 
 ## <a name="prerequisites"></a>Előfeltételek
 

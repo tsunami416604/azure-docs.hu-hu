@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3dbfcacb6ea5922a01d52dfe39189f09f48d4b4a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7423f8d8f2a566801048457ad5f5c44f3c1097ec
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006081"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920059"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>A séma-referenciák útmutatója az triggerekhez és a műveletek típusaihoz Azure Logic Apps
 
@@ -339,9 +339,9 @@ Ahhoz, hogy megfelelően működjön a logikai alkalmazással, a végpontnak meg
 
 | Tulajdonság | Kötelező | Leírás |
 |----------|----------|-------------|
-| Állapotkód | Yes | A "200 OK" állapotkód elindítja a futtatást. Minden más állapotkód nem indít el futtatást. |
-| Újrapróbálkozás a fejléc után | No | Azon másodpercek száma, ameddig a logikai alkalmazás újra le nem kérdezi a végpontot |
-| Hely fejléce | No | A következő lekérdezési intervallumban hívni kívánt URL-cím. Ha nincs megadva, a rendszer az eredeti URL-címet használja. |
+| Állapotkód | Igen | A "200 OK" állapotkód elindítja a futtatást. Minden más állapotkód nem indít el futtatást. |
+| Újrapróbálkozás a fejléc után | Nem | Azon másodpercek száma, ameddig a logikai alkalmazás újra le nem kérdezi a végpontot |
+| Hely fejléce | Nem | A következő lekérdezési intervallumban hívni kívánt URL-cím. Ha nincs megadva, a rendszer az eredeti URL-címet használja. |
 |||| 
 
 *Példa a különböző kérelmek viselkedésére*
@@ -1010,7 +1010,7 @@ Ez a művelet egyetlen kimenetet hoz létre több bemenetből, beleértve a kife
 
 | Érték | Típus | Leírás | 
 |-------|------|-------------| 
-| <*bemenetek és összeállítások*> | Bármely | Egyetlen kimenet létrehozására szolgáló bemenetek | 
+| <*bemenetek és összeállítások*> | Bármelyik | Egyetlen kimenet létrehozására szolgáló bemenetek | 
 |||| 
 
 *1\. példa*
@@ -1506,7 +1506,7 @@ A többi művelettől eltérően a **Válasz** művelet speciális korlátozáso
 
 * A munkafolyamat bárhol használhatja a **Válasz** műveletet, *kivéve* a **foreach** hurkokat, **amíg** a hurkok, beleértve a szekvenciális hurkokat és a párhuzamos ágakat is. 
 
-* Az eredeti HTTP-kérelem csak akkor kapja meg a munkafolyamat válaszát, ha a **Válasz** művelethez szükséges összes művelet befejeződik a [http-kérelem időtúllépési korlátján](../logic-apps/logic-apps-limits-and-config.md#request-limits)belül.
+* Az eredeti kérelem csak akkor kapja meg a munkafolyamat válaszát, ha a **válaszhoz** szükséges összes művelet befejeződött a [http-időtúllépési korláton](../logic-apps/logic-apps-limits-and-config.md#http-limits)belül.
 
   Ha azonban a munkafolyamat egy másik logikai alkalmazást egy beágyazott munkafolyamatként hív meg, a szülő munkafolyamat addig várakozik, amíg a beágyazott munkafolyamat be nem fejeződik, függetlenül attól, hogy mennyi idő telik el a beágyazott munkafolyamat befejeződése előtt.
 
@@ -1649,7 +1649,7 @@ Az oszlopfejlécek és az értékek megadásához és testreszabásához haszná
 | Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*oszlop neve*> | Sztring | Egy oszlop fejlécének neve | 
-| <*oszlop – érték*> | Bármely | Az oszlopban szereplő érték | 
+| <*oszlop – érték*> | Bármelyik | Az oszlopban szereplő érték | 
 |||| 
 
 *1\. példa*
@@ -2717,6 +2717,6 @@ A művelet mögöttes JSON-definíciójában adja hozzá és állítsa be a ["op
 
 A HTTP-és HTTPS-végpontok különböző típusú hitelesítést támogatnak. A kimenő hívások vagy a végpontok elérésére irányuló kérések elvégzéséhez használt trigger vagy művelet alapján különböző hitelesítési típusok közül választhat. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [munkafolyamat-definíciós nyelvről](../logic-apps/logic-apps-workflow-definition-language.md)

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: ded15b45dd859b18180bd396067360ae6585ef97
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 09fcaf0fb0c358c1e94d5cd7064c225d7f185ee0
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575873"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920315"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány regisztrálása és bevizsgálása
 
@@ -25,6 +25,10 @@ Az Azure SQL Database felügyelt példány adatforrás a következő funkciókat
 - **Teljes és növekményes vizsgálatok** a metaadatok és a besorolás Azure SQL Database felügyelt példányban történő rögzítéséhez.
 
 - Adategységek közötti **vonal** a másolási és a adatfolyam tevékenységekhez.
+
+### <a name="known-limitations"></a>Ismert korlátozások
+
+Az Azure-beli hatáskörébe nem használhatók a [nézetek](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) vizsgálata az Azure SQL felügyelt példányában.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -140,7 +144,7 @@ Az adatbázis-kiszolgálónak engedélyeznie kell az Azure-kapcsolatokat. Ez leh
 > [!NOTE]
 > A vizsgálat törlése nem törli a korábbi Azure SQL Database felügyelt példányok vizsgálatainak eszközeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
 - [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)

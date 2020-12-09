@@ -1,18 +1,18 @@
 ---
 title: Sablon functions – üzembe helyezés
-description: Ismerteti a Azure Resource Manager-sablonban a telepítési információk lekéréséhez használandó függvényeket.
+description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó függvényeket ismerteti az üzembe helyezési adatok lekéréséhez.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 9d6a1783bcd6d84c181edae84063ed7c0964c3d8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004568"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920508"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Az ARM-sablonok üzembe helyezési funkciói
 
-A Resource Manager a következő függvényeket biztosítja a Azure Resource Manager-(ARM-) sablon aktuális üzembe helyezéséhez kapcsolódó értékek beolvasásához:
+A Resource Manager a következő függvényeket biztosítja a Azure Resource Manager-sablon (ARM-sablon) aktuális üzembe helyezéséhez kapcsolódó értékek beolvasásához:
 
 * [telepítési](#deployment)
 * [környezet](#environment)
@@ -297,7 +297,7 @@ Egy paraméter értékét adja vissza. A megadott paraméter nevét meg kell adn
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |sztring |A visszaadni kívánt paraméter neve. |
+| parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -434,7 +434,7 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | arrayOutput | Tömb | [1, 2, 3] |
 | crossOutput | Sztring | 1. lehetőség |
 
-További információ a paraméterek használatáról: [Azure Resource Manager sablonban található paraméterek](template-parameters.md).
+A paraméterek használatával kapcsolatos további információkért lásd: [paraméterek az ARM-sablonokban](template-parameters.md).
 
 ## <a name="variables"></a>változók
 
@@ -571,8 +571,8 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | exampleOutput3 | Sztring | myVariable |
 | exampleOutput4 |  Objektum | {"Tulajdonság1": "érték1", "property2": "érték2"} |
 
-További információ a változók használatáról: [változók Azure Resource Manager sablonban](template-variables.md).
+A változók használatával kapcsolatos további információkért lásd: [változók az ARM-sablonban](template-variables.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.
+* Az ARM-sablon fejezeteinek leírását az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk tartalmazza.

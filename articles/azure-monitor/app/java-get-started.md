@@ -6,14 +6,14 @@ ms.date: 11/22/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 25d0d409c8112292afd20f052e82494dd8e656ea
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6bdad71f0b36995abdeb3b1edb87cbef32df8b67
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601305"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919419"
 ---
-# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rövid útmutató: a Application Insights használatának első lépései Java webes projektekben
+# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Gyorsútmutató: Az Application Insights használatba vétele egy webes Java-projektben
 
 
 > [!CAUTION]
@@ -30,6 +30,8 @@ Az Application Insights egy bővíthető elemzési szolgáltatás a webfejleszt�
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Application Insights-kialakítási kulcs beszerzése
 
+> [!IMPORTANT]
+> Az új Azure-régiókban a rendszerállapot-kulcsok helyett a kapcsolatok sztringjét **kell** használnia. A [kapcsolódási karakterlánc](./sdk-connection-string.md?tabs=java) azonosítja azt az erőforrást, amelyhez hozzá szeretné rendelni a telemetria-adatait. Azt is lehetővé teszi, hogy módosítsa az erőforrás által a telemetria célként használt végpontokat. A kapcsolódási karakterláncot át kell másolnia, és hozzá kell adnia az alkalmazás kódjához vagy egy környezeti változóhoz.
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Hozzon létre egy Application Insights-erőforrást az Azure Portalon. Állítsa be a Java webalkalmazás alkalmazástípust.
 
@@ -296,7 +298,7 @@ Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy 
 ## <a name="questions-problems"></a>Kérdése van? Problémákat tapasztal?
 [A Java hibaelhárítása](java-troubleshoot.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Függőségi hívások figyelése](java-agent.md)
 * [Unix-teljesítményszámlálók figyelése](java-collectd.md)
 * [A weboldalak figyelésével](javascript.md) megfigyelheti az oldalbetöltési időket, az AJAX-hívásokat és a böngészőkivételeket.

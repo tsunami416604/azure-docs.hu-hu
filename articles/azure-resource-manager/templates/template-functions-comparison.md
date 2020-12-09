@@ -1,18 +1,18 @@
 ---
 title: Sablon functions – összehasonlítás
-description: A Azure Resource Manager-sablonban az értékek összehasonlításához használandó függvényeket ismerteti.
+description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó függvényeket ismerteti az értékek összehasonlításához.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: c5ffcfe7688935da6ea5602cdb2c66a8b86a8d88
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1b7192db361f510e0246a737de47930534a1cb9d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004602"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920533"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM-sablonok összehasonlító függvények
 
-A Resource Manager számos funkciót biztosít a Azure Resource Manager-(ARM-) sablonokban való összehasonlításhoz.
+A Resource Manager számos funkciót biztosít az összehasonlítások megadásához a Azure Resource Manager-sablonban (ARM-sablon):
 
 * [összefonódik](#coalesce)
 * [egyenlő](#equals)
@@ -33,8 +33,8 @@ A paraméterekből származó első nem null értéket adja vissza. Az üres kar
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int, string, Array vagy Object |A Null érték tesztelésének első értéke. |
-| További argumentumok |No |int, string, Array vagy Object |A Null érték tesztelésére szolgáló további értékek. |
+| arg1 |Igen |int, string, Array vagy Object |A Null érték tesztelésének első értéke. |
+| További argumentumok |Nem |int, string, Array vagy Object |A Null érték tesztelésére szolgáló további értékek. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -135,8 +135,8 @@ Ellenőrzi, hogy két érték egyenlő-e egymással. A `equals` függvény nem t
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int, string, Array vagy Object |Az egyenlőség keresésének első értéke. |
-| arg2 |Yes |int, string, Array vagy Object |A második érték az egyenlőség kereséséhez. |
+| arg1 |Igen |int, string, Array vagy Object |Az egyenlőség keresésének első értéke. |
+| arg2 |Igen |int, string, Array vagy Object |A második érték az egyenlőség kereséséhez. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -319,8 +319,8 @@ Ellenőrzi, hogy az első érték nagyobb-e, mint a második érték. A `greater
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int vagy sztring |A nagyobb összehasonlítás első értéke. |
-| arg2 |Yes |int vagy sztring |A nagyobb összehasonlítás második értéke. |
+| arg1 |Igen |int vagy sztring |A nagyobb összehasonlítás első értéke. |
+| arg2 |Igen |int vagy sztring |A nagyobb összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -400,8 +400,8 @@ Ellenőrzi, hogy az első érték nagyobb-e vagy egyenlő-e a második értékke
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás első értéke. |
-| arg2 |Yes |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás második értéke. |
+| arg1 |Igen |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás első értéke. |
+| arg2 |Igen |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -481,8 +481,8 @@ Ellenőrzi, hogy az első érték kisebb-e a második értéknél. A `less` füg
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int vagy sztring |A kevésbé hasonlítható összehasonlítás első értéke. |
-| arg2 |Yes |int vagy sztring |A kisebb összehasonlítás második értéke. |
+| arg1 |Igen |int vagy sztring |A kevésbé hasonlítható összehasonlítás első értéke. |
+| arg2 |Igen |int vagy sztring |A kisebb összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -562,8 +562,8 @@ Ellenőrzi, hogy az első érték kisebb-e vagy egyenlő-e a második értékkel
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int vagy sztring |A kisebb vagy egyenlő összehasonlítás első értéke. |
-| arg2 |Yes |int vagy sztring |A kisebb vagy egyenlő összehasonlítás második értéke. |
+| arg1 |Igen |int vagy sztring |A kisebb vagy egyenlő összehasonlítás első értéke. |
+| arg2 |Igen |int vagy sztring |A kisebb vagy egyenlő összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -633,6 +633,6 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | checkInts | Logikai | Igaz |
 | checkStrings | Logikai | Hamis |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.
+* Az ARM-sablon fejezeteinek leírását az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk tartalmazza.

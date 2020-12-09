@@ -2,14 +2,14 @@
 title: Élő adatértékek (előzetes verzió) megtekintése az Azure Monitor for containers szolgáltatással | Microsoft Docs
 description: Ez a cikk a Kubernetes-naplók,-események és a pod-metrikák valós idejű nézetét írja le anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 12/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9c431cebddb210add496dcca20a0334cc5b12bd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a97d7ed5fe513798f4265498f4efa60098ea15c6
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85337953"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920714"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése
 
@@ -22,40 +22,35 @@ Ez a cikk részletes áttekintést nyújt, és segít megérteni a funkció hasz
 
 Az élő adatszolgáltatások (előzetes verzió) beállításához vagy hibaelhárításához tekintse át a [telepítési útmutatót](container-insights-livedata-setup.md). Ez a funkció közvetlenül hozzáfér a Kubernetes API-hoz, és a hitelesítési modellel kapcsolatos további információ [itt](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)található.
 
-## <a name="live-data-preview-functionality-overview"></a>Az élő adat (előzetes verzió) funkcióinak áttekintése
+## <a name="view-deployment-live-logs-preview"></a>Üzembe helyezési élő naplók megtekintése (előzetes verzió)
+Az alábbi eljárást követve megtekintheti az olyan központi telepítések élő naplóit, amelyek a tárolók Azure Monitor által nem figyelt AK-fürtök részét képezik. Ha a fürt Azure Monitort használ a tárolók számára, akkor az alábbi eljárással tekintheti meg a csomópontok, vezérlők, tárolók és központi telepítések élő adatait.
 
-### <a name="search"></a>Keresés
+1. A Azure Portal tallózással keresse meg az AK fürterőforrás-csoportot, és válassza ki az AK-erőforrást.
 
-![Példa az élő adatkonzol ablaktáblájának szűrésére](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
+2. Válassza a számítási **feladatok** elemet a menü **Kubernetes-erőforrások** szakaszában.
 
-Az élő adat (előzetes verzió) szolgáltatás keresési funkciókat is tartalmaz. A **keresőmezőbe** az eredmények szűréséhez írja be a kulcs szót vagy kifejezést, és a rendszer kiemeli a megfelelő eredményeket a gyors áttekintés érdekében. Az események megtekintése közben az eredményeket a keresősáv jobb oldalán található **szűrő** pirulával is korlátozhatja. Attól függően, hogy melyik erőforrást választotta ki, a pirula egy Pod, Namespace vagy fürtöt listáz ki, amelyről a választott forrás van kiválasztva.
+3. Válasszon ki egy központi telepítést a **központi telepítések** lapról.
 
-### <a name="scroll-lock-and-pause"></a>Scroll lock és pause
+4. Válassza az **élő naplók (előzetes verzió)** lehetőséget az üzembe helyezés menüjében.
 
-Az autogörgetés felfüggesztéséhez és a panel működésének szabályozásához, amely lehetővé teszi az új adatolvasás manuális görgetését, használhatja a **görgetőgomb** lehetőséget. Az autoscroll újbóli engedélyezéséhez egyszerűen válassza a **Scroll (görgetés** ) lehetőséget. A naplózási vagy az esemény adatainak lekérését is szüneteltetheti a **szüneteltetés** lehetőség kiválasztásával, és ha készen áll a folytatásra, egyszerűen válassza a **Lejátszás**lehetőséget.
+5. Válassza ki az élő adatgyűjtést elindító Pod-t.
 
-![Élő adatkonzol ablaktábla az élő nézet szüneteltetése](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
-
->[!IMPORTANT]
->A probléma elhárítása során javasoljuk, hogy csak rövid idő alatt felfüggessze vagy szüneteltesse az autoscroll-et. Ezek a kérések befolyásolhatják a fürtön a Kubernetes API rendelkezésre állását és szabályozását.
-
->[!IMPORTANT]
->A szolgáltatás működése során a rendszer nem tárolja véglegesen az adattárolást. A rendszer a munkamenet során rögzített összes információt törli a böngésző bezárásakor, vagy innen navigál. Az adatok csak a metrika funkció öt perces időszakában jelennek meg a vizualizáción belül. az öt percnél régebbi metrikákat is törli a rendszer. Az élő adatok (előzetes verzió) puffer-lekérdezések az ésszerű memóriahasználat korlátain belül.
+    ![Üzembe helyezési élő naplók](./media/container-insights-livedata-overview/live-data-deployment.png)
 
 ## <a name="view-logs"></a>Naplók megtekintése
 
-A valós idejű naplózási adatok megtekinthetők úgy, ahogy a tároló motorja létrehozta a **csomópontok**, a **vezérlők**és a **tárolók** nézetből. A naplózási adatok megtekintéséhez hajtsa végre a következő lépéseket.
+A valós idejű naplózási adatok megtekinthetők úgy, ahogy a tároló motorja létrehozta a **csomópontok**, a **vezérlők** és a **tárolók** nézetből. A naplózási adatok megtekintéséhez hajtsa végre a következő lépéseket.
 
 1. A Azure Portal tallózással keresse meg az AK fürterőforrás-csoportot, és válassza ki az AK-erőforrást.
 
 2. Az AK-fürt irányítópultjának bal oldali **figyelés** területén válassza az **eredmények elemet.**
 
-3. Válassza ki a **csomópontok**, **vezérlők**vagy **tárolók** fület.
+3. Válassza ki a **csomópontok**, **vezérlők** vagy **tárolók** fület.
 
 4. Válasszon ki egy objektumot a teljesítmény rácsból, és a jobb oldalon található Tulajdonságok ablaktáblán válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget. Ha az AK-fürt egyszeri bejelentkezéssel van konfigurálva az Azure AD-vel, a rendszer felszólítja, hogy a böngésző-munkamenet során először használja a hitelesítést. Válassza ki a fiókját, és fejezze be a hitelesítést az Azure-ban.
 
     >[!NOTE]
-    >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikakészlet**, a **feladatok**, a **cron-feladatok**, a **hüvelyek**és a **tárolók** , amelyek már nem léteznek. A-ben nem elérhető tárolók naplóiban való keresésére tett kísérlet `kubectl` itt is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .
+    >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikakészlet**, a **feladatok**, a **cron-feladatok**, a **hüvelyek** és a **tárolók** , amelyek már nem léteznek. A-ben nem elérhető tárolók naplóiban való keresésére tett kísérlet `kubectl` itt is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .
 
 A sikeres hitelesítés után az élő adat (előzetes verzió) konzol ablaktábla a teljesítményadatok rács alatt jelenik meg, ahol megtekintheti a naplózási adataikat egy folyamatos adatfolyamban. Ha a beolvasás állapotjelzője egy zöld pipa jelenik meg, amely a panel jobb szélén található, az azt jelenti, hogy a rendszer lekéri az adatait, és megkezdi a folyamatos átvitelt a konzolra.
 
@@ -65,18 +60,18 @@ A panel címe annak a pod-nek a nevét mutatja, amelybe a tároló van csoportos
 
 ## <a name="view-events"></a>Események megtekintése
 
-Megtekintheti a tároló motor által a **csomópontok**, **vezérlők**, **tárolók**és **központi telepítések (előzetes verzió)** által generált valós idejű események adatait, amikor a tároló, a hüvely, a csomópont, a ReplicaSet, a daemonset elemet, a Job, a CronJob vagy a Deployment beállítás van kiválasztva. Az események megtekintéséhez hajtsa végre a következő lépéseket.
+Megtekintheti a tároló motor által a **csomópontok**, **vezérlők**, **tárolók** és **központi telepítések (előzetes verzió)** által generált valós idejű események adatait, amikor a tároló, a hüvely, a csomópont, a ReplicaSet, a daemonset elemet, a Job, a CronJob vagy a Deployment beállítás van kiválasztva. Az események megtekintéséhez hajtsa végre a következő lépéseket.
 
 1. A Azure Portal tallózással keresse meg az AK fürterőforrás-csoportot, és válassza ki az AK-erőforrást.
 
 2. Az AK-fürt irányítópultjának bal oldali **figyelés** területén válassza az **eredmények elemet.**
 
-3. Válassza ki a **csomópontok**, **vezérlők**, **tárolók**vagy **központi telepítések (előzetes verzió)** lapot.
+3. Válassza ki a **csomópontok**, **vezérlők**, **tárolók** vagy **központi telepítések (előzetes verzió)** lapot.
 
 4. Válasszon ki egy objektumot a teljesítmény rácsból, és a jobb oldalon található Tulajdonságok ablaktáblán válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget. Ha az AK-fürt egyszeri bejelentkezéssel van konfigurálva az Azure AD-vel, a rendszer felszólítja, hogy a böngésző-munkamenet során először használja a hitelesítést. Válassza ki a fiókját, és fejezze be a hitelesítést az Azure-ban.
 
     >[!NOTE]
-    >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikakészlet**, a **feladatok**, a **cron-feladatok**, a **hüvelyek**és a **tárolók** , amelyek már nem léteznek. A-ben nem elérhető tárolók naplóiban való keresésére tett kísérlet `kubectl` itt is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .
+    >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikakészlet**, a **feladatok**, a **cron-feladatok**, a **hüvelyek** és a **tárolók** , amelyek már nem léteznek. A-ben nem elérhető tárolók naplóiban való keresésére tett kísérlet `kubectl` itt is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .
 
 A sikeres hitelesítés után az élő adat (előzetes verzió) konzol ablaktábla megjelenik a teljesítményadatok rács alatt. Ha a beolvasás állapotjelzője egy zöld pipa jelenik meg, amely a panel jobb szélén található, az azt jelenti, hogy a rendszer lekéri az adatait, és megkezdi a folyamatos átvitelt a konzolra.
 
@@ -103,13 +98,33 @@ A valós idejű metrikai adatokat úgy tekintheti meg, ahogy a tároló motorja 
 4. Válasszon ki egy **Pod** objektumot a teljesítmény rácsból, és a jobb oldalon található Tulajdonságok ablaktáblán válassza az **élő adatok megtekintése (előzetes verzió)** lehetőséget. Ha az AK-fürt egyszeri bejelentkezéssel van konfigurálva az Azure AD-vel, a rendszer felszólítja, hogy a böngésző-munkamenet során először használja a hitelesítést. Válassza ki a fiókját, és fejezze be a hitelesítést az Azure-ban.
 
     >[!NOTE]
-    >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikakészlet**, a **feladatok**, a **cron-feladatok**, a **hüvelyek**és a **tárolók** , amelyek már nem léteznek. A-ben nem elérhető tárolók naplóiban való keresésére tett kísérlet `kubectl` itt is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .
+    >Amikor az Log Analytics munkaterületről tekinti meg az adatok megtekintését a Tulajdonságok ablaktáblán látható **Megtekintés az elemzésben** lehetőség kiválasztásával, a naplók keresési eredményei potenciálisan megjelennek a **csomópontok**, a **démon-készletek**, a **replikakészlet**, a **feladatok**, a **cron-feladatok**, a **hüvelyek** és a **tárolók** , amelyek már nem léteznek. A-ben nem elérhető tárolók naplóiban való keresésére tett kísérlet `kubectl` itt is sikertelen lesz. A korábbi naplók, események és mérőszámok megtekintésével kapcsolatos további információkért tekintse át az [elemzési funkció nézetét](container-insights-log-search.md#search-logs-to-analyze-data) .
 
 A sikeres hitelesítés után az élő adat (előzetes verzió) konzol ablaktábla megjelenik a teljesítményadatok rács alatt. A rendszer beolvassa a metrikai adatokat, és megkezdi a folyamatos átvitelt a konzolon a két diagramon való megjelenítéshez. A panel címe annak a pod-nek a nevét mutatja, amelybe a tároló van csoportosítva.
 
 ![Példa a pod mérőszámok megtekintésére](./media/container-insights-livedata-overview/pod-properties-live-metrics.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="using-live-data-views"></a>Élő adatnézetek használata
+A következő szakaszok a különböző élő adatnézetekben használható funkciókat ismertetik.
+
+### <a name="search"></a>Keresés
+Az élő adat (előzetes verzió) szolgáltatás keresési funkciókat is tartalmaz. A **keresőmezőbe** az eredmények szűréséhez írja be a kulcs szót vagy kifejezést, és a rendszer kiemeli a megfelelő eredményeket a gyors áttekintés érdekében. Az események megtekintése közben az eredményeket a keresősáv jobb oldalán található **szűrő** pirulával is korlátozhatja. Attól függően, hogy melyik erőforrást választotta ki, a pirula egy Pod, Namespace vagy fürtöt listáz ki, amelyről a választott forrás van kiválasztva.
+
+![Példa az élő adatkonzol ablaktáblájának szűrésére](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
+
+### <a name="scroll-lock-and-pause"></a>Scroll lock és pause
+
+Az autogörgetés felfüggesztéséhez és a panel működésének szabályozásához, amely lehetővé teszi az új adatolvasás manuális görgetését, használhatja a **görgetőgomb** lehetőséget. Az autoscroll újbóli engedélyezéséhez egyszerűen válassza a **Scroll (görgetés** ) lehetőséget. A naplózási vagy az esemény adatainak lekérését is szüneteltetheti a **szüneteltetés** lehetőség kiválasztásával, és ha készen áll a folytatásra, egyszerűen válassza a **Lejátszás** lehetőséget.
+
+![Élő adatkonzol ablaktábla az élő nézet szüneteltetése](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
+
+>[!IMPORTANT]
+>A probléma elhárítása során javasoljuk, hogy csak rövid idő alatt felfüggessze vagy szüneteltesse az autoscroll-et. Ezek a kérések befolyásolhatják a fürtön a Kubernetes API rendelkezésre állását és szabályozását.
+
+>[!IMPORTANT]
+>A szolgáltatás működése során a rendszer nem tárolja véglegesen az adattárolást. A rendszer a munkamenet során rögzített összes információt törli a böngésző bezárásakor, vagy innen navigál. Az adatok csak a metrika funkció öt perces időszakában jelennek meg a vizualizáción belül. az öt percnél régebbi metrikákat is törli a rendszer. Az élő adatok (előzetes verzió) puffer-lekérdezések az ésszerű memóriahasználat korlátain belül.
+
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure Monitor használatának megismeréséhez és az AK-fürt egyéb szempontjainak figyeléséhez lásd: az [Azure Kubernetes szolgáltatás állapotának megtekintése](container-insights-analyze.md).
 

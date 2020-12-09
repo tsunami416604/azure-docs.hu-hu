@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/24/2018
-ms.openlocfilehash: e7b7acb7e67d809229825b3d393fe49af12b3642
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: 3f15ffd6f7ed784cce398d419e013a69c60289d8
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461217"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921798"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Különbözeti másolat egy adatbázisból egy vezérlő táblával
 
@@ -45,7 +45,7 @@ A sablon a következő paramétereket definiálja:
 - *Data_Source_WaterMarkColumn* a forrás tábla azon oszlopának neve, amely az új vagy frissített sorok azonosítására szolgál. Az oszlop típusa általában *datetime*, *int* vagy hasonló.
 - A *Data_Destination_Container* az a hely, ahol az Adatmásolás a célhelyre történik.
 - A *Data_Destination_Directory* a könyvtár elérési útja annak a helynek a gyökerében, ahová az adat a célhelyre másolódik.
-- A *Data_Destination_Table_Name* az a hely, ahol az Adatmásolás a célhelyre történik (ez akkor alkalmazható, ha az "Azure szinapszis Analytics (korábbi NEVÉN SQL DW)" lehetőséget választotta az adat célhelyként.
+- *Data_Destination_Table_Name* az a hely, ahol az Adatmásolás a célhelyre történik (ez akkor alkalmazható, ha az "Azure szinapszis Analytics" lehetőséget választja az adat célhelyként).
 - *Data_Destination_Folder_Path* az a hely, ahová a rendszer átmásolja az adatait a célhelyre (ha a "fájlrendszer" vagy a "Azure Data Lake Storage Gen1" lehetőség van kiválasztva adat célhelyként).
 - A *Control_Table_Table_Name* a külső vezérlő tábla, amely a nagy vízjel értékét tárolja.
 - *Control_Table_Column_Name* a külső vezérlő tábla azon oszlopa, amely a nagy vízjel értékét tárolja.
@@ -144,7 +144,7 @@ A sablon a következő paramétereket definiálja:
     
     ![A bázisterület konfigurálása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tömeges másolás adatbázisból egy Azure Data Factory tartalmazó vezérlőelem-táblázat használatával](solution-template-bulk-copy-with-control-table.md)
 - [Több tárolóból származó fájlok másolása Azure Data Factory](solution-template-copy-files-multiple-containers.md)

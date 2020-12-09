@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 50a256796ee26c03f21353e8fe268c4300b21ebe
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 1fbeedd8643a777b29ebe4993eed7b664240621c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575846"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920281"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database regisztrálása és vizsgálata
 
@@ -25,6 +25,10 @@ A Azure SQL Database adatforrás a következő funkciókat támogatja:
 - **Teljes és növekményes vizsgálatok** a metaadatok és a besorolás Azure SQL Databaseban történő rögzítéséhez.
 
 - Adategységek közötti **vonal** a másolási és a adatfolyam tevékenységekhez.
+
+### <a name="known-limitations"></a>Ismert korlátozások
+
+Az Azure-beli hatáskörébe nem támogatottak a Azure SQL Database [nézeteinek](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) vizsgálata. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -157,7 +161,7 @@ A **források regisztrálása (Azure SQL Database)** képernyőn tegye a követk
 > [!NOTE]
 > A vizsgálat törlése nem törli a korábbi Azure SQL Database vizsgálatokból származó eszközöket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
 - [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)

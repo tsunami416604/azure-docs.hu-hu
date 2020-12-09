@@ -4,12 +4,12 @@ description: Azure Monitor az Azure-erőforrás-naplók támogatott szolgáltat�
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: 1fd6f07151c93b64c150f01e5c0b5c7f4cffed85
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 463b1d9d9c3ed1d94728874ba814554deb4f97c6
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593008"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920837"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Az Azure erőforrás-naplók támogatott kategóriái
 
@@ -20,6 +20,11 @@ ms.locfileid: "94593008"
 
 Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category` séma egyedileg azonosítható kombinációja. A szolgáltatás-specifikus mezőket tartalmazó összes erőforrás-naplóhoz közös séma tartozik, majd a különböző naplózási kategóriákhoz hozzáadva. További információ: [Common és Service-specifikus séma Azure-beli erőforrás-naplókhoz]()
 
+
+## <a name="costs"></a>Költségek
+
+ Az adatok Log Analytics és/vagy Event hub-ba való küldésével és tárolásával kapcsolatos költségekkel jár. Az erőforrás-naplók egy adattípusok, amelyeket elküldhet a következő helyszínekre. Az [erőforrás-naplók bizonyos kategóriáinak exportálására külön díj vonatkozik](https://azure.microsoft.com/pricing/details/monitor/). Mások az exportálási költségek alól ingyenesek. Az alábbi táblázatban láthatók az egyes sajátosságok.
+
 ## <a name="supported-log-categories-per-resource-type"></a>Támogatott naplózási kategóriák/erőforrás típusok
 
 Az alábbi lista felsorolja az egyes erőforrástípusok számára elérhető naplók típusait. 
@@ -27,17 +32,11 @@ Az alábbi lista felsorolja az egyes erőforrástípusok számára elérhető na
 Bizonyos kategóriák csak bizonyos típusú erőforrások esetén támogatottak. Ha úgy érzi, hogy hiányzik egy erőforrás, tekintse meg az erőforrás-specifikus dokumentációt. Például a Microsoft. SQL/kiszolgálók/adatbázisok kategóriái nem érhetők el minden típusú adatbázishoz. További információ: [SQL Database diagnosztikai naplózással kapcsolatos információk](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
 Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyzést.
-
-## <a name="microsoftaadiamtenants"></a>Microsoft. aadiam/bérlők
-
-|Kategória|Kategória megjelenítendő neve|
-|---|---|
-|Bejelentkezési|Bejelentkezési|
-
-
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/kiszolgálók
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |Motor|Motor|
 |Szolgáltatás|Szolgáltatás|
@@ -45,14 +44,18 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |GatewayLogs|A ApiManagement-átjáróval kapcsolatos naplók|
 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/Spring
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |ApplicationConsole|Application Console|
 |SystemLogs|Rendszernaplók|
@@ -60,23 +63,29 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
+|DscNodeStatus|DSC-csomópont állapota|
 |JobLogs|Feladatok naplói|
 |JobStreams|Feladatok adatfolyamai|
-|DscNodeStatus|DSC-csomópont állapota|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.BatCH/batchAccounts
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |ServiceLog|Szolgáltatási naplók|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/munkaterületek
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |BaiClusterEvent|BaiClusterEvent|
 |BaiClusterNodeEvent|BaiClusterNodeEvent|
@@ -85,58 +94,77 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. Blockchain/blockchainMembers
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |BlockchainApplication|Blockchain-alkalmazás|
+|FabricOrderer|Háló-sorrend|
+|FabricPeer|Háló társ|
 |Proxy|Proxy|
 
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft. Blockchain/cordaMembers
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |BlockchainApplication|Blockchain-alkalmazás|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
-|WebApplicationFirewallLogs|Webalkalmazási tűzfal naplófájljai|
+|WebApplicationFirewallLogs|Webes alkalmazási tűzfal naplófájljai|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft. CDN/profilok
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AzureCdnAccessLog|Azure CDN hozzáférési napló|
 
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft. CDN/profilok/végpontok
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
-|CoreAnalytics|Lekéri a végpont metrikáit, például a sávszélességet, a kimenő forgalmat stb.|
+|CoreAnalytics|Lekéri a végpont metrikáit, például a sávszélességet, a kimenő adatokat stb.|
 
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft. ClassicNetwork/networksecuritygroups
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |Hálózati biztonsági csoportra vonatkozó szabály folyamatának eseménye|Hálózati biztonsági csoportra vonatkozó szabály folyamatának eseménye|
 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. CognitiveServices/fiókok
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |Naplózás|Naplók|
 |RequestResponse|Kérelmek és válaszok naplói|
+|Nyomkövetés|Nyomkövetési naplók|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/nyilvántartók
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |ContainerRegistryLoginEvents|Bejelentkezési események|
 |ContainerRegistryRepositoryEvents|RepositoryEvent-naplók|
@@ -144,7 +172,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. Tárolószolgáltatás/managedClusters
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |fürt – automéretező|Kubernetes-fürt autoskálázása|
 |Kube – apiserver|Kubernetes API-kiszolgáló|
@@ -155,14 +185,18 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AuditLogs|MiniRP-hívások naplófájljai|
 
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft. Databricks/munkaterületek
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |fiókok|Databricks-fiókok|
 |fürtök|Databricks-fürtök|
@@ -176,16 +210,11 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 |munkaterület|Databricks-munkaterület|
 
 
-## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft. DataCatalog/datacatalogs
-
-|Kategória|Kategória megjelenítendő neve|
-|---|---|
-|ScanStatusLogEvent|ScanStatus|
-
-
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/gyárak
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |ActivityRuns|Folyamat-futtatási tevékenység naplója|
 |PipelineRuns|Folyamat-futtatási napló|
@@ -194,31 +223,70 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. Data Lake Store/fiókok
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |Naplózás|Naplók|
 |Kérelmek|Kérelmek naplói|
 
 
+## <a name="microsoftdatashareaccounts"></a>Microsoft. DataShare/fiókok
+
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
+|---|---|
+|ReceivedShareSnapshots|Fogadott megosztási Pillanatképek|
+|SentShareSnapshots|Eljuttatott megosztási Pillanatképek|
+|Megosztások|Megosztások|
+|ShareSubscriptions|Előfizetések megosztása|
+
+
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/kiszolgálók
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |MySqlAuditLogs|MariaDB naplófájlok|
 |MySqlSlowLogs|MariaDB-kiszolgáló naplófájljai|
 
 
+## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft. DBforMySQL/flexibleServers
+
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
+|---|---|
+|MySqlAuditLogs|MySQL-naplók|
+|MySqlSlowLogs|Lassú MySQL-naplók|
+
+
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/kiszolgálók
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |MySqlAuditLogs|MySQL-naplók|
 |MySqlSlowLogs|MySQL-kiszolgáló naplófájljai|
 
 
+## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft. DBforPostgreSQL/flexibleServers
+
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
+|---|---|
+|PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|
+
+
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/kiszolgálók
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|
 |QueryStoreRuntimeStatistics|PostgreSQL Query Store futásidejű statisztikái|
@@ -227,21 +295,18 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-|Kategória|Kategória megjelenítendő neve|
-|---|---|
-|PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|
+COST: ingyenes 
 
-
-## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft. DBforPostgreSQL/singleservers
-
-|Kategória|Kategória megjelenítendő neve|
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|
 
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft. DesktopVirtualization/applicationgroups
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |Checkpoint|Checkpoint|
 |Hiba|Hiba|
@@ -250,7 +315,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft. DesktopVirtualization/hostpools
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |Checkpoint|Checkpoint|
 |Kapcsolat|Kapcsolat|
@@ -261,7 +328,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft. DesktopVirtualization/munkaterületek
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |Checkpoint|Checkpoint|
 |Hiba|Hiba|
@@ -271,7 +340,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |C2DCommands|C2D parancsok|
 |C2DTwinOperations|C2D – két művelet|
@@ -291,7 +362,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |DeviceOperations|Eszköz műveletei|
 |ServiceOperations|Szolgáltatási műveletek|
@@ -299,28 +372,25 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |CassandraRequests|CassandraRequests|
 |ControlPlaneRequests|ControlPlaneRequests|
 |DataPlaneRequests|DataPlaneRequests|
+|GremlinRequests|GremlinRequests|
 |MongoRequests|MongoRequests|
 |PartitionKeyRUConsumption|PartitionKeyRUConsumption|
 |PartitionKeyStatistics|PartitionKeyStatistics|
 |QueryRuntimeStatistics|QueryRuntimeStatistics|
 
 
-## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft. EnterpriseKnowledgeGraph/szolgáltatások
-
-|Kategória|Kategória megjelenítendő neve|
-|---|---|
-|AuditEvent|AuditEvent-napló|
-|DataIssue|DataIssue-napló|
-|Kérelmek|Konfigurációs napló|
-
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/tartományok
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |DeliveryFailures|Kézbesítési hibák naplói|
 |PublishFailures|Sikertelen naplók közzététele|
@@ -328,14 +398,18 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |DeliveryFailures|Kézbesítési hibák naplói|
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témakörök
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |DeliveryFailures|Kézbesítési hibák naplói|
 |PublishFailures|Sikertelen naplók közzététele|
@@ -343,11 +417,13 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/névterek
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |ArchiveLogs|Archiválási naplók|
 |AutoScaleLogs|Naplók automatikus méretezése|
-|CustomerManagedKeyUserLogs|Customer-Managed kulcsfontosságú naplók|
+|CustomerManagedKeyUserLogs|Ügyfél által felügyelt kulcsok naplói|
 |EventHubVNetConnectionEvent|VNet/IP-szűrési kapcsolatok naplófájljai|
 |KafkaCoordinatorLogs|Kafka-koordinátor naplói|
 |KafkaUserErrorLogs|Kafka felhasználói hibák naplói|
@@ -356,14 +432,18 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft. HealthcareApis/szolgáltatások
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
-|AuditLogs|Auditnaplók|
+|AuditLogs|Naplók|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. bepillantások/AutoscaleSettings
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AutoscaleEvaluations|Az autoscale-értékelések|
 |AutoscaleScaleActions|Méretezési műveletek az autoskálázáshoz|
@@ -371,7 +451,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. bepillantások/összetevők
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AppAvailabilityResults|Rendelkezésre állási eredmények|
 |AppBrowserTimings|Böngésző időzítése|
@@ -386,50 +468,53 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 |AppTraces|Hívásláncok|
 
 
-## <a name="microsoftiotspacesgraph"></a>Microsoft. IoTSpaces/Graph
-
-|Kategória|Kategória megjelenítendő neve|
-|---|---|
-|Naplózás|Naplózás|
-|Kimenő forgalom|Kimenő forgalom|
-|Bejövő forgalom|Bejövő forgalom|
-|Működik|Működik|
-|Nyomkövetés|Nyomkövetés|
-|UserDefinedFunction|UserDefinedFunction|
-
-
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. kulcstartó/tárolók
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AuditEvent|Naplók|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/fürtök
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
+|Parancs|Parancs|
 |FailedIngestion|Sikertelen betöltési műveletek|
+|IngestionBatching|Ingestion batching|
+|Lekérdezés|Lekérdezés|
 |SucceededIngestion|Sikeres betöltési műveletek|
+|TableDetails|Táblázat részletei|
+|TableUsageStatistics|Táblázat-használati statisztika|
 
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft. Logic/integrationAccounts
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |IntegrationAccountTrackingEvents|Integrációs fiók követési eseményei|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/munkafolyamatok
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |WorkflowRuntime|Munkafolyamat futásidejű diagnosztikai eseményei|
 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/munkaterületek
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AmlComputeClusterEvent|AmlComputeClusterEvent|
 |AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|
@@ -440,14 +525,18 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/Mediaservices
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |KeyDeliveryRequests|Kulcsok kézbesítésére vonatkozó kérelmek|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |ApplicationGatewayAccessLog|Hozzáférési napló Application Gateway|
 |ApplicationGatewayFirewallLog|Application Gateway tűzfal naplója|
@@ -456,7 +545,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AzureFirewallApplicationRule|Azure Firewall alkalmazási szabály|
 |AzureFirewallNetworkRule|Azure Firewall hálózati szabály|
@@ -464,21 +555,27 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |BastionAuditLogs|Megerősített naplók|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |PeeringRouteLog|Egyenrangú útválasztási táblázat naplói|
 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |FrontdoorAccessLog|Frontdoor hozzáférési naplója|
 |FrontdoorWebApplicationFirewallLog|Frontdoor webalkalmazási tűzfal naplója|
@@ -486,7 +583,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |LoadBalancerAlertEvent|Riasztási események Load Balancer|
 |LoadBalancerProbeHealthStatus|Load Balancer mintavétel állapotának állapota|
@@ -494,15 +593,20 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft. Network/networksecuritygroups
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |NetworkSecurityGroupEvent|Hálózati biztonsági csoport eseménye|
+|NetworkSecurityGroupFlowEvent|Hálózati biztonsági csoportra vonatkozó szabály folyamatának eseménye|
 |NetworkSecurityGroupRuleCounter|Hálózati biztonsági csoport szabályának számlálója|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/nyilvános IP
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |DDoSMitigationFlowLogs|A DDoS-elhárítási döntések folyamatának naplói|
 |DDoSMitigationReports|A DDoS enyhítésének jelentései|
@@ -511,14 +615,18 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |ProbeHealthStatusEvents|Traffic Manager mintavételi állapot eredményeinek eseménye|
 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |GatewayDiagnosticLog|Átjáró diagnosztikai naplói|
 |IKEDiagnosticLog|IKE diagnosztikai naplók|
@@ -529,21 +637,27 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |VMProtectionAlerts|VM-védelmi riasztások|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/kapacitások
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |Motor|Motor|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft. Recoveryservices szolgáltatónál/tárolók
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AddonAzureBackupAlerts|Addon Azure Backup riasztási adatkezelési|
 |AddonAzureBackupJobs|Addon Azure Backup feladatok adatai|
@@ -563,35 +677,45 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/névterek
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |HybridConnectionsEvent|HybridConnections események|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |OperationLogs|Műveleti naplók|
 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/névterek
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |OperationalLogs|Operatív naplók|
 
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/szignáló
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AllLogs|Az Azure Signaler szolgáltatás naplói.|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |DevOpsOperationsAudit|Devops-műveletek naplófájljai|
 |ResourceUsageStats|Erőforrás-használati statisztika|
@@ -600,7 +724,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/adatbázisok
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |Hibák|Hibák|
 |QueryStoreRuntimeStatistics|Lekérdezési tár futásidejű statisztikái|
@@ -610,7 +736,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/kiszolgálók/adatbázisok
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AutomaticTuning|Automatikus hangolás|
 |Blokkok|Blokkok|
@@ -632,7 +760,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-|Kategória|Kategória megjelenítendő neve|
+Költség: a [Azure monitor díjszabási oldalának](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírtak szerint fizetve. 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -641,7 +771,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/fileServices
 
-|Kategória|Kategória megjelenítendő neve|
+Költség: a [Azure monitor díjszabási oldalának](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírtak szerint fizetve. 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -650,7 +782,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-|Kategória|Kategória megjelenítendő neve|
+Költség: a [Azure monitor díjszabási oldalának](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírtak szerint fizetve. 
+ 
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -659,7 +793,9 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-|Kategória|Kategória megjelenítendő neve|
+Költség: a [Azure monitor díjszabási oldalának](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírtak szerint fizetve. 
+ 
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |StorageDelete|StorageDelete|
 |StorageRead|StorageRead|
@@ -668,22 +804,64 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |Tartalomkészítés|Tartalomkészítés|
 |Futtatási|Futtatási|
 
 
+## <a name="microsoftsynapseworkspaces"></a>Microsoft. szinapszis/munkaterületek
+
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
+|---|---|
+|BuiltinSqlReqsEnded|A beépített SQL Pool-kérelmek véget ért|
+|GatewayApiRequests|Szinapszis Gateway API-kérelmek|
+|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|
+|SynapseRbacOperations|Szinapszis RBAC-műveletek|
+
+
+## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. szinapszis/munkaterületek/bigDataPools
+
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
+|---|---|
+|BigDataPoolAppsEnded|A Big adattár-alkalmazások véget ért|
+
+
+## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. szinapszis/munkaterületek/sqlPools
+
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
+|---|---|
+|DmsWorkers|DMS-feldolgozók|
+|ExecRequests|Exec-kérelmek|
+|RequestSteps|Kérelem lépései|
+|SqlRequests|SQL-kérelmek|
+|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|
+|Megvárja|Megvárja|
+
+
 ## <a name="microsoftwebhostingenvironments"></a>Microsoft. Web/hostingenvironments
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AppServiceEnvironmentPlatformLogs|App Service Environment platform naplói|
 
 
 ## <a name="microsoftwebsites"></a>Microsoft. Web/Sites
 
-|Kategória|Kategória megjelenítendő neve|
+COST: ingyenes 
+
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AppServiceAppLogs|App Service alkalmazás naplófájljai|
 |AppServiceAuditLogs|Hozzáférés-naplózási naplók|
@@ -691,13 +869,14 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 |AppServiceFileAuditLogs|Webhely tartalmának változási naplófájljai|
 |AppServiceHTTPLogs|HTTP-naplók|
 |FunctionAppLogs|Function Application-naplók|
-|ScanLogs|Víruskeresési naplók|
 
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/Sites/Slots
 
+COST: ingyenes 
 
-|Kategória|Kategória megjelenítendő neve|
+
+|Kategória |Kategória megjelenítendő neve|
 |---|---|
 |AppServiceAppLogs|App Service alkalmazás naplófájljai|
 |AppServiceAuditLogs|Hozzáférés-naplózási naplók|
@@ -705,7 +884,6 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 |AppServiceFileAuditLogs|Webhely tartalmának változási naplófájljai|
 |AppServiceHTTPLogs|HTTP-naplók|
 |FunctionAppLogs|Function Application-naplók|
-|ScanLogs|Víruskeresési naplók|
 
 
 ## <a name="next-steps"></a>Következő lépések

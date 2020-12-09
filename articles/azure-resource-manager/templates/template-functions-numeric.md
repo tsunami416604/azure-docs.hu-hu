@@ -1,18 +1,18 @@
 ---
 title: Sablon függvények – numerikus
-description: A Azure Resource Manager-sablonban a számokkal való munkához használandó függvényeket ismerteti.
+description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó függvényeket ismerteti a számok használatához.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 26f4b846c67ee7b926ea984ceefd84bf9ea56952
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1484826b2377fe2adb2ac6ae2ab3ee6243b26c2c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004534"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920464"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM-sablonok numerikus függvények
 
-A Resource Manager a következő függvényeket biztosítja a Azure Resource Manager (ARM) sablonban található egész számok használatához:
+A Resource Manager a következő függvényeket biztosítja a Azure Resource Manager sablonban (ARM-sablon) található egész számok használatához:
 
 * [hozzáadása](#add)
 * [copyIndex](#copyindex)
@@ -20,7 +20,7 @@ A Resource Manager a következő függvényeket biztosítja a Azure Resource Man
 * [float](#float)
 * [int](#int)
 * [Max](#max)
-* [p](#min)
+* [min](#min)
 * [mod](#mod)
 * [mul](#mul)
 * [Sub](#sub)
@@ -37,8 +37,8 @@ A két megadott egész szám összegét adja vissza. A `add` függvény nem tám
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-|operand1 |Yes |int |A hozzáadandó első szám. |
-|operand2 |Yes |int |A hozzáadandó második szám. |
+|operand1 |Igen |int |A hozzáadandó első szám. |
+|operand2 |Igen |int |A hozzáadandó második szám. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -108,8 +108,8 @@ Egy iterációs hurok indexét adja vissza.
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| loopName | No | sztring | Az iteráció megszerzéséhez használt hurok neve. |
-| offset |No |int |A nulla alapú iterációs értékhez hozzáadandó szám. |
+| loopName | Nem | sztring | Az iteráció megszerzéséhez használt hurok neve. |
+| offset |Nem |int |A nulla alapú iterációs értékhez hozzáadandó szám. |
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -182,8 +182,8 @@ A két megadott egész szám egészének osztását adja vissza. A `div` függv�
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |A felosztott szám. |
-| operand2 |Yes |int |A felosztáshoz használt szám. Nem lehet 0. |
+| operand1 |Igen |int |A felosztott szám. |
+| operand2 |Igen |int |A felosztáshoz használt szám. Nem lehet 0. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -253,7 +253,7 @@ Az értéket egy lebegőpontos számra konvertálja. Ezt a függvényt csak akko
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |karakterlánc vagy int |A lebegőpontos számra konvertálandó érték. |
+| arg1 |Igen |karakterlánc vagy int |A lebegőpontos számra konvertálandó érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -296,7 +296,7 @@ Egy egész számra konvertálja a megadott értéket.
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Yes |karakterlánc vagy int |Az egész számra konvertálandó érték. |
+| valueToConvert |Igen |karakterlánc vagy int |Az egész számra konvertálandó érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -355,7 +355,7 @@ A maximális értéket adja vissza egész számok tömbje vagy az egész számok
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
+| arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -425,7 +425,7 @@ A minimális értéket adja vissza egész számok tömbje vagy az egész számok
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
+| arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -495,8 +495,8 @@ Az egész szám többit adja vissza a két megadott egész szám használatával
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |A felosztott szám. |
-| operand2 |Yes |int |A felosztáshoz használt szám nem lehet 0. |
+| operand1 |Igen |int |A felosztott szám. |
+| operand2 |Igen |int |A felosztáshoz használt szám nem lehet 0. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -566,8 +566,8 @@ A két megadott egész szám szorzását adja vissza. A `mul` függvény nem tá
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |A szorzáshoz használandó első szám. |
-| operand2 |Yes |int |A szorzáshoz használt második szám. |
+| operand1 |Igen |int |A szorzáshoz használandó első szám. |
+| operand2 |Igen |int |A szorzáshoz használt második szám. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -637,8 +637,8 @@ A két megadott egész szám kivonását adja vissza. A `sub` függvény nem tá
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |A következőből kivont szám. |
-| operand2 |Yes |int |A kivonni kívánt szám. |
+| operand1 |Igen |int |A következőből kivont szám. |
+| operand2 |Igen |int |A kivonni kívánt szám. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -698,7 +698,7 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | ---- | ---- | ----- |
 | aleredmény | Int | 4 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.
-* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](copy-resources.md)című témakört.
+* Az ARM-sablon fejezeteinek leírását az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk tartalmazza.
+* Egy adott típusú erőforrás létrehozásakor a megadott számú alkalommal megismételheti az [erőforrás-iteráció az ARM-sablonokban](copy-resources.md)című témakört.

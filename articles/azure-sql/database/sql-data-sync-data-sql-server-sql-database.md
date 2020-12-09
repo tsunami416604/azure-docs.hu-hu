@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: b23b5a81fdff8a05742092f517128e08723103fc
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531139"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922289"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 
@@ -58,7 +58,7 @@ Az adatszinkronizálás olyan esetekben hasznos, amikor a Azure SQL Database vag
 
 Az adatszinkronizálás nem az előnyben részesített megoldás a következő esetekben:
 
-| Használati példa | Néhány ajánlott megoldás |
+| Forgatókönyv | Néhány ajánlott megoldás |
 |----------|----------------------------|
 | Vészhelyreállítás | [Azure geo-redundáns biztonsági mentések](automated-backups-overview.md) |
 | Olvasási skála | [Csak olvasható replikák használata az írásvédett lekérdezési feladatok terheléselosztásához (előzetes verzió)](read-scale-out.md) |
@@ -81,7 +81,15 @@ Az adatszinkronizálás nem az előnyben részesített megoldás a következő e
 | **Előnyök** | – Aktív-aktív támogatás<br/>– A helyszíni és a Azure SQL Database közötti kétirányú irányítás | – Alacsonyabb késés<br/>– Tranzakciós konzisztencia<br/>-Meglévő topológia újrafelhasználása az áttelepítés után <br/>– Az Azure SQL felügyelt példányának támogatása |
 | **Hátrányok** | – Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
 
-## <a name="get-started"></a>Első lépések 
+## <a name="private-link-for-data-sync-preview"></a>Privát hivatkozás az adatszinkronizáláshoz (előzetes verzió)
+Az új privát hivatkozás (előzetes verzió) funkció lehetővé teszi, hogy kiválassza a szolgáltatás által felügyelt privát végpontot, hogy biztonságos kapcsolatot hozzon létre a szinkronizálási szolgáltatás és a tag/központ adatbázisai között az adatszinkronizálási folyamat során. A szolgáltatás által felügyelt magánhálózati végpontok egy magánhálózati IP-cím egy adott virtuális hálózaton és alhálózaton belül. Az adatszinkronizáláson belül a szolgáltatás által felügyelt magánhálózati végpontot a Microsoft hozza létre, és kizárólag az adatszinkronizálási szolgáltatás használja egy adott szinkronizálási művelethez. A privát hivatkozás beállítása előtt olvassa el a szolgáltatás [általános követelményeit](sql-data-sync-data-sql-server-sql-database.md#general-requirements) . 
+
+![Privát hivatkozás adatszinkronizáláshoz](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
+
+> [!NOTE]
+> Manuálisan jóvá kell hagynia a szolgáltatás által felügyelt magánhálózati végpontot a Azure Portal **privát végpontok kapcsolatainak** lapján a szinkronizálási csoport telepítése vagy a PowerShell használatával.
+
+## <a name="get-started"></a>Bevezetés 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Adatszinkronizálás beállítása a Azure Portal
 
@@ -126,6 +134,8 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 
 - A pillanatkép-elkülönítést engedélyezni kell a szinkronizálási tagok és a központ esetében is. További információ: [Pillanatkép-elkülönítés az SQL Serveren](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
+- Ahhoz, hogy az adatszinkronizáláshoz privát hivatkozást lehessen használni, a tag és a hub adatbázisait is az Azure-ban (azonos vagy eltérő régiókban) kell tárolni, ugyanabban a felhőben (például a nyilvános felhőben vagy mindkettőben a kormányzati felhőben). Emellett a privát hivatkozás használatához a Microsoft. Network erőforrás-szolgáltatókat regisztrálni kell a hub-és tagkiszolgáló-kiszolgálókat üzemeltető előfizetésekhez. Végül manuálisan jóvá kell hagynia az adatszinkronizáláshoz tartozó privát hivatkozást a szinkronizálási konfigurációban a Azure Portal privát végponti kapcsolatok szakaszában, vagy a PowerShell használatával. A privát hivatkozás jóváhagyásáról további információt a [SQL-adatszinkronizálás beállítása](./sql-data-sync-sql-server-configure.md)című témakörben talál. Miután jóváhagyta a szolgáltatás által felügyelt privát végpontot, a szinkronizálási szolgáltatás és a tag/hub adatbázisok közötti kommunikáció a privát kapcsolaton keresztül történik. A meglévő szinkronizálási csoportok frissíthetik, hogy ez a funkció engedélyezve legyen.
+
 ### <a name="general-limitations"></a>Általános korlátozások
 
 - Egy táblának nem lehet olyan azonosító oszlopa, amely nem az elsődleges kulcs.
@@ -169,6 +179,9 @@ Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rends
 > Egyetlen szinkronizálási csoportban akár 30 végpont is lehet, ha csak egy szinkronizálási csoport van. Ha több szinkronizálási csoport is van, akkor az összes szinkronizálási csoporton belüli végpontok száma nem haladhatja meg a 30-at. Ha egy adatbázis több szinkronizálási csoporthoz tartozik, a rendszer több végpontnak számít, nem egy.
 
 ### <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
+
+> [!NOTE]
+> Ha privát hivatkozást használ, ezek a hálózati követelmények nem érvényesek. 
 
 A szinkronizálási csoport létrehozásakor az adatszinkronizálási szolgáltatásnak csatlakoznia kell a hub-adatbázishoz. A szinkronizálási csoport létrehozásakor az Azure SQL Server-kiszolgálónak a következő konfigurációval kell rendelkeznie a `Firewalls and virtual networks` beállításaiban:
 
@@ -239,7 +252,7 @@ Az összevonási gyökér adatbázisa korlátozás nélkül használható a SQL-
 
 A Dynamics 365 saját adatbázis-funkciója lehetővé teszi, hogy a rendszergazdák a saját Microsoft Azure SQL Database-be exportálják az alkalmazásból az adatentitásokat. Az adatszinkronizálás használatával más adatbázisokba is szinkronizálhatja ezeket az adatfájlokat, ha az adatexportálás **növekményes leküldéses** használatával történik (a teljes leküldéses funkció nem támogatott), és az **Eseményindítók engedélyezése a célként megadott adatbázisban** **Igen** értékre van állítva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ### <a name="update-the-schema-of-a-synced-database"></a>Szinkronizált adatbázis sémájának frissítése
 

@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: 0a578f1edb51efd5f0905e663d42bf5a6fbfc783
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/09/2020
+ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489037"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921029"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Adatintegráció a Azure Data Factory és az Azure-adatmegosztás használatával
 
@@ -34,7 +34,7 @@ A laborban használt adatkészletek New York-i taxik. A SQL Database-adatbázisb
 
 * **Azure Data Lake Storage Gen2 Storage-fiók**: Ha nem rendelkezik ADLS Gen2 Storage-fiókkal, megtudhatja, hogyan [hozhat létre ADLS Gen2 Storage](../storage/common/storage-account-create.md)-fiókot.
 
-* **Azure szinapszis Analytics (korábbi nevén SQL DW)**: Ha nincs Azure szinapszis Analytics (korábban SQL DW), Ismerje meg, hogyan [hozhat létre Azure szinapszis Analytics-példányt](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
+* **Azure szinapszis Analytics**: Ha nem rendelkezik Azure szinapszis Analytics-elemzéssel, Ismerje meg, hogyan [hozhat létre Azure-beli szinapszis Analytics-példányt](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
 
 * **Azure Data Factory**: Ha még nem hozott létre egy adatelőállítót, olvassa el [a hogyan hozhat létre egy adatelőállítót](./quickstart-create-data-factory-portal.md).
 
@@ -79,7 +79,7 @@ Azure Data Factory társított szolgáltatásokban adja meg a kapcsolati adatoka
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>Azure szinapszis Analytics társított szolgáltatás létrehozása
 
-1. Ismételje meg ugyanezt a folyamatot egy Azure szinapszis Analytics társított szolgáltatás hozzáadásához. A kapcsolatok lapon kattintson az **új** elemre. Válassza ki az **Azure szinapszis Analytics (korábbi nevén SQL DW)** csempét, és kattintson a Continue (folytatás) gombra.
+1. Ismételje meg ugyanezt a folyamatot egy Azure szinapszis Analytics társított szolgáltatás hozzáadásához. A kapcsolatok lapon kattintson az **új** elemre. Válassza ki az **Azure szinapszis Analytics** csempét, és kattintson a Continue (folytatás) gombra.
 
     ![Portál – 6. konfigurálás](media/lab-data-flow-data-share/configure6.png)
 1. A társított szolgáltatás konfigurációja ablaktáblán írja be a "SQLDW" nevet a társított szolgáltatás neveként. Adja meg a hitelesítő adatait, hogy a adat-előállító csatlakozhasson az adatbázishoz. SQL-hitelesítés használata esetén adja meg a kiszolgáló nevét, az adatbázist, a felhasználónevét és a jelszavát. A kapcsolatok adatainak ellenőrzéséhez kattintson a **kapcsolatok tesztelése** lehetőségre. Ha elkészült, kattintson a **Létrehozás** gombra.
@@ -155,7 +155,7 @@ Sikeresen létrehozta a forrás adatkészletet. Győződjön meg arról, hogy a 
 1. A másolási tevékenység helyes működésének ellenőrzéséhez kattintson a folyamat vászon tetején található **hibakeresés** gombra a hibakeresési Futtatás végrehajtásához. A hibakeresési műveletek lehetővé teszik a folyamat végpontok közötti vagy teljes körű tesztelését, mielőtt a rendszer közzéteszi azt a Refactory szolgáltatásban.
 
     ![Portál 11. példánya](media/lab-data-flow-data-share/copy11.png)
-1. A hibakeresési Futtatás figyeléséhez nyissa meg a folyamat vászon **kimenet** lapját. A figyelés képernyő 20 másodpercenként automatikusan frissül, vagy ha manuálisan kattint a frissítés gombra. A másolási tevékenység speciális figyelési nézettel rendelkezik, amely a **műveletek** oszlopban a szem szemüveg ikonra kattintva érhető el.
+1. A hibakeresési Futtatás figyeléséhez nyissa meg a folyamat vászon **kimenet** lapját. A figyelés képernyő 20 másodpercenként automatikusan frissül, vagy ha manuálisan kattint a frissítés gombra. A másolási tevékenység speciális figyelési nézettel rendelkezik, amely a **műveletek** oszlopban található szem szemüveg ikonra kattintva érhető el.
 
     ![Portál 12. példánya](media/lab-data-flow-data-share/copy12.png)
 1. A másolás figyelése nézet a tevékenység végrehajtási részleteit és a teljesítmény jellemzőit adja meg. Megtekintheti az olyan információkat, mint például az olvasott/írt, a sorok olvasása/írása, a fájlok olvasása/írása és az átviteli sebesség. Ha úgy konfigurálta a mindent, hogy az ADLS-fogadó egyetlen fájljába írja a 49 999 sort.
@@ -274,7 +274,7 @@ Az ebben a lépésben létrehozott adatfolyam összekapcsolja az előző szakasz
 
     ![2. portál](media/lab-data-flow-data-share/sink2.png)
 
-1. Válassza ki az **Azure szinapszis Analytics (korábbi nevén SQL DW)** csempét, és kattintson a Continue (folytatás) gombra.
+1. Válassza ki az **Azure szinapszis Analytics** csempét, és kattintson a Continue (folytatás) gombra.
 
     ![3. portál](media/lab-data-flow-data-share/sink3.png)
 1. Hívja meg a "AggregatedTaxiData" adatkészletet. A társított szolgáltatásként válassza a "SQLDW" lehetőséget. Válassza az **új tábla létrehozása** lehetőséget, és nevezze el az új tábla dbo. AggregateTaxiData. Ha elkészült, kattintson az OK gombra.
@@ -306,7 +306,7 @@ Sikeresen létrehozta az adatfolyamatot. Most itt az ideje, hogy egy folyamat te
 
 Ezzel befejezte a tesztkörnyezet adatelőállító részét. Tegye közzé erőforrásait, ha az eseményindítókkal szeretné működővé tenni őket. Sikeresen futtatott egy folyamatot, amely Azure SQL Database adatokat töltött le Azure Data Lake Storage a másolási tevékenység használatával, majd összesíti az adatokat egy Azure szinapszis Analyticsbe. Az adatgyűjtés sikeres ellenőrzéséhez tekintse meg a SQL Server magát.
 
-## <a name="share-data-using-azure-data-share"></a>Adatmegosztás az Azure-adatmegosztás használatával
+## <a name="share-data-using-azure-data-share"></a>Adatmegosztás az Azure Data Share szolgáltatás használatával
 
 Ebből a szakaszból megtudhatja, hogyan állíthat be új adatmegosztást a Azure Portal használatával. Ez magában foglalja egy új adatmegosztás létrehozását, amely adatkészleteket fog tartalmazni Azure Data Lake Store Gen2 és az Azure szinapszis Analyticsből. Ezután konfigurálhat egy pillanatkép-ütemtervet, amely lehetővé teszi az adatok számára, hogy automatikusan frissítse a velük megosztott adatok frissítését. Ezután meghívja a címzetteket az adatmegosztásra. 
 
@@ -330,7 +330,7 @@ Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó
 
 1. A **megosztás neve** területen adjon meg egy tetszőleges nevet. Ez az adatfogyasztó által látható megosztási név, ezért ügyeljen arra, hogy adjon meg egy leíró nevet, például TaxiData.
 
-1. A **Leírás** alatt helyezzen el egy olyan mondatot, amely leírja az adatmegosztás tartalmát. Az adatmegosztás az egész világra kiterjedő taxi-adatmennyiséget fogja tartalmazni, amelyet számos tároló tárol, például az Azure szinapszis Analytics és a Azure Data Lake Store. 
+1. A **Leírás** alatt helyezzen el egy mondatot, amely leírja az adatmegosztás tartalmát. Az adatmegosztás az egész világra kiterjedő taxi-adatmennyiséget fogja tartalmazni, amelyet számos tároló tárol, például az Azure szinapszis Analytics és a Azure Data Lake Store. 
 
 1. A **használati feltételek** alatt adja meg azokat a feltételeket, amelyeket az adatfogyasztónak be kell tartania. Néhány példa: "Ne ossza meg ezeket az adatvédelmet a szervezeten kívül" vagy "a jogi megállapodásra" hivatkozik. 
 
@@ -394,7 +394,7 @@ Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó
 
 1. Vizsgálja meg a **Pillanatkép-ütemezéseket** , és konfigurálja az adatok óránkénti frissítését az *Ismétlődés* legördülő lista használatával.  
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
     Most már rendelkezik aktív adatmegosztással. Lehetővé teszi, hogy az adatmegosztás létrehozásakor megtekintse az adatszolgáltatóként megjelenített tudnivalókat. 
 

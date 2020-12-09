@@ -1,18 +1,18 @@
 ---
 title: Sablon functions – erőforrások
-description: Leírja a Azure Resource Manager-sablonban használandó függvényeket az erőforrások értékeinek lekéréséhez.
+description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó függvényeket ismerteti az erőforrásokra vonatkozó értékek lekéréséhez.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 3b5a2642ebbabac61e46f4d9b0a2dfec9610a673
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 166e9104a9d791ac6d82ed0e8e2d3659efd2ae0d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902663"
+ms.locfileid: "96919994"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Az ARM-sablonokhoz tartozó Resource functions
 
-A Resource Manager a következő függvényeket biztosítja az erőforrások értékének lekéréséhez a Azure Resource Manager (ARM) sablonban:
+A Resource Manager a következő függvényeket biztosítja az erőforrások értékének lekéréséhez a Azure Resource Manager-sablonban (ARM-sablon):
 
 * [extensionResourceId](#extensionresourceid)
 * [listáját](#list)
@@ -46,7 +46,7 @@ A [bővítmény erőforrásának](../management/extension-resource-types.md)erő
 
 Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A függvény által visszaadott erőforrás-azonosító alapszintű formátuma a következő:
 
@@ -339,7 +339,7 @@ Annak megállapításához, hogy mely erőforrástípusok rendelkeznek lista-mű
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A visszaadott objektum a használt lista függvénytől függ. A Storage-fiók Listkeys műveletének beolvasása például a következő formátumot adja vissza:
 
@@ -446,7 +446,7 @@ Meghatározza, hogy az erőforrástípus támogatja-e egy adott régió zónáit
 | numberOfZones | Nem | egész szám | A visszaadni kívánt logikai zónák száma. Az alapértelmezett érték 1. A számnak 1 és 3 közötti pozitív egész számnak kell lennie.  Az egyzónás erőforrások esetében az 1 érték használható. A többzónás erőforrások esetében az értéknek kisebbnek vagy egyenlőnek kell lennie a támogatott zónák számával. |
 | offset | Nem | egész szám | A kezdő logikai zóna eltolása. A függvény hibát ad vissza, ha az eltolás plusz numberOfZones meghaladja a támogatott zónák számát. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A támogatott zónákat tartalmazó tömb. Az eltolás és a numberOfZones alapértelmezett értékeinek használatakor a zónákat támogató erőforrástípus és régió a következő tömböt adja vissza:
 
@@ -552,7 +552,7 @@ Egy erőforrás-szolgáltatóval és annak támogatott erőforrásaival kapcsola
 | providerNamespace |Igen |sztring |A szolgáltató névtere |
 | resourceType |Nem |sztring |Az erőforrás típusa a megadott névtéren belül. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Minden támogatott típus a következő formátumban lesz visszaadva:
 
@@ -641,7 +641,7 @@ Egy erőforrás futásidejű állapotát jelképező objektumot ad vissza.
 | apiVersion |Nem |sztring |A megadott erőforrás API-verziója. **Ezt a paramétert akkor kell megadni, ha az erőforrás nincs kiépítve ugyanazon a sablonon belül.** Általában az **éééé-hh-nn** formátumban kell megadni. Az erőforrás érvényes API-verzióihoz lásd: [sablon-hivatkozás](/azure/templates/). |
 | Teljes |Nem |sztring |Az érték, amely megadja, hogy a rendszer visszaadja-e a teljes erőforrás-objektumot. Ha nem adja meg `'Full'` , csak az erőforrás tulajdonságok objektuma lesz visszaadva. A teljes objektum olyan értékeket tartalmaz, mint például az erőforrás-azonosító és a hely. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Minden erőforrástípus a hivatkozási függvény különböző tulajdonságait adja vissza. A függvény nem ad vissza egyetlen, előre definiált formátumot. Továbbá a visszaadott érték az argumentum értéke alapján eltér `'Full'` . Az erőforrástípus tulajdonságainak megtekintéséhez adja vissza az objektumot a kimenetek szakaszban, ahogy az a példában látható.
 
@@ -1007,7 +1007,7 @@ output ExistingStorage object = reference(resourceId(storageAccountName), 'Micro
 
 Egy olyan objektumot ad vissza, amely az aktuális erőforráscsoportot jelképezi.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A visszaadott objektum formátuma a következő:
 
@@ -1117,7 +1117,7 @@ Egy erőforrás egyedi azonosítóját adja vissza. Ezt a függvényt akkor hasz
 
 Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Ha a sablont egy erőforráscsoport hatókörébe telepíti, a rendszer az erőforrás-azonosítót a következő formátumban adja vissza:
 
@@ -1357,7 +1357,7 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 
 Az aktuális üzemelő példányra vonatkozó előfizetés részleteit adja vissza.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A függvény a következő formátumot adja vissza:
 
@@ -1419,7 +1419,7 @@ Az előfizetési szinten üzembe helyezett erőforrás egyedi azonosítóját ad
 
 Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Az azonosító a következő formátumban lesz visszaadva:
 
@@ -1550,7 +1550,7 @@ A bérlői szinten üzembe helyezett erőforrás egyedi azonosítóját adja vis
 
 Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Az azonosító a következő formátumban lesz visszaadva:
 
@@ -1632,7 +1632,7 @@ resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-0
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Egy Azure Resource Manager sablonban található részekkel kapcsolatos leírást a következő témakörben talál: [Azure Resource Manager sablonok készítése](template-syntax.md).
-* Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md)című témakört.
-* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](copy-resources.md)című témakört.
-* A létrehozott sablon üzembe helyezésével kapcsolatban lásd: [alkalmazások központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md).
+* Az ARM-sablon fejezeteinek leírását az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk tartalmazza.
+* Több sablon egyesítéséhez tekintse meg a [csatolt és beágyazott sablonok használata Azure-erőforrások telepítésekor](linked-templates.md)című témakört.
+* Egy adott típusú erőforrás létrehozásakor a megadott számú alkalommal megismételheti az [erőforrás-iteráció az ARM-sablonokban](copy-resources.md)című témakört.
+* A létrehozott sablon üzembe helyezésével kapcsolatban lásd: [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](deploy-powershell.md).

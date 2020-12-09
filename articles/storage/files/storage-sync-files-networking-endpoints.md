@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 02d9e65f5422b7b12900d051f01c1d6f55e8685b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 61ff5d05eb74804af69b90d839115a8468619275
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844676"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921719"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Az Azure File Sync hálózati végpontjainak konfigurálása
 Azure Files és Azure File Sync két fő típusú végpontot biztosít az Azure-fájlmegosztás eléréséhez: 
@@ -34,7 +34,7 @@ Ez a cikk azt feltételezi, hogy:
 
 Továbbá:
 - Ha Azure PowerShell szeretne használni, [telepítse a legújabb verziót](/powershell/azure/install-az-ps).
-- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="create-the-private-endpoints"></a>Saját végpontok létrehozása
 Ha egy Azure-erőforráshoz hoz létre privát végpontot, a rendszer a következő erőforrásokat telepíti:
@@ -588,7 +588,7 @@ Ha a Storage-fiókot adott virtuális hálózatokra korlátozza, a megadott virt
 Azure File Sync lehetővé teszi, hogy csak privát végpontokon keresztül korlátozza az adott virtuális hálózatokhoz való hozzáférést; A Azure File Sync nem támogatja a szolgáltatási végpontok számára a nyilvános végponthoz adott virtuális hálózatokhoz való hozzáférés korlátozását. Ez azt jelenti, hogy a Storage Sync szolgáltatás nyilvános végpontjának két állapota engedélyezve van és le van tiltva.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-Ez nem lehetséges a Azure Portalon keresztül. A Storage Sync szolgáltatás nyilvános végpontjának letiltására vonatkozó utasításokat a Azure PowerShell vagy az Azure CLI lapon találhatja meg. 
+Ez nem lehetséges a Azure Portalon keresztül. Az Azure PowerShell lapon megtudhatja, hogyan tilthatja le a Storage Sync szolgáltatás nyilvános végpontját. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Ha le szeretné tiltani a Storage Sync szolgáltatás nyilvános végpontjának elérését, a `incomingTrafficPolicy` Storage Sync szolgáltatás tulajdonságát a következőre állítja be: `AllowVirtualNetworksOnly` . Ha engedélyezni szeretné a Storage Sync szolgáltatás nyilvános végpontjának elérését, állítsa `incomingTrafficPolicy` a helyet a következőre: `AllowAllTraffic` . Ne felejtse el lecserélni `<storage-sync-service-resource-group>` és `<storage-sync-service>` .
@@ -603,25 +603,13 @@ $storageSyncService = Get-AzResource `
         -ResourceType "Microsoft.StorageSync/storageSyncServices"
 
 $storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force
+$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Ha le szeretné tiltani a Storage Sync szolgáltatás nyilvános végpontjának elérését, a `incomingTrafficPolicy` Storage Sync szolgáltatás tulajdonságát a következőre állítja be: `AllowVirtualNetworksOnly` . Ha engedélyezni szeretné a Storage Sync szolgáltatás nyilvános végpontjának elérését, állítsa `incomingTrafficPolicy` a helyet a következőre: `AllowAllTraffic` . Ne felejtse el lecserélni `<storage-sync-service-resource-group>` és `<storage-sync-service>` .
-
-```bash
-storageSyncServiceResourceGroupName="<storage-sync-service-resource-group>"
-storageSyncServiceName="<storage-sync-service>"
-
-az resource update \
-        --resource-group $storageSyncServiceResourceGroupName \
-        --name $storageSyncServiceName \
-        --resource-type "Microsoft.StorageSync/storageSyncServices" \
-        --set "properties.incomingTrafficPolicy=AllowVirtualNetworksOnly" \
-        --output none
-```
+<a name="azure-cli-does-not-support-setting-the-incomingtrafficpolicy-property-on-the-storage-sync-service-please-select-the-azure-powershell-tab-to-get-instructions-on-how-to-disable-the-storage-sync-service-public-endpoint"></a>Az Azure CLI nem támogatja a tulajdonság beállítását `incomingTrafficPolicy` a Storage Sync szolgáltatásban. Az Azure PowerShell lapon megtudhatja, hogyan tilthatja le a Storage Sync szolgáltatás nyilvános végpontját.
 ---
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 - [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)

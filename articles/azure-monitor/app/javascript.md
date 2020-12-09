@@ -4,12 +4,12 @@ description: Megtekintheti az oldal nézetét és a munkamenetek számát, a web
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: b109aaea1ae5e751f40b55a3c703f0739661e10d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: f5f81fe5d3f7f7d24e5e6618ba3956b80451570c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876209"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921878"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -19,8 +19,11 @@ Az Application Insights bármely weblappal használható – csak egy rövid Jav
 
 ## <a name="adding-the-javascript-sdk"></a>A JavaScript SDK hozzáadása
 
+> [!IMPORTANT]
+> Az új Azure-régiókban a rendszerállapot-kulcsok helyett a kapcsolatok sztringjét **kell** használnia. A [kapcsolódási karakterlánc](./sdk-connection-string.md?tabs=js) azonosítja azt az erőforrást, amelyhez hozzá szeretné rendelni a telemetria-adatait. Azt is lehetővé teszi, hogy módosítsa az erőforrás által a telemetria célként használt végpontokat. A kapcsolódási karakterláncot át kell másolnia, és hozzá kell adnia az alkalmazás kódjához vagy egy környezeti változóhoz.
+
 1. Először Application Insights erőforrásra van szüksége. Ha még nem rendelkezik erőforrás-és kialakítási kulccsal, kövesse az [új erőforrás létrehozása című témakört](create-new-resource.md).
-2. Másolja a kialakítási _kulcsot_ (más néven "rendszerállapotkulcsot") ahhoz az erőforráshoz, amelyen a JavaScript-telemetria el szeretné juttatni (az 1. lépésből) Adja hozzá a `instrumentationKey` Application Insights JavaScript SDK beállításához.
+2. Másolja a kialakítási _kulcsot_ (más néven "rendszerállapotkulcsot") vagy a [kapcsolódási karakterláncot](#connection-string-setup) arra az erőforrásra, amelyen a JavaScript-telemetria el szeretné juttatni (az 1. lépésből) Adja hozzá a `instrumentationKey` `connectionString` Application INSIGHTS JavaScript SDK vagy a beállításához.
 3. Adja hozzá a Application Insights JavaScript SDK-t a weboldalához vagy az alkalmazáshoz az alábbi két lehetőség egyikének használatával:
     * [NPM-telepítő](#npm-based-setup)
     * [JavaScript-kódrészlet](#snippet-based-setup)
@@ -102,7 +105,7 @@ Az összes konfigurációs beállítás mostantól a szkript végére került, �
 
 Az egyes konfigurációs beállítások egy új sorban jelennek meg, ha nem szeretné felülbírálni a felsorolt elemek alapértelmezett értékét [nem kötelező] értékkel, eltávolíthatja ezt a sort a visszaadott oldal méretének csökkentése érdekében.
 
-Az elérhető konfigurációs lehetőségek a következők 
+Az elérhető konfigurációs lehetőségek a következők
 
 | Név | Típus | Leírás
 |------|------|----------------
@@ -112,6 +115,20 @@ Az elérhető konfigurációs lehetőségek a következők
 | useXhr | logikai érték *[opcionális]* | Ez a beállítás csak jelentési SDK-betöltési hibák esetén használatos. A jelentéskészítés először a beolvasást () fogja használni, ha elérhető, majd a tartalék x/óra értékre állítja be ezt az értéket, csak a beolvasás ellenőrzését. Ezt az értéket csak akkor kell használni, ha az alkalmazás olyan környezetben van használatban, amelyben a fetch nem fogja elküldeni a sikertelen események eseményeit.
 | crossOrigin | karakterlánc *[nem kötelező]* | Ennek a beállításnak a megadásával az SDK letöltéséhez hozzáadott parancsfájl-címke tartalmazza a crossOrigin attribútumot a karakterlánc értékkel. Ha nincs definiálva (az alapértelmezett) nincs crossOrigin attribútum hozzáadva. Az ajánlott értékek nincsenek definiálva (az alapértelmezett érték); ""; vagy a "névtelen" (az összes érvényes értéknél lásd a [HTML-attribútumot: `crossorigin` ](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) dokumentáció)
 | cfg | objektum **[kötelező]** | Az inicializálás során a Application Insights SDK-nak átadott konfiguráció.
+
+### <a name="connection-string-setup"></a>A kapcsolatok karakterláncának beállítása
+
+A NPM vagy a kódrészlet telepítésekor a Application Insights példányát is konfigurálhatja egy kapcsolatok karakterlánc használatával. Egyszerűen cserélje le a mezőt a `instrumentationKey` `connectionString` mezőre.
+```js
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+  connectionString: 'YOUR_CONNECTION_STRING_GOES_HERE'
+  /* ...Other Configuration Options... */
+} });
+appInsights.loadAppInsights();
+appInsights.trackPageView();
+```
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Telemetria küldése a Azure Portalba
 
@@ -163,8 +180,8 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 | maxBatchInterval | 15 000 | Mennyi ideig kell a Batch telemetria a küldés előtt (ezredmásodperc) |
 | disableExceptionTracking | hamis | Ha az értéke igaz, a rendszer nem gyűjti össze a kivételeket. Az alapértelmezett érték a false (hamis). |
 | disableTelemetry | hamis | Ha az értéke igaz, a rendszer nem gyűjti és nem továbbítja a telemetria. Az alapértelmezett érték a false (hamis). |
-| enableDebug | hamis | Ha az értéke igaz, a rendszer az SDK-naplózási beállításoktól függetlenül kivételt okoz a **belső** hibakeresési adatvesztés **helyett** . Az alapértelmezett érték a false (hamis). <br>***Megjegyzés:*** Ha ez a beállítás engedélyezve van, a rendszer elveti a telemetria, amikor belső hiba történik. Ez hasznos lehet a konfigurációval vagy az SDK használatával kapcsolatos problémák gyors azonosításához. Ha nem kívánja elveszíteni a telemetria a hibakeresés során, érdemes lehet `consoleLoggingLevel` `telemetryLoggingLevel` a vagy a helyett használni `enableDebug` . |
-| loggingLevelConsole | 0 | **Belső** Application Insights hibák naplózása a konzolon. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) |
+| enableDebug | hamis | Ha az értéke igaz, a rendszer az SDK-naplózási beállításoktól függetlenül kivételt okoz a **belső** hibakeresési adatvesztés **helyett** . Az alapértelmezett érték a false (hamis). <br>**_Megjegyzés:_* _ ha ez a beállítás engedélyezve van, a rendszer eldobott telemetria okoz, amikor belső hiba történik. Ez hasznos lehet a konfigurációval vagy az SDK használatával kapcsolatos problémák gyors azonosításához. Ha nem kívánja elveszíteni a telemetria a hibakeresés során, érdemes lehet `consoleLoggingLevel` `telemetryLoggingLevel` a vagy a helyett használni `enableDebug` . |
+| loggingLevelConsole | 0 | Naplózza a *belső** Application Insights hibákat a konzolon. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) |
 | loggingLevelTelemetry | 1 | **Belső** Application Insights hibákat küld a telemetria. <br>0: kikapcsolva, <br>1: csak kritikus hibák, <br>2: minden (hibák & figyelmeztetés) |
 | diagnosticLogInterval | 10000 | belső A belső naplózási várólista lekérdezési időköze (MS) |
 | samplingPercentage | 100 | Az elküldeni kívánt események százalékos aránya. Az alapértelmezett érték 100, ami azt jelenti, hogy az összes esemény el lesz küldve. Állítsa be ezt, ha nagy méretű alkalmazásokhoz szeretné megőrizni az adatkorlátot. |
@@ -259,7 +276,7 @@ A böngésző-és ügyféloldali adatokat a **metrikák** segítségével tekint
 
 Az adatait a JavaScript SDK-ból is megtekintheti a portálon elérhető böngésző használatával.
 
-Válassza a **böngésző** lehetőséget, majd válassza a **hibák** vagy a **teljesítmény**lehetőséget.
+Válassza a **böngésző** lehetőséget, majd válassza a **hibák** vagy a **teljesítmény** lehetőséget.
 
 ![Képernyőkép a Application Insights böngésző oldaláról, amely bemutatja, hogyan adhatók hozzá böngészőbeli hibák vagy a böngésző teljesítménye a webalkalmazáshoz megtekinthető mérőszámokhoz.](./media/javascript/browser.png)
 

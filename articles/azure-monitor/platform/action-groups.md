@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a2144827cd27c0af6610dabdf5ad205359f550cc
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: fd773ade0173fc1c238a5ce44e864e1255ed9044
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435484"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920652"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és felügyelete az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. 
@@ -250,7 +250,9 @@ A műveleti csoportban korlátozott számú SMS-művelet lehet.
 > Ha az Azure Portal műveleti csoport felhasználói felülete nem teszi lehetővé az ország/régió kódjának kiválasztását, akkor az országa/régiója nem támogatja az SMS-t.  Ha az ország/régió kódja nem érhető el, szavazással kiválaszthatja, hogy az országa/régiója a [felhasználó beszédében](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)van-e hozzáadva. Addig is a megoldás, hogy a műveleti csoport meghívja a webhookot egy harmadik féltől származó SMS-szolgáltatóra, amely támogatja az országot/régiót.  
 
 A támogatott országok/régiók díjszabását a [Azure monitor díjszabási oldalán](https://azure.microsoft.com/pricing/details/monitor/)találja.
-  
+
+**Azon országok listája, amelyeken az SMS-értesítés támogatott** 
+| **Országkód**  |  **Ország neve** | | 61 | Ausztrália | | 43 | Ausztria | | 32 | Belgium | | 55 | Brazília | | 1 | Kanada | | 56 | Chile | | 86 | Kína | | 420 | Cseh Köztársaság | | 45 | Dánia | | 372 | Észtország | | 358 | Finnország | | 33 | Franciaország | | 49 | Németország | | 852 | Hongkong | | 91 | India | | 353 | Írország | | 972 | Izrael | | 39 | Olaszország | | 81 | Japán | | 352 | Luxemburg | | 60 | Malajzia | | 52 | Mexikó | | 31 | Hollandia | | 64 | Új-Zéland | | 47 | Norvégia | | 351 | Portugália | | 1 | Puerto Rico | | 40 | Románia | | 65 | Szingapúr | | 27 | Dél-Afrika | | 82 | Dél-Korea | | 34 | Spanyolország | | 41 | Svájc | | 886 | Tajvan | | 44 |  Egyesült Királyság | | 1 | Egyesült Államok |
 
 ### <a name="voice"></a>Hang
 További fontos viselkedésért tekintse meg a [díjszabási információkat](./alerts-rate-limiting.md) ismertető cikket.
@@ -259,6 +261,7 @@ A műveleti csoportban korlátozott számú hangművelet lehet.
 
 > [!NOTE]
 > Ha az Azure Portal műveleti csoport felhasználói felülete nem teszi lehetővé az ország/régió kódjának kiválasztását, akkor a hanghívások nem támogatottak az országa/régiója számára. Ha az ország/régió kódja nem érhető el, szavazással kiválaszthatja, hogy az országa/régiója a [felhasználó beszédében](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)van-e hozzáadva.  Addig is a megoldás, hogy a műveleti csoport meghívja a webhookot egy külső gyártótól származó hanghívási szolgáltatóra, amely támogatja az országot/régiót.  
+> Csak a Azure Portal műveleti csoportban jelenleg támogatott országkód a következő: + 1 (Egyesült Államok). 
 
 A támogatott országok/régiók díjszabását a [Azure monitor díjszabási oldalán](https://azure.microsoft.com/pricing/details/monitor/)találja.
 
@@ -408,7 +411,7 @@ A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csopo
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Példa a szolgáltatási címke hozzáadására."border="true":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az [SMS-riasztás viselkedéséről](./alerts-sms-behavior.md).  
 * Ismerkedjen meg [a tevékenység naplójának riasztása webhook sémával](./activity-log-alerts-webhook.md).  
 * További információ a [ITSM-csatolóról](./itsmc-overview.md).

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/14/2018
-ms.openlocfilehash: 8d1ff372009c6158f2148847dd77126bcb4d189f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: d89fd8b4102333603fa71b2cc28a49b732b91b08
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461240"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920888"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Tömeges másolás egy vezérlőelem-táblázattal rendelkező adatbázisból
 
@@ -44,7 +44,7 @@ A sablon a következő paramétereket definiálja:
 - *Data_Destination_Container* a gyökérmappa elérési útja, ahová a rendszer átmásolja az adatait a célhelyre. 
 - *Data_Destination_Directory* az a könyvtár elérési útja, amelynek a gyökerében az adatait a rendszer átmásolja a célhelyre. 
 
-Az utolsó három paraméter, amely meghatározza a célhely elérési útját, csak akkor látható, ha a kiválasztott cél a fájl alapú tárterület. Ha a cél tárolóként az "Azure szinapszis Analytics (korábban SQL DW)" lehetőséget választja, akkor ezek a paraméterek nem szükségesek. Az Azure szinapszis Analyticsben azonban a táblák neveinek és sémájának meg kell egyeznie a forrás-adatbázisban találhatókkal.
+Az utolsó három paraméter, amely meghatározza a célhely elérési útját, csak akkor látható, ha a kiválasztott cél a fájl alapú tárterület. Ha a cél tárolóként az "Azure szinapszis Analytics" lehetőséget választja, akkor ezek a paraméterek nem szükségesek. Az Azure szinapszis Analyticsben azonban a táblák neveinek és sémájának meg kell egyeznie a forrás-adatbázisban találhatókkal.
 
 ## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 
@@ -94,10 +94,10 @@ Az utolsó három paraméter, amely meghatározza a célhely elérési útját, 
 
     ![Az eredmény áttekintése](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. Választható Ha az "Azure szinapszis Analytics (korábban SQL DW)" lehetőséget választotta az adat célhelyként, meg kell adnia egy kapcsolódást az Azure Blob Storage-hoz az átmeneti tároláshoz, az Azure szinapszis Analytics-alapú albasehoz szükséges módon. A sablon automatikusan létrehozza a tároló elérési útját a blob Storage-hoz. Ellenőrizze, hogy létrejött-e a tároló a folyamat futtatása után.
+9. Választható Ha az "Azure szinapszis Analytics" lehetőséget választotta az adatok célhelyként, meg kell adnia egy kapcsolódást az Azure Blob Storage-hoz az átmeneti tároláshoz, az Azure szinapszis Analytics-alapú albasehoz szükséges módon. A sablon automatikusan létrehozza a tároló elérési útját a blob Storage-hoz. Ellenőrizze, hogy létrejött-e a tároló a folyamat futtatása után.
     
     ![Alapszintű beállítás](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Data Factory bemutatása](introduction.md)

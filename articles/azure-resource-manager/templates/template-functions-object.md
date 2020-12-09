@@ -1,18 +1,18 @@
 ---
 title: Sablon functions – objektumok
-description: Az objektumok kezeléséhez Azure Resource Manager sablonban használható függvényeket ismerteti.
+description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó függvényeket ismerteti az objektumok kezeléséhez.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 7ed317b3506f00e71bbf97d5564cacec05032744
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004517"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920466"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM-sablonok Object functions
 
-A Resource Manager számos funkciót biztosít a Azure Resource Manager (ARM) sablon objektumainak használatához.
+A Resource Manager számos funkciót biztosít az objektumok Azure Resource Manager sablonban való használatához (ARM-sablon):
 
 * [tartalmaz](#contains)
 * [createObject](#createobject)
@@ -35,8 +35,8 @@ Ellenőrzi, hogy egy tömb tartalmaz-e értéket, egy objektum tartalmaz-e kulcs
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| tároló |Yes |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
-| itemToFind |Yes |karakterlánc vagy int |A keresendő érték. |
+| tároló |Igen |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
+| itemToFind |Igen |karakterlánc vagy int |A keresendő érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -147,10 +147,10 @@ Létrehoz egy objektumot a kulcsok és értékek alapján. A `createObject` bice
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| key1 |No |sztring |A kulcs neve. |
-| érték1 |No |int, Boolean, string, Object vagy Array |A kulcs értéke. |
-| További kulcsok |No |sztring |A kulcsok további nevei. |
-| További értékek |No |int, Boolean, string, Object vagy Array |A kulcsok további értékei. |
+| key1 |Nem |sztring |A kulcs neve. |
+| érték1 |Nem |int, Boolean, string, Object vagy Array |A kulcs értéke. |
+| További kulcsok |Nem |sztring |A kulcsok további nevei. |
+| További értékek |Nem |int, Boolean, string, Object vagy Array |A kulcsok további értékei. |
 
 A függvény csak páros számú paramétert fogad el. Minden kulcsnak egyező értékkel kell rendelkeznie.
 
@@ -221,7 +221,7 @@ Meghatározza, hogy egy tömb, objektum vagy karakterlánc üres-e.
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Yes |tömb, objektum vagy karakterlánc |Az érték, amely alapján ellenőrizhető, hogy üres-e. |
+| itemToTest |Igen |tömb, objektum vagy karakterlánc |Az érték, amely alapján ellenőrizhető, hogy üres-e. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -302,9 +302,9 @@ Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek közös elemei
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tömb vagy objektum |Az általános elemek kereséséhez használandó első érték. |
-| arg2 |Yes |tömb vagy objektum |A közös elemek kereséséhez használt második érték. |
-| További argumentumok |No |tömb vagy objektum |Az általános elemek kereséséhez használandó további értékek. |
+| arg1 |Igen |tömb vagy objektum |Az általános elemek kereséséhez használandó első érték. |
+| arg2 |Igen |tömb vagy objektum |A közös elemek kereséséhez használt második érték. |
+| További argumentumok |Nem |tömb vagy objektum |Az általános elemek kereséséhez használandó további értékek. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -409,7 +409,7 @@ Egy érvényes JSON-karakterláncot alakít át JSON-adattípusra.
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |sztring |A JSON-ra konvertálandó érték. A karakterláncnak megfelelően formázott JSON-karakterláncnak kell lennie. |
+| arg1 |Igen |sztring |A JSON-ra konvertálandó érték. A karakterláncnak megfelelően formázott JSON-karakterláncnak kell lennie. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -540,7 +540,7 @@ Egy tömbben lévő elemek számát, egy karakterláncban szereplő karaktereket
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
+| arg1 |Igen |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -692,9 +692,9 @@ Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek összes elemé
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tömb vagy objektum |Az elemek csatlakoztatásának első értéke. |
-| arg2 |Yes |tömb vagy objektum |Az elemek csatlakoztatásához használt második érték. |
-| További argumentumok |No |tömb vagy objektum |Az elemekhez való csatlakozáshoz használandó további értékek. |
+| arg1 |Igen |tömb vagy objektum |Az elemek csatlakoztatásának első értéke. |
+| arg2 |Igen |tömb vagy objektum |Az elemek csatlakoztatásához használt második érték. |
+| További argumentumok |Nem |tömb vagy objektum |Az elemekhez való csatlakozáshoz használandó további értékek. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -790,6 +790,6 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 | objectOutput | Objektum | {"One": "a", "kettő": "b", "három": "C2", "Four": "d", "öt": "e"} |
 | arrayOutput | Tömb | ["egy", "kettő", "három", "négy"] |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.
+* Az ARM-sablon fejezeteinek leírását az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk tartalmazza.

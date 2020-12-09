@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 12/3/2020
 ms.subservice: alerts
-ms.openlocfilehash: dfcc1f15ebec1337cfa7d484319c7b942ff052b2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0e4674c9e0513a0b8dae29f5868b1da79da8ab84
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548239"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920559"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>A metrikus riasztások által támogatott erőforrások Azure Monitor
 
@@ -60,7 +60,7 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. DBforPostgreSQL/flexibleServers | Igen | Nem | |
 |Microsoft. DBforPostgreSQL/kiszolgálók | Nem | Nem | [PostgreSQL-hez készült adatbázis](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft. DBforPostgreSQL/serversv2 | Nem | Nem | [A PostgreSQL v2 ADATBÁZISa](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft. DBforPostgreSQL/singleservers | Nem | Nem | [PostgreSQL-adatbázis (egyetlen kiszolgáló)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
+|Microsoft. DBforPostgreSQL/rugalmas | Nem | Nem | [PostgreSQL-hez készült adatbázis (rugalmas kiszolgálók)](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft. Devices/IotHubs | Igen | Nem |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft. Devices/provisioningServices| Igen | Nem | [Eszközök kiépítési szolgáltatásai](./metrics-supported.md#microsoftdevicesprovisioningservices) |
 |Microsoft. DigitalTwins/digitalTwinsInstances | Igen | Nem | |
@@ -115,7 +115,7 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. Web/hostingEnvironments/multiRolePools | Igen | Nem | [Több szerepkört használó készletek App Service Environment](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft. Web/hostingEnvironments/workerPools | Igen | Nem | [Munkavégző készletek App Service Environment](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft. Web/kiszolgálófarmok | Igen | Nem | [App Service csomagok](./metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft. Web/Sites | Igen | Nem | [App Services](./metrics-supported.md#microsoftwebsites-excluding-functions) és [függvények](./metrics-supported.md#microsoftwebsites-functions)|
+|Microsoft. Web/Sites | Igen | Nem | [App Services és függvények](./metrics-supported.md#microsoftwebsites)|
 |Microsoft. Web/Sites/Slots | Igen | Nem | [App Service tárolóhelyek](./metrics-supported.md#microsoftwebsitesslots)|
 
 <sup>1</sup> nem támogatott a virtuálisgép-hálózati metrikák esetében (összesen a hálózat, a hálózat teljes száma, a bejövő folyamatok, a kimenő folyamatok, a bejövő folyamatok maximális létrehozási sebessége, a kimenő forgalom maximális száma) és az egyéni metrikák.
