@@ -7,23 +7,27 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: e7ad561cf9ce9983f41fa166eb744c90f126e01e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 9ead9a564c11901775ac7c471cd53fe65b3fdef9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555953"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855107"
 ---
-# <a name="what-is-azure-purview"></a>Mi az az Azure hatáskörébe?
+# <a name="what-is-azure-purview"></a>Mi az az Azure Purview?
 
 > [!IMPORTANT]
 > Az Azure-beli hatáskörébe jelenleg előzetes verzió érhető el. A [Microsoft Azure előzetes verzióinak kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) közé tartoznak azok a további jogi feltételek, amelyek az Azure olyan szolgáltatásaira vonatkoznak, amelyek béta-, előzetes verziójú vagy egyéb módon még nem lettek nyilvánosan elérhetők.
 
-Az Azure hatáskörébe egy új felhőalapú szolgáltatás, amelyet az adatfelhasználók használhatnak. Az Azure hatáskörébe tartozik, hogy központilag kezelje az adatkezelést az adatközpontban, és a Felhőbeli és a helyszíni környezeteket is felhasználja. Ez a szolgáltatás lehetővé teszi az üzleti elemzők számára, hogy értelmes üzleti feltételek alapján keressenek releváns adatokat.
+Az Azure hatáskörébe egy egységes adatirányítási szolgáltatás, amely segít a helyszíni, többfelhős és szoftveres (SaaS-) adatkezelésben és irányításban. Az adatkörnyezet átfogó, naprakész térképét az adatok automatikus észlelésével, a bizalmas adatok besorolásával és a végpontok közötti adatbontással egyszerűen létrehozhatja. Az adatfogyasztók számára értékes és megbízható adatkezelést lehet kitalálni.
 
-A hatáskörébe tartozó felhasználói felületen vagy az Apache Atlas API-val a technikai felhasználók megtekinthetik a központi katalógusban található adategységek metaadatait és vonalait.
+Az Azure-beli hatáskörébe tartozó adatleképezés biztosítja az adatfelderítés és a hatékony adatkezelés alapjait. A hatáskörébe tartozó adatleképezés egy Felhőbeli natív Pásti szolgáltatás, amely a helyszíni és a Felhőbeli elemzési és üzemeltetési rendszerekben található vállalati adatok metaadatait rögzíti. A rendszer automatikusan naprakészen tartja a hatáskörébe tartozó adatleképezést a beépített automatizált ellenőrzési és besorolási rendszerrel. Az üzleti felhasználók intuitív felhasználói felületen konfigurálhatják és használhatják a hatáskörébe tartozó adatleképezést, és a fejlesztők programozott módon kezelhetik az adatleképezést a nyílt forráskódú Apache Atlas 2,0 API-k használatával.
 
-A tulajdonosi szakértők, az adattulajdonosok és a biztonsági rendszergazdák megjegyzésekkel láthatják el az adategységeket a közös ismereteik megosztásához. Ezt a felhasználói felülettel vagy a méretezéssel, a metaadatok és a tartalom ellenőrzése alapján automatizált osztályozási és automatikus címkézési szabályzatokkal teszik meg.
+Az Azure-beli hatáskörébe tartozó adatleképezési funkciók a hatáskörébe Data Catalog és a hatáskörébe tartozó adatelemzések a hatáskörébe Studióban egyesített élményként jelennek meg.
+ 
+A hatáskörébe Data Catalog az üzleti és technikai felhasználók egyaránt gyorsan & könnyen megtalálják a releváns adatokat a különböző objektívek, például a Szószedet, a besorolások, az érzékenységi címkék és egyebek alapján. A hatáskörébe tartozó szakértők, az adatkezelők és a tisztviselők számára a hatáskörébe Data Catalog olyan adatkezelési funkciókat biztosít, mint például az üzleti szószedetek kezelése, és az adategységek címkézésének automatizálása a Szószedet feltételeit. Az adategységek és a gyártók vizuálisan nyomon követhetik az adategységek vonalát a helyszíni operációs rendszertől kezdve, a mozgáson, az átalakításon & a különböző adattárolási & a felhőben lévő feldolgozási rendszerek használatával, például a Power BI.
+
+A hatáskörébe tartozó adatelemzések révén az adattisztek és a biztonsági tisztviselők egy madár nézetét tekinthetik meg, és egy pillantással megtudhatják, milyen adatokat vizsgálnak aktívan, hol vannak a bizalmas adatok, és hogyan mozognak.
 
 ## <a name="discovery-challenges-for-data-consumers"></a>Az adatok felfedezésének kihívásai az adatfelhasználók számára
 

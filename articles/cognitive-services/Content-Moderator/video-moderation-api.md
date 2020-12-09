@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd813c6db9d03b0b7c84497e5b44f6ecdb591437
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 4f98eac4305333ec7225c90da2777b7e02f050a0
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912854"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853532"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Videotartalom elemzése a kifogásolt anyagokhoz C-ben #
 
@@ -55,7 +55,7 @@ A Azure Media Services Explorer egy felhasználóbarát előtér az AMS-hez. Has
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
-1. A Visual Studióban hozzon létre egy új **Console app (.NET-keretrendszer)** projektet, és nevezze el **VideoModeration** . 
+1. A Visual Studióban hozzon létre egy új **Console app (.NET-keretrendszer)** projektet, és nevezze el **VideoModeration**. 
 1. Ha más projektek is vannak a megoldásban, válassza ki ezt a projektet az egyedüli kezdőprojektként.
 1. Szerezze be a szükséges NuGet-csomagokat. A Solution Explorer (Megoldáskezelő) felületén kattintson a jobb gombbal a projektre és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget, majd keresse meg és telepítse a következő csomagokat:
     - windowsazure. Mediaservices
@@ -84,7 +84,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Erőforrás-hivatkozások beállítása
 
-Adja hozzá a következő statikus mezőket a **program** osztályhoz a _program.cs_ -ben. Ezek a mezők az AMS-előfizetéshez való csatlakozáshoz szükséges információkat rendelkeznek. Töltse ki azokat a következő lépésekben kapott értékekkel. Vegye figyelembe `CLIENT_ID` , hogy az Azure ad-alkalmazás **azonosító** értéke, és az `CLIENT_SECRET` adott alkalmazáshoz létrehozott "VideoModKey" értéke.
+Adja hozzá a következő statikus mezőket a **program** osztályhoz a _program.cs_-ben. Ezek a mezők az AMS-előfizetéshez való csatlakozáshoz szükséges információkat rendelkeznek. Töltse ki azokat a következő lépésekben kapott értékekkel. Vegye figyelembe `CLIENT_ID` , hogy az Azure ad-alkalmazás **azonosító** értéke, és az `CLIENT_SECRET` adott alkalmazáshoz létrehozott "VideoModKey" értéke.
 
 ```csharp
 // declare constants and globals
@@ -121,7 +121,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 Ha helyi videofájl (legegyszerűbb eset) használatát kívánja használni, adja hozzá a projekthez, és adja meg az elérési útját `INPUT_FILE` (relatív elérési utak a végrehajtási könyvtárhoz viszonyítva).
 
-Emellett létre kell hoznia a _preset.js_ az aktuális könyvtárban található fájlon, és a verziószámot kell használnia. Példa:
+Emellett létre kell hoznia a _preset.js_ az aktuális könyvtárban található fájlon, és a verziószámot kell használnia. Például:
 
 ```JSON
 {
@@ -365,9 +365,9 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 A Content moderációs feladatok befejezése után elemezze a JSON-választ. Ezek az elemek a következők:
 
 - Videó információinak összegzése
-- **Felvételek** " **töredékek** "
-- **Key frames** " **Események** " **reviewRecommended "(= TRUE vagy FALSE)"** jelzővel a **felnőtt** és a **zamatos** pontszámok alapján
-- a **Start** , az **időtartam** , a **totalDuration** és az **időbélyeg** "ketyeg". Osztás az **időskála** alapján a szám másodpercben való lekéréséhez.
+- **Felvételek** "**töredékek**"
+- **Key frames** "**Események**" **reviewRecommended "(= TRUE vagy FALSE)"** jelzővel a **felnőtt** és a **zamatos** pontszámok alapján
+- a **Start**, az **időtartam**, a **totalDuration** és az **időbélyeg** "ketyeg". Osztás az **időskála** alapján a szám másodpercben való lekéréséhez.
  
 > [!NOTE]
 > - `adultScore` a tartalom lehetséges jelenléti és előrejelzési pontszámát jelöli, amely bizonyos helyzetekben szexuálisan explicit vagy felnőttnek tekinthető.
@@ -430,9 +430,5 @@ A Content moderációs feladatok befejezése után elemezze a JSON-választ. Eze
 ## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan hozhatja ki a moderálási kimenetből származó [video-felülvizsgálatokat](video-reviews-quickstart-dotnet.md) .
-
-[Átiratok moderálásának](video-transcript-moderation-review-tutorial-dotnet.md) hozzáadása a videók felülvizsgálatához.
-
-Tekintse meg a részletes oktatóanyagot, amely bemutatja, hogyan hozhat létre [teljes videó-és átirat-moderálási megoldást](video-transcript-moderation-review-tutorial-dotnet.md).
 
 [Töltse le a Visual Studio-megoldást](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ehhez és más Content moderator a .net-hez.

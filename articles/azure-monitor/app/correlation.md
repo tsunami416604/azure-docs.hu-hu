@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 634ac311ba62a134e47f9413d185d4fdf9d63cdb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7a206d61124b2524feae0cf155083c1939696e18
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186983"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853322"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -46,7 +46,7 @@ Az eredményül kapott telemetria a következő lekérdezés futtatásával elem
 
 Az eredmények között vegye figyelembe, hogy az összes telemetria-elem megosztja a gyökeret `operation_Id` . Ha a lapon Ajax-hívás történik, a rendszer új egyedi azonosítót ( `qJSXU` ) rendel a függőségi telemetria, és az OLDALMEGTEKINTÉS azonosítóját használja `operation_ParentId` . A kiszolgálói kérelem ezután az Ajax ID-t használja `operation_ParentId` .
 
-| itemType   | name                      | ID           | operation_ParentId | operation_Id |
+| itemType   | name                      | ID (Azonosító)           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | oldalmegtekintést   | Stock lap                |              | STYz               | STYz         |
 | függőségi | /Home/Stock beolvasása           | qJSXU        | STYz               | STYz         |
@@ -260,10 +260,8 @@ A [Java-ügynök](./java-in-process-agent.md) , valamint a [Java SDK](../../azur
 
     ```json
     {
-      "instrumentationSettings": {
-        "preview": {
-          "roleName": "my cloud role name"
-        }
+      "role": {
+        "name": "my cloud role name"
       }
     }
     ```

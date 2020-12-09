@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/03/2020
+ms.date: 12/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 90869af032a381cecd3e65f5d5b367156dd047c5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 859eb6abd138f0660407618bba4550daf9158ab9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576853"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855005"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A helyi webes felhasználói felület használata a Data Box és Data Box Heavy felügyeletéhez
 
@@ -29,15 +29,15 @@ Ha eszközproblémákat tapasztal, létrehozhat egy támogatási csomagot a rend
 
 Támogatási csomag létrehozásához hajtsa végre a következő lépéseket:
 
-1. A helyi webes KEZELŐFELÜLETen lépjen a **Kapcsolatfelvétel a támogatási szolgálatba**. Ha szeretné, jelölje be a memóriakép **belefoglalása** jelölőnégyzetet. Ezután válassza a **támogatási csomag létrehozása** lehetőséget.
+1. A helyi webes KEZELŐFELÜLETen lépjen a **Kapcsolatfelvétel a támogatási szolgálatba**. Ha szeretné, jelölje be a memóriaképek **belefoglalása** jelölőnégyzetet. Ezután válassza a **támogatási csomag létrehozása** lehetőséget.
 
     A memóriakép az eszköz memóriájának tartalma, rendszerhiba után mentve.
 
-    Ha nem kér támogatást, ne jelölje be a **memóriakép belefoglalása** beállítást. Hosszú időt vesz igénybe a memóriaképet tartalmazó támogatási csomag összegyűjtése, és a bizalmas adatok is szerepelnek benne.
+    Ne jelölje be a **memóriaképek belefoglalása** beállítást, ha a támogatás nem kér ilyet. A rendszer hosszú időt vesz igénybe, hogy olyan támogatási csomagot gyűjtsön, amely tartalmazza a memóriaképeket, valamint a bizalmas adatokat is.
 
     ![Támogatási csomag létrehozása – 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
-    A rendszer összeállítja a támogatási csomagot. A művelet eltarthat néhány percig, ha csak rendszernaplókat tartalmaz. Ha befoglalja a memóriaképet, a rendszer sok időt vesz igénybe.
+    A rendszer összeállítja a támogatási csomagot. A művelet eltarthat néhány percig, ha csak rendszernaplókat tartalmaz. Ha memóriaképeket is tartalmaz, a rendszer sok időt vesz igénybe.
 
     ![Támogatási csomag létrehozása – 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
@@ -284,6 +284,6 @@ A TLS 1,1 engedélyezése az Azure-eszközön:
 4. A helyi webes felhasználói felületen lépjen a **Shut down or restart** (Leállítás vagy újraindítás) lapra.
 5. Válassza az **Újraindítás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [kezelheti a Data Box és Data Box Heavy a Azure Portalon keresztül](data-box-portal-admin.md).

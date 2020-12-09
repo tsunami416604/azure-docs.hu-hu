@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3ec9718d313e7e8d757eb41c230225bdcf9ebd49
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: e9334d222d443679362514481ecd83b90bbda0ac
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749045"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855073"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -33,7 +33,7 @@ A következő táblázat összefoglalja az egyes SDK-típusokhoz és az alkalmaz
 | Application Insights SDK | Adaptív mintavételezés támogatott | Rögzített arányú mintavételezés támogatott | A betöltési mintavételezés támogatott |
 |-|-|-|-|
 | ASP.NET | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-aspnet-applications) | [Igen](#configuring-fixed-rate-sampling-for-aspnet-applications) | Csak akkor, ha nincs más mintavételezés |
-| ASP.NET-mag | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Igen](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Csak akkor, ha nincs más mintavételezés |
+| ASP.NET Core | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Igen](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Csak akkor, ha nincs más mintavételezés |
 | Azure Functions | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-azure-functions) | Nem | Csak akkor, ha nincs más mintavételezés |
 | Java | Nem | [Igen](#configuring-fixed-rate-sampling-for-java-applications) | Csak akkor, ha nincs más mintavételezés |
 | Node.JS | Nem | [Igen](./nodejs.md#sampling) | Csak akkor, ha nincs más mintavételezés
@@ -315,18 +315,12 @@ Alapértelmezés szerint nem engedélyezett a mintavétel a Java-ügynökben és
 
 1. A [applicationinsights-Agent-3.0.0-preview. 5. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar) letöltése
 
-1. A mintavételezés engedélyezéséhez adja hozzá a következőt a `ApplicationInsights.json` fájlhoz:
+1. A mintavételezés engedélyezéséhez adja hozzá a következőt a `applicationinsights.json` fájlhoz:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "sampling": {
-        "fixedRate": {
-          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
-        }
-      }
-    }
+  "sampling": {
+    "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
   }
 }
 ```
@@ -559,7 +553,7 @@ A közelítés pontossága nagyrészt a beállított mintavételi százaléktól
 
 * Ha az SDK nem végez mintavételezést, a betöltési mintavételezés automatikusan megtörténhet egy adott köteten felüli bármely telemetria esetében. Ez a konfiguráció például akkor fog működni, ha a ASP.NET SDK vagy a Java SDK egy régebbi verzióját használja.
 * Ha az aktuális ASP.NET vagy ASP.NET Core SDK-kat használja (az Azure-ban vagy a saját kiszolgálón), akkor alapértelmezés szerint az adaptív mintavételezést is igénybe veheti, de a fent leírtak szerint válthat a rögzített arányra. A rögzített arányú mintavételezéssel a böngésző SDK automatikusan szinkronizál a mintavételsel kapcsolatos eseményekkel. 
-* Ha a jelenlegi Java-ügynököt használja, beállíthatja `ApplicationInsights.json` (Java SDK-hoz, konfiguráláshoz `ApplicationInsights.xml` ) a rögzített arányú mintavételezés bekapcsolásához. A mintavétel alapértelmezés szerint ki van kapcsolva. A rögzített arányú mintavételezéssel a böngésző SDK és a kiszolgáló automatikusan szinkronizál a mintavételezéssel kapcsolatos eseményekkel.
+* Ha a jelenlegi Java-ügynököt használja, beállíthatja `applicationinsights.json` (Java SDK-hoz, konfiguráláshoz `ApplicationInsights.xml` ) a rögzített arányú mintavételezés bekapcsolásához. A mintavétel alapértelmezés szerint ki van kapcsolva. A rögzített arányú mintavételezéssel a böngésző SDK és a kiszolgáló automatikusan szinkronizál a mintavételezéssel kapcsolatos eseményekkel.
 
 *Bizonyos ritkán előforduló események mindig látni szeretnék. Hogyan szerezhetem be a mintavételi modult a múltban?*
 
@@ -586,7 +580,7 @@ A fix sebességű mintavételezés az SDK egyik funkciója, amely a 2.0.0 és a 
 
 A v 2.5.0 előtt – a ASP.NET SDK Beta2, valamint a ASP.NET Core SDK-hoz készült v 2.2.0-beta3 a mintavételi döntés alapjául a felhasználói azonosító kivonata a "user" (azaz a leggyakoribb webalkalmazások) definiáló alkalmazásokhoz. Azon alkalmazások típusai esetében, amelyek nem határoznak meg felhasználókat (például webszolgáltatásokat), a mintavételi döntés a kérelem műveleti AZONOSÍTÓján alapul. A ASP.NET és ASP.NET Core SDK-k legújabb verziói a mintavételi döntés műveleti AZONOSÍTÓját használják.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [szűréssel](./api-filtering-sampling.md) szigorúbban VEZÉRELHETI az SDK által küldött adatokat.
 * Olvassa el a fejlesztői hálózat című cikket a [telemetria optimalizálása Application Insightsával](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights).

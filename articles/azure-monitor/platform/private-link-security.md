@@ -1,17 +1,17 @@
 ---
 title: Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 description: Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
-author: nkiest
-ms.author: nikiest
+author: noakup
+ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 8633aba2f7cda5dec4a48e9f7132283f8235f746
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: a85619b4947808ba1c13df3c1543102eea7273fd
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317520"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853925"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 
@@ -43,7 +43,7 @@ Azure Monitor a privát hivatkozás hatóköre olyan csoportosítási erőforrá
 A AMPLS-erőforrások beállítása előtt vegye figyelembe a hálózat elkülönítésének követelményeit. Értékelje ki a virtuális hálózatok hozzáférését a nyilvános internethez, valamint az egyes Azure Monitor erőforrások (azaz Application Insights összetevők és Log Analytics munkaterületek) hozzáférési korlátozásait.
 
 > [!NOTE]
-> A központilag küllő hálózatok vagy a több hálózattal rendelkező hálózatok bármely más topológiája beállíthat egy privát kapcsolatot a hub (fő) VNet és a kapcsolódó Azure Monitor erőforrások között ahelyett, hogy minden egyes VNet létre kellene állítania egy privát hivatkozást. Ez különösen akkor hasznos, ha az ilyen hálózatok által használt Azure Monitor erőforrások meg vannak osztva. Ha azonban engedélyezni szeretné az egyes VNet számára a figyelési erőforrások különálló készletének elérését, hozzon létre egy privát hivatkozást az egyes hálózatok dedikált AMPLS.
+> A központilag küllő hálózatok vagy a több hálózattal rendelkező hálózatok bármely más topológiája beállíthat egy privát kapcsolatot a hub (fő) VNet és a kapcsolódó Azure Monitor erőforrások között, és nem kell minden egyes VNet privát hivatkozást beállítania. Ez különösen akkor hasznos, ha az ilyen hálózatok által használt Azure Monitor erőforrások meg vannak osztva. Ha azonban engedélyezni szeretné az egyes VNet számára a figyelési erőforrások különálló készletének elérését, hozzon létre egy privát hivatkozást az egyes hálózatok dedikált AMPLS.
 
 ### <a name="evaluate-which-virtual-networks-should-connect-to-a-private-link"></a>Annak kiértékelése, hogy mely virtuális hálózatok csatlakozzanak egy privát kapcsolathoz
 
@@ -85,6 +85,11 @@ Az alábbi topológiában:
 * A Workspace2 az 2/5-es és A AMPLS-es AMPLS-hez csatlakozik, a (40%) használatával a lehetséges AMPLS-kapcsolatainak száma.
 
 ![AMPLS-korlátok diagramja](./media/private-link-security/ampls-limits.png)
+
+> [!NOTE]
+> Bizonyos hálózati topológiákban (főként a hub által küllő) a 10 virtuális hálózatok-korlátot gyorsan elérheti egyetlen AMPLS. Ilyen esetekben javasoljuk, hogy különálló kapcsolat helyett megosztott magánhálózati kapcsolatot használjon. Hozzon létre egyetlen privát végpontot a hub-hálózaton, kapcsolja össze a AMPLS, és a megfelelő hálózatokat a hub-hálózatra.
+
+![Sugaras – egyetlen PE](./media/private-link-security/hub-and-spoke-with-single-private-endpoint.png)
 
 ## <a name="example-connection"></a>Példa a kapcsolatok
 
@@ -259,6 +264,6 @@ Csomagolja be a JavaScript-kódot a parancsfájlba, hogy a böngésző ne kísé
 
 Ha privát kapcsolaton keresztül csatlakozik a Azure Monitor-erőforrásokhoz, ezen erőforrás felé irányuló forgalomnak a hálózaton konfigurált privát végponton kell haladnia. A magánhálózati végpont engedélyezéséhez frissítse a DNS-beállításokat a [Kapcsolódás privát végponthoz](#connect-to-a-private-endpoint)című részben leírtak szerint. Egyes böngészők a beállított beállítások helyett a saját DNS-beállításait használják. Előfordulhat, hogy a böngésző megpróbál csatlakozni Azure Monitor nyilvános végpontokhoz, és teljesen megkerüli a privát hivatkozást. Győződjön meg arról, hogy a böngészők beállításai nem felülbírálják vagy gyorsítótárazzák a régi DNS-beállításokat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [privát tárterületről](private-storage.md)

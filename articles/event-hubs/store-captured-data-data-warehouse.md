@@ -1,182 +1,23 @@
 ---
 title: 'Oktatóanyag: az események áttelepíthetők az Azure szinapszis Analyticsbe – Azure Event Hubs'
-description: 'Oktatóanyag: ez az oktatóanyag bemutatja, hogyan rögzíthet az Event hub adatait az Azure szinapszis Analyticsbe az Event Grid által aktivált Azure-függvény használatával.'
+description: Ismerteti, hogyan lehet a Azure Event Grid és a functions használatával áttelepíteni a rögzített adatok Event Hubs az Azure szinapszis Analytics szolgáltatásba.
 services: event-hubs
-ms.date: 06/23/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2a35647422c91d6859e1889f906ae512ce41a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a2b35dea57c71e9e6f07056bd106df2ac109b8
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89436612"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854244"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-azure-synapse-analytics-using-event-grid-and-azure-functions"></a>Oktatóanyag: rögzített Event Hubs-adatszolgáltatások migrálása az Azure szinapszis Analyticsbe Event Grid és Azure Functions használatával
+Az Azure Event Hubs [Capture](./event-hubs-capture-overview.md) lehetővé teszi, hogy az Azure Blob Storage-ban vagy a Azure Data Lake Storage-ban automatikusan rögzítse az adatfolyam-adatátvitelt Event Hubs. Ez az oktatóanyag bemutatja, hogyan telepítheti át a rögzített Event Hubsi adatait a Storage-ból az Azure szinapszis Analyticsbe egy [Event Grid](../event-grid/overview.md)által aktivált Azure-függvény használatával.
 
-Az Event Hubs [Capture](./event-hubs-capture-overview.md) a legegyszerűbb megoldás a streamelt Event Hubs-adatok Azure Blob Storage- vagy Azure Data Lake Store-fiókba történő automatikus továbbítására. Ezt követően feldolgozhatja és továbbíthatja az adatait bármely más, tetszőleges tárolási célhelyre, például az Azure szinapszis Analytics vagy a Cosmos DB használatával. Ebből az oktatóanyagból megtudhatja, hogyan rögzítheti az Event hub adatait az Azure szinapszis Analyticsbe az [Event Grid](../event-grid/overview.md)által aktivált Azure-függvény használatával.
+[!INCLUDE [event-grid-event-hubs-functions-synapse-analytics.md](../../includes/event-grid-event-hubs-functions-synapse-analytics.md)]
 
-![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
-
-- Először hozzon létre egy eseményközpontot, engedélyezze a **Capture** funkciót, és állítsa be az Azure Blob Storage tárolót célként. A WindTurbineGeneratorral létrehozott adatok az eseményközpontba lesznek streamelve, majd a rendszer automatikusan Avro-fájlokként rögzíti őket az Azure Storage-ban.
-- Ezután hozzon létre egy Azure Event Grid-előfizetést, ennek az Event Hubs-névtér legyen a forrása és az Azure Functions végpont legyen a célja.
-- Amikor az Event Hubs Capture funkcióján keresztül egy új Avro-fájl érkezik az Azure Storage-blobba, az Event Grid a blob URI-jével értesíti az Azure Functionst. A függvény ezután áttelepíti az adatait a blobból az Azure szinapszis Analyticsbe.
-
-Az oktatóanyag során a következő lépéseket hajtja végre:
-
-> [!div class="checklist"]
->
-> - Az infrastruktúra üzembe helyezése
-> - Kód közzététele egy Functions-alkalmazásra
-> - Event Grid-előfizetés létrehozása a Functions-alkalmazásból
-> - Mintaadatok streamelése az Event Hubsba.
-> - Rögzített adatértékek ellenőrzése az Azure szinapszis Analyticsben
-
-## <a name="prerequisites"></a>Előfeltételek
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-- [Visual studio 2019](https://www.visualstudio.com/vs/). Telepítés közben győződjön meg arról, hogy a következő számítási feladatokat is telepíti: .NET asztali fejlesztés, Azure-fejlesztés, ASP.NET- és webfejlesztés, Node.js-fejlesztés és Python-fejlesztés
-- A [git-minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) letöltése a minta megoldás a következő összetevőket tartalmazza:
-
-  - *WindTurbineDataGenerator* – Egy egyszerű közzétevő, amely szélturbina-mintaadatokat küld egy olyan eseményközpontnak, amelyen a Capture engedélyezve van
-  - *FunctionDWDumper* – Egy Azure-függvény, amely Event Grid-értesítést kap, ha az Azure Storage blobba egy Avro-fájlt rögzít a rendszer. Megkapja a blob URI-elérési útját, beolvassa a tartalmát, és leküldi ezeket az adatokat az Azure szinapszis Analytics szolgáltatásba.
-
-  Ez a példa a legújabb Azure. Messaging. EventHubs csomagot használja. [Itt](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)megtalálhatja a Microsoft. Azure. EventHubs csomagot használó régi mintát.
-
-### <a name="deploy-the-infrastructure"></a>Az infrastruktúra üzembe helyezése
-
-Az Azure PowerShell vagy Azure CLI használatával helyezheti üzembe az oktatóanyag elvégzéséhez szükséges infrastruktúrát ennek az [Azure Resource Manager-sablonnak](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json) a segítségével. Ez a sablon a következő erőforrásokat hozza létre:
-
-- Eseményközpont engedélyezett Capture szolgáltatással
-- Tárfiók a rögzített eseményadatokhoz
-- Azure App Service-csomag a Functions alkalmazás üzemeltetéséhez
-- Függvényalkalmazás a rögzített eseményfájlok feldolgozásához
-- Az adatraktár üzemeltetéséhez használt logikai SQL Server
-- Azure szinapszis Analytics az áttelepített adattárolók tárolásához
-
-A következő szakaszok szolgáltatják az Azure CLI és Azure PowerShell parancsokat az oktatóanyaghoz szükséges infrastruktúra üzembe helyezéséhez. Frissítse a következő objektumok neveit a parancsok futtatása előtt: 
-
-- Azure-erőforráscsoport 
-- Az erőforráscsoport régiója
-- Event Hubs-névtér
-- Eseményközpont
-- Logikai SQL Server
-- SQL-felhasználó (és jelszó)
-- Azure SQL-adatbázis
-- Azure Storage 
-- Azure Functions-alkalmazás
-
-Hosszabb időt vehet igénybe, amíg a szkriptek létrehozzák az összes Azure-összetevőt. Csak akkor lépjen tovább, ha a szkript futása már befejeződött. Ha az üzembe helyezés valamilyen okból sikertelen, törölje az erőforráscsoportot, hárítsa el a jelentett hibát, és futtassa újra a parancsot. 
-
-#### <a name="azure-cli"></a>Azure CLI
-
-A sablon Azure parancssori felülettel történő üzembe helyezéséhez használja a következő parancsokat:
-
-```azurecli-interactive
-az group create -l westus -n rgDataMigrationSample
-
-az group deployment create `
-  --resource-group rgDataMigrationSample `
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json `
-  --parameters eventHubNamespaceName=<event-hub-namespace> eventHubName=hubdatamigration sqlServerName=<sql-server-name> sqlServerUserName=<user-name> sqlServerPassword=<password> sqlServerDatabaseName=<database-name> storageName=<unique-storage-name> functionAppName=<app-name>
-```
-
-#### <a name="azure-powershell"></a>Azure PowerShell
-A sablon PowerShell-lel történő üzembe helyezéséhez használja a következő parancsokat:
-
-```powershell
-New-AzResourceGroup -Name rgDataMigration -Location westcentralus
-
-New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
-```
-
-### <a name="create-a-table-in-azure-synapse-analytics"></a>Tábla létrehozása az Azure szinapszis Analytics szolgáltatásban
-
-Hozzon létre egy táblázatot az Azure szinapszis Analyticsben a [CreateDataWarehouseTable. SQL](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) parancsfájl futtatásával a [Visual studióval](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), [SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md)vagy a portálon a lekérdezés-szerkesztő használatával. 
-
-```sql
-CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
-    [DeviceId] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL, 
-    [MeasureTime] datetime NULL, 
-    [GeneratedPower] float NULL, 
-    [WindSpeed] float NULL, 
-    [TurbineSpeed] float NULL
-)
-WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
-```
-
-## <a name="publish-code-to-the-functions-app"></a>Kód közzététele a Functions-alkalmazásba
-
-1. Nyissa meg a *EventHubsCaptureEventGridDemo. SLN* megoldást a Visual Studio 2019-ben.
-
-1. A Megoldáskezelőben kattintson a jobb gombbal a *FunctionEGDWDumper* elemre, majd válassza a **Közzététel** lehetőséget.
-
-   ![Függvényalkalmazás közzététele](./media/store-captured-data-data-warehouse/publish-function-app.png)
-
-1. Válassza az **Azure-függvényalkalmazás**, majd a **Meglévő kiválasztása** lehetőséget. Kattintson a **Publish** (Közzététel) elemre.
-
-   ![Cél függvényalkalmazás](./media/store-captured-data-data-warehouse/pick-target.png)
-
-1. Válassza ki a sablonnal üzembe helyezett függvényalkalmazást. Válassza az **OK** lehetőséget.
-
-   ![Függvényalkalmazás kiválasztása](./media/store-captured-data-data-warehouse/select-function-app.png)
-
-1. Miután a Visual Studio konfigurálta a profilt, kattintson a **Közzététel** elemre.
-
-   ![A Közzététel gomb kiválasztása](./media/store-captured-data-data-warehouse/select-publish.png)
-
-A függvény közzététele után feliratkozhat a rögzítés eseményre az Event Hubsból!
-
-
-## <a name="create-an-event-grid-subscription-from-the-functions-app"></a>Event Grid-előfizetés létrehozása a Functions-alkalmazásból
- 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Válassza ki az erőforráscsoportot és a függvényalkalmazást.
-
-   ![Függvényalkalmazás megtekintése](./media/store-captured-data-data-warehouse/view-function-app.png)
-
-1. Válassza ki a függvényt.
-
-   ![Függvény kiválasztása](./media/store-captured-data-data-warehouse/select-function.png)
-
-1. Válassza az **Event Grid-előfizetés hozzáadása** lehetőséget.
-
-   ![Előfizetés hozzáadása](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
-
-1. Adja meg az Event Grid-előfizetés nevét. Eseménytípusként használja az **Event Hubs-névterek** típust. Adja meg az értékeket az Event Hubs-névtér példányának kiválasztásához. A feliratkozó végpontjánál hagyja meg a megadott értéket. Kattintson a **Létrehozás** gombra.
-
-   ![Előfizetés létrehozása](./media/store-captured-data-data-warehouse/set-subscription-values.png)
-
-## <a name="generate-sample-data"></a>Mintaadatok létrehozása  
-Most beállította az Event hub, az Azure szinapszis Analytics, az Azure függvényalkalmazás és az Event Grid előfizetést. Miután frissítette a kapcsolati sztringet és az eseményközpont nevét a forráskódban, futtassa a WindTurbineDataGenerator.exe programot, hogy adatstreameket hozzon létre az eseményközpontba. 
-
-1. A portálon válassza ki az eseményközpont névterét. Válassza a **kapcsolatok karakterláncok**lehetőséget.
-
-   ![A Kapcsolati sztringek lehetőség kiválasztása](./media/store-captured-data-data-warehouse/event-hub-connection.png)
-
-2. Válassza a **RootManageSharedAccessKey** elemet.
-
-   ![Kulcs kiválasztása](./media/store-captured-data-data-warehouse/show-root-key.png)
-
-3. Másolja a **kapcsolati sztring elsődleges kulcsát**
-
-   ![Kulcs másolása](./media/store-captured-data-data-warehouse/copy-key.png)
-
-4. Térjen vissza a Visual Studio-projekthez. A *WindTurbineDataGenerator* projektben nyissa meg a *program.cs*.
-
-5. Frissítse az **EventHubConnectionString** és az **EventHubName** értékeit a kapcsolati sztringre és az eseményközpont nevére. 
-
-   ```cs
-   private const string EventHubConnectionString = "Endpoint=sb://demomigrationnamespace.servicebus.windows.net/...";
-   private const string EventHubName = "hubdatamigration";
-   ```
-
-6. Állítsa össze a megoldást, majd futtassa a WindTurbineGenerator.exe alkalmazást. 
-
-## <a name="verify-captured-data-in-data-warehouse"></a>A rögzített adatok ellenőrzése az adattárházban
-Néhány perc elteltével lekérdezi a táblázatot az Azure szinapszis Analytics szolgáltatásban. Megfigyelheti, hogy a WindTurbineDataGenerator által generált adatforrások adatfolyamba kerültek az Event hub-ba, egy Azure Storage-tárolóba rögzítve, majd az Azure-függvény által az Azure szinapszis Analytics-táblázatba migrálva.  
-
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 Ha gyakorlatban is használható elemzésekre vágyik, használjon hatékony adatvizualizációs eszközöket az adattárházával.
 
 Ez a cikk bemutatja, hogyan használható [a Power bi az Azure szinapszis Analytics](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) használatával

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 56a9861f0e25e1dcdf741cfdf5c8830dd9b6fc1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9fc465b5e5f132264fd36e004fa3ee7623b87a5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325810"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854988"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezés a Durable Functionsben (Azure Functions)
 
@@ -26,7 +26,7 @@ Ha egy előkészítési példány futtatására van szükség, az előzmények t
 
 ## <a name="instances-table"></a>Példányok tábla
 
-A **instances** tábla egy másik Azure Storage-tábla, amely az összes előkészítési és entitási példány állapotát tartalmazza egy adott feladatsoron belül. A példányok létrehozásakor a rendszer új sorokat ad hozzá ehhez a táblához. A tábla partíciós kulcsa a megszervezési példány azonosítója vagy az entitás kulcsa, és a sor kulcsa rögzített állandó. A rendszer egy összehangoló vagy egy entitás-példányon egy sort jelöl.
+A **instances** tábla egy másik Azure Storage-tábla, amely az összes előkészítési és entitási példány állapotát tartalmazza egy adott feladatsoron belül. A példányok létrehozásakor a rendszer új sorokat ad hozzá ehhez a táblához. A tábla partíciós kulcsa a megszervezési példány azonosítója vagy az entitás kulcsa, és a sor kulcsa üres karakterlánc. A rendszer egy összehangoló vagy egy entitás-példányon egy sort jelöl.
 
 Ez a tábla a `GetStatusAsync` (.net) és `getStatus` a (JavaScript) API-k, valamint az [állapot-lekérdezés http API](durable-functions-http-api.md#get-instance-status)-hoz tartozó példány-lekérdezési kérelmek kielégítésére szolgál. A rendszer végül konzisztensen tartja a korábban említett **History (korábbi** ) tábla tartalmát. Egy különálló Azure Storage-tábla használata a példányok lekérdezési műveleteinek hatékony kielégítése érdekében a [lekérdezési és manipulációs szerepek szétválasztása (CQRS) minta](/azure/architecture/patterns/cqrs)befolyásolja.
 
@@ -58,11 +58,11 @@ Az előkészítési példányok elkezdődnek, ha egy üzenetet helyeznek el `Exe
 
 1. **Várakozó-vezérlési várólisták**: Ha a példányhoz tartozó vezérlő-várólista nagy mennyiségű üzenetet tartalmaz, akkor az `ExecutionStarted` üzenet fogadása és a futtatókörnyezet általi feldolgozása előtt időbe telik. Üzenetben várakozó üzenetek akkor fordulnak elő, ha az előkészítés során a rendszer egyszerre sok eseményt dolgoz fel. A vezérlési várólistába bejelentkező események közé tartoznak az előkészítési események, a tevékenységek befejezése, a tartós időzítők, a megszakítások és a külső események. Ha ez a késés normális körülmények között történik, érdemes lehet egy új, nagyobb számú partícióval rendelkező feladatot létrehozni. A további partíciók konfigurálásával a futtatókörnyezet további vezérlési várólistákat hoz létre a terhelés elosztásához.
 
-2. A **lekérdezési késések**visszakeresése: egy másik gyakori ok, hogy az előkészítési késések a [vezérlési várólisták korábban leírt visszatartási lekérdezési viselkedését](#queue-polling)jelentik. Ez a késleltetés azonban csak akkor várható, ha egy alkalmazás két vagy több példányra van kibővítve. Ha csak egy alkalmazás példánya van, vagy ha a koordinálást elindító alkalmazás is ugyanaz a példány, amely lekérdezi a cél vezérlőelem-várólistát, akkor nem lesz várólista-lekérdezési késleltetés. A lekérdezési késések visszautasítása a korábban leírtaknak megfelelően a beállítások **host.js** frissítésével csökkenthető.
+2. A **lekérdezési késések** visszakeresése: egy másik gyakori ok, hogy az előkészítési késések a [vezérlési várólisták korábban leírt visszatartási lekérdezési viselkedését](#queue-polling)jelentik. Ez a késleltetés azonban csak akkor várható, ha egy alkalmazás két vagy több példányra van kibővítve. Ha csak egy alkalmazás példánya van, vagy ha a koordinálást elindító alkalmazás is ugyanaz a példány, amely lekérdezi a cél vezérlőelem-várólistát, akkor nem lesz várólista-lekérdezési késleltetés. A lekérdezési késések visszautasítása a korábban leírtaknak megfelelően a beállítások **host.js** frissítésével csökkenthető.
 
 ## <a name="storage-account-selection"></a>Storage-fiók kiválasztása
 
-Az Durable Functions által használt várólisták, táblák és Blobok egy konfigurált Azure Storage-fiókban jönnek létre. A használni kívánt fiók a `durableTask/storageProvider/connectionStringName` (z `durableTask/azureStorageConnectionStringName` )host.jsfájljában a (z) Durable functions 1. x fájlban megadott beállítással adható ** meg** .
+Az Durable Functions által használt várólisták, táblák és Blobok egy konfigurált Azure Storage-fiókban jönnek létre. A használni kívánt fiók a `durableTask/storageProvider/connectionStringName` (z `durableTask/azureStorageConnectionStringName` )host.jsfájljában a (z) Durable functions 1. x fájlban megadott beállítással adható **meg** .
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
@@ -264,7 +264,7 @@ Ha éles alkalmazások Durable Functions használatát tervezi használni, fonto
 
 A következő táblázat a korábban ismertetett forgatókönyvek várható *maximális* átviteli számát mutatja. A "példány" egy Orchestrator függvény egyetlen példányára hivatkozik, amely egy kisméretű ([a1](../../virtual-machines/sizes-previous-gen.md)) virtuális gépen fut Azure app Serviceban. A rendszer minden esetben feltételezi, hogy a [kiterjesztett munkamenetek](#orchestrator-function-replay) engedélyezve vannak. A tényleges eredmények a kód által végzett CPU-vagy I/O-műveletektől függően változhatnak.
 
-| Forgatókönyv | Maximális átviteli sebesség |
+| Használati példa | Maximális átviteli sebesség |
 |-|-|
 | Szekvenciális tevékenységek végrehajtása | 5 tevékenység másodpercenként, a példányok száma szerint |
 | Párhuzamos tevékenységek végrehajtása (ventilátor – kimenő) | 100 tevékenység/másodperc/példány |

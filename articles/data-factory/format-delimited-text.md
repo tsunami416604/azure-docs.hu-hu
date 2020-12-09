@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/07/2020
 ms.author: jingwang
-ms.openlocfilehash: bb284db102ea2fcb9086f65f9d19bdfee2c2936c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0fa68a8dbdcb1f2c0cc4af1b4df751fd81c0de14
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348888"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854631"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Tagolt szöveg formátuma Azure Data Factory
 
@@ -176,6 +176,9 @@ source(
     wildcardPaths:['*.csv']) ~> CSVSource
 ```
 
+> [!NOTE]
+> Az adatfolyam-források támogatják a Hadoop-fájlrendszerek által támogatott, korlátozott Linux-globbing
+
 ### <a name="sink-properties"></a>Fogadó tulajdonságai
 
 Az alábbi táblázat felsorolja a tagolt szöveges fogadó által támogatott tulajdonságokat. Ezeket a tulajdonságokat a **Beállítások** lapon módosíthatja.
@@ -202,7 +205,7 @@ CSVSource sink(allowSchemaDrift: true,
     skipDuplicateMapOutputs: true) ~> CSVSink
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)

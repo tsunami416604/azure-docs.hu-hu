@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f12ed42755af64f024fdcb0452173134f7b58482
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7589b5c66bf4fa86db243574f551ec585ccccea1
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183736"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855056"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -68,7 +68,7 @@ A Python nem támogatott verzióját a saját tároló rendszerképének létreh
 App Service a Oryx nevű Build-rendszer a következő lépéseket hajtja végre az alkalmazás git vagy zip-csomagok használatával történő telepítésekor:
 
 1. Ha ezt a beállítást adja meg, futtasson egyéni, előkészítő parancsfájlt `PRE_BUILD_COMMAND` .
-1. Futtassa az `pip install -r requirements.txt` parancsot. A *requirements.txt* fájlnak jelen kell lennie a projekt gyökérkönyvtárában. Ellenkező esetben a fordítási folyamat a következő hibát jelenti: "nem található a setup.py vagy a requirements.txt; Nem fut a pip telepítése. "
+1. Futtassa a `pip install -r requirements.txt` parancsot. A *requirements.txt* fájlnak jelen kell lennie a projekt gyökérkönyvtárában. Ellenkező esetben a fordítási folyamat a következő hibát jelenti: "nem található a setup.py vagy a requirements.txt; Nem fut a pip telepítése. "
 1. Ha a *Manage.py* a tárház gyökerében található (Django-alkalmazást jelez), futtassa a *Manage.py collectstatic*. Ha azonban ez a `DISABLE_COLLECTSTATIC` beállítás `true` , ez a lépés kimarad.
 1. Ha a beállítás megadja az egyéni létrehozás utáni parancsfájlt, `POST_BUILD_COMMAND`
 
@@ -101,19 +101,19 @@ A meglévő webalkalmazások a következőképpen helyezhetők üzembe az Azure-
 1. **Forrás adattár**: a forráskódot egy megfelelő tárházban, például a githubban tarthatja karban, amely lehetővé teszi a folyamatos üzembe helyezést a folyamat későbbi részében.
     1. A *requirements.txt* -fájlnak a tárház gyökerében kell lennie, app Service a szükséges csomagok automatikus telepítéséhez.    
 
-1. **Adatbázis**: Ha az alkalmazás egy adatbázistól függ, kiépítheti a szükséges erőforrásokat az Azure-ban is. Lásd [: oktatóanyag: Django-webalkalmazás üzembe helyezése PostgreSQL-ben – adatbázis létrehozása](tutorial-python-postgresql-app.md#create-postgres-database-in-azure) egy példához.
+1. **Adatbázis**: Ha az alkalmazás egy adatbázistól függ, kiépítheti a szükséges erőforrásokat az Azure-ban is. Lásd [: oktatóanyag: Django-webalkalmazás üzembe helyezése PostgreSQL-ben – adatbázis létrehozása](tutorial-python-postgresql-app.md#3-create-postgres-database-in-azure) egy példához.
 
-1. **App Service-erőforrások**: hozzon létre egy erőforráscsoportot, app Service tervet, és app Service webalkalmazást az alkalmazás üzemeltetéséhez. Ezt egyszerűen megteheti a kód első üzembe helyezésével az Azure CLI `az webapp up` -paranccsal, ahogy az [oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-ben – a kód üzembe helyezése](tutorial-python-postgresql-app.md#deploy-the-code-to-azure-app-service). Cserélje le az erőforráscsoport nevét, App Service tervet, és a webalkalmazást, hogy jobban megfeleljen az alkalmazásnak.
+1. **App Service-erőforrások**: hozzon létre egy erőforráscsoportot, app Service tervet, és app Service webalkalmazást az alkalmazás üzemeltetéséhez. Ezt egyszerűen megteheti a kód első üzembe helyezésével az Azure CLI `az webapp up` -paranccsal, ahogy az [oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-ben – a kód üzembe helyezése](tutorial-python-postgresql-app.md#4-deploy-the-code-to-azure-app-service). Cserélje le az erőforráscsoport nevét, App Service tervet, és a webalkalmazást, hogy jobban megfeleljen az alkalmazásnak.
 
 1. **Környezeti változók**: Ha az alkalmazásnak környezeti változókra van szüksége, hozzon létre egyenértékű [app Service Alkalmazásbeállítások](configure-common.md#configure-app-settings). Ezek a App Service beállítások környezeti változókként jelennek meg a kódban, a [hozzáférési környezet változói](#access-app-settings-as-environment-variables)című témakörben leírtak szerint.
-    - Az adatbázis-kapcsolatok például gyakran az ilyen beállításokon keresztül kezelhetők, ahogy az [oktatóanyag: Django-webalkalmazás telepítése PostgreSQL-ben – változók konfigurálása az adatbázis csatlakoztatására című útmutatóban](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database)látható.
+    - Az adatbázis-kapcsolatok például gyakran az ilyen beállításokon keresztül kezelhetők, ahogy az [oktatóanyag: Django-webalkalmazás telepítése PostgreSQL-ben – változók konfigurálása az adatbázis csatlakoztatására című útmutatóban](tutorial-python-postgresql-app.md#42-configure-environment-variables-to-connect-the-database)látható.
     - Tekintse meg a [Django-alkalmazások üzemi beállításait](#production-settings-for-django-apps) a tipikus Django-alkalmazások adott beállításaihoz.
 
 1. **Alkalmazás indítása**: a cikk későbbi részében tekintse át a [tároló indítási folyamatát](#container-startup-process) , hogy megtudja, hogyan app Service próbálja futtatni az alkalmazást. A App Service alapértelmezés szerint a Gunicorn webkiszolgálót használja, amely képesnek kell lennie az alkalmazás-objektum vagy a *WSGI.py* mappa megkeresésére. Ha szükséges, testre is [szabhatja az indítási parancsot](#customize-startup-command).
 
 1. **Folyamatos üzembe helyezés**: állítsa be a folyamatos üzembe helyezést a folyamatos üzembe [helyezésről Azure app Service](deploy-continuous-deployment.md) ha Azure-folyamatokat vagy kudu üzembe helyezést használ, vagy ha GitHub-műveleteket használ a GitHub-műveletek használatával [történő app Service](deploy-github-actions.md) .
 
-1. **Egyéni műveletek**: az alkalmazást futtató app Service tárolón belüli műveletek végrehajtásához, például a Django-adatbázis áttelepítéséhez, SSH-n [keresztül csatlakozhat a tárolóhoz](configure-linux-open-ssh-session.md). A Django-adatbázis áttelepítésének futtatására példát a következő témakörben talál [: oktatóanyag: Django-webalkalmazás üzembe helyezése PostgreSQL-ben – adatbázis-áttelepítés futtatása](tutorial-python-postgresql-app.md#run-django-database-migrations).
+1. **Egyéni műveletek**: az alkalmazást futtató app Service tárolón belüli műveletek végrehajtásához, például a Django-adatbázis áttelepítéséhez, SSH-n [keresztül csatlakozhat a tárolóhoz](configure-linux-open-ssh-session.md). A Django-adatbázis áttelepítésének futtatására példát a következő témakörben talál [: oktatóanyag: Django-webalkalmazás üzembe helyezése PostgreSQL-ben – adatbázis-áttelepítés futtatása](tutorial-python-postgresql-app.md#43-run-django-database-migrations).
     - Folyamatos üzembe helyezés esetén ezeket a műveleteket a [Build Automation testreszabása](#customize-build-automation)című szakaszban leírtak szerint végezheti el a létrehozás utáni parancsokkal.
 
 Ezeknek a lépéseknek a végrehajtásával véglegesítheti a forrás-adattár módosításait, és automatikusan telepítheti ezeket a frissítéseket a App Service.

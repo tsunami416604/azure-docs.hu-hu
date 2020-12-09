@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: 642a382f2ec5da7821c9d709bd27d592ced31c8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3383b4a3c2eab1f62d180c31e278f07b92c649c5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974036"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853515"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
 
@@ -52,7 +52,7 @@ Válassza a **hibák vizsgálata** lehetőséget a hibák ablaktábla elindítá
 
 ### <a name="investigate-performance"></a>Teljesítmény vizsgálata
 
-A teljesítménnyel kapcsolatos problémák elhárításához válassza a **teljesítmény vizsgálata**lehetőséget.
+A teljesítménnyel kapcsolatos problémák elhárításához válassza a **teljesítmény vizsgálata** lehetőséget.
 
 ![A teljesítmény vizsgálata gomb képernyőképe](media/app-map/investigate-performance.png)
 
@@ -76,7 +76,7 @@ Az alkalmazások adatai lekérdezéséhez és kivizsgálásához kattintson a **
 
 ### <a name="alerts"></a>Riasztások
 
-Az aktív riasztások és a riasztások indítását kiváltó alapul szolgáló szabályok megtekintéséhez válassza a **riasztások**lehetőséget.
+Az aktív riasztások és a riasztások indítását kiváltó alapul szolgáló szabályok megtekintéséhez válassza a **riasztások** lehetőséget.
 
 ![A riasztások gomb képernyőképe](media/app-map/alerts.png)
 
@@ -165,10 +165,8 @@ A [Java-ügynök 3,0](./java-in-process-agent.md) a Felhőbeli szerepkör neve a
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "roleName": "my cloud role name"
-    }
+  "role": {
+    "name": "my cloud role name"
   }
 }
 ```
@@ -229,7 +227,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>A Felhőbeli szerepkör nevének megértése az alkalmazás-hozzárendelés kontextusában
 
-A **Felhőbeli szerepkör nevének**megismerése érdekében hasznos lehet megtekinteni egy olyan alkalmazás-hozzárendelést, amely több felhőalapú szerepkör-névvel rendelkezik:
+A **Felhőbeli szerepkör nevének** megismerése érdekében hasznos lehet megtekinteni egy olyan alkalmazás-hozzárendelést, amely több felhőalapú szerepkör-névvel rendelkezik:
 
 ![Alkalmazás-Térkép képernyőképe](media/app-map/cloud-rolename.png)
 

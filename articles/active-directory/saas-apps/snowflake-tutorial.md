@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 26ca1fffb3932493dc7182de1b520f8c0a17d59c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3beb4e7831ce17a46f6daaa1258f284a0caefe8e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514843"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855131"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Oktatóanyag: Azure Active Directory a hópehely-integrációval
 
@@ -27,7 +27,7 @@ A hópehely és az Azure AD integrálásával a következő előnyöket nyújtja
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a hópehely-be (egyszeri bejelentkezés) az Azure AD-fiókkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -41,14 +41,14 @@ Az Azure AD-integráció a hópehely-nal való konfigurálásához a következő
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A hópehely támogatja **az SP-t és a identitásszolgáltató** KEZDEMÉNYEZett SSO
-* A hópehely támogatja [a felhasználók automatikus üzembe](snowflake-provisioning-tutorial.md) helyezését és megszüntetését (ajánlott)
+- A hópehely támogatja **az SP-t és a identitásszolgáltató** KEZDEMÉNYEZett SSO
+- A hópehely támogatja [a felhasználók automatikus üzembe](snowflake-provisioning-tutorial.md) helyezését és megszüntetését (ajánlott)
 
 ## <a name="adding-snowflake-from-the-gallery"></a>A hópehely hozzáadása a katalógusból
 
 A hópehely Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a galériából a Managed SaaS-alkalmazások listájához.
 
-**A következő lépések végrehajtásával adhat hozzá hópehely-t a katalógusból:**
+**A hópehely hozzáadása a gyűjteményből:**
 
 1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
@@ -62,13 +62,13 @@ A hópehely Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **hópehely**kifejezést, válassza a **hópehely** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **hópehely** kifejezést, válassza a **hópehely** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![A hópehely az eredmények listájában](common/search-new-app.png)
+     ![A hópehely az eredmények listájában](common/search-new-app-snowflake.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést és a hópehely-t a **Britta Simon**nevű teszt felhasználója konfigurálja és teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést és a hópehely-t a **Britta Simon** nevű teszt felhasználója fogja konfigurálni és tesztelni.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a hópehely-beli kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a hópehely használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -86,7 +86,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a hópehely-vel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **hópehely** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **hópehely** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -135,14 +135,14 @@ Az Azure AD egyszeri bejelentkezés a hópehely-vel való konfigurálásához ha
 
 1. Egy másik böngészőablakban jelentkezzen be a hópehely-ba biztonsági rendszergazdaként.
 
-1. **Váltson át** a **ACCOUNTADMIN**szerepkörre a lap jobb felső sarkában található **profil** elemre kattintva.
+1. **Váltson át** a **ACCOUNTADMIN** szerepkörre a lap jobb felső sarkában található **profil** elemre kattintva.
 
     > [!NOTE]
     > Ez eltér a Felhasználónév alatti jobb felső sarokban kiválasztott környezettől.
     
     ![A hópehely-rendszergazda](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
-1. Nyissa meg a **letöltött Base 64-tanúsítványt** a Jegyzettömbben. Másolja az értéket a "-----BEGIN CERTIFICATe-----" és a "-----END CERTIFICATe-----" között, és illessze be az alábbi **tanúsítvány** melletti idézőjelbe. A **ssoUrl**illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt. Válassza a **minden lekérdezés** elemet, majd kattintson a **Futtatás**gombra.
+1. Nyissa meg a **letöltött Base 64-tanúsítványt** a Jegyzettömbben. Másolja az értéket a "-----BEGIN CERTIFICATe-----" és a "-----END CERTIFICATe-----" között, és illessze be az alábbi **tanúsítvány** melletti idézőjelbe. A **ssoUrl** illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt. Válassza a **minden lekérdezés** elemet, majd kattintson a **Futtatás** gombra.
 
    ![Hópehely SQL](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
 
@@ -161,7 +161,7 @@ Az Azure AD egyszeri bejelentkezés a hópehely-vel való konfigurálásához ha
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -180,21 +180,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezi az Azure egyszeri bejelentkezést a hópehely elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **hópehely**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **hópehely** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában írja be és válassza a **hópehely**elemet.
+2. Az alkalmazások listában írja be és válassza a **hópehely** elemet.
 
     ![A hópehely hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -216,7 +216,7 @@ Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek a h
 
 1. Jelentkezzen be a hópehely-ba biztonsági rendszergazdaként.
 
-2. **Váltson át** a **ACCOUNTADMIN**szerepkörre a lap jobb felső sarkában található **profil** elemre kattintva.  
+2. **Váltson át** a **ACCOUNTADMIN** szerepkörre a lap jobb felső sarkában található **profil** elemre kattintva.  
 
     ![A hópehely-rendszergazda](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 

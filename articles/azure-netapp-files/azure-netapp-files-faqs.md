@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 5409f9177116add1fd794ec1e72f276daf34e029
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1537a87999f9a8eecf83a2431b2f53d3ceaedacb
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659148"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854699"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -60,7 +60,7 @@ Nem, Azure NetApp Files jelenleg nem támogatja a kettős verem (IPv4 és IPv6) 
 
 Az NFSv 4.1-ügyfelek és a Azure NetApp Files kötetek közötti adatforgalom titkosítható a Kerberos és az AES-256 titkosítás használatával. A részletekért lásd: [nfsv 4.1 Kerberos-titkosítás konfigurálása Azure NetApp Fileshoz](configure-kerberos-encryption.md) .   
 
-A NFSv3 vagy a SMBv3-ügyfelek közötti adatforgalom nincs titkosítva Azure NetApp Files kötetre. Az Azure-beli virtuális gépekről (NFS-vagy SMB-ügyfelet futtató) érkező forgalom azonban Azure NetApp Files biztonságos, mint bármely más Azure-beli virtuális gép – virtuális gép közötti forgalom. Ez a forgalom helyi az Azure-beli adatközpont-hálózat számára. 
+A NFSv3 vagy a SMB3-ügyfelek közötti adatforgalom nincs titkosítva Azure NetApp Files kötetre. Az Azure-beli virtuális gépekről (NFS-vagy SMB-ügyfelet futtató) érkező forgalom azonban Azure NetApp Files biztonságos, mint bármely más Azure-beli virtuális gép – virtuális gép közötti forgalom. Ez a forgalom helyi az Azure-beli adatközpont-hálózat számára. 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Titkosítható a tároló a nyugalmi állapotban?
 

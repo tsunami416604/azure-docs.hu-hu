@@ -8,18 +8,18 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 268862d6e868342a252ca9d5eb08b9753142e8b1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 99246ecee27f7ded693e2a797f8e98480e350983
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750747"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854529"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
 Ez a cikk az Azure Spring Cloud szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="why-azure-spring-cloud"></a>Az Azure Spring Cloud bemutatása
 
@@ -37,7 +37,7 @@ A biztonság és az adatvédelem az Azure és az Azure Spring Cloud ügyfeleinek
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Mely régiókban érhető el az Azure Spring Cloud?
 
-USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA déli középső régiója, USA nyugati régiója, Nyugat-Európa, Észak-Európa, Egyesült Királyság déli régiója, Délkelet-Ázsia és Kelet-Ausztrália.
+USA keleti régiója, USA 2. keleti régiója, az USA középső régiója, az USA déli középső régiója, az USA északi középső régiója, USA nyugati régiója, USA 2. nyugati régiója, Nyugat-Európa, Észak-Európa, Egyesült Királyság déli régiója, Délkelet-Ázsia, Kelet-Ausztrália
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>A megadott régión kívül tárolt ügyféladatok?
 
@@ -241,6 +241,6 @@ Nincs hatással a felhasználói élményre, az Eureka-ügyfél szívverési és
 Ennek a résznek a tökéletesítését fogjuk kijavítani, és ezt a hibát a felhasználói alkalmazások rövid időn belül el kell kerülniük.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további kérdései vannak, tekintse meg az [Azure Spring Cloud hibaelhárítási útmutatóját](spring-cloud-troubleshoot.md).

@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 348721304970a5d1d697ecf546a8c5039e81afc1
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b106b403022f3407a3838b7f65222baf41cbfff5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506107"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852965"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -35,7 +35,7 @@ Ebben az oktatóanyagban az Azure CLI használatával végezheti el a következ�
 Használhatja az [oktatóanyag Azure Portal verzióját](/azure/developer/python/tutorial-python-postgresql-app-portal)is.
 
 
-## <a name="set-up-your-initial-environment"></a>A kezdeti környezet beállítása
+## <a name="1-set-up-your-initial-environment"></a>1. Állítsa be a kezdeti környezetét
 
 1. Rendelkeznie kell aktív előfizetéssel rendelkező Azure-fiókkal. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 1. Telepítse a <a href="https://www.python.org/downloads/" target="_blank">Python 3,6-es vagy újabb</a>verzióját.
@@ -81,7 +81,7 @@ Miután bejelentkezett, futtathatja az Azure-parancsokat az Azure CLI-vel, hogy 
 
 Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
-## <a name="clone-or-download-the-sample-app"></a>A minta alkalmazás klónozása vagy letöltése
+## <a name="2-clone-or-download-the-sample-app"></a>2. a minta alkalmazás klónozása vagy letöltése
 
 # <a name="git-clone"></a>[Git-klón](#tab/clone)
 
@@ -118,7 +118,7 @@ A termelési beállítások a Django konfigurálására szolgálnak az éles kö
 
 Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
-## <a name="create-postgres-database-in-azure"></a>Postgres-adatbázis létrehozása az Azure-ban
+## <a name="3-create-postgres-database-in-azure"></a>3. postgres-adatbázis létrehozása az Azure-ban
 
 <!-- > [!NOTE]
 > Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. -->
@@ -129,7 +129,7 @@ Telepítse a `db-up` bővítményt az Azure CLI-hez:
 az extension add --name db-up
 ```
 
-Ha a `az` parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI telepítve van [a kezdeti környezet beállítása](#set-up-your-initial-environment)című témakörben leírtak szerint.
+Ha a `az` parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI telepítve van [a kezdeti környezet beállítása](#1-set-up-your-initial-environment)című témakörben leírtak szerint.
 
 Ezután hozza létre a postgres-adatbázist az Azure-ban a [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) paranccsal:
 
@@ -137,8 +137,9 @@ Ezután hozza létre a postgres-adatbázist az Azure-ban a [`az postgres up`](/c
 az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
-- Cserélje le az értékét az *\<postgres-server-name>* összes Azure-beli egyedi névre (a kiszolgálói végpont lesz `https://<postgres-server-name>.postgres.database.azure.com` ). A megfelelő minta a vállalat nevének és egy másik egyedi érték kombinációjának használata.
-- És rendszer esetén a *\<admin-username>* *\<admin-password>* hitelesítő adatok megadásával hozzon létre egy rendszergazdai felhasználót ehhez a postgres-kiszolgálóhoz. Ne használja a `$` karaktert a felhasználónévben vagy a jelszóban. Később olyan környezeti változókat hozhat létre ezekkel az értékekkel, amelyekben a `$` karakter speciális jelentéssel rendelkezik a Python-alkalmazások futtatásához használt Linux-tárolón belül.
+- **Cserélje le** *\<postgres-server-name>* az **összes Azure** -ban egyedi névvel (a kiszolgálói végpont lesz `https://<postgres-server-name>.postgres.database.azure.com` ). A megfelelő minta a vállalat nevének és egy másik egyedi érték kombinációjának használata.
+- És rendszer esetén a *\<admin-username>* *\<admin-password>* hitelesítő adatok megadásával hozzon létre egy rendszergazdai felhasználót ehhez a postgres-kiszolgálóhoz. A rendszergazda felhasználóneve nem lehet *azure_superuser*, *azure_pg_admin*, *Admin*, *Administrator*, *root*, *Guest* vagy *Public*. Nem kezdődhet *pg_*. A jelszónak **8 és 128 karakterből** kell állnia a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számok (0 – 9) és nem alfanumerikus karakterek (például!, #,%). A jelszó nem tartalmazhatja a felhasználónevet.
+- Ne használja a `$` karaktert a felhasználónévben vagy a jelszóban. Később olyan környezeti változókat hozhat létre ezekkel az értékekkel, amelyekben a `$` karakter speciális jelentéssel rendelkezik a Python-alkalmazások futtatásához használt Linux-tárolón belül.
 - Az itt használt B_Gen5_1 (alapszintű, Gen5, 1 Core) [árképzési szint](../postgresql/concepts-pricing-tiers.md) a legkevésbé költséges. Éles adatbázisok esetében hagyja ki az `--sku-name` argumentumot, hogy ehelyett a GP_Gen5_2 (általános célú, Gen 5, 2 magok) szintet használja.
 
 Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány percig:
@@ -153,7 +154,7 @@ Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány pe
 
 Az összes lépést külön is végrehajthatja más `az postgres` és más `psql` parancsokkal, de `az postgres up` az összes lépést együtt hajtja végre.
 
-A parancs befejeződése után egy olyan JSON-objektumot ad vissza, amely különböző kapcsolódási karakterláncokat tartalmaz az adatbázishoz a kiszolgáló URL-címével együtt, egy generált felhasználónevet (például " joyfulKoala@msdocs-djangodb-12345 ") és egy GUID-jelszót. Másolja a rövid felhasználónevet (mielőtt a @ nevet) és a jelszót egy ideiglenes szövegfájlba, ahogy az oktatóanyag későbbi részében szüksége lesz rájuk.
+A parancs befejeződése után egy olyan JSON-objektumot ad vissza, amely különböző kapcsolódási karakterláncokat tartalmaz az adatbázishoz a kiszolgáló URL-címével együtt, egy generált felhasználónevet (például " joyfulKoala@msdocs-djangodb-12345 ") és egy GUID-jelszót. **Másolja a felhasználónevet és a jelszót egy ideiglenes szövegfájlba** , ahogy az oktatóanyag későbbi részében szüksége lesz rájuk.
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
@@ -161,11 +162,11 @@ A parancs befejeződése után egy olyan JSON-objektumot ad vissza, amely külö
 
 Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
-## <a name="deploy-the-code-to-azure-app-service"></a>A kód üzembe helyezése Azure App Service
+## <a name="4-deploy-the-code-to-azure-app-service"></a>4. a kód üzembe helyezése Azure App Service
 
 Ebben a szakaszban az App Host alkalmazást App Service alkalmazásban hozza létre, kapcsolja össze az alkalmazást a postgres-adatbázissal, majd telepítse a kódot a gazdagépre.
 
-### <a name="create-the-app-service-app"></a>A App Service alkalmazás létrehozása
+### <a name="41-create-the-app-service-app"></a>4,1 a App Service alkalmazás létrehozása
 
 Győződjön meg arról, hogy a terminálban a *djangoapp* adattár mappában található, amely tartalmazza az alkalmazás kódját.
 
@@ -177,7 +178,7 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 <!-- without --sku creates PremiumV2 plan -->
 
 - Az `--location` argumentum esetében ugyanazt a helyet használja, mint az előző szakaszban található adatbázishoz.
-- Cserélje le *\<app-name>* az értékét az összes Azure-beli egyedi névre (a kiszolgálói végpont `https://<app-name>.azurewebsites.net` ). A következőhöz engedélyezett karakterek:, *\<app-name>* `A` - `Z` `0` - `9` és `-` . Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
+- **Cserélje le** *\<app-name>* az összes Azure-beli egyedi névvel (a kiszolgálói végpont `https://<app-name>.azurewebsites.net` ). A következőhöz engedélyezett karakterek:, *\<app-name>* `A` - `Z` `0` - `9` és `-` . Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
 
 Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány percig:
 
@@ -196,7 +197,7 @@ Sikeres telepítés esetén a parancs a következő példához hasonló JSON-kim
 
 Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
-### <a name="configure-environment-variables-to-connect-the-database"></a>Környezeti változók konfigurálása az adatbázishoz való kapcsolódáshoz
+### <a name="42-configure-environment-variables-to-connect-the-database"></a>4,2 környezeti változók konfigurálása az adatbázishoz való kapcsolódáshoz
 
 Ha a kód már telepítve van a App Servicere, a következő lépés az alkalmazás összekötése a postgres-adatbázissal az Azure-ban.
 
@@ -216,11 +217,11 @@ A Python-kódban ezeket a beállításokat környezeti változókként, példáu
 
 Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
-### <a name="run-django-database-migrations"></a>Django adatbázis-áttelepítések futtatása
+### <a name="43-run-django-database-migrations"></a>4,3 Django adatbázis-áttelepítés futtatása
 
 A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben található PostgreSQL-séma megfeleljen a kódban leírt sémának.
 
-1. Nyisson meg egy SSH-munkamenetet a böngészőben, és lépjen a következő URL-címre, és jelentkezzen be az Azure-fiókja hitelesítő adataival (nem az adatbázis-kiszolgáló hitelesítő adataival).
+1. Nyisson meg egy SSH-munkamenetet **a böngészőben** , és lépjen a következő URL-címre, és jelentkezzen be az Azure-fiókja hitelesítő adataival (nem az adatbázis-kiszolgáló hitelesítő adataival).
 
     ```
     https://<app-name>.scm.azurewebsites.net/webssh/host
@@ -230,9 +231,9 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
 
     MacOS és Linux rendszeren egy SSH-munkamenethez is csatlakozhat a [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) paranccsal.
 
-    Ha nem tud csatlakozni az SSH-munkamenethez, akkor maga az alkalmazás nem indult el. [A részletekért olvassa el a diagnosztikai naplókat](#stream-diagnostic-logs) . Ha például még nem hozta létre az alkalmazáshoz szükséges beállításokat az előző szakaszban, a naplók jelzik majd `KeyError: 'DBNAME'` .
+    Ha nem tud csatlakozni az SSH-munkamenethez, akkor maga az alkalmazás nem indult el. [A részletekért olvassa el a diagnosztikai naplókat](#6-stream-diagnostic-logs) . Ha például még nem hozta létre az alkalmazáshoz szükséges beállításokat az előző szakaszban, a naplók jelzik majd `KeyError: 'DBNAME'` .
 
-1. Az SSH-munkamenetben futtassa a következő parancsokat (a **CTRL** + **SHIFT** V használatával is beilleszthet parancsokat + **V** ):
+1. Az SSH-munkamenetben futtassa a következő parancsokat (a **CTRL** + **SHIFT** V használatával is beilleszthet parancsokat + **V**):
 
     ```bash
     # Change to the folder where the app code is deployed
@@ -257,11 +258,11 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
 
 Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
     
-### <a name="create-a-poll-question-in-the-app"></a>Lekérdezési kérdés létrehozása az alkalmazásban
+### <a name="44-create-a-poll-question-in-the-app"></a>4,4 lekérdezési kérdés létrehozása az alkalmazásban
 
 1. A böngészőben nyissa meg az URL-címet `http://<app-name>.azurewebsites.net` . Az alkalmazásnak meg kell jelennie a "nincs elérhető lekérdezés" üzenetnek, mert az adatbázisban még nincsenek adott lekérdezések.
 
-    Ha az "alkalmazáshiba" üzenet jelenik meg, akkor valószínű, hogy az előző lépésben nem hozta létre a szükséges beállításokat, [konfigurálja a környezeti változókat az adatbázishoz való kapcsolódáshoz](#configure-environment-variables-to-connect-the-database), vagy ha ezek az értékek hibákat tartalmaznak. A `az webapp config appsettings list` beállítások megadásához futtassa a parancsot. [A diagnosztikai naplókban](#stream-diagnostic-logs) is megtekintheti az alkalmazások indításakor megadott hibákat. Ha például nem hozta létre a beállításokat, a naplók a következő hibaüzenetet fogják látni: `KeyError: 'DBNAME'` .
+    Ha az "alkalmazáshiba" üzenet jelenik meg, akkor valószínű, hogy az előző lépésben nem hozta létre a szükséges beállításokat, [konfigurálja a környezeti változókat az adatbázishoz való kapcsolódáshoz](#42-configure-environment-variables-to-connect-the-database), vagy ha ezek az értékek hibákat tartalmaznak. A `az webapp config appsettings list` beállítások megadásához futtassa a parancsot. [A diagnosztikai naplókban](#6-stream-diagnostic-logs) is megtekintheti az alkalmazások indításakor megadott hibákat. Ha például nem hozta létre a beállításokat, a naplók a következő hibaüzenetet fogják látni: `KeyError: 'DBNAME'` .
 
     Miután frissítette a beállításokat a hibák kijavítása érdekében, adjon egy percet az alkalmazásnak, majd frissítse a böngészőt.
 
@@ -276,11 +277,11 @@ Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp)
 > [!NOTE]
 > App Service észleli a Django-projektet úgy, hogy minden almappában megkeres egy *WSGI.py* -fájlt, amely `manage.py startproject` alapértelmezés szerint létrehoz. Amikor App Service megkeresi a fájlt, betölti a Django-webalkalmazást. További információ: a [beépített Python-rendszerkép konfigurálása](configure-language-python.md).
 
-## <a name="make-code-changes-and-redeploy"></a>Kód módosításának és újbóli üzembe helyezésének tétele
+## <a name="5-make-code-changes-and-redeploy"></a>5. kód módosításának és újbóli üzembe helyezésének tétele
 
 Ebben a szakaszban helyi módosításokat hajt végre az alkalmazáson, és újból üzembe helyezi a kódot a App Service. A folyamat során beállíthat egy olyan Python virtuális környezetet, amely támogatja a folyamatos munkát.
 
-### <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
+### <a name="51-run-the-app-locally"></a>5,1 az alkalmazás helyi futtatása
 
 Futtassa a következő parancsokat egy terminálablakban. Ügyeljen arra, hogy kövesse a következő utasításokat a rendszergazda létrehozásakor:
 
@@ -355,7 +356,7 @@ Helyileg futtatva az alkalmazás egy helyi Sqlite3-adatbázist használ, és nem
 
 Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
-### <a name="update-the-app"></a>Az alkalmazás frissítése
+### <a name="52-update-the-app"></a>5,2 az alkalmazás frissítése
 
 A-ben `polls/models.py` Keresse meg a kezdetű sort, `choice_text` és módosítsa a `max_length` paramétert 100-re:
 
@@ -377,7 +378,7 @@ Futtassa újra a fejlesztői kiszolgálót, `python manage.py runserver` és tes
 
 Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
-### <a name="redeploy-the-code-to-azure"></a>A kód újbóli üzembe helyezése az Azure-ban
+### <a name="53-redeploy-the-code-to-azure"></a>5,3 a kód újbóli üzembe helyezése az Azure-ban
 
 Futtassa a következő parancsot az adattár gyökerében:
 
@@ -389,7 +390,7 @@ Ez a parancs a *. Azure/config* fájlban gyorsítótárazott paramétereket hasz
 
 Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
-### <a name="rerun-migrations-in-azure"></a>Migrálás újrafuttatása az Azure-ban
+### <a name="54-rerun-migrations-in-azure"></a>5,4 Migrálás újrafuttatása az Azure-ban
 
 Mivel módosította az adatmodellt, újra kell futtatnia az adatbázis-áttelepítést App Serviceban.
 
@@ -406,13 +407,13 @@ python manage.py migrate
 
 Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
-### <a name="review-app-in-production"></a>Alkalmazás áttekintése éles környezetben
+### <a name="55-review-app-in-production"></a>5,5 felülvizsgálati alkalmazás éles környezetben
 
 Keresse meg `http://<app-name>.azurewebsites.net` és tesztelje újra az alkalmazást éles környezetben. (Mivel csak az adatbázis mező hosszát módosította, a módosítás csak akkor észlelhető, ha egy kérdés létrehozásakor megpróbál hosszabb választ adni.)
 
 Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
-## <a name="stream-diagnostic-logs"></a>Diagnosztikai naplók streamelése
+## <a name="6-stream-diagnostic-logs"></a>6. stream diagnosztikai naplók
 
 Elérheti az Azure-beli alkalmazást futtató tárolón belül létrehozott konzol naplóit.
 
@@ -437,7 +438,7 @@ Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp)
 > az webapp log config --docker-container-logging filesystem
 > ```
 
-## <a name="manage-your-app-in-the-azure-portal"></a>Az alkalmazás kezelése a Azure Portalban
+## <a name="7-manage-your-app-in-the-azure-portal"></a>7. az alkalmazás kezelése a Azure Portalban
 
 A [Azure Portal](https://portal.azure.com)keresse meg az alkalmazás nevét, és válassza ki az alkalmazást az eredmények között.
 
@@ -449,7 +450,7 @@ Alapértelmezés szerint a portál az alkalmazás **Áttekintés** oldalát jele
 
 Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="8-clean-up-resources"></a>8. erőforrások törlése
 
 Ha meg szeretné tartani az alkalmazást, vagy folytassa a további oktatóanyagokkal, ugorjon a [következő lépésekre](#next-steps). Ellenkező esetben a folyamatos költségek elkerülése érdekében törölheti az ehhez az oktatóanyaghoz tartozó erőforráscsoport-létrehozási csoportot:
 

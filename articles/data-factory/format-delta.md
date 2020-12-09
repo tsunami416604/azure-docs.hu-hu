@@ -5,23 +5,20 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 12/07/2020
 ms.author: daperlov
-ms.openlocfilehash: 3e1c5f3b360960779dd58c8c05b25885df81d2e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 794c9a0768a7b649ce4fb123c85f6cc0120764c8
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276504"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854971"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Különbözeti formátum a Azure Data Factoryban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk azt mutatja be, hogyan másolhat adatok egy [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) vagy [Azure Blob Storage](connector-azure-blob-storage.md) tárolt Delta-tóból a Delta formátum használatával. Ez az összekötő [beágyazott adatkészletként](data-flow-source.md#inline-datasets) érhető el a leképezési adatforgalomban forrásként és fogadóként.
-
-> [!NOTE]
-> Az adatforgalom megfeleltetésének különbözeti formátum-összekötője jelenleg nyilvános előzetes verzióként érhető el.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
 
@@ -78,7 +75,7 @@ Az alábbi táblázatban a különbözeti fogadó által támogatott tulajdonsá
 | Tömörítés típusa | A különbözeti tábla tömörítési típusa | nem | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | fájba |
 | Tömörítési szint | Válassza ki, hogy a tömörítés a lehető leggyorsabban befejeződjön-e, vagy ha az eredményül kapott fájlt optimálisan kell tömöríteni. | kötelező, ha meg `compressedType` van adva. | `Optimal` vagy `Fastest` | compressionLevel |
 | Vacuum | A tábla régebbi verziói esetében a megőrzési küszöbértéket órában kell megadni. 0 vagy kevesebb alapértelmezett érték 30 nap. | igen | Egész szám | vákuum |
-| Frissítési módszer | Itt adhatja meg, hogy mely frissítési műveletek engedélyezettek a Delta-tavon. A nem beszúrt metódusok esetében a sorok megjelöléséhez egy előző módosítási sor átalakítására van szükség. | igen | `true` vagy `false` | törölhető <br> Insertable <br> frissíthető <br> upsertable |
+| Frissítési módszer | Itt adhatja meg, hogy mely frissítési műveletek engedélyezettek a Delta-tavon. A nem beszúrt metódusok esetében a sorok megjelöléséhez egy előző módosítási sor átalakítására van szükség. | igen | `true` vagy `false` | törölhető <br> Insertable <br> frissíthető <br> Körlevél |
 
 ### <a name="delta-sink-script-example"></a>Példa a különbözeti fogadó parancsfájlra
 

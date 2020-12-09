@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 7c1b9ad033ade3b577dc4a06e84801dab3b7eb70
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 76cfefa3f104ecef69e28fecd1c37fc336b0ce8c
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763961"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854648"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
@@ -29,7 +29,7 @@ Az alkalmazás bal oldali menüjében válassza a **konfigurációs**  >  **alka
 
 ![Alkalmazásbeállítások](./media/configure-common/open-ui.png)
 
-A ASP.NET és a ASP.NET Core fejlesztők esetében az Alkalmazásbeállítások beállítása a App Serviceban hasonló, mint `<appSettings>` a *Web.config* vagy a *appsettings.js* be értékének beállítása, de a app Serviceban szereplő értékek felülbírálják *Web.config* vagy *appsettings.js*. Megtarthatja a fejlesztési beállításokat (például a helyi MySQL-jelszót) *Web.config* , illetve *appsettings.js* és az éles környezetekben (például az Azure MySQL-adatbázis jelszava) a app Serviceban. Ugyanez a kód a helyi hibakeresés során a fejlesztési beállításokat használja, és az Azure-ba való üzembe helyezéskor az éles titkot használja.
+A ASP.NET és a ASP.NET Core fejlesztők esetében az Alkalmazásbeállítások beállítása a App Serviceban hasonló, mint `<appSettings>` a *Web.config* vagy a *appsettings.js* be értékének beállítása, de a app Serviceban szereplő értékek felülbírálják *Web.config* vagy *appsettings.js*. A fejlesztési beállításokat (például a helyi MySQL-jelszót) *Web.config* vagy *appsettings.jsbe* -és üzemi titkokat (például az Azure MySQL-adatbázis jelszavát) biztonságosan megtarthatja app Service. Ugyanez a kód a helyi hibakeresés során a fejlesztési beállításokat használja, és az Azure-ba való üzembe helyezéskor az éles titkot használja.
 
 Más nyelvi stackekhez hasonlóan az Alkalmazásbeállítások környezeti változókként is beszerezhetők futásidőben. A nyelvspecifikus speciális lépéseiért lásd:
 
@@ -276,7 +276,7 @@ Linux-alkalmazások esetén lásd:
 
 Lásd: [Egyéni Linux-tároló konfigurálása Azure app Servicehoz](configure-custom-container.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni tartománynév konfigurálása Azure App Service]
 - [Átmeneti környezetek beállítása az Azure App Service-ben]

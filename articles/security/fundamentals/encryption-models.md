@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a00dc5beb2bde02f71b40f6eb374502136c37c67
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 141daa485fae5aba2db23647fada30ba5b621cd0
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410487"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854614"
 ---
 # <a name="data-encryption-models"></a>Adattitkosítási modellek
 
@@ -159,9 +159,9 @@ Az egyes titkosítási modelleket támogató Azure-szolgáltatások:
 | Translator Text                  | Igen                | Igen                | -                  |
 | Power BI                         | Igen                | Igen, RSA 4096-bit  | -                  |
 | **Elemzés**                    |                    |                    |                    |
-| Azure Stream Analytics           | Igen                | N/A\*              | -                  |
+| Azure Stream Analytics           | Igen                | igen\*\*            | -                  |
 | Event Hubs                       | Igen                | Igen                | -                  |
-| Függvények                        | Igen                | Igen                | -                  |
+| Functions                        | Igen                | Igen                | -                  |
 | Azure Analysis Services          | Igen                | -                  | -                  |
 | Azure Data Catalog               | Igen                | -                  | -                  |
 | Azure HDInsight                  | Igen                | Mind                | -                  |
@@ -211,11 +211,11 @@ Az egyes titkosítási modelleket támogató Azure-szolgáltatások:
 | **IoT szolgáltatások**                 |                    |                    |                    |
 | IoT Hub                          | Igen                | Igen                | Igen                |
 | IoT Hub Device Provisioning      | Igen                | Igen                | -                  |
-| **Felügyelet és cégirányítás**    |                    |                    |                    |
+| **Felügyelet és irányítás**    |                    |                    |                    |
 | Azure Site Recovery              | Igen                | -                  | -                  |
 | Azure Migrate                    | Igen                | Igen                | -                  |
 | **Média**                        |                    |                    |                    |
-| Media Services                   | Igen                | -                  | Igen                |
+| Media Services                   | Igen                | Igen                | Igen                |
 | **Biztonság**                     |                    |                    |                    |
 | Azure Security Center for IoT    | Igen                | Igen                | -                  |
 | Azure Sentinel                   | Igen                | Igen                | -                  |
@@ -242,7 +242,7 @@ Az egyes titkosítási modelleket támogató Azure-szolgáltatások:
 
 \*\* Ez a szolgáltatás támogatja az adattárolást a saját Key Vaultban, a Storage-fiókban vagy más olyan adatmegőrzési szolgáltatásban, amely már támogatja a Server-Side titkosítást Customer-Managed kulccsal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [, hogyan használják a titkosítást az Azure-ban](encryption-overview.md).
 - Ismerje meg, hogyan használja az Azure a [kettős titkosítást](double-encryption.md) az adattitkosítással kapcsolatos fenyegetések enyhítésére.

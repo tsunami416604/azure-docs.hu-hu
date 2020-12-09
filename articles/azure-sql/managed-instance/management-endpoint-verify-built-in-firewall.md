@@ -11,17 +11,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 35d0053d8c45547eaa5e89e6da15fcaf0343d6c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8d46518415dc56e2792ef090b0be654d538426f
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617298"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853271"
 ---
 # <a name="verify-the-azure-sql-managed-instance-built-in-firewall"></a>A felügyelt Azure SQL-példány beépített tűzfalának ellenőrzése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Az Azure SQL felügyelt példányának [kötelező bejövő biztonsági szabályaihoz](connectivity-architecture-overview.md#mandatory-inbound-security-rules) a 9000, 9003, 1438, 1440 és 1452 felügyeleti portok szükségesek, hogy az SQL felügyelt példányát védő hálózati biztonsági csoport (NSG) **bármelyik forrásáról** meg lehessen nyitni. Habár ezek a portok a NSG szinten vannak megnyitva, a beépített tűzfal hálózati szinten védi azokat.
+Az Azure SQL felügyelt példányának [kötelező bejövő biztonsági szabályaihoz](connectivity-architecture-overview.md#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) a 9000, 9003, 1438, 1440 és 1452 felügyeleti portok szükségesek, hogy az SQL felügyelt példányát védő hálózati biztonsági csoport (NSG) **bármelyik forrásáról** meg lehessen nyitni. Habár ezek a portok a NSG szinten vannak megnyitva, a beépített tűzfal hálózati szinten védi azokat.
 
 ## <a name="verify-firewall"></a>Tűzfal ellenőrzése
 

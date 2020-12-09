@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2fb06c838de480bb73501307ab11cb3d6831921
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9f80de5a18e27de4a9f8e85613e3c2eee6c111c
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919318"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853475"
 ---
 # <a name="create-video-reviews-using-net"></a>Videós felülvizsgálatok létrehozása a .NET használatával
 
@@ -158,7 +158,7 @@ Hozzon létre egy videó-áttekintést a **ContentModeratorClient. Reviews. Crea
 A **CreateVideoReviews** a következő szükséges paraméterekkel rendelkezik:
 1. Egy MIME-típust tartalmazó karakterlánc, amelynek "Application/JSON" típusúnak kell lennie. 
 1. Az Content Moderator-csoport neve.
-1. Egy **IList \<CreateVideoReviewsBodyItem> ** objektum. Minden **CreateVideoReviewsBodyItem** -objektum egy videó-áttekintést képvisel. Ez a rövid útmutató egyszerre egy felülvizsgálatot hoz létre.
+1. Egy **IList \<CreateVideoReviewsBodyItem>** objektum. Minden **CreateVideoReviewsBodyItem** -objektum egy videó-áttekintést képvisel. Ez a rövid útmutató egyszerre egy felülvizsgálatot hoz létre.
 
 A **CreateVideoReviewsBodyItem** több tulajdonsággal rendelkezik. Legalább a következő tulajdonságokat kell beállítania:
 - **Tartalom**. Az áttekinteni kívánt videó URL-címe.
@@ -215,8 +215,8 @@ A video-képkockákat a **ContentModeratorClient. Reviews. AddVideoFrameUrl** (h
 A **AddVideoFrameUrl** a következő szükséges paraméterekkel rendelkezik:
 1. Egy MIME-típust tartalmazó karakterlánc, amelynek "Application/JSON" típusúnak kell lennie.
 1. Az Content Moderator-csoport neve.
-1. A **CreateVideoReviews**által visszaadott videó-felülvizsgálati azonosító.
-1. Egy **IList \<VideoFrameBodyItem> ** objektum. Minden **VideoFrameBodyItem** objektum képkockát jelöl.
+1. A **CreateVideoReviews** által visszaadott videó-felülvizsgálati azonosító.
+1. Egy **IList \<VideoFrameBodyItem>** objektum. Minden **VideoFrameBodyItem** objektum képkockát jelöl.
 
 A **VideoFrameBodyItem** a következő tulajdonságokkal rendelkezik:
 - **Időbélyeg**. Egy karakterlánc, amely másodpercek alatt azt a videót tartalmazza, amelyből a videó keretet készített.
@@ -294,9 +294,9 @@ static void AddFrame(ContentModeratorClient client, string review_id, string url
 
 ## <a name="get-video-frames-for-video-review"></a>Videó-képkockák áttekintése
 
-A videós áttekintést a **ContentModeratorClient. Reviews. GetVideoFrames**használatával szerezheti be. A **GetVideoFrames** a következő szükséges paraméterekkel rendelkezik:
+A videós áttekintést a **ContentModeratorClient. Reviews. GetVideoFrames** használatával szerezheti be. A **GetVideoFrames** a következő szükséges paraméterekkel rendelkezik:
 1. Az Content Moderator-csoport neve.
-1. A **CreateVideoReviews**által visszaadott videó-felülvizsgálati azonosító.
+1. A **CreateVideoReviews** által visszaadott videó-felülvizsgálati azonosító.
 1. Az első videó keretének nulla alapú indexe a lekéréshez.
 1. A lekérdezni kívánt képkockák száma.
 
@@ -324,7 +324,7 @@ static void GetFrames(ContentModeratorClient client, string review_id)
 
 A **ContentModeratorClient. Reviews. GetReview**. A **GetReview** a következő szükséges paraméterekkel rendelkezik:
 1. Az Content Moderator-csoport neve.
-1. A **CreateVideoReviews**által visszaadott videó-felülvizsgálati azonosító.
+1. A **CreateVideoReviews** által visszaadott videó-felülvizsgálati azonosító.
 
 Adja hozzá a következő metódus-definíciót a Namespace VideoReviews, a Class programhoz.
 
@@ -348,9 +348,9 @@ private static void GetReview(ContentModeratorClient client, string review_id)
 
 ## <a name="publish-video-review"></a>Videó közzétételének áttekintése
 
-A videós felülvizsgálatot a **ContentModeratorClient. Reviews. PublishVideoReview**címen teheti közzé. A **PublishVideoReview** a következő szükséges paraméterekkel rendelkezik:
+A videós felülvizsgálatot a **ContentModeratorClient. Reviews. PublishVideoReview** címen teheti közzé. A **PublishVideoReview** a következő szükséges paraméterekkel rendelkezik:
 1. Az Content Moderator-csoport neve.
-1. A **CreateVideoReviews**által visszaadott videó-felülvizsgálati azonosító.
+1. A **CreateVideoReviews** által visszaadott videó-felülvizsgálati azonosító.
 
 Adja hozzá a következő metódus-definíciót a Namespace VideoReviews, a Class programhoz.
 
@@ -546,10 +546,6 @@ Végezetül tekintse meg a videó felülvizsgálatot a Content moderator felülv
 
 ![Az emberi moderátorok videós áttekintése](images/ams-video-review.PNG)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Szerezze be a [Content moderator .net SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) -t és a [Visual Studio-megoldást](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ehhez és egyéb Content moderator a .net-hez készült gyors útmutatóhoz.
-
-Megtudhatja, hogyan adhat [átirat-moderálást](video-transcript-moderation-review-tutorial-dotnet.md) a videó felülvizsgálatához. 
-
-Tekintse meg a [teljes videó-moderálási megoldás](video-transcript-moderation-review-tutorial-dotnet.md)kidolgozásának részletes leírását.

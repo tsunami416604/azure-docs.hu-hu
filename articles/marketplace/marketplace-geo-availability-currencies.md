@@ -1,18 +1,18 @@
 ---
-title: Földrajzi Elérhetőség és pénznemek támogatása a Microsoft kereskedelmi piactéren
+title: A földrajzi Elérhetőség és a pénznemek támogatása a Microsoft kereskedelmi piactéren
 description: A földrajzi Elérhetőség és a pénznemek támogatása a kereskedelmi piactéren lebonyolított tranzakciók esetében
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 07/29/2020
-ms.openlocfilehash: bdb746c75a175d906301bcfca0b1472383fceff9
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 12/07/2020
+ms.openlocfilehash: 118fe70abf52a6c96f4f2dc47e3ad23a388f3598
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778070"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853747"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
 
@@ -46,22 +46,22 @@ A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által megha
 | Brunei                              | BN        | USD          | BND, EUR, SGD, USD |
 | Bulgária                            | BG        | EUR          | BGN, EUR, USD |
 | Cabo Verde                          | CV        | USD          | CVE, EUR, USD |
-| Kamerun                            | CM        | USD          | XAF, EUR, USD |
-| Kanada                              | CA        | CAD          | CAD, EUR, USD  |
-| Kajmán-szigetek                      | KY        | USD          | KYD, EUR, USD |
+| Kamerun                            | CM        | USD          | EUR, USD, XAF |
+| Kanada                              | CA        | CAD          | CAD, EUR, USD |
+| Kajmán-szigetek                      | KY        | USD          | EUR, KYD, USD |
 | Chile                               | CL        | USD          | CLP, EUR, USD |
 | Kína\**                            | CN        | N.A.          | N.A. |
 | Kolumbia                            | CO        | USD          | COP, EUR, USD |
 | Costa Rica                          | CR        | USD          | CRC, EUR, USD |
-| Côte d'Ivoire                       | CI        | USD          | XOF, EUR, USD |
-| Horvátország                             | HR        | EUR          | HRK, EUR, USD |
+| Côte d'Ivoire                       | CI        | USD          | EUR, USD, XOF |
+| Horvátország                             | HR        | EUR          | EUR, HRK, USD |
 | Curaçao                             | CW        | USD          | ANG, EUR, USD |
 | Ciprus                              | CY        | EUR          | EUR, USD  |
-| Csehország                             | CZ        | EUR          | EUR, USD, CZK |
+| Csehország                             | CZ        | EUR          | CZK, EUR, USD |
 | Dánia                             | DK        | DKK          | DKK, EUR, USD |
 | Dominikai Köztársaság                  | DO        | USD          | DOP, EUR, USD |
 | Ecuador                             | EC        | USD          | EUR, USD |
-| Egyiptom                               | EG        | USD          | EUR, USD EGP |
+| Egyiptom                               | EG        | USD          | EGP, EUR, USD |
 | Salvador                         | SV        | USD          | EUR, USD |
 | Észtország                             | EE        | EUR          | EUR, USD |
 | Etiópia                            | ET        | USD          | ETB, EUR, USD |
@@ -91,7 +91,7 @@ A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által megha
 | Kenya                               | KE        | USD          | EUR, KES, USD |
 | Dél-Korea                       | KR        | KRW          | EUR, KRW, USD |
 | Kuvait                              | KW        | USD          | EUR, KWD, USD |
-| Kirgizisztán                          | KG        | USD          | USD, EUR, KG |
+| Kirgizisztán                          | KG        | USD          | EUR, KG, USD |
 | Lettország                              | LV        | EUR          | EUR, USD |
 | Libanon                             | LB        | USD          | EUR, LBP, USD |
 | Líbia                               | LY        | USD          | EUR, LYD, USD |
@@ -139,8 +139,8 @@ A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által megha
 | Szlovénia                            | SI        | EUR          | EUR, USD |
 | Dél-afrikai Köztársaság                        | ZA        | USD          | EUR, USD, ZAR |
 | Spanyolország                               | ES        | EUR          | EUR, USD |
-| Srí Lanka                           | LK        | USD          | EUR, USD, LKR |
-| Svédország                              | SE        | SEK          | EUR, USD, SEK |
+| Srí Lanka                           | LK        | USD          | EUR, LKR, USD |
+| Svédország                              | SE        | SEK          | EUR, SEK, USD  |
 | Svájc                         | CH        | CHF          | CHF, EUR, USD |
 | Tajvan                              | TW        | TWD          | EUR, TWD, USD |
 | Tádzsikisztán                          | TJ        | USD          | EUR, TJS, USD |
@@ -151,7 +151,7 @@ A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által megha
 | Törökország                              | TR        | USD          | EUR, KIPRÓBÁLÁS, USD |
 | Türkmenisztán                        | TM        | USD          | EUR, TMT, USD |
 | Uganda                              | UG        | USD          | EUR, UGX, USD |
-| Ukrajna                             | UA        | USD          | EUR, UAH, RUB, USD |
+| Ukrajna                             | UA        | USD          | EUR, RUB, UAH, USD |
 | Egyesült Arab Emírségek                | AE        | USD          | AED, EUR, USD |
 | Egyesült Királyság                      | GB        | GBP          | EUR, GBP, USD |
 | Egyesült Államok                       | USA        | USD          | EUR, USD |

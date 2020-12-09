@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 4dc5b84ff127aef173deecfd2be705004d92ee0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7df04bd75f3fd11b1caa702655cbd204fc2b4fda
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449920"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854839"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure hálózatkezelési figyelési megoldások Azure Monitor
 
@@ -37,14 +37,20 @@ A [Network Performance monitor](../../networking/network-monitoring-overview.md)
 
 További információ: [Network Performance monitor](../../networking/network-monitoring-overview.md).
 
-## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure Application Gateway és hálózati biztonsági csoport elemzése
-A megoldások használata:
+## <a name="network-security-group-analytics"></a>Hálózati biztonsági csoport elemzése
+
 1. Adja hozzá a felügyeleti megoldást Azure Monitorhoz, és
 2. A diagnosztika engedélyezése a diagnosztika a Azure Monitor Log Analytics munkaterületre való irányításához. A naplókat nem szükséges az Azure Blob Storage-ba írni.
 
-A diagnosztika és a megfelelő megoldás a Application Gateway és a hálózati biztonsági csoportok egyikéhez vagy mindkettőhöz is engedélyezhető.
+Ha a diagnosztikai naplók nincsenek engedélyezve, az adott erőforráshoz tartozó irányítópult-pengék üresek, és hibaüzenetet jelenítenek meg.
 
-Ha nem engedélyezi a diagnosztikai erőforrás-naplózást egy adott erőforrástípus esetében, de telepíti a megoldást, az adott erőforrás irányítópult-pengéi üresek, és hibaüzenetet jelenítenek meg.
+## <a name="azure-application-gateway-analytics"></a>Azure Application Gateway Analitika
+
+1. A diagnosztika engedélyezése a diagnosztika a Azure Monitor Log Analytics munkaterületre való irányításához.
+2. Használja fel az erőforrás részletes összegzését a Application Gateway munkafüzet-sablonjának használatával.
+
+Ha a diagnosztikai naplók nincsenek engedélyezve a Application Gateway esetében, csak az alapértelmezett metrikai adatok lesznek kitöltve a munkafüzetben.
+
 
 > [!NOTE]
 > Január 2017-án az Application Gateway és a hálózati biztonsági csoportok naplóinak az Log Analytics munkaterületre való küldésének támogatott módja megváltozott. Ha az **Azure Networking Analytics (elavult)** megoldást látja, tekintse meg az [áttelepítés a régi hálózatkezelési elemzési megoldásból](#migrating-from-the-old-networking-analytics-solution) című témakört a követendő lépésekhez.
@@ -61,38 +67,16 @@ Az alábbi táblázat az adatok gyűjtési módszereit és az Azure Application 
 | Azure |  |  |&#8226; |  |  |naplózott |
 
 
-## <a name="azure-application-gateway-analytics-solution-in-azure-monitor"></a>Azure Application Gateway elemzési megoldás a Azure Monitor
-
-![Azure Application Gateway Analytics szimbólum](media/azure-networking-analytics/azure-analytics-symbol.png)
-
-Az Application Gateway átjárók esetében az alábbi naplók támogatottak:
-
-* ApplicationGatewayAccessLog
-* ApplicationGatewayPerformanceLog
-* ApplicationGatewayFirewallLog
-
-Az Application Gateway átjárók esetében a következő metrikák támogatottak:
-
-
-* 5 perces átviteli sebesség
-
-### <a name="install-and-configure-the-solution"></a>A megoldás telepítése és konfigurálása
-Az Azure Application Gateway Analytics megoldás telepítéséhez és konfigurálásához kövesse az alábbi utasításokat:
-
-1. Engedélyezze az Azure Application Gateway Analytics-megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) -en, vagy használja az [Solutions Gallery Azure monitor-megoldások hozzáadása](./solutions.md)című témakörben leírt eljárást.
-2. Engedélyezze a diagnosztikai naplózást a figyelni kívánt [Application Gateway átjárók](../../application-gateway/application-gateway-diagnostics.md) számára.
-
-#### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Az Azure Application Gateway Diagnostics engedélyezése a portálon
+### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Az Azure Application Gateway Diagnostics engedélyezése a portálon
 
 1. A Azure Portal navigáljon a figyelni kívánt Application Gateway erőforráshoz.
-2. A következő lap megnyitásához válassza a *diagnosztikai naplók* lehetőséget.
+2. Válassza a *diagnosztikai beállítások* elemet a következő oldal megnyitásához.
 
-   ![Képernyőkép a diagnosztikai naplók oldaláról Application Gateway erőforráshoz, amely a diagnosztika bekapcsolásának lehetőségét mutatja.](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
-3. Kattintson a *diagnosztika bekapcsolása* elemre a következő oldal megnyitásához.
+   ![A Application Gateway erőforrás diagnosztikai beállításainak konfigurációjának képernyőképe.](media/azure-networking-analytics/diagnostic-settings-1.png)
 
-   ![A diagnosztikai beállítások konfigurálására szolgáló lap képernyőképe. A Log Analytics küldésének lehetősége a következő három naplózási típus és egy metrika szerint van kiválasztva.](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
-4. A diagnosztika bekapcsolásához kattintson *az* *állapot*elemre.
-5. Kattintson a *küldés log Analyticsre*jelölőnégyzetre.
+   [![A diagnosztikai beállítások konfigurálására szolgáló lap képernyőképe.](media/azure-networking-analytics/diagnostic-settings-2.png)](media/azure-networking-analytics/application-gateway-diagnostics-2.png#lightbox)
+
+5. Kattintson a *küldés log Analyticsre* jelölőnégyzetre.
 6. Válasszon ki egy meglévő Log Analytics munkaterületet, vagy hozzon létre egy munkaterületet.
 7. A begyűjteni kívánt naplózási típusoknál kattintson a jelölőnégyzetre a **log (napló** ) területen.
 8. A *Mentés* gombra kattintva engedélyezheti a diagnosztika naplózását Azure monitor.
@@ -109,28 +93,33 @@ $gateway = Get-AzApplicationGateway -Name 'ContosoGateway'
 Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
-### <a name="use-azure-application-gateway-analytics"></a>Az Azure Application Gateway Analytics használata
-![Az Azure Application Gateway Analytics csempe képe](media/azure-networking-analytics/log-analytics-appgateway-tile.png)
+#### <a name="accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights"></a>Az Azure Application Gateway Analytics elérése Azure Monitor hálózati elemzések segítségével
 
-Miután rákattintott az **Azure Application Gateway Analytics** csempére az áttekintésben, megtekintheti a naplók összefoglalóit, majd részletesen bemutathatja a következő kategóriák részleteit:
+Az Application ininsights a Application Gateway-erőforráson belüli adatellenőrzések lapon keresztül érhető el.
 
-* Application Gateway hozzáférési naplók
-  * Ügyféloldali és kiszolgálói hibák Application Gateway hozzáférési naplókhoz
-  * Kérelmek/óra minden Application Gateway
-  * Sikertelen kérelmek száma óránként az egyes Application Gateway
-  * Az Application Gateway felhasználói ügynökének hibái
-* Application Gateway teljesítmény
-  * Application Gateway gazdagépének állapota
-  * Maximális és 95. percentilis Application Gateway sikertelen kérelmek esetén
+![Képernyőkép a Application Gateway-bepillantásokról ](media/azure-networking-analytics/azure-appgw-insights.png
+)
 
-![Képernyőkép a Application Gateway hozzáférési naplók irányítópultján az átjáróval kapcsolatos hibákra, kérelmekre és sikertelen kérelmekre vonatkozó információkkal rendelkező csempéket jelenít meg.](media/azure-networking-analytics/log-analytics-appgateway01.png)
+A "részletes mérőszámok megtekintése" lapon megnyílik az előre feltöltött munkafüzet, amely összefoglalja az adatokat a Application Gateway.
 
-![Képernyőfelvétel: a Application Gateway hozzáférési naplók irányítópultja a felhasználói ügynök, a gazdagép állapota és a sikertelen kérelmek által jelzett hibákkal kapcsolatos csempéket jelenít meg.](media/azure-networking-analytics/log-analytics-appgateway02.png)
+[![Képernyőkép Application Gateway munkafüzetről](media/azure-networking-analytics/azure-appgw-workbook.png)](media/azure-networking-analytics/application-gateway-workbook.png#lightbox)
 
-Az **Azure Application Gateway Analytics** irányítópultján tekintse át az egyik penge összefoglaló adatait, majd kattintson az egyikre a részletes információk megtekintéséhez a naplóbeli keresés oldalon.
+## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Migrálás az Azure Gateway Analytics megoldásból Azure Monitor munkafüzetekbe
 
-Bármelyik naplóbeli keresési oldalon megtekintheti az eredményeket idő szerint, részletes eredményekkel és a naplóbeli keresési előzményekkel. Az eredmények szűkítéséhez az aspektusok alapján is szűrheti az eredményeket.
+> [!NOTE]
+> Az Azure Application Gateway Analytics-megoldás elavult, és az elemzés ajánlott módja a Application Gateway erőforrás Azure Monitor hálózati elemzéseken keresztül elérhető munkafüzetek használatával.
 
+* Ha a diagnosztikai beállítás már engedélyezve van a naplók egy Log Analytics munkaterületre való tárolásához, Azure Monitor hálózati elemzések munkafüzete ugyanazon helyről származó adatok tárolására használható. Nincs szükség új konfigurációra.
+
+* Az összes korábbi adatok már elérhetők a munkafüzeten belül a pont diagnosztikai beállításainál. Nincs szükség adatátvitelre.
+
+* Nem szükséges aktív váltógomb a munkafüzetek váltásához. Az elemzési megoldás és a hálózati Insight-munkafüzet párhuzamosan is működhet.
+
+* Azure Monitor-munkafüzetek esetében nem jár további költségek. Log Analytics munkaterület továbbra is használati díjként lesz számlázva.
+
+* Az Azure Gateway Analytics megoldás munkaterületről való törléséhez törölheti a megoldást a megoldás erőforrás-oldaláról.
+
+[![Képernyőkép az Azure Application Gateway Analytics megoldás törlési lehetőségéről.](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
 
 ## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Azure hálózati biztonsági csoport elemzési megoldása Azure Monitor
 

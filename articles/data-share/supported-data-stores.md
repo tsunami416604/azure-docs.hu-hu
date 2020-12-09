@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 6289395b5d508de8da3e5c8c89caebb4b0e9b817
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/7/2020
+ms.openlocfilehash: 566fd2c9c31933420769f7200a0434cc53f8c2f3
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592430"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853142"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Az Azure Data Share támogatott adattárai
 
@@ -30,7 +30,7 @@ Az alábbi táblázat az Azure-adatmegosztás támogatott adatforrásait részle
 | 2. generációs Azure Data Lake Storage |✓ |✓ ||
 | Azure SQL Database |✓ | | |
 | Azure szinapszis Analytics (korábban Azure SQL DW) |✓ | | |
-| Az Azure szinapszis Analytics (munkaterület) SQL-készlete | Nyilvános előzetes verzió | | |
+| Azure szinapszis Analytics (munkaterület) dedikált SQL-készlet |✓ | | |
 | Azure Data Explorer | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Adattár támogatási mátrixa
@@ -39,14 +39,14 @@ Az Azure-beli adatmegosztás rugalmasságot biztosít az adattáraknak az adatt�
 
 Az alábbi táblázat a különböző kombinációkat és választásokat ismerteti, amelyeket az adatfogyasztók az adatmegosztás elfogadásakor és konfigurálásakor tartalmaznak. Az adatkészlet-hozzárendelések konfigurálásával kapcsolatos további információkért lásd: [adatkészlet-hozzárendelések konfigurálása](how-to-configure-mapping.md).
 
-| Adattár | Azure Blob Storage | 1. generációs Azure Data Lake Storage | 2. generációs Azure Data Lake Storage | Azure SQL Database | Azure szinapszis Analytics (korábban Azure SQL DW) | Az Azure szinapszis Analytics (munkaterület) SQL-készlete | Azure Data Explorer
+| Adattár | Azure Blob Storage | 1. generációs Azure Data Lake Storage | 2. generációs Azure Data Lake Storage | Azure SQL Database | Azure szinapszis Analytics (korábban Azure SQL DW) | Azure szinapszis Analytics (munkaterület) dedikált SQL-készlet | Azure Data Explorer
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
 | Azure Blob Storage | ✓ || ✓ |||
 | 1. generációs Azure Data Lake Storage | ✓ | | ✓ |||
 | 2. generációs Azure Data Lake Storage | ✓ | | ✓ |||
 | Azure SQL Database | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Azure szinapszis Analytics (korábban Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Az Azure szinapszis Analytics (munkaterület) SQL-készlete | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Azure szinapszis Analytics (munkaterület) dedikált SQL-készlet | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Azure Data Explorer ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>Megosztás egy Storage-fiókból

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 6585718a549c0e0a6eac1ab50788798e1021fef9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b05ed6e1239721bcf3c1cf33d3ee63a992fd9843
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446820"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853227"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>A megoldás-gyorsító üzembe helyezése a azureiotsolutions.com webhely használatával
 
@@ -22,7 +22,7 @@ Az Azure IoT megoldás-gyorsítók üzembe helyezhetők az Azure-előfizetésben
 ![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
 
 > [!TIP]
-> Ha nagyobb mértékű vezérlésre van szüksége a telepítési folyamat felett, a parancssori felület használatával [üzembe helyezhet egy megoldás-gyorsító](iot-accelerators-remote-monitoring-deploy-cli.md).
+> Ha nagyobb mértékű vezérlésre van szüksége a telepítési folyamat felett, a parancssori felület használatával üzembe helyezhet egy megoldás-gyorsító.
 
 A megoldás-gyorsítók a következő konfigurációkon helyezhetők üzembe:
 
@@ -62,11 +62,6 @@ A katalógus felsorolja a több száz tanúsított IoT hardvereszközöket, amel
 
 Ha Ön hardver gyártója, kattintson a partnerré **válás** lehetőségre a Microsofttal való partneri együttműködés megismeréséhez a Certified for IoT programban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az IoT-megoldásgyorsítók valamelyikének kipróbálásához tekintse meg a következő rövid útmutatókat:
-
-* [Távoli monitorozási megoldás kipróbálása](quickstart-remote-monitoring-deploy.md)
-* [Csatlakoztatottgyár-megoldás kipróbálása](quickstart-connected-factory-deploy.md)
-* [Prediktív karbantartási megoldás kipróbálása](quickstart-predictive-maintenance-deploy.md)
-* [Eszközszimulációs megoldás kipróbálása](quickstart-device-simulation-deploy.md)
+Ha szeretné kipróbálni az egyik IoT-megoldás-gyorssegédet, tekintse meg a gyors üzembe helyezési útmutatót: [próbáljon ki egy csatlakoztatott gyári megoldást](quickstart-connected-factory-deploy.md).
