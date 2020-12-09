@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba85bda1e322d3efd467527b48bd4cd90eb7ce8c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012722"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922628"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Az automatizált gépi tanulással megakadályozhatja a túlilleszkedő és a kiegyensúlyozatlan adatkezelést
 
@@ -33,9 +33,9 @@ Vegye figyelembe a következő betanított modelleket és a hozzájuk kapcsolód
 | B | 87% | 87% |
 | C | 99.9% | 45% |
 
-Az **a**modellt figyelembe véve gyakori tévhit, hogy ha a láthatatlan adatokon a teszt pontossága alacsonyabb, mint a betanítási pontosság, a modell túl van szerelve. A teszt pontosságának azonban mindig kisebbnek kell lennie, mint a kiképzés pontossága, és a túlzottan illeszkedő és a megfelelő illeszkedéshez való különbségtétel nem *sokkal* kevésbé pontos. 
+Az **a** modellt figyelembe véve gyakori tévhit, hogy ha a láthatatlan adatokon a teszt pontossága alacsonyabb, mint a betanítási pontosság, a modell túl van szerelve. A teszt pontosságának azonban mindig kisebbnek kell lennie, mint a kiképzés pontossága, és a túlzottan illeszkedő és a megfelelő illeszkedéshez való különbségtétel nem *sokkal* kevésbé pontos. 
 
-Az **a** és **B**modellek összehasonlításakor a Model **a** jobb modell, mert a teszt pontossága nagyobb, és bár a tesztelési pontosság valamivel alacsonyabb, mint 95%, nem jelent jelentős különbséget, amely a túlzottan illeszkedő megoldásra utal. Nem választhatja a **B** modellt egyszerűen azért, mert a vonat és a teszt pontosság egymáshoz közelednek.
+Az **a** és **B** modellek összehasonlításakor a Model **a** jobb modell, mert a teszt pontossága nagyobb, és bár a tesztelési pontosság valamivel alacsonyabb, mint 95%, nem jelent jelentős különbséget, amely a túlzottan illeszkedő megoldásra utal. Nem választhatja a **B** modellt egyszerűen azért, mert a vonat és a teszt pontosság egymáshoz közelednek.
 
 A **C** modell a túlzott illesztések egyértelmű esetét jelöli. a betanítás pontossága nagyon magas, de a teszt pontossága nem a magashoz közel van. Ez a különbségtétel szubjektív, de a probléma és az adatok ismerete, valamint a hibák számának elfogadható.
 
@@ -56,7 +56,7 @@ Az automatikus ML-ben a fenti első három elem az Ön által **megvalósított 
 
 ### <a name="best-practices-you-implement"></a>Az Ön által megvalósított ajánlott eljárások
 
-A **több adat** használata a legegyszerűbb és a lehető legjobb módszer a túlzott méretezés megelőzésére, és a hozzáadott bónusz általában növeli a pontosságot. Ha több adathalmazt használ, a modell nehezebbé válik a pontos mintázatok memorizálása érdekében, és olyan megoldások elérésére kényszerül, amelyek rugalmasabbak a további feltételek kielégítéséhez. Fontos továbbá a **statisztikai torzulások**felismerése is, hogy a betanítási adatai ne tartalmazzanak olyan elszigetelt mintákat, amelyek nem léteznek az élő előrejelzési adataiban. Ez a forgatókönyv nehezen oldható meg, mert előfordulhat, hogy nem lehet túlságosan összekapcsolni a vonat-és a tesztelési készletek között, de az élő tesztelési adathoz képest előfordulhat, hogy túl is illik.
+A **több adat** használata a legegyszerűbb és a lehető legjobb módszer a túlzott méretezés megelőzésére, és a hozzáadott bónusz általában növeli a pontosságot. Ha több adathalmazt használ, a modell nehezebbé válik a pontos mintázatok memorizálása érdekében, és olyan megoldások elérésére kényszerül, amelyek rugalmasabbak a további feltételek kielégítéséhez. Fontos továbbá a **statisztikai torzulások** felismerése is, hogy a betanítási adatai ne tartalmazzanak olyan elszigetelt mintákat, amelyek nem léteznek az élő előrejelzési adataiban. Ez a forgatókönyv nehezen oldható meg, mert előfordulhat, hogy nem lehet túlságosan összekapcsolni a vonat-és a tesztelési készletek között, de az élő tesztelési adathoz képest előfordulhat, hogy túl is illik.
 
 A **célzott szivárgás** egy hasonló probléma, ahol előfordulhat, hogy nem jelenik meg a betanítási és a tesztelési készletek közötti túlterhelés, hanem az előrejelzési időpontban jelenik meg. A cél szivárgás akkor fordul elő, ha a "Cheats" modell a betanítás során olyan információhoz fér hozzá, amelyeknek általában nem kell előrejelzési időpontban lennie. Ha például a probléma a hétfő alapján várhatóan megjósolható, hogy Mennyibe kerül az áru díja, de az egyik funkció, amely véletlenül a csütörtöki adatokból származik, a modellnek nem lesz előrejelzési ideje, mert nem látja a jövőben. A cél szivárgás egyszerű tévedés, de gyakran a probléma szokatlanul nagy pontossága jellemzi. Ha a készlet árának előrejelzését és a modell 95%-os pontosságú betanítását kísérli meg, akkor valószínű, hogy valahol a funkciók között kell elszivárogni.
 
@@ -84,8 +84,8 @@ Emellett az automatikus ML-futtatások automatikusan létrehozzák a következő
 Diagram| Leírás
 ---|---
 [Zavart mátrix](how-to-understand-automated-ml.md#confusion-matrix)| Kiértékeli a helyesen kategorizált címkéket az adatok tényleges címkéjén. 
-[Pontosság – visszahívás](how-to-understand-automated-ml.md#precision-recall-chart)| Kiértékeli a helyes feliratok arányát az adatokban található címkézett példányok arányával. 
-[ROC-görbék](how-to-understand-automated-ml.md#roc)| Kiértékeli a helyes feliratok arányát a hamis pozitív feliratok arányával.
+[Pontosság – visszahívás](how-to-understand-automated-ml.md#precision-recall-curve)| Kiértékeli a helyes feliratok arányát az adatokban található címkézett példányok arányával. 
+[ROC-görbék](how-to-understand-automated-ml.md#roc-curve)| Kiértékeli a helyes feliratok arányát a hamis pozitív feliratok arányával.
 
 ## <a name="handle-imbalanced-data"></a>Kiegyensúlyozatlan adatmennyiség kezelése 
 
@@ -103,7 +103,7 @@ Az alábbi módszerek további lehetőségeket biztosítanak az **automatikus ml
 
 - Tekintse át a teljesítmény mérőszámait a kiegyensúlyozatlan adatokhoz. Az F1 pontszám például a pontosság és a visszahívás harmonikus középértéke. A pontosság mértéke az osztályozó pontossága, ahol a nagyobb pontosság kevesebb hamis pozitív értéket jelez, míg a visszahívás az osztályozó teljességét jelzi, ahol a nagyobb visszahívás kevesebb hamis negatív értéket jelez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a példákat, és Ismerje meg, hogyan hozhat létre modelleket automatizált gépi tanulás használatával:
 

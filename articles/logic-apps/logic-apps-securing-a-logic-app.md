@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: 331c55a9f7a489aa58f9d3add7303dc18917215d
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 12/08/2020
+ms.openlocfilehash: cdaa054559be9db52eeef6f3aaa0f86ccf84206f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331940"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922945"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -199,7 +199,7 @@ Ha engedélyezni szeretné az Azure AD-OAuth a logikai alkalmazáshoz a Azure Po
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Szabályzat neve** | Igen | Az engedélyezési házirendhez használni kívánt név |
-   | **Igénylések** | Igen | A logikai alkalmazás által a bejövő hívásokból elfogadott jogcím-típusok és-értékek. A jogcím értéke 80 karakterre van korlátozva. Az elérhető jogcím-típusok a következők: <p><p>- **Kibocsátó** <br>- **Célközönség** <br>- **Tulajdonos** <br>- **JWT-azonosító** (JSON web token azonosító) <p><p>A **jogcímek** listájának legalább a **kiállítói** jogcímet tartalmaznia kell, amelynek értéke `https://sts.windows.net/` vagy `https://login.microsoftonline.com/` Az Azure ad kiállító azonosítója. További információ ezekről a jogcím-típusokról: [jogcímek az Azure ad biztonsági jogkivonatokban](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Megadhatja a saját jogcím típusát és értékét is. |
+   | **Igénylések** | Igen | A logikai alkalmazás által a bejövő hívásokból elfogadott jogcím-típusok és-értékek. A jogcím értéke [legfeljebb karakter hosszúságú](logic-apps-limits-and-config.md#authentication-limits)lehet. Az elérhető jogcím-típusok a következők: <p><p>- **Kibocsátó** <br>- **Célközönség** <br>- **Tulajdonos** <br>- **JWT-azonosító** (JSON web token azonosító) <p><p>A **jogcímek** listájának legalább a **kiállítói** jogcímet tartalmaznia kell, amelynek értéke `https://sts.windows.net/` vagy `https://login.microsoftonline.com/` Az Azure ad kiállító azonosítója. További információ ezekről a jogcím-típusokról: [jogcímek az Azure ad biztonsági jogkivonatokban](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Megadhatja a saját jogcím típusát és értékét is. |
    |||
 
 1. Egy másik Jogcím hozzáadásához válasszon a következő lehetőségek közül:
@@ -332,7 +332,7 @@ A közös hozzáférésű aláírás (SAS) mellett érdemes lehet kifejezetten k
         
    * Olyan esetekben, ahol a más IP-címekről érkező bejövő hívásokat szeretné korlátozni, amikor megjelenik az **IP-címtartományok az eseményindítók számára** mezőben, megadhatja az eseményindító által elfogadott IP-címtartományt. Egy érvényes IP-címtartomány a következő formátumokat használja: *x. x. x. x/x* vagy *x. x. x. x-x. x. x. x*.
 
-1. Ha nem szeretné, hogy a **hívások korlátozása lehetőséggel beolvassa a bemeneti és kimeneti üzeneteket a megadott IP-címekre** , megadhatja azokat az IP-címtartományt a bejövő hívásoknál, amelyek hozzáférhetnek a bemeneti és kimeneti üzenetekhez a futtatási előzményekben.
+1. Ha nem szeretné, hogy a **hívások korlátozása lehetőséggel beolvassa a bemeneti és kimeneti üzeneteket a megadott IP-címekre**, megadhatja azokat az IP-címtartományt a bejövő hívásoknál, amelyek hozzáférhetnek a bemeneti és kimeneti üzenetekhez a futtatási előzményekben.
 
 <a name="restrict-inbound-ip-template"></a>
 
@@ -340,7 +340,7 @@ A közös hozzáférésű aláírás (SAS) mellett érdemes lehet kifejezetten k
 
 Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzembe helyezését](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), a szakasz segítségével megadhatja a logikai alkalmazás erőforrás-definíciójában engedélyezett bejövő IP-címtartományt `accessControl` . Ebben a szakaszban a (, `triggers` ) `actions` és a választható `contents` szakaszokat használja, `allowedCallerIpAddresses` Ha a tulajdonságot tartalmazza, `addressRange` és a tulajdonság értékét az *x. x. x. x/x* vagy *x. x. x. x-x. x. x. x* formátumban adja meg az engedélyezett IP-tartományhoz.
 
-* Ha a beágyazott logikai alkalmazás az **egyetlen másik Logic apps** lehetőséget használja, amely csak a Azure Logic apps műveletet használó más logikai alkalmazásokból engedélyezi a bejövő hívásokat, állítsa a `addressRange` tulajdonságot üres tömbre ( **[]** ).
+* Ha a beágyazott logikai alkalmazás az **egyetlen másik Logic apps** lehetőséget használja, amely csak a Azure Logic apps műveletet használó más logikai alkalmazásokból engedélyezi a bejövő hívásokat, állítsa a `addressRange` tulajdonságot üres tömbre (**[]**).
 
 * Ha a beágyazott logikai alkalmazás a **megadott IP-címtartományok** beállítást használja más bejövő hívásokhoz, például a http-műveletet használó más logikai alkalmazásokhoz, állítsa a `addressRange` tulajdonságot az engedélyezett IP-tartományra.
 
@@ -539,11 +539,11 @@ Számos eseményindító és művelet rendelkezik olyan beállításokkal, amely
 
    ![Logikai alkalmazás megnyitása a Logic app Designerben](./media/logic-apps-securing-a-logic-app/open-sample-logic-app-in-designer.png)
 
-1. Az trigger vagy művelet esetében, ahol a bizalmas adatokat szeretné védeni, válassza a három pont ( **...** ) gombot, majd válassza a **Beállítások** lehetőséget.
+1. Az trigger vagy művelet esetében, ahol a bizalmas adatokat szeretné védeni, válassza a három pont (**...**) gombot, majd válassza a **Beállítások** lehetőséget.
 
    ![Trigger vagy művelet beállításainak megnyitása](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
-1. Kapcsolja be a **biztonságos bemeneteket** , a **biztonságos kimeneteket** vagy mindkettőt. Ha elkészült, válassza a **Kész** lehetőséget.
+1. Kapcsolja be a **biztonságos bemeneteket**, a **biztonságos kimeneteket** vagy mindkettőt. Ha elkészült, válassza a **Kész** lehetőséget.
 
    ![A "biztonságos bemenetek" vagy a "biztonságos kimenetek" bekapcsolása](./media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
 
@@ -960,7 +960,7 @@ Ha az [ügyféltanúsítvány](../active-directory/authentication/active-directo
 
 | Tulajdonság (Designer) | Tulajdonság (JSON) | Kötelező | Érték | Leírás |
 |---------------------|-----------------|----------|-------|-------------|
-| **Hitelesítés** | `type` | Igen | **Ügyféltanúsítvány** <br>vagy <br>`ClientCertificate` | A használni kívánt hitelesítési típus. A tanúsítványokat az [Azure API Management](../api-management/api-management-howto-mutual-certificates.md)segítségével kezelheti. <p></p>**Megjegyzés** : az egyéni összekötők nem támogatják a tanúsítvány alapú hitelesítést a bejövő és a kimenő hívások esetében is. |
+| **Hitelesítés** | `type` | Igen | **Ügyféltanúsítvány** <br>vagy <br>`ClientCertificate` | A használni kívánt hitelesítési típus. A tanúsítványokat az [Azure API Management](../api-management/api-management-howto-mutual-certificates.md)segítségével kezelheti. <p></p>**Megjegyzés**: az egyéni összekötők nem támogatják a tanúsítvány alapú hitelesítést a bejövő és a kimenő hívások esetében is. |
 | **Pfx** | `pfx` | Igen | <*kódolt-pfx-file-Content*> | A Base64 kódolású tartalom egy személyes információcsere (PFX) fájlból <p><p>A PFX-fájl Base64 kódolású formátumba való átalakításához a következő lépéseket követve használhatja a PowerShellt: <p>1. mentse a tanúsítvány tartalmát egy változóba: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. alakítsa át a tanúsítvány tartalmát a `ToBase64String()` függvény használatával, és mentse a tartalmat egy szövegfájlba: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Jelszó** | `password`| Nem | <*jelszó – pfx-fájl*> | A PFX-fájl eléréséhez használt jelszó |
 |||||
@@ -1089,8 +1089,8 @@ Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resour
    | Tulajdonság (Designer) | Tulajdonság (JSON) | Kötelező | Érték | Leírás |
    |---------------------|-----------------|----------|-------|-------------|
    | **Hitelesítés** | `type` | Igen | **Felügyelt identitás** <br>vagy <br>`ManagedServiceIdentity` | A használni kívánt hitelesítési típus |
-   | **Felügyelt identitás** | `identity` | Igen | * **Rendszerhez rendelt felügyelt identitás** <br>vagy <br>`SystemAssigned` <p><p>* < *felhasználó által hozzárendelt identitás-név*> | A használni kívánt felügyelt identitás |
-   | **Célközönség** | `audience` | Igen | <*cél – erőforrás-azonosító*> | Az elérni kívánt cél erőforráshoz tartozó erőforrás-azonosító. <p>Például `https://storage.azure.com/` az összes Storage-fiók esetében érvényes lesz a [hozzáférési tokenek](../active-directory/develop/access-tokens.md) hitelesítése. Megadhat azonban egy gyökérszintű szolgáltatás URL-címét is, például `https://fabrikamstorageaccount.blob.core.windows.net` egy adott Storage-fiókhoz. <p>**Megjegyzés** : Előfordulhat, hogy a **célközönség** tulajdonság egyes eseményindítókban vagy műveletekben el van rejtve. A tulajdonság láthatóvá tételéhez az triggerben vagy a műveletben nyissa meg az **új paraméter hozzáadása** listát, és válassza a **célközönség** lehetőséget. <p><p>**Fontos** : Ügyeljen arra, hogy a célként megadott erőforrás-azonosító *pontosan EGYEZZEN* az Azure ad által várt értékkel, beleértve a szükséges záró perjeleket is. Így az `https://storage.azure.com/` összes Azure Blob Storage-fiók erőforrás-azonosítója záró perjelet igényel. Egy adott Storage-fiók erőforrás-azonosítója azonban nem igényel záró perjelet. Az erőforrás-azonosítók megkereséséhez tekintse meg az [Azure ad-t támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
+   | **Felügyelt identitás** | `identity` | Igen | * **Rendszerhez rendelt felügyelt identitás** <br>vagy <br>`SystemAssigned` <p><p>* <*felhasználó által hozzárendelt identitás-név*> | A használni kívánt felügyelt identitás |
+   | **Célközönség** | `audience` | Igen | <*cél – erőforrás-azonosító*> | Az elérni kívánt cél erőforráshoz tartozó erőforrás-azonosító. <p>Például `https://storage.azure.com/` az összes Storage-fiók esetében érvényes lesz a [hozzáférési tokenek](../active-directory/develop/access-tokens.md) hitelesítése. Megadhat azonban egy gyökérszintű szolgáltatás URL-címét is, például `https://fabrikamstorageaccount.blob.core.windows.net` egy adott Storage-fiókhoz. <p>**Megjegyzés**: Előfordulhat, hogy a **célközönség** tulajdonság egyes eseményindítókban vagy műveletekben el van rejtve. A tulajdonság láthatóvá tételéhez az triggerben vagy a műveletben nyissa meg az **új paraméter hozzáadása** listát, és válassza a **célközönség** lehetőséget. <p><p>**Fontos**: Ügyeljen arra, hogy a célként megadott erőforrás-azonosító *pontosan EGYEZZEN* az Azure ad által várt értékkel, beleértve a szükséges záró perjeleket is. Így az `https://storage.azure.com/` összes Azure Blob Storage-fiók erőforrás-azonosítója záró perjelet igényel. Egy adott Storage-fiók erőforrás-azonosítója azonban nem igényel záró perjelet. Az erőforrás-azonosítók megkereséséhez tekintse meg az [Azure ad-t támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||
 
    Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas adatok kezelésére és védelmére, például egy [Azure Resource Manager sablonban az üzembe helyezés automatizálásához](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), használhat kifejezéseket a paraméterek értékének futtatásához futásidőben. Ez a példa a HTTP-művelet definíciója határozza meg a hitelesítést `type` , `ManagedServiceIdentity` és a [Parameters () függvényt](../logic-apps/workflow-definition-language-functions-reference.md#parameters) használja a paraméterek értékének lekéréséhez:
@@ -1146,7 +1146,7 @@ További információt az alábbi témakörökben talál:
 * [Elkülönítés az Azure nyilvános felhőben](../security/fundamentals/isolation-choices.md)
 * [Fokozottan kényes IaaS-alkalmazások biztonsága az Azure-ban](/azure/architecture/reference-architectures/n-tier/high-security-iaas)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Logic Apps Azure biztonsági alapterve](../logic-apps/security-baseline.md)
 * [Üzembe helyezés automatizálása Azure Logic Apps](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

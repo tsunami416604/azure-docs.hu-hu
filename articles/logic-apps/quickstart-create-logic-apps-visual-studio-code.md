@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/28/2020
-ms.openlocfilehash: 0b777fdef344ce1a60ed00ee46eeaa8cee23b8c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c4d4c659fd1c33c9ffc1b833b92d0727b5c17bf7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099188"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922898"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Rövid útmutató: Logic Apps-munkafolyamatdefiníciók létrehozása és kezelése a Visual Studio Code használatával
 
@@ -58,7 +58,7 @@ Mielőtt nekikezdene, győződjön meg arról, hogy rendelkezik a következőkke
 
    ![Válassza ki az Azure ikont a Visual Studio Code eszköztáron](./media/quickstart-create-logic-apps-visual-studio-code/open-extensions-visual-studio-code.png)
 
-1. Az Azure ablak **Logic apps** területén válassza a bejelentkezés az **Azure** -ba lehetőséget. Ha a Microsoft bejelentkezési oldala kéri, jelentkezzen be az Azure-fiókjával.
+1. Az Azure ablak **Logic apps** területén válassza a bejelentkezés az **Azure**-ba lehetőséget. Ha a Microsoft bejelentkezési oldala kéri, jelentkezzen be az Azure-fiókjával.
 
    ![Válassza a "Bejelentkezés az Azure-ba" lehetőséget.](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-azure-visual-studio-code.png)
 
@@ -307,4 +307,4 @@ A Visual Studio Code-ban megnyithatja és áttekintheti a logikai alkalmazás ko
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Állapot-nyilvántartó vagy állapot nélküli logikai alkalmazások létrehozása a Visual Studio Code-ban (előzetes verzió)](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)
+> [Állapot-nyilvántartó és állapot nélküli logikai alkalmazások létrehozása a Visual Studio Code-ban (előzetes verzió)](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)

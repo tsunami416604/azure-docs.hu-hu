@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: acde6f401404596212b713f248bb6d11c25b4671
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 005830575ba7f45d30fed71a73e7a419e4d98220
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461415"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922593"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Közzététel és előfizetés Azure IoT Edge
 
@@ -31,7 +31,7 @@ Az üzenetek közzétételéhez és előfizetéséhez Azure IoT Edge MQTT Broker
 - Egy, az F1, S1, S2 vagy S3 értékű SKU- **IoT hub** .
 - Az **1,2-es vagy újabb verzióval rendelkező IoT Edge-eszköz**. Mivel IoT Edge MQTT Broker jelenleg nyilvános előzetes verzióban érhető el, a MQTT-átvitelszervező engedélyezéséhez állítsa az alábbi környezeti változókat True értékre a edgeHub-tárolón:
 
-   | Név | Érték |
+   | Name (Név) | Érték |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
@@ -177,7 +177,6 @@ Az IoT hub-témakörökre vonatkozó engedélyeket a felhasználó által defini
 
 - Az Azure IoT-eszközöknek vagy-moduloknak explicit engedélyezési szabályra van szükségük IoT Edge hub MQTT-átvitelszervezőhöz való kapcsolódáshoz. Az alábbi alapértelmezett csatlakozási engedélyezési házirendet kell megadnia.
 - Az Azure IoT-eszközök vagy-modulok alapértelmezés szerint az explicit engedélyezési szabályok nélkül férhetnek hozzá a saját IoT hub-témakörökhöz. Ebben az esetben azonban az engedélyek szülő/gyermek kapcsolatból származnak, és ezeket a kapcsolatokat be kell állítani. IoT Edge modulokat a rendszer automatikusan a IoT Edge eszköz gyermekeiként állítja be, de az eszközöket explicit módon be kell állítani a IoT Edge átjáró gyermekeiként.
-- Az Azure IoT-eszközök vagy-modulok hozzáférhetnek a témakörökhöz, beleértve az IoT hub-témaköröket más eszközök vagy modulok számára, amelyek biztosítják a megfelelő explicit engedélyezési szabályok definiálását.
 
 Itt látható egy alapértelmezett engedélyezési szabályzat, amely lehetővé teszi, hogy az összes Azure IoT-eszköz vagy-modul **csatlakozhasson** a közvetítőhöz:
 
@@ -275,7 +274,7 @@ A közzétevő és az előfizető engedélyezéséhez szerkessze a IoT Edge hub-
                },
                {
                   "identities": [
-                     "sub_client"
+                     "<iot_hub_name>.azure-devices.net/sub_client"
                   ],
                   "allow":[
                      {
@@ -284,13 +283,13 @@ A közzétevő és az előfizető engedélyezéséhez szerkessze a IoT Edge hub-
                         ],
                         "resources":[
                            "test_topic"
-                        ],
+                        ]
                      }
                   ],
                },
                {
                   "identities": [
-                     "pub_client"
+                     "<iot_hub_name>.azure-devices.net/pub_client"
                   ],
                   "allow":[
                      {
@@ -299,9 +298,9 @@ A közzétevő és az előfizető engedélyezéséhez szerkessze a IoT Edge hub-
                         ],
                         "resources":[
                            "test_topic"
-                        ],
+                        ]
                      }
-                  ],
+                  ]
                }
             ]
          }
@@ -441,6 +440,6 @@ Az alábbi példa egy olyan IoT Edge MQTT híd-konfigurációra mutat példát, 
 Egyéb megjegyzések a IoT Edge hub MQTT-hídhoz:
 - Az MQTT protokollt a rendszer automatikusan az upstream protokollként használja a MQTT-közvetítő használatakor, valamint azt, hogy a IoT Edge egy beágyazott konfigurációban, például egy megadott módon legyen használatban `parent_hostname` . A felsőbb rétegbeli protokollokkal kapcsolatos további tudnivalókért tekintse meg a [felhőalapú kommunikációt](iot-edge-runtime.md#cloud-communication)ismertető témakört. További információ a beágyazott konfigurációkról: [alsóbb rétegbeli IoT Edge eszköz csatlakoztatása Azure IoT Edge-átjáróhoz](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az IoT Edge hub ismertetése](iot-edge-runtime.md#iot-edge-hub)
