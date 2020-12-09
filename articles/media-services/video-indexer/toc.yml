@@ -73,7 +73,7 @@
     - name: Tartalommodellek testreszabása
       items:
         - name: Animált karakterek
-          href: animated-characters-recognition.md
+          href: animated-characters-recognition-how-to.md
         - name: Személy
           items:
             - name: a Video Indexer webhely használatával

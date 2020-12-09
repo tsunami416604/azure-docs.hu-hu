@@ -290,7 +290,7 @@
           href: /rest/api/maps/data
         - name: Földrajzi hely szolgáltatás
           href: /rest/api/maps/geolocation
-        - name: Mobilitási szolgáltatás
+        - name: Mobilitási szolgáltatások
           href: /rest/api/maps/mobility
         - name: Megjelenítő szolgáltatás
           href: /rest/api/maps/render
@@ -306,7 +306,7 @@
           href: /rest/api/maps/timezone
         - name: Forgalom szolgáltatás
           href: /rest/api/maps/traffic
-        - name: Időjárás-szolgáltatás
+        - name: Weather szolgáltatások
           href: /rest/api/maps/weather
         - name: Maps Creator szolgáltatás
           items:

@@ -158,7 +158,7 @@
     - name: Gyakori kérdések
       href: spring-cloud-faq.md
     - name: REST API-referencia
-      href: /rest/api/azurespringclould/
+      href: /rest/api/azurespringcloud/
     - name: Az Azure Policy beépített elemei
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

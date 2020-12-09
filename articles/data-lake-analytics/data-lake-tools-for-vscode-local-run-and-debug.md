@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 07/14/2017
 ms.openlocfilehash: ef32372cbaa70f7bca609c2ed1db118f33237e2b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 12/09/2020
 ms.locfileid: "92216198"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>A U-SQL és a hibakeresés helyi futtatása a Visual Studio Code-ban
@@ -28,11 +28,11 @@ A Azure Data Lake Tools for Visual Studio csak Windows-telepítések támogatjá
 
    ![A függőségi csomagok megkeresése](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
 
-   2,1 a **BuildTools**telepítéséhez kattintson a visualcppbuildtools_full.exe elemre a LocalRunDependency mappában, majd kövesse a varázsló utasításait.   
+   2,1 a **BuildTools** telepítéséhez kattintson a visualcppbuildtools_full.exe elemre a LocalRunDependency mappában, majd kövesse a varázsló utasításait.   
 
     ![A BuildTools telepítése](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallBuildTools.png)
 
-   2,2 a **Win10SDK 10240**telepítéséhez kattintson a LocalRunDependency/Win10SDK_10.0.10240 _2 mappában található sdksetup.exe elemre, majd kövesse a varázsló utasításait.  
+   2,2 a **Win10SDK 10240** telepítéséhez kattintson a LocalRunDependency/Win10SDK_10.0.10240 _2 mappában található sdksetup.exe elemre, majd kövesse a varázsló utasításait.  
 
     ![A Win10SDK 10240 telepítése](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
 
@@ -41,13 +41,13 @@ A Azure Data Lake Tools for Visual Studio csak Windows-telepítések támogatjá
 
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>Indítsa el a helyi futtatási szolgáltatást, és küldje el a U-SQL-feladatot egy helyi fiókba 
-Az első alkalommal használja az **ADL: helyi futtatási csomag letöltése** lehetőséget a helyi futtatási csomagok letöltéséhez, ha nem [állított be U-SQL helyi futtatási környezetet](#set-up-the-u-sql-local-run-environment).
+Az első alkalommal használja az **ADL: helyi futtatási csomag letöltése** lehetőséget a helyi futtatási csomagok letöltéséhez, ha nem [állított be U-SQL helyi futtatási környezetet](#set-up-the-u-sql-local-run-environment).
 
-1. A Command paletta megnyitásához kattintson a CTRL + SHIFT + P billentyűkombinációra, majd írja be az **ADL: Start local Run Service**parancsot.   
+1. A Command paletta megnyitásához kattintson a CTRL + SHIFT + P billentyűkombinációra, majd írja be az **ADL: Start local Run Service** parancsot.   
 2. Válassza az **elfogadás** lehetőséget a Microsoft szoftverlicenc-szerződés első elfogadásához. 
 
    ![Microsoft szoftverlicenc-szerződés elfogadása](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
-3. Megnyílik a cmd-konzol. Első alkalommal a felhasználóknak **3**értéket kell megadnia, majd meg kell keresnie a helyi mappa elérési útját az adatok bemenetéhez és kimenetéhez. Ha az elérési út fordított perjelekkel nem sikerül, próbálkozzon a perjelek továbbításával. A többi lehetőség esetében használhatja az alapértelmezett értékeket.
+3. Megnyílik a cmd-konzol. Első alkalommal a felhasználóknak **3** értéket kell megadnia, majd meg kell keresnie a helyi mappa elérési útját az adatok bemenetéhez és kimenetéhez. Ha az elérési út fordított perjelekkel nem sikerül, próbálkozzon a perjelek továbbításával. A többi lehetőség esetében használhatja az alapértelmezett értékeket.
 
    ![Data Lake eszközök a Visual Studio Code helyi futtatásához cmd](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
 4. A CTRL + SHIFT + P billentyűkombinációval nyissa meg a parancssort, írja be az **ADL: submit feladatot**, majd válassza a **Local (helyi** ) lehetőséget a feladatok helyi fiókba való elküldéséhez.
@@ -62,19 +62,19 @@ Az első alkalommal használja az **ADL: helyi futtatási csomag letöltése** l
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>Helyi hibakeresés elindítása a U-SQL-feladatokhoz  
 A felhasználó első alkalommal:
 
-1. Az **ADL használata: helyi** futtatási csomag letöltése helyi futtatási csomagok letöltéséhez, ha nem [állította be a U-SQL helyi futtatási környezetét](#set-up-the-u-sql-local-run-environment).
+1. Az **ADL használata: helyi** futtatási csomag letöltése helyi futtatási csomagok letöltéséhez, ha nem [állította be a U-SQL helyi futtatási környezetét](#set-up-the-u-sql-local-run-environment).
 2. Ha nincs telepítve, telepítse a .NET Core SDK 2,0-as üzenetet az üzenet mezőbe.
- 
+ 
   ![emlékeztető a DotNet telepítéséhez](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
-3. Telepítse a C#-t a Visual Studio Code-hoz, ahogy azt a nem telepítette az üzenetablakban.A folytatáshoz kattintson a **telepítés** gombra, majd indítsa újra a VSCode.
+3. Telepítse a C#-t a Visual Studio Code-hoz, ahogy azt a nem telepítette az üzenetablakban. A folytatáshoz kattintson a **telepítés** gombra, majd indítsa újra a VSCode.
 
     ![Emlékeztető a C telepítéséhez #](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
 
 A helyi hibakeresés végrehajtásához kövesse az alábbi lépéseket:
   
-1. A Command paletta megnyitásához kattintson a CTRL + SHIFT + P billentyűkombinációra, majd írja be az **ADL: Start local Run Service**parancsot. Megnyílik a cmd-konzol. Győződjön meg arról, hogy a **DataRoot** be van állítva.
+1. A Command paletta megnyitásához kattintson a CTRL + SHIFT + P billentyűkombinációra, majd írja be az **ADL: Start local Run Service** parancsot. Megnyílik a cmd-konzol. Győződjön meg arról, hogy a **DataRoot** be van állítva.
 2. Hozzon létre egy töréspontot a C#-kódban.
-3. Vissza a parancsfájl-szerkesztőhöz, kattintson a jobb gombbal, és válassza az **ADL: helyi hibakeresés**lehetőséget.
+3. Vissza a parancsfájl-szerkesztőhöz, kattintson a jobb gombbal, és válassza az **ADL: helyi hibakeresés** lehetőséget.
     
    ![A Visual Studio Code helyi hibakeresési eredményének Data Lake eszközei](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-debug-result.png)
 

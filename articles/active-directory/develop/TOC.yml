@@ -280,7 +280,7 @@
     - name: A Microsoft Authentication Library használata
       displayName: MSAL
       items:
-        - Name: Minden platform
+        - name: Minden platform
           items:
             - name: Támogatott hitelesítési folyamatok
               href: msal-authentication-flows.md
