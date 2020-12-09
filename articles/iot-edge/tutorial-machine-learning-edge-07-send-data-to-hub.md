@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1927ec00df67522563fb063f2cb127fee4c0bcbf
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 50df3424892594a6817d481aa4a3d540a342854f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621042"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932319"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Oktatóanyag: az adatküldés transzparens átjárón keresztül
 
@@ -23,6 +23,14 @@ Ebben a cikkben ismét szimulált eszközként használjuk a fejlesztői virtuá
 A IoT Edge eszköz működését a szimulált eszköz adatküldése közben Figyeljük. Ha az eszköz futása befejeződött, tekintse meg a Storage-fiókban tárolt információt, és ellenőrizze, hogy minden a várt módon működik-e.
 
 Ezt a lépést általában egy felhő vagy egy eszköz fejlesztője hajtja végre.
+
+Az oktatóanyag ezen szakaszában a következőket sajátíthatja el:
+
+> [!div class="checklist"]
+>
+> * Leaf-eszköz létrehozása és futtatása.
+> * Győződjön meg arról, hogy a generált adatai tárolása az Azure Blob Storage-ban történik.
+> * Ellenőrizze, hogy a Machine learning-modell besorolta-e az eszköz adattípusát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -233,7 +241,7 @@ Ha azt tervezi, hogy vizsgálja meg a teljes körű oktatóanyag által használ
 
 1. Ha helyileg hozott létre tanúsítványokat, törölje a c: \\ edgeCertificates mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben azt használtuk, hogy fejlesztési virtuális gépe szimulálja az érzékelőt és a működési adatokat a IoT Edge eszközre küldött levélben. A rendszer ellenőrizte, hogy az eszköz moduljai a peremhálózati eszköz valós idejű működésének vizsgálatával és a Storage-fiókba feltöltött fájlok megtekintésével irányították, besorolták, megtartották és feltöltötték az adatforrásokat.
 

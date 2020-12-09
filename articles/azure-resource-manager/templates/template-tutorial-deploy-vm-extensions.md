@@ -1,21 +1,21 @@
 ---
 title: Virtuálisgép-bővítmények üzembe helyezése sablonnal
-description: Útmutató virtuális gépi bővítmények üzembe helyezéséhez Azure Resource Manager-sablonokkal.
+description: Megtudhatja, hogyan helyezhet üzembe virtuálisgép-bővítményeket Azure Resource Manager-sablonokkal (ARM-sablonokkal).
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f82e0eb45f4bc7c3260554b1b1120025029336bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073642"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931452"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Oktatóanyag: virtuálisgép-bővítmények üzembe helyezése ARM-sablonokkal
 
-Ismerje meg, hogyan használhatja az [Azure-beli virtuális gépi bővítményeket](../../virtual-machines/extensions/features-windows.md) Azure-beli virtuális gépeken az üzembe helyezés utáni konfigurációs és automatizálási feladatokhoz. Az Azure-beli virtuális gépekhez számos különböző virtuális gépi bővítmény érhető el. Ebben az oktatóanyagban egy Azure Resource Manager (ARM) sablonból telepít egy egyéni parancsfájl-bővítményt egy PowerShell-parancsfájl futtatásához egy Windows rendszerű virtuális gépen.  A szkript telepíti a webkiszolgálót a virtuális gépen.
+Ismerje meg, hogyan használhatja az [Azure-beli virtuális gépi bővítményeket](../../virtual-machines/extensions/features-windows.md) Azure-beli virtuális gépeken az üzembe helyezés utáni konfigurációs és automatizálási feladatokhoz. Az Azure-beli virtuális gépekhez számos különböző virtuális gépi bővítmény érhető el. Ebben az oktatóanyagban egyéni parancsfájl-bővítményt telepít egy Azure Resource Manager sablonból (ARM-sablonból) egy Windows rendszerű virtuális gépen futó PowerShell-szkript futtatásához. A szkript telepíti a webkiszolgálót a virtuális gépen.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -31,14 +31,14 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio CodeResource Manager Tools bővítménnyel. Tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
+* Visual Studio CodeResource Manager Tools bővítménnyel. Lásd [a gyors útmutató: ARM-sablonok létrehozása a Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 * A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót a virtuális gép rendszergazdai fiókjához. Íme egy példa jelszó automatikus létrehozására:
 
     ```console
     openssl rand -base64 32
     ```
 
-    Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információ: [oktatóanyag: Azure Key Vault integrálása az ARM-sablonok üzembe helyezésével](./template-tutorial-use-key-vault.md). Azt is javasoljuk, hogy három havonta frissítse a jelszavát.
+    Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információ: [oktatóanyag: Azure Key Vault integrálása az ARM-sablon üzembe helyezésével](./template-tutorial-use-key-vault.md). Azt is javasoljuk, hogy három havonta frissítse a jelszavát.
 
 ## <a name="prepare-a-powershell-script"></a>PowerShell-szkript előkészítése
 
@@ -54,14 +54,14 @@ Ha úgy dönt, hogy közzéteszi a fájlt a saját helyén, az `fileUri` oktató
 
 Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg.
 
-1. A Visual Studio Code-ban válassza a **fájl**  >  **megnyitott**fájl elemet.
+1. A Visual Studio Code-ban válassza a **fájl**  >  **megnyitott** fájl elemet.
 1. Illessze be a következő URL-címet a **fájlnév** mezőbe:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. A fájl megnyitásához válassza a **Megnyitás**lehetőséget.
+1. A fájl megnyitásához válassza a **Megnyitás** lehetőséget.
     A sablon öt erőforrást határoz meg:
 
    * [**Microsoft. Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
@@ -73,7 +73,7 @@ Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon
 
      A Testreszabás előtt hasznos lehet a sablon alapvető megismerése.
 
-1. Mentse a fájl egy példányát a helyi számítógépre *azuredeploy.jsa* következő néven: a **fájl**  >  **Mentés másként lehetőség**kiválasztásával.
+1. Mentse a fájl egy példányát a helyi számítógépre *azuredeploy.jsa* következő néven: a **fájl**  >  **Mentés másként lehetőség** kiválasztásával.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
@@ -121,7 +121,7 @@ Ez a beágyazott parancsfájl frissíti a iisstart.html tartalmát is.
 Meg kell nyitnia a HTTP-portot is, hogy el tudja érni a webkiszolgálót.
 
 1. Keresse meg a **securityRules** a sablonban.
-1. Adja hozzá a következő szabályt az **alapértelmezett-Allow-3389**elem mellett.
+1. Adja hozzá a következő szabályt az **alapértelmezett-Allow-3389** elem mellett.
 
     ```json
     {
@@ -157,13 +157,13 @@ Illessze be az IP-címet egy webböngészőbe. Megnyílik az alapértelmezett In
 
 Ha már nincs szüksége az üzembe helyezett Azure-erőforrásokra, törölje azokat az erőforráscsoport törlésével.
 
-1. A Azure Portal bal oldali ablaktábláján válassza az **erőforráscsoport**elemet.
+1. A Azure Portal bal oldali ablaktábláján válassza az **erőforráscsoport** elemet.
 2. A **szűrés név alapján** mezőbe írja be az erőforráscsoport nevét.
 3. Válassza ki az erőforráscsoport nevét.
     Az erőforráscsoporthoz hat erőforrás jelenik meg.
-4. A felső menüben válassza az **erőforráscsoport törlése**elemet.
+4. A felső menüben válassza az **erőforráscsoport törlése** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban üzembe helyezett egy virtuális gépet és egy virtuális gépi bővítményt. A bővítmény telepítette az IIS-webkiszolgálót a virtuális gépen. A következő témakörből megtudhatja, hogyan használhatja a Azure SQL Database bővítményt egy BACPAC-fájl importálásához:
 

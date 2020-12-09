@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8efc0301296f64abfe9b827e943882e930929086
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 757e34fd45b7d3d9703aa09daa7f040c5f605637
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575329"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932387"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Azure Machine Learning modell betanítása és üzembe helyezése
 
@@ -26,6 +26,14 @@ Ebben a cikkben a következő feladatokat hajtjuk végre:
 A Azure Notebooks kihasználja az Azure Machine Learning munkaterület előnyeit, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használt alapvető blokk.
 
 A cikkben ismertetett lépéseket általában az adatszakértők végzik.
+
+Az oktatóanyag ezen szakaszában a következőket sajátíthatja el:
+
+> [!div class="checklist"]
+>
+> * Hozzon létre egy Azure Notebooks projektet a Machine learning-modellek betanításához.
+> * Tárolóba helyezése a betanított gépi tanulási modellt.
+> * Hozzon létre egy Azure IoT Edge modult a tároló Machine learning modellből.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,7 +77,7 @@ A mintaként szolgáló jegyzetfüzet-fájlokat egy új Azure Notebooks projektb
 
 1. Hagyja üresen a **nyilvános** és a **readme** jelölését, mert nincs szükség arra, hogy a projekt nyilvános legyen, vagy hogy legyen egy readme.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. Válassza a **feltöltés** lehetőséget (a felfelé mutató nyíl ikont), és válassza **a számítógép** lehetőséget.
 
@@ -158,7 +166,7 @@ Annak ellenőrzéséhez, hogy a jegyzetfüzetek sikeresen befejeződtek-e, ellen
 
 1. Ellenőrizze, hogy a következő fájlok lettek-e létrehozva:
 
-    | Fájl | Description |
+    | Fájl | Leírás |
     | --- | --- |
     | ./aml_config/.azureml/config.jsbekapcsolva | A Azure Machine Learning-munkaterület létrehozásához használt konfigurációs fájl. |
     | ./aml_config/model_config.jsbekapcsolva | Konfigurációs fájl, amelyre telepíteni kell a modellt a **turbofanDemo** Machine learning munkaterületen az Azure-ban. |
@@ -166,13 +174,13 @@ Annak ellenőrzéséhez, hogy a jegyzetfüzetek sikeresen befejeződtek-e, ellen
 
 1. Ellenőrizze, hogy létrejöttek-e az alábbi Azure-erőforrások. Néhány erőforrás neve véletlenszerű karakterekkel van hozzáfűzve.
 
-    | Azure-erőforrás | Név |
+    | Azure-erőforrás | Name (Név) |
     | --- | --- |
     | Machine Learning munkaterület | turborfanDemo |
     | Container Registry | turbofandemoxxxxxxxx |
     | Applications-ismeretek | turbofaninsightxxxxxxxx |
     | Key Vault | turbofankeyvaultbxxxxxxxx |
-    | Tárolás | turbofanstoragexxxxxxxxx |
+    | Storage | turbofanstoragexxxxxxxxx |
 
 ### <a name="debugging"></a>Hibakeresés
 
@@ -184,7 +192,7 @@ Előfordulhat, hogy törölnie kell a korábban létrehozott fájlokat és az Az
 
 Ez az oktatóanyag egy olyan készlet része, amelyben az egyes cikkek az előzőekben végzett munkára épülnek. Várjon, amíg az összes erőforrást el nem végezte, amíg el nem végzi a végleges oktatóanyagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben két, Azure Notebooks futó Jupyter-jegyzetfüzetet használtunk a turbofan-eszközökről a hátralévő hasznos élettartam (RUL) osztályozó, az osztályozó modellként való mentéséhez, a tároló lemezképének létrehozásához, valamint a lemezkép webszolgáltatásként való üzembe helyezéséhez és teszteléséhez.
 

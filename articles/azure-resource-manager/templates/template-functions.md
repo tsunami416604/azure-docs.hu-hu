@@ -1,18 +1,18 @@
 ---
 title: Sablonfüggvények
-description: A Azure Resource Manager-sablonban az értékek beolvasására, a karakterláncok és a numerikus karakterek használatára, valamint az üzembe helyezési adatok lekérésére használt függvények leírását ismerteti.
+description: Ismerteti a Azure Resource Manager-sablonban (ARM-sablonban) használandó függvényeket az értékek lekéréséhez, a karakterláncok és a numerikus karakterek használatához, valamint a telepítési információk lekéréséhez.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: a479b81d0f0bc378f77885cbd644e70d7be1d857
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2d124893cbe1694671231fd206f8e44cc20f6204
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961170"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931707"
 ---
 # <a name="arm-template-functions"></a>ARM-sablon függvények
 
-Ez a cikk a Azure Resource Manager-(ARM-) sablonban használható összes funkciót ismerteti. További információ a függvények használatáról a sablonban: [sablon szintaxisa](template-expressions.md).
+Ez a cikk egy Azure Resource Manager sablonban (ARM-sablon) használható összes függvényt ismerteti. További információ a függvények használatáról a sablonban: [sablon szintaxisa](template-expressions.md).
 
 Saját függvények létrehozásához tekintse meg a [felhasználó által definiált függvények](template-syntax.md#functions)című témakört.
 
@@ -47,7 +47,7 @@ A Resource Manager számos funkciót biztosít a tömbök használatához.
 * [kereszteződés](template-functions-array.md#intersection)
 * [utolsó](template-functions-array.md#last)
 * [length](template-functions-array.md#length) (hossz)
-* [p](template-functions-array.md#min)
+* [min](template-functions-array.md#min)
 * [Max](template-functions-array.md#max)
 * [tartomány](template-functions-array.md#range)
 * [kihagyása](template-functions-array.md#skip)
@@ -67,7 +67,7 @@ A Resource Manager számos funkciót biztosít a sablonokban való összehasonl�
 
 * [összefonódik](template-functions-comparison.md#coalesce)
 * [egyenlő](template-functions-comparison.md#equals)
-* [less](template-functions-comparison.md#less)
+* [kisebb](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
 * [greater](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
@@ -130,7 +130,7 @@ A Resource Manager a következő függvényeket biztosítja az egész számokkal
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [p](template-functions-numeric.md#min)
+* [min](template-functions-numeric.md#min)
 * [Max](template-functions-numeric.md#max)
 * [mod](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
@@ -237,7 +237,7 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 * [kihagyása](template-functions-string.md#skip)
 * [felosztása](template-functions-string.md#split)
 * [startsWith](template-functions-string.md#startswith)
-* [sztring](template-functions-string.md#string)
+* [karakterlánc](template-functions-string.md#string)
 * [substring](template-functions-string.md#substring)
 * [take](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
@@ -250,7 +250,7 @@ A Resource Manager a következő függvényeket biztosítja a karakterláncok ha
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Az ARM-sablon fejezeteinek leírását lásd: ARM- [sablonok készítése](template-syntax.md)
-* Több sablon egyesítéséhez tekintse meg [a csatolt sablonok használata Azure Resource Manager használatával](linked-templates.md) című témakört.
-* Ha egy adott típusú erőforrás létrehozásakor meghatározott számú alkalommal szeretné megismételni a problémát, tekintse meg a [Azure Resource Manager erőforrások több példányának létrehozása](copy-resources.md)című témakört.
-* A létrehozott sablon üzembe helyezéséről az [alkalmazás üzembe helyezése ARM-sablonokkal](deploy-powershell.md) című témakörben talál további információt.
+* Az ARM-sablon fejezeteinek leírását az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk tartalmazza.
+* Több sablon egyesítéséhez tekintse meg a [csatolt és beágyazott sablonok használata Azure-erőforrások telepítésekor](linked-templates.md)című témakört.
+* Egy adott típusú erőforrás létrehozásakor a megadott számú alkalommal megismételheti az [erőforrás-iteráció az ARM-sablonokban](copy-resources.md)című témakört.
+* A létrehozott sablon üzembe helyezésével kapcsolatban lásd: [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](deploy-powershell.md).

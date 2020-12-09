@@ -1,24 +1,24 @@
 ---
 title: Azure Active Directory REST API – teszt a Hegedűs használatával
 description: A Hegedűs használatával tesztelheti az Azure-alkalmazás konfigurációját REST API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 3766567fe58e8d2eb86556d3defa7a85efd9b2fb
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 1142aa25212d87c5484963cda4e172df3d1fbafc
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424151"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932608"
 ---
 # <a name="test-the-azure-app-configuration-rest-api-using-fiddler"></a>Az Azure-alkalmazás konfigurációjának tesztelése a Hegedűs használatával REST API
 
 A REST API a [Hegedűs](https://www.telerik.com/fiddler)használatával történő teszteléséhez meg kell adnia a kérések [hitelesítéséhez](./rest-api-authentication-hmac.md) szükséges HTTP-fejléceket. Az alábbi lépésekkel konfigurálhatja a hegedűst a REST API teszteléséhez, a hitelesítési fejlécek automatikus létrehozásával:
 
 1. Győződjön meg arról, hogy a TLS 1,2 egy engedélyezett protokoll:
-    1. Lépjen az **eszközök**  >  **Beállítások HTTPS menüpontra**  >  **HTTPS**.
+    1. Lépjen az **eszközök**  >  **Beállítások HTTPS menüpontra**  >  .
     1. Ellenőrizze, hogy a **https-forgalom visszafejtése** be van-e jelölve.
     1. A protokollok listájában adja hozzá a **TLS 1.2** -et, ha nincs jelen.
 1. Nyissa meg a **Hegedűs parancsfájl-szerkesztőjét** vagy nyomja meg a **CTRL-R** billentyűt a Hegedűs

@@ -8,12 +8,12 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4ac7f300fa88d57efe65c6d79645d4e75ca7edd9
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: eef5e60b06eedb1fb07c57aa2e369dd3830fcad5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575482"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932404"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Oktatóanyag: szimulált eszköz-adatértékek előállítása
 
@@ -42,6 +42,14 @@ A DeviceHarness projekt egy C# nyelven írt .NET Core-projekt, amely négy oszt�
 A cikkben leírt feladatok elvégzése körülbelül 20 percet vesz igénybe.
 
 Ennek a lépésnek a működésével egyenértékűnek kell lennie az eszközök fejlesztői és a felhőalapú fejlesztők által.
+
+Az oktatóanyag ezen szakaszában a következőket sajátíthatja el:
+
+> [!div class="checklist"]
+>
+> * Külső projekt beépítése a fejlesztési környezetbe.
+> * Szimulált IoT-eszközök létrehozásához használja a minta DeviceHarness-projektet.
+> * Megtekintheti a IoT Hub generált adatait.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -86,7 +94,7 @@ Most, hogy létrehoztuk a projektet, kapcsolódjon az IoT hub-hoz a kapcsolati s
 
 ### <a name="sign-in-to-azure-in-visual-studio-code"></a>Bejelentkezés az Azure-ba a Visual Studio Code-ban
 
-1. Jelentkezzen be az Azure-előfizetésbe a Visual Studio Code-ban a parancs paletta megnyitásával `Ctrl + Shift + P` vagy a parancs-paletta **megtekintésével**  >  **Command Palette**.
+1. Jelentkezzen be az Azure-előfizetésbe a Visual Studio Code-ban a parancs paletta megnyitásával `Ctrl + Shift + P` vagy a parancs-paletta **megtekintésével**  >  .
 
 1. Keresse meg az **Azure: Sign in** parancsot.
 
@@ -106,7 +114,7 @@ Most, hogy létrehoztuk a projektet, kapcsolódjon az IoT hub-hoz a kapcsolati s
 
 ### <a name="run-the-deviceharness-project"></a>A DeviceHarness projekt futtatása
 
-1. **View**  >  A Visual Studio Code Terminal megnyitásához válassza a **terminál** megtekintése lehetőséget.
+1.   >  A Visual Studio Code Terminal megnyitásához válassza a **terminál** megtekintése lehetőséget.
 
    Ha nem jelenik meg a kérdés, nyomja le az ENTER billentyűt.
 
@@ -162,7 +170,7 @@ Az IoT hub számára elküldett adatait a rendszer átirányítja az előző cik
 
 Ez az oktatóanyag egy olyan készlet része, amelyben az egyes cikkek az előzőekben végzett munkára épülnek. Várjon, amíg az összes erőforrást el nem végezte, amíg el nem végzi a végleges oktatóanyagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy .NET Core-projekttel hoztunk létre virtuális IoT-eszközöket, és a rajtuk keresztül továbbítjuk azokat az IoT hub és egy Azure Storage-tárolóba. Ez a projekt olyan valós helyzetet szimulál, amelyben a fizikai IoT-eszközök az adatküldés egy IoT Hubba és egy egy kurátori tárolóba kerülnek. Ezek az információk az érzékelők, az üzemeltetési beállítások, a meghibásodási jelek és a módok, valamint így tovább. Ha elegendő adatokat gyűjtöttek össze, azt használjuk a modell betanítására, amely megjósolja az eszköz hátralévő hasznos élettartamát (RUL). Ezt a Machine learninget a következő cikkben mutatjuk be.
 

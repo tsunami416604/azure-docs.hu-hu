@@ -1,21 +1,21 @@
 ---
 title: Oktatóanyag – kimenetek hozzáadása a sablonhoz
-description: Adja hozzá a kimeneteket a Azure Resource Manager-sablonhoz a szintaxis egyszerűsítése érdekében.
+description: Adja hozzá a kimeneteket a Azure Resource Manager-sablonhoz (ARM-sablon) a szintaxis egyszerűsítése érdekében.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: abd5fbed4ab19135fb30ec5adda387d839df3ab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613866"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931741"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Oktatóanyag: kimenetek hozzáadása az ARM-sablonhoz
 
-Ebből az oktatóanyagból megtudhatja, hogyan adhat vissza értéket a Azure Resource Manager (ARM) sablonból. A kimenetek akkor használhatók, ha egy központilag telepített erőforrásból származó értékre van szüksége. Az oktatóanyag elvégzése **7 percet** vesz igénybe.
+Ebből az oktatóanyagból megtudhatja, hogyan adhat vissza értéket a Azure Resource Manager-sablonból (ARM-sablon). A kimenetek akkor használhatók, ha egy központilag telepített erőforrásból származó értékre van szüksége. Az oktatóanyag elvégzése **7 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -101,14 +101,14 @@ Sokat tett az elmúlt hat oktatóanyagban. Szánjon egy kis időt a megtörtént
 Most nézzük meg az erőforráscsoportot és az üzembe helyezési előzményeket.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+1. A bal oldali menüben válassza az **erőforráscsoportok** lehetőséget.
 1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
 1. Attól függően, hogy milyen lépések történtek, rendelkeznie kell legalább egy, és talán több Storage-fiókkal az erőforráscsoporthoz.
 1. Emellett több sikeres központi telepítést is meg kell jelennie az előzményekben. Válassza ki a hivatkozást.
 
    ![Központi telepítések kiválasztása](./media/template-tutorial-add-outputs/select-deployments.png)
 
-1. Az összes üzemelő példány megjelenik az előzmények között. Válassza ki a **addoutputs**nevű központi telepítést.
+1. Az összes üzemelő példány megjelenik az előzmények között. Válassza ki a **addoutputs** nevű központi telepítést.
 
    ![Telepítési előzmények megjelenítése](./media/template-tutorial-add-outputs/show-history.png)
 
@@ -135,7 +135,7 @@ Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőfo
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban hozzáadott egy visszatérési értéket a sablonhoz. A következő oktatóanyagban megtudhatja, hogyan exportálhat sablont, és hogyan használhatja az exportált sablon részeit a sablonban.
 

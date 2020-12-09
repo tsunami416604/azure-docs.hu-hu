@@ -3,20 +3,19 @@ title: Útmutató az Azure-alkalmazások konfigurációjának használatáról
 description: Ebben a rövid útmutatóban egy Java Spring-alkalmazást hoz létre az Azure-alkalmazás konfigurálásával, amellyel központilag kezelheti a programkódtól elkülönítve az Alkalmazásbeállítások tárolását és kezelését.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
-ms.author: lcozzens
-ms.openlocfilehash: dd2305e13322540e9e30223f200baed9919d1840
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: 40c8fae292f465b3ecc8778a21e4903bdf423a3a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075399"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932030"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rövid útmutató: Java Spring-alkalmazás létrehozása az Azure app Configuration szolgáltatással
 
@@ -55,7 +54,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
    - Adja meg az alkalmazáshoz tartozó **Group** (Csoport) és **Artifact** (Összetevő) neveket.
    - Adja hozzá a **rugó webes** függőségét.
 
-1. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet a helyi számítógépre.
+1. Az előző beállítások megadása után válassza a **projekt létrehozása** lehetőséget. Ha a rendszer kéri, töltse le a projektet a helyi számítógépre.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
@@ -147,7 +146,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. Állítson be egy **APP_CONFIGURATION_CONNECTION_STRING**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. A parancssorban futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
+1. Állítson be egy **APP_CONFIGURATION_CONNECTION_STRING** nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. A parancssorban futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
 
     ```cmd
     setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"

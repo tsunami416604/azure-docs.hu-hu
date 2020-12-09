@@ -2,18 +2,18 @@
 title: Gyors útmutató az Azure-alkalmazások konfigurálásához a .NET Core használatával | Microsoft Docs
 description: Ebben a rövid útmutatóban hozzon létre egy .NET Core-alkalmazást az Azure-alkalmazás konfigurációjának használatával, hogy központilag kezelje az Alkalmazásbeállítások tárolását és kezelését a kódból elválasztva.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: bb12224fd29d50765bc56a531787b7a0849cd06e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: alkemper
+ms.openlocfilehash: 1a5e756e05543d9f19775f4e2d1abcee82794f9e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183515"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932064"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: .NET Core-alkalmazás létrehozása az alkalmazás konfigurációjával
 
@@ -36,7 +36,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET 
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
-8. Kattintson az **Alkalmaz** elemre.
+8. Kattintson az **Alkalmaz** gombra.
 
 ## <a name="create-a-net-core-console-app"></a>.NET Core Console-alkalmazás létrehozása
 

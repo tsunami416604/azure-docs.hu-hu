@@ -5,16 +5,16 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 64767f83dfad2b0c2909e8a89b55c849d5c5a9a9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 1f4e8c0bc6a066e0d82d393474bfc804be5e3fb3
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896990"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931367"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Oktatóanyag: feltétel használata ARM-sablonokban
 
-Megtudhatja, hogyan helyezhet üzembe Azure-erőforrásokat egy Azure Resource Manager-(ARM-) sablon feltételei alapján.
+Megtudhatja, hogyan helyezhet üzembe Azure-erőforrásokat egy Azure Resource Manager-sablon (ARM-sablon) feltételei alapján.
 
 Az [erőforrások üzembehelyezési sorrendjének beállítását](./template-tutorial-create-templates-with-dependent-resources.md) ismertető oktatóanyagban egy virtuális gépet, egy virtuális hálózatot és egyéb függő erőforrásokat fog létrehozni, például egy tárfiókot. Ahelyett, hogy minden alkalommal egy új tárfiókot kellene létrehozni, megengedheti a felhasználóknak, hogy maguk döntsék el, új tárfiókot hoznak létre vagy egy meglévőt használnak. Ehhez egy további paramétert kell meghatároznia. Ha a paraméter értéke „új”, akkor a rendszer új tárfiókot hoz létre. Ellenkező esetben a rendszer a megadott nevű meglévő Storage-fiókot használja.
 
@@ -26,9 +26,9 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Gyorsindítási sablon megnyitása
 > * A sablon módosítása
 > * A sablon üzembe helyezése
-> * Az erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
-Ez az oktatóanyag csak a feltételek használatának alapvető forgatókönyvét tárgyalja. További információkért lásd:
+Ez az oktatóanyag csak a feltételek használatának alapvető forgatókönyvét tárgyalja. További információ:
 
 * [Sablonfájl szerkezete: feltétel](conditional-resource-deployment.md).
 * [Erőforrás feltételes üzembe helyezése ARM-sablonban](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio CodeResource Manager Tools bővítménnyel. Tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
+* Visual Studio CodeResource Manager Tools bővítménnyel. Lásd [a gyors útmutató: ARM-sablonok létrehozása a Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 * A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót a virtuális gép rendszergazdai fiókjához. Íme egy példa jelszó automatikus létrehozására:
 
     ```console
@@ -140,7 +140,7 @@ A következő eljárással hajthatja végre a módosításokat:
 
     ![Azure Portal Cloud Shell fájl feltöltése](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Kattintson a **Fájlok feltöltése/letöltése** , majd a **Feltöltés** elemre. Lásd az előző képernyőképet. Válassza ki a korábbi szakaszban mentett fájlt. A fájl feltöltése után az **ls** parancs és a **Cat** parancs használatával ellenőrizheti, hogy a fájl feltöltése sikeresen megtörtént-e.
+1. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre. Lásd az előző képernyőképet. Válassza ki a korábbi szakaszban mentett fájlt. A fájl feltöltése után az **ls** parancs és a **Cat** parancs használatával ellenőrizheti, hogy a fájl feltöltése sikeresen megtörtént-e.
 
 1. Futtassa a következő PowerShell-szkriptet a sablon telepítéséhez.
 
@@ -172,11 +172,11 @@ A következő eljárással hajthatja végre a módosításokat:
     ```
 
     > [!NOTE]
-    > Az üzembe helyezés meghiúsul, ha a **newOrExisting** paraméter értéke **new** , de a megadott névvel rendelkező tárfiók már létezik.
+    > Az üzembe helyezés meghiúsul, ha a **newOrExisting** paraméter értéke **new**, de a megadott névvel rendelkező tárfiók már létezik.
 
 Próbáljon meg egy másik üzemelő példányt a **newOrExisting** beállítással a "meglévő" értékre állítani, és adjon meg egy meglévő Storage-fiókot. Ha a művelet előtt szeretne létrehozni egy tárfiókot, tekintse meg a [tárfiók létrehozását](../../storage/common/storage-account-create.md) ismertető útmutatót.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Az erőforráscsoport törléséhez válassza a **kipróbálás** lehetőséget a Cloud Shell megnyitásához. A PowerShell-parancsfájl beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablaktáblára, majd válassza a **Beillesztés** lehetőséget.
 

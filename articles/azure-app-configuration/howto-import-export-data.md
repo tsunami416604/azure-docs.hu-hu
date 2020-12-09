@@ -2,17 +2,17 @@
 title: Az Azure-alkalmazások konfigurációjának importálása vagy exportálása
 description: Megtudhatja, hogyan importálhat és exportálhat konfigurációs információkat az Azure-alkalmazások konfigurációjában vagy az alkalmazásból. Exchange-alapú adatcsere az alkalmazás konfigurációs tárolója és a kód projekt között.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: 0e127a11f3821325602a78d46c69b2330bfb8293
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: 5e4eeb37bb5efa11a656600072e4aa364fc71500
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074617"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931792"
 ---
 # <a name="import-or-export-configuration-data"></a>Konfigurációs adatok importálása vagy exportálása
 
@@ -28,7 +28,7 @@ Az adatimportálás az [Azure Portal](https://portal.azure.com) vagy az [Azure C
 
 1. Keresse meg az alkalmazás konfigurációs tárolóját, és válassza az **Importálás/exportálás** lehetőséget az **Operations (műveletek** ) menüből.
 
-1. Az **Importálás** lapon válassza a **forrás szolgáltatás**  >  **konfigurációs fájl**elemet.
+1. Az **Importálás** lapon válassza a **forrás szolgáltatás**  >  **konfigurációs fájl** elemet.
 
 1. Válassza ki **a nyelvet** , és válassza ki a kívánt bemeneti típust.
 
@@ -50,13 +50,13 @@ Az Exportálás az alkalmazás konfigurációjában tárolt konfigurációs adat
 
 Az adatexportálás az [Azure Portal](https://portal.azure.com) vagy az [Azure CLI](./scripts/cli-export.md)használatával történhet. A Azure Portal hajtsa végre az alábbi lépéseket:
 
-1. Keresse meg az alkalmazás konfigurációs tárolóját, és válassza az **Importálás/exportálás**lehetőséget.
+1. Keresse meg az alkalmazás konfigurációs tárolóját, és válassza az **Importálás/exportálás** lehetőséget.
 
-1. Az **Exportálás** lapon válassza a **cél szolgáltatás**  >  **konfigurációs fájl**elemet.
+1. Az **Exportálás** lapon válassza a **cél szolgáltatás**  >  **konfigurációs fájl** elemet.
 
 1. Opcionálisan megadhat egy **előtagot** , és kiválaszthat egy **címkét** és egy időpontot az exportálandó kulcsok számára.
 
-1. Válasszon ki egy **Fájltípus**-  >  **elválasztó**elemet.
+1. Válasszon ki egy **Fájltípus**-  >  **elválasztó** elemet.
 
 1. Az Exportálás befejezéséhez kattintson az **alkalmaz** gombra.
 

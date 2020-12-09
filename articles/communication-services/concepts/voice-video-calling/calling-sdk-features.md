@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f621d11553101c2c0bcfce804b26c218ae58670c
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5ace6866ef863b2f901c98f9a32a12540a990d0d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576468"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931911"
 ---
 # <a name="calling-client-library-overview"></a>Hívási ügyfélkódtár áttekintése
 
@@ -69,7 +69,7 @@ A következő táblázat a jelenleg elérhető támogatott böngészők és verz
 
 * Vegye figyelembe, hogy a Chrome legújabb verziója az előző két kiadáson felül támogatott.<br/>
 
-* * Vegye figyelembe, hogy a Safari 13.1 + verziója támogatott. A Safari macOS-hez készült kimenő videó még nem támogatott, de iOS rendszeren támogatott. A kimenő képernyő megosztása csak asztali iOS rendszeren támogatott.
+* * Vegye figyelembe, hogy a Safari 13.1 + verziója támogatott. A Safari macOS-hez készült kimenő videó még nem támogatott, de iOS rendszeren támogatott. A kimenő képernyő megosztása csak asztali iOS rendszeren támogatott. 1:1 és csoportos hívások jelenleg nem érhetők el a Safarion.
 
 ## <a name="calling-client---browser-security-model"></a>Ügyfél-böngésző biztonsági modell meghívása
 
@@ -91,7 +91,7 @@ Ez az IFRAME például a kamera és a mikrofon elérését is lehetővé teszi:
 <iframe allow="camera *; microphone *">
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a hívással](../../quickstarts/voice-video-calling/getting-started-with-calling.md)

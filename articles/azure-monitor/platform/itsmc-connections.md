@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 410281ce67faf345539701389d4b03351d403b99
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 502d5a5c4b3d13d32fece648ce1de6763d012096
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186065"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932285"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek/-szolgáltatások összekapcsolása IT Service Management-összekötővel
 Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](./itsmc-overview.md).
@@ -25,8 +25,7 @@ A következő ITSM-termékek/szolgáltatások támogatottak. Válassza ki a term
 
 > [!NOTE]
 > 
-> Az 1 – Oct-2020 Cherwell és az Azure-riasztással rendelkező ITSM-integrációk már nem lesznek engedélyezve az új ügyfelek számára. Az új ITSM-kapcsolatok nem lesznek támogatottak. 
-> A meglévő ITSM-kapcsolatok támogatottak lesznek.
+> Javasoljuk, hogy a Cherwell és a felkínált ügyfeleinknek a [webhook műveleteit](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) a Cherwell és az Előa végpontot használják egy másik megoldásként az integrációhoz.
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>System Center Service Manager összekötése az Azure-ban IT-szolgáltatásmenedzsmenti csatoló
 
@@ -215,7 +214,7 @@ A **ServiceNow-rendszergazdáknak a következőket kell tenniük a ServiceNow-p�
 > ![A SNOW System OAuth definíciója](media/itsmc-connections/snow-system-oauth.png)
 > 3. Kattintson a hozzáférés visszavonása, majd a visszavonás lehetőségre.
 
-- Telepítse a Microsoft Log Analytics Integration (ServiceNow app) felhasználói alkalmazását. [További információk](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+- Telepítse a Microsoft Log Analytics Integration (ServiceNow app) felhasználói alkalmazását. [További információ](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 > [!NOTE]
 > A ITSMC csak a ServiceNow áruházból letöltött Microsoft Log Analytics integrációs szolgáltatáshoz használható hivatalos felhasználói alkalmazást támogatja. A ITSMC nem támogatja a kód betöltését a ServiceNow oldalon vagy a hivatalos ServiceNow-megoldás részét nem képező alkalmazásban. 
 - Integrációs felhasználói szerepkör létrehozása a telepített felhasználói alkalmazáshoz. Az integrációs felhasználói szerepkör létrehozásával kapcsolatos információkat [itt](#create-integration-user-role-in-servicenow-app)találja.

@@ -3,18 +3,18 @@ title: Gyors útmutató az Azure-alkalmazások konfigurálásához a .NET-keretr
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy .NET-keretrendszerbeli alkalmazást az Azure-alkalmazás konfigurációjának használatával, hogy központilag kezelje az alkalmazás-beállítások tárolási és kezelési beállításait
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: d338ca5cf2c794f15d3eb535b5280208236d1e34
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.author: alkemper
+ms.openlocfilehash: 62516218ed2c0249f829ad8d286e4ad8bbc471f8
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767753"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932090"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Gyors útmutató: .NET-keretrendszerbeli alkalmazás létrehozása az Azure app Configuration használatával
 
@@ -30,7 +30,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. **Configuration Explorer**  >  **Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer Create**Key-Value** elemet:
+7. **Configuration Explorer**  >  **Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer Create **Key-Value** elemet:
 
     | Kulcs | Érték |
     |---|---|
@@ -42,15 +42,15 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
 ## <a name="create-a-net-console-app"></a>.NET-konzol alkalmazás létrehozása
 
-1. Indítsa el a Visual studiót, és válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
+1. Indítsa el a Visual studiót, és válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
 
 1. A **create a New Project (új projekt létrehozása**) területen szűrje a **konzol** projekt típusát, és kattintson a **Console app (.NET-keretrendszer)** elemre. Kattintson a **Tovább** gombra.
 
-1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.NET-keretrendszer 4.7.1** vagy újabb lehetőséget. Kattintson a **Létrehozás** gombra.
+1. Az **új projekt konfigurálása** területen adja meg a projekt nevét. A **keretrendszer** területen válassza a **.NET-keretrendszer 4.7.1** vagy újabb lehetőséget. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a következő NuGet-csomagokat a projekthez.
+1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a következő NuGet-csomagokat a projekthez.
 
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 or later

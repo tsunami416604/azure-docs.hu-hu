@@ -1,17 +1,17 @@
 ---
 title: Azure app Configuration REST API – kulcs-érték
 description: A kulcs-értékekkel való munkavégzésre szolgáló lapok az Azure-alkalmazás konfigurációjának használatával REST API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: f89b3f2fa4805eeb2fd9f9d511c8f228b98139ac
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 95081d6f8c2770d01f7836e08b6851860bf47ba8
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241029"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932557"
 ---
 # <a name="key-values"></a>Kulcs-értékek
 
@@ -19,7 +19,7 @@ A kulcs-érték a egyedi kombinációjával azonosított erőforrás `key`  +  `
 
 Ez a cikk a 1,0-es API-verzióra vonatkozik.
 
-## <a name="operations"></a>Üzemeltetés
+## <a name="operations"></a>Műveletek
 
 - Lekérés
 - Több lista
@@ -205,7 +205,7 @@ Content-Type: application/problem+json; charset=utf-8
 
 _ *Példák**
 
-- Az összes
+- Mind
 
     ```http
     GET /kv?api-version={api-version}

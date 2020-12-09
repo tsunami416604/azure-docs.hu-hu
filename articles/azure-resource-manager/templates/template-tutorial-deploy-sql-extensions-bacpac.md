@@ -1,20 +1,20 @@
 ---
 title: SQL BACPAC-fájlok importálása sablonokkal
-description: Megtudhatja, hogyan importálhat Azure SQL Database-bővítményeket az SQL BACPAC-fájlok Azure Resource Manager-sablonokkal történő importálásához.
+description: Ismerje meg, hogyan importálhat Azure SQL Database-bővítményeket az SQL BACPAC-fájlok Azure Resource Manager-sablonokkal (ARM-sablonok) történő importálásához.
 author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86101885"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931401"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Oktatóanyag: SQL BACPAC-fájlok importálása ARM-sablonokkal
 
-Megtudhatja, hogyan importálhat Azure SQL Database-bővítményeket Azure Resource Manager (ARM) sablonokkal rendelkező BACPAC-fájlok importálásához. Az üzembe helyezési összetevők a központi telepítés befejezéséhez szükséges fő sablonfájlok mellett bármilyen fájl is. A BACPAC-fájl egy összetevő.
+Megtudhatja, hogyan importálhat Azure SQL Database-bővítményeket egy BACPAC-fájl importálásához Azure Resource Manager-sablonokkal (ARM-sablonok). Az üzembe helyezési összetevők a központi telepítés befejezéséhez szükséges fő sablonfájlok mellett bármilyen fájl is. A BACPAC-fájl egy összetevő.
 
 Ebben az oktatóanyagban létrehoz egy sablont a [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) és egy önálló adatbázis üzembe helyezéséhez, valamint egy BACPAC-fájl importálásához. További információ az Azure-beli virtuálisgép-bővítmények ARM-sablonok használatával történő üzembe helyezéséről [: oktatóanyag: virtuálisgép-bővítmények üzembe helyezése ARM-sablonokkal](./template-tutorial-deploy-vm-extensions.md).
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio Code a Resource Manager Tools bővítménnyel. Tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
+* Visual Studio Code a Resource Manager Tools bővítménnyel. Lásd [a gyors útmutató: ARM-sablonok létrehozása a Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 * A biztonság növeléséhez használjon generált jelszót a kiszolgálói rendszergazdai fiókhoz. Az alábbi példa segítségével hozhatja meg a jelszót:
 
     ```console
@@ -101,7 +101,7 @@ A BACPAC-fájlt egy ARM-sablon használatával kell tárolni egy Azure Storage-f
 
 Az oktatóanyagban használt sablont a [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json)tárolja.
 
-1. A Visual Studio Code-ból válassza a **fájl**  >  **megnyitott**fájl elemet.
+1. A Visual Studio Code-ból válassza a **fájl**  >  **megnyitott** fájl elemet.
 1. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
@@ -116,7 +116,7 @@ Az oktatóanyagban használt sablont a [GitHub](https://raw.githubusercontent.co
    * `Microsoft.SQL.servers/databases`. Tekintse meg a [sablonreferenciát](/azure/templates/microsoft.sql/servers/databases).
 
         A Testreszabás előtt hasznos lehet a sablon alapvető megismerése.
-1. Válassza a **fájl**  >  **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre *azuredeploy.js*a következő néven:.
+1. Válassza a **fájl**  >  **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre *azuredeploy.js* a következő néven:.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
@@ -137,7 +137,7 @@ Az oktatóanyagban használt sablont a [GitHub](https://raw.githubusercontent.co
         }
     ```
 
-    Adjon hozzá egy vesszőt a **adminPassword**után. A JSON-fájl Visual Studio Code-ból való formázásához válassza a Shift + Alt + F billentyűkombinációt.
+    Adjon hozzá egy vesszőt a **adminPassword** után. A JSON-fájl Visual Studio Code-ból való formázásához válassza a Shift + Alt + F billentyűkombinációt.
 
     A két érték beszerzéséhez tekintse meg [a BACPAC-fájl előkészítését](#prepare-a-bacpac-file)ismertető témakört.
 
@@ -254,7 +254,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 1. Válassza ki az erőforráscsoport nevét. Az erőforráscsoport összesen hat erőforrást fog látni.
 1. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban üzembe helyezett egy kiszolgálót és egy adatbázist, és importált egy BACPAC-fájlt. A sablonok telepítésével kapcsolatos hibák megismeréséhez lásd:
 

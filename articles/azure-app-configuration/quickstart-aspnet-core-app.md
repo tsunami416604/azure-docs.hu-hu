@@ -2,23 +2,23 @@
 title: Gyors útmutató az Azure-alkalmazások konfigurálásához a ASP.NET Corekal | Microsoft Docs
 description: Hozzon létre egy ASP.NET Core alkalmazást az Azure-alkalmazás konfigurálásával, hogy központilag központosítsa egy ASP.NET Core alkalmazás alkalmazás-beállításainak tárolását és kezelését.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.custom: devx-track-csharp, contperfq1
 ms.topic: quickstart
 ms.date: 09/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: 13283a9531804502b8a8d72e615be955b413658c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: fc2b218621fcf91a7d82b0554da79a8b4582c3a2
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075841"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932166"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
-Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját fogja használni az ASP.NET Core alkalmazások beállításainak tárolásához és kezeléséhez. ASP.NET Core egyetlen, kulcs-érték alapú konfigurációs objektumot hoz létre, amely egy vagy több alkalmazás által megadott adatforrásból származó beállításokat használ. Ezeket az adatforrásokat *konfigurációs szolgáltatóknak*nevezzük. Mivel az alkalmazás konfigurációja .NET Core-ügyfele konfigurációs szolgáltatóként van implementálva, a szolgáltatás egy másik adatforráshoz hasonlóan jelenik meg.
+Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját fogja használni az ASP.NET Core alkalmazások beállításainak tárolásához és kezeléséhez. ASP.NET Core egyetlen, kulcs-érték alapú konfigurációs objektumot hoz létre, amely egy vagy több alkalmazás által megadott adatforrásból származó beállításokat használ. Ezeket az adatforrásokat *konfigurációs szolgáltatóknak* nevezzük. Mivel az alkalmazás konfigurációja .NET Core-ügyfele konfigurációs szolgáltatóként van implementálva, a szolgáltatás egy másik adatforráshoz hasonlóan jelenik meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +32,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját fogja has
 
 [!INCLUDE[Azure App Configuration resource creation steps](../../includes/azure-app-configuration-create.md)]
 
-7. **Operations**  >  **Configuration explorer**  >  **Create**  >  A következő kulcs-érték párok hozzáadásához válassza az Operations Configuration Explorer**kulcs-érték** létrehozása elemet:
+7. **Operations**  >  **Configuration explorer**  >  **Create**  >  A következő kulcs-érték párok hozzáadásához válassza az Operations Configuration Explorer **kulcs-érték** létrehozása elemet:
 
     | Kulcs                                | Érték                               |
     |------------------------------------|-------------------------------------|
@@ -123,7 +123,7 @@ dotnet new mvc --no-https --output TestAppConfig
 
 A következő lépések végrehajtásával olvashatja és megjelenítheti az alkalmazás konfigurációs tárolójában tárolt értékeket. A rendszer a .NET Core konfigurációs API-t használja az áruház eléréséhez. A kulcsok értékeinek megjelenítéséhez a borotva szintaxisa lesz használva.
 
-Nyissa meg a * \<app root> /views/Home/index.cshtml*, és cserélje le a tartalmát a következő kódra:
+Nyissa meg a *\<app root> /views/Home/index.cshtml*, és cserélje le a tartalmát a következő kódra:
 
 ```cshtml
 @using Microsoft.Extensions.Configuration
@@ -167,7 +167,7 @@ Az előző kódban az alkalmazás konfigurációs tárolójának kulcsait a köv
 
     ![A webes előnézet gomb megkeresése](./media/quickstarts/cloud-shell-web-preview.png)
 
-    Amikor a rendszer kéri, hogy konfigurálja a portot az előzetes verzióhoz, írja be a *5000* értéket, és válassza a **Megnyitás és Tallózás**lehetőséget. A weblap beolvassa az "adatok az Azure-alkalmazás konfigurációjától" című lapot.
+    Amikor a rendszer kéri, hogy konfigurálja a portot az előzetes verzióhoz, írja be a *5000* értéket, és válassza a **Megnyitás és Tallózás** lehetőséget. A weblap beolvassa az "adatok az Azure-alkalmazás konfigurációjától" című lapot.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

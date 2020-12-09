@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6612e6982ae4826869134dfa46b35a3f202d4bbb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 29bcf2fdd3e20b28b1f2cb014137cfba37ccaf2e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183243"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931809"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure biztonsági alapkonfiguráció az Azure Kubernetes Service-hez
 
@@ -40,7 +40,7 @@ Létrehozhat egy privát AK-fürtöt, amely biztosítja, hogy az AK API-kiszolg�
 
 - [Privát Azure Kubernetes Service-fürt létrehozása](private-clusters.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -56,7 +56,7 @@ Engedélyezze a hálózati biztonsági csoport adatfolyam-naplóit, és küldje 
 
 - [A Traffic Analytics engedélyezése és használata](../network-watcher/traffic-analytics.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -72,7 +72,7 @@ API-átjárót használhat a hitelesítéshez, az engedélyezéshez, a szabályo
 
 - [Az Azure API Management használata az Azure Kubernetes Service-ben üzembe helyezett Service-szolgáltatásokkal](../api-management/api-management-kubernetes.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -87,7 +87,7 @@ Megadhatja, hogy engedélyezi vagy megtagadja a forgalmat olyan beállítások a
 
 - [A DDoS Protection konfigurálása](../ddos-protection/manage-ddos-protection.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -99,7 +99,7 @@ A Network Watcher automatikusan engedélyezve van a virtuális hálózat régió
 
 - [A Network Watcher engedélyezése](../network-watcher/network-watcher-create.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -113,7 +113,7 @@ Ha a behatolás észlelése és/vagy megelőzése a hasznos adatok vizsgálata v
 
 - [Az Azure Application Gateway (Azure WAF) üzembe helyezése](../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -129,7 +129,7 @@ Teljes tartománynevet (FQDN) tartalmazó címkéket alkalmazhat az alkalmazáso
 
 - [Az Azure Application Gateway (Azure WAF) üzembe helyezése](../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -147,7 +147,7 @@ Alkalmazzon Azure-címkét a Node-készletekbe az AK-fürtben. Ezek nem azonosak
 
 - [A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)](limit-egress-traffic.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -163,11 +163,11 @@ Emellett használjon az AK-hoz kapcsolódó beépített szabályzat-definíciók
 
 • Győződjön meg arról, hogy a szolgáltatások csak a Kubernetes-fürt engedélyezett portjain figyelik
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Policy minták a hálózatkezeléshez](../governance/policy/samples/built-in-policies.md#network)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -178,13 +178,13 @@ Használja a beépített Azure Policy címkézéssel kapcsolatos definíciókat,
 
 Engedélyezheti vagy megtagadhatja a fürtön belüli adott hálózati elérési utakat a névterek és a hálózati házirendekkel rendelkező címkék kiválasztása alapján. Ezeket a névtereket és címkéket leíróként használhatja a forgalmi konfigurációs szabályokhoz. A Azure PowerShell vagy az Azure parancssori felület (CLI) használatával kereshet vagy végezhet műveleteket az erőforrásokon a címkék alapján.
 
-- [Azure Policy parancssori felülettel](/cli/azure/policy?view=azure-cli-latest)
+- [Azure Policy parancssori felülettel](/cli/azure/policy)
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 - [NSG létrehozása biztonsági konfigurációval](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -202,7 +202,7 @@ Azure Monitor naplók segítségével engedélyezheti és lekérdezheti a napló
 
 - [A Kubernetes főcsomópont-naplóinak engedélyezése és áttekintése az Azure Kubernetes Service-ben (AKS)](view-master-logs.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -218,7 +218,7 @@ Ha egyéni DNS-kiszolgálókat használ, győződjön meg arról, hogy az NTP-ki
 
 - [Az NTP-tartomány és a portokra vonatkozó követelmények ismertetése az AK-fürtcsomópontok esetében](limit-egress-traffic.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Megosztott
 
@@ -296,7 +296,7 @@ Az adatgyűjtés szükséges a hiányzó frissítések láthatóságának biztos
 
 - [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -326,7 +326,7 @@ Tekintse meg az AK Master Components (Kube-apiserver és Kube-controllermanager)
 
 - [A standard szintű Azure Security Center engedélyezése](../security-center/security-center-get-started.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -352,7 +352,7 @@ A DNS-lekérdezések naplózásának engedélyezése a dokumentált konfiguráci
 
 - [A CoreDNS testreszabása Azure Kubernetes Service-szel](coredns-custom.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -364,7 +364,7 @@ A DNS-lekérdezések naplózásának engedélyezése a dokumentált konfiguráci
 
 - [Kubelet-naplók lekérése Azure Kubernetes Service- (AKS-) fürtcsomópontokból](kubelet-logs.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -382,7 +382,7 @@ Az Azure CLI használata olyan műveletekhez, mint például a "hozzáférési h
 
 - [Az AK integrálása az Azure AD-vel](./azure-ad-integration-cli.md)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [Identitás és hozzáférés figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -398,7 +398,7 @@ Ad hoc lekérdezések végrehajtása az AK-beli felügyeleti csoportokba tartoz�
 
 - [Az AK hozzáférési és identitási beállításainak megismerése](concepts-identity.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -424,7 +424,7 @@ Szabályzatokat és eljárásokat hozhat létre a dedikált rendszergazdai fiók
 
 - [A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése](../azure-monitor/insights/container-insights-livedata-overview.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -434,7 +434,7 @@ Szabályzatokat és eljárásokat hozhat létre a dedikált rendszergazdai fiók
 
 Engedélyezze az Azure AD Multi-Factor Authentication (MFA) használatát, és kövesse Security Center identitás-és hozzáférés-kezelési javaslatait.
 
-- [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
+- [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md) 
 
@@ -447,9 +447,9 @@ Engedélyezze az Azure AD Multi-Factor Authentication (MFA) használatát, és k
 **Útmutató**: a megadott Azure Kubernetes szolgáltatásbeli (ak-) fürtökre és kapcsolódó erőforrásokra való bejelentkezéshez konfigurált, multi-Factor Authentication (MFA) jogosultságú hozzáférési munkaállomás (Paw) használata.
 - [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
+- [MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -475,7 +475,7 @@ Korlátozza az AK API-kiszolgáló hozzáférését az IP-címtartományok korl�
 
 - [Elnevezett helyszínek konfigurálása az Azure-ban](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -491,7 +491,7 @@ Az AK beépített szerepköreinek használata az Azure szerepköralapú hozzáf�
 
 - [Az AK által felügyelt Azure AD integrálása](managed-aad.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -520,7 +520,7 @@ Vegye figyelembe a támogatási és hibaelhárítási célokra használt szerepk
 
 - [Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával](../azure-monitor/platform/alerts-log.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -534,7 +534,7 @@ Vegye figyelembe a támogatási és hibaelhárítási célokra használt szerepk
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -543,7 +543,7 @@ Vegye figyelembe a támogatási és hibaelhárítási célokra használt szerepk
 **Útmutató**: nem alkalmazható az Azure Kubernetes Service (ak) szolgáltatásra, mert Ügyfélszéf nem támogatja.
 - [Ügyfélszéf támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: nem alkalmazható
 
@@ -559,7 +559,7 @@ Vegye figyelembe a támogatási és hibaelhárítási célokra használt szerepk
 
 - [A felügyelt fürtökhöz tartozó címkék frissítése](/rest/api/aks/managedclusters/updatetags)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -577,7 +577,7 @@ Különböző előfizetések és/vagy felügyeleti csoportok implementálása fe
 
 - [A hálózati kapcsolat és a biztonság ajánlott eljárásainak ismertetése az AK-ban](operator-best-practices-network.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -609,7 +609,7 @@ A Kubernetes kimenő forgalmának alapértelmezett titkosítása HTTPS/TLS proto
 
 - [Az AK által használt lehetséges kimenő portok és protokollok listája](limit-egress-traffic.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -636,7 +636,7 @@ Az AK beépített szerepköreinek használata az Azure RBAC-erőforrás-háziren
 
 - [Fürt erőforrásaihoz való hozzáférés szabályozása az Azure RBAC és az Azure AD-identitások használatával az AK-ban](azure-ad-rbac.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -661,7 +661,7 @@ Az ügyfél által felügyelt kulcsokkal titkosítható a REST-alapú adatlemeze
 
 - [Saját kulcsok (BYOK) használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)](azure-disk-customer-managed-keys.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Megosztott
 
@@ -717,7 +717,7 @@ Vegye figyelembe, hogy a Windows Server-csomópontok naprakészen tartásának f
 
 - [Azure Kubernetes szolgáltatás (ak) csomópont-rendszerképének frissítése](node-image-upgrade.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -725,7 +725,7 @@ Vegye figyelembe, hogy a Windows Server-csomópontok naprakészen tartásának f
 
 **Útmutató**: manuális folyamat megvalósítása annak biztosítására, hogy az Azure Kubernetes szolgáltatás (ak) fürtcsomópont külső alkalmazásai a fürt élettartama alatt is megmaradjanak. Ehhez szükség lehet az automatikus frissítések engedélyezésére, a csomópontok figyelésére vagy rendszeres újraindításra.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -735,7 +735,7 @@ Vegye figyelembe, hogy a Windows Server-csomópontok naprakészen tartásának f
 
 A "Get-AzSecurityTask" PowerShell-parancsmaggal automatizálhatja azon biztonsági feladatok beolvasását, amelyeket a Security Center javasol a végrehajtásához, hogy megerősítse a biztonsági helyzetek és a biztonsági rések vizsgálatának eredményeit.
 
-- [A Azure Security Center által felderített sebezhetőségek megtekintése a PowerShell használatával](/powershell/module/az.security/get-azsecuritytask?view=azps-3.3.0)
+- [A Azure Security Center által felderített sebezhetőségek megtekintése a PowerShell használatával](/powershell/module/az.security/get-azsecuritytask)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -763,11 +763,11 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -777,7 +777,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -799,7 +799,7 @@ A beszennyező anyagok, címkék vagy címkék segítségével rendszeres idők�
 
 - [Válassza ki a csomópont-készlethez tartozó Taint, címkét vagy címkét](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -807,7 +807,7 @@ A beszennyező anyagok, címkék vagy címkék segítségével rendszeres idők�
 
 **Útmutató**: határozza meg a jóváhagyott Azure-erőforrások és jóváhagyott szoftverek listáját a számítási erőforrások számára a szervezeti üzleti igények alapján.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -820,11 +820,11 @@ A beszennyező anyagok, címkék vagy címkék segítségével rendszeres idők�
 
 Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésében lévő erőforrásokat. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrást a szervezeti üzleti követelmények alapján jóváhagyja.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 - [Lekérdezések létrehozása az Azure Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -838,7 +838,7 @@ Nyomon követheti a gépek konfigurációit, hogy segítséget nyújtsanak a mű
 
 - [Az Azure-beli virtuális gépek leltározásának engedélyezése](../automation/automation-tutorial-installed-software.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -856,7 +856,7 @@ Nyomon követheti a gépek konfigurációit, hogy segítséget nyújtsanak a mű
 
 - [Az Azure Change Tracking ismertetése](../automation/change-tracking/overview.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -876,7 +876,7 @@ Az adaptív alkalmazások elemzésének engedélyezése Security Centerban olyan
 Azure Security Center adaptív alkalmazás használata
 - [Vezérlők](../security-center/security-center-adaptive-application.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -890,13 +890,13 @@ Azure Security Center adaptív alkalmazás használata
 
 Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az előfizetésében lévő erőforrásokat. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 - [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -904,9 +904,9 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: a Azure Policy használatával korlátozásokat állíthat be az előfizetésekben hozhatók létre a beépített szabályzat-definíciók használatával.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -915,7 +915,7 @@ Az Azure Resource Graph használatával lekérdezheti vagy felderítheti az elő
 **Útmutató**: az Azure feltételes hozzáférés használatával korlátozhatja a felhasználók a Azure Resource Manager interakcióját a "Microsoft Azure felügyelet" alkalmazás "hozzáférés tiltása" beállításával.
 - [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -927,19 +927,19 @@ A felhasználók vagy csoportok számára hozzáférést biztosíthat a névtér
 
 Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre olyan fiókok felderítéséhez, amelyek az AK-beli felügyeleti csoportok tagjai, és amelyeket a hozzáférés rendszeres egyeztetéséhez használhat. Használja az Azure CLI-t olyan műveletekhez, mint például a "hozzáférési hitelesítő adatok lekérése egy felügyelt Kubernetes-fürthöz. Security Center identitás-és hozzáférés-kezelési javaslatok implementálása.
 
-- [Az AK kezelése az Azure CLI-vel](/cli/azure/aks?view=azure-cli-latest)
+- [Az AK kezelése az Azure CLI-vel](/cli/azure/aks)
 
 - [Az AK és az Azure AD integrációjának megismerése](concepts-identity.md)
 
 - [Az AK integrálása az Azure AD-vel](./azure-ad-integration-cli.md)
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [Identitás és hozzáférés figyelése Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -959,7 +959,7 @@ Tekintse át és implementálja az elkülönítésre és a több-bérlőre vonat
 
 - [A hálózati kapcsolat és a biztonság ajánlott eljárásainak ismertetése az AK-ban](operator-best-practices-network.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -985,9 +985,9 @@ Exportálja az AK-konfiguráció sablonját JavaScript Object Notation (JSON) Az
 
 - [Az AK Pod biztonsági szabályzatok konfigurálása és kezelése](use-pod-security-policies.md)
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1001,7 +1001,7 @@ Az Azure a napi javításokat (beleértve a biztonsági javításokat is) az AK-
 
 - [A biztonság megerősítése az AK-beli virtuális gépek gazdagépei között](security-hardened-vm-host-image.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Megosztott
 
@@ -1019,11 +1019,11 @@ Hozzon létre egyéni Azure Policy-definíciókat a következő névterek aliasa
 
 • Microsoft. Network
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1039,7 +1039,7 @@ Tekintse meg a gazdagép operációs rendszerbe beépített Internet Security (C
 
 - [A biztonság megerősítése az AK-beli virtuális gépek gazdagépei között](security-hardened-vm-host-image.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1055,9 +1055,9 @@ Biztonság megerősítése az AK-ügynök Node gazda operációs rendszeréhez
 
 security-hardened-vm-host-image.md
 
-- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1065,7 +1065,7 @@ security-hardened-vm-host-image.md
 
 **Útmutató**: nem alkalmazható az Azure Kubernetes Service (ak) szolgáltatásra. Az KABAi szolgáltatás alapértelmezés szerint a biztonsági optimalizált gazdagép operációs rendszerét (OS) biztosítja. Egy alternatív vagy egyéni operációs rendszer nem választható ki aktuális lehetőségként.
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1075,11 +1075,11 @@ security-hardened-vm-host-image.md
 
 Egyéni szabályzatokat hozhat létre az auditáláshoz és a rendszerkonfigurációk érvényesítéséhez. Dolgozzon ki egy folyamatot és folyamatot a házirend-kivételek kezeléséhez.
 
-- [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 - [Aliasok használata](../governance/policy/concepts/definition-structure.md#aliases)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1095,7 +1095,7 @@ Tekintse meg az AK-gazdagépekre épülő, az Internet Security (CIS) által has
 
 - [Az AK-fürtök állapot-konfigurációjának ismertetése](concepts-clusters-workloads.md#control-plane)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1105,7 +1105,7 @@ Tekintse meg az AK-gazdagépekre épülő, az Internet Security (CIS) által has
 
 - [Javaslatok szervizelése Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1115,7 +1115,7 @@ Tekintse meg az AK-gazdagépekre épülő, az Internet Security (CIS) által has
 
 - [Az Azure Security Center tárolókra vonatkozó ajánlásainak értelmezése](../security-center/container-security.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1131,7 +1131,7 @@ Kerülje a rögzített vagy megosztott hitelesítő adatok használatát.
 
 - [A Key Vault használata az AK-fürttel](developer-best-practices-pod-security.md#limit-credential-exposure)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1147,7 +1147,7 @@ Az egyszerű szolgáltatások az AK-fürtökben is használhatók. Az egyszerű 
 
 - [Azure Active Directory Pod-identitás](https://github.com/Azure/aad-pod-identity)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1161,7 +1161,7 @@ Korlátozza a hitelesítő adatokat, mert nem határozza meg a hitelesítő adat
 
 - [Fejlesztői ajánlott eljárások a pod biztonsághoz](developer-best-practices-pod-security.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1179,7 +1179,7 @@ Korlátozza a hitelesítő adatokat, mert nem határozza meg a hitelesítő adat
 
 - [AK megosztott felelősség és démon-készletek](support-policies.md#shared-responsibility)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Megosztott
 
@@ -1203,7 +1203,7 @@ Korlátozza a hitelesítő adatokat, mert nem határozza meg a hitelesítő adat
 
 - [AK megosztott felelősség és démon-készletek](support-policies.md#shared-responsibility)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Megosztott
 
@@ -1225,7 +1225,7 @@ A biztonsági mentés előtt távolítsa el az állapotokat az alkalmazásokból
 
 - [Az Velero beállítása az Azure-ban](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1249,7 +1249,7 @@ Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorag
 
 - [A Azure Backup engedélyezése](../backup/index.yml)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1273,7 +1273,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 - [Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából](../backup/backup-azure-restore-files-from-vm.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1287,7 +1287,7 @@ Az Azure Kubernetes Service (ak) környezetekben Azure Key Vault használata ese
 
 - [A Soft-Delete engedélyezése Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1297,7 +1297,7 @@ Az Azure Kubernetes Service (ak) környezetekben Azure Key Vault használata ese
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
-**Útmutató**: az incidensekre adott válaszokra vonatkozó útmutató kiépítése a szervezet számára. Győződjön meg arról, hogy van olyan írásos incidens-válasz, amely meghatározza a személyzet összes szerepkörét, valamint az incidensek kezelésének és kezelésének fázisait az észleléstől az incidens utáni felülvizsgálatig.
+**Útmutató**: Alakítson ki incidenskezelési útmutatót a vállalat számára. Gondoskodjon írásos incidenskezelési tervekről, amelyek definiálják az összes résztvevő szerepkörét, valamint az incidenskezelés fázisait az észleléstől az incidens utáni értékelésig.
 
 - [Munkafolyamat-automatizálás konfigurálása Azure Security Centeron belül](../security-center/security-center-planning-and-operations-guide.md)
 
@@ -1307,7 +1307,7 @@ Az Azure Kubernetes Service (ak) környezetekben Azure Key Vault használata ese
 
 - [Az ügyfél a NIST számítógépes biztonsági incidensek kezelési útmutatóját is kihasználhatja a saját incidens-válasz tervének létrehozásával kapcsolatos támogatáshoz](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1326,7 +1326,7 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 - [Útmutató az IT-csomagok és-képességek teszteléséhez, betanításához és alkalmazásához](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1348,7 +1348,7 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 - [Riasztások streamelése az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1358,7 +1358,7 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 - [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../security-center/workflow-automation.md)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Ügyfél
 
@@ -1372,11 +1372,11 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 - [További információt a Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatásokkal és alkalmazásokkal kapcsolatos, a Microsoft által felügyelt felhő-infrastruktúra,-szolgáltatások és-alkalmazások fejlesztésére vonatkozó stratégiáról és végrehajtásáról itt talál.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Az Azure Security Center monitorozása**: Nem alkalmazható
+**Azure Security Center – monitorozás**: Nem értelmezhető
 
 **Felelősség**: Megosztott
 
 ## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
-- További tudnivalók az [Azure biztonsági alapkonfigurációiról](../security/benchmarks/security-baselines-overview.md)
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

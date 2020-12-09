@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: b4e35296a999070a6f536f4a52cfb7c3a1d4f42a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 917eb52a7255527b55aacd488f33125ad853e894
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186490"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932268"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -30,7 +30,7 @@ A ITSMC a következő ITSM-eszközökkel támogatja a kapcsolatokat:
 -   Cherwell
 
    >[!NOTE]
-> Az 1 – Oct-2020 Cherwell és az Azure-riasztással rendelkező ITSM-integrációk már nem lesznek engedélyezve az új ügyfelek számára. Az új ITSM-kapcsolatok nem lesznek támogatottak. A meglévő ITSM-kapcsolatok támogatottak lesznek.
+> Javasoljuk, hogy a Cherwell és a felkínált ügyfeleinknek a [webhook műveleteit](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) a Cherwell és az Előa végpontot használják egy másik megoldásként az integrációhoz.
 
 A ITSMC a következőket teheti:
 
@@ -70,7 +70,7 @@ A kapcsolatok létrehozása előtt hozzá kell adnia a ITSMC.
    >[!NOTE]
    >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már *log Analytics munkaterületek*.
 
-5. Válassza az **OK** lehetőséget.
+5. Kattintson az **OK** gombra.
 
 A ITSMC-erőforrás telepítésekor az ablak jobb felső sarkában megjelenik egy értesítés.
 
@@ -156,7 +156,7 @@ Munkaelemek létrehozásához kövesse az alábbi eljárást:
    * Ha a munkaelem legördülő menüben a "esemény" lehetőséget választja: Ha a választógombok kiválasztásakor a különböző munkaelemek **létrehozása** lehetőséget választja, minden riasztás új munkaelemet fog létrehozni. Ha a választógombok kiválasztásakor az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása lehetőséget választja, minden konfigurációs elemnek saját munkaeleme lesz.
    ![A ITSM-jegy ablakát megjelenítő képernyőkép.](media/itsmc-overview/itsm-action-configuration-event.png)
 
-10. Válassza az **OK** lehetőséget.
+10. Kattintson az **OK** gombra.
 
 Azure-riasztási szabály létrehozásakor vagy szerkesztésekor használjon egy ITSM műveletet tartalmazó műveleti csoportot. A riasztás indításakor a rendszer létrehozza vagy frissíti a munkaelemet a ITSM eszközben.
 
@@ -272,7 +272,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | AssignedTo_s | Felelős  |
 | Category_s | Kategória |
 | Title_s|  Rövid leírás |
-| Description_s|  Megjegyzések |
+| Description_s|  Jegyzetek |
 | CreatedDate_t|  Megnyitott |
 | ClosedDate_t| lezárva|
 | ResolvedDate_t|Feloldva|

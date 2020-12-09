@@ -2,17 +2,17 @@
 title: Beállítások leküldése az alkalmazás konfigurációjához az Azure-folyamatokkal
 description: Ismerje meg, hogyan használhatja az Azure-folyamatokat kulcs-értékek küldésére az alkalmazás konfigurációs tárolójába
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.author: lcozzens
-ms.openlocfilehash: 7c0f886f23bc24eeed54043e9a7ee5fb1f645172
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.author: alkemper
+ms.openlocfilehash: fd3f7dbfd824360dcba9f8a166c579e3b55527ba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572507"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932115"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Beállítások leküldése az alkalmazás konfigurációjához az Azure-folyamatokkal
 
@@ -66,7 +66,7 @@ Ez a szakasz bemutatja, hogyan használható az Azure app Configuration leküld�
 
 Ez a szakasz bemutatja, hogyan használható az Azure app Configuration leküldéses feladat egy Azure DevOps kiadási folyamatokban.
 
-1. Navigáljon a folyamat kiadása lapra a **folyamatok** kiadásai lehetőség kiválasztásával  >  **Releases**. A kiadási folyamatok dokumentációja [itt](/azure/devops/pipelines/release?view=azure-devops)található.
+1. Navigáljon a folyamat kiadása lapra a **folyamatok** kiadásai lehetőség kiválasztásával  >  . A kiadási folyamatok dokumentációja [itt](/azure/devops/pipelines/release?view=azure-devops)található.
 1. Válasszon ki egy meglévő kiadási folyamatot. Ha még nem rendelkezik ilyennel, válassza az **+ új** lehetőséget, hogy újat hozzon létre.
 1. A kiadási folyamat szerkesztéséhez kattintson a jobb felső sarokban található **Szerkesztés** gombra.
 1. Válassza ki a **szakaszt** a feladat hozzáadásához. További információt a szakaszokról [itt](/azure/devops/pipelines/release/environments?view=azure-devops)találhat.

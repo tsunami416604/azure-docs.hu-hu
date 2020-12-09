@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Spark Machine learning-alkalmazás készítése – Azure HDInsight'
-description: Oktatóanyag – részletes útmutató a HDInsight Spark-fürtökön Apache Spark Machine learning-alkalmazás létrehozásához a Jupyter notebook használatával.
+description: Oktatóanyag – részletes útmutató arról, hogyan hozhat létre Apache Spark Machine learning-alkalmazást a HDInsight Spark-fürtökben Jupyter Notebook használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 753f45257f820f87f2e4bfb1893f581bee167a4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6af50bae075e88ac3bbba39cba9c9042eee2000e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230925"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932245"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Oktatóanyag: Apache Spark Machine learning-alkalmazás létrehozása az Azure HDInsight
 
@@ -41,7 +41,7 @@ Az alkalmazás alapértelmezés szerint az összes fürtön elérhető minta **H
 
 Ez az alkalmazás egy Spark [ml](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) -folyamatot használ a dokumentumok besorolásának elvégzéséhez. A ML-folyamatok a DataFrames-re épülő magas szintű API-k egységes készletét biztosítják. A DataFrames segítségével a felhasználók gyakorlati gépi tanulási folyamatokat hozhatnak létre és hangolnak be. A folyamat során a dokumentumokat szavakra osztja fel, a szavakat átalakítja egy numerikus vektorrá, majd végül a vektorok és címkék alapján létrehoz egy előrejelzési modellt. Az alkalmazás létrehozásához hajtsa végre az alábbi lépéseket.
 
-1. Hozzon létre egy Jupyter notebookot a PySpark-kernellel. Az utasításokért tekintse meg a [Jupyter-jegyzetfüzet-fájl létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)című témakört.
+1. Hozzon létre egy Jupyter Notebookt a PySpark kernel használatával. Az utasításokért tekintse meg a [Jupyter notebook fájl létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)című témakört.
 
 1. Importálja a forgatókönyvhöz szükséges típusokat. Illessze be a következő kódrészletet egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt.
 
@@ -186,7 +186,7 @@ Ez az alkalmazás egy Spark [ml](https://spark.apache.org/docs/2.2.0/ml-pipeline
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Anaconda scikit-learn kódtár használata a Spark Machine Learninghez
 
-A HDInsight-alapú Apache Spark-fürtök Anaconda-kódtárakat tartalmaznak. Ezek közé tartozik a **scikit-learn** gépi tanulási kódtár. A kódtár különböző adathalmazokat tartalmaz, amelyek használatával példaalkalmazások hozhatók létre közvetlenül egy Jupyter notebookból. Példák a scikit-Learn függvénytár használatára: [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html) .
+A HDInsight-alapú Apache Spark-fürtök Anaconda-kódtárakat tartalmaznak. Ezek közé tartozik a **scikit-learn** gépi tanulási kódtár. A könyvtár számos olyan adatkészletet is tartalmaz, amelyek használatával közvetlenül egy Jupyter Notebook hozhat létre példákat. Példák a scikit-Learn függvénytár használatára: [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html) .
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -194,9 +194,9 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
+1. A felső **keresőmezőbe** írja be a **HDInsight** kifejezést.
 
-1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
+1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások** területen.
 
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett.
 
@@ -204,7 +204,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt
 
 ![Azure Portal töröl egy HDInsight-fürtöt](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtanulta, hogyan hozhat létre egy Apache Spark Machine learning-alkalmazást az Azure HDInsight a Jupyter Notebook használatával. A következő oktatóanyag azt mutatja be, hogyan használhatja az IntelliJ IDEA-t Spark-feladatokhoz.
 

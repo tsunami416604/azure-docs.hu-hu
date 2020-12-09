@@ -1,6 +1,6 @@
 ---
 title: Sablon-telepítési parancsfájlok használata | Microsoft Docs
-description: Ismerje meg, hogyan használhatók a központi telepítési parancsfájlok Azure Resource Manager-sablonokban.
+description: Megtudhatja, hogyan használhatja az üzembe helyezési szkripteket Azure Resource Manager-sablonokban (ARM-sablonok).
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e1094befcc6b3a6e9d56ba3b603dc45fcb91ba13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc19222cf1e610c6c65d7c721a54f9949bed70ae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88825494"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931435"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Oktatóanyag: az üzembe helyezési parancsfájlok használata önaláírt tanúsítvány létrehozásához (előzetes verzió)
 
-Ismerje meg, hogyan használhatók az üzembe helyezési parancsfájlok az Azure Resource Manage (ARM) sablonokban. Az üzembe helyezési parancsfájlok olyan egyéni lépések elvégzésére használhatók, amelyeket az ARM-sablonok nem végezhetnek el. Például hozzon létre egy önaláírt tanúsítványt.  Ebben az oktatóanyagban létrehoz egy sablont az Azure Key Vault üzembe helyezéséhez, majd egy olyan `Microsoft.Resources/deploymentScripts` erőforrást használ egy sablonban, amely létrehoz egy tanúsítványt, majd hozzáadja a tanúsítványt a kulcstartóhoz. További információ az üzembe helyezési parancsfájlról: [telepítési parancsfájlok használata ARM-sablonokban](./deployment-script-template.md).
+Megtudhatja, hogyan használhatja az üzembe helyezési szkripteket Azure Resource Manager-sablonokban (ARM-sablonok). Az üzembe helyezési parancsfájlok olyan egyéni lépések elvégzésére használhatók, amelyeket az ARM-sablonok nem végezhetnek el. Például hozzon létre egy önaláírt tanúsítványt.  Ebben az oktatóanyagban létrehoz egy sablont az Azure Key Vault üzembe helyezéséhez, majd egy olyan `Microsoft.Resources/deploymentScripts` erőforrást használ egy sablonban, amely létrehoz egy tanúsítványt, majd hozzáadja a tanúsítványt a kulcstartóhoz. További információ az üzembe helyezési parancsfájlról: [telepítési parancsfájlok használata ARM-sablonokban](./deployment-script-template.md).
 
 > [!IMPORTANT]
 > A parancsfájlok végrehajtásához és a hibaelhárításhoz két üzembe helyezési parancsfájl-erőforrás, egy Storage-fiók és egy tároló-példány jön létre ugyanabban az erőforráscsoporthoz. Ezeket az erőforrásokat általában a parancsfájl-szolgáltatás törli, ha a parancsfájl végrehajtása terminál állapotba kerül. Az erőforrások számlázása az erőforrások törlése után történik. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](./deployment-script-template.md#clean-up-deployment-script-resources).
@@ -40,7 +40,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* ** [Visual Studio Code](https://code.visualstudio.com/) a Resource Manager-eszközök bővítménnyel**. Tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
+* **[Visual Studio Code](https://code.visualstudio.com/) a Resource Manager-eszközök bővítménnyel**. Lásd [a gyors útmutató: ARM-sablonok létrehozása a Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 
 * **Felhasználó által hozzárendelt felügyelt identitás a közreműködő szerepkörrel az előfizetés szintjén**. Ez az identitás az üzembe helyezési parancsfájlok végrehajtásához használatos. A létrehozáshoz tekintse meg a [felhasználó által hozzárendelt felügyelt identitást](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). A sablon üzembe helyezésekor szüksége lesz az azonosító AZONOSÍTÓra. Az identitás formátuma:
 
@@ -62,7 +62,7 @@ Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyors
 
 Az ebben a rövid útmutatóban használt sablon [létrehozásához Azure Key Vault és titkos kulcsot](https://azure.microsoft.com/resources/templates/101-key-vault-create/)kell meghívni. A sablon létrehoz egy kulcstartót, majd hozzáadja a titkos kulcsot a kulcstartóhoz.
 
-1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott**fájl elemet.
+1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott** fájl elemet.
 2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
@@ -256,7 +256,7 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
     Az `deploymentScripts` erőforrás a Key Vault-erőforrástól és a szerepkör-hozzárendelési erőforrástól függ.  Ezek a tulajdonságok a következő tulajdonságokkal rendelkeznek:
 
     * **identitás**: az üzembe helyezési parancsfájl felhasználó által hozzárendelt felügyelt identitást használ a parancsfájlok végrehajtásához.
-    * **Típus: adja**meg a parancsfájl típusát. Jelenleg csak a PowerShell-szkriptek támogatottak.
+    * **Típus: adja** meg a parancsfájl típusát. Jelenleg csak a PowerShell-szkriptek támogatottak.
     * **forceUpdateTag**: annak meghatározása, hogy a telepítési parancsfájlt akkor is kell-e végrehajtani, ha a parancsfájl forrása nem módosult. Lehet aktuális időbélyeg vagy GUID. További információ: [parancsfájl futtatása](./deployment-script-template.md#run-script-more-than-once)többször.
     * **azPowerShellVersion**: a használni kívánt Azure PowerShell modul verziószámát adja meg. Az üzembe helyezési parancsfájl jelenleg a 2.7.0, a 2.8.0 és a 3.0.0 verziót támogatja.
     * **időtúllépés**: adja meg az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)megadott maximálisan engedélyezett parancsfájl-végrehajtási időt. Az alapértelmezett érték a **P1D**.
@@ -278,7 +278,7 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
     Write-Output1 $keyVaultName
     ```
 
-    A megfelelő parancs a Write- **Output1**helyett az **írási kimenet** .
+    A megfelelő parancs a Write- **Output1** helyett az **írási kimenet** .
 
 1. A fájl mentéséhez válassza a **fájl** > **mentése** lehetőséget.
 
@@ -325,7 +325,7 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
 ## <a name="debug-the-failed-script"></a>A sikertelen parancsfájl hibakeresése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Nyissa meg az erőforráscsoportot. Ez a projekt neve, **RG** hozzáfűzéssel. Az erőforráscsoport két további erőforrást fog látni. Ezeket az erőforrásokat *telepítési parancsfájl-erőforrásoknak*nevezzük.
+1. Nyissa meg az erőforráscsoportot. Ez a projekt neve, **RG** hozzáfűzéssel. Az erőforráscsoport két további erőforrást fog látni. Ezeket az erőforrásokat *telepítési parancsfájl-erőforrásoknak* nevezzük.
 
     ![Resource Manager-sablon üzembe helyezési parancsfájl erőforrásai](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
@@ -335,7 +335,7 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
 
 1. Válassza ki a **azscripts** utótaggal rendelkező Storage-fiókot.
 1. Válassza ki a **fájlmegosztás** csempét. Egy **azscripts** mappát kell látnia.  A mappa tartalmazza a telepítési parancsfájl végrehajtási fájljait.
-1. Válassza a **azscripts**lehetőséget. Két **azscriptinput** és **azscriptoutput**kell látnia.  A bemeneti mappa egy PowerShell-parancsfájlt és a felhasználói telepítési parancsfájlokat tartalmaz. A kimeneti mappa tartalmaz egy **executionresult.jst** és a parancsfájl kimeneti fájlját. A hibaüzenetet **executionresult.jsa**következő helyen tekintheti meg:. A kimeneti fájl nem létezik, mert a végrehajtás nem sikerült.
+1. Válassza a **azscripts** lehetőséget. Két **azscriptinput** és **azscriptoutput** kell látnia.  A bemeneti mappa egy PowerShell-parancsfájlt és a felhasználói telepítési parancsfájlokat tartalmaz. A kimeneti mappa tartalmaz egy **executionresult.jst** és a parancsfájl kimeneti fájlját. A hibaüzenetet **executionresult.jsa** következő helyen tekintheti meg:. A kimeneti fájl nem létezik, mert a végrehajtás nem sikerült.
 
 Távolítsa el a **Write-Output1** sort, és telepítse újra a sablont.
 
@@ -350,7 +350,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja az üzembe helyezési szkriptet az ARM-sablonokban. Az Azure-erőforrások feltételek alapján való üzembe helyezésével kapcsolatban lásd:
 

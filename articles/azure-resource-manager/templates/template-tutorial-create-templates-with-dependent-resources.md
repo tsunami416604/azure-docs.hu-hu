@@ -1,20 +1,20 @@
 ---
 title: Sablon függő erőforrásokkal
-description: Ismerje meg, hogyan hozhat létre több erőforrással ellátott Azure Resource Manager-sablont, valamint hogyan helyezheti üzembe azt az Azure Portal használatával.
+description: Megtudhatja, hogyan hozhat létre Azure Resource Manager sablont (ARM-sablont) több erőforrással, és hogyan helyezheti üzembe a Azure Portal használatával
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3ed653c511dbd775d124e1abd6f4bb02923edb25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a43fa12e72484e97b828648cd7d610f5cf15ea4e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86102072"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931588"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Oktatóanyag: ARM-sablonok létrehozása függő erőforrásokkal
 
-Megtudhatja, hogyan hozhat létre Azure Resource Manager (ARM) sablont több erőforrás üzembe helyezéséhez és a telepítési sorrend konfigurálásához. A sablon létrehozása után a sablont a Azure Portal Cloud Shell használatával helyezheti üzembe.
+Megtudhatja, hogyan hozhat létre Azure Resource Manager sablont (ARM-sablont) több erőforrás üzembe helyezéséhez és a telepítési sorrend konfigurálásához. A sablon létrehozása után a sablont a Azure Portal Cloud Shell használatával helyezheti üzembe.
 
 Az oktatóanyag során egy tárfiókot, egy virtuális gépet, egy virtuális hálózatot és néhány egyéb függő erőforrást fog létrehozni. Bizonyos erőforrások nem helyezhetők üzembe addig, amíg egy másik erőforrás létre nem lett hozva. Nem hozhat létre például virtuális gépet addig, amíg annak tárfiókja és hálózati adaptere létre nem lett hozva. Ezt a kapcsolatot úgy definiáljuk, hogy egy adott erőforrás más erőforrásokkal áll függőségi viszonyban. A Resource Manager kiértékeli az erőforrások közötti függőségeket, majd azokat függőségi sorrendben üzembe helyezi. Ha az erőforrások között nincs függőségi viszony, akkor a Resource Manager párhuzamosan helyezi üzembe azokat. További információ: [erőforrások üzembe helyezési sorrendjének meghatározása ARM-sablonokban](./define-resource-dependency.md).
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* Visual Studio CodeResource Manager Tools bővítménnyel. Tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
+* Visual Studio CodeResource Manager Tools bővítménnyel. Lásd [a gyors útmutató: ARM-sablonok létrehozása a Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 * A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót a virtuális gép rendszergazdai fiókjához. Íme egy példa jelszó automatikus létrehozására:
 
     ```console
@@ -46,7 +46,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg.
 
-1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott**fájl elemet.
+1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott** fájl elemet.
 2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
@@ -54,7 +54,7 @@ Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon
     ```
 
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
-4. Válassza a **fájl** > **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre **azuredeploy.js**a következő néven:.
+4. Válassza a **fájl** > **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre **azuredeploy.js** a következő néven:.
 
 ## <a name="explore-the-template"></a>A sablon vizsgálata
 
@@ -67,7 +67,7 @@ Amikor ebben a szakaszban a sablont vizsgálja, próbálja megválaszolni a köv
 
 1. A Visual Studio Code-ban csukja össze az elemeket mindaddig, amíg csak az első szintű és a **resources** (erőforrások) alatt lévő második szintű elemek lesznek láthatók:
 
-    ![Visual Studio Code – Azure Resource Manager-sablonok](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
+    ![Visual Studio Code ARM-sablonok](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     A sablon hat erőforrást definiál:
 
@@ -82,19 +82,19 @@ Amikor ebben a szakaszban a sablont vizsgálja, próbálja megválaszolni a köv
 
 1. Bontsa ki az első erőforrást. Ez egy tárfiók. Hasonlítsa össze az erőforrás-definíciót a [sablon hivatkozásával](/azure/templates/Microsoft.Storage/storageAccounts).
 
-    ![Visual Studio Code – Azure Resource Manager-sablonok, tárfiók-definíciók](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+    ![Visual Studio Code ARM-sablonok Storage-fiók definíciója](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
 1. Bontsa ki a második erőforrást. Az erőforrástípus `Microsoft.Network/publicIPAddresses`. Hasonlítsa össze az erőforrás-definíciót a [sablon hivatkozásával](/azure/templates/microsoft.network/publicipaddresses).
 
-    ![Visual Studio Code – Azure Resource Manager-sablonok, nyilvános IP-cím definíciója](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+    ![Visual Studio Code ARM-sablonok nyilvános IP-cím definíciója](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
 
 1. Bontsa ki a harmadik erőforrást. Az erőforrástípus `Microsoft.Network/networkSecurityGroups`. Hasonlítsa össze az erőforrás-definíciót a [sablon hivatkozásával](/azure/templates/microsoft.network/networksecuritygroups).
 
-    ![Visual Studio Code Azure Resource Manager sablonok hálózati biztonsági csoport definíciója](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
+    ![Visual Studio Code ARM-sablonok hálózati biztonsági csoport definíciója](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
 
 1. Bontsa ki a negyedik erőforrást. Az erőforrástípus `Microsoft.Network/virtualNetworks`:
 
-    ![Visual Studio Code Azure Resource Manager sablonok virtuális hálózati dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
+    ![Visual Studio Code ARM-sablonok virtuális hálózati dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
     A dependsOn elem lehetővé teszi, hogy egy adott erőforrást egy vagy több erőforrástól függőként lehessen meghatározni. Ez az erőforrás egy másik erőforrástól függ:
 
@@ -112,7 +112,7 @@ Amikor ebben a szakaszban a sablont vizsgálja, próbálja megválaszolni a köv
 
 A következő ábrán az erőforrások és az ehhez a sablonhoz tartozó függőségi adatok láthatók:
 
-![Visual Studio Code – Azure Resource Manager-sablonok – függőségi ábra](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
+![A Visual Studio Code ARM-sablonok függőségi diagramja](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
 A függőségek megadásával a Resource Manager már hatékonyan képes üzembe helyezni a megoldást. Mivel nincs közöttük függőség, a tárfiók, a nyilvános IP-cím és a virtuális hálózat párhuzamosan lesz létrehozva. A nyilvános IP-cím és a virtuális hálózat után a hálózati adapter üzembe helyezése következik. A Resource Manager azt követően helyezi üzembe helyezve, hogy az összes többi erőforrás üzembe helyezése megtörtént.
 
@@ -178,7 +178,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét. Az erőforráscsoport összesen hat erőforrást fog látni.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott és üzembe helyezett egy virtuális gép, egy virtuális hálózat és a függő erőforrások létrehozására szolgáló sablont. A telepítési parancsfájlok az üzembe helyezés előtti és utáni műveletek végrehajtásához való használatáról további információt a következő témakörben talál:
 

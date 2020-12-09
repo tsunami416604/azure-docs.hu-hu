@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2c7503cf51ab74dc486f83de8033bfe4850a8c68
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575057"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932336"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Oktatóanyag: egyéni IoT Edge-modulok létrehozása és üzembe helyezése
 
@@ -51,6 +51,15 @@ Az alábbi ábrán a modulok, a bemenetek, a kimenetek és a IoT Edge hub útvon
 ![IoT Edge három modul architektúrájának diagramja](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 A cikkben ismertetett lépéseket általában egy felhőalapú fejlesztő hajtja végre.
+
+Az oktatóanyag ezen szakaszában a következőket sajátíthatja el:
+
+> [!div class="checklist"]
+>
+> * Hozzon létre egy IoT Edge modult az egyéni kódból.
+> * Docker-rendszerkép létrehozása az egyéni modulból.
+> * Konfigurálja újra IoT Hub útválasztást az egyéni modulok támogatásához.
+> * Egyéni modulok készítése, közzététele és üzembe helyezése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -300,7 +309,7 @@ A Avro-író modul két feladattal rendelkezik a megoldásban, az üzenetek tár
 
 ### <a name="create-module-and-copy-files"></a>Modul létrehozása és fájlok másolása
 
-1. A Visual Studio Code-ban **View** válassza a  >  **parancs paletta** megtekintése lehetőséget, majd keresse meg a **Python: Select tolmács** elemet.
+1. A Visual Studio Code-ban válassza a  >  **parancs paletta** megtekintése lehetőséget, majd keresse meg a **Python: Select tolmács** elemet.
 
 1. Válassza ki a telepített Python 3,7-es vagy újabb verzióját.
 
@@ -667,7 +676,7 @@ Nem szeretnénk átirányítani az új előrejelzési adatgyűjtést a régi tá
 
 1. Válassza a **teszt útvonal** lehetőséget. Ha a teszt sikeres, "az üzenet megfelelt a lekérdezésnek" jelenik meg.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-file-upload"></a>Fájlfeltöltés konfigurálása
 
@@ -681,7 +690,7 @@ Konfigurálja a IoT Hub fájlfeltöltés funkciót, hogy a fájl-író modul fel
 
 1. Válassza ki a **azureml-blobtárhely-** vel kezdődő tárolót GUID azonosítóval, majd kattintson a **kiválasztás** gombra.
 
-1. Válassza a **Mentés** lehetőséget. A portál értesíti a Mentés befejeződéséről.
+1. Kattintson a **Mentés** gombra. A portál értesíti a Mentés befejeződéséről.
 
 > [!Note]
 > Nincs bekapcsolva a feltöltési értesítés ebben az oktatóanyagban, de a fájlfeltöltés-értesítések kezelésével kapcsolatos részletekért tekintse meg a [fájl feltöltésére vonatkozó értesítés fogadása](../iot-hub/iot-hub-java-java-file-upload.md#receive-a-file-upload-notification) című témakört.
@@ -809,7 +818,7 @@ Ha bejelentkezik a IoT Edge eszközre (az esetünkben a linuxos virtuális gépr
 
 Ez az oktatóanyag egy olyan készlet része, amelyben az egyes cikkek az előzőekben végzett munkára épülnek. Várjon, amíg az összes erőforrást el nem végezte, amíg el nem végzi a végleges oktatóanyagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy IoT Edge megoldást hoztunk létre a Visual Studio Code-ban három modullal: egy osztályozó, egy útválasztó és egy fájl írója/feltöltője. Az útvonalakat úgy állítottuk be, hogy a modulok kommunikáljanak egymással a peremhálózati eszközön. Módosítottuk a peremhálózati eszköz konfigurációját, és frissítettük a Dockerfiles, hogy telepítse a függőségeket, és hozzáadja a kötési csatlakoztatásokat a modulok tárolóhoz. 
 

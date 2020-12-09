@@ -8,18 +8,29 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d603e5d03480b99eb3d6adb72a3440198fda2e47
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b23324a7226d4b3de4908bd78a8f19c799e59f06
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575465"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932183"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Oktatóanyag: teljes körű megoldás Azure Machine Learning és IoT Edge használatával
 
 A IoT-alkalmazások gyakran szeretnék kihasználni az intelligens felhő és az intelligens peremhálózat előnyeit. Ebben az oktatóanyagban bemutatjuk a gépi tanulási modellek betanítását a felhőben lévő IoT-eszközökről gyűjtött adatokkal, a modell üzembe helyezésével IoT Edge, valamint a modell karbantartásával és finomításával rendszeresen.
 
 Az oktatóanyag elsődleges célja, hogy bevezesse a IoT-adatfeldolgozást a gépi tanulással, különösen a szélén. Habár az általános gépi tanulási munkafolyamatok számos aspektusát érintik, ez az oktatóanyag nem a gépi tanulás részletes bevezetését célozza. Ebben az esetben a használati esethez nem próbálunk meg kiválóan optimalizált modellt létrehozni – csak annyit teszünk, hogy egy életképes modell létrehozására és használatára vonatkozó folyamatot IoT az adatfeldolgozáshoz.
+
+Az oktatóanyag ezen szakasza a következőket tárgyalja:
+
+> [!div class="checklist"]
+>
+> * Az oktatóanyag következő részeinek végrehajtásához szükséges előfeltételek.
+> * Az oktatóanyag célközönsége.
+> * Az oktatóanyag által szimulált használati eset.
+> * Az oktatóanyag általános folyamata a használati eset teljesítése érdekében következik be.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -96,7 +107,7 @@ Az alábbi képen láthatók az oktatóanyagban követett durva lépések:
 
 Ez az oktatóanyag egy olyan készlet része, amelyben az egyes cikkek az előzőekben végzett munkára épülnek. Várjon, amíg az összes erőforrást el nem végezte, amíg el nem végzi a végleges oktatóanyagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag a következő szakaszokra oszlik:
 

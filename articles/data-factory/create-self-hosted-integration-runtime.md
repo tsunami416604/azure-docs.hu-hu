@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 11/25/2020
-ms.openlocfilehash: 4a58f25e6183c674990d1d7722ce3196cce0f47c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 04efb7bcae11ef6cf377d821b49f9b07d41d347f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350466"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932591"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Helyi integrációs modul létrehozása és konfigurálása
 
@@ -102,29 +102,28 @@ A Dmgcmd.exe a saját üzemeltetésű telepítő része. Ez általában a C:\Pro
 Az alkalmazást a következőképpen használhatja:
 
 ```powershell
-dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["<password>"] -Loglevel <logLevel> ]
+dmgcmd ACTION args...
 ```
 
-Az alábbiakban az alkalmazás paramétereinek és tulajdonságainak részleteit olvashatja: 
+Az itt található információk az alkalmazás műveleteiről és argumentumokról: 
 
-| Tulajdonság                                                    | Leírás                                                  | Kötelező |
-| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal. | Nem       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal és csomópont nevével. | Nem       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | A magas rendelkezésre állású fürt beállításához engedélyezze a távelérést az aktuális csomóponton. Vagy engedélyezze a hitelesítő adatok közvetlen beállítását a saját üzemeltetésű IR-n keresztül anélkül, hogy Azure Data Factory. Ezt az utóbbit a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag használatával végezheti el ugyanazon a hálózaton lévő távoli gépről. | Nem       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Engedélyezze a távoli hozzáférést az aktuális csomóponthoz, amikor a csomópont egy tárolóban fut. | Nem       |
-| **DisableRemoteAccess**                                         | Távoli hozzáférés letiltása az aktuális csomóponthoz. A többcsomópontos telepítéshez távoli hozzáférés szükséges. A **New-AzDataFactoryV2LinkedServiceEncryptedCredential PowerShell-** parancsmag még akkor is működik, ha a távoli hozzáférés le van tiltva. Ez a viselkedés akkor igaz, ha a parancsmagot a saját üzemeltetésű IR-csomóponttal megegyező gépen hajtja végre. | Nem       |
-| **Kulcs** "`<AuthenticationKey>`"                                 | Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul. | Nem       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait. | Nem       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.                          | Nem       |
-| **Indítsa újra**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | Nem       |
-| **Kezdés**                                                       | Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.     | Nem       |
-| **Leállítás**                                                        | Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.        | Nem       |
-| **StartUpgradeService**                                         | Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.       | Nem       |
-| **StopUpgradeService**                                          | Állítsa le a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.        | Nem       |
-| **TurnOnAutoUpdate**                                            | Kapcsolja be a saját üzemeltetésű Integration Runtime automatikus frissítését.        | Nem       |
-| **TurnOffAutoUpdate**                                           | Kapcsolja ki a saját üzemeltetésű Integration Runtime automatikus frissítését.       | Nem       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Állítsa be úgy a DIAHostService, hogy az új fiókként fusson. A rendszerfiókok és a virtuális fiókok esetében használja az üres jelszót. | Nem       |
+|MŰVELET|args|Leírás|
+|------|----|-----------|
+|RN<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal és csomópont nevével.|
+|éra<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|A magas rendelkezésre állású fürt beállításához engedélyezze a távelérést az aktuális csomóponton. Vagy engedélyezze a hitelesítő adatok közvetlen beállítását a saját üzemeltetésű IR-n keresztül anélkül, hogy Azure Data Factory. Ezt az utóbbit a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag használatával végezheti el ugyanazon a hálózaton lévő távoli gépről.|
+|-erac,<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|Engedélyezze a távoli hozzáférést az aktuális csomóponthoz, amikor a csomópont egy tárolóban fut.|
+|DRA<br/>-DisableRemoteAccess||Távoli hozzáférés letiltása az aktuális csomóponthoz. A többcsomópontos telepítéshez távoli hozzáférés szükséges. A **New-AzDataFactoryV2LinkedServiceEncryptedCredential PowerShell-** parancsmag még akkor is működik, ha a távoli hozzáférés le van tiltva. Ez a viselkedés akkor igaz, ha a parancsmagot a saját üzemeltetésű IR-csomóponttal megegyező gépen hajtja végre.|
+|-k<br/>– Kulcs|"`<AuthenticationKey>`"|Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul.|
+|-gbf,<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait.|
+|IBF<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.|
+|r<br/>-Restart||Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.|
+|s<br/>– Indítás||Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.|
+|t<br/>– Leállítás||Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.|
+|SUS<br/>-StartUpgradeService||Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.|
+|tus<br/>-StopUpgradeService||Állítsa le a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.|
+|-tonau,<br/>-TurnOnAutoUpdate||Kapcsolja be a saját üzemeltetésű Integration Runtime automatikus frissítését.|
+|-toffau,<br/>-TurnOffAutoUpdate||Kapcsolja ki a saját üzemeltetésű Integration Runtime automatikus frissítését.|
+|SSA<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|Állítsa be úgy a DIAHostService, hogy az új fiókként fusson. A rendszerfiókok és a virtuális fiókok esetében használja az üres jelszót.|
 
 
 ## <a name="command-flow-and-data-flow"></a>A parancs folyamata és adatfolyama
@@ -219,7 +218,7 @@ Több csomópontot úgy is hozzárendelhet, ha telepíti a saját üzemeltetés�
 > Nem kell létrehoznia új, saját üzemeltetésű integrációs modult az egyes csomópontok hozzárendeléséhez. Telepítheti a saját üzemeltetésű integrációs modult egy másik gépre, és ugyanazzal a hitelesítési kulccsal regisztrálhatja azt.
 
 > [!NOTE]
-> Mielőtt újabb csomópontot ad hozzá a magas rendelkezésre álláshoz és a méretezhetőséghez, győződjön meg arról, hogy az első csomóponton engedélyezve van az **intranetes távelérés** beállítás. Ehhez válassza az **Microsoft Integration Runtime Configuration Manager**  >  **Settings**  >  **a beállítások távoli elérés az intranethez** lehetőséget.
+> Mielőtt újabb csomópontot ad hozzá a magas rendelkezésre álláshoz és a méretezhetőséghez, győződjön meg arról, hogy az első csomóponton engedélyezve van az **intranetes távelérés** beállítás. Ehhez válassza az **Microsoft Integration Runtime Configuration Manager**  >    >  **a beállítások távoli elérés az intranethez** lehetőséget.
 
 ### <a name="scale-considerations"></a>Méretezési szempontok
 
@@ -331,7 +330,7 @@ A Windows tűzfal szintjén vagy a számítógép szintjén ezek a kimenő porto
 
 Győződjön meg arról, hogy megfelelően engedélyezte a tűzfalszabályok beállításait a vállalati tűzfalon, a saját üzemeltetésű integrációs modul Windows tűzfalán, valamint magát az adattárat. Ezeknek a szabályoknak a engedélyezése lehetővé teszi, hogy a saját üzemeltetésű integrációs modul sikeresen csatlakozhasson a forráshoz és a fogadóhoz. Engedélyezze a szabályokat a másolási műveletben érintett összes adattárhoz.
 
-Ha például egy helyszíni adattárból egy SQL Database fogadóba vagy egy Azure szinapszis Analytics (korábban SQL Data Warehouse) fogadóba szeretne másolni, hajtsa végre a következő lépéseket:
+Ha például egy helyszíni adattárból egy SQL Database fogadóba vagy egy Azure szinapszis Analytics-fogadóba szeretne másolni, hajtsa végre a következő lépéseket:
 
 1. Engedélyezze a kimenő TCP-kommunikációt az 1433-as porton a Windows tűzfal és a vállalati tűzfal esetében is.
 1. Konfigurálja a SQL Database tűzfal beállításait úgy, hogy hozzáadja a saját üzemeltetésű integrációs modul számítógépének IP-címét az engedélyezett IP-címek listájához.
@@ -439,6 +438,6 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 Ha úgy dönt, hogy nem nyitja meg a 8060-as portot a saját üzemeltetésű integrációs modulban, használja a hitelesítő adatok beállítása az adattároló hitelesítő adatainak konfigurálására szolgáló mechanizmust. Használhatja például a **New-AzDataFactoryV2LinkedServiceEncryptCredential PowerShell-** parancsmagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Részletes útmutatásért lásd [: oktatóanyag: helyszíni információk másolása a felhőbe](tutorial-hybrid-copy-powershell.md).
