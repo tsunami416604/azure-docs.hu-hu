@@ -1,20 +1,20 @@
 ---
 title: 'Rövid útmutató: az első statikus webalkalmazás felépítése az Azure statikus Web Apps a Azure Portal használatával'
-description: Ismerje meg, hogyan hozhat létre egy Azure statikus Web Apps példányt a Azure Portal.
+description: Megtudhatja, hogyan helyezhet üzembe statikus helyet az Azure statikus Web Apps a Azure Portal használatával.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91280562"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030365"
 ---
-# <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Rövid útmutató: az első statikus webalkalmazás felépítése a Azure Portal
+# <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Rövid útmutató: az első statikus hely felépítése a Azure Portal
 
 Az Azure statikus Web Apps egy GitHub-tárházból származó alkalmazások létrehozásával tesz közzé webhelyeket az éles környezetben. Ebben a rövid útmutatóban egy webalkalmazást helyez üzembe az Azure static Web Apps szolgáltatásban a Azure Portal használatával.
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverz
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 
-## <a name="create-a-static-web-app"></a>Statikus Webalkalmazás létrehozása
+## <a name="create-a-static-web-app"></a>Statikus webalkalmazás létrehozása
 
 Most, hogy létrejött az adattár, létrehozhat egy statikus webalkalmazást a Azure Portal.
 
@@ -43,7 +43,7 @@ Az _alapok_ szakaszban kezdje az új alkalmazás konfigurálásával és a GitHu
 
 1. Azure- _előfizetés_ kiválasztása
 1. Válasszon ki vagy hozzon létre egy új _erőforráscsoportot_
-1. Nevezze el az alkalmazás **az első-statikus-Web-App**nevet.
+1. Nevezze el az alkalmazás **az első-statikus-Web-App** nevet.
       1. Az érvényes karakterek az `a-z` (kis- és nagybetűk megkülönböztetése nélkül) `0-9`és az `-`.
 1. Válasszon egy Önhöz legközelebb eső _régiót_
 1. Válassza ki az **ingyenes** _SKU_ -t
@@ -51,14 +51,14 @@ Az _alapok_ szakaszban kezdje az új alkalmazás konfigurálásával és a GitHu
 
 Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Alapismeretek szakasz":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Adattár részletei":::
 
 1. Válassza ki az előnyben részesített _szervezetet_
 1. Válassza a **saját-első-web-static-app** elemet az _adattár_ legördülő menüből.
 1. Válassza ki a **főkiszolgálót** az _ág_ legördülő menüből
 
 > [!NOTE]
-> Ha nem lát tárházat, lehetséges, hogy engedélyeznie kell az Azure statikus Web Apps a GitHubon. Keresse meg a GitHub-tárházat, és lépjen a **beállítások > alkalmazások > a OAuth-alkalmazások engedélyezve**lehetőségre, válassza az **Azure statikus Web Apps**lehetőséget, majd válassza a **támogatás**lehetőséget. A szervezeti adattárak esetében a szervezet tulajdonosának kell lennie az engedélyek megadásához.
+> Ha nem lát tárházat, lehetséges, hogy engedélyeznie kell az Azure statikus Web Apps a GitHubon. Keresse meg a GitHub-tárházat, és lépjen a **beállítások > alkalmazások > a OAuth-alkalmazások engedélyezve** lehetőségre, válassza az **Azure statikus Web Apps** lehetőséget, majd válassza a **támogatás** lehetőséget. A szervezeti adattárak esetében a szervezet tulajdonosának kell lennie az engedélyek megadásához.
 
 1. A _Build Details (részletek összeállítása_ ) szakaszban adja meg az előnyben részesített kezelőfelületi keretrendszerhez tartozó konfigurációs adatokat.
 
@@ -94,18 +94,18 @@ Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Alapismeretek szakasz":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="A létrehozás gomb áttekintése":::
 
     > [!NOTE]
     > A [munkafolyamat-fájl](github-actions-workflow.md) szerkesztésével módosíthatja ezeket az értékeket az alkalmazás létrehozása után.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Alapismeretek szakasz":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Létrehozás gomb":::
 
 1. Válassza az **Erőforrás megnyitása** lehetőséget.
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Alapismeretek szakasz":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Erőforrás megnyitása gomb":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
@@ -119,7 +119,7 @@ Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölhe
 1. Válassza a **Törlés** gombot
 1. Válassza az **Igen** lehetőséget a törlési művelet megerősítéséhez
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [API hozzáadása](add-api.md)

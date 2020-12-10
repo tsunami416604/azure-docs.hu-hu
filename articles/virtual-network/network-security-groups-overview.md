@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.custom: contperfq1
-ms.openlocfilehash: 76f3ba000a9bde4a306d19e8281ebeb41f1616e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 4e23c6f25145724a5300c9e5cdcb55431fb0b4f2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335867"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028767"
 ---
 # <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 <a name="network-security-groups"></a>
@@ -56,19 +56,19 @@ Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott
 
 ##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Hozzáférés|
+|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Access|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Bármelyik|Engedélyezés|
 
 ##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Hozzáférés|
+|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Access|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Bármelyik|Engedélyezés|
 
 ##### <a name="denyallinbound"></a>DenyAllInbound
 
-|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Hozzáférés|
+|Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Bármelyik|Megtagadás|
 
@@ -76,19 +76,19 @@ Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott
 
 ##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Bármelyik | Engedélyezés |
 
 ##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Bármelyik | Engedélyezés |
 
 ##### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Bármelyik | Megtagadás |
 

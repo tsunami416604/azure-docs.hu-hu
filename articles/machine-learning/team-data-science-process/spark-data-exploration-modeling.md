@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: b7a361319c3fc6c80c6dac80c48fb10155a3ff5b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314851"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028087"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Adatáttekintés és modellezés a Spark segítségével
 
@@ -1119,4 +1119,4 @@ Most, hogy létrehozta a regressziós és besorolási modelleket a Spark MlLib, 
 
 **Modell felhasználása:** A jelen témakörben létrehozott besorolási és regressziós modellek pontszámának és értékelésének megismeréséhez tekintse meg a [Spark által készített gépi tanulási modellek pontszámát és értékelését](spark-model-consumption.md)ismertető szakaszt.
 
-**Több ellenőrzés és hiperparaméter** : a [fejlett adatfeltárás és-modellezés a Spark](spark-advanced-data-exploration-modeling.md) használatával a modellek több ellenőrzéssel és a Hyper-paraméterrel történő elvetésével is betanítható
+**Több ellenőrzés és hiperparaméter**: a [fejlett adatfeltárás és-modellezés a Spark](spark-advanced-data-exploration-modeling.md) használatával a modellek több ellenőrzéssel és a Hyper-paraméterrel történő elvetésével is betanítható

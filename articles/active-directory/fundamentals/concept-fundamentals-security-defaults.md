@@ -11,13 +11,13 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: c26cbf55c1e3883605d4c65659511af20cf02c7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 9c912b7122a40ae39bcbb703e1387af25fff2bc8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996678"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029906"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -145,9 +145,9 @@ A feltételes hozzáférés használatával a biztonsági alapértékekhez hason
 
 Az alábbiakban részletes útmutatók láthatók arról, hogy a feltételes hozzáférés hogyan konfigurálható a biztonsági alapértékek által engedélyezett szabályzatoknak megfelelő házirendekkel:
 
-- [MFA megkövetelése a rendszergazdáktól](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
+- [MFA megkövetelése rendszergazdák számára](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [MFA megkövetelése az Azure-beli felügyelethez](../conditional-access/howto-conditional-access-policy-azure-management.md)
-- [Régi hitelesítési folyamat letiltása](../conditional-access/howto-conditional-access-policy-block-legacy.md)
+- [Örökölt hitelesítés tiltása](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [MFA megkövetelése minden felhasználótól](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
 - Az [Azure ad MFA-regisztráció megkövetelése](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – a prémium szintű Azure AD P2 Azure ad Identity Protection részét igényli.
 
@@ -175,6 +175,6 @@ A biztonsági alapértelmezett beállítások letiltása a címtárban:
 1. Állítsa be a **biztonsági beállítások engedélyezése** beállítást a **nem** értékre.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Gyakori feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)
+[Általános feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)

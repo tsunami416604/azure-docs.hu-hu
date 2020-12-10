@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: contperfq2
-ms.openlocfilehash: ddce982f43a3c730d8c25527f4354983c36e89e8
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: c9738d25fdcb1c0ccda70ec116eb369f8b50e980
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530824"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027475"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Oktatóanyag – SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
@@ -102,12 +102,12 @@ Ezután az alábbi táblázat segítségével megismerheti, hogy az alkalmazás 
 |Alkalmazottkód|urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: employeeNumber|
 | Facsimile-TelephoneNumber |phoneNumbers [type EQ "fax"]. Value |
 | givenName |name.givenName |
-| Beosztás |cím |
+| jobTitle |cím |
 | Levelezés |emails[type eq "work"].value |
 | mailNickname |externalId |
 | manager |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager |
 | mobil |phoneNumbers[type eq "mobile"].value |
-| Irányítószám |címek [type EQ "work"]. irányítószám |
+| postalCode |címek [type EQ "work"]. irányítószám |
 | proxy – címek |e-mailek [type EQ "other"]. Érték |
 | fizikai kézbesítés – OfficeName |címek [type EQ "other"]. Formázott |
 | streetAddress |címek [type EQ "work"]. streetAddress |
@@ -198,22 +198,22 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 [Felhasználói műveletek](#user-operations)
   - [Felhasználó létrehozása](#create-user) ([kérelemre](#request)  /  [adott válasz](#response))
   - [Felhasználó beolvasása](#get-user) ([kérelem](#request-1)  /  [válasza](#response-1))
-  - [Felhasználó lekérdezésének beolvasása](#get-user-by-query) (válasz[kérése](#request-2)  /  [Response](#response-2))
+  - [Felhasználó lekérdezésének beolvasása](#get-user-by-query) (válasz[kérése](#request-2)  /  [](#response-2))
   - [Felhasználó lekérése lekérdezéssel – nulla eredmények](#get-user-by-query---zero-results) ([kérelem](#request-3)  /  [válasza](#response-3))
   - [Felhasználó frissítése [többértékű tulajdonságok]](#update-user-multi-valued-properties) ([kérelem](#request-4)  /  [válasza](#response-4))
   - [Felhasználó frissítése [egyértékű tulajdonságok]](#update-user-single-valued-properties) ([kérelem](#request-5)  /  [válasza](#response-5)) 
-  - [Felhasználó letiltása](#disable-user) ([Válasz kérése](#request-14)  /  [Response](#response-14))
+  - [Felhasználó letiltása](#disable-user) ([Válasz kérése](#request-14)  /  [](#response-14))
   - [Felhasználó törlése](#delete-user) ([kérelem](#request-6)  /  [válasza](#response-6))
 
 
 [Csoportosítási műveletek](#group-operations)
-  - [Csoport létrehozása](#create-group) ([Válasz kérése](#request-7)  /  [Response](#response-7))
-  - [Csoport beolvasása](#get-group) (válasz[kérése](#request-8)  /  [Response](#response-8))
+  - [Csoport létrehozása](#create-group) ([Válasz kérése](#request-7)  /  [](#response-7))
+  - [Csoport beolvasása](#get-group) (válasz[kérése](#request-8)  /  [](#response-8))
   - [Csoport beolvasása DisplayName alapján](#get-group-by-displayname) ([kérelem](#request-9)  /  [válasza](#response-9))
-  - [Csoport frissítése [nem tag attribútumok]](#update-group-non-member-attributes) (válasz[kérése](#request-10)  /  [Response](#response-10))
+  - [Csoport frissítése [nem tag attribútumok]](#update-group-non-member-attributes) (válasz[kérése](#request-10)  /  [](#response-10))
   - [Frissítési csoport [Tagok hozzáadása]](#update-group-add-members) ([kérelem](#request-11)  /  [válasza](#response-11))
   - [Csoport frissítése [tagok eltávolítása]](#update-group-remove-members) ([kérelem](#request-12)  /  [válasza](#response-12))
-  - [Csoport törlése](#delete-group) ([Válasz kérése](#request-13)  /  [Response](#response-13))
+  - [Csoport törlése](#delete-group) ([Válasz kérése](#request-13)  /  [](#response-13))
 
 ### <a name="user-operations"></a>Felhasználói műveletek
 

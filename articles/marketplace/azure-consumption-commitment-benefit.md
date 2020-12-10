@@ -7,13 +7,13 @@ ms.topic: article
 author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
-ms.custom: contperfq2
-ms.openlocfilehash: c4fdf8e986b9c98588689a57bde8ca9464667abe
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: aeee13152364c31d82f674df784a27114035a041
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129541"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028546"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Az Azure-beli használati kötelezettségvállalás előnyei
 
@@ -45,10 +45,10 @@ Ha nem biztos abban, hogy a szervezete rendelkezik-e megfelelő szerződéssel, 
  
 3. Az ajánlatokat az **Azure-juttatások** alapján kell bevezetni, amely további jelezheti, hogy az ajánlathoz kapcsolódó szoftver/IP-költségek hozzájárulnak a szervezete által felszámított Azure-szolgáltatásokra vonatkozó Azure-beli felhasználási kötelezettségvállaláshoz.
 
-    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Az Azure Benefit jogosult jelvénye.&quot;:::
+    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Az Azure Benefit jogosult jelvénye.":::
 
    > [!NOTE]
-   > Az Azure Marketplace-en keresztül az Ön szervezete számára felszámított szolgáltatások Microsoft Azure a szervezet elkötelezettségét illetően. Az &quot;Azure Benefit jogosult" ajánlatok előnye, hogy a harmadik féltől származó gyártó által átadott szoftverek/IP-költségek az Azure Marketplace-beli számla 100%-ában is hozzájárulnak.
+   > Az Azure Marketplace-en keresztül az Ön szervezete számára felszámított szolgáltatások Microsoft Azure a szervezet elkötelezettségét illetően. Az "Azure Benefit jogosult" ajánlatok előnye, hogy a harmadik féltől származó gyártó által átadott szoftverek/IP-költségek az Azure Marketplace-beli számla 100%-ában is hozzájárulnak.
 
 4. Az ajánlatot közvetlenül az Azure Marketplace-en keresztül vásárolhatja meg vagy hozza létre. A Microsoft minden egyes számlázási időszakban, beleértve a szoftver/IP-költségeket is, a megfelelő ajánlat 100%-ában járul hozzá a vállalat Azure-beli felhasználási kötelezettségvállalásához.
 

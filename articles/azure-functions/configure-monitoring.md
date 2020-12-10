@@ -3,13 +3,13 @@ title: Azure Functions figyelésének konfigurálása
 description: Megtudhatja, hogyan csatlakoztatható a Function app Application Insights a figyeléshez, és hogyan konfigurálhatja az adatgyűjtést.
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: 02d5ad2e9697c14818a985325267d7caea80f65e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.custom: contperf-fy21q2, devx-track-azurecli
+ms.openlocfilehash: 5c4e9795109a9b4b5a6e9ceeec6b22e0168eb28f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607126"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027628"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>A Azure Functions figyelésének konfigurálása
 
@@ -278,7 +278,7 @@ A Application Insights engedélyezésekor tiltsa le az Azure Storage-t használ�
 
 A beépített naplózás letiltásához törölje az `AzureWebJobsDashboard` alkalmazás beállítását. Az Alkalmazásbeállítások a Azure Portalban való törlésével kapcsolatos további információkért tekintse meg a [functions-alkalmazás kezelésével](functions-how-to-use-azure-function-app-settings.md#settings)foglalkozó témakör **Alkalmazásbeállítások** szakaszát. Az Alkalmazásbeállítások törlése előtt győződjön meg arról, hogy az azonos Function alkalmazásban lévő meglévő függvények nem használják az Azure Storage-eseményindítók és-kötések beállítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A figyeléssel kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 

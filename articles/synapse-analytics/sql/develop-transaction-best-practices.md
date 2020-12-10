@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a17e3c80f15bb1e4c5aacba4dc974e363eca285e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 908f047a22491d50337f51c0a6dce7f2db8a2ebc
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319862"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97026812"
 ---
 # <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tranzakciók optimalizálása dedikált SQL-készlettel az Azure szinapszis Analyticsben 
 
@@ -44,7 +44,7 @@ A tranzakció biztonsági korlátai csak a teljesen naplózott műveletekre érv
 
 A következő műveletek képesek minimálisan naplózni:
 
-* CREATE TABLE A SELECT ([CTAS]) (.. /SQL-Data-Warehouse/SQL-Data-Warehouse-Develop-ctas.MD? TOC =/Azure/Synapse-Analytics/toc.js&BC =/Azure/Synapse-Analytics/breadcrumb/toc.json)
+* CREATE TABLE a SELECT ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json))
 * Beszúrás.. Válassza
 * CREATE INDEX
 * AZ ALTER INDEX ÚJRAÉPÍTÉSE
@@ -68,7 +68,7 @@ CTAS és Beszúrás... Válassza a tömeges betöltési műveletek lehetőséget
 
 | Elsődleges index | Betöltési forgatókönyv | Naplózási mód |
 | --- | --- | --- |
-| Halommemória |Bármely |**Minimális** |
+| Halommemória |Bármelyik |**Minimális** |
 | Fürtözött index |Üres céltábla |**Minimális** |
 | Fürtözött index |A betöltött sorok nem fedik át a cél meglévő lapjait |**Minimális** |
 | Fürtözött index |A betöltött sorok átfedésben vannak a cél meglévő lapjaival |Összes |

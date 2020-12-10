@@ -6,13 +6,13 @@ ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/30/2020
-ms.custom: mvc, contperfq1
-ms.openlocfilehash: 31dd33bd8805ffcc677d5f0e98e81f2fa9e91ee2
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: mvc, contperf-fy21q1
+ms.openlocfilehash: 701480300101b019830c57d9aa000534fa63bb6a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95537050"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028529"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Egyéni KPI irányítópultok létrehozása az Azure Application Insights használatával
 
@@ -133,7 +133,7 @@ Az Azure Application Insights-naplók részletes lekérdezési nyelvet biztosít
 
 1. Az irányítópult tetején válassza a **megosztás** lehetőséget a módosítások közzétételéhez.
 2. Meghatározhat adott felhasználókat, akiknek hozzáférést kíván biztosítani az irányítópulthoz. További információ: Azure- [irányítópultok megosztása az Azure szerepköralapú hozzáférés-vezérlés használatával](../../azure-portal/azure-portal-dashboard-share-access.md).
-3. Kattintson a **Publish** (Közzététel) elemre.
+3. Válassza a **Közzététel** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

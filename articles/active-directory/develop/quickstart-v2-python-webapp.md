@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 1a8d851d2e70850155950786c6aa67c1d5086eb2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 383f7f37e93b4705419ba1f93f509c86eaab192b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993873"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030637"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba
 
@@ -50,31 +50,25 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 >
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 >
-> 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-> 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-> 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalára.
-> 1. Válassza az **új regisztráció** lehetőséget.
-> 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
->      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `python-webapp`).
->      - A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
->      - Válassza a **Regisztráció** lehetőséget.
->      - Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
-> 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
->    - Adja hozzá **a** webplatform-konfigurációt. Hozzáadás `http://localhost:5000/getAToken` **átirányítási URI**-ként.
->    - Kattintson a **Mentés** gombra.
-> 1. A bal oldali menüben válassza a **tanúsítványok & Secrets** elemet, majd kattintson az **új ügyfél titkára** az **ügyfél titkai** szakaszban:
->
->      - Írja be a kulcs leírását (a példány-alkalmazás titkos kulcsa).
->      - Adja **meg az 1 év** kulcsának időtartamát.
->      - Ha a **Hozzáadás** gombra kattint, megjelenik a kulcs értéke.
->      - Másolja a kulcs értékét. Erre később még szüksége lesz.
-> 1. Válassza ki az **API-engedélyek** szakaszt
->
->      - Kattintson az **engedély hozzáadása** gombra, majd
->      - Győződjön meg arról, hogy a **Microsoft API** -k lap van kiválasztva
->      - A *gyakran használt Microsoft API* -k szakaszban kattintson **Microsoft Graph**
->      - A **delegált engedélyek** szakaszban győződjön meg arról, hogy a megfelelő engedélyek be vannak jelölve: **User. ReadBasic. All**. Ha szükséges, használja a keresőmezőt.
->      - Válassza az **engedélyek hozzáadása** gombot
+> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+> 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+> 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+> 1. Adja meg az alkalmazás **nevét** , például: `python-webapp` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+> 1. A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
+> 1. Válassza a **Regisztráció** lehetőséget.
+> 1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
+> 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
+> 1. Válassza **a platform**  >  **web** hozzáadása lehetőséget.
+> 1. Hozzáadás `http://localhost:5000/getAToken` **átirányítási URI**-ként.
+> 1. Válassza a **Konfigurálás** lehetőséget.
+> 1. A **kezelés** területen jelölje ki a **tanúsítványokat & a titkos kulcsokat**  , és az **ügyfél titkai** szakaszban válassza az **új ügyfél titka** lehetőséget.
+> 1. Írja be a kulcs leírását (például az alkalmazás titkos kódjához), hagyja meg az alapértelmezett lejáratot, és válassza a **Hozzáadás** lehetőséget.
+> 1. Jegyezze fel az **ügyfél titkos kulcsának** **értékét** későbbi használatra.
+> 1. A **kezelés** területen válassza az **API-engedélyek**  >  **Hozzáadás engedélyt**.
+>1.  Győződjön meg arról, hogy a **Microsoft API** -k lap van kiválasztva.
+> 1. A *gyakran használt Microsoft API* -k szakaszban válassza a **Microsoft Graph** lehetőséget.
+> 1. A **delegált engedélyek** szakaszban győződjön meg arról, hogy a megfelelő engedélyek be vannak jelölve: **User. ReadBasic. All**. Ha szükséges, használja a keresőmezőt.
+> 1. Kattintson az **engedélyek hozzáadása** gombra.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
@@ -164,7 +158,7 @@ import msal
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a többrészes forgatókönyvek felhasználói számára bejelentkező webalkalmazásokról.
 

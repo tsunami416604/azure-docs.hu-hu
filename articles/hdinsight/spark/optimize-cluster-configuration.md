@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 456b955d40e417c9851734b0acaa86a14c9c83f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 80abc052bc8fa731a1cea0d3ecb523aedb46cf05
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757846"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031781"
 ---
 # <a name="cluster-configuration-optimization-for-apache-spark"></a>Fürtkonfiguráció optimalizálása Apache Spark
 
@@ -65,7 +65,7 @@ A lekérdezési teljesítmény figyelése a kiugró vagy más teljesítménnyel 
 
 Előfordulhat, hogy a végrehajtók közül egy vagy több lassabb, mint a többi, és a feladatok végrehajtása sokkal hosszabb ideig tart. Ez a lassulás gyakran fordul elő nagyobb fürtökön (> 30 csomópont). Ebben az esetben a munkát nagyobb számú feladatra osztja fel, így az ütemező kompenzálhatja a lassú feladatokat. Például legalább kétszer annyi feladatnak kell lennie, mint a végrehajtó magok száma az alkalmazásban. A feladatokhoz tartozó spekulatív végrehajtást is engedélyezheti `conf: spark.speculation = true` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatfeldolgozás optimalizálása Apache Spark](optimize-cluster-configuration.md)
 * [Az adattároló optimalizálása Apache Spark](optimize-data-storage.md)

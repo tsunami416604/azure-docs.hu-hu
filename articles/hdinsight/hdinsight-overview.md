@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 657c29b79c98adf1041c49c0315edfd4e9363a36
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 7f4d820b33f36c295c294000d33a0ca5177fc4d1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804061"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028070"
 ---
 # <a name="what-is-azure-hdinsight"></a>Mi az az Azure HDInsight?
 
@@ -97,7 +97,7 @@ Az Azure HDInsight olyan nyílt forráskódú keretrendszerekkel rendelkező fü
 
 A HDInsight-fürtök, például többek közt a Spark, a HBase, a Kafka, és a Hadoop, számos programozási nyelvet támogatnak. Egyes programozási nyelvek nincsenek alapértelmezés szerint telepítve. Az alapértelmezés szerint nem telepített könyvtárak, modulok vagy csomagok esetén használjon parancsfájl-műveletet az összetevő telepítéséhez.
 
-|Programozási nyelv  |Tájékoztatás  |
+|Programozási nyelv  |Információ  |
 |---------|---------|
 |Alapértelmezés szerint támogatott programozási nyelvek     | Alapértelmezés szerint a HDInsight-fürtök a következőket támogatják:<ul><li>Java</li><li>Python</li><li>.NET</li><li>Indítás</li></ul>  |
 |JVM (Java virtuális gép) nyelvek     | A Java-alapú virtuális gépeken (JVM) a Javán kívül számos más nyelv is futtatható. Előfordulhat azonban, hogy egyes nyelvek futtatásához további összetevőket is telepítenie kell a fürtön. A HDInsight-fürtök az alábbi JVM-alapú nyelveket támogatják: <ul><li>Clojure</li><li>Jython (Python a Javához)</li><li>Scala</li></ul>     |
@@ -136,7 +136,7 @@ A Kafka és a HBase tárolja az ügyféladatokat. Ezeket az adatkészleteket a K
 
 Az ismerős üzleti intelligencia (BI) eszközei a Power Query beépülő modullal vagy a Microsoft kaptár ODBC-illesztővel integrált HDInsight-adatokkal rendelkeznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Hadoop-fürt létrehozása a HDInsight-ben](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
 * [Apache Spark-fürt létrehozása – Portal](./spark/apache-spark-jupyter-spark-sql-use-portal.md)

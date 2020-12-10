@@ -10,20 +10,20 @@ ms.subservice: team-data-science-process
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 7cf97edcb2f2f7a23d5c899194d497deade1f507
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322016"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031861"
 ---
 # <a name="feature-engineering-in-data-science"></a>Az adatelemzés funkcióinak mérnöki funkciója
 
 Ebből a cikkből megtudhatja, hogyan fejlesztheti a funkciók mérnöki funkcióit, és hogyan javíthatja az adatait a gépi tanulásban. Ismerkedjen meg [Azure Machine learning Studio (klasszikus)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) kísérletekből származó szemléltető példákkal. 
 
 * **Szolgáltatás-mérnöki** folyamat: új funkciók létrehozása a nyers adatokból a tanulási algoritmus prediktív teljesítményének növeléséhez. A mérnöki funkcióknak olyan további információkat kell rögzíteniük, amelyek nem könnyen láthatók az eredeti szolgáltatáskészlet esetében.
-* **Szolgáltatás kiválasztása** : a funkciók dimenzióját kiválasztásának folyamata, amely csökkenti a betanítási probléma mértékét.
+* **Szolgáltatás kiválasztása**: a funkciók dimenzióját kiválasztásának folyamata, amely csökkenti a betanítási probléma mértékét.
 
 A rendszer általában a szolgáltatások **fejlesztését** alkalmazza a további funkciók létrehozásához, majd a **funkció kiválasztásával** megszünteti a lényegtelen, redundáns vagy szorosan korrelált funkciókat.
 

@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: b65553edf61d8e646e7238a5385656fe75a3156f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: a1a0b89dee5a6d57e6f317c5f6c8b61ffeda3c33
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311385"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029073"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>A modell hiperparaméterek beállítása hangolása Azure Machine Learning
 
@@ -339,8 +339,8 @@ A modell legjobb hiperparaméter-értékeinek megkeresése ismétlődő folyamat
 
 
 A meleg kezdést a mintavételi módszertől függően másképp kell kezelni:
-- **Bayes mintavételezés** : az előző futtatásból származó kísérletek az új minták kiválasztására és az elsődleges metrika javítására szolgáló korábbi ismeretekként használatosak.
-- **Véletlenszerű mintavételezés** vagy **Rácsvonalak mintavételezése** : a korai megszakítás a korábbi futtatások ismereteit használja a gyengén teljesítő futtatások meghatározásához. 
+- **Bayes mintavételezés**: az előző futtatásból származó kísérletek az új minták kiválasztására és az elsődleges metrika javítására szolgáló korábbi ismeretekként használatosak.
+- **Véletlenszerű mintavételezés** vagy **Rácsvonalak mintavételezése**: a korai megszakítás a korábbi futtatások ismereteit használja a gyengén teljesítő futtatások meghatározásához. 
 
 Itt adhatja meg, hogy mely szülő-futtatásokból szeretne melegen indulni.
 

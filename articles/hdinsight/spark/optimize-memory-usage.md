@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 056060f8b94747651c78c757150d5e5a5982c7af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: ed10648fb115ae0dc12300f3e48db165fcb4c215
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757778"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028155"
 ---
 # <a name="memory-usage-optimization-for-apache-spark"></a>Memóriahasználat optimalizálása Apache Spark
 
@@ -46,7 +46,7 @@ A "memórián kívüli" üzenetek megoldásához próbálkozzon a következővel
 
 További hibaelhárítási lépésekért lásd: [működése OutOfMemoryError-kivételek Apache Spark az Azure HDInsight](apache-spark-troubleshoot-outofmemory.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatfeldolgozás optimalizálása Apache Spark](optimize-cluster-configuration.md)
 * [Az adattároló optimalizálása Apache Spark](optimize-data-storage.md)

@@ -11,13 +11,13 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: 964cd77a24a7a73bf1151ba9e6ab43509e664b9f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743071"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97026999"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Az Azure AD Multi-Factor Authentication beállításainak konfigurálása
 
@@ -229,7 +229,7 @@ A saját egyéni üzeneteinek használatához hajtsa végre a következő lépé
 
 Az alkalmazások jelszavainak, megbízható IP-címeinek, ellenőrzési lehetőségeinek és az Azure AD Multi-Factor Authentication többtényezős hitelesítésének megjegyzései megtalálhatók a szolgáltatás beállításai között. Ez inkább egy örökölt portál, amely nem része a normál Azure AD-portálnak.
 
-A szolgáltatás beállításai a Azure Portal érhetők el, ha megkeresi **Azure Active Directory** az  >  **Security**  >  **MFA**  >  **Getting started**  >  **Configure**  >  **új felhőalapú MFA-beállítások** konfigurálására szolgáló Azure Active Directory biztonsági MFA első lépéseit. Megnyílik egy új ablak vagy lap a *Szolgáltatásbeállítások* további beállításaival.
+A szolgáltatás beállításai a Azure Portal érhetők el, ha megkeresi az  >    >    >    >    >  **új felhőalapú MFA-beállítások** konfigurálására szolgáló Azure Active Directory biztonsági MFA első lépéseit. Megnyílik egy új ablak vagy lap a *Szolgáltatásbeállítások* további beállításaival.
 
 ## <a name="trusted-ips"></a>Megbízható IP-címek
 
@@ -268,7 +268,7 @@ A következő lépések végrehajtásával feltételes hozzáférési szabályok
 1. Adja meg a hely nevét.
 1. Válassza **a megjelölés megbízható helyként** lehetőséget.
 1. Adja meg az IP-címtartományt CIDR-jelöléssel a környezethez, például *40.77.182.32/27*.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>A megbízható IP-címek funkciójának engedélyezése feltételes hozzáférés használatával
 
@@ -287,7 +287,7 @@ A megbízható IP-címek feltételes hozzáférési házirendek használatával 
       * Egyetlen IP-cím esetén használjon olyan jelölést, mint a **xxx.xxx.xxx.xxx/32**.
       * Akár 50 IP-címtartományt is megadhat. Azok a felhasználók, akik ezen IP-címekről jelentkeznek be, megkerülik a többtényezős hitelesítést.
 
-1. Válassza a **Save** (Mentés) lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>A megbízható IP-címek funkció engedélyezése a szolgáltatás beállításai alapján
 
@@ -307,7 +307,7 @@ Ha nem kíván feltételes hozzáférési szabályzatokat használni a megbízha
       * Egyetlen IP-cím esetén használjon olyan jelölést, mint a **xxx.xxx.xxx.xxx/32**.
       * Akár 50 IP-címtartományt is megadhat. Azok a felhasználók, akik ezen IP-címekről jelentkeznek be, megkerülik a többtényezős hitelesítést.
 
-1. Válassza a **Save** (Mentés) lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="verification-methods"></a>Ellenőrzési módszerek
 
@@ -315,7 +315,7 @@ A Service Settings portálon megadhatja a felhasználók számára elérhető el
 
 A következő ellenőrzési módszerek érhetők el:
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 |:--- |:--- |
 | Telefonos hívás |Automatikus hanghívást helyez el. A felhasználó fogadja a hívást, majd a hitelesítéshez lenyomja a telefon billentyűzetén a # gombot.  A telefonszám nincs szinkronizálva a helyszíni Active Directory. |
 | SMS-üzenet a telefonra |Egy ellenőrző kódot tartalmazó szöveges üzenetet küld. A rendszer felszólítja a felhasználót, hogy adja meg az ellenőrző kódot a bejelentkezési felületen. Ezt a folyamatot egy egyirányú SMS-nek nevezzük. A kétirányú SMS azt jelenti, hogy a felhasználónak egy adott kódot kell visszaadnia. A kétirányú SMS elavult, és 2018 november 14. után nem támogatott. A rendszergazdáknak engedélyezniük kell egy másik módszert azon felhasználók számára, akik korábban a kétirányú SMS-t használták.|
@@ -368,12 +368,12 @@ A következő lépések végrehajtásával engedélyezheti és konfigurálhatja,
 1. A Multi-Factor Authentication területen válassza a **szolgáltatás beállításai** elemet.
 1. A **Szolgáltatásbeállítások** lapon, a **többtényezős hitelesítés megjegyzése** területen jelölje be a **többtényezős hitelesítés megadásának engedélyezése a felhasználóknak a megbízható eszközökön** jelölőnégyzetet.
 1. Állítsa be, hogy a rendszer hány napig engedélyezze a megbízható eszközök számára a többtényezős hitelesítés megkerülését. Az optimális felhasználói élmény érdekében az időtartamot *90* vagy több napra kell kiterjeszteni.
-1. Válassza a **Save** (Mentés) lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="mark-a-device-as-trusted"></a>Eszköz megjelölése megbízhatóként
 
 Miután engedélyezte a Megjegyzés Multi-Factor Authentication funkciót, a felhasználók a bejelentkezéskor megbízhatóként jelölhetik meg az eszközöket, ha bejelöli a **ne Kérdezzen rá újra** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure AD-Multi-Factor Authentication használható módszerekről, tekintse meg a [Azure Active Directory-ben elérhető hitelesítési és ellenőrzési módszereket?](concept-authentication-methods.md)

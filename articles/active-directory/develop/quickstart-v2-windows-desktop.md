@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f63dbad398afcd0a9756cc1e9d4f70f1303d00b0
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: bc7c6022f8ed95a69dcb877252fd8c5eff49ce28
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993856"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030484"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rövid útmutató: Jogkivonat lekérése és a Microsoft Graph API meghívása egy Windows asztali alkalmazásból
 
@@ -45,16 +45,17 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 >
-> 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-> 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-> 1. Nyissa meg a Azure Portal Azure Active Directory [Alkalmazásregisztrációk](https://aka.ms/MobileAppReg) paneljét.
-> 1. Válassza az **új regisztráció** lehetőséget.
->      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `Win-App-calling-MsGraph`).
->      - A **Támogatott fióktípusok** szakaszban jelölje be a **Tetszőleges szervezeti címtárban található fiókok és a Személyes Microsoft-fiókok (például Skype, Xbox, Outlook.com)** beállítást.
->      - Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
-> 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
-> 1. Az **átirányítási URI**-  |  **k javasolt átirányítási URI-k a nyilvános ügyfelekhez (mobil, asztali)** szakaszban használja a következőt: **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-> 1. Kattintson a **Mentés** gombra.
+> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+> 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+> 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+> 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+> 1. Adja meg az alkalmazás **nevét** , például: `Win-App-calling-MsGraph` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+> 1. A **Támogatott fióktípusok** szakaszban jelölje be a **Tetszőleges szervezeti címtárban található fiókok és a Személyes Microsoft-fiókok (például Skype, Xbox, Outlook.com)** beállítást.
+> 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
+> 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
+> 1. Válassza **a platform**  >  **mobil-és asztali alkalmazások** hozzáadása lehetőséget.
+> 1. Az **átirányítási URI** -k szakaszban válassza a elemet `https://login.microsoftonline.com/common/oauth2/nativeclient` .
+> 1. Válassza a **Konfigurálás** lehetőséget.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
@@ -178,7 +179,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki az asztali Windowshoz készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 

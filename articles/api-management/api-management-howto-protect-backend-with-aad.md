@@ -8,20 +8,20 @@ ms.service: api-management
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: apimpm
-ms.custom: contperfq1
-ms.openlocfilehash: 9892c311651df39b882c3aa38596a905d22a42ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: face4beab450e92be76b2bb90e45625e025de6ee
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618777"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027917"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>A webes API-k elleni védelem az Azure API Managementban az Azure AD-vel való OAuth 2,0-engedélyezés használatával 
 
 Ez az útmutató bemutatja, hogyan konfigurálhatja [Azure API Management](api-management-key-concepts.md) -példányát az API-k biztosításához a [OAuth 2,0 protokoll és a Azure Active Directory (Azure ad)](../active-directory/develop/active-directory-v2-protocols.md)használatával. 
 
 > [!NOTE]
-> Ez a funkció a API Management **fejlesztői**, **alapszintű**, **standard**és **prémium** szintjein érhető el.
+> Ez a funkció a API Management **fejlesztői**, **alapszintű**, **standard** és **prémium** szintjein érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,7 +47,7 @@ Az API-k Azure AD-vel való ellátásához először regisztráljon egy, az API-
 
 1. Az alkalmazás regisztrálásához lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 
-1. Válassza az **új regisztráció**lehetőséget. 
+1. Válassza az **új regisztráció** lehetőséget. 
 
 1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait:
 
@@ -78,7 +78,7 @@ Egy másik alkalmazás regisztrálása az Azure AD-ben a fejlesztői konzol kép
 
 1. Keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 
-1. Válassza az **új regisztráció**lehetőséget.
+1. Válassza az **új regisztráció** lehetőséget.
 
 1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait:
 
@@ -93,9 +93,9 @@ Egy másik alkalmazás regisztrálása az Azure AD-ben a fejlesztői konzol kép
 
 1. Hozzon létre egy ügyfél-titkot az alkalmazás számára egy későbbi lépésben való használatra.
 
-   1. Az ügyfélalkalmazás oldalain válassza a **tanúsítványok & titkok**lehetőséget, és válassza az **új ügyfél titka**lehetőséget.
+   1. Az ügyfélalkalmazás oldalain válassza a **tanúsítványok & titkok** lehetőséget, és válassza az **új ügyfél titka** lehetőséget.
 
-   1. Az **ügyfél titkos kulcsának hozzáadása**területen adjon meg egy **leírást**. Válassza ki a kulcs lejárati idejét, majd válassza a **Hozzáadás**lehetőséget.
+   1. Az **ügyfél titkos kulcsának hozzáadása** területen adjon meg egy **leírást**. Válassza ki a kulcs lejárati idejét, majd válassza a **Hozzáadás** lehetőséget.
 
 A titkos kód létrehozásakor jegyezze fel a kulcs értékét egy későbbi lépésben való használatra. 
 
@@ -105,13 +105,13 @@ Most, hogy regisztrált két alkalmazást az API és a fejlesztői konzol képvi
 
 1. Lépjen a [Azure Portal](https://portal.azure.com) az ügyfélalkalmazás engedélyeinek megadásához. Keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 
-1. Válassza ki az ügyfélalkalmazás. Ezután az alkalmazás oldalain válassza az **API-engedélyek**lehetőséget.
+1. Válassza ki az ügyfélalkalmazás. Ezután az alkalmazás oldalain válassza az **API-engedélyek** lehetőséget.
 
-1. Válassza **az engedély hozzáadása**lehetőséget.
+1. Válassza **az engedély hozzáadása** lehetőséget.
 
-1. Az **API kiválasztása**területen válassza a **saját API**-k elemet, majd keresse meg és válassza ki a háttér-alkalmazás elemet.
+1. Az **API kiválasztása** területen válassza a **saját API**-k elemet, majd keresse meg és válassza ki a háttér-alkalmazás elemet.
 
-1. A **delegált engedélyek**területen válassza ki a háttér-alkalmazás megfelelő engedélyeit, majd válassza az **engedélyek hozzáadása**lehetőséget.
+1. A **delegált engedélyek** területen válassza ki a háttér-alkalmazás megfelelő engedélyeit, majd válassza az **engedélyek hozzáadása** lehetőséget.
 
 1. Ha szükséges, az **API-engedélyek** lapon válassza a **rendszergazdai jóváhagyás megadása a \<your-tenant-name> következőhöz** lehetőséget, hogy a jóváhagyást adjon a címtár összes felhasználója nevében. 
 
@@ -123,15 +123,15 @@ Ebben a példában a fejlesztői konzol az ügyfél-alkalmazás. A következő l
 
 1. A Azure Portalban keresse meg a API Management-példányát.
 
-1. Válassza a **OAuth 2,0**  >  **Hozzáadás**lehetőséget.
+1. Válassza a **OAuth 2,0**  >  **Hozzáadás** lehetőséget.
 
 1. Adja **meg a megjelenítendő nevet** és a **leírást**.
 
-1. Az **ügyfél-regisztrációs lap URL-címéhez**adja meg a helyőrző értékét, például: `http://localhost` . Az **ügyfél-regisztrációs oldal URL-címe** arra a lapra mutat, amelyet a felhasználók a saját fiókjaik létrehozására és konfigurálására használhatnak az ezt támogató OAuth 2,0-szolgáltatók számára. Ebben a példában a felhasználók nem hoznak létre és nem konfigurálja a saját fiókjaikat, ezért Ehelyett helyőrzőt használ.
+1. Az **ügyfél-regisztrációs lap URL-címéhez** adja meg a helyőrző értékét, például: `http://localhost` . Az **ügyfél-regisztrációs oldal URL-címe** arra a lapra mutat, amelyet a felhasználók a saját fiókjaik létrehozására és konfigurálására használhatnak az ezt támogató OAuth 2,0-szolgáltatók számára. Ebben a példában a felhasználók nem hoznak létre és nem konfigurálja a saját fiókjaikat, ezért Ehelyett helyőrzőt használ.
 
-1. Az **engedélyezési engedélyek típusainál**válassza az **engedélyezési kód**lehetőséget.
+1. Az **engedélyezési engedélyek típusainál** válassza az **engedélyezési kód** lehetőséget.
 
-1. Az **engedélyezési végpont URL-címének** és a **jogkivonat-végpont URL-címének**megadása. Olvassa be ezeket az értékeket az Azure AD-bérlő **végpontok** lapján. Nyissa meg ismét a **Alkalmazásregisztrációk** lapot, és válassza a **végpontok**lehetőséget.
+1. Az **engedélyezési végpont URL-címének** és a **jogkivonat-végpont URL-címének** megadása. Olvassa be ezeket az értékeket az Azure AD-bérlő **végpontok** lapján. Nyissa meg ismét a **Alkalmazásregisztrációk** lapot, és válassza a **végpontok** lehetőséget.
 
 
 1. Másolja az **OAuth 2,0 engedélyezési végpontot**, és illessze be az **engedélyezési végpont URL-címébe** . Válassza a **post** lehetőséget az engedélyezési kérelem metódusa alatt.
@@ -141,23 +141,23 @@ Ebben a példában a fejlesztői konzol az ügyfél-alkalmazás. A következő l
    >[!IMPORTANT]
    > Használjon **v1** -es vagy **v2** -es végpontokat. Azonban attól függően, hogy melyik verziót választja, az alábbi lépés eltérő lesz. A v2-végpontok használatát javasoljuk. 
 
-1. Ha **v1** -es végpontokat használ, adjon hozzá egy **erőforrás**nevű Body paramétert. A paraméter értékeként használja a háttérbeli alkalmazás **alkalmazás-azonosítóját** . 
+1. Ha **v1** -es végpontokat használ, adjon hozzá egy **erőforrás** nevű Body paramétert. A paraméter értékeként használja a háttérbeli alkalmazás **alkalmazás-azonosítóját** . 
 
 1. Ha **v2** -végpontokat használ, használja az **Alapértelmezett hatókör** mezőben a háttér-alkalmazáshoz létrehozott hatókört. Ügyeljen arra is, hogy a tulajdonság értékét az [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute) `2` [alkalmazás jegyzékfájljában](../active-directory/develop/reference-app-manifest.md)állítsa be.
 
 1. Ezután határozza meg az ügyfél hitelesítő adatait. Az ügyfél-alkalmazás hitelesítő adatai.
 
-1. Az **ügyfél-azonosítóhoz**használja az ügyfél-alkalmazás **alkalmazás-azonosítóját** .
+1. Az **ügyfél-azonosítóhoz** használja az ügyfél-alkalmazás **alkalmazás-azonosítóját** .
 
-1. Az **ügyfél titkos**kulcsaként használja az ügyfélhez korábban létrehozott kulcsot. 
+1. Az **ügyfél titkos** kulcsaként használja az ügyfélhez korábban létrehozott kulcsot. 
 
 1. Az ügyfél titkos kulcsát közvetlenül a hitelesítési kód engedélyezési típusának **redirect_url** kell megadnia. Jegyezze fel ezt az URL-címet.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
-1. Térjen vissza az ügyfél-alkalmazás regisztrálásához Azure Active Directory, és válassza a **hitelesítés**lehetőséget.
+1. Térjen vissza az ügyfél-alkalmazás regisztrálásához Azure Active Directory, és válassza a **hitelesítés** lehetőséget.
 
-1. A **platform-konfigurációk** területen kattintson a **platform hozzáadása**elemre, és válassza ki a típust **webesként**, illessze be a **redirect_urlt** az **átirányítási URI**alatt, majd kattintson a **Konfigurálás** gombra a mentéshez.
+1. A **platform-konfigurációk** területen kattintson a **platform hozzáadása** elemre, és válassza ki a típust **webesként**, illessze be a **redirect_urlt** az **átirányítási URI** alatt, majd kattintson a **Konfigurálás** gombra a mentéshez.
 
 Most, hogy konfigurált egy OAuth 2,0-es engedélyezési kiszolgálót, a fejlesztői konzol hozzáférési jogkivonatokat szerezhet be az Azure AD-ből. 
 
@@ -169,7 +169,7 @@ A következő lépés a OAuth 2,0 felhasználói engedélyezésének engedélyez
 
 1. Válassza a **Beállítások lehetőséget**.
 
-1. A **Biztonság**területen válassza a **OAuth 2,0**elemet, és válassza ki a korábban konfigurált OAuth 2,0-kiszolgálót. 
+1. A **Biztonság** területen válassza a **OAuth 2,0** elemet, és válassza ki a korábban konfigurált OAuth 2,0-kiszolgálót. 
 
 1. Kattintson a **Mentés** gombra.
 
@@ -180,7 +180,7 @@ A következő lépés a OAuth 2,0 felhasználói engedélyezésének engedélyez
 
 Most, hogy az OAuth 2,0 felhasználói hitelesítés engedélyezve van az API-ban, a fejlesztői konzol a felhasználó nevében szerzi be a hozzáférési jogkivonatot, mielőtt meghívja az API-t.
 
-1. Tallózással keresse meg az API alatt található összes műveletet a fejlesztői portálon, és válassza a **kipróbálás**lehetőséget. Ez a fejlesztői konzolra mutat.
+1. Tallózással keresse meg az API alatt található összes műveletet a fejlesztői portálon, és válassza a **kipróbálás** lehetőséget. Ez a fejlesztői konzolra mutat.
 
 1. Jegyezze fel, hogy az **engedélyezési** szakasz egy új eleme, amely az imént hozzáadott engedélyezési kiszolgálónak felel meg.
 

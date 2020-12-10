@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: ajburnle
 ms.reviewer: krbain
-ms.custom: it-pro, seodec18, contperfq4
+ms.custom: it-pro, seodec18, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8198feca2956f81e397ddee447057c1a5af99a4a
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: f8041656a11689d0cca64c3edae1af2e70409028
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859504"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027713"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Hozzon létre egy alapszintű csoportot, és vegyen fel tagokat Azure Active Directory használatával
 Az Azure Active Directory (Azure AD) portálon létrehozhat alapszintű csoportot. A cikk céljaira az erőforrás tulajdonosa (rendszergazda) egy alapszintű csoportot ad az erőforráshoz, amely azokat a tagokat tartalmazza (alkalmazottak), akiknek az adott erőforrást el kell érniük. Az összetettebb eseteknél, beleértve a dinamikus csoporttagságot és szabályok létrehozását is, lásd az [Azure Active Directory felhasználókezelés dokumentációt](../enterprise-users/index.yml).
@@ -63,7 +63,7 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
 
 1. Válasszon egy előre definiált **tagsági típust (kötelező).** A tagsági típusokkal kapcsolatos további információkért lásd: [csoport-és tagsági típusok](#membership-types).
 
-1. Kattintson a **Létrehozás** gombra. A csoport létrehozása megtörtént és készen áll a tagok hozzáadására.
+1. Válassza a **Létrehozás** lehetőséget. A csoport létrehozása megtörtént és készen áll a tagok hozzáadására.
 
 1. Válassza ki a **Tagok** területet a **Csoport** lapon, és utána kezdje el megkeresni a csoportba felvenni kívánt tagokat a **Tagok kiválasztása** lapon.
 

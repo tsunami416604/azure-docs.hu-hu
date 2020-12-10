@@ -6,13 +6,13 @@ ms.topic: how-to
 ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
-ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: 1825dd34855b356367722eefbfb5eb6dd9c78ae3
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.custom: devx-track-python, devx-track-java, contperf-fy21q1
+ms.openlocfilehash: 1c111ca23ce7cf749dc4a7d5ad2ad39756236ab1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029183"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028206"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>A Azure Cosmos DB Emulator-tanúsítványok exportálása Java-, Python-és Node.js-alkalmazásokkal való használatra
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -103,7 +103,7 @@ Az Emulator-tanúsítványok újbóli előállításához válassza az **adatok 
 
 Ha telepítette a tanúsítványt a Java-tanúsítványtárolóba, vagy másutt használta őket, újra kell importálnia azokat az aktuális tanúsítványok használatával. Az alkalmazás addig nem tud kapcsolódni a helyi emulátorhoz, amíg nem frissíti a tanúsítványokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az emulátor vezérléséhez használjon parancssori paramétereket és PowerShell-parancsokat](emulator-command-line-parameters.md)
 * [Hibakeresési problémák az emulátorral](troubleshoot-local-emulator.md)

@@ -5,18 +5,18 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: dcc968353edf0e9cf3d63408d02baf94c6cabd9f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ec6796cd0ed91987c1ef52fb5e9494a3142e00e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95902449"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030450"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
-Ismerje meg, hogyan használhatók az üzembe helyezési parancsfájlok az Azure Resource templates szolgáltatásban. A nevű új erőforrástípus használatával a `Microsoft.Resources/deploymentScripts` felhasználók üzembe helyezhetik a telepítési parancsfájlokat a sablonok központi telepítései során, és áttekinthetik a végrehajtás eredményeit. Ezek a parancsfájlok olyan egyéni lépések végrehajtásához használhatók, mint például a következők:
+Ismerje meg, hogyan használhatók az üzembe helyezési parancsfájlok az Azure Resource templates szolgáltatásban. A nevű új erőforrástípus használatával a `Microsoft.Resources/deploymentScripts` felhasználók parancsfájlokat futtathatnak a sablonok központi telepítésében, és áttekinthetik a végrehajtás eredményeit. Ezek a parancsfájlok olyan egyéni lépések végrehajtásához használhatók, mint például a következők:
 
 - felhasználók hozzáadása egy címtárhoz
 - adatsík műveletek végrehajtása, például a Blobok vagy a vetőmag-adatbázisok másolása
@@ -29,7 +29,6 @@ Az üzembe helyezési parancsfájl előnyei:
 
 - Egyszerű kód, használat és hibakeresés. Az üzembe helyezési parancsfájlokat kedvenc fejlesztői környezetekben is kifejlesztheti. A szkriptek sablonokba vagy külső parancsfájlokban is beágyazva lehetnek.
 - Megadhatja a parancsfájl nyelvét és platformját. Jelenleg a Linux-környezetben a Azure PowerShell és az Azure CLI üzembe helyezési parancsfájljai támogatottak.
-- A parancsfájlok végrehajtásához használt identitások megadásának engedélyezése. Jelenleg csak az [Azure-felhasználóhoz rendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) támogatott.
 - A parancssori argumentumok parancsfájlba való átadásának engedélyezése.
 - Megadhatja a parancsfájlok kimeneteit, és visszaküldheti azokat az üzembe helyezéshez.
 
@@ -38,12 +37,13 @@ Az üzembe helyezési parancsfájl erőforrása csak azokon a régiókban érhet
 > [!IMPORTANT]
 > A parancsfájlok végrehajtásához és a hibaelhárításhoz szükség van egy Storage-fiókra és egy tároló példányra. Lehetősége van meglévő Storage-fiók megadására, máskülönben a Storage-fiókkal együtt automatikusan létrejön a tároló-példány. A szkript szolgáltatás általában törli a két automatikusan létrehozott erőforrást, amikor a telepítési parancsfájl végrehajtása egy terminál állapotba kerül. Az erőforrások számlázása az erőforrások törlése után történik. További információért lásd: [telepítési parancsfájl-erőforrások tisztítása](#clean-up-deployment-script-resources).
 
+> [!IMPORTANT]
+> A deploymentScripts Resource API 2020-10-01-es verziója támogatja a [OnBehalfofTokens (OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md). Az OBO használatával az üzembe helyezési parancsfájl szolgáltatás a rendszerbiztonsági tag tokenjét használja az üzembe helyezési parancsfájlok futtatásához, például az Azure Container instance, az Azure Storage-fiók és a felügyelt identitáshoz tartozó szerepkör-hozzárendelések létrehozásához. A régebbi API-verzióban a felügyelt identitás használatával hozhatók létre ezek az erőforrások.
+> Az Azure login újrapróbálkozási logikája most már a burkoló parancsfájlba van beépítve. Ha az engedélyeket ugyanabban a sablonban adja meg, ahol az üzembehelyezési parancsfájlokat futtatja.  A telepítési parancsfájl-szolgáltatás 10 percen belül újrapróbálkozik a bejelentkezéssel, amíg a felügyelt identitás szerepkörének hozzárendelése nem replikálódik.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Felhasználó által hozzárendelt felügyelt identitás a közreműködői szerepkörrel a célként megadott erőforrás-csoport számára**. Ez az identitás az üzembe helyezési parancsfájlok végrehajtásához használatos. Az erőforráscsoporton kívüli műveletek elvégzéséhez további engedélyeket kell megadnia. Rendelje hozzá például az identitást az előfizetés szintjéhez, ha új erőforráscsoportot szeretne létrehozni.
-
-  > [!NOTE]
-  > A parancsfájl-szolgáltatás létrehoz egy Storage-fiókot (kivéve, ha megad egy meglévő Storage-fiókot) és a háttérben található Container-példányt.  Az előfizetési szinten a közreműködő szerepkörrel rendelkező felhasználóhoz rendelt felügyelt identitás megadása kötelező, ha az előfizetés nem regisztrálta az Azure Storage-fiókot (Microsoft. Storage) és az Azure Container instance (Microsoft. ContainerInstance) erőforrás-szolgáltatót.
+- **(Nem kötelező) a műveleteknek a parancsfájlban való végrehajtásához szükséges engedélyekkel rendelkező felhasználó által hozzárendelt felügyelt identitás**. Az üzembe helyezési parancsfájl API 2020-10-01-es vagy újabb verziója esetén az üzembe helyezési tag a mögöttes erőforrások létrehozására szolgál. Ha a szkriptnek hitelesítenie kell az Azure-ban, és Azure-specifikus műveleteket kell végrehajtania, javasoljuk, hogy a parancsfájlt felhasználó által hozzárendelt felügyelt identitással adja meg. A felügyelt identitásnak rendelkeznie kell a szükséges hozzáféréssel a cél erőforráscsoporthoz a művelet végrehajtásához a parancsfájlban. Az üzembe helyezési parancsfájlban is bejelentkezhet az Azure-ba. Az erőforráscsoporton kívüli műveletek elvégzéséhez további engedélyeket kell megadnia. Rendelje hozzá például az identitást az előfizetés szintjéhez, ha új erőforráscsoportot szeretne létrehozni. 
 
   Identitás létrehozásához tekintse meg a [felhasználó által hozzárendelt felügyelt identitás létrehozása a Azure Portal használatával](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)vagy az [Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)használatával vagy a [Azure PowerShell használatával](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)című témakört. A sablon üzembe helyezésekor szüksége lesz az azonosító AZONOSÍTÓra. Az identitás formátuma:
 
@@ -135,7 +135,7 @@ A következő JSON egy példa.  A sablon legújabb sémája [itt](/azure/templat
 
 Tulajdonság értékének részletei:
 
-- **Identitás**: az üzembe helyezési parancsfájl szolgáltatás felhasználó által hozzárendelt felügyelt identitást használ a parancsfájlok végrehajtásához. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott.
+- **Identitás**: az üzembe helyezési parancsfájl API 2020-10-01-es vagy újabb verziója esetén a felhasználó által hozzárendelt felügyelt identitás nem kötelező, kivéve, ha a parancsfájlban nem kell végrehajtania valamilyen Azure-specifikus műveletet.  Az API 2019-10-01-es verziójának előzetes verziója esetén felügyelt identitásra van szükség, mivel a telepítési parancsfájl-szolgáltatás azt használja a parancsfájlok végrehajtásához. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott.
 - **Típus: adja** meg a parancsfájl típusát. Jelenleg a Azure PowerShell és az Azure CLI-parancsfájlok támogatottak. Az értékek a következők: **AzurePowerShell** és **AzureCLI**.
 - **forceUpdateTag**: ennek az értéknek a módosítása a sablon központi telepítései között kényszeríti a telepítési parancsfájl ismételt végrehajtását. Ha a newGuid () vagy a utcNow () függvényt használja, akkor mindkét függvény csak a paraméter alapértelmezett értékében használható. További információ: [parancsfájl futtatása](#run-script-more-than-once)többször.
 - **containerSettings**: határozza meg az Azure Container instance testreszabásához szükséges beállításokat.  a **containerGroupName** a tároló csoport nevének megadására szolgál.  Ha nincs megadva, a rendszer automatikusan létrehozza a csoport nevét.
@@ -169,14 +169,11 @@ Tulajdonság értékének részletei:
 - [2. minta](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-subscription.json): hozzon létre egy erőforráscsoportot az előfizetési szinten, hozzon létre egy kulcstartót az erőforráscsoporthoz, majd az üzembehelyezési parancsfájl használatával rendeljen hozzá egy tanúsítványt a kulcstartóhoz.
 - [3. példa](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json): hozzon létre egy felhasználó által hozzárendelt felügyelt identitást, rendelje hozzá a közreműködői szerepkört az identitáshoz az erőforráscsoport szintjén, hozzon létre egy kulcstartót, majd a telepítési parancsfájl használatával rendeljen hozzá egy tanúsítványt a kulcstartóhoz.
 
-> [!NOTE]
-> Javasoljuk, hogy hozzon létre egy felhasználó által hozzárendelt identitást, és adja meg előre az engedélyeket. Ha az identitást hozza létre, és engedélyeket ad a telepítési parancsfájlok futtatásához, akkor előfordulhat, hogy be kell jelentkeznie a bejelentkezési és az engedélyekkel kapcsolatos hibákba. Időbe telik, amíg az engedélyek érvénybe lépnek.
-
 ## <a name="use-inline-scripts"></a>Beágyazott parancsfájlok használata
 
 A következő sablon egyetlen erőforrással van definiálva a `Microsoft.Resources/deploymentScripts` típussal. A kiemelt rész a beágyazott parancsfájl.
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-44" highlight="24-30":::
 
 > [!NOTE]
 > Mivel a beágyazott üzembe helyezési parancsfájlok idézőjelek közé vannak ágyazva, az üzembe helyezési parancsfájlokban lévő sztringeket **&#92;** vagy szimpla idézőjelek közé kell tenni. Azt is megteheti, hogy a karakterlánc-helyettesítést használja az előző JSON-mintában látható módon.
@@ -188,11 +185,10 @@ A parancsfájl futtatásához válassza a **kipróbálás** lehetőséget a Clou
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$id = Read-Host -Prompt "Enter the user-assigned managed identity ID"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json" -identity $id
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json"
 
 Write-Host "Press [ENTER] to continue ..."
 ```
@@ -239,7 +235,7 @@ A rendszer a támogató fájlokat a futtatókörnyezet azscripts/azscriptinput m
 
 A következő sablon bemutatja, hogyan adhat át értékeket két deploymentScripts-erőforrás között:
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-84" highlight="39-40,66":::
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-68" highlight="30-31,50":::
 
 Az első erőforrásban definiál egy **$DeploymentScriptOutputs** nevű változót, és a kimeneti értékek tárolására használja azt. A sablonban lévő másik erőforrás kimeneti értékének eléréséhez használja a következőt:
 
@@ -276,7 +272,7 @@ A parancsfájlok végrehajtásához és a hibaelhárításhoz szükség van egy 
 
     Ezek a kombinációk támogatják a fájlmegosztást.  További információ: Azure- [fájlmegosztás](../../storage/files/storage-how-to-create-file-share.md) és- [típusú tárolási fiókok](../../storage/common/storage-account-overview.md)létrehozása.
 - A Storage-fiók tűzfalszabályok még nem támogatottak. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../../storage/common/storage-network-security.md).
-- A telepítési parancsfájl felhasználó által hozzárendelt felügyelt identitásának engedélyekkel kell rendelkeznie a Storage-fiók kezeléséhez, beleértve az olvasás, a létrehozás és a fájlmegosztás törlését.
+- A központi telepítési résztvevőnek rendelkeznie kell engedéllyel a Storage-fiók kezeléséhez, beleértve az olvasás, a létrehozás és a fájlmegosztás törlését.
 
 Meglévő Storage-fiók megadásához adja hozzá a következő JSON-t a tulajdonság eleméhez `Microsoft.Resources/deploymentScripts` :
 
@@ -540,6 +536,8 @@ Ezeknek az erőforrásoknak a életciklusát a sablon következő tulajdonságai
 > [!NOTE]
 > A Storage-fiók és a parancsfájl-szolgáltatás által más célra létrehozott tároló-példány használata nem ajánlott. Előfordulhat, hogy a parancsfájl életciklusa alapján a két erőforrás el lesz távolítva.
 
+Ha meg szeretné őrizni a tároló-példányt és a Storage-fiókot a hibaelhárításhoz, hozzáadhat egy alvó parancsot a parancsfájlhoz.  Például: [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep).
+
 ## <a name="run-script-more-than-once"></a>Parancsfájl többszöri futtatása
 
 A telepítési parancsfájl végrehajtása egy idempotens művelet. Ha a deploymentScripts erőforrás-tulajdonságok egyike sincs (beleértve a beágyazott parancsfájlt is), a parancsfájl nem lesz végrehajtva a sablon újbóli telepítésekor. Az üzembe helyezési parancsfájl szolgáltatás összehasonlítja a sablonban lévő erőforrás-neveket az ugyanabban az erőforráscsoport meglévő erőforrásaival. Két lehetőség közül választhat, ha ugyanazt az üzembe helyezési parancsfájlt többször szeretné végrehajtani:
@@ -588,7 +586,7 @@ A parancsfájl sikeres tesztelése után a sablonban használható üzembe helye
 | DeploymentScriptContainerGroupInNonterminalState | Az Azure Container instance (ACI) létrehozásakor egy másik telepítési parancsfájl ugyanazt az ACI-nevet használja ugyanabban a hatókörben (az előfizetés, az erőforráscsoport neve és az erőforrás neve). |
 | DeploymentScriptContainerGroupNameInvalid | Az Azure Container instance megadott neve (ACI) nem felel meg az ACI-követelményeknek. Lásd: [Azure Container instances gyakori problémáinak elhárítása](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment).|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a telepítési parancsfájlokat. Útmutató az üzembe helyezési parancsfájlhoz:
 

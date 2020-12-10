@@ -4,19 +4,19 @@ description: A Azure Portal, a PowerShell vagy az Azure CLI használatával hozz
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: contperfq1, devx-track-azurecli
+ms.custom: contperf-fy21q1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: ab920a05f255e38905f9ff79f08f2bfa0c6540b6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 21ccbc83c80e1b659dd240973a609d624f270835
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791511"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028512"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rövid útmutató: Azure SQL Database önálló adatbázis létrehozása
 
@@ -41,16 +41,16 @@ Egyetlen adatbázis létrehozásához a Azure Portal ez a rövid útmutató az A
 
    ![Hozzáadás az Azure SQL-hez](./media/single-database-create-quickstart/select-deployment.png)
 
-1. A **SQL Database létrehozása** űrlap **alapok** lapján a **Project Details (projekt részletei** ) területen válassza ki a kívánt Azure- **előfizetést** .
-1. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, írja be a *MyResourceGroup* , majd kattintson **az OK gombra** .
-1. Az **adatbázis neve** mezőbe írja be a következőt: *mySampleDatabase* .
+1. A **SQL Database létrehozása** űrlap **alapok** lapján a **Project Details (projekt részletei**) területen válassza ki a kívánt Azure- **előfizetést**.
+1. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, írja be a *MyResourceGroup*, majd kattintson **az OK gombra**.
+1. Az **adatbázis neve** mezőbe írja be a következőt: *mySampleDatabase*.
 1. A **kiszolgáló** területen válassza az **új létrehozása** lehetőséget, és töltse ki az **új kiszolgáló** űrlapot a következő értékekkel:
-   - **Kiszolgáló neve** : adja meg a *portra beállított mysqlserver* , és adjon hozzá néhány karaktert az egyediséghez. Nem lehet pontosan megadni a kiszolgáló nevét, mert a kiszolgáló nevének globálisan egyedinek kell lennie az Azure összes kiszolgálóján, nem csak az előfizetésen belül. Tehát írjon be valamit, például mysqlserver12345, és a portálon megtudhatja, hogy elérhető-e vagy sem.
-   - **Kiszolgáló-rendszergazdai bejelentkezés** : írja be az *Azureus* nevet.
-   - **Password (jelszó** ): adjon meg egy jelszót, amely megfelel a követelményeknek, majd írja be újra a **Jelszó megerősítése** mezőbe.
-   - **Hely** : válasszon ki egy helyet a legördülő listából.
+   - **Kiszolgáló neve**: adja meg a *portra beállított mysqlserver*, és adjon hozzá néhány karaktert az egyediséghez. Nem lehet pontosan megadni a kiszolgáló nevét, mert a kiszolgáló nevének globálisan egyedinek kell lennie az Azure összes kiszolgálóján, nem csak az előfizetésen belül. Tehát írjon be valamit, például mysqlserver12345, és a portálon megtudhatja, hogy elérhető-e vagy sem.
+   - **Kiszolgáló-rendszergazdai bejelentkezés**: írja be az *Azureus* nevet.
+   - **Password (jelszó**): adjon meg egy jelszót, amely megfelel a követelményeknek, majd írja be újra a **Jelszó megerősítése** mezőbe.
+   - **Hely**: válasszon ki egy helyet a legördülő listából.
 
-   Kattintson az **OK** gombra.
+   Válassza az **OK** lehetőséget.
 
 1. Ha **nem** értékre szeretné ÁLLÍTANI az **SQL rugalmas** készletet, ne használja.
 1. A **Számítás + tárolás** területen válassza az **Adatbázis konfigurálása** lehetőséget.
@@ -63,7 +63,7 @@ Egyetlen adatbázis létrehozásához a Azure Portal ez a rövid útmutató az A
    ![Új SQL Database-adatbázis – alapszintű lap](./media/single-database-create-quickstart/new-sql-database-basics.png)
 
 1. A **hálózat** lapon, a **kapcsolati módszernél** válassza a **nyilvános végpont** lehetőséget.
-1. A **Tűzfalszabályok** esetében állítsa az **aktuális ügyfél IP-címének hozzáadása** **Igen értéket** . Hagyja meg, **hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a kiszolgálóhoz** a **nem** értékre.
+1. A **Tűzfalszabályok** esetében állítsa az **aktuális ügyfél IP-címének hozzáadása** **Igen értéket**. Hagyja meg, **hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a kiszolgálóhoz** a **nem** értékre.
 1. Válassza a **Tovább: további beállítások** elemet az oldal alján.
 
    ![Hálózatkezelés lap](./media/single-database-create-quickstart/networking.png)
@@ -105,7 +105,7 @@ startip=0.0.0.0
 endip=0.0.0.0
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
@@ -258,7 +258,7 @@ Az adatbázis létrehozása után a Azure Portalban használhatja a **lekérdez�
 
 1. A portálon keresse meg és válassza ki az **SQL-adatbázisok** elemet, majd válassza ki az adatbázist a listából.
 1. Az adatbázis lapon válassza a bal oldali menüben a **Lekérdezés-szerkesztő (előzetes verzió)** lehetőséget.
-1. Adja meg a kiszolgáló-rendszergazdai bejelentkezési adatait, majd kattintson **az OK gombra** .
+1. Adja meg a kiszolgáló-rendszergazdai bejelentkezési adatait, majd kattintson **az OK gombra**.
 
    ![Bejelentkezés a lekérdezés-szerkesztőbe](./media/single-database-create-quickstart/query-editor-login.png)
 
@@ -277,7 +277,7 @@ Az adatbázis létrehozása után a Azure Portalban használhatja a **lekérdez�
 
 1. A **Lekérdezés-szerkesztő** oldal bezárásához kattintson az **OK gombra** , amikor a rendszer a nem mentett módosítások elvetésére kéri.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Tartsa meg az erőforráscsoportot, a kiszolgálót és az önálló adatbázist, és folytassa a következő lépésekkel, és megtudhatja, hogyan csatlakozhat az adatbázishoz, és hogyan kérdezheti le azokat különböző módszerekkel.
 

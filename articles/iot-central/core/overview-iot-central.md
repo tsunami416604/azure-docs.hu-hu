@@ -7,13 +7,13 @@ ms.date: 11/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc, contperfq2
-ms.openlocfilehash: 847fc5345708dc313f706fcb0d370b0d1761aa41
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.custom: mvc, contperf-fy21q2
+ms.openlocfilehash: b5f4b6d42d67b69bd8b6be1ada6f5651d0cb8675
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763706"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029838"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
@@ -152,7 +152,7 @@ Minden Azure-előfizetéshez tartozik alapértelmezett kvóta, amely hatással l
 - Csak a C eszközoldali SDK és a Node.js eszköz és a szolgáltatás SDK-k támogatottak.
 - IoT Central jelenleg a Egyesült Államok, Európa, Ázsia és a Csendes-óceáni térség, Ausztrália, Egyesült Királyság és Japán helyszíneken érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a IoT Centralt, néhány javasolt lépés:
 

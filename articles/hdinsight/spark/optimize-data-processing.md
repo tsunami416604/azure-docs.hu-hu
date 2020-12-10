@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 3ed4f8d4d8ca0a68a4ccf01a38ae5f8e66cc26df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 3b85f6238bec4ef85d724a2fc48ea5988c3fceb2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757829"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031725"
 ---
 # <a name="data-processing-optimization-for-apache-spark"></a>Apache Spark adatfeldolgozási optimalizálása
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan optimalizálható a Apache Spark-fürt konfigur�
 
 ## <a name="overview"></a>Áttekintés
 
-Ha lassú feladattal rendelkezik egy JOIN vagy shuffle utasításban, az OK valószínűleg *adattorzítást*eredményez. Az adatok eldöntése az aszimmetria a feladatok adataiban. A térképes feladatok például 20 másodpercet is igénybe vehetnek. Ha azonban egy olyan feladatot futtat, amelyben az adatok csatlakoztatva vannak, vagy az adatkeverő órákat vesz igénybe. Az adatdöntés kijavításához a teljes kulcsot kell megállapítania, vagy egy *elkülönített sót* kell használnia a kulcsok csak néhány részhalmaza számára. Ha izolált sót használ, érdemes tovább szűrnie, hogy elkülönítse a sós kulcsok részhalmazát a térképi illesztésekben. Egy másik lehetőség egy gyűjtő oszlop bevezetése és a gyűjtők előzetes összesítése.
+Ha lassú feladattal rendelkezik egy JOIN vagy shuffle utasításban, az OK valószínűleg *adattorzítást* eredményez. Az adatok eldöntése az aszimmetria a feladatok adataiban. A térképes feladatok például 20 másodpercet is igénybe vehetnek. Ha azonban egy olyan feladatot futtat, amelyben az adatok csatlakoztatva vannak, vagy az adatkeverő órákat vesz igénybe. Az adatdöntés kijavításához a teljes kulcsot kell megállapítania, vagy egy *elkülönített sót* kell használnia a kulcsok csak néhány részhalmaza számára. Ha izolált sót használ, érdemes tovább szűrnie, hogy elkülönítse a sós kulcsok részhalmazát a térképi illesztésekben. Egy másik lehetőség egy gyűjtő oszlop bevezetése és a gyűjtők előzetes összesítése.
 
 A lassú illesztéseket okozó másik tényező lehet az illesztés típusa. Alapértelmezés szerint a Spark az `SortMerge` illesztés típusát használja. Ez a fajta JOIN a legmegfelelőbb a nagyméretű adathalmazokhoz. Ez azonban egyébként költséges, mert először a bal és a jobb oldalt kell rendeznie az Adategyesítés előtt.
 
@@ -65,7 +65,7 @@ A Spark 2. x lekérdezési teljesítménye a Wolfram motor, amely a teljes fázi
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adattároló optimalizálása Apache Spark](optimize-data-storage.md)
 * [Memória használatának optimalizálása Apache Spark](optimize-memory-usage.md)

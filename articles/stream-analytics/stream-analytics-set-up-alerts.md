@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 06/21/2019
-ms.openlocfilehash: 6353fe988b9b94c27ab777741bf63d3869579d9e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8d591bb9c4b2ef8100946082f19115b99b30dde1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124441"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027492"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Riasztások beállítása Azure Stream Analytics feladatokhoz
 
@@ -30,7 +30,7 @@ Az alábbi példa bemutatja, hogyan állíthatja be a riasztásokat, amikor a fe
 
 2. A **feladatok** lapon navigáljon a **figyelés** szakaszhoz.  
 
-3. Válassza a **metrikák** , majd az **új riasztási szabály** lehetőséget.
+3. Válassza a **metrikák**, majd az **új riasztási szabály** lehetőséget.
 
    ![Azure Portal Stream Analytics riasztások beállítása](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
@@ -46,11 +46,11 @@ Az alábbi példa bemutatja, hogyan állíthatja be a riasztásokat, amikor a fe
 
    ![Riasztás beállítása Azure streaming Analytics-feladatokhoz](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. Az **erőforrásnak** , a **feltételnek** és a **műveleti csoportnak** szerepelnie kell egy bejegyzésben. Vegye figyelembe, hogy ahhoz, hogy a riasztások tüzet, a meghatározott feltételeknek teljesülnie kell. Mérheti például egy metrika átlagos értékét az elmúlt 15 percben 5 percenként.
+7. Az **erőforrásnak**, a **feltételnek** és a **műveleti csoportnak** szerepelnie kell egy bejegyzésben. Vegye figyelembe, hogy ahhoz, hogy a riasztások tüzet, a meghatározott feltételeknek teljesülnie kell. Mérheti például egy metrika átlagos értékét az elmúlt 15 percben 5 percenként.
 
    ![Képernyőfelvétel: a szabály létrehozása párbeszédpanel az erőforrás, a feltétel és a műveleti csoport mezővel.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
-   Adja hozzá a riasztási **szabály nevét** , **leírását** és az **erőforráscsoportot** a **riasztás részleteihez** , majd kattintson a **riasztási szabály létrehozása** elemre a stream Analyticsi feladathoz tartozó szabály létrehozásához.
+   Adja hozzá a riasztási **szabály nevét**, **leírását** és az **erőforráscsoportot** a **riasztás részleteihez** , majd kattintson a **riasztási szabály létrehozása** elemre a stream Analyticsi feladathoz tartozó szabály létrehozásához.
 
    ![Képernyőfelvétel: a szabály létrehozása párbeszédpanel a riasztás RÉSZLETEIvel.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
@@ -58,7 +58,7 @@ Az alábbi példa bemutatja, hogyan állíthatja be a riasztásokat, amikor a fe
 
 A következő riasztások ajánlottak a Stream Analyticsi feladatok teljesítményének figyeléséhez. Ezeket a metrikákat percenként kell kiértékelni az elmúlt 5 perces időszakban.
 
-|Metrika|Condition (Állapot)|Idő összesítése|Küszöbérték|Javítási műveletek|
+|Metrika|Feltétel|Idő összesítése|Küszöbérték|Javítási műveletek|
 |-|-|-|-|-|
 |SU% kihasználtsága|Nagyobb, mint|Maximum|80|Több tényező is megnövelheti a SU%-os kihasználtságot. A lekérdezési párhuzamos méretezéssel vagy a folyamatos átviteli egységek számának növelésével bővíthető. További információért lásd [az Azure Stream Analytics-lekérdezések párhozamosításának előnyeit ismertető](stream-analytics-parallelization.md) cikket.|
 |Futásidejű hibák|Nagyobb, mint|Összesen|0|Vizsgálja meg a tevékenység-vagy erőforrás-naplókat, és végezze el a megfelelő módosításokat a bemeneteken, lekérdezéseken vagy kimeneteken.|

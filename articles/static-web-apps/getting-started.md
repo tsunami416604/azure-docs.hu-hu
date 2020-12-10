@@ -1,20 +1,20 @@
 ---
-title: 'Rövid útmutató: az első statikus webalkalmazás felépítése az Azure statikus Web Apps'
-description: Ismerje meg, hogyan hozhat létre Azure statikus Web Apps webhelyeket.
+title: 'Rövid útmutató: az első statikus hely felépítése az Azure statikus Web Apps'
+description: Ismerje meg, hogyan helyezhet üzembe statikus helyet az Azure statikus Web Apps.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: a78f74b4aadd26af141ed84ca99a092693f56af5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 226e8ca6848fc2e29b73a2586f37965c0a031b19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369562"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030467"
 ---
-# <a name="quickstart-building-your-first-static-web-app"></a>Rövid útmutató: az első statikus webalkalmazás felépítése
+# <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Rövid útmutató: az első statikus hely felépítése az Azure statikus Web Apps
 
 Az Azure statikus Web Apps egy GitHub-tárházból származó alkalmazások létrehozásával tesz közzé webhelyeket az éles környezetben. Ebben a rövid útmutatóban egy webalkalmazást helyez üzembe az Azure statikus Web Apps szolgáltatásban a Visual Studio Code bővítménnyel.
 
@@ -104,7 +104,7 @@ Ezután nyissa meg a Visual Studio Code-ot, és nyissa meg a **fájl > megnyitá
 
 1. A Visual Studio Code Explorer ablakban navigáljon az előfizetés nevét tartalmazó csomóponthoz, és bontsa ki azt. Vegye figyelembe, hogy a telepítés befejezéséhez néhány percet is igénybe vehet. Ezután térjen vissza a statikus Web Apps szakaszra, és válassza ki az alkalmazás nevét, majd kattintson a jobb gombbal az én-első-static-Web-App elemre, és válassza a Megnyitás a portálon lehetőséget az alkalmazás megjelenítéséhez a Azure Portal.
 
-    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Azure Portal megnyitása":::
+    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Portál megnyitása":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
@@ -116,7 +116,7 @@ A Visual Studio Code Explorer ablakban térjen vissza a _statikus Web Apps_ szak
 
 :::image type="content" source="media/getting-started/extension-delete.png" alt-text="Alkalmazás törlése":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [API hozzáadása](add-api.md)

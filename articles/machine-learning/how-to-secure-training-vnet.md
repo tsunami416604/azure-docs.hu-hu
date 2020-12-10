@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
-ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 2b0a56bac1652881e9d1733bcb52b02610e27e9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314170"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029566"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Azure Machine Learning képzési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -277,7 +277,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a virtuális gépet vagy 
 
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>A virtuális gép vagy a HDInsight-fürt létrehozása
 
-Hozzon létre egy virtuális GÉPET vagy HDInsight-fürtöt a Azure Portal vagy az Azure CLI használatával, és helyezze üzembe a fürtöt egy Azure-beli virtuális hálózaton. További információkat az következő cikkekben talál:
+Hozzon létre egy virtuális GÉPET vagy HDInsight-fürtöt a Azure Portal vagy az Azure CLI használatával, és helyezze üzembe a fürtöt egy Azure-beli virtuális hálózaton. További információért tekintse át a következő cikkeket:
 * [Azure Virtual Networks létrehozása és kezelése Linux rendszerű virtuális gépekhez](../virtual-machines/linux/tutorial-virtual-network.md)
 
 * [HDInsight kiterjesztése Azure Virtual Network használatával](../hdinsight/hdinsight-plan-virtual-network-deployment.md)

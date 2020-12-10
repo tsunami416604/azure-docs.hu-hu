@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatók a felügyelt identitások az Azu
 services: container-service
 ms.topic: article
 ms.date: 12/06/2020
-ms.openlocfilehash: e2a80ea869e17665e8a6d4fbd6960c3ccc8c1042
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 68d8111da5ec10f23d14b375a18229bca075da84
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751274"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97026829"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
@@ -34,7 +34,7 @@ A következő erőforrást kell telepítenie:
 
 Az AK számos felügyelt identitást használ a beépített szolgáltatásokhoz és bővítményekhez.
 
-| Identitás                       | Név    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
+| Identitás                       | Name (Név)    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
 |----------------------------|-----------|----------|
 | Vezérlősík | nem látható | Az AK-vezérlési sík összetevői használják a fürt erőforrásainak kezelésére, beleértve a bejövő terheléselosztást és az AK által felügyelt nyilvános IP-címeket, valamint a fürt automatikus méretezési műveleteit | A csomópont-erőforráscsoport közreműködői szerepköre | Előnézet
 | Kubelet | AK-fürt neve – agentpool | Hitelesítés Azure Container Registry (ACR) | NA (kubernetes v 1.15 +) | Egyelőre nem támogatott
@@ -119,7 +119,7 @@ A rendszer által hozzárendelt identitás frissítése:
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 
-A felhasználó által hozzárendelt identitás frissítése:
+Regisztrálja a szolgáltatás jelölőjét a felhasználó által hozzárendelt identitáshoz:
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
@@ -201,7 +201,7 @@ A saját felügyelt identitások használatával történő sikeres fürtök a u
  },
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Felügyelt identitást használó fürtök létrehozásához használjon [Azure Resource Manager (ARM) sablonokat ][aks-arm-template] .
 
 <!-- LINKS - external -->

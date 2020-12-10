@@ -16,13 +16,13 @@ ms.date: 10/29/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.custom: contperfq1
-ms.openlocfilehash: 423a879889402d5d3df70a7fadae6451c8418238
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 08399c1b2d930abfdd5832cb102a789844931d61
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95743157"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027696"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik azok az Azure AD-hozzáférési felülvizsgálatok?
 
@@ -97,7 +97,7 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 
 Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
 
-| Használati eset | Számítás | Licencek száma |
+| Forgatókönyv | Számítás | Licencek száma |
 | --- | --- | --- |
 | A rendszergazda létrehoz egy hozzáférési felülvizsgálatot az A csoportban a 75-felhasználók és 1 csoport tulajdonosa számára, és a csoport tulajdonosát a véleményezőként rendeli hozzá. | 1 a csoport tulajdonosának licence felülvizsgáló | 1 |
 | A rendszergazda az 500-es és 3 csoportbeli tulajdonosok hozzáférési felülvizsgálatát hozza létre a B csoport számára, és a 3 csoport tulajdonosait felülvizsgáló rendeli hozzá. | 3 licenc minden csoport tulajdonosának felülvizsgáló | 3 |

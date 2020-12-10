@@ -6,14 +6,14 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: 0e7777cba93706baea815521757b495209431ce6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b29e0f99cb4549370be49dc5a1b11d367e30d8c0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006472"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029141"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Azure Stream Analyticsek hibakeresése erőforrás-naplók használatával
 
@@ -141,7 +141,7 @@ Hiba | választható Hiba adatai. Általában ez a kivételi információ, ha el
 Típus | Az üzenet típusa. Leképezés a hibák belső kategorizálására. Például: **JobValidationError** vagy **BlobOutputAdapterInitializationFailure**.
 Korrelációs azonosító | GUID, amely egyedileg azonosítja a feladatok végrehajtását. Az összes végrehajtási naplóbejegyzés abban az időponttól kezdve, amíg a feladatoknak nem kell megegyezniük a **korrelációs azonosító** értékével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [AdatStream Analyticsi hibák](./data-errors.md)
 * [Stream Analytics lekérdezés nyelvi referenciája](/stream-analytics-query/stream-analytics-query-language-reference)

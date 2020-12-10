@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: ad09cdc2c0054c9d9a58e6bfa00252862f1e8c0f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757812"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028223"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark adattárolási optimalizálása
 
@@ -101,7 +101,7 @@ Bizonyos speciális gyűjtő funkciók a következők:
 
 Egyszerre használhatja a particionálást és a gyűjtőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatfeldolgozás optimalizálása Apache Spark](optimize-cluster-configuration.md)
 * [Memória használatának optimalizálása Apache Spark](optimize-memory-usage.md)

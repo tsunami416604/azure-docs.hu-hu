@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperfq2
-ms.openlocfilehash: 9032e4c04279d87bf4422d3a87d19fdbecec1a64
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 808357b95f4de904ead0741d848480d548a2e26a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571793"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030076"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -208,7 +208,7 @@ Az előző szűrő csak a HTTPs-kérelmeket és a proxy portra küldött válasz
 
 Ha más válasz kódokat (például 407 vagy 502) lát, ez azt jelenti, hogy a proxy hitelesítést igényel, vagy más okból nem engedélyezi a forgalmat. Ezen a ponton a proxykiszolgálót támogató csapatot kell felvennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
 * Ha problémája van az összekötők kapcsolódási problémáinak megoldásával, kérdezze meg a [Microsoft Q&a kérdéses oldalt Azure Active Directory](/answers/topics/azure-active-directory.html) vagy hozzon létre egy jegyet a támogatási csapatával.

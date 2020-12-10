@@ -1,5 +1,5 @@
 ---
-title: Problémák az SAML-alapú egyszeri bejelentkezés konfigurált alkalmazásaiba való bejelentkezéskor
+title: Problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokba való bejelentkezés során
 description: Útmutató az SAML-alapú összevont egyszeri bejelentkezéshez konfigurált alkalmazásba való bejelentkezéskor megadott hibákhoz Azure Active Directory
 services: active-directory
 author: kenwith
@@ -11,32 +11,32 @@ ms.topic: troubleshooting
 ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
-ms.custom: contperfq2
-ms.openlocfilehash: e75669c70c67d55c94642a0f6dbe3c9dbc3376e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651549"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028274"
 ---
-# <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémák az SAML-alapú egyszeri bejelentkezés konfigurált alkalmazásaiba való bejelentkezéskor
+# <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokba való bejelentkezés során
 Az alábbi bejelentkezési problémák elhárítása érdekében javasoljuk, hogy a következő lépésekkel jobban diagnosztizálja és automatizálja a megoldási lépéseket:
 
-- Telepítse a [saját alkalmazások biztonságos böngésző bővítményét](./access-panel-deployment-plan.md) , hogy Azure Active Directory (Azure ad) jobb diagnosztikai és megoldási funkciókat nyújtson a Azure Portal tesztelési felületének használatakor.
-- Reprodukálja a hibát a Azure Portal alkalmazás konfigurációja lapján található tesztelési élmény használatával. További információ az [SAML-alapú egyszeri bejelentkezési alkalmazások hibakereséséről](./debug-saml-sso-issues.md)
+- Telepítse a [Saját alkalmazások biztonságos böngészőbővítményt](./access-panel-deployment-plan.md), így az Azure Active Directory (Azure AD) jobb diagnosztikát és megoldást biztosíthat az Azure Portalon található tesztkörnyezet használatakor.
+- Reprodukálja a hibát a tesztkörnyezet használatával az Azure Portal alkalmazáskonfigurációs oldalán. További információ az [SAML-alapú egyszeri bejelentkezési alkalmazások hibakereséséről](./debug-saml-sso-issues.md)
 
 Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési](./debug-saml-sso-issues.md) funkciót, az alábbi lépéseket nem kell manuálisan végrehajtania az SAML-alapú egyszeri bejelentkezés konfigurációjának megnyitásához.
 
-Az SAML-alapú egyszeri bejelentkezési konfiguráció oldalának megnyitása:
+Az SAML-alapú egyszeri bejelentkezés konfigurációs oldalának megnyitása:
 1.  Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** **vagy felügyelőként.**
 1.  Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** lehetőség kiválasztásával.
 1.  Írja be a **"Azure Active Directory"** kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
-1.  Válassza ki a **vállalati alkalmazásokat** a Azure Active Directory bal oldali navigációs menüjéből.
-1.  A **minden alkalmazás** elemre kattintva megtekintheti az összes alkalmazás listáját.
-    Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás lista** tetején található **szűrő** vezérlőelemet, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra**.
+1.  Az Azure Active Directory bal oldali navigációs menüjében válassza a **Vállalati alkalmazások** elemet.
+1.  Válassza a **Minden alkalmazás** lehetőséget az összes alkalmazás listájának megtekintéséhez.
+    Ha nem látja a kívánt alkalmazást, használja a **Minden alkalmazás lista** tetején lévő **szűrőt**, és állítsa a **Megjelenítés** beállítást a **Minden alkalmazás** értékre.
 1.  Válassza ki az egyszeri bejelentkezéshez konfigurálni kívánt alkalmazást.
 1. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget az alkalmazás bal oldali navigációs menüjében.
-1. Válassza ki az SAML-alapú egyszeri bejelentkezést.
+1. Válassza az SAML-alapú egyszeri bejelentkezést.
 
 ## <a name="application-not-found-in-directory"></a>Az alkalmazás nem található a címtárban
 `Error AADSTS70001: Application with Identifier 'https:\//contoso.com' was not found in the directory.`

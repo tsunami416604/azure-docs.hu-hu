@@ -10,13 +10,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 6398d23aeb0e26fbc336c0c1066078f327fa2f73
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
+ms.openlocfilehash: dd24c4f20fa3a56d25ef142947268b2d2b75474a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576570"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029600"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -43,7 +43,7 @@ Ebben a szakaszban megtudhatja, hogyan történik a közös hálózati forgatók
 
 Az alábbi táblázat összehasonlítja, hogyan fér hozzá a szolgáltatások a Azure Machine Learning hálózat különböző részeihez egy VNet és VNet nélkül.
 
-| Használati példa | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
+| Forgatókönyv | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
 |-|-|-|-|-|-|
 |**Nincs virtuális hálózat**| Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím |
 |**Virtuális hálózatok erőforrásainak védelme**| Magánhálózati IP-cím (privát végpont) | Nyilvános IP-cím (szolgáltatási végpont) <br> **vagy** <br> Magánhálózati IP-cím (privát végpont) | Magánhálózati IP-cím | Magánhálózati IP-cím  | 
@@ -166,7 +166,7 @@ Ha egyéni DNS-megoldást kell használnia a virtuális hálózatához, hozzá k
 
 További információ a szükséges tartománynévekről és IP-címekről: [munkaterület használata egyéni DNS-kiszolgálóval](how-to-custom-dns.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat első része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

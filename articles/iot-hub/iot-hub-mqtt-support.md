@@ -12,15 +12,15 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-- contperfq1
+- contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 4e06edaf6323c13b3a5af037b5b85b5b0acecc79
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: d206f40380ddb60a53ec8af2802a65af94f5820d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505648"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027798"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -81,11 +81,11 @@ Annak biztosítása érdekében, hogy az ügyfél/IoT Hub-kapcsolatok életben m
 
 |Nyelv  |Alapértelmezett életben tartási időköz  |Konfigurálható  |
 |---------|---------|---------|
-|Node.js     |   180 másodperc      |     No    |
-|Java     |    230 másodperc     |     No    |
+|Node.js     |   180 másodperc      |     Nem    |
+|Java     |    230 másodperc     |     Nem    |
 |C#     | 240 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python   | 60 másodperc |  No   |
+|Python   | 60 másodperc |  Nem   |
 
 Az [MQTT specifikáció](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)után a IoT hub életben tartási pingelési intervalluma 1,5 alkalommal az ügyfél életben tartási értéke. A IoT Hub azonban korlátozza a kiszolgálóoldali időtúllépési korlátot 29,45 percre (1767 másodpercre), mert az összes Azure-szolgáltatás az Azure Load Balancer TCP üresjárati időkorlátjának (29,45 perc) van kötve. 
 
@@ -141,11 +141,11 @@ Ez a mappa két, a Mosquitto.org által biztosított mosquitto_pub segédprogram
 
 Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatlakozhat a nyilvános eszközök végpontjaihoz a 8883-es porton az MQTT protokoll használatával. A **csatlakoztatási** csomagban az eszköznek a következő értékeket kell használnia:
 
-* A **ClientId** mezőben használja a **deviceId** -t.
+* A **ClientId** mezőben használja a **deviceId**-t.
 
 * A **username (Felhasználónév** ) mezőben használja a következőt: `{iothubhostname}/{device_id}/?api-version=2018-06-30` , ahol a `{iothubhostname}` az IoT hub teljes CNAME értéke.
 
-    Ha például az IoT hub neve **contoso.Azure-Devices.net** , és ha az eszköz neve **MyDevice01** , a teljes **Felhasználónév** mezőben a következőket kell tartalmaznia:
+    Ha például az IoT hub neve **contoso.Azure-Devices.net** , és ha az eszköz neve **MyDevice01**, a teljes **Felhasználónév** mezőben a következőket kell tartalmaznia:
 
     `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
@@ -180,7 +180,7 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 
 A MQTT csatlakoztatásához és a csomagok leválasztásához IoT Hub a **műveletek figyelése** csatornán eseményt ad ki. Ez az esemény további információkat tartalmaz, amelyek segíthetnek a kapcsolódási problémák elhárításában.
 
-Az alkalmazás megadhat **egy üzenetet** a **csatlakoztatási** csomagban. Az alkalmazásnak `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a téma nevének meg kell egyeznie, hogy **Will** a **rendszer** telemetria üzenetként továbbítsa az üzeneteket. Ebben az esetben, ha a hálózati kapcsolat be van zárva, de a **leválasztási** csomag korábban nem érkezett meg az eszközről, a IoT hub elküldi a telemetria csatornához a **kapcsolódási** csomagban **megadott üzenetet.** Az telemetria csatorna az alapértelmezett **események** végpontja vagy IoT hub útválasztás által definiált egyéni végpont lehet. Az üzenet a **iothub-MessageType** tulajdonsággal rendelkezik, amelynek a értéke hozzá **lesz** rendelve.
+Az alkalmazás megadhat **egy üzenetet** a **csatlakoztatási** csomagban. Az alkalmazásnak `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a téma nevének meg kell egyeznie, hogy  a **rendszer** telemetria üzenetként továbbítsa az üzeneteket. Ebben az esetben, ha a hálózati kapcsolat be van zárva, de a **leválasztási** csomag korábban nem érkezett meg az eszközről, a IoT hub elküldi a telemetria csatornához a **kapcsolódási** csomagban **megadott üzenetet.** Az telemetria csatorna az alapértelmezett **események** végpontja vagy IoT hub útválasztás által definiált egyéni végpont lehet. Az üzenet a **iothub-MessageType** tulajdonsággal rendelkezik, amelynek a értéke hozzá **lesz** rendelve.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>A MQTT protokoll használata közvetlenül (modulként)
 
@@ -285,7 +285,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Eszközről a felhőbe irányuló üzenetek küldése
 
-A sikeres kapcsolódást követően az eszközök üzeneteket küldhetnek IoT Hub a `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a **témakör neveként**. Az `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Ilyenek többek között:
+A sikeres kapcsolódást követően az eszközök üzeneteket küldhetnek IoT Hub a `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` a **témakör neveként**. Az `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Például:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -309,9 +309,9 @@ További információ: [üzenetküldési fejlesztői útmutató](iot-hub-devguid
 
 Az üzenetek IoT Hubból való fogadásához az eszköznek a használatával kell előfizetnie `devices/{device_id}/messages/devicebound/#` egy **témakör-szűrőként**. A témakör szűrője többszintű helyettesítő karaktert használ, amely `#` lehetővé teszi, hogy az eszköz további tulajdonságokat kapjon a témakör nevében. IoT Hub nem teszi lehetővé a `#` vagy `?` helyettesítő karakterek használatát az altémakörök szűréséhez. Mivel IoT Hub nem egy általános célú pub-sub Messaging Broker, csak a dokumentált témakörök nevét és a témakör szűrőit támogatja.
 
-Az eszköz nem kap üzeneteket a IoT Hub addig, amíg sikeresen előfizette az eszközre vonatkozó végpontot, amelyet a `devices/{device_id}/messages/devicebound/#` témakör szűrője képvisel. Az előfizetés létrejötte után az eszköz megkapja a felhőből az eszközre irányuló üzeneteket, amelyeket az előfizetés időpontja után küldtek el. Ha az eszköz a **CleanSession** jelzővel csatlakozik **0-ra** , az előfizetés a különböző munkamenetek között marad meg. Ebben az esetben a következő alkalommal, amikor az eszköz a **CleanSession** -hez csatlakozik, a kapcsolat megszakadása közben minden, a számára elküldött függő üzenetet fogad. Ha az eszköz a **CleanSession** jelzőt **1-re** állítja, akkor a IoT hub addig nem kap üzenetet, amíg előfizet az eszköz-végpontra.
+Az eszköz nem kap üzeneteket a IoT Hub addig, amíg sikeresen előfizette az eszközre vonatkozó végpontot, amelyet a `devices/{device_id}/messages/devicebound/#` témakör szűrője képvisel. Az előfizetés létrejötte után az eszköz megkapja a felhőből az eszközre irányuló üzeneteket, amelyeket az előfizetés időpontja után küldtek el. Ha az eszköz a **CleanSession** jelzővel csatlakozik **0-ra**, az előfizetés a különböző munkamenetek között marad meg. Ebben az esetben a következő alkalommal, amikor az eszköz a **CleanSession** -hez csatlakozik, a kapcsolat megszakadása közben minden, a számára elküldött függő üzenetet fogad. Ha az eszköz a **CleanSession** jelzőt **1-re** állítja, akkor a IoT hub addig nem kap üzenetet, amíg előfizet az eszköz-végpontra.
 
-IoT Hub kézbesíti az üzeneteket a **témakör nevével** `devices/{device_id}/messages/devicebound/` , vagy `devices/{device_id}/messages/devicebound/{property_bag}` Ha üzenet tulajdonságai vannak. `{property_bag}` URL-kódolású kulcs/érték párokat tartalmaz az üzenet tulajdonságaiban. Csak az alkalmazás tulajdonságai és a felhasználó által beállítható Rendszertulajdonságok (például **messageId** vagy **correlationId** ) szerepelnek a tulajdonság táskájában. A Rendszertulajdonságok nevei előtaggal rendelkeznek **$** , az alkalmazás tulajdonságai az eredeti tulajdonságnév előtag nélküli nevet használnak. A tulajdonság táska formátumával kapcsolatos további részletekért tekintse meg az [eszközről a felhőbe irányuló üzenetek küldését](#sending-device-to-cloud-messages)ismertető témakört.
+IoT Hub kézbesíti az üzeneteket a **témakör nevével** `devices/{device_id}/messages/devicebound/` , vagy `devices/{device_id}/messages/devicebound/{property_bag}` Ha üzenet tulajdonságai vannak. `{property_bag}` URL-kódolású kulcs/érték párokat tartalmaz az üzenet tulajdonságaiban. Csak az alkalmazás tulajdonságai és a felhasználó által beállítható Rendszertulajdonságok (például **messageId** vagy **correlationId**) szerepelnek a tulajdonság táskájában. A Rendszertulajdonságok nevei előtaggal rendelkeznek **$** , az alkalmazás tulajdonságai az eredeti tulajdonságnév előtag nélküli nevet használnak. A tulajdonság táska formátumával kapcsolatos további részletekért tekintse meg az [eszközről a felhőbe irányuló üzenetek küldését](#sending-device-to-cloud-messages)ismertető témakört.
 
 A felhőből az eszközre irányuló üzenetekben a tulajdonságok táskájában lévő értékek a következő táblázatban látható módon jelennek meg:
 
@@ -321,7 +321,7 @@ A felhőből az eszközre irányuló üzenetekben a tulajdonságok táskájában
 | üres karakterlánc | `key=` | A kulcsot, és nem értékkel rendelkező egyenlőségjelet kell írni |
 | nem null értékű, nem üres érték | `key=value` | A kulcsot, majd egy egyenlőségjelet és egy értéket. |
 
-Az alábbi példa egy olyan tulajdonságot mutat be, amely három alkalmazás-tulajdonságot tartalmaz: a **prop1** értékkel `null` . **prop2** , üres karakterlánc (""); és **prop3** "a string" értékkel.
+Az alábbi példa egy olyan tulajdonságot mutat be, amely három alkalmazás-tulajdonságot tartalmaz: a **prop1** értékkel `null` . **prop2**, üres karakterlánc (""); és **prop3** "a string" értékkel.
 
 ```mqtt
 /?prop1&prop2=&prop3=a%20string
@@ -373,7 +373,7 @@ A következő szakasz azt ismerteti, hogyan frissíti az eszköz a jelentett tul
 
 3. A szolgáltatás ezután egy válaszüzenetet küld, amely tartalmazza a jelentett tulajdonságok gyűjtemény új ETag értékét a következő témakörben: `$iothub/twin/res/{status}/?$rid={request id}` . Ez a válaszüzenet ugyanazt a **kérés-azonosítót** használja, mint a kérelem.
 
-A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az eszköz Twin dokumentumához. Egy tag, amely `null` törli a tagot a befoglaló objektumból. Ilyenek többek között:
+A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az eszköz Twin dokumentumához. Egy tag, amely `null` törli a tagot a befoglaló objektumból. Például:
 
 ```json
 {
@@ -411,7 +411,7 @@ További információ: az [eszközök ikrek fejlesztői útmutatója](iot-hub-de
 
 ## <a name="receiving-desired-properties-update-notifications"></a>A kívánt tulajdonságok frissítési értesítéseinek fogadása
 
-Ha egy eszköz csatlakoztatva van, IoT Hub értesítést küld a témakörnek `$iothub/twin/PATCH/properties/desired/?$version={new version}` , amely tartalmazza a megoldás hátterében végrehajtott frissítés tartalmát. Ilyenek többek között:
+Ha egy eszköz csatlakoztatva van, IoT Hub értesítést küld a témakörnek `$iothub/twin/PATCH/properties/desired/?$version={new version}` , amely tartalmazza a megoldás hátterében végrehajtott frissítés tartalmát. Például:
 
 ```json
 {

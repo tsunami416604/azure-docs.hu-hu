@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: a9bf03fd59e6088ce1c1b09a41b2bf55d1f45455
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
+ms.openlocfilehash: 27c8a0b80068124613af15565f387f15ac6b8e57
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532958"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027254"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Hitelesítés beállítása az Azure Machine Learning-erőforrásokhoz és -munkafolyamatokhoz
 
@@ -399,7 +399,7 @@ ws = Workspace(subscription_id="your-sub-id",
                 )
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [titkok használata a képzésben](how-to-use-secrets-in-runs.md).
 * [Webszolgáltatásként üzembe helyezett modellek hitelesítésének konfigurálása](how-to-authenticate-web-service.md).
