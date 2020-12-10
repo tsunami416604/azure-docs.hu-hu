@@ -346,6 +346,8 @@
           href: monitor-logic-apps.md
         - name: Logikai alkalmazások monitorozása Azure Monitor-naplókkal
           href: monitor-logic-apps-log-analytics.md
+        - name: Logikai alkalmazások monitorozása az Azure Security Centerben
+          href: healthy-unhealthy-resource.md
         - name: B2B-üzenetek monitorozása Azure Monitor-naplókkal
           href: monitor-b2b-messages-log-analytics.md
         - name: Monitorozási és nyomkövetési lekérdezések létrehozása

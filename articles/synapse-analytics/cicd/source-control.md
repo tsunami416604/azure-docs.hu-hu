@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350738"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008164"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Verziókövetés az Azure szinapszis Studióban
 
@@ -138,6 +138,24 @@ Ha első alkalommal csatlakozik a GitHubhoz a szinapszis studióból, kövesse a
 
 Ha követte ezeket a lépéseket, a munkaterület a szervezeten belüli nyilvános és privát adattárakhoz is csatlakozhat. Ha nem tud csatlakozni, próbálja meg törölni a böngésző gyorsítótárát, és próbálkozzon újra.
 
+#### <a name="already-connected-to-github-using-a-personal-account"></a>Már csatlakoztatva van a GitHubhoz egy személyes fiók használatával
+
+Ha már csatlakozott a GitHubhoz, és csak egy személyes fiók elérésére vonatkozó engedélyt kapott, kövesse az alábbi lépéseket egy szervezet engedélyeinek megadásához.
+
+1. Lépjen a GitHubra, és nyissa meg a **beállításokat**.
+
+    ![GitHub-beállítások megnyitása](media/github-settings.png)
+
+1. Válassza az **alkalmazások** lehetőséget. Az **OAuth-alkalmazások engedélyezése** lapon az *Azure szinapszisot* kell látnia.
+
+    ![OAuth-alkalmazások engedélyezése](media/authorize-app.png)
+
+1. Válassza ki az *Azure szinapszisot* , és adja meg a szervezethez való hozzáférést.
+
+    ![Szervezeti engedély megadása](media/grant-organization-permission.png)
+
+A lépések elvégzése után a munkaterület a szervezeten belüli nyilvános és privát adattárakhoz is csatlakozhat.
+
 ## <a name="version-control"></a>Verziókövetés
 
 A verziókövetés-rendszerek (más néven a _verziókövetés_) lehetővé teszik a fejlesztők számára a kód és a változások követését. A verziókövetés elengedhetetlen eszköz a több fejlesztő projektjeihez.
@@ -163,6 +181,7 @@ Alapértelmezés szerint a szinapszis Studio létrehozza a munkaterület-sablono
 ```
 
 Az Azure szinapszis Studio egyszerre csak egy közzétételi ágat tartalmazhat. Új közzétételi ág megadásakor az előző közzétételi ág nem lett törölve. Ha el szeretné távolítani az előző közzétételi ágat, törölje manuálisan.
+
 
 ### <a name="publish-code-changes"></a>Kód módosításának közzététele
 
@@ -192,7 +211,7 @@ Miután eltávolította az aktuális tárházhoz való társítást, beállítha
 
 ## <a name="best-practices-for-git-integration"></a>Ajánlott eljárások a git-integrációhoz
 
--   **Engedélyek**. Miután egy git-tárház csatlakozott a munkaterülethez, bárki, aki hozzáfér a git-adattárhoz a munkaterület bármely szerepkörével, frissítheti az összetevőket, például az SQL-parancsfájlt, a jegyzetfüzetet, a Spark-feladat definícióját, az adatkészletet, a adatfolyam és a folyamatot a git módban. Általában nem szeretné, hogy minden csapattag rendelkezzen a munkaterület frissítéséhez szükséges engedélyekkel. Csak a git-tárház engedélyezése a munkaterület-összetevőhöz tartozó szerzők számára. 
+-   **Engedélyek**. Miután egy git-tárház csatlakozott a munkaterülethez, bárki, aki hozzáférhet a git-adattárhoz a munkaterület bármely szerepkörével, frissítheti az összetevőket, például az SQL-parancsfájlt, a jegyzetfüzetet, a Spark-feladat definícióját, az adatkészletet, a adatfolyam és a folyamatot a git módban. Általában nem szeretné, hogy minden csapattag rendelkezzen a munkaterület frissítéséhez szükséges engedélyekkel. Csak a git-tárház engedélyezése a munkaterület-összetevőhöz tartozó szerzők számára. 
 -   **Együttműködés**. Javasoljuk, hogy ne engedélyezze a közvetlen bejelentkezéseket az együttműködési ágban. Ez a korlátozás segít megakadályozni a hibákat, mivel minden bejelentkezés a [szolgáltatási ágak létrehozása](source-control.md#creating-feature-branches)című témakörben leírt lekéréses kérelem-felülvizsgálati folyamaton halad át.
 -   **Szinapszis élő üzemmód**. A git módban való közzététel után az összes változás a szinapszis élő módban jelenik meg. A szinapszis élő módban a közzététel le van tiltva. És megtekintheti az összetevők élő módban való futtatását, ha a megfelelő engedélyt kapta. 
 -   Összetevők **szerkesztése a Studióban**. A szinapszis Studio az egyetlen hely, amellyel engedélyezheti a munkaterület forrás-és szinkronizálási módosításait a git szolgáltatásban. Az SDK-val, a PowerShell-lel végzett módosítások nem lesznek szinkronizálva a git használatával. Javasoljuk, hogy mindig szerkessze az összetevőt a Studióban, ha a git engedélyezve van.
@@ -223,6 +242,6 @@ Ha a közzétételi ág nincs szinkronban az együttműködési ágban, és a le
 - A szinapszis Studio nem támogatja a véglegesítő üzenet testreszabását.
 - A Studio alkalmazásban a DELETE művelet megtervezésével közvetlenül a git-ben lesz végrehajtva
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A folyamatos integráció és üzembe helyezés megvalósításához tekintse meg a [folyamatos integrációt és teljesítést (CI/CD)](continuous-integration-deployment.md).

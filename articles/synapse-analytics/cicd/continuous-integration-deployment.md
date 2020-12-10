@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317136"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008085"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Folyamatos integráció és kézbesítés az Azure szinapszis-munkaterülethez
 
@@ -107,7 +107,13 @@ A [szinapszis munkaterület üzembe](https://marketplace.visualstudio.com/items?
 
      ![Bővítmény hozzáadása](media/add-extension-task.png)
 
-1.  A feladatban adja meg a **workspace_publish** kapcsolódó git-tárház adatait, majd válassza ki az erőforráscsoport, a régió, a név és a felhőalapú környezet elemet a cél munkaterülethez. Ha szükséges, adja meg a paramétereket és az értékeket.
+1.  A feladatban válassza a **... lehetőséget.** **a sablon mező mellett** válassza ki a sablonfájlt.
+
+1. Válassza a **... lehetőséget.** a **sablon paramétereinek** mező mellett válassza ki a paramétereket tartalmazó fájlt.
+
+1. Válassza ki a kapcsolatokat, az erőforráscsoportot és a cél munkaterület nevét. 
+
+1. Válassza a **... lehetőséget.** a **felülírási sablon paraméterei** mező mellett adja meg a kívánt paramétereket a cél munkaterülethez. 
 
     ![Szinapszis-munkaterület üzembe helyezése](media/create-release-artifacts-deployment.png)
 

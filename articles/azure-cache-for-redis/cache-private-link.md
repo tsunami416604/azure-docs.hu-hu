@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 31ae4605b6cc9e26c89beea692fe61fcbda49c4c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621501"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007585"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache a Redis az Azure Private linkkel (nyilvános előzetes verzió)
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy virtuális hálózatot és egy Azure cache-t a Redis-példányhoz egy privát végponttal a Azure Portal használatával. Azt is megtudhatja, hogyan adhat hozzá privát végpontot egy meglévő Azure cache-hez a Redis-példányhoz.
@@ -58,7 +58,7 @@ Ebben a szakaszban létrehoz egy új Azure cache-t a Redis-példányhoz egy priv
 
 8. Az **alhálózat szerkesztése** ablaktáblán adja meg az **alhálózat nevét** , valamint az **alhálózati címtartományt**. Az alhálózat címtartományének CIDR-jelöléssel kell rendelkeznie (például 192.168.1.0/24). Ennek a virtuális hálózat címterület részét kell tartalmaznia.
 
-9. Válassza a **Save** (Mentés) lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
 10. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
@@ -157,7 +157,7 @@ Virtuális hálózat létrehozásához kövesse az alábbi lépéseket.
 
 8. Az **alhálózat szerkesztése** ablaktáblán adja meg az **alhálózat nevét** , valamint az **alhálózati címtartományt**. Az alhálózat címtartományének CIDR-jelöléssel kell rendelkeznie (például 192.168.1.0/24). Ennek a virtuális hálózat címterület részét kell tartalmaznia.
 
-9. Válassza a **Save** (Mentés) lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
 10. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
@@ -224,7 +224,12 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 ```
 
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Engedélyezve vannak-e a hálózati biztonsági csoportok (NSG) a privát végpontokhoz?
-Nem, a magánhálózati végpontok esetében le vannak tiltva. Ha azonban más erőforrások is vannak az alhálózaton, akkor a NSG kényszerítés is érvényes lesz ezekre az erőforrásokra.
+Nem, a magánhálózati végpontok esetében le vannak tiltva. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](../private-link/disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken. Az összes ügyfél-alhálózat útvonala egy/32 előtagot használ, és az alapértelmezett útválasztási viselkedés megváltoztatásához hasonló UDR van szükség. 
+
+A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja. Egyéni útvonalak üzembe helyezése a/32 előtaggal a privát végponti útvonalak felülbírálásához. A kimenő kapcsolatok NSG és figyelési információi továbbra is támogatottak, és használhatók
+
+### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>Használhatok tűzfalszabályok privát végpontokkal?
+Nem, ez a privát végpontok jelenlegi korlátozása. A magánhálózati végpont nem fog megfelelően működni, ha tűzfalszabályok vannak konfigurálva a gyorsítótárban.
 
 ### <a name="how-can-i-connect-to-a-clustered-cache"></a>Hogyan lehet csatlakozni egy fürtözött gyorsítótárhoz?
 `publicNetworkAccess` be kell állítani, hogy `Disabled` csak egy privát végponti kapcsolatok legyenek.
@@ -235,7 +240,7 @@ Csak a VNet van csatolva. Mivel nem szerepel a VNet, a NSG-szabályokat nem szü
 ### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>Hogyan telepíthetem át a VNet befecskendezett gyorsítótárát egy privát végponti gyorsítótárba?
 Törölnie kell a VNet Beinjektált gyorsítótárát, és létre kell hoznia egy új, privát végponttal rendelkező gyorsítótár-példányt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni az Azure Private linkről, tekintse meg az [Azure Private link dokumentációját](../private-link/private-link-overview.md).
 * A gyorsítótár-példány különböző hálózati elkülönítési lehetőségeinek összehasonlításához tekintse meg az [Azure cache Redis hálózati elkülönítési lehetőségek dokumentációját](cache-network-isolation.md).

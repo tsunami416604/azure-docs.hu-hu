@@ -7,28 +7,8 @@
       href: Overview.md
 - name: Rövid útmutatók
   items:
-    - name: Az ügyfélkódtár használata
+    - name: Az ügyfélkódtár vagy a REST API használata
       href: Quickstarts/client-libraries.md
-    - name: A REST API használata
-      items:
-        - name: Arcok felismerése a képeken
-          items:
-            - name: C#
-              href: QuickStarts/CSharp.md
-            - name: Indítás
-              href: QuickStarts/go.md
-            - name: Java
-              href: QuickStarts/Java.md
-            - name: JavaScript
-              href: QuickStarts/JavaScript.md
-            - name: Node.js
-              href: QuickStarts/node.md
-            - name: PHP
-              href: QuickStarts/PHP.md
-            - name: Python
-              href: QuickStarts/Python.md
-            - name: Ruby
-              href: QuickStarts/Ruby.md
 - name: Oktatóanyagok
   items:
     - name: Az ügyfél-SDK használata

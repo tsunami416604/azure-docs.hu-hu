@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure
-ms.date: 07/28/2020
+ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: a42b07254deaf19d253f7523631018bfe7166a57
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4e29bb0fee496af6a8c0fd30d5559bf865123c39
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339591"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007891"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedikált Azure-gazdagépek
 
@@ -67,11 +67,6 @@ Az [itt](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-
 
 ## <a name="manual-vs-automatic-placement"></a>Manuális és automatikus elhelyezés 
 
-> [!IMPORTANT]
-> Az automatikus elhelyezés jelenleg nyilvános előzetes verzióban érhető el.
-> Az előzetes verzióban való részvételhez végezze el az előzetes verziójú előkészítési felmérést a következő címen: [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Egy virtuális gép Azure-beli létrehozásakor kiválaszthatja, hogy melyik dedikált gazdagépet kívánja használni. Azt is megteheti, hogy automatikusan elhelyezi a virtuális gépeket a meglévő gazdagépeken egy gazdagépen belül. 
 
 Új gazda-csoport létrehozásakor győződjön meg arról, hogy az automatikus virtuális gép elhelyezése beállítás be van jelölve. A virtuális gép létrehozásakor jelölje ki a gazdagépet, és hagyja, hogy az Azure válassza a legjobb gazdagépet a virtuális géphez. 
@@ -91,11 +86,6 @@ Ismert problémák és korlátozások az automatikus virtuális gép elhelyezés
 
 A virtuálisgép-méretezési csoportok lehetővé teszik, hogy egyetlen erőforrásként kezelje a virtuális gépek egy csoportját, és a rendelkezésre állást, a felügyeletet, a skálázási és a hangolási szabályzatokat csoportként alkalmazza. A meglévő dedikált gazdagépek is használhatók a virtuálisgép-méretezési csoportokhoz. 
 
-> [!IMPORTANT]
-> A dedikált gazdagépeken lévő Virtual Machine Scale Sets jelenleg nyilvános előzetes verzióban érhető el.
-> Az előzetes verzióban való részvételhez végezze el az előzetes verziójú előkészítési felmérést a következő címen: [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Virtuálisgép-méretezési csoport létrehozásakor megadhat egy meglévő gazdagép-csoportot, amely tartalmazza a dedikált gazdagépeken létrehozott összes virtuálisgép-példányt.
 
 A virtuálisgép-méretezési csoportok dedikált gazdagép-csoportban való létrehozásakor a következő követelmények érvényesek:
@@ -109,7 +99,7 @@ A virtuálisgép-méretezési csoportok dedikált gazdagép-csoportban való lé
 - A dedikált gazdagépek által támogatott virtuálisgép-méreteknek meg kell egyezniük a méretezési csoporthoz használt virtuális gépek méretétől.
 
 A dedikált gazdagépek nem minden méretezési és optimalizálási beállítást támogatnak. Alkalmazza a következő beállításokat a méretezési csoportra: 
-- A túlzott kiépítés letiltása.
+- A túlzott kiépítés nem ajánlott, és alapértelmezés szerint le van tiltva. Engedélyezheti a túlzott kiépítést, de a méretezési csoport lefoglalása sikertelen lesz, ha a gazda csoport nem rendelkezik az összes virtuális gép kapacitásával, beleértve a túlépített példányokat is. 
 - A ScaleSetVM-előkészítési mód használata 
 - Földrajzi elhelyezési csoportok használata a közös elhelyezéshez
 
@@ -181,7 +171,7 @@ Az Azure figyeli és kezeli a gazdagépek állapotát. A következő állapotok 
 | Gazdagép delefoglalt  | Az összes virtuális gép el lett távolítva a gazdagépről. Ez a gazdagép már nem töltődik fel, mivel a hardver elforgatása nem történt meg.   |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A dedikált gazdagépeket [Azure PowerShell](./windows/dedicated-hosts-powershell.md), a [portál](./dedicated-hosts-portal.md)és az [Azure CLI](./linux/dedicated-hosts-cli.md)használatával helyezheti üzembe.
 

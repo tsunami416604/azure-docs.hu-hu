@@ -12,7 +12,7 @@
   items:
     - name: A Content Moderator kipróbálása az interneten
       href: quick-start.md
-    - name: Az ügyfélkódtár használata
+    - name: Az ügyfélkódtár vagy a REST API használata
       href: client-libraries.md
 - name: Oktatóanyagok
   items:
@@ -20,8 +20,6 @@
       href: ecommerce-retail-catalog-moderation.md
     - name: Facebook-tartalmak moderálása
       href: facebook-post-moderation.md
-    - name: Videók és átiratok moderálása
-      href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: Alapelvek
   items:
     - name: Képmoderálás
@@ -38,7 +36,7 @@
   items:
     - name: Tartalom moderálása
       items:
-        - name: REST API
+        - name: API-konzol
           items:
             - name: Képek – API-konzol
               href: try-image-api.md
@@ -60,7 +58,7 @@
       items:
         - name: Felülvizsgálati eszköz (böngésző)
           href: Review-Tool-User-Guide/Review-Moderated-Images.md
-        - name: REST API
+        - name: API-konzol
           href: try-review-api-review.md
         - name: Videók felülvizsgálata (.NET)
           href: video-reviews-quickstart-dotnet.md
@@ -70,11 +68,11 @@
       items:
         - name: Felülvizsgálati eszköz (böngésző)
           href: Review-Tool-User-Guide/Workflows.md
-        - name: REST API
+        - name: API-konzol
           href: try-review-api-workflow.md
     - name: Feladatok meghatározása és használata
       items:
-        - name: REST API
+        - name: API-konzol
           href: try-review-api-job.md
         - name: .NET SDK
           href: moderation-jobs-quickstart-dotnet.md

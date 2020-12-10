@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 1b72224441741990a1fc94400dfe718ea9d1b0b3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e9c49d472f6cf0b9f0e5b3e2f7728417034059b1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961482"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007093"
 ---
 # <a name="app-service-overview"></a>Az App Service áttekintése
 
@@ -36,7 +36,7 @@ A App Service főbb jellemzői:
 * Az **API-és mobil funkciók** – app Service kulcsrakész CORS-támogatást biztosít a REST API-forgatókönyvekhez, és egyszerűbbé teszi a Mobile apps-forgatókönyveket a hitelesítés, az offline adatszinkronizálás, a leküldéses értesítések és egyebek engedélyezésével.
 * **Kiszolgáló nélküli kód** – Kódrészleteteket vagy szkripteket futtathat igény szerint anélkül, hogy kifejezetten felügyelnie vagy kezelnie kellene az infrastruktúrát, és csak a kódja által ténylegesen használt számítási időért kell fizetnie (további információ: [Azure Functions](../azure-functions/index.yml)).
 
-App Service mellett az Azure más szolgáltatásokat is kínál, amelyek a webhelyek és a webalkalmazások üzemeltetésére használhatók. A legtöbb esetben App Service a legjobb választás.  A Service architektúrához az [Azure Spring-Cloud Service](../spring-cloud/index.yml) -t vagy [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)kell figyelembe venni.  Ha nagyobb mértékű vezérlésre van szüksége a kódot futtató virtuális gépek felett, vegye fontolóra az [Azure Virtual Machinesét](https://azure.microsoft.com/documentation/services/virtual-machines/). További információ az Azure-szolgáltatások közötti választással kapcsolatban: [Az Azure App Service, a Virtual Machines, a Service Fabric és a Cloud Services összehasonlítása](/azure/architecture/guide/technology-choices/compute-decision-tree).
+App Service mellett az Azure más szolgáltatásokat is kínál, amelyek a webhelyek és a webalkalmazások üzemeltetésére használhatók. A legtöbb esetben App Service a legjobb választás.  A Service architektúrához az [Azure Spring-Cloud Service](../spring-cloud/index.yml) -t vagy [Service Fabrict](https://azure.microsoft.com/documentation/services/service-fabric)kell figyelembe venni.  Ha nagyobb mértékű vezérlésre van szüksége a kódot futtató virtuális gépek felett, vegye fontolóra az [Azure Virtual Machinesét](https://azure.microsoft.com/documentation/services/virtual-machines/). További információ az Azure-szolgáltatások közötti választással kapcsolatban: [Az Azure App Service, a Virtual Machines, a Service Fabric és a Cloud Services összehasonlítása](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="app-service-on-linux"></a>App Service Linux rendszeren
 
@@ -44,7 +44,7 @@ A App Service a webalkalmazásokat natív módon is üzemeltetheti Linux rendsze
 
 ### <a name="built-in-languages-and-frameworks"></a>Beépített nyelvek és keretrendszerek
 
-A Linuxon App Service számos különböző beépített rendszerképet támogat. Csak telepítse a kódot. A támogatott nyelvek a következők: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core és Ruby. [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)A Futtatás gombra kattintva megtekintheti a legújabb nyelveket és a támogatott verziókat. Ha az alkalmazás által igényelt futtatókörnyezet nem támogatott a beépített lemezképekben, akkor telepítheti azt egy egyéni tárolóval.
+A Linuxon App Service számos különböző beépített rendszerképet támogat. Csak telepítse a kódot. A támogatott nyelvek a következők: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core és Ruby. [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes)A Futtatás gombra kattintva megtekintheti a legújabb nyelveket és a támogatott verziókat. Ha az alkalmazás által igényelt futtatókörnyezet nem támogatott a beépített lemezképekben, akkor telepítheti azt egy egyéni tárolóval.
 
 ### <a name="limitations"></a>Korlátozások
 
@@ -54,7 +54,7 @@ A Linuxon App Service számos különböző beépített rendszerképet támogat.
 - A Azure Portal csak a Linux-alkalmazásokhoz jelenleg használható funkciókat jeleníti meg. Ha a funkciók engedélyezve vannak, azok aktiválva lesznek a portálon.
 - Beépített rendszerképekre való üzembe helyezéskor a kód és a tartalom a webes tartalomhoz tartozó tárolási kötetet foglal le, amelyet az Azure Storage támogat. A kötet lemezének késése nagyobb és változó, mint a tároló fájlrendszerének késése. Azok az alkalmazások, amelyeknek a tartalomhoz való nagy olvasási hozzáférésre van szükségük, az egyéni tároló lehetőséggel is rendelkezhetnek, amely a tartalom kötetén található fájlokat a tároló fájlrendszerében helyezi el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozza létre első webalkalmazását.
 

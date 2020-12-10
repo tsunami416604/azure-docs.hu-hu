@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f694a46fddbc84968b3267842aa19108d051590
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0876478d638963e7157f7a16a263000eec634db0
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499237"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005119"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>A Azure Active Directory szerepköralapú hozzáférés-vezérlésének áttekintése
 
@@ -30,10 +30,13 @@ Ez a cikk az Azure Active Directory (Azure AD) szerepköralapú hozzáférés-ve
 Mindkét rendszer hasonló módon használt szerepkör-definíciókat és szerepkör-hozzárendeléseket tartalmaz. Az Azure AD szerepkör engedélyei azonban nem használhatók az Azure egyéni szerepköreiben, és fordítva.
 
 ## <a name="understand-azure-ad-role-based-access-control"></a>Az Azure AD szerepköralapú hozzáférés-vezérlésének ismertetése
+Az Azure AD két típusú szerepkör-definíciót támogat – 
+* [Beépített szerepkörök](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference)
+* [Egyéni szerepkörök](https://docs.microsoft.com/azure/active-directory/roles/custom-create)
 
-Az egyéni Azure AD-szerepkörök használatával történő engedélyek megadása kétlépéses folyamat, amely magában foglalja az egyéni szerepkör-definíciók létrehozását, majd a szerepkör-hozzárendelés használatával történő hozzárendelését. Az egyéni szerepkör-definíciók egy előre definiált listából felvett engedélyek gyűjteményei. Ezek az engedélyek ugyanazok, mint a beépített szerepkörökben.  
+A beépített szerepkörök nem rendelkeznek rögzített engedélyekkel rendelkező szerepkörökkel. Ezek a szerepkör-definíciók nem módosíthatók. Az Azure AD számos [beépített szerepkört](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference) támogat, és a lista növekszik. Az Azure AD az [Egyéni szerepköröket](https://docs.microsoft.com/azure/active-directory/roles/custom-create)is támogatja, hogy az éleket lekerekítse és megfeleljen a kifinomult követelményeknek. Az egyéni Azure AD-szerepkörök használatával történő engedélyek megadása kétlépéses folyamat, amely magában foglalja az egyéni szerepkör-definíciók létrehozását, majd a szerepkör-hozzárendelés használatával történő hozzárendelését. Az egyéni szerepkör-definíciók egy előre definiált listából felvett engedélyek gyűjteményei. Ezek az engedélyek ugyanazok, mint a beépített szerepkörökben.  
 
-A szerepkör-definíció létrehozása után hozzárendelheti azt egy felhasználóhoz egy szerepkör-hozzárendelés létrehozásával. A szerepkör-hozzárendelések egy adott hatókörben lévő szerepkör-definícióban lévő engedélyeket biztosítanak a felhasználónak. Ez a kétlépéses folyamat lehetővé teszi, hogy egyetlen szerepkör-definíciót hozzon létre, és több alkalommal rendeljen hozzá különböző hatókörökben. A hatókör határozza meg azon Azure AD-erőforrások készletét, amelyekhez a szerepkör tagja hozzáfér. A leggyakoribb hatókör az egész szervezetre kiterjedő (szervezeti szintű) hatókör. Az egyéni szerepkör a szervezeti szintű hatókörhöz rendelhető, ami azt jelenti, hogy a szerepkör tagja rendelkezik a szervezet összes erőforrásához szükséges szerepkör-jogosultságokkal. Az objektumok hatóköréhez egyéni szerepkör is hozzárendelhető. Egy objektum hatóköre például egyetlen alkalmazás lehet. Ugyanazt a szerepkört hozzárendelheti egy felhasználóhoz a szervezeten belüli összes alkalmazáshoz, majd egy másik felhasználóhoz, amely csak a contoso költségelszámolás alkalmazás hatókörével rendelkezik.  
+Miután létrehozta az egyéni szerepkör-definíciót (vagy egy beépített szerepkört használ), hozzárendelheti azt egy felhasználóhoz egy szerepkör-hozzárendelés létrehozásával. A szerepkör-hozzárendelések egy adott hatókörben lévő szerepkör-definícióban lévő engedélyeket biztosítanak a felhasználónak. Ez a kétlépéses folyamat lehetővé teszi, hogy egyetlen szerepkör-definíciót hozzon létre, és több alkalommal rendeljen hozzá különböző hatókörökben. A hatókör határozza meg azon Azure AD-erőforrások készletét, amelyekhez a szerepkör tagja hozzáfér. A leggyakoribb hatókör az egész szervezetre kiterjedő (szervezeti szintű) hatókör. Az egyéni szerepkör a szervezeti szintű hatókörhöz rendelhető, ami azt jelenti, hogy a szerepkör tagja rendelkezik a szervezet összes erőforrásához szükséges szerepkör-jogosultságokkal. Az objektumok hatóköréhez egyéni szerepkör is hozzárendelhető. Egy objektum hatóköre például egyetlen alkalmazás lehet. Ugyanazt a szerepkört hozzárendelheti egy felhasználóhoz a szervezeten belüli összes alkalmazáshoz, majd egy másik felhasználóhoz, amely csak a contoso költségelszámolás alkalmazás hatókörével rendelkezik.  
 
 Az Azure AD beépített és egyéni szerepkörei az [Azure szerepköralapú hozzáférés-vezérléshez (Azure RBAC)](../../active-directory-b2c/overview.md)hasonló fogalmakon működnek. A [két szerepköralapú hozzáférés-vezérlési rendszer közötti különbség](../../role-based-access-control/rbac-and-directory-admin-roles.md) az, hogy az Azure RBAC az Azure-erőforrásokhoz, például a virtuális gépekhez vagy a tárolóhoz való hozzáférést az Azure Resource Management használatával szabályozza, az Azure ad egyéni szerepkörei pedig az Azure ad-erőforrásokhoz való hozzáférést Graph API használatával szabályozzák. Mindkét rendszer kihasználja a szerepkör-definíciók és a szerepkör-hozzárendelések fogalmát. Az Azure AD RBAC engedélyei nem vehetők fel az Azure-szerepkörökbe, és fordítva.
 
@@ -49,7 +52,7 @@ Az Azure AD az alábbi magas szintű lépésekkel határozza meg, hogy van-e hoz
 1. Az Azure AD meghatározza, hogy az API-hívásban szereplő művelet tartalmazza-e a felhasználó által ehhez az erőforráshoz tartozó szerepköröket.
 1. Ha a felhasználó nem rendelkezik szerepkörrel a kért hatókörben lévő művelettel, a hozzáférés nem adható meg. Egyéb esetben hozzáférést biztosít.
 
-## <a name="role-assignment"></a>Szerepkör-kijelölés
+## <a name="role-assignment"></a>Szerepkör-hozzárendelés
 
 A szerepkör-hozzárendelés egy olyan Azure AD-erőforrás, amely egy *szerepkör-definíciót* csatol egy *felhasználóhoz* egy adott *hatókörben* , és hozzáférést biztosít az Azure ad-erőforrásokhoz. A hozzáférés szerepkör-hozzárendelés létrehozásával biztosítható, és a szerepkör-hozzárendelés törlésével vonható vissza. Az alapszintű szerepkör-hozzárendelés három elemet tartalmaz:
 
@@ -67,7 +70,7 @@ Az alábbi ábrán egy példa látható szerepkör-hozzárendelésre. Ebben a p�
 
 A rendszerbiztonsági tag az Azure AD-erőforrásokhoz való hozzáférést biztosító felhasználót jelöli. A felhasználó olyan személy, aki Azure Active Directory felhasználói profillal rendelkezik.
 
-### <a name="role"></a>Role
+### <a name="role"></a>Szerepkör
 
 A szerepkör-definíció vagy szerepkör az engedélyek gyűjteménye. A szerepkör-definíció felsorolja az Azure AD-erőforrásokon végrehajtható műveleteket, például a létrehozás, olvasás, frissítés és törlés lehetőségeit. Az Azure AD két típusú szerepkörrel rendelkezik:
 
@@ -80,9 +83,9 @@ A hatókör egy adott Azure AD-erőforrásra vonatkozó engedélyezett művelete
 
 ## <a name="required-license-plan"></a>Szükséges licencelési csomag
 
-[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
+Az Azure AD beépített szerepköreinek használata ingyenes, míg az egyéni szerepkörök prémium szintű Azure AD P1-licencet igényelnek. A követelményeinek leginkább megfelelő licenc kiválasztásáról lásd [az ingyenes, alapszintű és prémium kiadások általánosan elérhető szolgáltatásait összehasonlító cikket](https://azure.microsoft.com/pricing/details/active-directory).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure AD-szerepkörök ismertetése](concept-understand-roles.md)
 - Egyéni szerepkör-hozzárendelések létrehozása [a Azure Portal, az Azure ad PowerShell és a Graph API](custom-create.md) használatával

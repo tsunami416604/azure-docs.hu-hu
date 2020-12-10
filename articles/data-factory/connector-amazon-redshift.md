@@ -2,7 +2,6 @@
 title: Adatok másolása az Amazon Vöröseltolódásból
 description: További információ az Amazon vöröseltolódásról származó adatok másolásáról a Azure Data Factory használatával történő támogatott fogadó adattárakra.
 services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
 manager: shwang
@@ -10,13 +9,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2018
-ms.openlocfilehash: a756a3cec5702570751e0bea09a4f59152accafc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/09/2020
+ms.openlocfilehash: b17c567b2e83bef3c37c8f1272091021a1943b15
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484544"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008323"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok másolása az Amazon Vöröseltolódásból a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -24,7 +23,6 @@ ms.locfileid: "89484544"
 > * [Aktuális verzió](connector-amazon-redshift.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
 
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Amazon Vöröseltolódásból való másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
 
@@ -103,7 +101,7 @@ Az adatok Amazon Vöröseltolódásból való másolásához a következő tulaj
 |:--- |:--- |:--- |
 | típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AmazonRedshiftTable** | Igen |
 | schema | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| table | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -164,9 +162,9 @@ További információ a kitöltés használatáról: az adatok Amazon Vöröselt
 
 Az [Eltávolítás](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) az Amazon vöröseltolódás által biztosított mechanizmus, amely képes a lekérdezés eredményeinek egy vagy több fájlba való kitöltésére az Amazon Simple Storage szolgáltatásban (Amazon S3). Az Amazon a nagyméretű adathalmazok Vöröseltolódásból való másolásának módját javasolja.
 
-**Példa: adatok másolása az Amazon Vöröseltolódásból az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse) a kitöltés, a szakaszos másolás és a bázisterület használatával**
+**Példa: adatok másolása az Amazon Vöröseltolódásáról az Azure szinapszis Analytics szolgáltatásba a kitöltés, a szakaszos másolás és a Kiindulás használatával**
 
-Ebben a példában a másolási tevékenység kitölti az Amazon vöröseltolódásról az Amazon S3-be a "redshiftUnloadSettings" beállításban konfigurált, majd az adatok az Amazon S3-ból az Azure Blobba való másolását az "stagingSettings" paraméterben megadott módon, végül a következőt használja az adatok betöltéséhez az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse). Az összes ideiglenes formátumot a másolási tevékenység megfelelően kezeli.
+Ebben a példában a másolási tevékenység kitölti az Amazon Vöröseltolódásból az Amazon S3-be a "redshiftUnloadSettings" beállításban konfigurált, majd az adatok az Amazon S3-ból az Azure Blobba való másolását az "stagingSettings" paraméterben megadott módon, végül a következőt használja: a Base használata az adatok Azure szinapszis Analyticsbe való betöltéséhez. Az összes ideiglenes formátumot a másolási tevékenység megfelelően kezeli.
 
 ![Az Azure szinapszis Analytics-másolási munkafolyamat vöröseltolódása](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 
@@ -227,7 +225,7 @@ Az Amazon Vöröseltolódásból történő adatmásoláskor a következő leké
 | DECIMÁLIS |Tizedesjegy |
 | DUPLA PONTOSSÁG |Dupla |
 | EGÉSZ SZÁM |Int32 |
-| VALÓS SZÁM |Egyirányú |
+| VALÓS SZÁM |Egyszeres |
 | SMALLINT |Int16 |
 | TEXT |Sztring |
 | IDŐBÉLYEG |DateTime |

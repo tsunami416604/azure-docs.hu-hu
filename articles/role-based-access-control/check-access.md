@@ -1,57 +1,83 @@
 ---
-title: Rövid útmutató – a felhasználó hozzáférésének megtekintése az Azure-erőforrásokhoz – Azure RBAC
-description: Ebből a rövid útmutatóból megtudhatja, hogyan tekintheti meg a felhasználók vagy más rendszerbiztonsági tag hozzáférését az Azure-erőforrásokhoz az Azure Portal és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
+title: Gyors útmutató – felhasználók hozzáférésének megkeresése az Azure-erőforrásokhoz – Azure RBAC
+description: Ebből a rövid útmutatóból megtudhatja, hogyan ellenőrizheti az Azure-erőforrásokhoz való hozzáférést saját maga vagy egy másik felhasználó számára a Azure Portal és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: role-based-access-control
-documentationCenter: ''
 author: rolyon
 manager: mtillman
-editor: ''
 ms.service: role-based-access-control
-ms.devlang: ''
 ms.topic: quickstart
-ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 12/09/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperfq2
+ms.openlocfilehash: 8036bd300522000902789db59f8bebae14fedf10
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82734161"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007282"
 ---
-# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Rövid útmutató: a felhasználó hozzáférésének megtekintése Azure-erőforrásokhoz
+# <a name="quickstart-check-access-for-a-user-to-azure-resources"></a>Gyors útmutató: felhasználók hozzáférésének megkeresése az Azure-erőforrásokhoz
 
-Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) **hozzáférés-vezérlés (iam)** paneljén megtekintheti, hogy egy felhasználó vagy egy másik rendszerbiztonsági tag Hogyan férhet hozzá az Azure-erőforrásokhoz. Előfordulhat azonban, hogy csak egy adott felhasználó vagy egy másik rendszerbiztonsági tag hozzáférését kell gyorsan megtekintenie. Ennek a legegyszerűbb módja a Azure Portal **hozzáférés-ellenőrzési** funkciójának használata.
+Időnként ellenőriznie kell, hogy a felhasználók milyen hozzáféréssel rendelkeznek az Azure-erőforrásokhoz. A hozzáférését a hozzárendelések listázásával tekintheti meg. A hozzáférés- **vezérlés (iam)** lapon **a hozzáférés ellenőrzése funkció használatával** gyorsan ellenőrizheti egy adott felhasználó hozzáférését.
 
-## <a name="view-role-assignments"></a>Szerepkör-hozzárendelések megtekintése
+## <a name="step-1-open-the-azure-resources"></a>1. lépés: az Azure-erőforrások megnyitása
 
- A felhasználóhoz való hozzáférés megtekintésének módja a szerepkörök hozzárendeléseinek listázása. Az alábbi lépéseket követve megtekintheti egy adott felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás szerepkör-hozzárendeléseit az előfizetés hatókörében.
+Egy felhasználó hozzáférésének ellenõrzéséhez először meg kell nyitnia azokat az Azure-erőforrásokat, amelyeknek a hozzáférését ellenőriznie szeretné. Az Azure-erőforrások olyan szintekre vannak rendezve, amelyeket általában *hatókörnek* neveznek. Az Azure-ban négy szintű hatókört adhat meg a szélestől a keskenyig: felügyeleti csoport, előfizetés, erőforráscsoport és erőforrás.
 
-1. A Azure Portal kattintson a **minden szolgáltatás** , majd az **előfizetések**elemre.
+![Az Azure RBAC hatóköri szintjei](../../includes/role-based-access-control/media/scope-levels.png)
 
-1. Kattintson az előfizetésre.
+Az alábbi lépéseket követve megnyithatja azon Azure-erőforrások készletét, amelyeknek a hozzáférését ellenőriznie szeretné.
+
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+
+1. Nyissa meg az Azure-erőforrások, például a **felügyeleti csoportok**, **előfizetések**, **erőforráscsoportok** vagy egy adott erőforrás csoportját.
+
+1. Kattintson az adott erőforrásra a hatókörben.
+
+    A következő példa egy erőforráscsoportot mutat be.
+
+    ![Erőforráscsoport – áttekintés](./media/check-access/rg-overview.png)
+
+## <a name="step-2-check-access-for-a-user"></a>2. lépés: a felhasználó hozzáférésének engedélyezése
+
+Az alábbi lépésekkel ellenőrizheti, hogy egy adott felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás hozzáférése van-e a korábban kiválasztott Azure-erőforrásokhoz.
 
 1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
-1. Kattintson a **hozzáférés-ellenőrzési** lapra.
+    Az alábbi példa az erőforráscsoport hozzáférés-vezérlés (IAM) lapját mutatja be.
 
-    ![Hozzáférés-vezérlés – hozzáférés ellenőrzése lap](./media/check-access/access-control-check-access.png)
+    ![Erőforráscsoport hozzáférés-vezérlése – hozzáférés ellenőrzése lap](./media/check-access/rg-access-control.png)
 
-1. A **Keresés** listában válassza ki, hogy milyen rendszerbiztonsági tag számára szeretné megtekinteni a hozzáférést.
+1. A **hozzáférés engedélyezése** lapon a **Keresés** listában válassza ki azt a felhasználót, csoportot, szolgáltatásnevet vagy felügyelt identitást, amelynek a hozzáférését ellenőriznie szeretné.
 
 1. A keresőmezőbe írja be a karakterláncot a megjelenítendő nevek, e-mail-címek vagy objektumazonosítók kereséséhez.
 
-    ![Hozzáférés-kiválasztási lista kijelölése](./media/check-access/check-access-select.png)
+    ![Hozzáférés-kiválasztási lista kijelölése](./media/shared/rg-check-access-select.png)
 
 1. Kattintson a rendszerbiztonsági tag elemre a **hozzárendelések** panel megnyitásához.
 
-    ![hozzárendelések ablaktábla](./media/check-access/check-access-assignments.png)
+    Ezen a panelen megtekintheti a kijelölt rendszerbiztonsági tag hozzáférését ezen a hatókörön, és örökölheti ezt a hatókört. A gyermek hatókörökön lévő hozzárendelések nem szerepelnek a felsorolásban. A következő hozzárendelések jelennek meg:
 
-    Ezen az ablaktáblán megtekintheti a kijelölt rendszerbiztonsági tag és a hatókörhöz rendelt szerepköröket. Ha ezen a hatókörön vannak megtagadási hozzárendelések, vagy a hatókör örökölt, a rendszer felsorolja őket.
+    - Szerepkör-hozzárendelések hozzáadva az Azure RBAC-hoz.
+    - Az Azure-tervezetekkel vagy az Azure által felügyelt alkalmazásokkal hozzáadott hozzárendelések megtagadása.
+    - Klasszikus szolgáltatás-rendszergazdai vagy Co-Administrator-hozzárendelések klasszikus központi telepítésekhez. 
 
-## <a name="next-steps"></a>További lépések
+    ![Felhasználó szerepkör-és megtagadó hozzárendelései panelje](./media/shared/rg-check-access-assignments-user.png)
+
+## <a name="step-3-check-your-access"></a>3. lépés: a hozzáférésének megkeresése
+
+Kövesse az alábbi lépéseket a korábban kiválasztott Azure-erőforrásokhoz való hozzáférésének vizsgálatához.
+
+1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
+
+1. A **hozzáférés-ellenőrzési** lapon kattintson a **saját hozzáférés megtekintése** gombra.
+
+    Megjelenik egy hozzárendelések ablaktábla, amely felsorolja az ezen a hatókörön belüli hozzáférését, és örökli a hatókört. A gyermek hatókörökön lévő hozzárendelések nem szerepelnek a felsorolásban.
+
+    ![Szerepkörök és megtagadási Hozzárendelések panel](./media/check-access/rg-check-access-assignments.png)
+
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal használatával](quickstart-assign-role-user-portal.md)
+> [Azure-beli szerepkör-hozzárendelések listázása a Azure Portal használatával](role-assignments-list-portal.md)

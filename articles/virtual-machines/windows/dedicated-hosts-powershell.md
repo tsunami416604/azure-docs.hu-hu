@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 08/01/2019
+ms.date: 11/12/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 884a9e82dacb2a0dfc6763809a2ccfd2b886df1a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2f8f2d9eb14e1272af126c9a6d6663f41aaee33f
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974175"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005086"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Virtuális gépek üzembe helyezése dedikált gazdagépeken a Azure PowerShell használatával
 
@@ -53,10 +53,6 @@ $hostGroup = New-AzHostGroup `
 
 Adja hozzá a `-SupportAutomaticPlacement true` paramétert, hogy a virtuális gépek és a méretezési csoport példányai automatikusan a gazdagépekre kerüljenek a gazdagépen belül. További információ: manuális és [automatikus elhelyezés ](../dedicated-hosts.md#manual-vs-automatic-placement).
 
-> [!IMPORTANT]
-> Az automatikus elhelyezés jelenleg nyilvános előzetes verzióban érhető el.
-> Az előzetes verzióban való részvételhez végezze el az előzetes verziójú előkészítési felmérést a következő címen: [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-host"></a>Gazdagép létrehozása
 
@@ -173,12 +169,7 @@ Location               : eastus
 Tags                   : {}
 ```
 
-## <a name="create-a-scale-set-preview"></a>Méretezési csoport létrehozása (előzetes verzió)
-
-> [!IMPORTANT]
-> A dedikált gazdagépeken lévő Virtual Machine Scale Sets jelenleg nyilvános előzetes verzióban érhető el.
-> Az előzetes verzióban való részvételhez végezze el az előzetes verziójú előkészítési felmérést a következő címen: [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása 
 
 Méretezési csoport telepítésekor meg kell adnia a gazdagépet.
 

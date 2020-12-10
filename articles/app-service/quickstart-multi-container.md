@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 2920aad07ac54a19962f552debb8cfa809e17294
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 2ba42e5e800ae607631e00aee50954bf2638ae43
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558351"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007143"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Többtárolós (előzetes verziójú) alkalmazás létrehozása Docker-összeállítási konfiguráció használatával
 
@@ -55,7 +55,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-A Cloud Shell hozzon létre egy erőforráscsoportot a [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *USA déli középső régiója* helyen. A Linuxon futó, **Standard** szintű App Service-t támogató összes hely megtekintéséhez futtassa az [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) parancsot.
+A Cloud Shell hozzon létre egy erőforráscsoportot a [`az group create`](/cli/azure/group#az-group-create) paranccsal. A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *USA déli középső régiója* helyen. A Linuxon futó, **Standard** szintű App Service-t támogató összes hely megtekintéséhez futtassa az [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az-appservice-list-locations) parancsot.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -67,7 +67,7 @@ A parancs befejeződésekor a JSON-kimenet megjeleníti az erőforráscsoport tu
 
 ## <a name="create-an-azure-app-service-plan"></a>Azure App Service-csomag létrehozása
 
-A Cloud Shell hozzon létre egy App Service tervet az erőforráscsoporthoz a [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) paranccsal.
+A Cloud Shell hozzon létre egy App Service tervet az erőforráscsoporthoz a [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) paranccsal.
 
 Az alábbi példa egy `myAppServicePlan` nevű App Service-csomag létrehozását mutatja be a **Standard** tarifacsomagban (`--sku S1`) és Linux-tárolóban (`--is-linux`).
 
@@ -100,7 +100,7 @@ Az App Service-csomag létrehozása után az Azure CLI az alábbi példához has
 > [!NOTE]
 > Az Azure-App Services Docker-összeállítás jelenleg legfeljebb 4 000 karakterből állhat.
 
-A Cloud Shell-terminálban hozzon létre egy többtárolós [webalkalmazást](overview.md#app-service-on-linux) az `myAppServicePlan` App Service-csomagban az [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal. Ne felejtse el lecserélni _\<app_name>_ egy egyedi alkalmazás nevére (érvényes karakterek:, `a-z` `0-9` és `-` ).
+A Cloud Shell-terminálban hozzon létre egy többtárolós [webalkalmazást](overview.md#app-service-on-linux) az `myAppServicePlan` App Service-csomagban az [az webapp create](/cli/azure/webapp#az-webapp-create) paranccsal. Ne felejtse el lecserélni _\<app_name>_ egy egyedi alkalmazás nevére (érvényes karakterek:, `a-z` `0-9` és `-` ).
 
 ```azurecli
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -133,7 +133,7 @@ Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app
 
 [!INCLUDE [Clean-up section](../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Multi-Container WordPress-alkalmazás](tutorial-multi-container-app.md)

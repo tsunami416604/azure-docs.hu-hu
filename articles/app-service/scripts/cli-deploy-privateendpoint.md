@@ -9,12 +9,12 @@ ms.date: 07/06/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 7246bb3453f6e4863faf15dbcbfdf8534481ddad
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 21f937d95c6cd0dafa27daae50d7a74648af7bdc
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561423"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006106"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-cli"></a>App Service alkalmazás létrehozása és privát végpont üzembe helyezése az Azure CLI-vel
 
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location francecentral
 ## <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
 Létre kell hoznia egy App Service tervet a webalkalmazás üzemeltetéséhez.
-Hozzon létre egy App Service tervet az [az appservice Plan Create](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create)paranccsal.
+Hozzon létre egy App Service tervet az [az appservice Plan Create](/cli/azure/appservice/plan#az-appservice-plan-create)paranccsal.
 Ez a példa létrehoz egy *myAppServicePlan* nevű app Service tervet a *Francecentral* helyen a *P1V2* SKU-val és csak egy feldolgozóval: 
 
 ```azurecli-interactive
@@ -78,7 +78,7 @@ az network vnet create \
 
 ## <a name="configure-the-subnet"></a>Az alhálózat konfigurálása 
 
-A magánhálózati végpontok hálózati házirendjeinek letiltásához frissítenie kell az alhálózatot. Frissítsen egy *mySubnet* nevű alhálózati konfigurációt az [az Network vnet subnet Update paranccsal](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+A magánhálózati végpontok hálózati házirendjeinek letiltásához frissítenie kell az alhálózatot. Frissítsen egy *mySubnet* nevű alhálózati konfigurációt az [az Network vnet subnet Update paranccsal](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \

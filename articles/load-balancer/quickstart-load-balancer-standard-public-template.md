@@ -5,22 +5,22 @@ description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy terhelé
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: KumudD
 Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2020
+ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 66d702846bac5825239e891ce47f8cca5bb857f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 378ab88f4dee0c725e89f77cc6b2ffe049ff877a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90984408"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008435"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Rövid útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához ARM-sablon használatával
 
@@ -51,7 +51,8 @@ A Load balancernek és a nyilvános IP-SKU-nak egyeznie kell. A standard Load Ba
 Több Azure-erőforrás van definiálva a sablonban:
 
 - [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
-- [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses): a terheléselosztó és a három virtuális gép mindegyike számára.
+- [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses): a terheléselosztó, a megerősített gazdagép és a három virtuális gép mindegyike számára.
+- [**Microsoft. Network/bastionHosts**](/azure/templates/microsoft.network/bastionhosts)
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft. számítási/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3).
@@ -83,7 +84,7 @@ A Azure Load Balancer kapcsolódó további sablonok kereséséhez tekintse meg 
 
 1. A PowerShell-szkript másolásához válassza a **Másolás** az előző kódrészletből lehetőséget.
 
-1. Kattintson a jobb gombbal a rendszerhéj-konzol ablaktáblára, majd válassza a **Beillesztés**lehetőséget.
+1. Kattintson a jobb gombbal a rendszerhéj-konzol ablaktáblára, majd válassza a **Beillesztés** lehetőséget.
 
 1. Adja meg az értékeket.
 
@@ -125,12 +126,14 @@ Ha már nincs szüksége rájuk, törölje a következőket:
 * Terheléselosztó
 * Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
 
-Nyissa meg a Azure Portalt, válassza ki azt az erőforráscsoportot, amely tartalmazza a terheléselosztó elemet, majd válassza az **erőforráscsoport törlése**lehetőséget.
+Nyissa meg a Azure Portalt, válassza ki azt az erőforráscsoportot, amely tartalmazza a terheléselosztó elemet, majd válassza az **erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a következőket hajtja végre:
 
+* Létrehozott egy virtuális hálózatot a terheléselosztó és a virtuális gépek számára.
+* Létrehozott egy Azure Bastion-gazdagépet a felügyelethez.
 * Létrehozott egy standard Load balancert és csatlakoztatott virtuális gépeket.
 * Konfigurálta a terheléselosztó forgalmi szabályát és az állapot mintavételét.
 * Tesztelte a terheléselosztó.

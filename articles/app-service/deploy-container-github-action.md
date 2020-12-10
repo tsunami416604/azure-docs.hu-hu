@@ -7,12 +7,12 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 76d82695f0f43638e840589c52d6713ae36c1608
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: ae587b9501c9c68600ff880744d311ba966923ed
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607806"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008027"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Egyéni tároló üzembe helyezése a GitHub-műveletek használatával App Service
 
@@ -56,7 +56,7 @@ A közzétételi profil egy alkalmazás szintű hitelesítő adat. A közzétét
 
 # <a name="service-principal"></a>[Szolgáltatásnév](#tab/service-principal)
 
-Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
+Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -185,7 +185,7 @@ Ha a lemezképet a App Serviceban lévő egyéni tárolóba szeretné telepíten
 | **alkalmazás neve** | Szükséges A App Service alkalmazás neve | 
 | **közzétételi profil** | Választható A következőkre vonatkozik: Web Apps (Windows és Linux) és Web App containers (Linux). A multi-Container forgatókönyv nem támogatott. A profil ( \* . publishsettings) fájl tartalmának közzététele a web Deploy Secrets szolgáltatásban | 
 | **tárolóhely neve** | Választható Adja meg az üzemi tárolóhelytől eltérő meglévő tárolóhelyet |
-| **package** | Választható Csak a webalkalmazásra vonatkozik: csomag vagy mappa elérési útja. \*. zip, \* . War, \* . jar vagy egy telepítendő mappa |
+| **csomag** | Választható Csak a webalkalmazásra vonatkozik: csomag vagy mappa elérési útja. \*. zip, \* . War, \* . jar vagy egy telepítendő mappa |
 | **képek** | Szükséges Csak a webalkalmazás-tárolók esetében érvényes: adja meg a teljes tároló rendszerkép (ek) nevét. Például: "myregistry.azurecr.io/nginx:latest" vagy "Python: 3.7.2-Alpine/". Többtárolós alkalmazások esetén több tároló-rendszerkép is megadható (több sorba tagolt) |
 | **konfigurációs fájl** | Választható Csak a webalkalmazás-tárolók esetében érvényes: a Docker-Compose fájl elérési útja. Teljes elérési útnak kell lennie, vagy az alapértelmezett munkakönyvtárhoz viszonyítva kell lennie. Többtárolós alkalmazások esetén szükséges. |
 | **indítás – parancs** | Választható Adja meg az indítási parancsot. Pl.: DotNet-Futtatás vagy DotNet filename.dll |
@@ -261,7 +261,7 @@ jobs:
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit, amelyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub használatához a CI/CD-hez, és az alkalmazások üzembe helyezését az Azure-ban.
 

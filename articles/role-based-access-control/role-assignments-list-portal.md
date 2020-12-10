@@ -7,15 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/16/2020
+ms.date: 12/09/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: a5b019068368f1c0c076f5a1ed157c288bb7169c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 06a9a955e8a963f94b1885abf5a920cb96c01940
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479918"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007444"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések listázása a Azure Portal használatával
 
@@ -26,15 +25,15 @@ ms.locfileid: "92479918"
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>Felhasználó vagy csoport szerepkör-hozzárendeléseinek listázása
 
-Az előfizetésben egy felhasználóhoz vagy csoporthoz rendelt szerepköröket az **Azure szerepkör-hozzárendelések** ablaktábla használatával tekintheti meg.
+Az előfizetésben egy felhasználóhoz vagy csoporthoz rendelt szerepköröket az **Azure szerepkör-hozzárendelések** ablaktábla használatával lehet megtekinteni.
 
 1. A Azure Portal a Azure Portal menüben válassza a **minden szolgáltatás** lehetőséget.
 
-1. Válassza a **Azure Active Directory** , majd a **felhasználók** vagy **csoportok**lehetőséget.
+1. Válassza a **Azure Active Directory** , majd a **felhasználók** vagy **csoportok** lehetőséget.
 
 1. Kattintson arra a felhasználóra vagy csoportra, amely számára a szerepkör-hozzárendeléseket ki szeretné listázni.
 
-1. Kattintson az **Azure-szerepkör-hozzárendelések**elemre.
+1. Kattintson az **Azure-szerepkör-hozzárendelések** elemre.
 
     A kiválasztott felhasználóhoz vagy csoporthoz rendelt szerepkörök listáját a különböző hatókörök, például a felügyeleti csoport, az előfizetés, az erőforráscsoport vagy az erőforrás részben tekintheti meg. Ez a lista tartalmazza az összes olyan szerepkör-hozzárendelést, amelyről olvasási engedéllyel rendelkezik.
 
@@ -46,7 +45,7 @@ Az előfizetésben egy felhasználóhoz vagy csoporthoz rendelt szerepköröket 
 
 Az előfizetéshez tartozó [tulajdonosi](built-in-roles.md#owner) szerepkörrel rendelkező felhasználók az előfizetés összes adatát kezelhetik. Az alábbi lépéseket követve listázhatja az előfizetések tulajdonosait.
 
-1. A Azure Portal kattintson a **minden szolgáltatás** , majd az **előfizetések**elemre.
+1. A Azure Portal kattintson a **minden szolgáltatás** , majd az **előfizetések** elemre.
 
 1. Kattintson arra az előfizetésre, amelynek a tulajdonosait szeretné listázni.
 
@@ -56,11 +55,11 @@ Az előfizetéshez tartozó [tulajdonosi](built-in-roles.md#owner) szerepkörrel
 
 1. Görgessen a **tulajdonosok** szakaszhoz, és tekintse meg az előfizetéshez tartozó tulajdonosi szerepkörrel rendelkező összes felhasználót.
 
-   ![Előfizetés hozzáférés-vezérlése – szerepkör-hozzárendelések lap](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
+   ![Előfizetés hozzáférés-vezérlése – szerepkör-hozzárendelések lap](./media/role-assignments-list-portal/sub-access-control-role-assignments-owners.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>Hatókörhöz tartozó szerepkör-hozzárendelések listázása
 
-1. A Azure Portal kattintson a **minden szolgáltatás** elemre, majd válassza ki a hatókört. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat**vagy egy erőforrást.
+1. A Azure Portal kattintson a **minden szolgáltatás** elemre, majd válassza ki a hatókört. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat** vagy egy erőforrást.
 
 1. Kattintson az adott erőforrásra.
 
@@ -68,7 +67,7 @@ Az előfizetéshez tartozó [tulajdonosi](built-in-roles.md#owner) szerepkörrel
 
 1. A **szerepkör-hozzárendelések** lapra kattintva megtekintheti az összes szerepkör-hozzárendelést ezen a hatókörön.
 
-   ![Hozzáférés-vezérlés – szerepkör-hozzárendelések lap](./media/role-assignments-list-portal/access-control-role-assignments.png)
+   ![Hozzáférés-vezérlés – szerepkör-hozzárendelések lap](./media/role-assignments-list-portal/rg-access-control-role-assignments.png)
 
    A szerepkör-hozzárendelések lapon megtekintheti, hogy ki fér hozzá a hatókörhöz. Látható, hogy egyes szerepkörök hatóköre **erre az erőforrásra** érvényes, míg mások más hatókörökből **(öröklődnek)**. A hozzáférés vagy kifejezetten ehhez az erőforráshoz van hozzárendelve, vagy egy hozzárendelésből a szülő hatókörbe van származtatva.
 
@@ -76,7 +75,7 @@ Az előfizetéshez tartozó [tulajdonosi](built-in-roles.md#owner) szerepkörrel
 
 Egy felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás hozzáférésének listázásához listázhatja a szerepkör-hozzárendeléseit. Kövesse az alábbi lépéseket egy adott hatókörben egy felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás szerepkör-hozzárendeléseinek listázásához.
 
-1. A Azure Portal kattintson a **minden szolgáltatás** elemre, majd válassza ki a hatókört. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat**vagy egy erőforrást.
+1. A Azure Portal kattintson a **minden szolgáltatás** elemre, majd válassza ki a hatókört. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat** vagy egy erőforrást.
 
 1. Kattintson az adott erőforrásra.
 
@@ -84,19 +83,23 @@ Egy felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás hozzá
 
 1. Kattintson a **hozzáférés-ellenőrzési** lapra.
 
-    ![Hozzáférés-vezérlés – hozzáférés ellenőrzése lap](./media/role-assignments-list-portal/access-control-check-access.png)
+    ![Erőforráscsoport hozzáférés-vezérlése – hozzáférés ellenőrzése lap](./media/role-assignments-list-portal/rg-access-control-check-access.png)
 
-1. A **Keresés** listában válassza ki, hogy milyen rendszerbiztonsági tag számára szeretné megtekinteni a hozzáférést.
+1. A **Keresés** listában válassza ki azt a felhasználót, csoportot, szolgáltatásnevet vagy felügyelt identitást, amelynek a hozzáférését ellenőriznie szeretné.
 
 1. A keresőmezőbe írja be a karakterláncot a megjelenítendő nevek, e-mail-címek vagy objektumazonosítók kereséséhez.
 
-    ![Hozzáférés-kiválasztási lista kijelölése](./media/role-assignments-list-portal/check-access-select.png)
+    ![Hozzáférés-kiválasztási lista kijelölése](./media/shared/rg-check-access-select.png)
 
 1. Kattintson a rendszerbiztonsági tag elemre a **hozzárendelések** panel megnyitásához.
 
-    ![hozzárendelések ablaktábla](./media/role-assignments-list-portal/check-access-assignments.png)
+    Ezen a panelen megtekintheti a kijelölt rendszerbiztonsági tag hozzáférését ezen a hatókörön, és örökölheti ezt a hatókört. A gyermek hatókörökön lévő hozzárendelések nem szerepelnek a felsorolásban. A következő hozzárendelések jelennek meg:
 
-    Ezen az ablaktáblán megtekintheti a kijelölt rendszerbiztonsági tag és a hatókörhöz rendelt szerepköröket. Ha ezen a hatókörön vannak megtagadási hozzárendelések, vagy a hatókör örökölt, a rendszer felsorolja őket.
+    - Szerepkör-hozzárendelések hozzáadva az Azure RBAC-hoz.
+    - Az Azure-tervezetekkel vagy az Azure által felügyelt alkalmazásokkal hozzáadott hozzárendelések megtagadása.
+    - Klasszikus szolgáltatás-rendszergazdai vagy Co-Administrator-hozzárendelések klasszikus központi telepítésekhez. 
+
+    ![hozzárendelések ablaktábla](./media/shared/rg-check-access-assignments-user.png)
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>Felügyelt identitás szerepkör-hozzárendeléseinek listázása
 
@@ -110,7 +113,7 @@ Egy adott hatókörben a rendszerhez rendelt és a felhasználó által hozzáre
 
     ![Rendszer által hozzárendelt felügyelt identitás](./media/shared/identity-system-assigned.png)
 
-1. Az **engedélyek**területen kattintson az **Azure szerepkör-hozzárendelések**elemre.
+1. Az **engedélyek** területen kattintson az **Azure szerepkör-hozzárendelések** elemre.
 
     A kiválasztott rendszerhez rendelt felügyelt identitáshoz rendelt szerepkörök listáját a különböző hatókörök, például a felügyeleti csoport, az előfizetés, az erőforráscsoport vagy az erőforrás tartalmazza. Ez a lista tartalmazza az összes olyan szerepkör-hozzárendelést, amelyről olvasási engedéllyel rendelkezik.
 
@@ -122,7 +125,7 @@ Egy adott hatókörben a rendszerhez rendelt és a felhasználó által hozzáre
 
 1. A Azure Portal nyissa meg a felhasználó által hozzárendelt felügyelt identitást.
 
-1. Kattintson az **Azure-szerepkör-hozzárendelések**elemre.
+1. Kattintson az **Azure-szerepkör-hozzárendelések** elemre.
 
     A kiválasztott, felhasználó által hozzárendelt felügyelt identitáshoz rendelt szerepkörök listáját a különböző hatókörök, például a felügyeleti csoport, az előfizetés, az erőforráscsoport vagy az erőforrás részben tekintheti meg. Ez a lista tartalmazza az összes olyan szerepkör-hozzárendelést, amelyről olvasási engedéllyel rendelkezik.
 
@@ -152,7 +155,7 @@ A szerepkör-hozzárendelések letöltésekor vegye figyelembe a következő fel
 
 A szerepkör-hozzárendelések hatókörön való letöltéséhez kövesse az alábbi lépéseket.
 
-1. A Azure Portal kattintson a **minden szolgáltatás** elemre, majd válassza ki azt a hatókört, ahol le szeretné tölteni a szerepkör-hozzárendeléseket. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat**vagy egy erőforrást.
+1. A Azure Portal kattintson a **minden szolgáltatás** elemre, majd válassza ki azt a hatókört, ahol le szeretné tölteni a szerepkör-hozzárendeléseket. Kiválaszthatja például a **felügyeleti csoportokat**, **előfizetéseket**, **erőforráscsoportokat** vagy egy erőforrást.
 
 1. Kattintson az adott erőforrásra.
 

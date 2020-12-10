@@ -1,30 +1,33 @@
 ---
-title: Lekérdezéstípusok és összeállítás
+title: Lekérdezéstípusok
 titleSuffix: Azure Cognitive Search
-description: Alapvető tudnivalók keresési lekérdezés létrehozásához az Azure Cognitive Searchban, paraméterek használatával szűrheti, kiválaszthatja és rendezheti az eredményeket.
+description: Ismerje meg az Cognitive Search által támogatott lekérdezések típusait, beleértve az ingyenes szöveget, a szűrőt, az automatikus kiegészítést és a javaslatokat, a Geo-keresést, a rendszerlekérdezéseket és a dokumentumok keresését.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 362f46290bbe2008f9fb862a8711577050050192
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 12/09/2020
+ms.openlocfilehash: d1ea2d0ba8ed5850e5d4cd9c06a0b016c4059ca7
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693249"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007857"
 ---
-# <a name="query-types-and-composition-in-azure-cognitive-search"></a>Az Azure Cognitive Search lekérdezési típusai és összetétele
+# <a name="query-types-in-azure-cognitive-search"></a>Lekérdezési típusok az Azure Cognitive Search
 
-Az Azure Cognitive Search-ban a lekérdezés egy kerekítési művelet teljes leírása. A kérelemben vannak olyan paraméterek, amelyek végrehajtási utasításokat biztosítanak a motorhoz, valamint a válasznak megfelelő paramétereket. Meghatározatlan ( `search=*` ), nem felel meg a feltételeknek, és null vagy alapértelmezett paramétereket használ, a lekérdezés teljes szöveges keresési műveletként hajtja végre az összes kereshető mezőt, így tetszőleges sorrendben adja vissza a nem megfelelő eredményt.
+Az Azure Cognitive Searchban a lekérdezés egy kerekítési művelet teljes specifikációja, a lekérdezés-végrehajtást szabályozó paraméterekkel, valamint a válasznak megfelelő paraméterekkel.
 
-Az alábbi példa egy, a [Rest APIban](/rest/api/searchservice/search-documents)létrehozott reprezentatív lekérdezés. Ez a példa a [Hotels bemutató indexét](search-get-started-portal.md) célozza meg, és általános paramétereket tartalmaz, így megtalálhatja, hogy a lekérdezés hogyan néz ki.
+## <a name="elements-of-a-request"></a>A kérelem elemei
 
-```
+Az alábbi példa egy, a [keresési dokumentumok REST API](/rest/api/searchservice/search-documents)használatával létrehozott reprezentatív lekérdezés. Ez a példa a [Hotels bemutató indexét](search-get-started-portal.md) célozza meg, és általános paramétereket tartalmaz, így megtalálhatja, hogy a lekérdezés hogyan néz ki.
+
+```http
+POST https://[service name].search.windows.net/indexes/[index name]/docs/search?api-version=[api-version]
 {
     "queryType": "simple" 
-    "search": "+New York +restaurant",
+    "search": "`New York` +restaurant",
     "searchFields": "Description, Address/City, Tags",
     "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
     "top": "10",
@@ -32,6 +35,8 @@ Az alábbi példa egy, a [Rest APIban](/rest/api/searchservice/search-documents)
     "orderby": "Rating desc"
 }
 ```
+
+A lekérdezések mindig egyetlen index dokumentumainak gyűjteményére vannak irányítva. Az indexek nem csatlakoztathatók, és nem hozhatnak létre egyéni vagy ideiglenes adatstruktúrákat lekérdezési célként.
 
 + **`queryType`** Beállítja az elemzőt, amely az [alapértelmezett egyszerű lekérdezés-elemző](search-query-simple-examples.md) (optimális a teljes szöveges kereséshez), vagy a speciális lekérdezési felépítéshez használt [teljes Lucene lekérdezés-elemző](search-query-lucene-examples.md) , például a reguláris kifejezések, a közelségi keresés, a fuzzy és a helyettesítő karakterek keresése, hogy csak néhányat említsünk.
 
@@ -49,15 +54,12 @@ A válaszokat a lekérdezésben foglalt paraméterek is megformázzák:
 
 + **`orderby`** akkor használatos, ha egy érték, például egy minősítés vagy egy hely alapján kívánja rendezni az eredményeket. Ellenkező esetben az alapértelmezett érték a relevancia pontszám használata az eredmények rangsorolása érdekében.
 
-Az Azure Cognitive Search-ban a lekérdezés-végrehajtás mindig egy indexen alapul, a kérelemben megadott API-kulccsal hitelesítve. A REST szolgáltatásban mindkettő a kérelem fejlécében van megadva.
+> [!Tip]
+> A kód megírása előtt a lekérdezési eszközök segítségével megismerheti a szintaxist, és kísérletezhet a különböző paraméterekkel. A leggyorsabb módszer a beépített portál eszköz, a [Search Explorer](search-explorer.md).
+>
+> Ha követte ezt a rövid útmutatót a [Hotels bemutató index létrehozásához](search-get-started-portal.md), a lekérdezési karakterláncot beillesztheti az Intéző címsorába az első lekérdezés futtatásához: `search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
 
-### <a name="how-to-run-this-query"></a>A lekérdezés futtatása
-
-A kód megírása előtt a lekérdezési eszközök segítségével megismerheti a szintaxist, és kísérletezhet a különböző paraméterekkel. A leggyorsabb módszer a beépített portál eszköz, a [Search Explorer](search-explorer.md).
-
-Ha követte ezt a rövid útmutatót a [Hotels bemutató index létrehozásához](search-get-started-portal.md), a lekérdezési karakterláncot beillesztheti az Intéző címsorába az első lekérdezés futtatásához: `search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
-
-## <a name="how-query-operations-are-enabled-by-the-index"></a>A lekérdezési műveletek engedélyezése az index alapján
+### <a name="how-field-attributes-in-an-index-determine-query-behaviors"></a>A lekérdezés viselkedését egy indexben definiáló mező attribútumai
 
 Az index tervezési és lekérdezési kialakítása szorosan összekapcsolható az Azure Cognitive Searchban. Fontos, hogy tudd elölről, hogy az *index séma*, amely az egyes mezők attribútumait határozza meg, meghatározza, hogy milyen típusú lekérdezést hozhat létre. 
 
@@ -70,46 +72,21 @@ A fenti képernyőkép a Hotels-minta index-attribútumainak részleges listája
 > [!Note]
 > Egyes lekérdezési funkciók esetében a teljes indexre van engedélyezve, nem pedig a mező alapján. Ezek a képességek többek között a következők: [szinonimák térképek](search-synonyms.md), [Egyéni elemzők](index-add-custom-analyzers.md), [javaslati szerkezetek (automatikus kiegészítés és javasolt lekérdezések esetén)](index-add-suggesters.md), [a rangsorolási eredmények pontozási logikája](index-add-scoring-profiles.md).
 
-## <a name="elements-of-a-query-request"></a>A lekérdezési kérelem elemei
-
-A lekérdezések mindig egyetlen indexre vannak irányítva. Az indexek nem csatlakoztathatók, és nem hozhatnak létre egyéni vagy ideiglenes adatstruktúrákat lekérdezési célként. 
-
-A lekérdezési kérelemhez szükséges elemek a következő összetevőket tartalmazzák:
-
-+ A szolgáltatási végpont és az indexelési dokumentumok gyűjteménye rögzített és felhasználó által definiált összetevőket tartalmazó URL-címként kifejezve: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
-+ **`api-version`** (Csak REST) szükséges, mert az API több verziója mindig elérhető. 
-+ **`api-key`**, vagy egy lekérdezési vagy felügyeleti API-kulcs, hitelesíti a kérést a szolgáltatásnak.
-+ **`queryType`**(egyszerű vagy teljes), amely kihagyható, ha a beépített alapértelmezett egyszerű szintaxist használja.
-+ **`search`** vagy **`filter`** adja meg az egyeztetési feltételeket, amelyek nem adhatók meg, ha üres keresést szeretne végezni. Mindkét lekérdezési típust az egyszerű elemző is tárgyalja, de a speciális lekérdezésekhez a keresési paraméter szükséges a komplex lekérdezési kifejezések átadásához.
-
-Az összes többi keresési paraméter megadása nem kötelező. Az attribútumok teljes listájáért lásd: [index létrehozása (REST)](/rest/api/searchservice/create-index). A paraméterek a feldolgozás során való használatának alaposabb megismeréséhez lásd: [Hogyan működik a teljes szöveges keresés az Azure Cognitive Searchban](search-lucene-query-architecture.md).
-
-## <a name="choose-apis-and-tools"></a>API-k és eszközök kiválasztása
-
-A következő táblázat a lekérdezések elküldéséhez szükséges API-kat és eszköz-alapú megközelítéseket sorolja fel.
-
-| Módszertan | Leírás |
-|-------------|-------------|
-| [Keresési ablak (portál)](search-explorer.md) | Az index és az API-Version beállításokhoz biztosít keresési sávot. Az eredményeket JSON-dokumentumként adja vissza a rendszer. Feltárásra, tesztelésre és érvényesítésre ajánlott. <br/>[Részletek](search-get-started-portal.md#query-index) | 
-| [Poster vagy más REST-eszközök](search-get-started-rest.md) | A webes tesztelési eszközök kiváló választás a REST-hívások kialakításához. A REST API az Azure Cognitive Search minden lehetséges műveletét támogatja. Ebből a cikkből megtudhatja, hogyan állíthatja be a HTTP-kérések fejlécét és törzsét a kérelmek Azure Cognitive Searchba való küldéséhez.  |
-| [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Az Azure Cognitive Search index lekérdezéséhez használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md)  |
-| [Dokumentumok keresése (REST API)](/rest/api/searchservice/search-documents) | Metódusok beolvasása vagy közzététele indexeken a lekérdezési paraméterek használatával további bevitelhez.  |
-
 ## <a name="choose-a-parser-simple--full"></a>Válasszon elemzőt: Simple | teljes
 
-Az Azure Cognitive Search az Apache Lucene, és két lekérdezési elemző közül választhat a tipikus és speciális lekérdezések kezeléséhez. Az egyszerű elemzőt használó kérelmeket az [egyszerű lekérdezési szintaxissal](query-simple-syntax.md)kell kijelölni, amely a sebességet és a hatékonyságot az ingyenes szöveges lekérdezésekben válassza. Ez a szintaxis számos gyakori keresési operátort támogat, többek között a következőt: és, vagy, nem, kifejezés, utótag és elsőbbségi operátor.
+Az Azure Cognitive Search két lekérdezési elemző közül választhat a tipikus és a speciális lekérdezések kezeléséhez. Az egyszerű elemzőt használó kérelmeket az [egyszerű lekérdezési szintaxissal](query-simple-syntax.md)kell kijelölni, amely a sebességet és a hatékonyságot az ingyenes szöveges lekérdezésekben válassza. Ez a szintaxis számos gyakori keresési operátort támogat, többek között a következőt: és, vagy, nem, kifejezés, utótag és elsőbbségi operátor.
 
 A [teljes Lucene lekérdezési szintaxis](query-Lucene-syntax.md#bkmk_syntax), amely a kérelemhez való hozzáadáskor engedélyezve van `queryType=full` , az [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)részeként kifejlesztett, széles körben elfogadott és kifejező lekérdezési nyelvet jeleníti meg. A teljes szintaxis kibővíti az egyszerű szintaxist. Az egyszerű szintaxishoz írt összes lekérdezés a teljes Lucene-elemző alatt fut. 
 
-Az alábbi példák szemléltetik a pontot: ugyanaz a lekérdezés, de különböző queryType-beállításokkal eltérő eredményeket eredményez. Az első lekérdezésben a `^3` rendszer a `historic` keresési kifejezés részeként kezeli a következőt:. A lekérdezés legfelső szintű eredménye a "Marquis Plaza & Suites", amelynek a leírása a következő: *Ocean* .
+Az alábbi példák szemléltetik a pontot: ugyanaz a lekérdezés, de különböző queryType-beállításokkal eltérő eredményeket eredményez. Az első lekérdezésben a `^3` rendszer a `historic` keresési kifejezés részeként kezeli a következőt:. A lekérdezés legfelső szintű eredménye a "Marquis Plaza & Suites", amely az *óceánt* is tartalmazta a leírásában.
 
-```
+```http
 queryType=simple&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
 ```
 
 Ugyanaz a lekérdezés, amely a teljes Lucene elemzőt használja, az értelmezést `^3` a mezőre való emlékeztetőként. A váltási elemzők a rangot módosítják, és az olyan eredmények, amelyek a korábbi, a *régire* való áttérés kifejezését tartalmazzák.
 
-```
+```http
 queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
 ```
 
@@ -126,48 +103,17 @@ Az Azure Cognitive Search a lekérdezési típusok széles körét támogatja.
 | Földrajzi keresés | [EDM. geographypoint adattípuson típus](/rest/api/searchservice/supported-data-types) a mezőn, szűrési kifejezés és vagy elemző | Egy EDM rendelkező mezőben tárolt koordinátákat a rendszer a "keresés a közelben" vagy a térképes keresési vezérlőkben használja. <br/>[Földrajzi keresés – példa](search-query-simple-examples.md#example-5-geo-search)|
 | Tartomány keresése | szűrő kifejezés és egyszerű elemző | Az Azure Cognitive Searchban a Range lekérdezéseket a Filter paraméterrel kell felépíteni. <br/>[Tartomány szűrője – példa](search-query-simple-examples.md#example-4-range-filters) | 
 | [Mező szerinti keresés](query-lucene-syntax.md#bkmk_fields) | Keresési paraméter és teljes elemző | Hozzon létre egy összetett lekérdezési kifejezést, amely egyetlen mezőt céloz meg. <br/>[Mező szerinti keresés – példa](search-query-lucene-examples.md#example-2-fielded-search) |
+| [Automatikus kiegészítés vagy javasolt eredmények](search-autocomplete-tutorial.md) | Automatikus kiegészítés vagy javaslat paraméter | Egy alternatív lekérdezési űrlap, amely egy keresési típusban található részleges karakterláncok alapján hajtható végre. Az automatikus kiegészítés és a javaslatok együtt vagy külön is használhatók. |
 | [fuzzy keresés](query-lucene-syntax.md#bkmk_fuzzy) | Keresési paraméter és teljes elemző | Megegyezik a hasonló szerkezettel vagy helyesírással kapcsolatos feltételekkel. <br/>[Fuzzy keresési példa](search-query-lucene-examples.md#example-3-fuzzy-search) |
 | [közelség keresése](query-lucene-syntax.md#bkmk_proximity) | Keresési paraméter és teljes elemző | Megkeresi a dokumentumban egymáshoz közeli kifejezéseket. <br/>[Proximity keresési példa](search-query-lucene-examples.md#example-4-proximity-search) |
 | [a kifejezés fokozása](query-lucene-syntax.md#bkmk_termboost) | Keresési paraméter és teljes elemző | Ha a megnövelt kifejezést tartalmazza, rangsorolja a dokumentumot, amely nem a többihez képest. <br/>[Példa a "Kiemelés" kifejezésre](search-query-lucene-examples.md#example-5-term-boosting) |
 | [reguláris kifejezés keresése](query-lucene-syntax.md#bkmk_regex) | Keresési paraméter és teljes elemző | A reguláris kifejezés tartalma alapján illeszkedik. <br/>[Reguláris kifejezés – példa](search-query-lucene-examples.md#example-6-regex) |
 |  [helyettesítő karakter vagy előtag keresése](query-lucene-syntax.md#bkmk_wildcard) | Keresési paraméter és teljes elemző | Egy előtag és egy tilde ( `~` ) vagy egy karakter () alapján illeszkedik `?` . <br/>[Helyettesítő karakteres keresés – példa](search-query-lucene-examples.md#example-7-wildcard-search) |
 
-## <a name="manage-search-results"></a>Keresési eredmények kezelése 
+## <a name="next-steps"></a>Következő lépések
 
-A lekérdezési eredményeket a rendszer JSON-dokumentumként továbbítja a REST APIban, bár ha .NET API-kat használ, a szerializálás a beépített. Az eredményeket úgy alakíthatja át, hogy paramétereket állít be a lekérdezésben, és kiválasztja a válasz konkrét mezőit.
+Használja a portált vagy más eszközt, például a Poster vagy a Visual Studio Code-ot, vagy az egyik SDK-t, hogy mélyebben tárja fel a lekérdezéseket. Az alábbi hivatkozásokkal kezdheti meg az első lépéseket.
 
-A lekérdezés paramétereinek használatával az alábbi módokon strukturálható az eredményhalmaz:
-
-+ Az eredményekben szereplő dokumentumok számának korlátozása vagy feldolgozása (alapértelmezés szerint 50)
-+ Az eredményekbe foglalandó mezők kiválasztása
-+ Rendezési sorrend beállítása
-+ A találatok hozzáadásával a keresési eredmények törzsében megfigyelheti a megfelelő kifejezéseket
-
-### <a name="tips-for-unexpected-results"></a>Váratlan eredményekhez kapcsolódó tippek
-
-Alkalmanként az anyag és az eredmények szerkezete nem várt. Ha a lekérdezés eredménye nem az, amit várhatóan látni fog, kipróbálhatja a lekérdezés módosításait, hogy megtudja, az eredmények javulnak-e:
-
-+ Módosítsa az (alapértelmezett) beállítást, hogy az összes feltétel esetében kötelező legyen az **`searchMode=any`** **`searchMode=all`** egyezések megadása a feltételek helyett. Ez különösen akkor igaz, ha a lekérdezésben logikai operátorok szerepelnek.
-
-+ Módosítsa a lekérdezési módszert, ha szöveges vagy lexikális elemzésre van szükség, de a lekérdezés típusa kizárja a nyelvi feldolgozást. A teljes szöveges keresés, a szöveges vagy a lexikális elemzés automatikus kijavítása a helyesírási hibák, a többes számú Word-űrlap, sőt a szabálytalan igék vagy főnevek esetében is. Bizonyos lekérdezések, például a fuzzy vagy a helyettesítő karakterek keresése esetén a lexikális analízis nem része a lekérdezés-elemzési folyamatnak. Bizonyos esetekben a reguláris kifejezések megkerülő megoldásként használhatók. 
-
-### <a name="paging-results"></a>Lapozás eredményei
-Az Azure Cognitive Search megkönnyíti a keresési eredmények lapozásának megvalósítását. A és a paraméterek segítségével zökkenőmentesen kipróbálhatja azokat **`top`** **`skip`** a keresési kéréseket, amelyek lehetővé teszik a keresési eredmények teljes készletének fogadását a felügyelhető, rendezett részhalmazokban, amelyek könnyen lehetővé teszik a jó keresési felhasználói felületi gyakorlatok használatát. Az eredmények kisebb alkészleteinek fogadásakor a keresési eredmények teljes készletében lévő dokumentumok darabszámát is megkaphatja.
-
-A lapozási keresési eredményekről a cikk a [keresési eredmények az Azure Cognitive Searchban](search-pagination-page-layout.md)című cikkben talál további információt.
-
-### <a name="ordering-results"></a>Az eredmények rendezése
-Ha keresési lekérdezés eredményeit fogadja, kérheti, hogy az Azure Cognitive Search egy adott mezőben lévő értékek alapján rendezve jelenítse meg az eredményeket. Alapértelmezés szerint az Azure Cognitive Search megrendeli a keresési eredményeket az egyes dokumentumok keresési pontszáma alapján, amely a [TF-IDF-](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)ből származik.
-
-Ha azt szeretné, hogy az Azure Cognitive Search az eredményeket a keresési pontszámtól eltérő értékkel adja vissza, akkor használhatja a **`orderby`** keresési paramétert. Megadhatja a paraméter értékét, **`orderby`** hogy a mezőneveket és a [**`geo.distance()` függvény**](query-odata-filter-orderby-syntax.md) hívásait is tartalmazza a térinformatikai értékek számára. Az egyes kifejezéseket követve `asc` jelezheti, hogy a rendszer növekvő sorrendben kéri az eredményeket, és **`desc`** jelzi, hogy az eredményeket csökkenő sorrendben kell megadni. Alapértelmezés szerint a rangsorolás növekvő sorrendben történik.
-
-
-### <a name="hit-highlighting"></a>Találatok kiemelése
-Az Azure Cognitive Searchban a keresési lekérdezésnek megfelelő keresési eredmények pontos részét kiemelve a, a és a paraméterek használatával egyszerűen elvégezhető **`highlight`** **`highlightPreTag`** **`highlightPostTag`** . Megadhatja, hogy mely *kereshető* mezőknél legyen kiemelve a párosított szöveg, valamint az Azure Cognitive Search által visszaadott egyező szöveg kezdetéhez és végéhez hozzáfűzni kívánt karakterlánc-címkék pontos megadását.
-
-## <a name="see-also"></a>További információ
-
-+ [A teljes szöveges keresés működése az Azure Cognitive Searchban (lekérdezési elemzési architektúra)](search-lucene-query-architecture.md)
 + [Keresési ablak](search-explorer.md)
 + [Lekérdezés a .NET-ben](./search-get-started-dotnet.md)
 + [A lekérdezés a REST-ben](./search-get-started-powershell.md)

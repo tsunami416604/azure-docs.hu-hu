@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780093"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005307"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Oktatóanyag: több X. 509 eszköz kiépítése beléptetési csoportok használatával
 
@@ -195,7 +195,7 @@ A tanúsítványlánc létrehozása:
 3. Futtassa a következő parancsot egy teljes tanúsítványlánc. PEM fájl létrehozásához, amely tartalmazza az új eszköz tanúsítványát.
 
     ```Bash
-    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem
+    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem && cd ..
     ```
 
     Használjon egy szövegszerkesztőt, és nyissa meg a tanúsítványlánc fájlt *./certs/New-Device-Full-Chain.CERT.PEM*. A tanúsítványlánc szövege mindhárom tanúsítvány teljes láncát tartalmazza. Az oktatóanyag későbbi részében ezt a szöveget fogja használni az egyéni HSM-kóddal rendelkező tanúsítványláncként.
@@ -241,48 +241,85 @@ A következő oktatóanyaghoz tartozó egyéni HSM-helyettes kód frissítése:
     static const char* const COMMON_NAME = "custom-hsm-device-01";
     ```
 
-4. Ugyanebben a fájlban frissítse az állandó sztring sztring értékét a `CERTIFICATE` *./certs/New-Device-Full-Chain.CERT.PEM* fájlba mentett tanúsítványlánc szövege alapján a tanúsítványok létrehozása után.
+4. Ugyanebben a fájlban frissítenie kell az állandó sztring sztring értékét a `CERTIFICATE` *./certs/New-Device-Full-Chain.CERT.PEM* fájlba mentett tanúsítványlánc szövege alapján a tanúsítványok létrehozása után.
 
-    > [!IMPORTANT]
-    > A szöveg a Visual studióba másolásakor észreveheti, hogy a szöveg elemzése és frissítése a kód térközével történik. Ha igen, el kell távolítania ezt a térközt és elemzést a **CTRL + Z** billentyűkombináció lenyomásával.
-
-    Frissítse a tanúsítvány szövegét úgy, hogy az az alábbi mintát követi, és ne legyenek további szóközök, vagy a Visual Studio által végzett elemzés:
+    A tanúsítvány szövegének szintaxisának az alábbi mintát kell követnie, és a Visual Studio nem végez további szóközöket vagy elemzést.
 
     ```c
     // <Device/leaf cert>
     // <intermediates>
     // <root>
     static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
         ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB"
-    "\n-----END CERTIFICATE-----\n"
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy"
+    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
         ...
-    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh"
-    "\n-----END CERTIFICATE-----\n"
+    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
+    "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
         ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB"
-    "\n-----END CERTIFICATE-----";        
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----";        
     ```
 
-5. Ugyanebben a fájlban frissítse az `PRIVATE_KEY` állandó sztring sztring értékét az eszköz tanúsítványának titkos kulcsával.
+    Ebben a lépésben a karakterlánc értékének megfelelő frissítése nagyon unalmas lehet, és hiba miatt változhat. A git bash-parancssorban a megfelelő szintaxis létrehozásához másolja ki és illessze be az alábbi bash shell-parancsokat a git bash parancssorába, majd nyomja le az **ENTER** billentyűt. Ezek a parancsok a `CERTIFICATE` karakterlánc konstans értékének szintaxisát fogják eredményezni.
 
-    > [!IMPORTANT]
-    > A szöveg a Visual studióba másolásakor észreveheti, hogy a szöveg elemzése és frissítése a kód térközével történik. Ha igen, el kell távolítania ezt a térközt és elemzést a **CTRL + Z** billentyűkombináció lenyomásával.
+    ```Bash
+    input="./certs/new-device-full-chain.cert.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
 
-    Frissítse a titkos kulcs szövegét úgy, hogy az az alábbi mintát követi, és ne legyenek további szóközök, vagy a Visual Studio nem végez elemzést:
+    Másolja és illessze be a kimeneti tanúsítvány szövegét az új állandó értékhez. 
+
+
+5. Ugyanebben a fájlban az állandó karakterlánc értékét `PRIVATE_KEY` is frissíteni kell az eszköz tanúsítványának titkos kulcsával.
+
+    A titkos kulcs szövegének szintaxisának az alábbi mintát kell követnie, és a Visual Studio nem végez további szóközöket vagy elemzést.
 
     ```c
     static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
-    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U"
+    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
         ...
-    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij"
-    "\n-----END RSA PRIVATE KEY-----";
+    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
+    "-----END RSA PRIVATE KEY-----";
     ```
+
+    A karakterlánc értékének megfelelő frissítése ebben a lépésben nagyon unalmas lehet, és a hiba is fennáll. A git bash-parancssorban a megfelelő szintaxis létrehozásához másolja ki és illessze be a következő bash shell-parancsokat, majd nyomja le az **ENTER** billentyűt. Ezek a parancsok a `PRIVATE_KEY` karakterlánc konstans értékének szintaxisát fogják eredményezni.
+
+    ```Bash
+    input="./private/new-device.key.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    Másolja és illessze be a kimeneti titkos kulcs szövegét az új állandó értékhez. 
 
 6. Mentse a *custom_hsm_example. c*.
 
@@ -334,13 +371,13 @@ Az aláíró tanúsítványok hozzáadása a tanúsítványtárolóhoz Windows-a
 
 2. Kattintson a jobb gombbal a Windows **Start** gombra. Ezután kattintson a **Futtatás** gombra. Írja be a *certmgr. MCS* parancsot, és kattintson **az OK** gombra a Tanúsítványkezelő MMC beépülő modul elindításához.
 
-3. A Tanúsítványkezelőben a **tanúsítványok – aktuális felhasználó** területen kattintson a **megbízható legfelső szintű hitelesítésszolgáltatók** elemre. Ezután a menüben kattintson a **művelet**  >  **minden feladat** importálás elemre  >  **Import** `root.pfx` .
+3. A Tanúsítványkezelőben a **tanúsítványok – aktuális felhasználó** területen kattintson a **megbízható legfelső szintű hitelesítésszolgáltatók** elemre. Ezután a menüben kattintson a **művelet**  >  **minden feladat** importálás elemre  >   `root.pfx` .
 
     * Győződjön meg arról, hogy **személyes információcsere (. pfx)** alapján keres.
     * Használja `1234` jelszóként.
     * Helyezze a tanúsítványt a **megbízható legfelső szintű hitelesítésszolgáltatók** tanúsítványtárolóba.
 
-4. A Tanúsítványkezelőben a **tanúsítványok – aktuális felhasználó** területen kattintson a **köztes hitelesítésszolgáltatók** elemre. Ezután a menüben kattintson a **művelet**  >  **minden feladat** importálás elemre  >  **Import** `intermediate.pfx` .
+4. A Tanúsítványkezelőben a **tanúsítványok – aktuális felhasználó** területen kattintson a **köztes hitelesítésszolgáltatók** elemre. Ezután a menüben kattintson a **művelet**  >  **minden feladat** importálás elemre  >   `intermediate.pfx` .
 
     * Győződjön meg arról, hogy **személyes információcsere (. pfx)** alapján keres.
     * Használja `1234` jelszóként.
@@ -425,7 +462,7 @@ Ha befejezte az eszköz ügyféloldali mintájának tesztelését és vizsgálat
 1. Kattintson a **tanúsítványok** elemre a DPS-ben. Az oktatóanyagban feltöltött és ellenőrzött összes tanúsítvány esetében kattintson a tanúsítványra, és a **Törlés** gombra kattintva távolítsa el.
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Nyissa meg a **IoT-eszközöket** a hubhoz. Jelölje be az oktatóanyagban regisztrált eszköz *azonosítója* melletti jelölőnégyzetet. Kattintson a panel tetején található **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy X. 509 eszközt telepített egy egyéni HSM használatával az IoT hub-ra. Ha szeretné megtudni, hogyan lehet IoT-eszközöket több hubhoz kiépíteni, folytassa a következő oktatóanyaggal. 
 

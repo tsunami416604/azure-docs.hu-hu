@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: fa99920c8e9d8cd532bb6230d6a337a038ee3e31
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 8e1f7bb2faaf9d2c706e63ae73b9e265eb95d09b
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929327"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007211"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -109,7 +109,7 @@ Az alábbi lépések végigvezetik az alkalmazás létrehozásán és identitás
 
 1. Szükség esetén telepítse a Azure PowerShell a [Azure PowerShell útmutatóban](/powershell/azure/)található utasításokkal, majd futtassa a parancsot az `Login-AzAccount` Azure-hoz való kapcsolódáshoz.
 
-2. Function-alkalmazás létrehozása Azure PowerShell használatával. A Azure PowerShell és a Azure Functions használatával kapcsolatos további példákért tekintse meg az az [. functions hivatkozást](/powershell/module/az.functions/?view=azps-4.1.0#functions):
+2. Function-alkalmazás létrehozása Azure PowerShell használatával. A Azure PowerShell és a Azure Functions használatával kapcsolatos további példákért tekintse meg az az [. functions hivatkozást](/powershell/module/az.functions/#functions):
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ Az alábbi lépések végigvezetik az alkalmazás létrehozásán és identitás
 
 1. Szükség esetén telepítse a Azure PowerShell a [Azure PowerShell útmutatóban](/powershell/azure/)található utasításokkal, majd futtassa a parancsot az `Login-AzAccount` Azure-hoz való kapcsolódáshoz.
 
-2. Function-alkalmazás létrehozása Azure PowerShell használatával. A Azure PowerShell és a Azure Functions használatával kapcsolatos további példákért tekintse meg az az [. functions referenciát](/powershell/module/az.functions/?view=azps-4.1.0#functions). Az alábbi szkript azt is lehetővé teszi, hogy `New-AzUserAssignedIdentity` külön kell telepíteni, mint a [Létrehozás, a felhasználó által hozzárendelt felügyelt identitások listázása vagy törlése Azure PowerShell használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+2. Function-alkalmazás létrehozása Azure PowerShell használatával. A Azure PowerShell és a Azure Functions használatával kapcsolatos további példákért tekintse meg az az [. functions referenciát](/powershell/module/az.functions/#functions). Az alábbi szkript azt is lehetővé teszi, hogy `New-AzUserAssignedIdentity` külön kell telepíteni, mint a [Létrehozás, a felhasználó által hozzárendelt felügyelt identitások listázása vagy törlése Azure PowerShell használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
     ```azurepowershell-interactive
     # Create a resource group.

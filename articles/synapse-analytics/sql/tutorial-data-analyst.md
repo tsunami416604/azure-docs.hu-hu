@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7b2d4953b3a42c5d66fca4a67b4a6d0f13700a35
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d37597f8667c461e8d61f8214483f57eb702c2a0
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459118"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007551"
 ---
 # <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool"></a>Oktatóanyag: az adattavak feltárása és elemzése kiszolgáló nélküli SQL-készlettel
 
@@ -38,8 +38,8 @@ SELECT TOP 100 * FROM
 
 A [New York City (NYC) taxi-adatkészlet](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) a következőket tartalmazza:
 
-- Felvételi és lejárati dátumok és időpontok.
-- A pick up és a drop-off helyszínek. 
+- A pick-up és a drop-off dátumok és időpontok.
+- A pick-up és a drop-off tárolóhelyek. 
 - Utazási távolságok.
 - Részletezett viteldíjak.
 - Díjszabási típusok.
@@ -208,7 +208,7 @@ A lekérdezés eredménye azt jelzi, hogy a taxik számának csökkenése a köv
 
 Ebből az oktatóanyagból megtudhatta, hogy az adatelemzők hogyan tudják gyorsan végrehajtani a felderítő adatelemzést, és hogy a kiszolgáló nélküli SQL-készlet használatával könnyedén egyesítheti a különböző adatkészleteket, és megjelenítheti az eredményeket az Azure szinapszis Studio használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kiszolgáló nélküli SQL-Power BI Desktop készlet összekapcsolásával és a jelentések létrehozásával kapcsolatos további információkért lásd: [kiszolgáló nélküli SQL-készlet összekötése a Power bi Desktop és jelentések létrehozásához](tutorial-connect-power-bi-desktop.md).
 

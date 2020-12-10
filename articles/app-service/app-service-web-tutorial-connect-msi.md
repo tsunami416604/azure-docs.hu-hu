@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: e5587c4826fea780c1e379ee1599440b2865dd50
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e10834c921042f0bfedfc3196b855ce5dc7b0e8f
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862224"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007687"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az Azure SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
@@ -57,7 +57,7 @@ Először engedélyezze az Azure AD-hitelesítés használatát SQL Database egy
 
 Ha az Azure AD-bérlő még nem rendelkezik felhasználóval, hozzon létre egyet a [felhasználók hozzáadása vagy törlése a Azure Active Directory használatával](../active-directory/fundamentals/add-users-azure-active-directory.md)című rész lépéseit követve.
 
-Keresse meg az Azure AD-felhasználó objektum-AZONOSÍTÓját a [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) és a csere használatával *\<user-principal-name>* . Az eredmény egy változóba lesz mentve.
+Keresse meg az Azure AD-felhasználó objektum-AZONOSÍTÓját a [`az ad user list`](/cli/azure/ad/user#az-ad-user-list) és a csere használatával *\<user-principal-name>* . Az eredmény egy változóba lesz mentve.
 
 ```azurecli-interactive
 azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-name>'" --query [].objectId --output tsv)
@@ -66,7 +66,7 @@ azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-na
 > Az Azure AD összes egyszerű felhasználóneve listájának megtekintéséhez futtassa a parancsot `az ad user list --query [].userPrincipalName` .
 >
 
-Adja hozzá ezt az Azure AD-felhasználót Active Directory rendszergazdaként [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) a Cloud Shell parancs használatával. A következő parancsban cserélje le a *\<server-name>* nevet a kiszolgáló nevére ( `.database.windows.net` utótag nélkül).
+Adja hozzá ezt az Azure AD-felhasználót Active Directory rendszergazdaként [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) a Cloud Shell parancs használatával. A következő parancsban cserélje le a *\<server-name>* nevet a kiszolgáló nevére ( `.database.windows.net` utótag nélkül).
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
@@ -77,7 +77,7 @@ Active Directory-rendszergazda hozzáadásával kapcsolatos további informáci�
 ## <a name="set-up-visual-studio"></a>A Visual Studio telepítése
 
 ### <a name="windows-client"></a>Windows-ügyfél
-A Windowshoz készült Visual Studio integrálva van az Azure AD-hitelesítéssel. A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez adja hozzá az Azure ad-felhasználót a Visual Studióban a Fiókbeállítások **kiválasztásával**  >  **Account Settings** a menüben, majd kattintson a **fiók hozzáadása** lehetőségre.
+A Windowshoz készült Visual Studio integrálva van az Azure AD-hitelesítéssel. A fejlesztés és a hibakeresés a Visual Studióban való engedélyezéséhez adja hozzá az Azure ad-felhasználót a Visual Studióban a Fiókbeállítások **kiválasztásával**  >   a menüben, majd kattintson a **fiók hozzáadása** lehetőségre.
 
 Az Azure ad-felhasználó Azure-szolgáltatásbeli hitelesítéshez való beállításához válassza az **eszközök**  >  **lehetőséget** a menüben, majd válassza az **Azure szolgáltatás-hitelesítési**  >  **fiók kiválasztása** lehetőséget. Válassza ki a hozzáadott Azure AD-felhasználót, és kattintson **az OK** gombra.
 
@@ -176,7 +176,7 @@ Ezután konfigurálja a App Service alkalmazást úgy, hogy az SQL Databasehoz k
 
 ### <a name="enable-managed-identity-on-app"></a>Felügyelt identitás engedélyezése az alkalmazásban
 
-Ha engedélyezni szeretné a felügyelt identitást az Azure-alkalmazásához, használja az [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) parancsot a Cloud Shellben. Az alábbi parancsban cserélje le a következőt: *\<app-name>* .
+Ha engedélyezni szeretné a felügyelt identitást az Azure-alkalmazásához, használja az [az webapp identity assign](/cli/azure/webapp/identity#az-webapp-identity-assign) parancsot a Cloud Shellben. Az alábbi parancsban cserélje le a következőt: *\<app-name>* .
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app-name>
@@ -212,7 +212,7 @@ A Cloud Shellben az SQLCMD parancsot használva jelentkezzen be az SQL Database-
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-A kívánt adatbázishoz tartozó SQL-parancssorban futtassa a következő parancsokat az alkalmazás igényeinek megfelelő engedélyek megadásához. Például: 
+A kívánt adatbázishoz tartozó SQL-parancssorban futtassa a következő parancsokat az alkalmazás igényeinek megfelelő engedélyek megadásához. Példa: 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;

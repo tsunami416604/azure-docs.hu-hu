@@ -8,23 +8,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 11/19/2019
-ms.openlocfilehash: 60b100e1100b8a4925a967f8b7265f1612e5beb7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/08/2020
+ms.openlocfilehash: d4bde21dd13b562ffbb51b27ef083ee53685397a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018905"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007966"
 ---
 # <a name="add-contributors-to-your-app"></a>Közreműködők hozzáadása az alkalmazáshoz
 
-Az alkalmazások tulajdonosai hozzáadhatnak közreműködőket az alkalmazásokhoz. Ezek a közreműködők módosíthatják a modellt, betanítják és közzétehetik az alkalmazást.
-
-[!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
+Az alkalmazások tulajdonosai hozzáadhatnak közreműködőket az alkalmazásokhoz. Ezek a közreműködők módosíthatják a modellt, betanítják és közzétehetik az alkalmazást. Miután [áttelepítette](luis-migration-authoring.md) a fiókját, a _közreműködők_ a Azure Portalban kezelhetők a szerzői erőforráshoz a **hozzáférés-vezérlés (iam)** lapon. Adjon hozzá egy felhasználót a közreműködő e-mail-címével és a _közreműködő_ szerepkörrel.
 
 ## <a name="add-contributor-to-azure-authoring-resource"></a>Közreműködő hozzáadása az Azure authoring resourcehez
-
-Az alábbi eljárás az Azure authoring Resource használatára **áttelepített** összes felhasználóra vonatkozik.
 
 Áttelepítette, ha a LUIS authoring Experience egy authoring-erőforráshoz van kötve a LUIS **-portál Manage-> Azure-erőforrások** lapján.
 
@@ -41,26 +37,15 @@ Az alábbi eljárás az Azure authoring Resource használatára **áttelepített
 
     Ha problémája van a szerepkör-hozzárendeléssel, tekintse át az [Azure szerepkör-hozzárendeléseket](../../role-based-access-control/role-assignments-portal.md) és az [Azure hozzáférés-vezérléssel kapcsolatos hibaelhárítást](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments).
 
-## <a name="add-collaborator-to-luis-app"></a>Közreműködő hozzáadása a LUIS-alkalmazáshoz
+## <a name="view-the-app-as-a-contributor"></a>Az alkalmazás megtekintése közreműködőként
 
-Az alábbi eljárás az összes olyan felhasználóra vonatkozik, akik nem lettek **áttelepítve** az Azure authoring Resource használatára.
+Miután közreműködőként bővült, [Jelentkezzen be a Luis portálra](sign-in-luis-portal.md).
 
-Nem telepítette át, ha a LUIS authoring Experience nem kötődik egy authoring-erőforráshoz a LUIS **-portál Manage-> Azure-erőforrások** lapján.
-
-Egy alkalmazás egyetlen szerzővel, a tulajdonossal, de több közreműködővel is rendelkezhet. Ha lehetővé szeretné tenni a közreműködők számára a LUIS-alkalmazás szerkesztését, hozzá kell adnia az általuk használt e-mailt a LUIS-portálhoz a közreműködők listájához való hozzáféréshez. A Hozzáadás után az alkalmazás a LUIS-portálon jelenik meg.
-
-1. A jobb felső menüben válassza a **kezelés** lehetőséget, majd a bal oldali menüben válassza a **közreműködők** lehetőséget.
-
-1. Válassza a **munkatárs hozzáadása** lehetőséget az eszköztáron.
-
-1. Adja meg azt az e-mail-címet, amelyet a közreműködő használ a LUIS portálra való bejelentkezéshez.
-
-    ![Közreműködő e-mail-címének hozzáadása](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
-
+[!INCLUDE [switch azure directories](includes/switch-azure-directories.md)]
 
 ### <a name="users-with-multiple-emails"></a>Több e-mailekkel rendelkező felhasználók
 
-Ha a LUIS-alkalmazáshoz közreműködőket/közreműködőket ad hozzá, pontosan megadja az e-mail-címet. Míg Azure Active Directory (Azure AD) lehetővé teszi, hogy egyetlen felhasználó több e-mail fiókkal is felhasználható, a LUIS megköveteli a felhasználótól, hogy jelentkezzen be a közreműködő/közreműködő hozzáadásakor megadott e-mail-címmel.
+Ha a LUIS-alkalmazáshoz közreműködőket ad hozzá, pontosan megadja az e-mail-címet. Míg Azure Active Directory (Azure AD) lehetővé teszi, hogy egyetlen felhasználó több e-mail fiókkal is felhasználható, a LUIS megköveteli a felhasználótól, hogy jelentkezzen be a közreműködő hozzáadásakor megadott e-mail-címmel.
 
 <a name="owner-and-collaborators"></a>
 

@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 04/02/2019
-ms.openlocfilehash: 868443e52b7159e6ee9478f64b7b2f376a10f604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/08/2020
+ms.openlocfilehash: cd9b353300b88c69efb0c458245a86963c579064
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541006"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007738"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Ügyféladatok exportálása és törlése Language Understanding (LUIS) Cognitive Services
 
@@ -50,7 +50,7 @@ A LUIS-felhasználók teljes hozzáféréssel rendelkeznek a portálon tárolt a
 
 ## <a name="location-of-active-learning"></a>Az aktív tanulás helye
 
-Az [aktív tanulás](luis-how-to-review-endpoint-utterances.md#enable-active-learning)engedélyezéséhez a közzétett Luis-végpontokon fogadott felhasználók naplózott hosszúságú kimondott szöveg a következő Azure-régiókban tárolódnak:
+Az [aktív tanulás](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning)engedélyezéséhez a közzétett Luis-végpontokon fogadott felhasználók naplózott hosszúságú kimondott szöveg a következő Azure-régiókban tárolódnak:
 
 * [Európa](#europe)
 * [Ausztrália](#australia)

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 5d3842675cf4b36dfaa95ed6041bf8c6f0978a53
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b23ff9762ef519d66ed55f75f27dcb80e2d18039
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242874"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007245"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Kapcsolati architektúra a Azure Database for MySQLban
 Ez a cikk ismerteti a Azure Database for MySQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for MySQL-példányra az Azure-on belüli és kívüli ügyfelektől.
@@ -50,7 +50,7 @@ A következő táblázat felsorolja az Azure Database for MySQL átjáró elsőd
 | Közép-India | 104.211.96.159     |
 | Dél-India | 104.211.224.146  |
 | Nyugat-India | 104.211.160.80    |
-| Kelet-Japán | 13.78.61.196, 191.237.240.43  |
+| Kelet-Japán | 13.78.61.196, 191.237.240.43, 40.79.192.23 |
 | Nyugat-Japán | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | Dél-Korea középső régiója | 52.231.32.42   |
 | Dél-Korea déli régiója | 52.231.200.86    |
@@ -72,7 +72,7 @@ A következő táblázat felsorolja az Azure Database for MySQL átjáró elsőd
 
 ## <a name="connection-redirection"></a>Kapcsolatok átirányítása
 
-Azure Database for MySQL támogatja a további kapcsolati házirendet, az **átirányítást** , amely segít csökkenteni a hálózati késést az ügyfélalkalmazások és a MySQL-kiszolgálók között. Ezzel a szolgáltatással, miután a kezdeti TCP-munkamenet létrejött a Azure Database for MySQL-kiszolgálón, a kiszolgáló visszaadja a MySQL-kiszolgálót futtató csomópont háttérbeli címeit az ügyfélnek. Ezt követően az összes további csomag közvetlenül a kiszolgálóra áramlik, és megkerüli az átjárót. Mivel a csomagok közvetlenül a kiszolgálóra áramlanak, a késés és az átviteli sebesség jobb teljesítményt biztosít.
+Azure Database for MySQL támogatja a további kapcsolati házirendet, az **átirányítást**, amely segít csökkenteni a hálózati késést az ügyfélalkalmazások és a MySQL-kiszolgálók között. Ezzel a szolgáltatással, miután a kezdeti TCP-munkamenet létrejött a Azure Database for MySQL-kiszolgálón, a kiszolgáló visszaadja a MySQL-kiszolgálót futtató csomópont háttérbeli címeit az ügyfélnek. Ezt követően az összes további csomag közvetlenül a kiszolgálóra áramlik, és megkerüli az átjárót. Mivel a csomagok közvetlenül a kiszolgálóra áramlanak, a késés és az átviteli sebesség jobb teljesítményt biztosít.
 
 Ez a funkció a 5,6-es, 5,7-as és 8,0-os motorral rendelkező Azure Database for MySQL-kiszolgálókon támogatott.
 

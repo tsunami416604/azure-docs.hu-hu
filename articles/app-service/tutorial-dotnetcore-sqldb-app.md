@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 890f9c3d5c3a250bc13270ac685b93349f18fcff
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 43eb2e218eb94ef0d73d6ecd65100706323525ab
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862265"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005800"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Oktatóanyag: ASP.NET Core és Azure SQL Database alkalmazás létrehozása Azure App Service
 
@@ -95,7 +95,7 @@ Ez az oktatóanyag az SQL-adatbázisokhoz az [Azure SQL Database-t](/azure/sql-d
 
 ### <a name="create-a-sql-database-logical-server"></a>SQL Database logikai kiszolgáló létrehozása
 
-A Cloud Shell hozzon létre egy SQL Database logikai kiszolgálót a [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) paranccsal.
+A Cloud Shell hozzon létre egy SQL Database logikai kiszolgálót a [`az sql server create`](/cli/azure/sql/server#az-sql-server-create) paranccsal.
 
 Cserélje le a *\<server-name>* helyőrzőt *egyedi* SQL Database nevére. Ezt a nevet használja a globálisan egyedi SQL Database végpont részeként `<server-name>.database.windows.net` . Érvényes karakterek:, `a` - `z` `0` - `9` `-` . Továbbá cserélje le a *\<db-username>* és a *\<db-password>* nevet az Ön által választott felhasználónévre és jelszóra. 
 
@@ -126,7 +126,7 @@ Az SQL Database logikai kiszolgáló létrehozása után az Azure CLI az alábbi
 
 ### <a name="configure-a-server-firewall-rule"></a>Konfiguráljon egy kiszolgálói tűzfalszabályt
 
-Hozzon létre egy [kiszolgálószintű Azure SQL Database-tűzfalszabályt](../azure-sql/database/firewall-configure.md) az [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) parancs használatával. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. 
+Hozzon létre egy [kiszolgálószintű Azure SQL Database-tűzfalszabályt](../azure-sql/database/firewall-configure.md) az [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) parancs használatával. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -144,7 +144,7 @@ az sql server firewall-rule create --name AllowLocalClient --server <server-name
 
 ### <a name="create-a-database"></a>Adatbázis létrehozása
 
-Hozzon létre egy [S0 teljesítményszintű](../azure-sql/database/service-tiers-dtu.md) adatbázist a kiszolgálón az [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) parancs használatával.
+Hozzon létre egy [S0 teljesítményszintű](../azure-sql/database/service-tiers-dtu.md) adatbázist a kiszolgálón az [`az sql db create`](/cli/azure/sql/db#az-sql-db-create) parancs használatával.
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
@@ -152,7 +152,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Kapcsolati sztring létrehozása
 
-A parancs használatával szerezze be a kapcsolatok karakterláncát [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) .
+A parancs használatával szerezze be a kapcsolatok karakterláncát [`az sql db show-connection-string`](/cli/azure/sql/db#az-sql-db-show-connection-string) .
 
 ```azurecli-interactive
 az sql db show-connection-string --client ado.net --server <server-name> --name coreDB
@@ -263,7 +263,7 @@ Ebben a lépésben az SQL Database-hez csatlakoztatott .NET Core-alkalmazást he
 
 ### <a name="configure-connection-string"></a>A kapcsolatok karakterláncának konfigurálása
 
-Az Azure-alkalmazáshoz tartozó kapcsolódási karakterláncok beállításához használja a [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud shell. A következő parancsban cserélje le a (z) és a (z *\<app-name>* *\<connection-string>* ) paramétert a korábban létrehozott kapcsolattípus-karakterláncra.
+Az Azure-alkalmazáshoz tartozó kapcsolódási karakterláncok beállításához használja a [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) parancsot a Cloud shell. A következő parancsban cserélje le a (z) és a (z *\<app-name>* *\<connection-string>* ) paramétert a korábban létrehozott kapcsolattípus-karakterláncra.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
@@ -464,7 +464,7 @@ A minta projekt már a következő útmutatást követi: [ASP.net Core naplózá
 - Hivatkozást tartalmaz a `Microsoft.Extensions.Logging.AzureAppServices` *DotNetCoreSqlDb. csproj*-ben.
 - Hívások `loggerFactory.AddAzureWebAppDiagnostics()` a *program.cs*-ben.
 
-A ASP.NET Core [naplózási szintjének](/aspnet/core/fundamentals/logging#log-level) app Service az `Information` alapértelmezett szintről történő beállításához használja a `Error` [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) Cloud shell parancsot.
+A ASP.NET Core [naplózási szintjének](/aspnet/core/fundamentals/logging#log-level) app Service az `Information` alapértelmezett szintről történő beállításához használja a `Error` [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) Cloud shell parancsot.
 
 ```azurecli-interactive
 az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging filesystem --level information
@@ -473,7 +473,7 @@ az webapp log config --name <app-name> --resource-group myResourceGroup --applic
 > [!NOTE]
 > A projekt naplózási szintje már be van állítva `Information` *appsettings.js* be értékre.
 
-A log streaming elindításához használja a [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) parancsot a Cloud Shellban.
+A log streaming elindításához használja a [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) parancsot a Cloud Shellban.
 
 ```azurecli-interactive
 az webapp log tail --name <app-name> --resource-group myResourceGroup

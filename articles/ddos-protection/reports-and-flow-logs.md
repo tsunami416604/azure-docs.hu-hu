@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 5c3bfbdf133777f0bc219d1306f80bd4d38b56ea
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 0a59c748dba87765537fc7c9d6382c7d2b726f43
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746267"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008061"
 ---
 # <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>DDoS-támadások mérséklési jelentéseinek és forgalomnaplóinak konfigurálása 
 
@@ -80,9 +80,15 @@ A támadás-elhárítási folyamat naplóit összekapcsolhatjuk az Azure Sentine
 
 ### <a name="azure-ddos-protection-workbook"></a>Azure DDoS Protection munkafüzet
 
-Ha meg szeretné tekinteni a folyamat naplófájljainak adatait az Azure Analytics irányítópultján, importálhatja a minta-irányítópultot a következőből: https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20DDoS%20Protection%20Workbook
+Ez a Azure Resource Manager (ARM) sablon használatával helyezhet üzembe egy támadási elemzési munkafüzetet. Ez a munkafüzet mindig úgy jeleníti meg a támadási tudnivalókat több szűrhető panelen, hogy könnyen megértse a kockát. Az ARM-sablon telepítésekor meg kell adnia a következőket:
 
-A flow-naplók a következő mezőket fogják tartalmazni: 
+* Munkaterület neve
+* Munkaterület ResourceGroup
+* Munkaterület-előfizetés azonosítója
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
+
+A folyamat naplói a következő mezőket fogják tartalmazni: 
 - Forrás IP-címe
 - Cél IP-címe
 - Forrásport 

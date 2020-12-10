@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: f23d1fb0162abf05fba97c2f6fb02be9238fabd2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e513bdaa7efa2f1d0f18ff3548d9abfdc5e085d7
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500359"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007398"
 ---
-# <a name="save-costs-with-azure-reserved-vm-instances-linux"></a>Költségek megtakarítása a Azure Reserved VM Instances (Linux)
+# <a name="save-costs-with-azure-reserved-vm-instances"></a>Költségek megtakarítása Azure Reserved VM Instances
 
 
 
@@ -110,7 +110,7 @@ Ha nagyvállalati szerződéssel rendelkezik, a további példányok gyors hozz�
 |Régió    |A foglalás által érintett Azure-régió.|    
 |Virtuális gép mérete     |A virtuálisgép-példányok mérete.|
 |Optimalizálás a következőhöz:     |A VM-példány méretének rugalmassága alapértelmezés szerint ki van választva. Kattintson a **Speciális beállítások** lehetőségre a példány méretének rugalmassági értékének módosításához, hogy a foglalási kedvezményt más virtuális gépekre alkalmazza ugyanabban a virtuálisgép- [méretezési csoportban](reserved-vm-instance-size-flexibility.md). A kapacitás prioritása kiemelt fontosságúként kezeli az adatközpont kapacitását az üzemelő példányok számára. További megbízhatóságot biztosít a virtuálisgép-példányok elindításához, amikor szüksége van rájuk. A kapacitás prioritása csak akkor érhető el, ha a foglalási hatókör egyetlen előfizetés. |
-|Kifejezés        |Egy vagy három év. A HBv2-alapú virtuális gépek esetében 5 éves időszak is rendelkezésre áll.|
+|Időszak        |Egy vagy három év. A HBv2-alapú virtuális gépek esetében 5 éves időszak is rendelkezésre áll.|
 |Mennyiség    |A foglalás keretében megvásárolt példányok száma. A mennyiség azon futó virtuálisgép-példányok száma, amelyek megkapják a számlázási kedvezményt. Ha például 10 Standard_D2 virtuális gépet futtat az USA keleti régiójában, akkor a mennyiséget 10-re kell állítani, hogy maximalizálja az összes futó virtuális gép előnyeit. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]

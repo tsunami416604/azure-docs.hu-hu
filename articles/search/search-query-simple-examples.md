@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 834e4fe8c7b3923f40a07c02c0310200db222308
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 12/09/2020
+ms.openlocfilehash: 027852216b3f2055a5a381d00aff94526953b898
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697254"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007874"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Egyszerű lekérdezés létrehozása az Azure Cognitive Search
 
@@ -22,6 +22,14 @@ Az Azure Cognitive Searchban az [egyszerű lekérdezési szintaxis](query-simple
 Ebben a cikkben példákat használunk az egyszerű szintaxis szemléltetésére, a `search=` [keresési dokumentumok](/rest/api/searchservice/search-documents) művelet paraméterének feltöltésére.
 
 Egy alternatív lekérdezési szintaxis [teljes Lucene](query-lucene-syntax.md), amely összetettebb lekérdezési struktúrákat támogat, például a fuzzy és a helyettesítő karakterek keresését, ami további időt vehet igénybe. További információt és példákat a teljes szintaxissal kapcsolatban [a teljes Lucene szintaxis használata](search-query-lucene-examples.md)című témakörben talál.
+
+A lekérdezések elküldéséhez a következő eszközök és API-k közül választhat.
+
+| Módszertan | Leírás |
+|-------------|-------------|
+| [Keresési ablak (portál)](search-explorer.md) | Az index és az API-Version beállításokhoz biztosít keresési sávot. Az eredményeket JSON-dokumentumként adja vissza a rendszer. Feltárásra, tesztelésre és érvényesítésre ajánlott. <br/>[Részletek](search-get-started-portal.md#query-index) | 
+| [Poster vagy Visual Studio Code](search-get-started-rest.md) | A webes tesztelési eszközök kiváló választás a [keresési dokumentumok](/rest/api/searchservice/search-documents) Rest-hívások kialakításához. A REST API az Azure Cognitive Search minden programozott műveletét támogatja, így a kérések interaktív módon is kiadhatók, hogy egy adott feladatra összpontosítsanak.  |
+| [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Az Azure Cognitive Search index lekérdezéséhez használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md)  |
 
 ## <a name="formulate-requests-in-postman"></a>Kérelmek összeállítása a Poster-ban
 

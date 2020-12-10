@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f0aaa82db61b5f40e42d6dad641bc09d5add9d0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 621402975411afb63055a7d6a45d86d9e026e284
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078333"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007755"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Az Azure Service Bus – Azure Event Grid integráció áttekintése
 
@@ -39,7 +39,9 @@ Lépjen a Service Bus névtérhez, majd válassza a **hozzáférés-vezérlés (
 A Service Bus jelenleg két forgatókönyvhöz küld eseményeket.
 
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
-* DeadletterMessagesAvailable
+* [DeadletterMessagesAvailable](#deadletter-messages-available-event)
+* [ActiveMessagesAvailablePeriodicNotifications](#active-messages-available-periodic-notifications)
+* [DeadletterMessagesAvailablePeriodicNotifications](#deadletter-messages-available-periodic-notifications)
 
 Emellett a Service Bus a standard Event Grid biztonsági és [hitelesítési mechanizmusokat](../event-grid/security-authentication.md) használja.
 
@@ -71,7 +73,7 @@ Az esemény sémája a következő:
 }
 ```
 
-#### <a name="dead-letter-messages-available-event"></a>Elérhető feldolgozatlan üzenetek esemény
+#### <a name="deadletter-messages-available-event"></a>Kézbesítetlen levelek üzenetek elérhető esemény
 
 Legalább egy eseményt kap egy feldolgozatlan üzenetek sorhoz, amelyben üzenetek találhatók, de aktív fogadók nincsenek.
 
@@ -82,6 +84,58 @@ Az esemény sémája a következő:
   "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
   "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
   "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="active-messages-available-periodic-notifications"></a>Időszakos értesítések az aktív üzenetekről
+
+Ez az esemény akkor jön létre rendszeresen, ha aktív üzenetei vannak az adott várólistán vagy előfizetésen, még akkor is, ha az adott várólistán vagy előfizetésen aktív figyelők vannak.
+
+Az esemény sémája a következő.
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="deadletter-messages-available-periodic-notifications"></a>Kézbesítetlen levelek üzenetek – rendszeres értesítések
+
+Ez az esemény akkor jön létre rendszeresen, ha az adott várólistán vagy előfizetésen kézbesítetlen levelek az üzenetek, még akkor is, ha vannak aktív figyelők az adott várólista vagy előfizetés kézbesítetlen levelek entitásán.
+
+Az esemény sémája a következő.
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications",
   "eventTime": "2018-02-14T05:12:53.4133526Z",
   "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
   "data": {
@@ -132,7 +186,7 @@ Három különböző módon hozhatók létre Event Grid-előfizetések a Service
 
 ## <a name="azure-cli-instructions"></a>Azure CLI utasítások
 
-Győződjön meg róla, hogy telepítve van az Azure CLI 2.0-s vagy újabb verziója. [Töltse le a telepítőt](/cli/azure/install-azure-cli?view=azure-cli-latest). Válassza a **Windows + X**lehetőséget, majd nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
+Győződjön meg róla, hogy telepítve van az Azure CLI 2.0-s vagy újabb verziója. [Töltse le a telepítőt](/cli/azure/install-azure-cli?view=azure-cli-latest). Válassza a **Windows + X** lehetőséget, majd nyisson meg egy új PowerShell-konzolt rendszergazdai jogosultságokkal. Parancsrendszerhéjat is használhat az Azure Portalon.
 
 Hajtsa végre a következő kódot:
 

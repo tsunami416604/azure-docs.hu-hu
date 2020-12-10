@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat egyéni tárolókat a Azure App 
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2aece0550d7b78ac4312e71b2671de4a64e4b86b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96557926"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007636"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Egyéni tároló konfigurálása az Azure App Service-hez
 
@@ -345,7 +345,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
 A többtárolós alkalmazások, például a WordPress esetében állandó tárterületre van szükség a megfelelő működéshez. Az engedélyezéshez a Docker-összeállítás konfigurációjának a tárolón *kívüli* tárolási helyre kell mutatnia. A tárolón belüli tárolóhelyek nem tartanak fenn módosításokat az alkalmazás újraindítása után.
 
-Engedélyezze az állandó tárterületet az Alkalmazásbeállítások beállításával az `WEBSITES_ENABLE_APP_SERVICE_STORAGE` az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancs használatával [Cloud Shellban](https://shell.azure.com).
+Engedélyezze az állandó tárterületet az Alkalmazásbeállítások beállításával az `WEBSITES_ENABLE_APP_SERVICE_STORAGE` az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) parancs használatával [Cloud Shellban](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
@@ -402,7 +402,7 @@ Az alábbi listában a támogatott és nem támogatott Docker-összeállítási 
 
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: egyéni szoftver átmigrálása Azure App Servicere egyéni tároló használatával](tutorial-custom-container.md)

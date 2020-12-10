@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d46aacc441b412a117d906e0201a9bed6046a338
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7178b8079bbb2411e0b38c3ef59a9981fb2d55be
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961605"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005239"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Nyisson meg egy SSH-munkamenetet egy Linux-tárolóban Azure App Service
 
@@ -39,9 +39,9 @@ Lásd: [az SSH konfigurálása egyéni tárolóban](configure-custom-container.m
 
 A TCP-bújtatás használatával hálózati kapcsolatot hozhat létre a fejlesztői gép és Web App for Containers között egy hitelesített WebSocket-kapcsolaton keresztül. Lehetővé teszi, hogy egy SSH-munkamenetet az Ön által választott ügyféltől App Service futtatott tárolóval nyisson meg.
 
-Első lépésként telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t. Ha szeretné megtekinteni, hogyan működik az Azure CLI telepítése nélkül, nyissa meg [Azure Cloud Shell](../cloud-shell/overview.md). 
+Első lépésként telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli)-t. Ha szeretné megtekinteni, hogyan működik az Azure CLI telepítése nélkül, nyissa meg [Azure Cloud Shell](../cloud-shell/overview.md). 
 
-Nyisson meg egy távoli kapcsolódást az alkalmazáshoz az az [WebApp Remote-Network-kapcsolatkezelő Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) paranccsal. Adja _\<subscription-id>_ meg _\<group-name>_ és \_ \<app-name> _ az alkalmazáshoz.
+Nyisson meg egy távoli kapcsolódást az alkalmazáshoz az az [WebApp Remote-Network-kapcsolatkezelő Create](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) paranccsal. Adja _\<subscription-id>_ meg _\<group-name>_ és \_ \<app-name> _ az alkalmazáshoz.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &

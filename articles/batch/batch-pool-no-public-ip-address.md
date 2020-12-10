@@ -3,15 +3,15 @@ title: Azure Batch-készlet létrehozása nyilvános IP-címek nélkül
 description: Megtudhatja, hogyan hozhat létre nyilvános IP-címek nélküli készletet
 author: pkshultz
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 12/9/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 09a5632f969117e69e68bbe0df2bfbab9a8a102b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 806e85fca0a509d56e248fc7779fba0f0a59a61d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842135"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007670"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Azure Batch-készlet létrehozása nyilvános IP-címek nélkül
 
@@ -25,7 +25,8 @@ Ha korlátozni szeretné ezen csomópontok elérését, és csökkenti a csomóp
 
 > [!IMPORTANT]
 > A nyilvános IP-címek nélküli készletek támogatása a Azure Batch jelenleg nyilvános előzetes verzióban érhető el a következő régiókban: Közép-Franciaország, Kelet-Ázsia, USA nyugati középső régiója, USA déli középső régiója, USA 2. nyugati régiója, USA nyugati régiója, Észak-Európa, USA 2. keleti régiója, USA középső régiója, Nyugat-Kelet-Ausztrália Európa
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

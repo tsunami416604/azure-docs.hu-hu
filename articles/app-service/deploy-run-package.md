@@ -3,12 +3,12 @@ title: Alkalmazás futtatása ZIP-csomagból
 description: Az alkalmazás ZIP-csomagjának üzembe helyezése az atomenergia-szolgáltatással. Javíthatja az alkalmazás működésének kiszámíthatóságát és megbízhatóságát a ZIP-telepítési folyamat során.
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3440653455626af4e3705d89349a66d6bf2fbfc0
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77920722"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008129"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Az alkalmazás futtatása Azure App Service közvetlenül egy ZIP-csomagból
 
@@ -41,7 +41,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 ## <a name="run-the-package"></a>A csomag futtatása
 
-A App Service-csomag futtatásának legegyszerűbb módja az Azure CLI az [WebApp Deployment Source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) parancs. Például:
+A App Service-csomag futtatásának legegyszerűbb módja az Azure CLI az [WebApp Deployment Source config-zip](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) parancs. Például:
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip

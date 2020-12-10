@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 59c489fac8bf02263cc51833675af414d5de6a52
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 87d0b740ec4f7ffb8966b386c273c023f69c42d8
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686004"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008299"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
@@ -46,10 +46,10 @@ Az Azure File Sync következő mérőszámai érhetők el Azure Monitorban:
 |-|-|
 | Szinkronizált bájtok száma | Az átvitt adatok mérete (feltöltés és letöltés).<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható méretek: kiszolgálói végpont neve, szinkronizálás iránya, szinkronizálási csoport neve |
 | Felhőbeli rétegek felidézése | A visszahívott adatmennyiség.<br><br>**Megjegyzés**: Ez a mérőszám a jövőben el lesz távolítva. A Felhőbeli rétegű visszahívás méretének mérőszámával figyelheti a meghívott adatok méretét.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgálónév |
-| Felhőbeli rétegek felidézésének mérete | A visszahívott adatmennyiség.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgáló neve, szinkronizálási csoport neve |
-| Felhőbeli rétegek felidézésének mérete alkalmazás szerint | Az alkalmazás által visszahívott adatmennyiség.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: alkalmazás neve, kiszolgálónév, szinkronizálási csoport neve |
-| Felhőbeli rétegek felidézésének átviteli sebessége | Az visszahívási teljesítmény mérete.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgáló neve, szinkronizálási csoport neve |
-| Nem szinkronizált fájlok | A szinkronizálni nem kívánt fájlok száma.<br><br>Egység: darabszám<br>Összesítés típusa: Sum<br>Alkalmazható méretek: kiszolgálói végpont neve, szinkronizálás iránya, szinkronizálási csoport neve |
+| Felhőbeli rétegek felidézésének mérete | A visszahívott adatmennyiség.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható méretek: kiszolgálónév, szinkronizálási csoport neve |
+| Felhőbeli rétegek felidézésének mérete alkalmazás szerint | Az alkalmazás által visszahívott adatmennyiség.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenziók: alkalmazásnév, kiszolgálónév, szinkronizálási csoport neve |
+| Felhőbeli rétegek felidézésének átviteli sebessége | Az visszahívási teljesítmény mérete.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható méretek: kiszolgálónév, szinkronizálási csoport neve |
+| Nem szinkronizált fájlok | A szinkronizálni nem kívánt fájlok száma.<br><br>Egység: darabszám<br>Összesítési típusok: átlag, összeg<br>Alkalmazható méretek: kiszolgálói végpont neve, szinkronizálás iránya, szinkronizálási csoport neve |
 | Szinkronizált fájlok | Az átvitt fájlok száma (feltöltés és letöltés).<br><br>Egység: darabszám<br>Összesítés típusa: Sum<br>Alkalmazható méretek: kiszolgálói végpont neve, szinkronizálás iránya, szinkronizálási csoport neve |
 | Kiszolgáló online állapota | A kiszolgálótól kapott szívverések száma.<br><br>Egység: darabszám<br>Összesítés típusa: maximum<br>Alkalmazható dimenzió: kiszolgálónév |
 | Szinkronizálási munkamenet eredménye | Szinkronizálási munkamenet eredménye (1 = sikeres szinkronizálási munkamenet; 0 = sikertelen szinkronizálási munkamenet)<br><br>Egység: darabszám<br>Összesítési típusok: maximum<br>Alkalmazható méretek: kiszolgálói végpont neve, szinkronizálás iránya, szinkronizálási csoport neve |
@@ -72,7 +72,7 @@ A riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a
 
 A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz használandó megfelelő mérőszámot sorolja fel:
 
-| Használati eset | A riasztáshoz használandó metrika |
+| Forgatókönyv | A riasztáshoz használandó metrika |
 |-|-|
 | A kiszolgáló végpontjának állapota hibát jelez a portálon | Szinkronizálási munkamenet eredménye |
 | A fájlok nem szinkronizálhatók a kiszolgálóval vagy a Felhőbeli végponttal | Nem szinkronizált fájlok |

@@ -3,12 +3,12 @@ title: Media Graph-koncepció – Azure
 description: A Media Graph lehetővé teszi annak meghatározását, hogy az adathordozót hol kell rögzíteni, hogyan kell feldolgozni, és hol kell elküldeni az eredményeket. Ez a cikk részletes leírást nyújt a Media Graph-koncepcióról.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 7def82160547b759c7ab4c40c681052747261920
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5efb62440b52d6219373d15ba3d19ddac1a2a834
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567078"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007840"
 ---
 # <a name="media-graph"></a>Médiagrafikon
 
@@ -41,7 +41,7 @@ A topológia paramétereinek értékei a topológiára hivatkozó gráf-példán
 A Graph-topológiák és a Graph-példányok életciklusa a következő állapot ábrán látható.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Médiagrafikon":::
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Gráf-topológia és gráf-példány életciklusa":::
 
 Első lépésként [hozzon létre egy gráf-topológiát](direct-methods.md#graphtopologyset). Ezután minden olyan élő videó-hírcsatorna esetében, amelyet fel szeretne dolgozni ezzel a topológiával, [létrehoz egy gráf-példányt](direct-methods.md#graphinstanceset). 
 
@@ -70,7 +70,7 @@ A IoT Edge Live Video Analytics a következő típusú csomópontokat támogatja
 
 #### <a name="rtsp-source"></a>RTSP-forrás 
 
-Egy RTSP-forrás csomópont lehetővé teszi, hogy az adathordozót egy [RTSP](https://tools.ietf.org/html/rfc2326 server)-ből nyelje le. A megfigyelési és IP-alapú kamerák az adatokat egy RTSP (valós idejű Streaming-Protocol) protokollon keresztül továbbítják, amely eltér a más típusú eszközöktől, például a telefonoktól és a videokameráktól. Ez a protokoll a-kiszolgáló (a kamera) és az ügyfél közötti adathordozó-munkamenetek létrehozásához és szabályozásához használatos. A Media Graph RTSP-forrás csomópontja ügyfélként működik, és egy RTSP-kiszolgálóval létesített munkamenetet tud létesíteni. Számos eszköz, például a legtöbb [IP-kamera](https://en.wikipedia.org/wiki/IP_camera) beépített RTSP-kiszolgálóval rendelkezik. A [ONVIF](https://www.onvif.org/) megbízza az RTSP-t, hogy az a [G, S & T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) szabványnak megfelelő eszközök definíciójában legyen támogatva. Az RTSP-forrás csomóponthoz meg kell adnia egy RTSP URL-címet, valamint a hitelesített kapcsolat engedélyezéséhez szükséges hitelesítő adatokat.
+Az RTSP-forrás csomópont lehetővé teszi az adathordozók betöltését egy [RTSP](https://tools.ietf.org/html/rfc2326) -kiszolgálóról. A megfigyelési és IP-alapú kamerák az adatokat egy RTSP (valós idejű Streaming-Protocol) protokollon keresztül továbbítják, amely eltér a más típusú eszközöktől, például a telefonoktól és a videokameráktól. Ez a protokoll a-kiszolgáló (a kamera) és az ügyfél közötti adathordozó-munkamenetek létrehozásához és szabályozásához használatos. A Media Graph RTSP-forrás csomópontja ügyfélként működik, és egy RTSP-kiszolgálóval létesített munkamenetet tud létesíteni. Számos eszköz, például a legtöbb [IP-kamera](https://en.wikipedia.org/wiki/IP_camera) beépített RTSP-kiszolgálóval rendelkezik. A [ONVIF](https://www.onvif.org/) megbízza az RTSP-t, hogy az a [G, S & T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) szabványnak megfelelő eszközök definíciójában legyen támogatva. Az RTSP-forrás csomóponthoz meg kell adnia egy RTSP URL-címet, valamint a hitelesített kapcsolat engedélyezéséhez szükséges hitelesítő adatokat.
 
 #### <a name="iot-hub-message-source"></a>IoT Hub üzenet forrása 
 

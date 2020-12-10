@@ -1,15 +1,14 @@
 ---
 title: GYIK – Azure-beli virtuális gépek biztonsági mentése
 description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszokat.
-ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 0f4f990654cc23fde7cf1ad2e37ba1ada76d94e3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324788"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008350"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -163,11 +162,20 @@ Az olyan műveletek, mint a titkos kulcs/kulcsok átadása nem igénylik ezt a l
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>A virtuális gép a tartományvezérlővel megszakadt kapcsolattal rendelkező virtuális gépek miatt is elérhető a helyreállításhoz?
 
-Igen, a virtuális gépet a rendszer visszaállította a tartományvezérlővel megszakadt kapcsolatot biztosító virtuális gép miatt. További információkért tekintse meg ezt a [cikket](./backup-azure-arm-restore-vms.md#post-restore-steps)
+Igen, a virtuális gépet a rendszer visszaállította a tartományvezérlővel megszakadt kapcsolatot biztosító virtuális gép miatt. További információkért tekintse meg [ezt a cikket](./backup-azure-arm-restore-vms.md#post-restore-steps).
+
+### <a name="can-i-cancel-an-in-progress-restore-job"></a>Törölhetek egy folyamatban lévő visszaállítási feladatot?
+Nem, a folyamatban lévő visszaállítási feladat nem szakítható meg.
 
 ### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Miért tart sokáig a visszaállítási művelet végrehajtása?
 
 A teljes visszaállítási idő a másodpercenkénti bemeneti/kimeneti műveletektől (IOPS) és a Storage-fiók átviteli sebességtől függ. A teljes visszaállítási idő hatással lehet, ha a célként megadott Storage-fiók betöltődik más alkalmazás-olvasási és írási műveletekkel. A visszaállítási művelet javításához válasszon olyan Storage-fiókot, amely nincs betöltve más alkalmazásadatok használatával.
+
+### <a name="how-do-we-handle-create-new-virtual-machine-restore-type-conflicts-with-governance-policies"></a>Hogyan kezelhető az "új virtuális gép létrehozása" – a Restore Type ütközik az irányítási szabályzatokkal?
+
+Azure Backup a "csatolás" lemezeket használja a helyreállítási pontokról, és nem tekinti meg a képhivatkozásokat vagy galériákat. Tehát a szabályzatban a "storageProfile. osDisk. createOption as attach" (csatolás) lehetőséget kell bejelölni, és a parancsfájl feltétele a következő lesz:
+
+`if (storageProfile.osDisk.createOption == "Attach") then { exclude <Policy> }`
 
 ## <a name="manage-vm-backups"></a>Virtuális gép biztonsági mentéseinek kezelése
 

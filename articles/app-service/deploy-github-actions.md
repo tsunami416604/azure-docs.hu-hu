@@ -7,14 +7,14 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 16a21acabfd199ba16068e507919b564f01a76d5
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: b94e35f504a4c4d6e934ec01b06105f749031e35
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763910"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007381"
 ---
-# <a name="deploy-to-app-service-using-github-actions"></a>Üzembe helyezés a App Service GitHub-műveletek használatával
+# <a name="deploy-to-app-service-using-github-actions"></a>Üzembe helyezés az App Service-ben a GitHub Actions segítségével
 
 Ismerkedjen meg a [GitHub-műveletekkel](https://help.github.com/en/articles/about-github-actions) a munkafolyamatok automatizálásához és a githubról [Azure app Service](overview.md) üzembe helyezéséhez. 
 
@@ -80,7 +80,7 @@ A közzétételi profil egy alkalmazás szintű hitelesítő adat. A közzétét
 
 # <a name="service-principal"></a>[Szolgáltatásnév](#tab/userlevel)
 
-Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
+Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -279,7 +279,7 @@ A kód App Service alkalmazásba való üzembe helyezéséhez használja a `azur
 |---------|---------|
 | **alkalmazás neve** | Szükséges A App Service alkalmazás neve | 
 | **közzétételi profil** | Választható Profil fájl tartalmának közzététele a web Deploy Secrets szolgáltatásban |
-| **package** | Választható Csomag vagy mappa elérési útja. Az elérési út tartalmazhatja a *. zip, *. War, *. jar vagy a telepítendő mappát |
+| **csomag** | Választható Csomag vagy mappa elérési útja. Az elérési út tartalmazhatja a *. zip, *. War, *. jar vagy a telepítendő mappát |
 | **tárolóhely neve** | Választható Adja meg az üzemi [tárolóhelytől](deploy-staging-slots.md) eltérő meglévő tárolóhelyet |
 
 
@@ -732,7 +732,7 @@ jobs:
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit, amelyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub használatához a CI/CD-hez, és az alkalmazások üzembe helyezését az Azure-ban.
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 25d5aa3961ad5dabd29ab4501d8f5076362d9df8
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b3d88c99ab0e9e204eb4d7dd78dc319f889a5e7d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862266"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005511"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Oktatóanyag: Node.js-és MongoDB-alkalmazás létrehozása az Azure-ban
 
@@ -129,7 +129,7 @@ A MongoDB esetében ez az oktatóanyag az [Azure Cosmos DB-t](/azure/documentdb/
 > Van bizonyos költségvonzata, ha a jelen oktatóanyag keretében az Azure Cosmos DB-adatbázisokat létrehozza a saját Azure-előfizetésében. A hét napig ingyenesen használható Azure Cosmos DB-fiók kipróbálásához kövesse [az Azure Cosmos DB ingyenes kipróbálását](https://azure.microsoft.com/try/cosmosdb/) ismertető részben leírtakat. A MongoDB csempe **Létrehozás** gombjára kattintva egyszerűen létrehozhat egy ingyenes MongoDB-adatbázist az Azure-ban. Az adatbázis létrehozása után keresse meg a **kapcsolati sztringet** a portálon, és kérje le az Azure Cosmos DB kapcsolati sztringjét, amelyet az oktatóanyag későbbi részében fog használni.
 >
 
-A Cloud Shell hozzon létre egy Cosmos DB fiókot a [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) paranccsal.
+A Cloud Shell hozzon létre egy Cosmos DB fiókot a [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) paranccsal.
 
 A következő parancsban helyettesítse be a helyőrző egyedi Cosmos DB nevét *\<cosmosdb-name>* . Ezt a nevet a rendszer a Cosmos DB-végpont (`https://<cosmosdb-name>.documents.azure.com/`) részeként fogja használni, így a névnek egyedinek kell lennie az Azure-ban található összes Cosmos DB-fiókban. A név csak kisbetűket, számokat és kötőjel (-) karaktert tartalmazhat, és 3–50 karakter hosszúságú lehet.
 
@@ -163,7 +163,7 @@ Ebben a lépésben a MEAN.js-mintaalkalmazást a MongoDB-kapcsolati sztring hasz
 
 ### <a name="retrieve-the-database-key"></a>Az adatbáziskulcs lekérése
 
-A Cosmos DB-adatbázishoz való csatlakozáshoz adatbáziskulcs szükséges. Az Cloud Shell a [`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-keys) parancs használatával kérje le az elsődleges kulcsot.
+A Cosmos DB-adatbázishoz való csatlakozáshoz adatbáziskulcs szükséges. Az Cloud Shell a [`az cosmosdb list-keys`](/cli/azure/cosmosdb#az-cosmosdb-list-keys) parancs használatával kérje le az elsődleges kulcsot.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup
@@ -276,7 +276,7 @@ Ebben a lépésben a MongoDB-hez csatlakoztatott Node.js-alkalmazást fogja üze
 
 Alapértelmezés szerint a MEAN.js-projekt a Git-adattáron kívül tartja a _config/env/local-production.js_ fájlt. Az Azure-alkalmazáshoz tehát az Alkalmazásbeállítások segítségével határozhatja meg a MongoDB-kapcsolódási karakterláncot.
 
-Az Alkalmazásbeállítások megadásához használja a [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud shell. 
+Az Alkalmazásbeállítások megadásához használja a [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) parancsot a Cloud shell. 
 
 Az alábbi példa egy `MONGODB_URI` alkalmazás beállítását konfigurálja az Azure-alkalmazásban. Cserélje le a *\<app-name>* , *\<cosmosdb-name>* , és *\<primary-master-key>* helyőrzőket.
 
@@ -482,7 +482,7 @@ Ha korábban hozzáadott cikkeket, továbbra is láthatja őket. A Cosmos DB-ben
 
 Bár a Node.js-alkalmazás az Azure App Service-ben fut, a konzolnaplófájlokat megkaphatja a terminálban is. Így ugyanazokat a diagnosztikai üzeneteket kaphatja meg az alkalmazáshibák elhárításához.
 
-A log streaming elindításához használja a [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) parancsot a Cloud Shellban.
+A log streaming elindításához használja a [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) parancsot a Cloud Shellban.
 
 ```azurecli-interactive
 az webapp log tail --name <app-name> --resource-group myResourceGroup

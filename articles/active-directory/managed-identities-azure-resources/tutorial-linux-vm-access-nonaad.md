@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/09/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cfcaec38a939291090da7d2229c4a95f984bf28
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 01da3c186aa5d2f64028a13e08cb892255d81854
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360440"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007806"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Oktatóanyag: Az Azure Key Vault elérése Linux VM-beli, rendszer által hozzárendelt felügyelt identitással 
 
@@ -36,7 +36,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
  
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A felügyelt identitások ismerete. Ha még nem ismeri az Azure-erőforrások felügyelt identitására vonatkozó funkciót, tekintse meg ezt az [áttekintést](overview.md). 
+- A felügyelt identitások alapszintű ismerete. Ha még nem ismeri az Azure-erőforrások felügyelt identitására vonatkozó funkciót, tekintse meg ezt az [áttekintést](overview.md). 
 - Egy Azure-fiókkal, [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - A "tulajdonos" engedély a megfelelő hatókörben (előfizetése vagy erőforráscsoport) a szükséges erőforrás-létrehozási és szerepkör-felügyeleti lépések végrehajtásához. Ha segítségre van szüksége a szerepkör-hozzárendeléssel kapcsolatban, tekintse meg [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](../../role-based-access-control/role-assignments-portal.md) részben leírtakat.
 - Szüksége van egy linuxos virtuális gépre is, amelyhez engedélyezve van a rendszerhez rendelt felügyelt identitások.
@@ -75,7 +75,7 @@ A virtuális gép által használt felügyelt identitásnak hozzáférést kell 
 1. A **hozzáférési házirend hozzáadása** szakasz **Konfigurálás a sablon alapján (nem kötelező)** területen válassza a **titkos kezelés** lehetőséget a legördülő menüből.
 1. Válassza a **Rendszerbiztonsági tag kijelölése** lehetőséget, és a keresőmezőben adja meg a korábban létrehozott virtuális gép nevét.  Válassza ki a virtuális gépet az eredmények listájában, és válassza a **kiválasztás** lehetőséget.
 1. Válassza a **Hozzáadás** lehetőséget
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="create-a-secret"></a>Titkos kulcs létrehozása
 
@@ -121,7 +121,7 @@ A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre.  Windows haszná
     A hozzáférési jogkivonat használatával hitelesíthet az Azure Key Vaultban.  A következő CURL-kérés bemutatja, hogyan lehet a Key Vaultból titkos kulcsot beolvasni a CURL és a Key Vault REST API használatával.  Szüksége lesz a Key Vault URL-címére, amely a Key Vault **Áttekintés** lapjának **Alapvető erőforrások** szakaszában található.  Szüksége lesz az előző hívásban lekért hozzáférési jogkivonatra is. 
         
     ```bash
-    curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl 'https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
     
     A válasz a következőképp fog kinézni: 

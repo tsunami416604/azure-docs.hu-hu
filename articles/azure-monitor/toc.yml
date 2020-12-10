@@ -29,10 +29,6 @@
           href: learn/quick-collect-windows-computer.md
     - name: Alkalmazások figyelése
       items:
-        - name: .NET-alkalmazás
-          href: learn/quick-monitor-portal.md
-        - name: .NET Core-alkalmazás
-          href: learn/dotnetcore-quick-start.md
         - name: Node.js-alkalmazás
           href: learn/nodejs-quick-start.md
         - name: Mobilalkalmazás
@@ -680,8 +676,10 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: JVM-argumentumok beállítása
                       href: app/java-standalone-arguments.md
-                    - name: 'Frissítés a következőről: 2.x'
+                    - name: Frissítés a 2.x SDK-ról
                       href: app/java-standalone-upgrade-from-2x.md
+                    - name: Hibaelhárítás
+                      href: app/java-standalone-troubleshoot.md
             - name: Helyszíni kiszolgálók
               items:
                 - name: ASP.NET
@@ -1014,6 +1012,8 @@
           href: insights/container-insights-deployment-hpa-metrics.md
         - name: Tartós kötetek (PV-k) monitorozása
           href: insights/container-insights-persistent-volumes.md
+        - name: Jelentések fül
+          href: insights/container-insights-reports.md
         - name: Élő adatok megtekintése
           items:
             - name: Élő adatok (előzetes verzió) áttekintése

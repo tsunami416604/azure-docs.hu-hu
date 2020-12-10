@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: a bizarr Studio konfigurálása a digitális folyamatok automatizálásához az automatikus felhasználó-kiépítés Azure Active Directory segítségével | Microsoft Docs'
-description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a bizarr studióba a digitális folyamatok automatizálásához.
+description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és felépíteni felhasználói fiókokat az Azure AD-ből a bizarr studióba a digitális folyamatok automatizálásához.
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: d177931429642436ceccae9c9051106ba5880ada
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 141dd37dff8403825df713de8f7176d4dd9d20f8
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180302"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008044"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Oktatóanyag: a bizarr Studio konfigurálása a digitális folyamatok automatizálásához a felhasználók automatikus üzembe helyezéséhez
 
-Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a bizarr Studióban kell elvégezni a digitális folyamatok automatizálásához és Azure Active Directory (Azure AD) az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat a bizarr Studio-hoz a [digitális folyamatok automatizálásához](https://www.bizagi.com/) az Azure ad kiépítési szolgáltatás használatával. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md). 
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a bizarr Studióban kell elvégezni a digitális folyamatok automatizálásához és Azure Active Directory (Azure AD) az automatikus felhasználó-kiépítés konfigurálásához. Ha erre van konfigurálva, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat a bizarr Studio-hoz a [digitális folyamatok automatizálásához](https://www.bizagi.com/) az Azure ad kiépítési szolgáltatás használatával. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
@@ -36,89 +36,92 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a bizarr Studióban
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
-* [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
+* [Egy Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). 
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására. Ilyenek például az alkalmazás rendszergazdája, a felhőalapú alkalmazás rendszergazdája, az alkalmazás tulajdonosa vagy a globális rendszergazda. 
 * A bizarr Studio for digitális Process Automation 11.2.4.2 X vagy újabb verziója.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
+## <a name="plan-your-provisioning-deployment"></a>Az átadás üzembe helyezésének megtervezése
+Kövesse az alábbi lépéseket a tervezéshez:
+
 1. Ismerje meg [az átadási szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Határozza meg, hogy ki lesz [az átadás hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+2. Határozza meg, hogy kik lesznek [a kiépítés hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 3. Határozza meg, hogy az [Azure ad és a bizarr Studio milyen adatleképezést biztosít a digitális folyamatok automatizálásához](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-## <a name="step-2-configure-bizagi-studio-for-digital-process-automation-to-support-provisioning-with-azure-ad"></a>2. lépés A bizarr Studio konfigurálása a digitális folyamatok automatizálásához az Azure AD-vel való kiépítés támogatásához
-
+## <a name="configure-to-support-provisioning-with-azure-ad"></a>Konfigurálás az Azure AD-vel való kiépítés támogatásához
+A bizarr Studio for digitális folyamatok automatizálásának konfigurálásához az Azure AD-vel való kiépítés támogatásához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a munkahelyi portálra **rendszergazdai engedélyekkel** rendelkező felhasználóként.
 
-2. Navigáljon a **rendszergazda – > biztonság – > OAuth 2 alkalmazásra**.
+2. Lépjen a **rendszergazda**  >  **biztonsági**  >  **OAuth 2 alkalmazáshoz**.
 
-   ![beállítások](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/admin.png)
+   ![Képernyőkép a bizarr-ről, a OAuth 2 alkalmazással kiemelve.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/admin.png)
 
-3. Kattintson a Hozzáadás gombra.
-4. Válasszon **tulajdonosi jogkivonatot** a Grant típusban. Válassza az **API** és a **felhasználói szinkronizálás** lehetőséget az engedélyezett hatókörben, majd kattintson a Mentés gombra.
+3. Válassza a **Hozzáadás** elemet.
+4. A **támogatás típusa** mezőben válassza a **tulajdonosi jogkivonat** lehetőséget. Az **engedélyezett hatókör** beállításnál válassza az **API** és a **felhasználói szinkronizálás** lehetőséget. Kattintson a **Mentés** gombra.
 
-   ![api](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/token.png)
+   ![Képernyőkép az alkalmazás regisztrálása beállításról, a támogatás típusa és a megengedett hatókör kiemelve.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/token.png)
 
-5. Másolja ki és mentse az **ügyfél titkos kulcsát**. Ez az érték a bizarr Studio for digitális Process Automation-alkalmazás létesítés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal.
+5. Másolja ki és mentse az **ügyfél titkos kulcsát**. A bizarr Studio for digitális Process Automation alkalmazáshoz tartozó Azure Portal a **kiépítés** lapon az ügyfél titkos értéke szerepel a **titkos jogkivonat** mezőben.
 
-   ![jogkivonat](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/secret.png)
+   ![Képernyőkép a OAuth, az ügyfél titkos highlighed.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/secret.png)
 
-## <a name="step-3-add-bizagi-studio-for-digital-process-automation-from-the-azure-ad-application-gallery"></a>3. lépés A bizarr Studio hozzáadása a digitális folyamatok automatizálásához az Azure AD Application Galleryből
+## <a name="add-the-application-from-the-azure-ad-gallery"></a>Az alkalmazás hozzáadása az Azure AD-katalógusból
 
-A bizarr Studio for digitális folyamatok automatizálása az Azure AD-alkalmazás-galériából a bizarr Studio for digitális folyamatok automatizálásához való kiépítés kezelésének megkezdéséhez. Ha korábban már telepítette a bizarr Studio alkalmazást az egyszeri bejelentkezéshez használt digitális folyamatok automatizálásához, ugyanazt az alkalmazást használhatja. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet. 
+A digitális folyamatok automatizálásához a bizarr studióhoz való kiépítés kezelésének megkezdéséhez vegye fel az alkalmazást az Azure AD Application Gallery webhelyről. Ha korábban már beállította a bizarr Studio for digitális folyamatok automatizálását az egyszeri bejelentkezéshez, ugyanazt az alkalmazást használhatja. Ha először teszteli az integrációt, hozzon létre egy külön alkalmazást. További információ: rövid útmutató [: alkalmazás hozzáadása a Azure Active Directory (Azure ad) bérlőhöz](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása 
+## <a name="define-who-is-in-scope-for-provisioning"></a>A kiépítés hatókörében lévő felhasználók meghatározása 
 
-Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) leírt hatókörszűrőt használhatja. 
+Az Azure AD kiépítési szolgáltatásával kiépítheti az alkalmazáshoz való hozzárendelés alapján kiépített hatókört a felhasználó és a csoport attribútumai alapján, vagy mindkettőt. Ha a hatókört a hozzárendelés alapján használja, tekintse meg a felhasználók és csoportok az alkalmazáshoz való hozzárendeléséhez és [Graph API a csoportok](../manage-apps/assign-user-or-group-access-portal.md) hozzárendelésének visszavonásához szükséges lépéseket. Ha a hatóköre kizárólag a felhasználó vagy csoport attribútumain alapul, egy hatókör-szűrőt is használhat. További információ: [attribútum-alapú alkalmazás kiépítés hatóköri szűrőkkel](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-* Amikor felhasználókat és csoportokat rendel a bizarr studióhoz a digitális folyamatok automatizálásához, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps). 
+Vegye figyelembe a következő szempontokat a hatókörről:
 
-* Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* Amikor felhasználókat és csoportokat rendel a bizarr studióhoz a digitális folyamatok automatizálásához, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól, és a kiépítési naplókban vannak megjelölve, mivel a nem ténylegesen jogosultként lesz megjelölve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
+
+* Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-bizagi-studio-for-digital-process-automation"></a>5. lépés Az automatikus felhasználó-kiépítés konfigurálása a bizarr studióhoz a digitális folyamatok automatizálásához 
+## <a name="configure-automatic-user-provisioning"></a>A felhasználók automatikus átadásának konfigurálása 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+Ez a szakasz végigvezeti a felhasználók és csoportok létrehozásához, frissítéséhez és letiltásához szükséges Azure AD-kiépítési szolgáltatás konfigurálásának lépésein. Ezt a tesztelési alkalmazásban végezheti el, az Azure AD-ben a felhasználók és csoportok hozzárendelései alapján.
 
-### <a name="to-configure-automatic-user-provisioning-for-bizagi-studio-for-digital-process-automation-in-azure-ad"></a>Az Azure AD-ben a digitális folyamatok automatizálására szolgáló bizarr Studio automatikus felhasználó-kiépítési beállítása:
+### <a name="configure-automatic-user-provisioning-for-bizagi-studio-for-digital-process-automation-in-azure-ad"></a>Az Azure AD-ben a digitális folyamatok automatizálására szolgáló bizarr Studio automatikus felhasználó-kiépítés konfigurálása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **Vállalati alkalmazások** lehetőséget, majd a **Minden alkalmazás** elemet.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![Képernyőkép a Azure Portalről, nagyvállalati alkalmazásokkal és a Kiemelt alkalmazásokkal.](common/enterprise-applications.png)
 
 2. Az alkalmazások listában válassza a **bizarr Studio lehetőséget a digitális folyamatok automatizálásához**.
 
-    ![A bizarr Studio for Digital Process Automation hivatkozása az alkalmazások listájában](common/all-applications.png)
-
 3. Válassza a **Kiépítés** lapot.
 
-    ![Kiépítés lap](common/provisioning.png)
+    ![Képernyőkép a kezelés lehetőségeiről a kiépítés kiemelésével.](common/provisioning.png)
 
-4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
+4. A **kiépítési mód** beállítása **automatikusra**.
 
-    ![Kiépítés lap automatikus](common/provisioning-automatic.png)
+    ![Screenshotof kiépítési mód vezérlő, automatikus kiemelve.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a bizarr Studio for Digital Process Automation-bérlő URL-címét és a titkos tokent. 
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a bérlői URL-címet és a titkos tokent a bizarr studióhoz a digitális folyamatok automatizálásához. 
 
-      * **Bérlői URL-cím:** Adja meg a bizarr SCIM végpontot a következő struktúrával: <Your_Bizagi_Project>/scim/v2/példa: `https://my-company.bizagi.com/scim/v2/`
+      * **Bérlői URL-cím:** Adja meg a bizarr SCIM-végpontot a következő szerkezettel:  `<Your_Bizagi_Project>/scim/v2/` .
+         Például: `https://my-company.bizagi.com/scim/v2/`.
 
-      * **Titkos jogkivonat:** Ez az érték a 2. lépésben lekéri a korábbi értéket.
+      * **Titkos jogkivonat:** Ezt az értéket a cikk korábbi részében ismertetett lépésből kéri le a rendszer.
 
-      Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen csatlakozni a bizarr studióhoz a digitális folyamatok automatizálásához. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a bizarr Studio for digitális Process Automation-fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+      Válassza a **kapcsolat tesztelése** lehetőséget annak biztosításához, hogy az Azure ad csatlakozhasson a digitális folyamatok automatizálásához használható bizarr studióhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a bizarr Studio for digitális Process Automation-fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-   ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
+   ![Képernyőkép a rendszergazdai hitelesítő adatokról, a tesztelési kapcsolatok kiemelésével.](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **Értesítés e-mailben** mezőben adja meg annak a személynek vagy csoportnak az e-mail-címét, aki az átadással kapcsolatos hibaüzeneteket kapja, és jelölje be az **E-mail-értesítés küldése hiba esetén** jelölőnégyzetet.
+6. Az **értesítő e-mailek** esetében adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket. Válassza az **e-mail-értesítés küldése hiba** esetén lehetőséget.
 
-    ![Értesítés e-mailben](common/provisioning-notification-email.png)
+    ![Az értesítő e-mail-beállítások képernyőképe.](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a bizarr Studio digitális folyamatok automatizálásához** lehetőséget.
+8. A **leképezések** szakaszban válassza az **Azure Active Directory-felhasználók szinkronizálása a bizarr Studio digitális folyamatok automatizálásához** lehetőséget.
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat a digitális folyamatok automatizálására szolgáló bizarr az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a bizarr Studio felhasználói fiókjainak egyeztetésére használhatók a frissítési műveletekhez a digitális folyamatok automatizálásához. Ha úgy dönt, hogy megváltoztatja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), gondoskodnia kell arról, hogy a bizarr Studio for digitális Process Automation API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Az **attribútum-leképezés** szakaszban tekintse át az Azure ad-ből szinkronizált felhasználói attribútumokat a digitális folyamatok automatizálására szolgáló bizarr studióba. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a bizarr Studio felhasználói fiókjainak egyeztetésére használhatók a frissítési műveletekhez a digitális folyamatok automatizálásához. Ha megváltoztatja a [megfeleltetési attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), meg kell győződnie arról, hogy a bizarr Studio for digitális Process Automation API támogatja a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
 
    |Attribútum|Típus|Szűréshez támogatott|
    |---|---|---|
@@ -130,28 +133,28 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |név. formázott|Sztring|
    |phoneNumbers[type eq "mobile"].value|Sztring|
    
-10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+10. A hatóköri szűrők konfigurálásához tekintse meg a [hatóköri szűrő oktatóanyagát](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a bizarr Studio számára a digitális folyamatok automatizálásához, módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban.
+11. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a bizarr studióhoz a digitális folyamatok automatizálásához, a **Beállítások** szakaszban módosítsa a **kiépítési állapotot** **a** következőre:.
 
-    ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
+    ![A kiépítési állapot váltógomb képernyőképe.](common/provisioning-toggle-on.png)
 
-12. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket a bizarr Studio for digitális folyamatok automatizálásához szeretne kiépíteni, ehhez válassza ki a kívánt értékeket a **hatókörben** a **Beállítások** szakaszban.
+12. Adja meg azokat a felhasználókat és csoportokat, amelyeket a bizarr studióhoz szeretne telepíteni a digitális folyamatok automatizálásához. A **Beállítások** szakaszban válassza ki a kívánt értékeket a **hatókörben**.
 
-    ![Átadási hatókör](common/provisioning-scope.png)
+    ![Képernyőfelvétel a hatókör beállításairól.](common/provisioning-scope.png)
 
-13. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
+13. Ha készen áll a létesítésre, válassza a **Mentés** lehetőséget.
 
-    ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![Képernyőkép a vezérlő mentéséről.](common/provisioning-configuration-save.png)
 
 Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát elindítja. A kezdeti ciklus elvégzése hosszabb időt vesz igénybe, mint a későbbi ciklusok, amelyek az Azure AD átadási szolgáltatásának futtatása során körülbelül 40 percenként lesznek végrehajtva. 
 
-## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
-Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
+## <a name="monitor-your-deployment"></a>Az üzemelő példány figyelése
+A kiépítés beállítása után a következő erőforrásokkal figyelheti az üzemelő példányt:
 
-1. Az [átadási naplókkal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
-2. A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
-3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) találhat további információt.  
+- A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül.
+- Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a befejezéshez.
+- Ha a létesítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információkért lásd: [az alkalmazás üzembe helyezése a karantén állapotában](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
 ## <a name="additional-resources"></a>További források
 

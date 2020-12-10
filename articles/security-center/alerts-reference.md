@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/22/2020
+ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: 68fa63bf42b7577402d8c58ebe22a0a16b5776fb
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4254288a85b3b57afbdd6833242a6f4ad0eb0afc
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751002"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005137"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások - – referencia-útmutató
 
@@ -372,7 +372,7 @@ A lap alján található egy táblázat, amely leírja a riasztások szándéká
 [További részletek és megjegyzések](defender-for-dns-introduction.md)
 
 | Riasztás                                                                                                                | Leírás                                                                                                                                                                                                                                                                                                                                                                                      | Szándék<br>([További információ](#intentions)) | Súlyosság |
-|----------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|---------------------------------------|
+|----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------:|
 | **Rendellenes hálózati protokollok használata (előzetes verzió)**<br>(AzureDNS_ProtocolAnomaly)                                         | A (z)% {CompromisedEntity} kiszolgálóról származó DNS-tranzakciók elemzése rendellenes protokoll-használatot észlelt. Előfordulhat, hogy az ilyen forgalom, míg valószínűleg jóindulatú, az általános protokollal való visszaélést jelezheti a hálózati forgalom szűrésének megkerülése érdekében. A jellemző kapcsolódó támadó tevékenység magában foglalja a távfelügyeleti eszközök egy feltört gazdagépre való másolását és a felhasználói adatok hogy kiszivárogtassák.                                          | Kiszűrése                          | -        |
 | **Anonimitás hálózati tevékenység (előzetes verzió)**<br>(AzureDNS_DarkWeb)                                                       | A (z)% {CompromisedEntity} kiszolgálóról származó DNS-tranzakciók elemzése során a rendszer névtelen hálózati tevékenységet észlelt. A támadók gyakran alkalmazzák a hálózati kommunikáció nyomon követését és ujjlenyomatát, így az ilyen tevékenységek – noha valószínűleg a jogos felhasználói viselkedés – gyakoriak. A jellemző kapcsolódó támadó tevékenység valószínűleg magában foglalja a kártevő szoftverek vagy távfelügyeleti eszközök letöltését és végrehajtását. | Kiszűrése                          | -        |
 | **Névtelen hálózati tevékenység a webproxy használatával (előzetes verzió)**<br>(AzureDNS_DarkWebProxy)                                  | A (z)% {CompromisedEntity} kiszolgálóról származó DNS-tranzakciók elemzése során a rendszer névtelen hálózati tevékenységet észlelt. A támadók gyakran alkalmazzák a hálózati kommunikáció nyomon követését és ujjlenyomatát, így az ilyen tevékenységek – noha valószínűleg a jogos felhasználói viselkedés – gyakoriak. A jellemző kapcsolódó támadó tevékenység valószínűleg magában foglalja a kártevő szoftverek vagy távfelügyeleti eszközök letöltését és végrehajtását. | Kiszűrése                          | -        |
@@ -519,7 +519,7 @@ A Security Center támogatott kill Chain-leképezések a következő táblázatb
 > [!NOTE]
 > Előzetes verzióban elérhető riasztások esetén: [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A riasztásokkal kapcsolatos további tudnivalókért tekintse meg a következőket:
 
 - [Biztonsági riasztások az Azure Security Centerben](security-center-alerts-overview.md)

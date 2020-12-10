@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/09/2020
+ms.openlocfilehash: 12630e5e4b332d875a75c59d2fdafecd23be0b17
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000079"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005429"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Az Azure szinapszis Analyticsbe való betöltés Azure Data Factory használatával
 
@@ -57,7 +57,7 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
     * **Verzió**: Válassza a **V2** lehetőséget.
     * **Hely**: válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. Ezek az adattárak a következők: Azure Data Lake Store, Azure Storage, Azure SQL Database stb.
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható:
 
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
@@ -102,7 +102,7 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 
     a. Kapcsolat hozzáadásához kattintson a **+ Új kapcsolat létrehozása** lehetőségre
 
-    b. Válassza ki az **Azure szinapszis Analytics (korábban SQL Data Warehouse)** elemet a katalógusból, és válassza a **Folytatás** lehetőséget. Az összekötők szűréséhez a keresőmezőbe írja be az "SQL" kifejezést.
+    b. Válassza ki az **Azure szinapszis Analytics** elemet a katalógusból, és válassza a **Folytatás** lehetőséget.
 
     ![Az Azure szinapszis Analytics kiválasztása](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
@@ -149,7 +149,7 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 
     ![Tevékenység-futtatási részletek figyelése – második](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megismerheti az Azure szinapszis Analytics támogatását:
 

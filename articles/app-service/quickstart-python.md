@@ -6,16 +6,18 @@ ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: 7eebbe5605c0b4d70ea15c1605cff5416965e535
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 8e360b1fb25543537f746a31435e8df937414f98
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780773"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007110"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
 Ebben a rövid útmutatóban egy Python-webalkalmazást helyez üzembe a [Linuxon](overview.md#app-service-on-linux), az Azure rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatásának app Service. Egy Mac, Linux vagy Windows rendszerű számítógépen a helyi [Azure parancssori felület (CLI)](/cli/azure/install-azure-cli) segítségével helyezheti üzembe a mintát a lombiktal vagy a Django keretrendszerek használatával. Az Ön által konfigurált webalkalmazás ingyenes App Service szintet használ, így a cikk során nem jár költségekkel.
+
+A **gyakori kifejezések definícióit** lásd [röviden az Azure-terminológiában](/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json).
 
 > [!TIP]
 > Ha inkább a Visual Studio Code-ot szeretné használni, kövesse a **[Visual Studio code app Service](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** rövid útmutatót.
@@ -117,7 +119,7 @@ Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp
 
     ![Egy minta Python-alkalmazás helyi futtatása](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
-1. A terminál ablakban a **CTRL** C billentyűkombináció lenyomásával + **C** lépjen ki a fejlesztői kiszolgálóról.
+1. A terminál ablakban a **CTRL** C billentyűkombináció lenyomásával +  lépjen ki a fejlesztői kiszolgálóról.
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
@@ -143,7 +145,7 @@ Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp
 
     ![Egy minta Python-alkalmazás helyi futtatása](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
-1. A terminál ablakban a **CTRL** C billentyűkombináció lenyomásával + **C** lépjen ki a fejlesztői kiszolgálóról.
+1. A terminál ablakban a **CTRL** C billentyűkombináció lenyomásával +  lépjen ki a fejlesztői kiszolgálóról.
 ::: zone-end
 
 Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp).
@@ -277,7 +279,7 @@ Az `--no-wait` argumentum lehetővé teszi, hogy a parancs visszaadja a művelet
 
 Problémák léptek fel? [Tudassa velünk](https://aka.ms/FlaskCLIQuickstartHelp).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python (Django) webalkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)

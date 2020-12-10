@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921029"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006157"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Adatintegráció a Azure Data Factory és az Azure-adatmegosztás használatával
 
@@ -72,7 +72,7 @@ Azure Data Factory társított szolgáltatásokban adja meg a kapcsolati adatoka
     ![Portál konfigurálása 3](media/lab-data-flow-data-share/configure3.png)
 1. Az elsőként konfigurált társított szolgáltatás egy Azure SQL-adatbázis. A keresősáv használatával szűrheti az adattár-listát. Kattintson a **Azure SQL Database** csempére, és kattintson a Folytatás gombra.
 
-    ![Portál konfigurálása 4](media/lab-data-flow-data-share/configure4.png)
+    ![Portál konfigurálása 4](media/lab-data-flow-data-share/configure-4.png)
 1. Az SQL DB konfigurációs ablaktábláján írja be a "SQLDB" nevet a társított szolgáltatás neveként. Adja meg a hitelesítő adatait, hogy a adat-előállító csatlakozhasson az adatbázishoz. SQL-hitelesítés használata esetén adja meg a kiszolgáló nevét, az adatbázist, a felhasználónevét és a jelszavát. A kapcsolatok adatainak ellenőrzéséhez kattintson a **kapcsolatok tesztelése** lehetőségre. Ha elkészült, kattintson a **Létrehozás** gombra.
 
     ![Portál 5. konfigurálás](media/lab-data-flow-data-share/configure5.png)
@@ -81,10 +81,10 @@ Azure Data Factory társított szolgáltatásokban adja meg a kapcsolati adatoka
 
 1. Ismételje meg ugyanezt a folyamatot egy Azure szinapszis Analytics társított szolgáltatás hozzáadásához. A kapcsolatok lapon kattintson az **új** elemre. Válassza ki az **Azure szinapszis Analytics** csempét, és kattintson a Continue (folytatás) gombra.
 
-    ![Portál – 6. konfigurálás](media/lab-data-flow-data-share/configure6.png)
+    ![Portál – 6. konfigurálás](media/lab-data-flow-data-share/configure-6.png)
 1. A társított szolgáltatás konfigurációja ablaktáblán írja be a "SQLDW" nevet a társított szolgáltatás neveként. Adja meg a hitelesítő adatait, hogy a adat-előállító csatlakozhasson az adatbázishoz. SQL-hitelesítés használata esetén adja meg a kiszolgáló nevét, az adatbázist, a felhasználónevét és a jelszavát. A kapcsolatok adatainak ellenőrzéséhez kattintson a **kapcsolatok tesztelése** lehetőségre. Ha elkészült, kattintson a **Létrehozás** gombra.
 
-    ![Portál konfigurálása 7](media/lab-data-flow-data-share/configure7.png)
+    ![Portál konfigurálása 7](media/lab-data-flow-data-share/configure-7.png)
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>Azure Data Lake Storage Gen2 társított szolgáltatás létrehozása
 
@@ -128,7 +128,7 @@ Azure Data Factory egy folyamat olyan tevékenységek logikai csoportosítása, 
     ![Portal 4. példánya](media/lab-data-flow-data-share/copy4.png)
 1. Keresse meg **Azure SQL Database** , majd kattintson a Folytatás gombra.
 
-    ![Portál 5. példánya](media/lab-data-flow-data-share/copy5.png)
+    ![Portál 5. példánya](media/lab-data-flow-data-share/copy-5.png)
 1. Hívja meg a "TripData" adatkészletet. A társított szolgáltatásként válassza a "SQLDB" lehetőséget. Válassza a táblanév dbo elemet. TripData "a tábla neve legördülő listából. Importálja a sémát a **kapcsolatok/tárolóból**. Ha elkészült, kattintson az OK gombra.
 
     ![Portál 6. példánya](media/lab-data-flow-data-share/copy6.png)
@@ -211,7 +211,7 @@ Az ebben a lépésben létrehozott adatfolyam összekapcsolja az előző szakasz
     ![Portál adatfolyama 9](media/lab-data-flow-data-share/dataflow9.png)
 1. Válassza ki a **Azure SQL Database** csempét, és kattintson a Folytatás gombra. *Megjegyzés: Előfordulhat, hogy az adatelőállítóban található számos összekötő nem támogatott a leképezési adatfolyamban. Az adatoknak az egyik forrásból való átalakításához a másolási tevékenység használatával egy támogatott forrásba kell* bevenni.
 
-    ![Portál adatfolyama 10](media/lab-data-flow-data-share/dataflow10.png)
+    ![Portál adatfolyama 10](media/lab-data-flow-data-share/dataflow-10.png)
 1. Hívja meg a "TripFares" adatkészletet. A társított szolgáltatásként válassza a "SQLDB" lehetőséget. Válassza a táblanév dbo elemet. TripFares "a tábla neve legördülő listából. Importálja a sémát a **kapcsolatok/tárolóból**. Ha elkészült, kattintson az OK gombra.
 
     ![Portál – adatfolyam 11](media/lab-data-flow-data-share/dataflow11.png)
@@ -276,7 +276,7 @@ Az ebben a lépésben létrehozott adatfolyam összekapcsolja az előző szakasz
 
 1. Válassza ki az **Azure szinapszis Analytics** csempét, és kattintson a Continue (folytatás) gombra.
 
-    ![3. portál](media/lab-data-flow-data-share/sink3.png)
+    ![3. portál](media/lab-data-flow-data-share/sink-3.png)
 1. Hívja meg a "AggregatedTaxiData" adatkészletet. A társított szolgáltatásként válassza a "SQLDW" lehetőséget. Válassza az **új tábla létrehozása** lehetőséget, és nevezze el az új tábla dbo. AggregateTaxiData. Ha elkészült, kattintson az OK gombra.
 
     ![Portál fogadója 4](media/lab-data-flow-data-share/sink4.png)

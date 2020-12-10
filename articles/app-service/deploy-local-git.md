@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 84e257111e8da0546cf104e0cc5d3ac95a9294ba
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 5ed3e858168ce5ad9a7f089b723bb75ca8a49fca
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558674"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007517"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi git üzembe helyezése Azure App Service
 
@@ -45,7 +45,7 @@ A legkönnyebben engedélyezhető a helyi git üzembe helyezése az alkalmazásh
 
 ### <a name="get-the-deployment-url"></a>Az üzembe helyezési URL-cím beszerzése
 
-Ha szeretné lekérni az URL-címet, amely lehetővé teszi a helyi git üzembe helyezését egy meglévő alkalmazáshoz, futtassa [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) a parancsot a Cloud shell. Cserélje le a \<app-name> és az \<group-name> alkalmazást az alkalmazás és az Azure-erőforráscsoport nevére.
+Ha szeretné lekérni az URL-címet, amely lehetővé teszi a helyi git üzembe helyezését egy meglévő alkalmazáshoz, futtassa [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) a parancsot a Cloud shell. Cserélje le a \<app-name> és az \<group-name> alkalmazást az alkalmazás és az Azure-erőforráscsoport nevére.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
@@ -54,7 +54,7 @@ az webapp deployment source config-local-git --name <app-name> --resource-group 
 > Ha Linux app-Service-csomagot használ, hozzá kell adnia a következő paramétert:--Runtime Python | 3.7
 
 
-Ha új git-kompatibilis alkalmazást szeretne létrehozni, futtassa a parancsot [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) a Cloud Shellban a (z `--deployment-local-git` ) paraméterrel. Cserélje le a, a \<app-name> \<group-name> és \<plan-name> az nevet az új git-alkalmazás, az Azure-erőforráscsoport és a Azure app Service terv helyére.
+Ha új git-kompatibilis alkalmazást szeretne létrehozni, futtassa a parancsot [`az webapp create`](/cli/azure/webapp#az-webapp-create) a Cloud Shellban a (z `--deployment-local-git` ) paraméterrel. Cserélje le a, a \<app-name> \<group-name> és \<plan-name> az nevet az új git-alkalmazás, az Azure-erőforráscsoport és a Azure app Service terv helyére.
 
 ```azurecli-interactive
 az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git
@@ -157,6 +157,6 @@ A következő gyakori hibaüzenetek jelenhetnek meg, ha a git használatával te
 ## <a name="additional-resources"></a>További források
 
 - [A Project kudu dokumentációja](https://github.com/projectkudu/kudu/wiki)
-- [Folyamatos üzembe helyezés Azure App Service](deploy-continuous-deployment.md)
+- [ Folyamatos üzembe helyezés az Azure App Service-be](deploy-continuous-deployment.md)
 - [Minta: Webalkalmazás létrehozása és kód üzembe helyezése helyi git-adattárból (Azure CLI)](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
 - [Példa: Webalkalmazás létrehozása és kód üzembe helyezése helyi git-adattárból (PowerShell)](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)

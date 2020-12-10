@@ -95,6 +95,8 @@
       href: ../../mysql/security-baseline.md
     - name: Azure Database for MariaDB biztonsági alapkonfigurációja
       href: ../../mariadb/security-baseline.md
+    - name: Az Azure Database Migration Service biztonsági alapkonfigurációja
+      href: ../../dms/security-baseline.md
     - name: Azure Database for PostgreSQL – biztonsági alapkonfiguráció rugalmas skálázása
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Database for PostgreSQL – egykiszolgálós biztonsági alapkonfiguráció
