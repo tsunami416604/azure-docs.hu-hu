@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961720"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008554"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service Linuxon – gyakori kérdések
 
@@ -56,7 +56,7 @@ Igen, ezt megteheti a verziókövetés-kezelő (SCM) webhelyen.
 
 **Hogyan hozhatok létre Linux App Service csomagot SDK-n vagy egy Azure Resource Manager sablonon keresztül?**
 
-Állítsa az App Service **fenntartott** mezőjét *igaz*értékre.
+Állítsa az App Service **fenntartott** mezőjét *igaz* értékre.
 
 ## <a name="continuous-integration-and-deployment"></a>Folyamatos integráció és üzembe helyezés
 
@@ -94,7 +94,7 @@ Igen, tiltsa le a `perMessageDeflate` kiszolgálóoldali Node.js kódot. Ha pél
 
 ```nodejs
 const io = require('socket.io')(server,{
-  perMessageDeflate :false
+  perMessageDeflate :false
 });
 ```
 
@@ -110,7 +110,7 @@ Igen, a git üzembe helyezése során a kudu meg kell állapítania, hogy egy PH
 
 **Saját egyéni tárolót használok. Szeretném, hogy a platform csatlakoztatjon egy SMB-megosztást a `/home/` címtárhoz.**
 
-Ha `WEBSITES_ENABLE_APP_SERVICE_STORAGE` a beállítás nincs **megadva** , vagy *igaz*értékre van állítva, a `/home/` **rendszer megosztja** a könyvtárat a méretezési példányok között, és a megírt fájlok az újraindítások között **megmaradnak** . Ha explicit módon beállítja a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *Hamis értéket* , a rendszer letiltja a csatlakoztatást.
+Ha `WEBSITES_ENABLE_APP_SERVICE_STORAGE` a beállítás nincs **megadva** , vagy *igaz* értékre van állítva, a `/home/` **rendszer megosztja** a könyvtárat a méretezési példányok között, és a megírt fájlok az újraindítások között **megmaradnak** . Ha explicit módon beállítja a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *Hamis értéket* , a rendszer letiltja a csatlakoztatást.
 
 **Az egyéni tároló hosszú időt vesz igénybe, és a platform újraindítja a tárolót, mielőtt befejezi a kezdést.**
 
@@ -122,7 +122,7 @@ Adja meg a beállításjegyzék teljes URL-címét, beleértve a vagy a-t `http:
 
 **Mi a rendszerkép nevének formátuma a privát beállításjegyzékben?**
 
-Adja hozzá a teljes rendszerkép nevét, beleértve a privát beállításjegyzék URL-címét (például myacr.azurecr.io/dotnet:latest). Egyéni portot használó képnevek [nem vihetők be a portálon keresztül](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). A beállításhoz `docker-custom-image-name` használja a [ `az` parancssori eszközt](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
+Adja hozzá a teljes rendszerkép nevét, beleértve a privát beállításjegyzék URL-címét (például myacr.azurecr.io/dotnet:latest). Egyéni portot használó képnevek [nem vihetők be a portálon keresztül](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). A beállításhoz `docker-custom-image-name` használja a [ `az` parancssori eszközt](/cli/azure/webapp/config/container#az-webapp-config-container-set).
 
 **Ki lehet-e tenni egynél több portot az egyéni tároló rendszerképén?**
 
@@ -201,7 +201,7 @@ Az Alkalmazásbeállítások csak betűk (A-Z, a-z), számok (0-9) és aláhúz�
 
 Ötleteit a [Web Apps visszajelzési fórumában](https://aka.ms/webapps-uservoice)küldheti el. Adja hozzá a "[Linux]" címet az ötlete címéhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi a Linux Azure App Service?](overview.md#app-service-on-linux)
 - [Átmeneti környezetek beállítása az Azure App Service-ben](deploy-staging-slots.md)

@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
-ms.date: 10/2/2020
-ms.openlocfilehash: 022e2e25c96473f49468f2bd48e5ee997933baea
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 12/9/2020
+ms.openlocfilehash: 70a2d5fac643c9af6954f154e1c91813bbbfa5bc
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348712"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008384"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Kimenetek Azure Stream Analytics
 
@@ -25,17 +25,17 @@ Egyes kimeneti típusok támogatják a [particionálást](#partitioning), és a 
 
 | Kimenet típusa | Particionálás | Biztonság | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory felhasználó </br> MSI|
-|[Azure SQL Database](sql-database-output.md)|Igen, nem kötelező.|SQL-felhasználó hitelesítése </br> MSI (előzetes verzió)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Yes|SQL-felhasználó hitelesítése|
-|[BLOB Storage és Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> Hozzáférési kulcs|
-|[Azure Event Hubs](event-hubs-output.md)|Igen, be kell állítania a partíciós kulcs oszlopot a kimeneti konfigurációban.|Hozzáférési kulcs|
-|[Power BI](power-bi-output.md)|No|Azure Active Directory felhasználó </br> MSI|
-|[Azure Table storage](table-storage-output.md)|Yes|Fiókkulcs|
-|[Azure Service Bus-üzenetsorok](service-bus-queues-output.md)|Yes|Hozzáférési kulcs|
-|[Azure Service Bus témakörök](service-bus-topics-output.md)|Yes|Hozzáférési kulcs|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Hozzáférési kulcs|
-|[Azure Functions](azure-functions-output.md)|Yes|Hozzáférési kulcs|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Igen|Azure Active Directory felhasználó </br> , Felügyelt identitás|
+|[Azure SQL Database](sql-database-output.md)|Igen, nem kötelező.|SQL-felhasználó hitelesítése, </br> Felügyelt identitás (előzetes verzió)|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Igen|SQL-felhasználó hitelesítése, </br> Felügyelt identitás (előzetes verzió)|
+|[BLOB Storage és Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Igen|Hozzáférési kulcs, </br> Felügyelt identitás (előzetes verzió)|
+|[Azure Event Hubs](event-hubs-output.md)|Igen, be kell állítania a partíciós kulcs oszlopot a kimeneti konfigurációban.|Hozzáférési kulcs, </br> Felügyelt identitás (előzetes verzió)|
+|[Power BI](power-bi-output.md)|Nem|Azure Active Directory felhasználó, </br> Felügyelt identitás|
+|[Azure Table storage](table-storage-output.md)|Igen|Fiókkulcs|
+|[Azure Service Bus várólisták](service-bus-queues-output.md)|Igen|Hozzáférési kulcs|
+|[Azure Service Bus témakörök](service-bus-topics-output.md)|Igen|Hozzáférési kulcs|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Igen|Hozzáférési kulcs|
+|[Azure Functions](azure-functions-output.md)|Igen|Hozzáférési kulcs|
 
 ## <a name="partitioning"></a>Particionálás
 

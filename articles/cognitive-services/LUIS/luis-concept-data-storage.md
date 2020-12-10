@@ -8,16 +8,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.openlocfilehash: fd7499bd5e216f2a625d87ea13996da851a1889e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/07/2020
+ms.openlocfilehash: a58bcff4e39c4a4a907cd8567b47b074ff299bd5
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019211"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008452"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Adattárolás és eltávolítás Language Understanding (LUIS) Cognitive Services
-A LUIS a kulcs által meghatározott régiónak megfelelő Azure-adattárban tárolja a titkosított adatmennyiséget. Ezeket az adatkészleteket 30 napig tároljuk. 
+
+A LUIS a kulcs által meghatározott [régiónak](luis-reference-regions.md) megfelelő Azure-adattárban tárolja a titkosított adatmennyiséget. 
+
+* Az alkalmazás élettartama során a modell, például az entitások, a szándékok és a hosszúságú kimondott szöveg betanításához használt adatmennyiséget a LUIS-ban menti a rendszer. Ha egy tulajdonos vagy közreműködő törli az alkalmazást, a rendszer ezeket az adattörlési művelettel törli. Ha egy alkalmazás 90 nap alatt nem volt használatban, akkor a rendszer törli. 
+
+* Az alkalmazás szerzője dönthet úgy, hogy [engedélyezi a naplózást](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning) a közzétett alkalmazásnak eljuttatott hosszúságú kimondott szöveg. Ha engedélyezve van, a hosszúságú kimondott szöveg 30 napig lesz mentve, és az alkalmazás szerzője is megtekinthető. Ha a naplózás nincs engedélyezve az alkalmazás közzétételekor, a rendszer nem tárolja ezeket az adatfájlokat.
 
 ## <a name="export-and-delete-app"></a>Alkalmazás exportálása és törlése
 A felhasználók teljes körű hozzáféréssel rendelkeznek az alkalmazás [exportálásához](luis-how-to-start-new-app.md#export-app) és [törléséhez](luis-how-to-start-new-app.md#delete-app) . 

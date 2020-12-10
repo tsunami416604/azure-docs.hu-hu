@@ -7,19 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/01/2020
-ms.openlocfilehash: e583cedc04113615c50cc9906cbd11a99ff48683
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/09/2020
+ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421719"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008484"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Keresési eredmények használata az Azure-ban Cognitive Search
 
-Ez a cikk azt ismerteti, hogyan kérhet le egy lekérdezési választ, amely a megfelelő dokumentumok teljes számával, a többoldalas eredményekkel, a rendezett eredményekkel és a találatok kiemelésével kapcsolatos feltételeket tartalmaz.
+Ez a cikk azt ismerteti, hogyan lehet lekérdezési választ kialakítani az Azure Cognitive Searchban. A válasz struktúráját a lekérdezésben szereplő paraméterek határozzák meg: [keresési dokumentum](/rest/api/searchservice/Search-Documents) a REST API vagy a [SearchResults OSZTÁLYBAN](/dotnet/api/azure.search.documents.models.searchresults-1) a .net SDK-ban. A lekérdezés paramétereinek használatával az alábbi módokon strukturálható az eredményhalmaz:
 
-A válasz struktúráját a lekérdezésben szereplő paraméterek határozzák meg: [keresési dokumentum](/rest/api/searchservice/Search-Documents) a REST API vagy a [SearchResults OSZTÁLYBAN](/dotnet/api/azure.search.documents.models.searchresults-1) a .net SDK-ban.
++ Az eredményekben szereplő dokumentumok számának korlátozása vagy kötegbe állítása (alapértelmezés szerint 50)
++ Válassza ki az eredményekbe felvenni kívánt mezőket
++ Sorrend eredményei
++ A keresési eredmények törzsében lévő teljes vagy részleges kifejezés kiemelése
 
 ## <a name="result-composition"></a>Eredmény összetétele
 
@@ -38,6 +41,14 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 > [!NOTE]
 > Ha a képfájlokat egy adott eredményben szeretné megadni, például egy termék fényképét vagy emblémáját, az Azure Cognitive Searchon kívül tárolja őket, de tartalmaz egy mezőt az indexben a keresési dokumentumban található kép URL-címére való hivatkozáshoz. Az eredményekben szereplő képeket támogató minta indexek közé tartozik a **Realestate-Sample-US** bemutató, amely a rövid útmutatóban [szerepel, a](search-create-app-portal.md) [New York City Jobs bemutató alkalmazásban](https://aka.ms/azjobsdemo).
+
+### <a name="tips-for-unexpected-results"></a>Váratlan eredményekhez kapcsolódó tippek
+
+Alkalmanként az anyag és az eredmények szerkezete nem várt. Ha a lekérdezés eredményei váratlanok, a lekérdezés módosításainak kipróbálásával megtekintheti, hogy az eredmények javulnak-e:
+
++ Módosítsa az (alapértelmezett) beállítást, hogy az összes feltétel esetében kötelező legyen az **`searchMode=any`** **`searchMode=all`** egyezések megadása a feltételek helyett. Ez különösen akkor igaz, ha a lekérdezésben logikai operátorok szerepelnek.
+
++ Kísérletezzen különböző lexikális elemzők vagy egyéni elemzők használatával, és ellenőrizze, hogy a lekérdezés eredménye megváltozik-e. Az alapértelmezett elemző elválasztja a Kötőjeles szavakat, és csökkenti a szavakat a legfelső szintű űrlapokra, ami általában növeli a lekérdezési válaszok megbízhatóságát. Ha azonban meg kell őriznie a kötőjeleket, vagy ha a karakterláncok speciális karaktereket tartalmaznak, előfordulhat, hogy egyéni elemzőket kell beállítania annak biztosításához, hogy az index a megfelelő formátumban tartalmazza a jogkivonatokat. További információ: [részleges kifejezéses keresés és minták speciális karakterekkel (kötőjelek, helyettesítő karakterek, regex, mintázatok)](search-query-partial-matching.md).
 
 ## <a name="paging-results"></a>Lapozás eredményei
 
@@ -80,9 +91,9 @@ Figyelje meg, hogy a 2. dokumentum kétszer van beolvasva. Ennek az az oka, hogy
 
 ## <a name="ordering-results"></a>Az eredmények rendezése
 
-A teljes szöveges keresési lekérdezések esetében a találatok automatikusan egy keresési pontszám szerint vannak rangsorolva, a kifejezés gyakorisága és a dokumentum közelsége alapján számítva, és a keresési kifejezéssel több vagy erősebb egyezést eredményező dokumentumokat fog keresni. 
+A teljes szöveges keresési lekérdezések esetében a találatok automatikusan a keresési pontszám alapján vannak rangsorolva, a kifejezés gyakorisága és a ( [TF-IDF-](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)ből származó) dokumentum közelsége alapján számítva, és a keresési kifejezéssel több vagy erősebb egyezést eredményező dokumentumokat fog keresni. 
 
-A keresési eredmények általános jelentőséggel bírnak, amely az azonos eredményhalmaz más dokumentumaihoz képest az egyezés erősségét tükrözi. A pontszámok nem mindig konzisztensek az egyik lekérdezéstől a következőig, így a lekérdezések használatakor előfordulhat, hogy a keresési dokumentumok rendezésének módja kis eltéréseket észlel. A probléma oka több magyarázat is lehet.
+A keresési eredmények általános jelentőséggel bírnak, ami az egyező eredményhalmaz más dokumentumaihoz viszonyított erősségét tükrözi. A pontszámok azonban nem mindig konzisztensek az egyik lekérdezéstől a következőig, így a lekérdezések használatakor kis eltérések jelenhetnek meg a keresési dokumentumok megrendelése során. A probléma oka több magyarázat is lehet.
 
 | Ok | Leírás |
 |-----------|-------------|
@@ -90,11 +101,11 @@ A keresési eredmények általános jelentőséggel bírnak, amely az azonos ere
 | Több replika | Több replikát használó szolgáltatások esetén a lekérdezéseket párhuzamosan kell kiadni az egyes replikákkal. A keresési pontszám kiszámításához használt index statisztikáit a rendszer replika alapon számítja ki, a lekérdezési válaszban egyesítve és elrendezve az eredményeket. A replikák többnyire egymást tükrözik, de a statisztikák eltérőek lehetnek az állami különbségek miatt. Előfordulhat például, hogy az egyik replika törölte a statisztikához hozzájáruló dokumentumokat, amelyek más replikából lettek egyesítve. A replikák statisztikái közötti különbségek jellemzően kisebb indexekben figyelhetők meg. |
 | Azonos pontszámok | Ha több dokumentum ugyanazzal a pontszámmal rendelkezik, akkor előfordulhat, hogy ezek közül bármelyik előbb megjelenik.  |
 
-### <a name="consistent-ordering"></a>Konzisztens sorrend
+### <a name="how-to-get-consistent-ordering"></a>Konzisztens sorrend beszerzése
 
-Ha az eredmények rendezésében a Flex szerepel, érdemes lehet más lehetőségeket is megvizsgálni, ha az egységesség egy alkalmazásra vonatkozó követelmény. A legegyszerűbb módszer a mezőérték, például a minősítés vagy a dátum szerinti rendezés. Olyan esetekben, ahol egy adott mező, például egy minősítés vagy dátum alapján szeretne rendezni, explicit módon meghatározhat egy [ `$orderby` kifejezést](query-odata-filter-orderby-syntax.md), amely a **rendezhető** indexelt bármely mezőre alkalmazható.
+Ha az konzisztens sorrend egy alkalmazásra vonatkozó követelmény, explicit módon meghatározhatja a **`$orderby`** (z) [] kifejezést (lekérdezés-OData-Filter-OrderBy-Syntax.MD) egy mezőben. Csak az indexelt mezők **`sortable`** használhatók az eredmények megrendeléséhez. Az **`$orderby`** include minősítés, a dátum és a hely mezőkben gyakran használt mezők, ha megadja a paraméter értékét, **`orderby`** hogy tartalmazza a mezőneveket és a [**`geo.distance()` függvénynek**](query-odata-filter-orderby-syntax.md) a térinformatikai értékek meghívását.
 
-Egy másik lehetőség [Egyéni pontozási profilt](index-add-scoring-profiles.md)használ. A pontozási profilok nagyobb mértékben szabályozzák a keresési eredményekben lévő elemek rangsorolását, és lehetővé teszi az egyes mezőkben található egyezések növelését. A további pontozási logika segíthet felülbírálni a replikák közötti kisebb különbségeket, mivel az egyes dokumentumokhoz tartozó keresési pontszámok egymástól eltérőek lehetnek. Az ehhez a megközelítéshez tartozó [rangsorolási algoritmust](index-ranking-similarity.md) ajánljuk.
+Egy másik megközelítés, amely elősegíti a konzisztenciát, [Egyéni pontozási profilt](index-add-scoring-profiles.md)használ. A pontozási profilok nagyobb mértékben szabályozzák a keresési eredményekben lévő elemek rangsorolását, és lehetővé teszi az egyes mezőkben található egyezések növelését. A további pontozási logika segíthet felülbírálni a replikák közötti kisebb különbségeket, mivel az egyes dokumentumokhoz tartozó keresési pontszámok egymástól eltérőek lehetnek. Az ehhez a megközelítéshez tartozó [rangsorolási algoritmust](index-ranking-similarity.md) ajánljuk.
 
 ## <a name="hit-highlighting"></a>Találatok kiemelése
 
@@ -135,7 +146,7 @@ Az új viselkedéssel:
 
 Ha olyan állapotkódot ír, amely megvalósítja a találatok kiemelését, vegye figyelembe a változást. Vegye figyelembe, hogy ez csak akkor lesz hatással, ha teljesen új keresési szolgáltatást hoz létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ügyfél keresési oldalának gyors létrehozásához vegye figyelembe a következő lehetőségeket:
 
