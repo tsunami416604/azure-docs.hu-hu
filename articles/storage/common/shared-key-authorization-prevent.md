@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: ce0ea938cac4afa043b8770a4d6a98f08ec145ec
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6a24713a6027c38d2b9817928f3a82161bd37314
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484889"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936726"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure Storage-fiókhoz tartozó megosztott kulcs engedélyezésének tiltása (előzetes verzió)
 
@@ -23,13 +23,11 @@ Az Azure Storage-fiókokra vonatkozó minden biztonságos kérelemnek engedélye
 Ha egy Storage-fiókhoz nem engedélyezi a megosztott kulcs engedélyezését, az Azure Storage elutasítja az adott fiókhoz tartozó minden további kérelmet, amely jogosult a fiók hozzáférési kulcsaira. Csak az Azure AD-vel rendelkező biztonságos kérelmek sikeresek lesznek. Az Azure AD használatával kapcsolatos további információkért lásd: a [blobok és várólisták hozzáférésének engedélyezése Azure Active Directory használatával](storage-auth-aad.md).
 
 > [!WARNING]
-> Az Azure Storage csak a blob-és üzenetsor-tárolásra vonatkozó kérelmek esetében támogatja az Azure AD-hitelesítést. Ha nem engedélyezi a megosztott kulccsal való engedélyezést egy Storage-fiók esetében, akkor a megosztott kulcs-engedélyezést használó Azure Files vagy table Storage-kérelmek sikertelenek lesznek.
->
-> Az előzetes verzió ideje alatt a fiók-hozzáférési kulcsok használatával létrehozott megosztott hozzáférés-aláírási (SAS-) jogkivonatokat használó Azure Files vagy table Storage szolgáltatásra vonatkozó kérelmek sikeresek lesznek, ha a megosztott kulcs engedélyezése nem engedélyezett. További információ: [Tudnivalók az előzetes](#about-the-preview)verzióról.
->
-> Ha nem engedélyezi a megosztott kulcs elérését egy Storage-fiókhoz, az nem érinti a Azure Files SMB-kapcsolatait.
+> Az Azure Storage csak a blob-és üzenetsor-tárolásra vonatkozó kérelmek esetében támogatja az Azure AD-hitelesítést. Ha nem engedélyezi a megosztott kulccsal való engedélyezést egy Storage-fiók esetében, akkor a megosztott kulcs-engedélyezést használó Azure Files vagy table Storage-kérelmek sikertelenek lesznek. Mivel a Azure Portal mindig megosztott kulcsos hitelesítést használ a fájl-és Table-adateléréshez, ha a Storage-fiókhoz nem engedélyezi a megosztott kulccsal való engedélyezést, akkor nem fog tudni hozzáférni a fájlhoz vagy a táblához a Azure Portal.
 >
 > A Microsoft azt javasolja, hogy a megosztott kulccsal való hozzáférés letiltása előtt telepítse át a Azure Files vagy a Table Storage-adatok egy külön Storage-fiókba való áttelepítését, vagy ne alkalmazza ezt a beállítást olyan Storage-fiókokra, amelyek támogatják a Azure Files vagy a Table Storage munkaterheléseket.
+>
+> Ha nem engedélyezi a megosztott kulcs elérését egy Storage-fiókhoz, az nem érinti a Azure Files SMB-kapcsolatait.
 
 Ez a cikk azt ismerteti, hogyan lehet megállapítani a megosztott kulcsos hitelesítéssel küldött kéréseket, és hogyan javíthatja a megosztott kulcsokat a Storage-fiókhoz. Ha szeretné megtudni, hogyan regisztrálhat az előzetes verzióra, tekintse meg [az előzetes](#about-the-preview)verzióról szóló témakört.
 
@@ -193,15 +191,32 @@ resources
 | project subscriptionId, resourceGroup, name, allowSharedKeyAccess
 ```
 
+## <a name="permissions-for-allowing-or-disallowing-shared-key-access"></a>A megosztott kulcsok elérésének engedélyezéséhez vagy letiltásához szükséges engedélyek
+
+A Storage-fiók **AllowSharedKeyAccess** tulajdonságának beállításához a felhasználónak rendelkeznie kell a Storage-fiókok létrehozásához és kezeléséhez szükséges engedélyekkel. Az ilyen engedélyeket biztosító Azure szerepköralapú hozzáférés-vezérlési (Azure-RBAC) szerepkörök közé tartozik a **Microsoft. Storage/storageAccounts/Write** vagy a **Microsoft. Storage \* /storageAccounts/* _ művelet. A művelettel rendelkező beépített szerepkörök a következők:
+
+- A Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkör
+- A Azure Resource Manager [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör
+- A [Storage-fiók közreműködői](../../role-based-access-control/built-in-roles.md#storage-account-contributor) szerepköre
+
+Ezek a szerepkörök nem biztosítanak hozzáférést a Storage-fiókban lévő adatAzure Active Directory (Azure AD) használatával. Ezek közé tartoznak azonban a _ * Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/Action * *, amely hozzáférést biztosít a fiók hozzáférési kulcsaihoz. Ezzel az engedéllyel a felhasználók a fiók hozzáférési kulcsainak használatával férhetnek hozzá a Storage-fiókokban lévő összes adattal.
+
+A szerepkör-hozzárendeléseket a Storage-fiók szintjére kell korlátozni, hogy a felhasználók engedélyezzék vagy letiltsák a megosztott kulcsos hozzáférést a Storage-fiókhoz. A szerepkör hatókörével kapcsolatos további információkért lásd: [Az Azure RBAC hatókörének megismerése](../../role-based-access-control/scope-overview.md).
+
+Ügyeljen arra, hogy ezeknek a szerepköröknek a hozzárendelését csak azokra korlátozza, akiknek szükségük van egy Storage-fiók létrehozására vagy a tulajdonságainak frissítésére. Használja a legalacsonyabb jogosultsági szint elvét annak biztosítására, hogy a felhasználók a lehető legkevesebb engedélyekkel rendelkezzenek a feladataik végrehajtásához. További információ az Azure RBAC való hozzáférés kezeléséről: [Az Azure RBAC kapcsolatos ajánlott eljárások](../../role-based-access-control/best-practices.md).
+
+> [!NOTE]
+> A klasszikus előfizetés-rendszergazdai szerepkörök szolgáltatás rendszergazdája és Co-Administrator tartalmazza a Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkörének megfelelőt. A **tulajdonosi** szerepkör tartalmazza az összes műveletet, így az egyik rendszergazdai szerepkörrel rendelkező felhasználó is létrehozhat és kezelhet Storage-fiókokat. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+
 ## <a name="understand-how-disallowing-shared-key-affects-sas-tokens"></a>Ismerje meg, hogy a megosztott kulcs letiltása hogyan befolyásolja az SAS-tokeneket
 
-Ha a megosztott kulcs nem engedélyezett a Storage-fiók esetében, az Azure Storage a SAS-tokenek és a kérés által megcélozott szolgáltatás típusa alapján kezeli az SAS-jogkivonatokat. Az alábbi táblázat bemutatja, hogyan történik az egyes SAS-típusok engedélyezése, és hogy az Azure Storage hogyan fogja kezelni ezt az SAS-t, ha a **AllowSharedKeyAccess** tulajdonsága **hamis**.
+Ha a megosztott kulcshoz való hozzáférés nem engedélyezett a Storage-fiók esetében, az Azure Storage a SAS és a kérés által megadott szolgáltatás típusa alapján kezeli az SAS-jogkivonatokat. Az alábbi táblázat bemutatja, hogyan történik az egyes SAS-típusok engedélyezése, és hogy az Azure Storage hogyan fogja kezelni ezt az SAS-t, ha a **AllowSharedKeyAccess** tulajdonsága **hamis**.
 
 | SAS típusa | Engedélyezési típus | Viselkedés, ha a AllowSharedKeyAccess hamis |
 |-|-|-|
 | Felhasználói delegálási SAS (csak blob Storage) | Azure AD | A kérelem engedélyezett. A Microsoft azt javasolja, hogy a felhasználói delegálás SAS-t használja, ha lehetséges, a kiváló biztonság érdekében. |
-| Szolgáltatás SAS | Megosztott kulcsos | A rendszer megtagadta a kérelmet a blob Storage-hoz. A kérelem a várólista és a tábla tárolására, valamint a Azure Files számára engedélyezett. További információ: a [sas-tokenekkel rendelkező kérések engedélyezve vannak a várólisták, táblák és fájlok számára, ha a AllowSharedKeyAccess hamis](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false) az **előnézet** szakaszban. |
-| Fiók SAS | Megosztott kulcsos | A rendszer megtagadta a kérelmet a blob Storage-hoz. A kérelem a várólista és a tábla tárolására, valamint a Azure Files számára engedélyezett. További információ: a [sas-tokenekkel rendelkező kérések engedélyezve vannak a várólisták, táblák és fájlok számára, ha a AllowSharedKeyAccess hamis](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false) az **előnézet** szakaszban. |
+| Szolgáltatás SAS | Megosztott kulcsos | Az összes Azure Storage-szolgáltatásra vonatkozó kérelem megtagadva. |
+| Fiók SAS | Megosztott kulcsos | Az összes Azure Storage-szolgáltatásra vonatkozó kérelem megtagadva. |
 
 A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md).
 
@@ -219,7 +234,7 @@ Néhány Azure-eszköz lehetővé teszi az Azure AD-hitelesítés használatát 
 | Azure PowerShell | Támogatott. További információ az Azure ad-val kapcsolatos PowerShell-parancsok engedélyezéséről: [PowerShell-parancsok futtatása Azure ad-beli hitelesítő adatokkal a Blobok adatainak eléréséhez](../blobs/authorize-data-operations-powershell.md) , illetve [PowerShell-parancsok futtatása Azure ad-beli hitelesítő adatokkal a várólista adatainak eléréséhez](../queues/authorize-data-operations-powershell.md). |
 | Azure CLI | Támogatott. További információ arról, hogyan engedélyezhető az Azure CLI-parancsok használata az Azure AD-vel a blob-és üzenetsor-adatok eléréséhez: [Azure CLI-parancsok futtatása Azure ad-beli hitelesítő adatokkal a blob-vagy üzenetsor-adatok eléréséhez](../blobs/authorize-data-operations-cli.md). |
 | Azure IoT Hub | Támogatott. További információ: [IoT hub virtuális hálózatok támogatása](../../iot-hub/virtual-network-support.md). |
-| Azure Cloud Shell | A Azure Cloud Shell a Azure Portal integrált rendszerhéja. Azure Cloud Shell a fájlok megőrzését a Storage-fiókban lévő Azure-fájlmegosztás tárolja. Ezek a fájlok elérhetetlenné válnak, ha a megosztott kulcs engedélyezése nem engedélyezett a Storage-fiók esetében. További információ: [a Microsoft Azure Files Storage összekötése](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Ha a Azure Cloud Shell parancsainak futtatásával szeretné kezelni azokat a Storage-fiókokat, amelyekhez a megosztott kulcsokhoz való hozzáférés nem engedélyezett, először győződjön meg arról, hogy az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával biztosította a szükséges engedélyeket ezekhez a fiókokhoz. További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md). |
+| Azure Cloud Shell | A Azure Cloud Shell a Azure Portal integrált rendszerhéja. Azure Cloud Shell a fájlok megőrzését a Storage-fiókban lévő Azure-fájlmegosztás tárolja. Ezek a fájlok elérhetetlenné válnak, ha a megosztott kulcs engedélyezése nem engedélyezett a Storage-fiók esetében. További információ: [a Microsoft Azure Files Storage összekötése](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Ha a Azure Cloud Shell parancsainak futtatásával szeretné felügyelni azokat a Storage-fiókokat, amelyekhez a megosztott kulcsokhoz való hozzáférés nem engedélyezett, először győződjön meg arról, hogy a szükséges engedélyeket megadta a fiókoknak az Azure RBAC-on keresztül. További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md). |
 
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 
@@ -241,11 +256,7 @@ Az Azure-metrikák és a bejelentkezés Azure Monitor nem tesz különbséget az
 
 Ha a Storage-fiók forgalmát értékeli, vegye figyelembe, hogy az [ügyfélalkalmazások által használt engedélyezési típus észlelése](#detect-the-type-of-authorization-used-by-client-applications) című témakörben leírtak szerint a metrikák és a naplók is tartalmazhatnak felhasználói DELEGÁLÁSi sas-vel készített kérelmeket. Ha többet szeretne megtudni arról, hogy az Azure Storage hogyan válaszol az SAS-re, ha a **AllowSharedKeyAccess** tulajdonság értéke **false (hamis**), tekintse meg a [megosztott kulcs tiltása a sas-jogkivonatokat érintő](#understand-how-disallowing-shared-key-affects-sas-tokens)tudnivalókat ismertető témakört.
 
-### <a name="requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false"></a>A SAS-tokenekkel rendelkező kérések engedélyezettek a várólisták, táblák és fájlok esetében, ha a AllowSharedKeyAccess hamis.
-
-Ha az előzetes verzióban nem engedélyezett a megosztott kulcshoz való hozzáférés a Storage-fiókhoz, a rendszer továbbra is engedélyezi a megosztott hozzáférési aláírásokat a várólista, tábla vagy Azure Files erőforrások számára. Ez a korlátozás mindkét szolgáltatás SAS-jogkivonatára és a fiók SAS-jogkivonatára vonatkozik. A SAS mindkét típusa megosztott kulccsal van hitelesítve.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Storage-beli adathozzáférés engedélyezése](storage-auth.md)
 - [Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory használatával](storage-auth-aad.md)

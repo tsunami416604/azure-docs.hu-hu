@@ -7,15 +7,15 @@ ms.service: virtual-machines-windows
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 11/17/2020
 ms.author: cathys
 keywords: VisualStudio
-ms.openlocfilehash: 5ec8e0f6448e725998628e41b917942966d3ef2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 315987060b96312c666bd5aa928588e27d13173b
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836156"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938103"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-lemezképek az Azure-ban
 A Visual Studio egy előre konfigurált Azure-beli virtuális gépen (VM) gyorsan és egyszerűen elvégezhető, hogy ne legyenek elérhetők a felhasználható fejlesztési környezetek. A különböző Visual Studio-konfigurációkkal rendelkező rendszerképek az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)érhetők el.
@@ -30,9 +30,9 @@ A legújabb főverziók, a Visual Studio 2019, a Visual Studio 2017 és a Visual
 
 | Kiadás verziója                                                                                                                                                | Kiadások              | Termékváltozat   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: legújabb (16,5-es verzió)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Vállalat, Közösség | 16.5.4 verziója    |
-| Visual Studio 2019: RTW                         | Enterprise | 16.0.13 verziója    |
-| Visual Studio 2017: legújabb (15,9-es verzió)           | Vállalat, Közösség | 15.9.22 verziója   |
+| [Visual Studio 2019: legújabb (16,8-es verzió)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Vállalat, Közösség | 16.8.0 verziója    |
+| Visual Studio 2019: RTW                         | Enterprise | 16.0.20 verziója    |
+| Visual Studio 2017: legújabb (15,9-es verzió)           | Vállalat, Közösség | 15.9.29 verziója   |
 | Visual Studio 2017: RTW                             | Vállalat, Közösség | 15.0.28 verziója  |
 | Visual Studio 2015: legújabb (3. frissítés)               | Vállalat, Közösség | 14.0.25431.01 verziója |
 

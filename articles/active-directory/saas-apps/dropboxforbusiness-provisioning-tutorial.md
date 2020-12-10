@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 7bbf9b199b15815127f0ecb26ae027ef7bfa52d2
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 04d17e17ef11696efd52f04ea83639f2a9b81fea
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355430"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938749"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Oktatóanyag: a Dropbox for Business konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
 Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Dropboxban a vállalati és Azure Active Directory (Azure AD) számára az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a Dropbox vállalatoknak.
 
 > [!IMPORTANT]
-> A Microsoft és a Dropbox a régi Dropbox-integráció érvényes 04/01/2021-es időpontját fogja érvényteleníteni. A szolgáltatás megszakadásának elkerülése érdekében ajánlott áttelepíteni az új Dropbox-integrációt, amely támogatja a csoportokat. Az új Dropbox-integrációra való áttéréshez adja hozzá és konfigurálja a Dropbox új példányát az Azure AD-bérlőben az alábbi lépésekkel való üzembe helyezéshez. Miután konfigurálta az új Dropbox-integrációt, tiltsa le a kiépítés beállítást a régi Dropbox-integráción, hogy elkerülje a kiépítési ütközéseket.
+> A Microsoft és a Dropbox a régi Dropbox-integráció érvényes 04/01/2021-es időpontját fogja érvényteleníteni. A szolgáltatás megszakadásának elkerülése érdekében ajánlott áttelepíteni az új Dropbox-integrációt, amely támogatja a csoportokat. Az új Dropbox-integrációra való áttéréshez adja hozzá és konfigurálja a Dropbox új példányát az Azure AD-bérlőben az alábbi lépésekkel való üzembe helyezéshez. Miután konfigurálta az új Dropbox-integrációt, tiltsa le a kiépítés beállítást a régi Dropbox-integráción, hogy elkerülje a kiépítési ütközéseket. Az új Dropbox-integrációra való áttérés részletes lépéseiért lásd: [frissítés a legújabb Dropbox for Business alkalmazásra az Azure ad használatával](https://help.dropbox.com/installs-integrations/third-party/update-dropbox-azure-ad-connector).
 
 > [!NOTE]
 > Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md).

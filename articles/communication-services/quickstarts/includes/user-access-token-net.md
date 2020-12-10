@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: ae388263daeb47786df22007348d2572e035de87
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 511548da9767544ace2827a6a8b2baa83b1d2971
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816865"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96993014"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,6 +60,7 @@ A kezdéshez használja a következő kódot:
 
 ```csharp
 using System;
+using Azure.Communication;
 using Azure.Communication.Administration;
 
 namespace AccessTokensQuickstart
@@ -84,7 +85,7 @@ Adja hozzá a következő kódot a `Main` metódushoz:
 ```csharp
 // This code demonstrates how to fetch your connection string
 // from an environment variable.
-string ConnectionString = Environment.GetEnvironmentVariable("COMMUNICATION_SERVICES_CONNECTION_STRING");
+string connectionString = Environment.GetEnvironmentVariable("COMMUNICATION_SERVICES_CONNECTION_STRING");
 var client = new CommunicationIdentityClient(ConnectionString);
 ```
 
@@ -115,12 +116,12 @@ A hozzáférési jogkivonatok olyan rövid élettartamú hitelesítő adatok, am
 
 ## <a name="refresh-access-tokens"></a>Hozzáférési jogkivonatok frissítése
 
-Hozzáférési jogkivonat frissítéséhez használja az objektumot az `CommunicationUser` újrakibocsátáshoz:
+Egy hozzáférési jogkivonat frissítéséhez át kell adni az objektum egy példányát a következőre: `CommunicationUser` `IssueTokenAsync` . Ha ezt a tárolót tárolja `Id` , és létre kell hoznia egy újat, a következő módon elvégezheti a `CommunicationUser` tárolását `Id` a `CommunicationUser` konstruktorba:
 
 ```csharp  
-// Value existingIdentity represents identity of Azure Communication Services stored during identity creation
-identity = new CommunicationUser(existingIdentity);
-tokenResponse = await client.IssueTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
+// In this example, userId is a string containing the Id property of a previously-created CommunicationUser
+identityToRefresh = new CommunicationUser(userId);
+tokenResponse = await client.IssueTokenAsync(identityToRefresh, scopes: new [] { CommunicationTokenScope.VoIP });
 ```
 
 ## <a name="revoke-access-tokens"></a>Hozzáférési tokenek visszavonása

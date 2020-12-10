@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c2074402225c8134329e00003e4fbdfd95b5dba6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905366"
+ms.locfileid: "96938409"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -64,7 +64,7 @@ A Storage-fiókok alapértelmezett hálózati hozzáférési szabályait a Azure
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
-1. Kattintson a **tűzfalak és virtuális hálózatok** beállítások menüjére.
+1. Kattintson a **hálózat** nevű beállítások menüre.
 
 1. Ha alapértelmezés szerint szeretné megtagadni a hozzáférést, válassza a **kijelölt hálózatokból** való hozzáférés engedélyezése lehetőséget. Ha minden hálózatról engedélyezni szeretné a forgalmat, engedélyezze a hozzáférést az **Összes hálózatnak**.
 
@@ -148,7 +148,7 @@ A Storage-fiókok virtuális hálózati szabályai a Azure Portal, a PowerShell 
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
-1. Kattintson a **tűzfalak és virtuális hálózatok** beállítások menüjére.
+1. Kattintson a **hálózat** nevű beállítások menüre.
 
 1. Győződjön meg arról, hogy a **kijelölt hálózatokból** való hozzáférés engedélyezését választotta.
 
@@ -272,7 +272,7 @@ A Storage-fiókok IP-hálózati szabályait a Azure Portal, a PowerShell vagy a 
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
-1. Kattintson a **tűzfalak és virtuális hálózatok** beállítások menüjére.
+1. Kattintson a **hálózat** nevű beállítások menüre.
 
 1. Győződjön meg arról, hogy a **kijelölt hálózatokból** való hozzáférés engedélyezését választotta.
 
@@ -415,7 +415,7 @@ A hálózati szabályok kivételeit a Azure Portal, a PowerShell vagy az Azure C
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
-1. Kattintson a **tűzfalak és virtuális hálózatok** beállítások menüjére.
+1. Kattintson a **hálózat** nevű beállítások menüre.
 
 1. Győződjön meg arról, hogy a **kijelölt hálózatokból** való hozzáférés engedélyezését választotta.
 

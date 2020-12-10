@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 118aaa368f48838a33d130d8dddc89bb8dce3f3e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498183"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936539"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
 
@@ -76,6 +76,9 @@ A közös hozzáférésű aláírás a következő két űrlap egyikét hajthatj
 ## <a name="how-a-shared-access-signature-works"></a>Hogyan működik a közös hozzáférés aláírása?
 
 A közös hozzáférésű aláírás egy aláírt URI, amely egy vagy több tárolási erőforrásra mutat. Az URI olyan tokent tartalmaz, amely a lekérdezési paraméterek speciális készletét tartalmazza. A jogkivonat azt jelzi, hogy az ügyfél milyen módon férhet hozzá az erőforrásokhoz. A lekérdezési paraméterek egyike, az aláírás a SAS-paraméterekből lett kialakítva, és az SAS létrehozásához használt kulccsal van aláírva. Az Azure Storage ezt az aláírást használja a tárolási erőforráshoz való hozzáférés engedélyezéséhez.
+
+> [!NOTE]
+> Az SAS-tokenek generációjának naplózása nem lehetséges. Minden olyan felhasználó, akinek van jogosultsága SAS-token létrehozásához a fiók kulcsa vagy egy Azure RBAC szerepkör-hozzárendelés segítségével, a Storage-fiók tulajdonosának ismerete nélkül is megteheti. Ügyeljen arra, hogy korlátozza az engedélyeket, amelyek lehetővé teszik, hogy a felhasználók SAS-tokeneket készítsenek. Annak megakadályozása érdekében, hogy a felhasználók a blob-és üzenetsor-számítási feladatokhoz tartozó fiók kulcsával aláírt SAS-t hozzanak létre, letilthatja a megosztott kulcs elérését a Storage-fiókhoz. További információ: az [engedélyezés letiltása megosztott kulccsal](shared-key-authorization-prevent.md).
 
 ### <a name="sas-signature-and-authorization"></a>SAS-aláírás és-engedélyezés
 
@@ -197,7 +200,7 @@ A közös hozzáférésű aláírások megkezdéséhez tekintse meg az egyes SAS
 
 - [Fiók SAS létrehozása a .NET-tel](storage-account-sas-create-dotnet.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférés delegálása közös hozzáférési aláírással (REST API)](/rest/api/storageservices/delegate-access-with-shared-access-signature)
 - [Felhasználói delegálási SAS létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas)

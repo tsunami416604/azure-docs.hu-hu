@@ -6,17 +6,17 @@ documentationcenter: na
 author: yitoh
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 749d8d6edf9c94185c8363c5fec1b91e60ae9272
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: c3931cafb6c755c6119bf8deb4ecc6b58ea7bc51
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746471"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938443"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Az Azure DDoS Protection Standard áttekintése
 
@@ -30,7 +30,7 @@ A standard szintű, az alkalmazások kialakításával kapcsolatos ajánlott elj
 
 Az Azure DDoS Protection nem tárolja az ügyféladatokat.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 - **Natív platform-integráció:** Natív módon integrálva az Azure-ba. A Azure Portal konfigurációját tartalmazza. A DDoS Protection standard értelmezése az erőforrásokat és az erőforrás-konfigurációt.
 - **Kulcsrakész védelem:** Az egyszerűsített konfiguráció azonnal megvédi a virtuális hálózat összes erőforrását, amint DDoS Protection standard engedélyezve van. Nincs szükség beavatkozásra vagy felhasználói definícióra. A rendszer azonnal DDoS Protection a standardot, és automatikusan csökkenti a támadásokat, amint azt észlelte.
@@ -48,7 +48,7 @@ Az Azure DDoS Protection nem tárolja az ügyféladatokat.
 
 A standard díjszabással kapcsolatos további információkért tekintse meg a [Azure DDoS Protection standard díjszabást](https://azure.microsoft.com/pricing/details/ddos-protection/)Azure DDoS Protection.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [DDoS Protection terv létrehozása](manage-ddos-protection.md)

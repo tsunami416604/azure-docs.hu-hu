@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/03/2020
 ms.author: amjads
-ms.openlocfilehash: b1dd26fce2e0a761ceed211933cb79ce518905e2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dd3b713a027df80908e1a8a3ae53e8dc526d7d6e
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965884"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936947"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure-beli virtuálisgép-bővítmények és funkciók
 A bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációt és automatizálást biztosítanak az Azure virtuális gépeken. Az Azure platform számos, a virtuális gépek konfigurálására, figyelésére, biztonságára és segédprogram-alkalmazására kiterjedő bővítményt üzemeltet. A kiadók alkalmazást készítenek, egy bővítménybe csomagolják, és leegyszerűsítik a telepítést. Mindössze annyit kell tennie, hogy megadja a kötelező paramétereket. 

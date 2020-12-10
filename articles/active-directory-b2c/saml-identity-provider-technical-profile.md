@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30f110c3955315f560eef9972b1e3e4a956bdd8a
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 572d6964384c711a7d2b98b0fa27852a7d28951f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750526"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936709"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>SAML-identitás szolgáltatójának műszaki profiljának meghatározása egy Azure Active Directory B2C egyéni házirendben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt az SAML 2,0 identitás-szolgáltatóhoz. Ez a cikk a szabványos protokollt támogató jogcím-szolgáltatóval való interakcióra szolgáló technikai profil sajátosságait ismerteti. SAML-alapú műszaki profillal összevonása az SAML-alapú identitás-szolgáltatóval, például az [ADFS](identity-provider-adfs2016-custom.md) -vel és a [Salesforce](identity-provider-salesforce-custom.md)-mel. Ez az összevonás lehetővé teszi, hogy a felhasználók bejelentkezzenek a meglévő közösségi vagy vállalati identitásokkal.
+A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt az SAML 2,0 identitás-szolgáltatóhoz. Ez a cikk a szabványos protokollt támogató jogcím-szolgáltatóval való interakcióra szolgáló technikai profil sajátosságait ismerteti. SAML-alapú műszaki profillal összevonása az SAML-alapú identitás-szolgáltatóval, például az [ADFS](identity-provider-adfs2016-custom.md) -vel és a [Salesforce](identity-provider-salesforce.md)-mel. Ez az összevonás lehetővé teszi, hogy a felhasználók bejelentkezzenek a meglévő közösségi vagy vállalati identitásokkal.
 
 ## <a name="metadata-exchange"></a>Metaadatok cseréje
 
@@ -212,9 +212,9 @@ Példa:
      …
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben példákat talál az SAML-identitás-szolgáltatók használatának Azure AD B2C:
 
-- [ADFS hozzáadása SAML-identitás-szolgáltatóként egyéni szabályzatok használatával](identity-provider-adfs2016-custom.md)
-- [Bejelentkezés Salesforce-fiókok használatával SAML-n keresztül](identity-provider-salesforce-custom.md)
+- [ADFS hozzáadása SAML-identitás-szolgáltatóként egyéni szabályzatok használatával](identity-provider-adfs.md)
+- [Bejelentkezés Salesforce-fiókok használatával SAML-n keresztül](identity-provider-salesforce.md)

@@ -8,15 +8,15 @@ ms.author: chgrego
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, automl
-ms.openlocfilehash: 43ce1c4865b3458ccd9c0ac17589f8ca5d77d92f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a3b3640922daf84357354efc389e20afea78d216
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922072"
+ms.locfileid: "96937712"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Az automatizált Machine learning-kísérletek eredményeinek kiértékelése
 
@@ -81,7 +81,7 @@ balanced_accuracy|A kiegyensúlyozott pontosság az egyes osztályok visszahív�
 f1_score|Az F1 pontszám a pontosság és a visszahívás harmonikus középértéke. Ez a hamis pozitív és a hamis negatív értéknek megfelelő kiegyensúlyozott mérték. Azonban nem veszi figyelembe az igaz negatív értéket. <br> <br>**Cél:** Közelebb 1 annál jobb <br> **Tartomány:** [0, 1]<br> <br>A támogatott metrikák nevei a következők:<li>  `f1_score_macro`: az F1 pontszám számtani középértéke minden osztálynál. <li> `f1_score_micro`: kiszámítva, a teljes valódi pozitív, a hamis negatív és a hamis pozitív érték megszámlálásával. <li> `f1_score_weighted`: súlyozott középérték az egyes osztályokhoz tartozó F1-pontszámok osztályának gyakorisága alapján.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|
 log_loss|Ez a (MULTINOMIAL) logisztikai regresszió és bővítmények (például neurális hálózatok) által használt veszteséges függvény, amely negatív naplózási valószínűséggel van meghatározva az igaz címkék valószínűsége alapján, az osztályozó jóslatai. <br><br> **Cél:** Közelebb 0 annál jobb <br> **Tartomány:** [0, inf)|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|
 norm_macro_recall| A normalizált makrók felidézése a makró-átlagot és normalizált, így a véletlenszerű teljesítmény 0, a tökéletes teljesítmény pedig 1. <br> <br>**Cél:** Közelebb 1 annál jobb <br> **Tartomány:** [0, 1] |`(recall_score_macro - R)`&nbsp;/&nbsp;`(1 - R)` <br><br>ahol `R` a a véletlenszerű előrejelzések várt értéke `recall_score_macro` .<br><br>`R = 0.5`&nbsp;a &nbsp; bináris &nbsp; besoroláshoz. <br>`R = (1 / C)` a C osztályú besorolási problémákhoz.|
-Matthews korrelációs együttható | A Matthews korrelációs együtthatója kiegyensúlyozott mérési pontosság, amely akkor is használható, ha az egyik osztály sokkal több mint egy másikat tartalmaz. Az 1. együttható a tökéletes előrejelzést, 0 véletlenszerű előrejelzést és-1 inverz előrejelzést jelez.<br><br> **Cél:** Közelebb 1 annál jobb <br> **Tartomány:** [-1, 1]|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
+matthews_correlation | A Matthews korrelációs együtthatója kiegyensúlyozott mérési pontosság, amely akkor is használható, ha az egyik osztály sokkal több mint egy másikat tartalmaz. Az 1. együttható a tökéletes előrejelzést, 0 véletlenszerű előrejelzést és-1 inverz előrejelzést jelez.<br><br> **Cél:** Közelebb 1 annál jobb <br> **Tartomány:** [-1, 1]|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
 pontosság|A pontosság a modell azon képessége, hogy elkerülje a negatív minták pozitívként való címkézését. <br><br> **Cél:** Közelebb 1 annál jobb <br> **Tartomány:** [0, 1]<br> <br>A támogatott metrikák nevei a következők: <li> `precision_score_macro`, az egyes osztályok pontosságának számtani középértéke. <li> `precision_score_micro`, a kiszámított globálisan a teljes igaz pozitív és a hamis pozitív érték megszámlálásával. <li> `precision_score_weighted`az egyes osztályok pontosságának számtani középértéke, az egyes osztályokban található igaz példányok számával súlyozottan.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|
 felidézés| A visszahívás a modell azon képessége, amely az összes pozitív mintát felismeri. <br><br> **Cél:** Közelebb 1 annál jobb <br> **Tartomány:** [0, 1]<br> <br>A támogatott metrikák nevei a következők: <li>`recall_score_macro`: az egyes osztályok visszahívásának számtani középértéke. <li> `recall_score_micro`: kiszámított globálisan a teljes igaz pozitív érték, a hamis negatív és a hamis pozitív érték megszámlálásával.<li> `recall_score_weighted`: az egyes osztályok visszahívásának számtani középértéke, az egyes osztályokban található igaz példányok számával súlyozottan.|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
 weighted_accuracy|A súlyozott pontosság olyan pontosság, amelyben az egyes mintákat az ugyanahhoz az osztályhoz tartozó minták teljes száma alapján súlyozzák. <br><br>**Cél:** Közelebb 1 annál jobb <br>**Tartomány:** [0, 1]|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
@@ -182,7 +182,7 @@ A túlzottan nagy valószínűséggel megjósolható, hogy az egyes minták oszt
 
 ## <a name="regressionforecasting-metrics"></a>Regresszió/előrejelzési mérőszámok
 
-Az automatikus ML kiszámítja az egyes generált modellekhez tartozó teljesítménymutatókat, függetlenül attól, hogy ez egy regressziós vagy előrejelzési kísérlet. Ezek a metrikák a normalizálás során is lehetővé teszik a különböző tartományokból származó adatokra képzett modellek összehasonlítását. További információ: [metrika normalizálása](#metric-normalization)  
+Az automatikus ML kiszámítja az egyes generált modellekhez tartozó teljesítménymutatókat, függetlenül attól, hogy ez egy regressziós vagy előrejelzési kísérlet. Ezek a metrikák a normalizálás során is lehetővé teszik a különböző tartományokból származó adatokra képzett modellek összehasonlítását. További információ: [metrika normalizálása](#metric-normalization).  
 
 A következő táblázat összefoglalja a regressziós és előrejelzési kísérletekhez generált modellek teljesítményének mérőszámait. A besorolási mérőszámokhoz hasonlóan ezek a metrikák is a scikit-tanulás megvalósításán alapulnak. A megfelelő scikit tanulja a dokumentációt ennek megfelelően a **számítás** mezőben.
 

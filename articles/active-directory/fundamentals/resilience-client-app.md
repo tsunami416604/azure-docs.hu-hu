@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 9189d4d8cda5f9fcfce7e6ac2097414aa29f0a68
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: fc15176318dcfae99434f50a0b4370f371cec05a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317469"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938239"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>Növelje a hitelesítés és az engedélyezés rugalmasságát a fejleszthető ügyfélalkalmazások esetében
 
@@ -30,7 +30,9 @@ A MSAL gyorsítótárazza a tokeneket, és egy csendes jogkivonat-beszerzési mi
 
 ![Az eszköz és az alkalmazás képe a MSAL használatával a Microsoft Identity hívásához](media/resilience-client-app/resilience-with-microsoft-authentication-library.png)
 
-A MSAL használatakor a token gyorsítótárazását, frissítését és csendes jogkivonat-beszerzését a következő minta használatával szerezheti be.
+A MSAL használatakor a jogkivonat-gyorsítótárazás, a frissítés és a csendes beszerzések automatikusan támogatottak. A modern hitelesítéshez szükséges jogkivonatok megszerzéséhez egyszerű mintákat használhat. Számos nyelvet támogatunk, és olyan mintát talál, amely megfelel az Ön nyelvének és forgatókönyvének a [minták](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) oldalon.
+
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 try
@@ -42,6 +44,28 @@ catch(MsalUiRequiredException ex)
     result = await app.AcquireToken(scopes).WithClaims(ex.Claims).ExecuteAsync()
 }
 ```
+
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+return myMSALObj.acquireTokenSilent(request).catch(error => {
+    console.warn("silent token acquisition fails. acquiring token using redirect");
+    if (error instanceof msal.InteractionRequiredAuthError) {
+        // fallback to interaction when silent call fails
+        return myMSALObj.acquireTokenPopup(request).then(tokenResponse => {
+            console.log(tokenResponse);
+
+            return tokenResponse;
+        }).catch(error => {
+            console.error(error);
+        });
+    } else {
+        console.warn(error);
+    }
+});
+```
+
+---
 
 A MSAL bizonyos esetekben proaktív módon frissíthetik a jogkivonatokat. Ha a Microsoft Identity hosszú élettartamú jogkivonatot ad ki, akkor a jogkivonat frissítéséhez ("frissítés a következőben") az ügyfélnek küldheti el az adatokat \_ . A MSAL ezen információk alapján proaktív módon frissíti a jogkivonatot. Az alkalmazás továbbra is futni fog, amíg a régi jogkivonat érvényes, de már van olyan időkerete, amely során egy másik sikeres jogkivonat-beszerzést fog végezni.
 
@@ -65,7 +89,9 @@ A fejlesztőknek folyamattal kell rendelkezniük a legújabb MSAL-kiadásra val�
 
 [A legújabb Microsoft. Identity. Web verzió és kibocsátási megjegyzések megtekintése](https://github.com/AzureAD/microsoft-identity-web/releases)
 
-## <a name="if-not-using-msal-use-these-resilient-patterns-for-token-handling"></a>Ha nem használ MSAL-t, használja ezeket a rugalmas mintákat a tokenek kezelésére
+## <a name="use-resilient-patterns-for-token-handling"></a>Rugalmas mintázatok használata a tokenek kezelésére
+
+Ha nem használ MSAL-t, ezeket a rugalmas mintákat használhatja a tokenek kezelésére. Ezeket az ajánlott eljárásokat a MSAL-könyvtár automatikusan alkalmazza. 
 
 Általánosságban elmondható, hogy egy modern hitelesítést használó alkalmazás egy végpontot hív le a felhasználót hitelesítő tokenek lekéréséhez, vagy engedélyezi az alkalmazásnak a védett API-k meghívását. A MSAL célja, hogy kezelni tudja a hitelesítés részleteit, és több mintát implementáljon a folyamat rugalmasságának növelése érdekében. Az ebben a szakaszban ismertetett útmutatás segítségével megvalósíthatja az ajánlott eljárásokat, ha a MSAL eltérő könyvtárat szeretne használni. Ha a MSAL-t használja, az összes ajánlott eljárás ingyenes, mivel a MSAL automatikusan implementálja őket.
 
@@ -152,7 +178,7 @@ Habár a CAE a korai fázisokban van, olyan ügyfélalkalmazások fejlesztésér
 
 Ha erőforrás-API-kat fejleszt, javasoljuk, hogy vegyen részt a [megosztott jelek és események WG](https://openid.net/wg/sse/)-ben. Ezzel a csoporttal együttműködve engedélyezheti a Microsoft identitás-és erőforrás-szolgáltatói közötti biztonsági események megosztását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A folyamatos hozzáférés kiértékelését engedélyező API-k használata az alkalmazásokban](../develop/app-resilience-continuous-access-evaluation.md)
 - [Rugalmasság létrehozása Daemon-alkalmazásokban](resilience-daemon-app.md)

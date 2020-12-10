@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7c6ba79a82fe3d291008f3317ddce7df4adcda0a
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: ad7fe062d30f6858296ad4a2638b62c190862365
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309647"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936437"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -39,7 +39,7 @@ A két nem kizárólagos alapszintű forgatókönyvek összefoglalása az SAML h
 | Forgatókönyv | Azure AD B2C szerepkör | Használati útmutató |
 | -------- | ----------------- | ------- |
 | Az alkalmazás egy SAML-állítást vár a hitelesítés elvégzéséhez. | **Azure AD B2C identitás-szolgáltatóként (identitásszolgáltató) működik**<br />Azure AD B2C SAML-identitásszolgáltató viselkedik az alkalmazásokban. | Ez a cikk. |
-| A felhasználóknak egyszeri bejelentkezésre van szükségük egy SAML-kompatibilis identitás-szolgáltatóval, például az ADFS, a Salesforce vagy a Shibboleth.  | **Azure AD B2C szolgáltatóként működik (SP)**<br />A Azure AD B2C szolgáltatóként működik, amikor az SAML-identitás szolgáltatóhoz csatlakozik. Ez egy összevonási proxy az alkalmazás és a SAML-identitás szolgáltatója között.  | <ul><li>[Bejelentkezés beállítása SAML-identitásszolgáltató az ADFS-ben egyéni szabályzatok használatával](identity-provider-adfs2016-custom.md)</li><li>[Bejelentkezés beállítása Salesforce SAML-szolgáltatóval egyéni szabályzatok használatával](identity-provider-salesforce-custom.md)</li></ul> |
+| A felhasználóknak egyszeri bejelentkezésre van szükségük egy SAML-kompatibilis identitás-szolgáltatóval, például az ADFS, a Salesforce vagy a Shibboleth.  | **Azure AD B2C szolgáltatóként működik (SP)**<br />A Azure AD B2C szolgáltatóként működik, amikor az SAML-identitás szolgáltatóhoz csatlakozik. Ez egy összevonási proxy az alkalmazás és a SAML-identitás szolgáltatója között.  | <ul><li>[Bejelentkezés beállítása SAML-identitásszolgáltató az ADFS-ben egyéni szabályzatok használatával](identity-provider-adfs.md)</li><li>[Bejelentkezés beállítása Salesforce SAML-szolgáltatóval egyéni szabályzatok használatával](identity-provider-salesforce.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -104,7 +104,7 @@ Ezután töltse fel az SAML-jogkivonatot és a válasz aláíró tanúsítvány�
 1. Írjon be egy **nevet**, például *SamlIdpCert*. Az előtag *B2C_1A_* automatikusan hozzáadódik a kulcs nevéhez.
 1. Töltse fel a tanúsítványt a fájl feltöltése vezérlőelem használatával.
 1. Adja meg a tanúsítvány jelszavát.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Ellenőrizze, hogy a kulcs a várt módon jelenik-e meg. Például *B2C_1A_SamlIdpCert*.
 
 ## <a name="2-prepare-your-policy"></a>2. a szabályzat előkészítése
@@ -393,7 +393,7 @@ Ha engedélyezni szeretné a Azure AD B2C számára a titkosított kijelentések
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>Identitás-szolgáltató által kezdeményezett folyamat engedélyezése (nem kötelező)
 
-Az identitás-szolgáltató által kezdeményezett folyamat során a bejelentkezési folyamatot az Identitáskezelő (Azure AD B2C) kezdeményezi, amely egy kéretlen SAML-választ küld a szolgáltatónak (a függő entitás alkalmazásának). Jelenleg nem támogatunk olyan forgatókönyveket, amelyekben a kezdeményező személyazonosság szolgáltatója külső identitás-szolgáltató, például [AD-FS](identity-provider-adfs2016-custom.md)vagy [Salesforce](identity-provider-salesforce-custom.md).
+Az identitás-szolgáltató által kezdeményezett folyamat során a bejelentkezési folyamatot az Identitáskezelő (Azure AD B2C) kezdeményezi, amely egy kéretlen SAML-választ küld a szolgáltatónak (a függő entitás alkalmazásának). Jelenleg nem támogatunk olyan forgatókönyveket, amelyekben a kezdeményező személyazonosság szolgáltatója külső identitás-szolgáltató, például [AD-FS](identity-provider-adfs.md)vagy [Salesforce](identity-provider-salesforce.md).
 
 Az Identitáskezelő (Azure AD B2C) által kezdeményezett folyamat engedélyezéséhez állítsa a **IdpInitiatedProfileEnabled** metaadat-elemét a `true` [függő entitás technikai profiljába](relyingparty.md#technicalprofile).
 
@@ -449,7 +449,7 @@ Az SAML-token olyan biztonsági jogkivonat, amelyet a sikeres bejelentkezés ut�
 |`<Response>`| `InResponseTo` | Annak az SAML-kérésnek az azonosítója, amelyre ez az üzenet válaszol. | 
 |`<Response>` | `IssueInstant` | A válasz kibocsátásának pillanata. Az időérték az UTC szerint van kódolva.  Ha módosítani szeretné a jogkivonat élettartamának beállításait, állítsa be az `TokenNotBeforeSkewInSeconds` SAML-jogkivonat kiállítói technikai profiljának [metaadatait](saml-issuer-technical-profile.md#metadata) . | 
 |`<Response>` | `Destination`| URI-hivatkozás, amely arra a címre utal, amelyre a válasz elküldése megtörtént. Az érték megegyezik az SAML-kérelemmel `AssertionConsumerServiceURL` . | 
-|`<Response>` `<Issuer>` | |Azonosítja a jogkivonat kiállítóját. Ez egy tetszőleges URI, amelyet az SAML-jogkivonat probléma metaadatai határoznak meg. `IssuerUri` [metadata](saml-issuer-technical-profile.md#metadata)     |
+|`<Response>` `<Issuer>` | |Azonosítja a jogkivonat kiállítóját. Ez egy tetszőleges URI, amelyet az SAML-jogkivonat probléma metaadatai határoznak meg. `IssuerUri` [](saml-issuer-technical-profile.md#metadata)     |
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |Az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat érvényesít, például a felhasználói objektum AZONOSÍTÓját. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Az engedélyezési ellenőrzések biztonságos elvégzésére használható, például ha a jogkivonat egy erőforrás elérésére szolgál. Alapértelmezés szerint a tulajdonos jogcímet a rendszer a címtárban lévő felhasználó objektumazonosító alapján tölti fel.|
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | A karakterlánc-alapú azonosító adatainak besorolását jelölő URI-hivatkozás. Alapértelmezés szerint ez a tulajdonság nincs megadva. A függő entitás [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) beállíthatja a formátum megadását `NameID` , például: `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` . |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Az az időpont, amikor a jogkivonat érvényes lesz. Az időérték az UTC szerint van kódolva. Az alkalmazásnak ezt a jogcímet kell használnia a jogkivonat élettartamának érvényességének ellenőrzéséhez. Ha módosítani szeretné a jogkivonat élettartamának beállításait, állítsa be az `TokenNotBeforeSkewInSeconds` SAML-jogkivonat kiadása technikai profil [metaadatait](saml-issuer-technical-profile.md#metadata) . |
@@ -457,7 +457,7 @@ Az SAML-token olyan biztonsági jogkivonat, amelyet a sikeres bejelentkezés ut�
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Egy célközönséget azonosító URI-hivatkozás. Azonosítja a jogkivonat kívánt címzettjét. Az érték megegyezik az SAML-kérelemmel `AssertionConsumerServiceURL` .|
 |`<Response>``<Assertion>` `<AttributeStatement>` gyűjtemény`<Attribute>` | | Kijelentések gyűjteménye (jogcímek), a [függő entitások technikai profiljának](relyingparty.md#technicalprofile) kimeneti jogcímeiben konfiguráltak szerint. Az állítás nevét a kimeneti jogcím beállításával állíthatja be `PartnerClaimType` . |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információt az [SAML-protokollról az Oasis webhelyén](https://www.oasis-open.org/)talál.
 - Szerezze be az SAML-teszt webalkalmazást [Azure ad B2C GitHub közösségi](https://github.com/azure-ad-b2c/saml-sp-tester)adattárból.

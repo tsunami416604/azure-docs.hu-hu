@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 502d5a5c4b3d13d32fece648ce1de6763d012096
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a0ef8d9f28f90db77686c3139c8b45eccfb669aa
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932285"
+ms.locfileid: "96938817"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek/-szolgáltatások összekapcsolása IT Service Management-összekötővel
 Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](./itsmc-overview.md).
@@ -309,8 +309,7 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztatható a
 
 > [!NOTE]
 > 
-> Az 1 – Oct-2020 ITSM-integráció az Azure-riasztásokkal való használata többé nem lesz engedélyezve az új ügyfelek számára. Az új ITSM-kapcsolatok nem lesznek támogatottak. 
-> A meglévő ITSM-kapcsolatok támogatottak lesznek.
+> Javasoljuk, hogy az integrációhoz egy másik megoldásként használja a Cherwell-t és a-t a [webhook művelettel](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) .
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -367,8 +366,7 @@ A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztathatók 
 
 > [!NOTE]
 > 
-> Az 1 – Oct-2020 Cherwell ITSM-integráció Azure-riasztással való használata többé nem lesz engedélyezve az új ügyfelek számára. Az új ITSM-kapcsolatok nem lesznek támogatottak. 
-> A meglévő ITSM-kapcsolatok támogatottak lesznek.
+> Javasoljuk, hogy a Cherwell ügyfeleinknek a [webhook műveleteit](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) a Cherwell és az-nal való együttműködéshez használják egy másik megoldásként az integrációhoz.
 
 ### <a name="prerequisites"></a>Előfeltételek
 

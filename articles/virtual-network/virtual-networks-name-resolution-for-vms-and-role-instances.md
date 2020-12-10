@@ -7,18 +7,18 @@ documentationcenter: na
 author: rohinkoul
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46b3a782d93a55ed7f6eee6c76886f27c2652572
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 340ca07ba605359f71c1dbf23ca38abd75d84416
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469643"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937049"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure virtuális hálózatokon található erőforrások névfeloldása
 
@@ -60,7 +60,7 @@ A nyilvános DNS-nevek feloldásával együtt az Azure belső névfeloldást biz
 > A Cloud Services webes és feldolgozói szerepköreinek használatakor a szerepkör-példányok belső IP-címeit is elérheti az Azure Service Management REST API használatával. További információt a [Service Management REST API dokumentációjában](https://msdn.microsoft.com/library/azure/ee460799.aspx)talál. A címe a szerepkör neve és a példány száma alapján történik. 
 >
 
-### <a name="features"></a>Szolgáltatások
+### <a name="features"></a>Funkciók
 
 Az Azure által biztosított névfeloldás a következő funkciókat tartalmazza:
 * Egyszerű használat. Nem igényel konfigurálást.
@@ -192,7 +192,7 @@ Ha az Azure-ba irányuló lekérdezések továbbítása nem felel meg az igénye
 ### <a name="web-apps"></a>Webalkalmazások
 Tegyük fel, hogy névfeloldást kell végeznie a webalkalmazásból, amelyet a virtuális hálózathoz kapcsolódó App Service használatával kell létrehozni az azonos virtuális hálózatban lévő virtuális gépekhez. Olyan egyéni DNS-kiszolgáló beállításán kívül, amely DNS-továbbítóval továbbítja a lekérdezéseket az Azure-nak (virtuális IP-168.63.129.16), hajtsa végre a következő lépéseket:
 1. Engedélyezze a virtuális hálózatok integrálását a webalkalmazáshoz, ha azt már nem tette meg, az [alkalmazás integrálása virtuális hálózattal](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakörben leírtak szerint.
-2. A Azure Portal a webalkalmazást futtató App Service tervnél válassza a **hálózat szinkronizálása a hálózatban** , **Virtual Network** **az**integráció lehetőséget.
+2. A Azure Portal a webalkalmazást futtató App Service tervnél válassza a **hálózat szinkronizálása a hálózatban** , **Virtual Network** **az** integráció lehetőséget.
 
     ![Képernyőfelvétel a virtuális hálózat névfeloldásáról](./media/virtual-networks-name-resolution-for-vms-and-role-instances/webapps-dns.png)
 
@@ -202,7 +202,7 @@ Ha olyan névfeloldást kell elvégeznie a webalkalmazásból, amely a App Servi
 * Hozzon létre egy DNS-továbbítót a forrás virtuális hálózaton egy virtuális gépen. Konfigurálja a DNS-továbbítót úgy, hogy továbbítsa a lekérdezéseket a célként megadott virtuális hálózatban lévő DNS-kiszolgálónak.
 * Konfigurálja a forrás DNS-kiszolgálót a forrásként szolgáló virtuális hálózat beállításaiban.
 * Engedélyezze a virtuális hálózatok integrálását a webalkalmazáshoz a forrás virtuális hálózatra való hivatkozáshoz, kövesse az [alkalmazás integrálása virtuális hálózattal](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)című témakör utasításait.
-* A Azure Portal a webalkalmazást futtató App Service tervnél válassza a **hálózat szinkronizálása a hálózatban** , **Virtual Network** **az**integráció lehetőséget.
+* A Azure Portal a webalkalmazást futtató App Service tervnél válassza a **hálózat szinkronizálása a hálózatban** , **Virtual Network** **az** integráció lehetőséget.
 
 ## <a name="specify-dns-servers"></a>DNS-kiszolgálók meghatározása
 Ha saját DNS-kiszolgálókat használ, az Azure lehetővé teszi, hogy virtuális hálózatonként több DNS-kiszolgálót is megadhat. Hálózati adapterenként (az Azure Resource Manager esetében) vagy felhőszolgáltatásonként (a klasszikus üzemi modell esetében) is megadhat több DNS-kiszolgálót. A hálózati adapterhez vagy a felhőalapú szolgáltatáshoz megadott DNS-kiszolgálók elsőbbséget élveznek a virtuális hálózathoz megadott DNS-kiszolgálókkal szemben.

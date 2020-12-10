@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 486930776b4b4b6d852102be723ac1047ebd5e0a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 12/07/2020
+ms.openlocfilehash: 520b4a0e87f27a90a604947ae0b558066b4ab82f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098484"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937593"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>A Azure Logic Apps díjszabási modellje
 
@@ -65,7 +65,7 @@ Az ISE-ben létrehozott és futtatott Logic apps esetén a következő képessé
 
   * **Fejlesztői** ISE SKU: egyetlen [ingyenes rétegbeli](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrációs fiók
 
-  Minden ISE SKU 5 teljes integrációs fiókra korlátozódik. További díjakért több integrációs fiók is tartozhat az ISE SKU alapján:
+  Az SKU-tól függetlenül minden ISE [korlátozott számú integrációs fiókot](logic-apps-limits-and-config.md#integration-account-limits)tartalmazhat. Ezt a korlátot további díjakra is kiemelheti:
 
   * **Prémium** szintű ISE SKU: legfeljebb négy szabványos fiók. Nincsenek ingyenes vagy alapszintű fiókok.
 
@@ -85,13 +85,13 @@ A Azure Logic Apps-összekötők a logikai alkalmazások számára megkönnyíti
 
 Az eseményindító mindig a logikai alkalmazás munkafolyamatának első lépése, és egy speciális művelet, amely egy Logic App-példány létrehozására és futtatására szolgál, ha meghatározott feltételek teljesülnek, vagy egy adott esemény történik. Az eseményindítók különböző módokon működnek, amelyek befolyásolják a logikai alkalmazás mérési módját. Itt láthatók a Azure Logic Appsban található különféle triggerek:
 
-* **Ismétlődési eseményindító** : ezt az általános eseményindítót használhatja, amely nem kifejezetten semmilyen szolgáltatásra vagy rendszerre vonatkozik, a logikai alkalmazások munkafolyamatainak elindításához és az Eseményindítóban beállított ismétlődési időköz alapján létrehozott logikai alkalmazás-példány létrehozásához. Beállíthat például egy ismétlődési eseményindítót, amely háromhavonta vagy összetettebb ütemezésen fut.
+* **Ismétlődési eseményindító**: ezt az általános eseményindítót használhatja, amely nem kifejezetten semmilyen szolgáltatásra vagy rendszerre vonatkozik, a logikai alkalmazások munkafolyamatainak elindításához és az Eseményindítóban beállított ismétlődési időköz alapján létrehozott logikai alkalmazás-példány létrehozásához. Beállíthat például egy ismétlődési eseményindítót, amely háromhavonta vagy összetettebb ütemezésen fut.
 
-* **Lekérdezési eseményindító** : ezt a speciális ismétlődési eseményindítót használhatja, amely általában egy adott szolgáltatáshoz vagy rendszerhez tartozó felügyelt összekötőhöz van társítva, hogy olyan eseményeket vagy üzeneteket keressen, amelyek megfelelnek a Logic App-példány létrehozásának és futtatásának feltételeinek az Eseményindítóban beállított Ismétlődési intervallum alapján. Akkor is, ha a rendszer nem hoz létre logikai alkalmazás-példányt, például ha kihagyja az eseményindítókat, a Logic Apps szolgáltatás minden lekérdezési kérelem végrehajtásként szolgál. A lekérdezési időköz megadásához állítsa be a triggert a Logic app Designer használatával.
+* **Lekérdezési eseményindító**: ezt a speciális ismétlődési eseményindítót használhatja, amely általában egy adott szolgáltatáshoz vagy rendszerhez tartozó felügyelt összekötőhöz van társítva, hogy olyan eseményeket vagy üzeneteket keressen, amelyek megfelelnek a Logic App-példány létrehozásának és futtatásának feltételeinek az Eseményindítóban beállított Ismétlődési intervallum alapján. Akkor is, ha a rendszer nem hoz létre logikai alkalmazás-példányt, például ha kihagyja az eseményindítókat, a Logic Apps szolgáltatás minden lekérdezési kérelem végrehajtásként szolgál. A lekérdezési időköz megadásához állítsa be a triggert a Logic app Designer használatával.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhook-trigger** : a lekérdezési trigger használata helyett egy webhook-trigger használatával megvárhatja, hogy az ügyfél kérést küldjön a logikai alkalmazásnak egy adott VÉGPONTI URL-címen. A webhook-végpontnak elküldett minden kérelem művelet-végrehajtásnak számít. A kérelem és a HTTP webhook eseményindító például általános webhook-eseményindítókat is tartalmaz. A szolgáltatások vagy rendszerek egyes összekötői is rendelkeznek webhook-eseményindítókkal.
+* **Webhook-trigger**: a lekérdezési trigger használata helyett egy webhook-trigger használatával megvárhatja, hogy az ügyfél kérést küldjön a logikai alkalmazásnak egy adott VÉGPONTI URL-címen. A webhook-végpontnak elküldett minden kérelem művelet-végrehajtásnak számít. A kérelem és a HTTP webhook eseményindító például általános webhook-eseményindítókat is tartalmaz. A szolgáltatások vagy rendszerek egyes összekötői is rendelkeznek webhook-eseményindítókkal.
 
 <a name="actions"></a>
 
@@ -114,19 +114,19 @@ A letiltott logikai alkalmazások nem számítanak fel díjat, mert nem tudnak �
 
 ## <a name="integration-accounts"></a>Integrációs fiókok
 
-A [rögzített díjszabási modell](https://azure.microsoft.com/pricing/details/logic-apps) olyan [integrációs fiókokra](logic-apps-enterprise-integration-create-integration-account.md) vonatkozik, ahol a [B2B-és EDI](logic-apps-enterprise-integration-b2b.md) -és [XML-feldolgozási](logic-apps-enterprise-integration-xml.md) funkcióit a Azure Logic apps további költség nélkül vizsgálhatja, fejlesztheti és tesztelheti. Az egyes Azure-előfizetések esetében az [integrációs fiókok egy adott korlátja](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)is lehet. [Az egyes](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)integrációs fiókok akár a kereskedelmi partnereket, a szerződéseket, a térképeket, a sémákat, a szerelvényeket, a tanúsítványokat, a Batch-konfigurációkat és egyebeket is tartalmazhatnak.
+A [rögzített díjszabási modell](https://azure.microsoft.com/pricing/details/logic-apps) olyan [integrációs fiókokra](logic-apps-enterprise-integration-create-integration-account.md) vonatkozik, ahol a [B2B-és EDI](logic-apps-enterprise-integration-b2b.md) -és [XML-feldolgozási](logic-apps-enterprise-integration-xml.md) funkcióit a Azure Logic apps további költség nélkül vizsgálhatja, fejlesztheti és tesztelheti. Az egyes Azure-előfizetések esetében az [integrációs fiókok egy adott korlátja](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)is lehet. Mindegyik integrációs fiók legfeljebb egy meghatározott [korlátot](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)képes tárolni, amelyek közé tartoznak a kereskedelmi partnerek, a szerződések, a térképek, a sémák, a szerelvények, a tanúsítványok, a Batch-konfigurációk stb.
 
 A Azure Logic Apps ingyenes, alapszintű és standard integrációs fiókokat kínál. Az alapszintű és a standard szintű csomagokat a Logic Apps szolgáltatói szerződés (SLA) támogatja, az ingyenes szintet pedig SLA nem támogatja, és korlátozza a régió rendelkezésre állását, az átviteli sebességet és a használatot. Az ingyenes szintű integrációs fiókok kivételével az egyes Azure-régiókban több integrációs fiók is lehet. A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-Ha a [Premium vagy a Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) [ *integrációs szolgáltatási környezettel* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)rendelkezik, az ISE-ben 5 teljes integrációs fiók tartozhat. Ha szeretné megtudni, hogyan működik a rögzített díjszabási modell egy ISE esetében, tekintse meg a jelen témakör előző [rögzített díjszabási modell](#fixed-pricing) című szakaszát. A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps).
+Ha egy [ *integrációs szolgáltatási környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)van, az [SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-tól függetlenül, az ISE [korlátozott számú integrációs fiókkal](logic-apps-limits-and-config.md#integration-account-limits)rendelkezhet, de [ezt a korlátot felár ellenében is növelheti](#fixed-pricing). Ha szeretné megtudni, hogyan működik a rögzített díjszabási modell egy ISE esetében, tekintse meg a jelen témakör előző [rögzített díjszabási modell](#fixed-pricing) című szakaszát. A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps).
 
 Az ingyenes, az alapszintű vagy a standard integrációs fiók közötti választáshoz tekintse át az alábbi használati esetek leírását:
 
-* **Ingyenes** : Ha szeretné kipróbálni a feltáró forgatókönyveket, nem pedig éles környezetben. Ez a lehetőség csak az Azure nyilvános régiói esetében érhető el, például az USA nyugati régiójában vagy Délkelet-Ázsiában, de nem az [Azure China 21Vianet](/azure/china/overview-operations) vagy a [Azure Government](../azure-government/documentation-government-welcome.md).
+* **Ingyenes**: Ha szeretné kipróbálni a feltáró forgatókönyveket, nem pedig éles környezetben. Ez a lehetőség csak az Azure nyilvános régiói esetében érhető el, például az USA nyugati régiójában vagy Délkelet-Ázsiában, de nem az [Azure China 21Vianet](/azure/china/overview-operations) vagy a [Azure Government](../azure-government/documentation-government-welcome.md).
 
-* **Alapszintű** : Ha csak az üzenetkezelést szeretné használni, vagy olyan kisméretű üzleti partnerként tevékenykedik, amely egy nagyobb üzleti egységgel rendelkező kereskedelmi partneri kapcsolattal rendelkezik
+* **Alapszintű**: Ha csak az üzenetkezelést szeretné használni, vagy olyan kisméretű üzleti partnerként tevékenykedik, amely egy nagyobb üzleti egységgel rendelkező kereskedelmi partneri kapcsolattal rendelkezik
 
-* **Standard** : ha összetettebb vállalatközi kapcsolatokkal és nagyobb számú entitással rendelkezik, amelyeket kezelni kell
+* **Standard**: ha összetettebb vállalatközi kapcsolatokkal és nagyobb számú entitással rendelkezik, amelyeket kezelni kell
 
 <a name="data-retention"></a>
 
@@ -148,7 +148,7 @@ A logikai alkalmazás tárterület-felhasználásának figyeléséhez a követke
 
 1. A logikai alkalmazás menüjében, a **figyelés** területen válassza a **metrikák** lehetőséget.
 
-1. A jobb oldali ablaktábla **diagram címe** területén a **metrika** listából válassza a **Számlázási használat lehetőséget a tárolási felhasználás végrehajtásához** .
+1. A jobb oldali ablaktábla **diagram címe** területén a **metrika** listából válassza a **Számlázási használat lehetőséget a tárolási felhasználás végrehajtásához**.
 
    Ez a metrika adja meg a raktározási egységek számát GB/hó egységben.
 

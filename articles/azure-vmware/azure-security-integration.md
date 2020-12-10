@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás virtuális gépei a Azure Security Center integ
 description: Ismerje meg, hogyan védhető az Azure VMware-megoldás virtuális gépei az Azure natív biztonsági eszközeivel egyetlen irányítópultról Azure Security Center.
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 53669f2988a7ff7ab1150b155a65c7a187c6f1c8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370387"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937338"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Az Azure VMware-megoldás virtuális gépei a Azure Security Center integrációval védhetők
 
@@ -100,7 +100,7 @@ Az Azure Defender a helyszíni és a felhőben egyaránt kiterjeszti Azure Secur
 
 3. Válassza ki az erőforrás nevét. Megnyílik egy oldal, amely az erőforrás biztonsági állapotával kapcsolatos adatokat jeleníti meg.
 
-4. Az **ajánlás listában** válassza ki a **javaslatokat** , az **átadott értékeléseket** és a nem **elérhető értékelések** lapokat a részletek megtekintéséhez.
+4. Az **ajánlás listában** válassza ki a **javaslatokat**, az **átadott értékeléseket** és a nem **elérhető értékelések** lapokat a részletek megtekintéséhez.
 
     :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="A biztonsági ajánlásokat és értékeléseket bemutató Azure Security Center képernyőképe.":::
 
@@ -173,13 +173,13 @@ Az adatforrások Azure Sentinelhez való csatlakoztatása után létrehozhat sza
         |where count_ > 3
         ```
         
-    - Entitás leképezése
+    - Entitások leképezése
     - Lekérdezés ütemezése
     - Riasztás küszöbértéke
     - Esemény csoportosítása
     - Elnyomása
 
-    Válassza a **Tovább** gombot.
+    Kattintson a **Tovább** gombra.
 
 6. Az **incidens beállításai** lapon engedélyezze a **létrehozási incidensek létrehozását az elemzési szabály által aktivált riasztások közül** , és válassza a **Tovább: automatikus válasz >** lehetőséget.
  
@@ -231,9 +231,9 @@ Létrehozhat lekérdezéseket, vagy használhatja a rendelkezésre álló előre
     - Leképezés megadása
     - Taktikát
     
-3. Válassza a **Létrehozás** lehetőséget. Ezután kiválaszthatja a létrehozott lekérdezést, **futtathatja a lekérdezést** , és **megtekintheti az eredményeket**.
+3. Válassza a **Létrehozás** lehetőséget. Ezután kiválaszthatja a létrehozott lekérdezést, **futtathatja a lekérdezést**, és **megtekintheti az eredményeket**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan használhatja az [Azure Defender irányítópultot](../security-center/azure-defender-dashboard.md).
 - Fedezze fel az [Azure Defender](../security-center/azure-defender.md)által kínált teljes körű védelmet.

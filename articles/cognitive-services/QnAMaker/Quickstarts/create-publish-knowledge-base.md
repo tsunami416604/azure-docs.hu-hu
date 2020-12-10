@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: f1712a51fcd35c348f6177b670a7686898a0c78b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: efe1b212ab45da3cddc038957f83991defd65e41
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346138"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937729"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -48,7 +48,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
     |--|--|
     |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Jelölje be|
     |**Többszörös kapcsolású alapértelmezett szöveg**| Kiválasztás és beállítás|
-    |**+ URL-cím hozzáadása**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**+ URL-cím hozzáadása**|`https://azure.microsoft.com/en-us/support/faq/`|
     |**Csevegés**|**Professional** kiválasztása|
 
 7. Az **5. lépésben** válassza **a saját kb létrehozása** lehetőséget.
@@ -83,7 +83,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
     |--|--|
     |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Jelölje be|
     |**Többszörös kapcsolású alapértelmezett szöveg**| Kiválasztás és beállítás|
-    |**+ URL-cím hozzáadása**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**+ URL-cím hozzáadása**|`https://azure.microsoft.com/en-us/support/faq/`|
     |**Csevegés**|**Professional** kiválasztása|
 
 8. Az **5. lépésben** válassza **a saját kb létrehozása** lehetőséget.
@@ -204,7 +204,7 @@ Ez néhány percen belül elvégezhető, anélkül, hogy kódot kellene írnia, 
 
 Ha nem folytatja a következő rövid útmutatót, törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Metaadatokkal rendelkező kérdések felvétele](add-question-metadata-portal.md)

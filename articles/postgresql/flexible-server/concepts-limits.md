@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: f270ac736bb5dbc429dc8659cc88e63d0b51a523
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: cc17a66aceb6ab3eba9a18f8f07902822f4c81bb
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366638"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937661"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Korlátok Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -116,9 +116,10 @@ A PostgreSQL-kapcsolatok, akár tétlenek is, körülbelül 10 MB memóriát fog
 
 * Az Azure AD-hitelesítés még nem támogatott. Ha Azure AD-hitelesítést kíván használni, javasoljuk, hogy az [egyetlen kiszolgáló](../overview-single-server.md) használata lehetőséget használja.
 * Az olvasási replikák még nem támogatottak. Ha olvasási replikára van szüksége, javasoljuk, hogy használja az [egyetlen kiszolgáló](../overview-single-server.md) lehetőséget.
+* Az erőforrások másik előfizetésbe való áthelyezése nem támogatott. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A számítási és tárolási lehetőségek elérhetővé tételének](concepts-compute-storage.md) ismertetése
 - További információ a [PostgreSQL-adatbázisok támogatott verzióiról](concepts-supported-versions.md)

@@ -9,16 +9,17 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: cff39f93f9caddfdbe48788f14b62642a373e2bf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3c7f171a2b4957b687831ec2777ecc40b5913a15
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148193"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938647"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Gyors útmutató: telefonszám beszerzése a Azure Portal használatával
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Az Azure Communication Services használatának első lépései a Azure Portal használatával vásárolhatják meg a telefonszámot.
 
@@ -37,13 +38,13 @@ A számok kiosztásának megkezdéséhez nyissa meg a kommunikációs szolgálta
 
 Navigáljon a **telefonszámok** panelre az erőforrás menüben.
 
-:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
+:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="A kommunikációs szolgáltatások erőforrásának telefonos lapját ábrázoló képernyőkép.":::
 
 A varázsló elindításához kattintson a **Letöltés** gombra. A **telefonszámok** panelen a varázsló végigvezeti egy olyan kérdésen, amely segít kiválasztani a forgatókönyvnek leginkább megfelelő telefonszámot. 
 
 Először ki kell választania azt az **országot/régiót** , ahol ki szeretné építeni a telefonszámot. Miután kiválasztotta az országot/régiót, ki kell választania az igényeinek legmegfelelőbb **használati esetet** . 
 
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
+:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Képernyőfelvétel: a telefonszámok beolvasása nézet.":::
 
 ### <a name="select-your-phone-number-features"></a>Telefonszám-funkciók kiválasztása
 
@@ -52,11 +53,11 @@ A telefonszám beállítása két lépésből áll:
 1. A [szám típusának](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services) kiválasztása
 2. A [szám funkcióinak](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services) kiválasztása
 
-Két telefonszám közül választhat: **földrajzi**és **díjmentes**. Ha kiválasztott egy számot, válassza ki a szolgáltatást.
+Két telefonszám közül választhat: **földrajzi** és **díjmentes**. Ha kiválasztott egy számot, válassza ki a szolgáltatást.
 
 A példánkban a **kimenő hívások** és a **bejövő és kimenő SMS** **-funkciók díjmentes** számú típusát választottuk ki.
 
-:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
+:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="A szolgáltatások kiválasztása nézetet bemutató képernyőkép.":::
 
 Innen kattintson a lap alján található **Next: Numbers (tovább** ) gombra a kiépíteni kívánt telefonszám (ok) testreszabásához.
 
@@ -64,14 +65,14 @@ Innen kattintson a lap alján található **Next: Numbers (tovább** ) gombra a 
 
 A **számok** lapon testreszabhatja a kiépíteni kívánt telefonszám (oka) t.
 
-:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
+:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="A számok kiválasztása oldalt ábrázoló képernyőfelvétel":::
 
 > [!NOTE]
 > Ez a rövid útmutató a **díjmentes** számú testreszabási folyamatot mutatja be. Ha kiválasztotta a **földrajzi** számot, a felhasználói élmény némileg eltérő lehet, de a végeredmény ugyanaz lesz.
 
 Válassza ki a **körzetszámot** az elérhető körzetszámok listájából, és adja meg a kiépíteni kívánt mennyiséget, majd kattintson a **Keresés** gombra a kiválasztott követelményeknek megfelelő számok megkereséséhez. Az igényeinek megfelelő telefonszámokat a havi költséggel együtt fogjuk megjeleníteni.
 
-:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
+:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="Képernyőfelvétel: a számok kiválasztása oldal a fenntartott számokkal.":::
 
 > [!NOTE]
 > A rendelkezésre állás a szám típusától, a helytől és a kiválasztott funkcióktól függ.
@@ -88,7 +89,7 @@ Az összefoglalás lapon áttekintheti a telefonszámok kiépítéséhez szüks�
 
 Végül kattintson a lap alján található **megrendelés** elemre a megerősítéshez.
 
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
+:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="Képernyőfelvétel: az összefoglalás oldal, amely tartalmazza a szám típusát, a funkciókat, a telefonszámokat és a teljes havi költséget.":::
 
 ## <a name="find-your-phone-numbers-on-the-azure-portal"></a>Telefonszámok megkeresése a Azure Portal
 
@@ -98,7 +99,7 @@ Navigáljon az Azure kommunikációs erőforrásához a [Azure Portalon](https:/
 
 A telefonszámok kezeléséhez válassza a menüben a telefonszámok panelt.
 
-:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
+:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="A kommunikációs szolgáltatások erőforrásának telefonszám lapját ábrázoló képernyőkép.":::
 
 > [!NOTE]
 > Eltarthat néhány percig, amíg a kiépített számok megjelennek ezen az oldalon.
@@ -108,7 +109,7 @@ A telefonszámok kezeléséhez válassza a menüben a telefonszámok panelt.
 
 A **számok** lapon kiválaszthatja a konfigurálni kívánt telefonszámot.
 
-:::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="A kommunikációs szolgáltatások erőforrásának főoldalát bemutató képernyőkép.":::
+:::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="A frissítési funkciók lapot ábrázoló képernyőkép.":::
 
 Válassza ki a szolgáltatásokat az elérhető lehetőségek közül, majd kattintson a **jóváhagyás** gombra a kijelölés alkalmazásához.
 

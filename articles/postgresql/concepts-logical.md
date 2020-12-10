@@ -5,18 +5,15 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: cda305ac705b728e0d2e129d7d42d53ea0251d86
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/09/2020
+ms.openlocfilehash: 0ea58050c5dc952392df56b4fb556a0998eef165
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591529"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938902"
 ---
 # <a name="logical-decoding"></a>Logikai dekódolás
- 
-> [!NOTE]
-> A logikai dekódolás nyilvános előzetes verzióban érhető el Azure Database for PostgreSQL – egyetlen kiszolgálón.
 
 [A PostgreSQL-ben a logikai dekódolás](https://www.postgresql.org/docs/current/logicaldecoding.html) lehetővé teszi, hogy az adatváltozásokat továbbítsa a külső felhasználók számára. A logikai dekódolást az esemény-adatfolyamok és az adatváltozás-rögzítési forgatókönyvek esetében népszerűen használják.
 
@@ -53,7 +50,7 @@ A megfelelő naplózási szint konfigurálásához használja az Azure-replikác
 
 ### <a name="using-azure-portal"></a>Az Azure Portal használata
 
-1. Az Azure-beli replikáció támogatását állítsa **logikai** értékre. Válassza a **Mentés** lehetőséget.
+1. Az Azure-beli replikáció támogatását állítsa **logikai** értékre. Kattintson a **Mentés** gombra.
 
    :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="Azure Database for PostgreSQL – replikálás – Azure-replikáció támogatása":::
 

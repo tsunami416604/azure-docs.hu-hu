@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 8c13dc0854fb29467b0fe8a1ce5f2dfc1c19bd78
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c7bb79cbd67ba2fb151641ddeeb31b54e399b906
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352337"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938256"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Tudásbázis létrehozása és beállítások kezelése
 
@@ -46,7 +46,7 @@ A QnA Maker a Tudásbázis-beállításokhoz és az adatforrásokhoz való hozz�
     |--|--|
     |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Jelölje be|
     |**Alapértelmezett válasz szövege**| `Quickstart - default answer not found.`|
-    |**+ URL-cím hozzáadása**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**+ URL-cím hozzáadása**|`https://azure.microsoft.com/en-us/support/faq/`|
     |**Csevegés**|**Professional** kiválasztása|
 
 1. Az **5. lépésben** válassza **a saját kb létrehozása** lehetőséget.
@@ -105,7 +105,7 @@ Egy Tudásbázis törlése (KB) állandó művelet. Nem vonható vissza. A Tudá
 
 Ha a tudásbázist a közreműködők, a] (együttműködés – Knowledge-base.md) használatával osztja meg, akkor törölje, mindenki elveszti a KB-hoz való hozzáférést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [kezelheti az](../index.yml) erőforrások összes tudásbázisának nyelvét.
 

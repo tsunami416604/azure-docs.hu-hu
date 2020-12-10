@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 8cbc683f06b809ec4d9c63a61d73a0c731a92cd7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 14b49c531ae11c056f9b6970e1ac00adcd68b296
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651618"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937168"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Az Azure AD saját alkalmazásaiból alkalmazásba való bejelentkezéssel kapcsolatos problémák elhárítása
 
@@ -61,6 +61,7 @@ Az alkalmazásokhoz való hozzáférés a felhasználói fiókkal kapcsolatos pr
 -   [A felhasználó többtényezős hitelesítési állapotának keresése](#check-a-users-multi-factor-authentication-status)
 -   [A felhasználó hitelesítési kapcsolattartási adatainak megkeresése](#check-a-users-authentication-contact-info)
 -   [Felhasználó csoport-tagságának keresése](#check-a-users-group-memberships)
+-   [Ellenőrizze, hogy a felhasználó több mint 999 alkalmazás-szerepkör-hozzárendeléssel rendelkezik-e](#check-if-a-user-has-more-than-999-app-role-assignments)
 -   [Felhasználóhoz rendelt licencek keresése](#check-a-users-assigned-licenses)
 -   [Licenc felhasználóhoz rendelése](#assign-a-user-a-license)
 
@@ -139,6 +140,16 @@ A felhasználók csoporttagságok vizsgálatához kövesse az alábbi lépéseke
 6.  **Keresse** meg az Önt érdeklő felhasználót, és **válassza ki a** kijelölni kívánt sort.
 7.  Válassza ki a **csoportokat** , és ellenőrizze, hogy a felhasználó melyik csoport tagja.
 
+### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>Ellenőrizze, hogy a felhasználó több mint 999 alkalmazás-szerepkör-hozzárendeléssel rendelkezik-e
+Ha egy felhasználóhoz több mint 999 alkalmazás-hozzárendelés van rendelve, akkor előfordulhat, hogy a felhasználók nem látják az alkalmazásaikat.
+
+Ennek az az oka, hogy az alkalmazások jelenleg legfeljebb 999 alkalmazás-szerepkör-hozzárendelést olvasnak, hogy meghatározzák azokat az alkalmazásokat, amelyekhez a felhasználók hozzá vannak rendelve. Ha a felhasználó több mint 999 alkalmazáshoz van hozzárendelve, nem lehet szabályozni, hogy mely alkalmazások jelenjenek meg a saját alkalmazások portálon.
+
+Az alábbi lépéseket követve ellenőrizheti, hogy hány alkalmazás-hozzárendelést adott meg a felhasználónak:
+1. Telepítse a [**Microsoft. Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell-modult.
+2. Futtatás `Connect-MgGraph -Scopes "Directory.Read.All"` és hitelesítés **globális rendszergazdaként.**
+3. A futtatásával `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` határozza meg, hogy a felhasználó mely alkalmazás-szerepkör-hozzárendeléseket adja meg jelenleg.
+
 ### <a name="check-a-users-assigned-licenses"></a>Felhasználóhoz rendelt licencek keresése
 A felhasználóhoz hozzárendelt licencek vizsgálatához kövesse az alábbi lépéseket:
 1.  Nyissa meg a [**Azure Portalt**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként.**
@@ -172,14 +183,14 @@ Az alábbi lépéseket követve ellenőrizheti, hogy a megfelelő mély hivatkoz
 1. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
 2. Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** lehetőség kiválasztásával.
 3. Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
-4. Válassza ki a **vállalati alkalmazásokat** a Azure Active Directory bal oldali navigációs menüjéből.
-5. A **minden alkalmazás** elemre kattintva megtekintheti az összes alkalmazás listáját.
+4. Az Azure Active Directory bal oldali navigációs menüjében válassza a **Vállalati alkalmazások** elemet.
+5. Válassza a **Minden alkalmazás** lehetőséget az összes alkalmazás listájának megtekintéséhez.
    * Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás lista** tetején található **szűrő** vezérlőelemet, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra.**
 6. Nyissa meg a [**Azure Portal**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként** vagy **társ-** rendszergazdaként.
 7. Nyissa meg a **Azure Active Directory bővítményt** a bal oldali navigációs menü tetején található **összes szolgáltatás** lehetőség kiválasztásával.
 8. Írja be a **"Azure Active Directory**" kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
-9. Válassza ki a **vállalati alkalmazásokat** a Azure Active Directory bal oldali navigációs menüjéből.
-10. A **minden alkalmazás** elemre kattintva megtekintheti az összes alkalmazás listáját.
+9. Az Azure Active Directory bal oldali navigációs menüjében válassza a **Vállalati alkalmazások** elemet.
+10. Válassza a **Minden alkalmazás** lehetőséget az összes alkalmazás listájának megtekintéséhez.
     * Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás lista** tetején található **szűrő** vezérlőelemet, és állítsa a **show (megjelenítés** ) lehetőséget az **összes alkalmazásra.**
 11. Válassza ki azt az alkalmazást, amelyre vonatkozóan meg szeretné jelölni a Deep hivatkozást.
 12. Keresse meg a címke **felhasználói hozzáférési URL-címét**. A mély hivatkozásnak meg kell egyeznie ezzel az URL-címmel.

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 742ff2e6cff4569b5b7eeb131cd4394277b6c3cd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 965e4a8cd704670ec06ae6b927b97c3a8b93030c
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100456"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938664"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konzisztenciaszintek az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -44,17 +44,29 @@ Az olvasási konzisztencia a logikai partíción belüli egyetlen olvasási műv
 
 Bármikor megadhatja az alapértelmezett konzisztencia-szintet az Azure Cosmos-fiókban. A fiókban konfigurált alapértelmezett konzisztencia-szint az adott fiókhoz tartozó összes Azure Cosmos-adatbázisra és-tárolóra vonatkozik. A tárolók vagy adatbázisok által kiadott összes olvasás és lekérdezés alapértelmezés szerint a megadott konzisztencia-szintet használja. További információ: [az alapértelmezett konzisztencia-szint konfigurálása](how-to-manage-consistency.md#configure-the-default-consistency-level). Felülbírálhatja egy adott kérelem alapértelmezett konzisztencia-szintjét is, ha további információt szeretne megtudni az [alapértelmezett konzisztencia-szint felülbírálásáról](how-to-manage-consistency.md?#override-the-default-consistency-level) szóló cikkben.
 
+> [!IMPORTANT]
+> Az alapértelmezett konzisztencia-szint módosítása után újra létre kell hoznia egy SDK-példányt. Ezt az alkalmazás újraindításával teheti meg. Ez biztosítja, hogy az SDK az új alapértelmezett konzisztencia-szintet használja.
+
 ## <a name="guarantees-associated-with-consistency-levels"></a>Konzisztencia-szintekhez kapcsolódó garanciák
 
 Azure Cosmos DB garantálja, hogy az olvasási kérelmek 100%-ában megfelel a kiválasztott konzisztencia-szint konzisztencia-garanciájának. Az [Azure-Cosmos-tla GitHub-](https://github.com/Azure/azure-cosmos-tla) tárházban megtalálhatók a Azure Cosmos db öt konzisztencia-szintjének pontos definíciói a tla + specifikációs nyelv használatával.
 
 Az öt konzisztencia-szint szemantikai leírása itt található:
 
-- **Erős** : az erős konzisztencia linearizability garanciát nyújt. A Linearizability a kérelmek egyidejű kiszolgálására hivatkozik. Az olvasások garantáltan egy adott tétel legújabb véglegesített verzióját adják vissza. Az ügyfél nem látja a nem véglegesített vagy részleges írást. A felhasználók mindig garantáltan olvasni a legutóbb véglegesített írást.
+- **Erős**: az erős konzisztencia linearizability garanciát nyújt. A Linearizability a kérelmek egyidejű kiszolgálására hivatkozik. Az olvasások garantáltan egy adott tétel legújabb véglegesített verzióját adják vissza. Az ügyfél nem látja a nem véglegesített vagy részleges írást. A felhasználók mindig garantáltan olvasni a legutóbb véglegesített írást.
 
   Az alábbi ábrán a hangjegyzetekkel való erős konzisztencia látható. Miután az adatok az "USA nyugati régiója 2" régiójába kerülnek, a többi régióból származó adatok beolvasása után a legfrissebb értéket kapja:
 
-  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Konzisztencia spektrumként" Ha egy ügyfél olvasási műveleteket hajt végre az írásokat fogadó régióban, a kötött elavulás konzisztenciája által biztosított garanciák megegyeznek az erős konzisztencia által garantált garanciákkal. Mivel az elavultság ablak mindkét időpontra vagy frissítésre közelít, attól függően, hogy melyik a szorosabb, a szolgáltatás az új írásokat fogja szabályozni, hogy lehetővé tegye a replikációt a konzisztencia garantálása érdekében.
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Erős konzisztencia-szint illusztrációja":::
+
+- **Határos** elavulás: az olvasások garantálva vannak, hogy tiszteletben tartsák a konzisztens előtagú garanciát. Előfordulhat, hogy az olvasások lemaradnak az írások mögött az elemek legfeljebb *"K"* verziójában (azaz "frissítések"), vagy a *"T"* időintervallumban, attól függően, hogy melyik érték van elsőként. Más szóval, ha a kötött elavulás beállítást választja, a "elavulás" két módon konfigurálható:
+
+- Az elemek verzióinak (*K*) száma
+- Az írási idő (*T*) az írások mögött is elmaradhat
+
+Egyetlen régióból álló fiók esetén a *K* és a *T* minimális értéke 10 írási művelet vagy 5 másodperc. A többrégiós fiókok esetében a *K* és a *T* minimális értéke 100 000 írási művelet vagy 300 másodperc.
+
+A kötött elavulás az "elévülési időszakon kívüli teljes globális sorrendet kínálja." Ha egy ügyfél olvasási műveleteket hajt végre az írásokat fogadó régióban, a kötött elavulás konzisztenciája által biztosított garanciák megegyeznek az erős konzisztencia által garantált garanciákkal. Mivel az elavultság ablak mindkét időpontra vagy frissítésre közelít, attól függően, hogy melyik a szorosabb, a szolgáltatás az új írásokat fogja szabályozni, hogy lehetővé tegye a replikációt a konzisztencia garantálása érdekében.
 
 Az elavultság ablakon belül a határértékek a következő konzisztencia-garanciákat biztosítják:
 
@@ -65,7 +77,9 @@ Az elavultság ablakon belül a határértékek a következő konzisztencia-gara
 
   A kötött elavulás gyakran olyan globálisan elosztott alkalmazások által van kiválasztva, amelyek alacsony írási késést várnak, de teljes globális rendelési garanciát igényelnek. A kötött elavulás kiválóan használható a csoportos együttműködést és megosztást, a tőzsdei előfizetést, a közzétételt és a várakozási sort is tartalmazó alkalmazások esetében. Az alábbi ábrán látható, hogy a megkötött elavultság konzisztens legyen a zenei megjegyzésekkel. Az adatok az "USA nyugati régiója 2" régiójába való beírása után az "USA 2. keleti régiója" és a "Kelet-Ausztrália" régiók a beállított maximális késési idő vagy a maximális műveletek alapján olvassák el a megírt értéket:
 
-  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="Konzisztencia spektrumként" munkamenetet feltételez, vagy a munkamenet-tokent több író számára is megosztja.
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="A kötött elavulás konzisztencia-szintjének illusztrációja":::
+
+- **Munkamenet**: egyetlen ügyfél-munkameneten belül a rendszer garantáltan beolvassa a konzisztens előtagot, az monoton olvasásokat, az monoton írásokat, az olvasást és írást, valamint az írási és olvasási garanciákat. Ez egyetlen "író" munkamenetet feltételez, vagy a munkamenet-tokent több író számára is megosztja.
 
 A munkamenet-végrehajtón kívüli ügyfelek a következő garanciákat fogják látni:
 
@@ -76,9 +90,9 @@ A munkamenet-végrehajtón kívüli ügyfelek a következő garanciákat fogják
 
   A munkamenet konzisztenciája a legszélesebb körben használt konzisztencia-szint mind az egyetlen régió, mind a globálisan elosztott alkalmazások esetében. Az írási késleltetést, rendelkezésre állást és olvasási sebességet biztosít a végleges konzisztencia szempontjából, de biztosítja a konzisztencia-garanciát is, amely megfelel a felhasználó környezetében való működésre írt alkalmazások igényeinek. A következő ábra a munkamenetek konzisztenciáját mutatja be hangjegyzetekkel. Az "USA nyugati régiója 2 írója" és az "USA nyugati régiója 2 olvasója" ugyanazt a munkamenetet használja (A-munkamenet), hogy egyszerre ugyanazokat az adatfájlokat olvassák. Míg a "Kelet-Ausztrália" régió "B munkamenetet" használ, a rendszer később, de az írásokkal megegyező sorrendben fogadja az adatot.
 
-  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Konzisztencia spektrumként":::
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="A munkamenet konzisztenciáji szintjének ábrája":::
 
-- **Konzisztens előtag** : a visszaadott frissítések az összes frissítés néhány előtagját tartalmazzák, és nincsenek rések. Konzisztens előtag-konzisztenciai szint biztosítja, hogy az olvasások soha ne lássák a megrendelésen kívüli írásokat.
+- **Konzisztens előtag**: a visszaadott frissítések az összes frissítés néhány előtagját tartalmazzák, és nincsenek rések. Konzisztens előtag-konzisztenciai szint biztosítja, hogy az olvasások soha ne lássák a megrendelésen kívüli írásokat.
 
 Ha az írások sorrendben lettek elvégezve, akkor az ügyfél a következőt látja:, `A, B, C` `A` `A,B` vagy `A,B,C` `A,C` `B,A,C` Az konzisztens előtag a végleges konzisztencia miatti írási késleltetést, rendelkezésre állást és olvasási átviteli sebességet biztosít, ugyanakkor biztosítja az olyan forgatókönyvek igényeit is, amelyek a sorrend szempontjából fontosak.
 
@@ -91,18 +105,18 @@ Az alábbi konzisztens előtagok konzisztencia-garanciái:
 
 A következő ábra a konzisztencia-előtagot ábrázolja a zenei megjegyzésekkel. Az összes régióban az olvasások soha nem láthatók az írások sorrendjében:
 
-  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Konzisztencia spektrumként":::
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Konzisztens előtag illusztrációja":::
 
-- **Végleges** : nem áll rendelkezésre rendelési garancia a beolvasáshoz. Ha nincsenek további írások, a replikák végül konvergálnak.  
+- **Végleges**: nem áll rendelkezésre rendelési garancia a beolvasáshoz. Ha nincsenek további írások, a replikák végül konvergálnak.  
 A végleges konzisztencia a konzisztencia leggyengébb formája, mivel előfordulhat, hogy az ügyfél elolvashatja azokat az értékeket, amelyek régebbiek, mint a korábban olvasottak. A végleges konzisztencia ideális, ha az alkalmazás nem igényel rendelési garanciát. Ilyenek például a retweets, a Like vagy a nem többszálú megjegyzések száma. Az alábbi ábrán a zenei megjegyzésekkel való végleges konzisztencia látható.
 
-  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="Konzisztencia spektrumként":::
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="végleges konzisztencia viIllustration":::
 
 ## <a name="consistency-guarantees-in-practice"></a>Konzisztencia-garanciák a gyakorlatban
 
 A gyakorlatban gyakran nagyobb konzisztencia-garanciákat érhet el. Az olvasási művelet konzisztencia-garanciái megfelelnek a kért adatbázis-állapot frissességének és rendezésének. Az olvasás-konzisztencia az írási/frissítési műveletek sorrendjéhez és propagálásához van kötve.  
 
-Ha az adatbázis nem rendelkezik írási művelettel, a rendszer a **végleges** , a **munkamenetet** vagy az **állandó előtagot** tartalmazó olvasási műveletet valószínűleg ugyanazt az eredményt fogja eredményezni, mint egy erős konzisztencia-szintű olvasási művelet.
+Ha az adatbázis nem rendelkezik írási művelettel, a rendszer a **végleges**, a **munkamenetet** vagy az **állandó előtagot** tartalmazó olvasási műveletet valószínűleg ugyanazt az eredményt fogja eredményezni, mint egy erős konzisztencia-szintű olvasási művelet.
 
 Ha az Azure Cosmos-fiókja nem az erős konzisztencia mellett van konfigurálva, akkor megtudhatja, hogy az ügyfelek erős és konzisztens olvasási feladatokat szereznek a számítási feladatokhoz a *Probabilistically határos* elavulás (PBS) metrikájának megtekintésével. Ez a mérőszám a Azure Portalban érhető el. További információért lásd: a [Probabilistically kötött elévülés (PBS) mérőszámának figyelése](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
@@ -129,7 +143,7 @@ A pontos RTT késés a fénysebességi távolság és az Azure hálózati topol�
 
 - Egy adott írási művelet (például INSERT, replace, upsert és DELETE) esetében az írási sebesség a kérelmek egységeinek esetében azonos minden konzisztencia-szinten.
 
-|**Konzisztencia szintje**|**Kvórum olvasási**|**Kvórum írása**|
+|**Konzisztenciaszint**|**Kvórum olvasási**|**Kvórum írása**|
 |--|--|--|
 |**Erős**|Helyi kisebbség|Globális többség|
 |**Kötött elavultság**|Helyi kisebbség|Helyi többség|
@@ -142,11 +156,11 @@ A pontos RTT késés a fénysebességi távolság és az Azure hálózati topol�
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>A konzisztencia szintjei és az adattartósság
 
-Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat áll fenn a konzisztencia szintje és az adattartósság között egy adott régióra kiterjedő leállás esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreállít egy zavaró esemény után. Az alkalmazás teljes helyreállításához szükséges idő a **helyreállítási időre vonatkozó célkitűzés** ( **RTO** ). Azt is meg kell ismernie, hogy a legutóbbi adatfrissítések maximális időtartama alatt az alkalmazás elveszítheti a zavaró események utáni helyreállítást. A frissítések elvesztésének időpontját a **helyreállítási pont célkitűzésének** ( **RPO** ) nevezzük.
+Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat áll fenn a konzisztencia szintje és az adattartósság között egy adott régióra kiterjedő leállás esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreállít egy zavaró esemény után. Az alkalmazás teljes helyreállításához szükséges idő a **helyreállítási időre vonatkozó célkitűzés** (**RTO**). Azt is meg kell ismernie, hogy a legutóbbi adatfrissítések maximális időtartama alatt az alkalmazás elveszítheti a zavaró események utáni helyreállítást. A frissítések elvesztésének időpontját a **helyreállítási pont célkitűzésének** (**RPO**) nevezzük.
 
 Az alábbi táblázat a konzisztencia-modell és az adattartósság közötti kapcsolatot határozza meg egy régióra kiterjedő leállás jelenlétében. Fontos megjegyezni, hogy egy elosztott rendszeren, még erős konzisztencia esetén is lehetséges, hogy a [Cap-tétel](https://en.wikipedia.org/wiki/CAP_theorem)miatt nem lehet RPO és nulla RTO rendelkező elosztott adatbázis.
 
-|**Régió (k)**|**Replikálási mód**|**Konzisztenciaszint**|**RPO**|**RTO**|
+|**Régió (k)**|**Replikálási mód**|**Konzisztencia szintje**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Egy vagy több írási régió|Bármely konzisztencia-szint|< 240 perc|<1 hét|
 |>1|Egyszeri írási régió|Munkamenet, konzisztens előtag, végleges|< 15 perc|< 15 perc|

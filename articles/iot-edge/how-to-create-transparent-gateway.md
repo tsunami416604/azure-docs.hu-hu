@@ -11,22 +11,37 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 506f6a2025a61b4d9d16918b2a95de620171c46b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 9f81d059c1a71bf6349d0ef9b4aae8f7a47c161f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147855"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938783"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge-eszköz konfigurálása transzparens átjáróként való működéshez
 
 Ez a cikk részletesen ismerteti, hogyan konfigurálhat egy IoT Edge eszközt úgy, hogy az más eszközök számára transzparens átjáróként működjön, hogy az IoT Hub kommunikáljon. Ez a cikk az *IoT Edge átjáró* kifejezést használja az átlátszó átjáróként konfigurált IoT Edge eszközre való hivatkozáshoz. További tudnivalókért tekintse meg a [IoT Edge-eszköz átjáróként való használatát](./iot-edge-as-gateway.md)ismertető témakört.
+
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
 >Jelenleg
 >
 > * Az Edge-kompatibilis eszközök nem csatlakozhatnak IoT Edge átjáróhoz.
 > * Az alsóbb rétegbeli eszközök nem használhatják a fájl feltöltését.
+
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>Jelenleg
+>
+> * Az alsóbb rétegbeli eszközök nem használhatják a fájl feltöltését.
+
+::: moniker-end
 
 A sikeres transzparens átjáró-kapcsolatok létrehozásához három általános lépés szükséges. Ez a cikk az első lépést ismerteti:
 
@@ -116,13 +131,13 @@ Az IoT Edge hub modul üzembe helyezéséhez és az alsóbb rétegbeli eszközö
 
 2. Lépjen **IoT Edge** , és válassza ki az átjáróként használni kívánt IoT Edge-eszközt.
 
-3. Válassza a **modulok beállítása**lehetőséget.
+3. Válassza a **modulok beállítása** lehetőséget.
 
 4. A **modulok** lapon hozzáadhat bármely olyan modult, amelyet központilag szeretne telepíteni az átjáró-eszközre. Ebben a cikkben a edgeHub modul konfigurálására és üzembe helyezésére koncentrálunk, amelyet nem kell explicit módon beállítani ezen az oldalon.
 
-5. Válassza a **Tovább: útvonalak**lehetőséget.
+5. Válassza a **Tovább: útvonalak** lehetőséget.
 
-6. Az **útvonalak** lapon ellenőrizze, hogy van-e útvonal az alárendelt eszközökről érkező üzenetek kezeléséhez. Példa:
+6. Az **útvonalak** lapon ellenőrizze, hogy van-e útvonal az alárendelt eszközökről érkező üzenetek kezeléséhez. Például:
 
    * Egy olyan útvonal, amely minden üzenetet elküld egy modulból vagy egy alsóbb rétegbeli eszközről a IoT Hubba:
        * **Név**: `allMessagesToHub`
@@ -136,9 +151,9 @@ Az IoT Edge hub modul üzembe helyezéséhez és az alsóbb rétegbeli eszközö
 
       Az üzenetek útválasztásával kapcsolatos további információkért lásd: [modulok üzembe helyezése és útvonalak létrehozása](./module-composition.md#declare-routes).
 
-7. Az útvonal vagy az útvonalak létrehozása után válassza a **felülvizsgálat + létrehozás**lehetőséget.
+7. Az útvonal vagy az útvonalak létrehozása után válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
-8. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.
+8. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás** lehetőséget.
 
 ## <a name="open-ports-on-gateway-device"></a>Portok megnyitása átjáró eszközön
 

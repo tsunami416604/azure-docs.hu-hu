@@ -5,12 +5,12 @@ ms.assetid: 35fa18ec-21d8-41bf-af2b-e5e92703401d
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: accessibility
-ms.openlocfilehash: 8009d0d4ac971d81e25b276b19605bc6a70cff02
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 81c4ccef688622ec20d111383359053b82045996
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745672"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938086"
 ---
 # <a name="supported-devices"></a>Támogatott eszközök
 
@@ -23,7 +23,7 @@ Ha egy mobileszközön szeretné felügyelni az Azure-erőforrásokat, próbálj
 Javasoljuk, hogy használja az operációs rendszerével kompatibilis böngésző legújabb verzióját. A következő böngészők támogatottak:
 
 * Microsoft Edge (legújabb verzió)
-* Internet Explorer 11
+* Internet Explorer 11 (2021. március 31-ig támogatott)
 * Safari (csak Mac, legújabb verzió)
 * Chrome (legújabb verzió)
 * Firefox (legújabb verzió)

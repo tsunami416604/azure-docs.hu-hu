@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: f12a899d3b6daa3b233e6a799871afca1e24d046
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 179e60a41a9cd6a2277959b3cd31159c796d845d
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533747"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937287"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Tárolók és Blobok névtelen nyilvános olvasási hozzáférésének tiltása
 
@@ -288,7 +288,24 @@ Az alábbi képen látható az a hiba, amely akkor fordul elő, ha olyan Storage
 
 :::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="A házirend megsértése esetén a Storage-fiók létrehozásakor előforduló hibát ábrázoló képernyőkép":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="permissions-for-allowing-or-disallowing-public-access"></a>A nyilvános hozzáférés engedélyezésére vagy letiltására vonatkozó engedélyek
+
+A Storage-fiók **AllowBlobPublicAccess** tulajdonságának beállításához a felhasználónak rendelkeznie kell a Storage-fiókok létrehozásához és kezeléséhez szükséges engedélyekkel. Az ilyen engedélyeket biztosító Azure szerepköralapú hozzáférés-vezérlési (Azure-RBAC) szerepkörök közé tartozik a **Microsoft. Storage/storageAccounts/Write** vagy a **Microsoft. Storage \* /storageAccounts/* _ művelet. A művelettel rendelkező beépített szerepkörök a következők:
+
+- A Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkör
+- A Azure Resource Manager [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör
+- A [Storage-fiók közreműködői](../../role-based-access-control/built-in-roles.md#storage-account-contributor) szerepköre
+
+Ezek a szerepkörök nem biztosítanak hozzáférést a Storage-fiókban lévő adatAzure Active Directory (Azure AD) használatával. Ezek közé tartoznak azonban a _ * Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/Action * *, amely hozzáférést biztosít a fiók hozzáférési kulcsaihoz. Ezzel az engedéllyel a felhasználók a fiók hozzáférési kulcsainak használatával férhetnek hozzá a Storage-fiókokban lévő összes adattal.
+
+A szerepkör-hozzárendeléseket a Storage-fiók szintjére vagy annál magasabbra kell korlátozni ahhoz, hogy a felhasználók engedélyezzék vagy letiltsák a nyilvános hozzáférést a Storage-fiók számára. A szerepkör hatókörével kapcsolatos további információkért lásd: [Az Azure RBAC hatókörének megismerése](../../role-based-access-control/scope-overview.md).
+
+Ügyeljen arra, hogy ezeknek a szerepköröknek a hozzárendelését csak azokra korlátozza, akiknek szükségük van egy Storage-fiók létrehozására vagy a tulajdonságainak frissítésére. Használja a legalacsonyabb jogosultsági szint elvét annak biztosítására, hogy a felhasználók a lehető legkevesebb engedélyekkel rendelkezzenek a feladataik végrehajtásához. További információ az Azure RBAC való hozzáférés kezeléséről: [Az Azure RBAC kapcsolatos ajánlott eljárások](../../role-based-access-control/best-practices.md).
+
+> [!NOTE]
+> A klasszikus előfizetés-rendszergazdai szerepkörök szolgáltatás rendszergazdája és Co-Administrator tartalmazza a Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkörének megfelelőt. A **tulajdonosi** szerepkör tartalmazza az összes műveletet, így az egyik rendszergazdai szerepkörrel rendelkező felhasználó is létrehozhat és kezelhet Storage-fiókokat. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Névtelen nyilvános olvasási hozzáférés konfigurálása a tárolók és a Blobok számára](anonymous-read-access-configure.md)
 - [Nyilvános tárolók és Blobok elérése névtelenül a .NET-tel](anonymous-read-access-client.md)

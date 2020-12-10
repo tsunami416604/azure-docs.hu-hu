@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7bb38b382add2a0ea3506c31c5e6e76a985df6a1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952080"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936471"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>A Azure Active Directory B2C új Alkalmazásregisztrációk felülete
 
@@ -63,7 +63,7 @@ A régi élményben az alkalmazások létrehozása mindig ügyfél-alkalmazásk�
 > [!NOTE]
 > Ez a beállítás ahhoz szükséges, hogy Azure AD B2C felhasználói folyamatokat futtasson az alkalmazás felhasználóinak hitelesítéséhez. Megtudhatja [, hogyan regisztrálhat egy alkalmazást felhasználói folyamatokkal való használatra.](tutorial-register-applications.md)
 
-Ezt a lehetőséget használhatja a Azure AD B2C SAML-szolgáltatóként való használatára is. [További információk](identity-provider-adfs2016-custom.md).
+Ezt a lehetőséget használhatja a Azure AD B2C SAML-szolgáltatóként való használatára is. [További információ](identity-provider-adfs.md).
 
 ## <a name="applications-for-devops-scenarios"></a>Alkalmazások DevOps-forgatókönyvekhez
 A más fióktípus használatával létrehozhat egy alkalmazást a DevOps-forgatókönyvek kezeléséhez, például a Microsoft Graph használata az identitási élményhez tartozó szabályzatok feltöltéséhez vagy a felhasználók kiépítéséhez. Megtudhatja [, hogyan regisztrálhat egy Microsoft Graph alkalmazást Azure ad B2C erőforrások kezeléséhez](microsoft-graph-get-started.md).
@@ -116,5 +116,5 @@ Az új alkalmazás regisztrációs élményének megkezdéséhez:
 * Ismerje meg [, hogyan regisztrálhat webes API-t](add-web-api-application.md).
 * Ismerje meg [, hogyan regisztrálhat egy natív ügyfélalkalmazás](add-native-application.md).
 * Megtudhatja [, hogyan regisztrálhat egy Microsoft Graph alkalmazást Azure ad B2C erőforrások kezeléséhez](microsoft-graph-get-started.md).
-* Ismerje meg [, hogyan használhatja a Azure ad B2C SAML-](identity-provider-adfs2016-custom.md) szolgáltatóként.
+* Ismerje meg [, hogyan használhatja a Azure ad B2C SAML-](identity-provider-adfs.md) szolgáltatóként.
 * További információ az [alkalmazások típusairól](application-types.md).

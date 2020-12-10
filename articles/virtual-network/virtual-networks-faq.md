@@ -8,17 +8,17 @@ author: KumudD
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 00ef685c755c0fa6f5217d567bfa255ea940d72a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3ee9e165ce9c24968b072d19367e0285f5438259
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015969"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938800"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – Gyakori kérdések (GYIK)
 
@@ -95,7 +95,7 @@ Igen. Létrehozhat egy útválasztási táblázatot, és hozzárendelheti egy al
 Nem. A csoportos küldés és a szórás nem támogatott.
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>Milyen protokollokat használhatok a virtuális hálózatok-en belül?
-A virtuális hálózatok belül TCP, UDP és ICMP TCP/IP protokollokat is használhat. Az egyedi küldési szolgáltatás a virtuális hálózatok-n belül támogatott, kivéve a Dynamic Host Configuration Protocol (DHCP) küldését a (z) UDP/68/célport UDP/67-es porton keresztül, valamint az UDP-forrásport 65330, amely a gazdagép számára van fenntartva. Csoportos küldés, szórás, IP-in-IP-címes csomagok és általános útválasztási beágyazási (GRE) csomagok blokkolva vannak a virtuális hálózatok belül. 
+A virtuális hálózatok esetében TCP-, UDP- és ICMP TCP/IP-protokollokat lehet használni. Az egyéni küldési szolgáltatás támogatott a virtuális hálózatokon belül, kivéve a Dynamic Host Configuration Protocol (DHCP) egyéni küldési szolgáltatással (forrásport: UDP/68 / célport: UDP/67) és a 65330-as UDP-forrásporton keresztüli használatát, amely a gazdagép számára van fenntartva. A csoportos küldés, a szórás, az IP-be bújtatott IP beágyazott csomagok és a Generic Routing Encapsulation- (GRE-) csomagok blokkolva vannak a virtuális hálózatokon belül. 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Pingelhető az alapértelmezett útválasztók egy VNet belül?
 Nem.

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 553c33b3d5ea2e3f1ee81503cb69fe15db387af6
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bb3c7cc3f51eae90c5b712d224407e639b232fbc
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745026"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938885"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Az Azure hatáskörébe tartozó adatok besorolása
 
@@ -44,7 +44,7 @@ Az Azure-ban a besorolások hasonlók a tulajdonosi címkékhez, és az adatkés
 A hatáskörébe ugyanazok a bizalmas adattípusok tartoznak, mint a Microsoft 365, így a meglévő biztonsági szabályzatokat és a teljes adategység védelmét is kiterjesztheti.
 
 > [!NOTE]
-> Miután beolvasta a forrás típusait, az új eszközök megjelenítéséhez adjon meg néhány órát az **osztályozás címkézéséhez** .
+> Miután beolvasta a forrás típusait, az új eszközök megjelenítéséhez adjon meg néhány órát az **osztályozáshoz** .
 
 **A besorolási eredmények megtekintéséhez:**
 
@@ -52,7 +52,7 @@ A hatáskörébe ugyanazok a bizalmas adattípusok tartoznak, mint a Microsoft 3
 
 1. Az **Áttekintés** lap első **lépések** szakaszában válassza a **hatáskörébe tartozó fiók indítása** csempét.
 
-1. A hatáskörébe területen válassza ki **a** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: bal oldali elemzése menüpontot az információ eléréséhez. **Insights**
+1. A hatáskörébe területen válassza ki **a** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: bal oldali elemzése menüpontot az információ eléréséhez. 
 
 1. Az **Áttekintés** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: területen válassza a **besorolás** lehetőséget a hatáskörébe **besorolási** információk megjelenítéséhez.
 
@@ -94,7 +94,7 @@ További információért tegye a következők valamelyikét:
 |**Eszközök tallózása**     |  Ha egy adott besorolással vagy forrással rendelkező eszközöket szeretne böngészni, válasszon ki egy besorolást vagy forrást a megtekintett jelentéstől függően, majd válassza a szűrők alatt található **eszközök tallózása** lehetőséget :::image type="icon" source="media/insights/ico-browse-assets.png" border="false"::: . <br><br>A keresési eredmények megjelenítik a kiválasztott szűrőhöz talált összes besorolt eszközt.  További információ: [Search The Azure hatáskörébe Data Catalog](how-to-search-catalog.md).       |
 | | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-beli hatáskörébe Insight-jelentésekről
 > [!div class="nextstepaction"]

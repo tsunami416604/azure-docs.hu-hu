@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/09/2020
 ms.author: b-juche
-ms.openlocfilehash: db1e8ce2e4fe9ae81bc2299ae70e9ff83941b5b4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7c78d5fa89d6d4f3c73bdd1fe9b6d2fdae97c011
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95245874"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937474"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files kötetek régiók közötti replikációja
 
@@ -38,14 +38,15 @@ A Azure NetApp Files kötet replikációja jelenleg a következő rögzített r�
 * USA déli középső régiója és USA keleti régiója
 * USA déli középső régiója és USA 2. keleti régiója 
 * USA 2. keleti régiója és az USA középső régiója 
-* Észak-Európa és Nyugat-Európa
-* Egyesült Királyság déli régiója és Egyesült Királyság nyugati régiója
 * Kelet-Ausztrália és Délkelet-Ausztrália
 * Közép-Kanada és Kelet-Kanada
-* Kelet-japán és Nyugat-Japán
-* Egyesült Királyság déli régiója és Középnyugat-Németország
-* Délkelet-Ázsia és Kelet-Ausztrália
 * Közép-India és Dél-India
+* Középnyugat-Németország és Észak-Németország
+* Kelet-japán és Nyugat-Japán
+* Észak-Európa és Nyugat-Európa
+* Délkelet-Ázsia és Kelet-Ausztrália
+* Egyesült Királyság déli régiója és Középnyugat-Németország
+* Egyesült Királyság déli régiója és Egyesült Királyság nyugati régiója
 
 ## <a name="service-level-objectives"></a>Szolgáltatási szintű célkitűzések
 
@@ -111,11 +112,11 @@ A 2. hónapra vonatkozó normál Azure NetApp Files tárolási kapacitás díja 
 
 ## <a name="next-steps"></a>Következő lépések
 * [A régiók közötti replikáció használatára vonatkozó követelmények és szempontok](cross-region-replication-requirements-considerations.md)
-* [Kötet replikálásának létrehozása](cross-region-replication-create-peering.md)
+* [Kötetreplikáció létrehozása](cross-region-replication-create-peering.md)
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)
 * [Vészhelyreállítás kezelése](cross-region-replication-manage-disaster-recovery.md)
 * [Kötet replikációs metrikái](azure-netapp-files-metrics.md#replication)
-* [Kötetek replikálásának vagy köteteinek törlése](cross-region-replication-delete.md)
+* [Kötetreplikációk vagy kötetek törlése](cross-region-replication-delete.md)
 * [Régiók közötti replikáció hibaelhárítása](troubleshoot-cross-region-replication.md)
 
 

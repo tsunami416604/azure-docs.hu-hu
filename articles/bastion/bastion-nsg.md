@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 822a90aa2bd3a19cf3459924e6b577cc416aa3a5
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: afb751e08faea6dabde72b192d246b48735cff53
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616824"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938689"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>A NSG-hozzáférés és az Azure Bastion használata
 
@@ -28,13 +28,13 @@ Ebben a diagramban:
 * Integrációs csatlakozás – egyetlen kattintással RDP/SSH-munkamenet a böngészőben
 * Nem szükséges nyilvános IP-cím az Azure-beli virtuális gépen.
 
-## <a name="network-security-groups"></a><a name="nsg"></a>Hálózati biztonsági csoportok
+## <a name="network-security-groups"></a><a name="nsg"></a>Network security groups (Hálózati biztonsági csoportok)
 
 Ez a szakasz a felhasználó és az Azure-alapú megerősített hálózat közötti hálózati forgalmat, valamint a virtuális hálózatban megcélzott virtuális gépeket mutatja be:
 
 ### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Az Azure Bastion kifejezetten a * **AzureBastionSubnet** _-re van üzembe helyezve.
+Az Azure Bastion kifejezetten a ***AzureBastionSubnet** _-re van üzembe helyezve.
 
 _ **Bejövő forgalom:**
 
@@ -59,6 +59,6 @@ Ez az az alhálózat, amely az RDP/SSH-t tartalmazó cél virtuális gépet tart
    * **Bejövő forgalom az Azure Bastion-ből:** Az Azure Bastion privát IP-címen éri el a cél virtuális gépet. Az RDP-/SSH-portokat (3389/22-as portokat) meg kell nyitni a cél virtuális gépen a privát IP-címeken. Az ajánlott eljárás az, ha az Azure megerősített alhálózati IP-címtartományt ebben a szabályban adja hozzá, hogy csak a Bastion tudja megnyitni ezeket a portokat a célként megadott virtuálisgép-alhálózatban lévő virtuális gépeken.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure Bastion-ről: [Gyakori kérdések](bastion-faq.md).

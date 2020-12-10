@@ -8,16 +8,16 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: 4a6cd529511d4a2e71e1a31c1600f8a51f455a37
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 814158ad68e63760c1f2a1bce3eeff812de3c13e
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746131"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938732"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Azure-szolgáltatások integrálása virtuális hálózatokkal hálózati elkülönítéshez
 
@@ -74,7 +74,7 @@ A szolgáltatás-címkék használatával hálózati elkülönítést érhet el,
 
 További információ az azokat támogató szolgáltatási címkékről és Azure-szolgáltatásokról: a [szolgáltatási címkék áttekintése](service-tags-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [integrálhatja az alkalmazást egy Azure-hálózattal](../app-service/web-sites-integrate-with-vnet.md).
 - Megtudhatja, hogyan [korlátozhatja az erőforrásokhoz való hozzáférést a szolgáltatás-címkék használatával](tutorial-restrict-network-access-to-resources.md).

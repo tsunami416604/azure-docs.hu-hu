@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/22/2019
+ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f462a78790e73f3e0f67f55b6417589c7826a75d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1c88b9f77513021609b99c81ea572c2b5b3d365b
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173668"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936794"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -60,7 +60,6 @@ A **név-azonosító formátum** legördülő listából választhatja ki az al�
 | **Állandó** | A Microsoft Identity platform a NameID formátumot fogja használni állandóként. |
 | **EmailAddress** | A Microsoft Identity platform NameID formátumban fogja használni az EmailAddress formátumot. |
 | **Meghatározatlan** | A Microsoft Identity platform NameID formátuma nem lesz meghatározva. |
-| **Windows-tartomány minősített neve** | A Microsoft Identity platform NameID formátumban fogja használni a WindowsDomainQualifiedName-t. |
 
 Az átmeneti NameID is támogatott, de nem érhető el a legördülő menüben, és nem konfigurálható az Azure oldalán. További információ a NameIDPolicy attribútumról: [Single Sign-On SAML protokoll](single-sign-on-saml-protocol.md).
 

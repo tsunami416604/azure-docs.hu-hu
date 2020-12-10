@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 72d774b4ced6471ff7b355b2cb43c3c9127b5975
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f0c9a01e43f12e8fbe597c85c22b79c0994305e3
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658519"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938868"
 ---
 # <a name="supported-postgresql-major-versions"></a>Támogatott PostgreSQL főverziók
 
@@ -36,12 +36,12 @@ Az aktuális másodlagos kiadás a 9.5.20. Tekintse meg a [PostgreSQL dokumentá
 > A postgres közösségi [verziószámozási szabályzattal](https://www.postgresql.org/support/versioning/)való összehangolása Azure Database for PostgreSQL 9,5-es verziójának kivonásával történik a 2021. február 11-én a postgres. További részletekért és korlátozásért tekintse meg [Azure Database for PostgreSQL verziószámozási szabályzatát](concepts-version-policy.md) .
 
 ## <a name="managing-upgrades"></a>Frissítések kezelése
-A PostgreSQL-projekt rendszeresen kiad kisebb kiadásokat a jelentett hibák kijavítása érdekében. Azure Database for PostgreSQL a szolgáltatás havi üzembe helyezése során a rendszer a kisebb kiadású kiszolgálók automatikus javítását végzi. 
+A PostgreSQL-projekt rendszeresen kiad kisebb kiadásokat a jelentett hibák kijavítása érdekében. Az Azure Database for PostgreSQL a szolgáltatás havi rendszerességű üzembehelyezései során automatikusan alverziókkal frissíti a kiszolgálókat. 
 
-A főverziók automatikus helyi frissítése nem támogatott. A következő főverzióra való frissítéshez 
-   * A főbb verziófrissítések elvégzésének különböző módszerei a [dump és a Restore használatával](./how-to-upgrade-using-dump-and-restore.md)
-   * A [pg_dump és a pg_restore](./howto-migrate-using-dump-and-restore.md) használatával helyezzen át egy adatbázist az új motor verziójával létrehozott kiszolgálóra
-   * Azt is megteheti, hogy a PostgreSQL 10 és 11 közötti verziójára frissít az [Azure Database Migration Service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) használatával
+A főverziók automatikus helyi frissítése nem támogatott. Magasabb főverzióra való frissítéshez 
+   * A főverzió frissítéseiben dokumentált módszerek egyikét használja a [dump és a Restore paranccsal](./how-to-upgrade-using-dump-and-restore.md).
+   * [Pg_dump és pg_restore](./howto-migrate-using-dump-and-restore.md) használatával helyezzen át egy adatbázist az új motor verziójával létrehozott kiszolgálóra.
+   * Az [Azure Database Migration Service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) használatával online frissítéseket hajthat végre.
 
 ### <a name="version-syntax"></a>Verzió szintaxisa
 A PostgreSQL 10-es verziójának megkezdése előtt a [PostgreSQL verziószámozási házirendje](https://www.postgresql.org/support/versioning/) _jelentős_ verziófrissítést eredményezett, hogy az első _vagy_ a második szám növekszik. Például a 9,5 – 9,6 _fő_ verziófrissítésnek számít. A 10-es verziótól kezdve a rendszer csak az első szám változását tekinti jelentős verziófrissítésnek. Például a 10,0 – 10,1 egy _kisebb_ kiadású frissítés. A 10 – _11 verzió a főverzió frissítése_ .

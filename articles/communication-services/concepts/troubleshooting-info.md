@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 88ad060c1ba28285051a91bd928a2a7116dff1ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886787"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937542"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Hibaelhárítás az Azure kommunikációs szolgáltatásokban
 
@@ -165,6 +165,25 @@ Android Studioon navigáljon az eszköz Fájlkezelőhöz úgy, hogy kijelöli a 
    
 
 ---
+
+
+## <a name="calling-client-library-error-codes"></a>Ügyféloldali függvénytár-hibakódok hívása
+
+Az ügyféloldali függvénytárat hívó Azure kommunikációs szolgáltatások a következő hibakódokat használják a hívási problémák elhárításához. Ezek a hibakódok a tulajdonságon keresztül jelennek meg a `call.callEndReason` hívás befejeződése után.
+
+| Hibakód | Leírás | Elvégzendő művelet |
+| -------- | ---------------| ---------------|
+| 403 | Tiltott/hitelesítési hiba. | Győződjön meg arról, hogy a kommunikációs szolgáltatások jogkivonata érvényes, és nem járt le. |
+| 404 | A hívás nem található. | Ellenőrizze, hogy létezik-e a hívott szám (vagy hívja meg az összekötőt). |
+| 408 | A hívási vezérlő időkorlátja lejárt. | A hívási vezérlő időtúllépést várt a felhasználói végpontok protokoll üzeneteire való várakozás közben. Győződjön meg arról, hogy az ügyfelek csatlakoztatva vannak és elérhetők. |
+| 410 | A helyi média verem vagy a média-infrastruktúra hibája. | Győződjön meg arról, hogy a legújabb ügyféloldali kódtárat használja egy támogatott környezetben. |
+| 430 | Nem lehet kézbesíteni az üzenetet az ügyfélalkalmazás számára. | Győződjön meg arról, hogy az ügyfélalkalmazás fut és elérhető. |
+| 480 | A távoli ügyfél-végpont nincs regisztrálva. | Győződjön meg arról, hogy a távoli végpont elérhető. |
+| 481 | Nem sikerült kezelni a bejövő hívást. | Támogatási kérelem nyújtása a Azure Portalon keresztül. |
+| 487 | A hívás megszakítva, helyileg visszautasítva, a végpontok eltérő hibája miatt véget ért, vagy nem sikerült létrehozni az adathordozó-ajánlatot. | A várt viselkedés. |
+| 490, 491, 496, 487, 498 | Helyi végponti hálózati problémák. | Győződjön meg arról, hogy a hálózatban van. |
+| 500, 503, 504 | Kommunikációs szolgáltatások infrastrukturális hibája. | Támogatási kérelem nyújtása a Azure Portalon keresztül. |
+| 603 | A távoli kommunikációs szolgáltatások résztvevője által visszautasított globális hívás | A várt viselkedés. |
 
 
 ## <a name="related-information"></a>Kapcsolódó információk
