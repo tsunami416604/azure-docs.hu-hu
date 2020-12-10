@@ -91,7 +91,7 @@
         - name: Rendelkezésre állás
           href: ../availability.md
         - name: Közös elhelyezés
-          href: co-location.md
+          href: ../co-location.md
         - name: Hálózati teljesítmény
           href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Virtuálisgép-típusok és -méretek
