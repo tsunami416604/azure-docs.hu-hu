@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/02/2020
+ms.date: 12/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: c90b7ce86e06669696a4b9f7e0b2f5287e9dd97e
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a7a81a742922d45be965c7f73e3cb910d0ef989a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533196"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109290"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory-összekötők hibaelhárítása
 
@@ -46,6 +46,15 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 ### <a name="error-code--azurestorageoperationfailedconcurrentwrite"></a>Hibakód: AzureStorageOperationFailedConcurrentWrite
 
 - **Üzenet**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+
+
+### <a name="invalid-property-during-copy-activity"></a>Érvénytelen tulajdonság a másolási tevékenység során
+
+- **Üzenet**:  `Copy activity <Activity Name> has an invalid "source" property. The source type is not compatible with the dataset <Dataset Name> and its linked service <Linked Service Name>. Please verify your input against.`
+
+- **OK**: az adatkészletben definiált típus nem konzisztens a másolási tevékenységben definiált forrás/fogadó típussal.
+
+- **Megoldás**: szerkessze az adatkészlet vagy a folyamat JSON-definícióját, hogy a típusok konzisztensek legyenek, majd futtassa újra a telepítést.
 
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
@@ -159,6 +168,32 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 ### <a name="error-code-adlsgen2timeouterror"></a>Hibakód: AdlsGen2TimeoutError
 
 - **Üzenet**: `Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
+
+
+### <a name="request-to-adls-gen2-account-met-timeout-error"></a>Kérelem ADLS Gen2 fiókra vonatkozó PGE időtúllépési hibája
+
+- **Üzenet**: hibakód = `UserErrorFailedBlobFSOperation` , hibaüzenet = `BlobFS operation failed for: A task was canceled` .
+
+- **OK**: a problémát a ADLS Gen2 fogadó időtúllépési hibája okozza, ami többnyire a saját üzemeltetésű IR-gépen történik.
+
+- **Javaslat**: 
+
+    1. Ha lehetséges, helyezze a saját üzemeltetésű IR-gépet és a cél ADLS Gen2 fiókot ugyanabban a régióban. Ez elkerülheti a véletlenszerű időtúllépési hibát, és jobb teljesítményt biztosíthat.
+
+    1. Ellenőrizze, hogy van-e olyan speciális hálózati beállítás, mint a ExpressRoute, és győződjön meg arról, hogy a hálózatban elegendő sávszélesség van. Azt javasoljuk, hogy csökkentse a saját üzemeltetésű IR egyidejű feladatok beállítását, ha a teljes sávszélesség alacsony, és ezzel elkerülhető, hogy a hálózati erőforrások versenye több egyidejű feladaton keresztül történjen.
+
+    1. A nem bináris másoláshoz használjon kisebb blokk-méretet, hogy csökkentse az időtúllépési hibát, ha a fájl mérete közepes vagy kicsi. Tekintse meg [blob Storage Put blokkot](https://docs.microsoft.com/rest/api/storageservices/put-block).
+
+       Az egyéni blokk méretének megadásához szerkessze a tulajdonságot a. JSON-szerkesztőben:
+    ```
+    "sink": {
+        "type": "DelimitedTextSink",
+        "storeSettings": {
+            "type": "AzureBlobFSWriteSettings",
+            "blockSizeInMB": 8
+        }
+    }
+    ```
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>1. generációs Azure Data Lake Storage
@@ -372,6 +407,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **Megoldás**: a másolási tevékenység fogadójában, a Alapszintű beállítások területen állítsa a "**alapértelmezett típus használata**" beállítást hamis értékre.
 
+
 ### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Hibaüzenet: várt adattípus: decimális (x, x), jogsértő érték
 
 - **Tünetek**: Ha táblázatos adatforrásból (például SQL Server) másol adatokat az Azure szinapszis Analytics-be a szakaszos másolással és a kiindulással, a következő hibaüzenetet kapta:
@@ -387,6 +423,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 - **OK**: az Azure szinapszis Analytics-alapú albase nem tud üres sztringet (null értéket) beszúrni decimális oszlopba.
 
 - **Megoldás**: a másolási tevékenység fogadójában, a Alapszintű beállítások területen állítsa a "**alapértelmezett típus használata**" beállítást hamis értékre.
+
 
 ### <a name="error-message-java-exception-message-hdfsbridgecreaterecordreader"></a>Hibaüzenet: Java-kivételt jelző üzenet: HdfsBridge:: CreateRecordReader
 
@@ -421,6 +458,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - Vagy a tömeges beszúrási módszer használata a "Base" letiltásával
 
+
 ### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Hibaüzenet: a HTTP feltételes fejléc (ek) használatával megadott feltétel nem teljesül.
 
 - **Tünetek**: SQL-lekérdezést használ az adatok Azure szinapszis Analyticsből való lekéréséhez, és a következő hiba miatt:
@@ -433,6 +471,58 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **Megoldás**: futtassa ugyanazt a LEKÉRDEZÉST a SSMS, és ellenőrizze, hogy ugyanazt az eredményt látja-e. Ha igen, nyisson meg egy támogatási jegyet az Azure szinapszis Analytics szolgáltatáshoz, és adja meg az Azure szinapszis Analytics-kiszolgáló és az adatbázis nevét a további hibák megoldásához.
             
+
+### <a name="low-performance-when-load-data-into-azure-sql"></a>Alacsony teljesítmény az Azure SQL-ba való betöltéskor
+
+- **Tünetek**: az adatok az Azure SQL-be való másolása lassúnak bizonyul.
+
+- **OK**: a probléma kiváltó okát többnyire az Azure SQL-oldal szűk keresztmetszete váltja ki. A következő okok lehetséges okai:
+
+    1. Az Azure-adatbázis szintje nem elég nagy.
+
+    1. Az Azure DB-DTU használata a 100%-ban közelíthető meg. Nyomon követheti [a teljesítményt](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) , és megtekintheti az adatbázis-csomag frissítését.
+
+    1. Az indexek nincsenek megfelelően beállítva. A betöltés befejezése után távolítsa el az összes indexet az adatterhelés előtt, majd hozza létre újra őket.
+
+    1. A WriteBatchSize nem elég nagy ahhoz, hogy illeszkedjen a séma sorainak méretéhez. Próbálja meg bővíteni a probléma tulajdonságát.
+
+    1. A tömeges beszúrta helyett a tárolt eljárás használatban van, ami várhatóan rosszabb teljesítményű. 
+
+- **Megoldás**: a [másolási tevékenység teljesítményéhez](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting) tekintse meg a HKT-t.
+
+
+### <a name="performance-tier-is-low-and-leads-to-copy-failure"></a>A teljesítményszint alacsony, és sikertelen másolást eredményez
+
+- **Tünetek**: az adatok Azure SQL-be történő másolása során az alábbi hibaüzenet jelenik meg: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
+
+- **OK**: az Azure SQL S1 használatban van, amely ebben az esetben az i/o-korlátokat érinti.
+
+- **Megoldás**: a probléma megoldásához frissítse az Azure SQL Performance szintet. 
+
+
+### <a name="sql-table-cannot-be-found"></a>Az SQL-tábla nem található 
+
+- **Tünetek**: hiba történt az adatok hibridről helyszíni SQL Server táblába való másolása során:`Cannot find the object "dbo.Contoso" because it does not exist or you do not have permissions.`
+
+- **OK**: az aktuális SQL-fiók nem rendelkezik megfelelő engedélyekkel a .net SqlBulkCopy. WriteToServer által kiadott kérelmek végrehajtásához.
+
+- **Megoldás**: váltson magasabb jogosultsági szintű SQL-fiókra.
+
+
+### <a name="string-or-binary-data-would-be-truncated"></a>A karakterlánc-vagy bináris adatértékek csonkítva lesznek
+
+- **Tünetek**: hiba történt az adatok helyszíni vagy Azure SQL Server-táblába való másolása során: 
+
+- **OK**: az SQL-tábla sémájának definíciójában egy vagy több olyan oszlop van, amelynek kevesebb a várakozási ideje.
+
+- **Megoldás**: próbálkozzon a következő lépésekkel a probléma megoldásához:
+
+    1. Alkalmazzon [hibatűrést](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance), különösen a "redirectIncompatibleRowSettings" kifejezést a problémával kapcsolatos problémák megoldásához.
+
+    1. Az átirányított és az SQL Table-séma oszlop hosszával ellenőrizze, hogy melyik oszlop (oka) t kell frissíteni.
+
+    1. A tábla sémájának frissítése ennek megfelelően.
+
 
 ## <a name="delimited-text-format"></a>Tagolt szöveg formátuma
 
@@ -453,7 +543,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **Javaslat**: a sorok számának lekérése a hibaüzenetben, tekintse meg a sor oszlopát, és javítsa ki az adattípust.
 
-- **OK**: Ha a várt oszlopok száma "1" a hibaüzenetben, lehetséges, hogy helytelen tömörítési vagy formázási beállításokat adott meg, ami azt eredményezte, hogy az ADF helytelenül elemezte a fájl (oka) t.
+- **OK**: Ha a várt oszlopok száma "1" a hibaüzenetben, lehet, hogy helytelen tömörítési vagy formázási beállításokat adott meg. Így az ADF helytelenül elemezte a fájl (oka) t.
 
 - **Javaslat**: Ellenőrizze a formátum beállításait, és győződjön meg arról, hogy az megfelel a forrásfájl (ok) nak.
 
@@ -488,6 +578,16 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **Javaslat**: futtassa újra a folyamatot. Ha nem sikerül, próbálja meg csökkenteni a párhuzamosságot. Ha továbbra sem sikerül, forduljon a Dynamics ügyfélszolgálatához.
 
+
+### <a name="columns-are-missing-when-previewingimporting-schema"></a>Az oszlopok hiányoznak a séma előnézete/importálása során
+
+- **Tünetek**: egyes oszlopok nem hiányozhatnak a séma importálásakor vagy az adatnézetek megtekintésekor. Hibaüzenet: `The valid structure information (column name and type) are required for Dynamics source.`
+
+- **OK**: Ez a probléma alapvetően a-design, mivel az ADF nem képes olyan oszlopokat megjeleníteni, amelyek nem rendelkeznek értékkel az első 10 rekordban. Ellenőrizze, hogy a hozzáadott oszlopok formátuma megfelelő-e. 
+
+- **Javaslat**: manuálisan adja hozzá az oszlopokat a leképezés lapon.
+
+
 ## <a name="excel-format"></a>Excel-formátum
 
 ### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Időtúllépés vagy lassú teljesítmény a nagyméretű Excel-fájlok elemzésekor
@@ -495,7 +595,8 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 - **Tünetek**:
 
     1. Amikor létrehoz egy Excel-adatkészletet, és importálja a sémát a kapcsolatból/tárból, előnézeti adatokat, listát vagy frissítési munkalapokat, akkor időtúllépési hiba léphet fel, ha az Excel-fájl mérete nagyméretű.
-    2. Ha a másolási tevékenységgel nagy méretű Excel-fájlból (>= 100MB) másol Adatmásolást más adattárba, a lassú teljesítmény vagy a bácsi probléma merülhet fel.
+
+    1. Ha a másolási tevékenységgel nagy méretű Excel-fájlból (>= 100MB) másol Adatmásolást más adattárba, a lassú teljesítmény vagy a bácsi probléma merülhet fel.
 
 - **OK**: 
 
@@ -507,9 +608,23 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
     1. A séma importálásához létrehozhat egy kisebb mintát, amely az eredeti fájl egy részhalmaza, és a "séma importálása a fájlból" lehetőséget választja a "séma importálása a hálózatról/áruházból" lehetőség helyett.
 
-    2. A workseet listázásához a munkalap legördülő menüben kattintson a "szerkesztés" lehetőségre, és adja meg a lap nevét/indexét.
+    2. A felsorolási munkalap legördülő listájában kattintson a "szerkesztés" lehetőségre, és adja meg a lap nevét/indexét.
 
     3. Nagyméretű Excel-fájl (>100MB) más tárolóba való másolásához használhatja az adatfolyamok Excel-forrását, amelynél a sport streaming olvas és jobb teljesítményt nyújt.
+
+
+## <a name="hdinsight"></a>HDInsight
+
+### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>SSL-hiba a társított szolgáltatás HDInsight ESP-fürttel való csatolásakor
+
+- **Üzenet**: `Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+
+- **OK**: a probléma valószínűleg a rendszer-megbízhatósági tárolóval kapcsolatos.
+
+- **Megoldás**: Nyissa meg az elérési utat a **Microsoft Integration RUNTIME\4.0\SHARED\ODBC Drivers\Microsoft kaptár ODBC Driver\lib** , és nyissa meg DriverConfiguration64.exe a beállítás módosításához.
+
+    ![Törölje a rendszermegbízhatósági tároló használata jelölőnégyzet jelölését.](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+
 
 ## <a name="json-format"></a>JSON-formátum
 
@@ -548,6 +663,20 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 - **Üzenet**: `Error occurred when deserializing source JSON file '%fileName;'. The JSON format doesn't allow mixed arrays and objects.`
 
 
+## <a name="oracle"></a>Oracle
+
+### <a name="error-code-argumentoutofrangeexception"></a>Hibakód: ArgumentOutOfRangeException
+
+- **Üzenet**: `Hour, Minute, and Second parameters describe an un-representable DateTime.`
+
+- **OK**: Az ADF-ben a DateTime értékek a 0001-01-01 00:00:00 és 9999-12-31 23:59:59 közötti tartományban támogatottak. Az Oracle azonban támogatja a DateTime érték szélesebb tartományát (például a BC Century vagy a min/mp>59), ami az ADF hibája miatt meghiúsul.
+
+- **Javaslat**: 
+
+    A futtatásával `select dump(<column name>)` ellenőrizze, hogy az Oracle értéke az ADF tartományában van-e. 
+
+    Ha tudni szeretné, hogy milyen bájtos sorozatot ad meg az eredmény, ellenőrizze a következőt: https://stackoverflow.com/questions/13568193/how-are-dates-stored-in-oracle .
+
 
 ## <a name="parquet-format"></a>Parketta formátuma
 
@@ -570,7 +699,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 ### <a name="error-code--parquetinvalidfile"></a>Hibakód: ParquetInvalidFile
 
-- **Üzenet**: `File is not a valid parquet file.`
+- **Üzenet**: `File is not a valid Parquet file.`
 
 - **OK**: a parketta-fájl hibája.
 
@@ -651,7 +780,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 ### <a name="error-code--parquetunsupportedinterpretation"></a>Hibakód: ParquetUnsupportedInterpretation
 
-- **Üzenet**: `The given interpretation '%interpretation;' of parquet format is not supported.`
+- **Üzenet**: `The given interpretation '%interpretation;' of Parquet format is not supported.`
 
 - **OK**: nem támogatott forgatókönyv
 
@@ -665,6 +794,45 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 - **OK**: nem támogatott forgatókönyv
 
 - **Javaslat**: távolítsa el a fájba a hasznos adatok között.
+
+
+### <a name="error-code--usererrorjniexception"></a>Hibakód: UserErrorJniException
+
+- **Üzenet**: `Cannot create JVM: JNI return code [-6][JNI call failed: Invalid arguments.]`
+
+- **OK**: a JVM nem hozható létre, mert néhány tiltott (globális) argumentum be van állítva.
+
+- **Javaslat**: Jelentkezzen be arra a gépre, amelyen a saját üzemeltetésű integrációs modul **egyes csomópontjai** futnak. Ellenőrizze, hogy a rendszerváltozó helyesen van-e beállítva, például: `_JAVA_OPTIONS "-Xms256m -Xmx16g" with memory bigger than 8 G` . Indítsa újra az összes IR-csomópontot, majd futtassa újra a folyamatot.
+
+
+### <a name="arithmetic-overflow"></a>Aritmetikai túlcsordulás
+
+- **Tünetek**: a Parquet-fájlok másolása során hibaüzenet jelenik meg: `Message = Arithmetic Overflow., Source = Microsoft.DataTransfer.Common`
+
+- **OK**: jelenleg csak a pontossági <= 38, és a <= 20 egész szám hosszúsága támogatott, ha az Oracle-ből a parkettára másolja a fájlokat. 
+
+- **Megoldás**: az ilyen problémákkal rendelkező oszlopokat megkerülő megoldásként konvertálhatja a VARCHAR2.
+
+
+### <a name="no-enum-constant"></a>Nem állandó Enum
+
+- **Tünetek**: hiba történt az adatok parketta formátumba való másolása során: `java.lang.IllegalArgumentException:field ended by &apos;;&apos;` , vagy: `java.lang.IllegalArgumentException:No enum constant org.apache.parquet.schema.OriginalType.test` .
+
+- **OK**: 
+
+    A problémát a szóközök vagy a nem támogatott karakterek (például:;) okozhatja. {} () \n\t =) az oszlopnév esetében, mivel a parketta nem támogatja az ilyen formátumot. 
+
+    Például a *contoso (test)* nevű oszlopnév a [kód](https://github.com/apache/parquet-mr/blob/master/parquet-column/src/main/java/org/apache/parquet/schema/MessageTypeParser.java) alapján zárójelben fogja elemezni a típust `Tokenizer st = new Tokenizer(schemaString, " ;{}()\n\t");` . A hiba akkor jelenik meg, ha nincs ilyen "teszt" típus.
+
+    A támogatott típusok ellenőrzését [itt](https://github.com/apache/parquet-mr/blob/master/parquet-column/src/main/java/org/apache/parquet/schema/OriginalType.java)tekintheti meg.
+
+- **Megoldás**: 
+
+    1. Ellenőrizze, hogy vannak-e szóközök a fogadó oszlop nevében.
+
+    1. Ellenőrizze, hogy az első sor szóközökkel van-e felhasználva oszlopnév néven.
+
+    1. Ellenőrizze, hogy a OriginalType típusa támogatott-e. Próbálja meg elkerülni ezeket a speciális szimbólumokat `,;{}()\n\t=` . 
 
 
 ## <a name="rest"></a>REST
@@ -689,6 +857,114 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
     - Vegye figyelembe, hogy a "curl" nem lehet megfelelő az SSL-tanúsítvány érvényesítési hibájának reprodukálása érdekében. Bizonyos esetekben a "curl" parancs végrehajtása nem sikerült az SSL-tanúsítvány érvényesítési problémáinak elvégzése nélkül. Ha azonban ugyanazt az URL-címet a böngészőben hajtja végre, akkor a rendszer nem ad vissza SSL-tanúsítványt az első helyen az ügyfél számára a kiszolgálóval való megbízhatósági kapcsolat létrehozásához.
 
       A fenti esethez ajánlott eszközök, például a **Poster** és a **Hegedűs** .
+
+
+## <a name="sftp"></a>SFTP
+
+### <a name="invalid-sftp-credential-provided-for-sshpublickey-authentication-type"></a>A "SSHPublicKey" hitelesítési típushoz megadott SFTP-hitelesítő adat érvénytelen.
+
+- **Tünetek**: az SSH nyilvános kulcsú hitelesítés használatos, miközben a "SshPublicKey" hitelesítési típushoz érvénytelen SFTP hitelesítő adat van megadva.
+
+- **OK**: ezt a hibát három lehetséges ok okozhatta:
+
+    1. A titkos kulcs tartalmának beolvasása a AKV/SDK-ból történik, de helytelenül van kódolva.
+
+    1. A kulcs tartalmának helytelen formátuma van kiválasztva.
+
+    1. A hitelesítő adat vagy a titkos kulcs tartalma érvénytelen.
+
+- **Megoldás**: 
+
+    1. **1. ok**:
+
+       Ha a titkos kulcs tartalma a AKV-ből származik, és az eredeti kulcsfájl képes működni, ha az ügyfél közvetlenül az SFTP-hez társított szolgáltatáshoz tölti fel.
+
+       Tekintse meg https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authentication a privateKey tartalma Base64 kódolású titkos SSH-kulcs tartalmát.
+
+       Kódolja **az eredeti titkos kulcsfájl teljes tartalmát** Base64 kódolással, és tárolja a kódolt karakterláncot a AKV. Az eredeti titkos kulcsfájl az, amely az SFTP-hez társított szolgáltatáson tud működni, ha a feltöltés fájlból lehetőségre kattint.
+
+       Íme néhány példa a sztring generálásához:
+
+       - C#-kód használata:
+       ```
+       byte[] keyContentBytes = File.ReadAllBytes(Private Key Path);
+       string keyContent = Convert.ToBase64String(keyContentBytes, Base64FormattingOptions.None);
+       ```
+
+       - Python-kód használata:
+       ```
+       import base64
+       rfd = open(r'{Private Key Path}', 'rb')
+       keyContent = rfd.read()
+       rfd.close()
+       print base64.b64encode(Key Content)
+       ```
+
+       - Harmadik féltől származó Base64 átalakító eszköz használata
+
+         Hasonló eszközök https://www.base64encode.org/ használata ajánlott.
+
+    1. A **2. okból**:
+
+       Ha a PKCS # 8 formátumú SSH titkos kulcs használatban van
+
+       A PKCS # 8 formátum SSH titkos kulcsa (a "-----BEGIN ENCRYPTED PRIVATE KEY-----" kezdetű) jelenleg nem támogatott az SFTP-kiszolgáló az ADF-ben való eléréséhez. 
+
+       Az alábbi parancsok futtatásával alakítsa át a kulcsot a hagyományos SSH-kulcs formátumára (Kezdje a következővel: "-----BEGIN RSA titkos kulcs-----"):
+
+       ```
+       openssl pkcs8 -in pkcs8_format_key_file -out traditional_format_key_file
+       chmod 600 traditional_format_key_file
+       ssh-keygen -f traditional_format_key_file -p
+       ```
+    1. **3. ok**:
+
+       Ha a kulcsfájl vagy a jelszó helyes, ellenőrizze, hogy van-e olyan eszköz, mint a megnyerő eszközzel.
+
+
+### <a name="incorrect-linked-service-type-is-used"></a>Helytelen társított szolgáltatástípus van használatban
+
+- **Tünetek**: az FTP-/SFTP-kiszolgáló nem érhető el.
+
+- **OK**: helytelen társított szolgáltatástípus van használatban az FTP-vagy SFTP-kiszolgálóhoz, például az FTP-hez társított szolgáltatás használata egy SFTP-kiszolgálóhoz való kapcsolódáshoz vagy fordítva.
+
+- **Megoldás**: Ellenőrizze a célkiszolgáló portját. Alapértelmezés szerint az FTP a 21-es portot használja, és az SFTP a 22-es portot használja.
+
+
+### <a name="sftp-copy-activity-failed"></a>Az SFTP-másolási tevékenység nem sikerült
+
+- **Tünetek**: hibakód: UserErrorInvalidColumnMappingColumnNotFound. Hibaüzenet: `Column &apos;AccMngr&apos; specified in column mapping cannot be found in source data.`
+
+- **OK**: a forrás nem tartalmaz "AccMngr" nevű oszlopot.
+
+- **Megoldás**: Ellenőrizze, hogy az adatkészlet hogyan lett konfigurálva úgy, hogy a cél adatkészlet oszlop hozzárendelésével erősítse meg, hogy van-e ilyen "AccMngr" oszlop.
+
+
+### <a name="sftp-server-connection-throttling"></a>SFTP-kiszolgáló kapcsolatainak szabályozása
+
+- **Tünetek**: a kiszolgáló válasza nem tartalmazza az ssh protokoll azonosítását, és nem sikerült a másolás.
+
+- **OK**: Az ADF több kapcsolatot hoz létre az SFTP-kiszolgálóról párhuzamosan történő letöltésre, és időnként az SFTP-kiszolgáló szabályozását fogja érinteni. Gyakorlatilag a különböző kiszolgálók eltérő hibát adnak vissza a szabályozás során.
+
+- **Megoldás**: 
+
+    Adja meg az SFTP-adatkészlet maximális egyidejű összekapcsolását 1-re, majd futtassa újra a másolatot. Ha sikerrel jár, biztos lehet benne, hogy a szabályozás oka.
+
+    Ha előléptetni szeretné az alacsony átviteli sebességet, forduljon az SFTP rendszergazdájához az egyidejű kapcsolatok számának növeléséhez, vagy adja hozzá az alábbi IP-címet az engedélyezési listához:
+
+    - Ha felügyelt IR-t használ, vegye fel az [Azure Datacenter IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653).
+      Vagy telepítheti a saját üzemeltetésű integrációs modult, ha nem kívánja az IP-címtartományok nagy listáját hozzáadni az SFTP-kiszolgáló engedélyezési listájához.
+
+    - Ha saját üzemeltetésű integrációs modult használ, adja hozzá a számítógép IP-címét, amely telepítette a legördülő listát az engedélyezési listához.
+
+
+### <a name="error-code-sftprenameoperationfail"></a>Hibakód: SftpRenameOperationFail
+
+- **Tünetek**: a folyamat nem tudta átmásolni az adatait a blobból az SFTP-be a következő hiba miatt: `Operation on target Copy_5xe failed: Failure happened on 'Sink' side. ErrorCode=SftpRenameOperationFail,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException` .
+
+- **OK**: az adatok másolásakor a useTempFileRename beállítás értéke TRUE (igaz). Ez lehetővé teszi, hogy a folyamat ideiglenes fájlokat használjon. A hiba akkor aktiválódik, ha egy vagy több ideiglenes fájl törlődött a teljes Adatmásolás előtt.
+
+- **Megoldás**: állítsa a UseTempFileName beállítást hamis értékre.
 
 
 ## <a name="general-copy-activity-error"></a>Általános másolási tevékenység hibája
@@ -731,7 +1007,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 - **Üzenet**: `Invalid 'ordinal' property for sink column under 'mappings' property. Ordinal: %Ordinal;.`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 

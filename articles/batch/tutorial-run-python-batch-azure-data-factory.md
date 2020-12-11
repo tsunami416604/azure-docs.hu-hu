@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7752bc3f768aec7a3e98fb1813c4194f81fb9dfb
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 6cc6e6a9739b8b06ab3c48dd3fd75f19de8d0787
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917630"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106274"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Oktatóanyag: Python-parancsfájlok futtatása Azure Data Factory használatával Azure Batch
 
-Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hitelesítés Batch- és Storage-fiókokkal
@@ -58,7 +58,7 @@ Ebben a szakaszban a Batch Explorer használatával hozza létre az Azure-beli a
     1. Az **adatelemzés** területen válassza a **Windows Dsvm** operációs rendszerként lehetőséget.
     1. Válassza ki `Standard_f2s_v2` a virtuális gép méretét.
     1. Engedélyezze az indítási feladatot, és adja hozzá a parancsot `cmd /c "pip install azure-storage-blob pandas"` . A felhasználói identitás az alapértelmezett **készlet felhasználója** maradhat.
-    1. Kattintson az **OK** gombra.
+    1. Válassza az **OK** lehetőséget.
 
 ## <a name="create-blob-containers"></a>BLOB-tárolók létrehozása
 
@@ -148,12 +148,23 @@ Ha a parancsfájl végrehajtásával figyelmeztetéseket vagy hibákat állít e
 1. Kattintson arra a feladatra, amelynél hiba történt a kilépési kóddal.
 1. Megtekintheti `stdout.txt` és `stderr.txt` diagnosztizálhatja a problémát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ez az oktatóanyag egy példát mutat be, amely azt tanította, hogyan futtathat Python-parancsfájlokat egy folyamat részeként a Azure Batch használatával Azure Data Factory.
+Bár magukért a feladatokért és tevékenységekért nem kell fizetnie, a számítási csomópontokért igen. Ezért ajánlott csak szükség szerint lefoglalni a készleteket. A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. A bemeneti és kimeneti fájlok azonban megmaradnak a Storage-fiókban. Ha már nincs rá szükség, törölheti a Batch-fiókot és a Storage-fiókot is.
+
+## <a name="next-steps"></a>További lépések
+
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
+
+> [!div class="checklist"]
+> * Hitelesítés Batch- és Storage-fiókokkal
+> * Parancsfájl fejlesztése és futtatása Pythonban
+> * Számításicsomópont-készlet létrehozása alkalmazás futtatásához
+> * A Python számítási feladatainak beosztása
+> * Az elemzési folyamat monitorozása
+> * Hozzáférés a naplófájlokhoz
 
 A Azure Data Factoryról további információt a következő témakörben talál:
 
 > [!div class="nextstepaction"]
 > [Azure Data Factory áttekintése](../data-factory/introduction.md)
-

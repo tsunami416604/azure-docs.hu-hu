@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657312"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905676"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 
@@ -262,7 +262,7 @@ A **PartnerEarnedCreditApplied** tulajdonság szerint is végezhet csoportosít�
 
 ## <a name="export-cost-data-to-azure-storage"></a>Költségadatok exportálása az Azure Storage-ba
 
-A partnerbérlőben számlázási hatókörökhöz való hozzáféréssel rendelkező partnerek exportálhatják költség- és használati adataikat egy Azure Storage-blobba. A blobnak a partnerbérlő olyan előfizetésében kell lennie, amely nem megosztott szolgáltatás-előfizetés vagy egy ügyfél előfizetése. A költségadatok exportálásának engedélyezéséhez javasoljuk, hogy hozzon létre egy független, használatalapú fizetéses előfizetést a partnerbérlőben, hogy helyet biztosítson az exportált költségadatoknak. Az exportálási tárfiók a használatalapú fizetéses előfizetésben üzemeltetett Azure Storage-blobon jön létre. Azon hatókör alapján, amelyben a partner létrehozza az exportálást, a vonatkozó adatok automatikusan, rendszeres időközönként lesznek exportálva a tárfiókba.
+A partnerbérlőben számlázási hatókörökhöz való hozzáféréssel rendelkező partnerek exportálhatják költség- és használati adataikat egy Azure Storage-blobba. A blobnak a partnerbérlő olyan előfizetésében kell lennie, amely nem [megosztott szolgáltatás-előfizetés](/partner-center/shared-services) vagy egy ügyfél előfizetése. A költségadatok exportálásának engedélyezéséhez javasoljuk, hogy hozzon létre egy független, használatalapú fizetéses előfizetést a partnerbérlőben, hogy helyet biztosítson az exportált költségadatoknak. Az exportálási tárfiók a használatalapú fizetéses előfizetésben üzemeltetett Azure Storage-blobon jön létre. Azon hatókör alapján, amelyben a partner létrehozza az exportálást, a vonatkozó adatok automatikusan, rendszeres időközönként lesznek exportálva a tárfiókba.
 
 Az előfizetéshez Azure RBAC-hozzáféréssel rendelkező felhasználók a költségadatokat az ügyfélbérlő bármelyik előfizetésében lévő Azure-blobba is exportálhatják.
 

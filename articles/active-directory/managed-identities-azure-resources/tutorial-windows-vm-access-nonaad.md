@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa17a18de8e71b099d6ed717974486203c4379f4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 668d3cb044512220ff7afbc165c77da704a9a5d7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180506"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107515"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Oktatóanyag: Hozzáférés az Azure Key Vaulthoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással 
 
@@ -61,6 +61,20 @@ Először létre kell hozni egy Key Vaultot, és gondoskodni kell róla, hogy a 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget
 1. Kattintson a **Létrehozás** elemre.
 
+### <a name="create-a-secret"></a>Titkos kulcs létrehozása
+
+Ezután adjon hozzá egy titkos kulcsot a Key Vaulthoz, így később lekérheti a virtuális gépen futó kód használatával. Ebben az oktatóanyagban a PowerShellt használjuk, de ugyanezek a fogalmak érvényesek az ezen a virtuális gépen futtatott kódokra is.
+
+1. Navigáljon az újonnan létrehozott Key Vault.
+1. Válassza a **Titkos kódok** lehetőséget, és kattintson a **Hozzáadás** gombra.
+1. **Előállítási/importálási** lehetőség kiválasztása
+1. A **titkos kód létrehozása** a **feltöltési beállításokból lapon** válassza a **manuális** lehetőséget.
+1. Adja meg a titkos kód nevét és értékét.  Az érték bármi lehet. 
+1. Hagyja az aktiválási és a lejárati dátumot üresen, az **Engedélyezve** beállítást pedig az **Igen** értéken. 
+1. A titkos kód létrehozásához kattintson a **Létrehozás** parancsra.
+
+   ![Titkos kulcs létrehozása](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
+
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
 A virtuális gép által használt felügyelt identitásnak hozzáférést kell adni ahhoz, hogy elolvassa a Key Vaultban tárolni kívánt titkot.
@@ -74,21 +88,8 @@ A virtuális gép által használt felügyelt identitásnak hozzáférést kell 
 1. A **hozzáférési házirend hozzáadása** szakasz **Konfigurálás a sablon alapján (nem kötelező)** területen válassza a **titkos kezelés** lehetőséget a legördülő menüből.
 1. Válassza a **Rendszerbiztonsági tag kijelölése** lehetőséget, és a keresőmezőben adja meg a korábban létrehozott virtuális gép nevét.  Válassza ki a virtuális gépet az eredmények listájában, és válassza a **kiválasztás** lehetőséget.
 1. Válassza a **Hozzáadás** lehetőséget
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
-## <a name="create-a-secret"></a>Titkos kulcs létrehozása
-
-Ezután adjon hozzá egy titkos kulcsot a Key Vaulthoz, így később lekérheti a virtuális gépen futó kód használatával. Ebben az oktatóanyagban a PowerShellt használjuk, de ugyanezek a fogalmak érvényesek az ezen a virtuális gépen futtatott kódokra is.
-
-1. Navigáljon az újonnan létrehozott Key Vault.
-1. Válassza a **Titkos kódok** lehetőséget, és kattintson a **Hozzáadás** gombra.
-1. **Előállítási/importálási** lehetőség kiválasztása
-1. A **titkos kód létrehozása** a **feltöltési beállításokból lapon** válassza a **manuális** lehetőséget.
-1. Adja meg a titkos kód nevét és értékét.  Az érték bármi lehet. 
-1. Hagyja az aktiválási és a lejárati dátumot üresen, az **Engedélyezve** beállítást pedig az **Igen** értéken. 
-1. A titkos kód létrehozásához kattintson a **Létrehozás** parancsra.
-
-   ![Titkos kulcs létrehozása](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
 
 ## <a name="access-data"></a>Adatok elérése  
 

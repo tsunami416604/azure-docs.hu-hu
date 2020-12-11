@@ -11,22 +11,22 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b82edf39185067e4c761c7598b159a655dfc370c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 20df5fc3a4d7c392be62df2b7778854d1e2e1cba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735409"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109062"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Átirányítási URL-címek beállítása b2clogin.com Azure Active Directory B2C
 
-Ha a Azure Active Directory B2C (Azure AD B2C) alkalmazásban állít be egy identitás-szolgáltatót a regisztráláshoz és a bejelentkezéshez, meg kell adnia egy átirányítási URL-címet. Az alkalmazásokban és API-kkal már nem hivatkozhat *login.microsoftonline.com* a felhasználók hitelesítéséhez Azure ad B2C. Ehelyett használja a *b2clogin.com* az összes új alkalmazáshoz, és telepítse át a meglévő alkalmazásokat a *login.microsoftonline.com* -ről a *b2clogin.com* -re.
+Ha a Azure Active Directory B2C (Azure AD B2C) alkalmazásban állít be egy identitás-szolgáltatót a regisztráláshoz és a bejelentkezéshez, meg kell adnia egy átirányítási URL-címet. Az alkalmazásokban és API-kkal már nem hivatkozhat *login.microsoftonline.com* a felhasználók hitelesítéséhez Azure ad B2C. Ehelyett használja a *b2clogin.com* az összes új alkalmazáshoz, és telepítse át a meglévő alkalmazásokat a *login.microsoftonline.com* -ről a *b2clogin.com*-re.
 
 ## <a name="deprecation-of-loginmicrosoftonlinecom"></a>Login.microsoftonline.com elavulása
 
 **Október 2020 frissítés:** Kiterjesztjük a türelmi időszakot olyan bérlők számára, akik nem tudják teljesíteni az eredetileg a 2020. december 04-én bejelentett elavult időpontot. A login.microsoftonline.com kivonása mostantól nem haladhatja meg a **2021. január 14** -én.
 
-**Háttér** : a 2019. december 1-jétől a login.microsoftonline.com-támogatás ütemezett kivonulását eredetileg Azure AD B2C, 2020. december 1-jétől [jelentették be](https://azure.microsoft.com/updates/b2c-deprecate-msol/) . Ez a meglévő bérlők számára egy (1) évet biztosított a b2clogin.com való Migrálás során. A 2019. december 04. után létrehozott új bérlők nem fogadják el a login.microsoftonline.com érkező kéréseket. Az összes funkció változatlan marad a b2clogin.com-végponton.
+**Háttér**: a 2019. december 1-jétől a login.microsoftonline.com-támogatás ütemezett kivonulását eredetileg Azure AD B2C, 2020. december 1-jétől [jelentették be](https://azure.microsoft.com/updates/b2c-deprecate-msol/) . Ez a meglévő bérlők számára egy (1) évet biztosított a b2clogin.com való Migrálás során. A 2019. december 04. után létrehozott új bérlők nem fogadják el a login.microsoftonline.com érkező kéréseket. Az összes funkció változatlan marad a b2clogin.com-végponton.
 
 A login.microsoftonline.com elavulása nem érinti Azure Active Directory bérlőket. Ez a módosítás csak Azure Active Directory B2C bérlőket érint.
 
@@ -45,7 +45,7 @@ Azt is megteheti, hogy a `<policy-name>` lekérdezési paraméterként a követk
 > [!IMPORTANT]
 > A "Policy" paramétert használó végpontokat frissíteni kell, valamint az [identitás-szolgáltató átirányítási URL-címeit](#change-identity-provider-redirect-urls).
 
-Egyes Azure AD B2C ügyfelek az Azure AD Enterprise-bérlők megosztott funkcióit használják, például a OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamatát. Ezek a funkciók az Azure AD login.microsoftonline.com-végpontokkal érhetők el, *amelyek nem tartalmaznak házirend-paramétert* . __Ezeket a végpontokat a rendszer nem érinti__ .
+Egyes Azure AD B2C ügyfelek az Azure AD Enterprise-bérlők megosztott funkcióit használják, például a OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamatát. Ezek a funkciók az Azure AD login.microsoftonline.com-végpontokkal érhetők el, *amelyek nem tartalmaznak házirend-paramétert*. __Ezeket a végpontokat a rendszer nem érinti__.
 
 ## <a name="benefits-of-b2clogincom"></a>A b2clogin.com előnyei
 
@@ -53,7 +53,7 @@ Ha a *b2clogin.com* -t használja átirányítási URL-címként:
 
 * A Microsoft-szolgáltatások cookie-fejlécében felhasznált lemezterület csökken.
 * Az átirányítási URL-címeknek már nem kell tartalmazniuk a Microsoftnak való hivatkozást.
-* A JavaScript ügyféloldali kódja támogatott (jelenleg [előzetes](user-flow-javascript-overview.md)verzióban) a testreszabott lapokon. Biztonsági korlátozások miatt a rendszer eltávolítja a JavaScript-kódot és a HTML-űrlapok elemeit az egyéni lapokról, ha *login.microsoftonline.com* használ.
+* A JavaScript ügyféloldali kódja támogatott (jelenleg [előzetes](javascript-and-page-layout.md)verzióban) a testreszabott lapokon. Biztonsági korlátozások miatt a rendszer eltávolítja a JavaScript-kódot és a HTML-űrlapok elemeit az egyéni lapokról, ha *login.microsoftonline.com* használ.
 
 ## <a name="overview-of-required-changes"></a>A szükséges módosítások áttekintése
 
@@ -61,7 +61,7 @@ Az alkalmazások *b2clogin.com* való áttelepíteni több módosítást is szü
 
 * Módosítsa az átirányítási URL-címet az identitás-szolgáltató alkalmazásaiban a *b2clogin.com* hivatkozására.
 * Frissítse Azure AD B2C alkalmazásait a *b2clogin.com* használatára a felhasználói folyamat és a jogkivonat-végpont hivatkozásaiban. Ilyen lehet például a Microsoft Authentication Library (MSAL) hitelesítési függvénytár használatának frissítése.
-* Frissítse a [felhasználói felület testreszabására](custom-policy-ui-customization.md)vonatkozó CORS-beállításokban definiált összes **engedélyezett eredetet** .
+* Frissítse a [felhasználói felület testreszabására](customize-ui-with-html.md)vonatkozó CORS-beállításokban definiált összes **engedélyezett eredetet** .
 
 Egy régi végpont a következőhöz hasonló lehet:
 - <b><code>https://login.microsoft.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
@@ -113,7 +113,7 @@ A Azure AD B2C által védett Azure API Management API-k áttelepítéséhez tek
 
 ### <a name="msalnet-validateauthority-property"></a>MSAL.NET ValidateAuthority tulajdonsága
 
-Ha a [MSAL.net][msal-dotnet] v2 vagy a korábbi verzióját használja, állítsa az **ValidateAuthority** tulajdonságot az `false` ügyfél-példányra, hogy engedélyezze az átirányítást a *b2clogin.com* . Ennek az értéknek a beállítása `false` nem szükséges a MSAL.net v3 és újabb verziókhoz.
+Ha a [MSAL.net][msal-dotnet] v2 vagy a korábbi verzióját használja, állítsa az **ValidateAuthority** tulajdonságot az `false` ügyfél-példányra, hogy engedélyezze az átirányítást a *b2clogin.com*. Ennek az értéknek a beállítása `false` nem szükséges a MSAL.net v3 és újabb verziókhoz.
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication

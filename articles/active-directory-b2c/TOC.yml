@@ -121,16 +121,48 @@
           href: signin-appauth-ios.md
         - name: Android az AppAuth használatával
           href: signin-appauth-android.md
+    - name: Identitásszolgáltatók
+      items:
+        - name: Identitásszolgáltató hozzáadása
+          href: add-identity-provider.md
+        - name: AD FS
+          href: identity-provider-adfs.md
+        - name: Amazon
+          href: identity-provider-amazon.md
+        - name: Azure AD (egybérlős)
+          href: identity-provider-azure-ad-single-tenant.md
+        - name: Azure AD (több-bérlős)
+          href: identity-provider-azure-ad-multi-tenant.md
+        - name: Facebook
+          href: identity-provider-facebook.md
+        - name: Általános identitásszolgáltató
+          href: identity-provider-generic-openid-connect.md
+        - name: GitHub
+          href: identity-provider-github.md
+        - name: Google
+          href: identity-provider-google.md
+        - name: LinkedIn
+          href: identity-provider-linkedin.md
+        - name: Microsoft-fiók
+          href: identity-provider-microsoft-account.md
+        - name: QQ
+          href: identity-provider-qq.md
+        - name: Salesforce
+          href: identity-provider-salesforce.md
+        - name: Twitter
+          href: identity-provider-twitter.md
+        - name: WeChat
+          href: identity-provider-wechat.md
+        - name: Weibo
+          href: identity-provider-weibo.md
     - name: Felhasználói folyamat
       items:
         - name: Folyamat létrehozása
           items:
-            - name: Felhasználói folyamatok létrehozása
-              href: create-user-flow.md
+            - name: Regisztráció vagy bejelentkezés
+              href: tutorial-create-user-flows.md
             - name: Erőforrás tulajdonosának jelszava
               href: configure-ropc.md
-            - name: Telefonos hitelesítés beállítása
-              href: phone-authentication-user-flows.md
             - name: Új jelszó önkiszolgáló kérésének beállítása
               href: user-flow-self-service-password-reset.md
         - name: Feltételes hozzáférés hozzáadása
@@ -150,32 +182,6 @@
             - name: MFA engedélyezése
               href: custom-policy-multi-factor-authentication.md
               displayName: multi-factor auth
-        - name: Külső identitásszolgáltatók
-          items:
-            - name: Amazon
-              href: identity-provider-amazon.md
-            - name: Azure AD (egybérlős)
-              href: identity-provider-azure-ad-single-tenant.md
-            - name: Microsoft-fiók
-              href: identity-provider-microsoft-account.md
-            - name: Facebook
-              href: identity-provider-facebook.md
-            - name: GitHub
-              href: identity-provider-github.md
-            - name: Google
-              href: identity-provider-google.md
-            - name: LinkedIn
-              href: identity-provider-linkedin.md
-            - name: QQ
-              href: identity-provider-qq.md
-            - name: Twitter
-              href: identity-provider-twitter.md
-            - name: WeChat
-              href: identity-provider-wechat.md
-            - name: Weibo
-              href: identity-provider-weibo.md
-            - name: Általános identitásszolgáltató
-              href: identity-provider-generic-openid-connect.md
         - name: Jogkivonatok és munkamenet-kezelés
           items:
             - name: Jogkivonatok konfigurálása
@@ -236,32 +242,6 @@
               href: javascript-samples.md
             - name: Jelszó bonyolultsága
               href: custom-policy-password-complexity.md
-        - name: Külső identitásszolgáltatók
-          items:
-            - name: OIDC/OAuth-szolgáltatók
-              items:
-                - name: Amazon
-                  href: identity-provider-amazon-custom.md
-                - name: Azure AD (egybérlős)
-                  href: identity-provider-azure-ad-single-tenant-custom.md
-                - name: Azure AD (több-bérlős)
-                  href: identity-provider-azure-ad-multi-tenant-custom.md
-                - name: Google
-                  href: identity-provider-google-custom.md
-                - name: LinkedIn
-                  href: identity-provider-linkedin-custom.md
-                - name: Microsoft-fiók
-                  href: identity-provider-microsoft-account-custom.md
-                - name: Twitter
-                  href: identity-provider-twitter-custom.md
-            - name: SAML-szolgáltatók
-              items:
-                - name: AD FS
-                  href: identity-provider-adfs2016-custom.md
-                  displayName: SAML
-                - name: Salesforce
-                  href: identity-provider-salesforce-custom.md
-                  displayName: SAML
         - name: Jogkivonatok és munkamenet-kezelés
           items:
             - name: Jogkivonatok testreszabása

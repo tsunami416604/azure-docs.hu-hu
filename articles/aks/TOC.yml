@@ -59,7 +59,7 @@
           href: ./security-controls-policy.md
     - name: Hálózat
       href: concepts-network.md
-    - name: Tárolás
+    - name: Storage
       href: concepts-storage.md
     - name: Méretezés
       href: concepts-scale.md
@@ -179,7 +179,7 @@
         - name: Az AKS üzembe helyezése Terraform használatával
           href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
-        - name: A Kubernetes erőforrás-megjelenítőjének használata (Előzetes verzió)
+        - name: Kubernetes-erőforrás nézete az Azure Portalon
           href: kubernetes-portal.md
         - name: A Kubernetes-irányítópult használata
           href: kubernetes-dashboard.md

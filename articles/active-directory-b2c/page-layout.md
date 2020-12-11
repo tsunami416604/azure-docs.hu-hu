@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0bbe40a2329143b9abd4554ec715c64e5c26d4eb
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028104"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108501"
 ---
 # <a name="page-layout-versions"></a>Oldalelrendezési verziók
 
@@ -46,16 +46,17 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 
 - A Felhasználónév/e-mail és jelszó mezők mostantól a `form` HTML-elemmel lehetővé teszik az Edge és az Internet Explorer (IE) számára az adatok megfelelő mentését.
 - Egy konfigurálható felhasználói bemeneti ellenőrzési késleltetés lett hozzáadva a továbbfejlesztett felhasználói élményhez.
+- Kisegítő lehetőségek – javítások
 - Kijavítottuk a kisegítő lehetőségeket, így a Narrátor a hibaüzeneteket olvashatja. 
 - A fókusz most a jelszó mezőre kerül az e-mail ellenőrzése után.
 - Eltávolítva `autofocus` a jelölőnégyzet vezérlőelemből. 
-- A telefonszám-ellenőrzéshez kapcsolódó megjelenítési widget támogatása.
-- Most hozzáadhatja az `data-preload="true"` attribútumot a [HTML-címkékben](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) a CSS és a JavaScript betöltési sorrendjének szabályozásához.
+- A telefonszám-ellenőrzés megjelenítési vezérlőelemének támogatása.
+- Most hozzáadhatja a `data-preload="true"` következő attribútumot: [a HTML-címkékben] (Customize-UI-with-HTML. MD # irányelvek-for
   - A csatolt CSS-fájlokat a HTML-sablonnal megegyező időben töltse be, így nem "villódzásmentes" a fájlok betöltése között.
   - Szabályozza a `script` címkék beolvasásának és végrehajtásának sorrendjét az oldal betöltése előtt.
 - Az e-mail-mező most `type=email` és a mobil billentyűzetek biztosítják a megfelelő javaslatokat.
 - A Chrome fordításának támogatása.
-- A bérlő arculatának támogatása a felhasználói folyamatok oldalain.
+- A vállalati arculat támogatása a felhasználói folyamatok oldalain.
 
 **1.1.0**
 
@@ -87,8 +88,8 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 **1.2.0**
 
 - A Felhasználónév/e-mail és jelszó mezők mostantól a `form` HTML-elemmel lehetővé teszik az Edge és az Internet Explorer (IE) számára az adatok megfelelő mentését.
-- Kisegítő lehetőségek kijavítása.
-- Most hozzáadhatja az `data-preload="true"` attribútumot a [HTML-címkékben](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) a CSS és a JavaScript betöltési sorrendjének szabályozásához.
+- Kisegítő lehetőségek – javítások
+- Most hozzáadhatja az `data-preload="true"` attribútumot a [HTML-címkékben](customize-ui-with-html.md#guidelines-for-using-custom-page-content) a CSS és a JavaScript betöltési sorrendjének szabályozásához.
   - A csatolt CSS-fájlokat a HTML-sablonnal megegyező időben töltse be, így nem "villódzásmentes" a fájlok betöltése között.
   - Szabályozza a `script` címkék beolvasásának és végrehajtásának sorrendjét az oldal betöltése előtt.
 - Az e-mail-mező most `type=email` és a mobil billentyűzetek biztosítják a megfelelő javaslatokat.
@@ -118,7 +119,7 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 **1.2.0**
 
 - Kisegítő lehetőségek – javítások
-- Most hozzáadhatja az `data-preload="true"` attribútumot a [HTML-címkékben](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) a CSS és a JavaScript betöltési sorrendjének szabályozásához.
+- Most hozzáadhatja az `data-preload="true"` attribútumot a [HTML-címkékben](customize-ui-with-html.md#guidelines-for-using-custom-page-content) a CSS és a JavaScript betöltési sorrendjének szabályozásához.
   - A csatolt CSS-fájlokat a HTML-sablonnal megegyező időben töltse be, így nem "villódzásmentes" a fájlok betöltése között.
   - Szabályozza a `script` címkék beolvasásának és végrehajtásának sorrendjét az oldal betöltése előtt.
 - Az e-mail-mező most `type=email` , a mobil billentyűzetek pedig a megfelelő javaslatokat nyújtják
@@ -144,7 +145,7 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 **1.2.0**
 
 - Kisegítő lehetőségek – javítások
-- Most hozzáadhatja az `data-preload="true"` attribútumot a [HTML-címkékben](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) a CSS és a JavaScript betöltési sorrendjének szabályozásához.
+- Most hozzáadhatja az `data-preload="true"` attribútumot a [HTML-címkékben](customize-ui-with-html.md#guidelines-for-using-custom-page-content) a CSS és a JavaScript betöltési sorrendjének szabályozásához.
   - A csatolt CSS-fájlokat a HTML-sablonnal megegyező időben töltse be, így nem "villódzásmentes" a fájlok betöltése között.
   - Szabályozza a `script` címkék beolvasásának és végrehajtásának sorrendjét az oldal betöltése előtt.
 - Az e-mail-mező most `type=email` , a mobil billentyűzetek pedig a megfelelő javaslatokat nyújtják
@@ -165,7 +166,7 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 **1.2.0**
 
 - Kisegítő lehetőségek – javítások
-- Most hozzáadhatja az `data-preload="true"` attribútumot a [HTML-címkékben](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) a CSS és a JavaScript betöltési sorrendjének szabályozásához.
+- Most hozzáadhatja az `data-preload="true"` attribútumot a [HTML-címkékben](customize-ui-with-html.md#guidelines-for-using-custom-page-content) a CSS és a JavaScript betöltési sorrendjének szabályozásához.
   - A csatolt CSS-fájlokat a HTML-sablonnal megegyező időben töltse be, így nem "villódzásmentes" a fájlok betöltése között.
   - Szabályozza a `script` címkék beolvasásának és végrehajtásának sorrendjét az oldal betöltése előtt.
 - Az e-mail-mező most `type=email` , a mobil billentyűzetek pedig a megfelelő javaslatokat nyújtják
@@ -177,4 +178,4 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az alkalmazások felhasználói felületének egyéni házirendekben való testreszabásával kapcsolatos további információkért lásd [az alkalmazás felhasználói felületének egyéni házirenddel való testreszabását](custom-policy-ui-customization.md)ismertető témakört.
+Az alkalmazások felhasználói felületének egyéni házirendekben való testreszabásával kapcsolatos további információkért lásd [az alkalmazás felhasználói felületének egyéni házirenddel való testreszabását](customize-ui-with-html.md)ismertető témakört.

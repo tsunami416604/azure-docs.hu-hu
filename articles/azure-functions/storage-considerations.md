@@ -3,12 +3,12 @@ title: A Azure Functions tárolási szempontjai
 description: Ismerje meg a Azure Functions tárolási követelményeit és a tárolt adat titkosítását.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67ff822208f065041e479fc484173d9f06a773ba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318181"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107243"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>A Azure Functions tárolási szempontjai
 
@@ -19,7 +19,7 @@ A Azure Functions egy Azure Storage-fiókot igényel a Function App-példány l�
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Kötések állapotának és funkcióbillentyűk megtartása.  <br/>[A Durable Functionsban a feladatok hubok](durable/durable-functions-task-hubs.md)is használják. |
 | [Azure Files](../storage/files/storage-files-introduction.md)  | A Function app-kód tárolásához és futtatásához használt fájlmegosztás a használati [tervben](functions-scale.md#consumption-plan) és a [prémium csomagban](functions-scale.md#premium-plan). |
-| [Azure Queue Storage](../storage/queues/storage-queues-introduction.md)     | [A feladatok hubok használják Durable Functionsban](durable/durable-functions-task-hubs.md).   |
+| [Azure üzenetsor-tároló](../storage/queues/storage-queues-introduction.md)     | [A feladatok hubok használják Durable Functionsban](durable/durable-functions-task-hubs.md).   |
 | [Azure Table storage](../storage/tables/table-storage-overview.md)  |  [A feladatok hubok használják Durable Functionsban](durable/durable-functions-task-hubs.md).       |
 
 > [!IMPORTANT]
@@ -27,15 +27,19 @@ A Azure Functions egy Azure Storage-fiókot igényel a Function App-példány l�
 
 ## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
 
-A Function app létrehozásakor létre kell hoznia vagy hivatkoznia kell egy általános célú Azure Storage-fiókra, amely támogatja a blob, a üzenetsor és a Table Storage használatát. Ennek az az oka, hogy a függvények az Azure Storage-on alapulnak olyan műveletekre, mint például az eseményindítók és a naplózási függvények végrehajtásának kezelése. Egyes Storage-fiókok nem támogatják a várólistákat és a táblákat. Ezek a fiókok csak a blob Storage-fiókokat, az Azure-Premium Storageokat és a ZRS-replikációval rendelkező általános célú Storage-fiókokat tartalmazzák. A nem támogatott fiókokat a rendszer kiszűri a Storage-fiók panelről a Function-alkalmazás létrehozásakor.
+A Function app létrehozásakor létre kell hoznia vagy hivatkoznia kell egy általános célú Azure Storage-fiókra, amely támogatja a blob, a üzenetsor és a Table Storage használatát. Ennek az az oka, hogy a függvények az Azure Storage-on alapulnak olyan műveletekre, mint például az eseményindítók és a naplózási függvények végrehajtásának kezelése. Egyes Storage-fiókok nem támogatják a várólistákat és a táblákat. Ezek a fiókok csak a blob Storage-fiókokat, az Azure-Premium Storageokat és a ZRS-replikációval rendelkező általános célú Storage-fiókokat tartalmazzák.
 
 További információ a tárfiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#core-storage-services). 
 
-Habár meglévő Storage-fiókot is használhat a Function alkalmazással, meg kell győződnie arról, hogy megfelel a követelményeknek. Az alkalmazás-létrehozási folyamat részeként létrehozott Storage-fiókok garantáltan megfelelnek a Storage-fiókra vonatkozó követelményeknek.  
+Habár meglévő Storage-fiókot is használhat a Function alkalmazással, meg kell győződnie arról, hogy megfelel a követelményeknek. Azok a Storage-fiókok, amelyek az alkalmazás-létrehozási folyamat részeként jöttek létre a Azure Portalban, garantáltan megfelelnek a Storage-fiókra vonatkozó követelményeknek. A portálon a rendszer kiszűri a nem támogatott fiókokat, amikor egy meglévő Storage-fiókot választ ki egy Function-alkalmazás létrehozásakor. Ebben a folyamatban csak olyan meglévő Storage-fiókokat választhat, amelyek ugyanabban a régióban találhatók, mint a létrehozandó Function alkalmazás. További információ: Storage- [fiók helye](#storage-account-location).
 
 ## <a name="storage-account-guidance"></a>A Storage-fiók útmutatója
 
 Minden Function alkalmazás működéséhez szükség van egy Storage-fiókra. Ha a fiók törlődik, a Function alkalmazás nem fog futni. A tárolással kapcsolatos problémák elhárításával kapcsolatban lásd: [a tárolással kapcsolatos problémák elhárítása](functions-recover-storage-account.md). A következő további szempontok vonatkoznak a Function apps által használt Storage-fiókra.
+
+### <a name="storage-account-location"></a>Tárfiók helye
+
+A legjobb teljesítmény érdekében a Function alkalmazásnak egy azonos régióban lévő Storage-fiókot kell használnia, amely csökkenti a késést. A Azure Portal érvényesíti ezt az ajánlott gyakorlatot. Ha valamilyen okból kifolyólag egy Storage-fiókot kell használnia a Function alkalmazástól eltérő régióban, a Function alkalmazást a portálon kívül kell létrehoznia. 
 
 ### <a name="storage-account-connection-setting"></a>Storage-fiók kapcsolatainak beállítása
 
@@ -74,7 +78,7 @@ import os
 files_in_share = os.listdir("/path/to/mount")
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Functions üzemeltetési lehetőségeiről.
 

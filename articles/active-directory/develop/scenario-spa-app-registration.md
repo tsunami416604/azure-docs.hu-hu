@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c9fde904d6befebfcfd87b55bd7b2bf4e4c825f2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e42b6b7ffa39110ce356094de690bb353a3fb10f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443823"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107787"
 ---
 # <a name="single-page-application-app-registration"></a>Egyoldalas alkalmazás: alkalmazás regisztrálása
 
@@ -27,10 +27,12 @@ Ha egy egyoldalas alkalmazást (SPA) szeretne regisztrálni a Microsoft Identity
 
 A MSAL.js 1,0-és 2,0-alapú alkalmazásokhoz a kezdeti alkalmazás regisztrációjának létrehozásához végezze el a következő lépéseket.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha a fiókja több bérlőhöz fér hozzá, válassza ki a **könyvtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a bérlőt, amelynek a létrehozni kívánt alkalmazás-regisztrációt tartalmaznia kell.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
-1. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
-1. Válassza az **új regisztráció** lehetőséget, adjon meg egy **nevet** az alkalmazásnak, és válassza ki az alkalmazás **támogatott fiókjának típusát** . Ne **adjon meg** **átirányítási URI** -t. A különböző fióktípus leírását az [új alkalmazás regisztrálása a Azure Portal használatával](quickstart-register-app.md)című témakörben tekintheti meg.
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+1. Adja meg az alkalmazás **nevét** . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+1. Válassza ki az alkalmazás **által támogatott fióktípus-típusokat** . Ne **adjon meg** **átirányítási URI**-t. A különböző fióktípus leírását az [alkalmazás regisztrálása](quickstart-register-app.md)című témakörben tekintheti meg.
 1. Az alkalmazás regisztrációjának létrehozásához válassza a **regisztráció** lehetőséget.
 
 Ezután konfigurálja az alkalmazás regisztrációját egy **átirányítási URI** -val annak megadásához, hogy a Microsoft Identity platform hová irányítsa át az ügyfelet a biztonsági jogkivonatokkal együtt. Használja az alkalmazásban használt MSAL.js verziójának megfelelő lépéseket:
@@ -43,7 +45,7 @@ Ezután konfigurálja az alkalmazás regisztrációját egy **átirányítási U
 A következő lépésekkel adhat hozzá átirányítási URI-t egy MSAL.js 2,0-es vagy újabb verziót használó alkalmazáshoz. A MSAL.js 2.0 és a PKCE és a CORS által biztosított engedélyezési kód a [böngésző harmadik féltől származó cookie-korlátozásokra](reference-third-party-cookies-spas.md)reagálva támogatja. Az implicit engedélyezési folyamat MSAL.js 2.0 + verzióban nem támogatott.
 
 1. A Azure Portal válassza ki az alkalmazás [regisztrációjának létrehozásakor](#create-the-app-registration)korábban létrehozott regisztrációs alkalmazást.
-1. A **kezelés** területen válassza a **hitelesítés** lehetőséget, majd válassza **a platform hozzáadása** lehetőséget.
+1. A **kezelés** területen válassza   >  **a hitelesítés platform hozzáadása** elemet.
 1. A **webalkalmazások** területen válassza az **egylapos alkalmazás** csempét.
 1. Az **átirányítási** URI-k területen adjon meg egy [átirányítási URI](reply-url.md)-t. Ne **jelölje be az** **implicit engedélyezés** jelölőnégyzetet.
 1. Válassza a **Konfigurálás** lehetőséget az átirányítási URI hozzáadásának befejezéséhez.
@@ -57,7 +59,7 @@ További útmutatásért kövesse az [oktatóanyagot](tutorial-v2-javascript-aut
 A következő lépésekkel adhat hozzá átirányítási URI-t egy egyoldalas alkalmazáshoz, amely MSAL.js 1,3-es vagy korábbi verzióját, valamint az implicit engedélyezési folyamatot használja. A MSAL.js 1,3-es vagy korábbi verzióját használó alkalmazások nem támogatják az Auth-kód folyamatát.
 
 1. A Azure Portal válassza ki az alkalmazás [regisztrációjának létrehozásakor](#create-the-app-registration)korábban létrehozott regisztrációs alkalmazást.
-1. A **kezelés** területen válassza a **hitelesítés** lehetőséget, majd válassza **a platform hozzáadása** lehetőséget.
+1. A **kezelés** területen válassza   >  **a hitelesítés platform hozzáadása** elemet.
 1. A **webalkalmazások** területen válassza az **egylapos alkalmazás** csempét.
 1. Az **átirányítási** URI-k területen adjon meg egy [átirányítási URI](reply-url.md)-t.
 1. Az **implicit folyamat** engedélyezése:
@@ -77,6 +79,6 @@ Ahogy korábban említettük, a MSAL.js 1,3-et használó egylapos alkalmazások
 
 Ha az alkalmazás regisztrációja által képviselt összes éles üzemi egyoldalas alkalmazás a MSAL.js 2,0 és az engedélyezési kód folyamatát használja, törölje a jelet az alkalmazás regisztrációjának hitelesítése ablaktáblán a Azure Portal az implicit engedélyezési beállítások **jelölőnégyzetből** . Az MSAL.js 1. x és az implicit folyamat használatával folytatott alkalmazások továbbra is működhetnek, azonban ha az implicit folyamat engedélyezve van (be van jelölve).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ezután konfigurálja az alkalmazás kódját az előző lépések során létrehozott alkalmazás-regisztráció használatára: az [alkalmazás kódjának konfigurálása](scenario-spa-app-configuration.md).
+Az alkalmazás kódjának konfigurálásával használhatja az előző lépések során létrehozott regisztrációs alkalmazást: az [alkalmazás kódjának konfigurálása](scenario-spa-app-configuration.md).

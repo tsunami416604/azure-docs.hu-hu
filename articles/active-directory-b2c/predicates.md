@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46f04c55b40d4f1bdbbf5fd55eb648d1d3294056
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203809"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108416"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikátumok és PredicateValidations
 
@@ -44,9 +44,9 @@ A **predikátum** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Id | Igen | A predikátumhoz használt azonosító. Más elemek is használhatják ezt az azonosítót a szabályzatban. |
-| Metódus | Igen | Az érvényesítéshez használandó metódus típusa Lehetséges értékek: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)vagy [IsDateRange](#isdaterange).  |
-| HelpText | Nem | Hibaüzenet a felhasználók számára, ha az ellenőrzés sikertelen. Ez a karakterlánc honosítható a [nyelvi Testreszabás](localization.md) használatával |
+| Id | Yes | A predikátumhoz használt azonosító. Más elemek is használhatják ezt az azonosítót a szabályzatban. |
+| Metódus | Yes | Az érvényesítéshez használandó metódus típusa Lehetséges értékek: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)vagy [IsDateRange](#isdaterange).  |
+| HelpText | No | Hibaüzenet a felhasználók számára, ha az ellenőrzés sikertelen. Ez a karakterlánc honosítható a [nyelvi Testreszabás](localization.md) használatával |
 
 A **predikátum** elem a következő elemeket tartalmazza:
 
@@ -75,8 +75,8 @@ A IsLengthRange metódus ellenőrzi, hogy a karakterlánc-jogcím értéke a meg
 
 | Paraméter | Kötelező | Leírás |
 | ------- | ----------- | ----------- |
-| Maximum | Igen | A megadható karakterek maximális száma. |
-| Minimális | Igen | A karakterek minimális számának megadása kötelező. |
+| Maximum | Yes | A megadható karakterek maximális száma. |
+| Minimális | Yes | A karakterek minimális számának megadása kötelező. |
 
 
 A következő példa egy IsLengthRange metódust mutat be a paraméterekkel, `Minimum` `Maximum` amelyek meghatározzák a karakterlánc hosszának tartományát:
@@ -96,7 +96,7 @@ A MatchesRegex metódus ellenőrzi, hogy egy karakterlánc-jogcím értéke megf
 
 | Paraméter | Kötelező | Leírás |
 | ------- | ----------- | ----------- |
-| Válaszban | Igen | Az egyeztetendő reguláris kifejezési minta. |
+| Válaszban | Yes | Az egyeztetendő reguláris kifejezési minta. |
 
 A következő példa egy `MatchesRegex` metódust mutat be a paraméterrel, `RegularExpression` amely egy reguláris kifejezést határoz meg:
 
@@ -114,7 +114,7 @@ A IncludesCharacters metódus ellenőrzi, hogy egy karakterlánc-jogcím érték
 
 | Paraméter | Kötelező | Leírás |
 | ------- | ----------- | ----------- |
-| CharacterSet | Igen | A megadható karakterek halmaza. Például kisbetűk, nagybetűk,  `a-z` `A-Z` számjegyek `0-9` vagy szimbólumok listája, például: `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
+| CharacterSet | Yes | A megadható karakterek halmaza. Például kisbetűk, nagybetűk,  `a-z` `A-Z` számjegyek `0-9` vagy szimbólumok listája, például: `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
 
 A következő példa egy `IncludesCharacters` metódust mutat be a paraméterrel, `CharacterSet` amely megadja a karakterek készletét:
 
@@ -132,8 +132,8 @@ A IsDateRange metódus ellenőrzi, hogy a Date jogcím értéke a megadott minim
 
 | Paraméter | Kötelező | Leírás |
 | ------- | ----------- | ----------- |
-| Maximum | Igen | A legnagyobb lehetséges dátum, amelyet meg lehet adni. A dátum formátuma a következő: `yyyy-mm-dd` egyezmény vagy `Today` . |
-| Minimális | Igen | A legkisebb lehetséges dátum, amelyet meg lehet adni. A dátum formátuma a következő: `yyyy-mm-dd` egyezmény vagy `Today` .|
+| Maximum | Yes | A legnagyobb lehetséges dátum, amelyet meg lehet adni. A dátum formátuma a következő: `yyyy-mm-dd` egyezmény vagy `Today` . |
+| Minimális | Yes | A legkisebb lehetséges dátum, amelyet meg lehet adni. A dátum formátuma a következő: `yyyy-mm-dd` egyezmény vagy `Today` .|
 
 Az alábbi példa egy `IsDateRange` metódust mutat be a paraméterekkel, `Minimum` `Maximum` amelyek a dátumtartományt a és a formátumával határozzák meg `yyyy-mm-dd` `Today` .
 
@@ -148,7 +148,7 @@ Az alábbi példa egy `IsDateRange` metódust mutat be a paraméterekkel, `Minim
 
 ## <a name="predicatevalidations"></a>PredicateValidations
 
-Míg a predikátumok határozzák meg a jogcím típusának ellenőrzéséhez szükséges érvényesítést, a **PredicateValidations** csoport olyan predikátumok halmazát adja meg, amelyek a jogcím típusára alkalmazható felhasználói bemeneti érvényesítést hoznak létre. Minden **PredicateValidation** elem olyan **PredicateGroup** -elemeket tartalmaz, amelyek egy **predikátumra**mutató **PredicateReference** elemek készletét tartalmazzák. Az ellenőrzés elvégzéséhez a jogcím értékének át kell haladnia a **PredicateGroup** összes olyan tesztjét, amely az összes **PredicateReference** -elemet tartalmazza.
+Míg a predikátumok határozzák meg a jogcím típusának ellenőrzéséhez szükséges érvényesítést, a **PredicateValidations** csoport olyan predikátumok halmazát adja meg, amelyek a jogcím típusára alkalmazható felhasználói bemeneti érvényesítést hoznak létre. Minden **PredicateValidation** elem olyan **PredicateGroup** -elemeket tartalmaz, amelyek egy **predikátumra** mutató **PredicateReference** elemek készletét tartalmazzák. Az ellenőrzés elvégzéséhez a jogcím értékének át kell haladnia a **PredicateGroup** összes olyan tesztjét, amely az összes **PredicateReference** -elemet tartalmazza.
 
 A **PredicateValidations** elemnek közvetlenül kell szerepelnie a **predikátumok** elemnél a [BuildingBlocks](buildingblocks.md) elemen belül.
 
@@ -180,7 +180,7 @@ A **PredicateValidation** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Id | Igen | A predikátum érvényesítéséhez használt azonosító. A **claimType** elem a szabályzatban használhatja ezt az azonosítót. |
+| Id | Yes | A predikátum érvényesítéséhez használt azonosító. A **claimType** elem a szabályzatban használhatja ezt az azonosítót. |
 
 A **PredicateValidation** elem a következő elemet tartalmazza:
 
@@ -198,7 +198,7 @@ A **PredicateGroup** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Id | Igen | A predikátum-csoporthoz használt azonosító.  |
+| Id | Yes | A predikátum-csoporthoz használt azonosító.  |
 
 A **PredicateGroup** elem a következő elemeket tartalmazza:
 
@@ -211,7 +211,7 @@ A **PredicateReferences** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| MatchAtLeast | Nem | Megadja, hogy az értéknek meg kell egyeznie legalább annyi predikátum-definícióval, amelyet a bemenet elfogad. Ha nincs megadva, az értéknek meg kell egyeznie az összes predikátum-definícióval. |
+| MatchAtLeast | No | Megadja, hogy az értéknek meg kell egyeznie legalább annyi predikátum-definícióval, amelyet a bemenet elfogad. Ha nincs megadva, az értéknek meg kell egyeznie az összes predikátum-definícióval. |
 
 A **PredicateReferences** elem a következő elemeket tartalmazza:
 
@@ -223,21 +223,21 @@ A **PredicateReference** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Id | Igen | A predikátum érvényesítéséhez használt azonosító.  |
+| Id | Yes | A predikátum érvényesítéséhez használt azonosító.  |
 
 
 ## <a name="configure-password-complexity"></a>Jelszó bonyolultságának konfigurálása
 
 A **predikátumok** és a **PredicateValidationsInput** segítségével szabályozhatja a felhasználók által a fiók létrehozásakor biztosított jelszavak összetettségi követelményeit. Alapértelmezés szerint a Azure AD B2C erős jelszavakat használ. A Azure AD B2C az ügyfelek által használható jelszavak bonyolultságának szabályozásához is támogatja a konfigurációs beállításokat. A jelszó bonyolultságát a következő predikátum-elemek használatával határozhatja meg:
 
-- **IsLengthBetween8And64** A `IsLengthRange` metódust használó IsLengthBetween8And64 ellenőrzi, hogy a jelszónak 8 és 64 karakter közöttinek kell lennie.
+-  A `IsLengthRange` metódust használó IsLengthBetween8And64 ellenőrzi, hogy a jelszónak 8 és 64 karakter közöttinek kell lennie.
 - **Kisbetűs** a `IncludesCharacters` metódus használatával ellenőrzi, hogy a jelszó kisbetűs betűt tartalmaz-e.
 - A metódust használó **nagybetűkkel** `IncludesCharacters` ellenőrzi, hogy a jelszó nagybetűt tartalmaz-e.
-- **Number** A `IncludesCharacters` metódust használó szám azt ellenőrzi, hogy a jelszó tartalmaz-e számjegyet.
-- **Symbol** A `IncludesCharacters` metódust használó szimbólum azt ellenőrzi, hogy a jelszóban szerepel-e több szimbólum karakter.
+-  A `IncludesCharacters` metódust használó szám azt ellenőrzi, hogy a jelszó tartalmaz-e számjegyet.
+-  A `IncludesCharacters` metódust használó szimbólum azt ellenőrzi, hogy a jelszóban szerepel-e több szimbólum karakter.
 - **PIN-kód** a `MatchesRegex` metódus használatával ellenőrzi, hogy a jelszó csak számokat tartalmaz-e.
-- **AllowedAADCharacters** A `MatchesRegex` metódust használó AllowedAADCharacters ellenőrzi, hogy a jelszó csak érvénytelen karaktert adott-e meg.
-- **DisallowedWhitespace** A `MatchesRegex` metódust használó DisallowedWhitespace ellenőrzi, hogy a jelszó nem kezdődik vagy végződhet szóköz karakterrel.
+-  A `MatchesRegex` metódust használó AllowedAADCharacters ellenőrzi, hogy a jelszó csak érvénytelen karaktert adott-e meg.
+-  A `MatchesRegex` metódust használó DisallowedWhitespace ellenőrzi, hogy a jelszó nem kezdődik vagy végződhet szóköz karakterrel.
 
 ```xml
 <Predicates>
@@ -426,6 +426,6 @@ A jogcím típusa mezőben adja hozzá az **PredicateValidationReference** eleme
 </ClaimType>
  ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Megtudhatja, hogyan [konfigurálhatja a jelszó-bonyolultságot a Azure Active Directory B2C egyéni házirendjeivel a](custom-policy-password-complexity.md) predikátumok érvényességének használatával.
+- Megtudhatja, hogyan [konfigurálhatja a jelszó-bonyolultságot a Azure Active Directory B2C egyéni házirendjeivel a](password-complexity.md) predikátumok érvényességének használatával.

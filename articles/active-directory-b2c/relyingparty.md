@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2d00942331b7e6c881803af366d1c08e173462b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 321669457c479f7f59ccbb9b7950457b7f9a1af5
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023788"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108300"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -104,7 +104,7 @@ A **DefaultUserJourney** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | A felhasználó által a szabályzatban megjelenő út azonosítója. További információ: [felhasználói útvonalak](userjourneys.md) |
+| ReferenceId | Yes | A felhasználó által a szabályzatban megjelenő út azonosítója. További információ: [felhasználói útvonalak](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
@@ -117,7 +117,7 @@ A **UserJourneyBehaviors** elem a következő elemeket tartalmazza:
 | SessionExpiryInSeconds | 0:1 | Az Azure AD B2C's munkamenet-cookie élettartama a sikeres hitelesítés után a felhasználó böngészőjében tárolt egész számként van megadva. |
 | JourneyInsights | 0:1 | A használni kívánt Azure Application Insights-kialakítási kulcs. |
 | ContentDefinitionParameters | 0:1 | A Content definition Load URI-hoz hozzáfűzni kívánt kulcs érték párok listája. |
-|ScriptExecution| 0:1| A [JavaScript](javascript-samples.md) támogatott végrehajtási módjai. Lehetséges értékek: `Allow` vagy `Disallow` (alapértelmezett).
+|ScriptExecution| 0:1| A [JavaScript](javascript-and-page-layout.md) támogatott végrehajtási módjai. Lehetséges értékek: `Allow` vagy `Disallow` (alapértelmezett).
 
 ### <a name="singlesignon"></a>SingleSignOn
 
@@ -125,9 +125,9 @@ A **SingleSignon** elem a következő attribútumban szerepel:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Hatókör | Igen | Az egyszeri bejelentkezés viselkedésének hatóköre. Lehetséges értékek: `Suppressed` ,,, `Tenant` `Application` vagy `Policy` . Az `Suppressed` érték azt jelzi, hogy a rendszer letiltja a viselkedést, és a felhasználó mindig kéri az identitás-szolgáltató kijelölését.  Az `Tenant` érték azt jelzi, hogy a rendszer a bérlő összes házirendjére alkalmazza a viselkedést. Ha például egy felhasználó két házirend-útvonalon keresztül navigál a bérlőhöz, a rendszer nem kéri az identitás-szolgáltató kijelölését. Az `Application` érték azt jelzi, hogy a rendszer alkalmazza a viselkedést a kérést kérő alkalmazás összes szabályzatára. Ha például egy alkalmazásra két házirend-útvonalon navigál, a rendszer nem kéri az identitás-szolgáltató kijelölését. Az `Policy` érték azt jelzi, hogy a viselkedés csak egy házirendre vonatkozik. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer a házirendek közötti váltáskor megkéri az identitás-szolgáltató kijelölését. |
-| KeepAliveInDays | Igen | Meghatározza, hogy a felhasználó mennyi ideig maradjon bejelentkezve. Ha a 0 értéket állítja be, kikapcsolja a KMSI funkciót. További információt a [bejelentkezett adatok megtartása](custom-policy-keep-me-signed-in.md)című témakörben talál. |
-|EnforceIdTokenHintOnLogout| Nem|  Egy korábban kiállított azonosító token átadásának kényszerítése a kijelentkezési végpontra, amely a végfelhasználó aktuálisan hitelesített munkamenetével kapcsolatos mutatóként szolgál a-ügyféllel. Lehetséges értékek: `false` (alapértelmezett) vagy `true` . További információ: [webes bejelentkezés OpenID-kapcsolattal](openid-connect.md).  |
+| Hatókör | Yes | Az egyszeri bejelentkezés viselkedésének hatóköre. Lehetséges értékek: `Suppressed` ,,, `Tenant` `Application` vagy `Policy` . Az `Suppressed` érték azt jelzi, hogy a rendszer letiltja a viselkedést, és a felhasználó mindig kéri az identitás-szolgáltató kijelölését.  Az `Tenant` érték azt jelzi, hogy a rendszer a bérlő összes házirendjére alkalmazza a viselkedést. Ha például egy felhasználó két házirend-útvonalon keresztül navigál a bérlőhöz, a rendszer nem kéri az identitás-szolgáltató kijelölését. Az `Application` érték azt jelzi, hogy a rendszer alkalmazza a viselkedést a kérést kérő alkalmazás összes szabályzatára. Ha például egy alkalmazásra két házirend-útvonalon navigál, a rendszer nem kéri az identitás-szolgáltató kijelölését. Az `Policy` érték azt jelzi, hogy a viselkedés csak egy házirendre vonatkozik. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer a házirendek közötti váltáskor megkéri az identitás-szolgáltató kijelölését. |
+| KeepAliveInDays | Yes | Meghatározza, hogy a felhasználó mennyi ideig maradjon bejelentkezve. Ha a 0 értéket állítja be, kikapcsolja a KMSI funkciót. További információt a [bejelentkezett adatok megtartása](custom-policy-keep-me-signed-in.md)című témakörben talál. |
+|EnforceIdTokenHintOnLogout| No|  Egy korábban kiállított azonosító token átadásának kényszerítése a kijelentkezési végpontra, amely a végfelhasználó aktuálisan hitelesített munkamenetével kapcsolatos mutatóként szolgál a-ügyféllel. Lehetséges értékek: `false` (alapértelmezett) vagy `true` . További információ: [webes bejelentkezés OpenID-kapcsolattal](openid-connect.md).  |
 
 
 ## <a name="journeyinsights"></a>JourneyInsights
@@ -136,12 +136,12 @@ A **JourneyInsights** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Igen | Az értéknek a számnak kell lennie `ApplicationInsights` . |
-| InstrumentationKey | Igen | Az Application ininsights elem kialakítási kulcsát tartalmazó karakterlánc. |
-| DeveloperMode | Igen | Lehetséges értékek: `true` vagy `false` . Ha a `true` Application Insights felgyorsítja a telemetria a feldolgozási folyamaton keresztül. Ez a beállítás jó a fejlesztéshez, de nagy mennyiségű korlátozott. A részletes tevékenységi naplók csak az egyéni szabályzatok fejlesztéséhez nyújtanak segítséget. Ne használja a fejlesztési módot éles környezetben. A naplók összegyűjtik az identitás-szolgáltatók által és a fejlesztés során eljuttatott összes jogcímet. Ha éles környezetben használja, a fejlesztő vállalja a személyes azonosításra alkalmas információk beszedésének felelősségét az App bepillantást tartalmazó naplóban. Ezeket a részletes naplókat csak akkor gyűjti a rendszer, ha ez az érték be van állítva `true` .|
-| ClientEnabled | Igen | Lehetséges értékek: `true` vagy `false` . Ha `true` a a Application Insights ügyféloldali parancsfájlt küld a nyomkövetési oldal és az ügyféloldali hibák nyomon követéséhez. |
-| ServerEnabled | Igen | Lehetséges értékek: `true` vagy `false` . Ha `true` a, a a meglévő USERJOURNEYRECORDER JSON-t a Application Insights egyéni eseményként küldi el. |
-| TelemetryVersion | Igen | Az értéknek a számnak kell lennie `1.0.0` . |
+| TelemetryEngine | Yes | Az értéknek a számnak kell lennie `ApplicationInsights` . |
+| InstrumentationKey | Yes | Az Application ininsights elem kialakítási kulcsát tartalmazó karakterlánc. |
+| DeveloperMode | Yes | Lehetséges értékek: `true` vagy `false` . Ha a `true` Application Insights felgyorsítja a telemetria a feldolgozási folyamaton keresztül. Ez a beállítás jó a fejlesztéshez, de nagy mennyiségű korlátozott. A részletes tevékenységi naplók csak az egyéni szabályzatok fejlesztéséhez nyújtanak segítséget. Ne használja a fejlesztési módot éles környezetben. A naplók összegyűjtik az identitás-szolgáltatók által és a fejlesztés során eljuttatott összes jogcímet. Ha éles környezetben használja, a fejlesztő vállalja a személyes azonosításra alkalmas információk beszedésének felelősségét az App bepillantást tartalmazó naplóban. Ezeket a részletes naplókat csak akkor gyűjti a rendszer, ha ez az érték be van állítva `true` .|
+| ClientEnabled | Yes | Lehetséges értékek: `true` vagy `false` . Ha `true` a a Application Insights ügyféloldali parancsfájlt küld a nyomkövetési oldal és az ügyféloldali hibák nyomon követéséhez. |
+| ServerEnabled | Yes | Lehetséges értékek: `true` vagy `false` . Ha `true` a, a a meglévő USERJOURNEYRECORDER JSON-t a Application Insights egyéni eseményként küldi el. |
+| TelemetryVersion | Yes | Az értéknek a számnak kell lennie `1.0.0` . |
 
 További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md)
 
@@ -163,9 +163,9 @@ A **ContentDefinitionParameter** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Name (Név) | Igen | A kulcs-érték párok neve. |
+| Név | Yes | A kulcs-érték párok neve. |
 
-További információ: [a felhasználói felület konfigurálása dinamikus tartalommal egyéni házirendek használatával](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
+További információ: [a felhasználói felület konfigurálása dinamikus tartalommal egyéni házirendek használatával](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)
 
 ## <a name="technicalprofile"></a>Kivonatjogcím
 
@@ -173,7 +173,7 @@ A **kivonatjogcím** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Id | Igen | Az értéknek a számnak kell lennie `PolicyProfile` . |
+| Id | Yes | Az értéknek a számnak kell lennie `PolicyProfile` . |
 
 A **kivonatjogcím** a következő elemeket tartalmazza:
 
@@ -190,7 +190,7 @@ A **protokoll** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Name (Név) | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OpenIdConnect` vagy `SAML2` . Az `OpenIdConnect` érték az OpenID Connect 1,0 protokoll standard értékét jelöli az OpenID Foundation-specifikációnak megfelelően. A az `SAML2` SAML 2,0 protokoll szabványát jelöli az Oasis-specifikációnak megfelelően. |
+| Név | Yes | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OpenIdConnect` vagy `SAML2` . Az `OpenIdConnect` érték az OpenID Connect 1,0 protokoll standard értékét jelöli az OpenID Foundation-specifikációnak megfelelően. A az `SAML2` SAML 2,0 protokoll szabványát jelöli az Oasis-specifikációnak megfelelően. |
 
 ### <a name="metadata"></a>Metaadatok
 
@@ -198,12 +198,12 @@ Ha a protokoll `SAML` , a metaadat elem a következő elemeket tartalmazza.
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| IdpInitiatedProfileEnabled | Nem | Azt jelzi, hogy támogatott-e a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett folyamat. Lehetséges értékek: `true` vagy `false` (alapértelmezett). | 
-| XmlSignatureAlgorithm | Nem | Az a módszer, amelyet a Azure AD B2C az SAML-válasz aláírására használ. Lehetséges értékek: `Sha256` ,,, `Sha384` `Sha512` vagy `Sha1` . Győződjön meg arról, hogy az aláírási algoritmus mindkét oldalon ugyanazzal az értékkel van konfigurálva. Csak a tanúsítvány által támogatott algoritmust használja. Az SAML-állítás konfigurálásához tekintse meg a [SAML-kibocsátó technikai profiljának metaadatait](saml-issuer-technical-profile.md#metadata)ismertető témakört. |
-| DataEncryptionMethod | Nem | Azt a metódust jelzi, amelyet a Azure AD B2C az Advanced Encryption Standard (AES) algoritmus használatával titkosítja az adattitkosítást. A metaadatok az `<EncryptedData>` SAML-válasz elemének értékét vezérlik. Lehetséges értékek: `Aes256` (alapértelmezett), `Aes192` , `Sha512` , vagy ` Aes128` . |
-| KeyEncryptionMethod| Nem | Azt a metódust jelzi, amelyet a Azure AD B2C az adattitkosításhoz használt kulcs másolatának titkosítására használ. A metaadatok az  `<EncryptedKey>` SAML-válasz elemének értékét vezérlik. Lehetséges értékek: ` Rsa15` (alapértelmezett) – RSA nyilvános kulcsú kriptográfiai standard (PKCS) Version 1,5 algoritmus, ` RsaOaep` -RSA optimális aszimmetrikus titkosítási kitöltés (OAEP) titkosítási algoritmus. |
-| UseDetachedKeys | Nem |  Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a értékre van állítva `true` , Azure ad B2C módosítja a titkosított érvényesítések formátumát. A leválasztott kulcsok használata a titkosított állítást a EncrytedAssertion gyermekének adja hozzá a EncryptedData szemben. |
-| WantsSignedResponses| Nem | Azt jelzi, hogy Azure AD B2C aláírja-e az `Response` SAML-válasz szakaszát. Lehetséges értékek: `true` (alapértelmezett) vagy `false` .  |
+| IdpInitiatedProfileEnabled | No | Azt jelzi, hogy támogatott-e a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett folyamat. Lehetséges értékek: `true` vagy `false` (alapértelmezett). | 
+| XmlSignatureAlgorithm | No | Az a módszer, amelyet a Azure AD B2C az SAML-válasz aláírására használ. Lehetséges értékek: `Sha256` ,,, `Sha384` `Sha512` vagy `Sha1` . Győződjön meg arról, hogy az aláírási algoritmus mindkét oldalon ugyanazzal az értékkel van konfigurálva. Csak a tanúsítvány által támogatott algoritmust használja. Az SAML-állítás konfigurálásához tekintse meg a [SAML-kibocsátó technikai profiljának metaadatait](saml-issuer-technical-profile.md#metadata)ismertető témakört. |
+| DataEncryptionMethod | No | Azt a metódust jelzi, amelyet a Azure AD B2C az Advanced Encryption Standard (AES) algoritmus használatával titkosítja az adattitkosítást. A metaadatok az `<EncryptedData>` SAML-válasz elemének értékét vezérlik. Lehetséges értékek: `Aes256` (alapértelmezett), `Aes192` , `Sha512` , vagy ` Aes128` . |
+| KeyEncryptionMethod| No | Azt a metódust jelzi, amelyet a Azure AD B2C az adattitkosításhoz használt kulcs másolatának titkosítására használ. A metaadatok az  `<EncryptedKey>` SAML-válasz elemének értékét vezérlik. Lehetséges értékek: ` Rsa15` (alapértelmezett) – RSA nyilvános kulcsú kriptográfiai standard (PKCS) Version 1,5 algoritmus, ` RsaOaep` -RSA optimális aszimmetrikus titkosítási kitöltés (OAEP) titkosítási algoritmus. |
+| UseDetachedKeys | No |  Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a értékre van állítva `true` , Azure ad B2C módosítja a titkosított érvényesítések formátumát. A leválasztott kulcsok használata a titkosított állítást a EncrytedAssertion gyermekének adja hozzá a EncryptedData szemben. |
+| WantsSignedResponses| No | Azt jelzi, hogy Azure AD B2C aláírja-e az `Response` SAML-válasz szakaszát. Lehetséges értékek: `true` (alapértelmezett) vagy `false` .  |
 
 ### <a name="outputclaims"></a>OutputClaims
 
@@ -217,9 +217,9 @@ A **OutputClaim** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Igen | A házirend fájljának **ClaimsSchema** szakaszában már definiált **claimType** mutató hivatkozás. |
-| DefaultValue | Nem | Alapértelmezett érték, amely akkor használható, ha a jogcím értéke üres. |
-| PartnerClaimType | Nem | A jogcímet egy másik néven küldi el a ClaimType-definícióban megadott módon. |
+| ClaimTypeReferenceId | Yes | A házirend fájljának **ClaimsSchema** szakaszában már definiált **claimType** mutató hivatkozás. |
+| DefaultValue | No | Alapértelmezett érték, amely akkor használható, ha a jogcím értéke üres. |
+| PartnerClaimType | No | A jogcímet egy másik néven küldi el a ClaimType-definícióban megadott módon. |
 
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
@@ -231,8 +231,8 @@ A **SubjectNamingInfo** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClaimType | Igen | A kimeneti jogcímek **PartnerClaimType**mutató hivatkozás. A kimeneti jogcímeket a függő entitások házirendjének **OutputClaims** -gyűjteményében kell meghatározni. |
-| Formátum | Nem | Az SAML függő entitások esetében az SAML-állításban visszaadott **NameId formátum** beállítására szolgál. |
+| ClaimType | Yes | A kimeneti jogcímek **PartnerClaimType** mutató hivatkozás. A kimeneti jogcímeket a függő entitások házirendjének **OutputClaims** -gyűjteményében kell meghatározni. |
+| Formátum | No | Az SAML függő entitások esetében az SAML-állításban visszaadott **NameId formátum** beállítására szolgál. |
 
 Az alábbi példa bemutatja, hogyan határozhat meg egy OpenID Connect függő entitást. A tulajdonos neve információ a következőképpen van konfigurálva `objectId` :
 

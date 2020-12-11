@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7243d24204c8e15ae4246718cafb24d31f804d02
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519178"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109266"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Hozzáférés-vezérlés beállítása a szinapszis-munkaterülethez 
 
@@ -54,7 +54,7 @@ Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséh
 ## <a name="step-1-set-up-security-groups"></a>1. lépés: biztonsági csoportok beállítása
 
 >[!Note] 
->Az előzetes verzió ideje alatt javasolt biztonsági csoportokat létrehozni a szinapszis **SZINAPSZIS SQL-rendszergazdához** és a **szinapszis Apache Spark rendszergazdai** szerepkörökhöz.  Az új, finomabb RBAC-szerepkörök és-hatókörök bevezetésével mostantól ajánlott ezeket az új képességeket használni a munkaterület elérésének szabályozásához.  Ezek az új szerepkörök és hatókörök nagyobb konfigurációs rugalmasságot biztosítanak, és felismerik, hogy a fejlesztők gyakran használják az SQL és a Spark kombinációját az elemzési alkalmazások létrehozásához, és előfordulhat, hogy hozzáférést kell biztosítani a munkaterületen lévő adott erőforrásokhoz. [További információk](./synapse-workspace-synapse-rbac.md).
+>Az előzetes verzió ideje alatt javasolt biztonsági csoportokat létrehozni a szinapszis **SZINAPSZIS SQL-rendszergazdához** és a **szinapszis Apache Spark rendszergazdai** szerepkörökhöz.  Az új, finomabb RBAC-szerepkörök és-hatókörök bevezetésével mostantól ajánlott ezeket az új képességeket használni a munkaterület elérésének szabályozásához.  Ezek az új szerepkörök és hatókörök nagyobb konfigurációs rugalmasságot biztosítanak, és felismerik, hogy a fejlesztők gyakran használják az SQL és a Spark kombinációját az elemzési alkalmazások létrehozásához, és előfordulhat, hogy a teljes munkaterület helyett hozzáférést kell biztosítani bizonyos erőforrásokhoz. [További](./synapse-workspace-synapse-rbac.md) információ a szinapszis RBAC.
 
 Hozza létre a következő biztonsági csoportokat a munkaterülethez:
 
@@ -66,9 +66,9 @@ Hozza létre a következő biztonsági csoportokat a munkaterülethez:
 A szinapszis-szerepköröket hamarosan a munkaterület hatókörében rendeli hozzá ezekhez a csoportokhoz.  
 
 Hozza létre a következő biztonsági csoportot is: 
-- **`workspace1_SQLAdministrators`**, azon felhasználók csoportja, akiknek szükségük van Active Directory rendszergazdai szolgáltatóra a munkaterület SQL-készletei között. 
+- **`workspace1_SQLAdmins`**, azon felhasználók csoportja, akiknek a munkaterületen az SQL-Active Directory rendszergazdai jogosultsággal kell rendelkezniük. 
 
-A `workspace1_SynapseSQLAdministrators` rendszer akkor fogja használni a csoportot, ha az SQL-készletekben konfigurálja az SQL-engedélyeket a létrehozásuk során. 
+A `workspace1_SQLAdmins` rendszer akkor fogja használni a csoportot, ha az SQL-készletekben konfigurálja az SQL-engedélyeket a létrehozásuk során. 
 
 Alapszintű beállítás esetén ez az öt csoport elegendő. Később hozzáadhat biztonsági csoportokat azon felhasználók kezeléséhez, akiknek több specializált hozzáférésre van szükségük, vagy csak adott erőforrásokhoz férnek hozzá a felhasználóknak.
 
@@ -84,6 +84,7 @@ Alapszintű beállítás esetén ez az öt csoport elegendő. Később hozzáadh
 A szinapszis-munkaterület alapértelmezett tárolót használ a következőhöz:
   - A Spark-táblák biztonsági mentésére szolgáló adatfájlok tárolása
   - Végrehajtási naplók a Spark-feladatokhoz
+  - A telepítendő könyvtárak kezelése
 
 Azonosítsa az alábbi adatokat a tárhelyéről:
 
@@ -94,7 +95,7 @@ Azonosítsa az alábbi adatokat a tárhelyéről:
 
   - Rendelje hozzá a **Storage blob adatközreműködői** szerepkört a következőhöz `workspace1_SynapseAdmins` 
   - Rendelje hozzá a **Storage blob adatközreműködői** szerepkört a következőhöz `workspace1_SynapseContributors`
-  - Rendelje hozzá a **Storage blob adatközreműködői** szerepkört `workspace1_SynapseComputeOperators` **<< érvényesítéséhez**  
+  - Rendelje hozzá a **Storage blob adatközreműködői** szerepkört a következőhöz `workspace1_SynapseComputeOperators`
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>3. lépés: a szinapszis-munkaterület létrehozása és konfigurálása
 
@@ -106,10 +107,10 @@ A Azure Portal hozzon létre egy szinapszis-munkaterületet:
 - Válassza ki `storage1` a Storage-fiókot
 - Válassza ki azt a `container1` tárolót, amelyet "fájlrendszerként" használ.
 - WS1 megnyitása a szinapszis Studióban
-- Navigáljon **Manage** a  >  **Access Control** kezelésére, és rendelje hozzá a következő szinapszis-szerepköröket a *munkaterület hatókörében* a biztonsági csoportokhoz.
+- Navigáljon a Access Control **kezelése** elemre,  >   és rendeljen hozzá szinapszis-szerepköröket a *munkaterület hatókörében* a biztonsági csoportokhoz a következő módon:
   - A **szinapszis rendszergazda** szerepkörének kiosztása `workspace1_SynapseAdministrators` 
   - A **szinapszis közreműködő** szerepkörének kiosztása `workspace1_SynapseContributors` 
-  - Rendelje hozzá a **SZINAPSZIS SQL számítási operátori** szerepkört a következőhöz `workspace1_SynapseComputeOperators`
+  - A **szinapszis számítási operátori** szerepkörének kiosztása `workspace1_SynapseComputeOperators`
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>4. lépés: a munkaterület MSI-hozzáférésének megadása az alapértelmezett tárolóhoz
 
@@ -121,9 +122,9 @@ A folyamatok futtatásához és a rendszerfeladatok végrehajtásához a szinaps
   - Ha nincs hozzárendelve, rendelje hozzá.
   - Az MSI neve megegyezik a munkaterülettel. Ebben a cikkben a következő lenne: `workspace1` .
 
-## <a name="step-5-grant-the-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>5. lépés: a szinapszis-rendszergazdák számára az Azure közreműködő szerepkör megadása a munkaterületen 
+## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>5. lépés: a szinapszis-rendszergazdák számára az Azure közreműködő szerepkör megadása a munkaterületen 
 
-SQL-készletek, Apache Spark készletek és integrációs modulok létrehozásához a felhasználóknak legalább Azure közreműködői hozzáféréssel kell rendelkezniük a munkaterületen. A közreműködői szerepkör lehetővé teszi a felhasználók számára az erőforrások kezelését, beleértve a felfüggesztést és a skálázást is.
+SQL-készletek, Apache Spark készletek és integrációs modulok létrehozásához a felhasználóknak legalább Azure közreműködői hozzáféréssel kell rendelkezniük a munkaterülethez. A közreműködői szerepkör lehetővé teszi a felhasználók számára az erőforrások kezelését, beleértve a felfüggesztést és a skálázást is.
 
 - Nyissa meg az Azure Portalt
 - Keresse meg a munkaterületet, `workspace1`
@@ -131,44 +132,44 @@ SQL-készletek, Apache Spark készletek és integrációs modulok létrehozásá
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>6. lépés: az SQL Active Directory rendszergazdai szerepkörének kiosztása
 
-A munkaállomás létrehozója automatikusan Active Directory rendszergazdaként lesz beállítva a munkaterületen.  Csak egyetlen felhasználó vagy csoport kaphatja meg ezt a szerepkört. Ebben a lépésben hozzárendeli a Active Directory rendszergazdát a munkaterületen a `workspace1_SynapseSQLAdministrators` biztonsági csoporthoz.  A szerepkör hozzárendelésével ez a csoport magas jogosultsági szintű rendszergazdai hozzáférést biztosít az összes SQL-készlethez.   
+A munkaállomás létrehozója automatikusan be lesz állítva a munkaterület SQL Active Directory-rendszergazdájaként.  Csak egyetlen felhasználó vagy csoport kaphatja meg ezt a szerepkört. Ebben a lépésben az SQL Active Directory-rendszergazdát rendeli hozzá a munkaterületen a `workspace1_SQLAdmins` biztonsági csoporthoz.  A szerepkör hozzárendelésével ez a csoport magas jogosultsági szintű rendszergazdai hozzáférést biztosít a munkaterületen található összes SQL-készlethez és adatbázishoz.   
 
 - Nyissa meg az Azure Portalt
 - Navigáljon ide: `workspace1`
 - A **Beállítások** területen válassza az **SQL Active Directory-rendszergazda** elemet.
-- Válassza a **rendszergazda beállítása** elemet, és válassza a **`workspace1_SynapseSQLAdministrators`**
+- Válassza a **rendszergazda beállítása** elemet, és válassza a **`workspace1_SQLAdmins`**
 
 >[!Note]
->Ez a lépés nem kötelező.  Dönthet úgy, hogy az SQL-rendszergazdák csoportnak egy kevésbé Kiemelt szerepkört ad. `db_owner`Ha vagy más SQL-szerepkört szeretne hozzárendelni, minden SQL-adatbázishoz parancsfájlokat kell futtatnia. 
+>A 6. lépés megadása nem kötelező.  Dönthet úgy is, hogy a `workspace1_SQLAdmins` csoportot egy kevésbé Kiemelt szerepkörrel ruházza fel. `db_owner`Ha vagy más SQL-szerepkört szeretne hozzárendelni, minden SQL-adatbázishoz parancsfájlokat kell futtatnia. 
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>7. lépés: az SQL-készletek elérésének engedélyezése
 
-Alapértelmezés szerint a szinapszis-rendszergazdai szerepkörrel rendelkező összes felhasználó az SQL-szerepkört is hozzárendeli a `db_owner` "beépített" kiszolgáló nélküli SQL-készlethez.
+Alapértelmezés szerint a szinapszis-rendszergazdai szerepkörrel rendelkező összes felhasználó az SQL-szerepkört is hozzárendeli a `db_owner` kiszolgáló nélküli SQL-készlethez, a "beépített" és az összes adatbázisához.
 
-Az SQL-készletek más felhasználók számára való elérését és a munkaterület MSI-fájlját az SQL-engedélyek segítségével szabályozhatja.  Az SQL-engedélyek hozzárendeléséhez az szükséges, hogy az SQL-parancsfájlok az egyes SQL-készleteken fussanak a létrehozás után.  Három esetben kell futtatnia ezeket a parancsfájlokat:
-1. Más felhasználók hozzáférésének biztosítása a "beépített" kiszolgáló nélküli SQL-készlethez
-2. A dedikált készletekhez való felhasználói hozzáférés biztosítása
-3. A munkaterület MSI-hozzáférésének engedélyezése egy SQL-készlethez az SQL-készlet elérését igénylő folyamatok sikeres futtatásához.
+Az SQL-készletek más felhasználók számára való elérését és a munkaterület MSI-fájlját az SQL-engedélyek segítségével szabályozhatja.  Az SQL-engedélyek hozzárendeléséhez az szükséges, hogy az SQL-parancsfájlok a létrehozás után mindegyik SQL-adatbázisban fussanak.  Három esetben kell futtatnia ezeket a parancsfájlokat:
+1. Más felhasználók hozzáférésének biztosítása a kiszolgáló nélküli SQL-készlethez, a "beépített" és a hozzá tartozó adatbázisokhoz
+2. Felhasználói hozzáférés biztosítása a dedikált készlet adatbázisaihoz
+3. A munkaterület MSI-hozzáférésének megadása egy SQL-készlet adatbázisához, amely lehetővé teszi az SQL-készlet elérését igénylő folyamatok sikeres futtatását.
 
 Az alábbi példa SQL-parancsfájlokat tartalmaz.
 
-Ahhoz, hogy hozzáférést biztosítson egy dedikált SQL-készlethez, a szkripteket a munkaterület létrehozója vagy a csoport bármelyik tagja is futtathatja `workspace1_SynapseSQL Administrators` .  
+Ahhoz, hogy hozzáférést biztosítson egy dedikált SQL Pool-adatbázishoz, a szkripteket a munkaterület létrehozója vagy a csoport bármelyik tagja is futtathatja `workspace1_SQLAdmins` .  
 
-A "beépített" kiszolgáló nélküli SQL-készlethez való hozzáférés biztosításához a szkripteket a csoport bármelyik tagja is futtathatja  `workspace1_SynapseAdministrators` . 
+A "beépített" kiszolgáló nélküli SQL-készlethez való hozzáférés biztosításához a parancsfájlokat a `workspace1_SQLAdmins` csoport vagy a csoport bármelyik tagja futtathatja  `workspace1_SynapseAdministrators` . 
 
 > [!TIP]
-> Az alábbi lépéseket **minden** SQL-készlet esetében futtatni kell, hogy felhasználói hozzáférést biztosítson az összes SQL-adatbázishoz, kivéve a [munkaterület – hatókörrel rendelkező engedélyek](#workspace-scoped-permission) szakaszát, ahol a felhasználó rendszergazdai szerepkört rendelhet.
+> Az alábbi lépéseket **minden** SQL-készlet esetében futtatni kell, hogy az összes SQL-adatbázishoz felhasználói hozzáférést biztosítson, kivéve a [munkaterület – hatókörrel rendelkező engedélyek](#workspace-scoped-permission) szakaszát, ahol a felhasználóhoz rendszergazdai szerepkört rendelhet a munkaterület szintjén.
 
-### <a name="step-71-serverless-sql-pools"></a>7,1. lépés: kiszolgáló nélküli SQL-készletek
+### <a name="step-71-serverless-sql-pool-built-in"></a>7,1. lépés: kiszolgáló nélküli SQL-készlet, beépített
 
-Ebben a szakaszban példákat talál arra, hogy hogyan adhat engedélyt egy felhasználónak egy adott adatbázishoz vagy a teljes kiszolgálói engedélyekhez.
+Ebben a szakaszban olyan parancsfájl-példákat mutatjuk be, amelyekkel egy adott adatbázishoz vagy a kiszolgáló nélküli SQL-készletben található összes adatbázishoz hozzáférést biztosíthat a felhasználónak.
 
 > [!NOTE]
 > A parancsfájl példákban cserélje le az *aliast* a hozzáférést biztosító felhasználó vagy csoport aliasára, valamint a *tartományra* a használt vállalati tartománnyal.
 
-#### <a name="pool-scoped-permission"></a>Készlet hatókörű engedélye
+#### <a name="database-scoped-permission"></a>Adatbázis hatókörű engedélye
 
-Ha **egyetlen** kiszolgáló nélküli SQL-készlethez szeretne hozzáférést adni egy felhasználónak, kövesse az alábbi példában szereplő lépéseket:
+Ha **egyetlen** kiszolgáló nélküli SQL-adatbázishoz szeretne hozzáférést adni egy felhasználónak, kövesse az alábbi példában szereplő lépéseket:
 
 1. Bejelentkezés létrehozása
 
@@ -182,7 +183,7 @@ Ha **egyetlen** kiszolgáló nélküli SQL-készlethez szeretne hozzáférést a
 2. FELHASZNÁLÓ létrehozása
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     CREATE USER alias FROM LOGIN [alias@domain.com];
     ```
@@ -190,7 +191,7 @@ Ha **egyetlen** kiszolgáló nélküli SQL-készlethez szeretne hozzáférést a
 3. FELHASZNÁLÓ hozzáadása a megadott szerepkör tagjaihoz
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     alter role db_owner Add member alias -- Type USER name from step 2
     ```
@@ -200,25 +201,27 @@ Ha **egyetlen** kiszolgáló nélküli SQL-készlethez szeretne hozzáférést a
 Ha teljes hozzáférést szeretne biztosítani a munkaterület **összes** kiszolgáló nélküli SQL-készletéhez, használja a következő példában szereplő parancsfájlt:
 
 ```sql
+use master
+go
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="step-72-dedicated-sql-pools"></a>7,2. lépés: dedikált SQL-készletek
 
-Ha **egyetlen** dedikált SQL-készlethez szeretne hozzáférést biztosítani, kövesse az alábbi lépéseket a szinapszis SQL Script Editorban:
+Ha **egyetlen** dedikált SQL Pool-adatbázishoz szeretne hozzáférést biztosítani, kövesse az alábbi lépéseket a szinapszis SQL Script Editorban:
 
 1. Hozza létre a felhasználót az adatbázisban a következő parancs futtatásával a célként megadott adatbázison, majd válassza a *Kapcsolódás* legördülő lista használatával lehetőséget.
 
     ```sql
-    --Create user in SQL DB
+    --Create user in the database
     CREATE USER [<alias@domain.com>] FROM EXTERNAL PROVIDER;
     ```
 
 2. Adja meg a felhasználónak az adatbázis eléréséhez szükséges szerepkört:
 
     ```sql
-    --Create user in SQL DB
+    --Grant role to the user in the database
     EXEC sp_addrolemember 'db_owner', '<alias@domain.com>';
     ```
 
@@ -226,32 +229,35 @@ Ha **egyetlen** dedikált SQL-készlethez szeretne hozzáférést biztosítani, 
 > a *db_datareader* és a *db_datawriter* írási/olvasási engedélyekkel is dolgozhat, ha nem kívánja megadni *db_owner* engedélyt.
 > Ha egy Spark-felhasználónak közvetlenül a Sparkból vagy egy SQL-készletből kell olvasnia és írnia, *db_owner* engedélyre van szükség.
 
-A felhasználók létrehozása után ellenőrizze, hogy a kiszolgáló nélküli SQL-készlet képes-e lekérdezni a Storage-fiókot.
+A felhasználók létrehozása után futtasson lekérdezéseket annak ellenőrzéséhez, hogy a kiszolgáló nélküli SQL-készlet képes-e lekérdezni a Storage-fiókot.
 
-### <a name="step-73-sl-access-control-for-workspace-pipeline-runs"></a>7,3. lépés: a munkaterület-folyamat futtatásának SL hozzáférés-vezérlése
+### <a name="step-73-sql-access-control-for-synapse-pipeline-runs"></a>7,3. lépés: a szinapszis-folyamat futtatásának SQL-hozzáférés-vezérlése
 
 ### <a name="workspace-managed-identity"></a>Munkaterület által felügyelt identitás
 
 > [!IMPORTANT]
 > Ha olyan folyamatokat szeretne futtatni, amelyek olyan adatkészleteket vagy tevékenységeket tartalmaznak, amelyek SQL-készletre hivatkoznak, akkor a munkaterület identitásának hozzáférést kell biztosítania az SQL-készlethez.
 
-Futtassa az alábbi parancsokat az egyes SQL-készleteken, hogy a munkaterület által felügyelt identitás az SQL-készlet adatbázisában futtasson folyamatokat:
+Futtassa az alábbi parancsokat az egyes SQL-készleteken, hogy a munkaterület által felügyelt rendszeridentitás a folyamatok futtatását az SQL Pool-adatbázis (ok) ban futtassa:  
+
+>[!note]
+>Az alábbi parancsfájlokban egy dedikált SQL Pool-adatbázis esetében a databasename megegyezik a készlet nevével.  A "beépített" kiszolgáló nélküli SQL-készletben található adatbázis databasename az adatbázis neve.
 
 ```sql
---Create user in DB
+--Create a SQL user for the workspace MSI in database
 CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
 
 --Granting permission to the identity
-GRANT CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+GRANT CONTROL ON DATABASE::<databasename> TO <workspacename>;
 ```
 
 Ez az engedély a következő parancsfájl ugyanazon SQL-készleten való futtatásával távolítható el:
 
 ```sql
---Revoking permission to the identity
-REVOKE CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+--Revoke permission granted to the workspace MSI
+REVOKE CONTROL ON DATABASE::<databasename> TO <workspacename>;
 
---Deleting the user in the DB
+--Delete the workspace MSI user in the database
 DROP USER [<workspacename>];
 ```
 
@@ -283,6 +289,6 @@ A **fejlesztői hozzáférés korlátozása** adott erőforrásokhoz.  További 
 
 **Korlátozza a kezelők számára a kódok elérését**.  Hozzon létre biztonsági csoportokat azon operátorok számára, akiknek figyelniük kell a szinapszis számítási erőforrások működési állapotát, és meg kell tekintenie a naplókat, de nincs szükségük a kódok elérésére vagy a szolgáltatás frissítéseinek közzétételére. Rendelje hozzá ezeket a csoportokat a számítási operátori szerepkörhöz, amely meghatározott Spark-készletekre és integrációs modulokra terjed ki.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg [, hogyan kezelheti a szinapszis-RBAC szerepkör-hozzárendeléseket](./how-to-manage-synapse-rbac-role-assignments.md) egy [szinapszis-munkaterület](../quickstart-create-workspace.md) létrehozásával

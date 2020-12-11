@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: da79a74121318993f807ec3bde101b652a8b49da
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 34cdaa42f3a41ae04c73c570bb4fede01a786af2
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628135"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107838"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokenek beszerzése és gyorsítótárazása a Microsoft Authentication Library (MSAL) használatával
 
@@ -120,8 +120,10 @@ Amikor az ügyfél hozzáférési jogkivonatot kér, az Azure AD egy hitelesít�
 
 [!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha Java-MSAL használ, ismerkedjen meg az [Egyéni jogkivonat-gyorsítótár szerializálásával a MSAL for javában](msal-java-token-cache-serialization.md).
-
-További információ a [hibák és a kivételek kezelésére](msal-handling-exceptions.md)vonatkozóan.
+A MSAL által támogatott platformok közül több további jogkivonat-gyorsítótárral kapcsolatos információkkal rendelkezik a platform könyvtárának dokumentációjában. Például:
+- [Jogkivonat beszerzése a jogkivonat-gyorsítótárból a MSAL.NET használatával](msal-net-acquire-token-silently.md)
+- [Egyszeri bejelentkezés az MSAL.js-sel](msal-js-sso.md)
+- [Egyéni jogkivonat-gyorsítótár szerializálása a MSAL-ben a Pythonhoz](msal-python-token-cache-serialization.md)
+- [Egyéni jogkivonat-gyorsítótár szerializálás a MSAL-ben Javához](msal-java-token-cache-serialization.md)

@@ -1,17 +1,17 @@
 ---
 title: Oktatóanyag – sablon üzembe helyezése a paraméter használatával
-description: Használjon olyan paramétereket, amelyek tartalmazzák a Azure Resource Manager-sablon üzembe helyezéséhez használandó értékeket.
+description: A Azure Resource Manager-sablon (ARM-sablon) üzembe helyezéséhez használandó értékeket tartalmazó paraméter-fájlok használata.
 author: mumian
 ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: de72f9f32a3b08ad1742ee2055efce5b93cab899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dc625237c03cf38f9fe2eb0446c55dcf96f5f3a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069509"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106767"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Oktatóanyag: paraméterek használata az ARM-sablon üzembe helyezéséhez
 
@@ -41,23 +41,25 @@ Minden paraméterhez nem kell értéket megadnia. Ha egy meghatározatlan param�
 
 Nem adhat meg olyan paraméter-nevet a paraméter-fájlban, amely nem egyezik meg a sablonban szereplő paraméterek nevével. Hibaüzenet jelenik meg, ha ismeretlen paraméterek vannak megadva.
 
-A VS Code-ban hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt **azuredeploy.parameters.dev.jsa**következő néven:.
+A Visual Studio Code-ban hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt _azuredeploy.parameters.dev.jsa_ következő néven:.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
-Ez a fájl a fejlesztési környezethez tartozó paraméter-fájl. Figyelje meg, hogy Standard_LRSt használ a Storage-fiókhoz, az erőforrásokat pedig **fejlesztői** előtaggal látja el, és beállítja a **környezeti** címkét a **dev**értékre.
+Ez a fájl a fejlesztési környezethez tartozó paraméter-fájl. Figyelje meg, hogy **Standard_LRSt** használ a Storage-fiókhoz, és a megkeresi az erőforrásokat egy **fejlesztői** előtaggal, és beállítja a " `Environment` **dev**" címkét.
 
-Ismét hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt **azuredeploy.parameters.prod.jsa**következő néven:.
+Ismét hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt _azuredeploy.parameters.prod.jsa_ következő néven:.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-Ez a fájl az éles környezethez tartozó paraméter-fájl. Figyelje meg, hogy Standard_GRSt használ a Storage-fiókhoz, és megnevezi az erőforrásokat a **contoso** előtaggal, és beállítja a környezeti címkét az **éles** **környezetben** . Valós éles környezetben érdemes lehet olyan app Service-t használni, amely nem ingyenes, de továbbra is ezt az SKU-t fogjuk használni ehhez az oktatóanyaghoz.
+Ez a fájl az éles környezethez tartozó paraméter-fájl. Figyelje meg, hogy **Standard_GRSt** használ a Storage-fiókhoz, és megnevezi az erőforrásokat a **contoso** előtaggal, és beállítja a környezeti címkét az **éles** _környezetben_ . Valós éles környezetben érdemes lehet olyan app Service-t használni, amely nem ingyenes, de továbbra is ezt az SKU-t fogjuk használni ehhez az oktatóanyaghoz.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
 A sablon üzembe helyezéséhez használja az Azure CLI-t vagy a Azure PowerShell.
 
 A sablon utolsó tesztje hozzon létre két új erőforráscsoportot. Egyet a fejlesztői környezethez, egyet pedig az éles környezethez.
+
+A sablon és a paraméter változóknál cserélje le a,, `{path-to-the-template-file}` `{path-to-azuredeploy.parameters.dev.json}` `{path-to-azuredeploy.parameters.prod.json}` és a kapcsos zárójeleket a `{}` sablon és a paraméter fájlelérési útjaira.
 
 Először üzembe kell helyezni a fejlesztői környezetet.
 
@@ -128,25 +130,25 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Ha az üzemelő példány nem sikerült, a **részletes** kapcsoló használatával kérheti le a létrehozott erőforrásokra vonatkozó információkat. A **hibakeresési kapcsoló használatával** további információkat kaphat a hibakeresésről.
+> Ha a telepítés nem sikerült, a `verbose` kapcsolóval kérheti le a létrehozott erőforrásokra vonatkozó információkat. A `debug` kapcsoló használatával további információkat kaphat a hibakereséshez.
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
 A központi telepítés ellenőrzéséhez tekintse meg az Azure Portal lévő erőforráscsoportokat.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+1. A bal oldali menüben válassza az **erőforráscsoportok** lehetőséget.
 1. Ekkor megjelenik az oktatóanyagban üzembe helyezett két új erőforráscsoport.
 1. Válassza ki az erőforráscsoportot, és tekintse meg a telepített erőforrásokat. Figyelje meg, hogy az adott környezethez tartozó paraméterben megadott értékeknek felelnek meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 1. A Azure Portal válassza ki a bal oldali menüből az **erőforráscsoportot** .
-2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét. Ha elvégezte ezt a sorozatot, három erőforráscsoport törölhető – myResourceGroup, myResourceGroupDev és myResourceGroupProd.
+2. A **Szűrés név alapján** mezőben adja meg az erőforráscsoport nevét. Ha elvégezte ezt a sorozatot, három erőforráscsoport törölhető – **myResourceGroup**, **myResourceGroupDev** és **myResourceGroupProd**.
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, készen áll a sablonok Azure-ba történő üzembe helyezésének bevezetésére. Tudassa velünk, ha megjegyzésekkel és javaslatokkal rendelkezik a visszajelzések szakaszban. Köszönjük!
 

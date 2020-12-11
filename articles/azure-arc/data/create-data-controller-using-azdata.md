@@ -1,6 +1,6 @@
 ---
-title: Adatvezérlő létrehozása az használatával [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
-description: Hozzon létre egy Azure arc-adatkezelőt egy tipikus, több csomópontos Kubernetes-fürtön, amelyet már létrehozott a használatával [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .
+title: Adatvezérlő létrehozása az Azure-beli adatparancssori felület (azdata) használatával
+description: Hozzon létre egy Azure arc-adatkezelőt egy tipikus, többcsomópontos Kubernetes-fürtön, amelyet már létrehozott az Azure-beli adatparancssori felület (azdata) használatával.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 94f347cc24c675c69c69dad6a7d7a796b395c1a6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f00cd1ec9c2900998596df3baded562059012658
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493612"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107298"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure arc-adatkezelő létrehozása a használatával [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
@@ -54,32 +54,144 @@ Ellenőrizze, hogy van-e aktuális Kubernetes-kapcsolatban, és erősítse meg a
 
 ```console
 kubectl get namespace
-
 kubectl config current-context
 ```
+
+### <a name="connectivity-modes"></a>Csatlakozási módok
+
+A [kapcsolódási módok és követelmények](https://docs.microsoft.com/azure/azure-arc/data/connectivity)című témakörben leírtak szerint az Azure arc-adatkezelő a `direct` vagy a `indirect` csatlakozási móddal is telepíthető. A `direct` kapcsolati módban a használati adatok automatikusan és folyamatosan továbbítódnak az Azure-ba. Ebben a cikkben a példák a `direct` kapcsolódási módot adják meg a következő módon:
+
+   ```console
+   --connectivity-mode direct
+   ```
+
+   A vezérlő `indirect` kapcsolati móddal való létrehozásához frissítse a példában szereplő parancsfájlokat az alábbi módon:
+
+   ```console
+   --connectivity-mode indirect
+   ```
+
+#### <a name="create-service-principal"></a>Egyszerű szolgáltatás létrehozása
+
+Ha az Azure arc-adatkezelőt `direct` kapcsolati módban telepíti, a szolgáltatás egyszerű hitelesítő adatai szükségesek az Azure-kapcsolathoz. Az egyszerű szolgáltatás a használati és mérőszámi adatok feltöltésére szolgál. 
+
+Az alábbi parancsokkal hozza létre a metrikák feltöltésére szolgáló szolgáltatásnevet:
+
+> [!NOTE]
+> Egy egyszerű szolgáltatásnév létrehozásához [bizonyos engedélyek szükségesek az Azure-ban](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
+
+Egyszerű szolgáltatásnév létrehozásához frissítse az alábbi példát. Cserélje le a `<ServicePrincipalName>` nevet az egyszerű szolgáltatásnév nevére, és futtassa a parancsot:
+
+```azurecli
+az ad sp create-for-rbac --name <ServicePrincipalName>
+``` 
+
+Ha korábban létrehozta a szolgáltatásnevet, és csak le kell kérnie az aktuális hitelesítő adatokat, futtassa a következő parancsot a hitelesítő adat alaphelyzetbe állításához.
+
+```azurecli
+az ad sp credential reset --name <ServicePrincipalName>
+```
+
+Ha például egy nevű szolgáltatásnevet szeretne létrehozni `azure-arc-metrics` , futtassa a következő parancsot:
+
+```console
+az ad sp create-for-rbac --name azure-arc-metrics
+```
+
+Példa a kimenetre:
+
+```output
+"appId": "2e72adbf-de57-4c25-b90d-2f73f126e123",
+"displayName": "azure-arc-metrics",
+"name": "http://azure-arc-metrics",
+"password": "5039d676-23f9-416c-9534-3bd6afc78123",
+"tenant": "72f988bf-85f1-41af-91ab-2d7cd01ad1234"
+```
+
+Mentse a `appId` , `password` és `tenant` értékeket egy környezeti változóban későbbi használatra. 
+
+#### <a name="save-environment-variables-in-windows"></a>Környezeti változók mentése a Windowsban
+
+```console
+SET SPN_CLIENT_ID=<appId>
+SET SPN_CLIENT_SECRET=<password>
+SET SPN_TENANT_ID=<tenant>
+```
+
+#### <a name="save-environment-variables-in-linux-or-macos"></a>Környezeti változók mentése Linux vagy macOS rendszeren
+
+```console
+export SPN_CLIENT_ID='<appId>'
+export SPN_CLIENT_SECRET='<password>'
+export SPN_TENANT_ID='<tenant>'
+```
+
+#### <a name="save-environment-variables-in-powershell"></a>Környezeti változók mentése a PowerShellben
+
+```console
+$Env:SPN_CLIENT_ID="<appId>"
+$Env:SPN_CLIENT_SECRET="<password>"
+$Env:SPN_TENANT_ID="<tenant>"
+```
+
+Miután létrehozta a szolgáltatásnevet, rendelje hozzá a szolgáltatásnevet a megfelelő szerepkörhöz. 
+
+### <a name="assign-roles-to-the-service-principal"></a>Szerepkörök társítása az egyszerű szolgáltatáshoz
+
+A parancs futtatásával rendelje hozzá az egyszerű szolgáltatásnevet ahhoz az `Monitoring Metrics Publisher` előfizetéshez tartozó szerepkörhöz, amelyben az adatbázis-példány erőforrásai találhatók:
+
+#### <a name="run-the-command-on-windows"></a>A parancs futtatása Windows rendszeren
+
+> [!NOTE]
+> Windows-környezetből való futtatáskor dupla idézőjeleket kell használnia a szerepkörök neveihez.
+
+```azurecli
+az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role "Contributor" --scope subscriptions/<Subscription ID>
+```
+
+#### <a name="run-the-command-on-linux-or-macos"></a>A parancs futtatása Linux vagy macOS rendszeren
+
+```azurecli
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+```
+
+#### <a name="run-the-command-in-powershell"></a>Futtassa a parancsot a PowerShellben
+
+```powershell
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+```
+
+```output
+{
+  "canDelegate": null,
+  "id": "/subscriptions/<Subscription ID>/providers/Microsoft.Authorization/roleAssignments/f82b7dc6-17bd-4e78-93a1-3fb733b912d",
+  "name": "f82b7dc6-17bd-4e78-93a1-3fb733b9d123",
+  "principalId": "5901025f-0353-4e33-aeb1-d814dbc5d123",
+  "principalType": "ServicePrincipal",
+  "roleDefinitionId": "/subscriptions/<Subscription ID>/providers/Microsoft.Authorization/roleDefinitions/3913510d-42f4-4e42-8a64-420c39005123",
+  "scope": "/subscriptions/<Subscription ID>",
+  "type": "Microsoft.Authorization/roleAssignments"
+}
+```
+
+A megfelelő szerepkörhöz rendelt egyszerű szolgáltatásnév és a beállított környezeti változók segítségével folytathatja az adatkezelő létrehozását 
 
 ## <a name="create-the-azure-arc-data-controller"></a>Az Azure arc-adatkezelő létrehozása
 
 > [!NOTE]
 > Az alábbi példákban más értéket is használhat a `--namespace` azdata arc DC Create parancs paramétereként, de ügyeljen arra, hogy a névtér nevét használja az `--namespace parameter` összes többi parancsnál.
 
-A létrehozás konfigurálásához kövesse az alábbi megfelelő szakaszt a célként megadott platformtól függően.
-
-[Létrehozás az Azure Kubernetes Service-ben (ak)](#create-on-azure-kubernetes-service-aks)
-
-[Létrehozás az AK-motoron Azure Stack hub-on](#create-on-aks-engine-on-azure-stack-hub)
-
-[Létrehozás az AK-on Azure Stack HCI-ben](#create-on-aks-on-azure-stack-hci)
-
-[Létrehozás az Azure Red Hat OpenShift (ARO)](#create-on-azure-red-hat-openshift-aro)
-
-[Létrehozás a Red Hat OpenShift Container platformon (OCP)](#create-on-red-hat-openshift-container-platform-ocp)
-
-[Létrehozás nyílt forráskódú, felsőbb rétegbeli Kubernetes (kubeadm)](#create-on-open-source-upstream-kubernetes-kubeadm)
-
-[Létrehozás az AWS rugalmas Kubernetes szolgáltatásban (EKS)](#create-on-aws-elastic-kubernetes-service-eks)
-
-[Létrehozás a Google Cloud Kubernetes Engine Service-ben (GKE)](#create-on-google-cloud-kubernetes-engine-service-gke)
+- [Létrehozás az Azure Kubernetes Service-ben (ak)](#create-on-azure-kubernetes-service-aks)
+- [Létrehozás az AK-motoron Azure Stack hub-on](#create-on-aks-engine-on-azure-stack-hub)
+- [Létrehozás az AK-on Azure Stack HCI-ben](#create-on-aks-on-azure-stack-hci)
+- [Létrehozás az Azure Red Hat OpenShift (ARO)](#create-on-azure-red-hat-openshift-aro)
+- [Létrehozás a Red Hat OpenShift Container platformon (OCP)](#create-on-red-hat-openshift-container-platform-ocp)
+- [Létrehozás nyílt forráskódú, felsőbb rétegbeli Kubernetes (kubeadm)](#create-on-open-source-upstream-kubernetes-kubeadm)
+- [Létrehozás az AWS rugalmas Kubernetes szolgáltatásban (EKS)](#create-on-aws-elastic-kubernetes-service-eks)
+- [Létrehozás a Google Cloud Kubernetes Engine Service-ben (GKE)](#create-on-google-cloud-kubernetes-engine-service-gke)
 
 ### <a name="create-on-azure-kubernetes-service-aks"></a>Létrehozás az Azure Kubernetes Service-ben (ak)
 
@@ -88,10 +200,10 @@ Alapértelmezés szerint az AK-telepítési profil a `managed-premium` Storage o
 Ha `managed-premium` tárolási osztályként fogja használni, akkor a következő parancs futtatásával hozhatja létre az adatkezelőt. Helyettesítse be a parancsban található helyőrzőket az erőforráscsoport nevével, az előfizetés-AZONOSÍTÓval és az Azure-hellyel.
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 Ha nem biztos abban, hogy milyen tárolási osztályt használ, akkor a tárolási osztályt kell használnia, függetlenül attól, hogy melyik virtuálisgép- `default` típust használja. Csak a leggyorsabb teljesítményt biztosítja.
@@ -99,10 +211,10 @@ Ha nem biztos abban, hogy milyen tárolási osztályt használ, akkor a tárolá
 Ha a `default` tárolási osztályt szeretné használni, futtassa a következő parancsot:
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 A parancs futtatása után folytassa a következővel: a [létrehozási állapot figyelése](#monitoring-the-creation-status).
@@ -114,10 +226,10 @@ Alapértelmezés szerint a központi telepítési profil a `managed-premium` Sto
 A következő parancs futtatásával hozhatja létre az adatvezérlőt a felügyelt Premium Storage osztály használatával:
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 Ha nem biztos abban, hogy milyen tárolási osztályt használ, akkor a tárolási osztályt kell használnia, függetlenül attól, hogy melyik virtuálisgép- `default` típust használja. Azure Stack központban a prémium szintű lemezeket és a standard lemezeket ugyanaz a tárolási infrastruktúra támogatja. Ezért várhatóan ugyanazt az általános teljesítményt nyújtják, de eltérő IOPS-korlátokkal rendelkeznek.
@@ -125,10 +237,10 @@ Ha nem biztos abban, hogy milyen tárolási osztályt használ, akkor a tárolá
 Ha a `default` tárolási osztályt szeretné használni, akkor futtathatja ezt a parancsot.
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 A parancs futtatása után folytassa a következővel: a [létrehozási állapot figyelése](#monitoring-the-creation-status).
@@ -140,10 +252,10 @@ Alapértelmezés szerint a központi telepítési profil egy nevű tárolási os
 A következő parancs futtatásával hozhatja létre az adatvezérlőt a `default` tárolási osztály és a szolgáltatás típusa alapján `LoadBalancer` .
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 A parancs futtatása után folytassa a következővel: a [létrehozási állapot figyelése](#monitoring-the-creation-status).
@@ -151,38 +263,93 @@ A parancs futtatása után folytassa a következővel: a [létrehozási állapot
 
 ### <a name="create-on-azure-red-hat-openshift-aro"></a>Létrehozás az Azure Red Hat OpenShift (ARO)
 
-Az Azure Red Hat OpenShift lévő adatkezelő létrehozásához az alábbi parancsokat kell futtatnia a fürtön a biztonsági korlátozások kihasználása érdekében. Ez egy átmeneti követelmény, amely a jövőben el lesz távolítva.
-> [!NOTE]
->   Használja ugyanazt a névteret itt és az `azdata arc dc create` alábbi parancsban. Példa: `arc` .
+#### <a name="apply-the-scc"></a>A SCC alkalmazása
 
-Először töltse le az egyéni biztonsági környezeti korlátozást (SCC) a [githubról](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml) , és alkalmazza azt a fürtön.
+Mielőtt létrehozza az adatvezérlőt az Azure Red Hat OpenShift, bizonyos biztonsági környezeti korlátozásokat (SCC) kell alkalmaznia. Az előzetes kiadás esetében ezek a biztonsági korlátozások ellazítására használhatók. A jövőbeli kiadások a frissített SCC-t nyújtják.
 
-Az adatkezelő létrehozásához futtassa a következő parancsot:
-> [!NOTE]
->   Használja ugyanazt a névteret itt és a `oc adm policy add-scc-to-user` fenti parancsokban. Példa: `arc` .
+1. Töltse le az egyéni biztonsági környezet korlátozását (SCC). Használja a következők egyikét: 
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([Nyers](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - `curl` A következő parancs letölti az ív-adathalmazt. YAML:
+
+      ```console
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      ```
+
+1. SCC létrehozása
+
+   ```console
+   oc create -f arc-data-scc.yaml
+   ```
+
+1. Alkalmazza a SCC-t a szolgáltatási fiókra.
+
+   > [!NOTE]
+   > Használja ugyanazt a névteret itt és az `azdata arc dc create` alábbi parancsban. Példa: `arc` .
+
+   ```console
+   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
+   ```
+
+
+#### <a name="create-custom-deployment-profile"></a>Egyéni telepítési profil létrehozása
+
+Használja az `azure-arc-azure-openshift` Azure RedHat nyílt eltolású profilt.
 
 ```console
-azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc config init --source azure-arc-azure-openshift --path ./custom
+```
+
+#### <a name="create-data-controller"></a>Adatkezelő létrehozása
+
+Az adatkezelő létrehozásához futtassa a következő parancsot:
+
+> [!NOTE]
+> Használja ugyanazt a névteret itt és a `oc adm policy add-scc-to-user` fenti parancsokban. Példa: `arc` .
+
+```console
+azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example
-#azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 A parancs futtatása után folytassa a következővel: a [létrehozási állapot figyelése](#monitoring-the-creation-status).
 
 ### <a name="create-on-red-hat-openshift-container-platform-ocp"></a>Létrehozás a Red Hat OpenShift Container platformon (OCP)
 
-
 > [!NOTE]
 > Ha a Red Hat OpenShift Container platformot használja az Azure-ban, a legújabb elérhető verziót ajánlott használni.
 
-A Red Hat OpenShift Container platformon az adatkezelő létrehozásához a következő parancsokat kell végrehajtania a fürtön a biztonsági korlátozások kihasználása érdekében. Ez egy átmeneti követelmény, amely a jövőben el lesz távolítva.
-> [!NOTE]
->   Használja ugyanazt a névteret itt és az `azdata arc dc create` alábbi parancsban. Példa: `arc` .
+#### <a name="apply-the-scc"></a>A SCC alkalmazása
 
-```console
-oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-```
+Mielőtt létrehozta az adatvezérlőt a Red Hat OCP, bizonyos biztonsági környezeti korlátozásokat (SCC) kell alkalmaznia. Az előzetes kiadás esetében ezek a biztonsági korlátozások ellazítására használhatók. A jövőbeli kiadások a frissített SCC-t nyújtják.
+
+1. Töltse le az egyéni biztonsági környezet korlátozását (SCC). Használja a következők egyikét: 
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([Nyers](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - `curl` A következő parancs letölti az ív-adathalmazt. YAML:
+
+      ```console
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      ```
+
+1. SCC létrehozása
+
+   ```console
+   oc create -f arc-data-scc.yaml
+   ```
+
+1. Alkalmazza a SCC-t a szolgáltatási fiókra.
+
+   > [!NOTE]
+   > Használja ugyanazt a névteret itt és az `azdata arc dc create` alábbi parancsban. Példa: `arc` .
+
+   ```console
+   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
+   ```
+
+#### <a name="determine-storage-class"></a>Tárolási osztály meghatározása
 
 A következő parancs futtatásával is meg kell határoznia, hogy melyik tárolási osztályt kell használnia.
 
@@ -190,18 +357,17 @@ A következő parancs futtatásával is meg kell határoznia, hogy melyik tárol
 kubectl get storageclass
 ```
 
-Először hozzon létre egy új egyéni telepítési profilt az Azure-arc-openshift üzembe helyezési profil alapján az alábbi parancs futtatásával. Ez a parancs egy könyvtárat hoz létre az `custom` aktuális munkakönyvtárban és egy egyéni telepítési profilt `control.json` tartalmazó fájlban a könyvtárban.
+#### <a name="create-custom-deployment-profile"></a>Egyéni telepítési profil létrehozása
+
+Hozzon létre egy új egyéni telepítési profilt a `azure-arc-openshift` telepítési profil alapján a következő parancs futtatásával. Ez a parancs egy könyvtárat hoz létre az `custom` aktuális munkakönyvtárban és egy egyéni telepítési profilt tartalmazó fájlban a `control.json` könyvtárban.
 
 Használja a `azure-arc-openshift` OpenShift-tároló platform profilját.
 
 ```console
 azdata arc dc config init --source azure-arc-openshift --path ./custom
 ```
-Használja az `azure-arc-azure-openshift` Azure RedHat nyílt eltolású profilt.
 
-```console
-azdata arc dc config init --source azure-arc-azure-openshift --path ./custom
-```
+#### <a name="set-storage-class"></a>Tárolási osztály beállítása 
 
 Most állítsa be a kívánt tárolási osztályt úgy, hogy lecseréli az `<storageclassname>` alábbi parancsot a használni kívánt tárolási osztály nevére a `kubectl get storageclass` fenti parancs futtatásával.
 
@@ -214,13 +380,17 @@ azdata arc dc config replace --path ./custom/control.json --json-values "spec.st
 #azdata arc dc config replace --path ./custom/control.json --json-values "spec.storage.logs.className=mystorageclass"
 ```
 
-Alapértelmezés szerint az Azure-arc-openshift telepítési profil `NodePort` a szolgáltatás típusaként működik. Ha egy terheléselosztó integrált OpenShift-fürtöt használ, a konfigurációt úgy módosíthatja, hogy a terheléselosztó szolgáltatás típusát használja a következő paranccsal:
+#### <a name="set-loadbalancer-optional"></a>Terheléselosztó beállítása (nem kötelező)
+
+Alapértelmezés szerint a `azure-arc-openshift` központi telepítési profil `NodePort` a szolgáltatás típusaként működik. Ha egy terheléselosztó integrált OpenShift-fürtöt használ, a konfigurációt a `LoadBalancer` következő parancs használatával módosíthatja a szolgáltatás típusának használatára:
 
 ```console
 azdata arc dc config replace --path ./custom/control.json --json-values "$.spec.services[*].serviceType=LoadBalancer"
 ```
 
-A OpenShift használatakor előfordulhat, hogy az alapértelmezett biztonsági házirendeket szeretné futtatni a OpenShift-ben, vagy a környezetet általában nagyobb mértékben szeretné lezárni. A következő parancsok futtatásával letilthatja bizonyos szolgáltatások letiltását, hogy minimálisra csökkentse a telepítéskor szükséges engedélyeket és a futási időt.
+#### <a name="verify-security-policies"></a>Biztonsági házirendek ellenőrzése
+
+A OpenShift használatakor előfordulhat, hogy az alapértelmezett biztonsági házirendekkel szeretné futtatni a OpenShift-ben, vagy a környezetet általában több mint tipikusan szeretné lezárni. A következő parancsok futtatásával letilthatja bizonyos szolgáltatások letiltását, hogy minimálisra csökkentse a telepítéskor szükséges engedélyeket és a futási időt.
 
 Ez a parancs letiltja a hüvelyek metrikáinak gyűjteményeit. Ha letiltja ezt a funkciót, nem fogja tudni megtekinteni a hüvelyek mérőszámait a Grafana-irányítópultokon. Alapértelmezett érték: true (igaz).
 
@@ -239,7 +409,10 @@ Ez a parancs letiltja a memóriaképek hibaelhárítási célból történő elv
 azdata arc dc config replace --path ./custom/control.json --json-values spec.security.allowDumps=false
 ```
 
+#### <a name="create-data-controller"></a>Adatkezelő létrehozása
+
 Most már készen áll az adatvezérlő létrehozására a következő parancs használatával.
+
 > [!NOTE]
 >   Használja ugyanazt a névteret itt és a `oc adm policy add-scc-to-user` fenti parancsokban. Példa: `arc` .
 
@@ -248,10 +421,10 @@ Most már készen áll az adatvezérlő létrehozására a következő parancs h
 
 
 ```console
-azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 A parancs futtatása után folytassa a következővel: a [létrehozási állapot figyelése](#monitoring-the-creation-status).
@@ -292,10 +465,10 @@ azdata arc dc config replace --path ./custom/control.json --json-values "$.spec.
 Most már készen áll az adatvezérlő létrehozására a következő parancs használatával.
 
 ```console
-azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 A parancs futtatása után folytassa a következővel: a [létrehozási állapot figyelése](#monitoring-the-creation-status).
@@ -307,10 +480,10 @@ Alapértelmezés szerint a EKS tárolási osztálya, `gp2` a szolgáltatás típ
 A következő parancs futtatásával hozza létre az adatkezelőt a megadott EKS-telepítési profil használatával.
 
 ```console
-azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 A parancs futtatása után folytassa a következővel: a [létrehozási állapot figyelése](#monitoring-the-creation-status).
@@ -322,10 +495,10 @@ Alapértelmezés szerint a GKE tárolási osztálya, `standard` a szolgáltatás
 A következő parancs futtatásával hozza létre az adatkezelőt a megadott GKE-telepítési profil használatával.
 
 ```console
-azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 A parancs futtatása után folytassa a következővel: a [létrehozási állapot figyelése](#monitoring-the-creation-status).

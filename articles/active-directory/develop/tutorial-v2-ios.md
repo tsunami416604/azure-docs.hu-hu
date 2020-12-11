@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 5260ca049f971cce07659f12b54ce30304dd826d
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95746727"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107634"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
 
@@ -520,7 +520,7 @@ A következő kódrészlet első alkalommal kap egy jogkivonatot egy objektum l�
 
 1. `MSALInteractiveTokenParameters`Hatókörökkel jön létre.
 2. Meghívja `acquireToken()` a létrehozott paramétereket.
-3. Kezeli a hibákat. További részletekért tekintse meg a [MSAL for iOS és a MacOS hibakezelés útmutatóját](msal-handling-exceptions.md).
+3. Kezeli a hibákat. További részletekért tekintse meg a [MSAL for iOS és a MacOS hibakezelés útmutatóját](msal-error-handling-ios.md).
 4. Kezeli a sikeres esetet.
 
 Adja hozzá az alábbi kódot a `ViewController` osztályhoz.
@@ -635,7 +635,7 @@ A frissített jogkivonat csendes beszerzéséhez adja hozzá a következő kódo
 
 Ha rendelkezik jogkivonattal, az alkalmazás a HTTP-fejlécben felhasználhatja, hogy jogosult kérést készítsen a Microsoft Graph:
 
-| fejléc kulcsa    | value                 |
+| fejléc kulcsa    | érték                 |
 | ------------- | --------------------- |
 | Engedélyezés | Tulajdonosi \<access-token> |
 

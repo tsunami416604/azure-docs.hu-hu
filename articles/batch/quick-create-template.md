@@ -1,15 +1,15 @@
 ---
 title: Azure rövid útmutató – batch-fiók létrehozása – Azure Resource Manager sablon
-description: Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladatokat az Azure CLI-vel. Azure-erőforrások létrehozása és kezelése a parancssorból vagy parancsfájlokból.
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy batch-fiókot ARM-sablon használatával.
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 606862b31ba4921e39e693735507fca39282091c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fc6f1537b32c8ced2cfc2bf09f16106f791001fc
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88642401"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106580"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Rövid útmutató: batch-fiók létrehozása ARM-sablon használatával
 
@@ -49,7 +49,7 @@ Két Azure-erőforrás van definiálva a sablonban:
    ![Resource Manager-sablon, batch-fiók létrehozása, portál üzembe helyezése](media/quick-create-template/batch-template.png)
 
    - **Előfizetés**: válasszon ki egy Azure-előfizetést.
-   - **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK**gombra.
+   - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra.
    - **Hely**: válasszon ki egy helyet. Például: **USA középső régiója**.
    - **Batch-fiók neve**: hagyja meg az alapértelmezett értéket.
    - **Tárolási Accountsku**: válassza ki a Storage-fiók típusát. Például **Standard_LRS**.
@@ -70,7 +70,7 @@ A központi telepítést a létrehozott erőforráscsoporthoz való navigáláss
 
 Ha azt tervezi, hogy az ezt követő [oktatóanyagokkal](./tutorial-parallel-dotnet.md)dolgozik tovább, akkor előfordulhat, hogy ezeket az erőforrásokat helyben szeretné hagyni. Ha már nincs szüksége rájuk, [törölheti az erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group)is, amely törli a Batch-fiókot és a létrehozott Storage-fiókot is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy batch-fiókot és egy Storage-fiókot. Az Azure Batchről további információt az Azure Batch-oktatóanyagokban találhat.
 

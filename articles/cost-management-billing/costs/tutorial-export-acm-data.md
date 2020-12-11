@@ -3,18 +3,18 @@ title: Oktatóanyag – Az Azure Cost Managementből exportált adatok létrehoz
 description: Ez a cikk bemutatja, hogyan hozhatja létre és kezelheti az Azure Cost Managementből exportált adatokat külső rendszerekkel való használat céljából.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2020
+ms.date: 12/7/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18
-ms.openlocfilehash: dcf9b925e7f0ce691a5a50850a30f723d48ec50b
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 32989b4d5c595416f82fc9d3f1cec2eddec1d6ee
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96007222"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929259"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Exportált adatok létrehozása és kezelése
 
@@ -58,20 +58,20 @@ Adatexportálás létrehozásához, megtekintéséhez vagy ütemezéséhez nyiss
 > - Az előfizetéseken túl erőforráscsoportokhoz, felügyeleti csoportokhoz, részlegekhez és regisztrációkhoz is hozhat létre exportálásokat. További információ a hatókörökről: [A hatókörök ismertetése és használata](understand-work-scopes.md).
 >- Amikor partnerként jelentkezik be a számlázási fiók hatókörébe vagy egy ügyfél bérlőjébe, adatokat exportálhat abba az Azure Storage-fiókba, amely össze van kapcsolva a partner tárfiókjával. Ehhez azonban aktív előfizetéssel kell rendelkeznie a CSP-bérlő esetében.
 
-1. Válassza a **Hozzáadás** lehetőséget, majd írja be az exportálás nevét. 
+1. Válassza a **Hozzáadás** lehetőséget, majd írja be az exportálás nevét.
 1. A **Metrika** elemhez válasszon a következők közül:
     - **Tényleges költség (használat és vásárlások)** – Válassza ezt a lehetőséget, ha a standard használatot és költségeket szeretné exportálni
     - **Amortizált költség (használat és vásárlások)** – Válassza ezt a lehetőséget, ha a vásárlások, például az Azure Reservations amortizált költségeit szeretné exportálni
 1. Az **Exportálás típusa** elemhez válasszon a következő lehetőségek közül:
     - **Az eddigi tárgyhavi költségek napi exportálása** – Naponta új exportálási fájlt biztosít a tárgyhavi költségekről. Az aktuális adatokat a rendszer összesíti a korábbi napi exportálások adataival.
-    - **Az elmúlt hét nap költségeinek heti exportálása** – Az elmúlt hét nap költségeit hetente exportálja, az exportálás kiválasztott kezdődátumától.  
-    - **A múlt havi költségek havi exportálása** – A múlt havi költségeket exportálja, összehasonlítva az aktuális hónappal, amikor az exportálást létrehozza. Ezután az ütemezés minden új hónap ötödik napján exportálást fog futtatni, amely tartalmazza az előző hónap költségeit.  
-    - **Egyszeri exportálás** – Lehetővé teszi az Azure Blob Storage-be exportálandó előzményadatok dátumtartományának kiválasztását. A kiválasztott naptól számítva legfeljebb 90 nap előzményadatai exportálhatók. Ez az exportálás azonnal lefut, és két órán belül elérhetővé válik a tárfiókjában.  
+    - **Az elmúlt hét nap költségeinek heti exportálása** – Az elmúlt hét nap költségeit hetente exportálja, az exportálás kiválasztott kezdődátumától.
+    - **A múlt havi költségek havi exportálása** – A múlt havi költségeket exportálja, összehasonlítva az aktuális hónappal, amikor az exportálást létrehozza. Ezután az ütemezés minden új hónap ötödik napján exportálást fog futtatni, amely tartalmazza az előző hónap költségeit.
+    - **Egyszeri exportálás** – Lehetővé teszi az Azure Blob Storage-be exportálandó előzményadatok dátumtartományának kiválasztását. A kiválasztott naptól számítva legfeljebb 90 nap előzményadatai exportálhatók. Ez az exportálás azonnal lefut, és két órán belül elérhetővé válik a tárfiókjában.
         Az exportálás típusától függően kiválaszthat egy kezdődátumot, vagy megadhat **Kezdő** és **Záró** dátumot.
-1. Adja meg az Azure-tárfiókhoz tartozó előfizetést, majd válasszon ki egy erőforráscsoportot, vagy hozzon létre egy újat. 
-1. Válassza ki a tárfiók nevét, vagy hozzon létre egy újat. 
+1. Adja meg az Azure-tárfiókhoz tartozó előfizetést, majd válasszon ki egy erőforráscsoportot, vagy hozzon létre egy újat.
+1. Válassza ki a tárfiók nevét, vagy hozzon létre egy újat.
 1. Válassza ki a helyet (Azure-régiót).
-1. Adja meg a tárolót és a könyvtár elérési útját, ahová az exportálást irányítani szeretné. 
+1. Adja meg a tárolót és a könyvtár elérési útját, ahová az exportálást irányítani szeretné.
     :::image type="content" source="./media/tutorial-export-acm-data/basics_exports.png" alt-text="Új exportálási példa" lightbox="./media/tutorial-export-acm-data/basics_exports.png":::
 1. Tekintse át az exportálás adatait, majd kattintson a **Létrehozás** gombra.
 
@@ -132,7 +132,7 @@ Először készítse elő a környezetet az Azure CLI-hez:
 1. Egy exportálás frissítéséhez használja az [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update) parancsot:
 
    ```azurecli
-   az costmanagement export update --name DemoExport 
+   az costmanagement export update --name DemoExport
       --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-directory demodirectory02
    ```
 
@@ -145,6 +145,89 @@ Egy exportálás törléséhez használja az [az costmanagement export delete](/
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Először készítse elő a környezetet az Azure PowerShellhez:
+
+[!INCLUDE [azure-powershell-requirements-no-header.md](../../../includes/azure-powershell-requirements-no-header.md)]
+
+* > [!IMPORTANT]
+  > Amíg az **Az.CostManagement** PowerShell-modul előzetes verzióban érhető el, külön kell telepítenie az `Install-Module` parancsmag használatával. Miután ez a PowerShell-modul általánosan elérhetővé válik, a jövőbeli Az PowerShell modulkiadások részévé válik, és natívan elérhető lesz az Azure Cloud Shellből.
+
+  ```azurepowershell-interactive
+  Install-Module -Name Az.CostManagement
+  ```
+
+1. A bejelentkezés után használja a [Get-AzCostManagementExport](/powershell/module/Az.CostManagement/get-azcostmanagementexport) parancsmagot az aktuális exportálások megtekintéséhez:
+
+   ```azurepowershell-interactive
+   Get-AzCostManagementExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
+   ```
+
+   >[!NOTE]
+   >
+   >* Az előfizetéseken túl erőforráscsoportokhoz és felügyeleti csoportokhoz is hozhat létre exportálásokat. További információ a hatókörökről: [A hatókörök ismertetése és használata](understand-work-scopes.md).
+   >* Amikor partnerként jelentkezik be a számlázási fiók hatókörébe vagy egy ügyfél bérlőjébe, adatokat exportálhat abba az Azure Storage-fiókba, amely össze van kapcsolva a partner tárfiókjával. Ehhez azonban aktív előfizetéssel kell rendelkeznie a CSP-bérlő esetében.
+
+1. Hozzon létre egy erőforráscsoportot, vagy használjon egy meglévőt. Erőforráscsoport létrehozásához használja a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmagot:
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name TreyNetwork -Location eastus
+   ```
+
+1. Hozzon létre egy tárfiókot az exportálások fogadásához, vagy használjon egy meglévő tárfiókot. Tárfiók létrehozásához használja a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) parancsmagot:
+
+   ```azurepowershell-interactive
+   New-AzStorageAccount -ResourceGroupName TreyNetwork -AccountName cmdemo -SkuName Standard_RAGRS -Location eastus
+   ```
+
+1. Az exportálás létrehozásához futtassa a [New-AzCostManagementExport](/powershell/module/Az.CostManagement/new-azcostmanagementexport) parancsmagot:
+
+   ```azurepowershell-interactive
+   $Params = @{
+     Name = 'DemoExport'
+     DefinitionType = 'ActualCost'
+     Scope = 'subscriptions/00000000-0000-0000-0000-000000000000'
+     DestinationResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/treynetwork/providers/Microsoft.Storage/storageAccounts/cmdemo'
+     DestinationContainer = 'democontainer'
+     DefinitionTimeframe = 'MonthToDate'
+     ScheduleRecurrence = 'Daily'
+     RecurrencePeriodFrom = '2020-06-01T00:00:00Z'
+     RecurrencePeriodTo = '2020-10-31T00:00:00Z'
+     ScheduleStatus = 'Active'
+     DestinationRootFolderPath = 'demodirectory'
+     Format = 'Csv'
+   }
+   New-AzCostManagementExport @Params
+   ```
+
+   A **DefinitionType** paraméterhez az `ActualCost`, `AmortizedCost` vagy `Usage` közül választhat.
+
+   Ez a példa a következőt használja: `MonthToDate`. Az exportálás naponta létrehoz egy exportálási fájlt a tárgyhavi költségekről. Az aktuális adatokat a rendszer összesíti az aktuális hónap korábbi napi exportálásainak adataival.
+
+1. Az exportálási művelete részleteinek megtekintéséhez használja a `Get-AzCostManagementExport` parancsmagot:
+
+   ```azurepowershell-interactive
+   Get-AzCostManagementExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
+   ```
+
+1. Az exportálások az [Update-AzCostManagementExport](/powershell/module/Az.CostManagement/update-azcostmanagementexport) parancsmaggal frissíthetők:
+
+   ```azurepowershell-interactive
+   Update-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000' -DestinationRootFolderPath demodirectory02
+   ```
+
+   Ez a példa módosítja a kimeneti könyvtárat.
+
+>[!NOTE]
+>Kezdetben 12–24 óra is eltelhet az exportálási feladat lefutásáig. Azonban több időt igénybe vehet, mire az adatok megjelennek az exportált fájlokban.
+
+Az exportálások az [Remove-AzCostManagementExport](/powershell/module/Az.CostManagement/remove-azcostmanagementexport) parancsmaggal törölhetők:
+
+```azurepowershell-interactive
+Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
 ```
 
 ---
@@ -162,9 +245,9 @@ Ha Nagyvállalati Szerződéssel rendelkezik, akkor egy felügyeleti csoporton k
 Más előfizetési típusokhoz tartozó felügyeleti csoportok adatainak exportálása nem támogatott.
 
 1. Ha még nem hozott létre felügyeleti csoportot, hozzon létre egyet, és rendeljen hozzá előfizetéseket.
-1. Adja meg a felügyeleti csoport hatókörét a költségelemzésben, majd jelölje ki a **Válassza ezt a felügyeleti csoportot** lehetőséget.  
+1. Adja meg a felügyeleti csoport hatókörét a költségelemzésben, majd jelölje ki a **Válassza ezt a felügyeleti csoportot** lehetőséget.
     :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="A Válassza ezt a felügyeleti csoportot lehetőséget bemutató példa" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
-1. Hozzon létre egy megfelelő hatókörű exportálást, hogy lekérhesse a felügyeleti csoportba tartozó előfizetések költségkezelési adatait.  
+1. Hozzon létre egy megfelelő hatókörű exportálást, hogy lekérhesse a felügyeleti csoportba tartozó előfizetések költségkezelési adatait.
     :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Az új exportálás felügyeleti csoport hatókörrel való létrehozását bemutató példa":::
 
 ## <a name="verify-that-data-is-collected"></a>Az adatgyűjtés sikerességének ellenőrzése
@@ -196,7 +279,7 @@ Az exportált CSV-fájlt az Azure Portalon is letöltheti. A következő lépés
 
 [![Példa exportálás letöltésére](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
 
-## <a name="view-export-run-history"></a>Az exportálás futtatási előzményeinek megtekintése  
+## <a name="view-export-run-history"></a>Az exportálás futtatási előzményeinek megtekintése
 
 Az ütemezett exportálások futtatási előzményeinek megtekintéséhez válasszon ki egy exportálást az exportálások listáját tartalmazó oldalon. Az exportálások listáját tartalmazó oldalon gyorsan megtekintheti a korábbi exportálások futásidejét és a következő exportálás futtatásának időpontját is. Az alábbi példa a futtatási előzményeket mutatja be.
 

@@ -1,21 +1,29 @@
 ---
-title: Batch-feladatok elindítása Azure Functions használatával
+title: Oktatóanyag – batch-feladatok elindítása Azure Functions használatával
 description: Oktatóanyag – OCR alkalmazása a beolvasott dokumentumokra a tárolási blobba való felvételük során
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6e481219c6be68f9e9da06d92b6c28998cc7a6e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b441b4c4fcbeb089cef24c3a84fa33021e7840de
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930094"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106382"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Oktatóanyag: batch-feladatok elindítása Azure Functions használatával
 
-Ebből az oktatóanyagból megtudhatja, hogyan indíthat el egy batch-feladatot a Azure Functions használatával. Megmutatjuk, hogy az Azure Storage blob-tárolóhoz hozzáadott dokumentumok milyen optikai karakterfelismeréssel (OCR) vannak alkalmazva a Azure Batchon keresztül. Az OCR-feldolgozás egyszerűsítése érdekében egy batch OCR-feladatot futtató Azure-függvényt állítunk be, amikor egy fájlt hozzáadnak a blob-tárolóhoz.
+Ebből az oktatóanyagból megtudhatja, hogyan indíthat el egy batch-feladatot a [Azure functions](../azure-functions/functions-overview.md)használatával. Megmutatjuk, hogy az Azure Storage blob-tárolóhoz hozzáadott dokumentumok milyen optikai karakterfelismeréssel (OCR) vannak alkalmazva a Azure Batchon keresztül. Az OCR-feldolgozás egyszerűsítése érdekében egy batch OCR-feladatot futtató Azure-függvényt állítunk be, amikor egy fájlt hozzáadnak a blob-tárolóhoz. Az alábbiak végrehajtásának módját ismerheti meg:
+
+> [!div class="checklist"]
+> * Készletek és feladatok létrehozása Batch Explorer használatával
+> * BLOB-tárolók és közös hozzáférésű aláírás (SAS) létrehozásához használja a Storage Explorer
+> * BLOB által aktivált Azure-függvény létrehozása
+> * Bemeneti fájlok feltöltése a Storage-ba
+> * Tevékenységek végrehajtásának figyelése
+> * Kimeneti fájlok lekérése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -62,7 +70,7 @@ Ebben a példában a bemeneti tároló neve `input` és az, ahol az OCR nélkül
     * A bemeneti tároló az OCR nélküli összes dokumentum feltöltése.  
     * A kimeneti tároló, ahol a Batch-feladatok a dokumentumokat OCR-sel írja.  
 
-Hozzon létre egy közös hozzáférési aláírást a kimeneti tárolóhoz Storage Explorerban. Ehhez kattintson a jobb gombbal a kimeneti tárolóra, és válassza a **közös hozzáférésű aláírás beolvasása..**. lehetőséget. Az **engedélyek**alatt keresse meg az **írást**. Nincs szükség további engedélyekre.  
+Hozzon létre egy közös hozzáférési aláírást a kimeneti tárolóhoz Storage Explorerban. Ehhez kattintson a jobb gombbal a kimeneti tárolóra, és válassza a **közös hozzáférésű aláírás beolvasása..**. lehetőséget. Az **engedélyek** alatt keresse meg az **írást**. Nincs szükség további engedélyekre.  
 
 ## <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
@@ -70,7 +78,7 @@ Ebben a szakaszban létrehoz egy Azure-függvényt, amely elindítja az OCR batc
 
 1. A függvények létrehozásához kövesse az [Azure Blob Storage által aktivált függvény létrehozása](../azure-functions/functions-create-storage-blob-triggered-function.md) című témakör lépéseit.
     1. Amikor a rendszer a Storage-fiókra kéri, használja ugyanazt a Storage-fiókot, amelyet a Batch-fiókjához társított.
-    1. A **futásidejű verem**esetében válassza a .net elemet. A Batch .NET SDK kihasználása érdekében a C# nyelven írunk függvényt.
+    1. A **futásidejű verem** esetében válassza a .net elemet. A Batch .NET SDK kihasználása érdekében a C# nyelven írunk függvényt.
 1. A blob által aktivált függvény létrehozása után a függvényben használja a [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) és a [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) githubot.
     * `run.csx` akkor fut le, amikor új blobot adnak hozzá a bemeneti blob-tárolóhoz.
     * `function.proj` felsorolja a függvény kódjában található külső kódtárakat, például a Batch .NET SDK-t.
@@ -97,9 +105,13 @@ A kimeneti fájlok Storage Explorerról a helyi gépre való letöltéséhez el�
 > [!TIP]
 > A letöltött fájlok kereshetők, ha PDF-olvasóban vannak megnyitva.
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+A készletért díjat számítunk fel, amíg a csomópontok futnak, még akkor is, ha nincsenek feladatok ütemezve. Ha már nincs szüksége a készletre, törölje azt. A fióknézetben válassza a **Készletek** lehetőséget, majd a készlet nevét. Ezután válassza a **Törlés** elemet. A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. A kimeneti fájlok azonban megmaradnak a Storage-fiókban. Ha már nincs rá szükség, törölheti a Batch-fiókot és a Storage-fiókot is.
+
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket: 
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Készletek és feladatok létrehozása Batch Explorer használatával
@@ -109,6 +121,10 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Tevékenységek végrehajtásának figyelése
 > * Kimeneti fájlok lekérése
 
-* Ha további példákat szeretne használni a .NET API-t a Batch-munkaterhelések ütemezhetik és dolgozzák fel, tekintse [meg a mintákat a githubon](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp). 
 
-* A Batch-munkaterhelések futtatására használható Azure Functions-eseményindítók megjelenítéséhez tekintse meg [a Azure functions dokumentációját](../azure-functions/functions-triggers-bindings.md).
+Folytassa a következővel: Batch Explorer által elérhető renderelési alkalmazások feltárása a **katalógus szakaszban.** Mindegyik alkalmazáshoz több sablon érhető el, amelyek száma idővel nőni fog. A Blenderhez elérhetők például olyan sablonok, amelyek egyetlen képet osztanak fel csempékké, hogy egy kép részeit egymással párhuzamosan lehessen renderelni.
+
+Batch-számításifeladatok .NET API használatával történő ütemezésére és feldolgozására a GitHub mintáiban találhat további példákat.
+
+> [!div class="nextstepaction"]
+> [A Batch C#-mintái](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)

@@ -5,12 +5,12 @@ description: Ismerje meg a fürt operátorának ajánlott eljárásait a speciá
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a8138b4b2fdab2cdef8d2cb4c27de8d12ef38cd
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993703"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107346"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a Scheduler speciális funkcióihoz az Azure Kubernetes Service (AKS) szolgáltatásban
 
@@ -87,7 +87,7 @@ Ha AK-ban frissít egy csomópont-készletet, a szennyező elem és a tolerálá
   - Először is tegyük fel, hogy van egy két csomópontos *csomópont1* és *Csomópont2*. A frissítésekor egy további csomópont (*csomópont3*) jön létre.
   - A rendszer a *csomópont1* -től származó adatszennyező adatokra alkalmazza a *csomópont3*, majd a *csomópont1* törölve lesz.
   - Létrejön egy másik új csomópont ( *csomópont1* néven, mivel az előző *csomópont1* törölték), és a *Csomópont2* -adatszennyező elemek az új *csomópont1* lesznek alkalmazva. Ezt követően a rendszer törli a *Csomópont2* .
-  - A Essence *csomópont1* *csomópont3* válik, és *node2* a Csomópont2 *csomópont1* válik.
+  - A Essence *csomópont1* *csomópont3* válik, és  a Csomópont2 *csomópont1* válik.
 
 Ha AK-ban méretezi a csomópont-készletet, a rendszer nem hajtja végre a megtervezést.
 
@@ -131,7 +131,7 @@ További információ a csomópont-választók használatáról: [hüvelyek csom
 
 ### <a name="node-affinity"></a>Csomópont-affinitás
 
-A csomópont-választó egy alapszintű módszer a hüvelyek egy adott csomóponthoz való hozzárendelésére. A *csomópont affinitása* nagyobb rugalmasságot biztosít. A csomópont-affinitással meghatározhatja, hogy mi történjen, ha a hüvely nem egyeztethető össze egy csomóponttal. *Megkövetelheti* , hogy a Kubernetes Scheduler megfeleljen egy Pod címkével ellátott gazdagépnek. Másik *lehetőségként választhat,* de lehetővé teszi, hogy a pod más gazdagépre legyen ütemezve, ha az nem egyezik.
+A csomópont-választó egy alapszintű módszer a hüvelyek egy adott csomóponthoz való hozzárendelésére. A *csomópont affinitása* nagyobb rugalmasságot biztosít. A csomópont-affinitással meghatározhatja, hogy mi történjen, ha a hüvely nem egyeztethető össze egy csomóponttal. *Megkövetelheti* , hogy a Kubernetes Scheduler megfeleljen egy Pod címkével ellátott gazdagépnek. Másik *lehetőségként választhat,* de lehetővé teszi, hogy a pod más gazdagépre legyen ütemezve, ha nem áll rendelkezésre egyezés.
 
 A következő példa beállítja a csomópont-affinitást a *requiredDuringSchedulingIgnoredDuringExecution*. Ez az affinitás megköveteli, hogy a Kubernetes-ütemterv megfelelő címkével rendelkező csomópontot használjon. Ha nincs elérhető csomópont, a pod-nek várnia kell, amíg az ütemezés folytatódni fog. Annak engedélyezéséhez, hogy a pod egy másik csomóponton legyen ütemezve, ehelyett a következőt állíthatja be a *preferredDuringSchedulingIgnoreDuringExecution* értékre:
 
@@ -178,7 +178,7 @@ A jó példa egy olyan webalkalmazás, amely egy Azure cache-t is használ a Red
 
 Ez a példa összetettebb üzembe helyezés, mint a csomópont-választó vagy a csomópont-affinitás használata. Az üzembe helyezés lehetővé teszi, hogy a Kubernetes hogyan ütemezze a csomópontokon a hüvelyeket, és képes legyen logikai módon elkülöníteni az erőforrásokat. A webalkalmazásnak az Azure cache for Redis példaként való teljes példáját lásd: [a hüvelyek együttes megkeresése ugyanazon a csomóponton][k8s-pod-affinity].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a speciális Kubernetes Scheduler-funkciókra összpontosít. Az AK-beli fürtműveleteket kapcsolatos további információkért tekintse meg az alábbi ajánlott eljárásokat:
 

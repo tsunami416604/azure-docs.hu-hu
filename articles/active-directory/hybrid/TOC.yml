@@ -132,6 +132,8 @@
           href: how-to-connect-install-existing-tenant.md
         - name: Telepítés utáni feladatok
           href: how-to-connect-post-installation.md
+        - name: Az Azure AD Connect eltávolítása
+          href: how-to-connect-uninstall.md
     - name: Tervezés és kialakítás
       items:
         - name: Tervezési alapelvek

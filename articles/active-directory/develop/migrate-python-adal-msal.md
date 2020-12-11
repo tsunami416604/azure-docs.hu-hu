@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 731c608b8ac280a3a3c4e77c3a94533d258cb85d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 213184409c9f5ee21ac9f61be1ad138fbbaa3590
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618042"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107855"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>ADAL a MSAL áttelepítési útmutatója a Pythonhoz
 
@@ -50,7 +50,7 @@ A különböző típusú hatókörökkel kapcsolatos további részletekért tek
 
 ### <a name="error-handling"></a>Hibakezelés
 
-A Pythonhoz készült Azure Active Directory Authentication Library (ADAL) a kivétel `AdalError` alapján jelzi, hogy probléma merült fel. A MSAL for Python jellemzően hibakódokat használ. További információ:  [MSAL for Python hibakezelés](./msal-handling-exceptions.md?tabs=python).
+A Pythonhoz készült Azure Active Directory Authentication Library (ADAL) a kivétel `AdalError` alapján jelzi, hogy probléma merült fel. A MSAL for Python jellemzően hibakódokat használ. További információ: [MSAL for Python hibakezelés](msal-error-handling-python.md).
 
 ### <a name="api-changes"></a>API-változások
 
@@ -120,6 +120,6 @@ print("Migration completed")
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse meg a [1.0-s és a 2.0-s verzió összehasonlítását](../azuread-dev/azure-ad-endpoint-comparison.md)ismertető témakört.

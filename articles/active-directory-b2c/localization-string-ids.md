@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4fa0f4d87567bd77faacfd2373dba0d2b8996446
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873369"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108671"
 ---
 # <a name="localization-string-ids"></a>Honosítási sztringazonosítók
 
@@ -152,7 +152,7 @@ A következő a tartalom-definíció azonosítóját `api.localaccountsignup` , 
 | **cancel_message** | A felhasználó megszakította az önérvényesített információk megadását |
 | **preloader_alt** | várj, kérlek |
 | **ver_but_send** | Ellenőrző kód küldése |
-| **alert_yes** | Igen |
+| **alert_yes** | Yes |
 | **error_fieldIncorrect** | Egy vagy több mező kitöltése helytelen. Ellenőrizze a bejegyzéseket, és próbálkozzon újra. |
 | **év** | Year |
 | **verifying_blurb** | Várjon, amíg feldolgozzuk az adatokat. |
@@ -170,7 +170,7 @@ A következő a tartalom-definíció azonosítóját `api.localaccountsignup` , 
 | **ver_incorrect_format** | Helytelen formátumú. |
 | **ver_but_edit** | E-mail módosítása |
 | **ver_but_verify** | Kód ellenőrzése |
-| **alert_no** | Nem |
+| **alert_no** | No |
 | **ver_info_msg** | Az ellenőrző kód el lett küldve a Beérkezett üzenetek mappájába. Másolja az alábbi beviteli mezőbe. |
 | **nap** | Nap |
 | **ver_fail_throttled** | Túl sok kérelem érkezett az e-mail-cím ellenőrzéséhez. Várjon egy kicsit, és próbálkozzon újra. |
@@ -442,7 +442,7 @@ A [Rest-szolgáltatás technikai profiljának](restful-technical-profile.md) hib
 
 ## <a name="azure-ad-mfa-error-messages"></a>Azure AD MFA-hibaüzenetek
 
-Az [Azure ad MFA technikai profilhoz](multi-factor-auth-technical-profile.md) tartozó hibaüzenetek azonosítói a következők:
+Az [Azure ad MFA technikai profil](multi-factor-auth-technical-profile.md) hibaüzenetének azonosítói a következők:
 
 | ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
@@ -547,5 +547,5 @@ A jogcím-átalakítási hibaüzenetek azonosítói a következők:
 
 A honosítási példákat a következő cikkekben találja:
 
-- [Nyelvi Testreszabás egyéni házirenddel Azure Active Directory B2C](custom-policy-localization.md)
-- [Nyelvi Testreszabás felhasználói folyamatokkal Azure Active Directory B2C](user-flow-language-customization.md)
+- [Nyelvi Testreszabás egyéni házirenddel Azure Active Directory B2C](language-customization.md)
+- [Nyelvi Testreszabás felhasználói folyamatokkal Azure Active Directory B2C](language-customization.md)

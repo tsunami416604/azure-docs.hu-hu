@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d8e83c158cd14357a74b9dde4af1daba26dc36
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201514"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109113"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -60,9 +60,9 @@ A következő példa a **HRE-közös** technikai profilt mutatja be:
 
 A Szabályzattípushoz elem tartalmaz egy jogcímet, amely egy fiók keresésére szolgál a címtárban, vagy létrehozhat egy újat. A bemeneti jogcímek gyűjteményében pontosan egy InputClaim elemnek kell szerepelnie az összes Azure AD technikai profilhoz. Előfordulhat, hogy le kell képeznie a szabályzatban definiált jogcím nevét a Azure Active Directoryban definiált névre.
 
-Meglévő felhasználói fiók olvasásához, frissítéséhez vagy törléséhez a bemeneti jogcímek egy olyan kulcs, amely egyedileg azonosítja a fiókot az Azure AD-címtárban. Például: **objectId**, **userPrincipalName**, **signInNames. emailAddress**, **signInNames. username**vagy **alternativeSecurityId**. 
+Meglévő felhasználói fiók olvasásához, frissítéséhez vagy törléséhez a bemeneti jogcímek egy olyan kulcs, amely egyedileg azonosítja a fiókot az Azure AD-címtárban. Például: **objectId**, **userPrincipalName**, **signInNames. emailAddress**, **signInNames. username** vagy **alternativeSecurityId**. 
 
-Új felhasználói fiók létrehozásához a bemeneti jogcím olyan kulcs, amely egyedileg azonosít egy helyi vagy összevont fiókot. Például: helyi fiók: **signInNames. emailAddress**vagy **signInNames. username**. Összevont fiók esetén: a **alternativeSecurityId**.
+Új felhasználói fiók létrehozásához a bemeneti jogcím olyan kulcs, amely egyedileg azonosít egy helyi vagy összevont fiókot. Például: helyi fiók: **signInNames. emailAddress** vagy **signInNames. username**. Összevont fiók esetén: a **alternativeSecurityId**.
 
 A [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) elem olyan bemeneti jogcím-átalakítási elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosításához vagy újak létrehozásához használatosak.
 
@@ -230,7 +230,7 @@ A **DeleteClaimsPrincipal** művelet egyetlen felhasználói fiókot töröl a c
 </TechnicalProfile>
 ```
 
-A következő technikai profil töröl egy közösségi felhasználói fiókot a **alternativeSecurityId**használatával:
+A következő technikai profil töröl egy közösségi felhasználói fiókot a **alternativeSecurityId** használatával:
 
 ```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingAlternativeSecurityId">
@@ -248,12 +248,12 @@ A következő technikai profil töröl egy közösségi felhasználói fiókot a
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Igen | A végrehajtandó művelet. Lehetséges értékek: `Read` ,,, `Write` `DeleteClaims` vagy `DeleteClaimsPrincipal` . |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | Nem | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges értékek: `true` vagy `false` . |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | Nem | Hiba, ha a felhasználói objektum már létezik. Lehetséges értékek: `true` vagy `false` .|
-| ApplicationObjectId | Nem | A bővítmény attribútumaihoz tartozó alkalmazásobjektum-azonosító. Value: egy alkalmazás ObjectId. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md). |
-| ClientID | Nem | A bérlő harmadik fél számára való elérésének ügyfél-azonosítója. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
+| Művelet | Yes | A végrehajtandó művelet. Lehetséges értékek: `Read` ,,, `Write` `DeleteClaims` vagy `DeleteClaimsPrincipal` . |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | No | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges értékek: `true` vagy `false` . |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | No | Hiba, ha a felhasználói objektum már létezik. Lehetséges értékek: `true` vagy `false` .|
+| ApplicationObjectId | No | A bővítmény attribútumaihoz tartozó alkalmazásobjektum-azonosító. Value: egy alkalmazás ObjectId. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md). |
+| ClientID | No | A bérlő harmadik fél számára való elérésének ügyfél-azonosítója. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | No | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 
 ### <a name="ui-elements"></a>Felhasználói felület elemei
  
@@ -261,15 +261,15 @@ A következő beállításokkal megadhatja a hiba esetén megjelenő hibaüzenet
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalAlreadyExists | Nem | Ha hiba lép fel (lásd: RaiseErrorIfClaimsPrincipalAlreadyExists-attribútum leírása), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum már létezik. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Nem | Ha hiba lép fel (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírását), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum nem létezik. |
+| UserMessageIfClaimsPrincipalAlreadyExists | No | Ha hiba lép fel (lásd: RaiseErrorIfClaimsPrincipalAlreadyExists-attribútum leírása), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum már létezik. |
+| UserMessageIfClaimsPrincipalDoesNotExist | No | Ha hiba lép fel (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírását), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum nem létezik. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az alábbi cikket, például az Azure AD technikai profiljának használatát:
 
-- [Jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni házirendek használatával Azure Active Directory B2C](custom-policy-configure-user-input.md)
+- [Jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni házirendek használatával Azure Active Directory B2C](configure-user-input.md)
 
 
 

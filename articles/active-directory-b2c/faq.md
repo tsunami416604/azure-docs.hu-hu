@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 384f178481f7a6ff202d5363ba09c242b1fc366d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 30b7788419695db7ee5d4b81714bf55248a41b4a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951791"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108722"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -78,7 +78,7 @@ Az e-mail-aláírás tartalmazza azt a Azure AD B2C bérlő nevét, amelyet a Az
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) globális rendszergazdaként.
 1. Nyissa meg az **Azure Active Directory** panelt.
-1. Kattintson a **Tulajdonságok** fülre.
+1. Válassza a **Tulajdonságok** lapot.
 1. Módosítsa a **név** mezőt.
 1. Kattintson az oldal tetején lévő **Mentés** elemre.
 
@@ -124,7 +124,7 @@ Nem, Azure AD B2C nem támogatja ugyanazokat a jelentéseket, mint a prémium sz
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Honosítható a Azure AD B2C által kiszolgált lapok felhasználói felülete? Milyen nyelveket támogat a rendszer?
 
-Igen, lásd: [nyelvi Testreszabás](user-flow-language-customization.md). 36 nyelvű fordítást biztosítunk, és bármilyen karakterláncot felülbírálhat az igényeinek megfelelően.
+Igen, lásd: [nyelvi Testreszabás](language-customization.md). 36 nyelvű fordítást biztosítunk, és bármilyen karakterláncot felülbírálhat az igényeinek megfelelően.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Használhatom a saját URL-címeket az Azure AD B2C által kiszolgált regisztrációs és bejelentkezési lapokon? Megváltoztathatom például a contoso.b2clogin.com és a login.contoso.com URL-címét?
 

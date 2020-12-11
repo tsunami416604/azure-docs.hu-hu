@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 619dec1b2246b7e74b058e570df4021888196b0c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b5de81f5eaf76c16c1ea8fc78075c4567c77aeee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447550"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531979"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>Oktatóanyag: A Microsoft Ügyfélszerződéshez tartozó számla áttekintése
 
@@ -54,6 +54,8 @@ Ha csak egy számlázási hatókörhöz rendelkezik hozzáféréssel, válassza 
 ![Képernyőkép a Tulajdonságok lapon található Microsoft Ügyfélszerződésről](./media/review-customer-agreement-bill/billing-mca-property.png)
 
 Ha több számlázási hatókörhöz van hozzáférése, a számlázási fiók oszlopában ellenőrizheti a fiók típusát. Akkor fér hozzá a Microsoft-ügyfélszerződéshez tartozó számlázási fiókhoz, ha bármelyik hatókör számlázási fiókjának típusa **Microsoft-ügyfélszerződés**.
+
+A számlázási hatókörök lapon válassza a **Számlázási hatókörök** lehetőséget, majd válassza ki azt a számlázási fiókot, amellyel fizetni kívánja az előfizetés használatát. A számlázási fióknak **Microsoft-ügyfélszerződés** típusú lesz.
 
 ![Képernyőkép a Számlázási fiókok listája lapon található Microsoft Ügyfélszerződésről](./media/review-customer-agreement-bill/billing-mca-in-the-list.png)
 
@@ -146,7 +148,7 @@ A használatalapú díjak elemzéséhez használja az Azure használati adatait 
 
 ### <a name="download-your-invoice-and-usage-details"></a>A számla és a használati adatok letöltése
 
-A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot vagy számlázási profilt a Költségkezelés + Számlázás lapon. A bal oldali menüben válassza a **Számlázás** területen lévő **Számlák** elemet. A számlák rácsos elrendezésében keresse meg a letölteni kívánt számla sorát. Kattintson a sor végén található letöltési szimbólumra vagy három pontra (...). A **Letöltés** mezőben töltse le a használati adatokat tartalmazó fájlt és a számlát.
+A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot vagy számlázási profilt a Költségkezelés + Számlázás lapon. A bal oldali menüben válassza a **Számlázás** területen lévő **Számlák** elemet. A számlák rácsos elrendezésében keresse meg a letölteni kívánt számla sorát. Válassza a sor végén található letöltési szimbólumot vagy három pontot (...). A **Letöltés** mezőben töltse le a használati adatokat tartalmazó fájlt és a számlát.
 
 ### <a name="view-detailed-usage-by-invoice-section"></a>Részletes használat megtekintése számlaszakasz szerint
 

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 830a97db562820853efcd88b1ab8c0b729a5dc9a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: eb22946bb3f0858a545d5b854afe48b2e1e61927
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490135"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109232"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Virtuális hálózatok létrehozása és kezelése Azure Database for PostgreSQL-rugalmas kiszolgálóhoz az Azure CLI használatával
 
@@ -61,22 +61,22 @@ Tekintse meg az Azure CLI dokumentációját <!--FIXME --> a konfigurálható CL
     ```azurecli-interactive
     az postgres flexible-server create
     ```
-<!--- Create a flexible server using already existing virtual network and subnet
+- Hozzon létre egy rugalmas kiszolgálót, amely már meglévő virtuális hálózatot és alhálózatot használ. Ha a megadott virtuális hálózat és alhálózat nem létezik, akkor a virtuális hálózat és az alhálózat alapértelmezett előtaggal lesz létrehozva.
     ```azurecli-interactive
     az postgres flexible-server create --vnet myVnet --subnet mySubnet
-    ```-->
+    ```
 - Hozzon létre egy rugalmas kiszolgálót, amely már meglévő virtuális hálózatot, alhálózatot és alhálózati azonosítót használ. A megadott alhálózathoz nem tartozhat más erőforrás, és az alhálózat delegálva lesz a **Microsoft. DBforPostgreSQL/flexibleServers**, ha még nincs delegálva.
     ```azurecli-interactive
     az postgres flexible-server create --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNetName}/subnets/{SubnetName}
     ```
     > [!Note]
     > A virtuális hálózatnak és az alhálózatnak ugyanabban a régióban és előfizetésben kell lennie, mint a rugalmas kiszolgálónak.
-<!--  
-- Create a flexible server using new virtual network, subnet with non-default address prefix
+
+- Rugalmas kiszolgáló létrehozása új virtuális hálózattal, az alhálózat nem alapértelmezett előtaggal
     ```azurecli-interactive
-    az postgres flexible-server create --vnet myVnet --vnet-address-prefix 10.0.0.0/24 --subnet mySubnet --subnet-address-prefix 10.0.0.0/24
-    ```-->
-Tekintse meg az Azure CLI dokumentációját <!--FIXME --> a konfigurálható CLI-paraméterek teljes listájához.
+    az postgres flexible-server create --vnet myVnet --address-prefixes 10.0.0.0/24 --subnet mySubnet --subnet-prefixes 10.0.0.0/24
+    ```
+A konfigurálható CLI-paraméterek teljes listájáért tekintse meg az Azure CLI [dokumentációját](/cli/azure/postgres/flexible-server) .
 
 ## <a name="next-steps"></a>Következő lépések
 - További információ a [Azure Database for PostgreSQL-rugalmas kiszolgáló hálózatkezeléséről](./concepts-networking.md).

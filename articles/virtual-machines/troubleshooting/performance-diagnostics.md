@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fb0928c75b8fee567e9d0f03489794bd9f65e91e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963244"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109436"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure-beli virtuális gépek teljesítménydiagnosztikája
 
@@ -48,12 +48,12 @@ A teljesítmény-diagnosztika közvetlenül a Azure Portal futtatható, ahol át
 
     | Disztribúció               | Verzió                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux kiszolgáló        | 6,10 [ `*` ], 7,3, 7,6, 7,5 |
-    | CentOS                     | 6,5 [ `*` ], 7,6                                    |
-    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ]                               |
+    | Oracle Linux kiszolgáló        | 6,10 [ `*` ], 7,3, 7,5, 7,6, 7,7, 7,8 |
+    | CentOS                     | 6,5 [ `*` ], 7,6, 7,7, 7,8                                    |
+    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ], 8,1, 8,2                               |
     | Ubuntu                     | 14,04, 16,04, 18,04, 20,04                               |
     | Debian                     | 8, 9, 10 [ `*` ]                                    |
-    | SLES                       | 12 SP4 [ `*` ]                                      |
+    | SLES                       | 12 SP4 [ `*` ], 12 SP5 [ `*` ], 15 [ `*` ], 15 SP1 [ `*` ], 15 SP2 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
@@ -63,9 +63,9 @@ A teljesítmény-diagnosztika közvetlenül a Azure Portal futtatható, ahol át
 
 A teljesítmény-diagnosztika olyan virtuálisgép-bővítményt telepít, amely egy PerfInsights nevű diagnosztikai eszközt futtat. A PerfInsights [Windows](./how-to-use-perfinsights.md) és [Linux](./how-to-use-perfinsights-linux.md)rendszereken egyaránt elérhető. A teljesítmény-diagnosztika telepítéséhez és futtatásához kövesse az alábbi lépéseket:
 
-1. A parancsok bal oldali oszlopában válassza a **virtuális gépek**lehetőséget.
+1. A parancsok bal oldali oszlopában válassza a **virtuális gépek** lehetőséget.
 1. A virtuális gépek neveinek listájából válassza ki azt a virtuális gépet, amelyen diagnosztikát kíván futtatni.
-1. A parancsok jobb oldali oszlopában válassza a **teljesítmény diagnosztika**elemet.
+1. A parancsok jobb oldali oszlopában válassza a **teljesítmény diagnosztika** elemet.
 
     ![Képernyőkép a Azure Portalről, a Performance Diagnostics telepítése gomb kiemelve](media/performance-diagnostics/performance-diagnostics-install.png)
 
@@ -218,4 +218,4 @@ Jelenleg a virtuálisgép-bővítmény telepítésének befejezésekor nem lehet
 
 Ha még nem tudja megállapítani a probléma okát, és további segítségre van szüksége, a teljesítmény-diagnosztikai megállapítások és jelentések áttekintése után megnyithatja a támogatási jegyet a Microsoft ügyfélszolgálatával.
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése** lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

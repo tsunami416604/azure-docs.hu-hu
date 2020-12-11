@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 67c88e98d966a21163aafefcad8363086d5b3bf4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 52b5bd0650b3a069adc3ef7f101c48a4674deaab
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931044"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107107"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Oktatóanyag: sablonbeli függvények hozzáadása az ARM-sablonhoz
 
@@ -33,11 +33,11 @@ A Storage-fiók helye az **USA keleti** régiójában rögzített. Előfordulhat
 
 ## <a name="use-function"></a>Függvény használata
 
-Ha befejezte az előző oktatóanyagot ebben a sorozatban, már használt egy függvényt. A hozzáadásakor `"[parameters('storageName')]"` a [Paraméterek](template-functions-deployment.md#parameters) függvényt használta. A zárójelek azt jelzik, hogy a zárójelben lévő szintaxis a [sablon kifejezése](template-expressions.md). A Resource Manager úgy oldja fel a szintaxist, hogy literál értékként kezelje.
+Ha befejezte az előző oktatóanyagot ebben a sorozatban, már használt egy függvényt. Ha hozzáadta `"[parameters('storageName')]"` a [paramétereket](template-functions-deployment.md#parameters) használó függvényt. A zárójelek azt jelzik, hogy a zárójelben lévő szintaxis a [sablon kifejezése](template-expressions.md). A Resource Manager úgy oldja fel a szintaxist, hogy literál értékként kezelje.
 
 A függvények rugalmasságot biztosítanak a sablonhoz az értékek dinamikus beolvasásával az üzembe helyezés során. Ebben az oktatóanyagban egy függvény használatával beolvassa az üzembe helyezéshez használt erőforráscsoport helyét.
 
-A következő példa kiemeli a **Location** nevű paraméter hozzáadásának módosításait.  A paraméter alapértelmezett értéke meghívja a [resourceGroup](template-functions-resource.md#resourcegroup) függvényt. Ez a függvény egy objektumot ad vissza, amely az üzembe helyezéshez használt erőforráscsoport adatait ismerteti. Az objektum egyik tulajdonsága a Location tulajdonság. Ha az alapértelmezett értéket használja, a Storage-fiók helye megegyezik az erőforráscsoport helyével. Az erőforráscsoporthoz tartozó erőforrásoknak nem kell ugyanazt a helyet megosztaniuk. Szükség esetén másik helyet is megadhat.
+Az alábbi példa kiemeli a nevű paraméter hozzáadásának változásait `location` . A paraméter alapértelmezett értéke meghívja a [resourceGroup](template-functions-resource.md#resourcegroup) függvényt. Ez a függvény egy objektumot ad vissza, amely az üzembe helyezéshez használt erőforráscsoport adatait ismerteti. Az objektum egyik tulajdonsága a Location tulajdonság. Ha az alapértelmezett értéket használja, a Storage-fiók helye megegyezik az erőforráscsoport helyével. Az erőforráscsoporthoz tartozó erőforrásoknak nem kell ugyanazt a helyet megosztaniuk. Szükség esetén másik helyet is megadhat.
 
 Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
@@ -47,7 +47,7 @@ Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
 Az előző oktatóanyagokban létrehozott egy Storage-fiókot az USA keleti régiójában, de az erőforráscsoport az USA középső régiójában lett létrehozva. Ebben az oktatóanyagban a Storage-fiók ugyanabban a régióban jön létre, mint az erőforráscsoport. Használja az alapértelmezett értéket a helyhez, így nem kell megadnia a paraméter értékét. Meg kell adnia egy új nevet a Storage-fiókhoz, mert egy másik helyen hoz létre egy Storage-fiókot. Használja például a **store2** előtagot a **store1** helyett.
 
-Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
+Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi `templateFile` , hogy a változót a sablonfájl elérési útjára állította, ahogy az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -74,7 +74,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Ha az üzemelő példány nem sikerült, a **részletes** kapcsoló használatával kérheti le a létrehozott erőforrásokra vonatkozó információkat. A **hibakeresési kapcsoló használatával** további információkat kaphat a hibakeresésről.
+> Ha a telepítés nem sikerült, a `verbose` kapcsolóval kérheti le a létrehozott erőforrásokra vonatkozó információkat. A `debug` kapcsoló használatával további információkat kaphat a hibakereséshez.
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 

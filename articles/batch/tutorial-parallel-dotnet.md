@@ -1,16 +1,16 @@
 ---
-title: Párhuzamos számítási feladatok futtatása a .NET API használatával
+title: Oktatóanyag – párhuzamos számítási feladatok futtatása a .NET API használatával
 description: Oktatóanyag – Médiafájlok párhuzamos átkódolása ffmpeg segítségével az Azure Batchben a Batch .NET ügyfélkódtár használatával
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 396d0f6a2ef9a8c24fc92b641c889ef9e1a7df49
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a990a5480a8a6462bb6ef9f84070b78768628fd0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578297"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106529"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a .NET API használatával
 
@@ -124,7 +124,7 @@ A tevékenységek futásakor a hőtérkép az alábbihoz hasonló:
 
 ![Készlet hőtérképe](./media/tutorial-parallel-dotnet/pool.png)
 
-A jellemző végrehajtási idő körülbelül **10 perc** , ha az alapértelmezett konfigurációban futtatja az alkalmazást. A készlet létrehozása veszi igénybe a legtöbb időt.
+A jellemző végrehajtási idő körülbelül **10 perc**, ha az alapértelmezett konfigurációban futtatja az alkalmazást. A készlet létrehozása veszi igénybe a legtöbb időt.
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 
@@ -315,9 +315,9 @@ A tevékenységek futtatása után az alkalmazás automatikusan törli a létreh
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot, a Batch-fiókot és a Storage-fiókot. Ehhez az Azure Portalon válassza ki a Batch-fiókhoz tartozó erőforráscsoportot, és kattintson az **Erőforráscsoport törlése** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban a következőket sajátította el:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Alkalmazáscsomag hozzáadása a Batch-fiókhoz
@@ -332,6 +332,3 @@ Batch-számításifeladatok .NET API használatával történő ütemezésére �
 
 > [!div class="nextstepaction"]
 > [A Batch C#-mintái](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
-
-
-A LowPriorityNodeCount = 0 példány változó beállítása, valamint a DedicatedNodeCount = 5 kijavította a problémát, és lehetővé tette a feladatok befejezését.

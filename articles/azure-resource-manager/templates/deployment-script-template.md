@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: 3a229d1e6752eabd099a5bc60ef93f1d4e85a26b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7566235cf92965d5d3de1ec7f40353430ec7e0c6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092754"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107141"
 ---
 # <a name="use-deployment-scripts-in-arm-templates-preview"></a>Üzembe helyezési parancsfájlok használata ARM-sablonokban (előzetes verzió)
 
@@ -529,14 +529,14 @@ Ezeknek az erőforrásoknak a életciklusát a sablon következő tulajdonságai
 
   - **Mindig**: törölje az automatikusan létrehozott erőforrásokat, ha a parancsfájl végrehajtása terminál állapotba kerül. Ha egy meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás törli a Storage-fiókban létrehozott fájlmegosztást. Mivel a deploymentScripts-erőforrás továbbra is megtalálható az erőforrások tisztítása után, a parancsfájl-szolgáltatás megőrzi a parancsfájlok végrehajtásának eredményét, például az stdout, a kimenetek, a visszatérési érték stb. az erőforrások törlése előtt.
   - **OnSuccess**: csak akkor törölje az automatikusan létrehozott erőforrásokat, ha a parancsfájl végrehajtása sikeres. Ha egy meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás csak akkor távolítja el a fájlmegosztást, ha a parancsfájl végrehajtása sikeres. A hibakeresési adatok megkereséséhez továbbra is hozzáférhet az erőforrásokhoz.
-  - **OnExpiration**: csak akkor törölje az automatikusan létrehozott erőforrásokat, ha a **retentionInterval** -beállítás lejár. Ha meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás eltávolítja a fájlmegosztást, de megtartja a Storage-fiókot.
+  - **OnExpiration**: csak akkor törölje az automatikusan létrehozott erőforrásokat, ha a **retentionInterval** -beállítás lejár. Ha meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás eltávolítja a fájlmegosztást, de megőrzi a Storage-fiókot.
 
 - **retentionInterval**: adja meg azt az időintervallumot, ameddig a rendszer megőrzi a parancsfájl-erőforrást, majd azután, hogy lejárt és törölve lesz.
 
 > [!NOTE]
 > A Storage-fiók és a parancsfájl-szolgáltatás által más célra létrehozott tároló-példány használata nem ajánlott. Előfordulhat, hogy a parancsfájl életciklusa alapján a két erőforrás el lesz távolítva.
 
-Ha meg szeretné őrizni a tároló-példányt és a Storage-fiókot a hibaelhárításhoz, hozzáadhat egy alvó parancsot a parancsfájlhoz.  Használja például a [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep)parancsot.
+A tároló-példány és a Storage-fiók a **cleanupPreference** szerint törlődik. Ha azonban a parancsfájl meghibásodik, és a **cleanupPreference** nem **mindig** értékre van állítva, a telepítési folyamat automatikusan egy órára tartja a tárolót. Ezt az órát használhatja a parancsfájl hibakereséséhez. Ha meg szeretné tartani a tárolót a sikeres telepítések után, vegyen fel egy alvó lépést a parancsfájlba. Például adja hozzá a [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) parancsot a szkript végéhez. Ha nem adja hozzá az alvó lépést, a tároló egy terminál állapotra van beállítva, és még akkor sem érhető el, ha még nincs törölve.
 
 ## <a name="run-script-more-than-once"></a>Parancsfájl többszöri futtatása
 

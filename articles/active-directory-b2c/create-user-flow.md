@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbb55d71c2ed56bac14380960f9a0777be549566
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 418446e0d465b606b8d580297cebd73c466d4841
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754862"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109012"
 ---
 # <a name="create-a-user-flow-in-azure-active-directory-b2c"></a>Felhasználói folyamat létrehozása Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ A Azure Active Directory B2C (Azure AD B2C) bérlőben különböző típusú [f
       - **Telefon** (előzetes verzió): lehetővé teszi a felhasználó számára a telefonszám megadását, amelyet a rendszer a regisztráláskor ellenőriz, és a felhasználói azonosítóját adja meg.
       - **E-mail** (alapértelmezett): lehetővé teszi, hogy a felhasználó megadjon egy e-mail-címet, amelyet a rendszer a regisztráláskor ellenőriz, és a felhasználói azonosítóját adja meg.
       - **Username**: lehetővé teszi, hogy a felhasználó saját egyedi felhasználói azonosítót hozzon létre. A rendszer begyűjti az e-mail-címet a felhasználótól, és ellenőrizte azokat.
-    7. Válassza a **Save** (Mentés) lehetőséget.
+    7. Válassza a **Mentés** lehetőséget.
 
 ## <a name="create-a-user-flow"></a>Felhasználói folyamat létrehozása
 
@@ -88,7 +88,7 @@ A Azure Active Directory B2C (Azure AD B2C) bérlőben különböző típusú [f
 > [!NOTE]
 > A "felhasználói folyamat futtatása" élmény jelenleg nem kompatibilis a SPA válasz URL-címével, amely az engedélyezési kód folyamatát használja. Ha a "felhasználói folyamat futtatása" funkciót szeretné használni az ilyen típusú alkalmazásokhoz, regisztráljon egy "web" típusú válasz URL-címet, és az [itt](tutorial-register-spa.md)leírtak alapján engedélyezze az implicit folyamatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférés hozzáadása Azure AD B2C felhasználói folyamatokhoz](conditional-access-user-flow.md)
-- [Felhasználói felület testreszabása Azure AD B2C felhasználói folyamatban](customize-ui-overview.md)
+- [Felhasználói felület testreszabása Azure AD B2C felhasználói folyamatban](customize-ui-with-html.md)

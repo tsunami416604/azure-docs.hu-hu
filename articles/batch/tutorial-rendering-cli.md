@@ -1,15 +1,15 @@
 ---
-title: Jelenet megjelenítése a felhőben
+title: Oktatóanyag – jelenet megjelenítése a felhőben
 description: Oktatóanyag – Autodesk 3ds Max jelenetek renderelése az Arnolddal a Batch renderelési szolgáltatás és az Azure parancssori felület használatával
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 579a5446cb199bb73f98e2e1cbb0948f062470a8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e0858e838ba73862ef7f15040915c5f5cd3c751b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542388"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106342"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Jelenetek renderelése az Azure Batch segítségével 
 
@@ -93,7 +93,7 @@ az storage container create \
     --name scenefiles
 ```
 
-Töltse le a `MotionBlur-Dragon-Flying.max` jelenetet a [GitHubról](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) egy helyi munkakönyvtárba. Ilyenek többek között:
+Töltse le a `MotionBlur-Dragon-Flying.max` jelenetet a [GitHubról](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) egy helyi munkakönyvtárba. Például:
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -278,7 +278,7 @@ Nyissa meg a *dragon.jpg* képet a számítógépen. A renderelt kép a követke
 
 ## <a name="scale-the-pool"></a>A készlet méretezése
 
-Most módosítsa a készletet, hogy felkészítse egy nagyobb, több képkockát tartalmazó renderelési feladatra. A Batch számos módszert biztosít a számítási erőforrások méretezésére, beleértve az [automatikus méretezést](batch-automatic-scaling.md), amely a tevékenységek igényei alapján ad hozzá vagy távolít el csomópontokat. Ebben az egyszerű példában az [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) paranccsal növelje a készlet alacsony prioritású csomópontjainak számát *6-ra* :
+Most módosítsa a készletet, hogy felkészítse egy nagyobb, több képkockát tartalmazó renderelési feladatra. A Batch számos módszert biztosít a számítási erőforrások méretezésére, beleértve az [automatikus méretezést](batch-automatic-scaling.md), amely a tevékenységek igényei alapján ad hozzá vagy távolít el csomópontokat. Ebben az egyszerű példában az [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) paranccsal növelje a készlet alacsony prioritású csomópontjainak számát *6-ra*:
 
 ```azurecli-interactive
 az batch pool resize --pool-id myrenderpool --target-dedicated-nodes 0 --target-low-priority-nodes 6
@@ -298,7 +298,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>A tevékenység kimenetének megtekintése
 
-A tevékenység futtatása néhány percet vesz igénybe. Az [az batch task list](/cli/azure/batch/task#az-batch-task-list) paranccsal tekintheti meg a tevékenységek állapotát. Ilyenek többek között:
+A tevékenység futtatása néhány percet vesz igénybe. Az [az batch task list](/cli/azure/batch/task#az-batch-task-list) paranccsal tekintheti meg a tevékenységek állapotát. Például:
 
 ```azurecli-interactive
 az batch task list \
@@ -306,7 +306,7 @@ az batch task list \
     --output table
 ```
 
-Az [az batch task show](/cli/azure/batch/task#az-batch-task-show) paranccsal tekintheti meg az egyes tevékenységek részleteit. Ilyenek többek között:
+Az [az batch task show](/cli/azure/batch/task#az-batch-task-show) paranccsal tekintheti meg az egyes tevékenységek részleteit. Például:
 
 ```azurecli-interactive
 az batch task show \
@@ -314,7 +314,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-A feladatok a *dragon0002.jpg* dragon0007.jpgnevű kimeneti fájlokat hoznak  -  *dragon0007.jpg* a számítási csomópontokon, és feltöltik őket a Storage *-fiók myrenderjob-* tárolójába. A kimenet megtekintéséhez töltse le a fájlokat a helyi számítógép egyik mappájába az [az storage blob download-batch](/cli/azure/storage/blob) paranccsal. Ilyenek többek között:
+A feladatok a *dragon0002.jpg* dragon0007.jpgnevű kimeneti fájlokat hoznak  -   a számítási csomópontokon, és feltöltik őket a Storage *-fiók myrenderjob-* tárolójába. A kimenet megtekintéséhez töltse le a fájlokat a helyi számítógép egyik mappájába az [az storage blob download-batch](/cli/azure/storage/blob) paranccsal. Például:
 
 ```azurecli-interactive
 az storage blob download-batch \
@@ -327,7 +327,7 @@ Nyissa meg az egyik fájlt a számítógépen. A 6. renderelt kép a következő
 ![Renderelt sárkány, 6. képkocka](./media/tutorial-rendering-cli/dragon-frame6.png) 
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség rájuk, az [az group delete](/cli/azure/group#az-group-delete) paranccsal eltávolíthatja az erőforráscsoportot, a Batch-fiókot, a készleteket és az összes kapcsolódó erőforrást. Az erőforrásokat a következőképpen törölheti:
 
@@ -346,7 +346,7 @@ Ebben az oktatóanyagban a következőket sajátította el:
 > * a készlet méretezése, majd egy több képkockából álló jelenet renderelése;
 > * a renderelt kimenet letöltése.
 
-A felhőméretű rendereléssel kapcsolatos további információkért tekintse át a Batch renderelési szolgáltatás beállításait. 
+További információ a Felhőbeli méretezésről: batch rendering dokumentáció.
 
 > [!div class="nextstepaction"]
 > [Batch-renderelési szolgáltatás](batch-rendering-service.md)

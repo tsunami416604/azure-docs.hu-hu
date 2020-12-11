@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 519e2da902e1121220bcbb28c4cb18a68001293b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fef192ab273a0e53958cda315932f91b427a5d7d
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840552"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108383"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>A Azure Active Directory B2C technikai és funkcióinak áttekintése
 
@@ -162,7 +162,7 @@ Azure AD B2C a felhasználók személyazonosságának élményét is elvégezhet
 
 ![A Brand-alapú regisztrációs bejelentkezési oldal képernyőképei](media/technical-overview/seamless-ux.png)
 
-A felhasználói felület testreszabásával kapcsolatos információkért lásd: [Tudnivalók a felhasználói felület testreszabásáról a Azure Active Directory B2C](customize-ui-overview.md).
+A felhasználói felület testreszabásával kapcsolatos információkért lásd: [Tudnivalók a felhasználói felület testreszabásáról a Azure Active Directory B2C](customize-ui-with-html.md).
 
 ## <a name="localization"></a>Honosítás
 
@@ -170,7 +170,7 @@ A Azure AD B2C nyelvi testreszabása lehetővé teszi, hogy az ügyfelek igénye
 
 ![Három regisztrációs bejelentkezési oldal, amely a felhasználói felület szövegét jeleníti meg különböző nyelveken](media/technical-overview/localization.png)
 
-Megtudhatja, hogyan működik a honosítás a [nyelvi testreszabásban Azure Active Directory B2Cban](user-flow-language-customization.md).
+Megtudhatja, hogyan működik a honosítás a [nyelvi testreszabásban Azure Active Directory B2Cban](language-customization.md).
 
 ## <a name="add-your-own-business-logic"></a>Saját üzleti logika hozzáadása
 
@@ -221,7 +221,7 @@ További információ az Azure AD-szerepkörökről, többek között a Azure AD
 
 Azure AD B2C a többtényezős hitelesítés (MFA) segíti az adat-és alkalmazásokhoz való hozzáférés védelmét, miközben a felhasználók számára egyszerűséget biztosít. További biztonságot nyújt a hitelesítés második formáját igényli, és erős hitelesítést biztosít a könnyen használható hitelesítési módszerek széles skáláját kínálva. A felhasználók a rendszergazdaként felhasználható konfigurációs döntések alapján esetleg nem vitatják meg az MFA-t.
 
-Lásd: az MFA engedélyezése a felhasználói folyamatokban a [többtényezős hitelesítés engedélyezése Azure Active Directory B2Cban](custom-policy-multi-factor-authentication.md).
+Lásd: az MFA engedélyezése a felhasználói folyamatokban a [többtényezős hitelesítés engedélyezése Azure Active Directory B2Cban](multi-factor-authentication.md).
 
 ### <a name="smart-account-lockout"></a>Intelligens fiók zárolása
 
@@ -235,7 +235,7 @@ A jelszavas védelem beállításainak kezelésével kapcsolatos további inform
 
 A regisztráció vagy a jelszó alaphelyzetbe állítása során a felhasználóknak meg kell adnia egy jelszót, amely megfelel a bonyolultsági szabályoknak. Alapértelmezés szerint a Azure AD B2C kényszeríti az erős jelszóházirend alkalmazását. A Azure AD B2C konfigurációs beállításokat is biztosít az ügyfelek által használt jelszavak összetettségi követelményeinek megadásához.
 
-A jelszó bonyolultságára vonatkozó követelményeket a [felhasználói folyamatokban](user-flow-password-complexity.md) és az [Egyéni házirendekben](custom-policy-password-complexity.md)is konfigurálhatja.
+A jelszó bonyolultságára vonatkozó követelményeket a [felhasználói folyamatokban](password-complexity.md) és az [Egyéni házirendekben](password-complexity.md)is konfigurálhatja.
 
 ## <a name="auditing-and-logs"></a>Naplózás és naplók
 

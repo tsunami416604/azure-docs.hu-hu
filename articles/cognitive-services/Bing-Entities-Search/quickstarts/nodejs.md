@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 8634cb009d801c7edbb14682bf9d83c25ba111a5
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b9311329ea4115d49f36dd7d39782bbd748a356b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351435"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106104"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Gyors útmutató: keresési kérelem küldése a Bing Entity Search REST API a Node.js használatával
 
@@ -87,15 +87,15 @@ Bár ez az alkalmazás JavaScript nyelven íródott, az API egy REST-alapú webs
     let json = JSON.stringify(JSON.parse(body), null, '  ');
     console.log (json);
     });
-        ```
+    ```
 
-## Send a request
+## <a name="send-a-request"></a>Kérés küldése
 
-1. Create a function called `Search()` to send a search request. In it, perform the following steps:
+1. Hozzon létre egy nevű függvényt a `Search()` keresési kérelem elküldéséhez. Ebben az esetben hajtsa végre a következő lépéseket:
 
-2. Within this function, create a JSON object containing your request parameters. Use `Get` for the method, and add your host and path information. Add your subscription key to the `Ocp-Apim-Subscription-Key` header. 
+2. A függvényen belül hozzon létre egy JSON-objektumot, amely tartalmazza a kérelmek paramétereit. Használja `Get` a metódust, és adja hozzá a gazdagép és az elérési út adatait. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez. 
 
-3. Use `https.request()` to send the request with the response handler created previously, and your search parameters.
+3. A paranccsal `https.request()` elküldheti a kérést a korábban létrehozott válasz-kezelővel és a keresési paraméterekkel.
     
    ```javascript
    let Search = function () {
@@ -180,7 +180,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás készítése](../tutorial-bing-entities-search-single-page-app.md)

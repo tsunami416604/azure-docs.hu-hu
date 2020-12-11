@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 25c7016f6639df46a9279ef9a9aab2736efd4f95
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 460cca051d743102e734971cf45069362e24c147
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888657"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106003"
 ---
 # <a name="metrics-overview"></a>A metrikák áttekintése
 
@@ -77,6 +77,17 @@ Az SMS API-kérelmek metrikái a következő műveletek érhetők el:
 
 :::image type="content" source="./media/sms-metric.png" alt-text="SMS API-kérelem metrikája":::
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="authentication-api-requests"></a>Hitelesítési API-kérelmek
+
+A következő műveletek érhetők el a hitelesítési API-kérelmek metrikáján:
+
+| Művelet/útvonal    | Leírás                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| CreateIdentity       | Egy egyedi felhasználót jelképező identitást hoz létre. |
+| DeleteIdentity       | Identitás törlése. |
+| Okta          | Létrehoz egy hozzáférési jogkivonatot. |
+| RevokeToken          | A megadott idő előtt visszavonja az identitáshoz létrehozott összes hozzáférési tokent. |
+
+## <a name="next-steps"></a>További lépések
 
 - További információ az [adatplatform-mérőszámokról](../../azure-monitor/platform/data-platform-metrics.md)

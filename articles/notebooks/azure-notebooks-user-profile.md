@@ -3,12 +3,12 @@ title: Felhasználói profil és azonosító Azure Notebooks előzetes verzióva
 description: Felhasználói profil és felhasználói azonosító létrehozása és kezelése Azure Notebooks használatával, amely a megosztott jegyzetfüzetek URL-címének részévé válik.
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30d70365fcc0c72df01b4dc059b6e0f4cc607bba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85831352"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109504"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Azure Notebooks előzetes verziójának profilja és felhasználói azonosítója
 
@@ -54,11 +54,11 @@ A profil szerkesztéséhez használja a profil- **információ szerkesztése** p
 | Profil fényképe | A profil oldalán megjelenő rendszerkép. |
 | Fiókadatok | A megjelenítendő név, a felhasználói azonosító és a nyilvános e-mail-fiók. Az itt található e-mail-fiók más felhasználók számára is lehetővé teszi, hogy kapcsolatba lépjen Önnel, és eltérhet a Azure Notebooksba való bejelentkezéshez használt [fióktól](azure-notebooks-user-account.md) . |
 | Profil adatai | A hely, a vállalat, a beosztás, a webhely és a rövid leírása. |
-| Közösségi profilok | Ha meg szeretné osztani a GItHub-, Twitter-és Facebook-azonosítókat. |
+| Közösségi profilok | Ha meg szeretné osztani a GitHub-, Twitter-és Facebook-azonosítókat. |
 | Adatvédelmi beállítások | Két parancsot biztosít:<ul><li>**Saját profil exportálása**: létrehoz és letölt egy *. zip* fájlt, amely tartalmazza az összes olyan információt, amelyet Azure Notebooks a profilba ment, beleértve a fényképet, a profil adatait és a biztonsági naplókat.</li><li>**Fiók törlése**: a Azure Notebooksban tárolt összes személyes adat véglegesen törlődik.</li></ul> |
-| Hely funkcióinak engedélyezése | Lehetővé teszi a Azure Notebooks viselkedési szempontjainak szabályozását:<ul><li>**Egységes frontend jegyzetfüzetekhez: a**jegyzetfüzetek gyorsabb indítását és nagyobb adatmegőrzést tesz lehetővé.</li><li>**A JupyterLab alapértelmezett futtatása**: alapértelmezés szerint a Azure Notebooks a legtöbb felhasználó számára megfelelő egyszerű felhasználói felületet biztosít. A JupyterLab sokoldalú, de bonyolultabb felületet biztosít a tapasztalt felhasználók számára.</li><li>**VNext webhelye**: lehetővé teszi a dokumentációban látható, korszerű webes elrendezést.</li></ul> |
+| Hely funkcióinak engedélyezése | Lehetővé teszi a Azure Notebooks viselkedési szempontjainak szabályozását:<ul><li>**Egységes frontend jegyzetfüzetekhez: a** jegyzetfüzetek gyorsabb indítását és nagyobb adatmegőrzést tesz lehetővé.</li><li>**A JupyterLab alapértelmezett futtatása**: alapértelmezés szerint a Azure Notebooks a legtöbb felhasználó számára megfelelő egyszerű felhasználói felületet biztosít. A JupyterLab sokoldalú, de bonyolultabb felületet biztosít a tapasztalt felhasználók számára.</li><li>**VNext webhelye**: lehetővé teszi a dokumentációban látható, korszerű webes elrendezést.</li></ul> |
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Jupyter-jegyzetfüzet létrehozása és futtatása lineáris regresszióhoz](tutorial-create-run-jupyter-notebook.md)
+> [Gyors útmutató: Jupyter Notebook projekt exportálása](quickstart-export-jupyter-notebook-project.md)

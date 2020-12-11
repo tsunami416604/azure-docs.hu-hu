@@ -6,12 +6,12 @@ ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 310637ce099aca7b8b9057a674d6b2094b008a87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba1797da5a78eeebd25f5df1b6e37eb92470f584
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613611"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106920"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Oktatóanyag: az exportált sablon használata a Azure Portal
 
@@ -35,19 +35,19 @@ Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
-1. A **Keresés a piactéren**mezőbe írja be **app Service csomagot**, majd válassza a **app Service tervet**.  Ne válassza ki a **app Service csomagot (klasszikus)**
+1. A **Keresés a piactéren** mezőbe írja be **app Service csomagot**, majd válassza a **app Service tervet**.  Ne válassza ki a **app Service csomagot (klasszikus)**
 1. Kattintson a **Létrehozás** gombra.
 1. Adja meg a következőt:
 
     - **Előfizetés**: válassza ki az Azure-előfizetését.
     - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, majd adjon meg egy nevet. Adjon meg egy másik erőforráscsoport-nevet, mint amelyet a jelen oktatóanyag-sorozatban használt.
     - **Név**: adja meg az App Service-csomag nevét.
-    - **Operációs rendszer**: válassza a **Linux**lehetőséget.
+    - **Operációs rendszer**: válassza a **Linux** lehetőséget.
     - **Régió**: válasszon ki egy Azure-helyet. Például: **USA középső régiója**.
     - **Árképzési szint**: a költségek megtakarításához módosítsa a SKU-t az **alapszintű B1** -re (fejlesztés/tesztelés).
 
     ![Resource Manager-sablon exportálása sablon portál](./media/template-tutorial-export-template/resource-manager-template-export.png)
-1. Válassza **a felülvizsgálat és létrehozás**lehetőséget.
+1. Válassza **a felülvizsgálat és létrehozás** lehetőséget.
 1. Kattintson a **Létrehozás** gombra. Az erőforrás létrehozása néhány percet vesz igénybe.
 
 ## <a name="export-template"></a>Sablon exportálása
@@ -56,18 +56,18 @@ Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet
 
     ![Erőforrás megnyitása](./media/template-tutorial-export-template/resource-manager-template-export-go-to-resource.png)
 
-1. Válassza a **sablon exportálása**lehetőséget.
+1. Válassza a **sablon exportálása** lehetőséget.
 
     ![Resource Manager-sablon exportálása sablon](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
 
    A sablon exportálása funkció egy erőforrás aktuális állapotát veszi alapul, és létrehoz egy sablont az üzembe helyezéséhez. A sablon exportálása hasznos lehet a JSON gyors beszerzéséhez, amely az erőforrások üzembe helyezéséhez szükséges.
 
-1. Tekintse meg a **Microsoft. Web/kiszolgálófarmok** definícióját és a paraméter definícióját az exportált sablonban. Ezeket a szakaszt nem kell átmásolnia. Ezt az exportált sablont használhatja példaként arra, hogyan szeretné hozzáadni ezt az erőforrást a sablonhoz.
+1. Tekintse meg a `Microsoft.Web/serverfarms` definíciót és a paraméter definícióját az exportált sablonban. Ezeket a szakaszt nem kell átmásolnia. Ezt az exportált sablont használhatja példaként arra, hogyan szeretné hozzáadni ezt az erőforrást a sablonhoz.
 
     ![Resource Manager-sablon exportálása sablon exportált sablon](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
 > [!IMPORTANT]
-> Az exportált sablon általában részletesebb, mint a sablon létrehozásakor. Az exportált sablon SKU objektuma például öt tulajdonsággal rendelkezik. Ez a sablon működik, de csak a **Name** tulajdonságot használhatja. Elindíthatja az exportált sablont, majd módosíthatja azt úgy, hogy illeszkedjen az igényeinek megfelelően.
+> Az exportált sablon általában részletesebb, mint a sablon létrehozásakor. Az exportált sablon SKU objektuma például öt tulajdonsággal rendelkezik. Ez a sablon működik, de csak használhatja a `name` tulajdonságot. Elindíthatja az exportált sablont, majd módosíthatja azt úgy, hogy illeszkedjen az igényeinek megfelelően.
 
 ## <a name="revise-existing-template"></a>Meglévő sablon módosítása
 
@@ -83,7 +83,7 @@ Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
 Sablon üzembe helyezéséhez használja az Azure CLI-t vagy a Azure PowerShell-t.
 
-Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
+Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi `templateFile` , hogy a változót a sablonfájl elérési útjára állította, ahogy az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -111,14 +111,14 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Ha az üzemelő példány nem sikerült, a **részletes** kapcsoló használatával kérheti le a létrehozott erőforrásokra vonatkozó információkat. A **hibakeresési kapcsoló használatával** további információkat kaphat a hibakeresésről.
+> Ha a telepítés nem sikerült, a `verbose` kapcsolóval kérheti le a létrehozott erőforrásokra vonatkozó információkat. A `debug` kapcsoló használatával további információkat kaphat a hibakereséshez.
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 
 A központi telepítés ellenőrzéséhez tekintse meg az erőforráscsoportot a Azure Portalból.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+1. A bal oldali menüben válassza az **erőforráscsoportok** lehetőséget.
 1. Válassza ki azt az erőforráscsoportot, amelyet központilag telepített.
 1. Az erőforráscsoport egy Storage-fiókot és egy App Service tervet tartalmaz.
 
@@ -133,7 +133,7 @@ Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőfo
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan exportálhat sablont a Azure Portalból, és hogyan használhatja az exportált sablont a sablon fejlesztéséhez. Az Azure rövid útmutató sablonjait is használhatja a sablonok fejlesztésének egyszerűbbé tételéhez.
 

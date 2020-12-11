@@ -563,10 +563,10 @@
             - name: Oauth 2.0-erőforrástulajdonos jelszavas hitelesítési adatainak megadása
               displayName: ROPC
               href: v2-oauth-ropc.md
-            - name: OAuth 2.0 SAML tulajdonosi tényfolyamat
-              href: v2-saml-bearer-assertion.md
             - name: Aláírókulcs-váltás
               href: active-directory-signing-key-rollover.md
+            - name: Jogkivonatcserével kapcsolatos forgatókönyvek
+              href: scenario-token-exchange-saml-oauth.md
             - name: Azonosító jogkivonatok
               href: id-tokens.md
             - name: Hozzáférési jogkivonatok

@@ -1,53 +1,39 @@
 ---
-title: Azure Virtual Network | Microsoft Docs
+title: Azure Virtual Network
 description: Ismerkedjen meg az Azure Virtual Network-fogalmakkal és-szolgáltatásokkal, többek között a címterület, alhálózatok, régiók és előfizetések.
 services: virtual-network
 documentationcenter: na
-author: anavinahar
-tags: azure-resource-manager
+author: KumudD
 Customer intent: As someone with a basic network background that is new to Azure, I want to understand the capabilities of Azure Virtual Network, so that my Azure resources such as VMs, can securely communicate with each other, the internet, and my on-premises resources.
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2019
-ms.author: anavin
-ms.openlocfilehash: 480e22b319edd03dc9bb9d666dd43718fb3c841b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 12/03/2020
+ms.author: kumud
+ms.openlocfilehash: 11651b7a76ea0e61f78f3b2f305e39ed621df391
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88507030"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109317"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
 Az Azure Virtual Network (VNet) az Azure-beli magánhálózat alapvető építőeleme. A VNet számos Azure-erőforrást, például Azure Virtual Machines (VM) tesz lehetővé az egymással, az internettel és a helyszíni hálózatokkal való biztonságos kommunikációhoz. A VNet hasonló egy hagyományos hálózathoz, amelyet a saját adatközpontban fog használni, de az Azure infrastruktúrájának, például a méretezhetőség, a rendelkezésre állás és az elkülönítés további előnyeit biztosítja.
 
-## <a name="vnet-concepts"></a>VNet fogalmak
+## <a name="why-use-an-azure-virtual-network"></a>Miért érdemes Azure-beli virtuális hálózatot használni?
+Az Azure Virtual Network lehetővé teszi az Azure-erőforrások számára, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal. A virtuális hálózatok megvalósítására szolgáló fő forgatókönyvek közé tartozik az Azure-erőforrások internettel való kommunikációja, az Azure-erőforrások közötti kommunikáció, a helyszíni erőforrásokkal való kommunikáció, a hálózati forgalom szűrése, a hálózati forgalom irányítása és az Azure-szolgáltatásokkal való integráció.
 
-- **Címterület:** VNet létrehozásakor egyéni magánhálózati IP-címtartományt kell megadnia nyilvános és magánhálózati (RFC 1918) címek használatával. Az Azure magánhálózati IP-címet rendel hozzá a virtuális hálózatokon belüli erőforrásokhoz a hozzárendelt címtérből. Ha például egy virtuális gépet központilag telepít egy VNet, a 10.0.0.0/16, a virtuális gép egy magánhálózati IP-címet (például 10.0.0.4) fog rendelni.
-- **Alhálózatok:** Az alhálózatok lehetővé teszik a virtuális hálózat egy vagy több alhálózatra való felosztását, és a virtuális hálózat címterület egy részének lefoglalását az egyes alhálózatokra. Ezután üzembe helyezheti az Azure-erőforrásokat egy adott alhálózaton. A hagyományos hálózatokhoz hasonlóan az alhálózatok is lehetővé teszik, hogy a VNet-címtartomány a szervezet belső hálózatának megfelelő szegmensekre legyen felosztva. Ez javítja a címek kiosztásának hatékonyságát is. Az alhálózatokon belüli erőforrásokat hálózati biztonsági csoportokkal is biztonságossá teheti. További információ: [hálózati biztonsági csoportok](security-overview.md).
-- **Régiók**: a VNet egyetlen régióra/helyre vonatkozik; azonban a különböző régiókban található több virtuális hálózat összekapcsolható Virtual Network-társítással.
-- **Előfizetés:** A VNet hatóköre egy előfizetés. Több virtuális hálózatot is megvalósíthat az egyes Azure-[előfizetéseken](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) és Azure-[régiókon](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) belül.
-
-## <a name="best-practices"></a>Ajánlott eljárások
-
-A hálózat Azure-ban való létrehozásakor fontos szem előtt tartani a következő általános tervezési alapelveket:
-
-- Győződjön meg arról, hogy nem átfedésben lévő címterület. Győződjön meg arról, hogy a VNet címtartomány (CIDR-blokk) nem fedi át a szervezet más hálózati tartományait.
-- Az alhálózatok nem fedik le a VNet teljes címterületját. Tervezze meg előre, és foglaljon le némi címtartományt a jövő számára.
-- Azt javasoljuk, hogy több kis virtuális hálózatok helyett kevesebb nagy virtuális hálózatok legyen. Ez megakadályozza a felügyelet terhelését.
-- A VNet biztonságossá tételéhez rendeljen hozzá hálózati biztonsági csoportokat (NSG) az alá tartozó alhálózatokhoz.
-
-## <a name="communicate-with-the-internet"></a>Kommunikáció az internettel
+### <a name="communicate-with-the-internet"></a>Kommunikáció az internettel
 
 A VNet összes erőforrása alapértelmezés szerint képes kommunikálni az internet felé. Bejövő kommunikációt létesíthet egy erőforrással egy nyilvános IP-cím vagy Load Balancer hozzárendelésével. A kimenő kapcsolatok kezeléséhez is használhat nyilvános IP-címet vagy Load Balancert.  Az Azure kimenő kapcsolataira vonatkozó további információkat a [kimenő kapcsolatokat](../load-balancer/load-balancer-outbound-connections.md), a [nyilvános IP-címeket](virtual-network-public-ip-address.md) vagy a [Load Balancert](../load-balancer/load-balancer-overview.md) ismertető cikkekben talál.
 
 >[!NOTE]
 >Ha csak belső [Standard Load Balancert](../load-balancer/load-balancer-standard-overview.md) használ, akkor a kimenő kapcsolat mindaddig nem lesz elérhető, amíg meg nem határozza, hogyan működjenek együtt a [kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md) egy példányszintű nyilvános IP-vel vagy egy nyilvános Load Balancerrel.
 
-## <a name="communicate-between-azure-resources"></a>Azure-erőforrások közötti kommunikáció
+### <a name="communicate-between-azure-resources"></a>Azure-erőforrások közötti kommunikáció
 
 Az Azure-erőforrások biztonságosan kommunikálnak egymással az alábbi módok egyikével:
 
@@ -55,7 +41,7 @@ Az Azure-erőforrások biztonságosan kommunikálnak egymással az alábbi módo
 - **Virtuális hálózati szolgáltatás végpontján keresztül**: kiterjesztheti a virtuális hálózat privát címterület-területét és a virtuális hálózat identitását az Azure-szolgáltatások erőforrásaira, például az Azure Storage-fiókokra és a Azure SQL Databaseokra közvetlen kapcsolaton keresztül. A szolgáltatásvégpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak egy virtuális hálózaton legyenek elérhetőek. További információ: [A virtuális hálózati szolgáltatásvégpontok áttekintése](virtual-network-service-endpoints-overview.md).
 - **A VNet**-társításon keresztül: a virtuális hálózatokat összekapcsolhatja egymással, így a virtuális hálózatban lévő erőforrások a virtuális hálózatok közötti kommunikációt is lehetővé teszik. Az összekacsolt virtuális hálózatok lehetnek azonos vagy eltérő Azure-régiókban. További információ: [Virtuális hálózatok közötti társviszony létesítése](virtual-network-peering-overview.md).
 
-## <a name="communicate-with-on-premises-resources"></a>Kommunikáció helyszíni erőforrásokkal
+### <a name="communicate-with-on-premises-resources"></a>Kommunikáció helyszíni erőforrásokkal
 
 Az alábbiak bármely kombinációjával csatlakoztathatja helyszíni számítógépeit és hálózatait egy virtuális hálózathoz:
 
@@ -63,21 +49,21 @@ Az alábbiak bármely kombinációjával csatlakoztathatja helyszíni számító
 - **Helyek közötti VPN:** A helyszíni VPN-eszköz és egy virtuális hálózaton üzembe helyezett Azure VPN Gateway átjáró között létesített kapcsolat. Ez a kapcsolattípus lehetővé teszi az összes engedélyezett helyszíni erőforrás számára, hogy elérjék a virtuális hálózatot. A helyszíni VPN-eszköz és egy Azure VPN Gateway átjáró közötti kommunikáció egy titkosított csatornán, az interneten keresztül zajlik. További tudnivalókért lásd: [Helyek közötti VPN](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti).
 - **Azure ExpressRoute**: Saját hálózata és az Azure között egy ExpressRoute-partneren keresztül létesített kapcsolat. Ez a kapcsolat nem nyilvános. A forgalom nem az interneten keresztül halad át. További tudnivalókért lásd: [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="filter-network-traffic"></a>Hálózati forgalom szűrése
+### <a name="filter-network-traffic"></a>Hálózati forgalom szűrése
 
 A hálózati forgalom alhálózatok közötti szűrése az alábbi lehetőségek egyikével vagy akár mindkettővel elvégezhető:
 
 - **Hálózati biztonsági csoportok:** A hálózati biztonsági csoportok és az alkalmazás biztonsági csoportjai több bejövő és kimenő biztonsági szabályt is tartalmazhatnak, amelyekkel a forrás és a cél IP-címe, portja és protokollja alapján szűrheti a forgalmat és az erőforrásokat. További információ: [hálózati biztonsági csoportok](security-overview.md#network-security-groups) vagy [alkalmazás biztonsági csoportjai](security-overview.md#application-security-groups).
 - **Hálózati virtuális berendezések:** A hálózati virtuális berendezések olyan virtuális gépek, amelyek egy hálózati funkciót látnak el, például tűzfal, WAN-optimalizáció vagy egyéb hálózati funkciók. A virtuális hálózatokban üzembe helyezhető hálózati virtuális berendezések listáját az [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) találja.
 
-## <a name="route-network-traffic"></a>Hálózati forgalom továbbítása
+### <a name="route-network-traffic"></a>Hálózati forgalom továbbítása
 
 Az Azure alapértelmezés szerint elosztja a forgalmat az alhálózatok, a csatlakoztatott virtuális hálózatok, a helyszíni hálózatok és az internet között. Az Azure által létrehozott alapértelmezett útvonalak felülírásához valósítsa meg az alábbi lehetőségek egyikét, vagy akár mindkettőt:
 
 - **Útválasztási táblázatok:** Létrehozhat egyéni útválasztási táblázatokat, amelyek útvonalai szabályozzák, hogy melyik alhálózat esetében hova érkezzen a forgalom. További tudnivalókért tekintse meg az [útválasztási táblázatokat](virtual-networks-udr-overview.md#user-defined) ismertető cikket.
 - **Border Gateway Protocol (BGP-) útvonalak:** Ha a virtuális hálózatát VPN-átjáró vagy ExpressRoute-kapcsolat használatával csatlakoztatja a helyszíni hálózathoz, propagálhatja a helyszíni BGP-útvonalakat a virtuális hálózatára. Tudjon meg többet a BGP [Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#dynamic-route-exchange) szolgáltatással együtt való használatáról
 
-## <a name="virtual-network-integration-for-azure-services"></a>Virtuális hálózat integrációja Azure-szolgáltatásokhoz
+### <a name="virtual-network-integration-for-azure-services"></a>Virtuális hálózat integrációja Azure-szolgáltatásokhoz
 
 Az Azure-szolgáltatások Azure-beli virtuális hálózatba való integrálása lehetővé teszi a szolgáltatáshoz való privát hozzáférést a virtuális gépekről vagy a virtuális hálózatban lévő számítási erőforrásokról.
 A virtuális hálózatban az alábbi beállításokkal integrálhatja az Azure-szolgáltatásokat:
@@ -94,6 +80,6 @@ Bizonyos korlátozások vonatkoznak az üzembe helyezhető Azure-erőforrások s
 
 Az Azure VNet díjmentesen vehető igénybe. A standard díjak olyan erőforrásokra vonatkoznak, mint a Virtual Machines (VM) és más termékek. További információ: a [VNet díjszabása](https://azure.microsoft.com/pricing/details/virtual-network/) és az Azure [díjszabásának kalkulátora](https://azure.microsoft.com/pricing/calculator/).
 
-## <a name="next-steps"></a>További lépések
-
- A virtuális hálózatok használatának megkezdéséhez hozzon létre egyet, helyezzen üzembe rajta néhány virtuális gépet, majd létesítsen kommunikációt a virtuális gépek között. Ennek ismertetéséhez tekintse meg a [Virtuális hálózat létrehozása](quick-create-portal.md) című rövid útmutatót.
+## <a name="next-steps"></a>Következő lépések
+ - Ismerkedjen meg az [Azure Virtual Network-fogalmakkal és az ajánlott eljárásokkal](concepts-and-best-practices.md) .
+ - A virtuális hálózatok használatának megkezdéséhez hozzon létre egyet, helyezzen üzembe rajta néhány virtuális gépet, majd létesítsen kommunikációt a virtuális gépek között. Ennek ismertetéséhez tekintse meg a [Virtuális hálózat létrehozása](quick-create-portal.md) című rövid útmutatót.

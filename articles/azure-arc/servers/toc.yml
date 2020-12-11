@@ -55,6 +55,8 @@
               href: manage-vm-extensions-powershell.md
             - name: Bővítmények üzembe helyezése ARM-sablonnal
               href: manage-vm-extensions-template.md
+        - name: Felügyelt identitások használata a kiszolgálón
+          href: managed-identity-authentication.md
         - name: Ügynök kezelése
           href: manage-agent.md
     - name: Forgatókönyvek

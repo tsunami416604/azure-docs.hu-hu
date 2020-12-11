@@ -1,17 +1,17 @@
 ---
 title: Események küldése vagy fogadása az Azure Event Hubs a Python használatával (legújabb)
-description: Ez a cikk egy olyan Python-alkalmazás létrehozásához nyújt útmutatást, amely az Azure-Event Hubs az Azure-eventhub 5. verziójának legújabb csomagjának használatával küld/fogad eseményeket.
+description: Ez a cikk egy olyan Python-alkalmazás létrehozásához nyújt útmutatást, amely az Azure-Event Hubs a legújabb Azure-eventhub csomag használatával küld/fogad eseményeket.
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: bdcd85786afdf307fdc7043db7ed7651d41820a4
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 4850dc9119f6ef43e687f476f66928f13713f051
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91729083"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97105951"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Események küldése vagy fogadása az Event hubokból a Python használatával (Azure-eventhub 5. verzió)
-Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub-ból az **Azure-eventhub 5. verziójú Python-** csomag használatával.
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub"></a>Események küldése vagy fogadása az Event hubokból a Python használatával (Azure-eventhub)
+Ez a rövid útmutató azt ismerteti, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről az **Azure-eventhub Python-** csomag használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ha még nem ismeri az Azure Event Hubsét, a rövid útmutató elvégzése előtt tekintse meg a [Event Hubs áttekintése](event-hubs-about.md) című témakört. 
@@ -39,7 +39,7 @@ A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 Ebben a szakaszban egy Python-szkriptet hoz létre, amely a korábban létrehozott Event hubhoz küld eseményeket.
 
 1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/)-ot.
-2. Hozzon létre egy *Send.py*nevű szkriptet. Ez a parancsfájl a korábban létrehozott Event hubhoz küldi az események kötegét.
+2. Hozzon létre egy *Send.py* nevű szkriptet. Ez a parancsfájl a korábban létrehozott Event hubhoz küldi az események kötegét.
 3. Illessze be a következő kódot a *Send.py*:
 
     ```python
@@ -98,7 +98,7 @@ A fogadási kódban jegyezze fel a kapcsolódási karakterláncot és a tároló
 Ebben a szakaszban egy Python-szkriptet hoz létre az Event hub eseményeinek fogadásához:
 
 1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/)-ot.
-2. Hozzon létre egy *recv.py*nevű szkriptet.
+2. Hozzon létre egy *recv.py* nevű szkriptet.
 3. Illessze be a következő kódot a *recv.py*:
 
     ```python
@@ -154,7 +154,7 @@ python send.py
 A fogadó ablakban az Event hub számára küldött üzeneteket kell megjeleníteni.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban aszinkron módon küldött és fogadott eseményeket. Ha szeretné megtudni, hogyan küldhet és fogadhat eseményeket szinkronban, lépjen a [GitHub sync_samples oldalra](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples/sync_samples).
 
 A GitHubon található összes minta (szinkron és aszinkron) esetében az [Azure Event Hubs Python-mintákhoz készült ügyféloldali kódtár](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)című részében találhat.

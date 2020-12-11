@@ -3,12 +3,12 @@ title: Az Azure Notebooks előzetes verziójának áttekintése
 description: Futtasson Jupyter jegyzetfüzeteket a felhőben az ingyenes Azure Notebooks előzetes verzió szolgáltatásával, ahol nincs szükség beállításra vagy konfigurációra.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: d59faaf85a1fdbad776e954e974bafa300f93d85
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ef0a033c5125b3a359d281be30dd0ec2a2aa1747
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845135"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109487"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Az Azure Notebooks előzetes verziójának áttekintése
 
@@ -49,7 +49,7 @@ Röviden, Azure Notebooks segíti a munkáját hatékonyabban elérni, és így 
 
 Azure Notebooks egy ingyenes szolgáltatás, de az egyes projektek 4 GB memóriával és 1 GB-nyi adattal rendelkeznek a visszaélések elkerülése érdekében. A fenti korlátokat meghaladó, megbízható felhasználók a jegyzetfüzetek futtatásának folytatásához egy CAPTCHA-kihívást látnak.
 
-Az összes korlát felszabadításához jelentkezzen be Azure Notebooks egy olyan fiókkal, amely Azure Active Directory (például egy vállalati fiók) használatával. Ha ez a fiók Azure-előfizetéshez van társítva, az adott előfizetéshez tartozó Azure Data Science Virtual Machine-példányokhoz is csatlakozhat. További információ: [projektek kezelése és konfigurálása – számítási réteg](configure-manage-azure-notebooks-projects.md#compute-tier).
+Az összes korlát felszabadításához jelentkezzen be Azure Notebooks egy olyan fiókkal, amely Azure Active Directory (például egy vállalati fiók) használatával. Ha ez a fiók Azure-előfizetéshez van társítva, az adott előfizetéshez tartozó Azure Data Science Virtual Machine-példányokhoz is csatlakozhat. 
 
 A notebook-kiszolgálók legfeljebb 8 órán keresztül vannak garantálva. A legtöbb esetben a tároló nem vonatkozik erre a korlátozásra, és továbbra is az idő függvényében fut, de a hosszú élettartamú munkamenetek időnként leállíthatók a rendszer stabilitására.
 
@@ -65,7 +65,7 @@ Minden egyes jegyzetfüzet esetében ki kell választania a kód celláinak futt
 
 A Azure Notebooks az alapszintű disztribúción túli további csomagokat is tartalmaz. A Python-kernelek közé tartoznak például a NumPy, a pandák, a scikit-Learn, a matplotlib és a bokeh-függvénytárak.
 
-Emellett testre is szabhatja a projektet, hogy a projektben lévő összes jegyzetfüzethez hozzon létre környezetet. További információ [: gyors útmutató: projekt létrehozása egyéni környezettel](quickstart-create-jupyter-notebook-project-environment.md).
+Emellett testre is szabhatja a projektet, hogy a projektben lévő összes jegyzetfüzethez hozzon létre környezetet.
 
 Az alapszintű disztribúciók mellett Azure Notebooks előre telepítve van számos további csomaggal, amelyek hasznosak az adatszakértők számára. Saját csomagokat is telepíthet az egyes nyelvekhez tartozó szokásos folyamat használatával.
 
@@ -73,7 +73,7 @@ Az alapszintű disztribúciók mellett Azure Notebooks előre telepítve van sz�
 
 Azure Notebooks előre konfigurálva van a következő Jupyter-bővítményekkel:
 
-- [Rise](https://github.com/damianavila/RISE): A Jupyter Slideshow bővítmény (más néven live_reveal). További információ: jegyzetfüzet- [Diavetítés futtatása](present-jupyter-notebooks-slideshow.md).
+- [Rise](https://github.com/damianavila/RISE): A Jupyter Slideshow bővítmény (más néven live_reveal).
 - [JupyterLab](https://github.com/jupyterlab/jupyterlab): teljes számítási környezet a Jupyter-jegyzetfüzetek használatához.
 - [Altair](https://github.com/ellisonbg/altair): a Python deklaratív statisztikai vizualizációs könyvtára.
 - [BQPlot](https://github.com/bloomberg/bqplot): interaktív ábrázolási keretrendszer a Jupyter-jegyzetfüzetekhez.
@@ -89,26 +89,7 @@ A Azure Notebooksával kapcsolatos kérdéseiről a [GitHub-adattáron](https://
 
 ## <a name="next-steps"></a>Következő lépések  
 
-- [Minta-jegyzetfüzetek megismerése](azure-notebooks-samples.md)
-
 - Gyorsútmutatók:
 
-  - [Jegyzetfüzet létrehozása és megosztása](quickstart-create-share-jupyter-notebook.md)
-  - [Jegyzetfüzet klónozása](quickstart-clone-jupyter-notebook.md)
-  - [Helyi Jupyter-jegyzetfüzet migrálása](quickstart-migrate-local-jupyter-notebook.md)
-  - [Egyéni környezet használata](quickstart-create-jupyter-notebook-project-environment.md)
   - [Bejelentkezés és felhasználói azonosító beállítása](quickstart-sign-in-azure-notebooks.md)
-
-- Oktatóanyagok:
-
-  - [Notebook létrehozása és futtatása](tutorial-create-run-jupyter-notebook.md  )
-
-- Útmutató a cikkekhez:
-  
-  - [Projektek létrehozása és klónozása](create-clone-jupyter-notebooks.md)
-  - [Projektek konfigurálása és kezelése](configure-manage-azure-notebooks-projects.md)
-  - [Csomagok telepítése jegyzetfüzetből](install-packages-jupyter-notebook.md)
-  - [Diavetítés bemutatása](present-jupyter-notebooks-slideshow.md)
-  - [Adatfájlok használata](work-with-project-data-files.md)
-  - [Adatforrások elérése](access-data-resources-jupyter-notebooks.md)
-  - [Az Azure Machine Learning használata](../machine-learning/samples-notebooks.md)
+  - [Jupyter-jegyzetfüzet exportálása](quickstart-export-jupyter-notebook-project.md)

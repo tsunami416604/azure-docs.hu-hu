@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cf0437b985865248393e9f68da264fcae5af7f12
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994060"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108552"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Oktatóanyag a Arkóz Labs konfigurálásához a Azure Active Directory B2C
 
@@ -100,7 +100,7 @@ A böngészőben Azure AD B2C kód egy modern és standard megközelítést hasz
 
    ![Arkóz Labs-regisztráció és bejelentkezés](media/partner-arkose-labs/signup-signin-arkose.png)
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
 ### <a name="part-2--set-up-a-back-end-server"></a>2. rész – háttér-kiszolgáló beállítása
 
@@ -147,7 +147,7 @@ Töltse le a git Basht, és kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy felhasználói folyamatot az [itt](tutorial-create-user-flows.md)látható információk alapján. Állítsa le a **felhasználói folyamat tesztelése** szakaszt.
 
-2. JavaScript engedélyezése a [felhasználói folyamatokban](user-flow-javascript-overview.md).
+2. JavaScript engedélyezése a [felhasználói folyamatokban](javascript-and-page-layout.md).
 
 3. Ugyanebben a felhasználói folyamat lapon engedélyezze az egyéni lap URL-címét: ugrás a **felhasználói folyamat**  >  **lap Elrendezés**  >  **Egyéni oldal tartalma**  =  **Igen**,  >  **Egyéni lap URL-címének beszúrása**.
 Ezt az egyéni oldal URL-címét a blob Storage-ban lévő index.html fájl helyéről szerzi be a rendszer.  
@@ -176,7 +176,7 @@ Ezt az egyéni oldal URL-címét a blob Storage-ban lévő index.html fájl hely
 
 7. A **Folytatás** gombra kattintva megjelenik egy Arkóz Labs-puzzle.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

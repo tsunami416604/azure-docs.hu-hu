@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119929"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107920"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Alkalmazások migrálása MSAL iOS és macOS rendszerű eszközökre
 
@@ -65,7 +65,7 @@ Egyetlen erőforrás-azonosító helyett a MSAL-alkalmazások hatóköröket biz
 
 A MSAL kétféleképpen biztosítható hatókörök:
 
-* Adja meg az alkalmazások által igényelt összes engedély listáját. Példa: 
+* Adja meg az alkalmazások által igényelt összes engedély listáját. Például: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -136,7 +136,7 @@ A MSAL az alkalmazás által kezelt és a felhasználó által beavatkozást ig�
 
 A [ `MSALError` listában](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128) szereplő összes egyéb hibát nem kötelező kezelni. A hibákkal kapcsolatos információkat a felhasználói élmény javítása érdekében használhatja.
 
-A MSAL-hibák kezelésével kapcsolatban lásd: [kivételek és hibák kezelése a MSAL használatával](msal-handling-exceptions.md) .
+A MSAL-hibák kezelésével kapcsolatban lásd: [kivételek és hibák kezelése a MSAL használatával](msal-error-handling-ios.md) .
 
 ### <a name="broker-support"></a>Közvetítői támogatás
 
@@ -146,7 +146,7 @@ Az alkalmazás brókerének engedélyezése:
 
 1. Regisztráljon egy Broker-kompatibilis átirányítási URI-formátumot az alkalmazáshoz. A Broker-kompatibilis átirányítási URI formátuma `msauth.<app.bundle.id>://auth` . Cserélje le `<app.bundle.id>` az alkalmazást az alkalmazás Bundle-azonosítójával. Ha a ADAL-ről végez áttelepítést, és az alkalmazása már közvetítő képességgel rendelkezik, semmi feleslegesen nem kell mást tennie. Az előző átirányítási URI-ja teljes mértékben kompatibilis a MSAL, így a 3. lépésre ugorhat.
 
-2. Adja hozzá az alkalmazás átirányítási URI-sémáját az info. plist fájlhoz. Az alapértelmezett MSAL átirányítási URI formátuma a következő: `msauth.<app.bundle.id>` . Példa:
+2. Adja hozzá az alkalmazás átirányítási URI-sémáját az info. plist fájlhoz. Az alapértelmezett MSAL átirányítási URI formátuma a következő: `msauth.<app.bundle.id>` . Például:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -321,7 +321,7 @@ Alapértelmezés szerint a MSAL az iOS-vagy macOS-kulcstartóban gyorsítótára
 
 A jogkivonat-gyorsítótárazás engedélyezése:
 1. Győződjön meg arról, hogy az alkalmazás megfelelően van aláírva
-2. Lépjen a Xcode-projekt beállításai > **képességek lapon**a  >  **kulcstartó megosztásának engedélyezése** lehetőségre.
+2. Lépjen a Xcode-projekt beállításai > **képességek lapon** a  >  **kulcstartó megosztásának engedélyezése** lehetőségre.
 3. Kattintson az elemre **+** , és adja meg a következő **kulcstartó-csoportok** bejegyzést: 3. a, iOS esetén írja be a `com.microsoft.adalcache` 3. b értéket MacOS-be `com.microsoft.identity.universalstorage`
 
 ### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>Hozzon létre MSALPublicClientApplication, és váltson a acquireToken és a acquireTokeSilent-hívásokra

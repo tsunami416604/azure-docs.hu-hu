@@ -3,12 +3,12 @@ title: Az Azure arc-kompatibilis kiszolgálók ügynökének kezelése
 description: Ez a cikk azokat a különböző felügyeleti feladatokat ismerteti, amelyeket általában az Azure arc-kompatibilis kiszolgálók csatlakoztatott számítógép-ügynök életciklusa során fog elvégezni.
 ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130969"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107192"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>A csatlakoztatott gép ügynökének kezelése és karbantartása
 
@@ -160,7 +160,7 @@ A Azcmagent eszköz (Azcmagent.exe) használatával konfigurálható az Azure ar
 
 * **-h vagy--help** – megjeleníti az elérhető parancssori paramétereket
 
-    Ha például meg szeretné tekinteni az **újrakapcsolódási** paraméter részletes súgóját, írja be a következőt: `azcmagent reconnect -h` . 
+    Ha például meg szeretné tekinteni a **kapcsolódási** paraméter részletes súgóját, írja be a következőt: `azcmagent connect -h` . 
 
 * **-v vagy--verbose** – részletes naplózás engedélyezése
 
@@ -220,7 +220,7 @@ A következő módszerek mindegyike eltávolítja az ügynököt, de nem távol�
 
     a. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.  
     b. A **Vezérlőpulton** válassza a **programok és szolgáltatások** lehetőséget.  
-    c. A **programok és szolgáltatások** területen válassza **Az Azure Connected Machine Agent ügynököt** , válassza az **Eltávolítás** lehetőséget, majd válassza az **Igen** lehetőséget.  
+    c. A **programok és szolgáltatások** területen válassza **Az Azure Connected Machine Agent ügynököt**, válassza az **Eltávolítás** lehetőséget, majd válassza az **Igen** lehetőséget.  
 
     >[!NOTE]
     > Az ügynök telepítővarázslója úgy is futtatható, ha duplán kattint a **AzureConnectedMachineAgent.msi** telepítőcsomag csomagra.
@@ -281,7 +281,7 @@ Ha azt tervezi, hogy leállítja a gép felügyeletét az Azure-ban támogató s
 
 1. Nyissa meg az Azure arc-kompatibilis kiszolgálókat a [Azure Portal](https://aka.ms/hybridmachineportal).
 
-2. Válassza ki a gépet a listából, válassza a három pontot ( **..** .), majd válassza a **Törlés** lehetőséget.
+2. Válassza ki a gépet a listából, válassza a három pontot (**..**.), majd válassza a **Törlés** lehetőséget.
 
 ## <a name="update-or-remove-proxy-settings"></a>Proxybeállítások frissítése vagy eltávolítása
 

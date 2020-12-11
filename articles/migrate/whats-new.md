@@ -1,22 +1,24 @@
 ---
 title: A Azure Migrate újdonságai
 description: Ismerkedjen meg a Azure Migrate szolgáltatás új és legújabb frissítéseivel.
-author: bsiva
-ms.author: bsiva
-ms.manager: abhemraj
 ms.topic: overview
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: e39b8f7ee7b76a1955e02a7140524f812be086b5
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4d87602ccd0ff576c0580f9cc20b475335ee577f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752447"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109181"
 ---
 # <a name="whats-new-in-azure-migrate"></a>A Azure Migrate újdonságai
 
 A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszolgálókat, alkalmazásokat és az Microsoft Azure felhőbe áttelepítheti, elemezheti és áttelepítheti azokat. Ez a cikk a Azure Migrate új kiadásait és szolgáltatásait foglalja össze.
+## <a name="update-december-2020"></a>Frissítés (2020. december)
+- Azure Migrate mostantól automatikusan telepíti az Azure virtuálisgép-ügynököt a VMware virtuális gépekre, miközben az Azure-ba való Migrálás során a VMware Migration ügynök nélküli módszerét használja.
 
 ## <a name="update-september-2020"></a>Frissítés (2020. szeptember)
 - A kiszolgálók Availability Zonesre való áttelepítése mostantól támogatott.
@@ -25,7 +27,7 @@ A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszo
 - A függőségek elemzése (ügynök nélküli) mostantól egy 1000 virtuális gépen is futhat egyszerre.
 - A függőségek elemzése (ügynök nélküli) mostantól engedélyezhető vagy letiltható a PowerShell-parancsfájlok használatával. [Részletek](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 - Power BI hálózati kapcsolatainak megjelenítése a függőségi elemzés (ügynök nélküli) használatával gyűjtött adatok használatával [. További információ.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
-- A VMware virtuális gépek 32 TB-os adatlemezes mérettel való áttelepítése mostantól támogatott a Azure Migrate: kiszolgáló-áttelepítési ügynök nélküli VMware áttelepítési módszer használatával. 
+- A VMware virtuális gépek 32 TB-os adatlemezes mérettel való áttelepítése mostantól támogatott a Azure Migrate: kiszolgáló-áttelepítési ügynök nélküli VMware áttelepítési módszer használatával.
 
 ## <a name="update-august-2020"></a>Update (augusztus 2020)
 
@@ -104,7 +106,7 @@ Ha a Azure Migrate korábbi verzióját használja (csak a helyszíni VMware vir
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Itt talál további információkat](https://azure.microsoft.com/pricing/details/azure-migrate/) az Azure Migrate díjszabásáról.
 - Tekintse meg az Azure Migrate használatával kapcsolatban felmerülő [gyakori kérdéseket](resources-faq.md).

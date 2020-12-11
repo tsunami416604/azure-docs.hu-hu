@@ -1,15 +1,15 @@
 ---
 title: Rövid útmutató – az első batch-feladatok futtatása az Azure CLI-vel
-description: Gyorsan megtudhatja, hogyan hozhat létre batch-fiókot, és hogyan futtathat batch-feladatokat az Azure CLI-vel.
+description: Ez a rövid útmutató bemutatja, hogyan hozható létre batch-fiók, és hogyan futtathat batch-feladatokat az Azure CLI-vel.
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: eb5bb4a627ff26250519651f5e6d47ddd6f5a776
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 297af47b6280381646e654eaededfe8b71a5d874
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562287"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106682"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure CLI használatával
 
@@ -105,7 +105,7 @@ az batch job create \
 
 Most pedig az [az batch task create](/cli/azure/batch/task#az-batch-task-create) paranccsal hozzon létre a feladatban futtatni kívánt tevékenységeket. Ebben a példában négy azonos tevékenységet hozunk létre. Minden tevékenység egy `command-line` futtatásával megjeleníti a Batch környezeti változókat a számítási csomóponton, majd vár 90 másodpercet. Batch használata esetén ebben a parancssorban adhatja meg az alkalmazást vagy a szkriptet. A Batch számos módszert kínál az alkalmazások és szkriptek számítási csomópontokon történő üzembe helyezésére.
 
-Az alábbi Bash-szkript 4 párhuzamos tevékenységet hoz létre ( *mytask1* – *mytask4* ).
+Az alábbi Bash-szkript 4 párhuzamos tevékenységet hoz létre (*mytask1*–*mytask4*).
 
 ```azurecli-interactive
 for i in {1..4}

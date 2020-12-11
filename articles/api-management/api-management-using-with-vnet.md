@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/22/2020
+ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 7af15552a489f36d87204bfefe47e579cc19f6dc
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e36f7c6085908630d5e7aa2593fe4d57202d6ee7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778824"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107651"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -109,15 +109,16 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 
 * A **API Managementhoz szükséges portok**: a bejövő és a kimenő forgalom abba az alhálózatba, amelyben a API Management telepítve van, a [hálózati biztonsági csoport][Network Security Group]használatával vezérelhető. Ha a portok bármelyike nem érhető el, előfordulhat, hogy API Management nem működik megfelelően, és elérhetetlenné válhat. Ha a portok közül egy vagy több le van tiltva, akkor a API Management VNET való használatakor a rendszer egy másik gyakori konfigurációs problémát is jelent.
 
-<a name="required-ports"> </a> Ha egy API Management Service-példány egy VNET üzemel, a rendszer a következő táblázatban található portokat használja.
+<a name="required-ports"></a> Ha egy API Management Service-példány egy VNET üzemel, a rendszer a következő táblázatban található portokat használja.
 
 | Forrás/cél port (ok) | Irány          | Átviteli protokoll |   [Szolgáltatás címkéi](../virtual-network/network-security-groups-overview.md#service-tags) <br> Forrás/cél   | Cél ( \* )                                                 | Virtual Network típusa |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | */[80], 443                  | Bejövő            | TCP                | INTERNET/VIRTUAL_NETWORK            | Ügyfél-kommunikáció API Management                      | Külső             |
 | */3443                     | Bejövő            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Felügyeleti végpont a Azure Portal és a PowerShell számára         | Külső & belső  |
 | */443                  | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | **Függőség az Azure Storage-ban**                             | Külső & belső  |
-| */443                  | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) (ha van ilyen)                   | Külső & belső  |
+| */443                  | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) és Azure-beli kulcstartó-függőség                  | Külső & belső  |
 | */1433                     | Kimenő           | TCP                | VIRTUAL_NETWORK/SQL                 | **Hozzáférés az Azure SQL-végpontokhoz**                           | Külső & belső  |
+| */433                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Hozzáférés az Azure kulcstartóhoz**                           | Külső & belső  |
 | */5671, 5672, 443          | Kimenő           | TCP                | VIRTUAL_NETWORK/EventHub            | Az [Event hub-házirend](api-management-howto-log-event-hubs.md) és a figyelési ügynök közötti függőség | Külső & belső  |
 | */445                      | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | Függőség a [git](api-management-configuration-repository-git.md) -hez készült Azure-fájlmegosztástól                      | Külső & belső  |
 | */443, 12000                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureCloud            | Állapot-és figyelési bővítmény         | Külső & belső  |
@@ -191,7 +192,7 @@ A kapcsolódási problémák megoldásához tekintse át az [általános hálóz
 
 * **Erőforrás-navigációs hivatkozások**: Ha a üzembe helyezés Resource Manager stílusú vnet alhálózatba, API Management az alhálózatot az erőforrás-navigációs hivatkozás létrehozásával. Ha az alhálózat már tartalmaz egy másik szolgáltatótól származó erőforrást, akkor a telepítés **sikertelen** lesz. Hasonlóképpen, ha egy API Management szolgáltatást egy másik alhálózatra helyez át, vagy törli azt, akkor az erőforrás-navigációs hivatkozás el lesz távolítva.
 
-## <a name="subnet-size-requirement"></a><a name="subnet-size"> </a> Alhálózat méretének követelménye
+## <a name="subnet-size-requirement"></a><a name="subnet-size"></a> Alhálózat méretének követelménye
 Az Azure egyes alhálózatokon belül fenntart néhány IP-címet, és ezeket a címeket nem lehet használni. Az alhálózatok első és utolsó IP-címe a protokoll-megfelelőség számára van fenntartva, valamint az Azure-szolgáltatásokhoz használt három további címet. További információ: az [IP-címek ezen alhálózatokon belüli használatára vonatkozó korlátozások?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
 Az Azure VNET-infrastruktúra által használt IP-címeken kívül az alhálózat minden egyes API Management-példánya két IP-címet használ a prémium SKU vagy egy IP-cím alapján a fejlesztői SKU számára. Minden példány fenntart egy további IP-címet a külső terheléselosztó számára. Belső virtuális hálózatra való üzembe helyezéskor további IP-címet igényel a belső terheléselosztó számára.
@@ -200,7 +201,7 @@ Az alhálózat minimális mérete feletti számítás miatt, amelyben a API Mana
 
 API Management minden további méretezési egységéhez két további IP-cím szükséges.
 
-## <a name="routing"></a><a name="routing"> </a> Útválasztás
+## <a name="routing"></a><a name="routing"></a> Útválasztás
 + Az elosztott terhelésű nyilvános IP-cím (VIP) le lesz foglalva az összes szolgáltatási végpont elérésének biztosításához.
 + A rendszer az alhálózati IP-címtartomány (DIP) IP-címét fogja használni a vnet található erőforrások eléréséhez, és a nyilvános IP-címet (VIP) használja a vnet kívüli erőforrások elérésére.
 + Az elosztott terhelésű nyilvános IP-cím a Azure Portal áttekintés/Essentials paneljén található.
@@ -212,7 +213,7 @@ API Management minden további méretezési egységéhez két további IP-cím s
 * A belső virtuális hálózati módban konfigurált többrégiós API Management üzemelő példányok esetében a felhasználók feladata, hogy a terheléselosztást több régión keresztül kezelhesse, ahogy az Útválasztás tulajdonosa.
 * Ha egy másik régióban lévő, globálisan összekötött VNET lévő erőforrással kapcsolódik, API Management a szolgáltatás belső módban, a platform korlátozása miatt nem fog működni. További információ: az [egyik virtuális hálózat erőforrásai nem tudnak kommunikálni az Azure belső terheléselosztó szolgáltatásával a társ virtuális hálózatban](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) .
 
-## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> Vezérlési sík IP-címei
+## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"></a> Vezérlési sík IP-címei
 
 Az IP-címeket az Azure- **környezet** osztja el. Ha a **globálisan** megjelölt IP-címet engedélyezi a bejövő kérelmek számára, a **régió** adott IP-címével együtt kell engedélyezni.
 

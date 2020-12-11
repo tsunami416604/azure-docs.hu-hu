@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 070d105785ee3ab9811188406bda56dbe6ceb558
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350891"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545604"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>A Nagyvállalati Szerződés foglalási költségeinek és használati adatainak lekérése
 
@@ -139,6 +139,8 @@ Kérje le az amortizált költségadatokat, majd a fenntartott példány szerint
 1. Kérje le a becsült használatalapú fizetéses költségeket. Szorozza össze a _UnitPrice_ (egységár) értéket a _Quantity_ (Mennyiség) értékkel a becsült használatalapú fizetéses költségek meghatározásához, ha nem vonatkozott foglalási kedvezmény a használatra.
 2. Kérje le a foglalási költségeket. Összesítse a _Költség_ értékeket a fenntartott példányért fizetett, pénzben kifejezett érték kiszámításához. Ez tartalmazza a foglalás használt és nem használt költségeit.
 3. Vonja ki a foglalási költségeket a becsült használatalapú fizetéses költségekből a becsült megtakarítások kiszámításához.
+
+Ne feledje, hogy ha kihasználatlan foglalása van, akkor a _ChargeType_ _UnusedReservation_ bejegyzését is számításba kell venni. Teljes kihasználtságú foglalás mellett érheti el a maximális megtakarítást. Minden egyes _UnusedReservation_ csökkenti a megtakarítás mértékét.
 
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Foglalásvásárlások és amortizációs költségek a költségelemzésben
 

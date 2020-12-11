@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673511"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107872"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>A JavaScript használata a Microsoft Authentication Library használatával Azure AD B2C
 
@@ -169,7 +169,7 @@ A következő lépések feltételezik, hogy már követte az előző [JavaScript
 
 ### <a name="step-2-catch-and-handle-authentication-errors-in-your-login-method"></a>2. lépés: hitelesítési hibák elfogása és kezelése a bejelentkezési módszerben
 
-Ha a felhasználó **elfelejtette a jelszót** , az alkalmazás olyan hibát jelez, amelyet a kódban fel kell fogni, majd a megfelelő felhasználói folyamat bemutatásával kell kezelnie. Ebben az esetben a `b2c_1_reset` jelszó-visszaállítási folyamat.
+Ha a felhasználó **elfelejtette a jelszót**, az alkalmazás olyan hibát jelez, amelyet a kódban fel kell fogni, majd a megfelelő felhasználói folyamat bemutatásával kell kezelnie. Ebben az esetben a `b2c_1_reset` jelszó-visszaállítási folyamat.
 
 1. A bejelentkezési módszert a következőképpen bővítheti:
 
@@ -207,9 +207,9 @@ Ha a felhasználó **elfelejtette a jelszót** , az alkalmazás olyan hibát jel
 
     A jelszó alaphelyzetbe állítása után a rendszer visszaadja a felhasználót az alkalmazásnak, hogy újra bejelentkezzen.
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C által megjelenített bejelentkezési képernyő" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="A jelszó-visszaállítási folyamat képernyők Azure AD B2C" border="false":::
 
-    További információ a hibakódokról és a kezelési kivételekről: [MSAL hiba és kivételek kódjai](msal-handling-exceptions.md).
+    További információ a hibakódokról és a kezelési kivételekről: [MSAL hiba és kivételek kódjai](msal-error-handling-js.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -217,4 +217,4 @@ További információ ezekről a Azure AD B2C fogalmakról:
 
 - [Felhasználói folyamatok](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Egyéni szabályzatok](../../active-directory-b2c/custom-policy-get-started.md)
-- [Felhasználói felület testreszabása](../../active-directory-b2c/custom-policy-configure-user-input.md)
+- [Felhasználói felület testreszabása](../../active-directory-b2c/configure-user-input.md)

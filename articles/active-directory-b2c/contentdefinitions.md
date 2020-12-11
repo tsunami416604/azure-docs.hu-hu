@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 018d90db06948f3fd6a34b56c65088641a9ca874
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628660"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108977"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -63,7 +63,7 @@ A **ContentDefinition** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Id | Igen | A tartalom definíciójának azonosítója. Az érték a **tartalom-definíciós azonosítók** szakaszban, a lap későbbi részében van megadva. |
+| Id | Yes | A tartalom definíciójának azonosítója. Az érték a **tartalom-definíciós azonosítók** szakaszban, a lap későbbi részében van megadva. |
 
 A **ContentDefinition** elem a következő elemeket tartalmazza:
 
@@ -90,7 +90,7 @@ A **DataUri** elem az oldal azonosítójának megadására szolgál. Azure AD B2
 
 ### <a name="select-a-page-layout"></a>Lapelrendezés kiválasztása
 
-A [JavaScript-ügyféloldali kód](javascript-samples.md) engedélyezéséhez szúrja `contract` `elements` be a és az oldal típusát. Például: `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+A [JavaScript-ügyféloldali kód](javascript-and-page-layout.md) engedélyezéséhez szúrja `contract` `elements` be a és az oldal típusát. Például: `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -111,7 +111,7 @@ A következő példa a **DataUri** mutatja be `selfasserted` `1.2.0` :
 
 #### <a name="migrating-to-page-layout"></a>Áttelepítés az oldal elrendezésére
 
-Az érték formátumának tartalmaznia kell a szót `contract` : _urn: com: Microsoft: HRE: B2C: Elements: **Szerződés** :p Age-Name: Version_ . Ha a régi **DataUri** értéket használó egyéni házirendekben szeretne megadni egy lapelrendezést, a következő táblázat segítségével váltson át az új formátumra.
+Az érték formátumának tartalmaznia kell a szót `contract` : _urn: com: Microsoft: HRE: B2C: Elements:**Szerződés**:p Age-Name: Version_. Ha a régi **DataUri** értéket használó egyéni házirendekben szeretne megadni egy lapelrendezést, a következő táblázat segítségével váltson át az új formátumra.
 
 | Régi DataUri érték | Új DataUri érték |
 | ----------------- | ----------------- |
@@ -166,13 +166,13 @@ A **metaadat** -elemek a következő elemeket tartalmazzák:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Item | 0: n | A tartalom-definícióhoz kapcsolódó metaadatok |
+| Elem | 0: n | A tartalom-definícióhoz kapcsolódó metaadatok |
 
 A **metaadatok** elem **elem eleme a** következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Kulcs | Igen | A metaadat-kulcs.  |
+| Kulcs | Yes | A metaadat-kulcs.  |
 
 #### <a name="metadata-keys"></a>Metaadat-kulcsok
 
@@ -180,7 +180,7 @@ A Content Definition a következő metaadat-elemeket támogatja:
 
 | Kulcs | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| DisplayName | Nem | Egy karakterlánc, amely tartalmazza a tartalom definíciójának nevét. |
+| DisplayName | No | Egy karakterlánc, amely tartalmazza a tartalom definíciójának nevét. |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -194,8 +194,8 @@ A **LocalizedResourcesReference** elem a következő attribútumokat tartalmazza
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Nyelv | Igen | Egy karakterlánc, amely az RFC 5646-címkék által támogatott nyelvet tartalmaz a nyelvek azonosításához. |
-| LocalizedResourcesReferenceId | Igen | A **LocalizedResources** elem azonosítója. |
+| Nyelv | Yes | Egy karakterlánc, amely az RFC 5646-címkék által támogatott nyelvet tartalmaz a nyelvek azonosításához. |
+| LocalizedResourcesReferenceId | Yes | A **LocalizedResources** elem azonosítója. |
 
 Az alábbi példa egy regisztrációs vagy bejelentkezési tartalom definícióját mutatja be az angol, francia és spanyol nyelv honosítására való hivatkozással:
 
@@ -238,4 +238,4 @@ A **ContentDefinition** elem ID attribútuma határozza meg a tartalom-definíci
 
 A felhasználói felület tartalmi definíciók használatával történő testreszabására példát a következő témakörben talál:
 
-[Az alkalmazás felhasználói felületének testreszabása egyéni házirend használatával](custom-policy-ui-customization.md)
+[Az alkalmazás felhasználói felületének testreszabása egyéni házirend használatával](customize-ui-with-html.md)

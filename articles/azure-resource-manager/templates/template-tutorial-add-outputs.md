@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 7acfb168462354017168ee333ea0b1ecaea434c1
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931741"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107124"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Oktatóanyag: kimenetek hozzáadása az ARM-sablonhoz
 
@@ -41,17 +41,17 @@ A következő példa kiemeli a sablon módosítását a kimeneti érték hozzáa
 
 Néhány fontos elemet érdemes megjegyezni a hozzáadott kimeneti értékről.
 
-A visszaadott érték típusa **objektum**, ami azt jelenti, hogy egy JSON-objektumot ad vissza.
+A visszaadott érték típusa `object` , ami azt jelenti, hogy egy JSON-objektumot ad vissza.
 
 A [hivatkozási](template-functions-resource.md#reference) függvényt használja a Storage-fiók futásidejű állapotának lekéréséhez. Egy erőforrás futásidejű állapotának lekéréséhez egy erőforrás nevét vagy AZONOSÍTÓját kell átadnia. Ebben az esetben ugyanazt a változót használja, amelyet a Storage-fiók nevének létrehozásához használt.
 
-Végül visszaadja a **primaryEndpoints** tulajdonságot a Storage-fiókból.
+Végül visszaadja a `primaryEndpoints` tulajdonságot a Storage-fiókból.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
 Készen áll a sablon üzembe helyezésére, és megtekinteni a visszaadott értéket.
 
-Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi, hogy a **templateFile** változót a sablonfájl elérési útjára állította, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
+Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](template-tutorial-create-first-template.md#create-resource-group)című témakört. A példa feltételezi `templateFile` , hogy a változót a sablonfájl elérési útjára állította, ahogy az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)is látható.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -92,7 +92,7 @@ A központi telepítési parancs kimenetében az alábbi példához hasonló obj
 ```
 
 > [!NOTE]
-> Ha az üzemelő példány nem sikerült, a **részletes** kapcsoló használatával kérheti le a létrehozott erőforrásokra vonatkozó információkat. A **hibakeresési kapcsoló használatával** további információkat kaphat a hibakeresésről.
+> Ha a telepítés nem sikerült, a `verbose` kapcsolóval kérheti le a létrehozott erőforrásokra vonatkozó információkat. A `debug` kapcsoló használatával további információkat kaphat a hibakereséshez.
 
 ## <a name="review-your-work"></a>A munka áttekintése
 

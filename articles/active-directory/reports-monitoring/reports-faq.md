@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1984e2f0bb55115c7d700b91f564d9f01c145151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015330"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107430"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Gyakori kérdések Azure Active Directory jelentésekről
 
@@ -37,7 +37,7 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 **K: jelenleg a `https://graph.windows.net/<tenant-name>/reports/` Endpoint API-kat használva lehívhatják az Azure ad biztonsági jelentéseit (az észlelések bizonyos típusai, például a kiszivárgott hitelesítő adatok vagy a névtelen IP-címekről való bejelentkezések) a jelentéskészítési rendszerbe programozott módon. Mire érdemes váltani?**
 
-**A:** Az [Identity Protection kockázati észlelések API](../identity-protection/howto-identity-protection-graph-api.md)   -val Microsoft Graph használatával férhet hozzá a biztonsági észlelésekhez. Ez az új formátum nagyobb rugalmasságot biztosít az adatlekérdezéshez, a speciális szűréssel, a mezők kiválasztásával és egyebekkel, valamint a kockázati észlelések egyetlen típusra történő egységesítésével, így könnyebben integrálható a SIEM és más adatgyűjtési eszközökbe. Mivel az adatformátumok eltérő formátumúak, nem helyettesíthet új lekérdezést a régi lekérdezésekhez. [Az új API](/graph/api/resources/identityriskevent?view=graph-rest-beta)azonban a Microsoft Graph-t használja, amely az ilyen API-k Microsoft-szabványa Microsoft 365 vagy az Azure ad. Így a szükséges munka kiterjesztheti a jelenlegi Microsoft Graph beruházásait, vagy megkezdheti az áttérést az új standard platformra.
+**A:** Az [Identity Protection kockázati észlelések API](../identity-protection/howto-identity-protection-graph-api.md) -val Microsoft Graph használatával férhet hozzá a biztonsági észlelésekhez. Ez az új formátum nagyobb rugalmasságot biztosít az adatlekérdezéshez, a speciális szűréssel, a mezők kiválasztásával és egyebekkel, valamint a kockázati észlelések egyetlen típusra történő egységesítésével, így könnyebben integrálható a SIEM és más adatgyűjtési eszközökbe. Mivel az adatformátumok eltérő formátumúak, nem helyettesíthet új lekérdezést a régi lekérdezésekhez. [Az új API](/graph/api/resources/identityriskevent?view=graph-rest-beta)azonban a Microsoft Graph-t használja, amely az ilyen API-k Microsoft-szabványa Microsoft 365 vagy az Azure ad. Így a szükséges munka kiterjesztheti a jelenlegi Microsoft Graph beruházásait, vagy megkezdheti az áttérést az új standard platformra.
 
 ---
 
@@ -49,7 +49,7 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 **K: milyen gyorsan kell látni a tevékenységek információit a prémium szintű licenc beszerzése után?**
 
-**A:** Ha már rendelkezik a tevékenységek és az ingyenes licencek között, akkor azonnal megtekintheti. Ha nem rendelkezik az adataival, akkor a jelentésekben az adatai közül egy vagy két nap fog megjelenni.
+**A:** Ha már rendelkezik a tevékenységek és az ingyenes licencek között, akkor azonnal megtekintheti. Ha nem rendelkezik az adataival, a jelentésekben legfeljebb 3 nap fog megjelenni az adatai.
 
 ---
 

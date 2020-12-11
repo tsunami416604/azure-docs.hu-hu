@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfac3b80e772e7b359b1e926d5fb84e447a8fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0c120f343ec539783f04fe35e96891c5372c5d39
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89271577"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109079"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Feltételes hozzáférés hozzáadása a felhasználói folyamatokhoz Azure Active Directory B2C
 
@@ -39,10 +39,10 @@ További információ az [Identity Protectionről és a feltételes hozzáféré
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
-1. A **házirendek**területen válassza a **felhasználói folyamatok**lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
+1. A **házirendek** területen válassza a **felhasználói folyamatok** lehetőséget, majd válassza az **új felhasználói folyamat** elemet.
 1. A **felhasználói folyamat létrehozása** lapon válassza ki a felhasználói folyamat típusát.
-1. **A verzió kiválasztása**területen válassza az **ajánlott**lehetőséget, majd válassza a **Létrehozás**lehetőséget. ([További](user-flow-versions.md) információ a felhasználói folyamatok verzióiról.)
+1. **A verzió kiválasztása** területen válassza az **ajánlott** lehetőséget, majd válassza a **Létrehozás** lehetőséget. ([További](user-flow-versions.md) információ a felhasználói folyamatok verzióiról.)
 
     ![Felhasználói folyamat létrehozása lap Azure Portal a tulajdonságok kiemelve](./media/tutorial-create-user-flows/select-version.png)
 
@@ -56,7 +56,7 @@ További információ az [Identity Protectionről és a feltételes hozzáféré
 
    ![Feltételes hozzáférési beállítások konfigurálása](media/conditional-access-user-flow/configure-conditional-access.png)
 
-1. A **felhasználói attribútumok és jogcímek** szakaszban válassza ki azokat a jogcímeket és attribútumokat, amelyeket szeretne összegyűjteni, majd a felhasználótól a regisztráció során elküldeni. Válassza például a **továbbiak megjelenítése**lehetőséget, majd válassza az attribútumok és jogcímek lehetőséget az **ország/régió** és a **megjelenítendő név**mezőben. Válassza az **OK** lehetőséget.
+1. A **felhasználói attribútumok és jogcímek** szakaszban válassza ki azokat a jogcímeket és attribútumokat, amelyeket szeretne összegyűjteni, majd a felhasználótól a regisztráció során elküldeni. Válassza például a **továbbiak megjelenítése** lehetőséget, majd válassza az attribútumok és jogcímek lehetőséget az **ország/régió** és a **megjelenítendő név** mezőben. Válassza az **OK** lehetőséget.
 
     ![Attribútumok és jogcímek kiválasztása lap három jogcímek kiválasztásával](./media/conditional-access-user-flow/configure-user-attributes-claims.png)
 
@@ -65,17 +65,17 @@ További információ az [Identity Protectionről és a feltételes hozzáféré
 ## <a name="add-conditional-access-to-an-existing-user-flow"></a>Feltételes hozzáférés hozzáadása meglévő felhasználói folyamathoz
 
 > [!NOTE]
-> A meglévő felhasználói folyamatnak olyan verziónak kell lennie, amely támogatja a feltételes hozzáférést. A felhasználói folyamatok ezen verziói **ajánlott**címkével rendelkeznek.
+> A meglévő felhasználói folyamatnak olyan verziónak kell lennie, amely támogatja a feltételes hozzáférést. A felhasználói folyamatok ezen verziói **ajánlott** címkével rendelkeznek.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 
-1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
 
-1. A **házirendek**területen válassza a **felhasználói folyamatok**elemet. Ezután válassza ki a felhasználói folyamatot.
+1. A **házirendek** területen válassza a **felhasználói folyamatok** elemet. Ezután válassza ki a felhasználói folyamatot.
 
-1. Válassza a **Tulajdonságok** lehetőséget, és győződjön meg arról, hogy a felhasználói folyamat támogatja a feltételes hozzáférést a **Tulajdonságok** lehetőség kiválasztásával, és a **feltételes hozzáférés**feliratú beállítás keresésével.
+1. Válassza a **Tulajdonságok** lehetőséget, és győződjön meg arról, hogy a felhasználói folyamat támogatja a feltételes hozzáférést a **Tulajdonságok** lehetőség kiválasztásával, és a **feltételes hozzáférés** feliratú beállítás keresésével.
  
    ![Az MFA és a feltételes hozzáférés konfigurálása a tulajdonságok között](media/conditional-access-user-flow/add-conditional-access.png)
 
@@ -96,20 +96,20 @@ A felhasználói folyamat feltételes hozzáférésének teszteléséhez [hozzon
 - Ha kockázatos bejelentkezést szeretne szimulálni, töltse le a TOR böngészőt, és próbálja meg bejelentkezni a felhasználói folyamat végpontba.
 - A következő beállítások használatával [hozzon létre egy feltételes hozzáférési szabályzatot](conditional-access-identity-protection-setup.md):
    
-   - **Felhasználók és csoportok**esetében válassza a felhasználó tesztelése lehetőséget (ne jelölje ki az **összes felhasználót** , vagy tiltsa le a bejelentkezést).
-   - **Felhőalapú alkalmazások vagy műveletek**esetében válassza az **alkalmazások kiválasztása**lehetőséget, majd válassza ki a függő entitás alkalmazását.
-   - A feltételek beállításnál válassza a **bejelentkezési kockázat** és a **magas**, **közepes**és **alacsony** kockázati szintek lehetőséget.
-   - A **támogatás**mezőben válassza a **hozzáférés letiltása**lehetőséget.
+   - **Felhasználók és csoportok** esetében válassza a felhasználó tesztelése lehetőséget (ne jelölje ki az **összes felhasználót** , vagy tiltsa le a bejelentkezést).
+   - **Felhőalapú alkalmazások vagy műveletek** esetében válassza az **alkalmazások kiválasztása** lehetőséget, majd válassza ki a függő entitás alkalmazását.
+   - A feltételek beállításnál válassza a **bejelentkezési kockázat** és a **magas**, **közepes** és **alacsony** kockázati szintek lehetőséget.
+   - A **támogatás** mezőben válassza a **hozzáférés letiltása** lehetőséget.
 
       ![Kockázatészlelések](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
 ### <a name="run-the-user-flow"></a>A felhasználói folyamat futtatása
 
-1. Válassza ki a létrehozott felhasználói folyamatot az Áttekintés oldal megnyitásához, majd válassza a **felhasználói folyamat futtatása**lehetőséget. Az **alkalmazás**alatt válassza a *webapp1*lehetőséget. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Válassza ki a létrehozott felhasználói folyamatot az Áttekintés oldal megnyitásához, majd válassza a **felhasználói folyamat futtatása** lehetőséget. Az **alkalmazás** alatt válassza a *webapp1* lehetőséget. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 
    ![Felhasználói folyamat futtatása lap a portálon a felhasználói folyamat futtatása gomb kiemelve](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
 
-1. Másolja az URL-címet a **felhasználói folyamat végpontjának futtatása**alatt.
+1. Másolja az URL-címet a **felhasználói folyamat végpontjának futtatása** alatt.
 
 1. Ha kockázatos bejelentkezést szeretne szimulálni, nyissa meg a [Tor böngészőt](https://www.torproject.org/download/) , és használja az előnézet lépésben másolt URL-címet a regisztrált alkalmazásba való bejelentkezéshez.
 
@@ -117,6 +117,6 @@ A felhasználói folyamat feltételes hozzáférésének teszteléséhez [hozzon
 
    ![Blokkolt bejelentkezés tesztelése](media/conditional-access-identity-protection-setup/test-blocked-sign-in.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Felhasználói felület testreszabása Azure AD B2C felhasználói folyamatban](customize-ui-overview.md)
+[Felhasználói felület testreszabása Azure AD B2C felhasználói folyamatban](customize-ui-with-html.md)

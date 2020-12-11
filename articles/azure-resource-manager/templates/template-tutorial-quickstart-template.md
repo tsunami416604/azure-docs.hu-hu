@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 445e7ce2d6e609d75bff38bb3d049a87f184be12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b32ae7aeb971c9391a69e3ca3d01f669774248
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613594"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106903"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Oktatóanyag: az Azure Gyorsindítás sablonjainak használata
 
@@ -34,10 +34,10 @@ Ez a sablon a Storage-fiókok és az App Service-csomagok üzembe helyezésére 
 ## <a name="find-template"></a>Sablon keresése
 
 1. [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/) megnyitása
-1. A **Search (keresés**) mezőbe írja be a **linuxos webalkalmazás üzembe helyezése**kifejezést.
-1. Válassza ki a címet egy **alapszintű linuxos webalkalmazás üzembe helyezésével**. Ha nem találja meg a problémát, a [közvetlen hivatkozás](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)látható.
+1. A **Search (keresés**) mezőbe írja be a _linuxos webalkalmazás üzembe helyezése_ kifejezést.
+1. Válassza ki az **alapszintű Linux-webalkalmazást** tartalmazó csempét. Ha nem találja meg a problémát, a [közvetlen hivatkozás](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)látható.
 1. Válassza **a Tallózás lehetőséget a githubon**.
-1. Válassza ** aazuredeploy.js**lehetőséget.
+1. Válassza _aazuredeploy.js_ lehetőséget.
 1. Tekintse át a sablont. Különösen keresse meg az `Microsoft.Web/sites` erőforrást.
 
     ![Resource Manager-sablon – gyors üzembe helyezési webhely](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
@@ -48,15 +48,15 @@ A gyors üzembe helyezési sablon egyesítése a meglévő sablonnal:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
-A webalkalmazás nevének egyedinek kell lennie az Azure-ban. Ha meg szeretné akadályozni, hogy a rendszer duplikálja a neveket, a **webAppPortalName** változót a " **webAppPortalName": "[concat (parameters (" webAppName "),"-WebApp "]]** és **" webAppPortalName ":" [concat (parameters (' webAppName '), uniqueString (resourceGroup (). id)] "** értékre frissíti.
+A webalkalmazás nevének egyedinek kell lennie az Azure-ban. Ha meg szeretné akadályozni, hogy ismétlődő nevek legyenek, a változó frissítve lett a verzióról a verzióra `webAppPortalName` `"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"` `"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"` .
 
 Adjon hozzá egy vesszőt a definíció végén, `Microsoft.Web/serverfarms` hogy elkülönítse az erőforrás-definíciót a `Microsoft.Web/sites` definícióból.
 
 Ebben az új erőforrásban néhány fontos szempontot figyelembe kell venni.
 
-Megfigyelheti, hogy egy **dependsOn** nevű elemet tartalmaz, amely az App Service-csomagra van beállítva. Erre a beállításra azért van szükség, mert az App Service-csomagnak léteznie kell a webalkalmazás létrehozása előtt. A **dependsOn** elem azt mutatja be, hogy a Resource Manager hogyan rendeli hozzá az erőforrásokat az üzembe helyezéshez.
+Megfigyelheti, `dependsOn` hogy egy, az App Service-csomagra beállított elemmel rendelkezik. Erre a beállításra azért van szükség, mert az App Service-csomagnak léteznie kell a webalkalmazás létrehozása előtt. Az `dependsOn` elem közli, hogy a Resource Manager hogyan rendeli hozzá az erőforrásokat az üzembe helyezéshez.
 
-A **serverFarmId** tulajdonság a [resourceId](template-functions-resource.md#resourceid) függvényt használja. Ez a függvény egy erőforrás egyedi azonosítóját kapja meg. Ebben az esetben az App Service-csomag egyedi azonosítóját kapja meg. A webalkalmazás egy adott app Service-csomaghoz van társítva.
+A `serverFarmId` tulajdonság a [resourceId](template-functions-resource.md#resourceid) függvényt használja. Ez a függvény egy erőforrás egyedi azonosítóját kapja meg. Ebben az esetben az App Service-csomag egyedi azonosítóját kapja meg. A webalkalmazás egy adott app Service-csomaghoz van társítva.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
@@ -91,7 +91,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Ha az üzemelő példány nem sikerült, a **részletes** kapcsoló használatával kérheti le a létrehozott erőforrásokra vonatkozó információkat. A **hibakeresési kapcsoló használatával** további információkat kaphat a hibakeresésről.
+> Ha a telepítés nem sikerült, a `verbose` kapcsolóval kérheti le a létrehozott erőforrásokra vonatkozó információkat. A `debug` kapcsoló használatával további információkat kaphat a hibakereséshez.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -104,7 +104,7 @@ Ha most leáll, érdemes lehet törölni a telepített erőforrásokat az erőfo
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan használhat egy rövid útmutató sablont a sablonok fejlesztéséhez. A következő oktatóanyagban címkéket adhat hozzá az erőforrásokhoz.
 

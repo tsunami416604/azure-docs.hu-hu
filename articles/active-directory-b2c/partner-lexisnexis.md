@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4befcaf6b8c6b6bc4fddacb179883551609f7e19
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928647"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108433"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Oktatóanyag a LexisNexis konfigurálásához a Azure Active Directory B2C
 
@@ -95,7 +95,7 @@ A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/
 
 Ez a megoldás a Azure AD B2C által betöltött egyéni FELHASZNÁLÓIFELÜLET-sablonokat használja. Ezek a felhasználói felületi sablonok a profilkészítést közvetlenül a ThreatMetrix szolgáltatásnak küldik el.
 
-Tekintse át ezeket az [utasításokat](./custom-policy-ui-customization.md#custom-page-content-walkthrough) a mellékelt [felhasználói felületi fájlok](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) blob Storage-fiókba történő telepítéséhez. Az utasítások közé tartozik a blob Storage-fiók beállítása, a CORS konfigurálása és a nyilvános hozzáférés engedélyezése.
+Tekintse át ezeket az [utasításokat](./customize-ui-with-html.md#custom-page-content-walkthrough) a mellékelt [felhasználói felületi fájlok](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) blob Storage-fiókba történő telepítéséhez. Az utasítások közé tartozik a blob Storage-fiók beállítása, a CORS konfigurálása és a nyilvános hozzáférés engedélyezése.
 
 A felhasználói felület az [Ocean Blue sablonon](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue)alapul. A felhasználói felületen lévő összes hivatkozást frissíteni kell, hogy az üzembe helyezett helyre hivatkozzon. A felhasználói felület mappában keresse meg és cserélje le https://yourblobstorage/blobcontainer az üzembe helyezett helyet.
 

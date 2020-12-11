@@ -3,12 +3,12 @@ title: Bejelentkezés Azure Notebooks előzetes verzióra
 description: Gyorsan bejelentkezhet Azure Notebooks előzetes verzióra, és beállíthat egy felhasználói azonosítót, amely lehetővé teszi a mentett projektek elérését és a jegyzetfüzetek másokkal való megosztását.
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 168da5d4d36cd4cfadb4ef120ddfabbd261cafaf
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85830417"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109453"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Gyors útmutató: bejelentkezés és felhasználói azonosító beállítása Azure Notebooks előzetes verzióhoz
 
@@ -22,7 +22,7 @@ Habár bármikor megtekintheti Azure Notebooks bejelentkezés nélkül, be kell 
 
     ![Bejelentkezési parancs helye Azure Notebooks](media/accounts/sign-in-command.png)
 
-1. Ha a rendszer kéri, adja meg egy Microsoft-fiók vagy egy munkahelyi vagy iskolai fiók e-mail-címét, és kattintson a **Tovább gombra**. A fiók típusainak ismertetését [Azure Notebooks felhasználói fiókjában](azure-notebooks-user-account.md)találja. Ha nem rendelkezik Microsoft-fiókkal, vagy kifejezetten a Azure Notebooks használatára szeretné használni az egyiket, válassza a **Létrehozás**lehetőséget:
+1. Ha a rendszer kéri, adja meg egy Microsoft-fiók vagy egy munkahelyi vagy iskolai fiók e-mail-címét, és kattintson a **Tovább gombra**. A fiók típusainak ismertetését [Azure Notebooks felhasználói fiókjában](azure-notebooks-user-account.md)találja. Ha nem rendelkezik Microsoft-fiókkal, vagy kifejezetten a Azure Notebooks használatára szeretné használni az egyiket, válassza a **Létrehozás** lehetőséget:
 
     ![Új Microsoft-fiók parancs létrehozása a bejelentkezési kérésben](media/accounts/create-new-microsoft-account.png)
 
@@ -56,7 +56,7 @@ A kijelentkezéshez válassza ki a felhasználónevet az oldal jobb felső sark�
 
 ![Kijelentkezési parancs helye Azure Notebooks](media/accounts/sign-out-command.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: jegyzetfüzet létrehozása és megosztása](quickstart-create-share-jupyter-notebook.md)
+> [Gyors útmutató: Jupyter Notebook projekt exportálása](quickstart-export-jupyter-notebook-project.md)

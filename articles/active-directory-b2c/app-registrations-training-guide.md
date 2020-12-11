@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7bb38b382add2a0ea3506c31c5e6e76a985df6a1
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 7c9e3344ed819f607feeab88ac43a9dc286a61e0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936471"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109096"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>A Azure Active Directory B2C új Alkalmazásregisztrációk felülete
 
@@ -97,7 +97,7 @@ A **kulcsok** helyett az új felhasználói élményben a tanúsítványok **& S
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C bérlők nem alkalmazható szolgáltatásai
 A következő Azure AD-alkalmazás-regisztrációs képességek nem alkalmazhatók Azure AD B2C bérlők számára, illetve nem érhetők el:
 - **Szerepkörök és rendszergazdák** – jelenleg nem érhető el Azure ad B2Choz.
-- **Branding** – a felhasználói felület/UX testreszabása a **vállalati védjegyezési** felületen vagy felhasználói folyamat részeként van konfigurálva. Ismerkedjen meg [a Azure Active Directory B2C felhasználói felületének testreszabásával](customize-ui-overview.md).
+- **Branding** – a felhasználói felület/UX testreszabása a **vállalati védjegyezési** felületen vagy felhasználói folyamat részeként van konfigurálva. Ismerkedjen meg [a Azure Active Directory B2C felhasználói felületének testreszabásával](customize-ui-with-html.md).
 - **Közzétevő tartományának ellenőrzése** – az alkalmazás regisztrálva van a *. onmicrosoft.com*, amely nem ellenőrzött tartomány. Emellett a közzétevői tartományt elsődlegesen a felhasználói jóváhagyás biztosítására használják, amely nem vonatkozik Azure AD B2C alkalmazásokra a felhasználói hitelesítéshez. [További információ a közzétevő tartományáról](../active-directory/develop/howto-configure-publisher-domain.md).
 - **Jogkivonat konfigurációja** – a jogkivonat a felhasználói folyamat részeként van konfigurálva, nem pedig alkalmazás.
 - A gyors üzembe helyezési **élmény jelenleg** nem érhető el Azure ad B2C bérlők számára.

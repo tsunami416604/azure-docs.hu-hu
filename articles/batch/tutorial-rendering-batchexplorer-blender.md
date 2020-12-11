@@ -1,16 +1,16 @@
 ---
-title: Blender-jelenet renderelése az Azure Batch és a Batch Explorer használatával
+title: Oktatóanyag – Blender jelenet megjelenítése Azure Batch és Batch Explorer használatával
 description: Oktatóanyag – Több képkocka renderelése egy Blender-jelenetből az Azure Batch és a Batch Explorer ügyfélalkalmazással
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c015e4e83b0505a45690e92c1d732f74b6f6b0e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964804"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106461"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Oktatóanyag: Blender-jelenet renderelése a Batch Explorerrel
 
@@ -93,6 +93,7 @@ A készlet és a virtuális gépek állapota a készletek nézetében monitorozh
 ## <a name="create-a-rendering-job"></a>Renderelési feladat létrehozása
 
 Hozzon létre egy renderelési feladatot, hogy a létrehozott készlettel rendereljen néhány képkockát:
+
 * A bal oldali főmenüben válassza a „Gallery” (Katalógus) menüpontot.
 * Válassza az alkalmazáselemek listájából a „Blender” elemet.
 * Válassza ki a képkockák Windows Serveren történő renderelését beállító elemet.
@@ -137,6 +138,18 @@ Ha minden tevékenység befejeződött, a feladat befejezettként lesz megjelöl
 * Kattintson a jobb gombbal, és válassza a „Delete” (Törlés) parancsot, vagy válassza ki a készlet fölött lévő kuka ikont.
 
 ## <a name="next-steps"></a>További lépések
-* A „Gallery” (Katalógus) szakaszban megismerkedhet a Batch Exploreren keresztül elérhető renderelő alkalmazásokkal.
-* Mindegyik alkalmazáshoz több sablon érhető el, amelyek száma idővel nőni fog.  A Blenderhez elérhetők például olyan sablonok, amelyek egyetlen képet osztanak fel csempékké, hogy egy kép részeit egymással párhuzamosan lehessen renderelni.
-* A renderelési képességek átfogó ismertetését az [itt](./batch-rendering-service.md) található cikkek tartalmazzák.
+
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
+
+> [!div class="checklist"]
+> * Blender-jelenet feltöltése egy Azure-tárolóba
+> * Batch-készlet létrehozása több csomóponttal a renderelés elvégzéséhez
+> * Több képkocka renderelése
+> * A renderelt képkockafájlok megtekintése és letöltése
+
+Folytassa a következővel: Batch Explorer által elérhető renderelési alkalmazások feltárása a **katalógus szakaszban.** Mindegyik alkalmazáshoz több sablon érhető el, amelyek száma idővel nőni fog. A Blenderhez elérhetők például olyan sablonok, amelyek egyetlen képet osztanak fel csempékké, hogy egy kép részeit egymással párhuzamosan lehessen renderelni.
+
+A felhőméretű rendereléssel kapcsolatos további információkért tekintse át a Batch renderelési szolgáltatás beállításait.
+
+> [!div class="nextstepaction"]
+> [Batch-renderelési szolgáltatás](batch-rendering-service.md)

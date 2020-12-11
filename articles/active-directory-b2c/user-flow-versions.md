@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67949c31c710d88a05e1e110860fe703caf66d04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75ad3743a90f5773163a8f115e1924b8c5bbe097
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87481325"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108093"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>A felhasználói folyamatok verziói Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ A Azure Active Directory B2C (Azure AD B2C) felhasználói folyamatai segítség
 >- Az **ajánlott** felhasználói folyamatok a felhasználói folyamatok új előzetes verzióit jelentik. Alaposan tesztelték és egyesítik az örökölt **v2** és a **v 1.1** verzió összes funkcióját. Az új javasolt felhasználói folyamatok továbbra is megmaradnak és frissülnek. Ha áthelyezi ezeket az új ajánlott felhasználói folyamatokat, hozzáférhet a kiadott új funkciókhoz.
 >- A korábban **v1**-ként ismert **általános** felhasználói folyamatok általánosan elérhetők, a termelésre kész felhasználói folyamatok. Ha a felhasználói folyamatok kritikus fontosságúak, és a nagymértékben stabil verzióktól függenek, továbbra is használhatja a normál felhasználói folyamatokat, és felismerheti, hogy ezek a verziók nem lesznek karbantartva és frissítve.
 >
->Az összes korábbi előzetes verziójú felhasználói folyamat (V 1.1 és v2) a 2021-es **augusztus 1-től**az elavult elérési úton van. Ahol csak lehetséges, javasoljuk, hogy a lehető leghamarabb [váltson az új **javasolt** verzióra](#how-to-switch-to-a-new-recommended-user-flow) , így mindig kihasználhatja a legújabb funkciókat és frissítéseket. *Ezek a módosítások csak az Azure nyilvános felhőre vonatkoznak. Más környezetek továbbra is a [korábbi felhasználói folyamatok verziószámozását](user-flow-versions-legacy.md)használják.*
+>Az összes korábbi előzetes verziójú felhasználói folyamat (V 1.1 és v2) a 2021-es **augusztus 1-től** az elavult elérési úton van. Ahol csak lehetséges, javasoljuk, hogy a lehető leghamarabb [váltson az új **javasolt** verzióra](#how-to-switch-to-a-new-recommended-user-flow) , így mindig kihasználhatja a legújabb funkciókat és frissítéseket. *Ezek a módosítások csak az Azure nyilvános felhőre vonatkoznak. Más környezetek továbbra is a [korábbi felhasználói folyamatok verziószámozását](user-flow-versions-legacy.md)használják.*
 
 ## <a name="recommended-user-flows"></a>Ajánlott felhasználói folyamatok
 
@@ -35,11 +35,11 @@ Az ajánlott felhasználói folyamatok előzetes verzióként használhatók, am
 
 | Felhasználói folyamat | Leírás |
 | --------- | ----------- |
-| Jelszó alaphelyzetbe állítása (előzetes verzió) | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>[jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
+| Jelszó alaphelyzetbe állítása (előzetes verzió) | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>[jelszó bonyolultságára vonatkozó követelmények](password-complexity.md)</li></ul> |
 | Profil szerkesztése (előzetes verzió) | Lehetővé teszi a felhasználó számára a felhasználói attribútumok konfigurálását. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li></ul> |
-| Bejelentkezés (előzetes verzió) | Lehetővé teszi, hogy a felhasználó bejelentkezzen a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>Bejelentkezési oldal testreszabása</li></ul> |
-| Regisztráció (előzetes verzió) | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
-| Regisztráció és bejelentkezés (előzetes verzió) | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre, vagy jelentkezzen be a fiókjával. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
+| Bejelentkezés (előzetes verzió) | Lehetővé teszi, hogy a felhasználó bejelentkezzen a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>Bejelentkezési oldal testreszabása</li></ul> |
+| Regisztráció (előzetes verzió) | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>[Jelszó bonyolultságára vonatkozó követelmények](password-complexity.md)</li></ul> |
+| Regisztráció és bejelentkezés (előzetes verzió) | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre, vagy jelentkezzen be a fiókjával. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](multi-factor-authentication.md)</li><li>[Korhatáralapú hozzáférés-korlátozás](basic-age-gating.md)</li><li>[Jelszó bonyolultságára vonatkozó követelmények](password-complexity.md)</li></ul> |
 
 ## <a name="standard-user-flows"></a>Normál felhasználói folyamatok
 
@@ -47,11 +47,11 @@ Az általános jogú felhasználói folyamatok (korábbi nevén v1) általánosa
 
 | Felhasználói folyamat | Leírás |
 | --------- | ----------- | ----------- |
-| Új jelszó létrehozása | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
+| Új jelszó létrehozása | Lehetővé teszi, hogy a felhasználó új jelszót válasszon az e-mailek ellenőrzése után. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](multi-factor-authentication.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>[Jelszó bonyolultságára vonatkozó követelmények](password-complexity.md)</li></ul> |
 | Profil szerkesztése | Lehetővé teszi a felhasználó számára a felhasználói attribútumok konfigurálását. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li></ul> |
-| Bejelentkezés | Lehetővé teszi, hogy a felhasználó bejelentkezzen a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>Bejelentkezés letiltása</li><li>Jelszó alaphelyzetbe állításának kényszerítése</li><li>Bejelentkezés megtartása (KMSI)</ul><br>Ezzel a felhasználói folyamattal nem szabhatja testre a felhasználói felületet. |
-| Regisztráció | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul> |
-| Regisztráció és bejelentkezés | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre, vagy jelentkezzen be a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](custom-policy-multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Jelszó bonyolultságára vonatkozó követelmények](user-flow-password-complexity.md)</li></ul>|
+| Bejelentkezés | Lehetővé teszi, hogy a felhasználó bejelentkezzen a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>Bejelentkezés letiltása</li><li>Jelszó alaphelyzetbe állításának kényszerítése</li><li>Bejelentkezés megtartása (KMSI)</ul><br>Ezzel a felhasználói folyamattal nem szabhatja testre a felhasználói felületet. |
+| Regisztráció | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Jelszó bonyolultságára vonatkozó követelmények](password-complexity.md)</li></ul> |
+| Regisztráció és bejelentkezés | Lehetővé teszi, hogy a felhasználó fiókot hozzon létre, vagy jelentkezzen be a fiókjába. A felhasználói folyamat használatával a következőket állíthatja be: <ul><li>[Többtényezős hitelesítés](multi-factor-authentication.md)</li><li>[Jogkivonat élettartama](tokens-overview.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet viselkedése</li><li>[Jelszó bonyolultságára vonatkozó követelmények](password-complexity.md)</li></ul>|
 
 
 ## <a name="how-to-switch-to-a-new-recommended-user-flow"></a>Váltás egy új, javasolt felhasználói folyamatra
@@ -65,9 +65,9 @@ Ha a felhasználói folyamat örökölt verziójáról szeretne váltani az új 
 4. Frissítse az alkalmazás bejelentkezési URL-címét az újonnan létrehozott szabályzatba.
 
 5. Miután tesztelte a felhasználói folyamatot, és megerősítette, hogy működik, törölje az örökölt felhasználói folyamatot a következő lépések végrehajtásával:
-   1. A Azure AD B2C bérlő áttekintő menüjében válassza a **felhasználói folyamatok**elemet.
+   1. A Azure AD B2C bérlő áttekintő menüjében válassza a **felhasználói folyamatok** elemet.
    2. Keresse meg a törölni kívánt felhasználói folyamatot.
-   3. Az utolsó oszlopban válassza a helyi menüt (**...**), majd válassza a **Törlés**lehetőséget.
+   3. Az utolsó oszlopban válassza a helyi menüt (**...**), majd válassza a **Törlés** lehetőséget.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

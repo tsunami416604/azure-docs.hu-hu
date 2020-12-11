@@ -2,50 +2,45 @@
 title: Eltérések az Azure Data Factoryhoz képest
 description: Ismerje meg, hogyan különbözik az Azure szinapszis Analytics adatintegrációs képességei a Azure Data Factory
 services: synapse-analytics
-author: shirleywangmsft
+author: kromerm
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.author: shwang
+ms.date: 12/10/2020
+ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: db5d05e1a211ce14926ee4031054669fff5110d9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a8fd0ef006b246e30c02cfb321c72b4e070f54de
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930211"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109147"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Adatintegráció az Azure szinapszis Analyticsben és Azure Data Factory
 
-Az Azure szinapszis Analyticsben az adatintegrációs képességek, például a szinapszis-folyamatok és az Adatáramlások a Azure Data Factoryon alapulnak. További információ: [What is Azure Data Factory](../../data-factory/introduction.md). Szinte az összes funkció azonos vagy hasonló, és a dokumentáció a két szolgáltatás között van megosztva. Ez a cikk kiemeli és azonosítja a Azure Data Factory és az Azure szinapszis közötti jelenlegi különbségeket.
+Az Azure szinapszis Analyticsben az adatintegrációs képességek, például a szinapszis-folyamatok és az Adatáramlások a Azure Data Factoryon alapulnak. További információ: [What is Azure Data Factory](../../data-factory/introduction.md).
 
-Ha szeretné megtekinteni, hogy egy Azure Data Factory funkció vagy cikk az Azure Szinapszisra vonatkozik-e, tekintse meg a cikk tetején található monikert.
 
-![A monikerre vonatkozik](../media/concepts-data-factory-differences/applies-to-moniker.png "A monikerre vonatkozik")
+## <a name="available-features-in-azure-data-factory-and-azure-synapse-analytics"></a>Az Azure Data Factory és az Azure szinapszis Analytics elérhető funkciói
 
-## <a name="features-in-azure-data-factory-not-planned-for-azure-synapse"></a>Az Azure Szinapszishoz nem tervezett szolgáltatások Azure Data Factory
+Tekintse meg az alábbi táblázatot a funkciók rendelkezésre állásához:
 
-A következő szolgáltatások érhetők el Azure Data Factoryban, de az Azure Szinapszishoz nem tervezték őket.
+| Kategória                 | Funkció    |  Azure Data Factory  | Azure Synapse Analytics |
+| ------------------------ | ---------- | :------------------: | :---------------------: |
+| **Integration Runtime**  | A SSIS és a SSIS Integration Runtime használata | ✓ | ✗ |
+|                          | Régiók közötti Integration Runtime támogatása (adatfolyamatok) | ✓ | ✗ |
+|                          | Integration Runtime megosztás | ✓<br><small>*Megosztható különböző adatüzemek között* | ✗ |
+|                          | Élettartam | ✓ | ✗ |
+| **Folyamatok tevékenységei** | SSIS-csomag tevékenység | ✓ | ✗ |
+|                          | Power Query tevékenység támogatása | ✓ | ✓ |
+| **A Template Gallery és a Knowledge Center** | Megoldássablonok | ✓<br><small>*Azure Data Factory sablon-gyűjtemény* | ✓<br><small>*A szinapszis munkaterület tudásalapú központja* |
+| **GIT-tárház integrációja** | GIT-integráció | ✓ | ✓ |
+| **Figyelés**           | Spark-feladatok figyelése adatfolyamként | ✗ | ✓<br><small>*A szinapszis Spark-készletek kihasználása* |
+|                          | Integráció a Azure Monitor | ✓ | ✗ |
 
-* **SSIS-csomagok élettartama és eltolása:** Azure Data Factory a SSIS Integration Runtime használatával megemelheti és áthelyezheti a SSIS-csomagokat. A SSIS Integration Runtime és a végrehajtás SSIS csomag tevékenység nem érhető el a szinapszis-munkaterületeken. 
-* **Élettartam:** Az élettartam értéke az Azure Integration Runtime egyik beállítása, amely lehetővé teszi, hogy a Spark-fürt az adatfolyamatok elvégzése után egy ideig *melegen* maradjon. Ez a funkció nem érhető el a szinapszis-munkaterületeken.
+> [!Note]
+> Az **élő élettartam** egy olyan Azure Integration Runtime-beállítás, amely lehetővé teszi, hogy a Spark-fürt az adatfolyamok végrehajtása után egy ideig *melegen maradjon* .
+>
 
-## <a name="azure-synapse-features-not-supported-in-azure-data-factory"></a>Az Azure szinapszis szolgáltatásai nem támogatottak Azure Data Factory
-
-A következő szolgáltatások érhetők el az Azure Szinapszisban, de nem tervezik Azure Data Factory számára.
-
-* **A Spark-feladatok leképezési folyamatának figyelése:** A Szinapszisban a Spark motor a felhasználó előfizetésében található, így a felhasználók megtekinthetik a részletes Spark-naplókat. Azure Data Factory a feladatok végrehajtása Azure Data Factory által felügyelt Spark-fürtön történik, és ez az információ nem érhető el. 
-
-## <a name="azure-data-factory-features-that-behave-differently-in-synapse"></a>A Szinapszisban eltérően viselkedő szolgáltatások Azure Data Factory
-
-A következő funkciók vagy eltérően viselkednek, vagy jelenleg nem léteznek az Azure Szinapszisban. 
-
-* **Huzavona-adatfolyamatok:** A huzavona adatfolyam tevékenység jelenleg csak Azure Data Factoryban érhető el.
-* **A megoldás sablonjának gyűjteménye:** Azure Data Factory a felhasználók a megoldás sablonjának gyűjteményében megtalálják a folyamat sablonjait. A szinapszis-munkaterületeken a Tudásközpont különböző sablonokat tartalmaz, valamint további adatkészleteket és SQL-parancsfájlokat. 
-* **Integráció az Azure monitorral:** A szinapszis-munkaterületek nem integrálható a Azure Monitor, mert Azure Data Factory.
-* **Hibrid Integration Runtime-konfiguráció:** A szinapszis munkaterületen belül a felhasználók nem rendelkezhetnek felügyelt VNet IR-vel és Azure IRval. Ez a funkció Azure Data Factory támogatott.
-* **Integration Runtime megosztása:** A saját üzemeltetésű integrációs modulok nem oszthatók meg a szinapszis-munkaterületek között. Ez a funkció Azure Data Factory támogatott.
-* **Régiók közötti integrációs futtatókörnyezetek az adatforgalomhoz:** Az adatfolyamatok nem futhatnak az integrációs modulokon különböző régiókban, mint a szinapszis-munkaterületek. Ez a funkció Azure Data Factory támogatott.
 
 ## <a name="next-steps"></a>Következő lépések
 
