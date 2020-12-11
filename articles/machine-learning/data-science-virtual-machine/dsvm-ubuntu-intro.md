@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 97283a096d1b1549b2c7fa8f34a32b4bb4dca1eb
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4a414b706dffae76eaa9841ee7b1fe6bcc1ac0d3
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349052"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109844"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Gyors útmutató: a Linux Data Science Virtual Machine beállítása (Ubuntu)
 
@@ -39,27 +39,27 @@ Az alábbi lépéseket követve hozhatja létre a Data Science Virtual Machine U
    
 1. Adja meg a következő adatokat a varázsló egyes lépéseinek konfigurálásához:
 
-    1. **Alapismeretek** :
+    1. **Alapismeretek**:
     
-       * **Előfizetés** : Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet a gép létre fog hozni és számláz. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
-       * **Erőforráscsoport** : hozzon létre egy új csoportot, vagy használjon egy meglévőt.
-       * **Virtuális gép neve** : adja meg a virtuális gép nevét. Ezt a nevet fogja használni a Azure Portal.
-       * **Régió** : válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
-       * **Rendszerkép** : hagyja meg az alapértelmezett értéket.
-       * **Méret** : Ez a beállítás az általános számítási feladatokhoz megfelelő mérettel automatikusan feltölthető. További információ a [LINUXOS virtuális gépek méretéről az Azure-ban](../../virtual-machines/sizes.md).
-       * **Hitelesítés típusa** : a gyorsabb telepítéshez válassza a "jelszó" lehetőséget. 
+       * **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet a gép létre fog hozni és számláz. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
+       * **Erőforráscsoport**: hozzon létre egy új csoportot, vagy használjon egy meglévőt.
+       * **Virtuális gép neve**: adja meg a virtuális gép nevét. Ezt a nevet fogja használni a Azure Portal.
+       * **Régió**: válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
+       * **Rendszerkép**: hagyja meg az alapértelmezett értéket.
+       * **Méret**: Ez a beállítás az általános számítási feladatokhoz megfelelő mérettel automatikusan feltölthető. További információ a [LINUXOS virtuális gépek méretéről az Azure-ban](../../virtual-machines/sizes.md).
+       * **Hitelesítés típusa**: a gyorsabb telepítéshez válassza a "jelszó" lehetőséget. 
          
          > [!NOTE]
          > Ha a JupyterHub-t szeretné használni, ügyeljen arra, hogy válassza a "jelszó" lehetőséget, mivel a JupyterHub *nem* az SSH nyilvános kulcsok használatára van konfigurálva.
 
-       * **Felhasználónév** : adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez. A felhasználónévnek nem kell megegyeznie az Azure-felhasználónévvel. Ne *használjon* nagybetűs betűket.
+       * **Felhasználónév**: adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez. A felhasználónévnek nem kell megegyeznie az Azure-felhasználónévvel. Ne *használjon* nagybetűs betűket.
          
          > [!IMPORTANT]
          > Ha nagybetűs betűket használ a felhasználónévben, a JupyterHub nem fog működni, és 500 belső kiszolgálóhiba lép fel.
 
-       * **Password (jelszó** ): adja meg a virtuális gépre való bejelentkezéshez használni kívánt jelszót.    
+       * **Password (jelszó**): adja meg a virtuális gépre való bejelentkezéshez használni kívánt jelszót.    
     
-   1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+   1. Válassza az **Áttekintés + létrehozás** lehetőséget.
    1. **Felülvizsgálat + létrehozás**
       * Győződjön meg arról, hogy a megadott összes adat helyes. 
       * Kattintson a **Létrehozás** gombra.
@@ -73,8 +73,6 @@ Az Ubuntu DSVM háromféle módon érheti el:
   * SSH terminál-munkamenetekhez
   * X2Go grafikus munkamenetekhez
   * JupyterHub és JupyterLab Jupyter-notebookokhoz
-
-Data Science Virtual Machine is csatolhat, hogy Azure Notebooks Jupyter jegyzetfüzeteket futtasson a virtuális gépen, és megkerüli az ingyenes szolgáltatási szintet. További információ: [Azure Notebooks projektek kezelése és konfigurálása](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ### <a name="ssh"></a>SSH
 
@@ -95,13 +93,13 @@ A Linux rendszerű virtuális gép már ki van építve a X2Go-kiszolgálóval, 
 1. Futtassa az X2Go-ügyfelet. Ha az "új munkamenet" ablak nem jelenik meg automatikusan, ugorjon a munkamenet-> új munkamenet elemre.
 
 1. A megjelenő konfigurációs ablakban adja meg a következő konfiguráció-paramétereket:
-   * **Munkamenet lap** :
-     * **Állomásnév** : Adja meg a virtuális gép IP-címét, amelyet korábban feljegyzett.
-     * **Bejelentkezési név** : Adja meg a linuxos virtuális gépen érvényes felhasználónevét.
-     * **SSH-port** : Hagyja meg az alapértelmezett 22 értéket.
-     * **Munkamenet típusa** : Állítsa át az **XFCE** értékre. A linuxos virtuális gép jelenleg csak az XFCE-asztalt támogatja.
-   * **Multimédia lap** : Kikapcsolhatja a hangtámogatást és az ügyfélről indított nyomtatást, ha nincs rájuk szüksége.
-   * **Megosztott mappák** : ezen a lapon adhatja hozzá a virtuális gépen csatlakoztatni kívánt ügyfélszámítógép-könyvtárat. 
+   * **Munkamenet lap**:
+     * **Állomásnév**: Adja meg a virtuális gép IP-címét, amelyet korábban feljegyzett.
+     * **Bejelentkezési név**: Adja meg a linuxos virtuális gépen érvényes felhasználónevét.
+     * **SSH-port**: Hagyja meg az alapértelmezett 22 értéket.
+     * **Munkamenet típusa**: Állítsa át az **XFCE** értékre. A linuxos virtuális gép jelenleg csak az XFCE-asztalt támogatja.
+   * **Multimédia lap**: Kikapcsolhatja a hangtámogatást és az ügyfélről indított nyomtatást, ha nincs rájuk szüksége.
+   * **Megosztott mappák**: ezen a lapon adhatja hozzá a virtuális gépen csatlakoztatni kívánt ügyfélszámítógép-könyvtárat. 
 
    ![X2Go-konfiguráció](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Kattintson az **OK** gombra.

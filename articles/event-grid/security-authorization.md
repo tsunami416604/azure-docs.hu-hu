@@ -3,12 +3,12 @@ title: Biztonság és hitelesítés Azure Event Grid
 description: Az Azure Event Gridet és a vele kapcsolatos fogalmakat ismerteti.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 5a1e4af17c2f4335ed26490bfc2408c66f4aee6b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 24954ce0a0dc54a04720c0d0b495d14e950a2f71
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328725"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109589"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid erőforrásokhoz való hozzáférés engedélyezése
 Azure Event Grid lehetővé teszi a különböző felhasználók számára megadott hozzáférési szint szabályozását különböző **felügyeleti műveletek** , például esemény-előfizetések listázása, új adatbázisok létrehozása és kulcsok létrehozása céljából. Event Grid Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ.
@@ -17,17 +17,18 @@ Azure Event Grid lehetővé teszi a különböző felhasználók számára megad
 > A EventGrid nem támogatja az Azure RBAC számára az események közzétételét Event Grid témakörökben vagy tartományokban. Használjon közös hozzáférésű aláírás (SAS) kulcsot vagy jogkivonatot az eseményeket közzétevő ügyfelek hitelesítéséhez. További információ: [közzétételi ügyfelek hitelesítése](security-authenticate-publishing-clients.md). 
 
 ## <a name="operation-types"></a>Működési típusok
+A Azure Event Grid által támogatott műveletek listáját az alábbi Azure CLI-paranccsal futtathatja: 
 
-Event Grid a következő műveleteket támogatja:
+```azurecli-interactive
+az provider operation show --namespace Microsoft.EventGrid
+```
 
-* Microsoft. EventGrid/*/READ
-* Microsoft. EventGrid/*/Write
-* Microsoft. EventGrid/*/delete
+A következő műveletek egy potenciálisan titkos információt adnak vissza, amely kiszűri a normál olvasási műveletekből. Javasoljuk, hogy korlátozza a hozzáférést ezekhez a műveletekhez. 
+
 * Microsoft. EventGrid/eventSubscriptions/getFullUrl/művelet
 * Microsoft. EventGrid/témakörök/Listkeys műveletének beolvasása/művelet
 * Microsoft. EventGrid/témakörök/regenerateKey/művelet
 
-Az utolsó három művelet visszaküldi a potenciálisan titkos adatokat, amelyek kiszűrik a normál olvasási műveleteket. Javasoljuk, hogy korlátozza a hozzáférést ezekhez a műveletekhez. 
 
 ## <a name="built-in-roles"></a>Beépített szerepkörök
 
@@ -128,7 +129,7 @@ A következő példa olyan Event Grid szerepkör-definíciókat mutat be, amelye
 }
 ```
 
-**EventGridNoDeleteListKeysRole.jsbekapcsolva: a**korlátozott post műveletek engedélyezése, de a törlési műveletek letiltása.
+**EventGridNoDeleteListKeysRole.jsbekapcsolva: a** korlátozott post műveletek engedélyezése, de a törlési műveletek letiltása.
 
 ```json
 {
@@ -189,15 +190,15 @@ Az eseményforrás erőforrásának a **Microsoft. EventGrid/EventSubscriptions/
 ### <a name="system-topics-azure-service-publishers"></a>Rendszertémakörök (Azure-szolgáltatás közzétevői)
 A rendszertémakörökhöz engedély szükséges ahhoz, hogy új esemény-előfizetést írjon az eseményt közzétevő erőforrás hatókörén. Az erőforrás formátuma: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
-Ha például egy **myacct**nevű Storage-fiókra szeretne előfizetni egy eseményre, szüksége lesz a Microsoft. EventGrid/EventSubscriptions/Write engedélyre a következőn: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+Ha például egy **myacct** nevű Storage-fiókra szeretne előfizetni egy eseményre, szüksége lesz a Microsoft. EventGrid/EventSubscriptions/Write engedélyre a következőn: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 
 ### <a name="custom-topics"></a>Egyéni témakörök
 Egyéni témakörök esetén engedély szükséges ahhoz, hogy új esemény-előfizetést írjon az Event Grid-témakör hatókörébe. Az erőforrás formátuma: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
-Ha például egy **mytopic**nevű egyéni témakörre szeretne előfizetni, szüksége lesz a Microsoft. EventGrid/EventSubscriptions/Write engedélyre a következőn: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+Ha például egy **mytopic** nevű egyéni témakörre szeretne előfizetni, szüksége lesz a Microsoft. EventGrid/EventSubscriptions/Write engedélyre a következőn: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Event Grid bevezetését lásd: [About Event Grid](overview.md)

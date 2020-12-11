@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: b36e6ce09cd4356a9892a5be9cbe7046cf7fd40e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: e876ddc9b4df32cad5bbf15215da5ce2f912bba1
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094556"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109725"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rövid útmutató: a Windows Data Science Virtual Machine beállítása
 
@@ -47,7 +47,7 @@ DSVM-példány létrehozása:
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 1. **Felülvizsgálat + létrehozás**
    * Győződjön meg arról, hogy a megadott összes adat helyes. 
-   * Válassza a **Létrehozás** lehetőséget.
+   * Kattintson a **Létrehozás** gombra.
 
 
 > [!NOTE]
@@ -59,8 +59,6 @@ DSVM-példány létrehozása:
 A virtuális gép létrehozása és üzembe helyezése után kövesse a felsorolt lépéseket az [Azure-alapú virtuális géphez való kapcsolódáshoz](../../marketplace/azure-vm-create-using-approved-base.md). Használja a virtuális gép létrehozásának **alapjai** lépésében konfigurált rendszergazdai fiók hitelesítő adatait. 
 
 Készen áll a virtuális gépen telepített és konfigurált eszközök használatának megkezdésére. A **Start** menü csempéi és asztali ikonjai számos eszközt is elérhet.
-
-Emellett DSVM is csatolhat Azure Notebooks a Jupyter notebookok futtatásához a virtuális gépen, és megkerülheti az ingyenes szolgáltatási szintek korlátozásait. További információ: [notebook-projektek kezelése és konfigurálása](../../notebooks/configure-manage-azure-notebooks-projects.md).
 
 <a name="tools"></a>
 

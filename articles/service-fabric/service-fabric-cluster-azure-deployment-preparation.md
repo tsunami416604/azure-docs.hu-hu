@@ -3,12 +3,12 @@ title: Azure Service Fabric-fürt üzembe helyezésének megtervezése
 description: Ismerje meg, hogyan tervezheti meg és készítse elő az Azure-beli üzemi Service Fabric-fürtök üzembe helyezését.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281327"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109623"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>A fürt üzembe helyezésének megtervezése és előkészítése
 
@@ -89,8 +89,6 @@ Az ideiglenes operációsrendszer-lemezek nem egy adott Service Fabric funkció,
 
 > [!NOTE]
 > A felhasználói alkalmazások nem rendelkezhetnek függőséggel/fájllal/összetevővel az operációsrendszer-lemezen, mert az operációsrendszer-lemez elvész az operációsrendszer-frissítés esetén.
-> Ezért nem ajánlott a [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) használata ideiglenes lemezekkel.
->
 
 > [!NOTE]
 > A meglévő, nem ideiglenes VMSS nem frissíthető helyben az ideiglenes lemezek használatára.
@@ -118,7 +116,7 @@ A magas rendelkezésre állás megvalósításának kritikus része annak biztos
 ## <a name="production-readiness-checklist"></a>Termelési készenlét ellenőrzőlistája
 Készen áll az alkalmazás és a fürt a termelési forgalom elvégzésére? Mielőtt üzembe helyezné a fürtöt az éles környezetben, futtassa az [éles készültségi ellenőrzőlistát](service-fabric-production-readiness-checklist.md). Az alkalmazás és a fürt zökkenőmentesen működik az ellenőrzőlista elemeinek használatával. Erősen ajánlott az összes ilyen elemet kijelölni az éles környezetben való üzembe helyezés előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Windows rendszerű Service Fabric-fürt létrehozása](service-fabric-best-practices-overview.md)
 * [Linux rendszerű Service Fabric-fürt létrehozása](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 

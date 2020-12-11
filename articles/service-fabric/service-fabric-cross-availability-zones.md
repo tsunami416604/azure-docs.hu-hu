@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 56f7224d93293a0a26d09692996d2c4a4ace344b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8e4a9201c14e71520bd58ff1017b700ca47fa21
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803738"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109817"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
@@ -332,4 +332,96 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 ```
 
+## <a name="preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set"></a>Előnézet Több rendelkezésre állási zóna engedélyezése egyetlen virtuálisgép-méretezési csoportba
+
+A korábban említett megoldás egy nodeType használ az AZ alapján. A következő megoldás lehetővé teszi, hogy a felhasználók 3 az az ugyanazon nodeType legyenek telepítve.
+
+[Itt](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-Windows-Multiple-AZ-Secure)jelennek meg a teljes minta sablon.
+
+![Azure Service Fabric rendelkezésre állási zóna architektúrája][sf-multi-az-arch]
+
+### <a name="configuring-zones-on-a-virtual-machine-scale-set"></a>Zónák konfigurálása virtuálisgép-méretezési csoportokban
+A zónák virtuálisgép-méretezési csoportokon való engedélyezéséhez a következő három értéket kell tartalmaznia a virtuálisgép-méretezési csoport erőforrásaiban.
+
+* Az első érték a **Zones** tulajdonság, amely meghatározza a virtuálisgép-méretezési csoport Availability Zones.
+* A második érték a "singlePlacementGroup" tulajdonság, amelyet igaz értékre kell beállítani.
+* A harmadik érték "zoneBalance", és nem kötelező, ami biztosítja a zónák szigorú kiegyensúlyozását, ha az igaz értékre van állítva. További információ a [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
+* A FaultDomain és a UpgradeDomain felülbírálásokat nem szükséges konfigurálni.
+
+```json
+{
+    "apiVersion": "2018-10-01",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+    "name": "[parameters('vmNodeType1Name')]",
+    "location": "[parameters('computeLocation')]",
+    "zones": ["1", "2", "3"],
+    "properties": {
+        "singlePlacementGroup": "true",
+        "zoneBalance": false
+    }
+}
+```
+
+>[!NOTE]
+> * **Az SF-fürtöknek legalább egy elsődleges nodeType kell rendelkezniük. Az elsődleges nodeTypes DurabilityLevel Silver vagy Above értéknek kell lennie.**
+> * Az az átfedő virtuálisgép-méretezési csoportnak legalább 3 rendelkezésre állási zónával kell konfigurálnia a durabilityLevel függetlenül.
+> * AZ AZ átfedő virtuálisgép-méretezési csoportnak az ezüst tartósságával (vagy újabb verzióval) legalább 15 virtuális géppel kell rendelkeznie.
+> * AZ AZ spanning virtuálisgép-méretezési csoport bronz tartóssággal, legalább 6 virtuális géppel kell rendelkeznie.
+
+### <a name="enabling-the-support-for-multiple-zones-in-the-service-fabric-nodetype"></a>Több zóna támogatásának engedélyezése a Service Fabric nodeType
+A több rendelkezésre állási zóna támogatásához engedélyezni kell a Service Fabric nodeType.
+
+* Az első érték a **multipleAvailabilityZones** , amelyet igaz értékűre kell állítani a nodeType esetében.
+* A második érték a **sfZonalUpgradeMode** , és nem kötelező. Ez a tulajdonság nem módosítható, ha a fürtben már szerepel egy olyan NodeType, amely több AZ az.
+      A tulajdonság a virtuális gépek logikai csoportosítását vezérli a frissítési tartományokban.
+          Ha az érték hamis (lapos mód), a csomópont típusú virtuális gépek az UD-ben lesznek csoportosítva, figyelmen kívül hagyva a zóna adatait 5 frissítési.
+          Ha az érték nincs megadva vagy True (hierarchikus mód) értékűre van állítva, a virtuális gépek úgy vannak csoportosítva, hogy tükrözzék a zónák közötti eloszlást akár 15 frissítési. A 3 zóna mindegyike 5 frissítési fog rendelkezni.
+          Ez a tulajdonság csak a ServiceFabric alkalmazás és a kód verziófrissítésének frissítési viselkedését határozza meg. Az alapul szolgáló virtuálisgép-méretezési csoport frissítései továbbra is párhuzamosak lesznek az AZ-ban.
+      Ez a tulajdonság nem befolyásolja az UD-eloszlást olyan csomópont-típusok esetén, amelyeken nincs engedélyezve több zóna.
+* A harmadik érték a **vmssZonalUpgradeMode = Parallel**. Ez egy *kötelező* tulajdonság, amelyet konfigurálni kell a fürtben, ha több AZs rendelkező nodeType van hozzáadva. Ez a tulajdonság határozza meg a virtuálisgép-méretezési csoport frissítéseinek frissítési módját, amely párhuzamosan fog történni az AZ összes időpontban.
+      Most ezt a tulajdonságot csak párhuzamosra lehet beállítani.
+* A Service Fabric fürterőforrás-apiVersion "2020-12-01-Preview" vagy magasabb értékűnek kell lennie.
+* A fürt kódjának a következőnek kell lennie: "7.2.445" vagy újabb.
+
+```json
+{
+    "apiVersion": "2020-12-01-preview",
+    "type": "Microsoft.ServiceFabric/clusters",
+    "name": "[parameters('clusterName')]",
+    "location": "[parameters('clusterLocation')]",
+    "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
+    ],
+    "properties": {
+        "SFZonalUpgradeMode": "Hierarchical",
+        "VMSSZonalUpgradeMode": "Parallel",
+        "nodeTypes": [
+          {
+                "name": "[parameters('vmNodeType0Name')]",
+                "multipleAvailabilityZones": true,
+          }
+        ]
+}
+```
+
+>[!NOTE]
+> * A nyilvános IP-cím és a Load Balancer erőforrásnak a cikkben korábban ismertetett standard SKU-t kell használnia.
+> * a nodeType "multipleAvailabilityZones" tulajdonsága csak a nodeType létrehozásakor adható meg, és később nem módosítható. Ezért a meglévő nodeTypes nem konfigurálhatók ezzel a tulajdonsággal.
+> * Ha a "hierarchicalUpgradeDomain" érték ki van hagyva vagy igaz értékre van állítva, a fürt és az alkalmazás központi telepítései lassabbak lesznek, mivel a fürt több frissítési tartománnyal rendelkezik. Fontos, hogy megfelelően módosítsa a frissítési szabályzat időtúllépését, hogy az a 15 frissítési tartományhoz tartozó frissítési idő időtartamára legyen beépítve.
+> * Javasoljuk, hogy a fürt megbízhatósági szintjét a Platinum értékre állítsa, hogy a fürt ne maradjon le az egyik zónában.
+
+>[!NOTE]
+> Az ajánlott eljárás az, ha a hierarchicalUpgradeDomain értéke TRUE (igaz) vagy kihagyva. Az üzembe helyezés során a virtuális gépek a kisebb mennyiségű replikát és/vagy az azok biztonságosabbá tételét érintő replikálási eloszlását fogja követni.
+> Ha az üzembe helyezési sebesség prioritás, vagy csak állapot nélküli számítási feladat fut, akkor a hierarchicalUpgradeDomain értékeként a következőt kell használnia: több az AZ. Ez azt eredményezi, hogy az UD Walk is párhuzamosan fog történni az AZ-ban.
+
+### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Migrálás a csomópont típusára több Availability Zones
+Minden áttelepítési forgatókönyv esetében új nodeType kell hozzáadni, amely több rendelkezésre állási zónával is rendelkezik. Egy meglévő nodeType nem telepíthető át több zóna támogatásához.
+A cikk [itt](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type ) rögzíti az új nodeType hozzáadásának részletes lépéseit, valamint az új nodeType, például az IP-és LB-erőforrások hozzáadásához szükséges egyéb erőforrásokat is. Ugyanez a cikk azt is leírja, hogy most kivonja a meglévő nodeType, miután a nodeType több rendelkezésre állási zónával bővült a fürthöz.
+
+* Áttelepítése egy alapszintű LB-t és IP-erőforrást használó nodeType: ezt a megoldást már [itt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) tekintheti meg az az egyik csomópont-típussal. 
+    Az új csomópont-típus esetében az egyetlen különbség az, hogy csak 1 virtuálisgép-méretezési csoport és 1 NodeType van az az összes az az érték helyett az az összes.
+* Áttelepítés egy olyan nodeType, amely a standard SKU LB-t és IP-erőforrásokat használja a NSG-ben: kövesse a fentiekben ismertetett eljárást, amely alól nem szükséges új LB-, IP-és NSG-erőforrásokat hozzáadni, és ugyanazokat az erőforrásokat újra fel lehet használni az új nodeType.
+
+
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
+[sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png
