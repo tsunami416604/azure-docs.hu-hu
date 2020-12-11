@@ -3,12 +3,12 @@ title: Áttelepítési projektek kezelése Azure Migrate
 description: Ismerje meg, hogyan használható hatékonyan a Azure Migrate a delegált ügyfelek erőforrásain.
 ms.date: 12/4/2020
 ms.topic: how-to
-ms.openlocfilehash: d1a01149c80b30f279f7d68551946c3ffe404d5e
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 16b92f3aa4dc3bfcb71eb232170c4df30348f8db
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621569"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095389"
 ---
 # <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Áttelepítési projektek kezelése Azure Migrate
 
@@ -39,7 +39,7 @@ Ez a megközelítés a több ügyfélen dolgozó szolgáltatók környezeti vál
 A modell munkafolyamata a következőhöz hasonló lesz:
 
 1. Az ügyfél az [Azure Lighthouse-](onboard-customer.md)ban van bevezetve. A közreműködő beépített szerepköre szükséges ahhoz, hogy a Azure Migrate használni kívánt identitást használja. A szerepkört használó példához tekintse meg a [delegált erőforrás-felügyeleti-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) minta sablonját.
-1. A kijelölt felhasználó bejelentkezik a Azure Portal felügyelő bérlőbe, majd a Azure Migratera lép. Ez a felhasználó [létrehoz egy Azure Migrate projektet](/migrate/create-manage-projects.md), kiválasztja a megfelelő delegált ügyfél-előfizetést.
+1. A kijelölt felhasználó bejelentkezik a Azure Portal felügyelő bérlőbe, majd a Azure Migratera lép. Ez a felhasználó [létrehoz egy Azure Migrate projektet](/azure/migrate/create-manage-projects), kiválasztja a megfelelő delegált ügyfél-előfizetést.
 1. A felhasználó ezután [elvégzi a felderítés és az értékelés lépéseit](../../migrate/tutorial-discover-vmware.md).
 
    A VMware virtuális gépek esetében a berendezés konfigurálása előtt korlátozhatja a felderítést vCenter Server adatközpontokra, fürtökre, fürtökre, gazdagépekre, gazdagépekre vagy egyedi virtuális gépekre vonatkozó mappára. A hatókör beállításához rendeljen engedélyeket arra a fiókra, amelyet a készülék használ a vCenter Server eléréséhez. Ez akkor hasznos, ha több ügyfél virtuális gépe is fut a hypervisorban. A Hyper-V felderítési hatóköre nem korlátozható.
@@ -61,7 +61,7 @@ Ez a megközelítés lehetővé teszi, hogy a szolgáltatók gyorsan elindítsá
 A modell munkafolyamata a következőhöz hasonló lesz:
 
 1. Az ügyfél az [Azure Lighthouse-](onboard-customer.md)ban van bevezetve. A közreműködő beépített szerepköre szükséges ahhoz, hogy a Azure Migrate használni kívánt identitást használja. A szerepkört használó példához tekintse meg a [delegált erőforrás-felügyeleti-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) minta sablonját.
-1. A kijelölt felhasználó bejelentkezik a Azure Portal felügyelő bérlőbe, majd a Azure Migratera lép. Ez a felhasználó [létrehoz egy Azure Migrate projektet](/migrate/create-manage-projects.md) egy előfizetésben, amely a bérlői felügyelethez tartozó.
+1. A kijelölt felhasználó bejelentkezik a Azure Portal felügyelő bérlőbe, majd a Azure Migratera lép. Ez a felhasználó [létrehoz egy Azure Migrate projektet](/azure/migrate/create-manage-projects) egy előfizetésben, amely a bérlői felügyelethez tartozó.
 1. A felhasználó ezután [elvégzi a felderítés és az értékelés lépéseit](../../migrate/tutorial-discover-vmware.md). A helyszíni virtuális gépek felderítése és értékelése a bérlő kezelése során létrehozott áttelepítési projekten belül történik, majd onnan migrálva.
 
    Ha ugyanazon a Hyper-V-gazdagépen több ügyfelet kezel, az összes munkaterhelést egyszerre is felderítheti. Az ügyfél-specifikus virtuális gépek kiválaszthatók ugyanabban a csoportban, majd egy értékelés is létrehozható, és az áttelepítés elvégezhető úgy, hogy kiválasztja a megfelelő ügyfél-előfizetést célként célként. A felderítési hatókört nem kell korlátozni, és egy áttelepítési projektben teljes körű áttekintést kaphat az összes ügyfél-munkaterhelésről.
@@ -76,7 +76,7 @@ A [Microsoft Partner Network](https://partner.microsoft.com)tagjaként összekap
 
 További információért lásd [a partnerazonosító a delegált erőforrásokra gyakorolt hatás nyomon követéséhez történő csatolását](partner-earned-credit.md) ismertető részt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Azure Migrate](../../migrate/migrate-services-overview.md)megismerése.
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).

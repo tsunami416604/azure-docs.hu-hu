@@ -14,18 +14,18 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: 21410f7137a76b43f57ca7a1e037908410eae365
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e4c87d8579b06cdfb37c1635a25db5ce67aa3545
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844522"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094794"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (.NET)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és elolvasása egy szolgáltatásalkalmazás (.NET) használatával
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-Az IoT Hub olyan Azure-szolgáltatás, amely lehetővé teszi nagy mennyiségű telemetria betöltését egy IoT-eszközről a felhőbe tárolás vagy feldolgozás céljából. Ebben a rövid útmutatóban telemetriát küld egy szimulálteszköz-alkalmazástól az IoT Hubon keresztül egy háttéralkalmazásba feldolgozásra.
+Az IoT Hub olyan Azure-szolgáltatás, amely lehetővé teszi nagy mennyiségű telemetria betöltését egy IoT-eszközről a felhőbe tárolás vagy feldolgozás céljából. Ebben a rövid útmutatóban a telemetria egy szimulált eszköz alkalmazásból, IoT Hubon keresztül küldi el a feldolgozásra.
 
 Ez a cikk két előre megírt C#-alkalmazást használ a telemetria küldésére: egyet a telemetria elküldésére, egyet pedig a telemetria olvasásához a hubról. Mielőtt futtatja ezt a két alkalmazást, hozzon létre egy IoT Hubot, és regisztráljon egy eszközt a hubon.
 
@@ -33,7 +33,7 @@ Ez a cikk két előre megírt C#-alkalmazást használ a telemetria küldésére
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A rövid útmutatóban futtatott két mintaalkalmazás a C# használatával készült. A fejlesztői gépen a .NET Core SDK 3,0-es vagy újabb szükséges.
+* A rövid útmutatóban futtatott két mintaalkalmazás a C# használatával készült. A fejlesztői gépen a .NET Core SDK 3,1-es vagy újabb szükséges.
 
     A .NET Core SDK-t többféle platformra a [.NET](https://www.microsoft.com/net/download/all) oldaláról töltheti le.
 
@@ -44,7 +44,7 @@ Ez a cikk két előre megírt C#-alkalmazást használ a telemetria küldésére
     ```
 
     > [!NOTE]
-    > .NET Core SDK 3,0 vagy újabb verzió használata ajánlott a telemetria olvasásához használt Event Hubs-szolgáltatási kód fordításához. A .NET Core SDK 2,1-es verzióját akkor használhatja, ha a szolgáltatás kódjához tartozó nyelvi verziót az előnézet értékre állítja, ahogy azt a [hub telemetria olvasása](#read-the-telemetry-from-your-hub) című rész tartalmazza.
+    > .NET Core SDK 3,1 vagy újabb verzió használata ajánlott a telemetria olvasásához használt Event Hubs-szolgáltatási kód fordításához.
 
 
 * Töltse le az Azure IoT C#-mintákat [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) , és bontsa ki a zip-archívumot.
@@ -87,7 +87,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
     Ezt az értéket később a gyors útmutatóban fogja használni.
 
-3. A IoT hub _Event Hubs-kompatibilis végpontja_, _Event Hubs-kompatibilis útvonala_ és a _szolgáltatás elsődleges kulcsa_ is szükséges ahhoz, hogy a háttér-alkalmazás csatlakozhasson az IoT hubhoz, és lekérje az üzeneteket. Ezeket az értékeket a következő parancsok kérdezik le az IoT Hubhoz:
+3. A IoT hub _Event Hubs-kompatibilis végpontja_, _Event Hubs-kompatibilis útvonala_ és a _szolgáltatás elsődleges kulcsa_ is szükséges ahhoz, hogy a szolgáltatásalkalmazás csatlakozni tudjanak az IoT hubhoz, és lekérje az üzeneteket. Ezeket az értékeket a következő parancsok kérdezik le az IoT Hubhoz:
 
    **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
@@ -105,22 +105,18 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus végponthoz csatlakozik, és hőmérséklettel és páratartalommal kapcsolatos szimulált telemetriát küld.
 
-1. Egy helyi terminálablakban keresse meg a C#-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Quickstarts\simulated-device** mappába.
+1. Egy helyi terminálablakban keresse meg a C#-mintaprojekt gyökérmappáját. Ezután keresse meg a **IOT-hub\Quickstarts\SimulatedDevice** mappát.
 
-2. Nyissa meg a **SimulatedDevice.cs** fájlt egy Ön által választott szövegszerkesztőben.
-
-    Cserélje le a változó értékét `s_connectionString` a korábban megjegyzett eszköz-összekapcsolási sztringre. Ezután mentse a módosításokat a **SimulatedDevice.cs**.
-
-3. Futtassa az alábbi parancsokat a helyi terminálablakban a szimulálteszköz-alkalmazáshoz szükséges csomagok telepítéséhez:
+2. Futtassa az alábbi parancsokat a helyi terminálablakban a szimulálteszköz-alkalmazáshoz szükséges csomagok telepítéséhez:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Futtassa az alábbi parancsot a helyi terminálablakban a szimulálteszköz-alkalmazás létrehozásához és futtatásához:
+3. A helyi terminál ablakban futtassa a következő parancsot a szimulált eszközhöz tartozó alkalmazás létrehozásához és futtatásához a korábban jegyzett eszköz-kapcsolódási karakterlánccal:
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {DeviceConnectionString}
     ```
 
     A következő képernyőképen az a kimenet látható, amikor a szimulálteszköz-alkalmazás telemetriát küld az IoT Hubnak:
@@ -129,36 +125,37 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetriai adatok kiolvasása a központból
 
-A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlakozik az IoT Hubon. Az alkalmazás fogadja az eszközről a felhőbe irányuló üzeneteket, amelyeket a rendszer a szimulált eszközről küld. Az IoT Hub-háttéralkalmazások általában a felhőben futnak, hogy fogadják és feldolgozzák az eszközről a felhőbe küldött üzeneteket.
+A szolgáltatásalkalmazás csatlakozik a IoT Hub a szolgáltatás-oldali **események** végponthoz. Az alkalmazás fogadja az eszközről a felhőbe irányuló üzeneteket, amelyeket a rendszer a szimulált eszközről küld. Egy IoT Hub szolgáltatásalkalmazás általában a felhőben fut az eszközről a felhőbe irányuló üzenetek fogadásához és feldolgozásához.
 
-1. Egy másik helyi terminálablakban keresse meg a C#-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Quickstarts\read-d2c-messages** mappába.
+1. Egy másik helyi terminálablakban keresse meg a C#-mintaprojekt gyökérmappáját. Ezután keresse meg a **IOT-hub\Quickstarts\ReadD2cMessages** mappát.
 
-2. Nyissa meg a **ReadDeviceToCloudMessages.cs** fájlt egy Ön által választott szövegszerkesztőben. Frissítse a következő változókat, és mentse a fájlon végrehajtott módosításait.
-
-    | Változó | Érték |
-    | -------- | ----------- |
-    | `EventHubsCompatibleEndpoint` | Cserélje le a változó értékét a Event Hubs-kompatibilis végpontra, amelyet korábban jegyzett készített. |
-    | `EventHubName`                | Cserélje le a változó értékét arra a Event Hubs-kompatibilis elérési útra, amelyet korábban jegyzett készített. |
-    | `IotHubSasKey`                | A változó értékét cserélje le a szolgáltatás elsődleges kulcsára, amelyet korábban jegyzett készített. |
-
-    > [!NOTE]
-    > Ha a .NET Core SDK 2,1-es verzióját használja, a kód fordításához a nyelvi verziót kell megadnia az előzetes verzióra. Ehhez nyissa meg a **READ-D2C-messages. csproj** fájlt, és állítsa be az elem értékét a következőre: `<LangVersion>` `preview` .
-
-3. Futtassa az alábbi parancsokat a helyi terminálablakban a háttéralkalmazáshoz szükséges kódtárak telepítéséhez:
+2. A helyi terminál ablakban futtassa a következő parancsot az alkalmazáshoz szükséges kódtárak telepítéséhez:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Futtassa az alábbi parancsokat a helyi terminálablakban a háttéralkalmazás létrehozásához és futtatásához:
+3. A helyi terminál ablakban a következő parancs futtatásával tekintheti meg a paraméter beállításait.
 
     ```cmd/sh
     dotnet run
     ```
 
-    A következő képernyőképen az a kimenet látható, amikor a háttéralkalmazás fogadja a szimulálteszköz-alkalmazás által az IoT Hubhoz küldött telemetriát:
+4. A helyi terminál ablakban futtassa az alábbi parancs egyikét az alkalmazás létrehozásához és futtatásához a következővel:
 
-    ![A háttéralkalmazás futtatása](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
+    ```cmd/sh
+    dotnet run -- -c {EventHubConnectionString}
+    ```
+
+    vagy
+
+    ```cmd/sh
+    dotnet run -- -e {EventHubCompatibleEndpoint} -n {EventHubName} -s {SharedAccessKey}
+    ```
+
+    A következő képernyőképen látható a kimenet, mivel a szolgáltatásalkalmazás a szimulált eszköz által a hubhoz küldött telemetria fogadja:
+
+    ![Szolgáltatásalkalmazás futtatása](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -166,9 +163,9 @@ A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlako
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, szimulált telemetria elküldve a hubhoz egy C#-alkalmazás használatával, valamint egy egyszerű háttérbeli alkalmazás használatával olvassa be a telemetria.
+Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, szimulált telemetria elküldése a hubhoz egy C#-alkalmazás használatával, valamint egy egyszerű szolgáltatásalkalmazás használatával olvassa be a telemetria.
 
-Ha meg szeretné tudni, hogyan vezérelheti a szimulált eszközt egy háttéralkalmazáson keresztül, folytassa a következő oktatóanyaggal.
+Ha szeretné megtudni, hogyan vezérelheti a szimulált eszközt egy szolgáltatásalkalmazás használatával, folytassa a következő rövid útmutatóval.
 
 > [!div class="nextstepaction"]
 > [Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése](quickstart-control-device-dotnet.md)

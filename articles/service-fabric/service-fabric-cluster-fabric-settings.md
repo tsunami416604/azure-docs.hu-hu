@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-fürt beállításainak módosítása
 description: Ez a cikk a háló beállításait és a testre szabható háló-frissítési szabályzatokat ismerteti.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187221"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095270"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetén testreszabhatja a beállításokat, ha frissíti a *ClusterConfig.js* fájlt, és végrehajtja a fürtön a konfiguráció frissítését. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -857,7 +857,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|Szint |Int, az alapértelmezett érték 4 | Dinamikus |A nyomkövetési ETW szintje 1, 2, 3, 4 értéket vehet igénybe. A támogatáshoz meg kell őriznie a nyomkövetési szintet 4 |
+|Level |Int, az alapértelmezett érték 4 | Dinamikus |A nyomkövetési ETW szintje 1, 2, 3, 4 értéket vehet igénybe. A támogatáshoz meg kell őriznie a nyomkövetési szintet 4 |
 
 ## <a name="transactionalreplicator"></a>TransactionalReplicator
 
@@ -877,7 +877,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (60)|Statikus|Másodpercek alatt meg kell adni a TimeSpan. Időtúllépés a bejövő és a fogadó oldalon (beleértve a biztonsági egyeztetést biztonságos módban) a kapcsolatok beállításához |
 |FrameHeaderErrorCheckingEnabled|bool, az alapértelmezett érték TRUE (igaz)|Statikus|Alapértelmezett beállítás a frame fejlécének hibaellenőrzés nem biztonságos módban; az összetevő-beállítás felülbírálja ezt a beállítást. |
-|MessageErrorCheckingEnabled|bool, az alapértelmezett érték FALSE|Statikus|Alapértelmezett beállítás az üzenet fejlécének és törzsének hibaellenőrzés nem biztonságos módban; az összetevő-beállítás felülbírálja ezt a beállítást. |
+|MessageErrorCheckingEnabled|bool, az alapértelmezett érték TRUE (igaz)|Statikus|Alapértelmezett beállítás az üzenet fejlécének és törzsének hibaellenőrzés nem biztonságos módban; az összetevő-beállítás felülbírálja ezt a beállítást. |
 |ResolveOption|karakterlánc, az alapértelmezett érték a "meghatározatlan"|Statikus|Meghatározza a teljes tartománynév feloldásának módját.  Az érvényes értékek: "meghatározatlan/IPv4/IPv6". |
 |SendTimeout|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (300)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Küldési időtúllépés a beragadt kapcsolat észleléséhez. A TCP-hibajelentések nem megbízhatók bizonyos környezetekben. Ezt a rendelkezésre álló hálózati sávszélesség és a kimenő adatforgalom mérete ( \* MaxMessageSize \/ \* SendQueueSizeLimit) alapján kell módosítani. |
 

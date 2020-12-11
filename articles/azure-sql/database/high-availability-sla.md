@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 10/28/2020
-ms.openlocfilehash: e5e58f8592fcf8627870c3a574335bbe34394064
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 15067a046d8adc0ba38101bbe24cdc48cd433d56
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452468"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095440"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Magas rendelkezésre állás Azure SQL Database és SQL felügyelt példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -122,7 +122,7 @@ A feladatátvétel a PowerShell, a REST API vagy az Azure CLI használatával in
 
 |Központi telepítés típusa|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|Adatbázis|[Meghívás – AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Adatbázis-feladatátvétel](/rest/api/sql/databases(failover)/failover/)|[az az Rest](/cli/azure/reference-index#az-rest) felhasználható az Azure CLI REST API hívásának meghívására|
+|Adatbázis|[Meghívás – AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Adatbázis-feladatátvétel](/rest/api/sql/databases/failover)|[az az Rest](/cli/azure/reference-index#az-rest) felhasználható az Azure CLI REST API hívásának meghívására|
 |Rugalmas készlet|[Meghívás – AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Rugalmas készlet feladatátvétele](/rest/api/sql/elasticpools(failover)/failover/)|[az az Rest](/cli/azure/reference-index#az-rest) felhasználható az Azure CLI REST API hívásának meghívására|
 |Felügyelt példány|[Meghívás – AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Felügyelt példányok – feladatátvétel](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az SQL mi feladatátvétel](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
@@ -133,7 +133,7 @@ A feladatátvétel a PowerShell, a REST API vagy az Azure CLI használatával in
 
 A Azure SQL Database és az Azure SQL felügyelt példánya beépített, magas rendelkezésre állású megoldást kínál, amely szorosan integrálva van az Azure platformmal. Service Fabrictól függ a hibák észlelése és helyreállítása, az Azure Blob Storage az adatvédelem érdekében, valamint a Availability Zones a nagyobb hibatűrés érdekében (ahogy azt korábban említettük, nem alkalmazható az Azure SQL felügyelt példánya esetében). Emellett a SQL Database és az SQL felügyelt példánya is kihasználja az Always On rendelkezésre állási csoport technológiáját a SQL Server példányból a replikáláshoz és a feladatátvételhez. Ezeknek a technológiáknak a kombinációja lehetővé teszi, hogy az alkalmazások teljes mértékben felismerje a vegyes tárolási modell előnyeit, és támogassa a legigényesebb SLA-kat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [Azure Availability Zones](../../availability-zones/az-overview.md)
 - Tudnivalók a [Service Fabric](../../service-fabric/service-fabric-overview.md)

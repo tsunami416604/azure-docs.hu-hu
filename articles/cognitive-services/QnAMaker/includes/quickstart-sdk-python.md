@@ -3,12 +3,12 @@ title: 'Rövid útmutató: QnA Maker a Pythonhoz készült ügyféloldali kódt�
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a QnA Maker a Pythonhoz készült ügyféloldali kódtárat.
 ms.topic: include
 ms.date: 06/18/2020
-ms.openlocfilehash: 8a9796b0378e6e0bfc04a6e54aafb3001637cac6
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 61c67b66e85e1d8d03cbe07b0c8d2053151e3513
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96615909"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096413"
 ---
 A Pythonhoz készült QnA Maker ügyféloldali kódtára a következőre használható:
 
@@ -70,7 +70,7 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 
 A szerzői QnA Maker ügyfél egy [QnAMakerClient](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) objektum, amely a kulcsot tartalmazó Microsoft. Rest. ServiceClientCredentials használatával hitelesíti az Azure-t.
 
-Az ügyfél létrehozása után a [Tudásbázis tulajdonság használatával](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebaseoperations?view=azure-python) hozhatja létre, kezelheti és teheti közzé a tudásbázist.
+Az ügyfél létrehozása után a [Tudásbázis tulajdonság használatával](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python) hozhatja létre, kezelheti és teheti közzé a tudásbázist.
 
 A tudásbázist egy JSON-objektum küldésével kezelheti. Az azonnali műveletekhez a metódus általában egy JSON-objektumot ad vissza, amely az állapotot jelzi. A hosszú ideig futó műveletek esetében a válasz a művelet azonosítója. A [kérelem állapotának](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operation(class)?view=azure-python)meghatározásához hívja meg a [Operations.get_details](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operation(class)?view=azure-python#get-details-operation-id--custom-headers-none--raw-false----operation-config-) METÓDUSt a műveleti azonosítóval.
 
@@ -121,7 +121,7 @@ A [letöltési](https://docs.microsoft.com/python/api/azure-cognitiveservices-kn
 
 ## <a name="publish-a-knowledge-base"></a>Tudásbázis közzététele
 
-Tegye közzé a tudásbázist a [közzétételi](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python#publish-kb-id--custom-headers-none--raw-false----operation-config-) metódus használatával. Ez az aktuálisan mentett és betanított modellt veszi alapul, amelyet a Tudásbázis-azonosító hivatkozik, és egy végponton teszi közzé.
+Tegye közzé a tudásbázist a [közzétételi](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python) metódus használatával. Ez az aktuálisan mentett és betanított modellt veszi alapul, amelyet a Tudásbázis-azonosító hivatkozik, és egy végponton teszi közzé.
 
 [!code-python[Publish a knowledge base](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/quickstart.py?name=PublishKB&highlight=2)]
 
@@ -154,7 +154,7 @@ Ez egy egyszerű példa a Tudásbázis lekérdezésére. A speciális lekérdez�
 
 ## <a name="delete-a-knowledge-base"></a>Tudásbázis törlése
 
-Törölje a tudásbázist a [delete](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python#delete-kb-id--custom-headers-none--raw-false----operation-config-) metódus használatával a TUDÁSBÁZIS-azonosító paraméterével.
+Törölje a tudásbázist a [delete](/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python) metódus használatával a TUDÁSBÁZIS-azonosító paraméterével.
 
 [!code-python[Delete a knowledge base](~/cognitive-services-quickstart-code/python/QnAMaker/sdk/quickstart.py?name=DeleteKB&highlight=2)]
 

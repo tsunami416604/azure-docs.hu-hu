@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 0aaad18ba5bf98ca2ad53bd86605dfc6cce3e52c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cf70b24dae70ad2e64f3443e4c4d959d46fb4ea4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466536"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095032"
 ---
 # <a name="use-compute-acceleration-on-azure-stack-edge-pro-gpu-for-kubernetes-deployment"></a>A Kubernetes üzembe helyezéséhez használja a számítási gyorsítást Azure Stack Edge Pro GPU-ban
 
@@ -28,8 +28,8 @@ A számítási gyorsítás olyan kifejezés, amelyet kifejezetten Azure Stack Ed
 
 A cikk a számítási gyorsulást csak a GPU vagy a VPU használatával tárgyalja a következő eszközökhöz:
 
-- **Azure stack Edge Pro GPU** – ezeknek az eszközöknek 1 vagy 2 NVIDIA T4-s GPU-val kell rendelkezniük. További információ: [NVIDIA T4](https://www.nvidia.com/data-center/tesla-t4/).
-- **Azure stack Edge Pro R** – ezek az eszközök 1 NVIDIA T4 tenser Core GPU-val rendelkeznek. További információ: [NVIDIA T4](https://www.nvidia.com/data-center/tesla-t4/).
+- **Azure stack Edge Pro GPU** – ezeknek az eszközöknek 1 vagy 2 NVIDIA T4-s GPU-val kell rendelkezniük. További információ: [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).
+- **Azure stack Edge Pro R** – ezek az eszközök 1 NVIDIA T4 tenser Core GPU-val rendelkeznek. További információ: [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).
 - **Azure stack Edge mini R** – ezek az eszközök 1 Intel Movidius SZÁMTALAN X VPU rendelkeznek. További információ: az [Intel Movidius számtalan X VPU](https://www.movidius.com/MyriadX).
 
 
@@ -89,6 +89,6 @@ spec:
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [használhatja a kubectl egy Kubernetes állapot-nyilvántartó alkalmazás futtatására a Azure stack Edge Pro GPU-eszköz PersistentVolume](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).

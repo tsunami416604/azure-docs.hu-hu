@@ -2,7 +2,7 @@
 title: Gyakori kérdések – Azure dedikált HSM | Microsoft Docs
 description: Válaszok az Azure dedikált hardveres biztonsági modullal kapcsolatos gyakori kérdésekre, például az alapszintű információkra, az együttműködésre, a magas rendelkezésre állásra és a támogatásra.
 services: dedicated-hsm
-author: johncdawson
+author: keithp
 manager: rkarlin
 tags: azure-resource-manager
 ms.custom: mvc, seodec18
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 0d3309283279c887c00a475ccedfe1edaf311ae5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/10/2020
+ms.author: keithp
+ms.openlocfilehash: 61a9fcc5490c20383a2ae7d5c57b7fda7567c643
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88189865"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095151"
 ---
 # <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -32,11 +32,11 @@ A hardveres biztonsági modul (HSM) a titkosítási kulcsok védelméhez és kez
 
 ### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>K: Mi az Azure dedikált HSM-ajánlat?
 
-Az Azure dedikált HSM egy felhőalapú szolgáltatás, amely olyan Azure-adatközpontokban üzemeltetett HSM biztosít, amelyek közvetlenül kapcsolódnak az ügyfél virtuális hálózatához. Ezek a HSM dedikált hálózati berendezések (Gemalto SafeNet Network HSM 7 Model A790). Ezeket közvetlenül egy ügyfél magánhálózati IP-címére helyezik üzembe, és a Microsoft nem rendelkezik hozzáféréssel a HSM titkosítási funkcióihoz. Csak az ügyfél rendelkezik teljes körű rendszergazdai és titkosítási szabályozással az eszközökön. Az ügyfelek felelősek az eszköz kezeléséért, és a teljes körű tevékenység-naplókat közvetlenül az eszközről szerezhetik be. A dedikált HSM segítségével az ügyfelek megfelelnek a megfelelőségi/szabályozási követelményeknek, például a FIPS 140-2-as szint 3, a HIPAA, a PCI-DSS és a eIDAS és sok más.
+Az Azure dedikált HSM egy felhőalapú szolgáltatás, amely olyan Azure-adatközpontokban üzemeltetett HSM biztosít, amelyek közvetlenül kapcsolódnak az ügyfél virtuális hálózatához. Ezek a HSM dedikált hálózati berendezések (Thales Network Luna HSM 7). Ezeket közvetlenül egy ügyfél magánhálózati IP-címére helyezik üzembe, és a Microsoft nem rendelkezik hozzáféréssel a HSM titkosítási funkcióihoz. Csak az ügyfél rendelkezik teljes körű rendszergazdai és titkosítási szabályozással az eszközökön. Az ügyfelek felelősek az eszköz kezeléséért, és a teljes körű tevékenység-naplókat közvetlenül az eszközről szerezhetik be. A dedikált HSM segítségével az ügyfelek megfelelnek a megfelelőségi/szabályozási követelményeknek, például a FIPS 140-2-as szint 3, a HIPAA, a PCI-DSS és a eIDAS és sok más.
 
 ### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>K: Milyen hardvert használ a dedikált HSM?
 
-A Microsoft a Gemalto-szel együttműködve továbbítja az Azure dedikált HSM szolgáltatást. A használt eszköz a [SafeNet Luna Network HSM 7 Model A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). Ez az eszköz nem csak az FIPS 140-2 3. szintű hitelesített belső vezérlőprogram-t biztosít, de a kis késleltetésű, nagy teljesítményű és nagy kapacitású, 10 partíción keresztül is biztosít. 
+A Microsoft a Thales-szel együttműködve továbbítja az Azure dedikált HSM szolgáltatást. A használt eszköz a [Thales Network Luna HSM 7](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms). Ez az eszköz nem csak az FIPS 140-2 3. szintű hitelesített belső vezérlőprogram-t biztosít, de a kis késleltetésű, nagy teljesítményű és nagy kapacitású, 10 partíción keresztül is biztosít. 
 
 ### <a name="q-what-is-an-hsm-used-for"></a>K: mit használ a HSM?
 
@@ -44,11 +44,18 @@ A HSM olyan titkosítási kulcsok tárolására szolgálnak, amelyek titkosítá
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>K: Hogyan működik a dedikált HSM?
 
-Az ügyfelek a PowerShell vagy a parancssori felület használatával HSM bizonyos régiókban. Az ügyfél határozza meg, hogy a HSM melyik virtuális hálózathoz kapcsolódjon, és a kiépítés után a HSM elérhető lesz a kijelölt alhálózatban az ügyfél magánhálózati IP-címe területen lévő hozzárendelt IP-címeken. Ezután az ügyfelek csatlakozhatnak a HSM az SSH használatával a berendezések kezeléséhez és felügyeletéhez, a HSM-ügyfélkapcsolatok beállításához, a HSM inicializálásához, a partíciók létrehozásához, a szerepkörök hozzárendeléséhez, valamint a szerepkörök, például a partíciós tisztviselő, a kriptográfiai vezető és a titkosítási Ezután az ügyfél a Gemalto által biztosított HSM-ügyféleszközök/SDK/szoftver használatával titkosítási műveleteket hajthat végre az alkalmazásaikban.
+Az ügyfelek a PowerShell vagy a parancssori felület használatával HSM bizonyos régiókban. Az ügyfél határozza meg, hogy a HSM melyik virtuális hálózathoz kapcsolódjon, és a kiépítés után a HSM elérhető lesz a kijelölt alhálózatban az ügyfél magánhálózati IP-címe területen lévő hozzárendelt IP-címeken. Ezután az ügyfelek csatlakozhatnak a HSM az SSH használatával a berendezések kezeléséhez és felügyeletéhez, a HSM-ügyfélkapcsolatok beállításához, a HSM inicializálásához, a partíciók létrehozásához, a szerepkörök hozzárendeléséhez, valamint a szerepkörök, például a partíciós tisztviselő, a kriptográfiai vezető és a titkosítási Ezután az ügyfél a Thales által biztosított HSM-ügyféleszközök/SDK/szoftver használatával titkosítási műveleteket hajthat végre az alkalmazásaikban.
 
 ### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>K: milyen szoftvereket biztosít a dedikált HSM szolgáltatás?
 
-A Gemalto a Microsoft által kiosztott összes szoftvert a HSM-eszköz számára biztosítja. A szoftver a [Gemalto Customer Support portálon](https://supportportal.gemalto.com/csm/)érhető el. A dedikált HSM szolgáltatást használó ügyfeleket regisztrálni kell a Gemalto-támogatáshoz, és rendelkeznie kell egy ügyfél-AZONOSÍTÓval, amely lehetővé teszi a megfelelő szoftverek elérését és letöltését. A támogatott ügyfélszoftver a 7,2-es verzió, amely kompatibilis a FIPS 140-2 3. szint ellenőrzött belső vezérlőprogram-verziójának 7.0.3. 
+A Thales a Microsoft által kiosztott összes szoftvert a HSM-eszköz számára biztosítja. A szoftver a [Thales Customer Support portálon](https://supportportal.gemalto.com/csm/)érhető el. A dedikált HSM szolgáltatást használó ügyfeleket regisztrálni kell a Thales-támogatáshoz, és rendelkeznie kell egy ügyfél-AZONOSÍTÓval, amely lehetővé teszi a megfelelő szoftverek elérését és letöltését. A támogatott ügyfélszoftver a 7,2-es verzió, amely kompatibilis a FIPS 140-2 3. szint ellenőrzött belső vezérlőprogram-verziójának 7.0.3. 
+
+### <a name="q-what-extra-costs-may-be-incurred-with-dedicated-hsm-service"></a>K: milyen többletköltségek merülhetnek fel a dedikált HSM szolgáltatással?
+
+A dedikált HSM szolgáltatás használata esetén a következő elemek extra költséggel járnak. 
+* A dedikált, helyszíni biztonságimásolat-készítő eszköz használata a dedikált HSM szolgáltatással valósítható meg, azonban ez további költségekkel jár, és közvetlenül a Thales-től származik.
+* A dedikált HSM 10 partíciós licenccel rendelkezik. Ha egy ügyfél több partíciót is igényel, ez a további, a Thales-ból közvetlenül forrásból származó licencek díját is magában fogja.
+* A dedikált HSM hálózati infrastruktúrát (VNET, VPN Gateway stb.) és erőforrásokat (például virtuális gépeket) igényel az eszközök konfigurálásához. Ezek a további erőforrások további költségekkel járnak, és nem szerepelnek a dedikált HSM szolgáltatás díjszabásában.
 
 ### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>K: az Azure dedikált HSM a jelszó-és a PED-alapú hitelesítést kínálja?
 
@@ -56,11 +63,11 @@ Jelenleg az Azure dedikált HSM csak jelszó-alapú hitelesítéssel biztosít H
 
 ### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>K: az Azure dedikált HSM üzemelteti a HSM?
 
-A Microsoft csak a Gemalto SafeNet Luna Network HSM-et kínálja a dedikált HSM szolgáltatáson keresztül, és nem tud ügyfél által biztosított eszközöket üzemeltetni.
+A Microsoft csak a Thales hálózati Luna HSM 7-et kínálja a dedikált HSM szolgáltatáson keresztül, és nem tud ügyfél által biztosított eszközöket üzemeltetni.
 
 ### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>K: az Azure dedikált HSM támogatja a fizetési (PIN/EFT) funkciókat?
 
-Az Azure dedikált HSM szolgáltatás a SafeNet Luna Network HSM 7 (Model A790) eszközöket használja. Ezek az eszközök nem támogatják a fizetési HSM-specifikus funkciókat (például a PIN-kódot vagy az EFT-t) vagy a minősítéseket. Ha szeretné, hogy az Azure dedikált HSM szolgáltatás a jövőben is támogassa a fizetési HSM, továbbítsa a Microsoft-fiók képviselőjének visszajelzését.
+Az Azure dedikált HSM szolgáltatás a Thales hálózati Luna HSM 7-es eszközöket használja. Ezek az eszközök nem támogatják a fizetési HSM-specifikus funkciókat (például a PIN-kódot vagy az EFT-t) vagy a minősítéseket. Ha szeretné, hogy az Azure dedikált HSM szolgáltatás a jövőben is támogassa a fizetési HSM, továbbítsa a Microsoft-fiók képviselőjének visszajelzését.
 
 ### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>K: mely Azure-régiók érhetők el a dedikált HSM-ben?
 
@@ -94,7 +101,7 @@ Március 2019-én a dedikált HSM az alább felsorolt 14 régióban érhető el.
 
 ### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>K: hogyan kapcsolódik az alkalmazás egy dedikált HSM-hez?
 
-A Gemalto által biztosított HSM ügyféleszközök/SDK/szoftver használatával titkosítási műveleteket hajthat végre az alkalmazásaiból. A szoftver a [Gemalto Customer Support portálon](https://supportportal.gemalto.com/csm/)érhető el. A dedikált HSM szolgáltatást használó ügyfeleket regisztrálni kell a Gemalto-támogatáshoz, és rendelkeznie kell egy ügyfél-AZONOSÍTÓval, amely lehetővé teszi a megfelelő szoftverek elérését és letöltését.
+A Thales által biztosított HSM ügyféleszközök/SDK/szoftver használatával titkosítási műveleteket hajthat végre az alkalmazásaiból. A szoftver a [Thales Customer Support portálon](https://supportportal.gemalto.com/csm/)érhető el. A dedikált HSM szolgáltatást használó ügyfeleket regisztrálni kell a Thales-támogatáshoz, és rendelkeznie kell egy ügyfél-AZONOSÍTÓval, amely lehetővé teszi a megfelelő szoftverek elérését és letöltését.
 
 ### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>K: csatlakozhatnak egy alkalmazás a dedikált HSM-hez egy másik VNET a vagy az egész régióban?
 
@@ -110,7 +117,7 @@ Nem. Az Azure dedikált HSM csak a virtuális hálózaton belülről érhetők e
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>K: importálhatók kulcsok egy meglévő helyszíni HSM-ből a dedikált HSM-be?
 
-Igen, ha helyszíni Gemalto SafeNet HSM rendelkezik. Több módszer is létezik. Tekintse meg a Gemalto HSM dokumentációját.
+Igen, ha helyszíni Thales hálózati Luna HSM 7 HSM rendelkezik. Több módszer is létezik. Tekintse meg a [Thales HSM dokumentációját](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm).
 
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>K: milyen operációs rendszereket támogat a dedikált HSM-ügyfélszoftver?
 
@@ -119,7 +126,7 @@ Igen, ha helyszíni Gemalto SafeNet HSM rendelkezik. Több módszer is létezik.
 
 ### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>K: Hogyan az ügyfélalkalmazás konfigurálásával, hogy magas rendelkezésre állású konfigurációt hozzon létre több HSM több partícióval?
 
-A magas rendelkezésre állás érdekében be kell állítania a HSM-ügyfélalkalmazás konfigurációját, hogy az egyes HSM-partíciókat használja. Tekintse meg a Gemalto HSM ügyfélszoftver dokumentációját.
+A magas rendelkezésre állás érdekében be kell állítania a HSM-ügyfélalkalmazás konfigurációját, hogy az egyes HSM-partíciókat használja. Tekintse meg a Thales HSM ügyfélszoftver dokumentációját.
 
 ### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>K: milyen hitelesítési mechanizmusokat támogat a dedikált HSM?
 
@@ -131,7 +138,7 @@ PKCS # 11, Java (JCA/KVV), Microsoft CAPI és CNG, OpenSSL
 
 ### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>K: importálható vagy áttelepíthetők kulcsok a Luna 5/6 HSM az Azure dedikált HSM?
 
-Igen. Tekintse át a Gemalto áttelepítési útmutatóját. 
+Igen. A megfelelő Thales áttelepítési útmutatóért forduljon a Thales képviselőjéhez. 
 
 ## <a name="using-your-hsm"></a>A HSM használata
 
@@ -156,7 +163,7 @@ Nem. A dedikált HSM közvetlenül az ügyfél magánhálózati IP-címére van 
 
 ## <a name="administration-access-and-control"></a>Felügyelet, hozzáférés és vezérlés
 
-### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>K: az ügyfél teljes kizárólagos felügyeletet kap a HSM dedikált HSM?
+### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-"></a>K: az ügyfél teljes kizárólagos felügyeletet kap a HSM, dedikált "?
 
 Igen. Az egyes HSM-készülékek teljes mértékben egyetlen ügyfél számára vannak kijelölve, és az üzembe helyezést követően senki más nem rendelkezik rendszergazdai felügyelettel, és a rendszergazda jelszava megváltozott.
 
@@ -164,9 +171,9 @@ Igen. Az egyes HSM-készülékek teljes mértékben egyetlen ügyfél számára 
 
 A Microsoft nem rendelkezik rendszergazdai vagy titkosítási szabályozással a HSM-en. A Microsoft az alapszintű telemetria, például a hőmérséklet és az összetevők állapotát a soros portos kapcsolaton keresztül figyeli. Ez lehetővé teszi, hogy a Microsoft proaktív értesítést nyújtson az állapottal kapcsolatos problémákról. Ha szükséges, az ügyfél le tudja tiltani ezt a fiókot.
 
-### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>K: mi a Microsoft által használt "tenantadmin" fiók, amelyet a rendszergazda felhasználó "admin" használ a SafeNet HSM?
+### <a name="q-what-is-the-tenant-admin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-thales-luna-hsms"></a>K: Mi az a "bérlői rendszergazda" fiók, amelyet a Microsoft használ, a rendszergazda felhasználó a "rendszergazda" a Thales Luna HSM?
 
-A HSM-eszköz alapértelmezés szerint a rendszergazdai fiókkal, a szokásos alapértelmezett jelszóval rendelkezik. A Microsoft nem tudta használni az alapértelmezett jelszavakat, miközben bármely eszköz olyan készletben található, amelyet az ügyfelek kiépítenek. Ez nem felel meg a szigorú biztonsági követelményeknek. Emiatt erős jelszót állítunk be, amelyet a rendszer a kiépítési időpontban elvet. Emellett a kiépítés során új felhasználót hozunk létre a "tenantadmin" nevű rendszergazdai szerepkörben. Ez a felhasználó rendelkezik az alapértelmezett jelszóval, és az ügyfelek az újonnan kiosztott eszközre való első bejelentkezéskor megváltoztatják az első műveletet. Ez a folyamat magas fokú biztonságot nyújt, és megtartja az ügyfelekre vonatkozó egyetlen adminisztratív irányítás iránti ígéretét. Érdemes megjegyezni, hogy a "tenantadmin" felhasználó a rendszergazda felhasználói jelszó alaphelyzetbe állítására használható, ha az ügyfél ezt a fiókot használja. 
+A HSM-eszköz alapértelmezés szerint a rendszergazdai fiókkal, a szokásos alapértelmezett jelszóval rendelkezik. A Microsoft nem tudta használni az alapértelmezett jelszavakat, miközben bármely eszköz olyan készletben található, amelyet az ügyfelek kiépítenek. Ez nem felel meg a szigorú biztonsági követelményeknek. Emiatt erős jelszót állítunk be, amelyet a rendszer a kiépítési időpontban elvet. Emellett a kiépítési idő alatt új felhasználót hozunk létre a "bérlői rendszergazda" nevű rendszergazdai szerepkörben. Ez a felhasználó rendelkezik az alapértelmezett jelszóval, és az ügyfelek az újonnan kiosztott eszközre való első bejelentkezéskor megváltoztatják az első műveletet. Ez a folyamat magas fokú biztonságot nyújt, és megtartja az ügyfelekre vonatkozó egyetlen adminisztratív irányítás iránti ígéretét. Érdemes megjegyezni, hogy a "bérlői rendszergazda" felhasználó felhasználhatja a rendszergazda felhasználói jelszó alaphelyzetbe állítását, ha az ügyfél szívesebben használja ezt a fiókot. 
 
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>K: a Microsoft vagy bármely személy hozzáférhet a Microsoft hozzáférési kulcsaihoz a dedikált HSM-ben?
 
@@ -174,7 +181,7 @@ Nem. A Microsoft nem rendelkezik hozzáféréssel az ügyfél által lefoglalt d
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>K: frissíthetem a szoftvereket és a belső vezérlőprogramot a HSM kiosztott rendszeren?
 
-A legjobb támogatás érdekében a Microsoft határozottan azt javasolja, hogy ne frissítsen szoftvereket/belső vezérlőprogramot a HSM-ben. Az ügyfél azonban teljes körű felügyeleti felügyelettel rendelkezik, beleértve a szoftverek és a belső vezérlőprogram frissítését, ha a különböző belső vezérlőprogram-verziókban bizonyos funkciókra van szükség. A módosítások elvégzése előtt meg kell érteni a következményeket, például befolyásolhatják az FIPS által érvényesített állapotot. 
+Az ügyfél teljes körű felügyeleti felügyelettel rendelkezik, beleértve a szoftverek és a belső vezérlőprogram frissítését, ha a különböző belső vezérlőprogram-verziókban bizonyos funkciókra van szükség. A módosítások végrehajtása előtt forduljon a Microsofthoz a frissítéssel kapcsolatban HSMRequest@microsoft.com  
 
 ### <a name="q-how-do-i-manage-dedicated-hsm"></a>K: Hogyan a dedikált HSM kezelése?
 
@@ -182,7 +189,7 @@ A dedikált HSM úgy kezelheti, hogy az SSH-val fér hozzájuk.
 
 ### <a name="q-how-do-i-manage-partitions-on-the-dedicated-hsm"></a>K: Hogyan a dedikált HSM-ben lévő partíciók kezelése?
 
-A Gemalto HSM ügyfélszoftver a HSM és a partíciók kezelésére szolgál.
+A Thales HSM ügyfélszoftver a HSM és a partíciók kezelésére szolgál.
 
 ### <a name="q-how-do-i-monitor-my-hsm"></a>K: Hogyan a HSM figyelését?
 
@@ -196,7 +203,7 @@ Igen. Naplókat küldhet a HSM-berendezésből egy syslog-kiszolgálónak
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>K: lehet magas rendelkezésre állást konfigurálni ugyanabban a régióban vagy több régióban?
 
-Igen. A magas rendelkezésre állás konfigurálása és beállítása a Gemalto által biztosított HSM-ügyfélszoftverben történik. A helyek közötti vagy pont-pont típusú VPN-kapcsolattal azonos VNET vagy más, az adott régióban vagy régiókban található HSM, illetve a VNET kapcsolódó helyszíni HSM azonos magas rendelkezésre állású konfigurációhoz adhatók hozzá. Fontos megjegyezni, hogy ez csak a kulcsfontosságú anyagokat szinkronizálja, és nem adott konfigurációs elemeket, például a szerepköröket.
+Igen. A magas rendelkezésre állás konfigurálása és beállítása a Thales által biztosított HSM-ügyfélszoftverben történik. A helyek közötti vagy pont-pont típusú VPN-kapcsolattal azonos VNET vagy más, az adott régióban vagy régiókban található HSM, illetve a VNET kapcsolódó helyszíni HSM azonos magas rendelkezésre állású konfigurációhoz adhatók hozzá. Fontos megjegyezni, hogy ez csak a kulcsfontosságú anyagokat szinkronizálja, és nem adott konfigurációs elemeket, például a szerepköröket.
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>K: Hozzáadhatok HSM a helyszíni hálózatról egy magas rendelkezésre állású csoportba az Azure dedikált HSM használatával?
 
@@ -222,7 +229,7 @@ Az Azure-adatközpontok kiterjedt fizikai és eljárási biztonsági ellenőrzé
 
 ### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>K: mi történik, ha biztonsági vagy hardverhiba-hamisítási esemény van?
 
-A dedikált HSM-szolgáltatás a SafeNet hálózati HSM 7 berendezéseket használja. Ezek a készülékek támogatják a fizikai és a logikai illetéktelen módosítások észlelését. Ha a rendszer soha nem módosít eseményt, a HSM automatikusan nulla értékűek lesznek.
+A dedikált HSM szolgáltatás a Thales hálózati Luna HSM 7 készülékeket használja. Ezek a készülékek támogatják a fizikai és a logikai illetéktelen módosítások észlelését. Ha a rendszer soha nem módosít eseményt, a HSM automatikusan nulla értékűek lesznek.
 
 ### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>K: Hogyan ellenőrizze, hogy a dedikált HSM lévő kulcsok nem vesznek-e el hiba vagy rosszindulatú belső támadás miatt?
 
@@ -230,13 +237,13 @@ Erősen ajánlott helyszíni HSM biztonsági mentési eszközt használni a HSM 
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>K: Hogyan támogatást kap a dedikált HSM-hez?
 
-A támogatást a Microsoft és a Gemalto egyaránt támogatja.  Ha problémája van a hardverrel vagy a hálózati hozzáféréssel, adjon meg egy támogatási kérést a Microsofttal, és ha problémája van a HSM-konfigurációval, a szoftverekkel és az alkalmazás-fejlesztéssel kapcsolatos támogatási kérést a Gemalto. Ha meghatározatlan probléma merül fel, adjon meg egy támogatási kérést a Microsofttal, majd a Gemalto igény szerint is elvégezheti. 
+A támogatást a Microsoft és a Thales egyaránt támogatja.  Ha problémája van a hardverrel vagy a hálózati hozzáféréssel, adjon meg egy támogatási kérést a Microsofttal, és ha problémája van a HSM-konfigurációval, a szoftverekkel és az alkalmazás-fejlesztéssel kapcsolatos támogatási kérést a Thales. Ha meghatározatlan probléma merül fel, adjon meg egy támogatási kérést a Microsofttal, majd a Thales igény szerint is elvégezheti. 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>K: Hogyan az ügyfélszoftvert, a dokumentációt és az integrációs útmutatóhoz való hozzáférést a SafeNet Luna 7 HSM-hez?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-thales-network-luna-hsm-7"></a>K: Hogyan az ügyfélszoftvert, a dokumentációt és az integrációs útmutatóhoz való hozzáférést a Thales Network Luna HSM 7 rendszerhez?
 
-A szolgáltatáshoz való regisztráció után meg kell adni egy Gemalto-ügyfél-azonosítót, amely lehetővé teszi a regisztrációt a Gemalto-ügyfél támogatási portálján. Ez lehetővé teszi az összes szoftver és dokumentáció elérését, valamint a támogatási kérések közvetlen Gemalto való engedélyezését.
+A szolgáltatáshoz való regisztráció után meg kell adni egy Thales-ügyfél-azonosítót, amely lehetővé teszi a regisztrációt a Thales-ügyfél támogatási portálján. Ez lehetővé teszi az összes szoftver és dokumentáció elérését, valamint a támogatási kérések közvetlen Thales való engedélyezését.
 
-### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>K: ha talál biztonsági rést, és a Gemalto kiadott egy javítást, ki felelős az operációs rendszer/belső vezérlőprogram frissítéséhez/javításához?
+### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-thales-who-is-responsible-for-upgradingpatching-osfirmware"></a>K: ha talál biztonsági rést, és a Thales kiadott egy javítást, ki felelős az operációs rendszer/belső vezérlőprogram frissítéséhez/javításához?
 
 A Microsoft nem tud csatlakozni az ügyfeleknek kiosztott HSM. Az ügyfeleknek frissíteniük kell a HSM, és javítaniuk kell a javítást.
 
@@ -248,11 +255,11 @@ A HSM parancssori újraindítási lehetőséggel rendelkezik, azonban olyan prob
 
 ### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>K: biztonságos a legfontosabb adathoz tartozó titkosítási kulcsok tárolása a dedikált HSM-ben?
 
-Igen, a dedikált HSM-es SafeNet-ben a Network HSM 7 olyan berendezéseket használ, amelyek FIPS 140-2 3. szintű hitelesített HSM használnak. 
+Igen, a dedikált HSM-kikötések Thales hálózati Luna HSM 7 berendezéseket használnak, amelyek az FIPS 140-2 3. szintű hitelesített HSM használják. 
 
 ### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>K: milyen titkosítási kulcsokat és algoritmusokat támogat a dedikált HSM?
 
-A dedikált HSM szolgáltatás a SafeNet-hálózat HSM 7 készülékeit is kiépíti. Számos kriptográfiai kulcsot és algoritmust támogatnak, többek között a következőket: Full Suite B-támogatás
+A dedikált HSM szolgáltatás a Thales hálózati Luna HSM 7 berendezéseket is kiépíti. Számos kriptográfiai kulcsot és algoritmust támogatnak, többek között a következőket: Full Suite B-támogatás
 
 * Aszimmetrikus
   * RSA
@@ -276,21 +283,21 @@ A dedikált HSM szolgáltatás a SafeNet-hálózat HSM 7 készülékeit is kiép
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>K: a dedikált HSM FIPS 140-2 3. szint érvényesítve van?
 
-Igen. A dedikált HSM szolgáltatás kiépíti a 3. szintű FIPS 140-2-es HSM-t használó SafeNet-hálózat HSM 7 készülékeit.
+Igen. A dedikált HSM szolgáltatás a Thales hálózati Luna HSM 7 berendezéseket használja, amelyek az FIPS 140-2 3. szintű hitelesített HSM használják.
 
 ### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>K: mit kell tennem ahhoz, hogy a dedikált HSM-et az FIPS 140-2 3. szintű, ellenőrzött módban üzemeltetem?
 
-A dedikált HSM szolgáltatás a SafeNet Luna Network HSM 7 készülékekre vonatkozó előírásokat is kiépíti. Ezek a készülékek az FIPS 140-2 3. szintű hitelesített HSM használják. Az alapértelmezett telepített konfiguráció, operációs rendszer és belső vezérlőprogram szintén FIPS-hitelesítéssel van elválasztva. Nem kell semmilyen műveletet végrehajtania a FIPS 140-2 3. szintű megfelelőségének megfelelően.
+A dedikált HSM szolgáltatás a Thales hálózati Luna HSM 7 berendezéseket is kiépíti. Ezek a készülékek az FIPS 140-2 3. szintű hitelesített HSM használják. Az alapértelmezett telepített konfiguráció, operációs rendszer és belső vezérlőprogram szintén FIPS-hitelesítéssel van elválasztva. Nem kell semmilyen műveletet végrehajtania a FIPS 140-2 3. szintű megfelelőségének megfelelően.
 
 ### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>K: Hogyan gondoskodik az ügyfél arról, hogy ha egy HSM kiépítése megtörtént, a rendszer törli az összes lényeges anyagot?
 
-A megszüntetés megkezdése előtt az ügyfélnek a HSM-Gemalto megadott HSM-eszközök használatával nulláznie kell a HSM-et.
+A megszüntetés megkezdése előtt az ügyfélnek a HSM-Thales megadott HSM-eszközök használatával nulláznie kell a HSM-et.
 
 ## <a name="performance-and-scale"></a>Teljesítmény és méret
 
 ### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>K: hány titkosítási műveletet támogatott másodpercenként a dedikált HSM-sel?
 
-A dedikált HSM-rendelkezések SafeNet Network HSM 7 berendezéseket (Model A790). Íme egy összefoglaló az egyes műveletek maximális teljesítményéről: 
+A dedikált HSM-rendelkezések Thales hálózati Luna HSM 7 HSM. Íme egy összefoglaló az egyes műveletek maximális teljesítményéről: 
 
 * RSA-2048:10 000 tranzakció másodpercenként
 * ECC-P256:20 000 tranzakció/másodperc

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 11/24/2020
-ms.openlocfilehash: c436d75384c527ba7666cd2e6e780b9d8a93eae2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003946"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095083"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Adatfolyam-tevékenység Azure Data Factory
 
@@ -57,13 +57,13 @@ Az adatfolyam tevékenységgel átalakíthatja és áthelyezheti az adatait a le
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-adatfolyam | A végrehajtandó adatfolyamra mutató hivatkozás | DataFlowReference | Yes
-integrationRuntime | Az a számítási környezet, amelyen az adatfolyam fut. Ha nincs megadva, a rendszer az Azure Integration Runtime automatikus feloldását fogja használni. | IntegrationRuntimeReference | No
-számítás. coreCount | A Spark-fürtben használt magok száma. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | 8, 16, 32, 48, 80, 144, 272 | No
-számítás. computeType | A Spark-fürtben használt számítási típus. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | "Általános", "ComputeOptimized", "MemoryOptimized" | No
-előkészítés. linkedService | Ha Azure-beli szinapszis Analytics-forrást vagy-fogadót használ, határozza meg a alapszintű előkészítéshez használt Storage-fiókot.<br/><br/>Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei. Ismerje meg az [Azure Blob](connector-azure-blob-storage.md#managed-identity) és a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) szükséges konfigurációit is.<br/> | Linkedservicereference sématulajdonsággal | Csak akkor, ha az adatfolyam beolvassa vagy ír egy Azure szinapszis Analyticsbe
+adatfolyam | A végrehajtandó adatfolyamra mutató hivatkozás | DataFlowReference | Igen
+integrationRuntime | Az a számítási környezet, amelyen az adatfolyam fut. Ha nincs megadva, a rendszer az Azure Integration Runtime automatikus feloldását fogja használni. | IntegrationRuntimeReference | Nem
+számítás. coreCount | A Spark-fürtben használt magok száma. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | 8, 16, 32, 48, 80, 144, 272 | Nem
+számítás. computeType | A Spark-fürtben használt számítási típus. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | "Általános", "ComputeOptimized", "MemoryOptimized" | Nem
+előkészítés. linkedService | Ha Azure-beli szinapszis Analytics-forrást vagy-fogadót használ, határozza meg a alapszintű előkészítéshez használt Storage-fiókot.<br/><br/>Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)-ban való használatának következményei. Ismerje meg az [Azure Blob](connector-azure-blob-storage.md#managed-identity) és a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) szükséges konfigurációit is.<br/> | Linkedservicereference sématulajdonsággal | Csak akkor, ha az adatfolyam beolvassa vagy ír egy Azure szinapszis Analyticsbe
 előkészítés. folderPath | Ha Azure szinapszis Analytics-forrást vagy-fogadót használ, a mappa elérési útja a blob Storage-fiókban | Sztring | Csak akkor, ha az adatfolyam beolvassa vagy ír az Azure szinapszis Analyticsbe
-traceLevel | Az adatfolyam-tevékenységek végrehajtásának naplózási szintjének beállítása | Vékony, durva, nincs | No
+traceLevel | Az adatfolyam-tevékenységek végrehajtásának naplózási szintjének beállítása | Vékony, durva, nincs | Nem
 
 ![Adatfolyam végrehajtása](media/data-flow/activity-data-flow.png "Adatfolyam végrehajtása")
 
@@ -88,7 +88,7 @@ A folyamatok végrehajtásához a fürt egy olyan fürt, amely a végrehajtás m
 
 ### <a name="polybase"></a>PolyBase
 
-Ha az Azure szinapszis Analytics (korábban SQL Data Warehouse) szolgáltatást fogadóként vagy forrásként használja, ki kell választania egy átmeneti helyet a köteg batch-terheléshez. A Base lehetővé teszi a kötegek tömeges betöltését az adatsorok egymásba helyezése helyett. A Base drasztikusan csökkenti a betöltési időt az Azure szinapszis Analytics szolgáltatásban.
+Ha az Azure szinapszis Analytics szolgáltatást fogadóként vagy forrásként használja, ki kell választania egy átmeneti helyet a Batch-kötegek terheléséhez. A Base lehetővé teszi a kötegek tömeges betöltését az adatsorok egymásba helyezése helyett. A Base drasztikusan csökkenti a betöltési időt az Azure szinapszis Analytics szolgáltatásban.
 
 ## <a name="logging-level"></a>Naplózási szint
 
@@ -163,7 +163,7 @@ A (z) "source1" nevű forrásból beolvasott sorok számának lekéréséhez has
 > [!NOTE]
 > Ha a fogadó nulla sorból áll, akkor nem jelenik meg a mérőszámokban. A létezés ellenőrizhető a függvény használatával `contains` . Például `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` megvizsgálhatja, hogy a sorok sink1-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: Data Factory által támogatott vezérlési flow-tevékenységek: 
 

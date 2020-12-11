@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: b4234acb2ce32980a268e389cb31de9a57ed18e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70ab0b5c70e94c4784a7ab260b3304107bcb1175
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82131861"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096423"
 ---
 Ha másik üzembe helyezési pontról klónozott konfigurációt telepít, a klónozott konfiguráció szerkeszthető. Egyes konfigurációs elemek követik a tartalmat a swap (nem tárolóhely-specifikus), míg az egyéb konfigurációs elemek ugyanazon a tárolóhelyen maradnak a swap (tárolóhely-specifikus) után. Az alábbi listában a tárolóhelyek cseréjekor megjelenő beállítások láthatók.
 
@@ -22,7 +22,6 @@ Ha másik üzembe helyezési pontról klónozott konfigurációt telepít, a kl�
 * Nyilvános tanúsítványok
 * Webjobs-tartalom
 * Hibrid kapcsolatok *
-* Virtuális hálózati integráció *
 * Szolgáltatási végpontok *
 * Azure Content Delivery Network *
 
@@ -38,7 +37,8 @@ A csillaggal (*) jelölt funkciók nem lesznek lecserélve.
 * IP-korlátozások
 * Always on
 * Diagnosztikai beállítások
-* Több eredetű erőforrás-megosztás (CORS)
+* Eltérő eredetű erőforrások megosztása (CORS)
+* Virtuális hálózat integrációja
 
 > [!NOTE]
 > A nem cserélt beállításokra vonatkozó bizonyos Alkalmazásbeállítások nem lesznek felcserélve. Mivel például a diagnosztikai beállítások nincsenek felcserélve, a kapcsolódó Alkalmazásbeállítások, például `WEBSITE_HTTPLOGGING_RETENTION_DAYS` a és a nem lesznek `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` lecserélve, még akkor is, ha nem jelennek meg tárolóhely-beállításokként.

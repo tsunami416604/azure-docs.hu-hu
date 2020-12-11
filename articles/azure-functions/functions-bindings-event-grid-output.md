@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 6bd4d5d82af213063b2000693e46d22744604480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888afdc2764fed9f0b2c8b548c3e2b1c48e9a31e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88214123"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094676"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Functions Azure Event Grid kimeneti kötése
 
@@ -100,6 +100,10 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+A Event Grid kimeneti kötés nem érhető el a Javához.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa a *function.js* fájl Event Grid kimeneti kötési adatokat mutatja be.
@@ -160,6 +164,70 @@ module.exports = function(context) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Az alábbi példa bemutatja, hogyan konfigurálhat egy függvényt egy Event Gridi esemény üzenetének kimenetére. Az a szakasz, amelyben be `type` van állítva `eventGrid` a Event Grid kimeneti kötés létrehozásához szükséges értékek konfigurálása.
+
+```powershell
+{
+  "bindings": [
+    {
+      "type": "eventGrid",
+      "name": "outputEvent",
+      "topicEndpointUri": "MyEventGridTopicUriSetting",
+      "topicKeySetting": "MyEventGridTopicKeySetting",
+      "direction": "out"
+    },
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    }
+  ]
+}
+```
+
+A függvényben a paranccsal `Push-OutputBinding` küldhet egy eseményt egy egyéni témakörbe a Event Grid kimeneti kötés használatával.
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$message = $Request.Query.Message
+
+Push-OutputBinding -Name outputEvent -Value  @{
+    id = "1"
+    EventType = "testEvent"
+    Subject = "testapp/testPublish"
+    EventTime = "2020-08-27T21:03:07+00:00"
+    Data = @{
+        Message = $message
+    }
+    DataVersion = "1.0"
+}
+
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = 200
+    Body = "OK"
+})
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Az alábbi példa egy trigger kötést mutat be egy *function.jsa* fájlban, és egy [Python-függvényt](functions-reference-python.md) , amely a kötést használja. Ezután egy eseményben küldi el az egyéni témakört, amelyet a következő ad meg: `topicEndpointUri` .
@@ -194,7 +262,6 @@ import logging
 import azure.functions as func
 import datetime
 
-
 def main(eventGridEvent: func.EventGridEvent, 
          outputEvent: func.Out[func.EventGridOutputEvent]) -> None:
 
@@ -209,10 +276,6 @@ def main(eventGridEvent: func.EventGridEvent,
             event_time=datetime.datetime.utcnow(),
             data_version="1.0"))
 ```
-
-# <a name="java"></a>[Java](#tab/java)
-
-A Event Grid kimeneti kötés nem érhető el a Javához.
 
 ---
 
@@ -239,17 +302,21 @@ Teljes példa: [példa](#example).
 
 A C# parancsfájl nem támogatja az attribútumokat.
 
+# <a name="java"></a>[Java](#tab/java)
+
+A Event Grid kimeneti kötés nem érhető el a Javához.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A PowerShell nem támogatja az attribútumokat.
+
 # <a name="python"></a>[Python](#tab/python)
 
 A Event Grid kimeneti kötés nem érhető el a Pythonhoz.
-
-# <a name="java"></a>[Java](#tab/java)
-
-A Event Grid kimeneti kötés nem érhető el a Javához.
 
 ---
 
@@ -278,19 +345,23 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Üzenetek küldése a metódus paraméterének használatával, például: `out EventGridEvent paramName` . A C#-szkriptben a `paramName` `name` *function.js*tulajdonságában megadott érték van megadva. Több üzenet írásához használhatja a `ICollector<EventGridEvent>` vagy `IAsyncCollector<EventGridEvent>` a helyét `out EventGridEvent` .
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-A kimeneti esemény eléréséhez használja `context.bindings.<name>` a `<name>` `name` *function.js*tulajdonságában megadott értéket.
-
-# <a name="python"></a>[Python](#tab/python)
-
-A Event Grid kimeneti kötés nem érhető el a Pythonhoz.
+Üzenetek küldése a metódus paraméterének használatával, például: `out EventGridEvent paramName` . A C#-szkriptben a `paramName` `name` *function.js* tulajdonságában megadott érték van megadva. Több üzenet írásához használhatja a `ICollector<EventGridEvent>` vagy `IAsyncCollector<EventGridEvent>` a helyét `out EventGridEvent` .
 
 # <a name="java"></a>[Java](#tab/java)
 
 A Event Grid kimeneti kötés nem érhető el a Javához.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+A kimeneti esemény eléréséhez használja `context.bindings.<name>` a `<name>` `name` *function.js* tulajdonságában megadott értéket.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A kimeneti eseményt a parancsmagot használatával érheti el az `Push-OutputBinding` Event Grid kimeneti kötéshez.
+
+# <a name="python"></a>[Python](#tab/python)
+
+A Event Grid kimeneti kötés nem érhető el a Pythonhoz.
 
 ---
 

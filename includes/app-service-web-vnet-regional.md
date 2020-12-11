@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 963f0698b921caa413c61059ad69284c41b4f265
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 86d4eb68866e35300738a15cbd3549485c3cbafb
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999437"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096434"
 ---
 A regionális VNet-integráció használata lehetővé teszi, hogy az alkalmazás hozzáférjen:
 
@@ -29,7 +29,7 @@ Ha VNet-integrációt használ az virtuális hálózatok-ben ugyanabban a régi�
 Az alkalmazás alapértelmezés szerint csak a RFC1918-forgalmat irányítja át a VNet. Ha az összes kimenő forgalmat át szeretné irányítani a VNet, alkalmazza az alkalmazás beállítását WEBSITE_VNET_ROUTE_ALL az alkalmazásra. Az alkalmazás beállításának konfigurálása:
 
 1. Nyissa meg a **konfigurációs** felhasználói felületet az alkalmazás-portálon. Válassza az **Új alkalmazás beállítása** lehetőséget.
-1. Írja **WEBSITE_VNET_ROUTE_ALL** be a WEBSITE_VNET_ROUTE_ALL **nevet a név** mezőbe, és írja be az **1** **értéket az érték** mezőbe.
+1. Írja  be a WEBSITE_VNET_ROUTE_ALL **nevet a név** mezőbe, és írja be az **1** **értéket az érték** mezőbe.
 
    ![Alkalmazásbeállítás megadása][4]
 
@@ -96,7 +96,17 @@ A Border Gateway Protocol (BGP) útvonalak az alkalmazások forgalmára is hatá
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-Miután az alkalmazás integrálva van a VNet, ugyanazt a DNS-kiszolgálót használja, amelyhez a VNet konfigurálva van. Ezt a viselkedést felülbírálhatja az alkalmazásban úgy, hogy az WEBSITE_DNS_SERVER a kívánt DNS-kiszolgáló címeként konfigurálja. Ha a VNet konfigurált egyéni DNS-kiszolgálóval rendelkezett, de azt szeretné, hogy az alkalmazása Azure DNS privát zónákat használjon, akkor a WEBSITE_DNS_SERVER értéket kell megadnia a 168.63.129.16 értékkel. 
+Miután az alkalmazás integrálva van a VNet, ugyanazt a DNS-kiszolgálót használja, amelyhez a VNet konfigurálva van. Alapértelmezés szerint az alkalmazás nem fog működni Azure DNS Private Zones. A Azure DNS Private Zones való együttműködéshez a következő Alkalmazásbeállítások hozzáadására van szükség:
+
+
+1. A WEBSITE_DNS_SERVER értéke 168.63.129.16 1. WEBSITE_DNS_SERVER értékkel 168.63.129.16
+1. 1 1 értékű WEBSITE_VNET_ROUTE_ALL. 1. értékkel rendelkező WEBSITE_VNET_ROUTE_ALL
+
+
+Ezek a beállítások elküldik az alkalmazásból érkező összes kimenő hívást a VNet, továbbá lehetővé teszi, hogy az alkalmazás Azure DNS privát zónákat használjon.   Ezek a beállítások az alkalmazásból érkező összes kimenő hívást elküldik a VNet. Emellett lehetővé teszi, hogy az alkalmazás a Azure DNS használja a saját DNS zóna munkavégző szinten történő lekérdezésével. Ezt a funkciót akkor kell használni, ha egy futó alkalmazás egy saját DNS zónához fér hozzá.
+
+> [!NOTE]
+>Egyéni tartomány saját DNS zónát használó webalkalmazáshoz való hozzáadása nem lehetséges a VNET-integráció. Az egyéni tartomány érvényesítése a vezérlő szintjén, nem pedig a munkavégző szinten történik, ami megakadályozza a DNS-rekordok észlelését. Ha saját DNS zónából szeretne egyéni tartományt használni, az érvényesítést Application Gateway vagy ILB App Service Environment használatával kell kihagyni.
 
 ### <a name="private-endpoints"></a>Privát végpontok
 

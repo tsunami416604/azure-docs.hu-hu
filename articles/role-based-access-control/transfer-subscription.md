@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/06/2020
+ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: ad0ba3c63f6f0ef6e7e02051031cf215c2e72cce
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 92b27690ab1f2ca8d98eb2231c5a27bc508613f8
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648242"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095423"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba
 
@@ -53,7 +53,12 @@ A következőkben néhány ok, amiért érdemes lehet átvinni egy előfizetést
 - Az üzleti tevékenység egy része egy különálló vállalatra oszlik, és néhány erőforrást egy másik Azure AD-címtárba kell áthelyeznie.
 - A biztonsági elkülönítés érdekében egy másik Azure AD-címtárban lévő erőforrásokat szeretne kezelni.
 
-Az előfizetés átadásához leállás szükséges a folyamat befejezéséhez. A forgatókönyvtől függően előfordulhat, hogy az erőforrások újbóli létrehozása és az Adatmásolás a célként megadott könyvtárba és előfizetésbe történik.
+### <a name="alternate-approaches"></a>Alternatív megoldások
+
+Az előfizetés átadásához állásidő szükséges a folyamat befejezéséhez. A forgatókönyvtől függően a következő alternatív módszereket veheti fontolóra:
+
+- Hozza létre újra az erőforrásokat, és másolja az Adatmásolást a cél könyvtárba és az előfizetésbe.
+- Hozzon be egy többkönyvtáras architektúrát, és hagyja el az előfizetést a forrás címtárban. Az Azure Lighthouse használatával delegálhatja az erőforrásokat, hogy a célként megadott könyvtárban lévő felhasználók hozzáférhessenek az előfizetéshez a forrás címtárban. További információ: [Az Azure Lighthouse nagyvállalati forgatókönyvekben](../lighthouse/concepts/enterprise.md).
 
 ### <a name="understand-the-impact-of-transferring-a-subscription"></a>Az előfizetés átadásának következményeinek megismerése
 
@@ -383,3 +388,4 @@ Ha szeretné eltávolítani a hozzáférést a forrás címtárban lévő felhas
 - [Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [Azure-előfizetések átvitele az előfizetők és a CSP-k között](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)
 - [Azure-előfizetés társítása vagy hozzáadása az Azure Active Directory-bérlőhöz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+- [Az Azure Lighthouse nagyvállalati forgatókönyvekben](../lighthouse/concepts/enterprise.md)

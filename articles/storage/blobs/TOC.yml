@@ -303,6 +303,8 @@
               href: storage-blob-create-account-block-blob.md
             - name: Tárfiók frissítése
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Törölt tárfiók helyreállítása
+              href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: A fióktípus és a termékváltozat nevének lekérése (.NET)
               href: ../common/storage-account-get-info.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Tárolók létrehozása és felügyelete

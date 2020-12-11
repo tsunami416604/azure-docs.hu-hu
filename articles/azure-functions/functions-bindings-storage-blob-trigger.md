@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 45393f116149f6cf16763d2d7033f8425df235bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998837"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094845"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-trigger Azure Functions
 
@@ -323,6 +323,9 @@ Az `@BlobTrigger` attribútummal hozzáférést biztosíthat a függvényt kivá
 
 A blob neve mintát megadhatja a `path` tulajdonságban *function.json* vagy az `BlobTrigger` Attribute konstruktorban. A név minta lehet [szűrő vagy kötési kifejezés](./functions-bindings-expressions-patterns.md)is. A következő szakasz példákat tartalmaz.
 
+> [!TIP]
+> A tároló neve nem tartalmazhat feloldót a név mintában.
+
 ### <a name="get-file-name-and-extension"></a>Fájl nevének és kiterjesztésének beolvasása
 
 Az alábbi példa bemutatja, hogyan köthető a blob-fájl nevéhez és kiterjesztéséhez:
@@ -424,7 +427,7 @@ A blob-trigger belsőleg használ egy várólistát, így az egyidejű függvén
 
 A JavaScript és a Java függvények a teljes blobot a memóriába töltik be, a C#-függvények pedig a következőhöz kötődnek: `string` vagy `Byte[]` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [BLOB Storage-adat olvasása függvény futtatásakor](./functions-bindings-storage-blob-input.md)
 - [BLOB Storage-adatok írása függvényből](./functions-bindings-storage-blob-output.md)

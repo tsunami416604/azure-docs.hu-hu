@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: caad292f06710fca8d6f64476eead5dfcb164e9d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: f99aedc21c3b51975649f8944ab53536d365a7d1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96536915"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096391"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Támogatott operációs rendszerek és illesztőprogramok
 
@@ -34,7 +34,9 @@ Az NC, NCv2, NCv3, NCasT4_v3, ND és NDv2 sorozatú virtuális gépek NVIDIA Tes
 
 A Microsoft a virtuális munkaállomásként vagy virtuális alkalmazásként használt NV-és NVv3-sorozatú virtuális gépek NVIDIA GRID-illesztőprogram-telepítőit terjeszti ki. Csak az alábbi táblázatban felsorolt operációs rendszereken telepítse ezeket a GRID-illesztőprogramokat az Azure NV-sorozatú virtuális gépeken. Ezek az illesztőprogramok közé tartoznak az Azure-beli GRID virtuális GPU-szoftverek licencelése. Nincs szükség az NVIDIA vGPU szoftverlicenc-kiszolgáló beállítására.
 
-Az Azure által újraterjesztett GRID-illesztőprogramok nem működnek a nem NV sorozatú virtuális gépeken, például az NC, a NCv2, a NCv3, az ND és a NDv2 sorozatú virtuális gépeken. Az egyetlen kivétel a NCas_T4_V3 VM-sorozat, ahol a GRID-illesztőprogramok lehetővé teszik az NV-sorozathoz hasonló grafikus funkciókat.
+Az Azure által újraterjesztett GRID-illesztőprogramok nem működnek a nem NV sorozatú virtuális gépeken, például a NCv2, a NCv3, az ND és a NDv2 sorozatú virtuális gépeken. Az egyetlen kivétel a NCas_T4_V3 VM-sorozat, ahol a GRID-illesztőprogramok lehetővé teszik az NV-sorozathoz hasonló grafikus funkciókat.
+
+Az NVIDIA K80 GPU-val való NC-Series nem támogatja a GRID/Graphics alkalmazásokat.  
 
 Vegye figyelembe, hogy az NVIDIA-bővítmény mindig telepíti a legújabb illesztőprogramot. Az előző verzióra mutató hivatkozásokat biztosítunk azon ügyfelek számára, akik egy régebbi verziótól függenek.
 

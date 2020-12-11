@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 9e0c5ae119b734f91e8cfa1e7afb11a96e13035c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 2e4ff4d9159947ea87f97d56f3fb9c2825698227
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549072"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095066"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,7 +41,7 @@ Az egyes API-k egymástól függetlenül működnek, kivéve a Gremlin és az SQ
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Megfelelő-e Azure Cosmos DB HIPAA?
 
-Igen, Azure Cosmos DB HIPAA-kompatibilis. A HIPAA az egyéni és beazonosítható egészségügyi adatok használatára, nyilvánosságra hozatalára és védelmére vonatkozó követelményeket állapítja meg. További információ: [Microsoft adatvédelmi központ](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA).
+Igen, Azure Cosmos DB HIPAA-kompatibilis. A HIPAA az egyéni és beazonosítható egészségügyi adatok használatára, nyilvánosságra hozatalára és védelmére vonatkozó követelményeket állapítja meg. További információ: [Microsoft adatvédelmi központ](/compliance/regulatory/offering-hipaa-hitech).
 
 ### <a name="what-are-the-storage-limits-of-azure-cosmos-db"></a>Mik a Azure Cosmos DB tárolási korlátai?
 

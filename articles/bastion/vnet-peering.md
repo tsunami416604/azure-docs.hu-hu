@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/05/2020
+ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad3cf33dacffc8bcda9376857206784afedf7139
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 472261666c86b666efd09c7217d12e5a795a50d9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94361992"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094887"
 ---
 # <a name="vnet-peering-and-azure-bastion-preview"></a>VNet-peering és Azure Bastion (előzetes verzió)
 
@@ -44,7 +44,7 @@ Ez az ábra egy Azure-alapú megerősített telepítés architektúráját mutat
 1. Az Azure Bastion zökkenőmentesen észlelhető a különböző VNet.
 1. Egyetlen kattintással megnyílik az RDP/SSH-munkamenet a böngészőben. Az RDP és az SSH egyidejű munkamenet-korlátaival kapcsolatban lásd: [RDP-és SSH-munkamenetek](bastion-faq.md#limits).
 
-   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Kapcsolódás":::
+  :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Kapcsolódás":::
 
    További információ a virtuális gépekhez az Azure Bastion használatával történő csatlakozásról:
 
@@ -55,6 +55,6 @@ Ez az ábra egy Azure-alapú megerősített telepítés architektúráját mutat
 
 [!INCLUDE [FAQ for VNet peering](../../includes/bastion-faq-peering-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a [megerősített GYIK](bastion-faq.md)-t.

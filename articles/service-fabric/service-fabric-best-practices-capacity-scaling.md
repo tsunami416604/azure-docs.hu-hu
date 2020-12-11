@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41cfff11e44a3d052614aa3c81a4623f59bbbbf5
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531304"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095287"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapacitás megtervezése és méretezése az Azure Service Fabric
 
@@ -42,7 +42,7 @@ A virtuálisgép-méretezési csoportokon keresztüli automatikus skálázással
 
 ## <a name="vertical-scaling-considerations"></a>Vertikális skálázási megfontolások
 
-Az Azure Service Fabric egy csomópont-típus [vertikális skálázása](./virtual-machine-scale-set-scale-node-type-scale-out.md) számos lépést és szempontot igényel. Példa:
+Az Azure Service Fabric egy csomópont-típus [vertikális skálázása](./virtual-machine-scale-set-scale-node-type-scale-out.md) számos lépést és szempontot igényel. Például:
 
 * A skálázás előtt a fürtnek kifogástalan állapotban kell lennie. Ellenkező esetben a fürt destabilizálása is megtörténik.
 * Az állapot-nyilvántartó szolgáltatásokat futtató összes Service Fabric esetében az ezüst tartóssági szintnek vagy nagyobbnak kell lennie.
@@ -50,21 +50,11 @@ Az Azure Service Fabric egy csomópont-típus [vertikális skálázása](./virtu
 > [!NOTE]
 > Az állapot-nyilvántartó Service Fabric rendszerszolgáltatásokat futtató elsődleges csomópont típusa csak ezüst tartóssági vagy magasabb szintű lehet. Miután engedélyezte az ezüst tartósságot, a fürt műveletei, például a frissítések, a csomópontok hozzáadása vagy eltávolítása, és így tovább lassabbak lesznek, mivel a rendszer az adatbiztonságot a műveletek sebessége alapján optimalizálja.
 
-A virtuálisgép-méretezési csoport vertikális skálázása romboló művelet. Ehelyett horizontálisan méretezheti a fürtöt egy új méretezési csoport hozzáadásával a kívánt SKU-val. Ezután telepítse át a szolgáltatásokat a kívánt SKU-ba egy biztonságos vertikális skálázási művelet elvégzéséhez. A virtuálisgép-méretezési csoport erőforrás-SKU-jának módosítása roncsolásos művelet, mert alaphelyzetbe állítja a gazdagépeket, ami eltávolítja az összes helyileg megőrzött állapotot.
+A virtuálisgép-méretezési csoport vertikális méretezése az erőforrás-SKU-ra való egyszerű módosításával roncsolásos művelet, mivel a gazdagépek újrarendszerképe eltávolítja az összes helyileg megőrzött állapotot. Ehelyett érdemes vízszintesen méretezni a fürtöt egy új méretezési csoport hozzáadásával a kívánt SKU-val, majd át kell telepítenie a szolgáltatásokat az új méretezési csoportba egy biztonságos vertikális skálázási művelet elvégzéséhez.
 
-A fürt Service Fabric [csomópont-tulajdonságokat és elhelyezési korlátozásokat](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) használ, hogy eldöntse, hová szeretné üzemeltetni az alkalmazás szolgáltatásait. Az elsődleges csomópont típusának vertikális skálázásakor deklarálja az azonos tulajdonságértékek értékét a következőhöz: `"nodeTypeRef"` . Ezeket az értékeket a virtuálisgép-méretezési csoportokhoz tartozó Service Fabric-bővítményben tekintheti meg. 
-
-A Resource Manager-sablonok következő kódrészlete a deklarált tulajdonságokat jeleníti meg. Ez az érték megegyezik az újonnan kiosztott méretezési csoportokkal, amelyekhez méretezést végez, és csak a fürt ideiglenes állapot-nyilvántartó szolgáltatásaként támogatott.
-
-```json
-"settings": {
-   "nodeTypeRef": ["[parameters('primaryNodetypeName')]"]
-}
-```
+A fürt Service Fabric [csomópont-tulajdonságokat és elhelyezési korlátozásokat](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) használ, hogy eldöntse, hová szeretné üzemeltetni az alkalmazás szolgáltatásait. Ha függőlegesen méretezi az elsődleges csomópont típusát, üzembe helyez egy második elsődleges csomópont-típust, majd beállítja a ( `"isPrimary": false` ) értéket az eredeti elsődleges csomópont típusára, és folytatja a csomópontok letiltását és a méretezési csoport és a kapcsolódó erőforrások eltávolítását. Részletekért lásd: [Service Fabric fürt elsődleges csomópont-típusának Felskálázása](service-fabric-scale-up-primary-node-type.md).
 
 > [!NOTE]
-> Ne hagyja, hogy a fürt több méretezési csoporttal fusson, amelyek ugyanazt a `nodeTypeRef` tulajdonságot használják, mint amennyi a sikeres vertikális skálázási művelet befejezéséhez szükséges.
->
 > Mindig ellenőrizze a tesztelési környezetekben lévő műveleteket, mielőtt megkísérli a módosításokat az éles környezetben. Alapértelmezés szerint Service Fabric a fürt rendszerszolgáltatásainak elhelyezési megkötése csak a célként megadott elsődleges csomópont típusára vonatkozik.
 
 A csomópont tulajdonságai és az elhelyezési megkötések deklarálása esetén a következő lépésekkel egyszerre egy virtuálisgép-példányt hajthat végre. Ez lehetővé teszi, hogy a rendszerszolgáltatások (és az állapot-nyilvántartó szolgáltatások) szabályosan legyenek leállítva az eltávolítani kívánt virtuálisgép-példányon, mivel az új replikák máshol jönnek létre.
@@ -127,7 +117,7 @@ Ha manuálisan szeretné méretezni a méretezést, frissítse a kapacitást a v
 }
 ```
 
-A csomópont programozott módon történő skálázásához elő kell készítenie a csomópontot a Leállítás érdekében. Keresse meg az eltávolítandó csomópontot (a legmagasabb példányú csomópont). Példa:
+A csomópont programozott módon történő skálázásához elő kell készítenie a csomópontot a Leállítás érdekében. Keresse meg az eltávolítandó csomópontot (a legmagasabb példányú csomópont). Például:
 
 ```csharp
 using (var client = new FabricClient())

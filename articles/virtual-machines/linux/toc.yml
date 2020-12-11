@@ -944,8 +944,6 @@
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Lemez teljesítménytesztelése
               href: disks-benchmarks.md
-            - name: Teljesítmény optimalizálása
-              href: optimization.md
         - name: Nem csatlakoztatott lemezek keresése – parancssori felület
           href: find-unattached-disks.md
         - name: Nem csatlakoztatott lemezek keresése – portál

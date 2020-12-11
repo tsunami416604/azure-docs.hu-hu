@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f424a2c3102f7b270a64c612a91d645ab71461fc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184093"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095304"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Ügyfél által felügyelt Storage-fiókok használata Azure Monitor Log Analytics
 
@@ -22,7 +22,7 @@ A Log Analytics különböző forgatókönyvekben támaszkodik az Azure Storage-
 
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Azure Diagnostics-bővítményi naplók betöltése (WAD/LAD)
 A Azure Diagnostics Extension Agents (más néven WAD és LAD Windows-és Linux-ügynökök esetében) különböző operációsrendszer-naplókat gyűjt, és egy ügyfél által felügyelt Storage-fiókba tárolja őket. Ezután betöltheti ezeket a naplókat Log Analyticsba, hogy áttekintse és elemezze őket.
-Azure Diagnostics-bővítményi naplók összegyűjtése a Storage-fiókból a Storage-fiók és a Log Analytics munkaterület tárolási adatforrásként való összekapcsolásával [a Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) vagy a Storage-ELEMZÉSi [API](/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate)meghívásával.
+Azure Diagnostics-bővítményi naplók összegyűjtése a Storage-fiókból a Storage-fiók és a Log Analytics munkaterület tárolási adatforrásként való összekapcsolásával [a Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) vagy a Storage-ELEMZÉSi [API](/rest/api/loganalytics/storage%20insights/createorupdate)meghívásával.
 
 Támogatott adattípusok:
 * Rendszernapló

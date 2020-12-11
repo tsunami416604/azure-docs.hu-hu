@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 0a06bbeb4946f03b9cb6e5b1400521a0abffdd7f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7f92b4327b53b38cc83493c65ad573523546ee58
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913534"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095117"
 ---
-# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Adatmásolás és átalakítás az Azure szinapszis Analyticsben (korábban SQL Data Warehouse) a használatával Azure Data Factory
+# <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Az Azure szinapszis Analytics szolgáltatásban tárolt Adatmásolás és-átalakítás Azure Data Factory használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 >
@@ -41,7 +41,7 @@ Ez az Azure szinapszis Analytics-összekötő a következő tevékenységek eset
 Másolási tevékenység esetén ez az Azure szinapszis Analytics-összekötő a következő funkciókat támogatja:
 
 - Adatmásolás SQL-hitelesítéssel és Azure Active Directory (Azure AD) alkalmazás-jogkivonat hitelesítéssel az Azure-erőforrásokhoz tartozó egyszerű szolgáltatásnév vagy felügyelt identitás használatával.
-- Forrásként egy SQL-lekérdezés vagy tárolt eljárás használatával kérhet le egy adatforrást. A részleteket az Azure szinapszis Analytics-forrásból [származó párhuzamos](#parallel-copy-from-synapse-analytics) másolással is megtekintheti.
+- Forrásként egy SQL-lekérdezés vagy tárolt eljárás használatával kérhet le egy adatforrást. A részletekről [Az Azure](#parallel-copy-from-azure-synapse-analytics) szinapszis Analytics-forrásból származó párhuzamos másolást is választhatja.
 - Fogadóként az adatok betöltése a [Base](#use-polybase-to-load-data-into-azure-synapse-analytics) vagy a [copy utasítás](#use-copy-statement) vagy a tömeges Beszúrás használatával. A jobb másolási teljesítmény érdekében javasolt a Base vagy a COPY utasítás használata. Az összekötő támogatja a céltábla automatikus létrehozását is, ha az nem létezik a forrásoldali séma alapján.
 
 > [!IMPORTANT]
@@ -63,13 +63,13 @@ Az Azure szinapszis Analytics társított szolgáltatása a következő tulajdon
 
 | Tulajdonság            | Leírás                                                  | Kötelező                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| típus                | A Type tulajdonságot **AzureSqlDW** értékre kell beállítani.             | Yes                                                          |
-| connectionString    | A **ConnectionString** tulajdonsághoz tartozó Azure szinapszis Analytics-példányhoz való kapcsolódáshoz szükséges információk megadása. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszó/egyszerű szolgáltatásnév kulcsát a Azure Key Vaultban is elhelyezheti, és ha az SQL-hitelesítése lekéri a `password` konfigurációt a kapcsolatok karakterláncán kívül. További részletekért tekintse meg a táblázat alatti JSON-példát, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Yes                                                          |
+| típus                | A Type tulajdonságot **AzureSqlDW** értékre kell beállítani.             | Igen                                                          |
+| connectionString    | A **ConnectionString** tulajdonsághoz tartozó Azure szinapszis Analytics-példányhoz való kapcsolódáshoz szükséges információk megadása. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszó/egyszerű szolgáltatásnév kulcsát a Azure Key Vaultban is elhelyezheti, és ha az SQL-hitelesítése lekéri a `password` konfigurációt a kapcsolatok karakterláncán kívül. További részletekért tekintse meg a táblázat alatti JSON-példát, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen                                                          |
 | servicePrincipalId  | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját.                         | Igen, ha Azure AD-hitelesítést használ egy egyszerű szolgáltatással. |
 | servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen, ha Azure AD-hitelesítést használ egy egyszerű szolgáltatással. |
 | Bérlő              | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen, ha Azure AD-hitelesítést használ egy egyszerű szolgáltatással. |
-| azureCloudType | Az egyszerű szolgáltatás hitelesítéséhez adja meg az Azure AD-alkalmazás regisztrálásához használt Azure-beli felhőalapú környezet típusát. <br/> Az engedélyezett értékek a következők: **AzurePublic** , **AzureChina** , **AzureUsGovernment** és **AzureGermany** . Alapértelmezés szerint a rendszer az adatfeldolgozó felhőalapú környezetét használja. | No |
-| Connectvia tulajdonsággal          | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhat Azure Integration Runtime vagy saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | No                                                           |
+| azureCloudType | Az egyszerű szolgáltatás hitelesítéséhez adja meg az Azure AD-alkalmazás regisztrálásához használt Azure-beli felhőalapú környezet típusát. <br/> Az engedélyezett értékek a következők: **AzurePublic**, **AzureChina**, **AzureUsGovernment** és **AzureGermany**. Alapértelmezés szerint a rendszer az adatfeldolgozó felhőalapú környezetét használja. | Nem |
+| Connectvia tulajdonsággal          | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhat Azure Integration Runtime vagy saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem                                                           |
 
 Különböző hitelesítési típusok esetén tekintse át az előfeltételek és JSON-minták következő, az előfeltételeket és a JSON-mintákat ismertető szakaszt:
 
@@ -224,7 +224,7 @@ Az Azure szinapszis Analytics-adatkészlet a következő tulajdonságokat támog
 
 | Tulajdonság  | Leírás                                                  | Kötelező                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| típus      | Az adatkészlet **Type** tulajdonságát **AzureSqlDWTable** értékre kell állítani. | Yes                         |
+| típus      | Az adatkészlet **Type** tulajdonságát **AzureSqlDWTable** értékre kell állítani. | Igen                         |
 | schema | A séma neve. |Nem, forrás, igen, fogadó  |
 | table | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
 | tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a és a elemet `schema` `table` . | Nem, forrás, igen, fogadó |
@@ -257,23 +257,23 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 ### <a name="azure-synapse-analytics-as-the-source"></a>Az Azure szinapszis Analytics forrása
 
 >[!TIP]
->Ha az adatok particionálásával hatékonyan szeretné betölteni az Azure szinapszis Analytics adatait, további információt a [szinapszis Analyticsből származó párhuzamos másolatból](#parallel-copy-from-synapse-analytics)tudhat meg.
+>Az Azure szinapszis Analytics szolgáltatásból az adatok particionálásával hatékonyan tölthetők be az adatok az [Azure szinapszis Analyticsből származó párhuzamos másolásból](#parallel-copy-from-azure-synapse-analytics).
 
 Az adatok Azure szinapszis Analyticsből való másolásához állítsa a **Type (típus** ) tulajdonságot a másolási tevékenység forrása **SqlDWSource** értékre. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság                     | Leírás                                                  | Kötelező |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| típus                         | A másolási tevékenység forrásának **Type** tulajdonságát **SqlDWSource** értékre kell állítani. | Yes      |
-| sqlReaderQuery               | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `select * from MyTable`. | No       |
-| sqlReaderStoredProcedureName | Annak a tárolt eljárásnak a neve, amely beolvassa az adatokat a forrás táblából. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. | No       |
-| storedProcedureParameters    | A tárolt eljárás paraméterei.<br/>Az engedélyezett értékek név vagy érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. | No       |
-| isolationLevel | Meghatározza az SQL-forrás tranzakció-zárolási viselkedését. Az engedélyezett értékek a következők: **ReadCommitted** , **ReadUncommitted** , **RepeatableRead** , **szerializálható** , **Pillanatkép** . Ha nincs megadva, a rendszer az adatbázis alapértelmezett elkülönítési szintjét használja. További részletekért tekintse meg [ezt a dokumentációt](/dotnet/api/system.data.isolationlevel) . | No |
-| partitionOptions | Megadja az adatok Azure szinapszis Analyticsből való betöltéséhez használt adatparticionálási beállításokat. <br>Az engedélyezett értékek a következők: **none** (alapértelmezett), **PhysicalPartitionsOfTable** és **DynamicRange** .<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None` ), az Azure szinapszis-elemzésből származó adatok párhuzamos betöltésének foka a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) másolási tevékenység beállításai vezérlik. | No |
-| partitionSettings | Határozza meg az adatparticionálási beállítások csoportját. <br>Akkor alkalmazza, ha a partíció lehetőség nem `None` . | No |
+| típus                         | A másolási tevékenység forrásának **Type** tulajdonságát **SqlDWSource** értékre kell állítani. | Igen      |
+| sqlReaderQuery               | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `select * from MyTable`. | Nem       |
+| sqlReaderStoredProcedureName | Annak a tárolt eljárásnak a neve, amely beolvassa az adatokat a forrás táblából. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. | Nem       |
+| storedProcedureParameters    | A tárolt eljárás paraméterei.<br/>Az engedélyezett értékek név vagy érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. | Nem       |
+| isolationLevel | Meghatározza az SQL-forrás tranzakció-zárolási viselkedését. Az engedélyezett értékek a következők: **ReadCommitted**, **ReadUncommitted**, **RepeatableRead**, **szerializálható**, **Pillanatkép**. Ha nincs megadva, a rendszer az adatbázis alapértelmezett elkülönítési szintjét használja. További részletekért tekintse meg [ezt a dokumentációt](/dotnet/api/system.data.isolationlevel) . | Nem |
+| partitionOptions | Megadja az adatok Azure szinapszis Analyticsből való betöltéséhez használt adatparticionálási beállításokat. <br>Az engedélyezett értékek a következők: **none** (alapértelmezett), **PhysicalPartitionsOfTable** és **DynamicRange**.<br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None` ), az Azure szinapszis-elemzésből származó adatok párhuzamos betöltésének foka a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) másolási tevékenység beállításai vezérlik. | Nem |
+| partitionSettings | Határozza meg az adatparticionálási beállítások csoportját. <br>Akkor alkalmazza, ha a partíció lehetőség nem `None` . | Nem |
 | **_Alatt `partitionSettings` :_* _ | | |
-| partitionColumnName | Adja meg a forrás oszlop nevét az *egész szám vagy dátum/datetime típusban* * (,,,,,, `int` `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` vagy `datetimeoffset` ), amelyet a tartomány particionálása használ a párhuzamos másoláshoz. Ha nincs megadva, a rendszer automatikusan észleli a tábla indexét vagy elsődleges kulcsát, és a partíció oszlopként használja.<br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange` . Ha lekérdezést használ a forrásadatok beolvasásához,  `?AdfDynamicRangePartitionCondition ` a WHERE záradékban lévő hookot. Példaként tekintse meg az [SQL Database párhuzamos másolási](#parallel-copy-from-synapse-analytics) szakaszát. | No |
-| partitionUpperBound | A particionálási tartomány felosztásának partíciós oszlopának maximális értéke. Ezzel az értékkel lehet eldönteni, hogy a partíció Stride-e, nem pedig a táblázat sorainak szűrésére. A program a tábla vagy a lekérdezés eredményének összes sorát particionálja és másolja. Ha nincs megadva, a másolási tevékenység automatikusan felismeri az értéket.  <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange` . Példaként tekintse meg az [SQL Database párhuzamos másolási](#parallel-copy-from-synapse-analytics) szakaszát. | No |
-| partitionLowerBound | A particionálási tartomány felosztásához szükséges partíciós oszlop minimális értéke. Ezzel az értékkel lehet eldönteni, hogy a partíció Stride-e, nem pedig a táblázat sorainak szűrésére. A program a tábla vagy a lekérdezés eredményének összes sorát particionálja és másolja. Ha nincs megadva, a másolási tevékenység automatikusan felismeri az értéket.<br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange` . Példaként tekintse meg az [SQL Database párhuzamos másolási](#parallel-copy-from-synapse-analytics) szakaszát. | No |
+| partitionColumnName | Adja meg a forrás oszlop nevét az *egész szám vagy dátum/datetime típusban** (,,,,,, `int` `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` vagy `datetimeoffset` ), amelyet a tartomány particionálása használ a párhuzamos másoláshoz. Ha nincs megadva, a rendszer automatikusan észleli a tábla indexét vagy elsődleges kulcsát, és a partíció oszlopként használja.<br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange` . Ha lekérdezést használ a forrásadatok beolvasásához,  `?AdfDynamicRangePartitionCondition ` a WHERE záradékban lévő hookot. Példaként tekintse meg az [SQL Database párhuzamos másolási](#parallel-copy-from-azure-synapse-analytics) szakaszát. | Nem |
+| partitionUpperBound | A particionálási tartomány felosztásának partíciós oszlopának maximális értéke. Ezzel az értékkel lehet eldönteni, hogy a partíció Stride-e, nem pedig a táblázat sorainak szűrésére. A program a tábla vagy a lekérdezés eredményének összes sorát particionálja és másolja. Ha nincs megadva, a másolási tevékenység automatikusan felismeri az értéket.  <br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange` . Példaként tekintse meg az [SQL Database párhuzamos másolási](#parallel-copy-from-azure-synapse-analytics) szakaszát. | Nem |
+| partitionLowerBound | A particionálási tartomány felosztásához szükséges partíciós oszlop minimális értéke. Ezzel az értékkel lehet eldönteni, hogy a partíció Stride-e, nem pedig a táblázat sorainak szűrésére. A program a tábla vagy a lekérdezés eredményének összes sorát particionálja és másolja. Ha nincs megadva, a másolási tevékenység automatikusan felismeri az értéket.<br>Akkor alkalmazza, ha a partíciós beállítás van `DynamicRange` . Példaként tekintse meg az [SQL Database párhuzamos másolási](#parallel-copy-from-azure-synapse-analytics) szakaszát. | Nem |
 
 **Példa: SQL-lekérdezés használata**
 
@@ -374,19 +374,19 @@ Azure Data Factory háromféle módon tölthető be az Azure szinapszis Analytic
 
 Az adatok betöltésének leggyorsabb és leginkább méretezhető módja a [(vagy a](/sql/relational-databases/polybase/polybase-guide) [copy](/sql/t-sql/statements/copy-into-transact-sql) ) (előzetes verzió).
 
-Az Azure szinapszis Analytics szolgáltatásba történő adatmásoláshoz állítsa a fogadó típust a másolási tevékenység **SqlDWSink** . A másolási tevékenység fogadója szakasz a következő **sink** tulajdonságokat támogatja:
+Az Azure szinapszis Analytics szolgáltatásba történő adatmásoláshoz állítsa a fogadó típust a másolási tevékenység **SqlDWSink**. A másolási tevékenység fogadója szakasz a következő  tulajdonságokat támogatja:
 
 | Tulajdonság          | Leírás                                                  | Kötelező                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| típus              | A másolási tevékenység fogadójának **Type** tulajdonságát **SqlDWSink** értékre kell állítani. | Yes                                           |
+| típus              | A másolási tevékenység fogadójának **Type** tulajdonságát **SqlDWSink** értékre kell állítani. | Igen                                           |
 | allowPolyBase     | Azt jelzi, hogy kell-e az adatok betöltését az Azure szinapszis Analyticsbe. `allowCopyCommand` és `allowPolyBase` nem lehet egyszerre igaz. <br/><br/>Megkötések és részletek a következő témakörben találhatók: az [adatok betöltése az Azure szinapszis analyticsbe](#use-polybase-to-load-data-into-azure-synapse-analytics) című szakasza.<br/><br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett). | Nem.<br/>Alkalmazhatja a Base használatakor.     |
-| polyBaseSettings  | Tulajdonságok csoportja, amely akkor adható meg, ha a `allowPolybase` tulajdonság értéke TRUE ( **igaz** ). | Nem.<br/>Alkalmazhatja a Base használatakor. |
+| polyBaseSettings  | Tulajdonságok csoportja, amely akkor adható meg, ha a `allowPolybase` tulajdonság értéke TRUE ( **igaz**). | Nem.<br/>Alkalmazhatja a Base használatakor. |
 | allowCopyCommand | Azt jelzi, hogy a [copy utasítást](/sql/t-sql/statements/copy-into-transact-sql) (előzetes verzió) kell-e használni az adatok Azure szinapszis analyticsbe való betöltéséhez. `allowCopyCommand` és `allowPolyBase` nem lehet egyszerre igaz. <br/><br/>Megkötések és részletek a [másolási utasítás használata az adatok Azure szinapszis analyticsbe való betöltéséhez](#use-copy-statement) című szakasza.<br/><br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett). | Nem.<br>A MÁSOLÁSkor alkalmazandó. |
 | copyCommandSettings | Tulajdonságok csoportja, amely akkor adható meg, ha `allowCopyCommand` a tulajdonság értéke TRUE (igaz). | Nem.<br/>A MÁSOLÁSkor alkalmazandó. |
 | writeBatchSize    | A **kötegekben** az SQL-táblába beillesztett sorok száma.<br/><br/>Az engedélyezett érték **egész szám** (sorok száma). Alapértelmezés szerint a Data Factory dinamikusan meghatározza a megfelelő batch-méretet a sor mérete alapján. | Nem.<br/>Tömeges Beszúrás használatakor alkalmazandó.     |
-| writeBatchTimeout | Várakozási idő a kötegelt beszúrási művelet befejezéséhez az időtúllépés előtt.<br/><br/>Az engedélyezett érték a **TimeSpan** . Például: "00:30:00" (30 perc). | Nem.<br/>Tömeges Beszúrás használatakor alkalmazandó.        |
-| preCopyScript     | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az összes futtatáskor beírja az Azure szinapszis Analyticsbe. Ezzel a tulajdonsággal törölheti az előre feltöltött adatkészleteket. | No                                            |
-| tableOption | Meghatározza, hogy a [rendszer automatikusan létrehozza](copy-activity-overview.md#auto-create-sink-tables) -e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate` . |No |
+| writeBatchTimeout | Várakozási idő a kötegelt beszúrási művelet befejezéséhez az időtúllépés előtt.<br/><br/>Az engedélyezett érték a **TimeSpan**. Például: "00:30:00" (30 perc). | Nem.<br/>Tömeges Beszúrás használatakor alkalmazandó.        |
+| preCopyScript     | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az összes futtatáskor beírja az Azure szinapszis Analyticsbe. Ezzel a tulajdonsággal törölheti az előre feltöltött adatkészleteket. | Nem                                            |
+| tableOption | Meghatározza, hogy a [rendszer automatikusan létrehozza](copy-activity-overview.md#auto-create-sink-tables) -e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate` . |Nem |
 | disableMetricsCollection | A Data Factory olyan mérőszámokat gyűjt, mint az Azure szinapszis Analytics DWU a másolási teljesítmény optimalizálása és a javaslatok tekintetében. Ha ezt a viselkedést érinti, a `true` kikapcsolásához válassza a következőt:. | Nem (alapértelmezett érték `false` ) |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Azure szinapszis Analytics-fogadó példa
@@ -405,7 +405,7 @@ Az Azure szinapszis Analytics szolgáltatásba történő adatmásoláshoz áll�
 }
 ```
 
-## <a name="parallel-copy-from-synapse-analytics"></a>Párhuzamos másolás a szinapszis Analyticsből
+## <a name="parallel-copy-from-azure-synapse-analytics"></a>Párhuzamos másolás az Azure szinapszis Analyticsből
 
 Az Azure szinapszis Analytics-összekötő a másolási tevékenységben beépített adatparticionálást biztosít az adatmásoláshoz párhuzamosan. Az adatparticionálási beállítások a másolási tevékenység **forrás** lapján találhatók.
 
@@ -415,11 +415,11 @@ A particionált másolás engedélyezésekor a másolási tevékenység párhuza
 
 Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálásával, különösen akkor, ha nagy mennyiségű adatmennyiséget tölt be az Azure szinapszis Analyticsből. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása esetén ajánlott több fájlként írni egy mappába (csak a mappa nevét adja meg), ebben az esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
 
-| Használati eset                                                     | Javasolt beállítások                                           |
+| Forgatókönyv                                                     | Javasolt beállítások                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Teljes terhelés nagyméretű táblából, fizikai partíciókkal.        | **Partíciós beállítás** : a tábla fizikai partíciói. <br><br/>A végrehajtás során a Data Factory automatikusan észleli a fizikai partíciókat, és az Adatmásolást partíciók szerint. <br><br/>Ha szeretné megnézni, hogy a tábla rendelkezik-e fizikai partícióval, tekintse át [ezt a lekérdezést](#sample-query-to-check-physical-partition). |
-| Teljes terhelés a nagyméretű táblából fizikai partíciók nélkül, egész számmal vagy datetime oszloppal az adatok particionálásához. | **Partíciós beállítások** : dinamikus tartományú partíció.<br>**Partíciós oszlop** (nem kötelező): az adatparticionáláshoz használt oszlop megadása. Ha nincs megadva, a rendszer az indexet vagy az elsődleges kulcs oszlopot használja.<br/>**Partíció felső határa** és a **partíció alsó határa** (nem kötelező): adja meg, hogy meg szeretné-e állapítani a partíciós lépéseket. Ez nem a tábla sorainak szűrésére szolgál, a tábla összes sorát particionálja és másolja a rendszer. Ha nincs megadva, a másolási tevékenység automatikusan felismeri az értékeket.<br><br>Ha például az "ID" partíciós oszlop értéke 1 és 100 között van, és az alsó határ 20-ra van állítva, a felső határ pedig 80, és a párhuzamos másolás 4 Data Factory, akkor az adatok 4 partíció-azonosítóval vannak lekérdezve a következő tartományban: <= 20, [21, 50], [51, 80] és >= 81. |
-| Nagy mennyiségű adat betöltése egyéni lekérdezéssel fizikai partíciók nélkül, egész szám vagy dátum/datetime oszlop használatával az adatok particionálásához. | **Partíciós beállítások** : dinamikus tartományú partíció.<br>**Lekérdezés** : `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Partíciós oszlop** : az adatparticionáláshoz használt oszlop megadására szolgál.<br>**Partíció felső határa** és a **partíció alsó határa** (nem kötelező): adja meg, hogy meg szeretné-e állapítani a partíciós lépéseket. Ez nem a tábla sorainak szűrésére szolgál, a lekérdezés eredményének összes sorát particionálja és másolja a rendszer. Ha nincs megadva, a másolási tevékenység automatikusan felismeri az értéket.<br><br>A végrehajtás során Data Factory lecseréli `?AdfRangePartitionColumnName` az egyes partíciók tényleges oszlop-és értéktartomány-tartományára, és elküldi az Azure szinapszis Analyticsnek. <br>Ha például az "ID" partíciós oszlop értéke 1 és 100 között van, és az alsó határ 20-ra van állítva, a felső határ pedig 80, és a párhuzamos másolás 4 Data Factory, akkor az adatok 4 partíció-azonosítóval vannak lekérdezve a következő tartományban: <= 20, [21, 50], [51, 80] és >= 81. <br><br>Több példa a különböző forgatókönyvekre:<br> 1. a teljes tábla lekérdezése: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. lekérdezés az oszlopok kiválasztásával és további WHERE-záradék szűrőkkel: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. lekérdezés allekérdezésekkel: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. lekérdezés partícióval az allekérdezésben: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
+| Teljes terhelés nagyméretű táblából, fizikai partíciókkal.        | **Partíciós beállítás**: a tábla fizikai partíciói. <br><br/>A végrehajtás során a Data Factory automatikusan észleli a fizikai partíciókat, és az Adatmásolást partíciók szerint. <br><br/>Ha szeretné megnézni, hogy a tábla rendelkezik-e fizikai partícióval, tekintse át [ezt a lekérdezést](#sample-query-to-check-physical-partition). |
+| Teljes terhelés a nagyméretű táblából fizikai partíciók nélkül, egész számmal vagy datetime oszloppal az adatok particionálásához. | **Partíciós beállítások**: dinamikus tartományú partíció.<br>**Partíciós oszlop** (nem kötelező): az adatparticionáláshoz használt oszlop megadása. Ha nincs megadva, a rendszer az indexet vagy az elsődleges kulcs oszlopot használja.<br/>**Partíció felső határa** és a **partíció alsó határa** (nem kötelező): adja meg, hogy meg szeretné-e állapítani a partíciós lépéseket. Ez nem a tábla sorainak szűrésére szolgál, a tábla összes sorát particionálja és másolja a rendszer. Ha nincs megadva, a másolási tevékenység automatikusan felismeri az értékeket.<br><br>Ha például az "ID" partíciós oszlop értéke 1 és 100 között van, és az alsó határ 20-ra van állítva, a felső határ pedig 80, és a párhuzamos másolás 4 Data Factory, akkor az adatok 4 partíció-azonosítóval vannak lekérdezve a következő tartományban: <= 20, [21, 50], [51, 80] és >= 81. |
+| Nagy mennyiségű adat betöltése egyéni lekérdezéssel fizikai partíciók nélkül, egész szám vagy dátum/datetime oszlop használatával az adatok particionálásához. | **Partíciós beállítások**: dinamikus tartományú partíció.<br>**Lekérdezés**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Partíciós oszlop**: az adatparticionáláshoz használt oszlop megadására szolgál.<br>**Partíció felső határa** és a **partíció alsó határa** (nem kötelező): adja meg, hogy meg szeretné-e állapítani a partíciós lépéseket. Ez nem a tábla sorainak szűrésére szolgál, a lekérdezés eredményének összes sorát particionálja és másolja a rendszer. Ha nincs megadva, a másolási tevékenység automatikusan felismeri az értéket.<br><br>A végrehajtás során Data Factory lecseréli `?AdfRangePartitionColumnName` az egyes partíciók tényleges oszlop-és értéktartomány-tartományára, és elküldi az Azure szinapszis Analyticsnek. <br>Ha például az "ID" partíciós oszlop értéke 1 és 100 között van, és az alsó határ 20-ra van állítva, a felső határ pedig 80, és a párhuzamos másolás 4 Data Factory, akkor az adatok 4 partíció-azonosítóval vannak lekérdezve a következő tartományban: <= 20, [21, 50], [51, 80] és >= 81. <br><br>Több példa a különböző forgatókönyvekre:<br> 1. a teljes tábla lekérdezése: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. lekérdezés az oszlopok kiválasztásával és további WHERE-záradék szűrőkkel: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. lekérdezés allekérdezésekkel: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. lekérdezés partícióval az allekérdezésben: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
 |
 
 Ajánlott eljárások az adattároláshoz a Partition kapcsolóval:
@@ -474,7 +474,7 @@ Ha a tábla fizikai partícióval rendelkezik, a "HasPartition" értéket "yes"-
 
 A [Base](/sql/relational-databases/polybase/polybase-guide) használatával nagy mennyiségű adat tölthető be az Azure szinapszis analyticsbe nagy átviteli sebességgel. Az adatátviteli sebesség nagy mennyiségű nyereségét az alapértelmezett BULKINSERT mechanizmus helyett a albase használatával fogja látni. A használati eseteket bemutató bemutatóért lásd: [1 TB betöltése az Azure szinapszis analyticsbe](v1/data-factory-load-sql-data-warehouse.md).
 
-- Ha a forrásadatok az **Azure blobban vannak, Azure Data Lake Storage Gen1 vagy Azure Data Lake Storage Gen2** , és a **formátum a Base-kompatibilis** , a másolási tevékenység használatával közvetlenül is meghívhatja a albaseot, hogy az Azure szinapszis Analytics lekérje az adatok forrásból való lekérését. Részletekért lásd: a **[közvetlen másolás a Base használatával](#direct-copy-by-using-polybase)** .
+- Ha a forrásadatok az **Azure blobban vannak, Azure Data Lake Storage Gen1 vagy Azure Data Lake Storage Gen2**, és a **formátum a Base-kompatibilis**, a másolási tevékenység használatával közvetlenül is meghívhatja a albaseot, hogy az Azure szinapszis Analytics lekérje az adatok forrásból való lekérését. Részletekért lásd: a **[közvetlen másolás a Base használatával](#direct-copy-by-using-polybase)**.
 - Ha a forrás adattárat és a formátumot eredetileg nem a Base támogatja, használja a **[szakaszos másolást a kiindulási funkció használatával](#staged-copy-by-using-polybase)** . Az előkészített másolási funkció jobb átviteli sebességet is biztosít. A szolgáltatás automatikusan konvertálja az adatok alap-kompatibilis formátumba, tárolja az Azure Blob Storage-ban tárolt adatok mennyiségét, majd az adatok betöltését kéri az Azure szinapszis Analyticsbe.
 
 > [!TIP]
@@ -484,10 +484,10 @@ A másolási tevékenység alatt a következő alapbeállítások támogatottak 
 
 | Tulajdonság          | Leírás                                                  | Kötelező                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| rejectValue       | A lekérdezés sikertelensége előtt visszautasítható sorok számát vagy százalékos arányát adja meg.<br/><br/>További információk a [create External Table (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql)argumentumok szakaszban található "a Base 's elutasítás" beállításairól. <br/><br/>Az engedélyezett értékek: 0 (alapértelmezett), 1, 2 stb. | No                                            |
-| rejectType        | Megadja, hogy a **rejectValue** kapcsoló literális érték vagy százalék-e.<br/><br/>Az engedélyezett értékek **érték** (alapértelmezett) és **százalék** . | No                                            |
-| rejectSampleValue | Meghatározza a lekérdezni kívánt sorok számát, mielőtt a rendszer újraszámítja az elutasított sorok százalékos arányát.<br/><br/>Az engedélyezett értékek: 1, 2 stb. | Igen, ha a **rejectType** **százaléka százalék** . |
-| useTypeDefault    | Meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, ha a viszonyítási adatok beolvasása a szövegfájlból történik.<br/><br/>Erről a tulajdonságról a [külső fájlformátum létrehozása (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)argumentumai című szakaszban olvashat bővebben.<br/><br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett).<br><br> | No                                            |
+| rejectValue       | A lekérdezés sikertelensége előtt visszautasítható sorok számát vagy százalékos arányát adja meg.<br/><br/>További információk a [create External Table (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql)argumentumok szakaszban található "a Base 's elutasítás" beállításairól. <br/><br/>Az engedélyezett értékek: 0 (alapértelmezett), 1, 2 stb. | Nem                                            |
+| rejectType        | Megadja, hogy a **rejectValue** kapcsoló literális érték vagy százalék-e.<br/><br/>Az engedélyezett értékek **érték** (alapértelmezett) és **százalék**. | Nem                                            |
+| rejectSampleValue | Meghatározza a lekérdezni kívánt sorok számát, mielőtt a rendszer újraszámítja az elutasított sorok százalékos arányát.<br/><br/>Az engedélyezett értékek: 1, 2 stb. | Igen, ha a **rejectType** **százaléka százalék**. |
+| useTypeDefault    | Meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, ha a viszonyítási adatok beolvasása a szövegfájlból történik.<br/><br/>Erről a tulajdonságról a [külső fájlformátum létrehozása (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)argumentumai című szakaszban olvashat bővebben.<br/><br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett).<br><br> | Nem                                            |
 
 ### <a name="direct-copy-by-using-polybase"></a>Közvetlen másolás a Base használatával
 
@@ -508,17 +508,17 @@ Ha a követelmények nem teljesülnek, Azure Data Factory ellenőrzi a beállít
 
     >[!IMPORTANT]
     >- Ha felügyelt identitás-hitelesítést használ a Storage-beli társított szolgáltatáshoz, olvassa el az [Azure blobhoz](connector-azure-blob-storage.md#managed-identity) szükséges konfigurációkat, illetve a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
-    >- Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei.
+    >- Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)-ban való használatának következményei.
 
-2. A **forrásadatok formátuma** a következő konfigurációkkal rendelkező **parketta** , **ork** vagy **tagolt szöveg** :
+2. A **forrásadatok formátuma** a következő konfigurációkkal rendelkező **parketta**, **ork** vagy **tagolt szöveg**:
 
    1. A mappa elérési útja nem tartalmaz helyettesítő szűrőt.
    2. A fájl neve üres, vagy egyetlen fájlra mutat. Ha a helyettesítő fájl nevét adja meg a másolási tevékenységben, az csak a vagy a lehet `*` `*.*` .
-   3. `rowDelimiter`**alapértelmezett** , **\n** , **\r\n** vagy **\r** .
+   3. `rowDelimiter`**alapértelmezett**, **\n**, **\r\n** vagy **\r**.
    4. `nullValue` Alapértelmezés szerint marad, vagy **üres karakterláncra** ("") van állítva, és `treatEmptyAsNull` az alapértelmezett érték, vagy igaz értékre van állítva.
    5. `encodingName` Alapértelmezés szerint marad, vagy az **UTF-8** értékre van állítva.
    6. `quoteChar`, `escapeChar` és `skipLineCount` nincs megadva. A albase-támogatás kihagyása a fejlécsorból, amely `firstRowAsHeader` Az ADF-ben konfigurálható.
-   7. `compression` nem lehet **tömörítés** , **gzip** vagy **deflate** .
+   7. `compression` nem lehet **tömörítés**, **gzip** vagy **deflate**.
 
 3. Ha a forrás mappa, `recursive` a másolási tevékenységben igaz értékre kell állítani.
 
@@ -569,7 +569,7 @@ A szolgáltatás használatához hozzon létre egy [azure blob Storage társíto
 
 >[!IMPORTANT]
 >- Ha a felügyelt identitások hitelesítését használja az átmeneti társított szolgáltatáshoz, olvassa el az [Azure Blob](connector-azure-blob-storage.md#managed-identity) szükséges konfigurációit, illetve a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
->- Ha az előkészítési Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókban engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei. 
+>- Ha az előkészítési Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókban engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)-ban való használatának következményei. 
 
 ```json
 "activities":[
@@ -638,7 +638,7 @@ Ha a forrásadatok szöveges formátumban vagy más nem a-alapú kompatibilis t�
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
-A megoldás az " **alapértelmezett típus használata** " beállítás kijelölésének feloldása (hamis) a másolási tevékenység fogadója – > a bázisterület alapbeállításai. A "[USE_TYPE_DEFAULT](/sql/t-sql/statements/create-external-file-format-transact-sql#arguments)" egy alapszintű natív konfiguráció, amely meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, amikor a viszonyítási adatok beolvasása a szövegfájlból történik.
+A megoldás az "**alapértelmezett típus használata**" beállítás kijelölésének feloldása (hamis) a másolási tevékenység fogadója – > a bázisterület alapbeállításai. A "[USE_TYPE_DEFAULT](/sql/t-sql/statements/create-external-file-format-transact-sql#arguments)" egy alapszintű natív konfiguráció, amely meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, amikor a viszonyítási adatok beolvasása a szövegfájlból történik.
 
 **`tableName` Az Azure szinapszis Analyticsben**
 
@@ -690,19 +690,19 @@ A COPY utasítás használata a következő konfigurációt támogatja:
 
     >[!IMPORTANT]
     >- Ha felügyelt identitás-hitelesítést használ a Storage-beli társított szolgáltatáshoz, olvassa el az [Azure blobhoz](connector-azure-blob-storage.md#managed-identity) szükséges konfigurációkat, illetve a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
-    >- Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei.
+    >- Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)-ban való használatának következményei.
 
 2. A formátum beállításai a következők:
 
-   1. A **parketta** esetében: `compression` **nem lehet tömörítés** , **Snappy** vagy **gzip** .
-   2. Az **ork** esetében: `compression` **nem lehet tömörítés** , **```zlib```** vagy **Snappy** .
+   1. A **parketta** esetében: `compression` **nem lehet tömörítés**, **Snappy** vagy **gzip**.
+   2. Az **ork** esetében: `compression` **nem lehet tömörítés**, **```zlib```** vagy **Snappy**.
    3. **Tagolt szöveg** esetén:
-      1. `rowDelimiter` explicit módon van beállítva **egyetlen karakterként** vagy " **\r\n** ", az alapértelmezett érték nem támogatott.
+      1. `rowDelimiter` explicit módon van beállítva **egyetlen karakterként** vagy "**\r\n**", az alapértelmezett érték nem támogatott.
       2. `nullValue` Alapértelmezés szerint marad, vagy **üres karakterláncra** ("") van állítva.
       3. `encodingName` Alapértelmezés szerint balra van állítva, vagy UTF **-8 vagy UTF-16** értékre van beállítva.
       4. `escapeChar` azonosnak kell lennie `quoteChar` , és nem üres.
       5. `skipLineCount` alapértelmezett vagy 0 értékre van állítva.
-      6. `compression` nem lehet **tömörítés** vagy **gzip** .
+      6. `compression` nem lehet **tömörítés** vagy **gzip**.
 
 3. Ha a forrás mappa, `recursive` a másolási tevékenységnek igaz értékűnek kell lennie, és a következőnek kell `wildcardFilename` lennie: `*` . 
 
@@ -712,8 +712,8 @@ A másolási tevékenység alatt a következő MÁSOLÁSi utasítás beállítá
 
 | Tulajdonság          | Leírás                                                  | Kötelező                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| defaultValues | Meghatározza az Azure szinapszis Analyticsben az egyes célcsoportok alapértelmezett értékeit.  A tulajdonság alapértelmezett értékei felülírják az adatraktárban beállított alapértelmezett korlátozást, és az Identity oszlop nem rendelkezhet alapértelmezett értékkel. | No |
-| additionalOptions | További beállítások, amelyeket az Azure szinapszis Analytics COPY utasítása közvetlenül a "with" záradékban, a [copy utasításban](/sql/t-sql/statements/copy-into-transact-sql)fog átadni. A MÁSOLÁSi utasítás követelményeinek megfelelően adja meg az értéket, ha szükséges. | No |
+| defaultValues | Meghatározza az Azure szinapszis Analyticsben az egyes célcsoportok alapértelmezett értékeit.  A tulajdonság alapértelmezett értékei felülírják az adatraktárban beállított alapértelmezett korlátozást, és az Identity oszlop nem rendelkezhet alapértelmezett értékkel. | Nem |
+| additionalOptions | További beállítások, amelyeket az Azure szinapszis Analytics COPY utasítása közvetlenül a "with" záradékban, a [copy utasításban](/sql/t-sql/statements/copy-into-transact-sql)fog átadni. A MÁSOLÁSi utasítás követelményeinek megfelelően adja meg az értéket, ha szükséges. | Nem |
 
 ```json
 "activities":[
@@ -775,15 +775,15 @@ Az Azure szinapszis Analytics szolgáltatáshoz tartozó beállítások a forrá
 **Előkészítés engedélyezése** Erősen ajánlott ezt a lehetőséget az éles számítási feladatokhoz használni az Azure szinapszis analitikai forrásaival. Amikor az Azure szinapszis Analytics-forrásokból [adatáramlási tevékenységet](control-flow-execute-data-flow-activity.md) hajt végre egy folyamatból, az ADF megkéri az előkészítési hely Storage-fiókját, és az előkészített adatok betöltését fogja használni. Ez az Azure szinapszis Analyticsből származó adatok betöltésének leggyorsabb mechanizmusa.
 
 - Ha felügyelt identitás-hitelesítést használ a Storage-beli társított szolgáltatáshoz, olvassa el az [Azure blobhoz](connector-azure-blob-storage.md#managed-identity) szükséges konfigurációkat, illetve a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
-- Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei.
+- Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)-ban való használatának következményei.
 
-**Lekérdezés** : Ha a beviteli mezőben a lekérdezés lehetőséget választotta, adjon meg egy SQL-lekérdezést a forráshoz. Ez a beállítás felülbírálja az adatkészletben kiválasztott összes táblát. Az **Order by** záradékok itt nem támogatottak, de a teljes select from utasítással is megadható. A felhasználó által definiált Table functions is használható. a **select * from udfGetData ()** egy olyan UDF az SQL-ben, amely egy táblázatot ad vissza. Ez a lekérdezés létrehoz egy forrástábla, amelyet az adatfolyamatában használhat. A lekérdezések használata nagyszerű lehetőséget nyújt a sorok tesztelésre vagy keresésekre való csökkentésére is.
+**Lekérdezés**: Ha a beviteli mezőben a lekérdezés lehetőséget választotta, adjon meg egy SQL-lekérdezést a forráshoz. Ez a beállítás felülbírálja az adatkészletben kiválasztott összes táblát. Az **Order by** záradékok itt nem támogatottak, de a teljes select from utasítással is megadható. A felhasználó által definiált Table functions is használható. a **select * from udfGetData ()** egy olyan UDF az SQL-ben, amely egy táblázatot ad vissza. Ez a lekérdezés létrehoz egy forrástábla, amelyet az adatfolyamatában használhat. A lekérdezések használata nagyszerű lehetőséget nyújt a sorok tesztelésre vagy keresésekre való csökkentésére is.
 
 SQL-példa: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Köteg mérete** : adjon meg egy batch-méretet, amely nagy mennyiségű adatokat olvas be. Az adatforgalomban az ADF ezt a beállítást fogja használni a Spark oszlopos gyorsítótárazás beállításához. Ez egy opciós mező, amely a Spark alapértelmezett értékeit fogja használni, ha az üresen marad.
+**Köteg mérete**: adjon meg egy batch-méretet, amely nagy mennyiségű adatokat olvas be. Az adatforgalomban az ADF ezt a beállítást fogja használni a Spark oszlopos gyorsítótárazás beállításához. Ez egy opciós mező, amely a Spark alapértelmezett értékeit fogja használni, ha az üresen marad.
 
-**Elkülönítési szint** : a leképezési adatfolyamban található SQL-források alapértelmezett értéke nem véglegesítve. A következő értékek egyikére módosíthatja az elkülönítési szintet:
+**Elkülönítési szint**: a leképezési adatfolyamban található SQL-források alapértelmezett értéke nem véglegesítve. A következő értékek egyikére módosíthatja az elkülönítési szintet:
 
 - Olvasás véglegesítve
 - Nem véglegesített olvasás
@@ -807,9 +807,9 @@ Az Azure szinapszis Analytics szolgáltatáshoz tartozó beállítások a fogad�
 **Előkészítés engedélyezése:** Meghatározza, hogy az Azure szinapszis Analytics szolgáltatásba való íráskor kell-e használni a [bázisterület](/sql/relational-databases/polybase/polybase-guide) használatát. Az előkészítési tároló az adatfolyam- [művelet végrehajtása tevékenységben](control-flow-execute-data-flow-activity.md)van konfigurálva. 
 
 - Ha felügyelt identitás-hitelesítést használ a Storage-beli társított szolgáltatáshoz, olvassa el az [Azure blobhoz](connector-azure-blob-storage.md#managed-identity) szükséges konfigurációkat, illetve a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
-- Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei.
+- Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)-ban való használatának következményei.
 
-**Köteg mérete** : azt határozza meg, hogy hány sort kell megírni az egyes gyűjtők. A nagyobb méretű kötegek növelik a tömörítési és a memória-optimalizálást, de a gyorsítótárban tárolt adatmennyiség miatt kifogytak a memória
+**Köteg mérete**: azt határozza meg, hogy hány sort kell megírni az egyes gyűjtők. A nagyobb méretű kötegek növelik a tömörítési és a memória-optimalizálást, de a gyorsítótárban tárolt adatmennyiség miatt kifogytak a memória
 
 **SQL-parancsfájlok előtti és utáni** műveletek: Itt adhatja meg azokat a TÖBBsoros SQL-parancsfájlokat, amelyek a (z) előtti (előfeldolgozási) és a (feldolgozás utáni) adatainak a fogadó adatbázisba való beírásakor lesznek végrehajtva
 
@@ -849,7 +849,7 @@ Amikor a vagy az Azure szinapszis Analytics szolgáltatásba másol adatait, a k
 | NCHAR                                 | Karakterlánc, char []                 |
 | numerikus                               | Tizedesjegy                        |
 | nvarchar                              | Karakterlánc, char []                 |
-| valós szám                                  | Egyirányú                         |
+| valós szám                                  | Egyszeres                         |
 | ROWVERSION                            | Bájt []                         |
 | idő adattípusúra                         | DateTime                       |
 | smallint                              | Int16                          |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7555a0b9d7b3336b1020e8f1d9c3445e09afc6f0
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96318222"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095185"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Oktatóanyag az F5 BIG-IP Virtual Edition virtuális gép üzembe helyezéséhez az Azure IaaS a biztonságos hibrid hozzáférés érdekében
 
@@ -44,7 +44,7 @@ Az előző F5 BIG-IP-élmény vagy-ismeret nem szükséges, azonban javasoljuk, 
 
 - Helyettesítő karakter vagy tulajdonos alternatív neve (SAN), a webalkalmazások Secure Socket Layer (SSL) protokollon keresztüli közzétételéhez. A [titkosítás](https://letsencrypt.org/) ingyenes 90 napos tanúsítványt biztosít a teszteléshez.
 
-- SSL-tanúsítvány a BIG-IPs felügyeleti felület biztonságossá tételéhez. A webalkalmazások közzétételéhez használt tanúsítvány használható, ha a tulajdonos a BIG-IP teljes tartománynevét (FQDN) is megfelel. Például a tárgy *. contoso.com definiált helyettesítő karakteres tanúsítvány a következőre alkalmas: https://big-ip-vm.contoso.com:8443
+- SSL-tanúsítvány a BIG-IPs felügyeleti felület biztonságossá tételéhez. A webalkalmazások közzétételéhez használt tanúsítvány használható, ha a tulajdonos a BIG-IP teljes tartománynevét (FQDN) is megfelel. Például a tárgy *. contoso.com definiált helyettesítő karakteres tanúsítvány a következőre alkalmas: `https://big-ip-vm.contoso.com:8443`
 
 A virtuális gépek üzembe helyezése és az alaprendszer-konfigurációk kb. 30 percet vesznek igénybe. Ekkor a BIG-IP platform készen áll az [itt](f5-aad-integration.md)felsorolt SHA-forgatókönyvek megvalósítására.
 
@@ -71,7 +71,7 @@ A BIG-IP VE [Azure piactéren](https://azuremarketplace.microsoft.com/marketplac
 
 5. Válassza az **F5 Big-IP Virtual Edition (BYOL)** elemet,  >  és **válassza ki az**  >  **F5 Big-IP ve-all (BYOL, 2 rendszerindítási helyszínek) csomagot.**
 
-6. Kattintson a **Létrehozás** gombra.
+6. Válassza a **Létrehozás** lehetőséget.
 
 ![A rendszerkép megjeleníti a szoftvercsomagok kiválasztásának lépéseit.](./media/f5ve-deployment-plan/software-plan.png)
 
@@ -115,7 +115,7 @@ A BIG-IP VE [Azure piactéren](https://azuremarketplace.microsoft.com/marketplac
  |:---------|:-----|
  |Részletes figyelés| Ki|
  |Rendszerindítási diagnosztika|Engedélyezés egyéni Storage-fiókkal. Lehetővé teszi a BIG-IP Secure Shell (SSH) felülethez való csatlakozást a Azure Portal soros konzolján keresztül. Bármely elérhető Azure Storage-fiók kiválasztása|
- |**Identity**|  |
+ |**Identitás**|  |
  |Rendszerhez rendelt felügyelt identitás|Ki|
  |Azure Active Directory|A BIG-IP jelenleg nem támogatja ezt a beállítást|
  |**Automatikus leállítás**|    |
@@ -216,7 +216,7 @@ Az alábbi lépések feltételezik, hogy az SHA-szolgáltatásokhoz használt ny
  |:-------|:-----------|
  |Előfizetés| Ugyanaz az előfizetés, mint a BIG-IP-VM|
  |DNS-zóna| A közzétett webhelyek által használt ellenőrzött tartomány utótagjának mérvadó DNS-zónája, például www.contoso.com |
- |Név | Az Ön által megadott állomásnév a kiválasztott másodlagos IP-címhez társított nyilvános IP-címhez lesz feloldva. Ügyeljen arra, hogy a megfelelő DNS-t adja meg az IP-megfeleltetésekhez. Lásd: az utolsó rendszerkép a hálózatkezelési konfigurációk szakaszban, például intranet.contoso.com > 13.77.148.215|
+ |Name (Név) | Az Ön által megadott állomásnév a kiválasztott másodlagos IP-címhez társított nyilvános IP-címhez lesz feloldva. Ügyeljen arra, hogy a megfelelő DNS-t adja meg az IP-megfeleltetésekhez. Lásd: az utolsó rendszerkép a hálózatkezelési konfigurációk szakaszban, például intranet.contoso.com > 13.77.148.215|
  | TTL | 1 |
  |TTL-egységek | Óra |
 
@@ -250,7 +250,7 @@ Alapértelmezés szerint az Azure virtuális hálózatok és a társított alhá
  |Protokoll| TCP |
  |Művelet| Engedélyezés|
  |Prioritás|A legalacsonyabb elérhető érték 100 – 4096|
- |Név | Leíró név, például: `BIG-IP-VM_Web_Services_80_443`|
+ |Name (Név) | Leíró név, például: `BIG-IP-VM_Web_Services_80_443`|
 
 3. Válassza a **Hozzáadás** lehetőséget a módosítások elvégzéséhez, majd a **hálózat** menü bezárásához.
 
@@ -387,7 +387,7 @@ A BIG-IP for SHA előkészítésének egyik utolsó lépése annak biztosítása
 
 2. A **DNS-keresési kiszolgáló listában** adja meg a környezetek DNS-KISZOLGÁLÓJÁNAK IP-címét.
 
-3. Válassza **Add** a  >  **frissítés** hozzáadása elemet.
+3. Válassza a  >  **frissítés** hozzáadása elemet.
 
 Különálló és választható lépésként érdemes lehet egy [LDAP-konfigurációt](https://somoit.net/f5-big-ip/authentication-using-active-directory) használni a Big-IP-rendszergazdák hitelesítésére az ad-ben a helyi Big-IP-fiókok kezelése helyett.
 
@@ -411,7 +411,7 @@ Ha a fő TMOS frissítése nem lehetséges, akkor az alábbi lépések végrehaj
 
 Ha a BIG-IP rendszer már teljesen kiépítve van, javasoljuk, hogy készítsen teljes biztonsági mentést a konfigurációról:
 
-1. Ugrás a **System**  >  **rendszerarchívumok**  >  **létrehozásához**
+1. Ugrás a   >  **rendszerarchívumok**  >  **létrehozásához**
 
 2. Adjon meg egyedi **fájlnevet** , és engedélyezze a **titkosítást** egy hozzáférési kóddal
 
@@ -450,7 +450,7 @@ New-AzVmSnapshot -ResourceGroupName '<E.g.contoso-RG>' -VmName '<E.g.BIG-IP-VM>'
 
 A BIG-IP visszaállítása hasonló eljárást követ a biztonsági mentéshez, és a nagy IP-alapú virtuális gépek közötti konfigurációk áttelepítésére is használható. A biztonsági másolat importálása előtt meg kell figyelni a támogatott frissítési útvonalakkal kapcsolatos adatokat.
 
-1. Ugrás a **System**  >  **rendszerarchívumok** szolgáltatásra
+1. Ugrás a   >  **rendszerarchívumok** szolgáltatásra
 
 2. Vagy válassza ki a visszaállítani kívánt biztonsági másolat hivatkozását, vagy válassza a **feltöltés** gombot egy korábban mentett FKR-Archívum megkereséséhez, amely nem szerepel a listában
 
@@ -482,6 +482,6 @@ Get-AzVmSnapshot -ResourceGroupName '<E.g.contoso-RG>' -VmName '<E.g.BIG-IP-VM>'
 
 -   [Microsoft Azure: Waagent](https://clouddocs.f5.com/cloud/public/v1/azure/Azure_waagent.html)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Válasszon egy [üzembe helyezési forgatókönyvet](f5-aad-integration.md) , és indítsa el a megvalósítást.

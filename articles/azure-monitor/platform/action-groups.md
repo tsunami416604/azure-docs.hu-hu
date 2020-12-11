@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: fd773ade0173fc1c238a5ce44e864e1255ed9044
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 9b5b20de1b86eae72de54b3f2c1cf37074fba144
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920652"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095168"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és felügyelete az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. 
@@ -251,8 +251,46 @@ A műveleti csoportban korlátozott számú SMS-művelet lehet.
 
 A támogatott országok/régiók díjszabását a [Azure monitor díjszabási oldalán](https://azure.microsoft.com/pricing/details/monitor/)találja.
 
-**Azon országok listája, amelyeken az SMS-értesítés támogatott** 
-| **Országkód**  |  **Ország neve** | | 61 | Ausztrália | | 43 | Ausztria | | 32 | Belgium | | 55 | Brazília | | 1 | Kanada | | 56 | Chile | | 86 | Kína | | 420 | Cseh Köztársaság | | 45 | Dánia | | 372 | Észtország | | 358 | Finnország | | 33 | Franciaország | | 49 | Németország | | 852 | Hongkong | | 91 | India | | 353 | Írország | | 972 | Izrael | | 39 | Olaszország | | 81 | Japán | | 352 | Luxemburg | | 60 | Malajzia | | 52 | Mexikó | | 31 | Hollandia | | 64 | Új-Zéland | | 47 | Norvégia | | 351 | Portugália | | 1 | Puerto Rico | | 40 | Románia | | 65 | Szingapúr | | 27 | Dél-Afrika | | 82 | Dél-Korea | | 34 | Spanyolország | | 41 | Svájc | | 886 | Tajvan | | 44 |  Egyesült Királyság | | 1 | Egyesült Államok |
+**Azon országok listája, amelyeken az SMS-értesítés támogatott**
+
+| Országkód | Ország neve |
+|:---|:---|
+| 61 | Ausztrália |
+| 43 | Ausztria |
+| 32 | Belgium |
+| 55 | Brazília |
+| 1 |Kanada |
+| 56 | Chile |
+| 86 | Kína |
+| 420 | Cseh Köztársaság |
+| 45 | Dánia |
+| 372 | Észtország |
+| 358 | Finnország |
+| 33 | Franciaország |
+| 49 | Németország |
+| 852 | Hongkong |
+| 91 | India |
+| 353 | Írország |
+| 972 | Izrael |
+| 39 | Olaszország |
+| 81 | Japán |
+| 352 | Luxemburg |
+| 60 | Malajzia |
+| 52 | Mexikó |
+| 31 | Hollandia |
+| 64 | Új-Zéland |
+| 47 | Norvégia |
+| 351 | Portugália |
+| 1 | Puerto Rico |
+| 40 | Románia |
+| 65 | Szingapúr |
+| 27 | Dél-afrikai Köztársaság |
+| 82 | Dél-Korea |
+| 34 | Spanyolország |
+| 41 | Svájc |
+| 886 | Tajvan |
+| 44 | Egyesült Királyság |
+| 1 | Egyesült Államok |
 
 ### <a name="voice"></a>Hang
 További fontos viselkedésért tekintse meg a [díjszabási információkat](./alerts-rate-limiting.md) ismertető cikket.

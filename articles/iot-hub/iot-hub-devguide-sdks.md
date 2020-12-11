@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 4e914b7b49393964f17cc6d9515cb2f4a3bebd2e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9921ed500f831f2a002335fe83eae8f1bb47ecd4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499985"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095338"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Az Azure IoT Hub SDK-k ismertetése és használata
 
@@ -59,7 +59,7 @@ Azure IoT Hub-eszköz SDK a Embedded C-hez (ANSI C-C99):
 * [A beágyazott C SDK létrehozása](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#build)
 * [Forráskód](https://github.com/Azure/azure-sdk-for-c)
 * [Méretezési diagram](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#size-chart) a korlátozott eszközökhöz.
-* [API-leírások](https://azuresdkdocs.blob.core.windows.net/$web/c/docs/1.0.0/index.html)
+* [API-leírások](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Identity/1.0.0/api/index.html)
 
 
 Azure IoT Hub Device SDK C-hez (ANSI C-C99):
@@ -178,7 +178,7 @@ Azure-beli kiépítési eszköz és szolgáltatás SDK-k a Pythonhoz:
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-python)
 * Az [eszköz SDK](https://pypi.org/project/azure-iot-device/) és a [Service SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/) letöltése a pip-ből
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure IoT SDK-k olyan eszközöket is biztosítanak, amelyek segítik a fejlesztést:
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701449"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094862"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1-ben
 
@@ -33,8 +33,6 @@ Kétféle hozzáférés-vezérlési lista (ACL) létezik – a **hozzáférési 
 
 
 A hozzáférési ACL-ek és alapértelmezett ACL-ek ugyanazzal a struktúrával rendelkeznek.
-
-
 
 > [!NOTE]
 > Ha megváltoztatja az alapértelmezett ACL-eket egy szülő objektumon, akkor az nem módosítja a már létező gyermekelemek hozzáférési ACL-jeit és alapértelmezett ACL-jeit.
@@ -74,7 +72,7 @@ Az alábbiakban néhány gyakori forgatókönyv segít megérteni, hogy mely eng
 | Művelet | Objektum              |    /      | Seattle   | Portland   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | Olvasás      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Hozzáfűzés a következőhöz | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Hozzáfűzés a következőhöz | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `-W-`          |
 | Törlés    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Létrehozás    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Lista      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
@@ -220,7 +218,7 @@ Fájl vagy mappa létrehozásakor a rendszer a umask használatával módosítja
 
 A Azure Data Lake Storage Gen1 umask egy állandó érték, amely a 007-re van állítva. Ez az érték a következőre van lefordítva
 
-| umask-összetevő     | Numerikus alak | Rövid alak | Értelmezés |
+| umask-összetevő     | Numerikus alak | Rövid alak | Jelentés |
 |---------------------|--------------|------------|---------|
 | umask.owning_user   |    0         |   `---`      | A tulajdonos felhasználó számára másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
 | umask.owning_group  |    0         |   `---`      | A tulajdonos csoport esetében másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 

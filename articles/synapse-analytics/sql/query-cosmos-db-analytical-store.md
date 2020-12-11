@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 129534727248ff05b5d38da60dead7903d9a5815
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744465"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095100"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Az Azure szinapszis link Preview-ban található kiszolgáló nélküli SQL-készlettel rendelkező lekérdezés Azure Cosmos DB
 
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-Ne használjon `OPENROWSET` explicit módon definiált sémát, mert ez hatással lehet a teljesítményre. Ügyeljen arra, hogy az oszlopok legkisebb lehetséges méretét használja (például VARCHAR (100) az alapértelmezett VARCHAR (8000) helyett). Az UTF [-8 átalakítási probléma](/troubleshoot/reading-utf8-text)elkerülése érdekében használjon néhány UTF-8 rendezést alapértelmezett adatbázis-rendezésként, vagy állítsa explicit oszlop rendezésként. A rendezés `Latin1_General_100_BIN2_UTF8` a legjobb teljesítményt nyújtja, ha a Yu bizonyos karakterlánc-oszlopokkal szűri az adataikat.
+Ne használjon `OPENROWSET` explicit módon definiált sémát, mert ez hatással lehet a teljesítményre. Ügyeljen arra, hogy az oszlopok legkisebb lehetséges méretét használja (például VARCHAR (100) az alapértelmezett VARCHAR (8000) helyett). Az UTF [-8 átalakítási probléma](/azure/synapse-analytics/troubleshoot/reading-utf8-text)elkerülése érdekében használjon néhány UTF-8 rendezést alapértelmezett adatbázis-rendezésként, vagy állítsa explicit oszlop rendezésként. A rendezés `Latin1_General_100_BIN2_UTF8` a legjobb teljesítményt nyújtja, ha a Yu bizonyos karakterlánc-oszlopokkal szűri az adataikat.
 
 ## <a name="query-nested-objects-and-arrays"></a>Beágyazott objektumok és tömbök lekérdezése
 
@@ -335,7 +335,7 @@ Azure Cosmos DB SQL (Core) API-fiókok esetében a JSON-tulajdonságok száma, k
 
 | Azure Cosmos DB tulajdonság típusa | SQL-oszlop típusa |
 | --- | --- |
-| Logikai érték | bit |
+| Logikai | bit |
 | Egész szám | bigint |
 | Tizedesjegy | float |
 | Sztring | varchar (UTF-8 adatbázis-rendezés) |
@@ -433,7 +433,7 @@ A lehetséges hibák és hibaelhárítási műveletek az alábbi táblázatban l
 
 A javaslatok és a problémák jelentését az [Azure szinapszis Analytics visszajelzési oldalán](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)teheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért tekintse át a következő cikkeket:
 
