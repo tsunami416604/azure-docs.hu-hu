@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 5109139c7168026c74a475128832fbb0733ce832
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7bc15b369bfa4964384d4f7910d6953bdfeaa664
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447123"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094165"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private-hivatkozás Azure SQL Database és az Azure szinapszis Analyticshez
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -177,9 +177,9 @@ A helyszíni környezet és a SQL Database-adatbázis közötti kapcsolat létes
 
 ## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase-and-the-copy-statement"></a>Csatlakozás az Azure-beli szinapszis Analytics-ből az Azure Storage-ba a Base és a COPY utasítás használatával
 
-A Base és a COPY utasítást általában az Azure szinapszis Analytics szolgáltatásba való betöltésére használják az Azure Storage-fiókokból. Ha az Azure Storage-fiók, amelyről az adatok betöltésére vonatkozó korlátozások vonatkoznak, csak a virtuális hálózati alhálózatok egy készletét érheti el privát végpontokon, szolgáltatási végpontokon vagy IP-alapú tűzfalakon keresztül, akkor a rendszer megszakítja a kapcsolatot a Base és a MÁSOLÁSi utasítással. Az importálási és exportálási forgatókönyvek az Azure-beli virtuális hálózathoz védett Azure Storage-hoz való csatlakozásának engedélyezéséhez kövesse az [itt](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)ismertetett lépéseket. 
+A Base és a COPY utasítást általában az Azure szinapszis Analytics szolgáltatásba való betöltésére használják az Azure Storage-fiókokból. Ha az Azure Storage-fiók, amelyről az adatok betöltésére vonatkozó korlátozások vonatkoznak, csak a virtuális hálózati alhálózatok egy készletét érheti el privát végpontokon, szolgáltatási végpontokon vagy IP-alapú tűzfalakon keresztül, akkor a rendszer megszakítja a kapcsolatot a Base és a MÁSOLÁSi utasítással. Az importálási és exportálási forgatókönyvek az Azure-beli virtuális hálózathoz védett Azure Storage-hoz való csatlakozásának engedélyezéséhez kövesse az [itt](vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)ismertetett lépéseket. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure SQL Database biztonság áttekintését lásd: [az adatbázis biztonságossá tétele](security-overview.md)
 - Az Azure SQL Database kapcsolatok áttekintését lásd: [Azure SQL connectivity Architecture](connectivity-architecture.md)

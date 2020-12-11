@@ -1,6 +1,6 @@
 ---
 title: Eszköz vezérlése Azure IoT Hubról – rövid útmutató (.NET) | Microsoft Docs
-description: Ebben a rövid útmutatóban két C# mintaalkalmazást fog futtatni. Az egyik egy háttéralkalmazás, amely a hubhoz csatlakoztatott eszközök távoli vezérlését teszi lehetővé. A másik alkalmazás a hubhoz csatlakoztatott eszközt szimulál, amelyet távolról lehet irányítani.
+description: Ebben a rövid útmutatóban két C# mintaalkalmazást fog futtatni. Az egyik alkalmazás olyan szolgáltatásalkalmazás, amely távolról vezérelheti az Ön hubhoz csatlakoztatott eszközöket. A másik alkalmazás a hubhoz csatlakoztatott eszközt szimulál, amelyet távolról lehet irányítani.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: aac03cad9dc6b83e7831b35ac2873ddaae6eda75
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 39cfa64b756ef6bf20f8cbf3d6e8f8a25e81c674
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843111"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092873"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (.NET)
 
@@ -29,15 +29,15 @@ A IoT Hub egy olyan Azure-szolgáltatás, amely lehetővé teszi a IoT-eszközö
 
 Ez a rövid útmutató két előre megírt .NET-alkalmazást használ:
 
-* Egy szimulálteszköz-alkalmazás, amely válaszol a háttéralkalmazásokból meghívott közvetlen metódusokra. A közvetlen metódusok meghívásának fogadásához ez az alkalmazás az IoT Hubon található eszközspecifikus végponthoz csatlakozik.
+* Olyan szimulált eszköz alkalmazás, amely egy szolgáltatásalkalmazás által hívott közvetlen metódusokra válaszol. A közvetlen metódusok meghívásának fogadásához ez az alkalmazás az IoT Hubon található eszközspecifikus végponthoz csatlakozik.
 
-* Egy háttéralkalmazás, amely meghívja a közvetlen metódusokat a szimulált eszközre. A közvetlen metódus egy eszközre való meghívásához ez az alkalmazás az IoT Hubon található szolgáltatásoldali végponthoz csatlakozik.
+* Egy szolgáltatásalkalmazás, amely meghívja a közvetlen metódusokat a szimulált eszközön. A közvetlen metódus egy eszközre való meghívásához ez az alkalmazás az IoT Hubon található szolgáltatásoldali végponthoz csatlakozik.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A rövid útmutatóban futtatott két mintaalkalmazás a C# használatával készült. A fejlesztői gépen szükség lesz a .NET Core SDK 2.1.0-s vagy újabb változatára.
+* A rövid útmutatóban futtatott két mintaalkalmazás a C# használatával készült. A fejlesztői gépen a .NET Core SDK 3,1-es vagy újabb szükséges.
 
     A .NET Core SDK-t többféle platformra a [.NET](https://www.microsoft.com/net/download/all) oldaláról töltheti le.
 
@@ -96,7 +96,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 ## <a name="retrieve-the-service-connection-string"></a>A szolgáltatás kapcsolati sztringjének lekérése
 
-Szüksége van az IoT Hub _szolgáltatáskapcsolati sztringjére_ is, amellyel lehetővé teheti, hogy a háttéralkalmazás csatlakozhasson az IoT Hubhoz, és üzeneteket kérhessen le. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
+Az IoT hub _szolgáltatás kapcsolati karakterláncára_ is szükség van ahhoz, hogy a szolgáltatásalkalmazás csatlakozhasson a hubhoz, és lekérje az üzeneteket. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
 
 ```azurecli-interactive
 az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -112,22 +112,18 @@ Ezt az értéket használni fogja a rövid útmutató későbbi részében. Ez a
 
 A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végponthoz csatlakozik, szimulált telemetriát küld, és figyeli a hubról érkező közvetlenmetódus-hívásokat. Ebben a rövid útmutatóban a hubról érkező közvetlenmetódus-hívás arra utasítja az eszközt, hogy módosítsa a telemetriaküldések közötti időintervallumot. A szimulált eszköz visszaigazolást küld a hubhoz a közvetlen metódus végrehajtása után.
 
-1. Egy helyi terminálablakban keresse meg a C#-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Quickstarts\simulated-device-2** mappába.
+1. Egy helyi terminálablakban keresse meg a C#-mintaprojekt gyökérmappáját. Ezután keresse meg a **IOT-hub\Quickstarts\SimulatedDeviceWithCommand** mappát.
 
-2. Nyissa meg a **SimulatedDevice.cs** fájlt egy Ön által választott szövegszerkesztőben.
-
-    Cserélje le a változó értékét `s_connectionString` a korábban megjegyzett eszköz-összekapcsolási sztringre. Ezután mentse a módosításokat a **SimulatedDevice.cs**.
-
-3. Futtassa az alábbi parancsokat a helyi terminálablakban a szimulálteszköz-alkalmazáshoz szükséges csomagok telepítéséhez:
+2. Futtassa az alábbi parancsokat a helyi terminálablakban a szimulálteszköz-alkalmazáshoz szükséges csomagok telepítéséhez:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Futtassa az alábbi parancsot a helyi terminálablakban a szimulálteszköz-alkalmazás létrehozásához és futtatásához:
+3. A helyi terminál ablakban futtassa a következő parancsot a szimulált eszköz alkalmazásának létrehozásához és futtatásához, és cserélje `{DeviceConnectionString}` le a kifejezést a korábban feljegyzett eszköz-kapcsolódási sztringre:
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {DeviceConnectionString}
     ```
 
     A következő képernyőképen az a kimenet látható, amikor a szimulálteszköz-alkalmazás telemetriát küld az IoT Hubnak:
@@ -136,31 +132,27 @@ A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végp
 
 ## <a name="call-the-direct-method"></a>A közvetlen metódus meghívása
 
-A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz csatlakozik. Az alkalmazás lehetővé teszi, hogy a közvetlen metódus hívásokat hajtson végre egy eszközön az IoT hub segítségével, és figyelje a nyugtákat. Az IoT Hub-háttéralkalmazások általában a felhőben futnak.
+A szolgáltatásalkalmazás egy szolgáltatás-oldali végponthoz csatlakozik a IoT Hub. Az alkalmazás lehetővé teszi, hogy a közvetlen metódus hívásokat hajtson végre egy eszközön az IoT hub segítségével, és figyelje a nyugtákat. IoT Hub szolgáltatásalkalmazás általában a felhőben fut.
 
-1. Egy másik helyi terminálablakban keresse meg a C#-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Quickstarts\back-end-application** mappába.
+1. Egy másik helyi terminálablakban keresse meg a C#-mintaprojekt gyökérmappáját. Ezután keresse meg a **IOT-hub\Quickstarts\InvokeDeviceMethod** mappát.
 
-2. Nyissa meg a **BackEndApplication.cs** fájlt egy Ön által választott szövegszerkesztőben.
-
-    Cserélje le a változó értékét arra `s_connectionString` a szolgáltatás-összekapcsolási sztringre, amelyet korábban jegyzett készített. Ezután mentse a módosításokat a **BackEndApplication.cs**.
-
-3. Futtassa az alábbi parancsokat a helyi terminálablakban a háttéralkalmazáshoz szükséges kódtárak telepítéséhez:
+2. A helyi terminál ablakban futtassa a következő parancsokat a szolgáltatásalkalmazás szükséges kódtárainak telepítéséhez:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Futtassa az alábbi parancsokat a helyi terminálablakban a háttéralkalmazás létrehozásához és futtatásához:
+3. A helyi terminál ablakban futtassa a következő parancsokat a szolgáltatásalkalmazás létrehozásához és futtatásához, és cserélje `{ServiceConnectionString}` le a kifejezést a korábban feljegyzett szolgáltatás-kapcsolódási sztringre:
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {ServiceConnectionString}
     ```
 
     Az alábbi képernyőfelvételen a kimenet látható, mivel az alkalmazás közvetlen metódust hív meg az eszköznek, és nyugtát kap:
 
-    ![A háttéralkalmazás futtatása](./media/quickstart-control-device-dotnet/BackEndApplication.png)
+    ![Szolgáltatásalkalmazás futtatása](./media/quickstart-control-device-dotnet/BackEndApplication.png)
 
-    A háttéralkalmazás futtatása után megjelenik egy üzenet a szimulált eszközt futtató konzolablakban, és megváltozik az üzenetküldések gyakorisága:
+    A szolgáltatásalkalmazás futtatása után megjelenik egy üzenet a szimulált eszközt futtató konzol ablakban, valamint az üzenetek módosításának gyakorisága:
 
     ![Változás a szimulált ügyfélben](./media/quickstart-control-device-dotnet/SimulatedDevice-2.png)
 
@@ -170,7 +162,7 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban közvetlen metódust hívott egy eszközön egy háttérbeli alkalmazásból, és a közvetlen metódus hívására válaszolt egy szimulált eszköz alkalmazásban.
+Ebben a rövid útmutatóban közvetlen metódust kapott egy szolgáltatásalkalmazás egyik eszközén, és egy szimulált eszköz alkalmazásban válaszolt a közvetlen metódus hívására.
 
 Ha szeretné megtudni, hogy hogyan irányíthatók az eszközről felhőbe irányuló üzenetek különböző felhőbeli célokhoz, folytassa a következő oktatóanyaggal.
 

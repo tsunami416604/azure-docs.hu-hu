@@ -3,15 +3,15 @@ title: Azure többtényezős hitelesítés beállítása a Windows rendszerű vi
 description: Az Azure többtényezős hitelesítés beállítása a fokozott biztonság érdekében a Windows Virtual Desktopban.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 12/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 35af8191cfe237175cbd6669797d1744ac3ecd49
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 00aba5d169a05eab25dcc63ca813955e71d09598
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312651"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092380"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Azure többtényezős hitelesítés engedélyezése a Windows rendszerű virtuális asztali gépeken
 
@@ -41,12 +41,12 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre többtényezős hiteles
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 2. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
-3. Válassza az **új szabályzat**lehetőséget.
+3. Válassza az **új szabályzat** lehetőséget.
 4. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 5. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
-6. A **Belefoglalás**területen válassza a **felhasználók és csoportok kiválasztása**  >  **felhasználók és csoportok** lehetőséget > válassza ki az [Előfeltételek](#prerequisites) szakaszban létrehozott csoportot.
-7. Válassza a **Done** (Kész) lehetőséget.
-8. A **Cloud apps vagy a műveletek**területen  >  **Include**válassza az **alkalmazások kiválasztása**lehetőséget.
+6. A **Belefoglalás** területen válassza a **felhasználók és csoportok kiválasztása**  >  **felhasználók és csoportok** lehetőséget > válassza ki az [Előfeltételek](#prerequisites) szakaszban létrehozott csoportot.
+7. Válassza a **Kész** lehetőséget.
+8. A **Cloud apps vagy a műveletek** területen  >  válassza az **alkalmazások kiválasztása** lehetőséget.
 9. Válassza ki a következő alkalmazások egyikét, amely alapján a Windows rendszerű virtuális asztali verziót használja.
    
    - Ha a Windows Virtual Desktopot (klasszikus) használja, válassza a következő alkalmazásokat:
@@ -67,7 +67,7 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre többtényezős hiteles
    > 
    > Ha a Windowsos virtuális asztalt (klasszikus) használja, ha a feltételes hozzáférési házirend blokkolja az összes hozzáférést, és csak a Windows rendszerű virtuális asztali alkalmazás-azonosítókat zárja ki, ezt úgy is megteheti, hogy hozzáadja az alkalmazás-azonosító 9cdead84-A844-4324-93f2-b2e6bb768d07 a szabályzathoz. Ha nem adja hozzá az alkalmazás AZONOSÍTÓját, a Windows rendszerű virtuális asztali (klasszikus) erőforrások hírcsatornáinak felderítését letiltja.
 
-10. Lépjen a **feltételek**  >  **ügyfélalkalmazások**elemre, majd válassza ki, hogy hová szeretné alkalmazni a szabályzatot:
+10. Lépjen a **feltételek**  >  **ügyfélalkalmazások** elemre, majd válassza ki, hogy hová szeretné alkalmazni a szabályzatot:
     
     - Válassza a **böngésző** lehetőséget, ha azt szeretné, hogy a házirend a webes ügyfélre vonatkozzon.
     - Válassza a **Mobile apps és asztali ügyfelek** lehetőséget, ha a szabályzatot más ügyfelekre szeretné alkalmazni.
@@ -76,7 +76,7 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre többtényezős hiteles
     > [!div class="mx-imgBorder"]
     > ![Az ügyfélalkalmazások oldal képernyőképe. A felhasználó bejelölte a Mobile apps és az asztali ügyfelek jelölőnégyzetet.](media/select-apply.png)
 
-11. Miután kiválasztotta az alkalmazást, válassza a **kiválasztás**lehetőséget, majd kattintson a **kész**gombra.
+11. Miután kiválasztotta az alkalmazást, válassza a **kiválasztás** lehetőséget, majd kattintson a **kész** gombra.
 
     > [!div class="mx-imgBorder"]
     > ![Képernyőkép a Cloud apps vagy a Actions lapról. A Windows rendszerű virtuális asztali és a Windows rendszerű virtuális asztali ügyfélprogramok piros színnel vannak kiemelve.](media/cloud-apps-enterprise.png)
@@ -84,10 +84,13 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre többtényezős hiteles
     >[!NOTE]
     >A kijelölni kívánt alkalmazás AZONOSÍTÓjának megkereséséhez nyissa meg a **vállalati alkalmazások** elemet, és válassza a **Microsoft-alkalmazások** lehetőséget az alkalmazás típusa legördülő menüből.
 
-12. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, **többtényezős hitelesítés megkövetelése**, majd a **lehetőséget**.
-13. A **hozzáférés-vezérlési**  >  **munkamenet**területen válassza a **bejelentkezési gyakoriság**lehetőséget, állítsa be az értéket a kérések között, majd válassza a **kiválasztás**lehetőséget. Ha például az értéket 1 értékre állítja, és a mértékegységet **(** **óra**), a többtényezős hitelesítést igényel, ha a rendszer az utolsót követően egy órával elindítja a kapcsolódást.
-14. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+12. A **hozzáférés-vezérlés**  >  **megadása** területen válassza a **hozzáférés biztosítása**, **többtényezős hitelesítés megkövetelése**, majd a **lehetőséget**.
+13. A **hozzáférés-vezérlési**  >  **munkamenet** területen válassza a **bejelentkezési gyakoriság** lehetőséget, állítsa be az értéket a kérések között, majd válassza a **kiválasztás** lehetőséget. Ha például az értéket 1 értékre állítja, és a mértékegységet **(** **óra**), a többtényezős hitelesítést igényel, ha a rendszer az utolsót követően egy órával elindítja a kapcsolódást.
+14. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva** értékre.
 15. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
+
+>[!NOTE]
+>Ha a webes ügyfélprogram használatával jelentkezik be a Windows rendszerű virtuális asztalra a böngészőben, a napló az ügyfélalkalmazás AZONOSÍTÓját a85cf173-4192-42f8-81fa-777a763e6e2c (Windows rendszerű virtuális asztali ügyfélként) listázza. Ennek az az oka, hogy az ügyfélalkalmazás belsőleg kapcsolódik ahhoz a kiszolgálói alkalmazás-AZONOSÍTÓhoz, ahol a feltételes hozzáférési házirend be lett állítva. 
 
 ## <a name="next-steps"></a>Következő lépések
 

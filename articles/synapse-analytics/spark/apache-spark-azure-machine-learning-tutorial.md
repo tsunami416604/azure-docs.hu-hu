@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: kísérletek futtatása az Azure automatizált ML-vel'
-description: A Machine learning-kísérletek Apache Spark és az Azure automatikus ML használatával történő futtatásának oktatóanyaga
+title: 'Oktatóanyag: modell betanítása Pythonban automatizált ML-vel'
+description: Útmutató a gépi tanulási modellek a Pythonban való betanításához az Azure Szinapszisban Apache Spark és automatizált ML használatával.
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: abb7266d90171abc628739aa8f50f1760a32f68d
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458830"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093332"
 ---
-# <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Oktatóanyag: kísérletek futtatása az Azure automatizált ML és Apache Spark használatával
+# <a name="tutorial-train-a-machine-learning-model-in-python-in-azure-synapse-with-apache-spark-and-automated-ml"></a>Oktatóanyag: gépi tanulási modell betanítása a Pythonban az Azure Szinapszisban Apache Spark és automatizált ML-vel
 
 A Azure Machine Learning egy felhőalapú környezet, amely lehetővé teszi a gépi tanulási modellek betanítását, üzembe helyezését, automatizálását, kezelését és nyomon követését. 
 
@@ -155,11 +155,11 @@ A következő kód lekéri a meglévő munkaterületet és az alapértelmezett A
 import pandas 
 from azureml.core import Dataset
 
-# Get the AML Default Datastore
+# Get the Azure Machine Learning Default Datastore
 datastore = ws.get_default_datastore()
 training_pd = training_data.toPandas().to_csv('training_pd.csv', index=False)
 
-# Convert into AML Tabular Dataset
+# Convert into Azure Machine Learning Tabular Dataset
 datastore.upload_files(files = ['training_pd.csv'],
                        target_path = 'train-dataset/tabular/',
                        overwrite = True,
@@ -168,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 ```
 ![A feltöltött adatkészlet képe.](./media/azure-machine-learning-spark-notebook/upload-dataset.png)
 
-## <a name="submit-an-automl-experiment"></a>AutoML-kísérlet küldése
+## <a name="submit-an-automated-ml-experiment"></a>Automatizált ML-kísérlet küldése
 
 #### <a name="define-training-settings"></a>Képzési beállítások megadása
 1. A kísérlet elküldéséhez meg kell határoznia a kísérlet paramétert és a modell beállításait a betanításhoz. A beállítások teljes listáját [itt](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)tekintheti meg.
@@ -221,7 +221,7 @@ A kísérlet befejezését követően a kimenet a befejezett iterációk részle
 ![Képernyőkép a modell kimenetéről.](./media/azure-machine-learning-spark-notebook/model-output.png)
 
 > [!NOTE]
-> A AutoML kísérlet elküldését követően különböző iterációkat és modell-típusokat fog futtatni. Ez a Futtatás általában 1 – 1,5 órát vesz igénybe. 
+> Miután elküldte az automatikus ML-kísérletet, különböző iterációkat és modell-típusokat fog futtatni. Ez a Futtatás általában 1 – 1,5 órát vesz igénybe. 
 
 #### <a name="retrieve-the-best-model"></a>A legjobb modell lekérése
 Az iterációk közül a legjobb modell kiválasztásához a függvényt fogjuk használni ```get_output``` a legjobb Futtatás és a felszerelt modell visszaadásához. Az alábbi kód beolvassa az összes naplózott metrika vagy egy adott iteráció legjobb futtatási és beszerelt modelljét.
@@ -325,7 +325,7 @@ plt.show()
 A legjobb modell ellenőrzése után regisztrálhatjuk a modellt Azure Machine Learningra. A modell regisztrálása után letöltheti vagy telepítheti a regisztrált modellt, és megkapja az összes regisztrált fájlt.
 
 ```python
-description = 'My AutoML Model'
+description = 'My automated ML model'
 model_path='outputs/model.pkl'
 model = best_run.register_model(model_name = 'NYCGreenTaxiModel', model_path = model_path, description = description)
 print(model.name, model.version)
@@ -336,8 +336,8 @@ NYCGreenTaxiModel 1
 ## <a name="view-results-in-azure-machine-learning"></a>Eredmények megtekintése Azure Machine Learning
 Végül az iterációk eredményeinek eléréséhez navigáljon a Azure Machine Learning-munkaterületban található kísérlethez. Itt további részleteket tudhat meg a Futtatás, a megkísérelt modellek és a modell egyéb mérőszámai állapotáról. 
 
-![A pénzmosás-munkaterület képernyőképe.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
+![Képernyőkép a Azure Machine Learning munkaterületről.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
 - [Apache Spark MLlib-oktatóanyag](./apache-spark-machine-learning-mllib-notebook.md)

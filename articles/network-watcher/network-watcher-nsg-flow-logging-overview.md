@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b6f66813ea23f6c9d4b47a3733d0c72c683d0676
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 03ef75f43d8c8c854c3803ceb30f31b292d566c3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493984"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033425"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Bevezetés a hálózati biztonsági csoportok folyamatnaplózásába
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 A [hálózati biztonsági csoport](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) folyamatábrája az Azure Network Watcher egyik funkciója, amely lehetővé teszi, hogy naplózza a NSG keresztül ÁRAMLÓ IP-forgalomra vonatkozó információkat. A flow-adatok az Azure Storage-fiókokba kerülnek, ahonnan elérheti, és exportálhatja bármely vizualizációs eszközre, SIEM-re vagy tetszőleges AZONOSÍTÓra.
 
@@ -48,7 +48,7 @@ A flow-naplók a Felhőbeli környezet összes hálózati tevékenységének az 
 **Kulcs tulajdonságai**
 
 - A flow-naplók a [4. rétegben](https://en.wikipedia.org/wiki/OSI_model#Layer_4:_Transport_Layer) működnek, és rögzítik az összes olyan IP-folyamatot, amely egy NSG
-- A naplók gyűjtése az Azure platformon keresztül történik, és semmilyen módon nincs hatással az ügyfelek erőforrásaira vagy a hálózati teljesítményre.
+- A naplókat az Azure platformon **1 – min időközönként** gyűjti a rendszer, és semmilyen módon nem befolyásolja az ügyfelek erőforrásait vagy a hálózati teljesítményt.
 - A naplók JSON formátumban vannak megírva, és a kimenő és a bejövő folyamatok megjelenítése NSG-szabály alapján történik.
 - Minden naplóbejegyzés tartalmazza a hálózati adaptert (NIC), amely 5 rekordos információra vonatkozik, a forgalmi döntés & (csak 2. verzió) átviteli sebességre vonatkozó információk. A részletekért tekintse meg az alábbi _naplózási formátumot_ .
 - A flow-naplók egy megőrzési funkcióval rendelkeznek, amely lehetővé teszi a naplók automatikus törlését a létrehozásuk után egy évig. 
@@ -361,6 +361,8 @@ A **flow naplózási költségei**: a NSG folyamatának naplózása a létrehozo
 
 Az internetes IP-címekről a nyilvános IP-címek **nélküli virtuális gépekre naplózott bejövő folyamatok**: olyan virtuális gépek, amelyek nem rendelkeznek nyilvános IP-címmel a hálózati adapterhez társított nyilvános IP-címen keresztül, vagy amelyek egy alapszintű terheléselosztó-készlet részét képezik, az [alapértelmezett SNAT](../load-balancer/load-balancer-outbound-connections.md) használják, és az Azure által hozzárendelt IP-címmel rendelkeznek a kimenő kapcsolatok megkönnyítéséhez. Ennek eredményeképpen előfordulhat, hogy az internetes IP-címekről érkező adatfolyamok esetében a flow-naplóbejegyzések megjelennek, ha a folyamat a SNAT hozzárendelt portok tartományában lévő portra van szánva. Amíg az Azure nem engedélyezi ezeket a folyamatokat a virtuális gép számára, a rendszer naplózza a kísérletet, és a Network Watcher NSG flow-naplójában jelenik meg. Javasoljuk, hogy a nem kívánt bejövő internetes forgalmat explicit módon tiltsa le a NSG.
 
+**Probléma a Application Gateway v2 alhálózati NSG**: az Application Gateway v2 alhálózat NSG jelenleg [nem támogatott](https://docs.microsoft.com/azure/application-gateway/application-gateway-faq#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet) a flow naplózása. Ez a probléma nem érinti a Application Gateway v1-es verzióját.
+
 Nem **kompatibilis szolgáltatások**: az aktuális NSG miatt az Azure-szolgáltatások egy kis készlete nem támogatott a folyamat naplófájljaiban. A nem kompatibilis szolgáltatások aktuális listája
 - [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
 - [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
@@ -371,7 +373,11 @@ Nem **kompatibilis szolgáltatások**: az aktuális NSG miatt az Azure-szolgált
 
 **NSG-naplózás engedélyezése az erőforráshoz csatolt összes NSG**: az Azure-ban a flow naplózása a NSG-erőforráson van konfigurálva. Egy folyamat csak egyetlen NSG-szabályhoz lesz társítva. Az olyan forgatókönyvekben, ahol több NSG van használatban, javasoljuk, hogy engedélyezze a NSG flow-naplókat minden olyan NSG, amely az erőforrás alhálózatát vagy hálózati adapterét alkalmazza az összes forgalom rögzítésének biztosításához. További információ: a hálózati biztonsági csoportokban lévő [forgalom kiértékelésének módja](../virtual-network/network-security-group-how-it-works.md) .
 
+A **hálózati adapteren és az alhálózaton is NSG**: abban az esetben, ha a NSG a hálózati adapteren, valamint az alhálózati szinten van konfigurálva, akkor a folyamat naplózását mindkét NSG engedélyezni kell. 
+
 **Tárolási kiépítés**: a tárterületet a várt flow-naplózási kötetnek megfelelően kell kiépíteni.
+
+**Elnevezés**: a NSG nevének upto 80 karakterből kell állnia, és a NSG-szabályok neve upto 65 karakter. Ha a nevek meghaladják a karakteres korlátot, akkor a naplózás során lerövidítheti azt.
 
 ## <a name="troubleshooting-common-issues"></a>Gyakori problémák megoldása
 

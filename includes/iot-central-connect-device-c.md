@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 6ad2a405fc8abf2e7df2a896d5c5363b9618dda2
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 16cba46d9c0f6a933965366d82eb8e21c4ab1ca6
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127049"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033877"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,7 +69,7 @@ Amikor futtatja a mintát IoT Centralhoz való csatlakozáshoz, az eszköz kiép
 
 A `main` függvény először a `CreateAndConfigureDeviceClientHandleForPnP` következőket kéri:
 
-* Állítsa be a `dtmi:com:example:Thermostat;1` modell azonosítóját.
+* Állítsa be a `dtmi:com:example:Thermostat;1` modell azonosítóját. IoT Central a modell AZONOSÍTÓját használja az eszközhöz tartozó sablon azonosításához vagy létrehozásához. További információ: [eszköz hozzárendelése egy eszköz sablonnal](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * A DPS használatával kiépítheti és regisztrálhatja az eszközt.
 * Létrehoz egy parancssori kezelőt a `getMaxMinReport` parancshoz.
 * Létrehoz egy tulajdonság-frissítési kezelőt az írható `targetTemperature` tulajdonsághoz.

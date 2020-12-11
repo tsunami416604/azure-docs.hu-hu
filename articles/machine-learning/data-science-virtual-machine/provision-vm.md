@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 3b5f96e60e088f94561bf3398469ec913a71bba6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b36e6ce09cd4356a9892a5be9cbe7046cf7fd40e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322449"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094556"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rövid útmutató: a Windows Data Science Virtual Machine beállítása
 
@@ -36,18 +36,18 @@ DSVM-példány létrehozása:
 1. A rendszer átirányítja a virtuális gép létrehozása panelre.
 
 1. Adja meg az **alapok** lapot:
-      * **Előfizetés** : Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet a gép létre fog hozni és számláz. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
-      * **Erőforráscsoport** : hozzon létre egy új csoportot, vagy használjon egy meglévőt.
-      * **Virtuális gép neve** : adja meg a virtuális gép nevét. Így fog megjelenni a Azure Portalban.
-      * **Hely** : válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
-      * **Rendszerkép** : hagyja meg az alapértelmezett értéket.
-      * **Méret** : az általános számítási feladatokhoz megfelelő méretű automatikus feltöltést kell megadni. További információ a [Windowsos virtuális gépek méretéről az Azure-ban](../../virtual-machines/sizes.md).
-      * **Felhasználónév** : adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez, és nem kell megegyeznie az Azure-felhasználónévvel.
-      * **Password (jelszó** ): adja meg a virtuális gépre való bejelentkezéshez használni kívánt jelszót.    
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+      * **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet a gép létre fog hozni és számláz. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
+      * **Erőforráscsoport**: hozzon létre egy új csoportot, vagy használjon egy meglévőt.
+      * **Virtuális gép neve**: adja meg a virtuális gép nevét. Így fog megjelenni a Azure Portalban.
+      * **Hely**: válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
+      * **Rendszerkép**: hagyja meg az alapértelmezett értéket.
+      * **Méret**: az általános számítási feladatokhoz megfelelő méretű automatikus feltöltést kell megadni. További információ a [Windowsos virtuális gépek méretéről az Azure-ban](../../virtual-machines/sizes.md).
+      * **Felhasználónév**: adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez, és nem kell megegyeznie az Azure-felhasználónévvel.
+      * **Password (jelszó**): adja meg a virtuális gépre való bejelentkezéshez használni kívánt jelszót.    
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 1. **Felülvizsgálat + létrehozás**
    * Győződjön meg arról, hogy a megadott összes adat helyes. 
-   * Kattintson a **Létrehozás** gombra.
+   * Válassza a **Létrehozás** lehetőséget.
 
 
 > [!NOTE]
@@ -60,7 +60,7 @@ A virtuális gép létrehozása és üzembe helyezése után kövesse a felsorol
 
 Készen áll a virtuális gépen telepített és konfigurált eszközök használatának megkezdésére. A **Start** menü csempéi és asztali ikonjai számos eszközt is elérhet.
 
-Emellett DSVM is csatolhat Azure Notebooks a Jupyter notebookok futtatásához a virtuális gépen, és megkerülheti az ingyenes szolgáltatási szintek korlátozásait. További információ: [notebook-projektek kezelése és konfigurálása](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects).
+Emellett DSVM is csatolhat Azure Notebooks a Jupyter notebookok futtatásához a virtuális gépen, és megkerülheti az ingyenes szolgáltatási szintek korlátozásait. További információ: [notebook-projektek kezelése és konfigurálása](../../notebooks/configure-manage-azure-notebooks-projects.md).
 
 <a name="tools"></a>
 

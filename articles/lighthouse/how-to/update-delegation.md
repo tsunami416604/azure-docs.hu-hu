@@ -3,12 +3,12 @@ title: Delegálás frissítése
 description: Megtudhatja, hogyan frissíthet egy korábban az Azure Lighthouse-be bekészített ügyfél delegálását.
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 90827281ac9b05105700298494af0b60b0fa511f
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96610901"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093417"
 ---
 # <a name="update-a-delegation"></a>Delegálás frissítése
 
@@ -17,7 +17,7 @@ Miután előkészített egy előfizetést (vagy erőforráscsoportot) az Azure v
 > [!TIP]
 > Bár a jelen témakörben a szolgáltatók és az ügyfelek számára is hivatkozunk, a [több bérlőt kezelő vállalatok](../concepts/enterprise.md) ugyanazt a folyamatot használhatják az Azure Lighthouse beállításához és a kezelési élmény megszilárdításához.
 
-Ha [Azure Resource Manager-(ARM-) sablonokon keresztül végezte el az ügyfelet](onboard-customer.md), az adott ügyfél számára új központi telepítést kell végrehajtania. Attól függően, hogy mit módosít, érdemes lehet frissíteni az eredeti ajánlatot, vagy eltávolítani az eredeti ajánlatot, és újat létrehozni.
+Ha [Azure Resource Manager-sablonokkal (ARM-sablonokkal) végezte el az ügyfelet](onboard-customer.md), az adott ügyfél számára új központi telepítést kell végrehajtania. Attól függően, hogy mit módosít, érdemes lehet frissíteni az eredeti ajánlatot, vagy eltávolítani az eredeti ajánlatot, és újat létrehozni.
 
 - **Ha csak az engedélyeket módosítja**: a delegálást úgy frissítheti, hogy csak az ARM-sablon **engedélyezési** szakaszát módosítja.
 - **Ha megváltoztatja a kezelő bérlőt**: létre kell hoznia egy új ARM-sablont az előző ajánlattól eltérő **mspOfferName** használatával.
@@ -65,7 +65,7 @@ Ha módosítani szeretné az ügyvezető bérlőt, [létre kell hoznia és közz
 > [!TIP]
 > Ahogy korábban említettük, javasoljuk, hogy ne használjon több különböző ajánlatot ugyanahhoz az ügyfélhez és a bérlő kezeléséhez. Ha olyan új ajánlatot tesz közzé ugyanahhoz az ügyfélhez, amely ugyanazt a kezelő bérlőt használja, akkor a korábbi ajánlatot el kell távolítani, mielőtt az ügyfél elfogadja az újabb ajánlatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .
 - Ismerje meg, hogyan [távolíthatja el a korábban előkészített delegáláshoz való hozzáférést](remove-delegation.md) .

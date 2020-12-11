@@ -16,15 +16,18 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65fc0e84582c005c5796ceac86ee28fc46b2e1d8
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319860"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094216"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: frissítés egy előző verzióról a legújabbra
-Ez a témakör azokat a különböző módszereket ismerteti, amelyekkel a Azure Active Directory (Azure AD) a legújabb verzióra történő frissítését végezheti el. Javasoljuk, hogy a Azure AD Connect kiadásával tartsa naprakészen. Ha jelentős konfigurációt végez, a [swing Migrálás](#swing-migration) szakasz lépéseit is használhatja.
+Ez a témakör azokat a különböző módszereket ismerteti, amelyekkel a Azure Active Directory (Azure AD) a legújabb verzióra történő frissítését végezheti el.  Ha jelentős konfigurációt végez, a [swing Migrálás](#swing-migration) szakasz lépéseit is használhatja.
+
+>[!NOTE]
+> Fontos, hogy a kiszolgálók naprakészek legyenek a Azure AD Connect legújabb kiadásaival. Folyamatosan frissítünk a AADConnect, és ezek a frissítések a biztonsági problémákra és a hibákra, valamint a szolgáltatásokra, teljesítményre és méretezhetőségre vonatkozó javításokat is tartalmaznak. Ha szeretné megtekinteni a legújabb verziót, és hogy megtudja, milyen módosításokat hajtottak végre a verziók között, tekintse meg a [kiadási verziók előzményeit](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history)
 
 >[!NOTE]
 > Jelenleg támogatott a Azure AD Connect bármely verziójáról a jelenlegi verzióra való frissítés. A nem támogatott, illetve a ADSync-alapú frissítések nem támogatottak, és szükség van a swing áttelepítésre.  Ha az rSync-ről szeretne frissíteni, tekintse meg az [Azure ad Sync Tool (az rsync)](how-to-dirsync-upgrade-get-started.md) vagy a [swing Migration](#swing-migration) című szakasz frissítését ismertető szakaszt.  </br>A gyakorlatban a rendkívül régi verziókban lévő ügyfelek olyan problémákba ütközhetnek, amelyek közvetlenül nem kapcsolódnak Azure AD Connecthoz. Azok a kiszolgálók, amelyeknek több éve van éles környezetben, általában több javítást is alkalmaztak, és nem mindegyike lehet a következő:.  Általában a 12-18 hónapokban nem frissített ügyfeleknél érdemes megfontolni a swing verziófrissítést, mivel ez a legkonzervatív és legkevesebb kockázatos megoldás.
@@ -33,7 +36,7 @@ Ha az rSync-ről szeretne frissíteni, tekintse meg a következőt: [verziófris
 
 Néhány különböző stratégia használható a Azure AD Connect frissítéséhez.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | --- | --- |
 | [Automatikus frissítés](how-to-connect-install-automatic-upgrade.md) |Ez a legegyszerűbb módszer az expressz telepítéssel rendelkező ügyfelek számára. |
 | [Frissítés helyben](#in-place-upgrade) |Ha egyetlen kiszolgálóval rendelkezik, a telepítést helyben is frissítheti ugyanarra a kiszolgálóra. |
@@ -54,7 +57,7 @@ Ha módosította a beépített szinkronizálási szabályokat, akkor ezek a szab
 
 A helyben történő frissítés során előfordulhat, hogy a frissítés befejeződése után meghatározott szinkronizálási tevékenységeket (beleértve a teljes importálási lépést és a teljes szinkronizálási lépést) igénylő módosításokat is be kell állítani. Az ilyen tevékenységek elhalasztásához tekintse meg a [teljes szinkronizálás késleltetése a frissítés után](#how-to-defer-full-synchronization-after-upgrade)című szakaszt.
 
-Ha nem szabványos összekötővel (például általános LDAP-összekötővel és általános SQL-összekötővel) használja a Azure AD Connectt, frissítenie kell a megfelelő összekötő-konfigurációt a [synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) a helyben végzett frissítés után. Az összekötő konfigurációjának frissítésével kapcsolatos részletekért tekintse meg a cikk az [összekötő verziójának kiadási előzményei – hibaelhárítás](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting)című szakaszt. Ha nem frissíti a konfigurációt, az importálási és exportálási futtatási lépések nem fognak megfelelően működni az összekötőn. A rendszer a következő hibaüzenetet fogja kapni az alkalmazás eseménynaplójában a *"szerelvény verziója a HRE Connector-konfigurációban (" X.X.xxx. X ") korábbi, mint a tényleges verzió (" X.X.XXX. X ") a" C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll ".*
+Ha nem szabványos összekötővel (például általános LDAP-összekötővel és általános SQL-összekötővel) használja a Azure AD Connectt, frissítenie kell a megfelelő összekötő-konfigurációt a [synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) a helyben végzett frissítés után. Az összekötő konfigurációjának frissítésével kapcsolatos részletekért tekintse meg a cikk az [összekötő verziójának kiadási előzményei – hibaelhárítás](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting)című szakaszt. Ha nem frissíti a konfigurációt, az importálási és exportálási futtatási lépések nem fognak megfelelően működni az összekötőn. A *(z) "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll" aktuális verziója ("x. x. xxx. x") korábbi, mint az alkalmazás eseménynaplójában a következő üzenet jelenik meg: "a HRE-összekötő konfigurálása (" x. x. xxx. x ").*
 
 ## <a name="swing-migration"></a>Párhuzamos migrálás
 Ha összetett vagy sok objektummal rendelkezik, előfordulhat, hogy nem célszerű helyben frissíteni az élő rendszeren. Egyes ügyfelek esetében ez a folyamat több napot is igénybe vehet – és ez idő alatt nem történik változás. Ezt a módszert akkor is használhatja, ha jelentős módosításokat tervez a konfigurációban, és a felhőbe való leküldésük előtt szeretné kipróbálni őket.
@@ -95,16 +98,16 @@ Az egyéni szinkronizálási szabályok áthelyezéséhez tegye a következőket
 1. Nyissa meg az aktív kiszolgálón a **szinkronizációs szabályok szerkesztőjét** .
 2. Válasszon ki egy egyéni szabályt. Kattintson az **Export** (Exportálás) gombra. Ekkor megjelenik a Jegyzettömb ablaka. Mentse az ideiglenes fájlt egy PS1 bővítménnyel. Ez egy PowerShell-szkriptet tesz lehetővé. Másolja a PS1-fájlt az átmeneti kiszolgálóra.  
    ![Szinkronizálási szabály exportálása](./media/how-to-upgrade-previous-version/exportrule.png)
-3. Az összekötő GUID-azonosítója eltér az átmeneti kiszolgálón, és módosítania kell azt. A GUID beszerzéséhez indítsa el a **szinkronizálási szabályok szerkesztőjét**, válassza ki az azonos csatlakoztatott rendszernek megfelelő beépített szabályok egyikét, majd kattintson az **Exportálás**elemre. Cserélje le a GUID azonosítót a PS1-fájlban az átmeneti kiszolgáló GUID azonosítójával.
+3. Az összekötő GUID-azonosítója eltér az átmeneti kiszolgálón, és módosítania kell azt. A GUID beszerzéséhez indítsa el a **szinkronizálási szabályok szerkesztőjét**, válassza ki az azonos csatlakoztatott rendszernek megfelelő beépített szabályok egyikét, majd kattintson az **Exportálás** elemre. Cserélje le a GUID azonosítót a PS1-fájlban az átmeneti kiszolgáló GUID azonosítójával.
 4. A PowerShell-parancssorban futtassa a PS1-fájlt. Ez létrehozza az egyéni szinkronizálási szabályt az átmeneti kiszolgálón.
 5. Ismételje meg az összes egyéni szabályt.
 
 ## <a name="how-to-defer-full-synchronization-after-upgrade"></a>A teljes szinkronizálás késleltetése a frissítés után
-A helyben végzett frissítés során előfordulhat, hogy a végrehajtandó módosítások bizonyos szinkronizálási tevékenységeket igényelnek (beleértve a teljes importálási lépést és a teljes szinkronizálási lépést). Az összekötő sémájának módosításai például a **teljes importálás** lépés és a beépített szinkronizálási szabály módosítására van szükség az érintett összekötők **teljes szinkronizációs** lépésének végrehajtásához. A frissítés során a Azure AD Connect meghatározza, hogy milyen szinkronizálási tevékenységek szükségesek, és *felülbírálásként*rögzíti őket. A következő szinkronizálási ciklusban a szinkronizálási ütemező felveszi ezeket a felülbírálásokat, és végrehajtja azokat. A felülbírálás sikeres végrehajtása után a rendszer eltávolítja azt.
+A helyben végzett frissítés során előfordulhat, hogy a végrehajtandó módosítások bizonyos szinkronizálási tevékenységeket igényelnek (beleértve a teljes importálási lépést és a teljes szinkronizálási lépést). Az összekötő sémájának módosításai például a **teljes importálás** lépés és a beépített szinkronizálási szabály módosítására van szükség az érintett összekötők **teljes szinkronizációs** lépésének végrehajtásához. A frissítés során a Azure AD Connect meghatározza, hogy milyen szinkronizálási tevékenységek szükségesek, és *felülbírálásként* rögzíti őket. A következő szinkronizálási ciklusban a szinkronizálási ütemező felveszi ezeket a felülbírálásokat, és végrehajtja azokat. A felülbírálás sikeres végrehajtása után a rendszer eltávolítja azt.
 
 Előfordulhatnak olyan helyzetek, amikor nem szeretné, hogy ezek a felülbírálások azonnal érvénybe lépnek a frissítés után. Például számos szinkronizált objektummal rendelkezik, és szeretné, hogy ezek a szinkronizálási lépések munkaidő után is megtörténjenek. A felülbírálások eltávolítása:
 
-1. A frissítés során **törölje** a **szinkronizálási folyamat elindítása a konfiguráció befejeződése**után lehetőséget. Ez letiltja a szinkronizálási ütemező szolgáltatást, és megakadályozza, hogy a szinkronizálási ciklus automatikusan megtörténjen a felülbírálások eltávolítása előtt.
+1. A frissítés során **törölje** a **szinkronizálási folyamat elindítása a konfiguráció befejeződése** után lehetőséget. Ez letiltja a szinkronizálási ütemező szolgáltatást, és megakadályozza, hogy a szinkronizálási ciklus automatikusan megtörténjen a felülbírálások eltávolítása előtt.
 
    ![Képernyőfelvétel: a szinkronizálási folyamat elindítása, amikor a konfiguráció befejeződik, és törölni kell.](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 

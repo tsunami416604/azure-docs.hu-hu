@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan kezelheti a projekt metaadatait, a projektfájl
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb106132cf0dfb14dc41c1d4b480fd3a1d7fd7fe
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852803"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093536"
 ---
-# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Projektek kezelése és konfigurálása Azure Notebooks előzetes verzióban
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a>Projektek kezelése és konfigurálása Azure Notebooks előzetes verzióban
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -36,7 +36,7 @@ Alapértelmezés szerint a projektek az **ingyenes számítási** szinten futnak
 
 ## <a name="edit-project-metadata"></a>Projekt metaadatainak szerkesztése
 
-A projekt irányítópultján válassza a **projekt beállításai**lehetőséget, majd válassza az **információ** fület, amely tartalmazza a projekt metaadatait a következő táblázatban leírtak szerint. Bármikor módosíthatja a projekt metaadatait.
+A projekt irányítópultján válassza a **projekt beállításai** lehetőséget, majd válassza az **információ** fület, amely tartalmazza a projekt metaadatait a következő táblázatban leírtak szerint. Bármikor módosíthatja a projekt metaadatait.
 
 | Beállítás | Leírás |
 | --- | --- |
@@ -84,7 +84,7 @@ A projekthez tartozó fájllista minden eleme parancsokat biztosít a jobb gombb
 | Letöltés | n | Letölt egy zip-fájlt, amely a fájlt vagy egy mappa tartalmát tartalmazza. |
 | Átnevezés | a | A fájl vagy mappa új nevének megadását kéri. |
 | Törlés | x | Megerősítést kér, majd véglegesen eltávolítja a fájlt a projektből. A törlések nem vonhatók vissza. |
-| Áthelyezés | f | Egy fájlt egy másik mappába helyez át ugyanabban a projektben. |
+| Áthelyezés | m | Egy fájlt egy másik mappába helyez át ugyanabban a projektben. |
 
 #### <a name="preview"></a>Előnézet
 
@@ -111,17 +111,17 @@ A rendszer a projekt konfigurációjának összes formáját alkalmazza a virtu�
 
 ### <a name="one-time-initialization-script"></a>Egyszeri inicializálási parancsfájl
 
-Az első Azure Notebooks létrehoz egy kiszolgálót a projekthez, amely a *aznbsetup.sh*nevű projektben keres egy fájlt. Ha a fájl megtalálható, Azure Notebooks futtatja. A parancsfájl kimenetét a Project mappában, a *. aznbsetup. log*néven tárolja a rendszer.
+Az első Azure Notebooks létrehoz egy kiszolgálót a projekthez, amely a *aznbsetup.sh* nevű projektben keres egy fájlt. Ha a fájl megtalálható, Azure Notebooks futtatja. A parancsfájl kimenetét a Project mappában, a *. aznbsetup. log* néven tárolja a rendszer.
 
 ### <a name="environment-setup-steps"></a>Környezet beállítási lépései
 
 A projekt környezeti beállításait a környezet konfigurálására szolgáló egyedi lépések létrehozására használhatja.
 
-A projekt irányítópultján válassza a **projekt beállításai**lehetőséget, majd válassza a **környezet** fület a projekt telepítési lépéseinek hozzáadásához, eltávolításához és módosításához:
+A projekt irányítópultján válassza a **projekt beállításai** lehetőséget, majd válassza a **környezet** fület a projekt telepítési lépéseinek hozzáadásához, eltávolításához és módosításához:
 
 ![A Project Settings előugró ablak a környezet lapon van kijelölve](media/project-settings-environment-steps.png)
 
-Lépés hozzáadásához először válassza a **+ Hozzáadás**lehetőséget, majd válassza ki a lépés típusát a **művelet** legördülő listában:
+Lépés hozzáadásához először válassza a **+ Hozzáadás** lehetőséget, majd válassza ki a lépés típusát a **művelet** legördülő listában:
 
 ![Új környezet telepítési lépésének műveleti választója](media/project-settings-environment-details.png)
 
@@ -136,7 +136,7 @@ Az Ön által megadott adatok a választott művelet típusától függenek:
    > [!WARNING]
    > Mivel ez egy előzetes verziójú szolgáltatás a fejlesztés alatt, jelenleg egy ismert probléma van, ahol a `Environment.yml` beállítás a várt módon nem lesz alkalmazva a projektre. A projekt és a Jupyter-jegyzetfüzetek nem töltik be a megadott környezeti fájlt.
 
-Ha végzett a lépések hozzáadásával, válassza a **Mentés**lehetőséget.
+Ha végzett a lépések hozzáadásával, válassza a **Mentés** lehetőséget.
 
 ### <a name="use-the-terminal"></a>A terminál használata
 
@@ -145,7 +145,7 @@ A projekt irányítópultján a **Terminal** parancs egy Linux-terminált nyit m
 > [!Note]
 > Ha a projekt környezetében indítási parancsfájlok vannak, a terminál megnyitásával megjeleníthető egy üzenet, amely jelzi, hogy a telepítés még folyamatban van.
 
-A terminálon bármilyen szabványos Linux-parancsot kiadhat. A `ls` Kezdőlap mappában is megtekintheti a virtuális gépen létező különböző környezeteket, például a *anaconda2_501*, a *anaconda3_420*, a *Anaconda3_501*, a *IfSharp*és az *R*-t, valamint a projektet tartalmazó *Project* mappát:
+A terminálon bármilyen szabványos Linux-parancsot kiadhat. A `ls` Kezdőlap mappában is megtekintheti a virtuális gépen létező különböző környezeteket, például a *anaconda2_501*, a *anaconda3_420*, a *Anaconda3_501*, a *IfSharp* és az *R*-t, valamint a projektet tartalmazó *Project* mappát:
 
 ![Projekt-terminál Azure Notebooks](media/project-terminal.png)
 
@@ -171,7 +171,7 @@ A kiszolgálón végrehajtott módosítások csak az aktuális munkamenetre érv
 
 ## <a name="access-notebook-logs"></a>Jegyzetfüzet-naplók elérése
 
-Ha a jegyzetfüzetek futtatása során problémákba ütközik, a Jupyter kimenetét egy *. NB. log*nevű mappában tárolja a rendszer. Ezeket a naplókat a **Terminal** parancs vagy a projekt irányítópultja segítségével érheti el.
+Ha a jegyzetfüzetek futtatása során problémákba ütközik, a Jupyter kimenetét egy *. NB. log* nevű mappában tárolja a rendszer. Ezeket a naplókat a **Terminal** parancs vagy a projekt irányítópultja segítségével érheti el.
 
 Általában a Jupyter helyi futtatásakor előfordulhat, hogy egy terminál-ablakból indította el. A terminálablak megjeleníti a kimenetet, például a kernel állapotát.
 

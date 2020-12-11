@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 4b19ae1b584a2d300e4144e79ef76245c71035cf
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 6a6baa14d7521f4a85350af7b08b5fcbe82ddf6b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127068"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033836"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,7 +27,7 @@ Amikor futtatja a mintát IoT Centralhoz való csatlakozáshoz, az eszköz kiép
 
 A `main` metódus:
 
-* Létrehoz egy `client` objektumot, és beállítja a `dtmi:com:example:Thermostat;1` modell azonosítóját a kapcsolatok megnyitása előtt.
+* Létrehoz egy `client` objektumot, és beállítja a `dtmi:com:example:Thermostat;1` modell azonosítóját a kapcsolatok megnyitása előtt. IoT Central a modell AZONOSÍTÓját használja az eszközhöz tartozó sablon azonosításához vagy létrehozásához. További információ: [eszköz hozzárendelése egy eszköz sablonnal](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Létrehoz egy parancsfájl-kezelőt.
 * Elindít egy hurkot, amely 10 másodpercenként elküldi a hőmérséklet-telemetria.
 * A `maxTempSinceLastReboot` tulajdonságot a IoT Central küldi. IoT Central figyelmen kívül hagyja a `serialNumber` tulajdonságot, mert az nem része az eszköz modelljének.
@@ -83,7 +83,7 @@ async function main() {
 }
 ```
 
-A `provisionDevice` függvény azt mutatja be, hogy az eszköz hogyan használja a DPS-t a IoT Central regisztrálásához és a kapcsolódáshoz. Az adattartalom tartalmazza a modell AZONOSÍTÓját:
+A `provisionDevice` függvény azt mutatja be, hogy az eszköz hogyan használja a DPS-t a IoT Central regisztrálásához és a kapcsolódáshoz. A hasznos adat tartalmazza azt a modell-azonosítót, amelyet a IoT Central az [eszköz egy eszköz sablonnal való hozzárendeléséhez](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)használ:
 
 ```javascript
 async function provisionDevice(payload) {

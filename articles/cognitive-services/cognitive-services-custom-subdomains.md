@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 12/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368814"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032966"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services egyéni tartománynevei
 
@@ -39,7 +39,7 @@ Nem. A regionális végpont továbbra is működni fog az új és a meglévő Co
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Mi a teendő, ha egy SDK megkérdezi a régiót egy erőforráshoz?
 
 > [!WARNING]
-> A Speech Services jelenleg **nem** támogatja az egyéni altartományokat. A Speech Services és a társított SDK-k használata esetén használja a regionális végpontokat.
+> A Speech Services **csak** saját altartományokat használ [privát végpontokkal](Speech-Service/speech-services-private-link.md) . Minden más esetben **regionális végpontokat** használ a Speech Services és a társított SDK-k használatával.
 
 A regionális végpontok és az egyéni altartományok nevei egyaránt támogatottak, és használhatók szinonimaként. A teljes végpontot azonban kötelező megadni.
 
@@ -96,7 +96,7 @@ Igen. Az Azure Cognitive Services erőforrásaival használható regionális vé
 | Kína | Kelet-Kína 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Észak-Kína | `https://chinanorth.api.cognitive.azure.cn` |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Mi a Cognitive Services?](./what-are-cognitive-services.md)
 * [Hitelesítés](authentication.md)

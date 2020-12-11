@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f308f46fc021a1d08f4065d48558a6dd71786c7c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 5c6ed106462d7dcac3f31a2ab157e5b634391006
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860355"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093451"
 ---
 # <a name="inbound-synchronization-for-cloud-provisioning-using-ms-graph-api"></a>Bejövő szinkronizálás a felhőalapú kiépítés MS Graph API használatával
 
@@ -43,7 +43,7 @@ Ezekkel a [Microsoft Azure Active Directory modullal Windows PowerShell](https:/
 A két parancs első részében Azure Active Directory hitelesítő adatokat kell megadnia. Ezek a parancsmagok implicit módon azonosítják a bérlőt, és lehetővé teszik a szinkronizálást.
 
 ## <a name="create-service-principals"></a>Szolgáltatásnevek létrehozása
-Ezután létre kell hoznia a [AD2AAD alkalmazást/szolgáltatásnevet](https://docs.microsoft.com/graph/apiapplicationtemplate-instantiate?view=graph-rest-beta&tabs=http)
+Ezután létre kell hoznia a [AD2AAD alkalmazást/szolgáltatásnevet](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http)
 
 Ezt az azonosítót kell használnia a 1a4721b3-e57f-4451-ae87-ef078703ec94. A displayName az AD-tartomány URL-címe, ha a portálon van használatban (például contoso.com), de lehet, hogy más nevet kapott.
 

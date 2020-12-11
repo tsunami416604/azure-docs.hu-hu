@@ -5,24 +5,28 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
-ms.date: 07/23/2020
-author: sakash279
-ms.author: akshanka
+ms.date: 12/10/2020
+author: ThomasWeiss
+ms.author: thweiss
 ms.custom: devx-track-java
-ms.openlocfilehash: 1f3f5a35beeac6c683aeb6db16a417b897755666
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a5da5e1717f897d2236fd73f0fff525e157f7a0e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079767"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093689"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Java segítségével
+
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre táblákat, tárolhat adatait, és hogyan végezhet szifilisz-műveleteket az adatokon. Válassza ki az Azure Table service vagy a Azure Cosmos DB Table API. A kódminták Java nyelven íródtak, és a [Java-hoz készült Azure Storage SDK-t][Azure Storage SDK for Java] használják. Az ismertetett forgatókönyvek a táblák **létrehozásával** , **listázásával** és **törlésével** , valamint a táblákban szereplő entitások **beszúrásával** , **lekérdezésével** , **módosításával** és **törlésével** foglalkoznak. A táblákkal kapcsolatos további információkért lásd a [További lépések](#next-steps) szakaszt.
+Ebből a cikkből megtudhatja, hogyan hozhat létre táblákat, tárolhat adatait, és hogyan végezhet szifilisz-műveleteket az adatokon. Válassza ki az Azure Table service vagy a Azure Cosmos DB Table API. A minták Java nyelven íródtak, és a [Javához készült Azure Storage SDK V8][Azure Storage SDK for Java]-as verziójával használhatók. Az ismertetett forgatókönyvek a táblák **létrehozásával**, **listázásával** és **törlésével**, valamint a táblákban szereplő entitások **beszúrásával**, **lekérdezésével**, **módosításával** és **törlésével** foglalkoznak. A táblákkal kapcsolatos további információkért lásd a [További lépések](#next-steps) szakaszt.
+
+> [!IMPORTANT]
+> Az Azure Storage SDK-t támogató Table Storage utolsó verziója a [V8][Azure Storage SDK for Java]-as. A Javához készült Table Storage SDK új verziója hamarosan elérhető lesz.
 
 > [!NOTE]
 > Egy SDK elérhető az Azure Storage-et Android-eszközökön használó fejlesztők számára. További információk: [Androidhoz készült Azure Storage SDK][Azure Storage SDK for Android].
@@ -32,7 +36,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre táblákat, tárolhat adatai
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-**Azure Storage-fiók létrehozása**
+**Azure-tárfiók létrehozása**
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
@@ -628,7 +632,7 @@ catch (Exception e)
 További információ: [Azure Java-fejlesztőknek](/java/azure).
 
 [Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
-[Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
+[Azure Storage SDK for Java]: https://github.com/Azure/azure-storage-java/tree/v8.6.5
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Azure Storage ügyféloldali SDK-referencia]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: /rest/api/storageservices/

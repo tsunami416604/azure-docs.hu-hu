@@ -7,16 +7,16 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: 4ec6796cd0ed91987c1ef52fb5e9494a3142e00e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 3a229d1e6752eabd099a5bc60ef93f1d4e85a26b
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030450"
+ms.locfileid: "97092754"
 ---
-# <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
+# <a name="use-deployment-scripts-in-arm-templates-preview"></a>Üzembe helyezési parancsfájlok használata ARM-sablonokban (előzetes verzió)
 
-Ismerje meg, hogyan használhatók az üzembe helyezési parancsfájlok az Azure Resource templates szolgáltatásban. A nevű új erőforrástípus használatával a `Microsoft.Resources/deploymentScripts` felhasználók parancsfájlokat futtathatnak a sablonok központi telepítésében, és áttekinthetik a végrehajtás eredményeit. Ezek a parancsfájlok olyan egyéni lépések végrehajtásához használhatók, mint például a következők:
+Ismerje meg, hogyan használhatók az üzembe helyezési parancsfájlok az Azure Resource templates szolgáltatásban (ARM-sablonok). A nevű új erőforrástípus használatával a `Microsoft.Resources/deploymentScripts` felhasználók parancsfájlokat futtathatnak a sablonok központi telepítésében, és áttekinthetik a végrehajtás eredményeit. Ezek a parancsfájlok olyan egyéni lépések végrehajtásához használhatók, mint például a következők:
 
 - felhasználók hozzáadása egy címtárhoz
 - adatsík műveletek végrehajtása, például a Blobok vagy a vetőmag-adatbázisok másolása
@@ -39,7 +39,7 @@ Az üzembe helyezési parancsfájl erőforrása csak azokon a régiókban érhet
 
 > [!IMPORTANT]
 > A deploymentScripts Resource API 2020-10-01-es verziója támogatja a [OnBehalfofTokens (OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md). Az OBO használatával az üzembe helyezési parancsfájl szolgáltatás a rendszerbiztonsági tag tokenjét használja az üzembe helyezési parancsfájlok futtatásához, például az Azure Container instance, az Azure Storage-fiók és a felügyelt identitáshoz tartozó szerepkör-hozzárendelések létrehozásához. A régebbi API-verzióban a felügyelt identitás használatával hozhatók létre ezek az erőforrások.
-> Az Azure login újrapróbálkozási logikája most már a burkoló parancsfájlba van beépítve. Ha az engedélyeket ugyanabban a sablonban adja meg, ahol az üzembehelyezési parancsfájlokat futtatja.  A telepítési parancsfájl-szolgáltatás 10 percen belül újrapróbálkozik a bejelentkezéssel, amíg a felügyelt identitás szerepkörének hozzárendelése nem replikálódik.
+> Az Azure-bejelentkezéshez szükséges újrapróbálkozási logika mostantól a burkoló parancsfájlba van beépítve. Ha az engedélyeket ugyanabban a sablonban adja meg, ahol az üzembehelyezési parancsfájlokat futtatja.  A telepítési parancsfájl-szolgáltatás 10 percen belül újrapróbálkozik a bejelentkezéssel, amíg a felügyelt identitás szerepkör-hozzárendelését nem replikálja a rendszer.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -135,7 +135,7 @@ A következő JSON egy példa.  A sablon legújabb sémája [itt](/azure/templat
 
 Tulajdonság értékének részletei:
 
-- **Identitás**: az üzembe helyezési parancsfájl API 2020-10-01-es vagy újabb verziója esetén a felhasználó által hozzárendelt felügyelt identitás nem kötelező, kivéve, ha a parancsfájlban nem kell végrehajtania valamilyen Azure-specifikus műveletet.  Az API 2019-10-01-es verziójának előzetes verziója esetén felügyelt identitásra van szükség, mivel a telepítési parancsfájl-szolgáltatás azt használja a parancsfájlok végrehajtásához. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott.
+- **Identitás**: az üzembe helyezési parancsfájl API 2020-10-01-es vagy újabb verziója esetén a felhasználó által hozzárendelt felügyelt identitás nem kötelező, kivéve, ha az Azure-specifikus műveleteket a parancsfájlban kell végrehajtania.  Az API 2019-10-01-es verziójának előzetes verziója esetén felügyelt identitásra van szükség, mivel a telepítési parancsfájl-szolgáltatás azt használja a parancsfájlok végrehajtásához. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott.
 - **Típus: adja** meg a parancsfájl típusát. Jelenleg a Azure PowerShell és az Azure CLI-parancsfájlok támogatottak. Az értékek a következők: **AzurePowerShell** és **AzureCLI**.
 - **forceUpdateTag**: ennek az értéknek a módosítása a sablon központi telepítései között kényszeríti a telepítési parancsfájl ismételt végrehajtását. Ha a newGuid () vagy a utcNow () függvényt használja, akkor mindkét függvény csak a paraméter alapértelmezett értékében használható. További információ: [parancsfájl futtatása](#run-script-more-than-once)többször.
 - **containerSettings**: határozza meg az Azure Container instance testreszabásához szükséges beállításokat.  a **containerGroupName** a tároló csoport nevének megadására szolgál.  Ha nincs megadva, a rendszer automatikusan létrehozza a csoport nevét.
@@ -143,7 +143,7 @@ Tulajdonság értékének részletei:
 - **azPowerShellVersion** / **azCliVersion**: Itt adhatja meg a használni kívánt modul verzióját. A PowerShell és a parancssori felület támogatott verzióinak listájáért lásd: [Előfeltételek](#prerequisites).
 - **argumentumok**: határozza meg a paraméterek értékeit. Az értékeket szóközök választják el egymástól.
 
-    Az üzembe helyezési parancsfájlok karakterláncok tömbje szerint osztják el az argumentumokat a [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) rendszerhívás meghívásával. Erre azért van szükség, mert az argumentumok [parancs tulajdonságként](/rest/api/container-instances/containergroups/createorupdate#containerexec) lesznek átadva az Azure Container instance számára, a Command tulajdonság pedig sztring.
+    Az üzembe helyezési parancsfájlok karakterláncok tömbje szerint osztják el az argumentumokat a [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) rendszerhívás meghívásával. Erre a lépésre azért van szükség, mert az argumentumok [parancs tulajdonságként](/rest/api/container-instances/containergroups/createorupdate#containerexec) lesznek átadva az Azure Container instance számára, a Command tulajdonság pedig sztring.
 
     Ha az argumentumok Escape-karaktereket tartalmaznak, a [JsonEscaper](https://www.jsonescaper.com/) használatával megduplázhatja a karaktereket. Illessze be az eredeti Escape-karakterláncot az eszközbe, majd válassza a **Escape** lehetőséget.  Az eszköz egy dupla Escape-karakterláncot ad vissza. Az előző minta sablonban például a következő argumentum: **-name \\ "John Dole \\ "**.  Az Escape **-karakterlánc neve \\ \\ \\ "John Dole \\ \\ \\ "**.
 
@@ -229,7 +229,7 @@ A bonyolult logikai műveleteket egy vagy több támogató parancsfájlba is elk
 
 A támogató parancsfájlok a beágyazott parancsfájlokból és az elsődleges parancsfájlokból is meghívhatók. A támogató parancsfájlok nem rendelkeznek korlátozásokkal a fájlkiterjesztés esetében.
 
-A rendszer a támogató fájlokat a futtatókörnyezet azscripts/azscriptinput másolja. Relatív elérési út használatával hivatkozhat a beágyazott parancsfájlokból és az elsődleges parancsfájlokból származó támogató fájlokra.
+A rendszer átmásolja a támogató fájlokat a `azscripts/azscriptinput` futtatókörnyezetbe. Relatív elérési út használatával hivatkozhat a beágyazott parancsfájlokból és az elsődleges parancsfájlokból származó támogató fájlokra.
 
 ## <a name="work-with-outputs-from-powershell-script"></a>Kimenetek használata PowerShell-parancsfájlból
 
@@ -309,15 +309,15 @@ A parancsfájl-szolgáltatás az erőforrás-kiépítési állapotot úgy állí
 
 A környezeti változók (EnvironmentVariable) beállítása a Container instances szolgáltatásban lehetővé teszi a tároló által futtatott alkalmazás vagy parancsfájl dinamikus konfigurációját. Az üzembe helyezési parancsfájl ugyanúgy kezeli a nem védett és a biztonságos környezeti változókat, mint az Azure Container instance. További információ: [környezeti változók beállítása a Container instances](../../container-instances/container-instances-environment-variables.md#secure-values)szolgáltatásban.
 
-A környezeti változók maximálisan megengedett mérete 64 kb.
+A környezeti változók maximálisan megengedett mérete 64 KB.
 
 ## <a name="monitor-and-troubleshoot-deployment-scripts"></a>Üzembe helyezési parancsfájlok figyelése és hibáinak megoldása
 
-A parancsfájl-szolgáltatás létrehoz egy [Storage-fiókot](../../storage/common/storage-account-overview.md) (kivéve, ha megad egy meglévő Storage-fiókot) és egy tároló- [példányt](../../container-instances/container-instances-overview.md) a parancsfájlok végrehajtásához. Ha ezeket az erőforrásokat a script Service automatikusan hozza létre, mindkét erőforráshoz az **azscripts** utótag tartozik.
+A parancsfájl-szolgáltatás létrehoz egy [Storage-fiókot](../../storage/common/storage-account-overview.md) (kivéve, ha megad egy meglévő Storage-fiókot) és egy tároló- [példányt](../../container-instances/container-instances-overview.md) a parancsfájlok végrehajtásához. Ha ezeket az erőforrásokat a parancsfájl-szolgáltatás automatikusan hozza létre, akkor mindkét erőforrásnak van `azscripts` utótagja az erőforrás nevében.
 
 ![Resource Manager-sablon telepítési parancsfájljának erőforrásainak nevei](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
-A felhasználói parancsfájl, a végrehajtás eredményei és az stdout-fájl a Storage-fiók Files megosztásában tárolódik. Van egy **azscripts** nevű mappa. A mappában két további mappa található a bemeneti és a kimeneti fájlokhoz: **azscriptinput** és **azscriptoutput**.
+A felhasználói parancsfájl, a végrehajtás eredményei és az stdout-fájl a Storage-fiók Files megosztásában tárolódik. Van egy nevű mappa `azscripts` . A mappában két további mappa található a bemeneti és a kimeneti fájlokhoz: `azscriptinput` és `azscriptoutput` .
 
 A kimeneti mappa tartalmaz egy **executionresult.jst** és a parancsfájl kimeneti fájlját. Megtekintheti a parancsfájl-végrehajtási hibaüzenetet **executionresult.json**. A kimeneti fájl csak akkor jön létre, ha a parancsfájl végrehajtása sikeresen megtörtént. A bemeneti mappa egy PowerShell-parancsfájlt és a felhasználói telepítési parancsfájlokat tartalmaz. A felhasználói telepítési parancsfájlt lecserélheti egy módosítottra, majd újra futtathatja az üzembe helyezési parancsfájlt az Azure Container instanceból.
 
@@ -536,7 +536,7 @@ Ezeknek az erőforrásoknak a életciklusát a sablon következő tulajdonságai
 > [!NOTE]
 > A Storage-fiók és a parancsfájl-szolgáltatás által más célra létrehozott tároló-példány használata nem ajánlott. Előfordulhat, hogy a parancsfájl életciklusa alapján a két erőforrás el lesz távolítva.
 
-Ha meg szeretné őrizni a tároló-példányt és a Storage-fiókot a hibaelhárításhoz, hozzáadhat egy alvó parancsot a parancsfájlhoz.  Például: [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep).
+Ha meg szeretné őrizni a tároló-példányt és a Storage-fiókot a hibaelhárításhoz, hozzáadhat egy alvó parancsot a parancsfájlhoz.  Használja például a [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep)parancsot.
 
 ## <a name="run-script-more-than-once"></a>Parancsfájl többszöri futtatása
 
@@ -563,7 +563,7 @@ A parancsfájl sikeres tesztelése után a sablonban használható üzembe helye
 | Hibakód | Leírás |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Az üzembehelyezési parancsfájl erőforrás-definíciója a sablonban érvénytelen tulajdonságokat tartalmaz. |
-| DeploymentScriptResourceConflict | Nem terminálos állapotú központi telepítési parancsfájl-erőforrás nem törölhető, és a végrehajtás nem haladja meg az 1 órát. Vagy nem futtathatja újra ugyanazt az üzembe helyezési parancsfájlt ugyanazzal az erőforrás-azonosítóval (az előfizetés, az erőforráscsoport neve és az erőforrás neve), de a parancsfájl törzse egyszerre több tartalmat is tartalmaz. |
+| DeploymentScriptResourceConflict | Nem lehet törölni a nem terminál állapotú központi telepítési parancsfájl erőforrását, és a végrehajtás nem haladja meg az 1 órát. Vagy nem lehet újból futtatni ugyanazt az üzembe helyezési parancsfájlt ugyanazzal az erőforrás-azonosítóval (az előfizetés, az erőforráscsoport neve és az erőforrás neve), de a parancsfájl szövegtörzse is egy időben. |
 | DeploymentScriptOperationFailed | Az üzembe helyezési parancsfájl művelete belső hiba miatt meghiúsult. Forduljon a Microsoft ügyfélszolgálatához. |
 | DeploymentScriptStorageAccountAccessKeyNotSpecified | Nincs megadva a hozzáférési kulcs a meglévő Storage-fiókhoz.|
 | DeploymentScriptContainerGroupContainsInvalidContainers | Az üzembe helyezési parancsfájl szolgáltatás által létrehozott tároló csoport külsőleg módosítva lett, és érvénytelen tárolók lettek hozzáadva. |
@@ -575,7 +575,7 @@ A parancsfájl sikeres tesztelése után a sablonban használható üzembe helye
 | DeploymentScriptStorageAccountInvalidAccessKey | A meglévő Storage-fiókhoz megadott hozzáférési kulcs érvénytelen. |
 | DeploymentScriptStorageAccountInvalidAccessKeyFormat | A Storage-fiók kulcsának formátuma érvénytelen. Lásd: a [Storage-fiók elérési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md). |
 | DeploymentScriptExceededMaxAllowedTime | A telepítési parancsfájl végrehajtási ideje túllépte a telepítési parancsfájl erőforrás-definíciójában megadott időtúllépési értéket. |
-| DeploymentScriptInvalidOutputs | A telepítési parancsfájl kimenete nem érvényes JSON-objektum. |
+| DeploymentScriptInvalidOutputs | Az üzembehelyezési parancsfájl kimenete nem érvényes JSON-objektum. |
 | DeploymentScriptContainerInstancesServiceLoginFailure | A felhasználó által hozzárendelt felügyelt identitás nem tudott bejelentkezni az 1 perces intervallummal rendelkező 10 próbálkozás után. |
 | DeploymentScriptContainerGroupNotFound | Az üzembe helyezési parancsfájl szolgáltatás által létrehozott tároló csoportot egy külső eszköz vagy folyamat törölte. |
 | DeploymentScriptDownloadFailure | Nem sikerült letölteni egy támogató parancsfájlt. Lásd: [támogató parancsfájl használata](#use-supporting-scripts).|

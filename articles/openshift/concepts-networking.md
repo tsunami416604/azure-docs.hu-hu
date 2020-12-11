@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 2d9169e836b5819756e716c64ed9d41094f08c5e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512365"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093519"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Az Azure Red Hat OpenShift (ARO) hálózati fogalmak
 
@@ -76,7 +76,7 @@ A következő hálózatkezelési funkciók az Azure Red Hat OpenShift vonatkozna
 * A pod CIDR minimális/18 méretűnek kell lennie (a pod hálózat nem irányítható IP-címek, és csak a OpenShift SDN-ben használatos).
 * Az egyes csomópontok kiosztása/23 alhálózat (512 IP-cím) a hüvelye számára. Ez az érték nem módosítható.
 * Nem csatlakoztathat Pod-t több hálózathoz.
-* Nem konfigurálhatja a kimenő forgalomra vonatkozó statikus IP-címet. (Ez egy OpenShift funkció. További információ: a [kimenő IP](https://docs.openshift.com/aro/4/networking/openshift_sdn/assigning-egress-ips.html)-címek konfigurálása.
+* Nem konfigurálhatja a kimenő forgalomra vonatkozó statikus IP-címet. (Ez egy OpenShift funkció. További információ: a [kimenő IP](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html)-címek konfigurálása.
 
 ## <a name="network-settings"></a>Hálózati beállítások
 
@@ -89,7 +89,7 @@ Az Azure Red Hat OpenShift 4 fürtökhöz a következő hálózati beállításo
     * A "nyilvános" útvonalak alapértelmezett értéke a nyilvános standard Load Balancer (ez módosítható).
     * A "privát" útvonalak alapértelmezett értéke a belső terheléselosztó (ez módosítható).
 
-## <a name="network-security-groups"></a>Hálózati biztonsági csoportok
+## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 A hálózati biztonsági csoportok a csomópont erőforráscsoport-csoportjában jönnek létre, amely a felhasználók számára van zárolva. A hálózati biztonsági csoportok közvetlenül az alhálózatokhoz vannak rendelve, nem a csomópont hálózati adapterén. A hálózati biztonsági csoportok nem változtathatók meg, és a felhasználók nem rendelkeznek a rájuk vonatkozó engedélyekkel.
 
 Nyilvánosan látható API-kiszolgáló esetén nem hozhat létre hálózati biztonsági csoportokat, és hozzárendelheti azokat a hálózati adapterekhez.

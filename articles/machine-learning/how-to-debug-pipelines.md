@@ -9,13 +9,13 @@ author: lobrien
 ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.custom: troubleshooting, devx-track-python, contperfq2
-ms.openlocfilehash: 13897f9881a8f505f0053443a218cf744d8edf8b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
+ms.openlocfilehash: a150a0745911a70fc71db6b9c05fe6610cd960bf
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630107"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033255"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Hibakeresés és hibaelhárítás a gépi tanulási folyamatokban
 
@@ -245,7 +245,7 @@ A naplófájlokat meghatározott futtatásokhoz is megtalálhatja a folyamat fut
 1. A jobb oldali ablaktábla kibontásával megtekintheti a **70_driver_log.txt** fájlt a böngészőben, vagy kiválaszthatja a fájlt a naplók helyi letöltéséhez.
 
 > [!IMPORTANT]
-> Ha frissíteni szeretne egy folyamatot a folyamat futásának részletei lapon, a **clone** folyamatot egy új folyamat-piszkozatra kell futtatnia. A folyamat futtatása a folyamat pillanatképe. A naplófájlhoz hasonló, és nem módosítható. 
+> Ha frissíteni szeretne egy folyamatot a folyamat futásának részletei lapon, a  folyamatot egy új folyamat-piszkozatra kell futtatnia. A folyamat futtatása a folyamat pillanatképe. A naplófájlhoz hasonló, és nem módosítható. 
 
 ## <a name="application-insights"></a>Application Insights
 A OpenCensus Python-függvénytár ily módon történő használatával kapcsolatos további információkért tekintse meg a következő útmutatót: a [gépi tanulási folyamatok hibakeresése és hibaelhárítása Application Insights](./how-to-log-pipelines-application-insights.md)
@@ -254,7 +254,7 @@ A OpenCensus Python-függvénytár ily módon történő használatával kapcsol
 
 Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végeznie a ML-folyamaton használt Python-kóddal. A Visual Studio Code (VS Code) és a debugpy használatával a kódot a betanítási környezetben futtatva is csatlakoztathatja. További információkért tekintse meg az [interaktív hibakeresést a vs Code útmutatóban](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A használatával kapcsolatos teljes oktatóanyagért `ParallelRunStep` lásd [: oktatóanyag: Azure Machine learning folyamat létrehozása a Batch-pontozáshoz](tutorial-pipeline-batch-scoring-classification.md).
 

@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.custom: contperfq2
-ms.openlocfilehash: 932b2624883c4fe22eb73094fc622b1604786954
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: be01309fee3454fbd4be78130f9826b493e7bf7a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780484"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033765"
 ---
 # <a name="what-is-custom-speech"></a>Mi az a Custom Speech?
 
@@ -100,7 +100,7 @@ A lejárati dátumokat a JSON- [`GetModel`](https://westus.dev.cognitive.microso
 
 Vegye figyelembe, hogy az egyéni beszédfelismerési végponton anélkül frissítheti a modellt, hogy az egyéni beszédfelismerési portál üzembe helyezés szakaszában vagy a Custom Speech API-n keresztül megváltoztatja a végpont által használt modellt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatfeldolgozás előkészítése és tesztelése](./how-to-custom-speech-test-and-train.md)
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)

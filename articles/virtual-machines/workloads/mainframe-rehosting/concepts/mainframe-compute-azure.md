@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04ec652c6e7ce8de003a464c6427439cf1519eab
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86998935"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092669"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>Nagyszámítógépek számítási teljesítményének áthelyezése az Azure-ba
 
@@ -29,7 +29,7 @@ Ahogy az ábrán látható, az Azure-beli TPM-emulátor képes kezelni a CICS é
 
 ## <a name="mainframe-compute-at-a-glance"></a>Mainframe-számítások áttekintése
 
-A z14 mainframe-ben a processzorok legfeljebb négy *megrajzolási*lehetőséggel vannak elrendezve. A *húzó* egyszerűen a processzorok és a chipsetek fürtje. Minden egyes fióknak hat aktív központi processzor-(CP-) zsetonja lehet, és mindegyik CP 10 rendszervezérlő (SC) zsetonnal rendelkezik. Az Intel x86-terminológiában hat szoftvercsatorna van, 10 mag/szoftvercsatorna és négy húzó. Ez az architektúra 24 szoftvercsatorna és 240 mag, maximális érték esetén a z14 esetében a durva megfelelőt biztosítja.
+A z14 mainframe-ben a processzorok legfeljebb négy *megrajzolási* lehetőséggel vannak elrendezve. A *húzó* egyszerűen a processzorok és a chipsetek fürtje. Minden egyes fióknak hat aktív központi processzor-(CP-) zsetonja lehet, és mindegyik CP 10 rendszervezérlő (SC) zsetonnal rendelkezik. Az Intel x86-terminológiában hat szoftvercsatorna van, 10 mag/szoftvercsatorna és négy húzó. Ez az architektúra 24 szoftvercsatorna és 240 mag, maximális érték esetén a z14 esetében a durva megfelelőt biztosítja.
 
 A Fast z14 CP 5,2 GHz-es órajeltel rendelkezik. A z14 általában az összes CPs-vel érkeznek a mezőbe. Szükség szerint aktiválva vannak. Az ügyfeleket általában legalább négy órányi számítási idő után számítjuk fel havonta a tényleges használat ellenére.
 
@@ -112,7 +112,7 @@ Minden egyes szinten a megfelelő vész-helyreállítási szolgáltatások is me
 
 ![A vész-helyreállítást támogató, magasan elérhető központi telepítés](media/mainframe-compute-dr.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Nagyszámítógép migrálása](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Az Azure Virtual Machines-t futtató nagyszámítógépek](../overview.md)
@@ -135,4 +135,4 @@ Minden egyes szinten a megfelelő vész-helyreállítási szolgáltatások is me
 ### <a name="more-migration-resources"></a>További áttelepítési erőforrások
 
 - [Az Azure Virtual adatközpontjának átemelési és átváltási útmutatója](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
-- [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS iSCSI](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

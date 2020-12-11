@@ -6,13 +6,13 @@ ms.topic: troubleshooting
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 83559cc2ab1ca9597cca405333061e53b6f56aa9
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: bb07adafbc68ff1e9b7d3ee49bb7631dc4395d77
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030747"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033459"
 ---
 # <a name="troubleshoot-issues-when-using-the-azure-cosmos-db-emulator"></a>A Azure Cosmos DB Emulator használatakor felmerülő problémák elhárítása
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -81,7 +81,7 @@ Hibakeresési nyomok begyűjtéséhez futtassa a következő parancsokat egy ren
 
 1. Nyisson meg egy támogatási jegyet a [Azure Portalban](https://portal.azure.com) , és foglalja bele az. etl fájlt a Reprodukálási lépésekkel együtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan lehet hibakeresést végezni a helyi emulátorral kapcsolatban. Most folytassa a következő cikkekkel:
 

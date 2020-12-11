@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a439ce5cd56bde5f9a60a1d99f5299bd16c81f8b
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 2918b845430a6fc6dc59eca7041c114fc9d06515
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519076"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092210"
 ---
 # <a name="create-an-account-sas-with-net"></a>Fiók SAS létrehozása a .NET-tel
 
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan hozhat létre fiók SAS-t a .NET-hez készült [Azur
 
 Egy fiókhoz tartozó SAS a fiók hozzáférési kulcsával van aláírva. A [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) osztály használatával hozza létre az SAS aláírásához használt hitelesítő adatokat. Ezután hozzon létre egy új [AccountSasBuilder](/dotnet/api/azure.storage.sas.accountsasbuilder) objektumot, és hívja meg a [ToSasQueryParameters](/dotnet/api/azure.storage.sas.accountsasbuilder.tosasqueryparameters) az SAS-jogkivonat karakterláncának beolvasásához.
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetAccountSASToken":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetAccountSASToken":::
 
 ### <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
@@ -68,7 +68,7 @@ Ha a fiók SAS-t használja a Blob servicehoz tartozó szolgáltatási szintű A
 
 ### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_UseAccountSAS":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_UseAccountSAS":::
 
 ### <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
@@ -116,7 +116,7 @@ static void UseAccountSAS(string sasToken)
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md)
 - [Fiók SAS létrehozása](/rest/api/storageservices/create-account-sas)

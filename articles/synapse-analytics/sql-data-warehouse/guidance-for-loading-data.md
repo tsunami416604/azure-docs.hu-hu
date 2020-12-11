@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39625914f179dfc8d5511b9a3d386cc8332b7efa
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a96d49a029eb83e24c1fb86954406693aa9c33a3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456306"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093961"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Ajánlott eljárások az betöltéshez dedikált SQL-készletek használatával az Azure szinapszis Analyticsben
 
@@ -71,6 +71,9 @@ Kapcsolódjon a dedikált SQL-készlethez, és hozzon létre egy felhasználót.
        ,MEMBERNAME = 'loader'
    );
 ```
+<br><br>
+>[!IMPORTANT] 
+>Ez egy rendkívüli példa arra, hogy az SQL-készlet 100%-os erőforrásait egyetlen terhelésre foglalja le. Ez maximális párhuzamosságot biztosít 1. Vegye figyelembe, hogy ezt csak a kezdeti terheléshez kell használni, ahol további munkaterhelés-csoportokat kell létrehoznia a saját konfigurációkkal, hogy balanace az erőforrásokat a számítási feladatokhoz. 
 
 Ha terhelést szeretne futtatni a terhelés betöltéséhez szükséges erőforrásokkal, jelentkezzen be betöltőként, és futtassa a terhelést.
 
@@ -173,7 +176,7 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 A mögöttes külső adatforrásokban nem kell más módosítást elvégezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kinyerési, betöltési és átalakítási (ELT) folyamat megtervezése során a MÁSOLÁSi utasítással vagy a kiindulással kapcsolatos további információkért lásd: [elt az Azure szinapszis analyticshez](design-elt-data-loading.md).
 - A betöltési oktatóanyaghoz [használja a copy utasítást az adatok Azure Blob Storage-ból a SZINAPSZIS SQL-be való betöltéséhez](load-data-from-azure-blob-storage-using-polybase.md).

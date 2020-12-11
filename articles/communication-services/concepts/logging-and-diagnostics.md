@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8afa769c90c5cf9450343cda1a65809062468fb
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c4c9808813de80beea55e083c5bd80667ae2861f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888691"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033119"
 ---
 # <a name="communication-services-logs"></a>Kommunikációs szolgáltatások naplói
 
@@ -39,6 +39,7 @@ A kommunikációs szolgáltatások háromféle típusú naplót biztosít:
 * **Használati naplók** – az egyes számlázott szolgáltatásokhoz kapcsolódó használati adatokat biztosít
 * **Csevegés operatív naplói** – a csevegési szolgáltatással kapcsolatos alapvető adatokat biztosít
 * **SMS működési naplók** – az SMS szolgáltatással kapcsolatos alapvető információk
+* **Hitelesítési operatív naplók** – a hitelesítési szolgáltatással kapcsolatos alapvető adatokat biztosít
 
 ### <a name="usage-logs-schema"></a>Használati naplók sémája
 
@@ -69,7 +70,7 @@ A kommunikációs szolgáltatások háromféle típusú naplót biztosít:
 | ResultDescription | A művelet statikus szöveges leírása. |
 | DurationMs | A művelet időtartama ezredmásodpercben. |
 | CallerIpAddress | A hívó IP-címe, ha a művelet olyan API-hívásnak felel meg, amely nyilvánosan elérhető IP-címmel rendelkező entitásból származik. |
-| Szint | Az esemény súlyossági szintje. |
+| Level | Az esemény súlyossági szintje. |
 | URI | A kérelem URI-ja. |
 | UserId (Felhasználóazonosító) | A kérelem feladójának felhasználói azonosítója. |
 | ChatThreadId | A kérelemhez társított csevegési szál azonosítója. |
@@ -91,7 +92,7 @@ A kommunikációs szolgáltatások háromféle típusú naplót biztosít:
 | ResultDescription | A művelet statikus szöveges leírása. |
 | DurationMs | A művelet időtartama ezredmásodpercben. |
 | CallerIpAddress | A hívó IP-címe, ha a művelet olyan API-hívásnak felel meg, amely nyilvánosan elérhető IP-címmel rendelkező entitásból származik. |
-| Szint | Az esemény súlyossági szintje. |
+| Level | Az esemény súlyossági szintje. |
 | URI | A kérelem URI-ja. |
 | OutgoingMessageLength | A kimenő üzenetben szereplő karakterek száma. |
 | IncomingMessageLength | A bejövő üzenetben szereplő karakterek száma. |
@@ -100,3 +101,23 @@ A kommunikációs szolgáltatások háromféle típusú naplót biztosít:
 | SdkType | A kérelemben használt SDK-típus. |
 | PlatformType | A kérelemben használt platform típusa. |
 | Metódus | A kérelemben használt metódus. |
+
+### <a name="authentication-operational-logs"></a>Hitelesítési operatív naplók
+
+| Tulajdonság | Leírás |
+| -------- | ---------------|
+| TimeGenerated | A napló létrehozásának időbélyegzője (UTC). |
+| OperationName | A naplózási rekordhoz társított művelet. |
+| CorrelationID | A korrelált események azonosítója. A több tábla közötti korrelációs események azonosítására használható. |
+| OperationVersion | A `api-version` művelethez társított, ha az az `operationName` API használatával lett elvégezve. Ha nincs olyan API, amely megfelel a műveletnek, akkor a verzió a művelet azon verzióját jelöli, amely a művelethez kapcsolódó tulajdonságok jövőbeli változásakor következik be. |
+| Kategória | Az esemény naplózási kategóriája. A kategória a részletesség, amelyen engedélyezheti vagy letilthatja a naplókat egy adott erőforráson. Az események tulajdonságok blobjában megjelenő tulajdonságok egy adott napló kategóriáján és erőforrás-típusán belül megegyeznek. |
+| ResultType | A művelet állapota. |
+| ResultSignature | A művelet alállapota. Ha ez a művelet egy REST API hívásnak felel meg, ez a mező a megfelelő REST-hívás HTTP-állapotkód. |
+| DurationMs | A művelet időtartama ezredmásodpercben. |
+| CallerIpAddress | A hívó IP-címe, ha a művelet olyan API-hívásnak felel meg, amely nyilvánosan elérhető IP-címmel rendelkező entitásból származik. |
+| Level | Az esemény súlyossági szintje. |
+| URI | A kérelem URI-ja. |
+| SdkType | A kérelemben használt SDK-típus. |
+| PlatformType | A kérelemben használt platform típusa. |
+| Identitás | A művelethez kapcsolódó kommunikációs szolgáltatások identitása. |
+| Hatókörök | A hozzáférési jogkivonatban szerepel a kommunikációs szolgáltatások hatóköre. |

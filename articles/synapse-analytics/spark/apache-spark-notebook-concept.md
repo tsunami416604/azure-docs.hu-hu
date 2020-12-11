@@ -9,12 +9,12 @@ ms.date: 11/18/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: bad71cfeb8f15f463bb9659be704374325d1f50a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5efdfcea7b6d727038bad124368179b9395bfafd
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461990"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093277"
 ---
 # <a name="azure-synapse-analytics-notebooks"></a>Azure szinapszis Analytics-jegyzetfüzetek
 
@@ -46,9 +46,9 @@ A jegyzetfüzetek létrehozásával és kezelésével kapcsolatos további infor
     - [Jegyzetfüzet integrálása folyamatba](./spark/../apache-spark-development-using-notebooks.md#integrate-a-notebook)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A jegyzetfüzeteket széles körben használják az adatok előkészítésében, az adatvizualizációban, a gépi tanulásban és más big data helyzetekben is. Ha többet szeretne megtudni arról, hogyan használhatók a jegyzetfüzetek az adatelemzéshez és a big data forgatókönyvekhez, tekintse meg a következő oktatóanyagokat:
   - [Jegyzetfüzet létrehozása](./spark/../../quickstart-apache-spark-notebook.md)
   - [Vizualizációk létrehozása a szinapszis Studio notebookokkal](./spark/../apache-spark-data-visualization-tutorial.md)
   - [Gépi tanulási modellek készítése Apache Spark MLlib](./spark/../apache-spark-machine-learning-mllib-notebook.md)
-  - [Gépi tanulási modellek készítése az Azure AutoML](./spark/../apache-spark-azure-machine-learning-tutorial.md)
+  - [Gépi tanulási modellek készítése az Azure automatizált ML-vel](./spark/../apache-spark-azure-machine-learning-tutorial.md)

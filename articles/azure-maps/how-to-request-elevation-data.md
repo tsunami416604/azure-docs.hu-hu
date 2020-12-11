@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906063"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094199"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Jogosultságszint-emelési kérések igénylése a Azure Maps jogosultságszint-emelési szolgáltatással (előzetes verzió)
 
@@ -56,8 +56,8 @@ A jogosultságszint-emelési adattároló formátumában a [Render v2-Get Map cs
 
 A jogosultságszint-emelési szolgáltatás (előzetes verzió) API-k segítségével GeoJSON formátumban kérheti a jogosultságszint-emelési kéréseket. Ez a szakasz a három API-t mutatja be:
 
-* [Pontok lekérdezése](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
-* [Pontok utáni adatposta](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
+* [Pontok lekérdezése](/rest/api/maps/elevation/getdataforpoints)
+* [Pontok utáni adatposta](/rest/api/maps/elevation/postdataforpoints)
 * [Adatlekérdezés a vonallánchoz](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 * [Adatposta a vonallánchoz](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
 * [A Határolókerethoz tartozó adat lekérése](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
@@ -67,7 +67,7 @@ A jogosultságszint-emelési szolgáltatás (előzetes verzió) API-k segítség
 
 ### <a name="request-elevation-data-for-points"></a>A pontokra vonatkozó jogosultságszint-emelési kérések lekérdezése
 
-Ebben a példában a [pontok beolvasása API](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates) használatával kéri a jogosultságszint-emelési adatgyűjtést. Az Everest és a Chamlang Mountains. Ezt követően a [pontok közzététele API](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) -val a jogosultságszint-emelési adatkérést a két ponttal megegyezően fogja használni. Az URL-címben szereplő földrajzi szélességeknek és hosszúságoknak a WGS84 (globális geodéziai rendszer) decimális mértékben kell szerepelniük.
+Ebben a példában a [pontok beolvasása API](/rest/api/maps/elevation/getdataforpoints) használatával kéri a jogosultságszint-emelési adatgyűjtést. Az Everest és a Chamlang Mountains. Ezt követően a [pontok közzététele API](/rest/api/maps/elevation/postdataforpoints) -val a jogosultságszint-emelési adatkérést a két ponttal megegyezően fogja használni. Az URL-címben szereplő földrajzi szélességeknek és hosszúságoknak a WGS84 (globális geodéziai rendszer) decimális mértékben kell szerepelniük.
 
  >[!IMPORTANT]
  >Az URL-karakter hosszúsági korlátja miatt a 2048-as számú URL-cím hossza nem haladhatja meg a 100-es koordinátákat egy URL GET kérelemben. Ha több mint 100 koordinátákat szeretne átadni egy folyamat tagolt karakterláncának, használja a pontok utáni adatpostát.
@@ -103,7 +103,7 @@ Ebben a példában a [pontok beolvasása API](https://docs.microsoft.com/rest/ap
     }
     ```
 
-4. Most hívjuk meg a [pontok API post-adatküldési](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) szolgáltatását a jogosultságszint-emelési információk ugyanarra a két pontra történő beszerzésére. Válassza a http **post** metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Ehhez a kérelemhez és a cikkben említett egyéb kérelmekhez cserélje le az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulcsát.
+4. Most hívjuk meg a [pontok API post-adatküldési](/rest/api/maps/elevation/postdataforpoints) szolgáltatását a jogosultságszint-emelési információk ugyanarra a két pontra történő beszerzésére. Válassza a http **post** metódust a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Ehhez a kérelemhez és a cikkben említett egyéb kérelmekhez cserélje le az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulcsát.
 
     ```http
     https://atlas.microsoft.com/elevation/point/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
@@ -466,7 +466,7 @@ A következő weblap azt mutatja be, hogyan használhatja a Térkép vezérlőel
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Jogosultságszint-emelések határoló mező alapján" src="https://codepen.io/azuremaps/embed/619c888c70089c3350a3e95d499f3e48?height=500&theme-id=default&default-tab=js,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-A CodePen-on lévő Azure Maps () alapján megtekintheti a tollas <a href='https://codepen.io/azuremaps/pen/619c888c70089c3350a3e95d499f3e48'>emeléseket a határolókeret</a> alapján <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+A CodePen-on lévő Azure Maps () alapján megtekintheti a tollas <a href='https://codepen.io/azuremaps/pen/619c888c70089c3350a3e95d499f3e48'>emeléseket a határolókeret</a> alapján <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ### <a name="get-elevation-data-by-polyline-path"></a>Jogosultságszint-emelési érték lekérése a vonallánc elérési útján
@@ -485,7 +485,7 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0
 A Azure Maps jogosultságszint-emelési (előnézet) API-k további megismeréséhez lásd:
 
 > [!div class="nextstepaction"]
-> [Jogosultságszint-emelés (előzetes verzió) – az adatlekérdezés a lat hosszú koordinátáihoz](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [Jogosultságszint-emelés (előzetes verzió) – az adatlekérdezés a lat hosszú koordinátáihoz](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
 > [Jogosultságszint-emelés (előzetes verzió) – a Határolókerethoz tartozó adat lekérése](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 09/14/2020
-ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09e4412128a3b13abfa91bf0c128372b30b3e686
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620086"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033136"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök autoskálázása
 
@@ -72,7 +72,7 @@ A leskálázáshoz az autoskálázás bizonyos számú csomópont eltávolítás
 
 Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típusát és verzióját ismerteti.
 
-| Verzió | Spark | Hive | Interaktív lekérdezés | A HBase | Kafka | Vihar | ML |
+| Verzió | Spark | Hive | Interaktív lekérdezés | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
 | HDInsight 3,6 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
 | HDInsight 4,0 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
@@ -88,10 +88,10 @@ Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típu
 Ha az automatikus skálázási funkciót terheléselosztásos skálázással szeretné engedélyezni, hajtsa végre a következő lépéseket a fürt normál létrehozási folyamatának részeként:
 
 1. A **konfiguráció + díjszabás** lapon jelölje be az automatikus **skálázás engedélyezése** jelölőnégyzetet.
-1. Válassza az automatikus **skálázás típusa**alatt a **Betöltés** lehetőséget.
+1. Válassza az automatikus **skálázás típusa** alatt a **Betöltés** lehetőséget.
 1. Adja meg a kívánt értékeket a következő tulajdonságokhoz:  
 
-    * A **munkavégző csomóponthoz**tartozó **csomópontok kezdeti száma** .
+    * A **munkavégző csomóponthoz** tartozó **csomópontok kezdeti száma** .
     * A munkavégző csomópontok **minimális** száma.
     * A munkavégző csomópontok **maximális** száma.
 
@@ -104,8 +104,8 @@ A munkavégző csomópontok kezdeti számának a minimális és a maximális ér
 Ha az automatikus skálázási funkciót ütemezett méretezéssel szeretné engedélyezni, hajtsa végre a következő lépéseket a fürt normál létrehozási folyamatának részeként:
 
 1. A **konfiguráció és díjszabás** lapon jelölje be az automatikus **skálázás engedélyezése** jelölőnégyzetet.
-1. Adja meg a **munkavégző csomóponthoz**tartozó **csomópontok számát** , amely a fürt skálázásának korlátját vezérli.
-1. Válassza az **ütemezett** beállítás lehetőséget az **autoskálázás típusa**területen.
+1. Adja meg a **munkavégző csomóponthoz** tartozó **csomópontok számát** , amely a fürt skálázásának korlátját vezérli.
+1. Válassza az **ütemezett** beállítás lehetőséget az **autoskálázás típusa** területen.
 1. Válassza a **Konfigurálás** lehetőséget az **automatikus skálázási konfiguráció** ablak megnyitásához.
 1. Válassza ki az időzónát, majd kattintson a **+ feltétel hozzáadása** elemre.
 1. Válassza ki a hét azon napjait, amelyeket az új feltételnek alkalmaznia kell.
@@ -118,7 +118,7 @@ A csomópontok számának 3 és a feltételek hozzáadása előtt a munkavégző
 
 ### <a name="final-creation-steps"></a>Végső létrehozás lépései
 
-Válassza ki a virtuális gép típusát a munkavégző csomópontok számára egy virtuális gép kiválasztásával a legördülő listából a **csomópont mérete**alatt. Miután kiválasztotta a virtuálisgép-típust az egyes csomópont-típusokhoz, a teljes fürt becsült hatókörét láthatja. Állítsa be úgy a virtuális gépek típusait, hogy illeszkedjenek a költségkerethez.
+Válassza ki a virtuális gép típusát a munkavégző csomópontok számára egy virtuális gép kiválasztásával a legördülő listából a **csomópont mérete** alatt. Miután kiválasztotta a virtuálisgép-típust az egyes csomópont-típusokhoz, a teljes fürt becsült hatókörét láthatja. Állítsa be úgy a virtuális gépek típusait, hogy illeszkedjenek a költségkerethez.
 
 ![Munkavégző csomópont ütemezett méretezési csomópontjának engedélyezése](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
 
@@ -195,7 +195,7 @@ HDInsight-fürtöt úgy hozhat létre, `autoscale` hogy a `computeProfile`  >  s
 
 #### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-Ha egy futó fürtön engedélyezni szeretné az autoskálázást, a **Beállítások**területen válassza a **fürt méretét** . Ezután válassza az **autoskálázás engedélyezése**lehetőséget. Válassza ki a kívánt automatikus méretezési típust, és adja meg a terhelés vagy az ütemterv szerinti skálázás beállításait. Végül válassza a **Mentés**lehetőséget.
+Ha egy futó fürtön engedélyezni szeretné az autoskálázást, a **Beállítások** területen válassza a **fürt méretét** . Ezután válassza az **autoskálázás engedélyezése** lehetőséget. Válassza ki a kívánt automatikus méretezési típust, és adja meg a terhelés vagy az ütemterv szerinti skálázás beállításait. Végül válassza a **Mentés** lehetőséget.
 
 ![Munkavégző csomópont ütemezett méretezésének engedélyezése](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
 
@@ -228,18 +228,18 @@ Az alábbi listában az összes olyan fürt állapotüzenetek látható, amelyet
 | Fürt állapota | Leírás |
 |---|---|
 | Futó | A fürt rendesen működik. Az összes korábbi autoskálázási tevékenység sikeresen befejeződött. |
-| Frissítése  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
+| Frissítés  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
 | HDInsight-konfiguráció  | Egy fürt vertikális fel-vagy leskálázási művelete folyamatban van.  |
 | Frissítési hiba  | A HDInsight az automatikus skálázási konfiguráció frissítése során teljesülnek. Az ügyfelek dönthetnek úgy, hogy megpróbálják megismételni a frissítést vagy letiltani az autoskálázást.  |
 | Hiba  | Probléma van a fürttel, és nem használható. Törölje a fürtöt, és hozzon létre egy újat.  |
 
-A fürtben lévő csomópontok aktuális számának megtekintéséhez nyissa meg a fürt **áttekintő** lapjának **fürt mérete** diagramját. Vagy válassza ki a **fürt méretét** a **Beállítások**területen.
+A fürtben lévő csomópontok aktuális számának megtekintéséhez nyissa meg a fürt **áttekintő** lapjának **fürt mérete** diagramját. Vagy válassza ki a **fürt méretét** a **Beállítások** területen.
 
 ### <a name="operation-history"></a>Műveleti előzmények
 
 A fürt metrikáinak részeként megtekintheti a fürt vertikális felskálázásának és leskálázásának előzményeit is. Az összes skálázási műveletet az elmúlt nap, a hét vagy más idő alatt is listázhatja.
 
-A **figyelés**területen válassza a **metrikák** lehetőséget. Ezután válassza a metrika **hozzáadása** és az **aktív feldolgozók száma** elemet a **metrika** legördülő listából. Kattintson a jobb felső sarokban lévő gombra az időtartomány módosításához.
+A **figyelés** területen válassza a **metrikák** lehetőséget. Ezután válassza a metrika **hozzáadása** és az **aktív feldolgozók száma** elemet a **metrika** legördülő listából. Kattintson a jobb felső sarokban lévő gombra az időtartomány módosításához.
 
 ![A feldolgozói csomópont Schedule-alapú autoskálázási metrikájának engedélyezése](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 

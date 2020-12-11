@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: személyre szabott, Azure személyre szabott, gépi tanulás
-ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 28aae130d062eaf57a66a9b90a6602c3874f1494
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171959"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094148"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -116,7 +116,7 @@ A személyre szabott szolgáltatás használatának megkezdése után próbálja
 ## <a name="reference"></a>Referencia 
 
 * [Személyre szabott C# kódon SDK](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
-* [Személyre szabású go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
+* [Személyre szabású go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview)
 * [Személyre szabott JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
 * [Személyre szabott Python SDK](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
 * [REST API-k](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)

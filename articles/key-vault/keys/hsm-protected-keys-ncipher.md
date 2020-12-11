@@ -10,18 +10,18 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: f5d58f89aa87a39d12b2d6f6a3a91254a653a088
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8a1f3b5e80152fb0fb9458aef0d3524dd2d6f5eb
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784660"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092329"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>HSM-védelemmel ellátott kulcsok importálása Key Vaulthoz (nCipher)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ha további garanciára van szüksége, amikor Azure Key Vault használ, a hardveres biztonsági modulokban (HSM) olyan kulcsokat importálhat vagy generálhat, amelyek soha nem hagyják el a HSM-határt. Ennek a megoldásnak a neve *saját kulcs használata* , angol betűszóval BYOK. A Azure Key Vault a HSM (FIPS 140-2 2. szint) nCipher nShield-családját használja a kulcsok elleni védelemhez.
+Ha további garanciára van szüksége, amikor Azure Key Vault használ, a hardveres biztonsági modulokban (HSM) olyan kulcsokat importálhat vagy generálhat, amelyek soha nem hagyják el a HSM-határt. Ennek a megoldásnak a neve *saját kulcs használata*, angol betűszóval BYOK. A Azure Key Vault a HSM (FIPS 140-2 2. szint) nCipher nShield-családját használja a kulcsok elleni védelemhez.
 
 > [!NOTE]
 > A jelen dokumentumban ismertetett HSM-Key importálási módszer csak a nCipher nShield Family of HSM szolgáltatással működik. A HSM-kulcsok más HSM való importálásáról [itt talál további információt](hsm-protected-keys-byok.md).
@@ -61,7 +61,7 @@ Az alábbi táblázatban megtekintheti a saját kulcs (BYOK) használatának el�
 | --- | --- |
 | Előfizetés az Azure-ba |Azure Key Vault létrehozásához Azure-előfizetésre van szükség: [regisztráljon az ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/) |
 | A Azure Key Vault Premium szolgáltatási réteg HSM-védelemmel ellátott kulcsok támogatásához |A Azure Key Vault szolgáltatási szintjeivel és képességeivel kapcsolatos további információkért tekintse meg a [Azure Key Vault díjszabási](https://azure.microsoft.com/pricing/details/key-vault/) webhelyét. |
-| nCipher nShield HSM, intelligens kártyák és támogatási szoftverek |Hozzá kell férnie a nCipher hardveres biztonsági modulhoz, valamint a nCipher nShield HSM alapszintű működési ismeretéhez. Tekintse meg a [NCipher NShield hardveres biztonsági modult](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) a kompatibilis modellek listájához, vagy ha nem rendelkezik ilyennel, akkor VÁSÁROLjon HSM-et. |
+| nCipher nShield HSM, intelligens kártyák és támogatási szoftverek |Hozzá kell férnie a nCipher hardveres biztonsági modulhoz, valamint a nCipher nShield HSM alapszintű működési ismeretéhez. Tekintse meg a [NCipher NShield hardveres biztonsági modult](https://go.ncipher.com/rs/104-QOX-775/images/nCipher_nShield_Family_Brochure.pdf?_ga=2.106120835.1607422418.1590478092-577009923.1587131206) a kompatibilis modellek listájához, vagy ha nem rendelkezik ilyennel, akkor VÁSÁROLjon HSM-et. |
 | A következő hardverek és szoftverek:<ol><li>Egy offline x64-es munkaállomás, amely a Windows 7 minimális Windows-operációs rendszerét és a nCipher nShield szoftvert legalább 11,50-es verzióval rendelkezik.<br/><br/>Ha ez a munkaállomás Windows 7 rendszert futtat, [telepítenie kell Microsoft .NET Framework 4,5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)-es keretrendszert.</li><li>Egy internethez csatlakozó munkaállomás, amely a Windows 7 minimális Windows operációs rendszerét és a [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) **minimálisan szükséges 1.1.0-verziót** telepítette.</li><li>USB-meghajtó vagy más hordozható tárolóeszköz, amelyen legalább 16 MB szabad terület található.</li></ol> |Biztonsági okokból javasoljuk, hogy az első munkaállomás ne csatlakozzon hálózathoz. Ez a javaslat azonban nincs programozott módon kényszerítve.<br/><br/>Az alábbi utasításokban ezt a munkaállomást leválasztott munkaállomásként nevezzük.</p></blockquote><br/>Emellett, ha a bérlői kulcs éles hálózatra vonatkozik, javasoljuk, hogy egy második, külön munkaállomás használatával töltse le az eszközkészletet, és töltse fel a bérlői kulcsot. Tesztelési célokra azonban használhatja az első munkaállomást is.<br/><br/>Az alábbi utasításokban ezt a második munkaállomást internetkapcsolattal rendelkező munkaállomásnak nevezzük.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>A kulcs előállítása és átvitele Azure Key Vault HSM-be
@@ -255,7 +255,7 @@ Ebben a második lépésben hajtsa végre az alábbi eljárásokat azon a munka�
 
 Telepítse a nCipher támogatási szoftverét egy Windows rendszerű számítógépre, majd csatoljon egy nCipher nShield HSM-t a számítógéphez.
 
-Győződjön meg arról, hogy a nCipher-eszközök az elérési útban vannak ( **% nfast_home% \ bin** ). Adja meg például a következőt:
+Győződjön meg arról, hogy a nCipher-eszközök az elérési útban vannak (**% nfast_home% \ bin**). Adja meg például a következőt:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
@@ -287,7 +287,7 @@ Indítsa el a parancssort, és futtassa a nCipher New-World programot.
     new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
    ```
 
-Ez a program létrehoz egy **biztonságivilág** -fájlt az %NFAST_KMDATA%\local\world címen, amely a C:\ProgramData\nCipher\Key Management Data\local mappának felel meg. A kvórumhoz különböző értékeket használhat, de a példában a rendszer három üres kártyát és PIN-kód megadását kéri. Ezután bármelyik két kártya teljes hozzáférést biztosít a biztonsági világhoz. Ezek a kártyák lesznek az új biztonsági világ **rendszergazdai kártyakészlete** .
+Ez a program létrehoz egy **biztonságivilág**-fájlt az %NFAST_KMDATA%\local\world címen, amely a C:\ProgramData\nCipher\Key Management Data\local mappának felel meg. A kvórumhoz különböző értékeket használhat, de a példában a rendszer három üres kártyát és PIN-kód megadását kéri. Ezután bármelyik két kártya teljes hozzáférést biztosít a biztonsági világhoz. Ezek a kártyák lesznek az új biztonsági világ **rendszergazdai kártyakészlete**.
 
 > [!NOTE]
 > Ha a HSM nem támogatja az újabb Cypher Suite-DLf3072s256mRijndael, cserélje le a--Cipher-Suite = DLf3072s256mRijndael with--Cipher-Suite = DLf1024s160mRijndael
@@ -416,7 +416,7 @@ A letöltött csomag ellenőrzése:
      >
 2. Győződjön meg arról, hogy a következő jelenik meg, amely a sikeres érvényesítést jelzi: **eredmény: sikeres**
 
-Ez a szkript érvényesíti az aláíró láncot a nShield legfelső szintű kulcsával. Ennek a gyökérkulcsnak a kivonata be van ágyazva a parancsfájlba, az értékének pedig a következőnek kell lennie: **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** . Ezt az értéket külön is megerősítheti, ha felkeresi a [nCipher webhelyét](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
+Ez a szkript érvényesíti az aláíró láncot a nShield legfelső szintű kulcsával. Ennek a gyökérkulcsnak a kivonata be van ágyazva a parancsfájlba, az értékének pedig a következőnek kell lennie: **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Ezt az értéket külön is megerősítheti, ha felkeresi a [nCipher webhelyét](https://www.ncipher.com).
 
 Most már készen áll egy új kulcs létrehozására.
 
@@ -434,9 +434,9 @@ A parancs futtatásakor használja a következő utasításokat:
 
 * A *protect* paramétert a **module** értékre kell állítani, ahogyan az ábrán látható. Ez egy modul által védett kulcsot hoz létre. A BYOK eszközkészlet nem támogatja az OCS által védett kulcsokat.
 * Cserélje le a *contosokey* értéket az **ident** és a **plainname** esetében bármilyen tetszőleges sztringre. A rendszergazdai felügyelet csökkentése és a hibák kockázatának csökkentése érdekében javasoljuk, hogy mindkét értéknél ugyanazt az értéket használja. Az **ident** érték csak számokat, kötőjeleket és kisbetűket tartalmazhat.
-* A példában a pubexp üresen maradt (alapértelmezett érték), de megadhat specifikus értékeket is. További információkért tekintse meg a [nCipher dokumentációját.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
+* A példában a pubexp üresen maradt (alapértelmezett érték), de megadhat specifikus értékeket is. További információkért tekintse meg a [nCipher dokumentációját.](https://www.entrust.com/-/media/documentation/brochures/entrust-nshield-general-purpose-hsms-br-a4.pdf)
 
-Ez a parancs jogkivonat-kulcsot hoz létre a (z)% NFAST_KMDATA% \ local mappában, amelynek a neve **key_simple_** , majd a parancsban megadott **ident** . Például: **key_simple_contosokey** . Ez a fájl egy titkosított kulcsot tartalmaz.
+Ez a parancs jogkivonat-kulcsot hoz létre a (z)% NFAST_KMDATA% \ local mappában, amelynek a neve **key_simple_**, majd a parancsban megadott **ident** . Például: **key_simple_contosokey**. Ez a fájl egy titkosított kulcsot tartalmaz.
 
 Készítsen erről a tokenekre bontott kulcsfájlról egy biztonsági másolatot egy biztonságos helyre.
 
@@ -668,7 +668,7 @@ A parancs futtatásakor használja a következő utasításokat:
 * Cserélje le a *SubscriptionID* -t a Key vaultot tartalmazó Azure-előfizetés azonosítójával. Ezt az értéket korábban lekérte az **1,2. lépésben: az Azure-előfizetés azonosítójának beszerzése** az [internethez csatlakoztatott munkaállomás előkészítése](#step-1-prepare-your-internet-connected-workstation) lépésből.
 * Cserélje le a *ContosoFirstHSMKey* a kimeneti fájl nevéhez használt címkére.
 
-Ha ez sikeresen befejeződik, a **Result: Success (sikeres** ) érték jelenik meg, és az aktuális mappában egy új fájl található, amelynek neve a következő: KeyTransferPackage- *ContosoFirstHSMkey* . byok
+Ha ez sikeresen befejeződik, a **Result: Success (sikeres** ) érték jelenik meg, és az aktuális mappában egy új fájl található, amelynek neve a következő: KeyTransferPackage-*ContosoFirstHSMkey*. byok
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>4,3. lépés: a kulcs átvitelére szolgáló csomag másolása az internethez csatlakoztatott munkaállomásra
 

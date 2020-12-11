@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 20f095a058434c36373c30ed2a633db12643814d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 906d3d28aabf8f6ecd6e04c38b4519937fa95c2b
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448283"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092159"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics Machine Learning képességei
 
@@ -62,9 +62,9 @@ A gépi tanulási modelleket különböző algoritmusok és könyvtárak segíts
 
 A MLlib mellett az olyan népszerű kódtárak is használhatók, mint a [Scikit-Learn](https://scikit-learn.org/stable/) modellek. A könyvtárak a szinapszis Spark-készleteken való telepítésével kapcsolatos részletekért lásd: az [Azure szinapszis Analytics Apache Spark könyvtárainak kezelése](../spark/apache-spark-azure-portal-add-libraries.md) .
 
-#### <a name="train-models-with-azure-machine-learning-automl"></a>Modellek betanítása Azure Machine Learning AutoML
+#### <a name="train-models-with-azure-machine-learning-automated-ml"></a>Modellek betanítása Azure Machine Learning automatizált ML-vel
 
-A gépi tanulási modellek betanításának egy másik módja, amely nem igényli a gépi tanuláshoz szükséges jóval korábbi ismereteket, hogy a AutoML használja. A [AutoML](/azure/machine-learning/concept-automated-ml) egy olyan szolgáltatás, amely automatikusan betanítja a gépi tanulási modelleket, és lehetővé teszi, hogy a felhasználó kiválassza a legjobb modellt adott mérőszámok alapján. Az Azure szinapszis-jegyzetfüzetek Azure Machine Learningával való zökkenőmentes integrációnak köszönhetően a felhasználók könnyedén kihasználhatják a AutoML a Szinapszisban Azure Active Directory hitelesítéssel.  Ez azt jelenti, hogy csak a Azure Machine Learning munkaterületre kell mutatnia, és nem kell megadnia a hitelesítő adatokat. Itt talál egy [AutoML-oktatóanyagot](../spark/apache-spark-azure-machine-learning-tutorial.md) , amely leírja, hogyan taníthat modelleket Azure Machine learning AutoML használatával a szinapszis Spark-készleteken.
+A gépi tanulási modellek betanításának egy másik módja, amely nem igényli a gépi tanuláshoz szükséges jóval korábbi ismereteket, az automatikus ML-t használja. Az [automatikus ml](/azure/machine-learning/concept-automated-ml) egy olyan szolgáltatás, amely automatikusan betanítja a gépi tanulási modellek készletét, és lehetővé teszi, hogy a felhasználó kiválassza a legjobb modellt adott mérőszámok alapján. Az Azure szinapszis-jegyzetfüzetek Azure Machine Learningával való zökkenőmentes integrációnak köszönhetően a felhasználók könnyedén használhatják az automatikus ML-t a Szinapszisban a továbbító Azure Active Directory hitelesítéssel.  Ez azt jelenti, hogy csak a Azure Machine Learning munkaterületre kell mutatnia, és nem kell megadnia a hitelesítő adatokat. Itt talál egy [AUTOMATIZÁLT ml-oktatóanyagot](../spark/apache-spark-azure-machine-learning-tutorial.md) , amely leírja, hogyan kell betanítani a modelleket a szinapszis Spark-készleteken található Azure Machine learning automatizált ml használatával.
 
 ### <a name="model-deployment-and-scoring"></a>Modell üzembe helyezése és pontozása
 
@@ -74,9 +74,9 @@ Az Azure Szinapszisban vagy az Azure szinapszison kívül már betanított model
 
 * Az Azure Szinapszisban a gépi tanulási modellek egy másik lehetősége az Azure szinapszis Apache Spark készletének kihasználása. A modellek betanításához használt könyvtáraktól függően a Batch-pontozási futtatásához használhat programkódot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Ismerkedés az Azure szinapszis Analytics szolgáltatással](../get-started.md)
+* [Az Azure Synapse Analytics első lépései](../get-started.md)
 * [Munkaterület létrehozása](../get-started-create-workspace.md)
 * [Gyors útmutató: új Azure Machine Learning társított szolgáltatás létrehozása a Szinapszisban](quickstart-integrate-azure-machine-learning.md)
 * [Oktatóanyag: gépi tanulási modell pontozása varázsló – dedikált SQL-készlet](tutorial-sql-pool-model-scoring-wizard.md)

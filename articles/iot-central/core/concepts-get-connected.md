@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 1a050daa3a4b3ae9be5ef40961c40adaa90dc72b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 90246459663980de25e301817f651e7719e8f380
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121816"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033178"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -178,11 +178,21 @@ Ez a megközelítés akkor lehet hasznos, ha IoT Central vagy tesztelési eszkö
 
 ## <a name="associate-a-device-with-a-device-template"></a>Eszköz hozzárendelése eszköz sablonnal
 
-IoT Central automatikusan társít egy eszközt egy eszközhöz, amikor az eszköz csatlakozik. Az eszköz a csatlakozáskor a modell AZONOSÍTÓját küldi el. IoT Central a modell AZONOSÍTÓját használja az adott eszközhöz tartozó sablon azonosítására. A felderítési folyamat a következőképpen működik:
+IoT Central automatikusan társít egy eszközt egy eszközhöz, amikor az eszköz csatlakozik. Az eszköz a csatlakozáskor a [modell azonosítóját](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) küldi el. IoT Central a modell AZONOSÍTÓját használja az adott eszközhöz tartozó sablon azonosítására. A felderítési folyamat a következőképpen működik:
 
 1. Ha az eszköz sablonja már közzé van téve a IoT Central alkalmazásban, az eszköz társítva van az eszköz sablonnal.
-1. Ha az eszköz sablonja még nincs közzétéve a IoT Central alkalmazásban, IoT Central az eszköz modelljét keresi a nyilvános modell adattárában. Ha IoT Central megkeresi a modellt, azt használja egy alapszintű eszköz sablonjának létrehozásához.
+1. Ha az eszköz sablonja még nincs közzétéve a IoT Central alkalmazásban, IoT Central az eszköz modelljét keresi a [nyilvános modell adattárában](https://github.com/Azure/iot-plugandplay-models). Ha IoT Central megkeresi a modellt, azt használja egy alapszintű eszköz sablonjának létrehozásához.
 1. Ha IoT Central nem találja a modellt a nyilvános modell adattárában, az eszköz nem **társítottként** van megjelölve. Az operátor létrehozhat egy sablont az eszközhöz, majd áttelepítheti a nem társított eszközt az új eszköz sablonba.
+
+Az alábbi képernyőfelvételen megtekintheti, hogyan tekintheti meg az IoT Centralban lévő eszközök modell-AZONOSÍTÓját. Egy eszköz sablonjában válasszon ki egy összetevőt, majd válassza az **identitás megtekintése** elemet:
+
+:::image type="content" source="media/concepts-get-connected/model-id.png" alt-text="A modell AZONOSÍTÓját ábrázoló képernyőfelvétel a termosztátos eszköz sablonjában.":::
+
+A [termosztát modellt](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-1.json) a nyilvános modell adattárában tekintheti meg. A modell AZONOSÍTÓjának definíciója a következőképpen néz ki:
+
+```json
+"@id": "dtmi:com:example:Thermostat;1"
+```
 
 ## <a name="device-status-values"></a>Eszköz állapotának értékei
 
@@ -251,7 +261,7 @@ Ha az eszköz nem tudja használni a támogatott protokollokat, használja a Azu
 
 Az eszközök és az Azure-IoT Central között kicserélt összes adatforgalom titkosítva van. IoT Hub minden olyan eszközről hitelesíti a kérelmet, amely az eszközre irányuló IoT Hub végpontokhoz csatlakozik. A hitelesítő adatok vezetéken keresztüli cseréjének elkerüléséhez az eszköz aláírt jogkivonatokat használ a hitelesítéshez. További információ: [IoT hub hozzáférésének szabályozása](../../iot-hub/iot-hub-devguide-security.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 

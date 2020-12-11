@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 110a25fca0b0e764650665635dbe545de7a350cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b53c0002af3680567aabf0955f6bb4e0d99c2ab1
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653996"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093434"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az üzletmenet folytonosságához és a vész-helyreállításhoz az Azure Kubernetes szolgáltatásban (ak)
 
@@ -113,7 +113,7 @@ Az alkalmazások az Azure Storage-t használhatják adataik számára. Mivel az 
 
 Előfordulhat, hogy az alkalmazások a pod törlése után is állandó tárterületet igényelnek. A Kubernetes-ben az állandó kötetek használatával megtarthatja az adattárolást. Az állandó kötetek egy csomópont virtuális géphez vannak csatlakoztatva, majd a hüvelyek számára elérhetővé válnak. Az állandó kötetek akkor is követik a hüvelyeket, ha a hüvelyek ugyanazon a fürtön belül egy másik csomópontra kerülnek.
 
-A használt replikációs stratégia a tárolási megoldástól függ. A gyakori tárolási megoldások, például a [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/), a [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), a [bástya](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)és a [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) , saját útmutatást nyújtanak a vész-helyreállítással és a replikálással kapcsolatban.
+A használt replikációs stratégia a tárolási megoldástól függ. A gyakori tárolási megoldások, például a [Gluster](https://docs.gluster.org/en/latest/Administrator-Guide/Geo-Replication/), a [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), a [bástya](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)és a [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) , saját útmutatást nyújtanak a vész-helyreállítással és a replikálással kapcsolatban.
 
 A tipikus stratégia egy olyan közös tárolási pont biztosítása, amelyben az alkalmazások írhatják az adatbevitelt. Ezeket az adatfájlokat a rendszer replikálja a régiók között, majd helyileg elérhetővé.
 
@@ -130,7 +130,7 @@ A Kubernetes jelenleg nem biztosít natív implementációt az alkalmazás-alap�
 
 ![Alkalmazás-alapú aszinkron replikáció](media/operator-best-practices-bc-dr/aks-app-based-async-repl.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk az üzleti folytonossággal és a vész-helyreállítási megfontolásokkal foglalkozik az AK-fürtök esetében. Az AK-beli fürtök műveleteivel kapcsolatos további információkért tekintse meg az ajánlott eljárásokról szóló cikket:
 

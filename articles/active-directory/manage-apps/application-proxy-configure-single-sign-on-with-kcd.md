@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperfq2
-ms.openlocfilehash: e43ad9dedf4212e9b30a08f0c978cb8d1a86776c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: bd657655d6857f1bb0e3c5a2d868169788e4998d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997579"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033527"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás egyszeri bejelentkezéshez (SSO) az alkalmazásokhoz az Application proxy használatával
 
@@ -149,7 +149,7 @@ Ha a bejelentkezési identitáshoz a helyszíni **SAM-fiók neve** van használa
 Ha az egyszeri bejelentkezés folyamata során hiba lép fel, az az összekötő számítógép eseménynaplójában jelenik meg, a [Hibaelhárítás](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)során.
 Bizonyos esetekben azonban a rendszer sikeresen elküldte a kérést a háttérbeli alkalmazásnak, miközben az alkalmazás különböző más HTTP-válaszokban válaszol. Ezeknek az eseteknek a hibaelhárításához a 24029-as számú eseményt kell megvizsgálni az alkalmazásproxy munkamenet-eseménynaplójában. A delegáláshoz használt felhasználói identitás megjelenik a "felhasználó" mezőben az esemény részletei között. A munkamenet-napló bekapcsolásához válassza az **elemzési és hibakeresési naplók megjelenítése** lehetőséget az Eseménynapló Nézet menüjében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazásproxy-alkalmazás konfigurálása a Kerberos által korlátozott delegálás használatára](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Az alkalmazásproxyval kapcsolatos problémák hibaelhárítása](application-proxy-troubleshoot.md)

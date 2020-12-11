@@ -11,12 +11,12 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce77a169e28e21aa37be2a49997a58ee42c93807
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b1a2e802f66132a88060fb74831781055897b077
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510828"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093655"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Az ELŐREJELZÉSsel rendelkező gépi tanulási modellek pontszáma
 
@@ -35,7 +35,7 @@ A dedikált SQL-készlet előre betanított modellt vár. Tartsa szem előtt a k
 
 - A dedikált SQL-készlet csak a ONNX formátumot támogatja. A ONNX egy nyílt forráskódú modell formátuma, amely lehetővé teszi a különböző keretrendszerek közötti modellek cseréjét az együttműködés lehetővé tételéhez. A meglévő modelleket ONNX formátumra konvertálhatja olyan keretrendszerek használatával, amelyek natív módon támogatják vagy a csomagok átalakítását is lehetővé teszik. A [sklearn-Onnx](https://github.com/onnx/sklearn-onnx) csomag például a scikit-Learn modellek konvertálása Onnx. A [ONNX GitHub-adattár](https://github.com/onnx/tutorials#converting-to-onnx-format) a támogatott keretrendszerek és példák listáját tartalmazza.
 
-   Ha az [automatikus ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) -t használja a betanításhoz, ügyeljen arra, hogy a *enable_onnx_compatible_models* paraméter értéke TRUE (igaz) legyen, hogy Onnx formátumú modellt hozzon létre. Az [automatizált Machine learning notebookon](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) látható egy példa arra, hogyan használható a AUTOML a ONNX formátumú gépi tanulási modell létrehozásához.
+   Ha az [automatikus ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) -t használja a betanításhoz, ügyeljen arra, hogy a *enable_onnx_compatible_models* paraméter értéke TRUE (igaz) legyen, hogy Onnx formátumú modellt hozzon létre. Az [automatizált Machine learning notebookon](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) látható egy példa arra, hogyan használható az automatikus ml a ONNX formátumú gépi tanulási modell létrehozásához.
 
 - A bemeneti adatok a következő adattípusokat támogatják:
     - int, bigint, valós, float

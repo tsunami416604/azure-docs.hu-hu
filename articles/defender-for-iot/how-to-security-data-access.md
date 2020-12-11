@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 677ab3327f2357ce7b242c314b44702370779def
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c4f65da4f9a4f7ade94d76e99d57439e62b3c808
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351673"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092057"
 ---
 # <a name="access-your-security-data"></a>Hozzáférés a biztonsági adataihoz
 
@@ -37,7 +37,7 @@ A riasztások és javaslatok elérése a Log Analytics munkaterületen a konfigu
 1. Válasszon ki egy riasztást vagy javaslatot a Defender for IoT.
 1. Kattintson a **további vizsgálat** elemre, majd kattintson **ide a riasztást tartalmazó eszközök megtekintéséhez kattintson ide, és tekintse meg a DeviceID oszlopot**.
 
-A Log Analytics adatainak lekérdezésével kapcsolatos részletekért lásd: Ismerkedés [a lekérdezésekkel a log Analyticsban](//azure/log-analytics/query-language/get-started-queries).
+A Log Analytics adatainak lekérdezésével kapcsolatos részletekért lásd: Ismerkedés [a lekérdezésekkel a log Analyticsban](/azure/azure-monitor/log-query/get-started-queries).
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
@@ -171,7 +171,7 @@ SecurityRecommendation
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | 1  |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes        | 4   |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el a Defender for IoT [áttekintését](overview.md)
 - Tudnivalók a IoT-architektúra Defender- [architektúráról](architecture.md)

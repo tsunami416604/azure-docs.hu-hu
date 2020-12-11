@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 0d1c2304f68f5e24c45390dca2cc0deb6e8dede2
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 51430a37f34600d3191a646df7c1890b6d94f481
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931945"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033017"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes szolgáltatás (ak) üzemidő SLA
 
@@ -28,13 +28,6 @@ Az ügyfelek továbbra is létrehozhatnak korlátlan számú ingyenes fürtöt 9
 A rendelkezésre állási SLA nyilvános régiókban és Azure Government-régiókban érhető el, ahol az [AK támogatott](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
 
 ## <a name="limitations"></a>Korlátozások
-
-A privát fürtök csak a következő régiókban támogatottak:
- *  USA keleti régiója
- *  USA nyugati régiója
- *  USA 2. nyugati régiója
- *  USA északi középső régiója
- *  USA nyugati középső régiója
 
 ## <a name="sla-terms-and-conditions"></a>SLA-feltételek és kikötések
 

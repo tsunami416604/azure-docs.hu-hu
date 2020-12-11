@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 11/13/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: ced78955c71f37a5a6f5231f61e5327428834f00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca55186a53b228aa97cc82d33a09aa3ffe455eee
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919527"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092006"
 ---
 # <a name="machine-learning-with-apache-spark"></a>Gépi tanulás Apache Spark
 
@@ -43,8 +43,8 @@ További információ a gépi tanulási képességekről: [modellek betanítása
 ### <a name="sparkml-and-mllib"></a>SparkML és MLlib
 A Spark memóriában elosztott számítási képességei jó választást biztosítanak a gépi tanulásban és a Graph-számításokban használt iterációs algoritmusok számára. ```spark.ml``` egységes, magas szintű API-kat biztosít, amelyek segítségével a felhasználók gépi tanulási folyamatokat hozhatnak létre és hangolnak be. További információ ```spark.ml``` a [Apache Spark ml programozási útmutatóban](https://spark.apache.org/docs/1.2.2/ml-guide.html)olvasható.
 
-### <a name="azure-machine-learning-automl"></a>Azure Machine Learning AutoML
-[Azure Machine learning AutoML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (automatizált gépi tanulás) segít automatizálni a gépi tanulási modellek fejlesztésének folyamatát. Lehetővé teszi az adatszakértők, elemzők és fejlesztők számára, hogy a modell minőségének fenntartása mellett nagy mennyiségű, hatékonyságú és termelékenységű ML-modellt építsenek. A Azure Machine Learning AutoML SDK-t futtató összetevők közvetlenül a szinapszis futtatókörnyezetbe vannak építve.
+### <a name="azure-machine-learning-automated-ml"></a>Automatizált ML Azure Machine Learning
+A [Azure Machine learning AUTOMATIZÁLT ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (automatizált gépi tanulás) segít automatizálni a gépi tanulási modellek fejlesztésének folyamatát. Lehetővé teszi az adatszakértők, elemzők és fejlesztők számára, hogy a modell minőségének fenntartása mellett nagy mennyiségű, hatékonyságú és termelékenységű ML-modellt építsenek. A Azure Machine Learning automatizált ML SDK-t futtató összetevők közvetlenül a szinapszis futtatókörnyezetbe vannak építve.
 
 ### <a name="open-source-libraries"></a>Nyílt forráskódú kódtárak
 Az Azure szinapszis Analytics minden Apache Spark készlete előre betöltött és népszerű gépi tanulási kódtárakat tartalmaz.  Az alapértelmezés szerint a kapcsolódó Machine learning-kódtárak közé tartoznak a következők:
@@ -64,11 +64,11 @@ A modell pontozása vagy következtetése az a fázis, ahol a modell az előreje
 ## <a name="register-and-serve-models"></a>Modellek regisztrálása és kiszolgálása
 A modell regisztrálása lehetővé teszi a munkaterületen lévő modellekhez tartozó metaadatok tárolását, verzióját és nyomon követését. A modell képzésének befejezése után a modell regisztrálható a [Azure Machine learning modell beállításjegyzékében](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment#register-package-and-deploy-models-from-anywhere). A regisztrálást követően a ONNX-modellekkel a dedikált SQL-készletekben tárolt [adat](../machine-learning/tutorial-sql-pool-model-scoring-wizard.md) is bővíthető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure szinapszis Analyticsben a gépi tanulás használatának megkezdéséhez tekintse meg az alábbi oktatóanyagokat:
 - [Az adatelemzés az Azure szinapszis notebookokkal](../spark/apache-spark-data-visualization-tutorial.md)
 
-- [Gépi tanulási modell betanítása a AutoML](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- [Gépi tanulási modell betanítása automatizált ML-vel](../spark/apache-spark-azure-machine-learning-tutorial.md)
 
 - [Gépi tanulási modell betanítása Apache Spark MLlib](../spark/apache-spark-machine-learning-mllib-notebook.md)
   

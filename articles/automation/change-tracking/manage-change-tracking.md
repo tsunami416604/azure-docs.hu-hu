@@ -3,14 +3,14 @@ title: A Change Tracking és a leltár kezelése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan használható a Change Tracking és a leltár a szoftverek és a Microsoft-szolgáltatások változásainak nyomon követésére a környezetben.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/02/2020
+ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 99cdc4191320efb37b37e4ec38e808f3961a1207
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288739"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093621"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>A Change Tracking és az Inventory kezelése
 
@@ -47,13 +47,13 @@ A következő lépésekkel konfigurálhatja a Windows rendszerű számítógépe
 
 6. A munkaterület konfigurációja lapon válassza a **Windows-fájlok** lehetőséget, majd kattintson a **+ Hozzáadás** gombra a nyomon követett új fájl hozzáadásához.
 
-7. A Windows-fájl hozzáadása Change Tracking ablaktáblán adja meg a nyomon követni kívánt fájl vagy mappa adatait, majd kattintson a **Save (Mentés** ) gombra. A következő táblázat az információhoz használható tulajdonságokat határozza meg.
+7. A Windows-fájl hozzáadása Change Tracking ablaktáblán adja meg a nyomon követni kívánt fájl vagy mappa adatait, majd kattintson a **Save (Mentés**) gombra. A következő táblázat az információhoz használható tulajdonságokat határozza meg.
 
     |Tulajdonság  |Leírás  |
     |---------|---------|
     |Engedélyezve     | Igaz, ha a beállítás alkalmazva van, ellenkező esetben hamis.        |
     |Elem neve     | A nyomon követett fájl rövid neve.        |
-    |Group     | Egy csoport neve a fájlok logikai csoportosításához.        |
+    |Csoport     | Egy csoport neve a fájlok logikai csoportosításához.        |
     |Elérési út megadása     | A fájl keresésének elérési útja, például **c:\Temp \\ \* . txt**. Használhat környezeti változókat is, például: `%winDir%\System32\\\*.*` .       |
     |Elérési út típusa     | Az elérési út típusa A lehetséges értékek: fájl és mappa.        |    
     |Rekurzió     | True (igaz), ha a rendszer rekurziót használ a nyomon követett elem keresésekor, máskülönben hamis értéket ad.        |    
@@ -74,7 +74,7 @@ A következő lépésekkel konfigurálhatja a fájlok követését a Linux rends
 
 1. Válassza a **beállítások szerkesztése** (a fogaskerék szimbóluma) lehetőséget.
 
-2. A munkaterület konfigurációja lapon válassza a **Linux-fájlok** , majd a **+ Hozzáadás** lehetőséget a nyomon követett új fájl hozzáadásához.
+2. A munkaterület konfigurációja lapon válassza a **Linux-fájlok**, majd a **+ Hozzáadás** lehetőséget a nyomon követett új fájl hozzáadásához.
 
 3. A **change Tracking Linux-fájl hozzáadása** lapon adja meg a nyomon követni kívánt fájl vagy könyvtár adatait, majd kattintson a **Mentés** gombra. A következő táblázat az információhoz használható tulajdonságokat határozza meg.
 
@@ -82,7 +82,7 @@ A következő lépésekkel konfigurálhatja a fájlok követését a Linux rends
     |---------|---------|
     |Engedélyezve     | Igaz, ha a beállítás alkalmazva van, ellenkező esetben hamis.        |
     |Elem neve     | A nyomon követett fájl rövid neve.        |
-    |Group     | Egy csoport neve a fájlok logikai csoportosításához.        |
+    |Csoport     | Egy csoport neve a fájlok logikai csoportosításához.        |
     |Elérési út megadása     | A fájl keresésének elérési útja, például **/etc/*. conf**.       |
     |Elérési út típusa     | Az elérési út típusa A lehetséges értékek a fájl és a könyvtár.        |
     |Rekurzió     | True (igaz), ha a rendszer rekurziót használ a nyomon követett elem keresésekor, máskülönben hamis értéket ad.        |
@@ -99,6 +99,7 @@ A következő lépésekkel konfigurálhatja a fájlok követését a Linux rends
 A fájl tartalmának nyomon követése lehetővé teszi egy fájl tartalmának megtekintését a követett változások előtt és után. A szolgáltatás minden változás után menti a fájl tartalmát egy [Storage-fiókba](../../storage/common/storage-account-overview.md) . Íme néhány, a fájl tartalmának követésére szolgáló szabály:
 
 * A fájl tartalmának tárolásához a Resource Manager-alapú üzemi modellt használó standard Storage-fiók szükséges.
+* Alapértelmezés szerint a tárfiókok bármely hálózatban lévő ügyféltől érkező kapcsolatokat elfogadnak. Ha úgy állította be a Storage-fiókot, hogy csak bizonyos forgalmat engedélyezzen, módosítania kell a konfigurációs szabályokat, hogy az Automation-fiókja csatlakozhasson hozzá. Lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../../storage/common/storage-network-security.md).
 * Ne használja a prémium és a klasszikus telepítési modell Storage-fiókokat. Lásd: [Tudnivalók az Azure Storage-fiókokról](../../storage/common/storage-account-create.md).
 * A Storage-fiókot csak egy Automation-fiókhoz lehet kapcsolni.
 * Az Automation-fiókban engedélyezni kell a Change Tracking és a leltárt.
@@ -151,7 +152,7 @@ A következő lépésekkel konfigurálhatja a beállításjegyzék-kulcsok nyomo
     |---------|---------|
     |Engedélyezve     | Értéke TRUE (igaz), ha egy beállítás alkalmazva van, ellenkező esetben hamis.        |
     |Elem neve     | A nyomon követni kívánt beállításkulcs rövid neve.        |
-    |Group     | Csoport neve a beállításkulcsok logikai csoportosításához.        |
+    |Csoport     | Csoport neve a beállításkulcsok logikai csoportosításához.        |
     |Windows-beállításkulcs   | Az elérési úttal rendelkező kulcsnév, például: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup` .      |
 
 ## <a name="search-logs-for-change-records"></a>Naplók keresése a változási rekordokhoz

@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 5ad69fb6743676189de409df16c046d5361a5a91
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: ad305202daf09258bbd439e824fc07f1eed1c5af
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127047"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033845"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,7 +28,7 @@ Amikor futtatja a mintát IoT Centralhoz való csatlakozáshoz, az eszköz kiép
 
 A `main` metódus:
 
-* `initializeAndProvisionDevice`A modell azonosítójának megadására, a `dtmi:com:example:Thermostat;1` DPS használatával adja meg és regisztrálja az eszközt, hozzon létre egy **DeviceClient** -példányt, és kapcsolódjon a IoT Central alkalmazáshoz.
+* `initializeAndProvisionDevice`A modell azonosítójának megadására, a `dtmi:com:example:Thermostat;1` DPS használatával adja meg és regisztrálja az eszközt, hozzon létre egy **DeviceClient** -példányt, és kapcsolódjon a IoT Central alkalmazáshoz. IoT Central a modell AZONOSÍTÓját használja az eszközhöz tartozó sablon azonosításához vagy létrehozásához. További információ: [eszköz hozzárendelése egy eszköz sablonnal](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Létrehoz egy parancssori kezelőt a `getMaxMinReport` parancshoz.
 * Létrehoz egy tulajdonság-frissítési kezelőt az írható `targetTemperature` tulajdonsághoz.
 * Elindít egy szálat a hőmérséklet telemetria küldéséhez, és `maxTempSinceLastReboot` öt másodpercenként frissíti a tulajdonságot.
@@ -90,7 +90,7 @@ public static void main(String[] args) throws URISyntaxException, IOException, P
 }
 ```
 
-A `initializeAndProvisionDevice` metódus azt mutatja, hogy az eszköz hogyan használja a DPS-t a IoT Centralhoz való regisztráláshoz és kapcsolódáshoz. Az adattartalom tartalmazza a modell AZONOSÍTÓját:
+A `initializeAndProvisionDevice` metódus azt mutatja, hogy az eszköz hogyan használja a DPS-t a IoT Centralhoz való regisztráláshoz és kapcsolódáshoz. Az adattartalom tartalmazza azt a modell-azonosítót, amelyet a IoT Central az [eszköz egy eszköz sablonnal való hozzárendeléséhez](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)használ:
 
 ```java
 private static void initializeAndProvisionDevice() throws ProvisioningDeviceClientException, IOException, URISyntaxException, InterruptedException {

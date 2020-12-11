@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: duau
-ms.custom: contperfq1
-ms.openlocfilehash: bb0d3cebd9382ef2c81b217417cfbcb6198b6ebb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 2742b03bcacd73e7e602666b898417f295905f19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565923"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034071"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Az ExpressRoute kapcsolatcsoport-kiépítési munkafolyamatai és a kapcsolatcsoportok állapotai
 
@@ -108,7 +108,7 @@ A Microsoft online szolgáltatások, például a Microsoft 365 elérésének eng
 A következő szakasz az ExpressRoute partneri kapcsolati modell különböző ExpressRoute-áramköri állapotait ismerteti.
 Minden ExpressRoute-partner áramkör két állapottal rendelkezik:
 
-* A **ServiceProviderProvisioningState** a kapcsolati szolgáltató oldalán lévő állapotot jelöli. Ez lehet *NotProvisioned*, *kiépítés*vagy *üzembe*helyezés. A ExpressRoute áramkörnek kiépített állapotban kell lennie a társítás konfigurálásához. **Ez az állapot csak a ExpressRoute partneri körökre vonatkozik, és nem jelenik meg egy ExpressRoute Direct áramkör tulajdonságaiban**.
+* A **ServiceProviderProvisioningState** a kapcsolati szolgáltató oldalán lévő állapotot jelöli. Ez lehet *NotProvisioned*, *kiépítés* vagy *üzembe* helyezés. A ExpressRoute áramkörnek kiépített állapotban kell lennie a társítás konfigurálásához. **Ez az állapot csak a ExpressRoute partneri körökre vonatkozik, és nem jelenik meg egy ExpressRoute Direct áramkör tulajdonságaiban**.
 
 * Az **állapot** a Microsoft kiépítési állapotát jelöli. Ez a tulajdonság úgy van beállítva, hogy az ExpressRoute-kör létrehozásakor engedélyezve legyen
 
@@ -162,7 +162,7 @@ Igény szerint újra engedélyezheti, vagy PowerShell-parancsmagok futtatásáva
 
 A BGP-kiépítési állapot azt jelenti, hogy a BGP-munkamenet engedélyezve van-e a Microsoft Edge-ben. Az állapotot engedélyezni kell a privát vagy a Microsoft-partnerek használatához.
 
-Fontos, hogy a BGP-munkamenet állapota különösen a Microsoft-társak számára legyen ellenőrizhető. A BGP kiépítési állapotán kívül egy másik, *meghirdetett nyilvános előtagok*nevű állam is van. A meghirdetett nyilvános előtagok állapotának *konfigurált* állapotban kell lennie, mind a BGP-munkamenethez, mind az Útválasztás teljes körű működéséhez. 
+Fontos, hogy a BGP-munkamenet állapota különösen a Microsoft-társak számára legyen ellenőrizhető. A BGP kiépítési állapotán kívül egy másik, *meghirdetett nyilvános előtagok* nevű állam is van. A meghirdetett nyilvános előtagok állapotának *konfigurált* állapotban kell lennie, mind a BGP-munkamenethez, mind az Útválasztás teljes körű működéséhez. 
 
 Ha a meghirdetett nyilvános előtag állapota *érvényesítés szükséges* állapotra van állítva, a BGP-munkamenet nincs engedélyezve, mivel a meghirdetett előtagok nem feleltek meg az as-számnak az útválasztási kibocsátásiegység-forgalmi jegyzékekben.
 

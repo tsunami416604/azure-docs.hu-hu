@@ -7,13 +7,13 @@ ms.topic: how-to
 author: trkeya
 ms.author: trkeya
 ms.date: 10/27/2020
-ms.custom: contperfq2
-ms.openlocfilehash: 3d96973d4d1e37ae3fee21eb70e3e32a45867f0c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 26ceee828bae7ea3fe2d78ec1393f308556b8401
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491953"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033357"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Meglévő ajánlatok frissítése a kereskedelmi piactéren
 
@@ -23,13 +23,13 @@ Ez a cikk bemutatja, hogyan végezheti el a meglévő ajánlatok és csomagok fr
 
 Ezekkel a lépésekkel frissítheti az előzetes verzióra vagy az élő állapotba sikeresen közzétett ajánlatokat.
 
-1. Válassza ki a frissíteni kívánt ajánlat nevét. Az ajánlat állapota az **előnézet** , az **élő** , **a közzététel folyamatban, a** **Vázlat** , a **Figyelem szükséges** vagy **nem érhető el** (ha korábban már kiválasztotta az ajánlat értékesítésének leállítását). A kiválasztást követően megnyílik az ajánlat **Áttekintés** lapja az ajánlathoz.
-1. Válassza ki a frissíteni kívánt ajánlati oldalt, például **Tulajdonságok** , **ajánlati lista** vagy **előnézet** (vagy válassza a **frissítés** lehetőséget a megfelelő kártyáról az **ajánlat áttekintése** lapon).
+1. Válassza ki a frissíteni kívánt ajánlat nevét. Az ajánlat állapota az **előnézet**, az **élő**, **a közzététel folyamatban, a** **Vázlat**, a **Figyelem szükséges** vagy **nem érhető el** (ha korábban már kiválasztotta az ajánlat értékesítésének leállítását). A kiválasztást követően megnyílik az ajánlat **Áttekintés** lapja az ajánlathoz.
+1. Válassza ki a frissíteni kívánt ajánlati oldalt, például **Tulajdonságok**, **ajánlati lista** vagy **előnézet** (vagy válassza a **frissítés** lehetőséget a megfelelő kártyáról az **ajánlat áttekintése** lapon).
 1. Végezze el a módosításokat, majd kattintson a **Piszkozat mentése** gombra. Ismételje meg a folyamatot, amíg az összes módosítás be nem fejeződik.
 1. Tekintse át a módosításokat az **[összehasonlítás](#compare-changes-to-your-offer)** lapon.
 1. Ha készen áll a frissített ajánlat közzétételére, válassza a **felülvizsgálat és közzététel** bármilyen oldalról lehetőséget. Ekkor megnyílik a **felülvizsgálati és közzétételi** oldal. Ezen az oldalon a frissített ajánlat fejezeteinek befejezési állapota látható: 
-    - Nem **közzétett módosítások** : a szakasz frissítve lett, és befejeződött. Minden szükséges információ meg lett adta, és a frissítésekben nem történt hiba.
-    - **Hiányos** : a szakasz azon frissítései, amelyeket meg kell oldani, vagy amelyekhez további információkra van szükség.
+    - Nem **közzétett módosítások**: a szakasz frissítve lett, és befejeződött. Minden szükséges információ meg lett adta, és a frissítésekben nem történt hiba.
+    - **Hiányos**: a szakasz azon frissítései, amelyeket meg kell oldani, vagy amelyekhez további információkra van szükség.
 2. Válassza a **Közzététel** lehetőséget a frissített ajánlat közzétételhez való elküldéséhez. Az ajánlat a normál [ellenőrzési és közzétételi lépéseken](../review-publish-offer.md#validation-and-publishing-steps)keresztül fog haladni.
 
 > [!IMPORTANT]
@@ -49,7 +49,7 @@ Hajtsa végre ezeket a lépéseket egy új csomag egy már közzétett ajánlath
 Hajtsa végre ezeket a lépéseket a már közzétett ajánlatok tervének módosításához.
 
 1. Ha megnyitotta az ajánlat **Áttekintés** lapját, válassza ki a módosítani kívánt csomagot. Ha a csomag nem érhető el a **terv áttekintő** listájában, válassza a **minden csomag megtekintése** lehetőséget.
-1. Válassza ki a csomag **nevét** , **árképzési modelljét** vagy **rendelkezésre állását**. *Jelenleg a csomagok csak angol nyelven érhetők el (Egyesült Államok)*.
+1. Válassza ki a csomag **nevét**, **árképzési modelljét** vagy **rendelkezésre állását**. *Jelenleg a csomagok csak angol nyelven érhetők el (Egyesült Államok)*.
 1. A terv nevének, leírásának vagy a célközönség rendelkezésre állásának módosítása után válassza a **Piszkozat mentése** elemet.
 1. Válassza a **felülvizsgálat és közzététel** lehetőséget, amikor készen áll a frissítések közzétételére. Megnyílik a **[felülvizsgálat és közzététel](../review-publish-offer.md)** lap, amely a frissítések befejezési állapotát biztosítja.
 1. Válassza a **Közzététel** lehetőséget a frissített terv közzétételhez való elküldéséhez. A rendszer e-mailt küld Önnek, ha a frissített ajánlat előzetes verzióját szeretné áttekinteni és jóváhagyni.
@@ -64,10 +64,10 @@ A virtuálisgép-csomag közzétételét követően a díjszabása nem módosít
 Most, hogy eltakarta a tervet a régi árral, hozzon létre egy másolatot a tervről a frissített árral:
 
 1. A partner Centerben lépjen vissza a **terv áttekintés** elemre.
-2. Válassza az **új csomag létrehozása** lehetőséget. Adja meg a **csomag azonosítóját** és a **csomag nevét** , majd válassza a **Létrehozás** lehetőséget.
+2. Válassza az **új csomag létrehozása** lehetőséget. Adja meg a **csomag azonosítóját** és a **csomag nevét**, majd válassza a **Létrehozás** lehetőséget.
 1. Ha újra szeretné használni a technikai konfigurációt a rejtett csomagból, jelölje be a **technikai konfiguráció újrafelhasználása** jelölőnégyzetet. További információért olvassa el [a Create Plans for a VM-ajánlat](../azure-vm-create-plans.md) című témakört.
     > [!IMPORTANT]
-    > Ha azt választja, hogy a **terv újrahasznosítja egy másik csomag technikai konfigurációját** , később nem fogja tudni leállítani a fölérendelt terv értékesítését. Ne használja ezt a beállítást, ha le szeretné állítani a fölérendelt terv értékesítését.
+    > Ha azt választja, hogy a **terv újrahasznosítja egy másik csomag technikai konfigurációját**, később nem fogja tudni leállítani a fölérendelt terv értékesítését. Ne használja ezt a beállítást, ha le szeretné állítani a fölérendelt terv értékesítését.
 3. Fejezze be az új csomaghoz szükséges összes szakaszt, beleértve az új árat is.
 1. Válassza a **Piszkozat mentése** lehetőséget.
 1. Miután elvégezte az összes szükséges szakaszt az új csomaghoz, válassza a **felülvizsgálat és közzététel** lehetőséget. Ez áttekintésre és közzétételre küldi az ajánlatot. További részletekért olvassa el [a kereskedelmi piactérre vonatkozó ajánlat áttekintését és közzétételét](../review-publish-offer.md) .
@@ -102,7 +102,7 @@ Mielőtt közzéteszi az élő vagy [előnézeti](#compare-changes-to-a-preview-
   ![A közzétett vagy előnézeti ajánlat frissítéseinek összehasonlítására szolgáló szűrők](./media/compare-changes-marketplace.png)
 
 >[!NOTE]
-> A következő lapok jelenleg nem támogatják az **összehasonlítást** :
+> A következő lapok jelenleg nem támogatják az **összehasonlítást**:
 >- CSP viszonteladói közönség
 >- Tesztelési meghajtó technikai konfigurációja
 >- A Marketplace piactér-lista tesztelése
@@ -137,6 +137,6 @@ Az ajánlat vagy a csomag értékesítésének leállítása után a partner Cen
 
 A meglévő ügyfelektől származó ajánlatok eltávolításához [Jelentkezzen be egy támogatási kérést](https://aka.ms/marketplacepublishersupport). A támogatási téma listán válassza a **kereskedelmi Piactéri**  >  **ajánlat vagy az alkalmazás-törlés, az Eltávolítás vagy a megszüntetés** lehetőséget, és küldje el a kérelmet. A támogatási csapat végigvezeti az ajánlat-eltávolítási folyamaton.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A kereskedelmi piactér ajánlat közzétételi állapotának megtekintése](../review-publish-offer.md)

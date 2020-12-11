@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75839893d0048841440f2c790df7d23ad825d962
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87909323"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093468"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Belső felhasználók meghívása B2B együttműködésre
 
@@ -32,7 +32,7 @@ Egy meglévő belső fiókra irányuló Meghívás küldése lehetővé teszi a 
 
 Nyilvános előzetes verzióban a belső felhasználók VÁLLALATKÖZI együttműködésre való meghívásához a jelen cikkben ismertetett módszer nem használható ezekben a példányokban:
 
-- A belső felhasználóhoz már hozzá van rendelve egy Exchange-licenc.
+- A belső felhasználónak van hozzárendelt Exchange-licence.
 - A felhasználó olyan tartományból származik, amely közvetlen összevonás beállítására van beállítva a címtárban.
 - A belső felhasználó csak felhőalapú fiók, a fő fiókjuk pedig nem az Azure AD-ben.
 

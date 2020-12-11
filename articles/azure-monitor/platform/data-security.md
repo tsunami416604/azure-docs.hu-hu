@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 5aa379f6601bc324bd08c53f251b2097141eec69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911634"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094335"
 ---
 # <a name="log-analytics-data-security"></a>Adatbiztonság Log Analytics
 Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trust-center?rtc=1)információit.  
@@ -127,7 +127,7 @@ Az Azure Log Analytics megfelel a következő követelményeknek:
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * A " [Payment Card Industry (PCI-kompatibilis") adatbiztonsági szabvány (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) a PCI biztonsági szabványok Tanácsának keretében.
 * [Service Organization Controls (SoC) 1 Type 1 és SoC 2 Type 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) megfelelő
-* [HIPAA és HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) a HIPAA üzleti partneri szerződéssel rendelkező vállalatok számára
+* [HIPAA és HITECH](/compliance/regulatory/offering-hipaa-hitech) a HIPAA üzleti partneri szerződéssel rendelkező vállalatok számára
 * Általános Windows-mérnöki feltételek
 * Microsoft megbízható számítástechnika
 * Azure-szolgáltatásként az Log Analytics által használt összetevők megfelelnek az Azure megfelelőségi követelményeinek. További információk a [Microsoft adatvédelmi központ megfelelőségi](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)szolgáltatásában olvashatók.
@@ -186,7 +186,7 @@ Ezeket a további biztonsági funkciókat a Azure Monitor/Log Analytics-környez
 - Az [Azure Customer kulcstároló](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview) -Ügyfélszéf for Microsoft Azure egy felületet biztosít az ügyfelek számára az ügyfél-hozzáférési kérelmek áttekintéséhez és jóváhagyásához vagy elutasításához. Olyan esetekben használatos, amikor egy Microsoft-mérnöknek egy támogatási kérelem kezelése során hozzá kell férnie az ügyfél adataihoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan gyűjthet adatokat az Azure-beli virtuális gépek Log Analyticsával az [Azure VM](../learn/quick-collect-azurevm.md)gyors üzembe helyezését követően.  
 
 *  Ha a környezetben található fizikai vagy virtuális Windows-vagy Linux-számítógépekről szeretne adatokat gyűjteni, tekintse meg a Linux rendszerű [számítógépek](../learn/quick-collect-linux-computer.md) és a [Windows rendszerű számítógépek](../learn/quick-collect-windows-computer.md) gyors útmutatója című témakört.

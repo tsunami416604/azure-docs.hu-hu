@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 8250f7154cfb2739d065980284da67a200680d89
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 805bc2aecda37599234c81dd928868d8c14aea4e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919722"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97091989"
 ---
 # <a name="train-machine-learning-models"></a>Gépi tanulási modellek betanítása
 Az Azure szinapszis Analytics szolgáltatásban Apache Spark lehetővé teszi a gépi tanulást a big data, így értékes információkhoz juthat a nagy mennyiségű strukturált, strukturálatlan és gyorsan változó adatról. Több lehetőség is rendelkezésre áll, ha a gépi tanulási modellek Azure-beli Spark használatával történő betanítása az Azure szinapszis Analyticsben: Apache Spark MLlib, Azure Machine Learning és számos más nyílt forráskódú kódtár. 
@@ -44,20 +44,20 @@ A Apache Spark Microsoft Machine Learning könyvtára [MMLSpark](https://github.
 A MMLSpark méretezhető ML-modellek, például indexelési karakterláncok, a gépi tanulási algoritmusok által várt elrendezésre, valamint a szolgáltatás-vektorok összeállítására szolgáló réteget biztosít a SparkML alacsony szintű API-jai felett. A MMLSpark könyvtár leegyszerűsíti ezeket és egyéb gyakori feladatokat a PySpark-modellek létrehozásához.
 
 ## <a name="automated-ml-in-azure-machine-learning"></a>Automatizált ML Azure Machine Learning 
-A Azure Machine Learning egy felhőalapú környezet, amely lehetővé teszi a gépi tanulási modellek betanítását, üzembe helyezését, automatizálását, kezelését és nyomon követését. Az automatikus ML (AutoML) Azure Machine Learning elfogadja a betanítási és konfigurációs beállításokat, és automatikusan megismétli a különböző funkciók normalizálása/szabványosítási módszereinek, modelljeinek és hiperparaméter beállításainak kombinációit a legjobb modell megérkezése érdekében. 
+A Azure Machine Learning egy felhőalapú környezet, amely lehetővé teszi a gépi tanulási modellek betanítását, üzembe helyezését, automatizálását, kezelését és nyomon követését. Az automatikus ML Azure Machine Learning fogadja az oktatási és konfigurációs beállításokat, és automatikusan megismétli a különböző funkciók normalizálása/szabványosítási módszereinek, modelljeinek és hiperparaméter beállításainak kombinációját, hogy a legjobb modellre jusson. 
 
-Az Azure szinapszis Analyticsen belüli AutoML használata során kihasználhatja a különböző szolgáltatások közötti mély integrációt a hitelesítés & a modell betanításának egyszerűbbé tétele érdekében. 
+Ha az Azure szinapszis Analyticsben az automatikus ML-t használja, kihasználhatja a különböző szolgáltatások közötti mély integrációt, hogy egyszerűbbé váljon a hitelesítés & a modell betanítása. 
 
 > [!NOTE]
 > 
-> A Azure Machine Learning AutoML kísérletek létrehozásával kapcsolatos további információkért tekintse meg ezt az [oktatóanyagot](./spark/../apache-spark-azure-machine-learning-tutorial.md).
+> A Azure Machine Learning automatizált ML-kísérletek létrehozásával kapcsolatos további információkért tekintse meg ezt az [oktatóanyagot](./spark/../apache-spark-azure-machine-learning-tutorial.md).
 
 ## <a name="azure-cognitive-services"></a>Azure Cognitive Services
 Az [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/what-are-cognitive-services) gépi tanulási funkciókat biztosít az olyan általános problémák megoldásához, mint például a szöveg elemzése az érzelmi hangulathoz, illetve a képek elemzése az objektumok vagy arcok felismeréséhez. Ezen szolgáltatások használatához nincs szükség különleges gépi tanulási vagy adatelemzési ismeretekre. A kognitív szolgáltatás egy gépi tanulási megoldás részét képező alkatrészt vagy az összes összetevőt biztosítja: az adatmennyiséget, az algoritmust és a betanított modellt. Ezeknek a szolgáltatásoknak a célja, hogy általános ismereteket kérjenek az adatairól anélkül, hogy a gépi tanulással vagy az adatelemzéssel kellene foglalkoznia. Ezeket az előre betanított Cognitive Services automatikusan kihasználhatja az Azure szinapszis Analytics szolgáltatáson belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk áttekintést nyújt a gépi tanulási modellek Apache Spark-készletekben az Azure szinapszis Analyticsben való tanításának különböző lehetőségeiről. A modellek betanításával kapcsolatos további információkért tekintse meg az alábbi oktatóanyagot:
 
-- Automatizált ML-kísérletek futtatása a Azure Machine Learning és az Azure szinapszis Analytics használatával: [AutoML-oktatóanyag](./spark/../apache-spark-autoscale.md) 
+- Automatizált ML-kísérletek futtatása a Azure Machine Learning és az Azure szinapszis Analytics használatával: [AUTOMATIZÁLT ml-oktatóanyag](./spark/../apache-spark-autoscale.md) 
 - SparkML-kísérletek futtatása: [Apache SparkML oktatóanyag](../spark/apache-spark-azure-machine-learning-tutorial.md)
 - Az alapértelmezett könyvtárak megtekintése: az [Azure szinapszis Analytics futtatókörnyezete](../spark/apache-spark-version-support.md)

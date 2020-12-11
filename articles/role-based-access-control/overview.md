@@ -9,13 +9,13 @@ ms.topic: overview
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.custom: contperfq1, azuread-video-2020
-ms.openlocfilehash: b61da9710b51ad4802b46cae7625d6ba9a66e86c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperf-fy21q1, azuread-video-2020
+ms.openlocfilehash: a39ae904bb1dd36c3d3e19e8f51ff24e8d975f9b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91595833"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033918"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?
 
@@ -48,7 +48,7 @@ A *rendszerbiztonsági tag* egy olyan objektum, amely egy, az Azure-erőforráso
 
 ### <a name="role-definition"></a>Szerepkör-definíció
 
-A *szerepkör-definíció* engedélyek gyűjteménye. Általában csak *szerepkörnek*nevezik. A szerepkör-definíció a végrehajtható műveletek listáját tartalmazza (például olvasás, írás és törlés). A szerepkör lehet magas szintű (például tulajdonos) vagy specifikus (például virtuálisgép-olvasó).
+A *szerepkör-definíció* engedélyek gyűjteménye. Általában csak *szerepkörnek* nevezik. A szerepkör-definíció a végrehajtható műveletek listáját tartalmazza (például olvasás, írás és törlés). A szerepkör lehet magas szintű (például tulajdonos) vagy specifikus (például virtuálisgép-olvasó).
 
 ![Szerepkör-hozzárendelések szerepkör-definíciója](./media/shared/rbac-role-definition.png)
 
@@ -92,7 +92,7 @@ Tehát mi történik, ha több átfedésben lévő szerepkör-hozzárendelés va
 
 ## <a name="deny-assignments"></a>Megtagadás-hozzárendelések
 
-Korábban az Azure RBAC egy csak engedélyezési modell volt, amely nem rendelkezik megtagadás nélkül, de most az Azure RBAC korlátozott módon támogatja a megtagadási hozzárendeléseket. A szerepkör-hozzárendeléshez hasonlóan a *megtagadási hozzárendelések* egy adott hatókörben egy felhasználóhoz, csoporthoz, egyszerű szolgáltatáshoz vagy felügyelt identitáshoz tartozó megtagadási műveletet rendelnek a hozzáférés megtagadása céljából. A szerepkör-hozzárendelések olyan műveletek készletét határozzák meg, amelyek *engedélyezve*vannak, míg a megtagadási hozzárendelések olyan műveletek készletét határozzák meg, amelyek *nem engedélyezettek*. Vagyis a megtagadás-hozzárendelések akkor is meggátolják, hogy a felhasználók elvégezzék a megadott műveleteket, ha egy szerepkör-hozzárendelés hozzáférést nyújt azokhoz. A megtagadás-hozzárendelések elsőbbséget élveznek a szerepkör-hozzárendelésekkel szemben.
+Korábban az Azure RBAC egy csak engedélyezési modell volt, amely nem rendelkezik megtagadás nélkül, de most az Azure RBAC korlátozott módon támogatja a megtagadási hozzárendeléseket. A szerepkör-hozzárendeléshez hasonlóan a *megtagadási hozzárendelések* egy adott hatókörben egy felhasználóhoz, csoporthoz, egyszerű szolgáltatáshoz vagy felügyelt identitáshoz tartozó megtagadási műveletet rendelnek a hozzáférés megtagadása céljából. A szerepkör-hozzárendelések olyan műveletek készletét határozzák meg, amelyek *engedélyezve* vannak, míg a megtagadási hozzárendelések olyan műveletek készletét határozzák meg, amelyek *nem engedélyezettek*. Vagyis a megtagadás-hozzárendelések akkor is meggátolják, hogy a felhasználók elvégezzék a megadott műveleteket, ha egy szerepkör-hozzárendelés hozzáférést nyújt azokhoz. A megtagadás-hozzárendelések elsőbbséget élveznek a szerepkör-hozzárendelésekkel szemben.
 
 További információ: az [Azure megtagadási hozzárendeléseinek megismerése](deny-assignments.md).
 
@@ -120,7 +120,7 @@ Az Azure RBAC a következő magas szintű lépésekkel határozza meg, hogy van-
 
 [!INCLUDE [Azure AD free license](../../includes/active-directory-free-license.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)
 - [A különböző szerepkörök ismertetése](rbac-and-directory-admin-roles.md)

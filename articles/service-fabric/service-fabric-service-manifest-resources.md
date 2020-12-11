@@ -3,13 +3,13 @@ title: Service Fabric szolgáltatási végpontok meghatározása
 description: A végponti erőforrások leírása a szolgáltatás jegyzékfájljában, beleértve a HTTPS-végpontok beállítását is
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 5e8f39fe25011d02b989614fdc6538cd92c12d4e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 0ed5a4aa8993f52d42b97288cd143e6114ff36ff
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313570"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033306"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Erőforrások meghatározása a szolgáltatás jegyzékfájljában
 ## <a name="overview"></a>Áttekintés
@@ -102,7 +102,7 @@ A következő szolgáltatási jegyzékfájl egy TCP-végponti erőforrást és k
 ```
 
 ## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Példa: HTTPS-végpont megadása a szolgáltatáshoz
-A HTTPS protokoll kiszolgáló-hitelesítést biztosít, és az ügyfél-kiszolgáló kommunikáció titkosítására is használható. Ha engedélyezni szeretné a HTTPS-t a Service Fabric szolgáltatáson, adja meg a protokollt a szolgáltatás jegyzékfájljának *erőforrások-> végpontok-> végpont* szakaszában, ahogy azt a végpont *ServiceEndpoint3*korábban is mutatja.
+A HTTPS protokoll kiszolgáló-hitelesítést biztosít, és az ügyfél-kiszolgáló kommunikáció titkosítására is használható. Ha engedélyezni szeretné a HTTPS-t a Service Fabric szolgáltatáson, adja meg a protokollt a szolgáltatás jegyzékfájljának *erőforrások-> végpontok-> végpont* szakaszában, ahogy azt a végpont *ServiceEndpoint3* korábban is mutatja.
 
 > [!NOTE]
 > A szolgáltatás protokollja nem módosítható az alkalmazások frissítése közben. Ha a frissítés során módosul, akkor ez a változás megszakítása.
@@ -156,7 +156,7 @@ A HTTPS protokoll kiszolgáló-hitelesítést biztosít, és az ügyfél-kiszolg
 </ApplicationManifest>
 ```
 
-Linux-fürtök esetén a **saját** áruház alapértelmezett értéke a **/var/lib/sfcerts**mappa.
+Linux-fürtök esetén a **saját** áruház alapértelmezett értéke a **/var/lib/sfcerts** mappa.
 
 Egy HTTPS-végpontot használó teljes alkalmazásra példát a következő témakörben talál: [https-végpont hozzáadása ASP.net Core webes API előtér-szolgáltatáshoz a vércse használatával](./service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest).
 

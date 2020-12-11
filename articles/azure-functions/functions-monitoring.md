@@ -4,13 +4,13 @@ description: Ismerje meg, hogyan használható az Azure Application Insights és
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.custom: devx-track-csharp, fasttrack-edit, contperfq2, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: b27fb14341e07683d66418485158a94c18e7a997
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
+ms.openlocfilehash: 7dbaa8712e09de9084e2bcb66d43f2181af292a0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748162"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033034"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -95,9 +95,9 @@ Egy alkalmazás fejlesztése során gyakran érdemes megtekinteni, hogy mi tört
 
 Kétféle módon lehet megtekinteni a függvények végrehajtásával létrejövő naplózási adat streamjét.
 
-* **Beépített log streaming** : a app Service platformon megtekintheti az alkalmazás naplófájljainak streamjét. Ez az adatfolyam megegyezik azzal a kimenettel, amelyet a függvények hibakeresése során észlelt a [helyi fejlesztés](functions-develop-local.md) során, és amikor a portálon a **test (teszt** ) lapot használja. Megjelenik az összes napló alapú információ. További információ: stream- [naplók](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Ez a folyamatos átviteli módszer csak egyetlen példányt támogat, és nem használható a Linux rendszeren futó alkalmazással egy használati tervben.
+* **Beépített log streaming**: a app Service platformon megtekintheti az alkalmazás naplófájljainak streamjét. Ez az adatfolyam megegyezik azzal a kimenettel, amelyet a függvények hibakeresése során észlelt a [helyi fejlesztés](functions-develop-local.md) során, és amikor a portálon a **test (teszt** ) lapot használja. Megjelenik az összes napló alapú információ. További információ: stream- [naplók](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Ez a folyamatos átviteli módszer csak egyetlen példányt támogat, és nem használható a Linux rendszeren futó alkalmazással egy használati tervben.
 
-* **Élő metrikastream** : Ha a function alkalmazás [Application Insightshoz csatlakozik](configure-monitoring.md#enable-application-insights-integration), a Azure Portal a [élő metrikastream](../azure-monitor/app/live-stream.md)használatával megtekintheti a naplózási adatokat és az egyéb mérőszámokat közel valós időben. Ezt a módszert akkor használja, ha több példányon vagy Linuxon futó figyelési funkciót használ a használati tervben. Ez a metódus [mintavételes adathalmazt](configure-monitoring.md#configure-sampling)használ.
+* **Élő metrikastream**: Ha a function alkalmazás [Application Insightshoz csatlakozik](configure-monitoring.md#enable-application-insights-integration), a Azure Portal a [élő metrikastream](../azure-monitor/app/live-stream.md)használatával megtekintheti a naplózási adatokat és az egyéb mérőszámokat közel valós időben. Ezt a módszert akkor használja, ha több példányon vagy Linuxon futó figyelési funkciót használ a használati tervben. Ez a metódus [mintavételes adathalmazt](configure-monitoring.md#configure-sampling)használ.
 
 A naplózási streamek a Portálon és a legtöbb helyi fejlesztési környezetben is megtekinthetők. A naplózási adatfolyamok engedélyezésével kapcsolatos további információkért lásd: [streaming-végrehajtási naplók engedélyezése Azure Functionsban](streaming-logs.md).
 

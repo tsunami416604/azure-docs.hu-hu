@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf9fd361dea43b1cfa6ae45710a3a7bbf4e4de03
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b18e1cd20a4b0a886258fd56003cd273d92381fa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006285"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093978"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (nagyméretű példányok) hálózati architektúrája
 
@@ -149,7 +149,7 @@ Alapértelmezés szerint a tranzitív útválasztás nem működik ezekben a for
 A tranzitív útválasztás három módon engedélyezhető a következő helyzetekben:
 
 - Fordított proxy az adatok továbbításához a és a között. Például az F5 BIG-IP, NGINX és Traffic Manager üzembe helyezése az Azure-beli virtuális hálózaton, amely a HANA nagyméretű példányokhoz és a helyszíni környezethez csatlakozik virtuális tűzfal/forgalom-útválasztási megoldásként.
-- A Linux rendszerű virtuális gépeken az [iptables szabályok](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) használatával engedélyezhető a helyszíni és a Hana nagyméretű példány-egységek, illetve a különböző régiókban található Hana nagyméretű példányok közötti útválasztás. Az iptables rendszert futtató virtuális GÉPET az Azure virtuális hálózatban kell telepíteni, amely a HANA nagyméretű példányokhoz és a helyszíni környezethez csatlakozik. Ennek megfelelően méretezni kell a virtuális gépet, hogy a virtuális gép hálózati átviteli sebessége elegendő legyen a várt hálózati forgalomhoz. A virtuális gép hálózati sávszélességével kapcsolatos részletekért lásd az [Azure-beli Linux rendszerű virtuális gépek méreteit](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ismertető cikket.
+- A Linux rendszerű virtuális gépeken az iptables szabályok használatával engedélyezhető a helyszíni és a HANA nagyméretű példány-egységek, illetve a különböző régiókban található HANA nagyméretű példányok közötti útválasztás. Az iptables rendszert futtató virtuális GÉPET az Azure virtuális hálózatban kell telepíteni, amely a HANA nagyméretű példányokhoz és a helyszíni környezethez csatlakozik. Ennek megfelelően méretezni kell a virtuális gépet, hogy a virtuális gép hálózati átviteli sebessége elegendő legyen a várt hálózati forgalomhoz. A virtuális gép hálózati sávszélességével kapcsolatos részletekért lásd az [Azure-beli Linux rendszerű virtuális gépek méreteit](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ismertető cikket.
 - [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) lenne egy másik megoldás, amely lehetővé teszi a közvetlen forgalmat a helyszíni és a HANA nagyméretű példányok között. 
 
 A rendszer az összes forgalmat egy Azure-beli virtuális hálózaton keresztül irányítja át, így a forgalmat a használt Soft-készülékek vagy az Azure hálózati biztonsági csoportok is korlátozzák, így bizonyos IP-címek vagy IP-címtartományok blokkolása vagy explicit módon engedélyezett a HANA nagyméretű példányaihoz való hozzáféréshez. 

@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc5f902d75084d649f211d589e53041f1eb37f0e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e240e8ec53ce007be1a858af7b6e41273ca8831
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012714"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093638"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Mennyi ideig tart az Azure AD Store jelentéskészítési adatai?
 
@@ -47,7 +47,7 @@ Ebből a cikkből megtudhatja, hogyan használhatók az adatmegőrzési szabály
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Milyen hamar láthatom a tevékenységek információit a prémium szintű licenc beszerzése után?
 
-Ha már rendelkezik a tevékenységek adataival az ingyenes licenccel, akkor azonnal megtekintheti a frissítést. Ha nem rendelkezik az adataival, a rendszer egy vagy két napot is igénybe vesz, hogy az adatai megjelenjenek a jelentésekben a prémium szintű licencre való frissítés után.
+Ha már rendelkezik a tevékenységek adataival az ingyenes licenccel, akkor azonnal megtekintheti a frissítést. Ha nem rendelkezik az adataival, akkor az adatjelentések a prémium szintű licencre való frissítés után akár három napig is eltarthat.
 
 ---
 
@@ -63,7 +63,7 @@ A biztonsági jelek esetében a begyűjtési folyamat elindul, amikor bekapcsolj
 
 | Jelentés                 | Azure AD Free | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
 | :--                    | :--           | :--                 | :--                 |
-| Naplók             | 7 nap        | 30 nap             | 30 nap             |
+| Auditnaplók             | 7 nap        | 30 nap             | 30 nap             |
 | Bejelentkezések               | 7 nap        | 30 nap             | 30 nap             |
 | Azure AD MFA-használat        | 30 nap       | 30 nap             | 30 nap             |
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: fca98414a87f3b8a4f3c0969a28ee95c7ed47dc3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501578"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092142"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management Soft-Delete (előzetes verzió)
 
@@ -27,7 +27,7 @@ A Soft-delete funkció [Rest APIon](/rest/api/apimanagement/2020-06-01-preview/a
 > [!TIP]
 > Az Azure REST API-k meghívására szolgáló tippekkel és eszközökkel kapcsolatban tekintse meg az [azure REST API-referenciát](/rest/api/azure/) .
 
-| Művelet | Description | API Management névtér | API minimális verziója |
+| Művelet | Leírás | API Management névtér | API minimális verziója |
 |--|--|--|--|
 | [Létrehozás vagy frissítés](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Létrehoz vagy frissít egy API Management szolgáltatást.  | API Management szolgáltatás | Bármelyik |
 | [Létrehozás vagy frissítés](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) `restore` **igaz** értékre beállított tulajdonsággal | API Management szolgáltatás törlésének visszavonása, ha korábban már törölve lett. Ha `restore` meg van adva, és az `true` összes többi tulajdonságra van beállítva, figyelmen kívül lesz hagyva.  | API Management szolgáltatás |  2020-06-01 – előzetes verzió |
@@ -48,11 +48,11 @@ Ha a APIM példánya 48 órán belül nem állítható helyre, akkor a rendszer 
 
 ## <a name="list-deleted-apim-instances"></a>Törölt APIM-példányok listázása
 
-Az [előfizetési](/deletedservices/listbysubscription) műveletek alapján ellenőrizheti, hogy van-e helyreállítható APIM-példány (Törlés visszavonása) a [törölt szolgáltatások használatával](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) .
+Az [előfizetési](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) műveletek alapján ellenőrizheti, hogy van-e helyreállítható APIM-példány (Törlés visszavonása) a [törölt szolgáltatások használatával](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) .
 
 ### <a name="get-a-soft-deleted-instance-by-name"></a>A törölt példányok neve alapján
 
-Használja az Azure [Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) - `{subscriptionId}` `{location}` `{serviceName}` előfizetése, az erőforrás helye és a API Management példány neve alapján az API Management Get by Name műveletet
+Használja az Azure [](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) - `{subscriptionId}` `{location}` `{serviceName}` előfizetése, az erőforrás helye és a API Management példány neve alapján az API Management Get by Name műveletet
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/deletedservices/{serviceName}?api-version=2020-06-01-preview
@@ -76,7 +76,7 @@ Ha a törlés visszavonására van lehetőség, az Azure a és a APIM-példány�
 
 ### <a name="list-all-soft-deleted-instances-for-a-given-subscription"></a>Egy adott előfizetés összes lágyan törölt példányának listázása
 
-Használja a API Management [listát előfizetési](/deletedservices/listbysubscription) művelettel, az `{subscriptionId}` előfizetés-azonosítóval való helyettesítéssel:
+Használja a API Management [listát előfizetési](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) művelettel, az `{subscriptionId}` előfizetés-azonosítóval való helyettesítéssel:
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/deletedservices?api-version=2020-06-01-preview
@@ -111,7 +111,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="purge-a-soft-deleted-apim-instance"></a>Helyreállítható APIM-példány törlése
 
-Az Azure- [Purge](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) `{subscriptionId}` `{location}` `{serviceName}` előfizetése, az erőforrás helye és a API Management neve helyett használja a API Management kiürítési műveletet, a és a helyettesítését:
+Az Azure- [](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) `{subscriptionId}` `{location}` `{serviceName}` előfizetése, az erőforrás helye és a API Management neve helyett használja a API Management kiürítési műveletet, a és a helyettesítését:
 
 ```rest
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/deletedservices/{serviceName}?api-version=2020-06-01-preview
@@ -119,7 +119,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Mic
 
 Ezzel véglegesen törli a API Management példányt az Azure-ból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a hosszú távú API Management biztonsági mentési és helyreállítási lehetőségekkel:
 

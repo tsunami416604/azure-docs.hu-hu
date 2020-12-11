@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli, contperfq2
+ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
 ms.date: 11/23/2020
-ms.openlocfilehash: f5b8497772a14e9613977c9cdc22025e8e58b92c
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: bc172fd1702addf8f4e34094452a779b09320a4d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509470"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033374"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Gyors útmutató: logikai alkalmazások létrehozása és kezelése az Azure CLI használatával
 
@@ -92,7 +92,7 @@ A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/a
 | --------- | ----- | ----------- |
 | Munkafolyamat-definíció | `--definition` | Egy JSON-fájl a logikai alkalmazás [munkafolyamatának definíciójában](#workflow-definition). |
 | Hely | `--location -l` | Az az Azure-régió, amelyben a logikai alkalmazás található. |
-| Name | `--name -n` | A logikai alkalmazás neve. A név csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ), zárójeleket ( `()` ) és pontokat ( `.` ) tartalmazhat. A névnek egyedinek kell lennie régiók között is. |
+| Name (Név) | `--name -n` | A logikai alkalmazás neve. A név csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ), zárójeleket ( `()` ) és pontokat ( `.` ) tartalmazhat. A névnek egyedinek kell lennie régiók között is. |
 | Erőforráscsoport neve | `--resource-group -g` | Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) , amelyben létre szeretné hozni a logikai alkalmazást. [Hozzon létre egy erőforráscsoportot](#example---create-resource-group) , mielőtt elkezdené, ha még nem rendelkezik ilyennel a logikai alkalmazáshoz. |
 
 További [választható paramétereket](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters) is beállíthat a logikai alkalmazás hozzáférés-vezérlésének, végpontjának, integrációs fiókjának, integrációs szolgáltatási környezetének, állapotának és erőforrás-címkének konfigurálásához.
@@ -150,7 +150,7 @@ A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/a
 
 | Paraméter | Érték | Leírás |
 | --------- | ----- | ----------- |
-| Név | `--name -n` | A logikai alkalmazás neve. |
+| Name (Név) | `--name -n` | A logikai alkalmazás neve. |
 | Erőforráscsoport neve | `-resource-group -g` | Az az erőforráscsoport, amelyben a logikai alkalmazás található. |
 
 A megerősítési kérések kihagyásához [választható paramétert](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-optional-parameters) is hozzáadhat `--yes -y` .
@@ -200,7 +200,7 @@ A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/a
 
 | Paraméter | Érték | Leírás |
 | --------- | ----- | ----------- |
-| Név | `--name -n` | A logikai alkalmazás neve. |
+| Name (Név) | `--name -n` | A logikai alkalmazás neve. |
 | Erőforráscsoport neve | `--resource-group -g` | Azon erőforráscsoport neve, amelyben a logikai alkalmazás található. |
 
 ### <a name="example---get-logic-app"></a>Példa – logikai alkalmazás beolvasása

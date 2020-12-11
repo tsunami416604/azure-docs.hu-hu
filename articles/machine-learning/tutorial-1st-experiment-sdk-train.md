@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 17bf7b3f457ff6046d92012ffd679ed4b9315530
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a2f76df05878151405d56b1bff5e588f426d9d92
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574122"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093553"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Oktatóanyag: az első gépi tanulási modell betanítása (4. rész)
 
@@ -133,7 +133,7 @@ Hozzon létre egy új Python-fájlt a (z) `tutorial` nevű könyvtárban `04-run
 :::row-end:::
 
 > [!div class="nextstepaction"]
-> [Létrehoztam a vezérlési parancsfájlt](?success=control-script#submit) [, amely egy hibába ütközött](https://www.research.net/r/7CTJQQ?issue=control-script)
+> [Létrehoztam a vezérlési parancsfájlt](?success=control-script#submit) [, amely egy hibába ütközött](https://www.research.net/r/7CTJQQN?issue=control-script)
 
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> A Futtatás beküldése Azure Machine Learningre
@@ -186,7 +186,7 @@ Azure Machine Learning is karbantartja a kurátori környezetek gyűjteményét.
 Röviden, a regisztrált környezetek használatával időt takaríthat meg! További információért olvassa el [a környezetek használatát](./how-to-use-environments.md) ismertető témakört.
 
 > [!div class="nextstepaction"]
-> [Elküldtem a futtatást](?success=test-w-environment#log) [egy hibával](https://www.research.net/r/7CTJQQ?issue=test-w-environment)
+> [Elküldtem a futtatást](?success=test-w-environment#log) [egy hibával](https://www.research.net/r/7CTJQQN?issue=test-w-environment)
 
 ## <a name="log-training-metrics"></a><a name="log"></a> A betanítási mérőszámok naplózása
 
@@ -203,7 +203,7 @@ Módosítsa a `train.py` parancsfájlt úgy, hogy a kód két további sorát ta
 
 #### <a name="understand-the-additional-two-lines-of-code"></a>A kód további két sorának megismerése
 
-A alkalmazásban a `train.py` metódus használatával érheti el _within_ a Run objektumot a betanítási parancsfájlból, `Run.get_context()` és használhatja azt a metrikák naplózásához:
+A alkalmazásban a `train.py` metódus használatával érheti el  a Run objektumot a betanítási parancsfájlból, `Run.get_context()` és használhatja azt a metrikák naplózásához:
 
 ```python
 # in train.py
@@ -221,7 +221,7 @@ A Azure Machine Learning metrikái a következők:
 - Úgy tervezték, hogy méretezhető legyen, így Ön is megőrizheti ezeket az előnyöket, még akkor is, ha több száz kísérletet futtat.
 
 > [!div class="nextstepaction"]
-> [Módosítottam Train.py ](?success=modify-train#log) [egy probléma](https://www.research.net/r/7CTJQQ?issue=modify-train)
+> [Módosítottam Train.py ](?success=modify-train#log) [egy probléma](https://www.research.net/r/7CTJQQN?issue=modify-train)
 
 ### <a name="update-the-conda-environment-file"></a>A Conda-környezet fájljának frissítése
 
@@ -230,7 +230,7 @@ A `train.py` szkript csak új függőséget vett igénybe `azureml.core` . A `py
 :::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/configuration/pytorch-aml-env.yml":::
 
 > [!div class="nextstepaction"]
-> [Frissítettem a](?success=update-environment#submit-again) [probléma állapotba helyezett](https://www.research.net/r/7CTJQQ?issue=update-environment) környezeti fájlt
+> [Frissítettem a](?success=update-environment#submit-again) [probléma állapotba helyezett](https://www.research.net/r/7CTJQQN?issue=update-environment) környezeti fájlt
 
 ### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> A Futtatás beküldése Azure Machine Learningre
 A szkript elküldése még egyszer:
@@ -244,9 +244,9 @@ Ez alkalommal, amikor felkeresi a stúdiót, ugorjon a **metrikák** lapra, ahol
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="A metrikák lapon megjelenő adatvesztési gráf":::
 
 > [!div class="nextstepaction"]
-> [Újraküldöttem a futtatást](?success=resubmit-with-logging#next-steps) [egy hibába](https://www.research.net/r/7CTJQQ?issue=resubmit-with-logging)
+> [Újraküldöttem a futtatást](?success=resubmit-with-logging#next-steps) [egy hibába](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a munkamenetben egy alapszintű "Helló világból" frissítünk. parancsfájlt egy reálisabb betanítási parancsfájlhoz, amely egy adott Python-környezet futtatásához szükséges. Megismerte, hogyan végezheti el a helyi Conda-környezetet a felhőben Azure Machine Learning környezettel. Végül azt is láttuk, hogy a kódok néhány sorában hogyan naplózhatja a mérőszámokat Azure Machine Learningba.
 

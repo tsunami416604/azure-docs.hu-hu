@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 44f6d700ff25f0c2f2cb8bedc5c2d15ad2adcb83
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: c25f3965775c6518629c92ccc371855d9178e648
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320822"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033714"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Számítási célok beállítása a modell betanításához és üzembe helyezéséhez
 
@@ -58,9 +58,9 @@ A Azure Machine Learning segítségével különböző erőforrásokra és körn
 
 ## <a name="local-computer"></a><a id="local"></a>Helyi számítógép
 
-Ha a helyi számítógépet használja a **betanításhoz** , nem kell számítási célt létrehoznia.  Csak [küldje el a képzést](how-to-set-up-training-targets.md) a helyi gépről.
+Ha a helyi számítógépet használja a **betanításhoz**, nem kell számítási célt létrehoznia.  Csak [küldje el a képzést](how-to-set-up-training-targets.md) a helyi gépről.
 
-Ha a helyi számítógépet használja a **következtetéshez** , telepítve kell lennie a Docker-nek. Az üzemelő példány végrehajtásához használja a [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-port-none-) lehetőséget a webszolgáltatás által használt port definiálásához. Ezután használja a normál telepítési folyamatot a [modellek üzembe helyezése Azure Machine learning](how-to-deploy-and-where.md)használatával című témakörben leírtak szerint.
+Ha a helyi számítógépet használja a **következtetéshez**, telepítve kell lennie a Docker-nek. Az üzemelő példány végrehajtásához használja a [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-port-none-) lehetőséget a webszolgáltatás által használt port definiálásához. Ezután használja a normál telepítési folyamatot a [modellek üzembe helyezése Azure Machine learning](how-to-deploy-and-where.md)használatával című témakörben leírtak szerint.
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Távoli virtuális gépek
 
@@ -70,14 +70,14 @@ Használhat egy rendszer által készített Conda-környezetet, egy már meglév
 
 Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használata választható Azure-beli virtuális gép. Ez a virtuális gép egy előre konfigurált adatelemzési és AI-fejlesztési környezet az Azure-ban. A virtuális gép számos eszközt és keretrendszert kínál a teljes életciklusú gépi tanulás fejlesztéséhez. A DSVM és a Azure Machine Learning használatával kapcsolatos további információkért lásd: [fejlesztési környezet konfigurálása](./how-to-configure-environment.md#dsvm).
 
-1. **Létrehozás** : hozzon létre egy DSVM, mielőtt a modellt betanítani. Az erőforrás létrehozásával kapcsolatban tekintse meg [a Linux (Ubuntu) Data Science Virtual Machine kiépítése](./data-science-virtual-machine/dsvm-ubuntu-intro.md)című témakört.
+1. **Létrehozás**: hozzon létre egy DSVM, mielőtt a modellt betanítani. Az erőforrás létrehozásával kapcsolatban tekintse meg [a Linux (Ubuntu) Data Science Virtual Machine kiépítése](./data-science-virtual-machine/dsvm-ubuntu-intro.md)című témakört.
 
     > [!WARNING]
     > Azure Machine Learning csak az **Ubuntut** futtató virtuális gépeket támogatja. Amikor létrehoz egy virtuális gépet, vagy egy meglévő virtuális gépet választ, ki kell választania egy Ubuntut használó virtuális gépet.
     > 
     > A Azure Machine Learning azt is megköveteli, hogy a virtuális gép __nyilvános IP-címmel__ rendelkezzen.
 
-1. **Csatolás** : Ha egy meglévő virtuális gépet számítási célként szeretne csatolni, meg kell adnia a virtuális gép erőforrás-azonosítóját, felhasználónevét és jelszavát. A virtuális gép erőforrás-azonosítója az előfizetés-azonosító, az erőforráscsoport neve és a virtuális gép neve alapján hozható létre a következő karakterlánc-formátum használatával: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
+1. **Csatolás**: Ha egy meglévő virtuális gépet számítási célként szeretne csatolni, meg kell adnia a virtuális gép erőforrás-azonosítóját, felhasználónevét és jelszavát. A virtuális gép erőforrás-azonosítója az előfizetés-azonosító, az erőforráscsoport neve és a virtuális gép neve alapján hozható létre a következő karakterlánc-formátum használatával: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
  
    ```python
@@ -102,7 +102,7 @@ Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használa
     > [!WARNING]
     > Ne hozzon létre egyszerre több, egyidejű mellékletet ugyanahhoz a DSVM a munkaterületről. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
 
-1. **Konfigurálás** : hozzon létre egy futtatási konfigurációt a DSVM számítási célhoz. A Docker és a Conda a DSVM lévő képzési környezet létrehozásához és konfigurálásához használható.
+1. **Konfigurálás**: hozzon létre egy futtatási konfigurációt a DSVM számítási célhoz. A Docker és a Conda a DSVM lévő képzési környezet létrehozásához és konfigurálásához használható.
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -128,7 +128,7 @@ Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használa
 
 Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apache Spark biztosít, amely a modell betanítására használható.
 
-1. **Létrehozás** : hozza létre a HDInsight-fürtöt, mielőtt felhasználja a modell betanításához. A Spark on HDInsight-fürt létrehozásával kapcsolatban lásd: [Spark-fürt létrehozása a HDInsight-ben](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+1. **Létrehozás**: hozza létre a HDInsight-fürtöt, mielőtt felhasználja a modell betanításához. A Spark on HDInsight-fürt létrehozásával kapcsolatban lásd: [Spark-fürt létrehozása a HDInsight-ben](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
     > [!WARNING]
     > Azure Machine Learning megköveteli, hogy a HDInsight-fürt __nyilvános IP-címmel__ rendelkezzen.
@@ -137,7 +137,7 @@ Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apa
     
     A fürt létrehozása után kapcsolódjon hozzá az állomásnév \<clustername> -SSH.azurehdinsight.net, ahol a a \<clustername> fürthöz megadott név. 
 
-1. **Csatolás** : Ha egy HDInsight-fürtöt számítási célként kíván csatolni, meg kell adnia a HDInsight-fürt erőforrás-azonosítóját, felhasználónevét és jelszavát. A HDInsight-fürt erőforrás-azonosítója az előfizetés-azonosító, az erőforráscsoport neve és a HDInsight-fürt neve alapján hozható létre a következő karakterlánc-formátum használatával: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
+1. **Csatolás**: Ha egy HDInsight-fürtöt számítási célként kíván csatolni, meg kell adnia a HDInsight-fürt erőforrás-azonosítóját, felhasználónevét és jelszavát. A HDInsight-fürt erőforrás-azonosítója az előfizetés-azonosító, az erőforráscsoport neve és a HDInsight-fürt neve alapján hozható létre a következő karakterlánc-formátum használatával: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
     ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -165,7 +165,7 @@ Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apa
     > [!WARNING]
     > Ne hozzon létre egyszerre több, egyidejű mellékletet ugyanahhoz a HDInsight a munkaterületről. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
 
-1. **Konfigurálás** : hozzon létre egy futtatási konfigurációt a HDI számítási célhoz. 
+1. **Konfigurálás**: hozzon létre egy futtatási konfigurációt a HDI számítási célhoz. 
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
@@ -178,9 +178,9 @@ Azure Batch a nagy léptékű párhuzamos és nagy teljesítményű számítást
 
 Azure Batch számítási célként való csatolásához a Azure Machine Learning SDK-t kell használnia, és meg kell adnia a következő információkat:
 
--    **Azure batch számítási név** : a munkaterületen belüli számításhoz használandó felhasználóbarát név
--    **Azure batch fiók neve** : a Azure batch fiók neve
--    **Erőforráscsoport** : az Azure batch fiókot tartalmazó erőforráscsoport.
+-    **Azure batch számítási név**: a munkaterületen belüli számításhoz használandó felhasználóbarát név
+-    **Azure batch fiók neve**: a Azure batch fiók neve
+-    **Erőforráscsoport**: az Azure batch fiókot tartalmazó erőforráscsoport.
 
 A következő kód bemutatja, hogyan csatolhatja Azure Batch számítási célként:
 
@@ -223,11 +223,11 @@ Használat előtt hozzon létre egy Azure Databricks munkaterületet. Munkaterü
 
 Azure Databricks számítási célként való csatolásához adja meg a következő információkat:
 
-* __Databricks számítási név__ : a számítási erőforráshoz hozzárendelni kívánt név.
-* __Databricks-munkaterület neve__ : az Azure Databricks munkaterület neve.
-* __Databricks hozzáférési jogkivonat__ : a Azure Databricks hitelesítéséhez használt hozzáférési jogkivonat. Hozzáférési jogkivonat létrehozásához tekintse meg a [hitelesítési](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) dokumentumot.
+* __Databricks számítási név__: a számítási erőforráshoz hozzárendelni kívánt név.
+* __Databricks-munkaterület neve__: az Azure Databricks munkaterület neve.
+* __Databricks hozzáférési jogkivonat__: a Azure Databricks hitelesítéséhez használt hozzáférési jogkivonat. Hozzáférési jogkivonat létrehozásához tekintse meg a [hitelesítési](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) dokumentumot.
 
-Az alábbi kód azt mutatja be, hogyan csatolható Azure Databricks számítási célként a Azure Machine Learning SDK-val ( __az Databricks-munkaterületnek ugyanabban az előfizetésben kell lennie, mint a pénzmosás-munkaterület__ ):
+Az alábbi kód azt mutatja be, hogyan csatolható Azure Databricks számítási célként a Azure Machine Learning SDK-val (__az Databricks-munkaterületnek ugyanabban az előfizetésben kell lennie, mint a pénzmosás-munkaterület__):
 
 ```python
 import os
@@ -279,9 +279,9 @@ Használat előtt hozzon létre egy Azure Data Lake Analytics fiókot. Az erőfo
 
 Data Lake Analytics számítási célként való csatolásához a Azure Machine Learning SDK-t kell használnia, és meg kell adnia a következő információkat:
 
-* __Számítási név__ : a számítási erőforráshoz hozzárendelni kívánt név.
-* __Erőforráscsoport__ : az Data Lake Analytics fiókot tartalmazó erőforráscsoport.
-* __Fiók neve__ : a Data Lake Analytics fiók neve.
+* __Számítási név__: a számítási erőforráshoz hozzárendelni kívánt név.
+* __Erőforráscsoport__: az Data Lake Analytics fiókot tartalmazó erőforráscsoport.
+* __Fiók neve__: a Data Lake Analytics fiók neve.
 
 A következő kód bemutatja, hogyan csatolhatja Data Lake Analytics számítási célként:
 
