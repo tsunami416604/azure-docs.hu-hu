@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e2df9168b880e565ea9b70c82c2c0c1b55b4db8
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2f5c16fce68213b291b970c11921a17b39527270
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737243"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032117"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Oktatóanyag: az Azure Spring Cloud üzembe helyezése az Azure Virtual Networkben (VNet Injection)
 
@@ -42,7 +42,7 @@ Az Azure Spring Cloud Service-példány üzembe helyezéséhez használt virtuá
     * Egy a Service Runtime számára
     * Az egyik a Spring boot Service-alkalmazásaihoz. 
     * Az alhálózatok és az Azure Spring Cloud Service-példányok között egy-az-egyhez kapcsolat áll fenn. Minden egyes telepített szolgáltatási példányhoz új alhálózatot kell használnia, és mindegyik alhálózat csak egyetlen szolgáltatási példányt tartalmazhat.
-* **Címterület**: egy CIDR legfeljebb/28 a szolgáltatás futásidejű alhálózata számára, valamint egy másik CIDR-blokk legfeljebb/24 a Spring boot Service-alhálózati alkalmazások alhálózata számára.
+* **Címterület**: a CIDR akár **/28** -ot is letilt a szolgáltatás futásidejű alhálózata és a Spring boot Service-alhálózati alkalmazások alhálózata esetében.
 * **Útválasztási táblázat**: az alhálózatok nem rendelkezhetnek meglévő útválasztási táblázattal.
 
 Az alábbi eljárások ismertetik a virtuális hálózat telepítését, amely az Azure Spring Cloud példányát tartalmazza.
@@ -58,16 +58,16 @@ Ha már rendelkezik virtuális hálózattal az Azure Spring Cloud Service-péld�
     |-----------------|--------------------------------------------------|
     |Előfizetés     |Válassza ki előfizetését.                         |
     |Erőforráscsoport   |Válassza ki az erőforráscsoportot, vagy hozzon létre egy újat.  |
-    |Név             |Adja meg az *Azure-Spring-Cloud-vnet*                   |
+    |Name (Név)             |Adja meg az *Azure-Spring-Cloud-vnet*                   |
     |Hely         |Válassza ki az **USA keleti** régióját                                |
 
 1. Kattintson a **Tovább gombra: IP-címek >**. 
  
 1. IPv4-címterület esetén írja be a következőt: 10.1.0.0/16.
 
-1. Válassza az **alhálózat hozzáadása** lehetőséget, majd adja meg a *Service-Runtime-alhálózatot* az alhálózat **neve** és a 10.1.0.0/24 alhálózathoz az **alhálózat-címtartomány** esetében. Ezután kattintson az **Add** (Hozzáadás) gombra.
+1. Válassza az **alhálózat hozzáadása** lehetőséget, majd adja meg a *Service-Runtime-alhálózatot* az alhálózat **neve** és a 10.1.0.0/28 esetében az **alhálózat-címtartomány** mezőben. Ezután kattintson az **Add** (Hozzáadás) gombra.
 
-1. Válassza az **alhálózat hozzáadása** újra lehetőséget, majd adja meg az **alhálózat nevét** és az **alhálózati címtartományt**, például: *alkalmazások – alhálózat* és 10.1.1.0/24.  Kattintson a **Hozzáadás** parancsra.
+1. Válassza az **alhálózat hozzáadása** újra lehetőséget, majd adja meg az **alhálózat nevét** és az **alhálózati címtartományt**, például: *alkalmazások – alhálózat* és 10.1.1.0/28.  Kattintson a **Hozzáadás** parancsra.
 
 1. Kattintson a **Felülvizsgálat + létrehozás** elemre. Hagyja a többi értéket alapértelmezettként, majd kattintson a **Létrehozás** gombra.
 
@@ -107,7 +107,7 @@ az role assignment create \
 
 ## <a name="deploy-azure-spring-cloud-service-instance-in-the-virtual-network"></a>Azure Spring Cloud Service-példány üzembe helyezése a virtuális hálózaton
 
-1. Nyissa meg a Azure Portalt a következő használatával: https://ms.portal.azure.com .
+1. Nyissa meg a Azure Portalt a következő használatával: https://portal.azure.com .
 
 1. A felső keresőmezőbe keressen az **Azure Spring Cloud** kifejezésre, és válassza az **Azure Spring Cloud** lehetőséget az eredményből.
 
@@ -117,7 +117,7 @@ az role assignment create \
 
 1. Válassza ki ugyanazt az erőforráscsoportot és régiót, mint a virtuális hálózatot.
 
-1. A **Name** **szolgáltatás részletei** területen válassza az *Azure-Spring-Cloud-vnet* lehetőséget.
+1. A  **szolgáltatás részletei** területen válassza az *Azure-Spring-Cloud-vnet* lehetőséget.
 
 1. Válassza a **hálózatkezelés** fület, és válassza ki a következőket:
 
@@ -133,6 +133,8 @@ az role assignment create \
 1. Kattintson az **Áttekintés és létrehozás** elemre.
 
 1. Ellenőrizze a specifikációkat, majd kattintson a **Létrehozás** gombra.
+
+    ![A specifikációk ellenőrzése](./media/spring-cloud-v-net-injection/verify-specifications.png)
 
 Az üzembe helyezést követően két további erőforráscsoport jön létre az előfizetésben az Azure Spring Cloud Service-példány hálózati erőforrásainak üzemeltetéséhez.  Navigáljon a **kezdőlapra** , majd válassza ki az **erőforráscsoportok** elemet a felső menüpontban a következő új erőforráscsoportok megkereséséhez.
 
@@ -150,6 +152,18 @@ Ezek a hálózati erőforrások a fent létrehozott virtuális hálózathoz csat
 
    > [!Important]
    > Az erőforráscsoportok teljes mértékben az Azure Spring Cloud Service szolgáltatással kezelhetők. Ne törölje kézzel az erőforrást, vagy ne módosítsa a-t.
+
+## <a name="limitations"></a>Korlátozások
+
+A kis alhálózat-tartomány menti az IP-címeket, de korlátozásokat biztosít az Azure Spring Cloud által megtartható alkalmazás-példányok maximális számánál. 
+
+| CIDR | Összes IP-cím | Elérhető IP-címek | Alkalmazás-példányok maximális száma                                        |
+| ---- | --------- | ------------- | ------------------------------------------------------------ |
+| /28  | 16        | 8             | <p> Alkalmazás 1 maggal: 96 <br/> Alkalmazás 2 maggal: 48<br/>  Alkalmazás 3 maggal: 32 <br/> Alkalmazás 4 maggal: 24 </p> |
+| /27  | 32        | 24            | <p> Alkalmazás 1 maggal: 228<br/> Alkalmazás 2 maggal: 144<br/>  Alkalmazás 3 maggal: 96 <br/>  Alkalmazás 4 maggal: 72</p> |
+| /26  | 64        | 56            | <p> Alkalmazás 1 maggal: 500<br/> Alkalmazás 2 maggal: 336<br/>  Alkalmazás 3 maggal: 224<br/>  Alkalmazás 4 maggal: 168</p> |
+| /25  | 128       | 120           | <p> Alkalmazás 1 maggal: 500<br> Alkalmazás 2 maggal: 500<br>  Alkalmazás 3 maggal: 480<br>  Alkalmazás 4 maggal: 360</p> |
+| /24  | 256       | 248           | <p> Alkalmazás 1 maggal: 500<br/> Alkalmazás 2 maggal: 500<br/>  Alkalmazás 3 maggal: 500<br/>  Alkalmazás 4 maggal: 500</p> |
 
 ## <a name="next-steps"></a>Következő lépések
 

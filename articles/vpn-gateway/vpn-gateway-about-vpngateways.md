@@ -8,13 +8,13 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 08/27/2020
 ms.author: cherylmc
-ms.custom: contperfq1
-ms.openlocfilehash: 23d8d28a03217b1359462332da736f852cfaf8ea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: c19e1156f897873defaba4cebaabb904d034ead3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89015390"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032745"
 ---
 # <a name="what-is-vpn-gateway"></a>Mi az a VPN-átjáró?
 
@@ -22,7 +22,7 @@ A VPN-átjáró a virtuális hálózati átjárók egy olyan típusa, amely titk
 
 ## <a name="what-is-a-virtual-network-gateway"></a><a name="whatis"></a>Mi az a virtuális hálózati átjáró?
 
-A virtuális hálózati átjárók két vagy több, az *átjáró alhálózatának*nevezett alhálózatra telepített VM-ből állnak. A virtuális hálózati átjáró virtuális gépei útválasztási táblákat tartalmaznak, és adott átjáró szolgáltatásokat futtatnak. Ezek a virtuális gépek a virtuális hálózati átjáró létrehozásakor jönnek létre. A virtuális hálózati átjáró részét képező virtuális gépeket nem lehet közvetlenül konfigurálni.
+A virtuális hálózati átjárók két vagy több, az *átjáró alhálózatának* nevezett alhálózatra telepített VM-ből állnak. A virtuális hálózati átjáró virtuális gépei útválasztási táblákat tartalmaznak, és adott átjáró szolgáltatásokat futtatnak. Ezek a virtuális gépek a virtuális hálózati átjáró létrehozásakor jönnek létre. A virtuális hálózati átjáró részét képező virtuális gépeket nem lehet közvetlenül konfigurálni.
 
 Virtuális hálózati átjáró konfigurálásakor az átjáró típusát megadó beállítást kell konfigurálnia. Az átjáró típusa határozza meg a virtuális hálózati átjáró használatának módját és az átjáró által végrehajtott műveleteket. A "VPN" átjáró azt adja meg, hogy a létrehozott virtuális hálózati átjáró típusa "VPN Gateway". Ez megkülönbözteti azt egy ExpressRoute-átjárótól, amely egy másik átjáró-típust használ. A virtuális hálózatok két virtuális hálózati átjáróval rendelkezhetnek; egy VPN-átjáró és egy ExpressRoute-átjáró. További információért lásd: [Átjárótípusok](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
 
@@ -79,7 +79,7 @@ A VPN Gateway-re vonatkozó gyakori kérdésekért lásd a [VPN Gateway gyakori 
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg a legújabb VPN Gateway szolgáltatás frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=VPN%20Gateway) oldalon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információkért tekintse meg [A VPN Gatewayjel kapcsolatos gyakori kérdések](vpn-gateway-vpn-faq.md) című szakaszt.
 - Tekintse meg az [Előfizetés- és szolgáltatáskorlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) című szakaszt.

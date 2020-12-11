@@ -1,20 +1,20 @@
 ---
-title: 'Gyors útmutató: az első statikus webalkalmazás felépítése az Azure-beli statikus Web Apps az Azure CLI használatával'
-description: Ismerje meg, hogyan hozhat létre Azure statikus Web Apps példányt az Azure statikus Web Apps parancssori felülettel.
+title: 'Rövid útmutató: az első statikus hely felépítése az Azure statikus Web Apps a parancssori felület használatával'
+description: Ismerje meg, hogyan helyezhet üzembe statikus helyet az Azure-beli statikus Web Apps az Azure CLI-vel.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: ed49892284b53844c5c578b752a598cdbdd9b946
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ca05194c0d8e63290a9cab8d9f7903daa192069b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320343"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030348"
 ---
-# <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>Rövid útmutató: az első statikus webalkalmazás felépítése az Azure CLI használatával
+# <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>Rövid útmutató: az első statikus hely felépítése az Azure CLI használatával
 
 Az Azure statikus Web Apps egy GitHub-tárházból származó alkalmazások létrehozásával tesz közzé webhelyeket az éles környezetben. Ebben a rövid útmutatóban egy webalkalmazást helyez üzembe az Azure statikus Web Apps szolgáltatásban az Azure CLI használatával.
 
@@ -109,7 +109,7 @@ Most, hogy létrejött a tárház, létrehozhat egy statikus webalkalmazást az 
 
     - `<YOUR_GITHUB_ACCOUNT_NAME>`: Cserélje le ezt az értéket a GitHub-felhasználónevére.
 
-    - `<LOCATION>`: Cserélje le ezt az értéket a legközelebbi helyre. A lehetőségek a következők: _CentralUS_, _EastAsia_, _EastUS2_, _WestEurope_és _WestUS2_.
+    - `<LOCATION>`: Cserélje le ezt az értéket a legközelebbi helyre. A lehetőségek a következők: _CentralUS_, _EastAsia_, _EastUS2_, _WestEurope_ és _WestUS2_.
 
     - `<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>`: Cserélje le ezt az értéket a korábban létrehozott [GitHub személyes hozzáférési tokenre](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token) .
 
@@ -119,7 +119,7 @@ Most, hogy létrejött a tárház, létrehozhat egy statikus webalkalmazást az 
 
 1. Keresse meg a **saját-első-web-static-app** elemet a felső keresési sávon.
 
-1. Válassza **a saját-első-web-static-app**elemet.
+1. Válassza **a saját-első-web-static-app** elemet.
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

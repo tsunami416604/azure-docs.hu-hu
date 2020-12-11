@@ -3,12 +3,12 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: a956d5e8dcfa82f85020928e1427a08ac8fe7a69
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2fd1f17d38b0a58fbf64670849a8d5e13bb00cf8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906250"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032711"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -47,7 +47,7 @@ A gépen belül a vendég konfigurációs ügyfél helyi eszközöket használ a
 
 Az alábbi táblázat felsorolja az egyes támogatott operációs rendszereken használt helyi eszközöket. Beépített tartalom esetén a vendég konfigurációja automatikusan betölti ezeket az eszközöket.
 
-|Operációs rendszer|Érvényesítési eszköz|Jegyzetek|
+|Operációs rendszer|Érvényesítési eszköz|Megjegyzések|
 |-|-|-|
 |Windows|[PowerShell desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| A rendszer csak az Azure Policy által használt mappába betöltve. Nem ütközik a Windows PowerShell DSC-vel. A PowerShell Core nincs hozzáadva a rendszer elérési útjához.|
 |Linux|[Chef Inspect](https://www.chef.io/inspec/)| Telepíti a Chef Inspect verzió 2.2.61 az alapértelmezett helyen, és hozzáadja a rendszer elérési útjához. Az inspec-csomag függőségei, például a Ruby és a Python is telepítve vannak. |
@@ -60,7 +60,7 @@ A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-
 
 A vendég-konfigurációs szabályzatok definíciói az új verziókhoz tartoznak. Az Azure Marketplace-en elérhető operációs rendszerek régebbi verziói ki vannak zárva, ha a vendég konfigurációs ügynök nem kompatibilis. Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek listáját tartalmazza:
 
-|Publisher|Név|Verziók|
+|Publisher|Name (Név)|Verziók|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 – 18,04|
 |Credativ|Debian|8 és újabb verziók|
@@ -84,7 +84,7 @@ A virtuális hálózatokat használó virtuális gépek számára a porton elér
 
 ### <a name="communicate-over-private-link-in-azure"></a>Kommunikáció privát kapcsolaton keresztül az Azure-ban
 
-A virtuális gépek [privát hivatkozást](../../../private-link/private-link-overview.md) is használhatnak a vendég konfigurációs szolgáltatással való kommunikációhoz. Alkalmazza a címkét a név `EnablePrivateNeworkGC` és az érték `TRUE` használatával a funkció engedélyezéséhez. A címke a vendég-konfigurációs házirend definícióinak a gépre való alkalmazása előtt vagy után is alkalmazható.
+A virtuális gépek [privát hivatkozást](../../../private-link/private-link-overview.md) is használhatnak a vendég konfigurációs szolgáltatással való kommunikációhoz. Alkalmazza a címkét a név `EnablePrivateNetworkGC` és az érték `TRUE` használatával a funkció engedélyezéséhez. A címke a vendég-konfigurációs házirend definícióinak a gépre való alkalmazása előtt vagy után is alkalmazható.
 
 A forgalmat az Azure [virtuális nyilvános IP-címével](../../../virtual-network/what-is-ip-address-168-63-129-16.md) irányítjuk, hogy biztonságos, hitelesített csatornát hozzon létre az Azure platform erőforrásaival.
 

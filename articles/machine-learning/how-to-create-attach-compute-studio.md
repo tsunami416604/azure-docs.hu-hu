@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq1
-ms.openlocfilehash: 6cb455880852295d7176e813208a93919a2c14bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy21q1
+ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318259"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031028"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Számítási célok létrehozása a modell betanításához és üzembe helyezéséhez Azure Machine Learning Studióban
 
@@ -73,7 +73,7 @@ Az előző lépések végrehajtásával tekintheti meg a számítási célok lis
   * [Fürtök következtetése](#inference-clusters)
   * [Csatolt számítás](#attached-compute)
 
-1. Kattintson a __Létrehozás__ gombra.
+1. Válassza a __Létrehozás__ lehetőséget.
 
 1. A létrehozási művelet állapotának megtekintéséhez válassza ki a listából a számítási célt:
 
@@ -93,7 +93,7 @@ A számítási példány létrehozásához kövesse a [fenti lépéseket](#porta
 |Virtuális gép típusa |  Válassza a CPU vagy a GPU lehetőséget. Ez a típus nem módosítható a létrehozás után     |
 |Virtuális gép mérete     |  A támogatott virtuálisgép-méretek a régióban korlátozottak lehetnek. Tekintse meg a [rendelkezésre állási listát](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |SSH-hozzáférés engedélyezése/letiltása     |   Az SSH-hozzáférés alapértelmezés szerint le van tiltva.  Az SSH-hozzáférés nem lehet. a létrehozás után módosult. Győződjön meg arról, hogy engedélyezi a hozzáférést, ha interaktívan szeretne hibakeresést végezni a [vs Code Remote](how-to-set-up-vs-code-remote.md) használatával   |
-|Speciális beállítások     |  Választható. Virtuális hálózat konfigurálása. Válassza ki az **erőforráscsoportot** , a **virtuális hálózatot** és az **alhálózatot** , hogy létrehozza a számítási példányt egy Azure-Virtual Network (vnet) belül. További információ: a vnet vonatkozó [hálózati követelmények](./how-to-secure-training-vnet.md) .  |
+|Speciális beállítások     |  Választható. Virtuális hálózat konfigurálása. Válassza ki az **erőforráscsoportot**, a **virtuális hálózatot** és az **alhálózatot** , hogy létrehozza a számítási példányt egy Azure-Virtual Network (vnet) belül. További információ: a vnet vonatkozó [hálózati követelmények](./how-to-secure-training-vnet.md) .  |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> Számítási fürtök
 
@@ -108,7 +108,7 @@ Hozzon létre egy vagy több csomópontos számítási fürtöt a képzéshez, a
 |Virtuális gép mérete     |  A támogatott virtuálisgép-méretek a régióban korlátozottak lehetnek. Tekintse meg a [rendelkezésre állási listát](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Csomópontok minimális száma | A kiépíteni kívánt csomópontok minimális száma. Ha dedikált számú csomópontot szeretne használni, itt állítsa be ezt a számot. A minimális érték 0 értékre állításával pénzt takaríthat meg, így nem fog fizetni minden csomópontért, ha a fürt üresjáratban van. |
 |Csomópontok maximális száma | A kiépíteni kívánt csomópontok maximális száma. A számítás a feladatok elküldésekor a csomópontok maximális száma alapján automatikusan méretezhető. |
-|Speciális beállítások     |  Választható. Virtuális hálózat konfigurálása. Válassza ki az **erőforráscsoportot** , a **virtuális hálózatot** és az **alhálózatot** , hogy létrehozza a számítási példányt egy Azure-Virtual Network (vnet) belül. További információ: a vnet vonatkozó [hálózati követelmények](./how-to-secure-training-vnet.md) .   [Felügyelt identitásokat](#managed-identity) is csatolhat az erőforrásokhoz való hozzáférés biztosításához     |
+|Speciális beállítások     |  Választható. Virtuális hálózat konfigurálása. Válassza ki az **erőforráscsoportot**, a **virtuális hálózatot** és az **alhálózatot** , hogy létrehozza a számítási példányt egy Azure-Virtual Network (vnet) belül. További információ: a vnet vonatkozó [hálózati követelmények](./how-to-secure-training-vnet.md) .   [Felügyelt identitásokat](#managed-identity) is csatolhat az erőforrásokhoz való hozzáférés biztosításához     |
 
 #### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Felügyelt identitás beállítása
 

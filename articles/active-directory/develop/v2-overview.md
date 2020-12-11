@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
-ms.custom: identityplatformtop40, contperfq2
-ms.openlocfilehash: 3f18913bb0d05c45ae57152d438b229b8bcc1d48
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: identityplatformtop40, contperf-fy21q2
+ms.openlocfilehash: e5a9292097933ff35eb8b77445f07f10def6e5c3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94627914"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029617"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Mi az a Microsoft Identitásplatform?
 
@@ -30,10 +30,10 @@ A Microsoft Identity platform számos összetevőből áll:
   - Az Azure AD-n keresztül kiépített munkahelyi vagy iskolai fiókok
   - Személyes Microsoft-fiók, például Skype, Xbox és Outlook.com
   - Közösségi vagy helyi fiókok Azure AD B2C használatával
-- **Nyílt forráskódú kódtárak** : Microsoft Authentication librarys (MSAL) és más szabványoknak megfelelő kódtárak támogatása
-- **Application Management Portal** : a Azure Portal regisztrációs és konfigurációs felhasználói felülete, valamint a többi Azure felügyeleti lehetőség.
-- **Alkalmazás-konfigurációs API és PowerShell** : az alkalmazások programozott konfigurációja a Microsoft Graph API-val és a PowerShell-lel, hogy automatizálható legyen a DevOps-feladatok.
-- **Fejlesztői tartalom** : technikai dokumentáció, beleértve a gyors útmutatókat, oktatóanyagokat, útmutatók és a kód mintáit.
+- **Nyílt forráskódú kódtárak**: Microsoft Authentication librarys (MSAL) és más szabványoknak megfelelő kódtárak támogatása
+- **Application Management Portal**: a Azure Portal regisztrációs és konfigurációs felhasználói felülete, valamint a többi Azure felügyeleti lehetőség.
+- **Alkalmazás-konfigurációs API és PowerShell**: az alkalmazások programozott konfigurációja a Microsoft Graph API-val és a PowerShell-lel, hogy automatizálható legyen a DevOps-feladatok.
+- **Fejlesztői tartalom**: technikai dokumentáció, beleértve a gyors útmutatókat, oktatóanyagokat, útmutatók és a kód mintáit.
 
 A fejlesztők számára a Microsoft Identity platform a modern innovációk integrációját kínálja az identitás és a biztonság terén, például a jelszó-alapú hitelesítéshez, a lépésenkénti hitelesítéshez és a feltételes hozzáféréshez. Nincs szükség ilyen funkciók megvalósítására: a Microsoft Identity platformmal integrált alkalmazások natív módon kihasználhatják ezeket az innovációkat.
 
@@ -76,7 +76,7 @@ Ismerje meg, hogyan vonatkoznak az alapszintű hitelesítés és az Azure AD-fog
 
 [Azure Active Directory fejlesztők számára (v 1.0)](../azuread-dev/v1-overview.md) – itt láthatók a régebbi 1.0-s verziókat használó meglévő alkalmazásokkal rendelkező fejlesztők számára. **Ne használja az** 1.0-s verziókat új projektekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha van olyan Azure-fiókja, amelyhez már van hozzáférése egy Azure Active Directory bérlőhöz, de a Microsoft Identity platform fejlesztőinek saját Azure AD-bérlőre van szüksége az alkalmazások fejlesztéséhez, a "dev-bérlő".
 

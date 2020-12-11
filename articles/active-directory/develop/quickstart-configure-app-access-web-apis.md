@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/03/2020
 ms.author: marsma
-ms.custom: aaddev, contperfq1
+ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: fc2f3202ac88e3ee6c24db21dd9072a13a8deef9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2630984d54134ca8fca94fdc1960265ba71935a6
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89442279"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031300"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Gyors útmutató: ügyfélalkalmazás konfigurálása webes API-k eléréséhez
 
@@ -51,15 +51,15 @@ Miután regisztrálta az ügyfélalkalmazás és a webes API-t, és hatókörök
     A **delegált engedélyek** alapértelmezés szerint ki vannak választva. A delegált engedélyek olyan ügyfélalkalmazások számára megfelelőek, amelyek a webes API-hoz a bejelentkezett felhasználóként férnek hozzá, és amelyek hozzáférését a következő lépésben kiválasztott engedélyekre kell korlátozni. Hagyja kiválasztva a példához tartozó **delegált engedélyeket** .
 
     Az **alkalmazás engedélyei** olyan szolgáltatás-vagy démon-típusú alkalmazásokhoz szükségesek, amelyeknek saját maguknak kell elérniük a webes API-t, felhasználói beavatkozás nélkül a bejelentkezéshez vagy az engedélyhez. Ha nem adott meg alkalmazás-szerepköröket a webes API-hoz, ez a beállítás le van tiltva.
-1. Az **engedélyek kiválasztása**területen bontsa ki azt az erőforrást, amelynek a hatóköreit a webes API-hoz definiálta, és válassza ki azokat az engedélyeket, amelyeket az ügyfélalkalmazás a bejelentkezett felhasználó nevében kell lennie.
+1. Az **engedélyek kiválasztása** területen bontsa ki azt az erőforrást, amelynek a hatóköreit a webes API-hoz definiálta, és válassza ki azokat az engedélyeket, amelyeket az ügyfélalkalmazás a bejelentkezett felhasználó nevében kell lennie.
 
     Ha a példában az előző rövid útmutatóban megadott hatókör-neveket használta, az alkalmazottakat kell látnia. **READ. All** és **Employees. Write. All**.
     Válassza az **alkalmazottak. Read. All** vagy más engedélyt, amelyet az előfeltételek végrehajtásakor hozott létre.
 1. A folyamat befejezéséhez válassza az **engedélyek hozzáadása** elemet.
 
-Miután hozzáadta az engedélyeket az API-hoz, a **konfigurált engedélyek**területen látnia kell a kiválasztott engedélyeket. Az alábbi ábrán a példa *alkalmazottak. Read.* az ügyfélalkalmazás regisztrációja során hozzáadott összes delegált engedély.
+Miután hozzáadta az engedélyeket az API-hoz, a **konfigurált engedélyek** területen látnia kell a kiválasztott engedélyeket. Az alábbi ábrán a példa *alkalmazottak. Read.* az ügyfélalkalmazás regisztrációja során hozzáadott összes delegált engedély.
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Vonal diagram, amely egy webes API-t mutat be a jobb oldalon elérhető hatókörökkel, a bal oldalon pedig egy ügyfélalkalmazás":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Az újonnan hozzáadott engedélyt megjelenítő Azure Portal konfigurált engedélyek panelje":::
 
 Azt is megfigyelheti, hogy a *felhasználó. olvasás* engedéllyel rendelkezik a Microsoft Graph API-hoz. Ezt az engedélyt automatikusan felveszi a rendszer, amikor regisztrál egy alkalmazást a Azure Portal.
 
@@ -75,8 +75,8 @@ Delegált engedély konfigurálása a Microsoft Graphhoz, hogy az ügyfélalkalm
 1. Ha több bérlőhöz fér hozzá, használja a felső menüben található **Directory + előfizetés** szűrőt, :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: és válassza ki az ügyfélalkalmazás regisztrációját tartalmazó bérlőt.
 1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk**, majd válassza ki az ügyfélalkalmazás.
 1. Adja meg az **API-engedélyek**  >  **engedélyt**  >  **Microsoft Graph**
-1. Válassza a **delegált engedélyek**lehetőséget. Microsoft Graph számos engedélyt tesz elérhetővé a lista tetején leggyakrabban használt módon.
-1. Az **engedélyek kiválasztása**területen válassza ki a következő engedélyeket:
+1. Válassza a **delegált engedélyek** lehetőséget. Microsoft Graph számos engedélyt tesz elérhetővé a lista tetején leggyakrabban használt módon.
+1. Az **engedélyek kiválasztása** területen válassza ki a következő engedélyeket:
 
     | Engedély       | Leírás                                         |
     |------------------|-----------------------------------------------------|
@@ -99,12 +99,12 @@ A következő lépésekben engedélyeket adhat Microsoft Graph *fájljaihoz. olv
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Ha több bérlőhöz fér hozzá, használja a felső menüben található **Directory + előfizetés** szűrőt, :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: és válassza ki az ügyfélalkalmazás regisztrációját tartalmazó bérlőt.
 1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk**, majd válassza ki az ügyfélalkalmazás.
-1. Válassza az **API-engedélyek**engedély megadása  >  **Add a permission**  >  **Microsoft Graph**az  >  **alkalmazás engedélyei**lehetőséget.
+1. Válassza az **API-engedélyek** engedély megadása  >    >  **Microsoft Graph** az  >  **alkalmazás engedélyei** lehetőséget.
 1. Az Microsoft Graph által elérhetővé tett összes engedély a **Select permissions (engedélyek kiválasztása**) területen látható.
 1. Válassza ki az engedélyt vagy az engedélyeket, amelyeket meg szeretne adni az alkalmazás számára. Előfordulhat például, hogy van egy olyan Daemon-alkalmazás, amely megkeresi a szervezeten belüli fájlokat, és egy adott fájltípusra vagy névre figyelmeztet.
 
-    Az **engedélyek kiválasztása**alatt bontsa ki a **fájlok**elemet, majd válassza ki a *fájlokat. olvassa el az összes* engedélyt.
-1. Válassza az **engedélyek hozzáadása**lehetőséget.
+    Az **engedélyek kiválasztása** alatt bontsa ki a **fájlok** elemet, majd válassza ki a *fájlokat. olvassa el az összes* engedélyt.
+1. Válassza az **engedélyek hozzáadása** lehetőséget.
 
 Bizonyos engedélyek, például a Microsoft Graph *fájljai. Read. All* engedély, rendszergazdai beleegyezés szükséges. Adja meg a rendszergazdai jóváhagyást a rendszergazdai jóváhagyás **megadása** gombra kattintva, amelyet később a [rendszergazdai jóváhagyások gomb](#admin-consent-button) szakasza ismertet.
 
@@ -136,15 +136,15 @@ Az API-k teljes készletét hozzáadhatja, vagy az egyes engedélyek a **konfigu
 
 A rendszergazdai **jóváhagyás engedélyezése {a bérlőnek}** gomb lehetővé teszi a rendszergazda számára, hogy rendszergazdai jogosultságot adjon az alkalmazáshoz konfigurált engedélyekhez. A gomb kiválasztásakor megjelenik egy párbeszédpanel, amely azt kéri, hogy erősítse meg a jóváhagyást.
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Vonal diagram, amely egy webes API-t mutat be a jobb oldalon elérhető hatókörökkel, a bal oldalon pedig egy ügyfélalkalmazás":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Adja meg a rendszergazdai jóváhagyás gombot a Azure Portal konfigurált engedélyek paneljén":::
 
 A jóváhagyás megadása után a rendszergazdai jóváhagyást igénylő engedélyek a jóváhagyásnak megfelelően jelennek meg:
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Vonal diagram, amely egy webes API-t mutat be a jobb oldalon elérhető hatókörökkel, a bal oldalon pedig egy ügyfélalkalmazás":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Konfigurálja az engedélyek táblát Azure Portal a fájlokhoz tartozó rendszergazdai beleegyezést. Read. All engedély":::
 
 A **rendszergazdai jóváhagyás megadása** gomb *le van tiltva* , ha Ön nem rendszergazda, vagy ha nincs beállítva az alkalmazáshoz tartozó engedély. Ha rendelkezik a megadott, de még nem konfigurált engedélyekkel, a rendszergazdai jóváhagyás gomb megkéri, hogy kezelje ezeket az engedélyeket. Hozzáadhatók a konfigurált engedélyekhez, vagy eltávolíthatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő rövid útmutatóval, amelyből megtudhatja, hogyan konfigurálhatja, hogy mely fióktípus férhet hozzá az alkalmazáshoz. Előfordulhat például, hogy korlátozni szeretné a hozzáférést csak a szervezetben lévő felhasználókra (egybérlős), vagy más Azure AD-bérlők (több-bérlős) és személyes Microsoft-fiókkal (MSA) rendelkező felhasználók számára.
 

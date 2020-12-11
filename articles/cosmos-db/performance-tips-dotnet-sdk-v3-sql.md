@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
-ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: ab9fc4f08b96fc10a20125c30af2d6b8050c7606
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: devx-track-dotnet, contperf-fy21q2
+ms.openlocfilehash: f503f132794f6d04b587a78b8f838acba26f9ac3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341739"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032014"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,16 +41,16 @@ Linux és egyéb nem támogatott platformok esetén, ahol a ServiceInterop.dll n
 
 Az itt felsorolt négy alkalmazás típusa alapértelmezés szerint a 32 bites gazdagép-feldolgozást használja. Ha módosítani szeretné a gazdagép feldolgozását az alkalmazás típusának 64 bites feldolgozására, tegye a következőket:
 
-- **Végrehajtható alkalmazások esetén** : a **Projekt tulajdonságai** ablak **Build** ablaktábláján állítsa a [platform célt](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) az **x64** értékre.
+- **Végrehajtható alkalmazások esetén**: a **Projekt tulajdonságai** ablak **Build** ablaktábláján állítsa a [platform célt](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) az **x64** értékre.
 
-- **VSTest-alapú tesztelési projektek esetén** : a Visual Studio **test** menüben válassza a **Test** teszt  >  **beállításainak** tesztelése lehetőséget, majd állítsa az **alapértelmezett processzor-architektúra** értéket az **x64** értékre.
+- **VSTest-alapú tesztelési projektek esetén**: a Visual Studio **test** menüben válassza a teszt  >  **beállításainak** tesztelése lehetőséget, majd állítsa az **alapértelmezett processzor-architektúra** értéket az **x64** értékre.
 
 - **Helyileg telepített ASP.NET-webalkalmazások** esetén: válassza az **eszközök**  >  **Beállítások**  >  **projektek és megoldások**  >  **webes projektek** lehetőséget, majd válassza **a webhelyekhez és projektekhez tartozó IIS Express 64 bites verziójának használata** lehetőséget.
 
-- Az Azure-ban **üzembe helyezett ASP.NET-webalkalmazások esetében** : a Azure Portal **alkalmazás beállításai** területen válassza ki a **64 bites** platformot.
+- Az Azure-ban **üzembe helyezett ASP.NET-webalkalmazások esetében**: a Azure Portal **alkalmazás beállításai** területen válassza ki a **64 bites** platformot.
 
 > [!NOTE] 
-> Alapértelmezés szerint az új Visual Studio-projektek **bármely CPU** -ra vannak beállítva. Javasoljuk, hogy állítsa a projektet **x64** -re, hogy ne váltson **x86** -ra. Egy **CPU** -ra beállított projekt könnyen válthat **x86** -ra, ha csak x86-os függőség van hozzáadva.<br/>
+> Alapértelmezés szerint az új Visual Studio-projektek **bármely CPU**-ra vannak beállítva. Javasoljuk, hogy állítsa a projektet **x64** -re, hogy ne váltson **x86**-ra. Egy **CPU** -ra beállított projekt könnyen válthat **x86** -ra, ha csak x86-os függőség van hozzáadva.<br/>
 > A ServiceInterop.dll fájlnak abban a mappában kell lennie, amelyre az SDK DLL-t végrehajtja. Ez csak akkor fontos, ha manuálisan másol DLL-eket, vagy egyéni Build-vagy üzembe helyezési rendszert használ.
     
 **Kiszolgálóoldali Garbage-gyűjtemény bekapcsolása**
@@ -156,13 +156,13 @@ Az SQL .NET SDK támogatja a párhuzamos lekérdezéseket, amelyek lehetővé te
 
 A párhuzamos lekérdezések két paramétert biztosítanak, amelyeket az igényeinek megfelelően hangolhat: 
 
-- **MaxConcurrency** : a párhuzamosan lekérdezhető partíciók maximális számát határozza meg.
+- **MaxConcurrency**: a párhuzamosan lekérdezhető partíciók maximális számát határozza meg.
 
    A párhuzamos lekérdezés több partíció párhuzamos lekérdezésével működik. Az egyes partíciók adatait azonban a lekérdezésre vonatkozó sorosan kell beolvasni. `MaxConcurrency`Ha az [SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3) -as verziójában a partíciók száma a legjobb, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, megadhatja a párhuzamosság mértékét magas számra. A rendszer kijelöli a minimális (partíciók számát, a felhasználó által megadott bemenetet) a párhuzamosság foka alapján.
 
     A párhuzamos lekérdezések a legnagyobb haszonnal járnak, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény particionálva van, és a lekérdezés által visszaadott összes adat egy része néhány partícióra koncentrál (az egyik partíció a legrosszabb ESET), akkor ezek a partíciók a lekérdezés teljesítményét szűk keresztmetszetbe helyezik.
    
-- **MaxBufferedItemCount** : az előre lehívott eredmények számát szabályozza.
+- **MaxBufferedItemCount**: az előre lehívott eredmények számát szabályozza.
 
    A párhuzamos lekérdezés úgy lett kialakítva, hogy előzetesen beolvassa az eredményeket, miközben az ügyfél az aktuális eredményt dolgozza fel. Ez az előzetes lehívás a lekérdezés teljes késésének javítására nyújt segítséget. A `MaxBufferedItemCount` paraméter korlátozza az előre lehívott eredmények számát. Állítsa be a `MaxBufferedItemCount` visszaadott eredmények várt számát (vagy egy magasabb számot), hogy a lekérdezés a lehető legtöbbet fogadja az előzetes lekéréstől.
 
@@ -202,7 +202,7 @@ Container container = await this.cosmosDatabase.CreateContainerAsync(containerPr
 
 További információ: [Azure Cosmos db indexelési házirendek](index-policy.md).
 
-## <a name="throughput"></a>Átviteli sebesség
+## <a name="throughput"></a>Teljesítmény
 <a id="measure-rus"></a>
 
 **Az alacsonyabb RU/s használatának mérése és finomhangolása**
@@ -257,7 +257,7 @@ További információt a [kérelmek egységei](request-units.md)című témakör
 
 Egy adott műveletre vonatkozó kérelem díja (azaz a kérelmek feldolgozási díja) közvetlenül a dokumentum méretével összefügg egymással. A nagyméretű dokumentumokon végzett műveletek többek között a kis dokumentumokon végzett műveletekhez szükségesek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az egyes ügyfélszámítógépeken a nagy teljesítményű forgatókönyvek Azure Cosmos DB kiértékeléséhez használt minta alkalmazással kapcsolatban lásd: [teljesítmény-és méretezési tesztek a Azure Cosmos db](performance-testing.md)használatával.
 
 Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partitioning-overview.md)című témakört.

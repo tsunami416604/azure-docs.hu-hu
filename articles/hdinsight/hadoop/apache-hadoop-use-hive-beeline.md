@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.custom: contperfq1, contperfq2
-ms.openlocfilehash: 756c87299db85e426b4793d51bea833aa694a830
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.openlocfilehash: 70fbbdfc5d8f1bac5fa27175ea25be1503a77594
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145956"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031895"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Beeline-ügyfél használata Apache Hive-val
 
@@ -29,7 +29,7 @@ A Beeline egy kaptár-ügyfél, amely a HDInsight-fürt fő csomópontjain talá
 
 * Figyelje meg a fürt elsődleges tárolójának URI-sémáját. Például  `wasb://` Az Azure Storage-hoz, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1hoz. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő: `wasbs://` . További információ: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md). A jelen dokumentumban ismertetett lépések többsége azt feltételezi, hogy egy SSH-munkamenetből a fürtre használja a Beeline-t. Használhat helyi Beeline-ügyfelet is, de ezek a lépések nem szerepelnek ebben a cikkben.
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md). A jelen dokumentumban ismertetett lépések többsége azt feltételezi, hogy egy SSH-munkamenetből a fürtre használja a Beeline-t. Használhat helyi Beeline-ügyfelet is, de ezek a lépések nem szerepelnek ebben a cikkben.
 
 ## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
@@ -56,7 +56,7 @@ Ez a példa a Beeline-ügyfél SSH-kapcsolatban való használatára épül.
     show tables;
     ```
 
-    Egy új fürtön csak egy tábla jelenik meg: **hivesampletable** .
+    Egy új fürtön csak egy tábla jelenik meg: **hivesampletable**.
 
 4. A hivesampletable sémájának megjelenítéséhez használja a következő parancsot:
 
@@ -181,7 +181,7 @@ Ez a példa az előző példa folytatását szemlélteti. A következő lépése
     > [!NOTE]  
     > A külső tábláktól eltérően a belső tábla eldobása a mögöttes adatokat is törli.
 
-1. A fájl mentéséhez használja a **CTRL X billentyűkombinációt** , + **X** majd írja be az **Y** értéket, és végül **írja be** a következőt:.
+1. A fájl mentéséhez használja a **CTRL X billentyűkombinációt**, + majd írja be az **Y** értéket, és végül **írja be** a következőt:.
 
 1. A következő paranccsal futtathatja a fájlt a Beeline használatával:
 

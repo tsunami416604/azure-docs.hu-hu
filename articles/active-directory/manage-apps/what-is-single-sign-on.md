@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.custom: contperfq1
-ms.openlocfilehash: 1eaef57f46bf6373fdd2a73575bb028904ef108b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 4e27266688e39eadc8ae1f3d9afd84c42e1b524e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90561650"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031657"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Mi az az egyszeri bejelentkezés (SSO)?
 
@@ -68,6 +68,6 @@ Hitelesítés alapjai: összevonás | Azure Active Directory
 > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 * [Az egyszeri bejelentkezés beállításai](sso-options.md)

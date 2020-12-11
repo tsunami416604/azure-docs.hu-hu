@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2, automl
-ms.openlocfilehash: a3b3640922daf84357354efc389e20afea78d216
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.custom: how-to, contperf-fy21q2, automl
+ms.openlocfilehash: 747cc88cdea59017483245b59e4b2c56c4b06a40
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937712"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032932"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Az automatizált Machine learning-kísérletek eredményeinek kiértékelése
 
@@ -190,6 +190,7 @@ A következő táblázat összefoglalja a regressziós és előrejelzési kísé
 --|--|--|
 explained_variance|Az elmagyarázott variancia azt méri, hogy a modell milyen mértékben számítja ki a cél változóban lévő változatot. Ez az eredeti és a hibák eltérésének százalékos csökkenése. Ha a hibák középértéke 0, akkor a meghatározás együtthatója egyenlő (lásd alább r2_score). <br> <br> **Cél:** Közelebb 1 annál jobb <br> **Tartomány:** (-inf, 1]|[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|
 mean_absolute_error|Abszolút érték: a cél és az előrejelzés közötti különbség abszolút értéke a várt érték.<br><br> **Cél:** Közelebb 0 annál jobb <br> **Tartomány:** [0, inf) <br><br> Típusú <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`a mean_absolute_error az adattartományon belül vannak elosztva. | [Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
+mean_absolute_percentage_error|Átlagosan abszolút százalékos hiba (MAPE) az előre jelzett érték és a tényleges érték közötti átlagos különbség mértéke.<br><br> **Cél:** Közelebb 0 annál jobb <br> **Tartomány:** [0, inf) ||
 median_absolute_error|A medián abszolút hiba a cél és az előrejelzés közötti összes abszolút különbség középértéke. Ez a veszteség robusztus a kiugró értékeknél.<br><br> **Cél:** Közelebb 0 annál jobb <br> **Tartomány:** [0, inf)<br><br>Típusú <br> `median_absolute_error`<br> `normalized_median_absolute_error`: a median_absolute_error az adattartományon belül vannak elosztva. |[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
 r2_score|Az R ^ 2 a meghatározási együttható vagy a négyzetes hibák százalékos csökkenése egy olyan alapmodellhez képest, amely a középértéket adja eredményül. <br> <br> **Cél:** Közelebb 1 annál jobb <br> **Tartomány:** (-inf, 1]|[Kiszámítása](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |A legfelső szintű meaned error (GYÖKÁTLAGOS) a cél és az előrejelzés között a várt négyzetes különbség négyzetének gyökere. Elfogulatlan becslés esetén a GYÖKÁTLAGOS egyenlő a szórással.<br> <br> **Cél:** Közelebb 0 annál jobb <br> **Tartomány:** [0, inf)<br><br>Típusú<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: a root_mean_squared_error az adattartományon belül vannak elosztva. |[Kiszámítása](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|

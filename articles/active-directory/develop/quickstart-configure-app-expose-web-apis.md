@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/03/2020
 ms.author: marsma
-ms.custom: aaddev, contperfq1
+ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4ebae7e97f9128bb9302e9076e71dd3164f0c29e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89442143"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030960"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Gyors útmutató: alkalmazás konfigurálása webes API-k megjelenítéséhez
 
@@ -67,12 +67,12 @@ Először hajtsa végre az alábbi lépéseket egy nevű példa hatókör létre
     | **Felhasználói jóváhagyás megjelenítendő neve** | A hatókör céljának rövid leírása. Csak akkor jelenik meg a felhasználók számára, ha beállítja, hogy **ki férhet** hozzá a **rendszergazdákhoz és a felhasználókhoz**. | `Read-only access to your Employee records` |
     | **Felhasználói jóváhagyás leírása** | A hatókör által biztosított engedély részletesebb leírása. Csak akkor jelenik meg a felhasználók számára, ha beállítja, hogy **ki férhet** hozzá a **rendszergazdákhoz és a felhasználókhoz**. | `Allow the application to have read-only access to your Employee data.` |
 
-1. Állítsa az **állapotot** **engedélyezve**értékre, majd válassza a **hatókör hozzáadása**elemet.
+1. Állítsa az **állapotot** **engedélyezve** értékre, majd válassza a **hatókör hozzáadása** elemet.
 
 1. Választható Ha nem szeretné, hogy az alkalmazás felhasználói beleférjenek az Ön által meghatározott hatókörökbe, az ügyfélalkalmazás *előzetes engedélyezésével* elérheti a webes API-t. Előzetes engedélyezés *csak* a megbízható ügyfélalkalmazások számára, mivel a felhasználók nem fogják tudni visszautasítani a hozzájárulásukat.
-    1. Az **engedélyes ügyfélalkalmazások**területen válassza **az ügyfélalkalmazás hozzáadása** elemet.
+    1. Az **engedélyes ügyfélalkalmazások** területen válassza **az ügyfélalkalmazás hozzáadása** elemet.
     1. Adja meg az előre engedélyezni kívánt ügyfélalkalmazás **alkalmazás-(ügyfél-) azonosítóját** . Például egy korábban regisztrált webalkalmazáshoz.
-    1. Az **engedéllyel rendelkező hatókörök**területen válassza ki azokat a hatóköröket, amelyekhez meg kívánja szüntetni az engedély megadását, majd válassza az **alkalmazás hozzáadása**lehetőséget.
+    1. Az **engedéllyel rendelkező hatókörök** területen válassza ki azokat a hatóköröket, amelyekhez meg kívánja szüntetni az engedély megadását, majd válassza az **alkalmazás hozzáadása** lehetőséget.
 
     Ha követte ezt a választható lépést, az ügyfélalkalmazás mostantól egy előre megadott ügyfélalkalmazás (PEM), és a felhasználóknak nem kell megadniuk a hozzájárulásukat a bejelentkezéshez.
 
@@ -95,7 +95,7 @@ A példában szereplő `Employees.Write.All` hatókör hozzáadásához kövesse
 
 Ha sikeresen felvette az előző szakaszokban ismertetett, példaként megadott hatóköröket, akkor az ehhez a képhez hasonlóan a webes API-alkalmazás regisztrációjának **elérhetővé tétele API** -paneljén fog megjelenni:
 
-:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Az alkalmazás regisztrációja elérhetővé teszi az API-panelt a Azure Portal":::
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Képernyőfelvétel: az API-panel közzététele két elérhető hatókörrel.":::
 
 Ahogy az ábrán is látható, a hatókör teljes karakterlánca a webes API **alkalmazás-azonosító URI-ja** és a hatókör **hatókörének neve**.
 
@@ -111,7 +111,7 @@ Miután az ügyfélalkalmazás regisztrálva van a webes API-hoz való hozzáfé
 
 A későbbiekben igény szerint további hatóköröket is közzétehet. Vegye figyelembe, hogy a webes API több művelethez társított több hatókört is ki tud tenni. Az erőforrás a (z) `scp` OAuth 2,0 hozzáférési jogkivonatban található hatókör () jogcímek kiértékelésével képes a webes API-hoz való hozzáférés szabályozására.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy kitette a webes API-t a hatókörök konfigurálásával, konfigurálja az ügyfélalkalmazás regisztrációját, és engedélyezze a hatókörök elérését.
 

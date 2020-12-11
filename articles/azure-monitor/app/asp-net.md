@@ -3,13 +3,13 @@ title: ASP.NET figyelésének konfigurálása az Azure Application Insights-vel 
 description: Konfigurálhatja a helyszíni vagy az Azure-ban üzemeltetett ASP.NET-webhely teljesítmény-, rendelkezésre állási és felhasználói viselkedési elemzési eszközeit.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 970971082e684ebcb6efce07bb707ffbb20ed228
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f9cb5370dcddf783e533664c4c141779402103f0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904176"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028988"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Application Insights konfigurálása a ASP.NET webhelye számára
 
@@ -346,7 +346,7 @@ Sikeresen konfigurálta a kiszolgálóoldali alkalmazások figyelését. Ha futt
 
 Az előző fejezetek útmutatást nyújtanak a kiszolgálóoldali figyelés automatikus és manuális konfigurálására szolgáló módszerekhez. Ügyféloldali figyelés hozzáadásához az [ügyféloldali JavaScript SDK-](javascript.md)t kell használnia. A weblapok ügyféloldali tranzakcióinak figyeléséhez hozzáadhat egy [JavaScript-kódrészletet](javascript.md#snippet-based-setup) az oldal HTML-kódjának záró `</head>` címkéje előtt. 
 
-A kódrészletet manuálisan is hozzáadhatja az egyes HTML-lapok fejlécéhez, ezért azt javasoljuk, hogy vegye fel a kódrészletet egy elsődleges lapra, amely beírja a kódrészletet egy hely összes oldalára. A jelen cikk sablon alapú ASP.net MVC alkalmazásához a szerkeszteni kívánt fájl meghívása megtörténik, `_Layout.cshtml` és a **Views**  >  **megosztva** nézetek alatt található.
+A kódrészletet manuálisan is hozzáadhatja az egyes HTML-lapok fejlécéhez, ezért azt javasoljuk, hogy vegye fel a kódrészletet egy elsődleges lapra, amely beírja a kódrészletet egy hely összes oldalára. A jelen cikk sablon alapú ASP.net MVC alkalmazásához a szerkeszteni kívánt fájl meghívása megtörténik, `_Layout.cshtml` és a   >  **megosztva** nézetek alatt található.
 
 Ügyféloldali figyelés hozzáadásához nyissa meg a `_Layout.cshtml` fájlt, és kövesse az ügyféloldali JavaScript SDK konfigurációs cikkében található [kódrészlet-alapú beállítási útmutatót](javascript.md#snippet-based-setup) .
 

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.custom: contperfq2
-ms.openlocfilehash: cbe3bedb188b563bb29ad1aa6e6e53e3039f1d51
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170337"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032524"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Az Azure IoT Central-alkalmazásban lévő eszközök kezelése
 
@@ -48,11 +48,11 @@ Eszköz hozzáadása az Azure IoT Central-alkalmazáshoz:
 
 1. Válassza ki azt az eszközt, amelyből eszközt szeretne létrehozni.
 
-1. Válassza az + **új**lehetőséget.
+1. Válassza az + **új** lehetőséget.
 
 1. A **szimulált** váltógomb be- **vagy** **kikapcsolása**. Egy valós eszköz az Azure IoT Central-alkalmazáshoz csatlakoztatott fizikai eszközhöz. Egy szimulált eszközön az Azure IoT Central által létrehozott mintaadatok láthatók.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. Ez az eszköz most megjelenik az eszköz listájában ehhez a sablonhoz. Válassza ki az eszközt az eszköz részletei lap megjelenítéséhez, amely az eszköz összes nézetét tartalmazza.
 
@@ -89,11 +89,11 @@ Ha az eszköz importálási művelete meghiúsul, hibaüzenet jelenik meg az esz
 
 ## <a name="migrate-devices-to-a-template"></a>Eszközök migrálása sablonba
 
-Ha az eszközök **minden**eszköz alatt történő importálásával regisztrálja az eszközöket, akkor a rendszer az eszközöket sablon társítása nélkül hozza létre. Az eszközöket hozzá kell rendelni egy sablonhoz az eszköz adatainak és egyéb adatainak megismeréséhez. Kövesse az alábbi lépéseket az eszközök sablonhoz való hozzárendeléséhez:
+Ha az eszközök **minden** eszköz alatt történő importálásával regisztrálja az eszközöket, akkor a rendszer az eszközöket sablon társítása nélkül hozza létre. Az eszközöket hozzá kell rendelni egy sablonhoz az eszköz adatainak és egyéb adatainak megismeréséhez. Kövesse az alábbi lépéseket az eszközök sablonhoz való hozzárendeléséhez:
 
 1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán.
 
-1. A bal oldali panelen válassza a **minden eszköz**lehetőséget:
+1. A bal oldali panelen válassza a **minden eszköz** lehetőséget:
 
     ![Nem társított eszközök](./media/howto-manage-devices/unassociateddevices1a.png)
 
@@ -101,11 +101,11 @@ Ha az eszközök **minden**eszköz alatt történő importálásával regisztrá
 
 1. Válassza ki a sablonnal társítandó eszközöket:
 
-1. **Áttelepítés**kiválasztása:
+1. **Áttelepítés** kiválasztása:
 
     ![Eszközök hozzárendelése](./media/howto-manage-devices/unassociateddevices2a.png)
 
-1. Válassza ki a sablont az elérhető sablonok listájából, majd válassza az **áttelepítés**lehetőséget.
+1. Válassza ki a sablont az elérhető sablonok listájából, majd válassza az **áttelepítés** lehetőséget.
 
 1. A kiválasztott eszközök társítva vannak a választott eszköz sablonnal.
 
@@ -166,7 +166,7 @@ A felhő tulajdonságai az eszközhöz társított eszköz-metaadatok, például
 
 1. Módosítsa a tulajdonságokat a szükséges értékekre. Egyszerre több tulajdonságot is módosíthat, és egyszerre frissítheti őket.
 
-1. Válassza a **Mentés** elemet. Ha az írható tulajdonságokat mentette, az értékeket a rendszer elküldi az eszközre. Amikor az eszköz megerősíti az írható tulajdonság módosítását, az állapot visszakerül a **szinkronizált**értékre. Ha mentett egy Felhőbeli tulajdonságot, az érték frissül.
+1. Válassza a **Mentés** elemet. Ha az írható tulajdonságokat mentette, az értékeket a rendszer elküldi az eszközre. Amikor az eszköz megerősíti az írható tulajdonság módosítását, az állapot visszakerül a **szinkronizált** értékre. Ha mentett egy Felhőbeli tulajdonságot, az érték frissül.
 
 ## <a name="next-steps"></a>Következő lépések
 

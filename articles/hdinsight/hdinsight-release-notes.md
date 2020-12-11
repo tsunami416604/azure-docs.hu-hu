@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0895e84363d40bdbf30408f2b2a0d95f951eb303
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549004"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032558"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
@@ -64,3 +64,18 @@ A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének n
 
 ## <a name="component-version-change"></a>Összetevő verziójának módosítása
 Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 és a HDInsight 3,6 aktuális összetevő-verzióit ebben a [dokumentumban](./hdinsight-component-versioning.md)találja.
+
+## <a name="known-issues"></a>Ismert problémák
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>A HDInsight-fürt virtuális gépek rendszeres újraindításának megakadályozása
+
+A 2020 november közepétől kezdődően előfordulhat, hogy észrevette, hogy a HDInsight-fürt virtuális gépei rendszeresen újraindulnak. Ezt a következő okok okozhatják:
+
+1.  A ClamAV engedélyezve van a fürtön. Az új azsec-ClamAV csomag nagy mennyiségű memóriát használ, amely elindítja a csomópontok újraindítását. 
+2.  A rendszer naponta ütemez egy CRON-feladatot, amely figyeli az Azure-szolgáltatások által használt hitelesítésszolgáltatók (CAs) listájának változásait. Új HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány elérhetővé tétele esetén a parancsfájl hozzáadja a tanúsítványt a JDK megbízhatósági kapcsolati tárolóhoz, és újraindítást ütemezhet.
+
+A HDInsight rögzíti a javításokat, és az összes futó fürt javítását alkalmazza mindkét probléma esetén. A javítás azonnali alkalmazásához és a váratlan virtuális gépek újraindításának elkerüléséhez futtassa az alábbi parancsfájl-műveleteket az összes fürtcsomóponton, állandó parancsfájl-műveletként. A HDInsight a javítás és a javítás befejezése után újabb értesítést küld.
+```
+https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
+https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
+```
+

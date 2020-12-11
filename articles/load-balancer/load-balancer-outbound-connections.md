@@ -5,15 +5,15 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: conceptual
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: d0fad3a257b6d1b3723cdf337179573b4667b054
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d30998e0d99ba7b1eeb55bdc47cd5cc54690156f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780110"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032915"
 ---
 # <a name="using-snat-for-outbound-connections"></a>SNAT használata a kimenő kapcsolatokhoz
 
@@ -61,7 +61,7 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
  ### <a name="scenario-1-virtual-machine-with-public-ip"></a><a name="scenario1"></a> 1. forgatókönyv: virtuális gép nyilvános IP-címmel
 
 
- | Szövetségek | Módszer | IP-protokollok |
+ | Szövetségek | Metódus | IP-protokollok |
  | ---------- | ------ | ------------ |
  | Nyilvános Load Balancer vagy önálló | [SNAT (forrás hálózati címfordítás)](#snat) </br> nincs használatban. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (biztonsági tartalom beágyazása) |
 
@@ -78,7 +78,7 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
  ### <a name="scenario-2-virtual-machine-without-public-ip-and-behind-standard-public-load-balancer"></a><a name="scenario2"></a>2. forgatókönyv: virtuális gép nyilvános IP-cím nélkül és standard nyilvános Load Balancer mögött
 
 
- | Szövetségek | Módszer | IP-protokollok |
+ | Szövetségek | Metódus | IP-protokollok |
  | ------------ | ------ | ------------ |
  | Nyilvános Load Balancer | A terheléselosztó felületi IP-címeinek használata a [SNAT](#snat).| TCP </br> UDP |
 
@@ -107,9 +107,9 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
  ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>3. forgatókönyv: nyilvános IP nélküli virtuális gép és alapszintű Load Balancer
 
 
- | Szövetségek | Módszer | IP-protokollok |
+ | Szövetségek | Metódus | IP-protokollok |
  | ------------ | ------ | ------------ |
- |Nincsenek </br> Alapszintű Load Balancer | [SNAT](#snat) a példány-szintű dinamikus IP-címmel| TCP </br> UDP | 
+ |Nincs </br> Alapszintű Load Balancer | [SNAT](#snat) a példány-szintű dinamikus IP-címmel| TCP </br> UDP | 
 
  #### <a name="description"></a>Leírás
 
@@ -190,7 +190,7 @@ További információ az Azure Virtual Network NAT-ról: [Mi az az azure Virtual
   * A TCP SNAT-portok több kapcsolathoz is használhatók ugyanahhoz a cél IP-címhez, ha a célként megadott portok eltérőek.
 *   A SNAT kimerültség akkor következik be, amikor egy háttérbeli példány kifogyott a megadott SNAT-portok közül. A terheléselosztó továbbra is használhat fel nem használt SNAT-portokat. Ha a háttérbeli példány SNAT-portjai meghaladják a megadott SNAT-portokat, nem fog tudni új kimenő kapcsolatokat létesíteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 *   [A kimenő kapcsolatok hibáinak elhárítása a SNAT kimerülése miatt](./troubleshoot-outbound-connection.md)
 *   [Tekintse át az SNAT mérőszámait](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) , és ismerkedjen meg a megfelelő szűrési, felosztási és megtekintési módszerekkel.

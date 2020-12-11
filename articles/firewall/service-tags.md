@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 47377817b62d33e8af79e4a0d2dceb68ba9dbdc5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 83e9a96573bbc72e0afff61cc0f151f95b081e30
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658647"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031579"
 ---
 # <a name="azure-firewall-service-tags"></a>Azure Firewall szolgáltatás címkéi
 
@@ -22,7 +22,7 @@ Azure Firewall szolgáltatás címkéi a hálózati szabályok célhely mezőjé
 
 ## <a name="supported-service-tags"></a>Támogatott szolgáltatási Címkék
 
-Az Azure tűzfal hálózati szabályaiban használható szolgáltatási címkék listáját a [biztonsági csoportok](../virtual-network/network-security-groups-overview.md#service-tags) részben tekintheti meg.
+Tekintse meg a [virtuális hálózati szolgáltatás címkéit](../virtual-network/service-tags-overview.md#available-service-tags) az Azure tűzfal hálózati szabályaiban használható szolgáltatási címkék listájának megtekintéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

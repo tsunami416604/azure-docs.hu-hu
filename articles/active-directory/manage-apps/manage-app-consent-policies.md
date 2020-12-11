@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.custom: contperfq2
-ms.openlocfilehash: 4368f20171da0c1896e642361578580b1d958296
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 3587beaeb788665c68c1fcb6376af40566b6c35e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659046"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032779"
 ---
 # <a name="manage-app-consent-policies"></a>Alkalmazás-hozzájárulási szabályzatok kezelése
 
@@ -130,7 +130,7 @@ Miután létrehozta az alkalmazáshoz való beleegyezett szabályzatot, [engedé
 
 Az alábbi táblázat az alkalmazás-engedélyezési házirendek támogatott feltételeinek listáját tartalmazza.
 
-| Condition (Állapot) | Leírás|
+| Feltétel | Leírás|
 |:---------------|:----------|
 | PermissionClassification | Az engedélyek [besorolása](configure-permission-classifications.md) a megadott engedélyhez, vagy az "all", hogy egyezzen az engedélyek besorolásával (beleértve a nem besorolt engedélyeket is). Az alapértelmezett érték az "all". |
 | PermissionType | A megadott engedély engedélyezési típusa. Használja az "alkalmazás" jogosultságot az alkalmazás engedélyeihez (például az alkalmazás szerepköreihez) vagy a delegált engedélyekhez. <br><br>**Megjegyzés**: a "delegatedUserConsentable" érték olyan delegált engedélyeket jelöl, amelyeket nem konfiguráltak az API-közzétevő a rendszergazdai hozzájárulás megköveteléséhez – ez az érték a beépített engedélyezési házirendekben használható, de nem használható egyéni engedélyek megadására szolgáló szabályzatokban. Kötelező. |

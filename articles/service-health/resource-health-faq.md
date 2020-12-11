@@ -3,12 +3,12 @@ title: Azure Resource Health GYIK
 description: A Azure Resource Health áttekintése
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: c8089e907f555ac970fea06361a2ab1bbc944778
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5ad8867b110039e4dcc34b20c8a61fccfd39eaf
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536494"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032864"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health GYIK
 Ismerkedjen meg a Azure Resource Healthekkel kapcsolatos gyakori kérdésekre adott válaszokkal.
@@ -51,8 +51,7 @@ A Resource Health [támogatja](resource-health-alert-arm-template-guide.md) a te
 ## <a name="where-do-i-find-resource-health"></a>Hol találom a Resource Health?
 Miután bejelentkezett a Azure Portalba, több módon is elérheti Resource Health:
 - Navigáljon az erőforráshoz. A bal oldali navigációs sávon válassza az **erőforrás állapota** lehetőséget.
-- Lépjen a Azure Service Health panelre.  A bal oldali navigációs sávon válassza az **erőforrás állapota**lehetőséget.
-- Nyissa meg a **Súgó + támogatás** panelt a portál jobb felső sarkában látható kérdőjel kiválasztásával, majd válassza a **Súgó és támogatás**lehetőséget. A panel megnyitása után válassza az **erőforrás állapota** lehetőséget.
+- Lépjen a Azure Service Health panelre.  A bal oldali navigációs sávon válassza az **erőforrás állapota** lehetőséget.
 
 A Resource Health API-val is felhasználhatja az erőforrások állapotával kapcsolatos információkat.
 
@@ -60,7 +59,7 @@ A Resource Health API-val is felhasználhatja az erőforrások állapotával kap
 Az Resource Health által támogatott állapot-ellenőrzéseket és erőforrástípusok listáját [itt](resource-health-checks-resource-types.md)találja.
 
 ## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>Mi a teendő, ha az erőforrásom elérhető, de úgy vélem, hogy nem?
-Egy erőforrás állapotának ellenőrzésekor közvetlenül az állapot állapota területen kattintson a **helytelen állapot állapotának jelentése**lehetőségre. A jelentés elküldése előtt lehetősége van további részletek megadására arról, hogy miért nem megfelelő az aktuális állapot.
+Egy erőforrás állapotának ellenőrzésekor közvetlenül az állapot állapota területen kattintson a **helytelen állapot állapotának jelentése** lehetőségre. A jelentés elküldése előtt lehetősége van további részletek megadására arról, hogy miért nem megfelelő az aktuális állapot.
 
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>Resource Health érhető el az összes Azure-régióhoz? 
 Az erőforrás állapota az összes Azure-térségek elérhető.
@@ -69,8 +68,6 @@ Az erőforrás állapota az összes Azure-térségek elérhető.
 A Resource Health által megadott információk az Azure status vagy az Service Health irányítópult által biztosítottnál konkrétabbak.
 
 Míg az [Azure status](https://status.azure.com) és a Service Health irányítópult tájékoztat arról, hogy az ügyfelek széles körét befolyásoló szolgáltatási problémák (például egy Azure-régió) Resource Health az adott erőforráshoz kapcsolódó részletesebb eseményeket tesznek elérhetővé. Ha például egy gazdagép váratlanul újraindul, Resource Health csak azokat az ügyfeleket értesíti, akiknek virtuális gépei futnak a gazdagépen.
-
-Fontos megjegyezni, hogy az erőforrásait érintő események teljes láthatóságának biztosítása érdekében Resource Health a Service Health irányítópulton közzétett surfaces eseményeket is.
 
 ## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Aktiválni kell Resource Health minden erőforráshoz?
 Nem, a Resource Healthon keresztül elérhető összes erőforrástípus számára elérhető az állapot információja. 

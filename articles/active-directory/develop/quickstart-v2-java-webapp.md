@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: e93c0c6bb689980cab1b41e529c491cdf3920260
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e188c00840a4d043e94f94f9db565e2d4e06aaba
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591716"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031062"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -47,25 +47,22 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs adatainak manuális hozzáadásához kövesse az alábbi lépéseket:
 >
-> 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-> 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
->
-> 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalára.
-> 1. Válassza az **új regisztráció** lehetőséget.
-> 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
->    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `java-webapp`).
->    - Válassza a **Regisztráció** lehetőséget.
-> 1. Az **Áttekintés** oldalon keresse meg az alkalmazás **(ügyfél) azonosítóját** és a **könyvtár (bérlő) azonosító** értékeit. Másolja ezeket az értékeket később.
-> 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
->    - Adja hozzá **a** webplatform-konfigurációt.  Adja hozzá ezeket `https://localhost:8443/msal4jsample/secure/aad` és `https://localhost:8443/msal4jsample/graph/me` az **átirányítási URI-ket**.
->    - Válassza a **Mentés** lehetőséget.
-> 1. Válassza ki a **tanúsítványokat & a titkokat** a menüben, majd az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka** lehetőségre:
->
->    - Írja be a kulcs leírását (például az alkalmazás titkos kulcsaként).
->    - Válassza ki a kulcs időtartamát **1 év** múlva.
->    - A kulcs értéke a **Hozzáadás** gombra kattintva fog megjelenni.
->    - Másolja később a kulcs értékét. Ez a kulcs nem jelenik meg újra, és semmilyen más módon nem kérhető le, ezért jegyezze fel, amint a Azure Portal látható.
->
+> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+> 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+> 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+> 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+> 1. Adja meg az alkalmazás **nevét** , például: `java-webapp` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+> 1. Válassza a **Regisztráció** lehetőséget.
+> 1. Az **Áttekintés** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítóját** és a **címtár (bérlő) azonosítóját** későbbi használatra.
+> 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
+> 1. Válassza **a platform**  >  **web** hozzáadása lehetőséget.
+> 1. Az **átirányítási URI** -k szakaszban adja hozzá a következőt: `https://localhost:8443/msal4jsample/secure/aad` .
+> 1. Válassza a **Konfigurálás** lehetőséget.
+> 1. A **webes** szakaszban adja hozzá `https://localhost:8443/msal4jsample/graph/me` második **átirányítási URI**-ként.
+> 1. A **kezelés** területen válassza a **tanúsítványok & Secrets** elemet. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka** elemet.
+> 1. Írja be a kulcs leírását (például az alkalmazás titkos kódjához), hagyja meg az alapértelmezett lejáratot, és válassza a **Hozzáadás** lehetőséget.
+> 1. Jegyezze fel az **ügyfél titkos kulcsának** **értékét** későbbi használatra.
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
 >
@@ -110,7 +107,7 @@ A minta futtatásához a következőkre lesz szüksége:
 > #### <a name="step-3-configure-the-code-sample"></a>3. lépés: a mintakód konfigurálása
 > 1. Csomagolja ki a zip-fájlt egy helyi mappába.
 > 1. Ha integrált fejlesztési környezetet használ, nyissa meg a mintát a kedvenc IDE (opcionális).
-> 1. Nyissa meg az Application. properties fájlt, amely a src/Main/Resources/mappában található, és cserélje le a *HRE. clientId* , *HRE. Authority* és *HRE. secretKey* mezők értékét az alkalmazás- **azonosító** , a **bérlői azonosító** és az **ügyfél titkos kulcsának** megfelelő értékekre az alábbiak szerint:
+> 1. Nyissa meg az Application. properties fájlt, amely a src/Main/Resources/mappában található, és cserélje le a *HRE. clientId*, *HRE. Authority* és *HRE. secretKey* mezők értékét az alkalmazás- **azonosító**, a **bérlői azonosító** és az **ügyfél titkos kulcsának** megfelelő értékekre az alábbiak szerint:
 >
 >    ```file
 >    aad.clientId=Enter_the_Application_Id_here
@@ -120,7 +117,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >    aad.redirectUriGraph=https://localhost:8443/msal4jsample/graph/me
 >    aad.msGraphEndpointHost="https://graph.microsoft.com/"
 >    ```
-> Ebben a példában:
+> Kimenet:
 >
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 > - `Enter_the_Client_Secret_Here`– a **tanúsítványokban létrehozott &** **titkos kulcs** a regisztrált alkalmazáshoz.
@@ -150,13 +147,13 @@ Futtassa közvetlenül az IDE-ből a beágyazott rugós rendszerindítási kiszo
 
 ##### <a name="running-from-ide"></a>Futtatás IDE-ből
 
-Ha IDE-ből futtatja a webalkalmazást, kattintson a Futtatás gombra, és keresse meg a projekt kezdőlapját. Ehhez a mintához a szabványos Kezdőlap URL-címe https://localhost:8443
+Ha IDE-ből futtatja a webalkalmazást, válassza a Futtatás lehetőséget, majd navigáljon a projekt kezdőlapján. Ehhez a mintához a standard Kezdőlap URL-címe: https://localhost:8443 .
 
 1. A kezdőlapon kattintson a **Bejelentkezés** gombra a Azure Active Directory átirányításához, és kérje meg a felhasználót a hitelesítő adataik megadására.
 
 1. A felhasználó hitelesítése után a rendszer átirányítja a következőre: *https://localhost:8443/msal4jsample/secure/aad* . Most bejelentkeznek, és az oldalon megjelennek a bejelentkezett fiókra vonatkozó információk. A minta felhasználói felület a következő gombokkal rendelkezik:
-    - *Kijelentkezés* : aláírja az aktuális felhasználót az alkalmazásból, és átirányítja őket a kezdőlapra.
-    - *Felhasználói információk megjelenítése* : jogkivonatot kér Microsoft Graph és meghívja Microsoft Graph a tokent tartalmazó kérelemmel, amely a bejelentkezett felhasználó alapvető információit adja vissza.
+    - *Kijelentkezés*: aláírja az aktuális felhasználót az alkalmazásból, és átirányítja őket a kezdőlapra.
+    - *Felhasználói információk megjelenítése*: jogkivonatot kér Microsoft Graph és meghívja Microsoft Graph a tokent tartalmazó kérelemmel, amely a bejelentkezett felhasználó alapvető információit adja vissza.
 
 ##### <a name="running-from-tomcat"></a>Futtatás tomcat-ből
 
