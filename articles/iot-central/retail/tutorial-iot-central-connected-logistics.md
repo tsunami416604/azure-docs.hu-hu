@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 0206c111be7cd6441d9de32af498e961833d214f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 398441123d5ad309d9c2d506a75b80b58a6d56d0
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980695"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346214"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató a csatlakoztatott logisztikai alkalmazási sablonhoz
 
@@ -41,9 +41,9 @@ Hozza létre az alkalmazást az alábbi lépések segítségével:
 
     :::image type="content" source="media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png" alt-text="Csatlakoztatott logisztikai sablon":::
 
-2. Válassza az **alkalmazás létrehozása** a **csatlakoztatott logisztikai alkalmazásban**lehetőséget.
+1. Válassza az **alkalmazás létrehozása** a **csatlakoztatott logisztikai alkalmazásban** lehetőséget.
 
-3. Az alkalmazás **létrehozása** megnyitja az **új alkalmazás** űrlapot. Adja meg a következő részleteket:
+1. Az alkalmazás **létrehozása** megnyitja az **új alkalmazás** űrlapot. Adja meg a következő részleteket:
 
 
     * **Alkalmazás neve**: az alapértelmezett javasolt nevet használhatja, vagy megadhatja a felhasználóbarát alkalmazás nevét.
@@ -51,9 +51,9 @@ Hozza létre az alkalmazást az alábbi lépések segítségével:
     * **Számlázási információ**: a címtár, az Azure-előfizetés és a régió részletei szükségesek az erőforrások kiépítéséhez.
     * **Létrehozás**: válassza a létrehozás lehetőséget az oldal alján az alkalmazás üzembe helyezéséhez.
 
-    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="Csatlakoztatott logisztikai sablon":::
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="Csatlakoztatott logisztikai alkalmazás sablonja":::
 
-    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="Csatlakoztatott logisztikai sablon":::
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="Kapcsolódó logisztikai számlázási információk":::
 
 ## <a name="walk-through-the-application"></a>Az alkalmazás végigvezeti
 
@@ -81,13 +81,13 @@ Az irányítópult két különböző átjáró-Eszközkezelő műveletet tesz l
 * Megtekintheti a tehergépkocsi-szállítmányok logisztikai útvonalait és a tengeri szállítások helyének részleteit.
 * Tekintse meg az átjáró állapotát és az egyéb kapcsolódó információkat.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="Csatlakoztatott logisztikai sablon":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="Csatlakoztatott logisztikai irányítópult":::
 
 * Az átjárók, az aktív és az ismeretlen címkék teljes száma nyomon követhető.
 * A következőket teheti: a belső vezérlőprogram frissítése, az érzékelők letiltása és engedélyezése, az érzékelő küszöbértékének frissítése, a telemetria intervallumok frissítése és az eszköz szolgáltatási szerződésének frissítése.
 * Az eszköz akkumulátor-felhasználásának megtekintése.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="Csatlakoztatott logisztikai sablon":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="Csatlakoztatott logisztikai irányítópult állapota":::
 
 #### <a name="device-template"></a>Eszköz sablonja
 
@@ -95,11 +95,11 @@ Válassza ki az **eszközök sablonjait** az átjáró képességi modelljének 
 
 **Átjáró telemetria & tulajdonsága** – ez a felület határozza meg az érzékelőkkel, a hellyel és az eszköz adataival kapcsolatos összes telemetria. Az illesztőfelület az eszközök Twin tulajdonságának képességeit is meghatározza, például az érzékelő küszöbértékeit és a frissítési intervallumokat.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="Csatlakoztatott logisztikai sablon":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="Telemetria és tulajdonság felülete":::
 
 **Átjáró parancsai** – ez a felület az összes átjáró-parancs funkcióját szervezi:
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="Csatlakoztatott logisztikai sablon":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="Átjáró parancsainak felülete":::
 
 ### <a name="rules"></a>Szabályok
 
@@ -109,13 +109,13 @@ Válassza a **szabályok** lapot az alkalmazási sablonban található szabályo
 
 Nem **válaszoló átjáró**: Ez a szabály akkor aktiválódik, ha az átjáró hosszabb ideig nem jelent jelentést a felhőnek. Az átjáró nem válaszol, mert kevés az akkumulátor, a kapcsolat elvesztése vagy az eszköz károsodása.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="Csatlakoztatott logisztikai sablon":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="Szabályok definíciói":::
 
 ### <a name="jobs"></a>Feladatok
 
 Válassza a **feladatok** fület az alkalmazásban található feladatok megtekintéséhez:
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="Csatlakoztatott logisztikai sablon":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="Futtatandó feladatok":::
 
 Az alkalmazásokra vonatkozó műveleteket feladatok végrehajtására is használhatja. Az alkalmazásban szereplő feladatok eszköz-és Twin-képességeket használnak olyan feladatok elvégzéséhez, mint például bizonyos érzékelők letiltása az összes átjárón, vagy az érzékelő küszöbértékének módosítása a szállítási módtól és útvonaltól függően:
 
@@ -125,11 +125,11 @@ Az alkalmazásokra vonatkozó műveleteket feladatok végrehajtására is haszn�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját a **felügyeleti**  >  **alkalmazás beállításainak** meglátogatásával, és válassza a **Törlés**lehetőséget.
+Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját a **felügyeleti**  >  **alkalmazás beállításainak** meglátogatásával, és válassza a **Törlés** lehetőséget.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Csatlakoztatott logisztikai sablon":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Sablon karbantartása":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ 
 > [!div class="nextstepaction"]
 > [Kapcsolódó logisztikai koncepció](./architecture-connected-logistics.md)

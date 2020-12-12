@@ -11,15 +11,14 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187272"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346367"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Oktatóanyag: adatok exportálása az Azure IoT Central és az elemzések megjelenítése Power BI
-
 
 
 A két korábbi oktatóanyagban létrehozta és testreszabta a IoT Central alkalmazást a **Store Analytics-Checkout** alkalmazás sablonjának használatával. Ebben az oktatóanyagban konfigurálja a IoT Central alkalmazást az eszközökről összegyűjtött telemetria exportálásához. Ezután a Power BI használatával létrehozhat egy egyéni irányítópultot az áruház kezelőjének, hogy megjelenítse a telemetria származtatott bepillantást.
@@ -35,7 +34,7 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Az előző két oktatóanyag elvégzéséhez [hozzon létre egy áruházbeli elemzési alkalmazást az azure IoT Centralban](./tutorial-in-store-analytics-create-app.md) , és [szabja testre az operátor irányítópultját, és kezelje az eszközöket az Azure IoT Centralban](./tutorial-in-store-analytics-customize-dashboard.md).
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 * Power BI-fiók. Ha nincs Power BI fiókja, regisztráljon az [ingyenes Power bi Pro próbaverzióra](https://app.powerbi.com/signupredirect?pbi_source=web) , mielőtt elkezdené.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
@@ -89,7 +88,7 @@ Most már rendelkezik egy Event hub-vel, beállíthatja az **áruházbeli elemz�
 1. Válassza ki a **Event Hubs névteret**.
 1. Válassza ki a **Store-telemetria** Event hubot.
 1. Kapcsolja ki az **eszközöket** és az eszközök **sablonjait** az **exportálandó adatexportálás** szakaszban.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Az adatexportálás eltarthat néhány percig, hogy el lehessen küldeni a telemetria az Event hub-ra. Az Exportálás állapota az **adatexportálás** oldalon látható:
 
@@ -500,7 +499,7 @@ Az Event hub és a Logic alkalmazást törölheti a Azure Portal a **Retail-Stor
 
 Power BI adatkészleteket és irányítópultokat a munkaterület Power BI beállítások lapján lévő munkaterület törlésével törölheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a három oktatóanyag olyan teljes körű megoldást mutat be, amely a **Store Analytics-checkout** IoT Central alkalmazás sablonját használja. Csatlakoztatta az eszközöket az alkalmazáshoz, a IoT Central használta az eszközök figyelésére, és Power BI, hogy irányítópultot hozzon létre az eszköz telemetria való betekintés céljából. A következő lépés egy másik IoT Central alkalmazás-sablon egyikének megismerése:
 

@@ -3,14 +3,14 @@ title: TLS kölcsönös hitelesítés beállítása
 description: Ismerje meg, hogyan hitelesítheti az Ügyféltanúsítványok tanúsítványait a TLS-ben. A Azure App Service az ügyféltanúsítvány számára elérhetővé teheti az ügyféltanúsítványt az ellenőrzéshez.
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 145b999d7bf8597c06d6e3d4a36d01b182c8ae68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213637"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347725"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>A TLS kölcsönös hitelesítés konfigurálása Azure App Servicehoz
 
@@ -24,20 +24,33 @@ A Azure App Service-alkalmazáshoz való hozzáférést a különböző típusú
 
 ## <a name="enable-client-certificates"></a>Ügyféltanúsítványok engedélyezése
 
-Ha az alkalmazást az Ügyféltanúsítványok megköveteléséhez szeretné beállítani, **akkor a bejövő** tanúsítvány megkövetelése lehetőségre kattintva megadhatja az Azure Portal **konfiguráció**  >  **általános beállítások** elemét, vagy be kell állítania az `clientCertEnabled` alkalmazás beállítását a következőre: `true` . A beállítás megadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com).
+Az alkalmazás beállítása az Ügyféltanúsítványok megköveteléséhez:
+
+1. Az alkalmazás felügyeleti lapjának bal oldali navigációs sávján válassza a **konfiguráció**  >  **általános beállítások** lehetőséget.
+
+1. Az **ügyféltanúsítvány-üzemmód** beállítása **kötelező**. Kattintson az oldal tetején lévő **Mentés** elemre.
+
+Ha ugyanezt az Azure CLI-vel szeretné elvégezni, futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com):
 
 ```azurecli-interactive
-az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
+az webapp update --set clientCertEnabled=true --name <app-name> --resource-group <group-name>
 ```
 
 ## <a name="exclude-paths-from-requiring-authentication"></a>Elérési utak kizárása a hitelesítés megkövetelése
 
-Ha engedélyezi a kölcsönös hitelesítést az alkalmazáshoz, az alkalmazás gyökerében lévő összes elérési útnak szüksége lesz az ügyféltanúsítvány elérésére. Annak engedélyezéséhez, hogy bizonyos elérési utak nyitva maradjanak a névtelen hozzáféréshez, a kizárási útvonalakat az alkalmazás konfigurációjának részeként is meghatározhatja.
+Ha engedélyezi az alkalmazás kölcsönös hitelesítését, az alkalmazás gyökeréhez tartozó összes elérési út megköveteli az ügyféltanúsítvány elérését. Ha bizonyos elérési utak esetében el szeretné távolítani ezt a követelményt, adja meg a kizárási útvonalakat az alkalmazás konfigurációjának részeként.
 
-A kizárási útvonalakat úgy konfigurálhatja, hogy kiválasztja a **konfiguráció**  >  **általános beállításai** lehetőséget, és meghatározza a kizárási útvonalat. Ebben a példában az `/public` alkalmazás elérési útja nem kér ügyféltanúsítványt.
+1. Az alkalmazás felügyeleti lapjának bal oldali navigációs sávján válassza a **konfiguráció**  >  **általános beállítások** lehetőséget.
+
+1. Az **ügyfél-kizárási elérési utak** mellett kattintson a Szerkesztés ikonra.
+
+1. Kattintson az **új elérési út** elemre, válasszon egy elérési utat, majd kattintson **az OK** gombra.
+
+1. Kattintson az oldal tetején lévő **Mentés** elemre.
+
+A következő képernyőképen az `/public` alkalmazás elérési útjának bármelyike nem igényel ügyféltanúsítványt.
 
 ![Tanúsítvány kizárási elérési útjai][exclusion-paths]
-
 
 ## <a name="access-client-certificate"></a>Hozzáférési ügyféltanúsítvány
 

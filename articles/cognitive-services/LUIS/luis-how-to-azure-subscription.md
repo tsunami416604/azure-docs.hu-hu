@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a71c1a0df1a72e3831fa54a041539f62b38a0aca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999909"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348067"
 ---
 # <a name="create-luis-resources"></a>LUIS-erőforrások létrehozása
 
@@ -51,16 +51,13 @@ Egy erőforrás tulajdonjogának megváltoztatásához hajtsa végre az alábbi 
 * Vigye át az előfizetés [tulajdonjogát](../../cost-management-billing/manage/billing-subscription-transfer.md) .
 * Exportálja a LUIS alkalmazást fájlként, majd importálja az alkalmazást egy másik előfizetésre. Az Exportálás a LUIS portál **saját alkalmazások** lapján érhető el.
 
-
 ## <a name="resource-limits"></a>Erőforráskorlátok
 
 ### <a name="authoring-key-creation-limits"></a>Szerzői kulcsok létrehozási korlátai
 
-Régiónként, előfizetéshez legfeljebb 10 szerzői kulcsot hozhat létre.
+Régiónként, előfizetéshez legfeljebb 10 szerzői kulcsot hozhat létre. A közzétételi régiók eltérnek a szerzői régióktól. Győződjön meg arról, hogy olyan alkalmazást hoz létre a szerzői régióban, amely megfelel a közzétételi régiónak, ahol az ügyfélalkalmazás található. További információ arról, hogyan lehet a szerzői régiók a közzétételi régiókban leképezni a létrehozási [és közzétételi](luis-reference-regions.md)régiókat. 
 
-További információ: a [főbb korlátok](luis-limits.md#key-limits) és az [Azure-régiók](luis-reference-regions.md).
-
-A közzétételi régiók eltérnek a szerzői régióktól. Győződjön meg arról, hogy olyan alkalmazást hoz létre a szerzői régióban, amely megfelel a közzétételi régiónak, ahol az ügyfélalkalmazás található.
+A kulcsok korlátozásával kapcsolatos további információkért lásd: [kulcs korlátai](luis-limits.md#key-limits).
 
 ### <a name="errors-for-key-usage-limits"></a>A kulcshasználat korlátaival kapcsolatos hibák
 
@@ -191,20 +188,20 @@ Erőforrás `kind` :
 
     Ez a parancs egy böngészőt nyit meg, így kiválaszthatja a megfelelő fiókot, és megadhatja a hitelesítést.
 
-1. Hozzon létre egy nevű LUIS Author `LUIS.Authoring` -erőforrást `my-luis-authoring-resource` . Hozza létre a nevet _existing_ a `my-resource-group` régióhoz tartozó meglévő erőforráscsoport számára `westus` .
+1. Hozzon létre egy nevű LUIS Author `LUIS.Authoring` -erőforrást `my-luis-authoring-resource` . Hozza létre a nevet  a `my-resource-group` régióhoz tartozó meglévő erőforráscsoport számára `westus` .
 
     ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. Hozzon létre egy nevű LUIS előrejelzési végpont-erőforrást `LUIS` `my-luis-prediction-resource` . Hozza létre a nevet _existing_ a `my-resource-group` régióhoz tartozó meglévő erőforráscsoport számára `westus` . Ha azt szeretné, hogy az ingyenes szinten nagyobb átviteli sebesség legyen elérhető, váltson a következőre: `F0` `S0` . [További információ a díjszabási szintekről és az átviteli sebességről.](luis-limits.md#key-limits)
+1. Hozzon létre egy nevű LUIS előrejelzési végpont-erőforrást `LUIS` `my-luis-prediction-resource` . Hozza létre a nevet  a `my-resource-group` régióhoz tartozó meglévő erőforráscsoport számára `westus` . Ha azt szeretné, hogy az ingyenes szinten nagyobb átviteli sebesség legyen elérhető, váltson a következőre: `F0` `S0` . [További információ a díjszabási szintekről és az átviteli sebességről.](luis-limits.md#key-limits)
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
     > [!Note]
-    > Ezeket a kulcsokat a Luis portál nem használja, amíg hozzá nem rendelik az **Manage**  >  **Azure-erőforrások** kezelése oldalon a Luis portálon.
+    > Ezeket a kulcsokat a Luis portál nem használja, amíg hozzá nem rendelik az   >  **Azure-erőforrások** kezelése oldalon a Luis portálon.
 
 <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>
 
@@ -214,7 +211,7 @@ Létrehozhat egy authoring-erőforrást egyetlen alkalmazáshoz vagy a LUIS öss
 
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai).
 1. A jobb felső sarokban válassza ki a felhasználói fiókot, majd válassza a **Beállítások** lehetőséget.
-1. A **felhasználói beállítások** lapon válassza a **szerzői erőforrás hozzáadása** lehetőséget, majd válasszon ki egy meglévő authoring-erőforrást. Kattintson a **Mentés** gombra.
+1. A **felhasználói beállítások** lapon válassza a **szerzői erőforrás hozzáadása** lehetőséget, majd válasszon ki egy meglévő authoring-erőforrást. Válassza a **Mentés** lehetőséget.
 
 ## <a name="assign-a-resource-to-an-app"></a>Erőforrás kiosztása egy alkalmazáshoz
 
@@ -224,7 +221,7 @@ Létrehozhat egy authoring-erőforrást egyetlen alkalmazáshoz vagy a LUIS öss
 Ezzel az eljárással hozhat létre szerzői vagy előrejelzési erőforrásokat, vagy hozzárendelhet egyet egy alkalmazáshoz: 
 
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai). Válasszon ki egy alkalmazást a **saját alkalmazások** listából.
-1. Ugrás az Azure-erőforrások **kezeléséhez**  >  **Azure Resources**:
+1. Ugrás az Azure-erőforrások **kezeléséhez**  >  :
 
     ![Képernyőkép, amely az Azure-erőforrások oldalt jeleníti meg.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
@@ -269,7 +266,7 @@ Automatizált folyamatok, például a CI/CD-folyamatok esetében érdemes automa
 ## <a name="unassign-a-resource"></a>Erőforrás hozzárendelésének megszüntetése
 
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai), majd válasszon ki egy alkalmazást a **saját alkalmazások** listából.
-1. Ugrás az Azure-erőforrások **kezeléséhez**  >  **Azure Resources**.
+1. Ugrás az Azure-erőforrások **kezeléséhez**  >  .
 1. Az erőforrás- **előrejelzési** erőforrás vagy a **szerzői erőforrás** lapon válassza az erőforrás **hozzárendelésének megszüntetése** gombot.
 
 Ha törli az erőforrás hozzárendelését, az nem törlődik az Azure-ból. Csak a LUIS-ról van lecsatolva.
@@ -319,7 +316,7 @@ Ha tudni szeretné, hogy mikor ér el egy bizonyos tranzakciós küszöbértéke
 
 Adjon hozzá egy metrikai riasztást a **hívások teljes** metrikája számára egy adott időtartamra vonatkozóan. Adja meg az összes olyan személy e-mail-címét, akik számára meg kell kapnia a riasztást. A riasztást fogadó összes rendszerhez adjon hozzá webhookokat. Egy logikai alkalmazást is futtathat a riasztás elindítása után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
 * Migrálás az új [szerzői erőforrásba](luis-migration-authoring.md).

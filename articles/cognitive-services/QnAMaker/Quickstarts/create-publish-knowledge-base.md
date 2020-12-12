@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: efe1b212ab45da3cddc038957f83991defd65e41
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 1ed74f5678a1b1c5d5ded525da0c3e7e7a75b902
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937729"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347530"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -48,7 +48,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
     |--|--|
     |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Jelölje be|
     |**Többszörös kapcsolású alapértelmezett szöveg**| Kiválasztás és beállítás|
-    |**+ URL-cím hozzáadása**|`https://azure.microsoft.com/en-us/support/faq/`|
+    |**+ URL-cím hozzáadása**|`https://www.microsoft.com/software-download/faq`|
     |**Csevegés**|**Professional** kiválasztása|
 
 7. Az **5. lépésben** válassza **a saját kb létrehozása** lehetőséget.
@@ -83,7 +83,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
     |--|--|
     |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Jelölje be|
     |**Többszörös kapcsolású alapértelmezett szöveg**| Kiválasztás és beállítás|
-    |**+ URL-cím hozzáadása**|`https://azure.microsoft.com/en-us/support/faq/`|
+    |**+ Fájl hozzáadása**| A Surface laptop manuális letöltése a következő helyről: https://download.microsoft.com/download/7/B/1/7B10C82E-F520-4080-8516-5CF0D803EEE0/surface-book-user-guide-EN.pdf 
     |**Csevegés**|**Professional** kiválasztása|
 
 8. Az **5. lépésben** válassza **a saját kb létrehozása** lehetőséget.
@@ -122,9 +122,9 @@ A jobb felső sarokban kattintson a **Mentés és a betanítás** lehetőségre 
 1. A QnA Maker portál jobb felső részén válassza a **tesztelés** lehetőséget, hogy a módosítások érvénybe léptetése megtörténjen.
 2. Írjon be egy példát egy felhasználói lekérdezésre a szövegmezőben.
 
-    `How many Azure services are used by a knowledge base?`
+    `I want to know the difference between 32 bit and 64 bit Windows`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Írjon be egy példát egy felhasználói lekérdezésre a szövegmezőben.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/query-dialogue.png" alt-text="Írjon be egy példát egy felhasználói lekérdezésre a szövegmezőben.":::
 
 3. Válassza az **Inspect** (Vizsgálat) lehetőséget a válasz részletesebb vizsgálatához. A test (teszt) ablak segítségével tesztelheti a Tudásbázis módosításait, mielőtt közzéteszi a tudásbázist.
 

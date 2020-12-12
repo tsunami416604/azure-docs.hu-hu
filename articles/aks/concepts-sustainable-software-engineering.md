@@ -4,16 +4,16 @@ description: Ismerje meg az Azure Kubernetes Service (ak) fenntartható szoftver
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 700723041855fdae4f994480d180292fdfd12e15
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984979"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346894"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Fenntartható szoftverfejlesztés alapelvei az Azure Kubernetes szolgáltatásban (ak)
 
-A fenntartható szoftverfejlesztés alapelvei olyan kompetenciák, amelyek segítenek a fenntartható alkalmazások definiálásában, létrehozásában és futtatásában. Az általános cél az, hogy csökkentse az alkalmazás minden aspektusának széndioxid-lábnyomát. Az [alapelvek. a zöld projekt][principles-green] áttekintést nyújt a fenntartható szoftverfejlesztés elveiről.
+A fenntartható szoftverfejlesztés alapelvei olyan kompetenciák, amelyek segítenek a fenntartható alkalmazások definiálásában, létrehozásában és futtatásában. Az általános cél az, hogy csökkentse az alkalmazás minden aspektusának széndioxid-lábnyomát. [A fenntartható szoftverfejlesztés alapelvei][principles-sse] áttekintést nyújtanak a fenntartható szoftverfejlesztés elveiről.
 
 A fenntartható szoftverfejlesztés fontos elképzelése, hogy ez a prioritások és a hangsúly változása. Sok esetben a szoftver úgy lett kialakítva és futtatva, hogy a gyors teljesítményre és az alacsony késésre koncentráljon. A fenntartható szoftverfejlesztés a lehető legnagyobb széndioxid-kibocsátás csökkentésére koncentrál. Bizonyos esetekben a fenntartható szoftverfejlesztés alapelveinek alkalmazása gyorsabb teljesítményt vagy kisebb késést biztosít, például a teljes hálózati utazások csökkentésével. Más esetekben a széndioxid-kibocsátás csökkentése csökkentheti a teljesítményt vagy a megnövekedett késést, például az alacsony prioritású munkaterhelések késleltetését. Mielőtt fontolóra venné az alkalmazásra vonatkozó fenntartható szoftverfejlesztés alapelveinek alkalmazását, tekintse át az alkalmazás prioritásait, igényeit és kompromisszumait.
 
@@ -32,7 +32,7 @@ A fürt kihasználtságának áttekintése után érdemes lehet [több Node-kés
 
 A növekvő kihasználtság emellett csökkentheti a felesleges csomópontokat is, ami csökkenti az erőforrás-foglalások által felhasznált energiát az [egyes csomópontokon][resource-reservations].
 
-Tekintse át a processzor-és memória- *kérelmeket* és- *korlátozásokat* is az alkalmazások Kubernetes-jegyzékében. Ahogy csökkenti a memória és a CPU értékeit, több memória és CPU is elérhető a fürt számára más számítási feladatok futtatásához. Az alacsonyabb CPU-és memória-számítási feladatok futtatásakor a fürt sűrűbben lesz kiosztva, ami növeli a kihasználtságot. Ha csökkenti az alkalmazások PROCESSZORát és memóriáját, az alkalmazások viselkedése csökkenhet vagy instabillá válhat, ha túl alacsonyra állítja be ezeket az értékeket. A CPU-és memória- *kérelmek* és- *korlátok*módosítása előtt érdemes lehet néhány teljesítményteszt-tesztet futtatni, hogy megértsük, hogy ezek az értékek megfelelően vannak-e beállítva. Emellett soha ne csökkentse ezeket az értékeket arra a pontra, amikor az alkalmazása instabillá válik.
+Tekintse át a processzor-és memória- *kérelmeket* és- *korlátozásokat* is az alkalmazások Kubernetes-jegyzékében. Ahogy csökkenti a memória és a CPU értékeit, több memória és CPU is elérhető a fürt számára más számítási feladatok futtatásához. Az alacsonyabb CPU-és memória-számítási feladatok futtatásakor a fürt sűrűbben lesz kiosztva, ami növeli a kihasználtságot. Ha csökkenti az alkalmazások PROCESSZORát és memóriáját, az alkalmazások viselkedése csökkenhet vagy instabillá válhat, ha túl alacsonyra állítja be ezeket az értékeket. A CPU-és memória- *kérelmek* és- *korlátok* módosítása előtt érdemes lehet néhány teljesítményteszt-tesztet futtatni, hogy megértsük, hogy ezek az értékek megfelelően vannak-e beállítva. Emellett soha ne csökkentse ezeket az értékeket arra a pontra, amikor az alkalmazása instabillá válik.
 
 ## <a name="reduce-network-travel"></a>Hálózati utazás csökkentése
 
@@ -74,4 +74,4 @@ További információ a jelen cikkben említett AK-funkciókról:
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principles-green]: https://principles.green/
+[principles-sse]: https://docs.microsoft.com/learn/modules/sustainable-software-engineering-overview/

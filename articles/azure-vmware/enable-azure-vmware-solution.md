@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás erőforrásának engedélyezése
 description: Megtudhatja, hogyan küldhet be támogatási kérést az Azure VMware-megoldási erőforrásának engedélyezéséhez. További gazdagépeket is igényelhet a meglévő Azure VMware-megoldás privát felhőben.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 526d6b38f4b4e3f6c4806b71b4728dee90cf558a
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 8bcb61c07a3f0310754cd50931f4576e836deffb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325077"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346537"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Az Azure VMware megoldás erőforrásának engedélyezése
 Megtudhatja, hogyan küldhet be támogatási kérést az [Azure VMware-megoldási](introduction.md) erőforrásának engedélyezéséhez. További gazdagépeket is igényelhet a meglévő Azure VMware-megoldás privát felhőben.
@@ -18,7 +18,7 @@ Megtudhatja, hogyan küldhet be támogatási kérést az [Azure VMware-megoldás
 Egy Azure-előfizetésben Azure-fiókra lesz szüksége. Az Azure-előfizetésnek meg kell felelnie az alábbi feltételek egyikének:
 
 * Egy [Azure nagyvállalati szerződés (EA)](../cost-management-billing/manage/ea-portal-agreements.md) alá tartozó előfizetés a Microsofttal.
-* Egy felhőalapú megoldás-szolgáltató (CSP) által felügyelt előfizetés egy Azure-csomag alatt.
+* Egy meglévő CSP Azure-szerződés vagy egy Azure-csomag keretében kezelt felhőalapú megoldás-szolgáltató (CSP) által felügyelt előfizetés.
 
 
 ## <a name="enable-azure-vmware-solution-for-ea-customers"></a>Azure VMware-megoldás engedélyezése az EA-ügyfelek számára
@@ -61,7 +61,7 @@ Az Azure VMware-megoldási erőforrás létrehozása előtt egy támogatási jeg
 
 ## <a name="enable-azure-vmware-solution-for-csp-customers"></a>Azure VMware-megoldás engedélyezése a CSP-ügyfelek számára 
 
-A CSP-nek a [Microsoft partner centert](https://partner.microsoft.com) kell használnia az Azure VMware-megoldás az ügyfelek számára történő engedélyezéséhez. 
+A CSP-nek a [Microsoft partner centert](https://partner.microsoft.com) kell használnia az Azure VMware-megoldás az ügyfelek számára történő engedélyezéséhez. Ez a cikk a [CSP Azure-csomagot](/partner-center/azure-plan-lp.md) használja példaként a partnereknek szóló vásárlási eljárás szemléltetésére.
 
    >[!IMPORTANT] 
    >Az Azure VMware megoldási szolgáltatás nem biztosít több-bérlőt. Az azt igénylő partnerek nem támogatottak. 
@@ -76,9 +76,9 @@ A CSP-nek a [Microsoft partner centert](https://partner.microsoft.com) kell hasz
 
 1. Válassza az **Azure-csomag** lehetőséget, majd válassza **a Hozzáadás a kosárhoz** lehetőséget. 
 
-1. Tekintse át és fejezze be az Azure-csomag előfizetésének általános beállítását az ügyfél számára. További információt a [Microsoft partner Center dokumentációjában](/partner-center/azure-plan-manage)talál.
+1. Tekintse át és fejezze be az Azure-csomag előfizetésének általános beállítását az ügyfél számára. További információt a [Microsoft partner Center dokumentációjában](/partner-center/azure-plan-manage.md)talál.
 
-Miután konfigurálta az Azure-csomagot és a szükséges vSphere-RBAC engedélyeket a CSP-ként, a Microsofttal engedélyezheti az Azure-csomag előfizetésének kvótáját. Hozzáférési Azure Portal a partner Centertől a (z) (AOBO) eljárásban a **rendszergazda** használatával.
+Az Azure-csomag konfigurálása és a szükséges [Azure RBAC engedélyek](/partner-center/azure-plan-manage.md) megléte után az előfizetés lehetővé teszi a Microsoft számára, hogy engedélyezze az Azure-csomag előfizetésének kvótáját. Hozzáférési Azure Portal a [Microsoft partner Centertől](https://partner.microsoft.com) a (z) (AOBO) eljárásban a **rendszergazda** használatával.
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com).
 
@@ -124,6 +124,6 @@ Miután konfigurálta az Azure-csomagot és a szükséges vSphere-RBAC engedély
 1. Ha az előfizetést közvetlenül az ügyfél felügyeli, a **Microsoft. AVS** erőforrás-szolgáltató regisztrációját egy olyan felhasználónak kell elvégeznie, aki rendelkezik az előfizetésben megfelelő engedélyekkel, az erőforrás-szolgáltató regisztrálásával kapcsolatos további részletekért lásd az [Azure erőforrás-szolgáltatókat és-típusokat](../azure-resource-manager/management/resource-providers-and-types.md) . 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután engedélyezte az Azure VMware-megoldás erőforrását, és rendelkezik a megfelelő hálózatkezelési lehetőségekkel, [létrehozhat egy privát felhőt](tutorial-create-private-cloud.md).

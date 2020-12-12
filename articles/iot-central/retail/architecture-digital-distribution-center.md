@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: b73d065b43aff5f9793e642a102ff8bb2a7be036
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2e6993cd8dc77ccb9b43a3d5aef7b25fd9d7250
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81000447"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347115"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>A IoT Central Digital Distribution Center alkalmazás-sablon architektúrája
 
@@ -26,7 +26,7 @@ A partnerek és az ügyfelek az alkalmazás sablonját & alábbi útmutatást k�
 1. IoT-érzékelők készlete telemetria-adatokat küld egy átjáró-eszközre
 2. Telemetria küldő és összesített bepillantást IoT Central
 3. Az adattovábbítás a kívánt Azure-szolgáltatásba történik a manipulációhoz
-4. Az olyan Azure-szolgáltatások, mint az ASA vagy a Azure Functions használhatók az adatfolyamok újraformázására és a kívánt Storage-fiókokba való küldésre 
+4. Az olyan Azure-szolgáltatások, mint az ASA vagy a Azure Functions használhatók az adatfolyamok újraformázására és a kívánt Storage-fiókokba való küldésre
 5. A feldolgozott adatok tárolása a közel valós idejű műveletekhez vagy a hideg tároláshoz szükséges, és az olyan további elemzéseket is tartalmaz, amelyek az ML-vagy batch-elemzésen alapulnak. 
 6. A Logic Apps a végfelhasználói üzleti alkalmazások különböző üzleti munkafolyamatainak kikapcsolására is használható
 
@@ -45,7 +45,7 @@ Az Azure IoT Central egy megoldás-fejlesztői platform, amely leegyszerűsíti 
 ## <a name="business-insights-and-actions-using-data-egress"></a>Üzleti elemzések és műveletek a kimenő adatforgalom használatával 
 A IoT Central platform a folyamatos adatexportálás (CDE) és az API-k révén gazdag bővíthetőségi lehetőségeket biztosít. A telemetria adatfeldolgozási vagy nyers telemetria alapuló üzleti elemzéseket általában egy előnyben részesített üzletági alkalmazásba exportáljuk. A webhook, a Service Bus, az Event hub vagy a blob Storage szolgáltatással a gépi tanulási modellek létrehozásához, betanításához és további gazdagítása céljából is elérhetővé válik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Útmutató a [digitális terjesztési központ sablonjának](./tutorial-iot-central-digital-distribution-center.md) üzembe helyezéséhez
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail.md)
 * További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central.md)

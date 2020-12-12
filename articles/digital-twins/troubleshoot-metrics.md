@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5b689ef15c247cea1887948ae271802294bbd0fc
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 4b72bb8bac8f9949c83d0bbc85a0995f790c437d
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763248"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347897"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins hibaelhárítása: mérőszámok
 
@@ -49,6 +49,17 @@ Az Azure Digital Twins számos mérőszámot biztosít, amelyek áttekintést ny
 
 Az alábbi táblázatok ismertetik az egyes Azure Digital Twins-példányok által követett mérőszámokat, valamint azt, hogy az egyes mérőszámok hogyan kapcsolódnak a példányok általános állapotához.
 
+#### <a name="metrics-for-tracking-service-limits"></a>A nyomkövetési szolgáltatási korlátok mérőszámai
+
+Ezeket a metrikákat úgy konfigurálhatja, hogy nyomon kövessék a [közzétett szolgáltatási korlátot](reference-service-limits.md#functional-limits) a megoldás valamilyen aspektusa esetében. 
+
+Ennek beállításához használja a Azure Monitor [riasztások](troubleshoot-alerts.md) szolgáltatását. Megadhatja a metrikák küszöbértékeit, hogy riasztást kapjon, ha egy metrika eléri a közzétett korlát egy adott százalékát.
+
+| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Leírás | Dimenziók |
+| --- | --- | --- | --- | --- | --- |
+| TwinCount | Twin count (előzetes verzió) | Darabszám | Összesen | Az ikrek teljes száma az Azure Digital Twins-példányban. Ezzel a metrikával meghatározhatja, hogy a [szolgáltatás](reference-service-limits.md#functional-limits) legfeljebb hány ikrek számára engedélyezett. |  Nincsenek |
+| ModelCount | Modellek száma (előzetes verzió) | Darabszám | Összesen | Az Azure Digital Twins-példány modelljeinek száma összesen. Ezzel a metrikával meghatározhatja, hogy az adott példányon engedélyezett modellek maximális száma eléri-e a [szolgáltatási korlátot](reference-service-limits.md#functional-limits) . | Nincsenek |
+
 #### <a name="api-request-metrics"></a>API-kérelmek metrikái
 
 Az API-kérelmekkel rendelkező metrikák:
@@ -77,9 +88,9 @@ Adatbevitelsel ellátott mérőszámok:
 
 | Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
-| IngressEvents | Bejövő események | Darabszám | Összesen | A bejövő telemetria események száma az Azure digitális Twins-ban. | Result |
-| IngressEventsFailureRate | Bejövő események meghibásodási aránya | Százalék | Átlag | Azon bejövő telemetria-események százalékos aránya, amelyek esetében a szolgáltatás belső hibát (500) ad vissza. | Result |
-| IngressEventsLatency | Bejövő események késése | Ezredmásodpercben | Átlag | Az az idő, amikor egy esemény megérkezik, amikor készen áll az Azure digitális ikrek általi egressed, és ekkor a szolgáltatás sikeres/sikertelen eredményt küld. | Result |
+| IngressEvents | Bejövő események | Darabszám | Összesen | A bejövő telemetria események száma az Azure digitális Twins-ban. | Eredmény |
+| IngressEventsFailureRate | Bejövő események meghibásodási aránya | Százalék | Átlag | Azon bejövő telemetria-események százalékos aránya, amelyek esetében a szolgáltatás belső hibát (500) ad vissza. | Eredmény |
+| IngressEventsLatency | Bejövő események késése | Ezredmásodpercben | Átlag | Az az idő, amikor egy esemény megérkezik, amikor készen áll az Azure digitális ikrek általi egressed, és ekkor a szolgáltatás sikeres/sikertelen eredményt küld. | Eredmény |
 
 #### <a name="routing-metrics"></a>Útválasztási metrikák
 
@@ -87,9 +98,9 @@ Az útválasztással elvégezhető mérőszámok:
 
 | Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
-| MessagesRouted | Átirányított üzenetek | Darabszám | Összesen | Az Azure-szolgáltatásokhoz (például Event hub, Service Bus vagy Event Grid) továbbított üzenetek száma. | Végpont típusa, <br>Result |
-| RoutingFailureRate | Útválasztási hibák aránya | Százalék | Átlag | Az olyan események százalékos aránya, amelyek az Azure digitális Twins-ból egy Endpoint Azure-szolgáltatásba, például az Event hub-ba, a Service Busba vagy a Event Gridra irányítják a hibát. | Végpont típusa, <br>Result |
-| RoutingLatency | Útválasztási késés | Ezredmásodpercben | Átlag | Az Azure Digital Twins-ból átirányított esemény között eltelt idő a végponti Azure-szolgáltatásba (például Event hub, Service Bus vagy Event Grid) való közzétételkor. | Végpont típusa, <br>Result |
+| MessagesRouted | Átirányított üzenetek | Darabszám | Összesen | Az Azure-szolgáltatásokhoz (például Event hub, Service Bus vagy Event Grid) továbbított üzenetek száma. | Végpont típusa, <br>Eredmény |
+| RoutingFailureRate | Útválasztási hibák aránya | Százalék | Átlag | Az olyan események százalékos aránya, amelyek az Azure digitális Twins-ból egy Endpoint Azure-szolgáltatásba, például az Event hub-ba, a Service Busba vagy a Event Gridra irányítják a hibát. | Végpont típusa, <br>Eredmény |
+| RoutingLatency | Útválasztási késés | Ezredmásodpercben | Átlag | Az Azure Digital Twins-ból átirányított esemény között eltelt idő a végponti Azure-szolgáltatásba (például Event hub, Service Bus vagy Event Grid) való közzétételkor. | Végpont típusa, <br>Eredmény |
 
 ## <a name="dimensions"></a>Dimenziók
 
@@ -101,11 +112,11 @@ A dimenziók segítenek azonosítani a metrikák további részleteit. Az útvá
 | Művelet (API-kérelmek esetén) | Microsoft. DigitalTwins/DigitalTwins/DELETE, <br>Microsoft. DigitalTwins/DigitalTwins/Write, <br>Microsoft. DigitalTwins/DigitalTwins/READ, <br>Microsoft. DigitalTwins/eventroutes/READ, <br>Microsoft. DigitalTwins/eventroutes/Write, <br>Microsoft. DigitalTwins/eventroutes/DELETE, <br>Microsoft. DigitalTwins/modellek/olvasás, <br>Microsoft. DigitalTwins/modellek/írás, <br>Microsoft. DigitalTwins/models/DELETE, <br>Microsoft. DigitalTwins/lekérdezés/művelet |
 | Végpont típusa | Event Grid <br>Event hub, <br>Service Bus |
 | Protokoll | HTTPS |
-| Result | Sikeres <br>Hiba |
+| Eredmény | Sikeres <br>Hiba |
 | Állapotkód | 200, 404, 500 és így tovább. |
 | Állapotkód osztálya | 2xx, 4xx, 5xx stb. |
 | Állapot szövege | Belső kiszolgálóhiba, nem található, és így tovább. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure Digital Twins rögzített metrikáinak kezelésével kapcsolatban, tekintse meg a [*Hibaelhárítás: diagnosztika beállítása*](troubleshoot-diagnostics.md)című témakört.

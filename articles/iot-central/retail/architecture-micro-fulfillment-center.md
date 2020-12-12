@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: b0d030240ebe22886826b7a25bd5ca7b8f54e358
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a0d91677770e89f3e249fc699057332cccaa323
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81000426"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347472"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>Micro-teljesítési központ architektúrája
 
@@ -22,11 +22,11 @@ A Micro-bevezetési központ megoldásai lehetővé teszik a teljes mértékben 
 
 ![Azure IoT Central Store Analytics](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
-- IoT-érzékelők készlete telemetria-adatokat küld egy átjáró-eszközre
-- Telemetria küldő és összesített bepillantást IoT Central
-- Folyamatos adatexportálás a kívánt Azure-szolgáltatásba a manipulációhoz
-- Az adatszerkezet a kívánt formátumban strukturálható, és elküldhető egy tárolási szolgáltatásba
-- Az üzleti alkalmazások lekérhetik az adatok lekérdezését, és elemzéseket készíthetnek a kiskereskedelmi működésről
+1. IoT-érzékelők készlete telemetria-adatokat küld egy átjáró-eszközre
+2. Telemetria küldő és összesített bepillantást IoT Central
+3. Folyamatos adatexportálás a kívánt Azure-szolgáltatásba a manipulációhoz
+4. Az adatszerkezet a kívánt formátumban strukturálható, és elküldhető egy tárolási szolgáltatásba
+5. Az üzleti alkalmazások lekérhetik az adatok lekérdezését, és elemzéseket készíthetnek a kiskereskedelmi működésről
  
 Vessünk egy pillantást a kulcsfontosságú összetevőkre, amelyek általában egy részét a Micro-teljesítési központ megoldásában játszanak.
 
@@ -54,6 +54,6 @@ A megoldáson belüli Azure IoT Central alkalmazás úgy konfigurálható, hogy 
 ## <a name="business-application"></a>Üzleti alkalmazás
 A IoT-ben a kiskereskedelmi környezetben üzembe helyezett különböző típusú üzleti alkalmazások is használhatók. A teljesítési központ kezelője vagy alkalmazottai ezeket az alkalmazásokat felhasználhatják az üzleti eredmények megjelenítéséhez, és valós időben is elvégezhetik az értelmes műveleteket. Ha szeretné megtudni, hogyan hozhat létre valós idejű Power BI irányítópultot a kereskedelmi csapatának, kövesse az [oktatóanyagot](./tutorial-in-store-analytics-create-app.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerkedjen meg a [Micro-beteljesülő központ](https://aka.ms/checkouttemplate) alkalmazás sablonnal. 
 * Tekintse meg az [oktatóanyagot](https://aka.ms/mfc-tutorial) , amely végigvezeti a megoldásnak a Micro-teljesítési központ alkalmazás sablonnal történő létrehozásán.

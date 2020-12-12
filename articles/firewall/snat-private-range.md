@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 858343b6c5081b52d9e93909f9d52eaccd88a584
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c5613dda7adbbc47f989bc2a772777e716620b3c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660270"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348033"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>SNAT magánhálózati IP-címtartományok Azure Firewall
 
@@ -35,9 +35,22 @@ A Azure PowerShell használatával megadhatja a tűzfal magánhálózati IP-cím
 
 ### <a name="new-firewall"></a>Új tűzfal
 
-Új tűzfal esetén a Azure PowerShell parancs a következő:
+Új tűzfal esetén a Azure PowerShell parancsmag a következő:
 
-`New-AzFirewall -Name $GatewayName -ResourceGroupName $RG -Location $Location -VirtualNetworkName $vnet.Name -PublicIpName $LBPip.Name -PrivateRange @("IANAPrivateRanges","IPRange1", "IPRange2")`
+```azurepowershell
+$azFw = @{
+    Name               = '<fw-name>'
+    ResourceGroupName  = '<resourcegroup-name>'
+    Location           = '<location>'
+    VirtualNetworkName = '<vnet-name>'
+    PublicIpName       = '<public-ip-name>'
+    PrivateRange       = @("IANAPrivateRanges", "192.168.1.0/24", "192.168.1.10")
+}
+
+New-AzFirewall @azFw
+```
+> [!NOTE]
+> A Azure Firewall használatával történő üzembe helyezéséhez `New-AzFirewall` meglévő VNet és nyilvános IP-cím szükséges. Lásd: [Azure Firewall telepítése és konfigurálása Azure PowerShell használatával](deploy-ps.md) a teljes telepítési útmutatóhoz.
 
 > [!NOTE]
 > A IANAPrivateRanges a Azure Firewall aktuális alapértelmezett értékeire van kiterjesztve, míg a többi tartomány hozzá van adva. Ha meg szeretné őrizni a IANAPrivateRanges alapértelmezett értékeit a privát tartomány specifikációjában, akkor az `PrivateRange` alábbi példákban látható módon meg kell maradnia a specifikációban.
@@ -46,22 +59,54 @@ További információ: [New-AzFirewall](/powershell/module/az.network/new-azfire
 
 ### <a name="existing-firewall"></a>Meglévő tűzfal
 
-Meglévő tűzfal konfigurálásához használja a következő Azure PowerShell parancsokat:
+Meglévő tűzfal konfigurálásához használja a következő Azure PowerShell parancsmagokat:
 
 ```azurepowershell
-$azfw = Get-AzFirewall -ResourceGroupName "Firewall Resource Group name"
-$azfw.PrivateRange = @("IANAPrivateRanges","IPRange1", "IPRange2")
+$azfw = Get-AzFirewall -Name '<fw-name>' -ResourceGroupName '<resourcegroup-name>'
+$azfw.PrivateRange = @("IANAPrivateRanges","192.168.1.0/24", "192.168.1.10")
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
-### <a name="templates"></a>Sablonok
+## <a name="configure-snat-private-ip-address-ranges---azure-cli"></a>SNAT magánhálózati IP-címtartományok konfigurálása – Azure CLI
 
-A szakaszhoz a következőket adhatja hozzá `additionalProperties` :
+Az Azure CLI használatával megadhatja a tűzfal magánhálózati IP-címtartományt.
 
+### <a name="new-firewall"></a>Új tűzfal
+
+Új tűzfal esetén az Azure CLI-parancs a következő:
+
+```azurecli-interactive
+az network firewall create \
+-n <fw-name> \
+-g <resourcegroup-name> \
+--private-ranges 192.168.1.0/24 192.168.1.10 IANAPrivateRanges
 ```
+
+> [!NOTE]
+> Azure Firewall üzembe helyezése az Azure CLI parancs használatával `az network firewall create` további konfigurációs lépéseket igényel a nyilvános IP-címek és az IP-konfiguráció létrehozásához. Lásd: [Azure Firewall üzembe helyezése és konfigurálása az Azure CLI használatával](deploy-cli.md) a teljes telepítési útmutatóhoz.
+
+> [!NOTE]
+> A IANAPrivateRanges a Azure Firewall aktuális alapértelmezett értékeire van kiterjesztve, míg a többi tartomány hozzá van adva. Ha meg szeretné őrizni a IANAPrivateRanges alapértelmezett értékeit a privát tartomány specifikációjában, akkor az `PrivateRange` alábbi példákban látható módon meg kell maradnia a specifikációban.
+
+### <a name="existing-firewall"></a>Meglévő tűzfal
+
+Meglévő tűzfal konfigurálásához az Azure CLI-parancs a következő:
+
+```azurecli-interactive
+az network firewall update \
+-n <fw-name> \
+-g <resourcegroup-name> \
+--private-ranges 192.168.1.0/24 192.168.1.10 IANAPrivateRanges
+```
+
+## <a name="configure-snat-private-ip-address-ranges---arm-template"></a>SNAT magánhálózati IP-címtartományok konfigurálása – ARM-sablon
+
+Ha a SNAT-t az ARM Template deploymentban szeretné konfigurálni, a következő `additionalProperties` tulajdonsággal adhatja hozzá:
+
+```json
 "additionalProperties": {
-                    "Network.SNAT.PrivateRanges": "IANAPrivateRanges , IPRange1, IPRange2"
-                },
+   "Network.SNAT.PrivateRanges": "IANAPrivateRanges , IPRange1, IPRange2"
+},
 ```
 
 ## <a name="configure-snat-private-ip-address-ranges---azure-portal"></a>SNAT magánhálózati IP-címtartományok konfigurálása – Azure Portal

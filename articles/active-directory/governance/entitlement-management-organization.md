@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/28/2020
+ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1cdf983dc8fed64c7d283ac216eb803746add95
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029370"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347489"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
 
@@ -29,7 +29,13 @@ A Azure Active Directory (Azure AD) jogosultsági felügyelettel a szervezeten k
 
 ## <a name="what-is-a-connected-organization"></a>Mi az a csatlakoztatott szervezet?
 
-A csatlakoztatott szervezet egy külső Azure AD-címtár vagy-tartomány, amelyhez kapcsolata van.
+Egy csatlakoztatott szervezet egy másik szervezet, amelyhez kapcsolata van.  Ahhoz, hogy az adott szervezetben lévő felhasználók hozzáférhessenek az erőforrásokhoz, például a SharePoint Online-webhelyekhez vagy-alkalmazásokhoz, szüksége lesz az adott szervezet felhasználóinak képviseletére a címtárban.  Mivel a legtöbb esetben az adott szervezetben lévő felhasználók még nem szerepelnek az Azure AD-címtárban, használhatja a jogosultság-kezelést, hogy szükség szerint az Azure AD-címtárba vigye őket.  
+
+A jogosultságok kezelésének háromféleképpen kell megadnia a csatlakoztatott szervezeteket alkotó felhasználókat.  Lehetséges, hogy
+
+* felhasználók egy másik Azure AD-címtárban,
+* egy másik nem Azure AD-címtárbeli felhasználók, amelyek közvetlen összevonásra vannak konfigurálva, vagy
+* egy másik nem Azure AD-címtárban lévő felhasználók, akiknek az e-mail-címei azonos tartománynévvel rendelkeznek.
 
 Tegyük fel például, hogy a Woodgrove bankban dolgozik, és két külső szervezettel kíván együttműködni. Ez a két szervezet különböző konfigurációkkal rendelkezik:
 
@@ -155,7 +161,7 @@ Csak a konfigurált csatlakoztatott szervezetek felhasználói igényelhetnek ho
 > [!NOTE]
 > Az új funkció bevezetésének részeként az 09/09/20 előtt létrehozott összes csatlakoztatott szervezet **konfigurálva** lett. Ha olyan hozzáférési csomaggal rendelkezett, amely bármely szervezet felhasználói számára engedélyezte a regisztrációt, tekintse át az ezen időpont előtt létrehozott csatlakoztatott szervezetek listáját, hogy a none **ne legyenek megfelelően** kategorizálva.  A rendszergazda szükség szerint frissítheti az **állapot** tulajdonságot. Útmutatásért lásd [a csatlakoztatott szervezet frissítése](#update-a-connected-organization)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Külső felhasználók hozzáférésének szabályozása](./entitlement-management-external-users.md)
 - [A címtárban nem szereplő felhasználók hozzáférésének szabályozása](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

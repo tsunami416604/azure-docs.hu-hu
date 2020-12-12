@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 70ce1807ea6080e3efc0cf3266a9940c9ddb9cd3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 71b9c96c1855180106f7dfa9a31f0ee8b06ceb67
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489352"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347863"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Table Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
@@ -55,7 +55,7 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
     ![Azure-táblák](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    A Storage-táblában található információk megtekintéséhez [Azure Storage Explorer](https://archive.codeplex.com/?p=azurestorageexplorer) vagy bármely más eszköz használható. Az Azure-táblában lévő adatexportálást is elvégezheti.
+    A Storage-táblában található információk megtekintéséhez [Azure Storage Explorer](https://www.storageexplorer.com) vagy bármely más eszköz használható. Az Azure-táblában lévő adatexportálást is elvégezheti.
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>Választható A Power automatizálás használata a vezető értesítések beszerzéséhez
 
@@ -100,19 +100,19 @@ A példa létrehoz egy folyamatot, amely automatikusan értesítő e-mailt küld
 1. A **műveletek** területen válassza az **entitások beolvasása (Azure Table Storage)** lehetőséget.
 1. Az **Azure Table Storage** ablakban adja meg a következő mezők adatait, majd válassza a **Létrehozás** lehetőséget:
 
-    * **Kapcsolat neve** : adjon meg egy értelmes nevet a folyamat és a tábla közötti kapcsolathoz.
-    * **Storage-fiók neve** : adja meg a tábla Storage-fiókjának nevét. Ezt a nevet a Storage-fiók **hozzáférési kulcsainak** oldalán találja.
-    * **Megosztott tárolási kulcs** : adja meg a tábla tárolási fiókjának kulcs értékét. Ezt az értéket a Storage-fiók **hozzáférési kulcsainak** oldalán találja.
+    * **Kapcsolat neve**: adjon meg egy értelmes nevet a folyamat és a tábla közötti kapcsolathoz.
+    * **Storage-fiók neve**: adja meg a tábla Storage-fiókjának nevét. Ezt a nevet a Storage-fiók **hozzáférési kulcsainak** oldalán találja.
+    * **Megosztott tárolási kulcs**: adja meg a tábla tárolási fiókjának kulcs értékét. Ezt az értéket a Storage-fiók **hozzáférési kulcsainak** oldalán találja.
 
       ![Azure Table Storage ablak](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
    A **Létrehozás** gombra kattintva megjelenik az **entitások beolvasása** ablak. Itt válassza a **Speciális beállítások megjelenítése** lehetőséget, és adja meg a következő mezők adatait:
 
-   * **Tábla** : válassza ki a tábla nevét ( [tábla létrehozása](#create-a-table-in-your-storage-account)). Az alábbi képen látható, hogy mikor `marketplaceleads` van kiválasztva a táblázat a példához.
+   * **Tábla**: válassza ki a tábla nevét ( [tábla létrehozása](#create-a-table-in-your-storage-account)). Az alábbi képen látható, hogy mikor `marketplaceleads` van kiválasztva a táblázat a példához.
 
      ![Entitások beolvasása ablak](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-   * **Lekérdezés szűrése** : jelölje be ezt a jelölőnégyzetet, és illessze be ezt a függvényt a mezőbe: `Timestamp gt datetime'@{body('Get_past_time')}'`
+   * **Lekérdezés szűrése**: jelölje be ezt a jelölőnégyzetet, és illessze be ezt a függvényt a mezőbe: `Timestamp gt datetime'@{body('Get_past_time')}'`
 
      ![Entitások beolvasása, lekérdezés szűrése mező](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -151,8 +151,8 @@ A példa létrehoz egy folyamatot, amely automatikusan értesítő e-mailt küld
 1. Az Office 365 Outlook ablakban adja meg a következő mezők adatait:
 
     1. Ide: adjon meg egy e-mail-címet mindenki **számára, aki** megkapja ezt az értesítést.
-    1. **Tárgy** : adjon meg egy tárgyat az e-mailhez. Ilyenek például az **új érdeklődők!**
-    1. **Törzs** : adja hozzá az egyes e-mailekben szerepeltetni kívánt szöveget (opcionális), majd illessze be `body('Get_entities')?['value']` .
+    1. **Tárgy**: adjon meg egy tárgyat az e-mailhez. Ilyenek például az **új érdeklődők!**
+    1. **Törzs**: adja hozzá az egyes e-mailekben szerepeltetni kívánt szöveget (opcionális), majd illessze be `body('Get_entities')?['value']` .
 
     >[!NOTE]
     >További statikus vagy dinamikus adatpontokat is beszúrhat az e-mailek törzséhez.
@@ -193,9 +193,9 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 1. Illessze be a létrehozott Azure Storage-fiókhoz tartozó, a **Storage-fiók kapcsolatainak karakterlánca** mezőben a korábbi lépéseket követve.
      ![Érdeklődők felügyelete, kapcsolat részletei Storage-fiók](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
 
-1. **Kapcsolattartási e-mail cím** : adja meg az e-maileket a vállalatnál, akinek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapnia. A pontosvesszővel elválasztva több e-mailt is megadhat.
+1. **Kapcsolattartási e-mail cím**: adja meg az e-maileket a vállalatnál, akinek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapnia. A pontosvesszővel elválasztva több e-mailt is megadhat.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 5ed3e858168ce5ad9a7f089b723bb75ca8a49fca
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 26fd8bc73fad3ea313641fc4b1e0f454ee2c0813
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007517"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347778"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi git üzembe helyezése Azure App Service
 
@@ -80,7 +80,7 @@ A következő lépésben adja meg az alkalmazás üzembe helyezéséhez használ
    git remote add azure <url>
    ```
    
-1. Küldje el az Azure Remote-t a következővel: `git push azure main` . 
+1. Küldje el az Azure Remote-t a következővel: `git push azure master` . 
    
 1. A **git Hitelesítőadat-kezelő** ablakban adja meg az [üzembe helyezési felhasználói jelszót](#configure-a-deployment-user), ne pedig az Azure bejelentkezési jelszavát.
    
@@ -131,7 +131,7 @@ A helyi git üzembe helyezésének engedélyezése az alkalmazáshoz Azure-folya
    git remote add azure <url>
    ```
    
-1. Küldje el az Azure Remote-t a következővel: `git push azure main` . 
+1. Küldje el az Azure Remote-t a következővel: `git push azure master` . 
    
 1. A **git Hitelesítőadat-kezelő** lapon jelentkezzen be a VisualStudio.com-felhasználónevével. További hitelesítési módszerek: az [Azure DevOps Services hitelesítésének áttekintése](/vsts/git/auth-overview?view=vsts).
    
@@ -149,12 +149,12 @@ A következő gyakori hibaüzenetek jelenhetnek meg, ha a git használatával te
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Az alkalmazás nem működik.|Indítsa el az alkalmazást a Azure Portal. A git-telepítés nem érhető el a webalkalmazás leállításakor.|
 |`Couldn't resolve host 'hostname'`|Az "Azure" távoli adatcímeinek adatai helytelenek.|A `git remote -v` parancs használatával listázhatja az összes távoli, valamint a hozzá tartozó URL-címet. Győződjön meg arról, hogy az "Azure" távoli URL-címe helyes. Ha szükséges, távolítsa el, majd hozza létre újra a távoli elérést a megfelelő URL-cím használatával.|
-|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|Nem adott meg ágat a alatt `git push` , vagy nem állította be a `push.default` értéket `.gitconfig` .|Futtassa `git push` újra a főág megadását: `git push azure main` .|
-|`src refspec [branchname] does not match any.`|Megpróbált leküldeni az "Azure" távoli számítógépének főoldalán kívüli ágra.|Futtassa `git push` újra a főág megadását: `git push azure main` .|
+|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|Nem adott meg ágat a alatt `git push` , vagy nem állította be a `push.default` értéket `.gitconfig` .|Futtassa `git push` újra a főág megadását: `git push azure master` .|
+|`src refspec [branchname] does not match any.`|Megpróbált leküldeni az "Azure" távoli számítógépének főoldalán kívüli ágra.|Futtassa `git push` újra a főág megadását: `git push azure master` .|
 |`RPC failed; result=22, HTTP code = 5xx.`|Ez a hiba akkor fordulhat elő, ha egy nagyméretű git-tárházat próbál leküldeni HTTPS-kapcsolaton keresztül.|Módosítsa a git-konfigurációt a helyi gépen, hogy minél `postBuffer` nagyobb legyen. Például: `git config --global http.postBuffer 524288000`.|
 |`Error - Changes committed to remote repository but your web app not updated.`|Egy Node.js alkalmazást telepített egy _package.jsa_ fájlon, amely további szükséges modulokat határoz meg.|A hiba előtt tekintse át a hibaüzeneteket `npm ERR!` , hogy a probléma további kontextusban legyen. A hiba ismert okai és a hozzájuk tartozó üzenetek a következők `npm ERR!` :<br /><br />**Helytelenül formázott package.jsa következő fájlon**: `npm ERR! Couldn't read dependencies.`<br /><br />A **natív modul nem rendelkezik bináris terjesztéssel a Windows rendszerhez**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />vagy <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További erőforrások
 
 - [A Project kudu dokumentációja](https://github.com/projectkudu/kudu/wiki)
 - [ Folyamatos üzembe helyezés az Azure App Service-be](deploy-continuous-deployment.md)

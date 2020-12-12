@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a8a662bf94e958d9e96a454ced9c44058b178a8c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366842"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347795"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Mondat párosítása és igazítása párhuzamos dokumentumokban
 
-A képzés során a párhuzamos dokumentumokban lévő mondatok párosítva vannak vagy illeszkednek egymáshoz. Az egyéni fordító jelentést készít az egyes adatkészletek igazított mondatait tartalmazó mondatok számáról.
+A dokumentumok feltöltése után a párhuzamos dokumentumokban lévő mondatok párosítva vagy igazítva vannak. Az egyéni fordító jelentést készít az egyes adatkészletek igazított mondatait tartalmazó mondatok számáról.
 
 ## <a name="pairing-and-alignment-process"></a>Párosítási és igazítási folyamat
 
@@ -37,7 +37,7 @@ Ahhoz, hogy egy képzés sikeres legyen, az alábbi táblázat az egyes dokument
 | Dokumentum típusa   | Javasolt minimális mondatok száma | Mondatok maximális száma |
 |------------|--------------------------------------------|--------------------------------|
 | Képzés   | 10,000                                     | Nincs felső korlát                 |
-| Tuning     | 500                                      | 2500       |
+| Finomhangolás     | 500                                      | 2500       |
 | Tesztelés    | 500                                      | 2500  |
 | Szótár | 0                                          | Nincs felső korlát                 |
 
@@ -46,6 +46,6 @@ Ahhoz, hogy egy képzés sikeres legyen, az alábbi táblázat az egyes dokument
 > - A hangolás és a tesztelés nem kötelező. Ha nem adja meg őket, a rendszer eltávolítja a megfelelő százalékot az ellenőrzéshez és teszteléshez használt képzésből. 
 > - A modelleket csak a szótárak adatai alapján lehet betanítani. Tekintse meg a [Mi az a szótár](./what-is-dictionary.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan használhat [szótárt](what-is-dictionary.md) az egyéni fordítóban.

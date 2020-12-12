@@ -4,12 +4,12 @@ description: Ez a cikk a Kubernetes-naplók,-események és a pod-metrikák val�
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: a97d7ed5fe513798f4265498f4efa60098ea15c6
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920714"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346831"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése
 
@@ -35,7 +35,7 @@ Az alábbi eljárást követve megtekintheti az olyan központi telepítések é
 
 5. Válassza ki az élő adatgyűjtést elindító Pod-t.
 
-    ![Üzembe helyezési élő naplók](./media/container-insights-livedata-overview/live-data-deployment.png)
+    [![Üzembe helyezési élő naplók](./media/container-insights-livedata-overview/live-data-deployment.png)](./media/container-insights-livedata-overview/live-data-deployment.png#lightbox)
 
 ## <a name="view-logs"></a>Naplók megtekintése
 
@@ -112,11 +112,17 @@ Az élő adat (előzetes verzió) szolgáltatás keresési funkciókat is tartal
 
 ![Példa az élő adatkonzol ablaktáblájának szűrésére](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
+![Az élő adatkonzol ablaktáblájának szűrése példa az üzembe helyezéshez](./media/container-insights-livedata-overview/live-data-deployment-search.png)
+
 ### <a name="scroll-lock-and-pause"></a>Scroll lock és pause
 
 Az autogörgetés felfüggesztéséhez és a panel működésének szabályozásához, amely lehetővé teszi az új adatolvasás manuális görgetését, használhatja a **görgetőgomb** lehetőséget. Az autoscroll újbóli engedélyezéséhez egyszerűen válassza a **Scroll (görgetés** ) lehetőséget. A naplózási vagy az esemény adatainak lekérését is szüneteltetheti a **szüneteltetés** lehetőség kiválasztásával, és ha készen áll a folytatásra, egyszerűen válassza a **Lejátszás** lehetőséget.
 
 ![Élő adatkonzol ablaktábla az élő nézet szüneteltetése](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
+
+![Élő adatkonzol ablaktábla az élő nézet felfüggesztése az üzembe helyezéshez](./media/container-insights-livedata-overview/live-data-deployment-pause.png)
+
+
 
 >[!IMPORTANT]
 >A probléma elhárítása során javasoljuk, hogy csak rövid idő alatt felfüggessze vagy szüneteltesse az autoscroll-et. Ezek a kérések befolyásolhatják a fürtön a Kubernetes API rendelkezésre állását és szabályozását.

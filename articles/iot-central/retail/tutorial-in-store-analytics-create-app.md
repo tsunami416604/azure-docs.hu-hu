@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: a15ccd6d67b4819ba5dd6233a2a001015037c404
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: fc8928c9f64e323aafb29c9b1e717cc5c2ab6691
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165672"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346707"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Oktatóanyag: áruházbeli elemzési alkalmazás létrehozása az Azure-ban IoT Central
 
@@ -34,7 +34,7 @@ A pénztári és a feltétel-figyelési megoldást három részből fejlesztheti
 * Az irányítópult testreszabása a kezelők számára az eszközök figyeléséhez és kezeléséhez
 * Az adatexportálás konfigurálása az áruházbeli kezelők számára az elemzések futtatásához és az elemzések megjelenítéséhez
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Hozzon létre egy kiskereskedelmi áruházbeli alkalmazást az Azure IoT Central **in-store Analytics-Checkout** sablon használatával
 > * Az Alkalmazásbeállítások testreszabása
@@ -62,7 +62,7 @@ Ebben a szakaszban új Azure IoT Central alkalmazást hoz létre egy sablonból.
 
 1. Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassza az **Új alkalmazás** lehetőséget.
 
-1. Válassza a **kereskedelmi**lehetőséget.  A kiskereskedelmi oldalon számos kereskedelmi alkalmazás-sablon látható.
+1. Válassza a **kereskedelmi** lehetőséget.  A kiskereskedelmi oldalon számos kereskedelmi alkalmazás-sablon látható.
 
 Új, áruházbeli elemzési pénztári alkalmazás létrehozása:  
 
@@ -71,7 +71,7 @@ Ebben a szakaszban új Azure IoT Central alkalmazást hoz létre egy sablonból.
 1. Igény szerint válasszon egy felhasználóbarát **nevet**. Ez az alkalmazás a contoso nevű kitalált kiskereskedelmi áruházon alapul. Az oktatóanyag a *contoso-pénztár* **alkalmazás nevét** használja. Az alkalmazás sablonja a vállalati Northwind vállalaton alapul. Ebben az oktatóanyagban a contoso használatával megtudhatja, hogyan szabhatja testre az alkalmazást.
 
     > [!NOTE]
-    > Ha felhasználóbarát **alkalmazás-nevet**használ, továbbra is egyedi értéket kell használnia az alkalmazás **URL-címéhez**.
+    > Ha felhasználóbarát **alkalmazás-nevet** használ, továbbra is egyedi értéket kell használnia az alkalmazás **URL-címéhez**.
 
 1. Ha Azure-előfizetéssel rendelkezik, adja meg a *címtárat, az Azure-előfizetést és a régiót*. Ha nem rendelkezik előfizetéssel, engedélyezheti a **7 napos ingyenes próbaidőszakot** , és elvégezheti a szükséges kapcsolattartási adatokat.  
 
@@ -95,7 +95,7 @@ Előre definiált alkalmazás-téma kiválasztása:
 
 2. Válasszon ki egy új **témát**.
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
 Az előre definiált témák helyett létrehozhat egy egyéni témát is. Ha minta lemezképek készletét szeretné használni az alkalmazás testreszabásához és az oktatóanyag elvégzéséhez, töltse le a [contoso-minta lemezképeit](https://github.com/Azure-Samples/iot-central-docs-samples/tree/master/retail).
 
@@ -105,15 +105,15 @@ Egyéni téma létrehozása:
 
     ![Azure IoT Central bal oldali ablaktábla](./media/tutorial-in-store-analytics-create-app/dashboard-expand.png)
 
-1. Válassza **az adminisztráció > az alkalmazás testreszabása**lehetőséget.
+1. Válassza **az adminisztráció > az alkalmazás testreszabása** lehetőséget.
 
-1. A **módosítás** gombbal kiválaszthatja az **alkalmazás emblémájának**feltöltendő képet. Opcionálisan megadhat egy értéket a **logo helyettesítő szöveghez**. 
+1. A **módosítás** gombbal kiválaszthatja az **alkalmazás emblémájának** feltöltendő képet. Opcionálisan megadhat egy értéket a **logo helyettesítő szöveghez**. 
 
 1. A **módosítás** gomb használatával kiválaszthatja a böngésző lapjain megjelenő **böngészőablak-ikont** .
 
-1. Igény szerint cserélje le a **böngésző alapértelmezett színét** a HTML hexadecimális színkódok hozzáadásával. A **fejléchez**adja hozzá a *#008575*.  A **Hangsúlyhoz**adja hozzá a *#A1F3EA*. 
+1. Igény szerint cserélje le a **böngésző alapértelmezett színét** a HTML hexadecimális színkódok hozzáadásával. A **fejléchez** adja hozzá a *#008575*.  A **Hangsúlyhoz** adja hozzá a *#A1F3EA*. 
 
-1. Kattintson a **Mentés** gombra. 
+1. Válassza a **Mentés** lehetőséget. 
 
     ![Az Azure IoT Central testreszabott emblémája](./media/tutorial-in-store-analytics-create-app/select-application-logo.png)
 
@@ -123,11 +123,11 @@ Egyéni téma létrehozása:
 
 Az alkalmazás rendszerképének frissítése:
 
-1. Válassza az **adminisztráció > az Alkalmazásbeállítások**lehetőséget.
+1. Válassza az **adminisztráció > az Alkalmazásbeállítások** lehetőséget.
 
 1. A **rendszerkép kiválasztása** gomb használatával kiválaszthatja az alkalmazási képként feltölteni kívánt képet. Ez a rendszerkép a IoT Central Application Manager **saját alkalmazások** lapjának alkalmazás csempén jelenik meg.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. Szükség esetén navigáljon a **saját alkalmazások** nézethez az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén. Az alkalmazás csempe megjeleníti a frissített alkalmazás rendszerképét.
 
@@ -177,7 +177,7 @@ A RuuviTag-eszköz beépített felületének testreszabása:
 
 1. Válassza a **Testreszabás** lehetőséget a RuuviTag-eszköz sablon menüjében. 
 
-1. Görgessen a lehetőségek listájához, és keresse meg a `humidity` telemetria típusát. Ez az a sor, amelynek a *nedvességtartalma*a szerkeszthető **megjelenítendő név** értékével rendelkezik.
+1. Görgessen a lehetőségek listájához, és keresse meg a `humidity` telemetria típusát. Ez az a sor, amelynek a *nedvességtartalma* a szerkeszthető **megjelenítendő név** értékével rendelkezik.
 
 A következő lépésekben testreszabhatja a `humidity` RuuviTag érzékelők telemetria-típusát. Igény szerint testreszabhat néhány más telemetria-típust.
 
@@ -185,7 +185,7 @@ A `humidity` telemetria típusnál végezze el a következő módosításokat:
 
 1. A **Kibontás** vezérlő kiválasztásával bontsa ki a sor sémájának részleteit.
 
-1. Frissítse a **megjelenítendő név** értékét a *nedvességtől* egy egyéni értékre, például a *relatív páratartalom*értékre.
+1. Frissítse a **megjelenítendő név** értékét a *nedvességtől* egy egyéni értékre, például a *relatív páratartalom* értékre.
 
 1. Módosítsa a **szemantikai típus** beállítást a *nincs* értékről a *nedvességre*.  Megadhatja a séma értékeit a kibontott séma nézetben a páratartalom telemetria típushoz. A séma beállításai lehetővé teszik, hogy részletes ellenőrzési követelményeket hozzon létre az érzékelők által nyomon követett adathoz. Megadhatja például a minimális és a maximális operációsrendszer-értékeket egy adott csatolóhoz.
 
@@ -197,23 +197,23 @@ Felhőbeli tulajdonság hozzáadása az alkalmazásban lévő eszköz sablonhoz:
 
 1. A RuuviTag eszköz sablon menüjében válassza a **felhő tulajdonságai** elemet.
 
-1. Válassza a **Felhőbeli tulajdonság hozzáadása**lehetőséget. 
+1. Válassza a **Felhőbeli tulajdonság hozzáadása** lehetőséget. 
 
 A következő értékek megadásával hozzon létre egyéni tulajdonságot az egyes eszközök helyének tárolásához:
 
-1. Adja meg a **megjelenítendő név**értékének *helyét* . A rendszer automatikusan átmásolja ezt az értéket a **név** mezőbe, amely a tulajdonság rövid neve. Használhatja a másolt értéket, vagy módosíthatja.
+1. Adja meg a **megjelenítendő név** értékének *helyét* . A rendszer automatikusan átmásolja ezt az értéket a **név** mezőbe, amely a tulajdonság rövid neve. Használhatja a másolt értéket, vagy módosíthatja.
 
 1. Válassza a *sztring* elemet a **séma** legördülő menüben. A karakterlánc típusa lehetővé teszi, hogy a sablon alapján bármilyen eszközzel társítsa a hely neve karakterláncot. Előfordulhat például, hogy egy tárolóban lévő területeket társít az egyes eszközökhöz. Igény szerint beállíthatja a tulajdonság **szemantikai típusát** a *tartózkodási helyükre*, és ez automatikusan beállítja a **séma** *Geopoint*. Lehetővé teszi, hogy a GPS-koordinátákat társítsa egy eszközhöz. 
 
-1. Állítsa be a **minimális hosszt** *2*értékre. 
+1. Állítsa be a **minimális hosszt** *2* értékre. 
 
-1. Állítsa be a **szóközöket** **a**be értékre.
+1. Állítsa be a **szóközöket** **a** be értékre.
 
 1. Válassza a **Mentés** lehetőséget az egyéni Felhőbeli tulajdonság mentéséhez.
 
     ![Azure IoT Central RuuviTag-sablon testreszabása](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-cloud-property.png)
 
-1. Kattintson a **Publish** (Közzététel) elemre. 
+1. Válassza a **Közzététel** lehetőséget. 
 
     Az eszközök közzétételével láthatóvá válik az alkalmazások operátorai. Miután közzétett egy sablont, a használatával szimulált eszközöket állíthat elő teszteléshez, vagy valódi eszközöket kapcsolhat az alkalmazáshoz. Ha már rendelkezik az alkalmazáshoz csatlakoztatott eszközökkel, a testreszabott sablon közzététele leküldi a módosításokat az eszközökön.
 
@@ -242,7 +242,7 @@ Szabály létrehozása:
 
 1. Bontsa ki a bal oldali panelt.
 
-1. Válassza a **szabályok**lehetőséget.
+1. Válassza a **szabályok** lehetőséget.
 
 1. Válassza a **+ Új** lehetőséget.
 
@@ -254,13 +254,13 @@ Szabály létrehozása:
 
 1. Válassza ki `Is greater than` az **operátort**. 
 
-1. Adjon meg egy tipikus felső tartományba eső, a környezetnek megfelelő belső páratartalom- **szintet.** Adja meg például a *65*értéket. Megadta a szabály feltételét, amely akkor fordul elő, ha a RuuviTag valós vagy szimulált érzékelő relatív páratartalma meghaladja ezt az értéket. Előfordulhat, hogy a környezete normál nedvességtartalmának megfelelően módosítania kell az értéket.  
+1. Adjon meg egy tipikus felső tartományba eső, a környezetnek megfelelő belső páratartalom- **szintet.** Adja meg például a *65* értéket. Megadta a szabály feltételét, amely akkor fordul elő, ha a RuuviTag valós vagy szimulált érzékelő relatív páratartalma meghaladja ezt az értéket. Előfordulhat, hogy a környezete normál nedvességtartalmának megfelelően módosítania kell az értéket.  
 
    ![Azure-IoT Central szabály feltételének hozzáadása](./media/tutorial-in-store-analytics-create-app/rules-add-conditions.png)
 
 Művelet hozzáadása a szabályhoz:
 
-1. Válassza a **+ e-mail**lehetőséget. 
+1. Válassza a **+ e-mail** lehetőséget. 
 
 1. Adja meg a *magas páratartalom-értesítést* a művelet felhasználóbarát **megjelenítendő neveként** . 
 

@@ -1,21 +1,21 @@
 ---
 title: Alkalmazások konfigurálása a portálon
-description: Megtudhatja, hogyan konfigurálhat egy App Service alkalmazás általános beállításait a Azure Portal. Alkalmazásbeállítások, kapcsolatok karakterláncai, platform, nyelvi verem, tároló stb.
+description: Megtudhatja, hogyan konfigurálhat egy App Service alkalmazás általános beállításait a Azure Portal. Alkalmazásbeállítások, alkalmazás konfigurációja, kapcsolatok karakterláncai, platform, nyelvi verem, tároló stb.
 keywords: Azure app Service, webalkalmazás, Alkalmazásbeállítások, környezeti változók
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 76cfefa3f104ecef69e28fecd1c37fc336b0ce8c
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 4594a3a7ac7af7acf75fa5c47e2eab3246fc00e7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854648"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346758"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
-Ez a témakör azt ismerteti, hogyan konfigurálható a webalkalmazások, a mobil háttérrendszer vagy az API-alkalmazás általános beállításai a [Azure Portal]használatával.
+Ez a cikk azt ismerteti, hogyan konfigurálható a webalkalmazások, a mobil háttérrendszer vagy az API-alkalmazás általános beállításai a [Azure Portal]használatával.
 
 ## <a name="configure-app-settings"></a>Alkalmazásbeállítások konfigurálása
 
@@ -118,7 +118,10 @@ A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza 
 
 A ASP.NET és a ASP.NET Core fejlesztők számára a App Service a kapcsolatok karakterláncának beállítása, például `<connectionStrings>` a *Web.configban* való beállítása, de a app Serviceban megadott értékek felülbírálják a *Web.config*. A fejlesztési beállításokat (például egy adatbázisfájlt) a *Web.config* és a termelési titkokban (például SQL Database hitelesítő adatokban) biztonságosan megtarthatja app Service. Ugyanez a kód a helyi hibakeresés során a fejlesztési beállításokat használja, és az Azure-ba való üzembe helyezéskor az éles titkot használja.
 
-Más nyelvi stackek esetében érdemes inkább az [Alkalmazásbeállítások](#configure-app-settings) használatát használni, mert a kapcsolati karakterláncok speciális formázást igényelnek a változó kulcsokban az értékek eléréséhez. Íme egy kivétel, azonban bizonyos Azure-adatbázisok biztonsági mentése az alkalmazással együtt történik, ha az alkalmazásban konfigurálja a kapcsolatok karakterláncait. További információ: [Mi történik a biztonsági mentésben](manage-backup.md#what-gets-backed-up). Ha nincs szüksége erre az automatikus biztonsági mentésre, használja az Alkalmazásbeállítások szolgáltatást.
+Más nyelvi stackek esetében érdemes inkább az [Alkalmazásbeállítások](#configure-app-settings) használatát használni, mert a kapcsolati karakterláncok speciális formázást igényelnek a változó kulcsokban az értékek eléréséhez. 
+
+> [!NOTE]
+> Ha a non-.NET nyelvekhez az Alkalmazásbeállítások helyett a kapcsolódási karakterláncokat szeretné használni, akkor a rendszer _csak_ akkor készít biztonsági másolatot az Azure-adatbázisokról, ha a app Service alkalmazásban található adatbázishoz egy kapcsolódási karakterláncot konfigurál. További információ: [Mi történik a biztonsági mentésben](manage-backup.md#what-gets-backed-up). Ha nincs szüksége erre az automatikus biztonsági mentésre, használja az Alkalmazásbeállítások szolgáltatást.
 
 Futásidőben a kapcsolatok karakterláncai környezeti változókként érhetők el, és a következő kapcsolattípus-típusokkal vannak meghatározva:
 
@@ -228,21 +231,27 @@ A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza 
 
 ![Elérésiút-megfeleltetések](./media/configure-common/open-path.png)
 
-Az **elérési út leképezése** lapon az operációs rendszer típusa alapján különböző dolgok láthatók.
+> [!NOTE] 
+> Az **útvonal-hozzárendelések** lapon az itt látható példától eltérő operációsrendszer-specifikus beállítások jelenhetnek meg.
 
 ### <a name="windows-apps-uncontainerized"></a>Windows-alkalmazások (nem tároló)
 
 Windows-alkalmazások esetén testreszabhatja az IIS-kezelő leképezéseit és a virtuális alkalmazásokat és címtárakat.
 
-A kezelő-hozzárendelések lehetővé teszik egyéni parancsfájl-feldolgozók hozzáadását az adott fájlkiterjesztések kéréseinek kezeléséhez. Egyéni kezelő hozzáadásához kattintson az **új kezelő** elemre. Konfigurálja a kezelőt a következőképpen:
+A kezelő-hozzárendelések lehetővé teszik egyéni parancsfájl-feldolgozók hozzáadását az adott fájlkiterjesztések kéréseinek kezeléséhez. Egyéni kezelő hozzáadásához kattintson az **új kezelő leképezése** lehetőségre. Konfigurálja a kezelőt a következőképpen:
 
 - **Bővítmény**. A kezelni kívánt fájlkiterjesztés, például *\* . php* vagy *Handler. fcgi*.
 - **Parancsfájl-feldolgozó**. A parancsfájl-feldolgozó abszolút elérési útja. A fájlkiterjesztés által megegyező fájlokra irányuló kérelmeket a parancsfájl-feldolgozó dolgozza fel. Az elérési út használatával `D:\home\site\wwwroot` tekintse meg az alkalmazás gyökérkönyvtárát.
 - **Argumentumok**. Nem kötelező parancssori argumentumok a parancsfájl-feldolgozóhoz.
 
-Mindegyik alkalmazáshoz az alapértelmezett gyökérszintű elérési út ( `/` ) van rendelve `D:\home\site\wwwroot` , ahol a kód alapértelmezés szerint telepítve van. Ha az alkalmazás gyökérkönyvtára egy másik mappában található, vagy ha a tárház több alkalmazással is rendelkezik, akkor itt szerkesztheti vagy adhatja hozzá a virtuális alkalmazásokat és címtárakat. Kattintson az **új virtuális alkalmazás vagy könyvtár** elemre.
+Mindegyik alkalmazáshoz az alapértelmezett gyökérszintű elérési út ( `/` ) van rendelve `D:\home\site\wwwroot` , ahol a kód alapértelmezés szerint telepítve van. Ha az alkalmazás gyökérkönyvtára egy másik mappában található, vagy ha a tárház több alkalmazással is rendelkezik, akkor itt szerkesztheti vagy adhatja hozzá a virtuális alkalmazásokat és címtárakat. 
 
-A virtuális alkalmazások és könyvtárak konfigurálásához adja meg az összes virtuális könyvtárat és a hozzá tartozó fizikai elérési utat a webhely gyökeréhez () viszonyítva `D:\home` . Ha szeretné, bejelölheti az **alkalmazás** jelölőnégyzetet is, ha a virtuális könyvtárat alkalmazásként szeretné megjelölni.
+Az **elérési út leképezése** lapon kattintson az **új virtuális alkalmazás vagy könyvtár** elemre. 
+
+- A virtuális könyvtár fizikai elérési útra történő leképezéséhez hagyja bejelölve a **címtár** jelölőnégyzetet. A webhely gyökeréhez () tartozó virtuális könyvtár és a hozzá tartozó relatív (fizikai) elérési út megadása `D:\home` .
+- Ha egy virtuális könyvtárat webalkalmazásként szeretne megjelölni, törölje a jelet a **könyvtár** jelölőnégyzetből.
+  
+  ![Könyvtár jelölőnégyzet](./media/configure-common/directory-check-box.png)
 
 ### <a name="containerized-apps"></a>Tároló alkalmazások
 

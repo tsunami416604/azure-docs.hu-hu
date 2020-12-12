@@ -8,12 +8,12 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.custom: mqtt
-ms.openlocfilehash: 8925b98269b67bfb8a96cb057982ee4e396f17ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41232ba3899d098c019674e4ca4a0a8f2f7d465f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81686229"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97345959"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central csatlakoztatott logisztikai alkalmazásspecifikus sablon architektúrája
 
@@ -27,7 +27,7 @@ Partnereink & ügyfél használhatja az alkalmazás sablonját, & az alábbi út
 1. IoT-címkék készlete, amely telemetria adatokat küld egy átjáró eszközének
 2. Telemetria küldő és összesített bepillantást IoT Central
 3. Az adattovábbítás a kívánt Azure-szolgáltatásba történik a manipulációhoz
-4. Az olyan Azure-szolgáltatások, mint az ASA vagy a Azure Functions használhatók az adatfolyamok újraformázására és a kívánt Storage-fiókokba való küldésre 
+4. Az olyan Azure-szolgáltatások, mint az ASA vagy a Azure Functions használhatók az adatfolyamok újraformázására és a kívánt Storage-fiókokba való küldésre
 5. A különböző üzleti munkafolyamatok a végfelhasználói üzleti alkalmazások által is megadhatók
 
 ## <a name="details"></a>Részletek
@@ -45,7 +45,7 @@ Az Azure IoT Central egy megoldás-fejlesztői platform, amely leegyszerűsíti 
 ## <a name="business-insights-and-actions-using-data-egress"></a>Üzleti elemzések és műveletek a kimenő adatforgalom használatával 
 A IoT Central platform a folyamatos adatexportálás (CDE) és az API-k révén gazdag bővíthetőségi lehetőségeket biztosít. A telemetria adatfeldolgozási vagy nyers telemetria alapuló üzleti elemzések általában egy előnyben részesített üzletági alkalmazásba exportálhatók. A webhook, a Service Bus, az Event hub vagy a blob Storage használatával a gépi tanulási modellek fejlesztéséhez, betanításához és üzembe helyezéséhez & további ismeretek bevezetéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan telepítheti a [csatlakoztatott logisztikai megoldás sablonját](./tutorial-iot-central-connected-logistics.md)
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail.md)
 * További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central.md)

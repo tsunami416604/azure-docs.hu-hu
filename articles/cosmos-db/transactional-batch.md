@@ -7,17 +7,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 1f541b947c04619892291e47002ea9b0dbb6d38d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9f6692db2da3722507136a468d1dcbdc2985e73f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340562"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347557"
 ---
 # <a name="transactional-batch-operations-in-azure-cosmos-db-using-the-net-sdk"></a>Tranzakciós batch-műveletek Azure Cosmos DB a .NET SDK használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-A tranzakciós köteg olyan pont típusú műveletek egy csoportját írja le, amelyeknek egy tárolóban ugyanazzal a partíciós kulccsal kell rendelkezniük. A .NET SDK-ban az `TranscationalBatch` osztály a műveletek kötegének meghatározására szolgál. Ha az összes művelet a tranzakciós köteg műveletben ismertetett sorrendben sikeres, a tranzakció véglegesítve lesz. Ha azonban valamelyik művelet meghiúsul, a teljes tranzakció vissza lesz állítva.
+A tranzakciós köteg olyan pont típusú műveletek egy csoportját írja le, amelyeknek egy tárolóban ugyanazzal a partíciós kulccsal kell rendelkezniük. A .NET SDK-ban az `TransactionalBatch` osztály a műveletek kötegének meghatározására szolgál. Ha az összes művelet a tranzakciós köteg műveletben ismertetett sorrendben sikeres, a tranzakció véglegesítve lesz. Ha azonban valamelyik művelet meghiúsul, a teljes tranzakció vissza lesz állítva.
 
 ## <a name="whats-a-transaction-in-azure-cosmos-db"></a>Mi a tranzakció a Azure Cosmos DBban?
 
@@ -35,7 +35,7 @@ Azure Cosmos DB jelenleg a tárolt eljárásokat támogatja, amelyek a tranzakci
 
 * **Nyelvi beállítás** – a tranzakciós köteg támogatott az SDK-ban és a nyelvben, amelyet már használ, míg a tárolt eljárásokat JavaScript nyelven kell megírni.
 * A **kód verziószámozása** – az alkalmazás kódjának és a CI/CD-folyamatba való bevezetésének sokkal természetesebb, mint egy tárolt eljárás frissítése, és így a megfelelő időben történik a váltás. Emellett egyszerűbbé teszi a működés közbeni változások visszaállítását.
-* **Teljesítmény** – a tárolt eljárás végrehajtásához képest akár 30%-kal is csökkentheti az egyenértékű műveletek késését.
+* **Teljesítmény** – a tárolt eljárás végrehajtásához képest akár 30%-kal csökkenthető az egyenértékű műveletek késése.
 * **Tartalom szerializálása** – a tranzakciós kötegen belüli minden művelet kihasználhatja a hasznos adatokhoz tartozó egyéni szerializálási beállításokat.
 
 ## <a name="how-to-create-a-transactional-batch-operation"></a>Tranzakciós batch-művelet létrehozása
@@ -51,13 +51,13 @@ TransactionalBatch batch = container.CreateTransactionalBatch(new PartitionKey(p
   .CreateItem<ChildClass>(child);
 ```
 
-Ezután meg kell hívnia a következőt `ExecuteAsync` :
+Ezután meg kell hívnia a `ExecuteAsync` köteget:
 
 ```csharp
 TransactionalBatchResponse batchResponse = await batch.ExecuteAsync();
 ```
 
-A válasz fogadása után meg kell vizsgálnia, hogy a művelet sikeres-e, és kinyeri az eredményeket:
+A válasz fogadása után vizsgálja meg, hogy sikeres-e vagy sem, és bontsa ki az eredményeket:
 
 ```csharp
 using (batchResponse)
@@ -72,7 +72,7 @@ using (batchResponse)
 }
 ```
 
-Ha hiba lép fel, a meghiúsult művelet a megfelelő hibához tartozó állapotkódot fogja tartalmazni. Míg az összes többi művelet 424-as állapotkód lesz (sikertelen függőség). Az alábbi példában a művelet meghiúsul, mert kísérletet tesz egy már létező elem létrehozására (409 HttpStatusCode. Conflict). Az állapotkódok megkönnyítik a tranzakciós hibák okának azonosítását.
+Ha hiba lép fel, a meghiúsult művelet a megfelelő hibához tartozó állapotkódot fogja tartalmazni. Az összes többi művelethez tartozik egy 424 állapotkód (sikertelen függőség). Az alábbi példában a művelet meghiúsul, mert kísérletet tesz egy már létező elem létrehozására (409 HttpStatusCode. Conflict). Az állapotkód lehetővé teszi, hogy az egyik azonosítsa a tranzakciós hiba okát.
 
 ```csharp
 // Parent's birthday!
@@ -100,7 +100,7 @@ using (failedBatchResponse)
 
 A `ExecuteAsync` metódus meghívásakor a rendszer az objektum összes műveletét `TransactionalBatch` csoportosítja, egyetlen hasznos adatba szerializálja, és egyetlen kérelemként küldi el a Azure Cosmos db szolgáltatásnak.
 
-A szolgáltatás megkapja a kérést, és végrehajtja a tranzakciós hatókörön belüli összes műveletet, és egy választ ad vissza ugyanazzal a szerializálási protokollal. Ez a válasz sikeres vagy sikertelen, és az összes, belső művelettel kapcsolatos választ tartalmazza.
+A szolgáltatás megkapja a kérést, és végrehajtja a tranzakciós hatókörön belüli összes műveletet, és egy választ ad vissza ugyanazzal a szerializálási protokollal. Ez a válasz sikeres vagy sikertelen, és az egyes műveletek válaszait egy művelettel biztosítja.
 
 Az SDK kijelöli a választ az eredmény ellenőrzéséhez, és szükség esetén kinyeri az összes belső művelet eredményét.
 
@@ -108,10 +108,10 @@ Az SDK kijelöli a választ az eredmény ellenőrzéséhez, és szükség eseté
 
 Jelenleg két ismert korlát létezik:
 
-* Azure Cosmos DB kérések méretének korlátja megadja, hogy a `TransactionalBatch` hasznos adatok mérete ne haladja meg a 2 MB-ot, a maximális végrehajtási idő pedig 5 másodperc.
-* A jelenlegi korlátja 100 művelet/ `TransactionalBatch` , amely biztosítja, hogy a teljesítmény a vártnál és a SLA-n belül legyen.
+* A Azure Cosmos DB kérések méretének korlátja korlátozza a `TransactionalBatch` hasznos adatok méretét, hogy ne lépje túl a 2 MB-ot, a maximális végrehajtási idő pedig 5 másodperc.
+* A jelenlegi korlátja 100 művelet `TransactionalBatch` , amely biztosítja, hogy a teljesítmény a vártnál és a SLA-n belül legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a TransactionalBatch-mel kapcsolatos [lehetőségekről](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/TransactionalBatch)
 

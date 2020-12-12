@@ -10,12 +10,13 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 36c5f0103908ea150cbe6eb373e25f7d741127f5
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.custom: data4ml
+ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913262"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347506"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Oktatóanyag: címkézési projekt létrehozása a többosztályos képek besorolásához 
 
@@ -70,7 +71,7 @@ Azure Machine Learning adattárolók a kapcsolódási adatok tárolására szolg
     Adattár típusa | Válassza ki a tároló típusát.  Itt az **Azure Blob Storaget** használjuk, a lemezképek előnyben részesített tárhelyét.
     Fiók kiválasztása módszer | Válassza az **ENTER manuálisan** lehetőséget.
     URL-cím | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
-    Hitelesítéstípus | Válasszon **sas-tokent** .
+    Hitelesítéstípus | Válasszon **sas-tokent**.
     Fiókkulcs | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
 
 1. Válassza a **Létrehozás** lehetőséget az adattár létrehozásához.
@@ -91,14 +92,14 @@ Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a c
 
     Mező|Leírás 
     ---|---
-    Projektnév | Adjon nevet a projektnek.  Itt az **oktatóanyag-macskák-n-Dogs** -ket fogjuk használni.
+    Projektnév | Adjon nevet a projektnek.  Itt az **oktatóanyag-macskák-n-Dogs**-ket fogjuk használni.
     Feladattípus címkézése | Válassza a **Képbesorolás többosztályos** lehetőséget.  
     
     Kattintson a **tovább** gombra a projekt létrehozásának folytatásához.
 
 ### <a name="select-or-create-a-dataset"></a>Adatkészlet kiválasztása vagy létrehozása
 
-1.   A **válasszon ki vagy hozzon létre egy adatkészletet** űrlapon válassza a második lehetőséget, **hozzon létre egy adatkészletet** , majd válassza ki a hivatkozást az **adattárból** .
+1.   A **válasszon ki vagy hozzon létre egy adatkészletet** űrlapon válassza a második lehetőséget, **hozzon létre egy adatkészletet**, majd válassza ki a hivatkozást az **adattárból**.
 
 1. Használja a következő inputot az **adatkészlet létrehozása adattárból** űrlapból:
 
@@ -106,7 +107,7 @@ Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a c
     1. Az **adattár kiválasztása** űrlapon a legördülő listából válassza ki a **korábban létrehozott** adattárat, például **tutorial_images (Azure Blob Storage)**
     1. Ezután továbbra is az **adattár kiválasztása** űrlapon válassza a **Tallózás** lehetőséget, majd válassza a **többosztályos DogsCats** lehetőséget.  Válassza a **Mentés** lehetőséget a **/MultiClass-DogsCats** elérési útvonalként való használatához.
     1. A **tovább** gombra kattintva erősítse meg a részleteket, majd **hozzon** létre az adatkészlet létrehozásához.
-    1. Válassza ki az adatkészlet neve melletti kört a listában, például **képek-for-tutorial** .
+    1. Válassza ki az adatkészlet neve melletti kört a listában, például **képek-for-tutorial**.
 
 1. Kattintson a **tovább** gombra a projekt létrehozásának folytatásához.
 
@@ -118,7 +119,7 @@ A folytatáshoz válassza a **Tovább** gombot.
 
 ### <a name="label-classes"></a>Címkézési osztályok
 
-1. A **címkézési osztályok** űrlapon írja be a címke nevét, majd válassza a **+ címke hozzáadása** lehetőséget a következő címke beírásához.  Ebben a projektben a címkék a következők: **Cat** , **Dog** és **bizonytalan** .
+1. A **címkézési osztályok** űrlapon írja be a címke nevét, majd válassza a **+ címke hozzáadása** lehetőséget a következő címke beírásához.  Ebben a projektben a címkék a következők: **Cat**, **Dog** és **bizonytalan**.
 
 1. Válassza a **tovább** lehetőséget, ha az összes címkét felvette.
 
@@ -178,7 +179,7 @@ Vezetőként érdemes áttekinteni a Labeler munkáját.
 
 1. Az irányítópulton a projekt előrehaladása látható.
 
-1. Az oldal **tetején válassza az adatelemet** .
+1. Az oldal **tetején válassza az adatelemet**.
 
 1. A címkézett képek megtekintéséhez a bal oldalon válassza a **címkézett adat** lehetőséget.  
 
@@ -200,7 +201,7 @@ A képfeliratokat [kókusz formátumban](http://cocodataset.org/#format-data) va
 
 1. A címkék sikeres exportálása után a bal oldalon található **adatkészletek** elemre kattintva megtekintheti az eredményeket.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]

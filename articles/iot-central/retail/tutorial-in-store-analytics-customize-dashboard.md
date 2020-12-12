@@ -11,17 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 47edaec54a2470e9b657b2f214be923439e1e8a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5165f7d6e16e0d136dbf8d4507090c78372185cb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81000118"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348050"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Oktatóanyag: az operátor irányítópultjának testreszabása és az eszközök kezelése az Azure-ban IoT Central
 
 
-Ebben az oktatóanyagban a Builder megtudhatja, hogyan szabhatja testre az operátor irányítópultját az Azure IoT Central in-store Analytics-alkalmazásban. Az alkalmazás-kezelők a testreszabott irányítópult használatával futtathatják az alkalmazást, és kezelhetik a csatlakoztatott eszközöket.
+Ebben az oktatóanyagban megtudhatja, hogyan szabhatja testre az operátor irányítópultját az Azure IoT Central Store Analytics-alkalmazásban. Az alkalmazás-kezelők a testreszabott irányítópult használatával futtathatják az alkalmazást, és kezelhetik a csatlakoztatott eszközöket.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -53,7 +53,7 @@ Az operátor irányítópultjának testreszabásához szerkesztenie kell az alap
 
 1. Adjon meg egy rövid nevet az irányítópultnak az **irányítópult neve mezőben.** Ez az oktatóanyag egy contoso nevű kitalált vállalatot használ, és a példában szereplő irányítópult neve *contoso-irányítópult*. 
 
-1. Kattintson a **Mentés** gombra. A módosítások az irányítópulton lesznek mentve, és a szerkesztési mód le van tiltva.
+1. Válassza a **Mentés** lehetőséget. A módosítások az irányítópulton lesznek mentve, és a szerkesztési mód le van tiltva.
 
     ![Azure IoT Central-irányítópult nevének módosítása](./media/tutorial-in-store-analytics-customize-dashboard/dashboard-change-name.png)
 
@@ -72,11 +72,11 @@ Az irányítópulton található arculatot megjelenítő képcsempe testreszabá
 
 1. Módosítsa a **címet**. A cím akkor jelenik meg, ha a felhasználó a képre mutat.
 
-1. Válassza a **rendszerkép**lehetőséget. Megnyílik egy párbeszédpanel, amely lehetővé teszi egyéni rendszerkép feltöltését. 
+1. Válassza a **rendszerkép** lehetőséget. Megnyílik egy párbeszédpanel, amely lehetővé teszi egyéni rendszerkép feltöltését. 
 
 1. Opcionálisan megadhatja a rendszerkép URL-címét.
 
-1. Válassza a **konfiguráció frissítése**lehetőséget. A **konfiguráció frissítése** gomb menti az irányítópult módosításait, és engedélyezi a szerkesztési módot.
+1. Válassza a **konfiguráció frissítése** lehetőséget. A **konfiguráció frissítése** gomb menti az irányítópult módosításait, és engedélyezi a szerkesztési módot.
 
     ![Azure IoT Central arculat mentése](./media/tutorial-in-store-analytics-customize-dashboard/brand-image-save.png)
 
@@ -88,7 +88,7 @@ A tárolóban található érzékelő zónák térképét megjelenítő képcsem
 
 1. Válassza ki a **képet**, és a párbeszédablak használatával töltse fel az áruházi zóna térképének egyéni rendszerképét. 
 
-1. Válassza a **konfiguráció frissítése**lehetőséget.
+1. Válassza a **konfiguráció frissítése** lehetőséget.
 
     ![Azure IoT Central áruházbeli Térkép mentése](./media/tutorial-in-store-analytics-customize-dashboard/store-map-save.png)
 
@@ -96,7 +96,7 @@ A tárolóban található érzékelő zónák térképét megjelenítő képcsem
 
     ![Azure IoT Central tároló zónák](./media/tutorial-in-store-analytics-customize-dashboard/store-zones.png)
 
-1. Kattintson a **Mentés** gombra. 
+1. Válassza a **Mentés** lehetőséget. 
 
 ## <a name="arrange-tiles-to-modify-the-layout"></a>Csempék elrendezése az elrendezés módosításához
 Az irányítópultok testreszabásának egyik fő lépése a csempék átrendezése egy hasznos nézet létrehozásához. Az alkalmazások kezelői az irányítópult használatával jelenítik meg az eszközök telemetria, kezelhetik az eszközöket, és megfigyelik a feltételeket egy adott tárolóban. Az Azure IoT Central leegyszerűsíti az irányítópult létrehozásához használható Application Builder-feladatot. Az irányítópult-szerkesztési mód lehetővé teszi csempék gyors hozzáadását, áthelyezését, átméretezését és törlését. Az **áruházbeli elemzés – pénztár** alkalmazás sablonja leegyszerűsíti az irányítópult létrehozásának feladatát is. Egy munkairányítópult-elrendezést biztosít, amely a csatlakoztatott érzékelőkkel, valamint a pénztári sorok számát és a környezeti feltételeket megjelenítő csempéket tartalmaz.
@@ -107,17 +107,17 @@ Az alkalmazásban használni nem tervezett csempék eltávolítása:
 
 1. Válassza a **Szerkesztés** lehetőséget az irányítópult eszköztárán. 
 
-1. Az **X delete** lehetőség kiválasztásával távolítsa el a következő csempéket: **vissza az összes zónához**, **keresse fel az áruház irányítópultját**, a **várakozási időt**, és a **3. pénztárhoz**tartozó mindhárom csempét A contoso áruház irányítópultja nem használja ezeket a csempéket. 
+1. Az **X delete** lehetőség kiválasztásával távolítsa el a következő csempéket: **vissza az összes zónához**, **keresse fel az áruház irányítópultját**, a **várakozási időt**, és a **3. pénztárhoz** tartozó mindhárom csempét A contoso áruház irányítópultja nem használja ezeket a csempéket. 
 
     ![Azure IoT Central csempe törlése](./media/tutorial-in-store-analytics-customize-dashboard/delete-tiles.png)
 
 1. Görgessen a hátralévő irányítópult-csempék nézetbe.
 
-1. Az **X delete** lehetőség kiválasztásával távolítsa el a következő csempéket: **Warm-up pénztári zóna**, **legördülő pénztári zóna**, a **foglaltság érzékelő beállításai**, a **termosztát szenzor beállításai**és a **környezeti feltételek**. 
+1. Az **X delete** lehetőség kiválasztásával távolítsa el a következő csempéket: **Warm-up pénztári zóna**, **legördülő pénztári zóna**, a **foglaltság érzékelő beállításai**, a **termosztát szenzor beállításai** és a **környezeti feltételek**. 
 
    ![Azure IoT Central a fennmaradó csempék törlése](./media/tutorial-in-store-analytics-customize-dashboard/delete-tiles-2.png)
 
-1. Kattintson a **Mentés** gombra. Ha eltávolítja a nem használt csempéket, felszabadítja a területet a szerkesztési oldalon, és leegyszerűsíti az irányítópult nézetet a kezelők számára.
+1. Válassza a **Mentés** lehetőséget. Ha eltávolítja a nem használt csempéket, felszabadítja a területet a szerkesztési oldalon, és leegyszerűsíti az irányítópult nézetet a kezelők számára.
 
 1. Megtekintheti az irányítópult módosításait.
 
@@ -133,7 +133,7 @@ A fennmaradó csempék átrendezése:
 
 1. Válassza a **termosztát belső vezérlőprogram** csempét, és húzza a **termosztát** akkumulátor csempétől jobbra.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. Megtekintheti az elrendezés változásait. 
 
@@ -154,7 +154,7 @@ Csempék hozzáadása a környezeti adatok RuuviTag-érzékelőkből való megje
 
 1. Válassza ki `Relative humidity` a és a elemet `temperature` a **telemetria** listán. Ezek a csempén lévő egyes zónákhoz megjelenített telemetria elemek.
 
-1. Válassza a **összevonás**lehetőséget. 
+1. Válassza a **összevonás** lehetőséget. 
 
     ![Azure IoT Central RuuviTag csempe hozzáadása 1](./media/tutorial-in-store-analytics-customize-dashboard/add-zone1-ruuvi.png)
 
@@ -164,7 +164,7 @@ Csempék hozzáadása a környezeti adatok RuuviTag-érzékelőkből való megje
 
 1. Módosítsa a **címet** *1. zóna környezetre*. 
 
-1. Válassza a **konfiguráció frissítése**lehetőséget.
+1. Válassza a **konfiguráció frissítése** lehetőséget.
 
 1. Az előző lépések megismétlésével hozzon létre egy csempét a második érzékelő példányához. Állítsa a **címet** *2. zóna környezetre* , majd válassza a **konfiguráció frissítése elemet.**
 
@@ -172,7 +172,7 @@ Csempék hozzáadása a környezeti adatok RuuviTag-érzékelőkből való megje
 
 1. Húzza a **1. zóna környezet** című csempét a **People Traffic** csempe alatt. 
 
-1. Kattintson a **Mentés** gombra. Az irányítópult a két új csempén jeleníti meg a telemetria.
+1. Válassza a **Mentés** lehetőséget. Az irányítópult a két új csempén jeleníti meg a telemetria.
 
     ![Az Azure IoT Central minden RuuviTag csempe](./media/tutorial-in-store-analytics-customize-dashboard/all-ruuvitag-tiles.png)
 
@@ -184,15 +184,15 @@ A **People Traffic** csempe szerkesztése a csak két telemetria megjelenítés�
 
 1. A **telemetria** válassza a **Count 1**, a **2**. és a **3**. számú elemet. 
 
-1. Válassza a **konfiguráció frissítése**lehetőséget. Törli a csempe meglévő konfigurációját. 
+1. Válassza a **konfiguráció frissítése** lehetőséget. Törli a csempe meglévő konfigurációját. 
 
 1. Válassza ismét a **configure (Konfigurálás** ) lehetőséget a **People Traffic** csempén.
 
-1. A **telemetria** válassza a **Count 1**és a **2. szám**elemet. 
+1. A **telemetria** válassza a **Count 1** és a **2. szám** elemet. 
 
-1. Válassza a **konfiguráció frissítése**lehetőséget. 
+1. Válassza a **konfiguráció frissítése** lehetőséget. 
 
-1. Kattintson a **Mentés** gombra.  A frissített irányítópult csak a két pénztári zónára vonatkozó számlálást jeleníti meg, amelyek a szimulált kihasználtsági érzékelőn alapulnak.
+1. Válassza a **Mentés** lehetőséget.  A frissített irányítópult csak a két pénztári zónára vonatkozó számlálást jeleníti meg, amelyek a szimulált kihasználtsági érzékelőn alapulnak.
 
     ![Az Azure IoT Central az emberek két sávot forgalma](./media/tutorial-in-store-analytics-customize-dashboard/people-traffic-two-lanes.png)
 
@@ -207,21 +207,21 @@ Tulajdonságok csempe hozzáadása az egyes RuuviTag:
 
 1. Válassza ki a két RuuviTag-érzékelő egyikének **eszköz-példányát** . A példában a contoso-tárolóban válassza a `Zone 1 Ruuvi` telemetria csempe létrehozásához 1. zóna. 
 
-1. Válassza a **tulajdonságok > a szoftver verziója**lehetőséget.
+1. Válassza a **tulajdonságok > a szoftver verziója** lehetőséget.
 
-1. Válassza a **összevonás**lehetőséget. 
+1. Válassza a **összevonás** lehetőséget. 
 
 1. Válassza a **configure (Konfigurálás** ) lehetőséget az újonnan létrehozott csempe **szoftver verziójában**. 
 
 1. Módosítsa a **címet** a *ruuvi 1 verzióra*.
 
-1. Válassza a **konfiguráció frissítése**lehetőséget. 
+1. Válassza a **konfiguráció frissítése** lehetőséget. 
 
 1. Húzza a csempét a **Ruuv 1 szoftververzió** címére a **1. zóna környezet** csempe alatt.
 
 1. Az előző lépések megismétlésével hozzon létre egy szoftververzió-tulajdonságot a második RuuviTag. 
 
-1. Kattintson a **Mentés** gombra.  
+1. Válassza a **Mentés** lehetőséget.  
 
     ![Azure IoT Central RuuviTag-tulajdonságok csempéi](./media/tutorial-in-store-analytics-customize-dashboard/add-ruuvi-property-tiles.png)
 
@@ -238,7 +238,7 @@ Parancs hozzáadása az átjáró újraindításához:
 
 1. Válassza a **parancs > újraindítás** lehetőséget, majd húzza azt az irányítópultra az áruházi Térkép mellett. 
 
-1. Kattintson a **Mentés** gombra. 
+1. Válassza a **Mentés** lehetőséget. 
 
 1. Megtekintheti a befejezett contoso-irányítópultot. 
 
