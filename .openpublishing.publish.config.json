@@ -5,7 +5,7 @@
       "docset_name": "azure-documents",
       "build_source_folder": ".",
       "build_output_subfolder": "azure",
-      "locale": "fr-fr",
+      "locale": "hu-hu",
       "monikers": [],
       "moniker_ranges": [],
       "xref_query_tags": [
@@ -37,7 +37,7 @@
     "master-sync-work",
     "live"
   ],
- "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/azure-docs.fr-fr",
+ "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/azure-docs.hu",
   "git_repository_branch_open_to_public_contributors": "master",
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
@@ -57,7 +57,7 @@
     },
     {
       "path_to_root": "_themes",
-      "url": "https://github.com/Microsoft/templates.docs.msft.fr-fr",
+      "url": "https://github.com/Microsoft/templates.docs.msft.hu-hu",
       "branch": "master"
     },
     {
