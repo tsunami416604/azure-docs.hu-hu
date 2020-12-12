@@ -8,18 +8,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d6c7ea0057553ea0052ded72353d22ade86b9d74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 429fe39f84a54c22fa97178b85f417d76dc84a8e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298915"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359472"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Az Azure Virtual Machines szolgáltatásban SQL Server automatikus javítása (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +28,7 @@ ms.locfileid: "91298915"
 Az automatikus javítás karbantartási időszakot hoz létre egy SQL Server rendszert futtató Azure-beli virtuális géphez. Az automatikus frissítéseket csak ebben a karbantartási időszakban lehet telepíteni. Az SQL Server esetén ez a korlátozás gondoskodik róla, hogy a rendszerfrissítésekre és az esetleges újraindításokra az adatbázis számára a lehető legkedvezőbb időpontban kerüljön sor. 
 
 > [!IMPORTANT]
-> A rendszer csak a **fontos** vagy **kritikus fontosságúként** megjelölt Windows-és SQL Server-frissítéseket telepíti. A más SQL Server frissítéseket, például a szervizcsomagokat és a nem **fontosként** vagy **kritikusként**megjelölt összesítő frissítéseket manuálisan kell telepíteni. 
+> A rendszer csak a **fontos** vagy **kritikus fontosságúként** megjelölt Windows-és SQL Server-frissítéseket telepíti. A más SQL Server frissítéseket, például a szervizcsomagokat és a nem **fontosként** vagy **kritikusként** megjelölt összesítő frissítéseket manuálisan kell telepíteni. 
 
 Az automatikus javítás a [SQL Server infrastruktúra-kezelő (IaaS) ügynök bővítménytől](sql-server-iaas-agent-extension-automate-management.md)függ.
 
@@ -79,7 +80,7 @@ A Azure Portal a kiépítés vagy a meglévő virtuális gépek automatikus jav�
 ### <a name="new-vms"></a>Új virtuális gépek
 Ha új SQL Server virtuális gépet hoz létre a Resource Manager-alapú üzemi modellben, használja a Azure Portal az automatikus javítás konfigurálásához.
 
-A **SQL Server beállítások** lapon válassza a **konfiguráció módosítása** az **Automatikus javítás**alatt lehetőséget. Az alábbi Azure Portal képernyőképen az **SQL-alapú automatikus javítás** panel látható.
+A **SQL Server beállítások** lapon válassza a **konfiguráció módosítása** az **Automatikus javítás** alatt lehetőséget. Az alábbi Azure Portal képernyőképen az **SQL-alapú automatikus javítás** panel látható.
 
 ![SQL-alapú automatikus javítás a Azure Portal](./media/automated-patching/azure-sql-arm-patching.png)
 
@@ -89,7 +90,7 @@ További információ: [SQL Server virtuális gép kiépítése az Azure](create
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Meglévő SQL Server virtuális gépekhez nyissa meg az [SQL Virtual Machines-erőforrást](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) , és válassza a **javítás** lehetőséget a **Beállítások**területen. 
+Meglévő SQL Server virtuális gépekhez nyissa meg az [SQL Virtual Machines-erőforrást](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) , és válassza a **javítás** lehetőséget a **Beállítások** területen. 
 
 ![SQL automatikus javítás a meglévő virtuális gépekhez](./media/automated-patching/azure-sql-rm-patching-existing-vms.png)
 

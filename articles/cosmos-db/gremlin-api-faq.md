@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 6840b2188f3d7e7524c4c98d7e1b6d32440e6812
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 0374886482b43eefe6df5e107fd4da371633099d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339359"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359778"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Gyakori kérdések a Gremlin API-ról Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -109,7 +109,7 @@ Azure Cosmos db Gremlin API kihasználja a nyílt forráskódú illesztőprogram
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Hogyan biztosíthatok védelmet a Gremlin-illesztőprogramokat használó injekciós támadásokkal szemben?
 
-A legtöbb natív Apache Tinkerpop Gremlin-illesztőprogram lehetővé teszi, hogy a lekérdezés végrehajtásához paraméterek szótárát adja meg. Ez egy példa arra, hogyan végezheti el a [Gremlin.net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) -ben és a [Gremlin-JavaScriptben](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+A legtöbb natív Apache Tinkerpop Gremlin-illesztőprogram lehetővé teszi, hogy a lekérdezés végrehajtásához paraméterek szótárát adja meg. Ez egy példa arra, hogyan végezheti el a [Gremlin.net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) -ben és a [Gremlin-JavaScriptben](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/main/app.js).
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Miért kapok a "Gremlin-lekérdezés fordítási hibája: nem található metódus" hibaüzenetet?
 
@@ -146,7 +146,7 @@ A Gremlin-kapcsolat egy WebSocket-kapcsolaton keresztül történik. Bár a WebS
 
 A Azure Cosmos DB Gremlin API még nem támogatja a Fluent API-hívásokat. A Fluent API-hívások olyan belső formázási funkciót igényelnek, amely a Azure Cosmos DB Gremlin API által jelenleg nem támogatott bytecode-támogatás. Ugyanezen ok miatt a legújabb Gremlin-JavaScript illesztőprogram is jelenleg nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Cosmos DB Gremlin-támogatás](gremlin-support.md)
 * Azure Cosmos DB Graph-adatbázis létrehozása, lekérdezése és bejárása a [Gremlin-konzol](create-graph-gremlin-console.md) használatával

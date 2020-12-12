@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: f7b7b8c7b1106bd3c0a6732867946c42df8438c1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49cf54bda985f7d97b2db6a3ada7859aee829cff
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097277"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359540"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Node.js Webalkalmazás létrehozása a JavaScript SDK használatával egy SQL API-fiók kezeléséhez a Azure Cosmos DB 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 A jelen cikkben lévő utasítások követése előtt győződjön meg arról, hogy rendelkezik az alábbi erőforrásokkal:
 
-* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd. 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -440,7 +440,7 @@ Most, hogy létrehozta az alkalmazást, helyileg futtathatja a következő lép�
 
 1. Az alkalmazás helyi gépen való teszteléséhez futtassa a parancsot `npm start` a terminálon az alkalmazás elindításához, majd frissítse a `http://localhost:3000` böngésző lapját. Az oldalnak az alábbi képernyőképen látható módon kell kinéznie:
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="A Node.js megismerése – Képernyőfelvétel a Hello World alkalmazásról egy böngészőablakban":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Képernyőfelvétel a My Todo List (Saját teendőlista) alkalmazásról egy böngészőablakban":::
 
     > [!TIP]
     > Ha a layout. Jade fájl vagy az index. Jade fájl behúzásával kapcsolatos hibaüzenetet kap, győződjön meg arról, hogy mindkét fájl első két sora balra van igazítva, szóközök nélkül. Ha az első két sor előtt szóközök vannak, távolítsa el őket, mentse mindkét fájlt, majd frissítse a böngészőablakot. 
@@ -449,7 +449,7 @@ Most, hogy létrehozta az alkalmazást, helyileg futtathatja a következő lép�
 
 3. Az oldal ekkor frissül, és megjeleníti az újonnan létrehozott elemet a teendőlistában.
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="A Node.js megismerése – Képernyőfelvétel a Hello World alkalmazásról egy böngészőablakban":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Képernyőfelvétel az alkalmazásról és a teendőlista új eleméről":::
 
 4. Egy feladat végrehajtásához jelölje be a teljes oszlopban található jelölőnégyzetet, majd válassza a **feladatok frissítése** lehetőséget. Ez frissíti a már létrehozott dokumentumot, és eltávolítja a nézetből.
 
@@ -470,12 +470,12 @@ Az alkalmazás helyi sikeres végrehajtása után az alábbi lépéseket követv
 3. Helyezze üzembe az alkalmazást a távoli mappához küldéssel.
    
    ```bash
-   git push azure master
+   git push azure main
    ```
 
 4. Néhány másodpercen belül az alkalmazás közzé lesz téve és el lesz indítva egy böngészőben.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha ezekre az erőforrásokra már nincs szükség, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Azure Cosmos DB fiókhoz használt erőforráscsoportot, válassza a **Törlés** lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 

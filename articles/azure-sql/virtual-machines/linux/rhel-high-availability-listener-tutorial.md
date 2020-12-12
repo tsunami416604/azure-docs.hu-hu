@@ -2,24 +2,23 @@
 title: Rendelkezésre állási csoport figyelője SQL Server RHEL virtuális gépeken az Azure-ban – Linux Virtual machines | Microsoft Docs
 description: Tudnivalók a rendelkezésre állási csoport figyelője beállításáról az Azure-beli RHEL Virtual Machines szolgáltatásban SQL Server
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b7ded4e7f94e2f9dfdfdda86aec99ff87f2beda
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485801"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359982"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoport figyelője SQL Server RHEL virtuális gépek Azure-ban való konfigurálásához
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> A bemutatott oktatóanyag **nyilvános előzetes**verzióban érhető el. 
+> A bemutatott oktatóanyag **nyilvános előzetes** verzióban érhető el. 
 >
 > Ebben az oktatóanyagban a SQL Server 2017-es RHEL 7,6-et használjuk, de a magas rendelkezésre állás konfigurálásához a SQL Server 2019 a RHEL 7 vagy a RHEL 8 használatával lehetséges. A rendelkezésre állási csoport erőforrásainak konfigurálására szolgáló parancsok megváltoztak a RHEL 8-ban, és a megfelelő parancsokról további információért tekintse meg a [rendelkezésre állási csoport erőforrásának létrehozása](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) és a RHEL 8 erőforrásai című cikket.
 
@@ -47,11 +46,11 @@ Az alábbi utasítások végigvezetik az 1 – 4. lépésen a Load Balancer [lé
 
 1. A Azure Portal nyissa meg azt az erőforráscsoportot, amely a SQL Server virtuális gépeket tartalmazza. 
 
-2. Az erőforrás csoportban kattintson a **Hozzáadás**gombra.
+2. Az erőforrás csoportban kattintson a **Hozzáadás** gombra.
 
-3. Keressen rá a **Load Balancer** kifejezésre, majd a keresési eredmények között válassza a **Load Balancer**lehetőséget, amelyet a **Microsoft**tesz közzé.
+3. Keressen rá a **Load Balancer** kifejezésre, majd a keresési eredmények között válassza a **Load Balancer** lehetőséget, amelyet a **Microsoft** tesz közzé.
 
-4. A **Load Balancer** panelen kattintson a **Létrehozás**gombra.
+4. A **Load Balancer** panelen kattintson a **Létrehozás** gombra.
 
 5. A terheléselosztó **létrehozása** párbeszédpanelen konfigurálja a terheléselosztó a következőképpen:
 
@@ -59,8 +58,8 @@ Az alábbi utasítások végigvezetik az 1 – 4. lépésen a Load Balancer [lé
    | --- | --- |
    | **Név** |A terheléselosztó nevét jelölő szöveges név. Például: **sqlLB**. |
    | **Típus** |**Belső** |
-   | **Virtuális hálózat** |A létrehozott alapértelmezett virtuális hálózatnak a **VM1VNET**nevűnek kell lennie. |
-   | **Alhálózat** |Válassza ki azt az alhálózatot, amelyhez a SQL Server példányok tartoznak. Az alapértelmezett értéknek **VM1Subnet**kell lennie.|
+   | **Virtuális hálózat** |A létrehozott alapértelmezett virtuális hálózatnak a **VM1VNET** nevűnek kell lennie. |
+   | **Alhálózat** |Válassza ki azt az alhálózatot, amelyhez a SQL Server példányok tartoznak. Az alapértelmezett értéknek **VM1Subnet** kell lennie.|
    | **IP-cím hozzárendelése** |**Statikus** |
    | **Magánhálózati IP-cím** |Használja a `virtualip` fürtben létrehozott IP-címet. |
    | **Előfizetés** |Használja az erőforráscsoporthoz használt előfizetést. |
@@ -72,13 +71,13 @@ Az Azure meghívja a háttérbeli címkészlet *háttér-készletét*. Ebben az 
 
 1. Az erőforráscsoporthoz kattintson a létrehozott terheléselosztó elemre. 
 
-2. A **Beállítások**területen kattintson a **háttér-készletek**elemre.
+2. A **Beállítások** területen kattintson a **háttér-készletek** elemre.
 
 3. Háttérbeli címkészlet létrehozásához kattintson a **Hozzáadás** elemre a **háttérrendszer**-készletekben. 
 
-4. A **háttérbeli készlet hozzáadása**területen a **név**mezőben adja meg a háttér-készlet nevét.
+4. A **háttérbeli készlet hozzáadása** területen a **név** mezőben adja meg a háttér-készlet nevét.
 
-5. A **társított a**következőhöz területen válassza a **virtuális gép**lehetőséget. 
+5. A **társított a** következőhöz területen válassza a **virtuális gép** lehetőséget. 
 
 6. Válassza ki az egyes virtuális gépeket a környezetben, és rendelje hozzá a megfelelő IP-címet az egyes kijelölésekhez.
 
@@ -92,7 +91,7 @@ A mintavétel határozza meg, hogy az Azure hogyan ellenőrzi, hogy a SQL Server
 
 1. A terheléselosztó **beállításai** panelen kattintson az **állapot**-mintavételek elemre. 
 
-2. Az **állapot** -mintavételek panelen kattintson a **Hozzáadás**gombra.
+2. Az **állapot** -mintavételek panelen kattintson a **Hozzáadás** gombra.
 
 3. Konfigurálja a mintavételt a mintavétel **hozzáadása** panelen. A mintavétel konfigurálásához használja a következő értékeket:
 
@@ -119,9 +118,9 @@ Az Azure létrehozza a mintavételt, majd a használatával teszteli, hogy melyi
 
 A terheléselosztási szabályok azt konfigurálhatják, hogy a terheléselosztó hogyan irányítja át a forgalmat a SQL Server példányokra. Ennél a terheléselosztónál engedélyezi a közvetlen kiszolgáló visszaküldését, mert a három SQL Server-példány közül csak az egyik a rendelkezésre állási csoport figyelő erőforrásának egyszerre van tulajdonosa.
 
-1. A terheléselosztó **beállításai** panelen kattintson a terheléselosztási **szabályok**elemre. 
+1. A terheléselosztó **beállításai** panelen kattintson a terheléselosztási **szabályok** elemre. 
 
-2. A **terheléselosztási szabályok** panelen kattintson a **Hozzáadás**gombra.
+2. A **terheléselosztási szabályok** panelen kattintson a **Hozzáadás** gombra.
 
 3. A **terheléselosztási szabályok hozzáadása** panelen konfigurálja a terheléselosztási szabályt. Használja a következő beállításokat: 
 
@@ -136,7 +135,7 @@ A terheléselosztási szabályok azt konfigurálhatják, hogy a terheléseloszt�
    | **Üresjárati időkorlát (perc)** |*4* |
    | **Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** |**Engedélyezve** |
 
-   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Háttér-készlet hozzáadása":::
+   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Terheléselosztási szabály hozzáadása":::
 
 4. Kattintson az **OK** gombra. 
 5. Az Azure konfigurálja a terheléselosztási szabályt. A terheléselosztó most úgy van konfigurálva, hogy átirányítsa a forgalmat a rendelkezésre állási csoport figyelőjét futtató SQL Server-példányra. 
@@ -290,7 +289,7 @@ Ezen a ponton az erőforráscsoport egy terheléselosztó, amely az összes SQL 
 
     Látnia kell, hogy most már csatlakozik ahhoz a virtuális géphez, amelyre a feladatátvételt elvégezte.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-beli terheléselosztó használatáról:
 

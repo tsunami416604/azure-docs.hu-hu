@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124934"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359455"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Munkacsoport rendelkezésre állási csoportjának konfigurálása 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -60,7 +61,7 @@ A DNS-utótag konfigurálásához kövesse az alábbi lépéseket:
    ![Munkacsoport nevének módosítása](./media/availability-group-clusterless-workgroup-configure/1-change-workgroup-name.png)
 
 1. Válassza a **továbbiak...** lehetőséget a **DNS-utótag és a NetBIOS-számítógépnév** párbeszédpanel megnyitásához. 
-1. Írja be a DNS-utótag nevét a **számítógép elsődleges DNS-utótagja** mezőbe, például `ag.wgcluster.example.com` :, majd kattintson **az OK gombra** : 
+1. Írja be a DNS-utótag nevét a **számítógép elsődleges DNS-utótagja** mezőbe, például `ag.wgcluster.example.com` :, majd kattintson **az OK gombra**: 
 
    ![Képernyőfelvétel: a D N S utótag és a NetBIOS-számítógépnév párbeszédpanel, ahol megadhatja az értéket.](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
@@ -107,7 +108,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 Ebben a lépésben a feladatátvevő fürtöt fogja létrehozni. Ha nem ismeri ezeket a lépéseket, követheti őket a [feladatátvevő fürt oktatóanyagában](failover-cluster-instance-storage-spaces-direct-manually-configure.md).
 
 Jelentős eltérések az oktatóanyag és a munkacsoporthoz tartozó fürt esetében elvégzendő teendők között:
-- Törölje a **tárolót** , és **közvetlen tárolóhelyek** a fürt érvényesítésének futtatásakor. 
+- Törölje a **tárolót**, és **közvetlen tárolóhelyek** a fürt érvényesítésének futtatásakor. 
 - Ha a csomópontokat hozzáadja a fürthöz, adja hozzá a teljes nevet, például:
    - `AGNode1.ag.wgcluster.example.com`
    - `AGNode2.ag.wgcluster.example.com`
@@ -115,12 +116,12 @@ Jelentős eltérések az oktatóanyag és a munkacsoporthoz tartozó fürt eset�
 
 A fürt létrehozása után rendeljen hozzá egy statikus fürt IP-címét. Ehhez kövesse az alábbi lépéseket:
 
-1. Az egyik csomóponton nyissa meg a **Feladatátvevőfürt-kezelőt** , válassza ki a fürtöt, kattintson a jobb gombbal a **névre: \<ClusterNam>** a **fürt alapvető erőforrásai** területen, majd válassza a **Tulajdonságok** lehetőséget. 
+1. Az egyik csomóponton nyissa meg a **Feladatátvevőfürt-kezelőt**, válassza ki a fürtöt, kattintson a jobb gombbal a **névre: \<ClusterNam>** a **fürt alapvető erőforrásai** területen, majd válassza a **Tulajdonságok** lehetőséget. 
 
    ![A fürt nevének megnyitása](./media/availability-group-clusterless-workgroup-configure/5-launch-cluster-name-properties.png)
 
 1. Válassza ki az IP-címet az **IP-címek** területen, és válassza a **Szerkesztés** lehetőséget. 
-1. Válassza a **statikus használata** lehetőséget, adja meg a fürt IP-címét, majd kattintson **az OK gombra** : 
+1. Válassza a **statikus használata** lehetőséget, adja meg a fürt IP-címét, majd kattintson **az OK gombra**: 
 
    ![Statikus IP-cím megadása a fürt számára](./media/availability-group-clusterless-workgroup-configure/6-provide-static-ip-for-cluster.png)
 
@@ -184,7 +185,7 @@ Az első csomópont konfigurálásához kövesse az alábbi lépéseket:
 
 A második csomópont konfigurálásához kövesse az alábbi lépéseket: 
 
-1. Kapcsolódjon a második csomóponthoz **SQL Server Management Studio** , például: `AGNode2` . 
+1. Kapcsolódjon a második csomóponthoz **SQL Server Management Studio**, például: `AGNode2` . 
 1. Egy **új lekérdezési** ablakban futtassa a következő Transact-SQL (T-SQL) utasítást egy összetett és biztonságos jelszóra való frissítés után: 
 
    ```sql

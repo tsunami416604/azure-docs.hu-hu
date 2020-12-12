@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852523"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359846"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>A mintacímkézési eszköz üzembe helyezése
 
@@ -34,7 +34,7 @@ Az adatfelirat megkezdésének leggyorsabb módja a minta feliratozási eszköz 
 
 Mielőtt elkezdenénk, fontos megjegyezni, hogy kétféleképpen lehet üzembe helyezni a minta-címkézési eszközt az Azure Container instance (ACI) szolgáltatásban. Mindkét lehetőség a minta feliratozási eszközének az ACI-val való futtatására szolgál. 
 
-* [A Azure Portal használata](#azure-portal)
+* [Az Azure Portal használata](#azure-portal)
 * [Az Azure CLI-vel](#azure-cli)
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -86,7 +86,7 @@ Az alábbi lépéseket követve hozzon létre egy új erőforrást a Azure Porta
    * Kiszolgáló URL-címe – Itt adhatja meg a következőt: `https://mcr.microsoft.com`
    * Username (nem kötelező) – hozzon létre egy felhasználónevet. 
    * Password (nem kötelező) – hozzon létre egy biztonságos jelszót, amelyet meg szeretne jegyezni.
-   * Rendszerkép és címke – ezt állítsa be a következőre: `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview`
+   * Rendszerkép és címke – ezt állítsa be a következőre: `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
    * Folyamatos üzembe helyezés – állítsa be ezt **a** be értékre, ha automatikus frissítéseket szeretne kapni, amikor a fejlesztői csapat megváltoztatja a minta feliratozási eszközét.
    * Indítási parancs – ezt állítsa be a következőre: `./run.sh eula=accept`
     

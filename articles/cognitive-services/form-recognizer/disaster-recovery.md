@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 79cf0ef059d96ac66f5918605e999d3936d589d2
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486517"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359812"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Az űrlap-felismerő modelljeinek biztonsági mentése és helyreállítása
 
@@ -69,7 +69,7 @@ POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/cust
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
-A kérelem törzsének a következő formátumúnak kell lennie. Meg kell adnia a cél erőforrás erőforrás-AZONOSÍTÓját és régiójának nevét. Szüksége lesz az előző lépésből másolt modell-AZONOSÍTÓra, hozzáférési jogkivonatra és lejárati értékre is.
+A kérelem törzsének a következő formátumúnak kell lennie. Meg kell adnia a cél erőforrás erőforrás-AZONOSÍTÓját és régiójának nevét. Az erőforrás-azonosítót az erőforrás **Tulajdonságok** lapján találja a Azure Portalban, és megtekintheti a régió nevét a **kulcsok és végpont** lapon. Szüksége lesz az előző lépésből másolt modell-AZONOSÍTÓra, hozzáférési jogkivonatra és lejárati értékre is.
 
 ```json
 {

@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: bdc63fd1-db49-4e76-87d5-b5c6a890e53c
 ms.service: virtual-machines-sql
+ms.subservice: backup
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ccd998bc2f6e2771ff4dd1bedfa2213af7573102
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 41add54ce767413982ab0503f7263c58aed4d4e2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556584"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359285"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatikus biztonsági mentés a SQL Server 2014 virtuális gépekhez (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,11 +36,11 @@ Az automatikus biztonsági mentés automatikusan [úgy konfigurálja a felügyel
 Az automatikus biztonsági mentés használatához vegye figyelembe a következő előfeltételeket:
 
 
-**Operációs rendszer** :
+**Operációs rendszer**:
 
 - Windows Server 2012 és újabb 
 
-**SQL Server verzió/kiadás** :
+**SQL Server verzió/kiadás**:
 
 - SQL Server 2014 standard
 - SQL Server 2014 Enterprise
@@ -47,7 +48,7 @@ Az automatikus biztonsági mentés használatához vegye figyelembe a következ�
 > [!NOTE]
 > Az SQL 2016 és újabb rendszerekhez lásd: [SQL Server 2016 automatikus biztonsági mentése](automated-backup.md).
 
-**Adatbázis-konfiguráció** :
+**Adatbázis-konfiguráció**:
 
 - A célként megadott _felhasználói_ adatbázisoknak a teljes helyreállítási modellt kell használniuk. A rendszeradatbázisoknak nem kell a teljes helyreállítási modellt használniuk. Ha azonban a modell-vagy MSDB a naplók biztonsági mentésére van szükség, a teljes helyreállítási modellt kell használnia. A teljes helyreállítási modell biztonsági mentésekre gyakorolt hatásával kapcsolatos további információkért lásd: [biztonsági mentés a teljes helyreállítási modell alatt](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105)). 
 - A SQL Server VM a [teljes felügyeleti módban](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)regisztrálva van az SQL IaaS-ügynök bővítménnyel. 
@@ -112,7 +113,7 @@ $resourcegroupname = "resourcegroupname"
 
 Ha a SQL Server IaaS-ügynök bővítmény telepítve van, akkor az "SqlIaaSAgent" vagy "SQLIaaSExtension" néven jelenik meg. A bővítmény **ProvisioningState** a "sikeres" is látható.
 
-Ha nincs telepítve, vagy nem sikerült kiépíteni, akkor a következő paranccsal telepítheti. A virtuális gép neve és az erőforráscsoport mellett azt a régiót ( **$region** ) is meg kell adnia, amelyben a virtuális gép található. Adja meg a SQL Server VM licencének típusát, válassza az utólagos elszámolású vagy a saját licencet a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával. A licenceléssel kapcsolatos további információkért lásd: [licencelési modell](licensing-model-azure-hybrid-benefit-ahb-change.md). 
+Ha nincs telepítve, vagy nem sikerült kiépíteni, akkor a következő paranccsal telepítheti. A virtuális gép neve és az erőforráscsoport mellett azt a régiót (**$region**) is meg kell adnia, amelyben a virtuális gép található. Adja meg a SQL Server VM licencének típusát, válassza az utólagos elszámolású vagy a saját licencet a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával. A licenceléssel kapcsolatos további információkért lásd: [licencelési modell](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
 ```powershell
 New-AzSqlVM  -Name $vmname `
@@ -148,7 +149,7 @@ FullBackupWindowHours       :
 LogBackupFrequency          : 
 ```
 
-Ha a kimenet azt mutatja, hogy az **Engedélyezés** értéke **false (hamis** ), akkor engedélyeznie kell az automatikus biztonsági mentést. A jó hír az, hogy az automatikus biztonsági mentést ugyanúgy engedélyezheti és konfigurálhatja. Tekintse meg ezt az információt a következő szakaszban.
+Ha a kimenet azt mutatja, hogy az **Engedélyezés** értéke **false (hamis**), akkor engedélyeznie kell az automatikus biztonsági mentést. A jó hír az, hogy az automatikus biztonsági mentést ugyanúgy engedélyezheti és konfigurálhatja. Tekintse meg ezt az információt a következő szakaszban.
 
 > [!NOTE] 
 > Ha azonnal bejelöli a beállításokat a módosítás után, akkor előfordulhat, hogy vissza fogja kérni a régi konfigurációs értékeket. Várjon néhány percet, és ellenőrizze újra a beállításokat, hogy megbizonyosodjon róla, hogy a módosítások érvénybe lépnek.
@@ -172,7 +173,7 @@ If (-Not $storage)
 > [!NOTE]
 > Az automatikus biztonsági mentés nem támogatja a biztonsági másolatok tárolását a Premium Storage-ban, de a Premium Storaget használó VM-lemezekről is készíthet biztonsági másolatokat.
 
-Ezután a **New-AzVMSqlServerAutoBackupConfig** paranccsal engedélyezheti és konfigurálhatja az automatikus biztonsági mentési beállításokat a biztonsági másolatok Azure Storage-fiókban való tárolásához. Ebben a példában a biztonsági mentések 10 napig őrződnek meg. A második parancs, a **set-AzVMSqlServerExtension** , frissíti a megadott Azure-beli virtuális gépet ezekkel a beállításokkal.
+Ezután a **New-AzVMSqlServerAutoBackupConfig** paranccsal engedélyezheti és konfigurálhatja az automatikus biztonsági mentési beállításokat a biztonsági másolatok Azure Storage-fiókban való tárolásához. Ebben a példában a biztonsági mentések 10 napig őrződnek meg. A második parancs, a **set-AzVMSqlServerExtension**, frissíti a megadott Azure-beli virtuális gépet ezekkel a beállításokkal.
 
 ```powershell
 $autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
@@ -186,7 +187,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 A SQL Server IaaS-ügynök telepítése és konfigurálása több percet is igénybe vehet.
 
 > [!NOTE]
-> A **New-AzVMSqlServerAutoBackupConfig** egyéb beállításai is érvényesek, amelyek csak a SQL Server 2016 és az automatikus Backup v2-re vonatkoznak. A SQL Server 2014 nem támogatja a következő beállításokat: **BackupSystemDbs** , **BackupScheduleType** , **FullBackupFrequency** , **FullBackupStartHour** , **FullBackupWindowInHours** és **LogBackupFrequencyInMinutes**. Ha ezeket a beállításokat egy SQL Server 2014 virtuális gépen kísérli meg konfigurálni, nincs hiba, de a beállítások nem lesznek alkalmazva. Ha ezeket a beállításokat egy SQL Server 2016 virtuális gépen szeretné használni, tekintse meg a [SQL Server 2016 Azure-beli virtuális gépekhez készült automatizált Backup v2](automated-backup.md)című témakört.
+> A **New-AzVMSqlServerAutoBackupConfig** egyéb beállításai is érvényesek, amelyek csak a SQL Server 2016 és az automatikus Backup v2-re vonatkoznak. A SQL Server 2014 nem támogatja a következő beállításokat: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours** és **LogBackupFrequencyInMinutes**. Ha ezeket a beállításokat egy SQL Server 2014 virtuális gépen kísérli meg konfigurálni, nincs hiba, de a beállítások nem lesznek alkalmazva. Ha ezeket a beállításokat egy SQL Server 2016 virtuális gépen szeretné használni, tekintse meg a [SQL Server 2016 Azure-beli virtuális gépekhez készült automatizált Backup v2](automated-backup.md)című témakört.
 
 A titkosítás engedélyezéséhez módosítsa az előző szkriptet, hogy átadja a **EnableEncryption** paramétert a **CertificatePassword** paraméterhez tartozó jelszóval (Secure string) együtt. A következő parancsfájl lehetővé teszi az előző példában szereplő automatizált biztonsági mentési beállításokat, és titkosítja a titkosítást.
 

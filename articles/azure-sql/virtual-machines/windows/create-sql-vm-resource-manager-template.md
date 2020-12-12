@@ -7,12 +7,13 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 9d0dd8ee1b99ddd2abf4fad154c70315a3d33c83
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.subservice: deployment
+ms.openlocfilehash: a20cb27ac91a0b01ed9cc3a5ac4c5c57f90ceda1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556420"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359642"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Rövid útmutató: SQL Server VM létrehozása ARM-sablonnal
 
@@ -58,26 +59,26 @@ Az Azure-beli virtuálisgép-sablonokkal kapcsolatos további SQL Server a gyors
 
 2. Válassza ki vagy adja meg a következő értékeket.
 
-    * **Előfizetés** : válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport** : a SQL Server VM előkészített erőforráscsoport. 
-    * **Régió** : válasszon régiót.  Például: **USA középső régiója**.
-    * **Virtuális gép neve** : adja meg SQL Server virtuális gép nevét. 
-    * **Virtuális gép mérete** : válassza ki a virtuális gép megfelelő méretét a legördülő menüből.
-    * **Meglévő Virtual Network neve** : adja meg a SQL Server VM felkészített virtuális hálózatának nevét. 
-    * **Meglévő vnet erőforráscsoport** : adja meg azt az erőforráscsoportot, amelyben a virtuális hálózat elkészült. 
-    * **Meglévő alhálózat neve** : az előkészített alhálózat neve. 
-    * **Rendszerkép-ajánlat** : válassza ki az üzleti igényeinek leginkább megfelelő SQL Server és Windows Server-rendszerképet. 
-    * **SQL SKU** : válassza ki az üzleti igényeinek leginkább megfelelő SQL Server SKU kiadását. 
-    * **Rendszergazdai Felhasználónév** : a virtuális gép rendszergazdájához tartozó Felhasználónév. 
-    * **Rendszergazdai jelszó** : a virtuális gép rendszergazdai fiókja által használt jelszó. 
-    * **Tárolási munkaterhelés típusa** : az Ön vállalatának leginkább megfelelő számítási feladathoz tartozó tároló típusa. 
-    * **SQL-adatlemezek száma** : az adatfájlok SQL Server használt lemezek száma.  
-    * **Adatelérési út** : a SQL Server adatfájljainak elérési útja. 
-    * **SQL-naplózási lemezek száma** : a naplófájlok SQL Server által használt lemezek száma. 
-    * **Napló elérési útja** : a SQL Server naplófájlok elérési útja. 
-    * **Hely** : az összes erőforrás helye, ennek az értéknek az alapértelmezettnek kell maradnia `[resourceGroup().location]` . 
+    * **Előfizetés**: válasszon ki egy Azure-előfizetést.
+    * **Erőforráscsoport**: a SQL Server VM előkészített erőforráscsoport. 
+    * **Régió**: válasszon régiót.  Például: **USA középső régiója**.
+    * **Virtuális gép neve**: adja meg SQL Server virtuális gép nevét. 
+    * **Virtuális gép mérete**: válassza ki a virtuális gép megfelelő méretét a legördülő menüből.
+    * **Meglévő Virtual Network neve**: adja meg a SQL Server VM felkészített virtuális hálózatának nevét. 
+    * **Meglévő vnet erőforráscsoport**: adja meg azt az erőforráscsoportot, amelyben a virtuális hálózat elkészült. 
+    * **Meglévő alhálózat neve**: az előkészített alhálózat neve. 
+    * **Rendszerkép-ajánlat**: válassza ki az üzleti igényeinek leginkább megfelelő SQL Server és Windows Server-rendszerképet. 
+    * **SQL SKU**: válassza ki az üzleti igényeinek leginkább megfelelő SQL Server SKU kiadását. 
+    * **Rendszergazdai Felhasználónév**: a virtuális gép rendszergazdájához tartozó Felhasználónév. 
+    * **Rendszergazdai jelszó**: a virtuális gép rendszergazdai fiókja által használt jelszó. 
+    * **Tárolási munkaterhelés típusa**: az Ön vállalatának leginkább megfelelő számítási feladathoz tartozó tároló típusa. 
+    * **SQL-adatlemezek száma**: az adatfájlok SQL Server használt lemezek száma.  
+    * **Adatelérési út**: a SQL Server adatfájljainak elérési útja. 
+    * **SQL-naplózási lemezek száma**: a naplófájlok SQL Server által használt lemezek száma. 
+    * **Napló elérési útja**: a SQL Server naplófájlok elérési útja. 
+    * **Hely**: az összes erőforrás helye, ennek az értéknek az alapértelmezettnek kell maradnia `[resourceGroup().location]` . 
 
-3. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A SQL Server VM sikeres üzembe helyezését követően értesítést kap.
+3. Válassza az **Áttekintés + létrehozás** lehetőséget. A SQL Server VM sikeres üzembe helyezését követően értesítést kap.
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../../azure-resource-manager/templates/deploy-powershell.md).
 

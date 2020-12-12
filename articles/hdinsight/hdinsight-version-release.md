@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 2fd7a3e512b79651fdcf6a6ac0c14822361fc263
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8f9759d19089f74d62def41b205d862ce9a7d43
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350194"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359727"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 – áttekintés
 
@@ -38,7 +38,12 @@ A kaptár mostantól támogatja a dinamikus, kiszervezett nézeteket, vagy előr
 
 ### <a name="hive-transactional-tables"></a>A Hive tranzakciós táblái
 
-A HDI 4,0 Apache Hive 3 tartalmaz. A 3. struktúra megköveteli a kaptárban élő tranzakciós táblázatok atomi, konzisztencia-, elkülönítési és tartóssági megfelelőségét. Az ACID-kompatibilis táblákat és táblaadatokat a Hive használja és felügyeli. A létrehozási, lekérési, frissítési és törlési (szifilisz) táblákban lévő adatoknak optimalizált sor oszlop (ORK) formátumúnak kell lenniük. A csak INSERT-táblázatok támogatják az összes fájlformátumot.
+A HDI 4,0 Apache Hive 3 tartalmaz. A 3. struktúra megköveteli a kaptárban élő tranzakciós táblázatok atomi, konzisztencia-, elkülönítési és tartóssági megfelelőségét. Az ACID-kompatibilis táblákat és táblaadatokat a Hive használja és felügyeli. A létrehozási, lekérési, frissítési és törlési (szifilisz) táblákban lévő adatoknak optimalizált sor oszlop (ORK) formátumúnak kell lenniük. A csak INSERT-táblázatok támogatják az összes fájlformátumot. 
+
+> [!Note]
+> A savas/tranzakciós támogatás csak felügyelt táblák esetében működik, külső táblák esetében nem. A kaptár külső táblái úgy vannak kialakítva, hogy a külső felek képesek legyenek tábla-adatokat olvasni és írni, anélkül, hogy a kaptár perfoming az alapul szolgáló adatokat. A savas táblák esetében a struktúra az alapul szolgáló adatokat tömörítéssel és tranzakciókkal is megváltoztathatja.
+
+A savas táblák néhány előnye a következő:
 
 * Az ACID 2-es verziójában a tárolási formátummal és a végrehajtómotorral kapcsolatos teljesítmény is javult.
 
@@ -100,7 +105,7 @@ Nincs támogatott frissítési útvonal a HDInsight korábbi verzióiról a HDIn
 * A Spark SQL Ranger integrációja a sor-és az oszlop biztonsága elavult
 * A Spark 2,4 és a Kafka 2,1 a HDInsight 4,0-ban érhető el, így a Spark 2,3 és a Kafka 1,1 már nem támogatott. Javasoljuk, hogy a Spark 2,4 & Kafka 2,1-es vagy újabb verzióját használja a HDInsight 4,0-ban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HBase áttelepítési útmutató](./hbase/apache-hbase-migrate-new-version.md)
 * [Struktúra áttelepítési útmutatója](./interactive-query/apache-hive-migrate-workloads.md)

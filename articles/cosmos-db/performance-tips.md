@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 962b95307b440c3bafde019b5b2b630461718073
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 47e20e89c8eaef59b9acd6cf7e31244afd4bcf60
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029005"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359047"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB Java SDK v2-höz
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -46,7 +46,7 @@ A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feld
 
 - A végrehajtható alkalmazások esetében úgy módosíthatja a gazdagépek feldolgozását, hogy a [platform célját](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) **x64**  értékre állítja a **Projekt tulajdonságai** ablakban a **Build** lapon.
 
-- A VSTest-alapú tesztelési projektek esetében **Test**  >  **Test Settings**  >  a Visual Studio **test** menüben válassza a tesztelési beállítások **alapértelmezett processzor-architektúra x64-ként** lehetőséget.
+- A VSTest-alapú tesztelési projektek esetében   >    >  a Visual Studio **test** menüben válassza a tesztelési beállítások **alapértelmezett processzor-architektúra x64-ként** lehetőséget.
 
 - Helyileg telepített ASP.NET-webalkalmazások esetében a gazdagépek feldolgozását úgy módosíthatja, hogy kiválasztja **a IIS Express 64 bites verzióját a webhelyekhez és projektekhez** a **Tools**  >  **Options**  >  **Projects és a Solutions**  >  **webes projektjei** alatt.
 
@@ -133,7 +133,7 @@ Azure Cosmos DB kérések HTTPS/REST protokollon keresztül történnek, amikor 
 
 **A particionált gyűjtemények párhuzamos lekérdezésének hangolása**
 
-Az SQL .NET SDK 1.9.0 és újabb verziói támogatják a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált gyűjtemények párhuzamos lekérdezését. További információ: az SDK-k használatához kapcsolódó [kód-minták](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy jobb lekérdezési késést és adatátviteli sebességet biztosítanak, mint a soros A párhuzamos lekérdezések két paramétert biztosítanak, amelyeket az igényeinek megfelelően hangolhat: 
+Az SQL .NET SDK 1.9.0 és újabb verziói támogatják a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált gyűjtemények párhuzamos lekérdezését. További információ: az SDK-k használatához kapcsolódó [kód-minták](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy jobb lekérdezési késést és adatátviteli sebességet biztosítanak, mint a soros A párhuzamos lekérdezések két paramétert biztosítanak, amelyeket az igényeinek megfelelően hangolhat: 
 - `MaxDegreeOfParallelism` a párhuzamosan lekérdezhető partíciók maximális számát szabályozza. 
 - `MaxBufferedItemCount` az előre lehívott eredmények számát szabályozza.
 

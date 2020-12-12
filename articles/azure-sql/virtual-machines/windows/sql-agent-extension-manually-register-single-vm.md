@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 48c996b6c7d0024b256908565c57032fe3e18514
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: bb7331747db301be5db00d550eec211f75257e29
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545638"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360033"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL Server VM regisztrálása az SQL IaaS-ügynök bővítménnyel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -94,7 +95,7 @@ A bővítmény teljes felügyeleti módban való regisztrálása újraindítja a
 
 Az Azure CLI vagy a Azure PowerShell használatával a bővítményt egyszerűsített módban regisztrálhatja a SQL Server VM. Ez nem fogja újraindítani a SQL Server szolgáltatást. Ezt követően bármikor frissítheti a teljes üzemmódra, de ez a művelet újraindítja a SQL Server szolgáltatást, ezért ajánlott megvárni az ütemezett karbantartási időszakot. 
 
-Az ingyenes DR replika-licenc aktiválásához adja meg az SQL Server licenc típusát, mint az utólagos elszámolású ( `PAYG` ) használati díjat, Azure Hybrid Benefit ( `AHUB` ) használja a saját licencét, vagy a vész-helyreállítást ( `DR` ). [free DR replica license](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)
+Az ingyenes DR replika-licenc aktiválásához adja meg az SQL Server licenc típusát, mint az utólagos elszámolású ( `PAYG` ) használati díjat, Azure Hybrid Benefit ( `AHUB` ) használja a saját licencét, vagy a vész-helyreállítást ( `DR` ). [](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)
 
 A feladatátvevő fürtök példányai és a többpéldányos központi telepítések csak az SQL IaaS-ügynök bővítménnyel regisztrálhatók egyszerűsített módban. 
 
@@ -239,7 +240,7 @@ A regisztrációs állapot a Azure Portal használatával történő ellenőrzé
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 1. Nyissa meg a [SQL Server virtuális gépeket](manage-sql-vm-portal.md).
 1. Válassza ki a SQL Server VM a listából. Ha a SQL Server VM nem szerepel a listán, valószínűleg nincs regisztrálva az SQL IaaS-ügynök bővítményében. 
-1. Tekintse meg az **állapot** alatt lévő értéket. Ha **Status** az állapot **sikeres**, akkor a SQL Server VM sikeresen regisztrálva lett az SQL IaaS-ügynök bővítményében. 
+1. Tekintse meg az **állapot** alatt lévő értéket. Ha  az állapot **sikeres**, akkor a SQL Server VM sikeresen regisztrálva lett az SQL IaaS-ügynök bővítményében. 
 
    ![SQL RP-regisztrációval rendelkező állapot ellenőrzése](./media/sql-agent-extension-manually-register-single-vm/verify-registration-status.png)
 
@@ -278,7 +279,7 @@ A felügyeleti mód teljes állapotának visszavonásához le kell törölni az 
 
 Ha törölni szeretné a SQL Server VM regisztrációját a bővítményből a Azure Portal használatával, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 1. Navigáljon az SQL VM-erőforráshoz. 
   
    ![SQL-alapú virtuális gépek erőforrása](./media/sql-agent-extension-manually-register-single-vm/sql-vm-manage.png)

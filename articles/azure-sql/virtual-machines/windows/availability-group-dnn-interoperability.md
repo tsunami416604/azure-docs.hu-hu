@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/08/2020
 ms.author: mathoma
-ms.openlocfilehash: 567e1696bb06b3237c30c45384b8049ff82b5848
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 19b4b7407468b19419e2f85193b1f8fb6ace39c3
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168845"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359404"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>Funkciók együttműködése az AG-val és a DNN-figyelővel 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -122,9 +123,9 @@ Konfigurálja a csatolt kiszolgálót az AG DNN figyelő neve és port használa
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információkért lásd: 
+További információ: 
 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [Always On rendelkezésre állási csoport](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

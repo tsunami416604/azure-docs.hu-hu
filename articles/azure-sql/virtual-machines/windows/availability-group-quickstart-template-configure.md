@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -14,12 +15,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e52925acb099190305e1f0609ac389565336e24b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d7dfe010a3f4a1559454c49545af81eb14797bf1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556505"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359914"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure Gyorsindítás sablonok használata az Azure-beli virtuális gépen SQL Server rendelkezésre állási csoport konfigurálásához
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -66,7 +67,7 @@ SQL Server virtuális gépeknek a *SqlVirtualMachineGroups* erőforráscsoportho
    | **Előfizetés** |  Az az előfizetés, amelyben a SQL Server virtuális gépek léteznek. |
    |**Erőforráscsoport** | Az az erőforráscsoport, amelyben a SQL Server virtuális gépek találhatók. | 
    |**Feladatátvevő fürt neve** | Az új Windows feladatátvevő fürthöz használni kívánt név. |
-   | **Meglévő virtuális gépek listája** | A rendelkezésre állási csoportban részt venni kívánó SQL Server virtuális gépek, amelyek az új fürt részét képezik. Ezeket az értékeket vesszővel és szóközzel válassza el (például: *SQLVM1, SQLVM2* ). |
+   | **Meglévő virtuális gépek listája** | A rendelkezésre állási csoportban részt venni kívánó SQL Server virtuális gépek, amelyek az új fürt részét képezik. Ezeket az értékeket vesszővel és szóközzel válassza el (például: *SQLVM1, SQLVM2*). |
    | **SQL Server verziója** | A SQL Server virtuális gépek SQL Server verziója. Válassza ki a legördülő listából. Jelenleg csak SQL Server 2016 és SQL Server 2017 rendszerképek támogatottak. |
    | **Meglévő teljesen minősített tartománynév** | Annak a tartománynak a meglévő teljes tartományneve, amelyben a SQL Server virtuális gépek találhatók. |
    | **Meglévő tartományi fiók** | Egy meglévő tartományi felhasználói fiók, amely **számítógép-objektum létrehozása** engedéllyel rendelkezik a tartományban, mivel a [CNO](/windows-server/failover-clustering/prestage-cluster-adds) a sablon központi telepítése során jön létre. Például egy tartományi rendszergazdai fióknak jellemzően megfelelő engedélye van (például: account@domain.com ). *Ennek a fióknak a helyi rendszergazda csoportnak is szerepelnie kell az egyes virtuális gépeken a fürt létrehozásához.*| 
@@ -123,7 +124,7 @@ Csak létre kell hoznia a belső Load balancert. A 4. lépésben a **101-SQL-VM-
    | Beállítás | Érték |
    | --- | --- |
    | **Név** |Adja meg a terheléselosztó nevét jelölő szöveges nevet. Írja be például a következőt: **sqlLB**. |
-   | **Típus** |**Belső** : a legtöbb implementáció belső Load balancert használ, amely lehetővé teszi, hogy az ugyanazon a virtuális hálózaton lévő alkalmazások csatlakozzanak a rendelkezésre állási csoporthoz.  </br> **Külső** : lehetővé teszi, hogy az alkalmazások nyilvános internetkapcsolaton keresztül csatlakozzanak a rendelkezésre állási csoporthoz. |
+   | **Típus** |**Belső**: a legtöbb implementáció belső Load balancert használ, amely lehetővé teszi, hogy az ugyanazon a virtuális hálózaton lévő alkalmazások csatlakozzanak a rendelkezésre állási csoporthoz.  </br> **Külső**: lehetővé teszi, hogy az alkalmazások nyilvános internetkapcsolaton keresztül csatlakozzanak a rendelkezésre állási csoporthoz. |
    | **Virtuális hálózat** | Válassza ki azt a virtuális hálózatot, amelyre a SQL Server példányok tartoznak. |
    | **Alhálózat** | Válassza ki azt az alhálózatot, amelyhez a SQL Server példányok tartoznak. |
    | **IP-cím hozzárendelése** |**Statikus** |
@@ -163,11 +164,11 @@ A belső terheléselosztó konfigurálásához és a rendelkezésre állási cso
    |**Erőforráscsoport** | Az az erőforráscsoport, amelyben a SQL Server virtuális gépek és a rendelkezésre állási csoport létezik. | 
    |**Meglévő feladatátvevő fürt neve** | Annak a fürtnek a neve, amelyhez a SQL Server virtuális gépek csatlakoznak. |
    | **Meglévő SQL rendelkezésre állási csoport**| Annak a rendelkezésre állási csoportnak a neve, amelynek a SQL Server virtuális gépei a részei. |
-   | **Meglévő virtuális gépek listája** | A korábban említett rendelkezésre állási csoport részét képező SQL Server virtuális gépek nevei. A neveket vesszővel és szóközzel válassza el (például: *SQLVM1, SQLVM2* ). |
+   | **Meglévő virtuális gépek listája** | A korábban említett rendelkezésre állási csoport részét képező SQL Server virtuális gépek nevei. A neveket vesszővel és szóközzel válassza el (például: *SQLVM1, SQLVM2*). |
    | **Figyelő** | A figyelőhöz hozzárendelni kívánt DNS-név. Alapértelmezés szerint ez a sablon a "aglistener" nevet adja meg, de módosíthatja is. A név nem lehet hosszabb 15 karakternél. |
    | **Figyelő portja** | A figyelő által használni kívánt port. Ez a port általában az alapértelmezett 1433. Ez az a portszám, amelyet a sablon meghatároz. Ha azonban az alapértelmezett port meg lett változtatva, a figyelő portjának Ehelyett ezt az értéket kell használnia. | 
    | **Figyelő IP-címe** | A figyelő által használni kívánt IP-cím. Ez a címe a sablon központi telepítése során jön létre, ezért olyant adjon meg, amely még nincs használatban.  |
-   | **Meglévő alhálózat** | A SQL Server virtuális gépek belső alhálózatának neve (például: *default* ). Ezt az értéket az **erőforráscsoport** , a virtuális hálózat kiválasztása, az **alhálózatok** kiválasztása a **Beállítások** panelen, majd a **név** alatt lévő érték másolásával határozhatja meg. |
+   | **Meglévő alhálózat** | A SQL Server virtuális gépek belső alhálózatának neve (például: *default*). Ezt az értéket az **erőforráscsoport**, a virtuális hálózat kiválasztása, az **alhálózatok** kiválasztása a **Beállítások** panelen, majd a **név** alatt lévő érték másolásával határozhatja meg. |
    | **Meglévő belső Load Balancer** | A 3. lépésben létrehozott belső terheléselosztó neve. |
    | **Mintavételi port** | A belső terheléselosztó számára használni kívánt mintavételi port. Alapértelmezés szerint a sablon 59999-et használ, de ez az érték módosítható. |
    | &nbsp; | &nbsp; |
@@ -204,7 +205,7 @@ A **tartományi fiók nem létezik** . Ennek a hibának két oka lehet. Vagy a m
 
 Ellenőrizze, hogy létezik-e a fiók. Ha igen, lehet, hogy a második szituációban fut. A probléma megoldásához tegye a következőket:
 
-1. A tartományvezérlőn nyissa meg a **Active Directory felhasználók és számítógépek** ablakot a Kiszolgálókezelő **eszközök** lehetőségével **Server Manager**. 
+1. A tartományvezérlőn nyissa meg a **Active Directory felhasználók és számítógépek** ablakot a Kiszolgálókezelő **eszközök** lehetőségével . 
 2. Nyissa meg a fiókot a bal oldali ablaktáblán a **felhasználók** lehetőség kiválasztásával.
 3. Kattintson a jobb gombbal a fiókra, majd válassza a **Tulajdonságok** lehetőséget.
 4. Válassza a **fiók** fület. Ha a **felhasználói bejelentkezési név** mező üres, akkor ez a hiba oka. 
@@ -219,7 +220,7 @@ Miután elvégezte ezeket a módosításokat, próbálja meg még egyszer üzemb
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkat az következő cikkekben talál: 
+További információért tekintse át a következő cikkeket: 
 
 * [SQL Server virtuális gépek áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [SQL Server virtuális gépekkel kapcsolatos gyakori kérdések](frequently-asked-questions-faq.md)

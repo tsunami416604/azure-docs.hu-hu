@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e895cdba1bfc16eac0450bd05271f0e41985b7b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005656"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359759"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Az Azure HDInsight kettős titkosítást biztosít a nyugalmi állapotban lévő adatokhoz
 
@@ -36,7 +36,7 @@ Ezeket a típusokat a következő táblázat foglalja össze.
 |Fürt típusa |OPERÁCIÓSRENDSZER-lemez (felügyelt lemez) |Adatlemez (felügyelt lemez) |Ideiglenes adatlemez (helyi SSD) |
 |---|---|---|---|
 |Kafka, HBase gyorsított írásokkal|Layer1: az [SSE titkosítás](../virtual-machines/managed-disks-overview.md#encryption) alapértelmezés szerint|Layer1: [SSE titkosítás](../virtual-machines/managed-disks-overview.md#encryption) alapértelmezés szerint, Layer2: opcionális TITKOSÍTÁS a CMK-ben a REST-tel|Layer1: opcionális titkosítás a gazdagépen a főkulcsok, Layer2: opcionális titkosítás a CMK használatával|
-|Minden más fürt (Spark, Interactive, Hadoop, gyorsított írások nélkül HBase)|Layer1: az [SSE titkosítás](../virtual-machines/managed-disks-overview.md#encryption) alapértelmezés szerint|N.A.|Layer1: opcionális titkosítás a gazdagépen a főkulcsok, Layer2: opcionális titkosítás a CMK használatával|
+|Minden más fürt (Spark, Interactive, Hadoop, gyorsított írások nélkül HBase)|Layer1: az [SSE titkosítás](../virtual-machines/managed-disks-overview.md#encryption) alapértelmezés szerint|N/A|Layer1: opcionális titkosítás a gazdagépen a főkulcsok, Layer2: opcionális titkosítás a CMK használatával|
 
 ## <a name="encryption-at-rest-using-customer-managed-keys"></a>Inaktív adatok titkosítása az ügyfél által felügyelt kulcsok használatával
 
@@ -111,7 +111,7 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
 1. Válassza a **Hozzáadás** elemet.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     ![Azure Key Vault hozzáférési szabályzat mentése](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
@@ -119,15 +119,24 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
 Most már készen áll egy új HDInsight-fürt létrehozására. Az ügyfél által felügyelt kulcsok csak a fürt létrehozása során alkalmazhatók az új fürtökre. A titkosítás nem távolítható el az ügyfél által felügyelt kulcstárolóból, és az ügyfél által felügyelt kulcsok nem vehetők fel a meglévő fürtökbe.
 
+A [November 2020-es kiadástól](hdinsight-release-notes.md#release-date-11182020)kezdve a HDInsight támogatja a fürtök létrehozását a verziószámmal ellátott és a verziószám nélküli kulcs URI-k használatával. Ha a fürtöt egy verzió nélküli kulcs-URI-val hozza létre, akkor a HDInsight-fürt megpróbálja végrehajtani a kulcs automatikus elforgatását, ha a kulcs frissül a Azure Key Vault. Ha a fürtöt egy verziószámmal ellátott kulcs URI-val hozza létre, akkor a [titkosítási kulcs elforgatása](#rotating-the-encryption-key)című cikkben leírtak szerint manuálisan kell elvégeznie a kulcsot.
+
+A november 2020-es kiadás előtt létrehozott fürtök esetében manuálisan kell elvégeznie a kulcs elforgatását a verziószámmal ellátott kulcs URI használatával.
+
 #### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-A fürt létrehozása során adja meg a teljes **kulcs azonosítóját**, beleértve a kulcs verziószámát is. Például: `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Emellett a felügyelt identitást is hozzá kell rendelnie a fürthöz, és meg kell adnia a kulcs URI-JÁT.
+A fürt létrehozása során a következő módon használhat egy verziószámmal ellátott kulcsot, vagy egy verzióval ellátott kulcsot:
+
+- **Verzió** – a fürt létrehozása során adja meg a teljes **kulcs azonosítóját**, beleértve a kulcs verziószámát is. Például: `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`.
+- **Verziószámozás** – a fürt létrehozása során csak a **kulcs azonosítóját** adja meg. Például: `https://contoso-kv.vault.azure.net/keys/myClusterKey`.
+
+A felügyelt identitást is hozzá kell rendelnie a fürthöz.
 
 ![Új fürt létrehozása](./media/disk-encryption/create-cluster-portal.png)
 
 #### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 
-Az alábbi példa bemutatja, hogyan használható az Azure CLI egy új Apache Spark-fürt létrehozásához, amelyen engedélyezve van a lemezes titkosítás. További információ: [Azure CLI az hdinsight Create](/cli/azure/hdinsight#az-hdinsight-create).
+Az alábbi példa bemutatja, hogyan használható az Azure CLI egy új Apache Spark-fürt létrehozásához, amelyen engedélyezve van a lemezes titkosítás. További információ: [Azure CLI az hdinsight Create](/cli/azure/hdinsight#az-hdinsight-create). A paraméter `encryption-key-version` megadása nem kötelező.
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -141,7 +150,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok használata
 
-Az alábbi példa bemutatja, hogyan használható egy Azure Resource Manager sablon egy új Apache Spark-fürt létrehozásához, amelyen engedélyezve van a lemezes titkosítás. További információ: [Mi az ARM-sablonok?](../azure-resource-manager/templates/overview.md).
+Az alábbi példa bemutatja, hogyan használható egy Azure Resource Manager sablon egy új Apache Spark-fürt létrehozásához, amelyen engedélyezve van a lemezes titkosítás. További információ: [Mi az ARM-sablonok?](../azure-resource-manager/templates/overview.md). A Resource Manager-sablon tulajdonsága `diskEncryptionKeyVersion` nem kötelező.
 
 Ez a példa a PowerShellt használja a sablon meghívásához.
 
@@ -355,7 +364,7 @@ Az erőforrás-kezelési sablon tartalma `azuredeploy.json` :
 
 ### <a name="rotating-the-encryption-key"></a>A titkosítási kulcs elforgatása
 
-Előfordulhat, hogy előfordulhat, hogy a HDInsight-fürt által létrehozott titkosítási kulcsokat módosítani szeretné a létrehozása után. Ez könnyen elvégezhető a portálon keresztül. Ehhez a művelethez a fürtnek hozzá kell férnie az aktuális kulcshoz és a kívánt új kulcshoz, ellenkező esetben az elforgatási kulcs művelete sikertelen lesz.
+A futó fürtön használt titkosítási kulcsokat a Azure Portal vagy az Azure CLI használatával módosíthatja. Ehhez a művelethez a fürtnek hozzá kell férnie az aktuális kulcshoz és a kívánt új kulcshoz, ellenkező esetben az elforgatási kulcs művelete sikertelen lesz. A november 2020 kiadás után létrehozott fürtök esetében kiválaszthatja, hogy az új kulcsot szeretné-e használni, vagy sem. A november 2020 kiadás előtt létrehozott fürtök esetében a titkosítási kulcs elforgatásakor verziószámmal ellátott kulcsot kell használnia.
 
 #### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
@@ -467,7 +476,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\
 --storage-account MyStorageAccount --encryption-at-host true
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Azure Key Vaultről: [Mi az Azure Key Vault](../key-vault/general/overview.md).
 * [A vállalati biztonság áttekintése az Azure HDInsight-ben](./domain-joined/hdinsight-security-overview.md).

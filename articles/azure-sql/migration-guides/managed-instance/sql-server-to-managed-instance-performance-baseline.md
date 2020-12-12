@@ -1,5 +1,5 @@
 ---
-title: SQL Server a felügyelt SQL-példányhoz – teljesítmény elemzése
+title: 'SQL Server a felügyelt SQL-példányhoz: teljesítmény elemzése'
 description: Ismerje meg, hogyan hozhatja létre és hasonlíthatja össze a teljesítmény alapkonfigurációját, amikor áttelepíti SQL Server adatbázisait az Azure SQL felügyelt példányára.
 ms.service: sql-database
 ms.subservice: migration
@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: c47e4c1278f222feac35a2c6ab0b067c916c0217
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2b6f9bef445cc07a3aa00377b41010a536855935
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326845"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358860"
 ---
 # <a name="migration-performance-sql-server-to-sql-managed-instance-performance-analysis"></a>Áttelepítési teljesítmény: SQL Server a felügyelt SQL-példányok teljesítmény-elemzéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -79,7 +79,7 @@ A teljesítmény összehasonlításakor vegye figyelembe a következőket:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az új Azure SQL felügyelt példány környezetének optimalizálásával kapcsolatos további információkért tekintse meg a következő forrásokat: 
 

@@ -1,5 +1,5 @@
 ---
-title: SQL Server a felügyelt SQL-példányhoz – áttelepítési áttekintés
+title: 'SQL Server a felügyelt SQL-példányhoz: áttelepítési áttekintés'
 description: Ismerje meg a SQL Server-adatbázisok Azure SQL felügyelt példányra való átadásához rendelkezésre álló különböző eszközöket és lehetőségeket.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 878d59445dde839ca9e702ac0c49af676e48a42f
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: d1360589fe2c2ec13c341dd14793db0ca8b809c4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531190"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358877"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Áttelepítési Áttekintés: SQL Server a felügyelt SQL-példányhoz
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -183,7 +183,7 @@ Azt is megteheti, hogy a Microsoft adatáttelepítés-építészek által tervez
 
 #### <a name="encryption"></a>Titkosítás
 
-Ha transzparens adattitkosítás által védett adatbázisokat  [Transparent Data Encryption](../../database/transparent-data-encryption-tde-overview.md)   felügyelt példányra telepít át natív visszaállítási beállítással, a megfelelő tanúsítványt a forrás SQL Server [áttelepítheti](../../managed-instance/tde-certificate-migrate.md) a célként megadott SQL felügyelt példányra az adatbázis visszaállítása *előtt* . 
+Ha transzparens adattitkosítás által védett adatbázisokat  [](../../database/transparent-data-encryption-tde-overview.md)   felügyelt példányra telepít át natív visszaállítási beállítással, a megfelelő tanúsítványt a forrás SQL Server [áttelepítheti](../../managed-instance/tde-certificate-migrate.md) a célként megadott SQL felügyelt példányra az adatbázis visszaállítása *előtt* . 
 
 #### <a name="system-databases"></a>Rendszeradatbázisok
 
@@ -214,7 +214,7 @@ További segítségért tekintse meg az alábbi, a valós migrációs projektekh
 Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált adatsql ninja program részeként lettek kifejlesztve. Az adatelemzési program alapszintű alapokmánya az, hogy feloldja az összetett modernizációt, és az adatplatform-migrációs lehetőségeket a Microsoft Azure-beli adatplatformján is felgyorsítja. Ha úgy gondolja, hogy a szervezete szeretne részt venni az adatsql ninja programban, forduljon a fiókhoz, és kérje meg, hogy küldje el a jelölést.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az SQL Server Azure SQL felügyelt példányra való áttelepítésének megkezdéséhez tekintse meg a [SQL Server az SQL felügyelt példány áttelepítési Útmutatóját](sql-server-to-managed-instance-guide.md).
 

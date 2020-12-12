@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016675"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358741"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport módosítása
 
@@ -350,12 +350,12 @@ Bizonyos tulajdonságok megváltoztathatók, és az aktuális értéktől függ�
 
 - **singlePlacementGroup** – ha a singlePlacementGroup értéke TRUE (igaz), akkor előfordulhat, hogy hamis értékre módosul. Ha azonban a singlePlacementGroup hamis, akkor előfordulhat, hogy **nem** módosítható igaz értékre.
 - **alhálózat** – a méretezési csoport alhálózata akkor módosítható, ha az eredeti alhálózat és az új alhálózat ugyanabban a virtuális hálózatban van.
+- **imageReferenceSku** – a képhivatkozási SKU a támogatott Linux- [disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros), a Windows Server-/ügyfél-lemezképek és a [megtervezési információk](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties)nélkül is frissíthető. 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>A módosítás felszabadítását igénylő tulajdonságok
 Néhány tulajdonság csak akkor módosítható bizonyos értékekre, ha a méretezési csoportba tartozó virtuális gépek fel vannak szabadítva. Ezek a tulajdonságok a következők:
 
-- **SKU neve**– ha az új VIRTUÁLISGÉP-SKU nem támogatott a méretezési csoport által használt hardveren, akkor az SKU nevének módosítása előtt fel kell szabadítania a virtuális gépeket a méretezési csoportból. További információ: Azure-beli [virtuális gép átméretezése](../virtual-machines/windows/resize-vm.md).
-
+- **SKU neve**– ha az új VIRTUÁLISGÉP-SKU nem támogatott a méretezési csoport által használt hardveren, akkor az SKU nevének módosítása előtt fel kell szabadítania a virtuális gépeket a méretezési csoportból. További információ: Azure-beli [virtuális gép átméretezése](../virtual-machines/windows/resize-vm.md). 
 
 ## <a name="vm-specific-updates"></a>VM-specifikus frissítések
 Bizonyos módosítások a globális méretezési csoport tulajdonságai helyett meghatározott virtuális gépekre is alkalmazhatók. Jelenleg az egyetlen támogatott virtuálisgép-frissítés a méretezési csoportba tartozó virtuális gépekhez kapcsolódó adatlemezek csatlakoztatása/leválasztása. Ez a funkció előzetes verzióban érhető el. További információkért tekintse meg az [előzetes verzió dokumentációját](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).
@@ -450,5 +450,5 @@ Tegyük fel, hogy rendelkezik egy méretezési csoporttal Azure Load Balancerkal
 > Ezek a parancsok feltételezik, hogy a méretezési csoport csak egyetlen IP-konfigurációval és terheléselosztó-vel rendelkezik. Ha több is van, előfordulhat, hogy a *nullától* eltérő listát kell használnia.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A méretezési csoportokban általános felügyeleti feladatokat is elvégezhet az [Azure CLI](virtual-machine-scale-sets-manage-cli.md) vagy a [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md)használatával.

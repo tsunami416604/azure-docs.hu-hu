@@ -8,18 +8,18 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: f557794265f3bbf48fae97fc04e5e9b068b54f63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c545fa7d58d925dfcb9fa98b301c3bb0a20833e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540404"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358571"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Oktatóanyag: Video Indexer használata a Logic app és a Power automatizáló használatával
 
 Azure Media Services [video Indexer v2 REST API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Delete-Video?) a kiszolgálók közötti és az ügyfél és a kiszolgáló közötti kommunikációt is támogatja, és lehetővé video Indexer teszi a felhasználók számára, hogy a videó-és hangelemzéseket egyszerűen integrálják az alkalmazási logikába, új tapasztalatokat és bevételi lehetőségeket lehessen kizárni.
 
-Ahhoz, hogy az integráció még könnyebbé váljon, [Logic Apps](https://azure.microsoft.com/services/logic-apps/)támogatjuk az   API-val kompatibilis Logic apps és [automatizálási](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)   összekötőket. Az összekötők segítségével egyéni munkafolyamatokat állíthat be, amelyekkel hatékonyan indexelheti és kinyerheti a nagy mennyiségű videó-és hangfájlból származó elemzéseket anélkül, hogy egyetlen sor kódot kellene írnia. Emellett az integrációs összekötők segítségével jobb láthatóságot biztosít a munkafolyamat állapotával és a hibakereséshez.  
+Ahhoz, hogy az integráció még könnyebbé váljon, [](https://azure.microsoft.com/services/logic-apps/)támogatjuk az   API-val kompatibilis Logic apps és [automatizálási](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)   összekötőket. Az összekötők segítségével egyéni munkafolyamatokat állíthat be, amelyekkel hatékonyan indexelheti és kinyerheti a nagy mennyiségű videó-és hangfájlból származó elemzéseket anélkül, hogy egyetlen sor kódot kellene írnia. Emellett az integrációs összekötők segítségével jobb láthatóságot biztosít a munkafolyamat állapotával és a hibakereséshez.  
 
 Ha segítségre van szüksége a Video Indexer-összekötők gyors megkezdéséhez, egy példát láthat a logikai alkalmazásra és a beállítható automatizálási megoldásra. Ez az oktatóanyag bemutatja, hogyan állíthatja be a folyamatokat a Logic Apps használatával. A szerkesztők és a képességek azonban szinte azonosak mindkét megoldásban, így a diagramok és a magyarázatok egyaránt alkalmazhatók a Logic Apps és a teljesítmény automatizálására is.
 
@@ -108,7 +108,7 @@ Nyissa meg a "blob létrehozása" műveletet, és válassza ki annak a mappának
 
 Ez a kifejezés a "video index beolvasása" művelet kimenetét veszi át ebből a folyamatból. 
 
-Kattintson a **folyamat mentése**gombra. 
+Kattintson a **folyamat mentése** gombra. 
 
 A folyamat mentése után a rendszer egy HTTP POST URL-címet hoz létre az triggerben. Másolja az URL-címet az triggerből. 
 
@@ -130,9 +130,11 @@ A cikk azt is bemutatja, hogyan indexelheti a videót automatikusan úgy, hogy �
 
 Ha elkészült ezzel az Oktatóanyaggal, nyugodtan megtarthatja ezt a logikai alkalmazást, vagy automatizálhatja a megoldást, ha szükséges. Ha azonban nem szeretné megtartani ezt a futást, és nem szeretné számlázni, kapcsolja ki mindkét folyamatot, ha a Power automatizálás szolgáltatást használja. Ha Logic Apps használ, tiltsa le mindkét folyamatot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag csak egy Video Indexer összekötőt mutat be. A Video Indexer által biztosított API-hívások Video Indexer összekötőket is használhat. Például: az adatok feltöltése és lekérése, az eredmények lefordítása, a beágyazható widgetek beolvasása és a modellek testreszabása is. Ezen kívül dönthet úgy is, hogy a műveleteket különböző forrásokon, például a fájlok adattárakon vagy az elküldött e-maileken alapuló módon indítja el. Ezután megadhatja, hogy az eredmények frissítése a megfelelő infrastruktúrára vagy alkalmazásra történjen, vagy tetszőleges számú műveleti elemet állítson elő.  
 
 > [!div class="nextstepaction"]
 > [A Video Indexer API használata](video-indexer-use-apis.md)
+
+További forrásokért tekintse meg ezt a dokumentumot a [video Indexer](https://docs.microsoft.com/connectors/videoindexer-v2/) -ben.

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d50185169b22a136ce81bd3aebae235cf49498b
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6dd95fc8fd0ab0099ac7404d4ca4e4b1851f650f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436623"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359608"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Biztonságos hozzáférés az adatokhoz az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,7 +69,7 @@ Az alábbi mintakód azt szemlélteti, hogyan használható a Azure Cosmos DB fi
 Az erőforrás-tokenek hozzáférést biztosítanak az adatbázison belüli alkalmazás-erőforrásokhoz. Erőforrás-tokenek:
 
 - Hozzáférés biztosítása bizonyos tárolók, partíciós kulcsok, dokumentumok, mellékletek, tárolt eljárások, eseményindítók és UDF számára.
-- Akkor jön létre, [user](#users) amikor egy felhasználó [engedélyt kap egy](#permissions) adott erőforráshoz.
+- Akkor jön létre, [](#users) amikor egy felhasználó [engedélyt kap egy](#permissions) adott erőforráshoz.
 - Akkor jön létre újra, amikor egy engedélyezési erőforrást POST, GET vagy PUT hívás után végeznek el.
 - Használjon olyan kivonatoló erőforrás-tokent, amelyet kifejezetten a felhasználóhoz, erőforráshoz és engedélyhez alakítottak ki.
 - Az idő egy testreszabható érvényességi időtartammal van kötve. Az alapértelmezett érvényes időtartomány egy óra. A jogkivonat élettartama azonban explicit módon megadható, legfeljebb öt órára.
@@ -95,7 +95,7 @@ Cosmos DB erőforrás-tokenek olyan biztonságos alternatívát biztosítanak, a
 
 Az erőforrás-jogkivonat létrehozását és felügyeletét a natív Cosmos DB ügyféloldali kódtárak kezelik. Ha azonban a REST-t használja, a kérelem/hitelesítés fejléceket kell létrehoznia. A REST-alapú hitelesítési fejlécek létrehozásával kapcsolatos további információkért lásd: [Access Control Cosmos db erőforrásokon](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) vagy a [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) -hoz vagy a [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)-hoz tartozó forráskódhoz.
 
-Az erőforrás-tokenek létrehozásához vagy közvetítéséhez használt középső rétegű szolgáltatásra például a [ResourceTokenBroker alkalmazásban](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)talál példát.
+Az erőforrás-tokenek létrehozásához vagy közvetítéséhez használt középső rétegű szolgáltatásra például a [ResourceTokenBroker alkalmazásban](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)talál példát.
 
 ## <a name="users"></a>Felhasználók<a id="users"></a>
 
@@ -173,7 +173,7 @@ Adatbázis-szolgáltatásként a Azure Cosmos DB lehetővé teszi az adatbázisb
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Cosmos Database biztonságáról: [Cosmos db adatbázis-biztonság](database-security.md).
 - A Azure Cosmos DB engedélyezési jogkivonatok létrehozásával kapcsolatos további információkért lásd: [Access Control Azure Cosmos db erőforrásokon](/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

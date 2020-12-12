@@ -4,16 +4,16 @@ description: Ez a cikk az Azure Blob Storage-ból származó Blobok letöltésé
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0a2490a104d18f77a0ec326933f463eb4ebb4339
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ea8300447b9aa596e8678038982771263a4c76f6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923958"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358775"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>Blobok letöltése az Azure Blob Storage-ból az AzCopy v10 használatával
 
@@ -113,9 +113,11 @@ A blobokat a lehetőség használatával is kizárhatja `--exclude-pattern` . To
 
 A `--include-pattern` és a `--exclude-pattern` beállítások csak a Blobok nevére érvényesek, nem az elérési útra.  Ha a címtár fájában található összes szövegfájlt (blobot) szeretné másolni, akkor a `–recursive` teljes könyvtár fájának beolvasásához használja a parancsot, majd a `–include-pattern` és a érték megadásával töltse le az `*.txt` összes szövegfájlt.
 
-#### <a name="download-blobs-that-were-modified-after-a-date-and-time"></a>A dátum és idő után módosított Blobok letöltése 
+#### <a name="download-blobs-that-were-modified-before-or-after-a-date-and-time"></a>A dátum és idő előtt vagy után módosított Blobok letöltése 
 
-Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-after` kapcsolóval. A dátumot és az időt ISO-8601 formátumban kell megadni (például: `2020-08-19T15:04:00Z` ). 
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-before` vagy a `--include-after` kapcsolóval. A dátumot és az időt ISO-8601 formátumban kell megadni (például: `2020-08-19T15:04:00Z` ). 
+
+A következő példák a megadott dátumon vagy azt követően módosított fájlokat töltenek le.
 
 |    |     |
 |--------|-----------|
@@ -168,9 +170,9 @@ A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-copy.md
 
 További példákat a következő cikkekben talál:
 
-- [Példák: feltöltés](storage-use-azcopy-blobs-upload.md)
+- [Példák: Feltöltés](storage-use-azcopy-blobs-upload.md)
 - [Példák: másolás a fiók között](storage-use-azcopy-blobs-copy.md)
-- [Példák: szinkronizálás](storage-use-azcopy-blobs-synchronize.md)
+- [Példák: Szinkronizálás](storage-use-azcopy-blobs-synchronize.md)
 - [Példák: Amazon S3-gyűjtők](storage-use-azcopy-s3.md)
 - [Példák: Azure Files](storage-use-azcopy-files.md)
 - [Oktatóanyag: Helyszíni adatok migrálása felhőtárhelybe az AzCopyval](storage-use-azcopy-migrate-on-premises-data.md)

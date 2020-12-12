@@ -7,16 +7,17 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 31ad9450c775e5e4e7ae543241b48f8c372ad9ee
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 7713b7596b21e02e941a19f64d3658ab0f5f51f5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749264"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359013"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Oktatóanyag: WordPress-alkalmazás üzembe helyezése az AK-ban Azure Database for MySQL-rugalmas kiszolgálóval
 
-Ebben a rövid útmutatóban egy WordPress-alkalmazást helyez üzembe az Azure Kubernetes Service (ak) fürtön Azure Database for MySQL rugalmas kiszolgálóval (előzetes verzió) az Azure CLI használatával. Az [AK](../../aks/intro-kubernetes.md) egy felügyelt Kubernetes szolgáltatás, amely lehetővé teszi fürtök gyors üzembe helyezését és kezelését. [Azure Database for MySQL – a rugalmas kiszolgáló (előzetes verzió)](overview.md) egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb szabályozást és rugalmasságot biztosít az adatbázis-felügyeleti funkciók és a konfigurációs beállítások használatával. Jelenleg a rugalmas kiszolgáló előzetes verzióban érhető el.
+Ebben a rövid útmutatóban egy WordPress-alkalmazást helyez üzembe az Azure Kubernetes Service (ak) fürtön Azure Database for MySQL rugalmas kiszolgálóval (előzetes verzió) az Azure CLI használatával. 
+Az **[AK](../../aks/intro-kubernetes.md)** egy felügyelt Kubernetes szolgáltatás, amely lehetővé teszi fürtök gyors üzembe helyezését és kezelését. **[Azure Database for MySQL – a rugalmas kiszolgáló (előzetes verzió)](overview.md)** egy teljes körűen felügyelt adatbázis-szolgáltatás, amely részletesebb szabályozást és rugalmasságot biztosít az adatbázis-felügyeleti funkciók és a konfigurációs beállítások használatával. Jelenleg a rugalmas kiszolgáló előzetes verzióban érhető el.
 
 > [!NOTE]
 > - Azure Database for MySQL rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el
@@ -115,7 +116,7 @@ A létrehozott kiszolgáló az alábbi attribútumokkal rendelkezik:
 - Mivel a parancs helyi környezetet használ, létrehozza a kiszolgálót az erőforráscsoporthoz ```wordpress-project``` és a régióban ```eastus``` .
 
 
-## <a name="build-your-wordpress-docker-image"></a>WordPress Docker-rendszerkép összeállítása
+### <a name="build-your-wordpress-docker-image"></a>WordPress Docker-rendszerkép összeállítása
 
 Töltse le a [legújabb WordPress](https://wordpress.org/download/) -verziót. Hozzon létre új könyvtárat ```my-wordpress-app``` a projekthez, és használja ezt az egyszerű mappastruktúrát
 
@@ -173,6 +174,7 @@ define('DB_COLLATE', '');
 define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 ```
 
+### <a name="create-a-dockerfile"></a>Dockerfile létrehozása
 Hozzon létre egy új Docker, és másolja a kódrészletet. Ez a Docker az Apache webkiszolgáló PHP-vel való beállításával és a mysqli-bővítmény engedélyezésével foglalkozik.
 
 ```docker
@@ -182,12 +184,12 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-enable mysqli
 ```
 
-## <a name="build-your-docker-image"></a>A Docker-rendszerkép összeállítása
-Győződjön meg arról, hogy a ```my-wordpress-app``` parancs használatával a terminálban van a könyvtárban ```cd``` . Futtassa a következő parancsot a hirdetőtábla rendszerképének összeállításához:
+### <a name="build-your-docker-image"></a>A Docker-rendszerkép összeállítása
+Győződjön meg arról, hogy a ```my-wordpress-app``` parancs használatával a terminálban van a könyvtárban ```cd``` . A rendszerkép létrehozásához futtassa a következő parancsot:
 
 ``` bash
 
-docker build --tag myblog:latest . 
+docker build --tag myblog:latest .
 
 ```
 
@@ -273,8 +275,6 @@ A következő példa kimenete a sikeresen létrehozott központi telepítéseket
 ```output
 deployment "wordpress-blog" created
 service "php-svc" created
-deployment "azure-vote-front" created
-service "php-svc" created
 ```
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
@@ -321,7 +321,7 @@ az group delete --name wordpress-project --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését](../../aks/kubernetes-service-principal.md#additional-considerations) ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [érheti el a Kubernetes webes irányítópultját](../../aks/kubernetes-dashboard.md) az AK-fürthöz
 - Ismerje meg, hogyan [méretezheti a fürtöt](../../aks/tutorial-kubernetes-scale.md)

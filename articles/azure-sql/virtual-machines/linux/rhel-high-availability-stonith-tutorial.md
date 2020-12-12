@@ -2,18 +2,17 @@
 title: Rendelkezésre állási SQL Server csoportok konfigurálása a RHEL virtuális gépekhez az Azure-ban – Linux Virtual machines | Microsoft Docs
 description: Ismerkedjen meg a magas rendelkezésre állás beállításával egy RHEL-fürt környezetében, és állítsa be a STONITH
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 8e7ccacce732da4a0194af959abe94438451028a
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 74dd14298b3c1cc72e72de9b4abcee8a9c2d9c37
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559048"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359676"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoportok konfigurálása az Azure-beli virtuális gépek RHEL SQL Server 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ez az oktatóanyag az Azure CLI használatával helyezi üzembe az erőforrásokat az Azure-ban.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -488,7 +487,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  2. Nyissa meg a [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)panelt. Válassza a tulajdonságok lehetőséget, és jegyezze fel a címtár-azonosítót. Ez a `tenant ID`
  3. Kattintson [ **Alkalmazásregisztrációk**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. Kattintson az **új regisztráció** elemre.
- 5. Adjon meg **Name** egy nevet `<resourceGroupName>-app` , például **: válassza a fiókok ebben a szervezeti címtárban** lehetőséget.
+ 5. Adjon meg  egy nevet `<resourceGroupName>-app` , például **: válassza a fiókok ebben a szervezeti címtárban** lehetőséget.
  6. Válassza az alkalmazás típusa **web** lehetőséget, írja be a bejelentkezési URL-címet (például http://localhost) kattintson a Hozzáadás gombra. A bejelentkezési URL-cím nincs használatban, és bármely érvényes URL-cím lehet. Ha elkészült, kattintson a **regisztráció** gombra.
  7. Válassza ki a **tanúsítványokat és a titkokat** az új alkalmazás regisztrálásához, majd kattintson az **új ügyfél titka** elemre.
  8. Adja meg az új kulcs leírását (ügyfél titkos kulcsa), válassza a **soha nem jár le** lehetőséget, majd kattintson a **Hozzáadás** gombra.
@@ -1244,7 +1243,7 @@ Node: <VM3> fenced
 ```
 A kerítések eszközének tesztelésével kapcsolatos további információkért tekintse meg a következő [Red Hat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar) cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a rendelkezésre állási csoport figyelőjét szeretné használni a SQL Server példányaihoz, létre kell hoznia és konfigurálnia kell egy Load balancert.
 

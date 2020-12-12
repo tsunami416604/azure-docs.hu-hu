@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094455"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359081"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>SQL Server always on rendelkezésre állási csoport konfigurálása különböző Azure-régiók között
 
@@ -113,7 +114,7 @@ Ha egy távoli adatközpontban szeretne replikát létrehozni, hajtsa végre a k
 
 1. Adjon hozzá egy IP-cím erőforrást a fürt rendelkezésre állási csoport szerepköréhez. 
 
-   Kattintson a jobb gombbal a rendelkezésre állási csoport szerepkörre a Feladatátvevőfürt-kezelőban, majd válassza az **erőforrás hozzáadása** , **További erőforrások** , majd az **IP-cím** lehetőséget.
+   Kattintson a jobb gombbal a rendelkezésre állási csoport szerepkörre a Feladatátvevőfürt-kezelőban, majd válassza az **erőforrás hozzáadása**, **További erőforrások**, majd az **IP-cím** lehetőséget.
 
    ![IP-cím létrehozása](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
 
@@ -170,7 +171,7 @@ Ha nem tudja módosítani a kapcsolatok karakterláncait, beállíthatja a névf
 Ha tesztelni szeretné a figyelőt a távoli régióval, feladatátvételt hajthat végre a távoli régióban. Amíg a replika aszinkron, a feladatátvétel sebezhető a lehetséges adatvesztéssel szemben. Az adatvesztés nélküli feladatátvételhez módosítsa a rendelkezésre állási módot szinkron értékre, és állítsa a feladatátvételi módot automatikusra. Ehhez a következő lépések szükségesek:
 
 1. **Object Explorer** az elsődleges replikát futtató SQL Server példányához kapcsolódjon.
-1. A **AlwaysOn rendelkezésre állási csoportok** , **rendelkezésre állási csoportok** területen kattintson a jobb gombbal a rendelkezésre állási csoportra, és válassza a **Tulajdonságok** lehetőséget.
+1. A **AlwaysOn rendelkezésre állási csoportok**, **rendelkezésre állási csoportok** területen kattintson a jobb gombbal a rendelkezésre állási csoportra, és válassza a **Tulajdonságok** lehetőséget.
 1. Az **általános** lapon, a **rendelkezésre állási replikák** területen állítsa a Dr hely másodlagos replikáját **szinkron véglegesítő** rendelkezésre állási mód és **automatikus** feladatátvételi mód használatára.
 1. Ha a magas rendelkezésre állás érdekében az elsődleges replikával azonos helyen található másodlagos replika, állítsa ezt a replikát **aszinkron véglegesítés** és **manuális** értékre.
 1. Kattintson az OK gombra.

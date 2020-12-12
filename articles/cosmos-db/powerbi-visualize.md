@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3b47c7e8f31b51d51f5fad20cc068debb1dc2927
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339733"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359863"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatok vizualizációja a Power BI-összekötő használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -32,7 +32,7 @@ Az Power BI oktatóanyag utasításait követve ellenőrizze, hogy rendelkezik-e
 
 * [Töltse le a Power bi Desktop legújabb verzióját](https://powerbi.microsoft.com/desktop).
 
-* Töltse le a [minta vulkán adatait](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) a githubról.
+* Töltse le a [minta vulkán adatait](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/main/SampleData/VolcanoData.json) a githubról.
 
 * [Hozzon létre egy Azure Cosmos Database-fiókot](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) , és importálja a vulkáni adataikat a [Azure Cosmos db adatáttelepítési eszköz](import-data.md)használatával. Az adatimportálás során vegye figyelembe az alábbi beállításokat a forrás és a célhelyek számára az adatáttelepítési eszközben:
 
@@ -76,17 +76,17 @@ A vulkáni adatok beolvasása a Azure Cosmos DB-fiókból, és az adatok megjele
 
 1. Power BI Desktop futtatása.
 
-2. **Lekérheti az adatait** , megtekintheti a **legutóbbi forrásokat** , vagy **megnyithatja az egyéb jelentéseket** közvetlenül az üdvözlőképernyőn. A képernyő bezárásához kattintson a jobb felső sarokban található "X" elemre. Megjelenik a Power BI Desktop **jelentés** nézete.
+2. **Lekérheti az adatait**, megtekintheti a **legutóbbi forrásokat**, vagy **megnyithatja az egyéb jelentéseket** közvetlenül az üdvözlőképernyőn. A képernyő bezárásához kattintson a jobb felső sarokban található "X" elemre. Megjelenik a Power BI Desktop **jelentés** nézete.
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Power BI Desktop jelentés nézet – Power BI-összekötő":::
 
 3. Válassza ki a **Kezdőlap** menüszalagot, majd kattintson az **adatlekérdezés** elemre.  Az **adatlekérdezés** ablaknak meg kell jelennie.
 
-4. Kattintson az **Azure** -ra, válassza a **Azure Cosmos db (bétaverzió)** lehetőséget, majd kattintson a **kapcsolat** gombra. 
+4. Kattintson az **Azure**-ra, válassza a **Azure Cosmos db (bétaverzió)** lehetőséget, majd kattintson a **kapcsolat** gombra. 
 
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Az adatPower BI-összekötő Power BI Desktop beolvasása":::
 
-5. Az **előnézeti összekötő** lapon kattintson a **Continue (folytatás** ) gombra. Megjelenik a **Azure Cosmos db** ablak.
+5. Az **előnézeti összekötő** lapon kattintson a **Continue (folytatás**) gombra. Megjelenik a **Azure Cosmos db** ablak.
 
 6. Adja meg azt a Azure Cosmos DB-fiók végpontjának URL-címét, amelyet az alább látható módon szeretne beolvasni az adatokból, majd kattintson **az OK** gombra. Ha saját fiókját szeretné használni, az URL-címet a Azure Portal **kulcsok** paneljének URI mezőjéből kérheti le. Opcionálisan megadhatja az adatbázis nevét, a gyűjtemény nevét, vagy a navigátor használatával kiválaszthatja az adatbázist és a gyűjteményt annak meghatározásához, hogy az adatok honnan származnak.
    
@@ -225,6 +225,6 @@ For a scheduled refresh, do the following.
 5. Expand **Schedule Refresh** and set up the schedule you want to refresh the dataset. 
 6. Click **Apply** and you are done setting up the scheduled refresh.
 -->
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a Power BIről: a [Power bi első lépései](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 * Ha többet szeretne megtudni a Azure Cosmos DBről, tekintse meg a [Azure Cosmos db dokumentáció kezdőlapját](https://azure.microsoft.com/documentation/services/cosmos-db/).

@@ -1,5 +1,5 @@
 ---
-title: SQL Server a felügyelt SQL-példányhoz – áttelepítési útmutató
+title: 'SQL Server a felügyelt SQL-példányhoz: áttelepítési útmutató'
 description: Kövesse ezt az útmutatót, ha át szeretné telepíteni SQL Server adatbázisait az Azure SQL felügyelt példányára.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5d5404537ad107a54bd32110727e5a7d0f74ebea
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ac8b0e0c2cdbd46626677f4be0f78800d839ad28
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326896"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358894"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Áttelepítési útmutató: SQL Server a felügyelt SQL-példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ Azt is megteheti, hogy a [Microsoft Assessment and Planning Toolkit (a "Map To
 
 További információ a felderítési fázishoz használható eszközökről: az [adatáttelepítési forgatókönyvekhez elérhető szolgáltatások és eszközök](../../../dms/dms-tools-matrix.md). 
 
-### <a name="assess"></a>Értékelés 
+### <a name="assess"></a>Kiértékelés 
 
 Az adatforrások felderítése után mérje fel azokat a helyszíni SQL Server-példányokat, amelyek áttelepíthetők az Azure SQL felügyelt példányaira az áttelepítési blokkolók vagy kompatibilitási problémák azonosításához. 
 
@@ -102,7 +102,7 @@ Ha össze kell hasonlítani a számítási feladatok teljesítményét egy SQL f
 A felderítési és felmérési fázisban található információk alapján hozzon létre egy megfelelő méretű SQL felügyelt példányt. Ezt a [Azure Portal](../../managed-instance/instance-create-quickstart.md), a [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)vagy egy [Azure Resource Manager (ARM) sablon](../../managed-instance/create-template-quickstart.md)használatával teheti meg. 
 
 
-## <a name="migrate"></a>Migrálás
+## <a name="migrate"></a>Migrate
 
 Az áttelepítés előtti fázishoz kapcsolódó feladatok elvégzése után készen áll a séma és az adatok áttelepítésére. 
 
@@ -210,7 +210,7 @@ Az adatbázis-áttelepítés tesztelési módszere a következő tevékenységek
 Néhány SQL Server funkció csak akkor érhető el, ha az [adatbázis kompatibilitási szintje](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) a legújabb kompatibilitási szintre módosul (150). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egyik mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, lásd: [szolgáltatás és eszközök az adatok áttelepítéséhez](../../../dms/dms-tools-matrix.md).
 

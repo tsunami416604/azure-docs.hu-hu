@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
+ms.subservice: deployment
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
@@ -14,12 +15,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ca632a643215b689a9bbb825959e5c5c052d73cb
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 7914f924492264810acd929cc7d422e0cc780a89
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326063"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358792"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Windows rendszerű virtuális gép kiépítése a Azure Portal használatával SQL Server
 
@@ -32,7 +33,7 @@ Az útmutató segítségével saját SQL Server VM hozhat létre. Vagy használj
 > [!TIP]
 > Ha kérdése van az SQL Servert futtató virtuális gépek használatával kapcsolatban, tekintse meg a [gyakori kérdéseket](frequently-asked-questions-faq.md).
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a> SQL Server virtuálisgép-katalógus rendszerképei
 
@@ -282,6 +283,6 @@ Az alábbi fejezetek bemutatják, hogyan csatlakozhat az interneten keresztül a
   > Ez a példa a Common 1433-as portot használja. Ezt az értéket azonban módosítani kell, ha egy másik portot (például 1401) adott meg a SQL Server VM telepítése során. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az SQL Server használatáról az Azure-ban: [SQL Server on Azure Virtual Machines](sql-server-on-azure-vm-iaas-what-is-overview.md) (SQL Server az Azure virtuális gépeken) és [Frequently Asked Questions](frequently-asked-questions-faq.md) (Gyakran ismételt kérdések).

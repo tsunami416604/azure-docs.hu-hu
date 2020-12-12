@@ -6,19 +6,19 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: 012df825f38d292d0b0549701ad90334e3e30bb0
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 2dd60d1962734f7a4264587fd1b5b0d2a03c9ff0
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637013"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359744"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 A mai alkalmazásoknak alacsony válaszidővel kell rendelkezniük, és mindig elérhetőnek kell lenniük a hálózaton keresztül. A kis késés és a magas rendelkezésre állás elérése érdekében ezeknek az alkalmazásoknak a példányait a felhasználókhoz közel lévő adatközpontokban kell üzembe helyezni. Az alkalmazásoknak valós időben kell válaszolniuk a használat csúcsidőszakokban tapasztalható nagy változásaira, valamint egyre nagyobb mennyiségű adatot kell tárolniuk, és ezeket az adatokat ezredmásodpercek alatt kell elérhetővé tenniük a felhasználók számára.
 
-A Azure Cosmos DB egy teljes körűen felügyelt NoSQL-adatbázis a modern alkalmazások fejlesztéséhez. Egyszámjegyű ezredmásodperces válaszidő, az automatikus és az azonnali méretezhetőség, a garantált sebesség bármilyen méretben. Az üzletmenet folytonossága garantált [SLA-alapú](https://azure.microsoft.com/support/legal/sla/cosmos-db) rendelkezésre állással és nagyvállalati szintű biztonsággal. Az alkalmazásfejlesztés gyorsabb és termelékenyebb, köszönhetően a világ minden pontján elérhető, nyílt forráskódú API-k és SDK-k népszerű nyelvekhez. Teljes körűen felügyelt szolgáltatásként Azure Cosmos DB az adatbázis-felügyeletet az automatikus felügyelettel, frissítésekkel és javításokkal végzi. Emellett a kapacitások felügyeletét is a költséghatékony kiszolgáló nélküli és automatikus skálázási lehetőségekkel kezeli, amelyek az alkalmazásra reagálva kielégítik a kapacitást az igényeknek megfelelően.
+A Azure Cosmos DB egy teljes körűen felügyelt NoSQL-adatbázis a modern alkalmazások fejlesztéséhez. Egyszámjegyű ezredmásodperces válaszidő, az automatikus és az azonnali méretezhetőség, a garantált sebesség bármilyen méretben. Az üzletmenet folytonossága garantált [SLA-alapú](https://azure.microsoft.com/support/legal/sla/cosmos-db) rendelkezésre állással és nagyvállalati szintű biztonsággal. Az alkalmazásfejlesztés gyorsabb és termelékenyebb, köszönhetően a világ bármely pontján elérhető, nyílt forráskódú API-k és SDK-k népszerű nyelvekhez Teljes körűen felügyelt szolgáltatásként Azure Cosmos DB az adatbázis-felügyeletet az automatikus felügyelettel, frissítésekkel és javításokkal végzi. Emellett a kapacitások felügyeletét is a költséghatékony kiszolgáló nélküli és automatikus skálázási lehetőségekkel kezeli, amelyek az alkalmazásra reagálva kielégítik a kapacitást az igényeknek megfelelően.
 
 Ha ingyenes Azure-előfizetéssel, díjmentesen, vagy a [Azure Cosmos db ingyenes](optimize-dev-test.md#azure-cosmos-db-free-tier) szinten szeretné [kipróbálni a Azure Cosmos DBT](https://azure.microsoft.com/try/cosmosdb/) , akkor az első 400 ru/s és 5 GB tárhellyel rendelkező fiókot is igénybe veheti.
 
@@ -70,7 +70,7 @@ Végpontok közötti adatbázis-kezelés, kiszolgáló nélküli és automatikus
 
 Az olyan [webes, mobil-, játék-és IoT-alkalmazások](use-cases.md) , amelyek nagy mennyiségű adatot, olvasási és írási műveleteket igényelnek [globális szinten](distribute-data-globally.md) , a különböző adatokhoz közel valós válaszidő esetén, Cosmos db [garantált magas rendelkezésre állást](https://azure.microsoft.com/support/legal/sla/cosmos-db/), magas átviteli sebességet, kis késést és hangolt konzisztenciát biztosítanak. Ismerje meg, hogyan használhatók a Azure Cosmos DB a [IoT és a telematika](use-cases.md#iot-and-telematics), a [kiskereskedelmi és a marketing](use-cases.md#retail-and-marketing), a [játékok](use-cases.md#gaming) és a [webes és mobil alkalmazások](use-cases.md#web-and-mobile-applications)létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi rövid útmutatókkal könnyedén elkezdheti az Azure Cosmos DB használatát:
 

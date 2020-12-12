@@ -8,6 +8,7 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -15,12 +16,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 57e9c82e5685171cff994aca7985f6a4211f00e7
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: bd58f18959df3aa290083f907be8ab703366a7c6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327287"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360101"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Az Azure-beli virtuális gépek SQL Server díjszabási útmutatója
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -165,7 +166,7 @@ Más munkafolyamatok esetében érdemes lehet az Azure-beli virtuális gépek au
 > [!IMPORTANT]
 > A költségek elkerülése érdekében a virtuális gép leállítása és felszabadítása az egyetlen módszer. A virtuális gép leállításához szükséges energiaellátási beállítások egyszerűen leállíthatók, és a használati díjak is megmaradnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure díjszabásával kapcsolatos általános útmutatóért lásd: a [váratlan költségek megelőzése az Azure-számlázással és a költségek kezelésével](../../../cost-management-billing/cost-management-billing-overview.md). A legújabb Azure Virtual Machines díjszabását, beleértve a SQL Servert is, tekintse meg a [Windows rendszerű virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) és a [Linux virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)Azure Virtual Machines díjszabási oldalát.
 

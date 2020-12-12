@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -13,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bb80abc35aedcdf0b46cefa279e477739cf1df6b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 957e458bf21eb4a95b1faba1daf0459271648310
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789794"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358690"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server VM futtatása egy dedikált Azure-gazdagépen 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,8 +37,8 @@ Az [Azure dedikált gazdagép](../../../virtual-machines/dedicated-hosts.md) oly
 
 Két különböző licencelési lehetőség közül választhat, ha a SQL Server VM egy Azure dedikált gazdagépen helyezi el. 
 
-  - **SQL virtuális gép licencelése** : Ez a meglévő licencelési lehetőség, ahol egyenként kell fizetnie az egyes SQL Server VM licencekhez. 
-  - **Dedikált gazdagép licencelése** : az Azure dedikált gazdagéphez elérhető új licencelési modell, ahol a SQL Server licencek a gazdagép szintjén vannak csomagolva és fizetve. 
+  - **SQL virtuális gép licencelése**: Ez a meglévő licencelési lehetőség, ahol egyenként kell fizetnie az egyes SQL Server VM licencekhez. 
+  - **Dedikált gazdagép licencelése**: az Azure dedikált gazdagéphez elérhető új licencelési modell, ahol a SQL Server licencek a gazdagép szintjén vannak csomagolva és fizetve. 
 
 
 A meglévő SQL Server licencek használatára vonatkozó gazdagép-szintű beállítások: 
@@ -72,7 +73,7 @@ A: a meglévő Windows Server-és SQL Server-licencek értékét frissítési ga
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkat az következő cikkekben talál: 
+További információért tekintse át a következő cikkeket: 
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)

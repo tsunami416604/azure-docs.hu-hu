@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 194c6a5cead400e1bac78ba42cb7238b64bd3b7b
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: dbe5fba838e7c4ad9487a29889eab11d4e42671f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327474"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358930"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Üzletmenet-folytonosság és HADR az Azure-ban SQL Server Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -84,9 +85,20 @@ Az Azure Blob Storage szolgáltatással a rendelkezésre állási csoportok, az 
 
 Ha rendelkezik frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3), hibrid vész-helyreállítási (Dr) terveket is alkalmazhat SQL Server a passzív vész-helyreállítási példányra vonatkozó további licencelési költségek nélkül.
 
-A következő ábrán a telepítő az Azure virtuális gépen futó SQL Server futtat, amely 12 magot használ a helyszíni SQL Server üzembe helyezéséhez, amely 12 magot használ. A múltban az SQL Server 12 maggal kell rendelkeznie a helyszíni telepítéshez és az Azure Virtual Machines üzemelő példányához. Az új előny passzív replika előnyöket kínál az Azure-beli virtuális gépeken való futtatáshoz. Most csak a helyszínen futó SQL Server 12 magot kell használnia, amennyiben az Virtual Machines Azure-beli passzív replika vész-helyreállítási feltételei teljesülnek.
+Használhat például egy aktív elsődleges helyszíni és egy ingyenes passzív másodlagos for DR-t az Azure-ban: 
 
-![Ingyenes vész-helyreállítási replika az Azure-ban](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/free-dr-replica-azure.png)
+![Ingyenes másodlagos passzív az Azure-ban](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-secondary-in-azure.png)
+
+Az előző képen a telepítő SQL Server futtat egy Azure-beli virtuális gépen, amely 12 magot használ vész-helyreállítási replikáként egy 12 magot használó helyszíni SQL Server üzembe helyezéshez. A múltban az SQL Server 12 maggal kell rendelkeznie a helyszíni telepítéshez és az Azure Virtual Machines üzemelő példányához. Az új előny passzív replika előnyöket kínál az Azure-beli virtuális gépeken való futtatáshoz. Most csak a helyszínen futó SQL Server 12 magot kell használnia, amennyiben az Virtual Machines Azure-beli passzív replika vész-helyreállítási feltételei teljesülnek.
+
+Két szabad passzív formátumú másodlagos zónák is rendelkezhet, ha mindhárom replikát az Azure-ban üzemeltetik: 
+
+![Két ingyenes passzív, ha minden az Azure-ban](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
+
+Vagy beállíthat egy hibrid feladatátvételi környezetet is, amely egy licenccel rendelkező elsődleges helyszíni, egy ingyenes passzív, HA pedig két szabad passzív a DR: 
+
+![Három szabad passzív, ha a környezet hibrid egy elsődleges helyszíni replikával](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
+
 
 További információkért tekintse meg a [termék licencelési feltételeit](https://www.microsoft.com/licensing/product-licensing/products). 
 
@@ -160,6 +172,6 @@ A Geo-replikáció az Azure-lemezeken nem támogatja ugyanazon adatbázis adatf�
 
 Ha nem szeretné letiltani a Geo-replikációt a Storage-fiókon, akkor az adatbázis összes adatfájlját és naplófájlját egy adott lemezen tárolja. Ha az adatbázis mérete miatt egynél több lemezt kell használnia, a korábban felsorolt vész-helyreállítási megoldások egyikét kell telepítenie az adatredundancia biztosítása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Döntse el, hogy egy [rendelkezésre állási csoport](availability-group-overview.md) vagy egy [feladatátvevő fürt példánya](failover-cluster-instance-overview.md) a legjobb üzletmenet-folytonossági megoldás-e a vállalat számára. Ezután tekintse át az [ajánlott eljárásokat](hadr-cluster-best-practices.md) a környezet konfigurálásához a magas rendelkezésre állás és a vész-helyreállítás érdekében.

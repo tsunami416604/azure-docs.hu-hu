@@ -4,15 +4,15 @@ description: Azure Active Directory (Azure AD) segítségével hitelesítő adat
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b13b5e1e27e9717066ff8f1aa8e245e8d9f54bbb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498115"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360288"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>A Blobok hozzáférésének engedélyezése a AzCopy és a Azure Active Directory (Azure AD) használatával
 
@@ -73,7 +73,7 @@ Ez a parancs egy hitelesítő kódot és egy webhely URL-címét adja vissza. Ny
 
 Ekkor megjelenik egy bejelentkezési ablak. Ebben az ablakban jelentkezzen be az Azure-fiókjába az Azure-fiókja hitelesítő adataival. Miután sikeresen bejelentkezett, lezárhatja a böngészőablakot, és megkezdheti a AzCopy használatát.
 
-<a id="service-principal"></a>
+<a id="managed-identity"></a>
 
 ## <a name="authorize-a-managed-identity"></a>Felügyelt identitás engedélyezése
 
@@ -116,6 +116,8 @@ azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
 Cserélje le a `<resource-id>` helyőrzőt a felhasználó által hozzárendelt felügyelt identitás erőforrás-azonosítójával.
+
+<a id="service-principal"></a>
 
 ## <a name="authorize-a-service-principal"></a>Egyszerű szolgáltatásnév engedélyezése
 
@@ -181,10 +183,115 @@ Cserélje le a `<path-to-certificate-file>` helyőrzőt a tanúsítványfájl re
 > [!NOTE]
 > Érdemes lehet egy parancssort használni, ahogy az ebben a példában is látható. Így a jelszó nem jelenik meg a konzolon a parancs előzményeiben. 
 
-<a id="managed-identity"></a>
+## <a name="authorize-without-a-keyring-linux"></a>Engedélyezés kulcstartó nélkül (Linux)
 
+Ha az operációs rendszer nem rendelkezik titkos tárolóval (például *kulcstartóval*), a `azcopy login` parancs nem fog működni. Ehelyett a memóriában tárolt környezeti változók is megadhatók az egyes műveletek futtatása előtt. Ezek az értékek a művelet befejeződése után eltűnnek a memóriából, ezért ezeket a változókat minden alkalommal be kell állítania, amikor egy azcopy-parancsot futtat.
 
-## <a name="next-steps"></a>További lépések
+### <a name="authorize-a-user-identity"></a>Felhasználói identitás engedélyezése
+
+Miután meggyőződött arról, hogy a felhasználói identitás megkapta a szükséges engedélyezési szintet, írja be a következő parancsot, majd nyomja le az ENTER billentyűt.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=DEVICE
+```
+
+Ezután futtasson bármely azcopy-parancsot (például: `azcopy list https://contoso.blob.core.windows.net` ).
+
+Ez a parancs egy hitelesítő kódot és egy webhely URL-címét adja vissza. Nyissa meg a webhelyet, adja meg a kódot, majd válassza a **tovább** gombot.
+
+![Tároló létrehozása](media/storage-use-azcopy-v10/azcopy-login.png)
+
+Ekkor megjelenik egy bejelentkezési ablak. Ebben az ablakban jelentkezzen be az Azure-fiókjába az Azure-fiókja hitelesítő adataival. A sikeres bejelentkezést követően a művelet elvégezhető.
+
+### <a name="authorize-by-using-a-system-wide-managed-identity"></a>Engedélyezés a rendszerszintű felügyelt identitás használatával
+
+Először is győződjön meg arról, hogy engedélyezte a rendszerszintű felügyelt identitást a virtuális gépen. Tekintse meg a [rendszer által hozzárendelt felügyelt identitást](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity).
+
+Írja be a következő parancsot, majd nyomja le az ENTER billentyűt.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+Ezután futtasson bármely azcopy-parancsot (például: `azcopy list https://contoso.blob.core.windows.net` ).
+
+### <a name="authorize-by-using-a-user-assigned-managed-identity"></a>Engedélyezés felhasználó által hozzárendelt felügyelt identitás használatával
+
+Először is győződjön meg arról, hogy engedélyezte a felhasználó által hozzárendelt felügyelt identitást a virtuális gépen. Tekintse meg a [felhasználó által hozzárendelt felügyelt identitást](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity).
+
+Írja be a következő parancsot, majd nyomja le az ENTER billentyűt.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+Ezután írja be a következő parancsok bármelyikét, majd nyomja le az ENTER billentyűt.
+
+```bash
+export AZCOPY_MSI_CLIENT_ID=<client-id>
+```
+
+Cserélje le a `<client-id>` helyőrzőt a felhasználó által hozzárendelt felügyelt identitás ügyfél-azonosítójával.
+
+```bash
+export AZCOPY_MSI_OBJECT_ID=<object-id>
+```
+
+Cserélje le a `<object-id>` helyőrzőt a felhasználó által hozzárendelt felügyelt identitás objektum-azonosítójával.
+
+```bash
+export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
+```
+
+Cserélje le a `<resource-id>` helyőrzőt a felhasználó által hozzárendelt felügyelt identitás erőforrás-azonosítójával.
+
+A változók beállítása után bármilyen azcopy parancsot futtathat (például: `azcopy list https://contoso.blob.core.windows.net` ).
+
+### <a name="authorize-a-service-principal"></a>Egyszerű szolgáltatásnév engedélyezése
+
+A szkript futtatása előtt legalább egy alkalommal be kell jelentkeznie, hogy AzCopy biztosítson az egyszerű szolgáltatásnév hitelesítő adataival.  Ezeket a hitelesítő adatokat egy biztonságos és titkosított fájlban tárolja a rendszer, így a parancsfájlnak nem kell megadnia a bizalmas adatokat.
+
+Bejelentkezhet a fiókjába egy ügyfél titkos kódjával vagy egy olyan tanúsítvány jelszavával, amely társítva van a szolgáltatásnév alkalmazásának regisztrálásához.
+
+#### <a name="authorize-a-service-principal-by-using-a-client-secret"></a>Egyszerű szolgáltatásnév engedélyezése az ügyfél titkos kódjának használatával
+
+Írja be a következő parancsot, majd nyomja le az ENTER billentyűt.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_APPLICATION_ID=<application-id>
+export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
+```
+
+Cserélje le a `<application-id>` helyőrzőt a szolgáltatásbeli tag alkalmazás-regisztrációjának alkalmazás-azonosítójával. Cserélje le a `<client-secret>` helyőrzőt az ügyfél titkos kódjára.
+
+> [!NOTE]
+> Érdemes lehet egy Rákérdezés használatával összegyűjteni a jelszót a felhasználótól. Így a jelszó nem jelenik meg a parancs előzményeiben. 
+
+Ezután futtasson bármely azcopy-parancsot (például: `azcopy list https://contoso.blob.core.windows.net` ).
+
+#### <a name="authorize-a-service-principal-by-using-a-certificate"></a>Egyszerű szolgáltatásnév engedélyezése tanúsítvány használatával
+
+Ha inkább a saját hitelesítő adatait szeretné használni az engedélyezéshez, feltöltheti a tanúsítványt az alkalmazás regisztrálásához, majd ezt a tanúsítványt használhatja a bejelentkezéshez.
+
+A tanúsítványnak az alkalmazás regisztrálásához való feltöltése mellett a tanúsítvány másolatát is el kell végezni a gépre vagy a virtuális gépre, ahol a AzCopy futni fog. A tanúsítvány ezen másolatának a következőnek kell lennie:. PFX vagy. PEM formátuma, és tartalmaznia kell a titkos kulcsot. A titkos kulcsnak jelszóval védettnek kell lennie. 
+
+Írja be a következő parancsot, majd nyomja le az ENTER billentyűt.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_CERT_PATH=<path-to-certificate-file>
+export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
+```
+
+Cserélje le a `<path-to-certificate-file>` helyőrzőt a tanúsítványfájl relatív vagy teljesen minősített elérési útjára. A AzCopy menti a tanúsítvány elérési útját, de nem menti a tanúsítvány másolatát, ezért ügyeljen arra, hogy a tanúsítvány a helyén maradjon. Cserélje le a `<certificate-password>` helyőrzőt a tanúsítvány jelszavára.
+
+> [!NOTE]
+> Érdemes lehet egy Rákérdezés használatával összegyűjteni a jelszót a felhasználótól. Így a jelszó nem jelenik meg a parancs előzményeiben. 
+
+Ezután futtasson bármely azcopy-parancsot (például: `azcopy list https://contoso.blob.core.windows.net` ).
+
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a AzCopy-ről: [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: df50583e650d3d44e702c0f7d1596f2a733a4445
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 244fae9f8611acd21f2ee6cd7dafa45b88606456
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556386"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359353"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Az Azure Shared Disks (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ További információért lásd: az Azure-beli [virtuális gépekkel](failover-c
 A cikkben szereplő utasítások elvégzése előtt a következőket kell tennie:
 
 - Azure-előfizetés. Az első lépések [ingyenesek](https://azure.microsoft.com/free/). 
-- [Két vagy több Windows Azure-beli virtuális gép](failover-cluster-instance-prepare-vm.md). A [rendelkezésre állási](../../../virtual-machines/windows/tutorial-availability-sets.md) csoportok és a [közelségi elhelyezési csoportok](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPGs) egyaránt támogatottak. Ha a PPG-t használja, az összes csomópontnak ugyanabban a csoportban kell lennie.
+- [Két vagy több Windows Azure-beli virtuális gép](failover-cluster-instance-prepare-vm.md). Az prémium SSD és a [rendelkezésre állási zónák](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) számára támogatott [rendelkezésre állási](../../../virtual-machines/windows/tutorial-availability-sets.md) [csoportok és Proximity elhelyezési csoportok](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPGs) az ultra lemezek esetében támogatottak. Ha a PPG-t használja, az összes csomópontnak ugyanabban a csoportban kell lennie.
 - Egy olyan fiók, amely rendelkezik objektumok létrehozásához szükséges engedélyekkel mind az Azure-beli virtuális gépeken, mind pedig a Active Directory.
 - A [PowerShell](/powershell/azure/install-az-ps)legújabb verziója. 
 
@@ -44,7 +44,7 @@ Helyezzen üzembe egy felügyelt prémium SSD lemezt, amelyen engedélyezve van 
 Vegyen fel egy Azure-beli megosztott lemezt a következő módon: 
 
 
-1. Mentse a következő parancsfájlt *SharedDiskConfig.jsként* : 
+1. Mentse a következő parancsfájlt *SharedDiskConfig.jsként*: 
 
    ```JSON
    { 
@@ -151,17 +151,17 @@ Ellenőrizze a fürtöt a felhasználói felületen vagy a PowerShell használat
 
 A fürt a felhasználói felületen való ellenőrzéséhez tegye a következőket az egyik virtuális gépen:
 
-1. A **Kiszolgálókezelő** területen válassza az **eszközök** , majd a **Feladatátvevőfürt-kezelő** lehetőséget.
-1. A **Feladatátvevőfürt-kezelő** alatt válassza a **művelet** , majd a **Konfiguráció ellenőrzése** lehetőséget.
-1. Válassza a **Tovább** gombot.
+1. A **Kiszolgálókezelő** területen válassza az **eszközök**, majd a **Feladatátvevőfürt-kezelő** lehetőséget.
+1. A **Feladatátvevőfürt-kezelő** alatt válassza a **művelet**, majd a **Konfiguráció ellenőrzése** lehetőséget.
+1. Kattintson a **Tovább** gombra.
 1. A **kiszolgálók vagy fürt kijelölése** területen adja meg mindkét virtuális gép nevét.
 1. A **tesztelési beállítások** területen válassza a **csak a kiválasztott tesztek futtatása** lehetőséget. 
-1. Válassza a **Tovább** gombot.
+1. Kattintson a **Tovább** gombra.
 1. A **teszt kiválasztása** területen válassza az összes teszt lehetőséget a **tárolás** *kivételével*
 
 ## <a name="test-cluster-failover"></a>Fürt feladatátvételének tesztelése
 
-Tesztelje a fürt feladatátvételét. A **Feladatátvevőfürt-kezelőban** kattintson a jobb gombbal a fürtre, válassza a **További műveletek**  >  csomópontot az **alapszintű fürt erőforrásainak**  >  **kiválasztásához** , majd válassza ki a fürt másik csomópontját. Helyezze át az alapszintű fürt erőforrását a fürt minden csomópontjára, majd helyezze vissza az elsődleges csomópontra. Ha sikeresen át tudja helyezni a fürtöt az egyes csomópontokra, készen áll a SQL Server telepítésére.  
+Tesztelje a fürt feladatátvételét. A **Feladatátvevőfürt-kezelőban** kattintson a jobb gombbal a fürtre, válassza a **További műveletek**  >  csomópontot az **alapszintű fürt erőforrásainak**  >  **kiválasztásához**, majd válassza ki a fürt másik csomópontját. Helyezze át az alapszintű fürt erőforrását a fürt minden csomópontjára, majd helyezze vissza az elsődleges csomópontra. Ha sikeresen át tudja helyezni a fürtöt az egyes csomópontokra, készen áll a SQL Server telepítésére.  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Fürt feladatátvételének tesztelése az alapvető erőforrás más csomópontokra való áthelyezésével":::
 
@@ -187,7 +187,7 @@ Az adatkönyvtáraknak az Azure-beli megosztott lemezeken kell lenniük.
 
 1. Miután a telepítő telepíti a (z)-t az első csomóponton, csatlakozzon a második csomóponthoz RDP használatával.
 
-1. Nyissa meg a **SQL Server telepítési központot** , majd válassza a **telepítés** lehetőséget.
+1. Nyissa meg a **SQL Server telepítési központot**, majd válassza a **telepítés** lehetőséget.
 
 1. Válassza **a csomópont hozzáadása SQL Server feladatátvevő fürthöz** lehetőséget. A varázsló utasításait követve telepítse a SQL Servert, és adja hozzá a kiszolgálót a modulhoz.
 

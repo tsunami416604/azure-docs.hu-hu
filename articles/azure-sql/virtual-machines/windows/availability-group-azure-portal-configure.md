@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -13,12 +14,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 28bacb923578fa0c631aa7b5092e0d11f98b1dcf
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 14760b4244d42e57aaed7f7d96f487a66147a554
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518413"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359506"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure Portal használata az Azure-beli virtuális gépen SQL Server rendelkezésre állási csoport (előzetes verzió) konfigurálásához 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,7 +60,7 @@ Ha már rendelkezik fürttel, ugorja át ezt a szakaszt, és térjen át a [megl
 
 Ha még nem rendelkezik meglévő fürttel, hozza létre a Azure Portal használatával a következő lépésekkel:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 1. Navigáljon az [SQL Virtual Machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) -erőforráshoz. 
 1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások** területen. 
 1. Válassza az **+ új Windows Server feladatátvevő fürt** lehetőséget a **Windows feladatátvevő fürt konfigurálása** lap megnyitásához.  
@@ -90,7 +91,7 @@ Ha már van egy fürt konfigurálva a SQL Server VM-környezetben, akkor a Azure
 
 Ehhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 1. Navigáljon az [SQL Virtual Machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) -erőforráshoz. 
 1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások** területen. 
 1. Válassza a **meglévő Windows Server feladatátvételi fürt** beléptetése lehetőséget a **Windows Server feladatátvételi fürt** bevezetési oldalának megnyitásához. 
@@ -104,7 +105,7 @@ Ehhez kövesse az alábbi lépéseket:
 
 A fürt létrehozása vagy előkészítése után hozza létre a rendelkezésre állási csoportot a Azure Portal használatával. Ehhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 1. Navigáljon az [SQL Virtual Machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) -erőforráshoz. 
 1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások** területen. 
 1. Válassza az **+ új always on rendelkezésre állási csoport** lehetőséget a **rendelkezésre állási csoport létrehozása** lap megnyitásához.
@@ -159,7 +160,7 @@ Az adatbázisok hozzáadása után megtekintheti a rendelkezésre állási csopo
 
 Ha további SQL Server virtuális gépeket szeretne hozzáadni a fürthöz, kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
 1. Navigáljon az [SQL Virtual Machines](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) -erőforráshoz. 
 1. Válassza a **magas rendelkezésre állás** lehetőséget a **Beállítások** területen. 
 1. Válassza a **Windows Server feladatátvevő fürt konfigurálása** elemet a **Windows Server feladatátvevő fürt konfigurálása** lap megnyitásához. 
@@ -247,7 +248,7 @@ A fürt és a rendelkezésre állási csoport a portálon keresztüli módosít�
 
 Ha meg szeretné tekinteni a központi telepítés naplóit, és tekintse meg az üzembe helyezési előzményeket, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 1. Navigáljon az erőforráscsoporthoz.
 1. A **Beállítások** területen válassza a **központi telepítések** lehetőséget.
 1. A központi telepítéssel kapcsolatos további információért válassza ki a kívánt központi telepítést. 
@@ -266,7 +267,7 @@ Ez azt jelzi, hogy az erőforrás-szolgáltató nem fér hozzá a SQL Server szo
 - Ellenőrizze, hogy a portálon megadott hitelesítő adatok megfelelnek-e a SQL Server szolgáltatásnak. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 A rendelkezésre állási csoportokról további információt a következő témakörben talál:

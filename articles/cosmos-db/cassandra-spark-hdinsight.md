@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: cee5181bf3dda3f0fb609d5aa344697e989ae6c3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e09ac39037024b5c360af4bb6ada26590b142924
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098892"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359591"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Hozzáférés Azure Cosmos DB Cassandra API a Sparkból a HDInsight-mel
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -119,7 +119,7 @@ A HDInsight-Spark a Zeppelin és a Jupyter notebook Services szolgáltatással �
 
 A következő Jupyter-jegyzetfüzeteket feltöltheti a HDInsight Spark-fürtbe, és kész mintákat készíthet a Azure Cosmos DB Cassandra API való munkához. Tekintse át az első jegyzetfüzetet `1.0-ReadMe.ipynb` , és tekintse át a Spark szolgáltatás konfigurációját a Azure Cosmos DB Cassandra APIhoz való csatlakozáshoz.
 
-Töltse le ezeket a jegyzetfüzeteket az [Azure-Cosmos-db-Cassandra-API-Spark-Notebooks-jupyter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/master/scala/) a gépre.
+Töltse le ezeket a jegyzetfüzeteket az [Azure-Cosmos-db-Cassandra-API-Spark-Notebooks-jupyter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/main/scala/) a gépre.
   
 ### <a name="how-to-upload"></a>Feltöltés:
 A Jupyter indításakor navigáljon a Scala-hoz. Először hozzon létre egy könyvtárat, majd töltse fel a jegyzetfüzeteket a könyvtárba. A feltöltés gomb a jobb felső sarokban található.  
@@ -135,6 +135,6 @@ Az éles környezetben futó automatizált folyamatok esetében a Spark-programo
 
 * [Spark Scala-program létrehozása egy IDE-ben, és elküldése a HDInsight Spark-fürtnek a Livy-en keresztül a végrehajtáshoz](../hdinsight/spark/apache-spark-create-standalone-application.md)
 
-* [Kapcsolódás Azure Cosmos DB Cassandra API Spark Scala programból](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
+* [Kapcsolódás Azure Cosmos DB Cassandra API Spark Scala programból](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/main/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
 
 * [A Cassandra API használatához használható mintakód-minták teljes listája](cassandra-spark-generic.md)

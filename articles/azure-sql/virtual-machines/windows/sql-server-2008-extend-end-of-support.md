@@ -6,6 +6,7 @@ documentationcenter: ''
 author: MashaMSFT
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -13,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1c1dd2ba5eb6ee61a0f8cf151649441cbc783166
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4c25adc16d14b4a5fb72ae0103ca05b193b40499
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553527"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359166"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>A SQL Server 2008 és SQL Server 2008 R2 támogatásának kiterjesztése az Azure-ra
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,9 +41,9 @@ SQL Server 2008 rendszerű ügyfeleknek telepíteniük vagy frissíteniük kell 
 Az Azure Marketplace-en keresztül üzembe helyezett lemezképek előre telepítve vannak az SQL IaaS bővítménnyel. Az SQL IaaS bővítmény a rugalmas licencelés és az automatikus javítás követelménye. Az önállóan telepített virtuális gépeket telepítő ügyfeleknek manuálisan kell telepíteniük az SQL IaaS bővítményt. Az SQL IaaS bővítmény nem támogatott a Windows Server 2008 rendszeren.
 
 > [!NOTE]
-> Bár a SQL Server- **létrehozási** és- **kezelési** lapok a Azure Portal SQL Server 2008 R2 rendszerképpel működnek együtt, a következő funkciók _nem támogatottak_ : automatikus biztonsági mentések, Azure Key Vault integráció, R-szolgáltatások és tárolási konfiguráció.
+> Bár a SQL Server- **létrehozási** és- **kezelési** lapok a Azure Portal SQL Server 2008 R2 rendszerképpel működnek együtt, a következő funkciók _nem támogatottak_: automatikus biztonsági mentések, Azure Key Vault integráció, R-szolgáltatások és tárolási konfiguráció.
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 Az utólagos elszámolású SQL Server 2008 R2-es üzemelő példányok [Azure Hybrid Benefitre](https://azure.microsoft.com/pricing/hybrid-benefit/)konvertálhatók.
 
 Ha frissítési garanciát (SA) alapuló licencet szeretne átváltani, az ügyfeleknek regisztrálniuk kell az [SQL IaaS-ügynök bővítménnyel](sql-agent-extension-manually-register-single-vm.md). A regisztráció után az SQL-licenc típusa Azure Hybrid Benefit és utólagos elszámolású.
@@ -66,9 +67,9 @@ A [Azure Database Migration Service](../../../dms/dms-overview.md) az ügyfelek 
 
 Az Azure-beli virtuális gépeken az EOS SQL Server vész-helyreállítási megoldásai a következők:
 
-- **SQL Server biztonsági mentések** : a Azure Backup segítségével megvédheti az EOS SQL Server 2008-es és 2008 R2-es verzióit a ransomware, a véletlen törlés és a sérülés ellenében 15 perces RPO és időpontra történő helyreállítással. További részletekért tekintse meg [ezt a cikket](../../../backup/sql-support-matrix.md#scenario-support).
-- **Napló szállítása** : létrehozhat egy naplóbeli szállítási replikát egy másik zónában vagy az Azure-régióban folyamatos visszaállításokkal a RTO csökkentése érdekében. Manuálisan kell konfigurálnia a napló szállítását.
-- **Azure site Recovery** : a virtuális gép a zónák és régiók között replikálható Azure site Recovery replikálással. SQL Server alkalmazás-konzisztens Pillanatképek szükségesek a helyreállítás biztosításához vészhelyzet esetén. Azure Site Recovery legalább 1 órás RPO, valamint egy 2 órás (plusz SQL Server helyreállítási idő) RTO biztosít az EOS SQL Server vész-helyreállításhoz.
+- **SQL Server biztonsági mentések**: a Azure Backup segítségével megvédheti az EOS SQL Server 2008-es és 2008 R2-es verzióit a ransomware, a véletlen törlés és a sérülés ellenében 15 perces RPO és időpontra történő helyreállítással. További részletekért tekintse meg [ezt a cikket](../../../backup/sql-support-matrix.md#scenario-support).
+- **Napló szállítása**: létrehozhat egy naplóbeli szállítási replikát egy másik zónában vagy az Azure-régióban folyamatos visszaállításokkal a RTO csökkentése érdekében. Manuálisan kell konfigurálnia a napló szállítását.
+- **Azure site Recovery**: a virtuális gép a zónák és régiók között replikálható Azure site Recovery replikálással. SQL Server alkalmazás-konzisztens Pillanatképek szükségesek a helyreállítás biztosításához vészhelyzet esetén. Azure Site Recovery legalább 1 órás RPO, valamint egy 2 órás (plusz SQL Server helyreállítási idő) RTO biztosít az EOS SQL Server vész-helyreállításhoz.
 
 ## <a name="security-patching"></a>Biztonsági javítások
 

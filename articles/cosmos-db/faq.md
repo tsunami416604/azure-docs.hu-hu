@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 2e4ff4d9159947ea87f97d56f3fb9c2825698227
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 81c959467c4bb3700120917cf150773fb18e866d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095066"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359829"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -180,7 +180,7 @@ Az SQL API a nagy késleltetésű összesítést az összesítő függvények `C
 
 Az SQL API támogatja az optimista Egyidejűség-vezérlést (OCC) a HTTP-entitások címkéi vagy Etagek használatával. Minden SQL API-erőforrás rendelkezik egy ETag, és a ETag minden alkalommal be van állítva a kiszolgálón, amikor frissülnek a dokumentumok. A ETag fejléc és az aktuális érték szerepel az összes válaszüzenetben. A Etagek használható a If-Match fejléccel, hogy a kiszolgáló döntse el, hogy frissíteni kell-e egy erőforrást. A If-Match érték az a ETag érték, amelyet ellenőrizni kell. Ha a ETag értéke megegyezik a kiszolgáló ETag értékével, az erőforrás frissül. Ha a ETag már nem aktuális, a kiszolgáló elutasítja a műveletet "HTTP 412 előfeltételi hiba" hibakódtal. Az ügyfél ezután visszakéri az erőforrást az erőforrás aktuális ETag értékének beolvasásához. Emellett a Etagek is használható az If-None-Match fejléctel annak megállapításához, hogy szükség van-e egy erőforrás visszahívására.
 
-Ha optimista párhuzamosságot szeretne használni a .NET-ben, használja a [AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) osztályt. .NET-minta esetén lásd: [program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) a DocumentManagement-mintában a githubon.
+Ha optimista párhuzamosságot szeretne használni a .NET-ben, használja a [AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) osztályt. .NET-minta esetén lásd: [program.cs](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/DocumentManagement/Program.cs) a DocumentManagement-mintában a githubon.
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Hogyan végre tranzakciókat az SQL API-ban?
 

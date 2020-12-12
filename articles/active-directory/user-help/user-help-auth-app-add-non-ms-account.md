@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/02/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: cba8837fc738884fc187b13083487c2ab62d25f0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 21c8e75ac81a443b1dd9d4a0f43263bbf40bee88
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020092"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359200"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazáshoz
 
-A kétfaktoros ellenőrzéshez adja hozzá a nem Microsoft-fiókokat, például a Google, a Facebook vagy a GitHub alkalmazást a Microsoft Authenticator alkalmazáshoz. A Microsoft Authenticator alkalmazás minden olyan alkalmazással működik, amely kétfaktoros ellenőrzést használ, és minden olyan fiókot, amely támogatja az időalapú egyszeri jelszavas (TOTP) szabványokat.
+Ha nem Microsoft-fiókokkal rendelkezik, például a Google, a Facebook vagy a GitHub esetében, a kétfaktoros ellenőrzéshez hozzáadhatja azokat a Microsoft Authenticator alkalmazáshoz. A Microsoft Authenticator alkalmazás minden olyan alkalmazással működik, amely kétfaktoros ellenőrzést használ, és minden olyan fiókot, amely támogatja az időalapú egyszeri jelszavas (TOTP) szabványokat.
 
 >[!Important]
 >A fiók hozzáadása előtt le kell töltenie és telepítenie kell a Microsoft Authenticator alkalmazást. Ha még nem tette meg, kövesse az [alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikk lépéseit.
@@ -130,7 +130,7 @@ Adja hozzá a GitHub-fiókját a kétfaktoros ellenőrzés bekapcsolásával, ma
 
 1. A számítógép **kétfaktoros hitelesítés** lapján válassza a **beállítás egy alkalmazás használatával** lehetőséget.
 
-2. Mentse a helyreállítási kódokat, hogy visszakapja a fiókját, ha elveszti a hozzáférését, majd válassza a **tovább** lehetőséget. 
+2. Mentse a helyreállítási kódokat, hogy visszakapja a fiókját, ha elveszti a hozzáférését, majd válassza a **tovább** lehetőséget.
 
     A kódokat mentheti úgy, hogy letölti őket az eszközre, a nyomtatott másolatok kinyomtatásával vagy a Password Manager-eszközbe való másolásával.
 
@@ -193,7 +193,7 @@ A kétfaktoros ellenőrzés bekapcsolásával adja hozzá az Amazon-fiókját, m
     >[!NOTE]
     >A kétfaktoros ellenőrzéssel és az Amazon-fiókkal kapcsolatos további információkért tekintse meg a [Two-Step ellenőrzése](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) és a [Bejelentkezés Two-Step ellenőrzéssel](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Miután hozzáadta a fiókokat az alkalmazáshoz, bejelentkezhet a hitelesítő alkalmazás használatával az eszközön. További információ: [Bejelentkezés az alkalmazás használatával](user-help-auth-app-sign-in.md).
 

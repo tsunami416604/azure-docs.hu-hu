@@ -5,12 +5,12 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: a9dd703dc0a3f5e8f85b1022fa2a71ff9a8c295d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 882dfaa802638efd98eaf6f12a33a77a9727adc2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745570"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359064"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure-támogatáskérés kezelése
 
@@ -18,7 +18,7 @@ Miután [létrehozta az Azure-támogatási kérést](how-to-create-azure-support
 
 ## <a name="view-support-requests"></a>Támogatási kérelmek megtekintése
 
-Tekintse meg a támogatási kérések részleteit és állapotát a **Súgó + támogatási kérelmek támogatásával**  >   **All support requests**.
+Tekintse meg a támogatási kérések részleteit és állapotát a **Súgó + támogatási kérelmek támogatásával**  >   .
 
 :::image type="content" source="media/how-to-manage-azure-support-request/all-requests-lower.png" alt-text="Minden támogatási kérelem":::
 
@@ -88,42 +88,42 @@ A fájlfeltöltés lehetőség használata esetén kövesse az alábbi irányelv
 * A fájlok nem lehetnek nagyobbak 4 MB-nál.
 * Minden fájlnak rendelkeznie kell fájlnévkiterjesztés (például *. docx* vagy *. xlsx*). A következő táblázat a feltöltésre jogosult filename-bővítményeket tartalmazza.
 
-| 0-9, A – C    | D-G   | H-M         | N – P   | R-T      | U-W        | X – Z     |
+| 0-9, A – C     | D-G   | H-M         | N – P   | R-T      | U-W        | X – Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | . dat  | .hwl        | . ODX  | . rar     | . TDB       | .xlam   |
-| . a          | . db   | . ics        | . gyakran  | . rdl     | . TDF       | . XLR    |
-| . ABC        | . DMP  | . ini        | . régi  | . RDLC    | . Text      | .xls    |
-| . adm        | .do_  | .java       | . egy  | .re_     | .thmx      | .xlsb   |
-| . aspx       | .doc  | .jpg        | . OSD  | . reg     | .tif       | .xlsm   |
-| . ATF        | .docm | . LDF        | . OUT  | . Eltávolítás  | . TRC       | .xlsx   |
-| . b          | .docx | . levélpapírfejléc | . P1   | . ren     | . TTD       | .xlt    |
-| .ba_        | .dotm | . lnk        | . Pcap | . Átnevezés  | .tx_       | .xltx   |
-| . bak        | .dotx | .lo_        | . pdb  | . RFT     | .txt       | .xml    |
-| .bat        | .dtsx | . log        | .pdf  | . RPT     | .uccapilog | . XMLA   |
-| . blg        | . EDS  | . LPK        | . Piz  | . RTE     | .uccplog   | .xps    |
-| .CA_        | . EMF  | . manifest   | .pmls | .rtf     | . udcx      | . xsd    |
-| . CAB        | . EML  | . Master     | .png  | . Run     | .vb_       | . xsn    |
-| . Cap        | . a. a  | . mdmp       | .potx | . saz     | .vbs_      | . xxx    |
-| .catx       | . err  | . MOF        | .ppt  | .sql     | . vcf       | .z_     |
-| . CFG        | . etl  | . mp3        | .pptm | .sqlplan | . vsd       | . Z01    |
-| . tömörített | . evt  | . mpg        | .pptx | . stp     | . wdb       | .z02    |
-| . Config     | . evtx | .ms_        | . prn  | .svclog  | . WKS       | . zi     |
-| . CPK        | . EX   | . msg        | . PSF  |   -       | . WMA       | .zi_    |
-| . cpp        | .ex_  | .msi        | . pst  |  -        | . wmv       | .zip    |
-| .cs         | .ex0  | . MSO        | . pub  | -         | . WMZ       | .zip_   |
-| . CSV        | . FRD  | . msu        | -      |-          | . wps       | .zipp   |
-| . CVR        | .gif  | . nfo        | -      |-          | . WPT       | . zip |
-| -            | . GUID | -            | -      | -         | . WSDL      | . villámgyors  |
-| -            | . gz   | -            | -      | -         | . wsp       | . ZIPX   |
-| -            | -      | -            | -      | -         | .wtl       | . zit    |
-| -            | -      | -            | -      | -         |     -       | .zix    |
-| -            | -      | -            | -      | -         |  -          | . ZZZ    |
+| .7z         | . dat  | . har        | . ODX  | . rar     | . TDB       | .xlam   |
+| . a          | . db   | .hwl        | . gyakran  | . rdl     | . TDF       | . XLR    |
+| . ABC        | . Eszközkezelő pont –  | . ics        | . régi  | . RDLC    | . Text      | .xls    |
+| . adm        | .do_  | . ini        | . egy  | .re_     | .thmx      | .xlsb   |
+| . aspx       | .doc  | .java       | . OSD  | . reg     | .tif       | .xlsm   |
+| . ATF        | .docm | .jpg        | . KI  | . Eltávolítás  | . TRC       | .xlsx   |
+| . b          | .docx | . LDF        | . P1   | . ren     | . TTD       | .xlt    |
+| .ba_        | .dotm | . levélpapírfejléc | . Pcap | . Átnevezés  | .tx_       | .xltx   |
+| . bak        | .dotx | . lnk        | . pdb  | . RFT     | .txt       | .xml    |
+| .bat        | .dtsx | .lo_        | .pdf  | . RPT     | .uccapilog | . XMLA   |
+| . blg        | . EDS  | . log        | . Piz  | . RTE     | .uccplog   | .xps    |
+| .CA_        | . EMF  | . LPK        | .pmls | .rtf     | . udcx      | . xsd    |
+| . CAB        | . EML  | . manifest   | .png  | . Run     | .vb_       | . xsn    |
+| . Cap        | . a. a  | . Master     | .potx | . saz     | .vbs_      | . xxx    |
+| .catx       | . err  | . mdmp       | .ppt  | .sql     | . vcf       | .z_     |
+| . CFG        | . etl  | . MOF        | .pptm | .sqlplan | . vsd       | . Z01    |
+| . tömörített | . evt  | . mp3        | .pptx | . stp     | . wdb       | .z02    |
+| . Config     | . evtx | . mpg        | . prn  | .svclog  | . WKS       | . zi     |
+| . CPK        | . PÉLDÁUL   | .ms_        | . PSF  | -        | . WMA       | .zi_    |
+| . cpp        | .ex_  | . msg        | . pst  | -        | . wmv       | .zip    |
+| .cs         | .ex0  | .msi        | . pub  | -        | . WMZ       | .zip_   |
+| . CSV        | . FRD  | . MSO        | -     | -        | . wps       | .zipp   |
+| . CVR        | .gif  | . msu        | -     | -        | . WPT       | . zip |
+| -           | . GUID | . nfo        | -     | -        | . WSDL      | . villámgyors  |
+| -           | . gz   | -           | -     | -        | . wsp       | . ZIPX   |
+| -           | -     | -           | -     | -        | .wtl       | . zit    |
+| -           | -     | -           | -     | -        | -          | .zix    |
+| -           | -     | -           | -     | -        | -          | . ZZZ    |
 
 ## <a name="reopen-a-closed-request"></a>Lezárt kérelem újbóli megnyitása
 
 Ha újra meg kell nyitnia egy lezárt támogatási kérelmet, hozzon létre egy [új üzenetet](#send-a-message), amely automatikusan újra megnyitja a kérést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure-támogatáskérések létrehozása](how-to-create-azure-support-request.md)
 

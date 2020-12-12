@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: migration
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -14,12 +15,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ae89091eb57eade39f8b7581fc5df7ad449e8590
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553556"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360152"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>SQL Server VM áthelyezése az Azure-ban lévő másik régióba Azure Site Recovery
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -99,7 +100,7 @@ A következő lépések bemutatják, hogyan másolhatók az adatAzure Site Recov
 A következő lépések bemutatják, hogyan használhatja a Azure Site Recovery az áthelyezési folyamat teszteléséhez. 
 
 1. Navigáljon a **Recovery Services** -tárolóhoz a [Azure Portal](https://portal.azure.com) , és válassza a **replikált elemek** lehetőséget. 
-1. Válassza ki az áthelyezni kívánt SQL Server VM, ellenőrizze, hogy a **replikálás állapota kifogástalan állapotú** -e, majd válassza a **feladatátvételi teszt** lehetőséget. **Healthy** 
+1. Válassza ki az áthelyezni kívánt SQL Server VM, ellenőrizze, hogy a **replikálás állapota kifogástalan állapotú** -e, majd válassza a **feladatátvételi teszt** lehetőséget.  
 
    ![Feladatátvételi teszt a virtuális gépen](./media/move-sql-vm-different-region/test-failover-of-replicated-vm.png)
 
@@ -150,7 +151,7 @@ A számlázási díjak elkerüléséhez távolítsa el a SQL Server VM a tárol�
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkat az következő cikkekben talál: 
+További információért tekintse át a következő cikkeket: 
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [SQL Server Windows rendszerű virtuális gépen – gyakori kérdések](frequently-asked-questions-faq.md)

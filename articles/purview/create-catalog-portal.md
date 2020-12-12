@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: c9e0b155a4cf34373bb6d851241dc62ddd661045
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 06e62f49b996eac09b9a0a6cb9001eb362833168
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602370"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359298"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása a Azure Portal
 
@@ -30,6 +30,10 @@ Ebben a rövid útmutatóban létrehoz egy Azure-beli hatáskörébe tartozó fi
 * A fióknak engedéllyel kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre az előfizetésben
 
 * Ha **Azure Policy** blokkolja az összes alkalmazást a Storage- **fiók** és a **EventHub-névtér** létrehozásához, akkor a címkével kell megadnia a szabályzatot, amely a hatáskörébe tartozó fiók létrehozásának folyamata során megadható. Ennek fő oka, hogy minden létrehozott felügyeleti fiókhoz létre kell hoznia egy felügyelt erőforráscsoportot, és ezen az erőforráscsoport, egy Storage-fiók és egy EventHub-névtér között.
+
+    > [!important]
+    > Nem kell követnie ezt a lépést, ha nincs Azure Policy, vagy egy meglévő Azure Policy nem blokkolja a **Storage-fiók** és a **EventHub-névtér** létrehozását.
+
     1. Navigáljon a Azure Portalre, és keressen rá **a szabályzat** kifejezésre.
     1. Kövesse az [egyéni házirend-definíció létrehozása](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition) vagy a meglévő szabályzat módosítása lehetőséget két kivétel hozzáadásához az `not` operátorral és a `resourceBypass` címkével:
 
@@ -151,7 +155,7 @@ Ha a Hozzáadás gombra kattint, két választási lehetőség látható (letilt
 
 1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
 
-1. Ahhoz, hogy az egyszerű szolgáltatásnév milyen szerepet tölt be a szolgáltatásban (a részletekért tekintse meg a [katalógusra vonatkozó engedélyeket](catalog-permissions.md) ), a **szerepkör vagy a** hatáskörébe tartozó adatkezelő szerepkör vagy a **hatáskörébe tartozó adatforrás rendszergazdai szerepköre** alapján.
+1. Ahhoz, hogy a rendszerbiztonsági tag mire lesz felhasználva (lásd: [katalógus-engedélyek](catalog-permissions.md) és az [alkalmazás-és szolgáltatásnév-objektumok a Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) című témakörben olvashat a szerepkörhöz a **hatáskörébe tartozó adatkurátori szerepkör** vagy a **hatáskörébe tartozó adatforrás-rendszergazdai szerepkörben** .
 
 1. Az alapértelmezett, a **felhasználó, a csoport vagy az egyszerű szolgáltatásnév** elhagyása a **hozzáférés kiosztásával** .
 
@@ -167,7 +171,7 @@ Ha már nincs szüksége erre az Azure-beli hatáskörébe fiókra, törölje a 
 
 2. Válassza ki a rövid útmutató elején létrehozott Azure-beli hatáskörébe tartozó fiókot. Válassza a **Törlés** lehetőséget, adja meg a fiók nevét, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure-beli hatáskörébe tartozó fiókot.
 

@@ -8,6 +8,7 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -16,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 572363f429cb828d44c9dd12ba2424930c94fefe
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e8268630b2c108dc95ded059ce41866a14fadd0e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553532"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359251"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>A felügyelet automatizálása a SQL Server IaaS-ügynök bővítménnyel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,13 +36,13 @@ Ez a cikk áttekintést nyújt a bővítményről. A SQL Server IaaS bővítmén
 
 A SQL Server IaaS-ügynök bővítmény számos előnyt biztosít az Azure-beli virtuális gépeken futó SQL Server számára: 
 
-- A **szolgáltatás előnyei** : a bővítmény számos Automation-szolgáltatás előnyeit feloldja, például a portál felügyeletét, a licencek rugalmasságát, az automatikus biztonsági mentést, az automatizált javításokat és egyebeket. A részletekért lásd a jelen cikkben a [szolgáltatásokkal kapcsolatos előnyöket](#feature-benefits) . 
+- A **szolgáltatás előnyei**: a bővítmény számos Automation-szolgáltatás előnyeit feloldja, például a portál felügyeletét, a licencek rugalmasságát, az automatikus biztonsági mentést, az automatizált javításokat és egyebeket. A részletekért lásd a jelen cikkben a [szolgáltatásokkal kapcsolatos előnyöket](#feature-benefits) . 
 
-- **Megfelelőség** : a bővítmény egyszerűsített módszert biztosít ahhoz, hogy a Microsoft értesíti a felhasználót arról, hogy a Azure Hybrid Benefit a termék feltételeiben megadott módon van engedélyezve. Ez a folyamat cáfolja az egyes erőforrások licencelési regisztrációs űrlapjainak kezelését.  
+- **Megfelelőség**: a bővítmény egyszerűsített módszert biztosít ahhoz, hogy a Microsoft értesíti a felhasználót arról, hogy a Azure Hybrid Benefit a termék feltételeiben megadott módon van engedélyezve. Ez a folyamat cáfolja az egyes erőforrások licencelési regisztrációs űrlapjainak kezelését.  
 
-- **Ingyenes** : a bővítmény mindhárom kezelhetőségi módban teljesen ingyenes. A bővítményhez nem tartozik további díj, illetve nem módosítható felügyeleti mód. 
+- **Ingyenes**: a bővítmény mindhárom kezelhetőségi módban teljesen ingyenes. A bővítményhez nem tartozik további díj, illetve nem módosítható felügyeleti mód. 
 
-- **Egyszerűsített licencek kezelése** : a bővítmény leegyszerűsíti SQL Server a licencek kezelését, és lehetővé teszi SQL Server virtuális Azure Hybrid Benefit gépek gyors azonosítását az [Azure Portal](manage-sql-vm-portal.md), az Azure CLI vagy a PowerShell használatával. 
+- **Egyszerűsített licencek kezelése**: a bővítmény leegyszerűsíti SQL Server a licencek kezelését, és lehetővé teszi SQL Server virtuális Azure Hybrid Benefit gépek gyors azonosítását az [Azure Portal](manage-sql-vm-portal.md), az Azure CLI vagy a PowerShell használatával. 
 
    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -70,7 +71,7 @@ A SQL Server IaaS-ügynök bővítmény feloldja számos funkció előnyeit a SQ
 A következő táblázat részletezi ezeket az előnyöket: 
 
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 | --- | --- |
 | **A portál kezelése** | Feloldja [a felügyeletet a portálon](manage-sql-vm-portal.md), így egyetlen helyen tekintheti meg az összes SQL Server virtuális gépet, és így közvetlenül a portálról engedélyezheti és letilthatja az SQL-specifikus szolgáltatásokat. 
 | **Automatikus biztonsági mentés** |Automatizálja a biztonsági mentések ütemezését az összes adatbázishoz az alapértelmezett példányhoz, vagy a virtuális gépen a SQL Server [megfelelően telepített](frequently-asked-questions-faq.md#administration) példányát. További információ: [SQL Server automatikus biztonsági mentése az Azure Virtual Machines szolgáltatásban (Resource Manager)](automated-backup-sql-2014.md). |
@@ -175,7 +176,7 @@ Igen. Az ügyfeleknek regisztrálniuk kell a SQL Server virtuális gépeket a ki
 
 **Mi az alapértelmezett felügyeleti mód az SQL IaaS-ügynök bővítménnyel való regisztráláskor?**
 
-Az SQL IaaS-ügynök bővítménnyel való regisztráláskor az alapértelmezett felügyeleti mód a *kis* -és nagyméretű. Ha a SQL Server felügyeleti tulajdonság nincs beállítva a bővítményhez való regisztráláskor, a mód egyszerűként lesz beállítva, és a SQL Server szolgáltatás nem fog újraindulni. Javasoljuk, hogy először az SQL IaaS-ügynök bővítménnyel regisztráljon, és a karbantartási időszak alatt a teljes verzióra frissítsen. Hasonlóképpen, az [automatikus regisztrálási funkció](sql-agent-extension-automatic-registration-all-vms.md)használata esetén az alapértelmezett felügyelet is egyszerű.
+Az SQL IaaS-ügynök bővítménnyel való regisztráláskor az alapértelmezett felügyeleti mód a *kis*-és nagyméretű. Ha a SQL Server felügyeleti tulajdonság nincs beállítva a bővítményhez való regisztráláskor, a mód egyszerűként lesz beállítva, és a SQL Server szolgáltatás nem fog újraindulni. Javasoljuk, hogy először az SQL IaaS-ügynök bővítménnyel regisztráljon, és a karbantartási időszak alatt a teljes verzióra frissítsen. Hasonlóképpen, az [automatikus regisztrálási funkció](sql-agent-extension-automatic-registration-all-vms.md)használata esetén az alapértelmezett felügyelet is egyszerű.
 
 **Milyen előfeltételeket kell regisztrálni az SQL IaaS-ügynök bővítménnyel?**
 

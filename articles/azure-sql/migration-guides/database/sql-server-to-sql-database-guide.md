@@ -1,5 +1,5 @@
 ---
-title: SQL Server a SQL Database – áttelepítési útmutató
+title: 'SQL Server a SQL Databasehoz: áttelepítési útmutató'
 description: Ezt az útmutatót követve áttelepítheti SQL Server adatbázisait Azure SQL Databasere.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: ee4abaf3c9f6aa70ba14920711c8917994254649
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f4f54aa02fb56ba5bf5ae9fcec2dae07c7dc0a27
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326981"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358979"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Áttelepítési útmutató: SQL Server SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -57,7 +57,7 @@ Azt is megteheti, hogy a [Microsoft Assessment and Planning Toolkit (a "Map To
 
 További információ a felderítési fázishoz használható eszközökről: az [adatáttelepítési forgatókönyvekhez elérhető szolgáltatások és eszközök](../../../dms/dms-tools-matrix.md). 
 
-### <a name="assess"></a>Értékelés 
+### <a name="assess"></a>Kiértékelés 
 
 Miután felderített egy adatforrást, mérje fel azokat a helyszíni SQL Server-adatbázisokat, amelyek áttelepíthetők Azure SQL Database az áttelepítési blokkolók vagy kompatibilitási problémák azonosításához. 
 
@@ -100,7 +100,7 @@ Ha több olyan kiszolgálóval és adatbázissal rendelkezik, amelyeket méretez
 > [!IMPORTANT]
 > Ha több adatbázisra, különösen nagyra értékeli az értékeléseket, akkor a [DMA parancssori segédprogrammal](/sql/dma/dma-commandline) is automatizálható, és a további elemzéshez és a cél készültséghez [Azure Migrate](/sql/dma/dma-assess-sql-data-estate-to-sqldb#view-target-readiness-assessment-results) feltölthető.
 
-## <a name="migrate"></a>Migrálás
+## <a name="migrate"></a>Migrate
 
 Az áttelepítés előtti fázishoz kapcsolódó feladatok elvégzése után készen áll a séma és az adatok áttelepítésére. 
 
@@ -183,7 +183,7 @@ Néhány SQL Server funkció csak akkor érhető el, ha az [adatbázis kompatibi
 További információ: [Azure SQL Database kezelése az áttelepítés után](../../database/manage-data-after-migrating-to-database.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egyik mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, lásd: [szolgáltatás és eszközök az adatok áttelepítéséhez](../../../dms/dms-tools-matrix.md).
 

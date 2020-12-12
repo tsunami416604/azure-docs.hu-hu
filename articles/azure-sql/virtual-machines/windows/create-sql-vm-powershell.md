@@ -8,6 +8,7 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
 ms.service: virtual-machines-sql
+ms.subservice: deployment
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -15,12 +16,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c49f8b2732a1b62760cec69626d56751971e6a44
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: a3f51a07b274320d1cd9f12b33703d8ec7f21f49
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556437"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359659"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>A Azure PowerShell használata az Azure-beli SQL Server kiépítéséhez Virtual Machines
 
@@ -28,7 +29,7 @@ ms.locfileid: "94556437"
 
 Ez az útmutató a PowerShell használatának azon lehetőségeit ismerteti, amelyekkel az Azure Virtual Machines (VM) SQL Server kiépíthető. Az alapértelmezett értékekre támaszkodó, egyszerűsített Azure PowerShell például az [SQL VM Azure PowerShell](sql-vm-create-powershell-quickstart.md)gyors útmutatójában talál.
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -135,7 +136,7 @@ A következő változók használatával határozhatja meg a virtuális géphez 
    Get-AzVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
    ```
 
-1. Ebben az oktatóanyagban használja a SQL Server 2017 fejlesztői kiadását ( **SQLDEV** ). A fejlesztői kiadás szabadon jogosult tesztelésre és fejlesztésre, és csak a virtuális gép futtatásának költségeit kell fizetnie.
+1. Ebben az oktatóanyagban használja a SQL Server 2017 fejlesztői kiadását (**SQLDEV**). A fejlesztői kiadás szabadon jogosult tesztelésre és fejlesztésre, és csak a virtuális gép futtatásának költségeit kell fizetnie.
 
    ```powershell
    $Sku = "SQLDEV"

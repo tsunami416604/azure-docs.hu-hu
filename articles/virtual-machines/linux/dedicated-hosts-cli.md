@@ -6,19 +6,19 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: d2cf78d328017f96552bd51794ac997c394d18f1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: ef0c8d53d885f11acdcf578db155de3d7848887e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008418"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360067"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Üzembe helyezés dedikált gazdagépeken az Azure CLI használatával
  
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy dedikált Azure- [gazdagépet](../dedicated-hosts.md) a virtuális gépek (VM-EK) üzemeltetéséhez. 
 
-Győződjön meg arról, hogy telepítette az Azure CLI 2.0.70 vagy újabb verzióját, majd jelentkezzen be egy Azure-fiókba a használatával `az login` . 
+Győződjön meg arról, hogy telepítette az Azure CLI 2.16.0 vagy újabb verzióját, majd jelentkezzen be egy Azure-fiókba a használatával `az login` . 
 
 
 ## <a name="limitations"></a>Korlátozások

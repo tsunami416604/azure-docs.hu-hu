@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 12/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: d4257e5ade1e32ec971bb77f9d5a686d30195735
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b0937bbd72460b1d46ce0394af1933e858424966
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111331"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360322"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>Az erőforrásokhoz való biztonságos hozzáférés kezelése küllős virtuális hálózatok a felhasználói VPN-ügyfelek számára
 
@@ -41,7 +41,11 @@ A pont – hely (P2S) konfiguráció határozza meg a távoli ügyfelek csatlako
 
 A hitelesítési módszer kiválasztásakor három lehetőség közül választhat. Minden metódushoz konkrét követelmények vonatkoznak. Válassza ki az alábbi módszerek egyikét, majd hajtsa végre a lépéseket.
 
-* **Azure Active Directory hitelesítés:** Szerezze be az Azure AD-bérlőben, [a kiállítóban](https://sts.windows.net/your-Directory-ID/)és [Az Azure ad-Bérlőben](https://login.microsoftonline.com/your-Directory-ID)regisztrált Azure VPN Enterprise-alkalmazás alkalmazás-azonosítóját.
+* **Azure Active Directory hitelesítés:** Szerezze be a következőket:
+
+   * Az Azure AD-bérlőben regisztrált Azure VPN Enterprise-alkalmazás **alkalmazás-azonosítója** .
+   * A **kibocsátó**. Példa: `https://sts.windows.net/your-Directory-ID`.
+   * Az **Azure ad-bérlő**. Példa: `https://login.microsoftonline.com/your-Directory-ID`.
 
 * **RADIUS-alapú hitelesítés:** Szerezze be a RADIUS-kiszolgáló IP-címét, a RADIUS-kiszolgáló titkos kulcsát és a tanúsítvány információit.
 

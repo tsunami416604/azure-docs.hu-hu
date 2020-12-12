@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 86ef610af605c657868824eefe2e6e706f6963ac
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484663"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360183"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Gyors útmutató: tömeges betöltés a szinapszis SQL-sel
 
@@ -39,28 +39,27 @@ A speciális SQL-készletek használatával egyszerűen tömegesen betöltheti a
 
 ### <a name="steps"></a>Lépések
 
-1. Válassza ki a Storage-fiókot és a betöltéshez használt fájlt vagy mappát a forrás tárolási hely paneljén. A varázsló automatikusan megkísérli a parketta-fájlok észlelését. Ha a Parquet fájltípust nem lehet megerősíteni, a rendszer alapértelmezés szerint tagolt szöveget (CSV) fog használni.
+1. Válassza ki a Storage-fiókot és a betöltéshez használt fájlt vagy mappát a forrás tárolási hely paneljén. A varázsló automatikusan megkísérli a parketta-fájlok és a tagolt szövegfájlok (CSV) fájljainak észlelését, beleértve a forrás mezőinek hozzárendelését a fájlból a megfelelő cél SQL-adattípusokra. 
 
    ![Forrás helyének kiválasztása](./sql/media/bulk-load/bulk-load-source-location.png)
 
-2. Válassza ki a fájlformátum beállításait, beleértve azt a Storage-fiókot, ahol el szeretné írni az elutasított sorokat (hibakód). Jelenleg csak a CSV-és a parketta-fájlok támogatottak.
+2. Válassza ki a fájlformátum beállításait, beleértve a hibák beállításait, ha a tömeges betöltési folyamat során visszautasított sorok vannak. Az "adatok előnézete" lehetőség kiválasztásával megtekintheti, hogy a MÁSOLÁSi utasítás hogyan elemezi a fájlt, hogy segítsen a fájlformátum beállításainak konfigurálásában. Válassza az "adatok előnézete" lehetőséget, amikor módosít egy fájlformátum-beállítást, hogy megtudja, hogyan elemezheti a fájlt a frissített beállítással:
 
-    ![A fájlformátum beállításainak kiválasztása](./sql/media/bulk-load/bulk-load-file-format-settings.png)
-
-3. Az "adatok előnézete" lehetőség kiválasztásával megtekintheti, hogy a MÁSOLÁSi utasítás hogyan elemezi a fájlt, hogy segítsen a fájlformátum beállításainak konfigurálásában. Válassza az "adatok előnézete" lehetőséget, amikor módosít egy fájlformátum-beállítást, hogy megtudja, hogyan elemezze a fájlt a frissített beállítással: ![ adatok megtekintése](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
+   ![Az adatnézetek megtekintése](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
 > [!NOTE]  
 >
 > - Az adatmegjelenítés több karakterből álló lezárókkal nem támogatott a tömeges betöltés varázslóban. A tömeges betöltés varázsló egyetlen oszlopon belül megtekinti az adatmegjelenítést, ha meg van adva egy többkarakteres mező lezáró értéke. 
+> - Az "oszlopnevek következtetése" lehetőség kiválasztásakor a tömeges betöltés varázsló az "első sor" mezőben megadott első sorból elemzi az oszlopok nevét. A tömeges betöltés varázsló automatikusan eggyel növeli a FIRSTROW értékét a MÁSOLÁSi utasításban, így figyelmen kívül hagyhatja ezt a fejlécsort. 
 > - A több karakterből álló sorok lezáróinak megadása a COPY utasításban támogatott. Ez azonban nem támogatott a tömeges betöltés varázslóban, ahol hiba történik.
 
-4. Válassza ki azt a dedikált SQL-készletet, amelyet a betöltéshez használ, beleértve azt is, hogy a terhelés egy meglévő táblára vagy új táblára vonatkozik-e: a ![ célhely kiválasztása](./sql/media/bulk-load/bulk-load-target-location.png)
+3. Válassza ki azt a dedikált SQL-készletet, amelyet a betöltéshez használ, beleértve azt is, hogy a terhelés egy meglévő táblára vagy új táblára vonatkozik-e: a ![ célhely kiválasztása](./sql/media/bulk-load/bulk-load-target-location.png)
+4. Válassza az "oszlop-hozzárendelés konfigurálása" lehetőséget, és győződjön meg arról, hogy rendelkezik a megfelelő oszlop-hozzárendeléssel. Megjegyzés: a rendszer automatikusan észleli az oszlopok neveit, ha engedélyezve van az "oszlopfejlécek következtetése". Az új táblák esetében az oszlop-hozzárendelés konfigurálása kritikus fontosságú a cél oszlop adattípusának frissítéséhez:
 
-5. Válassza az "oszlop-hozzárendelés konfigurálása" lehetőséget, és győződjön meg arról, hogy rendelkezik a megfelelő oszlop-hozzárendeléssel. Megjegyzés: a rendszer automatikusan észleli az oszlopok neveit, ha engedélyezve van az "oszlopfejlécek következtetése". Az új táblák esetében az oszlop-hozzárendelés konfigurálása kritikus fontosságú a cél oszlop adattípusok frissítéséhez: ![ oszlop-hozzárendelés konfigurálása](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+   ![Oszlop-hozzárendelés konfigurálása](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. Válassza a "parancsfájl megnyitása" lehetőséget, és egy T-SQL-szkriptet fog generálni a MÁSOLÁSi utasítással, amely betöltődik a adattóban: ![ az SQL-szkript megnyitása](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
-6. Válassza a "parancsfájl megnyitása" lehetőséget, és egy T-SQL-szkriptet fog generálni a MÁSOLÁSi utasítással, amely betöltődik a adattóban: ![ az SQL-szkript megnyitása](./sql/media/bulk-load/bulk-load-target-final-script.png)
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A MÁSOLÁSi lehetőségekkel kapcsolatos további információkért olvassa el a [copy utasításról](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) szóló cikket.
 - Tekintse át az [adatbetöltések áttekintése című](./sql-data-warehouse/design-elt-data-loading.md#what-is-elt) cikket

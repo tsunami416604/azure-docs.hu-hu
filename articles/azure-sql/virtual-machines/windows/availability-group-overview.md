@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8573e45270dfd1ff984eae3dc5fbf1dc5f2fc6da
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f39380e253d3fa9e86bfea3a8c436862738ff8e3
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600863"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359931"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On rendelkezésre állási csoport SQL Server Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -87,9 +88,9 @@ Az alábbi táblázat az elérhető lehetőségek összehasonlítását tartalma
 |**Lehetséges DNN-figyelőt létrehozni ezzel a módszerrel?**|Nem|Nem|Nem|Igen|
 |**WSFC kvórum konfigurálása**|Felhőbeli tanúsító|Felhőbeli tanúsító|Felhőbeli tanúsító|Mind|
 |**DR több régióban** |Nem|Nem|Nem|Igen|
-|**Többalhálózat támogatása** |Igen|Igen|Igen|Igen|
-|**Meglévő AD támogatása**|Igen|Igen|Igen|Igen|
-|**DR többzónás, ugyanabban a régióban**|Igen|Igen|Igen|Igen|
+|**Többalhálózat támogatása** |Igen|Igen|Igen|Yes|
+|**Meglévő AD támogatása**|Igen|Igen|Igen|Yes|
+|**DR többzónás, ugyanabban a régióban**|Igen|Igen|Igen|Yes|
 |**AD-t nem tartalmazó elosztott AG**|Nem|Nem|Nem|Igen|
 |**Fürt nélküli elosztott AG** |Nem|Nem|Nem|Igen|
 
@@ -99,7 +100,7 @@ További információ: [Azure Portal](availability-group-azure-portal-configure.
 
 Azure IaaS virtuális gépek vendég feladatátvevő fürtjein kiszolgálónként (fürtcsomópontonként) egyetlen hálózati adapter és egyetlen alhálózat használatát javasoljuk. Az Azure-hálózatkezelés fizikai redundanciával rendelkezik, ami felesleges hálózati adaptereket és alhálózatokat tesz lehetővé az Azure IaaS VM-vendég fürtön. Bár a fürtellenőrzési jelentés figyelmeztetést küld, amely szerint a csomópontok csak egyetlen hálózaton érhetők el, ez a figyelmeztetés nyugodtan figyelmen kívül hagyható az Azure IaaS virtuális gépek vendég feladatátvevő fürtjein. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a [HADR ajánlott eljárásait](hadr-cluster-best-practices.md) , és ismerkedjen meg a rendelkezésre állási csoport üzembe helyezésével a [Azure Portal](availability-group-azure-portal-configure.md), az [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), a [Gyorsindítás sablonok](availability-group-quickstart-template-configure.md) vagy a [manuális](availability-group-manually-configure-prerequisites-tutorial.md)használatával.
 
