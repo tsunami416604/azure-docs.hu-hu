@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: dff6d69a107091a0ce030065da0f70a3d68c5841
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8549592ace00e712929ebc76045a32531b9db659
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168842"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358316"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>DNN konfigurálása feladatátvevő fürt példányához
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -125,13 +126,13 @@ Alapértelmezés szerint a fürt a fürt összes csomópontja számára a DNN DN
 A lehetséges tulajdonosok frissítéséhez kövesse az alábbi lépéseket:
 
 1. Lépjen a DNN-erőforráshoz Feladatátvevőfürt-kezelő. 
-1. Kattintson a jobb gombbal a DNN-erőforrásra, és válassza a **Tulajdonságok**lehetőséget. 
+1. Kattintson a jobb gombbal a DNN-erőforrásra, és válassza a **Tulajdonságok** lehetőséget. 
 
    :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/fci-dnn-properties.png" alt-text="A DNN erőforrás helyi menüje, a tulajdonságok paranccsal kiemelve.":::
 
 1. Törölje a jelet a feladatátvevő fürt példányában nem részt vevő csomópontok jelölőnégyzetéből. A DNN-erőforrás lehetséges tulajdonosainak listáját meg kell egyeznie a SQL Server példány-erőforrás lehetséges tulajdonosainak listájával. Tegyük fel például, hogy a data3 nem vesz részt a (z)-es verzióban, az alábbi képen egy példa a DNN-erőforrás lehetséges tulajdonosainak listájáról való data3 eltávolítására: 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="A DNN erőforrás helyi menüje, a tulajdonságok paranccsal kiemelve.":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="Törölje a jelölőnégyzet jelölését azon csomópontok mellett, amelyek nem vesznek részt a DNN-erőforrás lehetséges tulajdonosainak":::
 
 1. A beállítások mentéséhez kattintson **az OK gombra** . 
 
@@ -159,9 +160,9 @@ A fürtözött erőforrás feladatátvételi tesztje a fürt működésének ell
 A feladatátvétel teszteléséhez kövesse az alábbi lépéseket: 
 
 1. Kapcsolódjon az egyik SQL Server fürtcsomópontok valamelyikéhez RDP használatával.
-1. Nyissa meg **Feladatátvevőfürt-kezelő**. Válassza a **szerepkörök**lehetőséget. Figyelje meg, hogy melyik csomópont tulajdonosa a SQL Server.
+1. Nyissa meg **Feladatátvevőfürt-kezelő**. Válassza a **szerepkörök** lehetőséget. Figyelje meg, hogy melyik csomópont tulajdonosa a SQL Server.
 1. Kattintson a jobb gombbal a SQL Server. 
-1. Válassza az **Áthelyezés**, majd a **lehető legjobb csomópont**lehetőséget.
+1. Válassza az **Áthelyezés**, majd a **lehető legjobb csomópont** lehetőséget.
 
 **Feladatátvevőfürt-kezelő** megjeleníti a szerepkört, és az erőforrásai offline állapotba kerülnek. Ezután az erőforrások átkerülnek a másik csomópontba, majd ismét elérhetővé válnak.
 
@@ -200,7 +201,7 @@ Másik lehetőségként beállíthat egy hálózati adaptert az Azure-ban a virt
 - Jelenleg egy DNN-vel rendelkező CU2 csak a Windows Server 2016-es és újabb verzióiban támogatott a SQL Server 2019-es és újabb verziókban. 
 - További szempontokat is figyelembe kell venni, ha más SQL Server-funkciókkal dolgozik, és egy DNN-vel rendelkező egy-egy-egy-egy-egy További információ: [DNN együttműködési képesség](failover-cluster-instance-dnn-interoperability.md). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure SQL Server HADR szolgáltatásairól, tekintse meg a [rendelkezésre állási csoportok](availability-group-overview.md) és a [feladatátvevő fürt példánya](failover-cluster-instance-overview.md)című témakört. Megtudhatja, [Hogyan](hadr-cluster-best-practices.md) konfigurálhatja a környezetet a magas rendelkezésre álláshoz és a vész-helyreállításhoz. 
 

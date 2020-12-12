@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: c113a252363d3b94131ac423f795f6efb13b1975
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 14b6d6ecc6523199102fd3ef9370fe901c4ff51d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029549"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355698"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és hozzájárulás a Microsoft-identitásplatform végpontján
 
@@ -89,7 +89,7 @@ A `profile` hatókör a `openid` hatókörrel és másokkal is használható. Ho
 A [ `offline_access` hatókör](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) lehetővé teszi az alkalmazás számára, hogy a felhasználó nevében egy hosszabb ideig hozzáférjen az erőforrásokhoz. A hozzájárulás lapon ez a hatókör jelenik meg, mivel "a hozzáférés biztosítása az Ön számára biztosított adathozzáféréshez" jogosultságot. Amikor a felhasználó jóváhagyja a `offline_access` hatókört, az alkalmazás a Microsoft Identity platform jogkivonat-végpontján fogadhatja a frissítési jogkivonatokat. A frissítési tokenek hosszú életűek. Az alkalmazás új hozzáférési jogkivonatokat kaphat, mint a régebbiek lejárnak.
 
 > [!NOTE]
-> Ez az engedély jelenleg az összes beleegyezési képernyőn jelenik meg, még olyan folyamatok esetében is, amelyek nem biztosítanak frissítési jogkivonatot (az [implicit folyamat](v2-oauth2-implicit-grant-flow.md)).  Ennek célja, hogy olyan forgatókönyveket Fedezzen fel, amelyekben az ügyfél az implicit folyamaton belül megkezdődhet, majd a kód azon folyamatára helyezi át, ahol a frissítési token várható.
+> Ez az engedély jelenleg az összes beleegyezési képernyőn jelenik meg, még olyan folyamatok esetében is, amelyek nem biztosítanak frissítési jogkivonatot (az [implicit folyamat](v2-oauth2-implicit-grant-flow.md)). Ennek célja, hogy olyan forgatókönyveket Fedezzen fel, amelyekben az ügyfél az implicit folyamaton belül megkezdődhet, majd lépjen arra a kódra, amelyben a frissítési jogkivonat várható.
 
 A Microsoft Identity platformon (a v 2.0-végpontra irányuló kérelmek esetében) az alkalmazásnak explicit módon kell megkérnie a `offline_access` hatókört a frissítési tokenek fogadásához. Ez azt jelenti, hogy amikor bevált egy engedélyezési kódot a [OAuth 2,0 engedélyezési kód folyamatában](active-directory-v2-protocols.md), csak a végponttól kap hozzáférési jogkivonatot `/token` . A hozzáférési jogkivonat rövid ideig érvényes. A hozzáférési jogkivonat általában egy órán belül lejár. Ezen a ponton az alkalmazásnak újra kell irányítani a felhasználót a `/authorize` végpontra egy új engedélyezési kód beszerzéséhez. Az átirányítás során az alkalmazás típusától függően előfordulhat, hogy a felhasználónak újra be kell írnia a hitelesítő adatait, vagy újra meg kell adnia az engedélyeket.
 

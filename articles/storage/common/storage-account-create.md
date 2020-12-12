@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c8d07e53e259fff28e662f0c1ca3934eabf015e8
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005545"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357449"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
@@ -98,7 +98,7 @@ az login
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N.A.
+N/A
 
 ---
 
@@ -281,8 +281,9 @@ Másik lehetőségként törölheti az erőforráscsoportot, amely törli a Stor
 >
 > Ha egy Azure virtuális géppel társított tárfiókot próbál törölni, egy hibaüzenetet kaphat, amely szerint a tárfiók még használatban van. A hiba elhárításához a Storage- [fiókok törlésekor a hibák elhárítása](../../virtual-machines/troubleshooting/index.yml)című témakörben talál segítséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tárfiókok áttekintése](storage-account-overview.md)
 - [Frissítés általános célú v2-tárfiókra](storage-account-upgrade.md)
 - [Azure Storage-fiók áthelyezése másik régióba](storage-account-move.md)
+- [Törölt tárfiók helyreállítása](storage-account-recover.md)

@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d5bd2fc150ee1d35127eeb9dbf3dc1eeffdc9659
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685936"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358146"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Feladatátvevő fürt példányai SQL Server az Azure-ban Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +51,7 @@ Az Azure-beli virtuális gépeken SQL Server különböző lehetőségeket kín�
 |---------|---------|---------|---------|
 |**Operációs rendszer minimális verziója**| Mind |Windows Server 2012|Windows Server 2016|
 |**Minimális SQL Server-verzió**|Mind|SQL Server 2012|SQL Server 2016|
-|**Támogatott virtuális gépek rendelkezésre állása** |Rendelkezésre állási csoportok Proximity elhelyezési csoportokkal |Rendelkezésre állási készletek és rendelkezésre állási zónák|Rendelkezésre állási csoportok |
+|**Támogatott virtuális gépek rendelkezésre állása** |Rendelkezésre állási csoportok Proximity elhelyezési csoportokkal (prémium SSD) </br> Ugyanaz a rendelkezésre állási zóna (ultra SSD) |Rendelkezésre állási készletek és rendelkezésre állási zónák|Rendelkezésre állási csoportok |
 |**A FileStream támogatása**|Igen|Nem|Igen |
 |**Azure BLOB-gyorsítótár**|Nem|Nem|Igen|
 
@@ -69,12 +70,16 @@ Az [Azure Shared Disks](../../../virtual-machines/disks-shared.md) az [Azure Man
 - Támogatja a közös Azure prémium SSD és az Azure Ultra Disk Storage használatát.
 - Egyetlen megosztott lemezt vagy több megosztott lemezt is használhat egy megosztott tároló létrehozásához. 
 - Támogatja a FileStream.
+- A prémium SSD-k támogatják a rendelkezésre állási csoportokat. 
 
 
 **Korlátozások**: 
-- A virtuális gépeket ugyanahhoz a rendelkezésre állási csoporthoz és közelségi helyhez kell helyezni.
-- A rendelkezésre állási zónák nem támogatottak.
+- Azt javasoljuk, hogy a virtuális gépeket ugyanabban a rendelkezésre állási csoportba és Proximity elhelyezési csoportba helyezze.
+- Az ultra-lemezek nem támogatják a rendelkezésre állási csoportokat. 
+- A rendelkezésre állási zónák Ultra-lemezek esetén támogatottak, de a virtuális gépeknek ugyanabban a rendelkezésre állási zónában kell lenniük, ami csökkenti a virtuális gép rendelkezésre állását. 
+- A kiválasztott hardveres rendelkezésre állási megoldástól függetlenül a feladatátvevő fürt rendelkezésre állása mindig 99,9% Az Azure-beli megosztott lemezek használata esetén. 
 - Prémium SSD lemez gyorsítótárazása nem támogatott.
+
  
 Első lépésként tekintse meg [SQL Server feladatátvevő fürt példányát az Azure Shared Disks szolgáltatással](failover-cluster-instance-azure-shared-disks-manually-configure.md). 
 

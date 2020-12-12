@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.custom: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 56509bfcd267a590946eb750bd74ce1f67aecc00
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 2fb9677f0874de1fb715082d58a0e354880e654b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556403"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358078"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Egy prémium szintű fájlmegosztás (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -69,11 +70,11 @@ A cikkben szereplő utasítások elvégzése előtt a következőket kell tennie
 1. [Adja hozzá a feladatátvételi fürtszolgáltatást az egyes virtuális gépekhez](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms).
 
    Ha a felhasználói felületen szeretné telepíteni a feladatátvételi fürtszolgáltatást, tegye a következőket mindkét virtuális gépen:
-   1. A **Kiszolgálókezelőben** válassza a **kezelés** , majd a **szerepkörök és szolgáltatások hozzáadása** lehetőséget.
+   1. A **Kiszolgálókezelőben** válassza a **kezelés**, majd a **szerepkörök és szolgáltatások hozzáadása** lehetőséget.
    1. A **szerepkörök és szolgáltatások hozzáadása** varázslóban kattintson a **tovább** gombra, amíg ki nem **választja a funkciókat**.
    1. A **szolgáltatások kiválasztása** területen válassza a **feladatátvételi fürtszolgáltatás** lehetőséget. Adja meg az összes szükséges funkciót és a felügyeleti eszközöket. 
    1. Válassza a **szolgáltatások hozzáadása** lehetőséget.
-   1. Válassza a **tovább** , majd a **Befejezés** lehetőséget a funkciók telepítéséhez.
+   1. Válassza a **tovább**, majd a **Befejezés** lehetőséget a funkciók telepítéséhez.
 
    A feladatátvételi fürtszolgáltatás PowerShell használatával történő telepítéséhez futtassa a következő parancsfájlt egy rendszergazdai PowerShell-munkamenetből az egyik virtuális gépen:
 
@@ -88,17 +89,17 @@ Ellenőrizze a fürtöt a felhasználói felületen vagy a PowerShell használat
 
 A fürt a felhasználói felületen való ellenőrzéséhez tegye a következőket az egyik virtuális gépen:
 
-1. A **Kiszolgálókezelő** területen válassza az **eszközök** , majd a **Feladatátvevőfürt-kezelő** lehetőséget.
-1. A **Feladatátvevőfürt-kezelő** alatt válassza a **művelet** , majd a **Konfiguráció ellenőrzése** lehetőséget.
-1. Válassza a **Tovább** gombot.
+1. A **Kiszolgálókezelő** területen válassza az **eszközök**, majd a **Feladatátvevőfürt-kezelő** lehetőséget.
+1. A **Feladatátvevőfürt-kezelő** alatt válassza a **művelet**, majd a **Konfiguráció ellenőrzése** lehetőséget.
+1. Kattintson a **Tovább** gombra.
 1. A **kiszolgálók vagy fürt kijelölése** területen adja meg mindkét virtuális gép nevét.
 1. A **tesztelési beállítások** területen válassza a **csak a kiválasztott tesztek futtatása** lehetőséget. 
-1. Válassza a **Tovább** gombot.
+1. Kattintson a **Tovább** gombra.
 1. A **teszt kiválasztása** területen válassza a minden teszt lehetőséget a **tárolás** és a **közvetlen tárolóhelyek** kivételével, ahogy az itt látható:
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Fürt-ellenőrzési tesztek kiválasztása":::
 
-1. Válassza a **Tovább** gombot.
+1. Kattintson a **Tovább** gombra.
 1. A **megerősítés** területen válassza a **tovább** lehetőséget.
 
 A **Konfiguráció ellenőrzése** varázsló futtatja az ellenőrző teszteket.
@@ -149,7 +150,7 @@ Konfigurálja az üzleti igényeknek leginkább megfelelő kvórum megoldást. B
 
 ## <a name="test-cluster-failover"></a>Fürt feladatátvételének tesztelése
 
-Tesztelje a fürt feladatátvételét. A **Feladatátvevőfürt-kezelőban** kattintson a jobb gombbal a fürtre, válassza a **További műveletek**  >  csomópontot az **alapszintű fürt erőforrásainak**  >  **kiválasztásához** , majd válassza ki a fürt másik csomópontját. Helyezze át az alapszintű fürt erőforrását a fürt minden csomópontjára, majd helyezze vissza az elsődleges csomópontra. Ha sikeresen át tudja helyezni a fürtöt az egyes csomópontokra, készen áll a SQL Server telepítésére.  
+Tesztelje a fürt feladatátvételét. A **Feladatátvevőfürt-kezelőban** kattintson a jobb gombbal a fürtre, válassza a **További műveletek**  >  csomópontot az **alapszintű fürt erőforrásainak**  >  **kiválasztásához**, majd válassza ki a fürt másik csomópontját. Helyezze át az alapszintű fürt erőforrását a fürt minden csomópontjára, majd helyezze vissza az elsődleges csomópontra. Ha sikeresen át tudja helyezni a fürtöt az egyes csomópontokra, készen áll a SQL Server telepítésére.  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Fürt feladatátvételének tesztelése az alapvető erőforrás más csomópontokra való áthelyezésével":::
 
@@ -178,7 +179,7 @@ Miután konfigurálta a feladatátvevő fürtöt, létrehozhatja a SQL Server-t.
 
 1. Miután a telepítő telepíti a (z)-t az első csomóponton, csatlakozzon a második csomóponthoz RDP használatával.
 
-1. Nyissa meg a **SQL Server telepítési központot** , majd válassza a **telepítés** lehetőséget.
+1. Nyissa meg a **SQL Server telepítési központot**, majd válassza a **telepítés** lehetőséget.
 
 1. Válassza **a csomópont hozzáadása SQL Server feladatátvevő fürthöz** lehetőséget. A varázsló utasításait követve telepítse a SQL Servert, és adja hozzá a kiszolgálót a modulhoz.
 

@@ -4,16 +4,16 @@ description: Ez a cikk a azcopy másolási parancsra vonatkozó tudnivalókat ta
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512154"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356174"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -275,6 +275,8 @@ Fájlok és könyvtárak átvitele az Azure Storage-fiókba, valamint a megadott
 **– Súgó**  a másoláshoz.
 
 **--include-After** karakterlánc csak azokat a fájlokat tartalmazza, amelyek a megadott dátum/idő után vagy után módosultak. Az értéknek ISO8601 formátumúnak kell lennie. Ha nincs megadva timezone, az érték a AzCopy-t futtató gép helyi időzónájában lesz feltételezve. például UTC- `2020-08-19T15:04:00Z` időre vagy `2020-08-19` éjfélre (00:00) a helyi időzónában. A AzCopy 10,5-as verzióban ez a jelző csak a fájlokra, a mappákra vonatkozik, így a mappa tulajdonságai nem lesznek átmásolva, ha ezzel a jelzővel a vagy a kapcsolót használja `--preserve-smb-info` `--preserve-smb-permissions`
+
+ **--a-include-Before** karakterlánc csak azokat a fájlokat tartalmazza, amelyeket a megadott dátum/idő előtt vagy után módosítottak. Az értéknek ISO8601 formátumúnak kell lennie. Ha nincs megadva timezone, az érték a AzCopy-t futtató gép helyi időzónájában lesz feltételezve. Például `2020-08-19T15:04:00Z` UTC-időre vagy `2020-08-19` éjfélre (00:00) a helyi időzónában. A AzCopy 10,7-es verziójától kezdve ez a jelző csak a fájlokra, a mappákra vonatkozik, így a mappa tulajdonságai nem lesznek átmásolva, ha a jelzőt a vagy a paranccsal használja `--preserve-smb-info` `--preserve-smb-permissions` .
 
 **--include-attributes** sztring (csak Windows) olyan fájlokat tartalmaz, amelyek attribútumai megegyeznek az attribútumok listájával. Például: A; S R
 

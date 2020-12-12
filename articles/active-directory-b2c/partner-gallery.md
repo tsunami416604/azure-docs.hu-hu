@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbcb3367f4a1b99ae6689a5d9fa33b7629145ead
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 4592742b99d7c3e915c31ca5a202355d32e76d68
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092572"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356123"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
 
@@ -51,6 +51,7 @@ Microsoft-partnerek a következő ISV-val az MFA-és jelszó-alapú hitelesíté
 |:-------------------------|:--------------|
 | ![Képernyőkép egy hypr-emblémáról](./media/partner-gallery/hypr-logo.png) | A [Hypr](./partner-hypr.md) egy jelszóval nem kompatibilis hitelesítésszolgáltató, amely a nyilvános kulcsú titkosítással rendelkező jelszavakat a csalások, az adathalászat és a hitelesítő adatok újrafelhasználásának megszüntetésével váltja fel. |
 | ![Képernyőkép egy itsme-emblémáról](./media/partner-gallery/itsme-logo.png) | a [itsme](./partner-itsme.md) egy elektronikus azonosítási, hitelesítési és megbízhatósági szolgáltatás (eiDAS) által kompatibilis digitális azonosító megoldás, amely lehetővé teszi a felhasználók számára, hogy a kártyák olvasói, jelszavas, kétfaktoros hitelesítés és több PIN-kód nélkül is biztonságosan bejelentkezzenek. |
+| ![A Nevis emblémájának képernyőképe](./media/partner-gallery/nevis-logo.png) | A [Nevis](./partner-nevis.md) lehetővé teszi a jelszó-alapú hitelesítést, és mobil-első, teljesen márkás végfelhasználói élményt nyújt a Nevis hozzáférési alkalmazással az erős ügyfél-hitelesítéshez és a PSD2 tranzakciós követelményeinek teljesítéséhez. |
 | ![Képernyőkép egy trusona-emblémáról](./media/partner-gallery/trusona-logo.png) | A [Trusona](./partner-trusona.md) -integráció segítségével biztonságosan bejelentkezhet, és engedélyezheti a jelszó nélküli hitelesítést, az MFA-t és a digitális licencek vizsgálatát. |
 | ![Képernyőkép egy twilio-emblémáról.](./media/partner-gallery/twilio-logo.png) | A [Twilio ellenőrzi](./partner-twilio.md) , hogy az alkalmazás több megoldással teszi lehetővé az MFA SMS egyszeri jelszavas (OTP), az időalapú egyszeri jelszó (TOTP) és a leküldéses értesítések használatát, valamint a PSD2 vonatkozó SCA-követelmények betartását. |
 | ![Képernyőkép egy typingDNA-emblémáról](./media/partner-gallery/typingdna-logo.png) | A [TypingDNA](./partner-twilio.md) lehetővé teszi, hogy a felhasználó gépelési mintáját elemezze erős ügyfél-hitelesítésre. Lehetővé teszi a vállalatok számára a csendes MFA használatát, és megfelel a PSD2-re vonatkozó SCA-követelményeknek. |

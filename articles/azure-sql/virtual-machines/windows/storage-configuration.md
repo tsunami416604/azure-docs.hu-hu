@@ -7,17 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 3a4b7d68d7cd21ccb4b7eb8b97e0d331fb236e96
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d713faf7062f82110be5fa8378faca368b9bb7a2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146722"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356714"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Tárolási konfiguráció SQL Server rendszerű virtuális gépekhez
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,7 +55,7 @@ A lemez konfigurációja teljesen testreszabható, így beállíthatja a SQL Ser
 
 Ezen kívül lehetősége van a lemezek gyorsítótárazásának beállítására is. Az Azure-beli virtuális gépek többrétegű gyorsítótárazási technológiával rendelkeznek, amelyet a [prémium szintű lemezek](../../../virtual-machines/disks-types.md#premium-ssd)használatakor használ a [blob cache](../../../virtual-machines/premium-storage-performance.md#disk-caching) . A blob cache a virtuális gép RAM és a helyi SSD kombinációját használja a gyorsítótárazáshoz. 
 
-A prémium SSD lemezes gyorsítótárazása *readonly* , *READWRITE* vagy *none* lehet. 
+A prémium SSD lemezes gyorsítótárazása *readonly*, *READWRITE* vagy *none* lehet. 
 
 - A *readonly* gyorsítótárazás nagyon hasznos SQL Server Premium Storage tárolt adatfájlok esetében. Az *írásvédett* gyorsítótárazási szolgáltatás alacsony olvasási késést, nagy olvasási IOPS és átviteli sebességet biztosít, olvasások a gyorsítótárból, amely a virtuális gép memóriájában és a helyi SSD-n belül található. Ezek az olvasások sokkal gyorsabbak, mint az Azure Blob Storage-ból származó adatlemezek olvasása. A Premium Storage nem számítja ki a gyorsítótárból kiszolgált adatokat a lemez IOPS és az átviteli sebesség felé. Ezért az Ön megfelelője magasabb teljes IOPS és átviteli sebesség elérésére képes. 
 - *Nincs* szükség gyorsítótár-konfigurációra a SQL Server naplófájlt futtató lemezekhez, mivel a naplófájlt a rendszer szekvenciálisan írja le, és nem használja az *írásvédett* gyorsítótárazást. 
@@ -62,7 +63,7 @@ A prémium SSD lemezes gyorsítótárazása *readonly* , *READWRITE* vagy *none*
 
 
    > [!TIP]
-   > Győződjön meg arról, hogy a tárolási konfiguráció megfelel a kiválasztott virtuálisgép-méret által támasztott korlátozásoknak. A virtuálisgép-méretet meghaladó tárolási paraméterek kiválasztásakor a következő hibaüzenetet fogja eredményezni: `The desired performance might not be reached due to the maximum virtual machine disk performance cap.` . Csökkentse a IOPs a lemez típusának módosításával, vagy növelje a teljesítmény korlátját a virtuális gép méretének növelésével. 
+   > Győződjön meg arról, hogy a tárolási konfiguráció megfelel a kiválasztott virtuálisgép-méret által támasztott korlátozásoknak. A virtuálisgép-méretet meghaladó tárolási paraméterek kiválasztásakor a rendszer figyelmeztetést eredményez: `The desired performance might not be reached due to the maximum virtual machine disk performance cap` . Csökkentse a IOPs a lemez típusának módosításával, vagy növelje a teljesítmény korlátját a virtuális gép méretének növelésével. Ez nem fogja leállítani a kiépítés kihelyezését. 
 
 
 A lehetőségek alapján az Azure a következő tárolási konfigurációs feladatokat hajtja végre a virtuális gép létrehozása után:
@@ -140,7 +141,7 @@ Az Azure a következő beállítások használatával hozza létre a tárolót S
 
 Az alábbi táblázat az elérhető három munkaterhelés-típust és a hozzájuk tartozó optimalizálási lehetőségeket ismerteti:
 
-| Munkaterhelés típusa | Description | Optimalizálás |
+| Munkaterhelés típusa | Leírás | Optimalizálás |
 | --- | --- | --- |
 | **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb munkaterhelést |Nincsenek |
 | **Tranzakciós feldolgozás** |Optimalizálja a tárolót a hagyományos adatbázis-OLTP számítási feladatokhoz |Nyomkövetési jelző 1117<br/>Nyomkövetési jelző 1118 |

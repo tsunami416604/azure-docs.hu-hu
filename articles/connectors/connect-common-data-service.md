@@ -1,22 +1,25 @@
 ---
-title: Kapcsolódás Common Data Servicehoz
-description: Common Data Service-rekordok létrehozása és kezelése Azure Logic Apps használatával
+title: Kapcsolódás Common Data Servicehoz (Microsoft Dataverse)
+description: Common Data Service-(Microsoft-Dataverse-) rekordok létrehozása és kezelése Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 12/11/2020
 tags: connectors
-ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b17c3d54b7065a18e015363a0362766f844e4e10
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334582"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355120"
 ---
-# <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Rekordok létrehozása és kezelése Common Data Serviceban Azure Logic Apps használatával
+# <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Rekordok létrehozása és kezelése Common Data Serviceban (Microsoft Dataverse) a Azure Logic Apps használatával
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Common Data Service-összekötővel](/connectors/commondataservice/)olyan automatizált munkafolyamatokat hozhat létre, amelyek a [Common Data Service](/powerapps/maker/common-data-service/data-platform-intro) -adatbázisban lévő rekordokat kezelik. Ezek a munkafolyamatok létrehozhatnak rekordokat, frissíthetik a rekordokat, és egyéb műveleteket végezhetnek el. A Common Data Service adatbázisból is kérhet információt, és a kimenet elérhetővé teheti a logikai alkalmazásban használható egyéb műveletek számára. Ha például egy rekord frissül a Common Data Service adatbázisban, az Office 365 Outlook Connector használatával küldhet e-mailt.
+> [!NOTE]
+> November 2020-én átnevezték Common Data Service a Microsoft Dataverse.
+
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Common Data Service-összekötővel](/connectors/commondataservice/)olyan automatizált munkafolyamatokat hozhat létre, amelyek a [Common Data Service, a Microsoft Dataverse](/powerapps/maker/common-data-service/data-platform-intro) -adatbázisában is kezelhetik a rekordokat. Ezek a munkafolyamatok létrehozhatnak rekordokat, frissíthetik a rekordokat, és egyéb műveleteket végezhetnek el. A Common Data Service adatbázisból is kérhet információt, és a kimenet elérhetővé teheti a logikai alkalmazásban használható egyéb műveletek számára. Ha például egy rekord frissül a Common Data Service adatbázisban, az Office 365 Outlook Connector használatával küldhet e-mailt.
 
 Ez a cikk bemutatja, hogyan hozhat létre egy olyan logikai alkalmazást, amely egy új érdeklődői rekord létrehozásakor feladatsort hoz létre.
 
@@ -51,16 +54,16 @@ Ebben a példában adja hozzá a Common Data Service eseményindítót, amely ú
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Environment** | Igen | A figyelni kívánt környezet, például "Fabrikam Sales Production". További információ: [Power platform – környezetek – áttekintés](/power-platform/admin/environments-overview). |
-   | **Entitás neve** | Igen | A figyelni kívánt entitás, például "leads" |
-   | **Hatókör** | Igen | Az új rekordot létrehozó forrás, például egy felhasználó a céges egységben vagy a szervezet bármely felhasználója. Ez a példa a "Business Unit" szolgáltatást használja. |
+   | **Environment** | Yes | A figyelni kívánt környezet, például "Fabrikam Sales Production". További információ: [Power platform – környezetek – áttekintés](/power-platform/admin/environments-overview). |
+   | **Entitás neve** | Yes | A figyelni kívánt entitás, például "leads" |
+   | **Hatókör** | Yes | Az új rekordot létrehozó forrás, például egy felhasználó a céges egységben vagy a szervezet bármely felhasználója. Ez a példa a "Business Unit" szolgáltatást használja. |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Common Data Service művelet hozzáadása
 
 Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "leads" rekordhoz tartozó feladat rekordot.
 
-1. A **rekord létrehozásakor** trigger alatt válassza az **új lépés**lehetőséget.
+1. A **rekord létrehozásakor** trigger alatt válassza az **új lépés** lehetőséget.
 
 1. A keresőmezőbe írja be a `common data service` kifejezést. A műveletek listából válassza ki ezt a műveletet: **új rekord létrehozása**
 
@@ -72,8 +75,8 @@ Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "l
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Szervezet neve** | Igen | Az a környezet, amelyben létre kívánja hozni a rekordot, és nem feltétlenül ugyanazt a környezetet kell megadnia az triggerben, de ebben a példában a "Fabrikam értékesítési termelés" szerepel. |
-   | **Entitás neve** | Igen | Az entitás, amelyben létre szeretné hozni a rekordot, például "feladatok" |
+   | **Szervezet neve** | Yes | Az a környezet, amelyben létre kívánja hozni a rekordot, és nem feltétlenül ugyanazt a környezetet kell megadnia az triggerben, de ebben a példában a "Fabrikam értékesítési termelés" szerepel. |
+   | **Entitás neve** | Yes | Az entitás, amelyben létre szeretné hozni a rekordot, például "feladatok" |
    | **Tárgy** | Igen, az ebben a példában kiválasztott entitás alapján | A feladat céljával kapcsolatos rövid leírás |
    ||||
 
@@ -98,19 +101,19 @@ Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "l
 
    ![Az "új rekord létrehozása" művelet befejeződött](./media/connect-common-data-service/finished-create-record-action-details.png)
 
-1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** lehetőséget.
 
-1. A logikai alkalmazás manuális elindításához a tervező eszköztárán válassza a **Futtatás**lehetőséget. A logikai alkalmazás teszteléséhez hozzon létre egy új "leads" rekordot.
+1. A logikai alkalmazás manuális elindításához a tervező eszköztárán válassza a **Futtatás** lehetőséget. A logikai alkalmazás teszteléséhez hozzon létre egy új "leads" rekordot.
 
 ## <a name="trigger-only-on-updated-attributes"></a>Csak a frissített attribútumok esetében aktiválódik
 
 A rekordok frissítésekor futó eseményindítók esetén, például **Ha a rekord frissítésekor művelet történik** , használhat szűrési attribútumokat úgy, hogy a logikai alkalmazás csak akkor fusson, amikor a megadott attribútumok frissülnek. Ez a funkció segít megelőzni a szükségtelen logikai alkalmazások futtatását.
 
-1. Az triggerben az **új paraméter hozzáadása** listából válassza az **attribútumok szűrők**elemet.
+1. Az triggerben az **új paraméter hozzáadása** listából válassza az **attribútumok szűrők** elemet.
 
    ![Képernyőfelvétel: "a rekord frissítésekor" művelet és a megnyitott "új paraméter hozzáadása" lista a "Attribute Filters" tulajdonsággal kiválasztva.](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
 
-1. Minden **attribútum szűrő elemnél**válassza ki a frissítések figyeléséhez használni kívánt attribútumot, például:
+1. Minden **attribútum szűrő elemnél** válassza ki a frissítések figyeléséhez használni kívánt attribútumot, például:
 
    !["Attribute Filters" tulajdonság hozzáadása](./media/connect-common-data-service/when-record-updated-trigger-select-attribute-filter.png)
 
@@ -153,7 +156,7 @@ Ez a táblázat néhány mezőtípus és azon adattípusok leírását írja le,
 | Szövegmező | Egysoros szöveg | Egy olyan szöveges vagy dinamikus tartalmat igényel, amely a szöveg adattípussal rendelkezik, például a következő tulajdonságokkal: <p><p>- **Leírás** <br>- **Kategória** |
 | Egész szám mező | Egész szám | Az egész szám adattípusú egész vagy dinamikus tartalmat igényel, például ezek a tulajdonságok: <p><p>- **Készültségi százalék** <br>- **Időtartama** |
 | Dátum mező | Dátum és idő | A (z) hh/nn/YYY formátumú vagy a dátum adattípusú dinamikus tartalomra vonatkozó dátumot igényel, például ezek a tulajdonságok: <p><p>- **Létrehozva:** <br>- **Kezdési dátum** <br>- **Tényleges indítás** <br>- **Tényleges Befejezés** <br>- **Esedékesség dátuma** |
-| Egy másik entitási rekordra hivatkozó mező | Elsődleges kulcs | A rekord AZONOSÍTÓját (például GUID) és egy keresési típust is igényli, ami azt jelenti, hogy a dinamikus tartalom lista értékei nem működnek, például ezek a tulajdonságok: <p><p>- **Tulajdonos**: érvényes felhasználói azonosítónak vagy Team Record azonosítónak kell lennie. <br>- **Tulajdonos típusa**: olyan keresési típusnak kell lennie `systemusers` , mint a vagy a `teams` . <p><p>- **Kapcsolatban**: érvényes rekordazonosítónek kell lennie, például egy fiók azonosítójának vagy egy kapcsolattartói rekord azonosítójának. <br>- A **típushoz kapcsolódóan a következő**keresési típusnak kell lennie: `accounts` `contacts` , vagy, illetve. <p><p>- **Ügyfél**: érvényes rekordazonosító, például fiókazonosító vagy kapcsolattartói rekord azonosítója. <br>- **Ügyfél típusa**: a keresési típusnak (például vagy) kell lennie `accounts` `contacts` . |
+| Egy másik entitási rekordra hivatkozó mező | Elsődleges kulcs | A rekord AZONOSÍTÓját (például GUID) és egy keresési típust is igényli, ami azt jelenti, hogy a dinamikus tartalom lista értékei nem működnek, például ezek a tulajdonságok: <p><p>- **Tulajdonos**: érvényes felhasználói azonosítónak vagy Team Record azonosítónak kell lennie. <br>- **Tulajdonos típusa**: olyan keresési típusnak kell lennie `systemusers` , mint a vagy a `teams` . <p><p>- **Kapcsolatban**: érvényes rekordazonosítónek kell lennie, például egy fiók azonosítójának vagy egy kapcsolattartói rekord azonosítójának. <br>- A **típushoz kapcsolódóan a következő** keresési típusnak kell lennie: `accounts` `contacts` , vagy, illetve. <p><p>- **Ügyfél**: érvényes rekordazonosító, például fiókazonosító vagy kapcsolattartói rekord azonosítója. <br>- **Ügyfél típusa**: a keresési típusnak (például vagy) kell lennie `accounts` `contacts` . |
 ||||
 
 Ez a példa azt szemlélteti, hogy az **új rekord létrehozása** művelet hogyan hoz létre egy új "Tasks" rekordot, amely más entitás-rekordokhoz van társítva, konkrétan egy felhasználói rekorddal és egy fiók rekorddal. A művelet az adott entitás rekordjaihoz tartozó azonosítókat és keresési típusokat adja meg a releváns tulajdonságok várt adattípusának megfelelő értékek használatával.

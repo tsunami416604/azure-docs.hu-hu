@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 81a5b5d8b9cb56b41d051de52f1496e30fb4900f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: feab48f32396bcc89621433930c9a9f4689d8286
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790066"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355443"
 ---
 # <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>Oktatóanyag: rendelkezésre állási csoport manuális konfigurálása (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +30,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre always on rendelkezésre áll
 Habár ez a cikk manuálisan konfigurálja a rendelkezésre állási csoport környezetét, ez a [Azure Portal](availability-group-azure-portal-configure.md), a [PowerShell vagy az Azure CLI](availability-group-az-commandline-configure.md), illetve az Azure-gyorsindítási [sablonok](availability-group-quickstart-template-configure.md) használatával is lehetséges. 
 
 
-**Becsült időtartam** : az [Előfeltételek](availability-group-manually-configure-prerequisites-tutorial.md) teljesítése után körülbelül 30 percet vesz igénybe.
+**Becsült időtartam**: az [Előfeltételek](availability-group-manually-configure-prerequisites-tutorial.md) teljesítése után körülbelül 30 percet vesz igénybe.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -67,7 +68,7 @@ Az előfeltételek befejezését követően az első lépés egy Windows Server 
    >[!TIP]
    >Ha követte az [előfeltételeket tartalmazó dokumentumot](availability-group-manually-configure-prerequisites-tutorial.md), létrehozott egy **CORP\Install** nevű fiókot. Használja ezt a fiókot.
 
-2. A **Kiszolgálókezelő** irányítópultján válassza az **eszközök** , majd a **Feladatátvevőfürt-kezelő** lehetőséget.
+2. A **Kiszolgálókezelő** irányítópultján válassza az **eszközök**, majd a **Feladatátvevőfürt-kezelő** lehetőséget.
 3. A bal oldali ablaktáblán kattintson a jobb gombbal a **Feladatátvevőfürt-kezelő** elemre, majd válassza **a fürt létrehozása** lehetőséget.
 
    ![Fürt létrehozása](./media/availability-group-manually-configure-tutorial/40-createcluster.png)
@@ -78,8 +79,8 @@ Az előfeltételek befejezését követően az első lépés egy Windows Server 
    | --- | --- |
    | Előkészületek |Alapértelmezett beállítások használata |
    | Kiszolgálók kiválasztása |A Kiszolgálónév mezőbe írja be az első SQL Server nevet **, majd válassza** a **Hozzáadás** lehetőséget. |
-   | Érvényesítési figyelmeztetés |Válassza a **nem lehetőséget. nem igényelem a Microsoft támogatását ehhez a fürthöz, ezért nem kívánja futtatni az ellenőrző teszteket. A Tovább gombra kattintva folytassa a fürt létrehozását** . |
-   | Hozzáférési pont a fürt felügyeletéhez |Adja meg a fürt nevét, például **SQLAGCluster1** a **fürt nevében** .|
+   | Érvényesítési figyelmeztetés |Válassza a **nem lehetőséget. nem igényelem a Microsoft támogatását ehhez a fürthöz, ezért nem kívánja futtatni az ellenőrző teszteket. A Tovább gombra kattintva folytassa a fürt létrehozását**. |
+   | Hozzáférési pont a fürt felügyeletéhez |Adja meg a fürt nevét, például **SQLAGCluster1** a **fürt nevében**.|
    | Visszaigazolás |Csak akkor használja az alapértelmezett értékeket, ha tárolóhelyeket használ. Lásd a táblázatot követő megjegyzést. |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>A Windows Server feladatátvételi fürt IP-címének beállítása
@@ -89,7 +90,7 @@ Az előfeltételek befejezését követően az első lépés egy Windows Server 
 
 1. A **Feladatátvevőfürt-kezelőban** görgessen le a **fürt alapvető erőforrásai** elemre, és bontsa ki a fürt részleteit. A **hibás** állapotú **nevet** és az **IP-cím** erőforrásait is látnia kell. Az IP-cím erőforrás nem hozható online állapotba, mert a fürt ugyanahhoz az IP-címhez van hozzárendelve, mint maga a gép, ezért ez egy duplikált cím.
 
-2. Kattintson a jobb gombbal a sikertelen **IP-cím** erőforrásra, majd válassza a **Tulajdonságok parancsot** .
+2. Kattintson a jobb gombbal a sikertelen **IP-cím** erőforrásra, majd válassza a **Tulajdonságok parancsot**.
 
    ![Fürt tulajdonságai](./media/availability-group-manually-configure-tutorial/42_IPProperties.png)
 
@@ -105,7 +106,7 @@ Adja hozzá a másik SQL Server a fürthöz.
 
     ![Csomópont hozzáadása a fürthöz](./media/availability-group-manually-configure-tutorial/44-addnode.png)
 
-1. A **Csomópont hozzáadása varázslóban** válassza a **tovább** lehetőséget. A **kiszolgálók kiválasztása** lapon adja hozzá a második SQL Server. A Kiszolgálónév mezőbe írja be **a kiszolgáló nevét, majd** válassza a **Hozzáadás** lehetőséget. Ha elkészült, kattintson a **Tovább gombra** .
+1. A **Csomópont hozzáadása varázslóban** válassza a **tovább** lehetőséget. A **kiszolgálók kiválasztása** lapon adja hozzá a második SQL Server. A Kiszolgálónév mezőbe írja be **a kiszolgáló nevét, majd** válassza a **Hozzáadás** lehetőséget. Ha elkészült, kattintson a **Tovább gombra**.
 
 1. Az **érvényesítési figyelmeztetés** lapon válassza a **nem** lehetőséget (éles környezetben végezze el az ellenőrzési teszteket). Ezután válassza a **tovább** lehetőséget.
 
@@ -119,7 +120,7 @@ Adja hozzá a másik SQL Server a fürthöz.
 
 1. Kattintson a **Tovább** gombra.
 
-1. Válassza a **Befejezés** lehetőséget.
+1. Válassza a **Befejezés** gombot.
 
    Feladatátvevőfürt-kezelő azt mutatja, hogy a fürt új csomóponttal rendelkezik, és a **csomópontok** tárolóban listázza azt.
 
@@ -145,7 +146,7 @@ Ebben a példában a Windows-fürt fájlmegosztást használ a fürt Kvórumána
 
 1. A **név, leírás és beállítások területen** ellenőrizze a megosztás nevét és elérési útját. Kattintson a **Tovább** gombra.
 
-1. A **megosztott mappa engedélyeinek** beállítása **testreszabja az engedélyeket** . Válassza az **Egyéni...** lehetőséget.
+1. A **megosztott mappa engedélyeinek** beállítása **testreszabja az engedélyeket**. Válassza az **Egyéni...** lehetőséget.
 
 1. Az **engedélyek testreszabása** lapon válassza a **Hozzáadás...** lehetőséget.
 
@@ -153,7 +154,7 @@ Ebben a példában a Windows-fürt fájlmegosztást használ a fürt Kvórumána
 
    ![Győződjön meg arról, hogy a fürt létrehozásához használt fiók teljes körű vezérléssel rendelkezik](./media/availability-group-manually-configure-tutorial/50-filesharepermissions.png)
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 1. A **megosztott mappák engedélyei** területen válassza a **Befejezés** lehetőséget. Kattintson a **Befejezés gombra** .  
 
@@ -165,13 +166,13 @@ Ezután állítsa be a fürt kvórumát.
 
 1. Kapcsolódjon az első fürtcsomópont-csomóponthoz a távoli asztal használatával.
 
-1. **Feladatátvevőfürt-kezelő** kattintson a jobb gombbal a fürtre, mutasson a **További műveletek** pontra, majd válassza a **fürt kvórum beállításainak konfigurálása..** . lehetőséget.
+1. **Feladatátvevőfürt-kezelő** kattintson a jobb gombbal a fürtre, mutasson a **További műveletek** pontra, majd válassza a **fürt kvórum beállításainak konfigurálása..**. lehetőséget.
 
    ![Válassza a fürt kvórum beállításainak konfigurálása lehetőséget.](./media/availability-group-manually-configure-tutorial/52-configurequorum.png)
 
-1. A **fürt Kvórumának konfigurálása varázslóban** kattintson a **Tovább gombra** .
+1. A **fürt Kvórumának konfigurálása varázslóban** kattintson a **Tovább gombra**.
 
-1. A **kvórum konfigurációjának kiválasztása beállításnál** válassza **a tanúsító kvórum kijelölése** lehetőséget, majd kattintson a **Tovább gombra** .
+1. A **kvórum konfigurációjának kiválasztása beállításnál** válassza **a tanúsító kvórum kijelölése** lehetőséget, majd kattintson a **Tovább gombra**.
 
 1. A **kvórum tanúsító kijelölése** lapon válassza **a tanúsító fájlmegosztás konfigurálása** lehetőséget.
 
@@ -181,9 +182,9 @@ Ezután állítsa be a fürt kvórumát.
 
 1. A **tanúsító fájlmegosztás konfigurálása** területen adja meg a létrehozott megosztás elérési útját. Kattintson a **Tovább** gombra.
 
-1. Ellenőrizze a beállításokat a **megerősítéshez** . Kattintson a **Tovább** gombra.
+1. Ellenőrizze a beállításokat a **megerősítéshez**. Kattintson a **Tovább** gombra.
 
-1. Válassza a **Befejezés** lehetőséget.
+1. Válassza a **Befejezés** gombot.
 
 A fürt alapvető erőforrásai egy tanúsító fájlmegosztás használatára vannak konfigurálva.
 
@@ -191,7 +192,7 @@ A fürt alapvető erőforrásai egy tanúsító fájlmegosztás használatára v
 
 Ezután engedélyezze az **AlAlwaysOnon rendelkezésre állási csoportok** funkciót. Hajtsa végre ezeket a lépéseket mindkét SQL Serveren.
 
-1. A **kezdőképernyőn** indítsa el a **SQL Server konfigurációkezelő** .
+1. A **kezdőképernyőn** indítsa el a **SQL Server konfigurációkezelő**.
 2. A böngésző fáján válassza a **SQL Server szolgáltatások** elemet, majd kattintson a jobb gombbal a **SQL Server (MSSQLSERVER)** szolgáltatásra, és válassza a **Tulajdonságok** lehetőséget.
 3. Válassza a **AlwaysOn magas rendelkezésre állása** lapot, majd válassza az **alAlwaysOnon rendelkezésre állási csoportok engedélyezése** lehetőséget az alábbiak szerint:
 
@@ -230,7 +231,7 @@ Repeat these steps on the second SQL Server.
 1. Indítsa el az RDP-fájlt az első SQL Server egy olyan tartományi fiókkal, amely tagja a sysadmin rögzített kiszolgálói szerepkörnek.
 1. Nyissa meg SQL Server Management Studio és kapcsolódjon az első SQL Serverhoz.
 7. **Object Explorer** kattintson a jobb gombbal az **adatbázisok** elemre, és válassza az **új adatbázis** lehetőséget.
-8. Az **adatbázis neve** mezőbe írja be a **MyDB1** nevet, majd kattintson **az OK gombra** .
+8. Az **adatbázis neve** mezőbe írja be a **MyDB1** nevet, majd kattintson **az OK gombra**.
 
 ### <a name="create-a-backup-share"></a><a name="backupshare"></a> Biztonsági másolat megosztásának létrehozása
 
@@ -248,7 +249,7 @@ Repeat these steps on the second SQL Server.
 
 1. A **név, leírás és beállítások területen** ellenőrizze a megosztás nevét és elérési útját. Kattintson a **Tovább** gombra.
 
-1. A **megosztott mappa engedélyeinek** beállítása **testreszabja az engedélyeket** . Válassza az **Egyéni...** lehetőséget.
+1. A **megosztott mappa engedélyeinek** beállítása **testreszabja az engedélyeket**. Válassza az **Egyéni...** lehetőséget.
 
 1. Az **engedélyek testreszabása** lapon válassza a **Hozzáadás...** lehetőséget.
 
@@ -256,7 +257,7 @@ Repeat these steps on the second SQL Server.
 
    ![Győződjön meg arról, hogy mindkét kiszolgáló SQL Server és SQL Server Agent szolgáltatás fiókja teljes hozzáféréssel rendelkezik.](./media/availability-group-manually-configure-tutorial/68-backupsharepermission.png)
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 1. A **megosztott mappák engedélyei** területen válassza a **Befejezés** lehetőséget. Kattintson a **Befejezés gombra** .  
 
@@ -275,15 +276,15 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
 * Hozzon létre egy adatbázist az első SQL Server.
 * Készítsen mind a teljes biztonsági mentést, mind a tranzakciónapló biztonsági mentését az adatbázisból.
 * Állítsa vissza a teljes és a naplóbeli biztonsági mentést a második SQL Serverba a nem **helyreállítási** lehetőséggel.
-* Hozza létre a rendelkezésre állási csoportot ( **AG1** ) szinkron véglegesítés, automatikus feladatátvétel és olvasható másodlagos replikák létrehozásával.
+* Hozza létre a rendelkezésre állási csoportot (**AG1**) szinkron véglegesítés, automatikus feladatátvétel és olvasható másodlagos replikák létrehozásával.
 
 ### <a name="create-the-availability-group"></a>A rendelkezésre állási csoport létrehozása:
 
-1. Távoli asztali munkamenetben az első SQL Server. A SSMS **Object Explorer** kattintson a jobb gombbal a **AlwaysOn magas rendelkezésre állása** elemre, és válassza az **új rendelkezésre állási csoport varázslót** .
+1. Távoli asztali munkamenetben az első SQL Server. A SSMS **Object Explorer** kattintson a jobb gombbal a **AlwaysOn magas rendelkezésre állása** elemre, és válassza az **új rendelkezésre állási csoport varázslót**.
 
     ![Új rendelkezésre állási csoport elindítása varázsló](./media/availability-group-manually-configure-tutorial/56-newagwiz.png)
 
-2. A **Bevezetés** lapon válassza a **tovább** lehetőséget. A rendelkezésre **állási csoport nevének megadása** lapon adja meg a rendelkezésre állási **csoport nevét a** rendelkezésre állási csoport nevében. Például: **AG1** . Kattintson a **Tovább** gombra.
+2. A **Bevezetés** lapon válassza a **tovább** lehetőséget. A rendelkezésre **állási csoport nevének megadása** lapon adja meg a rendelkezésre állási **csoport nevét a** rendelkezésre állási csoport nevében. Például: **AG1**. Kattintson a **Tovább** gombra.
 
     ![Új rendelkezésre állási csoport varázsló, rendelkezésre állási csoport nevének megadása](./media/availability-group-manually-configure-tutorial/58-newagname.png)
 
@@ -309,7 +310,7 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
 
     ![Új rendelkezésre állási csoport varázsló, válassza a kezdeti adatszinkronizálás lehetőséget.](./media/availability-group-manually-configure-tutorial/66-endpoint.png)
 
-8. A **kezdeti adatszinkronizálás kiválasztása** lapon válassza a **teljes** lehetőséget, és adjon meg egy megosztott hálózati helyet. A helyhez használja a [létrehozott biztonsági mentési megosztást](#backupshare). A példában **\\ \\<először SQL Server \> \backup \\** . Kattintson a **Tovább** gombra.
+8. A **kezdeti adatszinkronizálás kiválasztása** lapon válassza a **teljes** lehetőséget, és adjon meg egy megosztott hálózati helyet. A helyhez használja a [létrehozott biztonsági mentési megosztást](#backupshare). A példában **\\ \\<először SQL Server \> \backup \\**. Kattintson a **Tovább** gombra.
 
    >[!NOTE]
    >A teljes szinkronizálás teljes biztonsági mentést készít az adatbázisról SQL Server első példányán, és visszaállítja a második példányra. Nagyméretű adatbázisok esetén a teljes szinkronizálás nem ajánlott, mert hosszú időt is igénybe vehet. Ezt az időt manuálisan is elvégezheti, ha kézzel készít biztonsági másolatot az adatbázisról, és visszaállítja azt `NO RECOVERY` . Ha az adatbázis már vissza van állítva a `NO RECOVERY` második SQL Server a rendelkezésre állási csoport konfigurálása előtt, válassza a **csak csatlakozás** lehetőséget. Ha a rendelkezésre állási csoport konfigurálása után szeretné a biztonsági mentést készíteni, válassza a **kezdeti adatszinkronizálás kihagyása** lehetőséget.
@@ -372,7 +373,7 @@ Az Azure-ban a terheléselosztó lehet standard Load Balancer vagy egy alapszint
 
    | Beállítás | Mező |
    | --- | --- |
-   | **Név** |Használjon egy szöveges nevet a terheléselosztó számára, például **sqlLB** . |
+   | **Név** |Használjon egy szöveges nevet a terheléselosztó számára, például **sqlLB**. |
    | **Típus** |Belső |
    | **Virtuális hálózat** |Használja az Azure-beli virtuális hálózat nevét. |
    | **Alhálózat** |Használja annak az alhálózatnak a nevét, amelyben a virtuális gép található.  |
@@ -395,7 +396,7 @@ A terheléselosztó konfigurálásához létre kell hoznia egy háttér-készlet
 
    ![Load Balancer keresése az erőforráscsoporthoz](./media/availability-group-manually-configure-tutorial/86-findloadbalancer.png)
 
-1. Válassza ki a terheléselosztó elemet, válassza a **háttérbeli készletek** , majd a **+ Hozzáadás** lehetőséget.
+1. Válassza ki a terheléselosztó elemet, válassza a **háttérbeli készletek**, majd a **+ Hozzáadás** lehetőséget.
 
 1. Adja meg a háttér-készlet nevét.
 
@@ -410,7 +411,7 @@ A terheléselosztó konfigurálásához létre kell hoznia egy háttér-készlet
 
 ### <a name="set-the-probe"></a>A mintavétel beállítása
 
-1. Válassza ki a terheléselosztó elemet, válassza az **állapot** -mintavételek, majd a **+ Hozzáadás** lehetőséget.
+1. Válassza ki a terheléselosztó elemet, válassza az **állapot**-mintavételek, majd a **+ Hozzáadás** lehetőséget.
 
 1. A figyelő állapotának mintavételét az alábbiak szerint állítsa be:
 
@@ -454,7 +455,7 @@ A WSFC IP-címének is szerepelnie kell a terheléselosztó számára.
 
 1. A Azure Portal nyissa meg ugyanazt az Azure Load balancert. Válassza ki a **frontend IP-konfiguráció** elemet, és válassza a **+ Hozzáadás** lehetőséget. Használja a WSFC konfigurált IP-címet a fürt alapvető erőforrásaiban. Adja meg az IP-címet statikusként.
 
-1. A terheléselosztó lapon válassza az **állapot** -mintavételek, majd a **+ Hozzáadás** lehetőséget.
+1. A terheléselosztó lapon válassza az **állapot**-mintavételek, majd a **+ Hozzáadás** lehetőséget.
 
 1. Állítsa be a WSFC-fürt alapvető IP-címének állapotát a következőképpen:
 
@@ -510,7 +511,7 @@ A SQL Server Management Studioban állítsa be a figyelő portját.
 
 1. Ekkor megjelenik a Feladatátvevőfürt-kezelőban létrehozott figyelő neve. Kattintson a jobb gombbal a figyelő nevére, és válassza a **Tulajdonságok** lehetőséget.
 
-1. A **port** mezőben határozza meg a rendelkezésre állási csoport figyelő portszámát. 1433 az alapértelmezett érték. Kattintson az **OK** gombra.
+1. A **port** mezőben határozza meg a rendelkezésre állási csoport figyelő portszámát. 1433 az alapértelmezett érték. Válassza az **OK** lehetőséget.
 
 Most már rendelkezik egy SQL Server rendelkezésre állási csoporttal a Resource Manager módban futó Azure-beli virtuális gépeken.
 

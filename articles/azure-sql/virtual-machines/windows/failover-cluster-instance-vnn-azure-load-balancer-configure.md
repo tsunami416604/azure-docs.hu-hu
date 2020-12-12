@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8f8513746271fff0ab52603e31b75304d5ebc1bf
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 5670a29e86eb201a707e5ceef28043aafe4839d9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168877"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357976"
 ---
 # <a name="configure-azure-load-balancer-for-failover-cluster-instance-vnn"></a>A feladatátvevő fürt példányának VNN Azure Load Balancer konfigurálása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +47,7 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
 
 1. A Azure Portal lépjen a virtuális gépeket tartalmazó erőforráscsoporthoz.
 
-1. Válassza a **Hozzáadás** lehetőséget. **Load Balancer**keresése az Azure Marketplace-en. Válassza a **Load Balancer**lehetőséget.
+1. Válassza a **Hozzáadás** elemet. **Load Balancer** keresése az Azure Marketplace-en. Válassza a **Load Balancer** lehetőséget.
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -71,11 +72,11 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
 
 1. Térjen vissza az Azure-erőforráscsoporthoz, amely tartalmazza a virtuális gépeket, és keresse meg az új Load balancert. Előfordulhat, hogy frissítenie kell a nézetet az erőforráscsoporthoz. Válassza ki a Load balancert.
 
-1. Válassza ki a **háttérbeli készletek**elemet, majd kattintson a **Hozzáadás**gombra.
+1. Válassza ki a **háttérbeli készletek** elemet, majd kattintson a **Hozzáadás** gombra.
 
 1. Társítsa a háttér-készletet a virtuális gépeket tartalmazó rendelkezésre állási csoporttal.
 
-1. A **célként megadott hálózati IP-konfigurációk**területen válassza a **virtuális gép** lehetőséget, és válassza ki azokat a virtuális gépeket, amelyek fürtcsomópontokként fognak részt venni. Ügyeljen arra, hogy minden olyan virtuális gépet tartalmazzon, amely a (z) vagy a rendelkezésre állási csoportot fogja tárolni.
+1. A **célként megadott hálózati IP-konfigurációk** területen válassza a **virtuális gép** lehetőséget, és válassza ki azokat a virtuális gépeket, amelyek fürtcsomópontokként fognak részt venni. Ügyeljen arra, hogy minden olyan virtuális gépet tartalmazzon, amely a (z) vagy a rendelkezésre állási csoportot fogja tárolni.
 
 1. A háttér-készlet létrehozásához kattintson **az OK gombra** .
 
@@ -83,9 +84,9 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
 
 1. A terheléselosztó ablaktáblán válassza az **állapot**-mintavételek elemet.
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
-1. Az állapot-mintavétel **hozzáadása** panelen állítsa be <span id="probe"> </span> a következő állapot-mintavételi paramétereket:
+1. Az állapot-mintavétel **hozzáadása** panelen állítsa be <span id="probe"></span> a következő állapot-mintavételi paramétereket:
 
    - **Name (név**): az állapot mintavételének neve.
    - **Protokoll**: TCP.
@@ -97,9 +98,9 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
 
 ## <a name="set-load-balancing-rules"></a>Terheléselosztási szabályok beállítása
 
-1. A terheléselosztó panelen válassza a **terheléselosztási szabályok**elemet.
+1. A terheléselosztó panelen válassza a **terheléselosztási szabályok** elemet.
 
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 
 1. Állítsa be a terheléselosztási szabály paramétereit:
 
@@ -108,7 +109,7 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
    - **Port**: a SQL Server TCP-port. Az alapértelmezett példány portja 1433.
    - **Háttér-port**: ugyanaz a port, mint a **port** értéke, ha engedélyezi a **lebegőpontos IP-címet (a közvetlen kiszolgáló visszaadása)**.
    - **Háttér-készlet**: a korábban konfigurált háttér-készlet neve.
-   - **Állapot**mintavétele: a korábban konfigurált állapot-mintavétel.
+   - **Állapot** mintavétele: a korábban konfigurált állapot-mintavétel.
    - **Munkamenet-megőrzés**: nincs.
    - **Üresjárati időkorlát (perc)**: 4.
    - **Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)**: engedélyezve.
@@ -137,10 +138,10 @@ A következő táblázat ismerteti a frissíteni kívánt értékeket:
 
 |**Érték**|**Leírás**|
 |---------|---------|
-|`Cluster Network Name`| A hálózat Windows Server feladatátvevő fürtjének neve. **Feladatátvevőfürt-kezelő**  >  **hálózatok**területen kattintson a jobb gombbal a hálózatra, és válassza a **Tulajdonságok**lehetőséget. A helyes érték az **általános** lap **név** területén található.|
-|`SQL Server FCI/AG listener IP Address Resource Name`|Az SQL Server a vagy AG figyelő IP-címéhez tartozó erőforrás neve. **Feladatátvevőfürt-kezelő**  >  **szerepkörökben**, a **kiszolgáló neve**alatt, a SQL Server-es verzió szerepkör alatt kattintson a jobb gombbal az IP-cím erőforrásra, és válassza a **Tulajdonságok**lehetőséget. A helyes érték az **általános** lap **név** területén található.|
+|`Cluster Network Name`| A hálózat Windows Server feladatátvevő fürtjének neve. **Feladatátvevőfürt-kezelő**  >  **hálózatok** területen kattintson a jobb gombbal a hálózatra, és válassza a **Tulajdonságok** lehetőséget. A helyes érték az **általános** lap **név** területén található.|
+|`SQL Server FCI/AG listener IP Address Resource Name`|Az SQL Server a vagy AG figyelő IP-címéhez tartozó erőforrás neve. **Feladatátvevőfürt-kezelő**  >  **szerepkörökben**, a **kiszolgáló neve** alatt, a SQL Server-es verzió szerepkör alatt kattintson a jobb gombbal az IP-cím erőforrásra, és válassza a **Tulajdonságok** lehetőséget. A helyes érték az **általános** lap **név** területén található.|
 |`ILBIP`|A belső terheléselosztó (ILB) IP-címe. Ez a címe a Azure Portal a ILB frontend-címeként van konfigurálva. Ez az SQL Server-es IP-cím is. **Feladatátvevőfürt-kezelő** megtalálhatja ugyanazon tulajdonságlapon, ahol a található `<SQL Server FCI/AG listener IP Address Resource Name>` .|
-|`nnnnn`|A terheléselosztó állapotának mintavételében konfigurált mintavételi port. A fel nem használt TCP-portok érvényesek.|
+|`nnnnn`|A terheléselosztó állapotának mintavételében konfigurált mintavételi port. A nem használt TCP-portok mindegyike érvényes.|
 |SubnetMask| A fürt paraméteréhez tartozó alhálózati maszk. A TCP IP-szórási címnek kell lennie: `255.255.255.255` .| 
 
 
@@ -159,9 +160,9 @@ A fürtözött erőforrás feladatátvételi tesztje a fürt működésének ell
 Tegye a következőket:
 
 1. Kapcsolódjon az egyik SQL Server fürtcsomópontok valamelyikéhez RDP használatával.
-1. Nyissa meg **Feladatátvevőfürt-kezelő**. Válassza a **szerepkörök**lehetőséget. Figyelje meg, hogy melyik csomópont tulajdonosa a SQL Server.
+1. Nyissa meg **Feladatátvevőfürt-kezelő**. Válassza a **szerepkörök** lehetőséget. Figyelje meg, hogy melyik csomópont tulajdonosa a SQL Server.
 1. Kattintson a jobb gombbal a SQL Server. 
-1. Válassza az **Áthelyezés**, majd a **lehető legjobb csomópont**lehetőséget.
+1. Válassza az **Áthelyezés**, majd a **lehető legjobb csomópont** lehetőséget.
 
 **Feladatátvevőfürt-kezelő** megjeleníti a szerepkört, és az erőforrásai offline állapotba kerülnek. Ezután az erőforrások átkerülnek a másik csomópontba, majd ismét elérhetővé válnak.
 
@@ -175,7 +176,7 @@ A kapcsolat teszteléséhez jelentkezzen be egy másik virtuális gépre ugyanab
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure SQL Server HADR szolgáltatásairól, tekintse meg a [rendelkezésre állási csoportok](availability-group-overview.md) és a [feladatátvevő fürt példánya](failover-cluster-instance-overview.md)című témakört. Megtudhatja, [Hogyan](hadr-cluster-best-practices.md) konfigurálhatja a környezetet a magas rendelkezésre álláshoz és a vész-helyreállításhoz. 
 

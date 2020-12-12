@@ -1,14 +1,14 @@
 ---
 title: Mi az az Azure Lighthouse?
 description: Az Azure Lighthouse lehetővé teszi, hogy a szolgáltatók felügyelt szolgáltatásokat nyújtsanak ügyfeleiknek magasabb szintű automatizálással és hatékonysággal.
-ms.date: 11/12/2020
+ms.date: 12/10/2020
 ms.topic: overview
-ms.openlocfilehash: a8fd796218804a79c82a5723c0e5851af359cdea
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bef6107878f36e02a896b3c38b8913ebb50169a7
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528822"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356361"
 ---
 # <a name="what-is-azure-lighthouse"></a>Mi az az Azure Lighthouse?
 
@@ -45,3 +45,4 @@ Az Azure Lighthouse több módszert is kínál az elkötelezettség és a felüg
 - Megismerheti az [Azure által delegált erőforrás-kezelés](concepts/azure-delegated-resource-management.md) részleteit.
 - Fedezze fel a [bérlők közötti felügyeleti tapasztalatokat](concepts/cross-tenant-management-experience.md).
 - Ismerje meg, hogyan [használhatja az Azure Lighthouse-t egy vállalaton belül](concepts/enterprise.md).
+- A [rendelkezésre állás](https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all) és a [FedRAMP, valamint a DoD CC SRG naplózási hatókörének](../azure-government/compliance/azure-services-in-fedramp-auditscope.md) megtekintése az Azure Lighthouse-ban.

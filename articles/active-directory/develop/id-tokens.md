@@ -14,16 +14,16 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 784f1cc7b7e063166dc1f24851ab217cef8d831a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89646595"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355647"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
-`id_tokens` az alkalmazás az [OpenID Connect](v2-protocols-oidc.md) (OIDC) folyamat részeként lesz elküldve az ügyfélalkalmazás számára. A felhasználók az oldalon vagy a hozzáférési jogkivonat helyett is elküldhetők, és az ügyfél a felhasználó hitelesítésére használja.
+`id_tokens` az alkalmazás az [OpenID Connect](v2-protocols-oidc.md) (OIDC) folyamat részeként lesz elküldve az ügyfélalkalmazás számára. Egy hozzáférési jogkivonat mellett vagy ahelyett is elküldhetők, amelyet az ügyfél a felhasználó hitelesítésére használ.
 
 ## <a name="using-the-id_token"></a>A id_token használata
 
@@ -96,7 +96,7 @@ Ez a lista azokat a JWT jogcímeket jeleníti meg, amelyek alapértelmezés szer
 
 ### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>A felhasználók megbízható azonosítására szolgáló jogcímek használata (tárgy és objektumazonosító)
 
-Amikor azonosít egy felhasználót (például megkeresi őket egy adatbázisban, vagy eldönti, hogy milyen engedélyekkel rendelkeznek), fontos, hogy olyan információkat használjon, amelyek állandó és egyedi maradnak az idő során.  A régi alkalmazások időnként olyan mezőt használnak, mint az e-mail-cím, a telefonszám vagy az egyszerű felhasználónév.  Ezek az idő múlásával változhatnak, és idővel újra felhasználhatók, amikor egy alkalmazott megváltoztatja a nevét, vagy egy alkalmazott olyan e-mail-címet kap, amely megegyezik egy korábbi, már meglévő alkalmazottal. Ezért **fontos, hogy az** alkalmazás ne használjon emberi olvasásra alkalmas adatait, hogy azonosítsa a felhasználó által olvasható, általánosságban azt jelenti, hogy valaki el fogja olvasni, és módosítani szeretné.  Ehelyett használja a OIDC standard által biztosított jogcímeket, vagy a Microsoft által biztosított kiterjesztési jogcímeket, illetve a `sub` `oid` jogcímeket.
+Amikor azonosít egy felhasználót (például megkeresi őket egy adatbázisban, vagy eldönti, hogy milyen engedélyekkel rendelkeznek), fontos, hogy olyan információkat használjon, amelyek állandó és egyedi maradnak az idő során. Az örökölt alkalmazások időnként olyan mezőket használnak, mint az e-mail-cím, a telefonszám vagy az egyszerű felhasználónév.  Ezek az idő múlásával változhatnak, és idővel újra felhasználhatók, amikor egy alkalmazott megváltoztatja a nevét, vagy egy alkalmazott olyan e-mail-címet kap, amely megegyezik egy korábbi, már meglévő alkalmazottal. Ezért **fontos, hogy az** alkalmazás ne használjon emberi olvasásra alkalmas adatait, hogy azonosítsa a felhasználó által olvasható, általánosságban azt jelenti, hogy valaki el fogja olvasni, és módosítani szeretné. Ehelyett használja a OIDC standard által biztosított jogcímeket, vagy a Microsoft által biztosított kiterjesztési jogcímeket, illetve a `sub` `oid` jogcímeket.
 
 Ha az adatokat felhasználónként szeretné tárolni, használjon `sub` vagy `oid` önállóan (amely egyedi GUID-azonosítók), és szükség esetén használja `tid` az útválasztást vagy a horizontális skálázást.  Ha a szolgáltatások között meg kell osztania az adatmegosztást, a `oid` + `tid` legjobb, ha az összes alkalmazás ugyanazokat `oid` és `tid` jogcímeket kap az adott felhasználó számára.  A `sub` Microsoft Identity platform jogcíme "pair-Wise" – a jogkivonat-címzett, a bérlő és a felhasználó kombinációja alapján egyedi.  Így az adott felhasználóhoz tartozó azonosító jogkivonatokat kérő alkalmazások különböző `sub` jogcímeket kapnak, de az adott `oid` felhasználóhoz tartozó jogcímeket is.
 

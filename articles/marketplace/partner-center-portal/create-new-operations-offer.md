@@ -1,27 +1,27 @@
 ---
-title: A Dynamics 365 for Operations ajánlat létrehozása a kereskedelmi piactéren
-description: Új Dynamics 365 for Operations ajánlat létrehozása az Azure Marketplace-en, a AppSource-on vagy a Cloud Solution Provider (CSP) programon keresztül a Microsoft partner Center kereskedelmi piactér portálján.
+title: Hozzon létre egy Dynamics 365 for Operations ajánlatot a Microsoft AppSource
+description: A Dynamics 365 for Operations ajánlat létrehozása Microsoft AppSourceban. Az ajánlatot AppSource vagy a Cloud Solution Provider (CSP) programon keresztül listázhatja vagy értékesítheti.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: navits09
 ms.author: navits
-ms.date: 06/17/2020
-ms.openlocfilehash: 1c28b4edab1e1033bf9ac7df6b1249b549bb4fe1
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 12/02/2020
+ms.openlocfilehash: bcb7f2d008c54981223b4839f9a750e6ee9ac5cc
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131513"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355145"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations-ajánlat létrehozása
 
-Ez a témakör bemutatja, hogyan hozhat létre új Dynamics 365 for Operations ajánlatot. [A Microsoft Dynamics 365 for Finance and Operations](https://dynamics.microsoft.com/finance-and-operations) egy vállalati erőforrás-tervezési (ERP) szolgáltatás, amely támogatja a fejlett pénzügyi, üzemeltetési, gyártási és ellátási láncok kezelését. A Dynamics 365 for Operations összes ajánlatának a minősítési folyamaton keresztül kell haladnia.
+Ez a cikk bemutatja, hogyan hozhat létre új Dynamics 365 for Operations ajánlatot. [A Microsoft Dynamics 365 for Finance and Operations](https://dynamics.microsoft.com/finance-and-operations) egy vállalati erőforrás-tervezési (ERP) szolgáltatás, amely támogatja a fejlett pénzügyi, üzemeltetési, gyártási és ellátási láncok kezelését. A Dynamics 365 for Operations összes ajánlatának a minősítési folyamaton keresztül kell haladnia.
 
 A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](create-account.md) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
 >[!NOTE]
-> Az ajánlat közzétételét követően az ajánlat szerkesztése csak a partner Centerben és az online áruházban lesz frissítve, miután újra beküldi az ajánlatot a kiadványba.
+> Az ajánlat közzétételét követően az ajánlat szerkesztése csak a partner Centerben és az online áruházban lesz frissítve, miután újra elküldte az ajánlatot a kiadványhoz.
 
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
@@ -31,44 +31,39 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
 
     ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-dynamics-365-operations.png)
 
-> [!NOTE]
-> Az ajánlat közzétételét követően a csak az ajánlat újbóli közzététele után az online áruházakban megjelenő szerkesztési lehetőségek jelennek meg a partner Centerben. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
-
 ## <a name="new-offer"></a>Új ajánlat
 
-Adja meg az **ajánlat azonosítóját** . Ez a fiókban található egyes ajánlatok egyedi azonosítója.
+Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
 - A közzétevő AZONOSÍTÓval összevont ajánlat AZONOSÍTÓjának 40 karakternél rövidebbnek kell lennie.
-- Csak kisbetűket és számokat használjon. Kötőjeleket és aláhúzást tartalmazhat, de nem tartalmaz szóközt. Ha például a közzétevő azonosítója testpublisherid, és itt a **test-Offer-1** értéket adja meg, az ajánlat webcíme lesz `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
-- Az ajánlat azonosítója a **Létrehozás** gombra kattintva nem módosítható.
+- Csak kisbetűket és számokat használjon. Kötőjeleket és aláhúzást tartalmazhat, de nem tartalmaz szóközt. Ha például a közzétevő azonosítója, és az ajánlat `testpublisherid` **-1 tesztet** adja meg, akkor az ajánlat webcíme lesz `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
+- Ez az azonosító nem módosítható a **Létrehozás** gombra kattintva.
 
-Adjon meg egy **ajánlat-aliast** . Ez a partner Centerben az ajánlathoz használt név.
+Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
 
 - Ez a név nem használatos a piactéren, és nem egyezik meg az ajánlat nevével és az ügyfelek számára megjelenített egyéb értékekkel.
+- A **Létrehozás** gombra kattintva ez a név nem módosítható.
 
 Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a folytatáshoz.
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
 
-### <a name="how-do-you-want-potential-customers-to-interact-with-this-listing-offer"></a>Hogyan kívánja használni a potenciális ügyfeleket a jelen tőzsdei ajánlathoz?
+### <a name="alias"></a>Alias
 
-Válassza ki az ajánlathoz használni kívánt beállítást.
+Adjon meg egy leíró nevet, amelyet a rendszer kizárólag a partner centeren belüli ajánlatra való hivatkozáshoz használ. Ez a név (előre kitöltve az ajánlat létrehozásakor megadott módon) nem lesz használatban a piactéren, és eltér az ügyfelek számára megjelenített ajánlat nevétől. Ha később szeretné frissíteni az ajánlat nevét, lépjen az [ajánlati lista](#offer-listing) oldalra.
 
-#### <a name="get-it-now-free"></a>Letöltés (ingyenes)
+### <a name="setup-details"></a>Telepítés részletei
 
-Ajánlatát ingyenesen kilistázhatja az ügyfeleknek.
+Hogyan kívánja használni a **potenciális ügyfeleket a jelen tőzsdei ajánlathoz?** válassza ki az ajánlathoz használni kívánt beállítást.
 
-#### <a name="free-trial-listing"></a>Ingyenes próbaverzió (Listázás)
+- **Töltse le most (ingyenes)** – ajánlatát ingyenesen kilistázhatja az ügyfeleknek.
+- **Ingyenes próbaverzió (Listázás)** – az ajánlat az ingyenes próbaverzióra mutató hivatkozással sorolja fel az ügyfeleket. Az ingyenes próbaverziók listáját a szolgáltatás hozza létre, felügyeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
 
-Az ingyenes próbaverzióra mutató hivatkozást tartalmazó ajánlat listázása az ügyfeleknek. Az ingyenes próbaverziók listáját a szolgáltatás hozza létre, felügyeli és konfigurálja, és nem rendelkezik a Microsoft által kezelt előfizetésekkel.
+    > [!NOTE]
+    > Az alkalmazás által a próbaverziós hivatkozáson keresztül fogadott jogkivonatok csak Azure Active Directory (Azure AD) használatával szerezhetik be a felhasználói adatokat, hogy automatizálják a fiókok létrehozását az alkalmazásban. A Microsoft-fiókok nem támogatottak a jogkivonat használatával történő hitelesítéshez.
 
-> [!NOTE]
-> Az alkalmazás által a próbaverziós hivatkozáson keresztül fogadott jogkivonatok csak Azure Active Directory (Azure AD) használatával szerezhetik be a felhasználói adatokat, hogy automatizálják a fiókok létrehozását az alkalmazásban. A Microsoft-fiókok nem támogatottak a jogkivonat használatával történő hitelesítéshez.
-
-#### <a name="contact-me"></a>Kapcsolatfelvétel
-
-Az Ügyfélkapcsolat-kezelési (CRM) rendszer csatlakoztatásával Gyűjtse össze az ügyfelek kapcsolattartási adatait. A rendszer engedélyt kér az ügyféltől az információk megosztására. Az ügyfél adatait, valamint az ajánlat nevét, AZONOSÍTÓját és Piactéri forrását, ahol az ajánlat megtalálható, a rendszer elküldi a konfigurált CRM-rendszernek. A CRM konfigurálásával kapcsolatos további információkért lásd: [ügyfél-érdeklődők](#customer-leads).
+- **Kapcsolatfelvétel** – ügyfél-kapcsolattartási adatok összegyűjtése az Ügyfélkapcsolat-kezelési (CRM) rendszer csatlakoztatásával. A rendszer engedélyt kér az ügyféltől az információk megosztására. Az ügyfél adatait, valamint az ajánlat nevét, AZONOSÍTÓját és Piactéri forrását, ahol az ajánlat megtalálható, a rendszer elküldi a konfigurált CRM-rendszernek. A CRM konfigurálásával kapcsolatos további információkért lásd: [ügyfél-érdeklődők](#customer-leads).
 
 ### <a name="test-drive"></a>Tesztelési meghajtó
 
@@ -88,7 +83,7 @@ A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 Ezen a lapon megadhatja az ajánlatnak a piactéren, az alkalmazás verziójában és az ajánlatát támogató jogi szerződésekben való csoportosításához használt kategóriákat és iparágakat.
 
-### <a name="category"></a>Kategória
+### <a name="categories"></a>Kategóriák
 
 Válassza ki a kategóriákat és alkategóriákat, hogy az ajánlatot a piactér megfelelő keresési területein helyezze el. Ügyeljen arra, hogy az ajánlata milyen módon támogassa ezeket a kategóriákat az ajánlat leírásában. A következők szerint válasszon:
 
@@ -97,9 +92,9 @@ Válassza ki a kategóriákat és alkategóriákat, hogy az ajánlatot a piacté
 
 Tekintse meg a kategóriák és alkategóriák teljes listáját az [ajánlatban az ajánlott eljárásokat felsorolva](../gtm-offer-listing-best-practices.md).
 
-### <a name="industry"></a>Iparág
+### <a name="industries"></a>Iparágak
 
-[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+[!INCLUDE [Industry Taxonomy](includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Az alkalmazás verziója
 
@@ -107,21 +102,21 @@ Adja meg az ajánlat verziószámát. Az ügyfelek ezt a verziót fogják látni
 
 ### <a name="terms-and-conditions"></a>használati feltételei
 
-A **feltételek és** kikötések mezőben adja meg a saját jogi feltételeit. Megadhatja azt az URL-címet is, ahol a feltételek és kikötések megtalálhatók. Az ügyfeleknek el kell fogadniuk ezeket a feltételeket, mielőtt kipróbálhatják az ajánlatot.
+Itt megadhatja a saját jogi feltételeit. Megadhatja azt is, hogy hol találhatók a feltételek és kikötések. Az ügyfeleknek el kell fogadniuk ezeket a feltételeket, mielőtt kipróbálhatják az ajánlatot.
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 ## <a name="offer-listing"></a>Ajánlati lista
 
-Ezen a lapon láthatók azok a nyelvek, amelyekben az ajánlat fel lesz sorolva. Jelenleg az egyetlen elérhető lehetőség az **angol (Egyesült Államok)** .
+<!--This page displays the languages in which your offer will be listed. Currently, **English (United States)** is the only available option.
 
-Meg kell határoznia a piactér részleteit (az ajánlat nevét, leírását, képeit stb.) az egyes nyelvekhez/piacokhoz. Válassza ki a nyelv/piac nevét az információ megadásához.
+Define marketplace details such as offer name, description, and images for each language/market. Select the language/market name to provide this info.-->This page lets you define offer details such as offer name, description, links, and contacts.
 
 > [!NOTE]
-> Az ajánlat tartalmának listázása (például a leírás, a dokumentumok, a képernyőképek, a használati feltételek stb.) nem kötelező angol nyelven lennie, amennyiben az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
+> Adja meg az ajánlati adatokat csak egy nyelven. Nem kell angol nyelven lennie, amíg az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] nyelven érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
 
-Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban:
-
+Íme egy példa arra, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálnak):
+<!-- update screen? -->
 :::image type="content" source="media/example-azure-marketplace-d365-operations.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat a Microsoft AppSourceban.":::
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
@@ -134,18 +129,14 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Mi
 6. Használati feltételek
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
-9. Képernyőképek/videók
-10. Leírás
+9. Leírás
+10. Képernyőképek/videók
 
-### <a name="name"></a>Név
+### <a name="marketplace-details"></a>Piactér – részletek
 
-Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
+Az itt megadott **név** jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
-### <a name="short-description"></a>Rövid leírás
-
-Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
-
-### <a name="description"></a>Leírás
+Adja meg az ajánlat rövid leírását, amely akár 100 karaktert is tartalmaz a **keresési eredmények összegzéséhez**. Ez a leírás a piactér keresési eredményeiben használható.
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -153,51 +144,38 @@ Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú l
 
 [!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
-### <a name="search-keywords"></a>Kulcsszavak keresése
+Akár három **keresési kulcsszót** is megadhat, amelyek segítségével az ügyfelek megtalálják az ajánlatot a piactéren. A legjobb eredmény érdekében ezeket a kulcsszavakat is használhatja a leírásában.
 
-Akár három keresési kulcsszót is megadhat, amelyek segítségével az ügyfelek megtalálják az ajánlatot a piactéren. A legjobb eredmények érdekében próbálja meg használni ezeket a kulcsszavakat a leírásában is.
+Ha szeretné, hogy az ügyfelek tudják, hogy **az alkalmazás melyik termékkel működik együtt**, adjon meg legfeljebb három terméknév-nevet.
 
-### <a name="products-your-app-works-with"></a>Az alkalmazás által használható termékek
+### <a name="helpprivacy-urls"></a>Súgó/adatvédelmi URL-címek
 
-Ha azt szeretné, hogy az alkalmazás az adott termékekkel működjön, adjon meg legfeljebb három terméknév-nevet.
+Adja meg az alkalmazás (URL) **Súgó hivatkozását,** ahol az ügyfelek többet tudnak nyújtani az ajánlatról. A Súgó URL-címe nem egyezhet meg a támogatási URL-címmel.
 
-### <a name="support-urls"></a>Támogatási URL-címek
+Adja meg az **adatvédelmi szabályzat hivatkozását** (URL-címét) a szervezete adatvédelmi szabályzatához. Ön felelős azért, hogy az alkalmazás megfeleljen az adatvédelmi törvényeknek és előírásoknak, valamint érvényes adatvédelmi szabályzatot biztosítson.
 
-Ez a szakasz olyan hivatkozásokat tartalmaz, amelyek segítségével az ügyfelek megismerhetik az ajánlatával kapcsolatos további információkat.
+### <a name="contact-information"></a>Kapcsolattartási adatok
 
-#### <a name="help-link"></a>Súgó hivatkozása
+Adja meg a **támogatási kapcsolattartó** nevét, e-mail-címét és telefonszámát, valamint egy **mérnöki kapcsolattartót**. Ezek az információk nem jelennek meg az ügyfelek számára, de a Microsoft számára elérhetővé válnak, és a CSP-partnerek számára is biztosítva lesznek.
 
-Adja meg azt az URL-címet, ahol az ügyfelek többet tudnak nyújtani az ajánlatról.
-
-#### <a name="privacy-policy-url"></a>Adatvédelmi szabályzat URL-címe
-
-Adja meg a szervezete adatvédelmi szabályzatának URL-címét. Ön felelős azért, hogy az alkalmazás megfeleljen az adatvédelmi törvényeknek és előírásoknak, valamint érvényes adatvédelmi szabályzatot biztosítson.
-
-### <a name="contacts"></a>Kapcsolattartók
-
-Ebben a szakaszban adja meg a **támogatási kapcsolattartó** nevét, e-mail-címét és telefonszámát, valamint egy **mérnöki kapcsolattartót** . Ezek az információk nem jelennek meg az ügyfelek számára, de a Microsoft számára elérhetővé válnak, és a CSP-partnerek számára is megadhatók.
-
-A **támogatási kapcsolattartó** szakaszban adja meg a **támogatási URL-címet** , ahol a CSP-partnerek az ajánlathoz támogatást kaphatnak.
+A **támogatási kapcsolattartó** szakaszban adja meg a **támogatási URL-címet** , ahol a CSP-partnerek az ajánlathoz támogatást kaphatnak. A támogatási URL-cím nem egyezhet meg a Súgó URL-címével.
 
 ### <a name="supporting-documents"></a>Támogató dokumentumok
 
-Adjon meg legalább egy (és legfeljebb három) kapcsolódó marketing-dokumentumot, például a tanulmányokat, a brosúrákat, a feladatlistákat és a bemutatókat. A dokumentumoknak PDF formátumúnak kell lenniük.
+Adjon meg legalább egy (és legfeljebb három) kapcsolódó marketing-dokumentumot, például a tanulmányokat, a brosúrákat, a feladatlistákat vagy a bemutatókat PDF formátumban.
 
-### <a name="marketplace-images"></a>Marketplace-rendszerképek
+### <a name="marketplace-media"></a>Piactéri adathordozó
 
-Ebben a szakaszban megadhatja azokat az emblémákat és képeket, amelyeket az ajánlat vásárlónak való megjelenítésekor használni fog. Minden képnek. png formátumúnak kell lennie.
+Adja meg azokat az emblémákat és képeket, amelyeket az ajánlat ügyfeleknek való megjelenítésekor használni fog. Minden képnek PNG formátumúnak kell lennie.
 
 [!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
-#### <a name="store-logos"></a>Emblémák tárolása
+#### <a name="logos"></a>Logók
 
-Adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni egy **kis** embléma létrehozásához. Ezt később is lecserélheti egy másik rendszerképpel.
-
-- **Nagyméretű** (216 x 216 és 350 x 350 px, kötelező)
-- **Kicsi** (48 x 48 px, opcionális)
+Adjon meg egy PNG-fájlt a **nagy** méretű emblémához. A partner Center ezt fogja használni más szükséges méretek létrehozásához. Ezt később is lecserélheti egy másik rendszerképpel.
 
 Ezeket az emblémákat a lista különböző helyein használják:
 
@@ -207,38 +185,34 @@ Ezeket az emblémákat a lista különböző helyein használják:
 
 #### <a name="screenshots"></a>Képernyőképek
 
-Képernyőképeket adhat hozzá, amelyek bemutatják, hogyan működik az ajánlata. Legalább egy képernyőképre van szükség, és legfeljebb öt adható hozzá. Minden képernyőképnek 1280 x 720 képpont-nek kell lennie.
+Képernyőképeket adhat hozzá, amelyek bemutatják, hogyan működik az ajánlata. Legalább egy képernyőképre van szükség, és legfeljebb öt adható hozzá. Minden képernyőképnek 1280 x 720 képpont és PNG formátumúnak kell lennie.
 
 #### <a name="videos"></a>Videók
 
-Opcionálisan akár négy videót is hozzáadhat az ajánlat bemutatásához. Ezeket a videókat a YouTube és/vagy a Vimeo szolgáltatásban kell üzemeltetni. Mindegyiknél írja be a videó nevét, URL-címét és a videó miniatűr képét (1280 x 720 képpont).
+Opcionálisan akár négy videót is hozzáadhat az ajánlat bemutatásához. A videókat külső helyen kell tárolni. Mindegyiknél adja meg a videó nevét, a címeit és a videó miniatűr képét (1280 x 720 képpont).
 
-#### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
-
-[Ajánlott eljárások a piactér ajánlati listáihoz](../gtm-offer-listing-best-practices.md)
+További információforrások a piactéren: ajánlott [eljárások a Piactéri ajánlatokhoz](../gtm-offer-listing-best-practices.md).
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-Ezen az oldalon megtudhatja, hol és hogyan teheti elérhetővé az ajánlatát.
+Ezen a lapon megadhatja, hogy hol és hogyan szeretné elérhetővé tenni az ajánlatot.
 
 ### <a name="markets"></a>Piacok
 
-Ebben a szakaszban megadhatja azokat a piacokat, amelyekben ajánlatának elérhetőnek kell lennie. Ehhez válassza a **piacok szerkesztése lehetőséget,** amely megjeleníti a **piac kiválasztási** felugró ablakát.
+Ha meg szeretné adni azokat a piacokat, amelyeken ajánlatának elérhetőnek kell lennie, válassza a **piacok szerkesztése** lehetőséget a **piaci kiválasztási** felugró ablak megjelenítéséhez.
 
-Alapértelmezés szerint egyetlen piac sincs kiválasztva. Válasszon ki legalább egy piacot az ajánlat közzétételéhez. Az  **összes kijelölése** lehetőségre kattintva elérhetővé teheti az ajánlatot minden lehetséges piacon, vagy kiválaszthatja azokat a kívánt piacokat, amelyeket hozzá szeretne adni. Ha elkészült, válassza a **Mentés** lehetőséget.
+Válasszon ki legalább egy piacot. Az **összes kijelölése** lehetőség kiválasztásával elérhetővé teheti az ajánlatot minden lehetséges piacon, vagy kiválaszthatja a kívánt piacokat. Ha elkészült, válassza a **Mentés** lehetőséget.
 
-Az itt megadott beállítások csak az új beszerzésekre érvényesek; Ha valaki már rendelkezik az alkalmazással egy bizonyos piacon, és később eltávolítja ezt a piacot, akkor az adott piacon már megjelenő ügyfelek továbbra is használhatják azt, de az adott piacon nem jelennek meg új ügyfelek az ajánlatának megszerzéséhez.
+Az itt megadott beállítások csak az új beszerzésekre érvényesek; Ha valaki már rendelkezik az alkalmazással egy bizonyos piacon, és később eltávolítja ezt a piacot, azok a felhasználók továbbra is használhatják ezt a piacot, de az adott piacon már nem jelennek meg új ügyfelek az ajánlatának megszerzéséhez.
 
 > [!IMPORTANT]
-> Az Ön felelőssége, hogy megfeleljen a helyi jogi követelményeknek, még akkor is, ha ezek a követelmények nem szerepelnek itt vagy a partner Centerben.
-
-Ne feledje, hogy még akkor is, ha az összes piac lehetőséget választja, a helyi törvények és korlátozások vagy egyéb tényezők megakadályozhatják bizonyos ajánlatok egyes országokban és régiókban való listázását.
+> Az Ön felelőssége, hogy megfeleljen a helyi jogi követelményeknek, még akkor is, ha ezek a követelmények nem szerepelnek itt vagy a partner Centerben. Még akkor is, ha az összes piac lehetőséget választja, a helyi törvények, korlátozások vagy egyéb tényezők miatt bizonyos ajánlatokat egyes országokban és régiókban is meg lehet akadályozni.
 
 ### <a name="preview-audience"></a>Előnézet célközönsége
 
-Mielőtt közzéteszi ajánlatát a szélesebb körű Piactéri ajánlatban, először elérhetővé kell tennie egy korlátozott **előzetes verzió célközönségét** . Itt adhatja meg az **elrejtési kulcsot** (a csak kisbetűket és/vagy számokat használó karakterláncokat). Az előzetes verzió célközönségének tagjai ezt az elrejtési kulcsot jogkivonatként használhatják a piactéren elérhető ajánlat előnézetének megtekintéséhez.
+Mielőtt közzéteszi ajánlatát a szélesebb körű Piactéri ajánlatban, először elérhetővé kell tennie egy korlátozott **előzetes verzió célközönségét**. Itt adhatja meg az **elrejtési kulcsot** (a csak kisbetűket és/vagy számokat használó karakterláncokat). Az előzetes verzió célközönségének tagjai ezt az elrejtési kulcsot jogkivonatként használhatják a piactéren elérhető ajánlat előnézetének megtekintéséhez.
 
 Ezután, amikor készen áll az ajánlat elérhetővé tételére és az előzetes verzió korlátozásának eltávolítására, el kell távolítania az **elrejteni kívánt kulcsot** , és újra közzé kell tennie.
 
@@ -255,7 +229,7 @@ Adja meg a megoldás azonosítóját (GUID).
 A megoldás azonosítójának megkeresése:
 
 1. A Microsoft Dynamics Lifecycle Services (LCS) szolgáltatásban válassza a **megoldás-kezelés** lehetőséget.
-2. Válassza ki a megoldást, majd keresse meg a **megoldás azonosítóját** a **csomag áttekintésében** . Ha az azonosító üres, válassza a **Szerkesztés** lehetőséget, és tegye közzé újra a csomagot, majd próbálkozzon újra.
+2. Válassza ki a megoldást, majd keresse meg a **megoldás azonosítóját** a **csomag áttekintésében**. Ha az azonosító üres, válassza a **Szerkesztés** lehetőséget, és tegye közzé újra a csomagot, majd próbálkozzon újra.
 
 ### <a name="release-version"></a>Kiadás verziója
 
@@ -263,17 +237,17 @@ Válassza ki a Dynamics 365-verziót a Pénzügy és a megoldás által használ
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
-## <a name="test-drive-technical-configuration"></a>Tesztverzió műszaki konfigurálása
+<!-- ## Test drive technical configuration
 
-Ezen a lapon megadható egy bemutató ("tesztelési meghajtó"), amely lehetővé teszi, hogy az ügyfelek a vásárlás előtt kipróbálják az ajánlatot. További információ: [Mi a test Drive](../what-is-test-drive.md).
+This page lets you set up a demonstration ("test drive") that allows customers to try your offer before purchasing it. Learn more in [What is test drive](../what-is-test-drive.md).
 
-A tesztelési meghajtó engedélyezéséhez jelölje be a **Test Drive engedélyezése** jelölőnégyzetet az [ajánlat telepítése](#test-drive) lapon. Ha el szeretné távolítani a tesztelési meghajtót az ajánlatból, törölje a jelet a jelölőnégyzetből.
+To enable a test drive, select the **Enable a test drive** check box on the [Offer setup](#test-drive) tab. To remove test drive from your offer, clear this check box.
 
-A tesztelési meghajtó beállítása után a folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
-
+When you've finished setting up your test drive, select **Save draft** before continuing.
+-->
 ## <a name="supplemental-content"></a>Kiegészítő tartalom
 
-Ezen az oldalon további információkat adhat meg az ajánlatáról, hogy segítsen az ajánlat érvényesítésében. Ezek az információk nem jelennek meg az ügyfelek számára, és nem jelennek meg a piactéren.
+Ezen az oldalon további információkat adhat meg, amelyek segítenek az ajánlat érvényesítésében. Ezek az információk nem jelennek meg az ügyfelek számára, és nem jelennek meg a piactéren.
 
 ### <a name="validation-assets"></a>Érvényesítési eszközök
 
@@ -285,7 +259,7 @@ Ennek a fájlnak. xls vagy. xlsx formátumúnak kell lennie. Ha több jelentés 
 
 Válassza az **Igen** lehetőséget, ha a megoldás lehetővé teszi a helyi szabványok és házirendek használatát (például ha a különböző, különböző országokban/régiókban megkövetelt bérlista-szabályokat tartalmazza). Egyéb esetben a **Nem** választógombot jelölje be.
 
-### <a name="does-solution-enable-translations"></a>Engedélyezi a megoldás a fordításokat?
+### <a name="does-solution-enable-translations"></a>Engedélyezi a megoldás a fordítás (oka) t?
 
 Válasz **Igen** , ha a megoldás szövege más nyelvekre is fordítható. Egyéb esetben a **Nem** választógombot jelölje be.
 
@@ -295,17 +269,17 @@ A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 ### <a name="submit-offer-to-preview"></a>Ajánlat beküldése az előzetes verzióra
 
-Miután elvégezte az ajánlat összes szükséges részét, válassza a **felülvizsgálat és közzététel** elemet a portál jobb felső sarkában.
+Az ajánlat összes szükséges részének befejezése után válassza a **felülvizsgálat és közzététel** elemet a portál jobb felső sarkában.
 
 Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 
 - Tekintse meg az ajánlat egyes szakaszainak befejezési állapotát.
-    - **Nincs elindítva** – a szakasz nincs megérintve, és el kell végezni.
-    - **Hiányos** – a szakasznak olyan hibákkal kell rendelkeznie, amelyeket meg kell oldani, vagy további információkat kell megadnia. Térjen vissza a szakasz (ok) hoz, és frissítse azt.
-    - **Complete (Befejezés** ) – a szakasz elkészült, az összes szükséges adattal megadták, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
+    - **Nem indult** – a szakasz nem lett megérintve, ezért be kell fejezni.
+    - **Hiányos** – a szakasz olyan hibákat tartalmaz, amelyeket meg kell oldani, vagy további információra van szükség. Térjen vissza a szakasz (ok) hoz, és frissítse azt.
+    - **Complete (kész** ) – a szakasz befejeződött, az összes szükséges információ megadásra került, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
 - A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett. További információ a tesztelési utasításokról és az első közzététel befejezéséről: [AppSource Dynamics 365 pénzügyi és üzemeltetési funkciók ellenőrzése](../dynamics-365-finance-operations-functional-validation.md).
-- Küldje el az ajánlatot közzétételre a **Submit (Küldés** ) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvánosságra való közzétételéhez.
+- Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. E-mailben küldünk Önnek, ha az ajánlat előzetes verziója elérhető a felülvizsgálathoz és jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvános közzétételéhez.
 
-## <a name="next-step"></a>Következő lépés
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

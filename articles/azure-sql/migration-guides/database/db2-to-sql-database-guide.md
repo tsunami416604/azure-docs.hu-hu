@@ -1,5 +1,5 @@
 ---
-title: DB2 – SQL Database – áttelepítési útmutató
+title: 'DB2 – SQL Database: áttelepítési útmutató'
 description: Kövesse ezt az útmutatót a DB2-adatbázisok Azure SQL Databaseba való átirányításához.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 369f17a39b9d7b2f85fffb8b72a293558d16416e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 3e216c4aeb8d1206011ff9cca2d80900c23b2399
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325162"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356344"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>Áttelepítési útmutató: DB2 – SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ Az értékelés létrehozásához kövesse az alábbi lépéseket:
 
 1. Nyissa meg SQL Server Migration Assistant (SSMA) a DB2-hez. 
 1. Válassza a **fájl** , majd az **új projekt** lehetőséget. 
-1. Adja meg a projekt nevét, a kívánt helyet a projekt mentéséhez, majd válassza a Azure SQL Database az áttelepítési célként lehetőséget a legördülő menüből. Kattintson az **OK** gombra.  
+1. Adja meg a projekt nevét, a kívánt helyet a projekt mentéséhez, majd válassza a Azure SQL Database az áttelepítési célként lehetőséget a legördülő menüből. Válassza az **OK** lehetőséget.  
 
    :::image type="content" source="media/db2-to-sql-database-guide/new-project.png" alt-text="Adja meg a projekt részleteit, és kattintson az OK gombra a mentéshez.":::
 
@@ -102,7 +102,7 @@ A séma konvertálásához kövesse az alábbi lépéseket:
 1. Mentse a projektet helyileg a kapcsolat nélküli séma szervizelési gyakorlatához. Válassza a **projekt mentése** lehetőséget a **fájl** menüből. 
 
 
-## <a name="migrate"></a>Migrálás
+## <a name="migrate"></a>Migrate
 
 Miután elvégezte az adatbázisok értékelését és az eltérések kezelését, a következő lépés az áttelepítési folyamat végrehajtása.
 
@@ -169,7 +169,7 @@ Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egyik mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, lásd: [szolgáltatás és eszközök az adatok áttelepítéséhez](../../../dms/dms-tools-matrix.md).
 

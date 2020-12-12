@@ -9,16 +9,17 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
+ms.subservice: management
 ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 37f6e60aea033dee8adfd66839c82b9fd165c879
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: da136c1f3ce36bf85592c3c73c9e8f92c41c7442
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556274"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357908"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure-beli, SQL-t futtató virtuális gépek licencmodelljének módosítása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -75,7 +76,7 @@ A licencelési modellt közvetlenül a portálról is módosíthatja:
 
 Az Azure CLI használatával módosíthatja a licenc modelljét.  
 
-Adja meg a következő értékeket a **licencelési típushoz** :
+Adja meg a következő értékeket a **licencelési típushoz**:
 - `AHUB` a Azure Hybrid Benefit
 - `PAYG` utólagos fizetésért
 - `DR` az ingyenes HA/DR replika aktiválása
@@ -91,7 +92,7 @@ az sql vm update -n <VMName> -g <ResourceGroupName> --license-type <license-type
 
 A PowerShell segítségével módosíthatja a licenc modelljét.
 
-Adja meg a következő értékeket a **licencelési típushoz** :
+Adja meg a következő értékeket a **licencelési típushoz**:
 - `AHUB` a Azure Hybrid Benefit
 - `PAYG` utólagos fizetésért
 - `DR` az ingyenes HA/DR replika aktiválása
@@ -143,7 +144,7 @@ Ez a hiba olyan virtuális gépeken fordul elő, amelyek egynél több hálózat
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkat az következő cikkekben talál: 
+További információért tekintse át a következő cikkeket: 
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)

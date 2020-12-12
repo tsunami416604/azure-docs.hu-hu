@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40751b7864cc62d17836ab6d57cd106f6904f64a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 788512db242bf1a1c6f18ffc0ee773bd3372aa42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744108"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355868"
 ---
 # <a name="data-residency-and-customer-data-for-azure-ad-multi-factor-authentication"></a>Adattárolási és ügyféladatok az Azure AD Multi-Factor Authentication
 
@@ -57,7 +57,7 @@ Az Azure nyilvános felhők esetében, az Azure B2C hitelesítés, az NPS-bőví
 | Értesítés Microsoft Authenticator | Multi-Factor Authentication naplókban<br />Multi-Factor Authentication tevékenység jelentés adattár<br />Letiltott felhasználók, ha csalás jelentett<br />Módosítási kérelmek Microsoft Authenticator eszköz-jogkivonat módosításakor |
 
 > [!NOTE]
-> A Multi-Factor Authentication tevékenység jelentés adattárat az összes felhők Egyesült Államok tárolja, a hitelesítési kérést feldolgozó régiótól függetlenül. Microsoft Azure Germany, a 21Vianet által üzemeltetett Microsoft Azure és a Microsoft Government Cloud saját független adattárakat használ a nyilvános Felhőbeli adattáraktól, azonban ezeket az adatok mindig a Egyesült Államok tárolják.
+> A Multi-Factor Authentication tevékenység jelentés adattárat az összes felhők Egyesült Államok tárolja, a hitelesítési kérést feldolgozó régiótól függetlenül. Microsoft Azure Germany, a 21Vianet által üzemeltetett Microsoft Azure és a Microsoft Government Cloud saját független adattárakat használ a nyilvános Felhőbeli adattáraktól, azonban ezeket az adatok mindig a Egyesült Államok tárolják. Ezek az adattárak személyes azonosításra alkalmas adatokat tartalmaznak, például az egyszerű felhasználónevet (UPN) és a teljes telefonszámot. 
 
 Microsoft Azure Government, Microsoft Azure Germany, Microsoft Azure 21Vianet, Azure B2C hitelesítés, NPS-bővítmény és Windows Server 2016 vagy 2019 AD FS adapter esetében a következő személyes adattárolók tárolódnak:
 
@@ -104,6 +104,6 @@ A naplófájlok tárolási helyétől függ, hogy a rendszer melyik régióból 
 
 Néhány alapszintű hitelesítési naplót csak a Egyesült Államok tárol. A 21Vianet által üzemeltetett Microsoft Azure Germany és Microsoft Azure mindig a saját felhőben tárolódnak. A Microsoft Government Cloud log-adatkészleteket a rendszer mindig a Egyesült Államok tárolja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy a felhőalapú Azure AD-Multi-Factor Authentication és az Azure-Multi-Factor Authentication-kiszolgáló milyen felhasználói adatokat gyűjtenek, lásd: [Azure ad-multi-Factor Authentication felhasználói adatok gyűjtése](howto-mfa-reporting-datacollection.md).

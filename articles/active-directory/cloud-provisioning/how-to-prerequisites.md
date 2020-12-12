@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173702"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355857"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Az Azure AD Connect felhőalapú jogosultságkiosztás előfeltételei
 Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőalapú kiépítés a személyazonossági megoldáshoz való kiválasztásához és használatához.
@@ -51,11 +51,23 @@ A [IdFix eszköz](/office365/enterprise/prepare-directory-attributes-for-synch-w
 
 ### <a name="in-your-on-premises-environment"></a>Helyszíni környezetben
 
-1. Azonosítson egy Windows Server 2012 R2 vagy újabb rendszert futtató, tartományhoz csatlakoztatott gazdagépet legalább 4 GB RAM-mal és .NET 4.7.1 + futtatókörnyezettel.
+ 1. Azonosítson egy Windows Server 2012 R2 vagy újabb rendszert futtató, tartományhoz csatlakoztatott gazdagépet legalább 4 GB RAM-mal és .NET 4.7.1 + futtatókörnyezettel.
 
-1. A helyi kiszolgálón található PowerShell végrehajtási házirendet nem definiált vagy RemoteSigned értékre kell beállítani.
+ >[!NOTE]
+ > Vegye figyelembe, hogy egy hatókör-szűrő definiálása esetén a rendszer memóriába kerül a gazdagépen.  Ha nincs megadva hatókör-szűrő, a rendszer nem használ extra memóriát. A 4 GB-os minimum a hatókör-szűrőben definiált legfeljebb 12 szervezeti egység szinkronizálását fogja támogatni. Ha további szervezeti egységeket szeretne szinkronizálni, növelje a minimálisan szükséges memória mennyiségét. Használja az alábbi táblázatot útmutatóként:
+ >
+ >  
+ >  | Szervezeti egységek száma a hatóköri szűrőben| minimálisan szükséges memória|
+ >  | --- | --- |
+ >  | 12| 4 GB|
+ >  | 18|5,5 GB|
+ >  | 28|10 + GB|
+ >
+ > 
 
-1. Ha tűzfal található a kiszolgálók és az Azure AD között, konfigurálja a következő elemeket:
+ 2. A helyi kiszolgálón található PowerShell végrehajtási házirendet nem definiált vagy RemoteSigned értékre kell beállítani.
+
+ 3. Ha tűzfal található a kiszolgálók és az Azure AD között, konfigurálja a következő elemeket:
    - Győződjön meg arról, hogy az ügynökök az alábbi portokon keresztül tehetnek *kimenő* kéréseket az Azure ad-nek:
 
         | Portszám | Használatuk módja |
@@ -100,7 +112,20 @@ A TLS 1,2 engedélyezéséhez kövesse az alábbi lépéseket.
 
 1. Indítsa újra a kiszolgálót.
 
+## <a name="known-limitations"></a>Ismert korlátozások
+A következő ismert korlátozások érvényesek:
 
+### <a name="delta-synchronization"></a>Különbözeti szinkronizálás
+
+- A csoport hatókör-szűrése a különbözeti szinkronizáláshoz nem támogatja a 1500-nál több tagot.
+- Ha egy csoport-hatóköri szűrő részeként használt csoportot töröl, a csoportba tartozó felhasználók nem lesznek törölve. 
+- Ha átnevezi a hatókörben lévő szervezeti egységet vagy csoportot, a különbözeti szinkronizálás nem fogja eltávolítani a felhasználókat.
+
+### <a name="provisioning-logs"></a>Üzembehelyezési naplók
+- A kiépítési naplók nem különböztetik meg egyértelműen a létrehozási és frissítési műveletek közötti különbséget.  A létrehozáshoz egy frissítéshez és egy frissítési művelethez is megjelenhet egy létrehozási művelet.
+
+### <a name="group-re-naming-or-ou-re-naming"></a>Csoportos Átnevezés vagy szervezeti egység átnevezése
+- Ha olyan csoportot vagy szervezeti egységet nevez át az AD-ben, amely egy adott konfiguráció hatókörében van, akkor a felhőalapú kiépítési feladatok nem tudják felismerni a nevet az AD-ben. A feladatokra nem kerül a karanténba helyezés, és kifogástalan marad.
 
 
 ## <a name="next-steps"></a>Következő lépések 

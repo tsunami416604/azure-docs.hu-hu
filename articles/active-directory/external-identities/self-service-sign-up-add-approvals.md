@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82f0408b7e46493f6c3ec62d48a992e87f196f78
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 3165bc28e6d6283bf8578d9c10b11f7b19981002
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860609"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355239"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Egyéni jóváhagyási munkafolyamat hozzáadása az önkiszolgáló regisztrációhoz
 
@@ -26,6 +26,9 @@ Ez a cikk bemutatja, hogyan integrálható egy jóváhagyási rendszerrel. Ebben
 
 - Automatikusan hagyja jóvá a felhasználót, és engedélyezze az Azure AD számára a felhasználói fiók létrehozását.
 - Manuális áttekintést indíthat. Ha a kérést jóváhagyják, a jóváhagyási rendszer a Microsoft Graph használatával kiépíti a felhasználói fiókot. A jóváhagyási rendszer azt is értesíti a felhasználót, hogy a fiókja létrejött.
+
+> [!IMPORTANT]
+>**2021. január 4-én kezdődően** a Google [elavult webnézet-bejelentkezési támogatást jelenít meg](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Ha Google-összevonást vagy önkiszolgáló regisztrációt használ a Gmail szolgáltatással, az üzletági [natív alkalmazásokat tesztelje a kompatibilitás](google-federation.md#deprecation-of-webview-sign-in-support)érdekében.
 
 ## <a name="register-an-application-for-your-approval-system"></a>Alkalmazás regisztrálása a jóváhagyási rendszerhez
 
@@ -86,7 +89,7 @@ Most adja hozzá az API-összekötőket önkiszolgáló bejelentkezési felhaszn
 
    ![API-k hozzáadása a felhasználói folyamathoz](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>A regisztrációs folyamat kezelése API-válaszokkal
 
@@ -320,13 +323,13 @@ Content-type: application/json
 
 | Paraméter                                           | Kötelező | Leírás                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName                                   | Igen      | A az `email` API-nak eljuttatott jogcím alapján hozható létre, és a karaktert lecseréli a `@` `_` értékre, és előre függőben kell lennie `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled                                      | Igen      | Értékre kell állítani `true` .                                                                                                                                                 |
-| Levelezés                                                | Igen      | Az `email` API-nak eljuttatott jogcímet.                                                                                                               |
-| userType                                            | Igen      | Kell lennie `Guest` . A felhasználó kijelölése vendég felhasználóként.                                                                                                                 |
-| identitások                                          | Igen      | Az összevont identitás adatai.                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | Nem       | Egyéb beépített attribútumok `displayName` , például,, `city` és mások. A paraméterek nevei ugyanazok, mint az API-összekötő által eljuttatott paraméterek.                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | Nem       | A felhasználó egyéni attribútumai. A paraméterek nevei ugyanazok, mint az API-összekötő által eljuttatott paraméterek.                                                            |
+| userPrincipalName                                   | Yes      | A az `email` API-nak eljuttatott jogcím alapján hozható létre, és a karaktert lecseréli a `@` `_` értékre, és előre függőben kell lennie `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Yes      | Értékre kell állítani `true` .                                                                                                                                                 |
+| Levelezés                                                | Yes      | Az `email` API-nak eljuttatott jogcímet.                                                                                                               |
+| userType                                            | Yes      | Kell lennie `Guest` . A felhasználó kijelölése vendég felhasználóként.                                                                                                                 |
+| identitások                                          | Yes      | Az összevont identitás adatai.                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | No       | Egyéb beépített attribútumok `displayName` , például,, `city` és mások. A paraméterek nevei ugyanazok, mint az API-összekötő által eljuttatott paraméterek.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | A felhasználó egyéni attribútumai. A paraméterek nevei ugyanazok, mint az API-összekötő által eljuttatott paraméterek.                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Összevont Azure Active Directory-felhasználó esetén
 

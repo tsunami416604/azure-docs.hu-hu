@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: ca782e9949f990857db408919cac342d7f712d2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c92aa3b35240831fad14919dc73609d803c610a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272616"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358214"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>A szolgáltatás együttműködése SQL Server a & DNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -71,7 +72,7 @@ Ha az alapértelmezett 1433-as port, akkor kihagyhatja a portot az URL-címben. 
 
 A replikáció három összetevőből áll: közzétevő, terjesztő, előfizető. Ezen összetevők bármelyike lehet feladatátvevő fürt példánya. Mivel a VNN-t a replikálási konfigurációban nagy mértékben használják, explicit módon és implicit módon, a replikálás működéséhez szükség lehet egy olyan hálózati aliasra, amely leképezi a VNN a DNN. 
 
-A replikáció *konfigurálása előtt*ne használja a VNN-nevet a replikációban, hanem hozzon létre egy hálózati aliast a következő távoli helyzetekben:
+A replikáció *konfigurálása előtt* ne használja a VNN-nevet a replikációban, hanem hozzon létre egy hálózati aliast a következő távoli helyzetekben:
 
 | **Replikációs összetevő (DNN-sel)** | **Távoli összetevő** | **Hálózati aliasok térképe** | **Kiszolgáló hálózati térképpel**| 
 |---------|---------|---------|-------- | 
@@ -86,7 +87,7 @@ Tegyük fel például, hogy rendelkezik egy olyan közzétevővel, amely a DNN h
 
 Egy megnevezett példány teljes példányának nevét használhatja, például az alábbi ábrát: 
 
-:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="Konfigurálja a DNN DNS-nevet hálózati aliasként a SQL Server Konfigurációkezelő használatával." :::
+:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="A megnevezett példányok hálózati aliasának konfigurálásakor használja a teljes példány nevét." :::
 
 ## <a name="database-mirroring"></a>Adatbázis-tükrözés
 
@@ -174,7 +175,7 @@ Ezután hozzon létre egy hálózati aliast a leképezéshez `vnnname\insta1` `d
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkért lásd: 
+További információ: 
 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

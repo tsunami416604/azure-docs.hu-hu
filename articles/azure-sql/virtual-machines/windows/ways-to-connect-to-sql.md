@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f8bee990074debf09cc9bfd19f96470a029b50c9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 28b68178b98e53b7a7d4192ad20c05a667344969
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793126"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356721"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Kapcsolódás SQL Server Azure-beli virtuális géphez
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -65,7 +66,7 @@ Bármely internet-hozzáféréssel rendelkező ügyfél csatlakozhat a SQL Serve
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
 ```
 
-Bár ez a karakterlánc lehetővé teszi az ügyfelekhez való kapcsolódást az interneten keresztül, ez nem jelenti azt, hogy bárki csatlakozhat a SQL Server-példányhoz. Az ügyfeleken kívül a megfelelő felhasználónevet és jelszót kell használniuk. A további biztonság érdekében azonban elkerülheti a jól ismert 1433-as portot is. Ha például az 1500-es port figyelésére, valamint a megfelelő tűzfal-és hálózati biztonsági csoportokra vonatkozó szabályok megadására vonatkozó SQL Server konfigurálását választotta, akkor a portszámnak a kiszolgálónévhez való hozzáfűzésével kapcsolódhat. Az alábbi példa az előzőt változtatja meg az **1500** -as számú egyéni portszám hozzáadásával a kiszolgálónévhez:
+Bár ez a karakterlánc lehetővé teszi az ügyfelekhez való kapcsolódást az interneten keresztül, ez nem jelenti azt, hogy bárki csatlakozhat a SQL Server-példányhoz. Az ügyfeleken kívül a megfelelő felhasználónevet és jelszót kell használniuk. A további biztonság érdekében azonban elkerülheti a jól ismert 1433-as portot is. Ha például az 1500-es port figyelésére, valamint a megfelelő tűzfal-és hálózati biztonsági csoportokra vonatkozó szabályok megadására vonatkozó SQL Server konfigurálását választotta, akkor a portszámnak a kiszolgálónévhez való hozzáfűzésével kapcsolódhat. Az alábbi példa az előzőt változtatja meg az **1500**-as számú egyéni portszám hozzáadásával a kiszolgálónévhez:
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
@@ -119,7 +120,7 @@ Először kapcsolódjon a SQL Server virtuális géphez a távoli asztal haszná
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
-Ezután engedélyezze a TCP/IP protokollt **SQL Server konfigurációkezelő** .
+Ezután engedélyezze a TCP/IP protokollt **SQL Server konfigurációkezelő**.
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 

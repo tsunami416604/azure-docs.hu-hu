@@ -1,14 +1,14 @@
 ---
 title: Szolgáltatói tevékenység megtekintése
 description: Az ügyfelek megtekinthetik a naplózott tevékenységeket a szolgáltatók által az Azure-beli delegált erőforrás-kezelésen keresztül végrehajtott műveletek megtekintéséhez.
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dcf177cc41dac846d096607445ff4c3d433620ca
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371086"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356378"
 ---
 # <a name="view-service-provider-activity"></a>Szolgáltatói tevékenység megtekintése
 
@@ -42,6 +42,12 @@ További információ: [műveletnapló riasztások létrehozása és kezelése](
 Létrehozhat lekérdezéseket a naplózott tevékenység elemzéséhez, vagy adott elemekre koncentrálhat. Előfordulhat például, hogy egy naplózáshoz jelentést kell készítenie az előfizetésen végrehajtott összes felügyeleti szintű műveletről. Létrehozhat egy lekérdezést, amely csak ezeket a műveleteket szűri, és az eredményeket felhasználó, dátum vagy más érték szerint rendezi.
 
 További információ: [Azure monitorban található naplók áttekintése](../../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="view-user-activity-across-domains"></a>Felhasználói tevékenységek megtekintése tartományokon keresztül
+
+Az egyes felhasználók tevékenységeit több tartományból is megtekintheti, ha a [tevékenység naplóit a tartományi](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) minta munkafüzetben használja
+
+Az eredmények tartománynév alapján szűrhetők. További szűrőket is alkalmazhat, például kategóriát, szintet vagy erőforráscsoportot.
 
 ## <a name="next-steps"></a>Következő lépések
 

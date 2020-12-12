@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 03/19/2020
+ms.date: 12/11/2020
 tags: active-directory
 ms.author: mimart
 author: msmimart
@@ -14,19 +14,20 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 681f5a6cecd43eb69adf24544c774cbd22da8a49
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: ebe34de0fa7847a23d9335dcdb0a38a33e006fdc
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860541"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355205"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B-együttműködés hibaelhárítása
 
 Íme néhány jogorvoslat az Azure Active Directory (Azure AD) B2B-együttműködés gyakori problémáira.
 
    > [!IMPORTANT]
-   > **2021. március 31-ig** a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
+   > - **2021. január 4-én kezdődően** a Google [elavult webnézet-bejelentkezési támogatást jelenít meg](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Ha Google-összevonást vagy önkiszolgáló regisztrációt használ a Gmail szolgáltatással, az üzletági [natív alkalmazásokat tesztelje a kompatibilitás](google-federation.md#deprecation-of-webview-sign-in-support)érdekében.
+   > - **2021. március 31-ig** a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Hozzáadtam egy külső felhasználót, de nem látják őket a globális címjegyzékben vagy a People Picker
 
@@ -101,7 +102,7 @@ Ha az identitás bérlője egy igény szerinti (JIT) vagy vírusos bérlő (azaz
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>A vendég felhasználó nem tudja használni a AzureAD PowerShell v1-modult
 
-November 18-án 2019-én a címtárban található vendég felhasználók a AzureAD PowerShell v1 modullal le vannak tiltva a **userType** tulajdonságot futtató felhasználói fiókok. **Guest** A jövőben a felhasználónak **egy tagnak (** ahol a **userType** egyenlőnek kell lennie) vagy a AzureAD PowerShell V2 modullal kell rendelkeznie.
+November 18-án 2019-én a címtárban található vendég felhasználók a AzureAD PowerShell v1 modullal le vannak tiltva a **userType** tulajdonságot futtató felhasználói fiókok.  A jövőben a felhasználónak **egy tagnak (** ahol a **userType** egyenlőnek kell lennie) vagy a AzureAD PowerShell V2 modullal kell rendelkeznie.
 
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>Egy Azure-beli Egyesült államokbeli kormányzati bérlő nem hívhat meg VÁLLALATKÖZI együttműködési vendég felhasználót
 

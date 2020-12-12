@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: f31cf22ae8814975dcee92c33026d223275cf121
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f319f912520a69a0c68f89a3d4178f63cc45ca1f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376209"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356548"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>Metrikák feltöltése a Azure Monitorba
 
@@ -47,7 +47,7 @@ Az SPN-szolgáltató URL-címének beállítása környezeti változóban:
 ::: zone pivot="client-operating-system-windows-command"
 
 ```console
-SET SPN_AUTHORITY='https://login.microsoftonline.com'
+SET SPN_AUTHORITY=https://login.microsoftonline.com
 ```
 
 ::: zone-end
@@ -126,7 +126,7 @@ Az Azure arc használatára képes SQL felügyelt példányok és az Azure arc e
    >[!NOTE]
    >Várjon legalább 30 percet, miután az Azure ív használatára jogosult adatpéldányok létre lettek hozva az első feltöltéshez.
    >
-   >Győződjön `upload` meg arról, hogy a metrikák a Azure monitor után azonnal `export` , csak az elmúlt 30 percben fogadják el a metrikákat. [További információk](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting).
+   >Győződjön `upload` meg arról, hogy a metrikák a Azure monitor után azonnal `export` , csak az elmúlt 30 percben fogadják el a metrikákat. [További információ](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting).
 
 
 Ha az exportálás során "nem sikerült beolvasni a mérőszámokat" hibaüzenet jelenik meg, ellenőrizze, hogy az adatgyűjtés a `true` következő parancs futtatásával van-e beállítva:

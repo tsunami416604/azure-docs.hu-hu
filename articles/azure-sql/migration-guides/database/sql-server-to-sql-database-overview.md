@@ -1,5 +1,5 @@
 ---
-title: SQL Server a SQL Database – áttelepítési áttekintés
+title: 'SQL Server a SQL Databasehoz: áttelepítési áttekintés'
 description: Ismerje meg a SQL Server-adatbázisok Azure SQL Databaseba való átadásához rendelkezésre álló különböző eszközöket és lehetőségeket.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 46216fe06e3d3425d5b237cdbb7326eed596945a
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2d668775e8d11faa0b2913cebc41e5217b49c278
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326930"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357328"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Áttelepítési Áttekintés: SQL Server SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -209,7 +209,7 @@ További segítségért tekintse meg az alábbi, a valós migrációs projektekh
 Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált adatsql ninja program részeként lettek kifejlesztve. Az adatelemzési program alapszintű alapokmánya az, hogy feloldja az összetett modernizációt, és az adatplatform-migrációs lehetőségeket a Microsoft Azure-beli adatplatformján is felgyorsítja. Ha úgy gondolja, hogy a szervezete szeretne részt venni az adatsql ninja programban, forduljon a fiókhoz, és kérje meg, hogy küldje el a jelölést.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SQL Server Azure SQL Databasere való áttelepítésének megkezdéséhez tekintse meg az [SQL Server SQL Database áttelepítési útmutatót](sql-server-to-sql-database-guide.md).
 

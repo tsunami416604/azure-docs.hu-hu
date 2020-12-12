@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a9289fad6f7ae1030628bedcf1a62cacc0b1e23a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564480"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358010"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Virtuális gépek előkészítése a (z) rendszerhez (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,19 +48,22 @@ A feladatátvételi fürtszolgáltatás megköveteli, hogy a virtuális gépek e
 
 Körültekintően válassza ki a virtuális gép rendelkezésre állási beállítását, amely megfelel a kívánt fürtkonfiguráció: 
 
- - **Azure Shared Disks** : a tartalék tartományhoz konfigurált [rendelkezésre állási](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) csoport és a frissítési tartomány 1 értékre van állítva, és egy [közelségi elhelyezési csoportba](../../../virtual-machines/windows/proximity-placement-groups-portal.md)kerül.
- - **Prémium fájlmegosztás** : [rendelkezésre állási csoport](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) vagy [rendelkezésre állási zóna](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address). Ha a rendelkezésre állási zónákat a virtuális gépek rendelkezésre állási konfigurációjaként választja, a prémium fájlmegosztás az egyetlen megosztott tárolási beállítás. 
- - **Közvetlen tárolóhelyek** : [rendelkezésre állási csoport](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
+- **Azure megosztott lemezek**: a rendelkezésre állási lehetőség akkor változik, ha prémium SSD-ket vagy UltraDisk használ:
+   - Prémium SSD: a [rendelkezésre állási](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) csoport a prémium SSD-k különböző meghibásodási/frissítési tartományokban található, a [közelségi elhelyezési csoportokba](../../../virtual-machines/windows/proximity-placement-groups-portal.md)helyezve.
+   - Ultra Disk: [rendelkezésre állási zóna](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) , de a virtuális gépeket ugyanabban a rendelkezésre állási zónában kell elhelyezni, amely a fürt rendelkezésre állását a 99,9%-ra csökkenti. 
+- **Prémium fájlmegosztás**: [rendelkezésre állási csoport](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) vagy [rendelkezésre állási zóna](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address).
+- **Közvetlen tárolóhelyek**: [rendelkezésre állási csoport](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
 
->[!IMPORTANT]
->A virtuális gép létrehozása után a rendelkezésre állási csoport nem állítható be és nem módosítható.
+> [!IMPORTANT]
+> A virtuális gép létrehozása után a rendelkezésre állási csoport nem állítható be és nem módosítható.
 
 ## <a name="create-the-virtual-machines"></a>A virtuális gépek létrehozása
 
 A virtuális gép rendelkezésre állásának konfigurálása után készen áll a virtuális gépek létrehozására. Választhat, hogy olyan Azure Marketplace-rendszerképet szeretne használni, amely SQL Server már telepítve van vagy sem. Ha azonban az Azure-beli virtuális gépeken SQL Server rendszerképet választ, akkor a feladatátvevő fürt példányának konfigurálása előtt el kell távolítania a SQL Servert a virtuális gépről. 
 
 ### <a name="considerations"></a>Megfontolandó szempontok
-Azure IaaS virtuális gépek vendég feladatátvevő fürtjein kiszolgálónként (fürtcsomópontonként) egyetlen hálózati adapter és egyetlen alhálózat használatát javasoljuk. Az Azure-hálózatkezelés fizikai redundanciával rendelkezik, ami felesleges hálózati adaptereket és alhálózatokat tesz lehetővé az Azure IaaS VM-vendég fürtön. Bár a fürtellenőrzési jelentés figyelmeztetést küld, amely szerint a csomópontok csak egyetlen hálózaton érhetők el, ez a figyelmeztetés nyugodtan figyelmen kívül hagyható az Azure IaaS virtuális gépek vendég feladatátvevő fürtjein.
+
+Egy Azure-beli virtuális gép vendég feladatátvevő fürtön egyetlen NIC-kiszolgálót (fürtcsomópont) és egyetlen alhálózatot ajánlunk. Az Azure-hálózatkezelés fizikai redundanciával rendelkezik, ami felesleges hálózati adaptereket és alhálózatokat tesz lehetővé az Azure IaaS VM-vendég fürtön. Bár a fürtellenőrzési jelentés figyelmeztetést küld, amely szerint a csomópontok csak egyetlen hálózaton érhetők el, ez a figyelmeztetés nyugodtan figyelmen kívül hagyható az Azure IaaS virtuális gépek vendég feladatátvevő fürtjein.
 
 Mindkét virtuális gép elhelyezése:
 
@@ -96,7 +100,7 @@ A bővítményből való regisztráció törlése után eltávolíthatja SQL Ser
 
       ![Funkciók kiválasztása](./media/failover-cluster-instance-prepare-vm/03-remove-features.png)
 
-   1. Válassza a **tovább** , majd az **Eltávolítás** lehetőséget.
+   1. Válassza a **tovább**, majd az **Eltávolítás** lehetőséget.
    1. A példány sikeres eltávolítása után indítsa újra a virtuális gépet. 
 
 ## <a name="open-the-firewall"></a>A tűzfal megnyitása 
@@ -107,11 +111,11 @@ Az egyes virtuális gépeken nyissa meg a SQL Server által használt Windows t�
 
 Ez a tábla a szükséges portokat részletezi az Ön által megnyitható portoktól függően: 
 
-   | Rendeltetés | Port | Jegyzetek
+   | Cél | Port | Jegyzetek
    | ------ | ------ | ------
-   | SQL Server | TCP 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot. </br> </br> **Felhasználta** : az összes%-os konfiguráció. |
-   | Állapotadat-mintavétel | TCP 59999 | Bármilyen nyitott TCP-port. Konfigurálja a terheléselosztó [állapotának](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) mintavételét és a fürtöt a port használatára. </br> </br> **A** (z): a Load Balancer használatával. |
-   | Fájlmegosztás | UDP 445 | A fájlmegosztási szolgáltatás által használt port. </br> </br> **A** (z): verzió prémium fájlmegosztás használatával. |
+   | SQL Server | TCP 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot. </br> </br> **Felhasználta**: az összes%-os konfiguráció. |
+   | Állapotadat-mintavétel | TCP 59999 | Bármilyen nyitott TCP-port. Konfigurálja a terheléselosztó [állapotának](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) mintavételét és a fürtöt a port használatára. </br> </br> **A**(z): a Load Balancer használatával. |
+   | Fájlmegosztás | UDP 445 | A fájlmegosztási szolgáltatás által használt port. </br> </br> **A**(z): verzió prémium fájlmegosztás használatával. |
 
 ## <a name="join-the-domain"></a>Csatlakozás a tartományhoz
 

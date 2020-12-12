@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7008cfcdeb4615b42839f92a6df71357f9acf911
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2c9c4cd643e2e4b89f9a7d8f44a6569d0dde2b37
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484991"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357381"
 ---
 # <a name="storage-account-overview"></a>Tárfiókok áttekintése
 
@@ -32,7 +32,7 @@ Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb
 
 - Blobok (az összes típus: letiltás, Hozzáfűzés, lap)
 - Data Lake Gen2
-- Fájlok
+- Files
 - Lemezek
 - Üzenetsorok
 - Táblák
@@ -49,12 +49,12 @@ Az általános célú v2 Storage-fiókok több hozzáférési szintet is kínál
 Az általános célú v1 Storage-fiókok hozzáférést biztosítanak az összes Azure Storage-szolgáltatáshoz, de nem rendelkezhetnek a legújabb szolgáltatásokkal, illetve a legalacsonyabb/gigabájt díjszabással. Az általános célú v1 Storage-fiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
 
 - Blobok (az összes típus)
-- Fájlok
+- Files
 - Lemezek
 - Üzenetsorok
 - Táblák
 
-A legtöbb esetben az általános célú v2-fiókokat kell használnia. Az alábbi forgatókönyvekhez használhatja az általános célú v1-fiókokat:
+A Microsoft az általános célú v2-fiókokat javasolja a legtöbb forgatókönyvhöz. Az alábbi forgatókönyvekhez használhatja az általános célú v1-fiókokat:
 
 - Alkalmazásaihoz a klasszikus Azure-telepítési modell szükséges. Az általános célú v2-fiókok és a blob Storage-fiókok csak a Azure Resource Manager telepítési modellt támogatják.
 
@@ -152,7 +152,7 @@ A következő módszerek bármelyikével biztosíthat hozzáférést a Storage-f
 
 - **Azure Active Directory:** Használjon Azure Active Directory (Azure AD) hitelesítő adatokat egy felhasználó, csoport vagy más identitás hitelesítéséhez a blob-és üzenetsor-adatokhoz való hozzáféréshez. Ha az identitás hitelesítése sikeres, az Azure AD visszaadja az Azure Blob Storage-ba vagy a várólista-tárolóba való kérelem engedélyezéséhez használandó tokent. További információ: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).
 - **Megosztott kulcs engedélyezése:** Használja a Storage-fiók hozzáférési kulcsát olyan kapcsolati karakterlánc létrehozásához, amelyet az alkalmazás a futásidőben használ az Azure Storage eléréséhez. A kapcsolódási karakterláncban szereplő értékek az Azure Storage-nak átadott *engedélyezési* fejléc összeállítására szolgálnak. További információ: az [Azure Storage-beli kapcsolatok karakterláncának konfigurálása](storage-configure-connection-string.md).
-- **Közös hozzáférési aláírás:** Ha nem az Azure AD-hitelesítést használja, közös hozzáférésű aláírással delegálhatja a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírások olyan tokenek, amelyek az URL-címen az Azure Storage-ba irányuló kérések engedélyezéséhez szükséges összes információt beágyazzák. Megadhatja a tárolási erőforrást, a megadott engedélyeket, valamint azt az időközt, ameddig az engedélyek érvényesek a közös hozzáférési aláírás részeként. További információ: [Shared Access Signatures (SAS) használata](storage-sas-overview.md).
+- **Közös hozzáférési aláírás:** A közös hozzáférésű aláírás (SAS) egy olyan token, amely lehetővé teszi az erőforrásokhoz való delegált hozzáférést a Storage-fiókban. Az SAS-jogkivonat az URL-címen az Azure Storage-ba irányuló kérés engedélyezéséhez szükséges összes információt beágyazza. SAS létrehozásakor megadhatja, hogy az SAS milyen engedélyeket biztosítson az erőforrásnak, és az engedélyek érvényességi időtartamát. SAS-tokent az Azure AD hitelesítő adataival vagy megosztott kulccsal lehet aláírni. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md).
 
 > [!NOTE]
 > Az Azure AD-beli hitelesítő adatokkal rendelkező felhasználók vagy alkalmazások hitelesítése kiváló biztonságot és könnyű használatot biztosít más engedélyezési módokon. Habár továbbra is használhatja a megosztott kulcsos engedélyezést az alkalmazásokkal, az Azure AD megkerülésével megkerüli a fiók hozzáférési kulcsának a kóddal való tárolásának szükségességét. Továbbra is használhatja a közös hozzáférésű aláírásokat (SAS) a Storage-fiók erőforrásaihoz való részletes hozzáférés biztosításához, de az Azure AD hasonló képességeket kínál, anélkül, hogy az SAS-tokeneket kellene kezelnie, vagy nem kell aggódnia a sérült SAS visszavonásával kapcsolatban.
@@ -188,7 +188,9 @@ Az Azure Storage REST APIával kapcsolatos további információkért lásd: az 
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tárfiók létrehozása](storage-account-create.md)
 - [Blokkblob-tárfiók létrehozása](../blobs/storage-blob-create-account-block-blob.md)
+- [Frissítés általános célú v2-tárfiókra](storage-account-upgrade.md)
+- [Törölt tárfiók helyreállítása](storage-account-recover.md)

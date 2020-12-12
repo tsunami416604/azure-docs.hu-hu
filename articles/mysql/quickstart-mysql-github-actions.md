@@ -7,16 +7,19 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 57e740e6c47d9518c12a49473e103d0abe772618
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fb5396fae4676d85f67e98bb333cd58324d5a4e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337013"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357569"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Rövid útmutató: a GitHub-műveletek használata az Azure MySQL-hez való kapcsolódáshoz
 
-Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/actions) egy munkafolyamattal, amely az adatbázis-frissítések [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)való üzembe helyezésére használható. 
+**A** következőkre vonatkozik: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – egyetlen kiszolgáló :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – rugalmas kiszolgáló
+
+Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/actions) egy munkafolyamattal, amely az adatbázis-frissítések [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)való üzembe helyezésére használható.
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -67,6 +70,11 @@ A kimenet egy JSON-objektum, amely a szerepkör-hozzárendelés hitelesítő ada
 ## <a name="copy-the-mysql-connection-string"></a>A MySQL-kapcsolatok karakterláncának másolása 
 
 A Azure Portal lépjen a Azure Database for MySQL-kiszolgálóhoz, és nyissa meg a **Beállítások**  >  **kapcsolódási karakterláncokat**. Másolja az **ADO.NET** kapcsolati sztringet. Cserélje le a és a helyőrző értékét `your_database` `your_password` . A kapcsolódási karakterlánc ehhez hasonlóan fog kinézni. 
+
+> [!IMPORTANT]
+> - Egyetlen kiszolgáló esetén használja az **UID adminusername@servername =**. Vegye figyelembe **@servername** , hogy a szükséges.
+> - Rugalmas kiszolgáló esetén használja a **UID = AdminUsername** -t a nélkül @servername . Vegye figyelembe, hogy a MySQL rugalmas kiszolgáló előzetes verzióban érhető el. 
+
 
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;
@@ -188,7 +196,7 @@ A kapcsolatok karakterláncát GitHub-titokként fogja használni.
 
 Ha az Azure MySQL-adatbázisra és-tárházra már nincs szükség, távolítsa el az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-tárház törlésével. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg az Azure-t és a GitHub-integrációt](/azure/developer/github/)

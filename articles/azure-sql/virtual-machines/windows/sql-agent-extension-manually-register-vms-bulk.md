@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -13,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 208df7ad53049598255ce358f2db128ba84fea9a
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 558daede55f6563155d3f54e97d77c0a3ca4de59
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557630"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357228"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Több SQL virtuális gép regisztrálása az Azure-ban az SQL IaaS-ügynök bővítménnyel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +40,7 @@ A regisztrációs folyamat nem jár kockázattal, nincs leállás, és nem indí
 A SQL Server VM a bővítménysel való regisztrálásához a következőkre lesz szüksége: 
 
 - Olyan [Azure-előfizetés](https://azure.microsoft.com/free/) , amely [regisztrálva van a **Microsoft. SqlVirtualMachine** szolgáltatónál](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp) , és nem regisztrált SQL Server virtuális gépeket tartalmaz. 
-- A virtuális gépek regisztrálásához használt ügyfél-hitelesítő adatok a következő Azure-szerepkörök valamelyikében találhatók: **virtuális gép közreműködője** , **közreműködője** vagy **tulajdonosa**. 
+- A virtuális gépek regisztrálásához használt ügyfél-hitelesítő adatok a következő Azure-szerepkörök valamelyikében találhatók: **virtuális gép közreműködője**, **közreműködője** vagy **tulajdonosa**. 
 - Az az [PowerShell (5,0 minimum)](/powershell/azure/new-azureps-module-az)legújabb verziója. 
 
 
@@ -239,7 +240,7 @@ Másolja a teljes parancsfájlt, és mentse azt `RegisterSqLVMs.psm1` .
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkat az következő cikkekben talál: 
+További információért tekintse át a következő cikkeket: 
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)

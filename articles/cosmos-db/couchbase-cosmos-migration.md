@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 73d6fe0233eccea9ebf1d82beb509c56fb45f4da
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e84b80233d87ac4ae5e2281b506e225c4ab1bd9d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339512"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357602"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrálás a CouchBase-ből Azure Cosmos DB SQL API-ba
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,7 @@ Az alábbi főbb funkciók a Couchbase képest eltérő módon működnek Azure 
 
 * Azure Cosmos DB nem szükséges, hogy a legfelső szintű hierarchia szerepeljen a gyűjteményben, mert a gyűjtemény neve már létezik. Ez a funkció sokkal egyszerűbbé teszi a JSON-struktúrát. Az alábbi példa az adatmodellben a Couchbase és a Azure Cosmos DB közötti különbségeket mutatja:
 
-   **Couchbase** : dokumentum azonosítója = "99FF4444"
+   **Couchbase**: dokumentum azonosítója = "99FF4444"
 
     ```json
     {
@@ -69,7 +69,7 @@ Az alábbi főbb funkciók a Couchbase képest eltérő módon működnek Azure 
     }
    ```
 
-   **Azure Cosmos db** : Tekintse meg az "azonosító" kifejezést a dokumentumban az alább látható módon
+   **Azure Cosmos db**: Tekintse meg az "azonosító" kifejezést a dokumentumban az alább látható módon
 
     ```json
     {
@@ -181,7 +181,7 @@ A dokumentumot a partíciós kulcs megadásával vagy anélkül is elolvashatja.
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-Így már használhatja az alkalmazást Azure Cosmos DB használatával. Az ebben a dokumentációban ismertetett példában a [CouchbaseToCosmosDB-SpringCosmos GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) tárházban elérhető kód minta szerepel.
+Így már használhatja az alkalmazást Azure Cosmos DB használatával. Az ebben a dokumentációban ismertetett példában a [CouchbaseToCosmosDB-SpringCosmos GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/SpringCosmos) tárházban elérhető kód minta szerepel.
 
 ## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>Couchbase & N1QL-lekérdezések használatával
 
@@ -222,9 +222,9 @@ Használja az aszinkron Java SDK-t a következő lépésekkel:
     
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();   
    
@@ -305,7 +305,7 @@ CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Ezután fizessen elő a Mono-ra, tekintse meg a Mono előfizetés kódrészletet a beszúrási műveletben. A teljes mintakód a [CouchbaseToCosmosDB-AsyncInSpring GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) tárházban érhető el.
+Ezután fizessen elő a Mono-ra, tekintse meg a Mono előfizetés kódrészletet a beszúrási műveletben. A teljes mintakód a [CouchbaseToCosmosDB-AsyncInSpring GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncInSpring) tárházban érhető el.
 
 ## <a name="couchbase-as-a-keyvalue-pair"></a>Couchbase kulcs/érték párokként
 
@@ -313,7 +313,7 @@ Ez egy egyszerű számítási feladat, amelyben lekérdezések helyett keresési
 
 1. Ügyeljen arra, hogy a "/ID" elsődleges kulcs legyen, amely biztosítja, hogy a keresési művelet közvetlenül az adott partíción legyen végrehajtva. Hozzon létre egy gyűjteményt, és válassza a "/ID" lehetőséget partíciós kulcsként.
 
-1. Az indexelést teljesen ki kell kapcsolni. Mivel keresési műveleteket hajt végre, nincs olyan pont, amely az indexelési terhelést hordozza. Az indexelés kikapcsolásához jelentkezzen be Azure Portal, goto Azure Cosmos DB-fiókkal. Nyissa meg a **adatkezelőt** , válassza ki az **adatbázist** és a **tárolót**. Nyissa meg a **méretezési & beállítások** lapot, és válassza ki az  **indexelési házirendet**. Az indexelési szabályzat jelenleg a következőhöz hasonlít:
+1. Az indexelést teljesen ki kell kapcsolni. Mivel keresési műveleteket hajt végre, nincs olyan pont, amely az indexelési terhelést hordozza. Az indexelés kikapcsolásához jelentkezzen be Azure Portal, goto Azure Cosmos DB-fiókkal. Nyissa meg a **adatkezelőt**, válassza ki az **adatbázist** és a **tárolót**. Nyissa meg a **méretezési & beállítások** lapot, és válassza ki az  **indexelési házirendet**. Az indexelési szabályzat jelenleg a következőhöz hasonlít:
     
    ```json
    {
@@ -351,9 +351,9 @@ Ez egy egyszerű számítási feladat, amelyben lekérdezések helyett keresési
    
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();
     
@@ -427,7 +427,7 @@ CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Ezután fizessen elő a Mono-ra, tekintse meg a Mono előfizetés kódrészletet a beszúrási műveletben. A teljes mintakód a [CouchbaseToCosmosDB-AsyncKeyValue GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) tárházban érhető el.
+Ezután fizessen elő a Mono-ra, tekintse meg a Mono előfizetés kódrészletet a beszúrási műveletben. A teljes mintakód a [CouchbaseToCosmosDB-AsyncKeyValue GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncKeyValue) tárházban érhető el.
 
 ## <a name="data-migration"></a>Adatok áttelepítése
 
@@ -437,7 +437,7 @@ Az adatmigrálás kétféleképpen végezhető el.
 
 * **Használja a Azure Cosmos db adatimportálási eszközt:** Ez a beállítás ajánlott a kisebb mennyiségű adattal rendelkező virtuális gépek használatával történő áttelepítésre. A részletes lépésekért lásd az [adatimportálót](./import-data.md) ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A teljesítmény teszteléséhez lásd: [teljesítmény-és méretezési tesztelés Azure Cosmos db](./performance-testing.md) cikkel.
 * A kód optimalizálásához tekintse meg [Azure Cosmos db cikk teljesítményével kapcsolatos tippeket](./performance-tips-async-java.md) .

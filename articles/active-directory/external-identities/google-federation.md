@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff8912794169cf61f394a097248a8476b2e0c0f3
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 53d2369e93052ef28191dd1862034c1aaa488add
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926235"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355596"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google hozzáadása identitás-szolgáltatóként a B2B vendég felhasználói számára
 
@@ -25,6 +25,9 @@ A Google-nal való összevonás beállításával engedélyezheti a meghívott f
 
 > [!NOTE]
 > A Google Federation kifejezetten a Gmail-felhasználók számára készült. A G Suite-tartományokkal való összevonása használja a [közvetlen összevonás](direct-federation.md)lehetőséget.
+
+> [!IMPORTANT]
+> **2021. január 4-én kezdődően** a Google [elavult webnézet-bejelentkezési támogatást jelenít meg](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Ha Google-összevonást vagy önkiszolgáló regisztrációt használ a Gmail szolgáltatással, az üzletági [natív alkalmazásokat tesztelje a kompatibilitás](google-federation.md#deprecation-of-webview-sign-in-support)érdekében.
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Mi a Google-felhasználó tapasztalata?
 Ha meghívót küld a Google Gmail felhasználói számára, a vendég felhasználóknak a bérlői kontextust tartalmazó hivatkozás használatával kell hozzáférnie a megosztott alkalmazásokhoz vagy erőforrásokhoz. A felhasználói élmény attól függően változhat, hogy már be vannak jelentkezve a Google-ba:
@@ -35,7 +38,35 @@ A "fejléc túl hosszú" hibát mutató vendég felhasználók törölhetik a co
 
 ![Képernyőkép, amely a Google bejelentkezési oldalát jeleníti meg.](media/google-federation/google-sign-in.png)
 
-## <a name="limitations"></a>Korlátozások
+## <a name="deprecation-of-webview-sign-in-support"></a>A Webview bejelentkezési támogatásának elavult változata
+
+2021. január 4-én kezdődően a Google [elavult beágyazott webnézet-bejelentkezési támogatást](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Ha Google-összevonást vagy [önkiszolgáló regisztrációt használ a Gmail](identity-providers.md)szolgáltatással, az üzletági natív alkalmazásokat tesztelje a kompatibilitás érdekében. Ha az alkalmazásai olyan Webnézeti tartalmat tartalmaznak, amely hitelesítést igényel, a Google Gmail-felhasználók nem fognak tudni hitelesítést végezni. A következő ismert forgatókönyvek hatással lesznek a Gmail-felhasználókra:
+
+- Beágyazott webnézetet vagy WebAccountManager (WAM) használó Windows-alkalmazások a Windows régebbi verzióiban.
+- Egyéb natív alkalmazások, amelyek beágyazott böngésző-keretrendszert használnak a hitelesítéshez.
+
+Ez a változás nincs hatással a következőre:
+
+- Beágyazott webnézetet vagy WebAccountManager (WAM) használó Windows-alkalmazások a Windows legújabb verzióiban
+- Microsoft iOS-alkalmazások
+- G Suite-identitások, például ha SAML-alapú [közvetlen összevonást](direct-federation.md) használ a g Suite használatával
+
+Továbbra is teszteljük a különböző platformokat és forgatókönyveket, és ennek megfelelően frissíti a cikket.
+### <a name="to-test-your-apps-for-compatibility"></a>Az alkalmazások kompatibilitásának tesztelése
+
+1. A [Google útmutatását](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html) követve megállapíthatja, hogy az alkalmazások érintettek-e.
+2. A Hegedűs vagy más tesztelési eszköz használatával befecskendezheti a fejlécet a bejelentkezéshez, és egy Google külső identitást használhat a bejelentkezés teszteléséhez:
+
+   1. Adja hozzá a Google-accounts-Request-OAuth-login: True értéket a HTTP-kérések fejlécéhez, ha a rendszer elküldi a kérelmeket a accounts.google.com.
+   1. Próbáljon meg bejelentkezni az alkalmazásba úgy, hogy beírja a Gmail-címeket a accounts.google.com bejelentkezési oldalára.
+   1. Ha a bejelentkezés sikertelen, és egy hibaüzenet jelenik meg, például "Ez a böngésző vagy alkalmazás nem biztonságos," a Google külső identitása le lesz tiltva a bejelentkezéskor.
+
+3. A probléma megoldásához tegye a következők egyikét:
+
+   - Ha a Windows-alkalmazás a Windows egy régebbi verziójában beágyazott webnézetet vagy WebAccountManager (WAM) használ, frissítsen a Windows legújabb verziójára.
+   - Az alkalmazások módosításával a rendszerböngészőt használhatja a bejelentkezéshez. Részletekért lásd: a beágyazott és a [rendszer webes felhasználói felülete](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui) a MSAL.net dokumentációjában.  
+
+## <a name="sign-in-endpoints"></a>Bejelentkezési végpontok
 
 A csapatok teljes mértékben támogatják a Google vendég felhasználókat minden eszközön. A Google-felhasználók olyan közös végpontból jelentkezhetnek be a csapatba, mint például a `https://teams.microsoft.com` .
 
@@ -47,12 +78,11 @@ Előfordulhat, hogy más alkalmazások általános végpontjai nem támogatják 
    Ha a Google vendég felhasználói egy vagy hasonló hivatkozást próbálnak használni `https://myapps.microsoft.com` `https://portal.azure.com` , hibaüzenetet kapnak.
 
 Azt is megteheti, hogy a Google vendég felhasználóinak közvetlen hivatkozása van egy alkalmazásra vagy erőforrásra, feltéve, hogy a hivatkozás tartalmazza a bérlői adatait. Például: `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`. 
-
 ## <a name="step-1-configure-a-google-developer-project"></a>1. lépés: a Google fejlesztői projekt konfigurálása
 Először hozzon létre egy új projektet a Google fejlesztői konzolon egy ügyfél-azonosító és egy ügyfél-titok beszerzéséhez, amelyet később hozzáadhat a Azure Active Directory (Azure AD) szolgáltatáshoz. 
 1. Nyissa meg a Google API-kat a címen https://console.developers.google.com , és jelentkezzen be Google-Fiókjával. Javasoljuk, hogy a megosztott csapat Google-fiókját használja.
 2. Ha a rendszer kéri, fogadja el a szolgáltatási feltételeket.
-3. Hozzon létre egy új projektet: az irányítópulton válassza a **projekt létrehozása** elemet, adja meg a projekt nevét (például **Azure ad B2B** ), majd válassza a **Létrehozás** lehetőséget: 
+3. Hozzon létre egy új projektet: az irányítópulton válassza a **projekt létrehozása** elemet, adja meg a projekt nevét (például **Azure ad B2B**), majd válassza a **Létrehozás** lehetőséget: 
    
    ![Képernyőkép, amely egy új projekt oldalt jelenít meg.](media/google-federation/google-new-project.png)
 
@@ -62,30 +92,30 @@ Először hozzon létre egy új projektet a Google fejlesztői konzolon egy ügy
 
 6. Válassza a **külső** lehetőséget, majd válassza a **Létrehozás** lehetőséget. 
 
-7. Az **OAuth-beleegyezés képernyőn** adja meg az **alkalmazás nevét** :
+7. Az **OAuth-beleegyezés képernyőn** adja meg az **alkalmazás nevét**:
 
    ![Képernyőkép, amely a Google OAuth-beleegyezési képernyőjét jeleníti meg.](media/google-federation/google-oauth-consent-screen.png)
 
-8. Görgessen a **jóváhagyott tartományok** szakaszhoz, és adja meg a **microsoftonline.com** :
+8. Görgessen a **jóváhagyott tartományok** szakaszhoz, és adja meg a **microsoftonline.com**:
 
    ![A jogosultsággal rendelkező tartományok szakaszt bemutató képernyőkép.](media/google-federation/google-oauth-authorized-domains.PNG)
 
 9. Válassza a **Mentés** lehetőséget.
 
-10. Válassza a **Hitelesítő adatok** lehetőséget. A **hitelesítő adatok létrehozása** menüben válassza a **OAUTH ügyfél-azonosító** :
+10. Válassza a **Hitelesítő adatok** lehetőséget. A **hitelesítő adatok létrehozása** menüben válassza a **OAUTH ügyfél-azonosító**:
 
     ![A Google API-k hitelesítő adatok létrehozása menüt bemutató képernyőkép.](media/google-federation/google-api-credentials.png)
 
-11. Az **alkalmazás típusa** területen válassza a **webalkalmazás** lehetőséget. Adjon megfelelő nevet az alkalmazásnak, például az **Azure ad B2B** -nek. A **hitelesítő átirányítási URI** -k területen adja meg a következő URI-ket:
+11. Az **alkalmazás típusa** területen válassza a **webalkalmazás** lehetőséget. Adjon megfelelő nevet az alkalmazásnak, például az **Azure ad B2B**-nek. A **hitelesítő átirányítási URI**-k területen adja meg a következő URI-ket:
     - `https://login.microsoftonline.com`
     - `https://login.microsoftonline.com/te/<tenant ID>/oauth2/authresp` <br>(hol `<tenant ID>` van a bérlő azonosítója)
    
     > [!NOTE]
-    > A bérlő AZONOSÍTÓjának megkereséséhez nyissa meg a [Azure Portal](https://portal.azure.com). A **Azure Active Directory** alatt válassza a **Tulajdonságok** lehetőséget, és másolja a **bérlői azonosítót** .
+    > A bérlő AZONOSÍTÓjának megkereséséhez nyissa meg a [Azure Portal](https://portal.azure.com). A **Azure Active Directory** alatt válassza a **Tulajdonságok** lehetőséget, és másolja a **bérlői azonosítót**.
 
     ![Az átirányítási URI-k engedélyezését bemutató képernyőkép.](media/google-federation/google-create-oauth-client-id.png)
 
-12. Válassza a **Létrehozás** lehetőséget. Másolja az ügyfél-azonosítót és az ügyfél titkos kulcsát. Ezeket akkor fogja használni, amikor hozzáadja az identitás-szolgáltatót a Azure Portal.
+12. Kattintson a **Létrehozás** gombra. Másolja az ügyfél-azonosítót és az ügyfél titkos kulcsát. Ezeket akkor fogja használni, amikor hozzáadja az identitás-szolgáltatót a Azure Portal.
 
     ![Képernyőkép, amely a OAuth ügyfél-azonosítót és az ügyfél titkos kulcsát mutatja.](media/google-federation/google-auth-client-id-secret.png)
 
@@ -112,13 +142,13 @@ Ekkor megadhatja a Google ügyfél-azonosítót és az ügyfél titkos kulcsát.
    > Használja az ügyfél-azonosítót és az ügyfél titkos kulcsát az "1. lépés: Google fejlesztői projekt konfigurálása" című témakörben létrehozott alkalmazásból. További információ: [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview). 
  
 ## <a name="how-do-i-remove-google-federation"></a>Hogyan eltávolítja a Google Federation szolgáltatást?
-A Google összevonási telepítőt törölheti. Ha így tesz, a Google vendég felhasználóinak, akik már beváltották a meghívót, nem tudnak majd bejelentkezni. A címtárból való törléssel és azok újbóli meghívásával azonban ismét hozzáférhet az erőforrásokhoz. 
+A Google összevonási telepítőt törölheti. Ha így tesz, a Google vendég felhasználóinak, akik már beváltották a meghívót, nem tudnak majd bejelentkezni. Ha azonban ismét hozzáférést ad az erőforrásokhoz, törölje őket a címtárból, és hívja fel őket. 
  
 **A Google-összevonás törlése az Azure AD-portálon**
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com). A bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget. 
 2. Válassza a **külső identitások** lehetőséget.
-3. Válassza ki **az összes identitás szolgáltatót** .
-4. A **Google** sorban válassza a három pontot ( **...** ), majd kattintson a **Törlés** gombra. 
+3. Válassza ki **az összes identitás szolgáltatót**.
+4. A **Google** sorban válassza a három pontot (**...**), majd kattintson a **Törlés** gombra. 
    
    ![A közösségi személyazonosság-szolgáltató törlés gombját megjelenítő képernyőkép.](media/google-federation/google-social-identity-providers.png)
 
