@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 38ab16fbadee245810a4486170dd54922c0c38f9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 4c87dd905ae842647e7ec2e365abf450caf352b0
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558912"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369327"
 ---
 # <a name="security-control-v2-network-security"></a>Security Control v2: hálózati biztonság
 
@@ -20,7 +20,7 @@ A hálózati biztonság magában foglalja az Azure-hálózatok biztonságossá t
 
 ## <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: a belső forgalom biztonságának megvalósítása
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | NS-1 | 9,2, 9,4, 14,1, 14,2, 14,3 | AC-4, CA-3, SC-7 |
 
@@ -52,9 +52,9 @@ Az Azure Sentinel használatával felderítheti az örökölt nem biztonságos p
 
 ## <a name="ns-2-connect-private-networks-together"></a>NS-2: magánhálózati hálózatok összekapcsolása
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
-| NS – 2 | N.A. | CA-3, AC-17, MA-4 |
+| NS – 2 | N/A | CA-3, AC-17, MA-4 |
 
 Az Azure ExpressRoute vagy az Azure virtual private Network (VPN) használatával privát kapcsolatokat hozhat létre az Azure-adatközpontok és a helyszíni infrastruktúra között egy közös elhelyezésű környezetben. A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, így megbízhatóbbak, gyorsabbak és kevesebb késéssel rendelkeznek, mint a szokásos internetes kapcsolatok. Pont – hely típusú VPN-és helyek közötti VPN esetén a VPN-beállítások és az Azure ExpressRoute bármely kombinációja segítségével a helyszíni eszközöket vagy hálózatokat egy virtuális hálózathoz is összekapcsolhatja.
 
@@ -80,7 +80,7 @@ Ha két vagy több virtuális hálózatot szeretne összekapcsolni az Azure-ban,
 
 ## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Privát hálózati hozzáférés létesítése Azure-szolgáltatásokhoz
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | NS-3 | 14,1 | AC-4, CA-3, SC-7 |
 
@@ -104,7 +104,7 @@ Az Azure-szolgáltatások által kínált hitelesítés és adatforgalmi biztons
 
 ## <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4: a külső hálózati támadásoktól származó alkalmazások és szolgáltatások elleni védelem
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | NS-4 | 9,5, 12,3, 12,9 | SC-5, SC-7 |
 
@@ -134,7 +134,7 @@ Az Azure-erőforrások védelmet nyújthatnak a külső hálózatokból érkező
 
 ## <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5: behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | NS-5 | 12,6, 12,7 | SI-4 |
 
@@ -160,7 +160,7 @@ Megjegyzés: Ha rendelkezik az AZONOSÍTÓk/IP-címek használatára vonatkozó 
 
 ## <a name="ns-6-simplify-network-security-rules"></a>NS-6: a hálózati biztonsági szabályok egyszerűsítése
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | NS-6 | 1.5 | IA – 4 |
 
@@ -186,9 +186,9 @@ Az alkalmazás biztonsági csoportjaival is egyszerűsítheti az összetett bizt
 
 ## <a name="ns-7-secure-domain-name-service-dns"></a>NS-7: biztonságos tartománynév szolgáltatás (DNS)
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
-| NS-7 | N.A. | SC-20, SC-21 |
+| NS-7 | N/A | SC-20, SC-21 |
 
 Kövesse a DNS-biztonság ajánlott eljárásait a gyakori támadásokkal szemben, például a DNS-t, a DNS-erősítési támadásokat, a DNS-mérgezést és a hamisítást stb. 
 
